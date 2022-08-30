@@ -1,0 +1,59 @@
+@use "@digdir/ds-tokens/build/tokens.scss" as tokens;
+@use "./inter.scss" as *;
+@use "./utils.scss" as utils;
+
+@mixin focus-outline() {
+  outline: tokens.$border-width-default solid
+    tokens.$color-interface-accessibility;
+  outline-offset: utils.$base-outline-offset;
+}
+
+// Inline link
+a.#{utils.$prefix}-link {
+  cursor: pointer;
+  color: tokens.$color-interface-interaction;
+
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: tokens.$border-width-thin;
+  text-decoration-color: tokens.$color-neutral-grey-600;
+
+  transition: all tokens.$duration-normal;
+
+  &:hover {
+    text-decoration-thickness: tokens.$border-width-default;
+    text-decoration-color: tokens.$color-interface-interaction;
+  }
+
+  &:visited {
+    color: tokens.$color-interface-visited;
+
+    &:hover {
+      text-decoration-color: tokens.$color-interface-visited;
+    }
+  }
+}
+
+.#{utils.$prefix}-body {
+  font-family: tokens.$font-family;
+  color: tokens.$color-text-background-light;
+
+  // Keyboard navigation focus styling
+  *:focus-visible {
+    @include focus-outline;
+  }
+  // Compatibility for browsers not supporting :focus-visible (Safari, IE)
+  *:focus {
+    @include focus-outline;
+  }
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// Override font-family for form tags
+button,
+input,
+select {
+  font-family: inherit;
+}

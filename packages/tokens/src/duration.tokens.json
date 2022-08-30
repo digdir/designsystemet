@@ -1,0 +1,12 @@
+{
+  "duration": {
+    "fast": {
+      "value": "0.1s",
+      "type": "duration"
+    },
+    "normal": {
+      "value": "0.2s",
+      "type": "duration"
+    }
+  }
+}

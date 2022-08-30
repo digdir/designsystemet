@@ -1,0 +1,135 @@
+<style>
+  /* MAIN */
+  div[role="main"] > div {
+    box-shadow: none !important;
+  }
+
+  div[role="main"] {
+    top: 0 !important;
+  }
+
+  /* SIDEBAR */
+  .sidebar-container .os-content {
+    padding: 24px !important;
+  }
+
+  .search-field {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .search-field svg {
+    top: 10px !important;
+    left: 11px !important;
+  }
+
+  .search-field input {
+    background-color: white !important;
+    border-radius: 4px !important;
+    padding: 16px 29px !important;
+  }
+
+  .sidebar-subheading {
+    color: #1e2b3c !important;
+    text-transform: capitalize !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .sidebar-subheading button {
+    padding-left: 32px !important;
+  }
+
+  .sidebar-subheading span:first-of-type {
+    display: none;
+  }
+
+  #storybook-explorer-tree > div > div > div > .sidebar-item,
+  #storybook-explorer-tree > div > div > button {
+    font-size: 14px !important;
+    padding: 7px 8px !important;
+    margin: 4px 24px !important;
+  }
+
+  #storybook-explorer-tree > div > div > div > .sidebar-item > svg {
+    margin-top: 2px !important;
+  }
+
+  #storybook-explorer-tree
+    > div
+    > div
+    > div
+    > .sidebar-item[data-selected="true"] {
+  }
+
+  #storybook-explorer-tree > div > div > button > span {
+    margin-top: 4px !important;
+    margin-left: 4px !important;
+    margin-right: 8px !important;
+    border-top: 4px solid transparent !important;
+    border-bottom: 4px solid transparent !important;
+    border-left: 4px solid !important;
+    color: rgb(0 0 0 / 50%) !important;
+  }
+
+  #storybook-explorer-tree
+    > div
+    > div
+    > div
+    > .sidebar-item[data-parent-id^="core-components-"],
+  #storybook-explorer-tree
+    > div
+    > div
+    > div
+    > .sidebar-item[data-parent-id^="web-components-"] {
+    margin-left: 40px !important;
+  }
+
+  #storybook-explorer-tree > div {
+    margin-left: -24px !important;
+    margin-right: -24px !important;
+  }
+
+  .sidebar-item[data-selected="true"] {
+    background: #dedede !important;
+    font-weight: 500 !important;
+    color: inherit !important;
+    border-radius: 4px !important;
+  }
+
+  .sidebar-item[data-selected="true"] + a {
+    display: none !important;
+  }
+
+  .sidebar-item[data-selected="true"] svg {
+    color: inherit !important;
+  }
+
+  .os-host-scrollbar-horizontal-hidden button {
+    border-bottom-width: 3px !important;
+  }
+</style>
+
+<script>
+  // Setter bredden på sidebaren i storybook
+  let storybookConfig = JSON.parse(localStorage.getItem("storybook-layout"));
+
+  if (
+    typeof storybookConfig === "object" &&
+    storybookConfig !== null &&
+    storybookConfig.resizerNav.x < 270
+  ) {
+    storybookConfig.resizerNav.x = 270;
+    localStorage.setItem("storybook-layout", JSON.stringify(storybookConfig));
+    document.location.reload();
+  } else if (storybookConfig === null) {
+    storybookConfig = {
+      resizerNav: { x: 270, y: 0 },
+      resizerPanel: { x: 0, y: 710 },
+    };
+    localStorage.setItem("storybook-layout", JSON.stringify(storybookConfig));
+    document.location.reload();
+  }
+</script>

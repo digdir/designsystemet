@@ -1,0 +1,32 @@
+{
+  "name": "@digdir/ds-core-react",
+  "version": "0.0.4",
+  "private": false,
+  "description": "Core komponenter i react",
+  "main": "dist/index.js",
+  "module": "dist/ds-core-react.esm.js",
+  "license": "MIT",
+  "jest": {
+    "setupFilesAfterEnv": [
+      "../../setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/../../styleMock.js"
+    }
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build --entry src/index.tsx",
+    "test": "tsdx test"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@digdir/ds-tokens": "^2.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "7cb1936ff8a8d8f63c2a30bdc44022b30740c38c"
+}

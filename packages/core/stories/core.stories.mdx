@@ -1,0 +1,61 @@
+import {Meta, Description} from '@storybook/addon-docs';
+import TokenTable from '/docs-main/TokenTable.jsx'
+import {CodeSnippet } from '/docs-main/CodeSnippet.jsx'
+
+<Meta title="Core components/Introduksjon" />
+
+# Core components
+
+[![](https://img.shields.io/npm/v/@digdir/ds-core-react?label=@digdir/ds-core-react&color=0051be)](https://www.npmjs.com/package/@digdir/ds-core-react)
+[![](https://img.shields.io/badge/build-passing-brightgreen)](https://www.npmjs.com/package/@digdir/ds-core-react)
+[![](https://img.shields.io/badge/tests-0_passed,_0_failed-red)](https://www.npmjs.com/package/@digdir/ds-core-react)
+[![](https://img.shields.io/badge/coverage-0%-red)](https://www.npmjs.com/package/@digdir/ds-core-react)
+[![](https://img.shields.io/badge/licence-BSD3-yellowgreen?color=yellowgreen)](https://opensource.org/licenses/BSD-3-Clause)
+
+På denne siden finner du instrukter til hvordan du kan ta i bruk core komponentene i react.
+
+## Kom i gang
+
+#### NPM
+
+[![](https://img.shields.io/npm/dm/@digdir/ds-core-react.svg)](https://www.npmjs.com/package/@digdir/ds-core-react)
+
+Bruk av core components gjennom NPM (Node Package Manager).
+
+#### 1. Installer pakken i kommandolinjen ved hjelp av NPM eller Yarn:
+
+##### NPM
+`npm install @digdir/ds-core-react`
+##### Yarn
+`yarn add @digdir/ds-core-react`
+
+#### 2. Installer avhengigheter:
+
+##### NPM
+`npm install @digdir/ds-tokens styled-components react-feather`
+##### Yarn
+`yarn add @digdir/ds-tokens styled-components react-feather`
+
+#### 3. Legg til globale styles:
+For at react kompontene skal se riktige ut må det legges til global styling.
+`<GlobalStyle />` legger til styling på body taggen som font-family og andre base attributter.
+<CodeSnippet children='
+import { GlobalStyle } from "@digdir/ds-core-react"
+// Legg til GlobalStyle i toppen av react appen
+const App = () => {
+  return (
+    <div><GlobalStyle /><Content /></div>
+  )
+}
+' language='javascript'/>
+
+#### 4. Importer komponentene inn og ta de i bruk på denne måten:
+
+##### JavaScript / Typescript
+
+<CodeSnippet children='// Importer
+import { Button } from "@digdir/ds-core-react"
+// Bruk komponenten
+<Button variant="secondary">Les mer</Button>' language='javascript'/>
+
+

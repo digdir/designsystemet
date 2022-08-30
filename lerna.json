@@ -1,0 +1,12 @@
+{
+  "packages": ["packages/*"],
+  "version": "independent",
+  "command": {
+    "publish": {
+      "ignoreChanges": ["**/stories/*", "**/build/*", "**/playground/*"]
+    }
+  },
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "useNx": true
+}

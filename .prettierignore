@@ -1,0 +1,12 @@
+*.md
+*.mdx
+**/build
+.vscode
+cjs
+esm
+generated-sri.json
+.cache
+**/dist
+**/assets
+**/.yarn
+**/.github

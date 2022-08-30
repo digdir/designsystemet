@@ -1,0 +1,89 @@
+@use "@digdir/ds-tokens/build/tokens.scss" as tokens;
+
+.ddsdocs-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid tokens.$color-neutral-grey-300;
+  border-radius: 4px;
+
+  &__row {
+    border-bottom: 1px solid tokens.$color-neutral-grey-300;
+  }
+
+  &__header {
+    border-radius: 8px;
+    .ddsdocs-table__row {
+      background-color: tokens.$color-neutral-grey-100;
+      border-radius: 8px;
+    }
+  }
+
+  &__header-cell {
+    padding: tokens.$spacing-base-4 24px tokens.$spacing-base-4 24px;
+    font-size: 15px;
+  }
+
+  &__data-cell {
+    padding: tokens.$spacing-base-3 24px;
+  }
+
+  & .dds-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 0;
+
+    svg {
+      height: 16px;
+      margin-left: 4px;
+      fill: tokens.$color-neutral-grey-800;
+    }
+  }
+
+  // Preview cells
+  &__preview {
+    &-spacing {
+      background-color: tokens.$color-brand-third-400;
+    }
+
+    &-color {
+      width: 100%;
+      height: tokens.$spacing-4;
+    }
+
+    &-font-line-height {
+      max-width: 150px;
+    }
+
+    &-border-width {
+      width: tokens.$spacing-base-10;
+      height: tokens.$spacing-base-10;
+      border-style: solid;
+      border-color: tokens.$color-neutral-grey-800;
+    }
+
+    &-border-radius {
+      width: tokens.$spacing-base-20;
+      height: tokens.$spacing-base-15;
+      border-width: tokens.$border-width-default;
+      border-style: solid;
+      border-color: tokens.$color-neutral-grey-800;
+    }
+
+    &-duration {
+      display: grid;
+      place-content: center;
+      width: 100%;
+      height: tokens.$spacing-6;
+      border-width: tokens.$border-width-default;
+      border-style: solid;
+      border-color: tokens.$color-neutral-grey-800;
+
+      &:hover {
+        background-color: tokens.$color-brand-second-300;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@use "sass:math";
+
+// Utilities for general use in stylesheets
+$prefix: "dds";
+$base-outline-offset: 2px;
+$component-max-width: 46.625rem;
+
+$icon-url-error: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'  fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z' fill='%23E60000'/%3E%3C/svg%3E");
+$icon-url-checkmark: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4545 8L10.4545 15.2727L7.27272 11.9669' stroke='%230051BE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$icon-url-checkmark-hover: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4545 8L10.4545 15.2727L7.27272 11.9669' stroke='%23BACFED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$icon-url-checkmark-disabled: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4545 8L10.4545 15.2727L7.27272 11.9669' stroke='%23A5AAB1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$icon-url-checkmark-large: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.2727 10.6667L13.9394 20.3637L9.69696 15.956' stroke='%230051BE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$icon-url-checkmark-large-hover: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.2727 10.6667L13.9394 20.3637L9.69696 15.956' stroke='%23BACFED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$icon-url-checkmark-large-disabled: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.2727 10.6667L13.9394 20.3637L9.69696 15.956' stroke='%23A5AAB1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$icon-url-chevron-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2368707C' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z'/%3E%3C/svg%3E");
+$icon-url-chevron-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2368707C' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.41 7.41L14 6l-6 6l6 6l1.41-1.41L10.83 12l4.58-4.59z'/%3E%3C/svg%3E");
+
+/*
+  Convert from pixel value to rem value.
+  Based on browser default where 1rem = 16px.
+*/
+@function pxToRem($px) {
+  @return math.div($px, 16px) * 1rem;
+}

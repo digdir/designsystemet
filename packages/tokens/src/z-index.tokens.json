@@ -1,0 +1,38 @@
+{
+  "z-index": {
+    "height": {
+      "0": {
+        "value": "0",
+        "type": "dimension"
+      },
+      "10": {
+        "value": "10",
+        "type": "dimension"
+      },
+      "20": {
+        "value": "20",
+        "type": "dimension"
+      },
+      "30": {
+        "value": "30",
+        "type": "dimension"
+      },
+      "40": {
+        "value": "40",
+        "type": "dimension"
+      },
+      "50": {
+        "value": "50",
+        "type": "dimension"
+      }
+    },
+    "behind": {
+      "value": "-1",
+      "type": "dimension"
+    },
+    "default": {
+      "value": "{z-index.height.0.value}",
+      "type": "dimension"
+    }
+  }
+}

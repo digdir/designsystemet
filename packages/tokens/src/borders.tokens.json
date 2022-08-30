@@ -1,0 +1,40 @@
+{
+  "border": {
+    "width": {
+      "thin": {
+        "value": "1px",
+        "type": "dimension"
+      },
+      "regular": {
+        "value": "2px",
+        "type": "dimension"
+      },
+      "default": {
+        "value": "{border.width.regular.value}",
+        "type": "dimension"
+      }
+    },
+    "radius": {
+      "x-small": {
+        "value": "4px",
+        "type": "dimension"
+      },
+      "small": {
+        "value": "8px",
+        "type": "dimension"
+      },
+      "medium": {
+        "value": "16px",
+        "type": "dimension"
+      },
+      "large": {
+        "value": "24px",
+        "type": "dimension"
+      },
+      "x-large": {
+        "value": "32px",
+        "type": "dimension"
+      }
+    }
+  }
+}

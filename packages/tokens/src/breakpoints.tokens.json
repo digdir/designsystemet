@@ -1,0 +1,24 @@
+{
+  "breakpoint": {
+    "small": {
+      "value": "576px",
+      "type": "dimension"
+    },
+    "medium": {
+      "value": "768px",
+      "type": "dimension"
+    },
+    "large": {
+      "value": "992px",
+      "type": "dimension"
+    },
+    "x-large": {
+      "value": "1200px",
+      "type": "dimension"
+    },
+    "2x-large": {
+      "value": "1400px",
+      "type": "dimension"
+    }
+  }
+}

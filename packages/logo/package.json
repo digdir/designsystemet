@@ -1,0 +1,35 @@
+{
+  "name": "@digdir/ds-logo",
+  "version": "0.0.1",
+  "private": false,
+  "description": "React komponentes and svg files of Digdir logos.",
+  "keywords": [
+    "logo",
+    "svg"
+  ],
+  "author": "Digdir design system team",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "files": [
+    "/svg",
+    "/cjs",
+    "/esm"
+  ],
+  "scripts": {
+    "optimize": "rimraf ./optimized && svgo -q -p 8 -f ./svg -o ./optimized",
+    "build": "yarn optimize && node build.js && rimraf ./optimized "
+  },
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@svgr/cli": "^6.3.1",
+    "@svgr/core": "^5.5.0",
+    "camelcase": "^6.3.0",
+    "rimraf": "^3.0.2",
+    "svgo": "^2.8.0",
+    "terser": "^5.12.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
