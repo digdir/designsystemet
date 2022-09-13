@@ -1,4 +1,8 @@
 .button {
-    background-color: blue;
+    background-color: purple;
     color: white;
+}
+
+.button--lg {
+    background-color: red !important;
 }
