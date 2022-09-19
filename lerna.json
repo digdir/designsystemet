@@ -1,13 +1,13 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "packages": ["packages/*"],
+  "useNx": true,
+  "useWorkspaces": true,
+  "npmClient": "yarn",
   "version": "independent",
+  "packages": ["packages/*"],
   "command": {
     "publish": {
       "ignoreChanges": ["**/stories/*", "**/build/*", "**/playground/*"]
     }
-  },
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "useNx": true
+  }
 }

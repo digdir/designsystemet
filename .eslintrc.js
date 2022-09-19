@@ -13,6 +13,9 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
+  env: {
+    node: true,
+  },
   parser: '@typescript-eslint/parser',
   rules: {
     'react/jsx-no-bind': 'off',

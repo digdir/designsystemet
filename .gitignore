@@ -1,2 +1,23 @@
-node_modules/
+# Built files
+dist
+packages/*/docs
+
+# Yarn stuff; we're not using PnP/Zero installs
+.pnp.*
+yarn-error.log
+
+# Really don't want that
+node_modules
+
+# Local env variables should stay local
+.env
+
+coverage/
+.eslintcache
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# JetBrains IntelliJ IDEA
 .idea

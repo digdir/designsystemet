@@ -1,12 +1,12 @@
-import customTheme from "./customTheme.js";
-import "./inter.css"
-import "./customStyling.css";
+import customTheme from './customTheme.js';
+import './inter.css';
+import './customStyling.css';
 
 export const parameters = {
-  layout: "centered",
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  layout: 'centered',
+  actions: { argTypesRegex: '^on[A-Z].*' },
   docs: {
-    theme: customTheme
+    theme: customTheme,
   },
   controls: {
     matchers: {
@@ -14,4 +14,16 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+  options: {
+    storySort: {
+      order: [
+        'Introduksjon',
+        'Design Tokens',
+        'Core components',
+        ['Introduksjon', 'Button'],
+        'Changelog',
+        ['Design Tokens', 'Core components', 'Web components'],
+      ],
+    },
+  },
+};
