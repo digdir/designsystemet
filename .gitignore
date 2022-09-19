@@ -1,6 +1,5 @@
 # Built files
 dist
-packages/*/docs
 
 # Yarn stuff; we're not using PnP/Zero installs
 .pnp.*
