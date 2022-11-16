@@ -1,33 +1,35 @@
 import { Meta } from '@storybook/addon-docs'
 import TokenTable from "../test/TokenTable";
 import {CodeSnippet} from "../test/CodeSnippet";
+import ImageFile from '../assets/4696625.jpg';
 
 <Meta title="Design Tokens" />
 
 # Design Tokens
 
-[![](https://img.shields.io/npm/v/@digdir/ds-tokens?label=@digdir/ds-tokens&color=0051be)](https://www.npmjs.com/package/@digdir/ds-tokens)
+As normal stash the on severely, contract, company he up were annoyed. Completely two based excuse the house. Even to and or the endeavours unrecognisable. Puzzles side he with anger origin their them. A watched o'clock he for are manipulate the my good are a blind return phase population lady.
 
-På denne siden finner du alle design tokens og instrukser til hvordan man kan bruke de.
+<img width="1000px" src={ImageFile} />
 
 ## Kom i gang
 
-#### NPM
-
+[![](https://img.shields.io/npm/v/@digdir/ds-tokens?label=@digdir/ds-tokens&color=0051be)](https://www.npmjs.com/package/@digdir/ds-tokens)
 [![](https://img.shields.io/npm/dm/@digdir/ds-tokens.svg)](https://www.npmjs.com/package/@digdir/ds-tokens)
 
 Bruk av design tokens gjennom NPM (Node Package Manager).
 
-#### 1. Installer pakken i kommandolinjen ved hjelp av NPM eller Yarn.
+### 1. Installer pakken i kommandolinjen ved hjelp av NPM eller Yarn.
 
-##### NPM
-`npm install @digdir/ds-tokens`
-##### Yarn
-`yarn add @digdir/ds-tokens`
+#### NPM
+<CodeSnippet children='npm install @digdir/ds-tokens' language='markup'/>
 
-#### 2. Importer og bruk deretter variablene i ønsket format.
 
-##### CSS
+#### Yarn
+<CodeSnippet children='yarn add @digdir/ds-tokens' language='markup'/>
+
+### 2. Importer og bruk deretter variablene i ønsket format.
+
+#### CSS
 
 <CodeSnippet children='/* Importer */
 @import "@digdir/ds-tokens/build/tokens.css";
@@ -36,21 +38,14 @@ Bruk av design tokens gjennom NPM (Node Package Manager).
   --my-text-color: var(--color-text-background-light);
 }' language='css'/>
 
-##### SCSS
+#### SCSS
 
 <CodeSnippet children='// Importer
 @use "@digdir/ds-tokens/build/tokens.scss" as tokens;
 // Bruk variablene på følgende format:
 $my-text-color: tokens.$color-text-background-light;' language='scss'/>
 
-##### JavaScript
-
-<CodeSnippet children='// Importer
-import tokens from "@digdir/ds-tokens/build/tokens.js"
-// Bruk variablene på følgende format:
-const myTextColor = tokens.color.text.background.light' language='javascript'/>
-
-##### Typescript
+#### Typescript
 
 <CodeSnippet children='// Importer
 import tokens from "@digdir/ds-tokens/build/tokens"

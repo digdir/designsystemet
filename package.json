@@ -1,20 +1,16 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "docs"
-  ],
   "scripts": {
-    "dev": "cd docs && yarn storybook",
+    "dev": "cd docs && pnpm storybook",
     "build": "npx lerna run build",
     "test": "jest"
   },
   "devDependencies": {
+    "@altinn/figma-design-tokens": "^4.3.0",
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "@babel/preset-typescript": "^7.18.6",
-    "@digdir/ds-tokens": "^2.1.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.0.0",
     "@rollup/plugin-typescript": "^8.5.0",
