@@ -3,8 +3,7 @@ import './inter.css';
 import './customStyling.css';
 import React from 'react';
 import { DocsContainer } from '@storybook/addon-docs';
-import { BackToTop, TableOfContents } from 'storybook-docs-toc';
-import { Tomato } from '../components/TableOfContents/TableOfContents';
+import { TableOfContents } from '../components/TableOfContents/TableOfContents';
 import '@altinn/figma-design-tokens/dist/tokens.css';
 
 export const parameters = {
@@ -30,7 +29,7 @@ export const parameters = {
     container: ({ children, ...rest }) => (
       <React.Fragment>
         <DocsContainer {...rest}>
-          <Tomato />
+          <TableOfContents />
           {children}
         </DocsContainer>
       </React.Fragment>

@@ -8,7 +8,7 @@ body {
 
 .sbdocs-wrapper {
   margin-left: -310px;
-  padding-top: 48px !important;
+  padding-top: 64px !important;
 }
 
 
@@ -26,7 +26,7 @@ body {
 
 .sbdocs h2 {
   font-size: 28px !important;
-  margin-top: 48px !important;
+  padding-top: 48px !important;
   padding-bottom: 16px !important;
   margin-bottom: 20px !important;
   border-bottom: 2px solid #d5d5d5 !important;
@@ -55,9 +55,9 @@ body {
 }
 
 .sbdocs p + img {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  width: 75%;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 60%;
 }
 
 code {
