@@ -8,6 +8,7 @@ importers:
       '@babel/core': ^7.19.1
       '@babel/preset-env': ^7.19.1
       '@babel/preset-typescript': ^7.18.6
+      '@navikt/ds-icons': ^1.5.9
       '@rollup/plugin-commonjs': ^22.0.2
       '@rollup/plugin-node-resolve': ^14.0.0
       '@rollup/plugin-typescript': ^8.5.0
@@ -17,8 +18,10 @@ importers:
       '@storybook/manager-webpack5': ^6.5.10
       '@storybook/preset-scss': ^1.0.3
       '@testing-library/react': ^13.4.0
+      '@testing-library/user-event': ^14.4.3
       '@tippyjs/react': ^4.2.6
       '@types/jest': ^29.0.0
+      '@types/testing-library__jest-dom': ^5.14.5
       '@typescript-eslint/eslint-plugin': 5.36.1
       '@typescript-eslint/parser': 5.36.1
       babel-jest: ^29.0.3
@@ -47,22 +50,26 @@ importers:
       sass-loader: ^13.0.2
       storybook-addon-designs: ^6.3.1
       ts-jest: ^29.0.1
+      tslib: ^2.4.1
     devDependencies:
       '@altinn/figma-design-tokens': 4.3.0
       '@babel/core': 7.20.2
       '@babel/preset-env': 7.20.2_@babel+core@7.20.2
       '@babel/preset-typescript': 7.18.6_@babel+core@7.20.2
+      '@navikt/ds-icons': 1.5.9
       '@rollup/plugin-commonjs': 22.0.2_rollup@2.79.1
       '@rollup/plugin-node-resolve': 14.1.0_rollup@2.79.1
-      '@rollup/plugin-typescript': 8.5.0_rollup@2.79.1
+      '@rollup/plugin-typescript': 8.5.0_rollup@2.79.1+tslib@2.4.1
       '@storybook/addon-docs': 6.5.13_x7robmyzzceev6ytv5ndaveeqm
       '@storybook/addon-postcss': 2.0.0
       '@storybook/builder-webpack5': 6.5.13_eslint@8.22.0
       '@storybook/manager-webpack5': 6.5.13_eslint@8.22.0
       '@storybook/preset-scss': 1.0.3_sass-loader@13.2.0
       '@testing-library/react': 13.4.0
+      '@testing-library/user-event': 14.4.3
       '@tippyjs/react': 4.2.6
       '@types/jest': 29.2.3
+      '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.36.1_pwovp45kjytedpuwpq6ialv6fq
       '@typescript-eslint/parser': 5.36.1_eslint@8.22.0
       babel-jest: 29.3.1_@babel+core@7.20.2
@@ -91,12 +98,14 @@ importers:
       sass-loader: 13.2.0_sass@1.56.1
       storybook-addon-designs: 6.3.1
       ts-jest: 29.0.3_j2q76ybfmknt3u4ezwbl4catlm
+      tslib: 2.4.1
 
   docs:
     specifiers:
       '@babel/core': ^7.19.0
       '@digdir/ds-core-react': '*'
       '@digdir/ds-tokens': ^2.1.1
+      '@etchteam/storybook-addon-status': ^4.2.2
       '@storybook/addon-actions': ^6.5.10
       '@storybook/addon-essentials': ^6.5.10
       '@storybook/addon-interactions': ^6.5.10
@@ -118,6 +127,7 @@ importers:
       '@babel/core': 7.20.2
       '@digdir/ds-core-react': link:../packages/core
       '@digdir/ds-tokens': 2.1.1
+      '@etchteam/storybook-addon-status': 4.2.2_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-actions': 6.5.13_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-essentials': 6.5.13_khhmfvp63wptdaivs7gpc5z6sm
       '@storybook/addon-interactions': 6.5.13_2zx2umvpluuhvlq44va5bta2da
@@ -1776,6 +1786,26 @@ packages:
       - supports-color
     dev: true
 
+  /@etchteam/storybook-addon-status/4.2.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-iCOoA0+Izu/SixxjjJ9BB4YBVT2reCJ/80dXHBiCqoGSPTAvYGeeoQKexC913eSFv/0u3u4lv5fRZN/KMPAurw==}
+    peerDependencies:
+      react: ^16.8.3 || ^17.0.2 || ^18.0.0
+    dependencies:
+      '@storybook/addons': 6.5.13_biqbaboplfbrettd7655fr4n2y
+      '@storybook/api': 6.5.13_biqbaboplfbrettd7655fr4n2y
+      '@storybook/client-logger': 6.5.13
+      '@storybook/components': 6.5.13_biqbaboplfbrettd7655fr4n2y
+      '@storybook/core-events': 6.5.13
+      '@storybook/theming': 6.5.13_biqbaboplfbrettd7655fr4n2y
+      core-js: 3.26.1
+      lodash: 4.17.21
+      memoizerific: 1.11.3
+      react: 18.2.0
+      util-deprecate: 1.0.2
+    transitivePeerDependencies:
+      - react-dom
+    dev: true
+
   /@figspec/components/1.0.1:
     resolution: {integrity: sha512-UvnEamPEAMh9HExViqpobWmX25g1+soA9kcJu+It3VerMa7CeVyaIbQydNf1Gys5v/rxJVdTDRgQ7OXW2zAAig==}
     dependencies:
@@ -2922,6 +2952,16 @@ packages:
       glob-to-regexp: 0.3.0
     dev: true
 
+  /@navikt/ds-icons/1.5.9:
+    resolution: {integrity: sha512-3Alijc0JoTUQD92zHJ7Te9vMg02DnglGCBHBwmEAZF9FX324reJwqAvW3u45mWuuX8h3phGUiTTCQHdcXF1vbA==}
+    peerDependencies:
+      '@types/react': ^17.0.30 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dev: true
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -3371,7 +3411,7 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-typescript/8.5.0_rollup@2.79.1:
+  /@rollup/plugin-typescript/8.5.0_rollup@2.79.1+tslib@2.4.1:
     resolution: {integrity: sha512-wMv1/scv0m/rXx21wD2IsBbJFba8wGF3ErJIr6IKRfRj49S85Lszbxb4DCo8iILpluTjk2GAAu9CoZt4G3ppgQ==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
@@ -3385,6 +3425,7 @@ packages:
       '@rollup/pluginutils': 3.1.0_rollup@2.79.1
       resolve: 1.22.1
       rollup: 2.79.1
+      tslib: 2.4.1
     dev: true
 
   /@rollup/pluginutils/3.1.0_rollup@2.79.1:
@@ -5256,6 +5297,13 @@ packages:
       '@testing-library/dom': 8.19.0
     dev: true
 
+  /@testing-library/user-event/14.4.3:
+    resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      '@testing-library/dom': '>=7.21.4'
+    dev: true
+
   /@tippyjs/react/4.2.6:
     resolution: {integrity: sha512-91RicDR+H7oDSyPycI13q3b7o4O60wa2oRbjlz2fyRLmHImc4vyDwuUP8NtZaN0VARJY5hybvDYrFzhY9+Lbyw==}
     peerDependencies:
@@ -5518,6 +5566,12 @@ packages:
 
   /@types/tapable/1.0.8:
     resolution: {integrity: sha512-ipixuVrh2OdNmauvtT51o3d8z12p6LtFW9in7U79der/kwejjdNchQC5UMn5u/KxNoM7VHHOs/l8KS8uHxhODQ==}
+    dev: true
+
+  /@types/testing-library__jest-dom/5.14.5:
+    resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
+    dependencies:
+      '@types/jest': 29.2.3
     dev: true
 
   /@types/tough-cookie/4.0.2:

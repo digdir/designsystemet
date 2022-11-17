@@ -8,6 +8,7 @@ module.exports = {
     '@storybook/addon-interactions',
     'storybook-addon-designs',
     '@storybook/preset-scss',
+    '@etchteam/storybook-addon-status',
   ],
   staticDirs: ['../assets'],
   framework: '@storybook/react',

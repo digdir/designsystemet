@@ -1,13 +1,25 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs'
-import { Button } from "./Button";
+import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import {Button, ButtonColor, ButtonSize} from "./index";
+import {ComponentUsage} from "../ComponentUsage/ComponentUsage";
 
-import { Figma } from 'storybook-addon-designs/blocks'
+import {Beta} from "../Beta/Beta";
 
-<Meta title="Core components/Button" component={Button} />
+<Meta
+    title="Core components/Button"
+    component={Button}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+/>
 
-export const Template = (args) => <Button {...args}>Button</Button>;
+export const Template = (args) => <Button {...args} />;
 
 # Button
+
+<Beta />
 
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
 
@@ -18,104 +30,23 @@ On through of which no the your phase more know anyone tried he when line me wha
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
 
 <Canvas>
-  <Story
-    name="Primary"
-    args={{
-      variant: 'primary',
-      size: 'md',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
+    <Story
+        name="Primary"
+        args={{
+            size: ButtonSize.Medium,
+            ButtonColor: ButtonColor.Primary,
+            children: 'Button'
+        }}>
+        {Template.bind({})}
+    </Story>
 </Canvas>
-
-### Secondary
-
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
-
-
-<Canvas>
-  <Story
-    name="Secondary"
-    args={{
-      variant: 'secondary',
-      size: 'md',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
-</Canvas>
-
-### Success
-
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
-
-<Canvas>
-  <Story
-    name="Success"
-    args={{
-      variant: 'success',
-      size: 'md',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
-</Canvas>
-
-### Danger
-
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
-
-<Canvas>
-  <Story
-    name="Danger"
-    args={{
-      variant: 'danger',
-      size: 'md',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
-</Canvas>
-
-### Størrelser
-
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
-
-<Canvas>
-  <Story
-    name="Large"
-    args={{
-      variant: 'primary',
-      size: 'lg',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
-  <Story
-    name="Medium"
-    args={{
-      variant: 'primary',
-      size: 'md',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
-  <Story
-    name="Small"
-    args={{
-      variant: 'primary',
-      size: 'sm',
-    }}>
-    {Template.bind({})}
-    ff
-  </Story>
-</Canvas>
-
-## Tilgjengelighet
 
 ## Bruk
-
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
-
-<Figma url="https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/DDS---Core-Components?node-id=6846%3A30971" />
+<ComponentUsage title="Knapper skal ikke ha tekst med store bokstaver"
+                desc="Person, wish fall by during research ran don't the road, a all the chair. I accuse and of even monitor believe. With the return the address or than concepts rather, fall most had to ill.">
+    <Button children="STORE BOKSTAVER" size={ButtonSize.Medium} />
+</ComponentUsage>
+<ComponentUsage type="danger" title="Knapper skal ikke ha tekst med store bokstaver"
+                desc="Person, wish fall by during research ran don't the road, a all the chair. I accuse and of even monitor believe. With the return the address or than concepts rather, fall most had to ill.">
+    <Button children="STORE BOKSTAVER" size={ButtonSize.Medium} />
+</ComponentUsage>

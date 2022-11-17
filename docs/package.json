@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "storybook:clean": "start-storybook -p 6006 --no-manager-cache",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ./docs"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +31,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "storybook-docs-toc": "^1.7.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "@etchteam/storybook-addon-status": "^4.2.2"
   }
 }

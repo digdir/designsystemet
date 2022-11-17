@@ -1,0 +1,30 @@
+.box {
+    background-color: #f1ecff;
+    border-left: 5px solid #583ab2;
+    padding: 24px;
+    display: flex;
+    margin: 29px 0;
+    width: 75%;
+    border-radius: 2px;
+}
+
+.iconContainer {
+    margin-right: 16px;
+    display: none;
+}
+
+.textContainer {
+
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3em;
+    margin-bottom: 8px;
+}
+
+.desc {
+    line-height: 1.5em;
+    font-size: 16px;
+}

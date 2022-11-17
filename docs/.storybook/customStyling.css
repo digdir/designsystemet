@@ -8,11 +8,12 @@ body {
 
 .sbdocs-wrapper {
   margin-left: -310px;
-  padding-top: 72px !important;
+  padding-top: 48px !important;
 }
 
 
-.sbdocs h1 + p {
+.sbdocs h1 + p,
+#beta-tag + p {
   font-size: 20px !important;
   line-height: 1.7em !important;
   font-weight: 400 !important;
@@ -54,8 +55,9 @@ body {
 }
 
 .sbdocs p + img {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 75%;
 }
 
 code {
@@ -95,7 +97,7 @@ code {
 .sbdocs-preview,
 .sbdocs-preview > div,
 .sbdocs-preview > div > div {
-  overflow: inherit !important;
+  /*overflow: inherit !important;*/
 }
 
 .phone-prefix {
