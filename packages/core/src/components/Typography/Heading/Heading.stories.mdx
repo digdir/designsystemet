@@ -1,3 +1,49 @@
-import {Meta, Description} from '@storybook/addon-docs';
+import {Meta, Description, Canvas, Story} from '@storybook/addon-docs';
+import {Heading, HeadingSize, HeadingLevel} from "./index";
+import {ArgsTable} from "@storybook/addon-docs";
+import {ComponentUsage} from "../../ComponentUsage/ComponentUsage";
 
 <Meta title="Typography/Heading" />
+
+export const Template = (args) => <Heading level={args.level} margin={args.margin}
+                                           size={args.size} color={args.color}>{args.children}</Heading>;
+
+# Heading
+Heading komponenten brukes for alle overskrifter.
+
+<Canvas>
+    <Story
+        name="Heading"
+        args={{
+            size: HeadingSize.XLarge,
+            children: 'Heading',
+            level: HeadingLevel.H1,
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Størrelser
+sdf
+
+## Bruk
+<ComponentUsage title='Ikke gjør dette' desc="Heading tagger i koden skal starte på 1 og gå stegvis nedover etter viktiget og størrelse. Det skal kun vere 1 <h1> tag på nettsiden.'">
+    <Heading size={HeadingSize.XLarge}>Heading 1 (h1)</Heading>
+    <Heading size={HeadingSize.Large}>Heading 2 (h2)</Heading>
+    <Heading size={HeadingSize.Medium}>Heading 3 (h3)</Heading>
+    <Heading size={HeadingSize.Small}>Heading 4 (h4)</Heading>
+    <Heading size={HeadingSize.XSmall}>Heading 5 (h5)</Heading>
+</ComponentUsage>
+
+<ComponentUsage type='danger' title='Gjør dette' desc="Heading tagger i koden skal starte på 1 og gå stegvis nedover etter viktiget og størrelse. Det skal kun vere 1 <h1> tag på nettsiden.'">
+    <Heading size={HeadingSize.XLarge}>Heading 1 (h1)</Heading>
+    <Heading size={HeadingSize.Large}>Heading 2 (h2)</Heading>
+    <Heading size={HeadingSize.Medium}>Heading 3 (h3)</Heading>
+    <Heading size={HeadingSize.Small}>Heading 4 (h4)</Heading>
+    <Heading size={HeadingSize.XSmall}>Heading 5 (h5)</Heading>
+</ComponentUsage>
+
+## Props
+<ArgsTable of={Heading} />
+
+## Tokens

@@ -47,7 +47,7 @@ export function ComponentUsage({
             />
           </div>
         )}
-        {children}
+        <div className={classes.content}>{children}</div>
       </div>
     </div>
   );

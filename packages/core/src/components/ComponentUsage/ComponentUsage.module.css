@@ -8,7 +8,7 @@
 }
 
 .title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
     margin-bottom: 16px;
     line-height: 1.3em;
@@ -28,13 +28,22 @@
     margin-left: 40px;
     width: 50%;
     background-color: var(--colors-neutral-100);
-    height: 200px;
+    min-height: 200px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-left: 6px solid #2a8d00;
     position: relative;
     border-radius: 2px;
+}
+
+.content {
+    margin-top: 24px !important;
+}
+
+.content > * {
+    margin-bottom: 24px !important;
 }
 
 .iconContainer {

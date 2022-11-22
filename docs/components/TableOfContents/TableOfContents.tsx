@@ -11,7 +11,7 @@ const useHeadingsData = () => {
 
   useEffect(() => {
     const headingElements = Array.from(
-      document.querySelectorAll('.sbdocs-content h2'),
+      document.querySelectorAll('.sbdocs > div > h2'),
     );
 
     // Created a list of headings, with H3s nested
@@ -79,7 +79,9 @@ const useIntersectionObserver = (setActiveId) => {
       rootMargin: '500px',
     });
 
-    const headingElements = Array.from(document.querySelectorAll('h2, h3'));
+    const headingElements = Array.from(
+      document.querySelectorAll('.sbdocs > div > h2, .sbdocs > div > h3'),
+    );
 
     headingElements.forEach((element) => observer.observe(element));
 
