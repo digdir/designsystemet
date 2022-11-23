@@ -1,0 +1,24 @@
+.ddsdocs-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 4px;
+    margin-top: 24px;
+}
+
+.ddsdocs-table__row {
+    border-bottom: 1px solid #D2D5D8;
+}
+
+.ddsdocs-table__header-cell {
+    padding: 16px 24px 16px 0;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: left;
+}
+
+.ddsdocs-table__data-cell {
+    padding: 16px 0;
+    font-size: 14px;
+}

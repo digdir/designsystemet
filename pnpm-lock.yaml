@@ -121,7 +121,7 @@ importers:
       classnames: ^2.3.1
       react: ^18.0.0
       react-dom: ^18.0.0
-      storybook-docs-toc: ^1.7.0
+      storybook-blocks: '*'
       styled-components: ^5.3.6
     devDependencies:
       '@babel/core': 7.20.2
@@ -143,7 +143,7 @@ importers:
       classnames: 2.3.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      storybook-docs-toc: 1.7.0_2zpt4ilzykmne4yndyzrqd4gdm
+      storybook-blocks: link:../packages/storybook-blocks
       styled-components: 5.3.6_biqbaboplfbrettd7655fr4n2y
 
   packages/core:
@@ -152,10 +152,22 @@ importers:
       '@types/react-dom': ^18.0.4
       classnames: ^2.3.1
       react: ^18.1.0
+      storybook-blocks: '*'
     devDependencies:
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
       classnames: 2.3.2
+      react: 18.2.0
+      storybook-blocks: link:../storybook-blocks
+
+  packages/storybook-blocks:
+    specifiers:
+      '@types/react': ^18.0.9
+      '@types/react-dom': ^18.0.4
+      react: ^18.1.0
+    devDependencies:
+      '@types/react': 18.0.25
+      '@types/react-dom': 18.0.9
       react: 18.2.0
 
 packages:
@@ -16013,20 +16025,6 @@ packages:
       - react
     dev: true
 
-  /storybook-docs-toc/1.7.0_2zpt4ilzykmne4yndyzrqd4gdm:
-    resolution: {integrity: sha512-FoCYErtsy9QiKoOyDWzW8tuVsRKo5SZOqHMVCFT1CDkWOoJqSm2IMsM8HAVKK4pIDq3qVm6PhOPjZr68U630uw==}
-    peerDependencies:
-      '@storybook/addon-docs': ^6.1.0
-      react: ^16.8.0 || ^17 || ^18
-      react-dom: ^16.8.0 || ^17 || ^18
-      styled-components: ^5.2.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      styled-components: 5.3.6_biqbaboplfbrettd7655fr4n2y
-      tocbot: 4.18.2
-    dev: true
-
   /stream-browserify/2.0.2:
     resolution: {integrity: sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg==}
     dependencies:
@@ -16597,10 +16595,6 @@ packages:
       extend-shallow: 3.0.2
       regex-not: 1.0.2
       safe-regex: 1.1.0
-    dev: true
-
-  /tocbot/4.18.2:
-    resolution: {integrity: sha512-bWUfEYQZ4oFgT+qZYvzlTgbsTmA645ApHbo1iRaOBUeFfy5IpctgAQQjCXbPZy+4RDZ1JJYlIBgoApZMzMaYog==}
     dev: true
 
   /toidentifier/1.0.1:

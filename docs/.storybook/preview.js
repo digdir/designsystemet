@@ -3,8 +3,8 @@ import './inter.css';
 import './customStyling.css';
 import React from 'react';
 import { DocsContainer } from '@storybook/addon-docs';
-import { TableOfContents } from '../components/TableOfContents/TableOfContents';
 import '@altinn/figma-design-tokens/dist/tokens.css';
+import { TableOfContents } from 'storybook-blocks/src/components/TableOfContents/TableOfContents';
 
 export const parameters = {
   status: {
