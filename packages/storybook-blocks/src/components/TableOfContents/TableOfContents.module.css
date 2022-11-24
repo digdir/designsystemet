@@ -5,6 +5,12 @@
     padding: 32px 40px;
 }
 
+@media screen  and (max-width: 1350px)  {
+    .toc {
+        right: 55px;
+    }
+}
+
 .toc__item {
     list-style: none;
     font-size: 16px;

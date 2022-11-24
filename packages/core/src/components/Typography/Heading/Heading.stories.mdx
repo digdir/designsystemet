@@ -37,7 +37,8 @@ Heading-komponenten brukes på alle overskrifter. Dette er tekst med en tyngre f
 </Canvas>
 
 ## Størrelser
-<Table headings={['Navn', 'Verdi', 'Preview']} rows={[{row: ['XLarge', '44px', <Heading>Heading XLarge</Heading>]}, {row: ['Large', '36px', <Heading size="large">Heading Large</Heading>]}, {row: ['Medium', '28px', <Heading size="medium">Heading Medium</Heading>]}, {row: ['Small', '24px', <Heading size="small">Heading Small</Heading>]}, {row: ['XSmall', '20px', <Heading size="xsmall">Heading XSmall</Heading>]}]} />
+Komponenten har ein `size` prop med følgende verdier tilgjengelig:
+<Table headings={['Navn', 'Verdi', 'Preview']} rows={[{row: ['900', '44px', <Heading>Heading XLarge</Heading>]}, {row: ['800', '36px', <Heading size="large">Heading Large</Heading>]}, {row: ['700', '28px', <Heading size="medium">Heading Medium</Heading>]}, {row: ['600', '24px', <Heading size="small">Heading Small</Heading>]}, {row: ['500', '20px', <Heading size="xsmall">Heading XSmall</Heading>]}]} />
 
 ## Rettningslinjer
 Alle oversikrifter skal bruke heading komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
@@ -71,7 +72,7 @@ Komponenten har følgende properties tilgjengelig.
 Tilgjengelige verdier: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`.
 
 ### HeadingSize
-Tilgjengelige verdier: `XLarge`, `Large`, `Medium`, `Small`, `XSmall`.
+Tilgjengelige verdier: `900`, `800`, `700`, `600`, `500`.
 
 ## Tokens
 Komponenten har følgende CSS variabler tilgjengelig som kan overstyres ved behov. (bruker button som eksempel)

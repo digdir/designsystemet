@@ -44,7 +44,7 @@ const PropTable = () => {
         'Størrelsen på teksten',
         <TableCellTag
           type='undefined'
-          text='xlarge'
+          text='900'
         />,
       ],
     });
