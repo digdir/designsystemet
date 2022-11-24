@@ -15,7 +15,7 @@ export const parameters = {
         description: 'This component is stable and released',
       },
       beta: {
-        background: '#583ab2',
+        background: '#6544c5',
         color: '#ffffff',
         description: 'This component is stable and released',
       },

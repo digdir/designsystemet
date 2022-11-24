@@ -15,11 +15,9 @@ export function Beta() {
       <div className={classes.TextContainer}>
         <div className={classes.title}>Beta</div>
         <div className={classes.desc}>
-          Week in makers may but made in practice phase text, on another
-          documents people a the help for which was slid worthy differences of
-          material. Duck amped of its choose unmolested lift bulk; How any I
-          men's the of the sentences must back if far declined, value in the
-          business.
+          Komponenten er under utvikling. Dette kan medføre breaking-changes i
+          patch/minor versjon av kodepakker. Vær forsiktig ved bruk og unngå
+          produksjon om mulig.
         </div>
       </div>
     </div>

@@ -26,10 +26,11 @@ body {
 
 .sbdocs > div > h2 {
   font-size: 28px !important;
-  padding-top: 48px !important;
+  margin-top: 52px !important;
+  padding-top: 0 !important;
   padding-bottom: 16px !important;
   margin-bottom: 20px !important;
-  border-bottom: 2px solid #d5d5d5 !important;
+  border-bottom: 3px solid #b2b2b2 !important;
 }
 
 .sbdocs > div > h4,

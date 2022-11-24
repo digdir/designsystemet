@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+
 import classes from './Table.module.css';
 
 export interface TableProps {
@@ -15,7 +15,7 @@ interface RowsProps {
 const Table = (tableProps: TableProps) => {
   return (
     <table className={classes['ddsdocs-table']}>
-      <thead className='ddsdocs-table__header'>
+      <thead className={classes['ddsdocs-table__header']}>
         <tr className={classes['ddsdocs-table__row']}>
           {tableProps.headings.map((value, key) => (
             <th
@@ -33,7 +33,7 @@ const Table = (tableProps: TableProps) => {
             key={key}
             className={classes['ddsdocs-table__row']}
           >
-            {value.row.map((rowValue, rowKey) => (
+            {value.row.map((rowValue: any, rowKey: any) => (
               <td
                 key={rowKey}
                 className={classes['ddsdocs-table__data-cell']}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import tokens from '@altinn/figma-design-tokens/dist/tokens';
 
 import { Table } from '../Table';
+import { TableCellColor, TableCellSpace } from '../TableCells/TableCells';
 
 interface TokenTableProps {
   jsonKey: string;
@@ -14,15 +15,25 @@ const TokenTable = (tokenTable: TokenTableProps) => {
   });
 
   const getRows = () => {
-    let a = flattenObject(
+    const row = flattenObject(
       getJsonByKey(tokenTable.jsonKey, tokens),
-      tokenTable.componentName + '-',
+      '$' + tokenTable.componentName + '-',
     );
 
-    let rows = [];
+    const rows: { row: unknown[] }[] = [];
 
-    Object.entries(a).map(([key, value]) => {
-      rows.push({ row: [key, value] });
+    Object.entries(row).map(([key, value]) => {
+      rows.push({
+        row: [
+          key,
+          value,
+          value.includes('#') ? (
+            <TableCellColor color={value} />
+          ) : (
+            <TableCellSpace size={value} />
+          ),
+        ],
+      });
     });
     return rows;
   };
@@ -34,9 +45,10 @@ const TokenTable = (tokenTable: TokenTableProps) => {
 
   const flattenObject = (jsonObject = {}, prefix = '', result = {}) => {
     for (const key in jsonObject) {
-      console.log(key);
       if (typeof jsonObject[key] !== 'object') {
-        result[prefix + key] = jsonObject[key];
+        if (key !== 'type') {
+          result[prefix.slice(0, -1)] = jsonObject[key];
+        }
       } else {
         flattenObject(jsonObject[key], `${prefix}${key}-`, result);
       }
@@ -44,11 +56,12 @@ const TokenTable = (tokenTable: TokenTableProps) => {
     return result;
   };
 
+  const tomato = () => {};
+
   return (
     <Table
-      headings={['Navn', 'Verdi']}
+      headings={['Navn', 'Verdi', 'Preview']}
       rows={getRows()}
-      // rows={[{ row: ['3', 'r', '5'] }, { row: ['f', '6', '8'] }]}
     />
   );
 };
