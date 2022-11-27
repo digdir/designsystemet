@@ -1,0 +1,55 @@
+.iconSearch {
+    margin-top: 38px;
+}
+
+.icons {
+    margin-top: 42px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px;
+}
+
+.item {
+    margin: 16px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 24px;
+    border: 1px solid #b4b4b4;
+    transition: 0.25s all;
+    cursor: pointer;
+}
+
+.item:hover {
+    box-shadow: 0 0 0 1px #00397e;
+}
+
+.item--black {
+    background-color: #1E2B3C;
+}
+
+.heading {
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.group {
+    margin-top: 48px;
+}
+
+.name {
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.name--white {
+    color: white;
+}

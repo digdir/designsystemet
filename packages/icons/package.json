@@ -1,0 +1,25 @@
+{
+  "name": "@digdir/ds-icon",
+  "version": "0.0.1",
+  "description": "Icons from the Digdir Designsystem",
+  "author": "Digdir Designsystem Team",
+  "keywords": ["icons", "svg"],
+  "license": "ISC",
+  "type": "module",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "files": [
+    "/svg",
+    "/cjs",
+    "/esm"
+  ],
+  "private": false,
+  "scripts": {
+    "clean": "rimraf ./optimized",
+    "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
+    "build": "pnpm clean && pnpm optimize && node build.js && rimraf ./optimized "
+  },
+  "devDependencies": {
+    "@digdir/ds-storybook-components": "*"
+  }
+}

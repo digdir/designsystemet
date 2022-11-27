@@ -4,7 +4,7 @@ import './customStyling.css';
 import React from 'react';
 import { DocsContainer } from '@storybook/addon-docs';
 import '@altinn/figma-design-tokens/dist/tokens.css';
-import { TableOfContents } from 'storybook-blocks/src/components/TableOfContents/TableOfContents';
+import { TableOfContents } from '@digdir/ds-storybook-components/src/components';
 
 export const parameters = {
   status: {

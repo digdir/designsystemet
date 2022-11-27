@@ -1,0 +1,25 @@
+{
+  "name": "@digdir/ds-logo",
+  "version": "0.0.1",
+  "description": "",
+  "private": false,
+  "scripts": {
+    "clean": "rimraf ./optimized",
+    "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
+    "build": "pnpm clean && pnpm optimize && node build.js && rimraf ./optimized "
+  },
+  "type": "module",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "files": [
+    "/svg",
+    "/cjs",
+    "/esm"
+  ],
+  "keywords": ["logo"],
+  "author": "Digdir Designsystem Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@digdir/ds-storybook-components": "*"
+  }
+}

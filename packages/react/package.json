@@ -1,0 +1,27 @@
+{
+  "name": "@digdir/ds-react",
+  "version": "0.0.4",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "private": false,
+  "license": "MIT",
+  "author": "Digdir Designsystem Team",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@digdir/ds-storybook-components": "*",
+    "@digdir/ds-icon": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

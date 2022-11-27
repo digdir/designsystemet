@@ -12,10 +12,11 @@ body {
     padding-top: 64px !important;
 }
 
-@media screen  and (max-width: 1350px)  {
+@media screen  and (max-width: 1400px)  {
     .sbdocs-wrapper {
         margin-left: -0px;
         width: calc(100% - 300px);
+        padding-left: 30px !important;
     }
 }
 

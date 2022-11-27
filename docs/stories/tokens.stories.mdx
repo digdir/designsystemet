@@ -2,12 +2,13 @@ import { Meta } from '@storybook/addon-docs'
 import TokenTable from "../test/TokenTable";
 import {CodeSnippet} from "../test/CodeSnippet";
 import ImageFile from '../assets/4696625.jpg';
+import {TokensTable} from "@digdir/ds-storybook-components/src/components";
 
 <Meta title="Design Tokens" />
 
 # Design Tokens
 
-As normal stash the on severely, contract, company he up were annoyed. Completely two based excuse the house. Even to and or the endeavours unrecognisable. Puzzles side he with anger origin their them. A watched o'clock he for are manipulate the my good are a blind return phase population lady.
+As normal stash the on severely, contract, company he up were annoyed. Completely two based excuse the house. Even to and or the endeavours unrecognisable. Puzzles side he with anger origin their them. A watched o'clock he for are manipulate the.
 
 <img width="1000px" src={ImageFile} />
 
@@ -20,45 +21,40 @@ As normal stash the on severely, contract, company he up were annoyed. Completel
 
 Bruk av design tokens gjennom NPM (Node Package Manager).
 
-### 1. Installer pakken i kommandolinjen ved hjelp av NPM eller Yarn.
+### 1. Installer pakken i kommandolinjen ved hjelp av NPM, Yarn eller PNPM.
 
-#### NPM
 <CodeSnippet children='npm install @digdir/ds-tokens' language='markup'/>
-
-
-#### Yarn
+<CodeSnippet children='pnpm install @digdir/ds-tokens' language='markup'/>
 <CodeSnippet children='yarn add @digdir/ds-tokens' language='markup'/>
 
-### 2. Importer og bruk deretter variablene i ønsket format.
+
+### 2. Importer og bruk variablene i ønsket format.
 
 #### CSS
 
-<CodeSnippet children='/* Importer */
+<CodeSnippet children='
 @import "@digdir/ds-tokens/build/tokens.css";
-/* Bruk variablene på følgende format: */
 :root {
   --my-text-color: var(--color-text-background-light);
 }' language='css'/>
 
 #### SCSS
 
-<CodeSnippet children='// Importer
+<CodeSnippet children='
 @use "@digdir/ds-tokens/build/tokens.scss" as tokens;
-// Bruk variablene på følgende format:
 $my-text-color: tokens.$color-text-background-light;' language='scss'/>
 
 #### Typescript
 
-<CodeSnippet children='// Importer
+<CodeSnippet children='
 import tokens from "@digdir/ds-tokens/build/tokens"
-// Bruk variablene på følgende format:
 const myTextColor = tokens.color.text.background.light' language='javascript'/>
 
 ## Tokens
 
 ### Farger
 
-<TokenTable category="color"/>
+<TokensTable jsonKey="colors" componentName="colors" />
 
 ### Avstander
 
@@ -70,7 +66,6 @@ og tar utgangspunkt i den vanligste standarden der __1rem = 16px__.
 `spacing-base-x` er et større sett med avstander til dersom man trenger flere verdier enn det som er definert i designet (for eksempel til å håndtere padding inni en komponent man bygger).
 Variablene tar utgangspunkt i inkrement på 0.25rem (4px) fra `spacing-base-1` som starter på verdien 0.25rem, slik at `spacing-base-4` er det samme som `4 * 0.25rem == 4 * 4px == 4 * spacing-base-1`, nemlig 1rem (16px).
 
-<TokenTable category="spacing"/>
 
 ### Typografi
 
@@ -79,19 +74,19 @@ Variablene tar utgangspunkt i inkrement på 0.25rem (4px) fra `spacing-base-1` s
 Tekststørrelse-variablene er angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der `1rem = 16px`.
 
-<TokenTable category="font-size"/>
+<TokensTable jsonKey="font_size" componentName="font_size" />
 
 #### Tekstvekting
 
-<TokenTable category="font-weight"/>
+
 
 #### Linjehøyder
 
-<TokenTable category="font-line-height"/>
+
 
 #### Tekstfamilie
 
-<TokenTable category="font-family" preview={false} />
+<TokensTable jsonKey="font_family" componentName="font_family" />
 
 ### Bruddpunkter
 
@@ -99,22 +94,18 @@ Bruddpunktene tar utgangspunkt i verdiene benyttet i [Bootstrap grid](https://ge
 
 For eksempel vil `@media (min-width: var(--breakpoint-medium)) { ... } ` kunne brukes for å treffe de fleste tablets (og større skjermstørrelser).
 
-<TokenTable category="breakpoint" preview={false} />
+<TokensTable jsonKey="breakpoints" componentName="breakpoints" />
 
 ### Kantlinjer
 
 #### Kantlinjebredder
 
-<TokenTable category="border-width" />
 
 #### Kantlinjeradius
 
-<TokenTable category="border-radius" />
 
 ### Tid og varighet
 
-<TokenTable category="duration" />
 
 ### Z-indeks
 
-<TokenTable category="z-index" preview={false} />

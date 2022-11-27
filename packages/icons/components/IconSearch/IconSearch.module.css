@@ -1,0 +1,74 @@
+.iconSearch {
+    margin-top: 38px;
+}
+
+.icons {
+    margin-top: 42px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px;
+}
+
+.item {
+    width: calc(25% - 34px);
+    height: 140px;
+    margin: 16px;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6f6f6;
+    transition: 0.25s all;
+    cursor: pointer;
+}
+
+.item:hover {
+    box-shadow: 0 0 0 1px #00397e;
+}
+
+svg {
+    transition: 0.25s all;
+}
+
+.item:hover svg {
+    transform: scale(1.25);
+}
+
+.heading {
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.group {
+    margin-top: 48px;
+}
+
+.name {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.searchContainer {
+    position: relative;
+}
+
+.iconContainer {
+    position: absolute;
+    left: 13px;
+    top: 13px;
+}
+
+.input {
+    font-size: 18px;
+    padding-left: 48px;
+    height: 49px;
+    width: 500px;
+    border-radius: 4px;
+    border: 1px solid #8d8d8d;
+}
