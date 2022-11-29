@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "private": false,
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "author": "Digdir Designsystem Team",
   "files": [
     "dist/**"
@@ -20,6 +20,10 @@
   "devDependencies": {
     "@digdir/ds-storybook-components": "*",
     "@digdir/ds-icon": "*"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.0.0"
   },
   "publishConfig": {
     "access": "public"

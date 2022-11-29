@@ -1,12 +1,18 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
+import json from '@rollup/plugin-json';
+import image from '@rollup/plugin-image';
 import dts from 'rollup-plugin-dts';
+import postcss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import svgr from '@svgr/rollup';
 
+import terser from './rollup-terser.mjs';
 import packageJson from './package.json';
+
+// css files needs to be bundled
+const altinnFigmaTokensExceptCss = /@altinn\/figma-design-tokens.*(?<!css)$/;
 
 export default [
   {
@@ -15,29 +21,31 @@ export default [
       {
         file: packageJson.main,
         format: 'cjs',
-        sourcemap: true,
       },
       {
         file: packageJson.module,
         format: 'esm',
-        sourcemap: true,
       },
     ],
+    external: [
+      altinnFigmaTokensExceptCss,
+      /@react-hookz\/web/,
+      /@radix-ui\/react-popover$/,
+      /react-number-format/,
+      /react-leaflet/,
+      /leaflet/,
+      /@navikt\/ds-icons/,
+    ],
     plugins: [
-      external(),
+      peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json', exclude: ['**/*.test.tsx'] }),
-      postcss({
-        modules: true,
-      }),
+      json(),
+      typescript({ tsconfig: './tsconfig.json' }),
+      svgr({ exportType: 'named' }),
+      postcss(),
       terser(),
+      image(),
     ],
-  },
-  {
-    input: 'dist/esm/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [/\.css$/],
-    plugins: [dts()],
   },
 ];

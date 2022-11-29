@@ -4,7 +4,7 @@
   "description": "Icons from the Digdir Designsystem",
   "author": "Digdir Designsystem Team",
   "keywords": ["icons", "svg"],
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "type": "module",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",

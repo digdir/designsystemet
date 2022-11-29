@@ -1,5 +1,3 @@
-declare module '*.module.css';
-
 declare module '*.svg' {
   import React = require('react');
   export const ReactComponent: React.FunctionComponent<
@@ -7,4 +5,14 @@ declare module '*.svg' {
   >;
   const src: string;
   export default src;
+}
+
+declare module '*.css' {
+  const styles: { [className: string]: string };
+  export default styles;
+}
+
+declare module '*.png' {
+  const value: any;
+  export = value;
 }
