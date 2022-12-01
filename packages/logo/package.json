@@ -1,5 +1,5 @@
 {
-  "name": "@digdir/ds-logo",
+  "name": "@digdir/design-system-logos",
   "version": "0.0.1",
   "description": "",
   "private": false,
@@ -20,6 +20,6 @@
   "author": "Digdir Designsystem Team",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@digdir/ds-storybook-components": "*"
+    "@digdir/design-system-storybook-components": "workspace:*"
   }
 }

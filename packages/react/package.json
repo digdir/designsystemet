@@ -1,5 +1,5 @@
 {
-  "name": "@digdir/ds-react",
+  "name": "@digdir/design-system-react",
   "version": "0.0.4",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -18,8 +18,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@digdir/ds-storybook-components": "*",
-    "@digdir/ds-icon": "*"
+    "@digdir/design-system-storybook-components": "workspace:*",
+    "@digdir/design-system-icons": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.1.0",

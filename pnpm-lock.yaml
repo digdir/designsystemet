@@ -136,9 +136,9 @@ importers:
   docs:
     specifiers:
       '@babel/core': ^7.19.0
-      '@digdir/ds-icon': '*'
-      '@digdir/ds-react': '*'
-      '@digdir/ds-storybook-components': '*'
+      '@digdir/design-system-icons': workspace:*
+      '@digdir/design-system-react': workspace:*
+      '@digdir/design-system-storybook-components': workspace:*
       '@digdir/ds-tokens': ^2.1.1
       '@etchteam/storybook-addon-status': ^4.2.2
       '@storybook/addon-actions': ^6.5.10
@@ -155,9 +155,9 @@ importers:
       styled-components: ^5.3.6
     devDependencies:
       '@babel/core': 7.20.2
-      '@digdir/ds-icon': link:../packages/icons
-      '@digdir/ds-react': link:../packages/react
-      '@digdir/ds-storybook-components': link:../packages/storybook
+      '@digdir/design-system-icons': link:../packages/icons
+      '@digdir/design-system-react': link:../packages/react
+      '@digdir/design-system-storybook-components': link:../packages/storybook
       '@digdir/ds-tokens': 2.1.1
       '@etchteam/storybook-addon-status': 4.2.2
       '@storybook/addon-actions': 6.5.13
@@ -175,23 +175,23 @@ importers:
 
   packages/icons:
     specifiers:
-      '@digdir/ds-storybook-components': '*'
+      '@digdir/design-system-storybook-components': workspace:*
     devDependencies:
-      '@digdir/ds-storybook-components': link:../storybook
+      '@digdir/design-system-storybook-components': link:../storybook
 
   packages/logo:
     specifiers:
-      '@digdir/ds-storybook-components': '*'
+      '@digdir/design-system-storybook-components': workspace:*
     devDependencies:
-      '@digdir/ds-storybook-components': link:../storybook
+      '@digdir/design-system-storybook-components': link:../storybook
 
   packages/react:
     specifiers:
-      '@digdir/ds-icon': '*'
-      '@digdir/ds-storybook-components': '*'
+      '@digdir/design-system-icons': workspace:*
+      '@digdir/design-system-storybook-components': workspace:*
     devDependencies:
-      '@digdir/ds-icon': link:../icons
-      '@digdir/ds-storybook-components': link:../storybook
+      '@digdir/design-system-icons': link:../icons
+      '@digdir/design-system-storybook-components': link:../storybook
 
   packages/storybook:
     specifiers:

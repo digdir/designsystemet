@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Search } from '@navikt/ds-icons';
-import { SvgModal } from '@digdir/ds-storybook-components/src/components';
+import { SvgModal } from '@digdir/design-system-storybook-components/src/components';
 
 import { Motorcycle } from '../../';
 import * as Icon from '../../';
@@ -73,7 +73,7 @@ export function IconSearch() {
         Icon={activeIcon.icon}
         showModal={showModal}
         closeModal={() => setShowModal(false)}
-        packageName='@didir/ds-icons'
+        packageName='@digdir/design-system-icons'
       />
       <div className={classes.searchContainer}>
         <div className={classes.iconContainer}>

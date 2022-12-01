@@ -1,5 +1,5 @@
 {
-  "name": "@digdir/ds-icon",
+  "name": "@digdir/design-system-icons",
   "version": "0.0.1",
   "description": "Icons from the Digdir Designsystem",
   "author": "Digdir Designsystem Team",
@@ -20,6 +20,6 @@
     "build": "pnpm clean && pnpm optimize && node build.js && rimraf ./optimized "
   },
   "devDependencies": {
-    "@digdir/ds-storybook-components": "*"
+    "@digdir/design-system-storybook-components": "workspace:*"
   }
 }

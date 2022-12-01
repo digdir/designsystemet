@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { SvgModal } from '@digdir/ds-storybook-components/src/components';
+import { SvgModal } from '@digdir/design-system-storybook-components/src/components';
 
 import { Altinn } from '../../';
 import * as Logo from '../../';
@@ -68,7 +68,7 @@ export function LogoList() {
         Icon={activeIcon.icon}
         showModal={showModal}
         closeModal={() => setShowModal(false)}
-        packageName='@didir/ds-logo'
+        packageName='@digdir/design-system-logo'
       />
 
       <div className={classes.searchContainer}>
