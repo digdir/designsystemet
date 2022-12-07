@@ -6,11 +6,12 @@
   "scripts": {
     "clean": "rimraf ./optimized",
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
-    "build": "pnpm clean && pnpm optimize && node build.js && rimraf ./optimized "
+    "build": "pnpm clean && pnpm optimize && node build.js && rimraf ./optimized",
+    "update": "ts-node figma/index.ts dotenv/config"
   },
-  "type": "module",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
+  "typings": "./esm/index.d.ts",
   "files": [
     "/svg",
     "/cjs",

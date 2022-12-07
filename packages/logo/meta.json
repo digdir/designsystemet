@@ -1,166 +1,26 @@
 [
   {
-    "name": "Altinn",
-    "pageName": "Altinn"
-  },
-  {
-    "name": "AltinnPositive",
-    "pageName": "Altinn"
-  },
-  {
-    "name": "AltinnNegative",
-    "pageName": "Altinn"
-  },
-  {
-    "name": "Ansattporten",
-    "pageName": "Ansattporten"
-  },
-  {
-    "name": "AnsattportenNegative",
-    "pageName": "Ansattporten"
-  },
-  {
-    "name": "Connect2Norway",
-    "pageName": "Connect2Norway"
-  },
-  {
-    "name": "Connect2NorwayNegative",
-    "pageName": "Connect2Norway"
-  },
-  {
     "name": "Digdir",
-    "pageName": "Digdir"
-  },
-  {
-    "name": "DigdirPositive",
+    "description": "Tomato",
+    "created_at": "2022-12-05T21:44:47.441Z",
     "pageName": "Digdir"
   },
   {
     "name": "DigdirNegative",
+    "description": "",
+    "created_at": "2022-12-05T21:44:47.433Z",
     "pageName": "Digdir"
   },
   {
-    "name": "Digitalpostkasse",
-    "pageName": "Digitalpostkasse"
-  },
-  {
-    "name": "DigitalpostkasseNegative",
-    "pageName": "Digitalpostkasse"
-  },
-  {
-    "name": "Eformidling",
-    "pageName": "Eformidling"
-  },
-  {
-    "name": "EformidlingPositive",
-    "pageName": "Eformidling"
-  },
-  {
-    "name": "Einnsyn",
-    "pageName": "Einnsyn"
-  },
-  {
-    "name": "EinnsynPositive",
-    "pageName": "Einnsyn"
-  },
-  {
-    "name": "Esignering",
-    "pageName": "Esignering"
-  },
-  {
-    "name": "EsigneringPositive",
-    "pageName": "Esignering"
-  },
-  {
-    "name": "FellesDatakatalog",
-    "pageName": "FellesDatakatalog"
-  },
-  {
-    "name": "FellesDatakatalogNegative",
-    "pageName": "FellesDatakatalog"
-  },
-  {
-    "name": "IdPorten",
-    "pageName": "IDPorten"
-  },
-  {
-    "name": "IdPortenPositive",
-    "pageName": "IDPorten"
-  },
-  {
-    "name": "IdPortenNegative",
-    "pageName": "IDPorten"
-  },
-  {
     "name": "Maskinporten",
-    "pageName": "Maskinporten"
-  },
-  {
-    "name": "MaskinportenPositive",
+    "description": "",
+    "created_at": "2022-12-05T21:44:47.416Z",
     "pageName": "Maskinporten"
   },
   {
     "name": "MaskinportenNegative",
+    "description": "",
+    "created_at": "2022-12-05T21:52:12.586Z",
     "pageName": "Maskinporten"
-  },
-  {
-    "name": "NorskLysingsblad",
-    "pageName": "NorskLysingsblad"
-  },
-  {
-    "name": "NorskLysingsbladNegative",
-    "pageName": "NorskLysingsblad"
-  },
-  {
-    "name": "Profilveileder",
-    "pageName": "Profilveileder"
-  },
-  {
-    "name": "ProfilveilederNegative",
-    "pageName": "Profilveileder"
-  },
-  {
-    "name": "Prosjektveiviseren",
-    "pageName": "Prosjektveiviseren"
-  },
-  {
-    "name": "ProsjektveiviserenNegative",
-    "pageName": "Prosjektveiviseren"
-  },
-  {
-    "name": "Samarbeidsportalen",
-    "pageName": "Samarbeidsportalen"
-  },
-  {
-    "name": "SamarbeidsportalenNegative",
-    "pageName": "Samarbeidsportalen"
-  },
-  {
-    "name": "Skate",
-    "pageName": "Skate"
-  },
-  {
-    "name": "SkateNegative",
-    "pageName": "Skate"
-  },
-  {
-    "name": "Stimulab",
-    "pageName": "Stimulab"
-  },
-  {
-    "name": "StimulabNegative",
-    "pageName": "Stimulab"
-  },
-  {
-    "name": "Uutilsynet",
-    "pageName": "Uutilsynet"
-  },
-  {
-    "name": "UutilsynetPositive",
-    "pageName": "Uutilsynet"
-  },
-  {
-    "name": "UutilsynetNegative",
-    "pageName": "Uutilsynet"
   }
 ]
