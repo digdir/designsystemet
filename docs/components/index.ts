@@ -10,3 +10,4 @@ export {
 } from './Table/TableCells/TableCells';
 export { TableOfContents } from './TableOfContents/TableOfContents';
 export { SvgModal } from './SvgModal/SvgModal';
+export { CodeSnippet } from './CodeSnippet/CodeSnippet';
