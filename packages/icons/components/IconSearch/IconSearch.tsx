@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Search } from '@navikt/ds-icons';
-import { SvgModal } from '@digdir/storybook-components';
+import { SvgModal } from '@digdir/storybook-components/src';
 
 import { Motorcycle } from '../../';
 import * as Icon from '../../';
