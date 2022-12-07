@@ -4,7 +4,7 @@
   "useWorkspaces": true,
   "npmClient": "yarn",
   "version": "independent",
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "docs-components"],
   "command": {
     "publish": {
       "ignoreChanges": ["**/stories/*", "**/build/*", "**/playground/*"]
