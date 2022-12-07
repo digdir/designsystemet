@@ -1,5 +1,5 @@
 {
-  "name": "@digdir/design-system-storybook-components",
+  "name": "storybook-components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

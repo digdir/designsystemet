@@ -29,7 +29,7 @@
     "@etchteam/storybook-addon-status": "^4.2.2",
     "@digdir/design-system-react": "*",
     "@digdir/ds-tokens": "^2.1.1",
-    "@digdir/design-system-storybook-components": "*",
+    "storybook-components": "*",
     "@digdir/design-system-icons": "*"
   }
 }

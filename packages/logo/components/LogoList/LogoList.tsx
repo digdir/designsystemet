@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { SvgModal } from '@digdir/design-system-storybook-components/src/components';
+import { SvgModal } from 'storybook-components';
 
 import { Altinn } from '../../';
 import * as Logo from '../../';
