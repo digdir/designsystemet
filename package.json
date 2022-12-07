@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "docs"
+    "docs",
+    "storybook"
   ],
   "scripts": {
     "storybook": "cd docs && yarn storybook",
