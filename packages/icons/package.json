@@ -20,6 +20,6 @@
     "build": "yarn clean && yarn optimize && node build.js && rimraf ./optimized "
   },
   "devDependencies": {
-    "@digdir/storybook-components": "*"
+    "@digdir/design-system-storybook-components": "*"
   }
 }

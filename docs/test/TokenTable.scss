@@ -1,0 +1,95 @@
+.ddsdocs-table2 {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 4px;
+  margin-top: 24px;
+
+  &__row {
+    border-bottom: 1px solid #D2D5D8;
+  }
+
+  thead td {
+    font-weight: 500;
+  }
+
+  &__header {
+    border-radius: 8px;
+
+    .ddsdocs-table__row {
+      //background-color: #F4F5F6;
+      border-radius: 8px;
+    }
+  }
+
+  &__header-cell {
+    padding: 16px 24px 16px 0;
+    font-size: 16px;
+  }
+
+  &__data-cell {
+    padding: 16px 0;
+    font-size: 16px;
+  }
+
+  & .dds-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 0;
+    font-size: 16px;
+
+    svg {
+      height: 16px;
+      margin-left: 6px;
+      fill: #1E2B3C;
+    }
+  }
+
+  // Preview cells
+  &__preview {
+    &-spacing {
+      background-color: #78C1F9;
+    }
+
+    &-color {
+      width: 100%;
+      height: 32px;
+      border-radius: 4px;
+    }
+
+    &-font-line-height {
+      max-width: 150px;
+    }
+
+    &-border-width {
+      width: 40px;
+      height: 40px;
+      border-style: solid;
+      border-color: #1E2B3C;
+    }
+
+    &-border-radius {
+      width: 80px;
+      height: 60px;
+      border-width: 2px;
+      border-style: solid;
+      border-color: #1E2B3C;
+    }
+
+    &-duration {
+      display: grid;
+      place-content: center;
+      width: 100%;
+      height: 56px;
+      border-width: 2px;
+      border-style: solid;
+      border-color: #1E2B3C;
+
+      &:hover {
+        background-color: #F5DDA6;
+      }
+    }
+  }
+}

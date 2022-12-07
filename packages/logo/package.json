@@ -21,6 +21,6 @@
   "author": "Digdir Designsystem Team",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@digdir/storybook-components": "*"
+    "@digdir/design-system-storybook-components": "*"
   }
 }

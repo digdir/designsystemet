@@ -1,0 +1,20 @@
+.ddsdocs-cdn-snippet {
+  appearance: none;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  transition: all 0.1s;
+  padding: 0;
+  border: 1px solid #E9EAEC;
+  border-radius: 4px;
+
+  pre {
+    border-radius: 4px !important;
+    padding: 16px !important;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 2px #1465A3;
+  }
+}
