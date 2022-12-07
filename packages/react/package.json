@@ -18,7 +18,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "storybook-components": "*",
+    "@digdir/storybook-components": "*",
     "@digdir/design-system-icons": "*"
   },
   "peerDependencies": {

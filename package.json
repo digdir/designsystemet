@@ -4,7 +4,7 @@
   "workspaces": [
     "packages/*",
     "docs",
-    "docs/components"
+    "docs-components"
   ],
   "scripts": {
     "storybook": "cd docs && yarn storybook",
