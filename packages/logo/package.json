@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf ./optimized",
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
-    "build-todo": "pnpm clean && pnpm optimize && node build.js && rimraf ./optimized",
+    "build-todo": "yarn clean && yarn optimize && node build.js && rimraf ./optimized",
     "update": "ts-node figma/index.ts dotenv/config"
   },
   "main": "./cjs/index.js",
@@ -21,6 +21,6 @@
   "author": "Digdir Designsystem Team",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@digdir/design-system-storybook-components": "workspace:*"
+    "@digdir/design-system-storybook-components": "*"
   }
 }

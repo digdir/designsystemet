@@ -18,8 +18,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@digdir/design-system-storybook-components": "workspace:*",
-    "@digdir/design-system-icons": "workspace:*"
+    "@digdir/design-system-storybook-components": "*",
+    "@digdir/design-system-icons": "*"
   },
   "peerDependencies": {
     "react": "^18.1.0",

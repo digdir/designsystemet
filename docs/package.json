@@ -27,9 +27,9 @@
     "babel-loader": "^8.2.5",
     "styled-components": "^5.3.6",
     "@etchteam/storybook-addon-status": "^4.2.2",
-    "@digdir/design-system-react": "workspace:*",
+    "@digdir/design-system-react": "*",
     "@digdir/ds-tokens": "^2.1.1",
-    "@digdir/design-system-storybook-components": "workspace:*",
-    "@digdir/design-system-icons": "workspace:*"
+    "@digdir/design-system-storybook-components": "*",
+    "@digdir/design-system-icons": "*"
   }
 }

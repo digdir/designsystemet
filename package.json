@@ -1,14 +1,18 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
   "scripts": {
-    "dev": "cd docs && pnpm storybook",
+    "storybook": "cd docs && yarn storybook",
     "build": "npx lerna run build",
-    "build-react": "cd packages/react && pnpm build",
-    "build-storybook": "cd docs && pnpm build-storybook",
+    "build-react": "cd packages/react && yarn build",
+    "build-storybook": "cd docs && yarn build-storybook",
     "test": "jest",
     "add-component-core": "node scripts/add-component.mjs",
-    "lerna:changed": "pnpm build && lerna version --no-push --conventional-commits --no-private",
+    "lerna:changed": "yarn build && lerna version --no-push --conventional-commits --no-private",
     "lerna:publish": "lerna publish from-git"
   },
   "devDependencies": {

@@ -2,8 +2,9 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useNx": true,
   "useWorkspaces": true,
-  "npmClient": "pnpm",
+  "npmClient": "yarn",
   "version": "independent",
+  "packages": ["packages/*"],
   "command": {
     "publish": {
       "ignoreChanges": ["**/stories/*", "**/build/*", "**/playground/*"]
