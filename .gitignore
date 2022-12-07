@@ -20,3 +20,5 @@ coverage/
 
 # JetBrains IntelliJ IDEA
 .idea
+
+docs/docs
