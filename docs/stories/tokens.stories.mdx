@@ -19,7 +19,7 @@ Installer NPM pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og 
 ### CSS
 
 <CodeSnippet children='
-@import "@digdir/ds-tokens/build/tokens.css";
+@import "@digdir/design-system-tokens/build/tokens.css";
 :root {
   --my-text-color: var(--color-text-background-light);
 }' language='css'/>
@@ -27,13 +27,13 @@ Installer NPM pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og 
 ### SCSS
 
 <CodeSnippet children='
-@use "@digdir/ds-tokens/build/tokens.scss" as tokens;
+@use "@digdir/design-system-tokens/build/tokens.scss" as tokens;
 $my-text-color: tokens.$color-text-background-light;' language='scss'/>
 
 ### Javascript
 
 <CodeSnippet children='
-import tokens from "@digdir/ds-tokens/build/tokens"
+import tokens from "@digdir/design-system-tokens/build/tokens"
 const myTextColor = tokens.color.text.background.light' language='javascript'/>
 
 ## Tokens
