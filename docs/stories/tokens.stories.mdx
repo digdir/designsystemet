@@ -1,14 +1,11 @@
 import { Meta } from '@storybook/addon-docs'
 import {CodeSnippet, TokensTable} from "../../docs-components";
-import ImageFile from '../assets/4696625.jpg';
 
 <Meta title="Design Tokens" />
 
 # Design Tokens
 
 As normal stash the on severely, contract, company he up were annoyed. Completely two based excuse the house. Even to and or the endeavours unrecognisable. Puzzles side he with anger origin their them. A watched o'clock he for are manipulate the.
-
-<img width="1000px" src={ImageFile} />
 
 ## Kom i gang
 
@@ -17,18 +14,9 @@ As normal stash the on severely, contract, company he up were annoyed. Completel
 [![](https://img.shields.io/npm/dm/@digdir/ds-tokens.svg)](https://www.npmjs.com/package/@digdir/ds-tokens)
 [![](https://img.shields.io/badge/licence-BSD3-yellowgreen?color=yellowgreen)](https://opensource.org/licenses/BSD-3-Clause)
 
-Bruk av design tokens gjennom NPM (Node Package Manager).
+Installer NPM pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og importer inn tokens med CSS, SCSS eller Javascript variabler. Overstyres ved behov.
 
-### 1. Installer pakken i kommandolinjen ved hjelp av NPM, Yarn eller PNPM.
-
-<CodeSnippet children='npm install @digdir/ds-tokens' language='markup'/>
-<CodeSnippet children='pnpm install @digdir/ds-tokens' language='markup'/>
-<CodeSnippet children='yarn add @digdir/ds-tokens' language='markup'/>
-
-
-### 2. Importer og bruk variablene i ønsket format.
-
-#### CSS
+### CSS
 
 <CodeSnippet children='
 @import "@digdir/ds-tokens/build/tokens.css";
@@ -36,55 +24,43 @@ Bruk av design tokens gjennom NPM (Node Package Manager).
   --my-text-color: var(--color-text-background-light);
 }' language='css'/>
 
-#### SCSS
+### SCSS
 
 <CodeSnippet children='
 @use "@digdir/ds-tokens/build/tokens.scss" as tokens;
 $my-text-color: tokens.$color-text-background-light;' language='scss'/>
 
-#### Typescript
+### Javascript
 
 <CodeSnippet children='
 import tokens from "@digdir/ds-tokens/build/tokens"
 const myTextColor = tokens.color.text.background.light' language='javascript'/>
 
 ## Tokens
+Her er en liste over tokens som er tilgjengelig i NPM pakken `@digdir/design-system-tokens`.
 
 ### Farger
 
-<TokensTable jsonKey="colors" componentName="colors" />
+<TokensTable jsonKey="colors" componentName="colors" showPreview={true} />
 
 ### Avstander
 
 Avstand-variablene er angitt i `rem`. Denne verdien er relativ til html-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der __1rem = 16px__.
 
-`spacing-x` variablene speiler settet med definerte avstander som er tilgjengelig i designverktøyet (Figma).
-
-`spacing-base-x` er et større sett med avstander til dersom man trenger flere verdier enn det som er definert i designet (for eksempel til å håndtere padding inni en komponent man bygger).
-Variablene tar utgangspunkt i inkrement på 0.25rem (4px) fra `spacing-base-1` som starter på verdien 0.25rem, slik at `spacing-base-4` er det samme som `4 * 0.25rem == 4 * 4px == 4 * spacing-base-1`, nemlig 1rem (16px).
-
+<TokensTable jsonKey="space" componentName="space" showPreview={true} />
 
 ### Typografi
+
+<TokensTable jsonKey="typography" componentName="typography" showPreview={false} />
 
 #### Tekststørrelser
 
 Tekststørrelse-variablene er angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der `1rem = 16px`.
 
-<TokensTable jsonKey="font_size" componentName="font_size" />
+<TokensTable jsonKey="font_size" componentName="font_size" showPreview={true} />
 
-#### Tekstvekting
-
-
-
-#### Linjehøyder
-
-
-
-#### Tekstfamilie
-
-<TokensTable jsonKey="font_family" componentName="font_family" />
 
 ### Bruddpunkter
 
@@ -92,18 +68,10 @@ Bruddpunktene tar utgangspunkt i verdiene benyttet i [Bootstrap grid](https://ge
 
 For eksempel vil `@media (min-width: var(--breakpoint-medium)) { ... } ` kunne brukes for å treffe de fleste tablets (og større skjermstørrelser).
 
-<TokensTable jsonKey="breakpoints" componentName="breakpoints" />
+<TokensTable jsonKey="breakpoints" componentName="breakpoints" showPreview={false} />
 
-### Kantlinjer
+### Størrelser
 
-#### Kantlinjebredder
+<TokensTable jsonKey="size" componentName="size" showPreview={true} />
 
-
-#### Kantlinjeradius
-
-
-### Tid og varighet
-
-
-### Z-indeks
-
+## Changelog

@@ -16,8 +16,18 @@ const TableCellColor = (props: { color: any }) => {
 };
 
 const TableCellSpace = (props: { size: any }) => {
+  let theSize = '';
+  if (
+    props.size.toString().includes('px') ||
+    props.size.toString().includes('rem')
+  ) {
+    theSize = props.size;
+  } else {
+    theSize = props.size * 16 + 'px';
+  }
+
   const style = {
-    width: props.size,
+    width: theSize,
   };
 
   return (
@@ -58,4 +68,18 @@ const TableCellTag = (props: { type: string; text: string }) => {
   );
 };
 
-export { TableCellColor, TableCellSpace, TableCellTag };
+const TableCellFont = (props: { size: string }) => {
+  const style = {
+    fontSize: props.size,
+  };
+  return (
+    <div
+      style={style}
+      className={classes['table-cell-font']}
+    >
+      The quick brown fox
+    </div>
+  );
+};
+
+export { TableCellColor, TableCellSpace, TableCellTag, TableCellFont };

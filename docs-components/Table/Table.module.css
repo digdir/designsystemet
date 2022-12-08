@@ -1,8 +1,9 @@
 .ddsdocs-table {
-    width: 100%;
     border-collapse: collapse;
     border-radius: 4px;
     margin-top: 24px;
+    margin-left: -15px;
+    width: calc(100% + 15px);
 }
 
 .ddsdocs-table__row {
@@ -20,6 +21,7 @@
     text-transform: uppercase;
     font-weight: 500;
     text-align: left;
+    min-width: 210px;
 }
 
 .ddsdocs-table__data-cell {
