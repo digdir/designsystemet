@@ -19,8 +19,5 @@
   ],
   "keywords": ["logo"],
   "author": "Digdir Designsystem Team",
-  "license": "BSD-3-Clause",
-  "devDependencies": {
-    "@digdir/design-system-storybook-components": "*"
-  }
+  "license": "BSD-3-Clause"
 }

@@ -18,8 +18,5 @@
     "clean": "rimraf ./optimized",
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
     "build": "yarn clean && yarn optimize && node build.js && rimraf ./optimized "
-  },
-  "devDependencies": {
-    "@digdir/design-system-storybook-components": "*"
   }
 }

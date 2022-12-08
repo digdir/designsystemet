@@ -4256,13 +4256,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-syntax-highlighter@^15.5.5":
-  version "15.5.5"
-  resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.5.tgz#4d3b51f8956195f1f63360ff03f8822c5d74c516"
-  integrity sha512-QH3JZQXa2usAvJvSsdSUJ4Yu4j8ReuZpgRrEW+XP+Rmosbn425YshW9iGEb/pAARm8496axHhHUPRH3UmTiB6A==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react@*", "@types/react@^18.0.9":
   version "18.0.26"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.26.tgz#8ad59fc01fef8eaf5c74f4ea392621749f0b7917"
@@ -8197,11 +8190,6 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-feather-icons-react@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/feather-icons-react/-/feather-icons-react-0.6.2.tgz#0f562b325b3e8ab2b936daf76e935fb9dcbd22c1"
-  integrity sha512-G677Y5nc3HzP1f5NNb5LJuZwKrI58BK4+/9O8Bl4naF9JixC+YL4trVom1F2ajnilq/EbU8JETPTNqvCzwH1qA==
-
 fetch-retry@^5.0.2:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-5.0.3.tgz#edfa3641892995f9afee94f25b168827aa97fe3d"
@@ -10991,10 +10979,10 @@ lru-cache@^7.4.4, lru-cache@^7.5.1, lru-cache@^7.7.1:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.14.1.tgz#8da8d2f5f59827edb388e63e459ac23d6d408fea"
   integrity sha512-ysxwsnTKdAx96aTRdhDOCQfDgbHnt8SK0KY8SEjO0wHinhWOFTESbjVCMPbU1uGXg/ch4lifqx0wfjOawU2+WA==
 
-lucide-react@^0.102.0:
-  version "0.102.0"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.102.0.tgz#ace76984ac13a761122bfe5689a09a28c48a8bf2"
-  integrity sha512-h4BOwyZ0cxqKw1Ftk6aQ/Gp7vEFaaq+AbhZWRbqGJCnBKXnAsf0+M8JRoRJxMqhOAxvl5dRje+eWKCGvO0enTg==
+lucide-react@^0.104.1:
+  version "0.104.1"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.104.1.tgz#859ba154569413f4181e2db8d5680993aafb4417"
+  integrity sha512-BKvhulnLKmBj+6pqUN5ViYk4a5fabMgc4B0a4ZLUnbRqkDDWH3h7Iet6U4WbesJzjWauQrXUlEvQCe5XpFuRnw==
 
 lz-string@^1.4.4:
   version "1.4.4"

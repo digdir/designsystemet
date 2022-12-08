@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { SvgModal } from '@digdir/design-system-storybook-components/src/components';
 
+import { SvgModal } from '../../../../docs-components';
 import { Altinn } from '../../';
 import * as Logo from '../../';
 import meta from '../../meta.json';
@@ -24,7 +24,7 @@ export function LogoList() {
   const filterArray = () => {
     let array = [];
 
-    for (let item of meta) {
+    for (const item of meta) {
       if (!array[item.pageName]) {
         array[item.pageName] = [];
       }
