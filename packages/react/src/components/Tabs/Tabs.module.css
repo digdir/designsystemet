@@ -1,0 +1,76 @@
+@import 'https://altinncdn.no/fonts/altinn-din/altinn-din.css';
+
+.tabs {
+  --divider-color: #c9c9c9;
+  --divider-width: 1px;
+  --tab-border_bottom_color-selected: var(--colors-blue-700);
+  --tab-border_bottom_color: transparent;
+  --tab-border_bottom_width: 4px;
+  --tab-font_family: var(--font_family-default);
+  --tab-font_size: var(--font_size-component-size-sm);
+  --tab-font_weight: 500;
+  --tab-height: 32px;
+  --tab-text_color-hover: var(--colors-black);
+  --tab-text_color-selected: var(--colors-blue-700);
+  --tab-text_color: #68707c;
+  --tablist-gap: 2rem;
+  --tablist-margin_horizontal: 2rem;
+  --tabpanel-margin_horizontal: 2rem;
+  --tabpanel-margin_vertical: 2rem;
+  position: relative;
+}
+
+.tabs__tablist {
+  display: flex;
+  gap: var(--tablist-gap);
+  margin: 0 var(--tablist-margin_horizontal);
+  position: relative;
+  z-index: 1;
+}
+
+.tabs__tablist__tab {
+  background-color: transparent;
+  border-bottom-color: var(--tab-border_bottom_color);
+  border-bottom-style: solid;
+  border-width: 0 0 var(--tab-border_bottom_width) 0;
+  color: var(--tab-text_color);
+  cursor: pointer;
+  font-family: var(--tab-font_family);
+  font-size: var(--tab-font_size);
+  font-weight: var(--tab-font_weight);
+  line-height: var(--tab-height);
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabs__tablist__tab--selected {
+  --tab-text_color: var(--tab-text_color-selected);
+  --tab-border_bottom_color: var(--tab-border_bottom_color-selected);
+}
+
+.tabs__tablist__tab:hover {
+  --tab-text_color: var(--tab-text_color-hover);
+}
+
+.tabs__tablist__tab:focus-visible {
+  outline: var(--component-input-color-outline-focus) auto 2px;
+  outline-offset: 2px;
+}
+
+.tabs__divider {
+  border-color: var(--divider-color);
+  border-style: solid;
+  border-width: var(--divider-width) 0 0 0;
+  height: var(--divider-width);
+  margin: 0;
+  position: absolute;
+  top: var(--tab-height);
+  width: 100%;
+}
+
+.tabs__tabpanel {
+  margin: var(--tabpanel-margin_vertical) var(--tabpanel-margin_horizontal);
+}
