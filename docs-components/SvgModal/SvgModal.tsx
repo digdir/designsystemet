@@ -14,6 +14,7 @@ interface SvgModalProps {
   showModal: boolean;
   closeModal: any;
   packageName: string;
+  newIcon: boolean;
 }
 
 const SvgModal = ({
@@ -22,6 +23,7 @@ const SvgModal = ({
   showModal = false,
   closeModal,
   packageName,
+  newIcon,
 }: SvgModalProps) => {
   const icon = <Icon />;
 
@@ -38,14 +40,24 @@ const SvgModal = ({
             onClick={() => onClickHandler()}
             className={classes['svg-modal__opacity']}
           ></div>
+
           <div className={classes['svg-modal__box']}>
             <div className={classes['svg-modal__header']}>
               <div className={classes['svg-modal__header-left']}>
                 <h2>{name}</h2>
+                {newIcon ? (
+                  <div className={classes['svg-modal__new']}>Ny!</div>
+                ) : (
+                  ''
+                )}
               </div>
               <div className={classes['svg-modal__header-right']}>
                 <button className={classes['svg-modal__svg-btn']}>
-                  <Download color='#1E2B3C' /> Last ned svg
+                  <Download
+                    color='#1E2B3C'
+                    size={25}
+                  />{' '}
+                  Last ned svg
                 </button>
                 <button
                   onClick={() => onClickHandler()}
@@ -61,18 +73,21 @@ const SvgModal = ({
             <div className={classes['svg-modal__content']}>
               <div className={classes['svg-modal__content-left']}>
                 <Icon
-                  height={150}
-                  width={150}
+                  height={160}
+                  width={160}
                 />
               </div>
               <div className={classes['svg-modal__content-right']}>
-                <h3>Import</h3>
+                <h3>React og SVG import</h3>
                 <CodeSnippet
                   language='javascript'
                   children={`
-              // React
 import { ${name} }  from '${packageName}';
-// SVG
+              `}
+                />
+                <CodeSnippet
+                  language='javascript'
+                  children={`
 import ${name} from '${packageName}/svg/${name}.svg';
               `}
                 />

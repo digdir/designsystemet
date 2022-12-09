@@ -12,9 +12,16 @@
     margin-bottom: 12px;
 }
 
+.svg-modal__new {
+    background-color: #ffdea8;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-left: 18px;
+    font-weight: 500;
+}
+
 .svg-modal__svg-title {
     margin-top: 24px !important;
-
 }
 
 .svg-modal__opacity {
@@ -45,7 +52,8 @@
 }
 
 .svg-modal__header-left {
-
+    display: flex;
+    align-items: center;
 }
 
 .svg-modal__header-right {

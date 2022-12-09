@@ -2,6 +2,10 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+button, input, select {
+    font-family: "Inter", sans-serif;
+}
+
 .dds-core-reactesm__StyledHeading-sc-1tp1sk-0 {
     max-width: 500px;
 }
@@ -36,7 +40,7 @@ body {
 
 .sbdocs > div > h2 {
     font-size: 28px !important;
-    margin-top: 52px !important;
+    margin-top: 46px !important;
     padding-top: 0 !important;
     padding-bottom: 16px !important;
     margin-bottom: 20px !important;

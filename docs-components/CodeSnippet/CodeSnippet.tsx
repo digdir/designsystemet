@@ -71,7 +71,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
           position='top'
           trigger='mouseenter'
           arrow={true}
-          distance={25}
+          distance={22}
           hideOnClick={false}
         >
           <Copy size={20} />

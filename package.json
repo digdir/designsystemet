@@ -82,6 +82,7 @@
     "@types/rimraf": "^3.0.2",
     "axios": "^1.2.1",
     "camelcase": "^7.0.0",
+    "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "lodash.startcase": "^4.4.0",
     "lucide-react": "^0.104.1",
