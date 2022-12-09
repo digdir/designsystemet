@@ -24,12 +24,6 @@ Server dokumentasjonssiden (Storybook) på localhost:
 
 `yarn storybook`
 
-### Start watch av react bibliotekene:
-
-Start watch for react bibliotekene. Bygger biblioteket på nytt når det skjer en endring.
-
-* `yarn core:watch`
-* `yarn web:watch`
 
 _Problemer? Se [Feilsøking](#feilsøking-🔍)._
 
