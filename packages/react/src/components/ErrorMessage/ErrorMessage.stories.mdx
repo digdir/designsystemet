@@ -1,0 +1,42 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import {ErrorMessage} from "./index";
+import {Beta, TokensTable} from "../../../../../docs-components";
+import {ArgsTable} from "@storybook/addon-docs";
+
+<Meta
+    title="Core components/ErrorMessage"
+    component={ErrorMessage}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+/>
+
+export const Template = (args) => <ErrorMessage {...args}>{args.children}</ErrorMessage>;
+
+# ErrorMessage
+
+<Beta />
+
+`ErrorMessage` viser en formatert feilmelding og er ment til bruk i skjemaer.
+Husk at feilmeldingen må presisere hva brukeren må gjøre for å rette feilen.
+
+## Eksempel
+
+<Canvas>
+    <Story
+        name="ErrorMessage"
+        args={{ children: <>Dette er en beskrivende feilmelding.</> }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Egenskaper
+
+<ArgsTable of={ErrorMessage} />
+
+## Tokens
+Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov:
+<TokensTable jsonKey='component.error_message' componentName='error_message' showPreview={false}/>

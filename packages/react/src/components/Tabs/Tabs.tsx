@@ -96,21 +96,17 @@ export const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
   return (
     <div className={classes.tabs}>
       <div
-        className={classes['tabs__tablist']}
+        className={classes.tabs}
         ref={tablistRef}
         role='tablist'
       >
         {tabs.map((tab, i) => {
           const isSelected = tab.value === visiblePanel;
-          const className = cn(
-            classes['tabs__tablist__tab'],
-            isSelected && classes['tabs__tablist__tab--selected'],
-          );
           return (
             <button
               aria-controls={tab.panelId}
               aria-selected={isSelected}
-              className={className}
+              className={cn(classes.tab, isSelected && classes.selected)}
               id={tab.tabId}
               key={tab.value}
               onClick={() => selectTab(tab.value)}
@@ -123,10 +119,10 @@ export const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
           );
         })}
       </div>
-      <hr className={classes['tabs__divider']} />
+      <hr className={classes.divider} />
       {tabs.map((tab) => (
         <div
-          className={classes['tabs__tabpanel']}
+          className={classes.tabpanel}
           aria-labelledby={tab.tabId}
           hidden={tab.value !== visiblePanel}
           id={tab.panelId}

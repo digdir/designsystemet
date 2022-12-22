@@ -16,7 +16,7 @@
     "lerna:publish": "lerna publish from-git"
   },
   "devDependencies": {
-    "@altinn/figma-design-tokens": "^4.3.0",
+    "@altinn/figma-design-tokens": "^5.0.0",
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "@babel/preset-typescript": "^7.18.6",
