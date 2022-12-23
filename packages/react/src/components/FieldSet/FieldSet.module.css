@@ -1,0 +1,52 @@
+.fieldSet {
+  --color: var(--component-checkbox-color-text-default);
+  --content-margin_top: var(--component-fieldset-space-gap-y-small);
+  --description-color: var(--component-field_description-color-text-default);
+  --description-margin_top: var(--component-field_description-space-top-small);
+  --error_message-margin_top: var(--component-fieldset-space-gap-y-small);
+  --font_size: var(--component-checkbox-font_size-sm);
+
+  color: var(--color);
+  border: 0;
+  font-size: var(--font_size);
+  line-height: var(--typography-default-line-height);
+  margin: 0;
+  padding: 0;
+}
+
+.xsmall {
+  --content-margin_top: var(--component-fieldset-space-gap-y-xsmall);
+  --description-margin_top: var(--component-field_description-space-top-xsmall);
+  --error_message-margin_top: var(--component-fieldset-space-gap-y-xsmall);
+  --font_size: var(--component-checkbox-font_size-xs);
+}
+
+.fieldSet:disabled {
+  opacity: var(--interactive_components-colors-disabled-opacity);
+}
+
+.fieldSet:disabled * {
+  opacity: 1;
+}
+
+.legend {
+  font-weight: bold;
+  padding: 0;
+}
+
+.description {
+  color: var(--description-color);
+  margin: 0;
+}
+
+.legend + .description {
+  margin-top: var(--description-margin_top);
+}
+
+.content:not(:first-child) {
+  margin-top: var(--content-margin_top);
+}
+
+.errorMessage {
+  margin-top: var(--error_message-margin_top);
+}

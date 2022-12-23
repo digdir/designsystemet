@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
   integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
 
-"@altinn/figma-design-tokens@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@altinn/figma-design-tokens/-/figma-design-tokens-4.3.0.tgz#21976db3fbb14f1f9b53855f615ac4818352a0fd"
-  integrity sha512-pTi1Gi0myv7CWmtTQ9fY+FBy2Ksk8HZIh+l1M8y3S/2H53LrLPjMb+mAkIuTbhtDiK5i+rzpET80Rdu1lmHVAQ==
+"@altinn/figma-design-tokens@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@altinn/figma-design-tokens/-/figma-design-tokens-5.0.0.tgz#6d0931c1306a84ae1327fc852aeb747c327b0ae9"
+  integrity sha512-8mpmqk2Iu4wFWpv3IYAiyaYzwvYG+ZVUvPKJVEl8rbBzxNjZPu5njYpoQd3Owca+QYTbFA00AxEJyehd0B2wSA==
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"

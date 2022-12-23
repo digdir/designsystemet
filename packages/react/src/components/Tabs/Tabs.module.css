@@ -20,7 +20,7 @@
   position: relative;
 }
 
-.tabs__tablist {
+.tablist {
   display: flex;
   gap: var(--tablist-gap);
   margin: 0 var(--tablist-margin_horizontal);
@@ -28,7 +28,7 @@
   z-index: 1;
 }
 
-.tabs__tablist__tab {
+.tab {
   background-color: transparent;
   border-bottom-color: var(--tab-border_bottom_color);
   border-bottom-style: solid;
@@ -46,21 +46,21 @@
   white-space: nowrap;
 }
 
-.tabs__tablist__tab--selected {
+.tab.selected {
   --tab-text_color: var(--tab-text_color-selected);
   --tab-border_bottom_color: var(--tab-border_bottom_color-selected);
 }
 
-.tabs__tablist__tab:hover {
+.tab:hover {
   --tab-text_color: var(--tab-text_color-hover);
 }
 
-.tabs__tablist__tab:focus-visible {
+.tab:focus-visible {
   outline: var(--component-input-color-outline-focus) auto 2px;
   outline-offset: 2px;
 }
 
-.tabs__divider {
+.divider {
   border-color: var(--divider-color);
   border-style: solid;
   border-width: var(--divider-width) 0 0 0;
@@ -71,6 +71,6 @@
   width: 100%;
 }
 
-.tabs__tabpanel {
+.tabpanel {
   margin: var(--tabpanel-margin_vertical) var(--tabpanel-margin_horizontal);
 }
