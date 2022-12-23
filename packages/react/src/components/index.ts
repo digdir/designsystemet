@@ -5,3 +5,7 @@ export { Tabs } from './Tabs';
 export type { TabsProps, TabItem } from './Tabs';
 export { FieldSet, FieldSetSize } from './FieldSet';
 export type { FieldSetProps } from './FieldSet';
+export { Checkbox } from './Checkbox';
+export type { CheckboxProps } from './Checkbox';
+export { CheckboxGroup, CheckboxGroupVariant } from './CheckboxGroup';
+export type { CheckboxGroupProps, CheckboxGroupItem } from './CheckboxGroup';

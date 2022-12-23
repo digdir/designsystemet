@@ -10,7 +10,7 @@ import type { CheckboxProps } from '../Checkbox';
 
 import classes from './CheckboxGroup.module.css';
 
-export type CheckboxItem = Pick<
+export type CheckboxGroupItem = Pick<
   CheckboxProps,
   'checked' | 'description' | 'disabled' | 'checkboxId' | 'label'
 > &
@@ -28,7 +28,7 @@ export interface CheckboxGroupProps {
   description?: string;
   disabled?: boolean;
   error?: React.ReactNode;
-  items: CheckboxItem[];
+  items: CheckboxGroupItem[];
   legend?: string;
   onChange?: (names: CheckedNames) => void;
   variant?: CheckboxGroupVariant;
@@ -48,7 +48,7 @@ const reducer = (state: CheckedNames, action: ReducerAction) => {
       return action.state;
   }
 };
-const checkedItems = (items: CheckboxItem[]) =>
+const checkedItems = (items: CheckboxGroupItem[]) =>
   items.filter(({ checked }) => checked).map(({ name }) => name);
 
 export const CheckboxGroup = ({
