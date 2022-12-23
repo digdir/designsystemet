@@ -1,0 +1,137 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import {CheckboxGroup, CheckboxGroupVariant} from "./index";
+import {Beta, TokensTable} from "../../../../../docs-components";
+import {ArgsTable} from "@storybook/addon-docs";
+
+<Meta
+    title="Core components/CheckboxGroup"
+    component={CheckboxGroup}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+    argTypes={{
+        items: {
+            description: 'Liste over valg som skal vises.',
+            control: {type: 'object'}
+        },
+        legend: {
+            description: 'Tittel som vises over gruppen.',
+            control: {type: 'text'}
+        },
+        description: {
+            description: 'Beskrivelse som vises under tittelen.',
+            control: {type: 'text'}
+        },
+        variant: {
+            description: 'Vertikal eller horisontal oppstilling.',
+            control: {type: 'radio', options: [CheckboxGroupVariant.Vertical, CheckboxGroupVariant.Horizontal]}
+        },
+        onChange: {
+            description: 'Funksjon som kalles når brukeren endrer valg. Funksjonen får en liste med navnene til de valgte sjekkboksene som parameter.',
+            control: {type: 'function'}
+        },
+        error: {
+            description: 'Feilmelding som vises under listen.',
+            control: {type: 'text'}
+        },
+        disabled: {
+            description: 'Deaktiverer alle sjekkboksene i listen.',
+            control: {type: 'boolean'}
+        },
+        compact: {
+            description: 'Kompakt visning.',
+            control: {type: 'boolean'}
+        }
+    }}
+/>
+
+export const defaultArgs = {
+    compact: false,
+    description: 'Velg én eller flere planeter fra listen.',
+    disabled: false,
+    items: [
+        { checked: false, label: 'Merkur', name: 'planet1' },
+        { checked: false, label: 'Venus', name: 'planet2' },
+        { checked: false, label: 'Jorden', name: 'planet3' },
+        { checked: false, label: 'Mars', name: 'planet4' },
+        { checked: false, label: 'Jupiter', name: 'planet5' },
+        { checked: false, label: 'Saturn', name: 'planet6' },
+        { checked: false, label: 'Uranus', name: 'planet7' },
+        { checked: false, label: 'Neptun', name: 'planet8' },
+    ],
+    legend: 'Velg planeter',
+    variant: CheckboxGroupVariant.Vertical,
+};
+export const Template = (args = {}) => <CheckboxGroup {...{...defaultArgs, ...args}}/>;
+
+# Checkbox
+
+<Beta />
+
+`CheckboxGroup` er en gruppe med sjekkbokser som gir brukeren mulighet til å velge flere verdier i en liste.
+
+## Eksempler
+
+### Vertikal visning
+<Canvas>
+    <Story
+        name="Vertikal"
+        args={{variant: CheckboxGroupVariant.Vertical}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Horisontal visning
+<Canvas>
+    <Story
+        name="Horisontal"
+        args={{variant: CheckboxGroupVariant.Horizontal}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Kompakt visning
+<Canvas>
+    <Story
+        name="Kompakt"
+        args={{compact: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Med feilmelding
+<Canvas>
+    <Story
+        name="Med feilmelding"
+        args={{error: 'Du må velge minst én planet.'}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Deaktivert
+<Canvas>
+    <Story
+        name="Deaktivert"
+        args={{disabled: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Egenskaper
+<ArgsTable story="Vertikal"/>
+
+## Tokens
+<TokensTable
+    jsonKey='component.checkbox_group'
+    componentName='checkbox_group'
+    showPreview={false}
+    description
+/>

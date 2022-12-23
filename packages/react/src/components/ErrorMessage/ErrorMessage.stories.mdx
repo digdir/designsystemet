@@ -28,7 +28,8 @@ Husk at feilmeldingen må presisere hva brukeren må gjøre for å rette feilen.
 <Canvas>
     <Story
         name="ErrorMessage"
-        args={{ children: <>Dette er en beskrivende feilmelding.</> }}>
+        args={{ children: <>Dette er en beskrivende feilmelding.</> }}
+    >
         {Template.bind({})}
     </Story>
 </Canvas>
@@ -38,5 +39,9 @@ Husk at feilmeldingen må presisere hva brukeren må gjøre for å rette feilen.
 <ArgsTable of={ErrorMessage} />
 
 ## Tokens
-Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov:
-<TokensTable jsonKey='component.error_message' componentName='error_message' showPreview={false}/>
+<TokensTable
+    jsonKey='component.error_message'
+    componentName='error_message'
+    showPreview={false}
+    description
+/>

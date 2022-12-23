@@ -32,7 +32,8 @@ export const Template = (args) => <FieldSet {...args}>{args.children}</FieldSet>
             legend: 'Dette er en tittel',
             description: 'Dette er en beskrivelse av innholdet.',
             size: FieldSetSize.Small
-        }}>
+        }}
+    >
         {Template.bind({})}
     </Story>
 </Canvas>
@@ -46,5 +47,9 @@ Setter man `disabled` til `true`, vil alle feltene i gruppen bli deaktivert.
 <ArgsTable of={FieldSet} />
 
 ## Tokens
-Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov:
-<TokensTable jsonKey='component.fieldset' componentName='fieldset' showPreview={false}/>
+<TokensTable
+    jsonKey='component.fieldset'
+    componentName='fieldset'
+    showPreview={false}
+    description
+/>

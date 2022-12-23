@@ -12,6 +12,7 @@ interface TokenTableProps {
   jsonKey: string;
   componentName: string;
   showPreview: boolean;
+  description?: boolean;
 }
 
 const TokensTable = (tokenTable: TokenTableProps) => {
@@ -31,7 +32,7 @@ const TokensTable = (tokenTable: TokenTableProps) => {
 
   const getHeadings = () => {
     if (tokenTable.showPreview) {
-      return ['Navn', 'Verdi', 'Preview'];
+      return ['Navn', 'Verdi', 'Forhåndsvisning'];
     } else {
       return ['Navn', 'Verdi'];
     }
@@ -80,11 +81,18 @@ const TokensTable = (tokenTable: TokenTableProps) => {
     return result;
   };
 
+  if (!getRows().length && tokenTable.description) {
+    return <p>Det finnes ingen spesifikke variabler for denne komponenten.</p>
+  }
+
   return (
-    <Table
-      headings={getHeadings()}
-      rows={getRows()}
-    />
+    <>
+      {tokenTable.description && <p>Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov:</p>}
+      <Table
+        headings={getHeadings()}
+        rows={getRows()}
+      />
+    </>
   );
 };
 
