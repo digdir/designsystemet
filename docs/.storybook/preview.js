@@ -47,10 +47,10 @@ export const parameters = {
       order: [
         'Introduksjon',
         'Design Tokens',
-        'Core components',
+        'Kjernekomponenter',
         ['Introduksjon', 'Button'],
         'Changelog',
-        ['Design Tokens', 'Core components', 'Web components'],
+        ['Design Tokens', 'Kjernekomponenter', 'Web components'],
       ],
     },
   },
