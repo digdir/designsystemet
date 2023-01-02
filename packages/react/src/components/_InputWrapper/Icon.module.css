@@ -1,0 +1,12 @@
+.icon {
+    background: var(--icon-background);
+    padding-right: var(--component-input-border_width-focus);
+    padding-left: var(--component-input-border_width-default);
+    display: flex;
+    align-items: center;
+    flex: none;
+}
+
+.icon.disabled {
+    opacity: 60%;
+}

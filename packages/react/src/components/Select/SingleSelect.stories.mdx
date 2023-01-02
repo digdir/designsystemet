@@ -1,0 +1,149 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import {Select} from "./";
+import {Beta, TokensTable} from "../../../../../docs-components";
+import {ArgsTable} from "@storybook/addon-docs";
+
+<Meta
+    title="Kjernekomponenter/Select/Enkel"
+    component={Select}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+    argTypes={{
+        label: {
+            description: 'Tekst som vises over feltet.',
+            control: {
+                type: 'text'
+            }
+        },
+        disabled: {
+            description: 'Settes for å deaktivere feltet.',
+            control: {
+                type: 'boolean'
+            }
+        },
+        error: {
+            description: 'Settes for å indikere at det er en feil tilknyttet feltet.',
+            control: {
+                type: 'boolean'
+            }
+        },
+        options: {
+            description:
+                'Liste med alternativer som skal vises i nedtrekkslisten. ' +
+                'Alternativene er av typen `SingleSelectOption` og har følgende egenskaper:\n' +
+                '- `value` er verdien som brukes av `onChange`-funksjonen.\n' +
+                '- `label` er teksten som vises i listen.',
+            control: {
+                type: 'object'
+            }
+        },
+        onChange: {
+            description: 'Funksjon som kalles når brukeren velger et alternativ. Alternativets `value` sendes som parameter til funksjonen.',
+            control: {
+                type: 'function'
+            }
+        },
+        value: {
+            description: 'Kan brukes til å overstyre hvilken verdi som er valgt.',
+            control: {
+                type: 'text'
+            }
+        },
+        hideLabel: {
+            description: 'Skjuler teksten over feltet, men gjør den likevel tilgjengelig for verktøy som skjermlesere.',
+            control: {
+                type: 'boolean'
+            }
+        },
+        inputId: {
+            description: 'Gir input-feltet en ID. Dersom denne ikke satt, genereres en unik ID automatisk.',
+            control: {
+                type: 'text'
+            }
+        }
+    }}
+/>
+
+export const defaultArgs = {
+    label: 'Velg et fylke',
+    multiple: false,
+    options: [
+        { label: 'Agder', value: 'Agd' },
+        { label: 'Innlandet', value: 'Inn' },
+        { label: 'Møre og Romsdal', value: 'MoR' },
+        { label: 'Nordland', value: 'Nor' },
+        { label: 'Oslo', value: 'Osl' },
+        { label: 'Rogaland', value: 'Rog' },
+        { label: 'Vestfold og Telemark', value: 'VoT' },
+        { label: 'Troms og Finnmark', value: 'ToF' },
+        { label: 'Trøndelag', value: 'Trø' },
+        { label: 'Vestland', value: 'Ves' },
+        { label: 'Viken', value: 'Vik' },
+    ]
+};
+export const Template = (args = {}) => <div style={{ width: '440px' }}>
+    <Select {...{...defaultArgs, ...args}}/>
+</div>;
+
+# Select (enkel)
+
+<Beta />
+
+`Select` er en nedtrekksmeny som lar brukeren velge et alternativ fra en liste.
+
+## Eksempler
+
+### Normal visning
+<Canvas>
+    <Story
+        name="Normal"
+        args={{}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Deaktivert
+<Canvas>
+    <Story
+        name="Deaktivert"
+        args={{disabled: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Med feil
+<Canvas>
+    <Story
+        name="Med feil"
+        args={{error: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Egenskaper
+<ArgsTable story="Normal"/>
+
+## Tilgjengelighet
+
+### Mus
+Nedtrekkslisten åpnes ved å klikke på feltet med musen. Deretter kan man klikke på alternativet man ønsker å velge.
+Hvis alternativet ikke er synlig, kan man rulle seg frem til det ved bruk av rullefelt eller musehjul.
+
+### Tastatur
+Nedtrekkslisten åpnes ved å trykke på `Enter` eller `Space` når feltet har fokus.
+Deretter kan man navigere seg frem til ønsket alternativ ved bruk av piltastene.
+
+## Tokens
+<TokensTable
+    jsonKey='component.select'
+    componentName='select'
+    showPreview={false}
+    description
+/>
