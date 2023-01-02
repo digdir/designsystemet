@@ -13,3 +13,11 @@ export { RadioButton, RadioButtonSize } from './RadioButton';
 export type { RadioButtonProps } from './RadioButton';
 export { RadioGroup, RadioGroupSize, RadioGroupVariant } from './RadioGroup';
 export type { RadioGroupProps, RadioGroupItem } from './RadioGroup';
+export { Select } from './Select';
+export type {
+  SelectProps,
+  SingleSelectOption,
+  MultiSelectOption,
+  SingleOnChangeEvent,
+  MultipleOnChangeEvent
+} from './Select';

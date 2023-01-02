@@ -1,0 +1,166 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import {Select} from "./";
+import {Beta, TokensTable} from "../../../../../docs-components";
+import {ArgsTable} from "@storybook/addon-docs";
+
+<Meta
+    title="Kjernekomponenter/Select/Flervalgsmeny"
+    component={Select}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+    argTypes={{
+        multiple: {
+            description: 'Må være satt for å gi brukeren mulighet til å velge flere alternativer.'
+        },
+        label: {
+            description: 'Tekst som vises over feltet.',
+            control: {
+                type: 'text'
+            }
+        },
+        disabled: {
+            description: 'Settes for å deaktivere feltet.',
+            control: {
+                type: 'boolean'
+            }
+        },
+        error: {
+            description: 'Settes for å indikere at det er en feil tilknyttet feltet.',
+            control: {
+                type: 'boolean'
+            }
+        },
+        options: {
+            description:
+                'Liste med alternativer som skal vises i nedtrekkslisten. ' +
+                'Alternativene er av typen `MultiSelectOption` og har følgende egenskaper:\n' +
+                '- `value` er verdien som brukes av `onChange`-funksjonen.\n' +
+                '- `label` er teksten som vises i listen.\n' +
+                '- `deleteButtonLabel` er alternativ tekst til sletteknappen som vises i feltet når alternativet er valgt. Denne brukes bl.a. av skjermlesere.',
+            control: {
+                type: 'object'
+            }
+        },
+        onChange: {
+            description: 'Funksjon som kalles når brukeren velger et alternativ. De valgte alternativenes `value` sendes som parameter til funksjonen i form av en liste.',
+            control: {
+                type: 'function'
+            }
+        },
+        value: {
+            description: 'Kan brukes til å overstyre hvilke verdier som er valgt.',
+            control: {
+                type: 'text'
+            }
+        },
+        deleteButtonLabel: {
+            description: 'Alternativ tekst til knappen som fjerner alle de valgte alternativene fra listen over valgte alternativer. Denne brukes bl.a. av skjermlesere.',
+            control: {
+                type: 'text'
+            }
+        },
+        hideLabel: {
+            description: 'Skjuler teksten over feltet, men gjør den likevel tilgjengelig for verktøy som skjermlesere.',
+            control: {
+                type: 'boolean'
+            }
+        },
+        inputId: {
+            description: 'Gir input-feltet en ID. Dersom denne ikke satt, genereres en unik ID automatisk.',
+            control: {
+                type: 'text'
+            }
+        }
+    }}
+/>
+
+export const defaultArgs = {
+    deleteButtonLabel: 'Fjern alle',
+    label: 'Velg ett eller flere fylker',
+    multiple: true,
+    options: [
+        { label: 'Agder', value: 'Agd' },
+        { label: 'Innlandet', value: 'Inn' },
+        { label: 'Møre og Romsdal', value: 'MoR' },
+        { label: 'Nordland', value: 'Nor' },
+        { label: 'Oslo', value: 'Osl' },
+        { label: 'Rogaland', value: 'Rog' },
+        { label: 'Vestfold og Telemark', value: 'VoT' },
+        { label: 'Troms og Finnmark', value: 'ToF' },
+        { label: 'Trøndelag', value: 'Trø' },
+        { label: 'Vestland', value: 'Ves' },
+        { label: 'Viken', value: 'Vik' }
+    ].map((option) => ({ ...option, deleteButtonLabel: 'Slett ' + option.label }))
+};
+export const Template = (args = {}) => <div style={{ width: '440px' }}>
+    <Select {...{...defaultArgs, ...args}}/>
+</div>;
+
+# Select (flervalg)
+
+<Beta />
+
+Når `multiple`-egenskapen er satt på, `Select` får brukeren mulighet til å velge flere enn ett alternativ.
+Verdien i feltet behandles da som en liste med tekststrenger.
+
+## Eksempler
+
+### Normal visning
+<Canvas>
+    <Story
+        name="Normal"
+        args={{}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Deaktivert
+<Canvas>
+    <Story
+        name="Deaktivert"
+        args={{disabled: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Med feil
+<Canvas>
+    <Story
+        name="Med feil"
+        args={{error: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Egenskaper
+<ArgsTable story="Normal"/>
+
+## Tilgjengelighet
+
+### Mus
+Nedtrekkslisten åpnes ved å klikke på feltet med musen. Deretter kan man klikke på alternativene man ønsker å velge.
+Klikker man på et allerede valgt alternativ, fjernes alternativet igjen fra listen over valgte alternativer.
+Hvis alternativet ikke er synlig, kan man rulle seg frem til det ved bruk av rullefelt eller musehjul.
+Man kan også fjerne alternativer ved å klikke på krysset ved siden av alternativet man ønsker å fjerne.
+Klikker man på krysset helt til høyre i feltet, fjernes alle alternativene.
+
+### Tastatur
+Nedtrekkslisten åpnes ved å trykke på `Enter`, `Space` eller en av de vertikale piltastene når pilknappen har fokus.
+Deretter kan man navigere seg frem til ønsket alternativ ved bruk av piltastene.
+Man velger så alternativer ved å bruke `Enter`- eller `Space`-tasten.
+Sletteknappene (de med kryss på) nås på vanlig måte ved hjelp av tabulatortasten.
+
+## Tokens
+<TokensTable
+    jsonKey='component.select'
+    componentName='select'
+    showPreview={false}
+    description
+/>

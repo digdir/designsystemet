@@ -1,0 +1,85 @@
+.inputWrapper {
+  --background: var(--component-input-color-background-default);
+  --border-color: var(--component-input-color-border-default);
+  --icon-background: transparent;
+  --outline-color: var(--component-input-color-outline-focus);
+  --paddingX: 0;
+  --paddingY: 0;
+  align-items: stretch;
+  background: var(--background);
+  border-color: var(--border-color);
+  border-radius: var(--interactive_components-border_radius-normal);
+  border-style: solid;
+  border-width: var(--component-input-border_width-default);
+  box-sizing: border-box;
+  display: flex;
+}
+
+.inputWrapper.withFocusEffect:focus-within {
+  outline: var(--outline-color) auto var(--border_width-thin);
+  outline-offset: calc(var(--border_width-thin) + var(--border_width-standard));
+}
+
+.inputWrapper.default:hover {
+  --border-color: var(--component-input-color-border-hover);
+}
+
+.inputWrapper.error {
+  --icon-background: var(--component-input-error-color-border-default);
+  --border-color: var(--component-input-error-color-border-default);
+}
+
+.inputWrapper.error:hover {
+  --icon-background: var(--component-input-error-color-border-hover);
+  --border-color: var(--component-input-error-color-border-hover);
+}
+
+.inputWrapper.disabled {
+  --background: repeating-linear-gradient(
+    135deg,
+    #efefef,
+    #efefef 2px,
+    #fff 3px,
+    #fff 5px
+  );
+  --border-color: var(--component-input-disabled-color-border-default);
+}
+
+.inputWrapper.readonlyInfo {
+  --background: var(--component-input-read_only_info-color-background-default);
+  --border-color: var(--component-input-read_only_info-color-border-default);
+}
+
+.inputWrapper.readonlyConfirm {
+  --background: var(
+    --component-input-read_only_confirm-color-background-default
+  );
+  --border-color: var(--component-input-read_only_confirm-color-border-default);
+}
+
+.inputWrapper.search {
+  flex-direction: row-reverse;
+}
+
+.inputWrapper.withPadding {
+  /* Subtract size of border on padding-y, because border is on outer element. Without this, height of entire component will be too big */
+  --paddingY: calc(
+    var(--component-input-space-padding-y) -
+      var(--component-input-border_width-default)
+  );
+  --paddingX: var(--component-input-space-padding-x);
+}
+
+.field {
+  background: var(--background);
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  padding: var(--paddingY) var(--paddingX);
+  width: 100%;
+}
+
+.label {
+  font-weight: var(--component-label-font_weight-default);
+  padding: 0;
+}
