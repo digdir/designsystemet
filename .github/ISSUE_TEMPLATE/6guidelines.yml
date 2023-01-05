@@ -1,0 +1,22 @@
+name: Component need guidelines 📋
+description: I need design to specify and create tokens for a new component
+title: "Guidelines for: "
+labels: ["documentation/guidelines"]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: What component needs tokens?
+    validations:
+      required: true
+
+  - type: textarea
+    id: guidelines
+    attributes: 
+      label: Guidelines
+      value: |
+        - [ ] Guidelines are ready
+          - [ ] Write/update guidelines
+          - [ ] Do's and don'ts
+          - [ ] Examples 
+

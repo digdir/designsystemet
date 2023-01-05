@@ -1,0 +1,34 @@
+name: Specify a new component ✍️
+description: This template is for internal use when a component needs to be specified in Figma
+labels: ["figma"]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: What component is it that needs specification?
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Check if any tasks could be removed or if you need to add any new tasks.
+
+  - type: textarea
+    id: figma
+    attributes:
+      label: Tasks
+      value: |
+        _Link to correct placement in our Figma component library._
+        - [ ] Design is fully specified in Figma
+          - [ ] Design component with all relevant states
+          - [ ] Do a accessibility test of the sketches
+          - [ ] Functionality/animation is described and prototyped if relevant    
+
+  - type: textarea
+    id: svg
+    attributes: 
+      label: SVG
+      value: |
+        - [ ] If there are used any svgs in this component is it available for the developer?
+
