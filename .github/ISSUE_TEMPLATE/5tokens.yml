@@ -1,5 +1,5 @@
 name: Create tokens 💲
-description: This template is for internal use when we need to define tokens for a component
+description: ⚠️ This template is for internal use when a component needs tokens
 title: "Tokens for: "
 labels: ["tokens"]
 body:
@@ -34,9 +34,9 @@ body:
         ```
 
   - type: textarea
-    id: tokens
+    id: tasks
     attributes:
-      label: Tokens
+      label: Tasks
       value: |
         - [ ] Tokens are published and ready for use
           - [ ] The size is described with tokens

@@ -1,5 +1,5 @@
 name: Specify a new component ✍️
-description: This template is for internal use when a component needs to be specified in Figma
+description: ⚠️ This template is for internal use when a component needs to be specified in Figma
 labels: ["figma"]
 body:
   - type: input
