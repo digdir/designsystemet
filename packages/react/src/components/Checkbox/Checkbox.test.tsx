@@ -78,6 +78,31 @@ describe('Checkbox', () => {
     render({ description });
     expect(screen.getByText(description)).toBeDefined();
   });
+
+  it.each([false, undefined])(
+    'Does not have presentation role when the "presentation" property is %s',
+    (presentation) => {
+      render({ presentation });
+      expect(screen.queryByRole('presentation')).toBeFalsy();
+    },
+  );
+
+  it('Has presentation role when the "presentation" property is true', () => {
+    render({ presentation: true });
+    expect(screen.getByRole('presentation')).toBeInTheDocument();
+    expect(screen.queryByRole('checkbox')).toBeFalsy();
+  });
+
+  it('Displays label and description when they are React nodes', () => {
+    const labelText = 'Label';
+    const descriptionText = 'Description';
+    render({
+      label: <span>{labelText}</span>,
+      description: <span>{descriptionText}</span>,
+    });
+    expect(screen.getByText(labelText)).toBeInTheDocument();
+    expect(screen.getByText(descriptionText)).toBeInTheDocument();
+  });
 });
 
 const render = (props: Partial<CheckboxProps> = {}) => {

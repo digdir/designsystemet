@@ -18,15 +18,16 @@ export interface CheckboxRadioTemplateProps {
   checked?: boolean;
   children: ReactNode;
   className?: string;
-  description?: string;
+  description?: ReactNode;
   disabled?: boolean;
   hideInput?: boolean;
   hideLabel?: boolean;
   inputId?: string;
   inputWrapperClassName?: string;
-  label?: string;
+  label?: ReactNode;
   name?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  presentation?: boolean;
   size: CheckboxRadioTemplateSize;
   type: 'checkbox' | 'radio';
   value?: string;
@@ -44,6 +45,7 @@ export const CheckboxRadioTemplate = ({
   label,
   name,
   onChange,
+  presentation,
   size,
   type,
   value,
@@ -68,7 +70,9 @@ export const CheckboxRadioTemplate = ({
         <span className={classes.inputWrapper}>
           <input
             aria-describedby={descriptionId}
-            aria-label={!showLabel ? label : undefined}
+            aria-label={
+              !showLabel && typeof label === 'string' ? label : undefined
+            }
             aria-labelledby={showLabel ? labelId : undefined}
             checked={checked ?? false}
             className={classes.input}
@@ -76,6 +80,7 @@ export const CheckboxRadioTemplate = ({
             id={finalInputId}
             name={name}
             onChange={disabled ? undefined : onChange}
+            role={presentation ? 'presentation' : undefined}
             type={type}
             value={value}
           />
