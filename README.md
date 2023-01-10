@@ -43,24 +43,56 @@ _Problems? See [Troubleshooting](#troubleshooting-🔍)._
 ---
 
 ## Commit ✍️
+This monoropo uses Lerna with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+specification in order to create nice and readable changelogs. 
+The [Semantic Versioning 2.0](https://semver.org/) specification is used for versioning.
 
-Start/prefix commits with `fix:`, `feat:`, or `BREAKING CHANGE:` to make them show up in the changelog (`CHANGELOG.md` file in each package). Do this when the changes directly effects the built files/components used by the end user.
+In order for commits to show up in the changelog, you have to add the following keywords:
+* Start the commit with `fix:`to trigger a patch (0.0.x) version.
+* Start the commit with `feat:`to trigger a minor (0.x.0) version.
+* Start the description / footer of a commit with `BREAKING-CHANGE:`to trigger a major (x.0.0) version. You also have to add either `fix:` or `feat:` to the main body of the commit when using `BREAKING-CHANGE:`.
 
-By next release `fix:` will trigger a patch (0.0.x), `feat:` a minor update (0.x.0), and `BREAKING CHANGE:` alone or after fix:/feat: trigger a major update (x.0.0).
+Do this when the changes directly effect the built files / components used by the end user.
+See the examples below to learn how to use the correct syntax.
 
-The first line in the commit-text will be added to the changelog in the packages that the change occurred in. Here is a few examples:
 
+### When to use what keywords
+#### Added to changelog
+* `fix:`: Patches a bug in the codebase. Nothing new is introduced in terms of functionality. 
+* `feat:`: Introduces a new feature to the codebase. A new component is an often use case.
+* `BREAKING-CHANGE:`: Introduces a breaking change to existing functionality. 
+  * Examples: 
+    * A component is removed from a package
+    * Functionality of a component is changed in a way that requires the end user to perform an action
+
+#### Not added to changelog
+* `build:`: Changes that affect the build system or external dependencies (example scopes: rollup, stylelint, npm)
+* `chore:`: Other changes that don't modify src or test files
+* `docs:`: Documentation only changes
+* `style:`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+* `test:`: Adding missing tests or correcting existing tests
+* `refactor:`: A code change that neither fixes a bug nor adds a feature
+* `revert:`: Reverts a previous commit
+* `perf:`: A code change that improves performance
+
+### Commit examples
+
+Added some new documentation
 ```
-fix(button): short description of what commit does (e.g. add secondary variant style)
-
-Longer in-depth description in a paragraph here, if needed.
-
-BREAKING CHANGE: Explanation of things that break with this commit and what users need to do to migrate, if needed.
-In this case it could be that a fix in the button changes the HTML structure of the button component, 
-which requires the users to modify their implementation using the @digdir/ds-core-css package.
+docs: added a new documentation file for developers
 ```
 
-Learn more about Conventional Commits on https://conventionalcommits.org.
+Fixed something related to the button component.
+```
+fix(button): fixed an issue where the button component didn't shop up correctly on mobile
+```
+
+Fixed something related to the button component that also requires an action from the end user
+```
+fix(button): changed name of font-size prop to size
+
+BREAKING CHANGE: changed the name of the size prop to font-size to make it more readable
+```
 
 ---
 
