@@ -154,6 +154,13 @@ describe('CheckboxGroup', () => {
     expect(screen.getByText(label)).toBeDefined();
     expect(screen.getByText(description)).toBeDefined();
   });
+
+  it('Renders all checkboxes with presentation role when the "presentation" property is true', () => {
+    render({ presentation: true });
+    const numOfCheckboxes = defaultProps.items.length;
+    expect(screen.queryAllByRole('presentation')).toHaveLength(numOfCheckboxes);
+    expect(screen.queryAllByRole('checkbox')).toHaveLength(0);
+  });
 });
 
 const render = (props: Partial<CheckboxGroupProps> = {}) => {
