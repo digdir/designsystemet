@@ -1,6 +1,6 @@
 <h1 align="center">
     <img src="https://i.imgur.com/aa1IP0w.png" />
-    <br/>  <br/>Digdir Designsystem
+    <br/>  <br/>Felles Designsystem
 </h1>
 <div align="center">
 <p>This monorepo contains packages related to the Digdir Designsystem.</p>
