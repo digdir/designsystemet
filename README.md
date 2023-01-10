@@ -64,7 +64,7 @@ Learn more about Conventional Commits on https://conventionalcommits.org.
 
 ---
 
-## Setup NPM account
+## Setup NPM account 👷
 In order to release new versions of the packages, you have to setup your NPM account. 
 If you want to be able to release new versions, follow these steps:
 
