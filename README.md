@@ -3,7 +3,7 @@
     <br/>  <br/>Felles Designsystem
 </h1>
 <div align="center">
-<p>This monorepo contains packages related to the Digdir Designsystem.</p>
+<p>This monorepo contains packages for to the Common Designsystem.</p>
   
 <hr>
     <a href="https://digdir.github.io/designsystem">Website</a> | <a href="https://github.com/digdir/designsystem/issues">Issues</a>
@@ -38,7 +38,7 @@ Serve Storybook on localhost:
 `yarn storybook`
 
 
-_Problems? See [Troubleshooting](#troubleshooting-🔍)._
+_Problems? See [Troubleshooting](#Troubleshooting)._
 
 ---
 
@@ -48,9 +48,9 @@ specification in order to create nice and readable changelogs.
 The [Semantic Versioning 2.0](https://semver.org/) specification is used for versioning.
 
 In order for commits to show up in the changelog, you have to add the following keywords:
-* Start the commit with `fix:`to trigger a patch (0.0.x) version.
-* Start the commit with `feat:`to trigger a minor (0.x.0) version.
-* Start the description / footer of a commit with `BREAKING-CHANGE:`to trigger a major (x.0.0) version. You also have to add either `fix:` or `feat:` to the main body of the commit when using `BREAKING-CHANGE:`.
+* Start the commit with `fix:` to trigger a patch (0.0.x) version.
+* Start the commit with `feat:` to trigger a minor (0.x.0) version.
+* Start the description / footer of a commit with `BREAKING-CHANGE:` to trigger a major (x.0.0) version. You also have to add either `fix:` or `feat:` to the main body of the commit when using `BREAKING-CHANGE:`.
 
 Do this when the changes directly effect the built files / components used by the end user.
 See the examples below to learn how to use the correct syntax.
@@ -58,22 +58,22 @@ See the examples below to learn how to use the correct syntax.
 
 ### When to use what keywords
 #### Added to changelog
-* `fix:`: Patches a bug in the codebase. Nothing new is introduced in terms of functionality. 
-* `feat:`: Introduces a new feature to the codebase. A new component is an often use case.
-* `BREAKING-CHANGE:`: Introduces a breaking change to existing functionality. 
+* `fix:` Patches a bug in the codebase. Nothing new is introduced in terms of functionality. 
+* `feat:` Introduces a new feature to the codebase. A new component is an often use case.
+* `BREAKING-CHANGE:` Introduces a breaking change to existing functionality. 
   * Examples: 
     * A component is removed from a package
     * Functionality of a component is changed in a way that requires the end user to perform an action
 
 #### Not added to changelog
-* `build:`: Changes that affect the build system or external dependencies (example scopes: rollup, stylelint, npm)
-* `chore:`: Other changes that don't modify src or test files
-* `docs:`: Documentation only changes
-* `style:`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* `test:`: Adding missing tests or correcting existing tests
-* `refactor:`: A code change that neither fixes a bug nor adds a feature
-* `revert:`: Reverts a previous commit
-* `perf:`: A code change that improves performance
+* `build:` Changes that affect the build system or external dependencies (example scopes: rollup, stylelint, npm)
+* `chore:` Other changes that don't modify src or test files
+* `docs:` Documentation only changes
+* `style:` Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+* `test:` Adding missing tests or correcting existing tests
+* `refactor:` A code change that neither fixes a bug nor adds a feature
+* `revert:` Reverts a previous commit
+* `perf:` A code change that improves performance
 
 ### Commit examples
 
