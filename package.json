@@ -12,7 +12,7 @@
     "build-storybook": "cd docs && yarn build-storybook",
     "test": "jest",
     "add-component-core": "node scripts/add-component.mjs",
-    "lerna:changed": "yarn build && lerna version --no-push --conventional-commits --no-private",
+    "lerna:version": "yarn build && lerna version --no-push --conventional-commits --no-private",
     "lerna:publish": "lerna publish from-git"
   },
   "devDependencies": {

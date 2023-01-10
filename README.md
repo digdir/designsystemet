@@ -1,41 +1,54 @@
-# Digdir Designsystem
+<h1 align="center">
+    <img src="https://i.imgur.com/aa1IP0w.png" />
+    <br/>  <br/>Digdir Designsystem
+</h1>
+<div align="center">
+<p>This monorepo contains packages related to the Digdir Designsystem.</p>
+  
+<hr>
+    <a href="https://digdir.github.io/designsystem">Website</a> | <a href="https://github.com/digdir/designsystem/issues">Issues</a>
+<br/>
+</div>
 
-Dette monorepoet inneholder pakker relatert til implementasjon av et designsystem for generell bruk i Digdir.
 
-## Kom i gang med utvikling
 
-Sørg for at `node` og `yarn` er installert. Dette kan sjekkes ved å kjøre:
+## Get started with development ✨
+
+### 1. Install Node and Yarn
+
+Make sure `node` and `yarn` is installed. You can do this by running:
 
 `node --version && yarn --version`
 
-Installer nødvendige pakker:
+### 2. Install dependencies
+_(run command from root of the project)_
 
 `yarn install`
 
-### Kjør bygg:
+### 3. Run build
 
-_(Dette trengs for referanser/importeringer gjort mellom lokale pakker. Det skal i prinsippet kun være nødvendig å gjøre dette første gang, siden bygget kjører automatisk når man versjonerer/publiserer nye versjoner av pakkene.)_
+_(This is needed to make sure dependencies between local packages are available. You only need to run this once.)_
 
 `yarn build`
 
-### Start storybook:
+### 4. Start storybook
 
-Server dokumentasjonssiden (Storybook) på localhost:
+Serve Storybook on localhost:
 
 `yarn storybook`
 
 
-_Problemer? Se [Feilsøking](#feilsøking-🔍)._
+_Problems? See [Troubleshooting](#troubleshooting-🔍)._
 
 ---
 
 ## Commit ✍️
 
-Start commits med `fix:`, `feat:`, eller `BREAKING CHANGE:` for å få de med i endringsloggen (se `CHANGELOG.md` i pakkene) som **automatisk** oppdateres på Storybook når nye versjoner publiseres. Dette burde gjøres på commits som endrer innholdet i det som publiseres (filene som bygges).
+Start/prefix commits with `fix:`, `feat:`, or `BREAKING CHANGE:` to make them show up in the changelog (`CHANGELOG.md` file in each package). Do this when the changes directly effects the built files/components used by the end user.
 
-Ved neste versjonering/publisering vil `fix:` trigge en patch (0.0.x), `feat:` en minor update (0.x.0), og `BREAKING CHANGE:` alene eller etter fix:/feat: vil trigge en major update (x.0.0).
+By next release `fix:` will trigger a patch (0.0.x), `feat:` a minor update (0.x.0), and `BREAKING CHANGE:` alone or after fix:/feat: trigger a major update (x.0.0).
 
-Første linje (og eventuelt det etter BREAKING CHANGE:) i commit-teksten blir automatisk lagt til i endringsloggen i pakken til der commiten gjør en endring. Legg til et scope med parantes, se eksempel under:
+The first line in the commit-text will be added to the changelog in the packages that the change occurred in. Here is a few examples:
 
 ```
 fix(button): short description of what commit does (e.g. add secondary variant style)
@@ -47,115 +60,74 @@ In this case it could be that a fix in the button changes the HTML structure of 
 which requires the users to modify their implementation using the @digdir/ds-core-css package.
 ```
 
-Les mer om Conventional Commits på https://conventionalcommits.org.
+Learn more about Conventional Commits on https://conventionalcommits.org.
 
 ---
 
-## Bygging 🛠
+## Setup NPM account
+In order to release new versions of the packages, you have to setup your NPM account. 
+If you want to be able to release new versions, follow these steps:
 
-For å bygge filer til distribusjon:
+### 1. Create a new NPM account
+If you haven't already created a NPM account, do so by going to [NPM.com](https://www.npmjs.com/).
 
-`yarn build` i root mappen, eller `lerna run build` generelt
-
-_(kjører alle build-script i [packages/](packages/) sub-mapper)
-
-Bygging og deployment av dokumentasjon skjer automatisk ved hjelp av [Github Actions](.github/workflows/deploy-storybook.yml).
-Når noe blir pushet/merget til `main`-branchen vil scriptet bygge Storybook til `github-pages-deployment` branchen, som Github Pages hoster siden fra.
-
-For å bygge dokumentasjon manuelt (til `./docs/`):
-
-`yarn build:docs`
-
-## React bibliotek med typescript
-React biblioteka bruker TSDX til bygging, som da eksporterer ut komponentene i en pakke med type støtte.
-
----
+### 2. Ask to be added to the Digdir organisation on NPM
+Contact one of the people below to have your account added to the NPM Github organisation:
+* Øyvind Thune (oyvind.thune@digdir.no, teams, or slack)
 
 
-## Versjonering og publisering 🚀
+### 3. Login to you account
+In the terminal that you want to run the publish commands, run the following command to login to NPM:
 
-Yarn er brukt for å benytte komboen Lerna + Yarn workspaces til enklere vedlikehold av endringslogg, versjonering og publisering av pakkene. Noen `npm` script er laget for arbeidsflyt med lerna.
+`npm login`
 
-### Stegvis
+## Release a new version 🚀
+Follow these steps if you want to release a new version of the packages with Lerna.
+Make sure you are in the ***main*** branch when doing so, to ensure the changelogs are generated correctly.
 
-1️⃣ For å klargjøre en ny versjon:
+### 1. Prepare new version
+This runs the build scripts, suggests new versions (click enter) and creates a new tag for the release.
+The new version-numbers for the packages are automatically created based on the commit messages. Only non-private packages will be handled (package.json).
 
-`yarn lerna:changed`
+`yarn lerna:version`
 
-- Kjører bygg-steget
-- Foreslår nye versjoner (yes/no prompt)
-- Committer en versjon-tag
 
-Hva slags type versjon-bump det blir bestemmes automatisk fra commitloggen.
 
-Hvis man trenger å sette versjon eksplisitt, bruk:
-
-`yarn lerna:changed [patch|minor|major]`
-
-Dette vil lage en commit med ny versjon. `major`, `minor` eller `patch` brukes etter [semver](https://semver.org/) konvensjonen.
-
-2️⃣ Helst **merge/push til main-branchen** før du publiserer.
-
-Sjekk evnt. at filene som blir publisert er riktige (`/build`-mappene til pakkene som er versjonert).
+### 2. Push changes
+Push the changelogs and tags that Lerna has generated to git.
 
 `git push`
 
-3️⃣ For å publisere:
+
+### 3. Publish
+Publish the packages to NPM. Make sure you are logged in to your NPM account from the terminal you are trying to publish from. 
+Your account also has to be added to the NPM Github organisation.
 
 `yarn lerna:publish`
 
-Dette vil publisere pakken(e) tagget i nåværende commit 🚀
 
-### Kombinert
+## Updating Storybook to a new Version
+When updating Storybook to a new version, 
+make sure the custom CSS styling implemented doesnt't break with the new version (./docs/manager-head.html).
 
-For å eventuelt kjøre alle disse stegene i et, for eksempel hvis man ikke trenger å velge versjon manuelt og trenger en raskere måte å publisere på.
 
-**(⚠️ Vær sikker på at alt er riktig hvis denne brukes ⚠️)**
-
-`yarn version-publish-push`
-
-- Kjører bygg-steget
-- Committer en versjon-tag
-- Publiserer til NPM
-- Pusher til Github
-
----
-
-## Flyt
-![This is an image](https://i.imgur.com/odtvCmv.png)
-
-## Styling
-Styling should primarily be done in css files using css variables. The css files should end with `.module.css`, so unique classnames will be generated. This ensures we will not run into naming collision issues with classnames.
+## Styling 🎨
+Styling should primarily be done in scss files using css variables. The scss files should end with `.module.scss`, so unique classnames will be generated. This ensures we will not run into naming collision issues with classnames.
 
 We are using Figma as our design tool, and we are extracting tokens directly from Figma that can be used in code. These tokens are defined in the [figma-design-tokens repository](https://github.com/Altinn/figma-design-tokens). New components should ideally be using design tokens from there to define their layout. Before work is started on the component, you should discuss with the UX group first, because they need to define the tokens for the components.
 
-## Testing
-* `yarn test`
-* `yarn lint`
-* `yarn format`
 
-Formatering og linting skjer på pull request inn i main branchen
+## Testing 🪛
+`yarn test`
 
-## Design tokens
-Pakken `@digdir/ds-tokens` bygger ut tokens til følgende variabler:
-* SCSS variabler
-* CSS variabler
-* Javascript (typescript) variabler
 
-Tokens må manuelt skrives inn i JSON fil, manglar automatisk steg via Figma.
+## Troubleshooting 🔍
 
-## Feilsøking 🔍
+### Yarn storybook doesnt' wortk
+If `yarn storybook` gives you an error message, try `yarn storybook:clean`. This will run Storybook without manager cache. 
+Storybook can sometimes fail if the node_modules has been deleted.
 
-### Yarn start funker ikke
-
-Hvis `yarn start` gir feilmelding prøv `yarn start:clean`, som kjører uten Storybook sin manager cache. Storybook kan noen ganger feile dersom man har slettet og installert node_modules på nytt.
-### Feil i produksjon?
-
-Hvis man oppdager ulikheter mellom utvikling-, og produksjonsmiljø kan det være nyttig å teste dokumentasjonen som bygges lokalt:
+### Error in production?
+If the development and production environments get out of sync, you can build the storybook documentation locally to debug:
 
 `yarn build:docs`
-### Lerna klager på at versjon allerede eksisterer
-
-Lignende feilmelding: `lerna ERR! Error: Command failed with exit code 128: git tag ...`. 
-Hvis dette skjer kan det hende man har en konflikterende versjon tag lokalt i git-loggen et sted (f.eks. i en lokal branch). En løsning på dette kan være å klone repo'et på nytt med `git clone` og så prøve på nytt i denne nye klonen. NB: husk å sjekk at lokale brancher man bruker/trenger enten blir pushet opp til origin eller beholdt før man eventuelt sletter den gamle klonen.
-
