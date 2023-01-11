@@ -3,7 +3,7 @@
     <br/>  <br/>Felles Designsystem
 </h1>
 <div align="center">
-<p>This monorepo contains packages for to the Common Designsystem.</p>
+<p>This monorepo contains NPM packages and documentation for the Common Designsystem.</p>
   
 <hr>
     <a href="https://digdir.github.io/designsystem">Website</a> | <a href="https://github.com/digdir/designsystem/issues">Issues</a>
@@ -38,7 +38,7 @@ Serve Storybook on localhost:
 `yarn storybook`
 
 
-_Problems? See [Troubleshooting](#Troubleshooting)._
+_Problems? See [Troubleshooting](#troubleshooting-)._
 
 ---
 
@@ -55,6 +55,18 @@ In order for commits to show up in the changelog, you have to add the following 
 Do this when the changes directly effect the built files / components used by the end user.
 See the examples below to learn how to use the correct syntax.
 
+### Scope
+You can scope your commits by adding a keyword in parentheses with what you are working on.
+This makes the changelog and commit messages more specific and readable.
+
+Examples:
+* Adding a new component: `feat(button): added a new button component`.
+* Adding a new icon: `feat(icons): added a new chevron icon`.
+* Adding documentation for icons: `docs(icons): added new documentation for the icons package`.
+
+#### Components
+When you are committing changes to a component, try to ***always*** use scopes with the name of the component.
+This allows us to show changelogs for each individual component in the designsystem.
 
 ### When to use what keywords
 #### Added to changelog
@@ -77,17 +89,17 @@ See the examples below to learn how to use the correct syntax.
 
 ### Commit examples
 
-Added some new documentation
+Added some new documentation:
 ```
 docs: added a new documentation file for developers
 ```
 
-Fixed something related to the button component.
+Fixed something related to the button component:
 ```
-fix(button): fixed an issue where the button component didn't shop up correctly on mobile
+fix(button): fixed an issue where the button component didn't show up correctly on mobile
 ```
 
-Fixed something related to the button component that also requires an action from the end user
+Fixed something related to the button component that also requires an action from the end user:
 ```
 fix(button): changed name of font-size prop to size
 
@@ -109,7 +121,7 @@ Contact one of the people below to have your account added to the NPM Github org
 
 
 ### 3. Login to you account
-In the terminal that you want to run the publish commands, run the following command to login to NPM:
+In the terminal that you want to run the publish commands from, run the following command to login to NPM:
 
 `npm login`
 
@@ -155,9 +167,9 @@ We are using Figma as our design tool, and we are extracting tokens directly fro
 
 ## Troubleshooting 🔍
 
-### Yarn storybook doesnt' wortk
+### Yarn storybook doesn't wortk
 If `yarn storybook` gives you an error message, try `yarn storybook:clean`. This will run Storybook without manager cache. 
-Storybook can sometimes fail if the node_modules has been deleted.
+Storybook can sometimes fail if the node_modules folder has recently been deleted.
 
 ### Error in production?
 If the development and production environments get out of sync, you can build the storybook documentation locally to debug:
