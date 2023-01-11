@@ -125,6 +125,7 @@ In the terminal that you want to run the publish commands from, run the followin
 
 `npm login`
 
+
 ## Release a new version 🚀
 Follow these steps if you want to release a new version of the packages with Lerna.
 Make sure you are in the ***main*** branch when doing so, to ensure the changelogs are generated correctly.
