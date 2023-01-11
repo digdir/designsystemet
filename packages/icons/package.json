@@ -13,7 +13,7 @@
     "/cjs",
     "/esm"
   ],
-  "private": false,
+  "private": true,
   "scripts": {
     "clean": "rimraf ./optimized",
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
