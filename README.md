@@ -131,14 +131,15 @@ Follow these steps if you want to release a new version of the packages with Ler
 Make sure you are in the ***main*** branch when doing so, to ensure the changelogs are generated correctly.
 
 ### 1. Build distribution files
-Push the changelogs and tags that Lerna has generated to git.
+Build distribution files for all the packages. Make sure they all run successfully before proceeding to next step.
 
 `yarn build`
 
 
 ### 2. Prepare new version
-This runs the build scripts, suggests new versions (click enter) and creates a new tag for the release.
-The new version-numbers for the packages are automatically created based on the commit messages. Only non-private packages will be handled (package.json).
+This suggests new versions (click enter), creates a new tag and commit with the changes and pushes them to git.
+The new version-numbers for the packages are automatically created based on the commit messages. 
+Only non-private packages will be handled (package.json).
 
 `yarn lerna:version`
 
