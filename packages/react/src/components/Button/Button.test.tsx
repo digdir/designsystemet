@@ -14,56 +14,44 @@ describe('Button', () => {
     render({ variant: undefined });
     const button = screen.getByRole('button');
 
-    expect(button.classList.contains('button--primary')).toBe(true);
-    expect(button.classList.contains('button--secondary')).toBe(false);
-    expect(button.classList.contains('button--submit')).toBe(false);
-    expect(button.classList.contains('button--cancel')).toBe(false);
+    expect(button.classList).toContain('primary');
+    expect(button.classList).not.toContain('secondary');
+    expect(button.classList).not.toContain('submit');
+    expect(button.classList).not.toContain('cancel');
   });
 
-  Object.values(ButtonVariant).forEach((variant) => {
-    it(`should render a button with ${variant} classname when variant is ${variant}`, () => {
-      render({ variant });
-      const otherVariants = Object.values(ButtonVariant).filter(
-        (v) => v !== variant,
-      );
+  it.each(Object.values(ButtonVariant))(`should render a button with correct classname when variant is %s`, (variant) => {
+    render({ variant });
+    const otherVariants = Object.values(ButtonVariant).filter(
+      (v) => v !== variant,
+    );
 
-      const button = screen.getByRole('button');
+    const button = screen.getByRole('button');
 
-      expect(button.classList.contains(`button--${variant}`)).toBe(true);
-      otherVariants.forEach((v) => {
-        expect(button.classList.contains(`button--${v}`)).toBe(false);
-      });
-    });
+    expect(button.classList).toContain(variant);
+    otherVariants.forEach((v) => expect(button.classList).not.toContain(v));
   });
 
-  Object.values(ButtonColor).forEach((color) => {
-    it(`should render a button with ${color} classname when color is ${color}`, () => {
-      render({ color });
-      const otherVariants = Object.values(ButtonColor).filter(
-        (c) => c !== color,
-      );
+  it.each(Object.values(ButtonColor))(`should render a button with correct classname when color is %s`, (color) => {
+    render({ color });
+    const otherVariants = Object.values(ButtonColor).filter(
+      (c) => c !== color,
+    );
 
-      const button = screen.getByRole('button');
+    const button = screen.getByRole('button');
 
-      expect(button.classList.contains(`button--${color}`)).toBe(true);
-      otherVariants.forEach((c) => {
-        expect(button.classList.contains(`button--${c}`)).toBe(false);
-      });
-    });
+    expect(button.classList).toContain(color);
+    otherVariants.forEach((c) => expect(button.classList).not.toContain(c));
   });
 
-  Object.values(ButtonSize).forEach((size) => {
-    it(`should render a button with ${size} classname when size is ${size}`, () => {
-      render({ size });
-      const otherVariants = Object.values(ButtonSize).filter((s) => s !== size);
+  it.each(Object.values(ButtonSize))(`should render a button with correct classname when size is %s`, (size) => {
+    render({ size });
+    const otherVariants = Object.values(ButtonSize).filter((s) => s !== size);
 
-      const button = screen.getByRole('button');
+    const button = screen.getByRole('button');
 
-      expect(button.classList.contains(`button--${size}`)).toBe(true);
-      otherVariants.forEach((s) => {
-        expect(button.classList.contains(`button--${s}`)).toBe(false);
-      });
-    });
+    expect(button.classList).toContain(size);
+    otherVariants.forEach((s) => expect(button.classList).not.toContain(s));
   });
 
   it('should render an icon on the left side of text when given an existing iconName and no iconPlacement', () => {
