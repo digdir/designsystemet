@@ -1,4 +1,5 @@
 export { Button, ButtonVariant, ButtonColor, ButtonSize } from './Button';
+export type { ButtonProps } from './Button';
 export { ErrorMessage } from './ErrorMessage';
 export type { ErrorMessageProps } from './ErrorMessage';
 export { Tabs } from './Tabs';

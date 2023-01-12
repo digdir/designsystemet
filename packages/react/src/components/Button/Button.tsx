@@ -2,6 +2,7 @@ import React, {
   forwardRef,
   type ButtonHTMLAttributes,
   type PropsWithChildren,
+  ReactNode,
 } from 'react';
 import cn from 'classnames';
 
@@ -35,7 +36,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   fullWidth?: boolean;
   dashedBorder?: boolean;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   iconPlacement?: 'right' | 'left';
 }
 
@@ -54,39 +55,36 @@ const Button = (
     ...restHTMLProps
   }: PropsWithChildren<ButtonProps>,
   ref?: React.Ref<HTMLButtonElement> | undefined,
-) => {
-  return (
-    <button
-      {...restHTMLProps}
-      ref={ref}
-      className={cn(
-        classes.button,
-        classes[`button--${size}`],
-        classes[`button--${variant}`],
-        classes[`button--${color}`],
-        classes[`button--${variant}--${color}`],
-        { [classes['button--full-width']]: fullWidth },
-        { [classes['button--dashed-border']]: dashedBorder },
-        { [classes[`button--only-icon`]]: !children && icon },
-        className,
-      )}
-      type={type}
-    >
-      {icon && iconPlacement === 'left' && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
-      {children}
-      {icon && iconPlacement === 'right' && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
-    </button>
-  );
-};
+) =>  (
+  <button
+    {...restHTMLProps}
+    ref={ref}
+    className={cn(
+      classes.button,
+      classes[size],
+      classes[variant],
+      classes[color],
+      { [classes.fullWidth]: fullWidth },
+      { [classes.dashedBorder]: dashedBorder },
+      { [classes.onlyIcon]: !children && icon },
+      className,
+    )}
+    type={type}
+  >
+    {icon && iconPlacement === 'left' && (
+      <SvgIcon
+        svgIconComponent={icon}
+        className={classes.icon}
+      />
+    )}
+    {children}
+    {icon && iconPlacement === 'right' && (
+      <SvgIcon
+        svgIconComponent={icon}
+        className={classes.icon}
+      />
+    )}
+  </button>
+);
 
 export default forwardRef(Button);
