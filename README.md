@@ -130,18 +130,17 @@ In the terminal that you want to run the publish commands from, run the followin
 Follow these steps if you want to release a new version of the packages with Lerna.
 Make sure you are in the ***main*** branch when doing so, to ensure the changelogs are generated correctly.
 
-### 1. Prepare new version
+### 1. Build distribution files
+Push the changelogs and tags that Lerna has generated to git.
+
+`yarn build`
+
+
+### 2. Prepare new version
 This runs the build scripts, suggests new versions (click enter) and creates a new tag for the release.
 The new version-numbers for the packages are automatically created based on the commit messages. Only non-private packages will be handled (package.json).
 
 `yarn lerna:version`
-
-
-
-### 2. Push changes
-Push the changelogs and tags that Lerna has generated to git.
-
-`git push`
 
 
 ### 3. Publish
