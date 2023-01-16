@@ -68,6 +68,14 @@
         padding: 10px 24px !important;
     }
 
+    #storybook-explorer-tree > div > div > button[data-parent-id]:not([data-parent-id=kjernekomponenter]) {
+        padding: 10px 40px !important;
+    }
+
+    #storybook-explorer-tree > div > div > button[aria-expanded=true] {
+        font-weight: 600 !important;
+    }
+
     #storybook-explorer-tree > div > div > button > svg {
         margin-right: 8px;
     }
@@ -99,9 +107,16 @@
         transition: 0.2s ease-out !important;
     }
 
-    #storybook-explorer-tree > div > div a[data-parent-id]:not([data-parent-id=false]):not([data-parent-id=komponenter]):not([data-parent-id=maler]) {
+    #storybook-explorer-tree > div > div > div > .sidebar-item {
         padding: 8px 24px !important;
-        /*background: white;*/
+    }
+
+    #storybook-explorer-tree > div > div a:not([data-parent-id=false]):not([data-parent-id=kjernekomponenter]):not([data-parent-id=changelogs]) {
+        padding: 8px 40px !important;
+    }
+
+    #storybook-explorer-tree > div > div a[data-parent-id^=kjernekomponenter-select]:not([data-parent-id=tomato]):not([data-parent-id=tomato2]):not([data-parent-id=tomato3]) {
+        padding: 8px 56px !important;
     }
 
     #storybook-explorer-tree > div > div a[data-parent-id]:not([data-parent-id=false]):not([data-parent-id=komponenter]):not([data-parent-id=maler]):hover {

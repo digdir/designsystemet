@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "storybook": "cd docs && yarn storybook",
+    "storybook:clean": "cd docs && yarn storybook --no-manager-cache\t",
     "build": "npx lerna run build",
     "build-react": "cd packages/react && yarn build",
     "build-storybook": "cd docs && yarn build-storybook",
