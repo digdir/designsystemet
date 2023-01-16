@@ -22,3 +22,5 @@ export type {
   SingleOnChangeEvent,
   MultipleOnChangeEvent
 } from './Select';
+export { ReadOnlyVariant } from './_InputWrapper';
+export { TextArea, type TextAreaProps } from './TextArea';
