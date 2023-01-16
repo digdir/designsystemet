@@ -4,7 +4,15 @@
 </h1>
 <div align="center">
 <p>This monorepo contains NPM packages and documentation for the Common Designsystem.</p>
-  
+
+<a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-yellowgreen" />
+</a>
+
+<a href="https://github.com/navikt/Designsystemet/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/npm/v/@digdir/design-system-react?label=@digdir/design-system-react&color=0051be" />
+</a>
+
 <hr>
     <a href="https://digdir.github.io/designsystem">Website</a> | <a href="https://github.com/digdir/designsystem/issues">Issues</a>
 <br/>
