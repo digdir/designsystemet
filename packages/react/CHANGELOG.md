@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.2.0...@digdir/design-system-react@0.2.1) (2023-01-19)
+
+### Bug Fixes
+
+- Presentation mode issues on checkboxes and radio buttons ([#61](https://github.com/digdir/designsystem/issues/61)) ([2ee07b4](https://github.com/digdir/designsystem/commit/2ee07b46794580bf255091fcc142b793c8a91682))
+
 # [0.2.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.1.1...@digdir/design-system-react@0.2.0) (2023-01-19)
 
 ### Bug Fixes
