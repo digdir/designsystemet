@@ -159,11 +159,6 @@ Your account also has to be added to the NPM Github organisation.
 `yarn lerna:publish`
 
 
-## Updating Storybook to a new Version
-When updating Storybook to a new version, 
-make sure the custom CSS styling implemented doesnt't break with the new version (./docs/manager-head.html).
-
-
 ## Styling 🎨
 Styling should primarily be done in scss files using css variables. The scss files should end with `.module.scss`, so unique classnames will be generated. This ensures we will not run into naming collision issues with classnames.
 
