@@ -148,6 +148,43 @@ describe('RadioButton', () => {
     expect(screen.getByText(labelText)).toBeInTheDocument();
     expect(screen.getByText(descriptionText)).toBeInTheDocument();
   });
+
+  it('Has clickable label text by default if label is set', async () => {
+    const label = 'Label';
+    render({ label });
+    await act(() => user.click(screen.getByText(label)));
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('Does not have clickable label text if the "presentation" property is true and the label is a React node', async () => {
+    const labelText = 'Label';
+    render({
+      label: <span>{labelText}</span>,
+      presentation: true,
+    });
+    await act(() => user.click(screen.getByText(labelText)));
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('Does not have clickable label text if the "presentation" property is true and the description is a React node', async () => {
+    const descriptionText = 'Description';
+    render({
+      label: <span>{descriptionText}</span>,
+      presentation: true,
+    });
+    await act(() => user.click(screen.getByText(descriptionText)));
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('Has clickable radio button even if the "presentation" property is true and the label is a React node', async () => {
+    const name = 'Label';
+    render({
+      label: <span>{name}</span>,
+      presentation: true,
+    });
+    await act(() => user.click(screen.getByRole('presentation', { name })));
+    expect(onChange).toHaveBeenCalled();
+  });
 });
 
 const render = (props: Partial<RadioButtonProps> = {}) => {

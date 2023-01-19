@@ -53,6 +53,10 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Brukes til å velge størrelse.',
             control: {type: 'radio', options: [RadioButtonSize.Small, RadioButtonSize.Xsmall]},
             defaultValue: RadioButtonSize.Small
+        },
+        presentation: {
+            description: 'Sett denne hvis radioknappen er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av radioknappen være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+            control: {type: 'boolean'}
         }
     }}
 />
