@@ -19,7 +19,6 @@
 </div>
 
 
-
 ## Get started with development ✨
 
 ### 1. Install Node and Yarn
@@ -111,13 +110,13 @@ Fixed something related to the button component that also requires an action fro
 ```
 fix(button): changed name of font-size prop to size
 
-BREAKING CHANGE: changed the name of the size prop to font-size to make it more readable
+BREAKING CHANGE: changed the name of the font-size prop to size to make it more readable
 ```
 
 ---
 
 ## Setup NPM account 👷
-In order to release new versions of the packages, you have to setup your NPM account. 
+To release new versions of the packages, you have to setup your NPM account. 
 If you want to be able to release new versions, follow these steps:
 
 ### 1. Create a new NPM account
@@ -171,7 +170,7 @@ We are using Figma as our design tool, and we are extracting tokens directly fro
 
 ## Troubleshooting 🔍
 
-### Yarn storybook doesn't wortk
+### Yarn storybook doesn't work
 If `yarn storybook` gives you an error message, try `yarn storybook:clean`. This will run Storybook without manager cache. 
 Storybook can sometimes fail if the node_modules folder has recently been deleted.
 
