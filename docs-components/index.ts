@@ -1,5 +1,5 @@
 export { ComponentUsage } from './ComponentUsage/ComponentUsage';
-export { Beta } from './Beta/Beta';
+export { BetaBlock } from './BetaBlock/BetaBlock';
 export { Table } from './Table/Table';
 export { TokensTable } from './Table/TokenTable/TokensTable';
 export { PropsTable } from './Table/PropsTable/PropsTable';

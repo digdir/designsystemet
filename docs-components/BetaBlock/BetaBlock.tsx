@@ -1,9 +1,9 @@
 import React from 'react';
 import { Information } from '@navikt/ds-icons';
 
-import classes from './Beta.module.css';
+import classes from './BetaBlock.module.css';
 
-export function Beta() {
+export function BetaBlock() {
   return (
     <div
       className={classes.box}
@@ -24,4 +24,4 @@ export function Beta() {
   );
 }
 
-Beta.displayName = 'Beta';
+BetaBlock.displayName = 'BetaBlock';
