@@ -4,9 +4,10 @@ import tokens from '@altinn/figma-design-tokens/dist/tokens.json';
 
 import { InputWrapper } from '../_InputWrapper';
 import { MultiSelectItem } from './MultiSelectItem';
-import { useEventListener, useKeyboardEventListener } from '../../hooks';
+import { useEventListener, useKeyboardEventListener, useUpdate } from '../../hooks';
 
 import classes from './Select.module.css';
+import { arraysEqual } from "../../utils/arrayUtils";
 
 export type SelectProps = SingleSelectProps | MultiSelectProps;
 
@@ -91,6 +92,15 @@ export const Select = (props: SelectProps) => {
 
   const listboxRef = useRef<HTMLUListElement>(null);
   const selectFieldRef = useRef<HTMLSpanElement>(null);
+
+  useUpdate(() => {
+    // Rerender when the value property changes
+    if (!multiple) {
+      setActiveOption(value);
+    } else if (!arraysEqual(value, selectedValues)) {
+      setSelectedValues(value ?? []);
+    }
+  }, [value]);
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
