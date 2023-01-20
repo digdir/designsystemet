@@ -24,3 +24,4 @@ export type {
 } from './Select';
 export { ReadOnlyVariant } from './_InputWrapper';
 export { TextArea, type TextAreaProps } from './TextArea';
+export { TextField, type TextFieldProps, type TextFieldFormatting } from './TextField';
