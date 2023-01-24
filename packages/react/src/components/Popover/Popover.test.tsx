@@ -96,7 +96,7 @@ describe('popover', () => {
   });
 
   test.each(Object.values(PopoverVariant))(
-    'should render popover with correct variant',
+    'should render popover with correct variant when variant is %s',
     async (variant) => {
       await act(async () => {
         render({ variant: variant, initialOpen: true });
