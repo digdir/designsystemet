@@ -105,12 +105,12 @@ describe('popover', () => {
         (v) => v !== variant,
       );
 
-      expect(screen.queryByTestId('popover-content-test-id')).toBeInTheDocument;
       const popoverContent = screen.getByTestId('popover-content-test-id');
+      expect(popoverContent).toBeInTheDocument();
 
-      expect(popoverContent.classList.contains(variant)).toBe(true);
+      expect(popoverContent.classList).toContain(variant);
       otherColors.forEach((v) => {
-        expect(popoverContent.classList.contains(v)).toBe(false);
+        expect(popoverContent.classList).not.toContain(v);
       });
     },
   );
