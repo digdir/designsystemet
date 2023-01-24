@@ -20,8 +20,10 @@ export type {
   SingleSelectOption,
   MultiSelectOption,
   SingleOnChangeEvent,
-  MultipleOnChangeEvent
+  MultipleOnChangeEvent,
 } from './Select';
 export { ReadOnlyVariant } from './_InputWrapper';
-export { TextArea, type TextAreaProps } from './TextArea';
-export { TextField, type TextFieldProps, type TextFieldFormatting } from './TextField';
+export { TextArea } from './TextArea';
+export type { TextAreaProps } from './TextArea';
+export { TextField } from './TextField';
+export type { TextFieldProps, TextFieldFormatting } from './TextField';
