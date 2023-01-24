@@ -38,6 +38,6 @@
 }
 
 .helpTextContent {
-  font-size: var(--component-checkbox-font_size-me);
+  font-size: var(--font_size-300);
   line-height: var(--typography-default-line-height);
 }
