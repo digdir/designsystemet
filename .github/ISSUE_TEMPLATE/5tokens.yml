@@ -4,13 +4,6 @@ title: "Tokens for: "
 labels: ["tokens", "figma", "kode"]
 body:
 
-  - type: input
-    id: component
-    attributes:
-      label: What component needs tokens?
-    validations:
-      required: true
-
   - type: markdown
     attributes:
       value: |

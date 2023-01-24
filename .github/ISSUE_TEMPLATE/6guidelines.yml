@@ -3,12 +3,6 @@ description: ⚠️ This template is for internal use when a component needs gui
 title: "Guidelines for: "
 labels: ["documentation/guidelines"]
 body:
-  - type: input
-    id: component
-    attributes:
-      label: What component needs tokens?
-    validations:
-      required: true
 
   - type: textarea
     id: guidelines
