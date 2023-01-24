@@ -1,0 +1,98 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import { Popover, PopoverVariant, PopoverProps } from './index';
+
+import {Button, ButtonColor, ButtonSize, ButtonVariant} from "./../Button/index";
+import {ComponentUsage, BetaBlock, TokensTable} from "../../../../../docs-components";
+import {ArgsTable} from "@storybook/addon-docs";
+
+<Meta
+    title="Kjernekomponenter/Popover"
+    component={Popover}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+    argTypes={{
+        trigger: {
+            description: 'En RactNode som brukes til å åpne å lukke popoveren. Fungerer også som ankringspunkt til popoverens posisjon.',
+            control: { type: 'object' },
+        },
+        children: {
+            description: 'En valgfri ReactNode som blir popoverens innhold.',
+            control: { type: 'object' },
+        },
+        arrow: {
+            description: 'Bestemmer om pilen på popoveren som peker til triggeren skal vises eller ikke.',
+            control: { type: 'boolean'},
+        },
+        placement: {
+            description: 'Bestemmer hvilken side popoveren skal plasseres på, samt om plasseringen skal rettes inn etter hvor triggeren starter eller slutter.',
+        },
+        open: {
+            description: 'Bestemmer om popoveren skal vises eller ikke. Om denne ikke settes håndteres den internt i popover komponenten. Om den settes anbefales det å bruke den sammen med `onOpenChange`.',
+            control: { type: 'boolean' },
+        },
+        onOpenChange: {
+            description: 'Funksjon som håndterer ednring av `open`. Om denne ikke settes håndteres den internt i popover komponenten. Om den settes anbefales det å bruke den sammen med `onOpenChange`.',
+        },
+        initialOpen: {
+            description: 'Bestemmer om tilstanden `open` skal settes til `true` ved rendering.',
+            control: { type: 'boolean'},
+        },
+        offset: {
+            description: 'Overstyrer avstanden fra triggeren til popoveren i åpen tilstand.',
+            control: { type: 'number' },
+        }
+    }}
+/>
+
+export const defaultArgs = {
+    trigger: <Button>My trigger</Button>
+}
+
+export const Template = (args) => {
+    return (
+        <Popover 
+            placement={args.placement} 
+            variant={args.variant}
+            arrow={args.arrow}
+            offset={args.offset}
+            modal={args.modal}
+            {...defaultArgs}
+        >
+            Lorem ipsum dolor sit amet...
+        </Popover>
+)};
+
+# Popover
+
+<BetaBlock />
+
+Popover er et felt som plasseres over annet innhold og kan vises og skjules ved hjelp av å aktivere en gitt `trigger`. 
+
+## Varianter
+
+### Default
+
+<Canvas>
+    <Story
+        name="Popover"
+        args={{
+            placement: 'top',
+            variant: PopoverVariant.Default,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+<ArgsTable story='Popover' />
+
+## Tokens
+Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov.
+<TokensTable jsonKey='component.popover' componentName='popover' />
+
+## Tilgjengelighet

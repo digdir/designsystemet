@@ -1,0 +1,77 @@
+.popover {
+  width: max-content;
+  z-index: 0;
+  padding: 12px;
+  max-width: calc(100vw - 20px);
+  border: 1px solid gray;
+  border-radius: 3px;
+  box-shadow: 0px 3px 6px 0px #00000033;
+}
+
+.popover:focus-visible {
+  outline: var(--interactive_components-colors-focus_outline) solid
+  var(--border_width-standard);
+  outline-offset: var(--border_width-standard);
+}
+
+.popover:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.popover.default {
+  background-color: #FFFFFF;
+  border-color: #68707C;
+}
+
+.popover.info {
+  background-color: #E6EFF8;
+  border-color: #004C8F;
+}
+
+.popover.warning {
+  background-color: #FFFBE6;
+  border-color: #CC7005;
+}
+
+.popover.danger {
+  background-color: #F9D5DB;
+  border-color: #B3253A;
+}
+
+.arrow {
+  position: absolute;
+  z-index: -1;
+  transform: rotate(45deg);
+  background-color: inherit;
+  border: 1px solid;
+  border-color: inherit;
+  width: 12px;
+  height: 12px;
+}
+
+.popover[data-placement^="top"] > .arrow {
+  box-shadow: 3px 3px 6px 0px #00000033;
+	clip-path: inset(0px -10px -10px 0px);
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+.popover[data-placement^="bottom"] > .arrow {
+  clip-path: inset(-10px 0px 0px -10px);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.popover[data-placement^="left"] > .arrow {
+  box-shadow: 1px 3px 6px 0px #00000033;
+	clip-path: inset(-10px -10px 0px 0px);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.popover[data-placement^="right"] > .arrow {
+  box-shadow: -1px 3px 6px 0px #00000033;
+	clip-path: inset(0px 0px -10px -10px);
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
