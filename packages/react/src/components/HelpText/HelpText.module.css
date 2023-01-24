@@ -1,4 +1,4 @@
-.help-text__button {
+.helpTextButton {
   all: initial;
   background-color: transparent;
   border-radius: 50px;
@@ -9,36 +9,36 @@
   border: none;
 }
 
-.help-text__button:focus-visible {
+.helpTextButton:focus-visible {
   outline: var(--interactive_components-colors-focus_outline) solid
     var(--border_width-standard);
   outline-offset: var(--border_width-standard);
   color: var(--colors-blue-700);
 }
 
-.help-text__button:focus:not(:focus-visible) {
+.helpTextButton:focus:not(:focus-visible) {
   outline: none;
 }
 
-.help-text__icon--filled {
+.helpTextIconFilled {
   display: none;
 }
 
-.help-text__button:where(:hover, :focus-visible, [data-state^="open"]) > .help-text__icon {
+.helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIcon {
   display: none;
 }
 
-.help-text__button:where(:hover, :focus-visible, [data-state^="open"]) > .help-text__icon--filled {
+.helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIconFilled {
   display: block;
 }
 
-.help-text__icon {
+.helpTextIcon {
   color: var(--colors-blue-700);
   width: 24px;
   height: 24px;
 }
 
-.help-text__content {
+.helpTextContent {
   font-size: var(--component-checkbox-font_size-me);
   line-height: var(--typography-default-line-height);
 }

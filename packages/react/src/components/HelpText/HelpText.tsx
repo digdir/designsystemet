@@ -40,11 +40,11 @@ export const HelpText = ({
       placement={placement}
       open={open}
       onOpenChange={setOpen}
-      className={cn(classes['help-text__content'])}
+      className={cn(classes.helpTextContent)}
       trigger={
         <button
           {...rest}
-          className={cn(classes['help-text__button'], className)}
+          className={cn(classes.helpTextButton, className)}
           onClick={(event) => {
             setOpen((isOpen) => !isOpen);
             onClick?.(event);
@@ -53,15 +53,15 @@ export const HelpText = ({
         >
           <HelptextFilled
             className={cn(
-              classes['help-text__icon'],
-              classes['help-text__icon--filled'],
+              classes.helpTextIcon,
+              classes.helpTextIconFilled,
               className,
             )}
             title={title}
             data-state={open ? 'open' : 'closed'}
           />
           <Helptext
-            className={cn(classes['help-text__icon'], className)}
+            className={cn(classes.helpTextIcon, className)}
             title={title}
             data-state={open ? 'open' : 'closed'}
           />
