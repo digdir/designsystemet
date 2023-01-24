@@ -31,11 +31,11 @@ describe('HelpText', () => {
     });
     const helpTextTrigger = screen.getByRole('button');
 
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
     await act(async () => {
       await user.click(helpTextTrigger);
     });
-    expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+    expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
   });
 
   it('should close HelpText on trigger click when open', async () => {
@@ -44,11 +44,11 @@ describe('HelpText', () => {
     });
     const helpTextTrigger = screen.getByRole('button');
 
-    expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+    expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
     await act(async () => {
       await user.click(helpTextTrigger);
     });
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 
   it('should open HelpText on SPACE pressed when closed', async () => {
@@ -57,7 +57,7 @@ describe('HelpText', () => {
     });
     const helpTextTrigger = screen.getByRole('button');
 
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
     helpTextTrigger.focus();
     await act(async () => {
       await user.keyboard('[Space]');
@@ -72,7 +72,7 @@ describe('HelpText', () => {
 
     expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
     await act(async () => {
-      await user.keyboard('[Esc]');
+      await user.keyboard('[Escape]');
     });
     expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
   });

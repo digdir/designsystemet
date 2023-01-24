@@ -15,8 +15,14 @@ import {ArgsTable} from "@storybook/addon-docs";
     }}
     argTypes={{
         children: {
-            control: { type: 'string' }
-        }
+            description: 'Innholdet som vises i hjelpeteksten.',
+        },
+        title: {
+            description: '',
+        },
+        placement: {
+            description: 'Bestemmer hvilken side popoveren skal plasseres på, samt om plasseringen skal rettes inn etter hvor triggeren starter eller slutter.',
+        },
     }}
 />
 
