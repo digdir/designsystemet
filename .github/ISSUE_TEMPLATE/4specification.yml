@@ -5,9 +5,9 @@ labels: ["figma", "component", "specification"]
 body:
 
   - type: textarea
-      id: link
-      attributes:
-        label: Related issues or relevant information?
+    id: link
+    attributes:
+      label: Related issues or relevant information?
 
   - type: markdown
     attributes:
