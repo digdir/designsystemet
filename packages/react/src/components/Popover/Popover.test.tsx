@@ -19,18 +19,14 @@ const user = userEvent.setup();
 describe('popover', () => {
   describe('trigger uncontrolled', () => {
     it('should render trigger', async () => {
-      await act(async () => {
-        render();
-      });
+      render();
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
       expect(popoverTrigger).toBeInTheDocument();
     });
 
     it('should open popover on trigger click when closed', async () => {
-      await act(async () => {
-        render();
-      });
+      render();
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
       expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
@@ -54,9 +50,7 @@ describe('popover', () => {
     });
 
     it('should open popover on SPACE pressed when closed', async () => {
-      await act(async () => {
-        render();
-      });
+      render();
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
       expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
@@ -88,9 +82,7 @@ describe('popover', () => {
   });
 
   it('should not show popover content when initialOpen=false', async () => {
-    await act(async () => {
-      render({ initialOpen: false });
-    });
+    render({ initialOpen: false });
 
     expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
   });

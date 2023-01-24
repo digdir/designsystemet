@@ -10,6 +10,7 @@ export { Checkbox } from './Checkbox';
 export type { CheckboxProps } from './Checkbox';
 export { CheckboxGroup, CheckboxGroupVariant } from './CheckboxGroup';
 export type { CheckboxGroupProps, CheckboxGroupItem } from './CheckboxGroup';
+export { HelpText } from './HelpText';
 export { Popover, PopoverVariant } from './Popover';
 export type { PopoverProps } from './Popover';
 export { RadioButton, RadioButtonSize } from './RadioButton';
