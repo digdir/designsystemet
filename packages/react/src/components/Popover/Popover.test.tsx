@@ -33,11 +33,11 @@ describe('popover', () => {
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
       await act(async () => {
         await user.click(popoverTrigger);
       });
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
     });
 
     it('should close popover on trigger click when open', async () => {
@@ -46,11 +46,11 @@ describe('popover', () => {
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
       await act(async () => {
         await user.click(popoverTrigger);
       });
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
     });
 
     it('should open popover on SPACE pressed when closed', async () => {
@@ -59,12 +59,12 @@ describe('popover', () => {
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
       popoverTrigger.focus();
       await act(async () => {
         await user.keyboard('[Space]');
       });
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
     });
 
     it('should close popover on ESC pressed click when open', async () => {
@@ -72,11 +72,11 @@ describe('popover', () => {
         render({ initialOpen: true });
       });
 
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
       await act(async () => {
-        await user.keyboard('[Esc]');
+        await user.keyboard('[Escape]');
       });
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
     });
   });
 
@@ -95,8 +95,9 @@ describe('popover', () => {
     expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 
-  Object.values(PopoverVariant).forEach((variant) => {
-    it(`should render a PageHeader and PageContent with ${variant} classname when variant is ${variant}`, async () => {
+  test.each(Object.values(PopoverVariant))(
+    'should render popover with correct variant when variant is %s',
+    async (variant) => {
       await act(async () => {
         render({ variant: variant, initialOpen: true });
       });
@@ -107,12 +108,10 @@ describe('popover', () => {
       expect(screen.queryByTestId('popover-content-test-id')).toBeInTheDocument;
       const popoverContent = screen.getByTestId('popover-content-test-id');
 
-      expect(popoverContent.classList.contains(`popover--${variant}`)).toBe(
-        true,
-      );
+      expect(popoverContent.classList.contains(variant)).toBe(true);
       otherColors.forEach((v) => {
-        expect(popoverContent.classList.contains(`popover--${v}`)).toBe(false);
+        expect(popoverContent.classList.contains(v)).toBe(false);
       });
-    });
-  });
+    },
+  );
 });

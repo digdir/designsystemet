@@ -15,17 +15,35 @@ import {ArgsTable} from "@storybook/addon-docs";
         }
     }}
     argTypes={{
-        initialOpen: {
-            control: { type: 'boolean'},
-        },
-        open: {
-            control: { type: 'boolean' }
-        },
         trigger: {
-            control: { type: 'React.ReactNode' }
+            description: 'En RactNode som brukes til å åpne å lukke popoveren. Fungerer også som ankringspunkt til popoverens posisjon.',
+            control: { type: 'object' },
         },
         children: {
-            control: { type: 'React.ReactNode' }
+            description: 'En valgfri ReactNode som blir popoverens innhold.',
+            control: { type: 'object' },
+        },
+        arrow: {
+            description: 'Bestemmer om pilen på popoveren som peker til triggeren skal vises eller ikke.',
+            control: { type: 'boolean'},
+        },
+        placement: {
+            description: 'Bestemmer hvilken side popoveren skal plasseres på, samt om plasseringen skal rettes inn etter hvor triggeren starter eller slutter.',
+        },
+        open: {
+            description: 'Bestemmer om popoveren skal vises eller ikke. Om denne ikke settes håndteres den internt i popover komponenten. Om den settes anbefales det å bruke den sammen med `onOpenChange`.',
+            control: { type: 'boolean' },
+        },
+        onOpenChange: {
+            description: 'Funksjon som håndterer ednring av `open`. Om denne ikke settes håndteres den internt i popover komponenten. Om den settes anbefales det å bruke den sammen med `onOpenChange`.',
+        },
+        initialOpen: {
+            description: 'Bestemmer om tilstanden `open` skal settes til `true` ved rendering.',
+            control: { type: 'boolean'},
+        },
+        offset: {
+            description: 'Overstyrer avstanden fra triggeren til popoveren i åpen tilstand.',
+            control: { type: 'number' },
         }
     }}
 />
@@ -40,6 +58,8 @@ export const Template = (args) => {
             placement={args.placement} 
             variant={args.variant}
             arrow={args.arrow}
+            offset={args.offset}
+            modal={args.modal}
             {...defaultArgs}
         >
             Lorem ipsum dolor sit amet...

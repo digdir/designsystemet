@@ -56,10 +56,10 @@ export type PopoverProps = IPopoverOptions & IPopoverRequiredProps;
 
 export function usePopover({
   variant = PopoverVariant.Default,
-  arrow = true,
-  initialOpen = false,
+  arrow,
+  initialOpen,
   placement,
-  modal = true,
+  modal,
   offset: offset,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
@@ -141,9 +141,16 @@ export function Popover({
   children,
   trigger,
   modal = false,
+  arrow = true,
+  initialOpen = false,
   ...restOptions
 }: PopoverProps) {
-  const popover = usePopover({ modal, ...restOptions });
+  const popover = usePopover({
+    arrow,
+    initialOpen,
+    modal,
+    ...restOptions,
+  });
 
   return (
     <PopoverContext.Provider value={popover}>
@@ -234,7 +241,9 @@ const PopoverArrow = forwardRef<
   const arrowX = context.middlewareData.arrow?.x;
   const arrowY = context.middlewareData.arrow?.y;
 
-  const staticSide = {
+  // Get the placement of the popover arrow independent of alignment, which is opposite of popover content placement.
+  // Used to align the arrow to the edge of the content
+  const staticSide: string | undefined = {
     top: 'bottom',
     right: 'left',
     bottom: 'top',
@@ -251,6 +260,6 @@ const PopoverArrow = forwardRef<
       }}
       className={classes.arrow}
       {...props}
-    ></div>
+    />
   );
 });
