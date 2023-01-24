@@ -90,7 +90,9 @@ export function usePopover({
   const click = useClick(context, {
     enabled: controlledOpen == null,
   });
-  const dismiss = useDismiss(context);
+  const dismiss = useDismiss(context, {
+    referencePress: false,
+  });
   const role = useRole(context);
 
   const interactions = useInteractions([click, dismiss, role]);
@@ -195,6 +197,7 @@ const PopoverContent = forwardRef<
         <FloatingFocusManager
           context={context.context}
           modal={context.modal}
+          visuallyHiddenDismiss={true}
         >
           <div
             ref={ref}
