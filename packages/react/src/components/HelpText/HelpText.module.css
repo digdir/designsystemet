@@ -28,7 +28,7 @@
 }
 
 .helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIconFilled {
-  display: block;
+  display: inline-block;
 }
 
 .helpTextIcon {
