@@ -5,10 +5,16 @@
     padding: 32px 40px;
 }
 
-@media screen  and (max-width: 1350px)  {
+@media screen  and (max-width: 1400px)  {
     .toc {
         right: 55px;
         margin-left: auto;
+    }
+}
+
+@media screen  and (max-width: 1050px)  {
+    .toc {
+     display: none;
     }
 }
 

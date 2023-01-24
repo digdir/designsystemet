@@ -7,7 +7,7 @@ import { PopoverVariant, Popover } from './Popover';
 
 const render = (props: Partial<PopoverProps> = {}) => {
   const allProps = {
-    children: <div data-testid='popover-content'>Popover text</div>,
+    children: <div>Popover text</div>,
     trigger: <button>Open</button>,
     ...props,
   };
@@ -33,11 +33,11 @@ describe('popover', () => {
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
       await act(async () => {
         await user.click(popoverTrigger);
       });
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).toBeInTheDocument();
     });
 
     it('should close popover on trigger click when open', async () => {
@@ -46,11 +46,11 @@ describe('popover', () => {
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).toBeInTheDocument();
       await act(async () => {
         await user.click(popoverTrigger);
       });
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
     });
 
     it('should open popover on SPACE pressed when closed', async () => {
@@ -59,12 +59,12 @@ describe('popover', () => {
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
       popoverTrigger.focus();
       await act(async () => {
         await user.keyboard('[Space]');
       });
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).toBeInTheDocument();
     });
 
     it('should close popover on ESC pressed click when open', async () => {
@@ -72,11 +72,11 @@ describe('popover', () => {
         render({ initialOpen: true });
       });
 
-      expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).toBeInTheDocument();
       await act(async () => {
         await user.keyboard('[Escape]');
       });
-      expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
     });
   });
 
@@ -84,7 +84,7 @@ describe('popover', () => {
     await act(async () => {
       render({ initialOpen: true });
     });
-    expect(screen.getByTestId('popover-content')).toBeInTheDocument();
+    expect(screen.queryByText('Popover text')).toBeInTheDocument();
   });
 
   it('should not show popover content when initialOpen=false', async () => {
@@ -92,7 +92,7 @@ describe('popover', () => {
       render({ initialOpen: false });
     });
 
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
   });
 
   test.each(Object.values(PopoverVariant))(
@@ -105,12 +105,12 @@ describe('popover', () => {
         (v) => v !== variant,
       );
 
-      expect(screen.queryByTestId('popover-content-test-id')).toBeInTheDocument;
-      const popoverContent = screen.getByTestId('popover-content-test-id');
+      const popoverContent = screen.getByRole('dialog');
+      expect(popoverContent).toBeInTheDocument();
 
-      expect(popoverContent.classList.contains(variant)).toBe(true);
+      expect(popoverContent.classList).toContain(variant);
       otherColors.forEach((v) => {
-        expect(popoverContent.classList.contains(v)).toBe(false);
+        expect(popoverContent.classList).not.toContain(v);
       });
     },
   );

@@ -221,7 +221,7 @@ const PopoverContent = forwardRef<
               context.className,
             )}
             {...context.getFloatingProps(props)}
-            data-testid={'popover-content-test-id'}
+            role={'dialog'}
           >
             {props.children}
           </div>

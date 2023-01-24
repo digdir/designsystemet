@@ -24,6 +24,12 @@ button, input, select {
     }
 }
 
+@media screen  and (max-width: 1050px)  {
+    .sbdocs-wrapper {
+        width: auto;
+    }
+}
+
 
 .sbdocs > div > h1 + p,
 #beta-tag + p {
@@ -31,6 +37,24 @@ button, input, select {
     line-height: 1.7em !important;
     font-weight: 400 !important;
     width: 85% !important;
+}
+
+@media screen  and (max-width: 1050px)  {
+    #beta-tag + p {
+        width: 100% !important;
+    }
+}
+
+.sbdocs p {
+    width: 75% !important;
+    line-height: 1.55em !important;
+    font-size: 16px !important;
+}
+
+@media screen  and (max-width: 1050px)  {
+    .sbdocs p {
+        width: 100% !important;
+    }
 }
 
 .sbdocs > div > h1 {
@@ -85,12 +109,6 @@ code {
 
 .sto-1a1e9yk {
     padding: 4px !important;
-}
-
-.sbdocs p {
-    width: 75% !important;
-    line-height: 1.55em !important;
-    font-size: 16px !important;
 }
 
 .sbdocs-preview {
