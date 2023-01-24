@@ -1,14 +1,13 @@
 name: Specify a new component ✍️
 description: ⚠️ This template is for internal use when a component needs to be specified in Figma
 title: "Specification for: "
-labels: ["figma", "component"]
+labels: ["figma", "component", "specification"]
 body:
-  - type: input
-    id: component
+
+  - type: textarea
+    id: link
     attributes:
-      label: What component is it that needs specification?
-    validations:
-      required: true
+      label: Related issues or relevant information?
 
   - type: markdown
     attributes:
@@ -16,22 +15,31 @@ body:
         Check if any tasks could be removed or if you need to add any new tasks.
 
   - type: textarea
-    id: Tasks
+    id: design
     attributes:
-      label: Tasks
+      label: Design tasks
       value: |
-        _Link to correct placement in our Figma component library._
         - [ ] Design is fully specified in Figma
           - [ ] Design component with all relevant states
           - [ ] Do a accessibility test of the sketches
-          - [ ] Functionality/animation is described and prototyped if relevant
-          - [ ] Describe keyboardnavigation (Only relevant if its not a native html component)
-        - [ ] Write acceptance criteria and link to Figma   
+          - [ ] Functionality/animation is described and prototyped if relevant    
+          - [ ] If there are used any svgs in this component is it available for the developer? [Link]
+          - [ ] Link to Figma design: [Link]
+          - [ ] Pasted screenshot from Figma below :point_down::skin-tone-2:  
 
   - type: textarea
-    id: svg
-    attributes: 
-      label: SVG
+    id: development
+    attributes:
+      label: Development Tasks
       value: |
-        - [ ] If there are used any svgs in this component is it available for the developer?
+        - [ ] Implement in Storybook
+        - [ ] Make sure all variants/properties is possible to turn on/off
+        - [ ] Make sure the component is usable across different breakpoints/screen sizes
+
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility tasks
+      value: |
+        - [ ] WCAG-review
 
