@@ -210,7 +210,7 @@ const PopoverContent = forwardRef<
             data-placement={context.placement}
             className={cn(
               classes.popover,
-              classes[`popover--${context.variant}`],
+              classes[context.variant],
               context.className,
             )}
             {...context.getFloatingProps(props)}
@@ -249,7 +249,7 @@ const PopoverArrow = forwardRef<
         ...(arrowY != null ? { top: arrowY } : {}),
         ...(staticSide ? { [staticSide]: '-7px' } : {}),
       }}
-      className={classes['popover__arrow']}
+      className={classes.arrow}
       {...props}
     ></div>
   );

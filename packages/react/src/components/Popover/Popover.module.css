@@ -18,27 +18,27 @@
   outline: none;
 }
 
-.popover--default {
+.popover.default {
   background-color: #FFFFFF;
   border-color: #68707C;
 }
 
-.popover--info {
+.popover.info {
   background-color: #E6EFF8;
   border-color: #004C8F;
 }
 
-.popover--warning {
+.popover.warning {
   background-color: #FFFBE6;
   border-color: #CC7005;
 }
 
-.popover--danger {
+.popover.danger {
   background-color: #F9D5DB;
   border-color: #B3253A;
 }
 
-.popover__arrow {
+.arrow {
   position: absolute;
   z-index: -1;
   transform: rotate(45deg);
@@ -49,27 +49,27 @@
   height: 12px;
 }
 
-.popover[data-placement^="top"] > .popover__arrow {
+.popover[data-placement^="top"] > .arrow {
   box-shadow: 3px 3px 6px 0px #00000033;
 	clip-path: inset(0px -10px -10px 0px);
   border-left-color: transparent;
   border-top-color: transparent;
 }
 
-.popover[data-placement^="bottom"] > .popover__arrow {
+.popover[data-placement^="bottom"] > .arrow {
   clip-path: inset(-10px 0px 0px -10px);
   border-bottom-color: transparent;
   border-right-color: transparent;
 }
 
-.popover[data-placement^="left"] > .popover__arrow {
+.popover[data-placement^="left"] > .arrow {
   box-shadow: 1px 3px 6px 0px #00000033;
 	clip-path: inset(-10px -10px 0px 0px);
   border-left-color: transparent;
   border-bottom-color: transparent;
 }
 
-.popover[data-placement^="right"] > .popover__arrow {
+.popover[data-placement^="right"] > .arrow {
   box-shadow: -1px 3px 6px 0px #00000033;
 	clip-path: inset(0px 0px -10px -10px);
   border-right-color: transparent;
