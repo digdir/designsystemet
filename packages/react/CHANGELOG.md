@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.3.0...@digdir/design-system-react@0.3.1) (2023-01-24)
+
+### Bug Fixes
+
+- Export issues ([#72](https://github.com/digdir/designsystem/issues/72)) ([716e9d7](https://github.com/digdir/designsystem/commit/716e9d7892be4ef7f21864338fd299a2f98a6784))
+
+# [0.3.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.2.1...@digdir/design-system-react@0.3.0) (2023-01-23)
+
+### Bug Fixes
+
+- **select:** Value update in Select component ([#63](https://github.com/digdir/designsystem/issues/63)) ([0a4677c](https://github.com/digdir/designsystem/commit/0a4677cc00cc1b316ca17d5522a10c7385817fed))
+
+### Features
+
+- **textfield:** Add text field component ([#67](https://github.com/digdir/designsystem/issues/67)) ([ba7e8a5](https://github.com/digdir/designsystem/commit/ba7e8a5484f1fc75ec982eb666c1a94e3594cdea))
+
 ## [0.2.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.2.0...@digdir/design-system-react@0.2.1) (2023-01-19)
 
 ### Bug Fixes
