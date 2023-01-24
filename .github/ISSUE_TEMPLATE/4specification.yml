@@ -43,10 +43,3 @@ body:
       value: |
         - [ ] WCAG-review
 
-  - type: textarea
-    id: svg
-    attributes: 
-      label: SVG
-      value: |
-        - [ ] If there are used any svgs in this component is it available for the developer?
-
