@@ -7,10 +7,9 @@ import { HelpText } from './HelpText';
 
 const render = (props: Partial<HelpTextProps> = {}) => {
   const allProps = {
-    children: 'Help',
     ...props,
   };
-  renderRtl(<HelpText {...allProps} />);
+  renderRtl(<HelpText {...allProps}>Help</HelpText>);
 };
 
 const user = userEvent.setup();
@@ -25,30 +24,33 @@ describe('HelpText', () => {
     expect(helpTextTrigger).toBeInTheDocument();
   });
 
-  it('should open HelpText on trigger click when closed', async () => {
+  it('should open HelpText on trigger-click when closed', async () => {
     await act(async () => {
       render();
     });
     const helpTextTrigger = screen.getByRole('button');
 
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Help')).not.toBeInTheDocument();
     await act(async () => {
       await user.click(helpTextTrigger);
     });
-    expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
+    expect(screen.queryByText('Help')).toBeInTheDocument();
   });
 
-  it('should close HelpText on trigger click when open', async () => {
+  it('should close HelpText on trigger-click when open', async () => {
     await act(async () => {
       render();
     });
     const helpTextTrigger = screen.getByRole('button');
 
-    expect(screen.queryByTestId('popover-content')).toBeInTheDocument();
     await act(async () => {
       await user.click(helpTextTrigger);
     });
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Help')).toBeInTheDocument();
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(screen.queryByText('Help')).not.toBeInTheDocument();
   });
 
   it('should open HelpText on SPACE pressed when closed', async () => {
@@ -57,23 +59,28 @@ describe('HelpText', () => {
     });
     const helpTextTrigger = screen.getByRole('button');
 
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Help')).not.toBeInTheDocument();
     helpTextTrigger.focus();
     await act(async () => {
       await user.keyboard('[Space]');
     });
-    expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+    expect(screen.queryByText('Help')).toBeInTheDocument();
   });
 
-  it('should close HelpText on ESC pressed click when open', async () => {
+  it('should close HelpText on ESC pressed when open', async () => {
     await act(async () => {
       render();
     });
 
-    expect(screen.queryByTestId('popover-content')).toBeInTheDocument;
+    const helpTextTrigger = screen.getByRole('button');
+
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(screen.queryByText('Help')).toBeInTheDocument();
     await act(async () => {
       await user.keyboard('[Escape]');
     });
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument;
+    expect(screen.queryByText('Help')).not.toBeInTheDocument();
   });
 });

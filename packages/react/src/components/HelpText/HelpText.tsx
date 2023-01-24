@@ -28,7 +28,7 @@ export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const HelpText = ({
   className,
   children,
-  title = 'Help',
+  title,
   placement = 'right',
   onClick,
   ...rest
