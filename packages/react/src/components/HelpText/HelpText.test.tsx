@@ -16,18 +16,14 @@ const user = userEvent.setup();
 
 describe('HelpText', () => {
   it('should render HelpText button', async () => {
-    await act(async () => {
-      render();
-    });
+    render();
     const helpTextTrigger = screen.getByRole('button');
 
     expect(helpTextTrigger).toBeInTheDocument();
   });
 
   it('should open HelpText on trigger-click when closed', async () => {
-    await act(async () => {
-      render();
-    });
+    render();
     const helpTextTrigger = screen.getByRole('button');
 
     expect(screen.queryByText('Help')).not.toBeInTheDocument();
@@ -38,9 +34,7 @@ describe('HelpText', () => {
   });
 
   it('should close HelpText on trigger-click when open', async () => {
-    await act(async () => {
-      render();
-    });
+    render();
     const helpTextTrigger = screen.getByRole('button');
 
     await act(async () => {
@@ -54,9 +48,7 @@ describe('HelpText', () => {
   });
 
   it('should open HelpText on SPACE pressed when closed', async () => {
-    await act(async () => {
-      render();
-    });
+    render();
     const helpTextTrigger = screen.getByRole('button');
 
     expect(screen.queryByText('Help')).not.toBeInTheDocument();
@@ -68,9 +60,7 @@ describe('HelpText', () => {
   });
 
   it('should close HelpText on ESC pressed when open', async () => {
-    await act(async () => {
-      render();
-    });
+    render();
 
     const helpTextTrigger = screen.getByRole('button');
 
