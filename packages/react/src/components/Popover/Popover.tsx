@@ -251,6 +251,6 @@ const PopoverArrow = forwardRef<
       }}
       className={classes.arrow}
       {...props}
-    ></div>
+    />
   );
 });
