@@ -23,7 +23,6 @@ import {
   useInteractions,
   useMergeRefs,
   FloatingPortal,
-  FloatingFocusManager,
 } from '@floating-ui/react';
 import cn from 'classnames';
 
@@ -42,7 +41,6 @@ interface IPopoverOptions extends HTMLAttributes<HTMLDivElement> {
   offset?: number;
   initialOpen?: boolean;
   placement?: Placement;
-  modal?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }
@@ -59,7 +57,6 @@ export function usePopover({
   arrow,
   initialOpen,
   placement,
-  modal,
   offset: offset,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
@@ -104,22 +101,11 @@ export function usePopover({
       ...interactions,
       ...data,
       ...restOptions,
-      modal,
       arrow,
       arrowRef,
       variant,
     }),
-    [
-      open,
-      setOpen,
-      interactions,
-      data,
-      restOptions,
-      modal,
-      arrow,
-      arrowRef,
-      variant,
-    ],
+    [open, setOpen, interactions, data, restOptions, arrow, arrowRef, variant],
   );
 }
 
@@ -140,7 +126,6 @@ export const usePopoverContext = () => {
 export function Popover({
   children,
   trigger,
-  modal = false,
   arrow = true,
   initialOpen = false,
   ...restOptions
@@ -148,7 +133,6 @@ export function Popover({
   const popover = usePopover({
     arrow,
     initialOpen,
-    modal,
     ...restOptions,
   });
 
@@ -201,31 +185,25 @@ const PopoverContent = forwardRef<
   return (
     <FloatingPortal>
       {context.open && (
-        <FloatingFocusManager
-          context={context.context}
-          modal={context.modal}
-          visuallyHiddenDismiss={true}
+        <div
+          ref={ref}
+          style={{
+            position: context.strategy,
+            top: context.y ?? 0,
+            left: context.x ?? 0,
+            width: 'max-content',
+          }}
+          data-placement={context.placement}
+          className={cn(
+            classes.popover,
+            classes[context.variant],
+            context.className,
+          )}
+          {...context.getFloatingProps(props)}
+          role={'dialog'}
         >
-          <div
-            ref={ref}
-            style={{
-              position: context.strategy,
-              top: context.y ?? 0,
-              left: context.x ?? 0,
-              width: 'max-content',
-            }}
-            data-placement={context.placement}
-            className={cn(
-              classes.popover,
-              classes[context.variant],
-              context.className,
-            )}
-            {...context.getFloatingProps(props)}
-            role={'dialog'}
-          >
-            {props.children}
-          </div>
-        </FloatingFocusManager>
+          {props.children}
+        </div>
       )}
     </FloatingPortal>
   );
