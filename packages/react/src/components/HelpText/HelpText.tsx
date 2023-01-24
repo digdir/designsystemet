@@ -40,7 +40,7 @@ export const HelpText = ({
       placement={placement}
       open={open}
       onOpenChange={setOpen}
-      className={cn(classes.helpTextContent)}
+      className={classes.helpTextContent}
       trigger={
         <button
           {...rest}
