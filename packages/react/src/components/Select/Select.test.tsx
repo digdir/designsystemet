@@ -173,11 +173,11 @@ describe('Select', () => {
 
     it('Gets correct state according to keyboard/mouse navigation', async () => {
       renderSingleSelect();
-      expect(getRoot().classList).not.toContain('select--using-keyboard');
+      expect(getRoot().classList).not.toContain('usingKeyboard');
       await act(() => user.tab());
-      expect(getRoot().classList).toContain('select--using-keyboard');
+      expect(getRoot().classList).toContain('usingKeyboard');
       await act(() => user.click(document.body));
-      expect(getRoot().classList).not.toContain('select--using-keyboard');
+      expect(getRoot().classList).not.toContain('usingKeyboard');
     });
 
     it('Throws an error if there are duplicate values', () => {
@@ -210,6 +210,15 @@ describe('Select', () => {
       renderSingleSelect({ hideLabel: true, label });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
+    });
+
+    it('Rerenders with new selected value when the "value" property changes', async () => {
+      const selectedValue = singleSelectOptions[0].value;
+      const newValueIndex = 2
+      const newValue = singleSelectOptions[newValueIndex].value;
+      const { rerender } = renderSingleSelect({ value: selectedValue });
+      rerender(<Select {...defaultSingleSelectProps} value={newValue} />);
+      expectSelectedValue(singleSelectOptions[newValueIndex]);
     });
 
     const expectSelectedValue = (option: SingleSelectOption) => {
@@ -488,11 +497,11 @@ describe('Select', () => {
 
     it('Gets correct state according to keyboard/mouse navigation', async () => {
       renderMultiSelect();
-      expect(getRoot().classList).not.toContain('select--using-keyboard');
+      expect(getRoot().classList).not.toContain('usingKeyboard');
       await act(() => user.tab());
-      expect(getRoot().classList).toContain('select--using-keyboard');
+      expect(getRoot().classList).toContain('usingKeyboard');
       await act(() => user.click(document.body));
-      expect(getRoot().classList).not.toContain('select--using-keyboard');
+      expect(getRoot().classList).not.toContain('usingKeyboard');
     });
 
     it('Throws an error if there are duplicate values', () => {
@@ -525,6 +534,16 @@ describe('Select', () => {
       renderMultiSelect({ hideLabel: true, label });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
+    });
+
+    it('Rerenders with new selected values when the "value" property changes', async () => {
+      const selectedValues = [multiSelectOptions[0].value];
+      const newValueIndices = [1, 2];
+      const newValues = newValueIndices.map((i) => multiSelectOptions[i].value);
+      const { rerender } = renderMultiSelect({ value: selectedValues });
+      rerender(<Select {...defaultMultiSelectProps} value={newValues} />);
+      expectSelectedValues(newValues);
+      expectSelectedOptions((i) => newValueIndices.includes(i));
     });
 
     const getFocusedOption = (container: HTMLElement) =>
