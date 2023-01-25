@@ -11,8 +11,9 @@ import {ArgsTable} from "@storybook/addon-docs";
     parameters={{
         status: {
             type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
+            url: 'http://www.url.com/status',
+        },
+        docs: { inlineStories: false, iframeHeight: '200px' },
     }}
     argTypes={{
         trigger: {
@@ -65,6 +66,29 @@ export const Template = (args) => {
         </Popover>
 )};
 
+export const ComplexTemplate = (args) => {
+    return (
+        <Popover 
+            placement={args.placement} 
+            variant={args.variant}
+            arrow={args.arrow}
+            offset={args.offset}
+            {...defaultArgs}
+        >
+            <div style={{display: 'flex', 'align-items': 'center', gap: '1rem'}}>
+                Hallo!
+                <ul>
+                    <li>Coffee</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                </ul>
+                <Button>
+                    Click me!
+                </Button>
+            </div>
+        </Popover>
+)};
+
 # Popover
 
 <BetaBlock />
@@ -79,11 +103,25 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
     <Story
         name="Popover"
         args={{
-            placement: 'top',
+            placement: 'top-start',
             variant: PopoverVariant.Default,
         }}
     >
         {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Mer komplekst innhold
+
+<Canvas>
+    <Story
+        name="Mer komplekst innhold"
+        args={{
+            placement: 'right',
+            variant: PopoverVariant.Warning,
+        }}
+    >
+        {ComplexTemplate.bind({})}
     </Story>
 </Canvas>
 
