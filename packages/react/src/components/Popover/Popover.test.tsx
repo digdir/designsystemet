@@ -7,7 +7,12 @@ import { PopoverVariant, Popover } from './Popover';
 
 const render = (props: Partial<PopoverProps> = {}) => {
   const allProps = {
-    children: <div>Popover text</div>,
+    children: (
+      <div>
+        <button>My button</button>
+        Popover text
+      </div>
+    ),
     trigger: <button>Open</button>,
     ...props,
   };
@@ -85,6 +90,34 @@ describe('popover', () => {
     render({ initialOpen: false });
 
     expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
+  });
+
+  it('should retain focus on trigger when popover opens', async () => {
+    render();
+
+    const popoverTrigger = screen.getByRole('button', { name: 'Open' });
+    expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
+    popoverTrigger.focus();
+    await act(async () => {
+      await user.keyboard('[Space]');
+    });
+    expect(popoverTrigger).toHaveFocus();
+  });
+
+  it('should focus focasable content on tab', async () => {
+    render();
+
+    const popoverTrigger = screen.getByRole('button', { name: 'Open' });
+    expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
+    popoverTrigger.focus();
+    await act(async () => {
+      await user.keyboard('[Space]');
+    });
+    const contentButton = screen.getByRole('button', { name: 'My button' });
+    await act(async () => {
+      await user.keyboard('[Tab]');
+    });
+    expect(contentButton).toHaveFocus();
   });
 
   test.each(Object.values(PopoverVariant))(
