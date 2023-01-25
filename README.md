@@ -76,6 +76,7 @@ When you are committing changes to a component, try to ***always*** use scopes w
 This allows us to show changelogs for each individual component in the designsystem.
 
 ### When to use what keywords
+
 #### Added to changelog
 * `fix:` Patches a bug in the codebase. Nothing new is introduced in terms of functionality. 
 * `feat:` Introduces a new feature to the codebase. A new component is an often use case.
@@ -124,7 +125,7 @@ If you haven't already created a NPM account, do so by going to [NPM.com](https:
 
 ### 2. Ask to be added to the Digdir organisation on NPM
 Contact one of the people below to have your account added to the NPM Github organisation:
-* Øyvind Thune (oyvind.thune@digdir.no, teams, or slack)
+* Øyvind Thune (oyvind.thune@digdir.no, Teams, or Slack)
 
 
 ### 3. Login to you account
@@ -153,7 +154,7 @@ Only non-private packages will be handled (package.json).
 
 ### 3. Publish
 Publish the packages to NPM. Make sure you are logged in to your NPM account from the terminal you are trying to publish from. 
-Your account also has to be added to the NPM Github organisation.
+Your account also has to be added to the Digdir organisation on NPM.
 
 `yarn lerna:publish`
 
