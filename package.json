@@ -10,7 +10,7 @@
     "storybook:clean": "cd docs && yarn storybook --no-manager-cache\t",
     "build": "npx lerna run build",
     "build-react": "cd packages/react && yarn build",
-    "build-storybook": "cd docs && yarn build-storybook -o /storybook-build",
+    "build-storybook": "cd docs && yarn build-storybook",
     "test": "jest",
     "add-component-core": "node scripts/add-component.mjs",
     "lerna:version": "lerna version  --conventional-commits --no-private",
