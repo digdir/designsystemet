@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { System } from '@navikt/ds-icons';
+import { SystemFilled } from '@navikt/ds-icons';
 
 import classes from './NavigationCard.module.css';
 
@@ -26,7 +26,7 @@ const NavigationCard = ({ name, desc, url }: NavigationCardProps) => {
       className={classes.box}
     >
       <div className={classes.iconContainer}>
-        <System fontSize={22} />
+        <SystemFilled fontSize={23} />
       </div>
       <div className={classes.name}>{name}</div>
       <div className={classes.desc}>{desc}</div>

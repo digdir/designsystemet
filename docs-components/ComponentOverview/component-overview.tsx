@@ -37,7 +37,7 @@ const ComponentOverview = () => {
     },
     {
       name: 'Popover',
-      img: 'help-text.png',
+      img: 'popover.png',
       url: 'popover--popover',
     },
     {
