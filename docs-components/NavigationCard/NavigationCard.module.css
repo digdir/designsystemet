@@ -1,5 +1,5 @@
 .box {
-    padding: 28px 28px;
+    padding: 29px;
     border-radius: 8px;
     background-color: #F4F5F6;
     border: 1px solid #E9EAEC;
@@ -34,8 +34,16 @@
     height: 56px;
     width: 56px;
     border-radius: 50%;
-    background-color: #80B1DD;
+    background-color: #A5D6FB;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.iconContainer--red {
+    background-color: #FBBFC1;
+}
+
+.iconContainer--yellow {
+    background-color: #F5DDA6;
 }

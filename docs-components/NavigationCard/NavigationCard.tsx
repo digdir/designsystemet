@@ -3,13 +3,23 @@ import { SystemFilled } from '@navikt/ds-icons';
 
 import classes from './NavigationCard.module.css';
 
+import cn from 'classnames';
+
 interface NavigationCardProps {
   name: string;
   desc: string;
   url: string;
+  color?: 'red' | 'blue' | 'yellow';
+  icon: React.ReactNode;
 }
 
-const NavigationCard = ({ name, desc, url }: NavigationCardProps) => {
+const NavigationCard = ({
+  name,
+  desc,
+  url,
+  color = 'red',
+  icon,
+}: NavigationCardProps) => {
   const [theUrl, setTheUrl] = useState('');
 
   useEffect(() => {
@@ -25,8 +35,13 @@ const NavigationCard = ({ name, desc, url }: NavigationCardProps) => {
       href={theUrl}
       className={classes.box}
     >
-      <div className={classes.iconContainer}>
-        <SystemFilled fontSize={23} />
+      <div
+        className={cn(
+          classes.iconContainer,
+          classes['iconContainer--' + color],
+        )}
+      >
+        {icon}
       </div>
       <div className={classes.name}>{name}</div>
       <div className={classes.desc}>{desc}</div>
