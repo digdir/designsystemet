@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.3.1...@digdir/design-system-react@0.4.0) (2023-01-26)
+
+### Bug Fixes
+
+- **popover:** retain focus on trigger when opening popover ([d54c7c8](https://github.com/digdir/designsystem/commit/d54c7c8293372415a560bb334f2c2df1ed342d7c))
+- **Tabs:** Spacing issues ([#95](https://github.com/digdir/designsystem/issues/95)) ([2583e4c](https://github.com/digdir/designsystem/commit/2583e4c8f1205bd5d7c9882ebfc55edf7efd0959))
+
+### Features
+
+- **help-text:** add help text component ([8f2bb3b](https://github.com/digdir/designsystem/commit/8f2bb3bc682b9bfec650fe2813d402c94771a6d3))
+- **popover:** added popover component ([6e34adf](https://github.com/digdir/designsystem/commit/6e34adfebed9742c7145fcc3e2e99b2075fe8081))
+
 ## [0.3.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.3.0...@digdir/design-system-react@0.3.1) (2023-01-24)
 
 ### Bug Fixes
