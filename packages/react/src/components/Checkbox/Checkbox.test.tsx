@@ -9,11 +9,14 @@ import { Checkbox } from './';
 
 const user = userEvent.setup();
 
+const onChange = jest.fn();
 const defaultProps: CheckboxProps = {
-  onChange: jest.fn,
+  onChange,
 };
 
 describe('Checkbox', () => {
+  afterEach(jest.resetAllMocks);
+
   it('Should not be checked by default', () => {
     render();
     const checkbox = screen.getByRole('checkbox');
@@ -77,6 +80,68 @@ describe('Checkbox', () => {
     const description = 'Lorem ipsum dolor sit amet';
     render({ description });
     expect(screen.getByText(description)).toBeDefined();
+  });
+
+  it.each([false, undefined])(
+    'Does not have presentation role when the "presentation" property is %s',
+    (presentation) => {
+      render({ presentation });
+      expect(screen.queryByRole('presentation')).toBeFalsy();
+    },
+  );
+
+  it('Has presentation role when the "presentation" property is true', () => {
+    render({ presentation: true });
+    expect(screen.getByRole('presentation')).toBeInTheDocument();
+    expect(screen.queryByRole('checkbox')).toBeFalsy();
+  });
+
+  it('Displays label and description when they are React nodes', () => {
+    const labelText = 'Label';
+    const descriptionText = 'Description';
+    render({
+      label: <span>{labelText}</span>,
+      description: <span>{descriptionText}</span>,
+    });
+    expect(screen.getByText(labelText)).toBeInTheDocument();
+    expect(screen.getByText(descriptionText)).toBeInTheDocument();
+  });
+
+  it('Has clickable label text by default if label is set', async () => {
+    const label = 'Label';
+    render({ label });
+    await act(() => user.click(screen.getByText(label)));
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('Does not have clickable label text if the "presentation" property is true and the label is a React node', async () => {
+    const labelText = 'Label';
+    render({
+      label: <span>{labelText}</span>,
+      presentation: true,
+    });
+    await act(() => user.click(screen.getByText(labelText)));
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('Does not have clickable label text if the "presentation" property is true and the description is a React node', async () => {
+    const descriptionText = 'Description';
+    render({
+      label: <span>{descriptionText}</span>,
+      presentation: true,
+    });
+    await act(() => user.click(screen.getByText(descriptionText)));
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('Has clickable checkbox even if the "presentation" property is true and the label is a React node', async () => {
+    const name = 'Label';
+    render({
+      label: <span>{name}</span>,
+      presentation: true,
+    });
+    await act(() => user.click(screen.getByRole('presentation', { name })));
+    expect(onChange).toHaveBeenCalled();
   });
 });
 

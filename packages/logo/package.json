@@ -2,7 +2,7 @@
   "name": "@digdir/design-system-logos",
   "version": "0.0.1",
   "description": "",
-  "private": false,
+  "private": true,
   "scripts": {
     "clean": "rimraf ./optimized",
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",

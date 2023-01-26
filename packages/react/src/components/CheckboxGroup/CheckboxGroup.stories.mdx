@@ -1,6 +1,6 @@
 import {Meta, Canvas, Story} from '@storybook/addon-docs'
 import {CheckboxGroup, CheckboxGroupVariant} from "./index";
-import {Beta, TokensTable} from "../../../../../docs-components";
+import {BetaBlock, TokensTable} from "../../../../../docs-components";
 import {ArgsTable} from "@storybook/addon-docs";
 
 <Meta
@@ -44,6 +44,10 @@ import {ArgsTable} from "@storybook/addon-docs";
         compact: {
             description: 'Kompakt visning.',
             control: {type: 'boolean'}
+        },
+        presentation: {
+            description: 'Sett denne hvis sjekkboksene er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av sjekkboksene være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+            control: {type: 'boolean'}
         }
     }}
 />
@@ -69,7 +73,7 @@ export const Template = (args = {}) => <CheckboxGroup {...{...defaultArgs, ...ar
 
 # CheckboxGroup
 
-<Beta />
+<BetaBlock />
 
 `CheckboxGroup` er en gruppe med sjekkbokser som gir brukeren mulighet til å velge flere verdier i en liste.
 

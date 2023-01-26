@@ -1,15 +1,8 @@
 name: Create tokens 💲
 description: ⚠️ This template is for internal use when a component needs tokens
 title: "Tokens for: "
-labels: ["tokens"]
+labels: ["tokens", "figma", "kode"]
 body:
-
-  - type: input
-    id: component
-    attributes:
-      label: What component needs tokens?
-    validations:
-      required: true
 
   - type: markdown
     attributes:
@@ -44,4 +37,6 @@ body:
           - [ ] The color of all states are described with tokens
           - [ ] Border width or styling is described with tokens
           - [ ] Text size are described with tokens
+        **Development tasks**  
+        - [ ] Connect tokens with relevant components in design system
 

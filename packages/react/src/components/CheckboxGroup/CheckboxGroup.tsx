@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { ReactNode, useEffect, useReducer } from 'react';
 import cn from 'classnames';
 
 import { Checkbox } from '../Checkbox';
@@ -25,12 +25,13 @@ export type CheckedNames = string[];
 
 export interface CheckboxGroupProps {
   compact?: boolean;
-  description?: string;
+  description?: ReactNode;
   disabled?: boolean;
-  error?: React.ReactNode;
+  error?: ReactNode;
   items: CheckboxGroupItem[];
-  legend?: string;
+  legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;
+  presentation?: boolean;
   variant?: CheckboxGroupVariant;
 }
 
@@ -59,6 +60,7 @@ export const CheckboxGroup = ({
   items,
   legend,
   onChange,
+  presentation,
   variant = CheckboxGroupVariant.Vertical,
 }: CheckboxGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.name))) {
@@ -83,39 +85,37 @@ export const CheckboxGroup = ({
 
   return (
     <FieldSet
+      contentClassName={cn(
+        classes.checkboxGroup,
+        classes[variant],
+        compact && classes.compact,
+      )}
       description={description}
       disabled={disabled}
       error={error}
       legend={legend}
       size={compact ? FieldSetSize.Xsmall : FieldSetSize.Small}
     >
-      <div
-        className={cn(
-          classes.checkboxGroup,
-          classes[variant],
-          compact && classes.compact,
-        )}
-      >
-        {items.map((item) => (
-          <Checkbox
-            checkboxId={item.checkboxId}
-            checked={checkedNames.includes(item.name)}
-            compact={compact}
-            description={item.description}
-            disabled={disabled || item.disabled}
-            error={!!error}
-            key={item.name}
-            label={item.label}
-            name={item.name}
-            onChange={(event) => {
-              dispatch({
-                type: event.target.checked ? 'check' : 'uncheck',
-                name: item.name,
-              });
-            }}
-          />
-        ))}
-      </div>
+      {items.map((item) => (
+        <Checkbox
+          checkboxId={item.checkboxId}
+          checked={checkedNames.includes(item.name)}
+          compact={compact}
+          description={item.description}
+          disabled={disabled || item.disabled}
+          error={!!error}
+          key={item.name}
+          label={item.label}
+          name={item.name}
+          onChange={(event) => {
+            dispatch({
+              type: event.target.checked ? 'check' : 'uncheck',
+              name: item.name,
+            });
+          }}
+          presentation={presentation}
+        />
+      ))}
     </FieldSet>
   );
 };

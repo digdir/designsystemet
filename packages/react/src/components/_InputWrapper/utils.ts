@@ -2,13 +2,13 @@ export enum InputVariant {
   Default = 'default',
   Error = 'error',
   Disabled = 'disabled',
-  ReadOnlyInfo = 'readonly-info',
-  ReadOnlyConfirm = 'readonly-confirm',
+  ReadOnlyInfo = 'readonlyInfo',
+  ReadOnlyConfirm = 'readonlyConfirm',
 }
 
 export enum ReadOnlyVariant {
-  ReadOnlyInfo = 'readonly-info',
-  ReadOnlyConfirm = 'readonly-confirm',
+  ReadOnlyInfo = 'readonlyInfo',
+  ReadOnlyConfirm = 'readonlyConfirm',
 }
 
 export enum IconVariant {

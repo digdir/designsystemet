@@ -18,15 +18,16 @@ export interface CheckboxRadioTemplateProps {
   checked?: boolean;
   children: ReactNode;
   className?: string;
-  description?: string;
+  description?: ReactNode;
   disabled?: boolean;
   hideInput?: boolean;
   hideLabel?: boolean;
   inputId?: string;
   inputWrapperClassName?: string;
-  label?: string;
+  label?: ReactNode;
   name?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  presentation?: boolean;
   size: CheckboxRadioTemplateSize;
   type: 'checkbox' | 'radio';
   value?: string;
@@ -44,6 +45,7 @@ export const CheckboxRadioTemplate = ({
   label,
   name,
   onChange,
+  presentation,
   size,
   type,
   value,
@@ -53,22 +55,31 @@ export const CheckboxRadioTemplate = ({
   const labelId = label ? `${finalInputId}-label` : undefined;
   const descriptionId = description ? `${finalInputId}-description` : undefined;
   const showLabel = label && !hideLabel;
+  const shouldHaveClickableLabel = !presentation
+    || (typeof label !== 'object' && typeof description !== 'object');
 
   return (
-    <label
+    <Wrapper
       className={cn(
         classes.template,
         classes[size],
         disabled && classes.disabled,
         className,
       )}
-      htmlFor={inputId}
+      htmlFor={finalInputId}
+      isLabel={shouldHaveClickableLabel}
     >
       {!hideInput && (
-        <span className={classes.inputWrapper}>
+        <Wrapper
+          className={classes.inputWrapper}
+          htmlFor={finalInputId}
+          isLabel={!shouldHaveClickableLabel}
+        >
           <input
             aria-describedby={descriptionId}
-            aria-label={!showLabel ? label : undefined}
+            aria-label={
+              !showLabel && typeof label === 'string' ? label : undefined
+            }
             aria-labelledby={showLabel ? labelId : undefined}
             checked={checked ?? false}
             className={classes.input}
@@ -76,13 +87,14 @@ export const CheckboxRadioTemplate = ({
             id={finalInputId}
             name={name}
             onChange={disabled ? undefined : onChange}
+            role={presentation ? 'presentation' : undefined}
             type={type}
             value={value}
           />
           <span className={classes.visibleBox}>
             {children}
           </span>
-        </span>
+        </Wrapper>
       )}
       {(showLabel || description) && (
         <span className={classes.labelAndDescription}>
@@ -98,6 +110,27 @@ export const CheckboxRadioTemplate = ({
           )}
         </span>
       )}
-    </label>
+    </Wrapper>
   );
 };
+
+interface WrapperProps {
+  children: ReactNode;
+  className: string;
+  htmlFor?: string;
+  isLabel: boolean;
+}
+
+const Wrapper = ({
+  children,
+  className,
+  htmlFor,
+  isLabel,
+}: WrapperProps) => isLabel ? (
+  <label
+    className={className + ' ' + classes.clickable}
+    htmlFor={htmlFor}
+  >
+    {children}
+  </label>
+) : <span className={className}>{children}</span>;

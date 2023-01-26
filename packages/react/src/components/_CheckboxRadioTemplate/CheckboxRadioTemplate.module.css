@@ -1,11 +1,10 @@
 .template {
-  --cursor: pointer;
+  --click-cursor: pointer;
   --description-color: var(--component-field_description-color-text-default);
   --label-color: var(--component-checkbox-color-text-default);
   --opacity: 1;
 
   border-radius: var(--input_box-border_radius);
-  cursor: var(--cursor);
   display: inline-flex;
   flex-direction: row;
   font-size: var(--font_size);
@@ -31,8 +30,12 @@
 }
 
 .template.disabled {
-  --cursor: auto;
+  --click-cursor: auto;
   --opacity: var(--interactive_components-colors-disabled-opacity);
+}
+
+.clickable  {
+  cursor: var(--click-cursor);
 }
 
 .inputWrapper {

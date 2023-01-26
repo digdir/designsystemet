@@ -1,6 +1,6 @@
 import {Meta, Canvas, Story} from '@storybook/addon-docs'
 import {RadioButton, RadioButtonSize} from "./index";
-import {Beta, TokensTable} from "../../../../../docs-components";
+import {BetaBlock, TokensTable} from "../../../../../docs-components";
 import {ArgsTable} from "@storybook/addon-docs";
 
 <Meta
@@ -53,6 +53,10 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Brukes til å velge størrelse.',
             control: {type: 'radio', options: [RadioButtonSize.Small, RadioButtonSize.Xsmall]},
             defaultValue: RadioButtonSize.Small
+        },
+        presentation: {
+            description: 'Sett denne hvis radioknappen er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av radioknappen være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+            control: {type: 'boolean'}
         }
     }}
 />
@@ -66,7 +70,7 @@ export const Template = (args = {}) => <RadioButton {...{...defaultArgs, ...args
 
 # RadioButton
 
-<Beta />
+<BetaBlock />
 
 `RadioButton` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer.
 Vi anbefaler å bruke `RadioGroup` hvis man har behov for radioknapper,

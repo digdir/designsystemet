@@ -1,4 +1,5 @@
 export { Button, ButtonVariant, ButtonColor, ButtonSize } from './Button';
+export type { ButtonProps } from './Button';
 export { ErrorMessage } from './ErrorMessage';
 export type { ErrorMessageProps } from './ErrorMessage';
 export { Tabs } from './Tabs';
@@ -9,6 +10,9 @@ export { Checkbox } from './Checkbox';
 export type { CheckboxProps } from './Checkbox';
 export { CheckboxGroup, CheckboxGroupVariant } from './CheckboxGroup';
 export type { CheckboxGroupProps, CheckboxGroupItem } from './CheckboxGroup';
+export { HelpText } from './HelpText';
+export { Popover, PopoverVariant } from './Popover';
+export type { PopoverProps } from './Popover';
 export { RadioButton, RadioButtonSize } from './RadioButton';
 export type { RadioButtonProps } from './RadioButton';
 export { RadioGroup, RadioGroupSize, RadioGroupVariant } from './RadioGroup';
@@ -19,5 +23,10 @@ export type {
   SingleSelectOption,
   MultiSelectOption,
   SingleOnChangeEvent,
-  MultipleOnChangeEvent
+  MultipleOnChangeEvent,
 } from './Select';
+export { ReadOnlyVariant } from './_InputWrapper';
+export { TextArea } from './TextArea';
+export type { TextAreaProps } from './TextArea';
+export { TextField } from './TextField';
+export type { TextFieldProps, TextFieldFormatting } from './TextField';

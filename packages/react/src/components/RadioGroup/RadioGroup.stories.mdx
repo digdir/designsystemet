@@ -1,6 +1,6 @@
 import {Meta, Canvas, Story} from '@storybook/addon-docs'
 import {RadioGroup, RadioGroupSize, RadioGroupVariant} from "./index";
-import {Beta, TokensTable} from "../../../../../docs-components";
+import {BetaBlock, TokensTable} from "../../../../../docs-components";
 import {ArgsTable} from "@storybook/addon-docs";
 
 <Meta
@@ -49,6 +49,10 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Brukes til å velge størrelse.',
             control: {type: 'radio', options: [RadioGroupSize.Small, RadioGroupSize.Xsmall]},
             defaultValue: RadioGroupSize.Small
+        },
+        presentation: {
+            description: 'Sett denne hvis radioknappene er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av radioknappene være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+            control: {type: 'boolean'}
         }
     }}
 />
@@ -68,7 +72,7 @@ export const Template = (args = {}) => <RadioGroup {...{...defaultArgs, ...args}
 
 # RadioGroup
 
-<Beta />
+<BetaBlock />
 
 `RadioGroup` er en gruppe med radioknapper som gir brukeren mulighet til å velge ett av flere alternativer.
 Den oppfører seg på samme måte som kanalknapper på en radio, hvorav navnet.

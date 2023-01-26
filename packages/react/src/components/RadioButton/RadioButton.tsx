@@ -1,4 +1,4 @@
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEventHandler, ReactNode } from 'react';
 import React from 'react';
 import cn from 'classnames';
 
@@ -17,13 +17,14 @@ export enum RadioButtonSize {
 export interface RadioButtonProps {
   checked?: boolean;
   className?: string;
-  description?: string;
+  description?: ReactNode;
   disabled?: boolean;
   error?: boolean;
   hideLabel?: boolean;
-  label?: string;
+  label?: ReactNode;
   name: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  presentation?: boolean;
   radioId?: string;
   size?: RadioButtonSize;
   value: string;
@@ -38,6 +39,7 @@ export const RadioButton = ({
   label,
   name,
   onChange,
+  presentation,
   radioId,
   size = RadioButtonSize.Small,
   value,
@@ -58,6 +60,7 @@ export const RadioButton = ({
     label={label}
     name={name}
     onChange={onChange}
+    presentation={presentation}
     size={
       size === RadioButtonSize.Xsmall
         ? CheckboxRadioTemplateSize.Xsmall

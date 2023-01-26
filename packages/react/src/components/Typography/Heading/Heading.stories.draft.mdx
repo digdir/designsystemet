@@ -1,0 +1,79 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs';
+import {Heading, HeadingSize, HeadingLevel} from "./index";
+import {ComponentUsage, TokensTable, PropsTable, Table, BetaBlock} from "../../../../../../docs-components";
+
+<Meta title="Typografi/Heading"     parameters={{
+    status: {
+        type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+        url: 'http://www.url.com/status'
+    }
+}} />
+
+export const Template = (args) => <Heading level={args.level} margin={args.margin}
+                                           size={args.size} color={args.color}>{args.children}</Heading>;
+
+# Heading
+
+
+<ArrowDownCircleIcon />
+
+Heading-komponenten brukes på alle overskrifter. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+
+
+<Canvas>
+    <Story
+        name="Heading"
+        args={{
+            size: HeadingSize.XLarge,
+            children: 'Heading',
+            level: HeadingLevel.H1,
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Størrelser
+Komponenten har ein `size` prop med følgende verdier tilgjengelig:
+<Table headings={['Navn', 'Verdi', 'Preview']} rows={[{row: ['900', '44px', <Heading>Heading XLarge</Heading>]}, {row: ['800', '36px', <Heading size="large">Heading Large</Heading>]}, {row: ['700', '28px', <Heading size="medium">Heading Medium</Heading>]}, {row: ['600', '24px', <Heading size="small">Heading Small</Heading>]}, {row: ['500', '20px', <Heading size="xsmall">Heading XSmall</Heading>]}]} />
+
+## Rettningslinjer
+Alle oversikrifter skal bruke heading komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+
+Det skal kun vere 1 `<h1>` tag per side, men det kan vere flere h2-h6. Det er viktig at heading-hirarkiet på en side går logisk fra `<h1>` og nedover både når det kommer til størrelse og rekkefølge (se bruk).
+
+H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin applikasjon kan H1 for eksempel vere 36px, mens på en annen nettside 44px. Det som er viktig er at H1-H6 skalerer logiske nedover i størrelse.
+
+## Bruk
+<ComponentUsage title='Gjør dette' desc="Heading tagger i koden skal starte på 1 og gå stegvis nedover etter viktiget og størrelse. Det skal kun vere 1 <h1> tag på nettsiden.'">
+    <Heading size={HeadingSize.XLarge}>Heading 1 (h1)</Heading>
+    <Heading size={HeadingSize.Large}>Heading 2 (h2)</Heading>
+    <Heading size={HeadingSize.Medium}>Heading 3 (h3)</Heading>
+    <Heading size={HeadingSize.Small}>Heading 4 (h4)</Heading>
+    <Heading size={HeadingSize.XSmall}>Heading 5 (h5)</Heading>
+</ComponentUsage>
+
+<ComponentUsage type='danger' title='Ikke gjør dette' desc="Heading tagger i koden skal starte på 1 og gå stegvis nedover etter viktiget og størrelse. Det skal kun vere 1 <h1> tag på nettsiden.'">
+    <Heading size={HeadingSize.XLarge}>Heading 4 (h4)</Heading>
+    <Heading size={HeadingSize.Large}>Heading 5 (h5)</Heading>
+    <Heading size={HeadingSize.Medium}>Heading 3 (h3)</Heading>
+    <Heading size={HeadingSize.Small}>Heading 1 (h1)</Heading>
+    <Heading size={HeadingSize.XSmall}>Heading 2 (h2)</Heading>
+</ComponentUsage>
+
+## Props
+Komponenten har følgende properties tilgjengelig.
+<PropsTable />
+
+### HeadingLevel
+Tilgjengelige verdier: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`.
+
+### HeadingSize
+Tilgjengelige verdier: `900`, `800`, `700`, `600`, `500`.
+
+## Tokens
+Komponenten har følgende CSS variabler tilgjengelig som kan overstyres ved behov. (bruker button som eksempel)
+
+<TokensTable jsonKey='component.button' componentName='button' />
+
+## Changelog
+<Table headings={['Version', 'Commit']} rows={[{row: ['5.0', 'La til ny error variant for knapp']}, {row: ['4.0', 'Endret primærfarge til rosa']}]}></Table>

@@ -1,6 +1,6 @@
 import {Meta, Canvas, Story} from '@storybook/addon-docs'
 import {Checkbox} from "./index";
-import {Beta, TokensTable} from "../../../../../docs-components";
+import {BetaBlock, TokensTable} from "../../../../../docs-components";
 import {ArgsTable} from "@storybook/addon-docs";
 
 <Meta
@@ -56,6 +56,10 @@ import {ArgsTable} from "@storybook/addon-docs";
         compact: {
             description: 'Kompakt visning.',
             control: {type: 'boolean'}
+        },
+        presentation: {
+            description: 'Sett denne hvis sjekkboksen er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av sjekkboksen være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+            control: {type: 'boolean'}
         }
     }}
 />
@@ -70,7 +74,7 @@ export const Template = (args = {}) => <Checkbox {...{...defaultArgs, ...args}}/
 
 # Checkbox
 
-<Beta />
+<BetaBlock />
 
 `Checkbox` er en boks som brukeren kan krysse av i for bolske verdier. Den kan også brukes i en gruppe hvor brukeren kan velge flere verdier.
 

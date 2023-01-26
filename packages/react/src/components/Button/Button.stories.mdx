@@ -1,6 +1,6 @@
 import {Meta, Canvas, Story} from '@storybook/addon-docs'
-import {Button, ButtonColor, ButtonSize} from "./index";
-import {ComponentUsage, Beta, TokensTable} from "../../../../../docs-components";
+import {Button, ButtonColor, ButtonSize, ButtonVariant} from "./index";
+import {ComponentUsage, BetaBlock, TokensTable} from "../../../../../docs-components";
 import {ArgsTable} from "@storybook/addon-docs";
 
 <Meta
@@ -12,13 +12,56 @@ import {ArgsTable} from "@storybook/addon-docs";
             url: 'http://www.url.com/status'
         }
     }}
+    argTypes={{
+        size: {
+            control: {
+                type: 'select',
+                options: Object.values(ButtonSize)
+            }
+        },
+        color: {
+            control: {
+                type: 'select',
+                options: Object.values(ButtonColor)
+            }
+        },
+        variant: {
+            control: {
+                type: 'select',
+                options: Object.values(ButtonVariant)
+            }
+        },
+        disabled: {
+            control: { type: 'boolean'}
+        },
+        onClick: { action: 'onClick' },
+        children: {
+            control: { type: 'text' }
+        },
+        fullWidth: {
+            control: { type: 'boolean' }
+        },
+        icon: {
+            control: { type: 'object' },
+            description: 'Icon to be rendered in the button. This should be a React component that renders an SVG object.'
+        },
+        iconPlacement: {
+            control: {
+                type: 'radio',
+                options: ['left', 'right']
+            }
+        },
+        dashedBorder: {
+            control: { type: 'boolean' }
+        },
+    }}
 />
 
 export const Template = (args) => <Button {...args} />;
 
 # Button
 
-<Beta />
+<BetaBlock />
 
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
 
@@ -33,9 +76,11 @@ On through of which no the your phase more know anyone tried he when line me wha
         name="Button"
         args={{
             size: ButtonSize.Medium,
-            ButtonColor: ButtonColor.Primary,
+            color: ButtonColor.Primary,
+            variant: ButtonVariant.Filled,
             children: 'Button'
-        }}>
+        }}
+    >
         {Template.bind({})}
     </Story>
 </Canvas>
@@ -47,13 +92,14 @@ On through of which no the your phase more know anyone tried he when line me wha
                 desc="Person, wish fall by during research ran don't the road, a all the chair. I accuse and of even monitor believe. With the return the address or than concepts rather, fall most had to ill.">
     <Button children="STORE BOKSTAVER" size={ButtonSize.Medium} />
 </ComponentUsage>
-<ComponentUsage type="danger" title="Knapper skal ikke ha tekst med store bokstaver"
+<ComponentUsage type="danger"
+                title="Knapper skal ikke ha tekst med store bokstaver"
                 desc="Person, wish fall by during research ran don't the road, a all the chair. I accuse and of even monitor believe. With the return the address or than concepts rather, fall most had to ill.">
     <Button children="STORE BOKSTAVER" size={ButtonSize.Medium} />
 </ComponentUsage>
 
 ## Props
-<ArgsTable of={Button} />
+<ArgsTable story='Button' />
 
 ## Tokens
 Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov.

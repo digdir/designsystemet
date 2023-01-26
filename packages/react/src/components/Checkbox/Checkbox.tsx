@@ -1,4 +1,4 @@
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEventHandler, ReactNode } from 'react';
 import React from 'react';
 import cn from 'classnames';
 
@@ -13,13 +13,14 @@ export interface CheckboxProps {
   checkboxId?: string;
   checked?: boolean;
   compact?: boolean;
-  description?: string;
+  description?: ReactNode;
   disabled?: boolean;
   error?: boolean;
   hideLabel?: boolean;
-  label?: string;
+  label?: ReactNode;
   name?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  presentation?: boolean;
   readOnly?: boolean;
 }
 
@@ -34,6 +35,7 @@ export const Checkbox = ({
   label,
   name,
   onChange,
+  presentation,
   readOnly,
 }: CheckboxProps) => (
   <CheckboxRadioTemplate
@@ -54,6 +56,7 @@ export const Checkbox = ({
     label={label}
     name={name}
     onChange={onChange}
+    presentation={presentation}
     size={
       compact
         ? CheckboxRadioTemplateSize.Xsmall

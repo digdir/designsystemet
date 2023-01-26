@@ -96,7 +96,7 @@ export const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
   return (
     <div className={classes.tabs}>
       <div
-        className={classes.tabs}
+        className={classes.tablist}
         ref={tablistRef}
         role='tablist'
       >
