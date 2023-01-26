@@ -117,7 +117,7 @@ BREAKING CHANGE: changed the name of the font-size prop to size to make it more 
 ---
 
 ## Setup NPM account 👷
-To release new versions of the packages, you have to setup your NPM account. 
+To release new versions of the packages, you have to setup your NPM account.
 If you want to be able to release new versions, follow these steps:
 
 ### 1. Create a new NPM account
