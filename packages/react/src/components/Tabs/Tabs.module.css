@@ -13,10 +13,10 @@
   --tab-text_color-hover: var(--colors-black);
   --tab-text_color-selected: var(--colors-blue-700);
   --tab-text_color: #68707c;
-  --tablist-gap: 2rem;
-  --tablist-margin_horizontal: 2rem;
-  --tabpanel-margin_horizontal: 2rem;
-  --tabpanel-margin_vertical: 2rem;
+  --tablist-gap: 1.5rem;
+  --tablist-margin_horizontal: 20px;
+  --tabpanel-margin_horizontal: 20px;
+  --tabpanel-margin_vertical: 20px;
   position: relative;
 }
 
