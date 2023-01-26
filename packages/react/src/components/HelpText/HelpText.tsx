@@ -49,7 +49,6 @@ export const HelpText = ({
             setOpen((isOpen) => !isOpen);
             onClick?.(event);
           }}
-          aria-expanded={open}
         >
           <HelptextFilled
             className={cn(

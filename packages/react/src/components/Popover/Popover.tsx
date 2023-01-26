@@ -22,7 +22,6 @@ import {
   useRole,
   useInteractions,
   useMergeRefs,
-  FloatingPortal,
 } from '@floating-ui/react';
 import cn from 'classnames';
 
@@ -182,31 +181,28 @@ const PopoverContent = forwardRef<
   const context = usePopoverContext();
   const ref = useMergeRefs([context.floating, propRef]);
 
-  return (
-    <FloatingPortal>
-      {context.open && (
-        <div
-          ref={ref}
-          style={{
-            position: context.strategy,
-            top: context.y ?? 0,
-            left: context.x ?? 0,
-            width: 'max-content',
-          }}
-          data-placement={context.placement}
-          className={cn(
-            classes.popover,
-            classes[context.variant],
-            context.className,
-          )}
-          {...context.getFloatingProps(props)}
-          role={'dialog'}
-        >
-          {props.children}
-        </div>
+  return context.open ? (
+    <div
+      ref={ref}
+      style={{
+        position: context.strategy,
+        top: context.y ?? 0,
+        left: context.x ?? 0,
+        width: 'max-content',
+      }}
+      data-placement={context.placement}
+      className={cn(
+        classes.popover,
+        classes[context.variant],
+        context.className,
       )}
-    </FloatingPortal>
-  );
+      {...context.getFloatingProps(props)}
+      tabIndex={-1}
+      role={'dialog'}
+    >
+      {props.children}
+    </div>
+  ) : null;
 });
 
 const PopoverArrow = forwardRef<
@@ -220,7 +216,7 @@ const PopoverArrow = forwardRef<
   const arrowY = context.middlewareData.arrow?.y;
 
   // Get the placement of the popover arrow independent of alignment, which is opposite of popover content placement.
-  // Used to align the arrow to the edge of the content
+  // Used to align the arrow to the edge of the content.
   const staticSide: string | undefined = {
     top: 'bottom',
     right: 'left',
