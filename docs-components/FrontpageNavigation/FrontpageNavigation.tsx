@@ -30,7 +30,7 @@ const FrontpageNavigation = () => {
       desc: 'Oversikt over alle React komponentene.',
       url: '/?path=/docs/kjernekomponenter-introduksjon--page',
       color: 'red',
-      icon: <SystemFilled fontSize={27} />,
+      icon: <SystemFilled fontSize={26} />,
     },
   ];
 

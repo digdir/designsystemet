@@ -82,12 +82,17 @@ const TokensTable = (tokenTable: TokenTableProps) => {
   };
 
   if (!getRows().length && tokenTable.description) {
-    return <p>Det finnes ingen spesifikke variabler for denne komponenten.</p>
+    return <p>Det finnes ingen spesifikke variabler for denne komponenten.</p>;
   }
 
   return (
     <>
-      {tokenTable.description && <p>Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov:</p>}
+      {tokenTable.description && (
+        <p>
+          Komponenten har følgende CSS-variabler tilgjengelige som kan
+          overstyres ved behov:
+        </p>
+      )}
       <Table
         headings={getHeadings()}
         rows={getRows()}

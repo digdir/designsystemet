@@ -4,7 +4,7 @@ import './customStyling.css';
 import React from 'react';
 import { DocsContainer } from '@storybook/addon-docs';
 import '@altinn/figma-design-tokens/dist/tokens.css';
-import { TableOfContents } from '../../docs-components';
+import { TableOfContents } from '../docs-components';
 import 'react-tippy/dist/tippy.css';
 
 export const parameters = {
