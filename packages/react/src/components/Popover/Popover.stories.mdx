@@ -13,7 +13,6 @@ import {ArgsTable} from "@storybook/addon-docs";
             type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
             url: 'http://www.url.com/status',
         },
-        docs: { inlineStories: false, iframeHeight: '200px' },
     }}
     argTypes={{
         trigger: {
@@ -102,8 +101,18 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
 <Canvas>
     <Story
         name="Popover"
+        decorators={[
+            (Story) => (
+            <div style={{ margin: '3em' }}>
+                <Story />
+            </div>
+            ),
+        ]}
+        parameters={{
+            layout: 'centered',
+        }}
         args={{
-            placement: 'top-start',
+            placement: 'top',
             variant: PopoverVariant.Default,
         }}
     >
@@ -116,6 +125,16 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
 <Canvas>
     <Story
         name="Mer komplekst innhold"
+          decorators={[
+            (Story) => (
+            <div style={{ margin: '3em' }}>
+                <Story />
+            </div>
+            ),
+        ]}
+        parameters={{
+            layout: 'centered',
+        }}
         args={{
             placement: 'right',
             variant: PopoverVariant.Warning,

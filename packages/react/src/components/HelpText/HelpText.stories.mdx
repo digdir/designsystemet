@@ -11,7 +11,7 @@ import {ArgsTable} from "@storybook/addon-docs";
         status: {
             type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
             url: 'http://www.url.com/status'
-        }
+        },
     }}
     argTypes={{
         children: {
@@ -28,7 +28,7 @@ import {ArgsTable} from "@storybook/addon-docs";
 
 export const Template = (args) => {
     return (
-        <HelpText 
+        <HelpText
             {...args}
         >
             Lorem ipsum dolor sit amet...
@@ -47,7 +47,17 @@ HelpText er et felt med en hjelpetekst som plasseres over annet innhold og kan v
 
 <Canvas>
     <Story
-        name="HelpText"
+        name='HelpText'
+        decorators={[
+            (Story) => (
+            <div style={{ margin: '3em' }}>
+                <Story />
+            </div>
+            ),
+        ]}
+        parameters={{
+            layout: 'centered',
+        }}
         args={{
             placement: 'right',
         }}
