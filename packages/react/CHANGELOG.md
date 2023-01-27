@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.0...@digdir/design-system-react@0.4.1) (2023-01-27)
+
+### Bug Fixes
+
+- **popover:** popover screen reader ordering ([c8a0190](https://github.com/digdir/designsystem/commit/c8a0190d887b95b1e0ea0178c1a2e51f93d48c24))
+
 # [0.4.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.3.1...@digdir/design-system-react@0.4.0) (2023-01-26)
 
 ### Bug Fixes
