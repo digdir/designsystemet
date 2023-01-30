@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.1...@digdir/design-system-react@0.4.2) (2023-01-30)
+
+### Bug Fixes
+
+- added types file to export ([99a33f9](https://github.com/digdir/designsystem/commit/99a33f9b8c2b61019dbd7a04a911ab9f3b833a89))
+
 ## [0.4.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.0...@digdir/design-system-react@0.4.1) (2023-01-27)
 
 ### Bug Fixes
