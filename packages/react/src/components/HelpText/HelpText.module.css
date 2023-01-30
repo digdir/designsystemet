@@ -33,11 +33,21 @@
 
 .helpTextIcon {
   color: var(--colors-blue-700);
-  width: 24px;
-  height: 24px;
+  width: var(--help_text-icon-width);
+  height: var(--help_text-icon-height);
 }
 
 .helpTextContent {
   font-size: var(--font_size-300);
   line-height: var(--typography-default-line-height);
+}
+
+.helpTextIcon.small {
+  --help_text-icon-width: 24px;
+  --help_text-icon-height: 24px;
+}
+
+.helpTextIcon.xsmall {
+  --help_text-icon-width: 18px;
+  --help_text-icon-height: 18px;
 }
