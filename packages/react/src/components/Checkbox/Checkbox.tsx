@@ -16,6 +16,7 @@ export interface CheckboxProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: boolean;
+  helpText?: string;
   hideLabel?: boolean;
   label?: ReactNode;
   name?: string;
@@ -31,6 +32,7 @@ export const Checkbox = ({
   description,
   disabled,
   error,
+  helpText,
   hideLabel,
   label,
   name,
@@ -50,6 +52,7 @@ export const Checkbox = ({
     )}
     description={description}
     disabled={disabled}
+    helpText={helpText}
     hideInput={readOnly}
     hideLabel={hideLabel}
     inputId={checkboxId}

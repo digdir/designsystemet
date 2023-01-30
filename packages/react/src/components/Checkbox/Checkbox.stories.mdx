@@ -41,6 +41,9 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Gir sjekkboksen en rød ramme for å indikere en feil.',
             control: {type: 'boolean'}
         },
+        helpText: {
+            description: 'Legger på en hjelpe-tekst knapp ved siden av labelen til checkboxen.',
+        },
         hideLabel: {
             description: 'Skjuler teksten til høyre for sjekkboksen, men gjør den tilgjengelig for verktøy som skjermlesere.',
             control: {type: 'boolean'}
@@ -96,6 +99,15 @@ Sjekkboksene kan ha flere forskjellige statuser:
         args={{
             checked: true,
             label: 'Avkrysset',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Hjelpetekst"
+        args={{
+            label: 'Hjelpetekst',
+            helpText: 'Hjelp'
         }}
     >
         {Template.bind({})}

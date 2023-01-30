@@ -41,6 +41,9 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Feilmelding som vises under listen.',
             control: {type: 'text'}
         },
+        helpText: {
+            description: 'Legger på en hjelpe-tekst knapp ved siden av legenden til RadioGroupen.',
+        },
         disabled: {
             description: 'Deaktiverer alle radioknappene i listen.',
             control: {type: 'boolean'}
@@ -94,7 +97,7 @@ Kun én knapp kan være trykket inn av gangen.
 <Canvas>
     <Story
         name="Horisontal"
-        args={{variant: RadioGroupVariant.Horizontal}}
+        args={{variant: RadioGroupVariant.Horizontal, name: 'favorittiskrem-horizontal',}}
     >
         {Template.bind({})}
     </Story>
@@ -104,7 +107,7 @@ Kun én knapp kan være trykket inn av gangen.
 <Canvas>
     <Story
         name="Kompakt"
-        args={{size: RadioGroupSize.Xsmall}}
+        args={{size: RadioGroupSize.Xsmall, name: 'favorittiskrem-compact',}}
     >
         {Template.bind({})}
     </Story>
@@ -114,7 +117,25 @@ Kun én knapp kan være trykket inn av gangen.
 <Canvas>
     <Story
         name="Med feilmelding"
-        args={{error: 'Du må velge et av alternativene.'}}
+        args={{error: 'Du må velge et av alternativene.', name: 'favorittiskrem-error-message',}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Med hjelpetekst
+<Canvas>
+    <Story
+        name="Med hjelpetekst"
+        args={{helpText: 'Du må velge et av alternativene.', 
+        name: 'favorittiskrem-help-text',
+        items: [
+            { label: 'Vanilje', value: 'vanilje' },
+            { label: 'Jordbær', value: 'jordbær', helpText: 'Noe om jordbærsmak.' },
+            { label: 'Sjokolade', value: 'sjokolade' },
+            { label: 'Jeg spiser ikke iskrem', value: 'spiser-ikke-is' },
+            ],
+        }}
     >
         {Template.bind({})}
     </Story>
@@ -124,7 +145,7 @@ Kun én knapp kan være trykket inn av gangen.
 <Canvas>
     <Story
         name="Deaktivert"
-        args={{disabled: true}}
+        args={{disabled: true, name: 'favorittiskrem-deactivated',}}
     >
         {Template.bind({})}
     </Story>

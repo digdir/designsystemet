@@ -77,18 +77,25 @@
   color: var(--label-color);
 }
 
+.labelAndHelpText {
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--gap);
+  align-items: center;
+}
+
 .description {
   color: var(--description-color);
 }
 
 @supports not selector(:has(:focus-visible)) {
-  .template:not(.disabled):focus-within {
+  .template:not(.disabled):not(:has(button:focus-visible)):focus-within {
     outline: 2px solid var(--interactive_components-colors-focus_outline);
     outline-offset: 2px;
   }
 }
 
-.template:not(.disabled):has(:focus-visible) {
+.template:not(.disabled):not(:has(button:focus-visible)):has(:focus-visible) {
   outline: 2px solid var(--interactive_components-colors-focus_outline);
   outline-offset: 2px;
 }

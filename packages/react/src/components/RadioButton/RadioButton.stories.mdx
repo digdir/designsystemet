@@ -41,6 +41,9 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Gir radioknappen en rød ramme for å indikere en feil.',
             control: {type: 'boolean'}
         },
+        helpText: {
+            description: 'Legger på en hjelpe-tekst knapp ved siden av labelen til radioknappen.',
+        },
         hideLabel: {
             description: 'Skjuler teksten til høyre for radioknappen, men gjør den tilgjengelig for verktøy som skjermlesere.',
             control: {type: 'boolean'}
@@ -95,6 +98,15 @@ Radioknappene kan ha flere forskjellige statuser:
         args={{
             checked: true,
             label: 'Avkrysset',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Hjelpetekst"
+        args={{
+            label: 'Hjelpetekst',
+            helpText: 'Hjelp'
         }}
     >
         {Template.bind({})}

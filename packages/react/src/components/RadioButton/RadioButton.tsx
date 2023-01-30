@@ -20,6 +20,7 @@ export interface RadioButtonProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: boolean;
+  helpText?: string;
   hideLabel?: boolean;
   label?: ReactNode;
   name: string;
@@ -35,6 +36,7 @@ export const RadioButton = ({
   description,
   disabled,
   error,
+  helpText,
   hideLabel,
   label,
   name,
@@ -55,6 +57,7 @@ export const RadioButton = ({
     )}
     description={description}
     disabled={disabled}
+    helpText={helpText}
     hideLabel={hideLabel}
     inputId={radioId}
     label={label}

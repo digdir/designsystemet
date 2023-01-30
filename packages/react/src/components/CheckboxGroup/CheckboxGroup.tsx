@@ -12,7 +12,7 @@ import classes from './CheckboxGroup.module.css';
 
 export type CheckboxGroupItem = Pick<
   CheckboxProps,
-  'checked' | 'description' | 'disabled' | 'checkboxId' | 'label'
+  'checked' | 'description' | 'disabled' | 'checkboxId' | 'label' | 'helpText'
 > &
   Required<Pick<CheckboxProps, 'name'>>;
 
@@ -28,6 +28,7 @@ export interface CheckboxGroupProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
+  helpText?: string;
   items: CheckboxGroupItem[];
   legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;
@@ -57,6 +58,7 @@ export const CheckboxGroup = ({
   description,
   disabled,
   error,
+  helpText,
   items,
   legend,
   onChange,
@@ -93,6 +95,7 @@ export const CheckboxGroup = ({
       description={description}
       disabled={disabled}
       error={error}
+      helpText={helpText}
       legend={legend}
       size={compact ? FieldSetSize.Xsmall : FieldSetSize.Small}
     >
@@ -104,6 +107,7 @@ export const CheckboxGroup = ({
           description={item.description}
           disabled={disabled || item.disabled}
           error={!!error}
+          helpText={item.helpText}
           key={item.name}
           label={item.label}
           name={item.name}

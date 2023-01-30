@@ -7,6 +7,9 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { useId } from 'react';
 import cn from 'classnames';
 
+import { HelpText } from '../HelpText';
+import { HelpTextSize } from '../HelpText/HelpText';
+
 import classes from './CheckboxRadioTemplate.module.css';
 
 export enum CheckboxRadioTemplateSize {
@@ -20,6 +23,7 @@ export interface CheckboxRadioTemplateProps {
   className?: string;
   description?: ReactNode;
   disabled?: boolean;
+  helpText?: string;
   hideInput?: boolean;
   hideLabel?: boolean;
   inputId?: string;
@@ -39,6 +43,7 @@ export const CheckboxRadioTemplate = ({
   className,
   description,
   disabled,
+  helpText,
   hideInput,
   hideLabel,
   inputId,
@@ -57,6 +62,10 @@ export const CheckboxRadioTemplate = ({
   const showLabel = label && !hideLabel;
   const shouldHaveClickableLabel = !presentation
     || (typeof label !== 'object' && typeof description !== 'object');
+  const helpTextSize =
+    size === CheckboxRadioTemplateSize.Xsmall
+      ? HelpTextSize.Xsmall
+      : HelpTextSize.Small;
 
   return (
     <Wrapper
@@ -91,16 +100,24 @@ export const CheckboxRadioTemplate = ({
             type={type}
             value={value}
           />
-          <span className={classes.visibleBox}>
-            {children}
-          </span>
+          <span className={classes.visibleBox}>{children}</span>
         </Wrapper>
       )}
       {(showLabel || description) && (
         <span className={classes.labelAndDescription}>
           {showLabel && (
-            <span className={classes.label} id={labelId}>
-              {label}
+            <span className={classes.labelAndHelpText}>
+              <span className={classes.label} id={labelId}>
+                {label}
+              </span>
+              {helpText && (
+                <HelpText
+                  size={helpTextSize}
+                  title={`Help text for ${label}`}
+                >
+                  {helpText}
+                </HelpText>
+              )}
             </span>
           )}
           {description && (
