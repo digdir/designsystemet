@@ -1,7 +1,9 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
-import { ErrorMessage } from '../';
+import { ErrorMessage, HelpText } from '../';
+import { HelpTextSize } from '../HelpText/HelpText';
 
 import classes from './FieldSet.module.css';
 
@@ -12,6 +14,7 @@ export interface FieldSetProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
+  helpText?: string;
   legend?: ReactNode;
   size?: FieldSetSize;
 }
@@ -28,20 +31,39 @@ export const FieldSet = ({
   description,
   disabled,
   error,
+  helpText,
   legend,
   size = FieldSetSize.Small,
-}: FieldSetProps) => (
-  <fieldset
-    className={cn(classes.fieldSet, classes[size], className)}
-    disabled={disabled}
-  >
-    {legend && <legend className={classes.legend}>{legend}</legend>}
-    {description && <p className={classes.description}>{description}</p>}
-    <div className={cn(classes.content, contentClassName)}>{children}</div>
-    {error && (
-      <div className={classes.errorMessage}>
-        <ErrorMessage>{error}</ErrorMessage>
-      </div>
-    )}
-  </fieldset>
-);
+}: FieldSetProps) => {
+  const helpTextSize =
+    size === FieldSetSize.Xsmall ? HelpTextSize.Xsmall : HelpTextSize.Small;
+  return (
+    <fieldset
+      className={cn(classes.fieldSet, classes[size], className)}
+      disabled={disabled}
+    >
+      {legend && (
+        <legend className={classes.legend}>
+          <span className={classes.legendAndHelpText}>
+            <div className={classes.legendContent}>{legend}</div>
+            {helpText && (
+              <HelpText
+                size={helpTextSize}
+                title={`Help text for ${legend}`}
+              >
+                {helpText}
+              </HelpText>
+            )}
+          </span>
+        </legend>
+      )}
+      {description && <p className={classes.description}>{description}</p>}
+      <div className={cn(classes.content, contentClassName)}>{children}</div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <ErrorMessage>{error}</ErrorMessage>
+        </div>
+      )}
+    </fieldset>
+  );
+};

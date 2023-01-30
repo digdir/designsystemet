@@ -4,6 +4,7 @@
   --description-color: var(--component-field_description-color-text-default);
   --description-margin_top: var(--component-field_description-space-top-small);
   --error_message-margin_top: var(--component-fieldset-space-gap-y-small);
+  --help_text-gap: var(--component-field_description-space-top-small);
   --font_size: var(--component-checkbox-font_size-sm);
 
   color: var(--color);
@@ -18,6 +19,7 @@
   --content-margin_top: var(--component-fieldset-space-gap-y-xsmall);
   --description-margin_top: var(--component-field_description-space-top-xsmall);
   --error_message-margin_top: var(--component-fieldset-space-gap-y-xsmall);
+  --help_text-gap: var(--component-field_description-space-top-xsmall);
   --font_size: var(--component-checkbox-font_size-xs);
 }
 
@@ -29,9 +31,18 @@
   opacity: 1;
 }
 
-.legend {
-  font-weight: bold;
+.legendAndHelpText {
+  display: flex;
+  gap: var(--help_text-gap);
   padding: 0;
+}
+
+.legend {
+  padding: 0;
+}
+
+.legendContent {
+  font-weight: bold;
 }
 
 .description {
