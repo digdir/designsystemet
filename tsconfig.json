@@ -2,7 +2,7 @@
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   //  "exclude": ["src/components/*.test.tsx", "src/components/*.stories.tsx"],
   "compilerOptions": {
-    "module": "esnext",
+    "module": "es2020",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
@@ -28,9 +28,7 @@
     "skipLibCheck": true,
     // error out if import and file system have a casing mismatch. Recommended by TS
     "forceConsistentCasingInFileNames": true,
-    // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
-    "noEmit": true,
     "resolveJsonModule": true,
-    "target": "es6",
+    "target": "es2016",
   }
 }
