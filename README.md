@@ -14,7 +14,6 @@
 </a>
 
 <hr>
-    <a href="https://digdir.github.io/designsystem">Website</a> | <a href="https://github.com/digdir/designsystem/issues">Issues</a>
 <br/>
 </div>
 
