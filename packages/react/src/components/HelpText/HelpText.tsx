@@ -73,9 +73,9 @@ export const HelpText = ({
             data-state={open ? 'open' : 'closed'}
             aria-hidden={true}
           />
-          <div className={utilClasses.visuallyHidden}>
+          <span className={utilClasses.visuallyHidden}>
             {title ? title : 'Toggle help text.'}
-          </div>
+          </span>
         </button>
       }
     >
