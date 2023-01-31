@@ -45,7 +45,7 @@ export const FieldSet = ({
       {legend && (
         <legend className={classes.legend}>
           <span className={classes.legendAndHelpText}>
-            <div className={classes.legendContent}>{legend}</div>
+            <span className={classes.legendContent}>{legend}</span>
             {helpText && (
               <HelpText
                 size={helpTextSize}
