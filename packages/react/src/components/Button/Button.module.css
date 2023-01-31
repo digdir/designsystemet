@@ -74,10 +74,6 @@
     border-style: dashed;
 }
 
-.button.onlyIcon {
-    padding: 0.5rem;
-}
-
 .button.outline {
     background-color: transparent;
 }
@@ -86,6 +82,10 @@
     --border-radius: 50px;
     padding: 0 calc(var(--button-vertical-padding) * 2 / 3);
     background-color: transparent;
+}
+
+.button.onlyIcon {
+    padding: 0.5rem;
 }
 
 /* Filled button colors */
