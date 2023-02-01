@@ -28,9 +28,6 @@
 
 .checkbox.checked {
   --checkbox-checkmark-display: inline-block;
-}
-
-.checkbox.checked:not(.disabled) {
   --checkbox-background_color: var(
     --component-checkbox-color-background-checked
   );
@@ -43,11 +40,6 @@
 
 .checkbox:not(.disabled, .error, .checked):hover {
   --checkbox-border_color: var(--component-checkbox-color-border-hover);
-}
-
-.checkbox.disabled.checked {
-  --checkbox-background_color: var(--component-checkbox-color-border-disabled);
-  --checkbox-border_color: transparent;
 }
 
 .checkbox.readOnly {

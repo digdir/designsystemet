@@ -56,8 +56,8 @@
 }
 
 .tab:focus-visible {
-  outline: var(--component-input-color-outline-focus) auto 2px;
-  outline-offset: 2px;
+  outline: var(--semantic-tab_focus-outline-color) auto var(--semantic-tab_focus-outline-width);
+  outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 
 .divider {

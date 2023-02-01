@@ -21,9 +21,9 @@
 }
 
 .button:focus-visible {
-    outline: var(--interactive_components-colors-focus_outline) solid
-    var(--border_width-standard);
-    outline-offset: var(--border_width-standard);
+    outline: var(--semantic-tab_focus-outline-color) solid
+    var(--semantic-tab_focus-outline-width);
+    outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 
 .button:focus:not(:focus-visible) {
@@ -32,7 +32,7 @@
 
 .button:disabled {
     cursor: auto;
-    opacity: var(--interactive_components-colors-disabled-opacity);
+    opacity: var(--opacity-disabled);
 }
 
 .icon {
@@ -110,7 +110,7 @@
 }
 
 .button.filled.secondary:not(:disabled):active {
-    background: var(--colors-blue-950);
+    background: var(--colors-blue-900);
 }
 
 .button.filled.success {
@@ -181,7 +181,7 @@
 }
 
 .button.outline.secondary:not(:disabled):hover {
-    background: var(--colors-blue-200);
+    background: var(--colors-blue-100);
 }
 
 .button.outline.secondary:not(:disabled):active {
@@ -197,7 +197,7 @@
 
 .button.outline.success:not(:disabled):hover {
     --font-and-icon-color: var(--colors-green-800);
-    background: var(--colors-green-300);
+    background: var(--colors-green-200);
 }
 
 .button.outline.success:not(:disabled):active {
@@ -213,7 +213,7 @@
 
 .button.outline.danger:not(:disabled):hover {
     --font-and-icon-color: var(--colors-red-700);
-    background: var(--colors-red-200);
+    background: var(--colors-red-100);
     border-color: var(--colors-red-700);
 }
 
@@ -261,7 +261,7 @@
 }
 
 .button.quiet.secondary:not(:disabled):hover {
-    background: var(--colors-neutral-400);
+    background: var(--colors-neutral-300);
 }
 
 .button.quiet.secondary:not(:disabled):active {
@@ -275,7 +275,7 @@
 
 .button.quiet.success:not(:disabled):hover {
     --font-and-icon-color: var(--colors-green-800);
-    background: var(--colors-green-300);
+    background: var(--colors-green-200);
 }
 
 .button.quiet.success:not(:disabled):active {
@@ -289,7 +289,7 @@
 
 .button.quiet.danger:not(:disabled):hover {
     --font-and-icon-color: var(--colors-red-800);
-    background: var(--colors-red-200);
+    background: var(--colors-red-100);
 }
 
 .button.quiet.danger:not(:disabled):active {

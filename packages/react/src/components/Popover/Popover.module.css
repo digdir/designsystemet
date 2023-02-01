@@ -5,13 +5,13 @@
   max-width: calc(100vw - 20px);
   border: 1px solid gray;
   border-radius: 3px;
-  box-shadow: 0px 3px 6px 0px #00000033;
+  box-shadow: 0 3px 6px 0 #00000033;
 }
 
 .popover:focus-visible {
-  outline: var(--interactive_components-colors-focus_outline) solid
-  var(--border_width-standard);
-  outline-offset: var(--border_width-standard);
+  outline: var(--semantic-tab_focus-outline-color) solid
+  var(--semantic-tab_focus-outline-width);
+  outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 
 .popover:focus:not(:focus-visible) {
@@ -43,35 +43,34 @@
   z-index: -1;
   transform: rotate(45deg);
   background-color: inherit;
-  border: 1px solid;
-  border-color: inherit;
+  border: 1px solid inherit;
   width: 12px;
   height: 12px;
 }
 
 .popover[data-placement^="top"] > .arrow {
-  box-shadow: 3px 3px 6px 0px #00000033;
-	clip-path: inset(0px -10px -10px 0px);
+  box-shadow: 3px 3px 6px 0 #00000033;
+  clip-path: inset(0px -10px -10px 0px);
   border-left-color: transparent;
   border-top-color: transparent;
 }
 
 .popover[data-placement^="bottom"] > .arrow {
-  clip-path: inset(-10px 0px 0px -10px);
+  clip-path: inset(-10px 0 0 -10px);
   border-bottom-color: transparent;
   border-right-color: transparent;
 }
 
 .popover[data-placement^="left"] > .arrow {
-  box-shadow: 1px 3px 6px 0px #00000033;
-	clip-path: inset(-10px -10px 0px 0px);
+  box-shadow: 1px 3px 6px 0 #00000033;
+  clip-path: inset(-10px -10px 0 0);
   border-left-color: transparent;
   border-bottom-color: transparent;
 }
 
 .popover[data-placement^="right"] > .arrow {
-  box-shadow: -1px 3px 6px 0px #00000033;
-	clip-path: inset(0px 0px -10px -10px);
+  box-shadow: -1px 3px 6px 0 #00000033;
+  clip-path: inset(0 0 -10px -10px);
   border-right-color: transparent;
   border-top-color: transparent;
 }

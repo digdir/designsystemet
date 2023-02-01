@@ -29,7 +29,7 @@
   --radio-checkmark-display: inline-block;
 }
 
-.radio.checked:not(.disabled, .error) {
+.radio.checked:not(.error) {
   --radio-border_color: var(--component-checkbox-color-border-checked);
 }
 
@@ -39,11 +39,6 @@
 
 .radio:not(.disabled, .error, .checked):hover {
   --radio-border_color: var(--component-checkbox-color-border-hover);
-}
-
-.radio.disabled.checked {
-  --radio-background_color: var(--component-checkbox-color-border-disabled);
-  --radio-border_color: transparent;
 }
 
 .visibleButton {

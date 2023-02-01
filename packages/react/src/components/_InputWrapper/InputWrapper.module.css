@@ -2,7 +2,7 @@
   --background: var(--component-input-color-background-default);
   --border-color: var(--component-input-color-border-default);
   --icon-background: transparent;
-  --outline-color: var(--component-input-color-outline-focus);
+  --outline-color: var(--semantic-tab_focus-outline-color);
   --paddingX: 0;
   --paddingY: 0;
   align-items: stretch;
@@ -16,8 +16,8 @@
 }
 
 .inputWrapper.withFocusEffect:focus-within {
-  outline: var(--outline-color) auto var(--border_width-thin);
-  outline-offset: calc(var(--border_width-thin) + var(--border_width-standard));
+  outline: var(--outline-color) auto var(--semantic-tab_focus-outline-width);
+  outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 
 .inputWrapper.default:hover {
@@ -29,11 +29,6 @@
   --border-color: var(--component-input-error-color-border-default);
 }
 
-.inputWrapper.error:hover {
-  --icon-background: var(--component-input-error-color-border-hover);
-  --border-color: var(--component-input-error-color-border-hover);
-}
-
 .inputWrapper.disabled {
   --background: repeating-linear-gradient(
     135deg,
@@ -42,7 +37,7 @@
     #fff 3px,
     #fff 5px
   );
-  --border-color: var(--component-input-disabled-color-border-default);
+  opacity: var(--opacity-disabled);
 }
 
 .inputWrapper.readonlyInfo {

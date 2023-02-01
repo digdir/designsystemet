@@ -9,9 +9,9 @@
 }
 
 .helpTextButton:focus-visible {
-  outline: var(--interactive_components-colors-focus_outline) solid
-    var(--border_width-standard);
-  outline-offset: var(--border_width-standard);
+  outline: var(--semantic-tab_focus-outline-color) solid
+    var(--semantic-tab_focus-outline-width);
+  outline-offset: var(--semantic-tab_focus-outline-offset);
   color: var(--colors-blue-700);
 }
 
