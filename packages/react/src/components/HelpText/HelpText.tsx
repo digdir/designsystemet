@@ -15,7 +15,7 @@ export enum HelpTextSize {
 
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
-  title?: string;
+  title: string;
   size?: HelpTextSize;
   placement?:
     | 'top'
@@ -73,9 +73,7 @@ export const HelpText = ({
             data-state={open ? 'open' : 'closed'}
             aria-hidden={true}
           />
-          <span className={utilClasses.visuallyHidden}>
-            {title ? title : 'Toggle help text.'}
-          </span>
+          <span className={utilClasses.visuallyHidden}>{title}</span>
         </button>
       }
     >
