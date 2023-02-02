@@ -37,6 +37,9 @@ import {ArgsTable} from "@storybook/addon-docs";
             description: 'Feilmelding som vises under listen.',
             control: {type: 'text'}
         },
+        helpText: {
+            description: 'Legger på en hjelpe-tekst knapp ved siden av legenden til CheckboxGroupen.',
+        },
         disabled: {
             description: 'Deaktiverer alle sjekkboksene i listen.',
             control: {type: 'boolean'}
@@ -114,6 +117,27 @@ export const Template = (args = {}) => <CheckboxGroup {...{...defaultArgs, ...ar
     <Story
         name="Med feilmelding"
         args={{error: 'Du må velge minst én planet.'}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Med hjelpetekst
+<Canvas>
+    <Story
+        name="Med hjelpetekst"
+        args={{helpText: 'Du må velge minst én planet.', 
+        items: [
+            { checked: false, label: 'Merkur', name: 'planet1' },
+            { checked: false, label: 'Venus', name: 'planet2' },
+            { checked: false, label: 'Jorden', name: 'planet3', helpText: 'Her bor du.' },
+            { checked: false, label: 'Mars', name: 'planet4' },
+            { checked: false, label: 'Jupiter', name: 'planet5' },
+            { checked: false, label: 'Saturn', name: 'planet6' },
+            { checked: false, label: 'Uranus', name: 'planet7' },
+            { checked: false, label: 'Neptun', name: 'planet8' },
+        ],
+        }}
     >
         {Template.bind({})}
     </Story>

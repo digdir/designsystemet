@@ -31,7 +31,8 @@ export const Template = (args) => <FieldSet {...args}>{args.children}</FieldSet>
             children: <p>Her er det noe innhold.</p>,
             legend: 'Dette er en tittel',
             description: 'Dette er en beskrivelse av innholdet.',
-            size: FieldSetSize.Small
+            size: FieldSetSize.Small,
+            helpText: 'Help',
         }}
     >
         {Template.bind({})}
@@ -41,8 +42,10 @@ export const Template = (args) => <FieldSet {...args}>{args.children}</FieldSet>
 ## Egenskaper
 
 Det er mulig å legge til en tittel (`legend`) og en beskrivelse (`description`).
-Man kan også vise en feilmelding relatert til gruppen ved å bruke `error`-attributten.
-Setter man `disabled` til `true`, vil alle feltene i gruppen bli deaktivert.
+Man kan legge til en hjelpetekst som vises ved aktivering av hjelpetekst-knappen
+ved å bruke `helpText`-attributten. Man kan også vise en feilmelding relatert til 
+gruppen ved å bruke `error`-attributten. Setter man `disabled` til `true`, vil alle
+feltene i gruppen bli deaktivert.
 
 <ArgsTable of={FieldSet} />
 

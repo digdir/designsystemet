@@ -4,12 +4,19 @@ import cn from 'classnames';
 import { HelptextFilled, Helptext } from '@navikt/ds-icons';
 
 import { Popover, PopoverVariant } from '../Popover';
+import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
 
+export enum HelpTextSize {
+  Xsmall = 'xsmall',
+  Small = 'small',
+}
+
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
-  title?: string;
+  title: string;
+  size?: HelpTextSize;
   placement?:
     | 'top'
     | 'bottom'
@@ -31,6 +38,7 @@ export const HelpText = ({
   title,
   placement = 'right',
   onClick,
+  size = HelpTextSize.Small,
   ...rest
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);
@@ -54,16 +62,18 @@ export const HelpText = ({
             className={cn(
               classes.helpTextIcon,
               classes.helpTextIconFilled,
+              classes[size],
               className,
             )}
-            title={title}
             data-state={open ? 'open' : 'closed'}
+            aria-hidden={true}
           />
           <Helptext
-            className={cn(classes.helpTextIcon, className)}
-            title={title}
+            className={cn(classes.helpTextIcon, classes[size], className)}
             data-state={open ? 'open' : 'closed'}
+            aria-hidden={true}
           />
+          <span className={utilClasses.visuallyHidden}>{title}</span>
         </button>
       }
     >

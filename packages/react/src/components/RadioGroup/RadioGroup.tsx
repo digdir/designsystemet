@@ -29,6 +29,7 @@ export interface RadioGroupProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
+  helpText?: string;
   items: RadioGroupItem[];
   legend?: ReactNode;
   name: string;
@@ -43,6 +44,7 @@ export const RadioGroup = ({
   description,
   disabled,
   error,
+  helpText,
   items,
   legend,
   name,
@@ -84,6 +86,7 @@ export const RadioGroup = ({
       description={description}
       disabled={disabled}
       error={error}
+      helpText={helpText}
       legend={legend}
       size={fieldSetSize}
     >
@@ -101,6 +104,7 @@ export const RadioGroup = ({
             checked={radio.value === checkedValue}
             disabled={disabled || radio.disabled}
             error={!!error}
+            helpText={radio.helpText}
             key={radio.value}
             name={name}
             onChange={changeHandler(radio.value)}
