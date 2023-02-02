@@ -13,6 +13,7 @@
   border-width: var(--component-input-border_width-default);
   box-sizing: border-box;
   display: flex;
+  min-height: var(--component-input-size-min_height-default);
 }
 
 .inputWrapper.withFocusEffect:focus-within {
@@ -69,6 +70,7 @@
   background: var(--background);
   border: none;
   box-sizing: border-box;
+  font-family: var(--font_family-default);
   outline: none;
   padding: var(--paddingY) var(--paddingX);
   width: 100%;
