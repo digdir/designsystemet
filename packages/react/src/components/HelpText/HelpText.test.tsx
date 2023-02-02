@@ -9,7 +9,14 @@ const render = (props: Partial<HelpTextProps> = {}) => {
   const allProps = {
     ...props,
   };
-  renderRtl(<HelpText {...allProps}>Help</HelpText>);
+  renderRtl(
+    <HelpText
+      title={'Helptext for test'}
+      {...allProps}
+    >
+      Help
+    </HelpText>,
+  );
 };
 
 const user = userEvent.setup();
