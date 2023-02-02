@@ -60,7 +60,7 @@
   );
   --option_list-number_of_visible_options: 7;
   --option_list-shadow: 1px 1px 3px #00000040;
-  --option_list-z_index: 1;
+  --option_list-z_index: 2;
   --option-outline-focus: none;
   --option-padding_horizontal: 12px;
   --singleselect_field-padding_left: 12px;
