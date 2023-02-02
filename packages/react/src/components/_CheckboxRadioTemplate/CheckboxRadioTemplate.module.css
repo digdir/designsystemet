@@ -31,7 +31,7 @@
 
 .template.disabled {
   --click-cursor: auto;
-  --opacity: var(--interactive_components-colors-disabled-opacity);
+  --opacity: var(--opacity-disabled);
 }
 
 .clickable  {

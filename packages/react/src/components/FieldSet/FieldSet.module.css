@@ -22,7 +22,7 @@
 }
 
 .fieldSet:disabled {
-  opacity: var(--interactive_components-colors-disabled-opacity);
+  opacity: var(--opacity-disabled);
 }
 
 .fieldSet:disabled * {

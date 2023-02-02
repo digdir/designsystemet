@@ -47,8 +47,8 @@
     (var(--field-height-inside) - var(--multiselect_item-height)) / 2
   );
   --option-background_color-default: transparent;
-  --option-background_color-hover: var(--colors-blue-200);
-  --option-background_color-selected: var(--colors-blue-300);
+  --option-background_color-hover: var(--colors-blue-100);
+  --option-background_color-selected: var(--colors-blue-200);
   --option-background_color-selected-hover: var(--colors-blue-500);
   --option-border_color: #022f5180;
   --option-border_width: 1px;
@@ -64,8 +64,8 @@
   --option-outline-focus: none;
   --option-padding_horizontal: 12px;
   --singleselect_field-padding_left: 12px;
-  --focus_visible-outline: 2px auto
-    var(--interactive_components-colors-focus_outline);
+  --focus_visible-outline: var(--semantic-tab_focus-outline-width) auto
+    var(--semantic-tab_focus-outline-color);
 
   font-size: var(--font_size);
   line-height: var(--line-height);
@@ -74,7 +74,7 @@
 
 .select.disabled {
   --interactive_element-cursor: auto;
-  opacity: var(--interactive_components-colors-disabled-opacity);
+  opacity: var(--opacity-disabled);
 }
 
 .select.expanded {
