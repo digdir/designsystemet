@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.2...@digdir/design-system-react@0.4.3) (2023-02-02)
+
+### Bug Fixes
+
+- **Button:** Only icon padding ([#109](https://github.com/digdir/designsystem/issues/109)) ([7a4c286](https://github.com/digdir/designsystem/commit/7a4c28622a3e558d36fa4c526b0d0e3c9a875bc8))
+- **help text:** add title to helptext tests ([#126](https://github.com/digdir/designsystem/issues/126)) ([9b3fc86](https://github.com/digdir/designsystem/commit/9b3fc8686bf56eca2f69f80b4f02e3ee4e281b58))
+- **Select:** Set higher z-index on option list ([#114](https://github.com/digdir/designsystem/issues/114)) ([f6077a6](https://github.com/digdir/designsystem/commit/f6077a645509001edc482e075a3a5df5ffa87076))
+- Set font and min height on input fields ([#112](https://github.com/digdir/designsystem/issues/112)) ([e7671fa](https://github.com/digdir/designsystem/commit/e7671fabed4b9ab9d3094a44651e5f8797012bb9))
+- Update Figma tokens ([#111](https://github.com/digdir/designsystem/issues/111)) ([8e0edd8](https://github.com/digdir/designsystem/commit/8e0edd819c6483ea9a372bb44f13ad8f3af38cc9))
+- update figma-token for CheckboxRadioTemplate ([df69b2a](https://github.com/digdir/designsystem/commit/df69b2a2c366b4c46baa67a8f84c3358357b5324))
+
 ## [0.4.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.1...@digdir/design-system-react@0.4.2) (2023-01-30)
 
 ### Bug Fixes
