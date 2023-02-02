@@ -1,6 +1,6 @@
 .popover {
   width: max-content;
-  z-index: 1;
+  z-index: 2;
   padding: 12px;
   max-width: calc(100vw - 20px);
   border: 1px solid gray;
@@ -43,7 +43,9 @@
   z-index: -1;
   transform: rotate(45deg);
   background-color: inherit;
-  border: 1px solid inherit;
+  border: 1px solid;
+  /* Set border color separately in order to make inheritance work. */
+  border-color: inherit;
   width: 12px;
   height: 12px;
 }
