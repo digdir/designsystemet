@@ -3,6 +3,7 @@
 module.exports = {
   moduleNameMapper: {
     '.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.svg$': '<rootDir>/test/__mocks__/svg.ts',
   },
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
