@@ -261,7 +261,7 @@
 }
 
 .button.quiet.secondary:not(:disabled):hover {
-    background: var(--colors-neutral-300);
+    background: var(--colors-grey-300);
 }
 
 .button.quiet.secondary:not(:disabled):active {
