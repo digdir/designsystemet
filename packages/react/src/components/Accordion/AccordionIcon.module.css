@@ -1,0 +1,15 @@
+.accordionIcon {
+  --size: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: var(--size);
+  margin-bottom: 0.6rem;
+  margin-left: 0.6rem;
+  margin-top: 0.6rem;
+  width: var(--size);
+}
+
+.accordionIcon.opened {
+  transform: rotate(90deg);
+}
