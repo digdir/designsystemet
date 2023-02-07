@@ -3,9 +3,9 @@ import cn from 'classnames';
 
 import classes from './AccordionIcon.module.css';
 import { useAccordionContext, AccordionIconVariant } from './Context';
-import { Arrow, CircleArrow } from "./icons";
+import { Arrow, CircleArrow } from './icons';
 
-export const AccordionIcon = () => {
+const AccordionIcon = () => {
   const { onClick, open, iconVariant } = useAccordionContext();
   const props = {
     className: cn(classes.accordionIcon, open && classes.opened),
@@ -18,3 +18,7 @@ export const AccordionIcon = () => {
       return <CircleArrow {...props} />;
   }
 };
+
+AccordionIcon.displayName = 'AccordionIcon';
+
+export { AccordionIcon };

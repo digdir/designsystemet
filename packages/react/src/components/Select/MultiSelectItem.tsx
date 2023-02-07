@@ -9,7 +9,7 @@ export interface MultiSelectItemProps {
   label: string;
 }
 
-export const MultiSelectItem = ({
+const MultiSelectItem = ({
   deleteButtonLabel,
   disabled,
   onDeleteButtonClick,
@@ -27,3 +27,7 @@ export const MultiSelectItem = ({
     </button>
   </span>
 );
+
+MultiSelectItem.displayName = 'MultiSelectItem';
+
+export { MultiSelectItem };

@@ -23,7 +23,7 @@ export interface TabsProps {
 
 const validId = (str: string) => str.replace(/\s/, '_');
 
-export const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
+const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
   const idBase = useId();
 
   // Generate values for undefined properties
@@ -135,3 +135,7 @@ export const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
     </div>
   );
 };
+
+Tabs.displayName = 'Tabs';
+
+export { Tabs };

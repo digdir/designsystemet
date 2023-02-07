@@ -9,7 +9,6 @@ import type {
 import { NumericFormat, PatternFormat } from 'react-number-format';
 
 import { isNumericFormat, isPatternFormat } from '../../utils';
-
 import { InputWrapper } from '../_InputWrapper';
 import type { ReadOnlyVariant } from '../_InputWrapper';
 
@@ -80,7 +79,7 @@ const numericKeyDown = (
   }
 };
 
-export const TextField = ({
+const TextField = ({
   id,
   onChange,
   isValid = true,
@@ -172,3 +171,7 @@ export const TextField = ({
     />
   );
 };
+
+TextField.displayName = 'TextField';
+
+export { TextField };

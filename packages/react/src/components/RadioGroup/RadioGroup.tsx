@@ -40,7 +40,7 @@ export interface RadioGroupProps {
   variant?: RadioGroupVariant;
 }
 
-export const RadioGroup = ({
+const RadioGroup = ({
   description,
   disabled,
   error,
@@ -91,11 +91,9 @@ export const RadioGroup = ({
       size={fieldSetSize}
     >
       <div
-        className={[
-          classes.radioGroup,
-          classes[variant],
-          classes[size],
-        ].join(' ')}
+        className={[classes.radioGroup, classes[variant], classes[size]].join(
+          ' ',
+        )}
         role={presentation ? undefined : 'radiogroup'}
       >
         {items.map((radio) => (
@@ -116,3 +114,7 @@ export const RadioGroup = ({
     </FieldSet>
   );
 };
+
+RadioGroup.displayName = 'RadioGroup';
+
+export { RadioGroup };

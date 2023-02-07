@@ -6,7 +6,7 @@ export interface AccordionContentProps {
   children?: React.ReactNode;
 }
 
-export const AccordionContent = ({ children }: AccordionContentProps) => {
+const AccordionContent = ({ children }: AccordionContentProps) => {
   const { open, contentId, headerId } = useAccordionContext();
 
   return (
@@ -23,3 +23,7 @@ export const AccordionContent = ({ children }: AccordionContentProps) => {
     </div>
   );
 };
+
+AccordionContent.displayName = 'AccordionContent';
+
+export { AccordionContent };

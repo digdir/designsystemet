@@ -32,7 +32,7 @@ export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'left-end';
 }
 
-export const HelpText = ({
+const HelpText = ({
   className,
   children,
   title,
@@ -81,3 +81,7 @@ export const HelpText = ({
     </Popover>
   );
 };
+
+HelpText.displayName = 'HelpText';
+
+export { HelpText };

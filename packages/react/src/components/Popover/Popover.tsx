@@ -122,7 +122,7 @@ export const usePopoverContext = () => {
   return context;
 };
 
-export function Popover({
+function Popover({
   children,
   trigger,
   arrow = true,
@@ -145,6 +145,10 @@ export function Popover({
     </PopoverContext.Provider>
   );
 }
+
+Popover.displayName = 'Popover';
+
+export { Popover };
 
 interface PopoverTriggerProps {
   children: React.ReactNode;

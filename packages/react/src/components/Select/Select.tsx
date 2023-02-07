@@ -3,11 +3,15 @@ import cn from 'classnames';
 import tokens from '@altinn/figma-design-tokens/dist/tokens.json';
 
 import { InputWrapper } from '../_InputWrapper';
-import { MultiSelectItem } from './MultiSelectItem';
-import { useEventListener, useKeyboardEventListener, useUpdate } from '../../hooks';
+import {
+  useEventListener,
+  useKeyboardEventListener,
+  useUpdate,
+} from '../../hooks';
+import { arraysEqual } from '../../utils/arrayUtils';
 
+import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
-import { arraysEqual } from "../../utils/arrayUtils";
 
 export type SelectProps = SingleSelectProps | MultiSelectProps;
 
@@ -52,7 +56,7 @@ const eventListenerKeys = {
   Enter: 'Enter',
 };
 
-export const Select = (props: SelectProps) => {
+const Select = (props: SelectProps) => {
   const {
     disabled,
     error,
@@ -330,3 +334,7 @@ export const Select = (props: SelectProps) => {
     </div>
   );
 };
+
+Select.displayName = 'Select';
+
+export { Select };

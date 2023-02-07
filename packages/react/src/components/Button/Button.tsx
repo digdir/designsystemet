@@ -55,7 +55,7 @@ const Button = (
     ...restHTMLProps
   }: PropsWithChildren<ButtonProps>,
   ref?: React.Ref<HTMLButtonElement> | undefined,
-) =>  (
+) => (
   <button
     {...restHTMLProps}
     ref={ref}
@@ -86,5 +86,7 @@ const Button = (
     )}
   </button>
 );
+
+Button.displayName = 'Button';
 
 export default forwardRef(Button);

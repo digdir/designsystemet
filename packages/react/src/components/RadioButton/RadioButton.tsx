@@ -31,7 +31,7 @@ export interface RadioButtonProps {
   value: string;
 }
 
-export const RadioButton = ({
+const RadioButton = ({
   checked,
   description,
   disabled,
@@ -77,3 +77,7 @@ export const RadioButton = ({
     </span>
   </CheckboxRadioTemplate>
 );
+
+RadioButton.displayName = 'RadioButton';
+
+export { RadioButton };
