@@ -11,7 +11,7 @@ export interface AccordionProps {
   iconVariant?: AccordionIconVariant;
 }
 
-export const Accordion = ({
+const Accordion = ({
   children,
   open,
   onClick,
@@ -35,3 +35,7 @@ export const Accordion = ({
     </div>
   );
 };
+
+Accordion.displayName = 'Accordion';
+
+export { Accordion };

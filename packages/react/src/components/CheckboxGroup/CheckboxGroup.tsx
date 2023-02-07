@@ -53,7 +53,7 @@ const reducer = (state: CheckedNames, action: ReducerAction) => {
 const checkedItems = (items: CheckboxGroupItem[]) =>
   items.filter(({ checked }) => checked).map(({ name }) => name);
 
-export const CheckboxGroup = ({
+const CheckboxGroup = ({
   compact,
   description,
   disabled,
@@ -123,3 +123,7 @@ export const CheckboxGroup = ({
     </FieldSet>
   );
 };
+
+CheckboxGroup.displayName = 'CheckboxGroup';
+
+export { CheckboxGroup };

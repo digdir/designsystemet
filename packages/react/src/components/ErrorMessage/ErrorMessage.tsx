@@ -8,11 +8,7 @@ export interface ErrorMessageProps {
   ariaLabel?: string;
 }
 
-export const ErrorMessage = ({
-  id,
-  children,
-  ariaLabel,
-}: ErrorMessageProps) => {
+const ErrorMessage = ({ id, children, ariaLabel }: ErrorMessageProps) => {
   return (
     <div
       aria-label={ariaLabel}
@@ -25,3 +21,7 @@ export const ErrorMessage = ({
     </div>
   );
 };
+
+ErrorMessage.displayName = 'ErrorMessage';
+
+export { ErrorMessage };

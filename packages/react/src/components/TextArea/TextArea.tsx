@@ -13,7 +13,7 @@ export interface TextAreaProps
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
 }
 
-export const TextArea = ({
+const TextArea = ({
   isValid = true,
   disabled = false,
   readOnly = false,
@@ -44,3 +44,7 @@ export const TextArea = ({
     readOnly={readOnly}
   />
 );
+
+TextArea.displayName = 'TextArea';
+
+export { TextArea };

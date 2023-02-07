@@ -11,7 +11,7 @@ export interface AccordionHeaderProps {
   subtitle?: string;
 }
 
-export const AccordionHeader = ({
+const AccordionHeader = ({
   children,
   actions,
   subtitle,
@@ -47,3 +47,7 @@ export const AccordionHeader = ({
     </div>
   );
 };
+
+AccordionHeader.displayName = 'AccordionHeader';
+
+export { AccordionHeader };

@@ -25,7 +25,7 @@ export interface CheckboxProps {
   readOnly?: boolean;
 }
 
-export const Checkbox = ({
+const Checkbox = ({
   checkboxId,
   checked,
   compact,
@@ -72,3 +72,7 @@ export const Checkbox = ({
     </span>
   </CheckboxRadioTemplate>
 );
+
+Checkbox.displayName = 'Checkbox';
+
+export { Checkbox };

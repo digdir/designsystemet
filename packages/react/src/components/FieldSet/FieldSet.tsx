@@ -24,7 +24,7 @@ export enum FieldSetSize {
   Small = 'small',
 }
 
-export const FieldSet = ({
+const FieldSet = ({
   children,
   className,
   contentClassName,
@@ -67,3 +67,7 @@ export const FieldSet = ({
     </fieldset>
   );
 };
+
+FieldSet.displayName = 'FieldSet';
+
+export { FieldSet };
