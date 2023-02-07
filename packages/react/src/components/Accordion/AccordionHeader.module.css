@@ -1,0 +1,62 @@
+.accordionHeader {
+  --component-accordion_header-border_top_color: var(--colors-grey-200);
+  --component-accordion_header-border_top_style: solid;
+  --component-accordion_header-border_top_width: var(--border_width-thin);
+  --component-accordion_header-color-background: var(--colors-white);
+  background-color: var(--component-accordion_header-color-background);
+  border-top-color: var(--component-accordion_header-border_top_color);
+  border-top-style: var(--component-accordion_header-border_top_style);
+  border-top-width: var(--component-accordion_header-border_top_width);
+  display: flex;
+}
+
+/* breakpoints-xs */
+@media only screen and (min-width: 0) {
+  .subtitle {
+    display: none;
+  }
+}
+
+/* breakpoints-sm */
+@media only screen and (min-width: 540px) {
+  .subtitle {
+    display: inline-block;
+    font-size: 0.9rem;
+    opacity: 60%;
+    padding-bottom: 0.2rem;
+    padding-right: 0.2rem;
+    padding-top: 0.2rem;
+  }
+}
+
+.title {
+  --component-accordion_header_title-border_bottom_style: none;
+  --component-accordion_header_title-border_left_style: none;
+  --component-accordion_header_title-border_right_style: none;
+  --component-accordion_header_title-border_top_style: none;
+  --component-accordion_header_title-color-background: none;
+  --component-accordion_header_title-font_size: var(--font_size-300);
+  --component-accordion_header_title-font_weight: var(--component-panel-font_weight-heading);
+  --component-accordion_header_title-spacing-margin_left: 1.6rem;
+  background-color: var(--component-accordion_header_title-color-background);
+  border-bottom-style: var(--component-accordion_header_title-border_bottom_style);
+  border-left-style: var(--component-accordion_header_title-border_left_style);
+  border-right-style: var(--component-accordion_header_title-border_right_style);
+  border-top-style: var(--component-accordion_header_title-border_top_style);
+  cursor: pointer;
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: var(--component-accordion_header_title-font_size);
+  font-weight: var(--component-accordion_header_title-font_weight);
+  line-height: 16px;
+  margin-left: var(--component-accordion_header_title-spacing-margin_left);
+  text-align: left;
+}
+
+.actions {
+  align-items: center;
+  column-gap: 0.3rem;
+  display: grid;
+  grid-auto-flow: column;
+  padding: 0 0.2rem;
+}

@@ -30,3 +30,15 @@ export { TextArea } from './TextArea';
 export type { TextAreaProps } from './TextArea';
 export { TextField } from './TextField';
 export type { TextFieldProps, TextFieldFormatting } from './TextField';
+export {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionIconVariant,
+} from './Accordion';
+export type {
+  AccordionClickHandler,
+  AccordionContentProps,
+  AccordionHeaderProps,
+  AccordionProps,
+} from './Accordion';
