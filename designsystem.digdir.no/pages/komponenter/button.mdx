@@ -6,105 +6,80 @@ import {
     TokensTable
 } from "../../components/Table/TokenTable/TokensTable";
 import {ArgsTable} from "../../components/ArgsTable/ArgsTable";
-import { Button } from "@digdir/design-system-react";
+import { Button, ButtonSize, ButtonVariant, ButtonColor } from "@digdir/design-system-react";
 
 <Meta title='Button' />
 
-export const data = {
+export const pageData = {
     title: 'Button',
-    description: 'Button lar brukeren utføre en handling.',
+    description: 'Knapper lar brukere utføre handlinger.',
     component: Button,
-    argTypes: [
-        {
-            type: 'radio',
-            label: 'Color',
-            prop: 'color',
-            defaultValue: 'primary',
-            items: [
-                {
-                    label: 'Primary',
-                    value: 'primary',
-                },
-                {
-                    label: 'Secondary',
-                    value: 'secondary',
-                },
-                {
-                    label: 'Success',
-                    value: 'success',
-                },
-                {
-                    label: 'Danger',
-                    value: 'danger',
-                },
-            ],
-        },
-        {
-            type: 'radio',
-            label: 'Size',
-            prop: 'size',
-            defaultValue: 'medium',
-            items: [
-                {
-                    label: 'Small',
-                    value: 'small',
-                },
-                {
-                    label: 'Medium',
-                    value: 'medium',
-                },
-                {
-                    label: 'Large',
-                    value: 'large',
-                },
-            ],
-        },
-        {
-            type: 'checkbox',
-            label: 'labbbb',
-            prop: 'rrr',
-            items: [
-                {label: 'ff', name: 'bb', checked: false}
-            ]
+    argTypes: {
+      color: {
+        control: {
+          type: 'radio',
+          options: Object.values(ButtonColor)
         }
-    ]
+      },
+      variant: {
+        control: {
+          type: 'radio',
+          options: Object.values(ButtonVariant)
+        }
+      },
+      size: {
+        control: {
+          type: 'radio',
+          options: Object.values(ButtonSize)
+        }
+      },
+  }
 };
-export default ({ children }) => <ComponentLayout Content={children} data={data}  />;
+export default ({ children }) => <ComponentLayout Content={children} data={pageData}  />;
 
 ## Varianter
 
 ### Primary
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century.
+On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
 <Preview component={Button} args={{
-    size: 'medium',
-    color: 'primary',
+    size: ButtonSize.Medium,
     children: 'Button',
 }} />
 
 
 ### Secondary
 
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century.
+On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
 <Preview component={Button} args={{
-    size: 'medium',
-    color: 'secondary',
+    size: ButtonSize.Medium,
+    color: ButtonColor.Secondary,
     children: 'Button'
 }} />
 
 
 ### Success
 
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century.
+On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
 
 <Preview component={Button} args={{
-    size: 'medium',
-    color: 'success',
+    size: ButtonSize.Medium,
+    color: ButtonColor.Success,
     children: 'Button'
 }} />
 
+### Danger
+
+On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
+
+
+<Preview component={Button} args={{
+  size: ButtonSize.Medium,
+  color: ButtonColor.Danger,
+  children: 'Button'
+}} />
 
 ## Størrelser
 
@@ -112,8 +87,7 @@ On through of which no the your phase more know anyone tried he when line me wha
 ### Small
 
 <Preview component={Button} args={{
-    size: 'small',
-    color: 'primary',
+    size: ButtonSize.Small,
     children: 'Button'
 }} />
 
@@ -121,8 +95,7 @@ On through of which no the your phase more know anyone tried he when line me wha
 ### Medium
 
 <Preview component={Button} args={{
-    size: 'medium',
-    color: 'primary',
+    size: ButtonSize.Medium,
     children: 'Button',
 }} />
 
@@ -130,8 +103,7 @@ On through of which no the your phase more know anyone tried he when line me wha
 ### Large
 
 <Preview component={Button} args={{
-    size: 'large',
-    color: 'primary',
+    size: ButtonSize.Large,
     children: 'Button'
 }} />
 
@@ -140,25 +112,79 @@ On through of which no the your phase more know anyone tried he when line me wha
 <Usage
     title='The head and expand great'
     desc='Law, countries stiff on for I to lane. To everyday. Hair part. Statement texts. Explanation and he semantics, on so I of loyalty. Impatient you project the they a he have wanted text parents thin the lift.'
-    component={Button} args={{
-    size: 'medium',
-    color: 'primary',
-    children: 'Button'
+    component={Button}
+    args={{
+      size: 'medium',
+      color: 'primary',
+      children: 'Button'
 }}  />
 
 <Usage
     title='The head and expand great'
     type='danger'
     desc='Law, countries stiff on for I to lane. To everyday. Hair part. Statement texts. Explanation and he semantics, on so I of loyalty. Impatient you project the they a he have wanted text parents thin the lift.'
-    component={Button} args={{
-    size: 'medium',
-    color: 'success',
-    children: 'Button'
+    component={Button}
+    args={{
+      size: 'medium',
+      color: 'success',
+      children: 'Button'
 }}  />
 
 
-## Props
-<ArgsTable component={Button} />
+## Egenskaper
+Liste over tilgjengelige egenskaper (props) til komponenten:
+
+<ArgsTable argTypes={{
+  color: {
+    type: 'ButtonColor: string',
+    description: 'Set the color of the button.',
+    values: Object.values(ButtonColor),
+    defaultValue: ButtonColor.Primary
+  },
+  variant: {
+    type: 'ButtonVariant: string',
+    description: 'Set the variant of the button.',
+    values: Object.values(ButtonVariant),
+    defaultValue: ButtonVariant.Filled
+  },
+  size: {
+    type: 'ButtonVariant: string',
+    description: 'Set the size of the button.',
+    values: Object.values(ButtonSize),
+    defaultValue: ButtonSize.Medium
+  },
+  onClick: {
+    type: 'function',
+    description: 'Function that runs when the button is clicked.',
+    defaultValue: '(e) =>'
+  },
+  disabled: {
+    type: 'boolean',
+    description: 'Set whether the button should be disabled or not.',
+    defaultValue: 'false'
+  },
+  icon: {
+    type: 'React.ReactNode',
+    description: 'Icon to be rendered in the button. This should be a React component that renders an SVG object.',
+    defaultValue: "nothing"
+  },
+  iconPlacement: {
+    type: 'string',
+    description: 'Whether icon should be placed on the left or right side.',
+    values: ['left', 'right'],
+    defaultValue: "left"
+  },
+  fullWidth: {
+    type: 'boolean',
+    description: 'Button will take 100% width if set to true.',
+    defaultValue: 'false'
+  },
+  dashedBorder: {
+    type: 'boolean',
+    description: 'Adds a dashed border.',
+    defaultValue: 'false'
+  }
+}} />
 
 ## Tokens
 <TokensTable jsonKey='component.button' componentName='button' description='d'  showPreview={false}/>

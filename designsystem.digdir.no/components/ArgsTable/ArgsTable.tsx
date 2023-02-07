@@ -1,63 +1,89 @@
 import React, { useEffect } from 'react';
-
-import classes from './ArgsTable.module.css';
 import cn from 'classnames';
 
+import classes from './ArgsTable.module.css';
+import Tippy from '@tippyjs/react';
+import { Copy } from 'lucide-react';
+
 interface ArgsTable {
-  component: any;
+  argTypes: any;
 }
 
-const ArgsTable = ({ component }: ArgsTable) => {
-  const items = [
-    {
-      name: 'name',
-      type: 'boolean',
-      desc: 'When the button label is hidden',
-    },
-    {
-      name: 'text',
-      type: 'string',
-      desc: 'Icon must be present if the label is not defined.',
-    },
-    {
-      name: 'description',
-      type: 'custom',
-      desc: 'Buttons have a minimum width of 2.25× the height of the button',
-    },
-    {
-      name: 'heading',
-      type: 'number',
-      desc: 'A button can be navigated using a keyboard. ',
-    },
-  ];
-
-  useEffect(() => {
-    console.log(component);
-  }, []);
-
-  const getType = (type: string) => {
-    if (type === 'custom') {
-      return 'HeadingProps';
-    } else {
+const ArgsTable = ({ argTypes }: ArgsTable) => {
+  const getTypeClass = (type: string) => {
+    if (
+      type === 'string' ||
+      type === 'boolean' ||
+      type === 'number' ||
+      type === 'function'
+    ) {
       return type;
+    } else {
+      return 'custom';
     }
+  };
+
+  const getOptions = (options: any) => {
+    let s = '';
+    for (let i = 0; i < options.length; i++) {
+      if (i === 0) {
+        s += options[i];
+      } else {
+        s += ' | ' + options[i];
+      }
+    }
+    return s;
   };
 
   return (
     <div className={classes.table}>
-      {items.map((item, index) => (
+      {Object.keys(argTypes).map((item, index) => (
         <div
           key={index}
           className={classes.items}
         >
           <div className={classes.item}>
-            <div className={classes.name}>
-              {item.name}{' '}
-              <span className={cn(classes.tag, classes[item.type])}>
-                {getType(item.type)}
+            <div className={classes.top}>
+              {argTypes[item].required && (
+                <div
+                  className={cn(classes.name, {
+                    [classes.required]: argTypes[item].required,
+                  })}
+                >
+                  <span>{item}</span>
+                  <span>*</span>
+                </div>
+              )}
+
+              {!argTypes[item].required && (
+                <Tippy
+                  content={'Default: ' + argTypes[item].defaultValue}
+                  hideOnClick={false}
+                >
+                  <div className={classes.name}>
+                    <span>{item}</span>
+                    <span>?</span>
+                  </div>
+                </Tippy>
+              )}
+
+              <span
+                className={cn(
+                  classes.tag,
+                  classes[getTypeClass(argTypes[item].type)],
+                )}
+              >
+                {argTypes[item].type}
               </span>
+              {argTypes[item].values && (
+                <span className={classes.options}>
+                  {getOptions(argTypes[item].values)}
+                </span>
+              )}
             </div>
-            <div className={classes.desc}>{item.desc}</div>
+            {argTypes[item].description && (
+              <div className={classes.desc}>{argTypes[item].description}</div>
+            )}
           </div>
         </div>
       ))}

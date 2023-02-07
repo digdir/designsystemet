@@ -32,7 +32,7 @@ export function Usage({
         {type === 'success' ? (
           <div className={classes.iconContainer}>
             <SuccessStroke
-              fontSize={24}
+              fontSize={20}
               color='white'
             />
           </div>
@@ -44,7 +44,7 @@ export function Usage({
             )}
           >
             <ErrorStroke
-              fontSize={24}
+              fontSize={20}
               color='white'
             />
           </div>
