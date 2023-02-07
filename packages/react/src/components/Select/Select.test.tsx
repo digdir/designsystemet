@@ -221,6 +221,10 @@ describe('Select', () => {
       expectSelectedValue(singleSelectOptions[newValueIndex]);
     });
 
+    it('Renders without errors when option list is empty', () => {
+      expect(() => renderSingleSelect({ options: [] })).not.toThrow();
+    });
+
     const expectSelectedValue = (option: SingleSelectOption) => {
       expect(getCombobox()).toHaveValue(option.value);
       expect(getCombobox()).toHaveTextContent(option.label);
@@ -544,6 +548,10 @@ describe('Select', () => {
       rerender(<Select {...defaultMultiSelectProps} value={newValues} />);
       expectSelectedValues(newValues);
       expectSelectedOptions((i) => newValueIndices.includes(i));
+    });
+
+    it('Renders without errors when option list is empty', () => {
+      expect(() => renderMultiSelect({ options: [] })).not.toThrow();
     });
 
     const getFocusedOption = (container: HTMLElement) =>

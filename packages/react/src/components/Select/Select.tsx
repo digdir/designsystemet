@@ -107,8 +107,9 @@ export const Select = (props: SelectProps) => {
     const listboxElement = listboxRef.current;
     if (listboxElement) {
       const listboxHeight = listboxElement.offsetHeight;
-      const itemHeight =
-        listboxElement.getElementsByTagName('li')[0].offsetHeight;
+      const items = listboxElement.querySelectorAll('li');
+      if (!items.length) return;
+      const itemHeight = items[0].offsetHeight;
       const scrollPositionTop = listboxElement.scrollTop;
       const scrollPositionBottom = scrollPositionTop + listboxHeight;
       const activeOptionPositionTop = activeOptionIndex * itemHeight;
