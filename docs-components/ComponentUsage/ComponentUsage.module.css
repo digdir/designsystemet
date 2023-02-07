@@ -27,7 +27,7 @@
 .box {
     margin-left: 40px;
     width: 50%;
-    background-color: var(--colors-neutral-100);
+    background-color: var(--colors-grey-100);
     min-height: 200px;
     display: flex;
     flex-direction: column;
