@@ -1,0 +1,42 @@
+.box {
+    margin-top: 45px;
+    margin-bottom: -32px;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+.desc {
+    font-size: 18px;
+    line-height: 1.6em;
+}
+
+.element  {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    height: 550px;
+    width: 550px;
+    border: 8px solid #F45F63;
+    border-top-color: #68707C;
+    border-left-color: #E5AA20;
+    border-bottom-color: #1E98F5;
+    border-radius: 10px;
+    opacity: 0.09;
+    z-index: 1;
+    animation: rotate 150s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(45deg)
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

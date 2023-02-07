@@ -1,0 +1,28 @@
+.toc {
+    border-left: 2px solid #cecece;
+    padding-left: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    list-style: none;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    margin-top: 12px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0;
+}

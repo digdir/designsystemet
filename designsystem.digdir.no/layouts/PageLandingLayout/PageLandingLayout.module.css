@@ -1,0 +1,55 @@
+.content {
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 24px;
+}
+
+.desc {
+    font-size: 18px;
+    line-height: 1.6em;
+    padding-right: 300px;
+    margin-bottom: 48px;
+}
+
+.left {
+
+}
+
+.right {
+
+}
+
+.test {
+    padding-left: 35px;
+}
+
+.list {
+    margin-bottom: 32px;
+    color: #4d4d4d;
+}
+
+.list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.list h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.list li {
+    list-style: none;
+}
+
+.list li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,46 @@
+.table {
+    margin-top: 20px;
+}
+
+.item {
+    margin-bottom: 8px;
+    background-color: #F4F5F6;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.tag {
+    background-color: #dfdfdf;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.tag.string {
+    background-color: #FFC7C7;
+}
+
+.tag.number {
+    background-color: #dfcafe;
+}
+
+.tag.boolean {
+    background-color: #b3f0ba;
+}
+.tag.custom {
+    background-color: #cbd6ff;
+}
+
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.desc {
+    font-size: 15px;
+    margin-top: 8px;
+}

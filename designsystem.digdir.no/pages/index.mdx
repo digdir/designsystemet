@@ -1,0 +1,20 @@
+import Meta from '../components/Meta/Meta'
+import {FrontpageLayout, FrontpageData} from "../layouts/FrontpageLayout/FrontpageLayout";
+import { Picture, Wrench, SystemFilled } from "@navikt/ds-icons";
+
+<Meta title='Framsiden' />
+
+export const data = {
+    title: 'Felles Designsystem',
+    description: 'Felles designsystem består av grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester. Etter hvert håper vi at dette kan bli en felles verktøykasse.',
+    navigationCards: {
+        title: 'Kom i gang',
+        items: [
+            {title: 'For designere', color: 'blue', url: '/for-designere', icon: <Picture fontSize={28} />},
+            {title: 'For utviklere', color: 'yellow', url: '/for-utviklere', icon: <Wrench fontSize={28} />},
+            {title: 'Komponenter', color: 'red', url: '/komponenter', icon: <SystemFilled fontSize={25} />},
+        ]
+    }
+};
+
+export default ({ children }) => <FrontpageLayout Content={children} data={data} />;

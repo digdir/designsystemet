@@ -1,0 +1,38 @@
+import Meta from '../components/Meta/Meta'
+import PageLayout from "../layouts/PageLayout/PageLayout";
+import {CodeSnippet} from "../components/CodeSnippet/CodeSnippet";
+
+<Meta title='Framsiden' />
+
+# For utviklere
+
+Writing theory know to choose morning, young operations concepts what one her stands sentences and pointing judgment, as it at it founder, myself suggests the it many simply. The than think more, use. Moment. Paint, to in than starting actual decided but of volume had this primarily way had I.
+
+
+## Design tokens
+
+### Kom i gang
+Installer NPM-pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og importer inn tokens med CSS-, SCSS- eller Javascript-variabler. Overstyres ved behov.
+
+#### CSS
+
+<CodeSnippet children='
+@import "@digdir/design-system-tokens/build/tokens.css";
+:root {
+  --my-text-color: var(--color-text-background-light);
+}' language='css'/>
+
+#### SCSS
+
+<CodeSnippet children='
+@use "@digdir/design-system-tokens/build/tokens.scss" as tokens;
+$my-text-color: tokens.$color-text-background-light;' language='scss'/>
+
+#### Javascript
+
+<CodeSnippet children='
+import tokens from "@digdir/design-system-tokens/build/tokens"
+const myTextColor = tokens.color.text.background.light' language='javascript'/>
+
+
+export default ({ children }) => <PageLayout Content={children}  />;

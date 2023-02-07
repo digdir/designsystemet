@@ -1,0 +1,34 @@
+.menu {
+
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    list-style: none;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+    margin-top: 12px;
+    display: block;
+    font-size: 16px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tag {
+    background-color: #e5d3ff;
+    font-size: 14px;
+    padding: 3px 6px;
+    margin-left: 4px;
+    border-radius: 3px;
+    font-weight: 500;
+}

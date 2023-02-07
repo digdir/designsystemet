@@ -1,0 +1,74 @@
+.content {
+    margin-top: 40px;
+    margin-bottom: 48px;
+}
+
+.menus {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 36px;
+    line-height: 1.3em;
+    margin-bottom: 16px;
+    margin-top: 0;
+    font-weight: 500;
+}
+
+.desc {
+    padding-right: 200px;
+    font-size: 20px;
+    line-height: 1.7em;
+}
+
+.markdown p {
+    padding-right: 150px;
+}
+
+.markdown h2 {
+    font-size: 28px !important;
+    font-weight: 500;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #d8d8d8;
+}
+
+.markdown h3 {
+    font-size: 24px !important;
+    font-weight: 500;
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+.links {
+    margin: 26px 0 24px 0;
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    margin-right: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.link:hover {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.link img {
+    height: 20px;
+    margin-right: 8px;
+}
+
+.link.storybook img {
+}
+
+.tomato {
+    padding: 0 56px 0 24px;
+}

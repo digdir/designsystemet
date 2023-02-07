@@ -2,10 +2,13 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "designsystem.digdir.no"
   ],
   "scripts": {
     "storybook": "start-storybook -p 6006",
+    "docs": "cd designsystem.digdir.no && yarn dev",
+    "docs-build": "cd designsystem.digdir.no && yarn building",
     "storybook:clean": "start-storybook -p 6006 --no-manager-cache",
     "build": "npx lerna run build",
     "build-react": "cd packages/react && yarn build",

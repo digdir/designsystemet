@@ -1,0 +1,317 @@
+.button {
+    --icon-size: var(--component-button-size-icon-small);
+    --button-vertical-padding: var(--component-button-space-padding-x-small);
+    --border-radius: 3px;
+    --font-and-icon-color: var(--component-button-filled-color-text-all);
+
+    all: initial; /* reset all styles to default, to avoid style overrides/surprises caused by other css (from Design system v1 f.ex) */
+    align-items: center;
+    border-radius: var(--border-radius);
+    border: var(--component-button-border_width-default) solid transparent;
+    box-sizing: border-box;
+    color: var(--font-and-icon-color);
+    cursor: pointer;
+    display: flex;
+    fill: var(--font-and-icon-color);
+    font-family: inherit;
+    justify-content: center;
+    letter-spacing: var(--typography-default-letter-spacing);
+    padding: 0 var(--button-vertical-padding);
+    text-align: center;
+}
+
+.button:focus-visible {
+    outline: var(--interactive_components-colors-focus_outline) solid
+    var(--border_width-standard);
+    outline-offset: var(--border_width-standard);
+}
+
+.button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.button:disabled {
+    cursor: auto;
+    opacity: var(--interactive_components-colors-disabled-opacity);
+}
+
+.icon {
+    height: var(--icon-size);
+    width: var(--icon-size);
+}
+
+.button.small {
+    height: var(--component-button-size-height-small);
+    font-size: var(--font_size-300);
+    --icon-size: var(--component-button-size-icon-small);
+    --button-vertical-padding: var(--component-button-space-padding-x-small);
+    gap: var(--component-button-space-gap-small);
+}
+
+.button.medium {
+    height: var(--component-button-size-height-medium);
+    min-width: var(--component-button-size-height-medium);
+    font-size: var(--font_size-400-breakpoint_md);
+    --icon-size: var(--component-button-size-icon-medium);
+    --button-vertical-padding: var(--component-button-space-padding-x-medium);
+    gap: var(--component-button-space-gap-medium);
+}
+
+.button.large {
+    height: var(--component-button-size-height-large);
+    min-width: var(--component-button-size-height-large);
+    font-size: var(--font_size-600-breakpoint_md);
+    --icon-size: var(--component-button-size-icon-large);
+    --button-vertical-padding: var(--component-button-space-padding-x-large);
+    gap: var(--component-button-space-gap-large);
+}
+
+.button.fullWidth {
+    width: 100%;
+}
+
+.button.dashedBorder {
+    border-style: dashed;
+}
+
+.button.onlyIcon {
+    padding: 0.5rem;
+}
+
+.button.outline {
+    background-color: transparent;
+}
+
+.button.quiet {
+    --border-radius: 50px;
+    padding: 0 calc(var(--button-vertical-padding) * 2 / 3);
+    background-color: transparent;
+}
+
+/* Filled button colors */
+.button.filled.primary {
+    background: var(--component-button-filled-primary-color-background-default);
+}
+
+.button.filled.primary:not(:disabled):hover {
+    background: var(--component-button-filled-primary-color-background-hover);
+}
+
+.button.filled.primary:not(:disabled):active {
+    background: var(--component-button-filled-primary-color-background-pressed);
+}
+
+.button.filled.secondary {
+    background: var(--component-button-filled-primary-color-background-pressed);
+}
+
+.button.filled.secondary:not(:disabled):hover {
+    background: var(--colors-blue-800);
+}
+
+.button.filled.secondary:not(:disabled):active {
+    background: var(--colors-blue-950);
+}
+
+.button.filled.success {
+    background: var(--component-button-filled-success-color-background-default);
+}
+
+.button.filled.success:not(:disabled):hover {
+    background: var(--component-button-filled-success-color-background-hover);
+}
+
+.button.filled.success:not(:disabled):active {
+    background: var(--component-button-filled-success-color-background-pressed);
+}
+
+.button.filled.danger {
+    background: var(--component-button-filled-danger-color-background-default);
+}
+
+.button.filled.danger:not(:disabled):hover {
+    background: var(--component-button-filled-danger-color-background-hover);
+}
+
+.button.filled.danger:not(:disabled):active {
+    background: var(--colors-red-800);
+}
+
+.button.filled.inverted {
+    --font-and-icon-color: var(--colors-blue-900);
+    background: var(--colors-white);
+}
+
+.button.filled.inverted:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-blue-900);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.button.filled.inverted:not(:disabled):active {
+    --font-and-icon-color: var(--colors-white);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.button.filled.inverted:focus-visible {
+    outline-color: var(--colors-white);
+}
+
+/* Outline button colors */
+.button.outline.primary {
+    --font-and-icon-color: var(--component-button-outline-primary-color-text-default);
+    border-color: var(--component-button-outline-primary-color-border-default);
+    background: var(--component-button-outline-primary-color-background-default);
+}
+
+.button.outline.primary:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-blue-800);
+    background: var(--component-button-outline-primary-color-background-hover);
+    border-color: var(--component-button-outline-primary-color-border-hover);
+}
+
+.button.outline.primary:not(:disabled):active {
+    --font-and-icon-color: var(--component-button-outline-primary-color-text-pressed);
+    background: var(--component-button-outline-primary-color-background-pressed);
+}
+
+.button.outline.secondary {
+    --font-and-icon-color: var(--colors-blue-900);
+    background: var(--colors-white);
+    border-color: var(--colors-blue-900);
+}
+
+.button.outline.secondary:not(:disabled):hover {
+    background: var(--colors-blue-200);
+}
+
+.button.outline.secondary:not(:disabled):active {
+    --font-and-icon-color: var(--colors-white);
+    background: var(--colors-blue-900);
+}
+
+.button.outline.success {
+    --font-and-icon-color: var(--colors-green-700);
+    background: var(--colors-white);
+    border-color: var(--colors-green-700);
+}
+
+.button.outline.success:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-green-800);
+    background: var(--colors-green-300);
+}
+
+.button.outline.success:not(:disabled):active {
+    --font-and-icon-color: var(--colors-white);
+    background: var(--colors-green-700);
+}
+
+.button.outline.danger {
+    --font-and-icon-color: var(--colors-red-500);
+    background: var(--colors-white);
+    border-color: var(--colors-red-500);
+}
+
+.button.outline.danger:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-red-700);
+    background: var(--colors-red-200);
+    border-color: var(--colors-red-700);
+}
+
+.button.outline.danger:not(:disabled):active {
+    --font-and-icon-color: var(--colors-white);
+    background: var(--colors-red-500);
+}
+
+.button.outline.inverted {
+    --font-and-icon-color: var(--colors-white);
+    border-color: var(--colors-white);
+    background: transparent;
+}
+
+.button.outline.inverted:not(:disabled):hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.button.outline.inverted:not(:disabled):active {
+    --font-and-icon-color: var(--colors-blue-900);
+    background: var(--colors-white);
+}
+
+.button.outline.inverted:focus-visible {
+    outline-color: var(--colors-white);
+}
+
+/* Quiet button colors */
+.button.quiet.primary {
+    --font-and-icon-color: var(--component-button-quiet-primary-color-text-default);
+}
+
+.button.quiet.primary:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-blue-800);
+    background: var(--component-button-quiet-primary-color-background-hover);
+}
+
+.button.quiet.primary:not(:disabled):active {
+    --font-and-icon-color: var(--component-button-filled-color-text-all);
+    background: var(--component-button-quiet-primary-color-background-pressed);
+}
+
+.button.quiet.secondary {
+    --font-and-icon-color: var(--colors-blue-900);
+}
+
+.button.quiet.secondary:not(:disabled):hover {
+    background: var(--colors-neutral-400);
+}
+
+.button.quiet.secondary:not(:disabled):active {
+    --font-and-icon-color: var(--component-button-filled-color-text-all);
+    background: var(--colors-blue-900);
+}
+
+.button.quiet.success {
+    --font-and-icon-color: var(--colors-green-700);
+}
+
+.button.quiet.success:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-green-800);
+    background: var(--colors-green-300);
+}
+
+.button.quiet.success:not(:disabled):active {
+    --font-and-icon-color: var(--component-button-filled-color-text-all);
+    background: var(--colors-green-900);
+}
+
+.button.quiet.danger {
+    --font-and-icon-color: var(--colors-red-600);
+}
+
+.button.quiet.danger:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-red-800);
+    background: var(--colors-red-200);
+}
+
+.button.quiet.danger:not(:disabled):active {
+    --font-and-icon-color: var(--component-button-filled-color-text-all);
+    background: var(--colors-red-800);
+}
+
+.button.quiet.inverted {
+    --font-and-icon-color: var(--colors-white);
+    background: transparent;
+}
+
+.button.quiet.inverted:not(:disabled):hover {
+    --font-and-icon-color: var(--colors-blue-900);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.button.quiet.inverted:not(:disabled):active {
+    --font-and-icon-color: var(--colors-blue-900);
+    background: var(--colors-white);
+}
+
+.button.quiet.inverted:focus-visible {
+    outline-color: var(--colors-white);
+}

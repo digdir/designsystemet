@@ -1,0 +1,40 @@
+:root {
+    --bs-body-color: #1E2B3C;
+    --color-beta: #eceaff;
+    --color-beta-strong: #d6d4ff;
+    --color-decprecated: #ffd4d4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+footer {
+    padding: 64px 0;
+    background-color: #1E2B3C;
+    color: #ededed;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+footer img {
+    margin-right: 10px;
+    height: 29px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh);
+    overflow: hidden;
+    position: relative;
+}
+
+body {
+    /*font-family: "Inter", sans-serif;*/
+}

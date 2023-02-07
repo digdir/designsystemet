@@ -1,0 +1,60 @@
+.card {
+    background-color: white;
+    padding: 40px;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-radius: 4px;
+    transition: 0.2s all;
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover {
+    color: inherit;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transform: translateY(-8px);
+    cursor: pointer;
+}
+
+.iconContainer {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red {
+    background-color: #FBBFC1;
+}
+
+.blue {
+    background-color: #A5D6FB;
+}
+
+.yellow {
+    background-color: #F5DDA6;
+}
+
+.grey {
+    background-color: #F4F5F6;
+    box-shadow: none;
+    border: 1px solid #eeeeee;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 17px;
+    margin-bottom: 17px;
+    text-align: center;
+}
+
+.desc {
+    font-size: 16px;
+    text-align: center;
+}

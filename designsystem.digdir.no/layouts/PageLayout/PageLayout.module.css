@@ -1,0 +1,78 @@
+.content {
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 24px;
+}
+
+.desc {
+    font-size: 18px;
+    line-height: 1.6em;
+    margin-bottom: -10px;
+}
+
+.left {
+
+}
+
+.right {
+
+}
+
+.list {
+    margin-bottom: 32px;
+    color: #4d4d4d;
+}
+
+.list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.list h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.list li {
+    list-style: none;
+}
+
+.list li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.test {
+    margin-left: 24px;
+}
+
+.test h1 {
+    font-size: 44px;
+    margin-bottom: 24px;
+    line-height: 1.3em;
+}
+
+.test h1 + p {
+    font-size: 24px;
+    line-height: 1.7em;
+    margin-bottom: 36px;
+}
+
+.test p {
+    font-size: 16px;
+    line-height: 1.55em;
+    margin-bottom: 20px;
+}
+
+.test img {
+    width: 100%;
+    margin: 24px 0;
+    border-radius: 2px;
+}
