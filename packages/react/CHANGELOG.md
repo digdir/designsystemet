@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.3...@digdir/design-system-react@0.5.0) (2023-02-08)
+
+### Bug Fixes
+
+- added displayName to all exported components ([#135](https://github.com/digdir/designsystem/issues/135)) ([7f0dd1b](https://github.com/digdir/designsystem/commit/7f0dd1b01930e0a3dfd5117f6a5277d08dc1ebd7))
+- **Button:** Replace non existent Figma token ([#128](https://github.com/digdir/designsystem/issues/128)) ([b27e3d4](https://github.com/digdir/designsystem/commit/b27e3d4cb67da0f9ae70d3f4d4b6f71a777b7bae))
+- **Select:** Accept empty list of options ([#133](https://github.com/digdir/designsystem/issues/133)) ([515e84f](https://github.com/digdir/designsystem/commit/515e84f40edbec392041769e93aaf90f474aaa78))
+
+### Features
+
+- **Accordion:** Add accordion component ([#130](https://github.com/digdir/designsystem/issues/130)) ([5cf8bf2](https://github.com/digdir/designsystem/commit/5cf8bf20f5c59f1d9bca45af4c9cbceb017f22cf))
+
 ## [0.4.3](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.2...@digdir/design-system-react@0.4.3) (2023-02-02)
 
 ### Bug Fixes
