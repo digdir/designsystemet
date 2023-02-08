@@ -7,6 +7,18 @@
     justify-content: center;
     border-radius: 4px;
     flex: 1;
+    margin-top: 24px;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -16px;
+}
+
+.item {
+    margin: 16px;
 }
 
 .buttonContainer {
@@ -35,4 +47,8 @@
 
 .code pre {
     border-radius: 0 0 4px 4px;
+}
+
+.dark {
+    background-color: #1e2b3c;
 }

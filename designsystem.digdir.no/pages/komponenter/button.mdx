@@ -1,6 +1,6 @@
 import Meta from '../../components/Meta/Meta'
 import {ComponentLayout} from "../../layouts/ComponentLayout/ComponentLayout";
-import Preview from "../../components/Preview/Preview";
+import {Preview, PreviewItem} from "../../components/Preview/Preview";
 import {Usage} from "../../components/Usage/ComponentUsage";
 import {
     TokensTable
@@ -10,102 +10,132 @@ import { Button, ButtonSize, ButtonVariant, ButtonColor } from "@digdir/design-s
 
 <Meta title='Button' />
 
-export const pageData = {
-    title: 'Button',
-    description: 'Knapper lar brukere utføre handlinger.',
-    component: Button,
-    argTypes: {
-      color: {
-        control: {
-          type: 'radio',
-          options: Object.values(ButtonColor)
-        }
-      },
-      variant: {
-        control: {
-          type: 'radio',
-          options: Object.values(ButtonVariant)
-        }
-      },
-      size: {
-        control: {
-          type: 'radio',
-          options: Object.values(ButtonSize)
-        }
-      },
-  }
-};
-export default ({ children }) => <ComponentLayout Content={children} data={pageData}  />;
+export default ({ children }) => (
+    <ComponentLayout
+        content={children}
+        data={{
+            title: 'Button',
+            description: 'Knapper lar brukere utføre handlinger.',
+            component: Button,
+            argTypes: {
+                color: {
+                    control: {
+                        type: 'radio',
+                        options: Object.values(ButtonColor)
+                    }
+                },
+                variant: {
+                    control: {
+                        type: 'radio',
+                        options: Object.values(ButtonVariant)
+                    }
+                },
+                size: {
+                    control: {
+                        type: 'radio',
+                        options: Object.values(ButtonSize)
+                    }
+                },
+            }
+        }}
+    />
+);
+
 
 ## Varianter
 
 ### Primary
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
-<Preview component={Button} args={{
-    size: ButtonSize.Medium,
-    children: 'Button',
-}} />
+<Preview>
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Medium,
+            children: 'Button',
+    }} />
+</Preview>
+
 
 
 ### Secondary
-
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
-<Preview component={Button} args={{
-    size: ButtonSize.Medium,
-    color: ButtonColor.Secondary,
-    children: 'Button'
-}} />
-
+<Preview>
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Medium,
+            color: ButtonColor.Secondary,
+            children: 'Button'
+    }} />
+</Preview>
 
 ### Success
-
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
+<Preview>
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Medium,
+            color: ButtonColor.Success,
+            children: 'Button'
+    }} />
+</Preview>
 
-<Preview component={Button} args={{
-    size: ButtonSize.Medium,
-    color: ButtonColor.Success,
-    children: 'Button'
-}} />
 
 ### Danger
-
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
 
+<Preview>
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Medium,
+            color: ButtonColor.Danger,
+            children: 'Button'
+    }} />
+</Preview>
 
-<Preview component={Button} args={{
-  size: ButtonSize.Medium,
-  color: ButtonColor.Danger,
-  children: 'Button'
-}} />
+### Inverted
+On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other.
+
+<Preview backgroundColor='dark'>
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Medium,
+            color: ButtonColor.Inverted,
+            children: 'Button'
+        }} />
+</Preview>
+
 
 ## Størrelser
+Knappene kommer i 3 størrelser: Small, Medium og Large.
 
+<Preview>
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Small,
+            children: 'Button'
+    }} />
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Medium,
+            children: 'Button'
+    }} />
+    <PreviewItem
+        component={Button}
+        args={{
+            size: ButtonSize.Large,
+            children: 'Button'
+    }} />
+</Preview>
 
-### Small
-
-<Preview component={Button} args={{
-    size: ButtonSize.Small,
-    children: 'Button'
-}} />
-
-
-### Medium
-
-<Preview component={Button} args={{
-    size: ButtonSize.Medium,
-    children: 'Button',
-}} />
-
-
-### Large
-
-<Preview component={Button} args={{
-    size: ButtonSize.Large,
-    children: 'Button'
-}} />
 
 ## Bruk
 
@@ -120,14 +150,12 @@ On through of which no the your phase more know anyone tried he when line me wha
 }}  />
 
 <Usage
-    title='The head and expand great'
+    title='Ikke bruk kun store bokstaver'
     type='danger'
-    desc='Law, countries stiff on for I to lane. To everyday. Hair part. Statement texts. Explanation and he semantics, on so I of loyalty. Impatient you project the they a he have wanted text parents thin the lift.'
     component={Button}
     args={{
       size: 'medium',
-      color: 'success',
-      children: 'Button'
+      children: 'BUTTON'
 }}  />
 
 
@@ -156,7 +184,6 @@ Liste over tilgjengelige egenskaper (props) til komponenten:
   onClick: {
     type: 'function',
     description: 'Function that runs when the button is clicked.',
-    defaultValue: '(e) =>'
   },
   disabled: {
     type: 'boolean',
@@ -166,7 +193,6 @@ Liste over tilgjengelige egenskaper (props) til komponenten:
   icon: {
     type: 'React.ReactNode',
     description: 'Icon to be rendered in the button. This should be a React component that renders an SVG object.',
-    defaultValue: "nothing"
   },
   iconPlacement: {
     type: 'string',

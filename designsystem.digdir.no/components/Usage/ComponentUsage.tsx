@@ -25,7 +25,7 @@ export function Usage({
     >
       <div className={classes.textContainer}>
         <div className={classes.title}>{title}</div>
-        <div className={classes.desc}>{desc}</div>
+        {desc && <div className={classes.desc}>{desc}</div>}
       </div>
 
       <div className={classes.box}>

@@ -45,6 +45,9 @@
     font-size: 16px;
     display: flex;
     align-items: center;
+}
+
+.default {
     border-bottom: 2px solid #8d8d8d;
     cursor: help;
 }

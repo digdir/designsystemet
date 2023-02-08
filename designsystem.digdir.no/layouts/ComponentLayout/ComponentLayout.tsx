@@ -10,21 +10,16 @@ import { Controls } from '../../components/Controls/Controls';
 import classes from './ComponentLayout.module.css';
 
 interface ComponentLayoutProps {
-  Content: React.ReactNode;
-  data: any;
-}
-
-interface ComponentLayoutData {
-  title: string;
-  description: string;
-  navigationCards: {
+  content: React.ReactNode;
+  data: {
     title: string;
-    items: any[];
+    description: string;
+    component: any;
+    argTypes: any;
   };
-  component: any;
 }
 
-const ComponentLayout = ({ Content, data }: ComponentLayoutProps) => {
+const ComponentLayout = ({ data, content }: ComponentLayoutProps) => {
   return (
     <div>
       <Header />
@@ -98,7 +93,7 @@ const ComponentLayout = ({ Content, data }: ComponentLayoutProps) => {
                   component={data.component}
                   argTypes={data.argTypes}
                 />
-                {Content}
+                {content}
               </div>
             </Col>
             <Col md={2}>
@@ -114,4 +109,3 @@ const ComponentLayout = ({ Content, data }: ComponentLayoutProps) => {
 };
 
 export { ComponentLayout };
-export type { ComponentLayoutData };

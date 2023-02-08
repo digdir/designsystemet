@@ -44,27 +44,27 @@ const ArgsTable = ({ argTypes }: ArgsTable) => {
         >
           <div className={classes.item}>
             <div className={classes.top}>
-              {argTypes[item].required && (
+              {argTypes[item].defaultValue && (
+                <Tippy
+                  content={argTypes[item].defaultValue}
+                  hideOnClick={false}
+                >
+                  <div className={cn(classes.name, classes['default'])}>
+                    <span>{item}</span>
+                    <span>?</span>
+                  </div>
+                </Tippy>
+              )}
+
+              {!argTypes[item].defaultValue && (
                 <div
                   className={cn(classes.name, {
                     [classes.required]: argTypes[item].required,
                   })}
                 >
                   <span>{item}</span>
-                  <span>*</span>
+                  {argTypes[item].required && <span>*</span>}
                 </div>
-              )}
-
-              {!argTypes[item].required && (
-                <Tippy
-                  content={'Default: ' + argTypes[item].defaultValue}
-                  hideOnClick={false}
-                >
-                  <div className={classes.name}>
-                    <span>{item}</span>
-                    <span>?</span>
-                  </div>
-                </Tippy>
               )}
 
               <span

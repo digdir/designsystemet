@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Children, useEffect } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
@@ -6,17 +6,63 @@ import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import classes from './Preview.module.css';
 
 interface PreviewProps {
+  children: React.ReactNode;
+  backgroundColor?: 'light' | 'dark';
+}
+
+interface PreviewItemProps {
   component: any;
   args: any;
 }
 
-const Preview = ({ component, args }: PreviewProps) => {
+const PreviewItem = ({ component, args }: PreviewItemProps) => {
+  return <>{React.cloneElement(React.createElement(component), args)}</>;
+};
+
+const Preview = ({ children, backgroundColor = 'light' }: PreviewProps) => {
   const [showCode, setShowCode] = useState(false);
 
+  useEffect(() => {
+    getString();
+  }, []);
+
+  const getString = () => {
+    let s = '';
+
+    if (React.Children.toArray(children).length > 1) {
+      s += '<>';
+    }
+
+    React.Children.forEach(children, (element) => {
+      if (!React.isValidElement(element)) return;
+
+      const { component, args } = element.props;
+      const jsx = reactElementToJSXString(
+        React.cloneElement(React.createElement(component), args),
+      );
+      s += jsx;
+    });
+
+    if (React.Children.toArray(children).length > 1) {
+      s += '</>';
+    }
+
+    return s;
+  };
+
   return (
-    <div>
+    <div className={classes[backgroundColor]}>
       <div className={classes.preview}>
-        {React.cloneElement(React.createElement(component), args)}
+        <div className={classes.items}>
+          {Children.toArray(children).map((item: any, index: number) => (
+            <div
+              className={classes.item}
+              key={index}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
       <div className={classes.buttonContainer}>
         <button
@@ -30,15 +76,11 @@ const Preview = ({ component, args }: PreviewProps) => {
       </div>
       <div className={classes.code}>
         {showCode && (
-          <CodeSnippet language='javascript'>
-            {reactElementToJSXString(
-              React.cloneElement(React.createElement(component), args),
-            )}
-          </CodeSnippet>
+          <CodeSnippet language='javascript'>{getString()}</CodeSnippet>
         )}
       </div>
     </div>
   );
 };
 
-export default Preview;
+export { Preview, PreviewItem };
