@@ -1,8 +1,11 @@
 import Meta from '../components/Meta/Meta'
 import {FrontpageLayout, FrontpageData} from "../layouts/FrontpageLayout/FrontpageLayout";
 import { Picture, Wrench, SystemFilled } from "@navikt/ds-icons";
+import fs from 'fs';
+import path from 'path';
 
 <Meta title='Framsiden' />
+
 
 export const data = {
     title: 'Felles Designsystem',
@@ -17,4 +20,4 @@ export const data = {
     }
 };
 
-export default ({ children }) => <FrontpageLayout Content={children} data={data} />;
+export default ({ children, articles }) => <FrontpageLayout Content={children} data={data} articles={articles} />;

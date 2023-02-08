@@ -13,9 +13,11 @@ import { Button, ButtonSize, ButtonVariant, ButtonColor } from "@digdir/design-s
 export default ({ children }) => (
     <ComponentLayout
         content={children}
+        status='beta'
         data={{
             title: 'Button',
             description: 'Knapper lar brukere utføre handlinger.',
+            status: 'beta',
             component: Button,
             argTypes: {
                 color: {
@@ -139,9 +141,10 @@ Knappene kommer i 3 størrelser: Small, Medium og Large.
 
 ## Bruk
 
+### Ikke bruk kun store bokstaver
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+
 <Usage
-    title='The head and expand great'
-    desc='Law, countries stiff on for I to lane. To everyday. Hair part. Statement texts. Explanation and he semantics, on so I of loyalty. Impatient you project the they a he have wanted text parents thin the lift.'
     component={Button}
     args={{
       size: 'medium',
@@ -149,8 +152,10 @@ Knappene kommer i 3 størrelser: Small, Medium og Large.
       children: 'Button'
 }}  />
 
+### Ikke bruk kun store bokstaver
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+
 <Usage
-    title='Ikke bruk kun store bokstaver'
     type='danger'
     component={Button}
     args={{

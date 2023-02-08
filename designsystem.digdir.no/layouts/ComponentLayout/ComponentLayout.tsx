@@ -16,6 +16,7 @@ interface ComponentLayoutProps {
     description: string;
     component: any;
     argTypes: any;
+    status?: 'stable' | 'beta' | 'depricated';
   };
 }
 
@@ -38,7 +39,7 @@ const ComponentLayout = ({ data, content }: ComponentLayoutProps) => {
               <div className={classes.markdown}>
                 <h1 className={classes.title}>{data.title}</h1>
                 <p className={classes.desc}>{data.description}</p>
-                <BetaBlock />
+                {data.status === 'beta' && <BetaBlock />}
                 <div className={classes.links}>
                   <a
                     className={classes.link}

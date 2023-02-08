@@ -1,7 +1,7 @@
 .ComponentUsage {
     display: flex;
     flex-direction: column;
-    margin-top: 48px;
+    margin-top: 24px;
 }
 
 .ComponentUsage--danger .box {
@@ -27,7 +27,6 @@
 }
 
 .box {
-    margin-top: 32px;
     background-color: var(--colors-neutral-100);
     border: 1px solid #eeeeee;
     min-height: 160px;

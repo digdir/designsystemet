@@ -5,16 +5,12 @@ import cn from 'classnames';
 import classes from './ComponentUsage.module.css';
 
 export interface ComponentUsageProps {
-  title?: string;
-  desc?: string;
   type?: 'success' | 'danger';
   component: never;
   args: never;
 }
 
 export function Usage({
-  title = 'string',
-  desc,
   type = 'success',
   component,
   args,
@@ -23,11 +19,6 @@ export function Usage({
     <div
       className={cn(classes.ComponentUsage, classes[`ComponentUsage--${type}`])}
     >
-      <div className={classes.textContainer}>
-        <div className={classes.title}>{title}</div>
-        {desc && <div className={classes.desc}>{desc}</div>}
-      </div>
-
       <div className={classes.box}>
         {type === 'success' ? (
           <div className={classes.iconContainer}>
