@@ -7,17 +7,18 @@ import {
 } from "../../components/Table/TokenTable/TokensTable";
 import {ArgsTable} from "../../components/ArgsTable/ArgsTable";
 import { Button, ButtonSize, ButtonVariant, ButtonColor } from "@digdir/design-system-react";
+export { getStaticProps } from '../../utils/FileReaderLogic';
 
 <Meta title='Button' />
 
-export default ({ children }) => (
+export default ({ children, menu }) => (
     <ComponentLayout
+        menu={menu}
         content={children}
         status='beta'
         data={{
             title: 'Button',
             description: 'Knapper lar brukere utføre handlinger.',
-            status: 'beta',
             component: Button,
             argTypes: {
                 color: {

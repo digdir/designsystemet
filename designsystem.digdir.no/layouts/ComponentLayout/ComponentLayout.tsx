@@ -11,6 +11,7 @@ import classes from './ComponentLayout.module.css';
 
 interface ComponentLayoutProps {
   content: React.ReactNode;
+  menu: any;
   data: {
     title: string;
     description: string;
@@ -20,7 +21,7 @@ interface ComponentLayoutProps {
   };
 }
 
-const ComponentLayout = ({ data, content }: ComponentLayoutProps) => {
+const ComponentLayout = ({ data, content, menu }: ComponentLayoutProps) => {
   return (
     <div>
       <Header />
@@ -29,7 +30,10 @@ const ComponentLayout = ({ data, content }: ComponentLayoutProps) => {
           <Row>
             <Col md={2}>
               <div className={classes.menus}>
-                <SidebarMenu title='Komponenter' />
+                <SidebarMenu
+                  title='Komponenter'
+                  items={menu}
+                />
               </div>
             </Col>
             <Col

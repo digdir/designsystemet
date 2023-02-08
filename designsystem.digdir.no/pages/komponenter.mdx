@@ -1,11 +1,14 @@
 import Meta from '../components/Meta/Meta'
 import {ComponentsLayout} from "../layouts/ComponentsLayout/ComponentsLayout";
+export { getStaticProps } from '../utils/FileReaderLogic';
 
 <Meta title='Komponenter' />
 
-export const data = {
-    title: 'Komponenter',
-    description: 'De enkleste og mest grunnleggende komponentene i React.',
-};
-
-export default ({ children }) => <ComponentsLayout Content={children} data={data}  />;
+export default ({ children, menu }) => (
+    <ComponentsLayout Content={children} menu={menu}
+        data={{
+            title: 'Komponenter',
+            description: 'De enkleste og mest grunnleggende komponentene i React.'
+        }}
+    />
+);

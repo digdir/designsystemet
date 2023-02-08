@@ -1,14 +1,14 @@
-import Header from '../../components/Header/Header';
 import React from 'react';
-import Section from '../../components/Section/Section';
 import { Col, Row } from 'react-bootstrap';
+
+import Header from '../../components/Header/Header';
+import Section from '../../components/Section/Section';
 import NavigationCard from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
   data: any;
-  articles: string;
 }
 
 interface FrontpageData {
@@ -20,11 +20,10 @@ interface FrontpageData {
   };
 }
 
-const FrontpageLayout = ({ Content, data, articles }: FrontpageLayoutProps) => {
+const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
   return (
     <div>
       <Header />
-      {articles}
       {Content}
       <div className='max-width-container main'>
         <Banner
