@@ -6,7 +6,7 @@ import type { PopoverProps } from './Popover';
 import { PopoverVariant, Popover } from './Popover';
 
 const render = (props: Partial<PopoverProps> = {}) => {
-  const allProps = {
+  const allProps: PopoverProps = {
     children: (
       <div>
         <button>My button</button>
@@ -21,7 +21,7 @@ const render = (props: Partial<PopoverProps> = {}) => {
 
 const user = userEvent.setup();
 
-describe('popover', () => {
+describe('Popover', () => {
   describe('trigger uncontrolled', () => {
     it('should render trigger', async () => {
       render();
