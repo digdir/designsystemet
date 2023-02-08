@@ -57,6 +57,28 @@ import {ArgsTable} from "@storybook/addon-docs";
     }}
 />
 
+export const icon = (
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0Zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm5.047 5.671 1.399 1.43-8.728 8.398L6 14.02l1.395-1.434 2.319 2.118 7.333-7.032Z"
+            fill="currentColor"
+        />
+    </svg>
+);
+
+export const defaultArgs = {
+    size: ButtonSize.Medium,
+    color: ButtonColor.Primary,
+    variant: ButtonVariant.Filled,
+    children: 'Knapp'
+};
+
 export const Template = (args) => <Button {...args} />;
 
 # Button
@@ -67,18 +89,105 @@ On through of which no the your phase more know anyone tried he when line me wha
 
 ## Varianter
 
-### Primary
-
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
-
+### Knapp med tekst
 <Canvas>
     <Story
-        name="Button"
+        name="Fylt med tekst"
         args={{
-            size: ButtonSize.Medium,
-            color: ButtonColor.Primary,
-            variant: ButtonVariant.Filled,
-            children: 'Button'
+            children: 'Fylt',
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Filled
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Omriss med tekst"
+        args={{
+            children: 'Med omriss',
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Outline
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Gjennomsiktig med tekst"
+        args={{
+            children: 'Gjennomsiktig',
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Quiet
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Knapp med ikon
+<Canvas>
+    <Story
+        name="Fylt med ikon"
+        args={{
+            icon,
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Filled
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Omriss med ikon"
+        args={{
+            icon,
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Outline
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Gjennomsiktig med ikon"
+        args={{
+            icon,
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Quiet
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Knapp med tekst og ikon
+<Canvas>
+    <Story
+        name="Fylt med tekst og ikon"
+        args={{
+            children: 'Fylt',
+            icon,
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Filled
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Omriss med tekst og ikon"
+        args={{
+            children: 'Med omriss',
+            icon,
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Outline
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Gjennomsiktig med tekst og ikon"
+        args={{
+            children: 'Gjennomsiktig',
+            icon,
+            size: ButtonSize.Small,
+            variant: ButtonVariant.Quiet
         }}
     >
         {Template.bind({})}
@@ -102,7 +211,9 @@ On through of which no the your phase more know anyone tried he when line me wha
 <ArgsTable story='Button' />
 
 ## Tokens
-Komponenten har følgende CSS-variabler tilgjengelige som kan overstyres ved behov.
-<TokensTable jsonKey='component.button' componentName='button' />
-
-## Tilgjengelighet
+<TokensTable
+    componentName='button'
+    description
+    jsonKey='component.button'
+    showPreview={false}
+/>

@@ -8,7 +8,7 @@ export interface ComponentUsageProps {
   children?: React.ReactNode;
   title?: string;
   desc?: string;
-  type: 'success' | 'danger';
+  type?: 'success' | 'danger';
 }
 
 export function ComponentUsage({

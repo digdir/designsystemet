@@ -1,8 +1,9 @@
 .button {
-    --icon-size: var(--component-button-size-icon-small);
-    --button-vertical-padding: var(--component-button-space-padding-x-small);
     --border-radius: 3px;
+    --button-size: var(--component-button-size-height-small);
+    --button-vertical-padding: var(--component-button-space-padding-x-small);
     --font-and-icon-color: var(--component-button-filled-color-text-all);
+    --icon-size: var(--component-button-size-icon-small);
 
     all: initial; /* reset all styles to default, to avoid style overrides/surprises caused by other css (from Design system v1 f.ex) */
     align-items: center;
@@ -14,6 +15,7 @@
     display: flex;
     fill: var(--font-and-icon-color);
     font-family: inherit;
+    height: var(--button-size);
     justify-content: center;
     letter-spacing: var(--typography-default-letter-spacing);
     padding: 0 var(--button-vertical-padding);
@@ -36,34 +38,35 @@
 }
 
 .icon {
+    display: inline-block;
     height: var(--icon-size);
     width: var(--icon-size);
 }
 
 .button.small {
-    height: var(--component-button-size-height-small);
-    font-size: var(--font_size-300);
-    --icon-size: var(--component-button-size-icon-small);
+    --button-size: var(--component-button-size-height-small);
     --button-vertical-padding: var(--component-button-space-padding-x-small);
+    --icon-size: var(--component-button-size-icon-small);
+    font-size: var(--font_size-300);
     gap: var(--component-button-space-gap-small);
 }
 
 .button.medium {
-    height: var(--component-button-size-height-medium);
-    min-width: var(--component-button-size-height-medium);
-    font-size: var(--font_size-400-breakpoint_md);
-    --icon-size: var(--component-button-size-icon-medium);
+    --button-size: var(--component-button-size-height-medium);
     --button-vertical-padding: var(--component-button-space-padding-x-medium);
+    --icon-size: var(--component-button-size-icon-medium);
+    font-size: var(--font_size-400-breakpoint_md);
     gap: var(--component-button-space-gap-medium);
+    min-width: var(--component-button-size-height-medium);
 }
 
 .button.large {
-    height: var(--component-button-size-height-large);
-    min-width: var(--component-button-size-height-large);
-    font-size: var(--font_size-600-breakpoint_md);
-    --icon-size: var(--component-button-size-icon-large);
+    --button-size: var(--component-button-size-height-large);
     --button-vertical-padding: var(--component-button-space-padding-x-large);
+    --icon-size: var(--component-button-size-icon-large);
+    font-size: var(--font_size-600-breakpoint_md);
     gap: var(--component-button-space-gap-large);
+    min-width: var(--component-button-size-height-large);
 }
 
 .button.fullWidth {
@@ -86,6 +89,7 @@
 
 .button.onlyIcon {
     padding: 0.5rem;
+    width: var(--button-size);
 }
 
 /* Filled button colors */
