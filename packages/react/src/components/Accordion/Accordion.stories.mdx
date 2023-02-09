@@ -10,7 +10,8 @@ import {
     ButtonVariant,
 } from "../";
 import {BetaBlock, TokensTable} from "../../../../../docs-components";
-import {ArgsTable} from "@storybook/addon-docs"; import {useState} from "react";
+import {ArgsTable} from "@storybook/addon-docs";
+import {useState} from "react";
 
 <Meta
     title="Kjernekomponenter/Accordion"
@@ -49,22 +50,25 @@ export const Template = (args) => {
     const onClick = () => setOpen(!open);
     return (
         <Accordion {...args} onClick={onClick} open={open}>
-            <AccordionHeader actions={<>
-                <Button
-                    variant={ButtonVariant.Filled}
-                    color={ButtonColor.Primary}
-                    size={ButtonSize.Small}
-                >
-                    Separat knapp 1
-                </Button>
-                <Button
-                    variant={ButtonVariant.Outline}
-                    color={ButtonColor.Primary}
-                    size={ButtonSize.Small}
-                >
-                    Separat knapp 2
-                </Button>
-            </>}>
+            <AccordionHeader
+                actions={<>
+                    <Button
+                        variant={ButtonVariant.Filled}
+                        color={ButtonColor.Primary}
+                        size={ButtonSize.Small}
+                    >
+                        Separat knapp 1
+                    </Button>
+                    <Button
+                        variant={ButtonVariant.Outline}
+                        color={ButtonColor.Primary}
+                        size={ButtonSize.Small}
+                    >
+                        Separat knapp 2
+                    </Button>
+                </>}
+                subtitle='Valgfri undertittel'
+            >
                 Klikk her for å åpne
             </AccordionHeader>
             <AccordionContent>
