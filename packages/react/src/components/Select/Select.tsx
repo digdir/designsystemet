@@ -1,4 +1,12 @@
-import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
+import React, {
+  ChangeEvent,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState
+} from 'react';
 import cn from 'classnames';
 import tokens from '@altinn/figma-design-tokens/dist/tokens.json';
 
@@ -8,10 +16,11 @@ import {
   useKeyboardEventListener,
   useUpdate,
 } from '../../hooks';
-import { arraysEqual } from '../../utils/arrayUtils';
+import { arraysEqual } from '../../utils';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
+import { optionSearch } from './utils';
 
 export type SelectProps = SingleSelectProps | MultiSelectProps;
 
@@ -32,15 +41,18 @@ export type MultiSelectProps = SelectPropsBase & {
 
 interface SelectPropsBase {
   disabled?: boolean;
+  error?: boolean;
   hideLabel?: boolean;
   inputId?: string;
   label?: string;
-  error?: boolean;
+  searchLabel?: string;
 }
 
 export interface SingleSelectOption {
+  keywords?: string[];
   label: string;
   value: string;
+  formattedLabel?: ReactNode;
 }
 
 export type MultiSelectOption = SingleSelectOption & {
@@ -66,6 +78,7 @@ const Select = (props: SelectProps) => {
     multiple,
     onChange,
     options,
+    searchLabel,
     value,
   } = props;
   const allValues = options.map((option) => option.value);
@@ -78,13 +91,26 @@ const Select = (props: SelectProps) => {
     multiple ? value ?? [] : [],
   );
 
+  const [keyword, setKeyword] = useState('');
+  const resetKeyword = () => keyword && setKeyword('');
+
+  const [sortedOptions, setSortedOptions] = useState(options);
+
+  const numberOfOptions = options.length;
+
+  // When order of sorted options changes (due to change of search keyword), select first option.
+  const firstOptionValue = sortedOptions[0]?.value;
+  useUpdate(() => {
+    firstOptionValue !== undefined && setActiveOption(firstOptionValue);
+  }, [firstOptionValue]);
+
   // If multiselect, activeOption defines which option that has focus.
   // If single select, it defines the selected value.
   // These are supposed to behave similarly regarding keyboard events, hence why it's the same variable.
   const [activeOption, setActiveOption] = useState<string | undefined>(
     multiple ? undefined : value,
   );
-  const activeOptionIndex = options.findIndex(
+  const activeOptionIndex = sortedOptions.findIndex(
     (option) => option.value === activeOption,
   );
 
@@ -94,7 +120,7 @@ const Select = (props: SelectProps) => {
 
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  const listboxRef = useRef<HTMLUListElement>(null);
+  const listboxWrapperRef = useRef<HTMLSpanElement>(null);
   const selectFieldRef = useRef<HTMLSpanElement>(null);
 
   useUpdate(() => {
@@ -108,24 +134,26 @@ const Select = (props: SelectProps) => {
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
-    const listboxElement = listboxRef.current;
-    if (listboxElement) {
-      const listboxHeight = listboxElement.offsetHeight;
-      const items = listboxElement.querySelectorAll('li');
+    const listboxWrapper = listboxWrapperRef.current;
+    if (listboxWrapper) {
+      const wrapperHeight = listboxWrapper.offsetHeight;
+      const items = listboxWrapper.querySelectorAll('button');
       if (!items.length) return;
-      const itemHeight = items[0].offsetHeight;
-      const scrollPositionTop = listboxElement.scrollTop;
-      const scrollPositionBottom = scrollPositionTop + listboxHeight;
-      const activeOptionPositionTop = activeOptionIndex * itemHeight;
-      const activeOptionPositionBottom = activeOptionPositionTop + itemHeight;
-      const isActiveOptionVisible =
-        activeOptionPositionTop >= scrollPositionTop &&
-        activeOptionPositionBottom <= scrollPositionBottom;
-      if (!isActiveOptionVisible) {
-        if (activeOptionPositionTop < scrollPositionTop) {
-          listboxElement.scrollTop = activeOptionPositionTop; // Scroll up
-        } else {
-          listboxElement.scrollTop = activeOptionPositionBottom - listboxHeight; // Scroll down
+      const scrollPositionTop = listboxWrapper.scrollTop;
+      const scrollPositionBottom = scrollPositionTop + wrapperHeight;
+      const activeItem = items[activeOptionIndex];
+      if (activeItem) {
+        const activeOptionPositionTop = activeItem.offsetTop;
+        const activeOptionPositionBottom = activeOptionPositionTop + activeItem.offsetHeight;
+        const isActiveOptionVisible =
+          activeOptionPositionTop >= scrollPositionTop &&
+          activeOptionPositionBottom <= scrollPositionBottom;
+        if (!isActiveOptionVisible) {
+          if (activeOptionPositionTop < scrollPositionTop) {
+            listboxWrapper.scrollTop = activeOptionPositionTop; // Scroll up
+          } else {
+            listboxWrapper.scrollTop = activeOptionPositionBottom - wrapperHeight; // Scroll down
+          }
         }
       }
     }
@@ -148,6 +176,7 @@ const Select = (props: SelectProps) => {
   const singleChangeHandler = (newValue: string) => {
     setActiveOption(newValue);
     setExpanded(false);
+    resetKeyword();
     onChange && (onChange as SingleOnChangeEvent)(newValue);
   };
 
@@ -174,46 +203,81 @@ const Select = (props: SelectProps) => {
 
   const moveFocusDown = useCallback(() => {
     if (activeOption === undefined) {
-      setActiveOption(options[0].value);
+      setActiveOption(sortedOptions[0].value);
     } else {
       const newIndex = activeOptionIndex + 1;
-      if (newIndex >= 0 && newIndex < options.length) {
-        setActiveOption(options[newIndex].value);
+      if (newIndex >= 0 && newIndex < numberOfOptions) {
+        setActiveOption(sortedOptions[newIndex].value);
       }
     }
     setExpanded(true);
-  }, [activeOption, activeOptionIndex, setActiveOption, options]);
+  }, [
+    activeOption,
+    activeOptionIndex,
+    setActiveOption,
+    sortedOptions,
+    numberOfOptions,
+  ]);
 
   const moveFocusUp = useCallback(() => {
     if (activeOption === undefined) {
-      setActiveOption(options[options.length - 1].value);
+      setActiveOption(sortedOptions[numberOfOptions - 1].value);
     } else {
       const newIndex = activeOptionIndex - 1;
-      if (newIndex >= 0 && newIndex < options.length) {
-        setActiveOption(options[newIndex].value);
+      if (newIndex >= 0 && newIndex < numberOfOptions) {
+        setActiveOption(sortedOptions[newIndex].value);
       }
     }
     setExpanded(true);
-  }, [activeOption, activeOptionIndex, setActiveOption, options]);
+  }, [
+    activeOption,
+    activeOptionIndex,
+    setActiveOption,
+    sortedOptions,
+    numberOfOptions,
+  ]);
 
   useKeyboardEventListener(
     eventListenerKeys.ArrowDown,
-    () => expanded && moveFocusDown(),
+    () => {
+      if (expanded) {
+        moveFocusDown();
+        resetKeyword();
+      }
+    },
   );
 
   useKeyboardEventListener(
     eventListenerKeys.ArrowUp,
-    () => expanded && moveFocusUp(),
+    () => {
+      if (expanded) {
+        moveFocusUp();
+        resetKeyword();
+      }
+    },
   );
 
   useKeyboardEventListener(
     eventListenerKeys.Enter,
-    () =>
-      expanded &&
-      multiple &&
-      activeOption &&
-      addOrRemoveSelectedValue(activeOption),
+    () => {
+      if (expanded && multiple && activeOption) {
+        addOrRemoveSelectedValue(activeOption);
+      } else if (expanded) {
+        setExpanded(false);
+      }
+      resetKeyword();
+    }
   );
+
+  const keywordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const newKeyword = e.target.value;
+    if (newKeyword) {
+      // Update sorted options only if keyword has a non-empty value
+      setSortedOptions(optionSearch(options, newKeyword));
+      !expanded && setExpanded(true);
+    }
+    setKeyword(newKeyword);
+  }
 
   const isOptionActive = (val: string) => activeOption === val;
 
@@ -227,7 +291,7 @@ const Select = (props: SelectProps) => {
     : undefined;
 
   return (
-    <div
+    <span
       className={cn(
         classes.select,
         classes[multiple ? 'multiple' : 'single'],
@@ -245,9 +309,9 @@ const Select = (props: SelectProps) => {
             className={className + ' ' + classes.field}
             ref={selectFieldRef}
           >
-            {multiple && (
-              <>
-                <span className={classes.fieldValues}>
+            <span className={classes.inputArea}>
+              {multiple && (
+                <>
                   {selectedValues.map(findOptionFromValue).map((o) => (
                     <MultiSelectItem
                       deleteButtonLabel={
@@ -259,26 +323,50 @@ const Select = (props: SelectProps) => {
                       onDeleteButtonClick={() => removeSelection(o.value)}
                     />
                   ))}
+                </>
+              )}
+              <input
+                aria-label={searchLabel}
+                autoComplete='off'
+                className={classes.textInput}
+                disabled={disabled}
+                onBlur={() => setExpanded(false)}
+                onChange={keywordChangeHandler}
+                onFocus={() => setExpanded(true)}
+                onKeyDown={(event) => {
+                  if (Object.values(eventListenerKeys).includes(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
+                type='text'
+                value={keyword}
+              />
+              {!multiple && !keyword.length && (
+                <span className={classes.fieldValue}>
+                  {findOptionFromValue(activeOption).label}
                 </span>
-                <button
-                  aria-label={props.deleteButtonLabel}
-                  className={classes.deleteButton}
-                  disabled={!selectedValues.length || disabled}
-                  onClick={() => removeAllSelections()}
-                >
-                  <span className={classes.deleteButtonCross} />
-                </button>
-              </>
+              )}
+            </span>
+            {multiple && (
+              <button
+                aria-label={props.deleteButtonLabel}
+                className={classes.deleteButton}
+                disabled={!selectedValues.length || disabled}
+                onClick={() => removeAllSelections()}
+              >
+                <span className={classes.deleteButtonCross} />
+              </button>
             )}
             <button
               aria-controls={listboxId}
               aria-expanded={expanded}
+              aria-haspopup='listbox'
               aria-label={label}
               className={classes.fieldButton}
               disabled={disabled}
               id={inputId}
               onBlur={() => setExpanded(false)}
-              onClick={() => setExpanded(!expanded)}
+              onClick={() => setExpanded(true)}
               onKeyDown={(event) => {
                 if (Object.values(eventListenerKeys).includes(event.key)) {
                   event.preventDefault();
@@ -286,13 +374,9 @@ const Select = (props: SelectProps) => {
                 }
               }}
               role='combobox'
+              tabIndex={-1}
               value={multiple ? selectedValues : activeOption}
             >
-              {!multiple && (
-                <span className={classes.fieldValue}>
-                  {findOptionFromValue(activeOption).label}
-                </span>
-              )}
               <span className={classes.arrowWrapper}>
                 <span className={classes.arrow} />
               </span>
@@ -306,33 +390,38 @@ const Select = (props: SelectProps) => {
         noPadding={true}
         readOnly={false}
       />
-      <ul
-        className={classes.optionList}
-        id={listboxId}
-        ref={listboxRef}
-        role='listbox'
+      <span
+        className={classes.optionListWrapper}
+        ref={listboxWrapperRef}
         style={{ width }}
       >
-        {options.map((option) => (
-          <li
-            aria-selected={isOptionSelected(option.value)}
-            className={cn(
-              classes.option,
-              isOptionSelected(option.value) && classes.selected,
-              multiple && isOptionActive(option.value) && classes.focused,
-            )}
-            key={option.value}
-            onClick={() => addOrRemoveSelectedValue(option.value)}
-            onMouseDown={(event) => event.preventDefault()}
-            onKeyDown={(event) => event.preventDefault()}
-            role='option'
-            value={option.value}
-          >
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    </div>
+        <span
+          className={classes.optionList}
+          id={listboxId}
+          role='listbox'
+        >
+          {sortedOptions.map((option) => (
+            <button
+              aria-label={option.label}
+              aria-selected={isOptionSelected(option.value)}
+              className={cn(
+                classes.option,
+                isOptionSelected(option.value) && classes.selected,
+                multiple && isOptionActive(option.value) && classes.focused,
+              )}
+              key={option.value}
+              onClick={() => addOrRemoveSelectedValue(option.value)}
+              onMouseDown={(event) => event.preventDefault()}
+              onKeyDown={(event) => event.preventDefault()}
+              role='option'
+              value={option.value}
+            >
+              {option.formattedLabel ?? option.label}
+            </button>
+          ))}
+        </span>
+      </span>
+    </span>
   );
 };
 

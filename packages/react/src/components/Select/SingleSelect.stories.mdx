@@ -72,17 +72,17 @@ export const defaultArgs = {
     label: 'Velg et fylke',
     multiple: false,
     options: [
-        { label: 'Agder', value: 'Agd' },
-        { label: 'Innlandet', value: 'Inn' },
-        { label: 'Møre og Romsdal', value: 'MoR' },
-        { label: 'Nordland', value: 'Nor' },
-        { label: 'Oslo', value: 'Osl' },
-        { label: 'Rogaland', value: 'Rog' },
-        { label: 'Vestfold og Telemark', value: 'VoT' },
-        { label: 'Troms og Finnmark', value: 'ToF' },
-        { label: 'Trøndelag', value: 'Trø' },
-        { label: 'Vestland', value: 'Ves' },
-        { label: 'Viken', value: 'Vik' },
+        { label: 'Agder', value: 'Agd', keywords: ['agder', 'aust-agder', 'vest-agder'] },
+        { label: 'Innlandet', value: 'Inn', keywords: ['innlandet', 'hedmark', 'oppland'] },
+        { label: 'Møre og Romsdal', value: 'MoR', keywords: ['møre og romsdal', 'møre', 'romsdal'] },
+        { label: 'Nordland', value: 'Nor', keywords: ['nordland'] },
+        { label: 'Oslo', value: 'Osl', keywords: ['oslo'] },
+        { label: 'Rogaland', value: 'Rog', keywords: ['rogaland'] },
+        { label: 'Vestfold og Telemark', value: 'VoT', keywords: ['vestfold og telemark', 'vestfold', 'telemark'] },
+        { label: 'Troms og Finnmark', value: 'ToF', keywords: ['troms og finnmark', 'troms', 'finnmark'] },
+        { label: 'Trøndelag', value: 'Trø', keywords: ['trøndelag', 'nord-trøndelag', 'sør-trøndelag'] },
+        { label: 'Vestland', value: 'Ves', keywords: ['vestland', 'hordaland', 'sogn og fjordane'] },
+        { label: 'Viken', value: 'Vik', keywords: ['viken', 'østfold', 'akershus', 'buskerud'] }
     ]
 };
 export const Template = (args = {}) => <div style={{ width: '440px' }}>
@@ -122,6 +122,118 @@ export const Template = (args = {}) => <div style={{ width: '440px' }}>
     <Story
         name="Med feil"
         args={{error: true}}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Med formaterte alternativer
+<Canvas>
+    <Story
+        name="Formaterte alternativer"
+        args={{
+            options: [
+                {
+                    label: 'Agder',
+                    value: 'Agd',
+                    keywords: ['agder'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Agder</strong>
+                        <span>Arendal, Farsund, Flekkefjord, Grimstad, Kristiansand, Lillesand, Lyngdal, Mandal, Risør, Tvedestrand</span>
+                    </span>
+                },
+                {
+                    label: 'Innlandet',
+                    value: 'Inn',
+                    keywords: ['innlandet'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Innlandet</strong>
+                        <span>Brumunddal, Elverum, Fagernes, Gjøvik, Hamar, Kongsvinger, Lillehammer, Moelv, Otta, Raufoss, Vinstra</span>
+                    </span>
+                },
+                {
+                    label: 'Møre og Romsdal',
+                    value: 'MoR',
+                    keywords: ['møre og romsdal', 'møre', 'romsdal'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Møre og Romsdal</strong>
+                        <span>Fosnavåg, Kristiansund, Molde, Ulsteinvik, Ålesund, Åndalsnes</span>
+                    </span>
+                },
+                {
+                    label: 'Nordland',
+                    value: 'Nor',
+                    keywords: ['nordland'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Nordland</strong>
+                        <span>Bodø, Brønnøysund, Fauske, Leknes, Mo i Rana, Mosjøen, Narvik, Sandnessjøen, Sortland, Stokmarknes, Svolvær</span>
+                    </span>
+                },
+                {
+                    label: 'Oslo',
+                    value: 'Osl',
+                    keywords: ['oslo'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Oslo</strong>
+                        <span>Oslo</span>
+                    </span>
+                },
+                {
+                    label: 'Rogaland',
+                    value: 'Rog',
+                    keywords: ['rogaland'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Rogaland</strong>
+                        <span>Bryne, Egersund, Haugesund, Jørpeland, Kopervik, Sandnes, Sauda, Skudeneshavn, Stavanger, Åkrehamn</span>
+                    </span>
+                },
+                {
+                    label: 'Troms og Finnmark',
+                    value: 'ToF',
+                    keywords: ['troms og finnmark', 'troms', 'finnmark'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Troms og Finnmark</strong>
+                        <span>Alta, Bardufoss, Finnsnes, Hammerfest, Harstad, Honningsvåg, Kirkenes, Tromsø, Vadsø, Vardø</span>
+                    </span>
+                },
+                {
+                    label: 'Trøndelag',
+                    value: 'Trø',
+                    keywords: ['trøndelag', 'nord-trøndelag', 'sør-trøndelag'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Trøndelag</strong>
+                        <span>Brekstad, Kolvereid, Levanger, Namsos, Orkanger, Røros, Rørvik, Steinkjer, Stjørdalshalsen, Trondheim, Verdalsøra</span>
+                    </span>
+                },
+                {
+                    label: 'Vestfold og Telemark',
+                    value: 'VoT',
+                    keywords: ['vestfold og telemark', 'vestfold', 'telemark'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Vestfold og Telemark</strong>
+                        <span>Brevik, Holmestrand, Horten, Kragerø, Langesund, Larvik, Notodden, Porsgrunn, Rjukan, Sandefjord, Skien, Stathelle, Stavern, Tønsberg</span>
+                    </span>
+                },
+                {
+                    label: 'Vestland',
+                    value: 'Ves',
+                    keywords: ['vestland', 'hordaland', 'sogn og fjordane'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Vestland</strong>
+                        <span>Bergen, Florø, Førde, Måløy, Odda, Stord</span>
+                    </span>
+                },
+                {
+                    label: 'Viken',
+                    value: 'Vik',
+                    keywords: ['viken', 'østfold', 'akershus', 'buskerud'],
+                    formattedLabel: <span style={{display: 'flex', flexDirection: 'column'}}>
+                        <strong>Viken</strong>
+                        <span>Askim, Drammen, Drøbak, Fredrikstad, Halden, Hokksund, Hønefoss, Jessheim, Kongsberg, Lillestrøm, Moss, Mysen, Sandvika, Sarpsborg, Ski, Svelvik</span>
+                    </span>
+                }
+            ]
+        }}
     >
         {Template.bind({})}
     </Story>
