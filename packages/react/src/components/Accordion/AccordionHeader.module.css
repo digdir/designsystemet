@@ -3,6 +3,7 @@
   --component-accordion_header-border_top_style: solid;
   --component-accordion_header-border_top_width: var(--border_width-thin);
   --component-accordion_header-color-background: var(--colors-white);
+  align-items: center;
   background-color: var(--component-accordion_header-color-background);
   border-top-color: var(--component-accordion_header-border_top_color);
   border-top-style: var(--component-accordion_header-border_top_style);
@@ -19,13 +20,16 @@
 
 /* breakpoints-sm */
 @media only screen and (min-width: 540px) {
+  .accordionHeader.withSubtitle {
+    padding-bottom: 0.2rem;
+    padding-right: 0.2rem;
+    padding-top: 0.2rem;
+  }
+
   .subtitle {
     display: inline-block;
     font-size: 0.9rem;
     opacity: 60%;
-    padding-bottom: 0.2rem;
-    padding-right: 0.2rem;
-    padding-top: 0.2rem;
   }
 }
 
@@ -44,7 +48,9 @@
   border-right-style: var(--component-accordion_header_title-border_right_style);
   border-top-style: var(--component-accordion_header_title-border_top_style);
   cursor: pointer;
+  display: inline-flex;
   flex: 1 1 auto;
+  flex-direction: column;
   font-family: inherit;
   font-size: var(--component-accordion_header_title-font_size);
   font-weight: var(--component-accordion_header_title-font_weight);

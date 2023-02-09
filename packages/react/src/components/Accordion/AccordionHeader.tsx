@@ -21,7 +21,7 @@ const AccordionHeader = ({
   return (
     <div
       className={cn(classes.accordionHeader, {
-        [classes.subtitle]: subtitle,
+        [classes.withSubtitle]: subtitle,
       })}
     >
       <AccordionIcon />
