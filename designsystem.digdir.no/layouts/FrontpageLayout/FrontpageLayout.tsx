@@ -30,6 +30,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           title={data.title}
           desc={data.description}
         />
+
         <Section title={data.navigationCards.title}>
           <Row className='gy-4'>
             {data.navigationCards.items.map((item: any, index: number) => (
@@ -46,6 +47,28 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
               </Col>
             ))}
           </Row>
+        </Section>
+
+        <Section backgroundColor='white'>
+          <h3>Vil du bidra?</h3>
+          <p>
+            Vi ønsker at dette skal bli et felles hjem for gjenbrukbare
+            komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt
+            og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer
+            helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet
+            og med de samme retningslinjene.
+          </p>
+          <p>
+            Vil du høre mer om dette, eller samarbeide med oss? Ta kontakt med
+            oss på e-post.
+          </p>
+        </Section>
+
+        <Section
+          backgroundColor='grey'
+          title='Siste oppdateringer'
+        >
+          <Row className='gy-4'>news</Row>
         </Section>
       </div>
     </div>
