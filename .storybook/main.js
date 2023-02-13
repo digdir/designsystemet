@@ -9,6 +9,17 @@ module.exports = {
     'storybook-addon-designs',
     '@storybook/preset-scss',
     '@etchteam/storybook-addon-status',
+    {
+      name: 'storybook-css-modules',
+      options: {
+        cssModulesLoaderOptions: {
+          importLoaders: 1,
+          modules: {
+            localIdentName: '[name]_[local]__[hash:base64:5]',
+          },
+        },
+      },
+    },
   ],
   staticDirs: ['../assets'],
   framework: '@storybook/react',
