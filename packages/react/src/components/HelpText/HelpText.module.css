@@ -40,6 +40,8 @@
 .helpTextContent {
   font-size: var(--font_size-300);
   line-height: var(--typography-default-line-height);
+  width: fit-content;
+  max-width: 700px;
 }
 
 .helpTextIcon.small {
