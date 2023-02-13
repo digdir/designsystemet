@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.5.0...@digdir/design-system-react@0.5.1) (2023-02-13)
+
+### Bug Fixes
+
+- **Accordion:** Fix subtitle placement issues ([#144](https://github.com/digdir/designsystem/issues/144)) ([316e450](https://github.com/digdir/designsystem/commit/316e4502d3b34a90ca577a45bbb367f547f6fb96))
+- **Button:** Enforce icon button to have same width and height ([#139](https://github.com/digdir/designsystem/issues/139)) ([9b3bb93](https://github.com/digdir/designsystem/commit/9b3bb93fc0e73b10a7522c07f54ca250b3d686b8))
+- **HelpText:** export help text size prop ([#147](https://github.com/digdir/designsystem/issues/147)) ([7a716bb](https://github.com/digdir/designsystem/commit/7a716bbed965ec8fb5f01799c7aea32be4fdd8e3))
+- **InputWrapper:** Change outline style to solid from auto to make outline-offset work ([#140](https://github.com/digdir/designsystem/issues/140)) ([ef2a9f4](https://github.com/digdir/designsystem/commit/ef2a9f4e003d6c7ca3ac72a1e4b3e915d4a174a7))
+
 # [0.5.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.4.3...@digdir/design-system-react@0.5.0) (2023-02-08)
 
 ### Bug Fixes
