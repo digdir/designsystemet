@@ -36,7 +36,9 @@ import {ArgsTable} from "@storybook/addon-docs";
                 'Liste med alternativer som skal vises i nedtrekkslisten. ' +
                 'Alternativene er av typen `SingleSelectOption` og har følgende egenskaper:\n' +
                 '- `value` er verdien som brukes av `onChange`-funksjonen.\n' +
-                '- `label` er teksten som vises i listen.',
+                '- `label` er teksten som vises i listen.\n' +
+                '- `formattedLabel` vises i listen i stedet for `label` hvis den er satt. Dette gir mulighet til å formatere teksten. `label` vil fortsatt være det som vises for det valgte alternativet når boksen er lukket.\n' +
+                '- `keywords` er en valgfri liste med nøkkelord som brukes som oppslag når brukeren skriver i søkefeltet. Dette er nyttig hvis brukeren skal kunne søke etter andre ting enn det som står i `label`, f.eks. tekst som brukes i `formattedLabel`.',
             control: {
                 type: 'object'
             }
