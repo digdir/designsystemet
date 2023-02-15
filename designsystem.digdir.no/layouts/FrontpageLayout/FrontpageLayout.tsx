@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
 import NavigationCard from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
+import { Card } from '../../components/Card/Card';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
@@ -68,7 +69,29 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           backgroundColor='grey'
           title='Siste oppdateringer'
         >
-          <Row className='gy-4'>news</Row>
+          <Row className='gy-4'>
+            <Col md={4}>
+              <Card
+                title='Oppdatering Q2'
+                description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'
+                url='#'
+              />
+            </Col>
+            <Col md={4}>
+              <Card
+                title='Oppdatering Q2'
+                description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'
+                url='#'
+              />
+            </Col>
+            <Col md={4}>
+              <Card
+                title='Oppdatering Q2'
+                description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'
+                url='#'
+              />
+            </Col>
+          </Row>
         </Section>
       </div>
     </div>

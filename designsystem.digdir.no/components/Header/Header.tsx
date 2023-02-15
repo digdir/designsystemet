@@ -65,6 +65,14 @@ const Header = () => {
             </li>
             <li className={classes.item}>
               <Link
+                href='/mønstre'
+                className={router.pathname == '/mønstre' ? classes.active : ''}
+              >
+                Mønstre
+              </Link>
+            </li>
+            <li className={classes.item}>
+              <Link
                 href='/komponenter'
                 className={
                   router.pathname == '/komponenter' ? classes.active : ''
