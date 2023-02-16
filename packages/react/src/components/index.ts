@@ -42,3 +42,5 @@ export type {
   AccordionHeaderProps,
   AccordionProps,
 } from './Accordion';
+export { List, ListItem } from './List';
+export type { ListProps, ListItemProps, ListBorderStyle } from './List';

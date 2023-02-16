@@ -1,0 +1,55 @@
+import {ArgsTable, Canvas, Meta, Story} from "@storybook/addon-docs";
+import {List, ListItem} from "./";
+import {TokensTable} from "../../../../../docs-components";
+
+<Meta
+    title="Kjernekomponenter/List"
+    component={List}
+    parameters={{
+        status: {
+            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+            url: 'http://www.url.com/status'
+        }
+    }}
+/>
+
+export const defaultArgs = {
+    borderStyle: 'solid'
+};
+
+export const Template = (args = {}) => (
+    <List {...{...defaultArgs, ...args}}>
+        <ListItem>List Item 1</ListItem>
+        <ListItem>List Item 2</ListItem>
+        <ListItem>List Item 3</ListItem>
+    </List>
+);
+
+# List
+
+## Variants
+
+### Solid border
+<Canvas>
+    <Story name="Solid border">
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Dashed border
+<Canvas>
+    <Story name="Dashed border" args={{borderStyle: 'dashed'}}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Egenskaper
+<ArgsTable story='Solid border' />
+
+## Tokens
+<TokensTable
+    componentName='popover'
+    description
+    jsonKey='component.popover'
+    showPreview={false}
+/>
