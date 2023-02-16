@@ -11,9 +11,17 @@
 .title {
     font-size: 32px;
     font-weight: 500;
+}
+
+.header {
     margin-bottom: 40px;
 }
 
 .content {
 
+}
+
+.detail {
+    margin-top: 16px;
+    height: 32px;
 }

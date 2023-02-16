@@ -1,0 +1,19 @@
+.section {
+    padding: 64px 0;
+}
+
+.title {
+    line-height: 1.3rem;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 28px;
+}
+
+.desc {
+    line-height: 1.55rem;
+    font-size: 18px;
+}
+
+.img {
+    width: 100%;
+}

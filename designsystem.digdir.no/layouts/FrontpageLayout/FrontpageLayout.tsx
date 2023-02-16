@@ -6,6 +6,10 @@ import Section from '../../components/Section/Section';
 import NavigationCard from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
 import { Card } from '../../components/Card/Card';
+import { ImageSection } from '../../components/ImageSection/ImageSection';
+import { Email } from '@navikt/ds-icons';
+
+import classes from './FrontpageLayout.module.css';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
@@ -50,20 +54,23 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           </Row>
         </Section>
 
-        <Section backgroundColor='white'>
-          <h3>Vil du bidra?</h3>
-          <p>
-            Vi ønsker at dette skal bli et felles hjem for gjenbrukbare
+        <ImageSection
+          id='bidra'
+          title='Ønsker du å bidra?'
+          description='          Vi ønsker at dette skal bli et felles hjem for gjenbrukbare
             komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt
             og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer
             helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet
-            og med de samme retningslinjene.
-          </p>
-          <p>
-            Vil du høre mer om dette, eller samarbeide med oss? Ta kontakt med
-            oss på e-post.
-          </p>
-        </Section>
+            og med de samme retningslinjene.        Vil du høre mer om dette, eller samarbeide med oss? Ta kontakt med
+            oss på e-post.'
+          src='img/share.svg'
+          content={
+            <a className={classes.link}>
+              <Email fontSize={26} />
+              <span>Ta kontakt med oss på e-post.</span>
+            </a>
+          }
+        />
 
         <Section
           backgroundColor='grey'

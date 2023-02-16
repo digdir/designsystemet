@@ -1,5 +1,5 @@
 .banner {
-    height: 460px;
+    height: 525px;
 }
 
 @media only screen and (max-width: 991px) {
@@ -11,7 +11,7 @@
 
 .container {
     height: 100%;
-    margin-top: -25px;
+    margin-top: -46px;
     padding: 40px 16px;
 }
 
@@ -19,12 +19,24 @@
     font-weight: 500;
     font-size: 44px;
     margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.title > span {
+    margin-left: 20px;
 }
 
 .desc {
     font-size: 20px;
     line-height: 1.7em;
     padding-right: 30px;
+}
+
+.button {
+    margin-top: 30px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
 }
 
 .imgContainer {
