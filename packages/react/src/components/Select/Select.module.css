@@ -81,7 +81,7 @@
   --delete_cross-color: var(--delete_cross-color-active);
 }
 
-.select:not(.expanded) .optionList {
+.select:not(.expanded) .optionListWrapper {
   display: none;
 }
 
@@ -101,12 +101,7 @@
 .field {
   display: inline-flex;
   padding: 0;
-}
-
-.select.multiple .field,
-.select.single .fieldButton {
   align-items: center;
-  display: inline-flex;
   flex-direction: row;
   font-family: var(--font_family-default);
   font-size: var(--font_size);
@@ -115,19 +110,52 @@
   width: 100%;
 }
 
-.select.single .fieldValue {
+.inputArea {
+  align-items: center;
+  display: flex;
   flex: 1;
-  padding-left: var(--singleselect_field-padding_left);
-  text-align: left;
+  height: 100%;
+  position: relative;
 }
 
-.select.multiple .fieldValues {
+.select.multiple .inputArea {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex: 1;
   gap: var(--multiselect_items-gap);
   padding: var(--multiselect_items-padding);
+}
+
+.textInput {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  font-family: var(--font_family-default);
+  font-size: var(--font_size);
+  line-height: var(--line-height);
+  min-height: var(--field-height-inside);
+  outline: none;
+}
+
+.select.single .textInput {
+  cursor: var(--interactive_element-cursor);
+  padding: 0 0 0 var(--singleselect_field-padding_left);
+  position: absolute;
+  width: 100%;
+}
+
+.select.multiple .textInput {
+  flex: 1;
+  min-height: 0;
+  min-width: 3rem;
+  padding: 0;
+}
+
+.select.single .fieldValue {
+  flex: 1;
+  padding-left: var(--singleselect_field-padding_left);
+  text-align: left;
 }
 
 .select.multiple .fieldButton:focus-visible {
@@ -204,14 +232,12 @@
   width: var(--delete_cross-size);
 }
 
-.optionList {
+.optionListWrapper {
   background-color: var(--option_list-background_color);
   border-radius: var(--option_list-border_radius);
   border: var(--option_list-border);
   box-shadow: var(--option_list-shadow);
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   margin: 0;
   max-height: calc(
     var(--option-height) * var(--option_list-number_of_visible_options)
@@ -222,6 +248,12 @@
   z-index: var(--option_list-z_index);
 }
 
+.optionList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .option {
   background-color: var(--option-background_color-default);
   border-color: var(--option-border_color);
@@ -230,6 +262,8 @@
   box-sizing: border-box;
   cursor: var(--interactive_element-cursor);
   display: inline-block;
+  font-family: var(--font_family-default);
+  font-size: var(--font_size);
   min-height: var(--option-height);
   overflow-x: hidden;
   padding-left: var(--option-padding_horizontal);
@@ -239,7 +273,6 @@
   );
   text-align: left;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .option:hover {
