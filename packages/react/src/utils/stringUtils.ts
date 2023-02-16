@@ -17,7 +17,7 @@ export const numberOfMatchingChars = (a: string, b: string) => {
   const aLower = a.toLowerCase();
   const bLower = b.toLowerCase();
   const matchingIndices = new Set();
-  // Go through all cars in A to find matching chars in B
+  // Go through all chars in A to find matching chars in B
   for (let i = 0; i < a.length; i++) {
     const char = aLower[i];
     // Find a matching char in B that is not already matched
