@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.5.1...@digdir/design-system-react@0.6.0) (2023-02-16)
+
+### Bug Fixes
+
+- **HelpText:** fix help-text width ([#149](https://github.com/digdir/designsystem/issues/149)) ([e0ddf38](https://github.com/digdir/designsystem/commit/e0ddf3895994f1b276e851f74de495a33e4d964a))
+- **Popover:** fix display-issue-with-popover-arrow ([#152](https://github.com/digdir/designsystem/issues/152)) ([2b3e311](https://github.com/digdir/designsystem/commit/2b3e3112407fdc86dcc092b1d93c34c9f76dbf69))
+
+### Features
+
+- **List:** Add list component ([#153](https://github.com/digdir/designsystem/issues/153)) ([f3befb9](https://github.com/digdir/designsystem/commit/f3befb9643f9c5be440426d8f57f3542ea44cf61))
+- **Select:** Search and formatting ([#151](https://github.com/digdir/designsystem/issues/151)) ([d26ea78](https://github.com/digdir/designsystem/commit/d26ea78a8cb2ce6d12f60c4faa2ec0202ff37054))
+
 ## [0.5.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.5.0...@digdir/design-system-react@0.5.1) (2023-02-13)
 
 ### Bug Fixes
