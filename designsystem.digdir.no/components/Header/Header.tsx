@@ -12,7 +12,10 @@ const Header = () => {
 
   return (
     <header className={classes.header}>
-      <Container className={classes.container}>
+      <Container
+        className={classes.container}
+        fluid
+      >
         <div className={classes.left}>
           <Link href='/'>
             <img

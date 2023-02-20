@@ -1,17 +1,19 @@
 .header {
-    height: 102px;
+    height: 100px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #e1e1e1;
 }
 
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 32px;
 }
 
 .logo {
-    height: 31px;
+    height: 30px;
     margin-left: -1px;
 }
 
@@ -25,6 +27,7 @@
     display: flex;
     margin: 0;
     padding: 0;
+    margin-bottom: -4px;
 }
 
 .item {
@@ -38,7 +41,7 @@
     font-size: 18px;
     border-bottom: 3px solid transparent;
     padding-bottom: 8px;
-    transition: 0.25s all ease-out;
+    transition: 0.1s all ease-out;
 }
 
 .item a:hover,

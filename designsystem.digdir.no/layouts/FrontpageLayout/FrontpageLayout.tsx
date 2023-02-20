@@ -21,6 +21,7 @@ interface FrontpageData {
   description: string;
   navigationCards: {
     title: string;
+    description: string;
     items: any[];
   };
 }
@@ -48,6 +49,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
                   title={item.title}
                   color={item.color}
                   icon={item.icon}
+                  description={item.description}
                 />
               </Col>
             ))}
@@ -57,7 +59,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
         <ImageSection
           id='bidra'
           title='Ønsker du å bidra?'
-          description='          Vi ønsker at dette skal bli et felles hjem for gjenbrukbare
+          description='Vi ønsker at dette skal bli et felles hjem for gjenbrukbare
             komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt
             og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer
             helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet
@@ -65,41 +67,44 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
             oss på e-post.'
           src='img/share.svg'
           content={
-            <a className={classes.link}>
+            <a
+              href='mailto:designsystem@digdir.no'
+              className={classes.link}
+            >
               <Email fontSize={26} />
               <span>Ta kontakt med oss på e-post.</span>
             </a>
           }
         />
 
-        <Section
-          backgroundColor='grey'
-          title='Siste oppdateringer'
-        >
-          <Row className='gy-4'>
-            <Col md={4}>
-              <Card
-                title='Oppdatering Q2'
-                description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'
-                url='#'
-              />
-            </Col>
-            <Col md={4}>
-              <Card
-                title='Oppdatering Q2'
-                description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'
-                url='#'
-              />
-            </Col>
-            <Col md={4}>
-              <Card
-                title='Oppdatering Q2'
-                description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'
-                url='#'
-              />
-            </Col>
-          </Row>
-        </Section>
+        {/*<Section*/}
+        {/*  backgroundColor='grey'*/}
+        {/*  title='Siste oppdateringer'*/}
+        {/*>*/}
+        {/*  <Row className='gy-4'>*/}
+        {/*    <Col md={4}>*/}
+        {/*      <Card*/}
+        {/*        title='Oppdatering Q2'*/}
+        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
+        {/*        url='#'*/}
+        {/*      />*/}
+        {/*    </Col>*/}
+        {/*    <Col md={4}>*/}
+        {/*      <Card*/}
+        {/*        title='Oppdatering Q2'*/}
+        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
+        {/*        url='#'*/}
+        {/*      />*/}
+        {/*    </Col>*/}
+        {/*    <Col md={4}>*/}
+        {/*      <Card*/}
+        {/*        title='Oppdatering Q2'*/}
+        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
+        {/*        url='#'*/}
+        {/*      />*/}
+        {/*    </Col>*/}
+        {/*  </Row>*/}
+        {/*</Section>*/}
       </div>
     </div>
   );

@@ -30,17 +30,17 @@ const Banner = ({ title, desc }: BannerProps) => {
                 />
               </h1>
               <p className={classes.desc}>{desc}</p>
-              <Button
-                className={classes.button}
-                size={ButtonSize.Medium}
-                onClick={() => {
-                  const loc = document.location.toString().split('#')[0];
-                  document.location = loc + '#bidra';
-                  return false;
-                }}
-              >
-                Bli med på samarbeidet
-              </Button>
+              {/*<Button*/}
+              {/*  className={classes.button}*/}
+              {/*  size={ButtonSize.Medium}*/}
+              {/*  onClick={() => {*/}
+              {/*    const loc = document.location.toString().split('#')[0];*/}
+              {/*    document.location = loc + '#bidra';*/}
+              {/*    return false;*/}
+              {/*  }}*/}
+              {/*>*/}
+              {/*  Bli med på samarbeidet*/}
+              {/*</Button>*/}
             </div>
           </Col>
           <Col

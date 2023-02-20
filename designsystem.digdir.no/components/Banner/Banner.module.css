@@ -1,5 +1,5 @@
 .banner {
-    height: 525px;
+    height: 480px;
 }
 
 @media only screen and (max-width: 991px) {
@@ -11,7 +11,7 @@
 
 .container {
     height: 100%;
-    margin-top: -46px;
+    margin-top: -0px;
     padding: 40px 16px;
 }
 
@@ -31,6 +31,7 @@
     font-size: 20px;
     line-height: 1.7em;
     padding-right: 30px;
+    margin-bottom: 0;
 }
 
 .button {
