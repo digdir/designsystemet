@@ -1,0 +1,46 @@
+.spinner {
+  animation: rotateAnimation 2s linear infinite;
+}
+
+.spinnerCircle {
+  animation: strokeAnimation 1.5s ease-in-out infinite;
+}
+
+.defaultForeground {
+  stroke: var(--colors-grey-500);
+}
+
+.interactionForeground {
+  stroke: var(--semantic-border-action-default);
+}
+
+.invertedForeground {
+  stroke: var(--colors-white);
+}
+
+.defaultBackground,
+.interactionBackground,
+.invertedBackground {
+  stroke: var(--colors-grey-200);
+}
+
+@keyframes rotateAnimation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes strokeAnimation {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -62;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
