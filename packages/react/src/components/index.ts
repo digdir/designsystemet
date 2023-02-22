@@ -25,8 +25,7 @@ export type {
   SingleOnChangeEvent,
   MultipleOnChangeEvent,
 } from './Select';
-export type { SpinnerProps } from './Spinner';
-export { Spinner } from './Spinner';
+export * from './Spinner';
 export { ReadOnlyVariant } from './_InputWrapper';
 export { TextArea } from './TextArea';
 export type { TextAreaProps } from './TextArea';
