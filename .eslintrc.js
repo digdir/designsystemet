@@ -18,6 +18,8 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   rules: {
+    // Disabled because of Typescript
+    'react/prop-types': ['off'],
     'react/jsx-no-bind': 'off',
     '@typescript-eslint/consistent-type-exports': 'warn',
     '@typescript-eslint/consistent-type-imports': 'warn',
