@@ -1,8 +1,8 @@
 .header {
-    height: 100px;
+    height: 96px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .container {
@@ -13,8 +13,7 @@
 }
 
 .logo {
-    height: 30px;
-    margin-left: -1px;
+    height: 29px;
 }
 
 .toggle {
@@ -27,7 +26,6 @@
     display: flex;
     margin: 0;
     padding: 0;
-    margin-bottom: -4px;
 }
 
 .item {
@@ -44,9 +42,16 @@
     transition: 0.1s all ease-out;
 }
 
-.item a:hover,
 .item a:focus,
 .item .active {
+    border-color: #6db6ea;
+}
+
+.item a:hover {
+    border-color: #c3c3c3;
+}
+
+.item .active.link:hover {
     border-color: #6db6ea;
 }
 

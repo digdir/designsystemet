@@ -1,13 +1,12 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Email } from '@navikt/ds-icons';
 
 import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
 import NavigationCard from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
-import { Card } from '../../components/Card/Card';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
-import { Email } from '@navikt/ds-icons';
 
 import classes from './FrontpageLayout.module.css';
 
@@ -23,6 +22,12 @@ interface FrontpageData {
     title: string;
     description: string;
     items: any[];
+  };
+  contributeSection: {
+    title: string;
+    description: string;
+    email: string;
+    image: string;
   };
 }
 
@@ -58,17 +63,12 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
 
         <ImageSection
           id='bidra'
-          title='Ønsker du å bidra?'
-          description='Vi ønsker at dette skal bli et felles hjem for gjenbrukbare
-            komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt
-            og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer
-            helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet
-            og med de samme retningslinjene.        Vil du høre mer om dette, eller samarbeide med oss? Ta kontakt med
-            oss på e-post.'
-          src='img/share.svg'
+          title={data.contributeSection.title}
+          description={data.contributeSection.description}
+          src={data.contributeSection.image}
           content={
             <a
-              href='mailto:designsystem@digdir.no'
+              href={'mailto:' + data.contributeSection.email}
               className={classes.link}
             >
               <Email fontSize={26} />

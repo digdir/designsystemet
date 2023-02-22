@@ -1,8 +1,11 @@
 import Meta from '../components/Meta/Meta'
-import {FrontpageLayout} from "../layouts/FrontpageLayout/FrontpageLayout";
+import {FrontpageLayout} from "../layouts";
 import { Picture, Wrench, SystemFilled } from "@navikt/ds-icons";
 
-<Meta title='Framsiden' />
+<Meta
+  title='Velkommen'
+  description='Velkommen til Felles designsystem. Her vil du finne grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester'
+/>
 
 export default ({ children }) => <FrontpageLayout Content={children} data={
 {
@@ -22,7 +25,8 @@ export default ({ children }) => <FrontpageLayout Content={children} data={
           description: 'Lær hvordan du kan komme i gang med designsystemet som utvikler',
           color: 'yellow',
           url: '/for-utviklere',
-          icon: <Wrench fontSize={28} />},
+          icon: <Wrench fontSize={28} />
+      },
       {
           title: 'Komponenter',
           description: 'Se den komplette oversikten over komponentene i react.',
@@ -30,6 +34,12 @@ export default ({ children }) => <FrontpageLayout Content={children} data={
           url: '/komponenter', icon: <SystemFilled fontSize={25} />
       },
     ]
+  },
+  contributeSection: {
+     title: 'Ønsker du å bidra?',
+     description: 'Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet og med de samme retningslinjene. Vil du høre mer om dette, eller samarbeide med oss?',
+     email: 'designsystem@digdir.no',
+     image: 'img/people-holding-figures.svg'
   }
 }
 } />;

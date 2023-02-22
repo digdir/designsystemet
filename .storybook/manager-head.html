@@ -1,7 +1,112 @@
 <link rel="shortcut icon" href="/designsystem/favicon.ico">
 
 <style>
+
+    /* HEADER */
+    .header {
+        height: 96px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #e0e0e0;
+
+        border-bottom: 1px solid #e2e2e2;
+        background-color: white;
+    }
+
+    .header__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 32px;
+    }
+
+    .header__logo {
+        height: 29px;
+    }
+
+    .header__logo-link {
+        display: flex;
+    }
+
+    .header__logo a  {
+       display: flex;
+    }
+
+    .header__toggle {
+        display: none;
+        border: none;
+        background-color: transparent;
+    }
+
+    .header__menu {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header__item {
+        list-style: none;
+        margin-left: 32px;
+    }
+
+    .header__item a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 18px;
+        border-bottom: 3px solid transparent;
+        padding-bottom: 8px;
+        transition: 0.1s all ease-out;
+    }
+
+    .header__item a:hover,
+    .header__item a:focus,
+    .header__item.active a {
+        border-color: #6db6ea;
+    }
+
+    @media (max-width: 991.98px) {
+
+        .header__toggle {
+            display: block;
+        }
+
+        .header__menu {
+            border-top: 1px solid #e2e2e2;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100px;
+            background-color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            display: none;
+            padding: 20px 0 20px 0;
+        }
+
+        .header__item {
+            padding: 20px 0;
+            margin-left: 16px;
+        }
+
+        .header__active {
+            display: block;
+        }
+
+        .header__logo {
+            height: 32px;
+        }
+
+    }
+
     /* MAIN */
+    div[role="main"] > div > div > div {
+        background-color: #f4f5f6;
+        box-shadow: rgb(0 0 0 / 8%) 0 -1px 0 0 inset;
+        top: 0 !important;
+    }
+
     div[role="main"] > div {
         box-shadow: none !important;
     }
@@ -20,7 +125,7 @@
     }
 
     .search-field {
-        margin-top: 24px !important;
+        margin-top: 0px !important;
         margin-bottom: 28px !important;
     }
 
@@ -34,6 +139,10 @@
 
     .search-field svg:last-child {
         left: auto !important;
+    }
+
+    .sidebar-header {
+        display: none !important;
     }
 
     .sidebar-header img {
@@ -197,3 +306,19 @@
         document.location.reload();
     }
 </script>
+
+<div class="header">
+  <div class="header__container">
+    <div class="header__left">
+      <a href="https://designsystem.digdir.no" class="header__logo-link"><img class="header__logo" src="/img/logo-positive.svg" alt="Logo"></a>
+    </div>
+    <div class="header__right">
+      <ul class="header__menu">
+        <li class="header__item"><a href="https://designsystem.digdir.no/god-praksis">God praksis</a></li>
+        <li class="header__item"><a href="https://designsystem.digdir.no/grunnleggende">Grunnleggende</a></li>
+        <li class="header__item"><a href="https://designsystem.digdir.no/monstre">Mønstre</a></li>
+        <li class="header__item active"><a href="/">Komponenter</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

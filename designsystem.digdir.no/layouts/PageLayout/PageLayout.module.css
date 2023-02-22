@@ -1,11 +1,12 @@
-.content {
-    margin-top: 48px;
-    margin-bottom: 48px;
+.page {
+    margin-top: 56px;
+    margin-bottom: 32px;
 }
 
 .title {
-    font-size: 40px;
-    margin-bottom: 24px;
+    font-size: 36px;
+    margin-bottom: 0;
+    line-height: 1.3em;
 }
 
 .desc {
@@ -49,14 +50,21 @@
     margin-bottom: 10px;
 }
 
-.test {
-    margin-left: 24px;
+.header {
+    padding: 32px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
-.test h1 {
-    font-size: 44px;
-    margin-bottom: 24px;
-    line-height: 1.3em;
+.date {
+    margin-top: 12px;
+    font-size: 16px;
+}
+
+.test {
+    margin-left: 24px;
 }
 
 .test h1 + p {
@@ -69,12 +77,14 @@
     margin-top: 40px;
     margin-bottom: 16px;
     line-height: 1.3em;
+    font-size: 28px;
 }
 
 .test h3 {
     margin-top: 40px;
     margin-bottom: 16px;
     line-height: 1.3em;
+    font-size: 24px;
 }
 
 .test p {

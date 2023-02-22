@@ -45,9 +45,7 @@ export const parameters = {
   options: {
     storySort: {
       order: [
-        'Introduksjon',
-        'Kom i gang',
-        'Design Tokens',
+        'Komponentoversikt',
         'Kjernekomponenter',
         ['Introduksjon', 'Button'],
         'Changelog',

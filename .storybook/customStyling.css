@@ -13,7 +13,8 @@ button, input, select {
 
 .sbdocs-wrapper {
     margin-left: -310px;
-    padding-top: 64px !important;
+    padding-top: 56px !important;
+    margin-bottom: 64px;
 }
 
 @media screen  and (max-width: 1400px)  {

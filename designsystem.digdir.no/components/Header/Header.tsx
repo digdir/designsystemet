@@ -10,6 +10,25 @@ const Header = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
+  const menu = [
+    {
+      name: 'God praksis',
+      url: '/god-praksis',
+    },
+    {
+      name: 'Grunnleggende',
+      url: '/grunnleggende',
+    },
+    {
+      name: 'Mønstre',
+      url: '/monstre',
+    },
+    {
+      name: 'Komponenter',
+      url: 'https://digdir.github.io/designsystem',
+    },
+  ];
+
   return (
     <header className={classes.header}>
       <Container
@@ -20,7 +39,7 @@ const Header = () => {
           <Link href='/'>
             <img
               className={classes.logo}
-              src='/img/logo.svg'
+              src='/img/logo-positive.svg'
               alt='Logo'
             />
           </Link>
@@ -46,44 +65,22 @@ const Header = () => {
             )}
           </button>
           <ul className={cn(classes.menu, { [classes.active]: open })}>
-            <li className={classes.item}>
-              <Link
-                href='/god-praksis'
-                className={
-                  router.pathname == '/god-praksis' ? classes.active : ''
-                }
+            {menu.map((item, index) => (
+              <li
+                className={classes.item}
+                key={index}
               >
-                God praksis
-              </Link>
-            </li>
-            <li className={classes.item}>
-              <Link
-                href='/grunnleggende'
-                className={
-                  router.pathname == '/grunnleggende' ? classes.active : ''
-                }
-              >
-                Grunnleggende
-              </Link>
-            </li>
-            <li className={classes.item}>
-              <Link
-                href='/mønstre'
-                className={router.pathname == '/mønstre' ? classes.active : ''}
-              >
-                Mønstre
-              </Link>
-            </li>
-            <li className={classes.item}>
-              <Link
-                href='/komponenter'
-                className={
-                  router.pathname == '/komponenter' ? classes.active : ''
-                }
-              >
-                Komponenter
-              </Link>
-            </li>
+                <Link
+                  href={item.url}
+                  className={cn(
+                    router.pathname == item.url ? classes.active : '',
+                    classes.link,
+                  )}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>
