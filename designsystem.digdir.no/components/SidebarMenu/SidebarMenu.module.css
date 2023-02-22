@@ -19,6 +19,15 @@
     font-size: 16px;
 }
 
+.link:hover {
+    color: #3073d8;
+}
+
+.active {
+    font-weight: 600;
+    color: #3073d8;
+}
+
 .title {
     font-size: 18px;
     font-weight: 500;

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import cn from 'classnames';
 
 import { Tag } from '../Tag/Tag';
 import { capitalizeString } from '../../utils/StringHelpers';
@@ -19,7 +20,7 @@ const SidebarMenu = ({ title, items }: SidebarMenuProps) => {
         {items.map((item: any, index: number) => (
           <li
             key={index}
-            className={classes.item}
+            className={cn(classes.item, { [classes.active]: item.active })}
           >
             <Link
               className={classes.link}

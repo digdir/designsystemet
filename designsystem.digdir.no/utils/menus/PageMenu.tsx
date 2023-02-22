@@ -19,6 +19,7 @@ const getServerSideProps = async (context: any) => {
   }
 
   const parentPage = urlArray[1];
+  const currentPage = urlArray[urlArray.length - 1];
   const parentDirectory = path.join(process.cwd(), 'pages/' + parentPage);
   const fileNames = fs.readdirSync(parentDirectory);
   const title = parentPage;
@@ -35,8 +36,11 @@ const getServerSideProps = async (context: any) => {
     return {
       title: pageName,
       url: parentPage + '/' + pageName,
+      active: currentPage === pageName,
     };
   });
+
+  console.log(items);
 
   return {
     props: {

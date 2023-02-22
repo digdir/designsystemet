@@ -6,10 +6,10 @@ interface MetaProps {
 }
 
 const Meta = ({ title, description }: MetaProps) => {
-  const t = `${title} - Felles Designsystem`;
+  title = `${title} - Felles Designsystem`;
   return (
     <Head>
-      <title>{t}</title>
+      <title>{title}</title>
       <meta
         name='description'
         content={description}
