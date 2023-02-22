@@ -18,6 +18,8 @@ export type { RadioButtonProps } from './RadioButton';
 export { RadioGroup, RadioGroupSize, RadioGroupVariant } from './RadioGroup';
 export type { RadioGroupProps, RadioGroupItem } from './RadioGroup';
 export { Select } from './Select';
+export type { SpinnerProps } from './Spinner';
+export { Spinner } from './Spinner';
 export type {
   SelectProps,
   SingleSelectOption,
