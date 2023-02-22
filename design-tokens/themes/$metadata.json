@@ -1,0 +1,11 @@
+{
+  "tokenSetOrder": [
+    "Base/Core",
+    "Base/Semantic",
+    "Base/Component",
+    "Base/Brand-default",
+    "Mode/Compact",
+    "Brand/Tilsynet",
+    "Brand/Altinn"
+  ]
+}

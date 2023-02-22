@@ -1,0 +1,36 @@
+[
+  {
+    "id": "edeff752fe55f2581f6ceee82c66aac8b8a8622d",
+    "name": "Felles",
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Base/Component": "enabled",
+      "Base/Semantic": "enabled",
+      "Base/Brand-default": "enabled"
+    },
+    "$figmaStyleReferences": {}
+  },
+  {
+    "id": "3fd3116514764af5cf244506c98e3944ca9f5e93",
+    "name": "Felles Compact",
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Mode/Compact": "enabled",
+      "Base/Component": "enabled",
+      "Base/Semantic": "enabled",
+      "Base/Brand-default": "enabled"
+    },
+    "$figmaStyleReferences": {}
+  },
+  {
+    "id": "df8b73b683752ef5f35b3cf293bbe5a0cba9f88d",
+    "name": "Tilsynet",
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Base/Component": "enabled",
+      "Base/Semantic": "enabled",
+      "Brand/Tilsynet": "enabled"
+    },
+    "$figmaStyleReferences": {}
+  }
+]
