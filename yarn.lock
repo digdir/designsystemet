@@ -2671,6 +2671,11 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-2.1.6.tgz#9a7caae8f6c1696dc4199917d75c3043ade6cbae"
   integrity sha512-a6dwPPu3yAJTBB31kXS2OvFdVNUZNjaON2DiQkQppnfDZC82AdhCKE8/NEFaQ3dUZSmbEbGy/e1IHNpFI2kKRg==
 
+"@navikt/ds-icons@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-2.3.0.tgz#badd0cf0a455548f8f403909cd888787c0834dc2"
+  integrity sha512-YJH5dqSxfJdGJOwj6AABQvcL+w2OHs+HoqqsDlGc1fG8/xP5e620UOIgRLD7HisS+dmE2t9OJESPjuI42agkCw==
+
 "@next/env@13.0.7":
   version "13.0.7"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.0.7.tgz#7b6ccd9006d3fb57c369e3fb62b28e15324141e9"

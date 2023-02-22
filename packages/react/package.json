@@ -21,10 +21,15 @@
     "@digdir/design-system-icons": "*"
   },
   "peerDependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.0.0"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@altinn/figma-design-tokens": "^6.0.1",
+    "@navikt/ds-icons": "^2.3.0",
+    "react-number-format": "^5.1.3"
   }
 }
