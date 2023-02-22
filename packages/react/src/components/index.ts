@@ -18,8 +18,6 @@ export type { RadioButtonProps } from './RadioButton';
 export { RadioGroup, RadioGroupSize, RadioGroupVariant } from './RadioGroup';
 export type { RadioGroupProps, RadioGroupItem } from './RadioGroup';
 export { Select } from './Select';
-export type { SpinnerProps } from './Spinner';
-export { Spinner } from './Spinner';
 export type {
   SelectProps,
   SingleSelectOption,
@@ -27,6 +25,8 @@ export type {
   SingleOnChangeEvent,
   MultipleOnChangeEvent,
 } from './Select';
+export type { SpinnerProps } from './Spinner';
+export { Spinner } from './Spinner';
 export { ReadOnlyVariant } from './_InputWrapper';
 export { TextArea } from './TextArea';
 export type { TextAreaProps } from './TextArea';
