@@ -8,6 +8,12 @@
   border: none;
 }
 
+@media print {
+  .helpTextButton {
+    display: none;
+  }
+}
+
 .helpTextButton:focus-visible {
   outline: var(--semantic-tab_focus-outline-color) solid
     var(--semantic-tab_focus-outline-width);
