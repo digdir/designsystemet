@@ -3457,7 +3457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:^1.6.22":
+"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
@@ -5104,7 +5104,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-webpack4@npm:6.5.16, @storybook/builder-webpack4@npm:^6.5.16":
+"@storybook/builder-webpack4@npm:6.5.16":
   version: 6.5.16
   resolution: "@storybook/builder-webpack4@npm:6.5.16"
   dependencies:
@@ -5643,7 +5643,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/manager-webpack4@npm:6.5.16, @storybook/manager-webpack4@npm:^6.5.16":
+"@storybook/manager-webpack4@npm:6.5.16":
   version: 6.5.16
   resolution: "@storybook/manager-webpack4@npm:6.5.16"
   dependencies:
@@ -21549,6 +21549,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.4.0
     "@etchteam/storybook-addon-status": ^4.2.2
     "@floating-ui/react": ^0.17.0
+    "@mdx-js/react": 1.6.22
     "@navikt/ds-icons": ^1.5.9
     "@rollup/plugin-commonjs": ^22.0.2
     "@rollup/plugin-image": ^3.0.1
@@ -21561,9 +21562,7 @@ __metadata:
     "@storybook/addon-interactions": ^6.5.16
     "@storybook/addon-links": ^6.5.16
     "@storybook/addons": ^6.5.16
-    "@storybook/builder-webpack4": ^6.5.16
     "@storybook/builder-webpack5": ^6.5.16
-    "@storybook/manager-webpack4": ^6.5.16
     "@storybook/manager-webpack5": ^6.5.16
     "@storybook/preset-scss": ^1.0.3
     "@storybook/react": ^6.5.16
