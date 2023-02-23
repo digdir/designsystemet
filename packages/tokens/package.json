@@ -16,7 +16,7 @@
     "generate-json": "token-transformer ../../design-tokens/tokens.json dist/tokens.json --expandTypography",
     "generate-others": "style-dictionary build"
   },
-  "dependencies": {
+  "devDependencies": {
     "change-case": "^4.1.2",
     "style-dictionary": "^3.7.2",
     "token-transformer": "^0.0.30"
