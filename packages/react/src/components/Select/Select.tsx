@@ -1,14 +1,7 @@
-import React, {
-  ChangeEvent,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState
-} from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 import cn from 'classnames';
-import tokens from '@altinn/figma-design-tokens/dist/tokens.json';
+import tokens from '@digdir/design-system-tokens/dist/tokens.json';
 
 import { InputWrapper } from '../_InputWrapper';
 import {
@@ -144,7 +137,8 @@ const Select = (props: SelectProps) => {
       const activeItem = items[activeOptionIndex];
       if (activeItem) {
         const activeOptionPositionTop = activeItem.offsetTop;
-        const activeOptionPositionBottom = activeOptionPositionTop + activeItem.offsetHeight;
+        const activeOptionPositionBottom =
+          activeOptionPositionTop + activeItem.offsetHeight;
         const isActiveOptionVisible =
           activeOptionPositionTop >= scrollPositionTop &&
           activeOptionPositionBottom <= scrollPositionBottom;
@@ -152,7 +146,8 @@ const Select = (props: SelectProps) => {
           if (activeOptionPositionTop < scrollPositionTop) {
             listboxWrapper.scrollTop = activeOptionPositionTop; // Scroll up
           } else {
-            listboxWrapper.scrollTop = activeOptionPositionBottom - wrapperHeight; // Scroll down
+            listboxWrapper.scrollTop =
+              activeOptionPositionBottom - wrapperHeight; // Scroll down
           }
         }
       }
@@ -237,37 +232,28 @@ const Select = (props: SelectProps) => {
     numberOfOptions,
   ]);
 
-  useKeyboardEventListener(
-    eventListenerKeys.ArrowDown,
-    () => {
-      if (expanded) {
-        moveFocusDown();
-        resetKeyword();
-      }
-    },
-  );
-
-  useKeyboardEventListener(
-    eventListenerKeys.ArrowUp,
-    () => {
-      if (expanded) {
-        moveFocusUp();
-        resetKeyword();
-      }
-    },
-  );
-
-  useKeyboardEventListener(
-    eventListenerKeys.Enter,
-    () => {
-      if (expanded && multiple && activeOption) {
-        addOrRemoveSelectedValue(activeOption);
-      } else if (expanded) {
-        setExpanded(false);
-      }
+  useKeyboardEventListener(eventListenerKeys.ArrowDown, () => {
+    if (expanded) {
+      moveFocusDown();
       resetKeyword();
     }
-  );
+  });
+
+  useKeyboardEventListener(eventListenerKeys.ArrowUp, () => {
+    if (expanded) {
+      moveFocusUp();
+      resetKeyword();
+    }
+  });
+
+  useKeyboardEventListener(eventListenerKeys.Enter, () => {
+    if (expanded && multiple && activeOption) {
+      addOrRemoveSelectedValue(activeOption);
+    } else if (expanded) {
+      setExpanded(false);
+    }
+    resetKeyword();
+  });
 
   const keywordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const newKeyword = e.target.value;
@@ -277,7 +263,7 @@ const Select = (props: SelectProps) => {
       !expanded && setExpanded(true);
     }
     setKeyword(newKeyword);
-  }
+  };
 
   const isOptionActive = (val: string) => activeOption === val;
 
