@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Icons from the Digdir Designsystem",
   "author": "Digdir Designsystem Team",
-  "keywords": ["icons", "svg"],
+  "keywords": [
+    "icons",
+    "svg"
+  ],
   "license": "BSD-3-Clause",
   "type": "module",
   "main": "./cjs/index.js",
