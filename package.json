@@ -41,6 +41,7 @@
     "@storybook/addon-links": "^6.5.16",
     "@storybook/addons": "^6.5.16",
     "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.5.16",
@@ -119,5 +120,6 @@
     "svgo": "^3.0.2",
     "terser": "^5.16.0",
     "ts-node": "^10.9.1"
-  }
+  },
+  "version": "0.0.0"
 }
