@@ -14,7 +14,7 @@ export enum HelpTextSize {
 }
 
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string;
+  children: React.ReactNode;
   title: string;
   size?: HelpTextSize;
   placement?:
