@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.6.0...@digdir/design-system-react@0.7.0) (2023-02-24)
+
+### Bug Fixes
+
+- **HelpText:** hide helptext button in pdfs ([#156](https://github.com/digdir/designsystem/issues/156)) ([7b9c217](https://github.com/digdir/designsystem/commit/7b9c2174b8095f7fe56c205d4a462168b734e950))
+
+### Features
+
+- **HelpText:** take reactnode instead of string ([#181](https://github.com/digdir/designsystem/issues/181)) ([2c1a8df](https://github.com/digdir/designsystem/commit/2c1a8df08ea91a81f95252db8c12d5a6229f9188))
+- **Spinner:** Add spinner component ([#162](https://github.com/digdir/designsystem/issues/162)) ([deb6fec](https://github.com/digdir/designsystem/commit/deb6fec8524bae70a001d330ac3ca15330879ff2))
+
 # [0.6.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.5.1...@digdir/design-system-react@0.6.0) (2023-02-16)
 
 ### Bug Fixes
