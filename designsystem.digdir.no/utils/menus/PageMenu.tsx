@@ -8,21 +8,40 @@ const getServerSideProps = async (context: any) => {
   const { resolvedUrl } = context;
   const urlArray = resolvedUrl.split('/');
   let showMenu = true;
+  let files = [];
 
   // Don't show menu if root level page
-  if (urlArray.length === 2) {
-    return {
-      props: {
-        menu: { showMenu: false, items: [] },
-      },
-    };
-  }
+  // if (urlArray.length === 2) {
+  //   return {
+  //     props: {
+  //       menu: { showMenu: false, items: [] },
+  //     },
+  //   };
+  // }
+
+  const getFilesRecursively = (directory: string) => {
+    const filesInDirectory = fs.readdirSync(directory);
+    for (const file of filesInDirectory) {
+      const absolute = path.join(directory, file);
+      if (fs.statSync(absolute).isDirectory()) {
+        getFilesRecursively(absolute);
+      } else {
+        files.push(absolute);
+      }
+    }
+  };
+
+  console.log('4');
 
   const parentPage = urlArray[1];
   const currentPage = urlArray[urlArray.length - 1];
-  const parentDirectory = path.join(process.cwd(), 'pages/' + parentPage);
+  const parentDirectory = path.join(process.cwd(), 'pages');
   const fileNames = fs.readdirSync(parentDirectory);
   const title = parentPage;
+
+  getFilesRecursively(parentDirectory);
+
+  console.log(files);
 
   // Don't show menu if only child
   if (fileNames.length === 1) {
@@ -39,8 +58,6 @@ const getServerSideProps = async (context: any) => {
       active: currentPage === pageName,
     };
   });
-
-  console.log(items);
 
   return {
     props: {

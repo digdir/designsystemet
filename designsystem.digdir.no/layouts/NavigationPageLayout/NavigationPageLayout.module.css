@@ -1,5 +1,5 @@
 .content {
-    margin-top: 48px;
+    margin-top: 56px;
     margin-bottom: 48px;
 }
 
@@ -21,6 +21,15 @@
 
 .right {
 
+}
+
+.section {
+    margin-top: 48px;
+}
+
+.section-desc {
+    margin-top: 16px;
+    margin-bottom: 24px;
 }
 
 .test {

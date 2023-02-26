@@ -1,9 +1,10 @@
-import Header from '../../components/Header/Header';
 import React from 'react';
-import Section from '../../components/Section/Section';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Picture } from '@navikt/ds-icons';
+
+import Header from '../../components/Header/Header';
+import Section from '../../components/Section/Section';
 import NavigationCard from '../../components/NavigationCard/NavigationCard';
-import { Picture, Wrench, System } from '@navikt/ds-icons';
 
 import classes from './SubjectsLayout.module.css';
 

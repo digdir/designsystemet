@@ -16,27 +16,30 @@ const SidebarMenu = ({ title, items }: SidebarMenuProps) => {
   return (
     <div className={classes.menu}>
       <h3 className={classes.title}>{title}</h3>
-      <ul className={classes.list}>
-        {items.map((item: any, index: number) => (
-          <li
-            key={index}
-            className={cn(classes.item, { [classes.active]: item.active })}
-          >
-            <Link
-              className={classes.link}
-              href={'/' + item.url}
+
+      {items.length && (
+        <ul className={classes.list}>
+          {items.map((item: any, index: number) => (
+            <li
+              key={index}
+              className={cn(classes.item, { [classes.active]: item.active })}
             >
-              {capitalizeString(item.title)}
-              {item.status === 'beta' && (
-                <Tag
-                  color='purple'
-                  type='beta'
-                />
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                className={classes.link}
+                href={'/' + item.url}
+              >
+                {capitalizeString(item.title)}
+                {item.status === 'beta' && (
+                  <Tag
+                    color='purple'
+                    type='beta'
+                  />
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
