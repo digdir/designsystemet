@@ -10,7 +10,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "storefront": "yarn workspace storefront dev",
-    "docs-build": "yarn workspace storefront building",
+    "storefront:build": "yarn workspace storefront building",
     "storybook:clean": "start-storybook -p 6006 --no-manager-cache",
     "build": "npx lerna run build",
     "build-react": "cd packages/react && yarn build",
