@@ -1,0 +1,12 @@
+{
+  "font_size": {
+    "heading": {
+      "h1": {
+        "breakpoint_lg": {
+          "value": "{font_size.700.breakpoint_lg}",
+          "type": "fontSizes"
+        }
+      }
+    }
+  }
+}
