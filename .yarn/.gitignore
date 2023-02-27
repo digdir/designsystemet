@@ -1,0 +1,8 @@
+# Yarn stuff; we're not using PnP/Zero installs
+/*
+!/.gitignore
+!/patches
+!/plugins
+!/releases
+!/sdks
+!/versions

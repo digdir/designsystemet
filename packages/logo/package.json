@@ -17,7 +17,9 @@
     "/cjs",
     "/esm"
   ],
-  "keywords": ["logo"],
+  "keywords": [
+    "logo"
+  ],
   "author": "Digdir Designsystem Team",
   "license": "BSD-3-Clause"
 }
