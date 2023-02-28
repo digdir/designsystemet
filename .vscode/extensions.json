@@ -13,6 +13,7 @@
     "aaron-bond.better-comments",
     "eamodio.gitlens",
     "ms-vsliveshare.vsliveshare",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "bierner.color-info"
   ]
 }
