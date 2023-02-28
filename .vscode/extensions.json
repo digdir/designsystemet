@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "unifiedjs.vscode-mdx",
+    "christian-kohler.npm-intellisense",
+    "techer.open-in-browser",
+    "ionutvmi.path-autocomplete",
+    "stylelint.vscode-stylelint",
+    "jock.svg",
+    "naumovs.color-highlight",
+    "clinyong.vscode-css-modules",
+    "aaron-bond.better-comments",
+    "eamodio.gitlens",
+    "ms-vsliveshare.vsliveshare",
+    "vivaxy.vscode-conventional-commits",
+    "bierner.color-info"
+  ]
+}
