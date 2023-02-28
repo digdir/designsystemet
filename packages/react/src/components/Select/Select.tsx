@@ -1,7 +1,7 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 import cn from 'classnames';
-import tokens from '@digdir/design-system-tokens/dist/tokens.json';
+import tokens from '@altinn/figma-design-tokens/dist/tokens.json';
 
 import { InputWrapper } from '../_InputWrapper';
 import {

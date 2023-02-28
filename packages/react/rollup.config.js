@@ -12,7 +12,7 @@ import terser from './rollup-terser.mjs';
 import packageJson from './package.json';
 
 // css files needs to be bundled
-const digdirFigmaTokensExceptCss = /@digdir\/design-system-react.*(?<!css)$/;
+const altinnFigmaTokensExceptCss = /@altinn\/figma-design-tokens.*(?<!css)$/;
 
 export default [
   {
@@ -29,7 +29,7 @@ export default [
     ],
     external: [
       // altinnFigmaTokensExceptCss,
-      digdirFigmaTokensExceptCss,
+      altinnFigmaTokensExceptCss,
       /@react-hookz\/web/,
       /@radix-ui\/react-popover$/,
       /react-number-format/,
@@ -53,6 +53,6 @@ export default [
     input: 'dist/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
-    external: [/@digdir\/design-system-react/, /\.css$/],
+    external: [/@altinn\/figma-design-tokens/, /\.css$/],
   },
 ];
