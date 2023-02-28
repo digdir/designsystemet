@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import tokens from '@altinn/figma-design-tokens/dist/tokens';
+import tokens from '@altinn/figma-design-tokens';
 
 import { Table } from '../Table';
 import {
