@@ -1964,12 +1964,9 @@ __metadata:
 "@digdir/design-system-icons@*, @digdir/design-system-icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-icons@workspace:packages/icons"
-  languageName: unknown
-  linkType: soft
-
-"@digdir/design-system-logos@workspace:packages/logo":
-  version: 0.0.0-use.local
-  resolution: "@digdir/design-system-logos@workspace:packages/logo"
+  dependencies:
+    camelcase: ^7.0.1
+    date-fns: ^2.29.3
   languageName: unknown
   linkType: soft
 
@@ -1980,6 +1977,7 @@ __metadata:
     "@altinn/figma-design-tokens": ^6.0.1
     "@digdir/design-system-icons": "*"
     "@digdir/design-system-tokens": "*"
+    "@floating-ui/react": 0.17.0
     "@navikt/ds-icons": ^2.3.0
     react-number-format: ^5.1.3
   peerDependencies:
@@ -2087,10 +2085,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:^1.0.5":
-  version: 1.1.0
-  resolution: "@floating-ui/core@npm:1.1.0"
-  checksum: ac48969915247320e52d173480c224e2ded94d557ba4cc504547bb314d126348dcc0aeef05686673e1b289596e6ce15118edc84900dd310c613d805f83b4e27d
+"@floating-ui/core@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@floating-ui/core@npm:1.2.1"
+  checksum: 7a263e15abad4cd98ce3938075c90f76bafef71c67964c83dd7cf1e1916c92ccfa46a4f2b95b403bb180f70b3e7ded118db1cbc3426269ec70e948edf0d19ae2
   languageName: node
   linkType: hard
 
@@ -2103,12 +2101,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/dom@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@floating-ui/dom@npm:1.1.0"
+"@floating-ui/dom@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@floating-ui/dom@npm:1.2.1"
   dependencies:
-    "@floating-ui/core": ^1.0.5
-  checksum: 717551da6f470101cd1de0edc449b229fade7f94c2ff98d09e14ced041e27092aac94bd78756c4247a42b57129f187292f145f0001a81ece399a89b20b4be60b
+    "@floating-ui/core": ^1.2.1
+  checksum: ad6928d5dd934ca8b3dcffdfcacde9d147afc0db4db0c0294b23d5f897224d73c7f0ae578b46d813f0d7ae22a86e7a3f8914fdbcdf4a8d42a1b430d0518f45be
   languageName: node
   linkType: hard
 
@@ -2126,18 +2124,18 @@ __metadata:
   linkType: hard
 
 "@floating-ui/react-dom@npm:^1.2.0":
-  version: 1.2.1
-  resolution: "@floating-ui/react-dom@npm:1.2.1"
+  version: 1.3.0
+  resolution: "@floating-ui/react-dom@npm:1.3.0"
   dependencies:
-    "@floating-ui/dom": ^1.1.0
+    "@floating-ui/dom": ^1.2.1
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: db9a734798c84da6c6e5964a3535f1f26169a2358a47d7173c4b2fe18a3a4b856b521a3bb7394b4977b85a99e77544ed2867a88dc8903d91e228d478b57af08d
+  checksum: ce0ad3e3bbe43cfd15a6a0d5cccede02175c845862bfab52027995ab99c6b29630180dc7d146f76ebb34730f90a6ab9bf193c8984fe8d7f56062308e4ca98f77
   languageName: node
   linkType: hard
 
-"@floating-ui/react@npm:^0.17.0":
+"@floating-ui/react@npm:0.17.0":
   version: 0.17.0
   resolution: "@floating-ui/react@npm:0.17.0"
   dependencies:
@@ -6643,16 +6641,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.startcase@npm:^4.4.7":
-  version: 4.4.7
-  resolution: "@types/lodash.startcase@npm:4.4.7"
-  dependencies:
-    "@types/lodash": "*"
-  checksum: ee5b903e7cb99a4c747325c38167dea70c10f9929823033f7f2e02aad5e227c84f80c6f7d9d6923a7c0f30a429c5ea4a1b6505bd50a96655b6ab7ac43e8ebe27
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:*, @types/lodash@npm:^4.14.167":
+"@types/lodash@npm:^4.14.167":
   version: 4.14.191
   resolution: "@types/lodash@npm:4.14.191"
   checksum: ba0d5434e10690869f32d5ea49095250157cae502f10d57de0a723fd72229ce6c6a4979576f0f13e0aa9fbe3ce2457bfb9fa7d4ec3d6daba56730a51906d1491
@@ -8391,7 +8380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.0.0, axios@npm:^1.2.1":
+"axios@npm:^1.0.0":
   version: 1.2.1
   resolution: "axios@npm:1.2.1"
   dependencies:
@@ -9265,10 +9254,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"camelcase@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "camelcase@npm:7.0.0"
-  checksum: 162d59607b3b46e910af151348d5e40af579048a5d07f3c06370b096ca0d42ba4a88bd92cf4e3482645ba1ffdd6f744d8273c1b9594e493fc10883d54adf7cbe
+"camelcase@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "camelcase@npm:7.0.1"
+  checksum: 86ab8f3ebf08bcdbe605a211a242f00ed30d8bfb77dab4ebb744dd36efbc84432d1c4adb28975ba87a1b8be40a80fbd1e60e2f06565315918fa7350011a26d3d
   languageName: node
   linkType: hard
 
@@ -11279,13 +11268,6 @@ __metadata:
   version: 5.1.0
   resolution: "dotenv-expand@npm:5.1.0"
   checksum: 8017675b7f254384915d55f9eb6388e577cf0a1231a28d54b0ca03b782be9501b0ac90ac57338636d395fa59051e6209e9b44b8ddf169ce6076dffb5dea227d3
-  languageName: node
-  linkType: hard
-
-"dotenv@npm:^16.0.3":
-  version: 16.0.3
-  resolution: "dotenv@npm:16.0.3"
-  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
   languageName: node
   linkType: hard
 
@@ -14128,15 +14110,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "husky@npm:8.0.3"
-  bin:
-    husky: lib/bin.js
-  checksum: 837bc7e4413e58c1f2946d38fb050f5d7324c6f16b0fd66411ffce5703b294bd21429e8ba58711cd331951ee86ed529c5be4f76805959ff668a337dbfa82a1b0
-  languageName: node
-  linkType: hard
-
 "iconv-lite@npm:0.4.24, iconv-lite@npm:^0.4.24":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -16550,22 +16523,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.104.1":
-  version: 0.104.1
-  resolution: "lucide-react@npm:0.104.1"
-  peerDependencies:
-    prop-types: ^15.7.2
-    react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: 60a75dcf9bd5bef90041a2ebf19bf3f6a5faebdd73a0511dd9b7e4cef2bd9c0471397fa4e87782a9ccee5a035805ebeadf64b3846b869fa16abede2f91aa53e5
-  languageName: node
-  linkType: hard
-
-"lucide-react@npm:^0.107.0":
-  version: 0.107.0
-  resolution: "lucide-react@npm:0.107.0"
+"lucide-react@npm:^0.115.0":
+  version: 0.115.0
+  resolution: "lucide-react@npm:0.115.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: f5f01935fa5f2213fae1ba25c35179898e57ee36b5098c72657aff9eb148aec0acbe237b8395c2de864a9106959853592c0b644b85940148f62289ae72b03e91
+  checksum: afd02f564be74b60d6c513750bd9758a61de57264ca01be14756bcbfb3c8d3146c8b05d0cf1d5d104e8561afb8f70bc53e2d501c91e50e3394ef258ee08a6ae9
   languageName: node
   linkType: hard
 
@@ -21655,7 +21618,6 @@ __metadata:
     "@commitlint/cli": ^17.4.1
     "@commitlint/config-conventional": ^17.4.0
     "@etchteam/storybook-addon-status": ^4.2.2
-    "@floating-ui/react": ^0.17.0
     "@mdx-js/react": 1.6.22
     "@navikt/ds-icons": ^1.5.9
     "@rollup/plugin-commonjs": ^22.0.2
@@ -21684,7 +21646,6 @@ __metadata:
     "@testing-library/user-event": ^14.4.3
     "@tippyjs/react": ^4.2.6
     "@types/jest": ^29.0.0
-    "@types/lodash.startcase": ^4.4.7
     "@types/node": ^18.11.11
     "@types/react": ^18.0.9
     "@types/react-dom": ^18.0.4
@@ -21693,13 +21654,9 @@ __metadata:
     "@types/testing-library__jest-dom": ^5.14.5
     "@typescript-eslint/eslint-plugin": 5.36.1
     "@typescript-eslint/parser": 5.36.1
-    axios: ^1.2.1
     babel-jest: ^29.0.3
     babel-loader: ^8.2.5
-    camelcase: ^7.0.0
     classnames: ^2.3.1
-    date-fns: ^2.29.3
-    dotenv: ^16.0.3
     eslint: 8.22.0
     eslint-config-prettier: 8.5.0
     eslint-import-resolver-typescript: 3.5.0
@@ -21709,16 +21666,11 @@ __metadata:
     eslint-plugin-react: 7.31.6
     eslint-plugin-react-hooks: 4.6.0
     eslint-plugin-storybook: 0.6.10
-    husky: ^8.0.3
     identity-obj-proxy: 3.0.0
     jest: ^29.0.3
     jest-css-modules-transform: ^4.4.2
     jest-environment-jsdom: ^29.0.3
     lerna: ^5.5.0
-    lodash.startcase: ^4.4.0
-    lucide-react: ^0.104.1
-    moment: ^2.29.4
-    p-limit: ^3.1.0
     postcss: ^8.4.16
     prettier: ^2.7.1
     react: ^18.1.0
@@ -22597,7 +22549,8 @@ __metadata:
     eslint: 8.30.0
     eslint-config-next: 13.0.7
     gray-matter: ^4.0.3
-    lucide-react: ^0.107.0
+    lucide-react: ^0.115.0
+    moment: ^2.29.4
     next: 13.0.7
     normalize.css: ^8.0.1
     prettier: ^2.8.3
@@ -23104,9 +23057,9 @@ __metadata:
   linkType: hard
 
 "tabbable@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "tabbable@npm:6.0.1"
-  checksum: 65e378ad69a97416f2fdce34ade11b8ff68b33d9b2d978920a9d285c77e1bb88cb35113a8f00af8c4f0163d788d451a48840a216fa918d6a3f0c554951deb984
+  version: 6.1.1
+  resolution: "tabbable@npm:6.1.1"
+  checksum: 348639497262241ce8e0ccb0664ea582a386183107299ee8f27cf7b56bc84f36e09eaf667d3cb4201e789634012a91f7129bcbd49760abe874fbace35b4cf429
   languageName: node
   linkType: hard
 
