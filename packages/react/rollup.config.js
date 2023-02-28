@@ -28,7 +28,6 @@ export default [
       },
     ],
     external: [
-      // altinnFigmaTokensExceptCss,
       altinnFigmaTokensExceptCss,
       /@react-hookz\/web/,
       /@radix-ui\/react-popover$/,

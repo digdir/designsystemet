@@ -17,6 +17,6 @@ npm install typescript --save-dev
 ## Usage
 
 ```jsx
-import '@digdir/design-system-tokens/dist/tokens.css';
+import '@altinn/figma-design-tokens/dist/tokens.css';
 import { Button } from '@digdir/design-system-react';
 ```
