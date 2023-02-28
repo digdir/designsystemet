@@ -17,7 +17,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@digdir/design-system-icons": "*"
+    "@digdir/design-system-icons": "*",
+    "@digdir/design-system-tokens": "*"
   },
   "peerDependencies": {
     "react": ">=16.8",

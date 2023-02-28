@@ -18,7 +18,8 @@
     "test": "jest",
     "add-component-core": "node scripts/add-component.mjs",
     "lerna:version": "lerna version  --conventional-commits --no-private",
-    "lerna:publish": "lerna publish from-git"
+    "lerna:publish": "lerna publish from-git",
+    "build:tokens": "yarn workspace @digdir/design-system-tokens build"
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
@@ -40,6 +41,7 @@
     "@storybook/addon-links": "^6.5.16",
     "@storybook/addons": "^6.5.16",
     "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.5.16",

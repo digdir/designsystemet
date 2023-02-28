@@ -1,5 +1,6 @@
-import React, { SVGProps } from 'react';
-import { tokens } from '../../../DesignTokens';
+import type { SVGProps } from 'react';
+import React from 'react';
+import * as tokens from '@altinn/figma-design-tokens';
 
 export const CircleArrow = (props: SVGProps<SVGSVGElement>) => (
   <svg
