@@ -1,67 +1,45 @@
 import React from 'react';
+import Link from 'next/link';
+import cn from 'classnames';
 
 import { Tag } from '../Tag/Tag';
+import { capitalizeString } from '../../utils/StringHelpers';
 
 import classes from './SidebarMenu.module.css';
 
 interface SidebarMenuProps {
   title: string;
+  items: any;
 }
 
-const SidebarMenu = ({ title }: SidebarMenuProps) => {
+const SidebarMenu = ({ title, items }: SidebarMenuProps) => {
   return (
     <div className={classes.menu}>
       <h3 className={classes.title}>{title}</h3>
-      <ul className={classes.list}>
-        <li className={classes.item}>
-          <a
-            className={classes.link}
-            href='#'
-          >
-            Accordion{' '}
-            <Tag
-              color='purple'
-              type='beta'
-            />
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a
-            className={classes.link}
-            href='#'
-          >
-            Button
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a
-            className={classes.link}
-            href='#'
-          >
-            Link{' '}
-            <Tag
-              color='deprecated'
-              type='deprecated'
-            />
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a
-            className={classes.link}
-            href='#'
-          >
-            Header
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a
-            className={classes.link}
-            href='#'
-          >
-            Toolbar
-          </a>
-        </li>
-      </ul>
+
+      {items.length && (
+        <ul className={classes.list}>
+          {items.map((item: any, index: number) => (
+            <li
+              key={index}
+              className={cn(classes.item, { [classes.active]: item.active })}
+            >
+              <Link
+                className={classes.link}
+                href={'/' + item.url}
+              >
+                {capitalizeString(item.title)}
+                {item.status === 'beta' && (
+                  <Tag
+                    color='purple'
+                    type='beta'
+                  />
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

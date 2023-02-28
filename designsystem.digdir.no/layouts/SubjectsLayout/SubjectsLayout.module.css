@@ -1,6 +1,6 @@
 .box {
-    margin-top: 45px;
-    margin-bottom: -32px;
+    margin-top: 56px;
+    margin-bottom: -64px;
     position: relative;
     z-index: 2;
 }
@@ -13,6 +13,7 @@
 .desc {
     font-size: 18px;
     line-height: 1.6em;
+    margin-bottom: 0;
 }
 
 .element  {

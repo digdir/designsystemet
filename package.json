@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "docs": "cd designsystem.digdir.no && yarn dev",
-    "docs-build": "cd designsystem.digdir.no && yarn building",
+    "storefront": "yarn workspace storefront dev",
+    "storefront:build": "yarn workspace storefront building",
     "storybook:clean": "start-storybook -p 6006 --no-manager-cache",
     "build": "npx lerna run build",
     "build-react": "cd packages/react && yarn build",

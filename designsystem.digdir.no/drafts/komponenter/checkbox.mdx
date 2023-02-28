@@ -1,0 +1,21 @@
+import {Meta} from "@storybook/addon-docs";
+import {ComponentLayout} from "../../layouts/ComponentLayout/ComponentLayout";
+import {Checkbox} from "@digdir/design-system-react";
+export { getStaticProps } from '../../utils/FileReaderLogic';
+
+<Meta title='Checkbox' />
+
+export default ({ children, menu }) => (
+    <ComponentLayout
+        menu={menu}
+        content={children}
+        status='beta'
+        data={{
+            title: 'Checkbox',
+            description: 'Knapper lar brukere utføre handlinger.',
+            component: Checkbox,
+            argTypes: []
+        }}
+    />
+);
+

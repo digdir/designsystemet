@@ -1,49 +1,56 @@
-import Header from '../../components/Header/Header';
-import React from "react";
-import Section from "../../components/Section/Section";
-import {Container, Row, Col} from "react-bootstrap";
-import NavigationCard from "../../components/NavigationCard/NavigationCard";
-import {Picture, Wrench, System} from "@navikt/ds-icons";
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-import classes from './PageLayout.module.css'
+import Header from '../../components/Header/Header';
+import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
+import {
+  convertQueryToReadable,
+  capitalizeString,
+} from '../../utils/StringHelpers';
+
+import classes from './PageLayout.module.css';
 
 interface PageLayoutProps {
-    Content: React.ReactNode;
+  Content: React.ReactNode;
+  menu: any;
+  data: any;
 }
 
-const PageLayout = ({ Content }: PageLayoutProps) => {
-    return (
-        <div>
-            <Header />
-            <main className={classes.content}>
-                <Container>
-                    <Row>
-                        <Col md={2}>
-                            <div className={classes.list}>
-                                <h3>Styling</h3>
-                                <ul>
-                                    <li><a href="">Design Tokens</a></li>
-                                    <li><a href="">Farger</a></li>
-                                    <li><a href="">Typografi</a></li>
-                                </ul>
-                            </div>
-                            <div className={classes.list}>
-                                <h3>Design</h3>
-                                <ul>
-                                    <li><a href="">Kom i gang i Figma</a></li>
-                                    <li><a href="">Interaksjonsprinsipper</a></li>
-                                    <li><a href="">Mønstre</a></li>
-                                </ul>
-                            </div>
-                        </Col>
-                        <Col md={7} className={classes.test}>
-                            {Content}
-                        </Col>
-                    </Row>
-                </Container>
-            </main>
-        </div>
-    );
+const PageLayout = ({ Content, menu, data }: PageLayoutProps) => {
+  return (
+    <div>
+      <Header />
+      <main className={classes.page}>
+        <Container>
+          <Row className='justify-content-center'>
+            {menu.showMenu && (
+              <Col md={2}>
+                <SidebarMenu
+                  title={capitalizeString(convertQueryToReadable(menu.title))}
+                  items={menu.items}
+                />
+              </Col>
+            )}
+            <Col
+              md={8}
+              className={classes.test}
+            >
+              <div className={classes.header}>
+                <h1 className={classes.title}>{data.title}</h1>
+                {data.date && <div className={classes.date}>{data.date}</div>}
+              </div>
+
+              <Row>
+                <Col md={11}>
+                  <div className={classes.content}>{Content}</div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </main>
+    </div>
+  );
 };
 
-export default PageLayout;
+export { PageLayout };

@@ -1,0 +1,33 @@
+.card {
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    background-color: white;
+    padding: 40px;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3em;
+}
+
+.desc {
+    font-size: 16px;
+    line-height: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0;
+}
+
+.date {
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}

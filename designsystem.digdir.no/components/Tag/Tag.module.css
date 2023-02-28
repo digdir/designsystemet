@@ -5,6 +5,7 @@
     border-radius: 3px;
     font-weight: 500;
     text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .purple {
@@ -13,4 +14,9 @@
 
 .deprecated {
     background-color: var(--color-decprecated);
+}
+
+.large {
+    padding: 5px 11px;
+    font-size: 20px;
 }

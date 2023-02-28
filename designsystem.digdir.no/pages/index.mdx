@@ -1,23 +1,46 @@
 import Meta from '../components/Meta/Meta'
-import {FrontpageLayout, FrontpageData} from "../layouts/FrontpageLayout/FrontpageLayout";
+import {FrontpageLayout} from "../layouts";
 import { Picture, Wrench, SystemFilled } from "@navikt/ds-icons";
-import fs from 'fs';
-import path from 'path';
 
-<Meta title='Framsiden' />
+<Meta
+  title='Velkommen'
+  description='Velkommen til Felles designsystem. Her vil du finne grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester'
+/>
 
-
-export const data = {
-    title: 'Felles Designsystem',
-    description: 'Felles designsystem består av grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester. Etter hvert håper vi at dette kan bli en felles verktøykasse.',
-    navigationCards: {
-        title: 'Kom i gang',
-        items: [
-            {title: 'For designere', color: 'blue', url: '/for-designere', icon: <Picture fontSize={28} />},
-            {title: 'For utviklere', color: 'yellow', url: '/for-utviklere', icon: <Wrench fontSize={28} />},
-            {title: 'Komponenter', color: 'red', url: '/komponenter', icon: <SystemFilled fontSize={25} />},
-        ]
-    }
-};
-
-export default ({ children, articles }) => <FrontpageLayout Content={children} data={data} articles={articles} />;
+export default ({ children }) => <FrontpageLayout Content={children} data={
+{
+  title: 'Felles Designsystem',
+  description: 'Felles designsystem består av grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester. Etter hvert håper vi at dette kan bli en felles verktøykasse der vi samarbeider om å lage det beste grunnlaget for offentlige tjenester.',
+  navigationCards: {
+    title: 'Kom i gang',
+    items: [
+      {
+          title: 'For designere',
+          description: 'Lær hvordan du kan komme i gang med designsystemet som designer.',
+          color: 'blue', url: '/grunnleggende/design/for-designere',
+          icon: <Picture fontSize={28} />
+      },
+      {
+          title: 'For utviklere',
+          description: 'Lær hvordan du kan komme i gang med designsystemet som utvikler',
+          color: 'yellow',
+          url: '/grunnleggende/kode/for-utviklere',
+          icon: <Wrench fontSize={28} />
+      },
+      {
+          title: 'Komponenter',
+          description: 'Se den komplette oversikten over komponentene i react.',
+          color: 'red',
+          url: 'https://digdir.github.io/designsystem',
+         icon: <SystemFilled fontSize={25} />
+      },
+    ]
+  },
+  contributeSection: {
+     title: 'Ønsker du å bidra?',
+     description: 'Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet og med de samme retningslinjene. Vil du høre mer om dette, eller samarbeide med oss?',
+     email: 'designsystem@digdir.no',
+     image: 'img/people-holding-figures.svg'
+  }
+}
+} />;

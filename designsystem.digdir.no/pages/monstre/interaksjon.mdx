@@ -1,0 +1,21 @@
+import Meta from '../../components/Meta/Meta'
+import { PageLayout } from "../../layouts";
+export { getServerSideProps } from '../../utils/menus/PageMenu';
+
+<Meta
+  title='Interaksjon'
+  description='Beskrivelse'
+/>
+
+export default ({ children, menu }) => <PageLayout Content={children} menu={menu} data={
+  {
+    title: 'Interaksjon',
+    date: '25. mars 2023'
+  }
+}/>;
+
+## Heading 2
+asdasd
+
+### Heading 3
+asdasd

@@ -2,16 +2,22 @@ import Head from 'next/head';
 
 interface MetaProps {
   title: string;
+  description: string;
 }
 
-const Meta = ({ title }: MetaProps) => {
-  const t = `${title} | Felles Designsystem`;
+const Meta = ({ title, description }: MetaProps) => {
+  title = `${title} - Felles Designsystem`;
   return (
     <Head>
-      <title>{t}</title>
+      <title>{title}</title>
       <meta
-        name='keywords'
-        content='react native, blog, John Doe, tutorial, react navigation'
+        name='description'
+        content={description}
+      />
+      <meta charSet='utf-8' />
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1'
       />
     </Head>
   );

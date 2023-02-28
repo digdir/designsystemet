@@ -1,0 +1,12 @@
+.footer {
+    padding: 72px 0;
+    background-color: #1E2B3C;
+    color: #ededed;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+.footer img {
+    margin-right: 10px;
+    height: 28px;
+}

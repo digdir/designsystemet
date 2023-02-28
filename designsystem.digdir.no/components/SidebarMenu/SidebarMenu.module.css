@@ -14,9 +14,18 @@
 .link {
     color: inherit;
     text-decoration: none;
-    margin-top: 12px;
+    margin-top: 16px;
     display: block;
     font-size: 16px;
+}
+
+.link:hover {
+    color: #3073d8;
+}
+
+.active {
+    font-weight: 600;
+    color: #3073d8;
 }
 
 .title {

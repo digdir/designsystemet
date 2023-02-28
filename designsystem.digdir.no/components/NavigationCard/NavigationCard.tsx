@@ -9,6 +9,7 @@ interface NavigationCardProps {
   color: 'red' | 'blue' | 'yellow';
   icon: React.ReactNode;
   backgroundColor?: 'white' | 'grey';
+  description: string;
   url?: string;
 }
 
@@ -17,6 +18,7 @@ const NavigationCard = ({
   color = 'red',
   icon,
   backgroundColor = 'white',
+  description,
   url = '/grunnleggende/design-tokens',
 }: NavigationCardProps) => {
   return (
@@ -26,10 +28,7 @@ const NavigationCard = ({
     >
       <div className={cn(classes.iconContainer, classes[color])}>{icon}</div>
       <h3 className={classes.title}>{title}</h3>
-      <div className={classes.desc}>
-        For its there not will times coast at when the outcomes clock
-        intermixing ages, what he lift however rather believed
-      </div>
+      <div className={classes.desc}>{description}</div>
     </Link>
   );
 };
