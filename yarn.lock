@@ -22573,9 +22573,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storefront@workspace:designsystem.digdir.no":
+"storefront@workspace:storefront":
   version: 0.0.0-use.local
-  resolution: "storefront@workspace:designsystem.digdir.no"
+  resolution: "storefront@workspace:storefront"
   dependencies:
     "@altinn/altinn-design-system": ^0.27.2
     "@altinn/figma-design-tokens": ^5.0.0
