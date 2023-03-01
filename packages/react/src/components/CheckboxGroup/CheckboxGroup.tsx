@@ -71,9 +71,11 @@ const CheckboxGroup = ({
 
   const [checkedNames, dispatch] = useReducer(reducer, checkedItems(items));
 
+  const itemsAsString = JSON.stringify(items);
+
   useEffect(
     () => dispatch({ type: 'reset', state: checkedItems(items) }),
-    [items],
+    [itemsAsString, items],
   );
 
   const prevCheckedNames = usePrevious(checkedNames);
