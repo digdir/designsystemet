@@ -20709,18 +20709,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-number-format@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "react-number-format@npm:5.1.2"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^18.0.0
-    react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^18.0.0
-  checksum: 30af5da0866ffbe69c27704eda5b75e4dd5d6e3b2bc5506acff18732e915b10528669101c39da01337fed6003b2951274666f079d54c4f37f65791a8aecdf7f7
-  languageName: node
-  linkType: hard
-
 "react-refresh@npm:^0.11.0":
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
@@ -21676,7 +21664,6 @@ __metadata:
     react: ^18.1.0
     react-dom: ^18.0.0
     react-markdown: ^8.0.5
-    react-number-format: ^5.1.2
     react-syntax-highlighter: ^15.5.0
     react-tippy: ^1.4.0
     remark-gfm: ^3.0.1
@@ -21695,6 +21682,7 @@ __metadata:
     ts-jest: ^29.0.1
     ts-node: ^10.9.1
     tslib: ^2.4.1
+    typescript: ^4.9.5
   languageName: unknown
   linkType: soft
 
@@ -23745,6 +23733,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^4.9.5":
+  version: 4.9.5
+  resolution: "typescript@npm:4.9.5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: ee000bc26848147ad423b581bd250075662a354d84f0e06eb76d3b892328d8d4440b7487b5a83e851b12b255f55d71835b008a66cbf8f255a11e4400159237db
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@4.9.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
   version: 4.9.4
   resolution: "typescript@patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=23ec76"
@@ -23762,6 +23760,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: d7bdcf5e18193f709339540d69577f7b0389000265db2bf10edfaa67336a29d6bcbee11828084150f7fdd110d605794cfa6df33bebc0a2e33daad2dbe2a7a59f
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
+  version: 4.9.5
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 
