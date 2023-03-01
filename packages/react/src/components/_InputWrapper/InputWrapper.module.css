@@ -71,6 +71,7 @@
   border: none;
   box-sizing: border-box;
   font-family: var(--font_family-default);
+  font-size: var(--component-input-font_size-sm);
   outline: none;
   padding: var(--paddingY) var(--paddingX);
   width: 100%;
