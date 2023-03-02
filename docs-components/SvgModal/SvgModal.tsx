@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { X, Download } from 'lucide-react';
+import { Close, Download } from '@navikt/ds-icons';
 import { renderToString } from 'react-dom/server';
 import { Source } from '@storybook/addon-docs';
 
@@ -53,16 +53,16 @@ const SvgModal = ({
                 <button className={classes['svg-modal__svg-btn']}>
                   <Download
                     color='#1E2B3C'
-                    size={25}
-                  />{' '}
+                    scale={3}
+                  />
                   Last ned svg
                 </button>
                 <button
                   onClick={() => onClickHandler()}
                   className={classes['svg-modal__close-btn']}
                 >
-                  <X
-                    size={30}
+                  <Close
+                    scale={3}
                     color='#686868'
                   />
                 </button>

@@ -16524,15 +16524,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.115.0":
-  version: 0.115.0
-  resolution: "lucide-react@npm:0.115.0"
-  peerDependencies:
-    react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: afd02f564be74b60d6c513750bd9758a61de57264ca01be14756bcbfb3c8d3146c8b05d0cf1d5d104e8561afb8f70bc53e2d501c91e50e3394ef258ee08a6ae9
-  languageName: node
-  linkType: hard
-
 "lz-string@npm:^1.4.4":
   version: 1.4.4
   resolution: "lz-string@npm:1.4.4"
@@ -22520,7 +22511,6 @@ __metadata:
     eslint: 8.30.0
     eslint-config-next: 13.0.7
     gray-matter: ^4.0.3
-    lucide-react: ^0.115.0
     moment: ^2.29.4
     next: 13.0.7
     normalize.css: ^8.0.1
