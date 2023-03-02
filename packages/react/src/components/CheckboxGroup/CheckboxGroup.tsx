@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useReducer } from 'react';
+import React, { ReactNode, useReducer } from 'react';
 import cn from 'classnames';
 
 import { Checkbox } from '../Checkbox';
@@ -71,9 +71,11 @@ const CheckboxGroup = ({
 
   const [checkedNames, dispatch] = useReducer(reducer, checkedItems(items));
 
-  useEffect(
+  const itemsAsString = JSON.stringify(items);
+
+  useUpdate(
     () => dispatch({ type: 'reset', state: checkedItems(items) }),
-    [items],
+    [itemsAsString],
   );
 
   const prevCheckedNames = usePrevious(checkedNames);

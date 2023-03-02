@@ -2,7 +2,7 @@ import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { CheckboxGroup } from './';
+import { CheckboxGroup, CheckboxGroupItem } from './';
 
 import type { CheckboxGroupProps } from './';
 
@@ -83,15 +83,15 @@ describe('CheckboxGroup', () => {
   });
 
   it('Checkboxes should update their "checked" state if the component rerenders with another configuration', () => {
-    const { rerender } = render();
-    rerender(
-      <CheckboxGroup
-        items={[
-          { checked: true, label: 'Test 1', name: 'test1' },
-          { checked: false, label: 'Test 2', name: 'test2' },
-        ]}
-      />,
-    );
+    const items: CheckboxGroupItem[] = [
+      { label: 'Test 1', name: 'test1' },
+      { label: 'Test 2', name: 'test2' },
+    ];
+    const { rerender } = render({ items });
+    items[0] = { checked: true, label: 'Test 1', name: 'test1' };
+    items[1] = { checked: false, label: 'Test 2', name: 'test2' };
+    rerender(<CheckboxGroup items={items} />);
+
     const checkboxes = screen.queryAllByRole('checkbox');
     expect(checkboxes[0]).toBeChecked();
     expect(checkboxes[1]).not.toBeChecked();
