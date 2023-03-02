@@ -1,31 +1,28 @@
-import React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import React, { cloneElement } from 'react';
 import { X, Download } from 'lucide-react';
-import ReactDOMServer from 'react-dom/server';
-
-import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
+import { renderToString } from 'react-dom/server';
+import { Source } from '@storybook/addon-docs';
 
 import classes from './SvgModal.module.css';
 
 interface SvgModalProps {
-  Icon: React.ReactNode;
+  icon: React.ReactElement;
   name: string;
   showModal: boolean;
-  closeModal: any;
+  closeModal: () => void;
   packageName: string;
   newIcon: boolean;
 }
 
 const SvgModal = ({
-  Icon,
+  icon,
   name,
   showModal = false,
   closeModal,
   packageName,
   newIcon,
 }: SvgModalProps) => {
-  const icon = <Icon />;
+  const Icon = cloneElement(icon, { height: 160, width: 160 });
 
   const onClickHandler = () => {
     closeModal();
@@ -35,11 +32,12 @@ const SvgModal = ({
     <>
       {showModal && (
         <div className={classes['svg-modal']}>
-          <div
-            role='button'
+          <button
             onClick={() => onClickHandler()}
             className={classes['svg-modal__opacity']}
-          ></div>
+          >
+            close
+          </button>
 
           <div className={classes['svg-modal__box']}>
             <div className={classes['svg-modal__header']}>
@@ -71,30 +69,25 @@ const SvgModal = ({
               </div>
             </div>
             <div className={classes['svg-modal__content']}>
-              <div className={classes['svg-modal__content-left']}>
-                <Icon
-                  height={160}
-                  width={160}
-                />
-              </div>
+              <div className={classes['svg-modal__content-left']}>{Icon}</div>
               <div className={classes['svg-modal__content-right']}>
                 <h3>React og SVG import</h3>
-                <CodeSnippet
+                <Source
                   language='javascript'
-                  children={`
+                  code={`
 import { ${name} }  from '${packageName}';
               `}
                 />
-                <CodeSnippet
+                <Source
                   language='javascript'
-                  children={`
+                  code={`
 import ${name} from '${packageName}/svg/${name}.svg';
               `}
                 />
                 <h3 className={classes['svg-modal__svg-title']}>SVG</h3>
-                <CodeSnippet
+                <Source
                   language='plain'
-                  children={ReactDOMServer.renderToString(icon)}
+                  code={renderToString(icon)}
                 />
               </div>
             </div>
