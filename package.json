@@ -87,7 +87,9 @@
     "prettier": "^2.7.1",
     "react": "^18.1.0",
     "react-dom": "^18.0.0",
+    "react-markdown": "^8.0.5",
     "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^3.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.79.0",
     "rollup-plugin-dts": "^4.2.2",
@@ -103,11 +105,5 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {
-    "react-markdown": "^8.0.5",
-    "react-tippy": "^1.4.0",
-    "remark-gfm": "^3.0.1",
-    "svgo": "^3.0.2"
   }
 }

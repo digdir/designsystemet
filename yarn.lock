@@ -1967,6 +1967,7 @@ __metadata:
   dependencies:
     camelcase: ^7.0.1
     date-fns: ^2.29.3
+    svgo: ^3.0.2
   languageName: unknown
   linkType: soft
 
@@ -19497,13 +19498,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"popper.js@npm:^1.11.1":
-  version: 1.16.1
-  resolution: "popper.js@npm:1.16.1"
-  checksum: c56ae5001ec50a77ee297a8061a0221d99d25c7348d2e6bcd3e45a0d0f32a1fd81bca29d46cb0d4bdf13efb77685bd6a0ce93f9eb3c608311a461f945fffedbe
-  languageName: node
-  linkType: hard
-
 "posix-character-classes@npm:^0.1.0":
   version: 0.1.1
   resolution: "posix-character-classes@npm:0.1.1"
@@ -20783,15 +20777,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-tippy@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "react-tippy@npm:1.4.0"
-  dependencies:
-    popper.js: ^1.11.1
-  checksum: cbe3863ed896601a8dfd8068fb3220e8ffc95b83f63b13c19d1a46fe04e485043f9d2c52f6fcc85d55ab4616ff30e04e1952be8b30f8c70cd75dca68ee6f85ca
-  languageName: node
-  linkType: hard
-
 "react-transition-group@npm:^4.4.2":
   version: 4.4.5
   resolution: "react-transition-group@npm:4.4.5"
@@ -21665,7 +21650,6 @@ __metadata:
     react-dom: ^18.0.0
     react-markdown: ^8.0.5
     react-syntax-highlighter: ^15.5.0
-    react-tippy: ^1.4.0
     remark-gfm: ^3.0.1
     rimraf: ^3.0.2
     rollup: ^2.79.0
@@ -21677,7 +21661,6 @@ __metadata:
     sass-loader: ^13.0.2
     storybook-addon-designs: ^6.3.1
     storybook-css-modules: ^1.0.8
-    svgo: ^3.0.2
     terser: ^5.16.0
     ts-jest: ^29.0.1
     ts-node: ^10.9.1

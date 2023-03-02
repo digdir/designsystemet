@@ -22,8 +22,11 @@
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
     "build": "yarn clean && yarn optimize && node build.js && rimraf ./optimized "
   },
-  "dependencies": {
+  "devDependencies": {
     "camelcase": "^7.0.1",
+    "svgo": "^3.0.2"
+  },
+  "dependencies": {
     "date-fns": "^2.29.3"
   }
 }
