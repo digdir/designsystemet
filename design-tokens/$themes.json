@@ -6,8 +6,7 @@
       "Base/Core": "source",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Tilsynet": "enabled",
-      "Brand/Digdir": "disabled"
+      "Brand/Tilsynet": "enabled"
     },
     "$figmaStyleReferences": {}
   },
@@ -20,7 +19,39 @@
       "Base/Semantic": "enabled",
       "Brand/Digdir": "enabled"
     },
-    "$figmaStyleReferences": {}
+    "$figmaStyleReferences": {
+      "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
+      "heading.(800) 36px": "S:be27fce85eeac8fbbb6c389903939856002e06e5,",
+      "heading.(700) 28px": "S:915be58f63bfd0fdaf1edf383160cfe51c0db5f9,",
+      "heading.(600) 24px": "S:bfccc85e677a2fa0b75028ac1cf2a25b476ddfa9,",
+      "heading.(500) 20px": "S:9cafcba08df7d88ccf405fe445d00de90579bb0a,",
+      "ingress.(600) 24px": "S:87209738ffb1c881c83fbd86c663155e7dd6c7a9,",
+      "ingress.(500) 20px": "S:1978c05f714dd29e3dbebe615f9686a1e9b9d2bc,",
+      "body.(400) 18px": "S:744562b7ecb70d12f4a54699393d23ea6b38cc78,",
+      "body.(300) 16px": "S:cfb62270257dbd1df9e003f1722e43254a50f093,",
+      "label.(400) 18px": "S:e7a9b03c72019278c16078a63e4dcdafb4e4fdb0,",
+      "label.(300) 16px": "S:5b262ee96a80d18ad313a450d78b38088eaae06f,",
+      "error_message.(400) 18px": "S:1b6a4185e508d29b407555000217e89c84262718,",
+      "error_message.(300) 16px": "S:3733a293bd3d11442a40003620668fb92d9d21e1,",
+      "detail.(200) 14px": "S:302d2ee37a3b91ebccb39086412c3ef22af62582,",
+      "detail.(100) 12px": "S:2643dea73b1a15ecd855f83c1681aed11c864331,",
+      "detail.(000) 10px": "S:d1222696bfe2f1bc1946b4d51cd862ce0e0072e4,",
+      "heading.heading-large": "S:d0a93cb9f3e7fa4a66c471f9006d9a1f2656293f,",
+      "heading.heading-medium": "S:36aff0588dbe5f14e6a7360e2a5f4f635bd08ad9,",
+      "heading.heading-small": "S:e56a2abb03777621687c12db3cfff15d51bdcca4,",
+      "heading.heading-xsmall": "S:cb75297d1f1f8a4a13c50e58b247f760c2ed9ba1,",
+      "ingress.ingress-large": "S:3831249684aad80fa17f80823fd72ebadc3a6ac6,",
+      "ingress.ingress-medium": "S:658b725b8636d5f0d5dca61522985d5ce3d92542,",
+      "body.body-medium": "S:afacabb65e4f5acf52cb623548d43bfb90a5962b,",
+      "body.body-small": "S:118d72ec97aa172676dcfaeb0f110819b839684e,",
+      "label.label-medium": "S:c4e357ef75d801973d16d9a482849ea7a69a801a,",
+      "label.label-small": "S:59a47fb5b3cdc2b9903a96bedfa3e9e08ee39fdd,",
+      "error_message.error-medium": "S:d87a49ce63849ec09c1b7e51841f7287705e8400,",
+      "error_message.error-small": "S:19b164c1cbbf76199f05199f28e3fb15a6406ea2,",
+      "detail.detail-medium": "S:3cbf7a96c212270e0e6a51a8b5ec6c3abada59ee,",
+      "detail.detail-small": "S:4d41541125a8715d11b4691376424fe19b70c404,",
+      "detail.detail-xsmall": "S:1d6c753539020ca6f978df37a192c9ef888a1405,"
+    }
   },
   {
     "id": "3fd3116514764af5cf244506c98e3944ca9f5e93",
