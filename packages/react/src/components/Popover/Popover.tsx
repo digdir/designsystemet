@@ -201,7 +201,7 @@ const PopoverContent = forwardRef<
       )}
       {...context.getFloatingProps(props)}
       tabIndex={-1}
-      role={'dialog'}
+      role={context.role || 'dialog'}
     >
       {props.children}
     </div>

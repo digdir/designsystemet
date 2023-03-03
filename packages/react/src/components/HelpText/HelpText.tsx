@@ -49,6 +49,7 @@ const HelpText = ({
       open={open}
       onOpenChange={setOpen}
       className={classes.helpTextContent}
+      role={'tooltip'}
       trigger={
         <button
           {...rest}
