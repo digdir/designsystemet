@@ -17,11 +17,13 @@ describe('TextField', () => {
       await user.click(element);
       await user.paste(data);
       expect(onPaste).toHaveBeenCalledTimes(1);
-      expect(onPaste).toHaveBeenCalledWith(expect.objectContaining({
-        clipboardData: expect.objectContaining({
-          items: [expect.objectContaining({ data })]
-        })
-      }));
+      expect(onPaste).toHaveBeenCalledWith(
+        expect.objectContaining({
+          clipboardData: expect.objectContaining({
+            items: [expect.objectContaining({ data })],
+          }),
+        }),
+      );
     });
 
     it('Triggers onBlur event when field loses focus', async () => {
@@ -78,11 +80,13 @@ describe('TextField', () => {
       await user.click(element);
       await user.paste(data);
       expect(onPaste).toHaveBeenCalledTimes(1);
-      expect(onPaste).toHaveBeenCalledWith(expect.objectContaining({
-        clipboardData: expect.objectContaining({
-          items: [expect.objectContaining({ data })]
-        })
-      }));
+      expect(onPaste).toHaveBeenCalledWith(
+        expect.objectContaining({
+          clipboardData: expect.objectContaining({
+            items: [expect.objectContaining({ data })],
+          }),
+        }),
+      );
     });
 
     it('Renders as a NumberFormat element if format.number is specified', () => {
@@ -102,11 +106,9 @@ describe('TextField', () => {
 
     it('Should trigger onChange for every keystroke, and the event value should not contain formatting', async () => {
       let lastValue;
-      const onChange = jest.fn(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-          lastValue = event.target.value;
-        },
-      );
+      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+        lastValue = event.target.value;
+      });
       render({
         onChange,
         formatting: { number: { prefix: '$', thousandSeparator: ' ' } },
@@ -142,11 +144,9 @@ describe('TextField', () => {
 
     it('Handles backspace', async () => {
       let lastValue;
-      const onChange = jest.fn(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-          lastValue = event.target.value;
-        },
-      );
+      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+        lastValue = event.target.value;
+      });
       render({
         onChange,
         value: '123',
@@ -167,11 +167,9 @@ describe('TextField', () => {
 
     it('Handles negative numbers', async () => {
       let lastValue;
-      const onChange = jest.fn(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-          lastValue = event.target.value;
-        },
-      );
+      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+        lastValue = event.target.value;
+      });
       render({
         onChange,
         value: '',
@@ -192,11 +190,9 @@ describe('TextField', () => {
 
     it('Handles "-" in prefix', async () => {
       let lastValue;
-      const onChange = jest.fn(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-          lastValue = event.target.value;
-        },
-      );
+      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+        lastValue = event.target.value;
+      });
       render({
         onChange,
         value: '',
@@ -212,11 +208,9 @@ describe('TextField', () => {
 
     it('Handles zeros in suffix (v4 & v5 bug)', async () => {
       let lastValue;
-      const onChange = jest.fn(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-          lastValue = event.target.value;
-        },
-      );
+      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+        lastValue = event.target.value;
+      });
       render({
         onChange,
         value: '123',

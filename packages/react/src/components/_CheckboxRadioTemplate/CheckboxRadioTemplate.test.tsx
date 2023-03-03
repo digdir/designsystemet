@@ -4,10 +4,7 @@ import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CheckboxRadioTemplateProps } from './';
-import {
-  CheckboxRadioTemplate,
-  CheckboxRadioTemplateSize,
-} from './';
+import { CheckboxRadioTemplate, CheckboxRadioTemplateSize } from './';
 
 // Test data:
 const visibleBoxTestId = 'visible-box-test';

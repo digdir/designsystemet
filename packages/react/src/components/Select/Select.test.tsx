@@ -18,7 +18,9 @@ const singleSelectOptions: SingleSelectOption[] = [
   { label: 'Test 3', value: 'test3' },
 ];
 
-const multiSelectOptions: Required<Omit<MultiSelectOption, 'keywords' | 'formattedLabel'>>[] = [
+const multiSelectOptions: Required<
+  Omit<MultiSelectOption, 'keywords' | 'formattedLabel'>
+>[] = [
   { label: 'Test 1', value: 'test1', deleteButtonLabel: 'Delete test 1' },
   { label: 'Test 2', value: 'test2', deleteButtonLabel: 'Delete test 2' },
   { label: 'Test 3', value: 'test3', deleteButtonLabel: 'Delete test 3' },
@@ -40,14 +42,16 @@ const sortedOptions: SingleSelectOption[] = [
 ];
 const optionSearch = jest.fn((_o, _k) => sortedOptions);
 jest.mock('./utils', () => ({
-  optionSearch: (options: SingleSelectOption[] | MultiSelectOption[], keyword: string) => optionSearch(options, keyword),
+  optionSearch: (
+    options: SingleSelectOption[] | MultiSelectOption[],
+    keyword: string,
+  ) => optionSearch(options, keyword),
 }));
 
 describe('Select', () => {
   afterEach(jest.clearAllMocks);
 
   describe('Single select', () => {
-
     it('Renders a select box', () => {
       renderSingleSelect();
       expect(getCombobox()).toBeTruthy();
@@ -228,10 +232,15 @@ describe('Select', () => {
 
     it('Rerenders with new selected value when the "value" property changes', async () => {
       const selectedValue = singleSelectOptions[0].value;
-      const newValueIndex = 2
+      const newValueIndex = 2;
       const newValue = singleSelectOptions[newValueIndex].value;
       const { rerender } = renderSingleSelect({ value: selectedValue });
-      rerender(<Select {...defaultSingleSelectProps} value={newValue} />);
+      rerender(
+        <Select
+          {...defaultSingleSelectProps}
+          value={newValue}
+        />,
+      );
       expectSelectedValue(singleSelectOptions[newValueIndex]);
     });
 
@@ -264,10 +273,13 @@ describe('Select', () => {
       const selectedOption = singleSelectOptions[selectedOptionIndex];
       renderSingleSelect({ value: selectedOption.value });
       await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      expect(screen.queryByText(
-        (content, element) => element?.tagName.toLowerCase() === 'span'
-          && content === selectedOption.label
-      )).toBeFalsy();
+      expect(
+        screen.queryByText(
+          (content, element) =>
+            element?.tagName.toLowerCase() === 'span' &&
+            content === selectedOption.label,
+        ),
+      ).toBeFalsy();
     });
 
     it('Calls optionSearch function when user types in the search field', async () => {
@@ -280,7 +292,9 @@ describe('Select', () => {
     it('Sorts options and selects the first when user types in the search field', async () => {
       renderSingleSelect();
       await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      expect(screen.getAllByRole('option')[0]).toHaveValue(sortedOptions[0].value);
+      expect(screen.getAllByRole('option')[0]).toHaveValue(
+        sortedOptions[0].value,
+      );
       expect(getCombobox()).toHaveValue(sortedOptions[0].value);
     });
 
@@ -289,11 +303,13 @@ describe('Select', () => {
       await act(() => user.type(screen.getByRole('textbox'), 'a'));
       await act(() => user.keyboard('{ArrowDown}'));
       expect(screen.getByRole('textbox')).toHaveValue('');
-      expect(screen.getAllByRole('option')[0]).toHaveValue(sortedOptions[0].value);
+      expect(screen.getAllByRole('option')[0]).toHaveValue(
+        sortedOptions[0].value,
+      );
     });
 
     it('Does not reset keyword while user is writing', async () => {
-      renderSingleSelect()
+      renderSingleSelect();
       const keyword = 'abc';
       await act(() => user.type(screen.getByRole('textbox'), keyword));
       expect(screen.getByRole('textbox')).toHaveValue(keyword);
@@ -301,10 +317,13 @@ describe('Select', () => {
 
     const expectSelectedValue = (option: SingleSelectOption) => {
       expect(getCombobox()).toHaveValue(option.value);
-      expect(screen.getByText(
-        (content, element) => element?.tagName.toLowerCase() === 'span'
-          && content === option.label
-      )).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          (content, element) =>
+            element?.tagName.toLowerCase() === 'span' &&
+            content === option.label,
+        ),
+      ).toBeInTheDocument();
     };
   });
 
@@ -622,7 +641,12 @@ describe('Select', () => {
       const newValueIndices = [1, 2];
       const newValues = newValueIndices.map((i) => multiSelectOptions[i].value);
       const { rerender } = renderMultiSelect({ value: selectedValues });
-      rerender(<Select {...defaultMultiSelectProps} value={newValues} />);
+      rerender(
+        <Select
+          {...defaultMultiSelectProps}
+          value={newValues}
+        />,
+      );
       expectSelectedValues(newValues);
       expectSelectedOptions((i) => newValueIndices.includes(i));
     });
@@ -662,7 +686,9 @@ describe('Select', () => {
     it('Sorts options and focuses on the first when user types in the search field', async () => {
       const { container } = renderMultiSelect();
       await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      expect(screen.getAllByRole('option')[0]).toHaveValue(sortedOptions[0].value);
+      expect(screen.getAllByRole('option')[0]).toHaveValue(
+        sortedOptions[0].value,
+      );
       expectFocusedOption(container, sortedOptions[0]);
     });
 
@@ -671,7 +697,9 @@ describe('Select', () => {
       await act(() => user.type(screen.getByRole('textbox'), 'a'));
       await act(() => user.keyboard('{Enter}'));
       expect(screen.getByRole('textbox')).toHaveValue('');
-      expect(screen.getAllByRole('option')[0]).toHaveValue(sortedOptions[0].value);
+      expect(screen.getAllByRole('option')[0]).toHaveValue(
+        sortedOptions[0].value,
+      );
     });
 
     it('Does not reset keyword while user is writing', async () => {

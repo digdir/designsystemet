@@ -1,7 +1,10 @@
-import {compareMatch, compareMatchingCharsInOrder, compareNumberOfMatchingChars} from "./compareFunctions";
+import {
+  compareMatch,
+  compareMatchingCharsInOrder,
+  compareNumberOfMatchingChars,
+} from './compareFunctions';
 
 describe('compareFunctions', () => {
-
   describe('compareMatchingCharsInOrder', () => {
     const compare = compareMatchingCharsInOrder('abc');
 
@@ -54,23 +57,23 @@ describe('compareFunctions', () => {
     const compare = compareNumberOfMatchingChars('abc');
 
     it('Returns 0 if none of the strings match', () => {
-        expect(compare('def', 'ghi')).toBe(0);
-        expect(compare('Lorem', 'ipsum')).toBe(0);
+      expect(compare('def', 'ghi')).toBe(0);
+      expect(compare('Lorem', 'ipsum')).toBe(0);
     });
 
     it('Returns a negative number if A matches more chars than B', () => {
-        expect(compare('abcde', 'fgh')).toBeLessThan(0);
-        expect(compare('cb', 'ade')).toBeLessThan(0);
+      expect(compare('abcde', 'fgh')).toBeLessThan(0);
+      expect(compare('cb', 'ade')).toBeLessThan(0);
     });
 
     it('Returns a positive number if B matches more chars than A', () => {
-        expect(compare('fgh', 'abcde')).toBeGreaterThan(0);
-        expect(compare('ade', 'cb')).toBeGreaterThan(0);
+      expect(compare('fgh', 'abcde')).toBeGreaterThan(0);
+      expect(compare('ade', 'cb')).toBeGreaterThan(0);
     });
 
     it('Returns 0 if A and B match the same number of chars', () => {
-        expect(compare('abcde', 'edcba')).toBe(0);
-        expect(compare('Lorem abc', 'ipsum cab')).toBe(0);
+      expect(compare('abcde', 'edcba')).toBe(0);
+      expect(compare('Lorem abc', 'ipsum cab')).toBe(0);
     });
   });
 
@@ -91,9 +94,12 @@ describe('compareFunctions', () => {
       ['abc', 'abc', 'abc'],
       ['abcd', 'abce', 'abc'],
       ['-a-b-c-', '.a.b.c.', 'abc'],
-    ])('Treats "%s" and "%s" as equivalent when search string is "%s"', (a, b, search) => {
-      const compare = compareMatch(search);
-      expect(compare(a, b)).toBe(0);
-    });
+    ])(
+      'Treats "%s" and "%s" as equivalent when search string is "%s"',
+      (a, b, search) => {
+        const compare = compareMatch(search);
+        expect(compare(a, b)).toBe(0);
+      },
+    );
   });
 });

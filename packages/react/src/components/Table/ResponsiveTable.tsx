@@ -1,12 +1,10 @@
 import React from 'react';
-
-import { useMediaQuery } from '../../hooks';
 import * as tokens from '@altinn/figma-design-tokens';
 
+import { useMediaQuery } from '../../hooks';
 import { RadioButton } from '../RadioButton';
 
-import type { SortProps } from './utils';
-import { SortDirection } from './utils';
+import type { SortProps, SortDirection } from './utils';
 import { Table } from './Table';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
@@ -172,8 +170,8 @@ function LaptopTable<T>({ config }: ResponsiveTableProps<T>) {
                   ? columnSort.currentlySortedColumn === column
                     ? columnSort.currentDirection
                     : columnSort.sortable.includes(column)
-                      ? 'notActive'
-                      : 'notSortable'
+                    ? 'notActive'
+                    : 'notSortable'
                   : 'notSortable'
               }
             >

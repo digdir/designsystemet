@@ -7,7 +7,7 @@ export const indicesOf = (char: string, data: string): number[] => {
     if (data[i] === char) indices.push(i);
   }
   return indices;
-}
+};
 
 /**
  * Find the number characters that two strings have in common.
@@ -29,20 +29,20 @@ export const numberOfMatchingChars = (a: string, b: string) => {
     }
   }
   return matchingIndices.size;
-}
+};
 
 /**
  * Returns true if all characters in the search parameter are found in the data parameter in the same order.
  */
 export const containsAllCharsInOrder = (search: string, data: string) => {
-    const searchLower = search.toLowerCase();
-    const dataLower = data.toLowerCase();
-    let searchIndex = 0;
-    for (let i = 0; i < dataLower.length; i++) {
-      if (dataLower[i] === searchLower[searchIndex]) {
-        searchIndex++;
-        if (searchIndex === searchLower.length) return true;
-      }
+  const searchLower = search.toLowerCase();
+  const dataLower = data.toLowerCase();
+  let searchIndex = 0;
+  for (let i = 0; i < dataLower.length; i++) {
+    if (dataLower[i] === searchLower[searchIndex]) {
+      searchIndex++;
+      if (searchIndex === searchLower.length) return true;
     }
-    return false;
-}
+  }
+  return false;
+};

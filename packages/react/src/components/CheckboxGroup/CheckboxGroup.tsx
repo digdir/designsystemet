@@ -1,11 +1,11 @@
-import React, { ReactNode, useReducer } from 'react';
+import type { ReactNode } from 'react';
+import React, { useReducer } from 'react';
 import cn from 'classnames';
 
 import { Checkbox } from '../Checkbox';
 import { FieldSet, FieldSetSize } from '../FieldSet';
 import { areItemsUnique, arraysEqual } from '../../utils/arrayUtils';
 import { usePrevious, useUpdate } from '../../hooks';
-
 import type { CheckboxProps } from '../Checkbox';
 
 import classes from './CheckboxGroup.module.css';

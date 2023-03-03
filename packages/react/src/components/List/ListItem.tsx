@@ -6,8 +6,6 @@ export interface ListItemProps {
   children?: React.ReactNode;
 }
 
-export const ListItem = ({ children }: ListItemProps) =>  (
-  <li className={classes.listItem}>
-    {children}
-  </li>
+export const ListItem = ({ children }: ListItemProps) => (
+  <li className={classes.listItem}>{children}</li>
 );

@@ -1,5 +1,5 @@
-import {SingleSelectOption} from "./Select";
-import {optionSearch} from "./utils";
+import type { SingleSelectOption } from './Select';
+import { optionSearch } from './utils';
 
 describe('Select utils', () => {
   describe('optionSearch', () => {

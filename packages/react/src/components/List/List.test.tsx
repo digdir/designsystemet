@@ -1,10 +1,9 @@
 import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps } from './List';
+import type { ListProps, ListBorderStyle } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
-import type { ListBorderStyle } from "./List";
 
 const render = (props: Partial<ListProps> = {}) => {
   const allProps: ListProps = {
@@ -26,7 +25,7 @@ describe('List', () => {
       const list = screen.getByRole('list');
       expect(list).toHaveClass('solid');
       expect(list).not.toHaveClass('dashed');
-    }
+    },
   );
 
   it('Renders a list with dashed border when "borderStyle" is dashed', () => {

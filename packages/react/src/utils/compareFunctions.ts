@@ -4,7 +4,7 @@
  * a negative number if the first parameter should be sorted before the second, or 0 if there is no preference.
  */
 
-import {containsAllCharsInOrder, numberOfMatchingChars} from "./stringUtils";
+import { containsAllCharsInOrder, numberOfMatchingChars } from './stringUtils';
 
 export type CompareFunction<T> = (a: T, b: T) => number;
 export type SearchCompareFunction = (search: string) => CompareFunction<string>;
@@ -47,9 +47,8 @@ export const compareNumberOfMatchingChars: SearchCompareFunction =
  *    If those are the same, sort by the index of the second match, and so on.
  * 2. Sort by the number of matching characters.
  */
-export const compareMatch: SearchCompareFunction =
-  (search) => (a, b) => {
-    const comparedInOrder: number = compareMatchingCharsInOrder(search)(a, b);
-    if (comparedInOrder !== 0) return comparedInOrder;
-    return compareNumberOfMatchingChars(search)(a, b);
-  }
+export const compareMatch: SearchCompareFunction = (search) => (a, b) => {
+  const comparedInOrder: number = compareMatchingCharsInOrder(search)(a, b);
+  if (comparedInOrder !== 0) return comparedInOrder;
+  return compareNumberOfMatchingChars(search)(a, b);
+};

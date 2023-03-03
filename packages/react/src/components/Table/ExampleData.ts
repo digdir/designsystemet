@@ -35,7 +35,8 @@ export const exampleRows: ExampleTableData[] = [
   },
   {
     caseNum: 20220582,
-    product: 'Modul for handikaprampe, bunnramme til modul for handikaprampe, rekkverk til modul for handikaprampe',
+    product:
+      'Modul for handikaprampe, bunnramme til modul for handikaprampe, rekkverk til modul for handikaprampe',
     status: 'Registrert',
     image: {
       src: 'https://search.patentstyret.no/onlinedb_files_ds/Pictures/2022/6/20/313066.jpg',

@@ -3,8 +3,8 @@ import React from 'react';
 import cn from 'classnames';
 
 import classes from './TableCell.module.css';
-import type { SortHandler } from './utils';
-import { useTableRowTypeContext, Variant, SortDirection } from './utils';
+import type { SortHandler, Variant, SortDirection } from './utils';
+import { useTableRowTypeContext } from './utils';
 import { SortIcon } from './SortIcon';
 
 export interface TableCellProps
@@ -54,13 +54,17 @@ export function TableCell({
         <th
           {...tableCellProps}
           className={cn(
-            radiobutton ? classes.headerTableCellRadiobutton : classes.headerTableCell,
-            className
+            radiobutton
+              ? classes.headerTableCellRadiobutton
+              : classes.headerTableCell,
+            className,
           )}
           aria-sort={
             sortDirection === 'asc'
               ? 'ascending'
-              : sortDirection === 'desc' ? 'descending' : 'none'
+              : sortDirection === 'desc'
+              ? 'descending'
+              : 'none'
           }
         >
           <div
@@ -96,8 +100,10 @@ export function TableCell({
         <td
           {...tableCellProps}
           className={cn(
-            radiobutton ? classes.bodyTableCellRadiobutton : classes.bodyTableCell,
-            className
+            radiobutton
+              ? classes.bodyTableCellRadiobutton
+              : classes.bodyTableCell,
+            className,
           )}
         >
           <div className={radiobutton ? classes.radioButton : classes.input}>

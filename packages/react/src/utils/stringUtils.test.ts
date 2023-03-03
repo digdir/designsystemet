@@ -1,7 +1,10 @@
-import {containsAllCharsInOrder, indicesOf, numberOfMatchingChars} from "./stringUtils";
+import {
+  containsAllCharsInOrder,
+  indicesOf,
+  numberOfMatchingChars,
+} from './stringUtils';
 
 describe('stringUtils', () => {
-
   describe('indicesOf', () => {
     it('Returns indices of given char in given string', () => {
       expect(indicesOf('a', 'abc')).toEqual([0]);
@@ -16,9 +19,8 @@ describe('stringUtils', () => {
   });
 
   describe('numberOfMatchingChars', () => {
-
     it('Returns 0 if strings are empty', () => {
-        expect(numberOfMatchingChars('', '')).toBe(0);
+      expect(numberOfMatchingChars('', '')).toBe(0);
     });
 
     it('Returns 0 if one of the strings is empty', () => {
@@ -27,10 +29,10 @@ describe('stringUtils', () => {
     });
 
     it('Returns length of string when strings are equal', () => {
-      const testString1 = 'abc';
-      const testString2 = 'Lorem ipsum';
-      expect(numberOfMatchingChars(testString1, testString1)).toBe(testString1.length);
-      expect(numberOfMatchingChars(testString2, testString2)).toBe(testString2.length);
+      const testStr1 = 'abc';
+      const testStr2 = 'Lorem ipsum';
+      expect(numberOfMatchingChars(testStr1, testStr1)).toBe(testStr1.length);
+      expect(numberOfMatchingChars(testStr2, testStr2)).toBe(testStr2.length);
     });
 
     it('Returns length of string when all characters match', () => {
@@ -71,7 +73,6 @@ describe('stringUtils', () => {
   });
 
   describe('containsAllCharsInOrder', () => {
-
     it('Returns true if the parameters are equal', () => {
       expect(containsAllCharsInOrder('abc', 'abc')).toBe(true);
       expect(containsAllCharsInOrder('Lorem ipsum', 'Lorem ipsum')).toBe(true);
@@ -79,8 +80,12 @@ describe('stringUtils', () => {
 
     it('Returns true if all characters in the first parameter are found in the second parameter in the same order', () => {
       expect(containsAllCharsInOrder('ac', 'abc')).toBe(true);
-      expect(containsAllCharsInOrder('ipsum sit', 'Lorem ipsum dolor sit amet')).toBe(true);
-      expect(containsAllCharsInOrder('Lipsum', 'Lorem ipsum dolor sit amet')).toBe(true);
+      expect(
+        containsAllCharsInOrder('ipsum sit', 'Lorem ipsum dolor sit amet'),
+      ).toBe(true);
+      expect(
+        containsAllCharsInOrder('Lipsum', 'Lorem ipsum dolor sit amet'),
+      ).toBe(true);
     });
 
     it('Returns false if there is no match', () => {
