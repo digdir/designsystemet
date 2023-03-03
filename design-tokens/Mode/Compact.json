@@ -1,5 +1,5 @@
 {
-  "max-value": {
+  "max_value": {
     "heading": {
       "xlarge": {
         "value": {
@@ -237,7 +237,7 @@
       }
     }
   },
-  "min-value": {
+  "min_value": {
     "heading": {
       "xlarge": {
         "value": {
