@@ -285,12 +285,6 @@
       }
     }
   },
-  "fontFamilies": {
-    "inter": {
-      "value": "Inter",
-      "type": "fontFamilies"
-    }
-  },
   "letterSpacing": {
     "0": {
       "value": "0",
@@ -325,74 +319,80 @@
       "type": "dimension"
     }
   },
+  "fontFamilies": {
+    "inter": {
+      "value": "Inter",
+      "type": "fontFamilies"
+    }
+  },
+  "fontSize": {
+    "0": {
+      "value": "10",
+      "type": "fontSizes"
+    },
+    "1": {
+      "value": "12",
+      "type": "fontSizes"
+    },
+    "2": {
+      "value": "14",
+      "type": "fontSizes"
+    },
+    "3": {
+      "value": "16",
+      "type": "fontSizes"
+    },
+    "4": {
+      "value": "18",
+      "type": "fontSizes"
+    },
+    "5": {
+      "value": "20",
+      "type": "fontSizes"
+    },
+    "6": {
+      "value": "24",
+      "type": "fontSizes"
+    },
+    "7": {
+      "value": "28",
+      "type": "fontSizes"
+    },
+    "8": {
+      "value": "36",
+      "type": "fontSizes"
+    },
+    "9": {
+      "value": "44",
+      "type": "fontSizes"
+    }
+  },
   "lineHeights": {
-    "300": {
+    "0": {
       "value": "130%",
       "type": "lineHeights"
     },
-    "500": {
-      "value": "150%",
+    "1": {
+      "value": "170%",
       "type": "lineHeights"
     },
-    "600": {
+    "2": {
       "value": "160%",
       "type": "lineHeights"
     },
-    "700": {
-      "value": "170%",
+    "3": {
+      "value": "150%",
       "type": "lineHeights"
     }
   },
   "fontWeights": {
-    "medium": {
+    "inter-0": {
       "value": "Medium",
       "type": "fontWeights"
     },
-    "regular": {
+    "inter-1": {
       "value": "Regular",
       "type": "fontWeights"
-    }
-  },
-  "fontSize": {
-    "100": {
-      "value": "0.75rem",
-      "type": "fontSizes"
-    },
-    "200": {
-      "value": "14",
-      "type": "fontSizes"
-    },
-    "300": {
-      "value": "1rem",
-      "type": "fontSizes"
-    },
-    "400": {
-      "value": "1.125rem",
-      "type": "fontSizes"
-    },
-    "500": {
-      "value": "1.25rem",
-      "type": "fontSizes"
-    },
-    "600": {
-      "value": "1.5rem",
-      "type": "fontSizes"
-    },
-    "700": {
-      "value": "1.75rem",
-      "type": "fontSizes"
-    },
-    "800": {
-      "value": "2.25rem",
-      "type": "fontSizes"
-    },
-    "900": {
-      "value": "2.75rem",
-      "type": "fontSizes"
-    },
-    "000": {
-      "value": "0.625rem",
-      "type": "fontSizes"
     }
   }
 }
