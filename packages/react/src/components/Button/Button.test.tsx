@@ -87,7 +87,7 @@ describe('Button', () => {
     ).toEqual(icon);
   });
 
-  it('should render as disabled when disabled is true regardless of variant', () => {
+  it('should render as aria-disabled when disabled is true regardless of variant', () => {
     render({
       variant: ButtonVariant.Outline,
       color: ButtonColor.Primary,
@@ -97,7 +97,7 @@ describe('Button', () => {
 
     const button = screen.getByRole('button');
 
-    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled');
   });
 
   it('should not call onClick when disabled', () => {

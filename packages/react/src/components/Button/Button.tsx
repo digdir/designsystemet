@@ -52,6 +52,8 @@ const Button = (
     icon,
     type = 'button',
     className,
+    disabled,
+    onClick,
     ...restHTMLProps
   }: PropsWithChildren<ButtonProps>,
   ref?: React.Ref<HTMLButtonElement> | undefined,
@@ -70,6 +72,8 @@ const Button = (
       className,
     )}
     type={type}
+    aria-disabled={disabled}
+    onClick={disabled ? undefined : onClick}
   >
     {icon && iconPlacement === 'left' && (
       <SvgIcon
