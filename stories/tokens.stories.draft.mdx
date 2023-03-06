@@ -1,7 +1,7 @@
-import { Meta } from '@storybook/addon-docs'
-import {CodeSnippet, TokensTable} from "../docs-components";
+import { Meta } from '@storybook/addon-docs';
+import { TokensTable } from '../docs-components';
 
-<Meta title="Design Tokens" />
+<Meta title='Design Tokens' />
 
 # Design Tokens
 
@@ -16,51 +16,47 @@ As normal stash the on severely, contract, company he up were annoyed. Completel
 
 Installer NPM-pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og importer inn tokens med CSS-, SCSS- eller Javascript-variabler. Overstyres ved behov.
 
-### CSS
-
-<CodeSnippet children='
-@import "@digdir/design-system-tokens/build/tokens.css";
-:root {
-  --my-text-color: var(--color-text-background-light);
-}' language='css'/>
-
-### SCSS
-
-<CodeSnippet children='
-@use "@digdir/design-system-tokens/build/tokens.scss" as tokens;
-$my-text-color: tokens.$color-text-background-light;' language='scss'/>
-
-### Javascript
-
-<CodeSnippet children='
-import tokens from "@digdir/design-system-tokens/build/tokens"
-const myTextColor = tokens.color.text.background.light' language='javascript'/>
-
 ## Tokens
+
 Her er en liste over tokens som er tilgjengelig i NPM pakken `@digdir/design-system-tokens`.
 
 ### Farger
 
-<TokensTable jsonKey="colors" componentName="colors" showPreview={true} />
+<TokensTable
+  jsonKey='colors'
+  componentName='colors'
+  showPreview={true}
+/>
 
 ### Avstander
 
 Avstand-variablene er angitt i `rem`. Denne verdien er relativ til html-elementet sin `font-size`,
-og tar utgangspunkt i den vanligste standarden der __1rem = 16px__.
+og tar utgangspunkt i den vanligste standarden der **1rem = 16px**.
 
-<TokensTable jsonKey="space" componentName="space" showPreview={true} />
+<TokensTable
+  jsonKey='space'
+  componentName='space'
+  showPreview={true}
+/>
 
 ### Typografi
 
-<TokensTable jsonKey="typography" componentName="typography" showPreview={false} />
+<TokensTable
+  jsonKey='typography'
+  componentName='typography'
+  showPreview={false}
+/>
 
 #### Tekststørrelser
 
 Tekststørrelse-variablene er angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der `1rem = 16px`.
 
-<TokensTable jsonKey="font_size" componentName="font_size" showPreview={true} />
-
+<TokensTable
+  jsonKey='font_size'
+  componentName='font_size'
+  showPreview={true}
+/>
 
 ### Bruddpunkter
 
@@ -68,10 +64,18 @@ Bruddpunktene tar utgangspunkt i verdiene benyttet i [Bootstrap grid](https://ge
 
 For eksempel vil `@media (min-width: var(--breakpoint-medium)) { ... } ` kunne brukes for å treffe de fleste tablets (og større skjermstørrelser).
 
-<TokensTable jsonKey="breakpoints" componentName="breakpoints" showPreview={false} />
+<TokensTable
+  jsonKey='breakpoints'
+  componentName='breakpoints'
+  showPreview={false}
+/>
 
 ### Størrelser
 
-<TokensTable jsonKey="size" componentName="size" showPreview={true} />
+<TokensTable
+  jsonKey='size'
+  componentName='size'
+  showPreview={true}
+/>
 
 ## Changelog

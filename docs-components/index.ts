@@ -10,7 +10,6 @@ export {
 } from './Table/TableCells/TableCells';
 export { TableOfContents } from './TableOfContents/TableOfContents';
 export { SvgModal } from './SvgModal/SvgModal';
-export { CodeSnippet } from './CodeSnippet/CodeSnippet';
 export { GithubReleasesChangelog } from './GithubReleasesChangelog/GithubReleasesChangelog';
 export { Changelog } from './Changelog/Changelog';
 export { ComponentOverview } from './ComponentOverview/component-overview';

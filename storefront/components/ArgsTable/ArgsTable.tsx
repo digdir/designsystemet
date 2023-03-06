@@ -3,7 +3,6 @@ import cn from 'classnames';
 
 import classes from './ArgsTable.module.css';
 import Tippy from '@tippyjs/react';
-import { Copy } from 'lucide-react';
 
 interface ArgsTable {
   argTypes: any;

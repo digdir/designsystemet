@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy } from 'lucide-react';
+import { Copy } from '@navikt/ds-icons';
 import classes from './CodeSnippet.module.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import prettier from 'prettier/standalone.js';

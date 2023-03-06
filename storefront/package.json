@@ -29,7 +29,7 @@
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "gray-matter": "^4.0.3",
-    "lucide-react": "^0.107.0",
+    "moment": "^2.29.4",
     "next": "13.0.7",
     "normalize.css": "^8.0.1",
     "prettier": "^2.8.3",
