@@ -8,7 +8,6 @@ import type { TextAreaProps } from './TextArea';
 const user = userEvent.setup();
 
 describe('TextArea', () => {
-
   it('Triggers onPaste when pasting into input', async () => {
     const onPaste = jest.fn();
     const data = 'Hello world';
@@ -18,11 +17,13 @@ describe('TextArea', () => {
     await user.paste(data);
     //fireEvent(element, paste);
     expect(onPaste).toHaveBeenCalledTimes(1);
-    expect(onPaste).toHaveBeenCalledWith(expect.objectContaining({
-      clipboardData: expect.objectContaining({
-        items: [expect.objectContaining({ data })]
-      })
-    }));
+    expect(onPaste).toHaveBeenCalledWith(
+      expect.objectContaining({
+        clipboardData: expect.objectContaining({
+          items: [expect.objectContaining({ data })],
+        }),
+      }),
+    );
   });
 
   it('Triggers onBlur event when field loses focus', async () => {
@@ -55,4 +56,10 @@ describe('TextArea', () => {
 });
 
 const render = (props: Partial<TextAreaProps> = {}) =>
-  renderRtl(<TextArea id='id' onChange={jest.fn()} {...props} />);
+  renderRtl(
+    <TextArea
+      id='id'
+      onChange={jest.fn()}
+      {...props}
+    />,
+  );

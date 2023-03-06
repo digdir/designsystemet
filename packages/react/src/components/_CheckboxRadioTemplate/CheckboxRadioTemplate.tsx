@@ -60,8 +60,9 @@ export const CheckboxRadioTemplate = ({
   const labelId = label ? `${finalInputId}-label` : undefined;
   const descriptionId = description ? `${finalInputId}-description` : undefined;
   const showLabel = label && !hideLabel;
-  const shouldHaveClickableLabel = !presentation
-    || (typeof label !== 'object' && typeof description !== 'object');
+  const shouldHaveClickableLabel =
+    !presentation ||
+    (typeof label !== 'object' && typeof description !== 'object');
   const helpTextSize =
     size === CheckboxRadioTemplateSize.Xsmall
       ? HelpTextSize.Xsmall
@@ -107,7 +108,10 @@ export const CheckboxRadioTemplate = ({
         <span className={classes.labelAndDescription}>
           {showLabel && (
             <span className={classes.labelAndHelpText}>
-              <span className={classes.label} id={labelId}>
+              <span
+                className={classes.label}
+                id={labelId}
+              >
                 {label}
               </span>
               {helpText && (
@@ -121,7 +125,10 @@ export const CheckboxRadioTemplate = ({
             </span>
           )}
           {description && (
-            <span className={classes.description} id={descriptionId}>
+            <span
+              className={classes.description}
+              id={descriptionId}
+            >
               {description}
             </span>
           )}
@@ -138,16 +145,14 @@ interface WrapperProps {
   isLabel: boolean;
 }
 
-const Wrapper = ({
-  children,
-  className,
-  htmlFor,
-  isLabel,
-}: WrapperProps) => isLabel ? (
-  <label
-    className={className + ' ' + classes.clickable}
-    htmlFor={htmlFor}
-  >
-    {children}
-  </label>
-) : <span className={className}>{children}</span>;
+const Wrapper = ({ children, className, htmlFor, isLabel }: WrapperProps) =>
+  isLabel ? (
+    <label
+      className={className + ' ' + classes.clickable}
+      htmlFor={htmlFor}
+    >
+      {children}
+    </label>
+  ) : (
+    <span className={className}>{children}</span>
+  );

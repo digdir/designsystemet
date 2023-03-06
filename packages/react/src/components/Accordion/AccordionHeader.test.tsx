@@ -12,15 +12,19 @@ const defaultProps: AccordionHeaderProps = {
   children: header,
 };
 
-const renderWithContext = (props: Partial<AccordionHeaderProps> = {}) => render(
-  <Accordion
-    onClick={jest.fn()}
-    open={false}
-  >
-    <AccordionHeader {...defaultProps} {...props} />
-    <AccordionContent>AccordionContent</AccordionContent>
-  </Accordion>
-);
+const renderWithContext = (props: Partial<AccordionHeaderProps> = {}) =>
+  render(
+    <Accordion
+      onClick={jest.fn()}
+      open={false}
+    >
+      <AccordionHeader
+        {...defaultProps}
+        {...props}
+      />
+      <AccordionContent>AccordionContent</AccordionContent>
+    </Accordion>,
+  );
 
 describe('AccordionHeader', () => {
   it('Shows subtitle when "subtitle" prop is set', () => {
@@ -32,7 +36,7 @@ describe('AccordionHeader', () => {
   it('Does not show subtitle when "subtitle" prop is not set', () => {
     renderWithContext({ subtitle: undefined });
     expect(
-      screen.queryByTestId('accordion-header-subtitle')
+      screen.queryByTestId('accordion-header-subtitle'),
     ).not.toBeInTheDocument();
   });
 });

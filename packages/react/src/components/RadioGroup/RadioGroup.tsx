@@ -5,7 +5,6 @@ import { RadioButton, RadioButtonSize } from '../RadioButton';
 import { FieldSet, FieldSetSize } from '../FieldSet';
 import { usePrevious, useUpdate } from '../../hooks';
 import { areItemsUnique } from '../../utils/arrayUtils';
-
 import type { RadioButtonProps } from '../RadioButton';
 
 import classes from './RadioGroup.module.css';

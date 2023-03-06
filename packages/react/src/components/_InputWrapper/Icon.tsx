@@ -15,7 +15,10 @@ export const Icon = ({ variant, disabled = false }: IconProps) => {
   switch (variant) {
     case IconVariant.Error:
       return (
-        <div className={classes.icon} data-testid='input-icon-error'>
+        <div
+          className={classes.icon}
+          data-testid='input-icon-error'
+        >
           <ErrorIcon />
         </div>
       );

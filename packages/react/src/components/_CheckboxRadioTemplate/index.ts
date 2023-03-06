@@ -1,5 +1,5 @@
 export {
   CheckboxRadioTemplate,
-  CheckboxRadioTemplateSize
+  CheckboxRadioTemplateSize,
 } from './CheckboxRadioTemplate';
 export type { CheckboxRadioTemplateProps } from './CheckboxRadioTemplate';

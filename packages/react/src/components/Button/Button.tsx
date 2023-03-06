@@ -1,8 +1,8 @@
+import type { ReactNode } from 'react';
 import React, {
   forwardRef,
   type ButtonHTMLAttributes,
   type PropsWithChildren,
-  ReactNode,
 } from 'react';
 import cn from 'classnames';
 

@@ -45,3 +45,25 @@ export type {
 } from './Accordion';
 export { List, ListItem } from './List';
 export type { ListProps, ListItemProps, ListBorderStyle } from './List';
+export {
+  ResponsiveTable,
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHeader,
+  TableRow,
+} from './Table';
+export type {
+  ChangeProps,
+  ResponsiveTableConfig,
+  ResponsiveTableProps,
+  SortDirection,
+  SortProps,
+  TableBodyProps,
+  TableCellProps,
+  TableFooterProps,
+  TableHeaderProps,
+  TableProps,
+  TableRowProps,
+} from './Table';

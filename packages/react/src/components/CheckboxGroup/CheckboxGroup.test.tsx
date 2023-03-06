@@ -2,9 +2,8 @@ import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { CheckboxGroup, CheckboxGroupItem } from './';
-
-import type { CheckboxGroupProps } from './';
+import { CheckboxGroup } from './';
+import type { CheckboxGroupProps, CheckboxGroupItem } from './';
 
 const user = userEvent.setup();
 

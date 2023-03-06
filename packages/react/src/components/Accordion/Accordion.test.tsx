@@ -19,8 +19,8 @@ const defaultProps: AccordionProps = {
     </>
   ),
   open: false,
-  onClick: jest.fn()
-}
+  onClick: jest.fn(),
+};
 
 // Mocks:
 jest.mock('./icons', () => ({
@@ -29,7 +29,12 @@ jest.mock('./icons', () => ({
 }));
 
 const render = (props: Partial<AccordionProps> = {}) =>
-  renderRtl(<Accordion {...defaultProps} {...props} />);
+  renderRtl(
+    <Accordion
+      {...defaultProps}
+      {...props}
+    />,
+  );
 
 const user = userEvent.setup();
 
@@ -82,6 +87,6 @@ describe('Accordion', () => {
       otherVariants.forEach((v) => {
         expect(screen.queryByTestId(v)).not.toBeInTheDocument();
       });
-    }
+    },
   );
 });

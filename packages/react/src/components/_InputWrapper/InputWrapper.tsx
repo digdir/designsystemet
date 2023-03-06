@@ -58,15 +58,11 @@ export const InputWrapper = ({
       )}
       <div
         data-testid='InputWrapper'
-        className={cn(
-          classes.inputWrapper,
-          classes[variant],
-          {
-            [classes.search]: isSearch,
-            [classes.withFocusEffect]: !noFocusEffect,
-            [classes.withPadding]: !noPadding,
-          },
-        )}
+        className={cn(classes.inputWrapper, classes[variant], {
+          [classes.search]: isSearch,
+          [classes.withFocusEffect]: !noFocusEffect,
+          [classes.withPadding]: !noPadding,
+        })}
       >
         <Icon
           variant={iconVariant}
