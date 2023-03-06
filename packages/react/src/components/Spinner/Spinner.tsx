@@ -41,7 +41,7 @@ const variantMap: Record<Variant, { foreground: string; background: string }> =
 
 export type SpinnerProps = {
   /** Spinner title  */
-  title: string;
+  title?: string;
   /** Spinner size  */
   size?: Size;
   /** Spinner appearance  */

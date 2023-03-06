@@ -32,7 +32,7 @@
     outline: none;
 }
 
-.button:disabled {
+.button[aria-disabled="true"] {
     cursor: auto;
     opacity: var(--opacity-disabled);
 }
@@ -97,11 +97,11 @@
     background: var(--component-button-filled-primary-color-background-default);
 }
 
-.button.filled.primary:not(:disabled):hover {
+.button.filled.primary:not([aria-disabled="true"]):hover {
     background: var(--component-button-filled-primary-color-background-hover);
 }
 
-.button.filled.primary:not(:disabled):active {
+.button.filled.primary:not([aria-disabled="true"]):active {
     background: var(--component-button-filled-primary-color-background-pressed);
 }
 
@@ -109,11 +109,11 @@
     background: var(--component-button-filled-primary-color-background-pressed);
 }
 
-.button.filled.secondary:not(:disabled):hover {
+.button.filled.secondary:not([aria-disabled="true"]):hover {
     background: var(--colors-blue-800);
 }
 
-.button.filled.secondary:not(:disabled):active {
+.button.filled.secondary:not([aria-disabled="true"]):active {
     background: var(--colors-blue-900);
 }
 
@@ -121,11 +121,11 @@
     background: var(--component-button-filled-success-color-background-default);
 }
 
-.button.filled.success:not(:disabled):hover {
+.button.filled.success:not([aria-disabled="true"]):hover {
     background: var(--component-button-filled-success-color-background-hover);
 }
 
-.button.filled.success:not(:disabled):active {
+.button.filled.success:not([aria-disabled="true"]):active {
     background: var(--component-button-filled-success-color-background-pressed);
 }
 
@@ -133,11 +133,11 @@
     background: var(--component-button-filled-danger-color-background-default);
 }
 
-.button.filled.danger:not(:disabled):hover {
+.button.filled.danger:not([aria-disabled="true"]):hover {
     background: var(--component-button-filled-danger-color-background-hover);
 }
 
-.button.filled.danger:not(:disabled):active {
+.button.filled.danger:not([aria-disabled="true"]):active {
     background: var(--colors-red-800);
 }
 
@@ -146,12 +146,12 @@
     background: var(--colors-white);
 }
 
-.button.filled.inverted:not(:disabled):hover {
+.button.filled.inverted:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-blue-900);
     background: rgba(255, 255, 255, 0.9);
 }
 
-.button.filled.inverted:not(:disabled):active {
+.button.filled.inverted:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--colors-white);
     background: rgba(255, 255, 255, 0.1);
 }
@@ -167,13 +167,13 @@
     background: var(--component-button-outline-primary-color-background-default);
 }
 
-.button.outline.primary:not(:disabled):hover {
+.button.outline.primary:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-blue-800);
     background: var(--component-button-outline-primary-color-background-hover);
     border-color: var(--component-button-outline-primary-color-border-hover);
 }
 
-.button.outline.primary:not(:disabled):active {
+.button.outline.primary:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--component-button-outline-primary-color-text-pressed);
     background: var(--component-button-outline-primary-color-background-pressed);
 }
@@ -184,11 +184,11 @@
     border-color: var(--colors-blue-900);
 }
 
-.button.outline.secondary:not(:disabled):hover {
+.button.outline.secondary:not([aria-disabled="true"]):hover {
     background: var(--colors-blue-100);
 }
 
-.button.outline.secondary:not(:disabled):active {
+.button.outline.secondary:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--colors-white);
     background: var(--colors-blue-900);
 }
@@ -199,12 +199,12 @@
     border-color: var(--colors-green-700);
 }
 
-.button.outline.success:not(:disabled):hover {
+.button.outline.success:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-green-800);
     background: var(--colors-green-200);
 }
 
-.button.outline.success:not(:disabled):active {
+.button.outline.success:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--colors-white);
     background: var(--colors-green-700);
 }
@@ -215,13 +215,13 @@
     border-color: var(--colors-red-500);
 }
 
-.button.outline.danger:not(:disabled):hover {
+.button.outline.danger:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-red-700);
     background: var(--colors-red-100);
     border-color: var(--colors-red-700);
 }
 
-.button.outline.danger:not(:disabled):active {
+.button.outline.danger:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--colors-white);
     background: var(--colors-red-500);
 }
@@ -232,11 +232,11 @@
     background: transparent;
 }
 
-.button.outline.inverted:not(:disabled):hover {
+.button.outline.inverted:not([aria-disabled="true"]):hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.button.outline.inverted:not(:disabled):active {
+.button.outline.inverted:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--colors-blue-900);
     background: var(--colors-white);
 }
@@ -250,12 +250,12 @@
     --font-and-icon-color: var(--component-button-quiet-primary-color-text-default);
 }
 
-.button.quiet.primary:not(:disabled):hover {
+.button.quiet.primary:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-blue-800);
     background: var(--component-button-quiet-primary-color-background-hover);
 }
 
-.button.quiet.primary:not(:disabled):active {
+.button.quiet.primary:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--component-button-filled-color-text-all);
     background: var(--component-button-quiet-primary-color-background-pressed);
 }
@@ -264,11 +264,11 @@
     --font-and-icon-color: var(--colors-blue-900);
 }
 
-.button.quiet.secondary:not(:disabled):hover {
+.button.quiet.secondary:not([aria-disabled="true"]):hover {
     background: var(--colors-grey-300);
 }
 
-.button.quiet.secondary:not(:disabled):active {
+.button.quiet.secondary:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--component-button-filled-color-text-all);
     background: var(--colors-blue-900);
 }
@@ -277,12 +277,12 @@
     --font-and-icon-color: var(--colors-green-700);
 }
 
-.button.quiet.success:not(:disabled):hover {
+.button.quiet.success:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-green-800);
     background: var(--colors-green-200);
 }
 
-.button.quiet.success:not(:disabled):active {
+.button.quiet.success:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--component-button-filled-color-text-all);
     background: var(--colors-green-900);
 }
@@ -291,12 +291,12 @@
     --font-and-icon-color: var(--colors-red-600);
 }
 
-.button.quiet.danger:not(:disabled):hover {
+.button.quiet.danger:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-red-800);
     background: var(--colors-red-100);
 }
 
-.button.quiet.danger:not(:disabled):active {
+.button.quiet.danger:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--component-button-filled-color-text-all);
     background: var(--colors-red-800);
 }
@@ -306,12 +306,12 @@
     background: transparent;
 }
 
-.button.quiet.inverted:not(:disabled):hover {
+.button.quiet.inverted:not([aria-disabled="true"]):hover {
     --font-and-icon-color: var(--colors-blue-900);
     background: rgba(255, 255, 255, 0.9);
 }
 
-.button.quiet.inverted:not(:disabled):active {
+.button.quiet.inverted:not([aria-disabled="true"]):active {
     --font-and-icon-color: var(--colors-blue-900);
     background: var(--colors-white);
 }
