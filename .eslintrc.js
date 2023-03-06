@@ -1,28 +1,36 @@
 module.exports = {
-  parserOptions: {
-    ecmaFeatures: { jsx: true },
-    project: './tsconfig.json',
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
-  ],
+  root: true,
   env: {
     node: true,
+    browser: true,
   },
-  parser: '@typescript-eslint/parser',
+  extends: ['eslint:recommended', 'plugin:import/recommended', 'prettier'],
+  overrides: [
+    {
+      // Typescript
+      files: ['*.ts', '*.tsx'],
+      extends: [
+        'plugin:import/typescript',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:jsx-a11y/recommended',
+        'plugin:react/recommended',
+        'plugin:react-hooks/recommended',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+        project: './tsconfig.json',
+      },
+      rules: {
+        // Disabled because we use Typescript types for props
+        'react/prop-types': ['off'],
+        'react/jsx-no-bind': 'off',
+        '@typescript-eslint/consistent-type-exports': 'warn',
+        '@typescript-eslint/consistent-type-imports': 'warn',
+      },
+    },
+  ],
   rules: {
-    // Disabled because of Typescript
-    'react/prop-types': ['off'],
-    'react/jsx-no-bind': 'off',
-    '@typescript-eslint/consistent-type-exports': 'warn',
-    '@typescript-eslint/consistent-type-imports': 'warn',
     'import/order': [
       'warn',
       {

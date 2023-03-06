@@ -19,7 +19,9 @@
     "add-component-core": "node scripts/add-component.mjs",
     "lerna:version": "lerna version  --conventional-commits --no-private",
     "lerna:publish": "lerna publish from-git",
-    "build:tokens": "yarn workspace @digdir/design-system-tokens build"
+    "build:tokens": "yarn workspace @digdir/design-system-tokens build",
+    "lint": "eslint",
+    "lint:all": "eslint ."
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
