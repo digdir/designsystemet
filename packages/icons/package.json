@@ -9,8 +9,8 @@
   ],
   "license": "BSD-3-Clause",
   "type": "module",
-  "main": "./cjs/index.js",
-  "module": "./esm/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "files": [
     "/svg",
     "/cjs",
@@ -20,10 +20,11 @@
   "scripts": {
     "clean": "rimraf ./optimized",
     "optimize": "svgo -q -p 8 -f ./svg -o ./optimized",
-    "build": "yarn clean && yarn optimize && node build.js && rimraf ./optimized "
+    "build": "yarn clean && yarn optimize && node build.js && yarn clean"
   },
   "devDependencies": {
     "camelcase": "^7.0.1",
+    "rimraf": "^4.3.0",
     "svgo": "^3.0.2"
   },
   "dependencies": {
