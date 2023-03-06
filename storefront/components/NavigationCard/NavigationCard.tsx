@@ -1,8 +1,8 @@
-import classes from './NavigationCard.module.css';
 import Link from 'next/link';
-
 import cn from 'classnames';
 import React from 'react';
+
+import classes from './NavigationCard.module.css';
 
 interface NavigationCardProps {
   title: string;

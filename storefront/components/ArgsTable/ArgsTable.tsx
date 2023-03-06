@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import cn from 'classnames';
+import Tippy from '@tippyjs/react';
 
 import classes from './ArgsTable.module.css';
-import Tippy from '@tippyjs/react';
 
 interface ArgsTable {
   argTypes: any;

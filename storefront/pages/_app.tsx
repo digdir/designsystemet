@@ -6,6 +6,7 @@ import '@altinn/figma-design-tokens/dist/tokens.css';
 import '../globals.css';
 import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';
+
 import { Footer } from '../components/Footer/Footer';
 
 const inter = Inter({

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Link from 'next/link';
-import { capitalizeString } from '../../utils/StringHelpers';
 
+import { capitalizeString } from '../../utils/StringHelpers';
 import Header from '../../components/Header/Header';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 

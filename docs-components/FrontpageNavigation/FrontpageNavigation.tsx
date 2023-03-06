@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { SystemFilled, Wrench, Picture } from '@navikt/ds-icons';
 
 import type { NavigationCardProps } from '../NavigationCard/NavigationCard';

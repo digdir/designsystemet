@@ -1,10 +1,11 @@
-import classes from './Header.module.css';
 import { Container } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Hamburger, Close } from '@navikt/ds-icons';
 import { useState } from 'react';
 import cn from 'classnames';
+
+import classes from './Header.module.css';
 
 const Header = () => {
   const router = useRouter();

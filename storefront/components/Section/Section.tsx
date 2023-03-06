@@ -1,7 +1,8 @@
-import classes from './Section.module.css';
 import { Container } from 'react-bootstrap';
 import React from 'react';
 import cn from 'classnames';
+
+import classes from './Section.module.css';
 
 interface SectionProps {
   children: React.ReactNode;
