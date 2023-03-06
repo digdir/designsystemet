@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import { rimraf } from 'rimraf';
 import { transform } from '@svgr/core';
 import camelcase from 'camelcase';
-import babel from '@babel/core';
+import { transformAsync } from '@babel/core';
 import { minify } from 'terser';
 
 const outputPath = './';
@@ -22,7 +22,7 @@ async function transformSVGtoJSX(file, componentName, format) {
     },
     { componentName },
   );
-  const { code } = await babel.transformAsync(svgReactContent, {
+  const { code } = await transformAsync(svgReactContent, {
     presets: [['@babel/preset-react', { useBuiltIns: true }]],
   });
 
