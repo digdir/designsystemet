@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.7.0...@digdir/design-system-react@0.8.0) (2023-03-09)
+
+### Bug Fixes
+
+- **CheckboxGroup:** fix state handling problem ([#205](https://github.com/digdir/designsystem/issues/205)) ([50aab5a](https://github.com/digdir/designsystem/commit/50aab5ad8152083c9c4efaa8b7fac48ed77284ce))
+- **HelpText:** helptext´s content not reachable with NVDA screenreader ([#206](https://github.com/digdir/designsystem/issues/206)) ([e4c115f](https://github.com/digdir/designsystem/commit/e4c115f11d95442372fbcee3c690ed617de0860a))
+- Set correct font size in all text input fields ([#201](https://github.com/digdir/designsystem/issues/201)) ([2f1a903](https://github.com/digdir/designsystem/commit/2f1a9030b94c6938d8b8719cf6ed7f92d4eaa4b6))
+
+### Features
+
+- Add table component ([#207](https://github.com/digdir/designsystem/issues/207)) ([c07a288](https://github.com/digdir/designsystem/commit/c07a288daac0cc39e8bc8e78b5e214cb3c45a2f8))
+
 # [0.7.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.6.0...@digdir/design-system-react@0.7.0) (2023-02-24)
 
 ### Bug Fixes
