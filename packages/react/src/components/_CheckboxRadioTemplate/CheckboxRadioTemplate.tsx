@@ -91,6 +91,7 @@ export const CheckboxRadioTemplate = ({
             aria-label={
               !showLabel && typeof label === 'string' ? label : undefined
             }
+            aria-labelledby={showLabel ? labelId : undefined}
             checked={checked ?? false}
             className={classes.input}
             disabled={disabled}

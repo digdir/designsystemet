@@ -66,7 +66,9 @@ describe('RadioButton', () => {
   it('Does not display label text, but still makes it accessible, when hideLabel is true', () => {
     const label = 'All we hear is radio ga ga';
     render({ hideLabel: true, label });
-    expect(screen.queryByText(label)).toBeFalsy();
+    expect(
+      screen.queryByText(label)?.parentElement?.parentElement?.classList,
+    ).toContain('visuallyHidden');
     expect(screen.getByLabelText(label)).toBeTruthy();
   });
 
@@ -179,7 +181,7 @@ describe('RadioButton', () => {
   it('Has clickable radio button even if the "presentation" property is true and the label is a React node', async () => {
     const name = 'Label';
     render({
-      label: <span>{name}</span>,
+      label: <span>{'Label'}</span>,
       presentation: true,
     });
     await act(() => user.click(screen.getByRole('presentation', { name })));
