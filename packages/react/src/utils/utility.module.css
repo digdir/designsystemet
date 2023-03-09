@@ -2,12 +2,13 @@
  * Visually hide an element, but leave it available for screen readers
  */
 .visuallyHidden {
-	border: 0;
-	clip: rect(0 0 0 0);
+	width: 1px;
 	height: 1px;
-	overflow: hidden;
+	border: 0;
 	padding: 0;
+	clip: rect(0 0 0 0);
+	overflow: hidden;
 	position: absolute;
 	white-space: nowrap;
-	width: 1px;
+	opacity: 0;
 }

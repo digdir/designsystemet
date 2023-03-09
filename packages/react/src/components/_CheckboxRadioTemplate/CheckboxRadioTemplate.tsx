@@ -9,6 +9,7 @@ import cn from 'classnames';
 
 import { HelpText } from '../HelpText';
 import { HelpTextSize } from '../HelpText/HelpText';
+import accessibility from '../../utils/utility.module.css';
 
 import classes from './CheckboxRadioTemplate.module.css';
 
@@ -90,7 +91,6 @@ export const CheckboxRadioTemplate = ({
             aria-label={
               !showLabel && typeof label === 'string' ? label : undefined
             }
-            aria-labelledby={showLabel ? labelId : undefined}
             checked={checked ?? false}
             className={classes.input}
             disabled={disabled}
@@ -104,9 +104,14 @@ export const CheckboxRadioTemplate = ({
           <span className={classes.visibleBox}>{children}</span>
         </Wrapper>
       )}
-      {(showLabel || description) && (
-        <span className={classes.labelAndDescription}>
-          {showLabel && (
+      {
+        <span
+          className={cn(
+            classes.labelAndDescription,
+            !showLabel && accessibility.visuallyHidden,
+          )}
+        >
+          {
             <span className={classes.labelAndHelpText}>
               <span
                 className={classes.label}
@@ -114,7 +119,7 @@ export const CheckboxRadioTemplate = ({
               >
                 {label}
               </span>
-              {helpText && (
+              {helpText && showLabel && (
                 <HelpText
                   size={helpTextSize}
                   title={`Help text for ${label}`}
@@ -123,7 +128,7 @@ export const CheckboxRadioTemplate = ({
                 </HelpText>
               )}
             </span>
-          )}
+          }
           {description && (
             <span
               className={classes.description}
@@ -133,7 +138,7 @@ export const CheckboxRadioTemplate = ({
             </span>
           )}
         </span>
-      )}
+      }
     </Wrapper>
   );
 };

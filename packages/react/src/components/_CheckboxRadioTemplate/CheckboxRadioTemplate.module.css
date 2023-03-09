@@ -62,7 +62,6 @@
 .labelAndDescription {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--description-margin_top);
 
   /* Center-align input box with the first line in the label */
   margin-top: calc(
@@ -86,6 +85,7 @@
 
 .description {
   color: var(--description-color);
+  margin-top: var(--description-margin_top);
 }
 
 @supports not selector(:has(:focus-visible)) {
