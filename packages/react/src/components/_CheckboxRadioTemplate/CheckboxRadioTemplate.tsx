@@ -7,8 +7,7 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { useId } from 'react';
 import cn from 'classnames';
 
-import { HelpText } from '../HelpText';
-import { HelpTextSize } from '../HelpText';
+import { HelpText, HelpTextSize } from '../HelpText';
 
 import classes from './CheckboxRadioTemplate.module.css';
 

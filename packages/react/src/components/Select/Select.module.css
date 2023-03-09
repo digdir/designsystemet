@@ -152,12 +152,6 @@
   padding: 0;
 }
 
-.select.single .fieldValue {
-  flex: 1;
-  padding-left: var(--singleselect_field-padding_left);
-  text-align: left;
-}
-
 .select.multiple .fieldButton:focus-visible {
   outline: var(--focus_visible-outline);
 }

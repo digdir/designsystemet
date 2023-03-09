@@ -225,7 +225,7 @@ describe('Select', () => {
 
     it('Hides label, but makes it accessible, if the "hideLabel" property is set', async () => {
       const label = 'Lorem ipsum';
-      renderSingleSelect({ hideLabel: true, label });
+      renderSingleSelect({ hideLabel: true, label, searchLabel: 'abc' });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
     });
@@ -263,68 +263,42 @@ describe('Select', () => {
     it('Renders a search field with given label which is empty by default', () => {
       const searchLabel = 'Søk';
       renderSingleSelect({ searchLabel });
-      const searchField = screen.getByRole('textbox', { name: searchLabel });
+      const searchField = screen.getByRole('combobox', { name: searchLabel });
       expect(searchField).toBeInTheDocument();
       expect(searchField).toHaveValue('');
     });
 
-    it('Hides label when user types in the search field', async () => {
-      const selectedOptionIndex = 1;
-      const selectedOption = singleSelectOptions[selectedOptionIndex];
-      renderSingleSelect({ value: selectedOption.value });
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      expect(
-        screen.queryByText(
-          (content, element) =>
-            element?.tagName.toLowerCase() === 'span' &&
-            content === selectedOption.label,
-        ),
-      ).toBeFalsy();
-    });
-
     it('Calls optionSearch function when user types in the search field', async () => {
       renderSingleSelect();
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
+      await act(() => user.type(getCombobox(), 'a'));
       expect(optionSearch).toHaveBeenCalledTimes(1);
       expect(optionSearch).toHaveBeenCalledWith(singleSelectOptions, 'a');
     });
 
-    it('Sorts options and selects the first when user types in the search field', async () => {
+    it('Sorts options when the user types in the search field', async () => {
       renderSingleSelect();
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      expect(screen.getAllByRole('option')[0]).toHaveValue(
-        sortedOptions[0].value,
-      );
-      expect(getCombobox()).toHaveValue(sortedOptions[0].value);
+      await act(() => user.type(getCombobox(), 'a'));
+      expect(getOptions()[0]).toHaveValue(sortedOptions[0].value);
     });
 
-    it('Resets keyword, but keeps sorted list of options, when user starts browsing the list', async () => {
+    it('Sets keyword to the selected option label when the user starts browsing the list', async () => {
       renderSingleSelect();
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      await act(() => user.keyboard('{ArrowDown}'));
-      expect(screen.getByRole('textbox')).toHaveValue('');
-      expect(screen.getAllByRole('option')[0]).toHaveValue(
-        sortedOptions[0].value,
-      );
+      await act(() => user.type(getCombobox(), 'a{ArrowDown}'));
+      expect(getCombobox()).toHaveValue(sortedOptions[0].label);
     });
 
     it('Does not reset keyword while user is writing', async () => {
       renderSingleSelect();
       const keyword = 'abc';
-      await act(() => user.type(screen.getByRole('textbox'), keyword));
-      expect(screen.getByRole('textbox')).toHaveValue(keyword);
+      await act(() => user.type(getCombobox(), keyword));
+      expect(getCombobox()).toHaveValue(keyword);
     });
 
-    const expectSelectedValue = (option: SingleSelectOption) => {
-      expect(getCombobox()).toHaveValue(option.value);
-      expect(
-        screen.getByText(
-          (content, element) =>
-            element?.tagName.toLowerCase() === 'span' &&
-            content === option.label,
-        ),
-      ).toBeInTheDocument();
-    };
+    const expectSelectedValue = (option: SingleSelectOption) =>
+      expect(getSelectedOption()).toHaveValue(option.value);
+
+    const getSelectedOption = () =>
+      screen.getByRole('option', { selected: true });
   });
 
   describe('Multiple select', () => {
@@ -631,7 +605,7 @@ describe('Select', () => {
 
     it('Hides label, but makes it accessible, if the "hideLabel" property is set', async () => {
       const label = 'Lorem ipsum';
-      renderMultiSelect({ hideLabel: true, label });
+      renderMultiSelect({ hideLabel: true, label, searchLabel: 'abc' });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
     });
@@ -671,42 +645,38 @@ describe('Select', () => {
     it('Renders a search field with given label which is empty by default', () => {
       const searchLabel = 'Søk';
       renderMultiSelect({ searchLabel });
-      const searchField = screen.getByRole('textbox', { name: searchLabel });
+      const searchField = screen.getByRole('combobox', { name: searchLabel });
       expect(searchField).toBeInTheDocument();
       expect(searchField).toHaveValue('');
     });
 
     it('Calls optionSearch function when user types in the search field', async () => {
       renderMultiSelect();
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
+      await act(() => user.type(getCombobox(), 'a'));
       expect(optionSearch).toHaveBeenCalledTimes(1);
       expect(optionSearch).toHaveBeenCalledWith(multiSelectOptions, 'a');
     });
 
     it('Sorts options and focuses on the first when user types in the search field', async () => {
       const { container } = renderMultiSelect();
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
-      expect(screen.getAllByRole('option')[0]).toHaveValue(
-        sortedOptions[0].value,
-      );
+      await act(() => user.type(getCombobox(), 'a'));
+      expect(getOptions()[0]).toHaveValue(sortedOptions[0].value);
       expectFocusedOption(container, sortedOptions[0]);
     });
 
     it('Resets keyword, but keeps sorted list of options, when user selects a value', async () => {
       renderMultiSelect();
-      await act(() => user.type(screen.getByRole('textbox'), 'a'));
+      await act(() => user.type(getCombobox(), 'a'));
       await act(() => user.keyboard('{Enter}'));
-      expect(screen.getByRole('textbox')).toHaveValue('');
-      expect(screen.getAllByRole('option')[0]).toHaveValue(
-        sortedOptions[0].value,
-      );
+      expect(getCombobox()).toHaveValue('');
+      expect(getOptions()[0]).toHaveValue(sortedOptions[0].value);
     });
 
     it('Does not reset keyword while user is writing', async () => {
       renderMultiSelect();
       const keyword = 'abc';
-      await act(() => user.type(screen.getByRole('textbox'), keyword));
-      expect(screen.getByRole('textbox')).toHaveValue(keyword);
+      await act(() => user.type(getCombobox(), keyword));
+      expect(getCombobox()).toHaveValue(keyword);
     });
 
     const getFocusedOption = (container: HTMLElement) =>
@@ -716,7 +686,10 @@ describe('Select', () => {
       expect(getFocusedOption(con)).toHaveTextContent(opt.label);
 
     const expectSelectedValues = (values: string[]) =>
-      expect(getCombobox()).toHaveValue(values.toString());
+      getOptions().forEach((opt) => {
+        const isSelected = values.includes((opt as HTMLButtonElement).value);
+        expect(opt).toHaveAttribute('aria-selected', `${isSelected}`);
+      });
   });
 });
 
