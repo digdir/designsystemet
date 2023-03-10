@@ -1,10 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Picture, Wrench, System } from '@navikt/ds-icons';
+import { Picture } from '@navikt/ds-icons';
 
 import NavigationCard from '../../components/NavigationCard/NavigationCard';
 import Header from '../../components/Header/Header';
-import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 
 import classes from './NavigationPageLayout.module.css';
 
@@ -40,17 +39,17 @@ const NavigationPageLayout = ({
 
               <div>
                 {menu.items.map((item, index) => (
-                  <div>
+                  <div key={index}>
                     <div>{item.name}</div>
                     <div>
                       {item.children &&
                         item.children.map((item2, index2) => (
-                          <div>
+                          <div key={index2}>
                             <div>--{item2.name}</div>
                             <div>
                               {item2.children &&
                                 item2.children.map((item3, index3) => (
-                                  <div>
+                                  <div key={index3}>
                                     <div>----{item3.name}</div>
                                   </div>
                                 ))}

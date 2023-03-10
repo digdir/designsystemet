@@ -1,3 +1,4 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'normalize.css/normalize.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';

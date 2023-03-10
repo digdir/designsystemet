@@ -22,10 +22,7 @@ interface SubjectsLayoutData {
 const SubjectsLayout = ({ Content, data }: SubjectsLayoutProps) => {
   return (
     <div>
-      <style
-        jsx
-        global
-      >{`
+      <style>{`
         body {
           background: #f4f5f6;
         }
