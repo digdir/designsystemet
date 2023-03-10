@@ -26,7 +26,6 @@
     "bootstrap": "^5.2.3",
     "classnames": "^2.3.2",
     "directory-tree": "^3.5.1",
-    "eslint-config-next": "13.0.7",
     "gray-matter": "^4.0.3",
     "moment": "^2.29.4",
     "next": "13.0.7",

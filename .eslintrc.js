@@ -8,18 +8,20 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:import/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@next/next/recommended',
     'plugin:prettier/recommended',
   ],
+  plugins: ['import', 'react', 'jsx-a11y', 'prettier'],
   overrides: [
     {
       // Typescript
-      files: ['*.ts', '*.tsx'],
+      files: ['**/*.ts?(x)'],
       extends: [
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
-        'plugin:jsx-a11y/recommended',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
@@ -27,15 +29,16 @@ module.exports = {
         project: './tsconfig.json',
       },
       rules: {
-        // Disabled because we use Typescript types for props
-        'react/prop-types': ['off'],
-        'react/jsx-no-bind': 'off',
         '@typescript-eslint/consistent-type-exports': 'warn',
         '@typescript-eslint/consistent-type-imports': 'warn',
       },
     },
   ],
   rules: {
+    // Disabled because we use Typescript types for props
+    'react/prop-types': ['off'],
+    'react/jsx-no-bind': 'off',
+    'import/no-unresolved': 'error',
     'import/order': [
       'warn',
       {
@@ -60,7 +63,8 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
-        project: '.',
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
       },
     },
   },
