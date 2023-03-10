@@ -14,6 +14,9 @@
     "eamodio.gitlens",
     "ms-vsliveshare.vsliveshare",
     "vivaxy.vscode-conventional-commits",
-    "bierner.color-info"
+    "bierner.color-info",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "usernamehw.errorlens"
   ]
 }
