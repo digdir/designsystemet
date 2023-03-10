@@ -4,7 +4,7 @@ import React from 'react';
 
 import classes from './NavigationCard.module.css';
 
-interface NavigationCardProps {
+export interface NavigationCardProps {
   title: string;
   color: 'red' | 'blue' | 'yellow';
   icon: React.ReactNode;
@@ -13,7 +13,7 @@ interface NavigationCardProps {
   url?: string;
 }
 
-const NavigationCard = ({
+export const NavigationCard = ({
   title,
   color = 'red',
   icon,
@@ -32,5 +32,3 @@ const NavigationCard = ({
     </Link>
   );
 };
-
-export default NavigationCard;

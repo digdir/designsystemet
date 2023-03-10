@@ -2,21 +2,40 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Picture } from '@navikt/ds-icons';
 
-import NavigationCard from '../../components/NavigationCard/NavigationCard';
+import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
+import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import Header from '../../components/Header/Header';
 
 import classes from './NavigationPageLayout.module.css';
 
-interface PageLandingLayoutProps {
-  Content: React.ReactNode;
-  data: any;
-  menu: any;
-}
+type PageItem = NavigationCardProps;
 
-interface PageLandingLayoutData {
+type PageSection = {
   title: string;
   description: string;
-  items: any[];
+  items: PageItem[];
+};
+
+type PageLandingLayoutData = {
+  title: string;
+  description: string;
+  sections: PageSection[];
+};
+
+type MenuData = {
+  title: string;
+  items: MenuItem[];
+};
+
+type MenuItem = {
+  name: string;
+  children: MenuItem[];
+};
+
+interface PageLandingLayoutProps {
+  Content: React.ReactNode;
+  data: PageLandingLayoutData;
+  menu: MenuData;
 }
 
 const NavigationPageLayout = ({
@@ -69,7 +88,7 @@ const NavigationPageLayout = ({
               <p className={classes.desc}>{data.description}</p>
 
               <div className={classes.sections}>
-                {data.sections.map((item: any, index: number) => (
+                {data.sections.map((item, index: number) => (
                   <div
                     className={classes.section}
                     key={index}
@@ -82,7 +101,7 @@ const NavigationPageLayout = ({
                       className='gy-4'
                       key={index}
                     >
-                      {item.items.map((item: any, index: number) => (
+                      {item.items.map((item, index: number) => (
                         <Col
                           key={index}
                           md={4}
