@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Hamburger, Close } from '@navikt/ds-icons';
-import { useState } from 'react';
 import cn from 'classnames';
 
 import classes from './Header.module.css';
@@ -38,10 +39,12 @@ const Header = () => {
       >
         <div className={classes.left}>
           <Link href='/'>
-            <img
+            <Image
               className={classes.logo}
               src='/img/logo-positive.svg'
               alt='Logo'
+              width={752}
+              height={79}
             />
           </Link>
         </div>

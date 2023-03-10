@@ -1,4 +1,4 @@
-import React, { useState, Children, useEffect } from 'react';
+import React, { useState, Children, useEffect, useCallback } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
@@ -22,11 +22,7 @@ const PreviewItem = ({ component, args }: PreviewItemProps) => {
 const Preview = ({ children, backgroundColor = 'light' }: PreviewProps) => {
   const [showCode, setShowCode] = useState(false);
 
-  useEffect(() => {
-    getString();
-  }, []);
-
-  const getString = () => {
+  const getString = useCallback(() => {
     let s = '';
 
     if (React.Children.toArray(children).length > 1) {
@@ -48,7 +44,11 @@ const Preview = ({ children, backgroundColor = 'light' }: PreviewProps) => {
     }
 
     return s;
-  };
+  }, [children]);
+
+  useEffect(() => {
+    getString();
+  }, [getString]);
 
   return (
     <div className={classes[backgroundColor]}>

@@ -12,7 +12,6 @@ import Tippy from '@tippyjs/react';
 import classes from './CodeSnippet.module.css';
 
 const CodeSnippet = ({ language = 'markup', children = '' }) => {
-  const [showToolTip, setShowToolTip] = useState(false);
   const [toolTipText, setToolTipText] = useState('Kopier');
 
   if (language === 'css' || language === 'scss') {
@@ -61,7 +60,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
           onClick={() => onButtonClick()}
           className={classes['code-snippet__icon']}
         >
-          <Copy size={20} />
+          <Copy scale={16} />
         </button>
       </Tippy>
       <SyntaxHighlighter

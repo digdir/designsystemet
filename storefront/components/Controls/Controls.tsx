@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  RadioGroup,
-  RadioGroupSize,
-  CheckboxGroup,
-} from '@digdir/design-system-react';
+import { RadioGroup, RadioGroupSize } from '@digdir/design-system-react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
@@ -21,7 +17,7 @@ const Controls = ({ component, argTypes }: ControlsProps) => {
   useEffect(() => {
     setControls({ children: 'Button' });
 
-    Object.keys(argTypes).map((item, index) => {
+    Object.keys(argTypes).map((item) => {
       if (argTypes[item].control) {
         setControls((state) => ({
           ...state,
@@ -29,7 +25,7 @@ const Controls = ({ component, argTypes }: ControlsProps) => {
         }));
       }
     });
-  }, []);
+  }, [argTypes]);
 
   const onRadioChanged = (prop: string, value: string | undefined) => {
     console.log(prop, value);

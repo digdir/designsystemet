@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap';
 import React from 'react';
 import cn from 'classnames';
+import Image from 'next/image';
 
 import classes from './Section.module.css';
 
@@ -23,7 +24,7 @@ const Section = ({
         <div className={classes.header}>
           {title && <h2 className={classes.title}>{title}</h2>}
           {detail && (
-            <img
+            <Image
               src='img/diamond-logo.svg'
               alt=''
               className={classes.detail}

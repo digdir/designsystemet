@@ -4,7 +4,7 @@ import { Picture } from '@navikt/ds-icons';
 
 import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
-import NavigationCard from '../../components/NavigationCard/NavigationCard';
+import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 
 import classes from './SubjectsLayout.module.css';
 

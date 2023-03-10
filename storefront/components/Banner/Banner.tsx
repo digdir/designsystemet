@@ -1,6 +1,7 @@
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import cn from 'classnames';
-import { Button, ButtonSize } from '@digdir/design-system-react';
+// import { Button, ButtonSize } from '@digdir/design-system-react';
 
 import { Tag } from '../Tag/Tag';
 
