@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { SystemFilled } from '@navikt/ds-icons';
+import cn from 'classnames';
 
 import classes from './NavigationCard.module.css';
-
-import cn from 'classnames';
 
 interface NavigationCardProps {
   name: string;

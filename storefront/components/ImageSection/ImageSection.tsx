@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
+import Image from 'next/image';
 
 import classes from './ImageSection.module.css';
 
@@ -9,6 +10,8 @@ interface ImageSectionProps {
   src: string;
   content?: React.ReactNode;
   id?: string;
+  width: number;
+  height: number;
 }
 
 const ImageSection = ({
@@ -17,6 +20,8 @@ const ImageSection = ({
   src,
   content,
   id,
+  width,
+  height,
 }: ImageSectionProps) => {
   return (
     <div
@@ -26,10 +31,12 @@ const ImageSection = ({
       <Container>
         <Row className='justify-content-center align-items-center'>
           <Col md={4}>
-            <img
+            <Image
               className={classes.img}
               src={src}
-              alt='Image'
+              alt='section'
+              height={height}
+              width={width}
             />
           </Col>
           <Col md={1}></Col>

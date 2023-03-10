@@ -8,7 +8,7 @@ const getServerSideProps = async (context: any) => {
   const { resolvedUrl } = context;
   const urlArray = resolvedUrl.split('/');
   let showMenu = true;
-  let files = [];
+  const files = [];
 
   // Don't show menu if root level page
   // if (urlArray.length === 2) {

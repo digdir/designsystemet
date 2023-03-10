@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Link from 'next/link';
-import { capitalizeString } from '../../utils/StringHelpers';
+import Image from 'next/image';
 
+import { capitalizeString } from '../../utils/StringHelpers';
 import Header from '../../components/Header/Header';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 
@@ -38,9 +39,10 @@ const ComponentsLayout = ({ Content, data, menu }: ComponentsLayoutProps) => {
                     <Link
                       href={'/' + item.url}
                       className={classes.box}
+                      key={index}
                     >
                       <div className={classes.container}>
-                        <img
+                        <Image
                           src={'/img/component-previews/' + item.title + '.png'}
                           alt=''
                         />

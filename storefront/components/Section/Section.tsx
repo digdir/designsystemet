@@ -1,7 +1,9 @@
-import classes from './Section.module.css';
 import { Container } from 'react-bootstrap';
 import React from 'react';
 import cn from 'classnames';
+import Image from 'next/image';
+
+import classes from './Section.module.css';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -22,7 +24,7 @@ const Section = ({
         <div className={classes.header}>
           {title && <h2 className={classes.title}>{title}</h2>}
           {detail && (
-            <img
+            <Image
               src='img/diamond-logo.svg'
               alt=''
               className={classes.detail}

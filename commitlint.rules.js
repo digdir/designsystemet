@@ -1,5 +1,5 @@
 module.exports = {
-    rules: {
-        'subject-case': [0]
-    }
-}
+  rules: {
+    'subject-case': [0],
+  },
+};

@@ -4,7 +4,7 @@ import { Picture } from '@navikt/ds-icons';
 
 import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
-import NavigationCard from '../../components/NavigationCard/NavigationCard';
+import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 
 import classes from './SubjectsLayout.module.css';
 
@@ -22,10 +22,7 @@ interface SubjectsLayoutData {
 const SubjectsLayout = ({ Content, data }: SubjectsLayoutProps) => {
   return (
     <div>
-      <style
-        jsx
-        global
-      >{`
+      <style>{`
         body {
           background: #f4f5f6;
         }

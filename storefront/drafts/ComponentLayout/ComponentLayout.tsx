@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import Image from 'next/image';
 
 import Header from '../../components/Header/Header';
 import { TableOfContents } from '../../components/TableOfContents/TableOfContents';
@@ -51,7 +52,7 @@ const ComponentLayout = ({ data, content, menu }: ComponentLayoutProps) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <img
+                    <Image
                       src='/img/logos/storybook-logo.png'
                       alt='Storybook'
                     />
@@ -63,7 +64,7 @@ const ComponentLayout = ({ data, content, menu }: ComponentLayoutProps) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <img
+                    <Image
                       src='/img/logos/figma-logo.png'
                       alt='Figma'
                     />
@@ -75,7 +76,7 @@ const ComponentLayout = ({ data, content, menu }: ComponentLayoutProps) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <img
+                    <Image
                       src='/img/logos/github-logo.svg'
                       alt='Github'
                     />
@@ -87,7 +88,7 @@ const ComponentLayout = ({ data, content, menu }: ComponentLayoutProps) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <img
+                    <Image
                       src='/img/logos/changelog-logo.png'
                       alt='Endringslogg'
                     />

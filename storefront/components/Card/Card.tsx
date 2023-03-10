@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+
 import classes from './Card.module.css';
 
 interface CardProps {

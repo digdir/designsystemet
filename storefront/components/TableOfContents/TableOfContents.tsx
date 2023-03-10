@@ -10,7 +10,7 @@ const TableOfContents = () => {
         <li className={classes.item}>
           <a
             className={classes.link}
-            href='#'
+            href='#/'
           >
             Varianter
           </a>
@@ -18,7 +18,7 @@ const TableOfContents = () => {
         <li className={classes.item}>
           <a
             className={classes.link}
-            href='#'
+            href='#/'
           >
             Bruk
           </a>
@@ -26,7 +26,7 @@ const TableOfContents = () => {
         <li className={classes.item}>
           <a
             className={classes.link}
-            href='#'
+            href='#/'
           >
             Størrelser
           </a>
@@ -34,7 +34,7 @@ const TableOfContents = () => {
         <li className={classes.item}>
           <a
             className={classes.link}
-            href='#'
+            href='#/'
           >
             Tilgjengelighet
           </a>

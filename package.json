@@ -19,7 +19,9 @@
     "add-component-core": "node scripts/add-component.mjs",
     "lerna:version": "lerna version  --conventional-commits --no-private",
     "lerna:publish": "lerna publish from-git",
-    "build:tokens": "yarn workspace @digdir/design-system-tokens build"
+    "build:tokens": "yarn workspace @digdir/design-system-tokens build",
+    "lint": "eslint",
+    "lint:all": "eslint ."
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
@@ -32,6 +34,7 @@
     "@etchteam/storybook-addon-status": "^4.2.2",
     "@mdx-js/react": "1.6.22",
     "@navikt/ds-icons": "^1.5.9",
+    "@next/eslint-plugin-next": "^13.2.4",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-image": "^3.0.1",
     "@rollup/plugin-json": "^5.0.2",

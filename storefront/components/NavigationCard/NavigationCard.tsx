@@ -1,10 +1,10 @@
-import classes from './NavigationCard.module.css';
 import Link from 'next/link';
-
 import cn from 'classnames';
 import React from 'react';
 
-interface NavigationCardProps {
+import classes from './NavigationCard.module.css';
+
+export interface NavigationCardProps {
   title: string;
   color: 'red' | 'blue' | 'yellow';
   icon: React.ReactNode;
@@ -13,7 +13,7 @@ interface NavigationCardProps {
   url?: string;
 }
 
-const NavigationCard = ({
+export const NavigationCard = ({
   title,
   color = 'red',
   icon,
@@ -32,5 +32,3 @@ const NavigationCard = ({
     </Link>
   );
 };
-
-export default NavigationCard;

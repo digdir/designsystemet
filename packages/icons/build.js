@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
 
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 import { transform } from '@svgr/core';
 import camelcase from 'camelcase';
-import babel from '@babel/core';
+import { transformAsync } from '@babel/core';
 import { minify } from 'terser';
 
 const outputPath = './';
@@ -22,7 +22,7 @@ async function transformSVGtoJSX(file, componentName, format) {
     },
     { componentName },
   );
-  const { code } = await babel.transformAsync(svgReactContent, {
+  const { code } = await transformAsync(svgReactContent, {
     presets: [['@babel/preset-react', { useBuiltIns: true }]],
   });
 
@@ -60,9 +60,9 @@ function indexFileContent(files, format, includeExtension = true) {
 async function buildIcons(format = 'esm') {
   let outDir = outputPath;
   if (format === 'esm') {
-    outDir = `${outputPath}/esm`;
+    outDir = `${outputPath}/dist/esm`;
   } else {
-    outDir = `${outputPath}/cjs`;
+    outDir = `${outputPath}/dist/cjs`;
   }
 
   await fs.mkdir(outDir, { recursive: true });
@@ -98,11 +98,7 @@ async function buildIcons(format = 'esm') {
 
 (function main() {
   console.log('🏗 Building icon package...');
-  new Promise((resolve) => {
-    rimraf(`${outputPath}/esm`, () => {
-      rimraf(`${outputPath}/cjs`, resolve);
-    });
-  })
+  rimraf(`${outputPath}/dist`)
     .then(() => Promise.all([buildIcons('cjs'), buildIcons('esm')]))
     .then(() => console.log('✅ Finished building package.'));
 })();

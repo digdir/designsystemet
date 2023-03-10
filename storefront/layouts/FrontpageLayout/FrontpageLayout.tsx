@@ -4,7 +4,7 @@ import { Email } from '@navikt/ds-icons';
 
 import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
-import NavigationCard from '../../components/NavigationCard/NavigationCard';
+import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
 
@@ -66,6 +66,8 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           title={data.contributeSection.title}
           description={data.contributeSection.description}
           src={data.contributeSection.image}
+          width={data.contributeSection.imageWidth}
+          height={data.contributeSection.imageHeight}
           content={
             <a
               href={'mailto:' + data.contributeSection.email}

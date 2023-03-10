@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { Table } from '../Table';
 import { TableCellTag } from '../TableCells/TableCells';
 
 const PropsTable = () => {
   const getRows = () => {
-    let arr = [];
+    const arr = [];
 
     arr.push({
       row: [
