@@ -11,7 +11,6 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:@next/next/recommended',
     'plugin:prettier/recommended',
   ],
   plugins: ['import', 'react', 'jsx-a11y', 'prettier'],
@@ -32,6 +31,10 @@ module.exports = {
         '@typescript-eslint/consistent-type-exports': 'warn',
         '@typescript-eslint/consistent-type-imports': 'warn',
       },
+    },
+    {
+      files: ['storefront/**/*'],
+      extends: ['plugin:@next/next/recommended'],
     },
   ],
   rules: {
