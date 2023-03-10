@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import classes from './component-overview.module.css';
 
@@ -72,7 +72,7 @@ const ComponentOverview = () => {
     },
   ];
 
-  const setUrl = (url) => {
+  const setUrl = (url: string) => {
     if (window.location.href.includes('localhost')) {
       return '/?path=/docs/kjernekomponenter-' + url;
     } else {
@@ -90,6 +90,7 @@ const ComponentOverview = () => {
         <a
           href={setUrl(item.url)}
           className={classes.box}
+          key={index}
         >
           <div className={classes.container}>
             <img
