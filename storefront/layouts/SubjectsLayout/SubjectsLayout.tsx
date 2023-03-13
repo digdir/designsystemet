@@ -21,6 +21,10 @@ interface SubjectsLayoutData {
 
 interface SubjectsLayoutItem {
   title: string;
+  color: 'red' | 'blue' | 'yellow';
+  description: string;
+  icon: React.ReactNode;
+  url: string;
 }
 
 const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
@@ -48,7 +52,7 @@ const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
           {content}
           <Section>
             <Row className='gy-4'>
-              {data.items.map((item: any, index: number) => (
+              {data.items.map((item: SubjectsLayoutItem, index: number) => (
                 <Col
                   key={index}
                   md={4}

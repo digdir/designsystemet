@@ -11,12 +11,19 @@ import {
 import classes from './PageLayout.module.css';
 
 interface PageLayoutProps {
-  Content: React.ReactNode;
-  menu: any;
-  data: any;
+  content: React.ReactNode;
+  menu: {
+    title: string;
+    showMenu: boolean;
+    items: [];
+  };
+  data: {
+    title: string;
+    date: string;
+  };
 }
 
-const PageLayout = ({ Content, menu, data }: PageLayoutProps) => {
+const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
   return (
     <div>
       <Header />
@@ -42,7 +49,7 @@ const PageLayout = ({ Content, menu, data }: PageLayoutProps) => {
 
               <Row>
                 <Col md={11}>
-                  <div className={classes.content}>{Content}</div>
+                  <div className={classes.content}>{content}</div>
                 </Col>
               </Row>
             </Col>
