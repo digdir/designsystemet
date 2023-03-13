@@ -767,5 +767,11 @@
         "type": "typography"
       }
     }
+  },
+  "opacity": {
+    "disabled": {
+      "value": "30%",
+      "type": "opacity"
+    }
   }
 }
