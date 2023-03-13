@@ -11,10 +11,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn run clean && yarn run generate-json && yarn run generate-others",
+    "build": "yarn run clean && style-dictionary build",
     "clean": "rimraf dist",
-    "generate-json": "token-transformer ../../design-tokens src/tokens.json Base/Component,Base/Core,Base/Semantic --expandTypography",
-    "generate-others": "style-dictionary build"
+    "transform:token": "token-transformer ../../design-tokens src/tokens.json Base/Component,Base/Core,Base/Semantic --expandTypography"
   },
   "devDependencies": {
     "change-case": "^4.1.2",
