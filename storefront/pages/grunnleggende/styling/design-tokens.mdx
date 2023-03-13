@@ -1,6 +1,5 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
-import { TokensTable } from '../../../components/Table/TokenTable/TokensTable';
 export { getServerSideProps } from '../../../utils/menus/PageMenu';
 
 <Meta
@@ -56,12 +55,6 @@ og tar utgangspunkt i den vanligste standarden der **1rem = 16px**.
 
 Tekststørrelse-variablene er angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der `1rem = 16px`.
-
-<TokensTable
-  jsonKey='font_size'
-  componentName='font_size'
-  showPreview={true}
-/>
 
 ### Bruddpunkter
 
