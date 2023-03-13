@@ -89,7 +89,7 @@
 
 .button.onlyIcon {
     padding: 0.5rem;
-    width: var(--button-size);
+    height: var(--button-size);
 }
 
 /* Filled button colors */
