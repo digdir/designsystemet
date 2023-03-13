@@ -20,7 +20,7 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache --check-cache
+        run: yarn install --immutable --immutable-cache
       - name: Lint all
         run: yarn lint:all
       - name: Build
