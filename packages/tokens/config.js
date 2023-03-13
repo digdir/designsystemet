@@ -2,7 +2,7 @@
 const noCase = require('change-case').noCase;
 
 module.exports = {
-  source: ['dist/tokens.json'],
+  source: ['src/tokens.json'],
   transform: {
     /**
      * Transforms `level1.level2.another_level` to `level1-level2-another_level`
