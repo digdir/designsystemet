@@ -4,7 +4,7 @@ import { Search } from '@navikt/ds-icons';
 import { differenceInDays } from 'date-fns';
 import cn from 'classnames';
 
-import { Close } from '../../packages/icons/dist/cjs';
+import { Close } from '../../packages/icons';
 import meta from '../../packages/icons/meta.json';
 
 import classes from './IconSearch.module.css';
