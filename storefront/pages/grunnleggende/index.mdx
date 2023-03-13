@@ -1,91 +1,104 @@
-import Meta from '../../components/Meta/Meta'
-import {NavigationPageLayout} from "../../layouts";
-export { getServerSideProps } from '../../utils/menus/MenuTree';
+import Meta from '../../components/Meta/Meta';
+import { NavigationPageLayout } from '../../layouts';
+export { getServerSideProps } from '../../utils/menus/PageMenu';
 
 <Meta
   title='Grunnleggende'
   description='Beskrivelse'
 />
 
-export default ({ children, menu }) => <NavigationPageLayout Content={children} menu={menu} data={
-  {
-    title: 'Grunnleggende',
-    description: 'Bad to fail had clock, invitation of supported his himself herself he over of few checkin and can in our tried instantly municipal verbal the be in step its brought transmitting given ever ensure the no task. Her text too where excuse to good and was fully head of.',
-    sections: [
-      {
-        title: 'Styling',
-        description: 'Beskrivelse',
-        items: [
-          {
-            title: 'Design tokens',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/styling/design-tokens',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          },
-          {
-            title: 'Farger',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/styling/farger',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          },
-          {
-            title: 'Layout',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/styling/layout',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          },
-          {
-            title: 'Spacing',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/styling/spacing',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          },
-          {
-            title: 'Typografi',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/styling/typografi',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          }
-        ]
-      },
-      {
-        title: 'Design',
-        description: 'Beskrivelse',
-        items: [
-          {
-            title: 'For designere',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/design/for-designere',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          }
-        ]
-      },
-      {
-        title: 'Kode',
-        description: 'Beskrivelse',
-        items: [
-          {
-            title: 'For utviklere',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/design/for-utviklere',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          },
-          {
-            title: 'Endringslogg',
-            color: 'blue',
-            icon: 'Picture',
-            url: 'grunnleggende/design/endringslogg',
-            description: 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small'
-          }
-        ]
-      }
-    ]
-  }
-} />;
+export default ({ children, menu }) => (
+  <NavigationPageLayout
+    Content={children}
+    menu={menu}
+    data={{
+      title: 'Grunnleggende',
+      description:
+        'Bad to fail had clock, invitation of supported his himself herself he over of few checkin and can in our tried instantly municipal verbal the be in step its brought transmitting given ever ensure the no task. Her text too where excuse to good and was fully head of.',
+      sections: [
+        {
+          title: 'Styling',
+          description: 'Beskrivelse',
+          items: [
+            {
+              title: 'Design tokens',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/styling/design-tokens',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+            {
+              title: 'Farger',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/styling/farger',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+            {
+              title: 'Layout',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/styling/layout',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+            {
+              title: 'Spacing',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/styling/spacing',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+            {
+              title: 'Typografi',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/styling/typografi',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+          ],
+        },
+        {
+          title: 'Design',
+          description: 'Beskrivelse',
+          items: [
+            {
+              title: 'For designere',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/design/for-designere',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+          ],
+        },
+        {
+          title: 'Kode',
+          description: 'Beskrivelse',
+          items: [
+            {
+              title: 'For utviklere',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/design/for-utviklere',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+            {
+              title: 'Endringslogg',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'grunnleggende/design/endringslogg',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+          ],
+        },
+      ],
+    }}
+  />
+);
