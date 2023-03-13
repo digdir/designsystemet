@@ -10,6 +10,7 @@ on:
       - main
 jobs:
   checks:
+    name: Checks, builds and tests code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
