@@ -4,7 +4,10 @@ import { Email } from '@navikt/ds-icons';
 
 import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
+import {
+  NavigationCard,
+  NavigationCardProps,
+} from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
 
@@ -12,7 +15,7 @@ import classes from './FrontpageLayout.module.css';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
-  data: any;
+  data: FrontpageData;
 }
 
 interface FrontpageData {
@@ -21,13 +24,15 @@ interface FrontpageData {
   navigationCards: {
     title: string;
     description: string;
-    items: any[];
+    items: [];
   };
   contributeSection: {
     title: string;
     description: string;
     email: string;
     image: string;
+    imageWidth: number;
+    imageHeight: number;
   };
 }
 
@@ -44,20 +49,22 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
 
         <Section title={data.navigationCards.title}>
           <Row className='gy-4'>
-            {data.navigationCards.items.map((item: any, index: number) => (
-              <Col
-                key={index}
-                md={4}
-              >
-                <NavigationCard
-                  url={item.url}
-                  title={item.title}
-                  color={item.color}
-                  icon={item.icon}
-                  description={item.description}
-                />
-              </Col>
-            ))}
+            {data.navigationCards.items.map(
+              (item: NavigationCardProps, index: number) => (
+                <Col
+                  key={index}
+                  md={4}
+                >
+                  <NavigationCard
+                    url={item.url}
+                    title={item.title}
+                    color={item.color}
+                    icon={item.icon}
+                    description={item.description}
+                  />
+                </Col>
+              ),
+            )}
           </Row>
         </Section>
 

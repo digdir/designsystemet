@@ -1,5 +1,5 @@
-import Meta from '../../../components/Meta/Meta'
-import { PageLayout } from "../../../layouts";
+import Meta from '../../../components/Meta/Meta';
+import { PageLayout } from '../../../layouts';
 export { getServerSideProps } from '../../../utils/menus/PageMenu';
 
 <Meta
@@ -7,15 +7,21 @@ export { getServerSideProps } from '../../../utils/menus/PageMenu';
   description='Beskrivelse'
 />
 
-export default ({ children, menu }) => <PageLayout Content={children} menu={menu} data={
-  {
-    title: 'Typografi',
-    date: '25. mars 2023'
-  }
-}/>;
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    menu={menu}
+    data={{
+      title: 'Typografi',
+      date: '25. mars 2023',
+    }}
+  />
+);
 
 ## Heading 2
+
 asdasd
 
 ### Heading 3
+
 asdasd
