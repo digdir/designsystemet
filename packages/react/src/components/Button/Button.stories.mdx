@@ -35,6 +35,9 @@ import {ArgsTable} from "@storybook/addon-docs";
         disabled: {
             control: { type: 'boolean'}
         },
+        ariaDisabled: {
+            control: { type: 'boolean'}
+        },
         onClick: { action: 'onClick' },
         children: {
             control: { type: 'object' },
@@ -85,7 +88,7 @@ export const Template = (args) => <Button {...args} />;
 export const LoadingTemplate = (args) => {
     return (
         <Button 
-            disabled={args.disabled} 
+            ariaDisabled={args.ariaDisabled} 
             variant={args.variant} 
             size={args.size}
             color={args.color}
@@ -208,14 +211,22 @@ On through of which no the your phase more know anyone tried he when line me wha
     </Story>
 </Canvas>
 
-### Knapp som laster
+### Bruk av Spinner til å lage en knapp som laster
+Dersom du ønsker å vise brukeren at knappen laster noe kan du gjøre det ved å kombinere den med en spinner.
+
+OBS: I dette eksempelet er det brukt aria-disabled (på denne komponenten kalt ariaDisabled) til å deaktivere knappene.
+Dette er den anbefalte metoden for å vise at en knapp er deaktivert da det gjør at den fremdeles kan fokuseres på, f.eks. ved navigasjon med tab.
+Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er aktiv) noe som ofte ikke er tilfellet ved bruk av kun disabled.
+
+Det er imidlertid viktig å vite at denne prop-en ikke automatisk stopper knappen fra å trigge sin onClick metode.
+Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
 <Canvas>
     <Story
         name="Fylt med tekst og spinner"
         args={{
             size: ButtonSize.Small,
             variant: ButtonVariant.Filled,
-            disabled: true
+            ariaDisabled: true
         }}
     >
         {LoadingTemplate.bind({})}
@@ -227,7 +238,7 @@ On through of which no the your phase more know anyone tried he when line me wha
             icon,
             size: ButtonSize.Small,
             variant: ButtonVariant.Outline,
-            disabled: true
+            ariaDisabled: true
         }}
     >
         {LoadingTemplate.bind({})}
@@ -239,7 +250,7 @@ On through of which no the your phase more know anyone tried he when line me wha
             icon,
             size: ButtonSize.Small,
             variant: ButtonVariant.Quiet,
-            disabled: true
+            ariaDisabled: true
         }}
     >
         {LoadingTemplate.bind({})}

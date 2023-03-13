@@ -38,6 +38,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   dashedBorder?: boolean;
   icon?: ReactNode;
   iconPlacement?: 'right' | 'left';
+  ariaDisabled?: boolean;
 }
 
 const Button = (
@@ -51,9 +52,8 @@ const Button = (
     iconPlacement = 'left',
     icon,
     type = 'button',
+    ariaDisabled,
     className,
-    disabled,
-    onClick,
     ...restHTMLProps
   }: PropsWithChildren<ButtonProps>,
   ref?: React.Ref<HTMLButtonElement> | undefined,
@@ -72,8 +72,7 @@ const Button = (
       className,
     )}
     type={type}
-    aria-disabled={disabled}
-    onClick={disabled ? undefined : onClick}
+    aria-disabled={ariaDisabled}
   >
     {icon && iconPlacement === 'left' && (
       <SvgIcon
