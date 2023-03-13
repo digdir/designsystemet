@@ -21,9 +21,9 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable
-      - name: Lint all
-        run: yarn lint:all
       - name: Build
         run: yarn build
+      - name: Lint all
+        run: yarn lint:all
       - name: Test
         run: yarn test
