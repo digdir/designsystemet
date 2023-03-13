@@ -1125,12 +1125,6 @@
       "type": "sizing"
     }
   },
-  "opacity": {
-    "disabled": {
-      "value": "30%",
-      "type": "opacity"
-    }
-  },
   "semantic": {
     "tab_focus": {
       "outline": {

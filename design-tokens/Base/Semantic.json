@@ -38,6 +38,10 @@
           "value": "#e6eff8",
           "type": "color"
         },
+        "subtle-hover": {
+          "value": "#b3d0ea",
+          "type": "color"
+        },
         "default": {
           "value": "#0062ba",
           "type": "color"
@@ -50,6 +54,18 @@
           "value": "#00315d",
           "type": "color",
           "description": "Standard farge for handlinger"
+        },
+        "no_fill": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "nofill-hover": {
+          "value": "#e6eff8",
+          "type": "color"
+        },
+        "nofill-active": {
+          "value": "#b3d0ea",
+          "type": "color"
         }
       },
       "success": {
@@ -71,6 +87,18 @@
         },
         "active": {
           "value": "#084826",
+          "type": "color"
+        },
+        "no_fill": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "no_fill-hover": {
+          "value": "#d1f4e1",
+          "type": "color"
+        },
+        "no_fill-active": {
+          "value": "#8be4b5",
           "type": "color"
         }
       },
@@ -103,6 +131,18 @@
         },
         "active": {
           "value": "#861c2c",
+          "type": "color"
+        },
+        "no_fill": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "no_fill-hover": {
+          "value": "#f9d5db",
+          "type": "color"
+        },
+        "no_fill-action": {
+          "value": "#f3abb6",
           "type": "color"
         }
       },
@@ -726,6 +766,12 @@
         },
         "type": "typography"
       }
+    }
+  },
+  "opacity": {
+    "disabled": {
+      "value": "30%",
+      "type": "opacity"
     }
   }
 }
