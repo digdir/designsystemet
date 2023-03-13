@@ -13,11 +13,12 @@
   "scripts": {
     "build": "yarn run clean && yarn run generate-json && yarn run generate-others",
     "clean": "rimraf dist",
-    "generate-json": "token-transformer ../../design-tokens/tokens.json dist/tokens.json --expandTypography",
+    "generate-json": "token-transformer ../../design-tokens src/tokens.json Base/Component,Base/Core,Base/Semantic --expandTypography",
     "generate-others": "style-dictionary build"
   },
   "devDependencies": {
     "change-case": "^4.1.2",
+    "rimraf": "^4.4.0",
     "style-dictionary": "^3.7.2",
     "token-transformer": "^0.0.30"
   }
