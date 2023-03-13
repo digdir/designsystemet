@@ -1,0 +1,36 @@
+# Runs conventional commit check on PR
+name: Checks
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # check for the most recent release: https://github.com/CondeNast/conventional-pull-request-action/releases
+      - name: Conventional pull request
+        uses: CondeNast/conventional-pull-request-action@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commitlintRulesPath: './commitlint.rules.js'
+      - name: Use node 16 and yarn cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Lint all
+        run: yarn lint:all
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test
