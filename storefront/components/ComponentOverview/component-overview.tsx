@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import classes from './component-overview.module.css';
 
@@ -82,9 +83,11 @@ const ComponentOverview = () => {
           key={index}
         >
           <div className={classes.container}>
-            <img
+            <Image
               src={'/img/component-previews/' + item.img}
               alt=''
+              height={500}
+              width={500}
             />
           </div>
           <div className={classes.name}>{item.name}</div>

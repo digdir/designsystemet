@@ -9,7 +9,14 @@ import classes from './SidebarMenu.module.css';
 
 interface SidebarMenuProps {
   title: string;
-  items: any;
+  items: [];
+}
+
+interface SidebarMenuItem {
+  active: boolean;
+  url: string;
+  status: string;
+  title: string;
 }
 
 const SidebarMenu = ({ title, items }: SidebarMenuProps) => {
@@ -19,7 +26,7 @@ const SidebarMenu = ({ title, items }: SidebarMenuProps) => {
 
       {items.length && (
         <ul className={classes.list}>
-          {items.map((item: any, index: number) => (
+          {items.map((item: SidebarMenuItem, index: number) => (
             <li
               key={index}
               className={cn(classes.item, { [classes.active]: item.active })}
