@@ -327,43 +327,43 @@
   },
   "fontSize": {
     "0": {
-      "value": "10rem",
+      "value": "10",
       "type": "fontSizes"
     },
     "1": {
-      "value": "12rem",
+      "value": "12",
       "type": "fontSizes"
     },
     "2": {
-      "value": "14rem",
+      "value": "14",
       "type": "fontSizes"
     },
     "3": {
-      "value": "16rem",
+      "value": "16",
       "type": "fontSizes"
     },
     "4": {
-      "value": "18rem",
+      "value": "18",
       "type": "fontSizes"
     },
     "5": {
-      "value": "20rem",
+      "value": "20",
       "type": "fontSizes"
     },
     "6": {
-      "value": "24rem",
+      "value": "24",
       "type": "fontSizes"
     },
     "7": {
-      "value": "28rem",
+      "value": "28",
       "type": "fontSizes"
     },
     "8": {
-      "value": "36rem",
+      "value": "36",
       "type": "fontSizes"
     },
     "9": {
-      "value": "44rem",
+      "value": "44",
       "type": "fontSizes"
     }
   },
