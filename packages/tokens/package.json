@@ -13,7 +13,8 @@
   "scripts": {
     "build": "yarn run clean && style-dictionary build",
     "clean": "rimraf dist",
-    "transform:token": "token-transformer ../../design-tokens src/tokens.json Base/Component,Base/Core,Base/Semantic --expandTypography"
+    "transform:token": "token-transformer ../../design-tokens src/tokens.json Base/Component,Base/Core,Base/Semantic --expandTypography",
+    "transform:brand": "token-transformer ../../design-tokens src/tokens.json Brand/Digdir --expandTypography"
   },
   "devDependencies": {
     "change-case": "^4.1.2",
