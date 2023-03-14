@@ -202,67 +202,109 @@
     "border": {
       "info": {
         "default": {
-          "value": "#004e95",
+          "value": "{colors.blue.800}",
           "type": "color"
         }
       },
       "action": {
         "subtle": {
-          "value": "#e6eff8",
+          "value": "{colors.blue.100}",
           "type": "color"
         },
         "default": {
-          "value": "#0062ba",
+          "value": "{colors.blue.700}",
           "type": "color"
         },
         "hover": {
-          "value": "#004e95",
+          "value": "{colors.blue.800}",
           "type": "color"
         },
         "active": {
-          "value": "#00315d",
+          "value": "{colors.blue.900}",
           "type": "color"
         }
       },
       "neutral": {
         "default": {
-          "value": "#68707c",
+          "value": "{colors.grey.600}",
           "type": "color"
         },
         "subtle": {
-          "value": "#d2d5d8",
+          "value": "{colors.grey.300}",
           "type": "color"
         },
         "strong": {
-          "value": "#1e2b3c",
+          "value": "{colors.grey.800}",
           "type": "color"
         },
         "divider": {
-          "value": "#bcbfc5",
+          "value": "{colors.grey.400}",
           "type": "color"
         }
       },
       "success": {
         "default": {
-          "value": "#0c6536",
+          "value": "{colors.green.800}",
           "type": "color"
         }
       },
       "warning": {
         "default": {
-          "value": "#cc7005",
+          "value": "{colors.orange.600}",
           "type": "color"
         }
       },
       "danger": {
         "default": {
-          "value": "#b3253a",
+          "value": "{colors.red.600}",
           "type": "color"
         }
       },
       "tab-focus": {
         "default": {
-          "value": "#98177e",
+          "value": "{colors.purple.600}",
+          "type": "color"
+        }
+      },
+      "primary": {
+        "default": {
+          "value": "{brand.first.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.first.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.first.800}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "default": {
+          "value": "{brand.second.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.second.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.second.800}",
+          "type": "color"
+        }
+      },
+      "tertiary": {
+        "default": {
+          "value": "{brand.third.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.third.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.third.800}",
           "type": "color"
         }
       }
@@ -270,65 +312,65 @@
     "text": {
       "success": {
         "default": {
-          "value": "#0c6536",
+          "value": "{colors.green.800}",
           "type": "color"
         },
         "on_success": {
-          "value": "#ffffff",
+          "value": "{colors.white}",
           "type": "color"
         }
       },
       "neutral": {
         "default": {
-          "value": "#1e2b3c",
+          "value": "{colors.grey.800}",
           "type": "color"
         },
         "subtle": {
-          "value": "#68707c",
+          "value": "{colors.grey.600}",
           "type": "color"
         },
         "on_inverted": {
-          "value": "#ffffff",
+          "value": "{colors.white}",
           "type": "color"
         }
       },
       "action": {
         "default": {
-          "value": "#0062ba",
+          "value": "{colors.blue.700}",
           "type": "color"
         },
         "on_action": {
-          "value": "#ffffff",
+          "value": "{colors.white}",
           "type": "color"
         }
       },
       "warning": {
         "default": {
-          "value": "#995404",
+          "value": "{colors.orange.700}",
           "type": "color"
         },
         "icon_warning": {
-          "value": "#cc7005",
+          "value": "{colors.orange.600}",
           "type": "color"
         },
         "on_warning": {
-          "value": "#663802",
+          "value": "{colors.orange.800}",
           "type": "color"
         }
       },
       "danger": {
         "default": {
-          "value": "#b3253a",
+          "value": "{colors.red.600}",
           "type": "color"
         },
         "on_danger": {
-          "value": "#ffffff",
+          "value": "{colors.white}",
           "type": "color"
         }
       },
       "visited": {
         "default": {
-          "value": "#7a1265",
+          "value": "{colors.purple.700}",
           "type": "color"
         }
       }
