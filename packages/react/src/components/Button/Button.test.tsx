@@ -87,6 +87,19 @@ describe('Button', () => {
     ).toEqual(icon);
   });
 
+  it('should render as aria-disabled when aria-disabled is true regardless of variant', () => {
+    render({
+      variant: ButtonVariant.Outline,
+      color: ButtonColor.Primary,
+      size: ButtonSize.Small,
+      ariaDisabled: true,
+    });
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveAttribute('aria-disabled');
+  });
+
   it('should render as disabled when disabled is true regardless of variant', () => {
     render({
       variant: ButtonVariant.Outline,
