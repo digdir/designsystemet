@@ -8,7 +8,7 @@ import React, { useId } from 'react';
 import cn from 'classnames';
 
 import { HelpText } from '../HelpText';
-import { HelpTextSize } from '../HelpText/HelpText';
+import { HelpTextSize } from '../HelpText';
 
 import classes from './CheckboxRadioTemplate.module.css';
 
