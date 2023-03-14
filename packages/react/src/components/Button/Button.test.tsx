@@ -92,7 +92,7 @@ describe('Button', () => {
       variant: ButtonVariant.Outline,
       color: ButtonColor.Primary,
       size: ButtonSize.Small,
-      ariaDisabled: true,
+      'aria-disabled': true,
     });
 
     const button = screen.getByRole('button');
