@@ -9,15 +9,18 @@ const getServerSideProps = async (context: { resolvedUrl: string }) => {
   const { resolvedUrl } = context;
   const urlArray = resolvedUrl.split('/');
   const parentPage = urlArray[1];
-  const parentDirectory = path.join(process.cwd(), 'pages');
+  const parentDirectory = path.join(process.cwd(), 'pages/' + parentPage);
   const title = parentPage;
 
-  const pot = directoryTree(parentDirectory, { exclude: /index.mdx|_app.tsx/ });
+  const menuTree = directoryTree(parentDirectory, {
+    exclude: /index.mdx|_app.tsx/,
+  });
+
   return {
     props: {
       menu: {
         title: title,
-        items: pot.children,
+        children: menuTree.children,
       },
     },
   };

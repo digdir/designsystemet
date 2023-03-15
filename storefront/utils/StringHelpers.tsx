@@ -6,4 +6,17 @@ const convertQueryToReadable = (string: string) => {
   return string.replace('-', ' ');
 };
 
-export { capitalizeString, convertQueryToReadable };
+const removeStringExtension = (string: string) => {
+  return string.replace(/\.[^/.]+$/, '');
+};
+
+const convertMenuItemToRelativePath = (path: string) => {
+  return path.substring(path.indexOf('pages') + 5);
+};
+
+export {
+  capitalizeString,
+  convertQueryToReadable,
+  removeStringExtension,
+  convertMenuItemToRelativePath,
+};

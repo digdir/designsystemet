@@ -14,12 +14,12 @@ interface PageLayoutProps {
   content: React.ReactNode;
   menu: {
     title: string;
-    showMenu: boolean;
-    items: [];
+    children: [];
   };
   data: {
     title: string;
     date: string;
+    showMenu: boolean;
   };
 }
 
@@ -29,15 +29,13 @@ const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
       <Header />
       <main className={classes.page}>
         <Container>
-          <Row className='justify-content-center'>
-            {menu.showMenu && (
-              <Col md={2}>
-                <SidebarMenu
-                  title={capitalizeString(convertQueryToReadable(menu.title))}
-                  items={menu.items}
-                />
-              </Col>
-            )}
+          <Row>
+            <Col md={2}>
+              <SidebarMenu
+                title={capitalizeString(convertQueryToReadable(menu.title))}
+                menu={menu}
+              />
+            </Col>
             <Col
               md={8}
               className={classes.test}

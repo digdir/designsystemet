@@ -11,8 +11,8 @@ const Footer = () => {
         <Image
           src='/img/logo-negative.svg'
           alt='Logo'
-          width={752}
-          height={79}
+          width={275}
+          height={28}
         />
       </Container>
     </footer>
