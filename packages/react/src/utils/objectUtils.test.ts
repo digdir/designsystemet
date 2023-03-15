@@ -12,9 +12,13 @@ describe('objectUtils', () => {
       const object1 = { a: 1, b: 2 };
       const object2 = { a: 1, b: 3 };
       expect(objectValuesEqual(object1, object2)).toBe(false);
+      const oneProperty = { a: 1 };
+      const twoProperties = { a: 1, b: 2 };
+      expect(objectValuesEqual(oneProperty, twoProperties)).toBe(false);
+      expect(objectValuesEqual(twoProperties, oneProperty)).toBe(false);
     });
 
-    it('Compares the first levels only', () => {
+    it('Makes a shallow comparison of the properties when their values are objects', () => {
       const object1 = { a: { b: 2 } };
       const object2 = { a: { b: 2 } };
       expect(objectValuesEqual(object1, object2)).toBe(false); // Expected because object1.a !== object2.a
