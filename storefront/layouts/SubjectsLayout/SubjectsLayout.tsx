@@ -9,17 +9,25 @@ import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import classes from './SubjectsLayout.module.css';
 
 interface SubjectsLayoutProps {
-  Content: React.ReactNode;
-  data: any;
+  content: React.ReactNode;
+  data: SubjectsLayoutData;
 }
 
 interface SubjectsLayoutData {
   title: string;
   description: string;
-  items: any[];
+  items: [];
 }
 
-const SubjectsLayout = ({ Content, data }: SubjectsLayoutProps) => {
+interface SubjectsLayoutItem {
+  title: string;
+  color: 'red' | 'blue' | 'yellow';
+  description: string;
+  icon: React.ReactNode;
+  url: string;
+}
+
+const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
   return (
     <div>
       <style>{`
@@ -41,10 +49,10 @@ const SubjectsLayout = ({ Content, data }: SubjectsLayoutProps) => {
           </Row>
         </Container>
         <div>
-          {Content}
+          {content}
           <Section>
             <Row className='gy-4'>
-              {data.items.map((item: any, index: number) => (
+              {data.items.map((item: SubjectsLayoutItem, index: number) => (
                 <Col
                   key={index}
                   md={4}

@@ -1,6 +1,6 @@
-import Meta from '../components/Meta/Meta'
-import {ComponentsLayout} from "../layouts/ComponentsLayout/ComponentsLayout";
-export { getStaticProps } from '../utils/FileReaderLogic';
+import Meta from '../components/Meta/Meta';
+import { ComponentsLayout } from '../layouts/ComponentsLayout/ComponentsLayout';
+export { getServerSideProps } from '../../utils/menus/PageMenu';
 
 <Meta
   title='Komponenter'
@@ -8,10 +8,12 @@ export { getStaticProps } from '../utils/FileReaderLogic';
 />
 
 export default ({ children, menu }) => (
-    <ComponentsLayout Content={children} menu={menu}
-        data={{
-            title: 'Komponenter',
-            description: 'De enkleste og mest grunnleggende komponentene i React.'
-        }}
-    />
+  <ComponentsLayout
+    Content={children}
+    menu={menu}
+    data={{
+      title: 'Komponenter',
+      description: 'De enkleste og mest grunnleggende komponentene i React.',
+    }}
+  />
 );
