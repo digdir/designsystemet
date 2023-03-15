@@ -56,7 +56,8 @@ export const CheckboxRadioTemplate = ({
   value,
 }: CheckboxRadioTemplateProps) => {
   const randomId = useId();
-  const finalInputId = inputId ?? 'input-' + randomId;
+  const finalInputIdString = inputId ?? 'input-' + randomId;
+  const finalInputId = finalInputIdString.replace(/\s/g, '-');
   const labelId = label ? `${finalInputId}-label` : undefined;
   const descriptionId = description ? `${finalInputId}-description` : undefined;
   const showLabel = label && !hideLabel;
