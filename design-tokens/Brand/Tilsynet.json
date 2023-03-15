@@ -1,6 +1,6 @@
 {
   "brand": {
-    "first": {
+    "primary": {
       "100": {
         "value": "#efeffb",
         "type": "color"
@@ -34,7 +34,7 @@
         "type": "color"
       }
     },
-    "second": {
+    "secondary": {
       "100": {
         "value": "#ffeee1",
         "type": "color"
@@ -68,7 +68,7 @@
         "type": "color"
       }
     },
-    "third": {
+    "tertiary": {
       "100": {
         "value": "#eff6f4",
         "type": "color"

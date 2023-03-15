@@ -55,32 +55,6 @@
           }
         }
       },
-      "font_size": {
-        "header": {
-          "breakpoint_sm": {
-            "value": "{font_size.heading.h2.breakpoint_sm}",
-            "type": "fontSizes"
-          },
-          "breakpoint_md": {
-            "value": "{font_size.heading.h2.breakpoint_md}",
-            "type": "fontSizes"
-          },
-          "breakpoint_lg": {
-            "value": "{font_size.heading.h2.breakpoint_lg}",
-            "type": "fontSizes"
-          }
-        },
-        "body": {
-          "breakpoint_sm": {
-            "value": "{font_size.body.large.breakpoint_sm}",
-            "type": "fontSizes"
-          },
-          "breakpoint_md": {
-            "value": "{font_size.body.large.breakpoint_md}",
-            "type": "fontSizes"
-          }
-        }
-      },
       "space": {
         "padding": {
           "x": {
@@ -235,18 +209,6 @@
           "type": "fontWeights"
         }
       },
-      "font_size": {
-        "header": {
-          "breakpoint_sm": {
-            "value": "{font_size.400.breakpoint_sm}",
-            "type": "fontSizes"
-          },
-          "breakpoint_md": {
-            "value": "{font_size.400.breakpoint_md}",
-            "type": "fontSizes"
-          }
-        }
-      },
       "border_width": {
         "default": {
           "value": "1px",
@@ -353,16 +315,6 @@
         "small": {
           "value": "{border_width.standard}",
           "type": "borderWidth"
-        }
-      },
-      "font_size": {
-        "xs": {
-          "value": "{font_size.component-size.xs}",
-          "type": "fontSizes"
-        },
-        "sm": {
-          "value": "{font_size.component-size.sm}",
-          "type": "fontSizes"
         }
       }
     },
@@ -490,12 +442,6 @@
             "type": "sizing"
           }
         }
-      },
-      "font_size": {
-        "sm": {
-          "value": "{font_size.component-size.sm}",
-          "type": "fontSizes"
-        }
       }
     },
     "checkbox-group": {
@@ -525,12 +471,6 @@
       }
     },
     "toggle_button": {
-      "font_size": {
-        "sm": {
-          "value": "{font_size.component-size.sm}",
-          "type": "fontSizes"
-        }
-      },
       "size": {
         "min_width": {
           "sm": {
@@ -950,16 +890,6 @@
             "type": "sizing"
           }
         }
-      },
-      "font_size": {
-        "sm": {
-          "value": "{font_size.component-size.sm}",
-          "type": "fontSizes"
-        },
-        "md": {
-          "value": "{font_size.component-size.md}",
-          "type": "fontSizes"
-        }
       }
     },
     "error_message": {
@@ -975,12 +905,6 @@
         "text": {
           "value": "{semantic.text.danger.default}",
           "type": "color"
-        }
-      },
-      "font_size": {
-        "xs": {
-          "value": "{font_size.component-size.xs}",
-          "type": "fontSizes"
         }
       }
     }

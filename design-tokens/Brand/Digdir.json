@@ -1,6 +1,6 @@
 {
   "brand": {
-    "first": {
+    "primary": {
       "100": {
         "value": "#feefef",
         "type": "color",
@@ -42,7 +42,7 @@
         "description": "AA 4.7 on white"
       }
     },
-    "second": {
+    "secondary": {
       "100": {
         "value": "#fcf7e9",
         "type": "color",
@@ -84,7 +84,7 @@
         "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
       }
     },
-    "third": {
+    "tertiary": {
       "100": {
         "value": "#e9f5ff",
         "type": "color",
