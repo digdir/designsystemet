@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { RadioButton, RadioButtonSize } from '../RadioButton';
 import { FieldSet, FieldSetSize } from '../FieldSet';
 import { usePrevious, useUpdate } from '../../hooks';
-import { areItemsUnique } from '../../utils/arrayUtils';
+import { areItemsUnique } from '../../utils';
 import type { RadioButtonProps } from '../RadioButton';
 
 import classes from './RadioGroup.module.css';

@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { Checkbox } from '../Checkbox';
 import { FieldSet, FieldSetSize } from '../FieldSet';
-import { areItemsUnique, arraysEqual } from '../../utils/arrayUtils';
+import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../utils';
 import { usePrevious, useUpdate } from '../../hooks';
 import type { CheckboxProps } from '../Checkbox';
 
@@ -71,12 +71,14 @@ const CheckboxGroup = ({
 
   const [checkedNames, dispatch] = useReducer(reducer, checkedItems(items));
 
-  const itemsAsString = JSON.stringify(items);
-
-  useUpdate(
-    () => dispatch({ type: 'reset', state: checkedItems(items) }),
-    [itemsAsString],
-  );
+  const prevItems = usePrevious([...items]);
+  useUpdate(() => {
+    if (
+      items.length !== prevItems?.length ||
+      items.some((item, index) => !objectValuesEqual(item, prevItems[index]))
+    )
+      dispatch({ type: 'reset', state: checkedItems(items) });
+  });
 
   const prevCheckedNames = usePrevious(checkedNames);
 
