@@ -1,14 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { noCase } from 'change-case';
-import { extend } from 'style-dictionary';
+import StyleDictionaryCore from 'style-dictionary';
 import type { Config } from 'style-dictionary';
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
-const brands: Brands[] = ['Digdir', 'Tilsynet'];
+const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
 
 const getStyleDictionaryConfig = (brand: Brands): Config => {
   const tokensPath = '../../design-tokens';
-  const distFolder = `dist/${brand}`;
+  const distFolder = `dist/${brand.toLowerCase()}`;
   return {
     source: [
       `${tokensPath}/Brand/${brand}.json`,
@@ -74,7 +74,9 @@ brands.map((brand) => {
   console.log('\n==============================================');
   console.log(`\nProcessing: ${brand}`);
 
-  const StyleDictionary = extend(getStyleDictionaryConfig(brand));
+  const StyleDictionary = StyleDictionaryCore.extend(
+    getStyleDictionaryConfig(brand),
+  );
 
   StyleDictionary.buildAllPlatforms();
 

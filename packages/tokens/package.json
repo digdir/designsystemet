@@ -4,9 +4,9 @@
   "description": "Tokens for the Digdir Common Design System",
   "repository": "https://github.com/digdir/designsystem",
   "license": "MIT",
-  "main": "dist/tokens.cjs.js",
-  "module": "dist/tokens.esm.js",
-  "types": "dist/tokens.d.ts",
+  "main": "dist/digdir/tokens.cjs.js",
+  "module": "dist/digdir/tokens.esm.js",
+  "types": "dist/digdir/tokens.d.ts",
   "files": [
     "dist"
   ],
