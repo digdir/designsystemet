@@ -11,15 +11,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn run clean && style-dictionary build",
-    "clean": "rimraf dist",
-    "transform:token": "token-transformer ../../design-tokens src/tokens.json Base/Component,Base/Core,Base/Semantic --expandTypography",
-    "transform:brand": "token-transformer ../../design-tokens src/tokens.json Brand/Digdir --expandTypography"
+    "build": "yarn run clean && ts-node ./build.ts",
+    "clean": "rimraf dist"
   },
   "devDependencies": {
     "change-case": "^4.1.2",
     "rimraf": "^4.4.0",
     "style-dictionary": "^3.7.2",
-    "token-transformer": "^0.0.30"
+    "ts-node": "^10.9.1"
   }
 }
