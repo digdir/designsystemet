@@ -35,7 +35,7 @@ import {ArgsTable} from "@storybook/addon-docs";
         disabled: {
             control: { type: 'boolean'}
         },
-        ariaDisabled: {
+        'aria-disabled': {
             control: { type: 'boolean'}
         },
         onClick: { action: 'onClick' },
@@ -88,7 +88,7 @@ export const Template = (args) => <Button {...args} />;
 export const LoadingTemplate = (args) => {
     return (
         <Button 
-            aria-disabled={args.ariaDisabled} 
+            aria-disabled={args['aria-disabled']} 
             variant={args.variant} 
             size={args.size}
             color={args.color}
@@ -226,7 +226,7 @@ Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din
         args={{
             size: ButtonSize.Small,
             variant: ButtonVariant.Filled,
-            ariaDisabled: true
+            'aria-disabled': true
         }}
     >
         {LoadingTemplate.bind({})}
@@ -238,7 +238,7 @@ Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din
             icon,
             size: ButtonSize.Small,
             variant: ButtonVariant.Outline,
-            ariaDisabled: true
+            'aria-disabled': true
         }}
     >
         {LoadingTemplate.bind({})}
@@ -250,7 +250,7 @@ Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din
             icon,
             size: ButtonSize.Small,
             variant: ButtonVariant.Quiet,
-            ariaDisabled: true
+            'aria-disabled': true
         }}
     >
         {LoadingTemplate.bind({})}
