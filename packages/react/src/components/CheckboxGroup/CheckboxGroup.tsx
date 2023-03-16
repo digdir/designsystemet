@@ -28,7 +28,7 @@ export interface CheckboxGroupProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
-  helpText?: string;
+  helpText?: ReactNode;
   items: CheckboxGroupItem[];
   legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;

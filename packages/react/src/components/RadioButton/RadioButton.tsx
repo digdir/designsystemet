@@ -20,7 +20,7 @@ export interface RadioButtonProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: boolean;
-  helpText?: string;
+  helpText?: ReactNode;
   hideLabel?: boolean;
   label?: ReactNode;
   name: string;

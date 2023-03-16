@@ -23,7 +23,7 @@ export interface CheckboxRadioTemplateProps {
   className?: string;
   description?: ReactNode;
   disabled?: boolean;
-  helpText?: string;
+  helpText?: ReactNode;
   hideInput?: boolean;
   hideLabel?: boolean;
   inputId?: string;
