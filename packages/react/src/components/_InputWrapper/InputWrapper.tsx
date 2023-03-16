@@ -2,7 +2,7 @@ import React, { useId } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
-import type { ReadOnlyVariant, InputVariant } from './utils';
+import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
 import { Icon } from './Icon';
 import classes from './InputWrapper.module.css';
@@ -10,7 +10,7 @@ import classes from './InputWrapper.module.css';
 type InputRendererProps = {
   className: string;
   inputId: string;
-  variant: InputVariant;
+  variant: InputVariant_;
 };
 
 export interface InputWrapperProps {
@@ -22,7 +22,7 @@ export interface InputWrapperProps {
   label?: string;
   noFocusEffect?: boolean;
   noPadding?: boolean;
-  readOnly?: boolean | ReadOnlyVariant;
+  readOnly?: boolean | ReadOnlyVariant_;
 }
 
 export const InputWrapper = ({

@@ -16,7 +16,7 @@ export enum HelpTextSize {
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   title: string;
-  size?: HelpTextSize;
+  size?: 'small' | 'xsmall';
   placement?:
     | 'top'
     | 'bottom'
@@ -38,7 +38,7 @@ const HelpText = ({
   title,
   placement = 'right',
   onClick,
-  size = HelpTextSize.Small,
+  size = 'small',
   ...rest
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);

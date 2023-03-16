@@ -1,65 +1,58 @@
-export enum InputVariant {
-  Default = 'default',
-  Error = 'error',
-  Disabled = 'disabled',
-  ReadOnlyInfo = 'readonlyInfo',
-  ReadOnlyConfirm = 'readonlyConfirm',
-}
+export const inputVariants = [
+  'default',
+  'error',
+  'disabled',
+  'readonlyInfo',
+  'readonlyConfirm',
+] as const;
+export type InputVariant_ = typeof inputVariants[number];
 
-export enum ReadOnlyVariant {
-  ReadOnlyInfo = 'readonlyInfo',
-  ReadOnlyConfirm = 'readonlyConfirm',
-}
+export type ReadOnlyVariant_ = 'readonlyInfo' | 'readonlyConfirm';
 
-export enum IconVariant {
-  None = 'none',
-  Error = 'error',
-  Search = 'search',
-}
+export type IconVariant_ = 'none' | 'error' | 'search';
 
 interface GetVariantProps {
-  readOnly?: boolean | ReadOnlyVariant;
+  readOnly?: boolean | ReadOnlyVariant_;
   disabled?: boolean;
   isValid?: boolean;
   isSearch?: boolean;
 }
 
-export const getVariant = ({
+export type Variant = {
+  variant: InputVariant_;
+  iconVariant: IconVariant_;
+};
+type GetVariant = (options?: GetVariantProps) => Variant;
+
+export const getVariant: GetVariant = ({
   readOnly = false,
   disabled = false,
   isValid = true,
   isSearch = false,
-}: GetVariantProps = {}) => {
-  let iconVar = IconVariant.None;
-
-  if (isSearch) {
-    iconVar = IconVariant.Search;
+} = {}) => {
+  if (readOnly === true || readOnly === 'readonlyInfo') {
+    return {
+      variant: 'readonlyInfo',
+      iconVariant: 'none',
+    };
   }
 
-  if (disabled) {
+  if (readOnly === 'readonlyConfirm') {
     return {
-      variant: InputVariant.Disabled,
-      iconVariant: iconVar,
+      variant: 'readonlyConfirm',
+      iconVariant: 'none',
     };
-  } else if (readOnly === true || readOnly === ReadOnlyVariant.ReadOnlyInfo) {
+  }
+
+  if (isValid === false) {
     return {
-      variant: InputVariant.ReadOnlyInfo,
-      iconVariant: iconVar,
-    };
-  } else if (readOnly === ReadOnlyVariant.ReadOnlyConfirm) {
-    return {
-      variant: InputVariant.ReadOnlyConfirm,
-      iconVariant: iconVar,
-    };
-  } else if (isValid === false) {
-    return {
-      variant: InputVariant.Error,
-      iconVariant: IconVariant.Error,
+      variant: 'error',
+      iconVariant: 'error',
     };
   }
 
   return {
-    variant: InputVariant.Default,
-    iconVariant: iconVar,
+    variant: disabled ? 'disabled' : 'default',
+    iconVariant: isSearch ? 'search' : 'none',
   };
 };

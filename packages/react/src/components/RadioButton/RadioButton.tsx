@@ -2,10 +2,7 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import React from 'react';
 import cn from 'classnames';
 
-import {
-  CheckboxRadioTemplate,
-  CheckboxRadioTemplateSize,
-} from '../_CheckboxRadioTemplate';
+import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
 import classes from './RadioButton.module.css';
 
@@ -64,11 +61,7 @@ const RadioButton = ({
     name={name}
     onChange={onChange}
     presentation={presentation}
-    size={
-      size === RadioButtonSize.Xsmall
-        ? CheckboxRadioTemplateSize.Xsmall
-        : CheckboxRadioTemplateSize.Small
-    }
+    size={size === RadioButtonSize.Xsmall ? 'xsmall' : 'small'}
     type='radio'
     value={value}
   >

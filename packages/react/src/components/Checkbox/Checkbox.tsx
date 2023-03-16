@@ -2,10 +2,7 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import React from 'react';
 import cn from 'classnames';
 
-import {
-  CheckboxRadioTemplate,
-  CheckboxRadioTemplateSize,
-} from '../_CheckboxRadioTemplate';
+import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
 import classes from './Checkbox.module.css';
 
@@ -60,11 +57,7 @@ const Checkbox = ({
     name={name}
     onChange={onChange}
     presentation={presentation}
-    size={
-      compact
-        ? CheckboxRadioTemplateSize.Xsmall
-        : CheckboxRadioTemplateSize.Small
-    }
+    size={compact ? 'xsmall' : 'small'}
     type='checkbox'
   >
     <span className={classes.visibleBox}>
