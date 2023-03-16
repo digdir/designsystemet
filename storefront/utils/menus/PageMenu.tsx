@@ -2,7 +2,7 @@ import path from 'path';
 
 import directoryTree from 'directory-tree';
 
-/*
+/**
  * Create menu tree based on current route
  */
 const getServerSideProps = async (context: { resolvedUrl: string }) => {
