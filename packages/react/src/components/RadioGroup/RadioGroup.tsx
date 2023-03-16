@@ -28,7 +28,7 @@ export interface RadioGroupProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
-  helpText?: string;
+  helpText?: ReactNode;
   items: RadioGroupItem[];
   legend?: ReactNode;
   name: string;

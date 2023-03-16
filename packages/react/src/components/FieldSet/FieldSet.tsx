@@ -14,7 +14,7 @@ export interface FieldSetProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
-  helpText?: string;
+  helpText?: ReactNode;
   legend?: ReactNode;
   size?: FieldSetSize;
 }
