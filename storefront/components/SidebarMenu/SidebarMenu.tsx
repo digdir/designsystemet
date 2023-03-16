@@ -19,10 +19,10 @@ import classes from './SidebarMenu.module.css';
 interface SidebarMenuProps {
   title: string;
   menu: PageMenuDataType;
-  activePath: string;
+  activeRouterPath: string;
 }
 
-const SidebarMenu = ({ title, menu, activePath }: SidebarMenuProps) => {
+const SidebarMenu = ({ title, menu, activeRouterPath }: SidebarMenuProps) => {
   /* Convert name given from MenuTree to a readable name */
   const getListItemName = (name: string) => {
     return convertQueryToReadable(
@@ -37,7 +37,7 @@ const SidebarMenu = ({ title, menu, activePath }: SidebarMenuProps) => {
   };
   /* Check if item path in menu is equal to the activePath sent in to the component */
   const isItemActive = (path: string) => {
-    return getListItemPath(path) == activePath;
+    return getListItemPath(path) == activeRouterPath;
   };
 
   return (

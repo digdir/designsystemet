@@ -37,7 +37,7 @@ const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
               <SidebarMenu
                 title={capitalizeString(convertQueryToReadable(menu.title))}
                 menu={menu}
-                activePath={router.pathname}
+                activeRouterPath={router.pathname}
               />
             </Col>
             <Col

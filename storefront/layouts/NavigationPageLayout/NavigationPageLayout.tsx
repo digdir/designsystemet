@@ -46,7 +46,7 @@ const NavigationPageLayout = ({
               <SidebarMenu
                 title={menu.title}
                 menu={menu}
-                activePath={router.pathname}
+                activeRouterPath={router.pathname}
               />
             </Col>
             <Col
