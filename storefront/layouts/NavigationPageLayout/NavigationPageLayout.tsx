@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Picture } from '@navikt/ds-icons';
 import { useRouter } from 'next/router';
