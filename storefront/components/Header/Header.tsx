@@ -43,8 +43,8 @@ const Header = () => {
               className={classes.logo}
               src='/img/logo-positive.svg'
               alt='Logo'
-              width={752}
-              height={79}
+              width={275}
+              height={30}
             />
           </Link>
         </div>

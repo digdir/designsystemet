@@ -1,28 +1,56 @@
 import Meta from '../../components/Meta/Meta';
-import { SubjectsLayout } from '../../layouts';
+import { NavigationPageLayout } from '../../layouts';
+export { getServerSideProps } from '../../utils/menus/PageMenu';
 
 <Meta
   title='Mønstre'
   description='Beskrivelse'
 />
 
-export default ({ children }) => (
-  <SubjectsLayout
-    content={children}
+export default ({ children, menu }) => (
+  <NavigationPageLayout
+    Content={children}
+    menu={menu}
     data={{
-      title: 'Mønstre',
-      description:
-        'Bad to fail had clock, invitation of supported his himself herself he over of few checkin and can in our tried instantly municipal verbal the be in step its brought transmitting given ever ensure the no task. Her text too where excuse to good and was fully head of.',
-      items: [
+      sections: [
         {
-          title: 'Mønstre',
-          color: 'blue',
-          icon: 'Picture',
-          url: 'monstre/monstre',
-          description:
-            'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+          items: [
+            {
+              title: 'Logge inn',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'monstre/logge-inn',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+            {
+              title: 'Validering',
+              color: 'blue',
+              icon: 'Picture',
+              url: 'monstre/validering',
+              description:
+                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+            },
+          ],
         },
       ],
     }}
-  />
+
+/>
 );
+
+# Mønstre
+
+Mønstre viser hvordan håndtere spesifikke brukerfokuserte oppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.
+
+Her har vi lyst å vise eksempler og beste praksis for:
+
+- Innlogging
+- Endre passord
+- Navigering i skjema
+- Innsending av skjema
+- Signering
+- Validering
+- Problemer
+
+Sitter du på innsikt som er relevante for disse handlingsmønstrene? Del dem, og vær med på å utarbeide felles retningslinjer som kan bidra til at vi oppnår mer helhetlige tjenester på tvers.
