@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Picture } from '@navikt/ds-icons';
+import { useRouter } from 'next/router';
 
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import Header from '../../components/Header/Header';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
+import type { PageMenuDataType } from '../../utils/menus/PageMenu';
 
 import classes from './NavigationPageLayout.module.css';
 
@@ -21,21 +23,10 @@ type PageLandingLayoutData = {
   sections: PageSection[];
 };
 
-type MenuData = {
-  title: string;
-  children: MenuItem[];
-};
-
-type MenuItem = {
-  name: string;
-  children: MenuItem[];
-  path: string;
-};
-
 interface PageLandingLayoutProps {
   Content: React.ReactNode;
   data: PageLandingLayoutData;
-  menu: MenuData;
+  menu: PageMenuDataType;
 }
 
 const NavigationPageLayout = ({
@@ -43,6 +34,8 @@ const NavigationPageLayout = ({
   data,
   menu,
 }: PageLandingLayoutProps) => {
+  const router = useRouter();
+
   return (
     <div>
       <Header />
@@ -53,6 +46,7 @@ const NavigationPageLayout = ({
               <SidebarMenu
                 title={menu.title}
                 menu={menu}
+                activePath={router.pathname}
               />
             </Col>
             <Col

@@ -3,14 +3,13 @@ import path from 'path';
 import directoryTree from 'directory-tree';
 
 /*
- * Creates menu tree with siblings based on current route
+ * Create menu tree based on current route
  */
 const getServerSideProps = async (context: { resolvedUrl: string }) => {
   const { resolvedUrl } = context;
   const urlArray = resolvedUrl.split('/');
-  const parentPage = urlArray[1];
-  const parentDirectory = path.join(process.cwd(), 'pages/' + parentPage);
-  const title = parentPage;
+  const parentPageTitle = urlArray[1];
+  const parentDirectory = path.join(process.cwd(), 'pages/' + parentPageTitle);
 
   const menuTree = directoryTree(parentDirectory, {
     exclude: /index.mdx|_app.tsx/,
@@ -19,11 +18,23 @@ const getServerSideProps = async (context: { resolvedUrl: string }) => {
   return {
     props: {
       menu: {
-        title: title,
+        title: parentPageTitle,
         children: menuTree.children,
       },
     },
   };
 };
 
+type PageMenuDataType = {
+  title: string;
+  children: PageMenuItemType[];
+};
+
+type PageMenuItemType = {
+  name: string;
+  path: string;
+  children: PageMenuItemType[];
+};
+
+export type { PageMenuDataType, PageMenuItemType };
 export { getServerSideProps };

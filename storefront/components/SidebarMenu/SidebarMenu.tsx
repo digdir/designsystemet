@@ -7,31 +7,37 @@ import {
   convertQueryToReadable,
   removeStringExtension,
   convertMenuItemToRelativePath,
+  replaceBackSlashWithForwardSlash,
 } from '../../utils/StringHelpers';
+import type {
+  PageMenuDataType,
+  PageMenuItemType,
+} from '../../utils/menus/PageMenu';
 
 import classes from './SidebarMenu.module.css';
 
 interface SidebarMenuProps {
   title: string;
-  menu: {
-    children: MenuItem[];
-  };
+  menu: PageMenuDataType;
+  activePath: string;
 }
 
-interface MenuItem {
-  name: string;
-  path: string;
-  children: MenuItem[];
-}
-
-const SidebarMenu = ({ title, menu }: SidebarMenuProps) => {
+const SidebarMenu = ({ title, menu, activePath }: SidebarMenuProps) => {
+  /* Convert name given from MenuTree to a readable name */
   const getListItemName = (name: string) => {
     return convertQueryToReadable(
       capitalizeString(removeStringExtension(name)),
     );
   };
+  /* Convert path given from MenuTree to relative path with no file extension */
   const getListItemPath = (path: string) => {
-    return convertMenuItemToRelativePath(removeStringExtension(path));
+    return convertMenuItemToRelativePath(
+      removeStringExtension(replaceBackSlashWithForwardSlash(path)),
+    );
+  };
+  /* Check if item path in menu is equal to the activePath sent in to the component */
+  const isItemActive = (path: string) => {
+    return getListItemPath(path) == activePath;
   };
 
   return (
@@ -42,7 +48,7 @@ const SidebarMenu = ({ title, menu }: SidebarMenuProps) => {
 
       {menu.children && (
         <ul className={classes.list}>
-          {menu.children.map((item: MenuItem, index) => (
+          {menu.children.map((item: PageMenuItemType, index) => (
             <li
               key={index}
               className={cn(classes['list-group'], {
@@ -56,14 +62,18 @@ const SidebarMenu = ({ title, menu }: SidebarMenuProps) => {
                   </div>
                   <ul className={classes['inner-list']}>
                     {item.children &&
-                      item.children.map((item2: MenuItem, index2) => (
+                      item.children.map((item2: PageMenuItemType, index2) => (
                         <li
                           key={index2}
                           className={classes['list-item']}
                         >
                           <Link
                             href={getListItemPath(item2.path)}
-                            className={classes.link}
+                            className={cn(classes.link, {
+                              [classes['link-active']]: isItemActive(
+                                item2.path,
+                              ),
+                            })}
                           >
                             {getListItemName(item2.name)}
                           </Link>
@@ -75,7 +85,9 @@ const SidebarMenu = ({ title, menu }: SidebarMenuProps) => {
               {!item.children && (
                 <Link
                   href={getListItemPath(item.path)}
-                  className={cn(classes.link, classes['link-compact'])}
+                  className={cn(classes.link, classes['link-compact'], {
+                    [classes['link-active']]: isItemActive(item.path),
+                  })}
                 >
                   {getListItemName(item.name)}
                 </Link>
