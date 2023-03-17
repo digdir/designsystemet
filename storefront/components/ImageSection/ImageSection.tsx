@@ -1,6 +1,7 @@
 import React from 'react';
-import { Col, Row, Container } from 'react-bootstrap';
 import Image from 'next/image';
+
+import { Container } from '../Container/Container';
 
 import classes from './ImageSection.module.css';
 
@@ -9,9 +10,8 @@ interface ImageSectionProps {
   description: string;
   src: string;
   content?: React.ReactNode;
-  id?: string;
-  width: number;
-  height: number;
+  imgWidth: number;
+  imgHeight: number;
 }
 
 const ImageSection = ({
@@ -19,35 +19,27 @@ const ImageSection = ({
   description,
   src,
   content,
-  id,
-  width,
-  height,
+  imgHeight,
+  imgWidth,
 }: ImageSectionProps) => {
   return (
-    <div
-      className={classes.section}
-      id={id}
-    >
-      <Container>
-        <Row className='justify-content-center align-items-center'>
-          <Col md={4}>
-            <Image
-              className={classes.img}
-              src={src}
-              alt='section'
-              height={height}
-              width={width}
-            />
-          </Col>
-          <Col md={1}></Col>
-          <Col md={7}>
-            <h2 className={classes.title}>{title}</h2>
-            <p className={classes.desc}>{description}</p>
-            {content && content}
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Container className={classes.section}>
+      <div className={classes.left}>
+        <Image
+          className={classes.img}
+          src={src}
+          alt='Image'
+          height={imgHeight}
+          width={imgWidth}
+        />
+      </div>
+
+      <div className={classes.right}>
+        <h2 className={classes.title}>{title}</h2>
+        <p className={classes.desc}>{description}</p>
+        {content && content}
+      </div>
+    </Container>
   );
 };
 

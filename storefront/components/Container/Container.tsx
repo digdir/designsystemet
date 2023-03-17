@@ -8,11 +8,11 @@ interface ContainerProps {
   className?: string;
 }
 
-const Container = ({ children, className, ...restOfProps }: ContainerProps) => {
+const Container = ({ children, className, ...props }: ContainerProps) => {
   return (
     <div
+      {...props}
       className={cn(className, classes.container)}
-      {...restOfProps}
     >
       {children}
     </div>
