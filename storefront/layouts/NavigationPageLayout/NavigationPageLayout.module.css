@@ -32,6 +32,7 @@
 
 .content > h1 + p {
   font-size: var(--font-400);
+  line-height: 1.6em;
 }
 
 .section {
