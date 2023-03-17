@@ -27,6 +27,7 @@
   --grid-gap: var(--spacing-5);
 
   --page-spacing-top: var(--spacing-7);
+  --page-spacing-bottom: var(--spacing-7);
 }
 
 * {
