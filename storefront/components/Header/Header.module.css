@@ -1,91 +1,90 @@
 .header {
-    height: 96px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #dbdbdb;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dbdbdb;
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 32px;
 }
 
 .logo {
-    height: 29px;
+  height: 29px;
 }
 
 .toggle {
-    display: none;
-    border: none;
-    background-color: transparent;
+  display: none;
+  border: none;
+  background-color: transparent;
 }
 
 .menu {
-    display: flex;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .item {
-    list-style: none;
-    margin-left: 32px;
+  list-style: none;
+  margin-left: 32px;
 }
 
 .item a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 18px;
-    border-bottom: 3px solid transparent;
-    padding-bottom: 8px;
-    transition: 0.1s all ease-out;
+  color: inherit;
+  text-decoration: none;
+  font-size: 18px;
+  border-bottom: 3px solid transparent;
+  padding-bottom: 8px;
+  transition: 0.1s all ease-out;
 }
 
 .item a:focus,
 .item .active {
-    border-color: #6db6ea;
+  border-color: #6db6ea;
 }
 
 .item a:hover {
-    border-color: #c3c3c3;
+  border-color: #c3c3c3;
 }
 
 .item .active.link:hover {
-    border-color: #6db6ea;
+  border-color: #6db6ea;
 }
 
 @media (max-width: 991.98px) {
+  .toggle {
+    display: block;
+  }
 
-    .toggle {
-        display: block;
-    }
+  .menu {
+    border-top: 1px solid #e2e2e2;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    display: none;
+    padding: 20px 0 20px 0;
+  }
 
-   .menu {
-       border-top: 1px solid #e2e2e2;
-       position: absolute;
-       left: 0;
-       right: 0;
-       top: 100px;
-       background-color: white;
-       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-       display: flex;
-       flex-direction: column;
-       display: none;
-       padding: 20px 0 20px 0;
-   }
+  .item {
+    padding: 20px 0;
+    margin-left: 16px;
+  }
 
-    .item {
-        padding: 20px 0;
-        margin-left: 16px;
-    }
+  .active {
+    display: block;
+  }
 
-    .active {
-        display: block;
-    }
-
-    .logo {
-        height: 32px;
-    }
-
+  .logo {
+    height: 32px;
+  }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import Image from 'next/image';
+
+import { Container } from '../Container/Container';
 
 import classes from './Footer.module.css';
 
