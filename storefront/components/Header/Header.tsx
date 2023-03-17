@@ -34,7 +34,10 @@ const Header = () => {
     <header className={classes.header}>
       <div className={classes.container}>
         <div className={classes.left}>
-          <Link href='/'>
+          <Link
+            className={classes['logo-link']}
+            href='/'
+          >
             <Image
               className={classes.logo}
               src='/img/logo-positive.svg'

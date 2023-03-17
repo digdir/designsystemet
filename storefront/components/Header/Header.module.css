@@ -10,11 +10,16 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 32px;
+  padding: 0 var(--spacing-5);
 }
 
 .logo {
   height: 29px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
 }
 
 .toggle {
@@ -57,6 +62,10 @@
 }
 
 @media (max-width: 991.98px) {
+  .header {
+    height: 72px;
+  }
+
   .toggle {
     display: block;
   }
@@ -66,7 +75,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 100px;
+    top: 71px;
     background-color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -85,6 +94,7 @@
   }
 
   .logo {
-    height: 32px;
+    height: 26px;
+    width: 230px;
   }
 }
