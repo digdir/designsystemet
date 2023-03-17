@@ -27,15 +27,17 @@ import cn from 'classnames';
 
 import classes from './Popover.module.css';
 
-export enum PopoverVariant {
-  Default = 'default',
-  Info = 'info',
-  Warning = 'warning',
-  Danger = 'danger',
-}
+export const popoverVariants = [
+  'default',
+  'info',
+  'warning',
+  'danger',
+] as const;
+
+type PopoverVariant_ = typeof popoverVariants[number];
 
 interface IPopoverOptions extends HTMLAttributes<HTMLDivElement> {
-  variant?: PopoverVariant;
+  variant?: PopoverVariant_;
   arrow?: boolean;
   offset?: number;
   initialOpen?: boolean;
@@ -52,7 +54,7 @@ interface IPopoverRequiredProps {
 export type PopoverProps = IPopoverOptions & IPopoverRequiredProps;
 
 export function usePopover({
-  variant = PopoverVariant.Default,
+  variant = 'default',
   arrow,
   initialOpen,
   placement,

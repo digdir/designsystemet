@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import { HelptextFilled, Helptext } from '@navikt/ds-icons';
 
-import { Popover, PopoverVariant } from '../Popover';
+import { Popover } from '../Popover';
 import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
@@ -39,7 +39,7 @@ const HelpText = ({
   const [open, setOpen] = useState(false);
   return (
     <Popover
-      variant={PopoverVariant.Info}
+      variant='info'
       placement={placement}
       open={open}
       onOpenChange={setOpen}

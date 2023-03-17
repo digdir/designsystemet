@@ -71,3 +71,10 @@ export enum RadioButtonSize {
   Xsmall = 'xsmall',
   Small = 'small',
 }
+
+export enum PopoverVariant {
+  Default = 'default',
+  Info = 'info',
+  Warning = 'warning',
+  Danger = 'danger',
+}

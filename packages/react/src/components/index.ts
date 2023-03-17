@@ -11,7 +11,7 @@ export type { CheckboxProps } from './Checkbox';
 export { CheckboxGroup } from './CheckboxGroup';
 export type { CheckboxGroupProps, CheckboxGroupItem } from './CheckboxGroup';
 export { HelpText } from './HelpText';
-export { Popover, PopoverVariant } from './Popover';
+export { Popover } from './Popover';
 export type { PopoverProps } from './Popover';
 export { RadioButton } from './RadioButton';
 export type { RadioButtonProps } from './RadioButton';
