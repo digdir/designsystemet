@@ -52,11 +52,11 @@
 
 .link-active {
   font-weight: 500;
-  border-left: 3px solid rgb(12, 71, 197);
-  color: rgb(12, 71, 197);
+  border-left: 3px solid var(--color-link);
+  color: var(--color-link);
   padding-left: 13px;
 }
 
 .link:hover {
-  color: rgb(12, 71, 197);
+  color: var(--color-link);
 }
