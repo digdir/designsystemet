@@ -23,7 +23,7 @@
   --font-300: clamp(1rem, calc(0.95rem + 0.23vw), 1.13rem); /* 18px-16px*/
 
   --grid-max-width: 1380px;
-  --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48-16 */
+  --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
   --grid-gap: var(--spacing-5);
 
   --page-spacing-top: var(--spacing-7);
