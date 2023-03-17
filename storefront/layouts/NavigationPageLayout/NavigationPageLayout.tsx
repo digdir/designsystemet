@@ -29,7 +29,11 @@ interface PageLandingLayoutProps {
   menu: PageMenuDataType;
 }
 
-const NavigationPageLayout = ({ content, data, menu }: PageLandingLayoutProps) => {
+const NavigationPageLayout = ({
+  content,
+  data,
+  menu,
+}: PageLandingLayoutProps) => {
   const router = useRouter();
 
   return (
