@@ -88,6 +88,8 @@
     3rem
   ); /* 48-16 1200px-320px */
   --grid-gap: var(--spacing-5);
+
+  --page-spacing-top: var(--spacing-7);
 }
 
 * {

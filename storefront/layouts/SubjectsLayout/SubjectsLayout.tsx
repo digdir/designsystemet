@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from '../../components/Container/Container';
 import { Picture } from '@navikt/ds-icons';
 
 import Header from '../../components/Header/Header';
@@ -39,34 +39,24 @@ const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
       <div className={classes.element}></div>
       <div className='max-width-container main'>
         <Container>
-          <Row className=''>
-            <Col md={6}>
-              <div className={classes.box}>
-                <h1 className={classes.title}>{data.title}</h1>
-                <p className={classes.desc}>{data.description}</p>
-              </div>
-            </Col>
-          </Row>
+          <div className={classes.box}>
+            <h1 className={classes.title}>{data.title}</h1>
+            <p className={classes.desc}>{data.description}</p>
+          </div>
         </Container>
         <div>
           {content}
           <Section>
-            <Row className='gy-4'>
-              {data.items.map((item: SubjectsLayoutItem, index: number) => (
-                <Col
-                  key={index}
-                  md={4}
-                >
-                  <NavigationCard
-                    url={item.url}
-                    title={item.title}
-                    color={item.color}
-                    icon={<Picture fontSize={28} />}
-                    description={item.description}
-                  />
-                </Col>
-              ))}
-            </Row>
+            {data.items.map((item: SubjectsLayoutItem, index: number) => (
+              <NavigationCard
+                url={item.url}
+                title={item.title}
+                color={item.color}
+                icon={<Picture fontSize={28} />}
+                description={item.description}
+                key={index}
+              />
+            ))}
           </Section>
         </div>
       </div>
