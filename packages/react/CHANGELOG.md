@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.8.1...@digdir/design-system-react@0.9.0) (2023-03-17)
+
+### Bug Fixes
+
+- **Button:** Remove width in css for buttons with only icons ([#232](https://github.com/digdir/designsystem/issues/232)) ([4962e49](https://github.com/digdir/designsystem/commit/4962e49de0b69d33f6c7b884021819c6a9b5c86c))
+- **CheckboxGroup:** Improved item update handling ([#241](https://github.com/digdir/designsystem/issues/241)) ([9a157df](https://github.com/digdir/designsystem/commit/9a157dfb6805b3e54930f2d555a18c7117fab577))
+- use ReactNode in helptexts to allow rich content ([#245](https://github.com/digdir/designsystem/issues/245)) ([4469c7d](https://github.com/digdir/designsystem/commit/4469c7d653cb612e94e35b82fc97bdf622c5b5a3))
+
+### Features
+
+- **Button:** Added support for aria-disabled to button and loading button example in storybook ([#240](https://github.com/digdir/designsystem/issues/240)) ([51992e8](https://github.com/digdir/designsystem/commit/51992e8bf329e6b3cb38c0a88c36ef0ac20c9a84))
+
 ## [0.8.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.8.0...@digdir/design-system-react@0.8.1) (2023-03-09)
 
 **Note:** Version bump only for package @digdir/design-system-react
