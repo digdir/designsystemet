@@ -4,7 +4,7 @@
   --color-beta-strong: #d6d4ff;
   --color-decprecated: #ffd4d4;
 
-  /* Fluid scasling from 1200px to 320px */
+  /* Fluid spacing from 1200px to 320px */
   --spacing-1: clamp(0.38rem, calc(0.33rem + 0.23vw), 0.5rem); /* 8px-6px */
   --spacing-2: clamp(0.5rem, calc(0.41rem + 0.45vw), 0.75rem); /* 12px-8px */
   --spacing-3: clamp(0.75rem, calc(0.66rem + 0.45vw), 1rem); /* 16px-12px */
