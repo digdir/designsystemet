@@ -30,8 +30,22 @@
   --page-spacing-bottom: var(--spacing-7);
 }
 
+body {
+  color: #1e2b3c;
+  line-height: 1.5;
+}
+
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
 }
 
 h1 {
