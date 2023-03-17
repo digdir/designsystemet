@@ -46,3 +46,7 @@ main {
   overflow: hidden;
   position: relative;
 }
+
+main > div {
+  margin-bottom: auto;
+}

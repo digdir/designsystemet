@@ -1,7 +1,6 @@
 import React from 'react';
 import { Email } from '@navikt/ds-icons';
 
-import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
@@ -36,7 +35,6 @@ interface FrontpageData {
 const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
   return (
     <div>
-      <Header />
       {Content}
       <div className='max-width-container main'>
         <Banner

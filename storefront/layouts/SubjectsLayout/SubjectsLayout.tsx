@@ -1,8 +1,7 @@
 import React from 'react';
-import { Container } from '../../components/Container/Container';
 import { Picture } from '@navikt/ds-icons';
 
-import Header from '../../components/Header/Header';
+import { Container } from '../../components/Container/Container';
 import Section from '../../components/Section/Section';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 
@@ -35,7 +34,7 @@ const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
           background: #f4f5f6;
         }
       `}</style>
-      <Header />
+
       <div className={classes.element}></div>
       <div className='max-width-container main'>
         <Container>

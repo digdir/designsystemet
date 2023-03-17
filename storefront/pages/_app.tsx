@@ -8,6 +8,7 @@ import '../globals.css';
 import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';
 
+import Header from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 
 const inter = Inter({
@@ -20,6 +21,7 @@ const inter = Inter({
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <main className={inter.className}>
+      <Header />
       <Component {...pageProps} />
       <Footer />
     </main>

@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { Container } from '../../components/Container/Container';
-import Header from '../../components/Header/Header';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 import {
   convertQueryToReadable,
@@ -29,8 +28,6 @@ const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
 
   return (
     <div>
-      <Header />
-
       <Container className={classes.page}>
         <div className={classes.left}>
           <SidebarMenu

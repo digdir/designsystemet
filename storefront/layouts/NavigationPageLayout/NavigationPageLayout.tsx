@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { Container } from '../../components/Container/Container';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import Header from '../../components/Header/Header';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 import type { PageMenuDataType } from '../../utils/menus/PageMenu';
 
@@ -38,8 +37,6 @@ const NavigationPageLayout = ({
 
   return (
     <div>
-      <Header />
-
       <Container className={classes.page}>
         <div className={classes.left}>
           <SidebarMenu
