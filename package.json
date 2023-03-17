@@ -18,7 +18,7 @@
     "test": "jest",
     "add-component-core": "node scripts/add-component.mjs",
     "lerna:version": "lerna version  --conventional-commits --no-private",
-    "lerna:publish": "lerna publish from-git",
+    "lerna:publish": "lerna publish from-package",
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
     "lint": "eslint",
     "lint:all": "eslint ."
