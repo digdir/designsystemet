@@ -26,3 +26,23 @@ export enum AccordionIconVariant {
   Primary = 'primary',
   Secondary = 'secondary',
 }
+
+export enum ButtonSize {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
+}
+
+export enum ButtonColor {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Success = 'success',
+  Danger = 'danger',
+  Inverted = 'inverted',
+}
+
+export enum ButtonVariant {
+  Filled = 'filled',
+  Outline = 'outline',
+  Quiet = 'quiet',
+}
