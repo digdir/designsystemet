@@ -6,6 +6,10 @@
   letter-spacing: 0.3px;
 }
 
+.container {
+  display: flex;
+}
+
 .footer img {
   margin-right: 10px;
   height: 28px;

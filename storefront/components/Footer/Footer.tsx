@@ -8,7 +8,7 @@ import classes from './Footer.module.css';
 const Footer = () => {
   return (
     <footer className={classes.footer}>
-      <Container>
+      <Container className={classes.container}>
         <Image
           src='/img/logo-negative.svg'
           alt='Logo'
