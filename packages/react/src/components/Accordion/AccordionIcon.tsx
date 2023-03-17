@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import classes from './AccordionIcon.module.css';
-import { useAccordionContext, AccordionIconVariant } from './Context';
+import { useAccordionContext } from './Context';
 import { Arrow, CircleArrow } from './icons';
 
 const AccordionIcon = () => {
@@ -12,9 +12,9 @@ const AccordionIcon = () => {
     onClick,
   };
   switch (iconVariant) {
-    case AccordionIconVariant.Primary:
+    case 'primary':
       return <Arrow {...props} />;
-    case AccordionIconVariant.Secondary:
+    case 'secondary':
       return <CircleArrow {...props} />;
   }
 };

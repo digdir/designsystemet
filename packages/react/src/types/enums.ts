@@ -21,3 +21,8 @@ export enum IconVariant {
   Error = 'error',
   Search = 'search',
 }
+
+export enum AccordionIconVariant {
+  Primary = 'primary',
+  Secondary = 'secondary',
+}

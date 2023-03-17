@@ -1,22 +1,22 @@
 import { createContext, useContext } from 'react';
 
-export enum AccordionIconVariant {
-  Primary = 'primary',
-  Secondary = 'secondary',
-}
+export const accordionIcons = ['primary', 'secondary'] as const;
+
+export type AccordionIcons = typeof accordionIcons[number];
+
+type AccordionContext = {
+  open: boolean;
+  onClick: AccordionClickHandler;
+  headerId: string;
+  contentId: string;
+  iconVariant: 'primary' | 'secondary';
+};
 
 export type AccordionClickHandler = () => void;
 
-export const AccordionContext = createContext<
-  | {
-      open: boolean;
-      onClick: AccordionClickHandler;
-      headerId: string;
-      contentId: string;
-      iconVariant: AccordionIconVariant;
-    }
-  | undefined
->(undefined);
+export const AccordionContext = createContext<AccordionContext | undefined>(
+  undefined,
+);
 
 export const useAccordionContext = () => {
   const context = useContext(AccordionContext);

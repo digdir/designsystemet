@@ -5,4 +5,3 @@ export type { AccordionProps } from './Accordion';
 export { Accordion } from './Accordion';
 export { AccordionContent } from './AccordionContent';
 export { AccordionHeader } from './AccordionHeader';
-export { AccordionIconVariant } from './Context';

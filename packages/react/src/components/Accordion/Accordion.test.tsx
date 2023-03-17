@@ -5,7 +5,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
 import { AccordionContent } from './AccordionContent';
-import { AccordionIconVariant } from './Context';
+import { accordionIcons } from './Context';
 import { AccordionHeader } from './AccordionHeader';
 
 // Test data:
@@ -24,8 +24,8 @@ const defaultProps: AccordionProps = {
 
 // Mocks:
 jest.mock('./icons', () => ({
-  Arrow: () => <svg data-testid={AccordionIconVariant.Primary} />,
-  CircleArrow: () => <svg data-testid={AccordionIconVariant.Secondary} />,
+  Arrow: () => <svg data-testid={'primary'} />,
+  CircleArrow: () => <svg data-testid={'secondary'} />,
 }));
 
 const render = (props: Partial<AccordionProps> = {}) =>
@@ -76,13 +76,11 @@ describe('Accordion', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it.each(Object.values(AccordionIconVariant))(
+  it.each(accordionIcons)(
     `Has correct icon when icon variant is set to %s`,
     (iconVariant) => {
       render({ iconVariant });
-      const otherVariants = Object.values(AccordionIconVariant).filter(
-        (v) => v !== iconVariant,
-      );
+      const otherVariants = accordionIcons.filter((v) => v !== iconVariant);
       expect(screen.getByTestId(iconVariant)).toBeInTheDocument();
       otherVariants.forEach((v) => {
         expect(screen.queryByTestId(v)).not.toBeInTheDocument();
