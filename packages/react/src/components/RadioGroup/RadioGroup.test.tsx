@@ -3,7 +3,7 @@ import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import type { RadioGroupProps } from './RadioGroup';
-import { RadioGroup, RadioGroupVariant } from './RadioGroup';
+import { RadioGroup } from './RadioGroup';
 
 const user = userEvent.setup();
 
@@ -183,12 +183,12 @@ describe('RadioGroup', () => {
   });
 
   it('Renders with "vertical" variant class if variant is set to "Vertical"', () => {
-    render({ variant: RadioGroupVariant.Vertical });
+    render({ variant: 'vertical' });
     expect(screen.getByRole('radiogroup')).toHaveClass('vertical');
   });
 
   it('Renders with "horizontal" variant class if variant is set to "Horizontal"', () => {
-    render({ variant: RadioGroupVariant.Horizontal });
+    render({ variant: 'horizontal' });
     expect(screen.getByRole('radiogroup')).toHaveClass('horizontal');
   });
 

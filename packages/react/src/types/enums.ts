@@ -78,3 +78,8 @@ export enum PopoverVariant {
   Warning = 'warning',
   Danger = 'danger',
 }
+
+export enum RadioGroupVariant {
+  Vertical = 'vertical',
+  Horizontal = 'horizontal',
+}

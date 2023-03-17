@@ -15,7 +15,7 @@ export { Popover } from './Popover';
 export type { PopoverProps } from './Popover';
 export { RadioButton } from './RadioButton';
 export type { RadioButtonProps } from './RadioButton';
-export { RadioGroup, RadioGroupVariant } from './RadioGroup';
+export { RadioGroup } from './RadioGroup';
 export type { RadioGroupProps, RadioGroupItem } from './RadioGroup';
 export { Select } from './Select';
 export type {

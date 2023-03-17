@@ -14,11 +14,6 @@ export type RadioGroupItem = Omit<
   'checked' | 'error' | 'name' | 'onChange' | 'showLabel' | 'size'
 >;
 
-export enum RadioGroupVariant {
-  Vertical = 'vertical',
-  Horizontal = 'horizontal',
-}
-
 export interface RadioGroupProps {
   description?: ReactNode;
   disabled?: boolean;
@@ -31,7 +26,7 @@ export interface RadioGroupProps {
   presentation?: boolean;
   size?: 'small' | 'xsmall';
   value?: string;
-  variant?: RadioGroupVariant;
+  variant?: 'vertical' | 'horizontal';
 }
 
 const RadioGroup = ({
@@ -46,7 +41,7 @@ const RadioGroup = ({
   presentation,
   size = 'small',
   value,
-  variant = RadioGroupVariant.Vertical,
+  variant = 'vertical',
 }: RadioGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.value))) {
     throw Error('Each value in the radio group must be unique.');
