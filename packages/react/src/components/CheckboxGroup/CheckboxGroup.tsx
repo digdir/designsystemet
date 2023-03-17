@@ -16,11 +16,6 @@ export type CheckboxGroupItem = Pick<
 > &
   Required<Pick<CheckboxProps, 'name'>>;
 
-export enum CheckboxGroupVariant {
-  Vertical = 'vertical',
-  Horizontal = 'horizontal',
-}
-
 export type CheckedNames = string[];
 
 export interface CheckboxGroupProps {
@@ -33,7 +28,7 @@ export interface CheckboxGroupProps {
   legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;
   presentation?: boolean;
-  variant?: CheckboxGroupVariant;
+  variant?: 'vertical' | 'horizontal';
 }
 
 type ReducerAction =
@@ -63,7 +58,7 @@ const CheckboxGroup = ({
   legend,
   onChange,
   presentation,
-  variant = CheckboxGroupVariant.Vertical,
+  variant = 'vertical',
 }: CheckboxGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.name))) {
     throw Error('Each name in the checkbox group must be unique.');

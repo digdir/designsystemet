@@ -8,7 +8,7 @@ export { FieldSet, FieldSetSize } from './FieldSet';
 export type { FieldSetProps } from './FieldSet';
 export { Checkbox } from './Checkbox';
 export type { CheckboxProps } from './Checkbox';
-export { CheckboxGroup, CheckboxGroupVariant } from './CheckboxGroup';
+export { CheckboxGroup } from './CheckboxGroup';
 export type { CheckboxGroupProps, CheckboxGroupItem } from './CheckboxGroup';
 export { HelpText, HelpTextSize } from './HelpText';
 export { Popover, PopoverVariant } from './Popover';

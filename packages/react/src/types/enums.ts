@@ -46,3 +46,8 @@ export enum ButtonVariant {
   Outline = 'outline',
   Quiet = 'quiet',
 }
+
+export enum CheckboxGroupVariant {
+  Vertical = 'vertical',
+  Horizontal = 'horizontal',
+}
