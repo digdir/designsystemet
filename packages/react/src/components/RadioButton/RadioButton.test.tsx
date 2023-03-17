@@ -4,7 +4,7 @@ import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { RadioButton, RadioButtonSize } from './';
+import { RadioButton } from './';
 import type { RadioButtonProps } from './';
 
 const user = userEvent.setup();
@@ -95,12 +95,12 @@ describe('RadioButton', () => {
   });
 
   it('Renders with "xsmall" size class by if size is set to "Xsmall"', () => {
-    const wrapper = renderAndGetWrapper({ size: RadioButtonSize.Xsmall });
+    const wrapper = renderAndGetWrapper({ size: 'xsmall' });
     expect(wrapper).toHaveClass('xsmall');
   });
 
   it('Renders with "small" size class by if size is set to "Small"', () => {
-    const wrapper = renderAndGetWrapper({ size: RadioButtonSize.Small });
+    const wrapper = renderAndGetWrapper({ size: 'small' });
     expect(wrapper).toHaveClass('small');
   });
 

@@ -1,8 +1,8 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
-import { RadioButton, RadioButtonSize } from '../RadioButton';
-import { FieldSet, FieldSetSize } from '../FieldSet';
+import { RadioButton } from '../RadioButton';
+import { FieldSet } from '../FieldSet';
 import { usePrevious, useUpdate } from '../../hooks';
 import { areItemsUnique } from '../../utils';
 import type { RadioButtonProps } from '../RadioButton';
@@ -13,11 +13,6 @@ export type RadioGroupItem = Omit<
   RadioButtonProps,
   'checked' | 'error' | 'name' | 'onChange' | 'showLabel' | 'size'
 >;
-
-export enum RadioGroupSize {
-  Xsmall = 'xsmall',
-  Small = 'small',
-}
 
 export enum RadioGroupVariant {
   Vertical = 'vertical',
@@ -34,7 +29,7 @@ export interface RadioGroupProps {
   name: string;
   onChange?: (value?: string) => void;
   presentation?: boolean;
-  size?: RadioGroupSize;
+  size?: 'small' | 'xsmall';
   value?: string;
   variant?: RadioGroupVariant;
 }
@@ -49,7 +44,7 @@ const RadioGroup = ({
   name,
   onChange,
   presentation,
-  size = RadioGroupSize.Small,
+  size = 'small',
   value,
   variant = RadioGroupVariant.Vertical,
 }: RadioGroupProps) => {
@@ -75,11 +70,6 @@ const RadioGroup = ({
   const changeHandler = (val: string) => (e: ChangeEvent<HTMLInputElement>) =>
     e.target.checked && setCheckedValue(val);
 
-  const [fieldSetSize, radioButtonSize] =
-    size === RadioGroupSize.Xsmall
-      ? [FieldSetSize.Xsmall, RadioButtonSize.Xsmall]
-      : [FieldSetSize.Small, RadioButtonSize.Small];
-
   return (
     <FieldSet
       description={description}
@@ -87,7 +77,7 @@ const RadioGroup = ({
       error={error}
       helpText={helpText}
       legend={legend}
-      size={fieldSetSize}
+      size={size}
     >
       <div
         className={[classes.radioGroup, classes[variant], classes[size]].join(
@@ -106,7 +96,7 @@ const RadioGroup = ({
             name={name}
             onChange={changeHandler(radio.value)}
             presentation={presentation}
-            size={radioButtonSize}
+            size={size}
           />
         ))}
       </div>

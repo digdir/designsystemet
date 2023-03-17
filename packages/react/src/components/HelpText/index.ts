@@ -1,1 +1,1 @@
-export { HelpText, HelpTextSize } from './HelpText';
+export { HelpText } from './HelpText';

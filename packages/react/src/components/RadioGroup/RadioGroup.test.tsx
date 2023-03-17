@@ -3,7 +3,7 @@ import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import type { RadioGroupProps } from './RadioGroup';
-import { RadioGroup, RadioGroupSize, RadioGroupVariant } from './RadioGroup';
+import { RadioGroup, RadioGroupVariant } from './RadioGroup';
 
 const user = userEvent.setup();
 
@@ -193,12 +193,12 @@ describe('RadioGroup', () => {
   });
 
   it('Renders with "xsmall" size class if size is set to "Xsmall"', () => {
-    render({ size: RadioGroupSize.Xsmall });
+    render({ size: 'xsmall' });
     expect(screen.getByRole('radiogroup')).toHaveClass('xsmall');
   });
 
   it('Renders with "small" size class if size is set to "Small"', () => {
-    render({ size: RadioGroupSize.Small });
+    render({ size: 'small' });
     expect(screen.getByRole('radiogroup')).toHaveClass('small');
   });
 

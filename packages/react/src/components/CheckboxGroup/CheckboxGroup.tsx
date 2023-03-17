@@ -3,7 +3,7 @@ import React, { useReducer } from 'react';
 import cn from 'classnames';
 
 import { Checkbox } from '../Checkbox';
-import { FieldSet, FieldSetSize } from '../FieldSet';
+import { FieldSet } from '../FieldSet';
 import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../utils';
 import { usePrevious, useUpdate } from '../../hooks';
 import type { CheckboxProps } from '../Checkbox';
@@ -96,7 +96,7 @@ const CheckboxGroup = ({
       error={error}
       helpText={helpText}
       legend={legend}
-      size={compact ? FieldSetSize.Xsmall : FieldSetSize.Small}
+      size={compact ? 'xsmall' : 'small'}
     >
       {items.map((item) => (
         <Checkbox

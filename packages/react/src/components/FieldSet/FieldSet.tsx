@@ -3,7 +3,6 @@ import React from 'react';
 import cn from 'classnames';
 
 import { ErrorMessage, HelpText } from '../';
-import { HelpTextSize } from '../HelpText/HelpText';
 
 import classes from './FieldSet.module.css';
 
@@ -16,12 +15,7 @@ export interface FieldSetProps {
   error?: ReactNode;
   helpText?: ReactNode;
   legend?: ReactNode;
-  size?: FieldSetSize;
-}
-
-export enum FieldSetSize {
-  Xsmall = 'xsmall',
-  Small = 'small',
+  size?: 'xsmall' | 'small';
 }
 
 const FieldSet = ({
@@ -33,10 +27,8 @@ const FieldSet = ({
   error,
   helpText,
   legend,
-  size = FieldSetSize.Small,
+  size = 'small',
 }: FieldSetProps) => {
-  const helpTextSize =
-    size === FieldSetSize.Xsmall ? HelpTextSize.Xsmall : HelpTextSize.Small;
   return (
     <fieldset
       className={cn(classes.fieldSet, classes[size], className)}
@@ -48,7 +40,7 @@ const FieldSet = ({
             <span className={classes.legendContent}>{legend}</span>
             {helpText && (
               <HelpText
-                size={helpTextSize}
+                size={size}
                 title={`Help text for ${legend}`}
               >
                 {helpText}

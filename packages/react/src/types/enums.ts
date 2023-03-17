@@ -51,3 +51,23 @@ export enum CheckboxGroupVariant {
   Vertical = 'vertical',
   Horizontal = 'horizontal',
 }
+
+export enum FieldSetSize {
+  Xsmall = 'xsmall',
+  Small = 'small',
+}
+
+export enum HelpTextSize {
+  Xsmall = 'xsmall',
+  Small = 'small',
+}
+
+export enum RadioGroupSize {
+  Xsmall = 'xsmall',
+  Small = 'small',
+}
+
+export enum RadioButtonSize {
+  Xsmall = 'xsmall',
+  Small = 'small',
+}

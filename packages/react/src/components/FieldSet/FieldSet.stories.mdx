@@ -1,20 +1,23 @@
-import {Meta, Canvas, Story} from '@storybook/addon-docs'
-import {FieldSet, FieldSetSize} from "./index";
-import {BetaBlock, TokensTable} from "../../../../../docs-components";
-import {ArgsTable} from "@storybook/addon-docs";
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { FieldSet } from './index';
+import { FieldSetSize } from '../../types/enums';
+import { BetaBlock, TokensTable } from '../../../../../docs-components';
+import { ArgsTable } from '@storybook/addon-docs';
 
 <Meta
-    title="Kjernekomponenter/FieldSet"
-    component={FieldSet}
-    parameters={{
-        status: {
-            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
-    }}
+  title='Kjernekomponenter/FieldSet'
+  component={FieldSet}
+  parameters={{
+    status: {
+      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      url: 'http://www.url.com/status',
+    },
+  }}
 />
 
-export const Template = (args) => <FieldSet {...args}>{args.children}</FieldSet>;
+export const Template = (args) => (
+  <FieldSet {...args}>{args.children}</FieldSet>
+);
 
 # FieldSet
 
@@ -25,34 +28,35 @@ export const Template = (args) => <FieldSet {...args}>{args.children}</FieldSet>
 ## Eksempel
 
 <Canvas>
-    <Story
-        name="FieldSet"
-        args={{
-            children: <p>Her er det noe innhold.</p>,
-            legend: 'Dette er en tittel',
-            description: 'Dette er en beskrivelse av innholdet.',
-            size: FieldSetSize.Small,
-            helpText: 'Help',
-        }}
-    >
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='FieldSet'
+    args={{
+      children: <p>Her er det noe innhold.</p>,
+      legend: 'Dette er en tittel',
+      description: 'Dette er en beskrivelse av innholdet.',
+      size: FieldSetSize.Small,
+      helpText: 'Help',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Egenskaper
 
 Det er mulig å legge til en tittel (`legend`) og en beskrivelse (`description`).
 Man kan legge til en hjelpetekst som vises ved aktivering av hjelpetekst-knappen
-ved å bruke `helpText`-attributten. Man kan også vise en feilmelding relatert til 
+ved å bruke `helpText`-attributten. Man kan også vise en feilmelding relatert til
 gruppen ved å bruke `error`-attributten. Setter man `disabled` til `true`, vil alle
 feltene i gruppen bli deaktivert.
 
 <ArgsTable of={FieldSet} />
 
 ## Tokens
+
 <TokensTable
-    jsonKey='component.fieldset'
-    componentName='fieldset'
-    showPreview={false}
-    description
+  jsonKey='component.fieldset'
+  componentName='fieldset'
+  showPreview={false}
+  description
 />

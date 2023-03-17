@@ -8,11 +8,6 @@ import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
 
-export enum HelpTextSize {
-  Xsmall = 'xsmall',
-  Small = 'small',
-}
-
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   title: string;
