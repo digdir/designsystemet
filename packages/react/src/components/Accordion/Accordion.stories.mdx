@@ -1,86 +1,103 @@
-import {Meta, Canvas, Story} from '@storybook/addon-docs'
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import {
-    Accordion,
-    AccordionContent,
-    AccordionHeader,
-    AccordionIconVariant,
-    Button,
-    ButtonColor,
-    ButtonSize,
-    ButtonVariant,
-} from "../";
-import {BetaBlock, TokensTable} from "../../../../../docs-components";
-import {ArgsTable} from "@storybook/addon-docs";
-import {useState} from "react";
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  Button,
+  ButtonColor,
+  ButtonSize,
+  ButtonVariant,
+} from '../';
+import { AccordionIconVariant } from '../../types/enums';
+import { BetaBlock, TokensTable } from '../../../../../docs-components';
+import { ArgsTable } from '@storybook/addon-docs';
+import { useState } from 'react';
 
 <Meta
-    title="Kjernekomponenter/Accordion"
-    component={Accordion}
-    parameters={{
-        status: {
-            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
-    }}
-    argTypes={{
-        open: {
-            control: {type: 'boolean'},
-            description: 'Sett til `true` for å vise innholdet, eller `false` for å skjule det.'
+  title='Kjernekomponenter/Accordion'
+  component={Accordion}
+  parameters={{
+    status: {
+      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      url: 'http://www.url.com/status',
+    },
+  }}
+  argTypes={{
+    open: {
+      control: { type: 'boolean' },
+      description:
+        'Sett til `true` for å vise innholdet, eller `false` for å skjule det.',
+    },
+    onClick: {
+      action: 'clicked',
+      control: { type: 'function' },
+      description: 'Funksjon som kalles når brukeren klikker på tittelen.',
+    },
+    iconVariant: {
+      control: {
+        type: 'radio',
+        labels: {
+          [AccordionIconVariant.Primary]: 'Primary',
+          [AccordionIconVariant.Secondary]: 'Secondary',
         },
-        onClick: {
-            action: 'clicked',
-            control: {type: 'function'},
-            description: 'Funksjon som kalles når brukeren klikker på tittelen.'
-        },
-        iconVariant: {
-            control: {
-                type: 'radio',
-                labels: {
-                    [AccordionIconVariant.Primary]: 'Primary',
-                    [AccordionIconVariant.Secondary]: 'Secondary'
-                }
-            },
-            options: [AccordionIconVariant.Primary, AccordionIconVariant.Secondary]
-        }
-    }}
+      },
+      options: [AccordionIconVariant.Primary, AccordionIconVariant.Secondary],
+    },
+  }}
 />
 
 export const Template = (args) => {
-    const [open, setOpen] = useState(false);
-    const onClick = () => setOpen(!open);
-    return (
-        <Accordion {...args} onClick={onClick} open={open}>
-            <AccordionHeader
-                actions={<>
-                    <Button
-                        variant={ButtonVariant.Filled}
-                        color={ButtonColor.Primary}
-                        size={ButtonSize.Small}
-                    >
-                        Separat knapp 1
-                    </Button>
-                    <Button
-                        variant={ButtonVariant.Outline}
-                        color={ButtonColor.Primary}
-                        size={ButtonSize.Small}
-                    >
-                        Separat knapp 2
-                    </Button>
-                </>}
-                subtitle='Valgfri undertittel'
+  const [open, setOpen] = useState(false);
+  const onClick = () => setOpen(!open);
+  return (
+    <Accordion
+      {...args}
+      onClick={onClick}
+      open={open}
+    >
+      <AccordionHeader
+        actions={
+          <>
+            <Button
+              variant={ButtonVariant.Filled}
+              color={ButtonColor.Primary}
+              size={ButtonSize.Small}
             >
-                Klikk her for å åpne
-            </AccordionHeader>
-            <AccordionContent>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum dolor neque, in rutrum ante auctor maximus. Suspendisse lacinia velit eros, in vehicula dui aliquet a. Sed posuere, diam ac gravida tempor, ex enim auctor massa, id aliquet nulla nibh laoreet nisi. Pellentesque volutpat mollis ex eget convallis. Nam lobortis neque sed molestie varius. Suspendisse finibus lacinia orci facilisis elementum. Maecenas bibendum vehicula urna. Integer egestas, tortor at dictum blandit, leo nibh efficitur nulla, id ultrices tortor dolor eu sem. Donec pharetra scelerisque tellus, non mattis ligula fermentum id. Vestibulum vestibulum, tortor ut lobortis gravida, libero neque accumsan tortor, eu facilisis metus mi eget justo. Nullam ac massa massa.
-            </AccordionContent>
-        </Accordion>
-    );
+              Separat knapp 1
+            </Button>
+            <Button
+              variant={ButtonVariant.Outline}
+              color={ButtonColor.Primary}
+              size={ButtonSize.Small}
+            >
+              Separat knapp 2
+            </Button>
+          </>
+        }
+        subtitle='Valgfri undertittel'
+      >
+        Klikk her for å åpne
+      </AccordionHeader>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        condimentum dolor neque, in rutrum ante auctor maximus. Suspendisse
+        lacinia velit eros, in vehicula dui aliquet a. Sed posuere, diam ac
+        gravida tempor, ex enim auctor massa, id aliquet nulla nibh laoreet
+        nisi. Pellentesque volutpat mollis ex eget convallis. Nam lobortis neque
+        sed molestie varius. Suspendisse finibus lacinia orci facilisis
+        elementum. Maecenas bibendum vehicula urna. Integer egestas, tortor at
+        dictum blandit, leo nibh efficitur nulla, id ultrices tortor dolor eu
+        sem. Donec pharetra scelerisque tellus, non mattis ligula fermentum id.
+        Vestibulum vestibulum, tortor ut lobortis gravida, libero neque accumsan
+        tortor, eu facilisis metus mi eget justo. Nullam ac massa massa.
+      </AccordionContent>
+    </Accordion>
+  );
 };
 
 # Accordion
 
-<BetaBlock/>
+<BetaBlock />
 
 "Accordion" har sitt navn fordi den kan minne om et trekkspill.
 Komponenten lar brukeren bestemme hva som skal være synlig av innhold og fungerer best som en del av en liste med flere.
@@ -88,27 +105,30 @@ Komponenten lar brukeren bestemme hva som skal være synlig av innhold og funger
 ## Eksempel
 
 <Canvas>
-    <Story
-        name="Accordion"
-        args={{
-            open: false,
-            iconVariant: AccordionIconVariant.Primary,
-        }}
-    >
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Accordion'
+    args={{
+      open: false,
+      iconVariant: AccordionIconVariant.Primary,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Props
+
 Per nå må komponentens tilstand håndteres utenfra. Dette gjøres ved å bruke egenskapene `open` og `onClick`.
 `open` brukes til å definere hvorvidt innholdet skal vises,
 mens `onClick` kalles hver gang brukeren klikker på tittelen og kan dermed brukes til å trigge en endring av `open`.
+
 <ArgsTable story='Accordion' />
 
 ## Tokens
+
 <TokensTable
-    componentName='accordion'
-    description
-    jsonKey='component.accordion'
-    showPreview={false}
+  componentName='accordion'
+  description
+  jsonKey='component.accordion'
+  showPreview={false}
 />
