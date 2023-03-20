@@ -1,156 +1,150 @@
 .banner {
-    height: 480px;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: var(--spacing-7);
+  padding-bottom: var(--spacing-7);
+  gap: var(--spacing-5);
 }
 
-@media only screen and (max-width: 991px) {
-    .banner {
-        height: auto;
-        margin-bottom: 60px;
-    }
+.left {
+  flex-basis: calc(53% - (var(--spacing-5) / 2));
+  flex-grow: 1;
 }
 
-.container {
-    height: 100%;
-    margin-top: -0px;
-    padding: 40px 16px;
+.right {
+  flex-basis: calc(47% - (var(--spacing-5) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 275px;
+  flex-grow: 1;
 }
 
 .title {
-    font-weight: 500;
-    font-size: 44px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
+  font-weight: 500;
+  font-size: var(--font-900);
+  margin-bottom: var(--spacing-3);
+  display: flex;
+  align-items: center;
 }
 
 .title > span {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .desc {
-    font-size: 20px;
-    line-height: 1.7em;
-    padding-right: 30px;
-    margin-bottom: 0;
-}
-
-.button {
-    margin-top: 30px !important;
-    padding-left: 32px !important;
-    padding-right: 32px !important;
-}
-
-.imgContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: var(--font-400);
+  line-height: 1.7em;
+  padding-right: 30px;
+  margin-bottom: 0;
 }
 
 .shapes {
-    height: 200px;
-    width: 200px;
-    position: relative;
-    animation: test 1.55s forwards ease-out;
+  height: 200px;
+  width: 200px;
+  position: relative;
+  animation: test 1.55s forwards ease-out;
 }
 
 .shape {
-    height: 92px;
-    width: 92px;
-    border-radius: 8px;
-    border: 5px solid red;
-    position: absolute;
+  height: 92px;
+  width: 92px;
+  border-radius: 8px;
+  border: 5px solid transparent;
+  position: absolute;
 }
 
 .one {
-    left: 0;
-    top: 0;
-    border-color: #F45F63;
-    animation: one 1.5s forwards ease-out;
+  left: 0;
+  top: 0;
+  border-color: #f45f63;
+  animation: one 1.5s forwards ease-out;
 }
 
-
 .two {
-    right: 0;
-    top: 0;
-    border-color: #1E98F5;
-    animation: two 1.5s forwards ease-out;
+  right: 0;
+  top: 0;
+  border-color: #1e98f5;
+  animation: two 1.5s forwards ease-out;
 }
 
 .three {
-    right: 0;
-    bottom: 0;
-    border-color: #68707C;
-    animation: three 1.5s forwards ease-out;
+  right: 0;
+  bottom: 0;
+  border-color: #68707c;
+  animation: three 1.5s forwards ease-out;
 }
 
 .four {
-    left: 0;
-    bottom: 0;
-    border-color: #E5AA20;
-    animation: four 1.5s forwards ease-out;
+  left: 0;
+  bottom: 0;
+  border-color: #e5aa20;
+  animation: four 1.5s forwards ease-out;
 }
 
 @keyframes one {
-    0% {
-        top: -100px;
-        opacity: 0;
-    }
-    100% {
-        top: 0;
-        opacity: 1;
-    }
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
 }
 @keyframes two {
-    0% {
-        right: -100px;
-        opacity: 0;
-    }
-    100% {
-        right: 0;
-        opacity: 1;
-    }
+  0% {
+    right: -100px;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
 }
 @keyframes three {
-    0% {
-        bottom: -100px;
-        opacity: 0;
-    }
-    100% {
-        bottom: 0;
-        opacity: 1;
-    }
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 @keyframes four {
-    0% {
-        left: -100px;
-        opacity: 0;
-    }
-    100% {
-        left: 0;
-        opacity: 1;
-    }
+  0% {
+    left: -100px;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
 }
 
-
 @keyframes test {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    88% {
-        transform: rotate(45deg) scale(0.95);
-    }
-    94% {
-        transform: rotate(45deg) scale(1.05);
-    }
-    100% {
-        transform: rotate(45deg) scale(1);
-    }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  88% {
+    transform: rotate(45deg) scale(0.95);
+  }
+  94% {
+    transform: rotate(45deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
 }
 
 @media (max-width: 991.98px) {
-    .imgContainer {
-        height: 300px;
-        width: 300px;
-        margin: 0 auto;
-    }
+  .imgContainer {
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+  }
 }

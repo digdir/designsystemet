@@ -1,23 +1,64 @@
 :root {
-    --bs-body-color: #1E2B3C;
-    --color-beta: #eceaff;
-    --color-beta-strong: #d6d4ff;
-    --color-decprecated: #ffd4d4;
+  --bs-body-color: #1e2b3c;
+  --color-beta: #eceaff;
+  --color-beta-strong: #d6d4ff;
+  --color-decprecated: #ffd4d4;
+  --color-link: #0062ba;
+
+  /* Fluid spacing from 1200px to 320px */
+  --spacing-1: clamp(0.38rem, calc(0.33rem + 0.23vw), 0.5rem); /* 8px-6px */
+  --spacing-2: clamp(0.5rem, calc(0.41rem + 0.45vw), 0.75rem); /* 12px-8px */
+  --spacing-3: clamp(0.75rem, calc(0.66rem + 0.45vw), 1rem); /* 16px-12px */
+  --spacing-4: clamp(1rem, calc(0.82rem + 0.91vw), 1.5rem); /* 24px-16px */
+  --spacing-5: clamp(1.5rem, calc(1.32rem + 0.91vw), 2rem); /* 32px-24px */
+  --spacing-6: clamp(2rem, calc(1.64rem + 1.82vw), 3rem); /* 48px-32px */
+  --spacing-7: clamp(3rem, calc(2.64rem + 1.82vw), 4rem); /* 64px-48px */
+  --spacing-8: clamp(4rem, calc(3.64rem + 1.82vw), 5rem); /* 80px-64px */
+
+  --font-900: clamp(2.25rem, calc(2.07rem + 0.91vw), 2.75rem); /* 44px-36px */
+  --font-800: clamp(2rem, calc(1.91rem + 0.45vw), 2.25rem); /* 36px-32px*/
+  --font-700: clamp(1.75rem, calc(1.66rem + 0.45vw), 2rem); /* 32px-28px */
+  --font-600: clamp(1.5rem, calc(1.41rem + 0.45vw), 1.75rem); /* 28px-24px */
+  --font-500: clamp(1.25rem, calc(1.16rem + 0.45vw), 1.5rem); /* 24px-20px */
+  --font-400: clamp(1.13rem, calc(1.08rem + 0.23vw), 1.25rem); /* 20px-18px */
+  --font-300: clamp(1rem, calc(0.95rem + 0.23vw), 1.13rem); /* 18px-16px*/
+
+  --grid-max-width: 1380px;
+  --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
+  --grid-gap: var(--spacing-5);
+
+  --page-spacing-top: var(--spacing-7);
+  --page-spacing-bottom: var(--spacing-7);
+}
+
+body {
+  color: #1e2b3c;
+  line-height: 1.5;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-h1 {
-    margin-top: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  margin-top: 0;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: calc(100vh);
-    overflow: hidden;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh);
+  overflow: hidden;
+  position: relative;
+}
+
+main > div {
+  margin-bottom: auto;
 }

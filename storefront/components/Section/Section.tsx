@@ -1,7 +1,8 @@
-import { Container } from 'react-bootstrap';
 import React from 'react';
 import cn from 'classnames';
 import Image from 'next/image';
+
+import { Container } from '../Container/Container';
 
 import classes from './Section.module.css';
 
