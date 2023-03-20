@@ -3,7 +3,7 @@ import React, { useReducer } from 'react';
 import cn from 'classnames';
 
 import { Checkbox } from '../Checkbox';
-import { FieldSet, FieldSetSize } from '../FieldSet';
+import { FieldSet } from '../FieldSet';
 import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../utils';
 import { usePrevious, useUpdate } from '../../hooks';
 import type { CheckboxProps } from '../Checkbox';
@@ -15,11 +15,6 @@ export type CheckboxGroupItem = Pick<
   'checked' | 'description' | 'disabled' | 'checkboxId' | 'label' | 'helpText'
 > &
   Required<Pick<CheckboxProps, 'name'>>;
-
-export enum CheckboxGroupVariant {
-  Vertical = 'vertical',
-  Horizontal = 'horizontal',
-}
 
 export type CheckedNames = string[];
 
@@ -33,7 +28,7 @@ export interface CheckboxGroupProps {
   legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;
   presentation?: boolean;
-  variant?: CheckboxGroupVariant;
+  variant?: 'vertical' | 'horizontal';
 }
 
 type ReducerAction =
@@ -63,7 +58,7 @@ const CheckboxGroup = ({
   legend,
   onChange,
   presentation,
-  variant = CheckboxGroupVariant.Vertical,
+  variant = 'vertical',
 }: CheckboxGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.name))) {
     throw Error('Each name in the checkbox group must be unique.');
@@ -101,7 +96,7 @@ const CheckboxGroup = ({
       error={error}
       helpText={helpText}
       legend={legend}
-      size={compact ? FieldSetSize.Xsmall : FieldSetSize.Small}
+      size={compact ? 'xsmall' : 'small'}
     >
       {items.map((item) => (
         <Checkbox

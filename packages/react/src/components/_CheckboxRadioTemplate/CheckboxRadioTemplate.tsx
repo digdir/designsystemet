@@ -8,14 +8,8 @@ import React, { useId } from 'react';
 import cn from 'classnames';
 
 import { HelpText } from '../HelpText';
-import { HelpTextSize } from '../HelpText';
 
 import classes from './CheckboxRadioTemplate.module.css';
-
-export enum CheckboxRadioTemplateSize {
-  Xsmall = 'xsmall',
-  Small = 'small',
-}
 
 export interface CheckboxRadioTemplateProps {
   checked?: boolean;
@@ -32,7 +26,7 @@ export interface CheckboxRadioTemplateProps {
   name?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   presentation?: boolean;
-  size: CheckboxRadioTemplateSize;
+  size: 'small' | 'xsmall';
   type: 'checkbox' | 'radio';
   value?: string;
 }
@@ -51,7 +45,7 @@ export const CheckboxRadioTemplate = ({
   name,
   onChange,
   presentation,
-  size,
+  size = 'small',
   type,
   value,
 }: CheckboxRadioTemplateProps) => {
@@ -63,10 +57,6 @@ export const CheckboxRadioTemplate = ({
   const shouldHaveClickableLabel =
     !presentation ||
     (typeof label !== 'object' && typeof description !== 'object');
-  const helpTextSize =
-    size === CheckboxRadioTemplateSize.Xsmall
-      ? HelpTextSize.Xsmall
-      : HelpTextSize.Small;
 
   return (
     <Wrapper
@@ -116,7 +106,7 @@ export const CheckboxRadioTemplate = ({
               </span>
               {helpText && (
                 <HelpText
-                  size={helpTextSize}
+                  size={size}
                   title={`Help text for ${label}`}
                 >
                   {helpText}

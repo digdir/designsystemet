@@ -1,56 +1,71 @@
-import {Meta, Canvas, Story} from '@storybook/addon-docs'
-import {TextArea} from "./";
-import {BetaBlock, TokensTable} from "../../../../../docs-components";
-import {ArgsTable} from "@storybook/addon-docs";
-import {ReadOnlyVariant} from "../_InputWrapper";
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { TextArea } from './';
+import { BetaBlock, TokensTable } from '../../../../../docs-components';
+import { ArgsTable } from '@storybook/addon-docs';
+import { ReadOnlyVariant } from '../../types/enums';
 
 <Meta
-    title="Kjernekomponenter/TextArea"
-    component={TextArea}
-    parameters={{
-        status: {
-            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
-    }}
-    argTypes={{
-        disabled: {
-            control: {type: 'boolean'},
-            defaultValue: false,
-            description: 'Deaktiverer tekstfeltet.'
-        },
-        isValid: {
-            control: {type: 'boolean'},
-            defaultValue: true,
-            description: 'Sett denne til `false` for å indikere at det er en feil relatert til innholdet i tekstfeltet. Husk å gjøre det klart for brukeren hva som er feil.'
-        },
-        label: {
-            control: {type: 'text'},
-            description: 'Tekst som beskriver hva som skal fylles inn i tekstfeltet og som vises over. Når brukeren klikker på denne, aktiveres feltet for skriving.'
-        },
-        onChange: {
-            action: 'onChange',
-            control: {type: 'function'},
-            description: 'Funksjon som kalles når brukeren endrer innholdet i tekstfeltet.'
-        },
-        readOnly: {
-            control: {type: 'radio', options: [false, true, ReadOnlyVariant.ReadOnlyInfo, ReadOnlyVariant.ReadOnlyConfirm]},
-            defaultValue: false,
-            description: 'Gjør tekstfeltet skrivebeskyttet.'
-        },
-        resize: {
-            control: {type: 'radio', options: ['none', 'both', 'horizontal', 'vertical']},
-            defaultValue: 'none',
-            description: 'Angir om brukeren skal kunne endre tekstfeltets størrelse og om dette skal være mulig vertikalt, horisontalt eller begge deler.\n- `none` gjør at brukeren ikke kan endre størrelsen.\n- `both` gjør at brukeren kan endre både høyde og bredde.\n- `horizontal` gjør at brukeren kun kan endre bredde.\n- `vertical` gjør at brukeren kun kan endre høyde.'
-        },
-        value: {
-            control: {type: 'text'},
-            description: 'Teksten som vises i tekstfeltet.'
-        },
-    }}
+  title='Kjernekomponenter/TextArea'
+  component={TextArea}
+  parameters={{
+    status: {
+      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      url: 'http://www.url.com/status',
+    },
+  }}
+  argTypes={{
+    disabled: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description: 'Deaktiverer tekstfeltet.',
+    },
+    isValid: {
+      control: { type: 'boolean' },
+      defaultValue: true,
+      description:
+        'Sett denne til `false` for å indikere at det er en feil relatert til innholdet i tekstfeltet. Husk å gjøre det klart for brukeren hva som er feil.',
+    },
+    label: {
+      control: { type: 'text' },
+      description:
+        'Tekst som beskriver hva som skal fylles inn i tekstfeltet og som vises over. Når brukeren klikker på denne, aktiveres feltet for skriving.',
+    },
+    onChange: {
+      action: 'onChange',
+      control: { type: 'function' },
+      description:
+        'Funksjon som kalles når brukeren endrer innholdet i tekstfeltet.',
+    },
+    readOnly: {
+      control: {
+        type: 'radio',
+        options: [
+          false,
+          true,
+          ReadOnlyVariant.ReadOnlyInfo,
+          ReadOnlyVariant.ReadOnlyConfirm,
+        ],
+      },
+      defaultValue: false,
+      description: 'Gjør tekstfeltet skrivebeskyttet.',
+    },
+    resize: {
+      control: {
+        type: 'radio',
+        options: ['none', 'both', 'horizontal', 'vertical'],
+      },
+      defaultValue: 'none',
+      description:
+        'Angir om brukeren skal kunne endre tekstfeltets størrelse og om dette skal være mulig vertikalt, horisontalt eller begge deler.\n- `none` gjør at brukeren ikke kan endre størrelsen.\n- `both` gjør at brukeren kan endre både høyde og bredde.\n- `horizontal` gjør at brukeren kun kan endre bredde.\n- `vertical` gjør at brukeren kun kan endre høyde.',
+    },
+    value: {
+      control: { type: 'text' },
+      description: 'Teksten som vises i tekstfeltet.',
+    },
+  }}
 />
 
-export const Template = (args) => <TextArea {...args}/>;
+export const Template = (args) => <TextArea {...args} />;
 
 # TextArea
 
@@ -61,44 +76,60 @@ export const Template = (args) => <TextArea {...args}/>;
 ## Eksempler
 
 ### Standard
+
 <Canvas>
-    <Story name="Standard">
-        {Template.bind({})}
-    </Story>
+  <Story name='Standard'>{Template.bind({})}</Story>
 </Canvas>
 
 ### Med feil
+
 <Canvas>
-    <Story name="Med feil" args={{isValid: false}}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Med feil'
+    args={{ isValid: false }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Skrivebeskyttet
+
 <Canvas>
-    <Story name="Skrivebeskyttet" args={{
-        readOnly: ReadOnlyVariant.ReadOnlyInfo,
-        value: 'Dette er en skrivebeskyttet tekst.'
-    }}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Skrivebeskyttet'
+    args={{
+      readOnly: ReadOnlyVariant.ReadOnlyInfo,
+      value: 'Dette er en skrivebeskyttet tekst.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Bekreftelsesvisning
+
 <Canvas>
-    <Story name="Bekreftelsesvisning" args={{
-        readOnly: ReadOnlyVariant.ReadOnlyConfirm,
-        value: 'Dette er en bekreftelsesvisning av en tekst som er skrevet inn i et tekstfelt.'
-    }}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Bekreftelsesvisning'
+    args={{
+      readOnly: ReadOnlyVariant.ReadOnlyConfirm,
+      value:
+        'Dette er en bekreftelsesvisning av en tekst som er skrevet inn i et tekstfelt.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Deaktivert
+
 <Canvas>
-    <Story name="Deaktivert" args={{disabled: true}}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Deaktivert'
+    args={{ disabled: true }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Egenskaper
@@ -106,9 +137,10 @@ export const Template = (args) => <TextArea {...args}/>;
 <ArgsTable story='Standard' />
 
 ## Tokens
+
 <TokensTable
-    jsonKey='component.textarea'
-    componentName='textarea'
-    showPreview={false}
-    description
+  jsonKey='component.textarea'
+  componentName='textarea'
+  showPreview={false}
+  description
 />

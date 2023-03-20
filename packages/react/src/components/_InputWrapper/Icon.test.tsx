@@ -3,10 +3,10 @@ import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { IconProps } from './Icon';
 import { Icon } from './Icon';
-import { IconVariant } from './utils';
+import type { IconVariant_ } from './utils';
 
 describe('Icon', () => {
-  it.each([IconVariant.Error, IconVariant.Search])(
+  it.each<IconVariant_>(['error', 'search'])(
     'Returns expected icon when variant is %s',
     (variant) => {
       render({ variant });
@@ -14,7 +14,7 @@ describe('Icon', () => {
     },
   );
 
-  it.each([undefined, IconVariant.None])(
+  it.each<IconVariant_ | undefined>([undefined, 'none'])(
     `Returns null when variant is %s`,
     (variant) => {
       const { container } = render({ variant });

@@ -1,2 +1,2 @@
 export { InputWrapper } from './InputWrapper';
-export { IconVariant, ReadOnlyVariant, InputVariant } from './utils';
+export type { IconVariant_, ReadOnlyVariant_, InputVariant_ } from './utils';

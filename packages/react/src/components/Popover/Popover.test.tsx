@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 
 import type { PopoverProps } from './Popover';
-import { PopoverVariant, Popover } from './Popover';
+import { popoverVariants, Popover } from './Popover';
 
 const render = (props: Partial<PopoverProps> = {}) => {
   const allProps: PopoverProps = {
@@ -120,15 +120,13 @@ describe('Popover', () => {
     expect(contentButton).toHaveFocus();
   });
 
-  test.each(Object.values(PopoverVariant))(
+  test.each(popoverVariants)(
     'should render popover with correct variant when variant is %s',
     async (variant) => {
       await act(async () => {
         render({ variant: variant, initialOpen: true });
       });
-      const otherColors = Object.values(PopoverVariant).filter(
-        (v) => v !== variant,
-      );
+      const otherColors = popoverVariants.filter((v) => v !== variant);
 
       const popoverContent = screen.getByRole('dialog');
       expect(popoverContent).toBeInTheDocument();
