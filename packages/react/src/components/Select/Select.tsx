@@ -88,6 +88,11 @@ const Select = (props: SelectProps) => {
   const resetKeyword = () => keyword && setKeyword('');
 
   const [sortedOptions, setSortedOptions] = useState(options);
+  // Enable dynamic change of options by resetting sortedOptions
+  useUpdate(() => {
+    setSortedOptions(options);
+    setSelectedValues(multiple ? value ?? [] : []);
+  }, [options]);
 
   const numberOfOptions = options.length;
 

@@ -325,6 +325,25 @@ describe('Select', () => {
         ),
       ).toBeInTheDocument();
     };
+
+    it('Rerenders with new options when the "options" property changes', async () => {
+      const options = singleSelectOptions;
+      const newOptions: SingleSelectOption[] = [
+        { label: 'Test 4', value: 'test4' },
+        { label: 'Test 5', value: 'test5' },
+        { label: 'Test 6', value: 'test6' },
+      ];
+      const { rerender } = renderSingleSelect({ options: options });
+      rerender(
+        <Select
+          {...defaultSingleSelectProps}
+          options={newOptions}
+        />,
+      );
+      await act(() => user.click(screen.getByRole('combobox')));
+      await act(() => user.click(screen.getAllByRole('option')[1]));
+      expectSelectedValue(newOptions[1]);
+    });
   });
 
   describe('Multiple select', () => {
@@ -707,6 +726,27 @@ describe('Select', () => {
       const keyword = 'abc';
       await act(() => user.type(screen.getByRole('textbox'), keyword));
       expect(screen.getByRole('textbox')).toHaveValue(keyword);
+    });
+
+    it('Rerenders with new options when the "options" property changes', async () => {
+      const options = multiSelectOptions;
+      const newOptions: Required<
+        Omit<MultiSelectOption, 'keywords' | 'formattedLabel'>
+      >[] = [
+        { label: 'Test 4', value: 'test4', deleteButtonLabel: 'Delete test 4' },
+        { label: 'Test 5', value: 'test5', deleteButtonLabel: 'Delete test 5' },
+        { label: 'Test 6', value: 'test6', deleteButtonLabel: 'Delete test 6' },
+      ];
+      const { rerender } = renderSingleSelect({ options: options });
+      rerender(
+        <Select
+          {...defaultSingleSelectProps}
+          options={newOptions}
+        />,
+      );
+      await act(() => user.click(screen.getByRole('combobox')));
+      await act(() => user.click(screen.getAllByRole('option')[1]));
+      expectSelectedValues([newOptions[1].value]);
     });
 
     const getFocusedOption = (container: HTMLElement) =>
