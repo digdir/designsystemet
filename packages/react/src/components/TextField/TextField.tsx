@@ -10,7 +10,7 @@ import { NumericFormat, PatternFormat } from 'react-number-format';
 
 import { isNumericFormat, isPatternFormat } from '../../utils';
 import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant } from '../_InputWrapper';
+import type { ReadOnlyVariant_ } from '../_InputWrapper';
 
 export interface TextFieldProps
   extends Omit<
@@ -21,7 +21,7 @@ export interface TextFieldProps
   formatting?: TextFieldFormatting;
   isValid?: boolean;
   label?: string;
-  readOnly?: boolean | ReadOnlyVariant;
+  readOnly?: boolean | ReadOnlyVariant_;
   value?: string;
 }
 

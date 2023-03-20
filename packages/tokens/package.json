@@ -1,7 +1,8 @@
 {
   "name": "@digdir/design-system-tokens",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tokens for the Digdir Common Design System",
+  "private": true,
   "repository": "https://github.com/digdir/designsystem",
   "license": "MIT",
   "main": "dist/digdir/tokens.cjs.js",

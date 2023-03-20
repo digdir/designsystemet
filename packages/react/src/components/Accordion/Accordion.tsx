@@ -1,21 +1,21 @@
 import React, { useId } from 'react';
 
-import type { AccordionClickHandler } from './Context';
-import { AccordionIconVariant, AccordionContext } from './Context';
+import type { AccordionClickHandler, AccordionIcons } from './Context';
+import { AccordionContext } from './Context';
 import classes from './Accordion.module.css';
 
 export interface AccordionProps {
   children?: React.ReactNode;
   onClick: AccordionClickHandler;
   open: boolean;
-  iconVariant?: AccordionIconVariant;
+  iconVariant?: AccordionIcons;
 }
 
 const Accordion = ({
   children,
   open,
   onClick,
-  iconVariant = AccordionIconVariant.Primary,
+  iconVariant = 'primary',
 }: AccordionProps) => {
   const headerId = useId();
   const contentId = useId();

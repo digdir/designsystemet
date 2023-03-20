@@ -4,14 +4,13 @@ import userEvent from '@testing-library/user-event';
 import { Success as SuccessIcon } from '@navikt/ds-icons';
 
 import type { ButtonProps } from './Button';
-
-import { ButtonColor, ButtonSize, Button, ButtonVariant } from './';
+import { Button, buttonSize, buttonVariant, buttonColor } from './Button';
 
 const user = userEvent.setup();
 
 describe('Button', () => {
   it('should render a button with primary classname when no variant is specified', () => {
-    render({ variant: undefined });
+    render();
     const button = screen.getByRole('button');
 
     expect(button.classList).toContain('primary');
@@ -20,13 +19,11 @@ describe('Button', () => {
     expect(button.classList).not.toContain('cancel');
   });
 
-  it.each(Object.values(ButtonVariant))(
+  it.each(buttonVariant)(
     `should render a button with correct classname when variant is %s`,
     (variant) => {
       render({ variant });
-      const otherVariants = Object.values(ButtonVariant).filter(
-        (v) => v !== variant,
-      );
+      const otherVariants = buttonVariant.filter((v) => v !== variant);
 
       const button = screen.getByRole('button');
 
@@ -35,13 +32,11 @@ describe('Button', () => {
     },
   );
 
-  it.each(Object.values(ButtonColor))(
+  it.each(buttonColor)(
     `should render a button with correct classname when color is %s`,
     (color) => {
       render({ color });
-      const otherVariants = Object.values(ButtonColor).filter(
-        (c) => c !== color,
-      );
+      const otherVariants = buttonColor.filter((c) => c !== color);
 
       const button = screen.getByRole('button');
 
@@ -50,11 +45,11 @@ describe('Button', () => {
     },
   );
 
-  it.each(Object.values(ButtonSize))(
+  it.each(buttonSize)(
     `should render a button with correct classname when size is %s`,
     (size) => {
       render({ size });
-      const otherVariants = Object.values(ButtonSize).filter((s) => s !== size);
+      const otherVariants = buttonSize.filter((s) => s !== size);
 
       const button = screen.getByRole('button');
 
@@ -87,11 +82,20 @@ describe('Button', () => {
     ).toEqual(icon);
   });
 
+  it('should render as aria-disabled when aria-disabled is true regardless of variant', () => {
+    render({
+      variant: 'outline',
+      'aria-disabled': true,
+    });
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveAttribute('aria-disabled');
+  });
+
   it('should render as disabled when disabled is true regardless of variant', () => {
     render({
-      variant: ButtonVariant.Outline,
-      color: ButtonColor.Primary,
-      size: ButtonSize.Small,
+      variant: 'outline',
       disabled: true,
     });
 
@@ -103,7 +107,7 @@ describe('Button', () => {
   it('should not call onClick when disabled', () => {
     const fn = jest.fn();
     render({
-      variant: ButtonVariant.Outline,
+      variant: 'outline',
       disabled: true,
       onClick: fn,
     });
@@ -128,13 +132,4 @@ describe('Button', () => {
   });
 });
 
-const render = (props: Partial<ButtonProps> = {}) => {
-  const allProps = {
-    variant: ButtonVariant.Filled,
-    color: ButtonColor.Primary,
-    size: ButtonSize.Small,
-    ...props,
-  };
-
-  renderRtl(<Button {...allProps} />);
-};
+const render = (props?: ButtonProps) => renderRtl(<Button {...props} />);

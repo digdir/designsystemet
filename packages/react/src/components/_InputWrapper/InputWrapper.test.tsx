@@ -3,7 +3,8 @@ import React from 'react';
 
 import type { InputWrapperProps } from './InputWrapper';
 import { InputWrapper } from './InputWrapper';
-import { ReadOnlyVariant, InputVariant } from './utils';
+import type { InputVariant_ } from './utils';
+import { inputVariants } from './utils';
 
 describe('InputWrapper', () => {
   describe('Error icon', () => {
@@ -48,9 +49,7 @@ describe('InputWrapper', () => {
   describe('Input variant', () => {
     it('Renders with correct class when isValid is false and readOnly or disabled are not specified', () => {
       render({ isValid: false });
-      const { expectedClassName, otherClassNames } = getClassNames(
-        InputVariant.Error,
-      );
+      const { expectedClassName, otherClassNames } = getClassNames('error');
       const { classList } = getTextField();
       expect(classList).toContain(expectedClassName);
       otherClassNames.forEach((v) => {
@@ -60,9 +59,7 @@ describe('InputWrapper', () => {
 
     it('Renders with correct classname when isValid is true and readOnly or disabled is not specified', () => {
       render({ isValid: true });
-      const { expectedClassName, otherClassNames } = getClassNames(
-        InputVariant.Default,
-      );
+      const { expectedClassName, otherClassNames } = getClassNames('default');
       const { classList } = getTextField();
       expect(classList).toContain(expectedClassName);
       otherClassNames.forEach((v) => {
@@ -72,9 +69,8 @@ describe('InputWrapper', () => {
 
     it('Renders with correct classname when readOnly is true and disabled is not specified', () => {
       render({ readOnly: true });
-      const { expectedClassName, otherClassNames } = getClassNames(
-        InputVariant.ReadOnlyInfo,
-      );
+      const { expectedClassName, otherClassNames } =
+        getClassNames('readonlyInfo');
       const { classList } = getTextField();
       expect(classList).toContain(expectedClassName);
       otherClassNames.forEach((v) => {
@@ -83,10 +79,9 @@ describe('InputWrapper', () => {
     });
 
     it('Renders with correct classname when readOnly is <readonly-confirm> and disabled is not specified', () => {
-      render({ readOnly: ReadOnlyVariant.ReadOnlyConfirm });
-      const { expectedClassName, otherClassNames } = getClassNames(
-        InputVariant.ReadOnlyConfirm,
-      );
+      render({ readOnly: 'readonlyConfirm' });
+      const { expectedClassName, otherClassNames } =
+        getClassNames('readonlyConfirm');
       const { classList } = getTextField();
       expect(classList).toContain(expectedClassName);
       otherClassNames.forEach((v) => {
@@ -95,10 +90,9 @@ describe('InputWrapper', () => {
     });
 
     it('Renders with correct classname when readOnly is <readonly-info> and disabled is not specified', () => {
-      render({ readOnly: ReadOnlyVariant.ReadOnlyInfo });
-      const { expectedClassName, otherClassNames } = getClassNames(
-        InputVariant.ReadOnlyInfo,
-      );
+      render({ readOnly: 'readonlyInfo' });
+      const { expectedClassName, otherClassNames } =
+        getClassNames('readonlyInfo');
       const { classList } = getTextField();
       expect(classList).toContain(expectedClassName);
       otherClassNames.forEach((v) => {
@@ -108,9 +102,7 @@ describe('InputWrapper', () => {
 
     it('Renders with correct classname when disabled is true', () => {
       render({ disabled: true });
-      const { expectedClassName, otherClassNames } = getClassNames(
-        InputVariant.Disabled,
-      );
+      const { expectedClassName, otherClassNames } = getClassNames('disabled');
       const { classList } = getTextField();
       expect(classList).toContain(expectedClassName);
       otherClassNames.forEach((v) => {
@@ -172,10 +164,8 @@ describe('InputWrapper', () => {
 
 const getTextField = () => screen.getByTestId('InputWrapper');
 
-const getClassNames = (expectedClassName: string) => {
-  const otherClassNames = Object.values(InputVariant).filter(
-    (v) => v !== expectedClassName,
-  );
+const getClassNames = (expectedClassName: InputVariant_) => {
+  const otherClassNames = inputVariants.filter((v) => v !== expectedClassName);
   return { expectedClassName, otherClassNames };
 };
 

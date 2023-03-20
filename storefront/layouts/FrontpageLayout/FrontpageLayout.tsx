@@ -1,13 +1,9 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
 import { Email } from '@navikt/ds-icons';
 
-import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
-import {
-  NavigationCard,
-  NavigationCardProps,
-} from '../../components/NavigationCard/NavigationCard';
+import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
+import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
 
@@ -39,7 +35,6 @@ interface FrontpageData {
 const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
   return (
     <div>
-      <Header />
       {Content}
       <div className='max-width-container main'>
         <Banner
@@ -48,33 +43,26 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
         />
 
         <Section title={data.navigationCards.title}>
-          <Row className='gy-4'>
-            {data.navigationCards.items.map(
-              (item: NavigationCardProps, index: number) => (
-                <Col
-                  key={index}
-                  md={4}
-                >
-                  <NavigationCard
-                    url={item.url}
-                    title={item.title}
-                    color={item.color}
-                    icon={item.icon}
-                    description={item.description}
-                  />
-                </Col>
-              ),
-            )}
-          </Row>
+          {data.navigationCards.items.map(
+            (item: NavigationCardProps, index: number) => (
+              <NavigationCard
+                key={index}
+                url={item.url}
+                title={item.title}
+                color={item.color}
+                icon={item.icon}
+                description={item.description}
+              />
+            ),
+          )}
         </Section>
 
         <ImageSection
-          id='bidra'
           title={data.contributeSection.title}
           description={data.contributeSection.description}
           src={data.contributeSection.image}
-          width={data.contributeSection.imageWidth}
-          height={data.contributeSection.imageHeight}
+          imgWidth={data.contributeSection.imageWidth}
+          imgHeight={data.contributeSection.imageHeight}
           content={
             <a
               href={'mailto:' + data.contributeSection.email}

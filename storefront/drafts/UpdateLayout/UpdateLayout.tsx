@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 
+import { Container } from '../../components/Container/Container';
 import Header from '../../components/Header/Header';
 
 import classes from './UpdateLayout.module.css';
@@ -14,16 +14,7 @@ const UpdateLayout = ({ Content }: PageLayoutProps) => {
     <div>
       <Header />
       <main className={classes.content}>
-        <Container>
-          <Row>
-            <Col
-              md={8}
-              className={classes.test}
-            >
-              {Content}
-            </Col>
-          </Row>
-        </Container>
+        <Container>{Content}</Container>
       </main>
     </div>
   );

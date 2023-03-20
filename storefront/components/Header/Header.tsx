@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -33,18 +32,18 @@ const Header = () => {
 
   return (
     <header className={classes.header}>
-      <Container
-        className={classes.container}
-        fluid
-      >
+      <div className={classes.container}>
         <div className={classes.left}>
-          <Link href='/'>
+          <Link
+            className={classes['logo-link']}
+            href='/'
+          >
             <Image
               className={classes.logo}
               src='/img/logo-positive.svg'
               alt='Logo'
-              width={752}
-              height={79}
+              width={275}
+              height={30}
             />
           </Link>
         </div>
@@ -87,7 +86,7 @@ const Header = () => {
             ))}
           </ul>
         </div>
-      </Container>
+      </div>
     </header>
   );
 };

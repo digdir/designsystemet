@@ -1,107 +1,117 @@
 .page {
-    margin-top: 56px;
-    margin-bottom: 32px;
-}
-
-.title {
-    font-size: 36px;
-    margin-bottom: 0;
-    line-height: 1.3em;
-}
-
-.desc {
-    font-size: 18px;
-    line-height: 1.6em;
-    margin-bottom: -10px;
+  margin-top: var(--page-spacing-top);
+  margin-bottom: var(--page-spacing-bottom);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-5);
 }
 
 .left {
-
+  flex-basis: 220px;
+  flex-grow: 1;
 }
 
 .right {
+  flex-basis: 600px;
+  flex-grow: 500;
+}
 
+.title {
+  font-size: 36px;
+  margin-bottom: 0;
+  line-height: 1.3em;
+}
+
+.desc {
+  font-size: 18px;
+  line-height: 1.6em;
+  margin-bottom: -10px;
 }
 
 .list {
-    margin-bottom: 32px;
-    color: #4d4d4d;
+  margin-bottom: 32px;
+  color: #4d4d4d;
 }
 
 .list ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .list h3 {
-    font-size: 19px;
-    margin-bottom: 10px;
+  font-size: 19px;
+  margin-bottom: 10px;
 }
 
 .list li {
-    list-style: none;
+  list-style: none;
 }
 
 .list li a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 15px;
-    display: block;
-    margin-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .header {
-    padding: 32px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    width: 100%;
-    margin-bottom: 40px;
+  padding: 32px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
 }
 
-.content {
-}
-
-.content > * {
-    margin-top: 0 !important;
+.header:after {
+  position: absolute;
+  right: -0px;
+  bottom: -200px;
+  transform: rotate(25deg);
+  content: '';
+  height: 250px;
+  width: 250px;
+  border-radius: 8px;
+  border: 8px solid #1e98f5;
+  opacity: 0.15;
 }
 
 .date {
-    margin-top: 12px;
-    font-size: 16px;
+  margin-top: 12px;
+  font-size: 16px;
 }
 
-.test {
-    margin-left: 24px;
+.content h1 + p {
+  font-size: 24px;
+  line-height: 1.7em;
+  margin-bottom: 36px;
 }
 
-.test h1 + p {
-    font-size: 24px;
-    line-height: 1.7em;
-    margin-bottom: 36px;
+.content h2 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 28px;
 }
 
-.test h2 {
-    margin-top: 40px;
-    margin-bottom: 16px;
-    line-height: 1.3em;
-    font-size: 28px;
+.content h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 24px;
 }
 
-.test h3 {
-    margin-top: 40px;
-    margin-bottom: 16px;
-    line-height: 1.3em;
-    font-size: 24px;
+.content p {
+  font-size: 18px;
+  line-height: 1.55em;
+  margin-bottom: 20px;
 }
 
-.test p {
-    font-size: 18px;
-    line-height: 1.55em;
-    margin-bottom: 20px;
-}
-
-.test img {
-    width: 100%;
-    margin: 24px 0;
-    border-radius: 2px;
+.content img {
+  width: 100%;
+  margin: 24px 0;
+  border-radius: 2px;
 }
