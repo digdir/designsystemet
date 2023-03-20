@@ -96,7 +96,7 @@ const Select = (props: SelectProps) => {
     if (
       options.length !== prevOptions?.length ||
       options.some(
-        (option, index) => !objectValuesEqual(option, prevOptions[index])
+        (option, index) => !objectValuesEqual(option, prevOptions[index]),
       )
     ) {
       setSortedOptions(options);
