@@ -106,8 +106,10 @@ const Select = (props: SelectProps) => {
     (option) => option.value === activeOption,
   );
 
-  const resetKeyword = (newValue?: string) =>
-    setKeyword((!multiple && newValue) || '');
+  const resetKeyword = useCallback(
+    (newValue?: string) => setKeyword((!multiple && newValue) || ''),
+    [setKeyword, multiple],
+  );
 
   const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
   useEventListener('click', () => setUsingKeyboard(false));
@@ -199,59 +201,53 @@ const Select = (props: SelectProps) => {
     multipleChangeHandler([]);
   };
 
-  const moveFocusDown = useCallback(
-    () => {
-      let newActiveOption = null;
-      if (activeOption === undefined) {
-        newActiveOption = sortedOptions[0];
-      } else {
-        const newIndex = activeOptionIndex + 1;
-        if (newIndex >= 0 && newIndex < numberOfOptions) {
-          newActiveOption = sortedOptions[newIndex];
-        }
+  const moveFocusDown = useCallback(() => {
+    let newActiveOption = null;
+    if (activeOption === undefined) {
+      newActiveOption = sortedOptions[0];
+    } else {
+      const newIndex = activeOptionIndex + 1;
+      if (newIndex >= 0 && newIndex < numberOfOptions) {
+        newActiveOption = sortedOptions[newIndex];
       }
-      if (newActiveOption) {
-        setActiveOption(newActiveOption.value);
-        resetKeyword(newActiveOption.label);
-      }
-      setExpanded(true);
-    },
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-    [
-      activeOption,
-      activeOptionIndex,
-      setActiveOption,
-      sortedOptions,
-      numberOfOptions,
-    ],
-  );
+    }
+    if (newActiveOption) {
+      setActiveOption(newActiveOption.value);
+      resetKeyword(newActiveOption.label);
+    }
+    setExpanded(true);
+  }, [
+    activeOption,
+    activeOptionIndex,
+    resetKeyword,
+    setActiveOption,
+    sortedOptions,
+    numberOfOptions,
+  ]);
 
-  const moveFocusUp = useCallback(
-    () => {
-      let newActiveOption = null;
-      if (activeOption === undefined) {
-        newActiveOption = sortedOptions[numberOfOptions - 1];
-      } else {
-        const newIndex = activeOptionIndex - 1;
-        if (newIndex >= 0 && newIndex < numberOfOptions) {
-          newActiveOption = sortedOptions[newIndex];
-        }
+  const moveFocusUp = useCallback(() => {
+    let newActiveOption = null;
+    if (activeOption === undefined) {
+      newActiveOption = sortedOptions[numberOfOptions - 1];
+    } else {
+      const newIndex = activeOptionIndex - 1;
+      if (newIndex >= 0 && newIndex < numberOfOptions) {
+        newActiveOption = sortedOptions[newIndex];
       }
-      if (newActiveOption) {
-        setActiveOption(newActiveOption.value);
-        resetKeyword(newActiveOption.label);
-      }
-      setExpanded(true);
-    },
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-    [
-      activeOption,
-      activeOptionIndex,
-      setActiveOption,
-      sortedOptions,
-      numberOfOptions,
-    ],
-  );
+    }
+    if (newActiveOption) {
+      setActiveOption(newActiveOption.value);
+      resetKeyword(newActiveOption.label);
+    }
+    setExpanded(true);
+  }, [
+    activeOption,
+    activeOptionIndex,
+    resetKeyword,
+    setActiveOption,
+    sortedOptions,
+    numberOfOptions,
+  ]);
 
   useKeyboardEventListener(eventListenerKeys.ArrowDown, () => {
     expanded ? moveFocusDown() : setExpanded(true);
