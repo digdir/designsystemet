@@ -1,6 +1,4 @@
 .listItem {
-  border-bottom-color: var(--component-list-border_color);
-  border-bottom-style: var(--component-list-border_style);
-  border-bottom-width: var(--component-list-border_width);
+  border-bottom: var(--component-list-border_width) var(--component-list-border_style) var(--component-list-border_color);
   display: block;
 }

@@ -5,10 +5,10 @@
   --font-and-icon-color: var(--component-button-filled-color-text-all);
   --icon-size: var(--component-button-size-icon-small);
 
-  all: initial; /* reset all styles to default, to avoid style overrides/surprises caused by other css (from Design system v1 f.ex) */
   align-items: center;
-  border-radius: var(--border-radius);
+  all: initial; /* reset all styles to default, to avoid style overrides/surprises caused by other css (from Design system v1 f.ex) */
   border: var(--component-button-border_width-default) solid transparent;
+  border-radius: var(--border-radius);
   box-sizing: border-box;
   color: var(--font-and-icon-color);
   cursor: pointer;
@@ -88,8 +88,8 @@
 .button.quiet {
   --border-radius: 50px;
 
-  padding: 0 calc(var(--button-vertical-padding) * 2 / 3);
   background-color: transparent;
+  padding: 0 calc(var(--button-vertical-padding) * 2 / 3);
 }
 
 .button.onlyIcon {
@@ -173,8 +173,8 @@
     --component-button-outline-primary-color-text-default
   );
 
-  border-color: var(--component-button-outline-primary-color-border-default);
   background: var(--component-button-outline-primary-color-background-default);
+  border-color: var(--component-button-outline-primary-color-border-default);
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
@@ -251,8 +251,8 @@
 .button.outline.inverted {
   --font-and-icon-color: var(--colors-white);
 
-  border-color: var(--colors-white);
   background: transparent;
+  border-color: var(--colors-white);
 }
 
 .button.outline.inverted:focus-visible {

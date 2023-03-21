@@ -1,12 +1,12 @@
 .banner {
-  min-height: 460px;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
   flex-wrap: wrap;
-  padding-top: var(--spacing-7);
-  padding-bottom: var(--spacing-7);
   gap: var(--spacing-5);
+  justify-content: space-between;
+  min-height: 460px;
+  padding-bottom: var(--spacing-7);
+  padding-top: var(--spacing-7);
 }
 
 .left {
@@ -15,20 +15,20 @@
 }
 
 .right {
-  flex-basis: calc(47% - (var(--spacing-5) / 2));
-  display: flex;
   align-items: center;
-  justify-content: center;
-  height: 275px;
+  display: flex;
+  flex-basis: calc(47% - (var(--spacing-5) / 2));
   flex-grow: 1;
+  height: 275px;
+  justify-content: center;
 }
 
 .title {
-  font-weight: 500;
-  font-size: var(--font-900);
-  margin-bottom: var(--spacing-3);
-  display: flex;
   align-items: center;
+  display: flex;
+  font-size: var(--font-900);
+  font-weight: 500;
+  margin-bottom: var(--spacing-3);
 }
 
 .title > span {
@@ -38,71 +38,73 @@
 .desc {
   font-size: var(--font-400);
   line-height: 1.7em;
-  padding-right: 30px;
   margin-bottom: 0;
+  padding-right: 30px;
 }
 
 .shapes {
-  height: 200px;
-  width: 200px;
-  position: relative;
   animation: test 1.55s forwards ease-out;
+  height: 200px;
+  position: relative;
+  width: 200px;
 }
 
 .shape {
-  height: 92px;
-  width: 92px;
-  border-radius: 8px;
   border: 5px solid transparent;
+  border-radius: 8px;
+  height: 92px;
   position: absolute;
+  width: 92px;
 }
 
 .one {
+  animation: one 1.5s forwards ease-out;
+  border-color: #f45f63;
   left: 0;
   top: 0;
-  border-color: #f45f63;
-  animation: one 1.5s forwards ease-out;
 }
 
 .two {
+  animation: two 1.5s forwards ease-out;
+  border-color: #1e98f5;
   right: 0;
   top: 0;
-  border-color: #1e98f5;
-  animation: two 1.5s forwards ease-out;
 }
 
 .three {
-  right: 0;
-  bottom: 0;
-  border-color: #68707c;
   animation: three 1.5s forwards ease-out;
+  border-color: #68707c;
+  bottom: 0;
+  right: 0;
 }
 
 .four {
-  left: 0;
-  bottom: 0;
-  border-color: #e5aa20;
   animation: four 1.5s forwards ease-out;
+  border-color: #e5aa20;
+  bottom: 0;
+  left: 0;
 }
 
 @keyframes one {
   0% {
-    top: -100px;
     opacity: 0;
+    top: -100px;
   }
+
   100% {
-    top: 0;
     opacity: 1;
+    top: 0;
   }
 }
 @keyframes two {
   0% {
-    right: -100px;
     opacity: 0;
+    right: -100px;
   }
+
   100% {
-    right: 0;
     opacity: 1;
+    right: 0;
   }
 }
 @keyframes three {
@@ -110,6 +112,7 @@
     bottom: -100px;
     opacity: 0;
   }
+
   100% {
     bottom: 0;
     opacity: 1;
@@ -120,6 +123,7 @@
     left: -100px;
     opacity: 0;
   }
+
   100% {
     left: 0;
     opacity: 1;
@@ -130,12 +134,15 @@
   0% {
     transform: rotate(0deg) scale(1);
   }
+
   88% {
     transform: rotate(45deg) scale(0.95);
   }
+
   94% {
     transform: rotate(45deg) scale(1.05);
   }
+
   100% {
     transform: rotate(45deg) scale(1);
   }
@@ -144,7 +151,7 @@
 @media (max-width: 991.98px) {
   .imgContainer {
     height: 300px;
-    width: 300px;
     margin: 0 auto;
+    width: 300px;
   }
 }

@@ -1,4 +1,4 @@
-@import 'https://altinncdn.no/fonts/altinn-din/altinn-din.css';
+@import url('https://altinncdn.no/fonts/altinn-din/altinn-din.css');
 
 .tabs {
   --divider-color: #c9c9c9;
@@ -17,6 +17,7 @@
   --tablist-margin_horizontal: 20px;
   --tabpanel-margin_horizontal: 20px;
   --tabpanel-margin_vertical: 20px;
+
   position: relative;
 }
 
@@ -56,7 +57,8 @@
 }
 
 .tab:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) auto var(--semantic-tab_focus-outline-width);
+  outline: var(--semantic-tab_focus-outline-color) auto
+    var(--semantic-tab_focus-outline-width);
   outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 

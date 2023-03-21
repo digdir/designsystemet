@@ -1,20 +1,20 @@
 .box {
-    padding: 24px;
-    background-color: var(--color-beta);
-    border-radius: 4px;
-    margin: 28px 0 32px 0;
+  background-color: var(--color-beta);
+  border-radius: 4px;
+  margin: 28px 0 32px;
+  padding: 24px;
 }
 
 .title {
-    margin-top: 0;
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 6px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  margin-top: 0;
 }
 
 .desc {
-    margin-bottom: 0;
-    font-size: 16px;
-    line-height: 1.55em;
-    padding: 0 !important;
+  font-size: 16px;
+  line-height: 1.55em;
+  margin-bottom: 0;
+  padding: 0 !important;
 }

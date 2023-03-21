@@ -1,9 +1,9 @@
 .footer {
-  padding: var(--spacing-7) 0;
   background-color: #1e2b3c;
   color: #ededed;
   font-weight: 300;
   letter-spacing: 0.3px;
+  padding: var(--spacing-7) 0;
 }
 
 .container {
@@ -11,6 +11,6 @@
 }
 
 .footer img {
-  margin-right: 10px;
   height: 28px;
+  margin-right: 10px;
 }

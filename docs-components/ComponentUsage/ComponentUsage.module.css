@@ -1,64 +1,64 @@
 .ComponentUsage {
-    display: flex;
-    margin-top: 48px;
+  display: flex;
+  margin-top: 48px;
 }
 
 .ComponentUsage--danger .box {
-    border-color: #e00000;
+  border-color: #e00000;
 }
 
 .title {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 16px;
-    line-height: 1.3em;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3em;
+  margin-bottom: 16px;
 }
 
 .desc {
-    font-size: 16px;
-    line-height: 1.5em;
+  font-size: 16px;
+  line-height: 1.5em;
 }
 
 .textContainer {
-    width: 50%;
-    margin-right: 40px;
+  margin-right: 40px;
+  width: 50%;
 }
 
 .box {
-    margin-left: 40px;
-    width: 50%;
-    background-color: var(--colors-grey-100);
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-left: 6px solid #2a8d00;
-    position: relative;
-    border-radius: 2px;
+  align-items: center;
+  background-color: var(--colors-grey-100);
+  border-left: 6px solid #2a8d00;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 40px;
+  min-height: 200px;
+  position: relative;
+  width: 50%;
 }
 
 .content {
-    margin-top: 24px !important;
+  margin-top: 24px !important;
 }
 
 .content > * {
-    margin-bottom: 24px !important;
+  margin-bottom: 24px !important;
 }
 
 .iconContainer {
-    position: absolute;
-    left: 18px;
-    top: 18px;
-    background-color: #2a8d00;
-    border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  background-color: #2a8d00;
+  border-radius: 50%;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  left: 18px;
+  position: absolute;
+  top: 18px;
+  width: 32px;
 }
 
 .iconContainer--danger {
-    background-color: #e00000;
+  background-color: #e00000;
 }

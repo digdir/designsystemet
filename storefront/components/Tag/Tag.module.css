@@ -1,22 +1,22 @@
 .tag {
-    font-size: 14px;
-    padding: 3px 6px;
-    margin-left: 4px;
-    border-radius: 3px;
-    font-weight: 500;
-    text-transform: capitalize;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+  padding: 3px 6px;
+  text-transform: capitalize;
 }
 
 .purple {
-    background-color: var(--color-beta-strong);
+  background-color: var(--color-beta-strong);
 }
 
 .deprecated {
-    background-color: var(--color-decprecated);
+  background-color: var(--color-decprecated);
 }
 
 .large {
-    padding: 5px 11px;
-    font-size: 20px;
+  font-size: 20px;
+  padding: 5px 11px;
 }

@@ -74,6 +74,7 @@
 
 .select.disabled {
   --interactive_element-cursor: auto;
+
   opacity: var(--opacity-disabled);
 }
 
@@ -99,13 +100,13 @@
 }
 
 .field {
-  display: inline-flex;
-  padding: 0;
   align-items: center;
+  display: inline-flex;
   flex-direction: row;
   font-family: var(--font_family-default);
   font-size: var(--font_size);
   min-height: var(--field-height-inside);
+  padding: 0;
   position: relative;
   width: 100%;
 }
@@ -120,9 +121,8 @@
 
 .select.multiple .inputArea {
   display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   flex: 1;
+  flex-flow: row wrap;
   gap: var(--multiselect_items-gap);
   padding: var(--multiselect_items-padding);
 }
@@ -164,6 +164,7 @@
     (var(--field-height-inside) - var(--arrow-height)) / 2 -
       var(--arrow_wrapper-margin)
   );
+
   align-items: center;
   border-left: var(--arrow-border_left);
   box-sizing: border-box;
@@ -192,8 +193,8 @@
 
 .select.multiple .deleteButton {
   background: none;
-  border-radius: var(--delete_cross_box-border_radius);
   border: none;
+  border-radius: var(--delete_cross_box-border_radius);
   cursor: var(--interactive_element-cursor);
   height: var(--delete_cross_box-size);
   padding: calc((var(--delete_cross_box-size) - var(--delete_cross-size)) / 2);
@@ -210,11 +211,13 @@
 
 .select.multiple .deleteButton:hover:not(:disabled) {
   background-color: var(--delete_cross_box-color-hover);
+
   --delete_cross-color: var(--delete_cross-color-hover);
 }
 
 .select.multiple .deleteButton:disabled {
   --delete_cross-color: var(--delete_cross-color-disabled);
+
   background-color: transparent;
 }
 
@@ -228,8 +231,8 @@
 
 .optionListWrapper {
   background-color: var(--option_list-background_color);
-  border-radius: var(--option_list-border_radius);
   border: var(--option_list-border);
+  border-radius: var(--option_list-border_radius);
   box-shadow: var(--option_list-shadow);
   box-sizing: border-box;
   margin: 0;

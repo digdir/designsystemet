@@ -1,6 +1,6 @@
 .content {
-  margin-top: 48px;
   margin-bottom: 48px;
+  margin-top: 48px;
 }
 
 .title {
@@ -15,8 +15,8 @@
 }
 
 .list {
-  margin-bottom: 32px;
   color: #4d4d4d;
+  margin-bottom: 32px;
 }
 
 .list ul {
@@ -34,11 +34,11 @@
 }
 
 .list li a {
-  text-decoration: none;
   color: inherit;
-  font-size: 15px;
   display: block;
+  font-size: 15px;
   margin-bottom: 10px;
+  text-decoration: none;
 }
 
 .test {
@@ -47,8 +47,8 @@
 
 .test h1 {
   font-size: 44px;
-  margin-bottom: 24px;
   line-height: 1.3em;
+  margin-bottom: 24px;
 }
 
 .test h1 + p {
@@ -58,15 +58,15 @@
 }
 
 .test h2 {
-  margin-top: 40px;
-  margin-bottom: 16px;
   line-height: 1.3em;
+  margin-bottom: 16px;
+  margin-top: 40px;
 }
 
 .test h3 {
-  margin-top: 40px;
-  margin-bottom: 16px;
   line-height: 1.3em;
+  margin-bottom: 16px;
+  margin-top: 40px;
 }
 
 .test p {
@@ -76,7 +76,7 @@
 }
 
 .test img {
-  width: 100%;
-  margin: 24px 0;
   border-radius: 2px;
+  margin: 24px 0;
+  width: 100%;
 }

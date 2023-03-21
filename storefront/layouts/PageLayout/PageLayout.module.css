@@ -1,10 +1,10 @@
 .page {
-  margin-top: var(--page-spacing-top);
-  margin-bottom: var(--page-spacing-bottom);
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--spacing-5);
+  justify-content: space-between;
+  margin-bottom: var(--page-spacing-bottom);
+  margin-top: var(--page-spacing-top);
 }
 
 .left {
@@ -19,8 +19,8 @@
 
 .title {
   font-size: 36px;
-  margin-bottom: 0;
   line-height: 1.3em;
+  margin-bottom: 0;
 }
 
 .desc {
@@ -30,8 +30,8 @@
 }
 
 .list {
-  margin-bottom: 32px;
   color: #4d4d4d;
+  margin-bottom: 32px;
 }
 
 .list ul {
@@ -49,39 +49,39 @@
 }
 
 .list li a {
-  text-decoration: none;
   color: inherit;
-  font-size: 15px;
   display: block;
+  font-size: 15px;
   margin-bottom: 10px;
+  text-decoration: none;
 }
 
 .header {
-  padding: 32px;
   background-color: #f4f4f4;
   border-radius: 8px;
-  width: 100%;
   margin-bottom: 40px;
-  position: relative;
   overflow: hidden;
+  padding: 32px;
+  position: relative;
+  width: 100%;
 }
 
-.header:after {
-  position: absolute;
-  right: -0px;
+.header::after {
+  border: 8px solid #1e98f5;
+  border-radius: 8px;
   bottom: -200px;
-  transform: rotate(25deg);
   content: '';
   height: 250px;
-  width: 250px;
-  border-radius: 8px;
-  border: 8px solid #1e98f5;
   opacity: 0.15;
+  position: absolute;
+  right: -0;
+  transform: rotate(25deg);
+  width: 250px;
 }
 
 .date {
-  margin-top: 12px;
   font-size: 16px;
+  margin-top: 12px;
 }
 
 .content h1 + p {
@@ -91,17 +91,17 @@
 }
 
 .content h2 {
-  margin-top: 40px;
-  margin-bottom: 16px;
-  line-height: 1.3em;
   font-size: 28px;
+  line-height: 1.3em;
+  margin-bottom: 16px;
+  margin-top: 40px;
 }
 
 .content h3 {
-  margin-top: 40px;
-  margin-bottom: 16px;
-  line-height: 1.3em;
   font-size: 24px;
+  line-height: 1.3em;
+  margin-bottom: 16px;
+  margin-top: 40px;
 }
 
 .content p {
@@ -111,7 +111,7 @@
 }
 
 .content img {
-  width: 100%;
-  margin: 24px 0;
   border-radius: 2px;
+  margin: 24px 0;
+  width: 100%;
 }
