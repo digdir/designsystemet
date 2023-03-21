@@ -108,7 +108,6 @@
     "stylelint-config-css-modules": "^4.2.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard": "^31.0.0",
-    "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^3.0.0",
     "terser": "^5.16.0",
     "ts-jest": "^29.0.1",

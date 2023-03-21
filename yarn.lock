@@ -19868,15 +19868,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-sorting@npm:^8.0.2":
-  version: 8.0.2
-  resolution: "postcss-sorting@npm:8.0.2"
-  peerDependencies:
-    postcss: ^8.4.20
-  checksum: ebb5cc6a2982a1f0bb8332669e425793ebc01c30fa83ea981c765d64d212e289bef5fdb1e627904c471cb75f1ad0727ed9e85c0d879e263590c8fc64eecf31c2
-  languageName: node
-  linkType: hard
-
 "postcss-svgo@npm:^5.1.0":
   version: 5.1.0
   resolution: "postcss-svgo@npm:5.1.0"
@@ -21557,7 +21548,6 @@ __metadata:
     stylelint-config-css-modules: ^4.2.0
     stylelint-config-prettier: ^9.0.5
     stylelint-config-standard: ^31.0.0
-    stylelint-order: ^6.0.3
     stylelint-prettier: ^3.0.0
     terser: ^5.16.0
     ts-jest: ^29.0.1
@@ -22882,18 +22872,6 @@ __metadata:
   peerDependencies:
     stylelint: ^15.3.0
   checksum: 8e5769252cb2111c0afc39627ff92e57eb9340089e96aa048154b7616715cd8eda24e0b9b6380b7edf5ad7ca14383e427e8df29cf3ab23a90276ebd5163b4077
-  languageName: node
-  linkType: hard
-
-"stylelint-order@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "stylelint-order@npm:6.0.3"
-  dependencies:
-    postcss: ^8.4.21
-    postcss-sorting: ^8.0.2
-  peerDependencies:
-    stylelint: ^14.0.0 || ^15.0.0
-  checksum: dc2883a8a7918a752928f6cc2c860508e3f21c7189c0675ddba15056c683c234f5548f0c4a410e9a9ac0d2be8b4a4657e5674f01b6ad39f2b89053bf907aa744
   languageName: node
   linkType: hard
 
