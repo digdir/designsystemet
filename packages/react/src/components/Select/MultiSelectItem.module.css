@@ -1,5 +1,6 @@
 .multiSelectItem {
   --border-radius: calc(var(--multiselect_item-height) / 2);
+
   align-items: center;
   background-color: var(--multiselect_item-background_color);
   border-radius: var(--border-radius);

@@ -23,8 +23,8 @@
 
 .inner-list {
   margin: 0 0 0 3px;
-  padding: 0 0 0 0;
-  border-left: 1px solid rgb(222, 222, 222);
+  padding: 0;
+  border-left: 1px solid rgb(222 222 222);
 }
 
 .inner-title {
@@ -47,7 +47,7 @@
 
 .link-compact {
   margin-top: 0;
-  border-left: 1px solid rgb(222, 222, 222);
+  border-left: 1px solid rgb(222 222 222);
 }
 
 .link-active {

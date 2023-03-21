@@ -74,6 +74,7 @@
 
 .select.disabled {
   --interactive_element-cursor: auto;
+
   opacity: var(--opacity-disabled);
 }
 
@@ -164,6 +165,7 @@
     (var(--field-height-inside) - var(--arrow-height)) / 2 -
       var(--arrow_wrapper-margin)
   );
+
   align-items: center;
   border-left: var(--arrow-border_left);
   box-sizing: border-box;
@@ -210,11 +212,13 @@
 
 .select.multiple .deleteButton:hover:not(:disabled) {
   background-color: var(--delete_cross_box-color-hover);
+
   --delete_cross-color: var(--delete_cross-color-hover);
 }
 
 .select.multiple .deleteButton:disabled {
   --delete_cross-color: var(--delete_cross-color-disabled);
+
   background-color: transparent;
 }
 

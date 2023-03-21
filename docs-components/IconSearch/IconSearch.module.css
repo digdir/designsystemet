@@ -1,132 +1,133 @@
 .iconSearch {
-    margin-top: 32px;
+  margin-top: 32px;
 }
 
 .icons {
-    margin-top: 42px;
+  margin-top: 42px;
 }
 
 .items {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -16px;
 }
 
 .icons-tabs {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .icons-tabs__btn {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    padding: 16px 28px;
-    font-size: 18px;
-    border-bottom: 4px solid #d9d9d9;
-    color: #555555;
-    cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 16px 28px;
+  font-size: 18px;
+  border-bottom: 4px solid #d9d9d9;
+  color: #555;
+  cursor: pointer;
 }
 
 .icons-tabs__btn:hover {
-    border-bottom: 4px solid #8ea6bf;
-    color: black;
+  border-bottom: 4px solid #8ea6bf;
+  color: black;
 }
 
 .icons-tabs__btn--active {
-    border-bottom: 4px solid #0060bf !important;
-    font-weight: 500;
-    color: black;
+  border-bottom: 4px solid #0060bf !important;
+  font-weight: 500;
+  color: black;
 }
 
 .item {
-    width: calc(25% - 34px);
-    height: 140px;
-    margin: 16px;
-    border: 1px solid #c0c0c0;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f6f6f6;
-    transition: 0.25s all;
-    cursor: pointer;
-    position: relative;
+  width: calc(25% - 34px);
+  height: 140px;
+  margin: 16px;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f6f6;
+  transition: 0.25s all;
+  cursor: pointer;
+  position: relative;
 }
 
 .item:hover {
-    box-shadow: 0 0 0 1px #00397e;
+  box-shadow: 0 0 0 1px #00397e;
 }
 
 svg {
-    transition: 0.25s all;
+  transition: 0.25s all;
 }
 
 .item:hover svg {
-    transform: scale(1.25);
+  transform: scale(1.25);
 }
 
 .heading {
-    margin-bottom: 24px;
-    font-weight: 500;
-    font-size: 24px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 24px;
 }
 
 .group {
-    margin-top: 44px;
+  margin-top: 44px;
 }
 
 .name {
-    margin-top: 16px;
-    font-size: 14px;
+  margin-top: 16px;
+  font-size: 14px;
 }
 
 .new {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #ffdea8;
-    padding: 9px 14px;
-    border-bottom-left-radius: 4px;
-    font-weight: 500;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ffdea8;
+  padding: 9px 14px;
+  border-bottom-left-radius: 4px;
+  font-weight: 500;
 }
 
 .searchContainer {
-    position: relative;
+  position: relative;
 }
 
 .iconContainer {
-    position: absolute;
-    left: 13px;
-    top: 13px;
+  position: absolute;
+  left: 13px;
+  top: 13px;
 }
 
 .inputContainer {
-    position: relative;
-    width: 548px;
+  position: relative;
+  width: 548px;
 }
 
 .input {
-    font-size: 18px;
-    padding-left: 48px;
-    height: 49px;
-    width: 500px;
-    border-radius: 4px;
-    border: 1px solid #8d8d8d;
+  font-size: 18px;
+  padding-left: 48px;
+  height: 49px;
+  width: 500px;
+  border-radius: 4px;
+  border: 1px solid #8d8d8d;
 }
 
 .clearBtn {
-    position: absolute;
-    right: 5px;
-    background-color: transparent;
-    border: none;
-    top: 15px;
-    cursor: pointer;
+  position: absolute;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  top: 15px;
+  cursor: pointer;
 }
+
 .clearBtn svg {
-    stroke: #898989;
+  stroke: #898989;
 }
 
 .clearBtn:hover svg {
-    stroke: #000000;
+  stroke: #000;
 }

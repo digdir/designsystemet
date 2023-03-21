@@ -66,9 +66,9 @@
   overflow: hidden;
 }
 
-.header:after {
+.header::after {
   position: absolute;
-  right: -0px;
+  right: -0;
   bottom: -200px;
   transform: rotate(25deg);
   content: '';
