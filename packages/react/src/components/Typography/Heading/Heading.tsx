@@ -4,33 +4,16 @@ import cn from 'classnames';
 import classes from './Heading.module.css';
 
 export interface HeadingProps {
-  level?: HeadingLevel;
-  size?: HeadingSize;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  size?: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
   color?: string;
   children: React.ReactNode;
   margin?: boolean;
 }
 
-export enum HeadingSize {
-  XLarge = 'xlarge',
-  Large = 'large',
-  Medium = 'medium',
-  Small = 'small',
-  XSmall = 'xsmall',
-}
-
-export enum HeadingLevel {
-  H1 = 1,
-  H2 = 2,
-  H3 = 3,
-  H4 = 4,
-  H5 = 5,
-  H6 = 6,
-}
-
 const Heading = ({
-  level = HeadingLevel.H1,
-  size = HeadingSize.XLarge,
+  level = 1,
+  size = 'xlarge',
   color = 'black',
   children,
   margin = false,

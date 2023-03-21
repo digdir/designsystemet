@@ -4,17 +4,15 @@ import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CheckboxRadioTemplateProps } from './';
-import { CheckboxRadioTemplate, CheckboxRadioTemplateSize } from './';
+import { CheckboxRadioTemplate } from './';
 
 // Test data:
 const visibleBoxTestId = 'visible-box-test';
 const visibleBox = <span data-testid={visibleBoxTestId} />;
-const size = CheckboxRadioTemplateSize.Small;
-const type = 'checkbox';
 const onChange = jest.fn();
 const defaultProps: CheckboxRadioTemplateProps = {
-  size,
-  type,
+  size: 'small',
+  type: 'checkbox',
   onChange,
   children: visibleBox,
 };
@@ -52,14 +50,12 @@ describe('CheckboxRadioTemplate', () => {
   });
 
   it('Renders with "xsmall" class if size is set to "Xsmall"', () => {
-    const size = CheckboxRadioTemplateSize.Xsmall;
-    const wrapper = renderAndGetWrapper({ size });
+    const wrapper = renderAndGetWrapper({ size: 'xsmall' });
     expect(wrapper).toHaveClass('xsmall');
   });
 
   it('Renders with "small" class if size is set to "Small"', () => {
-    const size = CheckboxRadioTemplateSize.Small;
-    const wrapper = renderAndGetWrapper({ size });
+    const wrapper = renderAndGetWrapper({ size: 'small' });
     expect(wrapper).toHaveClass('small');
   });
 

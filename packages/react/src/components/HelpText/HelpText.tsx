@@ -3,20 +3,15 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import { HelptextFilled, Helptext } from '@navikt/ds-icons';
 
-import { Popover, PopoverVariant } from '../Popover';
+import { Popover } from '../Popover';
 import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
 
-export enum HelpTextSize {
-  Xsmall = 'xsmall',
-  Small = 'small',
-}
-
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   title: string;
-  size?: HelpTextSize;
+  size?: 'small' | 'xsmall';
   placement?:
     | 'top'
     | 'bottom'
@@ -38,13 +33,13 @@ const HelpText = ({
   title,
   placement = 'right',
   onClick,
-  size = HelpTextSize.Small,
+  size = 'small',
   ...rest
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);
   return (
     <Popover
-      variant={PopoverVariant.Info}
+      variant='info'
       placement={placement}
       open={open}
       onOpenChange={setOpen}

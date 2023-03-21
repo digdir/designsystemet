@@ -1,27 +1,30 @@
 .section {
-    background-color: #F4F5F6;
-    padding: 64px 0 72px 0;
-    text-align: center;
+  background-color: #f4f5f6;
+  padding: var(--spacing-7) 0 var(--spacing-8) 0;
+  text-align: center;
 }
 
 .white {
-    background-color: white;
+  background-color: white;
 }
 
 .title {
-    font-size: 32px;
-    font-weight: 500;
+  font-size: var(--font-700);
+  font-weight: 500;
 }
 
 .header {
-    margin-bottom: 40px;
+  margin-bottom: var(--spacing-5);
 }
 
 .content {
-
+  display: grid;
+  grid-row-gap: var(--grid-gap);
+  grid-column-gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 }
 
 .detail {
-    margin-top: 16px;
-    height: 32px;
+  margin-top: 16px;
+  height: 32px;
 }

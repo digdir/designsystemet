@@ -2,7 +2,7 @@ import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { FieldSetProps } from './FieldSet';
-import { FieldSet, FieldSetSize } from './FieldSet';
+import { FieldSet } from './FieldSet';
 
 const defaultProps: FieldSetProps = {
   children: 'Some content.',
@@ -56,13 +56,13 @@ describe('FieldSet', () => {
   });
 
   it('Has class "small" if the "size" property is set to "small"', () => {
-    render({ size: FieldSetSize.Small });
+    render({ size: 'small' });
     expect(screen.getByRole('group')).toHaveClass('small');
     expect(screen.getByRole('group')).not.toHaveClass('xsmall');
   });
 
   it('Has class "xsmall" if the "size" property is set to "xsmall"', () => {
-    render({ size: FieldSetSize.Xsmall });
+    render({ size: 'xsmall' });
     expect(screen.getByRole('group')).toHaveClass('xsmall');
     expect(screen.getByRole('group')).not.toHaveClass('small');
   });

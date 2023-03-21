@@ -1,18 +1,19 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import Image from 'next/image';
+
+import { Container } from '../Container/Container';
 
 import classes from './Footer.module.css';
 
 const Footer = () => {
   return (
     <footer className={classes.footer}>
-      <Container>
+      <Container className={classes.container}>
         <Image
           src='/img/logo-negative.svg'
           alt='Logo'
-          width={752}
-          height={79}
+          width={275}
+          height={28}
         />
       </Container>
     </footer>

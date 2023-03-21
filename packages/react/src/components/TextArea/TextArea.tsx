@@ -2,14 +2,14 @@ import type { HTMLProps } from 'react';
 import React from 'react';
 
 import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant } from '../_InputWrapper';
+import type { ReadOnlyVariant_ } from '../_InputWrapper';
 
 import classes from './TextArea.module.css';
 
 export interface TextAreaProps
   extends Omit<HTMLProps<HTMLTextAreaElement>, 'readOnly' | 'className'> {
   isValid?: boolean;
-  readOnly?: boolean | ReadOnlyVariant;
+  readOnly?: boolean | ReadOnlyVariant_;
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
 }
 

@@ -1,75 +1,89 @@
-import {Meta, Canvas, Story} from '@storybook/addon-docs'
-import {TextField} from "./";
-import {BetaBlock, TokensTable} from "../../../../../docs-components";
-import {ArgsTable} from "@storybook/addon-docs";
-import {ReadOnlyVariant} from "../_InputWrapper";
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { TextField } from './';
+import { BetaBlock, TokensTable } from '../../../../../docs-components';
+import { ArgsTable } from '@storybook/addon-docs';
+import { ReadOnlyVariant } from '../../types/enums';
 
 <Meta
-    title="Kjernekomponenter/TextField"
-    component={TextField}
-    parameters={{
-        status: {
-            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
-    }}
-    argTypes={{
-        label: {
-            control: {type: 'text'},
-            description: 'Tekst som vises over tekstfeltet og som gjør at tekstfeltet kommer i fokus når man klikker på den med musen.'
-        },
-        value: {
-            control: {type: 'text'},
-            description: 'Teksten som vises i tekstfeltet.'
-        },
-        defaultValue: {
-            control: {type: 'text'},
-            description: 'Standardverdi i tekstfeltet.'
-        },
-        formatting: {
-            control: {type: 'object'},
-            description: 'Formateringsinnstillinger for tekstfeltet.'
-        },
-        required: {
-            control: {type: 'boolean'},
-            defaultValue: false,
-            description: 'Angir om feltet er påkrevd.'
-        },
-        isValid: {
-            control: {type: 'boolean'},
-            defaultValue: true,
-            description: 'Sett til `false` for å indikere at verdien i tekstfeltet ikke er gyldig. Husk å gjøre det klart for brukeren hva som er feil.'
-        },
-        disabled: {
-            control: {type: 'boolean'},
-            defaultValue: false,
-            description: 'Angir at feltet er deaktivert og at brukeren ikke kan endre verdien i det. Husk å gjøre det klart for brukeren hvorfor feltet er deaktivert.'
-        },
-        readOnly: {
-            control: {type: 'radio', options: [false, true, ReadOnlyVariant.ReadOnlyInfo, ReadOnlyVariant.ReadOnlyConfirm]},
-            defaultValue: false,
-            description: 'Gjør tekstfeltet skrivebeskyttet.'
-        },
-        onChange: {
-            action: 'onChange',
-            control: {type: 'function'},
-            description: 'Funksjon som kalles når brukeren endrer innholdet i tekstfeltet.'
-        },
-        onBlur: {
-            action: 'onBlur',
-            control: {type: 'function'},
-            description: 'Funksjon som kalles når feltet mister fokus.'
-        }
-    }}
+  title='Kjernekomponenter/TextField'
+  component={TextField}
+  parameters={{
+    status: {
+      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      url: 'http://www.url.com/status',
+    },
+  }}
+  argTypes={{
+    label: {
+      control: { type: 'text' },
+      description:
+        'Tekst som vises over tekstfeltet og som gjør at tekstfeltet kommer i fokus når man klikker på den med musen.',
+    },
+    value: {
+      control: { type: 'text' },
+      description: 'Teksten som vises i tekstfeltet.',
+    },
+    defaultValue: {
+      control: { type: 'text' },
+      description: 'Standardverdi i tekstfeltet.',
+    },
+    formatting: {
+      control: { type: 'object' },
+      description: 'Formateringsinnstillinger for tekstfeltet.',
+    },
+    required: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description: 'Angir om feltet er påkrevd.',
+    },
+    isValid: {
+      control: { type: 'boolean' },
+      defaultValue: true,
+      description:
+        'Sett til `false` for å indikere at verdien i tekstfeltet ikke er gyldig. Husk å gjøre det klart for brukeren hva som er feil.',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description:
+        'Angir at feltet er deaktivert og at brukeren ikke kan endre verdien i det. Husk å gjøre det klart for brukeren hvorfor feltet er deaktivert.',
+    },
+    readOnly: {
+      control: {
+        type: 'radio',
+        options: [
+          false,
+          true,
+          ReadOnlyVariant.ReadOnlyInfo,
+          ReadOnlyVariant.ReadOnlyConfirm,
+        ],
+      },
+      defaultValue: false,
+      description: 'Gjør tekstfeltet skrivebeskyttet.',
+    },
+    onChange: {
+      action: 'onChange',
+      control: { type: 'function' },
+      description:
+        'Funksjon som kalles når brukeren endrer innholdet i tekstfeltet.',
+    },
+    onBlur: {
+      action: 'onBlur',
+      control: { type: 'function' },
+      description: 'Funksjon som kalles når feltet mister fokus.',
+    },
+  }}
 />
 
 export const defaultArgs = {
-    label: 'Label',
-    id: 'textfield-story',
-    onChange: () => {},
-    formatting: {align: 'left'}
+  label: 'Label',
+  id: 'textfield-story',
+  onChange: () => {},
+  formatting: { align: 'left' },
 };
-export const Template = (args = {}) => <TextField {...{...defaultArgs, ...args}}/>;
+export const Template = (args = {}) => (
+  <TextField {...{ ...defaultArgs, ...args }} />
+);
 
 # TextField
 
@@ -80,61 +94,81 @@ export const Template = (args = {}) => <TextField {...{...defaultArgs, ...args}}
 ## Eksempler
 
 ### Standard
+
 <Canvas>
-    <Story name="Standard">
-        {Template.bind({})}
-    </Story>
+  <Story name='Standard'>{Template.bind({})}</Story>
 </Canvas>
 
 ### Tallformat
+
 Egenskapen `formatting` kan brukes til å gi tekstfeltet spesielle formater, som prefiks og tusenskilletegn.
+
 <Canvas>
-    <Story
-        name="Tallformat"
-        args={{
-            formatting: {number: {
-                thousandSeparator: ' ',
-                prefix: 'NOK ',
-            }},
-            defaultValue: 1000000
-        }}
-    >
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Tallformat'
+    args={{
+      formatting: {
+        number: {
+          thousandSeparator: ' ',
+          prefix: 'NOK ',
+        },
+      },
+      defaultValue: 1000000,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Med feil
+
 <Canvas>
-    <Story name="Med feil" args={{isValid: false}}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Med feil'
+    args={{ isValid: false }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Skrivebeskyttet
+
 <Canvas>
-    <Story name="Skrivebeskyttet" args={{
-        readOnly: ReadOnlyVariant.ReadOnlyInfo,
-        value: 'Dette er en skrivebeskyttet tekst.'
-    }}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Skrivebeskyttet'
+    args={{
+      readOnly: ReadOnlyVariant.ReadOnlyInfo,
+      value: 'Dette er en skrivebeskyttet tekst.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Bekreftelsesvisning
+
 <Canvas>
-    <Story name="Bekreftelsesvisning" args={{
-        readOnly: ReadOnlyVariant.ReadOnlyConfirm,
-        value: 'Dette er en bekreftelsesvisning av en tekst som er skrevet inn i et tekstfelt.'
-    }}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Bekreftelsesvisning'
+    args={{
+      readOnly: ReadOnlyVariant.ReadOnlyConfirm,
+      value:
+        'Dette er en bekreftelsesvisning av en tekst som er skrevet inn i et tekstfelt.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Deaktivert
+
 <Canvas>
-    <Story name="Deaktivert" args={{disabled: true}}>
-        {Template.bind({})}
-    </Story>
+  <Story
+    name='Deaktivert'
+    args={{ disabled: true }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Egenskaper
@@ -142,9 +176,10 @@ Egenskapen `formatting` kan brukes til å gi tekstfeltet spesielle formater, som
 <ArgsTable story='Standard' />
 
 ## Tokens
+
 <TokensTable
-    jsonKey='component.textfield'
-    componentName='textfield'
-    showPreview={false}
-    description
+  jsonKey='component.textfield'
+  componentName='textfield'
+  showPreview={false}
+  description
 />

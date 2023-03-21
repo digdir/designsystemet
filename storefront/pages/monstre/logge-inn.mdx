@@ -1,9 +1,9 @@
-import Meta from '../../../components/Meta/Meta';
-import { PageLayout } from '../../../layouts';
-export { getServerSideProps } from '../../../utils/menus/PageMenu';
+import Meta from '../../components/Meta/Meta';
+import { PageLayout } from '../../layouts';
+export { getServerSideProps } from '../../utils/menus/PageMenu';
 
 <Meta
-  title='Farger'
+  title='Logge inn'
   description='Beskrivelse'
 />
 
@@ -12,9 +12,8 @@ export default ({ children, menu }) => (
     content={children}
     menu={menu}
     data={{
-      title: 'Farger',
+      title: 'Logge inn',
       date: '25. mars 2023',
-      showMenu: true,
     }}
   />
 );
