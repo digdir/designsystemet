@@ -58,14 +58,6 @@
   box-shadow: 0 0 0 1px #00397e;
 }
 
-svg {
-  transition: 0.25s all;
-}
-
-.item:hover svg {
-  transform: scale(1.25);
-}
-
 .heading {
   margin-bottom: 24px;
   font-weight: 500;
@@ -124,8 +116,16 @@ svg {
   cursor: pointer;
 }
 
+svg {
+  transition: 0.25s all;
+}
+
 .clearBtn svg {
   stroke: #898989;
+}
+
+.item:hover svg {
+  transform: scale(1.25);
 }
 
 .clearBtn:hover svg {

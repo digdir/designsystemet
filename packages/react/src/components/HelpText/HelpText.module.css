@@ -28,6 +28,12 @@
   display: none;
 }
 
+.helpTextIcon {
+  color: var(--colors-blue-700);
+  width: var(--help_text-icon-width);
+  height: var(--help_text-icon-height);
+}
+
 .helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
   > .helpTextIcon {
   display: none;
@@ -36,12 +42,6 @@
 .helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
   > .helpTextIconFilled {
   display: inline-block;
-}
-
-.helpTextIcon {
-  color: var(--colors-blue-700);
-  width: var(--help_text-icon-width);
-  height: var(--help_text-icon-height);
 }
 
 .helpTextContent {

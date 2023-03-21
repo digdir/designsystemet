@@ -12,7 +12,7 @@ export function BetaBlock() {
       <div className={classes.iconContainer}>
         <Information fontSize={24} />
       </div>
-      <div className={classes.TextContainer}>
+      <div>
         <div className={classes.title}>Beta</div>
         <div className={classes.desc}>
           Komponenten er under utvikling. Dette kan medføre breaking-changes i

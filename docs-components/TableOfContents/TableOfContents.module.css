@@ -30,13 +30,13 @@
   text-decoration: none;
 }
 
-.toc__item a:hover {
-  color: #234ebb;
-}
-
 .toc__item--active a {
   color: #234ebb;
   font-weight: 500;
+}
+
+.toc__item a:hover {
+  color: #234ebb;
 }
 
 .toc__heading {

@@ -25,13 +25,13 @@
   width: var(--multiselect_item-height);
 }
 
-.deleteButton:not(:disabled):hover {
-  background-color: var(--delete_cross_box-color-hover);
-}
-
 .deleteButton:focus-visible {
   background-color: var(--delete_cross_box-color-hover);
   outline: var(--focus_visible-outline);
+}
+
+.deleteButton:not(:disabled):hover {
+  background-color: var(--delete_cross_box-color-hover);
 }
 
 .deleteButtonCross {

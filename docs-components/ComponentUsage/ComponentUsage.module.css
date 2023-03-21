@@ -3,10 +3,6 @@
   margin-top: 48px;
 }
 
-.ComponentUsage--danger .box {
-  border-color: #e00000;
-}
-
 .title {
   font-size: 24px;
   font-weight: 500;
@@ -36,6 +32,10 @@
   border-left: 6px solid #2a8d00;
   position: relative;
   border-radius: 2px;
+}
+
+.ComponentUsage--danger .box {
+  border-color: #e00000;
 }
 
 .content {
