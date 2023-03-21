@@ -5,7 +5,6 @@
   --font-and-icon-color: var(--component-button-filled-color-text-all);
   --icon-size: var(--component-button-size-icon-small);
 
-  all: initial; /* reset all styles to default, to avoid style overrides/surprises caused by other css (from Design system v1 f.ex) */
   align-items: center;
   border-radius: var(--border-radius);
   border: var(--component-button-border_width-default) solid transparent;

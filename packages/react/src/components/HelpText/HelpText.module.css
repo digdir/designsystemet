@@ -1,5 +1,4 @@
 .helpTextButton {
-  all: initial;
   background-color: transparent;
   border-radius: 50px;
   padding: 0;
@@ -29,11 +28,13 @@
   display: none;
 }
 
-.helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIcon {
+.helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
+  > .helpTextIcon {
   display: none;
 }
 
-.helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIconFilled {
+.helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
+  > .helpTextIconFilled {
   display: inline-block;
 }
 
