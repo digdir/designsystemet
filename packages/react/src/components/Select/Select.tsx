@@ -7,9 +7,10 @@ import { InputWrapper } from '../_InputWrapper';
 import {
   useEventListener,
   useKeyboardEventListener,
+  usePrevious,
   useUpdate,
 } from '../../hooks';
-import { arraysEqual } from '../../utils';
+import { arraysEqual, objectValuesEqual } from '../../utils';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
@@ -41,12 +42,12 @@ interface SelectPropsBase {
   searchLabel?: string;
 }
 
-export interface SingleSelectOption {
+export type SingleSelectOption = {
   keywords?: string[];
   label: string;
   value: string;
   formattedLabel?: ReactNode;
-}
+};
 
 export type MultiSelectOption = SingleSelectOption & {
   deleteButtonLabel?: string;
@@ -87,6 +88,20 @@ const Select = (props: SelectProps) => {
   const [keyword, setKeyword] = useState('');
 
   const [sortedOptions, setSortedOptions] = useState(options);
+  // Enable dynamic change of options by resetting sortedOptions
+  const prevOptions = usePrevious([...options]);
+  useUpdate(() => {
+    // Update not on changed reference but on changed values inside the object
+    if (
+      options.length !== prevOptions?.length ||
+      options.some(
+        (option, index) => !objectValuesEqual(option, prevOptions[index]),
+      )
+    ) {
+      setSortedOptions(options);
+      setSelectedValues(multiple ? value ?? [] : []);
+    }
+  });
 
   const numberOfOptions = options.length;
 
