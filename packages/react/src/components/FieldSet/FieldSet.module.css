@@ -7,8 +7,8 @@
   --help_text-gap: var(--component-field_description-space-top-small);
   --font_size: var(--component-checkbox-font_size-sm);
 
-  border: 0;
   color: var(--color);
+  border: 0;
   font-size: var(--font_size);
   line-height: var(--typography-default-line-height);
   margin: 0;

@@ -14,16 +14,19 @@
   --spacing-6: clamp(2rem, calc(1.64rem + 1.82vw), 3rem); /* 48px-32px */
   --spacing-7: clamp(3rem, calc(2.64rem + 1.82vw), 4rem); /* 64px-48px */
   --spacing-8: clamp(4rem, calc(3.64rem + 1.82vw), 5rem); /* 80px-64px */
+
   --font-900: clamp(2.25rem, calc(2.07rem + 0.91vw), 2.75rem); /* 44px-36px */
-  --font-800: clamp(2rem, calc(1.91rem + 0.45vw), 2.25rem); /* 36px-32px */
+  --font-800: clamp(2rem, calc(1.91rem + 0.45vw), 2.25rem); /* 36px-32px*/
   --font-700: clamp(1.75rem, calc(1.66rem + 0.45vw), 2rem); /* 32px-28px */
   --font-600: clamp(1.5rem, calc(1.41rem + 0.45vw), 1.75rem); /* 28px-24px */
   --font-500: clamp(1.25rem, calc(1.16rem + 0.45vw), 1.5rem); /* 24px-20px */
   --font-400: clamp(1.13rem, calc(1.08rem + 0.23vw), 1.25rem); /* 20px-18px */
-  --font-300: clamp(1rem, calc(0.95rem + 0.23vw), 1.13rem); /* 18px-16px */
+  --font-300: clamp(1rem, calc(0.95rem + 0.23vw), 1.13rem); /* 18px-16px*/
+
   --grid-max-width: 1380px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
   --grid-gap: var(--spacing-5);
+
   --page-spacing-top: var(--spacing-7);
   --page-spacing-bottom: var(--spacing-7);
 }

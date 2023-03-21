@@ -1,10 +1,10 @@
 .page {
+  margin-top: var(--page-spacing-top);
+  margin-bottom: var(--page-spacing-bottom);
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--spacing-5);
-  justify-content: space-between;
-  margin-bottom: var(--page-spacing-bottom);
-  margin-top: var(--page-spacing-top);
 }
 
 .left {
@@ -40,22 +40,23 @@
 }
 
 .section-desc {
+  margin-top: 16px;
+  margin-bottom: 24px;
   font-size: var(--font-300);
   line-height: 1.5em;
-  margin-bottom: 24px;
-  margin-top: 16px;
 }
 
 .section-cards {
   display: grid;
-  grid-gap: var(--grid-gap) var(--grid-gap);
+  grid-row-gap: var(--grid-gap);
+  grid-column-gap: var(--grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   margin-top: var(--spacing-6);
 }
 
 .list {
-  color: #4d4d4d;
   margin-bottom: 32px;
+  color: #4d4d4d;
 }
 
 .list ul {
@@ -73,9 +74,9 @@
 }
 
 .list li a {
-  color: inherit;
-  display: block;
-  font-size: 15px;
-  margin-bottom: 10px;
   text-decoration: none;
+  color: inherit;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 10px;
 }

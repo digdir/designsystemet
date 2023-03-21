@@ -1,7 +1,8 @@
 .list {
   --component-list-border_width: 1px;
-
-  border-top: var(--component-list-border_width) var(--component-list-border_style) var(--component-list-border_color);
+  border-top-color: var(--component-list-border_color);
+  border-top-style: var(--component-list-border_style);
+  border-top-width: var(--component-list-border_width);
   list-style-type: none;
   padding-left: 0;
 }

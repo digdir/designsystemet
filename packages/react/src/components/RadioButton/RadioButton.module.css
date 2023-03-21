@@ -55,7 +55,6 @@
 
 .checkmark {
   --radio-checkmark-size: 80%;
-
   background-color: var(--radio-checkmark-color);
   border-radius: 50%;
   display: var(--radio-checkmark-display);

@@ -5,7 +5,6 @@
   --outline-color: var(--semantic-tab_focus-outline-color);
   --paddingX: 0;
   --paddingY: 0;
-
   align-items: stretch;
   background: var(--background);
   border-color: var(--border-color);
@@ -39,7 +38,6 @@
     #fff 3px,
     #fff 5px
   );
-
   opacity: var(--opacity-disabled);
 }
 

@@ -1,6 +1,5 @@
 .multiSelectItem {
   --border-radius: calc(var(--multiselect_item-height) / 2);
-
   align-items: center;
   background-color: var(--multiselect_item-background_color);
   border-radius: var(--border-radius);
@@ -14,9 +13,9 @@
 
 .deleteButton {
   background-color: transparent;
-  border: 0;
   border-bottom-right-radius: inherit;
   border-top-right-radius: inherit;
+  border: 0;
   cursor: var(--interactive_element-cursor);
   height: 100%;
   padding: calc(

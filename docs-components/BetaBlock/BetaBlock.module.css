@@ -1,35 +1,37 @@
 .box {
-  background-color: #f1ecff;
-  border-left: 5px solid #6544c5;
-  border-radius: 2px;
-  display: flex;
-  margin: 29px 0;
-  padding: 24px;
-  width: 80%;
+    background-color: #f1ecff;
+    border-left: 5px solid #6544c5;
+    padding: 24px;
+    display: flex;
+    margin: 29px 0;
+    width: 80%;
+    border-radius: 2px;
 }
 
-@media screen and (max-width: 1400px) {
-  .box {
-    width: auto;
-  }
+
+@media screen  and (max-width: 1400px)  {
+    .box {
+        width: auto;
+    }
 }
 
 .iconContainer {
-  display: none;
-  margin-right: 16px;
+    margin-right: 16px;
+    display: none;
 }
 
 .textContainer {
+
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.3em;
-  margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3em;
+    margin-bottom: 8px;
 }
 
 .desc {
-  font-size: 16px;
-  line-height: 1.5em;
+    line-height: 1.5em;
+    font-size: 16px;
 }

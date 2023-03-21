@@ -2,30 +2,33 @@
 }
 
 .github-releases-changelog code {
-  background-color: #f8f8f8;
-  border: 1px solid #eee;
-  border-radius: 2px;
-  padding: 3px 5px;
+    background-color: #F8F8F8;
+    border: 1px solid #EEEEEE;
+    padding: 3px 5px;
+    border-radius: 2px;
 }
 
 .github-releases-changelog li {
-  line-height: 34px;
+    line-height: 34px;
 }
 
 .github-releases-changelog hr {
-  background-color: #e7e7e7;
-  border: none;
-  height: 1px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+    height: 1px;
+    background-color: #e7e7e7;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .github-releases-changelog h2:first-child {
-  font-size: 28px;
+   font-size: 28px;
 }
 
 p.date {
-  color: #646464;
-  font-size: 18px !important;
-  margin-top: -6px;
+    color: #646464;
+    margin-top: -6px;
+    font-size: 18px !important;
 }
+
+
+

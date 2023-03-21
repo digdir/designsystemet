@@ -19,11 +19,12 @@
 
 .content {
   display: grid;
-  grid-gap: var(--grid-gap) var(--grid-gap);
+  grid-row-gap: var(--grid-gap);
+  grid-column-gap: var(--grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 }
 
 .detail {
-  height: 32px;
   margin-top: 16px;
+  height: 32px;
 }

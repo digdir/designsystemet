@@ -34,7 +34,7 @@
   --opacity: var(--opacity-disabled);
 }
 
-.clickable {
+.clickable  {
   cursor: var(--click-cursor);
 }
 
@@ -78,10 +78,10 @@
 }
 
 .labelAndHelpText {
-  align-items: center;
   display: inline-flex;
   flex-direction: row;
   gap: var(--gap);
+  align-items: center;
 }
 
 .description {
@@ -95,7 +95,7 @@
   }
 }
 
-.template:not(.disabled, :has(button:focus-visible)):has(:focus-visible) {
+.template:not(.disabled):not(:has(button:focus-visible)):has(:focus-visible) {
   outline: 2px solid var(--semantic-tab_focus-outline-color);
   outline-offset: 2px;
 }

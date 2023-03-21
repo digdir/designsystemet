@@ -1,14 +1,14 @@
 .box {
-  margin-bottom: -64px;
   margin-top: var(--page-spacing-top);
-  max-width: 700px;
+  margin-bottom: -64px;
   position: relative;
   z-index: 2;
+  max-width: 700px;
 }
 
 .title {
-  font-size: var(--font-800);
   margin-bottom: var(--spacing-3);
+  font-size: var(--font-800);
 }
 
 .desc {
@@ -18,27 +18,26 @@
 }
 
 .element {
-  animation: rotate 150s linear infinite;
-  border: 8px solid #f45f63;
-  border-bottom-color: #1e98f5;
-  border-left-color: #e5aa20;
-  border-radius: 10px;
-  border-top-color: #68707c;
-  height: 550px;
-  opacity: 0.09;
-  pointer-events: none;
   position: absolute;
-  right: -20px;
   top: -20px;
+  right: -20px;
+  height: 550px;
   width: 550px;
+  border: 8px solid #f45f63;
+  border-top-color: #68707c;
+  border-left-color: #e5aa20;
+  border-bottom-color: #1e98f5;
+  border-radius: 10px;
+  opacity: 0.09;
   z-index: 1;
+  animation: rotate 150s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes rotate {
   0% {
     transform: rotate(45deg);
   }
-
   100% {
     transform: rotate(360deg);
   }

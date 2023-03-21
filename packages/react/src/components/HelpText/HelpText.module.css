@@ -1,11 +1,11 @@
 .helpTextButton {
   all: initial;
   background-color: transparent;
-  border: none;
   border-radius: 50px;
+  padding: 0;
   cursor: pointer;
   display: flex;
-  padding: 0;
+  border: none;
 }
 
 @media print {
@@ -15,10 +15,10 @@
 }
 
 .helpTextButton:focus-visible {
-  color: var(--colors-blue-700);
   outline: var(--semantic-tab_focus-outline-color) solid
     var(--semantic-tab_focus-outline-width);
   outline-offset: var(--semantic-tab_focus-outline-offset);
+  color: var(--colors-blue-700);
 }
 
 .helpTextButton:focus:not(:focus-visible) {
@@ -29,27 +29,25 @@
   display: none;
 }
 
-.helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
-  > .helpTextIcon {
+.helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIcon {
   display: none;
 }
 
-.helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
-  > .helpTextIconFilled {
+.helpTextButton:where(:hover, :focus-visible, [data-state^="open"]) > .helpTextIconFilled {
   display: inline-block;
 }
 
 .helpTextIcon {
   color: var(--colors-blue-700);
-  height: var(--help_text-icon-height);
   width: var(--help_text-icon-width);
+  height: var(--help_text-icon-height);
 }
 
 .helpTextContent {
   font-size: var(--font_size-300);
   line-height: var(--typography-default-line-height);
-  max-width: 700px;
   width: fit-content;
+  max-width: 700px;
 }
 
 .helpTextIcon.small {
