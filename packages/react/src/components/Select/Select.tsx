@@ -86,7 +86,6 @@ const Select = (props: SelectProps) => {
   );
 
   const [keyword, setKeyword] = useState('');
-  const resetKeyword = () => keyword && setKeyword('');
 
   const [sortedOptions, setSortedOptions] = useState(options);
   // Enable dynamic change of options by resetting sortedOptions
@@ -120,6 +119,11 @@ const Select = (props: SelectProps) => {
   );
   const activeOptionIndex = sortedOptions.findIndex(
     (option) => option.value === activeOption,
+  );
+
+  const resetKeyword = useCallback(
+    (newValue?: string) => setKeyword((!multiple && newValue) || ''),
+    [setKeyword, multiple],
   );
 
   const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
@@ -181,12 +185,13 @@ const Select = (props: SelectProps) => {
     }
     setSelectedValues(newValues);
     onChange && (onChange as MultipleOnChangeEvent)(newValues);
+    resetKeyword();
   };
 
   const singleChangeHandler = (newValue: string) => {
     setActiveOption(newValue);
+    resetKeyword(findOptionFromValue(newValue).label);
     setExpanded(false);
-    resetKeyword();
     onChange && (onChange as SingleOnChangeEvent)(newValue);
   };
 
@@ -212,53 +217,59 @@ const Select = (props: SelectProps) => {
   };
 
   const moveFocusDown = useCallback(() => {
+    let newActiveOption = null;
     if (activeOption === undefined) {
-      setActiveOption(sortedOptions[0].value);
+      newActiveOption = sortedOptions[0];
     } else {
       const newIndex = activeOptionIndex + 1;
       if (newIndex >= 0 && newIndex < numberOfOptions) {
-        setActiveOption(sortedOptions[newIndex].value);
+        newActiveOption = sortedOptions[newIndex];
       }
+    }
+    if (newActiveOption) {
+      setActiveOption(newActiveOption.value);
+      resetKeyword(newActiveOption.label);
     }
     setExpanded(true);
   }, [
     activeOption,
     activeOptionIndex,
+    resetKeyword,
     setActiveOption,
     sortedOptions,
     numberOfOptions,
   ]);
 
   const moveFocusUp = useCallback(() => {
+    let newActiveOption = null;
     if (activeOption === undefined) {
-      setActiveOption(sortedOptions[numberOfOptions - 1].value);
+      newActiveOption = sortedOptions[numberOfOptions - 1];
     } else {
       const newIndex = activeOptionIndex - 1;
       if (newIndex >= 0 && newIndex < numberOfOptions) {
-        setActiveOption(sortedOptions[newIndex].value);
+        newActiveOption = sortedOptions[newIndex];
       }
+    }
+    if (newActiveOption) {
+      setActiveOption(newActiveOption.value);
+      resetKeyword(newActiveOption.label);
     }
     setExpanded(true);
   }, [
     activeOption,
     activeOptionIndex,
+    resetKeyword,
     setActiveOption,
     sortedOptions,
     numberOfOptions,
   ]);
 
   useKeyboardEventListener(eventListenerKeys.ArrowDown, () => {
-    if (expanded) {
-      moveFocusDown();
-      resetKeyword();
-    }
+    expanded ? moveFocusDown() : setExpanded(true);
   });
 
   useKeyboardEventListener(eventListenerKeys.ArrowUp, () => {
-    if (expanded) {
-      moveFocusUp();
-      resetKeyword();
-    }
+    expanded ? moveFocusUp() : setExpanded(true);
   });
 
   useKeyboardEventListener(eventListenerKeys.Enter, () => {
@@ -267,7 +278,6 @@ const Select = (props: SelectProps) => {
     } else if (expanded) {
       setExpanded(false);
     }
-    resetKeyword();
   });
 
   const keywordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -285,6 +295,8 @@ const Select = (props: SelectProps) => {
   const isOptionSelected = (val: string) =>
     multiple ? selectedValues.includes(val) : isOptionActive(val);
 
+  const randomInputId = useId();
+  const givenOrRandomInputId = inputId ?? randomInputId;
   const listboxId = useId();
 
   const width = selectFieldRef.current
@@ -304,8 +316,8 @@ const Select = (props: SelectProps) => {
     >
       <InputWrapper
         disabled={disabled}
-        inputId={inputId}
-        inputRenderer={({ className, inputId }) => (
+        inputId={givenOrRandomInputId}
+        inputRenderer={({ className, inputId: id }) => (
           <span
             className={className + ' ' + classes.field}
             ref={selectFieldRef}
@@ -327,11 +339,19 @@ const Select = (props: SelectProps) => {
                 </>
               )}
               <input
-                aria-label={searchLabel}
+                aria-activedescendant={`${id}-${activeOption}`}
+                aria-autocomplete='list'
+                aria-controls={listboxId}
+                aria-expanded={expanded}
+                aria-haspopup='listbox'
+                aria-label={searchLabel ?? label}
+                aria-owns={listboxId}
                 autoComplete='off'
                 className={classes.textInput}
                 disabled={disabled}
+                id={id}
                 onBlur={() => setExpanded(false)}
+                onClick={() => setExpanded(true)}
                 onChange={keywordChangeHandler}
                 onFocus={() => setExpanded(true)}
                 onKeyDown={(event) => {
@@ -339,14 +359,10 @@ const Select = (props: SelectProps) => {
                     event.preventDefault();
                   }
                 }}
+                role='combobox'
                 type='text'
                 value={keyword}
               />
-              {!multiple && !keyword.length && (
-                <span className={classes.fieldValue}>
-                  {findOptionFromValue(activeOption).label}
-                </span>
-              )}
             </span>
             {multiple && (
               <button
@@ -365,7 +381,6 @@ const Select = (props: SelectProps) => {
               aria-label={label}
               className={classes.fieldButton}
               disabled={disabled}
-              id={inputId}
               onBlur={() => setExpanded(false)}
               onClick={() => setExpanded(true)}
               onKeyDown={(event) => {
@@ -374,7 +389,6 @@ const Select = (props: SelectProps) => {
                   setExpanded(true);
                 }
               }}
-              role='combobox'
               tabIndex={-1}
               value={multiple ? selectedValues : activeOption}
             >
@@ -397,6 +411,7 @@ const Select = (props: SelectProps) => {
         style={{ width }}
       >
         <span
+          aria-expanded={expanded}
           className={classes.optionList}
           id={listboxId}
           role='listbox'
@@ -410,6 +425,7 @@ const Select = (props: SelectProps) => {
                 isOptionSelected(option.value) && classes.selected,
                 multiple && isOptionActive(option.value) && classes.focused,
               )}
+              id={`${givenOrRandomInputId}-${option.value}`}
               key={option.value}
               onClick={() => addOrRemoveSelectedValue(option.value)}
               onMouseDown={(event) => event.preventDefault()}
