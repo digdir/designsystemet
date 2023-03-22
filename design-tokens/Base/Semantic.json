@@ -342,6 +342,10 @@
         "on_success": {
           "value": "{colors.white}",
           "type": "color"
+        },
+        "on_success_subtle": {
+          "value": "#1e2b3c",
+          "type": "color"
         }
       },
       "neutral": {
@@ -391,7 +395,7 @@
           "value": "{colors.white}",
           "type": "color"
         },
-        "text-on_danger-subtle": {
+        "on_danger_subtle": {
           "value": "#1e2b3c",
           "type": "color"
         }
