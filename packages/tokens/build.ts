@@ -1,10 +1,56 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { noCase } from 'change-case';
-import StyleDictionaryCore from 'style-dictionary';
+import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary';
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
+const prefix = 'fds';
+
+/**
+ * Transforms `level1.level2.another_level` to `level1-level2-another_level`
+ * This maintains hierarchy distinction (i.e. underscore is not a hierarchy level separator)
+ */
+StyleDictionary.registerTransform({
+  name: 'name/cti/hierarchical-kebab',
+  type: 'name',
+  transformer: (token, options) => {
+    return noCase([options?.prefix].concat(token.path).join('-'), {
+      delimiter: '-',
+      stripRegexp: /[^A-Z0-9_]+/gi,
+    });
+  },
+});
+
+StyleDictionary.registerTransform({
+  name: 'typography/shorthand',
+  type: 'value',
+  transitive: true,
+  matcher: (token) => token.type === 'typography',
+  transformer: (token) => {
+    const { value } = token;
+    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} ${value.fontFamily}`;
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: 'css/classFormat',
+  formatter: ({ dictionary }) => {
+    return `
+ ${dictionary.allProperties
+   .map((prop) => {
+     return `
+ .${prop.name} {
+     font-family: ${prop.value.fontFamily},
+     font-size: ${prop.value.fontSize},
+     font-weight: ${prop.value.fontWeight},
+     line-height: ${prop.value.lineHeight}
+ };`;
+   })
+   .join('\n')}
+ `;
+  },
+});
 
 const getStyleDictionaryConfig = (brand: Brands): Config => {
   const tokensPath = '../../design-tokens';
@@ -12,25 +58,12 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
   return {
     source: [
       `${tokensPath}/Brand/${brand}.json`,
-      `${tokensPath}/Base/**/*.json`,
+      `${tokensPath}/Base/Core.json`,
+      `${tokensPath}/Base/Semantic.json`,
     ],
-    transform: {
-      /**
-       * Transforms `level1.level2.another_level` to `level1-level2-another_level`
-       * This maintains hierarchy distinction (i.e. underscore is not a hierarchy level separator)
-       */
-      'name/cti/hierarchical-kebab': {
-        type: 'name',
-        transformer: (token, options) => {
-          return noCase([options?.prefix].concat(token.path).join('-'), {
-            delimiter: '-',
-            stripRegexp: /[^A-Z0-9_]+/gi,
-          });
-        },
-      },
-    },
     platforms: {
       js: {
+        transforms: ['name/cti/camel'],
         transformGroup: 'js',
         files: [
           {
@@ -48,19 +81,16 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
         ],
       },
       css: {
-        // `transformGroup: "css"` includes the transforms below, except for `name/cti/hierarchical-kebab`
-        transforms: [
-          'attribute/cti',
-          'name/cti/hierarchical-kebab',
-          'time/seconds',
-          'content/icon',
-          'size/rem',
-          'color/css',
-        ],
+        prefix,
+        transforms: ['name/cti/hierarchical-kebab', 'typography/shorthand'],
         files: [
           {
             destination: `${distFolder}/tokens.css`,
             format: 'css/variables',
+          },
+          {
+            destination: `${distFolder}/tokens_class.css`,
+            format: 'css/classFormat',
           },
         ],
       },
@@ -74,11 +104,11 @@ brands.map((brand) => {
   console.log('\n==============================================');
   console.log(`\nProcessing: ${brand}`);
 
-  const StyleDictionary = StyleDictionaryCore.extend(
+  const extendedStyleDictionary = StyleDictionary.extend(
     getStyleDictionaryConfig(brand),
   );
 
-  StyleDictionary.buildAllPlatforms();
+  extendedStyleDictionary.buildAllPlatforms();
 
   console.log('\nEnd processing');
 });
