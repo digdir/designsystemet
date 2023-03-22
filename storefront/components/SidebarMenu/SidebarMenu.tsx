@@ -39,7 +39,7 @@ const isItemActive = (path: string, activeRouterPath: string) => {
 
 const SidebarMenu = ({ title, menu, activeRouterPath }: SidebarMenuProps) => {
   return (
-    <div className={classes.menu}>
+    <div>
       <h3 className={classes.title}>
         {convertQueryToReadable(capitalizeString(title))}
       </h3>

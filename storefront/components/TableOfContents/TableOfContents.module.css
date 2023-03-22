@@ -1,29 +1,29 @@
 .toc {
-    border-left: 2px solid #cecece;
-    padding-left: 32px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    position: fixed;
+  border-left: 2px solid #cecece;
+  padding-left: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  position: fixed;
 }
 
 .list {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .item {
-    list-style: none;
+  list-style: none;
 }
 
 .link {
-    color: inherit;
-    text-decoration: none;
-    display: block;
-    margin-top: 12px;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  margin-top: 12px;
 }
 
 .title {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
 }

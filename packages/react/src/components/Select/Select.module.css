@@ -74,15 +74,8 @@
 
 .select.disabled {
   --interactive_element-cursor: auto;
+
   opacity: var(--opacity-disabled);
-}
-
-.select.expanded {
-  --delete_cross-color: var(--delete_cross-color-active);
-}
-
-.select:not(.expanded) .optionListWrapper {
-  display: none;
 }
 
 .select.usingKeyboard {
@@ -164,6 +157,7 @@
     (var(--field-height-inside) - var(--arrow-height)) / 2 -
       var(--arrow_wrapper-margin)
   );
+
   align-items: center;
   border-left: var(--arrow-border_left);
   box-sizing: border-box;
@@ -201,7 +195,10 @@
 }
 
 .select.multiple .deleteButton:disabled {
+  --delete_cross-color: var(--delete_cross-color-disabled);
+
   cursor: auto;
+  background-color: transparent;
 }
 
 .select.multiple .deleteButton:focus-visible {
@@ -210,12 +207,8 @@
 
 .select.multiple .deleteButton:hover:not(:disabled) {
   background-color: var(--delete_cross_box-color-hover);
-  --delete_cross-color: var(--delete_cross-color-hover);
-}
 
-.select.multiple .deleteButton:disabled {
-  --delete_cross-color: var(--delete_cross-color-disabled);
-  background-color: transparent;
+  --delete_cross-color: var(--delete_cross-color-hover);
 }
 
 .select.multiple .deleteButtonCross {
@@ -240,6 +233,14 @@
   padding: 0;
   position: absolute;
   z-index: var(--option_list-z_index);
+}
+
+.select.expanded {
+  --delete_cross-color: var(--delete_cross-color-active);
+}
+
+.select:not(.expanded) .optionListWrapper {
+  display: none;
 }
 
 .optionList {

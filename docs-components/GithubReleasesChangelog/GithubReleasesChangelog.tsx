@@ -25,7 +25,7 @@ const GithubReleasesChangelog = () => {
   }, []);
 
   return (
-    <div className={classes['github-releases-changelog']}>
+    <div>
       <hr />
       {data.map((item: GithubReleasesChangelogItemProps, index: number) => (
         <div key={index}>

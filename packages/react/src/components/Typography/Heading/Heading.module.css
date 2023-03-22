@@ -1,27 +1,27 @@
 .heading {
-    margin: 0;
+  margin: 0;
 }
 
 .heading--margin {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .heading--xlarge {
-    font-size: 44px;
+  font-size: 44px;
 }
 
 .heading--large {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .heading--medium {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 .heading--small {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .heading--xsmall {
-    font-size: 20px;
+  font-size: 20px;
 }

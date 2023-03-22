@@ -1,5 +1,6 @@
 .accordionIcon {
   --size: 20px;
+
   box-sizing: border-box;
   cursor: pointer;
   flex-shrink: 0;

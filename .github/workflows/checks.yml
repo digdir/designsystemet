@@ -24,7 +24,9 @@ jobs:
         run: yarn install --immutable
       - name: Build
         run: yarn build
-      - name: Lint all
+      - name: Lint Code
         run: yarn lint:all
+      - name: Lint CSS
+        run: yarn lint-style
       - name: Test
         run: yarn test

@@ -51,6 +51,12 @@
   line-height: 1.3em;
 }
 
+.test p {
+  font-size: 18px;
+  line-height: 1.55em;
+  margin-bottom: 20px;
+}
+
 .test h1 + p {
   font-size: 24px;
   line-height: 1.7em;
@@ -67,12 +73,6 @@
   margin-top: 40px;
   margin-bottom: 16px;
   line-height: 1.3em;
-}
-
-.test p {
-  font-size: 18px;
-  line-height: 1.55em;
-  margin-bottom: 20px;
 }
 
 .test img {
