@@ -30,5 +30,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "target": "es2016",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
