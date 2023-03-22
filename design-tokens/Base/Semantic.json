@@ -390,6 +390,10 @@
         "on_danger": {
           "value": "{colors.white}",
           "type": "color"
+        },
+        "text-on_danger-subtle": {
+          "value": "#1e2b3c",
+          "type": "color"
         }
       },
       "visited": {
