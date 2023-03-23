@@ -22,7 +22,8 @@
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
     "lint": "eslint",
     "lint:all": "eslint .",
-    "lint-style": "stylelint  \"**/*.css\""
+    "lint-style": "stylelint  \"**/*.css\"",
+    "lint-style:fix": "yarn run lint-style --fix"
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",

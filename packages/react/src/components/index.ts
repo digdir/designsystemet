@@ -61,3 +61,8 @@ export type {
   TableProps,
   TableRowProps,
 } from './Table';
+export { ToggleButtonGroup } from './ToggleButtonGroup';
+export type {
+  ToggleButtonGroupProps,
+  ToggleButtonProps,
+} from './ToggleButtonGroup';
