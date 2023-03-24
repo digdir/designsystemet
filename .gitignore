@@ -22,4 +22,4 @@ coverage/
 .idea
 
 # Storybook build files
-docs/docs
+docs

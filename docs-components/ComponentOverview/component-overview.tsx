@@ -72,7 +72,7 @@ const ComponentOverview = () => {
     },
     {
       name: 'Table',
-      img: 'Table.png',
+      img: 'table.png',
       url: 'table',
     },
     {
@@ -89,6 +89,11 @@ const ComponentOverview = () => {
       name: 'TextField',
       img: 'text-field.png',
       url: 'textfield',
+    },
+    {
+      name: 'ToggleButtonGroup',
+      img: 'toggle-button.png',
+      url: 'togglebuttongroup',
     },
   ];
 
