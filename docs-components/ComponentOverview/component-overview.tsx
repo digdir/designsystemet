@@ -72,7 +72,7 @@ const ComponentOverview = () => {
     },
     {
       name: 'Table',
-      img: 'Table.png',
+      img: 'table.png',
       url: 'table',
     },
     {
