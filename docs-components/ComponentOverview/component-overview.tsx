@@ -11,64 +11,84 @@ interface BoxProps {
 const ComponentOverview = () => {
   const items: BoxProps[] = [
     {
+      name: 'Accordion',
+      img: 'accordion.png',
+      url: 'accordion',
+    },
+    {
       name: 'Button',
       img: 'button.png',
-      url: 'button--button',
+      url: 'button',
     },
     {
       name: 'Checkbox',
       img: 'checkbox.png',
-      url: 'checkbox--normal',
+      url: 'checkbox',
     },
     {
       name: 'CheckboxGroup',
       img: 'checkbox-group.png',
-      url: 'checkboxgroup--vertikal',
+      url: 'checkboxgroup',
     },
     {
       name: 'Fieldset',
       img: 'fieldset.png',
-      url: 'fieldset--field-set',
+      url: 'fieldset',
     },
     {
       name: 'HelpText',
       img: 'help-text.png',
-      url: 'helptext--help-text',
+      url: 'helptext',
+    },
+    {
+      name: 'List',
+      img: 'list.png',
+      url: 'list',
     },
     {
       name: 'Popover',
       img: 'popover.png',
-      url: 'popover--popover',
+      url: 'popover',
     },
     {
       name: 'RadioButton',
       img: 'radio-button.png',
-      url: 'radiobutton--normal',
+      url: 'radiobutton',
     },
     {
       name: 'RadioButtonGroup',
       img: 'radio-button-group.png',
-      url: 'radiogroup--vertikal',
+      url: 'radiogroup',
     },
     {
       name: 'Select',
       img: 'select.png',
-      url: 'select-flervalgsmeny--normal',
+      url: 'select-flervalgsmeny',
+    },
+    {
+      name: 'Spinner',
+      img: 'spinner.png',
+      url: 'spinner',
+    },
+    {
+      name: 'Table',
+      img: 'Table.png',
+      url: 'table',
     },
     {
       name: 'Tabs',
       img: 'tabs.png',
-      url: 'tabs--tabs',
+      url: 'tabs',
     },
     {
       name: 'TextArea',
       img: 'textarea.png',
-      url: 'textarea--standard',
+      url: 'textarea',
     },
     {
       name: 'TextField',
       img: 'text-field.png',
-      url: 'textfield--standard',
+      url: 'textfield',
     },
   ];
 

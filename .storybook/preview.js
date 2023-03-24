@@ -45,10 +45,7 @@ export const parameters = {
     storySort: {
       order: [
         'Komponentoversikt',
-        'Kjernekomponenter',
-        ['Introduksjon', 'Button'],
-        'Changelog',
-        ['Design Tokens', 'Kjernekomponenter', 'Web components'],
+        'Kjernekomponenter'
       ],
     },
   },
