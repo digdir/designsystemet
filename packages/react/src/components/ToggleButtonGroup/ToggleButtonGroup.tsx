@@ -80,6 +80,7 @@ export const ToggleButtonGroup = ({
           )}
           key={item.value}
           onClick={() => handleChange(item.value)}
+          type='button'
         >
           {item.label}
         </button>
