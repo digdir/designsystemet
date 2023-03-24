@@ -90,6 +90,11 @@ const ComponentOverview = () => {
       img: 'text-field.png',
       url: 'textfield',
     },
+    {
+      name: 'ToggleButtonGroup',
+      img: 'toggle-button.png',
+      url: 'togglebuttongroup',
+    },
   ];
 
   const setUrl = (url: string) => {
