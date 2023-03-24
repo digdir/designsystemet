@@ -394,5 +394,76 @@
       "value": "Regular",
       "type": "fontWeights"
     }
+  },
+  "spacing": {
+    "0": {
+      "value": "0",
+      "type": "spacing"
+    },
+    "1": {
+      "value": "0.25rem",
+      "type": "spacing",
+      "description": "4px"
+    },
+    "2": {
+      "value": "0.5rem",
+      "type": "spacing",
+      "description": "8px"
+    },
+    "3": {
+      "value": "0.75rem",
+      "type": "spacing",
+      "description": "12px"
+    },
+    "4": {
+      "value": "1rem",
+      "type": "spacing",
+      "description": "16px"
+    },
+    "6": {
+      "value": "1.5rem",
+      "type": "spacing",
+      "description": "24px"
+    },
+    "8": {
+      "value": "2rem",
+      "type": "spacing",
+      "description": "32px"
+    },
+    "10": {
+      "value": "2.5rem",
+      "type": "spacing",
+      "description": "40px"
+    },
+    "12": {
+      "value": "3rem",
+      "type": "spacing",
+      "description": "48px"
+    },
+    "14": {
+      "value": "3.5rem",
+      "type": "spacing",
+      "description": "56px"
+    },
+    "18": {
+      "value": "4.5rem",
+      "type": "spacing",
+      "description": "72px"
+    },
+    "22": {
+      "value": "5.5rem",
+      "type": "spacing",
+      "description": "88px"
+    },
+    "26": {
+      "value": "6.5rem",
+      "type": "spacing",
+      "description": "104px"
+    },
+    "30": {
+      "value": "7.5rem",
+      "type": "spacing",
+      "description": "120px"
+    }
   }
 }

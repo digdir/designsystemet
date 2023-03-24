@@ -791,55 +791,7 @@
       "type": "borderWidth"
     }
   },
-  "space": {
-    "half": {
-      "value": "{space.base} / 2",
-      "type": "spacing"
-    },
-    "base": {
-      "value": "0.75",
-      "type": "spacing"
-    },
-    "x2": {
-      "value": "{space.base} * 2",
-      "type": "spacing"
-    },
-    "x3": {
-      "value": "{space.base} * 3",
-      "type": "spacing"
-    },
-    "x4": {
-      "value": "{space.base} * 4",
-      "type": "spacing"
-    },
-    "x5": {
-      "value": "{space.base} * 5",
-      "type": "spacing"
-    },
-    "x6": {
-      "value": "{space.base} * 6",
-      "type": "spacing"
-    },
-    "x7": {
-      "value": "{space.base} * 7",
-      "type": "spacing"
-    },
-    "x8": {
-      "value": "{space.base} * 8",
-      "type": "spacing"
-    },
-    "x16": {
-      "value": "{space.base} * 16",
-      "type": "spacing"
-    }
-  },
   "interactive_components": {
-    "border_radius": {
-      "normal": {
-        "value": "3px",
-        "type": "borderRadius"
-      }
-    },
     "border_width": {
       "normal": {
         "value": "2px",
