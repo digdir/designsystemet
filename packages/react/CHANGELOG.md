@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.9.0...@digdir/design-system-react@0.10.0) (2023-03-24)
+
+### Bug Fixes
+
+- **Select:** NVDA screen reader issues ([#246](https://github.com/digdir/designsystem/issues/246)) ([3a57e6c](https://github.com/digdir/designsystem/commit/3a57e6c0cba74989758c4900d0130705f9b160e3))
+- **Select:** Support dynamically changing options ([#253](https://github.com/digdir/designsystem/issues/253)) ([5b13f7c](https://github.com/digdir/designsystem/commit/5b13f7c13590f71547caa0e90c7f0d85e610c4af))
+
+### Features
+
+- Add toggle button component ([#258](https://github.com/digdir/designsystem/issues/258)) ([2ecbe69](https://github.com/digdir/designsystem/commit/2ecbe69fa8fe1d35f1ca91f8e7eef1f0f762f209))
+
 # [0.9.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.8.1...@digdir/design-system-react@0.9.0) (2023-03-17)
 
 ### Bug Fixes
