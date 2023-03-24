@@ -65,6 +65,7 @@
   line-height: 16px;
   margin-left: var(--component-accordion_header_title-spacing-margin_left);
   text-align: left;
+  word-break: break-word;
 }
 
 .actions {
@@ -73,4 +74,8 @@
   display: grid;
   grid-auto-flow: column;
   padding: 0 0.2rem;
+}
+
+.subtitle {
+  word-break: break-word;
 }
