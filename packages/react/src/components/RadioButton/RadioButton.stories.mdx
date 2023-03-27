@@ -104,15 +104,6 @@ Radioknappene kan ha flere forskjellige statuser:
     {Template.bind({})}
   </Story>
   <Story
-    name='Avkrysset'
-    args={{
-      checked: true,
-      label: 'Avkrysset',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-  <Story
     name='Hjelpetekst'
     args={{
       label: 'Hjelpetekst',
@@ -143,6 +134,50 @@ Radioknappene kan ha flere forskjellige statuser:
   <Story
     name='Deaktivert'
     args={{
+      disabled: true,
+      label: 'Deaktivert',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+I avkrysset tilstand
+
+<Canvas>
+  <Story
+    name='Normal Avkrysset'
+    args={{
+      checked: true,
+      label: 'Normal',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Feil Avkrysset'
+    args={{
+      checked: true,
+      error: true,
+      label: 'Feil',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Kompakt Avkrysset'
+    args={{
+      size: RadioButtonSize.Xsmall,
+      label: 'Kompakt',
+      checked: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Deaktivert Avkrysset'
+    args={{
+      checked: true,
       disabled: true,
       label: 'Deaktivert',
     }}

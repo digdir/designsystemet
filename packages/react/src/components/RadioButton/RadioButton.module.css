@@ -43,10 +43,11 @@
 
 .visibleButton {
   background-color: var(--radio-background_color);
-  border-color: var(--radio-border_color);
   border-radius: 50%;
-  border-style: solid;
-  border-width: var(--radio-border_width);
+  outline-color: var(--radio-border_color);
+  outline-style: solid;
+  outline-offset: calc(-1 * var(--radio-border_width));
+  outline-width: var(--radio-border_width);
   box-sizing: border-box;
   display: inline-block;
   height: var(--radio-size);
@@ -54,15 +55,11 @@
 }
 
 .checkmark {
-  --radio-checkmark-size: 80%;
-
-  background-color: var(--radio-checkmark-color);
+  box-shadow: 0 0 0 calc(2 * var(--radio-border_width))
+      var(--radio-background_color) inset,
+    0 0 0 var(--radio-size) var(--radio-checkmark-color) inset;
   border-radius: 50%;
   display: var(--radio-checkmark-display);
-  height: var(--radio-checkmark-size);
-  margin: calc(
-    (var(--radio-size) - var(--radio-checkmark-size)) / 2 -
-      var(--radio-border_width)
-  );
-  width: var(--radio-checkmark-size);
+  height: 100%;
+  width: 100%;
 }
