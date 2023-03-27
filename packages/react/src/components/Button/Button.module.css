@@ -92,7 +92,7 @@
 }
 
 .button.onlyIcon {
-  padding: 0.3125rem;
+  padding: calc((var(--button-size) - var(--icon-size)) / 2 - var(--component-button-border_width-default));
 }
 
 /* Filled button colors */
