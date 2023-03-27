@@ -29,8 +29,20 @@ StyleDictionary.registerTransform({
   matcher: (token) => token.type === 'typography',
   transformer: (token) => {
     const { value } = token;
-    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} ${value.fontFamily}`;
+    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} ${value.fontFamily}`.toLowerCase();
   },
+});
+
+const fontSize = 16;
+/**
+ * Transform fontSizes to px
+ */
+StyleDictionary.registerTransform({
+  name: 'size/rem',
+  type: 'value',
+  transitive: true,
+  matcher: (token) => ['fontSizes'].includes(token.type),
+  transformer: (token) => token.value / fontSize + 'rem',
 });
 
 StyleDictionary.registerFormat({
@@ -63,7 +75,7 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
     ],
     platforms: {
       js: {
-        transforms: ['name/cti/camel'],
+        transforms: ['name/cti/camel', 'typography/shorthand', 'size/rem'],
         transformGroup: 'js',
         files: [
           {
@@ -82,15 +94,15 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
       },
       css: {
         prefix,
-        transforms: ['name/cti/hierarchical-kebab', 'typography/shorthand'],
+        transforms: [
+          'name/cti/hierarchical-kebab',
+          'typography/shorthand',
+          'size/rem',
+        ],
         files: [
           {
             destination: `${distFolder}/tokens.css`,
             format: 'css/variables',
-          },
-          {
-            destination: `${distFolder}/tokens_class.css`,
-            format: 'css/classFormat',
           },
         ],
       },
