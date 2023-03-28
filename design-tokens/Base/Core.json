@@ -387,11 +387,11 @@
   },
   "fontWeights": {
     "medium": {
-      "value": "Medium",
+      "value": "500",
       "type": "fontWeights"
     },
     "regular": {
-      "value": "Regular",
+      "value": "400",
       "type": "fontWeights"
     }
   },
