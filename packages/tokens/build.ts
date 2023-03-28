@@ -6,7 +6,7 @@ import type { Config, TransformedToken } from 'style-dictionary';
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
 const prefix = 'fds';
-
+const basePxFontSize = 16;
 /**
  * Transforms `level1.level2.another_level` to `level1-level2-another_level`
  * This maintains hierarchy distinction (i.e. underscore is not a hierarchy level separator)
@@ -33,35 +33,18 @@ StyleDictionary.registerTransform({
   },
 });
 
-const fontSize = 16;
 /**
- * Transform fontSizes to px
+ * Transform fontSizes from px to rem
  */
 StyleDictionary.registerTransform({
-  name: 'size/rem',
+  name: 'pxToRem',
   type: 'value',
   transitive: true,
   matcher: (token) => ['fontSizes'].includes(token.type),
-  transformer: (token) => token.value / fontSize + 'rem',
-});
-
-StyleDictionary.registerFormat({
-  name: 'css/classFormat',
-  formatter: ({ dictionary }) => {
-    return `
- ${dictionary.allProperties
-   .map((prop) => {
-     return `
- .${prop.name} {
-     font-family: ${prop.value.fontFamily},
-     font-size: ${prop.value.fontSize},
-     font-weight: ${prop.value.fontWeight},
-     line-height: ${prop.value.lineHeight}
- };`;
-   })
-   .join('\n')}
- `;
-  },
+  transformer: (token, options) =>
+    options?.basePxFontSize
+      ? token.value / options.basePxFontSize + 'rem'
+      : token.value,
 });
 
 const excludeSource = (token: TransformedToken) =>
@@ -78,7 +61,8 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
     source: [`${tokensPath}/Base/Core.json`],
     platforms: {
       js: {
-        transforms: ['name/cti/camel', 'typography/shorthand', 'size/rem'],
+        basePxFontSize,
+        transforms: ['name/cti/camel', 'typography/shorthand', 'pxToRem'],
         transformGroup: 'js',
         files: [
           {
@@ -100,16 +84,20 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
       },
       css: {
         prefix,
+        basePxFontSize,
         transforms: [
           'name/cti/hierarchical-kebab',
           'typography/shorthand',
-          'size/rem',
+          'pxToRem',
         ],
         files: [
           {
             destination: `${distFolder}/tokens.css`,
             format: 'css/variables',
             filter: excludeSource,
+            options: {
+              basePxFontSize,
+            },
           },
         ],
       },
