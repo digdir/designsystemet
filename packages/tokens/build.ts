@@ -95,9 +95,6 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
             destination: `${distFolder}/tokens.css`,
             format: 'css/variables',
             filter: excludeSource,
-            options: {
-              basePxFontSize,
-            },
           },
         ],
       },
