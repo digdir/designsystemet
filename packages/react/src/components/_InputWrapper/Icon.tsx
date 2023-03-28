@@ -9,27 +9,30 @@ import classes from './Icon.module.css';
 export interface IconProps {
   variant?: IconVariant_;
   disabled?: boolean;
+  height: number;
 }
 
-export const Icon = ({ variant, disabled = false }: IconProps) => {
+export const Icon = ({ variant, disabled = false, height }: IconProps) => {
   switch (variant) {
     case 'error':
       return (
-        <div
+        <span
           className={classes.icon}
           data-testid='input-icon-error'
+          style={{ height }}
         >
           <ErrorIcon />
-        </div>
+        </span>
       );
     case 'search':
       return (
-        <div
+        <span
           className={cn(classes.icon, disabled && classes.disabled)}
           data-testid='input-icon-search'
+          style={{ height }}
         >
           <SearchIcon />
-        </div>
+        </span>
       );
     default:
       return null;

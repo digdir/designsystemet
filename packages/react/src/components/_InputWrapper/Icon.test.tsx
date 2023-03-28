@@ -5,6 +5,10 @@ import type { IconProps } from './Icon';
 import { Icon } from './Icon';
 import type { IconVariant_ } from './utils';
 
+const defaultProps: IconProps = {
+  height: 36,
+};
+
 describe('Icon', () => {
   it.each<IconVariant_>(['error', 'search'])(
     'Returns expected icon when variant is %s',
@@ -24,4 +28,9 @@ describe('Icon', () => {
 });
 
 const render = (props: Partial<IconProps> = {}) =>
-  renderRtl(<Icon {...props} />);
+  renderRtl(
+    <Icon
+      {...defaultProps}
+      {...props}
+    />,
+  );

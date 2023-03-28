@@ -1,10 +1,12 @@
 .icon {
-  background: var(--icon-background);
-  padding-right: var(--component-input-border_width-focus);
-  padding-left: var(--component-input-border_width-default);
-  display: flex;
   align-items: center;
-  flex: none;
+  background: var(--icon-background);
+  border-bottom-left-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: var(--icon-width);
 }
 
 .icon.disabled {

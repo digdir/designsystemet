@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React, { useCallback, useId, useState } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
@@ -38,6 +38,11 @@ export const InputWrapper = ({
 }: InputWrapperProps) => {
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
+  const [height, setHeight] = useState(0);
+
+  const inputWrapperRef = useCallback((node: HTMLSpanElement) => {
+    node && setHeight(node.offsetHeight);
+  }, []);
 
   const { variant, iconVariant } = getVariant({
     disabled,
@@ -47,7 +52,12 @@ export const InputWrapper = ({
   });
 
   return (
-    <>
+    <span
+      className={cn(
+        classes.inputAndLabel,
+        iconVariant !== 'none' && classes.withIcon,
+      )}
+    >
       {label && (
         <label
           className={classes.label}
@@ -56,24 +66,26 @@ export const InputWrapper = ({
           {label}
         </label>
       )}
-      <div
+      <span
         data-testid='InputWrapper'
         className={cn(classes.inputWrapper, classes[variant], {
           [classes.search]: isSearch,
           [classes.withFocusEffect]: !noFocusEffect,
           [classes.withPadding]: !noPadding,
         })}
+        ref={inputWrapperRef}
       >
         <Icon
           variant={iconVariant}
           disabled={disabled}
+          height={height}
         />
         {inputRenderer({
           className: classes.field,
           inputId: givenOrRandomInputId,
           variant,
         })}
-      </div>
-    </>
+      </span>
+    </span>
   );
 };
