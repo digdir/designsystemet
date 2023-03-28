@@ -294,6 +294,18 @@ describe('Select', () => {
       expect(getCombobox()).toHaveValue(keyword);
     });
 
+    it('Displays given option in the search field', () => {
+      const selectedOption = singleSelectOptions[1];
+      renderSingleSelect({ value: selectedOption.value });
+      expect(getCombobox()).toHaveValue(selectedOption.label);
+    });
+
+    it('Updates the search field with the best match when the user presses the Enter key', async () => {
+      renderSingleSelect();
+      await user.type(getCombobox(), 'abc{Enter}');
+      expect(getCombobox()).toHaveValue(sortedOptions[0].label);
+    });
+
     const expectSelectedValue = (option: SingleSelectOption) =>
       expect(getSelectedOption()).toHaveValue(option.value);
 

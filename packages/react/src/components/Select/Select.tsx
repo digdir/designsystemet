@@ -135,10 +135,11 @@ const Select = (props: SelectProps) => {
   const listboxWrapperRef = useRef<HTMLSpanElement>(null);
   const selectFieldRef = useRef<HTMLSpanElement>(null);
 
-  useUpdate(() => {
+  useEffect(() => {
     // Rerender when the value property changes
     if (!multiple) {
       setActiveOption(value);
+      setKeyword(findOptionFromValue(value)?.label ?? '');
     } else if (!arraysEqual(value, selectedValues)) {
       setSelectedValues(value ?? []);
     }
@@ -273,10 +274,12 @@ const Select = (props: SelectProps) => {
   });
 
   useKeyboardEventListener(eventListenerKeys.Enter, () => {
-    if (expanded && multiple && activeOption) {
-      addOrRemoveSelectedValue(activeOption);
-    } else if (expanded) {
-      setExpanded(false);
+    if (expanded) {
+      if (activeOption) {
+        addOrRemoveSelectedValue(activeOption);
+      } else {
+        setExpanded(false);
+      }
     }
   });
 
