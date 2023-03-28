@@ -1,0 +1,27 @@
+import Meta from '../../components/Meta/Meta';
+import { PageLayout } from '../../layouts';
+export { getServerSideProps } from '../../utils/menus/PageMenu';
+
+<Meta
+  title='Designprinsipper'
+  description='Når vi utvikler nye produkter eller forbedrer eksisterende, følger vi disse prinsippene slik at vi er sikre på at vi leverer brukervennlige tjenester til alle. Bruk alltid prinsippene når du utvikler nye tjenester.'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    Content={children}
+    menu={menu}
+    data={{
+      title: 'Designprinsipper',
+      date: '29. mars 2023',
+    }}
+  />
+);
+
+## Heading 2
+
+test
+
+## Heading 3
+
+fdfsdf
