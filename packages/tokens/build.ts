@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
-import type { Config } from 'style-dictionary';
+import type { Config, TransformedToken } from 'style-dictionary';
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
@@ -29,7 +29,7 @@ StyleDictionary.registerTransform({
   matcher: (token) => token.type === 'typography',
   transformer: (token) => {
     const { value } = token;
-    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} ${value.fontFamily}`.toLowerCase();
+    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} ${value.fontFamily}`;
   },
 });
 
@@ -64,15 +64,18 @@ StyleDictionary.registerFormat({
   },
 });
 
+const excludeSource = (token: TransformedToken) =>
+  !token.filePath.includes('Core.json');
+
 const getStyleDictionaryConfig = (brand: Brands): Config => {
   const tokensPath = '../../design-tokens';
   const distFolder = `dist/${brand.toLowerCase()}`;
   return {
-    source: [
+    include: [
       `${tokensPath}/Brand/${brand}.json`,
-      `${tokensPath}/Base/Core.json`,
       `${tokensPath}/Base/Semantic.json`,
     ],
+    source: [`${tokensPath}/Base/Core.json`],
     platforms: {
       js: {
         transforms: ['name/cti/camel', 'typography/shorthand', 'size/rem'],
@@ -81,14 +84,17 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
           {
             destination: `${distFolder}/tokens.cjs.js`,
             format: 'javascript/module-flat',
+            filter: excludeSource,
           },
           {
             destination: `${distFolder}/tokens.esm.js`,
             format: 'javascript/es6',
+            filter: excludeSource,
           },
           {
             destination: `${distFolder}/tokens.d.ts`,
             format: 'typescript/es6-declarations',
+            filter: excludeSource,
           },
         ],
       },
@@ -103,6 +109,7 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
           {
             destination: `${distFolder}/tokens.css`,
             format: 'css/variables',
+            filter: excludeSource,
           },
         ],
       },
