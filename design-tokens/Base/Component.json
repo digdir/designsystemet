@@ -575,70 +575,6 @@
       }
     },
     "button": {
-      "filled": {
-        "primary": {
-          "color": {
-            "background": {
-              "default": {
-                "value": "{semantic.surface.action.default}",
-                "type": "color"
-              },
-              "hover": {
-                "value": "{semantic.surface.action.hover}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{semantic.surface.action.active}",
-                "type": "color"
-              }
-            }
-          }
-        },
-        "color": {
-          "text": {
-            "all": {
-              "value": "{semantic.text.action.on_action}",
-              "type": "color"
-            }
-          }
-        },
-        "success": {
-          "color": {
-            "background": {
-              "default": {
-                "value": "{semantic.surface.success.default}",
-                "type": "color"
-              },
-              "hover": {
-                "value": "{semantic.surface.success.hover}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{semantic.surface.success.active}",
-                "type": "color"
-              }
-            }
-          }
-        },
-        "danger": {
-          "color": {
-            "background": {
-              "default": {
-                "value": "{semantic.surface.danger.default}",
-                "type": "color"
-              },
-              "hover": {
-                "value": "{semantic.surface.danger.hover}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{semantic.surface.danger.active}",
-                "type": "color"
-              }
-            }
-          }
-        }
-      },
       "space": {
         "gap": {
           "small": {
@@ -686,70 +622,6 @@
               "large": {
                 "value": "0.563rem",
                 "type": "spacing"
-              }
-            }
-          }
-        },
-        "primary": {
-          "color": {
-            "text": {
-              "default": {
-                "value": "{semantic.text.action.default}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{colors.white}",
-                "type": "color"
-              }
-            },
-            "background": {
-              "hover": {
-                "value": "{semantic.surface.action.subtle}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{colors.blue.800}",
-                "type": "color"
-              }
-            }
-          }
-        }
-      },
-      "outline": {
-        "primary": {
-          "color": {
-            "text": {
-              "default": {
-                "value": "{semantic.text.action.default}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{colors.white}",
-                "type": "color"
-              }
-            },
-            "border": {
-              "default": {
-                "value": "{semantic.border.action.default}",
-                "type": "color"
-              },
-              "hover": {
-                "value": "{semantic.border.action.hover}",
-                "type": "color"
-              }
-            },
-            "background": {
-              "default": {
-                "value": "{colors.white}",
-                "type": "color"
-              },
-              "hover": {
-                "value": "{semantic.surface.action.subtle}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{colors.blue.800}",
-                "type": "color"
               }
             }
           }
@@ -919,55 +791,7 @@
       "type": "borderWidth"
     }
   },
-  "space": {
-    "half": {
-      "value": "{space.base} / 2",
-      "type": "spacing"
-    },
-    "base": {
-      "value": "0.75",
-      "type": "spacing"
-    },
-    "x2": {
-      "value": "{space.base} * 2",
-      "type": "spacing"
-    },
-    "x3": {
-      "value": "{space.base} * 3",
-      "type": "spacing"
-    },
-    "x4": {
-      "value": "{space.base} * 4",
-      "type": "spacing"
-    },
-    "x5": {
-      "value": "{space.base} * 5",
-      "type": "spacing"
-    },
-    "x6": {
-      "value": "{space.base} * 6",
-      "type": "spacing"
-    },
-    "x7": {
-      "value": "{space.base} * 7",
-      "type": "spacing"
-    },
-    "x8": {
-      "value": "{space.base} * 8",
-      "type": "spacing"
-    },
-    "x16": {
-      "value": "{space.base} * 16",
-      "type": "spacing"
-    }
-  },
   "interactive_components": {
-    "border_radius": {
-      "normal": {
-        "value": "3px",
-        "type": "borderRadius"
-      }
-    },
     "border_width": {
       "normal": {
         "value": "2px",
