@@ -17,6 +17,7 @@
     "bierner.color-info",
     "formulahendry.auto-rename-tag",
     "formulahendry.auto-close-tag",
-    "usernamehw.errorlens"
+    "usernamehw.errorlens",
+    "phoenisx.cssvar"
   ]
 }
