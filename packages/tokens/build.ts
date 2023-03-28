@@ -50,9 +50,13 @@ StyleDictionary.registerTransform({
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
-const getStyleDictionaryConfig = (brand: Brands): Config => {
+const getStyleDictionaryConfig = (
+  brand: Brands,
+  targetFolder = 'build',
+): Config => {
   const tokensPath = '../../design-tokens';
-  const distFolder = `dist/${brand.toLowerCase()}`;
+  const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
+
   return {
     include: [
       `${tokensPath}/Brand/${brand}.json`,
@@ -66,17 +70,17 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
         transformGroup: 'js',
         files: [
           {
-            destination: `${distFolder}/tokens.cjs.js`,
+            destination: `${destinationPath}/tokens.cjs.js`,
             format: 'javascript/module-flat',
             filter: excludeSource,
           },
           {
-            destination: `${distFolder}/tokens.esm.js`,
+            destination: `${destinationPath}/tokens.esm.js`,
             format: 'javascript/es6',
             filter: excludeSource,
           },
           {
-            destination: `${distFolder}/tokens.d.ts`,
+            destination: `${destinationPath}/tokens.d.ts`,
             format: 'typescript/es6-declarations',
             filter: excludeSource,
           },
@@ -92,7 +96,7 @@ const getStyleDictionaryConfig = (brand: Brands): Config => {
         ],
         files: [
           {
-            destination: `${distFolder}/tokens.css`,
+            destination: `${destinationPath}/tokens.css`,
             format: 'css/variables',
             filter: excludeSource,
           },
