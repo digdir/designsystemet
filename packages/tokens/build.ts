@@ -29,7 +29,7 @@ StyleDictionary.registerTransform({
   matcher: (token) => token.type === 'typography',
   transformer: (token) => {
     const { value } = token;
-    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} ${value.fontFamily}`;
+    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} '${value.fontFamily}'`;
   },
 });
 
@@ -52,7 +52,7 @@ const excludeSource = (token: TransformedToken) =>
 
 const getStyleDictionaryConfig = (
   brand: Brands,
-  targetFolder = 'build',
+  targetFolder = 'dist',
 ): Config => {
   const tokensPath = '../../design-tokens';
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
@@ -113,7 +113,7 @@ brands.map((brand) => {
   console.log(`\nProcessing: ${brand}`);
 
   const extendedStyleDictionary = StyleDictionary.extend(
-    getStyleDictionaryConfig(brand),
+    getStyleDictionaryConfig(brand, 'dist'),
   );
 
   extendedStyleDictionary.buildAllPlatforms();
