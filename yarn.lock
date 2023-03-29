@@ -2027,6 +2027,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
+    "@tokens-studio/sd-transforms": ^0.5.6
     change-case: ^4.1.2
     rimraf: ^4.4.0
     style-dictionary: ^3.7.2
@@ -6325,6 +6326,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tokens-studio/sd-transforms@npm:^0.5.6":
+  version: 0.5.6
+  resolution: "@tokens-studio/sd-transforms@npm:0.5.6"
+  dependencies:
+    color2k: ^2.0.1
+    colorjs.io: ^0.4.3
+    expr-eval: ^2.0.2
+    postcss-calc-ast-parser: ^0.1.4
+    style-dictionary: ^3.7.2
+  checksum: 2818563e375dac083ce63d0705ea69b75ad0f6073f2586d630236005cef4179a46b9abf44a605740c16d9dae6fe9a185570b8756cc2c6ab9dd60836ce33e1887
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -9659,6 +9673,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"color2k@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "color2k@npm:2.0.2"
+  checksum: a024d05c0eb24c6cf4f50b73fc948734ebd8cd0ce1fcfd17f4a17e6965c29764fa4b528161de4e65939d6fc32b3063d496c327eb0f48c084b4d79707ddb5965f
+  languageName: node
+  linkType: hard
+
 "colord@npm:^2.9.1, colord@npm:^2.9.3":
   version: 2.9.3
   resolution: "colord@npm:2.9.3"
@@ -9670,6 +9691,13 @@ __metadata:
   version: 1.4.0
   resolution: "colorette@npm:1.4.0"
   checksum: 01c3c16058b182a4ab4c126a65a75faa4d38a20fa7c845090b25453acec6c371bb2c5dceb0a2338511f17902b9d1a9af0cadd8509c9403894b79311032c256c3
+  languageName: node
+  linkType: hard
+
+"colorjs.io@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "colorjs.io@npm:0.4.3"
+  checksum: 5f597a6889219fcfa2171c5da326759c9c747546b847b41db64a474f941b623b5a4346bad30fbe61f4861ca6187bdbc5f389475be4ba3f570c6e30ee29f18e5c
   languageName: node
   linkType: hard
 
@@ -12088,6 +12116,13 @@ __metadata:
     jest-message-util: ^29.3.1
     jest-util: ^29.3.1
   checksum: e9588c2a430b558b9a3dc72d4ad05f36b047cb477bc6a7bb9cfeef7614fe7e5edbab424c2c0ce82739ee21ecbbbd24596259528209f84cd72500cc612d910d30
+  languageName: node
+  linkType: hard
+
+"expr-eval@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "expr-eval@npm:2.0.2"
+  checksum: 01862f09b50b17b45a6268b1153280afede99e1b51752a323661f7f4010eaed34cd6c682bf439b7f8a92df6aa82f326f0ce0aa20964d175feee97377fe53921d
   languageName: node
   linkType: hard
 
@@ -19403,6 +19438,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-calc-ast-parser@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "postcss-calc-ast-parser@npm:0.1.4"
+  dependencies:
+    postcss-value-parser: ^3.3.1
+  checksum: 00aababdcdfafae8c1d58196b59fc6e0d0f624324e26b7a451614d3856f2e95bd16ef874ce9feafd8c3bb530b3ca0d23489ca20116afa95e4a57dd1ce6875a8c
+  languageName: node
+  linkType: hard
+
 "postcss-calc@npm:^8.2.3":
   version: 8.2.4
   resolution: "postcss-calc@npm:8.2.4"
@@ -19895,6 +19939,13 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 637e7b786e8558265775c30400c54b6b3b24d4748923f4a39f16a65fd0e394f564ccc9f0a1d3c0e770618a7637a7502ea1d0d79f731d429cb202255253c23278
+  languageName: node
+  linkType: hard
+
+"postcss-value-parser@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "postcss-value-parser@npm:3.3.1"
+  checksum: 62cd26e1cdbcf2dcc6bcedf3d9b409c9027bc57a367ae20d31dd99da4e206f730689471fd70a2abe866332af83f54dc1fa444c589e2381bf7f8054c46209ce16
   languageName: node
   linkType: hard
 

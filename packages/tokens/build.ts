@@ -2,6 +2,9 @@
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary';
+import { registerTransforms } from '@tokens-studio/sd-transforms';
+
+registerTransforms(StyleDictionary);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
@@ -66,7 +69,13 @@ const getStyleDictionaryConfig = (
     platforms: {
       js: {
         basePxFontSize,
-        transforms: ['name/cti/camel', 'typography/shorthand', 'pxToRem'],
+        transforms: [
+          'name/cti/camel',
+          'typography/shorthand',
+          'pxToRem',
+          'ts/resolveMath',
+          'ts/size/lineheight',
+        ],
         transformGroup: 'js',
         files: [
           {
@@ -93,6 +102,8 @@ const getStyleDictionaryConfig = (
           'name/cti/hierarchical-kebab',
           'typography/shorthand',
           'pxToRem',
+          'ts/resolveMath',
+          'ts/size/lineheight',
         ],
         files: [
           {
