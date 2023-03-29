@@ -2016,7 +2016,7 @@ __metadata:
     "@digdir/design-system-icons": "*"
     "@floating-ui/react": 0.17.0
     "@navikt/ds-icons": ^2.3.0
-    react-number-format: ^5.1.3
+    react-number-format: ^5.1.4
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
@@ -20626,6 +20626,18 @@ __metadata:
     react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^18.0.0
     react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^18.0.0
   checksum: 354481a3ce15520d3e786f790a84a0363a94c56034519c6e2248d8f277095b696f31204a46745d3c64869559b7a81ba39ab9ad46c6582f762255f81d5c5d2e95
+  languageName: node
+  linkType: hard
+
+"react-number-format@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "react-number-format@npm:5.1.4"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 770a1e86cd05d9df28aa5e6a12c5731351dd4a301464edd0ac5dcbc68d2f07eae37781ff14f6153566cbb7cccb28f13f0826d1844600d25ae6e12da060814282
   languageName: node
   linkType: hard
 
