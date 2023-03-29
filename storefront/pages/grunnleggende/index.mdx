@@ -1,6 +1,7 @@
 import Meta from '../../components/Meta/Meta';
 import { NavigationPageLayout } from '../../layouts';
 export { getServerSideProps } from '../../utils/menus/PageMenu';
+import { ImageIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='Grunnleggende'
@@ -21,7 +22,7 @@ export default ({ children, menu }) => (
             {
               title: 'Design tokens',
               color: 'yellow',
-              icon: 'TokenIcon',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/styling/design-tokens',
               description:
                 'Design tokens er gjenbrukbare verdier som fungerer som et bindeledd mellom alle flater.',
@@ -29,7 +30,7 @@ export default ({ children, menu }) => (
             {
               title: 'Farger',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/styling/farger',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -37,7 +38,7 @@ export default ({ children, menu }) => (
             {
               title: 'Layout',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/styling/layout',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -45,7 +46,7 @@ export default ({ children, menu }) => (
             {
               title: 'Spacing',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/styling/spacing',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -53,7 +54,7 @@ export default ({ children, menu }) => (
             {
               title: 'Typografi',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/styling/typografi',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -67,7 +68,7 @@ export default ({ children, menu }) => (
             {
               title: 'For designere',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/design/for-designere',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -81,7 +82,7 @@ export default ({ children, menu }) => (
             {
               title: 'For utviklere',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/design/for-utviklere',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -89,7 +90,7 @@ export default ({ children, menu }) => (
             {
               title: 'Endringslogg',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={34} />,
               url: 'grunnleggende/design/endringslogg',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',

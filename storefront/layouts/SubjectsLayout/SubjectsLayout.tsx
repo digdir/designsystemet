@@ -51,7 +51,7 @@ const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
                 url={item.url}
                 title={item.title}
                 color={item.color}
-                icon={<ImageIcon fontSize={32} />}
+                icon={item.icon}
                 description={item.description}
                 key={index}
               />

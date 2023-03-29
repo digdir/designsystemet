@@ -62,7 +62,7 @@ const NavigationPageLayout = ({
                       title={item.title}
                       color={item.color}
                       description={item.description}
-                      icon={<ImageIcon fontSize={28} />}
+                      icon={item.icon}
                       url={item.url}
                       key={index}
                     />

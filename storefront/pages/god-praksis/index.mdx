@@ -1,5 +1,6 @@
 import Meta from '../../components/Meta/Meta';
 import { SubjectsLayout } from '../../layouts';
+import { ImageIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='God praksis'
@@ -17,7 +18,7 @@ export default ({ children }) => (
         {
           title: 'Designprinsipper',
           color: 'blue',
-          icon: 'Picture',
+          icon: <ImageIcon fontSize={32} />,
           url: 'god-praksis/designprinsipper',
           description:
             'Vi følger fem designprinsipper for å lage gode tjenester for alle.',
@@ -25,7 +26,7 @@ export default ({ children }) => (
         {
           title: 'Innholdsarbeid',
           color: 'yellow',
-          icon: 'Wrench',
+          icon: <ImageIcon fontSize={32} />,
           url: 'god-praksis/innholdsarbeid',
           description:
             'Brukeren skal finne det de leter etter, forstå det og kunne bruke det til det de kom for å gjøre.',
@@ -33,7 +34,7 @@ export default ({ children }) => (
         {
           title: 'Universell utforming',
           color: 'red',
-          icon: 'System',
+          icon: <ImageIcon fontSize={32} />,
           url: 'god-praksis/universell-utforming',
           description:
             'Kravene til universell utforming gjør at vi tenker på alle og kan designe og utvikle for alle.',

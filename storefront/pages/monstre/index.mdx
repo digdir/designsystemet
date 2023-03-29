@@ -1,6 +1,7 @@
 import Meta from '../../components/Meta/Meta';
 import { NavigationPageLayout } from '../../layouts';
 export { getServerSideProps } from '../../utils/menus/PageMenu';
+import { ImageIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='Mønstre'
@@ -18,7 +19,7 @@ export default ({ children, menu }) => (
             {
               title: 'Logge inn',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={32} />,
               url: 'monstre/logge-inn',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
@@ -26,7 +27,7 @@ export default ({ children, menu }) => (
             {
               title: 'Validering',
               color: 'blue',
-              icon: 'Picture',
+              icon: <ImageIcon fontSize={32} />,
               url: 'monstre/validering',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
