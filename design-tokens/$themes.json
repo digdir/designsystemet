@@ -6,8 +6,7 @@
       "Base/Core": "source",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Tilsynet": "enabled",
-      "Base/mobile": "disabled"
+      "Brand/Tilsynet": "enabled"
     },
     "$figmaStyleReferences": {}
   },
@@ -18,8 +17,7 @@
       "Base/Core": "source",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Digdir": "enabled",
-      "Base/mobile": "disabled"
+      "Brand/Digdir": "enabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -261,8 +259,7 @@
       "Mode/Compact": "enabled",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Digdir": "enabled",
-      "Base/mobile": "disabled"
+      "Brand/Digdir": "enabled"
     },
     "$figmaStyleReferences": {}
   }
