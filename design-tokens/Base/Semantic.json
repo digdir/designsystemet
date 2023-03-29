@@ -749,5 +749,43 @@
       "value": "{spacing.14}",
       "type": "spacing"
     }
+  },
+  "sizing": {
+    "xxxsmall": {
+      "value": "{sizing.1}",
+      "type": "sizing"
+    },
+    "xxsmall": {
+      "value": "{sizing.2}",
+      "type": "sizing"
+    },
+    "xsmall": {
+      "value": "{sizing.3}",
+      "type": "sizing"
+    },
+    "small": {
+      "value": "{sizing.4}",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "{sizing.6}",
+      "type": "sizing"
+    },
+    "large": {
+      "value": "{sizing.8}",
+      "type": "sizing"
+    },
+    "xlarge": {
+      "value": "{sizing.10}",
+      "type": "sizing"
+    },
+    "xxlarge": {
+      "value": "{sizing.12}",
+      "type": "sizing"
+    },
+    "xxxlarge": {
+      "value": "{sizing.14}",
+      "type": "sizing"
+    }
   }
 }
