@@ -61,7 +61,7 @@ const NavigationPageLayout = ({
                       backgroundColor='grey'
                       title={item.title}
                       color={item.color}
-                      description='dd'
+                      description={item.description}
                       icon={<Picture fontSize={28} />}
                       url={item.url}
                       key={index}
