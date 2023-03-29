@@ -1,0 +1,57 @@
+import Meta from '/..../../components/Meta/Meta';
+import { PageLayout } from '/..../../layouts';
+export { getServerSideProps } from '/..../../utils/menus/PageMenu';
+
+<Meta
+  title='Andre gode språkressurser'
+  description='Her har vi samlet noen andre gode artikler som angår innhold.'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    menu={menu}
+    data={{
+      title: 'Andre gode språkressurser',
+      date: '29. mars 2023',
+    }}
+  />
+);
+
+Komponentene i designsystemet skal fylles med informasjon til brukerne. Når vi gjør det, er det viktig at vi skriver brukertilpasset, klart og tydelig. Brukerne skal finne, forstå og gjøre det de kom til tjenesten for å gjøre.
+
+Retningslinjene skal hjelpe oss til å skrive brukertilpasset, klart og helhetlig. I tillegg til retningslinjene på denne siden, finner du også råd om tekst i retningslinjene for de enkelte komponentene.
+
+## Test på ekte brukere
+
+Det aller viktigste du kan gjøre for å sikre at brukerne forstår det du skriver, er å brukerteste. Test tidlig og hyppig, og test på ekte brukere. Test ord og begreper. Bruk reell tekst både når du tester tidlige skisser og protyper.
+
+## Skriv kort og tydelig
+
+Et råd for hvordan du kan skrive tydelig og klart, er ofte også et råd om hvordan du kan skrive kort. La det komme tydelig fram hvem som gjør hva. Tenk at du skriver en samtale. I tillegg er det viktig å ikke la seg friste til å bruke unødvendige substantiver, skrive konkret og plassere verbene tidlig i setningene.
+
+## Hvem som gjør hva må komme tydelig fram
+
+I digitale tjenester er det viktig at brukerne lett forstår hvem som skal gjøre hva. Regelverk og lover har ofte passivt språk og det har også preget det offentlige språket generelt. Når vi skriver passivt blir det utydelig hvem som gjør hva.
+
+Derfor skal vi skrive aktivt og som om vi snakker direkte til brukeren. Vi skal bruke ord som “du” og “vi”.
+
+Eksempel:
+Ikke skriv: Det blir sendt en e-post når søknaden er behandlet.
+Skriv heller: Du får en e-post fra oss når søknaden er behandlet.
+
+## Unngå substantivsjuken
+
+Når vi bruker mange substantiver, blir teksten tung å lese og vi bruker flere ord enn nødvendig. Særlig gjelder det når vi gjør et verb om til et substantiv, for eksempel når vi velger å skrive «foreta en utredning» i stedet for å «utrede». Du kan sjekke om teksten er subtantivsjuk ved å se etter ord som slutter på «-ing» og «-else» og har en «av» foran.
+
+Eksempel:
+Ikke skriv: Vi har foretatt en behandling av søknaden
+Skriv heller: Vi har behandlet søknaden
+
+## Sett verbet så tidlig som mulig i setningen.
+
+Når språket blir formelt plasserer vi i ofte verbet for langt ut i setningen. Det gjør at du må lese mange ord før du får verbet, og det blir vanskeligere å huske hva som sto tidlig i setningen.
+
+Eksempel:
+Ikke skriv: Arbeidstaker har en del plikter som må oppfylles
+Skriv heller: Arbeidstaker må oppfylle noen plikter

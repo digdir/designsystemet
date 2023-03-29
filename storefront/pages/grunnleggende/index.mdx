@@ -1,7 +1,12 @@
 import Meta from '../../components/Meta/Meta';
 import { NavigationPageLayout } from '../../layouts';
 export { getServerSideProps } from '../../utils/menus/PageMenu';
-import { ImageIcon } from '@navikt/aksel-icons';
+import {
+  ImageIcon,
+  TokenIcon,
+  PaletteIcon,
+  RectangleSectionsIcon,
+} from '@navikt/aksel-icons';
 
 <Meta
   title='Grunnleggende'
@@ -22,39 +27,39 @@ export default ({ children, menu }) => (
             {
               title: 'Design tokens',
               color: 'yellow',
-              icon: <ImageIcon fontSize={34} />,
+              icon: <TokenIcon fontSize={34} />,
               url: 'grunnleggende/styling/design-tokens',
               description:
                 'Design tokens er gjenbrukbare verdier som fungerer som et bindeledd mellom alle flater.',
             },
             {
-              title: 'Farger',
-              color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
+              title: 'Fargesystem',
+              color: 'red',
+              icon: <PaletteIcon fontSize={34} />,
               url: 'grunnleggende/styling/farger',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'Fargesystemet består av globale farger og et semantisk nivå som beskriver hva fargen skal brukes til.',
             },
             {
               title: 'Layout',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
+              icon: <RectangleSectionsIcon fontSize={34} />,
               url: 'grunnleggende/styling/layout',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'Grunnleggende prinsipper vi bruker for å oppnå layouter med logisk opbygging for forskjellige skjermstørrelser.',
             },
             {
               title: 'Spacing',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
+              icon: <TokenIcon fontSize={34} />,
               url: 'grunnleggende/styling/spacing',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'Mellomrom brukes til å sette marging og padding. Settet med avstander som er definert i tokens sikrer konsistens på tvers av grensesnitt.',
             },
             {
               title: 'Typografi',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
+              icon: <TokenIcon fontSize={34} />,
               url: 'grunnleggende/styling/typografi',
               description:
                 'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
