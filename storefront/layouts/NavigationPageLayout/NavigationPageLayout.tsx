@@ -1,5 +1,5 @@
 import React from 'react';
-import { Picture } from '@navikt/ds-icons';
+import { ImageIcon } from '@navikt/aksel-icons';
 import { useRouter } from 'next/router';
 
 import { Container } from '../../components/Container/Container';
@@ -62,7 +62,7 @@ const NavigationPageLayout = ({
                       title={item.title}
                       color={item.color}
                       description={item.description}
-                      icon={<Picture fontSize={28} />}
+                      icon={item.icon}
                       url={item.url}
                       key={index}
                     />

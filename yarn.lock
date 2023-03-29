@@ -3507,6 +3507,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/aksel-icons@npm:^2.8.4":
+  version: 2.8.4
+  resolution: "@navikt/aksel-icons@npm:2.8.4"
+  checksum: f6cca11a234f5ab75e7dec3fe1c3fd477fc797c4e119f6b9459815752706bc7c9829dea8b8e9b5c52e13f1998516b584901e2e14d68493501c913cd422b47f68
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-icons@npm:^1.5.9":
   version: 1.5.10
   resolution: "@navikt/ds-icons@npm:1.5.10"
@@ -3520,7 +3527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-icons@npm:^2.0.0, @navikt/ds-icons@npm:^2.1.3":
+"@navikt/ds-icons@npm:^2.0.0":
   version: 2.1.6
   resolution: "@navikt/ds-icons@npm:2.1.6"
   peerDependencies:
@@ -22425,7 +22432,7 @@ __metadata:
     "@digdir/design-system-react": "*"
     "@mdx-js/loader": ^2.0.0-rc.2
     "@mdx-js/react": ^2.0.0-rc.2
-    "@navikt/ds-icons": ^2.1.3
+    "@navikt/aksel-icons": ^2.8.4
     "@next/font": 13.0.7
     "@reach/disclosure": ^0.18.0
     "@tippyjs/react": ^4.2.6

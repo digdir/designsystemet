@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Hamburger, Close } from '@navikt/ds-icons';
+import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
 
 import classes from './Header.module.css';
@@ -55,13 +55,13 @@ const Header = () => {
             }}
           >
             {open && (
-              <Close
+              <XMarkIcon
                 fontSize={26}
                 color='#1E2B3C'
               />
             )}
             {!open && (
-              <Hamburger
+              <MenuHamburgerIcon
                 fontSize={26}
                 color='#1E2B3C'
               />
