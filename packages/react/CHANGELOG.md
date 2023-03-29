@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.10.0...@digdir/design-system-react@0.10.1) (2023-03-29)
+
+### Bug Fixes
+
+- **Accordion:** Fix continous texts word break ([#264](https://github.com/digdir/designsystem/issues/264)) ([13b3bd6](https://github.com/digdir/designsystem/commit/13b3bd6fb6a336ae1db86ea79555dde257162fa0))
+- **Button:** adjust padding to make icon round ([#265](https://github.com/digdir/designsystem/issues/265)) ([922014d](https://github.com/digdir/designsystem/commit/922014d14f8316421c17b5ffb435acb2ba2c51ae))
+- **RadioButton:** RadioButton looks wrong when zoming in browser ([#266](https://github.com/digdir/designsystem/issues/266)) ([5f40bc3](https://github.com/digdir/designsystem/commit/5f40bc35e0ed6f1c1e2535b0d45a38d18b1768c0))
+- **Select:** Display initial value on single select ([#268](https://github.com/digdir/designsystem/issues/268)) ([7ad5f0f](https://github.com/digdir/designsystem/commit/7ad5f0fa6345577993dca28c0bb6066c9595634d))
+- **ToggleButtonGroup:** Set correct button type ([#261](https://github.com/digdir/designsystem/issues/261)) ([a706f07](https://github.com/digdir/designsystem/commit/a706f0773acbf5bf4766d915af95696cdfaa67af))
+
 # [0.10.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.9.0...@digdir/design-system-react@0.10.0) (2023-03-24)
 
 ### Bug Fixes
