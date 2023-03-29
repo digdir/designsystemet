@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorStroke, SuccessStroke } from '@navikt/ds-icons';
+import { XMarkIcon, CheckmarkIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
 
 import classes from './ComponentUsage.module.css';
@@ -22,7 +22,7 @@ export function Usage({
       <div className={classes.box}>
         {type === 'success' ? (
           <div className={classes.iconContainer}>
-            <SuccessStroke
+            <CheckmarkIcon
               fontSize={20}
               color='white'
             />
@@ -34,7 +34,7 @@ export function Usage({
               classes['iconContainer--danger'],
             )}
           >
-            <ErrorStroke
+            <XMarkIcon
               fontSize={20}
               color='white'
             />

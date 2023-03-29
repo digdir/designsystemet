@@ -1,5 +1,5 @@
 import React from 'react';
-import { Picture } from '@navikt/ds-icons';
+import { ImageIcon } from '@navikt/aksel-icons';
 
 import { Container } from '../../components/Container/Container';
 import Section from '../../components/Section/Section';
@@ -51,7 +51,7 @@ const SubjectsLayout = ({ content, data }: SubjectsLayoutProps) => {
                 url={item.url}
                 title={item.title}
                 color={item.color}
-                icon={<Picture fontSize={28} />}
+                icon={<ImageIcon fontSize={32} />}
                 description={item.description}
                 key={index}
               />

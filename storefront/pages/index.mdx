@@ -1,6 +1,6 @@
 import Meta from '../components/Meta/Meta';
 import { FrontpageLayout } from '../layouts';
-import { Picture, Wrench, SystemFilled } from '@navikt/ds-icons';
+import { ImageIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='Velkommen'
@@ -23,7 +23,7 @@ export default ({ children }) => (
               'Lær hvordan du kan komme i gang med designsystemet som designer.',
             color: 'blue',
             url: '/grunnleggende/design/for-designere',
-            icon: <Picture fontSize={28} />,
+            icon: <ImageIcon fontSize={34} />,
           },
           {
             title: 'For utviklere',
@@ -31,7 +31,7 @@ export default ({ children }) => (
               'Lær hvordan du kan komme i gang med designsystemet som utvikler',
             color: 'yellow',
             url: '/grunnleggende/kode/for-utviklere',
-            icon: <Wrench fontSize={28} />,
+            icon: <WrenchIcon fontSize={36} />,
           },
           {
             title: 'Komponenter',
@@ -39,7 +39,7 @@ export default ({ children }) => (
               'Se den komplette oversikten over komponentene i react.',
             color: 'red',
             url: 'https://digdir.github.io/designsystem',
-            icon: <SystemFilled fontSize={25} />,
+            icon: <ComponentIcon fontSize={34} />,
           },
         ],
       },

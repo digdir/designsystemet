@@ -1,5 +1,5 @@
 import React from 'react';
-import { Email } from '@navikt/ds-icons';
+import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 
 import Section from '../../components/Section/Section';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
@@ -68,7 +68,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
               href={'mailto:' + data.contributeSection.email}
               className={classes.link}
             >
-              <Email fontSize={26} />
+              <EnvelopeClosedIcon fontSize={33} />
               <span>Ta kontakt med oss på e-post.</span>
             </a>
           }

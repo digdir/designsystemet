@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy } from '@navikt/ds-icons';
+import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import prettier from 'prettier/standalone.js';
 import parserJs from 'prettier/parser-flow.js';
@@ -59,8 +59,9 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
           onMouseEnter={() => setToolTipText('Kopier')}
           onClick={() => onButtonClick()}
           className={classes['code-snippet__icon']}
+          title='Kopier'
         >
-          <Copy scale={16} />
+          <FilesIcon scale={16} />
         </button>
       </Tippy>
       <SyntaxHighlighter
