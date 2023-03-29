@@ -532,5 +532,37 @@
       "type": "sizing",
       "description": "120px"
     }
+  },
+  "breakpoints": {
+    "xs": {
+      "value": "0px",
+      "type": "sizing",
+      "description": "Specific styling for the smallest mobile sizes and up. Will affect screen sizes with the set size and larger."
+    },
+    "sm": {
+      "value": "540px",
+      "type": "sizing",
+      "description": "Specific styling for the largest mobile sizes and up. Will affect screen sizes with the set size and larger."
+    },
+    "md": {
+      "value": "768px",
+      "type": "sizing",
+      "description": "Specific styling for tablet and up. Will affect screen sizes with the set size and larger."
+    },
+    "lg": {
+      "value": "960px",
+      "type": "sizing",
+      "description": "Specific styling for the largest tablets and up. Will affect screen sizes with the set size and larger.Will affect screen sizes with this size and larger"
+    },
+    "xl": {
+      "value": "1200px",
+      "type": "sizing",
+      "description": "Specific styling for laptops and up. Will affect screen sizes with the set size and larger."
+    },
+    "xxl": {
+      "value": "1600px",
+      "type": "sizing",
+      "description": "Specific styling for desktops and up. Will affect screen sizes with the set size and larger."
+    }
   }
 }
