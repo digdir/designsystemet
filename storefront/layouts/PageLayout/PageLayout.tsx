@@ -9,6 +9,8 @@ import {
 } from '../../utils/StringHelpers';
 import type { PageMenuDataType } from '../../utils/menus/PageMenu';
 
+import { MdxContent } from '../../components/MdxContent/MdxContent';
+
 import classes from './PageLayout.module.css';
 
 interface PageLayoutProps {
@@ -42,7 +44,9 @@ const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
             {data.date && <div className={classes.date}>{data.date}</div>}
           </div>
 
-          <div className={classes.content}>{content}</div>
+          <div className={classes.content}>
+            <MdxContent>{content}</MdxContent>
+          </div>
         </div>
       </Container>
     </div>

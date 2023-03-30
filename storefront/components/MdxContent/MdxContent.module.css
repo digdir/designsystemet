@@ -1,0 +1,13 @@
+.content p,
+.content h2,
+.content h3,
+.content h4 {
+  max-width: 800px;
+}
+
+.content div {
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
+  border-radius: 4px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
