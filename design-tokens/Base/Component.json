@@ -309,11 +309,11 @@
       },
       "border_width": {
         "xsmall": {
-          "value": "{border_width.standard}",
+          "value": "{border_width.2}",
           "type": "borderWidth"
         },
         "small": {
-          "value": "{border_width.standard}",
+          "value": "{border_width.2}",
           "type": "borderWidth"
         }
       }
@@ -367,7 +367,7 @@
     "textarea": {
       "border_width": {
         "normal": {
-          "value": "{border_width.standard}",
+          "value": "{border_width.2}",
           "type": "borderWidth"
         }
       },
@@ -781,16 +781,6 @@
       }
     }
   },
-  "border_width": {
-    "thin": {
-      "value": "1px",
-      "type": "borderWidth"
-    },
-    "standard": {
-      "value": "2px",
-      "type": "borderWidth"
-    }
-  },
   "interactive_components": {
     "border_width": {
       "normal": {
@@ -802,10 +792,6 @@
   "semantic": {
     "tab_focus": {
       "outline": {
-        "offset": {
-          "value": "2px",
-          "type": "spacing"
-        },
         "width": {
           "value": "2px",
           "type": "borderWidth"

@@ -564,5 +564,15 @@
       "type": "sizing",
       "description": "Specific styling for desktops and up. Will affect screen sizes with the set size and larger."
     }
+  },
+  "border_width": {
+    "1": {
+      "value": "1px",
+      "type": "borderWidth"
+    },
+    "2": {
+      "value": "2px",
+      "type": "borderWidth"
+    }
   }
 }

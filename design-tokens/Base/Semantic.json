@@ -787,5 +787,15 @@
       "value": "{sizing.14}",
       "type": "sizing"
     }
+  },
+  "border_width": {
+    "default": {
+      "value": "{border_width.1}",
+      "type": "borderWidth"
+    },
+    "active": {
+      "value": "{border_width.2}",
+      "type": "borderWidth"
+    }
   }
 }
