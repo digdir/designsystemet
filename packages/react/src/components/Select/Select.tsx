@@ -139,10 +139,12 @@ const Select = (props: SelectProps) => {
   const [hasFocus, setHasFocus] = useState<boolean>(false);
   useEventListener('click', () => setUsingKeyboard(false));
   useEventListener('keydown', () => setUsingKeyboard(true));
-  useEventListener('focusin', () => {
+  const updateHasFocus = () => {
     const { activeElement } = document;
     setHasFocus(selectFieldRef.current?.contains(activeElement) ?? false);
-  });
+  };
+  useEventListener('focusin', updateHasFocus);
+  useEventListener('focusout', updateHasFocus);
 
   useUpdate(() => {
     if (hasFocus && onFocus)
