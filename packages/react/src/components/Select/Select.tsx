@@ -20,7 +20,9 @@ export type SelectProps = SingleSelectProps | MultiSelectProps;
 
 export type SingleSelectProps = SelectPropsBase & {
   multiple?: false;
-  onChange?: SingleOnChangeEvent;
+  onBlur?: SingleSelectEvent;
+  onChange?: SingleSelectEvent;
+  onFocus?: SingleSelectEvent;
   options: SingleSelectOption[];
   value?: string;
 };
@@ -28,7 +30,9 @@ export type SingleSelectProps = SelectPropsBase & {
 export type MultiSelectProps = SelectPropsBase & {
   deleteButtonLabel?: string;
   multiple: true;
-  onChange?: MultipleOnChangeEvent;
+  onBlur?: MultiSelectEvent;
+  onChange?: MultiSelectEvent;
+  onFocus?: MultiSelectEvent;
   options: MultiSelectOption[];
   value?: string[];
 };
@@ -53,8 +57,8 @@ export type MultiSelectOption = SingleSelectOption & {
   deleteButtonLabel?: string;
 };
 
-export type SingleOnChangeEvent = (value: string) => void;
-export type MultipleOnChangeEvent = (value: string[]) => void;
+export type SingleSelectEvent = (value: string) => void;
+export type MultiSelectEvent = (value: string[]) => void;
 
 const eventListenerKeys = {
   ArrowUp: 'ArrowUp',
@@ -70,7 +74,9 @@ const Select = (props: SelectProps) => {
     inputId,
     label,
     multiple,
+    onBlur,
     onChange,
+    onFocus,
     options,
     searchLabel,
     value,
@@ -126,14 +132,26 @@ const Select = (props: SelectProps) => {
     [setKeyword, multiple],
   );
 
-  const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
-  useEventListener('click', () => setUsingKeyboard(false));
-  useEventListener('keydown', () => setUsingKeyboard(true));
-
-  const [expanded, setExpanded] = useState<boolean>(false);
-
   const listboxWrapperRef = useRef<HTMLSpanElement>(null);
   const selectFieldRef = useRef<HTMLSpanElement>(null);
+
+  const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
+  const [hasFocus, setHasFocus] = useState<boolean>(false);
+  useEventListener('click', () => setUsingKeyboard(false));
+  useEventListener('keydown', () => setUsingKeyboard(true));
+  useEventListener('focusin', () => {
+    const { activeElement } = document;
+    setHasFocus(selectFieldRef.current?.contains(activeElement) ?? false);
+  });
+
+  useUpdate(() => {
+    if (hasFocus && onFocus)
+      multiple ? onFocus(selectedValues) : onFocus(activeOption || '');
+    else if (!hasFocus && onBlur)
+      multiple ? onBlur(selectedValues) : onBlur(activeOption || '');
+  }, [hasFocus]);
+
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   useEffect(() => {
     // Rerender when the value property changes
@@ -185,7 +203,7 @@ const Select = (props: SelectProps) => {
       setActiveOption(addedValue);
     }
     setSelectedValues(newValues);
-    onChange && (onChange as MultipleOnChangeEvent)(newValues);
+    onChange && (onChange as MultiSelectEvent)(newValues);
     resetKeyword();
   };
 
@@ -193,7 +211,7 @@ const Select = (props: SelectProps) => {
     setActiveOption(newValue);
     resetKeyword(findOptionFromValue(newValue).label);
     setExpanded(false);
-    onChange && (onChange as SingleOnChangeEvent)(newValue);
+    onChange && (onChange as SingleSelectEvent)(newValue);
   };
 
   const addOrRemoveSelectedValue = (activeValue: string) => {

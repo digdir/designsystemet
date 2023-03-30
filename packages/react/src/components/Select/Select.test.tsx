@@ -306,6 +306,48 @@ describe('Select', () => {
       expect(getCombobox()).toHaveValue(sortedOptions[0].label);
     });
 
+    it('Calls onFocus handler with the selected value only when the search field is focused', async () => {
+      const onFocus = jest.fn();
+      const value = singleSelectOptions[0].value;
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultSingleSelectProps}
+            {...{ onFocus, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onFocus).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onFocus).toHaveBeenCalledWith(value);
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onFocus).toHaveBeenCalledTimes(1);
+    });
+
+    it('Calls onBlur handler with the selected value only when the search field is blurred', async () => {
+      const onBlur = jest.fn();
+      const value = singleSelectOptions[0].value;
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultSingleSelectProps}
+            {...{ onBlur, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
     const expectSelectedValue = (option: SingleSelectOption) =>
       expect(getSelectedOption()).toHaveValue(option.value);
 
@@ -729,6 +771,62 @@ describe('Select', () => {
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.click(screen.getAllByRole('option')[1]));
       expectSelectedValues([newOptions[1].value]);
+    });
+
+    it('Calls onFocus handler with the selected values only when the search field is focused', async () => {
+      const onFocus = jest.fn();
+      const value = [multiSelectOptions[0].value];
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultMultiSelectProps}
+            {...{ onFocus, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onFocus).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onFocus).toHaveBeenCalledWith(value);
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onFocus).toHaveBeenCalledTimes(1);
+    });
+
+    it('Calls onBlur handler with the selected values only when the search field is blurred', async () => {
+      const onBlur = jest.fn();
+      const value = [singleSelectOptions[0].value];
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultMultiSelectProps}
+            {...{ onBlur, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
+    it('Does not call onFocus nor onBlur when focus switches between subcomponents', async () => {
+      const onBlur = jest.fn();
+      const onFocus = jest.fn();
+      const selectedOption = multiSelectOptions[0];
+      const value = [selectedOption.value];
+      renderMultiSelect({ onBlur, onFocus, value });
+      await user.click(getCombobox());
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(screen.getByLabelText(selectedOption.deleteButtonLabel));
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     const getFocusedOption = (container: HTMLElement) =>
