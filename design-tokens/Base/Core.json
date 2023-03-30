@@ -656,17 +656,17 @@
           "color": "#0000001a",
           "type": "dropShadow",
           "x": "0",
-          "y": "4",
-          "blur": "6",
-          "spread": "-4"
+          "y": "8",
+          "blur": "10",
+          "spread": "-6"
         },
         {
           "color": "#0000001a",
           "type": "dropShadow",
           "x": "0",
-          "y": "10",
-          "blur": "15",
-          "spread": "-3"
+          "y": "25",
+          "blur": "50",
+          "spread": "-5"
         }
       ],
       "type": "boxShadow"
