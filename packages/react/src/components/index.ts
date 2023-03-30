@@ -22,8 +22,8 @@ export type {
   SelectProps,
   SingleSelectOption,
   MultiSelectOption,
-  SingleOnChangeEvent,
-  MultipleOnChangeEvent,
+  SingleSelectEvent,
+  MultiSelectEvent,
 } from './Select';
 export * from './Spinner';
 export { TextArea } from './TextArea';
