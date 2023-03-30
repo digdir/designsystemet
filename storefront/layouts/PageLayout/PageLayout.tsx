@@ -5,6 +5,8 @@ import { Container } from '../../components/Container/Container';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 import { MdxContent } from '../../components/MdxContent/MdxContent';
 
+import { MdxContent } from '../../components/MdxContent/MdxContent';
+
 import classes from './PageLayout.module.css';
 
 interface PageLayoutProps {
