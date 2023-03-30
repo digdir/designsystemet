@@ -3942,21 +3942,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:^2.0.0-rc.2":
-  version: 2.2.1
-  resolution: "@mdx-js/react@npm:2.2.1"
-  dependencies:
-    "@types/mdx": ^2.0.0
-    "@types/react": ">=16"
+"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
+  version: 1.6.22
+  resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
-    react: ">=16"
-  checksum: 4462dad1d7d658bda1c2eabc3960fb843fdbcb5788ce5f863b674752e4db1b7048b5587aa85661283b5196e4641385e6b594205c2482202446ecb5f5433c975b
+    react: ^16.13.1 || ^17.0.0
+  checksum: bc84bd514bc127f898819a0c6f1a6915d9541011bd8aefa1fcc1c9bea8939f31051409e546bdec92babfa5b56092a16d05ef6d318304ac029299df5181dc94c8
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:^2.1.5":
-  version: 2.3.0
-  resolution: "@mdx-js/react@npm:2.3.0"
+"@mdx-js/util@npm:1.6.22":
+  version: 1.6.22
+  resolution: "@mdx-js/util@npm:1.6.22"
+  checksum: 4b393907e39a1a75214f0314bf72a0adfa5e5adffd050dd5efe9c055b8549481a3cfc9f308c16dfb33311daf3ff63added7d5fd1fe52db614c004f886e0e559a
+  languageName: node
+  linkType: hard
+
+"@mrmlnc/readdir-enhanced@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@mrmlnc/readdir-enhanced@npm:2.2.1"
   dependencies:
     "@types/mdx": ^2.0.0
     "@types/react": ">=16"
@@ -7278,17 +7282,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: b62f0ea3cdfa68e106391728325057ad36f1bde7ba2dfae029472c47e01e482bc77c6ba4f1dad59f3f04ee81cb597618ff7c30a33c157c0a20462b6dd6aa2d4d
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:>=16":
-  version: 18.0.27
-  resolution: "@types/react@npm:18.0.27"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 600fdbc39a92ea4a77047db3e12f05f67776a710f5918248c0189a59ac2a38900c9db5a5d2e433a16df528a3ecab1aa114b322cacea573bb1ca2fc0b094c52d1
   languageName: node
   linkType: hard
 
@@ -15462,6 +15455,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mdurl@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "mdurl@npm:1.0.1"
+  checksum: 71731ecba943926bfbf9f9b51e28b5945f9411c4eda80894221b47cc105afa43ba2da820732b436f0798fd3edbbffcd1fc1415843c41a87fea08a41cc1e3d02b
+  languageName: node
+  linkType: hard
+
+"mdx-embed@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "mdx-embed@npm:1.1.2"
+  peerDependencies:
+    "@mdx-js/mdx": ^1.6.16
+    "@mdx-js/react": ^1.6.16
+    react: ^16.x || ^17.x || ^18.x
+    react-dom: ^16.x || ^17.x || ^18.x
+  checksum: af837318956882378ae7db2ac9a35d057b5036fe2cff32af3374510665a9a15789a308a03b9a050400c18309eebb82ddd8bad3d4c4c01aacd03e2217031b7443
+  languageName: node
+  linkType: hard
+
 "media-typer@npm:0.3.0":
   version: 0.3.0
   resolution: "media-typer@npm:0.3.0"
@@ -20136,7 +20148,7 @@ __metadata:
     "@altinn/figma-design-tokens": ^5.0.0
     "@digdir/design-system-react": "*"
     "@mdx-js/loader": ^2.0.0-rc.2
-    "@mdx-js/react": ^2.0.0-rc.2
+    "@mdx-js/react": ^1.6.22
     "@navikt/aksel-icons": ^2.8.4
     "@next/font": 13.0.7
     "@reach/disclosure": ^0.18.0
@@ -20149,6 +20161,7 @@ __metadata:
     classnames: ^2.3.2
     directory-tree: ^3.5.1
     gray-matter: ^4.0.3
+    mdx-embed: ^1.1.2
     moment: ^2.29.4
     next: 13.0.7
     normalize.css: ^8.0.1
