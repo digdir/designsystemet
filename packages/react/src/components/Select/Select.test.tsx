@@ -327,7 +327,7 @@ describe('Select', () => {
       expect(onFocus).toHaveBeenCalledTimes(1);
     });
 
-    it('Calls onBlur handler with the selected value only when the search field is blurred', async () => {
+    it('Calls onBlur handler with the selected value when focus switches to another element', async () => {
       const onBlur = jest.fn();
       const value = singleSelectOptions[0].value;
       const outsideButtonTestid = 'outside-button';
@@ -344,6 +344,17 @@ describe('Select', () => {
       await user.click(getCombobox());
       expect(onBlur).not.toHaveBeenCalled();
       await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
+    it('Calls onBlur handler with the selected value when user clicks outside of the component', async () => {
+      const onBlur = jest.fn();
+      const value = singleSelectOptions[0].value;
+      renderSingleSelect({ onBlur, value });
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(document.body);
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(value);
     });
@@ -794,7 +805,7 @@ describe('Select', () => {
       expect(onFocus).toHaveBeenCalledTimes(1);
     });
 
-    it('Calls onBlur handler with the selected values only when the search field is blurred', async () => {
+    it('Calls onBlur handler with the selected values when focus switches to another element', async () => {
       const onBlur = jest.fn();
       const value = [singleSelectOptions[0].value];
       const outsideButtonTestid = 'outside-button';
@@ -811,6 +822,17 @@ describe('Select', () => {
       await user.click(getCombobox());
       expect(onBlur).not.toHaveBeenCalled();
       await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
+    it('Calls onBlur handler with the selected values when user clicks outside of the component', async () => {
+      const onBlur = jest.fn();
+      const value = [multiSelectOptions[0].value];
+      renderMultiSelect({ onBlur, value });
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(document.body);
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(value);
     });
