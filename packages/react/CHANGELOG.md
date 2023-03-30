@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.10.1...@digdir/design-system-react@0.10.2) (2023-03-30)
+
+### Bug Fixes
+
+- **Textfield:** upgrading `react-number-format`, removing workaround ([e2dc0e6](https://github.com/digdir/designsystem/commit/e2dc0e62093af9a7feb83bf2f6ee55ab7b1082e0))
+
 ## [0.10.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.10.0...@digdir/design-system-react@0.10.1) (2023-03-29)
 
 ### Bug Fixes
