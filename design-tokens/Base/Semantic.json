@@ -797,5 +797,27 @@
       "value": "{border_width.2}",
       "type": "borderWidth"
     }
+  },
+  "shadow": {
+    "xsmall": {
+      "value": "{shadow.100}",
+      "type": "boxShadow"
+    },
+    "small": {
+      "value": "{shadow.200}",
+      "type": "boxShadow"
+    },
+    "medium": {
+      "value": "{shadow.300}",
+      "type": "boxShadow"
+    },
+    "large": {
+      "value": "{shadow.400}",
+      "type": "boxShadow"
+    },
+    "xlarge": {
+      "value": "{shadow.500}",
+      "type": "boxShadow"
+    }
   }
 }

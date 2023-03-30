@@ -798,27 +798,5 @@
         }
       }
     }
-  },
-  "New Box shadow - lg": {
-    "value": {
-      "color": "#0000001a",
-      "type": "dropShadow",
-      "x": "0",
-      "y": "4",
-      "blur": "4",
-      "spread": "0"
-    },
-    "type": "boxShadow"
-  },
-  "New Box shadow - md": {
-    "value": {
-      "color": "#0000000f",
-      "type": "dropShadow",
-      "x": "0",
-      "y": "4",
-      "blur": "4",
-      "spread": "0"
-    },
-    "type": "boxShadow"
   }
 }
