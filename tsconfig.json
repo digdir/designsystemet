@@ -29,7 +29,7 @@
     // error out if import and file system have a casing mismatch. Recommended by TS
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "target": "es2016",
+    "target": "es2020",
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
