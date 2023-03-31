@@ -14,7 +14,7 @@
     "storybook:clean": "start-storybook -p 6006 --no-manager-cache",
     "build": "npx lerna run build",
     "build-react": "cd packages/react && yarn build",
-    "pack-react": "cd packages/react && yarn pack",
+    "pack:react": "yarn workspace @digdir/design-system-react pack",
     "build-storybook": "build-storybook -o ./docs",
     "test": "jest",
     "add-component-core": "node scripts/add-component.mjs",
