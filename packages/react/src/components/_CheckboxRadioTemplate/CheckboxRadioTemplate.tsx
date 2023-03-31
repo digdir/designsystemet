@@ -107,7 +107,9 @@ export const CheckboxRadioTemplate = ({
               {helpText && (
                 <HelpText
                   size={size}
-                  title={`Help text for ${label}`}
+                  title={
+                    typeof label === 'string' ? `Help text for ${label}` : ''
+                  }
                 >
                   {helpText}
                 </HelpText>

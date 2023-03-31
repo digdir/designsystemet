@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
-registerTransforms(StyleDictionary);
+await registerTransforms(StyleDictionary);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
@@ -25,13 +25,20 @@ StyleDictionary.registerTransform({
   },
 });
 
+type Typgraphy = {
+  fontWeight: string;
+  fontSize: string;
+  lineHeight: number;
+  fontFamily: string;
+};
+
 StyleDictionary.registerTransform({
   name: 'typography/shorthand',
   type: 'value',
   transitive: true,
   matcher: (token) => token.type === 'typography',
   transformer: (token) => {
-    const { value } = token;
+    const value = token.value as Typgraphy;
     return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} '${value.fontFamily}'`;
   },
 });
@@ -43,11 +50,14 @@ StyleDictionary.registerTransform({
   name: 'pxToRem',
   type: 'value',
   transitive: true,
-  matcher: (token) => ['fontSizes'].includes(token.type),
-  transformer: (token, options) =>
-    options?.basePxFontSize
-      ? token.value / options.basePxFontSize + 'rem'
-      : token.value,
+  matcher: (token) => ['fontSizes'].includes(token.type as string),
+  transformer: (token, options) => {
+    const value = token.value as number;
+
+    return options?.basePxFontSize
+      ? `${value / options.basePxFontSize}rem`
+      : value;
+  },
 });
 
 const excludeSource = (token: TransformedToken) =>

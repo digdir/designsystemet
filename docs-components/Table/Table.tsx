@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
 import classes from './Table.module.css';
@@ -15,7 +19,7 @@ interface RowsProps {
 const Table = (tableProps: TableProps) => {
   return (
     <table className={classes['ddsdocs-table']}>
-      <thead className={classes['ddsdocs-table__header']}>
+      <thead>
         <tr className={classes['ddsdocs-table__row']}>
           {tableProps.headings.map((value, key) => (
             <th

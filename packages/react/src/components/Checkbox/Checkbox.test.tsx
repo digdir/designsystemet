@@ -43,7 +43,7 @@ describe('Checkbox', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('Should not display checkbox when read-only', async () => {
+  it('Should not display checkbox when read-only', () => {
     render({ checked: false, readOnly: true });
     const checkboxes = screen.queryAllByRole('checkbox');
     expect(checkboxes).toHaveLength(0);

@@ -19,6 +19,7 @@ describe('TextField', () => {
       expect(onPaste).toHaveBeenCalledTimes(1);
       expect(onPaste).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           clipboardData: expect.objectContaining({
             items: [expect.objectContaining({ data })],
           }),
@@ -82,6 +83,7 @@ describe('TextField', () => {
       expect(onPaste).toHaveBeenCalledTimes(1);
       expect(onPaste).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           clipboardData: expect.objectContaining({
             items: [expect.objectContaining({ data })],
           }),
@@ -122,7 +124,7 @@ describe('TextField', () => {
       expect(lastValue).toBe('1234');
     });
 
-    it('Does not trigger onChange when component is rerendered', async () => {
+    it('Does not trigger onChange when component is rerendered', () => {
       const onChange = jest.fn();
       const { rerender } = render({
         onChange,

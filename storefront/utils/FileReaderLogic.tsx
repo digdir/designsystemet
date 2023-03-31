@@ -4,7 +4,7 @@ import path from 'path';
 /*
  * Scans the components directory and generates list og Meta data used in menus and lists of components
  */
-const getStaticProps = async () => {
+const getStaticProps = () => {
   const postsDirectory = path.join(process.cwd(), 'pages/komponenter');
   const fileNames = fs.readdirSync(postsDirectory);
 

@@ -46,7 +46,9 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
   }
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
-    navigator.clipboard.writeText(children);
+    navigator.clipboard.writeText(children).catch((reason) => {
+      throw Error(String.toString(reason));
+    });
   };
 
   return (
