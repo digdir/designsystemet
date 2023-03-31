@@ -163,7 +163,7 @@ const Select = (props: SelectProps) => {
     } else if (!arraysEqual(value, selectedValues)) {
       setSelectedValues(value ?? []);
     }
-  }, [value]);
+  }, [value, options]);
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
