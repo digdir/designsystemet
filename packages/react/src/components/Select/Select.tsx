@@ -96,8 +96,10 @@ const Select = (props: SelectProps) => {
   const [sortedOptions, setSortedOptions] = useState(options);
   // Enable dynamic change of options by resetting sortedOptions
   const prevOptions = usePrevious([...options]);
+  const prevValue = usePrevious(value);
   useUpdate(() => {
     // Update not on changed reference but on changed values inside the object
+    let shouldSetValue = false;
     if (
       options.length !== prevOptions?.length ||
       options.some(
@@ -105,7 +107,21 @@ const Select = (props: SelectProps) => {
       )
     ) {
       setSortedOptions(options);
-      setSelectedValues(multiple ? value ?? [] : []);
+      shouldSetValue = true;
+    }
+
+    if (
+      (!multiple && value !== prevValue) ||
+      (multiple &&
+        (!Array.isArray(prevValue) || !arraysEqual(value, prevValue))) ||
+      shouldSetValue
+    ) {
+      if (multiple) {
+        setSelectedValues(value ?? []);
+      } else {
+        setActiveOption(value);
+        setKeyword(findOptionFromValue(value)?.label ?? '');
+      }
     }
   });
 
@@ -163,16 +179,6 @@ const Select = (props: SelectProps) => {
       },
     [options],
   );
-
-  useEffect(() => {
-    // Rerender when the value property changes
-    if (!multiple) {
-      setActiveOption(value);
-      setKeyword(findOptionFromValue(value)?.label ?? '');
-    } else if (!arraysEqual(value, selectedValues)) {
-      setSelectedValues(value ?? []);
-    }
-  }, [findOptionFromValue, multiple, selectedValues, value]);
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
