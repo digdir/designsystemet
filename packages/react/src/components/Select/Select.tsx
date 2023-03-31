@@ -155,6 +155,15 @@ const Select = (props: SelectProps) => {
 
   const [expanded, setExpanded] = useState<boolean>(false);
 
+  const findOptionFromValue = useCallback(
+    (v?: string) =>
+      options.find((option) => option.value === v) ?? {
+        label: '',
+        value: '',
+      },
+    [options],
+  );
+
   useEffect(() => {
     // Rerender when the value property changes
     if (!multiple) {
@@ -163,7 +172,7 @@ const Select = (props: SelectProps) => {
     } else if (!arraysEqual(value, selectedValues)) {
       setSelectedValues(value ?? []);
     }
-  }, [value, options]);
+  }, [findOptionFromValue, multiple, selectedValues, value]);
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
@@ -193,12 +202,6 @@ const Select = (props: SelectProps) => {
       }
     }
   }, [activeOptionIndex]);
-
-  const findOptionFromValue = (v?: string) =>
-    options.find((option) => option.value === v) ?? {
-      label: '',
-      value: '',
-    };
 
   const multipleChangeHandler = (newValues: string[], addedValue?: string) => {
     if (!selectedValues?.length) {
