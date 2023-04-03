@@ -123,7 +123,8 @@ const Select = (props: SelectProps) => {
 
     if (
       (!multiple && value !== prevValue) ||
-      (multiple && !arraysEqual(value, prevValue as string[])) ||
+      (multiple &&
+        (typeof prevValue === 'string' || !arraysEqual(value, prevValue))) ||
       shouldSetValue
     ) {
       if (multiple) {
