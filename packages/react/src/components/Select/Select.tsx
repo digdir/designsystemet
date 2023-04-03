@@ -86,12 +86,23 @@ const Select = (props: SelectProps) => {
     throw Error('Each value in the option list must be unique.');
   }
 
+  const findOptionFromValue = useCallback(
+    (v?: string) =>
+      options.find((option) => option.value === v) ?? {
+        label: '',
+        value: '',
+      },
+    [options],
+  );
+
   // List of selected values if multiselect.
   const [selectedValues, setSelectedValues] = useState<string[]>(
     multiple ? value ?? [] : [],
   );
 
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState(
+    !multiple ? findOptionFromValue(value)?.label ?? '' : '',
+  );
 
   const [sortedOptions, setSortedOptions] = useState(options);
   // Enable dynamic change of options by resetting sortedOptions
@@ -112,8 +123,7 @@ const Select = (props: SelectProps) => {
 
     if (
       (!multiple && value !== prevValue) ||
-      (multiple &&
-        (!Array.isArray(prevValue) || !arraysEqual(value, prevValue))) ||
+      (multiple && !arraysEqual(value, prevValue as string[])) ||
       shouldSetValue
     ) {
       if (multiple) {
@@ -170,15 +180,6 @@ const Select = (props: SelectProps) => {
   }, [hasFocus]);
 
   const [expanded, setExpanded] = useState<boolean>(false);
-
-  const findOptionFromValue = useCallback(
-    (v?: string) =>
-      options.find((option) => option.value === v) ?? {
-        label: '',
-        value: '',
-      },
-    [options],
-  );
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
