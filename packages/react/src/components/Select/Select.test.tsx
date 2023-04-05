@@ -382,6 +382,22 @@ describe('Select', () => {
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.click(screen.getAllByRole('option')[1]));
       expectSelectedValue(newOptions[1]);
+      expect(getCombobox()).toHaveValue(newOptions[1].label);
+    });
+
+    it('Rerenders with the correct value and keyword when "options" are loaded late', async () => {
+      const value = 'test2';
+      const options = singleSelectOptions;
+      const { rerender } = renderSingleSelect({ options: [], value });
+      rerender(
+        <Select
+          {...defaultSingleSelectProps}
+          options={options}
+          value={value}
+        />,
+      );
+      expectSelectedValue(options[1]);
+      expect(getCombobox()).toHaveValue(options[1].label);
     });
   });
 
