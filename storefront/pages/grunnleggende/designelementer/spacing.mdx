@@ -1,5 +1,6 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
+import { Figma } from 'mdx-embed';
 export { getServerSideProps } from '../../../utils/menus/PageMenu';
 
 <Meta
@@ -20,4 +21,13 @@ export default ({ children, menu }) => (
 
 ## Avstander
 
-Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens sikrer konsistens på tvers av grensesnitt.
+Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens sikrer konsistent design på tvers av grensesnitt.
+
+<Figma
+  title='Figma Spacing'
+  url='file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?node-id=3411%3A15642&t=VG1JgAAJmKU0QUSq-1'
+/>
+
+Spacing-tokens gir deg muligheten til å definere verdier for Auto Layout som du kan gjenbruke. Når du har brukt en spacing-token på et lag, blir det oppdatert hver gang du endrer det tokenet, så ethvert lag som inneholder en referanse til {spacing.container} vil bli oppdatert når du oppdaterer det spesifikke tokenet.
+
+[Eksempel fra Figma og Studio Tokens]

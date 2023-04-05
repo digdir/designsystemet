@@ -5,7 +5,14 @@ import {
   ImageIcon,
   TokenIcon,
   PaletteIcon,
+  HikingTrailSignIcon,
+  ComponentIcon,
   RectangleSectionsIcon,
+  PackageIcon,
+  BranchingIcon,
+  LayersIcon,
+  LightBulbIcon,
+  TerminalIcon,
 } from '@navikt/aksel-icons';
 
 <Meta
@@ -20,7 +27,37 @@ export default ({ children, menu }) => (
     data={{
       sections: [
         {
-          title: 'Styling og designelementer',
+          title: 'Introduksjon',
+          description:
+            'Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor.',
+          items: [
+            {
+              title: 'Om designsystemet',
+              color: 'red',
+              icon: <ComponentIcon fontSize={34} />,
+              url: 'grunnleggende/introduksjon/om-designsystemet',
+              description:
+                'Hva er felles designsystem, hvorfor trenger vi det, hvordan gjør vi det og hvem er med i arbeidsgruppen?',
+            },
+            {
+              title: 'Prinsipper',
+              color: 'yellow',
+              icon: <LightBulbIcon fontSize={34} />,
+              url: 'grunnleggende/introduksjon/prinsipper',
+              description:
+                'Designsystemet er basert på en filosofi om samarbeid. Lær mer om prinsippene designsystemet bygges på.',
+            },
+            {
+              title: 'Roadmap',
+              color: 'blue',
+              icon: <HikingTrailSignIcon fontSize={34} />,
+              url: 'grunnleggende/introduksjon/roadmap',
+              description: 'Hva jobber vi med nå og hva er planlagt fremover',
+            },
+          ],
+        },
+        {
+          title: 'Grunnleggende designelementer',
           description:
             'Stilene i designsystemet er grunnleggende designelementer som brukes i komponentene. De finnes i flere sett for ulike identiteter og ulike behov og situasjoner. For eksempel har vi et eget sett for kompakt visning, som kan være hensiktsmessig å bruke i verktøy eller admingrensesnitt.',
           items: [
@@ -59,7 +96,7 @@ export default ({ children, menu }) => (
             {
               title: 'Skygger',
               color: 'yellow',
-              icon: <RectangleSectionsIcon fontSize={34} />,
+              icon: <TokenIcon fontSize={34} />,
               url: 'grunnleggende/styling/layout',
               description:
                 'Skygger kan hjelpe svaksynte til å identifisere komponenter og bør brukes konsistent da de uttrykker at noe ligger over noe annet i løsningen.',
@@ -67,52 +104,66 @@ export default ({ children, menu }) => (
             {
               title: 'Ikoner',
               color: 'red',
-              icon: <RectangleSectionsIcon fontSize={34} />,
+              icon: <TokenIcon fontSize={34} />,
               url: 'grunnleggende/styling/layout',
               description:
                 'Nav har laget et solid sett med ikoner (800+) som vi anbefaler å bruke og bidra til å videreutvikle',
             },
+          ],
+        },
+        {
+          title: 'For designere',
+          description: 'Ressurser og veiledning relevant for designere',
+          items: [
             {
-              title: 'Layout',
+              title: 'Kom i gang med Figma',
               color: 'blue',
-              icon: <RectangleSectionsIcon fontSize={34} />,
-              url: 'grunnleggende/styling/layout',
+              icon: <PaletteIcon fontSize={34} />,
+              url: 'grunnleggende/for-designere/kom-i-gang',
               description:
-                'Grunnleggende prinsipper vi bruker for å oppnå layouter med logisk opbygging for forskjellige skjermstørrelser.',
+                'Lær hvordan du bruker komponentbibliotek og styles i Figma.',
+            },
+            {
+              title: 'Bidra i Figma',
+              color: 'red',
+              icon: <BranchingIcon fontSize={34} />,
+              url: 'grunnleggende/for-designere/bidra-i-figma',
+              description:
+                'Slik kan du være med å designe komponenter i designsystemet',
+            },
+            {
+              title: 'Sandkasse for designere',
+              color: 'yellow',
+              icon: <LayersIcon fontSize={34} />,
+              url: 'grunnleggende/for-designere/figma-sandkasse',
+              description:
+                'I sandkassen i Figma kan alle dele sine ideer og forslag til Felles designsystem',
             },
           ],
         },
         {
-          title: 'Design',
-          description: 'Beskrivelse',
+          title: 'For utviklere',
+          description: 'Ressurser og veiledning relevant for utviklere',
           items: [
             {
-              title: 'For designere',
+              title: 'Kom i gang med kodepakkene',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/design/for-designere',
-              description:
-                'Lær hvordan du kommer i gang med designsystemet som designer.',
+              icon: <PackageIcon fontSize={34} />,
+              url: 'grunnleggende/for-utviklere/kom-i-gang',
+              description: 'Lær hvordan du kommer i gang med kodepakkene',
             },
-          ],
-        },
-        {
-          title: 'Kode',
-          description: 'Beskrivelse',
-          items: [
             {
-              title: 'For utviklere',
-              color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/design/for-utviklere',
-              description:
-                'Lær hvordan du kommer i gang med designsystemet som utvikler.',
+              title: 'Bidra i github',
+              color: 'yellow',
+              icon: <BranchingIcon fontSize={34} />,
+              url: 'grunnleggende/for-utviklere/bidra',
+              description: 'Slik kan du være med å utvikle felles designsystem',
             },
             {
               title: 'Endringslogg',
-              color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/design/endringslogg',
+              color: 'red',
+              icon: <TerminalIcon fontSize={34} />,
+              url: 'grunnleggende/for-utviklere/endringslogg',
               description: 'Oversikt over endringer i Felles Designsystem.',
             },
           ],
