@@ -1,27 +1,20 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
-export { getServerSideProps } from '../../../utils/menus/PageMenu';
+import { CodeSnippet } from '../../../components/CodeSnippet/CodeSnippet';
 
 <Meta
-  title='Typografi'
+  title='Bidra'
   description='Beskrivelse'
 />
 
 export default ({ children, menu }) => (
   <PageLayout
     content={children}
-    menu={menu}
     data={{
-      title: 'Typografi',
+      title: 'Bidra',
       date: '25. mars 2023',
     }}
   />
 );
 
-## Heading 2
-
-asdasd
-
-### Heading 3
-
-asdasd
+## Slik kan du bidra
