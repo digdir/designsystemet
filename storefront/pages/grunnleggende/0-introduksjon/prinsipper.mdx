@@ -1,0 +1,43 @@
+import Meta from '../../../components/Meta/Meta';
+import { PageLayout } from '../../../layouts';
+export { getServerSideProps } from '../../../utils/menus/PageMenu';
+
+<Meta
+  title='Prinsipper'
+  description='Beskrivelse'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    menu={menu}
+    data={{
+      title: 'Prinsipper',
+      date: '4. april 2023',
+    }}
+  />
+);
+
+## Prinsipper designsystemet bygges på
+
+### Samarbeid
+
+Designsystemet er basert på en filosofi om samarbeid. Det skal være enkelt for alle å ta eierskap til designsystemet og involvere seg med bidrag og innspill. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystem), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [sprint-planlegging](https://github.com/orgs/digdir/projects/3/views/8), [roadmap](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19744450), [Figma](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6615%3A20148&t=rJYuezxREbfP1OVv-1), [Storybook](https://digdir.github.io/designsystem/) og [dokumentasjon](designsystemet.no).
+
+Vi tror det blir lettere å samarbeide på tvers hvis vi forholder oss til de samme begrepene og verktøyene. Derfor er det viktig å holde komponentbiblioteket i Figma, koden i GitHub og dokumentasjonen på designsystemet.no i synk med hverandre.
+
+### Helhet
+
+Målet er at designsystemet skal bidra til mer helhetlige og konsistente brukeropplevelser på tvers av offentlig sektor. De grunnleggende problemstillinger skal løses uten at du trenger å finne opp hjulet på nytt. Dette skal vi gjøre ved å lage gjenbrukbare, fleksible komponenter som kan brukes i ulike kontekster og med ulik branding. Når løsningene bruker de samme byggeklossene i bunnen skaper det forutsigbarhet for innbyggerne.
+
+### Kvalitet
+
+Designsystemet skal holde høy kvalitet, og gjøre det effektivt å lage digitale produkter med god kvalitet. Med god kvalitetet mener vi både noe som gir en god brukeropplevelse, er tilgjengelig for alle, men også har et godt teknisk fundament. Det vi lager skal være tilgjengelig for alle, uansett varige eller midlertidig reduserte evner. Alle komponentene skal oppfylle kravene til universell utforming og helst mer enn det som er lovpålagt.
+
+### Bærekraftig
+
+Vi tenker bærekraftig og langsiktig når vi utvikler nye eller forbedrer eksisterende komponenter. Et felles designsystem i offentlig sektor som dekker felles behov er mer bærekraftig å forvalte og vedlikeholde enn 20 forskjellige, og gir oss mer tid til å fokusere på de større problemene.
+
+### Levende
+
+Designsystemet blir aldri ferdig - det er levende og i kontinuerlig utvikling. Designsystemet skal henge med i tiden både når det kommer til teknologi, krav og brukerbehov.
