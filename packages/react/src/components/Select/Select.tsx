@@ -86,18 +86,31 @@ const Select = (props: SelectProps) => {
     throw Error('Each value in the option list must be unique.');
   }
 
+  const findOptionFromValue = useCallback(
+    (v?: string) =>
+      options.find((option) => option.value === v) ?? {
+        label: '',
+        value: '',
+      },
+    [options],
+  );
+
   // List of selected values if multiselect.
   const [selectedValues, setSelectedValues] = useState<string[]>(
     multiple ? value ?? [] : [],
   );
 
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState(
+    !multiple ? findOptionFromValue(value)?.label ?? '' : '',
+  );
 
   const [sortedOptions, setSortedOptions] = useState(options);
   // Enable dynamic change of options by resetting sortedOptions
   const prevOptions = usePrevious([...options]);
+  const prevValue = usePrevious(value);
   useUpdate(() => {
     // Update not on changed reference but on changed values inside the object
+    let shouldSetValue = false;
     if (
       options.length !== prevOptions?.length ||
       options.some(
@@ -105,17 +118,25 @@ const Select = (props: SelectProps) => {
       )
     ) {
       setSortedOptions(options);
-      setSelectedValues(multiple ? value ?? [] : []);
+      shouldSetValue = true;
+    }
+
+    if (
+      (!multiple && value !== prevValue) ||
+      (multiple &&
+        (typeof prevValue === 'string' || !arraysEqual(value, prevValue))) ||
+      shouldSetValue
+    ) {
+      if (multiple) {
+        setSelectedValues(value ?? []);
+      } else {
+        setActiveOption(value);
+        setKeyword(findOptionFromValue(value)?.label ?? '');
+      }
     }
   });
 
   const numberOfOptions = options.length;
-
-  // When order of sorted options changes (due to change of search keyword), select first option.
-  const firstOptionValue = sortedOptions[0]?.value;
-  useUpdate(() => {
-    firstOptionValue !== undefined && setActiveOption(firstOptionValue);
-  }, [firstOptionValue]);
 
   // If multiselect, activeOption defines which option that has focus.
   // If single select, it defines the selected value.
@@ -147,6 +168,9 @@ const Select = (props: SelectProps) => {
   useEventListener('focusout', updateHasFocus);
 
   useUpdate(() => {
+    if (!multiple && !hasFocus) {
+      setKeyword(findOptionFromValue(activeOption)?.label ?? '');
+    }
     if (hasFocus && onFocus)
       multiple ? onFocus(selectedValues) : onFocus(activeOption || '');
     else if (!hasFocus && onBlur)
@@ -154,16 +178,6 @@ const Select = (props: SelectProps) => {
   }, [hasFocus]);
 
   const [expanded, setExpanded] = useState<boolean>(false);
-
-  useEffect(() => {
-    // Rerender when the value property changes
-    if (!multiple) {
-      setActiveOption(value);
-      setKeyword(findOptionFromValue(value)?.label ?? '');
-    } else if (!arraysEqual(value, selectedValues)) {
-      setSelectedValues(value ?? []);
-    }
-  }, [value]);
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
@@ -193,12 +207,6 @@ const Select = (props: SelectProps) => {
       }
     }
   }, [activeOptionIndex]);
-
-  const findOptionFromValue = (v?: string) =>
-    options.find((option) => option.value === v) ?? {
-      label: '',
-      value: '',
-    };
 
   const multipleChangeHandler = (newValues: string[], addedValue?: string) => {
     if (!selectedValues?.length) {
@@ -307,7 +315,16 @@ const Select = (props: SelectProps) => {
     const newKeyword = e.target.value;
     if (newKeyword) {
       // Update sorted options only if keyword has a non-empty value
-      setSortedOptions(optionSearch(options, newKeyword));
+      const newSortedOptions = optionSearch(options, newKeyword);
+      setSortedOptions(newSortedOptions);
+
+      // When order of sorted options changes (due to change of search keyword), select first option.
+      const firstOptionValue = sortedOptions[0]?.value;
+      const newFirstOptionValue = newSortedOptions[0]?.value;
+      if (newSortedOptions && firstOptionValue != newFirstOptionValue) {
+        setActiveOption(newFirstOptionValue);
+      }
+
       !expanded && setExpanded(true);
     }
     setKeyword(newKeyword);
