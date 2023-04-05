@@ -13,12 +13,12 @@ const Header = () => {
 
   const menu = [
     {
-      name: 'God praksis',
-      url: '/god-praksis',
-    },
-    {
       name: 'Grunnleggende',
       url: '/grunnleggende',
+    },
+    {
+      name: 'God praksis',
+      url: '/god-praksis',
     },
     {
       name: 'Mønstre',
