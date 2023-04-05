@@ -386,8 +386,8 @@ describe('Select', () => {
     });
 
     it('Rerenders with the correct value and keyword when "options" are loaded late', async () => {
-      const value = 'test2';
       const options = singleSelectOptions;
+      const value = options[1].value;
       const { rerender } = renderSingleSelect({ options: [], value });
       rerender(
         <Select
