@@ -4,7 +4,7 @@ import { CodeSnippet } from '../../../components/CodeSnippet/CodeSnippet';
 export { getServerSideProps } from '../../../utils/menus/PageMenu';
 
 <Meta
-  title='Kom i gang med kodepakkene'
+  title='Bidra'
   description='Beskrivelse'
 />
 
@@ -13,47 +13,10 @@ export default ({ children, menu }) => (
     content={children}
     menu={menu}
     data={{
-      title: 'Kom i gang med kodepakkene',
+      title: 'Bidra',
       date: '25. mars 2023',
     }}
   />
 );
 
-## Design tokens
-
-### Kom i gang
-
-Installer NPM-pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og importer inn tokens med CSS-, SCSS- eller Javascript-variabler. Overstyres ved behov.
-
-#### CSS
-
-<CodeSnippet
-  children='
-@import "@digdir/design-system-tokens/build/tokens.css";
-:root {
-  --my-text-color: var(--color-text-background-light);
-}'
-  language='css'
-/>
-
-#### SCSS
-
-<CodeSnippet
-  children='
-@use "@digdir/design-system-tokens/build/tokens.scss" as tokens;
-$my-text-color: tokens.$color-text-background-light;'
-  language='scss'
-/>
-
-#### Javascript
-
-<CodeSnippet
-  children='
-import tokens from "@digdir/design-system-tokens/build/tokens"
-const myTextColor = tokens.color.text.background.light'
-  language='javascript'
-/>
-
-## Utvikling av designsystemet
-
-Den beste måten å komme i gang med utvikling av selve designsystemet er å følge instruksjonene som står beskrevet i [Readme](https://github.com/digdir/designsystem#----------felles-designsystem).
+## Slik kan du bidra
