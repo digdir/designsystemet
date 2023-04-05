@@ -138,12 +138,6 @@ const Select = (props: SelectProps) => {
 
   const numberOfOptions = options.length;
 
-  // When order of sorted options changes (due to change of search keyword), select first option.
-  const firstOptionValue = sortedOptions[0]?.value;
-  useUpdate(() => {
-    firstOptionValue !== undefined && setActiveOption(firstOptionValue);
-  }, [firstOptionValue]);
-
   // If multiselect, activeOption defines which option that has focus.
   // If single select, it defines the selected value.
   // These are supposed to behave similarly regarding keyboard events, hence why it's the same variable.
@@ -174,6 +168,9 @@ const Select = (props: SelectProps) => {
   useEventListener('focusout', updateHasFocus);
 
   useUpdate(() => {
+    if (!multiple && !hasFocus) {
+      setKeyword(findOptionFromValue(activeOption)?.label ?? '');
+    }
     if (hasFocus && onFocus)
       multiple ? onFocus(selectedValues) : onFocus(activeOption || '');
     else if (!hasFocus && onBlur)
@@ -318,7 +315,16 @@ const Select = (props: SelectProps) => {
     const newKeyword = e.target.value;
     if (newKeyword) {
       // Update sorted options only if keyword has a non-empty value
-      setSortedOptions(optionSearch(options, newKeyword));
+      const newSortedOptions = optionSearch(options, newKeyword);
+      setSortedOptions(newSortedOptions);
+
+      // When order of sorted options changes (due to change of search keyword), select first option.
+      const firstOptionValue = sortedOptions[0]?.value;
+      const newFirstOptionValue = newSortedOptions[0]?.value;
+      if (newSortedOptions && firstOptionValue != newFirstOptionValue) {
+        setActiveOption(newFirstOptionValue);
+      }
+
       !expanded && setExpanded(true);
     }
     setKeyword(newKeyword);

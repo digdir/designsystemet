@@ -123,6 +123,14 @@ describe('Select', () => {
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
     });
 
+    it('Sets the keyword to the selected value onBlur', async () => {
+      renderSingleSelect();
+      await act(() => user.type(getCombobox(), 'a'));
+      expect(getCombobox()).toHaveValue('a');
+      await act(() => user.tab());
+      expect(getCombobox()).toHaveValue(sortedOptions[0].label);
+    });
+
     it('Changes value when user clicks on another option', async () => {
       renderSingleSelect();
       await act(() => user.click(screen.getByRole('combobox')));
@@ -284,7 +292,7 @@ describe('Select', () => {
     it('Sets keyword to the selected option label when the user starts browsing the list', async () => {
       renderSingleSelect();
       await act(() => user.type(getCombobox(), 'a{ArrowDown}'));
-      expect(getCombobox()).toHaveValue(sortedOptions[0].label);
+      expect(getCombobox()).toHaveValue(sortedOptions[1].label);
     });
 
     it('Does not reset keyword while user is writing', async () => {
