@@ -19,8 +19,21 @@ export default ({ children, menu }) => (
   />
 );
 
-For å holde design og kode i sync bruker vi design tokens. Design tokens inneholder variabler for farger, typografi, størrelser, avstander og andre stilegenskaper. Vi bruker Figma-pluginen "Tokens Studio" for å opprette dem, men de blir lagret som en json fil, og er sånn sett ikke låst til en teknologi eller et designverktøy.
+## Hva er design tokens
 
-Tokens er fleksible verdier som sikrer at designere og utviklere jobber med de samme reglene og retningslinjene. Dette gjør det enklere å vedlikeholde designet og det legger også tilrette for å kunne ha et designsystem med ulike identiteter. 🎉 Vi kan lage en komponent i Figma kun èn gang og style den mange ganger - Ved et klikk kan vi slå på et annet theme som aktiverer f.eks en annen fargepalett:
+For å holde design og kode i sync bruker vi design tokens. Design tokens inneholder variabler for farger, typografi, størrelser, avstander og andre stilegenskaper. Tokens er fleksible verdier som sikrer at designere og utviklere jobber med de samme reglene og retningslinjene.
 
-[Eksempel]
+## Tokens Studio for Figma
+
+Designverktøyene er i seg selv ikke avanserte nok til å innlemme designtokens fullt ut. Det finnes farge- og tekststiler i Figma, men det er ingen måte å bruke f.eks border-radius eller avstander på en gjenbrukbar måte. Vi bruker Figma-pluginen "Tokens Studio" for å opprette tokens, da denne lar oss administrere flere stiler og egenskaper.
+
+Pluginen har som mål å være W3C-kompatibel og retter seg etter standarden som etableres av [W3C Design Tokens Community Group](https://github.com/design-tokens/community-group). Tokens-verdiene er dermed ikke låst til et verktøy - JSON-filen kan flyttes til andre verktøy dersom det skulle bli aktuelt
+
+### Flere sett og themes
+
+"Tokens Studio" gjør det enklere å vedlikeholde designet og det legger også tilrette for å kunne ha et designsystem med ulike identiteter. 🎉 Vi kan lage en komponent i Figma kun èn gang og style den mange ganger - Ved et klikk kan vi slå på et annet theme som aktiverer f.eks en annen fargepalett:
+
+![Eksempel på fargesystem i Figma](/img//fargerfigma.gif)
+Videoen over viser at når settet for «Tilsynet» slås på, overstyres både fargene som er i bruk i filen og stilene som er tilgjengelig i høyremargen byttes ut.
+
+Ved hjelp av Tokens Studio-pluginen kan vi ha både sets og themes. I tillegg til egne brand-sett kan vi også ha andre sett for eksempelvis størrelser. Dette gjør at vi kan tilby avanserte former for gjenbruk. For eksempel: Altinn Studio, kan aktivere Altinn brand og Kompakt-settet. I dette settet kan man overstyre for eksempel avstander, størrelser og fontstørrelser til å være mindre (I et admin-grensesnitt ønsker man eksempelvis kanskje ikke at Heading-xlarge skal være like stor som på en nettside.) Når disse størrelsene eksisterer som et eget sett kan vi gjenbruke dem igjen, f.eks hvis Tilsynet med en annen branding har et admin-grensesnitt, kan de også aktivere settet «Compact», men med et annet branding-sett.
