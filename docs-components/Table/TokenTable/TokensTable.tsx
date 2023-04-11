@@ -44,7 +44,7 @@ const TokensTable = (tokenTable: TokenTableProps) => {
       '$' + tokenTable.componentName + '-',
     );
 
-    const rows: { row: unknown[] }[] = [];
+    const rows: { row: (string | JSX.Element | unknown)[] }[] = [];
 
     console.log(row);
 
@@ -52,7 +52,7 @@ const TokensTable = (tokenTable: TokenTableProps) => {
       console.log(value, key);
       if (tokenTable.showPreview) {
         rows.push({
-          row: [key, value, getPreview(key, value)],
+          row: [key, value, getPreview(key, value as string)],
         });
       } else {
         rows.push({
@@ -63,19 +63,36 @@ const TokensTable = (tokenTable: TokenTableProps) => {
     return rows;
   };
 
-  const getJsonByKey = (path: string, json: any) => {
+  const getJsonByKey = (path: string, json: Record<string, unknown>) => {
     const parts = path.split('.');
-    return parts.reduce((obj, part) => obj[part], json);
+    return parts.reduce<Record<string, unknown>>((acc, part) => {
+      acc[part] = json[part];
+      return acc;
+    }, {});
   };
 
-  const flattenObject = (jsonObject = {}, prefix = '', result = {}) => {
+  type FlattenObject = (
+    jsonObject: Record<string, unknown>,
+    prefix: string,
+    result?: Record<string, unknown>,
+  ) => Record<string, unknown>;
+
+  const flattenObject: FlattenObject = (
+    jsonObject = {},
+    prefix = '',
+    result = {},
+  ) => {
     for (const key in jsonObject) {
       if (typeof jsonObject[key] !== 'object') {
-        if (key !== 'type' && key !== 'description') {
+        if (key !== ('type' || 'description')) {
           result[prefix.slice(0, -1)] = jsonObject[key];
         }
       } else {
-        flattenObject(jsonObject[key], `${prefix}${key}-`, result);
+        flattenObject(
+          jsonObject[key] as Record<string, unknown>,
+          `${prefix}${key}-`,
+          result,
+        );
       }
     }
     return result;

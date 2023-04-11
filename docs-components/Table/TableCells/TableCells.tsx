@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './TableCells.module.css';
 
-const TableCellColor = (props: { color: any }) => {
+const TableCellColor = (props: { color: string }) => {
   const style = {
     backgroundColor: props.color,
   };
@@ -15,15 +15,12 @@ const TableCellColor = (props: { color: any }) => {
   );
 };
 
-const TableCellSpace = (props: { size: any }) => {
+const TableCellSpace = (props: { size: string }) => {
   let theSize = '';
-  if (
-    props.size.toString().includes('px') ||
-    props.size.toString().includes('rem')
-  ) {
-    theSize = props.size;
+  if (props.size.includes('px') || props.size.includes('rem')) {
+    theSize = props.size.toString();
   } else {
-    theSize = props.size * 16 + 'px';
+    theSize = `${parseInt(props.size) * 16}px`;
   }
 
   const style = {
@@ -72,14 +69,7 @@ const TableCellFont = (props: { size: string }) => {
   const style = {
     fontSize: props.size,
   };
-  return (
-    <div
-      style={style}
-      className={classes['table-cell-font']}
-    >
-      The quick brown fox
-    </div>
-  );
+  return <div style={style}>The quick brown fox</div>;
 };
 
 export { TableCellColor, TableCellSpace, TableCellTag, TableCellFont };
