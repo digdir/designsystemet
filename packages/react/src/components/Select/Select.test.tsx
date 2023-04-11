@@ -393,7 +393,7 @@ describe('Select', () => {
       expect(getCombobox()).toHaveValue(newOptions[1].label);
     });
 
-    it('Rerenders with the correct value and keyword when "options" are loaded late', async () => {
+    it('Rerenders with the correct value and keyword when "options" are loaded late', () => {
       const options = singleSelectOptions;
       const value = options[1].value;
       const { rerender } = renderSingleSelect({ options: [], value });
