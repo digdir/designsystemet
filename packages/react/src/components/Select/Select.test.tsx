@@ -884,7 +884,10 @@ describe('Select', () => {
     const expectSelectedValues = (values: string[]) =>
       getOptions().forEach((opt) => {
         const isSelected = values.includes((opt as HTMLButtonElement).value);
-        expect(opt).toHaveAttribute('aria-selected', `${isSelected}`);
+        expect(opt).toHaveAttribute(
+          'aria-selected',
+          `${isSelected.toString()}`,
+        );
       });
   });
 });
