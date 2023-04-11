@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// TODO This will be removed so disabling stuff for now to save work
 import React from 'react';
 
 import classes from './Table.module.css';
