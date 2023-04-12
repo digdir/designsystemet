@@ -1,6 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "compilerOptions": {
+      "module": "ESNext",
+      "target": "ESNext"
+    }
   }
 }
