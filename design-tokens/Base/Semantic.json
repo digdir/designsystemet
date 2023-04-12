@@ -198,7 +198,7 @@
           "type": "color"
         }
       },
-      "inverted": {
+      "on_inverted": {
         "default": {
           "value": "#ffffff",
           "type": "color"
