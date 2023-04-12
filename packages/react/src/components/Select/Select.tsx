@@ -379,7 +379,9 @@ const Select = (props: SelectProps) => {
                 </>
               )}
               <input
-                aria-activedescendant={`${id}-${activeOption}`}
+                {...(activeOption && {
+                  'aria-activedescendant': `${id}-${activeOption}`,
+                })}
                 aria-autocomplete='list'
                 aria-controls={listboxId}
                 aria-expanded={expanded}
