@@ -363,6 +363,12 @@
           "value": "#00315d",
           "type": "color"
         }
+      },
+      "on_inverted": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        }
       }
     },
     "text": {
