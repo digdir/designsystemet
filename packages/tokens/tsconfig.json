@@ -1,10 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "ts-node": {
-    "esm": true,
     "compilerOptions": {
-      "module": "ESNext",
-      "target": "ESNext"
+      "module": "CommonJS"
     }
   }
 }

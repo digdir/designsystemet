@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
-await registerTransforms(StyleDictionary);
+void registerTransforms(StyleDictionary);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
