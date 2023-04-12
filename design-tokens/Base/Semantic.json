@@ -331,12 +331,26 @@
           "value": "{brand.tertiary.800}",
           "type": "color"
         }
+      },
+      "action_dark": {
+        "default": {
+          "value": "#00315d",
+          "type": "color"
+        }
       }
     },
     "text": {
       "success": {
         "default": {
           "value": "{colors.green.800}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#084826",
+          "type": "color"
+        },
+        "active": {
+          "value": "#084826",
           "type": "color"
         },
         "on_success": {
@@ -367,6 +381,14 @@
           "value": "{colors.blue.700}",
           "type": "color"
         },
+        "hover": {
+          "value": "#004e95",
+          "type": "color"
+        },
+        "active": {
+          "value": "#00315d",
+          "type": "color"
+        },
         "on_action": {
           "value": "{colors.white}",
           "type": "color"
@@ -391,6 +413,14 @@
           "value": "{colors.red.600}",
           "type": "color"
         },
+        "hover": {
+          "value": "#861c2c",
+          "type": "color"
+        },
+        "active": {
+          "value": "#5a121d",
+          "type": "color"
+        },
         "on_danger": {
           "value": "{colors.white}",
           "type": "color"
@@ -403,6 +433,12 @@
       "visited": {
         "default": {
           "value": "{colors.purple.700}",
+          "type": "color"
+        }
+      },
+      "action_dark": {
+        "default": {
+          "value": "#00315d",
           "type": "color"
         }
       }
