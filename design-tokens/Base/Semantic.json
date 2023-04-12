@@ -59,11 +59,11 @@
           "value": "{colors.white}",
           "type": "color"
         },
-        "nofill-hover": {
+        "no_fill-hover": {
           "value": "{colors.blue.100}",
           "type": "color"
         },
-        "nofill-active": {
+        "no_fill-active": {
           "value": "{colors.blue.200}",
           "type": "color"
         }
@@ -151,7 +151,7 @@
           "value": "{colors.blue.100}",
           "type": "color"
         },
-        "hover": {
+        "subtle-hover": {
           "value": "{colors.blue.200}",
           "type": "color"
         }
@@ -195,6 +195,32 @@
         },
         "tertiary-active": {
           "value": "{brand.tertiary.500}",
+          "type": "color"
+        }
+      },
+      "inverted": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#ffffffe6",
+          "type": "color"
+        },
+        "active": {
+          "value": "#ffffffcc",
+          "type": "color"
+        },
+        "no_fill": {
+          "value": "#ffffff00",
+          "type": "color"
+        },
+        "no_fill-hover": {
+          "value": "#ffffff1a",
+          "type": "color"
+        },
+        "no_fill-active": {
+          "value": "#ffffff33",
           "type": "color"
         }
       }
