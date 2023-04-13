@@ -30,13 +30,17 @@ export { TextArea } from './TextArea';
 export type { TextAreaProps } from './TextArea';
 export { TextField } from './TextField';
 export type { TextFieldProps, TextFieldFormatting } from './TextField';
-export { Accordion, AccordionContent, AccordionHeader } from './Accordion';
+export {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+} from './LegacyAccordion';
 export type {
   AccordionClickHandler,
   AccordionContentProps,
   AccordionHeaderProps,
   AccordionProps,
-} from './Accordion';
+} from './LegacyAccordion';
 export { List, ListItem } from './List';
 export type { ListProps, ListItemProps, ListBorderStyle } from './List';
 export {
