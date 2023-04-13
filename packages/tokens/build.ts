@@ -2,7 +2,7 @@
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary';
-import { registerTransforms } from '@tokens-studio/sd-transforms';
+import { registerTransforms } from '@tokens-studio/sd-transforms/dist/src';
 
 void registerTransforms(StyleDictionary);
 

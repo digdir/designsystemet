@@ -1,9 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    // @tokens-studio/sd-transforms is in beta so has types problems
-    "strict": false
-  },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
