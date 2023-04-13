@@ -70,7 +70,7 @@ describe('Select', () => {
       expectSelectedOptions((i) => selectedOptionIndex === i);
     });
 
-    it('Is not expanded by default', async () => {
+    it('Is not expanded by default', () => {
       renderSingleSelect();
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
     });
@@ -121,6 +121,14 @@ describe('Select', () => {
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'true');
       await act(() => user.tab());
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('Sets the keyword to the selected value onBlur', async () => {
+      renderSingleSelect();
+      await act(() => user.type(getCombobox(), 'a'));
+      expect(getCombobox()).toHaveValue('a');
+      await act(() => user.tab());
+      expect(getCombobox()).toHaveValue(sortedOptions[0].label);
     });
 
     it('Changes value when user clicks on another option', async () => {
@@ -174,17 +182,17 @@ describe('Select', () => {
       expect(onChange).toHaveBeenCalledWith(singleSelectOptions[1].value);
     });
 
-    it('Is enabled by default', async () => {
+    it('Is enabled by default', () => {
       renderSingleSelect();
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is enabled if "disabled" property is false', async () => {
+    it('Is enabled if "disabled" property is false', () => {
       renderSingleSelect({ disabled: false });
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is disabled when "disabled" property is true', async () => {
+    it('Is disabled when "disabled" property is true', () => {
       renderSingleSelect({ disabled: true });
       expect(screen.getByRole('combobox')).toBeDisabled();
     });
@@ -223,14 +231,14 @@ describe('Select', () => {
       expect(screen.getByRole('combobox')).toHaveFocus();
     });
 
-    it('Hides label, but makes it accessible, if the "hideLabel" property is set', async () => {
+    it('Hides label, but makes it accessible, if the "hideLabel" property is set', () => {
       const label = 'Lorem ipsum';
       renderSingleSelect({ hideLabel: true, label, searchLabel: 'abc' });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
     });
 
-    it('Rerenders with new selected value when the "value" property changes', async () => {
+    it('Rerenders with new selected value when the "value" property changes', () => {
       const selectedValue = singleSelectOptions[0].value;
       const newValueIndex = 2;
       const newValue = singleSelectOptions[newValueIndex].value;
@@ -284,7 +292,7 @@ describe('Select', () => {
     it('Sets keyword to the selected option label when the user starts browsing the list', async () => {
       renderSingleSelect();
       await act(() => user.type(getCombobox(), 'a{ArrowDown}'));
-      expect(getCombobox()).toHaveValue(sortedOptions[0].label);
+      expect(getCombobox()).toHaveValue(sortedOptions[1].label);
     });
 
     it('Does not reset keyword while user is writing', async () => {
@@ -304,6 +312,59 @@ describe('Select', () => {
       renderSingleSelect();
       await user.type(getCombobox(), 'abc{Enter}');
       expect(getCombobox()).toHaveValue(sortedOptions[0].label);
+    });
+
+    it('Calls onFocus handler with the selected value only when the search field is focused', async () => {
+      const onFocus = jest.fn();
+      const value = singleSelectOptions[0].value;
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultSingleSelectProps}
+            {...{ onFocus, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onFocus).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onFocus).toHaveBeenCalledWith(value);
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onFocus).toHaveBeenCalledTimes(1);
+    });
+
+    it('Calls onBlur handler with the selected value when focus switches to another element', async () => {
+      const onBlur = jest.fn();
+      const value = singleSelectOptions[0].value;
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultSingleSelectProps}
+            {...{ onBlur, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
+    it('Calls onBlur handler with the selected value when user clicks outside of the component', async () => {
+      const onBlur = jest.fn();
+      const value = singleSelectOptions[0].value;
+      renderSingleSelect({ onBlur, value });
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(document.body);
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
     });
 
     const expectSelectedValue = (option: SingleSelectOption) =>
@@ -329,6 +390,22 @@ describe('Select', () => {
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.click(screen.getAllByRole('option')[1]));
       expectSelectedValue(newOptions[1]);
+      expect(getCombobox()).toHaveValue(newOptions[1].label);
+    });
+
+    it('Rerenders with the correct value and keyword when "options" are loaded late', () => {
+      const options = singleSelectOptions;
+      const value = options[1].value;
+      const { rerender } = renderSingleSelect({ options: [], value });
+      rerender(
+        <Select
+          {...defaultSingleSelectProps}
+          options={options}
+          value={value}
+        />,
+      );
+      expectSelectedValue(options[1]);
+      expect(getCombobox()).toHaveValue(options[1].label);
     });
   });
 
@@ -343,7 +420,7 @@ describe('Select', () => {
       expect(getOptions()).toHaveLength(multiSelectOptions.length);
     });
 
-    it('Is not expanded by default', async () => {
+    it('Is not expanded by default', () => {
       renderMultiSelect();
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
     });
@@ -507,7 +584,7 @@ describe('Select', () => {
       ]);
     });
 
-    it('Displays delete button with given name', async () => {
+    it('Displays delete button with given name', () => {
       const deleteButtonLabel = 'Delete all';
       renderMultiSelect({ deleteButtonLabel });
       expect(screen.getByLabelText(deleteButtonLabel)).toBeTruthy();
@@ -561,22 +638,22 @@ describe('Select', () => {
       ]);
     });
 
-    it('Is enabled by default', async () => {
+    it('Is enabled by default', () => {
       renderMultiSelect();
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is enabled if "disabled" property is false', async () => {
+    it('Is enabled if "disabled" property is false', () => {
       renderMultiSelect({ disabled: false });
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is disabled when "disabled" property is true', async () => {
+    it('Is disabled when "disabled" property is true', () => {
       renderMultiSelect({ disabled: true });
       expect(screen.getByRole('combobox')).toBeDisabled();
     });
 
-    it('Disables common delete button if something is selected, but the "disabled" property is true', async () => {
+    it('Disables common delete button if something is selected, but the "disabled" property is true', () => {
       const deleteButtonLabel = 'Delete all';
       renderMultiSelect({
         deleteButtonLabel,
@@ -586,14 +663,14 @@ describe('Select', () => {
       expect(screen.getByLabelText(deleteButtonLabel)).toBeDisabled();
     });
 
-    it('Enables individual delete buttons by default', async () => {
+    it('Enables individual delete buttons by default', () => {
       const selectedOption = multiSelectOptions[0];
       renderMultiSelect({ value: [selectedOption.value] });
       const { deleteButtonLabel } = selectedOption;
       expect(screen.getByLabelText(deleteButtonLabel)).toBeEnabled();
     });
 
-    it('Disables individual delete buttons when the "disabled" property is true', async () => {
+    it('Disables individual delete buttons when the "disabled" property is true', () => {
       const selectedOption = multiSelectOptions[0];
       renderMultiSelect({ disabled: true, value: [selectedOption.value] });
       const { deleteButtonLabel } = selectedOption;
@@ -634,14 +711,14 @@ describe('Select', () => {
       expect(screen.getByRole('combobox')).toHaveFocus();
     });
 
-    it('Hides label, but makes it accessible, if the "hideLabel" property is set', async () => {
+    it('Hides label, but makes it accessible, if the "hideLabel" property is set', () => {
       const label = 'Lorem ipsum';
       renderMultiSelect({ hideLabel: true, label, searchLabel: 'abc' });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
     });
 
-    it('Rerenders with new selected values when the "value" property changes', async () => {
+    it('Rerenders with new selected values when the "value" property changes', () => {
       const selectedValues = [multiSelectOptions[0].value];
       const newValueIndices = [1, 2];
       const newValues = newValueIndices.map((i) => multiSelectOptions[i].value);
@@ -731,6 +808,73 @@ describe('Select', () => {
       expectSelectedValues([newOptions[1].value]);
     });
 
+    it('Calls onFocus handler with the selected values only when the search field is focused', async () => {
+      const onFocus = jest.fn();
+      const value = [multiSelectOptions[0].value];
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultMultiSelectProps}
+            {...{ onFocus, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onFocus).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onFocus).toHaveBeenCalledWith(value);
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onFocus).toHaveBeenCalledTimes(1);
+    });
+
+    it('Calls onBlur handler with the selected values when focus switches to another element', async () => {
+      const onBlur = jest.fn();
+      const value = [singleSelectOptions[0].value];
+      const outsideButtonTestid = 'outside-button';
+      render(
+        <>
+          <Select
+            {...defaultMultiSelectProps}
+            {...{ onBlur, value }}
+          />
+          <button data-testid={outsideButtonTestid}>Test</button>
+        </>,
+      );
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(screen.getByTestId(outsideButtonTestid));
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
+    it('Calls onBlur handler with the selected values when user clicks outside of the component', async () => {
+      const onBlur = jest.fn();
+      const value = [multiSelectOptions[0].value];
+      renderMultiSelect({ onBlur, value });
+      await user.click(getCombobox());
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(document.body);
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(value);
+    });
+
+    it('Does not call onFocus nor onBlur when focus switches between subcomponents', async () => {
+      const onBlur = jest.fn();
+      const onFocus = jest.fn();
+      const selectedOption = multiSelectOptions[0];
+      const value = [selectedOption.value];
+      renderMultiSelect({ onBlur, onFocus, value });
+      await user.click(getCombobox());
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
+      await user.click(screen.getByLabelText(selectedOption.deleteButtonLabel));
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
+    });
+
     const getFocusedOption = (container: HTMLElement) =>
       container.querySelector('[class*="focused"]');
 
@@ -740,7 +884,10 @@ describe('Select', () => {
     const expectSelectedValues = (values: string[]) =>
       getOptions().forEach((opt) => {
         const isSelected = values.includes((opt as HTMLButtonElement).value);
-        expect(opt).toHaveAttribute('aria-selected', `${isSelected}`);
+        expect(opt).toHaveAttribute(
+          'aria-selected',
+          `${isSelected.toString()}`,
+        );
       });
   });
 });

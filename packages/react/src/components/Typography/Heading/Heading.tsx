@@ -19,7 +19,7 @@ const Heading = ({
   margin = false,
 }: HeadingProps) => {
   const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return React.createElement('h' + level, props, children);
+    return React.createElement(`h${level}`, props, children);
   };
   const HeadingStyle = {
     color,
@@ -30,7 +30,7 @@ const Heading = ({
       className={cn(
         [classes['heading']],
         { [classes['heading--margin']]: margin },
-        classes['heading--' + size],
+        classes[`heading--${size}`],
       )}
     >
       {children}

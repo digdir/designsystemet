@@ -5,7 +5,7 @@ import directoryTree from 'directory-tree';
 /**
  * Create menu tree based on current route
  */
-const getServerSideProps = async (context: { resolvedUrl: string }) => {
+const getServerSideProps = (context: { resolvedUrl: string }) => {
   const { resolvedUrl } = context;
   const urlArray = resolvedUrl.split('/');
   const parentPageTitle = urlArray[1];

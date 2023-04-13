@@ -29,6 +29,8 @@ export const TableContext = createContext<TableContextType>(
 );
 
 export function useTableContext<T>() {
+  // TODO Find a way to fix this
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const context = useContext<TableContextType<T>>(TableContext);
   if (context === undefined) {
     throw new Error('useTableContext must be used within a TableContext');

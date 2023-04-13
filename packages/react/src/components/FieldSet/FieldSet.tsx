@@ -41,7 +41,9 @@ const FieldSet = ({
             {helpText && (
               <HelpText
                 size={size}
-                title={`Help text for ${legend}`}
+                title={
+                  typeof legend === 'string' ? `Help text for ${legend}` : ''
+                }
               >
                 {helpText}
               </HelpText>

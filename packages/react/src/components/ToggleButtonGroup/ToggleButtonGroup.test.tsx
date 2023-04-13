@@ -34,14 +34,14 @@ describe('ToggleButtonGroup', () => {
     expectPressed(0);
   });
 
-  it('Selects the value provided by the "selectedValue" property', async () => {
+  it('Selects the value provided by the "selectedValue" property', () => {
     const index = 1;
     const selectedValue = items[index].value;
     render({ selectedValue });
     expectPressed(index);
   });
 
-  it('Selects the value provided by the "selectedValue" property when rerendered', async () => {
+  it('Selects the value provided by the "selectedValue" property when rerendered', () => {
     const { rerender } = render();
     const index = 1;
     const value = items[index].value;

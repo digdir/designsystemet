@@ -3,6 +3,6 @@ export type {
   SelectProps,
   SingleSelectOption,
   MultiSelectOption,
-  SingleOnChangeEvent,
-  MultipleOnChangeEvent,
+  SingleSelectEvent,
+  MultiSelectEvent,
 } from './Select';

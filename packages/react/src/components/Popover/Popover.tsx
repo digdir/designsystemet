@@ -161,20 +161,23 @@ const PopoverTrigger = forwardRef<
   React.HTMLProps<HTMLElement> & PopoverTriggerProps
 >(function PopoverTrigger({ children, ...props }, propRef) {
   const context = usePopoverContext();
-  const childrenRef = (children as any).ref;
-  const ref = useMergeRefs([context.reference, propRef, childrenRef]);
 
-  if (isValidElement(children)) {
-    return cloneElement(
-      children,
-      context.getReferenceProps({
-        ref,
-        ...props,
-        ...children.props,
-        'data-state': context.open ? 'open' : 'closed',
-        'aria-expanded': context.open,
-      }),
-    );
+  const child = isValidElement(children)
+    ? (children as React.ReactElement & React.RefAttributes<HTMLElement>)
+    : null;
+  const ref = useMergeRefs([context.reference, propRef]);
+
+  if (child) {
+    const childProps = {
+      ref,
+      ...props,
+      ...(child.props as Record<string, unknown>),
+      ...context.getReferenceProps(),
+      'data-state': context.open ? 'open' : 'closed',
+      'aria-expanded': context.open,
+    };
+
+    return cloneElement(child, childProps);
   }
 
   return null;

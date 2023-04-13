@@ -19,6 +19,7 @@ describe('TextArea', () => {
     expect(onPaste).toHaveBeenCalledTimes(1);
     expect(onPaste).toHaveBeenCalledWith(
       expect.objectContaining({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         clipboardData: expect.objectContaining({
           items: [expect.objectContaining({ data })],
         }),

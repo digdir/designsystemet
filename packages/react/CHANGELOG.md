@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.0...@digdir/design-system-react@0.11.1) (2023-04-11)
+
+### Bug Fixes
+
+- **Select:** Make onBlur work when there is no active element ([#281](https://github.com/digdir/designsystem/issues/281)) ([cd1f43c](https://github.com/digdir/designsystem/commit/cd1f43ccc78b77baf11a4f01221572ffd13470fe))
+- **Select:** Update selected on option change ([#286](https://github.com/digdir/designsystem/issues/286)) ([623d306](https://github.com/digdir/designsystem/commit/623d3067025f2da9359479d77f0dfcc29d4ac9d6))
+
+# [0.11.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.10.2...@digdir/design-system-react@0.11.0) (2023-03-30)
+
+### Features
+
+- **Select:** Add onFocus and onBlur events ([#278](https://github.com/digdir/designsystem/issues/278)) ([7fc362c](https://github.com/digdir/designsystem/commit/7fc362c735f8f31f0b49ba65c8a98d90133db3cc))
+
 ## [0.10.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.10.1...@digdir/design-system-react@0.10.2) (2023-03-30)
 
 ### Bug Fixes
