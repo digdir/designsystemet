@@ -20,7 +20,7 @@ import { useState } from 'react';
   component={LegacyAccordion}
   parameters={{
     status: {
-      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      type: 'deprecated', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
       url: 'http://www.url.com/status',
     },
   }}
@@ -101,8 +101,6 @@ export const Template = (args) => {
 };
 
 # LegacyAccordion
-
-<BetaBlock />
 
 "LegacyAccordion" har sitt navn fordi den kan minne om et trekkspill.
 Komponenten lar brukeren bestemme hva som skal være synlig av innhold og fungerer best som en del av en liste med flere.

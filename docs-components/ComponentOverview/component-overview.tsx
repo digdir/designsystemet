@@ -12,7 +12,7 @@ const ComponentOverview = () => {
   const items: BoxProps[] = [
     {
       name: 'LegacyAccordion',
-      img: 'LegacyAccordion.png',
+      img: 'accordion.png',
       url: 'LegacyAccordion',
     },
     {
