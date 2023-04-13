@@ -16,3 +16,14 @@
   margin-top: 32px;
   margin-bottom: 32px;
 }
+
+.content > ul > li {
+  font-size: 18px;
+  line-height: 1.7em;
+}
+
+.content > iframe {
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.2);
+  border-radius: 4px;
+  margin: 24px 0;
+}
