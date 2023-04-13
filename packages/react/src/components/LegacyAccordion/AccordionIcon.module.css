@@ -1,4 +1,4 @@
-.accordionIcon {
+.LegacyAccordionIcon {
   --size: 20px;
 
   box-sizing: border-box;
@@ -11,6 +11,6 @@
   width: var(--size);
 }
 
-.accordionIcon.opened {
+.LegacyAccordionIcon.opened {
   transform: rotate(90deg);
 }

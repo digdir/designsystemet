@@ -1,30 +1,30 @@
 import React from 'react';
 import cn from 'classnames';
 
-import classes from './AccordionHeader.module.css';
-import { useAccordionContext } from './Context';
-import { AccordionIcon } from './AccordionIcon';
+import classes from './LegacyAccordionHeader.module.css';
+import { useLegacyAccordionContext } from './Context';
+import { LegacyAccordionIcon } from './LegacyAccordionIcon';
 
-export interface AccordionHeaderProps {
+export interface LegacyAccordionHeaderProps {
   children?: React.ReactNode;
   actions?: React.ReactNode;
   subtitle?: string;
 }
 
-const AccordionHeader = ({
+const LegacyAccordionHeader = ({
   children,
   actions,
   subtitle,
-}: AccordionHeaderProps) => {
-  const { onClick, open, headerId, contentId } = useAccordionContext();
+}: LegacyAccordionHeaderProps) => {
+  const { onClick, open, headerId, contentId } = useLegacyAccordionContext();
 
   return (
     <div
-      className={cn(classes.accordionHeader, {
+      className={cn(classes.LegacyAccordionHeader, {
         [classes.withSubtitle]: subtitle,
       })}
     >
-      <AccordionIcon />
+      <LegacyAccordionIcon />
       <button
         className={classes.title}
         aria-expanded={open}
@@ -36,7 +36,7 @@ const AccordionHeader = ({
         {children}
         {subtitle?.length && (
           <span
-            data-testid='accordion-header-subtitle'
+            data-testid='LegacyAccordion-header-subtitle'
             className={classes.subtitle}
           >
             {subtitle}
@@ -48,6 +48,6 @@ const AccordionHeader = ({
   );
 };
 
-AccordionHeader.displayName = 'AccordionHeader';
+LegacyAccordionHeader.displayName = 'LegacyAccordionHeader';
 
-export { AccordionHeader };
+export { LegacyAccordionHeader };

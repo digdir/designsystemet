@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useAccordionContext } from './Context';
+import { useLegacyAccordionContext } from './Context';
 
-export interface AccordionContentProps {
+export interface LegacyAccordionContentProps {
   children?: React.ReactNode;
 }
 
-const AccordionContent = ({ children }: AccordionContentProps) => {
-  const { open, contentId, headerId } = useAccordionContext();
+const LegacyAccordionContent = ({ children }: LegacyAccordionContentProps) => {
+  const { open, contentId, headerId } = useLegacyAccordionContext();
 
   return (
     <div>
@@ -24,6 +24,6 @@ const AccordionContent = ({ children }: AccordionContentProps) => {
   );
 };
 
-AccordionContent.displayName = 'AccordionContent';
+LegacyAccordionContent.displayName = 'LegacyAccordionContent';
 
-export { AccordionContent };
+export { LegacyAccordionContent };

@@ -1,14 +1,14 @@
-.accordionHeader {
-  --component-accordion_header-border_top_color: var(--colors-grey-200);
-  --component-accordion_header-border_top_style: solid;
-  --component-accordion_header-border_top_width: var(--border_width-thin);
-  --component-accordion_header-color-background: var(--colors-white);
+.LegacyAccordionHeader {
+  --component-LegacyAccordion_header-border_top_color: var(--colors-grey-200);
+  --component-LegacyAccordion_header-border_top_style: solid;
+  --component-LegacyAccordion_header-border_top_width: var(--border_width-thin);
+  --component-LegacyAccordion_header-color-background: var(--colors-white);
 
   align-items: center;
-  background-color: var(--component-accordion_header-color-background);
-  border-top-color: var(--component-accordion_header-border_top_color);
-  border-top-style: var(--component-accordion_header-border_top_style);
-  border-top-width: var(--component-accordion_header-border_top_width);
+  background-color: var(--component-LegacyAccordion_header-color-background);
+  border-top-color: var(--component-LegacyAccordion_header-border_top_color);
+  border-top-style: var(--component-LegacyAccordion_header-border_top_style);
+  border-top-width: var(--component-LegacyAccordion_header-border_top_width);
   display: flex;
 }
 
@@ -21,7 +21,7 @@
 
 /* breakpoints-sm */
 @media only screen and (min-width: 540px) {
-  .accordionHeader.withSubtitle {
+  .LegacyAccordionHeader.withSubtitle {
     padding-bottom: 0.2rem;
     padding-right: 0.2rem;
     padding-top: 0.2rem;
@@ -35,35 +35,43 @@
 }
 
 .title {
-  --component-accordion_header_title-border_bottom_style: none;
-  --component-accordion_header_title-border_left_style: none;
-  --component-accordion_header_title-border_right_style: none;
-  --component-accordion_header_title-border_top_style: none;
-  --component-accordion_header_title-color-background: none;
-  --component-accordion_header_title-font_size: var(--font_size-300);
-  --component-accordion_header_title-font_weight: var(
+  --component-LegacyAccordion_header_title-border_bottom_style: none;
+  --component-LegacyAccordion_header_title-border_left_style: none;
+  --component-LegacyAccordion_header_title-border_right_style: none;
+  --component-LegacyAccordion_header_title-border_top_style: none;
+  --component-LegacyAccordion_header_title-color-background: none;
+  --component-LegacyAccordion_header_title-font_size: var(--font_size-300);
+  --component-LegacyAccordion_header_title-font_weight: var(
     --component-panel-font_weight-heading
   );
-  --component-accordion_header_title-spacing-margin_left: 1.6rem;
+  --component-LegacyAccordion_header_title-spacing-margin_left: 1.6rem;
 
-  background-color: var(--component-accordion_header_title-color-background);
+  background-color: var(
+    --component-LegacyAccordion_header_title-color-background
+  );
   border-bottom-style: var(
-    --component-accordion_header_title-border_bottom_style
+    --component-LegacyAccordion_header_title-border_bottom_style
   );
-  border-left-style: var(--component-accordion_header_title-border_left_style);
+  border-left-style: var(
+    --component-LegacyAccordion_header_title-border_left_style
+  );
   border-right-style: var(
-    --component-accordion_header_title-border_right_style
+    --component-LegacyAccordion_header_title-border_right_style
   );
-  border-top-style: var(--component-accordion_header_title-border_top_style);
+  border-top-style: var(
+    --component-LegacyAccordion_header_title-border_top_style
+  );
   cursor: pointer;
   display: inline-flex;
   flex: 1 1 auto;
   flex-direction: column;
   font-family: inherit;
-  font-size: var(--component-accordion_header_title-font_size);
-  font-weight: var(--component-accordion_header_title-font_weight);
+  font-size: var(--component-LegacyAccordion_header_title-font_size);
+  font-weight: var(--component-LegacyAccordion_header_title-font_weight);
   line-height: 16px;
-  margin-left: var(--component-accordion_header_title-spacing-margin_left);
+  margin-left: var(
+    --component-LegacyAccordion_header_title-spacing-margin_left
+  );
   text-align: left;
   word-break: break-word;
 }

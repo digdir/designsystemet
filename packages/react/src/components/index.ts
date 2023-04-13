@@ -31,16 +31,16 @@ export type { TextAreaProps } from './TextArea';
 export { TextField } from './TextField';
 export type { TextFieldProps, TextFieldFormatting } from './TextField';
 export {
-  Accordion,
-  AccordionContent,
-  AccordionHeader,
-} from './LegacyAccordion';
+  LegacyAccordion,
+  LegacyAccordionContent,
+  LegacyAccordionHeader,
+} from './LegacyLegacyAccordion';
 export type {
-  AccordionClickHandler,
-  AccordionContentProps,
-  AccordionHeaderProps,
-  AccordionProps,
-} from './LegacyAccordion';
+  LegacyAccordionClickHandler,
+  LegacyAccordionContentProps,
+  LegacyAccordionHeaderProps,
+  LegacyAccordionProps,
+} from './LegacyLegacyAccordion';
 export { List, ListItem } from './List';
 export type { ListProps, ListItemProps, ListBorderStyle } from './List';
 export {

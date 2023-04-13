@@ -1,32 +1,32 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { Accordion } from './Accordion';
-import { AccordionContent } from './AccordionContent';
-import type { AccordionHeaderProps } from './AccordionHeader';
-import { AccordionHeader } from './AccordionHeader';
+import { LegacyAccordion } from './LegacyAccordion';
+import { LegacyAccordionContent } from './LegacyAccordionContent';
+import type { LegacyAccordionHeaderProps } from './LegacyAccordionHeader';
+import { LegacyAccordionHeader } from './LegacyAccordionHeader';
 
 // Test data:
-const header = 'AccordionHeader';
-const defaultProps: AccordionHeaderProps = {
+const header = 'LegacyAccordionHeader';
+const defaultProps: LegacyAccordionHeaderProps = {
   children: header,
 };
 
-const renderWithContext = (props: Partial<AccordionHeaderProps> = {}) =>
+const renderWithContext = (props: Partial<LegacyAccordionHeaderProps> = {}) =>
   render(
-    <Accordion
+    <LegacyAccordion
       onClick={jest.fn()}
       open={false}
     >
-      <AccordionHeader
+      <LegacyAccordionHeader
         {...defaultProps}
         {...props}
       />
-      <AccordionContent>AccordionContent</AccordionContent>
-    </Accordion>,
+      <LegacyAccordionContent>LegacyAccordionContent</LegacyAccordionContent>
+    </LegacyAccordion>,
   );
 
-describe('AccordionHeader', () => {
+describe('LegacyAccordionHeader', () => {
   it('Shows subtitle when "subtitle" prop is set', () => {
     const subtitle = 'Subtitle is here';
     renderWithContext({ subtitle });
@@ -36,7 +36,7 @@ describe('AccordionHeader', () => {
   it('Does not show subtitle when "subtitle" prop is not set', () => {
     renderWithContext({ subtitle: undefined });
     expect(
-      screen.queryByTestId('accordion-header-subtitle'),
+      screen.queryByTestId('LegacyAccordion-header-subtitle'),
     ).not.toBeInTheDocument();
   });
 });

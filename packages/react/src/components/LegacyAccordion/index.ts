@@ -1,7 +1,7 @@
-export type { AccordionClickHandler } from './Context';
-export type { AccordionContentProps } from './AccordionContent';
-export type { AccordionHeaderProps } from './AccordionHeader';
-export type { AccordionProps } from './Accordion';
-export { Accordion } from './Accordion';
-export { AccordionContent } from './AccordionContent';
-export { AccordionHeader } from './AccordionHeader';
+export type { LegacyAccordionClickHandler } from './Context';
+export type { LegacyAccordionContentProps } from './LegacyAccordionContent';
+export type { LegacyAccordionHeaderProps } from './LegacyAccordionHeader';
+export type { LegacyAccordionProps } from './LegacyAccordion';
+export { LegacyAccordion } from './LegacyAccordion';
+export { LegacyAccordionContent } from './LegacyAccordionContent';
+export { LegacyAccordionHeader } from './LegacyAccordionHeader';
