@@ -1,6 +1,5 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
-export { getServerSideProps } from '../../../utils/menus/PageMenu';
 import { Figma } from 'mdx-embed';
 
 <Meta
@@ -11,7 +10,6 @@ import { Figma } from 'mdx-embed';
 export default ({ children, menu }) => (
   <PageLayout
     content={children}
-    menu={menu}
     data={{
       title: 'Design Tokens',
       date: '25. mars 2023',
