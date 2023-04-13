@@ -1,101 +1,96 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 
-import {
-  capitalizeString,
-  convertQueryToReadable,
-  removeStringExtension,
-  convertMenuItemToRelativePath,
-  replaceBackSlashWithForwardSlash,
-} from '../../utils/StringHelpers';
-import type {
-  PageMenuDataType,
-  PageMenuItemType,
-} from '../../utils/menus/PageMenu';
+import { SiteConfig } from '../../siteConfig';
+import type { PageMenuItemType } from '../../utils/menus/PageMenu';
 
 import classes from './SidebarMenu.module.css';
 
 interface SidebarMenuProps {
-  title: string;
-  menu: PageMenuDataType;
-  activeRouterPath: string;
+  routerPath: string;
 }
 
-/** Convert name given from MenuTree to a readable name */
-const getListItemName = (name: string) => {
-  return convertQueryToReadable(capitalizeString(removeStringExtension(name)));
-};
-/** Convert path given from MenuTree to relative path with no file extension */
-const getListItemPath = (path: string) => {
-  return convertMenuItemToRelativePath(
-    removeStringExtension(replaceBackSlashWithForwardSlash(path)),
-  );
-};
 /** Check if item path in menu is equal to the activeRouterPath */
 const isItemActive = (path: string, activeRouterPath: string) => {
-  return getListItemPath(path) === activeRouterPath;
+  return '/' + path === activeRouterPath;
 };
 
-const SidebarMenu = ({ title, menu, activeRouterPath }: SidebarMenuProps) => {
+const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
+
+  useEffect(() => {
+    findAndSetActiveIndex(routerPath);
+  }, [routerPath]);
+
+  /** Find at what index in the menu tree to start displaying menu */
+  const findAndSetActiveIndex = (path: string) => {
+    for (let i = 0; i < SiteConfig.menu.length; i++) {
+      if (SiteConfig.menu[i].url === path.split('/')[1]) {
+        setActiveIndex(i);
+      }
+    }
+  };
+
   return (
     <div>
-      <h3 className={classes.title}>
-        {convertQueryToReadable(capitalizeString(title))}
-      </h3>
-
-      {menu.children && (
-        <ul className={classes.list}>
-          {menu.children.map((item: PageMenuItemType, index) => (
-            <li
-              key={index}
-              className={cn(classes['list-group'], {
-                [classes['list-group-compact']]: !item.children,
-              })}
-            >
-              {item.children && (
-                <>
-                  <div className={classes['inner-title']}>
-                    {convertQueryToReadable(capitalizeString(item.name))}
-                  </div>
-                  <ul className={classes['inner-list']}>
-                    {item.children.map((item2: PageMenuItemType, index2) => (
-                      <li
-                        key={index2}
-                        className={classes['list-item']}
-                      >
-                        <Link
-                          href={getListItemPath(item2.path)}
-                          className={cn(classes.link, {
-                            [classes['link-active']]: isItemActive(
-                              item2.path,
-                              activeRouterPath,
-                            ),
-                          })}
-                        >
-                          {getListItemName(item2.name)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-              {!item.children && (
-                <Link
-                  href={getListItemPath(item.path)}
-                  className={cn(classes.link, classes['link-compact'], {
-                    [classes['link-active']]: isItemActive(
-                      item.path,
-                      activeRouterPath,
-                    ),
+      {activeIndex >= 0 && (
+        <>
+          <h3 className={classes.title}>{SiteConfig.menu[activeIndex].name}</h3>
+          <ul className={classes.list}>
+            {SiteConfig.menu[activeIndex].children.map(
+              (item: PageMenuItemType, index) => (
+                <li
+                  key={index}
+                  className={cn(classes['list-group'], {
+                    [classes['list-group-compact']]: !item.children,
                   })}
                 >
-                  {getListItemName(item.name)}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
+                  {item.children && (
+                    <>
+                      <div className={classes['inner-title']}>{item.name}</div>
+                      <ul className={classes['inner-list']}>
+                        {item.children.map(
+                          (item2: PageMenuItemType, index2) => (
+                            <li
+                              key={index2}
+                              className={classes['list-item']}
+                            >
+                              <Link
+                                href={'/' + item2.url}
+                                className={cn(classes.link, {
+                                  [classes['link-active']]: isItemActive(
+                                    item2.url,
+                                    routerPath,
+                                  ),
+                                })}
+                              >
+                                {item2.name}
+                              </Link>
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    </>
+                  )}
+                  {!item.children && (
+                    <Link
+                      href={'/' + item.url}
+                      className={cn(classes.link, classes['link-compact'], {
+                        [classes['link-active']]: isItemActive(
+                          item.url,
+                          routerPath,
+                        ),
+                      })}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
+              ),
+            )}
+          </ul>
+        </>
       )}
     </div>
   );

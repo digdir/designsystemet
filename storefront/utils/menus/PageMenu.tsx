@@ -2,6 +2,8 @@ import path from 'path';
 
 import directoryTree from 'directory-tree';
 
+import { SiteConfig } from '../../siteConfig';
+
 /**
  * Create menu tree based on current route
  */
@@ -15,12 +17,16 @@ const getServerSideProps = (context: { resolvedUrl: string }) => {
     exclude: /index.mdx|_app.tsx/,
   });
 
+  let menu = {
+    title: parentPageTitle,
+    children: menuTree.children,
+  };
+
+  menu = sortMenu(menu);
+
   return {
     props: {
-      menu: {
-        title: parentPageTitle,
-        children: menuTree.children,
-      },
+      menu,
     },
   };
 };
@@ -32,8 +38,14 @@ type PageMenuDataType = {
 
 type PageMenuItemType = {
   name: string;
-  path: string;
-  children: PageMenuItemType[];
+  url: string;
+  children?: PageMenuItemType[];
+};
+
+const sortMenu = (menu: any) => {
+  console.log(menu.title);
+  menu.children.forEach((item) => {});
+  return menu;
 };
 
 export type { PageMenuDataType, PageMenuItemType };

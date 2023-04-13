@@ -32,11 +32,7 @@ const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
     <div>
       <Container className={classes.page}>
         <div className={classes.left}>
-          <SidebarMenu
-            title={capitalizeString(convertQueryToReadable(menu.title))}
-            menu={menu}
-            activeRouterPath={router.pathname}
-          />
+          <SidebarMenu routerPath={router.pathname} />
         </div>
         <div className={classes.right}>
           <div className={classes.header}>

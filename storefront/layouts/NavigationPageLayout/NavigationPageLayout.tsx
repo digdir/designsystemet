@@ -39,11 +39,7 @@ const NavigationPageLayout = ({
     <div>
       <Container className={classes.page}>
         <div className={classes.left}>
-          <SidebarMenu
-            title={menu.title}
-            menu={menu}
-            activeRouterPath={router.pathname}
-          />
+          <SidebarMenu routerPath={router.pathname} />
         </div>
         <div className={classes.right}>
           <div className={classes.content}>{content}</div>

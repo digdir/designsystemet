@@ -40,6 +40,13 @@
   padding-left: 16px;
   display: block;
   font-size: 16px;
+  border-left: 3px solid transparent;
+  margin-left: -2px;
+}
+
+.link:hover {
+  border-left-color: rgb(196, 196, 196);
+  font-weight: 500;
 }
 
 .link-compact {
@@ -48,13 +55,11 @@
 }
 
 .link-active {
-  font-weight: 500;
-  border-left: 3px solid var(--color-link);
+  border-left-color: var(--color-link);
   color: var(--color-link);
-  padding-left: 14px;
-  margin-left: -1px;
+  font-weight: 500;
 }
 
-.link:hover {
-  color: var(--color-link);
+.link-active:hover {
+  border-left-color: var(--color-link);
 }
