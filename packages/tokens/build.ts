@@ -85,6 +85,7 @@ const getStyleDictionaryConfig = (
           'pxToRem',
           'ts/resolveMath',
           'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
         ],
         transformGroup: 'js',
         files: [
@@ -114,6 +115,7 @@ const getStyleDictionaryConfig = (
           'pxToRem',
           'ts/resolveMath',
           'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
         ],
         files: [
           {
