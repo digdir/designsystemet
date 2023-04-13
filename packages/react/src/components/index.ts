@@ -34,13 +34,13 @@ export {
   LegacyAccordion,
   LegacyAccordionContent,
   LegacyAccordionHeader,
-} from './LegacyLegacyAccordion';
+} from './LegacyAccordion';
 export type {
   LegacyAccordionClickHandler,
   LegacyAccordionContentProps,
   LegacyAccordionHeaderProps,
   LegacyAccordionProps,
-} from './LegacyLegacyAccordion';
+} from './LegacyAccordion';
 export { List, ListItem } from './List';
 export type { ListProps, ListItemProps, ListBorderStyle } from './List';
 export {

@@ -5,7 +5,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import type { LegacyAccordionProps } from './LegacyAccordion';
 import { LegacyAccordion } from './LegacyAccordion';
 import { LegacyAccordionContent } from './LegacyAccordionContent';
-import { LegacyAccordionIcons } from './Context';
+import { accordionIcons } from './Context';
 import { LegacyAccordionHeader } from './LegacyAccordionHeader';
 
 // Test data:
@@ -76,13 +76,11 @@ describe('LegacyAccordion', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it.each(LegacyAccordionIcons)(
+  it.each(accordionIcons)(
     `Has correct icon when icon variant is set to %s`,
     (iconVariant) => {
       render({ iconVariant });
-      const otherVariants = LegacyAccordionIcons.filter(
-        (v) => v !== iconVariant,
-      );
+      const otherVariants = accordionIcons.filter((v) => v !== iconVariant);
       expect(screen.getByTestId(iconVariant)).toBeInTheDocument();
       otherVariants.forEach((v) => {
         expect(screen.queryByTestId(v)).not.toBeInTheDocument();

@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import classes from './LegacyAccordionHeader.module.css';
-import { useLegacyAccordionContext } from './Context';
+import { useAccordionContext } from './Context';
 import { LegacyAccordionIcon } from './LegacyAccordionIcon';
 
 export interface LegacyAccordionHeaderProps {
@@ -16,11 +16,11 @@ const LegacyAccordionHeader = ({
   actions,
   subtitle,
 }: LegacyAccordionHeaderProps) => {
-  const { onClick, open, headerId, contentId } = useLegacyAccordionContext();
+  const { onClick, open, headerId, contentId } = useAccordionContext();
 
   return (
     <div
-      className={cn(classes.LegacyAccordionHeader, {
+      className={cn(classes.legacyAccordionHeader, {
         [classes.withSubtitle]: subtitle,
       })}
     >

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useLegacyAccordionContext } from './Context';
+import { useAccordionContext } from './Context';
 
 export interface LegacyAccordionContentProps {
   children?: React.ReactNode;
 }
 
 const LegacyAccordionContent = ({ children }: LegacyAccordionContentProps) => {
-  const { open, contentId, headerId } = useLegacyAccordionContext();
+  const { open, contentId, headerId } = useAccordionContext();
 
   return (
     <div>

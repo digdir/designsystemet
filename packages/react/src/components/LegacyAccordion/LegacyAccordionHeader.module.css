@@ -1,4 +1,4 @@
-.LegacyAccordionHeader {
+.legacyAccordionHeader {
   --component-LegacyAccordion_header-border_top_color: var(--colors-grey-200);
   --component-LegacyAccordion_header-border_top_style: solid;
   --component-LegacyAccordion_header-border_top_width: var(--border_width-thin);
@@ -21,7 +21,7 @@
 
 /* breakpoints-sm */
 @media only screen and (min-width: 540px) {
-  .LegacyAccordionHeader.withSubtitle {
+  .legacyAccordionHeader.withSubtitle {
     padding-bottom: 0.2rem;
     padding-right: 0.2rem;
     padding-top: 0.2rem;

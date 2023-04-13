@@ -1,17 +1,14 @@
 import React, { useId } from 'react';
 
-import type {
-  LegacyAccordionClickHandler,
-  LegacyAccordionIcons,
-} from './Context';
-import { LegacyAccordionContext } from './Context';
+import type { LegacyAccordionClickHandler, AccordionIcons } from './Context';
+import { AccordionContext } from './Context';
 import classes from './LegacyAccordion.module.css';
 
 export interface LegacyAccordionProps {
   children?: React.ReactNode;
   onClick: LegacyAccordionClickHandler;
   open: boolean;
-  iconVariant?: LegacyAccordionIcons;
+  iconVariant?: AccordionIcons;
 }
 
 const LegacyAccordion = ({
@@ -23,8 +20,8 @@ const LegacyAccordion = ({
   const headerId = useId();
   const contentId = useId();
   return (
-    <div className={classes.LegacyAccordion}>
-      <LegacyAccordionContext.Provider
+    <div className={classes.legacyAccordion}>
+      <AccordionContext.Provider
         value={{
           onClick,
           open,
@@ -34,7 +31,7 @@ const LegacyAccordion = ({
         }}
       >
         {children}
-      </LegacyAccordionContext.Provider>
+      </AccordionContext.Provider>
     </div>
   );
 };

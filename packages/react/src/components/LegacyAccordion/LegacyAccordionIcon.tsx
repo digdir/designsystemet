@@ -2,13 +2,13 @@ import React from 'react';
 import cn from 'classnames';
 
 import classes from './LegacyAccordionIcon.module.css';
-import { useLegacyAccordionContext } from './Context';
+import { useAccordionContext } from './Context';
 import { Arrow, CircleArrow } from './icons';
 
 const LegacyAccordionIcon = () => {
-  const { onClick, open, iconVariant } = useLegacyAccordionContext();
+  const { onClick, open, iconVariant } = useAccordionContext();
   const props = {
-    className: cn(classes.LegacyAccordionIcon, open && classes.opened),
+    className: cn(classes.legacyAccordionIcon, open && classes.opened),
     onClick,
   };
   switch (iconVariant) {
