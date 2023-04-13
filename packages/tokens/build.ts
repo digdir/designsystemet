@@ -1,8 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary';
-import { registerTransforms } from '@tokens-studio/sd-transforms/dist/src';
+import { registerTransforms } from '@tokens-studio/sd-transforms';
 
 void registerTransforms(StyleDictionary);
 
