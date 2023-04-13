@@ -1,6 +1,5 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
-export { getServerSideProps } from '../../../utils/menus/PageMenu';
 
 <Meta
   title='Endringslogg'
@@ -10,7 +9,6 @@ export { getServerSideProps } from '../../../utils/menus/PageMenu';
 export default ({ children, menu }) => (
   <PageLayout
     content={children}
-    menu={menu}
     data={{
       title: 'Endringslogg',
       date: '25. mars 2023',

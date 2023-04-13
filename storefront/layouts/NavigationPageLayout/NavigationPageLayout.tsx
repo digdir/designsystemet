@@ -1,12 +1,10 @@
 import React from 'react';
-import { ImageIcon } from '@navikt/aksel-icons';
 import { useRouter } from 'next/router';
 
 import { Container } from '../../components/Container/Container';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
-import type { PageMenuDataType } from '../../utils/menus/PageMenu';
 
 import classes from './NavigationPageLayout.module.css';
 
@@ -25,14 +23,9 @@ type PageLandingLayoutData = {
 interface PageLandingLayoutProps {
   content: React.ReactNode;
   data: PageLandingLayoutData;
-  menu: PageMenuDataType;
 }
 
-const NavigationPageLayout = ({
-  content,
-  data,
-  menu,
-}: PageLandingLayoutProps) => {
+const NavigationPageLayout = ({ content, data }: PageLandingLayoutProps) => {
   const router = useRouter();
 
   return (

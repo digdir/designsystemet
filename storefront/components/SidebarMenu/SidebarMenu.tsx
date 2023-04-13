@@ -23,7 +23,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
     findAndSetActiveIndex(routerPath);
   }, [routerPath]);
 
-  /** Find at what index in the menu tree to start displaying menu */
+  /** Find at what index in the menu tree */
   const findAndSetActiveIndex = (path: string) => {
     for (let i = 0; i < SiteConfig.menu.length; i++) {
       if (SiteConfig.menu[i].url === path.split('/')[1]) {

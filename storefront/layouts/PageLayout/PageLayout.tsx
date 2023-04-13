@@ -3,19 +3,12 @@ import { useRouter } from 'next/router';
 
 import { Container } from '../../components/Container/Container';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
-import {
-  convertQueryToReadable,
-  capitalizeString,
-} from '../../utils/StringHelpers';
-import type { PageMenuDataType } from '../../utils/menus/PageMenu';
-
 import { MdxContent } from '../../components/MdxContent/MdxContent';
 
 import classes from './PageLayout.module.css';
 
 interface PageLayoutProps {
   content: React.ReactNode;
-  menu: PageMenuDataType;
   data: PageLayoutData;
 }
 
@@ -25,7 +18,7 @@ type PageLayoutData = {
   showMenu: boolean;
 };
 
-const PageLayout = ({ content, menu, data }: PageLayoutProps) => {
+const PageLayout = ({ content, data }: PageLayoutProps) => {
   const router = useRouter();
 
   return (

@@ -1,7 +1,6 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
 import { Figma } from 'mdx-embed';
-export { getServerSideProps } from '../../../utils/menus/PageMenu';
 
 <Meta
   title='Skygger'
@@ -11,7 +10,6 @@ export { getServerSideProps } from '../../../utils/menus/PageMenu';
 export default ({ children, menu }) => (
   <PageLayout
     content={children}
-    menu={menu}
     data={{
       title: 'Skygger',
       date: '10. april 2023',
