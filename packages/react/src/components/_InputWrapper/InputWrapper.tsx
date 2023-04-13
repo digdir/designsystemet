@@ -9,6 +9,7 @@ import classes from './InputWrapper.module.css';
 
 type InputRendererProps = {
   className: string;
+  hasIcon: boolean;
   inputId: string;
   variant: InputVariant_;
 };
@@ -45,12 +46,13 @@ export const InputWrapper = ({
     isValid,
     readOnly,
   });
+  const hasIcon = iconVariant !== 'none';
 
   return (
     <span
       className={cn(
         classes.inputAndLabel,
-        iconVariant !== 'none' && classes.withIcon,
+        hasIcon && classes.withIcon,
       )}
     >
       {label && (
@@ -75,6 +77,7 @@ export const InputWrapper = ({
         />
         {inputRenderer({
           className: classes.field,
+          hasIcon,
           inputId: givenOrRandomInputId,
           variant,
         })}
