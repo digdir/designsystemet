@@ -44,7 +44,7 @@ const matchMediaValueMock = ({
   addEventListener: jest.Mock;
   removeEventListener: jest.Mock;
 }>) => {
-  const value = jest.fn().mockImplementation((query) => ({
+  const value = jest.fn().mockImplementation((query: string) => ({
     matches: matches ?? false,
     media: query,
     onchange: null,

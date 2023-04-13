@@ -23,7 +23,7 @@ const user = userEvent.setup();
 
 describe('Popover', () => {
   describe('trigger uncontrolled', () => {
-    it('should render trigger', async () => {
+    it('should render trigger', () => {
       render();
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
@@ -42,7 +42,7 @@ describe('Popover', () => {
     });
 
     it('should close popover on trigger click when open', async () => {
-      await act(async () => {
+      await act(() => {
         render({ initialOpen: true });
       });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
@@ -67,7 +67,7 @@ describe('Popover', () => {
     });
 
     it('should close popover on ESC pressed click when open', async () => {
-      await act(async () => {
+      await act(() => {
         render({ initialOpen: true });
       });
 
@@ -80,13 +80,13 @@ describe('Popover', () => {
   });
 
   it('should show popover content when initialOpen=true', async () => {
-    await act(async () => {
+    await act(() => {
       render({ initialOpen: true });
     });
     expect(screen.queryByText('Popover text')).toBeInTheDocument();
   });
 
-  it('should not show popover content when initialOpen=false', async () => {
+  it('should not show popover content when initialOpen=false', () => {
     render({ initialOpen: false });
 
     expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
@@ -123,7 +123,7 @@ describe('Popover', () => {
   test.each(popoverVariants)(
     'should render popover with correct variant when variant is %s',
     async (variant) => {
-      await act(async () => {
+      await act(() => {
         render({ variant: variant, initialOpen: true });
       });
       const otherColors = popoverVariants.filter((v) => v !== variant);

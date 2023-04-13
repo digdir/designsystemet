@@ -70,7 +70,7 @@ describe('Select', () => {
       expectSelectedOptions((i) => selectedOptionIndex === i);
     });
 
-    it('Is not expanded by default', async () => {
+    it('Is not expanded by default', () => {
       renderSingleSelect();
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
     });
@@ -182,17 +182,17 @@ describe('Select', () => {
       expect(onChange).toHaveBeenCalledWith(singleSelectOptions[1].value);
     });
 
-    it('Is enabled by default', async () => {
+    it('Is enabled by default', () => {
       renderSingleSelect();
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is enabled if "disabled" property is false', async () => {
+    it('Is enabled if "disabled" property is false', () => {
       renderSingleSelect({ disabled: false });
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is disabled when "disabled" property is true', async () => {
+    it('Is disabled when "disabled" property is true', () => {
       renderSingleSelect({ disabled: true });
       expect(screen.getByRole('combobox')).toBeDisabled();
     });
@@ -231,14 +231,14 @@ describe('Select', () => {
       expect(screen.getByRole('combobox')).toHaveFocus();
     });
 
-    it('Hides label, but makes it accessible, if the "hideLabel" property is set', async () => {
+    it('Hides label, but makes it accessible, if the "hideLabel" property is set', () => {
       const label = 'Lorem ipsum';
       renderSingleSelect({ hideLabel: true, label, searchLabel: 'abc' });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
     });
 
-    it('Rerenders with new selected value when the "value" property changes', async () => {
+    it('Rerenders with new selected value when the "value" property changes', () => {
       const selectedValue = singleSelectOptions[0].value;
       const newValueIndex = 2;
       const newValue = singleSelectOptions[newValueIndex].value;
@@ -393,7 +393,7 @@ describe('Select', () => {
       expect(getCombobox()).toHaveValue(newOptions[1].label);
     });
 
-    it('Rerenders with the correct value and keyword when "options" are loaded late', async () => {
+    it('Rerenders with the correct value and keyword when "options" are loaded late', () => {
       const options = singleSelectOptions;
       const value = options[1].value;
       const { rerender } = renderSingleSelect({ options: [], value });
@@ -420,7 +420,7 @@ describe('Select', () => {
       expect(getOptions()).toHaveLength(multiSelectOptions.length);
     });
 
-    it('Is not expanded by default', async () => {
+    it('Is not expanded by default', () => {
       renderMultiSelect();
       expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
     });
@@ -584,7 +584,7 @@ describe('Select', () => {
       ]);
     });
 
-    it('Displays delete button with given name', async () => {
+    it('Displays delete button with given name', () => {
       const deleteButtonLabel = 'Delete all';
       renderMultiSelect({ deleteButtonLabel });
       expect(screen.getByLabelText(deleteButtonLabel)).toBeTruthy();
@@ -638,22 +638,22 @@ describe('Select', () => {
       ]);
     });
 
-    it('Is enabled by default', async () => {
+    it('Is enabled by default', () => {
       renderMultiSelect();
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is enabled if "disabled" property is false', async () => {
+    it('Is enabled if "disabled" property is false', () => {
       renderMultiSelect({ disabled: false });
       expect(screen.getByRole('combobox')).toBeEnabled();
     });
 
-    it('Is disabled when "disabled" property is true', async () => {
+    it('Is disabled when "disabled" property is true', () => {
       renderMultiSelect({ disabled: true });
       expect(screen.getByRole('combobox')).toBeDisabled();
     });
 
-    it('Disables common delete button if something is selected, but the "disabled" property is true', async () => {
+    it('Disables common delete button if something is selected, but the "disabled" property is true', () => {
       const deleteButtonLabel = 'Delete all';
       renderMultiSelect({
         deleteButtonLabel,
@@ -663,14 +663,14 @@ describe('Select', () => {
       expect(screen.getByLabelText(deleteButtonLabel)).toBeDisabled();
     });
 
-    it('Enables individual delete buttons by default', async () => {
+    it('Enables individual delete buttons by default', () => {
       const selectedOption = multiSelectOptions[0];
       renderMultiSelect({ value: [selectedOption.value] });
       const { deleteButtonLabel } = selectedOption;
       expect(screen.getByLabelText(deleteButtonLabel)).toBeEnabled();
     });
 
-    it('Disables individual delete buttons when the "disabled" property is true', async () => {
+    it('Disables individual delete buttons when the "disabled" property is true', () => {
       const selectedOption = multiSelectOptions[0];
       renderMultiSelect({ disabled: true, value: [selectedOption.value] });
       const { deleteButtonLabel } = selectedOption;
@@ -711,14 +711,14 @@ describe('Select', () => {
       expect(screen.getByRole('combobox')).toHaveFocus();
     });
 
-    it('Hides label, but makes it accessible, if the "hideLabel" property is set', async () => {
+    it('Hides label, but makes it accessible, if the "hideLabel" property is set', () => {
       const label = 'Lorem ipsum';
       renderMultiSelect({ hideLabel: true, label, searchLabel: 'abc' });
       expect(screen.queryByText(label)).toBeFalsy();
       expect(screen.getByLabelText(label)).toBeTruthy();
     });
 
-    it('Rerenders with new selected values when the "value" property changes', async () => {
+    it('Rerenders with new selected values when the "value" property changes', () => {
       const selectedValues = [multiSelectOptions[0].value];
       const newValueIndices = [1, 2];
       const newValues = newValueIndices.map((i) => multiSelectOptions[i].value);
@@ -884,7 +884,10 @@ describe('Select', () => {
     const expectSelectedValues = (values: string[]) =>
       getOptions().forEach((opt) => {
         const isSelected = values.includes((opt as HTMLButtonElement).value);
-        expect(opt).toHaveAttribute('aria-selected', `${isSelected}`);
+        expect(opt).toHaveAttribute(
+          'aria-selected',
+          `${isSelected.toString()}`,
+        );
       });
   });
 });

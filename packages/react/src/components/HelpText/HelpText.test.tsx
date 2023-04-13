@@ -22,7 +22,7 @@ const render = (props: Partial<HelpTextProps> = {}) => {
 const user = userEvent.setup();
 
 describe('HelpText', () => {
-  it('should render HelpText button', async () => {
+  it('should render HelpText button', () => {
     render();
     const helpTextTrigger = screen.getByRole('button');
 

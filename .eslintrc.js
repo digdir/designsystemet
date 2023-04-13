@@ -21,11 +21,13 @@ module.exports = {
       extends: [
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
+        tsconfigRootDir: __dirname,
         ecmaFeatures: { jsx: true },
-        project: './tsconfig.json',
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
       },
       rules: {
         '@typescript-eslint/consistent-type-exports': 'warn',

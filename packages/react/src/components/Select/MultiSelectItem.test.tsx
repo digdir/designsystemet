@@ -27,7 +27,7 @@ describe('MultiSelectItem', () => {
     expect(onDeleteButtonClick).toHaveBeenCalledTimes(1);
   });
 
-  it('Has accessible name on delete button if given', async () => {
+  it('Has accessible name on delete button if given', () => {
     const deleteButtonLabel = 'Delete item';
     renderMultiSelectItem({ deleteButtonLabel });
     expect(screen.getByRole('button')).toHaveAccessibleName(deleteButtonLabel);

@@ -12,15 +12,18 @@ interface GithubReleasesChangelogItemProps {
 }
 
 const GithubReleasesChangelog = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<GithubReleasesChangelogItemProps[]>([]);
 
   useEffect(() => {
     fetch('https://api.github.com/repos/altinn/figma-design-tokens/releases')
       .then((res) => {
         return res.json();
       })
-      .then((res) => {
-        setData(res);
+      .then((data: GithubReleasesChangelogItemProps[]) => {
+        setData(data);
+      })
+      .catch((reason) => {
+        throw reason;
       });
   }, []);
 

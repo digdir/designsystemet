@@ -104,7 +104,7 @@ describe('Button', () => {
     expect(button).toBeDisabled();
   });
 
-  it('should not call onClick when disabled', () => {
+  it('should not call onClick when disabled', async () => {
     const fn = jest.fn();
     render({
       variant: 'outline',
@@ -113,7 +113,7 @@ describe('Button', () => {
     });
 
     const button = screen.getByRole('button');
-    user.click(button);
+    await user.click(button);
     expect(fn).not.toHaveBeenCalled();
   });
 

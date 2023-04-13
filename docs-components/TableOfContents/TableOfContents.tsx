@@ -1,3 +1,4 @@
+import type { Dispatch } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
@@ -7,10 +8,10 @@ import classes from './TableOfContents.module.css';
  * Dynamically generates the table of contents list, using any H2s and H3s it can find in the main text
  */
 const useHeadingsData = () => {
-  const [nestedHeadings, setNestedHeadings] = useState([]);
+  const [nestedHeadings, setNestedHeadings] = useState<NestedHeading[]>([]);
 
   useEffect(() => {
-    const headingElements = Array.from(
+    const headingElements: HTMLHeadingElement[] = Array.from(
       document.querySelectorAll('.sbdocs > div > h2'),
     );
 
@@ -22,10 +23,16 @@ const useHeadingsData = () => {
   return { nestedHeadings };
 };
 
-const getNestedHeadings = (headingElements: never[]) => {
-  const nestedHeadings: { items: { id: never; title: never }[] }[] = [];
+type NestedHeading = {
+  id: string;
+  title: string;
+  items: { id: string; title: string }[];
+};
 
-  headingElements.forEach((heading, index) => {
+const getNestedHeadings = (headingElements: HTMLHeadingElement[]) => {
+  const nestedHeadings: NestedHeading[] = [];
+
+  headingElements.forEach((heading) => {
     const { innerText: title, id } = heading;
 
     if (heading.nodeName === 'H2') {
@@ -41,23 +48,25 @@ const getNestedHeadings = (headingElements: never[]) => {
   return nestedHeadings;
 };
 
-const useIntersectionObserver = (setActiveId) => {
-  const headingElementsRef = useRef({});
+const useIntersectionObserver = (setActiveId: Dispatch<string>) => {
+  const headingElementsRef = useRef<
+    Record<string, IntersectionObserverEntryInit>
+  >({});
   useEffect(() => {
-    const callback = (headings) => {
-      headingElementsRef.current = headings.reduce((map, headingElement) => {
-        map[headingElement.target.id] = headingElement;
-        return map;
+    const callback = (headings: IntersectionObserverEntryInit[]) => {
+      headingElementsRef.current = headings.reduce((acc, headingElement) => {
+        acc[headingElement.target.id] = headingElement;
+        return acc;
       }, headingElementsRef.current);
 
       // Get all headings that are currently visible on the page
-      const visibleHeadings = [];
+      const visibleHeadings: IntersectionObserverEntryInit[] = [];
       Object.keys(headingElementsRef.current).forEach((key) => {
         const headingElement = headingElementsRef.current[key];
         if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
       });
 
-      const getIndexFromId = (id) =>
+      const getIndexFromId = (id: string) =>
         headingElements.findIndex((heading) => heading.id === id);
 
       // If there is only one visible heading, this is our "active" heading
@@ -67,7 +76,7 @@ const useIntersectionObserver = (setActiveId) => {
         // choose the one that is closest to the top of the page
       } else if (visibleHeadings.length > 1) {
         const sortedVisibleHeadings = visibleHeadings.sort(
-          (a, b) => getIndexFromId(a.target.id) > getIndexFromId(b.target.id),
+          (a, b) => getIndexFromId(a.target.id) - getIndexFromId(b.target.id),
         );
 
         setActiveId(sortedVisibleHeadings[0].target.id);
@@ -89,29 +98,37 @@ const useIntersectionObserver = (setActiveId) => {
   }, [setActiveId]);
 };
 
+type HeadingsProps = {
+  headings: NestedHeading[];
+  activeId: string;
+};
 /**
  * This renders an item in the table of contents list.
  * scrollIntoView is used to ensure that when a user clicks on an item, it will smoothly scroll.
  */
-const Headings = ({ headings, activeId }) => (
+const Headings = ({ headings, activeId }: HeadingsProps) => (
   <ul className={classes['toc__list']}>
-    {headings.map((heading) => (
+    {headings.map((headingReference) => (
       <li
-        key={heading.id}
+        key={headingReference.id}
         className={cn(classes['toc__item'], {
-          [classes['toc__item--active']]: heading.id === activeId,
+          [classes['toc__item--active']]: headingReference.id === activeId,
         })}
       >
         <a
-          href={`#${heading.id}`}
+          href={`#${headingReference.id}`}
           onClick={(e) => {
             e.preventDefault();
-            document.querySelector(`#${heading.id}`).scrollIntoView({
-              behavior: 'smooth',
-            });
+            const heading = document.querySelector(`#${headingReference.id}`);
+
+            if (heading) {
+              heading.scrollIntoView({
+                behavior: 'smooth',
+              });
+            }
           }}
         >
-          {heading.title}
+          {headingReference.title}
         </a>
       </li>
     ))}
@@ -119,7 +136,7 @@ const Headings = ({ headings, activeId }) => (
 );
 
 export function TableOfContents() {
-  const [activeId, setActiveId] = useState();
+  const [activeId, setActiveId] = useState<string>('');
   const { nestedHeadings } = useHeadingsData();
   useIntersectionObserver(setActiveId);
 
