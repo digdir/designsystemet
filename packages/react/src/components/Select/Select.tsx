@@ -154,7 +154,7 @@ const Select = (props: SelectProps) => {
   );
 
   const { x, y, elements, refs } = useFloating<HTMLSpanElement>({
-    whileElementsMounted: autoUpdate
+    whileElementsMounted: autoUpdate,
   });
   const listboxWrapper = elements.floating as HTMLSpanElement;
   const selectField = elements.reference as HTMLSpanElement;
@@ -208,7 +208,7 @@ const Select = (props: SelectProps) => {
         }
       }
     }
-  }, [activeOptionIndex]);
+  }, [activeOptionIndex, listboxWrapper]);
 
   const multipleChangeHandler = (newValues: string[], addedValue?: string) => {
     if (!selectedValues?.length) {

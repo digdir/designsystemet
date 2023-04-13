@@ -49,12 +49,7 @@ export const InputWrapper = ({
   const hasIcon = iconVariant !== 'none';
 
   return (
-    <span
-      className={cn(
-        classes.inputAndLabel,
-        hasIcon && classes.withIcon,
-      )}
-    >
+    <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
       {label && (
         <label
           className={classes.label}
