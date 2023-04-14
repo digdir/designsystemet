@@ -1,5 +1,6 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
+import { Tokens } from '../../../components/Tokens/Tokens';
 
 <Meta
   title='Typografi'
@@ -24,3 +25,9 @@ For å presentere tekst på korrekt måte, bruker vi noen utvalgte stiler og kom
 
 Tekststørrelse-variablene er angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der `1rem = 16px`.
+
+<Tokens
+  tokenKey='fds-typo'
+  type='fontSize'
+  showValue={false}
+/>
