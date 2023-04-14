@@ -1,0 +1,36 @@
+import React, { useEffect, useRef } from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import { useFocusWithin } from './useFocusWithin';
+
+const user = userEvent.setup();
+
+const outsideButtonTestId = 'outside-button';
+const insideButtonTestId = 'inside-button';
+const focusWithinChangeFn = jest.fn();
+
+const TestComponent = () => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasFocus = useFocusWithin<HTMLSpanElement>(ref);
+  useEffect(() => {
+    focusWithinChangeFn(hasFocus);
+  }, [hasFocus]);
+  return (
+    <>
+      <button data-testid={outsideButtonTestId}>Outside</button>
+      <span ref={ref}>
+        <button data-testid={insideButtonTestId}>Inside</button>
+      </span>
+    </>
+  );
+};
+
+test('useFocusWithin', async () => {
+  render(<TestComponent />);
+  expect(focusWithinChangeFn).toHaveBeenLastCalledWith(false);
+  await user.click(screen.getByTestId(insideButtonTestId));
+  expect(focusWithinChangeFn).toHaveBeenLastCalledWith(true);
+  await user.click(screen.getByTestId(outsideButtonTestId));
+  expect(focusWithinChangeFn).toHaveBeenLastCalledWith(false);
+});
