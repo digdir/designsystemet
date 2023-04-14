@@ -58,7 +58,7 @@ describe('Checkbox', () => {
   it('Should not display label text, but still make it accessible, when hideLabel is true', () => {
     const label = 'Lorem ipsum';
     render({ hideLabel: true, label });
-    expect(screen.queryByText(label)).toBeFalsy();
+    expect(screen.getByText(label).style.display).toEqual('none');
     expect(screen.getByLabelText(label)).toBeTruthy();
   });
 
