@@ -1,7 +1,12 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-import { Accordion, AccordionContent, AccordionHeader, Button } from '../';
 import {
-  AccordionIconVariant,
+  LegacyAccordion,
+  LegacyAccordionContent,
+  LegacyAccordionHeader,
+  Button,
+} from '../';
+import {
+  LegacyAccordionIconVariant,
   ButtonColor,
   ButtonSize,
   ButtonVariant,
@@ -11,11 +16,11 @@ import { ArgsTable } from '@storybook/addon-docs';
 import { useState } from 'react';
 
 <Meta
-  title='Kjernekomponenter/Accordion'
-  component={Accordion}
+  title='Kjernekomponenter/LegacyAccordion'
+  component={LegacyAccordion}
   parameters={{
     status: {
-      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      type: 'deprecated', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
       url: 'http://www.url.com/status',
     },
   }}
@@ -34,11 +39,14 @@ import { useState } from 'react';
       control: {
         type: 'radio',
         labels: {
-          [AccordionIconVariant.Primary]: 'Primary',
-          [AccordionIconVariant.Secondary]: 'Secondary',
+          [LegacyAccordionIconVariant.Primary]: 'Primary',
+          [LegacyAccordionIconVariant.Secondary]: 'Secondary',
         },
       },
-      options: [AccordionIconVariant.Primary, AccordionIconVariant.Secondary],
+      options: [
+        LegacyAccordionIconVariant.Primary,
+        LegacyAccordionIconVariant.Secondary,
+      ],
     },
   }}
 />
@@ -47,12 +55,12 @@ export const Template = (args) => {
   const [open, setOpen] = useState(false);
   const onClick = () => setOpen(!open);
   return (
-    <Accordion
+    <LegacyAccordion
       {...args}
       onClick={onClick}
       open={open}
     >
-      <AccordionHeader
+      <LegacyAccordionHeader
         actions={
           <>
             <Button
@@ -74,8 +82,8 @@ export const Template = (args) => {
         subtitle='Valgfri undertittel'
       >
         Klikk her for å åpne
-      </AccordionHeader>
-      <AccordionContent>
+      </LegacyAccordionHeader>
+      <LegacyAccordionContent>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         condimentum dolor neque, in rutrum ante auctor maximus. Suspendisse
         lacinia velit eros, in vehicula dui aliquet a. Sed posuere, diam ac
@@ -87,26 +95,24 @@ export const Template = (args) => {
         sem. Donec pharetra scelerisque tellus, non mattis ligula fermentum id.
         Vestibulum vestibulum, tortor ut lobortis gravida, libero neque accumsan
         tortor, eu facilisis metus mi eget justo. Nullam ac massa massa.
-      </AccordionContent>
-    </Accordion>
+      </LegacyAccordionContent>
+    </LegacyAccordion>
   );
 };
 
-# Accordion
+# LegacyAccordion
 
-<BetaBlock />
-
-"Accordion" har sitt navn fordi den kan minne om et trekkspill.
+"LegacyAccordion" har sitt navn fordi den kan minne om et trekkspill.
 Komponenten lar brukeren bestemme hva som skal være synlig av innhold og fungerer best som en del av en liste med flere.
 
 ## Eksempel
 
 <Canvas>
   <Story
-    name='Accordion'
+    name='LegacyAccordion'
     args={{
       open: false,
-      iconVariant: AccordionIconVariant.Primary,
+      iconVariant: LegacyAccordionIconVariant.Primary,
     }}
   >
     {Template.bind({})}
@@ -119,13 +125,13 @@ Per nå må komponentens tilstand håndteres utenfra. Dette gjøres ved å bruke
 `open` brukes til å definere hvorvidt innholdet skal vises,
 mens `onClick` kalles hver gang brukeren klikker på tittelen og kan dermed brukes til å trigge en endring av `open`.
 
-<ArgsTable story='Accordion' />
+<ArgsTable story='LegacyAccordion' />
 
 ## Tokens
 
 <TokensTable
-  componentName='accordion'
+  componentName='LegacyAccordion'
   description
-  jsonKey='component.accordion'
+  jsonKey='component.LegacyAccordion'
   showPreview={false}
 />

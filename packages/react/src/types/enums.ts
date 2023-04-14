@@ -22,7 +22,7 @@ export enum IconVariant {
   Search = 'search',
 }
 
-export enum AccordionIconVariant {
+export enum LegacyAccordionIconVariant {
   Primary = 'primary',
   Secondary = 'secondary',
 }
