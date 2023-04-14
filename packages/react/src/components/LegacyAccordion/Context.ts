@@ -6,13 +6,13 @@ export type AccordionIcons = typeof accordionIcons[number];
 
 type AccordionContext = {
   open: boolean;
-  onClick: AccordionClickHandler;
+  onClick: LegacyAccordionClickHandler;
   headerId: string;
   contentId: string;
   iconVariant: 'primary' | 'secondary';
 };
 
-export type AccordionClickHandler = () => void;
+export type LegacyAccordionClickHandler = () => void;
 
 export const AccordionContext = createContext<AccordionContext | undefined>(
   undefined,

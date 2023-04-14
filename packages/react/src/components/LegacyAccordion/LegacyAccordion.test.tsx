@@ -2,20 +2,20 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { AccordionProps } from './Accordion';
-import { Accordion } from './Accordion';
-import { AccordionContent } from './AccordionContent';
+import type { LegacyAccordionProps } from './LegacyAccordion';
+import { LegacyAccordion } from './LegacyAccordion';
+import { LegacyAccordionContent } from './LegacyAccordionContent';
 import { accordionIcons } from './Context';
-import { AccordionHeader } from './AccordionHeader';
+import { LegacyAccordionHeader } from './LegacyAccordionHeader';
 
 // Test data:
-const header = 'AccordionHeader';
-const content = 'AccordionContent';
-const defaultProps: AccordionProps = {
+const header = 'LegacyAccordionHeader';
+const content = 'LegacyAccordionContent';
+const defaultProps: LegacyAccordionProps = {
   children: (
     <>
-      <AccordionHeader>{header}</AccordionHeader>
-      <AccordionContent>{content}</AccordionContent>
+      <LegacyAccordionHeader>{header}</LegacyAccordionHeader>
+      <LegacyAccordionContent>{content}</LegacyAccordionContent>
     </>
   ),
   open: false,
@@ -28,9 +28,9 @@ jest.mock('./icons', () => ({
   CircleArrow: () => <svg data-testid={'secondary'} />,
 }));
 
-const render = (props: Partial<AccordionProps> = {}) =>
+const render = (props: Partial<LegacyAccordionProps> = {}) =>
   renderRtl(
-    <Accordion
+    <LegacyAccordion
       {...defaultProps}
       {...props}
     />,
@@ -38,8 +38,8 @@ const render = (props: Partial<AccordionProps> = {}) =>
 
 const user = userEvent.setup();
 
-describe('Accordion', () => {
-  it('Calls onClick when AccordionHeader is clicked', async () => {
+describe('LegacyAccordion', () => {
+  it('Calls onClick when LegacyAccordionHeader is clicked', async () => {
     const onClick = jest.fn();
     render({ onClick });
     await user.click(screen.getByRole('button', { name: header }));
@@ -60,15 +60,15 @@ describe('Accordion', () => {
     ).toBeInTheDocument();
   });
 
-  it('Calls onClick when AccordionHeader is clicked using the Space key', async () => {
+  it('Calls onClick when LegacyAccordionHeader is clicked using the Space key', async () => {
     const onClick = jest.fn();
     render({ onClick });
-    const accordionHeader = screen.getByRole('button', { name: header });
-    await user.type(accordionHeader, '{Space}');
+    const LegacyAccordionHeader = screen.getByRole('button', { name: header });
+    await user.type(LegacyAccordionHeader, '{Space}');
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('Calls handleClick when AccordionHeader is clicked using the Enter key', async () => {
+  it('Calls handleClick when LegacyAccordionHeader is clicked using the Enter key', async () => {
     const onClick = jest.fn();
     render({ onClick });
     await user.keyboard('{Tab}');
