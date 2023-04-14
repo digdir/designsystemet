@@ -153,8 +153,6 @@
       "semantic.surface.action.hover": "S:4e4bb9c41d91a71b50bc5d84fcd0e22630628ba4,",
       "semantic.surface.action.active": "S:96a61c5e9900679c87f62e40b98062b8497717f0,",
       "semantic.surface.action.no_fill": "S:8f6168a958c279b89c3542264b60977f0a0aacd9,",
-      "semantic.surface.action.nofill-hover": "S:ecdf98c533257de6148a82d6aa1fe2d28d75cc79,",
-      "semantic.surface.action.nofill-active": "S:bfb0a27f9169025b5e9017154ab3c2d2d9538586,",
       "semantic.surface.success.subtle": "S:56510c289a6a3d442328254e0a50ac99319d674d,",
       "semantic.surface.success.subtle-hover": "S:100570a77cd61e30335a295f63de5a2df220c93f,",
       "semantic.surface.success.default": "S:a6d33f96fcf99eeb5cd4cc789358769b6239a654,",
@@ -174,7 +172,6 @@
       "semantic.surface.danger.no_fill-hover": "S:81b337569f854f540137d8e43a458d7d5a2a8063,",
       "semantic.surface.danger.no_fill-action": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,",
       "semantic.surface.info.subtle": "S:733a629d621a244b73b1b5cd91d0dcd475b0631b,",
-      "semantic.surface.info.hover": "S:c52a7a420862eb38a643c1909c6c7cdf5d3ffe3a,",
       "semantic.surface.primary.primary": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
       "semantic.surface.primary.primary-hover": "S:2ed0133da2188ffafdd4383b77db5927a0f87028,",
       "semantic.surface.primary.primary-active": "S:49a37a64ee1541cb9240b74953789afcfffd9998,",
@@ -248,7 +245,10 @@
       "brand.tertiary.700": "S:2f8049c138d9669d087955d033e6d1cc69db6d36,",
       "brand.tertiary.800": "S:9568f445995b4c861fa49137c60f8a1129f844ff,",
       "semantic.border.danger.hover": "S:9560ed489efbdb2dc8346fc1ef791af4b46a31a0,",
-      "semantic.border.danger.active": "S:40aee5c10700b54e91cbf6eb33056d3a0b2e1ed7,"
+      "semantic.border.danger.active": "S:40aee5c10700b54e91cbf6eb33056d3a0b2e1ed7,",
+      "semantic.surface.info.subtle-hover": "S:c52a7a420862eb38a643c1909c6c7cdf5d3ffe3a,",
+      "semantic.surface.action.no_fill-hover": "S:ecdf98c533257de6148a82d6aa1fe2d28d75cc79,",
+      "semantic.surface.action.no_fill-active": "S:bfb0a27f9169025b5e9017154ab3c2d2d9538586,"
     }
   },
   {
