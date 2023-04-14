@@ -2,6 +2,7 @@ import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
 import { RadioButton } from '../RadioButton';
+import type { FieldSetProps } from '../FieldSet';
 import { FieldSet } from '../FieldSet';
 import { usePrevious, useUpdate } from '../../hooks';
 import { areItemsUnique } from '../../utils';
@@ -27,6 +28,7 @@ export interface RadioGroupProps {
   size?: 'small' | 'xsmall';
   value?: string;
   variant?: 'vertical' | 'horizontal';
+  fieldSetProps?: Partial<FieldSetProps>;
 }
 
 const RadioGroup = ({
@@ -42,6 +44,7 @@ const RadioGroup = ({
   size = 'small',
   value,
   variant = 'vertical',
+  fieldSetProps,
 }: RadioGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.value))) {
     throw Error('Each value in the radio group must be unique.');
@@ -73,6 +76,7 @@ const RadioGroup = ({
       helpText={helpText}
       legend={legend}
       size={size}
+      {...fieldSetProps}
     >
       <div
         className={[classes.radioGroup, classes[variant], classes[size]].join(
