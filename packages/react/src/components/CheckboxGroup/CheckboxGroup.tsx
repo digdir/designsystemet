@@ -12,7 +12,13 @@ import classes from './CheckboxGroup.module.css';
 
 export type CheckboxGroupItem = Pick<
   CheckboxProps,
-  'checked' | 'description' | 'disabled' | 'checkboxId' | 'label' | 'helpText'
+  | 'checked'
+  | 'description'
+  | 'disabled'
+  | 'checkboxId'
+  | 'label'
+  | 'helpText'
+  | 'hideLabel'
 > &
   Required<Pick<CheckboxProps, 'name'>>;
 
@@ -108,6 +114,7 @@ const CheckboxGroup = ({
           error={!!error}
           helpText={item.helpText}
           key={item.name}
+          hideLabel={item.hideLabel}
           label={item.label}
           name={item.name}
           onChange={(event) => {
