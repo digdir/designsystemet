@@ -15,7 +15,6 @@ export interface FieldSetProps
   className?: string;
   contentClassName?: string;
   description?: ReactNode;
-  disabled?: boolean;
   error?: ReactNode;
   helpText?: ReactNode;
   legend?: ReactNode;
@@ -27,7 +26,6 @@ const FieldSet = ({
   className,
   contentClassName,
   description,
-  disabled,
   error,
   helpText,
   legend,
@@ -36,9 +34,8 @@ const FieldSet = ({
 }: FieldSetProps) => {
   return (
     <fieldset
-      className={cn(classes.fieldSet, classes[size], className)}
-      disabled={disabled}
       {...rest}
+      className={cn(classes.fieldSet, classes[size], className)}
     >
       {legend && (
         <legend className={classes.legend}>
