@@ -53,7 +53,7 @@ export const CheckboxRadioTemplate = ({
   const finalInputId = inputId ?? 'input-' + randomId;
   const labelId = label ? `${finalInputId}-label` : undefined;
   const descriptionId = description ? `${finalInputId}-description` : undefined;
-  const showLabel = label && !hideLabel;
+  const showLabel = !!(label && !hideLabel);
   const shouldHaveClickableLabel =
     !presentation ||
     (typeof label !== 'object' && typeof description !== 'object');
@@ -68,12 +68,14 @@ export const CheckboxRadioTemplate = ({
       )}
       htmlFor={finalInputId}
       isLabel={shouldHaveClickableLabel}
+      showLabel={showLabel}
     >
       {!hideInput && (
         <Wrapper
           className={classes.inputWrapper}
           htmlFor={finalInputId}
           isLabel={!shouldHaveClickableLabel}
+          showLabel={showLabel}
         >
           <input
             aria-describedby={descriptionId}
@@ -135,10 +137,17 @@ interface WrapperProps {
   className: string;
   htmlFor?: string;
   isLabel: boolean;
+  showLabel: boolean;
 }
 
-const Wrapper = ({ children, className, htmlFor, isLabel }: WrapperProps) =>
-  isLabel ? (
+const Wrapper = ({
+  children,
+  className,
+  htmlFor,
+  isLabel,
+  showLabel,
+}: WrapperProps) =>
+  isLabel && showLabel ? (
     <label
       className={className + ' ' + classes.clickable}
       htmlFor={htmlFor}
