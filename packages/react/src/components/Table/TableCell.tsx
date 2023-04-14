@@ -87,10 +87,13 @@ export function TableCell({
               <SortIcon
                 aria-label='Sortering' // Todo: Texts should be provided by the consumer
                 data-testid='sort-icon'
-                className={cn(classes['icon'], {
-                  [classes.iconAsc]: sortDirection === 'asc',
-                  [classes.iconDesc]: sortDirection === 'desc',
-                })}
+                className={
+                  sortDirection == 'notActive'
+                    ? classes.icon
+                    : sortDirection == 'asc'
+                    ? classes.iconAsc
+                    : classes.iconDesc
+                }
               />
             )}
           </div>
