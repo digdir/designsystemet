@@ -262,5 +262,17 @@
       "Brand/Digdir": "enabled"
     },
     "$figmaStyleReferences": {}
+  },
+  {
+    "id": "246b5bc773cfeab1544d776c4104e7229af37c3a",
+    "name": "Digdir Mobile",
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Base/Semantic": "enabled",
+      "Base/Component": "enabled",
+      "Brand/Digdir": "enabled",
+      "Viewport/mobile": "enabled"
+    },
+    "$figmaStyleReferences": {}
   }
 ]
