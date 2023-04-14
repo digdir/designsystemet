@@ -1,0 +1,7 @@
+.legacyAccordion {
+  --component-LegacyAccordion-color-background: var(--colors-white);
+  --component-panel-size-width: 100%;
+
+  background-color: var(--component-LegacyAccordion-color-background);
+  width: var(--component-panel-size-width);
+}

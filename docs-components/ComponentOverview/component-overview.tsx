@@ -11,9 +11,9 @@ interface BoxProps {
 const ComponentOverview = () => {
   const items: BoxProps[] = [
     {
-      name: 'Accordion',
+      name: 'LegacyAccordion',
       img: 'accordion.png',
-      url: 'accordion',
+      url: 'LegacyAccordion',
     },
     {
       name: 'Button',
