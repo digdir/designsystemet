@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary';
@@ -85,6 +84,7 @@ const getStyleDictionaryConfig = (
           'pxToRem',
           'ts/resolveMath',
           'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
         ],
         transformGroup: 'js',
         files: [
@@ -114,6 +114,7 @@ const getStyleDictionaryConfig = (
           'pxToRem',
           'ts/resolveMath',
           'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
         ],
         files: [
           {
