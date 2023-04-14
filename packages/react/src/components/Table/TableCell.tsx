@@ -51,7 +51,8 @@ export function TableCell({
   return (
     <>
       {isVariant('header') && (
-        <th
+        <TableHeaderCell
+          useTd={!children}
           {...tableCellProps}
           className={cn(
             radiobutton
@@ -97,7 +98,7 @@ export function TableCell({
               />
             )}
           </div>
-        </th>
+        </TableHeaderCell>
       )}
       {isVariant('body') && (
         <td
@@ -124,4 +125,27 @@ export function TableCell({
       )}
     </>
   );
+}
+
+type TableHeaderCellProps = React.PropsWithChildren<{ useTd?: boolean }> &
+  React.DetailedHTMLProps<
+    React.TdHTMLAttributes<HTMLTableDataCellElement>,
+    HTMLTableDataCellElement
+  >;
+
+/**
+ * Table headers should not have empty cells, so we wrap the cell in this
+ * component to conditionally render a td or th element. According to WCAG
+ * rules, it's OK for a td element to be empty.
+ * @see https://webaim.org/techniques/tables/data#th
+ */
+function TableHeaderCell({
+  useTd = false,
+  children,
+  ...tableCellProps
+}: TableHeaderCellProps) {
+  if (useTd) {
+    return <td {...tableCellProps}>{children}</td>;
+  }
+  return <th {...tableCellProps}>{children}</th>;
 }
