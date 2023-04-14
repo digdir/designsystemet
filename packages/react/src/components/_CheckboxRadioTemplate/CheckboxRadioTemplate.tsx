@@ -53,7 +53,7 @@ export const CheckboxRadioTemplate = ({
   const finalInputId = inputId ?? 'input-' + randomId;
   const labelId = label ? `${finalInputId}-label` : undefined;
   const descriptionId = description ? `${finalInputId}-description` : undefined;
-  const showLabel = !!(label && !hideLabel);
+  const showLabel = label && !hideLabel;
   const shouldHaveClickableLabel =
     !presentation ||
     (typeof label !== 'object' && typeof description !== 'object');
@@ -68,21 +68,16 @@ export const CheckboxRadioTemplate = ({
       )}
       htmlFor={finalInputId}
       isLabel={shouldHaveClickableLabel}
-      showLabel={showLabel}
     >
       {!hideInput && (
         <Wrapper
           className={classes.inputWrapper}
           htmlFor={finalInputId}
           isLabel={!shouldHaveClickableLabel}
-          showLabel={showLabel}
         >
           <input
             aria-describedby={descriptionId}
-            aria-label={
-              !showLabel && typeof label === 'string' ? label : undefined
-            }
-            aria-labelledby={showLabel ? labelId : undefined}
+            aria-labelledby={label ? labelId : undefined}
             checked={checked ?? false}
             className={classes.input}
             disabled={disabled}
@@ -96,28 +91,29 @@ export const CheckboxRadioTemplate = ({
           <span className={classes.visibleBox}>{children}</span>
         </Wrapper>
       )}
-      {(showLabel || description) && (
+      {(label || description) && (
         <span className={classes.labelAndDescription}>
-          {showLabel && (
-            <span className={classes.labelAndHelpText}>
+          <span className={classes.labelAndHelpText}>
+            {label && (
               <span
                 className={classes.label}
                 id={labelId}
+                style={{ display: showLabel ? 'inline' : 'none' }}
               >
                 {label}
               </span>
-              {helpText && (
-                <HelpText
-                  size={size}
-                  title={
-                    typeof label === 'string' ? `Help text for ${label}` : ''
-                  }
-                >
-                  {helpText}
-                </HelpText>
-              )}
-            </span>
-          )}
+            )}
+            {helpText && (
+              <HelpText
+                size={size}
+                title={
+                  typeof label === 'string' ? `Help text for ${label}` : ''
+                }
+              >
+                {helpText}
+              </HelpText>
+            )}
+          </span>
           {description && (
             <span
               className={classes.description}
@@ -137,17 +133,10 @@ interface WrapperProps {
   className: string;
   htmlFor?: string;
   isLabel: boolean;
-  showLabel: boolean;
 }
 
-const Wrapper = ({
-  children,
-  className,
-  htmlFor,
-  isLabel,
-  showLabel,
-}: WrapperProps) =>
-  isLabel && showLabel ? (
+const Wrapper = ({ children, className, htmlFor, isLabel }: WrapperProps) =>
+  isLabel ? (
     <label
       className={className + ' ' + classes.clickable}
       htmlFor={htmlFor}
