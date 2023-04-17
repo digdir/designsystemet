@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Description } from '@storybook/addon-docs';
+import { Markdown } from '@storybook/blocks';
 
 import classes from './Changelog.module.css';
 
@@ -31,7 +31,7 @@ const Changelog = ({ markdown }: ChangelogProps) => {
       className={classes.changelog}
       id='sb-changelog'
     >
-      <Description markdown={markdown} />
+      <Markdown>{markdown}</Markdown>
     </div>
   );
 };

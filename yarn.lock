@@ -5289,17 +5289,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-mdx-gfm@npm:^7.0.5":
-  version: 7.0.5
-  resolution: "@storybook/addon-mdx-gfm@npm:7.0.5"
-  dependencies:
-    "@storybook/node-logger": 7.0.5
-    remark-gfm: ^3.0.1
-    ts-dedent: ^2.0.0
-  checksum: 208ffc12a358c4d23e9a9f818ec252035642fb8bb20292bd99c92a9892577b7a3d1b78c0ccc0d4b623bdec8c799c8ac18c79cdd2210fc911b4654821c70b262a
-  languageName: node
-  linkType: hard
-
 "@storybook/addon-measure@npm:7.0.5":
   version: 7.0.5
   resolution: "@storybook/addon-measure@npm:7.0.5"
@@ -19488,7 +19477,6 @@ __metadata:
     "@storybook/addon-essentials": ^7.0.5
     "@storybook/addon-interactions": ^7.0.5
     "@storybook/addon-links": ^7.0.5
-    "@storybook/addon-mdx-gfm": ^7.0.5
     "@storybook/addons": ^7.0.5
     "@storybook/preset-scss": ^1.0.3
     "@storybook/react": ^7.0.5

@@ -1,23 +1,46 @@
-const path = require('node:path');
-module.exports = {
+import remarkGfm from 'remark-gfm';
+
+// Replace your-framework with the framework you are using (e.g., react-webpack5, vue3-webpack5)
+import type { StorybookConfig } from '@storybook/react-webpack5';
+
+const config: StorybookConfig = {
   stories: ['../packages/**/*.stories.mdx', '../stories/**/*.stories.mdx'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', 'storybook-addon-designs', '@storybook/preset-scss', '@etchteam/storybook-addon-status', {
-    name: 'storybook-css-modules',
-    options: {
-      cssModulesLoaderOptions: {
-        importLoaders: 1,
-        modules: {
-          localIdentName: '[name]_[local]__[hash:base64:5]'
-        }
-      }
-    }
-  }, '@storybook/addon-mdx-gfm'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/preset-scss',
+    '@etchteam/storybook-addon-status',
+    {
+      name: 'storybook-css-modules',
+      options: {
+        cssModulesLoaderOptions: {
+          importLoaders: 1,
+          modules: {
+            localIdentName: '[name]_[local]__[hash:base64:5]',
+          },
+        },
+      },
+    },
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
+  ],
   staticDirs: ['../assets'],
   framework: {
     name: '@storybook/react-webpack5',
-    options: {}
+    options: {},
   },
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };
+
+export default config;
