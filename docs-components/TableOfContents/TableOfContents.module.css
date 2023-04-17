@@ -1,6 +1,6 @@
 .toc {
   position: fixed;
-  margin-left: 1100px;
+  margin-left: 1100px !important;
   border-left: 2px solid #d2d5d8;
   padding: 32px 40px;
 }
