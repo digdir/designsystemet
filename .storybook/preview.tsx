@@ -1,4 +1,4 @@
-import customTheme from './customTheme.js';
+import customTheme from './customTheme';
 import './inter.css';
 import './customStyling.css';
 import React from 'react';
@@ -43,10 +43,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: [
-        'Komponentoversikt',
-        'Kjernekomponenter'
-      ],
+      order: ['Komponentoversikt', 'Kjernekomponenter'],
     },
   },
 };
