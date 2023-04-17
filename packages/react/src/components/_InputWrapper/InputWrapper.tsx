@@ -9,6 +9,7 @@ import classes from './InputWrapper.module.css';
 
 type InputRendererProps = {
   className: string;
+  hasIcon: boolean;
   inputId: string;
   variant: InputVariant_;
 };
@@ -45,9 +46,10 @@ export const InputWrapper = ({
     isValid,
     readOnly,
   });
+  const hasIcon = iconVariant !== 'none';
 
   return (
-    <>
+    <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
       {label && (
         <label
           className={classes.label}
@@ -56,7 +58,7 @@ export const InputWrapper = ({
           {label}
         </label>
       )}
-      <div
+      <span
         data-testid='InputWrapper'
         className={cn(classes.inputWrapper, classes[variant], {
           [classes.search]: isSearch,
@@ -70,10 +72,11 @@ export const InputWrapper = ({
         />
         {inputRenderer({
           className: classes.field,
+          hasIcon,
           inputId: givenOrRandomInputId,
           variant,
         })}
-      </div>
-    </>
+      </span>
+    </span>
   );
 };

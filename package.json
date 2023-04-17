@@ -23,6 +23,7 @@
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
     "lint": "eslint",
     "lint:all": "eslint .",
+    "lint:all:fix": "yarn run lint:all --fix",
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix"
   },
