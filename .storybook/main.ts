@@ -1,7 +1,6 @@
 import remarkGfm from 'remark-gfm';
-
-// Replace your-framework with the framework you are using (e.g., react-webpack5, vue3-webpack5)
 import type { StorybookConfig } from '@storybook/react-webpack5';
+
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
