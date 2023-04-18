@@ -50,6 +50,7 @@
     "@storybook/addon-interactions": "^7.0.5",
     "@storybook/addon-links": "^7.0.5",
     "@storybook/addons": "^7.0.5",
+    "@storybook/blocks": "^7.0.5",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^7.0.5",
     "@storybook/react-webpack5": "^7.0.5",
