@@ -22,15 +22,25 @@ export const buttonVariant = ['filled', 'outline', 'quiet'] as const;
 type ButtonVariant_ = typeof buttonVariant[number];
 
 export type ButtonProps = {
+  /** Specify which variant to use */
   variant?: ButtonVariant_;
+  /** Specify which color palette to use */
   color?: ButtonColor_;
+  /** Size */
   size?: ButtonSize_;
+  /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
+  /** Enabled dashed border for `outline` variant */
   dashedBorder?: boolean;
+  /** Icon to be rendered in the button. This should be a React component that renders an SVG object. */
   icon?: ReactNode;
+  /** Icon position inside Button */
   iconPlacement?: 'right' | 'left';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
+/**
+ * Button used for interaction
+ */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
