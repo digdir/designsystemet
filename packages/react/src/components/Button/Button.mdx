@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
 import { Spinner } from '../Spinner';
-import { BetaBlock } from '../../../../../docs-components';
+import { BetaBlock, Stack } from '../../../../../docs-components';
 import * as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
@@ -9,32 +9,42 @@ import * as ButtonStories from './Button.stories';
 
 <BetaBlock />
 
-On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century fresh white degree chosen times, be a dissolute of for harmonics.
+Button lar brukeren utføre en handling.
 
 ## Varianter
 
 ### Knapp med tekst
 
 <Canvas>
-  <Story of={ButtonStories.filled} />
-  <Story of={ButtonStories.outline} />
-  <Story of={ButtonStories.quiet} />
+  <Story of={ButtonStories.WithText} />
 </Canvas>
+{/* 
+<Canvas>
+  <Story of={ButtonStories.Filled} />
+  <Story of={ButtonStories.Outline} />
+  <Story of={ButtonStories.Quiet} />
+</Canvas> */}
 
 ### Knapp med ikon
 
 <Canvas>
-  <Story of={ButtonStories.FyltMedIkon} />
-  <Story of={ButtonStories.OmrissMedIkon} />
-  <Story of={ButtonStories.GjennomsiktigMedIkon} />
+  <Story of={ButtonStories.FilledWithIcon} />
+  <Story of={ButtonStories.OutlineWithIcon} />
+  <Story of={ButtonStories.QuietWithIcon} />
 </Canvas>
 
 ### Knapp med tekst og ikon
 
 <Canvas>
-  <Story of={ButtonStories.FyltMedTekstOgIkon} />
-  <Story of={ButtonStories.OmrissMedTekstOgIkon} />
-  <Story of={ButtonStories.GjennomsiktigMedTekstOgIkon} />
+  <Story of={ButtonStories.FilledWithTextIcon} />
+  <Story of={ButtonStories.OutlineWithTextIcon} />
+  <Story of={ButtonStories.QuietWithTextIcon} />
+</Canvas>
+
+### Full bredde
+
+<Canvas>
+  <Story of={ButtonStories.fullWidth} />
 </Canvas>
 
 ### Bruk av Spinner til å lage en knapp som laster
@@ -49,12 +59,18 @@ Det er imidlertid viktig å vite at denne prop-en ikke automatisk stopper knappe
 Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
 
 <Canvas>
-  <Story of={ButtonStories.FyltMedTekstOgSpinner} />
-  <Story of={ButtonStories.OmrissMedTekstOgSpinner} />
-  <Story of={ButtonStories.GjennomsiktigMedTekstOgSpinner} />
+  <Story of={ButtonStories.FilledWithTextSpinner} />
+  <Story of={ButtonStories.OutlineWithTextSpinner} />
+  <Story of={ButtonStories.QuietWithTextSpinner} />
 </Canvas>
 
-## Størrelser
+## Bruk
+
+```tsx
+import { Button } from '@digdir/design-system-react';
+
+<Button>Trykk på meg!</Button>;
+```
 
 ## Props
 

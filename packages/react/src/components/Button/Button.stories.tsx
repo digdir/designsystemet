@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
 
 import type { ButtonProps } from './';
@@ -49,13 +50,50 @@ const LoadingTemplate = (args: ButtonProps) => {
   );
 };
 
+// Render functions need to accept "args" for code preview to work properly
+const withTextTemplate = (args: ButtonProps) => {
+  return (
+    <>
+      <Button
+        variant='filled'
+        {...args}
+      >
+        Fylt
+      </Button>
+      <Button
+        variant='outline'
+        {...args}
+      >
+        Omriss
+      </Button>
+      <Button
+        variant='quiet'
+        {...args}
+      >
+        Gjennomsiktig
+      </Button>
+    </>
+  );
+};
+
 export const props: Story = {
   args: {
     children: 'Knapp',
   },
 };
 
-export const filled: Story = {
+export const WithText: Story = {
+  render: withTextTemplate,
+  decorators: [
+    (Story) => (
+      <Stack>
+        <Story />
+      </Stack>
+    ),
+  ],
+};
+
+export const Filled: Story = {
   name: 'Fylt med tekst',
   args: {
     children: 'Fylt',
@@ -63,7 +101,7 @@ export const filled: Story = {
   },
 };
 
-export const outline: Story = {
+export const Outline: Story = {
   name: 'Omriss med tekst',
   args: {
     children: 'Omriss',
@@ -71,7 +109,7 @@ export const outline: Story = {
   },
 };
 
-export const quiet: Story = {
+export const Quiet: Story = {
   name: 'Gjennomsiktig med tekst',
   args: {
     children: 'Gjennomsiktig',
@@ -79,7 +117,7 @@ export const quiet: Story = {
   },
 };
 
-export const FyltMedIkon: Story = {
+export const FilledWithIcon: Story = {
   name: 'Fylt med ikon',
   args: {
     icon,
@@ -87,7 +125,7 @@ export const FyltMedIkon: Story = {
   },
 };
 
-export const OmrissMedIkon: Story = {
+export const OutlineWithIcon: Story = {
   name: 'Omriss med ikon',
   args: {
     icon,
@@ -95,18 +133,16 @@ export const OmrissMedIkon: Story = {
   },
 };
 
-export const GjennomsiktigMedIkon: Story = {
+export const QuietWithIcon: Story = {
   name: 'Gjennomsiktig med ikon',
-
   args: {
     icon,
     variant: 'quiet',
   },
 };
 
-export const FyltMedTekstOgIkon: Story = {
+export const FilledWithTextIcon: Story = {
   name: 'Fylt med tekst og ikon',
-
   args: {
     children: 'Fylt',
     icon,
@@ -114,9 +150,8 @@ export const FyltMedTekstOgIkon: Story = {
   },
 };
 
-export const OmrissMedTekstOgIkon: Story = {
+export const OutlineWithTextIcon: Story = {
   name: 'Omriss med tekst og ikon',
-
   args: {
     children: 'Med omriss',
     icon,
@@ -124,9 +159,8 @@ export const OmrissMedTekstOgIkon: Story = {
   },
 };
 
-export const GjennomsiktigMedTekstOgIkon: Story = {
+export const QuietWithTextIcon: Story = {
   name: 'Gjennomsiktig med tekst og ikon',
-
   args: {
     children: 'Gjennomsiktig',
     icon,
@@ -134,20 +168,18 @@ export const GjennomsiktigMedTekstOgIkon: Story = {
   },
 };
 
-export const FyltMedTekstOgSpinner: Story = {
+export const FilledWithTextSpinner: Story = {
   render: LoadingTemplate,
   name: 'Fylt med tekst og spinner',
-
   args: {
     variant: 'filled',
     'aria-disabled': true,
   },
 };
 
-export const OmrissMedTekstOgSpinner: Story = {
+export const OutlineWithTextSpinner: Story = {
   render: LoadingTemplate,
   name: 'Omriss med tekst og spinner',
-
   args: {
     children: 'Med omriss',
     icon,
@@ -156,14 +188,24 @@ export const OmrissMedTekstOgSpinner: Story = {
   },
 };
 
-export const GjennomsiktigMedTekstOgSpinner: Story = {
+export const QuietWithTextSpinner: Story = {
   render: LoadingTemplate,
   name: 'Gjennomsiktig med tekst og spinner',
-
   args: {
     children: 'Gjennomsiktig',
     icon,
     variant: 'quiet',
     'aria-disabled': true,
+  },
+};
+
+export const fullWidth: Story = {
+  name: 'Full bredde',
+  args: {
+    children: 'Full bredde',
+    fullWidth: true,
+  },
+  parameters: {
+    layout: 'padded',
   },
 };

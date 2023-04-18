@@ -13,3 +13,4 @@ export { GithubReleasesChangelog } from './GithubReleasesChangelog/GithubRelease
 export { Changelog } from './Changelog/Changelog';
 export { ComponentOverview } from './ComponentOverview/component-overview';
 export { FrontpageNavigation } from './FrontpageNavigation/FrontpageNavigation';
+export { Stack } from './Stack/Stack';
