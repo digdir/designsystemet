@@ -7,6 +7,9 @@
     "Mode/Compact",
     "Brand/Tilsynet",
     "Brand/Altinn",
-    "Viewport/mobile"
+    "Viewport/@380",
+    "Viewport/@768",
+    "Viewport/@1024",
+    "Viewport/@1400"
   ]
 }
