@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -12,7 +12,13 @@ const focusWithinChangeFn = jest.fn();
 
 const TestComponent = () => {
   const ref = useRef<HTMLSpanElement>(null);
-  const hasFocus = useFocusWithin<HTMLSpanElement>(ref);
+  const [element, setElement] = useState(ref.current);
+  useEffect(() => {
+    setElement(ref.current);
+  }, [ref, setElement]);
+
+  const hasFocus = useFocusWithin<HTMLSpanElement>(element);
+
   useEffect(() => {
     focusWithinChangeFn(hasFocus);
   }, [hasFocus]);

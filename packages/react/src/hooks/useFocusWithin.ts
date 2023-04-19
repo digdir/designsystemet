@@ -1,22 +1,21 @@
-import type { RefObject } from 'react';
 import { useState } from 'react';
 
 import { useEventListener } from './useEventListener';
 
 /**
- * Returns true if the given ref is currently focused or contains the currently focused element.
- * @param ref Reference to the element to check.
- * @returns True if the given ref is currently focused or contains the currently focused element.
+ * Returns true if the given element is currently focused or contains the currently focused element.
+ * @param element The element to check.
+ * @returns True if the given element is currently focused or contains the currently focused element.
  */
 export function useFocusWithin<T extends HTMLElement>(
-  ref: RefObject<T>,
+  element: T | null,
 ): boolean {
   const [hasFocus, setHasFocus] = useState<boolean>(false);
   const updateHasFocus = () => {
     const { activeElement } = document;
-    setHasFocus(ref.current?.contains(activeElement) ?? false);
+    setHasFocus(element?.contains(activeElement) ?? false);
   };
-  useEventListener('focusin', updateHasFocus, ref.current);
-  useEventListener('focusout', updateHasFocus, ref.current);
+  useEventListener('focusin', updateHasFocus, element);
+  useEventListener('focusout', updateHasFocus, element);
   return hasFocus;
 }

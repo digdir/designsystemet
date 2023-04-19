@@ -1,4 +1,4 @@
-import type { ChangeEvent, ReactNode, RefObject } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
@@ -161,7 +161,7 @@ const Select = (props: SelectProps) => {
   const selectField = elements.reference as HTMLSpanElement;
 
   const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
-  const hasFocus = useFocusWithin(refs.reference as RefObject<HTMLSpanElement>);
+  const hasFocus = useFocusWithin(selectField);
   useEventListener('click', () => setUsingKeyboard(false));
   useEventListener('keydown', () => setUsingKeyboard(true));
 
