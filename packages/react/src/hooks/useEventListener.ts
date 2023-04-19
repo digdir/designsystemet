@@ -8,7 +8,7 @@ type Element = HTMLElement | null | undefined;
  * @param action The action to perform when the event is triggered.
  * @param element The element to add the event listener to. Defaults to the document body.
  */
-export function useEventListener<T extends Element = undefined>(
+export function useEventListener<T extends Element>(
   eventType: string,
   action: () => void,
   element?: T,
