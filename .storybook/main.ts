@@ -25,7 +25,7 @@ const config: StorybookConfig = {
       },
     },
     {
-      name: '@storybook/addon-docs',
+      name: '@storybook/addon-essentials',
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
