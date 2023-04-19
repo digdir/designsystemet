@@ -41,7 +41,7 @@ export default [
       resolve(),
       commonjs(),
       json(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({ tsconfig: './tsconfig.build.json' }),
       svgr({ exportType: 'named' }),
       postcss(),
       terser(),
