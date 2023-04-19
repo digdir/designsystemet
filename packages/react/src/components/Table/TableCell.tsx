@@ -65,7 +65,7 @@ export function TableCell({
               ? 'ascending'
               : sortDirection === 'desc'
               ? 'descending'
-              : 'none'
+              : undefined
           }
         >
           <div
