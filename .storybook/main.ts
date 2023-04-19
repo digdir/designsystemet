@@ -1,6 +1,5 @@
 import remarkGfm from 'remark-gfm';
 import type { StorybookConfig } from '@storybook/react-webpack5';
-
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
@@ -10,7 +9,6 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-interactions',
-    '@storybook/preset-scss',
     '@etchteam/storybook-addon-status',
     {
       name: 'storybook-css-modules',
