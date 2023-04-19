@@ -11,7 +11,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "rollup -c && tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && rollup -c",
     "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint src/**/*.ts* --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
