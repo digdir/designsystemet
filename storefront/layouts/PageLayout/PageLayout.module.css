@@ -113,6 +113,13 @@
   font-size: 24px;
 }
 
+.content h4 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 20px;
+}
+
 .content img {
   width: 100%;
   margin: 24px 0;

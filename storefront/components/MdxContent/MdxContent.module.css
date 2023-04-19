@@ -1,3 +1,7 @@
+.content > h2:first-child {
+  margin-top: 32px !important;
+}
+
 .content > p,
 .content > h2,
 .content > h3,

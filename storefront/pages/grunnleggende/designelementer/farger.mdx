@@ -36,6 +36,11 @@ Første ledd refererer til elementet som fargelegges: background, Surface
 
 ## Globale farger
 
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+
 <Figma
   title='Figma Spacing'
   url='file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?node-id=449%3A4635&t=LCJ4XnFWkIhcz0Jr-1'
@@ -43,9 +48,106 @@ Første ledd refererer til elementet som fargelegges: background, Surface
 
 ## Semantiske farger
 
+### Background
+
 <Tokens
-  tokenKey='fds-sem'
   type='color'
+  range={[
+    '--fds-semantic-background-default',
+    '--fds-semantic-background-subtle',
+  ]}
+/>
+
+### Surface
+
+#### Neutral
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-neutral-default',
+    '--fds-semantic-surface-neutral-inverted',
+  ]}
+/>
+
+#### Action
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-action-subtle',
+    '--fds-semantic-surface-action-no_fill-active',
+  ]}
+/>
+
+#### Success
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-success-subtle',
+    '--fds-semantic-surface-success-no_fill-active',
+  ]}
+/>
+
+#### Warning
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-warning-subtle',
+    '--fds-semantic-surface-warning-subtle-hover',
+  ]}
+/>
+
+#### Danger
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-danger-subtle',
+    '--fds-semantic-surface-danger-no_fill-action',
+  ]}
+/>
+
+#### Info
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-info-subtle',
+    '--fds-semantic-surface-info-subtle-hover',
+  ]}
+/>
+
+#### Primary
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-primary-primary',
+    '--fds-semantic-surface-primary-primary-active',
+  ]}
+/>
+
+#### Secondary
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-secondary-secondary',
+    '--fds-semantic-surface-secondary-secondary-active',
+  ]}
+/>
+
+#### Teriary
+
+<Tokens
+  type='color'
+  range={[
+    '--fds-semantic-surface-tertiary-tertiary',
+    '--fds-semantic-surface-tertiary-tertiary-active',
+  ]}
 />
 
 ## Branding

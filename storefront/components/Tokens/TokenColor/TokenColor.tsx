@@ -7,7 +7,6 @@ interface TokenColorProps {
 }
 
 const TokenColor = ({ value }: TokenColorProps) => {
-  console.log(value);
   return (
     <div
       style={{ backgroundColor: value }}

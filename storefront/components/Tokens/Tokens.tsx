@@ -10,25 +10,56 @@ interface TokensProps {
   tokenKey: string;
   type: 'color' | 'fontSize';
   showValue?: boolean;
+  range?: string[];
 }
 
 type OutputType = {
   [key: string]: string;
 };
 
-const Tokens = ({ tokenKey, type, showValue = true }: TokensProps) => {
+const Tokens = ({
+  tokenKey,
+  type,
+  range = [],
+  showValue = true,
+}: TokensProps) => {
   const [items, setItems] = useState<OutputType>({});
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data } = useSWR('/api/tokens', fetcher);
+  const swrRes = useSWR('/api/tokens', fetcher);
+  const data = swrRes.data as OutputType;
 
   useEffect(() => {
     if (data) {
       const obj: OutputType = {};
-      Object.keys(data).map((key) => {
-        if (key.startsWith(tokenKey)) {
-          obj[key] = data[key].replace(';', '').replace('\n', '');
-        }
-      });
+
+      if (range.length > 0) {
+        const first = range[0];
+        const second = range[1];
+        let foundFirst = false;
+        let foundSecond = false;
+        Object.keys(data).map((key) => {
+          if ('--' + key === first) {
+            foundFirst = true;
+          }
+
+          if (foundFirst && !foundSecond) {
+            console.log(key);
+            obj[key] = data[key].replace(';', '');
+            if ('--' + key === second) {
+              foundSecond = true;
+              console.log('d');
+            }
+          }
+        });
+        console.log(foundFirst, foundSecond);
+      } else {
+        Object.keys(data).map((key) => {
+          if (key.startsWith(tokenKey)) {
+            obj[key] = data[key].replace(';', '');
+          }
+        });
+      }
+
       setItems(obj);
     }
   }, [data, tokenKey]);

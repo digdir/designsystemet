@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import path from 'path';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -11,7 +12,11 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   //Read the json data file data.json
-  const fileContents = await fs.readFile('tokens.css', 'utf8');
+  const tokensDirectory = path.join(process.cwd(), 'tokens');
+  const fileContents = await fs.readFile(
+    tokensDirectory + '/tokens.css',
+    'utf8',
+  );
   const fileContentsArr = fileContents.split('--');
   const outputObj: outputObjType = {};
 
