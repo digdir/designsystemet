@@ -1,5 +1,4 @@
 .textArea {
-  border: none;
   font-family: inherit;
   font-size: var(--component-textarea-font_size-sm);
 }
