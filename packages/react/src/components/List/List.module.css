@@ -6,6 +6,8 @@
   border-top-width: var(--component-list-border_width);
   list-style-type: none;
   padding-left: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .list.solid {
