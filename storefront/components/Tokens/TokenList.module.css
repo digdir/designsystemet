@@ -1,0 +1,69 @@
+.tokens {
+  box-shadow: none !important;
+}
+
+.cards {
+  display: grid;
+  grid-column-gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 620px), 1fr));
+  margin-top: var(--spacing-4);
+  margin-top: -8px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  align-items: flex-start;
+  padding: 24px 0;
+}
+
+.card:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.preview {
+  height: 82px;
+  width: 164px;
+  border-radius: 4px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px !important;
+  margin-top: -6px !important;
+  margin-bottom: 0 !important;
+}
+
+.text {
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.copy {
+  background-color: #eee;
+  height: 50px;
+  padding: 11px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 470px;
+  margin: 10px 0;
+}
+
+.copyIcon {
+  margin-bottom: -4px;
+  margin-left: 8px;
+}
+
+.value {
+  /* margin-bottom: -5px;
+  margin-top: -1px; */
+}

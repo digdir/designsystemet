@@ -1,7 +1,7 @@
 import Meta from '../../../components/Meta/Meta';
 import { PageLayout } from '../../../layouts';
 import { Figma } from 'mdx-embed';
-import { Tokens } from '../../../components/Tokens/Tokens';
+import { TokenList } from '../../../components/Tokens/TokenList';
 
 <Meta
   title='Farger'
@@ -34,127 +34,201 @@ Første ledd refererer til elementet som fargelegges: background, Surface
 - Border: Fargen til en ramme (stroke).
 - Text/Icon: Fargen på tekst og ikoner.
 
-## Globale farger
-
-| Syntax    | Description |
-| --------- | ----------- |
-| Header    | Title       |
-| Paragraph | Text        |
-
-<Figma
-  title='Figma Spacing'
-  url='file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?node-id=449%3A4635&t=LCJ4XnFWkIhcz0Jr-1'
-/>
-
 ## Semantiske farger
 
 ### Background
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-background-default',
-    '--fds-semantic-background-subtle',
-  ]}
+  token='fds-semantic-background'
 />
 
-### Surface
+### Surface neutral
 
-#### Neutral
-
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-neutral-default',
-    '--fds-semantic-surface-neutral-inverted',
-  ]}
+  token='fds-semantic-surface-neutral'
 />
 
-#### Action
+### Surface Action
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-action-subtle',
-    '--fds-semantic-surface-action-no_fill-active',
-  ]}
+  token='fds-semantic-surface-action'
 />
 
-#### Success
+### Surface Success
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-success-subtle',
-    '--fds-semantic-surface-success-no_fill-active',
-  ]}
+  token='fds-semantic-surface-success'
 />
 
-#### Warning
+### Surface Warning
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-warning-subtle',
-    '--fds-semantic-surface-warning-subtle-hover',
-  ]}
+  token='fds-semantic-surface-warning'
 />
 
-#### Danger
+### Surface Danger
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-danger-subtle',
-    '--fds-semantic-surface-danger-no_fill-action',
-  ]}
+  token='fds-semantic-surface-danger'
 />
 
-#### Info
+### Surface Info
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-info-subtle',
-    '--fds-semantic-surface-info-subtle-hover',
-  ]}
+  token='fds-semantic-surface-info'
 />
 
-#### Primary
+### Surface Primary
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-primary-primary',
-    '--fds-semantic-surface-primary-primary-active',
-  ]}
+  token='fds-semantic-surface-primary'
 />
 
-#### Secondary
+### Surface Secondary
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-secondary-secondary',
-    '--fds-semantic-surface-secondary-secondary-active',
-  ]}
+  token='fds-semantic-surface-secondary'
 />
 
-#### Teriary
+### Surface Teriary
 
-<Tokens
+<TokenList
   type='color'
-  range={[
-    '--fds-semantic-surface-tertiary-tertiary',
-    '--fds-semantic-surface-tertiary-tertiary-active',
-  ]}
+  token='fds-semantic-surface-tertiary'
+/>
+
+## Border
+
+### Border neutral
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-neutral'
+/>
+
+### Border info
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-info'
+/>
+
+### Border action
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-action'
+/>
+
+### Border Success
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-success'
+/>
+
+### Border Warning
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-warning'
+/>
+
+### Border Danger
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-danger'
+/>
+
+### Border Primary
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-primary'
+/>
+
+### Border Secondary
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-secondary'
+/>
+
+### Border Tertiary
+
+<TokenList
+  type='color'
+  token='fds-semantic-border-tertiary'
+/>
+
+## Text
+
+### Text Neutral
+
+<TokenList
+  type='color'
+  token='fds-semantic-text-neutral'
+/>
+
+### Text Action
+
+<TokenList
+  type='color'
+  token='fds-semantic-text-action'
+/>
+
+### Text Success
+
+<TokenList
+  type='color'
+  token='fds-semantic-text-success'
+/>
+
+### Text Warning
+
+<TokenList
+  type='color'
+  token='fds-semantic-text-warning'
+/>
+
+### Text Danger
+
+<TokenList
+  type='color'
+  token='fds-semantic-text-danger'
 />
 
 ## Branding
 
 Noen av fargene er branding-farger, det vil si at themet du bruker avgjør hvilke primær, sekundær og tertiær-farger du har tilgjengelig. For meningsbærendende farger som for eksempel warning og danger anbefaler vi å bruke de globale fargene uten å overstyre dem. At en meningsbærende farge har samme betydning i en offentlig sammenheng som en annen tror vi bare har fordeler.
 
-<Tokens
-  tokenKey='fds-brand'
+### Branding Primary
+
+<TokenList
   type='color'
+  token='fds-brand-primary'
+/>
+
+### Branding Secondary
+
+<TokenList
+  type='color'
+  token='fds-brand-secondary'
+/>
+
+### Branding Tertiary
+
+<TokenList
+  type='color'
+  token='fds-brand-tertiary'
 />
