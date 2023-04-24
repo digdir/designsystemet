@@ -46,10 +46,7 @@ const TokensTable = (tokenTable: TokenTableProps) => {
 
     const rows: { row: (string | JSX.Element | unknown)[] }[] = [];
 
-    console.log(row);
-
     Object.entries(row).map(([key, value]) => {
-      console.log(value, key);
       if (tokenTable.showPreview) {
         rows.push({
           row: [key, value, getPreview(key, value as string)],
