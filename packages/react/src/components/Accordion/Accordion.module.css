@@ -7,8 +7,10 @@
   --fdsc-accordion-header-padding-bottom: var(--fds-spacing-small);
   --fdsc-accordion-header-padding-left: var(--fds-spacing-medium);
   --fdsc-accordion-header-bg-neutral: var(--fds-semantic-surface-neutral-default);
+  --fdsc-accordion-header-bg-neutral-active: var(--fds-semantic-surface-action-no_fill-hover);
+  --fdsc-accordion-header-bg-brand-active: var(--fds-semantic-surface-neutral-subtle-hover);
   --fdsc-accordion-header-bg-subtle: var(--fds-semantic-surface-neutral-subtle);
-  --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);
+  --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);  
   --fdsc-accordion-header-bg-primary: var(--fds-semantic-surface-primary-primary);
   --fdsc-accordion-header-bg-primary-hover: var(--fds-semantic-surface-primary-primary-hover);
   --fdsc-accordion-header-bg-secondary: var(--fds-semantic-surface-secondary-secondary);
@@ -19,6 +21,7 @@
   --fdsc-accordion-header-border-inverted: var(--fds-semantic-border-on_inverted-default);
   --fdsc-accordion-header-shadow-focus: 2px 2px 3px
     var(--fds-semantic-border-neutral-subtle);
+  --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-default);
   --fdsc-accordion-content-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-content-border-open: var(--fds-semantic-border-neutral-strong);
 }
@@ -32,10 +35,6 @@
   font-size: 1.5rem;
   height: 1.75rem;
   flex-shrink: 0;
-}
-
-.expandIcon.filled {
-  display: none;
 }
 
 .content {
@@ -76,12 +75,8 @@
   box-shadow: var(--fdsc-accordion-header-shadow-focus);
 }
 
-.header > button:hover > .expandIcon {
-  display: none;
-}
-
-.header > button:hover > .expandIcon.filled {
-  display: block;
+.header > button:hover {
+  color: var(--fdsc-accordion-header-color-hover)
 }
 
 .item:focus-within {
@@ -96,50 +91,61 @@
   background: var(--fdsc-accordion-header-bg-subtle);
 }
 
-.accordion.subtle > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-subtle-hover);
-}
-
 .accordion.primary, .accordion.primary > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-primary);
-}
-
-.accordion.primary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-primary-hover);
 }
 
 .accordion.secondary, .accordion.secondary > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-secondary);
 }
 
-.accordion.secondary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-secondary-hover);
-}
-
 .accordion.tertiary, .accordion.tertiary > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-tertiary);
+}
+
+.accordion.border > .item:first-child > .header > button {
+  border-top: 0;
+}
+
+.accordion.primary > .item:not(:first-child) > .header > button, 
+.accordion.secondary > .item:not(:first-child) > .header > button, 
+.accordion.tertiary > .item:not(:first-child) > .header > button {
+  border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
+}
+
+.accordion.subtle > .item > .header > button:hover {
+  background: var(--fdsc-accordion-header-bg-subtle-hover);
+}
+
+.accordion.primary > .item > .header > button:hover {
+  background: var(--fdsc-accordion-header-bg-primary-hover);
+}
+
+.accordion.secondary > .item > .header > button:hover {
+  background: var(--fdsc-accordion-header-bg-secondary-hover);
 }
 
 .accordion.tertiary > .item > .header > button:hover {
   background: var(--fdsc-accordion-header-bg-tertiary-hover);
 }
 
-.accordion.primary .header > button, 
-.accordion.secondary .header > button, 
-.accordion.tertiary .header > button {
-  border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
+.accordion.neutral > .item.open > .header > button,
+.accordion.subtle > .item.open > .header > button {
+  background-color: var(--fdsc-accordion-header-bg-neutral-active);
 }
 
-.item.open > .header:hover + * .content {
+.accordion.primary > .item.open > .header > button,
+.accordion.secondary > .item.open > .header > button,
+.accordion.tertiary > .item.open > .header > button {
+  background-color: var(--fdsc-accordion-header-bg-brand-active);
+}
+
+.item.open > .header > button:hover + * .content {
   border-color: var(--fdsc-accordion-content-border-open);
 }
 
 .item.open > .header > button .expandIcon {
   transform: rotateZ(180deg);
-}
-
-.item:first-child > .header > button {
-  border-top: 0;
 }
 
 .header > button:hover > .accordion.expandIcon.filled {

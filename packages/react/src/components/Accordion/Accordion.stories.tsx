@@ -127,10 +127,7 @@ export const ColorSubtle: StoryFn = () => (
 
 export const ColorPrimary: StoryFn = () => (
   <div style={{ width: 500 }}>
-    <Accordion
-      border
-      color='primary'
-    >
+    <Accordion color='primary'>
       <Accordion.Item>
         <Accordion.Header>Accordion header text</Accordion.Header>
         <Content />

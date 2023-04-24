@@ -1,4 +1,4 @@
-import { Expand, ExpandFilled } from '@navikt/ds-icons';
+import { Expand } from '@navikt/ds-icons';
 import cn from 'classnames';
 import type { MouseEventHandler } from 'react';
 import React, { forwardRef, useContext } from 'react';
@@ -70,10 +70,6 @@ const AccordionHeader: AccordionHeaderType = forwardRef(
           <Expand
             aria-hidden
             className={styles.expandIcon}
-          />
-          <ExpandFilled
-            aria-hidden
-            className={cn(styles.expandIcon, styles.filled)}
           />
         </button>
       </Heading>
