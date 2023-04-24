@@ -15,6 +15,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **Table:** Sort-arrows fix ([#297](https://github.com/digdir/designsystem/issues/297)) ([fbc8e50](https://github.com/digdir/designsystem/commit/fbc8e5083802667f3fbc664637c36a7881cde040))
 - **TextArea:** Set border ([#310](https://github.com/digdir/designsystem/issues/310)) ([255f632](https://github.com/digdir/designsystem/commit/255f632c128a0c7a41fd466d63d285495401eac1))
 
+### BREAKING CHANGE
+
+- **Accordion** was renamed to LegacyAccordion to make room for new “Accordion” component in accordance with new design & features ([#296](https://github.com/digdir/designsystem/issues/296))([83d7e6c](https://github.com/digdir/designsystem/commit/83d7e6cabf3df97a252d56196d6583d847b6f663))
+
 ## [0.11.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.0...@digdir/design-system-react@0.11.1) (2023-04-11)
 
 ### Bug Fixes
