@@ -60,18 +60,8 @@ const withTextTemplate = (args: ButtonProps) => {
       >
         Fylt
       </Button>
-      <Button
-        variant='outline'
-        {...args}
-      >
-        Omriss
-      </Button>
-      <Button
-        variant='quiet'
-        {...args}
-      >
-        Gjennomsiktig
-      </Button>
+      <Button {...Outline.args}>Omriss</Button>
+      <Button {...Quiet.args}>Gjennomsiktig</Button>
     </>
   );
 };
