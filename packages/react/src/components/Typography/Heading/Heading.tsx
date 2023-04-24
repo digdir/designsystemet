@@ -1,41 +1,44 @@
-import React from 'react';
-import cn from 'classnames';
+import React, { forwardRef } from 'react';
+import cl from 'classnames';
 
-import classes from './Heading.module.css';
+import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
-export interface HeadingProps {
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
-  color?: string;
+export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  /**
+   * Heading level
+   * @default "1"
+   */
+  level?: '1' | '2' | '3' | '4' | '5' | '6';
+  /**
+   * Changes text-sizing
+   */
+  size: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
+  /**
+   * Heading text
+   */
   children: React.ReactNode;
-  margin?: boolean;
+  /**
+   * Adds margin-bottom
+   * @default false
+   */
+  spacing?: boolean;
 }
 
-const Heading = ({
-  level = 1,
-  size = 'xlarge',
-  color = 'black',
-  children,
-  margin = false,
-}: HeadingProps) => {
-  const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return React.createElement(`h${level}`, props, children);
-  };
-  const HeadingStyle = {
-    color,
-  };
-  return (
-    <Heading
-      style={HeadingStyle}
-      className={cn(
-        [classes['heading']],
-        { [classes['heading--margin']]: margin },
-        classes[`heading--${size}`],
-      )}
-    >
-      {children}
-    </Heading>
+export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
+  forwardRef(
+    ({ level = '1', size, spacing = false, className, as, ...rest }, ref) => {
+      const HeadingTag = as ?? (`h${level}` as React.ElementType);
+
+      return (
+        <HeadingTag
+          {...rest}
+          ref={ref}
+          className={cl(className, 'heading', `heading--${size}`, {
+            'typo--spacing': spacing,
+          })}
+        />
+      );
+    },
   );
-};
 
 export default Heading;
