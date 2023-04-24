@@ -2,7 +2,6 @@
 # Requires github pages source settings to target the branch and folder in the deploy step from this action
 name: Build and deploy Storybook
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
