@@ -7,7 +7,7 @@ import { useKeyboardEventListener } from './';
 const user = userEvent.setup();
 
 const renderUseKeyboardEventListener = (key: string, onKeyDown: () => void) =>
-  renderHook(() => useKeyboardEventListener(key, onKeyDown), {
+  renderHook(() => useKeyboardEventListener(key, onKeyDown, document.body), {
     initialProps: { key, onKeyDown },
   });
 
@@ -27,7 +27,10 @@ describe('useKeyboardEventListener', () => {
   });
 
   it('Removes event listener on unmount', () => {
-    const removeEventListenerSpy = jest.spyOn(document, 'removeEventListener');
+    const removeEventListenerSpy = jest.spyOn(
+      document.body,
+      'removeEventListener',
+    );
     const { unmount } = renderUseKeyboardEventListener('Enter', jest.fn());
     expect(removeEventListenerSpy).not.toHaveBeenCalled();
     unmount();

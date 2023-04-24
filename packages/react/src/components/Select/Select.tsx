@@ -11,6 +11,7 @@ import {
   useUpdate,
 } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utils';
+import { useFocusWithin } from '../../hooks/useFocusWithin';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
@@ -160,15 +161,9 @@ const Select = (props: SelectProps) => {
   const selectField = elements.reference as HTMLSpanElement;
 
   const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
-  const [hasFocus, setHasFocus] = useState<boolean>(false);
+  const hasFocus = useFocusWithin(selectField);
   useEventListener('click', () => setUsingKeyboard(false));
   useEventListener('keydown', () => setUsingKeyboard(true));
-  const updateHasFocus = () => {
-    const { activeElement } = document;
-    setHasFocus(selectField?.contains(activeElement) ?? false);
-  };
-  useEventListener('focusin', updateHasFocus);
-  useEventListener('focusout', updateHasFocus);
 
   useUpdate(() => {
     if (!multiple && !hasFocus) {
@@ -295,23 +290,31 @@ const Select = (props: SelectProps) => {
     numberOfOptions,
   ]);
 
-  useKeyboardEventListener(eventListenerKeys.ArrowDown, () => {
-    expanded ? moveFocusDown() : setExpanded(true);
-  });
+  useKeyboardEventListener(
+    eventListenerKeys.ArrowDown,
+    () => (expanded ? moveFocusDown() : setExpanded(true)),
+    selectField,
+  );
 
-  useKeyboardEventListener(eventListenerKeys.ArrowUp, () => {
-    expanded ? moveFocusUp() : setExpanded(true);
-  });
+  useKeyboardEventListener(
+    eventListenerKeys.ArrowUp,
+    () => (expanded ? moveFocusUp() : setExpanded(true)),
+    selectField,
+  );
 
-  useKeyboardEventListener(eventListenerKeys.Enter, () => {
-    if (expanded) {
-      if (activeOption) {
-        addOrRemoveSelectedValue(activeOption);
-      } else {
-        setExpanded(false);
+  useKeyboardEventListener(
+    eventListenerKeys.Enter,
+    () => {
+      if (expanded) {
+        if (activeOption) {
+          addOrRemoveSelectedValue(activeOption);
+        } else {
+          setExpanded(false);
+        }
       }
-    }
-  });
+    },
+    selectField,
+  );
 
   const keywordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const newKeyword = e.target.value;

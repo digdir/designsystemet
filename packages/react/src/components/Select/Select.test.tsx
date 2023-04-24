@@ -310,7 +310,7 @@ describe('Select', () => {
 
     it('Updates the search field with the best match when the user presses the Enter key', async () => {
       renderSingleSelect();
-      await user.type(getCombobox(), 'abc{Enter}');
+      await act(() => user.type(getCombobox(), 'abc{Enter}'));
       expect(getCombobox()).toHaveValue(sortedOptions[0].label);
     });
 
@@ -328,10 +328,10 @@ describe('Select', () => {
         </>,
       );
       expect(onFocus).not.toHaveBeenCalled();
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onFocus).toHaveBeenCalledTimes(1);
       expect(onFocus).toHaveBeenCalledWith(value);
-      await user.click(screen.getByTestId(outsideButtonTestid));
+      await act(() => user.click(screen.getByTestId(outsideButtonTestid)));
       expect(onFocus).toHaveBeenCalledTimes(1);
     });
 
@@ -349,9 +349,9 @@ describe('Select', () => {
         </>,
       );
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(screen.getByTestId(outsideButtonTestid));
+      await act(() => user.click(screen.getByTestId(outsideButtonTestid)));
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(value);
     });
@@ -360,9 +360,9 @@ describe('Select', () => {
       const onBlur = jest.fn();
       const value = singleSelectOptions[0].value;
       renderSingleSelect({ onBlur, value });
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(document.body);
+      await act(() => user.click(document.body));
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(value);
     });
@@ -822,10 +822,10 @@ describe('Select', () => {
         </>,
       );
       expect(onFocus).not.toHaveBeenCalled();
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onFocus).toHaveBeenCalledTimes(1);
       expect(onFocus).toHaveBeenCalledWith(value);
-      await user.click(screen.getByTestId(outsideButtonTestid));
+      await act(() => user.click(screen.getByTestId(outsideButtonTestid)));
       expect(onFocus).toHaveBeenCalledTimes(1);
     });
 
@@ -843,9 +843,9 @@ describe('Select', () => {
         </>,
       );
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(screen.getByTestId(outsideButtonTestid));
+      await act(() => user.click(screen.getByTestId(outsideButtonTestid)));
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(value);
     });
@@ -854,9 +854,9 @@ describe('Select', () => {
       const onBlur = jest.fn();
       const value = [multiSelectOptions[0].value];
       renderMultiSelect({ onBlur, value });
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(document.body);
+      await act(() => user.click(document.body));
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(value);
     });
@@ -867,10 +867,11 @@ describe('Select', () => {
       const selectedOption = multiSelectOptions[0];
       const value = [selectedOption.value];
       renderMultiSelect({ onBlur, onFocus, value });
-      await user.click(getCombobox());
+      await act(() => user.click(getCombobox()));
       expect(onFocus).toHaveBeenCalledTimes(1);
       expect(onBlur).not.toHaveBeenCalled();
-      await user.click(screen.getByLabelText(selectedOption.deleteButtonLabel));
+      const delButton = screen.getByLabelText(selectedOption.deleteButtonLabel);
+      await act(() => user.click(delButton));
       expect(onFocus).toHaveBeenCalledTimes(1);
       expect(onBlur).not.toHaveBeenCalled();
     });

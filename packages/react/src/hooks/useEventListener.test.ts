@@ -7,7 +7,7 @@ import { useEventListener } from './';
 const user = userEvent.setup();
 
 const renderUseEventListener = (eventType: string, action: () => void) =>
-  renderHook(() => useEventListener(eventType, action), {
+  renderHook(() => useEventListener(eventType, action, document.body), {
     initialProps: { eventType, action },
   });
 
@@ -27,7 +27,10 @@ describe('useEventListener', () => {
   });
 
   it('Removes event listener on unmount', () => {
-    const removeEventListenerSpy = jest.spyOn(document, 'removeEventListener');
+    const removeEventListenerSpy = jest.spyOn(
+      document.body,
+      'removeEventListener',
+    );
     const { unmount } = renderUseEventListener('click', jest.fn());
     expect(removeEventListenerSpy).not.toHaveBeenCalled();
     unmount();
