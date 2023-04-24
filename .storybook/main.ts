@@ -1,11 +1,7 @@
 import remarkGfm from 'remark-gfm';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 const config: StorybookConfig = {
-  stories: [
-    '../stories/**/*.mdx',
-    '../packages/**/*.mdx',
-    '../packages/**/*.stories.ts?(x)',
-  ],
+  stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-interactions',
