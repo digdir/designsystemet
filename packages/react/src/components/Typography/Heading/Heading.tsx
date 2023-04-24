@@ -3,6 +3,7 @@ import cl from 'classnames';
 
 import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
+import classes from './Heading.module.css';
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   /**
    * Heading level
@@ -33,9 +34,14 @@ export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
         <HeadingTag
           {...rest}
           ref={ref}
-          className={cl(className, 'heading', `heading--${size}`, {
-            'typo--spacing': spacing,
-          })}
+          className={cl(
+            classes.heading,
+            classes[size],
+            {
+              [classes.spacing]: spacing,
+            },
+            className,
+          )}
         />
       );
     },

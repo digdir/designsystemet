@@ -1,8 +1,11 @@
 import React, { forwardRef } from 'react';
-import cl from 'clsx';
-import { OverridableComponent } from '../util/OverridableComponent';
+import cl from 'classnames';
 
-export interface BodyShortProps
+import type { OverridableComponent } from '../../../utils/OverridableComponent';
+
+import classes from './BodyLong.module.css';
+
+export interface BodyLongProps
   extends React.HTMLAttributes<HTMLParagraphElement> {
   /**
    * medium: 18px, small: 16px
@@ -19,8 +22,8 @@ export interface BodyShortProps
   spacing?: boolean;
 }
 
-export const BodyShort: OverridableComponent<
-  BodyShortProps,
+export const BodyLong: OverridableComponent<
+  BodyLongProps,
   HTMLParagraphElement
 > = forwardRef(
   (
@@ -30,12 +33,16 @@ export const BodyShort: OverridableComponent<
     <Component
       {...rest}
       ref={ref}
-      className={cl(className, 'body-short', {
-        'body-short--small': size === 'small',
-        'typo--spacing': !!spacing,
-      })}
+      className={cl(
+        classes.bodyLong,
+        {
+          [classes.small]: size === 'small',
+          [classes.spacing]: !!spacing,
+        },
+        className,
+      )}
     />
   ),
 );
 
-export default BodyShort;
+export default BodyLong;
