@@ -3,6 +3,7 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 const config: StorybookConfig = {
   stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
   addons: [
+    '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-interactions',
     '@etchteam/storybook-addon-status',
