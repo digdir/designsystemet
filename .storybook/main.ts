@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-interactions',
     '@etchteam/storybook-addon-status',
+    '@storybook/addon-essentials',
     {
       name: 'storybook-css-modules',
       options: {
@@ -19,7 +20,7 @@ const config: StorybookConfig = {
       },
     },
     {
-      name: '@storybook/addon-essentials',
+      name: '@storybook/addon-docs',
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
