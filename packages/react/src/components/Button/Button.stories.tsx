@@ -51,15 +51,10 @@ const LoadingTemplate = (args: ButtonProps) => {
 };
 
 // Render functions need to accept "args" for code preview to work properly
-const withTextTemplate = (args: ButtonProps) => {
+const VariantsTemplate = (args: ButtonProps) => {
   return (
     <>
-      <Button
-        variant='filled'
-        {...args}
-      >
-        Fylt
-      </Button>
+      <Button {...Filled.args}>Fylt</Button>
       <Button {...Outline.args}>Omriss</Button>
       <Button {...Quiet.args}>Gjennomsiktig</Button>
     </>
@@ -72,8 +67,9 @@ export const props: Story = {
   },
 };
 
-export const WithText: Story = {
-  render: withTextTemplate,
+// This is an example of composed story
+export const Variants: Story = {
+  render: VariantsTemplate,
   decorators: [
     (Story) => (
       <Stack>
@@ -83,7 +79,7 @@ export const WithText: Story = {
   ],
 };
 
-export const Filled: Story = {
+const Filled: Story = {
   name: 'Fylt med tekst',
   args: {
     children: 'Fylt',
@@ -91,7 +87,7 @@ export const Filled: Story = {
   },
 };
 
-export const Outline: Story = {
+const Outline: Story = {
   name: 'Omriss med tekst',
   args: {
     children: 'Omriss',
@@ -99,7 +95,7 @@ export const Outline: Story = {
   },
 };
 
-export const Quiet: Story = {
+const Quiet: Story = {
   name: 'Gjennomsiktig med tekst',
   args: {
     children: 'Gjennomsiktig',

@@ -1,6 +1,5 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Spinner } from '../Spinner';
-import { BetaBlock, Stack } from '../../../../../docs-components';
+import { BetaBlock } from '../../../../../docs-components';
 import * as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
@@ -29,14 +28,8 @@ import { Button } from '@digdir/design-system-react';
 ### Knapp med tekst
 
 <Canvas>
-  <Story of={ButtonStories.WithText} />
+  <Story of={ButtonStories.Variants} />
 </Canvas>
-{/* 
-<Canvas>
-  <Story of={ButtonStories.Filled} />
-  <Story of={ButtonStories.Outline} />
-  <Story of={ButtonStories.Quiet} />
-</Canvas> */}
 
 ### Knapp med ikon
 
