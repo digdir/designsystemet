@@ -1,0 +1,71 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { BetaBlock } from '../../../../../docs-components';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+<BetaBlock />
+
+Button lar brukeren utføre en handling.
+
+## Bruk
+
+```tsx
+import { Button } from '@digdir/design-system-react';
+
+<Button>Trykk på meg!</Button>;
+```
+
+## Props
+
+<Primary />
+<Controls />
+
+## Varianter
+
+### Knapp med tekst
+
+<Canvas>
+  <Story of={ButtonStories.Variants} />
+</Canvas>
+
+### Knapp med ikon
+
+<Canvas>
+  <Story of={ButtonStories.FilledWithIcon} />
+  <Story of={ButtonStories.OutlineWithIcon} />
+  <Story of={ButtonStories.QuietWithIcon} />
+</Canvas>
+
+### Knapp med tekst og ikon
+
+<Canvas>
+  <Story of={ButtonStories.FilledWithTextIcon} />
+  <Story of={ButtonStories.OutlineWithTextIcon} />
+  <Story of={ButtonStories.QuietWithTextIcon} />
+</Canvas>
+
+### Full bredde
+
+<Canvas>
+  <Story of={ButtonStories.fullWidth} />
+</Canvas>
+
+### Bruk av Spinner til å lage en knapp som laster
+
+Dersom du ønsker å vise brukeren at knappen laster noe kan du gjøre det ved å kombinere den med en spinner.
+
+**OBS**: I dette eksempelet er det brukt aria-disabled til å deaktivere knappene.
+Dette er den anbefalte metoden for å vise at en knapp er deaktivert da det gjør at den fremdeles kan fokuseres på, f.eks. ved navigasjon med tab.
+Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er aktiv) noe som ofte ikke er tilfellet ved bruk av kun disabled.
+
+Det er imidlertid viktig å vite at denne prop-en ikke automatisk stopper knappen fra å trigge sin onClick metode.
+Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
+
+<Canvas>
+  <Story of={ButtonStories.FilledWithTextSpinner} />
+  <Story of={ButtonStories.OutlineWithTextSpinner} />
+  <Story of={ButtonStories.QuietWithTextSpinner} />
+</Canvas>

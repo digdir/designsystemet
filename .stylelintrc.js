@@ -20,5 +20,6 @@ module.exports = {
       },
     ],
     'alpha-value-notation': 'number',
+    'font-family-name-quotes': 'always-unless-keyword',
   },
 };
