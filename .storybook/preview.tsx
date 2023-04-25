@@ -1,12 +1,10 @@
-import React from 'react';
-import { DocsContainer } from '@storybook/blocks';
+import type { Preview } from '@storybook/react';
 import '@altinn/figma-design-tokens/dist/tokens.css';
 import './inter.css';
 import './customStyling.css';
 import customTheme from './customTheme';
-import { TableOfContents } from '../docs-components';
 
-export const parameters = {
+export const parameters: Preview['parameters'] = {
   status: {
     statuses: {
       new: {
@@ -26,14 +24,6 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   docs: {
     theme: customTheme,
-    container: ({ children, ...rest }) => (
-      <>
-        <DocsContainer {...rest}>
-          <TableOfContents />
-          {children}
-        </DocsContainer>
-      </>
-    ),
   },
   controls: {
     matchers: {
