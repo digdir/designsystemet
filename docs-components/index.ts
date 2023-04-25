@@ -6,7 +6,6 @@ export {
   TableCellTag,
   TableCellSpace,
 } from './Table/TableCells/TableCells';
-export { GithubReleasesChangelog } from './GithubReleasesChangelog/GithubReleasesChangelog';
 export { Changelog } from './Changelog/Changelog';
 export { ComponentOverview } from './ComponentOverview/component-overview';
 export { Stack } from './Stack/Stack';
