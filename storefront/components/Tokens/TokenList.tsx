@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { FilesIcon } from '@navikt/aksel-icons';
 
 import { capitalizeString } from '../../utils/StringHelpers';
+import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
 
 import { TokenColor } from './TokenColor/TokenColor';
 import { TokenFontSize } from './TokenFontSize/TokenFontSize';
@@ -58,17 +58,12 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
             <div className={classes.text}>
               <h4 className={classes.title}>
                 {capitalizeString(formatTitle(key.split(token)[1].slice(1)))}
+                {showValue && <div className={classes.value}>{items[key]}</div>}
               </h4>
               <div className={classes.copy}>
                 <div>--{key}</div>
-                <div className={classes.copyIcon}>
-                  <FilesIcon
-                    fontSize={24}
-                    color='#585858'
-                  />
-                </div>
+                <ClipboardBtn text={key} />
               </div>
-              {showValue && <div className={classes.value}>{items[key]}</div>}
             </div>
           </div>
         ))}

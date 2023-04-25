@@ -87,6 +87,12 @@
   padding: 16px 32px 24px;
 }
 
+@media (max-width: 576px) {
+  .content {
+    padding: 0;
+  }
+}
+
 .content p {
   font-size: 18px;
   line-height: 1.55em;

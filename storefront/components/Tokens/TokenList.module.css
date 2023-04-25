@@ -14,9 +14,12 @@
   background-color: #fff;
   border-radius: 4px;
   border-bottom: 1px solid #dcdcdc;
-  display: flex;
   align-items: flex-start;
   padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-5);
 }
 
 .card:first-child {
@@ -25,32 +28,40 @@
 }
 
 .preview {
-  height: 82px;
+  height: 81px;
   width: 164px;
   border-radius: 4px;
+  flex-basis: 164px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-basis: 300px;
+  flex-grow: 500;
 }
 
 .title {
   font-weight: 500;
   font-size: 18px !important;
   margin-top: -6px !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 2px !important;
+  display: flex;
+  align-items: center;
 }
 
-.text {
-  margin-left: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.value {
+  margin-left: 10px;
+  font-size: 15px;
 }
 
 .copy {
   background-color: #eee;
   height: 50px;
-  padding: 11px 15px;
+  padding: 11px 7px 11px 15px;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,12 +69,8 @@
   margin: 10px 0;
 }
 
-.copyIcon {
-  margin-bottom: -4px;
-  margin-left: 8px;
-}
-
-.value {
-  /* margin-bottom: -5px;
-  margin-top: -1px; */
+@media (max-width: 576px) {
+  .copy {
+    width: 100%;
+  }
 }
