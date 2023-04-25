@@ -30,12 +30,10 @@ type AccordionColor = typeof accordionColor[number];
 export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Accordion color
-   * @default neutral
    */
   color?: AccordionColor;
   /**
    * Show border
-   * @default false
    */
   border?: boolean;
   /**
@@ -45,7 +43,7 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ border, color = 'neutral', className, ...rest }, ref) => (
+  ({ border = false, color = 'neutral', className, ...rest }, ref) => (
     <div
       {...rest}
       className={cn(
