@@ -23,5 +23,4 @@ describe('Icon', () => {
   );
 });
 
-const render = (props: Partial<IconProps> = {}) =>
-  renderRtl(<Icon {...props} />);
+const render = (props: IconProps = {}) => renderRtl(<Icon {...props} />);

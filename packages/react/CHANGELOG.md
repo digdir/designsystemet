@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.1...@digdir/design-system-react@0.11.2) (2023-04-24)
+
+### Bug Fixes
+
+- **InputWrapper:** Make input borders clickable ([#282](https://github.com/digdir/designsystem/issues/282)) ([d35df3f](https://github.com/digdir/designsystem/commit/d35df3f852359a0e21e9d05f8259158036db1206))
+- **Select:** fix aria-activedecendant attribute ([#291](https://github.com/digdir/designsystem/issues/291)) ([0ed8958](https://github.com/digdir/designsystem/commit/0ed89584083a66d20d4f37570825f023fc40c24a))
+- **Select:** Make event listeners local ([#299](https://github.com/digdir/designsystem/issues/299)) ([1439820](https://github.com/digdir/designsystem/commit/14398207f95816f13ff9133913c0ee40080c25f9))
+- **Table/RadioGroup/CheckboxGroup/FieldSet:** Multiple minor accessibility improvements ([#301](https://github.com/digdir/designsystem/issues/301)) ([c299106](https://github.com/digdir/designsystem/commit/c299106502175c220f1c051ec215b6fe25ef0bf7))
+- **Table:** Omitting `aria-sort` when no sort order is in effect ([#306](https://github.com/digdir/designsystem/issues/306)) ([ecb1570](https://github.com/digdir/designsystem/commit/ecb1570fdad1c9182fa3ee51154721a674324e0c))
+- **Table:** Sort-arrows fix ([#297](https://github.com/digdir/designsystem/issues/297)) ([fbc8e50](https://github.com/digdir/designsystem/commit/fbc8e5083802667f3fbc664637c36a7881cde040))
+- **TextArea:** Set border ([#310](https://github.com/digdir/designsystem/issues/310)) ([255f632](https://github.com/digdir/designsystem/commit/255f632c128a0c7a41fd466d63d285495401eac1))
+
+### BREAKING CHANGE
+
+- **Accordion** was renamed to LegacyAccordion to make room for new “Accordion” component in accordance with new design & features ([#296](https://github.com/digdir/designsystem/issues/296))([83d7e6c](https://github.com/digdir/designsystem/commit/83d7e6cabf3df97a252d56196d6583d847b6f663))
+
 ## [0.11.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.0...@digdir/design-system-react@0.11.1) (2023-04-11)
 
 ### Bug Fixes

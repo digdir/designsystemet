@@ -15,21 +15,21 @@ export const Icon = ({ variant, disabled = false }: IconProps) => {
   switch (variant) {
     case 'error':
       return (
-        <div
+        <span
           className={classes.icon}
           data-testid='input-icon-error'
         >
           <ErrorIcon />
-        </div>
+        </span>
       );
     case 'search':
       return (
-        <div
+        <span
           className={cn(classes.icon, disabled && classes.disabled)}
           data-testid='input-icon-search'
         >
           <SearchIcon />
-        </div>
+        </span>
       );
     default:
       return null;

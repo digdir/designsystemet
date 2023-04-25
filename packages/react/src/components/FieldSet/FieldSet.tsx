@@ -6,12 +6,15 @@ import { ErrorMessage, HelpText } from '../';
 
 import classes from './FieldSet.module.css';
 
-export interface FieldSetProps {
+export interface FieldSetProps
+  extends React.DetailedHTMLProps<
+    React.FieldsetHTMLAttributes<HTMLFieldSetElement>,
+    HTMLFieldSetElement
+  > {
   children: ReactNode;
   className?: string;
   contentClassName?: string;
   description?: ReactNode;
-  disabled?: boolean;
   error?: ReactNode;
   helpText?: ReactNode;
   legend?: ReactNode;
@@ -23,16 +26,16 @@ const FieldSet = ({
   className,
   contentClassName,
   description,
-  disabled,
   error,
   helpText,
   legend,
   size = 'small',
+  ...rest
 }: FieldSetProps) => {
   return (
     <fieldset
+      {...rest}
       className={cn(classes.fieldSet, classes[size], className)}
-      disabled={disabled}
     >
       {legend && (
         <legend className={classes.legend}>

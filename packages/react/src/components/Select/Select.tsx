@@ -1,7 +1,7 @@
 import type { ChangeEvent, ReactNode } from 'react';
-import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
-import tokens from '@altinn/figma-design-tokens/dist/tokens.json';
+import { autoUpdate, useFloating } from '@floating-ui/react';
 
 import { InputWrapper } from '../_InputWrapper';
 import {
@@ -11,6 +11,7 @@ import {
   useUpdate,
 } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utils';
+import { useFocusWithin } from '../../hooks/useFocusWithin';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
@@ -153,19 +154,16 @@ const Select = (props: SelectProps) => {
     [setKeyword, multiple],
   );
 
-  const listboxWrapperRef = useRef<HTMLSpanElement>(null);
-  const selectFieldRef = useRef<HTMLSpanElement>(null);
+  const { x, y, elements, refs } = useFloating<HTMLSpanElement>({
+    whileElementsMounted: autoUpdate,
+  });
+  const listboxWrapper = elements.floating as HTMLSpanElement;
+  const selectField = elements.reference as HTMLSpanElement;
 
   const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
-  const [hasFocus, setHasFocus] = useState<boolean>(false);
+  const hasFocus = useFocusWithin(selectField);
   useEventListener('click', () => setUsingKeyboard(false));
   useEventListener('keydown', () => setUsingKeyboard(true));
-  const updateHasFocus = () => {
-    const { activeElement } = document;
-    setHasFocus(selectFieldRef.current?.contains(activeElement) ?? false);
-  };
-  useEventListener('focusin', updateHasFocus);
-  useEventListener('focusout', updateHasFocus);
 
   useUpdate(() => {
     if (!multiple && !hasFocus) {
@@ -181,7 +179,6 @@ const Select = (props: SelectProps) => {
 
   useEffect(() => {
     // Ensure that active option is always visible when using keyboard
-    const listboxWrapper = listboxWrapperRef.current;
     if (listboxWrapper) {
       const wrapperHeight = listboxWrapper.offsetHeight;
       const items = listboxWrapper.querySelectorAll('button');
@@ -206,7 +203,7 @@ const Select = (props: SelectProps) => {
         }
       }
     }
-  }, [activeOptionIndex]);
+  }, [activeOptionIndex, listboxWrapper]);
 
   const multipleChangeHandler = (newValues: string[], addedValue?: string) => {
     if (!selectedValues?.length) {
@@ -293,23 +290,31 @@ const Select = (props: SelectProps) => {
     numberOfOptions,
   ]);
 
-  useKeyboardEventListener(eventListenerKeys.ArrowDown, () => {
-    expanded ? moveFocusDown() : setExpanded(true);
-  });
+  useKeyboardEventListener(
+    eventListenerKeys.ArrowDown,
+    () => (expanded ? moveFocusDown() : setExpanded(true)),
+    selectField,
+  );
 
-  useKeyboardEventListener(eventListenerKeys.ArrowUp, () => {
-    expanded ? moveFocusUp() : setExpanded(true);
-  });
+  useKeyboardEventListener(
+    eventListenerKeys.ArrowUp,
+    () => (expanded ? moveFocusUp() : setExpanded(true)),
+    selectField,
+  );
 
-  useKeyboardEventListener(eventListenerKeys.Enter, () => {
-    if (expanded) {
-      if (activeOption) {
-        addOrRemoveSelectedValue(activeOption);
-      } else {
-        setExpanded(false);
+  useKeyboardEventListener(
+    eventListenerKeys.Enter,
+    () => {
+      if (expanded) {
+        if (activeOption) {
+          addOrRemoveSelectedValue(activeOption);
+        } else {
+          setExpanded(false);
+        }
       }
-    }
-  });
+    },
+    selectField,
+  );
 
   const keywordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const newKeyword = e.target.value;
@@ -339,10 +344,6 @@ const Select = (props: SelectProps) => {
   const givenOrRandomInputId = inputId ?? randomInputId;
   const listboxId = useId();
 
-  const width = selectFieldRef.current
-    ? `calc(${selectFieldRef.current.offsetWidth}px + 2 * ${tokens.component.input.border_width.default.value})`
-    : undefined;
-
   return (
     <span
       className={cn(
@@ -357,10 +358,10 @@ const Select = (props: SelectProps) => {
       <InputWrapper
         disabled={disabled}
         inputId={givenOrRandomInputId}
-        inputRenderer={({ className, inputId: id }) => (
+        inputRenderer={({ className, inputId: id, hasIcon }) => (
           <span
-            className={className + ' ' + classes.field}
-            ref={selectFieldRef}
+            className={cn(className, classes.field, hasIcon && classes.hasIcon)}
+            ref={refs.setReference}
           >
             <span className={classes.inputArea}>
               {multiple && (
@@ -449,8 +450,12 @@ const Select = (props: SelectProps) => {
       />
       <span
         className={classes.optionListWrapper}
-        ref={listboxWrapperRef}
-        style={{ width }}
+        ref={refs.setFloating}
+        style={{
+          left: x ?? 0,
+          top: y ?? 0,
+          width: selectField?.offsetWidth,
+        }}
       >
         <span
           aria-expanded={expanded}

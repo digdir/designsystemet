@@ -1,9 +1,9 @@
-import customTheme from './customTheme.js';
+import React from 'react';
+import { DocsContainer } from '@storybook/blocks';
+import '@altinn/figma-design-tokens/dist/tokens.css';
 import './inter.css';
 import './customStyling.css';
-import React from 'react';
-import { DocsContainer } from '@storybook/addon-docs';
-import '@altinn/figma-design-tokens/dist/tokens.css';
+import customTheme from './customTheme';
 import { TableOfContents } from '../docs-components';
 
 export const parameters = {
@@ -27,12 +27,12 @@ export const parameters = {
   docs: {
     theme: customTheme,
     container: ({ children, ...rest }) => (
-      <React.Fragment>
+      <>
         <DocsContainer {...rest}>
           <TableOfContents />
           {children}
         </DocsContainer>
-      </React.Fragment>
+      </>
     ),
   },
   controls: {
@@ -43,10 +43,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: [
-        'Komponentoversikt',
-        'Kjernekomponenter'
-      ],
+      order: ['Komponentoversikt', 'Kjernekomponenter'],
     },
   },
 };

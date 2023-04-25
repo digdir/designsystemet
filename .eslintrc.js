@@ -40,6 +40,7 @@ module.exports = {
     },
   ],
   rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     // Disabled because we use Typescript types for props
     'react/prop-types': ['off'],
     'react/jsx-no-bind': 'off',

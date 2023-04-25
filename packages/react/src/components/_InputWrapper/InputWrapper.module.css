@@ -1,20 +1,27 @@
+.inputAndLabel {
+  align-items: stretch;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .inputWrapper {
   --background: var(--component-input-color-background-default);
   --border-color: var(--component-input-color-border-default);
+  --border-radius: var(--interactive_components-border_radius-normal);
   --icon-background: transparent;
+  --icon-width: 22px;
   --outline-color: var(--semantic-tab_focus-outline-color);
   --paddingX: 0;
   --paddingY: 0;
 
   align-items: stretch;
   background: var(--background);
-  border-color: var(--border-color);
-  border-radius: var(--interactive_components-border_radius-normal);
-  border-style: solid;
-  border-width: var(--component-input-border_width-default);
+  border-radius: var(--border-radius);
   box-sizing: border-box;
-  display: flex;
+  display: inline-flex;
   min-height: var(--component-input-size-min_height-default);
+  position: relative;
 }
 
 .inputWrapper.withFocusEffect:focus-within {
@@ -69,14 +76,21 @@
 }
 
 .field {
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  border-style: solid;
+  border-width: var(--component-input-border_width-default);
   background: var(--background);
-  border: none;
   box-sizing: border-box;
   font-family: var(--font_family-default);
   font-size: var(--component-input-font_size-sm);
   outline: none;
   padding: var(--paddingY) var(--paddingX);
   width: 100%;
+}
+
+.inputAndLabel.withIcon .field {
+  padding-left: calc(var(--paddingX) + var(--icon-width));
 }
 
 .label {

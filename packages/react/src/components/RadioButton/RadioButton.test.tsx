@@ -66,7 +66,7 @@ describe('RadioButton', () => {
   it('Does not display label text, but still makes it accessible, when hideLabel is true', () => {
     const label = 'All we hear is radio ga ga';
     render({ hideLabel: true, label });
-    expect(screen.queryByText(label)).toBeFalsy();
+    expect(screen.getByText(label).style.display).toEqual('none');
     expect(screen.getByLabelText(label)).toBeTruthy();
   });
 

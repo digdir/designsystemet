@@ -15,16 +15,9 @@ const TableCellColor = (props: { color: string }) => {
   );
 };
 
-const TableCellSpace = (props: { size: string }) => {
-  let theSize = '';
-  if (props.size.includes('px') || props.size.includes('rem')) {
-    theSize = props.size.toString();
-  } else {
-    theSize = `${parseInt(props.size) * 16}px`;
-  }
-
+const TableCellSpace = ({ size }: { size: string | number }) => {
   const style = {
-    width: theSize,
+    width: size,
   };
 
   return (

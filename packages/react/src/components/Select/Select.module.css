@@ -69,7 +69,6 @@
 
   font-size: var(--font_size);
   line-height: var(--line-height);
-  position: relative;
 }
 
 .select.disabled {
@@ -93,13 +92,11 @@
 
 .field {
   display: inline-flex;
-  padding: 0;
   align-items: center;
   flex-direction: row;
   font-family: var(--font_family-default);
   font-size: var(--font_size);
-  min-height: var(--field-height-inside);
-  position: relative;
+  min-height: var(--field-height);
   width: 100%;
 }
 
@@ -118,6 +115,14 @@
   flex: 1;
   gap: var(--multiselect_items-gap);
   padding: var(--multiselect_items-padding);
+}
+
+.select.single .field.hasIcon .inputArea {
+  padding-left: var(--icon-width);
+}
+
+.select.multiple .field.hasIcon .inputArea {
+  padding-left: calc(var(--multiselect_items-padding) + var(--icon-width));
 }
 
 .textInput {
