@@ -7,7 +7,6 @@ export {
   TableCellTag,
   TableCellSpace,
 } from './Table/TableCells/TableCells';
-export { SvgModal } from './SvgModal/SvgModal';
 export { GithubReleasesChangelog } from './GithubReleasesChangelog/GithubReleasesChangelog';
 export { Changelog } from './Changelog/Changelog';
 export { ComponentOverview } from './ComponentOverview/component-overview';
