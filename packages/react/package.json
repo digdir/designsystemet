@@ -16,9 +16,6 @@
     "lint": "TIMING=1 eslint src/**/*.ts* --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
-  "devDependencies": {
-    "@digdir/design-system-icons": "*"
-  },
   "peerDependencies": {
     "react": ">=16.8",
     "react-dom": ">=16.8"
