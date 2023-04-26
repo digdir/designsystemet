@@ -92,7 +92,7 @@
     "react-markdown": "^8.0.5",
     "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.0",
     "rollup": "^2.79.0",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
