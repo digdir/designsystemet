@@ -1,6 +1,6 @@
 name: Bug Report 🐛
 description: File a bug report here
-labels: ["bug", "needs prioritization❗️"]
+labels: ["🐛 bug"]
 body:
   - type: markdown
     attributes:

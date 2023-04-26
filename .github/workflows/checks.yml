@@ -15,10 +15,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Use node 16 and yarn cache
+      - name: Use node 20 and yarn cache
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable

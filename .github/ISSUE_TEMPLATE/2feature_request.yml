@@ -1,6 +1,6 @@
 name: Feature Request ✨
 description: Request a new feature or enhancement
-labels: ["needs prioritization❗️"]
+labels: ["✨feature request", "needs prioritization❗️"]
 body:
   - type: markdown
     attributes:
