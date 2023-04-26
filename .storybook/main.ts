@@ -3,9 +3,11 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 const config: StorybookConfig = {
   stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
   addons: [
+    '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-interactions',
     '@etchteam/storybook-addon-status',
+    '@storybook/addon-essentials',
     {
       name: 'storybook-css-modules',
       options: {
@@ -18,7 +20,7 @@ const config: StorybookConfig = {
       },
     },
     {
-      name: '@storybook/addon-essentials',
+      name: '@storybook/addon-docs',
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
