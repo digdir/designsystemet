@@ -419,7 +419,7 @@ const Select = (props: SelectProps) => {
               className={classes.fieldButton}
               disabled={disabled}
               onBlur={() => setExpanded(false)}
-              onClick={() => setExpanded(true)}
+              onClick={() => setExpanded(!expanded)}
               onKeyDown={(event) => {
                 if (Object.values(eventListenerKeys).includes(event.key)) {
                   event.preventDefault();
