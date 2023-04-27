@@ -3,7 +3,7 @@
   border-left: 5px solid #6544c5;
   padding: 24px;
   display: flex;
-  margin: 29px 0;
+  margin: 24px 0 !important;
   width: 80%;
   border-radius: 2px;
 }
@@ -20,10 +20,10 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: 20px !important;
   font-weight: 500;
   line-height: 1.3em;
-  margin-bottom: 8px;
+  margin-bottom: 8px !important;
 }
 
 .desc {
