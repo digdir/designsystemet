@@ -4,14 +4,10 @@ import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 
 import { InputWrapper } from '../_InputWrapper';
-import {
-  useEventListener,
-  useKeyboardEventListener,
-  usePrevious,
-  useUpdate,
-} from '../../hooks';
+import { useKeyboardEventListener, usePrevious, useUpdate } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utils';
 import { useFocusWithin } from '../../hooks/useFocusWithin';
+import { useUsingKeyboard } from '../../hooks/useUsingKeyboard';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
@@ -160,10 +156,8 @@ const Select = (props: SelectProps) => {
   const listboxWrapper = elements.floating as HTMLSpanElement;
   const selectField = elements.reference as HTMLSpanElement;
 
-  const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
+  const usingKeyboard = useUsingKeyboard();
   const hasFocus = useFocusWithin(selectField);
-  useEventListener('click', () => setUsingKeyboard(false));
-  useEventListener('keydown', () => setUsingKeyboard(true));
 
   useUpdate(() => {
     if (!multiple && !hasFocus) {

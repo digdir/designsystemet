@@ -222,21 +222,20 @@ describe('TextField', () => {
       const element: HTMLInputElement = screen.getByRole('textbox');
       await user.click(element);
       expect(element).toHaveFocus();
-      element.setSelectionRange(2, 4); // Select '3 ' (v4 bug)
-      await user.keyboard('5');
+      await user.keyboard('{ArrowLeft}{Backspace}5');
       expect(screen.getByDisplayValue('125 000 NOK')).toBeInTheDocument();
-      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledTimes(2);
       expect(lastValue).toBe('125');
 
       element.setSelectionRange(8, 11); // Select 'NOK' (v5 bug)
       await user.keyboard('8'); // This is ignored, suffix cannot be changed
       expect(screen.getByDisplayValue('125 000 NOK')).toBeInTheDocument();
-      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledTimes(2);
 
       element.setSelectionRange(3, 3); // Selection after the last digit
       await user.keyboard('8');
       expect(screen.getByDisplayValue('1 258 000 NOK')).toBeInTheDocument();
-      expect(onChange).toHaveBeenCalledTimes(2);
+      expect(onChange).toHaveBeenCalledTimes(3);
 
       expect(lastValue).toBe('1258');
     });

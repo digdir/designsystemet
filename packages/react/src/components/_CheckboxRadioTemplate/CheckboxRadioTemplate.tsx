@@ -8,6 +8,7 @@ import React, { useId } from 'react';
 import cn from 'classnames';
 
 import { HelpText } from '../HelpText';
+import { useUsingKeyboard } from '../../hooks/useUsingKeyboard';
 
 import classes from './CheckboxRadioTemplate.module.css';
 
@@ -58,12 +59,15 @@ export const CheckboxRadioTemplate = ({
     !presentation ||
     (typeof label !== 'object' && typeof description !== 'object');
 
+  const usingKeyboard = useUsingKeyboard();
+
   return (
     <Wrapper
       className={cn(
         classes.template,
         classes[size],
         disabled && classes.disabled,
+        usingKeyboard && classes.usingKeyboard,
         className,
       )}
       htmlFor={finalInputId}
