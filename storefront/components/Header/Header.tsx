@@ -49,6 +49,7 @@ const Header = () => {
         </div>
         <div className={classes.right}>
           <button
+            aria-expanded={open}
             className={classes.toggle}
             onClick={() => {
               setOpen(!open);
