@@ -9,6 +9,7 @@
   --background: var(--component-input-color-background-default);
   --border-color: var(--component-input-color-border-default);
   --border-radius: var(--interactive_components-border_radius-normal);
+  --border-width: var(--border_width-thin);
   --icon-background: transparent;
   --icon-width: 22px;
   --outline-color: var(--semantic-tab_focus-outline-color);
@@ -22,6 +23,10 @@
   display: inline-flex;
   min-height: var(--component-input-size-min_height-default);
   position: relative;
+}
+
+.inputWrapper:focus-within {
+  --border-width: var(--border_width-standard);
 }
 
 .usingKeyboard .inputWrapper.withFocusEffect:focus-within {
@@ -79,7 +84,7 @@
   border-color: var(--border-color);
   border-radius: var(--border-radius);
   border-style: solid;
-  border-width: var(--component-input-border_width-default);
+  border-width: var(--border-width);
   background: var(--background);
   box-sizing: border-box;
   font-family: var(--font_family-default);
