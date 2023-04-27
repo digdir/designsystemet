@@ -3,6 +3,8 @@
   width: 100%;
   border-radius: 4px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding-left: 24px;
+  /* border: 1px solid #dcdcdc; */
+  background-color: rgb(207, 234, 255);
 }

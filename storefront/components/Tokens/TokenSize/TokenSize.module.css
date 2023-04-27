@@ -1,0 +1,15 @@
+.size {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1d7ff;
+  border-radius: 4px;
+}
+
+.bar {
+  height: 20px;
+  background-color: #ae48e4;
+  border-radius: 2px;
+}

@@ -7,10 +7,11 @@ import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
 import { TokenColor } from './TokenColor/TokenColor';
 import { TokenFontSize } from './TokenFontSize/TokenFontSize';
 import { TokenShadow } from './TokenShadow/TokenShadow';
+import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
 
 interface TokensProps {
-  type: 'color' | 'fontSize' | 'shadow';
+  type: 'color' | 'fontSize' | 'shadow' | 'size';
   showValue?: boolean;
   token: string;
 }
@@ -54,6 +55,7 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
               {type === 'color' && <TokenColor value={items[key]} />}
               {type === 'fontSize' && <TokenFontSize value={items[key]} />}
               {type === 'shadow' && <TokenShadow value={items[key]} />}
+              {type === 'size' && <TokenSize value={items[key]} />}
             </div>
             <div className={classes.text}>
               <h4 className={classes.title}>

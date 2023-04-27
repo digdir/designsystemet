@@ -29,9 +29,9 @@
 
 .preview {
   height: 81px;
-  width: 164px;
+  width: 160px;
   border-radius: 4px;
-  flex-basis: 164px;
+  flex-basis: 160px;
 }
 
 .text {
@@ -45,15 +45,16 @@
 .title {
   font-weight: 500;
   font-size: 18px !important;
-  margin-top: -6px !important;
+  margin-top: -5px !important;
   margin-bottom: 2px !important;
   display: flex;
   align-items: center;
 }
 
 .value {
-  margin-left: 10px;
+  margin-left: 12px;
   font-size: 15px;
+  color: rgb(99, 99, 99);
 }
 
 .copy {
