@@ -88,7 +88,10 @@
   color: var(--description-color);
 }
 
-.template.usingKeyboard:focus-within:not(.disabled, :has(button:focus-visible)) {
+.template.usingKeyboard:focus-within:not(
+    .disabled,
+    :has(button:focus-visible)
+  ) {
   outline: 2px solid var(--semantic-tab_focus-outline-color);
   outline-offset: 2px;
 }
