@@ -24,7 +24,7 @@
   position: relative;
 }
 
-.inputWrapper.withFocusEffect:focus-within {
+.usingKeyboard .inputWrapper.withFocusEffect:focus-within {
   outline: var(--outline-color) solid var(--semantic-tab_focus-outline-width);
   outline-offset: var(--semantic-tab_focus-outline-offset);
 }

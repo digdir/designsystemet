@@ -2,6 +2,8 @@ import React, { useId } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
+import { useUsingKeyboard } from '../../hooks/useUsingKeyboard';
+
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
 import { Icon } from './Icon';
@@ -39,6 +41,7 @@ export const InputWrapper = ({
 }: InputWrapperProps) => {
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
+  const usingKeyboard = useUsingKeyboard();
 
   const { variant, iconVariant } = getVariant({
     disabled,
@@ -49,7 +52,13 @@ export const InputWrapper = ({
   const hasIcon = iconVariant !== 'none';
 
   return (
-    <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
+    <span
+      className={cn(
+        classes.inputAndLabel,
+        hasIcon && classes.withIcon,
+        usingKeyboard && classes.usingKeyboard,
+      )}
+    >
       {label && (
         <label
           className={classes.label}
