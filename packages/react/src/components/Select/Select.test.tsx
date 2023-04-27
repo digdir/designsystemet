@@ -367,6 +367,14 @@ describe('Select', () => {
       expect(onBlur).toHaveBeenCalledWith(value);
     });
 
+    it('Expands when arrow button is clicked and collapses when it is clicked again', async () => {
+      renderSingleSelect();
+      await act(() => user.click(screen.getByRole('button')));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'true');
+      await act(() => user.click(screen.getByRole('button')));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
+    });
+
     const expectSelectedValue = (option: SingleSelectOption) =>
       expect(getSelectedOption()).toHaveValue(option.value);
 
@@ -874,6 +882,15 @@ describe('Select', () => {
       await act(() => user.click(delButton));
       expect(onFocus).toHaveBeenCalledTimes(1);
       expect(onBlur).not.toHaveBeenCalled();
+    });
+
+    it('Expands when arrow button is clicked and collapses when it is clicked again', async () => {
+      const label = 'Test';
+      renderMultiSelect({ label });
+      await act(() => user.click(screen.getByRole('button', { name: label })));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'true');
+      await act(() => user.click(screen.getByRole('button', { name: label })));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
     });
 
     const getFocusedOption = (container: HTMLElement) =>
