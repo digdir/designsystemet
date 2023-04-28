@@ -45,7 +45,7 @@
 }
 
 .link:hover {
-  border-left-color: rgb(196, 196, 196);
+  border-left-color: #c4c4c4;
   font-weight: 500;
 }
 
