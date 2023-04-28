@@ -12,8 +12,9 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'plugin:css-modules/recommended',
   ],
-  plugins: ['import', 'react', 'jsx-a11y', 'prettier'],
+  plugins: ['import', 'react', 'jsx-a11y', 'prettier', 'css-modules'],
   overrides: [
     {
       // Typescript
@@ -45,6 +46,7 @@ module.exports = {
     'react/prop-types': ['off'],
     'react/jsx-no-bind': 'off',
     'react/display-name': 'off',
+    'css-modules/no-unused-class': 'off',
     'import/no-unresolved': 'error',
     'import/order': [
       'warn',
