@@ -127,7 +127,7 @@
 </style>
 
 <script>
-  function tomato() {
+  function openMenu() {
     document.getElementById('header-menu').classList.add('header__menu--open');
     document
       .getElementById('header-bars')
@@ -136,7 +136,7 @@
       .getElementById('header-close')
       .classList.remove('header__toggle--hidden');
   }
-  function potato() {
+  function closeMenu() {
     document
       .getElementById('header-menu')
       .classList.remove('header__menu--open');
@@ -164,7 +164,7 @@
     <div class="header__right">
       <button
         class="header__toggle header__toggle--bars"
-        onclick="tomato()"
+        onclick="openMenu()"
         id="header-bars"
         title="Åpne meny"
       >
@@ -175,7 +175,7 @@
       </button>
       <button
         class="header__toggle header__toggle--close header__toggle--hidden"
-        onclick="potato()"
+        onclick="closeMenu()"
         id="header-close"
         title="Lukk meny"
       >
