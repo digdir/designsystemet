@@ -22,6 +22,7 @@ const MultiSelectItem = ({
       className={classes.deleteButton}
       disabled={disabled}
       onClick={onDeleteButtonClick}
+      type='button'
     >
       <span className={classes.deleteButtonCross} />
     </button>
