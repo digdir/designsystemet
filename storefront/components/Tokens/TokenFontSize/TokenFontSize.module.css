@@ -5,6 +5,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid #dcdcdc; */
-  background-color: rgb(207, 234, 255);
+  background-color: #cfeaff;
 }
