@@ -27,13 +27,14 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
   forwardRef(
-    ({ level = '1', size, spacing = false, className, as, ...rest }, ref) => {
-      const HeadingTag = as ?? (`h${level}` as React.ElementType);
+    ({ level, size, spacing = false, className, as, ...rest }, ref) => {
+      const HeadingTag = as ?? (`h${level ?? 1}` as React.ElementType);
 
       return (
         <HeadingTag
           {...rest}
           ref={ref}
+          aria-level={level}
           className={cl(
             classes.heading,
             classes[size],

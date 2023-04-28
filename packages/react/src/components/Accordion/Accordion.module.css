@@ -1,4 +1,3 @@
-/* stylelint-disable prettier/prettier */
 .accordion {
   --fdsc-accordion-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-border-radius: 3px;
@@ -55,8 +54,8 @@
 .header > button {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   font-size: var(--fds-sizing-small);
   gap: var(--fds-spacing-small);
   margin: 0;
@@ -70,9 +69,14 @@
   padding-left: var(--fdsc-accordion-header-padding-left);
 }
 
-.header > button:focus {
+.header > button:focus-visible {
+  outline: var(--semantic-tab_focus-outline-color) solid
+    var(--semantic-tab_focus-outline-width);
+  outline-offset: var(--semantic-tab_focus-outline-offset);
+}
+
+.header > .button:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: var(--fdsc-accordion-header-shadow-focus);
 }
 
 .header > button:hover {

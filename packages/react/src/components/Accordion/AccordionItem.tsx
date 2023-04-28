@@ -1,5 +1,5 @@
 import cl from 'classnames';
-import React, { createContext, forwardRef, useState } from 'react';
+import React, { createContext, forwardRef, useState, useId } from 'react';
 
 import styles from './Accordion.module.css';
 
@@ -29,6 +29,7 @@ export type AccordionItemType = React.ForwardRefExoticComponent<
 export interface AccordionItemContextProps {
   open: boolean;
   toggleOpen: () => void;
+  contentId: string;
 }
 
 export const AccordionItemContext =
@@ -37,6 +38,7 @@ export const AccordionItemContext =
 const AccordionItem: AccordionItemType = forwardRef(
   ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
     const [internalOpen, setInternalOpen] = useState<boolean>(defaultOpen);
+    const contentId = useId();
 
     return (
       <div
@@ -54,6 +56,7 @@ const AccordionItem: AccordionItemType = forwardRef(
                 setInternalOpen((iOpen) => !iOpen);
               }
             },
+            contentId: contentId,
           }}
         >
           {children}

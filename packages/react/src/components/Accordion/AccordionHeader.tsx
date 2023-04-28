@@ -5,14 +5,13 @@ import React, { forwardRef, useContext } from 'react';
 
 import { Heading } from '../Typography/Heading';
 
-import styles from './Accordion.module.css';
+import classes from './Accordion.module.css';
 import { AccordionItemContext } from './AccordionItem';
 
 export interface AccordionHeaderProps
   extends React.HTMLAttributes<HTMLHeadingElement> {
   /**
    * Heading level
-   * @default "1"
    */
   level?: '1' | '2' | '3' | '4' | '5' | '6';
   /**
@@ -53,24 +52,24 @@ const AccordionHeader: AccordionHeaderType = forwardRef(
         ref={ref}
         size='medium'
         level={level}
-        className={cn(styles.header, className)}
+        className={cn(classes.header, className)}
       >
         <button
           type='button'
           onClick={handleClick}
           aria-expanded={context.open}
+          aria-controls={context.contentId}
         >
+          <Expand
+            aria-hidden
+            className={classes.expandIcon}
+          />
           <Heading
             size='medium'
             as='span'
-            className={styles.headerContent}
           >
             {children}
           </Heading>
-          <Expand
-            aria-hidden
-            className={styles.expandIcon}
-          />
         </button>
       </Heading>
     );
