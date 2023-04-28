@@ -248,7 +248,24 @@
       "semantic.border.danger.active": "S:40aee5c10700b54e91cbf6eb33056d3a0b2e1ed7,",
       "semantic.surface.info.subtle-hover": "S:c52a7a420862eb38a643c1909c6c7cdf5d3ffe3a,",
       "semantic.surface.action.no_fill-hover": "S:ecdf98c533257de6148a82d6aa1fe2d28d75cc79,",
-      "semantic.surface.action.no_fill-active": "S:bfb0a27f9169025b5e9017154ab3c2d2d9538586,"
+      "semantic.surface.action.no_fill-active": "S:bfb0a27f9169025b5e9017154ab3c2d2d9538586,",
+      "typography.heading.xlarge": "S:436c9658165e5e4df43a960d7da0e92236b7631d,",
+      "typography.heading.large": "S:17704c5f99aa9004881858c9480572d171d68ace,",
+      "typography.heading.medium": "S:cbda714618559c70f160e9311f7019bae04297b3,",
+      "typography.heading.small": "S:06f0be10b3fe127192c470b39a4103a4702711fa,",
+      "typography.heading.xsmall": "S:de5c2ca706b6c3741fef0c60509d8f7adfbcbdcb,",
+      "typography.ingress.large": "S:00e9733bc57f530db72627201d7433ce94542f65,",
+      "typography.ingress.medium": "S:019c2179116d7cb343811ce1228ecc16e175c66d,",
+      "typography.body.medium": "S:4776b6225eb590e032e3557ad72b04d96e0a6dcf,",
+      "typography.body.small": "S:3c3962dad2a2d4558be6a1749d3c4c23a3f88cab,",
+      "typography.label.medium": "S:18b6330b73b8e494cf4d1c8b2b345bd93c98f315,",
+      "typography.label.small": "S:3f39e26f344c3b75c4a9ed73115a3d5450126c18,",
+      "typography.error_message.medium": "S:d4d80bdb7c1b25cfefa151eda724ca31ac973bd3,",
+      "typography.error_message.small": "S:24607c582780c14238ea38100920bbf4cbf2fe8d,",
+      "typography.detail.medium": "S:fb988c084a81e5b2ea93fd72599431052c5f2d75,",
+      "typography.interactive.large": "S:efaba827bd73dfebc088bf78c027461b78284186,",
+      "typography.interactive.medium": "S:7e6c6654a48cb79121f57e4d4357a21249b14846,",
+      "typography.interactive.small": "S:c8dfd777051d57443937819c1560b31c0843c39b,"
     }
   },
   {
@@ -260,6 +277,18 @@
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
       "Brand/Digdir": "enabled"
+    },
+    "$figmaStyleReferences": {}
+  },
+  {
+    "id": "246b5bc773cfeab1544d776c4104e7229af37c3a",
+    "name": "Digdir Mobile",
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Base/Semantic": "enabled",
+      "Base/Component": "enabled",
+      "Brand/Digdir": "enabled",
+      "Viewport/@380": "enabled"
     },
     "$figmaStyleReferences": {}
   }
