@@ -413,6 +413,7 @@ const Select = (props: SelectProps) => {
                 className={classes.deleteButton}
                 disabled={!selectedValues.length || disabled}
                 onClick={() => removeAllSelections()}
+                type='button'
               >
                 <span className={classes.deleteButtonCross} />
               </button>
@@ -425,7 +426,7 @@ const Select = (props: SelectProps) => {
               className={classes.fieldButton}
               disabled={disabled}
               onBlur={() => setExpanded(false)}
-              onClick={() => setExpanded(true)}
+              onClick={() => setExpanded(!expanded)}
               onKeyDown={(event) => {
                 if (Object.values(eventListenerKeys).includes(event.key)) {
                   event.preventDefault();
@@ -433,6 +434,7 @@ const Select = (props: SelectProps) => {
                 }
               }}
               tabIndex={-1}
+              type='button'
               value={multiple ? selectedValues : activeOption}
             >
               <span className={classes.arrowWrapper}>
@@ -478,6 +480,7 @@ const Select = (props: SelectProps) => {
               onMouseDown={(event) => event.preventDefault()}
               onKeyDown={(event) => event.preventDefault()}
               role='option'
+              type='button'
               value={option.value}
             >
               {option.formattedLabel ?? option.label}

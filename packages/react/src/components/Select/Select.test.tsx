@@ -367,11 +367,13 @@ describe('Select', () => {
       expect(onBlur).toHaveBeenCalledWith(value);
     });
 
-    const expectSelectedValue = (option: SingleSelectOption) =>
-      expect(getSelectedOption()).toHaveValue(option.value);
-
-    const getSelectedOption = () =>
-      screen.getByRole('option', { selected: true });
+    it('Expands when arrow button is clicked and collapses when it is clicked again', async () => {
+      renderSingleSelect();
+      await act(() => user.click(screen.getByRole('button')));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'true');
+      await act(() => user.click(screen.getByRole('button')));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
+    });
 
     it('Rerenders with new options when the "options" property changes', async () => {
       const options = singleSelectOptions;
@@ -407,6 +409,19 @@ describe('Select', () => {
       expectSelectedValue(options[1]);
       expect(getCombobox()).toHaveValue(options[1].label);
     });
+
+    test('All buttons have their "type" attribute set to "button"', () => {
+      renderSingleSelect();
+      screen.getAllByRole('button').forEach((button) => {
+        expect(button).toHaveAttribute('type', 'button');
+      });
+    });
+
+    const expectSelectedValue = (option: SingleSelectOption) =>
+      expect(getSelectedOption()).toHaveValue(option.value);
+
+    const getSelectedOption = () =>
+      screen.getByRole('option', { selected: true });
   });
 
   describe('Multiple select', () => {
@@ -874,6 +889,22 @@ describe('Select', () => {
       await act(() => user.click(delButton));
       expect(onFocus).toHaveBeenCalledTimes(1);
       expect(onBlur).not.toHaveBeenCalled();
+    });
+
+    it('Expands when arrow button is clicked and collapses when it is clicked again', async () => {
+      const label = 'Test';
+      renderMultiSelect({ label });
+      await act(() => user.click(screen.getByRole('button', { name: label })));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'true');
+      await act(() => user.click(screen.getByRole('button', { name: label })));
+      expect(getCombobox()).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    test('All buttons have their "type" attribute set to "button"', () => {
+      renderMultiSelect({ value: [multiSelectOptions[0].value] });
+      screen.getAllByRole('button').forEach((button) => {
+        expect(button).toHaveAttribute('type', 'button');
+      });
     });
 
     const getFocusedOption = (container: HTMLElement) =>
