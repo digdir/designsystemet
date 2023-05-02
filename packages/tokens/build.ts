@@ -26,7 +26,7 @@ StyleDictionary.registerTransform({
 
 type Typgraphy = {
   fontWeight: string;
-  fontSize: string;
+  fontSize: number;
   lineHeight: number;
   fontFamily: string;
 };
@@ -36,26 +36,11 @@ StyleDictionary.registerTransform({
   type: 'value',
   transitive: true,
   matcher: (token) => token.type === 'typography',
-  transformer: (token) => {
-    const value = token.value as Typgraphy;
-    return `${value.fontWeight} ${value.fontSize}/${value.lineHeight} '${value.fontFamily}'`;
-  },
-});
-
-/**
- * Transform fontSizes from px to rem
- */
-StyleDictionary.registerTransform({
-  name: 'pxToRem',
-  type: 'value',
-  transitive: true,
-  matcher: (token) => ['fontSizes'].includes(token.type as string),
   transformer: (token, options) => {
-    const value = token.value as number;
-
-    return typeof value === 'number'
-      ? `${value / (options?.basePxFontSize || 1)}rem`
-      : value;
+    const value = token.value as Typgraphy;
+    const divider = options?.basePxFontSize || 1;
+    const remValue = value.fontSize / divider;
+    return `${value.fontWeight} ${remValue}rem/${value.lineHeight} '${value.fontFamily}'`;
   },
 });
 
@@ -82,7 +67,6 @@ const getStyleDictionaryConfig = (
           'ts/resolveMath',
           'name/cti/camel',
           'typography/shorthand',
-          'pxToRem',
           'ts/resolveMath',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
@@ -113,7 +97,6 @@ const getStyleDictionaryConfig = (
           'ts/resolveMath',
           'name/cti/hierarchical-kebab',
           'typography/shorthand',
-          'pxToRem',
           'ts/resolveMath',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
