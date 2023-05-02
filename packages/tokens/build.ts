@@ -53,8 +53,8 @@ StyleDictionary.registerTransform({
   transformer: (token, options) => {
     const value = token.value as number;
 
-    return options?.basePxFontSize
-      ? `${value / options.basePxFontSize}rem`
+    return typeof value === 'number'
+      ? `${value / (options?.basePxFontSize || 1)}rem`
       : value;
   },
 });
@@ -79,6 +79,7 @@ const getStyleDictionaryConfig = (
       js: {
         basePxFontSize,
         transforms: [
+          'ts/resolveMath',
           'name/cti/camel',
           'typography/shorthand',
           'pxToRem',
@@ -109,6 +110,7 @@ const getStyleDictionaryConfig = (
         prefix,
         basePxFontSize,
         transforms: [
+          'ts/resolveMath',
           'name/cti/hierarchical-kebab',
           'typography/shorthand',
           'pxToRem',

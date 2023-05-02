@@ -2411,7 +2411,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
-    "@tokens-studio/sd-transforms": ^0.8.3
+    "@tokens-studio/sd-transforms": ^0.8.5
     change-case: ^4.1.2
     style-dictionary: ^3.7.2
     ts-node: ^10.9.1
@@ -6702,9 +6702,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokens-studio/sd-transforms@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "@tokens-studio/sd-transforms@npm:0.8.3"
+"@tokens-studio/sd-transforms@npm:^0.8.5":
+  version: 0.8.5
+  resolution: "@tokens-studio/sd-transforms@npm:0.8.5"
   dependencies:
     "@tokens-studio/types": ^0.2.1
     color2k: ^2.0.1
@@ -6712,7 +6712,7 @@ __metadata:
     expr-eval: ^2.0.2
     postcss-calc-ast-parser: ^0.1.4
     style-dictionary: ^3.7.2
-  checksum: 32b4403d59489cd68a77f4da6890b9bb9765e18f3356543eab724cf1fc3f5ee326cd94abb730d404b10919a0865374b137511d13328120042c25b1e2641abd32
+  checksum: 9ea96a6ae95a4e4ed200df158304d469bba1f0ed31c5f80e2721a9b92fdd766313d9616b367e957c4144e2616f64a4ea7f8e580f05595a09fdffdb68bcb1593b
   languageName: node
   linkType: hard
 
