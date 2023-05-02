@@ -13,7 +13,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['import', 'react', 'jsx-a11y', 'prettier', 'css-modules'],
+  plugins: ['import', 'react', 'jsx-a11y', 'prettier'],
   overrides: [
     {
       // Typescript
