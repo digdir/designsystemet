@@ -61,7 +61,6 @@
   background-color: #f4f4f4;
   border-radius: 8px;
   width: 100%;
-  margin-bottom: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -82,6 +81,16 @@
 .date {
   margin-top: 12px;
   font-size: 16px;
+}
+
+.content {
+  padding: 16px 32px 24px;
+}
+
+@media (max-width: 576px) {
+  .content {
+    padding: 0;
+  }
 }
 
 .content p {
@@ -108,6 +117,13 @@
   margin-bottom: 16px;
   line-height: 1.3em;
   font-size: 24px;
+}
+
+.content h4 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 20px;
 }
 
 .content img {

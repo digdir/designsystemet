@@ -1,0 +1,37 @@
+import Meta from '../../../components/Meta/Meta';
+import { PageLayout } from '../../../layouts';
+import { Figma } from 'mdx-embed';
+import { TokenList } from '../../../components/Tokens/TokenList';
+
+<Meta
+  title='Avstander'
+  description='Beskrivelse'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Avstander',
+      date: '5. april 2023',
+    }}
+  />
+);
+
+## Avstander
+
+Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens sikrer konsistent design på tvers av grensesnitt.
+
+### Spacing tokens
+
+<TokenList
+  type='size'
+  token='fds-sizing'
+/>
+
+Spacing-tokens gir oss mulighet til å definere verdier for Auto Layout i Figma. Når du har brukt en spacing-token på et lag, blir det oppdatert hver gang du endrer det tokenet, så ethvert lag som inneholder en referanse til spacing.container vil bli oppdatert når du oppdaterer det spesifikke tokenet.
+
+[Eksempel fra Figma og Studio Tokens]
+
+Avstand-variablene er angitt i `rem`. Denne verdien er relativ til html-elementet sin `font-size`,
+og tar utgangspunkt i den vanligste standarden der **1rem = 16px**.

@@ -1,0 +1,57 @@
+.content > p,
+.content > h2,
+.content > h3,
+.content > h4 {
+  max-width: 800px;
+}
+
+.content > h2:first-child {
+  margin-top: 32px !important;
+}
+
+.content > p > strong {
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.content > div {
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
+  border-radius: 4px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.content > ul > li {
+  font-size: 18px;
+  line-height: 1.7em;
+}
+
+.content > iframe {
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.2);
+  border-radius: 4px;
+  margin: 24px 0;
+}
+
+.content > table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 32px 0;
+}
+
+.content > table td,
+.content > table th {
+  border: 1px solid #ddd;
+  padding: 16px;
+}
+
+.content > table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+.content > *:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,92 @@
+import Meta from '../../../components/Meta/Meta';
+import { PageLayout } from '../../../layouts';
+import { TokenList } from '../../../components/Tokens/TokenList';
+
+<Meta
+  title='Typografi'
+  description='Beskrivelse'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Typografi',
+      date: '17. april 2023',
+    }}
+  />
+);
+
+For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. ⚠️ Det skal også lages et sett med komponenter som wrapper typografi-stilene og har innebygd spacing. Disse er foreløpig kun tilgjengelige i Figma, ikke som react-komponenter.
+
+## Størrelser
+
+Tekststørrelse-variablene blir angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
+og tar utgangspunkt i den vanligste standarden der `1rem = 16px`. Når vi angir tekststørrelse i rem, vil størrelsen være relatert til nettleserens standardstørrelse, og dermed også ta hensyn til om brukeren har valgt å oppskalere tekststørrelsen under innstillingene for tilgjengelighet i sin nettleser.
+
+Header-komponenten tilbyr størrelsene "xlarge" | "large" | "medium" | "small" | "xsmall" for headers. På små skjermer (mobil) tilsvarer dette 31, 28, 26, 22, 20px. På store skjermer tilsvarer det 46, 41, 36, 32, 29px.
+
+Body-komponenten tilbyr størrelsen "medium" som tilsvarer 18px på store skjermer og 16px på små skjermer, og "small" som tilsvarer 16px på store skjermer og 15px på små skjermer.
+
+## Tokens for typografi
+
+### Heading
+
+<TokenList
+  type='fontSize'
+  token='fds-typography-heading'
+/>
+
+### Body
+
+<TokenList
+  type='fontSize'
+  token='fds-typography-body'
+/>
+
+### Ingress
+
+<TokenList
+  type='fontSize'
+  token='fds-typography-ingress'
+/>
+
+### Detail
+
+<TokenList
+  type='fontSize'
+  token='fds-typography-detail'
+/>
+
+### Error
+
+<TokenList
+  type='fontSize'
+  token='fds-typography-error_message'
+/>
+
+## Fluid Typescale
+
+Ved hjelp av [Fluid typography](https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/) kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt breakpoint. Tekststørrelsene øker gradvis fra liten viewport-bredde helt til det treffer maksbredden på viewporten.
+
+| Step | 380px             | 768px             | 1360px            | fluid                                           |
+| ---- | ----------------- | ----------------- | ----------------- | ----------------------------------------------- |
+| f-2  | 14.00px / 0.88rem | 14.00px / 0.88rem | 14.00px / 0.88rem | clamp(0.88rem, calc(0.00vw + 0.88rem), 0.88rem) |
+| f-1  | 15.00px / 0.94rem | 15.40px / 0.96rem | 16.00px / 1.00rem | clamp(0.94rem, calc(0.10vw + 0.91rem), 1.00rem) |
+| f0   | 16.00px / 1.00rem | 16.79px / 1.05rem | 18.00px / 1.13rem | clamp(1.00rem, calc(0.20vw + 0.95rem), 1.13rem) |
+| f1   | 17.00px / 1.06rem | 18.19px / 1.14rem | 20.00px / 1.25rem | clamp(1.06rem, calc(0.31vw + 0.99rem), 1.25rem) |
+| f2   | 19.00px / 1.19rem | 20.58px / 1.29rem | 23.00px / 1.44rem | clamp(1.19rem, calc(0.41vw + 1.09rem), 1.44rem) |
+| f3   | 20.00px / 1.25rem | 22.38px / 1.40rem | 26.00px / 1.63rem | clamp(1.25rem, calc(0.61vw + 1.10rem), 1.63rem) |
+| f4   | 22.00px / 1.38rem | 24.77px / 1.55rem | 29.00px / 1.81rem | clamp(1.38rem, calc(0.71vw + 1.21rem), 1.81rem) |
+| f5   | 24.00px / 1.50rem | 27.17px / 1.70rem | 32.00px / 2.00rem | clamp(1.50rem, calc(0.82vw + 1.31rem), 2.00rem) |
+| f6   | 26.00px / 1.63rem | 29.96px / 1.87rem | 36.00px / 2.25rem | clamp(1.63rem, calc(1.02vw + 1.38rem), 2.25rem) |
+| f7   | 28.00px / 1.75rem | 33.15px / 2.07rem | 41.00px / 2.56rem | clamp(1.75rem, calc(1.33vw + 1.43rem), 2.56rem) |
+| f8   | 31.00px / 1.94rem | 36.94px / 2.31rem | 46.00px / 2.88rem | clamp(1.94rem, calc(1.53vw + 1.57rem), 2.88rem) |
+
+### Takk til
+
+Takk til [Victor Nystad](https://gist.github.com/vnys/ac50e8189dcae883a7fb09083fed83fa) som har vist oss hvordan vi kan oppnå en harmonisk typografisk skala basert på en pentatonisk skala og en formel, som også er beskrevet av [Spencer Mortensen](https://spencermortensen.com/articles/typographic-scale/).
+
+Takk til gjengen bak [Fluid Typescale Generator & Design Token Integration](https://fluid-tokenization.vercel.app/table)
+som har laget et ekstremt praktisk verktøy for å opprette flytende typografiske skalaer
+og integrere dem i Figma gjennom [Tokens Studio](https://tokens.studio/).

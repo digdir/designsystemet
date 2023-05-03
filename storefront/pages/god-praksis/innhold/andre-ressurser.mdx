@@ -1,0 +1,26 @@
+import Meta from '/..../../components/Meta/Meta';
+import { PageLayout } from '/..../../layouts';
+
+<Meta
+  title='Andre gode språkressurser'
+  description='Her har vi samlet noen andre gode artikler som angår innhold.'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Andre gode språkressurser',
+      date: '29. mars 2023',
+    }}
+  />
+);
+
+## God praksis - andre ressurser
+
+Inntil vi har ressurser til å jobbe frem mer innhold til disse sidene, kan vi anbefale God praksis-artiklene fra Aksel (NAV). Mye av erfaringen som er gjort i produktutvikling hos NAV er relevant for flere som jobber med innbyggertjenester.
+
+- [Innholdsarbeid](https://aksel.nav.no/god-praksis/innholdsarbeid)
+- [Brukerinnsikt](https://aksel.nav.no/god-praksis/brukerinnsikt)
+- [Universell utforming](https://aksel.nav.no/god-praksis/universell-utforming)
+- [Skjemaer](https://aksel.nav.no/god-praksis/skjemaer)

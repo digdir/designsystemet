@@ -23,11 +23,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 32px;
+    padding: 0 33px;
   }
 
   .header__logo {
-    height: 29px;
+    height: 30px;
+    width: auto;
   }
 
   .header__logo-link {
@@ -42,6 +43,10 @@
     display: none;
     border: none;
     background-color: transparent;
+  }
+
+  .header--toggle--hidden {
+    display: none;
   }
 
   .header__menu {
@@ -64,29 +69,46 @@
     transition: 0.1s all ease-out;
   }
 
-  .header__item a:hover,
+  .header__item a:hover {
+    border-color: #c3c3c3;
+  }
+
   .header__item a:focus,
-  .header__item.active a {
+  .header__item.active a,
+  .header__item.active a:hover {
     border-color: #6db6ea;
   }
 
   @media (max-width: 991.98px) {
+    .header {
+      height: 72px;
+    }
+
     .header__toggle {
       display: block;
     }
 
+    .header__toggle--hidden {
+      display: none;
+    }
+
     .header__menu {
       border-top: 1px solid #e2e2e2;
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
-      top: 100px;
+      top: 71px;
+      z-index: 10;
       background-color: white;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       display: flex;
       flex-direction: column;
       display: none;
       padding: 20px 0 20px 0;
+    }
+
+    .header__menu--open {
+      display: block;
     }
 
     .header__item {
@@ -99,24 +121,93 @@
     }
 
     .header__logo {
-      height: 32px;
+      height: 26px;
     }
   }
 </style>
 
-<script></script>
+<script>
+  function openMenu() {
+    document.getElementById('header-menu').classList.add('header__menu--open');
+    document
+      .getElementById('header-bars')
+      .classList.add('header__toggle--hidden');
+    document
+      .getElementById('header-close')
+      .classList.remove('header__toggle--hidden');
+  }
+  function closeMenu() {
+    document
+      .getElementById('header-menu')
+      .classList.remove('header__menu--open');
+    document
+      .getElementById('header-bars')
+      .classList.remove('header__toggle--hidden');
+    document
+      .getElementById('header-close')
+      .classList.add('header__toggle--hidden');
+  }
+</script>
 
 <header class="header">
   <div class="header__container">
     <div class="header__left">
       <a
-        href="/"
+        href="https://ds-docs-thuneer.vercel.app/"
         class="header__logo-link"
         ><img
           class="header__logo"
-          src="https://i.imgur.com/1DsC8ya.png"
+          src="https://i.imgur.com/a4EHRcN.png"
           alt="Logo"
       /></a>
+    </div>
+    <div class="header__right">
+      <button
+        class="header__toggle header__toggle--bars"
+        onclick="openMenu()"
+        id="header-bars"
+        title="Åpne meny"
+      >
+        <img
+          src="https://i.imgur.com/aj1Wv3j.png"
+          alt="Åpne meny"
+        />
+      </button>
+      <button
+        class="header__toggle header__toggle--close header__toggle--hidden"
+        onclick="closeMenu()"
+        id="header-close"
+        title="Lukk meny"
+      >
+        <img
+          src="https://i.imgur.com/s3P5AWt.png"
+          alt="Lukk meny"
+        />
+      </button>
+      <ul
+        class="header__menu"
+        id="header-menu"
+      >
+        <li class="header__item">
+          <a href="https://ds-docs-thuneer.vercel.app/grunnleggende"
+            >Grunnleggende</a
+          >
+        </li>
+        <li class="header__item">
+          <a href="https://ds-docs-thuneer.vercel.app/god-praksis"
+            >God praksis</a
+          >
+        </li>
+        <li class="header__item">
+          <a href="https://ds-docs-thuneer.vercel.app/monstre">Mønstre</a>
+        </li>
+        <li class="header__item active">
+          <a
+            href="https://digdir.github.io/designsystem/?path=/docs/komponentoversikt--docs"
+            >Komponenter</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
 </header>

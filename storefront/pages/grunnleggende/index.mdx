@@ -1,7 +1,18 @@
 import Meta from '../../components/Meta/Meta';
 import { NavigationPageLayout } from '../../layouts';
-export { getServerSideProps } from '../../utils/menus/PageMenu';
-import { ImageIcon } from '@navikt/aksel-icons';
+import {
+  ImageIcon,
+  TokenIcon,
+  PaletteIcon,
+  HikingTrailSignIcon,
+  ComponentIcon,
+  RectangleSectionsIcon,
+  PackageIcon,
+  BranchingIcon,
+  LayersIcon,
+  LightBulbIcon,
+  TerminalIcon,
+} from '@navikt/aksel-icons';
 
 <Meta
   title='Grunnleggende'
@@ -11,89 +22,147 @@ import { ImageIcon } from '@navikt/aksel-icons';
 export default ({ children, menu }) => (
   <NavigationPageLayout
     content={children}
-    menu={menu}
     data={{
       sections: [
         {
-          title: 'Styling',
+          title: 'Introduksjon',
+          description:
+            'Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor.',
+          items: [
+            {
+              title: 'Om designsystemet',
+              color: 'red',
+              icon: <ComponentIcon fontSize={34} />,
+              url: 'grunnleggende/introduksjon/om-designsystemet',
+              description:
+                'Hva er felles designsystem, hvorfor trenger vi det, hvordan gjør vi det og hvem er med i arbeidsgruppen?',
+            },
+            {
+              title: 'Prinsipper',
+              color: 'yellow',
+              icon: <LightBulbIcon fontSize={34} />,
+              url: 'grunnleggende/introduksjon/prinsipper',
+              description:
+                'Designsystemet er basert på en filosofi om samarbeid. Lær mer om prinsippene designsystemet bygges på.',
+            },
+            {
+              title: 'Roadmap',
+              color: 'blue',
+              icon: <HikingTrailSignIcon fontSize={34} />,
+              url: 'grunnleggende/introduksjon/roadmap',
+              description: 'Hva jobber vi med nå og hva er planlagt fremover',
+            },
+          ],
+        },
+        {
+          title: 'Grunnleggende designelementer',
           description:
             'Stilene i designsystemet er grunnleggende designelementer som brukes i komponentene. De finnes i flere sett for ulike identiteter og ulike behov og situasjoner. For eksempel har vi et eget sett for kompakt visning, som kan være hensiktsmessig å bruke i verktøy eller admingrensesnitt.',
           items: [
             {
               title: 'Design tokens',
               color: 'yellow',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/styling/design-tokens',
+              icon: <TokenIcon fontSize={34} />,
+              url: 'grunnleggende/designelementer/design-tokens',
               description:
                 'Design tokens er gjenbrukbare verdier som fungerer som et bindeledd mellom alle flater.',
             },
             {
-              title: 'Farger',
-              color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/styling/farger',
+              title: 'Fargesystem',
+              color: 'red',
+              icon: <PaletteIcon fontSize={34} />,
+              url: 'grunnleggende/designelementer/farger',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'Fargesystemet består av globale farger og et semantisk nivå som beskriver hva fargen skal brukes til.',
             },
             {
-              title: 'Layout',
+              title: 'Avstander',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/styling/layout',
+              icon: <TokenIcon fontSize={34} />,
+              url: 'grunnleggende/designelementer/spacing',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
-            },
-            {
-              title: 'Spacing',
-              color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/styling/spacing',
-              description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'Settet med avstander som er definert i tokens sikrer konsistens på tvers av grensesnitt.',
             },
             {
               title: 'Typografi',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/styling/typografi',
+              icon: <TokenIcon fontSize={34} />,
+              url: 'grunnleggende/designelementer/typografi',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'For å presentere tekst på korrekt måte, bruker vi noen utvalgte stiler og komponenter som er bygget opp med ulike kombinasjoner av størrelse, fontvekt og linjehøyde.',
+            },
+            {
+              title: 'Skygger',
+              color: 'yellow',
+              icon: <TokenIcon fontSize={34} />,
+              url: 'grunnleggende/designelementer/skygger',
+              description:
+                'Skygger kan hjelpe svaksynte til å identifisere komponenter og bør brukes konsistent da de uttrykker at noe ligger over noe annet i løsningen.',
+            },
+            {
+              title: 'Ikoner',
+              color: 'red',
+              icon: <TokenIcon fontSize={34} />,
+              url: 'grunnleggende/designelementer/ikoner',
+              description:
+                'Nav har laget et solid sett med ikoner (800+) som vi anbefaler å bruke og bidra til å videreutvikle',
             },
           ],
         },
         {
-          title: 'Design',
-          description: 'Beskrivelse',
+          title: 'For designere',
+          description: 'Ressurser og veiledning relevant for designere',
           items: [
             {
-              title: 'For designere',
+              title: 'Kom i gang med Figma',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/design/for-designere',
+              icon: <PaletteIcon fontSize={34} />,
+              url: 'grunnleggende/for-designere/kom-i-gang',
               description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+                'Lær hvordan du bruker komponentbibliotek og styles i Figma.',
+            },
+            {
+              title: 'Bidra i Figma',
+              color: 'red',
+              icon: <BranchingIcon fontSize={34} />,
+              url: 'grunnleggende/for-designere/bidra-i-figma',
+              description:
+                'Slik kan du være med å designe komponenter i designsystemet',
+            },
+            {
+              title: 'Sandkasse for designere',
+              color: 'yellow',
+              icon: <LayersIcon fontSize={34} />,
+              url: 'grunnleggende/for-designere/figma-sandkasse',
+              description:
+                'I sandkassen i Figma kan alle dele sine ideer og forslag til Felles designsystem',
             },
           ],
         },
         {
-          title: 'Kode',
-          description: 'Beskrivelse',
+          title: 'For utviklere',
+          description: 'Ressurser og veiledning relevant for utviklere',
           items: [
             {
-              title: 'For utviklere',
+              title: 'Kom i gang med kodepakkene',
               color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/design/for-utviklere',
-              description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+              icon: <PackageIcon fontSize={34} />,
+              url: 'grunnleggende/for-utviklere/kom-i-gang',
+              description: 'Lær hvordan du kommer i gang med kodepakkene',
+            },
+            {
+              title: 'Bidra i github',
+              color: 'yellow',
+              icon: <BranchingIcon fontSize={34} />,
+              url: 'grunnleggende/for-utviklere/bidra',
+              description: 'Slik kan du være med å utvikle felles designsystem',
             },
             {
               title: 'Endringslogg',
-              color: 'blue',
-              icon: <ImageIcon fontSize={34} />,
-              url: 'grunnleggende/design/endringslogg',
-              description:
-                'Abundantly may bits my viable attributing people, the very in the set with rest didnt still and named had in is small',
+              color: 'red',
+              icon: <TerminalIcon fontSize={34} />,
+              url: 'grunnleggende/for-utviklere/endringslogg',
+              description: 'Oversikt over endringer i Felles Designsystem.',
             },
           ],
         },

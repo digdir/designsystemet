@@ -1,0 +1,20 @@
+.btn {
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  transition: 0.1s all;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #cfcfcf;
+}
+
+.btn:hover svg {
+  color: black;
+}
+
+.tippy {
+  font-family: 'Inter', sans-serif;
+}

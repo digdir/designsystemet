@@ -1,6 +1,5 @@
 import Meta from '../../components/Meta/Meta';
 import { PageLayout } from '../../layouts';
-export { getServerSideProps } from '../../utils/menus/PageMenu';
 
 <Meta
   title='Designprinsipper'
@@ -10,7 +9,6 @@ export { getServerSideProps } from '../../utils/menus/PageMenu';
 export default ({ children, menu }) => (
   <PageLayout
     content={children}
-    menu={menu}
     data={{
       title: 'Designprinsipper',
       date: '29. mars 2023',
@@ -18,18 +16,17 @@ export default ({ children, menu }) => (
   />
 );
 
-## Sett brukernes behov først
+**Sett brukernes behov først** <br/>
+Bruk innsikt om brukernes behov aktivt når du utvikler nye løsninger. Alle tjenester skal løse ekte problemer for brukerne. Vi tar beslutninger basert på undersøkelser og brukerinnsikt.
 
-Vi bruker innsikt om brukernes behov aktivt når vi utvikler produktene våre. Alle apper skal løse ekte problemer for brukerne. Vi tar beslutninger basert på undersøkelser og brukerinnsikt.
+**Skjul kompleksitet** <br/>
+Lag enkle og tydelige grensesnitt og fjern unødvendige elementer som gjør det vanskelig for brukerne eller gir dem for stor kognitiv belastning. Tjenestene våre kan være komplekse på baksiden, men brukeren skal oppfatte dem som enkle og brukervennlige.
 
-Skjul kompleksitet
-Vi lager enkle og tydelige apper og fjerner design, tekst, steg eller elementer som gjør det vanskelig for brukerne eller gir dem for stor kognitiv belastning. Tjenestene våre kan være komplekse på baksiden, men brukeren skal oppfatte dem som enkle og brukervennlige.
+**Skap helhet** <br/>
+Vi skal jobbe for at innbyggerne får en helhetlig brukeropplevelse. Bruk konsekvent språk og samme grunnkomponenter i alle tjenester. Brukerne skal kjenne seg igjen, og slippe å lære seg noe nytt dersom de har gjort noe liknende et annet sted.
 
-Skap helhet
-Produktene våre skal henge sammen slik at folk får en helhetlig brukeropplevelse. Vi bruker konsekvent språk og de samme komponentene i alle apper. Brukerne skal kjenne seg igjen, uansett hvilken del av produktet de bruker.
+**Lag et motiverende visuelt design** <br/>
+Det visuelle designet skal gjøre brukerne trygge i dialogen med det offentlige og de skal oppleve at vi er vennlige. Lag enkle grensesnitt med tydelige interaksjonselementer og gjerne fargesterke illustrasjoner - skap en god atmosfære! Alle visuelle elementer som krever at brukeren gjør noe skal være tydelige.
 
-Lag et motiverende visuelt design
-Det visuelle designet skal gjøre brukerne trygge i dialogen med det offentlige og de skal oppleve at vi er vennlige. Vi designer et enklere grensesnitt med tydelige interaksjonselementer og fargesterke illustrasjoner, slik at vi skaper en god atmosfære. Alle visuelle elementer som krever at brukeren gjør noe skal være tydelige.
-
-Sørg for at appene er tilgjengelige for alle
-Vi lager tjenester som er tilgjengelige for alle og tester på UU-krav. Vi gjenbruker komponenter for å gi brukerne best mulig tilgjengelighet.
+**Sørg for at løsningen er tilgjengelige for alle** <br/>
+Lag tjenester som er tilgjengelige for alle og testet i henhold til UU-krav.

@@ -1,0 +1,59 @@
+import Meta from '../../components/Meta/Meta';
+import { PageLayout } from '../../layouts';
+import { Figma } from 'mdx-embed';
+
+<Meta
+  title='Feilmeldinger'
+  description='Beskrivelse'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Feilmeldinger',
+      date: '5. april 2023',
+    }}
+  />
+);
+
+## Feilmeldinger
+
+Feilmeldinger forklarer brukeren hva som gikk galt og hvordan det kan rettes opp i.
+
+Disse hovedprinsippene bør følges:
+
+- Feilmeldingen skal være lett å legge merke til og forstå.
+- Feltet(e) som er feil skal være lette å finne.
+- Brukere skal ikke måtte huske instruksjonene for å fikse feilen.
+
+Vær kort og tydelig i formuleringen av feilmeldingene og sørg for at brukeren vet hva som må gjøres for å komme videre. Å skrive “Feltet er ikke fyllt ut korrekt”, gir ikke brukeren en forklaring på hva som er feil.
+
+Eksempel på forklarende feilmeldinger:<br/>
+“Postnummer må ha 4 siffer”<br/>
+“Du må velge minst ett leveringsalternativ”<br/>
+“For å sende inn skjemaet må du bekrefte at navnet er korrekt ved å huke av i avkrysningsboksen”
+
+### Retningslinjer
+
+- Feilmeldingstekst bør gjenta nøkkelord fra label
+- Kravene for å fylle ut feltene riktig skal tydelig fremgå på forhånd uten at brukeren trenger å få noen feilmeldinger fra valideringen for å forstå dette.
+- Dersom skjemaet har feil når brukeren forsøker å gå videre, skal en oppsummering vise alle feilene og lenke til de feltene feilen gjelder. Feilene skal forsvinne etterhvert som de blir utbedret.
+
+### Eksempel på feilmelding relatert til avkrysningsbokser
+
+I dette eksempelet har brukeren forsøkt å trykke “Neste” uten å svart på obligatoriske spørsmål. Den røde boksen i bunnen viser kun når “Neste” er forsøkt klikket på.
+
+<Figma
+  title='Boop'
+  url='file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=7795%3A47239&t=rJYuezxREbfP1OVv-1'
+/>
+
+### Plassering av feilmelding
+
+Ved feil i besvarelser skal feilmelding komme så raskt som mulig, men ikke før feltet forlates. Det aktuelle svarfeltet skal markeres, og brukeren skal få hjelp til å løse problemet. Brukeren skal ha adgang til å gå videre uten å rette feilen, der det er mulig. Hvis en feil skyldes kryssvalidering mellom felter skal dette forklares, begge felter skal merkes, og hvis feilen ligger på ulike skjemasider skal det lenkes til det andre feltet. I skjema som er lange, eller har flere trinn, skal feil som gjenstår på slutten vises som en liste med lenker til aktuelle felt.<br/> [Elmer 3 - 4.3](https://brukskvalitet.brreg.no/elmer3/)
+
+Øvrige kilder:<br/>
+[UU-tilsynet](https://www.uutilsynet.no/veiledning/skjema/38#formidle_feil_i_skjema)<br/>
+[NN Group - Error Messages Guidelines](https://www.nngroup.com/articles/error-message-guidelines/)<br/>
+[NN Group - How to Report Errors in Forms](https://www.nngroup.com/articles/errors-forms-design-guidelines/)

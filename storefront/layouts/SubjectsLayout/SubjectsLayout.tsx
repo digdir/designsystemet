@@ -1,5 +1,4 @@
 import React from 'react';
-import { ImageIcon } from '@navikt/aksel-icons';
 
 import { Container } from '../../components/Container/Container';
 import Section from '../../components/Section/Section';
