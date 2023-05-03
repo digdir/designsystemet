@@ -44,7 +44,7 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
       });
       setItems(obj);
     }
-  }, [data, queryResponse.data, token]);
+  }, [data, token]);
 
   if (queryResponse.isLoading) return 'Henter tokens...';
 
