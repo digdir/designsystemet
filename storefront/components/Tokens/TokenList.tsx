@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useSWR from 'swr';
+import { useQuery } from '@tanstack/react-query';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
@@ -26,12 +26,15 @@ const formatTitle = (title: string) => {
 
 const TokenList = ({ type, showValue = true, token }: TokensProps) => {
   const [items, setItems] = useState<OutputType>({});
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const swrRes = useSWR('/api/tokens', fetcher);
-  const data = swrRes.data as OutputType;
+
+  const queryResponse = useQuery({
+    queryKey: ['tokens'],
+    queryFn: () => fetch('/api/tokens').then((response) => response.json()),
+  });
+  const data = queryResponse.data as OutputType;
 
   useEffect(() => {
-    if (data) {
+    if (queryResponse.data) {
       const obj: OutputType = {};
 
       Object.keys(data).map((key) => {
@@ -41,7 +44,9 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
       });
       setItems(obj);
     }
-  }, [data, token]);
+  }, [data, queryResponse.data, token]);
+
+  if (queryResponse.isLoading) return 'Henter tokens...';
 
   return (
     <div className={classes.tokens}>
