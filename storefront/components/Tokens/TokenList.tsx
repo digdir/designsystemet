@@ -34,7 +34,7 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
   const data = queryResponse.data as OutputType;
 
   useEffect(() => {
-    if (queryResponse.data) {
+    if (data) {
       const obj: OutputType = {};
 
       Object.keys(data).map((key) => {
