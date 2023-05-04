@@ -11,3 +11,16 @@
   white-space: nowrap;
   width: 1px;
 }
+
+/**
+ * Apply a focus outline on an element when it is focused or one of its children is focused
+ */
+.focusable:focus-within {
+  --inner-focus-border-color: #1e2b3c;
+  --outer-focus-border-color: #fadf4b;
+  --focus-border-width: 3px;
+
+  outline: var(--focus-border-width) solid var(--outer-focus-border-color);
+  outline-offset: var(--focus-border-width);
+  box-shadow: 0 0 0 var(--focus-border-width) var(--inner-focus-border-color);
+}

@@ -30,6 +30,7 @@
 }
 
 .tab {
+  composes: focusable from '../../utils/utility.module.css';
   background-color: transparent;
   border-bottom-color: var(--tab-border_bottom_color);
   border-bottom-style: solid;
@@ -54,12 +55,6 @@
 
 .tab:hover {
   --tab-text_color: var(--tab-text_color-hover);
-}
-
-.tab:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) auto
-    var(--semantic-tab_focus-outline-width);
-  outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 
 .divider {
