@@ -124,12 +124,17 @@ If you want to be able to release new versions, follow these steps:
 ### 1. Create a new NPM account
 If you haven't already created a NPM account, do so by going to [NPM.com](https://www.npmjs.com/).
 
-### 2. Ask to be added to the Digdir organisation on NPM
+### 2. Setup two factor authentication with an authenticator app
+Follow [the steps on NPM.com to setup two factor authentication](https://docs.npmjs.com/about-two-factor-authentication).
+When publishing, you will be asked to enter a one-time password.
+You can get this using an authenticator app on your phone, which you can setup through your profile on [npmjs.com](https://www.npmjs.com/).
+
+### 3. Ask to be added to the Digdir organisation on NPM
 Contact one of the people below to have your account added to the NPM Github organisation:
 * Øyvind Thune (oyvind.thune@digdir.no, Teams, or Slack)
 
 
-### 3. Login to you account
+### 4. Login to you account
 In the terminal that you want to run the publish commands from, run the following command to login to NPM:
 
 `npm login`
