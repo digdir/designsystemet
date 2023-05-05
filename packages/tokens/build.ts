@@ -89,9 +89,9 @@ StyleDictionary.registerTransform({
 });
 
 StyleDictionary.registerFormat({
-  name: 'css/global-values-hack',
+  name: 'global-values-hack',
   formatter: ({ dictionary }) => {
-    console.log('\n Setting fontScale');
+    console.info('\x1b[34m✔ Setting global values');
     fontScale = dictionary.tokens['font-scale'];
 
     return `/** Style Dictionary hack because it must write to file for some reason... */\n`;
@@ -157,8 +157,8 @@ const getStyleDictionaryConfig = (
         ],
         files: [
           {
-            format: 'css/global-values-hack',
-            destination: 'ignore/hack.css',
+            format: 'global-values-hack',
+            destination: 'ignore/hack',
           },
           {
             destination: `${destinationPath}/tokens.css`,
