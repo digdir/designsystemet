@@ -97,28 +97,36 @@ export const SiteConfig = {
         {
           name: 'Brukerinnsikt',
           url: 'god-praksis/brukerinnsikt',
-        },
-        {
-          name: 'Designprinsipper',
-          url: 'god-praksis/designprinsipper',
-        },
-        {
-          name: 'Innhold',
-          url: 'god-praksis/innhold',
           children: [
             {
-              name: 'Andre ressurser',
-              url: 'god-praksis/innhold/andre-ressurser',
+              name: 'Designprinsipper',
+              url: 'god-praksis/brukerinnsikt/designprinsipper',
             },
             {
-              name: 'Retningslinjer',
-              url: 'god-praksis/innhold/retningslinjer',
+              name: 'Felles innsiktsbase',
+              url: 'god-praksis/brukerinnsikt/felles-innsiktsbase',
             },
           ],
         },
         {
-          name: 'Universell utforming',
-          url: 'god-praksis/universell-utforming',
+          name: 'Tilgjengelighet',
+          url: 'god-praksis/tilgjengelighet',
+          children: [
+            {
+              name: 'Forstå synsnedsettelse',
+              url: 'god-praksis/tilgjengelighet/forsta-synsnedsettelse',
+            },
+          ],
+        },
+        {
+          name: 'Innhold',
+          url: 'god-praksis/innholdsarbeid',
+          children: [
+            {
+              name: 'Slik skriver du',
+              url: 'god-praksis/innholdsarbeid/slik-skriver-du',
+            },
+          ],
         },
       ],
     },
