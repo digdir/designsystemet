@@ -1,0 +1,23 @@
+import { Meta, Primary, Controls } from '@storybook/blocks';
+import * as ListStories from './List.stories';
+
+<Meta of={ListStories} />
+
+# List
+
+## Props
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import { List, ListItem } from '@digdir/design-system-react';
+
+<List>
+  <ListItem>List Item 1</ListItem>
+  <ListItem>List Item 2</ListItem>
+  <ListItem>List Item 3</ListItem>
+</List>;
+```

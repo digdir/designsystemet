@@ -160,6 +160,40 @@ describe('InputWrapper', () => {
       expect(screen.getByLabelText(label)).toHaveAttribute('id', inputId);
     });
   });
+
+  describe('Character limit', () => {
+    it('should support screen reader max-char description as additional information to input field', () => {
+      render({
+        label: 'Other',
+        charLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+      expect(screen.getByLabelText('Other')).toHaveAttribute(
+        'aria-describedby',
+      );
+      expect(screen.getByText('2 signs allowed')).toHaveAttribute('id');
+    });
+
+    it('should inform screen reader users when max char limit has been exceeded', () => {
+      render({
+        label: 'Comment',
+        value: 'Hello',
+        charLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.getByText('-3 signs left')).toHaveAttribute(
+        'aria-live',
+        'polite',
+      );
+    });
+  });
 });
 
 const getTextField = () => screen.getByTestId('InputWrapper');
@@ -169,12 +203,13 @@ const getClassNames = (expectedClassName: InputVariant_) => {
   return { expectedClassName, otherClassNames };
 };
 
-const render = (props: Partial<InputWrapperProps> = {}) => {
-  const allProps: InputWrapperProps = {
-    inputRenderer: ({ className, inputId }) => (
+const render = (props: Partial<InputWrapperProps<HTMLInputElement>> = {}) => {
+  const allProps: InputWrapperProps<HTMLInputElement> = {
+    inputRenderer: ({ className, inputId, describedBy }) => (
       <input
         className={className}
         id={inputId}
+        aria-describedby={describedBy}
       />
     ),
     ...props,
