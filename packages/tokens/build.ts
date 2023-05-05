@@ -86,8 +86,8 @@ StyleDictionary.registerTransform({
       const { min, max, v, r } = scale;
       const minRem = (parseFloat(min.value as string) / baseFontPx).toFixed(2);
       const maxRem = (parseFloat(max.value as string) / baseFontPx).toFixed(2);
-      const fontV = parseFloat(v.value as string).toFixed(2);
       const fontR = (parseFloat(r.value as string) / baseFontPx).toFixed(2);
+      const fontV = parseFloat(v.value as string).toFixed(2);
 
       const fluid = `clamp(${minRem}rem, calc(${fontV}vw + ${fontR}rem), ${maxRem}rem)`;
 
