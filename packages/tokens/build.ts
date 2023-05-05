@@ -26,6 +26,17 @@ StyleDictionary.registerTransform({
   },
 });
 
+StyleDictionary.registerTransform({
+  name: 'name/cti/camel_underscore',
+  type: 'name',
+  transformer: function (token, options) {
+    return noCase([options?.prefix].concat(token.path).join(' '), {
+      delimiter: '_',
+      stripRegexp: /[^A-Z0-9_]+/gi,
+    });
+  },
+});
+
 type Typgraphy = {
   fontWeight: string;
   fontSize: string;
@@ -115,34 +126,6 @@ const getStyleDictionaryConfig = (
     ],
     source: [`${tokensPath}/Base/Core.json`],
     platforms: {
-      js: {
-        basePxFontSize,
-        transformGroup: 'js',
-        transforms: [
-          'ts/resolveMath',
-          'name/cti/camel',
-          'typography/shorthand',
-          'ts/size/lineheight',
-          'ts/shadow/css/shorthand',
-        ],
-        files: [
-          {
-            destination: `${destinationPath}/tokens.cjs.js`,
-            format: 'javascript/module-flat',
-            filter: excludeSource,
-          },
-          {
-            destination: `${destinationPath}/tokens.esm.js`,
-            format: 'javascript/es6',
-            filter: excludeSource,
-          },
-          {
-            destination: `${destinationPath}/tokens.d.ts`,
-            format: 'typescript/es6-declarations',
-            filter: excludeSource,
-          },
-        ],
-      },
       css: {
         prefix,
         basePxFontSize,
@@ -169,6 +152,35 @@ const getStyleDictionaryConfig = (
         options: {
           // outputReferences: true,
         },
+      },
+      js: {
+        basePxFontSize,
+        transformGroup: 'js',
+        transforms: [
+          'ts/resolveMath',
+          'name/cti/camel_underscore',
+          'fontSizes/fluid',
+          'typography/shorthand',
+          'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
+        ],
+        files: [
+          {
+            destination: `${destinationPath}/tokens.cjs.js`,
+            format: 'javascript/module-flat',
+            filter: excludeSource,
+          },
+          {
+            destination: `${destinationPath}/tokens.esm.js`,
+            format: 'javascript/es6',
+            filter: excludeSource,
+          },
+          {
+            destination: `${destinationPath}/tokens.d.ts`,
+            format: 'typescript/es6-declarations',
+            filter: excludeSource,
+          },
+        ],
       },
     },
   };
