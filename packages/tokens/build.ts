@@ -28,7 +28,7 @@ StyleDictionary.registerTransform({
 
 type Typgraphy = {
   fontWeight: string;
-  fontSize: number;
+  fontSize: string;
   lineHeight: number;
   fontFamily: string;
 };
@@ -38,9 +38,15 @@ StyleDictionary.registerTransform({
   type: 'value',
   transitive: true,
   matcher: (token) => token.type === 'typography',
-  transformer: (token) => {
+  transformer: (token, options) => {
     const typography = token.value as Typgraphy;
-    return `${typography.fontWeight} ${typography.fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
+    let fontSize = typography.fontSize;
+
+    if (!fontSize.startsWith('clamp')) {
+      const baseFontPx = options?.basePxFontSize || 1;
+      fontSize = `${parseFloat(fontSize) / baseFontPx}rem`;
+    }
+    return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
   },
 });
 
@@ -143,9 +149,9 @@ const getStyleDictionaryConfig = (
         transformGroup: 'css',
         transforms: [
           'ts/resolveMath',
+          'name/cti/hierarchical-kebab',
           'fontSizes/fluid',
           'typography/shorthand',
-          'name/cti/hierarchical-kebab',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
         ],
