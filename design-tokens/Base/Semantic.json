@@ -846,7 +846,7 @@
       "type": "sizing"
     }
   },
-  "component-size": {
+  "component-height": {
     "small": {
       "value": "{sizing.10}",
       "type": "sizing"

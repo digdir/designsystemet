@@ -475,7 +475,7 @@
       }
     }
   },
-  "component-size": {
+  "component-height": {
     "small": {
       "value": "{sizing.6}",
       "type": "sizing"
