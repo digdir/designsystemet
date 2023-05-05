@@ -474,5 +474,19 @@
         "type": "typography"
       }
     }
+  },
+  "component-height": {
+    "small": {
+      "value": "{sizing.6}",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "{sizing.8}",
+      "type": "sizing"
+    },
+    "large": {
+      "value": "{sizing.10}",
+      "type": "sizing"
+    }
   }
 }
