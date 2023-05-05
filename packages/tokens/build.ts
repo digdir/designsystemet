@@ -88,7 +88,7 @@ StyleDictionary.registerFormat({
     console.log('\n Setting fontScale');
     fontScale = dictionary.tokens['font-scale'];
 
-    return `/** Style Dictionary hack because it must write to file for some reason... */ \n`;
+    return `/** Style Dictionary hack because it must write to file for some reason... */\n`;
   },
 });
 
