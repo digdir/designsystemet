@@ -21,8 +21,9 @@ export default {
 
     return config;
   },
+  output: "standalone",
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
+  pageExtensions: ['mdx', 'tsx', 'ts'],
   eslint: {
     ignoreDuringBuilds: true,
   },
