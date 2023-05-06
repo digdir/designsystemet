@@ -30,7 +30,6 @@ jobs:
           app_location: '/storefront' # App source code path
           api_location: '' # Api source code path - optional
           output_location: '' # Built app content directory - optional
-          app_build_command: 'npm run building'
           ###### End of Repository/Build Configurations ######
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
