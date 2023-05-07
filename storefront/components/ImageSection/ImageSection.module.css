@@ -8,6 +8,10 @@
   gap: var(--spacing-7);
 }
 
+.blue {
+  background-color: #b9e1ff;
+}
+
 .left {
   flex-basis: calc(35% - (var(--spacing-8) / 2));
   flex-grow: 1;
@@ -32,4 +36,8 @@
 
 .img {
   width: 360px;
+}
+
+.section a {
+  text-underline-offset: 5px;
 }
