@@ -21,7 +21,6 @@ export default {
 
     return config;
   },
-  output: "standalone",
   reactStrictMode: true,
   pageExtensions: ['mdx', 'tsx', 'ts'],
   eslint: {
