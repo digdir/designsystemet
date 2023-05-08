@@ -310,7 +310,7 @@
           "type": "color"
         }
       },
-      "tab-focus": {
+      "focus": {
         "outline": {
           "value": "{colors.yellow.500}",
           "type": "color"
@@ -738,14 +738,6 @@
     "disabled": {
       "value": "30%",
       "type": "opacity"
-    }
-  },
-  "tab_focus": {
-    "outline": {
-      "offset": {
-        "value": "2px",
-        "type": "spacing"
-      }
     }
   },
   "border_radius": {
