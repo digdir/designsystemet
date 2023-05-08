@@ -1,5 +1,6 @@
 # Built files
 dist
+ignore
 
 # Yarn stuff; we're not using PnP/Zero installs
 .pnp.*

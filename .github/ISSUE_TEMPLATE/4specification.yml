@@ -32,9 +32,11 @@ body:
     attributes:
       label: Development Tasks
       value: |
-        - [ ] Implement in Storybook
-        - [ ] Make sure all variants/properties is possible to turn on/off
-        - [ ] Make sure the component is usable across different breakpoints/screen sizes
+        - [ ] Develop React Component(s)
+          - [ ] Write stores and examples of use
+          - [ ] Write tests where applicable
+          - [ ] Make sure all variants/properties is possible to turn on/off
+          - [ ] Make sure the component is usable across different breakpoints/screen sizes
 
   - type: textarea
     id: accessibility
