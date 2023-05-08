@@ -311,8 +311,12 @@
         }
       },
       "tab-focus": {
-        "default": {
-          "value": "{colors.purple.600}",
+        "outline": {
+          "value": "{colors.yellow.500}",
+          "type": "color"
+        },
+        "boxshadow": {
+          "value": "{semantic.border.neutral.strong}",
           "type": "color"
         }
       },
