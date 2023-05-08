@@ -160,6 +160,58 @@ describe('InputWrapper', () => {
       expect(screen.getByLabelText(label)).toHaveAttribute('id', inputId);
     });
   });
+
+  describe('Character limit', () => {
+    it('should support screen reader max-char description as additional information to input field', () => {
+      render({
+        label: 'Other',
+        charLimitInformation: {
+          hasExceededCharLimit: false,
+          remainingCharLimitMessage: '190 characters remaining',
+          screenReaderMaxCharDescription: 'Textarea allows 200 characters',
+        },
+      });
+      expect(screen.getByLabelText('Other')).toHaveAttribute(
+        'aria-describedby',
+      );
+      expect(
+        screen.getByText('Textarea allows 200 characters'),
+      ).toHaveAttribute('id');
+    });
+
+    it('should display "remainingCharLimitMessage" and aria-live should be off when "hasExceededCharLimit" is false', () => {
+      render({
+        label: 'Other',
+        charLimitInformation: {
+          hasExceededCharLimit: false,
+          remainingCharLimitMessage: '190 characters remaining',
+          screenReaderMaxCharDescription: 'Textarea allows 200 characters',
+        },
+      });
+
+      expect(screen.getByText('190 characters remaining')).toBeInTheDocument();
+      expect(screen.getByText('190 characters remaining')).toHaveAttribute(
+        'aria-live',
+        'off',
+      );
+    });
+
+    it('should display "remainingCharLimitMessage" and aria-live should be polite when "hasExceededCharLimit" is true', () => {
+      render({
+        label: 'Other',
+        charLimitInformation: {
+          hasExceededCharLimit: true,
+          remainingCharLimitMessage: '-5 characters remaining',
+          screenReaderMaxCharDescription: 'Textarea allows 200 characters',
+        },
+      });
+
+      expect(screen.getByText('-5 characters remaining')).toHaveAttribute(
+        'aria-live',
+        'polite',
+      );
+    });
+  });
 });
 
 const getTextField = () => screen.getByTestId('InputWrapper');
@@ -171,10 +223,11 @@ const getClassNames = (expectedClassName: InputVariant_) => {
 
 const render = (props: Partial<InputWrapperProps> = {}) => {
   const allProps: InputWrapperProps = {
-    inputRenderer: ({ className, inputId }) => (
+    inputRenderer: ({ className, inputId, describedBy }) => (
       <input
         className={className}
         id={inputId}
+        aria-describedby={describedBy}
       />
     ),
     ...props,

@@ -97,3 +97,24 @@
   font-weight: var(--component-label-font_weight-default);
   padding: 0;
 }
+
+.screenReaderOnly {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.remainingCharLimitMessage {
+  margin-top: 4px;
+}
+
+.charLimitExceeded {
+  color: var(--component-input-error-color-border-default);
+}

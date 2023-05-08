@@ -14,6 +14,15 @@ import { ReadOnlyVariant } from '../../types/enums';
     },
   }}
   argTypes={{
+    charLimitInformation: {
+      control: { type: 'object' },
+      defaultValue: undefined,
+      description: `
+      Informasjon om maks antall tegn som kan skrives inn og hvor mange tegn som er igjen, samt antall 
+      overskredet antall tegn. Det er kosumenten av denne komponenten som er ansvarlig for å oppdatere informasjonen
+      i CharLimitInformation underveis mens brukeren skriver. Komponenten i seg selv gjør ikke noe logikk for å oppdatere
+      denne informasjonen eller kalkulere antall tegn igjen, dette gjøres av deg som kosument av komponenten. Denne komponenten påser at krav om tilgjengelighet opprettholdes.`,
+    },
     disabled: {
       control: { type: 'boolean' },
       defaultValue: false,
@@ -127,6 +136,40 @@ export const Template = (args) => <TextArea {...args} />;
   <Story
     name='Deaktivert'
     args={{ disabled: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Viser antall tegn igjen å skrive
+
+<Canvas>
+  <Story
+    name='Antall tegn igjen å skrive'
+    args={{
+      charLimitInformation: {
+        hasExceededCharLimit: false,
+        screenReaderMaxCharDescription: 'Tekstområde har plass til 200 tegn.',
+        remainingCharLimitMessage: 'Du har 200 tegn igjen.',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Antall tegn overskredet
+
+<Canvas>
+  <Story
+    name='Antall tegn overskredet'
+    args={{
+      charLimitInformation: {
+        hasExceededCharLimit: true,
+        screenReaderMaxCharDescription: 'Tekstområde har plass til 200 tegn.',
+        remainingCharLimitMessage: 'Du har 8 tegn for mye.',
+      },
+    }}
   >
     {Template.bind({})}
   </Story>

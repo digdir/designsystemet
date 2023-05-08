@@ -10,13 +10,14 @@ import { NumericFormat, PatternFormat } from 'react-number-format';
 
 import { isNumericFormat, isPatternFormat } from '../../utils';
 import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant_ } from '../_InputWrapper';
+import type { ReadOnlyVariant_, CharLimitInformation } from '../_InputWrapper';
 
 export interface TextFieldProps
   extends Omit<
     NumericFormatProps | PatternFormatProps,
     'readOnly' | 'value' | 'defaultValue'
   > {
+  charLimitInformation?: CharLimitInformation;
   defaultValue?: string | number;
   formatting?: TextFieldFormatting;
   isValid?: boolean;
@@ -52,6 +53,7 @@ const TextField = ({
   required = false,
   formatting,
   label,
+  charLimitInformation,
   ...rest
 }: TextFieldProps) => {
   const handleNumberFormatChange = (
@@ -74,7 +76,8 @@ const TextField = ({
       readOnly={readOnly}
       label={label}
       inputId={id}
-      inputRenderer={({ className, variant, inputId }) => {
+      charLimitInformation={charLimitInformation}
+      inputRenderer={({ className, variant, inputId, describedBy }) => {
         const commonProps = {
           id: inputId,
           readOnly: Boolean(readOnly),
@@ -101,6 +104,7 @@ const TextField = ({
               data-testid={`${inputId}-formatted-number-${variant}`}
               onValueChange={handleNumberFormatChange}
               valueIsNumericString={true}
+              aria-describedby={describedBy}
             />
           );
         } else if (formatting?.number && isPatternFormat(formatting.number)) {
@@ -112,6 +116,7 @@ const TextField = ({
               data-testid={`${inputId}-formatted-number-${variant}`}
               onValueChange={handleNumberFormatChange}
               valueIsNumericString={true}
+              aria-describedby={describedBy}
             />
           );
         } else {
@@ -121,6 +126,7 @@ const TextField = ({
               {...rest}
               data-testid={`${inputId}-${variant}`}
               onChange={onChange}
+              aria-describedby={describedBy}
             />
           );
         }
