@@ -7,9 +7,8 @@ import classes from './Heading.module.css';
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   /**
    * Heading level
-   * @default "1"
    */
-  level?: '1' | '2' | '3' | '4' | '5' | '6';
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   /**
    * Changes text-sizing
    */
@@ -27,14 +26,13 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
   forwardRef(
-    ({ level, size, spacing = false, className, as, ...rest }, ref) => {
+    ({ level = 1, size, spacing = false, className, as, ...rest }, ref) => {
       const HeadingTag = as ?? (`h${level ?? 1}` as React.ElementType);
 
       return (
         <HeadingTag
           {...rest}
           ref={ref}
-          aria-level={level}
           className={cl(
             classes.heading,
             classes[size],

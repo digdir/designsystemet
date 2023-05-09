@@ -13,7 +13,7 @@ export interface AccordionHeaderProps
   /**
    * Heading level
    */
-  level?: '1' | '2' | '3' | '4' | '5' | '6';
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   /**
    * Text inside Accordion.Header
    */
@@ -29,7 +29,7 @@ export type AccordionHeaderType = React.ForwardRefExoticComponent<
 >;
 
 const AccordionHeader: AccordionHeaderType = forwardRef(
-  ({ level, children, className, onHeaderClick, ...rest }, ref) => {
+  ({ level = 1, children, className, onHeaderClick, ...rest }, ref) => {
     const context = useContext(AccordionItemContext);
 
     if (context === null) {
@@ -52,6 +52,7 @@ const AccordionHeader: AccordionHeaderType = forwardRef(
         ref={ref}
         size='medium'
         level={level}
+        aria-level={level}
         className={cn(classes.header, className)}
       >
         <button
