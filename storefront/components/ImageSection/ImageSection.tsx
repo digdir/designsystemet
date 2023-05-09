@@ -15,7 +15,15 @@ interface ImageSectionProps {
   imgWidth: number;
   imgHeight: number;
   color?: 'blue' | 'yellow' | 'red' | 'white';
+  buttons?: ButtonProps[];
+  link?: { text: string; href: string; prefix: React.ReactNode };
 }
+
+type ButtonProps = {
+  text: string;
+  prefix?: React.ReactNode;
+  href: string;
+};
 
 const ImageSection = ({
   title,
@@ -26,6 +34,8 @@ const ImageSection = ({
   imgWidth,
   color = 'white',
   children,
+  buttons,
+  link,
 }: ImageSectionProps) => {
   return (
     <div className={classes[color]}>
@@ -44,6 +54,29 @@ const ImageSection = ({
           {title && <h2 className={classes.title}>{title}</h2>}
           {description && <p className={classes.desc}>{description}</p>}
           {content && content}
+          {link && (
+            <a
+              href={link.href}
+              className={classes.link}
+            >
+              {link.prefix} {link.text}
+            </a>
+          )}
+
+          {buttons && (
+            <div className={classes.buttons}>
+              {buttons.map((item, index) => (
+                <a
+                  href={item.href}
+                  className={classes.button}
+                  key={index}
+                >
+                  {item.prefix} {item.text}
+                </a>
+              ))}
+            </div>
+          )}
+
           {children}
         </div>
       </Container>

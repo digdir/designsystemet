@@ -1,6 +1,6 @@
 .section {
-  padding-top: var(--spacing-8);
-  padding-bottom: var(--spacing-8);
+  padding-top: var(--spacing-7);
+  padding-bottom: var(--spacing-7);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -9,7 +9,7 @@
 }
 
 .blue {
-  background-color: #b9e1ff;
+  background-color: #c2e4fe;
 }
 
 .left {
@@ -20,24 +20,77 @@
 .right {
   flex-basis: calc(65% - (var(--spacing-8) / 2));
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-  line-height: 1.3rem;
+  line-height: 1.3em;
   font-size: var(--font-700);
   font-weight: 500;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .desc {
   line-height: 1.7rem;
   font-size: var(--font-300);
+  margin-top: 0;
 }
 
 .img {
   width: 360px;
 }
 
-.section a {
+.buttons {
+  display: flex;
+}
+
+.button {
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.1s all;
+  color: #1e2b3c !important;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.button:hover {
+  background-color: #dbedff;
+}
+
+.button:first-child {
+  margin-right: 20px;
+}
+
+.button svg {
+  margin-right: 8px;
+  color: #1e2b3c;
+}
+
+.button img {
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.link {
   text-underline-offset: 5px;
+  color: #1e2b3c;
+  display: flex;
+  align-items: center;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.link svg {
+  margin-right: 8px;
+  color: #1e2b3c;
 }

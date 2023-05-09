@@ -4,7 +4,7 @@ import { Container } from '../../components/Container/Container';
 import Section from '../../components/Section/Section';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
-
+import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import classes from './NavPageLayout.module.css';
 
 interface NavPageLayoutProps {
@@ -33,8 +33,22 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
           background: #f4f5f6;
         }
       `}</style>
-
-      <div className={classes.content}>{content}</div>
+      <ImageSection
+        src='/img/people-table.svg'
+        color='blue'
+        imgHeight={220}
+        imgWidth={220}
+        title='God praksis'
+        description='Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her. Har du forslag til artikler eller innsikt til denne siden?'
+        link={{
+          text: 'Ta kontakt med oss på e-post',
+          prefix: <EnvelopeClosedIcon fontSize={26} />,
+          href: '#',
+        }}
+      ></ImageSection>
+      <div className={classes.content}>
+        <Container>{content}</Container>
+      </div>
     </div>
   );
 };

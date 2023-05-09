@@ -63,15 +63,23 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           src={data.contributeSection.image}
           imgWidth={data.contributeSection.imageWidth}
           imgHeight={data.contributeSection.imageHeight}
-          content={
-            <a
-              href={'mailto:' + data.contributeSection.email}
-              className={classes.link}
-            >
-              <EnvelopeClosedIcon fontSize={33} />
-              <span>Ta kontakt med oss på e-post.</span>
-            </a>
-          }
+          buttons={[
+            {
+              text: 'Ta kontakt',
+              href: '#',
+              prefix: <EnvelopeClosedIcon fontSize={24} />,
+            },
+            {
+              text: 'Bli med i slack kanalen vår',
+              href: '#',
+              prefix: (
+                <img
+                  src='img/slack-logo.png'
+                  alt='Slack logo'
+                />
+              ),
+            },
+          ]}
         />
 
         {/*<Section*/}

@@ -8,13 +8,20 @@ interface TeaserCardProps {
   description?: string;
   author?: string;
   date?: string;
+  href: string;
 }
 
-const TeaserCard = ({ title, description, author, date }: TeaserCardProps) => {
+const TeaserCard = ({
+  title,
+  description,
+  href,
+  author,
+  date,
+}: TeaserCardProps) => {
   return (
     <Link
       className={classes.card}
-      href=''
+      href={href}
     >
       <h3 className={classes.title}>{title}</h3>
       <p className={classes.desc}>{description}</p>

@@ -19,17 +19,26 @@
   margin-bottom: 0;
 }
 
+.content {
+  margin-bottom: 56px;
+}
+
 .content > div > h2 {
-  margin-top: 32px;
+  margin-top: 48px;
   margin-bottom: 16px;
+  font-size: 28px;
 }
 
 .content > div > p > a {
   text-underline-offset: 5px;
+  color: #0062ba;
 }
 
 .content > div > p {
   margin-bottom: 16px;
+  max-width: 900px;
+  line-height: 1.7em;
+  font-size: 18px;
 }
 
 .element {
