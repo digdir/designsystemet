@@ -52,7 +52,6 @@ const AccordionHeader: AccordionHeaderType = forwardRef(
         ref={ref}
         size='medium'
         level={level}
-        aria-level={level}
         className={cn(classes.header, className)}
       >
         <button
