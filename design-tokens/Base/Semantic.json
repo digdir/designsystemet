@@ -310,9 +310,13 @@
           "type": "color"
         }
       },
-      "tab-focus": {
-        "default": {
-          "value": "{colors.purple.600}",
+      "focus": {
+        "outline": {
+          "value": "{colors.yellow.500}",
+          "type": "color"
+        },
+        "boxshadow": {
+          "value": "{semantic.border.neutral.strong}",
           "type": "color"
         }
       },
@@ -734,14 +738,6 @@
     "disabled": {
       "value": "30%",
       "type": "opacity"
-    }
-  },
-  "tab_focus": {
-    "outline": {
-      "offset": {
-        "value": "2px",
-        "type": "spacing"
-      }
     }
   },
   "border_radius": {
