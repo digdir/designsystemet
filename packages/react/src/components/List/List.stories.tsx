@@ -1,14 +1,10 @@
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
+import type { ListProps } from '.';
 import { List, ListItem } from '.';
 
-const Template = (args = {}) => (
-  <List {...args}>
-    <ListItem>List Item 1</ListItem>
-    <ListItem>List Item 2</ListItem>
-    <ListItem>List Item 3</ListItem>
-  </List>
-);
+type Story = StoryObj<typeof List>;
 
 export default {
   title: 'Kjernekomponenter/List',
@@ -19,9 +15,17 @@ export default {
       url: 'http://www.url.com/status',
     },
   },
-};
+} as Meta<typeof List>;
 
-export const Props = {
+const Template = (args: ListProps) => (
+  <List {...args}>
+    <ListItem>List Item 1</ListItem>
+    <ListItem>List Item 2</ListItem>
+    <ListItem>List Item 3</ListItem>
+  </List>
+);
+
+export const Props: Story = {
   render: Template,
 };
 export const SolidBorder = {

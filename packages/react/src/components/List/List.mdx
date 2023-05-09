@@ -1,25 +1,35 @@
-import {ArgsTable, Canvas, Meta, Story} from "@storybook/blocks";
-import {List, ListItem} from "./";
-import {TokensTable} from "../../../../../docs-components";
+import {
+  ArgsTable,
+  Canvas,
+  Meta,
+  Story,
+  Primary,
+  Controls,
+} from '@storybook/blocks';
+import { List, ListItem } from './';
+import { TokensTable } from '../../../../../docs-components';
 import * as ListStories from './List.stories';
 
 <Meta of={ListStories} />
 
-export const defaultArgs = {
-    borderStyle: 'solid'
-};
-
-export const Template = (args = {}) => (
-    <List {...{...defaultArgs, ...args}}>
-        <ListItem>List Item 1</ListItem>
-        <ListItem>List Item 2</ListItem>
-        <ListItem>List Item 3</ListItem>
-    </List>
-);
-
 # List
 
-## Variants
+## Bruk
+
+```tsx
+import { List } from '@digdir/design-system-react';
+
+<List>
+  <ListItem>List Item 1</ListItem>
+  <ListItem>List Item 2</ListItem>
+  <ListItem>List Item 3</ListItem>
+</List>;
+```
+
+## Props
+
+<Primary />
+<Controls />
 
 ### Solid border
 
@@ -32,11 +42,3 @@ export const Template = (args = {}) => (
 <Canvas>
   <Story of={ListStories.DashedBorder} />
 </Canvas>
-
-## Egenskaper
-
-<ArgsTable story="Solid border" />
-
-## Tokens
-
-<TokensTable componentName="popover" description jsonKey="component.popover" showPreview={false} />
