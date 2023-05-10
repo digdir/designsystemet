@@ -1,9 +1,10 @@
 import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
-import classes from './Chips.module.css';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
-export interface RemovableChipsProps
+import classes from './Chips.module.css';
+
+export interface RemovableChipProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
 
@@ -12,37 +13,41 @@ export interface RemovableChipsProps
   onDelete?: () => void;
 }
 
-export type RemovableChipsType = React.ForwardRefExoticComponent<
-  RemovableChipsProps & React.RefAttributes<HTMLButtonElement>
+export type RemovableChipType = React.ForwardRefExoticComponent<
+  RemovableChipProps & React.RefAttributes<HTMLButtonElement>
 >;
 
-const RemovableChips: RemovableChipsType = forwardRef(
+const RemovableChip: RemovableChipType = forwardRef(
   ({ children, className, onDelete, ...rest }, ref) => {
     return (
-      <button
-        ref={ref}
-        {...rest}
-        className={cn(className, classes.chipBase, classes.removableChips)}
-        onClick={(e) => {
-          onDelete?.();
-          rest?.onClick?.(e);
-        }}
-      >
-        <div className={classes.buttonTextContainer}>
-          <div className={classes.buttonText}>{children}</div>
-          <span
-            className={classes.xmarkContainer}
-            id='xmarkContainer'
-          >
-            <XMarkIcon
-              title='a11y-title'
-              fontSize={'20px'}
-            />
-          </span>
-        </div>
-      </button>
+      <li>
+        <button
+          ref={ref}
+          {...rest}
+          className={cn(className, classes.chip, classes.removable)}
+          onClick={(e) => {
+            onDelete?.();
+            rest?.onClick?.(e);
+          }}
+        >
+          <div className={classes.content}>
+            <div className={classes.text}>{children}</div>
+            <span
+              className={classes.xmark}
+              id='xmarkContainer'
+            >
+              <XMarkIcon
+                title='a11y-title'
+                fontSize={'20px'}
+              />
+            </span>
+          </div>
+        </button>
+      </li>
     );
   },
 );
 
-export default RemovableChips;
+RemovableChip.displayName = 'RemovableChip';
+
+export default RemovableChip;

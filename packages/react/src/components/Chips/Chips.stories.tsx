@@ -41,14 +41,10 @@ export const props: Story = {
   args: {
     children: (
       <>
-        <Chips>
-          <Chips.Removable>Test removable</Chips.Removable>
-          <Chips.Removable>123</Chips.Removable>
-        </Chips>
-        <Chips>
-          <Chips.Toggle>Test toggle</Chips.Toggle>
-          <Chips.Toggle>Test 123</Chips.Toggle>
-        </Chips>
+        <Chips.Removable>Test removable</Chips.Removable>
+        <Chips.Removable>123</Chips.Removable>
+        <Chips.Toggle>Test toggle</Chips.Toggle>
+        <Chips.Toggle>Test 123</Chips.Toggle>
       </>
     ),
   },

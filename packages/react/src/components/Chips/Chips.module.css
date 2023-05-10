@@ -5,7 +5,7 @@
   height: var(--fds-sizing-medium);
 }
 
-.chipBase {
+.chip {
   border-radius: 50px;
   height: var(--fds-sizing-medium);
   width: fit-content;
@@ -15,19 +15,19 @@
   padding-bottom: 0;
 }
 
-.chips.xsmall > li > .chipBase {
+.chips.xsmall > li > .chip {
   height: var(--fds-sizing-medium);
   padding-left: var(--fds-sizing-xxsmall);
   padding-right: var(--fds-sizing-xxsmall);
 }
 
-.chips.small > li > .chipBase {
+.chips.small > li > .chip {
   height: var(--fds-sizing-large);
   padding-left: var(--fds-sizing-xsmall);
   padding-right: var(--fds-sizing-xsmall);
 }
 
-.toggleChips {
+.toggle {
   border: solid;
   background-color: var(--fds-semantic-surface-neutral-default);
   border-color: var(--fds-semantic-border-neutral-default);
@@ -35,21 +35,21 @@
   color: --fds-semantic-text-neutral-default;
 }
 
-.toggleChips.active {
+.toggle.active {
   background-color: var(--fds-semantic-surface-action-active);
   border-color: var(--fds-semantic-surface-action-active);
   color: var(--fds-semantic-text-action-on_action);
   padding-left: 0;
 }
 
-.toggleChips.active:hover {
+.toggle.active:hover {
   background-color: var(--fds-semantic-surface-action-no_fill-active);
   border-color: --fds-semantic-border-action-active;
   border: solid 2px;
   color: var(--fds-semantic-text-neutral-default);
 }
 
-.removableChips {
+.removable {
   background-color: var(--fds-semantic-surface-action-active);
   color: var(--fds-semantic-text-action-on_action);
   height: var(--fds-sizing-medium);
@@ -57,17 +57,17 @@
   padding-right: 0;
 }
 
-.buttonTextContainer {
+.content {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.buttonText {
+.text {
   padding-right: 4px;
 }
 
-.xmarkContainer {
+.xmark {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   height: var(--fds-sizing-medium);
@@ -84,14 +84,14 @@
   justify-content: center;
 }
 
-.removableChips:hover .xmarkContainer {
+.removable:hover .xmarkContainer {
   background-color: var(--fds-semantic-surface-danger-default);
 }
 
-.toggleChips:hover {
+.toggle:hover {
   background-color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.toggleChips:hover .active {
+.toggle:hover .active {
   background-color: pink;
 }

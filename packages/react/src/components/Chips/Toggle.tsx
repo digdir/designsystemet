@@ -1,9 +1,10 @@
-import { ReactNode, useState } from 'react';
-import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
+import React, { forwardRef, useState } from 'react';
 import cn from 'classnames';
-import classes from './Chips.module.css';
-import { SortIcon } from '../Table/SortIcon';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
+
+//import { SortIcon } from '../Table/SortIcon';
+
+import classes from './Chips.module.css';
 
 export interface ToggleChipsProps
   extends React.HTMLAttributes<HTMLButtonElement> {
@@ -13,12 +14,12 @@ export interface ToggleChipsProps
   selected?: boolean;
 }
 
-export type ToggleChipsType = React.ForwardRefExoticComponent<
+export type ToggleChipType = React.ForwardRefExoticComponent<
   ToggleChipsProps & React.RefAttributes<HTMLButtonElement>
 >;
 
-const ToggleChips: ToggleChipsType = forwardRef(
-  ({ children, size = 'xsmall', className, onClick, ...rest }, ref) => {
+const ToggleChip: ToggleChipType = forwardRef(
+  ({ children, className, onClick, ...rest }, ref) => {
     const [selected, setSelectedState] = useState(false);
 
     const onClickFunctions = () => {
@@ -26,35 +27,37 @@ const ToggleChips: ToggleChipsType = forwardRef(
       () => onClick;
     };
     return (
-      <button
-        ref={ref}
-        {...rest}
-        onClick={() => onClickFunctions()}
-        className={cn(
-          className,
-          classes.toggleChips,
-          classes.chipBase,
-          classes[size],
-          classes.buttonTextContainer,
-          selected && classes.active,
-        )}
-      >
-        <div className={classes.buttonTextContainer}>
-          {selected && (
-            <span className={cn(classes.checkmarkContainer)}>
-              <CheckmarkIcon
-                title='a11y-title'
-                fontSize='20px'
-                className={classes.icon}
-              />
-            </span>
+      <li>
+        <button
+          ref={ref}
+          {...rest}
+          onClick={() => onClickFunctions()}
+          className={cn(
+            className,
+            classes.chip,
+            classes.toggle,
+            classes.buttonText,
+            selected && classes.active,
           )}
-
-          <div>{children}</div>
-        </div>
-      </button>
+        >
+          <div className={classes.content}>
+            {selected && (
+              <span className={cn(classes.checkmark)}>
+                <CheckmarkIcon
+                  title='a11y-title'
+                  fontSize='20px'
+                  className={classes.icon}
+                />
+              </span>
+            )}
+            <div>{children}</div>
+          </div>
+        </button>
+      </li>
     );
   },
 );
 
-export default ToggleChips;
+ToggleChip.displayName = 'ToggleChip';
+
+export default ToggleChip;

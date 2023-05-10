@@ -6,17 +6,17 @@ import React, {
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 import classes from './Chips.module.css';
-import type { ToggleChipsType } from './Toggle';
+import type { ToggleChipType } from './Toggle';
 import ToggleChip from './Toggle';
-import type { RemovableChipsProps, RemovableChipsType } from './Removable';
+import type { RemovableChipType } from './Removable';
 import RemovableChip from './Removable';
 
 interface ChipsComponent
   extends React.ForwardRefExoticComponent<
     ChipsProps & React.RefAttributes<HTMLUListElement>
   > {
-  Removable: RemovableChipsType;
-  Toggle: ToggleChipsType;
+  Removable: RemovableChipType;
+  Toggle: ToggleChipType;
 }
 
 export const chipsSize = ['xsmall', 'small'] as const;
@@ -34,16 +34,13 @@ export const Chips = forwardRef<HTMLUListElement, ChipsProps>(
       ref={ref}
       className={cn(className, classes.chips, classes[size])}
     >
-      {React.Children.map(children, (chip, index) => {
-        return <li key={index + (chip?.toString() ?? '')}>{chip}</li>;
-      })}
+      {children}
     </ul>
   ),
 ) as ChipsComponent;
 
 Chips.Toggle = ToggleChip;
 Chips.Removable = RemovableChip;
+Chips.displayName = 'Chips';
 
 export default Chips;
-
-Chips.displayName = 'chips';
