@@ -1,0 +1,7 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "github-pages-deployment": false
+    }
+  }
+}
