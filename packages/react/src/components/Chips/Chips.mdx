@@ -1,0 +1,57 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { BetaBlock } from '../../../../../docs-components';
+import * as ChipsStories from './Chips.stories';
+
+<Meta of={ChipsStories} />
+
+# Chips
+
+<BetaBlock />
+
+Chips er små interaktive komponenter som manipulerer data eller visning av data.
+
+#### Egnet til:
+
+Filtrere data, f.eks. lister og tabeller
+Vise filter som er aktivt
+
+#### Uegnet til:
+
+Navigasjon mellom tab-paneler
+Menyer, f.eks. sidemeny eller hovedmeny
+Statisk metadata (se Tag-komponenten)
+
+## Bruk
+
+```tsx
+import { Chips } from '@digdir/design-system-react';
+
+<Chips size='xsmall'>
+  <Chips.Removable> Click to remove! </Chips.Removable>
+  <Chips.Removable> Removable chip </Chips.Removable>
+</Chips>;
+
+<Chips>
+  <Chips.Toggle>Click to toggle!</Chips.Toggle>;
+  <Chips.Toggle>Toggle chip</Chips.Toggle>;
+</Chips>;
+```
+
+## Props
+
+<Primary />
+<Controls />
+
+## Varianter
+
+### Toggle
+
+<Canvas>
+  <Story of={ChipsStories.ToggleChip} />
+</Canvas>
+
+### Removable
+
+<Canvas>
+  <Story of={ChipsStories.RemovableChip} />
+</Canvas>
