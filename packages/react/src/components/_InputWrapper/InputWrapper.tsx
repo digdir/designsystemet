@@ -1,6 +1,8 @@
 import React, { useId } from 'react';
-import type { ReactNode } from 'react';
+import type { ReactNode, ForwardedRef } from 'react';
 import cn from 'classnames';
+
+import utilClasses from '../../utils/utility.module.css';
 
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
@@ -16,12 +18,12 @@ type InputRendererProps = {
   describedBy?: string;
 };
 
-export type CharLimitInformation = Omit<
-  CharacterCounterDisplayProps,
-  'ariaDescribedById'
+export type CharLimit = Omit<
+  CharacterCounterProps,
+  'ariaDescribedById' | 'value'
 >;
 
-export interface InputWrapperProps {
+export type InputWrapperProps<T> = {
   className?: string;
   disabled?: boolean;
   inputId?: string;
@@ -32,10 +34,12 @@ export interface InputWrapperProps {
   noFocusEffect?: boolean;
   noPadding?: boolean;
   readOnly?: boolean | ReadOnlyVariant_;
-  charLimitInformation?: CharLimitInformation;
-}
+  charLimit?: CharLimit;
+  value?: string | number | readonly string[] | undefined;
+  ref?: ForwardedRef<T>;
+};
 
-export const InputWrapper = ({
+export const InputWrapper = <T,>({
   className,
   disabled = false,
   inputId,
@@ -46,17 +50,20 @@ export const InputWrapper = ({
   noFocusEffect,
   noPadding,
   readOnly = false,
-  charLimitInformation,
-}: InputWrapperProps) => {
+  charLimit,
+  value,
+}: InputWrapperProps<T>) => {
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
 
   const charLimitDescriptionId = useId();
-
+  const currentInputValue = value ? `${value}` : '';
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
-    isValid,
+    isValid: charLimit
+      ? isValid && currentInputValue.length > charLimit.maxCount
+      : isValid,
     readOnly,
   });
 
@@ -94,9 +101,10 @@ export const InputWrapper = ({
           })}
         </span>
       </span>
-      {charLimitInformation && (
-        <CharacterCounterDisplay
-          {...charLimitInformation}
+      {charLimit && (
+        <CharacterCounter
+          {...charLimit}
+          value={currentInputValue}
           ariaDescribedById={charLimitDescriptionId}
         />
       )}
@@ -104,44 +112,45 @@ export const InputWrapper = ({
   );
 };
 
-/**
- * Renders a character counter display that indicates the remaining character limit
- * and whether the limit has been exceeded. This component ensures that the accessibility is taken care of.
- *
- * @param {Object} props - The component props.
- * @param {boolean} props.hasExceededCharLimit - Whether the character limit has been exceeded.
- * @param {string} props.screenReaderMaxCharDescription - The description of the maximum character limit for screen readers.
- * @param {string} props.remainingCharLimitMessage - The message indicating the remaining character limit.
- * @param {string} props.ariaDescribedById - The ID of the element that describes the maximum character limit for accessibility purposes.
- * @returns {JSX.Element} The rendered component.
- */
-type CharacterCounterDisplayProps = {
-  hasExceededCharLimit: boolean;
-  screenReaderMaxCharDescription: string;
-  remainingCharLimitMessage: string;
+type CharacterCounterProps = {
+  /* The message indicating the remaining character limit. */
+  label: (count: number) => string;
+  /*The description of the maximum character limit for screen readers.*/
+  srLabel: string;
+  /* maxCount - The maximum allowed character count. */
+  maxCount: number;
+  /* value - the current value */
+  value: string;
+  /*The ID of the element that describes the maximum character limit for accessibility purposes */
   ariaDescribedById: string;
 };
-const CharacterCounterDisplay = ({
-  remainingCharLimitMessage,
-  hasExceededCharLimit,
-  screenReaderMaxCharDescription,
+const CharacterCounter = ({
+  label,
+  srLabel,
+  maxCount,
+  value,
   ariaDescribedById,
-}: CharacterCounterDisplayProps): JSX.Element => (
-  <>
-    <span
-      className={classes.screenReaderOnly}
-      id={ariaDescribedById}
-    >
-      {screenReaderMaxCharDescription}
-    </span>
-    <div
-      className={[
-        classes.remainingCharLimitMessage,
-        hasExceededCharLimit ? classes.charLimitExceeded : '',
-      ].join(' ')}
-      aria-live={hasExceededCharLimit ? 'polite' : 'off'}
-    >
-      {remainingCharLimitMessage}
-    </div>
-  </>
-);
+}: CharacterCounterProps): JSX.Element => {
+  const currentCount = value.length;
+  const hasExceededLimit = currentCount >= maxCount;
+
+  return (
+    <>
+      <span
+        className={utilClasses.visuallyHidden}
+        id={ariaDescribedById}
+      >
+        {srLabel}
+      </span>
+      <div
+        className={[
+          classes.charLimitLabel,
+          hasExceededLimit ? classes.charLimitExceeded : '',
+        ].join(' ')}
+        aria-live={hasExceededLimit ? 'polite' : 'off'}
+      >
+        {label(currentCount)}
+      </div>
+    </>
+  );
+};

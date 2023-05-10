@@ -165,48 +165,33 @@ describe('InputWrapper', () => {
     it('should support screen reader max-char description as additional information to input field', () => {
       render({
         label: 'Other',
-        charLimitInformation: {
-          hasExceededCharLimit: false,
-          remainingCharLimitMessage: '190 characters remaining',
-          screenReaderMaxCharDescription: 'Textarea allows 200 characters',
+        charLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
         },
       });
       expect(screen.getByLabelText('Other')).toHaveAttribute(
         'aria-describedby',
       );
-      expect(
-        screen.getByText('Textarea allows 200 characters'),
-      ).toHaveAttribute('id');
+      expect(screen.getByText('2 signs allowed')).toHaveAttribute('id');
     });
 
-    it('should display "remainingCharLimitMessage" and aria-live should be off when "hasExceededCharLimit" is false', () => {
+    it('should inform screen reader users when max char limit has been exceeded', () => {
       render({
-        label: 'Other',
-        charLimitInformation: {
-          hasExceededCharLimit: false,
-          remainingCharLimitMessage: '190 characters remaining',
-          screenReaderMaxCharDescription: 'Textarea allows 200 characters',
+        label: 'Comment',
+        value: 'Hello',
+        charLimit: {
+          maxCount: 2,
+          label: (count: number) =>
+            count >= 2
+              ? `Exceeded with ${count - 2} signs`
+              : `${count} signs left`,
+          srLabel: '2 signs allowed',
         },
       });
 
-      expect(screen.getByText('190 characters remaining')).toBeInTheDocument();
-      expect(screen.getByText('190 characters remaining')).toHaveAttribute(
-        'aria-live',
-        'off',
-      );
-    });
-
-    it('should display "remainingCharLimitMessage" and aria-live should be polite when "hasExceededCharLimit" is true', () => {
-      render({
-        label: 'Other',
-        charLimitInformation: {
-          hasExceededCharLimit: true,
-          remainingCharLimitMessage: '-5 characters remaining',
-          screenReaderMaxCharDescription: 'Textarea allows 200 characters',
-        },
-      });
-
-      expect(screen.getByText('-5 characters remaining')).toHaveAttribute(
+      expect(screen.getByText('Exceeded with 3 signs')).toHaveAttribute(
         'aria-live',
         'polite',
       );
@@ -221,8 +206,8 @@ const getClassNames = (expectedClassName: InputVariant_) => {
   return { expectedClassName, otherClassNames };
 };
 
-const render = (props: Partial<InputWrapperProps> = {}) => {
-  const allProps: InputWrapperProps = {
+const render = (props: Partial<InputWrapperProps<HTMLInputElement>> = {}) => {
+  const allProps: InputWrapperProps<HTMLInputElement> = {
     inputRenderer: ({ className, inputId, describedBy }) => (
       <input
         className={className}
