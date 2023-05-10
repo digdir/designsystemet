@@ -1,8 +1,10 @@
 {
   "git": {
     "deploymentEnabled": {
-      "github-pages-deployment": false,
-      "silent": true
+      "github-pages-deployment": false
     }
+  },
+  "github": {
+    "silent": true
   }
 }
