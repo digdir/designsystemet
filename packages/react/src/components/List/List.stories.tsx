@@ -1,12 +1,10 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import type { ListProps } from '.';
 import { List, ListItem } from '.';
 
-type Story = StoryObj<typeof List>;
-
-export default {
+const meta: Meta<typeof List> = {
   title: 'Kjernekomponenter/List',
   component: List,
   parameters: {
@@ -15,7 +13,13 @@ export default {
       url: 'http://www.url.com/status',
     },
   },
-} as Meta<typeof List>;
+  args: {
+    // Just to make the default option pre-selected i <Controls />
+    borderStyle: 'solid',
+  },
+};
+
+export default meta;
 
 const Template = (args: ListProps) => (
   <List {...args}>
@@ -25,19 +29,4 @@ const Template = (args: ListProps) => (
   </List>
 );
 
-export const Props: Story = {
-  render: Template,
-};
-export const SolidBorder = {
-  render: Template,
-  name: 'Solid border',
-};
-
-export const DashedBorder = {
-  render: Template,
-  name: 'Dashed border',
-
-  args: {
-    borderStyle: 'dashed',
-  },
-};
+export const Props: StoryFn = Template;

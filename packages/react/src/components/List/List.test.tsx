@@ -1,7 +1,7 @@
 import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps, ListBorderStyle } from './List';
+import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
 
@@ -17,10 +17,12 @@ const render = (props: Partial<ListProps> = {}) => {
   return renderRtl(<List {...allProps} />);
 };
 
+const borderStyles: ListProps['borderStyle'][] = [undefined, 'solid'];
+
 describe('List', () => {
-  it.each([undefined, 'solid' as ListBorderStyle])(
+  it.each(borderStyles)(
     'Renders a list with solid border when "borderStyle" is %s',
-    (borderStyle?: ListBorderStyle) => {
+    (borderStyle) => {
       render({ borderStyle });
       const list = screen.getByRole('list');
       expect(list).toHaveClass('solid');

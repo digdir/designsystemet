@@ -4,17 +4,15 @@ import cn from 'classnames';
 
 import classes from './List.module.css';
 
-export type ListBorderStyle = 'solid' | 'dashed';
-
 export type ListProps = {
   /** Select which border style between items*/
-  borderStyle?: ListBorderStyle;
+  borderStyle?: 'solid' | 'dashed';
 } & ComponentPropsWithoutRef<'ul'>;
 
 export const List = ({
+  borderStyle = 'solid',
   children,
   className,
-  borderStyle = 'solid',
   ...rest
 }: ListProps) => (
   <ul
