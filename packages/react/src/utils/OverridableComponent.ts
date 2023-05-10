@@ -10,6 +10,7 @@ export type OverridableComponent<Component, Element extends HTMLElement> = {
 
   <As extends ElementType>(
     props: {
+      /** Override html element */
       as?: As;
     } & Component &
       Omit<ComponentPropsWithRef<As>, keyof Component>,
