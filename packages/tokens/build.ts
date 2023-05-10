@@ -126,6 +126,17 @@ const getStyleDictionaryConfig = (
     ],
     source: [`${tokensPath}/Base/Core.json`],
     platforms: {
+      hack: {
+        prefix,
+        basePxFontSize,
+        transforms: ['ts/resolveMath', 'name/cti/hierarchical-kebab'],
+        files: [
+          {
+            format: 'global-values-hack',
+            destination: 'ignore/hack',
+          },
+        ],
+      },
       css: {
         prefix,
         basePxFontSize,
@@ -139,10 +150,6 @@ const getStyleDictionaryConfig = (
           'ts/shadow/css/shorthand',
         ],
         files: [
-          {
-            format: 'global-values-hack',
-            destination: 'ignore/hack',
-          },
           {
             destination: `${destinationPath}/tokens.css`,
             format: 'css/variables',
