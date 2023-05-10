@@ -2,7 +2,7 @@ import cl from 'classnames';
 import React, { forwardRef, useContext } from 'react';
 
 import AnimateHeight from '../../utils/AnimateHeight';
-import { BodyLong } from '../Typography/Body';
+import { Body } from '../Typography/Body';
 
 import classes from './Accordion.module.css';
 import { AccordionItemContext } from './AccordionItem';
@@ -36,14 +36,14 @@ const AccordionContent: AccordionContentType = forwardRef(
         height={context.open ? 'auto' : 0}
         duration={250}
       >
-        <BodyLong
+        <Body
           {...rest}
           as='div'
           ref={ref}
           className={cl(classes.content, className)}
         >
           {children}
-        </BodyLong>
+        </Body>
       </AnimateHeight>
     );
   },

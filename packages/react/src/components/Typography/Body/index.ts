@@ -1,1 +1,1 @@
-export { default as BodyLong } from './Body';
+export * from './Body';

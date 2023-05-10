@@ -3,10 +3,9 @@ import cl from 'classnames';
 
 import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
-import classes from './BodyLong.module.css';
+import classes from './Body.module.css';
 
-export interface BodyLongProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {
+export interface BodyProps extends React.HTMLAttributes<HTMLParagraphElement> {
   /**
    * medium: 18px, small: 16px
    * @default "medium"
@@ -22,27 +21,23 @@ export interface BodyLongProps
   spacing?: boolean;
 }
 
-export const BodyLong: OverridableComponent<
-  BodyLongProps,
-  HTMLParagraphElement
-> = forwardRef(
-  (
-    { className, size = 'medium', spacing, as: Component = 'p', ...rest },
-    ref,
-  ) => (
-    <Component
-      {...rest}
-      ref={ref}
-      className={cl(
-        classes.bodyLong,
-        {
-          [classes.small]: size === 'small',
-          [classes.spacing]: !!spacing,
-        },
-        className,
-      )}
-    />
-  ),
-);
-
-export default BodyLong;
+export const Body: OverridableComponent<BodyProps, HTMLParagraphElement> =
+  forwardRef(
+    (
+      { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+      ref,
+    ) => (
+      <Component
+        {...rest}
+        ref={ref}
+        className={cl(
+          classes.body,
+          {
+            [classes.small]: size === 'small',
+            [classes.spacing]: !!spacing,
+          },
+          className,
+        )}
+      />
+    ),
+  );

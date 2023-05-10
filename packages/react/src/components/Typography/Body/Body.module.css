@@ -1,4 +1,4 @@
-.bodyLong {
+.body {
   --fdsc-body-long-medium: var(--fds-typography-heading-medium);
   --fdsc-body-long-small: var(--fds-typography-heading-small);
   --fdsc-body-long-spacing-medium: var(--fds-spacing-medium);
@@ -7,18 +7,18 @@
   margin: 0;
 }
 
-.bodyLong.medium {
+.body.medium {
   font-size: var(--fdsc-body-long-medium);
 }
 
-.bodyLong.medium.spacing {
+.body.medium.spacing {
   margin-bottom: var(--fdsc-body-long-spacing-medium);
 }
 
-.bodyLong.small {
+.body.small {
   font-size: var(--fdsc-body-long-small);
 }
 
-.bodyLong.small.spacing {
+.body.small.spacing {
   margin-bottom: var(--fdsc-body-long-spacing-small);
 }
