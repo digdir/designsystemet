@@ -12,6 +12,18 @@
   background-color: #c2e4fe;
 }
 
+.red {
+  background-color: #ffc0c2;
+}
+
+.yellow {
+  background-color: #f5dda6;
+}
+
+.grey {
+  background-color: #f4f5f6;
+}
+
 .left {
   flex-basis: calc(35% - (var(--spacing-8) / 2));
   flex-grow: 1;
@@ -48,7 +60,7 @@
 .button {
   height: 48px;
   padding: 0 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #c0c0c0;
   display: flex;
   align-items: center;
   background-color: white;

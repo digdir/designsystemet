@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Container } from '../Container/Container';
-
-import classes from './NavSection.module.css';
+import classes from './Grid.module.css';
 
 interface GridProps {
   children: React.ReactNode;

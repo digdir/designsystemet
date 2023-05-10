@@ -1,12 +1,32 @@
 import Meta from '../../components/Meta/Meta';
 import { NavPageLayout } from '../../layouts';
-import { Grid } from '../../components/NavSection/NavSection';
+import { Grid } from '../../components/Grid/Grid';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import { TeaserCard } from '../../components/TeaserCard/TeaserCard';
 import { Container } from '../../components/Container/Container';
 import { ImageIcon } from '@navikt/aksel-icons';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
-export default ({ children, menu }) => <NavPageLayout content={children} />;
+import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+
+export default ({ children, menu }) => (
+  <NavPageLayout
+    content={children}
+    data={{
+      imageSection: {
+        title: 'God praksis',
+        description:
+          'Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her. Har du forslag til artikler eller innsikt til denne siden?',
+        src: '/img/people-table.svg',
+        backgroundColor: 'blue',
+        link: {
+          text: 'Ta kontakt med oss på e-post',
+          prefix: <EnvelopeClosedIcon fontSize={26} />,
+          href: '#',
+        },
+      },
+    }}
+  />
+);
 
 <Meta
   title='God Praksis'

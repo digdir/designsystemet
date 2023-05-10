@@ -14,7 +14,7 @@ interface ImageSectionProps {
   children?: React.ReactNode;
   imgWidth: number;
   imgHeight: number;
-  color?: 'blue' | 'yellow' | 'red' | 'white';
+  backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
   buttons?: ButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
 }
@@ -32,13 +32,13 @@ const ImageSection = ({
   content,
   imgHeight,
   imgWidth,
-  color = 'white',
+  backgroundColor = 'white',
   children,
   buttons,
   link,
 }: ImageSectionProps) => {
   return (
-    <div className={classes[color]}>
+    <div className={classes[backgroundColor]}>
       <Container className={cn(classes.section)}>
         <div className={classes.left}>
           <Image
@@ -84,4 +84,5 @@ const ImageSection = ({
   );
 };
 
+export type { ButtonProps, ImageSectionProps };
 export { ImageSection };

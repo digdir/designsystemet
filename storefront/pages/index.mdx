@@ -1,6 +1,11 @@
 import Meta from '../components/Meta/Meta';
 import { FrontpageLayout } from '../layouts';
-import { ImageIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
+import {
+  ImageIcon,
+  WrenchIcon,
+  ComponentIcon,
+  EnvelopeClosedIcon,
+} from '@navikt/aksel-icons';
 
 <Meta
   title='Velkommen'
@@ -47,11 +52,24 @@ export default ({ children }) => (
         title: 'Ønsker du å bidra?',
         description:
           'Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet og med de samme retningslinjene. Vil du høre mer om dette, eller samarbeide med oss?',
-        email: 'designsystem@digdir.no',
         image: '/img/people-holding-figures.svg',
         imageWidth: 1195,
         imageHeight: 270,
+        buttons: [
+            {
+              text: 'Ta kontakt',
+              href: '#',
+              prefix: <EnvelopeClosedIcon fontSize={24} />,
+            },
+            {
+              text: 'Bli med i slack kanalen vår',
+              href: '#',
+              prefix: (<img src='img/slack-logo.png' alt='Slack logo' />
+              ),
+            },
+          ]
       },
     }}
-  />
+
+/>
 );
