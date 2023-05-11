@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress } from './';
+import { Paragraph, Heading, Ingress, Detail } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',
@@ -119,6 +119,10 @@ export const Ingresses: StoryFn = () => (
       bruke denne tjenesten.
     </Ingress>
   </>
+);
+
+export const Details: StoryFn = () => (
+  <Detail>En eller annen viktig detalje</Detail>
 );
 
 export const ExampleText: StoryFn = () => (
