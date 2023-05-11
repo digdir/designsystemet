@@ -70,7 +70,7 @@ export const AntallTegnIgjenASkrive: Story = createTemplate(
     charLimit: {
       maxCount: 10,
       label: (count: number) => `${count} tegn igjen`,
-      srLabel: 'Tekstområde har plass til 10 tegn.',
+      srLabel: 'Tekstområdet har plass til 10 tegn.',
     },
   },
 );
