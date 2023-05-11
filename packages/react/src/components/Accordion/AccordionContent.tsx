@@ -39,6 +39,7 @@ const AccordionContent: AccordionContentType = forwardRef(
         <Text
           {...rest}
           as='div'
+          size='small'
           ref={ref}
           className={cl(classes.content, className)}
         >

@@ -1,0 +1,23 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { BetaBlock } from '../../../../../docs-components';
+import * as typographyStories from './Typography.stories';
+
+<Meta of={typographyStories} />
+
+# Typography
+
+<BetaBlock />
+
+Typografi komponenter for visning og styling av textlig innhold
+
+## Heading
+
+<Canvas>
+  <Story of={typographyStories.Headings} />
+</Canvas>
+
+## Text
+
+<Canvas>
+  <Story of={typographyStories.Texts} />
+</Canvas>

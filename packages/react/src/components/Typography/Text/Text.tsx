@@ -15,12 +15,21 @@ export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
    * Adds margin-bottom
    */
   spacing?: boolean;
+  /** Reduce line-height for short paragraphs */
+  short?: boolean;
 }
 /** Renders body text. Control text styles with props */
 export const Text: OverridableComponent<TextProps, HTMLParagraphElement> =
   forwardRef(
     (
-      { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+      {
+        className,
+        size = 'medium',
+        spacing,
+        as: Component = 'p',
+        short,
+        ...rest
+      },
       ref,
     ) => (
       <Component
@@ -28,9 +37,10 @@ export const Text: OverridableComponent<TextProps, HTMLParagraphElement> =
         ref={ref}
         className={cl(
           classes.text,
+          classes[size],
           {
-            [classes.small]: size === 'small',
             [classes.spacing]: !!spacing,
+            [classes.short]: short,
           },
           className,
         )}

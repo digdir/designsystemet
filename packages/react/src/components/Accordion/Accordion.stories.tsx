@@ -40,11 +40,21 @@ export const props: Story = {
       <>
         <Accordion.Item>
           <Accordion.Header>Accordion header text</Accordion.Header>
-          <Content />
+          <Accordion.Content>
+            Magna aliquip aliquip fugiat nostrud nostrud velit pariatur veniam
+            officia laboris voluptate officia pariatur.
+            <a href='#Lorem'>Lorem est</a> ex anim velit occaecat nisi qui
+            nostrud sit consectetur consectetur officia nostrud ullamco.
+          </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item>
           <Accordion.Header>Accordion header text</Accordion.Header>
-          <Content />
+          <Accordion.Content>
+            Magna aliquip aliquip fugiat nostrud nostrud velit pariatur veniam
+            officia laboris voluptate officia pariatur.{' '}
+            <a href='#Lorem'>Lorem est</a> ex anim velit occaecat nisi qui
+            nostrud sit consectetur consectetur officia nostrud ullamco.
+          </Accordion.Content>
         </Accordion.Item>
       </>
     ),
@@ -60,13 +70,19 @@ export const Controlled: StoryFn = () => {
     <div style={{ width: 300 }}>
       <Accordion>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Header
+            onHeaderClick={() => setOpen(!open)}
+            level={3}
+          >
             Accordion header text
           </Accordion.Header>
           <Content />
         </Accordion.Item>
         <Accordion.Item open={open2}>
-          <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
+          <Accordion.Header
+            onHeaderClick={() => setOpen2(!open2)}
+            level={3}
+          >
             Accordion header text
           </Accordion.Header>
           <Content />

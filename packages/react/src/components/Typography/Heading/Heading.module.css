@@ -1,9 +1,4 @@
 .heading {
-  --fdsc-heading-xlarge: var(--fds-typography-heading-xlarge);
-  --fdsc-heading-large: var(--fds-typography-heading-large);
-  --fdsc-heading-medium: var(--fds-typography-heading-medium);
-  --fdsc-heading-small: var(--fds-typography-heading-small);
-  --fdsc-heading-xsmall: var(--fds-typography-heading-xsmall);
   --fdsc-heading-spacing: var(--fds-spacing-small);
 
   margin: 0;
@@ -14,21 +9,21 @@
 }
 
 .heading.xlarge {
-  font-size: var(--fdsc-heading-xlarge);
+  font: var(--fds-typography-heading-xlarge);
 }
 
 .heading.large {
-  font-size: var(--fdsc-heading-large);
+  font: var(--fds-typography-heading-large);
 }
 
 .heading.medium {
-  font-size: var(--fdsc-heading-medium);
+  font: var(--fds-typography-heading-medium);
 }
 
 .heading.small {
-  font-size: var(--fdsc-heading-small);
+  font: var(--fds-typography-heading-small);
 }
 
 .heading.xsmall {
-  font-size: var(--fdsc-heading-xsmall);
+  font: var(--fds-typography-heading-xsmall);
 }

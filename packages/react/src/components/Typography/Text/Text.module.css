@@ -1,24 +1,27 @@
 .text {
-  --fdsc-body-long-medium: var(--fds-typography-heading-medium);
-  --fdsc-body-long-small: var(--fds-typography-heading-small);
-  --fdsc-body-long-spacing-medium: var(--fds-spacing-medium);
-  --fdsc-body-long-spacing-small: var(--fds-spacing-small);
-
   margin: 0;
 }
 
 .text.medium {
-  font-size: var(--fdsc-body-long-medium);
+  font: var(--fds-typography-body-medium);
+}
+
+.text.medium.short{
+  font: var(--fds-typography-body-short-medium);
 }
 
 .text.medium.spacing {
-  margin-bottom: var(--fdsc-body-long-spacing-medium);
+  margin-bottom: var(--fds-spacing-medium);
 }
 
 .text.small {
-  font-size: var(--fdsc-body-long-small);
+  font: var(--fds-typography-body-small);
+}
+
+.text.small.short {
+  font: var(--fds-typography-body-short-small);
 }
 
 .text.small.spacing {
-  margin-bottom: var(--fdsc-body-long-spacing-small);
+  margin-bottom:var(--fds-spacing-small);
 }
