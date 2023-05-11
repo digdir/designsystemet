@@ -1,0 +1,16 @@
+.errorMessage {
+  margin: 0;
+}
+
+.errorMessage.spacing {
+  margin-bottom: var(--fds-spacing-medium);
+}
+
+.errorMessage.medium {
+  font: var(--fds-typography-error_message-medium);
+}
+
+.errorMessage.small {
+  font: var(--fds-typography-error_message-small);
+}
+

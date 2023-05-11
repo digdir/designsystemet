@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress, Detail, Label } from './';
+import { Paragraph, Heading, Ingress, Detail, Label, ErrorMessage } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',
@@ -129,6 +129,15 @@ export const Labels: StoryFn = () => (
   <>
     <Label>Skriv inn fødselsnummer. 11 tegn</Label>
     <Label size='small'>Skriv inn fødselsnummer. 11 tegn</Label>
+  </>
+);
+
+export const ErrorMessages: StoryFn = () => (
+  <>
+    <ErrorMessage>En eller annen feilmeldings tekst</ErrorMessage>
+    <ErrorMessage size='small'>
+      En eller annen liten feilmeldings tekst
+    </ErrorMessage>
   </>
 );
 

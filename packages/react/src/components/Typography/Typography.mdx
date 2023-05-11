@@ -8,7 +8,7 @@ import {
 } from '@storybook/blocks';
 import { BetaBlock } from '../../../../../docs-components';
 import * as typographyStories from './Typography.stories';
-import { Paragraph, Heading, Ingress, Detail, Label } from './';
+import { Paragraph, Heading, Ingress, Detail, Label, ErrorMessage } from './';
 
 <Meta of={typographyStories} />
 
@@ -57,6 +57,14 @@ Typografi komponenter for visning og styling av textlig innhold
 </Canvas>
 
 <ArgsTable of={Label} />
+
+## ErrorMessage
+
+<Canvas>
+  <Story of={typographyStories.ErrorMessages} />
+</Canvas>
+
+<ArgsTable of={ErrorMessage} />
 
 ## Example Text
 
