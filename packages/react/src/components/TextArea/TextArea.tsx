@@ -63,6 +63,7 @@ export const TextArea = forwardRef(
           return (
             <textarea
               {...rest}
+              value={value}
               onChange={handleOnChange}
               id={inputId}
               aria-describedby={describedBy}

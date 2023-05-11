@@ -123,6 +123,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 {...commonProps}
                 {...formatting.number}
                 {...rest}
+                value={value}
                 data-testid={`${inputId}-formatted-number-${variant}`}
                 onValueChange={handleNumberFormatChange}
                 valueIsNumericString={true}
@@ -136,6 +137,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 {...commonProps}
                 {...formatting.number}
                 {...rest}
+                value={value}
                 data-testid={`${inputId}-formatted-number-${variant}`}
                 onValueChange={handleNumberFormatChange}
                 valueIsNumericString={true}
@@ -148,6 +150,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               <input
                 {...commonProps}
                 {...rest}
+                value={value}
                 data-testid={`${inputId}-${variant}`}
                 onChange={handleNativeInputChange}
                 aria-describedby={describedBy}
