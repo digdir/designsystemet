@@ -183,15 +183,12 @@ describe('InputWrapper', () => {
         value: 'Hello',
         charLimit: {
           maxCount: 2,
-          label: (count: number) =>
-            count >= 2
-              ? `Exceeded with ${count - 2} signs`
-              : `${count} signs left`,
+          label: (count: number) => `${count} signs left`,
           srLabel: '2 signs allowed',
         },
       });
 
-      expect(screen.getByText('Exceeded with 3 signs')).toHaveAttribute(
+      expect(screen.getByText('-3 signs left')).toHaveAttribute(
         'aria-live',
         'polite',
       );
