@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'classnames';
 
@@ -5,15 +6,15 @@ import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
 import classes from './Paragraph.module.css';
 
-export interface ParagraphProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {
+export type ParagraphProps = {
   /** Changes text sizing */
-  size?: 'medium' | 'small';
+  size?: 'small' | 'medium';
   /** Adds margin-bottom */
   spacing?: boolean;
   /** Reduces line-height for short paragraphs */
   short?: boolean;
-}
+} & HTMLAttributes<HTMLParagraphElement>;
+
 /** Renders body text. Control text styles with props */
 export const Paragraph: OverridableComponent<
   ParagraphProps,

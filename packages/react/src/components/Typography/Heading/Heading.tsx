@@ -5,6 +5,7 @@ import cl from 'classnames';
 import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
 import classes from './Heading.module.css';
+
 export type HeadingProps = {
   /** Heading level. This will translate into any h1-6 level unless `as` is defined */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
