@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph as Paragraph, Heading } from './';
+import { Paragraph, Heading, Ingress } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',
@@ -56,29 +56,68 @@ export const Headings: StoryFn = () => (
   </>
 );
 
-export const Paragraphs: StoryFn = () => (
+export const Paragraphs: StoryFn<typeof Paragraph> = (args) => (
   <>
     <Paragraph
       size='medium'
-      as='span'
-      short
+      spacing
     >
-      Tekst Medium
+      Denne tjenesten kan du bruke for å melde opplysninger til
+      Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
+      Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
+      Stiftelsesregisteret og Skattedirektoratets register over upersonlige
+      skattytere.
     </Paragraph>
-    <Paragraph size='small'>Tekst Small</Paragraph>
-
+    <Paragraph
+      size='small'
+      spacing
+    >
+      Denne tjenesten kan du bruke for å melde opplysninger til
+      Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
+      Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
+      Stiftelsesregisteret og Skattedirektoratets register over upersonlige
+      skattytere.
+    </Paragraph>
+    <hr />
     <Paragraph
       size='medium'
       short
+      spacing
     >
-      Tekst Medium
+      Denne tjenesten kan du bruke for å melde opplysninger til
+      Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
+      Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
+      Stiftelsesregisteret og Skattedirektoratets register over upersonlige
+      skattytere.
     </Paragraph>
     <Paragraph
       size='small'
       short
+      spacing
     >
-      Tekst Small
+      Denne tjenesten kan du bruke for å melde opplysninger til
+      Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
+      Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
+      Stiftelsesregisteret og Skattedirektoratets register over upersonlige
+      skattytere.
     </Paragraph>
+  </>
+);
+
+export const Ingresses: StoryFn = () => (
+  <>
+    <Ingress size='large'>
+      Her kan du registrere nye virksomheter, som for eksempel
+      enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
+      samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
+      bruke denne tjenesten.
+    </Ingress>
+    <Ingress>
+      Her kan du registrere nye virksomheter, som for eksempel
+      enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
+      samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
+      bruke denne tjenesten.
+    </Ingress>
   </>
 );
 
@@ -92,12 +131,12 @@ export const ExampleText: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <p className='ingress'>
+    <Ingress>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
       bruke denne tjenesten.
-    </p>
+    </Ingress>
 
     <Heading
       level={2}

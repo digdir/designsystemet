@@ -1,0 +1,12 @@
+.ingress.medium {
+   font: var(--fds-typography-ingress-medium);
+}
+
+.ingress.large {
+   font: var(--fds-typography-ingress-large);
+}
+
+.ingress.spacing {
+  margin-bottom: var(--fds-spacing-medium);
+}
+
