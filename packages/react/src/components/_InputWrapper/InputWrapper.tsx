@@ -36,7 +36,7 @@ export type InputWrapperProps = {
   readOnly?: boolean | ReadOnlyVariant_;
   /*
    * The charLimit function calculates the remaining characters, and it is your responsibility as the consumer to provide a reasonable message to the user.
-   * You provide the message as a function (label function) that takes the remaining character count as a parameter and returns a string.
+   * You provide the message as a function (label function) that takes the remaining character count as a parameter and returns a string (message).
    * Ensure to describe the max-count for screen readers by providing a srLabel string with that information.
    */
   charLimit?: CharLimit;
