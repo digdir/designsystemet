@@ -40,16 +40,6 @@ const ImageSection = ({
   return (
     <div className={classes[backgroundColor]}>
       <Container className={cn(classes.section)}>
-        <div className={classes.left}>
-          <Image
-            className={classes.img}
-            src={src}
-            alt='Image'
-            height={imgHeight}
-            width={imgWidth}
-          />
-        </div>
-
         <div className={classes.right}>
           {title && <h2 className={classes.title}>{title}</h2>}
           {description && <p className={classes.desc}>{description}</p>}
@@ -78,6 +68,15 @@ const ImageSection = ({
           )}
 
           {children}
+        </div>
+        <div className={classes.left}>
+          <Image
+            className={classes.img}
+            src={src}
+            alt='Image'
+            height={imgHeight}
+            width={imgWidth}
+          />
         </div>
       </Container>
     </div>
