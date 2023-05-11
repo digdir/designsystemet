@@ -103,5 +103,5 @@
 }
 
 .charLimitExceeded {
-  color: var(--component-input-error-color-border-default);
+  color: var(--fds-semantic-text-danger-default);
 }
