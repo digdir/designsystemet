@@ -1,6 +1,14 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgsTable,
+} from '@storybook/blocks';
 import { BetaBlock } from '../../../../../docs-components';
 import * as typographyStories from './Typography.stories';
+import { Paragraph, Heading, Ingress, Detail } from './';
 
 <Meta of={typographyStories} />
 
@@ -12,11 +20,15 @@ Typografi komponenter for visning og styling av textlig innhold
 
 ## Heading
 
+<ArgsTable of={Heading} />
+
 <Canvas>
   <Story of={typographyStories.Headings} />
 </Canvas>
 
 ## Paragraph
+
+<ArgsTable of={Paragraph} />
 
 <Canvas>
   <Story of={typographyStories.Paragraphs} />

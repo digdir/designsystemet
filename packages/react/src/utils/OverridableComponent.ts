@@ -5,14 +5,17 @@ import type {
   ComponentPropsWithRef,
 } from 'react';
 
-export type OverridableComponent<Component, Element extends HTMLElement> = {
-  (props: Component & RefAttributes<Element>): ReturnType<FC>;
+export type OverridableComponent<
+  ComponentProps,
+  Element extends HTMLElement,
+> = {
+  (props: ComponentProps & RefAttributes<Element>): ReturnType<FC>;
 
   <As extends ElementType>(
     props: {
       /** Override html element */
       as?: As;
-    } & Component &
-      Omit<ComponentPropsWithRef<As>, keyof Component>,
+    } & ComponentProps &
+      Omit<ComponentPropsWithRef<As>, keyof ComponentProps>,
   ): ReturnType<FC>;
 };

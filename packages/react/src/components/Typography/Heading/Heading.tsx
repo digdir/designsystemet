@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { ElementType, HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'classnames';
 
@@ -14,14 +14,14 @@ export type HeadingProps = {
   spacing?: boolean;
 } & HTMLAttributes<HTMLHeadingElement>;
 
-/** Renders heaing elements, h1-6 */
+/** Renders heading elements, h1-6 */
 export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
   forwardRef(
     (
       { level = 1, size = 'xlarge', spacing = false, className, as, ...rest },
       ref,
     ) => {
-      const Component = as ?? (`h${level ?? 1}` as React.ElementType);
+      const Component = as ?? (`h${level ?? 1}` as ElementType);
 
       return (
         <Component

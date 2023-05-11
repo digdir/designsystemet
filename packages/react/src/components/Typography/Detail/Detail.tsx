@@ -11,7 +11,7 @@ export type DetailProps = {
   spacing?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-/** Renders body text. Control text styles with props */
+/** Renders detail text. Control text styles with props */
 export const Detail: OverridableComponent<DetailProps, HTMLParagraphElement> =
   forwardRef(({ className, spacing, as: Component = 'p', ...rest }, ref) => (
     <Component
