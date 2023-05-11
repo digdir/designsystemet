@@ -56,7 +56,7 @@ export const Headings: StoryFn = () => (
   </>
 );
 
-export const Texts: StoryFn = () => (
+export const Paragraphs: StoryFn = () => (
   <>
     <Paragraph
       size='medium'
@@ -78,6 +78,81 @@ export const Texts: StoryFn = () => (
       short
     >
       Tekst Small
+    </Paragraph>
+  </>
+);
+
+export const ExampleText: StoryFn = () => (
+  <>
+    <Heading
+      level={1}
+      size='xlarge'
+      spacing
+    >
+      Samordnet registermelding (H1)
+    </Heading>
+
+    <p className='ingress'>
+      Her kan du registrere nye virksomheter, som for eksempel
+      enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
+      samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
+      bruke denne tjenesten.
+    </p>
+
+    <Heading
+      level={2}
+      size='large'
+      spacing
+    >
+      Når skal du bruke skjemaet? (H2)
+    </Heading>
+
+    <Paragraph>
+      Denne tjenesten kan du bruke for å melde opplysninger til
+      Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
+      Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
+      Stiftelsesregisteret og Skattedirektoratets register over upersonlige
+      skattytere.
+    </Paragraph>
+
+    <Heading
+      level={3}
+      size='medium'
+    >
+      Signering (H3)
+    </Heading>
+
+    <Paragraph short>
+      Når du skal signere meldingen vil du motta en signeringsoppgave i
+      meldingsboksen din i Altinn. Meldingen blir ikke sendt til behandling før
+      alle har signert.
+    </Paragraph>
+
+    <Heading
+      level={4}
+      size='small'
+    >
+      Krav om rolle for signering (H4)
+    </Heading>
+
+    <Paragraph>
+      For å signere på vegne av en virksomhet, trenger du Altinn-rollen Signerer
+      av Samordnet registermelding. Du kan se hvilke roller du har for en aktør
+      på menypunktet Profil, Skjema og tjenester du har rettighet til. Om du
+      ikke har disse rollene, må du få noen som har rollene til å delegere dem
+      til deg.
+    </Paragraph>
+
+    <Heading
+      level={5}
+      size='xsmall'
+    >
+      Personvern (H5)
+    </Heading>
+
+    <Paragraph short>
+      Personvernerklæringen gir informasjon om hvilke personopplysninger vi
+      behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
     </Paragraph>
   </>
 );
