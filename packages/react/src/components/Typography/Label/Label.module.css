@@ -1,0 +1,12 @@
+.label.medium {
+   font: var(--fds-typography-label-medium);
+}
+
+.label.small {
+   font: var(--fds-typography-label-small);
+}
+
+.label.spacing {
+  margin-bottom: var(--fds-spacing-medium);
+}
+

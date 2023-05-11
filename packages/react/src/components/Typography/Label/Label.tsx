@@ -1,0 +1,36 @@
+import type { LabelHTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import cl from 'classnames';
+
+import type { OverridableComponent } from '../../../utils/OverridableComponent';
+
+import classes from './Label.module.css';
+
+export type LabelProps = {
+  /** Changes text sizing */
+  size?: 'small' | 'medium';
+  /** Adds margin-bottom */
+  spacing?: boolean;
+} & LabelHTMLAttributes<HTMLLabelElement>;
+
+/** Renders label text. Control text styles with props */
+export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
+  forwardRef(
+    (
+      { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+      ref,
+    ) => (
+      <Component
+        {...rest}
+        ref={ref}
+        className={cl(
+          classes.label,
+          classes[size],
+          {
+            [classes.spacing]: !!spacing,
+          },
+          className,
+        )}
+      />
+    ),
+  );

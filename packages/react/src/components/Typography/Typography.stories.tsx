@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress, Detail } from './';
+import { Paragraph, Heading, Ingress, Detail, Label } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',
@@ -122,7 +122,14 @@ export const Ingresses: StoryFn = () => (
 );
 
 export const Details: StoryFn = () => (
-  <Detail>En eller annen viktig detalje</Detail>
+  <Detail>En eller annen viktig detalj</Detail>
+);
+
+export const Labels: StoryFn = () => (
+  <>
+    <Label>Skriv inn fødselsnummer. 11 tegn</Label>
+    <Label size='small'>Skriv inn fødselsnummer. 11 tegn</Label>
+  </>
 );
 
 export const ExampleText: StoryFn = () => (
@@ -135,12 +142,12 @@ export const ExampleText: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Ingress>
+    <Label>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
       bruke denne tjenesten.
-    </Ingress>
+    </Label>
 
     <Heading
       level={2}

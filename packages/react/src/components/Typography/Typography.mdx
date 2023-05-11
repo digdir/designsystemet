@@ -8,7 +8,7 @@ import {
 } from '@storybook/blocks';
 import { BetaBlock } from '../../../../../docs-components';
 import * as typographyStories from './Typography.stories';
-import { Paragraph, Heading, Ingress, Detail } from './';
+import { Paragraph, Heading, Ingress, Detail, Label } from './';
 
 <Meta of={typographyStories} />
 
@@ -20,19 +20,19 @@ Typografi komponenter for visning og styling av textlig innhold
 
 ## Heading
 
-<ArgsTable of={Heading} />
-
 <Canvas>
   <Story of={typographyStories.Headings} />
 </Canvas>
 
-## Paragraph
+<ArgsTable of={Heading} />
 
-<ArgsTable of={Paragraph} />
+## Paragraph
 
 <Canvas>
   <Story of={typographyStories.Paragraphs} />
 </Canvas>
+
+<ArgsTable of={Paragraph} />
 
 ## Ingress
 
@@ -40,11 +40,23 @@ Typografi komponenter for visning og styling av textlig innhold
   <Story of={typographyStories.Ingresses} />
 </Canvas>
 
+<ArgsTable of={Ingress} />
+
 ## Detail
 
 <Canvas>
   <Story of={typographyStories.Details} />
 </Canvas>
+
+<ArgsTable of={Detail} />
+
+## Label
+
+<Canvas>
+  <Story of={typographyStories.Labels} />
+</Canvas>
+
+<ArgsTable of={Label} />
 
 ## Example Text
 
