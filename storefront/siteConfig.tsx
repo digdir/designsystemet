@@ -126,6 +126,10 @@ export const SiteConfig = {
               name: 'Slik skriver du',
               url: 'god-praksis/innholdsarbeid/slik-skriver-du',
             },
+            {
+              name: 'Skumlesing',
+              url: 'god-praksis/innholdsarbeid/skumlesing',
+            },
           ],
         },
       ],
