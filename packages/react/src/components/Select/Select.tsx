@@ -2,6 +2,7 @@ import type { ChangeEvent, ReactNode } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
+import { autoPlacement, size } from '@floating-ui/dom';
 
 import { InputWrapper } from '../_InputWrapper';
 import {
@@ -156,6 +157,17 @@ const Select = (props: SelectProps) => {
 
   const { x, y, elements, refs } = useFloating<HTMLSpanElement>({
     whileElementsMounted: autoUpdate,
+    middleware: [
+      autoPlacement({ allowedPlacements: ['top', 'bottom'] }),
+      size({
+        apply: ({ availableHeight, elements, rects, x, y }) => {
+          Object.assign(elements.floating.style, {
+            maxHeight: `min(${availableHeight}px, var(--option_list-max_height))`,
+            width: `${rects.reference.width}px`,
+          });
+        },
+      }),
+    ],
   });
   const listboxWrapper = elements.floating as HTMLSpanElement;
   const selectField = elements.reference as HTMLSpanElement;
@@ -456,7 +468,6 @@ const Select = (props: SelectProps) => {
         style={{
           left: x ?? 0,
           top: y ?? 0,
-          width: selectField?.offsetWidth,
         }}
       >
         <span
