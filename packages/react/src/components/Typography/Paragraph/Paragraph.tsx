@@ -7,16 +7,11 @@ import classes from './Paragraph.module.css';
 
 export interface ParagraphProps
   extends React.HTMLAttributes<HTMLParagraphElement> {
-  /**
-   * medium: 18px, small: 16px
-   * @default "medium"
-   */
+  /** Changes text sizing */
   size?: 'medium' | 'small';
-  /**
-   * Adds margin-bottom
-   */
+  /** Adds margin-bottom */
   spacing?: boolean;
-  /** Reduce line-height for short paragraphs */
+  /** Reduces line-height for short paragraphs */
   short?: boolean;
 }
 /** Renders body text. Control text styles with props */

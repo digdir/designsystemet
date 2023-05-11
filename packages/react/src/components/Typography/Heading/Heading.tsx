@@ -6,17 +6,11 @@ import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
 import classes from './Heading.module.css';
 export type HeadingProps = {
-  /**
-   * Heading level. This will translate into any h1-6 level unless `as` is defined
-   */
+  /** Heading level. This will translate into any h1-6 level unless `as` is defined */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  /**
-   * Changes text-sizing
-   */
+  /** Changes text sizing */
   size: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
-  /**
-   * Adds margin-bottom
-   */
+  /** Adds margin-bottom */
   spacing?: boolean;
 } & HTMLAttributes<HTMLHeadingElement>;
 
