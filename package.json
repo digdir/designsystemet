@@ -101,7 +101,6 @@
     "stylelint-config-standard": "^31.0.0",
     "stylelint-prettier": "^3.0.0",
     "terser": "^5.16.0",
-
     "ts-jest": "^29.1.0",
     "tslib": "^2.4.1",
     "typescript": "^4.9.5",
