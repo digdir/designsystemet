@@ -10,7 +10,9 @@
   font-size: var(--font_size);
   gap: var(--gap);
   line-height: var(--typography-default-line-height);
+  margin: -4px;
   opacity: var(--opacity);
+  padding: 4px;
 }
 
 .template.xsmall {
