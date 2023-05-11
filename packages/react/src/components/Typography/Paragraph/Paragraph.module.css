@@ -1,27 +1,27 @@
-.text {
+.paragraph {
   margin: 0;
 }
 
-.text.medium {
+.paragraph.medium {
   font: var(--fds-typography-body-medium);
 }
 
-.text.medium.short{
+.paragraph.medium.short{
   font: var(--fds-typography-body-short-medium);
 }
 
-.text.medium.spacing {
+.paragraph.medium.spacing {
   margin-bottom: var(--fds-spacing-medium);
 }
 
-.text.small {
+.paragraph.small {
   font: var(--fds-typography-body-small);
 }
 
-.text.small.short {
+.paragraph.small.short {
   font: var(--fds-typography-body-short-small);
 }
 
-.text.small.spacing {
+.paragraph.small.spacing {
   margin-bottom:var(--fds-spacing-small);
 }

@@ -56,7 +56,7 @@ export const Headings: StoryFn = () => (
   </>
 );
 
-export const Paragraphs: StoryFn<typeof Paragraph> = (args) => (
+export const Paragraphs: StoryFn<typeof Paragraph> = () => (
   <>
     <Paragraph
       size='medium'
@@ -104,7 +104,7 @@ export const Paragraphs: StoryFn<typeof Paragraph> = (args) => (
   </>
 );
 
-export const Ingresses: StoryFn = () => (
+export const Ingresses: StoryFn<typeof Ingress> = () => (
   <>
     <Ingress size='large'>
       Her kan du registrere nye virksomheter, som for eksempel
@@ -121,18 +121,18 @@ export const Ingresses: StoryFn = () => (
   </>
 );
 
-export const Details: StoryFn = () => (
+export const Details: StoryFn<typeof Detail> = () => (
   <Detail>En eller annen viktig detalj</Detail>
 );
 
-export const Labels: StoryFn = () => (
+export const Labels: StoryFn<typeof Label> = () => (
   <>
     <Label>Skriv inn fødselsnummer. 11 tegn</Label>
     <Label size='small'>Skriv inn fødselsnummer. 11 tegn</Label>
   </>
 );
 
-export const ErrorMessages: StoryFn = () => (
+export const ErrorMessages: StoryFn<typeof ErrorMessage> = () => (
   <>
     <ErrorMessage>En eller annen feilmeldings tekst</ErrorMessage>
     <ErrorMessage size='small'>

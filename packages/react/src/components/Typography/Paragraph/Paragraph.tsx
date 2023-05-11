@@ -35,7 +35,7 @@ export const Paragraph: OverridableComponent<
       {...rest}
       ref={ref}
       className={cl(
-        classes.text,
+        classes.paragraph,
         classes[size],
         {
           [classes.spacing]: !!spacing,
