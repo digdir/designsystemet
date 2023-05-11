@@ -5,23 +5,19 @@ import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
 import classes from './Body.module.css';
 
-export interface BodyProps extends React.HTMLAttributes<HTMLParagraphElement> {
+export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   /**
    * medium: 18px, small: 16px
    * @default "medium"
    */
   size?: 'medium' | 'small';
   /**
-   * Paragraph text
-   */
-  children: React.ReactNode;
-  /**
    * Adds margin-bottom
    */
   spacing?: boolean;
 }
-
-export const Body: OverridableComponent<BodyProps, HTMLParagraphElement> =
+/** Renders body text. Control text styles with props */
+export const Text: OverridableComponent<TextProps, HTMLParagraphElement> =
   forwardRef(
     (
       { className, size = 'medium', spacing, as: Component = 'p', ...rest },
@@ -31,7 +27,7 @@ export const Body: OverridableComponent<BodyProps, HTMLParagraphElement> =
         {...rest}
         ref={ref}
         className={cl(
-          classes.body,
+          classes.text,
           {
             [classes.small]: size === 'small',
             [classes.spacing]: !!spacing,
