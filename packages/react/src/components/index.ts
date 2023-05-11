@@ -41,8 +41,7 @@ export type {
   LegacyAccordionHeaderProps,
   LegacyAccordionProps,
 } from './LegacyAccordion';
-export { List, ListItem } from './List';
-export type { ListProps, ListItemProps, ListBorderStyle } from './List';
+export * from './List';
 export {
   ResponsiveTable,
   Table,
