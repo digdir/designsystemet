@@ -3,7 +3,7 @@ import cl from 'classnames';
 
 import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
-import classes from './Body.module.css';
+import classes from './Text.module.css';
 
 export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   /**
