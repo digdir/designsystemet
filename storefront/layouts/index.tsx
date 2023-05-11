@@ -1,5 +1,5 @@
 export * from './PageLayout/PageLayout';
-export * from './SubjectsLayout/SubjectsLayout';
+export * from './NavPageLayout/NavPageLayout';
 export * from './FrontpageLayout/FrontpageLayout';
 export * from './NavigationPageLayout/NavigationPageLayout';
 export * from './NotFoundLayout/NotFoundLayout';

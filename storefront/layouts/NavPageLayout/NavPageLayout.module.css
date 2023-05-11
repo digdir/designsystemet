@@ -1,9 +1,11 @@
 .box {
-  margin-top: var(--page-spacing-top);
-  margin-bottom: -64px;
   position: relative;
   z-index: 2;
   max-width: 700px;
+  padding: 82px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .title {
@@ -15,6 +17,28 @@
   font-size: var(--font-300);
   line-height: 1.6em;
   margin-bottom: 0;
+}
+
+.content {
+  margin-bottom: 56px;
+}
+
+.content > div > h2 {
+  margin-top: 48px;
+  margin-bottom: 16px;
+  font-size: 28px;
+}
+
+.content > div > p > a {
+  text-underline-offset: 5px;
+  color: #0062ba;
+}
+
+.content > div > p {
+  margin-bottom: 16px;
+  max-width: 900px;
+  line-height: 1.7em;
+  font-size: 18px;
 }
 
 .element {

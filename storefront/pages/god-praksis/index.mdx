@@ -1,88 +1,96 @@
 import Meta from '../../components/Meta/Meta';
-import { NavigationPageLayout } from '../../layouts';
-import {
-  ImageIcon,
-  TokenIcon,
-  PaletteIcon,
-  HikingTrailSignIcon,
-  ComponentIcon,
-  RectangleSectionsIcon,
-  PackageIcon,
-  BranchingIcon,
-  LayersIcon,
-  LightBulbIcon,
-  TerminalIcon,
-} from '@navikt/aksel-icons';
+import { NavPageLayout } from '../../layouts';
+import { Grid } from '../../components/Grid/Grid';
+import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
+import { TeaserCard } from '../../components/TeaserCard/TeaserCard';
+import { Container } from '../../components/Container/Container';
+import { ImageIcon } from '@navikt/aksel-icons';
+import { ImageSection } from '../../components/ImageSection/ImageSection';
+import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+
+export default ({ children, menu }) => (
+  <NavPageLayout
+    content={children}
+    data={{
+      imageSection: {
+        title: 'God praksis',
+        description:
+          'Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her. Har du forslag til artikler eller innsikt til denne siden?',
+        src: '/img/people-table.svg',
+        backgroundColor: 'blue',
+        link: {
+          text: 'Ta kontakt med oss på e-post',
+          prefix: <EnvelopeClosedIcon fontSize={26} />,
+          href: '#',
+        },
+      },
+    }}
+  />
+);
 
 <Meta
   title='God Praksis'
   description='Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her.'
 />
 
-export default ({ children, menu }) => (
-  <NavigationPageLayout
-    content={children}
-    data={{
-      sections: [
-        {
-          title: 'Brukerinnsikt',
-          description:
-            'Designressurser og kunnskapsdeling for gjennomføring av brukerinnsiktsarbeid. Se også Navs artikler om brukerinnsikt.',
-          items: [
-            {
-              title: 'Designprinsipper',
-              color: 'red',
-              icon: <ComponentIcon fontSize={34} />,
-              url: 'god-praksis/brukerinnsikt/designprinsipper',
-              description:
-                'Vi må sammen definere hva som er en god brukeropplevelse og hvordan vi best kan skape denne. ',
-            },
-            {
-              title: 'Felles innsiktsbase',
-              color: 'red',
-              icon: <ComponentIcon fontSize={34} />,
-              url: 'god-praksis/brukerinnsikt/felles-innsiktsbase',
-              description:
-                'Innsikt er gull verdt. Derfor ønsker vi å tilrettelegge for at alle skal kunne dele innsikt i en felles innsiktsbase. ',
-            },
-          ],
-        },
-        {
-          title: 'Tilgjengelighet',
-          description:
-            'Tilgjengelighet og universell utforming handler om at det vi lager skal kunne brukes av alle uavhengig av funksjonsevne eller brukskontekst. Se også Navs artikler om tilgjengelighet. ',
-          items: [
-            {
-              title: 'Forstå synsnedsettelse',
-              color: 'yellow',
-              icon: <TokenIcon fontSize={34} />,
-              url: 'god-praksis/tilgjengelighet/forsta-synsnedsettelse',
-              description:
-                'Mellom 7 og 10% av befolkningen lever med en synshemming. Hvilke behov har disse menneskene?',
-            },
-          ],
-        },
-        {
-          title: 'Innholdsarbeid',
-          description:
-            'Her får du nyttige tips, retningslinjer og verktøy til å lage innhold som gjør at innbyggerne finner frem og klarer å gjøre det de kom for å gjøre. ',
-          items: [
-            {
-              title: 'Slik skriver du',
-              color: 'blue',
-              icon: <PaletteIcon fontSize={34} />,
-              url: 'god-praksis/innholdsarbeid/slik-skriver-du',
-              description: 'Slik skriver du enkelt og helhetlig. ',
-            },
-          ],
-        },
-      ],
-    }}
+## Brukerinnsikt
+
+Designressurser og kunnskapsdeling rundt brukerinnsikt. Se også Navs [artikler om brukerinnsiktnnsikt](d).
+
+<Grid>
+  <TeaserCard
+    title='Designprinsipper'
+    description='Vi må sammen definere hva som er en god brukeropplevelse og hvordan vi best kan skape denne.'
+    href='#'
+    author='Digdir'
+    date='27. april 2023'
   />
-);
+  <TeaserCard
+    title='Felles innsiktsbase'
+    description='Vi må sammen definere hva som er en god brukeropplevelse og hvordan vi best kan skape denne.'
+    href='#'
+    author='Digdir'
+    date='27. april 2023'
+  />
+</Grid>
 
-# God praksis
+## Tilgjengelighet
 
-Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her.
+Tilgjengelighet og universell utforming handler om at det vi lager skal kunne brukes av alle uavhengig av funksjonsevne eller brukskontekst. Se også Navs artikler om tilgjengelighet.
 
-Har du forslag til artikler eller innsikt til denne siden? [Ta kontakt med oss på epost](mailto:designsystemet@digdir.no).
+<Grid>
+  <TeaserCard
+    title='Forstå synsnedsettelse'
+    description='Mellom 7 og 10% av befolkningen lever med en synshemming. Hvilke behov har disse menneskene?'
+    href='#'
+    author='Brønnøysundregistrene'
+    date='27. april 2023'
+  />
+</Grid>
+
+## Innholdsarbeid
+
+Tilgjengelighet og universell utforming handler om at det vi lager skal kunne brukes av alle uavhengig av funksjonsevne eller brukskontekst. Se også Navs artikler om tilgjengelighet.
+
+<Grid>
+  <TeaserCard
+    title='Felles innsiktsbase'
+    description='Vi må sammen definere hva som er en god brukeropplevelse og hvordan vi best kan skape denne.'
+    href='#'
+  />
+  <TeaserCard
+    title='Folk skumleser'
+    description='De fleste skumleser på nett. Det betyr at vi må skrive tekster som er lette å skumlese'
+    href='#'
+  />
+  <TeaserCard
+    title='Mikrotekster'
+    description='Mikrotekster er de små tekstene som får brukerne til å gjøre noe. De har stor betydning for hvordan vi går videre når vi er i en app eller i et skjema.'
+    href='#'
+  />
+  <TeaserCard
+    title='Smart sagt om innhold'
+    description='Kilder til god praksis, innsikt og andre som lager godt innhold.'
+    href='#'
+  />
+</Grid>
