@@ -1,8 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { Typeset } from '@storybook/blocks';
 
-import { Text as Paragraph, Heading } from './';
+import { Paragraph as Paragraph, Heading } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',

@@ -4,7 +4,7 @@ import type { MouseEventHandler } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
 import { Heading } from '../Typography/Heading';
-import { Text } from '../Typography/Paragraph';
+import { Paragraph } from '../Typography/Paragraph';
 
 import classes from './Accordion.module.css';
 import { AccordionItemContext } from './AccordionItem';
@@ -65,12 +65,12 @@ const AccordionHeader: AccordionHeaderType = forwardRef(
             aria-hidden
             className={classes.expandIcon}
           />
-          <Text
+          <Paragraph
             as='span'
             size='small'
           >
             {children}
-          </Text>
+          </Paragraph>
         </button>
       </Heading>
     );
