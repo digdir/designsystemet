@@ -203,8 +203,8 @@ const getClassNames = (expectedClassName: InputVariant_) => {
   return { expectedClassName, otherClassNames };
 };
 
-const render = (props: Partial<InputWrapperProps<HTMLInputElement>> = {}) => {
-  const allProps: InputWrapperProps<HTMLInputElement> = {
+const render = (props: Partial<InputWrapperProps> = {}) => {
+  const allProps: InputWrapperProps = {
     inputRenderer: ({ className, inputId, describedBy }) => (
       <input
         className={className}

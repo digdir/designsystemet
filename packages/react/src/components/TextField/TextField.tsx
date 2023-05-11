@@ -61,7 +61,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const [currentValue, setCurrentValue] = useState<string>(
-      value ? `${value}` : '',
+      value ? value.toString() : '',
     );
 
     const handleNumberFormatChange = (
@@ -88,7 +88,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     };
 
     return (
-      <InputWrapper<HTMLInputElement>
+      <InputWrapper
         value={currentValue}
         isValid={isValid}
         disabled={disabled}

@@ -1,5 +1,5 @@
 import React, { forwardRef, useId, useState } from 'react';
-import type { ChangeEvent, HTMLAttributes, ForwardedRef } from 'react';
+import type { ChangeEvent, ForwardedRef, TextareaHTMLAttributes } from 'react';
 
 import { InputWrapper } from '../_InputWrapper';
 import type { ReadOnlyVariant_, CharLimit } from '../_InputWrapper';
@@ -17,12 +17,7 @@ export type TextAreaProps = {
   charLimit?: CharLimit;
   /* Label for the textarea */
   label?: string;
-  /* The value of the textarea */
-  value?: string;
-  /* Whether the textarea is disabled or not */
-  disabled?: boolean;
-} & HTMLAttributes<HTMLTextAreaElement>;
-
+} & TextareaHTMLAttributes<HTMLTextAreaElement>;
 export const TextArea = forwardRef(
   (
     {
@@ -39,7 +34,7 @@ export const TextArea = forwardRef(
     ref: ForwardedRef<HTMLTextAreaElement>,
   ): JSX.Element => {
     const [currentInputValue, setCurrentInputValue] = useState<string>(
-      value ? `${value}` : '',
+      value ? value.toString() : '',
     );
     const generatedTextareaId = useId();
     const textAreaId = rest.id ?? generatedTextareaId;
@@ -53,8 +48,7 @@ export const TextArea = forwardRef(
     };
 
     return (
-      <InputWrapper<HTMLTextAreaElement>
-        ref={ref}
+      <InputWrapper
         value={currentInputValue}
         disabled={disabled}
         inputId={textAreaId}
@@ -63,6 +57,7 @@ export const TextArea = forwardRef(
           return (
             <textarea
               {...rest}
+              ref={ref}
               value={value}
               onChange={handleOnChange}
               id={inputId}

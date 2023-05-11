@@ -1,5 +1,5 @@
 import React, { useId } from 'react';
-import type { ReactNode, ForwardedRef } from 'react';
+import type { ReactNode } from 'react';
 import cn from 'classnames';
 
 import utilClasses from '../../utils/utility.module.css';
@@ -23,7 +23,7 @@ export type CharLimit = Omit<
   'ariaDescribedById' | 'value'
 >;
 
-export type InputWrapperProps<T> = {
+export type InputWrapperProps = {
   className?: string;
   disabled?: boolean;
   inputId?: string;
@@ -34,12 +34,16 @@ export type InputWrapperProps<T> = {
   noFocusEffect?: boolean;
   noPadding?: boolean;
   readOnly?: boolean | ReadOnlyVariant_;
+  /*
+   * The charLimit function calculates the remaining characters, and it is your responsibility as the consumer to provide a reasonable message to the user.
+   * You provide the message as a function (label function) that takes the remaining character count as a parameter and returns a string.
+   * Ensure to describe the max-count for screen readers by providing a srLabel string with that information.
+   */
   charLimit?: CharLimit;
   value?: string | number | readonly string[] | undefined;
-  ref?: ForwardedRef<T>;
 };
 
-export const InputWrapper = <T,>({
+export const InputWrapper = ({
   className,
   disabled = false,
   inputId,
@@ -52,7 +56,7 @@ export const InputWrapper = <T,>({
   readOnly = false,
   charLimit,
   value,
-}: InputWrapperProps<T>) => {
+}: InputWrapperProps) => {
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
 
@@ -70,7 +74,7 @@ export const InputWrapper = <T,>({
   const hasIcon = iconVariant !== 'none';
 
   return (
-    <>
+    <div>
       <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
         {label && (
           <label
@@ -108,7 +112,7 @@ export const InputWrapper = <T,>({
           ariaDescribedById={charLimitDescriptionId}
         />
       )}
-    </>
+    </div>
   );
 };
 
