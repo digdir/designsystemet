@@ -160,7 +160,7 @@ const Select = (props: SelectProps) => {
     middleware: [
       autoPlacement({ allowedPlacements: ['top', 'bottom'] }),
       size({
-        apply: ({ availableHeight, elements, rects, x, y }) => {
+        apply: ({ availableHeight, elements, rects }) => {
           Object.assign(elements.floating.style, {
             maxHeight: `min(${availableHeight}px, var(--option_list-max_height))`,
             width: `${rects.reference.width}px`,
