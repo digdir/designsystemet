@@ -6,7 +6,12 @@
       "Base/Core": "source",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Tilsynet": "enabled"
+      "Brand/Tilsynet": "enabled",
+      "Viewport/@375": "disabled",
+      "Viewport/@576": "disabled",
+      "Viewport/@992": "disabled",
+      "Viewport/@1200": "disabled",
+      "Viewport/@1440": "disabled"
     },
     "$figmaStyleReferences": {}
   },
@@ -17,7 +22,12 @@
       "Base/Core": "source",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Digdir": "enabled"
+      "Brand/Digdir": "enabled",
+      "Viewport/@375": "disabled",
+      "Viewport/@576": "disabled",
+      "Viewport/@992": "disabled",
+      "Viewport/@1200": "disabled",
+      "Viewport/@1440": "disabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -276,7 +286,12 @@
       "Mode/Compact": "enabled",
       "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Digdir": "enabled"
+      "Brand/Digdir": "enabled",
+      "Viewport/@375": "disabled",
+      "Viewport/@576": "disabled",
+      "Viewport/@992": "disabled",
+      "Viewport/@1200": "disabled",
+      "Viewport/@1440": "disabled"
     },
     "$figmaStyleReferences": {}
   },
@@ -288,7 +303,11 @@
       "Base/Semantic": "enabled",
       "Base/Component": "enabled",
       "Brand/Digdir": "enabled",
-      "Viewport/@380": "enabled"
+      "Viewport/@375": "enabled",
+      "Viewport/@576": "disabled",
+      "Viewport/@992": "disabled",
+      "Viewport/@1200": "disabled",
+      "Viewport/@1440": "disabled"
     },
     "$figmaStyleReferences": {}
   }

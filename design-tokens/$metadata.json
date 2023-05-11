@@ -4,12 +4,14 @@
     "Base/Semantic",
     "Base/Component",
     "Brand/Digdir",
-    "Mode/Compact",
     "Brand/Tilsynet",
     "Brand/Altinn",
-    "Viewport/@380",
+    "Mode/Compact",
+    "Viewport/@375",
+    "Viewport/@576",
     "Viewport/@768",
-    "Viewport/@1024",
-    "Viewport/@1400"
+    "Viewport/@992",
+    "Viewport/@1200",
+    "Viewport/@1440"
   ]
 }
