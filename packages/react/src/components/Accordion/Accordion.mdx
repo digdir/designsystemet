@@ -1,0 +1,49 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { BetaBlock } from '../../../../../docs-components';
+import * as AccordionStories from './Accordion.stories';
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+<BetaBlock />
+
+Accordion er en vertikalt stablet gruppe interaktive overskrifter som hver inneholder en tittel, en kort tekst eller et miniatyrbilde som representerer
+en seksjon av innholdet. Overskriftene fungerer som kontroller som lar brukere vise eller skjule de tilknyttede seksjonene med innhold.
+Accordion brukes ofte for å redusere behovet for å skrolle ned når man presenterer flere seksjoner med innhold på en enkelt side.
+
+## Bruk
+
+```tsx
+import { Accordion } from '@digdir/design-system-react';
+
+<Accordion>
+  <Accordion.Item>
+    <Accordion.Header>Accordion header text</Accordion.Header>
+    <Content />
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Header>Accordion header text</Accordion.Header>
+    <Content />
+  </Accordion.Item>
+</Accordion>;
+```
+
+## Props
+
+<Primary />
+<Controls />
+
+## Varianter
+
+### Kontrollert
+
+<Canvas>
+  <Story of={AccordionStories.Controlled} />
+</Canvas>
+
+### Ikke kontrollert
+
+<Canvas>
+  <Story of={AccordionStories.Uncontrolled} />
+</Canvas>

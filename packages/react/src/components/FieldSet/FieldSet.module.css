@@ -20,7 +20,7 @@
   --description-margin_top: var(--component-field_description-space-top-small);
   --error_message-margin_top: var(--component-fieldset-space-gap-y-small);
   --help_text-gap: var(--component-field_description-space-top-small);
-  --font_size: var(--component-checkbox-font_size-xs);
+  --font_size: var(--component-checkbox-font_size-sm);
 }
 
 .xsmall {

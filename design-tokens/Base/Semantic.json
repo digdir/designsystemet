@@ -310,9 +310,13 @@
           "type": "color"
         }
       },
-      "tab-focus": {
-        "default": {
-          "value": "{colors.purple.600}",
+      "focus": {
+        "outline": {
+          "value": "{colors.yellow.500}",
+          "type": "color"
+        },
+        "boxshadow": {
+          "value": "{semantic.border.neutral.strong}",
           "type": "color"
         }
       },
@@ -607,6 +611,36 @@
           "textDecoration": "{textDecoration.none}"
         },
         "type": "typography"
+      },
+      "short": {
+        "medium": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.300}",
+            "fontSize": "{font-size.f0}",
+            "letterSpacing": "{letterSpacing.0}",
+            "paragraphSpacing": "{paragraphSpacing.0}",
+            "paragraphIndent": "{paragraphIndent.0}",
+            "textCase": "{textCase.none}",
+            "textDecoration": "{textDecoration.none}"
+          },
+          "type": "typography"
+        },
+        "small": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.300}",
+            "fontSize": "{font-size.f-1}",
+            "letterSpacing": "{letterSpacing.0}",
+            "paragraphSpacing": "{paragraphSpacing.0}",
+            "paragraphIndent": "{paragraphIndent.0}",
+            "textCase": "{textCase.none}",
+            "textDecoration": "{textDecoration.none}"
+          },
+          "type": "typography"
+        }
       }
     },
     "label": {
@@ -736,14 +770,6 @@
       "type": "opacity"
     }
   },
-  "tab_focus": {
-    "outline": {
-      "offset": {
-        "value": "2px",
-        "type": "spacing"
-      }
-    }
-  },
   "border_radius": {
     "interactive": {
       "value": "{border_radius.medium}",
@@ -842,6 +868,20 @@
       "type": "sizing"
     },
     "xxxlarge": {
+      "value": "{sizing.14}",
+      "type": "sizing"
+    }
+  },
+  "component-height": {
+    "small": {
+      "value": "{sizing.10}",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "{sizing.12}",
+      "type": "sizing"
+    },
+    "large": {
       "value": "{sizing.14}",
       "type": "sizing"
     }

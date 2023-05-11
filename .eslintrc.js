@@ -44,6 +44,7 @@ module.exports = {
     // Disabled because we use Typescript types for props
     'react/prop-types': ['off'],
     'react/jsx-no-bind': 'off',
+    'react/display-name': 'off',
     'import/no-unresolved': 'error',
     'import/order': [
       'warn',
