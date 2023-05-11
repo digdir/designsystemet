@@ -162,7 +162,7 @@ describe('InputWrapper', () => {
   });
 
   describe('Character limit', () => {
-    it('should support screen reader max-char description as additional information to input field', () => {
+    it('should support screen reader max-char description', () => {
       render({
         label: 'Other',
         charLimit: {
