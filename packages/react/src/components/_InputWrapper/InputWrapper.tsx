@@ -57,12 +57,12 @@ export const InputWrapper = <T,>({
   const givenOrRandomInputId = inputId ?? randomInputId;
 
   const charLimitDescriptionId = useId();
-  const currentInputValue = value ? `${value}` : '';
+  const currentInputValue = value ? value.toString() : '';
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
     isValid: charLimit
-      ? isValid && currentInputValue.length > charLimit.maxCount
+      ? currentInputValue.length < charLimit.maxCount && isValid
       : isValid,
     readOnly,
   });
@@ -131,8 +131,8 @@ const CharacterCounter = ({
   value,
   ariaDescribedById,
 }: CharacterCounterProps): JSX.Element => {
-  const currentCount = value.length;
-  const hasExceededLimit = currentCount >= maxCount;
+  const currentCount = maxCount - value.length;
+  const hasExceededLimit = value.length > maxCount;
 
   return (
     <>
