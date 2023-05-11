@@ -1,4 +1,5 @@
 .helpTextButton {
+  composes: focusable from '../../utils/utility.module.css';
   background-color: transparent;
   border-radius: 50px;
   padding: 0;
@@ -13,17 +14,6 @@
   }
 }
 
-.helpTextButton:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) solid
-    var(--semantic-tab_focus-outline-width);
-  outline-offset: var(--semantic-tab_focus-outline-offset);
-  color: var(--colors-blue-700);
-}
-
-.helpTextButton:focus:not(:focus-visible) {
-  outline: none;
-}
-
 .helpTextIconFilled {
   display: none;
 }
@@ -34,13 +24,11 @@
   height: var(--help_text-icon-height);
 }
 
-.helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
-  > .helpTextIcon {
+.helpTextButton:where(:hover, :focus, [data-state^='open']) > .helpTextIcon {
   display: none;
 }
 
-.helpTextButton:where(:hover, :focus-visible, [data-state^='open'])
-  > .helpTextIconFilled {
+.helpTextButton:where(:hover, :focus, [data-state^='open']) > .helpTextIconFilled {
   display: inline-block;
 }
 
