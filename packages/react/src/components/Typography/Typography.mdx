@@ -18,9 +18,18 @@ import { Paragraph, Heading, Ingress, Detail, Label, ErrorMessage } from './';
 
 <BetaBlock />
 
-Typografi komponenter for visning og styling av textlig innhold
+Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er avgjørende
+at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt kan
+prosessere informasjonen som er der. Typografien er delt inn i 4 katogorier som er
+ment å dekke alle behov som måtte dukke opp på et nettsted:
 
 ## Heading
+
+Alle oversikrifter skal bruke heading komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+
+Det skal kun vere 1 `<h1>` tag per side, men det kan vere flere h2-h6. Det er viktig at heading-hirarkiet på en side går logisk fra `<h1>` og nedover både når det kommer til størrelse og rekkefølge (se bruk).
+
+H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin applikasjon kan H1 for eksempel vere 36px, mens på en annen nettside 44px. Det som er viktig er at H1-H6 skalerer logiske nedover i størrelse.
 
 <Canvas>
   <Story of={HeadingStories.Preview} />
@@ -30,12 +39,16 @@ Typografi komponenter for visning og styling av textlig innhold
 
 ## Paragraph
 
+Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke body.
+
 <Canvas>
   <Story of={ParagraphStories.Preview} />
 </Canvas>
 <Controls of={ParagraphStories.Preview} />
 
 ## Ingress
+
+Ingressen kommer ofte mellom header- og body komponenten, og er ment å innlede en artikkel eller et avsnitt. Det er ofte et kort sammendrag av en større enhet, og skiller seg litt ut fra body ved at den har litt høyere linjehøyde og større font-størrelse.
 
 <Canvas>
   <Story of={typographyStories.Ingresses} />
@@ -45,6 +58,8 @@ Typografi komponenter for visning og styling av textlig innhold
 
 ## Detail
 
+Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
+
 <Canvas>
   <Story of={typographyStories.Details} />
 </Canvas>
@@ -53,6 +68,8 @@ Typografi komponenter for visning og styling av textlig innhold
 
 ## Label
 
+Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
+
 <Canvas>
   <Story of={typographyStories.Labels} />
 </Canvas>
@@ -60,6 +77,8 @@ Typografi komponenter for visning og styling av textlig innhold
 <ArgsTable of={Label} />
 
 ## ErrorMessage
+
+Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
 
 <Canvas>
   <Story of={typographyStories.ErrorMessages} />
