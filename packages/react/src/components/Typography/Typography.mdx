@@ -10,6 +10,7 @@ import { BetaBlock } from '../../../../../docs-components';
 import * as typographyStories from './Typography.stories';
 import * as HeadingStories from './Heading/Heading.stories';
 import * as ParagraphStories from './Paragraph/Paragraph.stories';
+import * as LabelStories from './Label//Label.stories';
 import { Paragraph, Heading, Ingress, Detail, Label, ErrorMessage } from './';
 
 <Meta of={typographyStories} />
@@ -65,11 +66,8 @@ Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre lin
 
 Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
 
-<Canvas>
-  <Story of={typographyStories.Labels} />
-</Canvas>
-
-<ArgsTable of={Label} />
+<Canvas of={LabelStories.Preview} />
+<Controls of={LabelStories.Preview} />
 
 ## ErrorMessage
 
