@@ -8,7 +8,7 @@ import classes from './Label.module.css';
 
 export type LabelProps = {
   /** Changes text sizing */
-  size?: 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
 } & LabelHTMLAttributes<HTMLLabelElement>;
@@ -17,7 +17,7 @@ export type LabelProps = {
 export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
   forwardRef(
     (
-      { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+      { className, size = 'medium', spacing, as: Component = 'label', ...rest },
       ref,
     ) => (
       <Component

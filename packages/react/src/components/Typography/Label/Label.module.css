@@ -1,3 +1,15 @@
+.label {
+  margin: 0;
+}
+
+.spacing {
+  margin-bottom: var(--fds-spacing-medium);
+}
+
+.label.large {
+   font: var(--fds-typography-label-large);
+}
+
 .label.medium {
    font: var(--fds-typography-label-medium);
 }
@@ -6,7 +18,6 @@
    font: var(--fds-typography-label-small);
 }
 
-.label.spacing {
-  margin-bottom: var(--fds-spacing-medium);
+.label.xsmall {
+   font: var(--fds-typography-label-xsmall);
 }
-
