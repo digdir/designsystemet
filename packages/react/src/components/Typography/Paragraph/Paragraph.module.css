@@ -2,26 +2,39 @@
   margin: 0;
 }
 
+.spacing {
+  margin-bottom:var(--fds-spacing-small);
+}
+
+.paragraph.large {
+  font: var(--fds-typography-paragraph-large);
+}
+
+.paragraph.large.short{
+  font: var(--fds-typography-paragraph-short-large);
+}
+
 .paragraph.medium {
-  font: var(--fds-typography-body-medium);
+  font: var(--fds-typography-paragraph-medium);
 }
 
 .paragraph.medium.short{
-  font: var(--fds-typography-body-short-medium);
-}
-
-.paragraph.medium.spacing {
-  margin-bottom: var(--fds-spacing-medium);
+  font: var(--fds-typography-paragraph-short-medium);
 }
 
 .paragraph.small {
-  font: var(--fds-typography-body-small);
+  font: var(--fds-typography-paragraph-small);
 }
 
 .paragraph.small.short {
-  font: var(--fds-typography-body-short-small);
+  font: var(--fds-typography-paragraph-short-small);
 }
 
-.paragraph.small.spacing {
-  margin-bottom:var(--fds-spacing-small);
+
+.paragraph.xsmall {
+  font: var(--fds-typography-paragraph-xsmall);
+}
+
+.paragraph.xsmall.short {
+  font: var(--fds-typography-paragraph-short-xsmall);
 }

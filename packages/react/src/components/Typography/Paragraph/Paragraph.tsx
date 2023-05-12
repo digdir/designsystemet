@@ -8,7 +8,7 @@ import classes from './Paragraph.module.css';
 
 export type ParagraphProps = {
   /** Changes text sizing */
-  size?: 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
   /** Reduces line-height for short paragraphs */
