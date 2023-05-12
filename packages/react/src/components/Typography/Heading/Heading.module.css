@@ -1,11 +1,9 @@
 .heading {
-  --fdsc-heading-spacing: var(--fds-spacing-small);
-
   margin: 0;
 }
 
-.heading.spacing {
-  margin-bottom: var(--fdsc-heading-spacing);
+.spacing {
+  margin-bottom: var(--fds-spacing-medium);
 }
 
 .heading.xlarge {
