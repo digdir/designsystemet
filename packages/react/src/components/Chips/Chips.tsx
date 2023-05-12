@@ -1,15 +1,10 @@
-import React, {
-  forwardRef,
-  type ButtonHTMLAttributes,
-  RefAttributes,
-} from 'react';
-import type { ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import classes from './Chips.module.css';
-import type { ToggleChipType } from './Toggle';
-import ToggleChip from './Toggle';
-import type { RemovableChipType } from './Removable';
-import RemovableChip from './Removable';
+import type { ToggleChipType } from './Toggle/Toggle';
+import ToggleChip from './Toggle/Toggle';
+import type { RemovableChipType } from './Removable/Removable';
+import RemovableChip from './Removable/Removable';
 
 interface ChipsComponent
   extends React.ForwardRefExoticComponent<

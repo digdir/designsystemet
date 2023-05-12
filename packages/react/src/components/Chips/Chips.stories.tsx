@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import Removable from './Removable';
-import Toggle from './Toggle';
+import Removable from './Removable/Removable';
+import Toggle from './Toggle/Toggle';
 
-import { Chips, ChipsProps } from '.';
+import { Chips } from '.';
 
 type Story = StoryObj<typeof Chips>;
 
@@ -33,12 +33,6 @@ export const props: Story = {
         <Chips.Toggle selected={true}>Svensk</Chips.Toggle>
       </>
     ),
-  },
-};
-
-export const propsRemovable: Story = {
-  args: {
-    children: 'Dansk',
   },
 };
 

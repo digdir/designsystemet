@@ -16,7 +16,7 @@
 }
 
 .chips.small {
-  height: var(--fds-sizing-medium);
+  height: var(--fds-sizing-large);
 }
 
 .chips.xsmall > li > .chip {

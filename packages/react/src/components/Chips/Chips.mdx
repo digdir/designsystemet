@@ -1,6 +1,8 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
 import { BetaBlock } from '../../../../../docs-components';
 import * as ChipsStories from './Chips.stories';
+import * as RemovableStories from './Removable/Removable.stories';
+import * as ToggleStories from './Toggle/Toggle.stories';
 
 <Meta of={ChipsStories} />
 
@@ -28,11 +30,6 @@ const options = ['Norsk', 'Dansk', 'Svensk', 'Tysk', 'Spansk'];
 </Chips>;
 ```
 
-## Props
-
-<Primary />
-<Controls />
-
 ## Varianter
 
 ### Toggle
@@ -46,3 +43,26 @@ const options = ['Norsk', 'Dansk', 'Svensk', 'Tysk', 'Spansk'];
 <Canvas>
   <Story of={ChipsStories.RemovableChip} />
 </Canvas>
+
+## Props
+
+### Chips
+
+<Primary />
+<Controls />
+
+### Chips.Toggle
+
+<Canvas>
+  <Story of={ToggleStories.Preview} />
+</Canvas>
+
+<Controls of={ToggleStories.Preview} />
+
+### Chips.Removable
+
+<Canvas>
+  <Story of={RemovableStories.Preview} />
+</Canvas>
+
+<Controls of={RemovableStories.Preview} />

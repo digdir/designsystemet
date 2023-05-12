@@ -2,10 +2,13 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
-import classes from './Chips.module.css';
+import classes from '../Chips.module.css';
 
 export interface RemovableChipProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Chip label
+   */
   children: string;
   /**
    * Click callback
@@ -28,12 +31,12 @@ const RemovableChip: RemovableChipType = forwardRef(
     ref,
   ) => {
     return (
-      <li>
+      <li className={className}>
         <button
           ref={ref}
           {...rest}
           aria-label={`${children} ${removeLabel}`}
-          className={cn(className, classes.chip, classes.removable)}
+          className={cn(classes.chip, classes.removable)}
           onClick={(e) => {
             onDelete?.();
             rest?.onClick?.(e);

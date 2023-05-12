@@ -1,10 +1,7 @@
 import React, { forwardRef, useState } from 'react';
 import cn from 'classnames';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
-
-//import { SortIcon } from '../Table/SortIcon';
-
-import classes from './Chips.module.css';
+import classes from '../Chips.module.css';
 
 export interface ToggleChipsProps
   extends React.HTMLAttributes<HTMLButtonElement> {
@@ -22,12 +19,11 @@ export type ToggleChipType = React.ForwardRefExoticComponent<
 const ToggleChip: ToggleChipType = forwardRef(
   ({ className, children, selected, ...rest }, ref) => {
     return (
-      <li>
+      <li className={className}>
         <button
           ref={ref}
           {...rest}
           className={cn(
-            className,
             classes.chip,
             classes.toggle,
             selected && classes.active,
