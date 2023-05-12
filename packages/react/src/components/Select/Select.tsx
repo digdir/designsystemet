@@ -2,7 +2,7 @@ import type { ChangeEvent, ReactNode } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
-import { autoPlacement, size } from '@floating-ui/dom';
+import { flip, size } from '@floating-ui/dom';
 
 import { InputWrapper } from '../_InputWrapper';
 import {
@@ -156,9 +156,10 @@ const Select = (props: SelectProps) => {
   );
 
   const { x, y, elements, refs } = useFloating<HTMLSpanElement>({
+    placement: 'bottom',
     whileElementsMounted: autoUpdate,
     middleware: [
-      autoPlacement({ allowedPlacements: ['top', 'bottom'] }),
+      flip(),
       size({
         apply: ({ availableHeight, elements, rects }) => {
           Object.assign(elements.floating.style, {
