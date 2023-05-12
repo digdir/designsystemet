@@ -2,57 +2,93 @@
   display: flex;
   list-style: none;
   gap: var(--fds-sizing-xsmall);
-  height: var(--fds-sizing-medium);
+  box-sizing: border-box;
 }
 
 .chip {
   border-radius: 50px;
-  height: var(--fds-sizing-medium);
-  width: fit-content;
-  display: flex;
-  justify-content: space-between;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.chips.xsmall {
+  height: var(--fds-sizing-medium);
+}
+
+.chips.small {
+  height: var(--fds-sizing-medium);
 }
 
 .chips.xsmall > li > .chip {
   height: var(--fds-sizing-medium);
   padding-left: var(--fds-sizing-xxsmall);
-  padding-right: var(--fds-sizing-xxsmall);
 }
 
 .chips.small > li > .chip {
   height: var(--fds-sizing-large);
   padding-left: var(--fds-sizing-xsmall);
+  font-size: var(--fds-typography-heading-medium);
+}
+
+.chips.xsmall > li > .chip.toggle {
+  padding-right: var(--fds-sizing-xxsmall);
+}
+
+.chips.small > li > .chip.toggle {
   padding-right: var(--fds-sizing-xsmall);
 }
 
+.chips.xsmall > li > .chip.toggle.active {
+  padding-left: 0;
+}
+
+.chips.small > li > .chip.toggle.active {
+  padding-left: 0;
+}
+
+.chips.small > li > button > div > span {
+  width: var(--fds-sizing-large);
+  font-size: 24px;
+}
+
+.chips.xsmall > li > button > div > span {
+  width: var(--fds-sizing-medium);
+  font-size: 20px;
+}
+
+.chips.xsmall > li > button > div > span.xmark {
+  height: var(--fds-sizing-medium);
+}
+
+.chips.small > li > button > div > span.xmark {
+  height: var(--fds-sizing-large);
+}
+
 .toggle {
-  border: solid;
   background-color: var(--fds-semantic-surface-neutral-default);
+  border: solid 1px;
   border-color: var(--fds-semantic-border-neutral-default);
+  color: var(--fds-semantic-text-neutral-default);
   box-sizing: border-box;
-  color: --fds-semantic-text-neutral-default;
 }
 
 .toggle.active {
   background-color: var(--fds-semantic-surface-action-active);
   border-color: var(--fds-semantic-surface-action-active);
   color: var(--fds-semantic-text-action-on_action);
-  padding-left: 0;
 }
 
 .toggle.active:hover {
   background-color: var(--fds-semantic-surface-action-no_fill-active);
   border-color: --fds-semantic-border-action-active;
   border: solid 2px;
+  box-sizing: border-box;
   color: var(--fds-semantic-text-neutral-default);
 }
 
 .removable {
   background-color: var(--fds-semantic-surface-action-active);
   color: var(--fds-semantic-text-action-on_action);
-  height: var(--fds-sizing-medium);
   border: 0;
   padding-right: 0;
 }
@@ -60,7 +96,6 @@
 .content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .text {
@@ -68,30 +103,24 @@
 }
 
 .xmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  height: var(--fds-sizing-medium);
+}
+
+.checkmark {
   width: var(--fds-sizing-medium);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.checkmarkContainer {
-  width: var(--fds-sizing-medium);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.removable:hover .xmarkContainer {
+.removable:hover .xmark {
   background-color: var(--fds-semantic-surface-danger-default);
 }
 
 .toggle:hover {
   background-color: var(--fds-semantic-border-neutral-subtle);
-}
-
-.toggle:hover .active {
-  background-color: pink;
 }

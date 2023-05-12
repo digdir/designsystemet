@@ -8,32 +8,23 @@ import * as ChipsStories from './Chips.stories';
 
 <BetaBlock />
 
-Chips er små interaktive komponenter som manipulerer data eller visning av data.
-
-#### Egnet til:
-
-Filtrere data, f.eks. lister og tabeller
-Vise filter som er aktivt
-
-#### Uegnet til:
-
-Navigasjon mellom tab-paneler
-Menyer, f.eks. sidemeny eller hovedmeny
-Statisk metadata (se Tag-komponenten)
+Retningslinjer kommer.
 
 ## Bruk
 
 ```tsx
 import { Chips } from '@digdir/design-system-react';
 
+const options = ['Norsk', 'Dansk', 'Svensk', 'Tysk', 'Spansk'];
+
 <Chips size='xsmall'>
-  <Chips.Removable> Click to remove! </Chips.Removable>
-  <Chips.Removable> Removable chip </Chips.Removable>
+  {options.map((option) => (
+    <Chips.Removable onClick={delete()}> {option} </Chips.Removable>
+  ))}
 </Chips>;
 
 <Chips>
-  <Chips.Toggle>Click to toggle!</Chips.Toggle>;
-  <Chips.Toggle>Toggle chip</Chips.Toggle>;
+  {options.map((option) => (<Chips.Toggle selected={selected}>{option}</Chips.Toggle>;))}
 </Chips>;
 ```
 

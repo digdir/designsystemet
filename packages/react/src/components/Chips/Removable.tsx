@@ -7,10 +7,15 @@ import classes from './Chips.module.css';
 export interface RemovableChipProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
-
-  // variant?: 'action' | 'neutral'; Spørr Marianne om dette skal være med
-
+  /**
+   * Click callback
+   */
   onDelete?: () => void;
+  /**
+   * Replaces label read for screen-readers
+   * @default "slett filter"
+   */
+  removeLabel?: string;
 }
 
 export type RemovableChipType = React.ForwardRefExoticComponent<
@@ -18,12 +23,16 @@ export type RemovableChipType = React.ForwardRefExoticComponent<
 >;
 
 const RemovableChip: RemovableChipType = forwardRef(
-  ({ children, className, onDelete, ...rest }, ref) => {
+  (
+    { className, children, removeLabel = 'slett filter', onDelete, ...rest },
+    ref,
+  ) => {
     return (
       <li>
         <button
           ref={ref}
           {...rest}
+          aria-label={`${children} ${removeLabel}`}
           className={cn(className, classes.chip, classes.removable)}
           onClick={(e) => {
             onDelete?.();
@@ -32,14 +41,8 @@ const RemovableChip: RemovableChipType = forwardRef(
         >
           <div className={classes.content}>
             <div className={classes.text}>{children}</div>
-            <span
-              className={classes.xmark}
-              id='xmarkContainer'
-            >
-              <XMarkIcon
-                title='a11y-title'
-                fontSize={'20px'}
-              />
+            <span className={classes.xmark}>
+              <XMarkIcon aria-hidden />
             </span>
           </div>
         </button>

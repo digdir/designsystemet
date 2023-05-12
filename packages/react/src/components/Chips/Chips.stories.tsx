@@ -21,48 +21,41 @@ export default {
       url: 'http://www.url.com/status',
     },
   },
-  argTypes: {
-    type: {
-      control: {
-        type: 'radio',
-        options: ['toggle', 'removable'],
-      },
-    },
-    size: {
-      control: {
-        type: 'radio',
-        options: ['xsmall', 'small'],
-      },
-    },
-  },
 } as Meta;
 
+const options = ['Norsk', 'Dansk', 'Svensk', 'Tysk', 'Spansk'];
 export const props: Story = {
   args: {
     children: (
       <>
-        <Chips.Removable>Test removable</Chips.Removable>
-        <Chips.Removable>123</Chips.Removable>
-        <Chips.Toggle>Test toggle</Chips.Toggle>
-        <Chips.Toggle>Test 123</Chips.Toggle>
+        <Chips.Removable>Dansk</Chips.Removable>
+        <Chips.Toggle>Fransk</Chips.Toggle>
+        <Chips.Toggle selected={true}>Svensk</Chips.Toggle>
       </>
     ),
   },
 };
 
-const options = ['Norsk', 'Dansk', 'Svensk', 'Tysk', 'Spansk'];
+export const propsRemovable: Story = {
+  args: {
+    children: 'Dansk',
+  },
+};
 
 export const RemovableChip: StoryFn = () => {
+  const [filter, setFilter] = useState(options);
   return (
-    <div className='colgap'>
+    <div>
       <Chips>
-        {options.map((c, y) => (
-          <Chips.Removable key={y}>{c}</Chips.Removable>
-        ))}
-      </Chips>
-      <Chips>
-        {options.map((c, y) => (
-          <Chips.Removable key={y}>{c}</Chips.Removable>
+        {filter.map((label) => (
+          <Chips.Removable
+            key={label}
+            onClick={() =>
+              setFilter((x) => x.filter((filter) => filter !== label))
+            }
+          >
+            {label}
+          </Chips.Removable>
         ))}
       </Chips>
     </div>
@@ -91,33 +84,3 @@ export const ToggleChip: StoryFn = () => {
     </Chips>
   );
 };
-
-// export const Small = () => {
-//   const [selected, setSelected] = useState<number[]>([]);
-//   return (
-//     <div className='colgap'>
-//       <Chips size='small'>
-//         {options.map((c, y) => (
-//           <Chips.Removable key={y}>{c}</Chips.Removable>
-//         ))}
-//       </Chips>
-//       <Chips size='small'>
-//         {options.map((c, y) => (
-//           <Chips.Toggle
-//             selected={selected.includes(y)}
-//             onClick={() =>
-//               setSelected(
-//                 selected.includes(y)
-//                   ? selected.filter((x) => x !== y)
-//                   : [...selected, y],
-//               )
-//             }
-//             key={y}
-//           >
-//             {c}
-//           </Chips.Toggle>
-//         ))}
-//       </Chips>
-//     </div>
-//   );
-// };

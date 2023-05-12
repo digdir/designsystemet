@@ -8,9 +8,10 @@ import classes from './Chips.module.css';
 
 export interface ToggleChipsProps
   extends React.HTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  onClick?: () => void;
-  size?: string;
+  children: string;
+  /**
+   * Toggles aria-pressed and visual-changes
+   */
   selected?: boolean;
 }
 
@@ -19,35 +20,24 @@ export type ToggleChipType = React.ForwardRefExoticComponent<
 >;
 
 const ToggleChip: ToggleChipType = forwardRef(
-  ({ children, className, onClick, ...rest }, ref) => {
-    const [selected, setSelectedState] = useState(false);
-
-    const onClickFunctions = () => {
-      selected ? setSelectedState(false) : setSelectedState(true);
-      () => onClick;
-    };
+  ({ className, children, selected, ...rest }, ref) => {
     return (
       <li>
         <button
           ref={ref}
           {...rest}
-          onClick={() => onClickFunctions()}
           className={cn(
             className,
             classes.chip,
             classes.toggle,
-            classes.buttonText,
             selected && classes.active,
           )}
+          aria-pressed={selected}
         >
-          <div className={classes.content}>
+          <div className={cn(classes.content)}>
             {selected && (
-              <span className={cn(classes.checkmark)}>
-                <CheckmarkIcon
-                  title='a11y-title'
-                  fontSize='20px'
-                  className={classes.icon}
-                />
+              <span className={classes.checkmark}>
+                <CheckmarkIcon aria-hidden />
               </span>
             )}
             <div>{children}</div>

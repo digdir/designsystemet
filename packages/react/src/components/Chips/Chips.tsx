@@ -23,12 +23,16 @@ export const chipsSize = ['xsmall', 'small'] as const;
 type ChipsSize = typeof chipsSize[number];
 
 export interface ChipsProps extends React.HTMLAttributes<HTMLUListElement> {
-  size?: ChipsSize;
   children: React.ReactNode;
+  /**
+   * Changes padding and font-sizes.
+   * @default small
+   */
+  size?: ChipsSize;
 }
 
 export const Chips = forwardRef<HTMLUListElement, ChipsProps>(
-  ({ className, size = 'xsmall', children, ...rest }, ref) => (
+  ({ className, size = 'small', children, ...rest }, ref) => (
     <ul
       {...rest}
       ref={ref}
