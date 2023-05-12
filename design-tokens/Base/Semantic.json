@@ -583,7 +583,21 @@
         "type": "typography"
       }
     },
-    "body": {
+    "paragraph": {
+      "large": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.500}",
+          "fontSize": "{font-size.f1}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
       "medium": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
@@ -612,7 +626,35 @@
         },
         "type": "typography"
       },
+      "xsmall": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.500}",
+          "fontSize": "{font-size.f-2}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
       "short": {
+        "large": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.300}",
+            "fontSize": "{font-size.f1}",
+            "letterSpacing": "{letterSpacing.0}",
+            "paragraphSpacing": "{paragraphSpacing.0}",
+            "paragraphIndent": "{paragraphIndent.0}",
+            "textCase": "{textCase.none}",
+            "textDecoration": "{textDecoration.none}"
+          },
+          "type": "typography"
+        },
         "medium": {
           "value": {
             "fontFamily": "{fontFamilies.inter}",
@@ -640,10 +682,38 @@
             "textDecoration": "{textDecoration.none}"
           },
           "type": "typography"
+        },
+        "xsmall": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.300}",
+            "fontSize": "{font-size.f-2}",
+            "letterSpacing": "{letterSpacing.0}",
+            "paragraphSpacing": "{paragraphSpacing.0}",
+            "paragraphIndent": "{paragraphIndent.0}",
+            "textCase": "{textCase.none}",
+            "textDecoration": "{textDecoration.none}"
+          },
+          "type": "typography"
         }
       }
     },
     "label": {
+      "large": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f1}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
       "medium": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
@@ -664,6 +734,20 @@
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f-1}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
+      "xsmall": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f-2}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -796,83 +880,91 @@
       "type": "borderRadius"
     }
   },
-  "spacing": {
-    "xxxsmall": {
+  "spacing-all": {
+    "1": {
       "value": "{spacing.1}",
       "type": "spacing"
     },
-    "xxsmall": {
+    "2": {
       "value": "{spacing.2}",
       "type": "spacing"
     },
-    "xsmall": {
+    "3": {
       "value": "{spacing.3}",
       "type": "spacing"
     },
-    "small": {
+    "4": {
       "value": "{spacing.4}",
       "type": "spacing"
     },
-    "medium": {
+    "5": {
+      "value": "{spacing.5}",
+      "type": "spacing"
+    },
+    "6": {
       "value": "{spacing.6}",
       "type": "spacing"
     },
-    "large": {
+    "8": {
       "value": "{spacing.8}",
       "type": "spacing"
     },
-    "xlarge": {
+    "10": {
       "value": "{spacing.10}",
       "type": "spacing"
     },
-    "xxlarge": {
+    "12": {
       "value": "{spacing.12}",
       "type": "spacing"
     },
-    "xxxlarge": {
+    "14": {
       "value": "{spacing.14}",
       "type": "spacing"
     }
   },
-  "sizing": {
-    "xxxsmall": {
+  "sizing-all": {
+    "1": {
       "value": "{sizing.1}",
       "type": "sizing"
     },
-    "xxsmall": {
+    "2": {
       "value": "{sizing.2}",
       "type": "sizing"
     },
-    "xsmall": {
+    "3": {
       "value": "{sizing.3}",
       "type": "sizing"
     },
-    "small": {
+    "4": {
       "value": "{sizing.4}",
       "type": "sizing"
     },
-    "medium": {
+    "5": {
+      "value": "{sizing.5}",
+      "type": "sizing"
+    },
+    "6": {
       "value": "{sizing.6}",
       "type": "sizing"
     },
-    "large": {
+    "8": {
       "value": "{sizing.8}",
       "type": "sizing"
     },
-    "xlarge": {
+    "10": {
       "value": "{sizing.10}",
       "type": "sizing"
     },
-    "xxlarge": {
+    "12": {
       "value": "{sizing.12}",
       "type": "sizing"
     },
-    "xxxlarge": {
+    "14": {
       "value": "{sizing.14}",
       "type": "sizing"
     }
   },
-  "component-height": {
+  "component-mode-height": {
     "small": {
       "value": "{sizing.10}",
       "type": "sizing"

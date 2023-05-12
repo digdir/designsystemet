@@ -392,6 +392,11 @@
       "type": "spacing",
       "description": "16px"
     },
+    "5": {
+      "value": "{spacing.1}*5",
+      "type": "spacing",
+      "description": "16px"
+    },
     "6": {
       "value": "{spacing.1}*6",
       "type": "spacing",
@@ -456,6 +461,11 @@
     },
     "4": {
       "value": "{sizing.1}*4",
+      "type": "sizing",
+      "description": "16px"
+    },
+    "5": {
+      "value": "{sizing.1}*5",
       "type": "sizing",
       "description": "16px"
     },
