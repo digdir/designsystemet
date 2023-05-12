@@ -2,6 +2,8 @@ import React, { useId } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
+import utilityClasses from '../../utils/utility.module.css';
+
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
 import { Icon } from './Icon';
@@ -62,7 +64,6 @@ export const InputWrapper = ({
         data-testid='InputWrapper'
         className={cn(classes.inputWrapper, classes[variant], {
           [classes.search]: isSearch,
-          [classes.withFocusEffect]: !noFocusEffect,
           [classes.withPadding]: !noPadding,
         })}
       >
@@ -71,7 +72,10 @@ export const InputWrapper = ({
           disabled={disabled}
         />
         {inputRenderer({
-          className: classes.field,
+          className: cn(
+            classes.field,
+            !noFocusEffect && utilityClasses.focusable,
+          ),
           hasIcon,
           inputId: givenOrRandomInputId,
           variant,

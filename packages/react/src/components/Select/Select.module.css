@@ -206,10 +206,6 @@
   background-color: transparent;
 }
 
-.select.multiple .deleteButton:focus-visible {
-  outline: var(--focus_visible-outline);
-}
-
 .select.multiple .deleteButton:hover:not(:disabled) {
   background-color: var(--delete_cross_box-color-hover);
 

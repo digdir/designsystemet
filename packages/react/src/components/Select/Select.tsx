@@ -12,6 +12,7 @@ import {
 } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utils';
 import { useFocusWithin } from '../../hooks/useFocusWithin';
+import utilClasses from '../../utils/utility.module.css';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
@@ -410,7 +411,7 @@ const Select = (props: SelectProps) => {
             {multiple && (
               <button
                 aria-label={props.deleteButtonLabel}
-                className={classes.deleteButton}
+                className={classes.deleteButton + ' ' + utilClasses.focusable}
                 disabled={!selectedValues.length || disabled}
                 onClick={() => removeAllSelections()}
                 type='button'
