@@ -1,6 +1,7 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
+
 import classes from '../Chips.module.css';
 
 export interface ToggleChipsProps
@@ -23,11 +24,9 @@ const ToggleChip: ToggleChipType = forwardRef(
         <button
           ref={ref}
           {...rest}
-          className={cn(
-            classes.chip,
-            classes.toggle,
-            selected && classes.active,
-          )}
+          className={cn(classes.chip, classes.toggle, {
+            [classes.active]: selected,
+          })}
           aria-pressed={selected}
         >
           <div className={cn(classes.content)}>

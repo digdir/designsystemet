@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import cn from 'classnames';
 
 import Toggle from './Toggle';
 import classes from './Toggle.module.css';
-import cn from 'classnames';
 
 const meta: Meta<typeof Toggle> = {
   title: 'Kjernekomponenter/Typography/Toggle',

@@ -1,4 +1,4 @@
-import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
