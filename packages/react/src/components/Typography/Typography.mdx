@@ -11,7 +11,9 @@ import * as typographyStories from './Typography.stories';
 import * as HeadingStories from './Heading/Heading.stories';
 import * as ParagraphStories from './Paragraph/Paragraph.stories';
 import * as LabelStories from './Label//Label.stories';
-import { Paragraph, Heading, Ingress, Detail, Label, ErrorMessage } from './';
+import * as IngressStories from './Ingress/Ingress.stories';
+import * as ErrorMessageStories from './ErrorMessage/ErrorMessage.stories';
+import * as DetailStories from './Detail/Detail.stories';
 
 <Meta of={typographyStories} />
 
@@ -46,21 +48,15 @@ Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et ne
 
 Ingressen kommer ofte mellom header- og body komponenten, og er ment å innlede en artikkel eller et avsnitt. Det er ofte et kort sammendrag av en større enhet, og skiller seg litt ut fra body ved at den har litt høyere linjehøyde og større font-størrelse.
 
-<Canvas>
-  <Story of={typographyStories.Ingresses} />
-</Canvas>
-
-<ArgsTable of={Ingress} />
+<Canvas of={IngressStories.Preview} />
+<Controls of={IngressStories.Preview} />
 
 ## Detail
 
 Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
 
-<Canvas>
-  <Story of={typographyStories.Details} />
-</Canvas>
-
-<ArgsTable of={Detail} />
+<Canvas of={DetailStories.Preview} />
+<Controls of={DetailStories.Preview} />
 
 ## Label
 
@@ -73,14 +69,11 @@ Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre lin
 
 Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
 
-<Canvas>
-  <Story of={typographyStories.ErrorMessages} />
-</Canvas>
+<Canvas of={ErrorMessageStories.Preview} />
+<Controls of={ErrorMessageStories.Preview} />
 
-<ArgsTable of={ErrorMessage} />
-
-## Example Text
+## Eksempel
 
 <Canvas>
-  <Story of={typographyStories.ExampleText} />
+  <Story of={typographyStories.EksempelTekst} />
 </Canvas>

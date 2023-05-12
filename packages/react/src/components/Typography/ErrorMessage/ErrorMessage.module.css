@@ -1,5 +1,6 @@
 .errorMessage {
   margin: 0;
+  color: var(--fds-semantic-text-danger-default);
 }
 
 .errorMessage.spacing {

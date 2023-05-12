@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress, Detail, Label, ErrorMessage } from './';
+import { Paragraph, Heading, Ingress } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',
@@ -15,44 +15,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Ingresses: StoryFn<typeof Ingress> = () => (
-  <>
-    <Ingress size='large'>
-      Her kan du registrere nye virksomheter, som for eksempel
-      enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
-      samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
-      bruke denne tjenesten.
-    </Ingress>
-    <Ingress>
-      Her kan du registrere nye virksomheter, som for eksempel
-      enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
-      samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
-      bruke denne tjenesten.
-    </Ingress>
-  </>
-);
-
-export const Details: StoryFn<typeof Detail> = () => (
-  <Detail>En eller annen viktig detalj</Detail>
-);
-
-export const Labels: StoryFn<typeof Label> = () => (
-  <>
-    <Label>Skriv inn fødselsnummer. 11 tegn</Label>
-    <Label size='small'>Skriv inn fødselsnummer. 11 tegn</Label>
-  </>
-);
-
-export const ErrorMessages: StoryFn<typeof ErrorMessage> = () => (
-  <>
-    <ErrorMessage>En eller annen feilmeldings tekst</ErrorMessage>
-    <ErrorMessage size='small'>
-      En eller annen liten feilmeldings tekst
-    </ErrorMessage>
-  </>
-);
-
-export const ExampleText: StoryFn = () => (
+export const EksempelTekst: StoryFn = () => (
   <>
     <Heading
       level={1}
@@ -62,7 +25,7 @@ export const ExampleText: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Ingress>
+    <Ingress spacing>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
@@ -77,7 +40,7 @@ export const ExampleText: StoryFn = () => (
       Når skal du bruke skjemaet? (H2)
     </Heading>
 
-    <Paragraph>
+    <Paragraph spacing>
       Denne tjenesten kan du bruke for å melde opplysninger til
       Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
       Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
@@ -88,11 +51,15 @@ export const ExampleText: StoryFn = () => (
     <Heading
       level={3}
       size='medium'
+      spacing
     >
       Signering (H3)
     </Heading>
 
-    <Paragraph short>
+    <Paragraph
+      short
+      spacing
+    >
       Når du skal signere meldingen vil du motta en signeringsoppgave i
       meldingsboksen din i Altinn. Meldingen blir ikke sendt til behandling før
       alle har signert.
@@ -101,11 +68,12 @@ export const ExampleText: StoryFn = () => (
     <Heading
       level={4}
       size='small'
+      spacing
     >
       Krav om rolle for signering (H4)
     </Heading>
 
-    <Paragraph>
+    <Paragraph spacing>
       For å signere på vegne av en virksomhet, trenger du Altinn-rollen Signerer
       av Samordnet registermelding. Du kan se hvilke roller du har for en aktør
       på menypunktet Profil, Skjema og tjenester du har rettighet til. Om du
@@ -116,11 +84,15 @@ export const ExampleText: StoryFn = () => (
     <Heading
       level={5}
       size='xsmall'
+      spacing
     >
       Personvern (H5)
     </Heading>
 
-    <Paragraph short>
+    <Paragraph
+      short
+      spacing
+    >
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi
       behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
     </Paragraph>
