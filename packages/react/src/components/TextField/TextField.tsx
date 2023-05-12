@@ -14,14 +14,23 @@ import { InputWrapper } from '../_InputWrapper';
 import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
 
 export type TextFieldProps = {
+  /** The maximum character limit for the text field, please see the `characterLimit` prop from the `Inputwrapper` component. */
   characterLimit?: CharacterLimit;
+  /** The default value for the text field. */
   defaultValue?: string | number;
+  /** The formatting options for the text field. */
   formatting?: TextFieldFormatting;
+  /** Specifies whether the value of the text field is valid. */
   isValid?: boolean;
+  /** The label for the text field. */
   label?: string;
+  /** Whether the text field is read-only. */
   readOnly?: boolean | ReadOnlyVariant_;
+  /** The value of the text field. */
   value?: string;
+  /** Specifies whether the text field is disabled. */
   disabled?: boolean;
+  /** Specifies whether the text field is required. */
   required?: boolean;
 } & Omit<
   NumericFormatProps | PatternFormatProps,

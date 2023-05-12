@@ -34,10 +34,10 @@ export type InputWrapperProps = {
   noFocusEffect?: boolean;
   noPadding?: boolean;
   readOnly?: boolean | ReadOnlyVariant_;
-  /*
-   * The characterLimit function calculates the remaining characters, and it is your responsibility as the consumer to provide a reasonable message to the user.
-   * You provide the message as a function (label function) that takes the remaining character count as a parameter and returns a string (message).
-   * Ensure to describe the max-count for screen readers by providing a srLabel string with that information.
+  /**
+   *  The characterLimit function calculates remaining characters.
+   * Provide a label function that takes count as parameter and returns a message.
+   *  Use srLabel to describe max count for screen readers.
    */
   characterLimit?: CharacterLimit;
   value?: string | number | readonly string[] | undefined;
@@ -117,15 +117,15 @@ export const InputWrapper = ({
 };
 
 type CharacterCounterProps = {
-  /* The message indicating the remaining character limit. */
+  /** The message indicating the remaining character limit. */
   label: (count: number) => string;
-  /*The description of the maximum character limit for screen readers.*/
+  /** The description of the maximum character limit for screen readers. */
   srLabel: string;
-  /* maxCount - The maximum allowed character count. */
+  /** The maximum allowed character count. */
   maxCount: number;
-  /* value - the current value */
+  /** The current value. */
   value: string;
-  /*The ID of the element that describes the maximum character limit for accessibility purposes */
+  /** The ID of the element that describes the maximum character limit for accessibility purposes. */
   ariaDescribedById: string;
 };
 const CharacterCounter = ({

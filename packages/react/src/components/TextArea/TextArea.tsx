@@ -7,17 +7,18 @@ import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
 import classes from './TextArea.module.css';
 
 export type TextAreaProps = {
-  /* Whether the textarea value is valid.*/
+  /** Whether the textarea value is valid. */
   isValid?: boolean;
-  /*Whether the textarea is read-only*/
+  /** Whether the textarea is read-only. */
   readOnly?: boolean | ReadOnlyVariant_;
-  /*The resize behavior of the text area.*/
+  /** The resize behavior of the text area. */
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
-  /* The configuration for the character limit display. */
+  /** The maximum character limit for the text area, please see the `characterLimit` prop from the `Inputwrapper` component. */
   characterLimit?: CharacterLimit;
-  /* Label for the textarea */
+  /** Label for the textarea. */
   label?: string;
 } & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'readOnly'>;
+
 export const TextArea = forwardRef(
   (
     {
