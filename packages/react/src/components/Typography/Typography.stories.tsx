@@ -151,12 +151,12 @@ export const ExampleText: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Label>
+    <Ingress>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
       bruke denne tjenesten.
-    </Label>
+    </Ingress>
 
     <Heading
       level={2}
