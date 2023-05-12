@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ForwardedRef, ChangeEvent } from 'react';
+import type { ForwardedRef, ChangeEvent } from 'react';
 import React, { forwardRef, useState } from 'react';
 import cn from 'classnames';
 import type {
@@ -11,10 +11,10 @@ import { NumericFormat, PatternFormat } from 'react-number-format';
 
 import { isNumericFormat, isPatternFormat } from '../../utils';
 import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant_, CharLimit } from '../_InputWrapper';
+import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
 
 export type TextFieldProps = {
-  charLimit?: CharLimit;
+  characterLimit?: CharacterLimit;
   defaultValue?: string | number;
   formatting?: TextFieldFormatting;
   isValid?: boolean;
@@ -23,7 +23,10 @@ export type TextFieldProps = {
   value?: string;
   disabled?: boolean;
   required?: boolean;
-} & HTMLAttributes<HTMLInputElement>;
+} & Omit<
+  NumericFormatProps | PatternFormatProps,
+  'readOnly' | 'value' | 'defaultValue'
+>;
 
 export type TextFieldFormatting = {
   align?: 'right' | 'center' | 'left';
@@ -55,7 +58,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       formatting,
       label,
       value,
-      charLimit,
+      characterLimit,
       ...rest
     }: TextFieldProps,
     ref: ForwardedRef<HTMLInputElement>,
@@ -95,7 +98,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         readOnly={readOnly}
         label={label}
         inputId={id}
-        charLimit={charLimit}
+        characterLimit={characterLimit}
         inputRenderer={({ className, variant, inputId, describedBy }) => {
           const commonProps = {
             id: inputId,

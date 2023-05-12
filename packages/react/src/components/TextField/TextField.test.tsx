@@ -29,7 +29,7 @@ describe('TextField', () => {
 
     it('should have max allowed characters label for screen readers', () => {
       render({
-        charLimit: {
+        characterLimit: {
           maxCount: 10,
           srLabel: 'Max 10 characters is allowed',
           label: (count: number) => `${count} characters remaining`,
@@ -43,7 +43,7 @@ describe('TextField', () => {
       const user = userEvent.setup();
       render({
         label: 'First name',
-        charLimit: {
+        characterLimit: {
           maxCount: 10,
           label: (count: number) => `${count} characters remaining`,
           srLabel: 'characters remaining',

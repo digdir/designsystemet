@@ -98,10 +98,10 @@
   padding: 0;
 }
 
-.charLimitLabel {
+.characterLimitLabel {
   margin-top: 4px;
 }
 
-.charLimitExceeded {
+.characterLimitExceeded {
   color: var(--fds-semantic-text-danger-default);
 }

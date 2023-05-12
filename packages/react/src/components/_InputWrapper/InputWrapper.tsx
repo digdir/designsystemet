@@ -18,7 +18,7 @@ type InputRendererProps = {
   describedBy?: string;
 };
 
-export type CharLimit = Omit<
+export type CharacterLimit = Omit<
   CharacterCounterProps,
   'ariaDescribedById' | 'value'
 >;
@@ -35,11 +35,11 @@ export type InputWrapperProps = {
   noPadding?: boolean;
   readOnly?: boolean | ReadOnlyVariant_;
   /*
-   * The charLimit function calculates the remaining characters, and it is your responsibility as the consumer to provide a reasonable message to the user.
+   * The characterLimit function calculates the remaining characters, and it is your responsibility as the consumer to provide a reasonable message to the user.
    * You provide the message as a function (label function) that takes the remaining character count as a parameter and returns a string (message).
    * Ensure to describe the max-count for screen readers by providing a srLabel string with that information.
    */
-  charLimit?: CharLimit;
+  characterLimit?: CharacterLimit;
   value?: string | number | readonly string[] | undefined;
 };
 
@@ -54,19 +54,19 @@ export const InputWrapper = ({
   noFocusEffect,
   noPadding,
   readOnly = false,
-  charLimit,
+  characterLimit,
   value,
 }: InputWrapperProps) => {
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
 
-  const charLimitDescriptionId = useId();
+  const characterLimitDescriptionId = useId();
   const currentInputValue = value ? value.toString() : '';
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
-    isValid: charLimit
-      ? currentInputValue.length < charLimit.maxCount && isValid
+    isValid: characterLimit
+      ? currentInputValue.length < characterLimit.maxCount && isValid
       : isValid,
     readOnly,
   });
@@ -101,15 +101,15 @@ export const InputWrapper = ({
             hasIcon,
             inputId: givenOrRandomInputId,
             variant,
-            describedBy: charLimitDescriptionId,
+            describedBy: characterLimitDescriptionId,
           })}
         </span>
       </span>
-      {charLimit && (
+      {characterLimit && (
         <CharacterCounter
-          {...charLimit}
+          {...characterLimit}
           value={currentInputValue}
-          ariaDescribedById={charLimitDescriptionId}
+          ariaDescribedById={characterLimitDescriptionId}
         />
       )}
     </div>
@@ -148,8 +148,8 @@ const CharacterCounter = ({
       </span>
       <div
         className={[
-          classes.charLimitLabel,
-          hasExceededLimit ? classes.charLimitExceeded : '',
+          classes.characterLimitLabel,
+          hasExceededLimit ? classes.characterLimitExceeded : '',
         ].join(' ')}
         aria-live={hasExceededLimit ? 'polite' : 'off'}
       >

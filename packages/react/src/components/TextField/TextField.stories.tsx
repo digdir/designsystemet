@@ -67,9 +67,12 @@ export const AntallTegnIgjenASkrive: Story = createTemplate(
   'Antall tegn igjen å skrive',
   {
     label: 'Kommentar',
-    charLimit: {
+    characterLimit: {
       maxCount: 10,
-      label: (count: number) => `${count} tegn igjen`,
+      label: (count: number) =>
+        count >= 0
+          ? `Du har ${count} tegn igjen`
+          : `Du har ${Math.abs(count)} tegn for mye`,
       srLabel: 'Tekstområdet har plass til 10 tegn.',
     },
   },

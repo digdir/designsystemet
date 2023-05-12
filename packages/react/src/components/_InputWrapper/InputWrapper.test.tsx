@@ -165,7 +165,7 @@ describe('InputWrapper', () => {
     it('should support screen reader max-char description', () => {
       render({
         label: 'Other',
-        charLimit: {
+        characterLimit: {
           maxCount: 2,
           label: (count: number) => `${count} signs left`,
           srLabel: '2 signs allowed',
@@ -181,7 +181,7 @@ describe('InputWrapper', () => {
       render({
         label: 'Comment',
         value: 'Hello',
-        charLimit: {
+        characterLimit: {
           maxCount: 2,
           label: (count: number) => `${count} signs left`,
           srLabel: '2 signs allowed',

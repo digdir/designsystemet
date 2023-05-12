@@ -2,7 +2,7 @@ import React, { forwardRef, useId, useState } from 'react';
 import type { ChangeEvent, ForwardedRef, TextareaHTMLAttributes } from 'react';
 
 import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant_, CharLimit } from '../_InputWrapper';
+import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
 
 import classes from './TextArea.module.css';
 
@@ -14,10 +14,10 @@ export type TextAreaProps = {
   /*The resize behavior of the text area.*/
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
   /* The configuration for the character limit display. */
-  charLimit?: CharLimit;
+  characterLimit?: CharacterLimit;
   /* Label for the textarea */
   label?: string;
-} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'readOnly'>;
 export const TextArea = forwardRef(
   (
     {
@@ -26,7 +26,7 @@ export const TextArea = forwardRef(
       readOnly = false,
       resize = 'none',
       label,
-      charLimit,
+      characterLimit,
       value,
       onChange,
       ...rest
@@ -52,7 +52,7 @@ export const TextArea = forwardRef(
         value={currentInputValue}
         disabled={disabled}
         inputId={textAreaId}
-        charLimit={charLimit}
+        characterLimit={characterLimit}
         inputRenderer={({ className, inputId, describedBy }) => {
           return (
             <textarea
