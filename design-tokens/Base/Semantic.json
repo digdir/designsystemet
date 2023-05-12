@@ -880,7 +880,7 @@
       "type": "borderRadius"
     }
   },
-  "spacing-all": {
+  "spacing": {
     "1": {
       "value": "{spacing_core.1}",
       "type": "spacing",
@@ -932,7 +932,7 @@
       "description": "56px"
     }
   },
-  "sizing-all": {
+  "sizing": {
     "1": {
       "value": "{sizing_core.1}",
       "type": "sizing",
