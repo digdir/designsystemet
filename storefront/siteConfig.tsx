@@ -20,6 +20,10 @@ export const SiteConfig = {
               name: 'Roadmap',
               url: 'grunnleggende/introduksjon/roadmap',
             },
+            {
+              name: 'Slack',
+              url: 'grunnleggende/introduksjon/slack',
+            },
           ],
         },
         {
@@ -124,7 +128,7 @@ export const SiteConfig = {
           children: [
             {
               name: 'Slik skriver du',
-              url: 'god-praksis/innholdsarbeid/slik-skriver-du',
+              url: 'god-praksis/innholdsarbeid/skriverad',
             },
             {
               name: 'Skumlesing',
