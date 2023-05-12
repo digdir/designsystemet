@@ -14,7 +14,11 @@ import { InputWrapper } from '../_InputWrapper';
 import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
 
 export type TextFieldProps = {
-  /** The maximum character limit for the text field, please see the `characterLimit` prop from the `Inputwrapper` component. */
+  /**
+   *  The characterLimit function calculates remaining characters.
+   *  Provide a `label` function that takes count as parameter and returns a message.
+   *  Use `srLabel` to describe `maxCount` for screen readers.
+   */
   characterLimit?: CharacterLimit;
   /** The default value for the text field. */
   defaultValue?: string | number;

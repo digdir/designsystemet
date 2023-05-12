@@ -13,7 +13,11 @@ export type TextAreaProps = {
   readOnly?: boolean | ReadOnlyVariant_;
   /** The resize behavior of the text area. */
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
-  /** The maximum character limit for the text area, please see the `characterLimit` prop from the `Inputwrapper` component. */
+  /**
+   *  The characterLimit function calculates remaining characters.
+   *  Provide a `label` function that takes count as parameter and returns a message.
+   *  Use `srLabel` to describe `maxCount` for screen readers.
+   */
   characterLimit?: CharacterLimit;
   /** Label for the textarea. */
   label?: string;
