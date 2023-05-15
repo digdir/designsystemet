@@ -9,7 +9,7 @@ export type AccordionProps = {
   color?: 'neutral' | 'subtle' | 'primary' | 'secondary' | 'tertiary';
   /** Show border */
   border?: boolean;
-  /** Instances of Accordion.Item */
+  /** Instances of `Accordion.Item` */
   children: React.ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 

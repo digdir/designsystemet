@@ -1,41 +1,32 @@
 import cl from 'classnames';
+import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useState, useId } from 'react';
 
 import styles from './Accordion.module.css';
 
-export interface AccordionItemProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Content in Accordion.Item
-   * Should include one Accordion.Header and one Accordion.Content
-   */
+export type AccordionItemProps = {
+  /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children: React.ReactNode;
   /**
-   * Controlled open-state
+   * Controls open-state.
+   *
    * Using this removes automatic control of open-state
    */
   open?: boolean;
-  /**
-   * Defaults the accordion to open if not controlled
-   * @default false
-   */
+  /**  Defaults the accordion to open if not controlled */
   defaultOpen?: boolean;
-}
+} & HTMLAttributes<HTMLDivElement>;
 
-export type AccordionItemType = React.ForwardRefExoticComponent<
-  AccordionItemProps & React.RefAttributes<HTMLDivElement>
->;
-
-export interface AccordionItemContextProps {
+export type AccordionItemContextProps = {
   open: boolean;
   toggleOpen: () => void;
   contentId: string;
-}
+};
 
 export const AccordionItemContext =
   createContext<AccordionItemContextProps | null>(null);
 
-const AccordionItem: AccordionItemType = forwardRef(
+export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
     const [internalOpen, setInternalOpen] = useState<boolean>(defaultOpen);
     const contentId = useId();
@@ -65,5 +56,3 @@ const AccordionItem: AccordionItemType = forwardRef(
     );
   },
 );
-
-export default AccordionItem;
