@@ -97,3 +97,11 @@
   font-weight: var(--component-label-font_weight-default);
   padding: 0;
 }
+
+.characterLimitLabel {
+  margin-top: 4px;
+}
+
+.characterLimitExceeded {
+  color: var(--fds-semantic-text-danger-default);
+}
