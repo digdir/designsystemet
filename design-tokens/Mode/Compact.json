@@ -204,22 +204,6 @@
         "type": "typography"
       }
     },
-    "detail": {
-      "medium": {
-        "value": {
-          "fontFamily": "{fontFamilies.inter}",
-          "fontWeight": "{fontWeights.medium}",
-          "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-2}",
-          "letterSpacing": "{letterSpacing.0}",
-          "paragraphSpacing": "{paragraphSpacing.0}",
-          "paragraphIndent": "{paragraphIndent.0}",
-          "textCase": "{textCase.none}",
-          "textDecoration": "{textDecoration.none}"
-        },
-        "type": "typography"
-      }
-    },
     "interactive": {
       "large": {
         "value": {
