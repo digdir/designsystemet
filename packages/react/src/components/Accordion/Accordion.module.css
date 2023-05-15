@@ -1,15 +1,15 @@
 .accordion {
   --fdsc-accordion-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-border-radius: 3px;
-  --fdsc-accordion-header-padding-top: var(--fds-spacing-small);
-  --fdsc-accordion-header-padding-right: var(--fds-spacing-medium);
-  --fdsc-accordion-header-padding-bottom: var(--fds-spacing-small);
-  --fdsc-accordion-header-padding-left: var(--fds-spacing-medium);
+  --fdsc-accordion-header-padding-top: var(--fds-spacing-4);
+  --fdsc-accordion-header-padding-right: var(--fds-spacing-5);
+  --fdsc-accordion-header-padding-bottom: var(--fds-spacing-4);
+  --fdsc-accordion-header-padding-left: var(--fds-spacing-5);
   --fdsc-accordion-header-bg-neutral: var(--fds-semantic-surface-neutral-default);
   --fdsc-accordion-header-bg-neutral-active: var(--fds-semantic-surface-action-no_fill-hover);
   --fdsc-accordion-header-bg-brand-active: var(--fds-semantic-surface-neutral-subtle-hover);
   --fdsc-accordion-header-bg-subtle: var(--fds-semantic-surface-neutral-subtle);
-  --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);  
+  --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);
   --fdsc-accordion-header-bg-primary: var(--fds-semantic-surface-primary-primary);
   --fdsc-accordion-header-bg-primary-hover: var(--fds-semantic-surface-primary-primary-hover);
   --fdsc-accordion-header-bg-secondary: var(--fds-semantic-surface-secondary-secondary);
@@ -37,7 +37,7 @@
 }
 
 .content {
-  padding: var(--fds-spacing-medium, 1rem);
+  padding: var(--fds-spacing-5, 1rem);
   background-color: #ffffff50;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -56,8 +56,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: var(--fds-sizing-small);
-  gap: var(--fds-spacing-small);
+  font-size: var(--fds-sizing-4);
+  gap: var(--fds-spacing-4);
   margin: 0;
   text-align: left;
   cursor: pointer;
@@ -111,8 +111,8 @@
   border-top: 0;
 }
 
-.accordion.primary > .item:not(:first-child) > .header > button, 
-.accordion.secondary > .item:not(:first-child) > .header > button, 
+.accordion.primary > .item:not(:first-child) > .header > button,
+.accordion.secondary > .item:not(:first-child) > .header > button,
 .accordion.tertiary > .item:not(:first-child) > .header > button {
   border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
 }
