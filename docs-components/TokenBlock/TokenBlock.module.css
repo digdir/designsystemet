@@ -8,6 +8,6 @@
   margin-bottom: 2rem !important;
 }
 
-p {
+.desc > * p {
   font: var(--fds-typography-paragraph-short-small) !important;
 }

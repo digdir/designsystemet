@@ -13,6 +13,6 @@
   font: var(--fds-typography-heading-xxsmall) !important;
 }
 
-.desc  {
+.desc > * p  {
   font: var(--fds-typography-paragraph-short-small) !important;
 }
