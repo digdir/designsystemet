@@ -6,7 +6,7 @@ import { TeaserCard } from '../../components/TeaserCard/TeaserCard';
 import { Container } from '../../components/Container/Container';
 import { ImageIcon } from '@navikt/aksel-icons';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
-import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { BranchingIcon } from '@navikt/aksel-icons';
 
 export default ({ children, menu }) => (
   <NavPageLayout
@@ -15,13 +15,13 @@ export default ({ children, menu }) => (
       imageSection: {
         title: 'God praksis',
         description:
-          'Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her. Har du forslag til artikler eller innsikt til denne siden?',
+          'Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her.',
         src: '/img/people-table.svg',
         backgroundColor: 'blue',
         link: {
-          text: 'Ta kontakt med oss på e-post',
-          prefix: <EnvelopeClosedIcon fontSize={26} />,
-          href: '#',
+          text: 'Bidra med innhold',
+          prefix: <BranchingIcon fontSize={26} />,
+          href: 'https://github.com/digdir/designsystem/tree/main/storefront/pages/god-praksis',
         },
       },
     }}
@@ -35,7 +35,7 @@ export default ({ children, menu }) => (
 
 ## Brukerinnsikt
 
-Designressurser og kunnskapsdeling rundt brukerinnsikt. Se også Navs [artikler om brukerinnsiktnnsikt](https://aksel.nav.no/god-praksis/brukerinnsikt).
+Designressurser og kunnskapsdeling rundt brukerinnsikt. Se også Navs [artikler om brukerinnsikt](https://aksel.nav.no/god-praksis/brukerinnsikt).
 
 <Grid>
   <TeaserCard
