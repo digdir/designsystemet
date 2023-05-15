@@ -1,4 +1,4 @@
-import cl from 'classnames';
+import cn from 'classnames';
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
@@ -34,7 +34,7 @@ export const AccordionContent = forwardRef<
         as='div'
         size='small'
         ref={ref}
-        className={cl(classes.content, className)}
+        className={cn(classes.content, className)}
       >
         {children}
       </Paragraph>

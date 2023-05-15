@@ -12,6 +12,11 @@ Accordion er en vertikalt stablet gruppe interaktive overskrifter som hver inneh
 en seksjon av innholdet. Overskriftene fungerer som kontroller som lar brukere vise eller skjule de tilknyttede seksjonene med innhold.
 Accordion brukes ofte for å redusere behovet for å skrolle ned når man presenterer flere seksjoner med innhold på en enkelt side.
 
+## Props
+
+<Primary />
+<Controls />
+
 ## Bruk
 
 ```tsx
@@ -20,26 +25,17 @@ import { Accordion } from '@digdir/design-system-react';
 <Accordion>
   <Accordion.Item>
     <Accordion.Header>Accordion header text</Accordion.Header>
-    <Content />
+    <Accordion.Content>Accordion content</Accordion.Content>
   </Accordion.Item>
   <Accordion.Item>
     <Accordion.Header>Accordion header text</Accordion.Header>
-    <Content />
+    <Accordion.Content>Accordion content</Accordion.Content>
   </Accordion.Item>
 </Accordion>;
 ```
-
-## Props
-
-<Primary />
-<Controls />
 
 ## Varianter
 
 ### Kontrollert
 
 <Canvas of={AccordionStories.Controlled} />
-
-### Ikke kontrollert
-
-<Canvas of={AccordionStories.Uncontrolled} />

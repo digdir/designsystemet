@@ -9,7 +9,7 @@ import classes from './Accordion.module.css';
 import { AccordionItemContext } from './AccordionItem';
 
 export type AccordionHeaderProps = {
-  /** Heading level */
+  /** Heading level. Use this to make sure the heading is correct according to you page heading levels */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Handle when clicked on header */
   onHeaderClick?: MouseEventHandler<HTMLButtonElement> | undefined;
