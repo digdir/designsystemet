@@ -13,7 +13,7 @@ export type ErrorMessageProps = {
   spacing?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-/** Renders error message text. Control text styles with props */
+/** Use `ErrorMessage` to display text as error message. */
 export const ErrorMessage: OverridableComponent<
   ErrorMessageProps,
   HTMLParagraphElement

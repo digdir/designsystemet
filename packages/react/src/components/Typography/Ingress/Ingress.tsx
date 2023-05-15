@@ -13,7 +13,7 @@ export type IngressProps = {
   spacing?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-/** Renders ingress text. Control text styles with props */
+/** Use `Ingress` to display text as ingress. */
 export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
   forwardRef(
     (

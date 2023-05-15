@@ -15,7 +15,7 @@ export type ParagraphProps = {
   short?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-/** Renders body text. Control text styles with props */
+/** Use `Paragraph` to display text with paragraph text styles. */
 export const Paragraph: OverridableComponent<
   ParagraphProps,
   HTMLParagraphElement

@@ -13,7 +13,7 @@ export type LabelProps = {
   spacing?: boolean;
 } & LabelHTMLAttributes<HTMLLabelElement>;
 
-/** Renders label text. Control text styles with props */
+/** Use `Label` for labels. */
 export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
   forwardRef(
     (

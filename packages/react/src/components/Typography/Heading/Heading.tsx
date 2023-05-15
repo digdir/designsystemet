@@ -15,7 +15,7 @@ export type HeadingProps = {
   spacing?: boolean;
 } & HTMLAttributes<HTMLHeadingElement>;
 
-/** Renders heading elements, h1-6 */
+/** Use `Heading` to render h1-6 elements with heading text styles.  */
 export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
   forwardRef(
     (
