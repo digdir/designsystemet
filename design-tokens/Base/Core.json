@@ -402,6 +402,11 @@
       "type": "spacing",
       "description": "24px"
     },
+    "7": {
+      "value": "{spacing_core.1}*7",
+      "type": "spacing",
+      "description": "28px"
+    },
     "8": {
       "value": "{spacing_core.1}*8",
       "type": "spacing",
@@ -473,6 +478,11 @@
       "value": "{sizing_core.1}*6",
       "type": "sizing",
       "description": "24px"
+    },
+    "7": {
+      "value": "{sizing_core.1}*7",
+      "type": "sizing",
+      "description": "28px"
     },
     "8": {
       "value": "{sizing_core.1}*8",
