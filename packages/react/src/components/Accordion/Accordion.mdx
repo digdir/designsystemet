@@ -1,6 +1,14 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgTypes,
+} from '@storybook/blocks';
 import { BetaBlock, TokenBlock } from '../../../../../docs-components';
 import * as AccordionStories from './Accordion.stories';
+import { Accordion } from '.';
 
 <Meta of={AccordionStories} />
 
@@ -16,6 +24,18 @@ Accordion brukes ofte for å redusere behovet for å skrolle ned når man presen
 
 <Primary />
 <Controls />
+
+### Accordion.Item
+
+<ArgTypes of={Accordion.Item} />
+
+### Accordion.Header
+
+<ArgTypes of={Accordion.Header} />
+
+### Accordion.Content
+
+<ArgTypes of={Accordion.Content} />
 
 ## Bruk
 

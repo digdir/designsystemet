@@ -5,8 +5,6 @@ import React, { createContext, forwardRef, useState, useId } from 'react';
 import styles from './Accordion.module.css';
 
 export type AccordionItemProps = {
-  /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
-  children: React.ReactNode;
   /**
    * Controls open-state.
    *
@@ -15,6 +13,8 @@ export type AccordionItemProps = {
   open?: boolean;
   /**  Defaults the accordion to open if not controlled */
   defaultOpen?: boolean;
+  /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
+  children: React.ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
 export type AccordionItemContextProps = {

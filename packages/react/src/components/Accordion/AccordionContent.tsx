@@ -8,7 +8,10 @@ import { Paragraph } from '../';
 import classes from './Accordion.module.css';
 import { AccordionItemContext } from './AccordionItem';
 
-export type AccordionContentProps = HTMLAttributes<HTMLDivElement>;
+export type AccordionContentProps = {
+  /** Content inside `Accordion.Content`*/
+  children: React.ReactNode;
+} & HTMLAttributes<HTMLDivElement>;
 
 export const AccordionContent = forwardRef<
   HTMLDivElement,

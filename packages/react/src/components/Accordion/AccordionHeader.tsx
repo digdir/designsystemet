@@ -13,6 +13,8 @@ export type AccordionHeaderProps = {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Handle when clicked on header */
   onHeaderClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  /** Heading text */
+  children: React.ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
 export const AccordionHeader = forwardRef<
