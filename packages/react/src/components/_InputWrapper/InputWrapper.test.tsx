@@ -122,16 +122,24 @@ describe('InputWrapper', () => {
       expect(classList).not.toContain('withPadding');
     });
 
-    it('Renders with focus-effect class by default', () => {
-      render();
-      const { classList } = screen.getByTestId('InputWrapper');
-      expect(classList).toContain('withFocusEffect');
+    it('Calls inputRenderer with focus-effect class by default', () => {
+      const inputRenderer = jest.fn();
+      render({ inputRenderer });
+      expect(inputRenderer).toHaveBeenCalledWith(
+        expect.objectContaining({
+          className: expect.stringContaining('focusable'), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        }),
+      );
     });
 
-    it('Renders without focus-effect class when "noFocusEffect" property is true', () => {
-      render({ noFocusEffect: true });
-      const { classList } = screen.getByTestId('InputWrapper');
-      expect(classList).not.toContain('withFocusEffect');
+    it('Calls inputRenderer without focus-effect class when "noFocusEffect" property is true', () => {
+      const inputRenderer = jest.fn();
+      render({ inputRenderer, noFocusEffect: true });
+      expect(inputRenderer).toHaveBeenCalledWith(
+        expect.objectContaining({
+          className: expect.not.stringContaining('focusable'), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        }),
+      );
     });
   });
 

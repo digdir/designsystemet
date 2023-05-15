@@ -2,7 +2,7 @@ import React, { useId } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
-import utilClasses from '../../utils/utility.module.css';
+import utilityClasses from '../../utils/utility.module.css';
 
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
@@ -44,7 +44,7 @@ export type InputWrapperProps = {
 };
 
 export const InputWrapper = ({
-  className,
+  className = '',
   disabled = false,
   inputId,
   inputRenderer,
@@ -88,7 +88,6 @@ export const InputWrapper = ({
           data-testid='InputWrapper'
           className={cn(classes.inputWrapper, classes[variant], {
             [classes.search]: isSearch,
-            [classes.withFocusEffect]: !noFocusEffect,
             [classes.withPadding]: !noPadding,
           })}
         >
@@ -97,7 +96,11 @@ export const InputWrapper = ({
             disabled={disabled}
           />
           {inputRenderer({
-            className: `${classes.field} ${className || ''}`,
+            className: cn(
+              classes.field,
+              !noFocusEffect && utilityClasses.focusable,
+              className,
+            ),
             hasIcon,
             inputId: givenOrRandomInputId,
             variant,
@@ -141,7 +144,7 @@ const CharacterCounter = ({
   return (
     <>
       <span
-        className={utilClasses.visuallyHidden}
+        className={utilityClasses.visuallyHidden}
         id={ariaDescribedById}
       >
         {srLabel}
