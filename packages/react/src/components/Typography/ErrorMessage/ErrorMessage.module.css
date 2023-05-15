@@ -4,7 +4,7 @@
 }
 
 .errorMessage.spacing {
-  margin-bottom: var(--fds-spacing-medium);
+  margin-bottom: var(--fds-spacing-5);
 }
 
 .errorMessage.medium {

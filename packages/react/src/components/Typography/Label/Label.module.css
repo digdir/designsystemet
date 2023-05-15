@@ -1,9 +1,10 @@
 .label {
+  display: inline-block;
   margin: 0;
 }
 
 .spacing {
-  margin-bottom: var(--fds-spacing-medium);
+  margin-bottom: var(--fds-spacing-5);
 }
 
 .label.large {
