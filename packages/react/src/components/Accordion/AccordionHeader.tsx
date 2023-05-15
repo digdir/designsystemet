@@ -3,8 +3,7 @@ import cn from 'classnames';
 import type { MouseEventHandler } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
-import { Heading } from '../Typography/Heading';
-import { Paragraph } from '../Typography/Paragraph';
+import { Paragraph, Heading } from '../';
 
 import classes from './Accordion.module.css';
 import { AccordionItemContext } from './AccordionItem';
