@@ -25,3 +25,7 @@
 .heading.xsmall {
   font: var(--fds-typography-heading-xsmall);
 }
+
+.heading.xxsmall {
+  font: var(--fds-typography-heading-xxsmall);
+}

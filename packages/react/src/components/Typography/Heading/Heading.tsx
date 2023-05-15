@@ -10,7 +10,7 @@ export type HeadingProps = {
   /** Heading level. This will translate into any h1-6 level unless `as` is defined */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Changes text sizing */
-  size: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
+  size: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall' | 'xxsmall';
   /** Adds margin-bottom */
   spacing?: boolean;
 } & HTMLAttributes<HTMLHeadingElement>;
