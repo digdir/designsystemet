@@ -48,34 +48,19 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
   const [open2, setOpen2] = useState(false);
 
   return (
-    <div>
-      <Accordion>
-        <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Accordion header text
-          </Accordion.Header>
-          <Accordion.Content>Accordion content</Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item open={open2}>
-          <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
-            Accordion header text
-          </Accordion.Header>
-          <Accordion.Content>Accordion content</Accordion.Content>
-        </Accordion.Item>
-      </Accordion>
-    </div>
+    <Accordion>
+      <Accordion.Item open={open}>
+        <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+          Accordion header text
+        </Accordion.Header>
+        <Accordion.Content>Accordion content</Accordion.Content>
+      </Accordion.Item>
+      <Accordion.Item open={open2}>
+        <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
+          Accordion header text
+        </Accordion.Header>
+        <Accordion.Content>Accordion content</Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
   );
 };
-
-export const Uncontrolled: StoryFn<typeof Accordion> = (args) => (
-  <Accordion {...args}>
-    <Accordion.Item>
-      <Accordion.Header>Accordion header tex</Accordion.Header>
-      <Accordion.Content>Accordion content</Accordion.Content>
-    </Accordion.Item>
-    <Accordion.Item>
-      <Accordion.Header>Accordion header </Accordion.Header>
-      <Accordion.Content>Accordion content</Accordion.Content>
-    </Accordion.Item>
-  </Accordion>
-);
