@@ -1,46 +1,17 @@
-import cn from 'classnames';
+import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
+import cn from 'classnames';
 
 import classes from './Accordion.module.css';
-import type { AccordionItemType } from './AccordionItem';
-import AccordionItem from './AccordionItem';
-import type { AccordionContentType } from './AccordionContent';
-import AccordionContent from './AccordionContent';
-import type { AccordionHeaderType } from './AccordionHeader';
-import AccordionHeader from './AccordionHeader';
 
-interface AccordionComponent
-  extends React.ForwardRefExoticComponent<
-    AccordionProps & React.RefAttributes<HTMLDivElement>
-  > {
-  Item: AccordionItemType;
-  Header: AccordionHeaderType;
-  Content: AccordionContentType;
-}
-
-export const accordionColor = [
-  'neutral',
-  'subtle',
-  'primary',
-  'secondary',
-  'tertiary',
-] as const;
-type AccordionColor = typeof accordionColor[number];
-
-export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Accordion color
-   */
-  color?: AccordionColor;
-  /**
-   * Show border
-   */
+export type AccordionProps = {
+  /** Accordion background color */
+  color?: 'neutral' | 'subtle' | 'primary' | 'secondary' | 'tertiary';
+  /** Show border */
   border?: boolean;
-  /**
-   * Instances of Accordion.Item
-   */
+  /** Instances of Accordion.Item */
   children: React.ReactNode;
-}
+} & HTMLAttributes<HTMLDivElement>;
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   ({ border = false, color = 'neutral', className, ...rest }, ref) => (
@@ -57,10 +28,4 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       ref={ref}
     />
   ),
-) as AccordionComponent;
-
-Accordion.Header = AccordionHeader;
-Accordion.Content = AccordionContent;
-Accordion.Item = AccordionItem;
-
-export default Accordion;
+);
