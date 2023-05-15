@@ -1,8 +1,0 @@
-.detail {
-  font: var(--fds-typography-detail-medium);
-}
-
-.detail.spacing {
-  margin-bottom: var(--fds-spacing-5);
-}
-
