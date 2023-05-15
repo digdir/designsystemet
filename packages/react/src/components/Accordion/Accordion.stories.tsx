@@ -47,7 +47,11 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
   </Accordion>
 );
 
-Preview.args = { border: false };
+// Default values are selected in Controls
+Preview.args = {
+  border: false,
+  color: 'neutral',
+};
 
 export const Controlled: StoryFn<typeof Accordion> = () => {
   const [open, setOpen] = useState(false);
