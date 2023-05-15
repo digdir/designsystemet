@@ -1,0 +1,16 @@
+.ingress {
+  margin: 0;
+}
+
+.spacing {
+  margin-bottom: var(--fds-spacing-5);
+}
+
+.ingress.medium {
+   font: var(--fds-typography-ingress-medium);
+}
+
+.ingress.large {
+   font: var(--fds-typography-ingress-large);
+}
+

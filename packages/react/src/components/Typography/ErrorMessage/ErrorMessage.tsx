@@ -1,29 +1,21 @@
+import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'classnames';
 
 import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
-import classes from './BodyLong.module.css';
+import classes from './ErrorMessage.module.css';
 
-export interface BodyLongProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {
-  /**
-   * medium: 18px, small: 16px
-   * @default "medium"
-   */
-  size?: 'medium' | 'small';
-  /**
-   * Paragraph text
-   */
-  children: React.ReactNode;
-  /**
-   * Adds margin-bottom
-   */
+export type ErrorMessageProps = {
+  /** Changes text sizing */
+  size?: 'small' | 'medium';
+  /** Adds margin-bottom */
   spacing?: boolean;
-}
+} & HTMLAttributes<HTMLParagraphElement>;
 
-export const BodyLong: OverridableComponent<
-  BodyLongProps,
+/** Use `ErrorMessage` to display text as error message. */
+export const ErrorMessage: OverridableComponent<
+  ErrorMessageProps,
   HTMLParagraphElement
 > = forwardRef(
   (
@@ -34,9 +26,9 @@ export const BodyLong: OverridableComponent<
       {...rest}
       ref={ref}
       className={cl(
-        classes.bodyLong,
+        classes.errorMessage,
+        classes[size],
         {
-          [classes.small]: size === 'small',
           [classes.spacing]: !!spacing,
         },
         className,
@@ -44,5 +36,3 @@ export const BodyLong: OverridableComponent<
     />
   ),
 );
-
-export default BodyLong;
