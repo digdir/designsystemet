@@ -551,6 +551,20 @@
           "textDecoration": "{textDecoration.none}"
         },
         "type": "typography"
+      },
+      "xxsmall": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f3}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
       }
     },
     "ingress": {
