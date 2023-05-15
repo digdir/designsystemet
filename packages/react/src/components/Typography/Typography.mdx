@@ -28,7 +28,7 @@ ment å dekke alle behov som måtte dukke opp på et nettsted:
 
 ## Heading
 
-Alle oversikrifter skal bruke heading komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+Alle oversikrifter skal bruke `Heading` komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
 
 Det skal kun vere 1 `<h1>` tag per side, men det kan vere flere h2-h6. Det er viktig at heading-hirarkiet på en side går logisk fra `<h1>` og nedover både når det kommer til størrelse og rekkefølge (se bruk).
 
@@ -39,35 +39,31 @@ H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin appl
 
 ## Paragraph
 
-Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke body.
+Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke `Paragraph`.
 
 <Canvas of={ParagraphStories.Preview} />
 <Controls of={ParagraphStories.Preview} />
 
 ## Ingress
 
-Ingressen kommer ofte mellom header- og body komponenten, og er ment å innlede en artikkel eller et avsnitt. Det er ofte et kort sammendrag av en større enhet, og skiller seg litt ut fra body ved at den har litt høyere linjehøyde og større font-størrelse.
+`Ingress` kommer ofte mellom `Heading`- og `Paragraph` komponenten, og er ment å innlede en artikkel eller et avsnitt. Det er ofte et kort sammendrag av en større enhet, og skiller seg litt ut fra `Paragraph` ved at den har litt høyere linjehøyde og større font-størrelse.
 
 <Canvas of={IngressStories.Preview} />
 <Controls of={IngressStories.Preview} />
 
 ## Detail
 
-Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
-
 <Canvas of={DetailStories.Preview} />
 <Controls of={DetailStories.Preview} />
 
 ## Label
 
-Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
+`Label` blir brukt for å framheve tekst, ofte sammen med `Paragraph`. Den har mindre linje-høyde enn `Paragraph`, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
 
 <Canvas of={LabelStories.Preview} />
 <Controls of={LabelStories.Preview} />
 
 ## ErrorMessage
-
-Label blir brukt for å framheve tekst, ofte sammen med body. Den har mindre linje-høyde enn body, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
 
 <Canvas of={ErrorMessageStories.Preview} />
 <Controls of={ErrorMessageStories.Preview} />
