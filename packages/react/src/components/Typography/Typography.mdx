@@ -6,7 +6,7 @@ import {
   Primary,
   ArgsTable,
 } from '@storybook/blocks';
-import { BetaBlock } from '../../../../../docs-components';
+import { BetaBlock, TokenBlock } from '../../../../../docs-components';
 import * as typographyStories from './Typography.stories';
 import * as HeadingStories from './Heading/Heading.stories';
 import * as ParagraphStories from './Paragraph/Paragraph.stories';
@@ -36,6 +36,9 @@ H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin appl
 <Canvas of={HeadingStories.Preview} />
 <Controls of={HeadingStories.Preview} />
 
+## Bruk
+
+<TokenBlock />
 ## Paragraph
 
 Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke `Paragraph`.
