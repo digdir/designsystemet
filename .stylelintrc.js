@@ -5,7 +5,6 @@ module.exports = {
     'stylelint-config-prettier',
   ],
   plugins: ['stylelint-prettier'],
-  ignoreFiles: ['**/dist/**/**.css'],
   rules: {
     'prettier/prettier': true,
     'declaration-block-no-redundant-longhand-properties': null,

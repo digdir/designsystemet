@@ -112,10 +112,7 @@ StyleDictionary.registerFormat({
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
-const getStyleDictionaryConfig = (
-  brand: Brands,
-  targetFolder = 'dist',
-): Config => {
+const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
   const tokensPath = '../../design-tokens';
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
@@ -202,7 +199,7 @@ brands.map((brand) => {
   console.log(`\nProcessing: ${brand}`);
 
   const extendedStyleDictionary = StyleDictionary.extend(
-    getStyleDictionaryConfig(brand, 'dist'),
+    getStyleDictionaryConfig(brand, 'brand'),
   );
 
   extendedStyleDictionary.buildAllPlatforms();

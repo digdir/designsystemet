@@ -8,5 +8,8 @@
   "cssvar.files": [
     "node_modules/@altinn/figma-design-tokens/dist/tokens.css",
     "packages/tokens/dist/digdir/tokens.css"
-  ]
+  ],
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }
