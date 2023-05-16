@@ -5,7 +5,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "Digdir Designsystem Team",
   "files": [
     "dist/**"
