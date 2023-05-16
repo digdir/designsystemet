@@ -2688,7 +2688,7 @@ __metadata:
     "@altinn/figma-design-tokens": ^6.0.1
     "@floating-ui/react": 0.17.0
     "@navikt/ds-icons": ^2.3.0
-    react-number-format: ^5.1.4
+    react-number-format: ^5.2.1
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
@@ -18913,15 +18913,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-number-format@npm:^5.1.4":
-  version: 5.1.4
-  resolution: "react-number-format@npm:5.1.4"
+"react-number-format@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "react-number-format@npm:5.2.1"
   dependencies:
     prop-types: ^15.7.2
   peerDependencies:
     react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 770a1e86cd05d9df28aa5e6a12c5731351dd4a301464edd0ac5dcbc68d2f07eae37781ff14f6153566cbb7cccb28f13f0826d1844600d25ae6e12da060814282
+  checksum: 0d355df334530f8a12b1d985ad9b501d0f1acadadcae8b4adaff3b937aa84506c59c87a841770154328f0a977b3d2685b9c851f79e553845ab7bb1b86e705f5f
   languageName: node
   linkType: hard
 
