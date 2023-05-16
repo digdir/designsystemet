@@ -45,7 +45,7 @@ Currently supported token formats are `css` and `js`.
 ### CSS
 
 When importing css tokens a set of [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) are added to your `:root {}`.
-You only need to import this once in your application, preferrably somewhere in your "root" html.
+You only need to import this once in your application, preferably somewhere in your "root" html.
 
 All variables are prefixed with `fds` as to not polute your namespace.
 
