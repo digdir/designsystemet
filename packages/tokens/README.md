@@ -24,7 +24,7 @@ Currently supported brands:
 - `digdir`
 - `tilsynet`
 
-When importing the package make sure to specify which brand tokens you want to import. By default the `digdir` is imported if you dont specify a brand.
+When importing the package make sure to specify which brand tokens you want to import. By default the `digdir` is imported if you don't specify a brand.
 
 ```tsx
 import '@digdir/design-system-tokens/brand/<brand>/tokens';
