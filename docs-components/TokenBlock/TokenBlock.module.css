@@ -1,18 +1,13 @@
 .container {
-  background-color: #f1ecff;
-  border-left: 8px solid #6544c5;
-  padding: 1.5rem;
+  background-color: var(--fds-semantic-surface-warning-subtle);
+  border-left: 8px solid var(--fds-semantic-border-warning-default);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   width: auto;
   margin-bottom: 2rem !important;
-
 }
 
-.title {
-  font: var(--fds-typography-heading-xxsmall) !important;
-}
-
-.desc > * p  {
+.desc > * p {
   font: var(--fds-typography-paragraph-short-small) !important;
 }
