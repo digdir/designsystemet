@@ -367,87 +367,6 @@
       "type": "fontWeights"
     }
   },
-  "spacing_core": {
-    "0": {
-      "value": "0",
-      "type": "spacing"
-    },
-    "1": {
-      "value": "0.25rem",
-      "type": "spacing",
-      "description": "4px"
-    },
-    "2": {
-      "value": "{spacing_core.1}*2",
-      "type": "spacing",
-      "description": "8px"
-    },
-    "3": {
-      "value": "{spacing_core.1}*3",
-      "type": "spacing",
-      "description": "12px"
-    },
-    "4": {
-      "value": "{spacing_core.1}*4",
-      "type": "spacing",
-      "description": "16px"
-    },
-    "5": {
-      "value": "{spacing_core.1}*5",
-      "type": "spacing",
-      "description": "20px"
-    },
-    "6": {
-      "value": "{spacing_core.1}*6",
-      "type": "spacing",
-      "description": "24px"
-    },
-    "7": {
-      "value": "{spacing_core.1}*7",
-      "type": "spacing",
-      "description": "28px"
-    },
-    "8": {
-      "value": "{spacing_core.1}*8",
-      "type": "spacing",
-      "description": "32px"
-    },
-    "10": {
-      "value": "{spacing_core.1}*10",
-      "type": "spacing",
-      "description": "40px"
-    },
-    "12": {
-      "value": "{spacing_core.1}*12",
-      "type": "spacing",
-      "description": "48px"
-    },
-    "14": {
-      "value": "{spacing_core.1}*14",
-      "type": "spacing",
-      "description": "56px"
-    },
-    "18": {
-      "value": "{spacing_core.1}*18",
-      "type": "spacing",
-      "description": "72px"
-    },
-    "22": {
-      "value": "{spacing_core.1}*22",
-      "type": "spacing",
-      "description": "88px"
-    },
-    "26": {
-      "value": "{spacing_core.1}*26",
-      "type": "spacing",
-      "description": "104px"
-    },
-    "30": {
-      "value": "{spacing_core.1}*30",
-      "type": "spacing",
-      "description": "120px"
-    }
-  },
   "sizing_core": {
     "1": {
       "value": "0.25rem",
@@ -1019,5 +938,92 @@
       "value": "1360",
       "type": "sizing"
     }
+  },
+  "spacing_core": {
+    "0": {
+      "value": "0",
+      "type": "spacing",
+      "description": "0"
+    },
+    "1": {
+      "value": "{base_spacing}/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "4px - 4.5px"
+    },
+    "2": {
+      "value": "{base_spacing}*2/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "8px - 9px"
+    },
+    "3": {
+      "value": "{base_spacing}*3/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "12px - 13.5px"
+    },
+    "4": {
+      "value": "{base_spacing}*4/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "16px - 18px"
+    },
+    "5": {
+      "value": "{base_spacing}*5/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "20px - 22.5px"
+    },
+    "6": {
+      "value": "{base_spacing}*6/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "24px - 27px"
+    },
+    "7": {
+      "value": "{base_spacing}*7/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "28px - 31.5px"
+    },
+    "8": {
+      "value": "({base_spacing}*8/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "32px - 36px"
+    },
+    "10": {
+      "value": "({base_spacing}*10/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "40px - 45px"
+    },
+    "12": {
+      "value": "({base_spacing}*12/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "48px - 54px"
+    },
+    "14": {
+      "value": "({base_spacing}*14/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "56px - 63px"
+    },
+    "18": {
+      "value": "({base_spacing}*18/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "72px - 81px"
+    },
+    "22": {
+      "value": "({base_spacing}*22/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "88px - 99px"
+    },
+    "26": {
+      "value": "({base_spacing}*26/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "104px - 117px"
+    },
+    "30": {
+      "value": "({base_spacing}*30/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "120px - 135px"
+    }
+  },
+  "base_spacing": {
+    "value": "0.25rem",
+    "type": "spacing",
+    "description": "4px"
   }
 }
