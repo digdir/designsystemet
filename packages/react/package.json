@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
+    "@digdir/design-system-tokens": "*",
     "@floating-ui/react": "0.17.0",
     "@navikt/ds-icons": "^2.3.0",
     "react-number-format": "^5.1.4"
