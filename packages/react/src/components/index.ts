@@ -1,7 +1,5 @@
 export { Button } from './Button';
 export type { ButtonProps } from './Button';
-export { ErrorMessage } from './ErrorMessage';
-export type { ErrorMessageProps } from './ErrorMessage';
 export { Tabs } from './Tabs';
 export type { TabsProps, TabItem } from './Tabs';
 export { FieldSet } from './FieldSet';
