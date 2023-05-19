@@ -17,6 +17,7 @@ interface ImageSectionProps {
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
   buttons?: ButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
+  imagePosition?: 'left' | 'right';
 }
 
 type ButtonProps = {
@@ -36,11 +37,23 @@ const ImageSection = ({
   children,
   buttons,
   link,
+  imagePosition = 'left',
 }: ImageSectionProps) => {
   return (
     <div className={classes[backgroundColor]}>
       <Container className={cn(classes.section)}>
-        <div className={classes.right}>
+        {imagePosition === 'left' && (
+          <div className={classes.imgContainer}>
+            <Image
+              className={classes.img}
+              src={src}
+              alt='Image'
+              height={imgHeight}
+              width={imgWidth}
+            />
+          </div>
+        )}
+        <div className={classes.textContainer}>
           {title && <h2 className={classes.title}>{title}</h2>}
           {description && <p className={classes.desc}>{description}</p>}
           {content && content}
@@ -69,15 +82,17 @@ const ImageSection = ({
 
           {children}
         </div>
-        <div className={classes.left}>
-          <Image
-            className={classes.img}
-            src={src}
-            alt='Image'
-            height={imgHeight}
-            width={imgWidth}
-          />
-        </div>
+        {imagePosition === 'right' && (
+          <div className={classes.imgContainer}>
+            <Image
+              className={classes.img}
+              src={src}
+              alt='Image'
+              height={imgHeight}
+              width={imgWidth}
+            />
+          </div>
+        )}
       </Container>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@navikt/aksel-icons';
 
 import { Container } from '../../components/Container/Container';
-import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 import { MdxContent } from '../../components/MdxContent/MdxContent';
 
 import classes from './PageLayout.module.css';
@@ -15,27 +15,46 @@ interface PageLayoutProps {
 type PageLayoutData = {
   title: string;
   date: string;
-  showMenu: boolean;
+  author: string;
+  backText: string;
+  backUrl: string;
 };
 
 const PageLayout = ({ content, data }: PageLayoutProps) => {
-  const router = useRouter();
-
   return (
-    <div>
-      <Container className={classes.page}>
-        <div className={classes.left}>
-          <SidebarMenu routerPath={router.pathname} />
-        </div>
-        <div className={classes.right}>
-          <div className={classes.header}>
+    <div className={classes.page}>
+      <div className={classes.header}>
+        <Container className={classes.headerContainer}>
+          <div className={classes.headerContent}>
+            <Link
+              href={'/' + data.backUrl}
+              className={classes.back}
+            >
+              <ArrowLeftIcon
+                title='Tilbake'
+                fontSize={28}
+              />
+              {data.backText}
+            </Link>
+            <div className={classes.meta}>
+              <span>
+                {data.author && (
+                  <div className={classes.date}>{data.author}</div>
+                )}
+              </span>
+              <span className={classes.separator}> - </span>
+              <span>
+                {data.date && <div className={classes.date}>{data.date}</div>}
+              </span>
+            </div>
             <h1 className={classes.title}>{data.title}</h1>
-            {data.date && <div className={classes.date}>{data.date}</div>}
           </div>
+        </Container>
+      </div>
 
-          <div className={classes.content}>
-            <MdxContent>{content}</MdxContent>
-          </div>
+      <Container className={classes.container}>
+        <div className={classes.content}>
+          <MdxContent>{content}</MdxContent>
         </div>
       </Container>
     </div>

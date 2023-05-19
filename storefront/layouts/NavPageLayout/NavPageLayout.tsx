@@ -32,6 +32,7 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
         title={data.imageSection.title}
         description={data.imageSection.description}
         link={data.imageSection.link}
+        imagePosition='right'
       ></ImageSection>
       <div className={classes.content}>
         <Container>{content}</Container>
