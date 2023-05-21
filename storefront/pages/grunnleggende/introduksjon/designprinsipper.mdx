@@ -6,12 +6,15 @@ import { PageLayout } from '/..../../layouts';
   description='Når vi utvikler nye produkter eller forbedrer eksisterende, følger vi disse prinsippene slik at vi er sikre på at vi leverer brukervennlige tjenester til alle. Bruk alltid prinsippene når du utvikler nye tjenester.'
 />
 
-export default ({ children, menu }) => (
+export default ({ children }) => (
   <PageLayout
     content={children}
     data={{
       title: 'Designprinsipper',
       date: '15. mai 2023',
+      author: 'Digdir',
+      backText: 'God praksis',
+      backUrl: 'god-praksis',
     }}
   />
 );

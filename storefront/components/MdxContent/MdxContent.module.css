@@ -5,6 +5,45 @@
   max-width: 800px;
 }
 
+.content p {
+  font-size: 18px;
+  line-height: 1.55em;
+  margin-bottom: 20px;
+}
+
+.content h1 + p {
+  font-size: 24px;
+  line-height: 1.7em;
+  margin-bottom: 36px;
+}
+
+.content h2 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 28px;
+}
+
+.content h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 24px;
+}
+
+.content h4 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.3em;
+  font-size: 20px;
+}
+
+.content img {
+  width: 100%;
+  margin: 24px 0;
+  border-radius: 2px;
+}
+
 .content > h2:first-child {
   margin-top: 32px !important;
 }
@@ -50,6 +89,10 @@
   text-align: left;
   background-color: #f4f4f4;
   font-weight: 600;
+}
+
+.content > *:first-child {
+  margin-top: 0;
 }
 
 .content > *:last-child {

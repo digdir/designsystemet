@@ -13,20 +13,16 @@ export const SiteConfig = {
               url: 'grunnleggende/introduksjon/om-designsystemet',
             },
             {
-              name: 'Verdier',
-              url: 'grunnleggende/introduksjon/verdier',
-            },
-            {
-              name: 'Designprinsipper',
-              url: 'grunnleggende/introduksjon/designprinsipper',
-            },
-            {
-              name: 'Forum',
-              url: 'grunnleggende/introduksjon/forum',
+              name: 'Prinsipper',
+              url: 'grunnleggende/introduksjon/prinsipper',
             },
             {
               name: 'Roadmap',
               url: 'grunnleggende/introduksjon/roadmap',
+            },
+            {
+              name: 'Slack',
+              url: 'grunnleggende/introduksjon/slack',
             },
           ],
         },
@@ -72,6 +68,10 @@ export const SiteConfig = {
               name: 'Bidra i figma',
               url: 'grunnleggende/for-designere/bidra-i-figma',
             },
+            {
+              name: 'Figma sandkasse',
+              url: 'grunnleggende/for-designere/figma-sandkasse',
+            },
           ],
         },
         {
@@ -86,6 +86,10 @@ export const SiteConfig = {
               name: 'Bidra',
               url: 'grunnleggende/for-utviklere/bidra',
             },
+            {
+              name: 'Endringslogg',
+              url: 'grunnleggende/for-utviklere/endringslogg',
+            },
           ],
         },
       ],
@@ -98,6 +102,10 @@ export const SiteConfig = {
           name: 'Brukerinnsikt',
           url: 'god-praksis/brukerinnsikt',
           children: [
+            {
+              name: 'Designprinsipper',
+              url: 'god-praksis/brukerinnsikt/designprinsipper',
+            },
             {
               name: 'Felles innsiktsbase',
               url: 'god-praksis/brukerinnsikt/felles-innsiktsbase',
@@ -119,7 +127,7 @@ export const SiteConfig = {
           url: 'god-praksis/innholdsarbeid',
           children: [
             {
-              name: 'Skriveråd',
+              name: 'Slik skriver du',
               url: 'god-praksis/innholdsarbeid/skriverad',
             },
             {
