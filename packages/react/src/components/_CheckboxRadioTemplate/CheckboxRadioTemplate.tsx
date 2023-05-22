@@ -59,17 +59,12 @@ export const CheckboxRadioTemplate = ({
     !presentation ||
     (typeof label !== 'object' && typeof description !== 'object');
 
-  const labelSpacingMap: Record<typeof size, string> = {
-    small: classes.smallSpacing,
-    xsmall: classes.xsmallSpacing,
-  };
-
   return (
     <Wrapper
       className={cn(
         classes.template,
         classes[size],
-        showLabel ? labelSpacingMap[size] : '',
+        !showLabel && classes.hiddenLabel,
         disabled ? classes.disabled : utilityClasses.focusable,
         className,
       )}

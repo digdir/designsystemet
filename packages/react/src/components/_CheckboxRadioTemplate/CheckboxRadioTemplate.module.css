@@ -18,19 +18,17 @@
 .template.xsmall {
   --description-margin_top: var(--component-field_description-space-top-xsmall);
   --font_size: var(--component-checkbox-font_size-xs);
+  --gap: var(--component-checkbox-space-gap-xsmall);
 }
 
 .template.small {
   --description-margin_top: var(--component-field_description-space-top-small);
   --font_size: var(--component-checkbox-font_size-sm);
-}
-
-.template.xsmallSpacing {
-  --gap: var(--component-checkbox-space-gap-xsmall);
-}
-
-.template.smallSpacing {
   --gap: var(--component-checkbox-space-gap-small);
+}
+
+.template.hiddenLabel {
+  --gap: 0;
 }
 
 .template:not(.disabled):hover {
