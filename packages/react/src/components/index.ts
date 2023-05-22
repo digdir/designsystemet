@@ -68,3 +68,4 @@ export type {
   ToggleButtonProps,
 } from './ToggleButtonGroup';
 export * from './Typography/';
+export * from './Accordion';
