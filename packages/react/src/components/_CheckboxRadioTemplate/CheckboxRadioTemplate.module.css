@@ -27,6 +27,10 @@
   --gap: var(--component-checkbox-space-gap-small);
 }
 
+.template.hiddenLabel {
+  --gap: 0;
+}
+
 .template:not(.disabled):hover {
   --label-color: var(--component-checkbox-color-text-hover);
 }

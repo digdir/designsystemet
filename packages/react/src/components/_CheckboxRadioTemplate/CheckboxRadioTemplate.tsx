@@ -64,6 +64,7 @@ export const CheckboxRadioTemplate = ({
       className={cn(
         classes.template,
         classes[size],
+        !showLabel && classes.hiddenLabel,
         disabled ? classes.disabled : utilityClasses.focusable,
         className,
       )}
