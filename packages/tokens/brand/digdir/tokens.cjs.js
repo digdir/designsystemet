@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 16 May 2023 07:26:47 GMT
+ * These files are generated from design tokens defined in Figma using Token Studio
  */
 
 module.exports = {

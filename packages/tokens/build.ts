@@ -109,6 +109,14 @@ StyleDictionary.registerFormat({
   },
 });
 
+StyleDictionary.registerFileHeader({
+  name: 'fileheader',
+  fileHeader: () => [
+    'Do not edit directly',
+    `These files are generated from design tokens defined in Figma using Token Studio`,
+  ],
+});
+
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
@@ -154,6 +162,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           },
         ],
         options: {
+          fileHeader: 'fileheader',
           // outputReferences: true,
         },
       },
@@ -185,6 +194,9 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
             filter: excludeSource,
           },
         ],
+        options: {
+          fileHeader: 'fileheader',
+        },
       },
     },
   };
