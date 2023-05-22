@@ -19,6 +19,10 @@ Accordion.Header = AccordionHeader;
 Accordion.Content = AccordionContent;
 Accordion.Item = AccordionItem;
 
+Accordion.Header.displayName = 'Accordion.Header';
+Accordion.Content.displayName = 'Accordion.Content';
+Accordion.Item.displayName = 'Accordion.Item';
+
 export type {
   AccordionProps,
   AccordionContentProps,
