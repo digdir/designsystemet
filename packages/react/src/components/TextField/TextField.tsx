@@ -54,11 +54,19 @@ type ReplaceTargetValueWithUnformattedValueProps = {
 const replaceTargetValueWithUnformattedValue = ({
   values,
   sourceInfo,
-}: ReplaceTargetValueWithUnformattedValueProps) => {
-  (sourceInfo.event as React.ChangeEvent<HTMLInputElement>).target.value =
-    values.value.trim();
-};
+}: ReplaceTargetValueWithUnformattedValueProps): React.ChangeEvent<HTMLInputElement> => {
+  const copiedEvent = {
+    ...sourceInfo.event,
+  } as React.ChangeEvent<HTMLInputElement>;
 
+  return {
+    ...copiedEvent,
+    target: {
+      ...copiedEvent.target,
+      value: values.value.trim(),
+    },
+  };
+};
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
@@ -85,12 +93,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       sourceInfo: SourceInfo,
     ): void => {
       if (sourceInfo.source === 'event' && onChange) {
-        setCurrentValue(values.value.trim());
-        replaceTargetValueWithUnformattedValue({
+        const parsedEvent = replaceTargetValueWithUnformattedValue({
           values,
           sourceInfo,
         });
-        onChange(sourceInfo.event as React.ChangeEvent<HTMLInputElement>);
+        setCurrentValue(parsedEvent.target.value);
+        onChange(parsedEvent);
       }
     };
 

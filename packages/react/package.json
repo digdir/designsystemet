@@ -26,6 +26,6 @@
     "@digdir/design-system-tokens": "^0.1.1",
     "@floating-ui/react": "0.17.0",
     "@navikt/ds-icons": "^2.3.0",
-    "react-number-format": "^5.1.4"
+    "react-number-format": "5.2.2"
   }
 }
