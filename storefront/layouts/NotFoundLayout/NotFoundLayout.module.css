@@ -38,6 +38,7 @@
   text-underline-offset: 5px;
   font-size: var(--font-300);
 }
+
 .link:hover {
   text-decoration-thickness: 2px;
 }

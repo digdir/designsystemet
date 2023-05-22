@@ -17,9 +17,6 @@
   flex-grow: 500;
 }
 
-.content {
-}
-
 .content h1 {
   font-size: var(--font-800);
   margin-bottom: var(--spacing-3);
