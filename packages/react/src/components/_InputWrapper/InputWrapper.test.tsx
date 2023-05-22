@@ -122,16 +122,24 @@ describe('InputWrapper', () => {
       expect(classList).not.toContain('withPadding');
     });
 
-    it('Renders with focus-effect class by default', () => {
-      render();
-      const { classList } = screen.getByTestId('InputWrapper');
-      expect(classList).toContain('withFocusEffect');
+    it('Calls inputRenderer with focus-effect class by default', () => {
+      const inputRenderer = jest.fn();
+      render({ inputRenderer });
+      expect(inputRenderer).toHaveBeenCalledWith(
+        expect.objectContaining({
+          className: expect.stringContaining('focusable'), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        }),
+      );
     });
 
-    it('Renders without focus-effect class when "noFocusEffect" property is true', () => {
-      render({ noFocusEffect: true });
-      const { classList } = screen.getByTestId('InputWrapper');
-      expect(classList).not.toContain('withFocusEffect');
+    it('Calls inputRenderer without focus-effect class when "noFocusEffect" property is true', () => {
+      const inputRenderer = jest.fn();
+      render({ inputRenderer, noFocusEffect: true });
+      expect(inputRenderer).toHaveBeenCalledWith(
+        expect.objectContaining({
+          className: expect.not.stringContaining('focusable'), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        }),
+      );
     });
   });
 
@@ -160,6 +168,40 @@ describe('InputWrapper', () => {
       expect(screen.getByLabelText(label)).toHaveAttribute('id', inputId);
     });
   });
+
+  describe('Character limit', () => {
+    it('should support screen reader max-char description', () => {
+      render({
+        label: 'Other',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+      expect(screen.getByLabelText('Other')).toHaveAttribute(
+        'aria-describedby',
+      );
+      expect(screen.getByText('2 signs allowed')).toHaveAttribute('id');
+    });
+
+    it('should inform screen reader users when max char limit has been exceeded', () => {
+      render({
+        label: 'Comment',
+        value: 'Hello',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.getByText('-3 signs left')).toHaveAttribute(
+        'aria-live',
+        'polite',
+      );
+    });
+  });
 });
 
 const getTextField = () => screen.getByTestId('InputWrapper');
@@ -171,10 +213,11 @@ const getClassNames = (expectedClassName: InputVariant_) => {
 
 const render = (props: Partial<InputWrapperProps> = {}) => {
   const allProps: InputWrapperProps = {
-    inputRenderer: ({ className, inputId }) => (
+    inputRenderer: ({ className, inputId, describedBy }) => (
       <input
         className={className}
         id={inputId}
+        aria-describedby={describedBy}
       />
     ),
     ...props,

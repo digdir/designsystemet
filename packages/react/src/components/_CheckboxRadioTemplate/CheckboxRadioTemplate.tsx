@@ -8,6 +8,7 @@ import React, { useId } from 'react';
 import cn from 'classnames';
 
 import { HelpText } from '../HelpText';
+import utilityClasses from '../../utils/utility.module.css';
 
 import classes from './CheckboxRadioTemplate.module.css';
 
@@ -63,7 +64,7 @@ export const CheckboxRadioTemplate = ({
       className={cn(
         classes.template,
         classes[size],
-        disabled && classes.disabled,
+        disabled ? classes.disabled : utilityClasses.focusable,
         className,
       )}
       htmlFor={finalInputId}

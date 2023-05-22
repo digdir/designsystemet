@@ -2,6 +2,7 @@ import type { ChangeEvent, ReactNode } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
+import { flip, size } from '@floating-ui/dom';
 
 import { InputWrapper } from '../_InputWrapper';
 import {
@@ -12,6 +13,7 @@ import {
 } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utils';
 import { useFocusWithin } from '../../hooks/useFocusWithin';
+import utilClasses from '../../utils/utility.module.css';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
@@ -155,7 +157,19 @@ const Select = (props: SelectProps) => {
   );
 
   const { x, y, elements, refs } = useFloating<HTMLSpanElement>({
+    placement: 'bottom',
     whileElementsMounted: autoUpdate,
+    middleware: [
+      flip(),
+      size({
+        apply: ({ availableHeight, elements, rects }) => {
+          Object.assign(elements.floating.style, {
+            maxHeight: `min(${availableHeight}px, var(--option_list-max_height))`,
+            width: `${rects.reference.width}px`,
+          });
+        },
+      }),
+    ],
   });
   const listboxWrapper = elements.floating as HTMLSpanElement;
   const selectField = elements.reference as HTMLSpanElement;
@@ -410,7 +424,7 @@ const Select = (props: SelectProps) => {
             {multiple && (
               <button
                 aria-label={props.deleteButtonLabel}
-                className={classes.deleteButton}
+                className={classes.deleteButton + ' ' + utilClasses.focusable}
                 disabled={!selectedValues.length || disabled}
                 onClick={() => removeAllSelections()}
                 type='button'
@@ -456,7 +470,6 @@ const Select = (props: SelectProps) => {
         style={{
           left: x ?? 0,
           top: y ?? 0,
-          width: selectField?.offsetWidth,
         }}
       >
         <span

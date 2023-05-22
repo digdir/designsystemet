@@ -1,0 +1,24 @@
+.label {
+  display: inline-block;
+  margin: 0;
+}
+
+.spacing {
+  margin-bottom: var(--fds-spacing-5);
+}
+
+.label.large {
+   font: var(--fds-typography-label-large);
+}
+
+.label.medium {
+   font: var(--fds-typography-label-medium);
+}
+
+.label.small {
+   font: var(--fds-typography-label-small);
+}
+
+.label.xsmall {
+   font: var(--fds-typography-label-xsmall);
+}

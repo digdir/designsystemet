@@ -1,6 +1,14 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { BetaBlock } from '../../../../../docs-components';
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgTypes,
+} from '@storybook/blocks';
+import { BetaBlock, TokenBlock } from '../../../../../docs-components';
 import * as AccordionStories from './Accordion.stories';
+import { Accordion } from '.';
 
 <Meta of={AccordionStories} />
 
@@ -12,38 +20,45 @@ Accordion er en vertikalt stablet gruppe interaktive overskrifter som hver inneh
 en seksjon av innholdet. Overskriftene fungerer som kontroller som lar brukere vise eller skjule de tilknyttede seksjonene med innhold.
 Accordion brukes ofte for å redusere behovet for å skrolle ned når man presenterer flere seksjoner med innhold på en enkelt side.
 
-## Bruk
-
-```tsx
-import { Accordion } from '@digdir/design-system-react';
-
-<Accordion>
-  <Accordion.Item>
-    <Accordion.Header>Accordion header text</Accordion.Header>
-    <Content />
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Accordion header text</Accordion.Header>
-    <Content />
-  </Accordion.Item>
-</Accordion>;
-```
-
 ## Props
 
 <Primary />
 <Controls />
 
+### Accordion.Item
+
+<ArgTypes of={Accordion.Item} />
+
+### Accordion.Header
+
+<ArgTypes of={Accordion.Header} />
+
+### Accordion.Content
+
+<ArgTypes of={Accordion.Content} />
+
+## Bruk
+
+<TokenBlock />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Accordion } from '@digdir/design-system-react';
+
+<Accordion>
+  <Accordion.Item>
+    <Accordion.Header>Accordion header text</Accordion.Header>
+    <Accordion.Content>Accordion content</Accordion.Content>
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Header>Accordion header text</Accordion.Header>
+    <Accordion.Content>Accordion content</Accordion.Content>
+  </Accordion.Item>
+</Accordion>;
+```
+
 ## Varianter
 
 ### Kontrollert
 
-<Canvas>
-  <Story of={AccordionStories.Controlled} />
-</Canvas>
-
-### Ikke kontrollert
-
-<Canvas>
-  <Story of={AccordionStories.Uncontrolled} />
-</Canvas>
+<Canvas of={AccordionStories.Controlled} />

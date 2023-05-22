@@ -1,92 +1,66 @@
 import React, { useState } from 'react';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-
-import AccordionContent from './AccordionContent';
-import AccordionHeader from './AccordionHeader';
-import AccordionItem from './AccordionItem';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Accordion } from '.';
-
-type Story = StoryObj<typeof Accordion>;
 
 export default {
   title: 'Kjernekomponenter/Accordion',
   component: Accordion,
-  subcomponents: {
-    AccordionItem,
-    AccordionContent,
-    AccordionHeader,
-  },
   parameters: {
     status: {
       type: 'beta',
       url: 'http://www.url.com/status',
     },
+    layout: 'padded',
   },
 } as Meta;
 
-const Content = () => (
-  <Accordion.Content>
-    Magna aliquip aliquip fugiat nostrud nostrud velit pariatur veniam officia
-    laboris voluptate officia pariatur. <a href='#Lorem'>Lorem est</a> ex anim
-    velit occaecat nisi qui nostrud sit consectetur consectetur officia nostrud
-    ullamco.
-  </Accordion.Content>
+export const Preview: StoryFn<typeof Accordion> = (args) => (
+  <Accordion {...args}>
+    <Accordion.Item>
+      <Accordion.Header level={3}>Hva er Lorem Ipsum?</Accordion.Header>
+      <Accordion.Content>
+        Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
+        Lorem Ipsum har vært bransjens standard for dummytekst helt siden
+        1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
+        lage et prøveeksemplar av en bok.
+      </Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item>
+      <Accordion.Header level={3}>Hvor kommer det fra?</Accordion.Header>
+      <Accordion.Content>
+        I motsetning til hva mange tror, er ikke Lorem Ipsum bare tilfeldig
+        tekst. Dets røtter springer helt tilbake til et stykke klassisk latinsk
+        litteratur fra 45 år f.kr., hvilket gjør det over 2000 år gammelt.
+      </Accordion.Content>
+    </Accordion.Item>
+  </Accordion>
 );
 
-export const props: Story = {
-  args: {
-    children: (
-      <>
-        <Accordion.Item>
-          <Accordion.Header>Accordion header text</Accordion.Header>
-          <Content />
-        </Accordion.Item>
-        <Accordion.Item>
-          <Accordion.Header>Accordion header text</Accordion.Header>
-          <Content />
-        </Accordion.Item>
-      </>
-    ),
-    style: { width: '300px' },
-  },
+// Default values are selected in Controls
+Preview.args = {
+  border: false,
+  color: 'neutral',
 };
 
-export const Controlled: StoryFn = () => {
+export const Controlled: StoryFn<typeof Accordion> = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
 
   return (
-    <div style={{ width: 300 }}>
-      <Accordion>
-        <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Accordion header text
-          </Accordion.Header>
-          <Content />
-        </Accordion.Item>
-        <Accordion.Item open={open2}>
-          <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
-            Accordion header text
-          </Accordion.Header>
-          <Content />
-        </Accordion.Item>
-      </Accordion>
-    </div>
-  );
-};
-
-export const Uncontrolled: StoryFn = () => (
-  <div style={{ width: 300 }}>
     <Accordion>
-      <Accordion.Item>
-        <Accordion.Header>Accordion header text</Accordion.Header>
-        <Content />
+      <Accordion.Item open={open}>
+        <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+          Accordion header text
+        </Accordion.Header>
+        <Accordion.Content>Accordion content</Accordion.Content>
       </Accordion.Item>
-      <Accordion.Item>
-        <Accordion.Header>Accordion header text</Accordion.Header>
-        <Content />
+      <Accordion.Item open={open2}>
+        <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
+          Accordion header text
+        </Accordion.Header>
+        <Accordion.Content>Accordion content</Accordion.Content>
       </Accordion.Item>
     </Accordion>
-  </div>
-);
+  );
+};

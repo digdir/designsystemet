@@ -1,7 +1,7 @@
 {
   "viewport": {
     "width": {
-      "value": "{viewport.min}",
+      "value": "576",
       "type": "sizing"
     }
   }

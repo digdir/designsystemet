@@ -1,4 +1,6 @@
+node_modules
 **/*.d.ts*
 dist/
 coverage/
 storybook-static/
+packages/tokens/brand/**/*
