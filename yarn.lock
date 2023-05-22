@@ -2688,7 +2688,7 @@ __metadata:
     "@altinn/figma-design-tokens": ^6.0.1
     "@floating-ui/react": 0.17.0
     "@navikt/ds-icons": ^2.3.0
-    react-number-format: ^5.2.1
+    react-number-format: 5.2.2
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
@@ -18901,7 +18901,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-number-format@npm:^5.1.1, react-number-format@npm:^5.1.3":
+"react-number-format@npm:5.2.2, react-number-format@npm:^5.1.3":
+  version: 5.2.2
+  resolution: "react-number-format@npm:5.2.2"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: ae788b550b759f3f3e475e5805f7c650472f3d06fe633a046288f62cf5deedbfa597cb8fea08f29538b04931d7453ffbbe653bdd50cfca6ac43e12397502fec3
+  languageName: node
+  linkType: hard
+
+"react-number-format@npm:^5.1.1":
   version: 5.1.3
   resolution: "react-number-format@npm:5.1.3"
   dependencies:
@@ -18910,18 +18922,6 @@ __metadata:
     react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^18.0.0
     react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^18.0.0
   checksum: 354481a3ce15520d3e786f790a84a0363a94c56034519c6e2248d8f277095b696f31204a46745d3c64869559b7a81ba39ab9ad46c6582f762255f81d5c5d2e95
-  languageName: node
-  linkType: hard
-
-"react-number-format@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "react-number-format@npm:5.2.1"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 0d355df334530f8a12b1d985ad9b501d0f1acadadcae8b4adaff3b937aa84506c59c87a841770154328f0a977b3d2685b9c851f79e553845ab7bb1b86e705f5f
   languageName: node
   linkType: hard
 
