@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.0...@digdir/design-system-react@0.12.1) (2023-05-22)
+
+### Bug Fixes
+
+- Export `Accordion` component publicly ([#423](https://github.com/digdir/designsystem/issues/423)) ([82adba2](https://github.com/digdir/designsystem/commit/82adba2a4d894d4a8440f51e61694702cc6c3213))
+
 # [0.12.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.1...@digdir/design-system-react@0.12.0) (2023-05-16)
 
 ### Bug Fixes
