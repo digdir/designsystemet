@@ -23,7 +23,6 @@ jobs:
       - id: deploy
         name: Deploy Project Artifacts to Vercel
         run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
-      - uses: actions/checkout@v1
       - uses: jwalton/gh-find-current-pr@v1
         id: findPr
         with:
