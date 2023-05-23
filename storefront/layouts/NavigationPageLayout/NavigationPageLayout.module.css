@@ -23,31 +23,19 @@
 }
 
 .content h2 {
-  font-size: var(--font-700);
-}
-
-.content > h1 + p {
-  font-size: var(--font-400);
-  line-height: 1.6em;
-}
-
-.section {
   margin-top: var(--spacing-6);
 }
 
-.section-desc {
+.content p {
   margin-top: 16px;
   margin-bottom: 24px;
   font-size: var(--font-300);
   line-height: 1.5em;
 }
 
-.section-cards {
-  display: grid;
-  grid-row-gap: var(--grid-gap);
-  grid-column-gap: var(--grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  margin-top: var(--spacing-6);
+.content > h1 + p {
+  font-size: var(--font-400);
+  line-height: 1.6em;
 }
 
 .list {
