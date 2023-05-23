@@ -7,6 +7,9 @@ import type {
 } from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
+const { fileHeader, formattedVariables, createPropertyFormatter } =
+  StyleDictionary.formatHelpers;
+
 void registerTransforms(StyleDictionary);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
@@ -99,6 +102,18 @@ StyleDictionary.registerTransform({
   },
 });
 
+StyleDictionary.registerTransform({
+  name: 'spacing/fluid',
+  type: 'value',
+  transitive: true,
+  matcher: (token) => token.type === 'spacing' && token.path[0] === 'spacing',
+  transformer: (token) => {
+    const value = token.value as string;
+
+    return `${value}`;
+  },
+});
+
 StyleDictionary.registerFormat({
   name: 'global-values-hack',
   formatter: ({ dictionary }) => {
@@ -115,6 +130,93 @@ StyleDictionary.registerFileHeader({
     'Do not edit directly',
     `These files are generated from design tokens defined in Figma using Token Studio`,
   ],
+});
+
+const isFluidSpacing = (token: TransformedToken) => token.type === 'spacing';
+
+StyleDictionary.registerFormat({
+  name: `es6WithReferences`,
+  formatter: ({ dictionary }) => {
+    return dictionary.allTokens
+      .map((token) => {
+        let value = JSON.stringify(token.value);
+        // the `dictionary` object now has `usesReference()` and
+        // `getReferences()` methods. `usesReference()` will return true if
+        // the value has a reference in it. `getReferences()` will return
+        // an array of references to the whole tokens so that you can access their
+        // names or any other attributes.
+        if (dictionary.usesReference(token.original.value)) {
+          // Note: make sure to use `token.original.value` because
+          // `token.value` is already resolved at this point.
+          const refs = dictionary.getReferences(token.original.value);
+          refs.forEach((ref) => {
+            value = value.replace(ref.value as string, function () {
+              return `${ref.name}`;
+            });
+          });
+        }
+        return `export const ${token.name} = ${value};`;
+      })
+      .join(`\n`);
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: 'myCustomFormat',
+  formatter: function ({ dictionary, options, file }) {
+    const { outputReferences } = options;
+    let referencedTokens: TransformedToken[] = [];
+    // const filterReferences = ['font-size'];
+
+    const defaultFormat = createPropertyFormatter({
+      outputReferences,
+      dictionary,
+      format: 'css',
+    });
+
+    const formatWithReference = createPropertyFormatter({
+      outputReferences: true,
+      dictionary,
+      format: 'css',
+    });
+
+    const formattedTokens = dictionary.allTokens
+      .map((token) => {
+        if (
+          dictionary.usesReference(token.original.value) &&
+          isFluidSpacing(token)
+        ) {
+          const refs = dictionary.getReferences(token.original.value);
+          referencedTokens = [...referencedTokens, ...refs];
+          const formatted = formatWithReference(token);
+          console.log('Custom format', { name: token.name, formatted, refs });
+          return formatted;
+        }
+
+        return !token.isSource && defaultFormat(token);
+      })
+      .filter((x) => x);
+
+    const formattedReferenceTokens = referencedTokens.reduce<
+      TransformedToken[]
+    >((acc, token) => {
+      if (acc.includes(token.name)) {
+        return acc;
+      }
+
+      return defaultFormat(token);
+    }, []);
+
+    return (
+      fileHeader({ file }) +
+      ':root {\n' +
+      '  /** Referenced source tokens */ \n' +
+      formattedReferenceTokens.join('\n') +
+      '\n\n  /** Semantic tokens */ \n' +
+      formattedTokens.join('\n') +
+      '\n}\n'
+    );
+  },
 });
 
 const excludeSource = (token: TransformedToken) =>
@@ -150,6 +252,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           'ts/resolveMath',
           'name/cti/hierarchical-kebab',
           'fontSizes/fluid',
+          'spacing/fluid',
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
@@ -157,8 +260,8 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            format: 'css/variables',
-            filter: excludeSource,
+            format: 'myCustomFormat',
+            // filter: excludeSource,
           },
         ],
         options: {
@@ -173,6 +276,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           'ts/resolveMath',
           'name/cti/camel_underscore',
           'fontSizes/fluid',
+          'spacing/fluid',
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
