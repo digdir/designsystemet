@@ -193,7 +193,6 @@
       "semantic.border.success.default": "S:d42bc7bbcff1aa4a0ed05bafad450b3b937f062d,",
       "semantic.border.warning.default": "S:184f244593a781b9b80ee0c018a00fbd9844ac30,",
       "semantic.border.danger.default": "S:af4cecc3564bb13c1f1b27ed9214420fd45c9a7c,",
-      "semantic.border.tab-focus.default": "S:35a815edf0e45139df01ea7c4caabd7020d889d1,",
       "semantic.border.primary.default": "S:babf87cf996c769566406133cbacf5e99e1e31ce,",
       "semantic.border.primary.hover": "S:6d6e7ed2f16ebb63da60c5a66ea260d5d98edc26,",
       "semantic.border.primary.active": "S:55c444d5d3fca8d8f8ab6188ddce633401e2865a,",
@@ -262,10 +261,11 @@
       "typography.label.small": "S:3f39e26f344c3b75c4a9ed73115a3d5450126c18,",
       "typography.error_message.medium": "S:d4d80bdb7c1b25cfefa151eda724ca31ac973bd3,",
       "typography.error_message.small": "S:24607c582780c14238ea38100920bbf4cbf2fe8d,",
-      "typography.detail.medium": "S:fb988c084a81e5b2ea93fd72599431052c5f2d75,",
       "typography.interactive.large": "S:efaba827bd73dfebc088bf78c027461b78284186,",
       "typography.interactive.medium": "S:7e6c6654a48cb79121f57e4d4357a21249b14846,",
-      "typography.interactive.small": "S:c8dfd777051d57443937819c1560b31c0843c39b,"
+      "typography.interactive.small": "S:c8dfd777051d57443937819c1560b31c0843c39b,",
+      "semantic.border.tab-focus.outline": "S:35a815edf0e45139df01ea7c4caabd7020d889d1,",
+      "typography.detail.xsmall": "S:fb988c084a81e5b2ea93fd72599431052c5f2d75,"
     }
   },
   {
@@ -288,7 +288,7 @@
       "Base/Semantic": "enabled",
       "Base/Component": "enabled",
       "Brand/Digdir": "enabled",
-      "Viewport/@380": "enabled"
+      "Viewport/@375": "enabled"
     },
     "$figmaStyleReferences": {}
   }

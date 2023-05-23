@@ -5,6 +5,7 @@
   --font-and-icon-color: var(--component-button-filled-color-text-all);
   --icon-size: var(--component-button-size-icon-small);
 
+  composes: focusable from '../../utils/utility.module.css';
   align-items: center;
   border-radius: var(--border-radius);
   border: var(--component-button-border_width-default) solid transparent;
@@ -21,20 +22,10 @@
   text-align: center;
 }
 
-.button:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) solid
-    var(--semantic-tab_focus-outline-width);
-  outline-offset: var(--semantic-tab_focus-outline-offset);
-}
-
 .button:disabled,
 .button[aria-disabled='true'] {
   cursor: auto;
   opacity: var(--opacity-disabled);
-}
-
-.button:focus:not(:focus-visible) {
-  outline: none;
 }
 
 .icon {
@@ -153,10 +144,6 @@
   background: var(--colors-white);
 }
 
-.button.filled.inverted:focus-visible {
-  outline-color: var(--colors-white);
-}
-
 .button.filled.inverted:not([aria-disabled='true'], :disabled):hover {
   --font-and-icon-color: var(--colors-blue-900);
 
@@ -257,10 +244,6 @@
   background: transparent;
 }
 
-.button.outline.inverted:focus-visible {
-  outline-color: var(--colors-white);
-}
-
 .button.outline.inverted:not([aria-disabled='true'], :disabled):hover {
   background: rgb(255 255 255 / 0.1);
 }
@@ -340,10 +323,6 @@
   --font-and-icon-color: var(--colors-white);
 
   background: transparent;
-}
-
-.button.quiet.inverted:focus-visible {
-  outline-color: var(--colors-white);
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):hover {

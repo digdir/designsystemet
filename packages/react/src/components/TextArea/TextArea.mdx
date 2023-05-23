@@ -1,0 +1,74 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+import { TextArea } from './';
+import { BetaBlock, TokensTable } from '../../../../../docs-components';
+import { ArgsTable } from '@storybook/blocks';
+import { ReadOnlyVariant } from '../../types/enums';
+import * as TextAreaStories from './TextArea.stories';
+
+<Meta of={TextAreaStories} />
+
+# TextArea
+
+<BetaBlock />
+
+`TextArea` brukes til å ta imot lengre tekster, gjerne over flere linjer.
+
+## Bruk
+
+```tsx
+import { TextArea } from '@digdir/design-system-react';
+
+<TextArea {...props} />;
+```
+
+## Props
+
+<Primary />
+<Controls />
+
+## Eksempler
+
+### Standard
+
+<Canvas>
+  <Story of={TextAreaStories.Standard} />
+</Canvas>
+
+### Med feil
+
+<Canvas>
+  <Story of={TextAreaStories.MedFeil} />
+</Canvas>
+
+### Skrivebeskyttet
+
+<Canvas>
+  <Story of={TextAreaStories.Skrivebeskyttet} />
+</Canvas>
+
+### Bekreftelsesvisning
+
+<Canvas>
+  <Story of={TextAreaStories.Bekreftelsesvisning} />
+</Canvas>
+
+### Deaktivert
+
+<Canvas>
+  <Story of={TextAreaStories.Deaktivert} />
+</Canvas>
+
+### Viser antall tegn igjen å skrive
+
+<Canvas>
+  <Story of={TextAreaStories.AntallTegnIgjenASkrive} />
+</Canvas>
+
+## Tokens
+
+<TokensTable
+  jsonKey='component.textfield'
+  componentName='textfield'
+  showPreview={false}
+  description
+/>

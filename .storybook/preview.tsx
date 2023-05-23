@@ -1,8 +1,31 @@
 import type { Preview } from '@storybook/react';
 import '@altinn/figma-design-tokens/dist/tokens.css';
-
+import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import './inter.css';
 import customTheme from './customTheme';
+import metadata from '../design-tokens/$metadata.json';
+
+type Viewport = {
+  name: string;
+  styles: {
+    width: string;
+    height: string;
+  };
+};
+
+const viewports: Viewport[] = metadata.tokenSetOrder
+  .filter((name) => name.toLowerCase().includes('viewport'))
+  .map((name) => {
+    const width = name.replace(/\D/g, '');
+
+    return {
+      name: `@${width}`,
+      styles: {
+        width: `${width}px`,
+        height: '100%',
+      },
+    };
+  });
 
 const preview: Preview = {
   parameters: {
@@ -36,6 +59,9 @@ const preview: Preview = {
       storySort: {
         order: ['Komponentoversikt', 'Kjernekomponenter'],
       },
+    },
+    viewport: {
+      viewports,
     },
   },
 };

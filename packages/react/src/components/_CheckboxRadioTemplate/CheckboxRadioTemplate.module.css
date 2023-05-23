@@ -10,7 +10,9 @@
   font-size: var(--font_size);
   gap: var(--gap);
   line-height: var(--typography-default-line-height);
+  margin: -4px;
   opacity: var(--opacity);
+  padding: 4px;
 }
 
 .template.xsmall {
@@ -23,6 +25,10 @@
   --description-margin_top: var(--component-field_description-space-top-small);
   --font_size: var(--component-checkbox-font_size-sm);
   --gap: var(--component-checkbox-space-gap-small);
+}
+
+.template.hiddenLabel {
+  --gap: 0;
 }
 
 .template:not(.disabled):hover {
@@ -86,16 +92,4 @@
 
 .description {
   color: var(--description-color);
-}
-
-@supports not selector(:has(:focus-visible)) {
-  .template:not(.disabled):focus-within {
-    outline: 2px solid var(--semantic-tab_focus-outline-color);
-    outline-offset: 2px;
-  }
-}
-
-.template:not(.disabled, :has(button:focus-visible)):has(:focus-visible) {
-  outline: 2px solid var(--semantic-tab_focus-outline-color);
-  outline-offset: 2px;
 }

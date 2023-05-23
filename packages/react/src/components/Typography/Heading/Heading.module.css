@@ -2,26 +2,30 @@
   margin: 0;
 }
 
-.heading--margin {
-  margin-bottom: 24px;
+.spacing {
+  margin-bottom: var(--fds-spacing-5);
 }
 
-.heading--xlarge {
-  font-size: 44px;
+.heading.xlarge {
+  font: var(--fds-typography-heading-xlarge);
 }
 
-.heading--large {
-  font-size: 36px;
+.heading.large {
+  font: var(--fds-typography-heading-large);
 }
 
-.heading--medium {
-  font-size: 28px;
+.heading.medium {
+  font: var(--fds-typography-heading-medium);
 }
 
-.heading--small {
-  font-size: 24px;
+.heading.small {
+  font: var(--fds-typography-heading-small);
 }
 
-.heading--xsmall {
-  font-size: 20px;
+.heading.xsmall {
+  font: var(--fds-typography-heading-xsmall);
+}
+
+.heading.xxsmall {
+  font: var(--fds-typography-heading-xxsmall);
 }

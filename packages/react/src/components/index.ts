@@ -1,7 +1,5 @@
 export { Button } from './Button';
 export type { ButtonProps } from './Button';
-export { ErrorMessage } from './ErrorMessage';
-export type { ErrorMessageProps } from './ErrorMessage';
 export { Tabs } from './Tabs';
 export type { TabsProps, TabItem } from './Tabs';
 export { FieldSet } from './FieldSet';
@@ -41,8 +39,7 @@ export type {
   LegacyAccordionHeaderProps,
   LegacyAccordionProps,
 } from './LegacyAccordion';
-export { List, ListItem } from './List';
-export type { ListProps, ListItemProps, ListBorderStyle } from './List';
+export * from './List';
 export {
   ResponsiveTable,
   Table,
@@ -70,3 +67,5 @@ export type {
   ToggleButtonGroupProps,
   ToggleButtonProps,
 } from './ToggleButtonGroup';
+export * from './Typography/';
+export * from './Accordion';

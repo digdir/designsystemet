@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.0...@digdir/design-system-react@0.12.1) (2023-05-22)
+
+### Bug Fixes
+
+- Export `Accordion` component publicly ([#423](https://github.com/digdir/designsystem/issues/423)) ([82adba2](https://github.com/digdir/designsystem/commit/82adba2a4d894d4a8440f51e61694702cc6c3213))
+
+# [0.12.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.1...@digdir/design-system-react@0.12.0) (2023-05-16)
+
+### Bug Fixes
+
+- **FieldSet:** Fixing typo in font size ([#372](https://github.com/digdir/designsystem/issues/372)) ([287c8a4](https://github.com/digdir/designsystem/commit/287c8a4cea2d0d310f4913873598a1bf5144dd33))
+- **Select:** Adjust list size to available space ([#383](https://github.com/digdir/designsystem/issues/383)) ([2d11090](https://github.com/digdir/designsystem/commit/2d1109013c5f50aadee39b4270483c45e973e137))
+- **TextField, TextArea, Checkbox, RadioButton, Button and HelpText:** New focus style ([#354](https://github.com/digdir/designsystem/issues/354)) ([1786918](https://github.com/digdir/designsystem/commit/1786918a90037cce2c6e300f271a62ea34d166c3))
+
+### Features
+
+- **Accordion:** New Accordion component ([#313](https://github.com/digdir/designsystem/issues/313)) ([62cc44b](https://github.com/digdir/designsystem/commit/62cc44b05f35d5de30b6844859585967785be87c))
+- **TextArea, TextField:** Countdown remaining letters ([#365](https://github.com/digdir/designsystem/issues/365)) ([6f08478](https://github.com/digdir/designsystem/commit/6f08478e929c2740d0830edca453a2c68549fa61))
+- **Heading, Paragraph, Ingress, Label, ErrorMessage:** New Typography components ([#374](https://github.com/digdir/designsystem/issues/374)) ([2bb07d6](https://github.com/digdir/designsystem/commit/2bb07d6dbbcf277c24eeb06176e365cd366c5a20))
+
+## [0.11.3](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.1...@digdir/design-system-react@0.11.3) (2023-05-04)
+
+### Bug Fixes
+
+- **Select:** Collapse when arrow button is clicked ([#336](https://github.com/digdir/designsystem/issues/336)) ([254628a](https://github.com/digdir/designsystem/commit/254628a7918dc037643b7157b40ad3e7031daeae))
+- **Select:** Set "button" type on buttons ([#338](https://github.com/digdir/designsystem/issues/338)) ([f3035f0](https://github.com/digdir/designsystem/commit/f3035f0b1a37fa406f4f85af084571335f3ace0a))
+
 ## [0.11.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.11.1...@digdir/design-system-react@0.11.2) (2023-04-24)
 
 ### Bug Fixes

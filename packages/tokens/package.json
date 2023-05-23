@@ -1,19 +1,18 @@
 {
   "name": "@digdir/design-system-tokens",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "description": "Tokens for the Digdir Common Design System",
-  "private": true,
   "repository": "https://github.com/digdir/designsystem",
   "license": "MIT",
-  "main": "dist/digdir/tokens.cjs.js",
-  "module": "dist/digdir/tokens.esm.js",
-  "types": "dist/digdir/tokens.d.ts",
+  "main": "brand/digdir/tokens.cjs.js",
+  "module": "brand/digdir/tokens.esm.js",
+  "types": "brand/digdir/tokens.d.ts",
   "files": [
-    "dist"
+    "brand"
   ],
   "scripts": {
     "build": "yarn run clean && ts-node ./build.ts",
-    "clean": "rimraf dist"
+    "clean": "rimraf brand"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.8.5",

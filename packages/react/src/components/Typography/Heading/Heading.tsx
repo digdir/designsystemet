@@ -1,41 +1,42 @@
-import React from 'react';
-import cn from 'classnames';
+import type { ElementType, HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import cl from 'classnames';
+
+import type { OverridableComponent } from '../../../utils/OverridableComponent';
 
 import classes from './Heading.module.css';
 
-export interface HeadingProps {
+export type HeadingProps = {
+  /** Heading level. This will translate into any h1-6 level unless `as` is defined */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
-  color?: string;
-  children: React.ReactNode;
-  margin?: boolean;
-}
+  /** Changes text sizing */
+  size: 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  /** Adds margin-bottom */
+  spacing?: boolean;
+} & HTMLAttributes<HTMLHeadingElement>;
 
-const Heading = ({
-  level = 1,
-  size = 'xlarge',
-  color = 'black',
-  children,
-  margin = false,
-}: HeadingProps) => {
-  const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return React.createElement(`h${level}`, props, children);
-  };
-  const HeadingStyle = {
-    color,
-  };
-  return (
-    <Heading
-      style={HeadingStyle}
-      className={cn(
-        [classes['heading']],
-        { [classes['heading--margin']]: margin },
-        classes[`heading--${size}`],
-      )}
-    >
-      {children}
-    </Heading>
+/** Use `Heading` to render h1-6 elements with heading text styles.  */
+export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
+  forwardRef(
+    (
+      { level = 1, size = 'xlarge', spacing = false, className, as, ...rest },
+      ref,
+    ) => {
+      const Component = as ?? (`h${level ?? 1}` as ElementType);
+
+      return (
+        <Component
+          {...rest}
+          ref={ref}
+          className={cl(
+            classes.heading,
+            classes[size],
+            {
+              [classes.spacing]: spacing,
+            },
+            className,
+          )}
+        />
+      );
+    },
   );
-};
-
-export default Heading;

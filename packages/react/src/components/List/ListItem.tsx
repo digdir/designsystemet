@@ -1,11 +1,15 @@
+import type { ComponentPropsWithoutRef } from 'react';
 import React from 'react';
 
 import classes from './ListItem.module.css';
 
-export interface ListItemProps {
-  children?: React.ReactNode;
-}
+export type ListItemProps = ComponentPropsWithoutRef<'li'>;
 
-export const ListItem = ({ children }: ListItemProps) => (
-  <li className={classes.listItem}>{children}</li>
+export const ListItem = ({ children, ...rest }: ListItemProps) => (
+  <li
+    {...rest}
+    className={classes.listItem}
+  >
+    {children}
+  </li>
 );

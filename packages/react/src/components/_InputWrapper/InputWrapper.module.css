@@ -2,16 +2,17 @@
   align-items: stretch;
   display: inline-flex;
   flex-direction: column;
+  gap: 8px;
   width: 100%;
 }
 
 .inputWrapper {
   --background: var(--component-input-color-background-default);
-  --border-color: var(--component-input-color-border-default);
   --border-radius: var(--interactive_components-border_radius-normal);
   --icon-background: transparent;
   --icon-width: 22px;
-  --outline-color: var(--semantic-tab_focus-outline-color);
+  --outline-color: var(--component-input-color-border-default);
+  --outline-width: 1px;
   --paddingX: 0;
   --paddingY: 0;
 
@@ -24,18 +25,13 @@
   position: relative;
 }
 
-.inputWrapper.withFocusEffect:focus-within {
-  outline: var(--outline-color) solid var(--semantic-tab_focus-outline-width);
-  outline-offset: var(--semantic-tab_focus-outline-offset);
-}
-
 .inputWrapper.default:hover {
-  --border-color: var(--component-input-color-border-hover);
+  --outline-color: var(--component-input-color-border-hover);
 }
 
 .inputWrapper.error {
   --icon-background: var(--component-input-error-color-border-default);
-  --border-color: var(--component-input-error-color-border-default);
+  --outline-color: var(--component-input-error-color-border-default);
 }
 
 .inputWrapper.disabled {
@@ -52,14 +48,16 @@
 
 .inputWrapper.readonlyInfo {
   --background: var(--component-input-read_only_info-color-background-default);
-  --border-color: var(--component-input-read_only_info-color-border-default);
+  --outline-color: var(--component-input-read_only_info-color-border-default);
 }
 
 .inputWrapper.readonlyConfirm {
   --background: var(
     --component-input-read_only_confirm-color-background-default
   );
-  --border-color: var(--component-input-read_only_confirm-color-border-default);
+  --outline-color: var(
+    --component-input-read_only_confirm-color-border-default
+  );
 }
 
 .inputWrapper.search {
@@ -76,15 +74,13 @@
 }
 
 .field {
-  border-color: var(--border-color);
-  border-radius: var(--border-radius);
-  border-style: solid;
-  border-width: var(--component-input-border_width-default);
   background: var(--background);
+  border-radius: var(--border-radius);
+  border-width: 0;
   box-sizing: border-box;
   font-family: var(--font_family-default);
   font-size: var(--component-input-font_size-sm);
-  outline: none;
+  outline: var(--outline-width) solid var(--outline-color);
   padding: var(--paddingY) var(--paddingX);
   width: 100%;
 }
@@ -93,7 +89,19 @@
   padding-left: calc(var(--paddingX) + var(--icon-width));
 }
 
+.inputWrapper:not(.disabled) .field:hover {
+  --outline-width: 2px;
+}
+
 .label {
   font-weight: var(--component-label-font_weight-default);
   padding: 0;
+}
+
+.characterLimitLabel {
+  margin-top: 4px;
+}
+
+.characterLimitExceeded {
+  color: var(--fds-semantic-text-danger-default);
 }
