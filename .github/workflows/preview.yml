@@ -26,4 +26,4 @@ jobs:
       - name: Create comment with the vercel preview url
         uses: peter-evans/create-or-update-comment@v3
         with:
-          body: ${{ steps.deploy.outout.url }}
+          body: ${{ steps.deploy.outputs.url }}
