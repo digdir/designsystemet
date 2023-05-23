@@ -33,5 +33,5 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ steps.findPr.outputs.pr }}
-          body: The preview deployment is available at:\ ${{ steps.deploy.outputs.url }}
+          body: The preview deployment for this branch is available at  ${{ steps.deploy.outputs.url }}
           reactions: rocket, eyes
