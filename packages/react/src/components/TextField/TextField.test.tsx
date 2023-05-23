@@ -27,6 +27,33 @@ describe('TextField', () => {
       );
     });
 
+    it('should have max allowed characters label for screen readers', () => {
+      render({
+        characterLimit: {
+          maxCount: 10,
+          srLabel: 'Max 10 characters is allowed',
+          label: (count: number) => `${count} characters remaining`,
+        },
+      });
+      const screenReaderText = screen.getByText('Max 10 characters is allowed');
+      expect(screenReaderText).toBeInTheDocument();
+    });
+
+    it('should countdown remaining characters', async () => {
+      const user = userEvent.setup();
+      render({
+        label: 'First name',
+        characterLimit: {
+          maxCount: 10,
+          label: (count: number) => `${count} characters remaining`,
+          srLabel: 'characters remaining',
+        },
+      });
+      const inputField = screen.getByLabelText('First name');
+      await user.type(inputField, 'Peter');
+      expect(screen.getByText('5 characters remaining')).toBeInTheDocument();
+    });
+
     it('Triggers onBlur event when field loses focus', async () => {
       const onBlur = jest.fn();
       render({ onBlur });

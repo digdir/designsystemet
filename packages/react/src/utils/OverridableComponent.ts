@@ -1,12 +1,21 @@
-import type React from 'react';
+import type {
+  RefAttributes,
+  FC,
+  ElementType,
+  ComponentPropsWithRef,
+} from 'react';
 
-export interface OverridableComponent<Component, Element extends HTMLElement> {
-  (props: Component & React.RefAttributes<Element>): ReturnType<React.FC>;
+export type OverridableComponent<
+  ComponentProps,
+  Element extends HTMLElement,
+> = {
+  (props: ComponentProps & RefAttributes<Element>): ReturnType<FC>;
 
-  <As extends React.ElementType>(
+  <As extends ElementType>(
     props: {
-      as: As;
-    } & Component &
-      Omit<React.ComponentPropsWithRef<As>, keyof Component>,
-  ): ReturnType<React.FC>;
-}
+      /** Override html element */
+      as?: As;
+    } & ComponentProps &
+      Omit<ComponentPropsWithRef<As>, keyof ComponentProps>,
+  ): ReturnType<FC>;
+};

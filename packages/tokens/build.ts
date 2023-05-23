@@ -109,13 +109,18 @@ StyleDictionary.registerFormat({
   },
 });
 
+StyleDictionary.registerFileHeader({
+  name: 'fileheader',
+  fileHeader: () => [
+    'Do not edit directly',
+    `These files are generated from design tokens defined in Figma using Token Studio`,
+  ],
+});
+
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
-const getStyleDictionaryConfig = (
-  brand: Brands,
-  targetFolder = 'dist',
-): Config => {
+const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
   const tokensPath = '../../design-tokens';
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
@@ -157,6 +162,7 @@ const getStyleDictionaryConfig = (
           },
         ],
         options: {
+          fileHeader: 'fileheader',
           // outputReferences: true,
         },
       },
@@ -188,6 +194,9 @@ const getStyleDictionaryConfig = (
             filter: excludeSource,
           },
         ],
+        options: {
+          fileHeader: 'fileheader',
+        },
       },
     },
   };
@@ -202,7 +211,7 @@ brands.map((brand) => {
   console.log(`\nProcessing: ${brand}`);
 
   const extendedStyleDictionary = StyleDictionary.extend(
-    getStyleDictionaryConfig(brand, 'dist'),
+    getStyleDictionaryConfig(brand, 'brand'),
   );
 
   extendedStyleDictionary.buildAllPlatforms();
