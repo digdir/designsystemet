@@ -1,0 +1,82 @@
+import Meta from '/..../../components/Meta/Meta';
+import { PageLayout } from '/..../../layouts';
+
+<Meta
+  title='Skriveråd'
+  description='Retningslinjene skal hjelpe oss til å skrive brukertilpasset, klart og helhetlig.'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Skriveråd',
+      date: '21. mai 2023',
+      author: 'Digdir',
+      backText: 'God praksis',
+      backUrl: 'god-praksis',
+    }}
+  />
+);
+
+Komponentene i designsystemet skal fylles med informasjon til brukerne. Når vi gjør det, er det viktig at vi skriver på et klart og korrekt språk som er tilpasset målgruppen. Det har vi til og med [en lov om](https://lovdata.no/lov/2021-05-21-42/§9)! Brukerne skal finne, forstå og gjøre det de kom til tjenesten for å gjøre.
+
+Som hovedregel bør du bruke retningslinjene fra [Språkrådet](https://www.sprakradet.no/klarsprak/om-skriving/generelle-skriverad-bokmal/) når du skriver. I tillegg finnes det flere andre gode skriveråd som er utarbeidet i det offentlige for å skrive godt innhold. Her er noen av dem. 😅 (Hvem skulle trodd at vi trengte så mange guider for å skrive godt?!)
+
+- Digdir: [Korleis arbeide med brukardialog og klart språk](https://www.digdir.no/klart-sprak/brukardialog-og-klart-sprak/2051)
+- KS: [Klart språk i digitale løsninger](https://www.ks.no/fagomrader/digitalisering/klart-sprak-i-digitale-selvbetjeningslosninger/)
+- NAV: [Slik skriver du enkelt og godt](https://aksel.nav.no/god-praksis/artikler/sprakarbeid?tema=innholdsarbeid)
+- Helsenorge: [Tips for hvordan du skriver gode tekster i klarspråk](https://www.helsenorge.no/redaksjon/slik-skriver-vi/)
+- DFØ: [Klarspråk](https://dfo.no/sites/default/files/2022-03/DF%C3%98s%20spr%C3%A5kprofil.pdf)
+- Oslo kommune: [Slik skriver vi](https://www.sprakradet.no/globalassets/klarsprak-ny/arbeidsmetoder/kommunale-sprakprofiler/sprakprofil_oslo-kommune_kort_digital_enkeltsider_2019.pdf)
+- Stavanger kommune: [Språkarbeid i Stavanger kommune](https://www.stavanger.kommune.no/samfunnsutvikling/prosjekter/sprakarbeid-i-Stavangerkommune/)
+- Kristiansand kommune: [Skriv og bli forstått](https://www.canva.com/design/DAEHydOrkrE/view?utm_content=DAEHydOrkrE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink#13)
+- Namsos kommune: [10 skriveråd for klart språk](https://namsos.kommune.no/brukervennlig-innhold/klarsprak/ti-skriverad/)
+- Bømlo kommune: [Språkprofil Retningslinjer](https://www.bomlo.kommune.no/_f/p1/i67ce0f82-e43e-4972-ba69-e4d014e88837/bk-retningslinjer-sprakprofil-rev-05122022.pdf)
+- Vestfold og Telemark Fylkeskommune: [Ti skriveråd](https://designmanual.vtfk.no/om-designmanualen/skriverad/)
+- Trøndelag Fylkeskommune: [Gode skriveråd](https://www.trondelagfylke.no/globalassets/bilder/klarsprak/klarsprak_hefte_a5_kort.pdf)
+- Gjøvik kommune: [Ti konkrete skriveråd](https://www.gjovik.kommune.no/sprakprofil/ti-konkrete-skriverad/) \
+  (+ en haug med kommuner)
+
+Oppfordrer deg til å [redigere denne listen i github](https://github.com/digdir/designsystem/edit/main/storefront/pages/god-praksis/innholdsarbeid/skriverad.mdx) dersom du mener noe mangler!
+
+## Prinsipper som går igjen
+
+Blant alle de ulike retningslinjene som er utarbeidet er det (heldigvis) mange av de samme prinsippene som går igjen.
+
+### Test på ekte brukere
+
+Det aller viktigste du kan gjøre for å sikre at brukerne forstår det du skriver, er å brukerteste. Test tidlig og hyppig, og test på ekte brukere. Test ord og begreper. Bruk reell tekst både når du tester tidlige skisser og protyper.
+
+### Skriv kort og tydelig
+
+Et råd for hvordan du kan skrive tydelig og klart, er ofte også et råd om hvordan du kan skrive kort. La det komme tydelig fram hvem som gjør hva. Tenk at du skriver en samtale. I tillegg er det viktig å ikke la seg friste til å bruke unødvendige substantiver, skrive konkret og plassere verbene tidlig i setningene.
+
+### Hvem som gjør hva må komme tydelig fram
+
+I digitale tjenester er det viktig at brukerne lett forstår hvem som skal gjøre hva. Regelverk og lover har ofte passivt språk og det har også preget det offentlige språket generelt. Når vi skriver passivt blir det utydelig hvem som gjør hva.
+
+Derfor skal vi skrive aktivt og som om vi snakker direkte til brukeren. Vi skal bruke ord som “du” og “vi”.
+
+#### Eksempel
+
+**Ikke skriv:** Det blir sendt en e-post når søknaden er behandlet. \
+**Skriv heller:** Du får en e-post fra oss når søknaden er behandlet.
+
+### Unngå substantivsjuken
+
+Når vi bruker mange substantiver, blir teksten tung å lese og vi bruker flere ord enn nødvendig. Særlig gjelder det når vi gjør et verb om til et substantiv, for eksempel når vi velger å skrive «foreta en utredning» i stedet for å «utrede». Du kan sjekke om teksten er subtantivsjuk ved å se etter ord som slutter på «-ing» og «-else» og har en «av» foran.
+
+#### Eksempel
+
+**Ikke skriv:** Vi har foretatt en behandling av søknaden \
+**Skriv heller:** Vi har behandlet søknaden
+
+### Sett verbet så tidlig som mulig i setningen
+
+Når språket blir formelt plasserer vi i ofte verbet for langt ut i setningen. Det gjør at du må lese mange ord før du får verbet, og det blir vanskeligere å huske hva som sto tidlig i setningen.
+
+#### Eksempel
+
+**Ikke skriv:** Arbeidstaker har en del plikter som må oppfylles \
+**Skriv heller:** Arbeidstaker må oppfylle noen plikter
