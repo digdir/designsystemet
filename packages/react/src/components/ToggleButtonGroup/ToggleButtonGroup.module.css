@@ -30,8 +30,7 @@
 
 .toggleButton:focus-visible {
   outline-offset: var(--semantic-tab_focus-outline-offset);
-  outline: var(--semantic-tab_focus-outline-color) auto
-    var(--semantic-tab_focus-outline-width);
+  outline: var(--semantic-tab_focus-outline-color) auto var(--semantic-tab_focus-outline-width);
   z-index: 1;
 }
 

@@ -8,17 +8,17 @@
 }
 
 .label.large {
-   font: var(--fds-typography-label-large);
+  font: var(--fds-typography-label-large);
 }
 
 .label.medium {
-   font: var(--fds-typography-label-medium);
+  font: var(--fds-typography-label-medium);
 }
 
 .label.small {
-   font: var(--fds-typography-label-small);
+  font: var(--fds-typography-label-small);
 }
 
 .label.xsmall {
-   font: var(--fds-typography-label-xsmall);
+  font: var(--fds-typography-label-xsmall);
 }

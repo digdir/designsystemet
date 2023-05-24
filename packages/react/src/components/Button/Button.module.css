@@ -83,10 +83,7 @@
 }
 
 .button.onlyIcon {
-  padding: calc(
-    (var(--button-size) - var(--icon-size)) / 2 -
-      var(--component-button-border_width-default)
-  );
+  padding: calc((var(--button-size) - var(--icon-size)) / 2 - var(--component-button-border_width-default));
 }
 
 /* Filled button colors */
@@ -158,9 +155,7 @@
 
 /* Outline button colors */
 .button.outline.primary {
-  --font-and-icon-color: var(
-    --component-button-outline-primary-color-text-default
-  );
+  --font-and-icon-color: var(--component-button-outline-primary-color-text-default);
 
   border-color: var(--component-button-outline-primary-color-border-default);
   background: var(--component-button-outline-primary-color-background-default);
@@ -174,9 +169,7 @@
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(
-    --component-button-outline-primary-color-text-pressed
-  );
+  --font-and-icon-color: var(--component-button-outline-primary-color-text-pressed);
 
   background: var(--component-button-outline-primary-color-background-pressed);
 }
@@ -256,9 +249,7 @@
 
 /* Quiet button colors */
 .button.quiet.primary {
-  --font-and-icon-color: var(
-    --component-button-quiet-primary-color-text-default
-  );
+  --font-and-icon-color: var(--component-button-quiet-primary-color-text-default);
 }
 
 .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
