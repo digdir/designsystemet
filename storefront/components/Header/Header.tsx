@@ -8,7 +8,7 @@ import cn from 'classnames';
 import classes from './Header.module.css';
 
 /**
- * function to check if menu item should be active
+ * Function to check if the menu item should be active
  * @param routerPath - The current router path
  * @param itemPath - The current menu item path
  */
