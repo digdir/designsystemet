@@ -98,6 +98,11 @@
   padding: 0;
 }
 
+.characterLimitContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .characterLimitLabel {
   margin-top: 4px;
 }
