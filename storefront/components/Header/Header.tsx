@@ -7,6 +7,15 @@ import cn from 'classnames';
 
 import classes from './Header.module.css';
 
+/**
+ * function to check if menu item should be active
+ * @param routerPath - The current router path
+ * @param itemPath - The current menu item path
+ */
+const isMenuItemActive = (routerPath: string, itemPath: string) => {
+  return routerPath.startsWith(itemPath);
+};
+
 const Header = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -77,7 +86,9 @@ const Header = () => {
                 <Link
                   href={item.url}
                   className={cn(
-                    router.pathname == item.url ? classes.active : '',
+                    isMenuItemActive(router.pathname, item.url)
+                      ? classes.active
+                      : '',
                     classes.link,
                   )}
                 >
