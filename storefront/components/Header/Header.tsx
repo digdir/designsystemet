@@ -9,8 +9,8 @@ import classes from './Header.module.css';
 
 /**
  * Function to check if the menu item should be active
- * @param routerPath - The current router path
- * @param itemPath - The current menu item path
+ * @param routerPath - The current router path.
+ * @param itemPath - The current menu item path.
  */
 const isMenuItemActive = (routerPath: string, itemPath: string) => {
   return routerPath.startsWith(itemPath);
