@@ -109,11 +109,13 @@ export const InputWrapper = ({
         </span>
       </span>
       {characterLimit && (
-        <CharacterCounter
-          {...characterLimit}
-          value={currentInputValue}
-          ariaDescribedById={characterLimitDescriptionId}
-        />
+        <div className={classes.characterLimitContainer}>
+          <CharacterCounter
+            {...characterLimit}
+            value={currentInputValue}
+            ariaDescribedById={characterLimitDescriptionId}
+          />
+        </div>
       )}
     </div>
   );
