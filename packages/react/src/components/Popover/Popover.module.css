@@ -9,8 +9,7 @@
 }
 
 .popover:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) solid
-    var(--semantic-tab_focus-outline-width);
+  outline: var(--semantic-tab_focus-outline-color) solid var(--semantic-tab_focus-outline-width);
   outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 

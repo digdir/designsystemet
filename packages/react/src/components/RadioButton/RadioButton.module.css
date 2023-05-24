@@ -55,9 +55,7 @@
 }
 
 .checkmark {
-  box-shadow: 0 0 0 calc(2 * var(--radio-border_width))
-      var(--radio-background_color) inset,
-    0 0 0 var(--radio-size) var(--radio-checkmark-color) inset;
+  box-shadow: 0 0 0 calc(2 * var(--radio-border_width)) var(--radio-background_color) inset, 0 0 0 var(--radio-size) var(--radio-checkmark-color) inset;
   border-radius: 50%;
   display: var(--radio-checkmark-display);
   height: 100%;

@@ -147,13 +147,8 @@
 }
 
 .arrowWrapper {
-  --arrow-height: calc(
-    var(--arrow-size) * var(--arrow-height_to_width_fraction)
-  );
-  --arrow-vertical_padding: calc(
-    (var(--field-height-inside) - var(--arrow-height)) / 2 -
-      var(--arrow_wrapper-margin)
-  );
+  --arrow-height: calc(var(--arrow-size) * var(--arrow-height_to_width_fraction));
+  --arrow-vertical_padding: calc((var(--field-height-inside) - var(--arrow-height)) / 2 - var(--arrow_wrapper-margin));
 
   align-items: center;
   border-left: var(--arrow-border_left);
@@ -168,14 +163,7 @@
 
 .arrow {
   background-color: var(--arrow-color);
-  clip-path: polygon(
-    11.72% 9.93%,
-    50% 67.28%,
-    88.28% 9.93%,
-    97.43% 29.13%,
-    50% 96.79%,
-    2.57% 29.13%
-  );
+  clip-path: polygon(11.72% 9.93%, 50% 67.28%, 88.28% 9.93%, 97.43% 29.13%, 50% 96.79%, 2.57% 29.13%);
   display: inline-block;
   height: var(--arrow-height);
   width: var(--arrow-size);
@@ -253,9 +241,7 @@
   overflow-x: hidden;
   padding-left: var(--option-padding_horizontal);
   padding-right: var(--option-padding_horizontal);
-  padding-top: calc(
-    (var(--option-height) - (var(--font_size) * var(--line-height))) / 2
-  );
+  padding-top: calc((var(--option-height) - (var(--font_size) * var(--line-height))) / 2);
   text-align: left;
   text-overflow: ellipsis;
 }
