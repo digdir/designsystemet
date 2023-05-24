@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import * as tokens from '@digdir/design-system-tokens';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
@@ -27,26 +27,18 @@ const formatTitle = (title: string) => {
 const TokenList = ({ type, showValue = true, token }: TokensProps) => {
   const [items, setItems] = useState<OutputType>({});
 
-  const queryResponse = useQuery({
-    queryKey: ['tokens'],
-    queryFn: () => fetch('/api/tokens').then((response) => response.json()),
-  });
-  const data = queryResponse.data as OutputType;
-
   useEffect(() => {
-    if (data) {
-      const obj: OutputType = {};
+    const obj: OutputType = {};
 
-      Object.keys(data).map((key) => {
-        if (key.startsWith(token)) {
-          obj[key] = data[key].replace(';', '').replace('}', '');
-        }
-      });
-      setItems(obj);
-    }
-  }, [data, token]);
-
-  if (queryResponse.isLoading) return 'Henter tokens...';
+    Object.keys(tokens).map((key) => {
+      if (key.startsWith(token)) {
+        let a = data[key].replace(';', '').replace('}', ''.replace('_', '-'));
+        console.log(a);
+        obj[key] = a;
+      }
+    });
+    setItems(obj);
+  }, [token]);
 
   return (
     <div className={classes.tokens}>
