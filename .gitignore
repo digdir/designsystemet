@@ -25,5 +25,8 @@ coverage/
 # Storybook build files
 docs
 
-# Vercel
-.vercel
+# Hidden macOS files
+.DS_Store
+
+# Vercel connfig files
+.vercel/

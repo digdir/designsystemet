@@ -1,4 +1,4 @@
-.page {
+.container {
   margin-top: var(--page-spacing-top);
   margin-bottom: var(--page-spacing-bottom);
   display: flex;
@@ -7,127 +7,63 @@
   gap: var(--spacing-5);
 }
 
-.left {
-  flex-basis: 220px;
-  flex-grow: 1;
+.header {
+  background-color: #c2e4fe;
+  padding-top: 32px;
 }
 
-.right {
-  flex-basis: 600px;
-  flex-grow: 500;
+.headerContent {
+  max-width: 780px;
+  margin: 0 auto;
+  padding-bottom: 72px;
 }
 
 .title {
   font-size: 36px;
   margin-bottom: 0;
   line-height: 1.3em;
+  text-align: center;
 }
 
-.desc {
-  font-size: 18px;
-  line-height: 1.6em;
-  margin-bottom: -10px;
-}
-
-.list {
-  margin-bottom: 32px;
-  color: #4d4d4d;
-}
-
-.list ul {
-  margin: 0;
-  padding: 0;
-}
-
-.list h3 {
-  font-size: 19px;
-  margin-bottom: 10px;
-}
-
-.list li {
-  list-style: none;
-}
-
-.list li a {
-  text-decoration: none;
+.back {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
   color: inherit;
-  font-size: 15px;
-  display: block;
-  margin-bottom: 10px;
+  text-underline-offset: 5px;
 }
 
-.header {
-  padding: 32px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
+.back:hover {
+  text-decoration-thickness: 2px;
 }
 
-.header::after {
-  position: absolute;
-  right: -0;
-  bottom: -200px;
-  transform: rotate(25deg);
-  content: '';
-  height: 250px;
-  width: 250px;
-  border-radius: 8px;
-  border: 8px solid #1e98f5;
-  opacity: 0.15;
+.back svg {
+  margin-right: 8px;
 }
 
 .date {
-  margin-top: 12px;
-  font-size: 16px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.separator {
+  margin: 0 8px;
+}
+
+.meta {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 14px;
 }
 
 .content {
-  padding: 16px 32px 24px;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 @media (max-width: 576px) {
   .content {
     padding: 0;
   }
-}
-
-.content p {
-  font-size: 18px;
-  line-height: 1.55em;
-  margin-bottom: 20px;
-}
-
-.content h1 + p {
-  font-size: 24px;
-  line-height: 1.7em;
-  margin-bottom: 36px;
-}
-
-.content h2 {
-  margin-top: 40px;
-  margin-bottom: 16px;
-  line-height: 1.3em;
-  font-size: 28px;
-}
-
-.content h3 {
-  margin-top: 40px;
-  margin-bottom: 16px;
-  line-height: 1.3em;
-  font-size: 24px;
-}
-
-.content h4 {
-  margin-top: 40px;
-  margin-bottom: 16px;
-  line-height: 1.3em;
-  font-size: 20px;
-}
-
-.content img {
-  width: 100%;
-  margin: 24px 0;
-  border-radius: 2px;
 }

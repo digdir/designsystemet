@@ -1,6 +1,12 @@
 import Meta from '../components/Meta/Meta';
 import { FrontpageLayout } from '../layouts';
-import { ImageIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
+import {
+  ImageIcon,
+  WrenchIcon,
+  ComponentIcon,
+  EnvelopeClosedIcon,
+  BranchingIcon,
+} from '@navikt/aksel-icons';
 
 <Meta
   title='Velkommen'
@@ -13,7 +19,7 @@ export default ({ children }) => (
     data={{
       title: 'Felles Designsystem',
       description:
-        'Felles designsystem består av grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester. Vi håper dette kan bli en felles verktøykasse der vi samarbeider på tvers om å lage det beste grunnlaget for offentlige tjenester.',
+        'Felles designsystem består av grunnleggende designelementer, komponenter og mønstre du kan bruke når du utvikler tjenester. Vi håper dette kan bli en felles verktøykasse der vi samarbeider på tvers om å lage det beste grunnlaget for offentlige tjenester.',
       navigationCards: {
         title: 'Kom i gang',
         items: [
@@ -44,14 +50,32 @@ export default ({ children }) => (
         ],
       },
       contributeSection: {
-        title: 'Ønsker du å bidra?',
+        title: 'Bli med på samarbeidet?',
         description:
-          'Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Målet er at innbyggere skal oppleve offentlige tjenester mer helhetlig, ved at vi bygger tjenestene våre på det samme fundamentet og med de samme retningslinjene. Vil du høre mer om dette, eller samarbeide med oss?',
-        email: 'designsystem@digdir.no',
+          'Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?',
         image: '/img/people-holding-figures.svg',
         imageWidth: 1195,
         imageHeight: 270,
+        buttons: [
+            {
+              text: 'Ta kontakt',
+              href: 'mailto:designsystem@digdir.no',
+              prefix: <EnvelopeClosedIcon fontSize={24} />,
+            },
+            {
+              text: 'Bli med i Slack-kanalen',
+              href: 'grunnleggende/introduksjon/forum',
+              prefix: (<img src='img/slack-logo.png' alt='Slack logo' />
+              ),
+            },
+            {
+              text: 'Github',
+              href: 'https://github.com/digdir/designsystem',
+              prefix: <BranchingIcon fontSize={24} />,
+            },
+          ]
       },
     }}
-  />
+
+/>
 );

@@ -15,7 +15,7 @@
 .card:hover {
   color: inherit;
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   cursor: pointer;
 }
 

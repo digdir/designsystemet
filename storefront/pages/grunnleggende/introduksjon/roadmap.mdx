@@ -1,5 +1,5 @@
 import Meta from '../../../components/Meta/Meta';
-import { PageLayout } from '../../../layouts';
+import { MenuPageLayout } from '../../../layouts';
 
 <Meta
   title='Roadmap'
@@ -7,48 +7,59 @@ import { PageLayout } from '../../../layouts';
 />
 
 export default ({ children, menu }) => (
-  <PageLayout
+  <MenuPageLayout
     content={children}
     data={{
       title: 'Roadmap',
-      date: '21. april 2023',
+      date: '15. mai 2023',
     }}
   />
 );
 
-## Roadmap - Felles designsystem
+### 2023
 
-Samtidig som vi jobber med å etablere et felles designsystem i Digdir, ønker vi å se på muligheter for et felles designsystem i det offentlige. I løpet av 2023 ønsker vi derfor å invitere til samarbeidsarenaer rundt felles designsystem der vi sammen kan identifisere utfordringer og behov som går igjen på tvers. Vi ønsker å komme i kontakt med interessenter og tilrettelegge for et samarbeid rundt felles designsystem på tvers av offentlige etater.
+I løpet av 2023 ønsker vi å invitere til samarbeidsarenaer rundt felles designsystem der vi sammen kan identifisere utfordringer og behov som går igjen på tvers. Vi ønsker å komme i kontakt med interessenter og tilrettelegge for et samarbeid rundt felles designsystem på tvers av offentlige etater.
 
-### 2023 - Q1
+- **Etablere et Designsystem-Team i Digdir**
+- **Utforske grunnleggende oppsett som støtter ulike identiteter**
 
-**Grunnleggende designelementer**<br/>
-Håndtering av styles, farger, typografi, grid, avstander, ikoner, osv.<br/>
-Se detaljert roadmap for Q1 i [Github](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19744450)
+  - **Grunnleggende designelementer**<br/>
+    Håndtering av styles, farger, typografi, grid, avstander, ikoner, osv.<br/>
 
-### 2023 - Q2
+  - **Grunnleggende komponenter**<br/>
+    Design og utvikling av komponenter i Figma og Storybook.<br/>
 
-**Grunnleggende komponenter**<br/>
-Design og utvikling av komponenter i Figma og Storybook.<br/>
-Se detaljert roadmap for Q2 i [Github](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19746225)
+- **Utforske samarbeid - Utfordringer og felles behov**
 
-### 2023 - Q3
+  - **Faste tverretatlige møtepunkt** \
+    Se på hva som skal til for at vi i større grad kan samarbeide (Digdir, Brønnøysundregistrene, Skatteetaten, Nav). Identifisere lavthengende frukter vi kan samarbeide om allerede. Hva kan vi starte med?
 
-**Retningslinjer**<br/>
-Dokumentasjon, retningslinjer og eksemplerfor bruk av komponenter
+    - [Ikonbibliotek](../designelementer/ikoner)
+    - Felles kravliste over kvalitetskrav?
+    - Felles mønstre for å håndtere ofte brukte handlinger og gjentagende brukerdialoger?
+    - Etablere felles konvensjoner rundt interaksjon og forventet oppførsel på komponenter, samt plassering av sentrale elementer?
+    - Felles [innsiktsbase](/god-praksis/brukerinnsikt/felles-innsiktsbase)?
+    - [Felles designprinsipper](http://localhost:3000/grunnleggende/introduksjon/designprinsipper)? Hvordan ønsker vi at innbyggerne skal oppleve oss? Vi må sammen definere hva som er en god brukeropplevelse og hvordan vi best kan skape denne.
 
-### 2023 - Q4
+- **Retningslinjer og god praksis**<br/>
+  Lage et hjem for felles dokumentasjon, retningslinjer, god praksis og eksempler på bruk av komponenter
 
-**Felles interaksjonsmønstre**<br/>
-Lage eksempler for grunnleggende brukeroppgaver som innlogging, navigering i skjema, innsending av skjema. Validering, osv.
+\
+Se detaljert roadmap i Github:
 
-### Beyond 2023
+- [2023 - Q1](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19744450)
+- [2023 - Q2](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19746225)
 
-**Skape et felles hjem for god praksis**<br/>
-Jobbe videre med komponenter, mønstre, eksempler på sammensetting av komponenter, retningslinjer og god praksis - alt som gir verdi å dele på tvers.<br/>
+## Videre arbeid
 
 **Tilrettelegge for et samarbeid på tvers av offentlig sektor**<br/>
 Jobbe for at designsystemet blir en samarbeidsarena på tvers av offentlige etater, der vi kan løse problemer i fellesskap og gjenbruke på tvers.
 
+**Etablere felles mønstre**<br/>
+Lage eksempler for grunnleggende brukeroppgaver som innlogging, navigering i skjema, innsending av skjema, validering, osv.
+
 **Felles innsiktsbase**<br/>
-Vi ønsker også å jobbe mer felles med innsikt på tvers, og håper vi på sikt kan få til en felles innsiktsbase i lik grad med at vi har åpen kildekode. Komponenter i designsystemet kan knyttes opp mot relevant innsiktsarbeid.
+Legge tilrette for innsiktsdeling på tvers i lik grad med at vi har åpen kildekode. Komponenter i designsystemet kan knyttes opp mot relevant innsiktsarbeid.
+
+**Videreutvikle designsystemet**<br/>
+Jobbe videre med komponenter, eksempler på sammensetting av komponenter, retningslinjer og god praksis - alt som gir verdi å dele på tvers.<br/>

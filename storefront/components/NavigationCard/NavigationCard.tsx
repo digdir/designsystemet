@@ -6,14 +6,14 @@ import classes from './NavigationCard.module.css';
 
 export interface NavigationCardProps {
   title: string;
-  color: 'red' | 'blue' | 'yellow';
-  icon: React.ReactNode;
+  color?: 'red' | 'blue' | 'yellow';
+  icon?: React.ReactNode;
   backgroundColor?: 'white' | 'grey';
-  description: string;
+  description?: string;
   url?: string;
 }
 
-export const NavigationCard = ({
+const NavigationCard = ({
   title,
   color = 'red',
   icon,
@@ -32,3 +32,5 @@ export const NavigationCard = ({
     </Link>
   );
 };
+
+export { NavigationCard };

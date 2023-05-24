@@ -1,10 +1,10 @@
 import React from 'react';
-import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 
 import Section from '../../components/Section/Section';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
 import Banner from '../../components/Banner/Banner';
+import type { ButtonProps } from '../../components/ImageSection/ImageSection';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
 
 import classes from './FrontpageLayout.module.css';
@@ -29,6 +29,7 @@ interface FrontpageData {
     image: string;
     imageWidth: number;
     imageHeight: number;
+    buttons?: ButtonProps[];
   };
 }
 
@@ -63,15 +64,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           src={data.contributeSection.image}
           imgWidth={data.contributeSection.imageWidth}
           imgHeight={data.contributeSection.imageHeight}
-          content={
-            <a
-              href={'mailto:' + data.contributeSection.email}
-              className={classes.link}
-            >
-              <EnvelopeClosedIcon fontSize={33} />
-              <span>Ta kontakt med oss på e-post.</span>
-            </a>
-          }
+          buttons={data.contributeSection.buttons}
         />
 
         {/*<Section*/}

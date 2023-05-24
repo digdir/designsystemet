@@ -1,5 +1,5 @@
 import Meta from '/..../../components/Meta/Meta';
-import { PageLayout } from '/..../../layouts';
+import { MenuPageLayout } from '/..../../layouts';
 
 <Meta
   title='Andre gode språkressurser'
@@ -7,7 +7,7 @@ import { PageLayout } from '/..../../layouts';
 />
 
 export default ({ children, menu }) => (
-  <PageLayout
+  <MenuPageLayout
     content={children}
     data={{
       title: 'Andre gode språkressurser',
@@ -17,8 +17,6 @@ export default ({ children, menu }) => (
 );
 
 ## God praksis - andre ressurser
-
-Inntil vi har ressurser til å jobbe frem mer innhold til disse sidene, kan vi anbefale God praksis-artiklene fra Aksel (NAV). Mye av erfaringen som er gjort i produktutvikling hos NAV er relevant for flere som jobber med innbyggertjenester.
 
 - [Innholdsarbeid](https://aksel.nav.no/god-praksis/innholdsarbeid)
 - [Brukerinnsikt](https://aksel.nav.no/god-praksis/brukerinnsikt)
