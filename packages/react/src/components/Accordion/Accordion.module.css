@@ -77,8 +77,10 @@
   outline: none;
 }
 
-.header > button:hover {
-  color: var(--fdsc-accordion-header-color-hover);
+@media (hover: hover) and (pointer: fine) {
+  .header > button:hover {
+    color: var(--fdsc-accordion-header-color-hover);
+  }
 }
 
 .item:focus-within {
@@ -120,20 +122,22 @@
   border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
 }
 
-.accordion.subtle > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-subtle-hover);
-}
+@media (hover: hover) and (pointer: fine) {
+  .accordion.subtle > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-subtle-hover);
+  }
 
-.accordion.primary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-primary-hover);
-}
+  .accordion.primary > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-primary-hover);
+  }
 
-.accordion.secondary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-secondary-hover);
-}
+  .accordion.secondary > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-secondary-hover);
+  }
 
-.accordion.tertiary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-tertiary-hover);
+  .accordion.tertiary > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-tertiary-hover);
+  }
 }
 
 .accordion.neutral > .item.open > .header > button,
