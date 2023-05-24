@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as tokens from '@digdir/design-system-tokens';
+import * as tokensImport from '@digdir/design-system-tokens';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
@@ -24,21 +24,25 @@ const formatTitle = (title: string) => {
   return title.replace(/-/g, ' ');
 };
 
+const convertJsToCssVariable = (input: string) => {
+  return 'fds-' + input.replace(/_/g, '-');
+};
+
 const TokenList = ({ type, showValue = true, token }: TokensProps) => {
   const [items, setItems] = useState<OutputType>({});
+  const tokens: OutputType = tokensImport;
 
   useEffect(() => {
-    const obj: OutputType = {};
+    const formatedOutput: OutputType = {};
 
     Object.keys(tokens).map((key) => {
-      if (key.startsWith(token)) {
-        let a = data[key].replace(';', '').replace('}', ''.replace('_', '-'));
-        console.log(a);
-        obj[key] = a;
+      const cssVariable: string = convertJsToCssVariable(key);
+      if (cssVariable.startsWith(token)) {
+        formatedOutput[cssVariable] = tokens[key];
       }
     });
-    setItems(obj);
-  }, [token]);
+    setItems(formatedOutput);
+  }, [token, tokens]);
 
   return (
     <div className={classes.tokens}>
@@ -56,7 +60,7 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
             </div>
             <div className={classes.text}>
               <h4 className={classes.title}>
-                {capitalizeString(formatTitle(key.split(token)[1].slice(1)))}
+                {capitalizeString(formatTitle(key.split(token)[1]))}
                 {showValue && <div className={classes.value}>{items[key]}</div>}
               </h4>
               <div className={classes.copy}>
