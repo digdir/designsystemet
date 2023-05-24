@@ -1,0 +1,37 @@
+name: Vercel Storefront Preview Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
+on:
+  push:
+    branches-ignore:
+      - main
+      - github-pages-deployment
+    paths:
+      - 'storefront/**'
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - id: deploy
+        name: Deploy Project Artifacts to Vercel
+        run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+          state: open
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.findPr.outputs.number
+      - name: Create comment with the vercel preview deployment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ steps.findPr.outputs.pr }}
+          body: The preview deployment is available at  ${{ steps.deploy.outputs.url }}
+          reactions: rocket, eyes
