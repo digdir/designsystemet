@@ -7,10 +7,9 @@
 }
 
 .ingress.medium {
-   font: var(--fds-typography-ingress-medium);
+  font: var(--fds-typography-ingress-medium);
 }
 
 .ingress.large {
-   font: var(--fds-typography-ingress-large);
+  font: var(--fds-typography-ingress-large);
 }
-

@@ -6,13 +6,12 @@
   flex-direction: column;
   width: auto;
   margin-bottom: 2rem !important;
-
 }
 
 .title {
   font: var(--fds-typography-heading-xxsmall) !important;
 }
 
-.desc > * p  {
+.desc > * p {
   font: var(--fds-typography-paragraph-short-small) !important;
 }

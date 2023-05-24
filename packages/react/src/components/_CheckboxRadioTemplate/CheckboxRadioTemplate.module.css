@@ -71,12 +71,7 @@
   gap: var(--description-margin_top);
 
   /* Center-align input box with the first line in the label */
-  margin-top: calc(
-    (
-        var(--input_box-size) -
-          (var(--typography-default-line-height) * var(--font_size))
-      ) / 2
-  );
+  margin-top: calc((var(--input_box-size) - (var(--typography-default-line-height) * var(--font_size))) / 2);
 }
 
 .label {
