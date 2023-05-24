@@ -1,0 +1,126 @@
+.chips {
+  display: flex;
+  list-style: none;
+  gap: var(--fds-sizing-xsmall);
+  box-sizing: border-box;
+}
+
+.chip {
+  border-radius: 50px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.chips.xsmall {
+  height: var(--fds-sizing-medium);
+}
+
+.chips.small {
+  height: var(--fds-sizing-large);
+}
+
+.chips.xsmall > li > .chip {
+  height: var(--fds-sizing-medium);
+  padding-left: var(--fds-sizing-xxsmall);
+}
+
+.chips.small > li > .chip {
+  height: var(--fds-sizing-large);
+  padding-left: var(--fds-sizing-xsmall);
+  font-size: var(--fds-typography-heading-medium);
+}
+
+.chips.xsmall > li > .chip.toggle {
+  padding-right: var(--fds-sizing-xxsmall);
+}
+
+.chips.small > li > .chip.toggle {
+  padding-right: var(--fds-sizing-xsmall);
+}
+
+.chips.xsmall > li > .chip.toggle.active {
+  padding-left: 0;
+}
+
+.chips.small > li > .chip.toggle.active {
+  padding-left: 0;
+}
+
+.chips.small > li > button > div > span {
+  width: var(--fds-sizing-large);
+  font-size: 24px;
+}
+
+.chips.xsmall > li > button > div > span {
+  width: var(--fds-sizing-medium);
+  font-size: 20px;
+}
+
+.chips.xsmall > li > button > div > span.xmark {
+  height: var(--fds-sizing-medium);
+}
+
+.chips.small > li > button > div > span.xmark {
+  height: var(--fds-sizing-large);
+}
+
+.toggle {
+  background-color: var(--fds-semantic-surface-neutral-default);
+  border: solid 1px;
+  border-color: var(--fds-semantic-border-neutral-default);
+  color: var(--fds-semantic-text-neutral-default);
+  box-sizing: border-box;
+}
+
+.toggle.active {
+  background-color: var(--fds-semantic-surface-action-active);
+  border-color: var(--fds-semantic-surface-action-active);
+  color: var(--fds-semantic-text-action-on_action);
+}
+
+.toggle.active:hover {
+  background-color: var(--fds-semantic-surface-action-no_fill-active);
+  border-color: --fds-semantic-border-action-active;
+  border: solid 2px;
+  box-sizing: border-box;
+  color: var(--fds-semantic-text-neutral-default);
+}
+
+.removable {
+  background-color: var(--fds-semantic-surface-action-active);
+  color: var(--fds-semantic-text-action-on_action);
+  border: 0;
+  padding-right: 0;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  padding-right: 4px;
+}
+
+.xmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.checkmark {
+  width: var(--fds-sizing-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removable:hover .xmark {
+  background-color: var(--fds-semantic-surface-danger-default);
+}
+
+.toggle:hover {
+  background-color: var(--fds-semantic-border-neutral-subtle);
+}
