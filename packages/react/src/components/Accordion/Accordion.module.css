@@ -18,8 +18,7 @@
   --fdsc-accordion-header-bg-tertiary-hover: var(--fds-semantic-surface-tertiary-tertiary-hover);
   --fdsc-accordion-header-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-header-border-inverted: var(--fds-semantic-border-on_inverted-default);
-  --fdsc-accordion-header-shadow-focus: 2px 2px 3px
-    var(--fds-semantic-border-neutral-subtle);
+  --fdsc-accordion-header-shadow-focus: 2px 2px 3px var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-default);
   --fdsc-accordion-content-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-content-border-open: var(--fds-semantic-border-neutral-strong);
@@ -70,8 +69,7 @@
 }
 
 .header > button:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) solid
-    var(--semantic-tab_focus-outline-width);
+  outline: var(--semantic-tab_focus-outline-color) solid var(--semantic-tab_focus-outline-width);
   outline-offset: var(--semantic-tab_focus-outline-offset);
 }
 
@@ -79,31 +77,38 @@
   outline: none;
 }
 
-.header > button:hover {
-  color: var(--fdsc-accordion-header-color-hover)
+@media (hover: hover) and (pointer: fine) {
+  .header > button:hover {
+    color: var(--fdsc-accordion-header-color-hover);
+  }
 }
 
 .item:focus-within {
   position: relative;
 }
 
-.accordion.neutral, .accordion.neutral > .item > .header > button {
+.accordion.neutral,
+.accordion.neutral > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-neutral);
 }
 
-.accordion.subtle, .accordion.subtle > .item > .header > button {
+.accordion.subtle,
+.accordion.subtle > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-subtle);
 }
 
-.accordion.primary, .accordion.primary > .item > .header > button {
+.accordion.primary,
+.accordion.primary > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-primary);
 }
 
-.accordion.secondary, .accordion.secondary > .item > .header > button {
+.accordion.secondary,
+.accordion.secondary > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-secondary);
 }
 
-.accordion.tertiary, .accordion.tertiary > .item > .header > button {
+.accordion.tertiary,
+.accordion.tertiary > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-tertiary);
 }
 
@@ -117,20 +122,22 @@
   border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
 }
 
-.accordion.subtle > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-subtle-hover);
-}
+@media (hover: hover) and (pointer: fine) {
+  .accordion.subtle > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-subtle-hover);
+  }
 
-.accordion.primary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-primary-hover);
-}
+  .accordion.primary > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-primary-hover);
+  }
 
-.accordion.secondary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-secondary-hover);
-}
+  .accordion.secondary > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-secondary-hover);
+  }
 
-.accordion.tertiary > .item > .header > button:hover {
-  background: var(--fdsc-accordion-header-bg-tertiary-hover);
+  .accordion.tertiary > .item > .header > button:hover {
+    background: var(--fdsc-accordion-header-bg-tertiary-hover);
+  }
 }
 
 .accordion.neutral > .item.open > .header > button,
