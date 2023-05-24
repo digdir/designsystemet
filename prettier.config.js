@@ -14,4 +14,5 @@ module.exports = {
   proseWrap: 'preserve',
   htmlWhitespaceSensitivity: 'css',
   singleAttributePerLine: true,
+  overrides: [{ files: '**/*.module.css', options: { printWidth: 160 } }],
 };
