@@ -2688,6 +2688,7 @@ __metadata:
     "@altinn/figma-design-tokens": ^6.0.1
     "@digdir/design-system-tokens": ^0.1.1
     "@floating-ui/react": 0.24.1
+    "@navikt/aksel-icons": ^3.2.4
     "@navikt/ds-icons": ^2.3.0
     react-number-format: 5.2.2
   peerDependencies:
@@ -4292,6 +4293,13 @@ __metadata:
   version: 2.8.4
   resolution: "@navikt/aksel-icons@npm:2.8.4"
   checksum: f6cca11a234f5ab75e7dec3fe1c3fd477fc797c4e119f6b9459815752706bc7c9829dea8b8e9b5c52e13f1998516b584901e2e14d68493501c913cd422b47f68
+  languageName: node
+  linkType: hard
+
+"@navikt/aksel-icons@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "@navikt/aksel-icons@npm:3.2.4"
+  checksum: 7860cc2a1128cb75a93776f1b8e29b77a709d1a7af07d164c9c8f742801100250f41196e3e8a1e88d88538d18c72335093ab83df41238857528cb75709a2469f
   languageName: node
   linkType: hard
 

@@ -25,6 +25,7 @@
     "@altinn/figma-design-tokens": "^6.0.1",
     "@digdir/design-system-tokens": "^0.1.1",
     "@floating-ui/react": "0.24.1",
+    "@navikt/aksel-icons": "^3.2.4",
     "@navikt/ds-icons": "^2.3.0",
     "react-number-format": "5.2.2"
   }
