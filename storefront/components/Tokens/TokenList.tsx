@@ -28,20 +28,52 @@ const convertJsToCssVariable = (input: string) => {
   return 'fds-' + input.replace(/_/g, '-');
 };
 
+const order: { [key: string]: number } = {
+  xxsmall: 1,
+  xsmall: 2,
+  small: 3,
+  medium: 4,
+  large: 5,
+  xlarge: 6,
+  xxlarge: 7,
+  default: 8,
+  hover: 9,
+  active: 10,
+  suble: 11,
+  strong: 12,
+};
+
+const sort = (a: string, b: string) => {
+  return order[a] - order[b];
+};
+
 const TokenList = ({ type, showValue = true, token }: TokensProps) => {
   const [items, setItems] = useState<OutputType>({});
   const tokens: OutputType = tokensImport;
 
   useEffect(() => {
-    const formatedOutput: OutputType = {};
+    const filteredObject: OutputType = {};
+    const sortedObject: OutputType = {};
 
+    // Filter down the the correct tokens
     Object.keys(tokens).map((key) => {
       const cssVariable: string = convertJsToCssVariable(key);
       if (cssVariable.startsWith(token)) {
-        formatedOutput[cssVariable] = tokens[key];
+        filteredObject[cssVariable] = tokens[key];
       }
     });
-    setItems(formatedOutput);
+
+    // Sort the keys by priority and reassemble the new object
+    Object.keys(filteredObject)
+      .sort((a, b) => {
+        const aa = a.split(token)[1].replace('-', '');
+        const bb = b.split(token)[1].replace('-', '');
+        return sort(aa, bb);
+      })
+      .forEach(function (v) {
+        sortedObject[v] = filteredObject[v];
+      });
+    setItems(sortedObject);
   }, [token, tokens]);
 
   return (
