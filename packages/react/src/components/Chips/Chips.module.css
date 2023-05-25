@@ -1,7 +1,7 @@
 .chips {
   display: flex;
   list-style: none;
-  gap: var(--fds-sizing-xsmall);
+  gap: var(--fds-sizing-3);
   box-sizing: border-box;
 }
 
@@ -12,30 +12,30 @@
 }
 
 .chips.xsmall {
-  height: var(--fds-sizing-medium);
+  height: var(--fds-sizing-5);
 }
 
 .chips.small {
-  height: var(--fds-sizing-large);
+  height: var(--fds-sizing-6);
 }
 
 .chips.xsmall > li > .chip {
-  height: var(--fds-sizing-medium);
-  padding-left: var(--fds-sizing-xxsmall);
+  height: var(--fds-sizing-5);
+  padding-left: var(--fds-sizing-2);
 }
 
 .chips.small > li > .chip {
-  height: var(--fds-sizing-large);
-  padding-left: var(--fds-sizing-xsmall);
+  height: var(--fds-sizing-6);
+  padding-left: var(--fds-sizing-3);
   font-size: var(--fds-typography-heading-medium);
 }
 
 .chips.xsmall > li > .chip.toggle {
-  padding-right: var(--fds-sizing-xxsmall);
+  padding-right: var(--fds-sizing-2);
 }
 
 .chips.small > li > .chip.toggle {
-  padding-right: var(--fds-sizing-xsmall);
+  padding-right: var(--fds-sizing-3);
 }
 
 .chips.xsmall > li > .chip.toggle.active {
@@ -47,21 +47,21 @@
 }
 
 .chips.small > li > button > div > span {
-  width: var(--fds-sizing-large);
+  width: var(--fds-sizing-6);
   font-size: 24px;
 }
 
 .chips.xsmall > li > button > div > span {
-  width: var(--fds-sizing-medium);
+  width: var(--fds-sizing-5);
   font-size: 20px;
 }
 
 .chips.xsmall > li > button > div > span.xmark {
-  height: var(--fds-sizing-medium);
+  height: var(--fds-sizing-5);
 }
 
 .chips.small > li > button > div > span.xmark {
-  height: var(--fds-sizing-large);
+  height: var(--fds-sizing-6);
 }
 
 .toggle {
@@ -111,7 +111,7 @@
 }
 
 .checkmark {
-  width: var(--fds-sizing-medium);
+  width: var(--fds-sizing-5);
   display: flex;
   align-items: center;
   justify-content: center;
