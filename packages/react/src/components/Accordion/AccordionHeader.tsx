@@ -1,4 +1,4 @@
-import { Expand } from '@navikt/ds-icons';
+import { ExpandIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
 import type { MouseEventHandler, HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
@@ -49,7 +49,7 @@ export const AccordionHeader = forwardRef<
         aria-expanded={context.open}
         aria-controls={context.contentId}
       >
-        <Expand
+        <ExpandIcon
           aria-hidden
           className={classes.expandIcon}
         />
