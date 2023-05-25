@@ -1,5 +1,4 @@
 .footer {
-  padding: var(--spacing-8) 0;
   background-color: #1e2b3c;
   color: #ececec;
   font-weight: 300;
@@ -44,4 +43,15 @@
 
 .links li:last-child {
   margin-bottom: 0;
+}
+
+.top {
+  padding: var(--spacing-8, 0);
+}
+
+.bottom {
+  background-color: #17202e;
+  padding: 30px 0;
+  color: rgb(196, 196, 196);
+  font-size: 15px;
 }
