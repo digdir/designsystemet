@@ -50,7 +50,6 @@
   transition: 0.1s all ease-out;
 }
 
-.item a:focus,
 .item .active {
   border-color: #6db6ea;
 }
