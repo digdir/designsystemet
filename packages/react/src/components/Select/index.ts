@@ -5,4 +5,4 @@ export type {
   MultiSelectOption,
   SingleSelectEvent,
   MultiSelectEvent,
-} from './Select';
+} from './types';

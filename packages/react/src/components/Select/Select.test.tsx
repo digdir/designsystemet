@@ -7,7 +7,7 @@ import type {
   MultiSelectProps,
   SingleSelectOption,
   SingleSelectProps,
-} from './Select';
+} from './types';
 import { Select } from './Select';
 
 const user = userEvent.setup();
@@ -195,15 +195,6 @@ describe('Select', () => {
     it('Is disabled when "disabled" property is true', () => {
       renderSingleSelect({ disabled: true });
       expect(screen.getByRole('combobox')).toBeDisabled();
-    });
-
-    it('Gets correct state according to keyboard/mouse navigation', async () => {
-      renderSingleSelect();
-      expect(getRoot().classList).not.toContain('usingKeyboard');
-      await act(() => user.tab());
-      expect(getRoot().classList).toContain('usingKeyboard');
-      await act(() => user.click(document.body));
-      expect(getRoot().classList).not.toContain('usingKeyboard');
     });
 
     it('Throws an error if there are duplicate values', () => {
@@ -498,55 +489,55 @@ describe('Select', () => {
     });
 
     it('Focuses on first option when no option has focus and ArrowDown key is pressed', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.click(getCombobox()));
       await act(() => user.keyboard('{ArrowDown}'));
-      expectFocusedOption(container, multiSelectOptions[0]);
+      expectFocusedOption(multiSelectOptions[0]);
     });
 
     it('Focuses on last option when no option has focus and ArrowUp key is pressed', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.click(getCombobox()));
       await act(() => user.keyboard('{ArrowUp}'));
       const lastOption = multiSelectOptions[multiSelectOptions.length - 1];
-      expectFocusedOption(container, lastOption);
+      expectFocusedOption(lastOption);
     });
 
     it('Moves focus on arrow key click', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.click(getCombobox()));
       await act(() => user.keyboard('{ArrowDown}'));
       await act(() => user.keyboard('{ArrowDown}'));
-      expectFocusedOption(container, multiSelectOptions[1]);
+      expectFocusedOption(multiSelectOptions[1]);
       await act(() => user.keyboard('{ArrowDown}'));
-      expectFocusedOption(container, multiSelectOptions[2]);
+      expectFocusedOption(multiSelectOptions[2]);
       await act(() => user.keyboard('{ArrowUp}'));
-      expectFocusedOption(container, multiSelectOptions[1]);
+      expectFocusedOption(multiSelectOptions[1]);
       await act(() => user.keyboard('{ArrowUp}'));
-      expectFocusedOption(container, multiSelectOptions[0]);
+      expectFocusedOption(multiSelectOptions[0]);
     });
 
     it('Does not move focus when first option is focused and ArrowUp key is pressed', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.keyboard('{ArrowDown}'));
       await act(() => user.keyboard('{ArrowUp}'));
-      expectFocusedOption(container, multiSelectOptions[0]);
+      expectFocusedOption(multiSelectOptions[0]);
     });
 
     it('Does not move focus when last option is selected and ArrowDown key is pressed', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.keyboard('{ArrowUp}'));
       await act(() => user.keyboard('{ArrowDown}'));
       const lastOption = multiSelectOptions[multiSelectOptions.length - 1];
-      expectFocusedOption(container, lastOption);
+      expectFocusedOption(lastOption);
     });
 
     it('Focuses on selected option if it is the first to become selected', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.click(screen.getAllByRole('option')[1]));
-      expectFocusedOption(container, multiSelectOptions[1]);
+      expectFocusedOption(multiSelectOptions[1]);
     });
 
     it('Selects options on click', async () => {
@@ -692,15 +683,6 @@ describe('Select', () => {
       expect(screen.getByLabelText(deleteButtonLabel)).toBeDisabled();
     });
 
-    it('Gets correct state according to keyboard/mouse navigation', async () => {
-      renderMultiSelect();
-      expect(getRoot().classList).not.toContain('usingKeyboard');
-      await act(() => user.tab());
-      expect(getRoot().classList).toContain('usingKeyboard');
-      await act(() => user.click(document.body));
-      expect(getRoot().classList).not.toContain('usingKeyboard');
-    });
-
     it('Throws an error if there are duplicate values', () => {
       const renderFn = () =>
         renderMultiSelect({
@@ -781,10 +763,10 @@ describe('Select', () => {
     });
 
     it('Sorts options and focuses on the first when user types in the search field', async () => {
-      const { container } = renderMultiSelect();
+      renderMultiSelect();
       await act(() => user.type(getCombobox(), 'a'));
       expect(getOptions()[0]).toHaveValue(sortedOptions[0].value);
-      expectFocusedOption(container, sortedOptions[0]);
+      expectFocusedOption(sortedOptions[0]);
     });
 
     it('Resets keyword, but keeps sorted list of options, when user selects a value', async () => {
@@ -907,11 +889,11 @@ describe('Select', () => {
       });
     });
 
-    const getFocusedOption = (container: HTMLElement) =>
-      container.querySelector('[class*="focused"]');
+    const getFocusedOption = () =>
+      screen.getByRole('listbox').querySelector('[class*="focused"]');
 
-    const expectFocusedOption = (con: HTMLElement, opt: MultiSelectOption) =>
-      expect(getFocusedOption(con)).toHaveTextContent(opt.label);
+    const expectFocusedOption = (opt: MultiSelectOption) =>
+      expect(getFocusedOption()).toHaveTextContent(opt.label);
 
     const expectSelectedValues = (values: string[]) =>
       getOptions().forEach((opt) => {
@@ -956,5 +938,3 @@ const expectSelectedOptions = (predicate: (index: number) => boolean) =>
       ? expectItemToBeSelected(option)
       : expectItemNotToBeSelected(option);
   });
-
-const getRoot = () => screen.getByTestId('select-root');

@@ -1,6 +1,6 @@
 import { compareMatch, orderByKeywords } from '../../utils';
 
-import type { MultiSelectOption, SingleSelectOption } from './Select';
+import type { MultiSelectOption, SingleSelectOption } from './types';
 
 export const optionSearch = <T extends SingleSelectOption | MultiSelectOption>(
   options: T[],

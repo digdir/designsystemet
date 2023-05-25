@@ -1,4 +1,4 @@
-import type { SingleSelectOption } from './Select';
+import type { SingleSelectOption } from './types';
 import { optionSearch } from './utils';
 
 describe('Select utils', () => {
