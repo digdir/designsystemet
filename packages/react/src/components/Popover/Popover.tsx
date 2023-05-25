@@ -165,7 +165,7 @@ const PopoverTrigger = forwardRef<
   const child = isValidElement(children)
     ? (children as React.ReactElement & React.RefAttributes<HTMLElement>)
     : null;
-  const ref = useMergeRefs([context.reference, propRef]);
+  const ref = useMergeRefs([context.refs.setReference, propRef]);
 
   if (child) {
     const childProps = {
@@ -188,7 +188,7 @@ const PopoverContent = forwardRef<
   React.HTMLProps<HTMLDivElement>
 >(function PopoverContent(props, propRef) {
   const context = usePopoverContext();
-  const ref = useMergeRefs([context.floating, propRef]);
+  const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
   return context.open ? (
     <div
