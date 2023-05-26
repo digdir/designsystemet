@@ -1,2 +1,5 @@
 export { ImageSection } from './ImageSection';
-export type { ImageSectionButtonProps } from './ImageSection';
+export type {
+  ImageSectionButtonProps,
+  ImageSectionProps,
+} from './ImageSection';

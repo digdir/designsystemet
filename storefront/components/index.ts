@@ -8,7 +8,10 @@ export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { Header } from './Header';
 export { ImageSection } from './ImageSection';
-export type { ImageSectionButtonProps } from './ImageSection';
+export type {
+  ImageSectionButtonProps,
+  ImageSectionProps,
+} from './ImageSection';
 export { MdxContent } from './MdxContent';
 export { Meta } from './Meta';
 export { NavigationCard } from './NavigationCard';
