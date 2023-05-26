@@ -27,7 +27,7 @@ describe('TextField', () => {
       );
     });
 
-    it('should append the aria-described-by prop to the textarea aria-described-by when characterLimit is set', () => {
+    it('should append the aria-described-by prop to the text-field aria-described-by when characterLimit is set', () => {
       render({
         label: 'First name',
         characterLimit: {
