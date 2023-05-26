@@ -48,7 +48,7 @@ const OptionList = ({
     multiple ? selectedValues.includes(val) : isOptionActive(val);
 
   return (
-    <FloatingPortal id={`designsystem-select-${portalId}`}>
+    <FloatingPortal id={`fds-select-${portalId}`}>
       <span
         className={cn(
           classes.wrapper,
