@@ -110,7 +110,7 @@ StyleDictionary.registerTransform({
   transformer: (token) => {
     const value = token.value as string;
 
-    return `${value}`;
+    return `calc(${value})`;
   },
 });
 
@@ -187,7 +187,10 @@ StyleDictionary.registerFormat({
           isFluidSpacing(token)
         ) {
           const refs = dictionary.getReferences(token.original.value);
-          referencedTokens = [...referencedTokens, ...refs];
+          referencedTokens = [
+            ...referencedTokens,
+            ...refs.filter((x) => x.isSource),
+          ];
           const formatted = formatWithReference(token);
           console.log('Custom format', { name: token.name, formatted, refs });
           return formatted;
@@ -197,15 +200,15 @@ StyleDictionary.registerFormat({
       })
       .filter((x) => x);
 
-    const formattedReferenceTokens = referencedTokens.reduce<
-      TransformedToken[]
-    >((acc, token) => {
-      if (acc.includes(token.name)) {
-        return acc;
-      }
+    const formattedReferenceTokens = referencedTokens
+      .reduce<{ name: string; formatted: string }[]>((acc, token) => {
+        if (acc.find((x) => x.name === token.name)) {
+          return acc;
+        }
 
-      return defaultFormat(token);
-    }, []);
+        return [...acc, { name: token.name, formatted: defaultFormat(token) }];
+      }, [])
+      .map((x) => x.formatted);
 
     return (
       fileHeader({ file }) +
