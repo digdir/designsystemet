@@ -46,7 +46,7 @@ describe('InputWrapper', () => {
       );
     });
 
-    it('should have aria-describedby from both props and auto-generated based on character limit', () => {
+    it('aria-describedby attribute should be derived from both the provided props and auto-generated based on the character limit', () => {
       render({
         label: 'Simple text-field',
         ariaDescribedBy: 'another-element-id',
