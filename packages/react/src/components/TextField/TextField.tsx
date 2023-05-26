@@ -80,6 +80,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       label,
       value,
       characterLimit,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: TextFieldProps,
     ref: ForwardedRef<HTMLInputElement>,
@@ -120,6 +121,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         label={label}
         inputId={id}
         characterLimit={characterLimit}
+        ariaDescribedBy={ariaDescribedBy}
         inputRenderer={({ className, variant, inputId, describedBy }) => {
           const commonProps = {
             id: inputId,
