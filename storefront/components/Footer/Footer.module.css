@@ -1,13 +1,13 @@
 .footer {
   background-color: #1e2b3c;
-  color: #ececec;
+  color: #e6e6e6;
   font-weight: 300;
   letter-spacing: 0.3px;
 }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 40px;
 }
 
@@ -38,7 +38,7 @@
 
 .links li {
   list-style: none;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .links li:last-child {
@@ -46,12 +46,34 @@
 }
 
 .top {
-  padding: var(--spacing-8, 0);
+  padding: var(--spacing-8) 0;
 }
 
 .bottom {
   background-color: #17202e;
   padding: 30px 0;
-  color: rgb(196, 196, 196);
+  color: #d4d4d4;
   font-size: 15px;
+}
+
+.button {
+  border: 1px dashed #e6e6e6;
+  height: 48px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e6e6e6;
+  text-decoration: none;
+  margin-top: 32px;
+  border-radius: 2px;
+  font-weight: 400;
+  transition: 0.1s all;
+  font-size: 15px;
+}
+
+.button:hover {
+  background-color: #17202e;
+  border-color: white;
+  color: white;
 }
