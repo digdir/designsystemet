@@ -80,6 +80,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       label,
       value,
       characterLimit,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: TextFieldProps,
     ref: ForwardedRef<HTMLInputElement>,
@@ -151,7 +152,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 data-testid={`${inputId}-formatted-number-${variant}`}
                 onValueChange={handleNumberFormatChange}
                 valueIsNumericString={true}
-                aria-describedby={describedBy}
+                aria-describedby={`${describedBy || ''} ${
+                  ariaDescribedBy || ''
+                }`}
                 getInputRef={ref}
               />
             );
@@ -165,7 +168,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 data-testid={`${inputId}-formatted-number-${variant}`}
                 onValueChange={handleNumberFormatChange}
                 valueIsNumericString={true}
-                aria-describedby={describedBy}
+                aria-describedby={`${describedBy || ''} ${
+                  ariaDescribedBy || ''
+                }`}
                 getInputRef={ref}
               />
             );
@@ -177,7 +182,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 value={value}
                 data-testid={`${inputId}-${variant}`}
                 onChange={handleNativeInputChange}
-                aria-describedby={describedBy}
+                aria-describedby={`${describedBy || ''} ${
+                  ariaDescribedBy || ''
+                }`}
                 ref={ref}
               />
             );
