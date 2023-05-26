@@ -132,41 +132,17 @@ StyleDictionary.registerFileHeader({
   ],
 });
 
-const isFluidSpacing = (token: TransformedToken) => token.type === 'spacing';
+type ReferencesFilter = (token: TransformedToken) => boolean;
 
+/**
+ *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
+ */
 StyleDictionary.registerFormat({
-  name: `es6WithReferences`,
-  formatter: ({ dictionary }) => {
-    return dictionary.allTokens
-      .map((token) => {
-        let value = JSON.stringify(token.value);
-        // the `dictionary` object now has `usesReference()` and
-        // `getReferences()` methods. `usesReference()` will return true if
-        // the value has a reference in it. `getReferences()` will return
-        // an array of references to the whole tokens so that you can access their
-        // names or any other attributes.
-        if (dictionary.usesReference(token.original.value)) {
-          // Note: make sure to use `token.original.value` because
-          // `token.value` is already resolved at this point.
-          const refs = dictionary.getReferences(token.original.value);
-          refs.forEach((ref) => {
-            value = value.replace(ref.value as string, function () {
-              return `${ref.name}`;
-            });
-          });
-        }
-        return `export const ${token.name} = ${value};`;
-      })
-      .join(`\n`);
-  },
-});
-
-StyleDictionary.registerFormat({
-  name: 'myCustomFormat',
+  name: 'css/variables-scoped-references',
   formatter: function ({ dictionary, options, file }) {
     const { outputReferences } = options;
+    const includeReferences = options.referencesFilter as ReferencesFilter;
     let referencedTokens: TransformedToken[] = [];
-    // const filterReferences = ['font-size'];
 
     const defaultFormat = createPropertyFormatter({
       outputReferences,
@@ -184,16 +160,16 @@ StyleDictionary.registerFormat({
       .map((token) => {
         if (
           dictionary.usesReference(token.original.value) &&
-          isFluidSpacing(token)
+          includeReferences(token)
         ) {
           const refs = dictionary.getReferences(token.original.value);
+
           referencedTokens = [
             ...referencedTokens,
             ...refs.filter((x) => x.isSource),
           ];
-          const formatted = formatWithReference(token);
-          console.log('Custom format', { name: token.name, formatted, refs });
-          return formatted;
+
+          return formatWithReference(token);
         }
 
         return !token.isSource && defaultFormat(token);
@@ -208,7 +184,8 @@ StyleDictionary.registerFormat({
 
         return [...acc, { name: token.name, formatted: defaultFormat(token) }];
       }, [])
-      .map((x) => x.formatted);
+      .map((x) => x.formatted)
+      .filter((x) => x);
 
     return (
       fileHeader({ file }) +
@@ -263,12 +240,14 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            format: 'myCustomFormat',
+            format: 'css/variables-scoped-references',
             // filter: excludeSource,
           },
         ],
         options: {
           fileHeader: 'fileheader',
+          referencesFilter: (token: TransformedToken) =>
+            token.type === 'spacing',
           // outputReferences: true,
         },
       },
