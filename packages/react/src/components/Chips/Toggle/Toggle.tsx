@@ -7,17 +7,11 @@ import classes from '../Chips.module.css';
 export interface ToggleChipsProps
   extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
-  /**
-   * Toggles aria-pressed and visual-changes
-   */
+  /** Toggles `aria-pressed` and visual-changes */
   selected?: boolean;
 }
 
-export type ToggleChipType = React.ForwardRefExoticComponent<
-  ToggleChipsProps & React.RefAttributes<HTMLButtonElement>
->;
-
-const ToggleChip: ToggleChipType = forwardRef(
+export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipsProps>(
   ({ className, children, selected, ...rest }, ref) => {
     return (
       <li className={className}>
@@ -42,7 +36,3 @@ const ToggleChip: ToggleChipType = forwardRef(
     );
   },
 );
-
-ToggleChip.displayName = 'ToggleChip';
-
-export default ToggleChip;

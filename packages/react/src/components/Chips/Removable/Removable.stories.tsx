@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import cn from 'classnames';
 
 import Removable from './Removable';
-import classes from './Removable.module.css';
 
 const meta: Meta<typeof Removable> = {
-  title: 'Kjernekomponenter/Typography/Removable',
+  title: 'Kjernekomponenter/Chip/Removable',
   component: Removable,
 };
 
@@ -19,6 +17,5 @@ export const Preview: Story = {
     onDelete: () => {
       console.log('Removing');
     },
-    className: cn(classes.chips, classes['small']),
   },
 };

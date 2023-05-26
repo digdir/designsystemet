@@ -2,8 +2,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import classes from './Chips.module.css';
-import type { ToggleChipType } from './Toggle/Toggle';
-import ToggleChip from './Toggle/Toggle';
+import { ToggleChip } from './Toggle/Toggle';
 import type { RemovableChipType } from './Removable/Removable';
 import RemovableChip from './Removable/Removable';
 
@@ -12,7 +11,7 @@ interface ChipsComponent
     ChipsProps & React.RefAttributes<HTMLUListElement>
   > {
   Removable: RemovableChipType;
-  Toggle: ToggleChipType;
+  Toggle: typeof ToggleChip;
 }
 
 export const chipsSize = ['xsmall', 'small'] as const;
