@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Section from '../../components/Section/Section';
-import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import Banner from '../../components/Banner/Banner';
-import type { ButtonProps } from '../../components/ImageSection/ImageSection';
-import { ImageSection } from '../../components/ImageSection/ImageSection';
-
-import classes from './FrontpageLayout.module.css';
+import {
+  Section,
+  NavigationCard,
+  Banner,
+  ImageSection,
+} from '../../components';
+import type {
+  ImageSectionButtonProps,
+  NavigationCardProps,
+} from '../../components';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
@@ -29,7 +31,7 @@ interface FrontpageData {
     image: string;
     imageWidth: number;
     imageHeight: number;
-    buttons?: ButtonProps[];
+    buttons?: ImageSectionButtonProps[];
   };
 }
 

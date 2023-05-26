@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Container } from '../../components/Container/Container';
-import type { ImageSectionProps } from '../../components/ImageSection/ImageSection';
-import { ImageSection } from '../../components/ImageSection/ImageSection';
+import { Container, ImageSection } from '../../components';
+import type { ImageSectionProps } from '../../components';
 
 import classes from './NavPageLayout.module.css';
 

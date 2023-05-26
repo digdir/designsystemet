@@ -1,9 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Container } from '../../components/Container/Container';
-import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
-import { MdxContent } from '../../components/MdxContent/MdxContent';
+import { Container, SidebarMenu, MdxContent } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
 

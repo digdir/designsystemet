@@ -1,10 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Container } from '../../components/Container/Container';
+import { Container, SidebarMenu } from '../../components';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 
 import classes from './NavigationPageLayout.module.css';
 

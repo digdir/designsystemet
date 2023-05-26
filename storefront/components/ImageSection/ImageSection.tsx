@@ -15,12 +15,12 @@ interface ImageSectionProps {
   imgWidth: number;
   imgHeight: number;
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
-  buttons?: ButtonProps[];
+  buttons?: ImageSectionButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
   imagePosition?: 'left' | 'right';
 }
 
-type ButtonProps = {
+type ImageSectionButtonProps = {
   text: string;
   prefix?: React.ReactNode;
   href: string;
@@ -98,5 +98,5 @@ const ImageSection = ({
   );
 };
 
-export type { ButtonProps, ImageSectionProps };
+export type { ImageSectionButtonProps, ImageSectionProps };
 export { ImageSection };
