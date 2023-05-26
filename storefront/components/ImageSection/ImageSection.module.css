@@ -75,7 +75,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 440px) {
+@media (max-width: 480px) {
   .button {
     width: 100%;
   }
