@@ -684,11 +684,11 @@
           "type": "fontSizes"
         },
         "r": {
-          "value": "1.5",
+          "value": "1.77",
           "type": "fontSizes"
         },
         "n": {
-          "value": "5",
+          "value": "6",
           "type": "fontSizes"
         }
       },
@@ -698,11 +698,11 @@
           "type": "fontSizes"
         },
         "r": {
-          "value": "1.8",
+          "value": "2.414",
           "type": "fontSizes"
         },
         "n": {
-          "value": "5",
+          "value": "6",
           "type": "fontSizes"
         }
       }
@@ -1002,7 +1002,7 @@
       "type": "sizing"
     },
     "min": {
-      "value": "380",
+      "value": "320",
       "type": "sizing"
     },
     "max": {
