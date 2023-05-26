@@ -34,6 +34,7 @@ export const TextArea = forwardRef(
       characterLimit,
       value,
       onChange,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: TextAreaProps,
     ref: ForwardedRef<HTMLTextAreaElement>,
@@ -66,7 +67,7 @@ export const TextArea = forwardRef(
               value={value}
               onChange={handleOnChange}
               id={inputId}
-              aria-describedby={describedBy}
+              aria-describedby={`${describedBy || ''} ${ariaDescribedBy || ''}`}
               disabled={disabled}
               readOnly={Boolean(readOnly)}
               className={[
