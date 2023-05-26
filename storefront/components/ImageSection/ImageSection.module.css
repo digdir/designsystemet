@@ -47,6 +47,7 @@
   line-height: 1.7rem;
   font-size: var(--font-300);
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .img {
@@ -55,6 +56,9 @@
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 20px;
 }
 
 .button {
@@ -69,8 +73,12 @@
   transition: 0.1s all;
   color: #1e2b3c !important;
   text-decoration: none;
-  margin-top: 4px;
-  margin-right: 20px;
+}
+
+@media (max-width: 440px) {
+  .button {
+    width: 100%;
+  }
 }
 
 .button:hover {
