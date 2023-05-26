@@ -34,6 +34,7 @@ export type InputWrapperProps = {
   noFocusEffect?: boolean;
   noPadding?: boolean;
   readOnly?: boolean | ReadOnlyVariant_;
+  ariaDescribedBy?: string;
   /**
    *  The characterLimit function calculates remaining characters.
    *  Provide a `label` function that takes count as parameter and returns a message.
@@ -56,11 +57,15 @@ export const InputWrapper = ({
   readOnly = false,
   characterLimit,
   value,
+  ariaDescribedBy,
 }: InputWrapperProps) => {
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
 
-  const characterLimitDescriptionId = useId();
+  const autoCharLimitIdGenerated = useId();
+  const characterLimitDescriptionId = characterLimit
+    ? autoCharLimitIdGenerated
+    : undefined;
   const currentInputValue = value ? value.toString() : '';
   const { variant, iconVariant } = getVariant({
     disabled,
@@ -72,6 +77,12 @@ export const InputWrapper = ({
   });
 
   const hasIcon = iconVariant !== 'none';
+
+  const buildAriaDescribedBy = (
+    ids: (string | undefined)[],
+  ): string | undefined => {
+    return ids.filter(Boolean).join(' ') || undefined;
+  };
 
   return (
     <div>
@@ -104,11 +115,14 @@ export const InputWrapper = ({
             hasIcon,
             inputId: givenOrRandomInputId,
             variant,
-            describedBy: characterLimitDescriptionId,
+            describedBy: buildAriaDescribedBy([
+              ariaDescribedBy,
+              characterLimitDescriptionId,
+            ]),
           })}
         </span>
       </span>
-      {characterLimit && (
+      {characterLimit && characterLimitDescriptionId && (
         <CharacterCounter
           {...characterLimit}
           value={currentInputValue}
