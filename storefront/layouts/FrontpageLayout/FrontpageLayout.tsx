@@ -7,8 +7,6 @@ import { Banner } from '../../components/Banner/Banner';
 import type { ImageSectionButtonProps } from '../../components/ImageSection/ImageSection';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
 
-import classes from './FrontpageLayout.module.css';
-
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
   data: FrontpageData;
@@ -29,7 +27,7 @@ interface FrontpageData {
     image: string;
     imageWidth: number;
     imageHeight: number;
-    buttons?: ButtonProps[];
+    buttons?: ImageSectionButtonProps[];
   };
 }
 
