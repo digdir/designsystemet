@@ -7,7 +7,7 @@ import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import Header from '../components/Header/Header';
+import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 
 const inter = Inter({

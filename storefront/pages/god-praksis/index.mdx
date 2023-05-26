@@ -1,12 +1,13 @@
-import Meta from '../../components/Meta/Meta';
+import {
+  Meta,
+  Grid,
+  NavigationCard,
+  TeaserCard,
+  Container,
+  ImageSection,
+} from '@components';
 import { NavPageLayout } from '../../layouts';
-import { Grid } from '../../components/Grid/Grid';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import { TeaserCard } from '../../components/TeaserCard/TeaserCard';
-import { Container } from '../../components/Container/Container';
-import { ImageIcon } from '@navikt/aksel-icons';
-import { ImageSection } from '../../components/ImageSection/ImageSection';
-import { BranchingIcon } from '@navikt/aksel-icons';
+import { BranchingIcon, ImageIcon } from '@navikt/aksel-icons';
 
 export default ({ children, menu }) => (
   <NavPageLayout

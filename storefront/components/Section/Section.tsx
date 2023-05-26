@@ -38,4 +38,4 @@ const Section = ({
   );
 };
 
-export default Section;
+export { Section };

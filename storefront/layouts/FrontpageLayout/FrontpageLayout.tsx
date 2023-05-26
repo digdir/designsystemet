@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Section from '../../components/Section/Section';
+import { Section } from '../../components/Section/Section';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import Banner from '../../components/Banner/Banner';
-import type { ButtonProps } from '../../components/ImageSection/ImageSection';
+import { Banner } from '../../components/Banner/Banner';
+import type { ImageSectionButtonProps } from '../../components/ImageSection/ImageSection';
 import { ImageSection } from '../../components/ImageSection/ImageSection';
 
 import classes from './FrontpageLayout.module.css';
