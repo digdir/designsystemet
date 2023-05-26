@@ -34,6 +34,7 @@ export type InputWrapperProps = {
   noFocusEffect?: boolean;
   noPadding?: boolean;
   readOnly?: boolean | ReadOnlyVariant_;
+  /** Add to list of ids for use in `inputRenderer` and `aria-describedby`. */
   ariaDescribedBy?: string;
   /**
    *  The characterLimit function calculates remaining characters.
