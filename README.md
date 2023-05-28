@@ -1,9 +1,14 @@
 <h1 align="center">
-    <img style="margin-bottom: 20px;" src="https://i.imgur.com/ArqCwDn.png" />
-    <br/>  Designsystemet
+  <picture style="margin-bottom:12px;margin-top:24px;display:block;">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-positive.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/img/logo-negative.svg">
+    <img alt="Designsystemet logo" src="assets/img/logo-negative.svg">
+  </picture>
+    Designsystemet
 </h1>
+
 <div align="center">
-<p style="margin-bottom: 24px;">This is a monorepo containing NPM packages and documentation for the Common Designsystem.</p>
+<p>This is a monorepo containing NPM packages and documentation for the Common Designsystem.</p>
 
 <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-yellowgreen" />
@@ -17,7 +22,7 @@
     <img src="https://img.shields.io/npm/v/@digdir/design-system-tokens?label=@digdir/design-system-tokens&color=0051be" />
 </a>
 
-<hr style="margin: 32px 0;">
+---
 
 </div>
 
@@ -37,7 +42,7 @@
 
 [Contributors](#contributors-💪)
 
-<hr style="margin: 32px 0;">
+---
 
 ## About this project 📝
 
@@ -59,11 +64,11 @@ Design tokens contain UI data like colors, fonts and spacing for styling and bui
 
 Here you will find everything you need to start using the designsystem.
 
-<hr style="margin: 32px 0;">
+---
 
 ## Get started with development ✨
 
-### 1. Install Node v16.8+ and Yarn v3+
+### 1. Install Node 16+ and Yarn 3
 
 Make sure `node` and `yarn` is installed by running: `node --version && yarn --version`
 
@@ -87,11 +92,9 @@ This is required to make sure dependencies between local packages are available.
 
 You can now start developing for storybook or the storefront.
 
-<div style="margin-top: 24px"></div>
-
 _Problems? See [Troubleshooting](#troubleshooting-)._
 
-<hr style="margin: 32px 0;">
+---
 
 ## How to contribute to this project 🫶
 
@@ -109,7 +112,7 @@ We are using Figma as our design tool, and we are extracting tokens directly fro
 
 ### Linting with ESLint and Stylelint
 
-<hr style="margin: 32px 0;">
+---
 
 ## Commit messages ✍️
 
@@ -185,7 +188,7 @@ fix(button): changed name of font-size prop to size
 BREAKING CHANGE: changed the name of the font-size prop to size to make it more readable
 ```
 
-<hr style="margin: 32px 0;">
+---
 
 ## Publishing NPM packages 🚀
 
@@ -228,7 +231,7 @@ Make sure it looks similar to the image below. Consistancy is important when we 
 
 ![te](https://i.imgur.com/Uw0qA1O.png)
 
-<hr style="margin: 32px 0;">
+---
 
 ## Troubleshooting 🔍
 
@@ -243,7 +246,7 @@ If the development and production environments get out of sync, you can build th
 
 `yarn build:docs`
 
-<hr style="margin: 32px 0;">
+---
 
 ## Contributors 💪
 
