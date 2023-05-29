@@ -270,7 +270,7 @@ Please ensure that the appearance closely matches the image below. Consistency p
 
 ---
 
-## Storefront deployment
+## Storefront deployment 🚀
 
 The storefront is configured to deploy automatically upon merging changes into the main branch.
 
