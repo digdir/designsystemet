@@ -183,7 +183,7 @@ When you are committing changes to a component, try to **_always_** use scopes w
 
 ### When to use what keywords
 
-It is important to recognize the differences between the 2 sections below. If you want commit messages to show up in the changelog, use `fix:`, `feat:` or `BREAKING-CHANGE:`. We want changes that affect the users of our NPM packages to show up. Anything else has to use another keyword. If you are unsure on what keyword to use, and the changes do not affect the end user, use `chore:`.
+It is crucial to understand the distinctions between the two sections mentioned below. If you wish for commit messages to be included in the changelog, please use `fix:`, `feat:`, or `BREAKING-CHANGE:` as keywords. These keywords indicate changes that impact the users of our NPM packages and are therefore significant to highlight. For any other types of changes that do not directly affect the end user, please utilize a different keyword. If you are uncertain about which keyword to use and the changes are non-user-facing, you can use `chore:` as a default keyword.
 
 #### Added to changelog
 
@@ -219,7 +219,7 @@ Fixed something related to the button component:
 fix(button): fixed an issue where the button component didn't show up correctly on mobile
 ```
 
-Fixed something related to the button component that also requires an action from the end user (breaking change):
+To indicate a fix related to the button component that requires action from the end user and is a breaking change:
 
 ```
 fix(button): changed name of font-size prop to size
