@@ -1,8 +1,8 @@
 <h1 align="center">
-  <picture style="margin-bottom:12px;margin-top:24px;display:block;">
+  <picture align="center">
     <source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-positive.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/img/logo-negative.svg">
-    <img alt="Designsystemet logo" src="assets/img/logo-negative.svg">
+    <img style="display: block;margin: 0 auto;margin-top: 24px;margin-bottom: 11px;" alt="Designsystemet logo" src="assets/img/logo-negative.svg">
   </picture>
     Designsystemet
 </h1>
