@@ -54,7 +54,7 @@
 
 ## About the design system 📖
 
-Common Designsystem (designsystemet) consists of basic design elements and components that you can use when developing services. We hope this can become a common toolbox where we collaborate nationwide to create the best basis for public services.
+The Common Designsystem is a collection of important design elements and building blocks that can be used when creating different services. It's like a toolbox that everyone can use to work together and create the best foundation for public services across the country. By using this Designsystem, we aim to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
 ### NPM packages
 
@@ -106,7 +106,7 @@ _Problems? See [Troubleshooting](#troubleshooting-)._
 
 ## How to contribute 🫶
 
-If you have feedback on something related to the design system, feel free to create an issue in this repo.
+If you have any feedback regarding the design system, please feel free to create an issue in this repository.
 
 Any feedback is greatly appreciated! 🙏
 
@@ -116,7 +116,7 @@ Do you want to get more involved? Send us an email at `designsystem@digdir.no`.
 
 The main branch of this repo is locked, so all code has to come through pull requests.
 
-In order for a pull request to be able to be merged in, the following has to be in order:
+To ensure that a pull request can be successfully merged, the following criteria must be met:
 
 - A code owner has to approve the pull request.
 - Commit messages have to be in line with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
@@ -126,7 +126,7 @@ In order for a pull request to be able to be merged in, the following has to be 
 
 ## How to write and structure your code 📝
 
-We have created some guidelines and coding standards for writing code in this project to ensure a pleasant and consitant developer experience for everyone.
+To provide a pleasant and consistent developer experience for everyone involved in this project, we have established guidelines and coding standards for writing code.
 
 ### Generel guidelines
 
@@ -134,23 +134,23 @@ The general guidelines apply for all code that is contributed.
 
 #### Styling with CSS Modules
 
-Styling should primarily be done in CSS files using CSS variables. The CSS files should end with `.module.css`. This creates a CSS module that makes sure any class defined inside do not collide with classes from other CSS modules. The CSS class wil look something like this in the final HTML: `Title__2C7KE`.
+Styling should primarily be implemented in CSS files using CSS variables. To create a CSS module that prevents class collisions with other modules, the CSS files should have a `.module.css` extension. This naming convention ensures encapsulation and maintains the scope of classes within the respective CSS module. The CSS class wil look something like this in the final HTML output: `Title__2C7KE`.
 
-Use camelCase for naming your CSS classes. Example: `.mainTitle`.
+For naming your CSS classes, camelCase is required. This naming convention involves starting each word with a lowercase letter and capitalizing the first letter of subsequent words, without any spaces or special characters. Using camelCase ensures consistency and readability in your CSS class names. Example: `.mainTitle`.
 
-We use Figma as our design tool, and extract tokens directly to be used in code. These tokens are defined in the Design Tokens NPM package. Try to use as many tokens from this package as you can, and try to avoid creating your own local variables. The tokens are designed to be very generic and reusable.
+As our design tool, we utilize Figma and extract tokens directly from it for code usage. These tokens are defined in the Design Tokens NPM package. It is encouraged to leverage as many tokens from this package as possible and minimize the creation of custom local variables. The tokens are intentionally designed to be highly generic and reusable, promoting consistency across the codebase.
 
 #### Code formatting with Prettier
 
-We use [Prettier](https://prettier.io/) to format the code in this project. It is recommended to set up your code editor to format your files on save. This will help you later when you want to merge your changes into the main branch. We have very strict code checking in pull requests.
+In this project, we employ [Prettier](https://prettier.io/) for code formatting. It is advisable to configure your code editor to automatically format files upon saving. This practice will prove beneficial when merging your changes into the main branch. It's worth noting that we enforce rigorous code checks in pull requests, emphasizing the importance of consistent code formatting.
 
 #### Linting with ESLint and Stylelint
 
-TypeScript and CSS files are set up with linting. This means that the project will scan your files for problems. You have to fix all errors and warnings before the code can be merged into the main branch.
+TypeScript and CSS files have been configured with linting, which means that the project will scan these files for potential problems or issues. Linting helps maintain code quality by detecting errors, enforcing coding conventions, and promoting best practices. You have to fix all errors and warnings before the code can be merged into the main branch.
 
 #### Use of TypeScript files
 
-We will not allow JavasSript files in this project in code contributions. TypeScript makes sure our code is safe and testable. If you need to run TypeScript files in the Node environment, use the `.mts` extension.
+In code contributions for this project, we do not permit JavaScript files. The use of TypeScript ensures the safety and testability of our code. If you need to run TypeScript files in the Node environment, use the `.mts` extension.
 
 ---
 
@@ -160,7 +160,7 @@ This monoropo uses Lerna with the [Conventional Commits](https://www.conventiona
 specification in order to create nice and readable changelogs.
 The [Semantic Versioning 2.0](https://semver.org/) specification is used for versioning.
 
-In order for commits to show up in the changelog, you have to add the following keywords:
+To include commits in the changelog, please ensure that you include the following keywords:
 
 - Start the commit with `fix:` to trigger a patch (0.0.x) version.
 - Start the commit with `feat:` to trigger a minor (0.x.0) version.
@@ -169,8 +169,7 @@ In order for commits to show up in the changelog, you have to add the following 
 
 ### Scope
 
-You can scope your commits by adding a keyword in parentheses with what you are working on.
-This makes the changelog and commit messages more specific and readable.
+To make commit messages and the changelog more specific and readable, you have the option to scope your commits by adding a keyword in parentheses that indicates the area or aspect you are working on. This practice helps provide clearer context and organization to the commit history.
 
 Examples:
 
@@ -232,9 +231,7 @@ BREAKING CHANGE: changed the name of the font-size prop to size to make it more 
 
 ## Publishing NPM packages 🚀
 
-This is documentation for releasing new versions of the NPM packages. You need to have an NPM account
-that is connected to the Digdir organisation on NPM to be able to release. Make sure you are in the
-`main` branch before proceeding further. Publishing from other branches may lead to issues with the changelog.
+The following documentation outlines the process for releasing new versions of the NPM packages. Please note that in order to release, you must have an NPM account that is connected to the Digdir organization on NPM. Make sure you are in the `main` branch before proceeding further. Publishing from other branches may lead to issues with the changelog.
 
 ### 1. Build distribution files
 
@@ -267,7 +264,7 @@ Your account also has to be added to the Digdir organisation on NPM.
 
 You can copy markdown from the changelog in storybook to get nice styling and commit links.
 
-Make sure it looks similar to the image below. Consistancy is important when we are dealing with our end users.
+Please ensure that the appearance closely matches the image below. Consistency plays a vital role when interacting with our end users.
 
 ![te](https://i.imgur.com/Uw0qA1O.png)
 
@@ -275,11 +272,9 @@ Make sure it looks similar to the image below. Consistancy is important when we 
 
 ## Storefront deployment
 
-The storefront is setup to automatically deploy once changes are merged into the main branch.
+The storefront is configured to deploy automatically upon merging changes into the main branch.
 
-Before merging, be sure to test the preview deployment thoroughly.
-
-Links to the preview deployments will be commented automatically in the pull requests if changes in the `/storefront` folder is detected.
+If any changes are detected in the `/storefront` folder, links to the preview deployments will be automatically added as comments in the pull requests. This convenient feature enables easy access to preview deployments for review and testing purposes directly within the pull request context.
 
 ### Testing the storefront in the preview deployment
 
@@ -304,7 +299,7 @@ Storybook sometimes fails to launch if the node_modules folder have been deleted
 
 ### Storybook error in production?
 
-If the development and production environments get out of sync, you can build the storybook documentation locally to debug:
+If the development and production environments get out of sync, you can build the storybook documentation locally for debugging purposes:
 
 `yarn build:docs`
 
@@ -312,7 +307,7 @@ If the development and production environments get out of sync, you can build th
 
 ## Contributors 💪
 
-We are lucky to have a bunch of great people contributing to the designsystem.
+We are fortunate to have an awesome group of individuals who contribute to the design system.
 
 <a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystem/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
