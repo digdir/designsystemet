@@ -8,11 +8,7 @@
 </h1>
 
 <div align="center">
-<p>This is a monorepo containing NPM packages and documentation for the Common Designsystem.</p>
-
-<a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-yellowgreen" />
-</a>
+<p>This is a monorepo containing NPM packages and documentation for the Common design system.</p>
 
 <a href="https://www.npmjs.com/package/@digdir/design-system-react">
     <img src="https://img.shields.io/npm/v/@digdir/design-system-react?label=@digdir/design-system-react&color=0051be" />
@@ -22,29 +18,37 @@
     <img src="https://img.shields.io/npm/v/@digdir/design-system-tokens?label=@digdir/design-system-tokens&color=0051be" />
 </a>
 
+<a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-yellowgreen" />
+</a>
+
 ---
 
 </div>
 
 ### Table of contents
 
-[About this project](#get-started-with-development-✨)
+[About the design system](#about-the-design-system-)
 
-[Get started with development](#get-started-with-development-✨)
+[Get started with development](#get-started-with-development-)
 
-[How to contribute to this project](#get-started-with-development-✨)
+[How to contribute](#how-to-contribute-)
 
-[How to write commit messages](#get-started-with-development-✨)
+[How to write and structure your code](#how-to-write-and-structure-your-code-)
 
-[Publishing NPM packages](#get-started-with-development-✨)
+[Writing commit messages](#writing-commit-messages-)
 
-[Troubleshooting](#get-started-with-development-✨)
+[Publishing NPM packages](#publishing-npm-packages-)
 
-[Contributors](#contributors-💪)
+[Storefront deployment](#storefront-deployment-)
+
+[Troubleshooting](#troubleshooting-)
+
+[Contributors](#contributors-)
 
 ---
 
-## About this project 📝
+## About the design system 📖
 
 Common Designsystem (designsystemet) consists of basic design elements and components that you can use when developing services. We hope this can become a common toolbox where we collaborate nationwide to create the best basis for public services.
 
@@ -66,13 +70,13 @@ Here you will find everything you need to start using the designsystem.
 
 ---
 
-## Get started with development ✨
+## Get started with development 💻
 
 ### 1. Install Node 16+ and Yarn 3
 
 Make sure `node` and `yarn` is installed by running: `node --version && yarn --version`
 
-Check / Google installation instructions for your operating system to install them.
+Check installation instructions for your operating system to install them.
 
 ### 2. Install dependencies
 
@@ -86,7 +90,7 @@ Run command from root of the project.
 
 This is required to make sure dependencies between local packages are available. You only need to run this once.
 
-### 4. Start development servers
+### 4. Start local development servers
 
 `yarn storybook | storefront`
 
@@ -96,25 +100,57 @@ _Problems? See [Troubleshooting](#troubleshooting-)._
 
 ---
 
-## How to contribute to this project 🫶
+## How to contribute 🫶
 
-dd
+If you have feedback on something related to the design system, feel free to create an issue in this repo.
 
-### Cr
+Any feedback is greatly appreciated! 🙏
 
-### Styling components with CSS Modules
+Do you want to get more involved? Send us an email at `designsystem@digdir.no`.
 
-Styling should primarily be done in scss files using css variables. The scss files should end with `.module.scss`, so unique classnames will be generated. This ensures we will not run into naming collision issues with classnames.
+### Contribute code through pull requests
 
-We are using Figma as our design tool, and we are extracting tokens directly from Figma that can be used in code. These tokens are defined in the [figma-design-tokens repository](https://github.com/Altinn/figma-design-tokens). New components should ideally be using design tokens from there to define their layout. Before work is started on the component, you should discuss with the UX group first, because they need to define the tokens for the components.
+The main branch of this repo is locked, so all code has to come through pull requests.
 
-### Running tests with React Testing Library
+In order for a pull request to be able to be merged in, the following has to be in order:
 
-### Linting with ESLint and Stylelint
+- A code owner has to approve the pull request.
+- Commit messages have to be in line with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+- There has to be no linting or formatting errors in your code.
 
 ---
 
-## Commit messages ✍️
+## How to write and structure your code 📝
+
+We have created some guidelines and coding standards for writing code in this project to ensure a pleasant and consitant developer experience for everyone.
+
+### Generel guidelines
+
+The general guidelines apply for all code that is contributed.
+
+#### Styling with CSS Modules
+
+Styling should primarily be done in CSS files using CSS variables. The CSS files should end with `.module.css`. This creates a CSS module that makes sure any class defined inside do not collide with classes from other CSS modules. The CSS class wil look something like this in the final HTML: `Title__2C7KE`.
+
+Use camelCase for naming your CSS classes. Example: `.mainTitle`.
+
+We use Figma as our design tool, and extract tokens directly to be used in code. These tokens are defined in the Design Tokens NPM package. Try to use as many tokens from this package as you can, and try to avoid creating your own local variables. The tokens are designed to be very generic and reusable.
+
+#### Code formatting with Prettier
+
+We use [Prettier](https://prettier.io/) to format the code in this project. It is recommended to set up your code editor to format your files on save. This will help you later when you want to merge your changes into the main branch. We have very strict code checking in pull requests.
+
+#### Linting with ESLint and Stylelint
+
+TypeScript and CSS files are set up with linting. This means that the project will scan your files for problems. You have to fix all errors and warnings before the code can be merged into the main branch.
+
+#### Use of TypeScript files
+
+We will not allow JavasSript files in this project in code contributions. TypeScript makes sure our code is safe and testable. If you need to run TypeScript files in the Node environment, use the `.mts` extension.
+
+---
+
+## Writing commit messages ✍️
 
 This monoropo uses Lerna with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 specification in order to create nice and readable changelogs.
@@ -144,7 +180,7 @@ When you are committing changes to a component, try to **_always_** use scopes w
 
 ### When to use what keywords
 
-It is important to recognize the differences between the 2 sections below. If you want commit messages to show up in the changelog, use `fix:`, `feat:` or `BREAKING-CHANGE:`. We want changes that affect the users of our NPM packages to show up. Anything else has to use another keyword. If you are unsure what keyword to use, and it does not affect end users, use `chore:`.
+It is important to recognize the differences between the 2 sections below. If you want commit messages to show up in the changelog, use `fix:`, `feat:` or `BREAKING-CHANGE:`. We want changes that affect the users of our NPM packages to show up. Anything else has to use another keyword. If you are unsure on what keyword to use, and the changes do not affect the end user, use `chore:`.
 
 #### Added to changelog
 
@@ -223,7 +259,7 @@ Make sure you are logged in to your NPM account from the terminal you are trying
 
 Your account also has to be added to the Digdir organisation on NPM.
 
-### 4. Paste latest changelog entry into the design system slack channel
+### 4. Paste the latest changelog entry into the design system Slack channel
 
 You can copy markdown from the changelog in storybook to get nice styling and commit links.
 
@@ -233,12 +269,34 @@ Make sure it looks similar to the image below. Consistancy is important when we 
 
 ---
 
+## Storefront deployment
+
+The storefront is setup to automatically deploy once changes are merged into the main branch.
+
+Before merging, be sure to test the preview deployment thoroughly.
+
+Links to the preview deployments will be commented automatically in the pull requests if changes in the `/storefront` folder is detected.
+
+### Testing the storefront in the preview deployment
+
+Open the 5 layout files to make sure they all work:
+
+- Navigate to `/`.
+- Navigate to `/grunnleggende`.
+- Navigate to `/grunnleggende/introduksjon/om-designsystemet`.
+- Navigate to `/god-praksis`.
+- Navigate to `/god-praksis/brukerinnsikt/felles-innsiktsbase`.
+
+Also test the new content or functionalty that you introduced in your changes.
+
+---
+
 ## Troubleshooting 🔍
 
 ### Storybook doesn't work?
 
 If `yarn storybook` gives you an error message, try `yarn storybook:clean`. This will run Storybook without manager cache.
-Storybook can sometimes fail if the node_modules folder has recently been deleted.
+Storybook sometimes fails to launch if the node_modules folder have been deleted recently.
 
 ### Storybook error in production?
 
@@ -250,7 +308,7 @@ If the development and production environments get out of sync, you can build th
 
 ## Contributors 💪
 
-We are lucky to have a bunch of awesome people contributing to the designsystem.
+We are lucky to have a bunch of great people contributing to the designsystem.
 
 <a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystem/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
