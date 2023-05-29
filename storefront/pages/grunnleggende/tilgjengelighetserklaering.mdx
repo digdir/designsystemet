@@ -1,0 +1,24 @@
+import Meta from '/..../../components/Meta/Meta';
+import { PageLayout } from '/..../../layouts';
+
+<Meta
+  title='Tilgjengelighetserklæring'
+  description='Innsamling og behandling av personopplysninger.'
+/>
+
+export default ({ children }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Tilgjengelighetserklæring',
+      date: '21. mai 2023',
+      author: 'Designsystemet',
+      backText: 'Forsiden',
+      backUrl: '/',
+    }}
+  />
+);
+
+Designsystemet skal være tilgjengelig for alle, uansett varige eller midlertidig reduserte evner. Alle komponentene skal følge [lovpålagte krav til universell utforming i offentlig sektor](https://www.uutilsynet.no/regelverk/offentlig-sektor/1584). I tillegg ønsker vi at du skal ha en god brukeropplevelse enten du bruker hjelpeteknologier eller ikke.
+
+Tilgjengelegheitserklæring er en selvdeklarasjon som beskriver hvilken grad nettstedet etterlever kravene til universell utforming. Erklæringen er fyllt på [uustatus.no](https://uustatus.no/nb/erklaringer/publisert/3570e0e2-e19d-4f2a-a193-e3a16353e5d9).

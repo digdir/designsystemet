@@ -11,27 +11,27 @@ import classes from './Footer.module.css';
 const centerLinks = [
   {
     text: 'Om designsystemet',
-    url: '#',
+    url: '/grunnleggende/introduksjon/om-designsystemet',
   },
   {
     text: 'Personvernerklæring',
-    url: '#',
+    url: '/grunnleggende/personvernerklaering',
   },
   {
-    text: 'Om Tilgjengelighetserklæring',
-    url: '#',
+    text: 'Tilgjengelighetserklæring',
+    url: '/grunnleggende/tilgjengelighetserklaering',
   },
 ];
 
 const rightLinks = [
   {
     text: 'designsystem@digdir.no',
-    url: '#',
+    url: 'mailto:designsystem@digdir.no',
     prefix: <EnvelopeClosedIcon title='a11y-title' />,
   },
   {
     text: 'Bli invitert til slack',
-    url: '#',
+    url: '/grunnleggende/introduksjon/slack',
     prefix: (
       <Image
         height={20}
@@ -43,7 +43,7 @@ const rightLinks = [
   },
   {
     text: 'Github',
-    url: '#',
+    url: 'https://github.com/digdir/designsystem',
     prefix: (
       <Image
         height={20}
@@ -55,7 +55,7 @@ const rightLinks = [
   },
   {
     text: 'Figma',
-    url: '#',
+    url: 'https://www.figma.com/@designsystemet',
     prefix: (
       <Image
         height={20}
@@ -114,7 +114,7 @@ const Footer = () => {
               ></Image>
             </div>
             <NextLink
-              href='#'
+              href='mailto:designsystem@digdir.no'
               className={classes.button}
             >
               Din etat? Ta kontakt!
