@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 
-import { Container } from '../../components/Container/Container';
-import { MdxContent } from '../../components/MdxContent/MdxContent';
+import { Container, MdxContent } from '../../components';
 
 import classes from './PageLayout.module.css';
 

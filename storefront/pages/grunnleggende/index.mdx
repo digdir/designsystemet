@@ -1,5 +1,5 @@
-import Meta from '../../components/Meta/Meta';
-import { NavigationPageLayout } from '../../layouts';
+import { Meta, NavigationCard, Grid } from '@components';
+import { NavigationPageLayout } from '@layouts';
 import {
   ImageIcon,
   TokenIcon,
@@ -13,8 +13,6 @@ import {
   LightBulbIcon,
   TerminalIcon,
 } from '@navikt/aksel-icons';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import { Grid } from '../../components/Grid/Grid';
 export default ({ children, menu }) => (
   <NavigationPageLayout content={children} />
 );

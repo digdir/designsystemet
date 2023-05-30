@@ -1,16 +1,11 @@
-import type { ChangeEvent, ReactNode } from 'react';
+import type { ChangeEvent } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 import { flip, size } from '@floating-ui/dom';
 
 import { InputWrapper } from '../_InputWrapper';
-import {
-  useEventListener,
-  useKeyboardEventListener,
-  usePrevious,
-  useUpdate,
-} from '../../hooks';
+import { useKeyboardEventListener, usePrevious, useUpdate } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utils';
 import { useFocusWithin } from '../../hooks/useFocusWithin';
 import utilClasses from '../../utils/utility.module.css';
@@ -18,50 +13,13 @@ import utilClasses from '../../utils/utility.module.css';
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
 import { optionSearch } from './utils';
-
-export type SelectProps = SingleSelectProps | MultiSelectProps;
-
-export type SingleSelectProps = SelectPropsBase & {
-  multiple?: false;
-  onBlur?: SingleSelectEvent;
-  onChange?: SingleSelectEvent;
-  onFocus?: SingleSelectEvent;
-  options: SingleSelectOption[];
-  value?: string;
-};
-
-export type MultiSelectProps = SelectPropsBase & {
-  deleteButtonLabel?: string;
-  multiple: true;
-  onBlur?: MultiSelectEvent;
-  onChange?: MultiSelectEvent;
-  onFocus?: MultiSelectEvent;
-  options: MultiSelectOption[];
-  value?: string[];
-};
-
-interface SelectPropsBase {
-  disabled?: boolean;
-  error?: boolean;
-  hideLabel?: boolean;
-  inputId?: string;
-  label?: string;
-  searchLabel?: string;
-}
-
-export type SingleSelectOption = {
-  keywords?: string[];
-  label: string;
-  value: string;
-  formattedLabel?: ReactNode;
-};
-
-export type MultiSelectOption = SingleSelectOption & {
-  deleteButtonLabel?: string;
-};
-
-export type SingleSelectEvent = (value: string) => void;
-export type MultiSelectEvent = (value: string[]) => void;
+import type {
+  SelectProps,
+  SingleSelectEvent,
+  MultiSelectEvent,
+  MultiSelectOption,
+} from './types';
+import { OptionList } from './OptionList';
 
 const eventListenerKeys = {
   ArrowUp: 'ArrowUp',
@@ -174,10 +132,7 @@ const Select = (props: SelectProps) => {
   const listboxWrapper = elements.floating as HTMLSpanElement;
   const selectField = elements.reference as HTMLSpanElement;
 
-  const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
   const hasFocus = useFocusWithin(selectField);
-  useEventListener('click', () => setUsingKeyboard(false));
-  useEventListener('keydown', () => setUsingKeyboard(true));
 
   useUpdate(() => {
     if (!multiple && !hasFocus) {
@@ -349,11 +304,6 @@ const Select = (props: SelectProps) => {
     setKeyword(newKeyword);
   };
 
-  const isOptionActive = (val: string) => activeOption === val;
-
-  const isOptionSelected = (val: string) =>
-    multiple ? selectedValues.includes(val) : isOptionActive(val);
-
   const randomInputId = useId();
   const givenOrRandomInputId = inputId ?? randomInputId;
   const listboxId = useId();
@@ -365,7 +315,6 @@ const Select = (props: SelectProps) => {
         classes[multiple ? 'multiple' : 'single'],
         expanded && classes.expanded,
         disabled && classes.disabled,
-        usingKeyboard && classes.usingKeyboard,
       )}
       data-testid='select-root'
     >
@@ -464,43 +413,19 @@ const Select = (props: SelectProps) => {
         noPadding={true}
         readOnly={false}
       />
-      <span
-        className={classes.optionListWrapper}
-        ref={refs.setFloating}
-        style={{
-          left: x ?? 0,
-          top: y ?? 0,
-        }}
-      >
-        <span
-          aria-expanded={expanded}
-          className={classes.optionList}
-          id={listboxId}
-          role='listbox'
-        >
-          {sortedOptions.map((option) => (
-            <button
-              aria-label={option.label}
-              aria-selected={isOptionSelected(option.value)}
-              className={cn(
-                classes.option,
-                isOptionSelected(option.value) && classes.selected,
-                multiple && isOptionActive(option.value) && classes.focused,
-              )}
-              id={`${givenOrRandomInputId}-${option.value}`}
-              key={option.value}
-              onClick={() => addOrRemoveSelectedValue(option.value)}
-              onMouseDown={(event) => event.preventDefault()}
-              onKeyDown={(event) => event.preventDefault()}
-              role='option'
-              type='button'
-              value={option.value}
-            >
-              {option.formattedLabel ?? option.label}
-            </button>
-          ))}
-        </span>
-      </span>
+      <OptionList
+        activeValue={activeOption}
+        expanded={expanded}
+        listboxId={listboxId}
+        multiple={!!multiple}
+        onOptionClick={addOrRemoveSelectedValue}
+        optionId={(val) => `${givenOrRandomInputId}-${val}`}
+        options={sortedOptions}
+        selectedValues={selectedValues}
+        setFloating={refs.setFloating}
+        x={x}
+        y={y}
+      />
     </span>
   );
 };

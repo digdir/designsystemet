@@ -27,6 +27,41 @@ describe('InputWrapper', () => {
       render({ isValid: false });
       expect(screen.queryByTestId('input-icon-error')).toBeInTheDocument();
     });
+
+    it('should not have aria-describedby when its not provided', () => {
+      render({ label: 'Simple' });
+      expect(screen.getByLabelText('Simple')).not.toHaveAttribute(
+        'aria-describedby',
+      );
+    });
+
+    it('should have aria-describedby when its provided', () => {
+      render({
+        label: 'Simple text-field',
+        ariaDescribedBy: 'another-element-id',
+      });
+      expect(screen.getByLabelText('Simple text-field')).toHaveAttribute(
+        'aria-describedby',
+        'another-element-id',
+      );
+    });
+
+    it('aria-describedby attribute should be derived from both the provided props and auto-generated based on the character limit', () => {
+      render({
+        label: 'Simple text-field',
+        ariaDescribedBy: 'another-element-id',
+        characterLimit: {
+          maxCount: 100,
+          srLabel: 'Max count',
+          label: (count) => `Remaining ${count}`,
+        },
+      });
+      const characterLimitId = ':rd:';
+      expect(screen.getByLabelText('Simple text-field')).toHaveAttribute(
+        'aria-describedby',
+        `another-element-id ${characterLimitId}`,
+      );
+    });
   });
 
   describe('Search icon', () => {
@@ -199,6 +234,15 @@ describe('InputWrapper', () => {
       expect(screen.getByText('-3 signs left')).toHaveAttribute(
         'aria-live',
         'polite',
+      );
+    });
+
+    it('should not have aria-describedby when character-limit is not provided ', () => {
+      render({
+        label: 'Other',
+      });
+      expect(screen.getByLabelText('Other')).not.toHaveAttribute(
+        'aria-describedby',
       );
     });
   });

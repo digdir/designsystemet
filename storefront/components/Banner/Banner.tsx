@@ -38,4 +38,4 @@ const Banner = ({ title, desc }: BannerProps) => {
   );
 };
 
-export default Banner;
+export { Banner };

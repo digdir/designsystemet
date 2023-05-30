@@ -34,6 +34,7 @@ export const TextArea = forwardRef(
       characterLimit,
       value,
       onChange,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: TextAreaProps,
     ref: ForwardedRef<HTMLTextAreaElement>,
@@ -58,6 +59,7 @@ export const TextArea = forwardRef(
         disabled={disabled}
         inputId={textAreaId}
         characterLimit={characterLimit}
+        ariaDescribedBy={ariaDescribedBy}
         inputRenderer={({ className, inputId, describedBy }) => {
           return (
             <textarea
