@@ -1,9 +1,9 @@
 <br>
 <div align="center">
   <picture align="center">
-    <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EhXWExB.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://i.imgur.com/EhXWExB.png">
-    <img align="center" alt="Designsystemet logo" src="https://i.imgur.com/EhXWExB.png">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-positive.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/img/logo-negative.svg">
+    <img align="center" alt="Designsystemet logo" src="assets/img/logo-negative.svg">
   </picture>
 </div>
 
