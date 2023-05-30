@@ -1,9 +1,15 @@
 const componentName = process.argv[2];
-const componentPath = './storefront/components/';
+const componentPath = './packages/react/src/components/';
 import { mkdir, writeFile } from 'fs/promises';
 
-import { mainContent, exportContent, cssContent } from './fileTemplates';
 import { consoleMessage } from './message';
+import {
+  mainContent,
+  exportContent,
+  cssContent,
+  storyContent,
+  mdxContent,
+} from './fileTemplates';
 
 (async () => {
   if (componentName === undefined) {
@@ -26,10 +32,26 @@ import { consoleMessage } from './message';
     cssContent(),
   );
 
+  // Creates the story file
+  await writeFile(
+    `${componentPath}/${componentName}/${componentName}.stories.tsx`,
+    storyContent(componentName),
+  );
+
+  // Creates the mdx file
+  await writeFile(
+    `${componentPath}/${componentName}/${componentName}.mdx`,
+    mdxContent(componentName),
+  );
+
   // Creates the export file
   await writeFile(
     `${componentPath}/${componentName}/index.ts`,
     exportContent(componentName),
+  );
+
+  consoleMessage(
+    'The ' + componentName + ' component was created successfully.',
   );
 })().catch((e) => {
   console.log(e);
