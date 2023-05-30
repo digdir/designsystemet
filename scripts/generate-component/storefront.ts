@@ -31,6 +31,12 @@ import { consoleMessage } from './message';
     `${componentPath}/${componentName}/index.ts`,
     exportContent(componentName),
   );
+
+  consoleMessage(
+    'The ' +
+      componentName +
+      ' component for the Storefront was successfully created.',
+  );
 })().catch((e) => {
   console.log(e);
 });

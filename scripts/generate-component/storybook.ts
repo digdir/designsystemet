@@ -51,7 +51,9 @@ import {
   );
 
   consoleMessage(
-    'The ' + componentName + ' component was created successfully.',
+    'The ' +
+      componentName +
+      ' component for Storybook was successfully created.',
   );
 })().catch((e) => {
   console.log(e);
