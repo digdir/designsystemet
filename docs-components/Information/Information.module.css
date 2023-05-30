@@ -11,3 +11,12 @@
 .desc > * p {
   font: var(--fds-typography-paragraph-short-small) !important;
 }
+
+.beta {
+  background-color: #f1ecff;
+  border-left: 8px solid #6544c5;
+}
+
+.title {
+  font: var(--fds-typography-heading-xxsmall) !important;
+}
