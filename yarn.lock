@@ -2704,7 +2704,6 @@ __metadata:
     "@tokens-studio/sd-transforms": ^0.8.5
     change-case: ^4.1.2
     style-dictionary: ^3.7.2
-    ts-node: ^10.9.1
   languageName: unknown
   linkType: soft
 

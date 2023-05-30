@@ -25,8 +25,8 @@
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix",
     "pack:react": "yarn workspace @digdir/design-system-react pack",
-    "generate-component-storefront": "ts-node --esm ./scripts/generate-component/storefront.mts",
-    "gcsf": "ts-node --esm ./scripts/generate-component/storefront.mts"
+    "generate-component-storefront": "ts-node ./scripts/generate-component/storefront.ts",
+    "gcsf": "ts-node ./scripts/generate-component/storefront.ts"
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
