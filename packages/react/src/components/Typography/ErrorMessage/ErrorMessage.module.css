@@ -1,4 +1,6 @@
 .errorMessage {
+  --fdsc-typography-font-family: inherit;
+
   margin: 0;
   color: var(--fds-semantic-text-danger-default);
 }
@@ -9,8 +11,10 @@
 
 .errorMessage.medium {
   font: var(--fds-typography-error_message-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .errorMessage.small {
   font: var(--fds-typography-error_message-small);
+  font-family: var(--fdsc-typography-font-family);
 }
