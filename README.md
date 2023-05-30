@@ -150,7 +150,7 @@ TypeScript and CSS files have been configured with linting, which means that the
 
 #### Use of TypeScript files
 
-In code contributions for this project, we do not permit JavaScript files. The use of TypeScript ensures the safety and testability of our code. If you need to run TypeScript files in the Node environment, use the `.mts` extension.
+In code contributions for this project, we do not permit JavaScript files. The use of TypeScript ensures the safety and testability of our code.
 
 ---
 
