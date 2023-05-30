@@ -5,10 +5,7 @@ import classes from './Information.module.css';
 
 type Texts = 'token' | 'development' | 'beta';
 
-const texts: Record<
-  Texts,
-  { description: string; title?: string; colorClass?: string }
-> = {
+const texts: Record<Texts, { description: string; title?: string }> = {
   token: {
     title: 'Tokens',
     description:
@@ -23,8 +20,16 @@ const texts: Record<
     title: 'Beta',
     description:
       'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring. Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
-    colorClass: 'beta',
   },
+};
+
+const colorClass = (text: Texts) => {
+  switch (text) {
+    case 'beta':
+      return classes.beta;
+    default:
+      return '';
+  }
 };
 
 type InformationProps = {
@@ -34,11 +39,9 @@ type InformationProps = {
 export const Information = ({ text }: InformationProps) => {
   const textData = texts[text];
 
-  const color = textData?.colorClass || '';
-
   return (
-    <div className={classes.container + ' ' + color}>
-      {textData.title && <div className={classes.title}>{textData.title}</div>}
+    <div className={classes.container + ' ' + colorClass(text)}>
+      {textData.title && <h2 className={classes.title}>{textData.title}</h2>}
       <div className={classes.desc}>
         <Markdown>{textData.description}</Markdown>
       </div>

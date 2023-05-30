@@ -19,4 +19,5 @@
 
 .title {
   font: var(--fds-typography-heading-xxsmall) !important;
+  border-bottom: 0;
 }
