@@ -9,4 +9,4 @@ export {
 export { Changelog } from './Changelog/Changelog';
 export { ComponentOverview } from './ComponentOverview/component-overview';
 export { Stack } from './Stack/Stack';
-export * from './TokenBlock/TokenBlock.tsx';
+export * from './Information/Information';
