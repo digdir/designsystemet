@@ -139,7 +139,6 @@ export const typography_heading_medium : string;
 export const typography_heading_small : string;
 export const typography_heading_xsmall : string;
 export const typography_heading_xxsmall : string;
-export const typography_ingress_large : string;
 export const typography_ingress_medium : string;
 export const typography_paragraph_large : string;
 export const typography_paragraph_medium : string;
