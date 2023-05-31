@@ -17,6 +17,7 @@
   color: var(--component-toggle_button-color-text-inactive);
   cursor: pointer;
   flex: 1;
+  font-family: inherit;
   font-size: var(--component-toggle_button-font_size-sm);
   padding-left: var(--component-toggle_button-space-padding-x);
   padding-right: var(--component-toggle_button-space-padding-x);
