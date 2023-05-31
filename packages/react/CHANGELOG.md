@@ -16,10 +16,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **TextField, TextArea:** append ids to aria-described-by ([#456](https://github.com/digdir/designsystem/issues/456)) ([449988c](https://github.com/digdir/designsystem/commit/449988c5d6ea69b9c52a61be481e61d6236b8f9c))
 - **Typography:** :bug: Fix Typography components to inherit font-family ([#470](https://github.com/digdir/designsystem/issues/470)) ([06f6677](https://github.com/digdir/designsystem/commit/06f66770df7bdc6f3a55f4d3567a0e2e249e8bf8))
 
-### Features
-
-- chip component ([#393](https://github.com/digdir/designsystem/issues/393)) ([ca17398](https://github.com/digdir/designsystem/commit/ca173985e97627f4e95c62b218be22131fee4333))
-
 ## [0.12.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.0...@digdir/design-system-react@0.12.1) (2023-05-22)
 
 ### Bug Fixes
