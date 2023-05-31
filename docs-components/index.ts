@@ -1,4 +1,3 @@
-export { BetaBlock } from './BetaBlock/BetaBlock';
 export { Table } from './Table/Table';
 export { TokensTable } from './Table/TokenTable/TokensTable';
 export {
