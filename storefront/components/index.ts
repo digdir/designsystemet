@@ -1,5 +1,4 @@
 export { Banner } from './Banner';
-export { BetaBlock } from './BetaBlock';
 export { Card } from './Card';
 export { ClipboardBtn } from './ClipboardBtn';
 export { CodeSnippet } from './CodeSnippet';
