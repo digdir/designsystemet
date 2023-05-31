@@ -1,15 +1,19 @@
 .container {
   background-color: var(--fds-semantic-surface-warning-subtle);
   border-left: 8px solid var(--fds-semantic-border-warning-default);
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   width: auto;
+  margin-top: 24px !important;
   margin-bottom: 2rem !important;
 }
 
-.desc > * p {
-  font: var(--fds-typography-paragraph-short-small) !important;
+.desc > p {
+  font: var(--fds-typography-paragraph-short-xsmall) !important;
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.5em !important;
 }
 
 .beta {
@@ -19,5 +23,7 @@
 
 .title {
   font: var(--fds-typography-heading-xxsmall) !important;
-  border-bottom: 0;
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
