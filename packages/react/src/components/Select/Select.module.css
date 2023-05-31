@@ -66,6 +66,7 @@
   display: inline-flex;
   align-items: center;
   flex-direction: row;
+  font-family: inherit;
   font-size: var(--font_size);
   min-height: var(--field-height);
   width: 100%;
@@ -100,6 +101,7 @@
   background: transparent;
   border: 0;
   box-sizing: border-box;
+  font-family: inherit;
   font-size: var(--font_size);
   line-height: var(--line-height);
   min-height: var(--field-height-inside);
