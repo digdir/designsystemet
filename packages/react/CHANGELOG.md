@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.1...@digdir/design-system-react@0.13.0) (2023-05-31)
+
+### Bug Fixes
+
+- **Accordion:** :bug: Fix `displayName` for Accordion sub-components ([#424](https://github.com/digdir/designsystem/issues/424)) ([c755c4a](https://github.com/digdir/designsystem/commit/c755c4a8c19ac6d03a7dd51b32e4e3d92e33af3b))
+- **Accordion:** :bug: Use correct icon in header ([#473](https://github.com/digdir/designsystem/issues/473)) ([7517690](https://github.com/digdir/designsystem/commit/7517690873caf74d7eac6bc47f8f179df4a999a8))
+- **Accordion:** 🐛 Fix hover state on Accordion.Header when used on touch devies ([#435](https://github.com/digdir/designsystem/issues/435)) ([8164dcc](https://github.com/digdir/designsystem/commit/8164dcca1ebd81ada20a9347e943983f9eed6224))
+- **CheckboxRadioTemplate:** ensure to remove spacing/gap when label is hidden ([#427](https://github.com/digdir/designsystem/issues/427)) ([f5a20e6](https://github.com/digdir/designsystem/commit/f5a20e66b50254611373ee3efa1d827be5124520))
+- **InputWrapper, Select, Tabs, ToggleButtonGroup:** :recycle: Removed component defined font-family ([#476](https://github.com/digdir/designsystem/issues/476)) ([2e65214](https://github.com/digdir/designsystem/commit/2e6521401e0aabd9975ecc8ce6bcf7a4352ee662))
+- **Select:** Make options list independent of container size restrictions ([#449](https://github.com/digdir/designsystem/issues/449)) ([6f8ce62](https://github.com/digdir/designsystem/commit/6f8ce623af3ff09c817674289c94d802a04af912))
+- **TextField, TextArea:** append ids to aria-described-by ([#456](https://github.com/digdir/designsystem/issues/456)) ([449988c](https://github.com/digdir/designsystem/commit/449988c5d6ea69b9c52a61be481e61d6236b8f9c))
+- **Typography:** :bug: Fix Typography components to inherit font-family ([#470](https://github.com/digdir/designsystem/issues/470)) ([06f6677](https://github.com/digdir/designsystem/commit/06f66770df7bdc6f3a55f4d3567a0e2e249e8bf8))
+
+### Features
+
+- chip component ([#393](https://github.com/digdir/designsystem/issues/393)) ([ca17398](https://github.com/digdir/designsystem/commit/ca173985e97627f4e95c62b218be22131fee4333))
+
 ## [0.12.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.0...@digdir/design-system-react@0.12.1) (2023-05-22)
 
 ### Bug Fixes
