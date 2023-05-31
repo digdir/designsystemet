@@ -5,7 +5,7 @@ import Removable from './Removable';
 import classes from './Removable.module.css';
 
 const meta: Meta<typeof Removable> = {
-  title: 'Kjernekomponenter/Typography/Removable',
+  title: 'Kjernekomponenter/Chips/Removable',
   component: Removable,
 };
 

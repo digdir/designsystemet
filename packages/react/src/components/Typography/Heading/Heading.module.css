@@ -1,4 +1,6 @@
 .heading {
+  --fdsc-typography-font-family: inherit;
+
   margin: 0;
 }
 
@@ -8,24 +10,30 @@
 
 .heading.xlarge {
   font: var(--fds-typography-heading-xlarge);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .heading.large {
   font: var(--fds-typography-heading-large);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .heading.medium {
   font: var(--fds-typography-heading-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .heading.small {
   font: var(--fds-typography-heading-small);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .heading.xsmall {
   font: var(--fds-typography-heading-xsmall);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .heading.xxsmall {
   font: var(--fds-typography-heading-xxsmall);
+  font-family: var(--fdsc-typography-font-family);
 }

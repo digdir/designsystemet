@@ -1,4 +1,6 @@
 .label {
+  --fdsc-typography-font-family: inherit;
+
   display: inline-block;
   margin: 0;
 }
@@ -9,16 +11,20 @@
 
 .label.large {
   font: var(--fds-typography-label-large);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .label.medium {
   font: var(--fds-typography-label-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .label.small {
   font: var(--fds-typography-label-small);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .label.xsmall {
   font: var(--fds-typography-label-xsmall);
+  font-family: var(--fdsc-typography-font-family);
 }

@@ -1,4 +1,6 @@
 .paragraph {
+  --fdsc-typography-font-family: inherit;
+
   margin: 0;
 }
 
@@ -8,32 +10,40 @@
 
 .paragraph.large {
   font: var(--fds-typography-paragraph-large);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.large.short {
   font: var(--fds-typography-paragraph-short-large);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.medium {
   font: var(--fds-typography-paragraph-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.medium.short {
   font: var(--fds-typography-paragraph-short-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.small {
   font: var(--fds-typography-paragraph-small);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.small.short {
   font: var(--fds-typography-paragraph-short-small);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.xsmall {
   font: var(--fds-typography-paragraph-xsmall);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .paragraph.xsmall.short {
   font: var(--fds-typography-paragraph-short-xsmall);
+  font-family: var(--fdsc-typography-font-family);
 }
