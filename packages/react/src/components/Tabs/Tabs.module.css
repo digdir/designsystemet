@@ -35,6 +35,7 @@
   border-width: 0 0 var(--tab-border_bottom_width) 0;
   color: var(--tab-text_color);
   cursor: pointer;
+  font-family: inherit;
   font-size: var(--tab-font_size);
   font-weight: var(--tab-font_weight);
   line-height: var(--tab-height);
