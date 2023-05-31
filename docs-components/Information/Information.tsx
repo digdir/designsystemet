@@ -14,12 +14,12 @@ const texts: Record<Texts, { description: string; title?: string }> = {
   development: {
     title: 'Under utvikling',
     description:
-      'Komponenten er under utvikling og dermed ikke tilgjenglige i react pakken `@digdir/design-system-react`.',
+      'Komponenten er under utvikling og dermed ikke tilgjenglig i `@digdir/design-system-react`.',
   },
   beta: {
     title: 'Beta',
     description:
-      'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring. Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
+      'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring.\n\n Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
   },
 };
 

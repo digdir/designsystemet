@@ -9,9 +9,9 @@
   margin-bottom: 2rem !important;
 }
 
-.desc > p {
+.desc p {
   font: var(--fds-typography-paragraph-short-xsmall) !important;
-  margin-top: 8px !important;
+  margin-top: 4px !important;
   margin-bottom: 0 !important;
   line-height: 1.5em !important;
 }

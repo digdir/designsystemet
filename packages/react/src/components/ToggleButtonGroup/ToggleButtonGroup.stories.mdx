@@ -1,54 +1,57 @@
-import {ArgsTable, Canvas, Meta, Story} from "@storybook/addon-docs";
-import {TokensTable} from "../../../../../docs-components";
-import {ToggleButtonGroup} from "./ToggleButtonGroup";
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { TokensTable, Information } from '../../../../../docs-components';
+import { ToggleButtonGroup } from './ToggleButtonGroup';
 
 <Meta
-    title="Kjernekomponenter/ToggleButtonGroup"
-    component={ToggleButtonGroup}
-    parameters={{
-        status: {
-            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
-    }}
+  title='Kjernekomponenter/ToggleButtonGroup'
+  component={ToggleButtonGroup}
+  parameters={{
+    status: {
+      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      url: 'http://www.url.com/status',
+    },
+  }}
 />
 
 export const defaultArgs = {
-    items: [
-        {
-            label: 'Kaffe',
-            value: 'kaffe'
-        },
-        {
-            label: 'Te',
-            value: 'te'
-        },
-        {
-            label: 'Vann',
-            value: 'vann'
-        }
-    ],
-    selectedValue: 'vann'
+  items: [
+    {
+      label: 'Kaffe',
+      value: 'kaffe',
+    },
+    {
+      label: 'Te',
+      value: 'te',
+    },
+    {
+      label: 'Vann',
+      value: 'vann',
+    },
+  ],
+  selectedValue: 'vann',
 };
 
-export const Template = (args = {}) => <ToggleButtonGroup {...{...defaultArgs, ...args}}/>;
+export const Template = (args = {}) => (
+  <ToggleButtonGroup {...{ ...defaultArgs, ...args }} />
+);
 
 # ToggleButtonGroup
 
+<Information text='beta' />
 ## Variants
 <Canvas>
-    <Story name="Eksempel">
-        {Template.bind({})}
-    </Story>
+  <Story name='Eksempel'>{Template.bind({})}</Story>
 </Canvas>
 
 ## Egenskaper
+
 <ArgsTable story='Eksempel' />
 
 ## Tokens
+
 <TokensTable
-    componentName='toggle_button'
-    description
-    jsonKey='component.toggle_button'
-    showPreview={false}
+  componentName='toggle_button'
+  description
+  jsonKey='component.toggle_button'
+  showPreview={false}
 />
