@@ -72,7 +72,7 @@ type FontScale = {
 };
 
 StyleDictionary.registerTransform({
-  name: 'fontSizes/fluid',
+  name: 'css/fontSizes/fluid',
   type: 'value',
   transitive: true,
   matcher: (token) =>
@@ -143,7 +143,7 @@ StyleDictionary.registerFormat({
     const includeReferences = options.referencesFilter as ReferencesFilter;
     let referencedTokens: TransformedToken[] = [];
 
-    const defaultFormat = createPropertyFormatter({
+    const format = createPropertyFormatter({
       outputReferences,
       dictionary,
       format: 'css',
@@ -155,7 +155,7 @@ StyleDictionary.registerFormat({
       format: 'css',
     });
 
-    const formattedTokens = dictionary.allTokens
+    const tokens = dictionary.allTokens
       .map((token) => {
         if (
           dictionary.usesReference(token.original.value) &&
@@ -171,17 +171,17 @@ StyleDictionary.registerFormat({
           return formatWithReference(token);
         }
 
-        return !token.isSource && defaultFormat(token);
+        return !token.isSource && format(token);
       })
       .filter((x) => x);
 
-    const formattedReferenceTokens = referencedTokens
+    const referenceTokens = referencedTokens
       .reduce<{ name: string; formatted: string }[]>((acc, token) => {
         if (acc.find((x) => x.name === token.name)) {
           return acc;
         }
 
-        return [...acc, { name: token.name, formatted: defaultFormat(token) }];
+        return [...acc, { name: token.name, formatted: format(token) }];
       }, [])
       .map((x) => x.formatted)
       .filter((x) => x);
@@ -190,9 +190,9 @@ StyleDictionary.registerFormat({
       fileHeader({ file }) +
       ':root {\n' +
       '  /** Referenced source tokens */ \n' +
-      formattedReferenceTokens.join('\n') +
-      '\n\n  /** Semantic tokens */ \n' +
-      formattedTokens.join('\n') +
+      referenceTokens.join('\n') +
+      '\n\n  /** Tokens */ \n' +
+      tokens.join('\n') +
       '\n}\n'
     );
   },
@@ -228,9 +228,9 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         basePxFontSize,
         transformGroup: 'css',
         transforms: [
-          'ts/resolveMath',
           'name/cti/hierarchical-kebab',
-          'fontSizes/fluid',
+          'ts/resolveMath',
+          'css/fontSizes/fluid',
           'css/spacing/fluid',
           'typography/shorthand',
           'ts/size/lineheight',
@@ -254,9 +254,10 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         basePxFontSize,
         transformGroup: 'js',
         transforms: [
-          'ts/resolveMath',
           'name/cti/camel_underscore',
+          'ts/resolveMath',
           'typography/shorthand',
+          'ts/size/px',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
         ],
