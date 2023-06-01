@@ -52,6 +52,7 @@
 
 .img {
   width: 360px;
+  display: block;
 }
 
 .buttons {
