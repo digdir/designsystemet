@@ -7,8 +7,7 @@ import type {
 } from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
-const { fileHeader, formattedVariables, createPropertyFormatter } =
-  StyleDictionary.formatHelpers;
+const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
 void registerTransforms(StyleDictionary);
 
@@ -103,7 +102,7 @@ StyleDictionary.registerTransform({
 });
 
 StyleDictionary.registerTransform({
-  name: 'spacing/fluid',
+  name: 'css/spacing/fluid',
   type: 'value',
   transitive: true,
   matcher: (token) => token.type === 'spacing' && token.path[0] === 'spacing',
@@ -232,7 +231,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           'ts/resolveMath',
           'name/cti/hierarchical-kebab',
           'fontSizes/fluid',
-          'spacing/fluid',
+          'css/spacing/fluid',
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
@@ -257,8 +256,6 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         transforms: [
           'ts/resolveMath',
           'name/cti/camel_underscore',
-          'fontSizes/fluid',
-          'spacing/fluid',
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
