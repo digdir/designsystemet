@@ -47,6 +47,7 @@
 .content > p > strong {
   margin-top: 8px;
   display: inline-block;
+  font-weight: 500;
 }
 
 .content > div {
