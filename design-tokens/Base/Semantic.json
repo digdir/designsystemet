@@ -29,11 +29,11 @@
           "type": "color"
         },
         "neutral": {
-          "value": "#d2d5d8",
+          "value": "{colors.grey.300}",
           "type": "color"
         },
         "neutral-dark": {
-          "value": "#68707c",
+          "value": "{colors.grey.600}",
           "type": "color"
         },
         "inverted": {
