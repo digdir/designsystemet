@@ -116,7 +116,7 @@
           "type": "color"
         },
         "default": {
-          "value": "#ff8c06",
+          "value": "{colors.orange.500}",
           "type": "color"
         }
       },
