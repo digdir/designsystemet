@@ -62,9 +62,15 @@
   line-height: 1.7em;
 }
 
-.content > p > a {
+.content > p > a,
+.content > ul > li > a {
   color: #0062ba;
-  text-underline-offset: 5px;
+  text-underline-offset: 4px;
+}
+
+.content > p > a:hover,
+.content > ul > li > a:hover {
+  text-decoration-thickness: 2px;
 }
 
 .content pre {
