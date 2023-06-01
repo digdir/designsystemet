@@ -44,10 +44,6 @@
   border-radius: 2px;
 }
 
-.content > h2:first-child {
-  margin-top: 32px !important;
-}
-
 .content > p > strong {
   margin-top: 8px;
   display: inline-block;
