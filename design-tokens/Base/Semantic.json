@@ -114,6 +114,10 @@
         "subtle-hover": {
           "value": "{colors.yellow.200}",
           "type": "color"
+        },
+        "default": {
+          "value": "#ff8c06",
+          "type": "color"
         }
       },
       "danger": {
