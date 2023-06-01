@@ -142,10 +142,6 @@
       "component.error_message.color.text": "S:7b89e4b8508a910cc9f34c044ea2dc883a8d07c2,",
       "semantic.background.default": "S:aa05601b5bcf03508012ba6b87a2293984b31e3f,",
       "semantic.background.subtle": "S:69bc5795ca06ab12402fab8778139626f3de589f,",
-      "semantic.surface.neutral.default": "S:e29db9cd0764c5b2c692f3a50685c5f312d56d45,",
-      "semantic.surface.neutral.subtle": "S:135a09c13885b731f952bdf86076216d6dfcdad0,",
-      "semantic.surface.neutral.subtle-hover": "S:ecb9014f477602ba313b83b489c86b56d3cdb0ba,",
-      "semantic.surface.neutral.selected": "S:6163d38fd3182f85880fd831fe83f5e3dc826d6a,",
       "semantic.surface.neutral.inverted": "S:342e6a24beb1d93152914f61f3a1a11a2f8188e2,",
       "semantic.surface.action.subtle": "S:f159c7f63f4e095cb75bf770cf0625366a56d8b6,",
       "semantic.surface.action.subtle-hover": "S:71d1e125704adf63c5b0ffd42421d808bd322531,",
@@ -264,7 +260,11 @@
       "typography.interactive.small": "S:c8dfd777051d57443937819c1560b31c0843c39b,",
       "semantic.border.tab-focus.outline": "S:35a815edf0e45139df01ea7c4caabd7020d889d1,",
       "typography.detail.xsmall": "S:fb988c084a81e5b2ea93fd72599431052c5f2d75,",
-      "typography.ingress.medium": "S:019c2179116d7cb343811ce1228ecc16e175c66d,"
+      "typography.ingress.medium": "S:019c2179116d7cb343811ce1228ecc16e175c66d,",
+      "semantic.surface.neutral.default": "S:e29db9cd0764c5b2c692f3a50685c5f312d56d45,",
+      "semantic.surface.neutral.selected": "S:6163d38fd3182f85880fd831fe83f5e3dc826d6a,",
+      "semantic.surface.neutral.subtle": "S:135a09c13885b731f952bdf86076216d6dfcdad0,",
+      "semantic.surface.neutral.subtle-hover": "S:ecb9014f477602ba313b83b489c86b56d3cdb0ba,"
     }
   },
   {

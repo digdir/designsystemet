@@ -28,11 +28,7 @@
           "value": "{colors.grey.200}",
           "type": "color"
         },
-        "neutral": {
-          "value": "{colors.grey.300}",
-          "type": "color"
-        },
-        "neutral-dark": {
+        "dark": {
           "value": "{colors.grey.600}",
           "type": "color"
         },
