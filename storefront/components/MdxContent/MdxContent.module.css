@@ -65,6 +65,11 @@
   line-height: 1.7em;
 }
 
+.content > p > a {
+  color: #0062ba;
+  text-underline-offset: 5px;
+}
+
 .content > iframe {
   box-shadow: 0 2px 4px rgba(0 0 0 / 0.2);
   border-radius: 4px;
