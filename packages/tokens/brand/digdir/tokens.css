@@ -5,7 +5,7 @@
 
 :root {
   /** Referenced source tokens */ 
-  --fds-font-size-f0: clamp(1.00rem, calc(0.20vw + 0.95rem), 1.13rem);
+  --fds-font-size-f0: clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem);
 
   /** Semantic tokens */ 
   --fds-brand-primary-100: #feefef;
