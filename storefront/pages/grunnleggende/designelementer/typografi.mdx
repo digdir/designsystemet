@@ -3,7 +3,7 @@ import { MenuPageLayout } from '@layouts';
 
 <Meta
   title='Typografi'
-  description='Beskrivelse'
+  description='For å presentere innholdet korrekt bruker vi stiler og komponenter for typografi.'
 />
 
 export default ({ children, menu }) => (
@@ -11,12 +11,43 @@ export default ({ children, menu }) => (
     content={children}
     data={{
       title: 'Typografi',
-      date: '17. april 2023',
+      date: '30. mai 2023',
     }}
   />
 );
 
-For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. ⚠️ Det skal også lages et sett med komponenter som wrapper typografi-stilene og har innebygd spacing. Disse er foreløpig kun tilgjengelige i Figma, ikke som react-komponenter.
+For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. Det er også laget et sett med [typografi-komponenter](https://digdir.github.io/designsystem/?path=/docs/kjernekomponenter-typography--docs) som wrapper typografi-stilene og har innebygd spacing.
+
+## Font-family
+
+Font-family er ikke en del av designsystem-biblioteket, du må selv importere ønsket font i din app. Vi anbefaler å bruke fonten Inter da det er denne fonten komponentene i designsystemet har blitt designet og testet med. Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer. Den oppfyller følgende kriterier:
+
+- [Open font license](https://github.com/rsms/inter/blob/master/LICENSE.txt) + har et [aktivt community](https://github.com/rsms/inter)
+- Stor skriftfamilie (light, regular, italic, bold, semibold)
+- Gjenkjennelige bokstaver, tall og spesialtegn (ikke for kreativ)
+- Tydelige overlengder og underlengde på bokstavene.
+- Synlig forskjell på lignende tegn (I, l, 1) (må aktiveres)
+- Åpne bokstaver gror ikke igjen (f.eks tegn som a, e og c)
+- Lik strektykkelse i overgangene.
+- Tabular numbers ([monospace](https://fonts.google.com/knowledge/introducing_type/understanding_numerals))
+- [Variabel font](https://rsms.me/inter/#variable)
+- God bokstav og ordmellomrom
+- Språkstøtte
+
+Fonten er tilgjengelig i Figma uten at du trenger å laste ned og installere den selv. Trenger du den til andre formål kan du laste den ned fra [github.com/rsms/inter](https://github.com/rsms/inter/releases/tag/v3.19).
+
+For hosting kan Altinn CDN benyttes:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/inter.css"
+/>
+```
+
+```css
+font-family: 'Inter', sans-serif;
+```
 
 ## Størrelser
 
@@ -68,19 +99,16 @@ Body-komponenten tilbyr størrelsen "medium" som tilsvarer 18px på store skjerm
 
 Ved hjelp av [Fluid typography](https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/) kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt breakpoint. Tekststørrelsene øker gradvis fra liten viewport-bredde helt til det treffer maksbredden på viewporten.
 
-| Step | 380px             | 768px             | 1360px            | fluid                                           |
+| Step | 320px             | 768px             | 1360px            | fluid                                           |
 | ---- | ----------------- | ----------------- | ----------------- | ----------------------------------------------- |
-| f-2  | 14.00px / 0.88rem | 14.00px / 0.88rem | 14.00px / 0.88rem | clamp(0.88rem, calc(0.00vw + 0.88rem), 0.88rem) |
-| f-1  | 15.00px / 0.94rem | 15.40px / 0.96rem | 16.00px / 1.00rem | clamp(0.94rem, calc(0.10vw + 0.91rem), 1.00rem) |
-| f0   | 16.00px / 1.00rem | 16.79px / 1.05rem | 18.00px / 1.13rem | clamp(1.00rem, calc(0.20vw + 0.95rem), 1.13rem) |
-| f1   | 17.00px / 1.06rem | 18.19px / 1.14rem | 20.00px / 1.25rem | clamp(1.06rem, calc(0.31vw + 0.99rem), 1.25rem) |
-| f2   | 19.00px / 1.19rem | 20.58px / 1.29rem | 23.00px / 1.44rem | clamp(1.19rem, calc(0.41vw + 1.09rem), 1.44rem) |
-| f3   | 20.00px / 1.25rem | 22.38px / 1.40rem | 26.00px / 1.63rem | clamp(1.25rem, calc(0.61vw + 1.10rem), 1.63rem) |
-| f4   | 22.00px / 1.38rem | 24.77px / 1.55rem | 29.00px / 1.81rem | clamp(1.38rem, calc(0.71vw + 1.21rem), 1.81rem) |
-| f5   | 24.00px / 1.50rem | 27.17px / 1.70rem | 32.00px / 2.00rem | clamp(1.50rem, calc(0.82vw + 1.31rem), 2.00rem) |
-| f6   | 26.00px / 1.63rem | 29.96px / 1.87rem | 36.00px / 2.25rem | clamp(1.63rem, calc(1.02vw + 1.38rem), 2.25rem) |
-| f7   | 28.00px / 1.75rem | 33.15px / 2.07rem | 41.00px / 2.56rem | clamp(1.75rem, calc(1.33vw + 1.43rem), 2.56rem) |
-| f8   | 31.00px / 1.94rem | 36.94px / 2.31rem | 46.00px / 2.88rem | clamp(1.94rem, calc(1.53vw + 1.57rem), 2.88rem) |
+| f-2  | 13.00px / 0.81rem | 13.00px / 0.81rem | 13.00px / 0.81rem | clamp(0.81rem, calc(0.00vw + 0.81rem), 0.81rem) |
+| f-1  | 15.00px / 0.94rem | 15.43px / 0.96rem | 16.00px / 1.00rem | clamp(0.94rem, calc(0.10vw + 0.92rem), 1.00rem) |
+| f0   | 16.00px / 1.00rem | 16.86px / 1.05rem | 18.00px / 1.13rem | clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem) |
+| f1   | 18.00px / 1.13rem | 19.29px / 1.21rem | 21.00px / 1.31rem | clamp(1.13rem, calc(0.29vw + 1.07rem), 1.31rem) |
+| f2   | 19.00px / 1.19rem | 21.15px / 1.32rem | 24.00px / 1.50rem | clamp(1.19rem, calc(0.48vw + 1.09rem), 1.50rem) |
+| f3   | 21.00px / 1.31rem | 24.02px / 1.50rem | 28.00px / 1.75rem | clamp(1.31rem, calc(0.67vw + 1.18rem), 1.75rem) |
+| f4   | 23.00px / 1.44rem | 26.88px / 1.68rem | 32.00px / 2.00rem | clamp(1.44rem, calc(0.87vw + 1.26rem), 2.00rem) |
+| f5   | 26.00px / 1.63rem | 31.17px / 1.95rem | 38.00px / 2.38rem | clamp(1.63rem, calc(1.15vw + 1.39rem), 2.38rem) |
 
 ### Takk til
 
