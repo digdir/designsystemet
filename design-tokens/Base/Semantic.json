@@ -16,6 +16,10 @@
           "value": "{colors.white}",
           "type": "color"
         },
+        "selected": {
+          "value": "{colors.blue.100}",
+          "type": "color"
+        },
         "subtle": {
           "value": "{colors.grey.100}",
           "type": "color"
@@ -24,8 +28,12 @@
           "value": "{colors.grey.200}",
           "type": "color"
         },
-        "selected": {
-          "value": "{colors.blue.100}",
+        "neutral": {
+          "value": "#d2d5d8",
+          "type": "color"
+        },
+        "neutral-dark": {
+          "value": "#68707c",
           "type": "color"
         },
         "inverted": {
