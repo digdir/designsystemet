@@ -101,6 +101,7 @@
   color: #1e2b3c;
   display: flex;
   align-items: center;
+  margin-top: 20px;
 }
 
 .link:hover {
