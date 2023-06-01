@@ -165,44 +165,56 @@
         }
       },
       "primary": {
-        "primary": {
+        "light": {
           "value": "{brand.primary.300}",
           "type": "color"
         },
-        "primary-hover": {
+        "light-hover": {
           "value": "{brand.primary.400}",
           "type": "color"
         },
-        "primary-active": {
+        "light-active": {
           "value": "{brand.primary.500}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.primary.800}",
           "type": "color"
         }
       },
       "secondary": {
-        "secondary": {
+        "light": {
           "value": "{brand.secondary.300}",
           "type": "color"
         },
-        "secondary-hover": {
+        "light-hover": {
           "value": "{brand.secondary.400}",
           "type": "color"
         },
-        "secondary-active": {
+        "light-active": {
           "value": "{brand.secondary.500}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.secondary.800}",
           "type": "color"
         }
       },
       "tertiary": {
-        "tertiary": {
+        "light": {
           "value": "{brand.tertiary.300}",
           "type": "color"
         },
-        "tertiary-hover": {
+        "light-hover": {
           "value": "{brand.tertiary.400}",
           "type": "color"
         },
-        "tertiary-active": {
+        "light-active": {
           "value": "{brand.tertiary.500}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.tertiary.800}",
           "type": "color"
         }
       },

@@ -168,7 +168,6 @@
       "semantic.surface.danger.no_fill-hover": "S:81b337569f854f540137d8e43a458d7d5a2a8063,",
       "semantic.surface.danger.no_fill-action": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,",
       "semantic.surface.info.subtle": "S:733a629d621a244b73b1b5cd91d0dcd475b0631b,",
-      "semantic.surface.primary.primary": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
       "semantic.surface.primary.primary-hover": "S:2ed0133da2188ffafdd4383b77db5927a0f87028,",
       "semantic.surface.primary.primary-active": "S:49a37a64ee1541cb9240b74953789afcfffd9998,",
       "semantic.surface.secondary.secondary": "S:a3c6dfa2b3187d1cae8083df13e7beec8ffe6278,",
@@ -264,7 +263,8 @@
       "semantic.surface.neutral.default": "S:e29db9cd0764c5b2c692f3a50685c5f312d56d45,",
       "semantic.surface.neutral.selected": "S:6163d38fd3182f85880fd831fe83f5e3dc826d6a,",
       "semantic.surface.neutral.subtle": "S:135a09c13885b731f952bdf86076216d6dfcdad0,",
-      "semantic.surface.neutral.subtle-hover": "S:ecb9014f477602ba313b83b489c86b56d3cdb0ba,"
+      "semantic.surface.neutral.subtle-hover": "S:ecb9014f477602ba313b83b489c86b56d3cdb0ba,",
+      "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,"
     }
   },
   {
