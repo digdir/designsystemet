@@ -67,6 +67,13 @@
   text-underline-offset: 5px;
 }
 
+.content pre {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 32px 0;
+}
+
 .content > iframe {
   box-shadow: 0 2px 4px rgba(0 0 0 / 0.2);
   border-radius: 4px;
