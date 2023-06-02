@@ -4,6 +4,10 @@
  */
 
 :root {
+  /** Referenced source tokens */ 
+  --fds-font-size-f0: clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem);
+
+  /** Tokens */ 
   --fds-brand-primary-100: #efeffb;
   --fds-brand-primary-200: #dedff6;
   --fds-brand-primary-300: #bec0ed;
@@ -162,29 +166,42 @@
   --fds-typography-interactive-small: 400 1rem/1.3 'Inter';
   --fds-opacity-disabled: 30%;
   --fds-border_radius-interactive: 4px;
-  --fds-spacing-1: 0.25rem;
-  --fds-spacing-2: 0.5rem;
-  --fds-spacing-3: 0.75rem;
-  --fds-spacing-4: 1rem;
-  --fds-spacing-5: 1.25rem;
-  --fds-spacing-6: 1.5rem;
-  --fds-spacing-8: 2rem;
-  --fds-spacing-10: 2.5rem;
-  --fds-spacing-12: 3rem;
-  --fds-spacing-14: 3.5rem;
-  --fds-sizing-1: 0.25rem;
-  --fds-sizing-2: 0.5rem;
-  --fds-sizing-3: 0.75rem;
-  --fds-sizing-4: 1rem;
-  --fds-sizing-5: 1.25rem;
-  --fds-sizing-6: 1.5rem;
-  --fds-sizing-8: 2rem;
-  --fds-sizing-10: 2.5rem;
-  --fds-sizing-12: 3rem;
-  --fds-sizing-14: 3.5rem;
-  --fds-component-mode-height-small: 2.5rem;
-  --fds-component-mode-height-medium: 3rem;
-  --fds-component-mode-height-large: 3.5rem;
+  --fds-spacing-0: calc(0);
+  --fds-spacing-1: calc(var(--fds-base_spacing)/16*var(--fds-font-size-f0));
+  --fds-spacing-2: calc(var(--fds-base_spacing)*2/16*var(--fds-font-size-f0));
+  --fds-spacing-3: calc(var(--fds-base_spacing)*3/16*var(--fds-font-size-f0));
+  --fds-spacing-4: calc(var(--fds-base_spacing)*4/16*var(--fds-font-size-f0));
+  --fds-spacing-5: calc(var(--fds-base_spacing)*5/16*var(--fds-font-size-f0));
+  --fds-spacing-6: calc(var(--fds-base_spacing)*6/16*var(--fds-font-size-f0));
+  --fds-spacing-7: calc(var(--fds-base_spacing)*7/16*var(--fds-font-size-f0));
+  --fds-spacing-8: calc((var(--fds-base_spacing)*8/16)*var(--fds-font-size-f0));
+  --fds-spacing-10: calc((var(--fds-base_spacing)*10/16)*var(--fds-font-size-f0));
+  --fds-spacing-12: calc((var(--fds-base_spacing)*12/16)*var(--fds-font-size-f0));
+  --fds-spacing-14: calc((var(--fds-base_spacing)*14/16)*var(--fds-font-size-f0));
+  --fds-spacing-18: calc((var(--fds-base_spacing)*18/16)*var(--fds-font-size-f0));
+  --fds-spacing-22: calc((var(--fds-base_spacing)*22/16)*var(--fds-font-size-f0));
+  --fds-spacing-26: calc((var(--fds-base_spacing)*26/16)*var(--fds-font-size-f0));
+  --fds-spacing-30: calc((var(--fds-base_spacing)*30/16)*var(--fds-font-size-f0));
+  --fds-base_spacing: 4;
+  --fds-sizing-1: 4;
+  --fds-sizing-2: 8;
+  --fds-sizing-3: 12;
+  --fds-sizing-4: 16;
+  --fds-sizing-5: 20;
+  --fds-sizing-6: 24;
+  --fds-sizing-7: 28;
+  --fds-sizing-8: 32;
+  --fds-sizing-10: 40;
+  --fds-sizing-12: 48;
+  --fds-sizing-14: 56;
+  --fds-sizing-18: 72;
+  --fds-sizing-22: 88;
+  --fds-sizing-26: 104;
+  --fds-sizing-30: 120;
+  --fds-base_sizing: 4;
+  --fds-component-mode-height-small: 40;
+  --fds-component-mode-height-medium: 48;
+  --fds-component-mode-height-large: 56;
   --fds-border_width-default: 1px;
   --fds-border_width-active: 2px;
   --fds-border_width-tab_focus: 2px;
