@@ -44,13 +44,10 @@
   border-radius: 2px;
 }
 
-.content > h2:first-child {
-  margin-top: 32px !important;
-}
-
-.content > p > strong {
+.content strong {
   margin-top: 8px;
   display: inline-block;
+  font-weight: 500;
 }
 
 .content > div {
@@ -63,6 +60,24 @@
 .content > ul > li {
   font-size: 18px;
   line-height: 1.7em;
+}
+
+.content > p > a,
+.content > ul > li > a {
+  color: #0062ba;
+  text-underline-offset: 4px;
+}
+
+.content > p > a:hover,
+.content > ul > li > a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.content pre {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 32px 0;
 }
 
 .content > iframe {

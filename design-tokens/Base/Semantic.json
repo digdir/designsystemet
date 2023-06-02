@@ -16,6 +16,10 @@
           "value": "{colors.white}",
           "type": "color"
         },
+        "selected": {
+          "value": "{colors.blue.100}",
+          "type": "color"
+        },
         "subtle": {
           "value": "{colors.grey.100}",
           "type": "color"
@@ -24,8 +28,8 @@
           "value": "{colors.grey.200}",
           "type": "color"
         },
-        "selected": {
-          "value": "{colors.blue.100}",
+        "dark": {
+          "value": "{colors.grey.600}",
           "type": "color"
         },
         "inverted": {
@@ -110,6 +114,10 @@
         "subtle-hover": {
           "value": "{colors.yellow.200}",
           "type": "color"
+        },
+        "default": {
+          "value": "{colors.orange.500}",
+          "type": "color"
         }
       },
       "danger": {
@@ -157,44 +165,56 @@
         }
       },
       "primary": {
-        "primary": {
+        "light": {
+          "value": "{brand.primary.200}",
+          "type": "color"
+        },
+        "light-hover": {
           "value": "{brand.primary.300}",
           "type": "color"
         },
-        "primary-hover": {
+        "light-active": {
           "value": "{brand.primary.400}",
           "type": "color"
         },
-        "primary-active": {
-          "value": "{brand.primary.500}",
+        "dark": {
+          "value": "{brand.primary.800}",
           "type": "color"
         }
       },
       "secondary": {
-        "secondary": {
+        "light": {
+          "value": "{brand.secondary.200}",
+          "type": "color"
+        },
+        "light-hover": {
           "value": "{brand.secondary.300}",
           "type": "color"
         },
-        "secondary-hover": {
+        "light-active": {
           "value": "{brand.secondary.400}",
           "type": "color"
         },
-        "secondary-active": {
-          "value": "{brand.secondary.500}",
+        "dark": {
+          "value": "{brand.secondary.800}",
           "type": "color"
         }
       },
       "tertiary": {
-        "tertiary": {
+        "light": {
+          "value": "{brand.tertiary.200}",
+          "type": "color"
+        },
+        "light-hover": {
           "value": "{brand.tertiary.300}",
           "type": "color"
         },
-        "tertiary-hover": {
+        "light-active": {
           "value": "{brand.tertiary.400}",
           "type": "color"
         },
-        "tertiary-active": {
-          "value": "{brand.tertiary.500}",
+        "dark": {
+          "value": "{brand.tertiary.800}",
           "type": "color"
         }
       },
