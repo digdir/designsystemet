@@ -7,7 +7,7 @@
   /** Referenced source tokens */ 
   --fds-font-size-f0: clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem);
 
-  /** Semantic tokens */ 
+  /** Tokens */ 
   --fds-brand-primary-100: #E6EFF8;
   --fds-brand-primary-200: #B3D0EA;
   --fds-brand-primary-300: #80B1DD;
