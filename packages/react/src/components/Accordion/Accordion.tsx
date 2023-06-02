@@ -6,7 +6,7 @@ import classes from './Accordion.module.css';
 
 export type AccordionProps = {
   /** Accordion background color */
-  color?: 'neutral' | 'subtle' | 'primary' | 'secondary' | 'tertiary';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'neutral' | 'subtle';
   /** Show border */
   border?: boolean;
   /** Instances of `Accordion.Item` */
