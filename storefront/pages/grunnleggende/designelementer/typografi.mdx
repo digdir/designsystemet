@@ -1,5 +1,6 @@
 import { Meta, TokenList } from '@components';
 import { MenuPageLayout } from '@layouts';
+import { Figma } from 'mdx-embed';
 
 <Meta
   title='Typografi'
@@ -49,14 +50,35 @@ For hosting kan Altinn CDN benyttes:
 font-family: 'Inter', sans-serif;
 ```
 
-## Størrelser
+## Tekststørrelse
 
 Tekststørrelse-variablene blir angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
 og tar utgangspunkt i den vanligste standarden der `1rem = 16px`. Når vi angir tekststørrelse i rem, vil størrelsen være relatert til nettleserens standardstørrelse, og dermed også ta hensyn til om brukeren har valgt å oppskalere tekststørrelsen under innstillingene for tilgjengelighet i sin nettleser.
 
-Header-komponenten tilbyr størrelsene "xlarge" | "large" | "medium" | "small" | "xsmall" for headers. På små skjermer (mobil) tilsvarer dette 31, 28, 26, 22, 20px. På store skjermer tilsvarer det 46, 41, 36, 32, 29px.
+### Fluid typography
 
-Body-komponenten tilbyr størrelsen "medium" som tilsvarer 18px på store skjermer og 16px på små skjermer, og "small" som tilsvarer 16px på store skjermer og 15px på små skjermer.
+Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt breakpoint.
+
+Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer maksbredden på viewporten som er satt til 1360px. En tekst på 16px vil f.eks øke til 18px på den største viewporten.
+
+Størrelsene er generert ved hjelp av [Fluid Typescale Generator](https://fluid-tokenization.vercel.app/)
+
+| Step   | viewport 320px        | viewport 1360px       |
+| ------ | --------------------- | --------------------- |
+| f-3    | 12.00px / 0.75rem     | 12.00px / 0.75rem     |
+| f-2    | 13.00px / 0.81rem     | 13.00px / 0.81rem     |
+| f-1    | 15.00px / 0.94rem     | 16.00px / 1.00rem     |
+| **f0** | **16.00px / 1.00rem** | **18.00px / 1.13rem** |
+| f1     | 18.00px / 1.13rem     | 21.00px / 1.31rem     |
+| f2     | 19.00px / 1.19rem     | 24.00px / 1.50rem     |
+| f3     | 21.00px / 1.31rem     | 28.00px / 1.75rem     |
+| f4     | 23.00px / 1.44rem     | 32.00px / 2.00rem     |
+| f5     | 26.00px / 1.63rem     | 38.00px / 2.38rem     |
+
+<Figma
+  title='Typography sizes in Figma'
+  url='file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?type=design&node-id=15%3A98&t=0RQ88PMLMSJ0TgAX-1'
+/>
 
 ## Tokens for typografi
 
@@ -67,7 +89,7 @@ Body-komponenten tilbyr størrelsen "medium" som tilsvarer 18px på store skjerm
   token='fds-typography-heading'
 />
 
-### Body
+### Paragraph
 
 <TokenList
   type='fontSize'
@@ -81,13 +103,6 @@ Body-komponenten tilbyr størrelsen "medium" som tilsvarer 18px på store skjerm
   token='fds-typography-ingress'
 />
 
-### Detail
-
-<TokenList
-  type='fontSize'
-  token='fds-typography-detail'
-/>
-
 ### Error
 
 <TokenList
@@ -95,22 +110,7 @@ Body-komponenten tilbyr størrelsen "medium" som tilsvarer 18px på store skjerm
   token='fds-typography-error_message'
 />
 
-## Fluid Typescale
-
-Ved hjelp av [Fluid typography](https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/) kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt breakpoint. Tekststørrelsene øker gradvis fra liten viewport-bredde helt til det treffer maksbredden på viewporten.
-
-| Step | 320px             | 768px             | 1360px            | fluid                                           |
-| ---- | ----------------- | ----------------- | ----------------- | ----------------------------------------------- |
-| f-2  | 13.00px / 0.81rem | 13.00px / 0.81rem | 13.00px / 0.81rem | clamp(0.81rem, calc(0.00vw + 0.81rem), 0.81rem) |
-| f-1  | 15.00px / 0.94rem | 15.43px / 0.96rem | 16.00px / 1.00rem | clamp(0.94rem, calc(0.10vw + 0.92rem), 1.00rem) |
-| f0   | 16.00px / 1.00rem | 16.86px / 1.05rem | 18.00px / 1.13rem | clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem) |
-| f1   | 18.00px / 1.13rem | 19.29px / 1.21rem | 21.00px / 1.31rem | clamp(1.13rem, calc(0.29vw + 1.07rem), 1.31rem) |
-| f2   | 19.00px / 1.19rem | 21.15px / 1.32rem | 24.00px / 1.50rem | clamp(1.19rem, calc(0.48vw + 1.09rem), 1.50rem) |
-| f3   | 21.00px / 1.31rem | 24.02px / 1.50rem | 28.00px / 1.75rem | clamp(1.31rem, calc(0.67vw + 1.18rem), 1.75rem) |
-| f4   | 23.00px / 1.44rem | 26.88px / 1.68rem | 32.00px / 2.00rem | clamp(1.44rem, calc(0.87vw + 1.26rem), 2.00rem) |
-| f5   | 26.00px / 1.63rem | 31.17px / 1.95rem | 38.00px / 2.38rem | clamp(1.63rem, calc(1.15vw + 1.39rem), 2.38rem) |
-
-### Takk til
+## Takk til
 
 Takk til [Victor Nystad](https://gist.github.com/vnys/ac50e8189dcae883a7fb09083fed83fa) som har vist oss hvordan vi kan oppnå en harmonisk typografisk skala basert på en pentatonisk skala og en formel, som også er beskrevet av [Spencer Mortensen](https://spencermortensen.com/articles/typographic-scale/).
 
