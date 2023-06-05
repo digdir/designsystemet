@@ -46,6 +46,7 @@ const Header = () => {
           <Link
             className={classes['logo-link']}
             href='/'
+            onClick={() => setOpen(false)}
           >
             <Image
               className={classes.logo}
@@ -86,6 +87,7 @@ const Header = () => {
               >
                 <Link
                   href={item.url}
+                  onClick={() => setOpen(false)}
                   className={cn(
                     isMenuItemActive(router.pathname, item.url)
                       ? classes.active

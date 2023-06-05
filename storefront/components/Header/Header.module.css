@@ -94,6 +94,10 @@
     display: block;
   }
 
+  .item .active {
+    display: inline-block;
+  }
+
   .logo {
     height: 26px;
   }
