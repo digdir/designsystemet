@@ -2681,7 +2681,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/design-system-react@*, @digdir/design-system-react@workspace:packages/react":
+"@digdir/design-system-react@^0.13.0, @digdir/design-system-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-react@workspace:packages/react"
   dependencies:
@@ -20432,7 +20432,7 @@ __metadata:
   dependencies:
     "@altinn/altinn-design-system": ^0.27.2
     "@altinn/figma-design-tokens": ^5.0.0
-    "@digdir/design-system-react": "*"
+    "@digdir/design-system-react": ^0.13.0
     "@mdx-js/loader": ^2.0.0-rc.2
     "@mdx-js/react": ^1.6.22
     "@navikt/aksel-icons": ^2.8.4
