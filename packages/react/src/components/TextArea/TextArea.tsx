@@ -60,7 +60,7 @@ export const TextArea = forwardRef(
         inputId={textAreaId}
         characterLimit={characterLimit}
         ariaDescribedBy={ariaDescribedBy}
-        inputRenderer={({ className, inputId, describedBy }) => {
+        inputRenderer={({ className, inputId, describedBy, ariaInvalid }) => {
           return (
             <textarea
               {...rest}
@@ -69,6 +69,7 @@ export const TextArea = forwardRef(
               onChange={handleOnChange}
               id={inputId}
               aria-describedby={describedBy}
+              aria-invalid={ariaInvalid}
               disabled={disabled}
               readOnly={Boolean(readOnly)}
               className={[
