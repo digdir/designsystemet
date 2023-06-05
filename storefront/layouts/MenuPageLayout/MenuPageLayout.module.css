@@ -31,6 +31,7 @@
 
 .header {
   padding: 32px;
+  margin-bottom: 32px;
   background-color: #f4f4f4;
   border-radius: 8px;
   width: 100%;

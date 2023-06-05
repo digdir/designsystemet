@@ -8,7 +8,7 @@ import classes from './Ingress.module.css';
 
 export type IngressProps = {
   /** Changes text sizing */
-  size?: 'medium' | 'large';
+  size?: 'medium';
   /** Adds margin-bottom */
   spacing?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;

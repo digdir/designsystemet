@@ -12,8 +12,3 @@
   font: var(--fds-typography-ingress-medium);
   font-family: var(--fdsc-typography-font-family);
 }
-
-.ingress.large {
-  font: var(--fds-typography-ingress-large);
-  font-family: var(--fdsc-typography-font-family);
-}

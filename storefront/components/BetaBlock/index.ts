@@ -1,1 +1,0 @@
-export { BetaBlock } from './BetaBlock';

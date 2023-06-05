@@ -1,70 +1,83 @@
-import {ArgsTable, Canvas, Meta, Story} from "@storybook/addon-docs";
-import {Table, TableBody, TableCell, TableFooter, TableHeader, TableRow} from "./";
-import {TokensTable} from "../../../../../docs-components";
-import {exampleRows} from "./ExampleData";
-import classes from "./Table.stories.module.css";
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHeader,
+  TableRow,
+} from './';
+import { TokensTable, Information } from '../../../../../docs-components';
+import { exampleRows } from './ExampleData';
+import classes from './Table.stories.module.css';
 
 <Meta
-    title="Kjernekomponenter/Table"
-    component={Table}
-    parameters={{
-        status: {
-            type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-            url: 'http://www.url.com/status'
-        }
-    }}
+  title='Kjernekomponenter/Table'
+  component={Table}
+  parameters={{
+    status: {
+      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
+      url: 'http://www.url.com/status',
+    },
+  }}
 />
 
 export const Template = (args) => (
-    <Table {...args}>
-        <TableHeader>
-            <TableRow>
-                <TableCell>Søknadsnr.</TableCell>
-                <TableCell>Produkt</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Bilde</TableCell>
-            </TableRow>
-        </TableHeader>
-        <TableBody>
-            {exampleRows.map((row) => (
-                <TableRow key={row.caseNum} rowData={{ caseNum: row.caseNum }}>
-                    <TableCell>{row.caseNum}</TableCell>
-                    <TableCell>{row.product}</TableCell>
-                    <TableCell>{row.status}</TableCell>
-                    <TableCell>
-                        <img src={row.image.src} alt={row.image.alt} className={classes.img}/>
-                    </TableCell>
-                </TableRow>
-            ))}
-        </TableBody>
-        <TableFooter>
-            <TableRow>
-                <TableCell colSpan={5}>
-                    Lorem ipsum dolor sit amet.
-                </TableCell>
-            </TableRow>
-        </TableFooter>
-    </Table>
+  <Table {...args}>
+    <TableHeader>
+      <TableRow>
+        <TableCell>Søknadsnr.</TableCell>
+        <TableCell>Produkt</TableCell>
+        <TableCell>Status</TableCell>
+        <TableCell>Bilde</TableCell>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {exampleRows.map((row) => (
+        <TableRow
+          key={row.caseNum}
+          rowData={{ caseNum: row.caseNum }}
+        >
+          <TableCell>{row.caseNum}</TableCell>
+          <TableCell>{row.product}</TableCell>
+          <TableCell>{row.status}</TableCell>
+          <TableCell>
+            <img
+              src={row.image.src}
+              alt={row.image.alt}
+              className={classes.img}
+            />
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+    <TableFooter>
+      <TableRow>
+        <TableCell colSpan={5}>Lorem ipsum dolor sit amet.</TableCell>
+      </TableRow>
+    </TableFooter>
+  </Table>
 );
 
 # Table
 
+<Information text='beta' />
+
 ## Eksempel
 
 <Canvas>
-    <Story name="Eksempel">
-        {Template.bind({})}
-    </Story>
+  <Story name='Eksempel'>{Template.bind({})}</Story>
 </Canvas>
 
-
 ## Egenskaper
+
 <ArgsTable story='Eksempel' />
 
 ## Tokens
+
 <TokensTable
-    componentName='table'
-    description
-    jsonKey='component.table'
-    showPreview={false}
+  componentName='table'
+  description
+  jsonKey='component.table'
+  showPreview={false}
 />

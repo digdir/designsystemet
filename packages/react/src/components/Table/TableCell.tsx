@@ -69,11 +69,9 @@ export function TableCell({
           }
         >
           <div
-            className={
-              sortDirection != 'notSortable'
-                ? classes.containerSortable
-                : classes.container
-            }
+            className={cn(
+              sortDirection != 'notSortable' && classes.containerSortable,
+            )}
             onClick={() => handleChange()}
             onKeyUp={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
