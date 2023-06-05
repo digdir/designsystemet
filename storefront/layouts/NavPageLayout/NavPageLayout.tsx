@@ -17,7 +17,10 @@ interface NavPageLayoutData {
 
 const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
   return (
-    <div className='grey-background'>
+    <main
+      id='main'
+      className='grey-background'
+    >
       <ImageSection
         imgSrc={data.imageSection.imgSrc}
         imgAlt={data.imageSection.imgAlt}
@@ -32,7 +35,7 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
       <div className={classes.content}>
         <Container>{content}</Container>
       </div>
-    </div>
+    </main>
   );
 };
 

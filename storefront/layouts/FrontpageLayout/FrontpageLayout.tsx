@@ -26,7 +26,7 @@ interface FrontpageData {
 
 const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
   return (
-    <div>
+    <main id='main'>
       {Content}
       <div className='max-width-container main'>
         <Banner
@@ -60,7 +60,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           buttons={data.contributeSection.buttons}
         />
       </div>
-    </div>
+    </main>
   );
 };
 

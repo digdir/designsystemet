@@ -21,7 +21,10 @@ type PageLayoutData = {
 
 const PageLayout = ({ content, data }: PageLayoutProps) => {
   return (
-    <div className={classes.page}>
+    <main
+      id='main'
+      className={classes.page}
+    >
       <div className={classes.header}>
         <Container className={classes.headerContainer}>
           <div className={classes.headerContent}>
@@ -56,7 +59,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
           <MdxContent>{content}</MdxContent>
         </div>
       </Container>
-    </div>
+    </main>
   );
 };
 
