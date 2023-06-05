@@ -27,8 +27,8 @@
     "pack:react": "yarn workspace @digdir/design-system-react pack",
     "generate-component-storefront": "ts-node ./scripts/generate-component/storefront.ts",
     "gcsf": "ts-node ./scripts/generate-component/storefront.ts",
-    "generate-component-storybook": "ts-node ./scripts/generate-component/storybook.ts",
-    "gcsb": "ts-node ./scripts/generate-component/storybook.ts"
+    "generate-component-react": "ts-node ./scripts/generate-component/react.ts",
+    "gcsr": "ts-node ./scripts/generate-component/react.ts"
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",

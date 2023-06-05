@@ -60,7 +60,7 @@ import {
   consoleMessage(
     'The ' +
       componentName +
-      ' component for Storybook was successfully created.',
+      ' component in React package was successfully created.',
   );
 })().catch((e) => {
   console.log(e);
