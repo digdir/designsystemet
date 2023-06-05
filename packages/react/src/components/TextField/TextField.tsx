@@ -122,13 +122,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         inputId={id}
         characterLimit={characterLimit}
         ariaDescribedBy={ariaDescribedBy}
-        inputRenderer={({
-          className,
-          variant,
-          inputId,
-          describedBy,
-          ariaInvalid,
-        }) => {
+        inputRenderer={({ className, variant, inputId, describedBy }) => {
           const commonProps = {
             id: inputId,
             readOnly: Boolean(readOnly),
@@ -160,7 +154,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 onValueChange={handleNumberFormatChange}
                 valueIsNumericString={true}
                 aria-describedby={describedBy}
-                aria-invalid={ariaInvalid}
                 getInputRef={ref}
               />
             );
