@@ -50,7 +50,7 @@ const Header = () => {
             <Image
               className={classes.logo}
               src='/img/logo-positive.svg'
-              alt='Logo'
+              alt='Designsystemet logo'
               width={275}
               height={30}
             />
