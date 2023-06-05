@@ -51,5 +51,3 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     />
   ),
 );
-
-NativeSelect.displayName = 'NativeSelect';
