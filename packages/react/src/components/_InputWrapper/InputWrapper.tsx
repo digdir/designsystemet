@@ -16,6 +16,7 @@ type InputRendererProps = {
   variant: InputVariant_;
   value?: string;
   describedBy?: string;
+  ariaInvalid?: boolean;
 };
 
 export type CharacterLimit = Omit<
@@ -68,12 +69,15 @@ export const InputWrapper = ({
     ? autoCharLimitIdGenerated
     : undefined;
   const currentInputValue = value ? value.toString() : '';
+
+  const isInputValid = characterLimit
+    ? currentInputValue.length <= characterLimit.maxCount && isValid
+    : isValid;
+
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
-    isValid: characterLimit
-      ? currentInputValue.length < characterLimit.maxCount && isValid
-      : isValid,
+    isValid: isInputValid,
     readOnly,
   });
 
@@ -116,6 +120,7 @@ export const InputWrapper = ({
             hasIcon,
             inputId: givenOrRandomInputId,
             variant,
+            ariaInvalid: !isInputValid,
             describedBy: buildAriaDescribedBy([
               ariaDescribedBy,
               characterLimitDescriptionId,

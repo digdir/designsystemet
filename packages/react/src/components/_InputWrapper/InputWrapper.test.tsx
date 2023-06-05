@@ -245,6 +245,40 @@ describe('InputWrapper', () => {
         'aria-describedby',
       );
     });
+
+    it('should have "aria-invalid: true" when character-limit exceeds', () => {
+      render({
+        label: 'Comment',
+        value: 'Hello',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.getByLabelText('Comment')).toHaveAttribute(
+        'aria-invalid',
+        'true',
+      );
+    });
+
+    it('should have "aria-invalid: false" when text length is equal to character-limit "maxCount"', () => {
+      render({
+        label: 'Comment',
+        value: 'He',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.getByLabelText('Comment')).toHaveAttribute(
+        'aria-invalid',
+        'false',
+      );
+    });
   });
 });
 
@@ -257,11 +291,12 @@ const getClassNames = (expectedClassName: InputVariant_) => {
 
 const render = (props: Partial<InputWrapperProps> = {}) => {
   const allProps: InputWrapperProps = {
-    inputRenderer: ({ className, inputId, describedBy }) => (
+    inputRenderer: ({ className, inputId, describedBy, ariaInvalid }) => (
       <input
         className={className}
         id={inputId}
         aria-describedby={describedBy}
+        aria-invalid={ariaInvalid}
       />
     ),
     ...props,
