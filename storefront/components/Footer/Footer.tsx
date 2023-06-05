@@ -36,7 +36,7 @@ const rightLinks = [
       <Image
         height={20}
         width={20}
-        alt='f'
+        alt=''
         src='/img/logos/slack-negative.png'
       />
     ),
@@ -48,7 +48,7 @@ const rightLinks = [
       <Image
         height={20}
         width={20}
-        alt='f'
+        alt=''
         src='/img/logos/github-negative.png'
       />
     ),
@@ -60,7 +60,7 @@ const rightLinks = [
       <Image
         height={20}
         width={20}
-        alt='f'
+        alt=''
         src='/img/logos/figma-negative.png'
       />
     ),
