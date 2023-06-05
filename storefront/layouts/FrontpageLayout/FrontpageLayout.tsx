@@ -29,6 +29,7 @@ interface FrontpageData {
     description: string;
     email: string;
     image: string;
+    imageAlt: string;
     imageWidth: number;
     imageHeight: number;
     buttons?: ImageSectionButtonProps[];
@@ -64,6 +65,7 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           title={data.contributeSection.title}
           description={data.contributeSection.description}
           src={data.contributeSection.image}
+          alt={data.contributeSection.imageAlt}
           imgWidth={data.contributeSection.imageWidth}
           imgHeight={data.contributeSection.imageHeight}
           buttons={data.contributeSection.buttons}

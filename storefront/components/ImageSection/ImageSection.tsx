@@ -10,6 +10,7 @@ interface ImageSectionProps {
   title?: string;
   description?: string;
   src: string;
+  alt?: string;
   content?: React.ReactNode;
   children?: React.ReactNode;
   imgWidth: number;
@@ -38,6 +39,7 @@ const ImageSection = ({
   buttons,
   link,
   imagePosition = 'left',
+  alt = '',
 }: ImageSectionProps) => {
   return (
     <div className={classes[backgroundColor]}>
@@ -47,7 +49,7 @@ const ImageSection = ({
             <Image
               className={classes.img}
               src={src}
-              alt='Image'
+              alt={alt}
               height={imgHeight}
               width={imgWidth}
             />
@@ -87,7 +89,7 @@ const ImageSection = ({
             <Image
               className={classes.img}
               src={src}
-              alt='Image'
+              alt={alt}
               height={imgHeight}
               width={imgWidth}
             />

@@ -25,6 +25,7 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
       `}</style>
       <ImageSection
         src={data.imageSection.src}
+        alt={data.imageSection.alt}
         backgroundColor={data.imageSection.backgroundColor}
         imgHeight={220}
         imgWidth={220}
