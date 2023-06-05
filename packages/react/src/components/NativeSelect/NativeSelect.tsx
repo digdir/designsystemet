@@ -25,32 +25,15 @@ export type NativeSelectProps = {
 
   /** Defines the number of visible options. */
   size?: number;
-
-  /** The class name for the wrapper element. */
-  wrapperClassName?: string;
-
-  /** The ID of the wrapper element. */
-  wrapperId?: string;
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
-const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
+export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
-    {
-      children,
-      disabled = false,
-      id,
-      isValid = true,
-      label,
-      wrapperClassName,
-      wrapperId,
-      ...selectProps
-    },
+    { children, disabled = false, id, isValid = true, label, ...selectProps },
     ref: ForwardedRef<HTMLSelectElement>,
   ) => (
     <InputWrapper
-      className={wrapperClassName}
       disabled={disabled}
-      id={wrapperId}
       inputId={id}
       isValid={isValid}
       inputRenderer={({ className, inputId }) => (
@@ -70,5 +53,3 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 );
 
 NativeSelect.displayName = 'NativeSelect';
-
-export { NativeSelect };
