@@ -6,30 +6,37 @@ export type { ${componentName}Props } from './${componentName}';
 };
 
 // Content for tsx file
-const mainContent = (componentName: string) => {
-  return `import React from 'react';
+const mainContent = (
+  componentName: string,
+) => `import type { HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import cn from 'classnames';
 
 import classes from './${componentName}.module.css';
 
-type ${componentName}Props = {
-  children: React.ReactNode;
-};
+export type ${componentName}Props = {
+  /* Description of what myProp does in the component */
+  myProp?: string;
+} & HTMLAttributes<HTMLDivElement>;
 
-const ${componentName} = ({ children }: ${componentName}Props) => {
-  return <div className={classes.myClass}>{children}</div>;
-};
-
-export { ${componentName} };
-export type { ${componentName}Props };
+export const ${componentName} = forwardRef<HTMLDivElement, ${componentName}Props>(
+  ({ children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={cn(classes.myClass, rest.className)}
+        ref={ref}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 `;
-};
-
-const cssContent = () => {
-  return `.myClass {
+const cssContent = () => `.myClass {
   color: red;
 }
 `;
-};
 
 const storyContent = (componentName: string) => {
   return `import React from 'react';
@@ -52,7 +59,18 @@ export default {
   },
 } as Meta;
 
-const render: StoryFn<typeof ${componentName}> = () => {
+
+
+// Simple story
+// First story is the one displayed by <Preview /> and used for <Controls />
+export const Preview: Story = {
+  args: {
+    children: 'You created the ${componentName} component!',
+  },
+};
+
+// Composed story
+const Composed: StoryFn<typeof ${componentName}> = () => {
   return (
     <>
       <${componentName}>I</${componentName}>
@@ -61,40 +79,28 @@ const render: StoryFn<typeof ${componentName}> = () => {
     </>
   );
 };
-
-// Simple story
-export const Normal: Story = {
-  args: {
-    children: 'You created the ${componentName} component!',
-  },
-};
-
-// Composed story
-export const Composed: Story = {
-  render,
-  decorators: [
-    (Story) => (
-      <Stack>
-        <Story />
-      </Stack>
-    ),
-  ],
-};
 `;
 };
 
 const mdxContent = (componentName: string) => {
   return `import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { BetaBlock } from '../../../../../docs-components';
+import { Information } from '../../../../../docs-components';
 import * as ${componentName}Stories from './${componentName}.stories';
 
 <Meta of={${componentName}Stories} />
 
 # ${componentName}
 
-<BetaBlock />
+<Information text="Beta" />
 
 Description of the ${componentName} component.
+
+<Primary />
+<Controls />
+
+## Composed
+
+<Canvas of={${componentName}Stories.Composed} />
 `;
 };
 
