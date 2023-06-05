@@ -9,6 +9,7 @@ import {
   cssContent,
   storyContent,
   mdxContent,
+  testContent,
 } from './fileTemplates';
 
 (async () => {
@@ -44,6 +45,12 @@ import {
     mdxContent(componentName),
   );
 
+  // Creates the mdx file
+  await writeFile(
+    `${componentPath}/${componentName}/${componentName}.test.tsx`,
+    testContent(componentName),
+  );
+
   // Creates the export file
   await writeFile(
     `${componentPath}/${componentName}/index.ts`,
@@ -53,7 +60,7 @@ import {
   consoleMessage(
     'The ' +
       componentName +
-      ' component for Storybook was successfully created.',
+      ' component in @digdir/design-system-react was successfully created.',
   );
 })().catch((e) => {
   console.log(e);

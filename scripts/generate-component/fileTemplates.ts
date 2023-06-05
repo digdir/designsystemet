@@ -6,36 +6,41 @@ export type { ${componentName}Props } from './${componentName}';
 };
 
 // Content for tsx file
-const mainContent = (componentName: string) => {
-  return `import React from 'react';
+const mainContent = (
+  componentName: string,
+) => `import type { HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import cn from 'classnames';
 
 import classes from './${componentName}.module.css';
 
-type ${componentName}Props = {
-  children: React.ReactNode;
-};
+export type ${componentName}Props = {
+  /** Description of what myProp does in the component */
+  myProp?: boolean;
+} & HTMLAttributes<HTMLDivElement>;
 
-const ${componentName} = ({ children }: ${componentName}Props) => {
-  return <div className={classes.myClass}>{children}</div>;
-};
-
-export { ${componentName} };
-export type { ${componentName}Props };
+export const ${componentName} = forwardRef<HTMLDivElement, ${componentName}Props>(
+  ({ myProp = false, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={cn(myProp && classes.myClass, rest.className)}
+        ref={ref}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 `;
-};
-
-const cssContent = () => {
-  return `.myClass {
+const cssContent = () => `.myClass {
   color: red;
 }
 `;
-};
 
 const storyContent = (componentName: string) => {
   return `import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-
-import { Stack } from '../../../../../docs-components';
 
 import { ${componentName} } from '.';
 
@@ -52,50 +57,78 @@ export default {
   },
 } as Meta;
 
-const render: StoryFn<typeof ${componentName}> = () => {
-  return (
-    <>
-      <${componentName}>I</${componentName}>
-      <${componentName}>am</${componentName}>
-      <${componentName}>stacked</${componentName}>
-    </>
-  );
-};
-
 // Simple story
-export const Normal: Story = {
+// First story is the one displayed by <Preview /> and used for <Controls />
+export const Preview: Story = {
   args: {
     children: 'You created the ${componentName} component!',
+    myProp: false, // we set this so "boolean" is set in props table
   },
 };
 
-// Composed story
-export const Composed: Story = {
-  render,
-  decorators: [
-    (Story) => (
-      <Stack>
-        <Story />
-      </Stack>
-    ),
-  ],
-};
+// Function story
+// Use this story for listing our different variants, patterns with other components or examples usage with useState
+export const Composed: StoryFn<typeof ${componentName}> = () => (
+  <>
+    <${componentName} myProp>I</${componentName}>
+    <${componentName}>am</${componentName}>
+    <${componentName} myProp>stacked</${componentName}>
+  </>
+);
 `;
 };
 
 const mdxContent = (componentName: string) => {
   return `import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { BetaBlock } from '../../../../../docs-components';
+import { Information } from '../../../../../docs-components';
 import * as ${componentName}Stories from './${componentName}.stories';
 
 <Meta of={${componentName}Stories} />
 
 # ${componentName}
 
-<BetaBlock />
+<Information text='development' />
 
 Description of the ${componentName} component.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+\`\`\`tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { ${componentName} } from '@digdir/design-system-react';
+
+<${componentName}>You are using the ${componentName} component!</${componentName}>;
+\`\`\`
+
+## Composed
+
+<Canvas of={${componentName}Stories.Composed} />
 `;
 };
 
-export { exportContent, mainContent, cssContent, storyContent, mdxContent };
+const testContent = (componentName: string) => `import React from 'react';
+import { render, screen } from '@testing-library/react';
+
+import { ${componentName} } from './${componentName}';
+
+describe('${componentName}', () => {
+  test('myProp should add myClass', (): void => {
+    render(<${componentName} myProp>test text</${componentName}>);
+    expect(screen.getByText('test text')).toHaveClass('myClass');
+  });
+});
+`;
+
+export {
+  exportContent,
+  mainContent,
+  cssContent,
+  storyContent,
+  mdxContent,
+  testContent,
+};
