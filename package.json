@@ -17,6 +17,7 @@
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
     "build:storybook": "storybook build -o ./docs",
     "build:storefront": "yarn workspace storefront building",
+    "start:storefront": "yarn workspace storefront start",
     "lerna:version": "lerna version  --conventional-commits --no-private",
     "lerna:publish": "lerna publish from-package",
     "lint": "eslint",

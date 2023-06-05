@@ -59,3 +59,8 @@ main {
 main > div {
   margin-bottom: auto;
 }
+
+/* Utility classes */
+.grey-background {
+  background: #f4f5f6;
+}

@@ -17,12 +17,7 @@ interface NavPageLayoutData {
 
 const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
   return (
-    <div>
-      <style>{`
-        body {
-          background: #f4f5f6;
-        }
-      `}</style>
+    <div className='grey-background'>
       <ImageSection
         imgSrc={data.imageSection.imgSrc}
         imgAlt={data.imageSection.imgAlt}
