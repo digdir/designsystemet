@@ -9,6 +9,7 @@ import {
   cssContent,
   storyContent,
   mdxContent,
+  testContent,
 } from './fileTemplates';
 
 (async () => {
@@ -42,6 +43,12 @@ import {
   await writeFile(
     `${componentPath}/${componentName}/${componentName}.mdx`,
     mdxContent(componentName),
+  );
+
+  // Creates the mdx file
+  await writeFile(
+    `${componentPath}/${componentName}/${componentName}.test.tsx`,
+    testContent(componentName),
   );
 
   // Creates the export file

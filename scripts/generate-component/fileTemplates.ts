@@ -15,16 +15,16 @@ import cn from 'classnames';
 import classes from './${componentName}.module.css';
 
 export type ${componentName}Props = {
-  /* Description of what myProp does in the component */
-  myProp?: string;
+  /** Description of what myProp does in the component */
+  myProp?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ${componentName} = forwardRef<HTMLDivElement, ${componentName}Props>(
-  ({ children, ...rest }, ref) => {
+  ({ myProp = false, children, ...rest }, ref) => {
     return (
       <div
         {...rest}
-        className={cn(classes.myClass, rest.className)}
+        className={cn(myProp && classes.myClass, rest.className)}
         ref={ref}
       >
         {children}
@@ -42,8 +42,6 @@ const storyContent = (componentName: string) => {
   return `import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Stack } from '../../../../../docs-components';
-
 import { ${componentName} } from '.';
 
 type Story = StoryObj<typeof ${componentName}>;
@@ -59,26 +57,24 @@ export default {
   },
 } as Meta;
 
-
-
 // Simple story
 // First story is the one displayed by <Preview /> and used for <Controls />
 export const Preview: Story = {
   args: {
     children: 'You created the ${componentName} component!',
+    myProp: false, // we set this so "boolean" is set in props table
   },
 };
 
-// Composed story
-const Composed: StoryFn<typeof ${componentName}> = () => {
-  return (
-    <>
-      <${componentName}>I</${componentName}>
-      <${componentName}>am</${componentName}>
-      <${componentName}>stacked</${componentName}>
-    </>
-  );
-};
+// Function story
+// Use this story for listing our different variants, patterns with other components or examples usage with useState
+export const Composed: StoryFn<typeof ${componentName}> = () => (
+  <>
+    <${componentName} myProp>I</${componentName}>
+    <${componentName}>am</${componentName}>
+    <${componentName} myProp>stacked</${componentName}>
+  </>
+);
 `;
 };
 
@@ -91,12 +87,23 @@ import * as ${componentName}Stories from './${componentName}.stories';
 
 # ${componentName}
 
-<Information text="Beta" />
+<Information text='development' />
 
 Description of the ${componentName} component.
 
 <Primary />
 <Controls />
+
+## Bruk
+
+<Information text='token' />
+
+\`\`\`tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { ${componentName} } from '@digdir/design-system-react';
+
+<${componentName}>You are using the ${componentName} component!</${componentName}>;
+\`\`\`
 
 ## Composed
 
@@ -104,4 +111,27 @@ Description of the ${componentName} component.
 `;
 };
 
-export { exportContent, mainContent, cssContent, storyContent, mdxContent };
+const testContent = (componentName: string) => `import React from 'react';
+import { render, screen } from '@testing-library/react';
+
+import { ${componentName} } from './${componentName}';
+
+describe('${componentName}', () => {
+  test('myProp should add myClass', (): void => {
+    render(<${componentName} myProp>test text</${componentName}>);
+    expect(screen.getByText('test text')).toHaveClass('myClass');
+  });
+});
+
+
+
+`;
+
+export {
+  exportContent,
+  mainContent,
+  cssContent,
+  storyContent,
+  mdxContent,
+  testContent,
+};
