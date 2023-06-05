@@ -24,15 +24,15 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
         }
       `}</style>
       <ImageSection
-        src={data.imageSection.src}
-        alt={data.imageSection.alt}
+        imgSrc={data.imageSection.imgSrc}
+        imgAlt={data.imageSection.imgAlt}
         backgroundColor={data.imageSection.backgroundColor}
         imgHeight={220}
         imgWidth={220}
         title={data.imageSection.title}
         description={data.imageSection.description}
         link={data.imageSection.link}
-        imagePosition='right'
+        imgPosition='right'
       ></ImageSection>
       <div className={classes.content}>
         <Container>{content}</Container>

@@ -52,11 +52,11 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
         <ImageSection
           title={data.contributeSection.title}
           description={data.contributeSection.description}
-          src={data.contributeSection.image}
-          alt={data.contributeSection.imageAlt}
+          imgSrc={data.contributeSection.imgSrc}
+          imgAlt={data.contributeSection.imgAlt}
           headingLevel={data.contributeSection.headingLevel}
-          imgWidth={data.contributeSection.imageWidth}
-          imgHeight={data.contributeSection.imageHeight}
+          imgWidth={data.contributeSection.imgWidth}
+          imgHeight={data.contributeSection.imgHeight}
           buttons={data.contributeSection.buttons}
         />
       </div>

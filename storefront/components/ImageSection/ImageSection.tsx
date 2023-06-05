@@ -9,8 +9,8 @@ import classes from './ImageSection.module.css';
 interface ImageSectionProps {
   title?: string;
   description?: string;
-  src: string;
-  alt?: string;
+  imgSrc: string;
+  imgAlt?: string;
   headingLevel?: 'h1' | 'h2';
   content?: React.ReactNode;
   children?: React.ReactNode;
@@ -19,7 +19,7 @@ interface ImageSectionProps {
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
   buttons?: ImageSectionButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
-  imagePosition?: 'left' | 'right';
+  imgPosition?: 'left' | 'right';
 }
 
 type ImageSectionButtonProps = {
@@ -31,7 +31,7 @@ type ImageSectionButtonProps = {
 const ImageSection = ({
   title,
   description,
-  src,
+  imgSrc,
   content,
   imgHeight,
   imgWidth,
@@ -39,8 +39,8 @@ const ImageSection = ({
   children,
   buttons,
   link,
-  imagePosition = 'left',
-  alt = '',
+  imgPosition = 'left',
+  imgAlt = '',
   headingLevel = 'h1',
 }: ImageSectionProps) => {
   const [heading, setHeading] = useState<React.ReactNode | null>(null);
@@ -54,12 +54,12 @@ const ImageSection = ({
   return (
     <div className={classes[backgroundColor]}>
       <Container className={cn(classes.section)}>
-        {imagePosition === 'left' && (
+        {imgPosition === 'left' && (
           <div className={classes.imgContainer}>
             <Image
               className={classes.img}
-              src={src}
-              alt={alt}
+              src={imgSrc}
+              alt={imgAlt}
               height={imgHeight}
               width={imgWidth}
             />
@@ -94,12 +94,12 @@ const ImageSection = ({
 
           {children}
         </div>
-        {imagePosition === 'right' && (
+        {imgPosition === 'right' && (
           <div className={classes.imgContainer}>
             <Image
               className={classes.img}
-              src={src}
-              alt={alt}
+              src={imgSrc}
+              alt={imgAlt}
               height={imgHeight}
               width={imgWidth}
             />
