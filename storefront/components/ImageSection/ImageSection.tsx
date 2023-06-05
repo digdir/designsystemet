@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, createElement } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 
@@ -11,6 +11,7 @@ interface ImageSectionProps {
   description?: string;
   src: string;
   alt?: string;
+  headingLevel?: 'h1' | 'h2';
   content?: React.ReactNode;
   children?: React.ReactNode;
   imgWidth: number;
@@ -40,7 +41,16 @@ const ImageSection = ({
   link,
   imagePosition = 'left',
   alt = '',
+  headingLevel = 'h1',
 }: ImageSectionProps) => {
+  const [heading, setHeading] = useState<React.ReactNode | null>(null);
+
+  useEffect(() => {
+    setHeading(
+      createElement(headingLevel, { className: classes.title }, title),
+    );
+  }, [headingLevel, title]);
+
   return (
     <div className={classes[backgroundColor]}>
       <Container className={cn(classes.section)}>
@@ -56,7 +66,7 @@ const ImageSection = ({
           </div>
         )}
         <div className={classes.textContainer}>
-          {title && <h2 className={classes.title}>{title}</h2>}
+          {title && heading}
           {description && <p className={classes.desc}>{description}</p>}
           {content && content}
           {link && (

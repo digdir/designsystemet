@@ -6,10 +6,7 @@ import {
   Banner,
   ImageSection,
 } from '../../components';
-import type {
-  ImageSectionButtonProps,
-  NavigationCardProps,
-} from '../../components';
+import type { NavigationCardProps, ImageSectionProps } from '../../components';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
@@ -24,16 +21,7 @@ interface FrontpageData {
     description: string;
     items: [];
   };
-  contributeSection: {
-    title: string;
-    description: string;
-    email: string;
-    image: string;
-    imageAlt: string;
-    imageWidth: number;
-    imageHeight: number;
-    buttons?: ImageSectionButtonProps[];
-  };
+  contributeSection: ImageSectionProps;
 }
 
 const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
@@ -66,39 +54,11 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
           description={data.contributeSection.description}
           src={data.contributeSection.image}
           alt={data.contributeSection.imageAlt}
+          headingLevel={data.contributeSection.headingLevel}
           imgWidth={data.contributeSection.imageWidth}
           imgHeight={data.contributeSection.imageHeight}
           buttons={data.contributeSection.buttons}
         />
-
-        {/*<Section*/}
-        {/*  backgroundColor='grey'*/}
-        {/*  title='Siste oppdateringer'*/}
-        {/*>*/}
-        {/*  <Row className='gy-4'>*/}
-        {/*    <Col md={4}>*/}
-        {/*      <Card*/}
-        {/*        title='Oppdatering Q2'*/}
-        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
-        {/*        url='#'*/}
-        {/*      />*/}
-        {/*    </Col>*/}
-        {/*    <Col md={4}>*/}
-        {/*      <Card*/}
-        {/*        title='Oppdatering Q2'*/}
-        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
-        {/*        url='#'*/}
-        {/*      />*/}
-        {/*    </Col>*/}
-        {/*    <Col md={4}>*/}
-        {/*      <Card*/}
-        {/*        title='Oppdatering Q2'*/}
-        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
-        {/*        url='#'*/}
-        {/*      />*/}
-        {/*    </Col>*/}
-        {/*  </Row>*/}
-        {/*</Section>*/}
       </div>
     </div>
   );
