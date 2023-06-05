@@ -60,7 +60,7 @@ import {
   consoleMessage(
     'The ' +
       componentName +
-      ' component in React package was successfully created.',
+      ' component in @digdir/design-system-react was successfully created.',
   );
 })().catch((e) => {
   console.log(e);

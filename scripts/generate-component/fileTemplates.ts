@@ -122,9 +122,6 @@ describe('${componentName}', () => {
     expect(screen.getByText('test text')).toHaveClass('myClass');
   });
 });
-
-
-
 `;
 
 export {
