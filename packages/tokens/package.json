@@ -15,7 +15,7 @@
     "clean": "rimraf brand"
   },
   "devDependencies": {
-    "@tokens-studio/sd-transforms": "^0.8.5",
+    "@tokens-studio/sd-transforms": "^0.9.3",
     "change-case": "^4.1.2",
     "style-dictionary": "^3.7.2"
   }
