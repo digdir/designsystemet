@@ -1,6 +1,7 @@
 .paragraph {
   --fdsc-typography-font-family: inherit;
 
+  color: var(--fds-semantic-text-neutral-default);
   margin: 0;
 }
 

@@ -3,6 +3,7 @@
 
   display: inline-block;
   margin: 0;
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .spacing {
