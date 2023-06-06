@@ -27,7 +27,7 @@ const rightLinks = [
   {
     text: 'designsystem@digdir.no',
     url: 'mailto:designsystem@digdir.no',
-    prefix: <EnvelopeClosedIcon title='a11y-title' />,
+    prefix: <EnvelopeClosedIcon aria-hidden='true' />,
   },
   {
     text: 'Bli invitert til slack',
