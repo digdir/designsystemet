@@ -121,7 +121,7 @@ StyleDictionary.registerTransform({
   type: 'value',
   transitive: true,
   matcher: (token) => token.type === 'sizing',
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument
   transformer: (token) => transformDimension(token.value),
 });
 
