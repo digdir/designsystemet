@@ -16,9 +16,13 @@
 }
 
 .icon {
-  height: 40px;
-  width: 40px;
+  height: var(--fds-sizing-10);
+  width: var(--fds-sizing-10);
   color: var(--fdsc-alert-icon-color);
+}
+
+.content {
+  padding-top: calc(var(--fds-spacing-2) / 3 * 2); /** 6px */
 }
 
 .info {

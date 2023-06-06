@@ -25,11 +25,11 @@ export const Preview: StoryFn<typeof Alert> = (args) => (
   <Alert {...args}>
     <Heading
       level={2}
-      size='medium'
+      size='xsmall'
     >
-      Tittel
+      Info
     </Heading>
-    <Paragraph>En paragraftekst</Paragraph>
+    <Paragraph spacing>En paragraftekst</Paragraph>
   </Alert>
 );
 

@@ -36,7 +36,12 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       >
         <>
           {icons[severity]}
-          <Paragraph as='span'>{children}</Paragraph>
+          <Paragraph
+            as='span'
+            className={classes.content}
+          >
+            {children}
+          </Paragraph>
         </>
       </div>
     );
