@@ -16,8 +16,8 @@
 }
 
 .icon {
-  height: var(--fds-sizing-10);
-  width: var(--fds-sizing-10);
+  height: var(--fds-spacing-10);
+  width: var(--fds-spacing-10);
   color: var(--fdsc-alert-icon-color);
 }
 
