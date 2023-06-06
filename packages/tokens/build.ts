@@ -5,7 +5,10 @@ import type {
   TransformedToken,
   TransformedTokens,
 } from 'style-dictionary';
-import { registerTransforms } from '@tokens-studio/sd-transforms';
+import {
+  registerTransforms,
+  transformDimension,
+} from '@tokens-studio/sd-transforms';
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
@@ -111,6 +114,15 @@ StyleDictionary.registerTransform({
 
     return `calc(${value})`;
   },
+});
+
+StyleDictionary.registerTransform({
+  name: 'fds/size/px',
+  type: 'value',
+  transitive: true,
+  matcher: (token) => token.type === 'sizing',
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
+  transformer: (token) => transformDimension(token.value),
 });
 
 StyleDictionary.registerFormat({
@@ -230,6 +242,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         transforms: [
           'name/cti/hierarchical-kebab',
           'ts/resolveMath',
+          'fds/size/px',
           'css/fontSizes/fluid',
           'css/spacing/fluid',
           'typography/shorthand',
