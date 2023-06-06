@@ -1,11 +1,10 @@
 import React from 'react';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
+import { Stack } from '../../../../../docs-components';
 import { Heading, Paragraph } from '../';
 
 import { Alert } from '.';
-
-type Story = StoryObj<typeof Alert>;
 
 export default {
   title: 'Kjernekomponenter/Alert',
@@ -19,20 +18,18 @@ export default {
   },
 } as Meta;
 
-// Simple story
-// First story is the one displayed by <Preview /> and used for <Controls />
 export const Preview: StoryFn<typeof Alert> = (args) => (
   <Alert {...args}>
     <Heading
       level={2}
       size='xsmall'
-      spacing
     >
-      Info
+      Har du husket å bestille passtime?
     </Heading>
-    <Paragraph>En paragraftekst</Paragraph>
-    <Paragraph>En paragraftekst</Paragraph>
-    <Paragraph spacing>En paragraftekst</Paragraph>
+    <Paragraph>
+      Det er lange køer for å bestille pass om dagen, det kan være lurt å
+      bestille i god tid om du trenger pass til sommeren.
+    </Paragraph>
   </Alert>
 );
 
@@ -40,12 +37,67 @@ Preview.args = {
   severity: 'info',
 };
 
-// Function story
-// Use this story for listing our different variants, patterns with other components or examples usage with useState
-export const Composed: StoryFn<typeof Alert> = () => (
+export const Eksempler: StoryFn<typeof Alert> = () => (
   <>
-    <Alert>I</Alert>
-    <Alert>am</Alert>
-    <Alert>stacked</Alert>
+    <Alert severity='success'>Skjema er lagret automatisk</Alert>
+    <Alert severity='success'>
+      Det ser ut til at regnestykket ditt går i pluss og at du har det som skal
+      til for å lykkes i oppstartsfasen av ditt selskap.{' '}
+    </Alert>
+    <Alert severity='danger'>
+      <Heading
+        level={2}
+        size='xsmall'
+      >
+        Beklager, men det har skjedd en feil
+      </Heading>
+      <Paragraph>
+        Vi klarer ikke å hente informasjonen du ser etter akkurat nå. Prøv igjen
+        litt senere. Om vi fortsatt ikke klarer å vise informasjonen, ta kontakt
+        med kundeservice.
+      </Paragraph>
+    </Alert>
+    <Alert severity='warning'>
+      <Heading
+        level={2}
+        size='xsmall'
+      >
+        Du blir snart logget ut
+      </Heading>
+      <Paragraph>
+        Du har nå vært inaktiv i 15 minutter og vil bli automatisk logget ut om
+        du ikke foretar deg noe på innen 5 minutter.
+      </Paragraph>
+    </Alert>
+    <Alert severity='warning'>
+      <Heading
+        level={2}
+        size='xsmall'
+      >
+        Du blir snart logget ut
+      </Heading>
+    </Alert>
+    <Alert>
+      <Heading
+        level={2}
+        size='xsmall'
+      >
+        Har du husket å bestille passtime?
+      </Heading>
+      <Paragraph>
+        Det er lange køer for å bestille pass om dagen, det kan være lurt å
+        bestille i god tid om du trenger pass til sommeren.
+      </Paragraph>
+    </Alert>
   </>
 );
+Eksempler.parameters = {
+  layout: '',
+};
+Eksempler.decorators = [
+  (Story) => (
+    <Stack>
+      <Story />
+    </Stack>
+  ),
+];

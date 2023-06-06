@@ -10,19 +10,26 @@
   padding-left: var(--fds-spacing-8);
   padding-right: var(--fds-spacing-6);
   padding-top: var(--fds-spacing-4);
-  padding-bottom: var(--fds-spacing-6);
-  display: flex;
-  gap: 8px;
+  padding-bottom: var(--fds-spacing-4);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content auto;
+  gap: var(--fds-spacing-2);
 }
 
 .icon {
-  height: var(--fds-spacing-10);
-  width: var(--fds-spacing-10);
+  --icon-size: calc((4 * 9 / 16) * var(--fds-font-size-f0)); /** Fluid sizing-9 */
+
+  height: var(--icon-size);
+  width: var(--icon-size);
   color: var(--fdsc-alert-icon-color);
 }
 
 .content {
-  padding-top: calc(var(--fds-spacing-2) / 3 * 2); /** 6px */
+  padding-top: calc(var(--fds-spacing-2) / 3 * 2.5); /** custom fluid spacing to get 6px */
+  display: flex;
+  flex-direction: column;
+  gap: var(--fds-spacing-2);
 }
 
 .info {

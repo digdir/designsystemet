@@ -22,7 +22,7 @@ const icons: Record<Severity, JSX.Element> = {
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
 export type AlertProps = {
-  /** Description of what myProp does in the component */
+  /** Sets color & icon according to severity */
   severity?: Severity;
 } & HTMLAttributes<HTMLDivElement>;
 
