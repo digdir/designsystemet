@@ -68,11 +68,12 @@ export const InputWrapper = ({
     ? autoCharLimitIdGenerated
     : undefined;
   const currentInputValue = value ? value.toString() : '';
+
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
     isValid: characterLimit
-      ? currentInputValue.length < characterLimit.maxCount && isValid
+      ? currentInputValue.length <= characterLimit.maxCount && isValid
       : isValid,
     readOnly,
   });
