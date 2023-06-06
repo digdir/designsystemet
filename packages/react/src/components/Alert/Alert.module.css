@@ -1,0 +1,42 @@
+.alert {
+  --fdsc-alert-border: var(--fds-semantic-border-info-default);
+  --fdsc-alert-icon-color: var(--fdsc-alert-border);
+  --fdsc-alert-background: var(--fds-semantic-surface-info-subtle);
+  --fdsc-alert-color: var(--fds-semantic-text-neutral-default);
+
+  border-left: 8px solid var(--fdsc-alert-border);
+  background: var(--fdsc-alert-background);
+  color: var(--fdsc-alert-color);
+  padding-left: var(--fds-spacing-8);
+  padding-right: var(--fds-spacing-6);
+  padding-top: var(--fds-spacing-4);
+  padding-bottom: var(--fds-spacing-6);
+  display: flex;
+  gap: 8px;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+  color: var(--fdsc-alert-icon-color);
+}
+
+.info {
+  --fdsc-alert-border: var(--fds-semantic-border-info-default);
+  --fdsc-alert-background: var(--fds-semantic-surface-info-subtle);
+}
+
+.warning {
+  --fdsc-alert-border: var(--fds-semantic-border-warning-default);
+  --fdsc-alert-background: var(--fds-semantic-surface-warning-subtle);
+}
+
+.success {
+  --fdsc-alert-border: var(--fds-semantic-border-success-default);
+  --fdsc-alert-background: var(--fds-semantic-surface-success-subtle);
+}
+
+.danger {
+  --fdsc-alert-border: var(--fds-semantic-border-danger-default);
+  --fdsc-alert-background: var(--fds-semantic-surface-danger-subtle);
+}
