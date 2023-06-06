@@ -86,7 +86,8 @@ const ImageSection = ({
                   className={classes.button}
                   key={index}
                 >
-                  {item.prefix} {item.text}
+                  {item.prefix}
+                  {item.text}
                 </a>
               ))}
             </div>
