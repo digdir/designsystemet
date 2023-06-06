@@ -2701,7 +2701,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
-    "@tokens-studio/sd-transforms": ^0.8.5
+    "@tokens-studio/sd-transforms": ^0.9.3
     change-case: ^4.1.2
     style-dictionary: ^3.7.2
   languageName: unknown
@@ -6907,17 +6907,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokens-studio/sd-transforms@npm:^0.8.5":
-  version: 0.8.5
-  resolution: "@tokens-studio/sd-transforms@npm:0.8.5"
+"@tokens-studio/sd-transforms@npm:^0.9.3":
+  version: 0.9.3
+  resolution: "@tokens-studio/sd-transforms@npm:0.9.3"
   dependencies:
     "@tokens-studio/types": ^0.2.1
+    browser-style-dictionary: ^3.1.1-browser.1
     color2k: ^2.0.1
     colorjs.io: ^0.4.3
+    deepmerge: ^4.3.1
     expr-eval: ^2.0.2
+    is-mergeable-object: ^1.1.1
     postcss-calc-ast-parser: ^0.1.4
     style-dictionary: ^3.7.2
-  checksum: 9ea96a6ae95a4e4ed200df158304d469bba1f0ed31c5f80e2721a9b92fdd766313d9616b367e957c4144e2616f64a4ea7f8e580f05595a09fdffdb68bcb1593b
+  checksum: 51af676265991895718bd14daad76e9197c53cf636a921c3cbb2cb20afa90e02285b6395012b072eafaa16cfc30061d952cf75206121f9c84e88c4b810b9026c
   languageName: node
   linkType: hard
 
@@ -8919,6 +8922,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-style-dictionary@npm:^3.1.1-browser.1":
+  version: 3.1.1-browser.2
+  resolution: "browser-style-dictionary@npm:3.1.1-browser.2"
+  dependencies:
+    chalk: ^4.0.0
+    change-case: ^4.1.2
+    commander: ^8.3.0
+    fs-extra: ^10.0.0
+    glob: ^7.2.0
+    json5: ^2.2.0
+    jsonc-parser: ^3.0.0
+    lodash: ^4.17.15
+    tinycolor2: ^1.4.1
+  bin:
+    style-dictionary: bin/style-dictionary
+  checksum: e6f976000c3237d3dc1747a11981c11fe9f40c774be78db7cc2d5a06225832265f6594a9921308f2ae10642ec0806b4b38e4b28fe350ae4e16b74d9dea8ba73e
+  languageName: node
+  linkType: hard
+
 "browserify-zlib@npm:^0.1.4":
   version: 0.1.4
   resolution: "browserify-zlib@npm:0.1.4"
@@ -10415,6 +10437,13 @@ __metadata:
   version: 4.2.2
   resolution: "deepmerge@npm:4.2.2"
   checksum: a8c43a1ed8d6d1ed2b5bf569fa4c8eb9f0924034baf75d5d406e47e157a451075c4db353efea7b6bcc56ec48116a8ce72fccf867b6e078e7c561904b5897530b
+  languageName: node
+  linkType: hard
+
+"deepmerge@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "deepmerge@npm:4.3.1"
+  checksum: 2024c6a980a1b7128084170c4cf56b0fd58a63f2da1660dcfe977415f27b17dbe5888668b59d0b063753f3220719d5e400b7f113609489c90160bb9a5518d052
   languageName: node
   linkType: hard
 
@@ -13664,6 +13693,13 @@ __metadata:
   version: 2.0.2
   resolution: "is-map@npm:2.0.2"
   checksum: ace3d0ecd667bbdefdb1852de601268f67f2db725624b1958f279316e13fecb8fa7df91fd60f690d7417b4ec180712f5a7ee967008e27c65cfd475cc84337728
+  languageName: node
+  linkType: hard
+
+"is-mergeable-object@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "is-mergeable-object@npm:1.1.1"
+  checksum: 19a29bc6184f8fcb0b8e868715ebd97fb3872098de759988e90a56b0999473c74b16532aeaa80d6302005f515674a791274aeb50e2e93a725e658db5adf1a388
   languageName: node
   linkType: hard
 
