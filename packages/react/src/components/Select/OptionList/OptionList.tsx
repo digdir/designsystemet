@@ -56,7 +56,7 @@ const OptionList = ({
           usingKeyboard && classes.usingKeyboard,
         )}
         ref={setFloating}
-        style={{ left: x, top: y }}
+        style={{ left: x, top: y, zIndex: 1500 }}
       >
         <span
           aria-expanded={expanded}
