@@ -29,7 +29,8 @@
   padding-top: calc(var(--fds-spacing-2) / 3 * 2.5); /** custom fluid spacing to get 6px */
   display: flex;
   flex-direction: column;
-  gap: var(--fds-spacing-2);
+
+  /* gap: var(--fds-spacing-2); */
 }
 
 .info {

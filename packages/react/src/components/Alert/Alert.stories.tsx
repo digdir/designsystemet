@@ -49,6 +49,7 @@ export const Eksempler: StoryFn<typeof Alert> = () => (
       <Heading
         level={2}
         size='xsmall'
+        spacing
       >
         Beklager, men det har skjedd en feil
       </Heading>
@@ -62,6 +63,7 @@ export const Eksempler: StoryFn<typeof Alert> = () => (
       <Heading
         level={2}
         size='xsmall'
+        spacing
       >
         Du blir snart logget ut
       </Heading>
@@ -82,6 +84,7 @@ export const Eksempler: StoryFn<typeof Alert> = () => (
       <Heading
         level={2}
         size='xsmall'
+        spacing
       >
         Har du husket å bestille passtime?
       </Heading>
@@ -95,7 +98,7 @@ export const Eksempler: StoryFn<typeof Alert> = () => (
 
 Eksempler.decorators = [
   (Story) => (
-    <Stack>
+    <Stack style={{ justifyContent: 'start' }}>
       <Story />
     </Stack>
   ),
