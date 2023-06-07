@@ -40,10 +40,10 @@ Preview.args = {
 export const Eksempler: StoryFn<typeof Alert> = () => (
   <>
     <Alert severity='success'>
-      <Paragraph short>Skjema er lagret automatisk</Paragraph>
+      <Paragraph>Skjemaet er lagret automatisk</Paragraph>
     </Alert>
     <Alert severity='success'>
-      <Paragraph short>
+      <Paragraph>
         Det ser ut til at regnestykket ditt går i pluss og at du har det som
         skal til for å lykkes i oppstartsfasen av ditt selskap.
       </Paragraph>
