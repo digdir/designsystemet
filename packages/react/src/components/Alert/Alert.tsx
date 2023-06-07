@@ -24,14 +24,21 @@ type Severity = 'info' | 'warning' | 'success' | 'danger';
 export type AlertProps = {
   /** Sets color & icon according to severity */
   severity?: Severity;
+  /** Adds a shadow to elevate the component */
+  elevated?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  ({ severity = 'info', children, ...rest }, ref) => {
+  ({ severity = 'info', elevated, children, ...rest }, ref) => {
     return (
       <div
         {...rest}
-        className={cn(classes.alert, classes[severity], rest.className)}
+        className={cn(
+          classes.alert,
+          classes[severity],
+          elevated && classes.elevated,
+          rest.className,
+        )}
         ref={ref}
       >
         <>

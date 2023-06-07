@@ -51,3 +51,7 @@
   --fdsc-alert-border: var(--fds-semantic-border-danger-default);
   --fdsc-alert-background: var(--fds-semantic-surface-danger-subtle);
 }
+
+.elevated {
+  box-shadow: var(--fds-shadow-small);
+}

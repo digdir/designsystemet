@@ -35,6 +35,7 @@ export const Preview: StoryFn<typeof Alert> = (args) => (
 
 Preview.args = {
   severity: 'info',
+  elevated: false,
 };
 
 export const Eksempler: StoryFn<typeof Alert> = () => (
@@ -91,9 +92,7 @@ export const Eksempler: StoryFn<typeof Alert> = () => (
     </Alert>
   </>
 );
-Eksempler.parameters = {
-  layout: '',
-};
+
 Eksempler.decorators = [
   (Story) => (
     <Stack>
