@@ -7,8 +7,8 @@
   border-left: 8px solid var(--fdsc-alert-border);
   background: var(--fdsc-alert-background);
   color: var(--fdsc-alert-color);
-  padding-left: var(--fds-spacing-8);
-  padding-right: var(--fds-spacing-6);
+  padding-left: var(--fds-spacing-3);
+  padding-right: var(--fds-spacing-4);
   padding-top: var(--fds-spacing-4);
   padding-bottom: var(--fds-spacing-4);
   display: grid;
@@ -18,7 +18,7 @@
 }
 
 .icon {
-  --icon-size: calc((4 * 9 / 16) * var(--fds-font-size-f0)); /** Fluid sizing-9 */
+  --icon-size: calc((4 * 6 / 16) * var(--fds-font-size-f0)); /** Fluid sizing-6 */
 
   height: var(--icon-size);
   width: var(--icon-size);
@@ -26,11 +26,8 @@
 }
 
 .content {
-  padding-top: calc(var(--fds-spacing-2) / 3 * 2.5); /** custom fluid spacing to get 6px */
   display: flex;
   flex-direction: column;
-
-  /* gap: var(--fds-spacing-2); */
 }
 
 .info {
