@@ -13,10 +13,30 @@ import { Paragraph } from '..';
 import classes from './Alert.module.css';
 
 const icons: Record<Severity, JSX.Element> = {
-  info: <InformationSquareFillIcon className={classes.icon} />,
-  warning: <ExclamationmarkTriangleFillIcon className={classes.icon} />,
-  success: <CheckmarkCircleFillIcon className={classes.icon} />,
-  danger: <XMarkOctagonFillIcon className={classes.icon} />,
+  info: (
+    <InformationSquareFillIcon
+      title='info'
+      className={classes.icon}
+    />
+  ),
+  warning: (
+    <ExclamationmarkTriangleFillIcon
+      title='warning'
+      className={classes.icon}
+    />
+  ),
+  success: (
+    <CheckmarkCircleFillIcon
+      title='success'
+      className={classes.icon}
+    />
+  ),
+  danger: (
+    <XMarkOctagonFillIcon
+      title='danger'
+      className={classes.icon}
+    />
+  ),
 };
 
 type Severity = 'info' | 'warning' | 'success' | 'danger';
@@ -33,13 +53,13 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     return (
       <div
         {...rest}
+        ref={ref}
         className={cn(
           classes.alert,
           classes[severity],
           elevated && classes.elevated,
           rest.className,
         )}
-        ref={ref}
       >
         <>
           {icons[severity]}
