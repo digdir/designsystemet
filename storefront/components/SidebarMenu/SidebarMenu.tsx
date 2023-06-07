@@ -79,6 +79,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                               >
                                 <Link
                                   href={'/' + item2.url}
+                                  prefetch={false}
                                   className={cn(classes.link, {
                                     [classes.linkActive]: isItemActive(
                                       item2.url,
@@ -97,6 +98,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                     {!item.children && (
                       <Link
                         href={'/' + item.url}
+                        prefetch={false}
                         className={cn(classes.link, classes.linkCompact, {
                           [classes.linkActive]: isItemActive(
                             item.url,

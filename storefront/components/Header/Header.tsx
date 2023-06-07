@@ -47,6 +47,7 @@ const Header = () => {
             className={classes['logo-link']}
             href='/'
             onClick={() => setOpen(false)}
+            prefetch={false}
           >
             <Image
               className={classes.logo}
@@ -88,6 +89,7 @@ const Header = () => {
                 <Link
                   href={item.url}
                   onClick={() => setOpen(false)}
+                  prefetch={false}
                   className={cn(
                     isMenuItemActive(router.pathname, item.url)
                       ? classes.active

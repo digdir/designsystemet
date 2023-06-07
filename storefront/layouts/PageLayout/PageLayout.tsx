@@ -31,6 +31,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
             <Link
               href={'/' + data.backUrl}
               className={classes.back}
+              prefetch={false}
             >
               <ArrowLeftIcon
                 title='Tilbake'

@@ -24,6 +24,7 @@ const NavigationCard = ({
   return (
     <Link
       href={url}
+      prefetch={false}
       className={cn(classes.card, classes[backgroundColor])}
     >
       <div className={cn(classes.iconContainer, classes[color])}>{icon}</div>
