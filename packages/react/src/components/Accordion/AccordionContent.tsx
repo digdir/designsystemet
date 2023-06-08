@@ -2,7 +2,7 @@ import cn from 'classnames';
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
-import AnimateHeight from '../../utils/AnimateHeight';
+import { AnimateHeight } from '../../utility-components';
 import { Paragraph } from '../';
 
 import classes from './Accordion.module.css';
@@ -29,8 +29,8 @@ export const AccordionContent = forwardRef<
   return (
     <AnimateHeight
       id={context.contentId}
-      height={context.open ? 'auto' : 0}
-      duration={250}
+      open={context.open}
+      className={classes.contentWrapper}
     >
       <Paragraph
         {...rest}
