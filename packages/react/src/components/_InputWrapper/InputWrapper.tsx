@@ -202,18 +202,13 @@ const CharacterCounter = ({
       >
         {srLabel}
       </span>
-      {hasExceededLimit ? (
-        <ErrorMessage
-          className={classes.characterLimitLabel}
-          aria-live='polite'
-        >
-          {label(currentCount)}
-        </ErrorMessage>
-      ) : (
-        <Paragraph className={classes.characterLimitLabel}>
-          {label(currentCount)}
-        </Paragraph>
-      )}
+      <div className={classes.characterLimitLabel}>
+        {hasExceededLimit ? (
+          <ErrorMessage aria-live='polite'>{label(currentCount)}</ErrorMessage>
+        ) : (
+          <Paragraph>{label(currentCount)}</Paragraph>
+        )}
+      </div>
     </>
   );
 };
