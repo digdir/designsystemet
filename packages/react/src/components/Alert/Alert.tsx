@@ -15,25 +15,25 @@ import classes from './Alert.module.css';
 const icons: Record<Severity, JSX.Element> = {
   info: (
     <InformationSquareFillIcon
-      title='info'
+      title='Informasjon'
       className={classes.icon}
     />
   ),
   warning: (
     <ExclamationmarkTriangleFillIcon
-      title='warning'
+      title='Advarsel'
       className={classes.icon}
     />
   ),
   success: (
     <CheckmarkCircleFillIcon
-      title='success'
+      title='Suksess'
       className={classes.icon}
     />
   ),
   danger: (
     <XMarkOctagonFillIcon
-      title='danger'
+      title='Feil'
       className={classes.icon}
     />
   ),
