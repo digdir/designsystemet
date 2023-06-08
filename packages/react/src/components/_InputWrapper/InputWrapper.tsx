@@ -207,11 +207,17 @@ const CharacterCounter = ({
           <ErrorMessage
             as='span'
             aria-live='polite'
+            size='small'
           >
             {label(currentCount)}
           </ErrorMessage>
         ) : (
-          <Paragraph as='span'>{label(currentCount)}</Paragraph>
+          <Paragraph
+            as='span'
+            size='small'
+          >
+            {label(currentCount)}
+          </Paragraph>
         )}
       </span>
     </>
