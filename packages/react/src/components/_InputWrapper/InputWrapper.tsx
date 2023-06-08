@@ -24,30 +24,64 @@ export type CharacterLimit = Omit<
 >;
 
 export type InputWrapperProps = {
+  /** A class name to apply to the wrapper element */
   className?: string;
+
+  /** Set to true if the wrapped element is in the disabled state to apply proper styling. */
   disabled?: boolean;
+
+  /** The ID of the wrapper element */
+  id?: string;
+
+  /** The ID of the wrapped element. InputWrapper will generate a random value for this if it is not provided. */
   inputId?: string;
+
+  /** Function that renders the wrapped element. */
   inputRenderer: (props: InputRendererProps) => ReactNode;
+
+  /** Set to true if the wrapped element is a search input. */
   isSearch?: boolean;
+
+  /** Set to true to indicate that there is an error related to the input value. */
   isValid?: boolean;
+
+  /** The label for the wrapped element. */
   label?: string;
+
+  /**
+   * Set to true to disable the focus effect.
+   * Use this if focus effects are handled internally in the wrapped element,
+   * i.e. if it contains several focusable components.
+   * */
   noFocusEffect?: boolean;
+
+  /** Set to true to remove the default padding from the wrapper element. */
   noPadding?: boolean;
+
+  /** Set to true if the wrapped element is in read-only mode to apply proper styling. */
   readOnly?: boolean | ReadOnlyVariant_;
+
   /** Add to list of ids for use in `inputRenderer` and `aria-describedby`. */
   ariaDescribedBy?: string;
+
   /**
    *  The characterLimit function calculates remaining characters.
    *  Provide a `label` function that takes count as parameter and returns a message.
    *  Use `srLabel` to describe `maxCount` for screen readers.
    */
   characterLimit?: CharacterLimit;
+
+  /**
+   * The value of the wrapped element.
+   * This must be set if the characterLimit functionality is used.
+   */
   value?: string | number | readonly string[] | undefined;
 };
 
 export const InputWrapper = ({
   className = '',
   disabled = false,
+  id,
   inputId,
   inputRenderer,
   isSearch = false,
@@ -87,7 +121,10 @@ export const InputWrapper = ({
   };
 
   return (
-    <div>
+    <span
+      id={id}
+      className={className}
+    >
       <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
         {label && (
           <label
@@ -112,7 +149,6 @@ export const InputWrapper = ({
             className: cn(
               classes.field,
               !noFocusEffect && utilityClasses.focusable,
-              className,
             ),
             hasIcon,
             inputId: givenOrRandomInputId,
@@ -131,7 +167,7 @@ export const InputWrapper = ({
           ariaDescribedById={characterLimitDescriptionId}
         />
       )}
-    </div>
+    </span>
   );
 };
 
@@ -165,7 +201,7 @@ const CharacterCounter = ({
       >
         {srLabel}
       </span>
-      <div
+      <span
         className={[
           classes.characterLimitLabel,
           hasExceededLimit ? classes.characterLimitExceeded : '',
@@ -173,7 +209,7 @@ const CharacterCounter = ({
         aria-live={hasExceededLimit ? 'polite' : 'off'}
       >
         {label(currentCount)}
-      </div>
+      </span>
     </>
   );
 };

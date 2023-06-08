@@ -176,6 +176,14 @@ describe('InputWrapper', () => {
         }),
       );
     });
+
+    it('Sets given id and class on the root element', () => {
+      const id = 'some-unique-id';
+      const className = 'some-class';
+      const { container } = render({ id, className });
+      expect(container.firstChild).toHaveAttribute('id', id);
+      expect(container.firstChild).toHaveClass(className);
+    });
   });
 
   describe('Label', () => {
