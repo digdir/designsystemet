@@ -12,31 +12,20 @@ import { Paragraph } from '..';
 
 import classes from './Alert.module.css';
 
-const icons: Record<Severity, JSX.Element> = {
-  info: (
-    <InformationSquareFillIcon
-      title='Informasjon'
-      className={classes.icon}
-    />
-  ),
-  warning: (
-    <ExclamationmarkTriangleFillIcon
-      title='Advarsel'
-      className={classes.icon}
-    />
-  ),
-  success: (
-    <CheckmarkCircleFillIcon
-      title='Suksess'
-      className={classes.icon}
-    />
-  ),
-  danger: (
-    <XMarkOctagonFillIcon
-      title='Feil'
-      className={classes.icon}
-    />
-  ),
+const icons: Record<
+  Severity,
+  { Icon: typeof InformationSquareFillIcon; title: string }
+> = {
+  info: {
+    Icon: InformationSquareFillIcon,
+    title: 'Informasjon',
+  },
+  warning: { Icon: ExclamationmarkTriangleFillIcon, title: 'Advarsel' },
+  success: { Icon: CheckmarkCircleFillIcon, title: 'Suksess' },
+  danger: {
+    Icon: XMarkOctagonFillIcon,
+    title: 'Feil',
+  },
 };
 
 type Severity = 'info' | 'warning' | 'success' | 'danger';
@@ -46,10 +35,17 @@ export type AlertProps = {
   severity?: Severity;
   /** Adds a shadow to elevate the component */
   elevated?: boolean;
+  /** Sets `title` on the icon.
+   *
+   * Use this to inform screenreaders of severity.
+   *  Defaults to Norwegian. */
+  iconTitle?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  ({ severity = 'info', elevated, children, ...rest }, ref) => {
+  ({ severity = 'info', elevated, iconTitle, children, ...rest }, ref) => {
+    const { Icon, title } = icons[severity];
+
     return (
       <div
         {...rest}
@@ -62,7 +58,10 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         )}
       >
         <>
-          {icons[severity]}
+          <Icon
+            title={iconTitle || title}
+            className={classes.icon}
+          />
           <Paragraph
             as='span'
             className={classes.content}

@@ -6,21 +6,25 @@ import { Heading } from '../';
 import { Alert } from './Alert';
 
 describe('Alert', () => {
-  test('has correct icon title when severity="danger"', () => {
+  test('has correct default icon title when severity="danger"', () => {
     render(<Alert severity='danger'>Alert me!</Alert>);
     expect(screen.getByTitle('Feil'));
   });
-  test('has correct icon title when severity="warning"', () => {
+  test('has correct default icon title when severity="warning"', () => {
     render(<Alert severity='warning'>Alert me!</Alert>);
     expect(screen.getByTitle('Advarsel'));
   });
-  test('has correct icon title when severity="success"', () => {
+  test('has correct default icon title when severity="success"', () => {
     render(<Alert severity='success'>Alert me!</Alert>);
     expect(screen.getByTitle('Suksess'));
   });
-  test('has correct icon title when severity is not defined', () => {
+  test('has correct default icon title when severity is not defined', () => {
     render(<Alert>Alert me!</Alert>);
     expect(screen.getByTitle('Informasjon'));
+  });
+  test('has correct icon title when iconTitle is defined', () => {
+    render(<Alert iconTitle='info'>Alert me!</Alert>);
+    expect(screen.getByTitle('info'));
   });
   test('should render children, heading level 1', () => {
     render(
@@ -35,7 +39,7 @@ describe('Alert', () => {
     );
     expect(screen.getByRole('heading', { level: 1, name: 'Alert me!' }));
   });
-  test('passed style should apply or override', () => {
+  test('has passed style should apply or override', () => {
     const style = { color: '#fff', marginTop: '32px' };
     render(
       <Alert
