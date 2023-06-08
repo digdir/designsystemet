@@ -4,8 +4,24 @@ import { render, screen } from '@testing-library/react';
 import { Alert } from './Alert';
 
 describe('Alert', () => {
-  test('myProp should add myClass', (): void => {
-    // render(<Alert severity='success'>test text</Alert>);
-    // expect(screen.getByText('test text')).toHaveClass('success');
+  test('has correct icon title when severity="danger"', (): void => {
+    render(<Alert severity='danger'>Alert me!</Alert>);
+    screen.debug();
+    expect(screen.getByTitle('Feil'));
+  });
+  test('has correct icon title when severity="warning"', (): void => {
+    render(<Alert severity='warning'>Alert me!</Alert>);
+    screen.debug();
+    expect(screen.getByTitle('Advarsel'));
+  });
+  test('has correct icon title when severity="success"', (): void => {
+    render(<Alert severity='success'>Alert me!</Alert>);
+    screen.debug();
+    expect(screen.getByTitle('Suksess'));
+  });
+  test('has correct icon title when severity is not defined', (): void => {
+    render(<Alert>Alert me!</Alert>);
+    screen.debug();
+    expect(screen.getByTitle('Informasjon'));
   });
 });
