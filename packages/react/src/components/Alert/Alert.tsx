@@ -12,7 +12,10 @@ import { Paragraph } from '..';
 
 import classes from './Alert.module.css';
 
-const icons = {
+const icons: Record<
+  Severity,
+  { Icon: typeof InformationSquareFillIcon; title: string }
+> = {
   info: {
     Icon: InformationSquareFillIcon,
     title: 'Informasjon',
