@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import cn from 'classnames';
 
 import utilityClasses from '../../utils/utility.module.css';
+import { ErrorMessage, Paragraph } from '../Typography';
 
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
@@ -201,14 +202,23 @@ const CharacterCounter = ({
       >
         {srLabel}
       </span>
-      <span
-        className={[
-          classes.characterLimitLabel,
-          hasExceededLimit ? classes.characterLimitExceeded : '',
-        ].join(' ')}
-        aria-live={hasExceededLimit ? 'polite' : 'off'}
-      >
-        {label(currentCount)}
+      <span className={classes.characterLimitLabel}>
+        {hasExceededLimit ? (
+          <ErrorMessage
+            as='span'
+            aria-live='polite'
+            size='small'
+          >
+            {label(currentCount)}
+          </ErrorMessage>
+        ) : (
+          <Paragraph
+            as='span'
+            size='small'
+          >
+            {label(currentCount)}
+          </Paragraph>
+        )}
       </span>
     </>
   );
