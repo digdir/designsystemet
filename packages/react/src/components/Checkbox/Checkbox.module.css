@@ -4,7 +4,7 @@
   --checkbox-border_color: var(--component-checkbox-color-border-default);
   --checkbox-border_radius: var(--interactive_components-border_radius-normal);
   --checkbox-border_width: var(--component-checkbox-border_width-small);
-  --checkbox-checkmark-display: none;
+  --checkbox-checkmark-visibility: hidden;
   --checkbox-height: var(--component-checkbox-size-height-small);
   --checkbox-width: var(--component-checkbox-size-width-small);
 
@@ -25,7 +25,7 @@
 }
 
 .checkbox.checked {
-  --checkbox-checkmark-display: inline-block;
+  --checkbox-checkmark-visibility: visible;
   --checkbox-background_color: var(--component-checkbox-color-background-checked);
   --checkbox-border_color: var(--component-checkbox-color-border-checked);
 }
@@ -57,7 +57,8 @@
 .checkmark {
   background-color: white;
   clip-path: polygon(47.11% 56.51%, 30.37% 38.94%, 21.5% 48.09%, 47.11% 74.54%, 81.5% 39.16%, 72.63% 30%);
-  display: var(--checkbox-checkmark-display);
+  display: inline-block;
+  visibility: var(--checkbox-checkmark-visibility);
   height: 100%;
   width: 100%;
 }
