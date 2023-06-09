@@ -4,13 +4,10 @@
   --fdsc-alert-background: var(--fds-semantic-surface-info-subtle);
   --fdsc-alert-color: var(--fds-semantic-text-neutral-default);
 
-  border-left: 8px solid var(--fdsc-alert-border);
+  box-shadow: 8px 0 0 0 var(--fdsc-alert-border) inset;
   background: var(--fdsc-alert-background);
   color: var(--fdsc-alert-color);
-  padding-left: var(--fds-spacing-3);
-  padding-right: var(--fds-spacing-4);
-  padding-top: var(--fds-spacing-4);
-  padding-bottom: var(--fds-spacing-4);
+  padding: var(--fds-spacing-4);
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min-content auto;
