@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import cn from 'classnames';
 
 import classes from './AnimateHeight.module.css';
@@ -18,15 +18,12 @@ export const AnimateHeight = ({
   ...rest
 }: AnimateHeightProps) => {
   const [height, setHeight] = useState<number>(0);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    setHeight(
-      open && contentRef.current
-        ? contentRef.current.getBoundingClientRect().height
-        : 0,
-    );
-  }, [open]);
+  const contentRef = useCallback(
+    (node: HTMLDivElement) => {
+      open && node !== null && setHeight(node.getBoundingClientRect().height);
+    },
+    [open],
+  );
 
   const stateClass = open ? classes.open : classes.closed;
 
@@ -34,7 +31,7 @@ export const AnimateHeight = ({
     <div
       {...rest}
       className={cn(classes.root, className)}
-      style={{ height, ...style }}
+      style={{ height: open ? height : 0, ...style }}
     >
       <div
         ref={contentRef}
