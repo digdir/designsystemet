@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.14.0...@digdir/design-system-react@0.15.0) (2023-06-09)
+
+### Bug Fixes
+
+- **Checkbox:** should avoid different box-size when checked/unchecked ([#533](https://github.com/digdir/designsystem/issues/533)) ([52d368f](https://github.com/digdir/designsystem/commit/52d368f02a7f59ef25aadea0323e22faa3c4d0f9))
+- **FieldSet:** :wheelchair: Fix wrong role on `ErrorMessage` ([#520](https://github.com/digdir/designsystem/issues/520)) ([b0f8894](https://github.com/digdir/designsystem/commit/b0f88948a56192787cb4d14a41937f3e82081fe1))
+
+### Features
+
+- **Alert:** :sparkles: New React component `Alert` ([#510](https://github.com/digdir/designsystem/issues/510)) ([8f36198](https://github.com/digdir/designsystem/commit/8f361987963ba0dbbfc66b51c2241cd8da383c42))
+- NativeSelect component ([#488](https://github.com/digdir/designsystem/issues/488)) ([36eb3eb](https://github.com/digdir/designsystem/commit/36eb3ebbe8e8d741d396f962fe55095b1e8def52))
+
 # [0.14.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.13.0...@digdir/design-system-react@0.14.0) (2023-06-07)
 
 ### Bug Fixes
