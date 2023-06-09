@@ -1,0 +1,20 @@
+.root {
+  --fds-animated_height-transition_duration: 0.25s;
+
+  transition: height var(--fds-animated_height-transition_duration) ease-in-out;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion) {
+  .root {
+    --fds-animated_height-transition_duration: 0;
+  }
+}
+
+.content.open {
+  height: auto;
+}
+
+.content.closed {
+  height: 0;
+}
