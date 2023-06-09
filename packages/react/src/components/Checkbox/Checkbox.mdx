@@ -1,7 +1,8 @@
 import { Meta, Canvas } from '@storybook/addon-docs';
 import { Information, TokensTable } from '../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
-import * as CheckboxStories from "./Checkbox.stories"; import {
+import * as CheckboxStories from "./Checkbox.stories";
+import {
   Controls,
   Primary
 } from "@storybook/blocks";
@@ -20,8 +21,6 @@ import * as CheckboxStories from "./Checkbox.stories"; import {
 <Controls/>
 
 ## Bruk
-
-<Information text='token' />
 
 For øyblikket støtter komponenten kun kontrollert modus.
 Det vil si at koden på utsiden må sørge for at `checked`-attributten blir satt til `true` eller `false` idet `onChange`-funksjonen blir kalt.

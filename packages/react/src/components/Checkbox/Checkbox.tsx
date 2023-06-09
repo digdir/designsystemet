@@ -45,7 +45,7 @@ export interface CheckboxProps {
 
   /**
    * A callback that will be called when the checkbox is toggled.
-   * As uncontrolled mode is not supported yet, this function has to be used to toggle between checked and unchecked state.
+   * Use this function to get the current `checked` value.
    */
   onChange: ChangeEventHandler<HTMLInputElement>;
 

@@ -11,7 +11,6 @@ export default {
       type: 'beta',
       url: 'http://www.url.com/status',
     },
-    layout: 'padded',
   },
 } as Meta;
 
