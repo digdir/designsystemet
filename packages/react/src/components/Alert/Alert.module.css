@@ -5,7 +5,6 @@
   --fdsc-alert-color: var(--fds-semantic-text-neutral-default);
 
   box-shadow: 8px 0 0 0 var(--fdsc-alert-border) inset;
-  box-sizing: border-box;
   background: var(--fdsc-alert-background);
   color: var(--fdsc-alert-color);
   padding-left: var(--fds-spacing-4);
