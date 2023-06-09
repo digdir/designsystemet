@@ -20,7 +20,7 @@ export const AnimateHeight = ({
   const [height, setHeight] = useState<number>(0);
   const contentRef = useCallback(
     (node: HTMLDivElement) => {
-      open && node !== null && setHeight(node.getBoundingClientRect().height);
+      setHeight(node && open ? node.getBoundingClientRect().height : 0);
     },
     [open],
   );
@@ -31,7 +31,7 @@ export const AnimateHeight = ({
     <div
       {...rest}
       className={cn(classes.root, className)}
-      style={{ height: open ? height : 0, ...style }}
+      style={{ height, ...style }}
     >
       <div
         ref={contentRef}
