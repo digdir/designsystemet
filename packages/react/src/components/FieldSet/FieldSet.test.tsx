@@ -46,7 +46,7 @@ describe('FieldSet', () => {
   it('Displays error message if given', () => {
     const error = 'Something is wrong.';
     render({ error });
-    expect(screen.getByRole('alertdialog')).toHaveTextContent(error);
+    expect(screen.getByRole('alert')).toHaveTextContent(error);
   });
 
   it('Has class "small" by default', () => {
