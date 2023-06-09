@@ -58,7 +58,7 @@ const FieldSet = ({
       <div className={cn(classes.content, contentClassName)}>{children}</div>
       {error && (
         <div className={classes.errorMessage}>
-          <ErrorMessage role='alertdialog'>{error}</ErrorMessage>
+          <ErrorMessage role='alert'>{error}</ErrorMessage>
         </div>
       )}
     </fieldset>
