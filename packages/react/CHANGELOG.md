@@ -13,7 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **Alert:** :sparkles: New React component `Alert` ([#510](https://github.com/digdir/designsystem/issues/510)) ([8f36198](https://github.com/digdir/designsystem/commit/8f361987963ba0dbbfc66b51c2241cd8da383c42))
-- NativeSelect component ([#488](https://github.com/digdir/designsystem/issues/488)) ([36eb3eb](https://github.com/digdir/designsystem/commit/36eb3ebbe8e8d741d396f962fe55095b1e8def52))
+- **NativeSelect:** :sparkles: New React component `NativeSelect` ([#488](https://github.com/digdir/designsystem/issues/488)) ([36eb3eb](https://github.com/digdir/designsystem/commit/36eb3ebbe8e8d741d396f962fe55095b1e8def52))
 
 # [0.14.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.13.0...@digdir/design-system-react@0.14.0) (2023-06-07)
 
