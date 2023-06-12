@@ -46,13 +46,15 @@ const Header = () => {
           <Link
             className={classes['logo-link']}
             href='/'
+            aria-label='Designsystem forside'
             onClick={() => setOpen(false)}
             prefetch={false}
           >
             <Image
               className={classes.logo}
               src='/img/logo-positive.svg'
-              alt='Designsystemet logo'
+              alt=''
+              aria-hidden='true'
               width={275}
               height={30}
             />
