@@ -14,6 +14,7 @@ const Card = ({ title, description, url }: CardProps) => {
     <Link
       href={url}
       className={classes.card}
+      prefetch={false}
     >
       <h3 className={classes.title}>{title}</h3>
       <div className={classes.date}>25.mars 2023</div>
