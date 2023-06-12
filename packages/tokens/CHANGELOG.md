@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.1.2...@digdir/design-system-tokens@0.1.3) (2023-06-07)
+
+### Bug Fixes
+
+- **Tokens:** 🐛 Fix missing unit on css spacing tokens ([#512](https://github.com/digdir/designsystem/issues/512)) ([fd1b6f0](https://github.com/digdir/designsystem/commit/fd1b6f0279d050fbb0954b0d26c167b3ca93cd57))
+
 ## [0.1.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.1.1...@digdir/design-system-tokens@0.1.2) (2023-05-31)
 
 **Note:** Version bump only for package @digdir/design-system-tokens

@@ -86,9 +86,6 @@
 }
 
 .characterLimitLabel {
+  display: inline-block;
   margin-top: 4px;
-}
-
-.characterLimitExceeded {
-  color: var(--fds-semantic-text-danger-default);
 }

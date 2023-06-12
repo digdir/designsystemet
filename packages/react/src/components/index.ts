@@ -69,3 +69,5 @@ export type {
 } from './ToggleButtonGroup';
 export * from './Typography/';
 export * from './Accordion';
+export * from './NativeSelect';
+export * from './Alert';

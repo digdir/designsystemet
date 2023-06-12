@@ -42,7 +42,7 @@
   text-overflow: ellipsis;
 }
 
-.item:last-child .content {
+.item:last-child .contentWrapper {
   border-bottom: 1px solid var(--fdsc-accordion-content-border);
 }
 

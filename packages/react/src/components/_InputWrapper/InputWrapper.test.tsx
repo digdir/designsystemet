@@ -176,6 +176,14 @@ describe('InputWrapper', () => {
         }),
       );
     });
+
+    it('Sets given id and class on the root element', () => {
+      const id = 'some-unique-id';
+      const className = 'some-class';
+      const { container } = render({ id, className });
+      expect(container.firstChild).toHaveAttribute('id', id);
+      expect(container.firstChild).toHaveClass(className);
+    });
   });
 
   describe('Label', () => {
@@ -244,6 +252,34 @@ describe('InputWrapper', () => {
       expect(screen.getByLabelText('Other')).not.toHaveAttribute(
         'aria-describedby',
       );
+    });
+
+    it('should display error variant when character-limit exceeds', () => {
+      render({
+        label: 'Comment',
+        value: 'Hello',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.queryByTestId('input-icon-error')).toBeInTheDocument();
+    });
+
+    it('should not display error variant when 0 characters left', () => {
+      render({
+        label: 'Comment',
+        value: 'He',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.queryByTestId('input-icon-error')).not.toBeInTheDocument();
     });
   });
 });

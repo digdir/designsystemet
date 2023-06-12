@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.14.0...@digdir/design-system-react@0.15.0) (2023-06-09)
+
+### Bug Fixes
+
+- **Checkbox:** should avoid different box-size when checked/unchecked ([#533](https://github.com/digdir/designsystem/issues/533)) ([52d368f](https://github.com/digdir/designsystem/commit/52d368f02a7f59ef25aadea0323e22faa3c4d0f9))
+- **FieldSet:** :wheelchair: Fix wrong role on `ErrorMessage` ([#520](https://github.com/digdir/designsystem/issues/520)) ([b0f8894](https://github.com/digdir/designsystem/commit/b0f88948a56192787cb4d14a41937f3e82081fe1))
+
+### Features
+
+- **Alert:** :sparkles: New React component `Alert` ([#510](https://github.com/digdir/designsystem/issues/510)) ([8f36198](https://github.com/digdir/designsystem/commit/8f361987963ba0dbbfc66b51c2241cd8da383c42))
+- **NativeSelect:** :sparkles: New React component `NativeSelect` ([#488](https://github.com/digdir/designsystem/issues/488)) ([36eb3eb](https://github.com/digdir/designsystem/commit/36eb3ebbe8e8d741d396f962fe55095b1e8def52))
+
+# [0.14.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.13.0...@digdir/design-system-react@0.14.0) (2023-06-07)
+
+### Bug Fixes
+
+- **InputWrapper:** should only show invalid variant when field is invalid ([#502](https://github.com/digdir/designsystem/issues/502)) ([556515c](https://github.com/digdir/designsystem/commit/556515c1f3a244c1b5ce7bac9fcfbc878ba77ae3))
+- **Select:** :bug: Add zindex to dropdown ([#513](https://github.com/digdir/designsystem/issues/513)) ([cf62384](https://github.com/digdir/designsystem/commit/cf62384282d43ed417d5bd77a119b604d262bd84))
+- **Table:** Remove padding in header cells ([#485](https://github.com/digdir/designsystem/issues/485)) ([17971e2](https://github.com/digdir/designsystem/commit/17971e20015d07187ee316e7974a6a79c7712d80))
+
+### Features
+
+- **Typography:** :sparkles: Define font color ([#511](https://github.com/digdir/designsystem/issues/511)) ([5446557](https://github.com/digdir/designsystem/commit/54465579e63caefc21f43635272a80b2a4805dda))
+
 # [0.13.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.1...@digdir/design-system-react@0.13.0) (2023-05-31)
 
 ### Bug Fixes
