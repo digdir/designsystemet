@@ -30,7 +30,7 @@ export const exampleRows: ExampleTableData[] = [
     status: 'Besluttet gjeldende',
     image: {
       src: 'https://search.patentstyret.no/onlinedb_files_ds/Pictures/2022/9/17/317418.JPG',
-      alt: 'Designsystem forside',
+      alt: 'Logo',
     },
   },
   {
