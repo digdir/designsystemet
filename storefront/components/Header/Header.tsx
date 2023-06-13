@@ -46,11 +46,15 @@ const Header = () => {
           <Link
             className={classes['logo-link']}
             href='/'
+            aria-label='Designsystem forside'
+            onClick={() => setOpen(false)}
+            prefetch={false}
           >
             <Image
               className={classes.logo}
               src='/img/logo-positive.svg'
-              alt='Logo'
+              alt=''
+              aria-hidden='true'
               width={275}
               height={30}
             />
@@ -59,6 +63,7 @@ const Header = () => {
         <div className={classes.right}>
           <button
             aria-expanded={open}
+            aria-label='Meny'
             className={classes.toggle}
             onClick={() => {
               setOpen(!open);
@@ -85,6 +90,8 @@ const Header = () => {
               >
                 <Link
                   href={item.url}
+                  onClick={() => setOpen(false)}
+                  prefetch={false}
                   className={cn(
                     isMenuItemActive(router.pathname, item.url)
                       ? classes.active

@@ -19760,6 +19760,7 @@ __metadata:
     "@babel/preset-typescript": ^7.21.5
     "@commitlint/cli": ^17.4.1
     "@commitlint/config-conventional": ^17.4.0
+    "@digdir/design-system-react": "*"
     "@digdir/design-system-tokens": "*"
     "@etchteam/storybook-addon-status": ^4.2.2
     "@next/eslint-plugin-next": ^13.2.4
@@ -20468,7 +20469,6 @@ __metadata:
   dependencies:
     "@altinn/altinn-design-system": ^0.27.2
     "@altinn/figma-design-tokens": ^5.0.0
-    "@digdir/design-system-react": "*"
     "@mdx-js/loader": ^2.0.0-rc.2
     "@mdx-js/react": ^1.6.22
     "@navikt/aksel-icons": ^2.8.4

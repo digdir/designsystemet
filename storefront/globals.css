@@ -47,7 +47,7 @@ h6 {
   margin-top: 0;
 }
 
-main {
+.root {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -56,6 +56,11 @@ main {
   position: relative;
 }
 
-main > div {
+.root > main {
   margin-bottom: auto;
+}
+
+/* Utility classes */
+.grey-background {
+  background: #f4f5f6;
 }

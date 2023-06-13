@@ -25,7 +25,10 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
         <div className={classes.left}>
           <SidebarMenu routerPath={router.pathname} />
         </div>
-        <div className={classes.right}>
+        <main
+          id='main'
+          className={classes.right}
+        >
           <div className={classes.header}>
             <h1 className={classes.title}>{data.title}</h1>
             {data.date && <div className={classes.date}>{data.date}</div>}
@@ -34,7 +37,7 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
           <div className={classes.content}>
             <MdxContent>{content}</MdxContent>
           </div>
-        </div>
+        </main>
       </Container>
     </div>
   );

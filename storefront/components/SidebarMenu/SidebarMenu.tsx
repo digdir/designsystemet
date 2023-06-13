@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
+import {
+  Button,
+  ButtonColor,
+  ButtonSize,
+  ButtonVariant,
+} from '@digdir/design-system-react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';
 
 import classes from './SidebarMenu.module.css';
-
 interface SidebarMenuProps {
   routerPath: string;
 }
@@ -18,6 +23,7 @@ const isItemActive = (path: string, activeRouterPath: string) => {
 
 const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     findAndSetActiveIndex(routerPath);
@@ -33,63 +39,81 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
   };
 
   return (
-    <div>
+    <div className={classes.sidebar}>
       {activeIndex >= 0 && (
         <>
-          <h3 className={classes.title}>{SiteConfig.menu[activeIndex].name}</h3>
-          <ul className={classes.list}>
-            {SiteConfig.menu[activeIndex].children.map(
-              (item: PageMenuItemType, index) => (
-                <li
-                  key={index}
-                  className={cn(classes['list-group'], {
-                    [classes['list-group-compact']]: !item.children,
-                  })}
-                >
-                  {item.children && (
-                    <>
-                      <div className={classes['inner-title']}>{item.name}</div>
-                      <ul className={classes['inner-list']}>
-                        {item.children.map(
-                          (item2: PageMenuItemType, index2) => (
-                            <li
-                              key={index2}
-                              className={classes['list-item']}
-                            >
-                              <Link
-                                href={'/' + item2.url}
-                                className={cn(classes.link, {
-                                  [classes['link-active']]: isItemActive(
-                                    item2.url,
-                                    routerPath,
-                                  ),
-                                })}
+          <Button
+            className={classes.toggleBtn}
+            fullWidth
+            size={ButtonSize.Medium}
+            color={ButtonColor.Secondary}
+            variant={ButtonVariant.Outline}
+            onClick={() => setShowMenu(!showMenu)}
+            aria-expanded={showMenu}
+          >
+            {showMenu ? 'Skjul' : 'Vis'} side meny
+          </Button>
+
+          <div className={cn(classes.menu, { [classes.activeMenu]: showMenu })}>
+            <h3 className={classes.title}>
+              {SiteConfig.menu[activeIndex].name}
+            </h3>
+            <ul className={classes.list}>
+              {SiteConfig.menu[activeIndex].children.map(
+                (item: PageMenuItemType, index) => (
+                  <li
+                    key={index}
+                    className={cn(classes.listGroup, {
+                      [classes.listGroupCompact]: !item.children,
+                    })}
+                  >
+                    {item.children && (
+                      <>
+                        <div className={classes.innerTitle}>{item.name}</div>
+                        <ul className={classes.innerList}>
+                          {item.children.map(
+                            (item2: PageMenuItemType, index2) => (
+                              <li
+                                key={index2}
+                                className={classes.listItem}
                               >
-                                {item2.name}
-                              </Link>
-                            </li>
+                                <Link
+                                  href={'/' + item2.url}
+                                  prefetch={false}
+                                  className={cn(classes.link, {
+                                    [classes.linkActive]: isItemActive(
+                                      item2.url,
+                                      routerPath,
+                                    ),
+                                  })}
+                                >
+                                  {item2.name}
+                                </Link>
+                              </li>
+                            ),
+                          )}
+                        </ul>
+                      </>
+                    )}
+                    {!item.children && (
+                      <Link
+                        href={'/' + item.url}
+                        prefetch={false}
+                        className={cn(classes.link, classes.linkCompact, {
+                          [classes.linkActive]: isItemActive(
+                            item.url,
+                            routerPath,
                           ),
-                        )}
-                      </ul>
-                    </>
-                  )}
-                  {!item.children && (
-                    <Link
-                      href={'/' + item.url}
-                      className={cn(classes.link, classes['link-compact'], {
-                        [classes['link-active']]: isItemActive(
-                          item.url,
-                          routerPath,
-                        ),
-                      })}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </li>
-              ),
-            )}
-          </ul>
+                        })}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
         </>
       )}
     </div>

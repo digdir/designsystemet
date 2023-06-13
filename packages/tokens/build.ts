@@ -5,10 +5,7 @@ import type {
   TransformedToken,
   TransformedTokens,
 } from 'style-dictionary';
-import {
-  registerTransforms,
-  transformDimension,
-} from '@tokens-studio/sd-transforms';
+import { registerTransforms } from '@tokens-studio/sd-transforms';
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
@@ -105,24 +102,17 @@ StyleDictionary.registerTransform({
 });
 
 StyleDictionary.registerTransform({
-  name: 'css/spacing/fluid',
+  name: 'fds/calc',
   type: 'value',
   transitive: true,
-  matcher: (token) => token.type === 'spacing' && token.path[0] === 'spacing',
+  matcher: (token) =>
+    (token.type === 'spacing' && token.path[0] === 'spacing') ||
+    (token.type === 'sizing' && token.path[0] === 'sizing'),
   transformer: (token) => {
     const value = token.value as string;
 
     return `calc(${value})`;
   },
-});
-
-StyleDictionary.registerTransform({
-  name: 'fds/size/px',
-  type: 'value',
-  transitive: true,
-  matcher: (token) => token.type === 'sizing',
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument
-  transformer: (token) => transformDimension(token.value),
 });
 
 StyleDictionary.registerFormat({
@@ -242,9 +232,8 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         transforms: [
           'name/cti/hierarchical-kebab',
           'ts/resolveMath',
-          'fds/size/px',
           'css/fontSizes/fluid',
-          'css/spacing/fluid',
+          'fds/calc',
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
@@ -259,7 +248,8 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         options: {
           fileHeader: 'fileheader',
           referencesFilter: (token: TransformedToken) =>
-            token.type === 'spacing',
+            !(token.path[0] === 'viewport') &&
+            ['spacing', 'sizing'].includes(token.type as string),
           // outputReferences: true,
         },
       },

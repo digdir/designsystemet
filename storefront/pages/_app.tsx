@@ -6,9 +6,11 @@ import '../globals.css';
 import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import cn from 'classnames';
 
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
+import { JumpToMain } from '../components/JumpToMain';
 
 const inter = Inter({
   weight: ['400', '500', '600', '700'],
@@ -22,11 +24,12 @@ const queryClient = new QueryClient();
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <main className={inter.className}>
+      <div className={cn(inter.className, 'root')}>
+        <JumpToMain />
         <Header />
         <Component {...pageProps} />
         <Footer />
-      </main>
+      </div>
     </QueryClientProvider>
   );
 };
