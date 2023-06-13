@@ -3,11 +3,11 @@
   --fdsc-tag-background: var(--fds-semantic-surface-neutral-subtle);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   --fdsc-tag-padding: var(--fds-spacing-2);
-  --fdsc-tag-min-height: var(--fds-spacing-7);
+  --fdsc-tag-min-height: var(--fds-sizing-7);
 
   color: var(--fdsc-tag-text);
   padding: 0 var(--fdsc-tag-padding);
-  border: 1px solid var(--fdsc-tag-border);
+  border: var(--fds-border_width-default) solid var(--fdsc-tag-border);
   background-color: var(--fdsc-tag-background);
   min-height: var(--fdsc-tag-min-height);
   display: flex;
@@ -20,17 +20,17 @@
 
 .xsmall {
   --fdsc-tag-padding: var(--fds-spacing-1);
-  --fdsc-tag-min-height: var(--fds-spacing-5);
+  --fdsc-tag-min-height: var(--fds-sizing-5);
 }
 
 .small {
   --fdsc-tag-padding: var(--fds-spacing-1);
-  --fdsc-tag-min-height: var(--fds-spacing-6);
+  --fdsc-tag-min-height: var(--fds-sizing-6);
 }
 
 .medium {
   --fdsc-tag-padding: var(--fds-spacing-2);
-  --fdsc-tag-min-height: var(--fds-spacing-7);
+  --fdsc-tag-min-height: var(--fds-sizing-7);
 }
 
 .outlined.neutral {
