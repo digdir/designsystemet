@@ -9,12 +9,20 @@ import classes from './Tag.module.css';
 
 type BrandColor = 'primary' | 'secondary' | 'tertiary';
 type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
+type Size = 'xsmall' | 'small' | 'medium';
+
+// Map of size to Paragraph size instead of casting to Paragraph size
+const textSizeMap: Record<Size, Partial<ParagraphProps['size']>> = {
+  xsmall: 'xsmall',
+  small: 'small',
+  medium: 'medium',
+};
 
 export type TagProps = {
   /** Color of the tag */
   color?: BrandColor | VariantColor;
   /** Size of the tag */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: Size;
   /** Variant of the tag */
   variant?: 'filled' | 'outlined';
 } & HTMLAttributes<HTMLSpanElement>;
@@ -34,7 +42,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     return (
       <Paragraph
         as='span'
-        size={size as ParagraphProps['size']}
+        size={textSizeMap[size]}
         {...restHTMLProps}
         className={cn(
           classes.tag,
