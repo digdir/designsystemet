@@ -29,7 +29,7 @@ export const Preview: Story = {
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   const sizes: TagProps['size'][] = ['xsmall', 'small', 'medium'];
   return (
-    <StoryContainer>
+    <StoryContainer row={false}>
       {sizes.map((size) => (
         <Tag
           key={size}
@@ -100,13 +100,18 @@ export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   );
 };
 
-const StoryContainer = ({ children }: { children: React.ReactNode }) => {
+const StoryContainer = ({
+  children,
+  row = true,
+}: {
+  children: React.ReactNode;
+  row?: boolean;
+}) => {
   return (
     <div
       style={{
-        display: 'flex',
+        display: row ? 'flex' : 'grid',
         gap: '8px',
-        flexWrap: 'wrap',
         marginBottom: '8px',
       }}
     >
