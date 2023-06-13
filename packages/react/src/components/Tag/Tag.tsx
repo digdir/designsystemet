@@ -11,7 +11,7 @@ type BrandColor = 'primary' | 'secondary' | 'tertiary';
 type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 type Size = 'xsmall' | 'small' | 'medium';
 
-// Map of size to Paragraph size instead of casting to Paragraph size
+// Map size to ParagraphSize instead of casting types between TagProps and ParagraphProps
 const textSizeMap: Record<Size, Partial<ParagraphProps['size']>> = {
   xsmall: 'xsmall',
   small: 'small',
