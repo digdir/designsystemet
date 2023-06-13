@@ -382,15 +382,19 @@
           "type": "color"
         }
       },
-      "action_dark": {
-        "default": {
-          "value": "#00315d",
-          "type": "color"
-        }
-      },
       "on_inverted": {
         "default": {
           "value": "#ffffff",
+          "type": "color"
+        }
+      },
+      "input": {
+        "default": {
+          "value": "#00315d",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#0062ba",
           "type": "color"
         }
       }
