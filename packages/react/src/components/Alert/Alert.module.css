@@ -4,7 +4,8 @@
   --fdsc-alert-background: var(--fds-semantic-surface-info-subtle);
   --fdsc-alert-color: var(--fds-semantic-text-neutral-default);
 
-  box-shadow: 8px 0 0 0 var(--fdsc-alert-border) inset;
+  /* Negative drop-shadow to place it on the left side of the element */
+  filter: drop-shadow(-8px 0 0 var(--fdsc-alert-border));
   background: var(--fdsc-alert-background);
   color: var(--fdsc-alert-color);
   padding: var(--fds-spacing-4);
