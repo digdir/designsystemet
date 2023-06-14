@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.15.0...@digdir/design-system-react@0.16.0) (2023-06-14)
+
+### Features
+
+- **Tag:** created the tag component ([#542](https://github.com/digdir/designsystem/issues/542)) ([7fd2330](https://github.com/digdir/designsystem/commit/7fd23304220bcf69291b51b5f33b93556484a142))
+
 # [0.15.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.14.0...@digdir/design-system-react@0.15.0) (2023-06-09)
 
 ### Bug Fixes
