@@ -2686,7 +2686,7 @@ __metadata:
   resolution: "@digdir/design-system-react@workspace:packages/react"
   dependencies:
     "@altinn/figma-design-tokens": ^6.0.1
-    "@digdir/design-system-tokens": ^0.1.3
+    "@digdir/design-system-tokens": ^0.1.4
     "@floating-ui/react": 0.24.1
     "@navikt/aksel-icons": ^3.2.4
     "@navikt/ds-icons": ^2.3.0
@@ -2697,7 +2697,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/design-system-tokens@*, @digdir/design-system-tokens@^0.1.3, @digdir/design-system-tokens@workspace:packages/tokens":
+"@digdir/design-system-tokens@*, @digdir/design-system-tokens@^0.1.4, @digdir/design-system-tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
