@@ -125,6 +125,22 @@
         "type": "color",
         "description": "AA 5.6 on white"
       }
+    },
+    "action": {
+      "primary": {
+        "default": {
+          "value": "{brand.tertiary.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.tertiary.800}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.tertiary.800}",
+          "type": "color"
+        }
+      }
     }
   }
 }
