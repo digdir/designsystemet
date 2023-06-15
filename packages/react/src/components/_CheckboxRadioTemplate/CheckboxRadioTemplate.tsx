@@ -4,7 +4,7 @@
  */
 
 import type { ChangeEventHandler, ReactNode } from 'react';
-import React, { useId } from 'react';
+import React, { forwardRef, useId } from 'react';
 import cn from 'classnames';
 
 import { HelpText } from '../HelpText';
@@ -32,103 +32,114 @@ export interface CheckboxRadioTemplateProps {
   value?: string;
 }
 
-export const CheckboxRadioTemplate = ({
-  checked,
-  children,
-  className,
-  description,
-  disabled,
-  helpText,
-  hideInput,
-  hideLabel,
-  inputId,
-  label,
-  name,
-  onChange,
-  presentation,
-  size = 'small',
-  type,
-  value,
-}: CheckboxRadioTemplateProps) => {
-  const randomId = useId();
-  const finalInputId = inputId ?? 'input-' + randomId;
-  const labelId = label ? `${finalInputId}-label` : undefined;
-  const descriptionId = description ? `${finalInputId}-description` : undefined;
-  const showLabel = label && !hideLabel;
-  const shouldHaveClickableLabel =
-    !presentation ||
-    (typeof label !== 'object' && typeof description !== 'object');
+export const CheckboxRadioTemplate = forwardRef<
+  HTMLInputElement,
+  CheckboxRadioTemplateProps
+>(
+  (
+    {
+      checked,
+      children,
+      className,
+      description,
+      disabled,
+      helpText,
+      hideInput,
+      hideLabel,
+      inputId,
+      label,
+      name,
+      onChange,
+      presentation,
+      size = 'small',
+      type,
+      value,
+    },
+    ref,
+  ) => {
+    const randomId = useId();
+    const finalInputId = inputId ?? 'input-' + randomId;
+    const labelId = label ? `${finalInputId}-label` : undefined;
+    const descriptionId = description
+      ? `${finalInputId}-description`
+      : undefined;
+    const showLabel = label && !hideLabel;
+    const shouldHaveClickableLabel =
+      !presentation ||
+      (typeof label !== 'object' && typeof description !== 'object');
 
-  return (
-    <Wrapper
-      className={cn(
-        classes.template,
-        classes[size],
-        !showLabel && classes.hiddenLabel,
-        disabled ? classes.disabled : utilityClasses.focusable,
-        className,
-      )}
-      htmlFor={finalInputId}
-      isLabel={shouldHaveClickableLabel}
-    >
-      {!hideInput && (
-        <Wrapper
-          className={classes.inputWrapper}
-          htmlFor={finalInputId}
-          isLabel={!shouldHaveClickableLabel}
-        >
-          <input
-            aria-describedby={descriptionId}
-            aria-labelledby={label ? labelId : undefined}
-            checked={checked ?? false}
-            className={classes.input}
-            disabled={disabled}
-            id={finalInputId}
-            name={name}
-            onChange={disabled ? undefined : onChange}
-            role={presentation ? 'presentation' : undefined}
-            type={type}
-            value={value}
-          />
-          <span className={classes.visibleBox}>{children}</span>
-        </Wrapper>
-      )}
-      {(label || description) && (
-        <span className={classes.labelAndDescription}>
-          <span className={classes.labelAndHelpText}>
-            {label && (
+    return (
+      <Wrapper
+        className={cn(
+          classes.template,
+          classes[size],
+          !showLabel && classes.hiddenLabel,
+          disabled ? classes.disabled : utilityClasses.focusable,
+          className,
+        )}
+        htmlFor={finalInputId}
+        isLabel={shouldHaveClickableLabel}
+      >
+        {!hideInput && (
+          <Wrapper
+            className={classes.inputWrapper}
+            htmlFor={finalInputId}
+            isLabel={!shouldHaveClickableLabel}
+          >
+            <input
+              ref={ref}
+              aria-describedby={descriptionId}
+              aria-labelledby={label ? labelId : undefined}
+              checked={checked ?? false}
+              className={classes.input}
+              disabled={disabled}
+              id={finalInputId}
+              name={name}
+              onChange={disabled ? undefined : onChange}
+              role={presentation ? 'presentation' : undefined}
+              type={type}
+              value={value}
+            />
+            <span className={classes.visibleBox}>{children}</span>
+          </Wrapper>
+        )}
+        {(label || description) && (
+          <span className={classes.labelAndDescription}>
+            <span className={classes.labelAndHelpText}>
+              {label && (
+                <span
+                  className={classes.label}
+                  id={labelId}
+                  style={{ display: showLabel ? 'inline' : 'none' }}
+                >
+                  {label}
+                </span>
+              )}
+              {helpText && (
+                <HelpText
+                  size={size}
+                  title={
+                    typeof label === 'string' ? `Help text for ${label}` : ''
+                  }
+                >
+                  {helpText}
+                </HelpText>
+              )}
+            </span>
+            {description && (
               <span
-                className={classes.label}
-                id={labelId}
-                style={{ display: showLabel ? 'inline' : 'none' }}
+                className={classes.description}
+                id={descriptionId}
               >
-                {label}
+                {description}
               </span>
             )}
-            {helpText && (
-              <HelpText
-                size={size}
-                title={
-                  typeof label === 'string' ? `Help text for ${label}` : ''
-                }
-              >
-                {helpText}
-              </HelpText>
-            )}
           </span>
-          {description && (
-            <span
-              className={classes.description}
-              id={descriptionId}
-            >
-              {description}
-            </span>
-          )}
-        </span>
-      )}
-    </Wrapper>
-  );
-};
+        )}
+      </Wrapper>
+    );
+  },
+);
 
 interface WrapperProps {
   children: ReactNode;
