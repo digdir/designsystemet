@@ -68,6 +68,10 @@ This is a collection of basic React components like buttons, checkboxes and text
 
 Design tokens contain UI data like colors, fonts and spacing for styling and building user interfaces on the web.
 
+### Storybook
+
+See [Storybook](https://digdir.github.io/designsystem/) for overview of available components
+
 ### Storefront (Coming soon!)
 
 Here you will find everything you need to start using the designsystem.
