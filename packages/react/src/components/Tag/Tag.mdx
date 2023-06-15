@@ -1,0 +1,44 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as TagStories from './Tag.stories';
+
+<Meta of={TagStories} />
+
+# Tag
+
+Tags er merkelapper som kan brukes til å kategorisere elementer, kommunisere fremdrift, status eller prosess. Tags kan gi brukeren et raskere overblikk over innholdet. Bruk tags når innholdet har mange kategorier og det er hensiktsmessig å kunne skille mellom dem. Tags er statiske merkelapper, de kan ikke klikkes på.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Tag } from '@digdir/design-system-react';
+
+<Tag>Beta</Tag>;
+```
+
+### Anbefalinger
+
+- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
+- Bruk stor forbokstav og små bokstaver for resten.
+- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
+- Tags bør som regel plasseres bak tittelen eller navnet på tilhørende element.
+- Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren. Vurder plasseringen og brukertest gjerne.
+- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
+
+### Ikke egnet til
+
+- Tag er ikke egnet som link til andre sider (bruk heller link).
+- Tag er ikke egnet til handlinger (bruk heller [button](/docs/kjernekomponenter-typography--docs)).
+- For filtrering der brukeren kan filtrere data og bare se elementer innenfor ønsket kategori kan du bruke Chip komponenten.
+
+## Sizes, variants, colors
+
+<Canvas of={TagStories.Sizes} />
+<Canvas of={TagStories.Variants} />
+<Canvas of={TagStories.Colors} />

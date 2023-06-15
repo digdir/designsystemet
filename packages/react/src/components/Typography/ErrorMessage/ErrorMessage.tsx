@@ -2,13 +2,13 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'classnames';
 
-import type { OverridableComponent } from '../../../utils/OverridableComponent';
+import type { OverridableComponent } from '../../../types/OverridableComponent';
 
 import classes from './ErrorMessage.module.css';
 
 export type ErrorMessageProps = {
   /** Changes text sizing */
-  size?: 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium';
   /** Adds margin-bottom */
   spacing?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;

@@ -18,3 +18,8 @@
   font: var(--fds-typography-error_message-small);
   font-family: var(--fdsc-typography-font-family);
 }
+
+.errorMessage.xsmall {
+  font: var(--fds-typography-error_message-xsmall);
+  font-family: var(--fdsc-typography-font-family);
+}

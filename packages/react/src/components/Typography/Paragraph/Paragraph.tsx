@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'classnames';
 
-import type { OverridableComponent } from '../../../utils/OverridableComponent';
+import type { OverridableComponent } from '../../../types/OverridableComponent';
 
 import classes from './Paragraph.module.css';
 

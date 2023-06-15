@@ -27,7 +27,7 @@ const rightLinks = [
   {
     text: 'designsystem@digdir.no',
     url: 'mailto:designsystem@digdir.no',
-    prefix: <EnvelopeClosedIcon title='a11y-title' />,
+    prefix: <EnvelopeClosedIcon aria-hidden='true' />,
   },
   {
     text: 'Bli invitert til slack',
@@ -36,7 +36,7 @@ const rightLinks = [
       <Image
         height={20}
         width={20}
-        alt='f'
+        alt=''
         src='/img/logos/slack-negative.png'
       />
     ),
@@ -48,7 +48,7 @@ const rightLinks = [
       <Image
         height={20}
         width={20}
-        alt='f'
+        alt=''
         src='/img/logos/github-negative.png'
       />
     ),
@@ -60,7 +60,7 @@ const rightLinks = [
       <Image
         height={20}
         width={20}
-        alt='f'
+        alt=''
         src='/img/logos/figma-negative.png'
       />
     ),

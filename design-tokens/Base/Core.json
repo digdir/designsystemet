@@ -474,28 +474,6 @@
       "type": "boxShadow"
     }
   },
-  "border_radius": {
-    "small": {
-      "value": "2px",
-      "type": "borderRadius"
-    },
-    "medium": {
-      "value": "4px",
-      "type": "borderRadius"
-    },
-    "large": {
-      "value": "8px",
-      "type": "borderRadius"
-    },
-    "xlarge": {
-      "value": "12px",
-      "type": "borderRadius"
-    },
-    "full": {
-      "value": "9999px",
-      "type": "borderRadius"
-    }
-  },
   "font-scale": {
     "const": {
       "min": {

@@ -26,4 +26,8 @@ export default {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  i18n: {
+    locales: ['nb'],
+    defaultLocale: 'nb',
+  },
 };

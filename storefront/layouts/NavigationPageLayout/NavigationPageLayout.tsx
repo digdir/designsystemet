@@ -27,9 +27,12 @@ const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
         <div className={classes.left}>
           <SidebarMenu routerPath={router.pathname} />
         </div>
-        <div className={classes.right}>
+        <main
+          id='main'
+          className={classes.right}
+        >
           <div className={classes.content}>{content}</div>
-        </div>
+        </main>
       </Container>
     </div>
   );

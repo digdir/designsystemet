@@ -31,6 +31,7 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
           <Link
             className={classes.link}
             href='/'
+            prefetch={false}
           >
             Gå til forsiden
           </Link>
