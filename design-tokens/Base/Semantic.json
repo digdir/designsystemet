@@ -254,7 +254,11 @@
       },
       "action": {
         "subtle": {
-          "value": "{colors.blue.100}",
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "subtle-hover": {
+          "value": "{colors.blue.400}",
           "type": "color"
         },
         "default": {
