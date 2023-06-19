@@ -7,7 +7,7 @@ import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Chip.module.css';
 
-type ChipProps = {
+export type ChipProps = {
   /** Changes text sizing */
   size?: 'xsmall' | 'small';
   /** Mark as selected (aria-pressed) */
