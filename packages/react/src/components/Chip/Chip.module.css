@@ -25,6 +25,9 @@
 }
 
 .chip:focus {
+  --fdsc-chip-background: var(--fds-semantic-surface-action-active);
+  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
+
   outline: 2px solid var(--fds-semantic-border-focus-outline);
 }
 
@@ -39,8 +42,9 @@
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
 }
 
-.label {
-  color: inherit !important;
+.chip .label {
+  color: inherit;
+  line-height: normal;
 }
 
 .xsmall {
