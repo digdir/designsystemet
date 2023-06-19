@@ -10,12 +10,16 @@ import classes from './Removable.module.css';
 type RemovableChipProps = Omit<ChipProps, 'selected'>;
 
 export const RemovableChip = forwardRef(
-  ({ children, ...rest }: RemovableChipProps, ref): JSX.Element => {
+  (
+    { children, size = 'xsmall', ...rest }: RemovableChipProps,
+    ref,
+  ): JSX.Element => {
     return (
       <Chip
         {...rest}
         ref={ref}
-        className={cn(classes.removable, rest.className)}
+        size={size}
+        className={cn(classes.removable, classes[size], rest.className)}
       >
         <div className={classes.container}>
           <div>{children}</div>

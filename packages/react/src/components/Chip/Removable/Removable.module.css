@@ -1,11 +1,13 @@
 .removable {
   --fdsc-removable-background: var(--fds-semantic-surface-action-active);
   --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
+  --fdsc-removable-chip-size: var(--fds-sizing-7);
 
   color: var(--fdsc-removable-text-color);
   background: var(--fdsc-removable-background);
   border: 0;
   padding-right: 0;
+  min-height: var(--fdsc-removable-chip-size);
 }
 
 .removable:focus {
@@ -18,7 +20,6 @@
   gap: var(--fds-spacing-1);
 }
 
-/* TODO crosscheck with UI/UX about the xMart-size and padding */
 .xMark {
   --fdsc-xmark-background: transparent;
   --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
@@ -27,10 +28,18 @@
   align-items: center;
   justify-content: center;
   color: var(--fdsc-xmark-color);
-  padding: 0 var(--fds-spacing-1);
-  min-height: var(--fds-sizing-6);
+  padding: 0 2px;
   background: var(--fdsc-xmark-background);
   border-radius: 0 var(--fds-border_radius-full) var(--fds-border_radius-full) 0;
+  height: var(--fdsc-removable-chip-size);
+}
+
+.removable.xsmall {
+  --fdsc-removable-chip-size: var(--fds-sizing-6);
+}
+
+.removable.small {
+  --fdsc-removable-chip-size: var(--fds-sizing-7);
 }
 
 .removable:hover .xMark,
@@ -40,5 +49,6 @@
 }
 
 .iconSize {
-  font-size: var(--fds-sizing-5);
+  height: var(--fds-sizing-5);
+  width: auto;
 }
