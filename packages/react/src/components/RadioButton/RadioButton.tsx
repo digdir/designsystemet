@@ -1,5 +1,5 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
@@ -23,47 +23,53 @@ export interface RadioButtonProps {
   value: string;
 }
 
-const RadioButton = ({
-  checked,
-  description,
-  disabled,
-  error,
-  helpText,
-  hideLabel,
-  label,
-  name,
-  onChange,
-  presentation,
-  radioId,
-  size = 'small',
-  value,
-}: RadioButtonProps) => (
-  <CheckboxRadioTemplate
-    checked={checked}
-    className={cn(
-      classes.radio,
-      classes[size],
-      checked && classes.checked,
-      error && classes.error,
-      disabled && classes.disabled,
-    )}
-    description={description}
-    disabled={disabled}
-    helpText={helpText}
-    hideLabel={hideLabel}
-    inputId={radioId}
-    label={label}
-    name={name}
-    onChange={onChange}
-    presentation={presentation}
-    size={size}
-    type='radio'
-    value={value}
-  >
-    <span className={classes.visibleButton}>
-      <span className={classes.checkmark} />
-    </span>
-  </CheckboxRadioTemplate>
+const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
+  (
+    {
+      checked,
+      description,
+      disabled,
+      error,
+      helpText,
+      hideLabel,
+      label,
+      name,
+      onChange,
+      presentation,
+      radioId,
+      size = 'small',
+      value,
+    },
+    ref,
+  ) => (
+    <CheckboxRadioTemplate
+      checked={checked}
+      className={cn(
+        classes.radio,
+        classes[size],
+        checked && classes.checked,
+        error && classes.error,
+        disabled && classes.disabled,
+      )}
+      ref={ref}
+      description={description}
+      disabled={disabled}
+      helpText={helpText}
+      hideLabel={hideLabel}
+      inputId={radioId}
+      label={label}
+      name={name}
+      onChange={onChange}
+      presentation={presentation}
+      size={size}
+      type='radio'
+      value={value}
+    >
+      <span className={classes.visibleButton}>
+        <span className={classes.checkmark} />
+      </span>
+    </CheckboxRadioTemplate>
+  ),
 );
 
 RadioButton.displayName = 'RadioButton';
