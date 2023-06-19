@@ -5,7 +5,7 @@ import Toggle from './Toggle';
 import classes from './Toggle.module.css';
 
 const meta: Meta<typeof Toggle> = {
-  title: 'Kjernekomponenter/Chips/Toggle',
+  title: 'Kjernekomponenter/Chip/Toggle',
   component: Toggle,
 };
 

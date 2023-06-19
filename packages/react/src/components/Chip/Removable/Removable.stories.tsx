@@ -5,7 +5,7 @@ import { RemovableChip } from './Removable';
 import classes from './Removable.module.css';
 
 const meta: Meta<typeof RemovableChip> = {
-  title: 'Kjernekomponenter/Chips/Removable',
+  title: 'Kjernekomponenter/Chip/Removable',
   component: RemovableChip,
 };
 

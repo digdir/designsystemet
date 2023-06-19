@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 
-import classes from '../Chips.module.css';
+import classes from '../Chip.module.css';
 
 export interface ToggleChipsProps
   extends React.HTMLAttributes<HTMLButtonElement> {

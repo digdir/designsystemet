@@ -24,18 +24,19 @@
   cursor: pointer;
 }
 
+.chip:focus {
+  outline: 2px solid var(--fds-semantic-border-focus-outline);
+}
+
 .chip:is([aria-pressed='true']) {
   --fdsc-chip-background: var(--fds-semantic-surface-action-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
+  --fdsc-chip-border: var(--fds-semantic-surface-action-active);
 }
 
-.chip.active:hover {
+.chip:is([aria-pressed='true']):hover {
   --fdsc-chip-background: var(--fds-semantic-surface-action-no_fill-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-}
-
-.chip:focus {
-  outline: 2px solid var(--fds-semantic-border-focus-outline);
 }
 
 .label {
@@ -46,7 +47,6 @@
   --fdsc-chip-height: var(--fds-sizing-6);
 }
 
-/* TODO verify small size with UX/UI, BEFORE MERGE! */
 .small {
   --fdsc-chip-height: var(--fds-sizing-7);
   --fdsc-chip-padding: var(--fds-spacing-3);

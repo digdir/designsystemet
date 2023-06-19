@@ -5,7 +5,7 @@ import { Chip } from './Chip';
 type Story = StoryObj<typeof Chip>;
 
 export default {
-  title: 'Kjernekomponenter/Chips',
+  title: 'Kjernekomponenter/Chip',
   component: Chip,
   parameters: {
     status: {
@@ -17,6 +17,8 @@ export default {
 
 export const Preview: Story = {
   args: {
-    children: 'Hello',
+    children: 'Nynorsk',
+    size: 'xsmall',
+    selected: false,
   },
 };
