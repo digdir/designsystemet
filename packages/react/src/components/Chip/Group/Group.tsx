@@ -1,17 +1,23 @@
-import React from 'react';
+import type { HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import cn from 'classnames';
 
-type GroupProps = {
-  children: React.ReactNode;
-};
-export const Group = ({ children }: GroupProps): JSX.Element => {
-  const childrenArray = React.Children.toArray(children);
-  return (
-    <ul>
-      {childrenArray.map(
+import classes from './Group.module.css';
+
+type GroupProps = HTMLAttributes<HTMLUListElement>;
+
+export const Group = forwardRef<HTMLUListElement, GroupProps>(
+  ({ children, ...rest }: GroupProps, ref): JSX.Element => (
+    <ul
+      {...rest}
+      ref={ref}
+      className={cn(classes.list, rest.className)}
+    >
+      {React.Children.toArray(children).map(
         (child, index): JSX.Element => (
           <li key={`${child.toString()}-${index}`}>{child}</li>
         ),
       )}
     </ul>
-  );
-};
+  ),
+);
