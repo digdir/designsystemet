@@ -1,59 +1,30 @@
+import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
-import classes from '../Chips.module.css';
+import { Chip } from '../Chip';
 
-export interface RemovableChipProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /**
-   * Chip label
-   */
-  children: string;
-  /**
-   * Click callback
-   */
-  onDelete?: () => void;
-  /**
-   * Replaces label read for screen-readers
-   * @default "slett filter"
-   */
-  removeLabel?: string;
-}
+import classes from './Removable.module.css';
 
-export type RemovableChipType = React.ForwardRefExoticComponent<
-  RemovableChipProps & React.RefAttributes<HTMLButtonElement>
->;
+type RemovableChipProps = {
+  size?: 'xsmall' | 'small';
+} & HTMLAttributes<HTMLButtonElement>;
 
-const RemovableChip: RemovableChipType = forwardRef(
-  (
-    { className, children, removeLabel = 'slett filter', onDelete, ...rest },
-    ref,
-  ) => {
+export const RemovableChip = forwardRef(
+  ({ children, ...rest }: RemovableChipProps, ref): JSX.Element => {
     return (
-      <li className={className}>
-        <button
-          ref={ref}
-          {...rest}
-          aria-label={`${children} ${removeLabel}`}
-          className={cn(classes.chip, classes.removable)}
-          onClick={(e) => {
-            onDelete?.();
-            rest?.onClick?.(e);
-          }}
-        >
-          <div className={classes.content}>
-            <div className={classes.text}>{children}</div>
-            <span className={classes.xmark}>
-              <XMarkIcon aria-hidden />
-            </span>
+      <Chip
+        ref={ref}
+        {...rest}
+        className={classes.removable}
+      >
+        <div className={classes.container}>
+          {children}
+          <div className={classes.xMark}>
+            <XMarkIcon className={classes.iconSize} />
           </div>
-        </button>
-      </li>
+        </div>
+      </Chip>
     );
   },
 );
-
-RemovableChip.displayName = 'RemovableChip';
-
-export default RemovableChip;

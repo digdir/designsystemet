@@ -1,36 +1,44 @@
-/* Styling for storybook props example - original styling not working when not wrapped in <Chips/> */
+.removable {
+  --fdsc-removable-background: var(--fds-semantic-surface-action-active);
+  --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
 
-.chips {
+  color: var(--fdsc-removable-text-color);
+  background: var(--fdsc-removable-background);
+  border: 0;
+  padding-right: 0;
+}
+
+.removable:focus {
+  border: 2px solid var(--fds-semantic-border-neutral-strong);
+}
+
+.container {
   display: flex;
-  list-style: none;
-  box-sizing: border-box;
+  align-items: center;
+  gap: var(--fds-spacing-1);
 }
 
-.chip {
-  border-radius: 50px;
-  padding-top: 0;
-  padding-bottom: 0;
+/* TODO crosscheck with UI/UX about the xMart-size and padding */
+.xMark {
+  --fdsc-xmark-background: transparent;
+  --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fdsc-xmark-color);
+  padding: 0 var(--fds-spacing-1);
+  min-height: var(--fds-sizing-6);
+  background: var(--fdsc-xmark-background);
+  border-radius: 0 var(--fds-border_radius-full) var(--fds-border_radius-full) 0;
 }
 
-.chips.small {
-  height: 2rem;
+.removable:hover .xMark,
+.removable:focus .xMark {
+  --fdsc-xmark-background: var(--fds-semantic-surface-danger-default);
+  --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.chips.small > button {
-  padding-left: 12px;
-}
-
-.chips.small > button > div > span {
-  height: 32px;
-  width: 32px;
-  font-size: 24px;
-}
-
-.chips.small > button > div > div {
-  font-size: 16px;
-}
-
-.chips.small > button > div > span.xmark {
-  height: 32px;
-  font-size: 24;
+.iconSize {
+  font-size: var(--fds-sizing-5);
 }
