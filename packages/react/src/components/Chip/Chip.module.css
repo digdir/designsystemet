@@ -1,5 +1,5 @@
 .spacing {
-  padding-left: var(--fds-spacing-1);
+  padding-left: var(--fds-spacing-1) !important;
 }
 
 .flexContainer {
