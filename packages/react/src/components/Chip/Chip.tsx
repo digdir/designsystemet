@@ -1,47 +1,52 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
+import { CheckmarkIcon } from '@navikt/aksel-icons';
 
-import { Paragraph } from '../Typography';
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Chip.module.css';
+import { ChipButton, type ChipButtonProps } from './_ChipButton';
 
-export type ChipProps = {
-  /** Changes text sizing */
-  size?: 'xsmall' | 'small';
-  /** Mark as selected (aria-pressed) */
-  selected?: boolean;
+export type ChipProps = ChipButtonProps & {
+  /** Show checkmark icon */
+  checkmark?: boolean;
 } & HTMLAttributes<HTMLButtonElement>;
 
-export const Chip: OverridableComponent<ChipProps, HTMLLabelElement> =
+export const Chip: OverridableComponent<ChipProps, HTMLButtonElement> =
   forwardRef(
     (
       {
-        size = 'xsmall',
         children,
+        checkmark = false,
         selected = false,
-        className,
         as: Component = 'button',
         ...rest
-      }: ChipProps,
+      },
       ref,
     ): JSX.Element => {
+      const shouldDisplayCheckmark = checkmark && selected;
       return (
-        <Component
+        <ChipButton
           {...rest}
+          as={Component}
           ref={ref}
-          aria-pressed={selected}
-          className={cn(classes.chip, classes[size], className)}
+          selected={selected}
+          className={cn(
+            checkmark && selected && classes.spacing,
+            rest.className,
+          )}
         >
-          <Paragraph
-            as='span'
-            size={size}
-            className={cn(classes.label)}
-          >
-            {children}
-          </Paragraph>
-        </Component>
+          <div className={cn(shouldDisplayCheckmark && classes.flexContainer)}>
+            {shouldDisplayCheckmark && (
+              <CheckmarkIcon
+                className={classes.checkmarkIcon}
+                aria-hidden
+              />
+            )}
+            <span>{children}</span>
+          </div>
+        </ChipButton>
       );
     },
   );

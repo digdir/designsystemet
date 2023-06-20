@@ -20,5 +20,6 @@ export const Preview: Story = {
     children: 'Nynorsk',
     size: 'xsmall',
     selected: false,
+    checkmark: false,
   },
 };

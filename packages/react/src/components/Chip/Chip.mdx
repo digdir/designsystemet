@@ -1,26 +1,101 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgTypes,
+} from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 import * as ChipStories from './Chip.stories';
-import * as RemovableStories from './Removable/Removable.stories';
-import * as ToggleStories from './Toggle/Toggle.stories';
+import { Chip } from './index';
 
 <Meta of={ChipStories} />
 
 # Chip
 
-<Information text='development' />
+Løsningene vi lager har ofte behov for handlinger som ikke er "primære" eller at det ikke passer å bruke Buttons. Chips er små interaktive komponenter som manipulerer data eller visning av data.
 
-Retningslinjer kommer.
+_Egnet til:_
 
-## Bruk
+- Filtrere data, f.eks. lister og tabeller
+- Vise filter som er aktivt
 
-```tsx
-<p>TODO: Example will be implemented</p>
-```
+_Uegnet til:_
+
+- Navigasjon mellom tab-paneler
+- Menyer, f.eks. sidemeny eller hovedmeny
+- Statisk metadata (se Tag-komponenten)
 
 ## Props
 
-### Chip
-
 <Primary />
 <Controls />
+
+## Bruk
+
+Chip komponenten består av flere komponenter. Disse er:
+
+- Chip
+- Chip.Removable
+- Chip.Group
+
+Som standard så rendres Chip som et`<button>` element, men dette kan overstyres ved å bruke `as` prop'en, `<Chip as="a">`. Dette vil gjøre at en Chip rendres som en anchor-tag istedenfor button.
+
+Hvordan komponentene som nevnes over brukes kan du se i eksemplene under.
+
+### Chip
+
+Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk".
+
+```tsx
+<Chip onClick={handleOnClick}>Nynorsk</Chip>
+```
+
+### Chip med sjekkmerkeikon
+
+Denne kodeblokken representerer en Chip med et sjekkmerkeikon og teksten "Nynorsk".
+
+```tsx
+<Chip
+  onClick={handleOnClick}
+  checkmark
+>
+  Nynorsk
+</Chip>
+```
+
+### Removable Chip
+
+Denne kodeblokken representerer en fjernbar Chip med teksten "Nynorsk". Denne komponenten viser også et kryss som indikerer at den kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
+i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
+
+```tsx
+<Chip.Removable
+  onClick={handleOnClick}
+  aria-label='Slett nynorsk'
+>
+  Nynorsk
+</Chip.Removable>
+```
+
+### Gruppering av Chips
+
+Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
+
+```tsx
+<Chip.Group>
+  <Chip.Removable
+    onClick={handleOnClick}
+    aria-label='Slett nynorsk'
+  >
+    Nynorsk
+  </Chip.Removable>
+  <Chip.Removable
+    onClick={handleOnClick}
+    aria-label='Slett bokmål'
+  >
+    Bokmål
+  </Chip.Removable>
+</Chip.Group>
+```

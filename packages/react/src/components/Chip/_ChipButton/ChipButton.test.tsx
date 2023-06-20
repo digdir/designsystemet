@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Chip } from './Chip';
+import { ChipButton } from './ChipButton';
 
 const user = userEvent.setup();
 
@@ -10,18 +10,18 @@ const TestComponent = (): JSX.Element => {
   const [selected, setSelected] = useState(false);
 
   return (
-    <Chip
+    <ChipButton
       selected={selected}
       onClick={() => setSelected(!selected)}
     >
       Nynorsk
-    </Chip>
+    </ChipButton>
   );
 };
 
-describe('Chip', () => {
+describe('ChipButton', () => {
   test('should render a chip and not be pressed by default', () => {
-    render(<Chip>Nynorsk</Chip>);
+    render(<ChipButton>Nynorsk</ChipButton>);
 
     expect(screen.getByRole('button', { name: 'Nynorsk' })).toHaveAttribute(
       'aria-pressed',
@@ -30,7 +30,7 @@ describe('Chip', () => {
   });
 
   test('should be marked as pressed when selected', () => {
-    render(<Chip selected>Nynorsk</Chip>);
+    render(<ChipButton selected>Nynorsk</ChipButton>);
 
     expect(screen.getByRole('button', { name: 'Nynorsk' })).toHaveAttribute(
       'aria-pressed',

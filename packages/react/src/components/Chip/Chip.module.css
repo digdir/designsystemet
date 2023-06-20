@@ -1,57 +1,13 @@
-.chip {
-  --fdsc-chip-height: var(--fds-sizing-6);
-  --fdsc-chip-padding: var(--fds-spacing-2);
-  --fdsc-chip-background: var(--fds-semantic-surface-neutral-default);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  --fdsc-chip-border: var(--fds-semantic-border-neutral-default);
-  --fdsc-chip-border-radius: var(--fds-border_radius-full);
-
-  background: var(--fdsc-chip-background);
-  padding: 0 var(--fdsc-chip-padding);
-  min-height: var(--fdsc-chip-height);
-  border-radius: var(--fdsc-chip-border-radius);
-  border: 1px solid var(--fdsc-chip-border);
-  color: var(--fdsc-chip-text-color);
-  display: block;
-  text-decoration: none;
+.spacing {
+  padding-left: var(--fds-spacing-1);
 }
 
-.chip:hover {
-  --fdsc-chip-background: var(--fds-semantic-surface-neutral-subtle-hover);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  --fds-chip-border: var(--fds-semantic-border-neutral-default);
-
-  cursor: pointer;
+.flexContainer {
+  display: flex;
+  align-items: center;
 }
 
-.chip:focus {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-active);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
-
-  outline: 2px solid var(--fds-semantic-border-focus-outline);
-}
-
-.chip:is([aria-pressed='true']) {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-active);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
-  --fdsc-chip-border: var(--fds-semantic-surface-action-active);
-}
-
-.chip:is([aria-pressed='true']):hover {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-no_fill-active);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-}
-
-.chip .label {
-  color: inherit;
-  line-height: normal;
-}
-
-.xsmall {
-  --fdsc-chip-height: var(--fds-sizing-6);
-}
-
-.small {
-  --fdsc-chip-height: var(--fds-sizing-7);
-  --fdsc-chip-padding: var(--fds-spacing-3);
+.checkmarkIcon {
+  height: var(--fds-sizing-5);
+  width: auto;
 }

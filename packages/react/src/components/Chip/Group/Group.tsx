@@ -6,12 +6,16 @@ import type { ChipProps } from '../Chip';
 
 import classes from './Group.module.css';
 
-export type GroupProps = {
+export type ChipGroupProps = {
+  /** size of the chips within the group */
   size?: 'xsmall' | 'small';
 } & HTMLAttributes<HTMLUListElement>;
 
-export const Group = forwardRef<HTMLUListElement, GroupProps>(
-  ({ children, size = 'xsmall', ...rest }: GroupProps, ref): JSX.Element => (
+export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
+  (
+    { children, size = 'xsmall', ...rest }: ChipGroupProps,
+    ref,
+  ): JSX.Element => (
     <ul
       {...rest}
       ref={ref}
