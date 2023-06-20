@@ -34,6 +34,8 @@ _Uegnet til:_
 
 ## Bruk
 
+<Information text='token' />
+
 Chip komponenten består av flere komponenter. Disse er:
 
 - Chip
@@ -52,6 +54,8 @@ Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk".
 <Chip onClick={handleOnClick}>Nynorsk</Chip>
 ```
 
+<Canvas of={ChipStories.Default} />
+
 ### Chip med sjekkmerkeikon
 
 Denne kodeblokken representerer en Chip med et sjekkmerkeikon og teksten "Nynorsk".
@@ -65,7 +69,9 @@ Denne kodeblokken representerer en Chip med et sjekkmerkeikon og teksten "Nynors
 </Chip>
 ```
 
-### Removable Chip
+<Canvas of={ChipStories.ChipWithCheckmark} />
+
+### Chip.Removable
 
 Denne kodeblokken representerer en fjernbar Chip med teksten "Nynorsk". Denne komponenten viser også et kryss som indikerer at den kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
 i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
@@ -79,23 +85,17 @@ i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `ar
 </Chip.Removable>
 ```
 
-### Gruppering av Chips
+<Canvas of={ChipStories.Removable} />
+
+### Chip.Group
 
 Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
 
 ```tsx
 <Chip.Group>
-  <Chip.Removable
-    onClick={handleOnClick}
-    aria-label='Slett nynorsk'
-  >
-    Nynorsk
-  </Chip.Removable>
-  <Chip.Removable
-    onClick={handleOnClick}
-    aria-label='Slett bokmål'
-  >
-    Bokmål
-  </Chip.Removable>
+  <Chip>Nynorsk</Chip>
+  <Chip>Bokmål</Chip>
 </Chip.Group>
 ```
+
+<Canvas of={ChipStories.Group} />
