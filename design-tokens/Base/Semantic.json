@@ -526,11 +526,11 @@
             "type": "color"
           },
           "hover": {
-            "value": "#004e95",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "active": {
-            "value": "#00315d",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "on_action": {
