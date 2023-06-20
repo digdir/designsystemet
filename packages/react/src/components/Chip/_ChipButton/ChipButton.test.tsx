@@ -20,7 +20,34 @@ const TestComponent = (): JSX.Element => {
 };
 
 describe('ChipButton', () => {
-  test('should render a chip and not be pressed by default', () => {
+  it('should render as button by default', () => {
+    render(<ChipButton>Button Text</ChipButton>);
+
+    expect(screen.getByRole('button', { name: 'Button Text' }));
+  });
+
+  it('should support onClick by default', async () => {
+    const handleOnClickMock = jest.fn();
+    render(<ChipButton onClick={handleOnClickMock}>Button Text</ChipButton>);
+
+    await user.click(screen.getByRole('button', { name: 'Button Text' }));
+    expect(handleOnClickMock).toHaveBeenCalled();
+  });
+
+  it('should support polymorphism component', () => {
+    render(
+      <ChipButton
+        as='a'
+        href='#'
+      >
+        Link
+      </ChipButton>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Link' }));
+  });
+
+  it('should render a chip and not be pressed by default', () => {
     render(<ChipButton>Nynorsk</ChipButton>);
 
     expect(screen.getByRole('button', { name: 'Nynorsk' })).toHaveAttribute(
@@ -29,7 +56,7 @@ describe('ChipButton', () => {
     );
   });
 
-  test('should be marked as pressed when selected', () => {
+  it('should be marked as pressed when selected', () => {
     render(<ChipButton selected>Nynorsk</ChipButton>);
 
     expect(screen.getByRole('button', { name: 'Nynorsk' })).toHaveAttribute(
@@ -38,7 +65,7 @@ describe('ChipButton', () => {
     );
   });
 
-  test('should toggle aria-pressed based on user interaction', async () => {
+  it('should toggle aria-pressed based on user interaction', async () => {
     render(<TestComponent />);
     const chip = screen.getByRole('button', { name: 'Nynorsk' });
 
