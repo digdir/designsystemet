@@ -32,6 +32,10 @@
       "800": {
         "value": "#0008b8",
         "type": "color"
+      },
+      "900": {
+        "value": "#00078F",
+        "type": "color"
       }
     },
     "secondary": {
@@ -65,6 +69,10 @@
       },
       "800": {
         "value": "#b3764a",
+        "type": "color"
+      },
+      "900": {
+        "value": "#9F6841",
         "type": "color"
       }
     },
@@ -100,6 +108,67 @@
       "800": {
         "value": "#407d6d",
         "type": "color"
+      },
+      "900": {
+        "value": "#376C5E",
+        "type": "color"
+      }
+    }
+  },
+  "semantic": {
+    "surface": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "rgba($brand.tertiary.900, 0.9)",
+            "type": "color"
+          },
+          "active": {
+            "value": "rgba($brand.tertiary.900, 0.8)",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        }
+      }
+    },
+    "border": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          }
+        }
+      }
+    },
+    "text": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{brand.tertiary.900}",
+            "type": "color"
+          }
+        }
       }
     }
   }
