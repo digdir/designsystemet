@@ -1,5 +1,5 @@
 import React from 'react';
-import { getByRole, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { Chip } from '.';
 
@@ -13,12 +13,10 @@ describe('Chip', () => {
     );
   });
 
-  it('should render removable chip ', () => {
+  it('should render removable chip and aria-label should be supported', () => {
     render(<Chip.Removable aria-label='Slett nynorsk'>Nynorsk</Chip.Removable>);
 
-    expect(screen.getByRole('button', { name: 'Slett nynorsk' })).toHaveClass(
-      'removable',
-    );
+    expect(screen.getByLabelText('Slett nynorsk')).toHaveClass('removable');
   });
 
   it('should be possible to render a group', () => {
