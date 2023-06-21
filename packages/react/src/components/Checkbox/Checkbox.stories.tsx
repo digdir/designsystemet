@@ -1,7 +1,9 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Checkbox } from './Checkbox';
+
+type Story = StoryObj<typeof Checkbox>;
 
 export default {
   title: 'Kjernekomponenter/Checkbox',
@@ -13,6 +15,24 @@ export default {
     },
   },
 } as Meta;
+
+export const Preview: Story = {
+  args: {
+    label: 'Dette er en checkbox',
+    helpText:
+      'Checkbox er en boks som brukeren kan krysse av i for bolske verdier',
+    checkboxId: 'checkbox-id',
+    checked: false,
+    compact: false,
+    description: 'Dette er en beskrivelse',
+    disabled: false,
+    error: false,
+    hideLabel: false,
+    name: 'checkbox-name',
+    presentation: false,
+    readOnly: false,
+  },
+};
 
 export const Normal: StoryFn<typeof Checkbox> = (args) => (
   <Checkbox {...args} />

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.16.0...@digdir/design-system-react@0.17.0) (2023-06-21)
+
+### Bug Fixes
+
+- **Alert:** avoid the border-left to disappear when elevated is true ([#554](https://github.com/digdir/designsystem/issues/554)) ([cf26ba2](https://github.com/digdir/designsystem/commit/cf26ba22686e15dc424be93bbe2fb0aa302f6e97))
+- **Select:** ResizeObserver loop error ([#565](https://github.com/digdir/designsystem/issues/565)) ([48051db](https://github.com/digdir/designsystem/commit/48051db43bf886e9bea1584e8245c14ba83bfa3f))
+- **Typography:** fixed spacing ([#569](https://github.com/digdir/designsystem/issues/569)) ([6a0311e](https://github.com/digdir/designsystem/commit/6a0311e3fe0d41bbc6ae996136016c320d4e9447))
+
+### Features
+
+- **ErrorMessage:** added xsmall options ([#552](https://github.com/digdir/designsystem/issues/552)) ([e776dfb](https://github.com/digdir/designsystem/commit/e776dfb8d17216ebf9ce870f11d7071bc48f41e8))
+- **RadioButton:** implemented forwardRef ([#562](https://github.com/digdir/designsystem/issues/562)) ([66302de](https://github.com/digdir/designsystem/commit/66302dea55cd082357b633f15744381cc0bc9318))
+
 # [0.16.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.15.0...@digdir/design-system-react@0.16.0) (2023-06-14)
 
 ### Features
