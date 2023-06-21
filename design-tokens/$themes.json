@@ -229,7 +229,6 @@
       "brand.secondary.500": "S:c9127aee996cd9b6a5e13cb12b5f3713e27dfaa6,",
       "brand.secondary.600": "S:e239daacd4ddab975276a269eba062c30fd4dda6,",
       "brand.secondary.700": "S:bcdac34d5aa4b4815527843cd4b153cb953a40c4,",
-      "brand.secondary.800": "S:23925b130515fb61d12fb3414165f61e094a6262,",
       "brand.tertiary.100": "S:7c730a24ad0dad54ef6144e3ecdefe8652f0a50f,",
       "brand.tertiary.200": "S:539f73d39ad53968a77d0d2c276c67ebf5541c22,",
       "brand.tertiary.300": "S:c826592de90b0d29de382534b9b7a923f0465a24,",
@@ -264,7 +263,8 @@
       "semantic.surface.neutral.selected": "S:6163d38fd3182f85880fd831fe83f5e3dc826d6a,",
       "semantic.surface.neutral.subtle": "S:135a09c13885b731f952bdf86076216d6dfcdad0,",
       "semantic.surface.neutral.subtle-hover": "S:ecb9014f477602ba313b83b489c86b56d3cdb0ba,",
-      "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,"
+      "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
+      "brand.secondary.900": "S:23925b130515fb61d12fb3414165f61e094a6262,"
     }
   },
   {

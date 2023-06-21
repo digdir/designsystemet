@@ -38,38 +38,75 @@
         }
       },
       "action": {
-        "subtle": {
-          "value": "{colors.blue.100}",
-          "type": "color"
+        "primary": {
+          "subtle": {
+            "value": "{colors.blue.100}",
+            "type": "color"
+          },
+          "subtle-hover": {
+            "value": "{colors.blue.200}",
+            "type": "color"
+          },
+          "default": {
+            "value": "{colors.blue.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{colors.blue.800}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{colors.blue.900}",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          },
+          "no_fill": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "no_fill-hover": {
+            "value": "{colors.blue.100}",
+            "type": "color"
+          },
+          "no_fill-active": {
+            "value": "{colors.blue.200}",
+            "type": "color"
+          }
         },
-        "subtle-hover": {
-          "value": "{colors.blue.200}",
-          "type": "color"
-        },
-        "default": {
-          "value": "{colors.blue.700}",
-          "type": "color"
-        },
-        "hover": {
-          "value": "{colors.blue.800}",
-          "type": "color"
-        },
-        "active": {
-          "value": "{colors.blue.900}",
-          "type": "color",
-          "description": "Standard farge for handlinger"
-        },
-        "no_fill": {
-          "value": "{colors.white}",
-          "type": "color"
-        },
-        "no_fill-hover": {
-          "value": "{colors.blue.100}",
-          "type": "color"
-        },
-        "no_fill-active": {
-          "value": "{colors.blue.200}",
-          "type": "color"
+        "secondary": {
+          "subtle": {
+            "value": "{colors.grey.100}",
+            "type": "color"
+          },
+          "subtle-hover": {
+            "value": "{colors.grey.200}",
+            "type": "color"
+          },
+          "default": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "rgba($colors.blue.900, 0.9)",
+            "type": "color"
+          },
+          "active": {
+            "value": "rgba($colors.blue.900, 0.8)",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          },
+          "no_fill": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "no_fill-hover": {
+            "value": "rgba($colors.blue.900, 0.1)",
+            "type": "color"
+          },
+          "no_fill-active": {
+            "value": "rgba($colors.blue.900, 0.2)",
+            "type": "color"
+          }
         }
       },
       "success": {
@@ -196,7 +233,7 @@
           "type": "color"
         },
         "dark": {
-          "value": "{brand.secondary.800}",
+          "value": "{brand.secondary.900}",
           "type": "color"
         }
       },
@@ -253,25 +290,49 @@
         }
       },
       "action": {
-        "subtle": {
-          "value": "{colors.blue.200}",
-          "type": "color"
+        "primary": {
+          "subtle": {
+            "value": "{colors.blue.200}",
+            "type": "color"
+          },
+          "subtle-hover": {
+            "value": "{colors.blue.400}",
+            "type": "color"
+          },
+          "default": {
+            "value": "{colors.blue.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{colors.blue.800}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          }
         },
-        "subtle-hover": {
-          "value": "{colors.blue.400}",
-          "type": "color"
-        },
-        "default": {
-          "value": "{colors.blue.700}",
-          "type": "color"
-        },
-        "hover": {
-          "value": "{colors.blue.800}",
-          "type": "color"
-        },
-        "active": {
-          "value": "{colors.blue.900}",
-          "type": "color"
+        "secondary": {
+          "subtle": {
+            "value": "{colors.grey.200}",
+            "type": "color"
+          },
+          "subtle-hover": {
+            "value": "{colors.grey.300}",
+            "type": "color"
+          },
+          "default": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          }
         }
       },
       "neutral": {
@@ -441,21 +502,41 @@
         }
       },
       "action": {
-        "default": {
-          "value": "{colors.blue.700}",
-          "type": "color"
+        "primary": {
+          "default": {
+            "value": "{colors.blue.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "#004e95",
+            "type": "color"
+          },
+          "active": {
+            "value": "#00315d",
+            "type": "color"
+          },
+          "on_action": {
+            "value": "{colors.white}",
+            "type": "color"
+          }
         },
-        "hover": {
-          "value": "#004e95",
-          "type": "color"
-        },
-        "active": {
-          "value": "#00315d",
-          "type": "color"
-        },
-        "on_action": {
-          "value": "{colors.white}",
-          "type": "color"
+        "secondary": {
+          "default": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{colors.blue.900}",
+            "type": "color"
+          },
+          "on_action": {
+            "value": "{colors.white}",
+            "type": "color"
+          }
         }
       },
       "warning": {
@@ -497,12 +578,6 @@
       "visited": {
         "default": {
           "value": "{colors.purple.700}",
-          "type": "color"
-        }
-      },
-      "action_dark": {
-        "default": {
-          "value": "#00315d",
           "type": "color"
         }
       }
