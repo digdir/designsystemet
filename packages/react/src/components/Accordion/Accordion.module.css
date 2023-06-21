@@ -6,7 +6,7 @@
   --fdsc-accordion-header-padding-bottom: var(--fds-spacing-4);
   --fdsc-accordion-header-padding-left: var(--fds-spacing-5);
   --fdsc-accordion-header-bg-neutral: var(--fds-semantic-surface-neutral-default);
-  --fdsc-accordion-header-bg-neutral-active: var(--fds-semantic-surface-action-no_fill-hover);
+  --fdsc-accordion-header-bg-neutral-active: var(--fds-semantic-surface-action-primary-no_fill-hover);
   --fdsc-accordion-header-bg-brand-active: var(--fds-semantic-surface-neutral-subtle-hover);
   --fdsc-accordion-header-bg-subtle: var(--fds-semantic-surface-neutral-subtle);
   --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);
@@ -19,7 +19,7 @@
   --fdsc-accordion-header-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-header-border-inverted: var(--fds-semantic-border-on_inverted-default);
   --fdsc-accordion-header-shadow-focus: 2px 2px 3px var(--fds-semantic-border-neutral-subtle);
-  --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-default);
+  --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-primary-default);
   --fdsc-accordion-content-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-content-border-open: var(--fds-semantic-border-neutral-strong);
 }
