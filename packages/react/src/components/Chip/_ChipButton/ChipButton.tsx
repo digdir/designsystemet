@@ -8,9 +8,13 @@ import type { OverridableComponent } from '../../../types/OverridableComponent';
 import classes from './ChipButton.module.css';
 
 export type ChipButtonProps = {
-  /** Changes text sizing */
+  /**
+   * Changes padding and font-sizes.
+   */
   size?: 'xsmall' | 'small';
-  /** Mark as selected (aria-pressed) */
+  /**
+   * Toggles `aria-pressed` and visual-changes
+   * */
   selected?: boolean;
 } & HTMLAttributes<HTMLButtonElement>;
 

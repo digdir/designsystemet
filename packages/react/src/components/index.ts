@@ -72,3 +72,4 @@ export * from './Accordion';
 export * from './NativeSelect';
 export * from './Alert';
 export * from './Tag';
+export * from './Chip';

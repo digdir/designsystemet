@@ -9,7 +9,9 @@ import classes from './Chip.module.css';
 import { ChipButton, type ChipButtonProps } from './_ChipButton';
 
 export type ChipProps = ChipButtonProps & {
-  /** Show checkmark icon */
+  /**
+   * Condition if the check mark icon should be displayed
+   */
   checkmark?: boolean;
 } & HTMLAttributes<HTMLButtonElement>;
 

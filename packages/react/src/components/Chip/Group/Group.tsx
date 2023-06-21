@@ -7,7 +7,9 @@ import type { ChipProps } from '../Chip';
 import classes from './Group.module.css';
 
 export type ChipGroupProps = {
-  /** size of the chips within the group */
+  /**
+   * Changes padding, font-sizes and gap between chips.
+   */
   size?: 'xsmall' | 'small';
 } & HTMLAttributes<HTMLUListElement>;
 
