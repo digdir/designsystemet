@@ -35,11 +35,13 @@ export const Chip: OverridableComponent<ChipProps, HTMLButtonElement> =
           ref={ref}
           selected={selected}
           className={cn(
-            checkmark && selected && classes.spacing,
+            { [classes.spacing]: checkmark && selected },
             rest.className,
           )}
         >
-          <div className={cn(shouldDisplayCheckmark && classes.flexContainer)}>
+          <div
+            className={cn({ [classes.flexContainer]: shouldDisplayCheckmark })}
+          >
             {shouldDisplayCheckmark && (
               <CheckmarkIcon
                 className={classes.checkmarkIcon}
