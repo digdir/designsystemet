@@ -73,22 +73,22 @@
 }
 
 .toggle.active {
-  background-color: var(--fds-semantic-surface-action-active);
-  border-color: var(--fds-semantic-surface-action-active);
-  color: var(--fds-semantic-text-action-on_action);
+  background-color: var(--fds-semantic-surface-action-primary-active);
+  border-color: var(--fds-semantic-surface-action-primary-active);
+  color: var(--fds-semantic-text-action-primary-on_action);
 }
 
 .toggle.active:hover {
-  background-color: var(--fds-semantic-surface-action-no_fill-active);
-  border-color: --fds-semantic-border-action-active;
+  background-color: var(--fds-semantic-surface-action-primary-no_fill-active);
+  border-color: var(--fds-semantic-border-action-primary-active);
   border: solid 2px;
   box-sizing: border-box;
   color: var(--fds-semantic-text-neutral-default);
 }
 
 .removable {
-  background-color: var(--fds-semantic-surface-action-active);
-  color: var(--fds-semantic-text-action-on_action);
+  background-color: var(--fds-semantic-surface-action-primary-active);
+  color: var(--fds-semantic-text-action-primary-on_action);
   border: 0;
   padding-right: 0;
 }
