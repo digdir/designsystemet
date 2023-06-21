@@ -74,11 +74,11 @@
             "type": "color"
           },
           "hover": {
-            "value": "{semantic.border.action.default}",
+            "value": "{semantic.border.action.primary.default}",
             "type": "color"
           },
           "checked": {
-            "value": "{semantic.border.action.default}",
+            "value": "{semantic.border.action.primary.default}",
             "type": "color"
           },
           "error": {
@@ -92,11 +92,11 @@
             "type": "color"
           },
           "hover": {
-            "value": "{semantic.surface.action.subtle}",
+            "value": "{semantic.surface.action.primary.subtle}",
             "type": "color"
           },
           "checked": {
-            "value": "{semantic.surface.action.default}",
+            "value": "{semantic.surface.action.primary.default}",
             "type": "color"
           },
           "error": {
@@ -110,7 +110,7 @@
             "type": "color"
           },
           "hover": {
-            "value": "{semantic.text.action.default}",
+            "value": "{semantic.text.action.primary.default}",
             "type": "color"
           },
           "checked": {
@@ -170,7 +170,7 @@
             "type": "color"
           },
           "hover": {
-            "value": "{semantic.border.action.default}",
+            "value": "{semantic.border.action.primary.default}",
             "type": "color"
           },
           "error": {
@@ -266,7 +266,7 @@
       "color": {
         "background": {
           "active": {
-            "value": "{semantic.surface.action.default}",
+            "value": "{semantic.surface.action.primary.default}",
             "type": "color"
           },
           "inactive": {
@@ -276,7 +276,7 @@
         },
         "text": {
           "active": {
-            "value": "{semantic.text.action.on_action}",
+            "value": "{semantic.text.action.primary.on_action}",
             "type": "color"
           },
           "inactive": {
@@ -286,7 +286,7 @@
         },
         "border": {
           "inactive": {
-            "value": "{semantic.border.action.default}",
+            "value": "{semantic.border.action.primary.default}",
             "type": "color"
           }
         }
@@ -384,7 +384,7 @@
             "type": "color"
           },
           "hover": {
-            "value": "{semantic.border.action.default}",
+            "value": "{semantic.border.action.primary.default}",
             "type": "color"
           }
         },
