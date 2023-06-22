@@ -20,26 +20,50 @@ export type TextFieldProps = {
    *  Use `srLabel` to describe `maxCount` for screen readers.
    */
   characterLimit?: CharacterLimit;
+
   /** The default value for the text field. */
   defaultValue?: string | number;
+
   /** The formatting options for the text field. */
   formatting?: TextFieldFormatting;
+
   /** Specifies whether the value of the text field is valid. */
   isValid?: boolean;
+
   /** The label for the text field. */
   label?: string;
+
   /** Whether the text field is read-only. */
   readOnly?: boolean | ReadOnlyVariant_;
+
   /** The value of the text field. */
   value?: string;
+
   /** Specifies whether the text field is disabled. */
   disabled?: boolean;
+
   /** Specifies whether the text field is required. */
   required?: boolean;
+
+  /** Specifies the type of the text field. */
+  type?:
+    | 'text'
+    | 'password'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'month'
+    | 'number'
+    | 'search'
+    | 'tel'
+    | 'time'
+    | 'url'
+    | 'week';
 } & Omit<
   NumericFormatProps | PatternFormatProps,
-  'readOnly' | 'value' | 'defaultValue'
->;
+  'readOnly' | 'value' | 'defaultValue' | 'type'
+>; // Todo: We should extend the props of <input> here, but it's complex because of the number format implementation. We should move that out to a separate component first.
 
 export type TextFieldFormatting = {
   align?: 'right' | 'center' | 'left';
@@ -76,6 +100,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       disabled = false,
       readOnly = false,
       required = false,
+      type = 'text',
       formatting,
       label,
       value,
@@ -181,6 +206,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 onChange={handleNativeInputChange}
                 aria-describedby={describedBy}
                 ref={ref}
+                type={type}
               />
             );
           }
