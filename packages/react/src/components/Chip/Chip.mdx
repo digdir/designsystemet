@@ -96,3 +96,29 @@ Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-kompo
 ```
 
 <Canvas of={ChipStories.Group} />
+
+Denne kodeblokken viser hvordan du grupperer Chip.Removable ved hjelp av Chip.Group. Eksempelet viser også hvordan du kan implementere kode for å fjerne en chip fra gruppen.
+
+```tsx
+const [chips, setChips] = useState(['nynorsk', 'bokmål']);
+
+const handleRemove = (chip: string): void => {
+  setChips((prev) => prev.filter((c) => c !== chip));
+};
+
+return (
+  <Chip.Group size='small'>
+    {chips.map((chip) => (
+      <Chip.Removable
+        key={chip}
+        onClick={() => handleRemove(chip)}
+        aria-label={`Slett ${chip}`}
+      >
+        {chip}
+      </Chip.Removable>
+    ))}
+  </Chip.Group>
+);
+```
+
+<Canvas of={ChipStories.RemovableGroup} />

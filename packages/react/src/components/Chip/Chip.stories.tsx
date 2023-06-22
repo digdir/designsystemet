@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
 import { Chip } from './index';
@@ -49,6 +49,28 @@ export const Group: StoryFn<typeof Chip> = () => {
     <Chip.Group>
       <Chip>Nynorsk</Chip>
       <Chip>Bokmål</Chip>
+    </Chip.Group>
+  );
+};
+
+export const RemovableGroup: StoryFn<typeof Chip> = () => {
+  const [chips, setChips] = useState(['nynorsk', 'bokmål']);
+
+  const handleRemove = (chip: string): void => {
+    setChips((prev) => prev.filter((c) => c !== chip));
+  };
+
+  return (
+    <Chip.Group size='small'>
+      {chips.map((chip) => (
+        <Chip.Removable
+          key={chip}
+          onClick={() => handleRemove(chip)}
+          aria-label={`Slett ${chip}`}
+        >
+          {chip}
+        </Chip.Removable>
+      ))}
     </Chip.Group>
   );
 };
