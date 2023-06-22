@@ -43,7 +43,7 @@ export const ChipButton: OverridableComponent<
         <Paragraph
           as='span'
           size={size}
-          className={cn(classes.label)}
+          className={classes.label}
         >
           {children}
         </Paragraph>

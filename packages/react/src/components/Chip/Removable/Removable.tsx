@@ -21,15 +21,15 @@ export const RemovableChip: OverridableComponent<
       size={size}
       className={cn(classes.removable, classes[size], rest.className)}
     >
-      <div className={classes.container}>
-        <div>{children}</div>
-        <div
+      <span className={classes.container}>
+        <span>{children}</span>
+        <span
           className={classes.xMark}
           aria-hidden
         >
           <XMarkIcon className={classes.iconSize} />
-        </div>
-      </div>
+        </span>
+      </span>
     </ChipButton>
   );
 });

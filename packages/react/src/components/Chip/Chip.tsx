@@ -39,7 +39,7 @@ export const Chip: OverridableComponent<ChipProps, HTMLButtonElement> =
             rest.className,
           )}
         >
-          <div
+          <span
             className={cn({ [classes.flexContainer]: shouldDisplayCheckmark })}
           >
             {shouldDisplayCheckmark && (
@@ -49,7 +49,7 @@ export const Chip: OverridableComponent<ChipProps, HTMLButtonElement> =
               />
             )}
             <span>{children}</span>
-          </div>
+          </span>
         </ChipButton>
       );
     },

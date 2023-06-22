@@ -25,20 +25,20 @@
 }
 
 .chipButton:focus {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-active);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
 
   outline: 2px solid var(--fds-semantic-border-focus-outline);
 }
 
 .chipButton:is([aria-pressed='true']) {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-active);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
-  --fdsc-chip-border: var(--fds-semantic-surface-action-active);
+  --fdsc-chip-border: var(--fds-semantic-surface-action-primary-active);
 }
 
 .chipButton:is([aria-pressed='true']):hover {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-no_fill-active);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-no_fill-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
 }
 

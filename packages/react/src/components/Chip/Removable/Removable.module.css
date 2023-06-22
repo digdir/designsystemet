@@ -1,5 +1,5 @@
 .removable {
-  --fdsc-removable-background: var(--fds-semantic-surface-action-active);
+  --fdsc-removable-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-removable-chip-size: var(--fds-sizing-7);
 
