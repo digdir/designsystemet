@@ -63,7 +63,7 @@ export type TextFieldProps = {
 } & Omit<
   NumericFormatProps | PatternFormatProps,
   'readOnly' | 'value' | 'defaultValue' | 'type'
->;
+>; // Todo: We should extend the props of <input> here, but it's complex because of the number format implementation. We should move that out to a separate component first.
 
 export type TextFieldFormatting = {
   align?: 'right' | 'center' | 'left';
