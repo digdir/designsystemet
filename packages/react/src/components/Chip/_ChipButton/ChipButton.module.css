@@ -25,9 +25,11 @@
 }
 
 .chipButton:focus {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-active);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle);
+  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+  --fdsc-chip-border: var(--fds-semantic-border-neutral-strong);
 
+  border-width: 3px;
   outline: 2px solid var(--fds-semantic-border-focus-outline);
 }
 
