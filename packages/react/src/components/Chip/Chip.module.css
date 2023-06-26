@@ -1,0 +1,13 @@
+.spacing {
+  padding-left: var(--fds-spacing-1) !important;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+}
+
+.checkmarkIcon {
+  height: var(--fds-sizing-5);
+  width: auto;
+}
