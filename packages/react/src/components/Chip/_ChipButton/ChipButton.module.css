@@ -1,9 +1,9 @@
 .chipButton {
   --fdsc-chip-height: var(--fds-sizing-6);
   --fdsc-chip-padding: var(--fds-spacing-2);
-  --fdsc-chip-background: var(--fds-semantic-surface-neutral-default);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  --fdsc-chip-border: var(--fds-semantic-border-neutral-default);
+  --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle);
   --fdsc-chip-border-radius: var(--fds-border_radius-full);
 
   background: var(--fdsc-chip-background);
@@ -17,9 +17,9 @@
 }
 
 .chipButton:hover {
-  --fdsc-chip-background: var(--fds-semantic-surface-neutral-subtle-hover);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle-hover);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  --fds-chip-border: var(--fds-semantic-border-neutral-default);
+  --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle-hover);
 
   cursor: pointer;
 }
