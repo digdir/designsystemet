@@ -1216,7 +1216,7 @@
   },
   "component-mode-height": {
     "small": {
-      "value": "{sizing.8}",
+      "value": "36",
       "type": "sizing"
     },
     "medium": {
