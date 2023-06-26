@@ -1,3 +1,4 @@
+import type { SyntheticEvent } from 'react';
 import React, { useState } from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
@@ -22,6 +23,9 @@ export const Preview: Story = {
     size: 'small',
     selected: false,
     checkmark: false,
+    onClick: (event: SyntheticEvent): void => {
+      console.log('Clicked', event);
+    },
   },
 };
 
