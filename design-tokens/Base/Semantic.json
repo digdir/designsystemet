@@ -493,7 +493,7 @@
           "type": "color"
         },
         "subtle": {
-          "value": "{colors.grey.600}",
+          "value": "{colors.grey.700}",
           "type": "color"
         },
         "on_inverted": {
