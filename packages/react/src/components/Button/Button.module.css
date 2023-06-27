@@ -35,27 +35,30 @@
 }
 
 .button.small {
-  --fdsc-button-size: var(--fds-component-mode-height-small);
+  --fdsc-button-size: calc(var(--fds-component-mode-height-small) * 1px);
   --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
   --fdsc-icon-size: var(--fds-sizing-4);
 
   gap: var(--fds-sizing-2);
+  min-width: var(--fdsc-button-size);
 }
 
 .button.medium {
-  --fdsc-button-size: var(--fds-component-mode-height-medium);
+  --fdsc-button-size: calc(var(--fds-component-mode-height-medium) * 1px);
   --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fdsc-icon-size: var(--fds-sizing-6);
 
   gap: var(--fds-sizing-3);
+  min-width: var(--fdsc-button-size);
 }
 
 .button.large {
-  --fdsc-button-size: var(--fds-component-mode-height-large);
+  --fdsc-button-size: calc(var(--fds-component-mode-height-large) * 1px);
   --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fdsc-icon-size: var(--fds-sizing-8);
 
   gap: var(--fds-sizing-3);
+  min-width: var(--fdsc-button-size);
 }
 
 .button.fullWidth {
@@ -97,11 +100,13 @@
 }
 
 .button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--fds-semantic-surface-action-secondary-hover);
+  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+  background: #1a466d;
 }
 
 .button.filled.secondary:not([aria-disabled='true'], :disabled):active {
-  background: var(--fds-semantic-surface-action-secondary-active);
+  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+  background: #335a7d;
 }
 
 .button.filled.success {
@@ -177,14 +182,17 @@
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
   border-color: var(--fds-semantic-border-action-secondary-hover);
-  background: var(--fds-semantic-surface-action-secondary-no_fill-hover);
+  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+  background: #e5eaef;
 }
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-active);
 
   border-color: var(--fds-semantic-border-action-secondary-active);
-  background: var(--fds-semantic-surface-action-secondary-no_fill-active);
+
+  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+  background: #ccd6df;
 }
 
 .button.outline.success {
@@ -230,9 +238,9 @@
 }
 
 .button.outline.inverted {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
-  border-color: var(--fds-semantic-border-on_inverted-default);
+  border: 1px solid var(--fds-semantic-border-on_inverted-default);
   background: transparent;
 }
 
@@ -241,7 +249,7 @@
 }
 
 .button.outline.inverted:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-active);
 }
@@ -260,7 +268,7 @@
 .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
-  background: var(--fds-semantic-text-action-primary-no_fill-active);
+  background: var(--fds-semantic-surface-action-primary-no_fill-active);
 }
 
 .button.quiet.secondary {
@@ -268,13 +276,14 @@
 }
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--fds-semantic-surface-action-secondary-no_fill-hover);
+  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+  background: #e5eaef;
 }
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-active);
-
-  background: var(--fds-semantic-text-action-secondary-no_fill-active);
+  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+  background: #ccd6df;
 }
 
 .button.quiet.success {
