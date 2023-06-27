@@ -186,7 +186,7 @@
           "value": "{colors.red.100}",
           "type": "color"
         },
-        "no_fill-action": {
+        "no_fill-active": {
           "value": "{colors.red.200}",
           "type": "color"
         }
