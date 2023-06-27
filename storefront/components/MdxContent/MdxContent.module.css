@@ -38,6 +38,32 @@
   font-size: 20px;
 }
 
+/* Heading styling with anchor link */
+.content > h2,
+.content > h3,
+.content > h4 {
+  position: relative;
+  padding-left: 25px;
+  margin-left: -25px;
+}
+
+.content > h2 a,
+.content > h3 a,
+.content > h4 a {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  display: none;
+  transition: 0.1s all;
+}
+
+.content > h2:hover a,
+.content > h3:hover a,
+.content > h4:hover a {
+  display: block;
+}
+
 .content img {
   width: 100%;
   margin: 24px 0;
