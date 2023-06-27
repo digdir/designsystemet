@@ -64,6 +64,7 @@ const VariantsTemplate = (args: ButtonProps) => {
 export const props: Story = {
   args: {
     children: 'Knapp',
+    disabled: false,
   },
 };
 

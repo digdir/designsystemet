@@ -1,66 +1,61 @@
 .button {
-  --border-radius: 3px;
-  --button-size: var(--component-button-size-height-small);
-  --button-vertical-padding: var(--component-button-space-padding-x-small);
-  --font-and-icon-color: var(--component-button-filled-color-text-all);
-  --icon-size: var(--component-button-size-icon-small);
+  --fdsc-border-radius: var(--fds-border_radius-interactive);
+  --fdsc-button-size: var(--fds-component-mode-height-small);
+  --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-on_action);
+  --fdsc-icon-size: var(--fds-sizing-4);
 
   composes: focusable from '../../utils/utility.module.css';
   align-items: center;
-  border-radius: var(--border-radius);
-  border: var(--component-button-border_width-default) solid transparent;
+  border-radius: var(--fdsc-border-radius);
+  border: var(--fds-border_width-default) solid transparent;
   box-sizing: border-box;
-  color: var(--font-and-icon-color);
+  color: var(--fdsc-font-and-icon-color);
   cursor: pointer;
   display: flex;
-  fill: var(--font-and-icon-color);
+  fill: var(--fdsc-font-and-icon-color);
   font-family: inherit;
-  height: var(--button-size);
+  height: var(--fdsc-button-size);
   justify-content: center;
   letter-spacing: var(--typography-default-letter-spacing);
-  padding: 0 var(--button-vertical-padding);
+  padding: var(--fdsc-button-padding);
   text-align: center;
 }
 
 .button:disabled,
 .button[aria-disabled='true'] {
   cursor: auto;
-  opacity: var(--opacity-disabled);
+  opacity: var(--fds-opacity-disabled);
 }
 
 .icon {
   display: inline-block;
-  height: var(--icon-size);
-  width: var(--icon-size);
+  height: var(--fdsc-icon-size);
+  width: var(--fdsc-icon-size);
 }
 
 .button.small {
-  --button-size: var(--component-button-size-height-small);
-  --button-vertical-padding: var(--component-button-space-padding-x-small);
-  --icon-size: var(--component-button-size-icon-small);
+  --fdsc-button-size: var(--fds-component-mode-height-small);
+  --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
+  --fdsc-icon-size: var(--fds-sizing-4);
 
-  font-size: var(--font_size-300);
-  gap: var(--component-button-space-gap-small);
+  gap: var(--fds-sizing-2);
 }
 
 .button.medium {
-  --button-size: var(--component-button-size-height-medium);
-  --button-vertical-padding: var(--component-button-space-padding-x-medium);
-  --icon-size: var(--component-button-size-icon-medium);
+  --fdsc-button-size: var(--fds-component-mode-height-medium);
+  --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  --fdsc-icon-size: var(--fds-sizing-6);
 
-  font-size: var(--font_size-400-breakpoint_md);
-  gap: var(--component-button-space-gap-medium);
-  min-width: var(--component-button-size-height-medium);
+  gap: var(--fds-sizing-3);
 }
 
 .button.large {
-  --button-size: var(--component-button-size-height-large);
-  --button-vertical-padding: var(--component-button-space-padding-x-large);
-  --icon-size: var(--component-button-size-icon-large);
+  --fdsc-button-size: var(--fds-component-mode-height-large);
+  --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  --fdsc-icon-size: var(--fds-sizing-8);
 
-  font-size: var(--font_size-600-breakpoint_md);
-  gap: var(--component-button-space-gap-large);
-  min-width: var(--component-button-size-height-large);
+  gap: var(--fds-sizing-3);
 }
 
 .button.fullWidth {
@@ -76,162 +71,166 @@
 }
 
 .button.quiet {
-  --border-radius: 50px;
-
-  padding: 0 calc(var(--button-vertical-padding) * 2 / 3);
+  padding: 0 var(--fds-spacing-2);
   background-color: transparent;
 }
 
 .button.onlyIcon {
-  padding: calc((var(--button-size) - var(--icon-size)) / 2 - var(--component-button-border_width-default));
+  padding: calc((var(--fdsc-button-size) - var(--fdsc-icon-size)) / 2 - var(--fds-border_width-default));
 }
 
 /* Filled button colors */
 .button.filled.primary {
-  background: var(--component-button-filled-primary-color-background-default);
+  background: var(--fds-semantic-surface-action-primary-default);
 }
 
 .button.filled.primary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--component-button-filled-primary-color-background-hover);
+  background: var(--fds-semantic-surface-action-primary-hover);
 }
 
 .button.filled.primary:not([aria-disabled='true'], :disabled):active {
-  background: var(--component-button-filled-primary-color-background-pressed);
+  background: var(--fds-semantic-surface-action-primary-active);
 }
 
 .button.filled.secondary {
-  background: var(--component-button-filled-primary-color-background-pressed);
+  background: var(--fds-semantic-surface-action-secondary-default);
 }
 
 .button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--colors-blue-800);
+  background: var(--fds-semantic-surface-action-secondary-hover);
 }
 
 .button.filled.secondary:not([aria-disabled='true'], :disabled):active {
-  background: var(--colors-blue-900);
+  background: var(--fds-semantic-surface-action-secondary-active);
 }
 
 .button.filled.success {
-  background: var(--component-button-filled-success-color-background-default);
+  background: var(--fds-semantic-surface-success-default);
 }
 
 .button.filled.success:not([aria-disabled='true'], :disabled):hover {
-  background: var(--component-button-filled-success-color-background-hover);
+  background: var(--fds-semantic-surface-success-hover);
 }
 
 .button.filled.success:not([aria-disabled='true'], :disabled):active {
-  background: var(--component-button-filled-success-color-background-pressed);
+  background: var(--fds-semantic-surface-success-active);
 }
 
 .button.filled.danger {
-  background: var(--component-button-filled-danger-color-background-default);
+  background: var(--fds-semantic-surface-danger-default);
 }
 
 .button.filled.danger:not([aria-disabled='true'], :disabled):hover {
-  background: var(--component-button-filled-danger-color-background-hover);
+  background: var(--fds-semantic-surface-danger-hover);
 }
 
 .button.filled.danger:not([aria-disabled='true'], :disabled):active {
-  background: var(--colors-red-800);
+  background: var(--fds-semantic-surface-danger-active);
 }
 
 .button.filled.inverted {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--colors-blue-900);
 
   background: var(--colors-white);
 }
 
 .button.filled.inverted:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--colors-blue-900);
 
   background: rgb(255 255 255 / 0.9);
 }
 
 .button.filled.inverted:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--colors-white);
+  --fdsc-font-and-icon-color: var(--colors-white);
 
   background: rgb(255 255 255 / 0.1);
 }
 
 /* Outline button colors */
 .button.outline.primary {
-  --font-and-icon-color: var(--component-button-outline-primary-color-text-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
 
-  border-color: var(--component-button-outline-primary-color-border-default);
-  background: var(--component-button-outline-primary-color-background-default);
+  border-color: var(--fds-semantic-border-action-primary-default);
+  background: var(--fds-semantic-surface-action-primary-no_fill);
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-blue-800);
+  --fdsc-font-and-icon-color: var(--colors-blue-800);
 
-  background: var(--component-button-outline-primary-color-background-hover);
-  border-color: var(--component-button-outline-primary-color-border-hover);
+  border-color: var(--fds-semantic-border-action-primary-hover);
+  background: var(--fds-semantic-surface-action-primary-no_fill-hover);
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--component-button-outline-primary-color-text-pressed);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
-  background: var(--component-button-outline-primary-color-background-pressed);
+  border-color: var(--fds-semantic-border-action-primary-active);
+  background: var(--fds-semantic-surface-action-primary-no_fill-active);
 }
 
 .button.outline.secondary {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--colors-blue-900);
 
-  background: var(--colors-white);
-  border-color: var(--colors-blue-900);
+  border-color: var(--fds-semantic-border-action-secondary-active);
+  background: var(--fds-semantic-surface-action-secondary-no_fill-active);
 }
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--colors-blue-100);
+  border-color: var(--fds-semantic-border-action-secondary-hover);
+  background: var(--fds-semantic-surface-action-secondary-no_fill-hover);
 }
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--colors-white);
+  --fdsc-font-and-icon-color: var(--colors-white);
 
-  background: var(--colors-blue-900);
+  border-color: var(--fds-semantic-border-action-secondary-active);
+  background: var(--fds-semantic-surface-action-secondary-no_fill-active);
 }
 
 .button.outline.success {
-  --font-and-icon-color: var(--colors-green-700);
+  --fdsc-font-and-icon-color: var(--colors-green-700);
 
-  background: var(--colors-white);
-  border-color: var(--colors-green-700);
+  border-color: var(--fds-semantic-border-success-default);
+  background: var(--fds-semantic-surface-success-no_fill);
 }
 
 .button.outline.success:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-green-800);
+  --fdsc-font-and-icon-color: var(--colors-green-800);
 
-  background: var(--colors-green-200);
+  border-color: var(--fds-semantic-border-success-hover);
+  background: var(--fds-semantic-surface-success-no_fill-hover);
 }
 
 .button.outline.success:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--colors-white);
+  --fdsc-font-and-icon-color: var(--colors-white);
 
-  background: var(--colors-green-700);
+  border-color: var(--fds-semantic-border-success-active);
+  background: var(--fds-semantic-surface-success-no_fill-active);
 }
 
 .button.outline.danger {
-  --font-and-icon-color: var(--colors-red-500);
+  --fdsc-font-and-icon-color: var(--colors-red-500);
 
-  background: var(--colors-white);
-  border-color: var(--colors-red-500);
+  border-color: var(--fds-semantic-border-danger-default);
+  background: var(--fds-semantic-surface-danger-no_fill);
 }
 
 .button.outline.danger:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-red-700);
+  --fdsc-font-and-icon-color: var(--colors-red-700);
 
-  background: var(--colors-red-100);
-  border-color: var(--colors-red-700);
+  border-color: var(--fds-semantic-border-danger-hover);
+  background: var(--fds-semantic-surface-danger-no_fill-hover);
 }
 
 .button.outline.danger:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--colors-white);
+  --fdsc-font-and-icon-color: var(--colors-white);
 
-  background: var(--colors-red-500);
+  border-color: var(--fds-semantic-border-danger-active);
+  background: var(--fds-semantic-surface-danger-no_fill-active);
 }
 
 .button.outline.inverted {
-  --font-and-icon-color: var(--colors-white);
+  --fdsc-font-and-icon-color: var(--colors-white);
 
   border-color: var(--colors-white);
   background: transparent;
@@ -242,88 +241,95 @@
 }
 
 .button.outline.inverted:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--colors-blue-900);
 
   background: var(--colors-white);
 }
 
 /* Quiet button colors */
 .button.quiet.primary {
-  --font-and-icon-color: var(--component-button-quiet-primary-color-text-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
 }
 
 .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-blue-800);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
 
-  background: var(--component-button-quiet-primary-color-background-hover);
+  background: var(--fds-semantic-surface-action-primary-no_fill-hover);
 }
 
 .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--component-button-filled-color-text-all);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
-  background: var(--component-button-quiet-primary-color-background-pressed);
+  background: var(--fds-semantic-text-action-primary-no_fill-active);
 }
 
 .button.quiet.secondary {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-default);
 }
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--colors-grey-300);
+  background: var(--fds-semantic-surface-action-secondary-no_fill-hover);
 }
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--component-button-filled-color-text-all);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-active);
 
-  background: var(--colors-blue-900);
+  background: var(--fds-semantic-text-action-secondary-no_fill-active);
 }
 
 .button.quiet.success {
-  --font-and-icon-color: var(--colors-green-700);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-success-default);
 }
 
 .button.quiet.success:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-green-800);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
 
-  background: var(--colors-green-200);
+  background: var(--fds-semantic-surface-success-no_fill-hover);
 }
 
 .button.quiet.success:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--component-button-filled-color-text-all);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-success-active);
 
-  background: var(--colors-green-900);
+  background: var(--fds-semantic-surface-success-no_fill-active);
 }
 
 .button.quiet.danger {
-  --font-and-icon-color: var(--colors-red-600);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-default);
 }
 
 .button.quiet.danger:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-red-800);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
 
-  background: var(--colors-red-100);
+  background: var(--fds-semantic-surface-danger-no_fill-hover);
 }
 
 .button.quiet.danger:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--component-button-filled-color-text-all);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-active);
 
-  background: var(--colors-red-800);
+  background: var(--fds-semantic-surface-danger-no_fill-active);
 }
 
 .button.quiet.inverted {
-  --font-and-icon-color: var(--colors-white);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default-on_inverted);
 
   background: transparent;
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):hover {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default-on_inverted);
 
-  background: rgb(255 255 255 / 0.9);
+  background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):active {
-  --font-and-icon-color: var(--colors-blue-900);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default-on_inverted);
 
-  background: var(--colors-white);
+  background: var(--fds-semantic-surface-on_inverted-no_fill-active);
+}
+
+.typography {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: var(--fds-sizing-2);
 }
