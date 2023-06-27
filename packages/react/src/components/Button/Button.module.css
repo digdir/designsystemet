@@ -171,8 +171,8 @@
 .button.outline.secondary {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-default);
 
-  border-color: var(--fds-semantic-border-action-secondary-active);
-  background: var(--fds-semantic-surface-action-secondary-no_fill-active);
+  border-color: var(--fds-semantic-border-action-secondary-default);
+  background: var(--fds-semantic-surface-action-secondary-no_fill);
 }
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
