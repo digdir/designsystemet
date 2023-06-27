@@ -11,9 +11,63 @@ export default ({ children, menu }) => (
     content={children}
     data={{
       title: 'Bidra i Figma',
-      date: '5. april 2023',
+      date: '27. juni 2023',
     }}
   />
 );
 
-Bidra i Figma
+## Foreslå nytt design eller forbedringer
+
+Vi setter pris på at du hjelper oss å forbedre komponenter og design i Figma. De beste løsningene kommer gjennom samarbeid.
+
+### Sandkassen
+
+I sandkassen kan vi utforske og tenke høyt sammen. Du kan kopiere inn design fra ditt produktteam, for eksempel et mønster, en komponent eller noe annet du har laget som kan være relevant for designsystemet. Det er ingen føringer til hvordan vi skal jobbe i denne filen. Du må foreløpig ha en bruker i Digdir-Figma for å kunne redigere. [Åpne sandkassen og lim inn dine forslag](https://www.figma.com/file/hCLf6YzvQF15WPFFpXqeJj/Sandkasse?type=design&node-id=1%3A4&mode=design&t=5bHSaO1ULo9gKrkK-1).
+
+### Ny komponent
+
+Ønsker du å foreslå en ny komponent setter vi pris på om den blir [registrert i Github](https://github.com/digdir/designsystem/issues/new?assignees=&labels=needs+prioritization%E2%9D%97%EF%B8%8F&projects=&template=3propose_a_new_component.yml). Lim gjerne inn skjermbilder av behovet eller lenk til relevant side i sandkassen.
+
+### Registrere feil eller mangler på en komponent i Figma
+
+Har du funnet en svakhet med noen av de eksisterende komponentene i Figma, setter vi pris på om du enten legger igjen en kommentar i Figma sammen med den aktuelle komponenten, eller at du oppretter en [bug-report i Github som forklarer feilen](https://github.com/digdir/designsystem/issues/new?assignees=&labels=%F0%9F%90%9B+bug&projects=&template=1bug_report.yml), eventuelt en [feature-request som forklarer ønsket tilleggsfunksjonalitet](https://github.com/digdir/designsystem/issues/new?assignees=&labels=%E2%9C%A8feature+request%2Cneeds+prioritization%E2%9D%97%EF%B8%8F&projects=&template=2feature_request.yml).
+
+## Lage en komponent i Figma
+
+Mens vi jobber med komponentene ligger de i [Arbeidsområde - Designsystemet](https://www.figma.com/file/V4dzf3m1sapmU048OQnu7L/Arbeidsomr%C3%A5de%3A-Felles-komponenter?type=design&node-id=0%3A1&mode=design&t=1A88PWT6a6wiI6dt-1). Når designet er ferdig flyttes komponenten over til [Felles komponenter](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=503%3A3192&mode=design&t=NoWd7lRReSIFNcOx-1). Det er sistnevnte som blir delt i Figma Community.
+
+Det er et par ting å tenke på når komponenter lages i Figma:
+
+- At de er koblet opp mot korrekt tokens. Bruker du stilene som finnes, er disse allerede automatisk koblet mot tokens. Trenger du nye stiler, må disse også lages som tokens.
+
+- Autolayout: At innholdet skalerer som forventet ved størrelseendring. Tenk over om innholdet skal wrappe under hverandre dersom det ikke er plass i bredden. Kan det være hensiktsmessig med en min- eller max-width? Og kanskje truncate (...) på teksten dersom den blir for lang?
+
+- Varianter og "component properties": Bruk varianter for ulike varianter, farger, states, størrelser, og liknende. Bruk Component properties for å vise/skjule lag, instance-swap (F.eks bytte et ikon) og bytte text. Porpoerties navngis på samme måte som pros i Storybook. Vi bruker "Variant", "Size", "Color", "State".
+
+- Er komponenten interaktiv? I så fall må ulike states eksistere som varianter av komponenten, og disse kobles opp med "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants)".
+
+- Multibranding. Tenk over i hvilken grad komponenten skal støtte ulik theming og legg til rette for dette ved å bruke brand-farger fra tokens.
+
+- Navgivning og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
+
+- Når komponenten er klar markeres den som "Ready for review". Den blir så testet av andre og etter eventuelle justeringer markeres den som "Ready for dev". Når den er utviklet som en React-komponent lenker vi til siden i Storybook.
+
+### Oppdatere tokens
+
+Tokens redigeres i Figma. Du trenger en github-bruker og plugin-en [Tokens Studio for Figma](https://docs.tokens.studio/) installert. Den må konfigureres til å synkronisere med [GitHub-repoet](https://github.com/digdir/designsystem/edit/main/design-tokens/README.md).
+
+1. [Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens-plugin
+1. Generer et nytt "Personal Access Token" (PAT) i [GitHub Developer Settings](https://github.com/settings/tokens) med omfanget "repo"
+1. Kopier PAT-en (du kan bare se den én gang)
+1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
+   - Navn: `Digdir Figma Tokens`
+   - Personlig tilgangstoken: _din PAT_
+   - Repository: `digdir/designsystem`
+   - Standard gren: "hoved".
+   - Filbane: `design-tokens`
+
+![Skjermbilde av Tokens Studio og innstillingene](/img/connect-tokens-studio-to-git.png)
+
+For å kunne endre eller opprette nye tokens må du lage en ny branch. Du trenger Pro-versjonen av Tokens studio for å gjøre dette.
+
+PS. Tokens er foreløpig ikke laget som [Figma variabler](https://docs.tokens.studio/variables/creating-variables), men dette står på planen 🎉 🙌 🤩

@@ -2,55 +2,20 @@ import { Meta, CodeSnippet } from '@components';
 import { MenuPageLayout } from '@layouts';
 
 <Meta
-  title='Kom i gang med kodepakkene'
-  description='Beskrivelse'
+  title='Kom i gang som utvikler'
+  description='All informasjonen du trenger for å komme i gang som utvikler.'
 />
 
 export default ({ children, menu }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Kom i gang med kodepakkene',
-      date: '25. mars 2023',
+      title: 'Kom i gang som utvikler',
+      date: '25. juni 2023',
     }}
   />
 );
 
-## Design tokens
+Besøk vår [readme på GitHub](https://github.com/digdir/designsystem#table-of-contents) for all informasjonen du trenger for å komme i gang som utvikler.
 
-### Kom i gang
-
-Installer NPM-pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og importer inn tokens med CSS-, SCSS- eller Javascript-variabler. Overstyres ved behov.
-
-#### CSS
-
-<CodeSnippet
-  children='
-@import "@digdir/design-system-tokens/build/tokens.css";
-:root {
-  --my-text-color: var(--color-text-background-light);
-}'
-  language='css'
-/>
-
-#### SCSS
-
-<CodeSnippet
-  children='
-@use "@digdir/design-system-tokens/build/tokens.scss" as tokens;
-$my-text-color: tokens.$color-text-background-light;'
-  language='scss'
-/>
-
-#### Javascript
-
-<CodeSnippet
-  children='
-import tokens from "@digdir/design-system-tokens/build/tokens"
-const myTextColor = tokens.color.text.background.light'
-  language='javascript'
-/>
-
-## Utvikling av designsystemet
-
-Den beste måten å komme i gang med utvikling av selve designsystemet er å følge instruksjonene som står beskrevet i [Readme](https://github.com/digdir/designsystem#----------felles-designsystem).
+I tillegg kan det være nyttig å lese om [design tokens](/grunnleggende/designelementer/design-tokens)
