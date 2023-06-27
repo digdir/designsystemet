@@ -186,7 +186,7 @@
           "value": "{colors.red.100}",
           "type": "color"
         },
-        "no_fill-action": {
+        "no_fill-active": {
           "value": "{colors.red.200}",
           "type": "color"
         }
@@ -1216,7 +1216,7 @@
   },
   "component-mode-height": {
     "small": {
-      "value": "{sizing.8}",
+      "value": "36",
       "type": "sizing"
     },
     "medium": {

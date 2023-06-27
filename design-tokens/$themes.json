@@ -166,7 +166,6 @@
       "semantic.surface.danger.active": "S:8edce7da88526bfe0daff77f446e8b9b241cd400,",
       "semantic.surface.danger.no_fill": "S:5ad87c05d617355ed5de5b30cf9e526a9773126b,",
       "semantic.surface.danger.no_fill-hover": "S:81b337569f854f540137d8e43a458d7d5a2a8063,",
-      "semantic.surface.danger.no_fill-action": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,",
       "semantic.surface.info.subtle": "S:733a629d621a244b73b1b5cd91d0dcd475b0631b,",
       "semantic.surface.primary.primary-hover": "S:2ed0133da2188ffafdd4383b77db5927a0f87028,",
       "semantic.surface.primary.primary-active": "S:49a37a64ee1541cb9240b74953789afcfffd9998,",
@@ -264,7 +263,8 @@
       "semantic.surface.neutral.subtle": "S:135a09c13885b731f952bdf86076216d6dfcdad0,",
       "semantic.surface.neutral.subtle-hover": "S:ecb9014f477602ba313b83b489c86b56d3cdb0ba,",
       "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
-      "brand.secondary.900": "S:23925b130515fb61d12fb3414165f61e094a6262,"
+      "brand.secondary.900": "S:23925b130515fb61d12fb3414165f61e094a6262,",
+      "semantic.surface.danger.no_fill-active": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,"
     }
   },
   {
