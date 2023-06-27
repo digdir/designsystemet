@@ -35,7 +35,7 @@
 }
 
 .button.small {
-  --fdsc-button-size: calc(var(--fds-component-mode-height-small) * 1px);
+  --fdsc-button-size: calc(var(--fds-component-mode-height-small) / 16 * 1rem);
   --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
   --fdsc-icon-size: var(--fds-sizing-4);
 
@@ -44,7 +44,7 @@
 }
 
 .button.medium {
-  --fdsc-button-size: calc(var(--fds-component-mode-height-medium) * 1px);
+  --fdsc-button-size: calc(var(--fds-component-mode-height-medium) / 16 * 1rem);
   --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fdsc-icon-size: var(--fds-sizing-6);
 
@@ -53,7 +53,7 @@
 }
 
 .button.large {
-  --fdsc-button-size: calc(var(--fds-component-mode-height-large) * 1px);
+  --fdsc-button-size: calc(var(--fds-component-mode-height-large) / 16 * 1rem);
   --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fdsc-icon-size: var(--fds-sizing-8);
 
