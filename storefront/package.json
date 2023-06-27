@@ -28,7 +28,7 @@
     "gray-matter": "^4.0.3",
     "mdx-embed": "^1.1.2",
     "moment": "^2.29.4",
-    "next": "13.0.7",
+    "next": "13.4.7",
     "normalize.css": "^8.0.1",
     "prettier": "^2.8.3",
     "react": "18.2.0",
