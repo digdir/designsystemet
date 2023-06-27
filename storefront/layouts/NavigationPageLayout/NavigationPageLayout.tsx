@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Container, SidebarMenu } from '../../components';
+import { Container, SidebarMenu, MdxContent } from '../../components';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 
 import classes from './NavigationPageLayout.module.css';
@@ -31,7 +31,9 @@ const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
           id='main'
           className={classes.right}
         >
-          <div className={classes.content}>{content}</div>
+          <div className={classes.content}>
+            <MdxContent>{content}</MdxContent>
+          </div>
         </main>
       </Container>
     </div>

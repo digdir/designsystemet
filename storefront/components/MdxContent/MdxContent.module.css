@@ -5,7 +5,7 @@
   max-width: 800px;
 }
 
-.content p {
+.content > p {
   font-size: 18px;
   line-height: 1.55em;
   margin-bottom: 20px;
@@ -17,21 +17,21 @@
   margin-bottom: 36px;
 }
 
-.content h2 {
+.content > h2 {
   margin-top: 40px;
   margin-bottom: 16px;
   line-height: 1.3em;
   font-size: 28px;
 }
 
-.content h3 {
+.content > h3 {
   margin-top: 40px;
   margin-bottom: 16px;
   line-height: 1.3em;
   font-size: 24px;
 }
 
-.content h4 {
+.content > h4 {
   margin-top: 40px;
   margin-bottom: 16px;
   line-height: 1.3em;
@@ -39,6 +39,7 @@
 }
 
 /* Heading styling with anchor link */
+.content > h1,
 .content > h2,
 .content > h3,
 .content > h4 {
@@ -47,6 +48,7 @@
   margin-left: -25px;
 }
 
+.content > h1 a,
 .content > h2 a,
 .content > h3 a,
 .content > h4 a {
@@ -54,14 +56,22 @@
   height: 20px;
   position: absolute;
   left: 0;
-  display: none;
-  transition: 0.1s all;
+  opacity: 0;
+  transition: 0.08s all;
 }
 
+.content > h1 a {
+  height: 24px;
+  width: 24px;
+  margin-top: -2px;
+  left: -4px;
+}
+
+.content > h1:hover a,
 .content > h2:hover a,
 .content > h3:hover a,
 .content > h4:hover a {
-  display: block;
+  opacity: 1;
 }
 
 .content img {
@@ -76,7 +86,7 @@
   font-weight: 500;
 }
 
-.content > div {
+.content > div:not(.grid) {
   box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
   border-radius: 4px;
   margin-top: 32px;
