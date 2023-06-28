@@ -89,13 +89,58 @@ i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `ar
 Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
 
 ```tsx
-<Chip.Group>
-  <Chip>Nynorsk</Chip>
-  <Chip>Bokmål</Chip>
-</Chip.Group>
+const [selected, setSelected] = useState<string | null>(null);
+const chips: string[] = ['nynorsk', 'bokmål'];
+
+return (
+  <Chip.Group size='small'>
+    {chips.map((chip) => (
+      <Chip
+        key={chip}
+        selected={selected === chip}
+        onClick={() => setSelected(chip)}
+        checkmark
+      >
+        {chip}
+      </Chip>
+    ))}
+  </Chip.Group>
+);
 ```
 
-<Canvas of={ChipStories.Group} />
+<Canvas of={ChipStories.ToggleChip} />
+
+Chips kan også brukes til å velge flere alternativer samtidig ved å benytte egenskapen checkmark, noe som tydeliggjør hvilke Chips som er valgt.
+
+```tsx
+const [selected, setSelected] = useState<string[]>([]);
+const chips: string[] = ['nynorsk', 'bokmål'];
+
+const handleToggle = (chip: string) => {
+  if (selected.includes(chip)) {
+    setSelected((prev) => prev.filter((c) => c !== chip));
+  } else {
+    setSelected((prev) => [...prev, chip]);
+  }
+};
+
+return (
+  <Chip.Group size='small'>
+    {chips.map((chip) => (
+      <Chip
+        checkmark
+        key={chip}
+        selected={selected.includes(chip)}
+        onClick={() => handleToggle(chip)}
+      >
+        {chip}
+      </Chip>
+    ))}
+  </Chip.Group>
+);
+```
+
+<Canvas of={ChipStories.ToggleMultiple} />
 
 Denne kodeblokken viser hvordan du grupperer Chip.Removable ved hjelp av Chip.Group. Eksempelet viser også hvordan du kan implementere kode for å fjerne en chip fra gruppen.
 

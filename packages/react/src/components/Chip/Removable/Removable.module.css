@@ -11,7 +11,7 @@
 }
 
 .removable:focus {
-  border: 2px solid var(--fds-semantic-border-neutral-strong);
+  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-strong);
 }
 
 .container {
@@ -28,10 +28,14 @@
   align-items: center;
   justify-content: center;
   color: var(--fdsc-xmark-color);
-  padding: 0 2px;
+  padding: 0 4px;
   background: var(--fdsc-xmark-background);
   border-radius: 0 var(--fds-border_radius-full) var(--fds-border_radius-full) 0;
   height: var(--fdsc-removable-chip-size);
+}
+
+.removable:focus .xMark {
+  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-strong);
 }
 
 .removable.xsmall {
@@ -50,5 +54,5 @@
 
 .iconSize {
   height: var(--fds-sizing-5);
-  width: auto;
+  width: var(--fds-sizing-5);
 }

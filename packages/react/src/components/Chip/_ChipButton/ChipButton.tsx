@@ -24,7 +24,7 @@ export const ChipButton: OverridableComponent<
 > = forwardRef(
   (
     {
-      size = 'xsmall',
+      size = 'small',
       children,
       selected = false,
       className,
