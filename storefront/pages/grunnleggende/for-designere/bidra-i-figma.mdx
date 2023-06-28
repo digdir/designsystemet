@@ -38,15 +38,17 @@ Mens vi jobber med komponentene ligger de i [Arbeidsområde - Designsystemet](ht
 
 Det er et par ting å tenke på når komponenter lages i Figma:
 
-- At de er koblet opp mot korrekt tokens. Bruker du stilene som finnes, er disse allerede automatisk koblet mot tokens. Trenger du nye stiler, må disse også lages som tokens.
+- Snakk med en utvikler om spesifikasjon, krav, egenskaper og varianter. Bli enige om scope for komponenten.
 
-- Bruke typografi-komponentene for tekst som skal eksistere i komponenten.
+- [Alle styles](https://docs.tokens.studio/available-tokens/available-tokens) (farger, avstander, størrelser, skygger, osv) skal være koblet opp mot korrekt tokens. Bruker du stilene som finnes, er disse allerede automatisk koblet mot tokens. Trenger du nye stiler, må disse også lages som tokens.
 
-- Autolayout: At innholdet skalerer som forventet ved størrelseendring. Tenk over om innholdet skal wrappe under hverandre dersom det ikke er plass i bredden. Kan det være hensiktsmessig med en min- eller max-width? Og kanskje truncate (...) på teksten dersom den blir for lang?
+- Bruk typografi-komponentene for tekst som skal eksistere i komponenten.
 
-- Varianter og "component properties": Bruk varianter for ulike varianter, farger, states, størrelser, og liknende. Bruk Component properties for å vise/skjule lag, instance-swap (F.eks bytte et ikon) og bytte text. Properties navngis på samme måte som props i Storybook. Vi bruker `Variant`, `Size`, `Color`, `State`.
+- [Autolayout](https://help.figma.com/hc/en-us/articles/5731482952599-Using-auto-layout): At innholdet skalerer som forventet ved størrelseendring. Tenk over om innholdet skal wrappe under hverandre dersom det ikke er plass i bredden. Kan det være hensiktsmessig med en min- eller max-width? Og kanskje truncate (...) på teksten dersom den blir for lang?
 
-- Hvilke størrelser skal komponenten eksistere i. Tenk over at den passer med størrelsene på de andre komponentene. For eksempel bør et medium text-field være like høyt som en medium button. Slik at det fungerer å plassere dem på siden av hverandre. En medium komponent bør bruke typografi-size medium, og en small komponent bør bruke typografi-size small.
+- [Varianter](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) og "[component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties)": Bruk varianter for ulike varianter, farger, states, størrelser, og liknende. Bruk Component properties for å vise/skjule lag, instance-swap (F.eks bytte et ikon) og bytte text. Properties navngis på samme måte som props i Storybook. Vi bruker `Variant`, `Size`, `Color`, `State`.
+
+- Hvilke størrelser skal komponenten eksistere i. Tenk over at komponenten passer med størrelsene på de andre komponentene. For eksempel bør et medium text-field være like høyt som en medium button, da de skal kunne plasseres på siden av hverandre. En medium komponent bør bruke typografi-size medium, og en small komponent bør bruke typografi-size small.
 
 - Er komponenten interaktiv? I så fall må ulike states eksistere som varianter av komponenten, og disse kobles opp med "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants)".
 
@@ -54,7 +56,7 @@ Det er et par ting å tenke på når komponenter lages i Figma:
 
 - Navgivning og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
 
-- Når komponenten er klar markeres den som "Ready for review". Den blir så testet av andre og etter eventuelle justeringer markeres den som "Ready for dev". Når den er utviklet som en React-komponent lenker vi til siden i Storybook.
+- Når komponenten er klar markeres den som "Ready for review". Den blir testet av andre og etter eventuelle justeringer markeres den som "Ready for dev". Når den er utviklet som en React-komponent lenker vi til siden i Storybook.
 
 ### Oppdatere tokens
 
