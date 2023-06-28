@@ -1,5 +1,5 @@
 .size {
-  min-height: 81px;
+  min-height: var(--preview-min-height);
   width: 100%;
   display: flex;
   align-items: center;
