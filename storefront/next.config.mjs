@@ -22,7 +22,7 @@ export default {
               [
                 rehypeAutolinkHeadings,
                 {
-                  content(node) {
+                  content() {
                     return [
                       s(
                         'svg',

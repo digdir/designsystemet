@@ -34,7 +34,6 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
       ></ImageSection>
       <div className={classes.content}>
         <Container>
-          {' '}
           <MdxContent>{content}</MdxContent>
         </Container>
       </div>

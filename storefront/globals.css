@@ -64,3 +64,8 @@ h6 {
 .grey-background {
   background: #f4f5f6;
 }
+
+.mdx-embed {
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
+  margin: 40px 0;
+}

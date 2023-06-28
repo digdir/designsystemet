@@ -44,8 +44,8 @@
 .content > h3,
 .content > h4 {
   position: relative;
-  padding-left: 25px;
-  margin-left: -25px;
+  padding-left: 26px;
+  margin-left: -26px;
 }
 
 .content > h1 a,
@@ -67,6 +67,12 @@
   left: -4px;
 }
 
+.content > p > a,
+.content > ul > li > a {
+  color: #0062ba;
+  text-underline-offset: 4px;
+}
+
 .content > h1:hover a,
 .content > h2:hover a,
 .content > h3:hover a,
@@ -78,6 +84,7 @@
   width: 100%;
   margin: 24px 0;
   border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
 }
 
 .content strong {
@@ -86,22 +93,9 @@
   font-weight: 500;
 }
 
-.content > div:not(.grid) {
-  box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
-  border-radius: 4px;
-  margin-top: 32px;
-  margin-bottom: 32px;
-}
-
 .content > ul > li {
   font-size: 18px;
   line-height: 1.7em;
-}
-
-.content > p > a,
-.content > ul > li > a {
-  color: #0062ba;
-  text-underline-offset: 4px;
 }
 
 .content > p > a:hover,
