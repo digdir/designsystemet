@@ -89,8 +89,8 @@ i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `ar
 Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
 
 ```tsx
-const [selected, setSelected] = useState(null);
-const chips = ['nynorsk', 'bokmål'];
+const [selected, setSelected] = useState<string | null>(null);
+const chips: string[] = ['nynorsk', 'bokmål'];
 
 return (
   <Chip.Group size='small'>
@@ -99,6 +99,7 @@ return (
         key={chip}
         selected={selected === chip}
         onClick={() => setSelected(chip)}
+        checkmark
       >
         {chip}
       </Chip>

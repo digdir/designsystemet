@@ -57,8 +57,8 @@ export const Removable: StoryFn<typeof Chip> = () => {
 };
 
 export const ToggleChip: StoryFn<typeof Chip> = () => {
-  const [selected, setSelected] = useState(null);
-  const chips = ['nynorsk', 'bokmål'];
+  const [selected, setSelected] = useState<string | null>(null);
+  const chips: string[] = ['nynorsk', 'bokmål'];
 
   return (
     <Chip.Group size='small'>
@@ -67,6 +67,7 @@ export const ToggleChip: StoryFn<typeof Chip> = () => {
           key={chip}
           selected={selected === chip}
           onClick={() => setSelected(chip)}
+          checkmark
         >
           {chip}
         </Chip>
