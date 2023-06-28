@@ -28,7 +28,7 @@
 }
 
 .preview {
-  height: 81px;
+  min-height: 81px;
   width: 160px;
   border-radius: 4px;
   flex-basis: 160px;
