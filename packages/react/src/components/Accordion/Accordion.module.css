@@ -69,8 +69,11 @@
 }
 
 .header > button:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) solid var(--semantic-tab_focus-outline-width);
-  outline-offset: var(--semantic-tab_focus-outline-offset);
+  --fdsc-focus-border-width: 3px;
+
+  outline: var(--fdsc-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+  outline-offset: var(--fdsc-focus-border-width);
+  box-shadow: 0 0 0 var(--fdsc-focus-border-width) var(--fds-semantic-border-neutral-strong);
 }
 
 .header > .button:focus:not(:focus-visible) {
