@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Container } from '../../components/Container/Container';
-import type { ImageSectionProps } from '../../components/ImageSection/ImageSection';
-import { ImageSection } from '../../components/ImageSection/ImageSection';
+import { Container, ImageSection, MdxContent } from '../../components';
+import type { ImageSectionProps } from '../../components';
 
 import classes from './NavPageLayout.module.css';
 
@@ -18,26 +17,27 @@ interface NavPageLayoutData {
 
 const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
   return (
-    <div>
-      <style>{`
-        body {
-          background: #f4f5f6;
-        }
-      `}</style>
+    <main
+      id='main'
+      className='grey-background'
+    >
       <ImageSection
-        src={data.imageSection.src}
+        imgSrc={data.imageSection.imgSrc}
+        imgAlt={data.imageSection.imgAlt}
         backgroundColor={data.imageSection.backgroundColor}
         imgHeight={220}
         imgWidth={220}
         title={data.imageSection.title}
         description={data.imageSection.description}
         link={data.imageSection.link}
-        imagePosition='right'
+        imgPosition='right'
       ></ImageSection>
       <div className={classes.content}>
-        <Container>{content}</Container>
+        <Container>
+          <MdxContent>{content}</MdxContent>
+        </Container>
       </div>
-    </div>
+    </main>
   );
 };
 

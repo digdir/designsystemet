@@ -1,12 +1,13 @@
-import Meta from '../../components/Meta/Meta';
-import { NavPageLayout } from '../../layouts';
-import { Grid } from '../../components/Grid/Grid';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import { TeaserCard } from '../../components/TeaserCard/TeaserCard';
-import { Container } from '../../components/Container/Container';
-import { ImageIcon } from '@navikt/aksel-icons';
-import { ImageSection } from '../../components/ImageSection/ImageSection';
-import { BranchingIcon } from '@navikt/aksel-icons';
+import {
+  Meta,
+  Grid,
+  NavigationCard,
+  TeaserCard,
+  Container,
+  ImageSection,
+} from '@components';
+import { NavPageLayout } from '@layouts';
+import { BranchingIcon, ImageIcon } from '@navikt/aksel-icons';
 
 export default ({ children, menu }) => (
   <NavPageLayout
@@ -16,7 +17,8 @@ export default ({ children, menu }) => (
         title: 'God praksis',
         description:
           'Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her.',
-        src: '/img/people-table.svg',
+        imgSrc: '/img/people-table.svg',
+        imgAlt: '3 personer rundt et bord som samarbeider. Illustrasjon.',
         backgroundColor: 'blue',
         link: {
           text: 'Bidra med innhold',

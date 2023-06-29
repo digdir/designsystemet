@@ -40,6 +40,10 @@
         "value": "#c34c4f",
         "type": "color",
         "description": "AA 4.7 on white"
+      },
+      "900": {
+        "value": "#B83D41",
+        "type": "color"
       }
     },
     "secondary": {
@@ -82,6 +86,10 @@
         "value": "#b7881a",
         "type": "color",
         "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
+      },
+      "900": {
+        "value": "#A17717",
+        "type": "color"
       }
     },
     "tertiary": {
@@ -124,6 +132,10 @@
         "value": "#156aac",
         "type": "color",
         "description": "AA 5.6 on white"
+      },
+      "900": {
+        "value": "#125A91",
+        "type": "color"
       }
     }
   }

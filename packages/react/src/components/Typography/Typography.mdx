@@ -6,7 +6,7 @@ import {
   Primary,
   ArgsTable,
 } from '@storybook/blocks';
-import { BetaBlock, TokenBlock } from '../../../../../docs-components';
+import { Information } from '../../../../../docs-components';
 import * as typographyStories from './Typography.stories';
 import * as HeadingStories from './Heading/Heading.stories';
 import * as ParagraphStories from './Paragraph/Paragraph.stories';
@@ -23,6 +23,29 @@ at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt 
 prosessere informasjonen som er der. Typografien er delt inn i 4 katogorier som er
 ment å dekke alle behov som måtte dukke opp på et nettsted:
 
+## Bruk
+
+<Information text='token' />
+
+Typografi komponentene kommer med hverken innebygd eller definert font familie. Det er opp til bruker å selv å importere ønsket font.
+
+Vi anbefaler å bruke fonten [Inter](https://rsms.me/inter/) da det er denne fonten komponentene i designsystemet har blitt designet og testet med. Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer.
+
+Den er tilgjengelig i Altinn CDN.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/inter.css"
+/>
+```
+
+Til `font-family` anbefaler vi følge sammensetning med fallback til `Arial`.
+
+```css
+font-family: 'Inter', Arial, sans-serif;
+```
+
 ## Heading
 
 Alle oversikrifter skal bruke `Heading` komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
@@ -34,9 +57,6 @@ H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin appl
 <Canvas of={HeadingStories.Preview} />
 <Controls of={HeadingStories.Preview} />
 
-## Bruk
-
-<TokenBlock />
 ## Paragraph
 
 Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke `Paragraph`.

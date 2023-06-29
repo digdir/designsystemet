@@ -1,0 +1,169 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgTypes,
+} from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as ChipStories from './Chip.stories';
+import { Chip } from './index';
+
+<Meta of={ChipStories} />
+
+# Chip
+
+<Information text='beta' />
+
+`Chips` er små avrundede knapper som kan brukes til å filtrere og navigere gjennom innhold eller data. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat, samt vise hvilke filter som er aktive. Ikke bruk Chip til statisk metadata for å tagge innholdselementer. Bruk heller [Tag](https://digdir.github.io/designsystem/?path=/docs/kjernekomponenter-tag--docs) -komponenten dersom informasjonen ikke er klikkbar.
+
+Chip eksisterer i ulike varianter:
+
+- `Chip` er et alternativ til `button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet og når handlingen ikke krever like mye oppmerksomhet som vanlige knapper. Det kan for eksempel være å klikke på en Chip for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
+- `Chip` med `checkmark=true` er alternativer til vanlige `radiobuttons` og `checkboxer`. Brukes til filtrering av innhold og data, når det skal tilbys et valg mellom flere ulike opsjoner. Innholdet endres til å vise kun det som er valgt.
+- `Removable Chip` er valgte verdier som brukeren kan fjerne. For eksempel filter som har blitt aktivert i et søk som kan fjernes igjen, eller som har blitt valgt i en `multiselect`.
+
+## Props
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+Chip-komponenten består av flere komponenter. Disse er:
+
+- Chip
+- Chip.Removable
+- Chip.Group
+
+Som standard så rendres Chip som et`<button>` element, men dette kan overstyres ved å bruke `as` egenskapen, `<Chip as="a">`. Dette vil gjøre at en Chip rendres som en anchor-tag istedenfor button.
+
+Hvordan komponentene som nevnes over brukes kan du se i eksemplene under.
+
+### Chip
+
+Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk".
+
+```tsx
+<Chip onClick={handleOnClick}>Nynorsk</Chip>
+```
+
+<Canvas of={ChipStories.Default} />
+
+### Chip med sjekkmerkeikon
+
+Denne kodeblokken representerer en Chip med et sjekkmerkeikon og teksten "Nynorsk".
+
+```tsx
+<Chip
+  onClick={handleOnClick}
+  checkmark
+>
+  Nynorsk
+</Chip>
+```
+
+<Canvas of={ChipStories.ChipWithCheckmark} />
+
+### Chip.Removable
+
+Denne kodeblokken representerer en fjernbar Chip med teksten "Nynorsk". Denne komponenten viser også et kryss som indikerer at den kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
+i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
+
+```tsx
+<Chip.Removable
+  onClick={handleOnClick}
+  aria-label='Slett nynorsk'
+>
+  Nynorsk
+</Chip.Removable>
+```
+
+<Canvas of={ChipStories.Removable} />
+
+### Chip.Group
+
+Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
+
+```tsx
+const [selected, setSelected] = useState<string | null>(null);
+const chips: string[] = ['nynorsk', 'bokmål'];
+
+return (
+  <Chip.Group size='small'>
+    {chips.map((chip) => (
+      <Chip
+        key={chip}
+        selected={selected === chip}
+        onClick={() => setSelected(chip)}
+        checkmark
+      >
+        {chip}
+      </Chip>
+    ))}
+  </Chip.Group>
+);
+```
+
+<Canvas of={ChipStories.ToggleChip} />
+
+Chips kan også brukes til å velge flere alternativer samtidig ved å benytte egenskapen checkmark, noe som tydeliggjør hvilke Chips som er valgt.
+
+```tsx
+const [selected, setSelected] = useState<string[]>([]);
+const chips: string[] = ['nynorsk', 'bokmål'];
+
+const handleToggle = (chip: string) => {
+  if (selected.includes(chip)) {
+    setSelected((prev) => prev.filter((c) => c !== chip));
+  } else {
+    setSelected((prev) => [...prev, chip]);
+  }
+};
+
+return (
+  <Chip.Group size='small'>
+    {chips.map((chip) => (
+      <Chip
+        checkmark
+        key={chip}
+        selected={selected.includes(chip)}
+        onClick={() => handleToggle(chip)}
+      >
+        {chip}
+      </Chip>
+    ))}
+  </Chip.Group>
+);
+```
+
+<Canvas of={ChipStories.ToggleMultiple} />
+
+Denne kodeblokken viser hvordan du grupperer Chip.Removable ved hjelp av Chip.Group. Eksempelet viser også hvordan du kan implementere kode for å fjerne en chip fra gruppen.
+
+```tsx
+const [chips, setChips] = useState(['nynorsk', 'bokmål']);
+
+const handleRemove = (chip: string): void => {
+  setChips((prev) => prev.filter((c) => c !== chip));
+};
+
+return (
+  <Chip.Group size='small'>
+    {chips.map((chip) => (
+      <Chip.Removable
+        key={chip}
+        onClick={() => handleRemove(chip)}
+        aria-label={`Slett ${chip}`}
+      >
+        {chip}
+      </Chip.Removable>
+    ))}
+  </Chip.Group>
+);
+```
+
+<Canvas of={ChipStories.RemovableGroup} />

@@ -1,5 +1,5 @@
-import Meta from '../../components/Meta/Meta';
-import { NavigationPageLayout } from '../../layouts';
+import { Meta, NavigationCard, Grid } from '@components';
+import { NavigationPageLayout } from '@layouts';
 import {
   ImageIcon,
   TokenIcon,
@@ -13,8 +13,6 @@ import {
   LightBulbIcon,
   TerminalIcon,
 } from '@navikt/aksel-icons';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import { Grid } from '../../components/Grid/Grid';
 export default ({ children, menu }) => (
   <NavigationPageLayout content={children} />
 );
@@ -26,7 +24,7 @@ export default ({ children, menu }) => (
 
 # Grunnleggende
 
-Lær mer om de grunnleggende designelementene i designsystemet, og hvordan du kommer i gang som designer eller utvikler.
+Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.
 
 ## Introduksjon
 
@@ -120,7 +118,7 @@ Ressurser og veiledning relevant for designere
 
 <Grid>
   <NavigationCard
-    title='Kom i gang med Figma'
+    title='Kom i gang med designsystemet i Figma'
     color='blue'
     icon={<PaletteIcon fontSize={34} />}
     url='grunnleggende/for-designere/kom-i-gang'

@@ -65,7 +65,7 @@
   border-radius: var(--border-radius);
   border-width: 0;
   box-sizing: border-box;
-  font-family: var(--font_family-default);
+  font-family: inherit;
   font-size: var(--component-input-font_size-sm);
   outline: var(--outline-width) solid var(--outline-color);
   padding: var(--paddingY) var(--paddingX);
@@ -86,9 +86,6 @@
 }
 
 .characterLimitLabel {
+  display: inline-block;
   margin-top: 4px;
-}
-
-.characterLimitExceeded {
-  color: var(--fds-semantic-text-danger-default);
 }

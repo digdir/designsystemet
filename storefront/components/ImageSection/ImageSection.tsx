@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, createElement } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 
@@ -9,18 +9,20 @@ import classes from './ImageSection.module.css';
 interface ImageSectionProps {
   title?: string;
   description?: string;
-  src: string;
+  imgSrc: string;
+  imgAlt?: string;
+  headingLevel?: 'h1' | 'h2';
   content?: React.ReactNode;
   children?: React.ReactNode;
   imgWidth: number;
   imgHeight: number;
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
-  buttons?: ButtonProps[];
+  buttons?: ImageSectionButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
-  imagePosition?: 'left' | 'right';
+  imgPosition?: 'left' | 'right';
 }
 
-type ButtonProps = {
+type ImageSectionButtonProps = {
   text: string;
   prefix?: React.ReactNode;
   href: string;
@@ -29,7 +31,7 @@ type ButtonProps = {
 const ImageSection = ({
   title,
   description,
-  src,
+  imgSrc,
   content,
   imgHeight,
   imgWidth,
@@ -37,24 +39,34 @@ const ImageSection = ({
   children,
   buttons,
   link,
-  imagePosition = 'left',
+  imgPosition = 'left',
+  imgAlt = '',
+  headingLevel = 'h1',
 }: ImageSectionProps) => {
+  const [heading, setHeading] = useState<React.ReactNode | null>(null);
+
+  useEffect(() => {
+    setHeading(
+      createElement(headingLevel, { className: classes.title }, title),
+    );
+  }, [headingLevel, title]);
+
   return (
     <div className={classes[backgroundColor]}>
       <Container className={cn(classes.section)}>
-        {imagePosition === 'left' && (
+        {imgPosition === 'left' && (
           <div className={classes.imgContainer}>
             <Image
               className={classes.img}
-              src={src}
-              alt='Image'
+              src={imgSrc}
+              alt={imgAlt}
               height={imgHeight}
               width={imgWidth}
             />
           </div>
         )}
         <div className={classes.textContainer}>
-          {title && <h2 className={classes.title}>{title}</h2>}
+          {title && heading}
           {description && <p className={classes.desc}>{description}</p>}
           {content && content}
           {link && (
@@ -74,7 +86,8 @@ const ImageSection = ({
                   className={classes.button}
                   key={index}
                 >
-                  {item.prefix} {item.text}
+                  {item.prefix}
+                  {item.text}
                 </a>
               ))}
             </div>
@@ -82,12 +95,12 @@ const ImageSection = ({
 
           {children}
         </div>
-        {imagePosition === 'right' && (
+        {imgPosition === 'right' && (
           <div className={classes.imgContainer}>
             <Image
               className={classes.img}
-              src={src}
-              alt='Image'
+              src={imgSrc}
+              alt={imgAlt}
               height={imgHeight}
               width={imgWidth}
             />
@@ -98,5 +111,5 @@ const ImageSection = ({
   );
 };
 
-export type { ButtonProps, ImageSectionProps };
+export type { ImageSectionButtonProps, ImageSectionProps };
 export { ImageSection };

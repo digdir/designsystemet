@@ -3,6 +3,10 @@
   overflow: hidden;
   width: 100%;
   padding-top: 56.25%;
+  box-shadow: 0 2px 4px rgba(0 0 0 / 0.1);
+  border-radius: 4px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .aspectFourThree {

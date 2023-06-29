@@ -1,9 +1,9 @@
 import React from 'react';
+import Link from 'next/link';
 
 import { Container } from '../../components/Container/Container';
 
 import classes from './NotFoundLayout.module.css';
-import Link from 'next/link';
 
 interface NotFoundLayoutProps {
   content: React.ReactNode;
@@ -31,6 +31,7 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
           <Link
             className={classes.link}
             href='/'
+            prefetch={false}
           >
             Gå til forsiden
           </Link>

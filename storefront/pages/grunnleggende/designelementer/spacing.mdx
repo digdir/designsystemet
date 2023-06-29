@@ -1,7 +1,7 @@
-import Meta from '../../../components/Meta/Meta';
-import { MenuPageLayout } from '../../../layouts';
+import { Meta, TokenList } from '@components';
+import { MenuPageLayout } from '@layouts';
 import { Figma } from 'mdx-embed';
-import { TokenList } from '../../../components/Tokens/TokenList';
+import { CodeSnippet } from '@components';
 
 <Meta
   title='Avstander'
@@ -20,18 +20,42 @@ export default ({ children, menu }) => (
 
 ## Avstander
 
-Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens sikrer konsistent design på tvers av grensesnitt.
+Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens gir oss mulighet til å definere verdier for Auto Layout i Figma og sikrer dermed konsistent design på tvers av grensesnitt.
 
 ### Spacing tokens
 
 <TokenList
   type='size'
-  token='fds-sizing'
+  token='fds-spacing'
 />
 
-Spacing-tokens gir oss mulighet til å definere verdier for Auto Layout i Figma. Når du har brukt en spacing-token på et lag, blir det oppdatert hver gang du endrer det tokenet, så ethvert lag som inneholder en referanse til spacing.container vil bli oppdatert når du oppdaterer det spesifikke tokenet.
+## Fluid spacing
 
-[Eksempel fra Figma og Studio Tokens]
+Avstandene er satt opp til å passe sammen med [fluid typography](/grunnleggende/designelementer/typografi). De varier derfor noe etter hvilken viewport du har. `Spacing.10` vil dermed være 40px på viewport 320, og 45px på viewport 1360.
 
-Avstand-variablene er angitt i `rem`. Denne verdien er relativ til html-elementet sin `font-size`,
-og tar utgangspunkt i den vanligste standarden der **1rem = 16px**.
+<CodeSnippet
+  children='"spacing": {
+    "1": {
+      "value": "{base_spacing}/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "4px - 4.5px"
+    },
+    "2": {
+      "value": "{base_spacing}*2/16*{font-size.f0}",
+      "type": "spacing",
+      "description": "8px - 9px"
+    },
+    "()...)"
+    "10": {
+      "value": "({base_spacing}*10/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "40px - 45px"
+    },
+    "12": {
+      "value": "({base_spacing}*12/16)*{font-size.f0}",
+      "type": "spacing",
+      "description": "48px - 54px"
+    },
+  }'
+  language='json'
+/>

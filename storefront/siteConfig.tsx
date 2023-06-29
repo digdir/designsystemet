@@ -21,8 +21,12 @@ export const SiteConfig = {
               url: 'grunnleggende/introduksjon/designprinsipper',
             },
             {
-              name: 'Forum',
-              url: 'grunnleggende/introduksjon/forum',
+              name: 'Tilgjengelighet',
+              url: 'grunnleggende/introduksjon/tilgjengelighet',
+            },
+            {
+              name: 'Slack',
+              url: 'grunnleggende/introduksjon/slack',
             },
             {
               name: 'Roadmap',
@@ -51,12 +55,16 @@ export const SiteConfig = {
               url: 'grunnleggende/designelementer/skygger',
             },
             {
+              name: 'Typografi',
+              url: 'grunnleggende/designelementer/typografi',
+            },
+            {
               name: 'Spacing',
               url: 'grunnleggende/designelementer/spacing',
             },
             {
-              name: 'Typografi',
-              url: 'grunnleggende/designelementer/typografi',
+              name: 'Sizing',
+              url: 'grunnleggende/designelementer/sizing',
             },
           ],
         },
@@ -81,10 +89,6 @@ export const SiteConfig = {
             {
               name: 'Kom i gang',
               url: 'grunnleggende/for-utviklere/kom-i-gang',
-            },
-            {
-              name: 'Bidra',
-              url: 'grunnleggende/for-utviklere/bidra',
             },
           ],
         },
@@ -135,12 +139,36 @@ export const SiteConfig = {
       url: 'monstre',
       children: [
         {
-          name: 'Planlagte mønstre',
-          url: 'monstre/planlagte-monstre',
+          name: 'Brukeroppgaver',
+          url: 'monstre/brukeroppgaver',
+          children: [
+            {
+              name: 'Innlogging',
+              url: 'monstre/innlogging',
+            },
+            {
+              name: 'Navigering',
+              url: 'monstre/navigering',
+            },
+            {
+              name: 'Ofte brukte handlinger',
+              url: 'monstre/handlinger',
+            },
+          ],
         },
         {
-          name: 'Feilmeldinger',
-          url: 'monstre/feilmeldinger',
+          name: 'Brukerdialoger',
+          url: 'monstre/gjentakende-brukerdialoger',
+          children: [
+            {
+              name: 'Feilmeldinger',
+              url: 'monstre/feilmeldinger',
+            },
+            {
+              name: 'Dato',
+              url: 'monstre/dato',
+            },
+          ],
         },
       ],
     },

@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.17.0...@digdir/design-system-react@0.18.0) (2023-06-28)
+
+### Bug Fixes
+
+- **Chip:** visual improvements ([#610](https://github.com/digdir/designsystem/issues/610)) ([58a4627](https://github.com/digdir/designsystem/commit/58a46278a00faf10f0e86cdbf7813b57dceb40cc))
+
+### Features
+
+- **Chip.Group, Chip.Removable, Chip:** created chips ([#575](https://github.com/digdir/designsystem/issues/575)) ([26eae91](https://github.com/digdir/designsystem/commit/26eae91cabbbbf5528b1a339ce99458dcc75c08a))
+- **TextField:** Type attribute ([#579](https://github.com/digdir/designsystem/issues/579)) ([0ec6e5d](https://github.com/digdir/designsystem/commit/0ec6e5db7f59f192eba9173a428a69b9ff75c754))
+
+# [0.17.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.16.0...@digdir/design-system-react@0.17.0) (2023-06-21)
+
+### Bug Fixes
+
+- **Alert:** avoid the border-left to disappear when elevated is true ([#554](https://github.com/digdir/designsystem/issues/554)) ([cf26ba2](https://github.com/digdir/designsystem/commit/cf26ba22686e15dc424be93bbe2fb0aa302f6e97))
+- **Select:** ResizeObserver loop error ([#565](https://github.com/digdir/designsystem/issues/565)) ([48051db](https://github.com/digdir/designsystem/commit/48051db43bf886e9bea1584e8245c14ba83bfa3f))
+- **Typography:** fixed spacing ([#569](https://github.com/digdir/designsystem/issues/569)) ([6a0311e](https://github.com/digdir/designsystem/commit/6a0311e3fe0d41bbc6ae996136016c320d4e9447))
+
+### Features
+
+- **ErrorMessage:** added xsmall options ([#552](https://github.com/digdir/designsystem/issues/552)) ([e776dfb](https://github.com/digdir/designsystem/commit/e776dfb8d17216ebf9ce870f11d7071bc48f41e8))
+- **RadioButton:** implemented forwardRef ([#562](https://github.com/digdir/designsystem/issues/562)) ([66302de](https://github.com/digdir/designsystem/commit/66302dea55cd082357b633f15744381cc0bc9318))
+
+# [0.16.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.15.0...@digdir/design-system-react@0.16.0) (2023-06-14)
+
+### Features
+
+- **Tag:** created the tag component ([#542](https://github.com/digdir/designsystem/issues/542)) ([7fd2330](https://github.com/digdir/designsystem/commit/7fd23304220bcf69291b51b5f33b93556484a142))
+
+# [0.15.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.14.0...@digdir/design-system-react@0.15.0) (2023-06-09)
+
+### Bug Fixes
+
+- **Checkbox:** should avoid different box-size when checked/unchecked ([#533](https://github.com/digdir/designsystem/issues/533)) ([52d368f](https://github.com/digdir/designsystem/commit/52d368f02a7f59ef25aadea0323e22faa3c4d0f9))
+- **FieldSet:** :wheelchair: Fix wrong role on `ErrorMessage` ([#520](https://github.com/digdir/designsystem/issues/520)) ([b0f8894](https://github.com/digdir/designsystem/commit/b0f88948a56192787cb4d14a41937f3e82081fe1))
+
+### Features
+
+- **Alert:** :sparkles: New React component `Alert` ([#510](https://github.com/digdir/designsystem/issues/510)) ([8f36198](https://github.com/digdir/designsystem/commit/8f361987963ba0dbbfc66b51c2241cd8da383c42))
+- **NativeSelect:** :sparkles: New React component `NativeSelect` ([#488](https://github.com/digdir/designsystem/issues/488)) ([36eb3eb](https://github.com/digdir/designsystem/commit/36eb3ebbe8e8d741d396f962fe55095b1e8def52))
+
+# [0.14.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.13.0...@digdir/design-system-react@0.14.0) (2023-06-07)
+
+### Bug Fixes
+
+- **InputWrapper:** should only show invalid variant when field is invalid ([#502](https://github.com/digdir/designsystem/issues/502)) ([556515c](https://github.com/digdir/designsystem/commit/556515c1f3a244c1b5ce7bac9fcfbc878ba77ae3))
+- **Select:** :bug: Add zindex to dropdown ([#513](https://github.com/digdir/designsystem/issues/513)) ([cf62384](https://github.com/digdir/designsystem/commit/cf62384282d43ed417d5bd77a119b604d262bd84))
+- **Table:** Remove padding in header cells ([#485](https://github.com/digdir/designsystem/issues/485)) ([17971e2](https://github.com/digdir/designsystem/commit/17971e20015d07187ee316e7974a6a79c7712d80))
+
+### Features
+
+- **Typography:** :sparkles: Define font color ([#511](https://github.com/digdir/designsystem/issues/511)) ([5446557](https://github.com/digdir/designsystem/commit/54465579e63caefc21f43635272a80b2a4805dda))
+
+# [0.13.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.1...@digdir/design-system-react@0.13.0) (2023-05-31)
+
+### Bug Fixes
+
+- **Accordion:** :bug: Fix `displayName` for Accordion sub-components ([#424](https://github.com/digdir/designsystem/issues/424)) ([c755c4a](https://github.com/digdir/designsystem/commit/c755c4a8c19ac6d03a7dd51b32e4e3d92e33af3b))
+- **Accordion:** :bug: Use correct icon in header ([#473](https://github.com/digdir/designsystem/issues/473)) ([7517690](https://github.com/digdir/designsystem/commit/7517690873caf74d7eac6bc47f8f179df4a999a8))
+- **Accordion:** 🐛 Fix hover state on Accordion.Header when used on touch devies ([#435](https://github.com/digdir/designsystem/issues/435)) ([8164dcc](https://github.com/digdir/designsystem/commit/8164dcca1ebd81ada20a9347e943983f9eed6224))
+- **CheckboxRadioTemplate:** ensure to remove spacing/gap when label is hidden ([#427](https://github.com/digdir/designsystem/issues/427)) ([f5a20e6](https://github.com/digdir/designsystem/commit/f5a20e66b50254611373ee3efa1d827be5124520))
+- **InputWrapper, Select, Tabs, ToggleButtonGroup:** :recycle: Removed component defined font-family ([#476](https://github.com/digdir/designsystem/issues/476)) ([2e65214](https://github.com/digdir/designsystem/commit/2e6521401e0aabd9975ecc8ce6bcf7a4352ee662))
+- **Select:** Make options list independent of container size restrictions ([#449](https://github.com/digdir/designsystem/issues/449)) ([6f8ce62](https://github.com/digdir/designsystem/commit/6f8ce623af3ff09c817674289c94d802a04af912))
+- **TextField, TextArea:** append ids to aria-described-by ([#456](https://github.com/digdir/designsystem/issues/456)) ([449988c](https://github.com/digdir/designsystem/commit/449988c5d6ea69b9c52a61be481e61d6236b8f9c))
+- **Typography:** :bug: Fix Typography components to inherit font-family ([#470](https://github.com/digdir/designsystem/issues/470)) ([06f6677](https://github.com/digdir/designsystem/commit/06f66770df7bdc6f3a55f4d3567a0e2e249e8bf8))
+
 ## [0.12.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.12.0...@digdir/design-system-react@0.12.1) (2023-05-22)
 
 ### Bug Fixes

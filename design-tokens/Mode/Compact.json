@@ -6,34 +6,6 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f6}",
-          "letterSpacing": "{letterSpacing.0}",
-          "paragraphSpacing": "{paragraphSpacing.0}",
-          "paragraphIndent": "{paragraphIndent.0}",
-          "textCase": "{textCase.none}",
-          "textDecoration": "{textDecoration.none}"
-        },
-        "type": "typography"
-      },
-      "large": {
-        "value": {
-          "fontFamily": "{fontFamilies.inter}",
-          "fontWeight": "{fontWeights.medium}",
-          "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f5}",
-          "letterSpacing": "{letterSpacing.0}",
-          "paragraphSpacing": "{paragraphSpacing.0}",
-          "paragraphIndent": "{paragraphIndent.0}",
-          "textCase": "{textCase.none}",
-          "textDecoration": "{textDecoration.none}"
-        },
-        "type": "typography"
-      },
-      "medium": {
-        "value": {
-          "fontFamily": "{fontFamilies.inter}",
-          "fontWeight": "{fontWeights.medium}",
-          "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f4}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
@@ -43,7 +15,7 @@
         },
         "type": "typography"
       },
-      "small": {
+      "large": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
@@ -57,12 +29,40 @@
         },
         "type": "typography"
       },
-      "xsmall": {
+      "medium": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f2}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
+      "small": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f1}",
+          "letterSpacing": "{letterSpacing.0}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
+      "xsmall": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f0}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -76,7 +76,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f1}",
+          "fontSize": "{font-size.f-1}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -87,26 +87,12 @@
       }
     },
     "ingress": {
-      "large": {
-        "value": {
-          "fontFamily": "{fontFamilies.inter}",
-          "fontWeight": "{fontWeights.regular}",
-          "lineHeight": "{lineHeights.700}",
-          "fontSize": "{font-size.f2}",
-          "letterSpacing": "{letterSpacing.0}",
-          "paragraphSpacing": "{paragraphSpacing.0}",
-          "paragraphIndent": "{paragraphIndent.0}",
-          "textCase": "{textCase.none}",
-          "textDecoration": "{textDecoration.none}"
-        },
-        "type": "typography"
-      },
       "medium": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
-          "lineHeight": "{lineHeights.600}",
-          "fontSize": "{font-size.f1}",
+          "lineHeight": "{lineHeights.700}",
+          "fontSize": "{font-size.f0}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -122,7 +108,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f1}",
+          "fontSize": "{font-size.f0}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -136,7 +122,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f0}",
+          "fontSize": "{font-size.f-1}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -150,7 +136,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-1}",
+          "fontSize": "{font-size.f-2}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -164,7 +150,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-2}",
+          "fontSize": "{font-size.f-3}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -180,7 +166,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f0}",
+          "fontSize": "{font-size.f-1}",
           "letterSpacing": "{letterSpacing.1}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -194,7 +180,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-1}",
+          "fontSize": "{font-size.f-2}",
           "letterSpacing": "{letterSpacing.1}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -254,7 +240,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f1}",
+          "fontSize": "{font-size.f0}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -268,7 +254,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f0}",
+          "fontSize": "{font-size.f-1}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -282,7 +268,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f-1}",
+          "fontSize": "{font-size.f-2}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -296,7 +282,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f-2}",
+          "fontSize": "{font-size.f-3}",
           "letterSpacing": "{letterSpacing.0}",
           "paragraphSpacing": "{paragraphSpacing.0}",
           "paragraphIndent": "{paragraphIndent.0}",
@@ -311,7 +297,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f1}",
+            "fontSize": "{font-size.f0}",
             "letterSpacing": "{letterSpacing.0}",
             "paragraphSpacing": "{paragraphSpacing.0}",
             "paragraphIndent": "{paragraphIndent.0}",
@@ -325,7 +311,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f0}",
+            "fontSize": "{font-size.f-1}",
             "letterSpacing": "{letterSpacing.0}",
             "paragraphSpacing": "{paragraphSpacing.0}",
             "paragraphIndent": "{paragraphIndent.0}",
@@ -339,7 +325,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f-1}",
+            "fontSize": "{font-size.f-2}",
             "letterSpacing": "{letterSpacing.0}",
             "paragraphSpacing": "{paragraphSpacing.0}",
             "paragraphIndent": "{paragraphIndent.0}",
@@ -353,7 +339,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f-2}",
+            "fontSize": "{font-size.f-3}",
             "letterSpacing": "{letterSpacing.0}",
             "paragraphSpacing": "{paragraphSpacing.0}",
             "paragraphIndent": "{paragraphIndent.0}",
@@ -367,15 +353,15 @@
   },
   "component-mode-height": {
     "small": {
-      "value": "{sizing_core.6}",
+      "value": "28",
       "type": "sizing"
     },
     "medium": {
-      "value": "{sizing_core.8}",
+      "value": "{sizing.8}",
       "type": "sizing"
     },
     "large": {
-      "value": "{sizing_core.10}",
+      "value": "{sizing.10}",
       "type": "sizing"
     }
   }

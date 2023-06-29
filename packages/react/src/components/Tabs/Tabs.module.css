@@ -6,7 +6,6 @@
   --tab-border_bottom_color-selected: var(--colors-blue-700);
   --tab-border_bottom_color: transparent;
   --tab-border_bottom_width: 4px;
-  --tab-font_family: var(--font_family-default);
   --tab-font_size: var(--font_size-component-size-sm);
   --tab-font_weight: 500;
   --tab-height: 32px;
@@ -36,7 +35,7 @@
   border-width: 0 0 var(--tab-border_bottom_width) 0;
   color: var(--tab-text_color);
   cursor: pointer;
-  font-family: var(--tab-font_family);
+  font-family: inherit;
   font-size: var(--tab-font_size);
   font-weight: var(--tab-font_weight);
   line-height: var(--tab-height);

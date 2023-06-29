@@ -94,6 +94,17 @@ describe('TextField', () => {
       await user.click(screen.getByText(label));
       expect(screen.getByRole('textbox')).toHaveFocus();
     });
+
+    it('Has type attribute set to "text" by default', () => {
+      render();
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text');
+    });
+
+    it('Has given type attribute if set', () => {
+      const type = 'tel';
+      render({ type });
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', type);
+    });
   });
 
   describe('Number format', () => {

@@ -1,44 +1,47 @@
-import Meta from '../../components/Meta/Meta';
-import { MenuPageLayout } from '../../layouts';
+import { Meta } from '@components';
+import { MenuPageLayout } from '@layouts';
 import { Figma } from 'mdx-embed';
+import { Heading, Paragraph, Alert } from '@digdir/design-system-react';
 
 <Meta
-  title='Feilmeldinger'
-  description='Beskrivelse'
+  title='Validering og feilmeldinger'
+  description='Slik forteller du brukeren at noe har gått galt eller mangler.'
 />
 
 export default ({ children, menu }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Feilmeldinger',
+      title: 'Validering og feilmeldinger',
       date: '5. april 2023',
     }}
   />
 );
 
+Mønsteret er under arbeid og krever mer innsikt og samarbeid på tvers. Sitter du på innsikt som er relevant for validering og feilmeldinger? [Ta kontakt](mailto:designsystem@digdir.no) så kan vi dele innsikt og diskutere dette mønsteret sammen!
+
 ## Feilmeldinger
 
 Feilmeldinger forklarer brukeren hva som gikk galt og hvordan det kan rettes opp i.
 
-Disse hovedprinsippene bør følges:
+Disse retningslinjene bør følges:
 
-- Feilmeldingen skal være lett å legge merke til og forstå.
-- Feltet(e) som er feil skal være lette å finne.
+- Kravene for å fylle ut feltene riktig skal tydelig fremgå på forhånd uten at brukeren trenger å få noen feilmeldinger fra valideringen for å forstå dette.
+- Felt(ene) som er feil skal være lette å finne. Feilmeldingen bør plasseres i nærheten av feltet som er feil, og koblet til feltet ved hjelp av `aria-describedby`.
+- Feilmeldingen skal være lett å legge merke til og forstå. Bruk rød farge, grafiske midler, `aria-invalid` og forklarende tekst.
 - Brukere skal ikke måtte huske instruksjonene for å fikse feilen.
+- Dersom et skjema har feil når brukeren forsøker å gå videre, bør en oppsummering vise alle feilene og lenke til feltene som har feil. Feilene skal forsvinne fra oppsummeringen etterhvert som de blir utbedret.
 
-Vær kort og tydelig i formuleringen av feilmeldingene og sørg for at brukeren vet hva som må gjøres for å komme videre. Å skrive “Feltet er ikke fyllt ut korrekt”, gir ikke brukeren en forklaring på hva som er feil.
+### Formulering av feilmeldinger
+
+Vær kort og tydelig i formuleringen av feilmeldingene og sørg for at brukeren vet hva som må gjøres for å komme videre. Å skrive “Feltet er ikke fyllt ut korrekt”, gir ikke brukeren en forklaring på hva som er feil. Gi så spesifikk informasjon som mulig om hva problemet er og gjenta gjerne nøkkelord fra label. Foreslå evt. korrigeringer, f.eks. ved ugyldige tegn eller feilstavinger.
 
 Eksempel på forklarende feilmeldinger:<br/>
-“Postnummer må ha 4 siffer”<br/>
-“Du må velge minst ett leveringsalternativ”<br/>
-“For å sende inn skjemaet må du bekrefte at navnet er korrekt ved å huke av i avkrysningsboksen”
 
-### Retningslinjer
-
-- Feilmeldingstekst bør gjenta nøkkelord fra label
-- Kravene for å fylle ut feltene riktig skal tydelig fremgå på forhånd uten at brukeren trenger å få noen feilmeldinger fra valideringen for å forstå dette.
-- Dersom skjemaet har feil når brukeren forsøker å gå videre, skal en oppsummering vise alle feilene og lenke til de feltene feilen gjelder. Feilene skal forsvinne etterhvert som de blir utbedret.
+- “Postnummer må ha 4 siffer”
+- "Fødselsnummer må bestå av fødselsdato (6 siffer) og personnummer (5 siffer)"
+- “Du må velge minst ett av leveringsalternativene”
+- “For å sende inn skjemaet må du bekrefte at navnet er korrekt ved å huke av i avkrysningsboksen”
 
 ### Eksempel på feilmelding relatert til avkrysningsbokser
 

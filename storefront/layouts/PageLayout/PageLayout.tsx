@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 
-import { Container } from '../../components/Container/Container';
-import { MdxContent } from '../../components/MdxContent/MdxContent';
+import { Container, MdxContent } from '../../components';
 
 import classes from './PageLayout.module.css';
 
@@ -22,13 +21,17 @@ type PageLayoutData = {
 
 const PageLayout = ({ content, data }: PageLayoutProps) => {
   return (
-    <div className={classes.page}>
+    <main
+      id='main'
+      className={classes.page}
+    >
       <div className={classes.header}>
         <Container className={classes.headerContainer}>
           <div className={classes.headerContent}>
             <Link
               href={'/' + data.backUrl}
               className={classes.back}
+              prefetch={false}
             >
               <ArrowLeftIcon
                 title='Tilbake'
@@ -57,7 +60,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
           <MdxContent>{content}</MdxContent>
         </div>
       </Container>
-    </div>
+    </main>
   );
 };
 

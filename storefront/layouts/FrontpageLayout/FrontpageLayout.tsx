@@ -1,13 +1,12 @@
 import React from 'react';
 
-import Section from '../../components/Section/Section';
-import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import Banner from '../../components/Banner/Banner';
-import type { ButtonProps } from '../../components/ImageSection/ImageSection';
-import { ImageSection } from '../../components/ImageSection/ImageSection';
-
-import classes from './FrontpageLayout.module.css';
+import {
+  Section,
+  NavigationCard,
+  Banner,
+  ImageSection,
+} from '../../components';
+import type { NavigationCardProps, ImageSectionProps } from '../../components';
 
 interface FrontpageLayoutProps {
   Content: React.ReactNode;
@@ -22,20 +21,12 @@ interface FrontpageData {
     description: string;
     items: [];
   };
-  contributeSection: {
-    title: string;
-    description: string;
-    email: string;
-    image: string;
-    imageWidth: number;
-    imageHeight: number;
-    buttons?: ButtonProps[];
-  };
+  contributeSection: ImageSectionProps;
 }
 
 const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
   return (
-    <div>
+    <main id='main'>
       {Content}
       <div className='max-width-container main'>
         <Banner
@@ -61,42 +52,15 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
         <ImageSection
           title={data.contributeSection.title}
           description={data.contributeSection.description}
-          src={data.contributeSection.image}
-          imgWidth={data.contributeSection.imageWidth}
-          imgHeight={data.contributeSection.imageHeight}
+          imgSrc={data.contributeSection.imgSrc}
+          imgAlt={data.contributeSection.imgAlt}
+          headingLevel={data.contributeSection.headingLevel}
+          imgWidth={data.contributeSection.imgWidth}
+          imgHeight={data.contributeSection.imgHeight}
           buttons={data.contributeSection.buttons}
         />
-
-        {/*<Section*/}
-        {/*  backgroundColor='grey'*/}
-        {/*  title='Siste oppdateringer'*/}
-        {/*>*/}
-        {/*  <Row className='gy-4'>*/}
-        {/*    <Col md={4}>*/}
-        {/*      <Card*/}
-        {/*        title='Oppdatering Q2'*/}
-        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
-        {/*        url='#'*/}
-        {/*      />*/}
-        {/*    </Col>*/}
-        {/*    <Col md={4}>*/}
-        {/*      <Card*/}
-        {/*        title='Oppdatering Q2'*/}
-        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
-        {/*        url='#'*/}
-        {/*      />*/}
-        {/*    </Col>*/}
-        {/*    <Col md={4}>*/}
-        {/*      <Card*/}
-        {/*        title='Oppdatering Q2'*/}
-        {/*        description='And human of of folks friendly a by bed every assignment. Mr. Cheek, coast to a frequency mouse your the sports. Everything and, there throughout. Of cons, to out presented. The front casting his dropped what determined investigating after been semblance if go the duties, is to stage so our.'*/}
-        {/*        url='#'*/}
-        {/*      />*/}
-        {/*    </Col>*/}
-        {/*  </Row>*/}
-        {/*</Section>*/}
       </div>
-    </div>
+    </main>
   );
 };
 

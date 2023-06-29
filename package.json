@@ -17,6 +17,7 @@
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
     "build:storybook": "storybook build -o ./docs",
     "build:storefront": "yarn workspace storefront building",
+    "start:storefront": "yarn workspace storefront start",
     "lerna:version": "lerna version  --conventional-commits --no-private",
     "lerna:publish": "lerna publish from-package",
     "lint": "eslint",
@@ -24,7 +25,11 @@
     "lint:all:fix": "yarn run lint:all --fix",
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix",
-    "pack:react": "yarn workspace @digdir/design-system-react pack"
+    "pack:react": "yarn workspace @digdir/design-system-react pack",
+    "generate-component-storefront": "ts-node ./scripts/generate-component/storefront.ts",
+    "gcsf": "ts-node ./scripts/generate-component/storefront.ts",
+    "generate-component-react": "ts-node ./scripts/generate-component/react.ts",
+    "gcr": "ts-node ./scripts/generate-component/react.ts"
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
@@ -34,6 +39,7 @@
     "@babel/preset-typescript": "^7.21.5",
     "@commitlint/cli": "^17.4.1",
     "@commitlint/config-conventional": "^17.4.0",
+    "@digdir/design-system-react": "*",
     "@digdir/design-system-tokens": "*",
     "@etchteam/storybook-addon-status": "^4.2.2",
     "@next/eslint-plugin-next": "^13.2.4",
@@ -102,6 +108,7 @@
     "stylelint-prettier": "^3.0.0",
     "terser": "^5.16.0",
     "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.5",
     "typescript-plugin-css-modules": "^5.0.0"

@@ -61,6 +61,12 @@ div {
 
 ### Javascript
 
+#### ⚠️ Warning
+
+Typography and spacing tokens are static for javascript tokens. This is due to limitations in CSS with nested `calc()` only being supported using css-variables. Since js tokens can be scoped to only import one, this might lead to unintended bugs are referecend css-variables might not be present/imported.
+
+#### Usage
+
 When importing tokens as javascript/typescript you can omit the file extension as your module resolves should be able to pick the correct one. We also provide a `d.ts` file for typescript types.
 
 It's important to know that the values from javascript tokens are css values, as they are intended to be used with either `style` or other CSS-in-JS libraries.

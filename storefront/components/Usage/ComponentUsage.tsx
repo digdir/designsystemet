@@ -10,11 +10,11 @@ export interface ComponentUsageProps {
   args: never;
 }
 
-export function Usage({
+const ComponentUsage = ({
   type = 'success',
   component,
   args,
-}: ComponentUsageProps) {
+}: ComponentUsageProps) => {
   return (
     <div
       className={cn(classes.ComponentUsage, classes[`ComponentUsage--${type}`])}
@@ -46,6 +46,8 @@ export function Usage({
       </div>
     </div>
   );
-}
+};
 
-Usage.displayName = 'Usage';
+ComponentUsage.displayName = 'Usage';
+
+export { ComponentUsage };

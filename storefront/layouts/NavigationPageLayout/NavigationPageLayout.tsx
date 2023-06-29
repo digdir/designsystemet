@@ -1,10 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Container } from '../../components/Container/Container';
+import { Container, SidebarMenu, MdxContent } from '../../components';
 import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
-import { NavigationCard } from '../../components/NavigationCard/NavigationCard';
-import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 
 import classes from './NavigationPageLayout.module.css';
 
@@ -29,9 +27,14 @@ const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
         <div className={classes.left}>
           <SidebarMenu routerPath={router.pathname} />
         </div>
-        <div className={classes.right}>
-          <div className={classes.content}>{content}</div>
-        </div>
+        <main
+          id='main'
+          className={classes.right}
+        >
+          <div className={classes.content}>
+            <MdxContent>{content}</MdxContent>
+          </div>
+        </main>
       </Container>
     </div>
   );

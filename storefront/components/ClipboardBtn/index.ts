@@ -1,0 +1,1 @@
+export { ClipboardBtn } from './ClipboardBtn';

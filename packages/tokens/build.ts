@@ -7,6 +7,8 @@ import type {
 } from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
+const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
+
 void registerTransforms(StyleDictionary);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
@@ -70,7 +72,7 @@ type FontScale = {
 };
 
 StyleDictionary.registerTransform({
-  name: 'fontSizes/fluid',
+  name: 'css/fontSizes/fluid',
   type: 'value',
   transitive: true,
   matcher: (token) =>
@@ -99,6 +101,20 @@ StyleDictionary.registerTransform({
   },
 });
 
+StyleDictionary.registerTransform({
+  name: 'fds/calc',
+  type: 'value',
+  transitive: true,
+  matcher: (token) =>
+    (token.type === 'spacing' && token.path[0] === 'spacing') ||
+    (token.type === 'sizing' && token.path[0] === 'sizing'),
+  transformer: (token) => {
+    const value = token.value as string;
+
+    return `calc(${value})`;
+  },
+});
+
 StyleDictionary.registerFormat({
   name: 'global-values-hack',
   formatter: ({ dictionary }) => {
@@ -115,6 +131,73 @@ StyleDictionary.registerFileHeader({
     'Do not edit directly',
     `These files are generated from design tokens defined in Figma using Token Studio`,
   ],
+});
+
+type ReferencesFilter = (token: TransformedToken) => boolean;
+
+/**
+ *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
+ */
+StyleDictionary.registerFormat({
+  name: 'css/variables-scoped-references',
+  formatter: function ({ dictionary, options, file }) {
+    const { outputReferences } = options;
+    const includeReferences = options.referencesFilter as ReferencesFilter;
+    let referencedTokens: TransformedToken[] = [];
+
+    const format = createPropertyFormatter({
+      outputReferences,
+      dictionary,
+      format: 'css',
+    });
+
+    const formatWithReference = createPropertyFormatter({
+      outputReferences: true,
+      dictionary,
+      format: 'css',
+    });
+
+    const tokens = dictionary.allTokens
+      .map((token) => {
+        if (
+          dictionary.usesReference(token.original.value) &&
+          includeReferences(token)
+        ) {
+          const refs = dictionary.getReferences(token.original.value);
+
+          referencedTokens = [
+            ...referencedTokens,
+            ...refs.filter((x) => x.isSource),
+          ];
+
+          return formatWithReference(token);
+        }
+
+        return !token.isSource && format(token);
+      })
+      .filter((x) => x);
+
+    const referenceTokens = referencedTokens
+      .reduce<{ name: string; formatted: string }[]>((acc, token) => {
+        if (acc.find((x) => x.name === token.name)) {
+          return acc;
+        }
+
+        return [...acc, { name: token.name, formatted: format(token) }];
+      }, [])
+      .map((x) => x.formatted)
+      .filter((x) => x);
+
+    return (
+      fileHeader({ file }) +
+      ':root {\n' +
+      '  /** Referenced source tokens */ \n' +
+      referenceTokens.join('\n') +
+      '\n\n  /** Tokens */ \n' +
+      tokens.join('\n') +
+      '\n}\n'
+    );
+  },
 });
 
 const excludeSource = (token: TransformedToken) =>
@@ -147,9 +230,10 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         basePxFontSize,
         transformGroup: 'css',
         transforms: [
-          'ts/resolveMath',
           'name/cti/hierarchical-kebab',
-          'fontSizes/fluid',
+          'ts/resolveMath',
+          'css/fontSizes/fluid',
+          'fds/calc',
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
@@ -157,12 +241,15 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            format: 'css/variables',
-            filter: excludeSource,
+            format: 'css/variables-scoped-references',
+            // filter: excludeSource,
           },
         ],
         options: {
           fileHeader: 'fileheader',
+          referencesFilter: (token: TransformedToken) =>
+            !(token.path[0] === 'viewport') &&
+            ['spacing', 'sizing'].includes(token.type as string),
           // outputReferences: true,
         },
       },
@@ -170,10 +257,10 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
         basePxFontSize,
         transformGroup: 'js',
         transforms: [
-          'ts/resolveMath',
           'name/cti/camel_underscore',
-          'fontSizes/fluid',
+          'ts/resolveMath',
           'typography/shorthand',
+          'ts/size/px',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
         ],
