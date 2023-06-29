@@ -21,6 +21,10 @@ export const SiteConfig = {
               url: 'grunnleggende/introduksjon/designprinsipper',
             },
             {
+              name: 'Tilgjengelighet',
+              url: 'grunnleggende/introduksjon/tilgjengelighet',
+            },
+            {
               name: 'Slack',
               url: 'grunnleggende/introduksjon/slack',
             },

@@ -19,7 +19,7 @@ const centerLinks = [
   },
   {
     text: 'Tilgjengelighetserklæring',
-    url: '/grunnleggende/tilgjengelighetserklaering',
+    url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
   },
 ];
 
