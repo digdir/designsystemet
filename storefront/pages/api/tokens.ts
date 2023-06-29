@@ -17,7 +17,7 @@ export default async function handler(
     tokensDirectory + '/tokens.css',
     'utf8',
   );
-  const fileContentsArr = fileContents.split('--');
+  const fileContentsArr = fileContents.split(';');
   const outputObj: outputObjType = {};
 
   for (let i = 0; i < fileContentsArr.length; i++) {
@@ -25,8 +25,7 @@ export default async function handler(
       continue;
     }
     const itemArr = fileContentsArr[i].split(':');
-    outputObj[itemArr[0]] = itemArr[1];
+    outputObj[itemArr[0].replace('\n  --', '')] = itemArr[1];
   }
-
   res.status(200).json(outputObj);
 }
