@@ -1,0 +1,29 @@
+import { Meta, TokenList } from '@components';
+import { MenuPageLayout } from '@layouts';
+import { Figma } from 'mdx-embed';
+
+<Meta
+  title='Størrelser'
+  description='Beskrivelse'
+/>
+
+export default ({ children, menu }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Størrelser',
+      date: '25. juni 2023',
+    }}
+  />
+);
+
+## Størrelser
+
+Størrelser (sizing) brukes til å ...
+
+### Sizing tokens
+
+<TokenList
+  type='size'
+  token='fds-sizing'
+/>

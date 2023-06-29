@@ -13,7 +13,7 @@ type RemovableChipProps = Omit<ChipButtonProps, 'selected'>;
 export const RemovableChip: OverridableComponent<
   RemovableChipProps,
   HTMLButtonElement
-> = forwardRef(({ children, size = 'xsmall', ...rest }, ref): JSX.Element => {
+> = forwardRef(({ children, size = 'small', ...rest }, ref): JSX.Element => {
   return (
     <ChipButton
       {...rest}

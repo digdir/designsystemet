@@ -1,6 +1,6 @@
 .chipButton {
-  --fdsc-chip-height: var(--fds-sizing-6);
-  --fdsc-chip-padding: var(--fds-spacing-2);
+  --fdsc-chip-height: var(--fds-sizing-7);
+  --fdsc-chip-padding: var(--fds-spacing-3);
   --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
   --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle);
@@ -14,6 +14,7 @@
   color: var(--fdsc-chip-text-color);
   display: block;
   text-decoration: none;
+  font-family: inherit;
 }
 
 .chipButton:hover {
@@ -29,11 +30,12 @@
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
   --fdsc-chip-border: var(--fds-semantic-border-neutral-strong);
 
-  border-width: 3px;
+  box-shadow: inset 0 0 0 2px var(--fdsc-chip-border);
   outline: 2px solid var(--fds-semantic-border-focus-outline);
 }
 
-.chipButton:is([aria-pressed='true']) {
+.chipButton:is([aria-pressed='true']),
+.chipButton:active {
   --fdsc-chip-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-chip-border: var(--fds-semantic-surface-action-primary-active);
@@ -51,6 +53,7 @@
 
 .xsmall {
   --fdsc-chip-height: var(--fds-sizing-6);
+  --fdsc-chip-padding: var(--fds-spacing-2);
 }
 
 .small {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.17.0...@digdir/design-system-react@0.18.0) (2023-06-28)
+
+### Bug Fixes
+
+- **Chip:** visual improvements ([#610](https://github.com/digdir/designsystem/issues/610)) ([58a4627](https://github.com/digdir/designsystem/commit/58a46278a00faf10f0e86cdbf7813b57dceb40cc))
+
+### Features
+
+- **Chip.Group, Chip.Removable, Chip:** created chips ([#575](https://github.com/digdir/designsystem/issues/575)) ([26eae91](https://github.com/digdir/designsystem/commit/26eae91cabbbbf5528b1a339ce99458dcc75c08a))
+- **TextField:** Type attribute ([#579](https://github.com/digdir/designsystem/issues/579)) ([0ec6e5d](https://github.com/digdir/designsystem/commit/0ec6e5db7f59f192eba9173a428a69b9ff75c754))
+
 # [0.17.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.16.0...@digdir/design-system-react@0.17.0) (2023-06-21)
 
 ### Bug Fixes

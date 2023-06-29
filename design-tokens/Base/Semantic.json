@@ -87,11 +87,11 @@
             "type": "color"
           },
           "hover": {
-            "value": "rgba($colors.blue.900, 0.9)",
+            "value": "rgba({colors.blue.900}, 0.9)",
             "type": "color"
           },
           "active": {
-            "value": "rgba($colors.blue.900, 0.8)",
+            "value": "rgba({colors.blue.900}, 0.8)",
             "type": "color",
             "description": "Standard farge for handlinger"
           },
@@ -100,11 +100,11 @@
             "type": "color"
           },
           "no_fill-hover": {
-            "value": "rgba($colors.blue.900, 0.1)",
+            "value": "rgba({colors.blue.900}, 0.1)",
             "type": "color"
           },
           "no_fill-active": {
-            "value": "rgba($colors.blue.900, 0.2)",
+            "value": "rgba({colors.blue.900}, 0.2)",
             "type": "color"
           }
         }
@@ -186,7 +186,7 @@
           "value": "{colors.red.100}",
           "type": "color"
         },
-        "no_fill-action": {
+        "no_fill-active": {
           "value": "{colors.red.200}",
           "type": "color"
         }
@@ -1216,7 +1216,7 @@
   },
   "component-mode-height": {
     "small": {
-      "value": "{sizing.8}",
+      "value": "36",
       "type": "sizing"
     },
     "medium": {
