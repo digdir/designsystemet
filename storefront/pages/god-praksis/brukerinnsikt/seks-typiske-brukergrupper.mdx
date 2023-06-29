@@ -4,15 +4,15 @@ import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun
 import { Accordion } from '@digdir/design-system-react';
 
 <Meta
-  title='Seks typiske brukergrupper'
-  description='En oversikt over typiske brukergrupper som er digitalt sårbare. I tillegg til å belyse hvilke utfordringer disse brukergruppene møter, har vi også valgt å fremstille de som personas.'
+  title='Brukergrupper som er digitalt sårbare'
+  description='I rapporten [Digital hele livet med bedre brukeropplevelse] har vi beskrevet seks brukergrupper som er digitalt sårbare. Hvis vi lager tjenester som imøtekommer behovene til disse gruppene, gjør vi det også lettere for alle andre å bruke digitale tjenester.'
 />
 
 export default ({ children }) => (
   <PageLayout
     content={children}
     data={{
-      title: 'Seks typiske brukergrupper',
+      title: 'Brukergrupper som er digitalt sårbare',
       date: '14. juni 2023',
       author: 'Digdir',
       backText: 'God praksis',
@@ -21,168 +21,51 @@ export default ({ children }) => (
   />
 );
 
-På bakgrunn av innsiktsarbeidet i rapporten ["Brukskvalitet i offentlig sektor"](lenke-til-rapporten), har vi valgt å spesifisere og trekke frem seks brukergrupper og gi eksempler på oppgaver og utfordringer de møter. Selv om det er store variasjoner i både brukergrupper og utfordringene de har i møte med det digitale Norge, har disse brukergruppene mye til felles.
+Brukergruppene er beskrevet som personas som kan brukes som et verktøy i utviklingen av digitale tjenester. Personas er fiktive beskrivelser av personer som representerer brukergruppene. De er altså ikke et komplett bilde eller en uttømmende liste over behov og livssituasjoner, men en forenkling av virkeligheten. En innbygger kan befinne seg i flere grupper samtidig eller gå inn og ut av brukergrupper.
 
-1. Gerda og Kåre - eldre ektepar der en må ta over alt
-2. Kim - ung som møter forvaltningen for første gang
-3. Amina - innvandrer og utenfor på alle måter
-4. Alex - trygdet, alene og skeptisk
-5. Agne - hjelperen som ikke får hjelpe
-6. Mika - vergen som ikke får gjort jobben sin
+## Brukergruppene møter ulike barrierer for digital deltakelse
 
-## 1 Gerda og Kåre - eldre ektepar der en må ta over alt
+I beskrivelsene av personasene kan du også lese om hvilke barrierer for digital deltakelse de ulike gruppene møter. Det er flere ulike barrierer som gjør at folk faller utenfor, og mange rammes av flere av barrierene. Noen faller utenfor fordi de ikke har nok kunnskap om offentlig forvaltning. Andre har svake språkferdigheter, og klarer derfor ikke å finne, forstå og bruke informasjon om rettigheter og plikter. 
+Andre blir hindret av helse og livssituasjon, og mangler et nettverk som kan hjelpe dem. I tillegg påvirkes motivasjonen for å løse digitale oppgaver av troen på mestring og selvtillit. Til sist blir noen hindret av at de ikke har tilgang på internett og utstyr som for eksempel PC.
 
-Du har vært gift med Gerda i alle år og nå er dere begge pensjonister. Gerda har alltid vært flink med tall siden hun jobbet i bank hele sitt yrkesliv. Mens du har vært mer praktisk rettet og hadde ansvar for å fikse alt stort og smått i huset, betalte Gerda regninger, bestilte reparasjon av høreapparatet ditt og bestilllt billetter når dere skulle besøke barnebarna.
 
-I fjor fikk Gerda slag og hun er blitt skikkelig ustø og glemmer mye. Du har lagt merke til at det har kommet inkassovarsel i posten for første gang i deres liv. Sist gang dere skulle besøke barnebarna fikk dere straffegebyr fordi hun hadde kjøpt feil billett.
+## 1. Gerda og Kåre - eldre ektepar der en må ta over alt
 
-Du begynner å innse at du ikke kan stole på at Gerda gjør alt hun har gjort tidligere, men hvordan skal du klare å ta over?
+Gerda og Kåre representerer de over 65 år. Dette er en veldig stor gruppe, så det er selvsagt store forskjeller innad i gruppen. 
 
-- Datamaskinen har du så og si aldri brukt - men den fungerer sikkert ganske likt som mobilen?
-- BankID vet du knapt hva er - men den duppedingsen som får opp tall når du trykker på den som ligger på pulten til Gerda er sikkert en god start?
-- Hvordan du skal få fikset høreapparatet ditt nå, er en gåte for deg - men det finnes sikkert et nummer du kan ringe?
-
-<Accordion color='subtle'>
-  <Accordion.Item>
-    <Accordion.Header>Typiske utsagn</Accordion.Header>
-    <Accordion.Content>
-      "Jeg vil helst møte opp et sted og snakke med et menneske." "Kan du vise
-      meg hvordan man gjør det? Eller, kan du ikke bare gjøre det for meg?" "Kan
-      jeg ikke bare gjøre det slik jeg alltid har gjort?" "Åh, der forsvant det
-      igjen - hvor ble siden av?"
-    </Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Gruppen de representerer</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Denne gruppen sliter ofte med</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-</Accordion>
+Kåre og Gerda har vært gift i mange år, og er nå pensjonister. Gerda har alltid tatt ansvar for økonomien og digitale oppgaver, men får ikke lenger til det etter et slag. Det betyr at Kåre må overta disse oppgavene. Men hvordan skal han få til det? Les mer om Kåre og Gerda, gruppen de representerer og hvilke barrierer denne brukergruppen møter. 
 
 ## 2. Kim - ung som møter forvaltningen for første gang
 
-Du er 22 år og har flyttet fra en liten kommune på vestlandet. Hjemmet du har vokst opp i har ikke vært det mest stabile, mor forlot deg da du var baby og faren din har du ikke sett mye til gjennom oppveksten. Når han først har vært hjemme, har han bare sittet på sofaen og sett på TV og ikke ville forstyrres. Du skjønner at han har vært mye sliten pga. jobb, så du har unngått ham så mye du kan. Du har rett og slett måtte klare deg selv så lenge du kan huske. Som 18-åring sluttet du på skolen etter å ha prøvd å gjennomføre i mange år, men situasjonen hjemme og mye angst har gjort det vanskelig å konsentrere seg.
+Kim representerer unge mellom 16-24 år som har ungdomsskole som høyest fullførte utdanning. 
 
-Nå har du endelig bestemt deg for å flytte til en annen del av landet, komme deg vekk. Akkurat nå sover du på en sofa til en venn. Det er ikke optimalt, men det er bedre enn å være hjemme. Dit vil du ikke tilbake. Du sliter med med å finne deg en fast jobb og du stresser over stresset.
+Kim har vokst opp i et ustabilt hjem og fått lite støtte fra foreldrene. Nå har han flyttet til et nytt sted og blitt arbeidsledig. Derfor trenger han hjelp fra det offentlige, men har lite kunnskap om hvilke rettigheter han har. Les mer om Kim, gruppen han representerer og hvilke barrierer denne brukergruppen møter.
 
-Etter å ha mistet den siste deltidsjobben, står du nå på bar bakke. Hva gjør du? Hvem kan du spørre om hjelp?
-
-- Kompisen din nevnte at du sikkert kan få noe som heter sosialhjelp, men når du googler møter du bare masse tekst og ord du ikke forstår, så det hele er så komplisert at det er lettere å la være.
-- Du ser det står noe om å registrere deg som arbeidssøker. Du slår det fra deg, hva hjelper det egentlig? Du er ikke klar over at du dermed går glipp av f. eks. dagpenger.
-- I forbindelse med den siste skattemeldingen står det at du skylder over 11 000 kroner i restskatt! Hvorfor har du fått skattesmell? Skal ikke arbeidsgiver trekke fra skatt på lønna di, da? Hadde du bare visst at det var ditt ansvar å justere skattekortet så ville du kanskje sluppet denne baksmellen.
-- Det baller på seg og du tenker at du er mer alene enn du er, de tunge tankene vokser og du lar være å oppsøke hjelp fordi du tror du ikke har rett på noe.
-
-<Accordion color='subtle'>
-  <Accordion.Item>
-    <Accordion.Header>Typiske utsagn</Accordion.Header>
-    <Accordion.Content>"Typisk utsagn"</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Gruppen de representerer</Accordion.Header>
-    <Accordion.Content>Litt om gruppen de representerer</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Utfordringer for denne gruppen</Accordion.Header>
-    <Accordion.Content>
-      Typiske utfordrigner for denne gruppen.
-    </Accordion.Content>
-  </Accordion.Item>
-</Accordion>
 
 ## 3. Amina - innvandrer og utenfor på alle måter
 
-Du er 33 år gammel, har et barn som nettopp har startet på skolen og en annen som er snart er ferdig på ungdomsskolen. Du kom hit som flyktning for seks år siden som enslig forsørger. Mannen din ble igjen da han satt i husarrest for å være politisk aktiv, men så snart han kan, er planen at han skal komme etter.
+Amina representerer ikke-vestlige innvandrerkvinner med svake norskferdigheter.
 
-Din bakgrunn er preget av å være på flukt med lite skolegang og usikkerhet. Derfor måtte du lære deg “alt” når du kom hit. Du måtte lære å lese, skrive, helt grunnleggende datakunnskaper, og til og med klokka. Ettersom du har en del traumer tar det lang tid å lære nye ting, og du må ofte lære ting om og om igjen. Du spør ofte ditt tenåringsbarn om hjelp, både til oversetting og til det tekniske, men du vil ikke spørre han for mye heller.
+Amina har en jobb som krever at hun får mer digital kompetanse, og melder seg derfor på et kurs. Hun trenger blant annet hjelp til å få mannen sin til Norge og til å forstå informasjon fra NAV. Les mer om Amina, gruppen hun representerer og hvilke barrierer denne brukergruppen møter.
 
-Før var det meste på jobben på papir, som timeføring og oppgavelister. Men den siste tiden har arbeidsplassen din begynt å kreve at dere går over til digitale systemer. Du synes det er litt krevende med data, og bruker bare mobilen til enkle ting som meldinger og google-søk.
-
-For å holde tritt med utviklingen, og med ønske om å være mer selvstendig og tilstede for barna, har du derfor meldt deg på datakurs. I forrige uke lærte dere om å skrive og legge et vedlegg i en e-post, denne uka skal dere lære om Helsenorge og hvordan man kan bytte fastlege.
-
-- Du har lyst til å begynne å ta tak i ting, men du er veldig usikker på hvordan du kan bruke datamaskinen til å gjøre ting på internett.
-- Du har akkurat flyttet og klarer stolt å bytte adresse, men så viser det seg at barna ikke får plass på den nye skolen fordi de ikke er har blitt registrert på samme adresse som deg. Skolen spør om du registrerte barna på samme adresse som deg, men hvorfor følger de ikke med deg når du bytta adresse? Det er jo dine barn? Heldigvis er skolen fleksibel.
-- Du har fått brev fra NAV som sier at du har fått en ny oppgave. Du vet at en oppgave betyr at du skal gjøre noe, men du klarer ikke finne frem til hva det er NAV vil ha fra deg. NAV-kontoret sier at de stenger snart, så de har ikke tid til å hjelpe deg, men at du kan gå biblioteket. Når du kommer til biblioteket, sier de noe om personvern og at de ikke kan hjelpe deg.
-- Mannen din har bedt deg sette i gang prosessen med å få han til Norge. Du går til politiet og de gir deg et skjema, men når du ikke forstår hvordan du skal fylle det ut og viser det til datalæreren så viser det seg at du har fått feil skjema. Han skal jo ikke på besøk, han vil jo flytte hit.
-
-<Accordion color='subtle'>
-  <Accordion.Item>
-    <Accordion.Header>Typiske utsagn</Accordion.Header>
-    <Accordion.Content>"..."</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Gruppen de representerer</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Denne gruppen sliter ofte med</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-</Accordion>
 
 ## 4. Alex - trygdet, alene og skeptisk
 
-Du er 54 år, du bor i en liten kommune og har jobbet hele ditt liv på fabrikk. Du er ingen digital "racer", har hatt litt kontakt med det offentlige, men ikke mye mer enn den årlige skattemeldingen som du har klart å levere på nett.
+Alex representerer de som står utenfor arbeidslivet. 
 
-For noen år siden var du i en bilulykke. Arret på foten etter bruddet har grodd ganske fint, men når du går og står over lengre tid, gjør det såpass vondt at du ikke kunne fortsette i fabrikkjobben. Selv om du holder deg i ro, slipper du ikke unna diffuse smerter som kommer og går, og som preger både konsentrasjonsevnen og hukommelsen din. Du skulle ønske du fikk svar på hva det er som er galt med kroppen din.. Kommunen du bor i har slitt med å skaffe en fastlege til deg, du har ikke fått undersøkt ryggen og nakken, selv om flere av de mange legene du har møtt har anbefalt dette. Du har ikke fått tilbud om ergoterapeut eller fysioterapi da det ikke finnes et kommunalt tilbud for dette, og du mangler en diagnose eller et svar på om ulykken har forårsaket en kronisk skade.
+Alex ble sykemeldt etter en arbeidsulykke, og skaden gjør at han har svekket konsentrasjon og hukommelse. Han har hatt lite kontakt med offentlig sektor og ikke hatt en jobb som har krevd digital kompetanse. Les mer om Alex, gruppen han representerer og hvilke barrierer denne brukergruppen møter.
 
-Du fikk sykemelding ett år og deretter har du vært på AAP. Men neste uke er det slutt. Da du ikke har et klart svar fra helsevesenet på hva som feiler deg er veien mot uføretrygd usikker. Den eneste rettigheten du har igjen i NAV-systemet, er sosialstønad som vil redusere inntekten din drastisk, og i går fikk du en stor strømregning i tillegg til husleia. Dette har du ikke råd til å betale.
-
-- Du må søke om sosialhjelp, men trenger hjelp til å fylle ut søknaden. Du går til NAV-kontoret den lille timen de har åpent, men de ber deg ringe for å bestille en time. Du ringer, du venter lenge på svar, men får så beskjed om at du skal ringes opp når de har fått sett på det. To dager senere ringer de, men da står du i dusjen og rekker ikke svare. Når du ringer tilbake, må du begynne forfra. Når du endelig får booket deg en time, er det uken etter at at strømregningen din forfaller. De beklager, det er litt travelt om dagen. Blir vel enda et inkassokrav da…
-- For å kunne klare å betale regningene i tide, burde du kanskje selge bilen? Den får du kanskje 10 000 kr for? Å komme seg rundt uten den, kommer du jo ikke til å klare, men du kan jo låne krykker fra kommunen, sier de. Nå må du bare finne en ergoterapaut, som ikke finnes i kommunen, til å fylle ut den søknaden. Du må også legge ved dokumentasjon på ulykken som du jo ikke har. Det er nemlig ingen som har fortalt deg at du kan finne dette dokumentet, hvis du leter på rett sted på Helsenorge. Så at søknaden blir avvist, fordi du ikke har søkt på riktig grunnlag overrasker deg egentlig ikke, men hva i alle dager skal du gjøre nå da? Virker lettere å bare gi opp.
-- Tiden for skattemeldingen er her. Siden alt av penger har vært et salig styr i år, forstår du ikke hvordan du skal fylle ut søknaden. Har du frikort siden du ikke har hatt jobb? Kan du få noe fradrag på grunn av alle utgiftene du har hatt i forsinkelsesrenter og gebyrer til inkassobyråene? Når du ringer og ber om hjelp, så er det vanskelig å forstå hvor du skal trykke. De prøver å forklare, men uten å se hva de mener, sliter du. De spør om det er noen andre der som du kan få hjelp hos, en venn eller en nabo. Men å spørre naboen om slik hjelp kommer ikke på tale. Da står du heller over.
-
-<Accordion color='subtle'>
-  <Accordion.Item>
-    <Accordion.Header>Typiske utsagn</Accordion.Header>
-    <Accordion.Content>"..."</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Gruppen de representerer</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Denne gruppen sliter ofte med</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-</Accordion>
 
 ## 5. Agne - hjelperen som ikke får hjelpe
 
-Du er 43 år, har tre tenåringer og fulltidsjobb, hus, bil og generelt synes du at du har ting på stell.
+Agne representerer pårørende som vil hjelpe slektninger eller venner som ikke klarer å løse digitale oppgaver på egenhånd. 
 
-Du har en mor som bor 30 min unna. Hun har bodd alene i mange år, men har klart seg overraskende bra synes du, til tross for at hun ikke er særlig digital. Du har et godt forhold til moren din og dere hjelper hverandre når dere trenger, men etter at mor fikk et brev i posten om at lokalbanken skulle stenge dørene sine og flytte filialen til en større by, begynte alt å bli mer komplisert.
-
-- Din mor har alltid betalt regningene selv ved å gå i banken, men når denne muligheten er borte vil hun at du skal hjelpe henne med å betale de i nettbanken. Dette er enkel sak for deg å fikse, tenker du. Men da hun ringte til banken her forleden for å spørre om en purring hun hadde mottatt endte samtalen med at banken sperret kontoen hennes. Grunnen var at hun fortalte at BankID-brikken hennes var hos deg, og du brukte den på vegne av henne for å kunne hjelpe henne.
-- Moren din og du kjører til den nye bankfilialen for å få fikset dette, men da dere er hos banken får dere ikke bare beskjed om at det dere har gjort er ulovlig, men også at de ikke vil fornye hennes BankID fordi de mener det kan virke som om hun er “blitt dement”. Dere får heller ikke fullmakt, da banken mener din mor ikke er ved sine fulle fem.
-- Dere har fått tips om å kontakte Statsforvalteren for hjelp med fullmakt. De anbefaler at du blir verge for din mor, men det er jo ikke det dere trenger. Hun kan jo gjøre mest selv, hun trenger jo bare litt hjelp her og der. Hvorfor er det så vanskelig å gjøre et par oppgaver uten å ta helt over?
-
-<Accordion color='subtle'>
-  <Accordion.Item>
-    <Accordion.Header>Typiske utsagn</Accordion.Header>
-    <Accordion.Content>"..."</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Gruppen de representerer</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item>
-    <Accordion.Header>Denne gruppen sliter ofte med</Accordion.Header>
-    <Accordion.Content>Accordion content</Accordion.Content>
-  </Accordion.Item>
-</Accordion>
+Agne må hjelpe moren sin med digitale oppgaver, og har derfor brukt hennes BankID. Da banken får vite det sperrer de BankID. Alternativet er å bli verge, men det trenger ikke moren til Agne. Les mer om Agne, gruppen han representerer og hvilke barrierer denne brukergruppen møter.
 
 ## 6. Mika - vergen som ikke får gjort jobben sin
 
-Etter at barna dine flyttet hjemmefra og du fikk mer tid, bestemte du deg for å bli verge fordi du alltid har likt å hjelpe mennesker rundt deg. Det er fem år siden du fikk din første vergehaver, og i dag har du 15 vergemål. Gruppen du representerer er en blanding “assorterte drops” som du pleier å si på gøy. Petra, f.eks. sliter med å betale regninger i tide og ikke bruke alle pengene hun har på å kjøpe dyre gaver til familien, så henne hjelper du med det økonomiske. Mens Klaus, som har vært av og på avrusning i mange år og bor på en institusjon på ei øy for tiden, trenger litt mer hjelp til det aller meste av både papirarbeid og det økonomiske.
-
-Bare det siste året har det blitt atskillig mer komplisert å gjøre jobben din og du bruker mer og mer krefter på denne meningsfylte jobben, og i tillegg er dette ikke en jobb som du får særlig godt betalt for heller. Du vet ikke hvordan du skal klare å holde ut et år til, men du vil ikke la vergehaverne dine i stikken.
-
-- For Petra prøver du å sørge for at regningene blir betalt i tide, men banken lar deg ikke opprette e-faktura på vegne av henne. Dette fører til at ikke bare må Petra si i fra til deg når hun får en melding eller et brev om at det er kommet inn en regning, men veldig mye går til inkasso. Og de fleste inkassobyråene vil ikke snakke med deg før du sender dem en melding på et skjema på nettsiden, som forøvrig ikke lar deg laste opp vergefullmakten, som gjør at du ikke får innsyn i hennes saker. Så der står du..
-- Du har fått en melding fra NAV om at det er kommet et vedtak om pensjonspenger. Det står som vanlig ikke hvem dette gjelder i meldingen, så etter at du har gjettet deg frem til hvem dette gjelder, viser det seg at det er en av de som ikke har fått BankID. Dette betyr at eneste måten du (og vergehaver) kan få se dette vedtaket er at du må ringe NAV, som jo tar sin tid, kreve at vedtaket sendes per post, og vente to-tre uker på at dette skal komme. Du synes det er rart at NAV legger så mye viktig informasjon på et sted som ingen av dere har tilgang på og at det krever så mye tid og jobb for å få tilgang.
-- For at du skal få meldinger og beskjeder fra det offentlige, er du nødt til å legge inn ditt eget telefonnummer i kontakt- og reservasjonsregisteret for alle dine vergehavere. Dette funker fint når det er viktigere beskjeder, men generelle påminnelser om vaksinetimer, for alle 15, for tre doser, hadde det vært fint å slippe. Men siden det er lite fleks i systemet, må det enten bli alle meldinger eller ingenting.
+Mika representerer verger.
+Mika er verge for 15 personer med ulikt behov for hjelp. Han møter på mange problemer, spesielt med den digitale diaogen han ønsker å ha på vegne av de han er verge for. Les mer om MIka, gruppen han representerer og hvilke barrierer denne brukergruppen møter.
 
 <Accordion color='subtle'>
   <Accordion.Item>
