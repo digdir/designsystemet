@@ -19,31 +19,36 @@ export default ({ children }) => (
   />
 );
 
-"Knowledge is of no value unless you put it into practice" - Chekhov
+_"Knowledge is of no value unless you put it into practice"_ - Chekhov
 
 Hvordan kan vi dele innsikt på tvers i det offentlige? Kan vi gjenbruke hverandres innsiktsarbeid, i stedet for å stadig gjøre de samme undersøkelsene om igjen?
 
-Seksjon for brukeropplevelse i Digitaliseringsdirektoratet utforsker for tiden en “open-source”-løsning for innsikt i Github. Visjonen er økt samarbeid på tvers av offentlig sektor, transparens utad og en utviklingsprosess som i større grad bygger på brukerinnsikt, innovasjon og forskning.
+Seksjon for brukeropplevelse i Digitaliseringsdirektoratet utforsker for tiden en “open-source”-løsning for [innsikt i Github](https://github.com/digdir/innsiktsbibliotek). Visjonen er økt samarbeid på tvers av offentlig sektor, transparens utad og en utviklingsprosess som i større grad bygger på brukerinnsikt, innovasjon og forskning.
 
 ## Utfordringer
 
 Flere kjenner seg sikkert igjen i disse utfordringene.
 
-🔍 Kunnskap som forsvinner når rapporter blir lagt i skuffen etter at de er ferdigstilte
+- Kunnskap som forsvinner når rapporter blir lagt i skuffen etter at de er ferdigstilte
+- Konsentrasjon av kunnskap hos et fåtall langtidsansatte som må bruke mye tid på å verbalt dele av egen kunnskap om og om igjen
+- Begrenset deling og gjenbruk av innsikt på tvers av team, avdelinger og det offentlige
+- Høy utviklingstakt i DevOps team der dokumentasjon og deling av funn ikke blir prioritert
 
-🔍 Konsentrasjon av kunnskap hos et fåtall langtidsansatte som må bruke mye tid på å verbalt dele av egen kunnskap om og om igjen
+### Modenhet for innsikt
 
-🔍 Begrenset deling og gjenbruk av innsikt på tvers av team, avdelinger og det offentlige
+Forsknings- og innsiktsarbeid heller ofte i en av to retninger:
 
-🔍 Høy utviklingstakt i DevOps team der dokumentasjon og deling av funn ikke blir prioritert
+1. Generative langtidsstudier (generative longitudional research), ofte frikoblet fra dagens løsninger der vi søker dyptgående domeneforståelse for å identifisere mulighetsrom for fremtidige tjenester og løsninger.
 
-## Modenhet for innsikt
+2. Vurderende studier (evaluative research) der vi måler og analyserer, ofte med hensikt å finne riktig løsning på et problem vi allerede er kjent med. Sett i sammenheng hjelper disse ytterpunktene oss å identifisere riktig problem samt å løse problemet på riktig måte.
 
-Forsknings- og innsiktsarbeid heller ofte i en av to retninger [i] generative langtidsstudier (generative longitudional research), ofte frikoblet fra dagens løsninger der vi søker dyptgående domeneforståelse for å identifisere mulighetsrom for fremtidige tjenester og løsninger. [ii] vurderende studier (evaluative research) der vi måler og analyserer, ofte med hensikt å finne riktig løsning på et problem vi allerede er kjent med. Sett i sammenheng hjelper disse ytterpunktene oss å identifisere riktig problem samt å løse problemet på riktig måte.
+Enkelte organisasjoner har allerede oppnådd høy modenhet rundt bruk av innsikt, forskning og innovasjon mens andre har nylig startet på reisen. Det kan ofte kreve store mengder tid og krefter for å bygge kultur og arbeidsmønstre rundt dokumentering, deling og bruk av forskningsdata og innsikt i organisasjonen, noe enkelte er bedre rustet til enn andre. Det vi vet er at det kan være spesielt vanskelig når innsikt blir nedprioritert til fordel for hyppige og korte utviklingsfrister. Eller når gapet mellom innsikt og beslutningstagere blir for stort, der rapporter blir lagt i skuffen uten lovnader om midler og kapasitet til oppfølgning og gjennomføring i etterkant.
 
-Enkelte organisasjoner har allerede oppnådd høy modenhet rundt bruk av innsikt, forskning og innovasjon mens andre har nylig startet på reisen. Det kan ofte kreve store mengder tid og krefter for å bygge kultur og arbeidsmønstre rundt dokumentering, deling og bruk av forskningsdata og innsikt i organisasjonen, noe enkelte er bedre rustet til enn andre. Det vi vet er at det kan være spesielt vanskelig når innsikt blir nedprioritert til fordel for hyppige og korte utviklingsfrister eller når gapet mellom innsikt og beslutningstagere blir for stort, der rapporter blir lagt i skuffen uten lovnader om midler og kapasitet til oppfølgning og gjennomføring i etterkant.
+Målet med innsiktsbibiloketet er i første omgang tredelt:
 
-Målet med innsiktsbibiloketet i første omgang er tredelt. [i] å bidra til økt verdiskaping for organisasjoner med høy modenhet, [ii] å være et springbrett for aktører som nylig har startet reisen, og [iii] minske gapet mellom generative langtidsstudier og beslutningstakere på ulike nivå som har ressursene til å handle. Dette gjør vi først og fremst med å koble innsiktsarbeid på utviklernes arbeidsverktøy og å gjøre arbeidet åpent for alle.
+1. Bidra til økt verdiskaping for organisasjoner med høy modenhet
+2. Være et springbrett for aktører som nylig har startet reisen
+3. Minske gapet mellom generative langtidsstudier og beslutningstakere på ulike nivå som har ressursene til å handle. Dette gjør vi først og fremst ved å koble innsiktsarbeid på utviklernes arbeidsverktøy og å gjøre arbeidet åpent for alle.
 
 ## Prototype - Innsiksbibliotek
 
@@ -51,7 +56,6 @@ Innsiktsbibliotektet består av to deler, en samling av github issues og ett til
 
 1. **[Github issues](https://github.com/digdir/innsiktsbibliotek/issues)**\
    Issues muliggjør søk på alt av tekst og tags på tvers av alle issues i tillegg til å filtrere innhold på en mer avansert måte. Denne visningen passer best dersom du leter etter noe helt konkret og har behov for dyptgående søk.
-
 2. **[Github prosjekt](https://github.com/orgs/digdir/projects/19/views/2)**\
    Prosjektet består av en rekke forutbestemte visninger som filtrerer innsikten ut ifra gitte kategorier som STEEPLE + EIF, samt regjeringens digitaliseringsstrategi. Denne visningen passer best til å finne relevant innsikt som er knyttet til forretningsmessige og strategiske gevinster.
 
