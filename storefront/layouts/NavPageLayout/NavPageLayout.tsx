@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, ImageSection } from '../../components';
+import { Container, ImageSection, MdxContent } from '../../components';
 import type { ImageSectionProps } from '../../components';
 
 import classes from './NavPageLayout.module.css';
@@ -33,7 +33,9 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
         imgPosition='right'
       ></ImageSection>
       <div className={classes.content}>
-        <Container>{content}</Container>
+        <Container>
+          <MdxContent>{content}</MdxContent>
+        </Container>
       </div>
     </main>
   );
