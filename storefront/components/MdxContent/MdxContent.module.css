@@ -93,9 +93,15 @@
   font-weight: 500;
 }
 
-.content > ul > li {
+.content > ul > li,
+.content > ol > li {
   font-size: 18px;
-  line-height: 1.7em;
+  line-height: 1.9em;
+}
+
+.content > ul > li > ol,
+.content > ol > li > ul {
+  margin-top: 8px;
 }
 
 .content > p > a:hover,
