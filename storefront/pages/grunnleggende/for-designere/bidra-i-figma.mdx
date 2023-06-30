@@ -2,15 +2,15 @@ import { Meta } from '@components';
 import { MenuPageLayout } from '@layouts';
 
 <Meta
-  title='Bidra i Figma'
-  description='Beskrivelse'
+  title='Bidra med design'
+  description='Vi setter pris på at du hjelper oss å forbedre komponenter og design i Figma.'
 />
 
 export default ({ children, menu }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Bidra i Figma',
+      title: 'Bidra med design',
       date: '27. juni 2023',
     }}
   />
@@ -59,13 +59,13 @@ Det er et par ting å tenke på når komponenter lages i Figma:
 
 - Hvilke størrelser skal komponenten eksistere i? Tenk over at komponenten passer med størrelsene på de andre komponentene. For eksempel bør et medium text-field være like høyt som en medium button, da de skal kunne plasseres på siden av hverandre. En medium komponent bør bruke typografi-size medium, og en small komponent bør bruke typografi-size small.
 
-- Er komponenten interaktiv? I så fall må ulike states eksistere som varianter av komponenten, og disse kobles opp med "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants)".
+- Er komponenten interaktiv? I så fall må ulike states eksistere som varianter av komponenten, og disse kobles opp med "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants#create)".
 
 - Multibranding. Tenk over i hvilken grad komponenten skal støtte ulik theming og legg til rette for dette ved å bruke brand-farger fra tokens.
 
 - Navgivning og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
 
-- Tenk over hvordan en annen designer vil ta i bruk komponenten. Er den intuitiv å bruke? Er den fleksibel nok slik at de ikke trenger å detache den? Kanskje bør den settes opp med [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) slik at det er mulig å legge inn annet innhold og andre komponenter uten å måtte detache.
+- Tenk over hvordan en annen designer vil ta i bruk komponenten. Er den intuitiv å bruke? Er den fleksibel nok slik at de ikke trenger å detache den? Kanskje bør den settes opp med [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) slik at det er mulig å bytte ut innholdet i den og legge inn andre komponenter uten å måtte detache. Bruk gjenrne også "[Preferred values](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties#preferred)" for å femheve komponentene vi tror kommer til å bli mest brukt som innhold.
 
 - Pass på at designet til komponenten er universelt utformet. [Krav som er spesielt relevant for designere](https://www.figma.com/file/V4dzf3m1sapmU048OQnu7L/Arbeidsomr%C3%A5de%3A-Felles-komponenter?type=design&node-id=349%3A45786&mode=design&t=6lrzQ94NOQl06gY2-1):
 
@@ -78,18 +78,6 @@ Det er et par ting å tenke på når komponenter lages i Figma:
 
 ### Oppdatere tokens
 
-Tokens redigeres i Figma. Du trenger en github-bruker og plugin-en [Tokens Studio for Figma](https://docs.tokens.studio/) installert. Den må konfigureres til å synkronisere med [GitHub-repoet](https://github.com/digdir/designsystem/edit/main/design-tokens/README.md).
+For å kunne endre eller opprette nye tokens må du lage en ny branch i pluginen [Tokens Studio for Figma](https://tokens.studio/). Du trenger Pro-versjonen av pluginen for å gjøre dette.
 
-1. [Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens-plugin
-1. Generer et nytt "Personal Access Token" (PAT) i [GitHub Developer Settings](https://github.com/settings/tokens) med omfanget "repo"
-1. Kopier PAT-en (du kan bare se den én gang)
-1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
-   - Navn: `Digdir Figma Tokens`
-   - Personlig tilgangstoken: _din PAT_
-   - Repository: `digdir/designsystem`
-   - Standard gren: "hoved".
-   - Filbane: `design-tokens`
-
-![Skjermbilde av Tokens Studio og innstillingene](/img/connect-tokens-studio-to-git.png)
-
-For å kunne endre eller opprette nye tokens må du lage en ny branch. Du trenger Pro-versjonen av Tokens studio for å gjøre dette.
+[Se hvordan du kobler pluginen opp mot våre design tokens](/grunnleggende/for-designere/kom-i-gang#bruk-egen-fargepalett-på-komponentene).
