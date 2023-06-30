@@ -77,7 +77,7 @@ export const SiteConfig = {
               url: 'grunnleggende/for-designere/kom-i-gang',
             },
             {
-              name: 'Bidra i figma',
+              name: 'Bidra med design',
               url: 'grunnleggende/for-designere/bidra-i-figma',
             },
           ],
