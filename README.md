@@ -70,11 +70,11 @@ Design tokens contain UI data like colors, fonts and spacing for styling and bui
 
 ### Storybook
 
-See [Storybook](https://digdir.github.io/designsystem/) for overview of available components
+We use Storybook to develop and test our React components. Check it out [here](https://digdir.github.io/designsystem/).
 
-### Storefront (Coming soon!)
+### Storefront
 
-Here you will find everything you need to start using the designsystem.
+Learn everything you need to get started with the design system at [designsystemet.no](https://designsystemet.no).
 
 ---
 
@@ -279,18 +279,6 @@ Please ensure that the appearance closely matches the image below. Consistency p
 The storefront is configured to deploy automatically upon merging changes into the main branch.
 
 If any changes are detected in the `/storefront` folder, links to the preview deployments will be automatically added as comments in the pull requests. This convenient feature enables easy access to preview deployments for review and testing purposes directly within the pull request context.
-
-### Testing the storefront in the preview deployment
-
-Open the 5 layout files to make sure they all work:
-
-- Navigate to `/`.
-- Navigate to `/grunnleggende`.
-- Navigate to `/grunnleggende/introduksjon/om-designsystemet`.
-- Navigate to `/god-praksis`.
-- Navigate to `/god-praksis/brukerinnsikt/felles-innsiktsbase`.
-
-Also test the new content or functionalty that you introduced in your changes.
 
 ---
 
