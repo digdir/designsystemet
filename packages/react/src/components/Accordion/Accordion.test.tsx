@@ -2,8 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { AccordionItem } from './AccordionItem';
-
 import type { AccordionItemProps } from './';
 import { Accordion } from './';
 
@@ -72,5 +70,3 @@ describe('Accordion Accessibility', () => {
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 });
-
-
