@@ -103,7 +103,7 @@ export const SiteConfig = {
           url: 'god-praksis/brukerinnsikt',
           children: [
             {
-              name: 'Felles innsiktsbase',
+              name: 'Felles innsiktsbibliotek',
               url: 'god-praksis/brukerinnsikt/felles-innsiktsbase',
             },
           ],
