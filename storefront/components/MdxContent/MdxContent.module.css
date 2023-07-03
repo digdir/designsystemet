@@ -106,7 +106,8 @@
 }
 
 .content > p > a:hover,
-.content > ul > li > a:hover {
+.content > ul > li a:hover,
+.content > ol > li a:hover {
   text-decoration-thickness: 2px;
 }
 
