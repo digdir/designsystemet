@@ -182,6 +182,7 @@
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
   border-color: var(--fds-semantic-border-action-secondary-hover);
+
   /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
   background: #e5eaef;
 }
