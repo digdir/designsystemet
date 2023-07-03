@@ -68,7 +68,8 @@
 }
 
 .content > p > a,
-.content > ul > li > a {
+.content > ul > li a,
+.content > ol > li a {
   color: #0062ba;
   text-underline-offset: 4px;
 }
