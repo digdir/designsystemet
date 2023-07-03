@@ -319,19 +319,19 @@
 }
 
 .button.quiet.inverted {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default-on_inverted);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: transparent;
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default-on_inverted);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default-on_inverted);
+  --fdsc-font-and-icon-color: --fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-active);
 }
