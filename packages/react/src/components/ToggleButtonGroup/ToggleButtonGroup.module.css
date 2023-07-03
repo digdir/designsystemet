@@ -28,7 +28,8 @@
   color: var(--component-toggle_button-color-text-active);
 }
 
-.toggleButton:focus-visible {
+.toggleButton:focus-visible,
+.toggleButton:focus {
   --fdsc-focus-border-width: 3px;
 
   outline: var(--fdsc-focus-border-width) solid var(--fds-semantic-border-focus-outline);
