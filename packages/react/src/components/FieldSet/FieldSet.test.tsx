@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { createRef } from 'react';
+import type { RefObject } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { FieldSetProps } from './FieldSet';
@@ -98,9 +99,25 @@ describe('FieldSet', () => {
     expect(screen.getByText(legendText)).toBeInTheDocument();
     expect(screen.getByText(descriptionText)).toBeInTheDocument();
   });
+
+  it('Sets the ref on the fieldset element if given', () => {
+    const ref = createRef<HTMLFieldSetElement>();
+    render({}, ref);
+    expect(ref.current).toBeInstanceOf(HTMLFieldSetElement);
+  });
 });
 
-const render = (props: Partial<FieldSetProps> = {}) => {
+const render = (
+  props: Partial<FieldSetProps> = {},
+  ref?: RefObject<HTMLFieldSetElement>,
+) => {
   const allProps = { ...defaultProps, ...props };
-  return renderRtl(<FieldSet {...allProps}>{allProps.children}</FieldSet>);
+  return renderRtl(
+    <FieldSet
+      {...allProps}
+      ref={ref}
+    >
+      {allProps.children}
+    </FieldSet>,
+  );
 };

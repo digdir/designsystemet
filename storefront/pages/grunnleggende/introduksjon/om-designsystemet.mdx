@@ -1,4 +1,4 @@
-import { Meta } from '@components';
+import { Meta, ResponsiveIframe } from '@components';
 import { MenuPageLayout } from '@layouts';
 
 <Meta
@@ -11,25 +11,18 @@ export default ({ children, menu }) => (
     content={children}
     data={{
       title: 'Om designsystemet',
-      date: '4. april 2023',
+      date: '28. juni 2023',
     }}
   />
 );
 
+Innsikten fra arbeidet i "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/retningslinjer-brukeropplevelse-og-designsystem/4652)" viser at det er en utfordring at utformingen av brukergrensesnittene er så ulik. Det tilsier at vi må samarbeide tettere om utformingen av digitale tjenester til innbyggerne. Dette kan vi gjøre gjennom et felles designsystem med felles prinsipper, retningslinjer, mønstre og komponenter.
+
 ## Hva er felles designsystem?
 
-Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor.
+Felles designsystem er en verktøykasse som skal bestå av grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor.
 
-Arbeidet med et felles designsystem startet såvidt i 2022 da designsystemet ble tatt i bruk i Altinn Studio og flere offentlige etater bidro inn med komponenter de hadde behov for i sin tjenesteutvikling. Du kan høre mer om dette i denne presentasjonen fra [brukerrådet](https://vimeo.com/757069999?embedded=true&source=vimeo_logo&owner=21253381):
-
-<iframe
-  src='https://player.vimeo.com/video/757069999?h=9b4a3be505'
-  width='100%'
-  height='600px'
-  frameborder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-  allowfullscreen
-></iframe>
+Komponentene i designsystemet skal være mulig å ta i bruk og utvide, uten å gjøre endringer i selve designsystemet. Ved å bruke prinsipper, tokens og komponenter fra designsystemet kan man selv bygge mer sammensatte komponenter som dekker spesifikke behov.
 
 ## Hvorfor et felles designssytem?
 
@@ -39,7 +32,7 @@ En enda viktigere grunn er at et designsystem gjør det enklere å lage helhetli
 
 Problemet i dag er at vi utvikler hvert vårt designsystem i hver vår organisasjon, med ulike retningslinjer, komponenter og mønstre. Dette fører til fragmenterte og lite helhetlige brukeropplevelser på tvers av offentlig sektor.
 
-Et felles designsystem er et sentralt utgangspunkt for at vi skal kunne redusere digitalt utenforskap og at innbyggerne skal få en enklere digital hverdag. Det er også i tråd med et av målene i strategien "Digital hele livet": _Regjeringen vil: Jobbe for at offentlige digitale tjenester har et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggerne med lav digital kompetanse kan benytte tjenesten._
+Et felles designsystem er et sentralt utgangspunkt for at vi skal kunne redusere digitalt utenforskap og at innbyggerne skal få en enklere digital hverdag. Det er også i tråd med et av målene i strategien "[Digital hele livet](https://www.regjeringen.no/contentassets/8f8751780e9749bfa8946526b51f10f4/digital-hele-livet.pdf)": _Regjeringen vil: Jobbe for at offentlige digitale tjenester har et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggerne med lav digital kompetanse kan benytte tjenesten._
 
 **Vårt ønske og ambisjon er at felles designsystem kan bidra til at innbyggerne i Norge i større grad opplever «én digital offentlig sektor».**
 
@@ -69,22 +62,34 @@ For å oppnå helhetlige og gjenkjennelige tjenester i offentlig sektor er vi av
 
 For å kunne gjøre dette trenger vi
 
-- Et bibliotek i Figma med generiske, fleksible komponenter som kan styles ulikt (Støtte for multibranding gjennom Tokens)
-- Design Tokens som sørger for en "single source of thruth"
-- Kodede komponenter i et godt dokumentert bibliotek
-- En felles innsiktsbase som kan lenkes opp mot konkrete komponenter og interaksjonsmønstre
-
-En viktig verdi for oss er å være åpne og transparente, og vi tror dette er avgjørende for å få til et samarbeid på tvers. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystem), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [sprint-planlegging](https://github.com/orgs/digdir/projects/3/views/8), [roadmap](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19744450), [Figma](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6615%3A20148&t=rJYuezxREbfP1OVv-1), [Storybook](https://digdir.github.io/designsystem/). Vi har også ukentlige designsystem-møter som er åpne for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist og tar imot innspill og behov. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon (via Teams).
+- [Et bibliotek i Figma](https://www.figma.com/@designsystemet) med generiske, fleksible komponenter som kan styles ulikt
+- [Design Tokens](/grunnleggende/designelementer/design-tokens) som sørger for en "single source of truth" og støtter multibranding
+- [Kodede komponenter](https://digdir.github.io/designsystem/) i et godt dokumentert bibliotek
+- [Et felles innsiktsbibliotek](https://github.com/digdir/innsiktsbibliotek) som kan lenkes opp mot konkrete komponenter og interaksjonsmønstre
 
 ### Hvordan få til et samarbeid?
 
-Vi har ikke fastiten, men en mulig løsning kunne vært en tverretatlig arbeidsgruppe som finner ut hvordan vi kan kombinere det vi allerede har av eksisterende ressurser hos ulike offentlige aktører, og videreutvikler dette i fellesskap. De offentlige aktørene som blir med på samarbeidet, bør stille med ressurser med riktig fagkompetanse som representerer deres organisasjon og deres brukere.
+En viktig verdi for oss er å være åpne og transparente, og vi tror dette er avgjørende for å få til et samarbeid på tvers. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystem), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [sprint-planlegging](https://github.com/orgs/digdir/projects/3/views/8), [roadmap](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19744450), [Figma](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6615%3A20148&t=rJYuezxREbfP1OVv-1), [Storybook](https://digdir.github.io/designsystem/). Vi har også ukentlige designsystem-møter som er åpne for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist og tar imot innspill og behov. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon (via Teams).
+
+Vi har ikke fasiten på hvordan vi best kan samarbeide om et felles designsystem, men en mulig løsning kunne vært en tverretatlig arbeidsgruppe som finner ut hvordan vi kan kombinere det vi allerede har av eksisterende ressurser hos ulike offentlige aktører, og videreutvikler dette i fellesskap. De offentlige aktørene som blir med på samarbeidet, bør stille med ressurser med riktig fagkompetanse som representerer deres organisasjon og deres brukere.
 
 ## Arbeidsgruppen
 
-Arbeidsgruppen i dag består hovedsakelig av designsystem-teamet i Digdir, samt jevnlige arbeidsmøter med Brønnøysundregistrene der vi ser på hvordan vi best mulig kan få til et samarbeid på tvers av ulike organisasjoner. Vi har også vært i dialog med andre offentlige aktører, og vil gjerne komme i kontakt med flere.
+Arbeidsgruppen i dag består hovedsakelig av designsystem-teamet i Digdir, samt jevnlige arbeidsmøter med Brønnøysundregistrene der vi ser på hvordan vi best mulig kan få til et samarbeid på tvers og utforsker et oppsett som kan fungere for flere. Vi er også i dialog med andre offentlige aktører, og vil gjerne komme i kontakt med flere. Samtidig arbeider vi for mer ordnede rammer i det offentlige for at vi skal kunne jobbe i et tverretatlig team.
 
-I tillegg til disse har vi også designere og utviklere fra ulike produktteam i Digdir som er involvert i designsystemet, og bidrar inn med det de har behov for i sine produkt. Vi har også et tett samarbeid med [Altinn Studio](https://altinn.studio/) - et verktøy for å utvikle digitale tjenester til innbyggere og næringsliv.
+Det er også designere og utviklere fra ulike produktteam i Digdir som er involvert i designsystemet, og bidrar inn med det de har behov for i sine produkt. Vi har også et tett samarbeid med [Altinn Studio](https://altinn.studio/) - et verktøy for å utvikle digitale tjenester til innbyggere og næringsliv.
+
+## Historie
+
+Arbeidet med et felles designsystem startet såvidt i 2022 da designsystemet ble tatt i bruk i Altinn Studio og flere offentlige etater bidro inn med komponenter de hadde behov for i sin tjenesteutvikling. Du kan høre mer om dette i denne presentasjonen fra [brukerrådet](https://vimeo.com/757069999?embedded=true&source=vimeo_logo&owner=21253381):
+
+<ResponsiveIframe
+  src='https://player.vimeo.com/video/757069999?h=9b4a3be505'
+  width='100%'
+  height='600px'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+></ResponsiveIframe>
 
 ## Vil du bidra eller prate om et mulig samarbeid?
 

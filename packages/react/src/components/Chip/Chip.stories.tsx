@@ -30,12 +30,13 @@ export const Preview: Story = {
 };
 
 export const Default: StoryFn<typeof Chip> = () => {
-  return <Chip>Nynorsk</Chip>;
+  return <Chip size='small'>Nynorsk</Chip>;
 };
 
 export const ChipWithCheckmark: StoryFn<typeof Chip> = () => {
   return (
     <Chip
+      size='small'
       checkmark
       selected
     >
@@ -45,14 +46,60 @@ export const ChipWithCheckmark: StoryFn<typeof Chip> = () => {
 };
 
 export const Removable: StoryFn<typeof Chip> = () => {
-  return <Chip.Removable aria-label='Slett nynorsk'>Nynorsk</Chip.Removable>;
+  return (
+    <Chip.Removable
+      size='small'
+      aria-label='Slett nynorsk'
+    >
+      Nynorsk
+    </Chip.Removable>
+  );
 };
 
-export const Group: StoryFn<typeof Chip> = () => {
+export const ToggleChip: StoryFn<typeof Chip> = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+  const chips: string[] = ['nynorsk', 'bokmål'];
+
   return (
-    <Chip.Group>
-      <Chip>Nynorsk</Chip>
-      <Chip>Bokmål</Chip>
+    <Chip.Group size='small'>
+      {chips.map((chip) => (
+        <Chip
+          key={chip}
+          selected={selected === chip}
+          onClick={() => setSelected(chip)}
+          checkmark
+        >
+          {chip}
+        </Chip>
+      ))}
+    </Chip.Group>
+  );
+};
+
+export const ToggleMultiple: StoryFn<typeof Chip> = () => {
+  const [selected, setSelected] = useState<string[]>([]);
+  const chips: string[] = ['nynorsk', 'bokmål'];
+
+  const handleToggle = (chip: string) => {
+    if (selected.includes(chip)) {
+      setSelected((prev) => prev.filter((c) => c !== chip));
+    } else {
+      setSelected((prev) => [...prev, chip]);
+    }
+  };
+
+  return (
+    <Chip.Group size='small'>
+      {chips.map((chip) => (
+        <Chip
+          checkmark
+          key={chip}
+          selected={selected.includes(chip)}
+          onClick={() => handleToggle(chip)}
+        >
+          {chip}
+        </Chip>
+      ))}
     </Chip.Group>
   );
 };

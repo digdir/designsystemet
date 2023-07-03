@@ -1,5 +1,6 @@
 .tokens {
-  box-shadow: none !important;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .cards {
@@ -28,7 +29,7 @@
 }
 
 .preview {
-  height: 81px;
+  min-height: var(--preview-min-height);
   width: 160px;
   border-radius: 4px;
   flex-basis: 160px;

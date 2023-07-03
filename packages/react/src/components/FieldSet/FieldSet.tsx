@@ -1,39 +1,60 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import type { FieldsetHTMLAttributes, ForwardedRef, ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { ErrorMessage, HelpText } from '../';
 
 import classes from './FieldSet.module.css';
 
-export interface FieldSetProps
-  extends React.DetailedHTMLProps<
-    React.FieldsetHTMLAttributes<HTMLFieldSetElement>,
-    HTMLFieldSetElement
-  > {
-  children: ReactNode;
-  className?: string;
+export type FieldSetProps = {
+  /** Class name that is applied to the content within the field set. */
   contentClassName?: string;
-  description?: ReactNode;
-  error?: ReactNode;
-  helpText?: ReactNode;
-  legend?: ReactNode;
-  size?: 'xsmall' | 'small';
-}
 
-const FieldSet = ({
-  children,
-  className,
-  contentClassName,
-  description,
-  error,
-  helpText,
-  legend,
-  size = 'small',
-  ...rest
-}: FieldSetProps) => {
-  return (
+  /** A description of the field set. This will appear below the legend. */
+  description?: ReactNode;
+
+  /** Set to `true` to disable all input fields within the field set. */
+  disabled?: boolean;
+
+  /** If set, this will diplay an error message at the bottom of the component. */
+  error?: ReactNode;
+
+  /**
+   * If set, a help text button will appear next to the legend.
+   * The provided message will appear when the user clicks on the button.
+   */
+  helpText?: ReactNode;
+
+  /** The title of the help text button. */
+  helpTextTitle?: string;
+
+  /** The legend of the field set. */
+  legend?: ReactNode;
+
+  /** The size of the field set. */
+  size?: 'xsmall' | 'small';
+} & FieldsetHTMLAttributes<HTMLFieldSetElement>;
+
+const FieldSet = forwardRef<HTMLFieldSetElement, FieldSetProps>(
+  (
+    {
+      children,
+      className,
+      contentClassName,
+      description,
+      disabled = false,
+      error,
+      helpText,
+      helpTextTitle = 'Vis hjelpetekst',
+      legend,
+      size = 'small',
+      ...rest
+    },
+    ref: ForwardedRef<HTMLFieldSetElement>,
+  ) => (
     <fieldset
+      ref={ref}
+      disabled={disabled}
       {...rest}
       className={cn(classes.fieldSet, classes[size], className)}
     >
@@ -44,9 +65,7 @@ const FieldSet = ({
             {helpText && (
               <HelpText
                 size={size}
-                title={
-                  typeof legend === 'string' ? `Help text for ${legend}` : ''
-                }
+                title={helpTextTitle}
               >
                 {helpText}
               </HelpText>
@@ -62,8 +81,8 @@ const FieldSet = ({
         </div>
       )}
     </fieldset>
-  );
-};
+  ),
+);
 
 FieldSet.displayName = 'FieldSet';
 

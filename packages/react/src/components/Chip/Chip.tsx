@@ -23,6 +23,7 @@ export const Chip: OverridableComponent<ChipProps, HTMLButtonElement> =
         checkmark = false,
         selected = false,
         as: Component = 'button',
+        size = 'small',
         ...rest
       },
       ref,
@@ -31,6 +32,7 @@ export const Chip: OverridableComponent<ChipProps, HTMLButtonElement> =
       return (
         <ChipButton
           {...rest}
+          size={size}
           as={Component}
           ref={ref}
           selected={selected}

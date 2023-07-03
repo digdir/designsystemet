@@ -1,8 +1,8 @@
-import { Meta } from '@components';
+import { Meta, ResponsiveIframe } from '@components';
 import { MenuPageLayout } from '@layouts';
 
 <Meta
-  title='Kom i gang med Figma'
+  title='Kom i gang med designsystemet i Figma'
   description='Beskrivelse'
 />
 
@@ -10,25 +10,32 @@ export default ({ children, menu }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Kom i gang med Figma',
-      date: '25. mars 2023',
+      title: 'Kom i gang med designsystemet i Figma',
+      date: '27. juni 2023',
     }}
   />
 );
 
-Designsystemet består av stiler og komponenter i Figma, samt tilhørende design tokens som er i bruk i react-komponentene. Ved hjelp av bibliotekene i Figma kan du som designer skisserere og prototype nye løsninger.
+I Figma finner du komponenter og stiler fra designsystemet som du kan bruke i designet ditt. Designet har også tilhørende design tokens som er i bruk i react-komponentene.
 
-Biblioteket er foreløpig ikke tilgjengeliggjort i Figma Community, da vi er i en veldig tidlig fase av arbeidet. Er du i organisasjonen "Digdir" kan du joine "Felles designsystem" i Figma allerede nå og å få tilgang til stilene og komponentene.
+Biblioteket er foreløpig ikke tilgjengeliggjort i Figma Community, da vi er i en veldig tidlig fase av arbeidet. Ønsker du å være med å utvikle dette i fellesskap - [ta kontakt](mailto:designsystem@digdir.no) så kan vi se på mulige samarbeidsformer.
 
-[bilde-eksempel]
+Har du tilgang til Figma-kontoen "Digdir" kan du joine "Felles designsystem" allerede nå og å få tilgang til stilene og komponentene.
 
-Ønsker du å være med å utvikle dette i fellesskap - ta kontakt så kan vi se på mulige samarbeidsformer.
+![Stegene for å joine Designsystem-teamet i Figma. Skjermbilde av Figma.](/img/join-team.png)
+
+For å finne designsystemet:
+
+1. Gå til "All teams"
+2. Søk etter "Designsystemet"
+3. Klikk på fanen som heter "Teams"
+4. Join teamet.
 
 ## Kom i gang med komponenter
 
 Etter å ha joinet "Felles designsystem" må du sjekke at du har slått på bibliotekene du vil bruke stiler og komponenter fra. Dette gjør du under "Assets" og bok-symbolet.
 
-[bilde-eksempel]
+![Skjermbilde av Figma. Stegene for å aktivere bibliotekene.](/img/activate-library.png)
 
 Alle bør ha aktivert de 3 fellesbibliotekene:
 
@@ -36,16 +43,56 @@ Alle bør ha aktivert de 3 fellesbibliotekene:
 - Felles tokens
 - Felles ikonbibliotek
 
-Når du har slått på bibliotekene skal du kunne se komponentene ved å klikke på "Assets" og søke på det du trenger. Du kan også bruke tastatursnarveien SHIFT + I.
+Når du har slått på bibliotekene skal du kunne se komponentene ved å klikke på "Assets" og søke på det du trenger. Du kan også bruke tastatursnarveien SHIFT + I. Nå er det bare å dra komponentene inn i dine egne filer!
+
+Vil du være med å lage nye komponenter? [Se hvordan du kan bidra](/grunnleggende/for-designere/bidra-i-figma).
 
 ### Varianter
 
-Noen komponenter kommer med ulike varianter og egenskaper. I Button-komponenten kan du for eksempel aktivere ulike vektinger, states, størrelser og du kan også slå på og av ikoner.
+Alle komponenter kommer med ulike varianter og egenskaper. I Button-komponenten kan du for eksempel aktivere ulike vektinger, states, størrelser og du kan også slå på og av ikoner.
 
-[bilde-eksempel]
+<ResponsiveIframe
+  src='/img/button-variant-properties.mp4'
+  title='Skjermopptak av Figma. Stegene for å aktivere bibliotekene.'
+  frameborder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowfullscreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
 
-## Kom i gang med stiler
+### Kom i gang med stiler
 
 Stilene vil være tilgjengelige i høyremargen når du for eksempel skal velge en farge eller font og du trykker på de fire dottene.
 
-[bilde-eksempel]
+### Bruk egen fargepalett på komponentene
+
+Tokens er foreløpig ikke laget som [Figma variabler](https://docs.tokens.studio/variables/creating-variables), men det står på planen! 🙌 🤩
+
+Inntil videre må du derfor ha installert pluginen [Tokens Studio for Figma](https://docs.tokens.studio/) for å kunne aktivere ditt eget theme med egne fargepaletter. Du trenger en Github-bruker for dette.
+
+1. [Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens-plugin
+1. Generer et nytt "Personal Access Token" (PAT) i [GitHub Developer Settings](https://github.com/settings/tokens) med omfanget "repo"
+1. Kopier PAT-en (du kan bare se den én gang)
+1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
+   - Navn: `Digdir Figma Tokens`
+   - Personlig tilgangstoken: _din PAT_
+   - Repository: `digdir/designsystem`
+   - Standard gren: "hoved".
+   - Filbane: `design-tokens`
+
+![Skjermbilde av Tokens Studio og innstillingene](/img/connect-tokens-studio-to-git.png)
+
+### Typografi på små og store skjermer
+
+For all tekst bør du bruke de ferdige utformede typografi-komponentene som er tilgjengelig i Figma og kode. Da sikrer vi at vi har et konsistent uttrykk, riktig bruk avstander, størrelser og font-weight. Typografi-komponenter kan justere seg etter størrelsen på rammen du jobber i. Det vil si at skal du designe for mobil kan du aktivere "viewport 320" i Tokens Studio. Du trenger ikke tenke på noe mer. Størrelse og avstand på overskrifter og brødtekst er nå blitt mindre. 🙌
+
+Les mer om [typografi](/grunnleggende/designelementer/typografi).
+
+<ResponsiveIframe
+  src='/img/fluid-text-size.mp4'
+  title='Skjermopptak av Figma som viser hvordan størrelse og avstand på tekst blir mindre i en mindre viewport'
+  frameborder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowfullscreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
