@@ -68,7 +68,8 @@
   padding-left: var(--fdsc-accordion-header-padding-left);
 }
 
-.header > button:focus-visible {
+.header > button:focus-visible,
+.header > button:focus {
   --fdsc-focus-border-width: 3px;
 
   outline: var(--fdsc-focus-border-width) solid var(--fds-semantic-border-focus-outline);
