@@ -282,6 +282,7 @@
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-active);
+
   /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
   background: #ccd6df;
 }
@@ -331,7 +332,7 @@
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: --fds-semantic-text-neutral-on_inverted);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-active);
 }
