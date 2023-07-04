@@ -1,22 +1,19 @@
 [
   {
-    "id": "df8b73b683752ef5f35b3cf293bbe5a0cba9f88d",
-    "name": "Tilsynet",
+    "id": "37bcf1d853bfaa674ac27eadcefcfbbb32842717",
+    "name": "Default",
+    "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Base/Core": "source",
-      "Base/Component": "enabled",
       "Base/Semantic": "enabled",
-      "Brand/Tilsynet": "enabled"
+      "Base/Component": "enabled"
     },
-    "$figmaStyleReferences": {}
+    "group": "Core"
   },
   {
     "id": "edeff752fe55f2581f6ceee82c66aac8b8a8622d",
     "name": "Digdir",
     "selectedTokenSets": {
-      "Base/Core": "source",
-      "Base/Component": "enabled",
-      "Base/Semantic": "enabled",
       "Brand/Digdir": "enabled"
     },
     "$figmaStyleReferences": {
@@ -265,30 +262,52 @@
       "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
       "brand.secondary.900": "S:23925b130515fb61d12fb3414165f61e094a6262,",
       "semantic.surface.danger.no_fill-active": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,"
-    }
+    },
+    "group": "Brand"
   },
   {
-    "id": "3fd3116514764af5cf244506c98e3944ca9f5e93",
-    "name": "Digdir Compact",
+    "id": "b6c0947db14f54e78ab1589aa83ea5fd178e0c74",
+    "name": "Altinn",
+    "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Base/Core": "source",
-      "Mode/Compact": "enabled",
-      "Base/Component": "enabled",
-      "Base/Semantic": "enabled",
-      "Brand/Digdir": "enabled"
+      "Brand/Altinn": "enabled"
     },
-    "$figmaStyleReferences": {}
+    "group": "Brand"
   },
   {
-    "id": "246b5bc773cfeab1544d776c4104e7229af37c3a",
-    "name": "Digdir Mobile",
+    "id": "df8b73b683752ef5f35b3cf293bbe5a0cba9f88d",
+    "name": "Tilsynet",
     "selectedTokenSets": {
-      "Base/Core": "source",
-      "Base/Semantic": "enabled",
-      "Base/Component": "enabled",
-      "Brand/Digdir": "enabled",
-      "Viewport/@375": "enabled"
+      "Brand/Tilsynet": "enabled"
     },
-    "$figmaStyleReferences": {}
+    "$figmaStyleReferences": {},
+    "group": "Brand"
+  },
+  {
+    "id": "274b43921cab98c0e4935a4ac82b4eed32bb65d3",
+    "name": "Compact",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "Mode/Compact": "enabled"
+    },
+    "group": "Mode"
+  },
+  {
+    "id": "066cc74dd8a1205adb8fcec2746c685d329d85ae",
+    "name": "320",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "Viewport/@320": "enabled"
+    },
+    "group": "Viewport"
+  },
+  {
+    "id": "d4d7ddc1c15171d32b3b1f585dfccf215924d211",
+    "name": "768",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "Viewport/@768": "enabled"
+    },
+    "group": "Viewport"
   }
 ]
