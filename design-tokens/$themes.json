@@ -1147,7 +1147,7 @@
     "selectedTokenSets": {
       "Density/Compact": "enabled"
     },
-    "group": "Mode",
+    "group": "Density",
     "$figmaCollectionId": "VariableCollectionId:405:56568",
     "$figmaModeId": "405:16",
     "$figmaVariableReferences": {
