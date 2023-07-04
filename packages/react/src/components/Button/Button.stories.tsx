@@ -51,7 +51,7 @@ const LoadingTemplate = (args: ButtonProps) => {
 };
 
 // Render functions need to accept "args" for code preview to work properly
-const VariantsTemplate = (args: ButtonProps) => {
+const VariantsTemplate = (_args: ButtonProps) => {
   return (
     <>
       <Button {...Filled.args}>Fylt</Button>
@@ -64,6 +64,7 @@ const VariantsTemplate = (args: ButtonProps) => {
 export const props: Story = {
   args: {
     children: 'Knapp',
+    disabled: false,
   },
 };
 
