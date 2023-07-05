@@ -1214,20 +1214,6 @@
     "type": "sizing",
     "description": "4px"
   },
-  "component-mode-height": {
-    "small": {
-      "value": "36",
-      "type": "sizing"
-    },
-    "medium": {
-      "value": "{sizing.10}",
-      "type": "sizing"
-    },
-    "large": {
-      "value": "{sizing.12}",
-      "type": "sizing"
-    }
-  },
   "border_width": {
     "default": {
       "value": "{border_width.1}",
