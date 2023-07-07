@@ -16,6 +16,7 @@
   --fds-brand-primary-600: #f45f63;
   --fds-brand-primary-700: #dc5659;
   --fds-brand-primary-800: #c34c4f;
+  --fds-brand-primary-900: #b83d41;
   --fds-brand-secondary-100: #fcf7e9;
   --fds-brand-secondary-200: #faeec2;
   --fds-brand-secondary-300: #f5dda6;
@@ -24,6 +25,7 @@
   --fds-brand-secondary-600: #e5aa20;
   --fds-brand-secondary-700: #ce991d;
   --fds-brand-secondary-800: #b7881a;
+  --fds-brand-secondary-900: #a17717;
   --fds-brand-tertiary-100: #e9f5ff;
   --fds-brand-tertiary-200: #d2eafd;
   --fds-brand-tertiary-300: #a5d6fb;
@@ -32,28 +34,37 @@
   --fds-brand-tertiary-600: #1e98f5;
   --fds-brand-tertiary-700: #1b88dd;
   --fds-brand-tertiary-800: #156aac;
-  --fds-semantic-background-default: #fff;
+  --fds-brand-tertiary-900: #125a91;
+  --fds-semantic-background-default: #ffffff;
   --fds-semantic-background-subtle: #f4f5f6;
-  --fds-semantic-surface-neutral-default: #fff;
+  --fds-semantic-surface-neutral-default: #ffffff;
   --fds-semantic-surface-neutral-selected: #e6eff8;
   --fds-semantic-surface-neutral-subtle: #f4f5f6;
   --fds-semantic-surface-neutral-subtle-hover: #e9eaec;
   --fds-semantic-surface-neutral-dark: #68707c;
   --fds-semantic-surface-neutral-inverted: #1e2b3c;
-  --fds-semantic-surface-action-subtle: #e6eff8;
-  --fds-semantic-surface-action-subtle-hover: #b3d0ea;
-  --fds-semantic-surface-action-default: #0062ba;
-  --fds-semantic-surface-action-hover: #004e95;
-  --fds-semantic-surface-action-active: #00315d;
-  --fds-semantic-surface-action-no_fill: #fff;
-  --fds-semantic-surface-action-no_fill-hover: #e6eff8;
-  --fds-semantic-surface-action-no_fill-active: #b3d0ea;
+  --fds-semantic-surface-action-primary-subtle: #e6eff8;
+  --fds-semantic-surface-action-primary-subtle-hover: #b3d0ea;
+  --fds-semantic-surface-action-primary-default: #0062ba;
+  --fds-semantic-surface-action-primary-hover: #004e95;
+  --fds-semantic-surface-action-primary-active: #00315d;
+  --fds-semantic-surface-action-primary-no_fill: #ffffff;
+  --fds-semantic-surface-action-primary-no_fill-hover: #e6eff8;
+  --fds-semantic-surface-action-primary-no_fill-active: #b3d0ea;
+  --fds-semantic-surface-action-secondary-subtle: #f4f5f6;
+  --fds-semantic-surface-action-secondary-subtle-hover: #e9eaec;
+  --fds-semantic-surface-action-secondary-default: #00315d;
+  --fds-semantic-surface-action-secondary-hover: rgba(#00315d, 0.9);
+  --fds-semantic-surface-action-secondary-active: rgba(#00315d, 0.8);
+  --fds-semantic-surface-action-secondary-no_fill: #ffffff;
+  --fds-semantic-surface-action-secondary-no_fill-hover: rgba(#00315d, 0.1);
+  --fds-semantic-surface-action-secondary-no_fill-active: rgba(#00315d, 0.2);
   --fds-semantic-surface-success-subtle: #d1f4e1;
   --fds-semantic-surface-success-subtle-hover: #8be4b5;
   --fds-semantic-surface-success-default: #118849;
   --fds-semantic-surface-success-hover: #0c6536;
   --fds-semantic-surface-success-active: #084826;
-  --fds-semantic-surface-success-no_fill: #fff;
+  --fds-semantic-surface-success-no_fill: #ffffff;
   --fds-semantic-surface-success-no_fill-hover: #d1f4e1;
   --fds-semantic-surface-success-no_fill-active: #8be4b5;
   --fds-semantic-surface-warning-subtle: #fffbe6;
@@ -64,9 +75,9 @@
   --fds-semantic-surface-danger-default: #e02e49;
   --fds-semantic-surface-danger-hover: #b3253a;
   --fds-semantic-surface-danger-active: #861c2c;
-  --fds-semantic-surface-danger-no_fill: #fff;
+  --fds-semantic-surface-danger-no_fill: #ffffff;
   --fds-semantic-surface-danger-no_fill-hover: #f9d5db;
-  --fds-semantic-surface-danger-no_fill-action: #f3abb6;
+  --fds-semantic-surface-danger-no_fill-active: #f3abb6;
   --fds-semantic-surface-info-subtle: #e6eff8;
   --fds-semantic-surface-info-subtle-hover: #b3d0ea;
   --fds-semantic-surface-primary-light: #fddfe0;
@@ -76,16 +87,28 @@
   --fds-semantic-surface-secondary-light: #faeec2;
   --fds-semantic-surface-secondary-light-hover: #f5dda6;
   --fds-semantic-surface-secondary-light-active: #efcc79;
-  --fds-semantic-surface-secondary-dark: #b7881a;
+  --fds-semantic-surface-secondary-dark: #a17717;
   --fds-semantic-surface-tertiary-light: #d2eafd;
   --fds-semantic-surface-tertiary-light-hover: #a5d6fb;
   --fds-semantic-surface-tertiary-light-active: #78c1f9;
   --fds-semantic-surface-tertiary-dark: #156aac;
+  --fds-semantic-surface-on_inverted-default: #ffffff;
+  --fds-semantic-surface-on_inverted-hover: #ffffffe6;
+  --fds-semantic-surface-on_inverted-active: #ffffffcc;
+  --fds-semantic-surface-on_inverted-no_fill: #ffffff00;
+  --fds-semantic-surface-on_inverted-no_fill-hover: #ffffff1a;
+  --fds-semantic-surface-on_inverted-no_fill-active: #ffffff33;
   --fds-semantic-border-info-default: #004e95;
-  --fds-semantic-border-action-subtle: #e6eff8;
-  --fds-semantic-border-action-default: #0062ba;
-  --fds-semantic-border-action-hover: #004e95;
-  --fds-semantic-border-action-active: #00315d;
+  --fds-semantic-border-action-primary-subtle: #b3d0ea;
+  --fds-semantic-border-action-primary-subtle-hover: #66a1d6;
+  --fds-semantic-border-action-primary-default: #0062ba;
+  --fds-semantic-border-action-primary-hover: #004e95;
+  --fds-semantic-border-action-primary-active: #00315d;
+  --fds-semantic-border-action-secondary-subtle: #e9eaec;
+  --fds-semantic-border-action-secondary-subtle-hover: #d2d5d8;
+  --fds-semantic-border-action-secondary-default: #00315d;
+  --fds-semantic-border-action-secondary-hover: #00315d;
+  --fds-semantic-border-action-secondary-active: #00315d;
   --fds-semantic-border-neutral-default: #68707c;
   --fds-semantic-border-neutral-subtle: #d2d5d8;
   --fds-semantic-border-neutral-strong: #1e2b3c;
@@ -110,30 +133,34 @@
   --fds-semantic-border-tertiary-default: #1e98f5;
   --fds-semantic-border-tertiary-hover: #1b88dd;
   --fds-semantic-border-tertiary-active: #156aac;
-  --fds-semantic-border-action_dark-default: #00315d;
-  --fds-semantic-border-on_inverted-default: #fff;
+  --fds-semantic-border-on_inverted-default: #ffffff;
+  --fds-semantic-border-input-default: #00315d;
+  --fds-semantic-border-input-hover: #0062ba;
   --fds-semantic-text-success-default: #0c6536;
   --fds-semantic-text-success-hover: #084826;
   --fds-semantic-text-success-active: #084826;
-  --fds-semantic-text-success-on_success: #fff;
+  --fds-semantic-text-success-on_success: #ffffff;
   --fds-semantic-text-success-on_success_subtle: #1e2b3c;
   --fds-semantic-text-neutral-default: #1e2b3c;
-  --fds-semantic-text-neutral-subtle: #68707c;
-  --fds-semantic-text-neutral-on_inverted: #fff;
-  --fds-semantic-text-action-default: #0062ba;
-  --fds-semantic-text-action-hover: #004e95;
-  --fds-semantic-text-action-active: #00315d;
-  --fds-semantic-text-action-on_action: #fff;
+  --fds-semantic-text-neutral-subtle: #4b5563;
+  --fds-semantic-text-neutral-on_inverted: #ffffff;
+  --fds-semantic-text-action-primary-default: #0062ba;
+  --fds-semantic-text-action-primary-hover: #004e95;
+  --fds-semantic-text-action-primary-active: #00315d;
+  --fds-semantic-text-action-primary-on_action: #ffffff;
+  --fds-semantic-text-action-secondary-default: #00315d;
+  --fds-semantic-text-action-secondary-hover: #00315d;
+  --fds-semantic-text-action-secondary-active: #00315d;
+  --fds-semantic-text-action-secondary-on_action: #ffffff;
   --fds-semantic-text-warning-default: #995404;
   --fds-semantic-text-warning-icon_warning: #cc7005;
   --fds-semantic-text-warning-on_warning: #663802;
   --fds-semantic-text-danger-default: #b3253a;
   --fds-semantic-text-danger-hover: #861c2c;
   --fds-semantic-text-danger-active: #5a121d;
-  --fds-semantic-text-danger-on_danger: #fff;
+  --fds-semantic-text-danger-on_danger: #ffffff;
   --fds-semantic-text-danger-on_danger_subtle: #1e2b3c;
   --fds-semantic-text-visited-default: #7a1265;
-  --fds-semantic-text-action_dark-default: #00315d;
   --fds-typography-heading-xlarge: 500
     clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem) / 1.3 'Inter';
   --fds-typography-heading-large: 500
@@ -172,15 +199,30 @@
     clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.3 'Inter';
   --fds-typography-label-xsmall: 500
     clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.3 'Inter';
+  --fds-typography-label-radio_and_checkbox-large: 400
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.3 'Inter';
+  --fds-typography-label-radio_and_checkbox-medium: 400
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.3 'Inter';
+  --fds-typography-label-radio_and_checkbox-small: 400
+    clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.3 'Inter';
+  --fds-typography-label-radio_and_checkbox-xsmall: 400
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.3 'Inter';
   --fds-typography-error_message-medium: 400
     clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.3 'Inter';
   --fds-typography-error_message-small: 400
     clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.3 'Inter';
+  --fds-typography-error_message-xsmall: 400
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.3 'Inter';
   --fds-typography-interactive-large: 400 1.5rem/1.3 'Inter';
   --fds-typography-interactive-medium: 400 1.125rem/1.3 'Inter';
   --fds-typography-interactive-small: 400 1rem/1.3 'Inter';
   --fds-opacity-disabled: 30%;
   --fds-border_radius-interactive: 4px;
+  --fds-border_radius-small: 2px;
+  --fds-border_radius-medium: 4px;
+  --fds-border_radius-large: 8px;
+  --fds-border_radius-xlarge: 12px;
+  --fds-border_radius-full: 9999px;
   --fds-spacing-0: calc(0);
   --fds-spacing-1: calc(var(--fds-base_spacing) / 16 * var(--fds-font-size-f0));
   --fds-spacing-2: calc(
@@ -270,9 +312,9 @@
     (var(--fds-base_sizing) * 30 / 16) * var(--fds-font-size-f0)
   );
   --fds-base_sizing: 4;
-  --fds-component-mode-height-small: var(--fds-sizing-10);
-  --fds-component-mode-height-medium: var(--fds-sizing-12);
-  --fds-component-mode-height-large: var(--fds-sizing-14);
+  --fds-component-mode-height-small: 36;
+  --fds-component-mode-height-medium: var(--fds-sizing-10);
+  --fds-component-mode-height-large: var(--fds-sizing-12);
   --fds-border_width-default: 1px;
   --fds-border_width-active: 2px;
   --fds-border_width-tab_focus: 2px;
