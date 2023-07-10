@@ -1,9 +1,8 @@
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Paragraph } from '../../Typography';
-import type { OverridableComponent } from '../../../types/OverridableComponent';
 
 import classes from './ChipButton.module.css';
 
@@ -16,27 +15,15 @@ export type ChipButtonProps = {
    * Toggles `aria-pressed` and visual-changes
    * */
   selected?: boolean;
-} & HTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ChipButton: OverridableComponent<
-  ChipButtonProps,
-  HTMLLabelElement
-> = forwardRef(
-  (
-    {
-      size = 'small',
-      children,
-      selected = false,
-      className,
-      as: Component = 'button',
-      ...rest
-    },
-    ref,
-  ): JSX.Element => {
+export const ChipButton = forwardRef<HTMLButtonElement, ChipButtonProps>(
+  ({ size = 'small', children, selected = false, className, ...rest }, ref) => {
     return (
-      <Component
+      <button
         {...rest}
         ref={ref}
+        type='button'
         aria-pressed={selected}
         className={cn(classes.chipButton, classes[size], className)}
       >
@@ -47,7 +34,7 @@ export const ChipButton: OverridableComponent<
         >
           {children}
         </Paragraph>
-      </Component>
+      </button>
     );
   },
 );
