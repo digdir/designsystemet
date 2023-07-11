@@ -1,10 +1,39 @@
-.myClass {
-  color: red;
+.radio {
+  display: inline-grid;
+  grid: [input] 1fr / [input] 1fr;
+  position: relative;
+  grid-auto-flow: column;
+  align-items: center;
 }
 
-.radio {
-  display: inline-block;
+/* .radio > input::before {
+  content: '';
+  position: absolute;
+  width: 32px;
+  aspect-ratio: 1/1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+} */
+
+.radio > input {
+  appearance: none;
+  grid-area: input;
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+.radio input:not(:checked) ~ svg circle[name='checked'] {
+  display: none;
+}
+
+.radio input:checked ~ svg circle[name='checked'] {
+  display: inline;
+}
+
+.icon {
+  grid-area: input;
+  pointer-events: none;
 }

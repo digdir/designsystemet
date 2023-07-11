@@ -27,7 +27,9 @@ export const Preview: Story = {
 // Function story
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
 export const Composed: StoryFn<typeof Radio> = () => (
-  <>
-    <Radio>am</Radio>
-  </>
+  <fieldset>
+    <Radio>Radio 1</Radio>
+    <Radio>Radio 2</Radio>
+    <Radio>Radio 3</Radio>
+  </fieldset>
 );
