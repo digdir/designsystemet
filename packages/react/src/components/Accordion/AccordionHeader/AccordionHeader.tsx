@@ -4,7 +4,6 @@ import type { MouseEventHandler, HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
 import { Paragraph, Heading } from '../..';
-
 import classes from '../Accordion.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
