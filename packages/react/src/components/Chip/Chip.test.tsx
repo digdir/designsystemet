@@ -23,22 +23,26 @@ describe('Chip', () => {
     render(
       <Chip.Group>
         <Chip>First item</Chip>
+        <Chip>Second item</Chip>
+        <Chip>Third item</Chip>
       </Chip.Group>,
     );
 
-    expect(screen.getByRole('list')).toHaveTextContent('First item');
-    expect(screen.getByRole('listitem')).toHaveTextContent('First item');
+    const [fistChip, secondChip, thirdChip] = screen.getAllByRole('listitem');
+    expect(screen.getByRole('list'));
+    expect(fistChip).toHaveTextContent('First item');
+    expect(secondChip).toHaveTextContent('Second item');
+    expect(thirdChip).toHaveTextContent('Third item');
   });
 
-  it('should support polymorphism component', () => {
-    render(
-      <Chip
-        as='a'
-        href='#'
-      >
-        First item
-      </Chip>,
-    );
-    expect(screen.getByRole('link', { name: 'First item' }));
+  it('rest props should be supported', () => {
+    render(<Chip className='testClass'>Norwegian</Chip>);
+
+    const chip = screen.getByRole('button', { name: 'Norwegian' });
+    expect(chip).toHaveClass('testClass');
+
+    // Ensure that the last class is the one added by rest-props.
+    const lastClassNameIndex = chip.classList.length - 1;
+    expect(chip.classList[lastClassNameIndex]).toBe('testClass');
   });
 });

@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
+import { Stack } from '../../../../../docs-components';
+
 import type { TagProps } from '.';
 import { Tag } from '.';
 
@@ -15,6 +17,13 @@ export default {
       url: 'http://www.url.com/status',
     },
   },
+  decorators: [
+    (Story) => (
+      <Stack style={{ justifyContent: 'start' }}>
+        <Story />
+      </Stack>
+    ),
+  ],
 } as Meta;
 
 export const Preview: Story = {
@@ -26,10 +35,10 @@ export const Preview: Story = {
   },
 };
 
+const sizes: TagProps['size'][] = ['xsmall', 'small', 'medium'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
-  const sizes: TagProps['size'][] = ['xsmall', 'small', 'medium'];
   return (
-    <StoryContainer row={false}>
+    <>
       {sizes.map((size) => (
         <Tag
           key={size}
@@ -39,14 +48,14 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
           {size}
         </Tag>
       ))}
-    </StoryContainer>
+    </>
   );
 };
 
+const variants: TagProps['variant'][] = ['filled', 'outlined'];
 export const Variants: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
-  const variants: TagProps['variant'][] = ['filled', 'outlined'];
   return (
-    <StoryContainer>
+    <>
       {variants.map((variant) => (
         <Tag
           key={variant}
@@ -56,66 +65,52 @@ export const Variants: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
           {variant}
         </Tag>
       ))}
-    </StoryContainer>
-  );
-};
-
-export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
-  const colors: TagProps['color'][] = [
-    'neutral',
-    'success',
-    'warning',
-    'danger',
-    'info',
-    'primary',
-    'secondary',
-    'tertiary',
-  ];
-  return (
-    <>
-      <StoryContainer>
-        {colors.map((color) => (
-          <Tag
-            key={color}
-            color={color}
-            {...rest}
-          >
-            {color}
-          </Tag>
-        ))}
-      </StoryContainer>
-      <StoryContainer>
-        {colors.map((color) => (
-          <Tag
-            key={color}
-            color={color}
-            variant='outlined'
-            {...rest}
-          >
-            {color}
-          </Tag>
-        ))}
-      </StoryContainer>
     </>
   );
 };
 
-const StoryContainer = ({
-  children,
-  row = true,
-}: {
-  children: React.ReactNode;
-  row?: boolean;
-}) => {
+const colors: TagProps['color'][] = [
+  'neutral',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'primary',
+  'secondary',
+  'tertiary',
+];
+
+export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
-    <div
-      style={{
-        display: row ? 'flex' : 'grid',
-        gap: '8px',
-        marginBottom: '8px',
-      }}
-    >
-      {children}
-    </div>
+    <>
+      {colors.map((color) => (
+        <Tag
+          key={color}
+          color={color}
+          {...rest}
+        >
+          {color}
+        </Tag>
+      ))}
+    </>
+  );
+};
+
+export const ColorsOutlined: StoryFn<typeof Tag> = ({
+  ...rest
+}): JSX.Element => {
+  return (
+    <>
+      {colors.map((color) => (
+        <Tag
+          key={color}
+          color={color}
+          variant='outlined'
+          {...rest}
+        >
+          {color}
+        </Tag>
+      ))}
+    </>
   );
 };

@@ -14,12 +14,6 @@
   box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-strong);
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  gap: var(--fds-spacing-1);
-}
-
 .xMark {
   --fdsc-xmark-background: transparent;
   --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
