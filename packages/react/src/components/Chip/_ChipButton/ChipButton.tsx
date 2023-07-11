@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
@@ -16,7 +16,7 @@ export type ChipButtonProps = {
    * Toggles `aria-pressed` and visual-changes
    * */
   selected?: boolean;
-} & HTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ChipButton: OverridableComponent<
   ChipButtonProps,

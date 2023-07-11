@@ -1,4 +1,3 @@
-import type { SyntheticEvent } from 'react';
 import React, { useState } from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
@@ -9,6 +8,9 @@ type Story = StoryObj<typeof Chip>;
 export default {
   title: 'Kjernekomponenter/Chip',
   component: Chip,
+  argTypes: {
+    onClick: { action: 'clicked' },
+  },
   parameters: {
     status: {
       type: 'beta',
@@ -23,9 +25,6 @@ export const Preview: Story = {
     size: 'small',
     selected: false,
     checkmark: false,
-    onClick: (event: SyntheticEvent): void => {
-      console.log('Clicked', event);
-    },
   },
 };
 
