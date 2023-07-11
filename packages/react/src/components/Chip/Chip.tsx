@@ -26,21 +26,17 @@ export const Chip = forwardRef<HTMLButtonElement, ChipProps>(
         ref={ref}
         selected={selected}
         className={cn(
-          { [classes.spacing]: checkmark && selected },
+          { [classes.spacing]: shouldDisplayCheckmark },
           rest.className,
         )}
       >
-        <span
-          className={cn({ [classes.flexContainer]: shouldDisplayCheckmark })}
-        >
-          {shouldDisplayCheckmark && (
-            <CheckmarkIcon
-              className={classes.checkmarkIcon}
-              aria-hidden
-            />
-          )}
-          <span>{children}</span>
-        </span>
+        {shouldDisplayCheckmark && (
+          <CheckmarkIcon
+            className={classes.checkmarkIcon}
+            aria-hidden
+          />
+        )}
+        <span>{children}</span>
       </ChipButton>
     );
   },

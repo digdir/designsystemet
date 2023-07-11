@@ -18,14 +18,12 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         size={size}
         className={cn(classes.removable, classes[size], rest.className)}
       >
-        <span className={classes.container}>
-          <span>{children}</span>
-          <span
-            className={classes.xMark}
-            aria-hidden
-          >
-            <XMarkIcon className={classes.iconSize} />
-          </span>
+        <span>{children}</span>
+        <span
+          className={classes.xMark}
+          aria-hidden
+        >
+          <XMarkIcon className={classes.iconSize} />
         </span>
       </ChipButton>
     );
