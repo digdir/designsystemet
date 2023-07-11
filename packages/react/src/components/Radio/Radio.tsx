@@ -51,7 +51,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       <Paragraph
         as='div'
         size={size}
-        {...rest}
         className={cn(classes.radio, rest.className)}
       >
         <input
@@ -63,20 +62,15 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <RadioIcon className={classes.icon} />
         <Label
           className={classes.label}
+          size={size}
           htmlFor={inputId}
         >
-          <Paragraph
-            as='span'
-            size={size}
-            short
-          >
-            {children}
-          </Paragraph>
+          <span>{children}</span>
           {description && (
             <Paragraph
-              className={classes.description}
               as='span'
               size={size}
+              className={classes.description}
             >
               {description}
             </Paragraph>
