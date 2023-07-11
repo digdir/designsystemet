@@ -6,7 +6,7 @@
   grid-auto-flow: column;
 }
 
-/* .radio > input::before {
+/* .radio::before {
   content: '';
   position: absolute;
   width: 32px;
@@ -20,8 +20,8 @@
 .radio > input {
   appearance: none;
   grid-area: input;
-  width: 100%;
-  height: 100%;
+  width: 1.75em;
+  height: 1.75em;
   margin: 0;
 }
 
@@ -31,6 +31,15 @@
 
 .radio input:checked ~ svg circle[name='checked'] {
   display: inline;
+  fill: var(--fds-semantic-border-input-hover);
+}
+
+.radio input:not(:checked) ~ svg circle[name='circle'] {
+  stroke: var(--fds-semantic-border-input-default);
+}
+
+.radio input:checked ~ svg circle[name='circle'] {
+  stroke: var(--fds-semantic-border-input-hover);
 }
 
 .icon {
