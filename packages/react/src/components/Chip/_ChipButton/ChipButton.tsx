@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Paragraph } from '../../Typography';
+import type { OverridableComponent } from '../../../types/OverridableComponent';
 
 import classes from './ChipButton.module.css';
 
@@ -17,13 +18,25 @@ export type ChipButtonProps = {
   selected?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ChipButton = forwardRef<HTMLButtonElement, ChipButtonProps>(
-  ({ size = 'small', children, selected = false, className, ...rest }, ref) => {
+export const ChipButton: OverridableComponent<
+  ChipButtonProps,
+  HTMLLabelElement
+> = forwardRef(
+  (
+    {
+      size = 'small',
+      children,
+      selected = false,
+      className,
+      as: Component = 'button',
+      ...rest
+    },
+    ref,
+  ): JSX.Element => {
     return (
-      <button
+      <Component
         {...rest}
         ref={ref}
-        type='button'
         aria-pressed={selected}
         className={cn(classes.chipButton, classes[size], className)}
       >
@@ -34,7 +47,7 @@ export const ChipButton = forwardRef<HTMLButtonElement, ChipButtonProps>(
         >
           {children}
         </Paragraph>
-      </button>
+      </Component>
     );
   },
 );

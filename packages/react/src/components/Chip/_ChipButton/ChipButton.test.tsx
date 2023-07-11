@@ -34,6 +34,19 @@ describe('ChipButton', () => {
     expect(handleOnClickMock).toHaveBeenCalled();
   });
 
+  it('should support polymorphism component', () => {
+    render(
+      <ChipButton
+        as='a'
+        href='#'
+      >
+        Link
+      </ChipButton>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Link' }));
+  });
+
   it('should render a chip and not be pressed by default', () => {
     render(<ChipButton>Nynorsk</ChipButton>);
 
