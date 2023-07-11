@@ -3,10 +3,9 @@ import cn from 'classnames';
 import type { MouseEventHandler, HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
-import { Paragraph, Heading } from '../';
-
-import classes from './Accordion.module.css';
-import { AccordionItemContext } from './AccordionItem';
+import { Paragraph, Heading } from '../..';
+import classes from '../Accordion.module.css';
+import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionHeaderProps = {
   /** Heading level. Use this to make sure the heading is correct according to you page heading levels */

@@ -2,7 +2,7 @@ import cn from 'classnames';
 import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useState, useId } from 'react';
 
-import styles from './Accordion.module.css';
+import classes from '../Accordion.module.css';
 
 export type AccordionItemProps = {
   /**
@@ -33,8 +33,8 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
     return (
       <div
-        className={cn(styles.item, className, {
-          [styles.open]: open ?? internalOpen,
+        className={cn(classes.item, className, {
+          [classes.open]: open ?? internalOpen,
         })}
         ref={ref}
         {...rest}
