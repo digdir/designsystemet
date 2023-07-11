@@ -58,7 +58,16 @@
 }
 
 .content {
-  padding: 16px 32px 24px;
+  position: relative;
+  display: flex;
+  gap: 56px;
+  /* padding: 16px 32px 24px; */
+}
+
+.content aside {
+  position: sticky;
+  top: 0;
+  height: 400px;
 }
 
 @media (max-width: 576px) {

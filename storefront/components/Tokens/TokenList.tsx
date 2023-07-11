@@ -65,12 +65,9 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
             <div className={classes.text}>
               <h4 className={classes.title}>
                 {capitalizeString(formatTitle(key.split(token)[1].slice(1)))}
-                {showValue && <div className={classes.value}>{items[key]}</div>}
-              </h4>
-              <div className={classes.copy}>
-                <div>--{key}</div>
                 <ClipboardBtn text={key} />
-              </div>
+              </h4>
+              {showValue && <div className={classes.value}>{items[key]}</div>}
             </div>
           </div>
         ))}

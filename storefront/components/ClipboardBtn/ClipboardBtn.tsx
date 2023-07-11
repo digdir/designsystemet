@@ -32,7 +32,7 @@ const ClipboardBtn = ({ text }: ClipboardBtnProps) => {
           title='Kopier'
         >
           <FilesIcon
-            fontSize={24}
+            fontSize={21}
             color='#585858'
           />
         </button>

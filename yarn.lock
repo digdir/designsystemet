@@ -3419,6 +3419,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jsdevtools/rehype-toc@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@jsdevtools/rehype-toc@npm:3.0.2"
+  checksum: 80c5a898431d2ab3deceb187334fea1d71f217d6ebc6d65289208ebe0bf003d82cf5cdbd85180787b14a87e0357e4fc77063343dea9ec743eadfe565c34337fa
+  languageName: node
+  linkType: hard
+
 "@juggle/resize-observer@npm:^3.3.1":
   version: 3.4.0
   resolution: "@juggle/resize-observer@npm:3.4.0"
@@ -20525,6 +20532,7 @@ __metadata:
   dependencies:
     "@altinn/altinn-design-system": ^0.27.2
     "@altinn/figma-design-tokens": ^5.0.0
+    "@jsdevtools/rehype-toc": ^3.0.2
     "@mdx-js/loader": ^2.0.0-rc.2
     "@mdx-js/react": ^1.6.22
     "@navikt/aksel-icons": ^2.8.4

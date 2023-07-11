@@ -1,3 +1,7 @@
+.content {
+  padding: 8px 24px;
+}
+
 .content > p,
 .content > h2,
 .content > h3,

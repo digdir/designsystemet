@@ -53,7 +53,6 @@ h6 {
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100vh);
-  overflow: hidden;
   position: relative;
 }
 
