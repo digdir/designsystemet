@@ -63,7 +63,7 @@ div {
 
 #### ⚠️ Warning
 
-Typography and spacing tokens are static for javascript tokens. This is due to limitations in CSS with nested `calc()` only being supported using css-variables. Since js tokens can be scoped to only import one, this might lead to unintended bugs are referecend css-variables might not be present/imported.
+Typography and spacing tokens are static for javascript tokens. This is due to limitations in CSS with nested `calc()` only being supported using css-variables. Since js tokens can be scoped to only import one, this might lead to unintended bugs are referenced css-variables might not be present/imported.
 
 #### Usage
 

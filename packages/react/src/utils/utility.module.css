@@ -15,7 +15,8 @@
 /**
  * Apply a focus outline on an element when it is focused or one of its children is focused
  */
-.focusable:focus-within {
+.focusable:focus-within,
+.focusable:focus-visible {
   --fds-inner-focus-border-color: #1e2b3c;
   --fds-outer-focus-border-color: #fadf4b;
   --fds-focus-border-width: 3px;
