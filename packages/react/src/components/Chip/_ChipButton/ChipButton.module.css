@@ -12,7 +12,6 @@
   border-radius: var(--fdsc-chip-border-radius);
   border: 1px solid var(--fdsc-chip-border);
   color: var(--fdsc-chip-text-color);
-  display: block;
   text-decoration: none;
   font-family: inherit;
 }
@@ -49,6 +48,10 @@
 .chipButton .label {
   color: inherit;
   line-height: normal;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
 }
 
 .xsmall {
