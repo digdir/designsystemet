@@ -5,7 +5,10 @@ import type {
   TransformedToken,
   TransformedTokens,
 } from 'style-dictionary';
-import { registerTransforms } from '@tokens-studio/sd-transforms';
+import {
+  registerTransforms,
+  transformDimension,
+} from '@tokens-studio/sd-transforms';
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
@@ -16,6 +19,16 @@ const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
 const prefix = 'fds';
 const basePxFontSize = 16;
 let fontScale: TransformedTokens;
+
+StyleDictionary.registerTransform({
+  name: 'fds/size/px',
+  type: 'value',
+  transitive: true,
+  matcher: (token) =>
+    ['sizing', 'spacing'].includes(token.type as string) &&
+    !token.name.includes('base'),
+  transformer: (token) => transformDimension(token.value as number),
+});
 
 StyleDictionary.registerTransform({
   name: 'name/cti/hierarchical-kebab',
@@ -237,6 +250,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
+          'fds/size/px',
         ],
         files: [
           {
