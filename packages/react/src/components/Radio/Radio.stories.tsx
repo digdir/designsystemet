@@ -21,6 +21,7 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'You created the Radio component!',
+    description: 'Description',
   },
 };
 
@@ -28,8 +29,25 @@ export const Preview: Story = {
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
 export const Composed: StoryFn<typeof Radio> = () => (
   <fieldset>
-    <Radio>Radio 1</Radio>
-    <Radio>Radio 2</Radio>
-    <Radio>Radio 3</Radio>
+    <legend>
+      What killed the radio star?
+      <span
+        role='img'
+        aria-label='guitar emoji'
+      >
+        🎸
+      </span>
+    </legend>
+    <ul style={{ listStyle: 'none' }}>
+      <li>
+        <Radio description='Shakesparian twist'>Theater</Radio>
+      </li>
+      <li>
+        <Radio description='VHS kids'>Video</Radio>
+      </li>
+      <li>
+        <Radio description='Yippe ka ya '>Cinema</Radio>
+      </li>
+    </ul>
   </fieldset>
 );

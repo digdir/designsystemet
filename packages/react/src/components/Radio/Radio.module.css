@@ -1,9 +1,9 @@
 .radio {
   display: inline-grid;
   grid: [input] 1fr / [input] 1fr;
+  gap: var(--fds-spacing-2);
   position: relative;
   grid-auto-flow: column;
-  align-items: center;
 }
 
 /* .radio > input::before {
@@ -36,4 +36,15 @@
 .icon {
   grid-area: input;
   pointer-events: none;
+  height: 1.25em;
+}
+
+.label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--fds-spacing-1);
+}
+
+.description {
+  color: var(--fds-semantic-text-neutral-subtle);
 }

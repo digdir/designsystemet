@@ -8,27 +8,28 @@ import classes from './Radio.module.css';
 
 const RadioIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
-    width='32'
-    height='32'
-    viewBox='0 0 32 32'
+    width='22'
+    height='22'
+    viewBox='0 0 22 22'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     aria-hidden
     {...props}
   >
     <circle
-      cx='16'
-      cy='16'
-      r='15'
+      name='circle'
+      cx='11'
+      cy='11'
+      r='10'
       fill='white'
       stroke='#00315D'
       strokeWidth='2'
     />
     <circle
       name='checked'
-      cx='16'
-      cy='16'
-      r='9.33333'
+      cx='11'
+      cy='11'
+      r='4.88889'
       fill='#0062BA'
     />
   </svg>
@@ -43,11 +44,13 @@ export type RadioProps = {
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ children, size, description, id, ...rest }, ref) => {
+  ({ children, size = 'medium', description, id, ...rest }, ref) => {
     const randomId = useId();
     const inputId = id || randomId;
     return (
-      <div
+      <Paragraph
+        as='div'
+        size={size}
         {...rest}
         className={cn(classes.radio, rest.className)}
       >
@@ -59,18 +62,27 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         />
         <RadioIcon className={classes.icon} />
         <Label
+          className={classes.label}
           htmlFor={inputId}
-          spacing
         >
           <Paragraph
             as='span'
             size={size}
+            short
           >
             {children}
           </Paragraph>
-          {description && <Paragraph as='span'>{description}</Paragraph>}
+          {description && (
+            <Paragraph
+              className={classes.description}
+              as='span'
+              size={size}
+            >
+              {description}
+            </Paragraph>
+          )}
         </Label>
-      </div>
+      </Paragraph>
     );
   },
 );
