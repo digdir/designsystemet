@@ -7,7 +7,7 @@ type Story = StoryObj<typeof Chip>;
 
 export default {
   title: 'Kjernekomponenter/Chip',
-  component: Chip,
+  component: Chip.Toggle,
   argTypes: {
     onClick: { action: 'clicked' },
   },
@@ -29,18 +29,22 @@ export const Preview: Story = {
 };
 
 export const Default: StoryFn<typeof Chip> = () => {
+  return <Chip.Toggle size='small'>Nynorsk</Chip.Toggle>;
+};
+
+export const DefaultChip: StoryFn<typeof Chip> = () => {
   return <Chip size='small'>Nynorsk</Chip>;
 };
 
-export const ChipWithCheckmark: StoryFn<typeof Chip> = () => {
+export const ChipToggleWithCheckmark: StoryFn<typeof Chip> = () => {
   return (
-    <Chip
+    <Chip.Toggle
       size='small'
       checkmark
       selected
     >
       Nynorsk
-    </Chip>
+    </Chip.Toggle>
   );
 };
 
@@ -62,14 +66,14 @@ export const ToggleChip: StoryFn<typeof Chip> = () => {
   return (
     <Chip.Group size='small'>
       {chips.map((chip) => (
-        <Chip
+        <Chip.Toggle
           key={chip}
           selected={selected === chip}
           onClick={() => setSelected(chip)}
           checkmark
         >
           {chip}
-        </Chip>
+        </Chip.Toggle>
       ))}
     </Chip.Group>
   );
@@ -90,17 +94,21 @@ export const ToggleMultiple: StoryFn<typeof Chip> = () => {
   return (
     <Chip.Group size='small'>
       {chips.map((chip) => (
-        <Chip
+        <Chip.Toggle
           checkmark
           key={chip}
           selected={selected.includes(chip)}
           onClick={() => handleToggle(chip)}
         >
           {chip}
-        </Chip>
+        </Chip.Toggle>
       ))}
     </Chip.Group>
   );
+};
+
+export const ChipAnchor: StoryFn<typeof Chip> = () => {
+  return <Chip size='small'>Nynorsk</Chip>;
 };
 
 export const RemovableGroup: StoryFn<typeof Chip> = () => {

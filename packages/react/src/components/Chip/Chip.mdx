@@ -20,9 +20,10 @@ import { Chip } from './index';
 
 Chip eksisterer i ulike varianter:
 
-- `Chip` er et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet og når handlingen ikke krever like mye oppmerksomhet som vanlige knapper. Det kan for eksempel være å klikke på en Chip for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
-- `Chip` med `selected=true` er alternativer til vanlige radiobuttons og checkboxer. Brukes til filtrering av innhold og data, når det skal tilbys et valg mellom flere ulike opsjoner. Innholdet endres til å vise kun det som er valgt.
-- `Removable Chip` er valgte verdier som brukeren kan fjerne. For eksempel filter som har blitt aktivert i et søk som kan fjernes igjen, eller som har blitt valgt i en `Multiselect`.
+- `Chip.Toggle` er et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet og når handlingen ikke krever like mye oppmerksomhet som vanlige knapper. Det kan for eksempel være å klikke på en Chip for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
+- `Chip.Toggle` med `selected=true` er alternativer til vanlige radiobuttons og checkboxer. Brukes til filtrering av innhold og data, når det skal tilbys et valg mellom flere ulike opsjoner. Innholdet endres til å vise kun det som er valgt.
+- `Chip.Removable` er valgte verdier som brukeren kan fjerne. For eksempel filter som har blitt aktivert i et søk som kan fjernes igjen, eller som har blitt valgt i en `Multiselect`.
+- `Chip` har samme bruksområde som `Chip.Toggle`, men native elementet er en `<a>` istedenfor `<button>`. Bruk denne dersom du ønsker å bruke Chip som en lenke. `Chip` støtter polymorfisme, og kan derfor rendres som andre elementer ved å bruke `as` egenskapen. For eksempel `<Chip as="span">`, men det kan være lurt å se om andre komponenter enn `Chip` passer bedre for ditt brukstilfelle.
 
 ## Props
 
@@ -43,24 +44,32 @@ import { Chip } from '@digdir/design-system-react';
 Chip-komponenten består av flere komponenter. Disse er:
 
 - `Chip`
+- `Chip.Toggle`
 - `Chip.Removable`
 - `Chip.Group`
 
-Som standard så rendres Chip som et`<button>` element, men dette kan overstyres ved å bruke `as` egenskapen, `<Chip as="a">`. Dette vil gjøre at en Chip rendres som en anchor-tag istedenfor button.
+Som standard så rendres Chip som et`<a>` element, men dette kan overstyres ved å bruke `as` egenskapen, `<Chip as="span">`.Dette vil gjøre at en Chip rendres som en span istedenfor anchor tag.
+Ønsker du å bruke Chip med `<button>` elementet kan du bruke `Chip.Toggle` istedenfor.
 
 Hvordan komponentene som nevnes over brukes kan du se i eksemplene under.
 
 ### Chip
 
+Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk". Standard `<Chip>` rendres som et anchor-element.
+
+<Canvas of={ChipStories.DefaultChip} />
+
+### Chip.Toggle
+
 Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk".
 
 <Canvas of={ChipStories.Default} />
 
-### Chip med sjekkmerkeikon
+### Chip.Toggle med sjekkmerkeikon
 
 Denne kodeblokken representerer en Chip med et sjekkmerkeikon og teksten "Nynorsk".
 
-<Canvas of={ChipStories.ChipWithCheckmark} />
+<Canvas of={ChipStories.ChipToggleWithCheckmark} />
 
 ### Chip.Removable
 

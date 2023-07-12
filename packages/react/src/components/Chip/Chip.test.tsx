@@ -4,13 +4,16 @@ import { render, screen } from '@testing-library/react';
 import { Chip } from '.';
 
 describe('Chip', () => {
-  it('should render a normal chip as default', () => {
-    render(<Chip>Norwegian</Chip>);
+  it('should render chip as anchor by default', () => {
+    render(<Chip href='#'>Norwegian</Chip>);
+
+    expect(screen.getByRole('link', { name: 'Norwegian' }));
+  });
+
+  it('should be possible to render a toggle chip', () => {
+    render(<Chip.Toggle>Norwegian</Chip.Toggle>);
 
     expect(screen.getByRole('button', { name: 'Norwegian' }));
-    expect(screen.getByRole('button', { name: 'Norwegian' })).not.toHaveClass(
-      'removable',
-    );
   });
 
   it('should render removable chip and aria-label should be supported', () => {
@@ -36,9 +39,16 @@ describe('Chip', () => {
   });
 
   it('rest props should be supported', () => {
-    render(<Chip className='testClass'>Norwegian</Chip>);
+    render(
+      <Chip
+        href='#'
+        className='testClass'
+      >
+        Norwegian
+      </Chip>,
+    );
 
-    const chip = screen.getByRole('button', { name: 'Norwegian' });
+    const chip = screen.getByRole('link', { name: 'Norwegian' });
     expect(chip).toHaveClass('testClass');
 
     // Ensure that the last class is the one added by rest-props.
