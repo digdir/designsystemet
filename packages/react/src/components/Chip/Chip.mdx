@@ -8,6 +8,9 @@ import {
 } from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 import * as ChipStories from './Chip.stories';
+import * as ToggleChipStories from './Toggle/Toggle.stories';
+import * as RemovableChipStories from './Removable/Removable.stories';
+import * as GroupChipStories from './Group/Group.stories';
 import { Chip } from './index';
 
 <Meta of={ChipStories} />
@@ -23,7 +26,6 @@ Chip eksisterer i ulike varianter:
 - `Chip.Toggle` er et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet og når handlingen ikke krever like mye oppmerksomhet som vanlige knapper. Det kan for eksempel være å klikke på en Chip for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
 - `Chip.Toggle` med `selected=true` er alternativer til vanlige radiobuttons og checkboxer. Brukes til filtrering av innhold og data, når det skal tilbys et valg mellom flere ulike opsjoner. Innholdet endres til å vise kun det som er valgt.
 - `Chip.Removable` er valgte verdier som brukeren kan fjerne. For eksempel filter som har blitt aktivert i et søk som kan fjernes igjen, eller som har blitt valgt i en `Multiselect`.
-- `Chip` har samme bruksområde som `Chip.Toggle`, men native elementet er en `<a>` istedenfor `<button>`. Bruk denne dersom du ønsker å bruke Chip som en lenke. `Chip` støtter polymorfisme, og kan derfor rendres som andre elementer ved å bruke `as` egenskapen. For eksempel `<Chip as="span">`, men det kan være lurt å se om andre komponenter enn `Chip` passer bedre for ditt brukstilfelle.
 
 ## Props
 
@@ -38,12 +40,11 @@ Chip eksisterer i ulike varianter:
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
 import { Chip } from '@digdir/design-system-react';
 
-<Chip>You are using the Chip component!</Chip>;
+<Chip.Toggle>You are using the Chip component!</Chip.Toggle>;
 ```
 
 Chip-komponenten består av flere komponenter. Disse er:
 
-- `Chip`
 - `Chip.Toggle`
 - `Chip.Removable`
 - `Chip.Group`
@@ -53,41 +54,24 @@ Som standard så rendres Chip som et`<a>` element, men dette kan overstyres ved 
 
 Hvordan komponentene som nevnes over brukes kan du se i eksemplene under.
 
-### Chip
-
-Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk". Standard `<Chip>` rendres som et anchor-element.
-
-<Canvas of={ChipStories.DefaultChip} />
-
 ### Chip.Toggle
 
 Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk".
 
-<Canvas of={ChipStories.Default} />
-
-### Chip.Toggle med sjekkmerkeikon
-
-Denne kodeblokken representerer en Chip med et sjekkmerkeikon og teksten "Nynorsk".
-
-<Canvas of={ChipStories.ChipToggleWithCheckmark} />
+<Canvas of={ToggleChipStories.Preview} />
+<Controls of={ToggleChipStories.Preview} />
 
 ### Chip.Removable
 
 Denne kodeblokken representerer en fjernbar Chip med teksten "Nynorsk". Denne komponenten viser også et kryss som indikerer at den kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
 i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
 
-<Canvas of={ChipStories.Removable} />
+<Canvas of={RemovableChipStories.Preview} />
+<Controls of={RemovableChipStories.Preview} />
 
 ### Chip.Group
 
 Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
 
-<Canvas of={ChipStories.ToggleChip} />
-
-Chips kan også brukes til å velge flere alternativer samtidig ved å benytte egenskapen checkmark, noe som tydeliggjør hvilke Chips som er valgt.
-
-<Canvas of={ChipStories.ToggleMultiple} />
-
-Denne kodeblokken viser hvordan du grupperer Chip.Removable ved hjelp av Chip.Group. Eksempelet viser også hvordan du kan implementere kode for å fjerne en chip fra gruppen.
-
-<Canvas of={ChipStories.RemovableGroup} />
+<Canvas of={GroupChipStories.Preview} />
+<Controls of={GroupChipStories.Preview} />
