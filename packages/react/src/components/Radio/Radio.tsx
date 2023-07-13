@@ -66,13 +66,15 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           <RadioIcon className={classes.icon} />
         </span>
 
-        <Label
-          className={classes.label}
-          size={size}
-          htmlFor={inputId}
-        >
-          <span>{children}</span>
-        </Label>
+        {children && (
+          <Label
+            className={classes.label}
+            size={size}
+            htmlFor={inputId}
+          >
+            <span>{children}</span>
+          </Label>
+        )}
         {description && (
           <Paragraph
             id={descriptionId}
