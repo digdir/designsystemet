@@ -3,7 +3,6 @@ import React, { useId, forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Label, Paragraph } from '../Typography';
-import utilityClasses from '../../utils/utility.module.css';
 
 import classes from './Radio.module.css';
 
@@ -47,7 +46,9 @@ export type RadioProps = {
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ children, size = 'medium', description, id, ...rest }, ref) => {
     const randomId = useId();
+    const descriptionId = useId();
     const inputId = id || randomId;
+
     return (
       <Paragraph
         as='div'
@@ -57,9 +58,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <span className={cn(classes.radio)}>
           <input
             {...rest}
-            type='radio'
-            id={inputId}
             ref={ref}
+            id={inputId}
+            type='radio'
+            aria-describedby={descriptionId}
           />
           <RadioIcon className={classes.icon} />
         </span>
@@ -70,16 +72,17 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           htmlFor={inputId}
         >
           <span>{children}</span>
-          {description && (
-            <Paragraph
-              as='span'
-              size={size}
-              className={classes.description}
-            >
-              {description}
-            </Paragraph>
-          )}
         </Label>
+        {description && (
+          <Paragraph
+            id={descriptionId}
+            as='div'
+            size={size}
+            className={classes.description}
+          >
+            {description}
+          </Paragraph>
+        )}
       </Paragraph>
     );
   },

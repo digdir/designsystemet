@@ -4,19 +4,47 @@
   padding: 0;
 }
 
-.container {
-  display: flex;
+.center {
+  display: inline-flex;
   align-items: center;
 }
 
+.container {
+  position: relative;
+  padding-left: calc(var(--fds-spacing-6) + 20px);
+}
+
+.icon {
+  grid-area: input;
+  pointer-events: none;
+  height: 1.75em;
+  width: 1.75em;
+}
+
+.label {
+  min-height: 44px;
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
+  align-items: center;
+  cursor: pointer;
+}
+
+.description {
+  color: var(--fds-semantic-text-neutral-subtle);
+}
+
 .radio {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 44px;
+  min-height: 44px;
   display: inline-grid;
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);
-  position: relative;
   grid-auto-flow: column;
-  width: 44px;
-  height: 44px;
   border-radius: var(--fds-border_radius-full);
 }
 
@@ -24,16 +52,10 @@
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
-/* .radio::before {
-  content: '';
-  position: absolute;
-  width: 48px;
-  aspect-ratio: 1/1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-} */
+.label:hover,
+.radio:hover ~ .label {
+  color: var(--fds-semantic-border-input-hover);
+}
 
 .radio input {
   height: 100%;
@@ -57,8 +79,6 @@
 
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
   outline-offset: 0;
-
-  /* box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-inner-focus-border-color); */
 }
 
 .radio input:not(:checked) ~ svg circle[name='checked'] {
@@ -84,29 +104,9 @@
 
 .radio input:hover ~ svg circle[name='circle'] {
   stroke: var(--fds-semantic-border-input-hover);
-  fill: var(--fds-semantic-surface-info-subtle-hover);
 }
 
 .radio input:focus-visible ~ svg circle[name='circle'] {
   stroke: #1e2b3c;
   stroke-width: 3px;
-}
-
-.icon {
-  grid-area: input;
-  pointer-events: none;
-  height: 1.25em;
-  width: 1.25em;
-}
-
-.label {
-  display: inline-flex;
-  flex-direction: column;
-  gap: var(--fds-spacing-1);
-  cursor: pointer;
-  /* padding: var(--fds-spacing-2) 0; */
-}
-
-.description {
-  color: var(--fds-semantic-text-neutral-subtle);
 }
