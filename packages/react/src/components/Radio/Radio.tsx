@@ -3,6 +3,7 @@ import React, { useId, forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Label, Paragraph } from '../Typography';
+import utilityClasses from '../../utils/utility.module.css';
 
 import classes from './Radio.module.css';
 
@@ -51,15 +52,18 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       <Paragraph
         as='div'
         size={size}
-        className={cn(classes.radio, rest.className)}
+        className={cn(classes.container, rest.className)}
       >
-        <input
-          {...rest}
-          type='radio'
-          id={inputId}
-          ref={ref}
-        />
-        <RadioIcon className={classes.icon} />
+        <span className={cn(classes.radio)}>
+          <input
+            {...rest}
+            type='radio'
+            id={inputId}
+            ref={ref}
+          />
+          <RadioIcon className={classes.icon} />
+        </span>
+
         <Label
           className={classes.label}
           size={size}
