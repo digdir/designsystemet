@@ -1,8 +1,3 @@
-.center {
-  display: inline-flex;
-  align-items: center;
-}
-
 .container {
   position: relative;
   padding-left: calc(var(--fds-spacing-6) + 20px);
@@ -67,15 +62,19 @@
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.radio:hover:not(input:disabled),
-.label:hover:not(.radio input:disabled) ~ .radio {
+.container:not(:has(input:disabled)) > .radio:hover {
+  background: var(--fds-semantic-surface-info-subtle-hover);
+}
+
+/*
+.radio:hover > input:not(:disabled) ~ .radio {
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
 .label:hover:not(input:disabled),
 .radio:hover:not(input:disabled) ~ .label {
   color: var(--fds-semantic-border-input-hover);
-}
+} */
 
 .radio input:focus-visible ~ svg {
   --fds-inner-focus-border-color: #1e2b3c;
@@ -105,6 +104,10 @@
 
 .radio input:disabled ~ svg circle[name='circle'] {
   stroke: var(--fds-semantic-border-neutral-subtle);
+}
+
+.radio input:disabled ~ svg circle[name='checked'] {
+  fill: var(--fds-semantic-border-neutral-subtle);
 }
 
 .radio input:focus-visible ~ svg circle[name='circle'] {
