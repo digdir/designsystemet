@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Chip } from '..';
 
@@ -12,16 +12,15 @@ const meta: Meta<typeof Group> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Group>;
+type Story = StoryFn<typeof Group>;
 
-export const Preview: Story = {
-  args: {
-    children: (
-      <Chip.Group>
-        <Chip.Toggle>Nynorsk</Chip.Toggle>
-        <Chip.Toggle>Bokmål</Chip.Toggle>
-      </Chip.Group>
-    ),
-    size: 'small',
-  },
+export const Preview: Story = (args) => (
+  <Chip.Group {...args}>
+    <Chip.Toggle>Nynorsk</Chip.Toggle>
+    <Chip.Toggle>Bokmål</Chip.Toggle>
+  </Chip.Group>
+);
+
+Preview.args = {
+  size: 'small',
 };

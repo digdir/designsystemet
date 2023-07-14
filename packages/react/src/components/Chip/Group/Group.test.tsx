@@ -7,9 +7,9 @@ describe('Chip.Group', () => {
   it('should be possible to render a group', () => {
     render(
       <Chip.Group>
-        <Chip>First item</Chip>
-        <Chip>Second item</Chip>
-        <Chip>Third item</Chip>
+        <Chip.Toggle>First item</Chip.Toggle>
+        <Chip.Toggle>Second item</Chip.Toggle>
+        <Chip.Toggle>Third item</Chip.Toggle>
       </Chip.Group>,
     );
 
