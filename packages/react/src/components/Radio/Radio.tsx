@@ -37,7 +37,7 @@ const RadioIcon = (props: SVGAttributes<SVGElement>) => (
 
 export type RadioProps = {
   /**
-   * Adds a description to extend labling of Radio
+   * Adds a description for label
    */
   description?: string;
   size?: 'xsmall' | 'small' | 'medium';

@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
+import { FieldSet } from '../FieldSet';
+
 import { Radio } from '.';
 
 type Story = StoryObj<typeof Radio>;
@@ -25,29 +27,27 @@ export const Preview: Story = {
   },
 };
 
+export const Inline: StoryFn<typeof Radio> = () => (
+  <FieldSet legend='Have you changed your name?'>
+    <Radio>Yes</Radio>
+    <Radio>No</Radio>
+  </FieldSet>
+);
+
 // Function story
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
 export const Composed: StoryFn<typeof Radio> = () => (
-  <fieldset>
-    <legend>
-      What killed the radio star?
-      <span
-        role='img'
-        aria-label='guitar emoji'
-      >
-        🎸
-      </span>
-    </legend>
-    <ul style={{ listStyle: 'none' }}>
-      <li>
-        <Radio description='Shakesparian twist'>Theater</Radio>
-      </li>
-      <li>
-        <Radio description='VHS kids'>Video</Radio>
-      </li>
-      <li>
-        <Radio description='Yippe ka ya '>Cinema</Radio>
-      </li>
-    </ul>
-  </fieldset>
+  <FieldSet
+    legend='What killed the radio star? 🎸'
+    helpText='help me'
+  >
+    <Radio
+      readOnly
+      description='Shakesparian twist'
+    >
+      Theater
+    </Radio>
+    <Radio description='VHS kids'>Video</Radio>
+    <Radio description='Yippe ka ya '>Cinema</Radio>
+  </FieldSet>
 );
