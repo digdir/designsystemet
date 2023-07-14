@@ -61,7 +61,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             ref={ref}
             id={inputId}
             type='radio'
-            aria-describedby={descriptionId}
+            aria-describedby={description ? descriptionId : undefined}
           />
           <RadioIcon className={classes.icon} />
         </span>
