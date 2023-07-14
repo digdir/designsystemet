@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import type { ChipProps } from '../Chip';
+import type { ChipBaseProps } from '../_ChipBase';
 
 import classes from './Group.module.css';
 
@@ -23,7 +23,7 @@ export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
       {React.Children.toArray(children).map((child, index) =>
         React.isValidElement(child) ? (
           <li key={`${child.toString()}-${index}`}>
-            {React.cloneElement(child as React.ReactElement<ChipProps>, {
+            {React.cloneElement(child as React.ReactElement<ChipBaseProps>, {
               size,
             })}
           </li>

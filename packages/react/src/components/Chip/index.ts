@@ -1,5 +1,4 @@
-import { Chip as ParentChip } from './Chip';
-import type { ChipProps } from './Chip';
+import { ChipBase as ParentChip } from './_ChipBase';
 import { Group } from './Group';
 import type { ChipGroupProps } from './Group';
 import { RemovableChip } from './Removable';
@@ -18,5 +17,5 @@ Chip.Group = Group;
 Chip.Removable = RemovableChip;
 Chip.Toggle = ToggleChip;
 
-export type { ChipProps, RemovableChipProps, ToggleChipProps, ChipGroupProps };
+export type { RemovableChipProps, ToggleChipProps, ChipGroupProps };
 export { Chip };

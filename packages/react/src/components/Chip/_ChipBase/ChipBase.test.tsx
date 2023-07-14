@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { ChipBase } from './ChipBase';
+import { ChipBase, type ChipBaseProps } from './ChipBase';
 
 const user = userEvent.setup();
 
-const TestComponent = (): JSX.Element => {
+const TestComponent = ({ ...rest }: ChipBaseProps): JSX.Element => {
   const [selected, setSelected] = useState(false);
 
   return (
     <ChipBase
+      {...rest}
       selected={selected}
       onClick={() => setSelected(!selected)}
     >
@@ -71,5 +72,16 @@ describe('ChipButton', () => {
     expect(chip).toHaveAttribute('aria-pressed', 'false');
     await user.click(chip);
     expect(chip).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('rest props should be supported', () => {
+    render(<ChipBase className='testClass'>Norwegian</ChipBase>);
+
+    const chip = screen.getByRole('button', { name: 'Norwegian' });
+    expect(chip).toHaveClass('testClass');
+
+    // Ensure that the last class is the one added by rest-props.
+    const lastClassNameIndex = chip.classList.length - 1;
+    expect(chip.classList[lastClassNameIndex]).toBe('testClass');
   });
 });
