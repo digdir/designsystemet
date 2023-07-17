@@ -77,8 +77,8 @@
 } */
 
 .radio input:focus-visible ~ svg {
-  --fds-inner-focus-border-color: #1e2b3c;
-  --fds-outer-focus-border-color: #fadf4b;
+  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
+  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
   --fds-focus-border-width: 3px;
 
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
