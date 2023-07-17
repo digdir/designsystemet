@@ -41,10 +41,11 @@ export type RadioProps = {
    */
   description?: string;
   size?: 'xsmall' | 'small' | 'medium';
+  error?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ children, size = 'medium', description, id, ...rest }, ref) => {
+  ({ children, size = 'medium', description, id, error, ...rest }, ref) => {
     const randomId = useId();
     const descriptionId = useId();
     const inputId = id || randomId;
@@ -53,7 +54,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       <Paragraph
         as='div'
         size={size}
-        className={cn(classes.container, rest.className)}
+        className={cn(
+          classes.container,
+          rest.disabled && classes.disabled,
+          rest.readOnly && classes.readOnly,
+          error && classes.error,
+          rest.className,
+        )}
       >
         <span className={cn(classes.radio)}>
           <input

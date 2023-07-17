@@ -25,6 +25,10 @@
 }
 
 .radio {
+  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
+  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
+  --fds-focus-border-width: 3px;
+
   position: absolute;
   left: 0;
   top: 0;
@@ -42,8 +46,25 @@
   width: 100%;
   opacity: 0;
   margin: 0;
-  cursor: pointer;
   grid-area: input;
+  cursor: pointer;
+}
+
+.error > .radio input,
+.error > .label,
+.readOnly > .radio input,
+.readOnly > .label {
+  cursor: default;
+}
+
+.disabled > .radio input,
+.disabled > .label {
+  cursor: not-allowed;
+  color: var(--fds-semantic-border-neutral-subtle);
+}
+
+.disabled > .description {
+  color: var(--fds-semantic-border-neutral-subtle);
 }
 
 .radio svg {
@@ -52,37 +73,17 @@
   margin: auto;
 }
 
-.container:has(input:disabled) .label,
-.radio > input:disabled {
-  cursor: not-allowed;
-  color: var(--fds-semantic-border-neutral-subtle);
-}
-
-.container:has(input:disabled) .description {
-  color: var(--fds-semantic-border-neutral-subtle);
-}
-
-.container:not(:has(input:disabled)) > .radio:hover {
+.radio:hover {
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
-/*
-.radio:hover > input:not(:disabled) ~ .radio {
+.radio:hover input:not(:disabled, :read-only) {
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
-.label:hover:not(input:disabled),
-.radio:hover:not(input:disabled) ~ .label {
+.label:hover:not(input:disabled, :read-only),
+.radio:hover:not(input:disabled, :read-only) ~ .label {
   color: var(--fds-semantic-border-input-hover);
-} */
-
-.radio input:focus-visible ~ svg {
-  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
-  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
-  --fds-focus-border-width: 3px;
-
-  outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
-  outline-offset: 0;
 }
 
 .radio input:not(:checked) ~ svg circle[name='checked'] {
@@ -110,11 +111,32 @@
   fill: var(--fds-semantic-border-neutral-subtle);
 }
 
-.radio input:focus-visible ~ svg circle[name='circle'] {
-  stroke: #1e2b3c;
-  stroke-width: 3px;
+.radio input:focus-visible ~ svg {
+  outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
+  outline-offset: 0;
 }
 
-.radio input:hover:not(:disabled) ~ svg circle[name='circle'] {
+.radio input:focus-visible ~ svg circle[name='circle'] {
+  stroke: var(--fds-semantic-border-focus-boxshadow);
+  stroke-width: var(--fds-focus-border-width);
+}
+
+.container.error .radio > svg circle[name='circle'] {
+  stroke: var(--fds-semantic-border-danger-default);
+}
+
+.container.error .radio > svg circle[name='checked'] {
+  fill: var(--fds-semantic-border-danger-default);
+}
+
+.readOnly .radio input:read-only ~ svg circle[name='circle'] {
+  stroke: var(--fds-semantic-border-neutral-default);
+}
+
+.readOnly .radio input:read-only ~ svg circle[name='checked'] {
+  fill: var(--fds-semantic-border-neutral-subtle);
+}
+
+.radio input:hover:not(:disabled, :read-only) ~ svg circle[name='circle'] {
   stroke: var(--fds-semantic-border-input-hover);
 }

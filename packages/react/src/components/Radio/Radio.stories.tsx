@@ -25,6 +25,8 @@ export const Preview: Story = {
     children: 'You created the Radio component!',
     description: 'Description',
     disabled: false,
+    readOnly: false,
+    error: false,
   },
 };
 
