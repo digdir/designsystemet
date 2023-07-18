@@ -8,6 +8,9 @@
   pointer-events: none;
   height: 1.75em;
   width: 1.75em;
+  border-radius: var(--fds-border_radius-full);
+  z-index: 1;
+  margin: auto;
 }
 
 .label {
@@ -41,7 +44,7 @@
   border-radius: var(--fds-border_radius-full);
 }
 
-.radio input {
+.input {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -50,14 +53,14 @@
   cursor: pointer;
 }
 
-.error > .radio input,
+.error > .input,
 .error > .label,
-.readOnly > .radio input,
-.readOnly > .label {
+.readonly > .radio > .input,
+.readonly > .label {
   cursor: default;
 }
 
-.disabled > .radio input,
+.disabled > .radio .input,
 .disabled > .label {
   cursor: not-allowed;
   color: var(--fds-semantic-border-neutral-subtle);
@@ -67,76 +70,67 @@
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.radio svg {
-  border-radius: var(--fds-border_radius-full);
-  z-index: 1;
-  margin: auto;
-}
-
-.radio:hover {
-  background: var(--fds-semantic-surface-info-subtle-hover);
-}
-
-.radio:hover input:not(:disabled, :read-only) {
-  background: var(--fds-semantic-surface-info-subtle-hover);
-}
-
-.label:hover:not(input:disabled, :read-only),
-.radio:hover:not(input:disabled, :read-only) ~ .label {
-  color: var(--fds-semantic-border-input-hover);
-}
-
-.radio input:not(:checked) ~ svg circle[name='checked'] {
+.input:not(:checked) ~ .icon .checked {
   display: none;
 }
 
-.radio input:checked ~ svg circle[name='checked'] {
+.input:checked ~ .icon .checked {
   display: inline;
   fill: var(--fds-semantic-border-input-hover);
 }
 
-.radio input:not(:checked) ~ svg circle[name='circle'] {
+.input:not(:checked) ~ .icon .box {
   stroke: var(--fds-semantic-border-input-default);
 }
 
-.radio input:checked ~ svg circle[name='circle'] {
+.input:checked ~ .icon .box {
   stroke: var(--fds-semantic-border-input-hover);
 }
 
-.radio input:disabled ~ svg circle[name='circle'] {
+.input:disabled ~ .icon .box {
   stroke: var(--fds-semantic-border-neutral-subtle);
 }
 
-.radio input:disabled ~ svg circle[name='checked'] {
-  fill: var(--fds-semantic-border-neutral-subtle);
-}
-
-.radio input:focus-visible ~ svg {
+.input:focus-visible ~ .icon {
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
   outline-offset: 0;
 }
 
-.radio input:focus-visible ~ svg circle[name='circle'] {
+.input:focus-visible ~ .icon .box {
   stroke: var(--fds-semantic-border-focus-boxshadow);
   stroke-width: var(--fds-focus-border-width);
 }
 
-.container.error .radio > svg circle[name='circle'] {
-  stroke: var(--fds-semantic-border-danger-default);
-}
-
-.container.error .radio > svg circle[name='checked'] {
-  fill: var(--fds-semantic-border-danger-default);
-}
-
-.readOnly .radio input:read-only ~ svg circle[name='circle'] {
-  stroke: var(--fds-semantic-border-neutral-default);
-}
-
-.readOnly .radio input:read-only ~ svg circle[name='checked'] {
+.input:disabled ~ .icon .checked {
   fill: var(--fds-semantic-border-neutral-subtle);
 }
 
-.radio input:hover:not(:disabled, :read-only) ~ svg circle[name='circle'] {
+.error .input:not(:disabled) ~ .icon .box {
+  stroke: var(--fds-semantic-border-danger-default);
+}
+
+.error .input:not(:disabled) ~ .icon .checked {
+  fill: var(--fds-semantic-border-danger-default);
+}
+
+.readonly .input:read-only:is(:checked) ~ .icon .box {
+  stroke: var(--fds-semantic-border-neutral-default);
+  fill: var(--fds-semantic-background-subtle);
+}
+
+.readonly .input:read-only:is(:checked) ~ .icon .checked {
+  fill: var(--fds-semantic-border-neutral-default);
+}
+
+.container:not(.disabled, .readonly) > .radio:hover {
+  background: var(--fds-semantic-surface-info-subtle-hover);
+}
+
+.container:not(.disabled, .readonly) > .label:hover,
+.container:not(.disabled, .readonly) > .radio:hover ~ .label:hover {
+  color: var(--fds-semantic-border-input-hover);
+}
+
+.container:not(.disabled, .readonly) > .radio:hover .icon .box {
   stroke: var(--fds-semantic-border-input-hover);
 }

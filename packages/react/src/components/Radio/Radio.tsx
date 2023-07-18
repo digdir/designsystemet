@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { Label, Paragraph } from '../Typography';
 
 import classes from './Radio.module.css';
+import { useRadio } from './useRadio';
 
 const RadioIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
@@ -17,6 +18,7 @@ const RadioIcon = (props: SVGAttributes<SVGElement>) => (
     {...props}
   >
     <circle
+      className={classes.box}
       name='circle'
       cx='11'
       cy='11'
@@ -26,6 +28,7 @@ const RadioIcon = (props: SVGAttributes<SVGElement>) => (
       strokeWidth='2'
     />
     <circle
+      className={classes.checked}
       name='checked'
       cx='11'
       cy='11'
@@ -46,6 +49,7 @@ export type RadioProps = {
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ children, size = 'medium', description, id, error, ...rest }, ref) => {
+    const { inputProps } = useRadio(rest);
     const randomId = useId();
     const descriptionId = useId();
     const inputId = id || randomId;
@@ -57,7 +61,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         className={cn(
           classes.container,
           rest.disabled && classes.disabled,
-          rest.readOnly && classes.readOnly,
+          rest.readOnly && classes.readonly,
           error && classes.error,
           rest.className,
         )}
@@ -65,6 +69,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <span className={cn(classes.radio)}>
           <input
             {...rest}
+            {...inputProps}
+            className={classes.input}
             ref={ref}
             id={inputId}
             type='radio'
