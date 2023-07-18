@@ -1,0 +1,29 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as FieldsetStories from './Fieldset.stories';
+
+<Meta of={FieldsetStories} />
+
+# Fieldset
+
+<Information text='development' />
+
+Description of the Fieldset component.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Fieldset } from '@digdir/design-system-react';
+
+<Fieldset>You are using the Fieldset component!</Fieldset>;
+```
+
+## Composed
+
+<Canvas of={FieldsetStories.Composed} />
