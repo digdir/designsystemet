@@ -6,7 +6,7 @@ import { Group } from '.';
 type Story = StoryObj<typeof Group>;
 
 export default {
-  title: 'Kjernekomponenter/Group',
+  title: 'Kjernekomponenter/Form/Group',
   component: Group,
   parameters: {
     status: {
