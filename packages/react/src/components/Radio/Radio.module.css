@@ -113,7 +113,7 @@
   fill: var(--fds-semantic-border-danger-default);
 }
 
-.readonly .input:read-only:is(:checked) ~ .icon .box {
+.readonly .input:read-only ~ .icon .box {
   stroke: var(--fds-semantic-border-neutral-default);
   fill: var(--fds-semantic-background-subtle);
 }

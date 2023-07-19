@@ -1,14 +1,14 @@
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { FieldSet } from '../FieldSet';
+import { Fieldset } from './Fieldset';
 
 import { Radio } from '.';
 
 type Story = StoryObj<typeof Radio>;
 
 export default {
-  title: 'Kjernekomponenter/Radio',
+  title: 'Kjernekomponenter/Form/Radio',
   component: Radio,
   parameters: {
     status: {
@@ -31,19 +31,14 @@ export const Preview: Story = {
 };
 
 export const Inline: StoryFn<typeof Radio> = () => (
-  <FieldSet legend='Have you changed your name?'>
+  <Fieldset legend='Have you changed your name?'>
     <Radio>Yes</Radio>
     <Radio>No</Radio>
-  </FieldSet>
+  </Fieldset>
 );
 
-// Function story
-// Use this story for listing our different variants, patterns with other components or examples usage with useState
-export const Composed: StoryFn<typeof Radio> = () => (
-  <FieldSet
-    legend='What killed the radio star? 🎸'
-    helpText='help me'
-  >
+export const Multiple: StoryFn<typeof Radio> = () => (
+  <Fieldset legend='What killed the radio star? 🎸'>
     <Radio
       readOnly
       description='Shakesparian twist'
@@ -52,5 +47,5 @@ export const Composed: StoryFn<typeof Radio> = () => (
     </Radio>
     <Radio description='VHS kids'>Video</Radio>
     <Radio description='Yippe ka ya '>Cinema</Radio>
-  </FieldSet>
+  </Fieldset>
 );
