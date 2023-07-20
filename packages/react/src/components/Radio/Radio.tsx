@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, SVGAttributes } from 'react';
+import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { useId, forwardRef } from 'react';
 import cn from 'classnames';
 
@@ -42,17 +42,18 @@ export type RadioProps = {
   /**
    * Adds a description for label
    */
-  description?: string;
+  description?: ReactNode;
   size?: 'xsmall' | 'small' | 'medium';
   error?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ children, size = 'medium', description, id, error, ...rest }, ref) => {
-    const { inputProps } = useRadio(rest);
-    const randomId = useId();
-    const descriptionId = useId();
-    const inputId = id || randomId;
+  ({ children, size = 'medium', description, error, ...rest }, ref) => {
+    const { inputProps, inputDescriptionId } = useRadio({
+      ...rest,
+      size,
+      description,
+    });
 
     return (
       <Paragraph
@@ -72,9 +73,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             {...inputProps}
             className={classes.input}
             ref={ref}
-            id={inputId}
             type='radio'
-            aria-describedby={description ? descriptionId : undefined}
           />
           <RadioIcon className={classes.icon} />
         </span>
@@ -83,14 +82,14 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           <Label
             className={classes.label}
             size={size}
-            htmlFor={inputId}
+            htmlFor={inputProps.id}
           >
             <span>{children}</span>
           </Label>
         )}
         {description && (
           <Paragraph
-            id={descriptionId}
+            id={inputDescriptionId}
             as='div'
             size={size}
             className={classes.description}

@@ -105,20 +105,20 @@
   fill: var(--fds-semantic-border-neutral-subtle);
 }
 
-.error .input:not(:disabled) ~ .icon .box {
+.error .input:not(:disabled, :focus-visible) ~ .icon .box {
   stroke: var(--fds-semantic-border-danger-default);
 }
 
-.error .input:not(:disabled) ~ .icon .checked {
+.error .input:not(:disabled, :focus-visible) ~ .icon .checked {
   fill: var(--fds-semantic-border-danger-default);
 }
 
-.readonly .input:read-only ~ .icon .box {
+.readonly .input:read-only:not(:focus-visible) ~ .icon .box {
   stroke: var(--fds-semantic-border-neutral-default);
   fill: var(--fds-semantic-background-subtle);
 }
 
-.readonly .input:read-only:is(:checked) ~ .icon .checked {
+.readonly .input:read-only:not(:focus-visible):is(:checked) ~ .icon .checked {
   fill: var(--fds-semantic-border-neutral-default);
 }
 

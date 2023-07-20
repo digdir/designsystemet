@@ -4,3 +4,12 @@
   border: 0;
   min-width: 0;
 }
+
+.fieldset > :not(:first-child, :empty) {
+  margin-top: var(--fds-spacing-2);
+}
+
+.description {
+  color: var(--fds-semantic-text-neutral-subtle);
+  font-weight: 400;
+}

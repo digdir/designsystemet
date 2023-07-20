@@ -31,20 +31,21 @@ export const Preview: Story = {
 };
 
 export const Inline: StoryFn<typeof Radio> = () => (
-  <Fieldset legend='Have you changed your name?'>
+  <Fieldset
+    legend='Descriptive information about name change'
+    description='description'
+  >
     <Radio>Yes</Radio>
     <Radio>No</Radio>
   </Fieldset>
 );
 
 export const Multiple: StoryFn<typeof Radio> = () => (
-  <Fieldset legend='What killed the radio star? 🎸'>
-    <Radio
-      readOnly
-      description='Shakesparian twist'
-    >
-      Theater
-    </Radio>
+  <Fieldset
+    legend='What killed the radio star? 🎸'
+    description='Video Killed the Radio Star is a song written by Trevor Horn, Geoff Downes and Bruce Woolley in 1979. It was recorded concurrently by Bruce Woolley and the Camera Club (with Thomas Dolby on keyboards) for their album English Garden and by British new wave/synth-pop group the Buggles, which consisted of Horn and Downes (and initially Woolley).'
+  >
+    <Radio description='Shakesparian twist'>Theater</Radio>
     <Radio description='VHS kids'>Video</Radio>
     <Radio description='Yippe ka ya '>Cinema</Radio>
   </Fieldset>

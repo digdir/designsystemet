@@ -1,21 +1,16 @@
-import type { InputHTMLAttributes } from 'react';
-
 import type { RadioProps } from './Radio';
+import type { FormField } from './useFormField';
+import { useFormField } from './useFormField';
 
-type UseRadio = RadioProps & {
-  inputProps: InputHTMLAttributes<HTMLInputElement>;
-};
+type UseRadio = RadioProps & FormField;
 
-export const useRadio = ({
-  readOnly,
-  size,
-  ...props
-}: RadioProps): UseRadio => {
+export const useRadio = (props: RadioProps): UseRadio => {
+  const { inputProps, readOnly, ...rest } = useFormField(props, 'radio');
   return {
-    size,
+    ...rest,
     inputProps: {
-      ...props,
       readOnly,
+      ...inputProps,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
