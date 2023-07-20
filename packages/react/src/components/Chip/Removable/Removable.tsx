@@ -2,17 +2,17 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
-import type { ChipButtonProps } from '../_ChipButton';
-import { ChipButton } from '../_ChipButton';
+import type { ChipBaseProps } from '../_ChipBase';
+import { ChipBase } from '../_ChipBase';
 
 import classes from './Removable.module.css';
 
-export type RemovableChipProps = Omit<ChipButtonProps, 'selected'>;
+export type RemovableChipProps = Omit<ChipBaseProps, 'selected'>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
   ({ children, size = 'small', ...rest }, ref) => {
     return (
-      <ChipButton
+      <ChipBase
         {...rest}
         ref={ref}
         size={size}
@@ -25,7 +25,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         >
           <XMarkIcon className={classes.iconSize} />
         </span>
-      </ChipButton>
+      </ChipBase>
     );
   },
 );
