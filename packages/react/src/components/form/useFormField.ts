@@ -1,6 +1,5 @@
-import type React from 'react';
-import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import { useContext, useId } from 'react';
+import type { HTMLAttributes, InputHTMLAttributes } from 'react';
 import cl from 'classnames';
 
 import { FieldsetContext } from './Fieldset';
@@ -31,8 +30,7 @@ export type FormFieldProps = {
 export type FormField = {
   hasError: boolean;
   errorId: string;
-  inputDescriptionId: string;
-  description: ReactNode;
+  descriptionId: string;
   inputProps: InputHTMLAttributes<HTMLInputElement>;
   readOnly?: boolean;
   size?: 'xsmall' | 'small' | 'medium';
@@ -45,15 +43,15 @@ export const useFormField = (
   props: FormFieldProps,
   prefix: string,
 ): FormField => {
-  const { error, size, description, ...rest } = props;
+  const { error, size } = props;
 
   const fieldset = useContext(FieldsetContext);
 
-  const genId = useId();
+  const randomId = useId();
 
-  const id = props.id ?? `${prefix}-${genId}`;
-  const errorId = props.errorId ?? `${prefix}-error-${genId}`;
-  const inputDescriptionId = `${prefix}-description-${genId}`;
+  const id = props.id ?? `${prefix}-${randomId}`;
+  const errorId = props.errorId ?? `${prefix}-error-${randomId}`;
+  const descriptionId = `${prefix}-description-${randomId}`;
 
   const disabled = fieldset?.disabled || props.disabled;
   const readOnly =
@@ -64,18 +62,16 @@ export const useFormField = (
   return {
     hasError,
     errorId,
-    inputDescriptionId,
+    descriptionId,
     readOnly,
     size: size ?? fieldset?.size ?? 'medium',
-    description,
     inputProps: {
-      ...rest,
       id,
       disabled,
       'aria-invalid': hasError ? true : undefined,
       'aria-describedby':
         cl(props['aria-describedby'], {
-          [inputDescriptionId]:
+          [descriptionId]:
             !!props?.description && typeof props?.description === 'string',
           [errorId]: hasError,
           [fieldset?.errorId ?? '']: hasError && !!fieldset?.error,

@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
-import React, { useId, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Label, Paragraph } from '../../Typography';
@@ -45,14 +45,16 @@ export type RadioProps = {
   description?: ReactNode;
   size?: 'xsmall' | 'small' | 'medium';
   error?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  value: string | ReadonlyArray<string> | number | undefined;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ children, size = 'medium', description, error, ...rest }, ref) => {
-    const { inputProps, inputDescriptionId } = useRadio({
-      ...rest,
+    const { inputProps, descriptionId, hasError } = useRadio({
       size,
       description,
+      error,
+      ...rest,
     });
 
     return (
@@ -63,7 +65,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           classes.container,
           rest.disabled && classes.disabled,
           rest.readOnly && classes.readonly,
-          error && classes.error,
+          (error || hasError) && classes.error,
           rest.className,
         )}
       >
@@ -89,7 +91,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         )}
         {description && (
           <Paragraph
-            id={inputDescriptionId}
+            id={descriptionId}
             as='div'
             size={size}
             className={classes.description}

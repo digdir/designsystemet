@@ -32,10 +32,18 @@ export type FieldsetProps = {
 } & FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
-  (
-    { children, legend, description, size, error, disabled, readOnly, ...rest },
-    ref,
-  ) => {
+  (props, ref) => {
+    const {
+      children,
+      legend,
+      description,
+      size,
+      error,
+      disabled,
+      readOnly,
+      ...rest
+    } = props;
+
     const fieldset = useContext(FieldsetContext);
 
     return (
@@ -70,7 +78,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             </Paragraph>
           )}
           {children}
-          {error && <ErrorMessage>{error}</ErrorMessage>}
+          {error && <ErrorMessage size={size}>{error}</ErrorMessage>}
         </fieldset>
       </FieldsetContext.Provider>
     );

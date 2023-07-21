@@ -1,13 +1,13 @@
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Group } from '.';
+import { RadioGroup } from '.';
 
-type Story = StoryObj<typeof Group>;
+type Story = StoryObj<typeof RadioGroup>;
 
 export default {
   title: 'Kjernekomponenter/Form/Group',
-  component: Group,
+  component: RadioGroup,
   parameters: {
     status: {
       type: 'beta',
@@ -27,10 +27,10 @@ export const Preview: Story = {
 
 // Function story
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
-export const Composed: StoryFn<typeof Group> = () => (
+export const Composed: StoryFn<typeof RadioGroup> = () => (
   <>
-    <Group myProp>I</Group>
-    <Group>am</Group>
-    <Group myProp>stacked</Group>
+    <RadioGroup myProp>I</RadioGroup>
+    <RadioGroup>am</RadioGroup>
+    <RadioGroup myProp>stacked</RadioGroup>
   </>
 );

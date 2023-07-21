@@ -1,7 +1,10 @@
+import { log } from 'console';
+
+import type { ChangeEvent } from 'react';
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Fieldset } from '../Fieldset';
+import { RadioGroup } from './Group';
 
 import { Radio } from '.';
 
@@ -30,23 +33,37 @@ export const Preview: Story = {
   },
 };
 
-export const Inline: StoryFn<typeof Radio> = () => (
-  <Fieldset
-    legend='Descriptive information about name change'
-    description='description'
-  >
-    <Radio>Yes</Radio>
-    <Radio>No</Radio>
-  </Fieldset>
-);
+export const Inline: StoryFn<typeof Radio> = () => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+  };
+
+  return (
+    <RadioGroup
+      legend='Descriptive information about name change'
+      description='description'
+      onChange={onChange}
+    >
+      <Radio value='yes'>Yes</Radio>
+      <Radio value='no'>No</Radio>
+    </RadioGroup>
+  );
+};
 
 export const Multiple: StoryFn<typeof Radio> = () => (
-  <Fieldset
-    legend='What killed the radio star? 🎸'
-    description='Video Killed the Radio Star is a song written by Trevor Horn, Geoff Downes and Bruce Woolley in 1979. It was recorded concurrently by Bruce Woolley and the Camera Club (with Thomas Dolby on keyboards) for their album English Garden and by British new wave/synth-pop group the Buggles, which consisted of Horn and Downes (and initially Woolley).'
+  <RadioGroup
+    legend='Velg pizza (påkreved)'
+    description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
+    error='Du må velge en av våre pizzaer for å legge inn bestilling'
   >
-    <Radio description='Shakesparian twist'>Theater</Radio>
-    <Radio description='VHS kids'>Video</Radio>
-    <Radio description='Yippe ka ya '>Cinema</Radio>
-  </Fieldset>
+    <Radio value='ost'>Bare ost</Radio>
+    <Radio
+      value='Dobbeldekker'
+      description='Chorizo spesial med kokkens luksuskylling'
+    >
+      Dobbeldekker
+    </Radio>
+    <Radio value='flammen'>Flammen</Radio>
+    <Radio value='snadder'>Snadder</Radio>
+  </RadioGroup>
 );
