@@ -14,11 +14,12 @@ export const useRadio: UseRadio = (props) => {
 
   return {
     ...rest,
-    size: radioGroup?.size || rest.size,
     inputProps: {
       readOnly,
       ...inputProps,
+      type: 'radio',
       name: radioGroup?.name,
+      required: radioGroup?.required,
       defaultChecked:
         radioGroup?.defaultValue === undefined
           ? undefined

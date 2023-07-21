@@ -14,7 +14,6 @@ type HoistedRadioProps = Pick<
 
 export type RadioGroupContextProps = {
   name?: string;
-  size?: 'xsmall' | 'small' | 'medium';
 } & HoistedRadioProps;
 
 export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
@@ -22,14 +21,13 @@ export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
 );
 
 export type RadioGroupProps = {
-  /** Description of what myProp does in the component */
-  myProp?: boolean;
+  orientation?: 'horizontal' | 'vertical';
 } & HoistedRadioProps &
   Omit<FieldsetProps, 'onChange'>;
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
   (
-    { onChange, children, value, readOnly, defaultValue, name, size, ...rest },
+    { onChange, children, value, readOnly, defaultValue, name, ...rest },
     ref,
   ) => {
     const nameId = useId();
@@ -47,10 +45,9 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             defaultValue,
             name: name ?? `radiogroup-name-${nameId}`,
             onChange,
-            size,
           }}
         >
-          {children}
+          <div>{children}</div>
         </RadioGroupContext.Provider>
       </Fieldset>
     );

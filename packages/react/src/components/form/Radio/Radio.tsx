@@ -49,11 +49,11 @@ export type RadioProps = {
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ children, size = 'medium', description, error, ...rest }, ref) => {
-    const { inputProps, descriptionId, hasError } = useRadio({
-      size,
+  ({ children, description, error, size: sizeProp, ...rest }, ref) => {
+    const { inputProps, descriptionId, hasError, size } = useRadio({
       description,
       error,
+      size: sizeProp,
       ...rest,
     });
 
@@ -75,7 +75,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             {...inputProps}
             className={classes.input}
             ref={ref}
-            type='radio'
           />
           <RadioIcon className={classes.icon} />
         </span>
