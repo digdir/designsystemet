@@ -4,12 +4,12 @@ import cn from 'classnames';
 
 import classes from './Group.module.css';
 
-export type GroupProps = {
+export type RadioGroupProps = {
   /** Description of what myProp does in the component */
   myProp?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Group = forwardRef<HTMLDivElement, GroupProps>(
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   ({ myProp = false, children, ...rest }, ref) => {
     return (
       <div

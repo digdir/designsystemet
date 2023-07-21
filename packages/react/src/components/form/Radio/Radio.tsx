@@ -2,7 +2,7 @@ import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { useId, forwardRef } from 'react';
 import cn from 'classnames';
 
-import { Label, Paragraph } from '../Typography';
+import { Label, Paragraph } from '../../Typography';
 
 import classes from './Radio.module.css';
 import { useRadio } from './useRadio';

@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { Group } from './Group';
+import { RadioGroup } from './Group';
 
 describe('Group', () => {
   test('myProp should add myClass', (): void => {
-    render(<Group myProp>test text</Group>);
+    render(<RadioGroup myProp>test text</RadioGroup>);
     expect(screen.getByText('test text')).toHaveClass('myClass');
   });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Fieldset } from './Fieldset';
+import { Fieldset } from '../Fieldset';
 
 import { Radio } from '.';
 

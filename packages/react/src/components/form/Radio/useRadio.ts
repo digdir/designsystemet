@@ -1,6 +1,7 @@
+import type { FormField } from '../useFormField';
+import { useFormField } from '../useFormField';
+
 import type { RadioProps } from './Radio';
-import type { FormField } from './useFormField';
-import { useFormField } from './useFormField';
 
 type UseRadio = RadioProps & FormField;
 
