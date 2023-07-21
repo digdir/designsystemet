@@ -1228,6 +1228,20 @@
       "type": "sizing"
     }
   },
+  "radio-and-checkbox": {
+    "xsmall": {
+      "value": "22",
+      "type": "sizing"
+    },
+    "small": {
+      "value": "27",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "32",
+      "type": "sizing"
+    }
+  },
   "border_width": {
     "default": {
       "value": "{border_width.1}",

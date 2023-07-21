@@ -230,9 +230,12 @@
   --fds-sizing-26: calc((var(--fds-base_sizing)*26/16)*var(--fds-font-size-f0));
   --fds-sizing-30: calc((var(--fds-base_sizing)*30/16)*var(--fds-font-size-f0));
   --fds-base_sizing: 4;
-  --fds-component-mode-height-small: 36;
+  --fds-component-mode-height-small: 36px;
   --fds-component-mode-height-medium: var(--fds-sizing-10);
   --fds-component-mode-height-large: var(--fds-sizing-12);
+  --fds-radio-and-checkbox-xsmall: 22px;
+  --fds-radio-and-checkbox-small: 27px;
+  --fds-radio-and-checkbox-medium: 32px;
   --fds-border_width-default: 1px;
   --fds-border_width-active: 2px;
   --fds-border_width-tab_focus: 2px;
