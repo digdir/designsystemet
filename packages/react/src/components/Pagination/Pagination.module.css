@@ -1,0 +1,4 @@
+.pagination {
+  list-style-type: none;
+  display: flex;
+}
