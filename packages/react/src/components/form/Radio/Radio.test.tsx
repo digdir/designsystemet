@@ -5,7 +5,8 @@ import { Radio } from './Radio';
 
 describe('Radio', () => {
   test('myProp should add myClass', (): void => {
-    render(<Radio>test text</Radio>);
+    render(<Radio value='test'>test text</Radio>);
     expect(screen.getByLabelText('test text')).toBeDefined();
+    expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 });
