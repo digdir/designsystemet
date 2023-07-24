@@ -1,8 +1,9 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Chip } from './index';
 
-type Story = StoryObj<typeof Chip>;
+type Story = StoryObj<typeof Chip.Toggle>;
 
 export default {
   title: 'Kjernekomponenter/Chip',
@@ -23,3 +24,9 @@ export const Preview: Story = {
     checkmark: false,
   },
 };
+
+export const Test = () => (
+  <Chip.Group>
+    <Chip.Toggle>Test</Chip.Toggle>
+  </Chip.Group>
+);
