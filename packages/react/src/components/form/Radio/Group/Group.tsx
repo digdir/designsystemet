@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes } from 'react';
 import React, { useContext, forwardRef, createContext, useId } from 'react';
-import cn from 'classnames';
+import cl from 'classnames';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset, FieldsetContext } from '../../Fieldset';
@@ -27,7 +27,16 @@ export type RadioGroupProps = {
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
   (
-    { onChange, children, value, readOnly, defaultValue, name, ...rest },
+    {
+      onChange,
+      children,
+      value,
+      readOnly,
+      defaultValue,
+      name,
+      size = 'medium',
+      ...rest
+    },
     ref,
   ) => {
     const nameId = useId();
@@ -35,7 +44,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
     return (
       <Fieldset
         {...rest}
-        className={cn(rest.className)}
+        className={cl(rest.className)}
         ref={ref}
       >
         <RadioGroupContext.Provider
@@ -47,7 +56,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             onChange,
           }}
         >
-          <div>{children}</div>
+          <div className={cl(classes[size])}>{children}</div>
         </RadioGroupContext.Provider>
       </Fieldset>
     );

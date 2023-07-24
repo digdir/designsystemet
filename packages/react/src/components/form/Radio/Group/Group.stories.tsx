@@ -23,7 +23,7 @@ export const Preview: StoryFn<typeof RadioGroup> = (args) => (
     <Radio value='yes'>Yes</Radio>
     <Radio
       value='no'
-      description='description about No'
+      description='description for option no'
     >
       No
     </Radio>
