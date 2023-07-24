@@ -6,20 +6,40 @@
   --fdsc-icon-size: var(--fds-sizing-4);
 
   composes: focusable from '../../utils/utility.module.css';
+  display: flex;
   align-items: center;
   border-radius: var(--fdsc-border-radius);
   border: var(--fds-border_width-default) solid transparent;
-  box-sizing: border-box;
   color: var(--fdsc-font-and-icon-color);
-  cursor: pointer;
-  display: flex;
   fill: var(--fdsc-font-and-icon-color);
-  font-family: inherit;
   height: var(--fdsc-button-size);
-  justify-content: center;
-  letter-spacing: var(--typography-default-letter-spacing);
   padding: var(--fdsc-button-padding);
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: inherit;
+  justify-content: center;
   text-align: center;
+  letter-spacing: var(--typography-default-letter-spacing);
+  text-decoration: none;
+  position: relative;
+}
+
+.button.small::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  min-height: auto;
+  content: '';
+}
+
+.button.small::after {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  content: '';
 }
 
 .button:disabled,
@@ -35,7 +55,7 @@
 }
 
 .button.small {
-  --fdsc-button-size: calc(var(--fds-component-mode-height-small) / 16 * 1rem);
+  --fdsc-button-size: var(--fds-component-mode-height-small);
   --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
   --fdsc-icon-size: var(--fds-sizing-4);
 
@@ -44,7 +64,7 @@
 }
 
 .button.medium {
-  --fdsc-button-size: calc(var(--fds-component-mode-height-medium) / 16 * 1rem);
+  --fdsc-button-size: var(--fds-component-mode-height-medium);
   --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fdsc-icon-size: var(--fds-sizing-6);
 
@@ -53,7 +73,7 @@
 }
 
 .button.large {
-  --fdsc-button-size: calc(var(--fds-component-mode-height-large) / 16 * 1rem);
+  --fdsc-button-size: var(--fds-component-mode-height-large);
   --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fdsc-icon-size: var(--fds-sizing-8);
 

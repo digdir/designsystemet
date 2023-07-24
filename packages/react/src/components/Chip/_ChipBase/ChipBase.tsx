@@ -1,9 +1,10 @@
 import type { ButtonHTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Paragraph } from '../../Typography';
 import type { OverridableComponent } from '../../../types/OverridableComponent';
+import { ChipGroupContext } from '../Group';
 
 import classes from './ChipBase.module.css';
 
@@ -31,12 +32,17 @@ export const ChipBase: OverridableComponent<ChipBaseProps, HTMLLabelElement> =
       },
       ref,
     ): JSX.Element => {
+      const group = useContext(ChipGroupContext);
       return (
         <Component
           {...rest}
           ref={ref}
           aria-pressed={selected}
-          className={cn(classes.chipButton, classes[size], className)}
+          className={cn(
+            classes.chipButton,
+            classes[group?.size || size],
+            className,
+          )}
         >
           <Paragraph
             as='span'
