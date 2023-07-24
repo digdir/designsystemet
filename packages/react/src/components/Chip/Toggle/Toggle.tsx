@@ -12,6 +12,7 @@ export type ToggleChipProps = {
    */
   checkmark?: boolean;
 } & ChipBaseProps;
+
 export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   (
     {

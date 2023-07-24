@@ -24,9 +24,3 @@ export const Preview: Story = {
     checkmark: false,
   },
 };
-
-export const Test = () => (
-  <Chip.Group>
-    <Chip.Toggle>Test</Chip.Toggle>
-  </Chip.Group>
-);

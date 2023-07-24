@@ -19,14 +19,6 @@ export type ChipGroupProps = {
   size?: 'xsmall' | 'small';
 } & HTMLAttributes<HTMLUListElement>;
 
-/**
- * Grouping multiple `Chip` together. Avoid mixing different kind of chips.
- * @example
- * <Chip.Group>
- *    <Chip.Removable>Tekst</Chip.Removable>
- *    <Chip.Removable>Tekst</Chip.Removable>
- * </Chip.Group>
- */
 export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
   ({ children, size = 'xsmall', ...rest }: ChipGroupProps, ref) => (
     <ul

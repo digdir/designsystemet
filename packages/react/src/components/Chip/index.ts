@@ -6,6 +6,14 @@ import { ToggleChip } from './Toggle';
 import type { ToggleChipProps } from './Toggle/';
 
 type ChipComponent = {
+  /**
+   * Grouping  multiple `Chip` together. Avoid mixing different kind of chips.
+   * @example
+   * <Chip.Group>
+   *    <Chip.Removable>Tekst</Chip.Removable>
+   *    <Chip.Removable>Tekst</Chip.Removable>
+   * </Chip.Group>
+   */
   Group: typeof Group;
   Removable: typeof RemovableChip;
   Toggle: typeof ToggleChip;
