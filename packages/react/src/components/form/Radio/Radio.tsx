@@ -48,57 +48,51 @@ export type RadioProps = {
   value: string | ReadonlyArray<string> | number | undefined;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ children, description, error, size: sizeProp, ...rest }, ref) => {
-    const { inputProps, descriptionId, hasError, size } = useRadio({
-      description,
-      error,
-      size: sizeProp,
-      ...rest,
-    });
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  const { children, description, error, size: omitSize, ...rest } = props;
+  const { inputProps, descriptionId, hasError, size } = useRadio(props);
 
-    return (
-      <Paragraph
-        as='div'
-        size={size}
-        className={cn(
-          classes.container,
-          rest.disabled && classes.disabled,
-          rest.readOnly && classes.readonly,
-          (error || hasError) && classes.error,
-          rest.className,
-        )}
-      >
-        <span className={cn(classes.radio)}>
-          <input
-            {...rest}
-            {...inputProps}
-            className={classes.input}
-            ref={ref}
-          />
-          <RadioIcon className={classes.icon} />
-        </span>
+  return (
+    <Paragraph
+      as='div'
+      size={size}
+      className={cn(
+        classes.container,
+        inputProps.disabled && classes.disabled,
+        (error || hasError) && classes.error,
+        inputProps.readOnly && classes.readonly,
+        rest.className,
+      )}
+    >
+      <span className={cn(classes.radio)}>
+        <input
+          {...rest}
+          {...inputProps}
+          className={classes.input}
+          ref={ref}
+        />
+        <RadioIcon className={classes.icon} />
+      </span>
 
-        {children && (
-          <Label
-            className={classes.label}
-            size={size}
-            htmlFor={inputProps.id}
-          >
-            <span>{children}</span>
-          </Label>
-        )}
-        {description && (
-          <Paragraph
-            id={descriptionId}
-            as='div'
-            size={size}
-            className={classes.description}
-          >
-            {description}
-          </Paragraph>
-        )}
-      </Paragraph>
-    );
-  },
-);
+      {children && (
+        <Label
+          className={classes.label}
+          htmlFor={inputProps.id}
+          size={size}
+        >
+          <span>{children}</span>
+        </Label>
+      )}
+      {description && (
+        <Paragraph
+          id={descriptionId}
+          as='div'
+          size={size}
+          className={classes.description}
+        >
+          {description}
+        </Paragraph>
+      )}
+    </Paragraph>
+  );
+});

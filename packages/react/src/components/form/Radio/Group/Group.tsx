@@ -44,6 +44,8 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
     return (
       <Fieldset
         {...rest}
+        readOnly={readOnly}
+        size={size}
         className={cl(rest.className)}
         ref={ref}
       >

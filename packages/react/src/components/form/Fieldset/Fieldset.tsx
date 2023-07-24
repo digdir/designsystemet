@@ -1,9 +1,11 @@
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import React, { useContext, forwardRef, createContext } from 'react';
 import cn from 'classnames';
+import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
 
+import { useFieldset } from './useFieldset';
 import classes from './Fieldset.module.css';
 
 export type FieldsetContextType = {
@@ -33,16 +35,10 @@ export type FieldsetProps = {
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   (props, ref) => {
-    const {
-      children,
-      legend,
-      description,
-      size,
-      error,
-      disabled,
-      readOnly,
-      ...rest
-    } = props;
+    const { children, legend, description, error, disabled, ...rest } = props;
+
+    const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } =
+      useFieldset(props);
 
     const fieldset = useContext(FieldsetContext);
 
@@ -50,7 +46,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
       <FieldsetContext.Provider
         value={{
           error: error ?? fieldset?.error,
-          errorId: 'fds-error',
+          errorId,
           size,
           disabled,
           readOnly,
@@ -58,17 +54,25 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
       >
         <fieldset
           {...rest}
-          className={cn(classes.fieldset, rest.className)}
+          {...fieldsetProps}
+          className={cn(
+            classes.fieldset,
+            readOnly && classes.readonly,
+            rest.className,
+          )}
           ref={ref}
         >
           <Label
             as='legend'
             size={size}
+            className={classes.legend}
           >
+            {readOnly && <PadlockLockedFillIcon />}
             {legend}
           </Label>
           {description && (
             <Paragraph
+              id={descriptionId}
               className={classes.description}
               size={size}
               as='div'
@@ -78,7 +82,14 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             </Paragraph>
           )}
           {children}
-          {error && <ErrorMessage size={size}>{error}</ErrorMessage>}
+          {hasError && (
+            <ErrorMessage
+              id={errorId}
+              size={size}
+            >
+              {error}
+            </ErrorMessage>
+          )}
         </fieldset>
       </FieldsetContext.Provider>
     );

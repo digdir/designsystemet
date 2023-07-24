@@ -15,8 +15,8 @@ export const useRadio: UseRadio = (props) => {
   return {
     ...rest,
     inputProps: {
-      readOnly,
       ...inputProps,
+      readOnly,
       type: 'radio',
       name: radioGroup?.name,
       required: radioGroup?.required,

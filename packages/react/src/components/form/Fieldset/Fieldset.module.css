@@ -13,3 +13,11 @@
   color: var(--fds-semantic-text-neutral-subtle);
   font-weight: 400;
 }
+
+.readonly {
+  opacity: 0.3;
+}
+
+.readonly > .legend {
+  display: inline-flex;
+}

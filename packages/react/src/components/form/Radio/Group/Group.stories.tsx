@@ -34,6 +34,7 @@ Preview.args = {
   legend: 'Descriptive information about name change',
   description: 'description',
   error: '',
+  readOnly: false,
 };
 
 // Function story
