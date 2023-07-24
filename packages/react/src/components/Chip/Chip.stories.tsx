@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Chip } from './index';
 
-type Story = StoryObj<typeof Chip>;
+type Story = StoryObj<typeof Chip.Toggle>;
 
 export default {
   title: 'Kjernekomponenter/Chip',

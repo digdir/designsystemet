@@ -1,10 +1,10 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
+import type { PartialStoryFn } from '@storybook/types';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
 
-import type { ButtonProps } from './';
 import { Button } from './';
 
 type Story = StoryObj<typeof Button>;
@@ -22,6 +22,12 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
+const stack = (Story: PartialStoryFn<ReactRenderer>) => (
+  <Stack>
+    <Story />
+  </Stack>
+);
+
 const icon = (
   <svg
     viewBox='0 0 24 24'
@@ -37,21 +43,8 @@ const icon = (
   </svg>
 );
 
-const LoadingTemplate = (args: ButtonProps) => {
-  return (
-    <Button {...args}>
-      <Spinner
-        size={args.size}
-        variant='interaction'
-        title='loading'
-      />
-      Laster...
-    </Button>
-  );
-};
-
 // Render functions need to accept "args" for code preview to work properly
-const VariantsTemplate = (_args: ButtonProps) => {
+const VariantsTemplate = () => {
   return (
     <>
       <Button {...Filled.args}>Fylt</Button>
@@ -104,87 +97,92 @@ const Quiet: Story = {
   },
 };
 
-export const FilledWithIcon: Story = {
-  name: 'Fylt med ikon',
-  args: {
-    icon,
-    variant: 'filled',
-  },
-};
+export const withIcon: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      icon={icon}
+      variant='filled'
+      aria-label='Fylt med ikon'
+    ></Button>
+    <Button
+      icon={icon}
+      variant='outline'
+      aria-label=' Omriss med ikon'
+    ></Button>
+    <Button
+      icon={icon}
+      variant='quiet'
+      aria-label='Gjennomsiktig med ikon'
+    ></Button>
+  </>
+);
 
-export const OutlineWithIcon: Story = {
-  name: 'Omriss med ikon',
-  args: {
-    icon,
-    variant: 'outline',
-  },
-};
+withIcon.decorators = [stack];
 
-export const QuietWithIcon: Story = {
-  name: 'Gjennomsiktig med ikon',
-  args: {
-    icon,
-    variant: 'quiet',
-  },
-};
+export const withIconAndText: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      icon={icon}
+      variant='filled'
+    >
+      Fylt med ikon
+    </Button>
+    <Button
+      icon={icon}
+      variant='outline'
+    >
+      Omriss med ikon
+    </Button>
+    <Button
+      icon={icon}
+      variant='quiet'
+    >
+      Gjennomsiktig med ikon
+    </Button>
+  </>
+);
 
-export const FilledWithTextIcon: Story = {
-  name: 'Fylt med tekst og ikon',
-  args: {
-    children: 'Fylt',
-    icon,
-    variant: 'filled',
-  },
-};
+withIconAndText.decorators = [stack];
 
-export const OutlineWithTextIcon: Story = {
-  name: 'Omriss med tekst og ikon',
-  args: {
-    children: 'Med omriss',
-    icon,
-    variant: 'outline',
-  },
-};
+export const withSpinner: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      icon={icon}
+      variant='filled'
+      aria-disabled
+    >
+      <Spinner
+        variant='interaction'
+        title='loading'
+      />
+      Laster...
+    </Button>
+    <Button
+      icon={icon}
+      variant='outline'
+      aria-disabled
+    >
+      <Spinner
+        variant='interaction'
+        title='loading'
+      />
+      Laster...
+    </Button>
+    <Button
+      icon={icon}
+      variant='quiet'
+      aria-disabled
+    >
+      <Spinner
+        variant='interaction'
+        title='loading'
+      />
+      Laster...
+    </Button>
+  </>
+);
 
-export const QuietWithTextIcon: Story = {
-  name: 'Gjennomsiktig med tekst og ikon',
-  args: {
-    children: 'Gjennomsiktig',
-    icon,
-    variant: 'quiet',
-  },
-};
-
-export const FilledWithTextSpinner: Story = {
-  render: LoadingTemplate,
-  name: 'Fylt med tekst og spinner',
-  args: {
-    variant: 'filled',
-    'aria-disabled': true,
-  },
-};
-
-export const OutlineWithTextSpinner: Story = {
-  render: LoadingTemplate,
-  name: 'Omriss med tekst og spinner',
-  args: {
-    children: 'Med omriss',
-    icon,
-    variant: 'outline',
-    'aria-disabled': true,
-  },
-};
-
-export const QuietWithTextSpinner: Story = {
-  render: LoadingTemplate,
-  name: 'Gjennomsiktig med tekst og spinner',
-  args: {
-    children: 'Gjennomsiktig',
-    icon,
-    variant: 'quiet',
-    'aria-disabled': true,
-  },
-};
+withSpinner.decorators = [stack];
 
 export const fullWidth: Story = {
   name: 'Full bredde',
