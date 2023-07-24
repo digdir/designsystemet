@@ -33,8 +33,7 @@ export const Composed: StoryFn<typeof Pagination> = () => (
       currentPage={1}
       totalPages={10}
       variant='compact'
-      size={'small'}
-      onChange={() => null}
+      onChange={(currentPage) => currentPage}
     ></Pagination>
   </>
 );
