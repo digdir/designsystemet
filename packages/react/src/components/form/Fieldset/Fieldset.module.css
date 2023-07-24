@@ -21,3 +21,8 @@
 .readonly > .legend {
   display: inline-flex;
 }
+
+.disabled > .legend,
+.disabled > .description {
+  color: var(--fds-semantic-border-neutral-subtle);
+}

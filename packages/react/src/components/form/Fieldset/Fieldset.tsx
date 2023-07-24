@@ -58,6 +58,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           className={cn(
             classes.fieldset,
             readOnly && classes.readonly,
+            disabled && classes.disabled,
             rest.className,
           )}
           ref={ref}
