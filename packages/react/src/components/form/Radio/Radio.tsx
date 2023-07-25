@@ -2,6 +2,7 @@ import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
+import { omit } from '../../../utils';
 import { Label, Paragraph } from '../../Typography';
 
 import classes from './Radio.module.css';
@@ -49,7 +50,7 @@ export type RadioProps = {
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { children, description, error, size: omitSize, ...rest } = props;
+  const { children, description, ...rest } = props;
   const { inputProps, descriptionId, hasError, size } = useRadio(props);
 
   return (
@@ -59,14 +60,14 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       className={cn(
         classes.container,
         inputProps.disabled && classes.disabled,
-        (error || hasError) && classes.error,
+        hasError && classes.error,
         inputProps.readOnly && classes.readonly,
         rest.className,
       )}
     >
       <span className={cn(classes.radio)}>
         <input
-          {...rest}
+          {...omit(['size'], rest)}
           {...inputProps}
           className={classes.input}
           ref={ref}
