@@ -13,7 +13,7 @@ export type FormFieldProps = {
    * @note Avoid using if possible for accessibility purposes
    */
   disabled?: boolean;
-  /**  Description for form field */
+  /** Description for form field */
   description?: React.ReactNode;
   /** Override internal id */
   id?: string;

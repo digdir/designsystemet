@@ -20,7 +20,7 @@ type UseRadio = (props: RadioProps) => FormField & {
     | 'onChange'
   >;
 };
-
+/** Handles props for `Radio` in context with`Radio.Group` (and `Fieldset`) */
 export const useRadio: UseRadio = (props) => {
   const radioGroup = useContext(RadioGroupContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'radio');
