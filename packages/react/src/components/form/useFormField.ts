@@ -5,25 +5,21 @@ import cl from 'classnames';
 import { FieldsetContext } from './Fieldset';
 
 export type FormFieldProps = {
-  /** Error message */
+  /** Error message for form field */
   error?: React.ReactNode;
   /** Override generated errorId */
   errorId?: string;
-  /**
-    Disables element
+  /** Disables element
    * @note Avoid using if possible for accessibility purposes
    */
   disabled?: boolean;
-  /**
-   * Adds a description to label
-   */
+  /**  Description for form field */
   description?: React.ReactNode;
-  /**
-   * Override internal id
-   */
+  /** Override internal id */
   id?: string;
   /** Read only-state */
   readOnly?: boolean;
+  /** Changes field size and paddings */
   size?: 'xsmall' | 'small' | 'medium';
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
@@ -31,7 +27,10 @@ export type FormField = {
   hasError: boolean;
   errorId: string;
   descriptionId: string;
-  inputProps: InputHTMLAttributes<HTMLInputElement>;
+  inputProps: Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    'id' | 'disabled' | 'aria-invalid' | 'aria-describedby'
+  >;
   readOnly?: boolean;
   size?: 'xsmall' | 'small' | 'medium';
 };
@@ -43,8 +42,6 @@ export const useFormField = (
   props: FormFieldProps,
   prefix: string,
 ): FormField => {
-  const { error, size } = props;
-
   const fieldset = useContext(FieldsetContext);
 
   const randomId = useId();
@@ -53,18 +50,18 @@ export const useFormField = (
   const errorId = props.errorId ?? `${prefix}-error-${randomId}`;
   const descriptionId = `${prefix}-description-${randomId}`;
 
-  const disabled = fieldset?.disabled || props.disabled;
+  const disabled = fieldset?.disabled || props?.disabled;
   const readOnly =
-    ((fieldset?.readOnly || props.readOnly) && !disabled) || undefined;
+    ((fieldset?.readOnly || props?.readOnly) && !disabled) || undefined;
 
-  const hasError = !disabled && !readOnly && !!(error || fieldset?.error);
+  const hasError = !disabled && !readOnly && !!(props.error || fieldset?.error);
 
   return {
+    readOnly,
     hasError,
     errorId,
     descriptionId,
-    readOnly,
-    size: size ?? fieldset?.size ?? 'medium',
+    size: props?.size ?? fieldset?.size ?? 'medium',
     inputProps: {
       id,
       disabled,

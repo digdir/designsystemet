@@ -1,3 +1,4 @@
+import type { InputHTMLAttributes } from 'react';
 import { useContext } from 'react';
 
 import type { FormField } from '../useFormField';
@@ -6,7 +7,19 @@ import { useFormField } from '../useFormField';
 import type { RadioProps } from './Radio';
 import { RadioGroupContext } from './Group';
 
-type UseRadio = (props: RadioProps) => FormField;
+type UseRadio = (props: RadioProps) => FormField & {
+  inputProps?: Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    | 'readOnly'
+    | 'type'
+    | 'name'
+    | 'required'
+    | 'defaultChecked'
+    | 'checked'
+    | 'onClick'
+    | 'onChange'
+  >;
+};
 
 export const useRadio: UseRadio = (props) => {
   const radioGroup = useContext(RadioGroupContext);
@@ -14,6 +27,7 @@ export const useRadio: UseRadio = (props) => {
 
   return {
     ...rest,
+    readOnly,
     inputProps: {
       ...inputProps,
       readOnly,
@@ -33,7 +47,6 @@ export const useRadio: UseRadio = (props) => {
           e.preventDefault();
           return;
         }
-        console.log('onClick');
         props?.onClick?.(e);
       },
       onChange: (e) => {
