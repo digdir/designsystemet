@@ -1,10 +1,6 @@
-import { log } from 'console';
-
 import type { ChangeEvent } from 'react';
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-
-import { RadioGroup } from './Group';
 
 import { Radio } from '.';
 
@@ -21,37 +17,39 @@ export default {
   },
 } as Meta;
 
-// Simple story
-// First story is the one displayed by <Preview /> and used for <Controls />
 export const Preview: Story = {
   args: {
-    children: 'You created the Radio component!',
+    children: 'Radio',
     description: 'Description',
     disabled: false,
     readOnly: false,
     error: false,
+    value: 'value',
   },
 };
 
-export const Inline: StoryFn<typeof Radio> = () => {
+export const Group: StoryFn<typeof Radio.Group> = () => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
   };
 
   return (
-    <RadioGroup
+    <Radio.Group
       legend='Descriptive information about name change'
       description='description'
       onChange={onChange}
+      onClick={(e) => {
+        console.log('onClick', e.currentTarget);
+      }}
     >
       <Radio value='yes'>Yes</Radio>
       <Radio value='no'>No</Radio>
-    </RadioGroup>
+    </Radio.Group>
   );
 };
 
-export const Multiple: StoryFn<typeof Radio> = () => (
-  <RadioGroup
+export const groupError: StoryFn<typeof Radio> = () => (
+  <Radio.Group
     legend='Velg pizza (påkreved)'
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
     error='Du må velge en av våre pizzaer for å legge inn bestilling'
@@ -65,5 +63,5 @@ export const Multiple: StoryFn<typeof Radio> = () => (
     </Radio>
     <Radio value='flammen'>Flammen</Radio>
     <Radio value='snadder'>Snadder</Radio>
-  </RadioGroup>
+  </Radio.Group>
 );

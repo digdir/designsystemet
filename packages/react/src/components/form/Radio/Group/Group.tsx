@@ -1,15 +1,18 @@
-import type { InputHTMLAttributes } from 'react';
-import React, { useContext, forwardRef, createContext, useId } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef, createContext, useId } from 'react';
 import cl from 'classnames';
 
 import type { FieldsetProps } from '../../Fieldset';
-import { Fieldset, FieldsetContext } from '../../Fieldset';
+import { Fieldset } from '../../Fieldset';
+import type { RadioProps } from '../Radio';
 
 import classes from './Group.module.css';
 
-type HoistedRadioProps = Pick<
-  InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'readOnly' | 'required' | 'defaultValue' | 'onChange'
+type HoistedRadioProps = Partial<
+  Pick<
+    RadioProps,
+    'readOnly' | 'required' | 'defaultValue' | 'onChange' | 'value'
+  >
 >;
 
 export type RadioGroupContextProps = {
@@ -21,7 +24,10 @@ export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
 );
 
 export type RadioGroupProps = {
-  orientation?: 'horizontal' | 'vertical';
+  /** Collection for `Radio` components */
+  children?: ReactNode;
+  /** Controlled state for collection of `Radio` components */
+  // value?: Pick<RadioProps, 'value'>;
 } & HoistedRadioProps &
   Omit<FieldsetProps, 'onChange'>;
 

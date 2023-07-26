@@ -1,11 +1,5 @@
+.xsmall,
+.small,
 .medium {
-  margin-left: calc(var(--fds-spacing-2) * -1);
-}
-
-.small {
-  margin-left: calc(var(--fds-spacing-2) * -1);
-}
-
-.xsmall {
   margin-left: calc(var(--fds-spacing-2) * -1);
 }
