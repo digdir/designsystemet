@@ -9,7 +9,7 @@ import * as RadioGroupStories from './Group/Group.stories';
 
 <Information text='development' />
 
-Description of the Radio component.
+`Radio` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Radio.Group` hvis man har behov for radioknapper.
 
 <Primary />
 <Controls />
@@ -22,14 +22,21 @@ Description of the Radio component.
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
 import { Radio } from '@digdir/design-system-react';
 
-<Radio>You are using the Radio component!</Radio>;
+<Radio.Group legend='Er du over 18 år?'>
+  <Radio value='Ja'>Ja</Radio>
+  <Radio value='Ne'>Nei</Radio>
+</Radio.Group>;
 ```
 
 ## `Radio.Group`
+
+Bruk `Radio.Group` for gruppering av radioknapper.
 
 <Canvas of={RadioGroupStories.Preview} />
 <Controls of={RadioGroupStories.Preview} />
 
 ### Feilmelding
+
+Bruk `error` for å feilmelding samt aktivere feil stil i radio gruppen. Her må `Radio.Group` brukes mtp. bla. skjermlesere.
 
 <Canvas of={RadioStories.groupError} />

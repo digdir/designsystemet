@@ -1,4 +1,3 @@
-import type { ChangeEvent } from 'react';
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
@@ -23,27 +22,15 @@ export const Preview: Story = {
     description: 'Description',
     disabled: false,
     readOnly: false,
-    error: false,
     value: 'value',
   },
 };
 
 export const Group: StoryFn<typeof Radio.Group> = () => {
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
-
   return (
-    <Radio.Group
-      legend='Descriptive information about name change'
-      description='description'
-      onChange={onChange}
-      onClick={(e) => {
-        console.log('onClick', e.currentTarget);
-      }}
-    >
-      <Radio value='yes'>Yes</Radio>
-      <Radio value='no'>No</Radio>
+    <Radio.Group legend='Er du over 18 år?'>
+      <Radio value='Ja'>Ja</Radio>
+      <Radio value='Ne'>Nei</Radio>
     </Radio.Group>
   );
 };

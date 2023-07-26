@@ -18,16 +18,17 @@ export default {
 
 export const Preview: StoryFn<typeof RadioGroup> = (args) => (
   <RadioGroup {...args}>
-    <Radio value='10'>10 - 11</Radio>
-    <Radio value='11'>11 - 12</Radio>
-    <Radio value='12'>12 - 13</Radio>
+    <Radio value='vanilje'>Vanilje</Radio>
+    <Radio value='jordbær'>Jordbær</Radio>
+    <Radio value='sjokolade'>Sjokolade</Radio>
+    <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
   </RadioGroup>
 );
 
 Preview.args = {
-  legend: 'Velg aktuelt tidspunkt på dagen',
-  description: 'Oppmøte 10min før tidspunkt',
-  error: '',
+  legend: 'Hvilken iskremsmak er best?',
+  description: 'Velg din favorittsmak blant alternativene.',
   readOnly: false,
   disabled: false,
+  error: '',
 };

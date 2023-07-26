@@ -19,17 +19,18 @@ export type FieldsetContextType = {
 export const FieldsetContext = createContext<FieldsetContextType | null>(null);
 
 export type FieldsetProps = {
-  /** A description of the field set. This will appear below the legend. */
+  /** A description of the fieldset. This will appear below the legend. */
   description?: ReactNode;
-  /** Set to `true` to disable all input fields within the field set. */
+  /** Sets `disabled` all input fields within the fieldset. */
   disabled?: boolean;
-  /** If set, this will diplay an error message at the bottom of the component. */
+  /** If set, this will diplay an error message at the bottom of the fieldset. */
   error?: ReactNode;
-  /** The legend of the field set. */
+  /** The legend of the fieldset. */
   legend?: ReactNode;
-  /** The size of the field set. */
+  /** The size of the fieldset. */
   size?: 'xsmall' | 'small' | 'medium';
-  /** */
+  /** Sets `readOnly` all input fields within the fieldset.
+   * @note This does not prevent fieldset values from being submited */
   readOnly?: boolean;
 } & FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
@@ -85,6 +86,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {children}
           {hasError && (
             <ErrorMessage
+              aria-live='polite'
               id={errorId}
               size={size}
             >

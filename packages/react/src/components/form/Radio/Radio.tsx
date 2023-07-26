@@ -46,8 +46,6 @@ export type RadioProps = {
   description?: ReactNode;
   /** Changes Radio size and paddings */
   size?: 'xsmall' | 'small' | 'medium';
-  /** Toggle error style */
-  error?: boolean;
   /** Value of the `input` element */
   value: string | ReadonlyArray<string> | number | undefined;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;

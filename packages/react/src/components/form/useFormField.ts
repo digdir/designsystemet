@@ -6,7 +6,7 @@ import { FieldsetContext } from './Fieldset';
 
 export type FormFieldProps = {
   /** Error message for form field */
-  error?: string | boolean;
+  error?: string;
   /** Override generated errorId */
   errorId?: string;
   /** Disables element

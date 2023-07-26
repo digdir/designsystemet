@@ -9,14 +9,13 @@ import type { RadioProps } from '../Radio';
 import classes from './Group.module.css';
 
 type HoistedRadioProps = Partial<
-  Pick<
-    RadioProps,
-    'readOnly' | 'required' | 'defaultValue' | 'onChange' | 'value'
-  >
+  Pick<RadioProps, 'required' | 'defaultValue' | 'onChange'>
 >;
 
 export type RadioGroupContextProps = {
   name?: string;
+  value?: string | ReadonlyArray<string> | number;
+  readOnly?: boolean;
 } & HoistedRadioProps;
 
 export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
@@ -24,10 +23,10 @@ export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
 );
 
 export type RadioGroupProps = {
-  /** Collection for `Radio` components */
+  /** Collection of `Radio` components */
   children?: ReactNode;
-  /** Controlled state for collection of `Radio` components */
-  // value?: Pick<RadioProps, 'value'>;
+  /** Controlled state for `Radio` */
+  value?: string | ReadonlyArray<string> | number;
 } & HoistedRadioProps &
   Omit<FieldsetProps, 'onChange'>;
 
