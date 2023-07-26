@@ -30,3 +30,4 @@ docs
 
 # Vercel connfig files
 .vercel/
+.vscode/settings.json

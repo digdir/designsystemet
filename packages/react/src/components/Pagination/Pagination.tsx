@@ -7,16 +7,28 @@ import { Button } from '@digdir/design-system-react';
 import classes from './Pagination.module.css';
 
 export interface PaginationProps {
-  /** Sets the text label for the next page button */
-  nextLabel?: string;
-  /** Sets the text label for the previous page button */
-  previousLabel?: string;
-  /** Sets the size of the component */
+  /** Sets the text label for the next page button
+   * @default ''
+   */
+  nextLabel: string;
+  /** Sets the text label for the previous page button
+   * @default ''
+   */
+  previousLabel: string;
+  /** Sets the size of the component
+   * @default 'medium'
+   */
   size?: 'small' | 'medium';
-  /** Sets the how compact the component will be */
-  variant?: 'normal' | 'compact';
+  /** Sets how compact the component will be. If true, only 5 steps will show.
+   * @default false
+   */
+  compact?: boolean;
+  /** Hides the component's previous and next button labels
+   * @default false
+   */
+  hideLabels?: boolean;
   /** Sets the current page */
-  currentPage?: number;
+  currentPage: number;
   /** Total number of pages */
   totalPages: number;
   /**
@@ -33,144 +45,91 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     {
       nextLabel = '',
       previousLabel = '',
-      size = 'medium',
-      variant = 'normal',
+      size = 'small',
+      compact = false,
+      hideLabels = false,
       currentPage = 1,
       totalPages,
       onChange,
     }: PaginationProps,
     ref,
   ) => {
-    const previousEllipsis = () => {
-      return (
-        ((currentPage > 2 && variant === 'compact' && totalPages > 5) ||
-          (currentPage > 2 && variant === 'normal' && totalPages > 8)) && (
-          <li>
-            <p>...</p>
-          </li>
-        )
+    const getSteps = () => {
+      const boundaryCount = 1;
+      const siblingCount = compact ? 0 : 1;
+
+      const range = (start: number, end: number) =>
+        Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+      if (totalPages <= (boundaryCount + siblingCount) * 2 + 3)
+        return range(1, totalPages);
+
+      const startPages = range(1, boundaryCount);
+      const endPages = range(totalPages - boundaryCount + 1, totalPages);
+
+      const siblingsStart = Math.max(
+        Math.min(
+          currentPage - siblingCount,
+          totalPages - boundaryCount - siblingCount * 2 - 1,
+        ),
+        boundaryCount + 2,
       );
-    };
-    const nextEllipsis = () => {
-      return (
-        currentPage < totalPages - 2 &&
-        totalPages > 5 && (
-          <li>
-            <p>...</p>
+      const siblingsEnd = siblingsStart + siblingCount * 2;
+
+      const pages = [
+        ...startPages,
+        siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
+          ? siblingsStart - 1
+          : 'ellipsis',
+        ...range(siblingsStart, siblingsEnd),
+        (endPages[0] ?? totalPages + 1) - siblingsEnd === 2
+          ? siblingsEnd + 1
+          : 'ellipsis',
+        ...endPages,
+      ];
+
+      return pages.map((step, i) => {
+        const n = Number(step);
+        return isNaN(n) ? (
+          <li className={cn(classes.listitem, classes[size])}>
+            <p
+              key={`${step}`}
+              className={cn(classes.ellipsis)}
+            >
+              ...
+            </p>
           </li>
-        )
-      );
-    };
-
-    const centerPages = () => {
-      let pages: number[];
-
-      if (currentPage === 2) {
-        pages = Array.from({ length: 4 }, (_, index) => currentPage + index);
-      } else if (currentPage < totalPages - 2 && currentPage !== 1) {
-        pages = Array.from({ length: 2 }, (_, index) => currentPage + index);
-      } else if (currentPage === 1) {
-        pages = Array.from(
-          { length: 4 },
-          (_, index) => currentPage + 1 + index,
-        );
-      } else {
-        pages = Array.from({ length: 3 }, (_, index) => totalPages - 3 + index);
-      }
-
-      if (variant === 'compact') {
-        if (totalPages > 5) {
-          if (currentPage === 2) {
-            pages = Array.from(
-              { length: 2 },
-              (_, index) => currentPage + index,
-            );
-          } else if (
-            currentPage === totalPages - 2 ||
-            currentPage >= totalPages - 1
-          ) {
-            pages = Array.from(
-              { length: 2 },
-              (_, index) => totalPages - 2 + index,
-            );
-          } else if (currentPage !== 1 && currentPage !== totalPages) {
-            pages = Array.from(
-              { length: 1 },
-              (_, index) => currentPage + index,
-            );
-          } else if (currentPage === 1) {
-            pages = Array.from(
-              { length: 2 },
-              (_, index) => currentPage + 1 + index,
-            );
-          } else {
-            pages = Array.from(
-              { length: 1 },
-              (_, index) => totalPages - 3 + index,
-            );
-          }
-        } else {
-          if (currentPage === 1) {
-            pages = Array.from(
-              { length: 3 },
-              (_, index) => currentPage + 1 + index,
-            );
-          } else if (currentPage === 2) {
-            pages = Array.from(
-              { length: 3 },
-              (_, index) => currentPage + index,
-            );
-          } else {
-            pages = Array.from(
-              { length: 3 },
-              (_, index) => currentPage + index,
-            );
-          }
-        }
-      }
-
-      return (
-        <>
-          {currentPage > 2 && variant === 'normal' && (
+        ) : (
+          <li
+            className={cn(classes.listitem, classes[size])}
+            key={step}
+          >
             <Button
-              variant={'quiet'}
+              variant={currentPage === n ? 'filled' : 'quiet'}
+              aria-current={currentPage === n}
               color={'primary'}
               size={'small'}
-              aria-label={`Go to page ${pages[0] - 1}`}
+              aria-label={`Go to page ${i}`}
               onClick={() => {
-                onChange(pages[0] - 1);
+                onChange(n);
               }}
+              fullWidth
             >
-              {pages[0] - 1}
+              {n}
             </Button>
-          )}
-          {pages.map((i) => (
-            <li key={i}>
-              <Button
-                variant={currentPage === i ? 'filled' : 'quiet'}
-                color={'primary'}
-                size={'small'}
-                aria-label={`Go to page ${i}`}
-                onClick={() => {
-                  onChange(i);
-                }}
-              >
-                {i}
-              </Button>
-            </li>
-          ))}
-        </>
-      );
+          </li>
+        );
+      });
     };
 
     return (
       <nav ref={ref}>
         <ul className={classes.pagination}>
-          {currentPage !== 1 && (
-            <li>
+          {currentPage !== 1 ? (
+            <li className={cn(classes.chevronLeft, classes[size])}>
               <Button
                 icon={<ChevronLeftIcon />}
-                aria-label='Go to previous page'
+                aria-label={previousLabel}
                 onClick={() => {
                   onChange(currentPage - 1);
                 }}
@@ -178,48 +137,31 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 color={'primary'}
                 size={'small'}
               >
-                {previousLabel}
+                {!hideLabels && previousLabel}
               </Button>
             </li>
+          ) : (
+            <div className={cn(classes.whitespace)}></div>
           )}
-          <Button
-            variant={currentPage === 1 ? 'filled' : 'quiet'}
-            color={'primary'}
-            size={'small'}
-            onClick={() => {
-              onChange(1);
-            }}
-          >
-            {1}
-          </Button>
-          {previousEllipsis()}
-          {centerPages()}
-          {nextEllipsis()}
-          <Button
-            variant={currentPage === totalPages ? 'filled' : 'quiet'}
-            color={'primary'}
-            size={'small'}
-            onClick={() => {
-              onChange(totalPages);
-            }}
-          >
-            {totalPages}
-          </Button>
-          {currentPage !== totalPages && (
-            <li>
+          {getSteps()}
+          {currentPage !== totalPages ? (
+            <li className={cn(classes.chevronRight, classes[size])}>
               <Button
                 variant={'quiet'}
                 color={'primary'}
                 size={'small'}
                 icon={<ChevronRightIcon />}
-                aria-label='Go to next page'
+                aria-label={nextLabel}
                 onClick={() => {
                   onChange(currentPage + 1);
                 }}
+                iconPlacement='right'
               >
-                {nextLabel}
+                {!hideLabels && nextLabel}
               </Button>
             </li>
+          ) : (
+            <div className={cn(classes.whitespace)}></div>
           )}
         </ul>
       </nav>
