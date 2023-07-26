@@ -28,6 +28,12 @@ import { Radio } from '@digdir/design-system-react';
 </Radio.Group>;
 ```
 
+### Enkel
+
+`Radio` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
+
+<Canvas of={RadioStories.Single} />
+
 ## `Radio.Group`
 
 Bruk `Radio.Group` for gruppering av radioknapper.
@@ -37,6 +43,22 @@ Bruk `Radio.Group` for gruppering av radioknapper.
 
 ### Feilmelding
 
-Bruk `error` for å feilmelding samt aktivere feil stil i radio gruppen. Her må `Radio.Group` brukes mtp. bla. skjermlesere.
+Bruk `error` på `Radio.Group` for å vise feilmelding.
 
-<Canvas of={RadioStories.groupError} />
+Her må `Radio.Group` brukes da den aktivere korrekt stil og sørger for at innholdet har riktige attributter mtp. tilgjengelighet.
+
+<Canvas of={RadioGroupStories.Error} />
+
+### Kontrollert
+
+Bruk `value` på `Radio.Group` for å kontrollere verdiene selv.
+
+<Canvas of={RadioGroupStories.Controlled} />
+
+### Readonly
+
+<Canvas of={RadioGroupStories.ReadOnly} />
+
+### Disabled
+
+<Canvas of={RadioGroupStories.Disabled} />

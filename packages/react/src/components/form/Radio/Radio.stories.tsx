@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Radio } from '.';
 
@@ -26,29 +26,9 @@ export const Preview: Story = {
   },
 };
 
-export const Group: StoryFn<typeof Radio.Group> = () => {
-  return (
-    <Radio.Group legend='Er du over 18 år?'>
-      <Radio value='Ja'>Ja</Radio>
-      <Radio value='Ne'>Nei</Radio>
-    </Radio.Group>
-  );
+export const Single: Story = {
+  args: {
+    value: 'value',
+    'aria-label': 'Radio',
+  },
 };
-
-export const groupError: StoryFn<typeof Radio> = () => (
-  <Radio.Group
-    legend='Velg pizza (påkreved)'
-    description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
-    error='Du må velge en av våre pizzaer for å legge inn bestilling'
-  >
-    <Radio value='ost'>Bare ost</Radio>
-    <Radio
-      value='Dobbeldekker'
-      description='Chorizo spesial med kokkens luksuskylling'
-    >
-      Dobbeldekker
-    </Radio>
-    <Radio value='flammen'>Flammen</Radio>
-    <Radio value='snadder'>Snadder</Radio>
-  </Radio.Group>
-);
