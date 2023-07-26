@@ -1,12 +1,12 @@
 import { useContext, useId } from 'react';
-import type { HTMLAttributes, InputHTMLAttributes } from 'react';
+import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import cl from 'classnames';
 
 import { FieldsetContext } from './Fieldset';
 
 export type FormFieldProps = {
   /** Error message for form field */
-  error?: string;
+  error?: ReactNode;
   /** Override generated errorId */
   errorId?: string;
   /** Disables element
@@ -14,7 +14,7 @@ export type FormFieldProps = {
    */
   disabled?: boolean;
   /** Description for form field */
-  description?: React.ReactNode;
+  description?: ReactNode;
   /** Override internal id */
   id?: string;
   /** Read only-state */
