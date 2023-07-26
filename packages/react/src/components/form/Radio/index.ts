@@ -15,6 +15,7 @@ type RadioComponent = typeof RadioParent & {
   Group: typeof RadioGroup;
 };
 
+/** `<input> element with `type="radio"` used for selecting one option */
 const Radio = RadioParent as RadioComponent;
 
 Radio.Group = RadioGroup;
