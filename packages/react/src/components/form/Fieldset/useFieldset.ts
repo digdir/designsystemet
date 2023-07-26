@@ -2,6 +2,7 @@ import { useFormField } from '../useFormField';
 
 import type { FieldsetProps } from './Fieldset';
 
+/** Handles fieldset props and state */
 export const useFieldset = (props: FieldsetProps) => {
   const formField = useFormField(props, 'fieldset');
   const { inputProps } = formField;
