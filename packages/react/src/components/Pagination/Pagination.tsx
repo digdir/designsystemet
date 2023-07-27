@@ -55,7 +55,14 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     ref,
   ) => {
     const getSteps = () => {
+      /**
+       * Number of always visible pages at the start and end.
+       */
       const boundaryCount = 1;
+
+      /**
+       * Number of always visible pages before and after the current page.
+       */
       const siblingCount = compact ? 0 : 1;
 
       const range = (start: number, end: number) =>
@@ -76,7 +83,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       );
       const siblingsEnd = siblingsStart + siblingCount * 2;
 
-      const pages = [
+      return [
         ...startPages,
         siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
           ? siblingsStart - 1
@@ -87,39 +94,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           : 'ellipsis',
         ...endPages,
       ];
-
-      return pages.map((step, i) => {
-        const n = Number(step);
-        return isNaN(n) ? (
-          <li className={cn(classes.listitem, classes[size])}>
-            <p
-              key={`${step}`}
-              className={cn(classes.ellipsis)}
-            >
-              ...
-            </p>
-          </li>
-        ) : (
-          <li
-            className={cn(classes.listitem, classes[size])}
-            key={step}
-          >
-            <Button
-              variant={currentPage === n ? 'filled' : 'quiet'}
-              aria-current={currentPage === n}
-              color={'primary'}
-              size={'small'}
-              aria-label={`Go to page ${i}`}
-              onClick={() => {
-                onChange(n);
-              }}
-              fullWidth
-            >
-              {n}
-            </Button>
-          </li>
-        );
-      });
     };
 
     return (
@@ -143,7 +117,38 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           ) : (
             <div className={cn(classes.whitespace)}></div>
           )}
-          {getSteps()}
+          {getSteps().map((step) => {
+            const n = Number(step);
+            return isNaN(n) ? (
+              <li className={cn(classes.listitem, classes[size])}>
+                <p
+                  key={`${step}`}
+                  className={cn(classes.ellipsis)}
+                >
+                  ...
+                </p>
+              </li>
+            ) : (
+              <li
+                className={cn(classes.listitem, classes[size])}
+                key={step}
+              >
+                <Button
+                  variant={currentPage === n ? 'filled' : 'quiet'}
+                  aria-current={currentPage === n}
+                  color={'primary'}
+                  size={'small'}
+                  aria-label={`Page ${n}`}
+                  onClick={() => {
+                    onChange(n);
+                  }}
+                  fullWidth
+                >
+                  {n}
+                </Button>
+              </li>
+            );
+          })}
           {currentPage !== totalPages ? (
             <li className={cn(classes.chevronRight, classes[size])}>
               <Button

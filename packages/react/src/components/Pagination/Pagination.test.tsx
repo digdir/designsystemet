@@ -1,56 +1,137 @@
-import { render as renderRtl, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import { act, render as renderRtl, screen } from '@testing-library/react';
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 
 import type { PaginationProps } from './Pagination';
 import { Pagination } from './Pagination';
 
-describe('Pagination component', () => {
-  it('should render correctly with default props', () => {
-    const { container, getByLabelText } = render({
-      currentPage: 3,
-      totalPages: 8,
+const user = userEvent.setup();
+
+const defaultProps = {
+  currentPage: 5,
+  totalPages: 10,
+  nextLabel: 'Next',
+  previousLabel: 'Previous',
+};
+
+describe('Pagination', () => {
+  it('Compact pagination should render correctly with default props', () => {
+    render({
+      compact: true,
       onChange: () => null,
-      nextLabel: 'Next',
-      previousLabel: 'Previous',
+      ...defaultProps,
     });
 
-    expect(container.querySelectorAll('.listitem')).toHaveLength(8);
+    const buttons = screen.getAllByRole('button');
+    expect(buttons.length).toBe(5);
 
-    expect(getByLabelText('Next')).toBeInTheDocument();
+    const ellipsisElements = screen.getAllByText('...');
+    expect(ellipsisElements.length).toBe(2);
 
-    expect(getByLabelText('Previous')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('button', { name: 'Previous' }),
+    ).toBeInTheDocument();
   });
 
-  it('should call onChange with the correct page number when "Next" or "Previous" button is clicked', () => {
-    const mockOnChange = jest.fn();
-    const { getByLabelText } = render({
-      currentPage: 3,
-      totalPages: 8,
-      onChange: mockOnChange,
-      nextLabel: 'Next',
-      previousLabel: 'Previous',
+  it('Should render correctly with default props', () => {
+    render({
+      onChange: () => null,
+      ...defaultProps,
     });
 
-    fireEvent.click(getByLabelText('Next'));
+    const buttons = screen.getAllByRole('button');
+    expect(buttons.length).toBe(7);
+
+    const ellipsisElements = screen.getAllByText('...');
+    expect(ellipsisElements.length).toBe(2);
+
+    expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('button', { name: 'Previous' }),
+    ).toBeInTheDocument();
+  });
+
+  it('should call onChange with the correct page number when buttons are clicked', async () => {
+    const mockOnChange = jest.fn();
+    render({
+      onChange: mockOnChange,
+      ...defaultProps,
+    });
+
+    await act(() => user.click(screen.getByRole('button', { name: 'Next' })));
+    expect(mockOnChange).toHaveBeenCalledWith(6);
+
+    await act(() =>
+      user.click(screen.getByRole('button', { name: 'Previous' })),
+    );
     expect(mockOnChange).toHaveBeenCalledWith(4);
 
-    fireEvent.click(getByLabelText('Previous'));
-    expect(mockOnChange).toHaveBeenCalledWith(2);
+    await act(() => user.click(screen.getByLabelText('Page 1')));
+    expect(mockOnChange).toHaveBeenCalledWith(1);
   });
 
-  it('should call onChange with the correct page number when a pagination item is clicked', () => {
-    const mockOnChange = jest.fn();
-    const { getByText } = render({
-      currentPage: 3,
-      totalPages: 8,
-      onChange: mockOnChange,
-      nextLabel: 'Next',
-      previousLabel: 'Previous',
+  it('should show aria-current and aria-label correctly', () => {
+    render({
+      onChange: () => null,
+      ...defaultProps,
     });
 
-    fireEvent.click(getByText('5'));
-    expect(mockOnChange).toHaveBeenCalledWith(5);
+    expect(
+      screen.getByRole('button', { name: 'Previous' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 4')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 5')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 6')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 10')).toBeInTheDocument();
+  });
+
+  it('should not show next button on first page', () => {
+    render({
+      totalPages: 10,
+      currentPage: 1,
+      nextLabel: 'Next',
+      previousLabel: 'Previous',
+      onChange: () => null,
+    });
+
+    expect(
+      screen.queryByRole('button', { name: 'Previous' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not show previous button on last page', () => {
+    render({
+      totalPages: 10,
+      currentPage: 10,
+      nextLabel: 'Next',
+      previousLabel: 'Previous',
+      onChange: () => null,
+    });
+
+    expect(screen.queryByRole('button', { name: 'Next' })).toBeNull();
+  });
+
+  it('should render correctly when totalPages are 3', () => {
+    render({
+      totalPages: 3,
+      currentPage: 2,
+      nextLabel: 'Next',
+      previousLabel: 'Previous',
+      onChange: () => null,
+    });
+
+    expect(
+      screen.getByRole('button', { name: 'Previous' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 2')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 3')).toBeInTheDocument();
   });
 });
 
