@@ -84,15 +84,13 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             </Paragraph>
           )}
           {children}
-          {hasError && (
-            <ErrorMessage
-              aria-live='polite'
-              id={errorId}
-              size={size}
-            >
-              {error}
-            </ErrorMessage>
-          )}
+          <div
+            id={errorId}
+            aria-live='polite'
+            aria-relevant='additions removals'
+          >
+            {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
+          </div>
         </fieldset>
       </FieldsetContext.Provider>
     );

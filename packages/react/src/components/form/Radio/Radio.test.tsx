@@ -5,13 +5,13 @@ import userEvent from '@testing-library/user-event';
 import { Radio } from './Radio';
 
 describe('Radio', () => {
-  test('has correct value and label', (): void => {
+  test('has correct value and label', () => {
     render(<Radio value='test'>label</Radio>);
     expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', (): void => {
+  test('has correct description', () => {
     render(
       <Radio
         value='test'
