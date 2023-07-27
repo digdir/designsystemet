@@ -30,6 +30,10 @@ export type RadioGroupProps = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
   /** Toggle if collection of `Radio` are required  */
   required?: boolean;
+  /** Orientation of `Radio` components.
+   * @note Only use `horizontal` for when you have two options and short labels
+   */
+  inline?: boolean;
 } & Omit<FieldsetProps, 'onChange'>;
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
@@ -43,6 +47,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       name,
       size = 'medium',
       required,
+      inline,
       ...rest
     },
     ref,
@@ -66,7 +71,9 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             required,
           }}
         >
-          <div className={cl(classes[size])}>{children}</div>
+          <div className={cl(classes[size], inline && classes.inline)}>
+            {children}
+          </div>
         </RadioGroupContext.Provider>
       </Fieldset>
     );

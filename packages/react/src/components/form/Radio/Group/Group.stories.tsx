@@ -93,3 +93,14 @@ Disabled.args = {
   ...Preview.args,
   disabled: true,
 };
+
+export const Inline: StoryFn<typeof Radio.Group> = () => (
+  <Radio.Group
+    legend='Kontaktes på epost?'
+    description='Bekreft om du ønsker å bli kontaktet per epost. '
+    inline
+  >
+    <Radio value='ja'>Ja</Radio>
+    <Radio value='nei'>Nei</Radio>
+  </Radio.Group>
+);
