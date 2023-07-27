@@ -12,6 +12,7 @@
   width: 1.75em;
   z-index: 1;
   margin: auto;
+  overflow: visible;
 }
 
 .label {
