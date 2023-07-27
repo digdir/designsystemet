@@ -13,11 +13,11 @@ export type FormFieldProps = {
    * @note Avoid using if possible for accessibility purposes
    */
   disabled?: boolean;
-  /** Description for form field */
+  /** Description for field */
   description?: ReactNode;
   /** Override internal id */
   id?: string;
-  /** Read only-state */
+  /** Toggle `readOnly` */
   readOnly?: boolean;
   /** Changes field size and paddings */
   size?: 'xsmall' | 'small' | 'medium';

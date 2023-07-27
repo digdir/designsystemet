@@ -21,7 +21,7 @@ export const FieldsetContext = createContext<FieldsetContextType | null>(null);
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */
   description?: ReactNode;
-  /** Sets `disabled` all input fields within the fieldset. */
+  /** Toggle `disabled` all input fields within the fieldset. */
   disabled?: boolean;
   /** If set, this will diplay an error message at the bottom of the fieldset. */
   error?: ReactNode;
@@ -29,14 +29,14 @@ export type FieldsetProps = {
   legend?: ReactNode;
   /** The size of the fieldset. */
   size?: 'xsmall' | 'small' | 'medium';
-  /** Sets `readOnly` all input fields within the fieldset.
+  /** Toggle `readOnly` on fieldset context.
    * @note This does not prevent fieldset values from being submited */
   readOnly?: boolean;
 } & FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   (props, ref) => {
-    const { children, legend, description, error, disabled, ...rest } = props;
+    const { children, legend, description, error, ...rest } = props;
 
     const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } =
       useFieldset(props);
@@ -49,7 +49,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           error: error ?? fieldset?.error,
           errorId,
           size,
-          disabled,
+          disabled: props?.disabled,
           readOnly,
         }}
       >
@@ -59,7 +59,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           className={cn(
             classes.fieldset,
             readOnly && classes.readonly,
-            disabled && classes.disabled,
+            props?.disabled && classes.disabled,
             rest.className,
           )}
           ref={ref}

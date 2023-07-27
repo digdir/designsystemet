@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { forwardRef, createContext, useId } from 'react';
 import cl from 'classnames';
 
@@ -8,15 +8,12 @@ import type { RadioProps } from '../Radio';
 
 import classes from './Group.module.css';
 
-type HoistedRadioProps = Partial<Pick<RadioProps, 'required' | 'onChange'>>;
-
 export type RadioGroupContextProps = {
   name?: string;
   value?: string | ReadonlyArray<string> | number;
   defaultValue?: string | ReadonlyArray<string> | number;
-  readOnly?: boolean;
   required?: boolean;
-} & HoistedRadioProps;
+} & Pick<RadioProps, 'onChange'>;
 
 export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
   null,
@@ -29,8 +26,11 @@ export type RadioGroupProps = {
   value?: string | ReadonlyArray<string> | number;
   /** Default checked `Radio` */
   defaultValue?: string | ReadonlyArray<string> | number;
-} & HoistedRadioProps &
-  Omit<FieldsetProps, 'onChange'>;
+  /** Callback event with changed `Radio` */
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  /** Toggle if collection of `Radio` are required  */
+  required?: boolean;
+} & Omit<FieldsetProps, 'onChange'>;
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
   (
@@ -42,6 +42,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       defaultValue,
       name,
       size = 'medium',
+      required,
       ...rest
     },
     ref,
@@ -59,10 +60,10 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
         <RadioGroupContext.Provider
           value={{
             value,
-            readOnly,
             defaultValue,
             name: name ?? `radiogroup-name-${nameId}`,
             onChange,
+            required,
           }}
         >
           <div className={cl(classes[size])}>{children}</div>

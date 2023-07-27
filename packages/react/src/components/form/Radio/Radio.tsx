@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { omit } from '../../../utils';
 import { Label, Paragraph } from '../../Typography';
+import type { FormFieldProps } from '../useFormField';
 
 import classes from './Radio.module.css';
 import { useRadio } from './useRadio';
@@ -42,13 +43,10 @@ const RadioIcon = (props: SVGAttributes<SVGElement>) => (
 export type RadioProps = {
   /** Radio label */
   children?: ReactNode;
-  /** Description or hint for the label */
-  description?: ReactNode;
-  /** Changes Radio size and paddings */
-  size?: 'xsmall' | 'small' | 'medium';
   /** Value of the `input` element */
   value: string | ReadonlyArray<string> | number | undefined;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
+} & Omit<FormFieldProps, 'error' | 'errorId'> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const { children, description, ...rest } = props;

@@ -1,11 +1,72 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import { Radio } from '..';
 
 import { RadioGroup } from './Group';
 
-describe('Group', () => {
-  test('myProp should add myClass', (): void => {
-    render(<RadioGroup>test text</RadioGroup>);
-    expect(true);
+describe('RadioGroup', () => {
+  test('has generated name for Radio children', () => {
+    render(
+      <RadioGroup>
+        <Radio value='test'>test</Radio>
+      </RadioGroup>,
+    );
+
+    const radio = screen.getByRole('radio');
+    expect(radio).toHaveAttribute('name');
+  });
+  test('has passed name to Radio children', (): void => {
+    render(
+      <RadioGroup name='my name'>
+        <Radio value='test'>test</Radio>
+      </RadioGroup>,
+    );
+
+    const radio = screen.getByRole<HTMLInputElement>('radio');
+    expect(radio.name).toEqual('my name');
+  });
+  test('has passed required to Radio children', (): void => {
+    render(
+      <RadioGroup required>
+        <Radio value='test'>test</Radio>
+      </RadioGroup>,
+    );
+
+    const radio = screen.getByRole<HTMLInputElement>('radio');
+    expect(radio).toHaveAttribute('required');
+  });
+  test('has correct Radio defaultChecked & checked when defaultValue is used', () => {
+    render(
+      <RadioGroup defaultValue='test2'>
+        <Radio value='test1'>test1</Radio>
+        <Radio value='test2'>test2</Radio>
+        <Radio value='test3'>test3</Radio>
+      </RadioGroup>,
+    );
+
+    const radio = screen.getByDisplayValue<HTMLInputElement>('test2');
+    expect(radio.defaultChecked).toBeTruthy();
+    expect(radio.checked).toBeTruthy();
+  });
+  test('has passed clicked Radio element to onChange', async () => {
+    const user = userEvent.setup();
+    let onChangeValue = '';
+
+    render(
+      <RadioGroup onChange={(e) => (onChangeValue = e.currentTarget.value)}>
+        <Radio value='test1'>test1</Radio>
+        <Radio value='test2'>test2</Radio>
+        <Radio value='test3'>test3</Radio>
+      </RadioGroup>,
+    );
+
+    const radio = screen.getByDisplayValue<HTMLInputElement>('test2');
+
+    await user.click(radio);
+
+    expect(onChangeValue).toEqual('test2');
+    expect(radio.checked).toBeTruthy();
   });
 });
