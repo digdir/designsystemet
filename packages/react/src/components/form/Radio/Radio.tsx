@@ -65,7 +65,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         rest.className,
       )}
     >
-      <span className={cn(classes.radio)}>
+      <span className={cn(classes.control, classes.radio)}>
         <input
           {...omit(['size', 'error'], rest)}
           {...inputProps}

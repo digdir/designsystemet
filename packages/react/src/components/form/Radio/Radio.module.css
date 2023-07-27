@@ -10,7 +10,6 @@
   pointer-events: none;
   height: 1.75em;
   width: 1.75em;
-  border-radius: var(--fds-border_radius-full);
   z-index: 1;
   margin: auto;
 }
@@ -29,7 +28,7 @@
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
-.radio {
+.control {
   --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
   --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
   --fds-focus-border-width: 3px;
@@ -43,6 +42,10 @@
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);
   grid-auto-flow: column;
+}
+
+.radio,
+.radio .icon {
   border-radius: var(--fds-border_radius-full);
 }
 
@@ -57,12 +60,12 @@
 
 .error > .input,
 .error > .label,
-.readonly > .radio > .input,
+.readonly > .control > .input,
 .readonly > .label {
   cursor: default;
 }
 
-.disabled > .radio .input,
+.disabled > .control .input,
 .disabled > .label {
   cursor: not-allowed;
   color: var(--fds-semantic-border-neutral-subtle);
@@ -124,15 +127,15 @@
   fill: var(--fds-semantic-border-neutral-default);
 }
 
-.container:not(.disabled, .readonly) > .radio:hover {
+.container:not(.disabled, .readonly) > .control:hover {
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
 .container:not(.disabled, .readonly) > .label:hover,
-.container:not(.disabled, .readonly) > .radio:hover ~ .label:hover {
+.container:not(.disabled, .readonly) > .control:hover ~ .label:hover {
   color: var(--fds-semantic-border-input-hover);
 }
 
-.container:not(.disabled, .readonly) > .radio:hover .icon .box {
+.container:not(.disabled, .readonly) > .control:hover .icon .box {
   stroke: var(--fds-semantic-border-input-hover);
 }
