@@ -88,6 +88,28 @@ describe('Pagination', () => {
     expect(screen.getByLabelText('Page 5')).toBeInTheDocument();
     expect(screen.getByLabelText('Page 6')).toBeInTheDocument();
     expect(screen.getByLabelText('Page 10')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 5')).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+  });
+
+  it('should show aria-labels when hideLabels = true', () => {
+    render({
+      onChange: () => null,
+      ...defaultProps,
+      hideLabels: true,
+    });
+
+    expect(
+      screen.getByRole('button', { name: 'Previous' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 4')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 5')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 6')).toBeInTheDocument();
+    expect(screen.getByLabelText('Page 10')).toBeInTheDocument();
   });
 
   it('should not show next button on first page', () => {
