@@ -33,8 +33,19 @@ describe('Fieldset', () => {
     );
     expect(errorFieldset).toBeInvalid();
   });
-  test('is disabled', () => {
-    render(<Fieldset disabled></Fieldset>);
+  test('and its children are disabled', () => {
+    render(
+      <Fieldset disabled>
+        <input
+          value='test'
+          readOnly
+        />
+      </Fieldset>,
+    );
+
+    const input = screen.getByDisplayValue<HTMLInputElement>('test');
+
+    expect(input).toBeDisabled();
     expect(screen.getByRole('group')).toBeDisabled();
   });
 });
