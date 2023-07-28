@@ -34,6 +34,8 @@ export type PaginationProps = {
   totalPages: number;
   /** Function to be called when the selected page changes. */
   onChange: (currentPage: number) => void;
+  /** `aria-label` for pagination item */
+  itemLabel?: (currentPage: number) => string;
 } & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
 
 export const getSteps = (
@@ -91,6 +93,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       currentPage = 1,
       totalPages,
       onChange,
+      itemLabel = (num) => `Page ${num}`,
       ...rest
     }: PaginationProps,
     ref,
@@ -116,36 +119,29 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               {!hideLabels && previousLabel}
             </Button>
           </li>
-          {getSteps({ compact, currentPage, totalPages }).map((step, i) => {
-            const n = Number(step);
-            return step === 'ellipsis' ? (
-              <li
-                className={cn(classes.listitem, classes[size])}
-                key={`${step}${i}`}
-              >
+          {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
+            <li
+              className={cn(classes.listitem, classes[size])}
+              key={`${step}${i}`}
+            >
+              {step === 'ellipsis' ? (
                 <p className={cn(classes.ellipsis)}>...</p>
-              </li>
-            ) : (
-              <li
-                className={cn(classes.listitem, classes[size])}
-                key={step}
-              >
+              ) : (
                 <Button
-                  variant={currentPage === n ? 'filled' : 'quiet'}
-                  aria-current={currentPage === n}
+                  variant={currentPage === step ? 'filled' : 'quiet'}
+                  aria-current={currentPage === step}
                   color={'primary'}
                   size={size}
-                  aria-label={`Page ${n}`}
+                  aria-label={itemLabel(step)}
                   onClick={() => {
-                    onChange(n);
+                    onChange(step);
                   }}
-                  fullWidth
                 >
-                  {n}
+                  {step}
                 </Button>
-              </li>
-            );
-          })}
+              )}
+            </li>
+          ))}
           <li className={cn(classes.chevronRight, classes[size])}>
             <Button
               variant={'quiet'}
