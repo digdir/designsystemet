@@ -101,31 +101,21 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         {...rest}
       >
         <ul className={classes.pagination}>
-          {currentPage !== 1 ? (
-            <li className={cn(classes.chevronLeft, classes[size])}>
-              <Button
-                icon={<ChevronLeftIcon />}
-                aria-label={previousLabel}
-                onClick={() => {
-                  onChange(currentPage - 1);
-                }}
-                variant={'quiet'}
-                color={'primary'}
-                size={size}
-              >
-                {!hideLabels && previousLabel}
-              </Button>
-            </li>
-          ) : (
+          <li className={cn(classes.chevronLeft, classes[size])}>
             <Button
+              icon={<ChevronLeftIcon />}
+              aria-label={previousLabel}
+              onClick={() => {
+                onChange(currentPage - 1);
+              }}
               variant={'quiet'}
               color={'primary'}
               size={size}
-              className={cn(classes.whitespace, classes[size])}
+              className={cn({ [classes.chevron]: currentPage === 1 })}
             >
               {!hideLabels && previousLabel}
             </Button>
-          )}
+          </li>
           {getSteps({ compact, currentPage, totalPages }).map((step, i) => {
             const n = Number(step);
             return step === 'ellipsis' ? (
@@ -156,32 +146,24 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               </li>
             );
           })}
-          {currentPage !== totalPages ? (
-            <li className={cn(classes.chevronRight, classes[size])}>
-              <Button
-                variant={'quiet'}
-                color={'primary'}
-                size={size}
-                icon={<ChevronRightIcon />}
-                aria-label={nextLabel}
-                onClick={() => {
-                  onChange(currentPage + 1);
-                }}
-                iconPlacement='right'
-              >
-                {!hideLabels && nextLabel}
-              </Button>
-            </li>
-          ) : (
+          <li className={cn(classes.chevronRight, classes[size])}>
             <Button
               variant={'quiet'}
               color={'primary'}
               size={size}
-              className={cn(classes.whitespace, classes[size])}
+              icon={<ChevronRightIcon />}
+              aria-label={nextLabel}
+              onClick={() => {
+                onChange(currentPage + 1);
+              }}
+              iconPlacement='right'
+              className={cn({
+                [classes.chevron]: currentPage === totalPages,
+              })}
             >
               {!hideLabels && nextLabel}
             </Button>
-          )}
+          </li>
         </ul>
       </nav>
     );
