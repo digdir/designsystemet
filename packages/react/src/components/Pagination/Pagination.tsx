@@ -7,7 +7,7 @@ import { Button } from '../Button';
 
 import classes from './Pagination.module.css';
 
-export interface PaginationProps {
+export type PaginationProps = {
   /** Sets the text label for the next page button
    * @default ''
    */
@@ -34,7 +34,7 @@ export interface PaginationProps {
   totalPages: number;
   /** Function to be called when the selected page changes. */
   onChange: (currentPage: number) => void;
-}
+} & React.HTMLAttributes<HTMLElement>;
 
 // eslint-disable-next-line react/display-name
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
@@ -48,18 +48,15 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       currentPage = 1,
       totalPages,
       onChange,
+      ...rest
     }: PaginationProps,
     ref,
   ) => {
     const getSteps = () => {
-      /**
-       * Number of always visible pages at the start and end.
-       */
+      /**  Number of always visible pages at the start and end. */
       const boundaryCount = 1;
 
-      /**
-       * Number of always visible pages before and after the current page.
-       */
+      /** Number of always visible pages before and after the current page. */
       const siblingCount = compact ? 0 : 1;
 
       const range = (start: number, end: number) =>
@@ -94,7 +91,10 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     };
 
     return (
-      <nav ref={ref}>
+      <nav
+        ref={ref}
+        {...rest}
+      >
         <ul className={classes.pagination}>
           {currentPage !== 1 ? (
             <li className={cn(classes.chevronLeft, classes[size])}>
@@ -106,7 +106,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 }}
                 variant={'quiet'}
                 color={'primary'}
-                size={'small'}
+                size={size}
               >
                 {!hideLabels && previousLabel}
               </Button>
@@ -116,14 +116,12 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           )}
           {getSteps().map((step) => {
             const n = Number(step);
-            return isNaN(n) ? (
-              <li className={cn(classes.listitem, classes[size])}>
-                <p
-                  key={`${step}`}
-                  className={cn(classes.ellipsis)}
-                >
-                  ...
-                </p>
+            return String(step) === 'ellipsis' ? (
+              <li
+                className={cn(classes.listitem, classes[size])}
+                key={`${step}`}
+              >
+                <p className={cn(classes.ellipsis)}>...</p>
               </li>
             ) : (
               <li
@@ -134,7 +132,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                   variant={currentPage === n ? 'filled' : 'quiet'}
                   aria-current={currentPage === n}
                   color={'primary'}
-                  size={'small'}
+                  size={size}
                   aria-label={`Page ${n}`}
                   onClick={() => {
                     onChange(n);
@@ -151,7 +149,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               <Button
                 variant={'quiet'}
                 color={'primary'}
-                size={'small'}
+                size={size}
                 icon={<ChevronRightIcon />}
                 aria-label={nextLabel}
                 onClick={() => {
