@@ -47,7 +47,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
       <FieldsetContext.Provider
         value={{
           error: error ?? fieldset?.error,
-          errorId,
+          errorId: hasError ? errorId : undefined,
           size,
           disabled: props?.disabled,
           readOnly,
