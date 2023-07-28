@@ -34,7 +34,7 @@ export type PaginationProps = {
   totalPages: number;
   /** Function to be called when the selected page changes. */
   onChange: (currentPage: number) => void;
-} & React.HTMLAttributes<HTMLElement>;
+} & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
 
 export const getSteps = (
   props: Pick<PaginationProps, 'compact' | 'currentPage' | 'totalPages'>,

@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import React, { useEffect, useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Pagination } from '.';
-
-type Story = StoryObj<typeof Pagination>;
 
 export default {
   title: 'Kjernekomponenter/Pagination',
@@ -16,29 +14,30 @@ export default {
   },
 } as Meta;
 
-export const Eksempel: StoryFn<typeof Pagination> = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+export const Preview: StoryFn<typeof Pagination> = (args) => {
+  const [currentPage, setCurrentPage] = useState(args.currentPage);
+
+  useEffect(() => {
+    setCurrentPage(args.currentPage);
+  }, [args.currentPage]);
 
   return (
     <>
       <Pagination
-        currentPage={currentPage}
-        totalPages={10}
-        nextLabel={'Neste'}
-        previousLabel={'Forrige'}
+        {...args}
         onChange={setCurrentPage}
-        hideLabels
-        size={'small'}
+        currentPage={currentPage}
       ></Pagination>
     </>
   );
 };
 
-export const Preview: Story = {
-  args: {
-    currentPage: 1,
-    onChange: () => null,
-    nextLabel: 'Neste',
-    previousLabel: 'Forrige',
-  },
+Preview.args = {
+  size: 'small',
+  nextLabel: 'Neste',
+  previousLabel: 'Forrige',
+  totalPages: 10,
+  hideLabels: false,
+  compact: false,
+  currentPage: 1,
 };
