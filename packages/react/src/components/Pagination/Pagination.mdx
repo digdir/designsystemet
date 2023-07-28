@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 import * as PaginationStories from './Pagination.stories';
+import { Pagination } from './index';
 
 <Meta of={PaginationStories} />
 
@@ -8,7 +9,7 @@ import * as PaginationStories from './Pagination.stories';
 
 <Information text='development' />
 
-Description of the Pagination component.
+`Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
 
 <Primary />
 <Controls />
@@ -24,6 +25,6 @@ import { Pagination } from '@digdir/design-system-react';
 <Pagination>You are using the Pagination component!</Pagination>;
 ```
 
-## Composed
+## Paginering
 
-<Canvas of={PaginationStories.Composed} />
+<Canvas of={PaginationStories.Preview} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Pagination } from '.';
@@ -16,27 +16,28 @@ export default {
   },
 } as Meta;
 
-export const Normal: StoryFn<typeof Pagination> = () => (
-  <>
-    <Pagination
-      currentPage={1}
-      totalPages={10}
-      nextLabel={'Neste'}
-      previousLabel={'Forrige'}
-      onChange={(currentPage) => currentPage}
-    ></Pagination>
-  </>
-);
+export const Eksempel: StoryFn<typeof Pagination> = () => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-export const Kompakt: StoryFn<typeof Pagination> = () => (
-  <>
-    <Pagination
-      currentPage={1}
-      totalPages={10}
-      nextLabel={'Neste'}
-      previousLabel={'Forrige'}
-      onChange={(currentPage) => currentPage}
-      compact
-    ></Pagination>
-  </>
-);
+  return (
+    <>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={10}
+        nextLabel={'Neste'}
+        previousLabel={'Forrige'}
+        onChange={setCurrentPage}
+        compact
+      ></Pagination>
+    </>
+  );
+};
+
+export const Preview: Story = {
+  args: {
+    currentPage: 1,
+    onChange: () => null,
+    nextLabel: 'Neste',
+    previousLabel: 'Forrige',
+  },
+};

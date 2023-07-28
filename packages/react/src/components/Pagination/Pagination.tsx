@@ -32,9 +32,7 @@ export interface PaginationProps {
   currentPage: number;
   /** Total number of pages */
   totalPages: number;
-  /**
-   * Function to be called when the selected page changes.
-   */
+  /** Function to be called when the selected page changes. */
   onChange: (currentPage: number) => void;
 }
 
