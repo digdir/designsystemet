@@ -67,7 +67,7 @@ export const useFormField = (
       disabled,
       'aria-invalid': hasError ? true : undefined,
       'aria-describedby':
-        cl(props['aria-describedby'], {
+        cn(props['aria-describedby'], {
           [descriptionId]:
             !!props?.description && typeof props?.description === 'string',
           [errorId]: hasError && !fieldset?.error,
