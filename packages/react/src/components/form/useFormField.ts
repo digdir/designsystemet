@@ -1,6 +1,6 @@
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-import cl from 'classnames';
+import cn from 'classnames';
 
 import { FieldsetContext } from './Fieldset';
 
