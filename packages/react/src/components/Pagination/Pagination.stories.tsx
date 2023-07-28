@@ -16,24 +16,27 @@ export default {
   },
 } as Meta;
 
-// Simple story
-// First story is the one displayed by <Preview /> and used for <Controls />
-export const Preview: Story = {
-  args: {
-    children: 'You created the Pagination component!',
-    myProp: false, // we set this so "boolean" is set in props table
-  },
-};
-
-// Function story
-// Use this story for listing our different variants, patterns with other components or examples usage with useState
-export const Composed: StoryFn<typeof Pagination> = () => (
+export const Normal: StoryFn<typeof Pagination> = () => (
   <>
     <Pagination
       currentPage={1}
       totalPages={10}
-      variant='compact'
+      nextLabel={'Neste'}
+      previousLabel={'Forrige'}
       onChange={(currentPage) => currentPage}
+    ></Pagination>
+  </>
+);
+
+export const Kompakt: StoryFn<typeof Pagination> = () => (
+  <>
+    <Pagination
+      currentPage={1}
+      totalPages={10}
+      nextLabel={'Neste'}
+      previousLabel={'Forrige'}
+      onChange={(currentPage) => currentPage}
+      compact
     ></Pagination>
   </>
 );
