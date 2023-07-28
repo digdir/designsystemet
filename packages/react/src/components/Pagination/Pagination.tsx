@@ -2,7 +2,8 @@ import { forwardRef } from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
-import { Button } from '@digdir/design-system-react';
+
+import { Button } from '../Button';
 
 import classes from './Pagination.module.css';
 
