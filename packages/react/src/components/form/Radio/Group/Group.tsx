@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { forwardRef, createContext, useId } from 'react';
-import cl from 'classnames';
+import cn from 'classnames';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
