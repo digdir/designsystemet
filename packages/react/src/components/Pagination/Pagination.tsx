@@ -36,6 +36,49 @@ export type PaginationProps = {
   onChange: (currentPage: number) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
+export const getSteps = (
+  props: Pick<PaginationProps, 'compact' | 'currentPage' | 'totalPages'>,
+): ('ellipsis' | number)[] => {
+  /**  Number of always visible pages at the start and end. */
+  const boundaryCount = 1;
+
+  /** Number of always visible pages before and after the current page. */
+  const siblingCount = props.compact ? 0 : 1;
+
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+  if (props.totalPages <= (boundaryCount + siblingCount) * 2 + 3)
+    return range(1, props.totalPages);
+
+  const startPages = range(1, boundaryCount);
+  const endPages = range(
+    props.totalPages - boundaryCount + 1,
+    props.totalPages,
+  );
+
+  const siblingsStart = Math.max(
+    Math.min(
+      props.currentPage - siblingCount,
+      props.totalPages - boundaryCount - siblingCount * 2 - 1,
+    ),
+    boundaryCount + 2,
+  );
+  const siblingsEnd = siblingsStart + siblingCount * 2;
+
+  return [
+    ...startPages,
+    siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
+      ? siblingsStart - 1
+      : 'ellipsis',
+    ...range(siblingsStart, siblingsEnd),
+    (endPages[0] ?? props.totalPages + 1) - siblingsEnd === 2
+      ? siblingsEnd + 1
+      : 'ellipsis',
+    ...endPages,
+  ];
+};
+
 // eslint-disable-next-line react/display-name
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (
@@ -52,44 +95,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     }: PaginationProps,
     ref,
   ) => {
-    const getSteps = () => {
-      /**  Number of always visible pages at the start and end. */
-      const boundaryCount = 1;
-
-      /** Number of always visible pages before and after the current page. */
-      const siblingCount = compact ? 0 : 1;
-
-      const range = (start: number, end: number) =>
-        Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-      if (totalPages <= (boundaryCount + siblingCount) * 2 + 3)
-        return range(1, totalPages);
-
-      const startPages = range(1, boundaryCount);
-      const endPages = range(totalPages - boundaryCount + 1, totalPages);
-
-      const siblingsStart = Math.max(
-        Math.min(
-          currentPage - siblingCount,
-          totalPages - boundaryCount - siblingCount * 2 - 1,
-        ),
-        boundaryCount + 2,
-      );
-      const siblingsEnd = siblingsStart + siblingCount * 2;
-
-      return [
-        ...startPages,
-        siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
-          ? siblingsStart - 1
-          : 'ellipsis',
-        ...range(siblingsStart, siblingsEnd),
-        (endPages[0] ?? totalPages + 1) - siblingsEnd === 2
-          ? siblingsEnd + 1
-          : 'ellipsis',
-        ...endPages,
-      ];
-    };
-
     return (
       <nav
         ref={ref}
@@ -112,14 +117,21 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               </Button>
             </li>
           ) : (
-            <div className={cn(classes.whitespace)}></div>
+            <Button
+              variant={'quiet'}
+              color={'primary'}
+              size={size}
+              className={cn(classes.whitespace, classes[size])}
+            >
+              {!hideLabels && previousLabel}
+            </Button>
           )}
-          {getSteps().map((step) => {
+          {getSteps({ compact, currentPage, totalPages }).map((step, i) => {
             const n = Number(step);
-            return String(step) === 'ellipsis' ? (
+            return step === 'ellipsis' ? (
               <li
                 className={cn(classes.listitem, classes[size])}
-                key={`${step}`}
+                key={`${step}${i}`}
               >
                 <p className={cn(classes.ellipsis)}>...</p>
               </li>
@@ -161,7 +173,14 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               </Button>
             </li>
           ) : (
-            <div className={cn(classes.whitespace)}></div>
+            <Button
+              variant={'quiet'}
+              color={'primary'}
+              size={size}
+              className={cn(classes.whitespace, classes[size])}
+            >
+              {!hideLabels && nextLabel}
+            </Button>
           )}
         </ul>
       </nav>

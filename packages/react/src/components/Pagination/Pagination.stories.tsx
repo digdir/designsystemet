@@ -26,9 +26,9 @@ export const Eksempel: StoryFn<typeof Pagination> = () => {
         totalPages={10}
         nextLabel={'Neste'}
         previousLabel={'Forrige'}
-        hideLabels
         onChange={setCurrentPage}
-        size={'medium'}
+        hideLabels
+        size={'small'}
       ></Pagination>
     </>
   );

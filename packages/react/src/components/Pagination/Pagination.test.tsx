@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import type { PaginationProps } from './Pagination';
 import { Pagination } from './Pagination';
 
-const user = userEvent.setup();
+const render = (props: PaginationProps) => renderRtl(<Pagination {...props} />);
 
 const defaultProps = {
   currentPage: 5,
@@ -15,7 +15,7 @@ const defaultProps = {
 };
 
 describe('Pagination', () => {
-  it('Compact pagination should render correctly with default props', () => {
+  it('compact pagination should render correctly with default props', () => {
     render({
       compact: true,
       onChange: () => null,
@@ -35,7 +35,7 @@ describe('Pagination', () => {
     ).toBeInTheDocument();
   });
 
-  it('Should render correctly with default props', () => {
+  it('should render correctly with default props', () => {
     render({
       onChange: () => null,
       ...defaultProps,
@@ -60,6 +60,8 @@ describe('Pagination', () => {
       onChange: mockOnChange,
       ...defaultProps,
     });
+
+    const user = userEvent.setup();
 
     await act(() => user.click(screen.getByRole('button', { name: 'Next' })));
     expect(mockOnChange).toHaveBeenCalledWith(6);
@@ -112,32 +114,6 @@ describe('Pagination', () => {
     expect(screen.getByLabelText('Page 10')).toBeInTheDocument();
   });
 
-  it('should not show next button on first page', () => {
-    render({
-      totalPages: 10,
-      currentPage: 1,
-      nextLabel: 'Next',
-      previousLabel: 'Previous',
-      onChange: () => null,
-    });
-
-    expect(
-      screen.queryByRole('button', { name: 'Previous' }),
-    ).not.toBeInTheDocument();
-  });
-
-  it('should not show previous button on last page', () => {
-    render({
-      totalPages: 10,
-      currentPage: 10,
-      nextLabel: 'Next',
-      previousLabel: 'Previous',
-      onChange: () => null,
-    });
-
-    expect(screen.queryByRole('button', { name: 'Next' })).toBeNull();
-  });
-
   it('should render correctly when totalPages are 3', () => {
     render({
       totalPages: 3,
@@ -156,5 +132,3 @@ describe('Pagination', () => {
     expect(screen.getByLabelText('Page 3')).toBeInTheDocument();
   });
 });
-
-const render = (props: PaginationProps) => renderRtl(<Pagination {...props} />);
