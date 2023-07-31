@@ -1,4 +1,4 @@
-import { objectValuesEqual } from './objectUtils';
+import { objectValuesEqual, omit } from './objectUtils';
 
 describe('objectUtils', () => {
   describe('objectValuesEqual', () => {
@@ -27,6 +27,18 @@ describe('objectUtils', () => {
       const object3 = { subObject };
       const object4 = { subObject };
       expect(objectValuesEqual(object3, object4)).toBe(true); // Expected because object3.subObject === object4.subObject
+    });
+  });
+
+  describe('omit', () => {
+    it('Returns copy of object with omitted property', () => {
+      const object1 = { a: 1, b: 2, c: 3 };
+
+      const omittedObject = omit(['c'], object1);
+
+      expect(Object.keys(omittedObject).includes('a')).toBeTruthy();
+      expect(Object.keys(omittedObject).includes('b')).toBeTruthy();
+      expect(Object.keys(omittedObject).includes('c')).toBeFalsy();
     });
   });
 });

@@ -1,0 +1,28 @@
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.fieldset > :not(:first-child, :empty) {
+  margin-top: var(--fds-spacing-2);
+}
+
+.description {
+  color: var(--fds-semantic-text-neutral-subtle);
+  font-weight: 400;
+}
+
+.readonly {
+  opacity: 0.3;
+}
+
+.readonly > .legend {
+  display: inline-flex;
+}
+
+.disabled > .legend,
+.disabled > .description {
+  color: var(--fds-semantic-border-neutral-subtle);
+}
