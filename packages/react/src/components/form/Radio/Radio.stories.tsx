@@ -5,7 +5,7 @@ import { Radio } from '.';
 type Story = StoryObj<typeof Radio>;
 
 export default {
-  title: 'Kjernekomponenter/Form/Radio',
+  title: 'ikke utgitt/Radio',
   component: Radio,
   parameters: {
     status: {

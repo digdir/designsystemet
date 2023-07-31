@@ -5,7 +5,7 @@ import { Button, Paragraph } from '../../..';
 import { Radio } from '../';
 
 export default {
-  title: 'Kjernekomponenter/Form/Radio/Group',
+  title: 'ikke utgitt/Radio/Group',
   component: Radio.Group,
   parameters: {
     status: {
