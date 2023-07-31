@@ -82,7 +82,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       currentPage = 1,
       totalPages,
       onChange,
-      itemLabel = (num) => `Page ${num}`,
+      itemLabel = (num) => `Side ${num}`,
       ...rest
     }: PaginationProps,
     ref,
