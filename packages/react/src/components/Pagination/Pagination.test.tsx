@@ -67,9 +67,9 @@ describe('Pagination', () => {
       screen.getByRole('button', { name: 'Previous' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 1')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 2')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 3')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 2')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 3')).toBeInTheDocument();
   });
 
   it('should call onChange with the correct page number when buttons are clicked', async () => {
@@ -89,7 +89,7 @@ describe('Pagination', () => {
     );
     expect(mockOnChange).toHaveBeenCalledWith(4);
 
-    await act(() => user.click(screen.getByLabelText('Page 1')));
+    await act(() => user.click(screen.getByLabelText('Side 1')));
     expect(mockOnChange).toHaveBeenCalledWith(1);
   });
 
@@ -103,12 +103,12 @@ describe('Pagination', () => {
       screen.getByRole('button', { name: 'Previous' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 1')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 4')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 5')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 6')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 10')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 5')).toHaveAttribute(
+    expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 4')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 5')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 6')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 10')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 5')).toHaveAttribute(
       'aria-current',
       'true',
     );
@@ -125,24 +125,24 @@ describe('Pagination', () => {
       screen.getByRole('button', { name: 'Previous' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 1')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 4')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 5')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 6')).toBeInTheDocument();
-    expect(screen.getByLabelText('Page 10')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 4')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 5')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 6')).toBeInTheDocument();
+    expect(screen.getByLabelText('Side 10')).toBeInTheDocument();
   });
 
   it('should show custom aria-labels correctly', () => {
     render({
       onChange: () => null,
-      itemLabel: (num) => `Side ${num}`,
+      itemLabel: (num) => `Page ${num}`,
       ...defaultProps,
     });
 
-    expect(screen.getByRole('button', { name: 'Side 1' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Side 4' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Side 5' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Side 6' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Side 10' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Page 1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Page 4' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Page 5' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Page 6' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Page 10' })).toBeInTheDocument();
   });
 });
