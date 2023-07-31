@@ -11,7 +11,7 @@ import { Pagination } from './index';
 
 `Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon. 
 
-Dette er en controlled component som vil si at komponenten må ha en funksjon som setter hvilken side som er aktiv for å fungere. By default på hver item-button bortsett fra pilene er `aria-label=Page {sideNummer}` men dette kan overstyres ved å sette propen `itemLabel` til ønsket ord. Når komponenten er på første side skjules `previousLabel` og forrige-pilen. Når komponenten er på siste side skjules `nextLabel` og neste-pilen.
+Dette er en controlled component som vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side skjules forrige/neste pilene.```
 
 <Primary />
 <Controls of={PaginationStories.Preview}/>
