@@ -8,25 +8,15 @@ import { Button } from '../Button';
 import classes from './Pagination.module.css';
 
 export type PaginationProps = {
-  /** Sets the text label for the next page button
-   * @default ''
-   */
+  /** Sets the text label for the next page button */
   nextLabel: string;
-  /** Sets the text label for the previous page button
-   * @default ''
-   */
+  /** Sets the text label for the previous page button */
   previousLabel: string;
-  /** Sets the size of the component
-   * @default 'medium'
-   */
+  /** Sets the size of the component */
   size?: 'small' | 'medium';
-  /** Sets how compact the component will be. If true, only 5 steps will show.
-   * @default false
-   */
+  /** Sets how compact the component will be. If true, only 5 steps will show. */
   compact?: boolean;
-  /** Hides the component's previous and next button labels
-   * @default false
-   */
+  /** Hides the component's previous and next button labels */
   hideLabels?: boolean;
   /** Sets the current page */
   currentPage: number;
@@ -81,13 +71,12 @@ export const getSteps = (
   ];
 };
 
-// eslint-disable-next-line react/display-name
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (
     {
       nextLabel = '',
       previousLabel = '',
-      size = 'small',
+      size = 'medium',
       compact = false,
       hideLabels = false,
       currentPage = 1,

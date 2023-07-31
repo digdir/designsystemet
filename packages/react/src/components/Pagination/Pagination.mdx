@@ -9,10 +9,12 @@ import { Pagination } from './index';
 
 <Information text='development' />
 
-`Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
+`Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon. 
+
+Dette er en controlled component som vil si at komponenten må ha en funksjon som setter hvilken side som er aktiv for å fungere. By default på hver item-button bortsett fra pilene er `aria-label=Page {sideNummer}` men dette kan overstyres ved å sette propen `itemLabel` til ønsket ord. Når komponenten er på første side skjules `previousLabel` og forrige-pilen. Når komponenten er på siste side skjules `nextLabel` og neste-pilen.
 
 <Primary />
-<Controls />
+<Controls of={PaginationStories.Preview}/>
 
 ## Bruk
 
@@ -22,9 +24,14 @@ import { Pagination } from './index';
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
 import { Pagination } from '@digdir/design-system-react';
 
-<Pagination>You are using the Pagination component!</Pagination>;
+const [currentPage, setCurrentPage] = useState(1);
+
+<Pagination
+  currentPage={1}
+  totalPages={10}
+  onChange={setCurrentPage}
+  nextLabel='Neste'
+  previousLabel='Forrige'
+  itemLabel={(num) => `Side ${num}}`
+></Pagination>;
 ```
-
-## Pagination
-
-<Canvas of={PaginationStories.Preview} />

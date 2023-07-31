@@ -33,11 +33,12 @@ export const Preview: StoryFn<typeof Pagination> = (args) => {
 };
 
 Preview.args = {
-  size: 'small',
+  size: 'medium',
   nextLabel: 'Neste',
   previousLabel: 'Forrige',
   totalPages: 10,
   hideLabels: false,
   compact: false,
   currentPage: 1,
+  itemLabel: (num) => `Side ${num}`,
 };
