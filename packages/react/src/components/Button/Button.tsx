@@ -3,31 +3,17 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
+import { Paragraph } from '../Typography';
 
 import classes from './Button.module.css';
 
-export const buttonSize = ['small', 'medium', 'large'] as const;
-type ButtonSize_ = typeof buttonSize[number];
-
-export const buttonColor = [
-  'primary',
-  'secondary',
-  'success',
-  'danger',
-  'inverted',
-] as const;
-type ButtonColor_ = typeof buttonColor[number];
-
-export const buttonVariant = ['filled', 'outline', 'quiet'] as const;
-type ButtonVariant_ = typeof buttonVariant[number];
-
 export type ButtonProps = {
   /** Specify which variant to use */
-  variant?: ButtonVariant_;
+  variant?: 'filled' | 'outline' | 'quiet';
   /** Specify which color palette to use */
-  color?: ButtonColor_;
+  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'inverted';
   /** Size */
-  size?: ButtonSize_;
+  size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
   /** Enabled dashed border for `outline` variant */
@@ -79,7 +65,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={classes.icon}
         />
       )}
-      {children}
+      {children && (
+        <Paragraph
+          as='span'
+          size={size}
+          className={classes.typography}
+        >
+          {children}
+        </Paragraph>
+      )}
       {icon && iconPlacement === 'right' && (
         <SvgIcon
           svgIconComponent={icon}

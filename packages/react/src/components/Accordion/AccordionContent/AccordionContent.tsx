@@ -2,11 +2,10 @@ import cn from 'classnames';
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
-import { AnimateHeight } from '../../utility-components';
-import { Paragraph } from '../';
-
-import classes from './Accordion.module.css';
-import { AccordionItemContext } from './AccordionItem';
+import { AnimateHeight } from '../../../utility-components';
+import { Paragraph } from '../../..';
+import classes from '../Accordion.module.css';
+import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionContentProps = {
   /** Content inside `Accordion.Content`*/

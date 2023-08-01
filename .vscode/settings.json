@@ -11,5 +11,6 @@
   ],
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
+  },
+  "jest.jestCommandLine": "yarn test"
 }

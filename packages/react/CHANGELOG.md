@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.19.0...@digdir/design-system-react@0.20.0) (2023-07-24)
+
+### Bug Fixes
+
+- **Button:** :wheelchair: Added 44px clickbound for `small` size ([#676](https://github.com/digdir/designsystem/issues/676)) ([921b9c7](https://github.com/digdir/designsystem/commit/921b9c73315232e83fb25cd7365133e5e0dff3f1))
+- **Button:** Correct sizes when only icon is used ([#674](https://github.com/digdir/designsystem/issues/674)) ([0598060](https://github.com/digdir/designsystem/commit/05980600bdb122ebf0965540ea1d0fbf65e26c7f))
+
+### Features
+
+- **Chip:** implemented Chip.Toggle ([#669](https://github.com/digdir/designsystem/issues/669)) ([bc50da4](https://github.com/digdir/designsystem/commit/bc50da48bd834b80f256a835c3bb7fd7c5b17afc))
+
+# [0.19.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.18.0...@digdir/design-system-react@0.19.0) (2023-07-05)
+
+### Features
+
+- **Accordion:** use the new semantic colors for focus style ([#611](https://github.com/digdir/designsystem/issues/611)) ([20bffae](https://github.com/digdir/designsystem/commit/20bffaea35ef913fd7a4e580f30e649647310a7a))
+- **ToggleButton:** use the correct focus styling ([#612](https://github.com/digdir/designsystem/issues/612)) ([507f566](https://github.com/digdir/designsystem/commit/507f566777119506b3747acd493e33266aa3657d))
+
 # [0.18.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.17.0...@digdir/design-system-react@0.18.0) (2023-06-28)
 
 ### Bug Fixes
