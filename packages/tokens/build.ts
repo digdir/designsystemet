@@ -224,6 +224,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
     include: [
       `${tokensPath}/Brand/${brand}.json`,
       `${tokensPath}/Base/Semantic.json`,
+      `${tokensPath}/Density/Default.json`,
     ],
     source: [`${tokensPath}/Base/Core.json`],
     platforms: {

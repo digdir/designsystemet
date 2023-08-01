@@ -92,7 +92,7 @@
             "type": "color"
           },
           "hover": {
-            "value": "{semantic.surface.action.primary.subtle}",
+            "value": "{brand-semantic.surface.action.primary.subtle}",
             "type": "color"
           },
           "checked": {
