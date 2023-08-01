@@ -141,5 +141,41 @@
         "description": "AA 5.6 on white"
       }
     }
+  },
+  "semantic": {
+    "surface": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.primary.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "$brand.primary.800",
+            "type": "color"
+          },
+          "active": {
+            "value": "$brand.primary.900",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        },
+        "secondary": {
+          "default": {
+            "value": "{brand.secondary.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.secondary.800}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{brand.secondary.900}",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        }
+      }
+    }
   }
 }
