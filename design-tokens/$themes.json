@@ -5,7 +5,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Density/Default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6121:13669",
     "$figmaModeId": "6121:0",
@@ -186,7 +187,8 @@
     "name": "Default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/Default": "enabled"
+      "Brand/Default": "enabled",
+      "Density/Default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6121:13838",
     "$figmaModeId": "6121:1",
@@ -213,7 +215,8 @@
     "id": "edeff752fe55f2581f6ceee82c66aac8b8a8622d",
     "name": "Digdir",
     "selectedTokenSets": {
-      "Brand/Digdir": "enabled"
+      "Brand/Digdir": "enabled",
+      "Density/Default": "disabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -506,7 +509,8 @@
     "name": "Altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/Altinn": "enabled"
+      "Brand/Altinn": "enabled",
+      "Density/Default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6121:13838",
     "$figmaModeId": "6121:3",
@@ -551,7 +555,8 @@
     "id": "df8b73b683752ef5f35b3cf293bbe5a0cba9f88d",
     "name": "Tilsynet",
     "selectedTokenSets": {
-      "Brand/Tilsynet": "enabled"
+      "Brand/Tilsynet": "enabled",
+      "Density/Default": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaCollectionId": "VariableCollectionId:6121:13838",
@@ -595,14 +600,13 @@
   },
   {
     "id": "33e1200e221c81b1bd3439e6f7413a9ac3af9aa4",
-    "name": "Normal",
+    "name": "Default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Density/Normal": "enabled"
+      "Density/Default": "enabled"
     },
-    "group": "Density",
     "$figmaCollectionId": "VariableCollectionId:6121:13872",
-    "$figmaModeId": "6121:5",
+    "$figmaModeId": "6218:0",
     "$figmaVariableReferences": {
       "component-mode-height.small": "2f6ecc16e1247b75fafe71ae4f754c2c71eab54c",
       "component-mode-height.medium": "1de874a2615ff162909f2936399e0159118a83f7",
@@ -613,14 +617,16 @@
       "component-mode-gap.small": "3cc282ba0c951b65beafdade2f3107feb65425ec",
       "component-mode-gap.medium": "e00856c44d3011083ef260db8c154bbd7d61b84a",
       "component-mode-gap.large": "d6f226fff170631af3af2662f4275e06d89fa048"
-    }
+    },
+    "group": "Density"
   },
   {
     "id": "274b43921cab98c0e4935a4ac82b4eed32bb65d3",
     "name": "Compact",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Density/Compact": "enabled"
+      "Density/Compact": "enabled",
+      "Density/Default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6121:13872",
     "$figmaModeId": "6121:6",
@@ -642,7 +648,8 @@
     "name": "1440",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@1440": "enabled"
+      "Viewport/@1440": "enabled",
+      "Density/Default": "disabled"
     },
     "group": "Viewport",
     "$figmaCollectionId": "VariableCollectionId:6121:13882",
@@ -656,7 +663,8 @@
     "name": "768",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@768": "enabled"
+      "Viewport/@768": "enabled",
+      "Density/Default": "disabled"
     },
     "group": "Viewport",
     "$figmaCollectionId": "VariableCollectionId:6121:13882",
@@ -670,7 +678,8 @@
     "name": "320",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@320": "enabled"
+      "Viewport/@320": "enabled",
+      "Density/Default": "disabled"
     },
     "group": "Viewport",
     "$figmaCollectionId": "VariableCollectionId:6121:13882",
