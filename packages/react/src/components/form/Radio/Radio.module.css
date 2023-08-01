@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  padding-left: calc(var(--fds-spacing-6) + 20px);
+  padding-left: calc(var(--fds-spacing-6) + 18px);
   min-width: 44px;
   min-height: 44px;
 }
@@ -16,6 +16,7 @@
 }
 
 .label {
+  padding-left: 2px;
   min-height: 44px;
   min-width: min-content;
   display: inline-flex;
@@ -26,6 +27,8 @@
 }
 
 .description {
+  padding-left: 2px;
+  margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
@@ -59,8 +62,6 @@
   cursor: pointer;
 }
 
-.error > .input,
-.error > .label,
 .readonly > .control > .input,
 .readonly > .label {
   cursor: default;
