@@ -121,7 +121,7 @@
 }
 
 .readonly .input:read-only:not(:focus-visible) ~ .icon .box {
-  stroke: var(--fds-semantic-border-neutral-default);
+  stroke: var(--fds-semantic-border-neutral-subtle);
   fill: var(--fds-semantic-background-subtle);
 }
 

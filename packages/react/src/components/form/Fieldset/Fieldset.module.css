@@ -14,12 +14,13 @@
   font-weight: 400;
 }
 
-.readonly {
-  opacity: 0.3;
-}
-
 .readonly > .legend {
   display: inline-flex;
+}
+
+.readonly > .legend > .icon {
+  height: 1.2em;
+  width: 1.2em;
 }
 
 .disabled > .legend,
