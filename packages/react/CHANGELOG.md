@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **Pagination:** Created pagination component ([#677](https://github.com/digdir/designsystem/issues/677)) ([6085019](https://github.com/digdir/designsystem/commit/6085019e7756d2a06cd087914d7ab839ca184765))
+- **Pagination:** New `Pagination` component ([#677](https://github.com/digdir/designsystem/issues/677)) ([6085019](https://github.com/digdir/designsystem/commit/6085019e7756d2a06cd087914d7ab839ca184765))
 - **Radio, Fieldset:** :sparkles: New `Radio` & `Fieldset` component (unreleased) ([#666](https://github.com/digdir/designsystem/issues/666)) ([e2d6f89](https://github.com/digdir/designsystem/commit/e2d6f89523576520058024e3a02fad367148ac7e))
 
 # [0.20.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.19.0...@digdir/design-system-react@0.20.0) (2023-07-24)
