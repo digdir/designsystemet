@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.20.0...@digdir/design-system-react@0.21.0) (2023-08-02)
+
+### Bug Fixes
+
+- **Button:** :bug: Fix icon being clipped in Firefox browser ([#679](https://github.com/digdir/designsystem/issues/679)) ([75b8bd7](https://github.com/digdir/designsystem/commit/75b8bd79df45345be7ea4f07a4c88c303ec5c946))
+
+### Features
+
+- **Pagination:** Created pagination component ([#677](https://github.com/digdir/designsystem/issues/677)) ([6085019](https://github.com/digdir/designsystem/commit/6085019e7756d2a06cd087914d7ab839ca184765))
+- **Radio, Fieldset:** :sparkles: New `Radio` & `Fieldset` component (unreleased) ([#666](https://github.com/digdir/designsystem/issues/666)) ([e2d6f89](https://github.com/digdir/designsystem/commit/e2d6f89523576520058024e3a02fad367148ac7e))
+
 # [0.20.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.19.0...@digdir/design-system-react@0.20.0) (2023-07-24)
 
 ### Bug Fixes
