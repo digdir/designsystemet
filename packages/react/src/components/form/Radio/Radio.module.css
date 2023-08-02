@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  padding-left: calc(var(--fds-spacing-6) + 18px);
+  padding-left: calc(var(--fds-spacing-6) + 17px);
   min-width: 44px;
   min-height: 44px;
 }
@@ -16,7 +16,7 @@
 }
 
 .label {
-  padding-left: 2px;
+  padding-left: 3px;
   min-height: 44px;
   min-width: min-content;
   display: inline-flex;
@@ -27,7 +27,7 @@
 }
 
 .description {
-  padding-left: 2px;
+  padding-left: 3px;
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
@@ -139,6 +139,7 @@
   color: var(--fds-semantic-border-input-hover);
 }
 
-.container:not(.disabled, .readonly) > .control:hover .icon .box {
+.container:not(.disabled, .readonly) > .control:hover > .icon > .box,
+.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
   stroke: var(--fds-semantic-border-input-hover);
 }
