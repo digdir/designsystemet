@@ -18,7 +18,7 @@ const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
     xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
-    <rect
+    {/* <rect
       x='1'
       y='1'
       width='20'
@@ -30,6 +30,22 @@ const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
       strokeWidth='2'
       strokeLinejoin='round'
       className={classes.box}
+    /> */}
+
+    <rect
+      x='1'
+      y='1'
+      width='20'
+      height='20'
+      rx='2px'
+      className={classes.box}
+    />
+    <path
+      fillRule='evenodd'
+      clipRule='evenodd'
+      d='M17.7876 6.27838C18.1171 6.60788 18.1171 7.14212 17.7876 7.47162L9.99591 15.2633C9.6664 15.5928 9.13217 15.5928 8.80267 15.2633L4.67767 11.1383C4.34816 10.8088 4.34816 10.2745 4.67767 9.94505C5.00717 9.61554 5.5414 9.61554 5.87091 9.94505L9.39929 13.4734L16.5943 6.27838C16.9238 5.94887 17.4581 5.94887 17.7876 6.27838Z'
+      fill='white'
+      className={classes.checked}
     />
   </svg>
 );
