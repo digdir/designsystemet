@@ -45,9 +45,9 @@
   grid-auto-flow: column;
 }
 
-.radio,
-.radio .icon {
-  border-radius: var(--fds-border_radius-full);
+.checkbox,
+.checkbox .icon {
+  border-radius: var(--fds-border_radius-interactive);
 }
 
 .input {

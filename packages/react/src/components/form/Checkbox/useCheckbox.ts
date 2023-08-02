@@ -22,7 +22,7 @@ type UseCheckbox = (props: CheckboxProps) => FormField & {
 };
 /** Handles props for `Checkbox` in context with `Radio.Group` (and `Fieldset`) */
 export const useCheckbox: UseCheckbox = (props) => {
-  const radioGroup = useContext(CheckboxGroupContext);
+  const checkboxGroup = useContext(CheckboxGroupContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'radio');
 
   return {
@@ -31,16 +31,16 @@ export const useCheckbox: UseCheckbox = (props) => {
     inputProps: {
       ...inputProps,
       readOnly,
-      type: 'radio',
-      required: radioGroup?.required,
+      type: 'checkbox',
+      required: checkboxGroup?.required,
       defaultChecked:
-        radioGroup?.defaultValue === undefined
+        checkboxGroup?.defaultValue === undefined
           ? undefined
-          : radioGroup?.defaultValue === props.value,
+          : checkboxGroup?.defaultValue === props.value,
       checked:
-        radioGroup?.value === undefined
+        checkboxGroup?.value === undefined
           ? undefined
-          : radioGroup?.value === props.value,
+          : checkboxGroup?.value === props.value,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
@@ -54,7 +54,7 @@ export const useCheckbox: UseCheckbox = (props) => {
           return;
         }
         props?.onChange?.(e);
-        radioGroup?.onChange?.(e);
+        checkboxGroup?.onChange?.(e);
       },
     },
   };

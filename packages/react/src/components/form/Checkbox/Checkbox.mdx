@@ -1,15 +1,15 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
 import { Information } from '../../../../../../docs-components';
-import * as CheckboxStories from './Radio.stories';
+import * as CheckboxStories from './Checkbox.stories';
 import * as CheckboxGroupStories from './Group/Group.stories';
 
 <Meta of={CheckboxStories} />
 
-# Radio
+# Checkbox
 
 <Information text='development' />
 
-`Radio` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Radio.Group` hvis man har behov for radioknapper.
+`Checkbox` er en knapp som skal brukes i kombinasjon med andre Checkboxknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Checkbox.Group` hvis man har behov for Checkboxknapper.
 
 <Primary />
 <Controls />
@@ -20,38 +20,38 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 ```tsx
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Radio } from '@digdir/design-system-react';
+import { Checkbox } from '@digdir/design-system-react';
 
-<Radio.Group legend='Er du over 18 år?'>
-  <Radio value='Ja'>Ja</Radio>
-  <Radio value='Ne'>Nei</Radio>
-</Radio.Group>;
+<Checkbox.Group legend='Er du over 18 år?'>
+  <Checkbox value='Ja'>Ja</Checkbox>
+  <Checkbox value='Ne'>Nei</Checkbox>
+</Checkbox.Group>;
 ```
 
 ### Enkel
 
-`Radio` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
+`Checkbox` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
 
 <Canvas of={CheckboxStories.Single} />
 
-## `Radio.Group`
+## `Checkbox.Group`
 
-Bruk `Radio.Group` for gruppering av radioknapper.
+Bruk `Checkbox.Group` for gruppering av Checkboxknapper.
 
 <Canvas of={CheckboxGroupStories.Preview} />
 <Controls of={CheckboxGroupStories.Preview} />
 
 ### Feilmelding
 
-Bruk `error` på `Radio.Group` for å vise feilmelding.
+Bruk `error` på `Checkbox.Group` for å vise feilmelding.
 
-Her må `Radio.Group` brukes da den aktivere korrekt stil og sørger for at innholdet har riktige attributter mtp. tilgjengelighet.
+Her må `Checkbox.Group` brukes da den aktivere korrekt stil og sørger for at innholdet har riktige attributter mtp. tilgjengelighet.
 
 <Canvas of={CheckboxGroupStories.Error} />
 
 ### Kontrollert
 
-Bruk `value` på `Radio.Group` for å kontrollere verdiene selv.
+Bruk `value` på `Checkbox.Group` for å kontrollere verdiene selv.
 
 <Canvas of={CheckboxGroupStories.Controlled} />
 
@@ -62,9 +62,3 @@ Bruk `value` på `Radio.Group` for å kontrollere verdiene selv.
 ### Disabled
 
 <Canvas of={CheckboxGroupStories.Disabled} />
-
-### Inline
-
-Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun bruke dette dersom du har kun to alternativer og kort label, som i f.eks typisk ja/nei spørsmål.
-
-<Canvas of={CheckboxGroupStories.Inline} />

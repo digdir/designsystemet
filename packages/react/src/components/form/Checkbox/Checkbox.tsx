@@ -11,22 +11,24 @@ import { useCheckbox } from './useCheckbox';
 
 const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
-    width='23'
+    width='22'
     height='22'
-    viewBox='0 0 23 22'
+    viewBox='0 0 22 22'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
     <rect
-      x='1.00764'
+      x='1'
       y='1'
       width='20'
       height='20'
-      rx='3'
+      rx='2px'
+      ry='2px'
       fill='white'
       stroke='#00315D'
       strokeWidth='2'
+      strokeLinejoin='round'
       className={classes.box}
     />
   </svg>
@@ -58,7 +60,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           rest.className,
         )}
       >
-        <span className={cn(classes.control, classes.radio)}>
+        <span className={cn(classes.control, classes.checkbox)}>
           <input
             {...omit(['size', 'error'], rest)}
             {...inputProps}

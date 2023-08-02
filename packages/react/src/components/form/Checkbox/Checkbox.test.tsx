@@ -21,7 +21,7 @@ describe('Radio', () => {
       </Checkbox>,
     );
     expect(
-      screen.getByRole('radio', { description: 'description' }),
+      screen.getByRole('checkbox', { description: 'description' }),
     ).toBeDefined();
   });
   it('calls onChange and onClick when user clicks', async () => {
@@ -41,7 +41,7 @@ describe('Radio', () => {
       </Checkbox>,
     );
 
-    const radio = screen.getByRole<HTMLInputElement>('radio');
+    const radio = screen.getByRole<HTMLInputElement>('checkbox');
 
     expect(radio.checked).toBeFalsy();
 
@@ -68,7 +68,7 @@ describe('Radio', () => {
       </Checkbox>,
     );
 
-    const radio = screen.getByRole('radio');
+    const radio = screen.getByRole('checkbox');
     await user.click(radio);
 
     expect(radio).toBeDisabled();
@@ -92,7 +92,7 @@ describe('Radio', () => {
       </Checkbox>,
     );
 
-    const radio = screen.getByRole('radio');
+    const radio = screen.getByRole('checkbox');
     await user.click(radio);
 
     expect(radio).toHaveAttribute('readonly');

@@ -5,7 +5,7 @@ import { Button, Paragraph } from '../../..';
 import { Checkbox } from '../';
 
 export default {
-  title: 'ikke utgitt/Radio/Group',
+  title: 'ikke utgitt/Checkbox/Group',
   component: Checkbox.Group,
   parameters: {
     status: {
