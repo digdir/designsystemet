@@ -18,7 +18,12 @@ export default {
 export const Preview: StoryFn<typeof Radio.Group> = (args) => (
   <Radio.Group {...args}>
     <Radio value='vanilje'>Vanilje</Radio>
-    <Radio value='jordbær'>Jordbær</Radio>
+    <Radio
+      value='jordbær'
+      description='Jordbær er best'
+    >
+      Jordbær
+    </Radio>
     <Radio value='sjokolade'>Sjokolade</Radio>
     <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
   </Radio.Group>
@@ -85,6 +90,7 @@ export const ReadOnly = Preview.bind({});
 ReadOnly.args = {
   ...Preview.args,
   readOnly: true,
+  value: 'jordbær',
 };
 
 export const Disabled = Preview.bind({});
@@ -92,6 +98,7 @@ export const Disabled = Preview.bind({});
 Disabled.args = {
   ...Preview.args,
   disabled: true,
+  value: 'sjokolade',
 };
 
 export const Inline: StoryFn<typeof Radio.Group> = () => (

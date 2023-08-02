@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  padding-left: calc(var(--fds-spacing-6) + 20px);
+  padding-left: calc(var(--fds-spacing-6) + 17px);
   min-width: 44px;
   min-height: 44px;
 }
@@ -16,6 +16,7 @@
 }
 
 .label {
+  padding-left: 3px;
   min-height: 44px;
   min-width: min-content;
   display: inline-flex;
@@ -26,6 +27,8 @@
 }
 
 .description {
+  padding-left: 3px;
+  margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
@@ -59,8 +62,6 @@
   cursor: pointer;
 }
 
-.error > .input,
-.error > .label,
 .readonly > .control > .input,
 .readonly > .label {
   cursor: default;
@@ -120,7 +121,7 @@
 }
 
 .readonly .input:read-only:not(:focus-visible) ~ .icon .box {
-  stroke: var(--fds-semantic-border-neutral-default);
+  stroke: var(--fds-semantic-border-neutral-subtle);
   fill: var(--fds-semantic-background-subtle);
 }
 
@@ -128,15 +129,17 @@
   fill: var(--fds-semantic-border-neutral-default);
 }
 
-.container:not(.disabled, .readonly) > .control:hover {
+.container:not(.disabled, .readonly) > .control:hover,
+.container:not(.disabled, .readonly):has(.label:hover) > .control {
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
 .container:not(.disabled, .readonly) > .label:hover,
-.container:not(.disabled, .readonly) > .control:hover ~ .label:hover {
+.container:not(.disabled, .readonly) > .control:hover ~ .label {
   color: var(--fds-semantic-border-input-hover);
 }
 
-.container:not(.disabled, .readonly) > .control:hover .icon .box {
+.container:not(.disabled, .readonly) > .control:hover > .icon > .box,
+.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
   stroke: var(--fds-semantic-border-input-hover);
 }
