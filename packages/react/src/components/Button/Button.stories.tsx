@@ -59,14 +59,14 @@ type AkselIcon = typeof icons['AirplaneFillIcon'];
 type AkselIcons = Record<string, AkselIcon>;
 
 export const Preview: Story = {
-  render: (args) => {
+  render: ({ icon = '', ...args }) => {
     // Hack to get dynamic preview of Aksel icons in Storybook
-    const Icon = (icons as AkselIcons)[(args.icon || '') as string];
+    const Icon: AkselIcon | undefined = (icons as AkselIcons)[icon as string];
 
     return (
       <Button
         {...args}
-        icon={args.icon ? <Icon /> : undefined}
+        icon={Icon ? <Icon /> : undefined}
       ></Button>
     );
   },
