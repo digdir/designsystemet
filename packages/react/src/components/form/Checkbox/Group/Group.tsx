@@ -52,7 +52,6 @@ export const CheckboxGroup = forwardRef<
         {...rest}
         readOnly={readOnly}
         size={size}
-        className={cn(rest.className)}
         ref={ref}
       >
         <CheckboxGroupContext.Provider
