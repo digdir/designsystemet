@@ -37,7 +37,6 @@ export const Error: StoryFn<typeof Checkbox> = () => (
     legend='Velg pizza (påkreved)'
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
     error='Du må velge en av våre pizzaer for å legge inn bestilling'
-    value={'flammen'}
   >
     <Checkbox value='ost'>Bare ost</Checkbox>
     <Checkbox

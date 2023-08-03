@@ -32,15 +32,14 @@ export const useCheckbox: UseCheckbox = (props) => {
       ...inputProps,
       readOnly,
       type: 'checkbox',
-      required: checkboxGroup?.required,
       defaultChecked:
         checkboxGroup?.defaultValue === undefined
           ? undefined
-          : checkboxGroup?.defaultValue === props.value,
+          : checkboxGroup?.defaultValue.includes(props.value),
       checked:
         checkboxGroup?.value === undefined
           ? undefined
-          : checkboxGroup?.value === props.value,
+          : checkboxGroup?.value.includes(props.value),
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
@@ -55,6 +54,7 @@ export const useCheckbox: UseCheckbox = (props) => {
         }
         props?.onChange?.(e);
         checkboxGroup?.onChange?.(e);
+        checkboxGroup?.toggleValue(e.target.value);
       },
     },
   };

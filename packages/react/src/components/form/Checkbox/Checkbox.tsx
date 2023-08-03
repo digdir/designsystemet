@@ -18,19 +18,6 @@ const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
     xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
-    {/* <rect
-      x='1'
-      y='1'
-      width='20'
-      height='20'
-      rx='2px'
-      ry='2px'
-      fill='white'
-      stroke='#00315D'
-      strokeWidth='2'
-      strokeLinejoin='round'
-      className={classes.box}
-    /> */}
     <rect
       x='1'
       y='1'
@@ -38,6 +25,7 @@ const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
       height='20'
       rx='2px'
       ry='2px'
+      fill='white'
       strokeWidth='2'
       strokeLinejoin='round'
       className={classes.box}
@@ -56,7 +44,7 @@ export type CheckboxProps = {
   /** Checkbox label */
   children?: ReactNode;
   /** Value of the `input` element */
-  value: string | ReadonlyArray<string> | number | undefined;
+  value: string | number;
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 

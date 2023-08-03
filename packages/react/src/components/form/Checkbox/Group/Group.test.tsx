@@ -7,19 +7,9 @@ import { Checkbox } from '..';
 import { CheckboxGroup } from './Group';
 
 describe('CheckboxGroup', () => {
-  test('has passed required to Checkbox children', (): void => {
-    render(
-      <CheckboxGroup required>
-        <Checkbox value='test'>test</Checkbox>
-      </CheckboxGroup>,
-    );
-
-    const checkbox = screen.getByRole<HTMLInputElement>('checkbox');
-    expect(checkbox).toHaveAttribute('required');
-  });
   test('has correct Checkbox defaultChecked & checked when defaultValue is used', () => {
     render(
-      <CheckboxGroup defaultValue='test2'>
+      <CheckboxGroup defaultValue={['test2']}>
         <Checkbox value='test1'>test1</Checkbox>
         <Checkbox value='test2'>test2</Checkbox>
         <Checkbox value='test3'>test3</Checkbox>
