@@ -20,7 +20,12 @@ export const AnimateHeight = ({
   const [height, setHeight] = useState<number>(0);
   const contentRef = useCallback(
     (node: HTMLDivElement) => {
-      setHeight(node && open ? node.getBoundingClientRect().height : 0);
+      if (node) {
+        const resizeObserver = new ResizeObserver(() => {
+          setHeight(open ? node.getBoundingClientRect().height : 0);
+        });
+        resizeObserver.observe(node);
+      }
     },
     [open],
   );
