@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  padding-left: calc(var(--fds-spacing-6) + 18px);
+  padding-left: calc(var(--fds-spacing-6) + 17px);
   min-width: 44px;
   min-height: 44px;
 }
@@ -15,7 +15,13 @@
   overflow: visible;
 }
 
+.checkbox,
+.checkbox .icon {
+  border-radius: var(--fds-border_radius-interactive);
+}
+
 .label {
+  padding-left: 3px;
   min-height: 44px;
   min-width: min-content;
   display: inline-flex;
@@ -26,6 +32,8 @@
 }
 
 .description {
+  padding-left: 3px;
+  margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
@@ -45,9 +53,9 @@
   grid-auto-flow: column;
 }
 
-.checkbox,
-.checkbox .icon {
-  border-radius: var(--fds-border_radius-interactive);
+.radio,
+.radio .icon {
+  border-radius: var(--fds-border_radius-full);
 }
 
 .input {
@@ -59,8 +67,6 @@
   cursor: pointer;
 }
 
-.error > .input,
-.error > .label,
 .readonly > .control > .input,
 .readonly > .label {
   cursor: default;
@@ -82,19 +88,20 @@
 
 .input:checked ~ .icon .checked {
   display: inline;
-  fill: var(--fds-semantic-border-input-hover);
 }
 
 .input:not(:checked) ~ .icon .box {
   stroke: var(--fds-semantic-border-input-default);
 }
 
-.input:checked ~ .icon .box {
-  stroke: var(--fds-semantic-border-input-hover);
-}
-
 .input:disabled ~ .icon .box {
   stroke: var(--fds-semantic-border-neutral-subtle);
+  fill: white;
+}
+
+.input:checked:not(:disabled) ~ .icon .box {
+  stroke: var(--fds-semantic-border-input-hover);
+  fill: var(--fds-semantic-border-input-hover);
 }
 
 .input:focus-visible ~ .icon {
@@ -102,7 +109,7 @@
   outline-offset: 0;
 }
 
-.input:focus-visible ~ .icon .box {
+.input:focus-visible:not(:disabled) ~ .icon .box {
   stroke: var(--fds-semantic-border-focus-boxshadow);
   stroke-width: var(--fds-focus-border-width);
 }
@@ -111,16 +118,12 @@
   fill: var(--fds-semantic-border-neutral-subtle);
 }
 
-.error .input:not(:disabled, :focus-visible) ~ .icon .box {
+.error .input:not(:disabled, :focus-visible, :checked) ~ .icon .box {
   stroke: var(--fds-semantic-border-danger-default);
 }
 
-.error .input:not(:disabled, :focus-visible) ~ .icon .checked {
-  fill: var(--fds-semantic-border-danger-default);
-}
-
 .readonly .input:read-only:not(:focus-visible) ~ .icon .box {
-  stroke: var(--fds-semantic-border-neutral-default);
+  stroke: var(--fds-semantic-border-neutral-subtle);
   fill: var(--fds-semantic-background-subtle);
 }
 
@@ -128,15 +131,17 @@
   fill: var(--fds-semantic-border-neutral-default);
 }
 
-.container:not(.disabled, .readonly) > .control:hover {
+.container:not(.disabled, .readonly) > .control:hover,
+.container:not(.disabled, .readonly):has(.label:hover) > .control {
   background: var(--fds-semantic-surface-info-subtle-hover);
 }
 
 .container:not(.disabled, .readonly) > .label:hover,
-.container:not(.disabled, .readonly) > .control:hover ~ .label:hover {
+.container:not(.disabled, .readonly) > .control:hover ~ .label {
   color: var(--fds-semantic-border-input-hover);
 }
 
-.container:not(.disabled, .readonly) > .control:hover .icon .box {
+.container:not(.disabled, .readonly) > .control:hover > .icon > .box,
+.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
   stroke: var(--fds-semantic-border-input-hover);
 }

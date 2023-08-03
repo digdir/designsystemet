@@ -37,6 +37,7 @@ export const Error: StoryFn<typeof Checkbox> = () => (
     legend='Velg pizza (påkreved)'
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
     error='Du må velge en av våre pizzaer for å legge inn bestilling'
+    value={'flammen'}
   >
     <Checkbox value='ost'>Bare ost</Checkbox>
     <Checkbox
@@ -85,6 +86,7 @@ export const ReadOnly = Preview.bind({});
 ReadOnly.args = {
   ...Preview.args,
   readOnly: true,
+  value: 'sjokolade',
 };
 
 export const Disabled = Preview.bind({});
@@ -92,4 +94,5 @@ export const Disabled = Preview.bind({});
 Disabled.args = {
   ...Preview.args,
   disabled: true,
+  value: 'jordbær',
 };

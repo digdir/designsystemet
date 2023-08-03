@@ -31,13 +31,15 @@ const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
       strokeLinejoin='round'
       className={classes.box}
     /> */}
-
     <rect
       x='1'
       y='1'
       width='20'
       height='20'
       rx='2px'
+      ry='2px'
+      strokeWidth='2'
+      strokeLinejoin='round'
       className={classes.box}
     />
     <path
