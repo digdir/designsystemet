@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
+import * as icons from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
@@ -54,10 +55,30 @@ const VariantsTemplate = () => {
   );
 };
 
-export const props: Story = {
+type AkselIcon = typeof icons['AirplaneFillIcon'];
+type AkselIcons = Record<string, AkselIcon>;
+
+export const Preview: Story = {
+  render: (args) => {
+    // Hack to get dynamic preview of Aksel icons in Storybook
+    const Icon = (icons as AkselIcons)[(args.icon || '') as string];
+
+    return (
+      <Button
+        {...args}
+        icon={args.icon ? <Icon /> : undefined}
+      ></Button>
+    );
+  },
   args: {
     children: 'Knapp',
     disabled: false,
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+    },
   },
 };
 
