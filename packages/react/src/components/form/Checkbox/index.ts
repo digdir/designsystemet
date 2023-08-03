@@ -15,7 +15,7 @@ type CheckboxComponent = typeof CheckboxParent & {
   Group: typeof CheckboxGroup;
 };
 
-/** `<input> element with `type="radio"` used for selecting one option */
+/** `<input> element with `type="checkbox"` used for selecting one option */
 const Checkbox = CheckboxParent as CheckboxComponent;
 
 Checkbox.Group = CheckboxGroup;
