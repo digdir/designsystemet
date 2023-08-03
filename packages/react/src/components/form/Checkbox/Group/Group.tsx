@@ -26,6 +26,8 @@ export type CheckboxGroupProps = {
   defaultValue?: ReadonlyArray<string | number>;
   /** Callback event with changed `Checkbox` */
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  /** Callback event with changed balue */
+  onChangeValue?: (value: Array<string | number>) => void;
   /** Toggle if collection of `Checkbox` are required  */
   required?: boolean;
 } & Omit<FieldsetProps, 'onChange'>;
@@ -42,6 +44,7 @@ export const CheckboxGroup = forwardRef<
       readOnly,
       defaultValue,
       size = 'medium',
+      onChangeValue,
       ...rest
     },
     ref,
@@ -51,12 +54,15 @@ export const CheckboxGroup = forwardRef<
     >(defaultValue ?? []);
 
     const toggleValue: CheckboxGroupContextProps['toggleValue'] = (value) => {
-      const updatedCheckedValues = checkedValues.includes(value)
-        ? checkedValues.filter((x) => x !== value)
-        : [...checkedValues, value];
+      const newValue = value ?? checkedValues;
+      const updatedCheckedValues = checkedValues.includes(newValue)
+        ? checkedValues.filter((x) => x !== newValue)
+        : [...checkedValues, newValue];
 
       setCheckedValues(updatedCheckedValues);
+      onChangeValue?.(updatedCheckedValues);
     };
+
     return (
       <Fieldset
         {...rest}

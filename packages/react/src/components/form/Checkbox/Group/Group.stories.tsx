@@ -51,20 +51,24 @@ export const Error: StoryFn<typeof Checkbox> = () => (
 );
 
 export const Controlled: StoryFn<typeof Checkbox> = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string[]>([]);
 
+  const myToggle = (val: string) =>
+    setValue(
+      value.includes(val) ? value.filter((x) => x !== val) : [...value, val],
+    );
   return (
     <>
       <span style={{ display: 'flex', gap: '1rem' }}>
-        <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
-        <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
-        <Paragraph spacing>Du har valgt: {value}</Paragraph>
+        <Button onClick={() => myToggle('flammen')}>Toggle Flammen</Button>
+        <Button onClick={() => myToggle('snadder')}>Toggle Snadder</Button>
+        <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
       </span>
       <Checkbox.Group
         legend='Velg pizza (påkreved)'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChangeValue={(value) => setValue(value as string[])}
       >
         <Checkbox value='ost'>Bare ost</Checkbox>
         <Checkbox
