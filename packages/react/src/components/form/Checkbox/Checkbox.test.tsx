@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Checkbox } from './Checkbox';
 
-describe('Radio', () => {
+describe('Checkbox', () => {
   test('has correct value and label', () => {
     render(<Checkbox value='test'>label</Checkbox>);
     expect(screen.getByLabelText('label')).toBeDefined();
