@@ -1,6 +1,5 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { useState, forwardRef, createContext } from 'react';
-import cn from 'classnames';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
@@ -78,7 +77,7 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div className={cn(classes[size])}>{children}</div>
+          <div className={classes[size]}>{children}</div>
         </CheckboxGroupContext.Provider>
       </Fieldset>
     );

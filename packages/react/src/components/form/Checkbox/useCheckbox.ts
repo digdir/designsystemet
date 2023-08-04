@@ -23,7 +23,7 @@ type UseCheckbox = (props: CheckboxProps) => FormField & {
 /** Handles props for `Checkbox` in context with `Checkbox.Group` (and `Fieldset`) */
 export const useCheckbox: UseCheckbox = (props) => {
   const checkboxGroup = useContext(CheckboxGroupContext);
-  const { inputProps, readOnly, ...rest } = useFormField(props, 'radio');
+  const { inputProps, readOnly, ...rest } = useFormField(props, 'checkbox');
 
   return {
     ...rest,

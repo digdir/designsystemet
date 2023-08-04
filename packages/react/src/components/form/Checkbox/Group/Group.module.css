@@ -3,9 +3,3 @@
 .medium {
   margin-left: calc(var(--fds-spacing-2) * -1);
 }
-
-.inline {
-  display: flex;
-  flex-direction: row;
-  gap: var(--fds-spacing-2);
-}
