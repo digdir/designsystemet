@@ -5,12 +5,14 @@ import { CheckboxGroup } from './Group';
 
 type CheckboxComponent = typeof CheckboxParent & {
   /**
-   * Grouping  multiple `Radio` together.
+   * Grouping  multiple `Checkbox` together.
    * @example
-   * <Radio.Group legend="Are you 18 years or older?">
-   *    <Radio value="Yes">Yes</Radio>
-   *    <Radio value="No">No</Radio>
-   * </Radio.Group>
+   * <Checkbox.Group legend="What would your D&D party like to eat?">
+   *    <Checkbox value="elfsalad">Wood Elf forest salad</Checkbox>
+   *    <Checkbox value="firecakes">Fire breath rice cakes</Checkbox>
+   *    <Checkbox value="dumplings">Chicken-something dumplings</Checkbox>
+   *    <Checkbox value="ribs">Sembian honey-glazed rothè ribs</Checkbox>
+   * </Checkbox.Group>
    */
   Group: typeof CheckboxGroup;
 };
