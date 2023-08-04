@@ -50,8 +50,13 @@ export type RadioProps = {
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const { children, description, ...rest } = props;
-  const { inputProps, descriptionId, hasError, size, readOnly } =
-    useRadio(props);
+  const {
+    inputProps,
+    descriptionId,
+    hasError,
+    size = 'medium',
+    readOnly,
+  } = useRadio(props);
 
   return (
     <Paragraph
@@ -77,7 +82,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 
       {children && (
         <Label
-          className={classes.label}
+          className={cn(classes.label, classes[size])}
           htmlFor={inputProps.id}
           size={size}
         >
