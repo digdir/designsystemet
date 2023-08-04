@@ -44,7 +44,7 @@ export type RadioProps = {
   /** Radio label */
   children?: ReactNode;
   /** Value of the `input` element */
-  value: string | ReadonlyArray<string> | number | undefined;
+  value: string;
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 

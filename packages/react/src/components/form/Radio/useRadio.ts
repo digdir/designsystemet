@@ -55,7 +55,7 @@ export const useRadio: UseRadio = (props) => {
           return;
         }
         props?.onChange?.(e);
-        radioGroup?.onChange?.(e);
+        radioGroup?.onChange?.(props.value);
       },
     },
   };
