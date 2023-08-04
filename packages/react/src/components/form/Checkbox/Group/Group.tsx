@@ -9,9 +9,9 @@ import type { CheckboxProps } from '../Checkbox';
 import classes from './Group.module.css';
 
 export type CheckboxGroupContextProps = {
-  value?: ReadonlyArray<string | number>;
-  defaultValue?: ReadonlyArray<string | number>;
-  toggleValue: (value: string | number) => void;
+  value?: string[];
+  defaultValue?: string[];
+  toggleValue: (value: string) => void;
 } & Pick<CheckboxProps, 'onChange'>;
 
 export const CheckboxGroupContext =
@@ -20,16 +20,14 @@ export const CheckboxGroupContext =
 export type CheckboxGroupProps = {
   /** Collection of `Checkbox` components */
   children?: ReactNode;
-  /** Controlled state for `Checkbox` */
-  value?: ReadonlyArray<string | number>;
-  /** Default checked `Checkbox` */
-  defaultValue?: ReadonlyArray<string | number>;
-  /** Callback event with changed `Checkbox` */
+  /** Controlled state for  `Checkbox`'s */
+  value?: string[];
+  /** Default checked `Checkbox`'s */
+  defaultValue?: string[];
+  /** Callback event with changed `Checkbox` element */
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  /** Callback event with changed balue */
-  onChangeValue?: (value: Array<string | number>) => void;
-  /** Toggle if collection of `Checkbox` are required  */
-  required?: boolean;
+  /** Callback event with changed value */
+  onChangeValue?: (value: string[]) => void;
 } & Omit<FieldsetProps, 'onChange'>;
 
 export const CheckboxGroup = forwardRef<
@@ -49,18 +47,20 @@ export const CheckboxGroup = forwardRef<
     },
     ref,
   ) => {
-    const [checkedValues, setCheckedValues] = useState<
-      ReadonlyArray<string | number>
-    >(defaultValue ?? []);
+    const [internalValue, setInternalValue] = useState<string[]>(
+      defaultValue ?? [],
+    );
 
-    const toggleValue: CheckboxGroupContextProps['toggleValue'] = (value) => {
-      const newValue = value ?? checkedValues;
-      const updatedCheckedValues = checkedValues.includes(newValue)
-        ? checkedValues.filter((x) => x !== newValue)
-        : [...checkedValues, newValue];
+    const toggleValue: CheckboxGroupContextProps['toggleValue'] = (
+      checkboxValue,
+    ) => {
+      const currentValue = value ?? internalValue;
+      const updatedValue = currentValue.includes(checkboxValue)
+        ? currentValue.filter((x) => x !== checkboxValue)
+        : [...currentValue, checkboxValue];
 
-      setCheckedValues(updatedCheckedValues);
-      onChangeValue?.(updatedCheckedValues);
+      value ?? setInternalValue(updatedValue);
+      onChangeValue?.(updatedValue);
     };
 
     return (

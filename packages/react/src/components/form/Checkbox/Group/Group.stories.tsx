@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button, Paragraph } from '../../..';
+import { Button, Label, Paragraph } from '../../..';
 import { Checkbox } from '../';
 
 export default {
@@ -39,12 +39,7 @@ export const Error: StoryFn<typeof Checkbox> = () => (
     error='Du må velge en av våre pizzaer for å legge inn bestilling'
   >
     <Checkbox value='ost'>Bare ost</Checkbox>
-    <Checkbox
-      value='Dobbeldekker'
-      description='Chorizo spesial med kokkens luksuskylling'
-    >
-      Dobbeldekker
-    </Checkbox>
+    <Checkbox value='Dobbeldekker'>Dobbeldekker</Checkbox>
     <Checkbox value='flammen'>Flammen</Checkbox>
     <Checkbox value='snadder'>Snadder</Checkbox>
   </Checkbox.Group>
@@ -68,7 +63,7 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
         legend='Velg pizza (påkreved)'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
-        onChangeValue={(value) => setValue(value as string[])}
+        onChangeValue={(value) => setValue(value)}
       >
         <Checkbox value='ost'>Bare ost</Checkbox>
         <Checkbox
@@ -89,7 +84,7 @@ export const ReadOnly = Preview.bind({});
 ReadOnly.args = {
   ...Preview.args,
   readOnly: true,
-  value: 'sjokolade',
+  value: ['sjokolade'],
 };
 
 export const Disabled = Preview.bind({});
@@ -97,5 +92,5 @@ export const Disabled = Preview.bind({});
 Disabled.args = {
   ...Preview.args,
   disabled: true,
-  value: 'jordbær',
+  value: ['jordbær'],
 };

@@ -54,7 +54,7 @@ export const useCheckbox: UseCheckbox = (props) => {
         }
         props?.onChange?.(e);
         checkboxGroup?.onChange?.(e);
-        checkboxGroup?.toggleValue(e.target.value);
+        checkboxGroup?.toggleValue(props.value);
       },
     },
   };

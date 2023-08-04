@@ -44,7 +44,7 @@ export type CheckboxProps = {
   /** Checkbox label */
   children?: ReactNode;
   /** Value of the `input` element */
-  value: string | number;
+  value: string;
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
