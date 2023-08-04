@@ -1191,13 +1191,5 @@
       "value": "{shadow.500}",
       "type": "boxShadow"
     }
-  },
-  "medium": {
-    "value": "400",
-    "type": "fontWeights"
-  },
-  "regular": {
-    "value": "400",
-    "type": "fontWeights"
   }
 }
