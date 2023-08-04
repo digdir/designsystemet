@@ -51,8 +51,13 @@ export type CheckboxProps = {
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
     const { children, description, ...rest } = props;
-    const { inputProps, descriptionId, hasError, size, readOnly } =
-      useCheckbox(props);
+    const {
+      inputProps,
+      descriptionId,
+      hasError,
+      size = 'medium',
+      readOnly,
+    } = useCheckbox(props);
 
     return (
       <Paragraph
@@ -78,7 +83,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
         {children && (
           <Label
-            className={classes.label}
+            className={cn(classes.label, classes[size])}
             htmlFor={inputProps.id}
             size={size}
           >

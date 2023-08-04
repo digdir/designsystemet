@@ -31,6 +31,21 @@
   cursor: pointer;
 }
 
+.label.medium {
+  font: var(--fds-typography-label-radio_and_checkbox-medium);
+  font-family: inherit;
+}
+
+.label.small {
+  font: var(--fds-typography-label-radio_and_checkbox-small);
+  font-family: inherit;
+}
+
+.label.xsmall {
+  font: var(--fds-typography-label-radio_and_checkbox-xsmall);
+  font-family: inherit;
+}
+
 .description {
   padding-left: 3px;
   margin-top: calc(var(--fds-spacing-2) * -1);
