@@ -53,7 +53,6 @@ export const useCheckbox: UseCheckbox = (props) => {
           return;
         }
         props?.onChange?.(e);
-        checkboxGroup?.onChange?.(e);
         checkboxGroup?.toggleValue(props.value);
       },
     },

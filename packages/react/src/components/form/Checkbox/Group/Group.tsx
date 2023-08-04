@@ -1,9 +1,8 @@
-import type { ChangeEventHandler, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import React, { useState, forwardRef, createContext } from 'react';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
-import type { CheckboxProps } from '../Checkbox';
 
 import classes from './Group.module.css';
 
@@ -11,7 +10,7 @@ export type CheckboxGroupContextProps = {
   value?: string[];
   defaultValue?: string[];
   toggleValue: (value: string) => void;
-} & Pick<CheckboxProps, 'onChange'>;
+};
 
 export const CheckboxGroupContext =
   createContext<CheckboxGroupContextProps | null>(null);
@@ -23,10 +22,8 @@ export type CheckboxGroupProps = {
   value?: string[];
   /** Default checked `Checkbox`'s */
   defaultValue?: string[];
-  /** Callback event with changed `Checkbox` element */
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  /** Callback event with changed value */
-  onChangeValue?: (value: string[]) => void;
+  /** Callback event with checked `Checkbox` values */
+  onChange?: (value: string[]) => void;
 } & Omit<FieldsetProps, 'onChange'>;
 
 export const CheckboxGroup = forwardRef<
@@ -41,7 +38,6 @@ export const CheckboxGroup = forwardRef<
       readOnly,
       defaultValue,
       size = 'medium',
-      onChangeValue,
       ...rest
     },
     ref,
@@ -59,7 +55,7 @@ export const CheckboxGroup = forwardRef<
         : [...currentValue, checkboxValue];
 
       value ?? setInternalValue(updatedValue);
-      onChangeValue?.(updatedValue);
+      onChange?.(updatedValue);
     };
 
     return (
@@ -73,7 +69,6 @@ export const CheckboxGroup = forwardRef<
           value={{
             value,
             defaultValue,
-            onChange,
             toggleValue,
           }}
         >

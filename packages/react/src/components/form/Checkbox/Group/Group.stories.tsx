@@ -62,7 +62,7 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
         legend='Velg pizza'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
-        onChangeValue={(value) => setValue(value)}
+        onChange={(value) => setValue(value)}
       >
         <Checkbox value='ost'>Bare ost</Checkbox>
         <Checkbox

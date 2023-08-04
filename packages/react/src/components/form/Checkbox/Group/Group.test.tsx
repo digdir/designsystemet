@@ -20,23 +20,50 @@ describe('CheckboxGroup', () => {
     expect(checkbox.defaultChecked).toBeTruthy();
     expect(checkbox.checked).toBeTruthy();
   });
-  test('has passed clicked Checkbox element to onChange', async () => {
+  test('has added clicked Checkbox in value passed to onChange', async () => {
     const user = userEvent.setup();
-    let onChangeValue = '';
+    let onChangeValue: string[] = [];
 
     render(
-      <CheckboxGroup onChange={(e) => (onChangeValue = e.currentTarget.value)}>
+      <CheckboxGroup onChange={(value) => (onChangeValue = value)}>
         <Checkbox value='test1'>test1</Checkbox>
         <Checkbox value='test2'>test2</Checkbox>
         <Checkbox value='test3'>test3</Checkbox>
       </CheckboxGroup>,
     );
 
-    const checkbox = screen.getByDisplayValue<HTMLInputElement>('test2');
+    const checkbox2 = screen.getByDisplayValue<HTMLInputElement>('test2');
 
-    await user.click(checkbox);
+    await user.click(checkbox2);
 
-    expect(onChangeValue).toEqual('test2');
-    expect(checkbox.checked).toBeTruthy();
+    expect(onChangeValue.includes('test2')).toBeTruthy();
+    expect(onChangeValue.length === 1).toBeTruthy();
+    expect(checkbox2.checked).toBeTruthy();
+  });
+
+  test('has removed clicked Checkbox in value passed to onChange', async () => {
+    const user = userEvent.setup();
+    let onChangeValue: string[] = [];
+
+    render(
+      <CheckboxGroup onChange={(value) => (onChangeValue = value)}>
+        <Checkbox value='test1'>test1</Checkbox>
+        <Checkbox value='test2'>test2</Checkbox>
+        <Checkbox value='test3'>test3</Checkbox>
+      </CheckboxGroup>,
+    );
+
+    const checkbox2 = screen.getByDisplayValue<HTMLInputElement>('test2');
+
+    await user.click(checkbox2);
+
+    expect(onChangeValue.includes('test2')).toBeTruthy();
+    expect(onChangeValue.length === 1).toBeTruthy();
+    expect(checkbox2.checked).toBeTruthy();
+
+    await user.click(checkbox2);
+
+    expect(onChangeValue.length === 0).toBeTruthy();
+    expect(checkbox2.checked).toBeFalsy();
   });
 });
