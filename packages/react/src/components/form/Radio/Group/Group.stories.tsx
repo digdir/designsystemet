@@ -69,7 +69,7 @@ export const Controlled: StoryFn<typeof Radio> = () => {
         legend='Velg pizza (påkreved)'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(v) => setValue(v)}
       >
         <Radio value='ost'>Bare ost</Radio>
         <Radio
