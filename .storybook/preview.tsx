@@ -6,7 +6,6 @@ import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/de
 import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/tilsynet/tokens.css';
 
 import '@altinn/figma-design-tokens/dist/tokens.css';
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
 
