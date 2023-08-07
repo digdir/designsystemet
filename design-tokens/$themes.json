@@ -164,9 +164,7 @@
     "id": "edeff752fe55f2581f6ceee82c66aac8b8a8622d",
     "name": "Digdir",
     "selectedTokenSets": {
-      "Brand/Digdir": "enabled",
-      "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Brand/Digdir": "enabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
