@@ -41,6 +41,7 @@
     "@commitlint/config-conventional": "^17.4.0",
     "@digdir/design-system-react": "*",
     "@digdir/design-system-tokens": "*",
+    "@etchteam/storybook-addon-css-variables-theme": "^1.5.1",
     "@etchteam/storybook-addon-status": "^4.2.2",
     "@next/eslint-plugin-next": "^13.2.4",
     "@rollup/plugin-commonjs": "^22.0.2",

@@ -1,4 +1,10 @@
 import type { Preview } from '@storybook/react';
+import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
+
+import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!../packages/tokens/brand/altinn/tokens.css';
+import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!../packages/tokens/brand/digdir/tokens.css';
+import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!../packages/tokens/brand/tilsynet/tokens.css';
+
 import '@altinn/figma-design-tokens/dist/tokens.css';
 import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import customTheme from './customTheme';
@@ -27,6 +33,7 @@ const viewports: Viewport[] = metadata.tokenSetOrder
   });
 
 const preview: Preview = {
+  decorators: [cssVariablesTheme],
   parameters: {
     status: {
       statuses: {
@@ -41,6 +48,14 @@ const preview: Preview = {
           description: 'This component is stable and released',
         },
       },
+    },
+    cssVariables: {
+      files: {
+        Altinn: altinn,
+        Digdir: digdir,
+        Tilsynet: tilsynet,
+      },
+      defaultTheme: 'Digdir',
     },
     layout: 'centered',
     viewMode: 'docs',
