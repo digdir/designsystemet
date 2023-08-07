@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 import type {
@@ -9,6 +12,17 @@ import {
   registerTransforms,
   transformDimension,
 } from '@tokens-studio/sd-transforms';
+import * as R from 'ramda';
+import prettier from 'prettier';
+import { curry } from 'ramda';
+
+// const prettierConfig = fs.readFileSync('./../../prettier.config.js', {
+//   encoding: 'utf8',
+//   flag: 'r',
+// });
+const prettierConfig = path.resolve('./../../prettier.config.js');
+
+const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
@@ -213,6 +227,52 @@ StyleDictionary.registerFormat({
   },
 });
 
+const groupByType = R.groupBy(
+  (token: TransformedToken) => token.type as string,
+);
+
+// const groupByLevel = (level: number, tokens: TransformedToken[]) =>
+//   R.groupBy((token: TransformedToken) => token.path[level], tokens);
+
+// const shouldGroup = (level: number, tokens: TransformedToken[]) => {
+//   const token = R.head(tokens);
+//   const [, next] = R.splitAt(level, token?.path ?? []);
+//   return next.length > 1;
+// };
+
+// const groupNest = <T extends Record<string, TransformedTokens[]>>(
+//   level = 0,
+//   record: T,
+// ) =>
+//   R.map(
+//     (tokens) =>
+//       shouldGroup(level, tokens) ? groupByLevel(level + 1, tokens) : tokens,
+//     record,
+//   );
+
+const groupTokens = R.pipe(groupByType);
+
+StyleDictionary.registerFormat({
+  name: 'javascript/es6-object-group',
+  formatter: function ({ dictionary, file }) {
+    const tokens = groupTokens(dictionary.allTokens);
+
+    const content =
+      fileHeader({ file }) +
+      Object.entries(tokens)
+        .map(
+          ([name, token]) =>
+            `export const  ${name} = ${JSON.stringify(token, null, 2)}`,
+        )
+        .join('\n');
+
+    return prettier.format(content.toString(), {
+      ...prettierOptions,
+      parser: 'babel',
+    });
+  },
+});
+
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
@@ -293,6 +353,11 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           {
             destination: `${destinationPath}/tokens.d.ts`,
             format: 'typescript/es6-declarations',
+            filter: excludeSource,
+          },
+          {
+            destination: `../../storefront/tokens/tokens.ts`,
+            format: 'javascript/es6-object-group',
             filter: excludeSource,
           },
         ],
