@@ -44,7 +44,6 @@ const icon = (
   </svg>
 );
 
-// Render functions need to accept "args" for code preview to work properly
 const VariantsTemplate = () => {
   return (
     <>
