@@ -8,7 +8,7 @@ import classes from './Toggle.module.css';
 
 export type ToggleChipProps = {
   /**
-   * Condition if the check mark icon should be displayed
+   * Enables check mark icon
    */
   checkmark?: boolean;
 } & ChipBaseProps;
