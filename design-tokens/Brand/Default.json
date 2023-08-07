@@ -1,40 +1,4 @@
 {
-  "semantic": {
-    "surface": {
-      "action": {
-        "primary": {
-          "default": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "{colors.blue.800}",
-            "type": "color"
-          },
-          "active": {
-            "value": "{colors.blue.900}",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          }
-        },
-        "secondary": {
-          "default": {
-            "value": "{colors.blue.900}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "rgba({colors.blue.900}, 0.9)",
-            "type": "color"
-          },
-          "active": {
-            "value": "rgba({colors.blue.900}, 0.8)",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          }
-        }
-      }
-    }
-  },
   "brand": {
     "primary": {
       "100": {
@@ -72,6 +36,172 @@
       "900": {
         "value": "#00315d",
         "type": "color"
+      }
+    },
+    "secondary": {
+      "100": {
+        "value": "#e6eff8",
+        "type": "color"
+      },
+      "200": {
+        "value": "#b3d0ea",
+        "type": "color"
+      },
+      "300": {
+        "value": "#80b1dd",
+        "type": "color"
+      },
+      "400": {
+        "value": "#66a1d6",
+        "type": "color"
+      },
+      "500": {
+        "value": "#3381c8",
+        "type": "color"
+      },
+      "600": {
+        "value": "#1a72c1",
+        "type": "color"
+      },
+      "700": {
+        "value": "#0062ba",
+        "type": "color"
+      },
+      "800": {
+        "value": "#004e95",
+        "type": "color"
+      },
+      "900": {
+        "value": "#00315d",
+        "type": "color"
+      }
+    },
+    "tertiary": {
+      "100": {
+        "value": "#e6eff8",
+        "type": "color"
+      },
+      "200": {
+        "value": "#b3d0ea",
+        "type": "color"
+      },
+      "300": {
+        "value": "#80b1dd",
+        "type": "color"
+      },
+      "400": {
+        "value": "#66a1d6",
+        "type": "color"
+      },
+      "500": {
+        "value": "#3381c8",
+        "type": "color"
+      },
+      "600": {
+        "value": "#1a72c1",
+        "type": "color"
+      },
+      "700": {
+        "value": "#0062ba",
+        "type": "color"
+      },
+      "800": {
+        "value": "#004e95",
+        "type": "color"
+      },
+      "900": {
+        "value": "#00315d",
+        "type": "color"
+      }
+    }
+  },
+  "semantic": {
+    "surface": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.primary.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.primary.800}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{colors.blue.900}",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        },
+        "secondary": {
+          "default": {
+            "value": "{brand.primary.900}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "rgba({brand.primary.900}, 0.9)",
+            "type": "color"
+          },
+          "active": {
+            "value": "rgba({brand.primary.900}, 0.8)",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        }
+      },
+      "primary": {
+        "light": {
+          "value": "{brand.primary.200}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.primary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.primary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.primary.900}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "light": {
+          "value": "{brand.secondary.200}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.secondary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.secondary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.secondary.900}",
+          "type": "color"
+        }
+      },
+      "tertiary": {
+        "light": {
+          "value": "{brand.tertiary.200}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.tertiary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.tertiary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.tertiary.900}",
+          "type": "color"
+        }
       }
     }
   }
