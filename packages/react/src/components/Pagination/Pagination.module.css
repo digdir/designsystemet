@@ -1,0 +1,66 @@
+.pagination {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.ellipsis {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.listitem {
+  margin-right: var(--listitem-margin-right);
+  width: var(--pages-width);
+
+  --pages-width: var(--pages-width-size);
+  --listitem-margin-right: var(--listitem-margin);
+}
+
+.listitem.small {
+  --listitem-margin: var(--fds-spacing-2);
+  --pages-width-size: var(--fds-component-mode-height-small);
+}
+
+.listitem.medium {
+  --listitem-margin: var(--fds-spacing-4);
+  --pages-width-size: var(--fds-component-mode-height-medium);
+}
+
+.chevron {
+  visibility: hidden;
+}
+
+.chevronLeft {
+  margin-right: var(--listitem-margin);
+
+  --listitem-margin: var(--pagination-margin);
+}
+
+.chevronLeft.small {
+  --pagination-margin: var(--fds-spacing-2);
+}
+
+.chevronLeft.medium {
+  --pagination-margin: var(--fds-spacing-6);
+}
+
+.chevronRight {
+  margin-left: var(--pagination-margin-left);
+
+  --pagination-margin-left: var(--pagination-margin);
+}
+
+.chevronRight.small {
+  --pagination-margin: var(--fds-spacing-2);
+}
+
+.chevronRight.medium {
+  --pagination-margin: var(--fds-spacing-6);
+}

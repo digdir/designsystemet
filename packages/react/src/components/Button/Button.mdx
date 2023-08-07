@@ -29,31 +29,19 @@ import { Button } from '@digdir/design-system-react';
 
 ### Knapp med tekst
 
-<Canvas>
-  <Story of={ButtonStories.Variants} />
-</Canvas>
+<Canvas of={ButtonStories.Variants} />
 
 ### Knapp med ikon
 
-<Canvas>
-  <Story of={ButtonStories.FilledWithIcon} />
-  <Story of={ButtonStories.OutlineWithIcon} />
-  <Story of={ButtonStories.QuietWithIcon} />
-</Canvas>
+<Canvas of={ButtonStories.withIcon} />
 
 ### Knapp med tekst og ikon
 
-<Canvas>
-  <Story of={ButtonStories.FilledWithTextIcon} />
-  <Story of={ButtonStories.OutlineWithTextIcon} />
-  <Story of={ButtonStories.QuietWithTextIcon} />
-</Canvas>
+<Canvas of={ButtonStories.withIconAndText} />
 
 ### Full bredde
 
-<Canvas>
-  <Story of={ButtonStories.fullWidth} />
-</Canvas>
+<Canvas of={ButtonStories.fullWidth} />
 
 ### Bruk av Spinner til å lage en knapp som laster
 
@@ -66,8 +54,4 @@ Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er 
 Det er imidlertid viktig å vite at denne prop-en ikke automatisk stopper knappen fra å trigge sin onClick metode.
 Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
 
-<Canvas>
-  <Story of={ButtonStories.FilledWithTextSpinner} />
-  <Story of={ButtonStories.OutlineWithTextSpinner} />
-  <Story of={ButtonStories.QuietWithTextSpinner} />
-</Canvas>
+<Canvas of={ButtonStories.withSpinner} />
