@@ -82,9 +82,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 
       {children && (
         <Label
-          className={cn(classes.label, classes[size])}
+          className={cn(classes.label)}
           htmlFor={inputProps.id}
           size={size}
+          weight='regular'
         >
           <span>{children}</span>
         </Label>
