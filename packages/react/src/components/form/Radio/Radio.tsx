@@ -44,14 +44,19 @@ export type RadioProps = {
   /** Radio label */
   children?: ReactNode;
   /** Value of the `input` element */
-  value: string | ReadonlyArray<string> | number | undefined;
+  value: string;
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const { children, description, ...rest } = props;
-  const { inputProps, descriptionId, hasError, size, readOnly } =
-    useRadio(props);
+  const {
+    inputProps,
+    descriptionId,
+    hasError,
+    size = 'medium',
+    readOnly,
+  } = useRadio(props);
 
   return (
     <Paragraph
@@ -80,6 +85,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
           className={classes.label}
           htmlFor={inputProps.id}
           size={size}
+          weight='regular'
         >
           <span>{children}</span>
         </Label>
