@@ -253,18 +253,29 @@ const groupByNextPathIndex = <
 
 const groupFromPathIndex = R.curry(groupByNextPathIndex);
 const groupTokens = R.pipe(groupByType, groupFromPathIndex(1));
+const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
 StyleDictionary.registerFormat({
-  name: 'javascript/es6-object-group',
+  name: 'storefront',
   formatter: function ({ dictionary, file }) {
-    const tokens = groupTokens(dictionary.allTokens);
+    const format = createPropertyFormatter({
+      dictionary,
+      format: 'css',
+    });
+
+    const formattedTokens = dictionary.allTokens.map((token) => ({
+      ...token,
+      name: toCssVarName(format(token)),
+    }));
+
+    const tokens = groupTokens(formattedTokens);
 
     const content =
       fileHeader({ file }) +
       Object.entries(tokens)
         .map(
           ([name, token]) =>
-            `export const  ${name} = ${JSON.stringify(token, null, 2)}`,
+            `export const  ${name} = ${JSON.stringify(token, null, 2)} \n`,
         )
         .join('\n');
 
@@ -357,9 +368,29 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
             format: 'typescript/es6-declarations',
             filter: excludeSource,
           },
+        ],
+        options: {
+          fileHeader: 'fileheader',
+        },
+      },
+      storefront: {
+        prefix,
+        basePxFontSize,
+        transformGroup: 'css',
+        transforms: [
+          'name/cti/hierarchical-kebab',
+          'ts/resolveMath',
+          'css/fontSizes/fluid',
+          'fds/calc',
+          'typography/shorthand',
+          'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
+          'fds/size/px',
+        ],
+        files: [
           {
             destination: `../../storefront/tokens/tokens.ts`,
-            format: 'javascript/es6-object-group',
+            format: 'storefront',
             filter: excludeSource,
           },
         ],
