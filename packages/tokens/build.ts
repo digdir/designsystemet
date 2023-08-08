@@ -1,3 +1,5 @@
+import path from 'path';
+
 import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 import type {
@@ -5,17 +7,35 @@ import type {
   TransformedToken,
   TransformedTokens,
 } from 'style-dictionary';
-import { registerTransforms } from '@tokens-studio/sd-transforms';
+import {
+  registerTransforms,
+  transformDimension,
+} from '@tokens-studio/sd-transforms';
+import * as R from 'ramda';
+import prettier from 'prettier';
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
 void registerTransforms(StyleDictionary);
+
+const prettierConfig = path.resolve('./../../prettier.config.js');
+const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
 const prefix = 'fds';
 const basePxFontSize = 16;
 let fontScale: TransformedTokens;
+
+StyleDictionary.registerTransform({
+  name: 'fds/size/px',
+  type: 'value',
+  transitive: true,
+  matcher: (token) =>
+    ['sizing', 'spacing'].includes(token.type as string) &&
+    !token.name.includes('base'),
+  transformer: (token) => transformDimension(token.value as number),
+});
 
 StyleDictionary.registerTransform({
   name: 'name/cti/hierarchical-kebab',
@@ -200,6 +220,72 @@ StyleDictionary.registerFormat({
   },
 });
 
+const groupByType = R.groupBy(
+  (token: TransformedToken) => token.type as string,
+);
+
+const groupByPathIndex = (level: number, tokens: TransformedToken[]) =>
+  R.groupBy((token: TransformedToken) => token.path[level], tokens);
+
+const shouldGroupPath = (level: number, tokens: TransformedToken[]) => {
+  const token = R.head(tokens);
+  const [, next] = R.splitAt(level, token?.path ?? []);
+  return next.length > 1;
+};
+
+const groupByNextPathIndex = <
+  T extends Partial<Record<string, TransformedToken[]>>,
+>(
+  level: number,
+  record: T,
+): Record<string, unknown> =>
+  R.mapObjIndexed((tokens, key, obj) => {
+    if (R.isNil(tokens) || R.isNil(obj)) {
+      return tokens;
+    }
+
+    if (shouldGroupPath(level, tokens)) {
+      const grouped = groupByPathIndex(level, tokens);
+      return groupByNextPathIndex(level + 1, grouped);
+    }
+    return tokens;
+  }, record || {});
+
+const groupFromPathIndex = R.curry(groupByNextPathIndex);
+const groupTokens = R.pipe(groupByType, groupFromPathIndex(1));
+const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
+
+StyleDictionary.registerFormat({
+  name: 'storefront',
+  formatter: function ({ dictionary, file }) {
+    const format = createPropertyFormatter({
+      dictionary,
+      format: 'css',
+    });
+
+    const formattedTokens = dictionary.allTokens.map((token) => ({
+      ...token,
+      name: toCssVarName(format(token)),
+    }));
+
+    const tokens = groupTokens(formattedTokens);
+
+    const content =
+      fileHeader({ file }) +
+      Object.entries(tokens)
+        .map(
+          ([name, token]) =>
+            `export const  ${name} = ${JSON.stringify(token, null, 2)} \n`,
+        )
+        .join('\n');
+
+    return prettier.format(content, {
+      ...prettierOptions,
+      parser: 'babel',
+    });
+  },
+});
+
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
@@ -211,6 +297,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
     include: [
       `${tokensPath}/Brand/${brand}.json`,
       `${tokensPath}/Base/Semantic.json`,
+      `${tokensPath}/Density/Default.json`,
     ],
     source: [`${tokensPath}/Base/Core.json`],
     platforms: {
@@ -237,6 +324,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           'typography/shorthand',
           'ts/size/lineheight',
           'ts/shadow/css/shorthand',
+          'fds/size/px',
         ],
         files: [
           {
@@ -278,6 +366,31 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           {
             destination: `${destinationPath}/tokens.d.ts`,
             format: 'typescript/es6-declarations',
+            filter: excludeSource,
+          },
+        ],
+        options: {
+          fileHeader: 'fileheader',
+        },
+      },
+      storefront: {
+        prefix,
+        basePxFontSize,
+        transformGroup: 'css',
+        transforms: [
+          'name/cti/hierarchical-kebab',
+          'ts/resolveMath',
+          'css/fontSizes/fluid',
+          'fds/calc',
+          'typography/shorthand',
+          'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
+          'fds/size/px',
+        ],
+        files: [
+          {
+            destination: `../../storefront/tokens/tokens.ts`,
+            format: 'storefront',
             filter: excludeSource,
           },
         ],

@@ -4,7 +4,17 @@ import userEvent from '@testing-library/user-event';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 
 import type { ButtonProps } from './Button';
-import { Button, buttonSize, buttonVariant, buttonColor } from './Button';
+import { Button } from './Button';
+
+const sizes: ButtonProps['size'][] = ['small', 'medium', 'large'];
+const colors: ButtonProps['color'][] = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'inverted',
+];
+const variants: ButtonProps['variant'][] = ['filled', 'outline', 'quiet'];
 
 const user = userEvent.setup();
 
@@ -19,11 +29,11 @@ describe('Button', () => {
     expect(button.classList).not.toContain('cancel');
   });
 
-  it.each(buttonVariant)(
+  it.each(variants)(
     `should render a button with correct classname when variant is %s`,
     (variant) => {
       render({ variant });
-      const otherVariants = buttonVariant.filter((v) => v !== variant);
+      const otherVariants = variants.filter((v) => v !== variant);
 
       const button = screen.getByRole('button');
 
@@ -32,11 +42,11 @@ describe('Button', () => {
     },
   );
 
-  it.each(buttonColor)(
+  it.each(colors)(
     `should render a button with correct classname when color is %s`,
     (color) => {
       render({ color });
-      const otherVariants = buttonColor.filter((c) => c !== color);
+      const otherVariants = colors.filter((c) => c !== color);
 
       const button = screen.getByRole('button');
 
@@ -45,11 +55,11 @@ describe('Button', () => {
     },
   );
 
-  it.each(buttonSize)(
+  it.each(sizes)(
     `should render a button with correct classname when size is %s`,
     (size) => {
       render({ size });
-      const otherVariants = buttonSize.filter((s) => s !== size);
+      const otherVariants = sizes.filter((s) => s !== size);
 
       const button = screen.getByRole('button');
 

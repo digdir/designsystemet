@@ -353,16 +353,44 @@
   },
   "component-mode-height": {
     "small": {
-      "value": "28",
+      "value": "36",
       "type": "sizing"
     },
     "medium": {
-      "value": "{sizing.8}",
+      "value": "{sizing.10}",
       "type": "sizing"
     },
     "large": {
-      "value": "{sizing.10}",
+      "value": "{sizing.12}",
       "type": "sizing"
+    }
+  },
+  "component-mode-spacing": {
+    "small": {
+      "value": "{spacing.1}",
+      "type": "spacing"
+    },
+    "medium": {
+      "value": "{spacing.2}",
+      "type": "spacing"
+    },
+    "large": {
+      "value": "{spacing.2}",
+      "type": "spacing"
+    }
+  },
+  "component-mode-gap": {
+    "small": {
+      "value": "{spacing.1}",
+      "type": "spacing"
+    },
+    "medium": {
+      "value": "{spacing.1}",
+      "type": "spacing"
+    },
+    "large": {
+      "value": "{spacing.2}",
+      "type": "spacing"
     }
   }
 }

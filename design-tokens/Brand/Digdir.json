@@ -138,5 +138,41 @@
         "type": "color"
       }
     }
+  },
+  "semantic": {
+    "surface": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.tertiary.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.tertiary.800}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{brand.tertiary.900}",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        },
+        "secondary": {
+          "default": {
+            "value": "{brand.tertiary.700}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.tertiary.800}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{brand.tertiary.900}",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        }
+      }
+    }
   }
 }

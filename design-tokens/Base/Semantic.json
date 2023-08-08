@@ -864,64 +864,6 @@
           "textDecoration": "{textDecoration.none}"
         },
         "type": "typography"
-      },
-      "radio_and_checkbox": {
-        "large": {
-          "value": {
-            "fontFamily": "{fontFamilies.inter}",
-            "fontWeight": "{fontWeights.regular}",
-            "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f1}",
-            "letterSpacing": "{letterSpacing.0}",
-            "paragraphSpacing": "{paragraphSpacing.0}",
-            "paragraphIndent": "{paragraphIndent.0}",
-            "textCase": "{textCase.none}",
-            "textDecoration": "{textDecoration.none}"
-          },
-          "type": "typography"
-        },
-        "medium": {
-          "value": {
-            "fontFamily": "{fontFamilies.inter}",
-            "fontWeight": "{fontWeights.regular}",
-            "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f0}",
-            "letterSpacing": "{letterSpacing.0}",
-            "paragraphSpacing": "{paragraphSpacing.0}",
-            "paragraphIndent": "{paragraphIndent.0}",
-            "textCase": "{textCase.none}",
-            "textDecoration": "{textDecoration.none}"
-          },
-          "type": "typography"
-        },
-        "small": {
-          "value": {
-            "fontFamily": "{fontFamilies.inter}",
-            "fontWeight": "{fontWeights.regular}",
-            "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f-1}",
-            "letterSpacing": "{letterSpacing.0}",
-            "paragraphSpacing": "{paragraphSpacing.0}",
-            "paragraphIndent": "{paragraphIndent.0}",
-            "textCase": "{textCase.none}",
-            "textDecoration": "{textDecoration.none}"
-          },
-          "type": "typography"
-        },
-        "xsmall": {
-          "value": {
-            "fontFamily": "{fontFamilies.inter}",
-            "fontWeight": "{fontWeights.regular}",
-            "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f-2}",
-            "letterSpacing": "{letterSpacing.0}",
-            "paragraphSpacing": "{paragraphSpacing.0}",
-            "paragraphIndent": "{paragraphIndent.0}",
-            "textCase": "{textCase.none}",
-            "textDecoration": "{textDecoration.none}"
-          },
-          "type": "typography"
-        }
       }
     },
     "error_message": {
@@ -1213,20 +1155,6 @@
     "value": "4",
     "type": "sizing",
     "description": "4px"
-  },
-  "component-mode-height": {
-    "small": {
-      "value": "36",
-      "type": "sizing"
-    },
-    "medium": {
-      "value": "{sizing.10}",
-      "type": "sizing"
-    },
-    "large": {
-      "value": "{sizing.12}",
-      "type": "sizing"
-    }
   },
   "border_width": {
     "default": {

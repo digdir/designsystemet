@@ -4,6 +4,7 @@
 
   display: inline-block;
   margin: 0;
+  padding: 0;
   color: var(--fds-semantic-text-neutral-default);
 }
 
@@ -29,4 +30,16 @@
 .label.xsmall {
   font: var(--fds-typography-label-xsmall);
   font-family: var(--fdsc-typography-font-family);
+}
+
+.label.regularWeight {
+  font-weight: 400;
+}
+
+.label.mediumWeight {
+  font-weight: 500;
+}
+
+.label.semiboldWeight {
+  font-weight: 600;
 }
