@@ -16,6 +16,8 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         {...rest}
         ref={ref}
         size={size}
+        as='button'
+        type='button'
         className={cn(classes.removable, classes[size], rest.className)}
       >
         <span>{children}</span>
