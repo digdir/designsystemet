@@ -54,7 +54,9 @@ export const CheckboxGroup = forwardRef<
         ? currentValue.filter((x) => x !== checkboxValue)
         : [...currentValue, checkboxValue];
 
-      value ?? setInternalValue(updatedValue);
+      if (typeof value !== 'undefined' || value !== null) {
+        setInternalValue(updatedValue);
+      }
       onChange?.(updatedValue);
     };
 
