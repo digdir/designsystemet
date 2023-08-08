@@ -57,13 +57,13 @@ describe('CheckboxGroup', () => {
 
     await user.click(checkbox2);
 
-    expect(onChangeValue.includes('test2')).toBeTruthy();
-    expect(onChangeValue.length === 1).toBeTruthy();
-    expect(checkbox2.checked).toBeTruthy();
+    expect(onChangeValue).toContain('test2');
+    expect(onChangeValue).toHaveLength(1);
+    expect(checkbox2).toBeChecked();
 
     await user.click(checkbox2);
 
-    expect(onChangeValue.length === 0).toBeTruthy();
-    expect(checkbox2.checked).toBeFalsy();
+    expect(onChangeValue).toHaveLength(0);
+    expect(checkbox2).not.toBeChecked();
   });
 });
