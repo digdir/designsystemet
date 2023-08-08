@@ -83,9 +83,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
         {children && (
           <Label
-            className={cn(classes.label, classes[size])}
+            className={classes.label}
             htmlFor={inputProps.id}
             size={size}
+            weight='regular'
           >
             <span>{children}</span>
           </Label>
