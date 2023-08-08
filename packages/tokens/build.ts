@@ -265,7 +265,7 @@ StyleDictionary.registerFormat({
 
     const formattedTokens = dictionary.allTokens.map((token) => ({
       ...token,
-      // lastName: R.last(token.path),
+      lastName: R.last(token.path),
       name: toCssVarName(format(token)),
     }));
 
