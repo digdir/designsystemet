@@ -32,7 +32,7 @@
   font-family: var(--fdsc-typography-font-family);
 }
 
-.label.normalWeight {
+.label.regularWeight {
   font-weight: 400;
 }
 

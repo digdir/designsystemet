@@ -6,7 +6,7 @@ import type { OverridableComponent } from '../../../types/OverridableComponent';
 
 import classes from './Label.module.css';
 
-type FontWeights = 'normal' | 'medium' | 'semibold';
+type FontWeights = 'regular' | 'medium' | 'semibold';
 
 export type LabelProps = {
   /** Changes text sizing */
@@ -18,7 +18,7 @@ export type LabelProps = {
 } & LabelHTMLAttributes<HTMLLabelElement>;
 
 const fontWeightsClasses: Record<FontWeights, string> = {
-  normal: classes.normalWeight,
+  regular: classes.regularWeight,
   medium: classes.mediumWeight,
   semibold: classes.semiboldWeight,
 };
