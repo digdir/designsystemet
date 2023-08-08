@@ -35,7 +35,7 @@ export const Error: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group
     legend='Velg pizza '
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
-    error='Du må velge minst en pizza for å legge inn bestilling'
+    error='Du må velge minst én pizza for å legge inn bestilling'
   >
     <Checkbox value='ost'>Bare ost</Checkbox>
     <Checkbox value='Dobbeldekker'>Dobbeldekker</Checkbox>
