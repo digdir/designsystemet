@@ -1,4 +1,3 @@
-import fs from 'fs';
 import path from 'path';
 
 import { noCase } from 'change-case';
@@ -14,19 +13,13 @@ import {
 } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import prettier from 'prettier';
-import { curry } from 'ramda';
-
-// const prettierConfig = fs.readFileSync('./../../prettier.config.js', {
-//   encoding: 'utf8',
-//   flag: 'r',
-// });
-const prettierConfig = path.resolve('./../../prettier.config.js');
-
-const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
 void registerTransforms(StyleDictionary);
+
+const prettierConfig = path.resolve('./../../prettier.config.js');
+const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
@@ -231,26 +224,35 @@ const groupByType = R.groupBy(
   (token: TransformedToken) => token.type as string,
 );
 
-// const groupByLevel = (level: number, tokens: TransformedToken[]) =>
-//   R.groupBy((token: TransformedToken) => token.path[level], tokens);
+const groupByPathIndex = (level: number, tokens: TransformedToken[]) =>
+  R.groupBy((token: TransformedToken) => token.path[level], tokens);
 
-// const shouldGroup = (level: number, tokens: TransformedToken[]) => {
-//   const token = R.head(tokens);
-//   const [, next] = R.splitAt(level, token?.path ?? []);
-//   return next.length > 1;
-// };
+const shouldGroupPath = (level: number, tokens: TransformedToken[]) => {
+  const token = R.head(tokens);
+  const [, next] = R.splitAt(level, token?.path ?? []);
+  return next.length > 1;
+};
 
-// const groupNest = <T extends Record<string, TransformedTokens[]>>(
-//   level = 0,
-//   record: T,
-// ) =>
-//   R.map(
-//     (tokens) =>
-//       shouldGroup(level, tokens) ? groupByLevel(level + 1, tokens) : tokens,
-//     record,
-//   );
+const groupByNextPathIndex = <
+  T extends Partial<Record<string, TransformedToken[]>>,
+>(
+  level: number,
+  record: T,
+): Record<string, unknown> =>
+  R.mapObjIndexed((tokens, key, obj) => {
+    if (R.isNil(tokens) || R.isNil(obj)) {
+      return tokens;
+    }
 
-const groupTokens = R.pipe(groupByType);
+    if (shouldGroupPath(level, tokens)) {
+      const grouped = groupByPathIndex(level, tokens);
+      return groupByNextPathIndex(level + 1, grouped);
+    }
+    return tokens;
+  }, record || {});
+
+const groupFromPathIndex = R.curry(groupByNextPathIndex);
+const groupTokens = R.pipe(groupByType, groupFromPathIndex(1));
 
 StyleDictionary.registerFormat({
   name: 'javascript/es6-object-group',
@@ -266,7 +268,7 @@ StyleDictionary.registerFormat({
         )
         .join('\n');
 
-    return prettier.format(content.toString(), {
+    return prettier.format(content, {
       ...prettierOptions,
       parser: 'babel',
     });
