@@ -126,6 +126,72 @@
             "description": "Standard farge for handlinger"
           }
         }
+      },
+      "primary": {
+        "light": {
+          "value": "{brand.primary.200}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.primary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.primary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.primary.800}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "light": {
+          "value": "{brand.secondary.200}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.secondary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.secondary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.secondary.900}",
+          "type": "color"
+        }
+      }
+    },
+    "border": {
+      "primary": {
+        "default": {
+          "value": "{brand.primary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.primary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.primary.800}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "default": {
+          "value": "{brand.secondary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.secondary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.secondary.800}",
+          "type": "color"
+        }
       }
     }
   }
