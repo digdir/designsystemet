@@ -23,6 +23,11 @@ export interface RadioButtonProps {
   value: string;
 }
 
+/**
+ *
+ * @deprecated
+ * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-radio--docs Radio} component.
+ */
 const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   (
     {

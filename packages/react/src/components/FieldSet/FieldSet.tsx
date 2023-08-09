@@ -35,6 +35,11 @@ export type FieldSetProps = {
   size?: 'xsmall' | 'small';
 } & FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
+/**
+ *
+ * @deprecated
+ * Will be replaced by new Fieldset component.
+ */
 const FieldSet = forwardRef<HTMLFieldSetElement, FieldSetProps>(
   (
     {
