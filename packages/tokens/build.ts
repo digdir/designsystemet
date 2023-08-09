@@ -252,7 +252,7 @@ const groupByNextPathIndex = <
   }, record || {});
 
 const groupFromPathIndex = R.curry(groupByNextPathIndex);
-const groupTokens = R.pipe(groupByType, groupFromPathIndex(1));
+const groupTokens = R.pipe(groupByType, groupFromPathIndex(0));
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
 StyleDictionary.registerFormat({
@@ -265,6 +265,7 @@ StyleDictionary.registerFormat({
 
     const formattedTokens = dictionary.allTokens.map((token) => ({
       ...token,
+      lastName: R.last(token.path),
       name: toCssVarName(format(token)),
     }));
 

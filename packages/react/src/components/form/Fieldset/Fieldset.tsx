@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
+import utilityclasses from '../../../utils/utility.module.css';
 
 import { useFieldset } from './useFieldset';
 import classes from './Fieldset.module.css';
@@ -32,11 +33,13 @@ export type FieldsetProps = {
   /** Toggle `readOnly` on fieldset context.
    * @note This does not prevent fieldset values from being submited */
   readOnly?: boolean;
+  /** Visually hide `legend` and `description` (still available for screen readers)  */
+  hideLegend?: boolean;
 } & FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   (props, ref) => {
-    const { children, legend, description, error, ...rest } = props;
+    const { children, legend, description, error, hideLegend, ...rest } = props;
 
     const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } =
       useFieldset(props);
@@ -67,7 +70,10 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           <Label
             as='legend'
             size={size}
-            className={classes.legend}
+            className={cn(
+              classes.legend,
+              hideLegend && utilityclasses.visuallyHidden,
+            )}
           >
             {readOnly && (
               <PadlockLockedFillIcon
@@ -80,7 +86,10 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {description && (
             <Paragraph
               id={descriptionId}
-              className={classes.description}
+              className={cn(
+                classes.description,
+                hideLegend && utilityclasses.visuallyHidden,
+              )}
               size={size}
               as='div'
               short

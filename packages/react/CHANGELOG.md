@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.21.0...@digdir/design-system-react@0.22.0) (2023-08-09)
+
+### Bug Fixes
+
+- **Accordion:** Support dynamic height ([#689](https://github.com/digdir/designsystem/issues/689)) ([6624ba1](https://github.com/digdir/designsystem/commit/6624ba1eb75007cf07227f74a633f78d0b718ce3))
+- **Alert:** :bug: Left border should now be positioned correctly inside the box ([#702](https://github.com/digdir/designsystem/issues/702)) ([5fa2aeb](https://github.com/digdir/designsystem/commit/5fa2aeb4a17e77f5fbb98fd8ac039bb4bed0a473))
+- **Chip.Removable:** :bug: Use correct button type to avoid default submit ([#694](https://github.com/digdir/designsystem/issues/694)) ([357cfe8](https://github.com/digdir/designsystem/commit/357cfe827460031cc5e03f0e98f61947210bf40c))
+
+### Features
+
+- **Button:** :recycle: Change default `size` to medium (instead of small`) ([#698](https://github.com/digdir/designsystem/issues/698)) ([ab238df](https://github.com/digdir/designsystem/commit/ab238df8edb86f0432fe59b0d653986c6d3f09b5))
+- **Checkbox:** ✨ New `Checkbox` component (unreleased) ([#681](https://github.com/digdir/designsystem/issues/681)) ([6b49301](https://github.com/digdir/designsystem/commit/6b4930169802a860bad518173e18186407a36f02))
+- **Chip.Toggle:** ♻️ Enabled `checkmark` as default when `selected` ([#693](https://github.com/digdir/designsystem/issues/693)) ([049460c](https://github.com/digdir/designsystem/commit/049460c1b027f1846e5bf675b4e6768d6320458a))
+- **Label:** :sparkles: Added new prop `weight` for setting font weight ([#699](https://github.com/digdir/designsystem/issues/699)) ([1641752](https://github.com/digdir/designsystem/commit/16417526f584339544129ba990891f3dabf66267))
+
 # [0.21.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.20.0...@digdir/design-system-react@0.21.0) (2023-08-02)
 
 ### Bug Fixes
