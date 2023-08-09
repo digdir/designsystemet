@@ -1,0 +1,66 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../../docs-components';
+import * as CheckboxStories from './Checkbox.stories';
+import * as CheckboxGroupStories from './Group/Group.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+<Information text='development' />
+
+`Checkbox` er en knapp som skal brukes i kombinasjon med andre Checkboxknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Checkbox.Group` hvis man har behov for Checkboxknapper.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Checkbox } from '@digdir/design-system-react';
+
+<Checkbox.Group legend='What would your D&D party like to eat?'>
+  <Checkbox value='elfsalad'>Wood Elf forest salad</Checkbox>
+  <Checkbox value='firecakes'>Fire breath rice cakes</Checkbox>
+  <Checkbox value='dumplings'>Chicken-something dumplings</Checkbox>
+  <Checkbox value='ribs'>Sembian honey-glazed rothè ribs</Checkbox>
+</Checkbox.Group>;
+```
+
+### Enkel
+
+`Checkbox` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
+
+<Canvas of={CheckboxStories.Single} />
+
+## `Checkbox.Group`
+
+Bruk `Checkbox.Group` for gruppering av Checkboxknapper.
+
+<Canvas of={CheckboxGroupStories.Preview} />
+<Controls of={CheckboxGroupStories.Preview} />
+
+### Feilmelding
+
+Bruk `error` på `Checkbox.Group` for å vise feilmelding.
+
+Her må `Checkbox.Group` brukes da den aktivere korrekt stil og sørger for at innholdet har riktige attributter mtp. tilgjengelighet.
+
+<Canvas of={CheckboxGroupStories.Error} />
+
+### Kontrollert
+
+Bruk `value` på `Checkbox.Group` for å kontrollere verdiene selv.
+
+<Canvas of={CheckboxGroupStories.Controlled} />
+
+### Readonly
+
+<Canvas of={CheckboxGroupStories.ReadOnly} />
+
+### Disabled
+
+<Canvas of={CheckboxGroupStories.Disabled} />

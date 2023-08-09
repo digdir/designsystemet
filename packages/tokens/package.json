@@ -1,6 +1,6 @@
 {
   "name": "@digdir/design-system-tokens",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "Tokens for the Digdir Common Design System",
   "repository": "https://github.com/digdir/designsystem",
   "license": "MIT",
@@ -16,7 +16,9 @@
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.9.3",
+    "@types/ramda": "^0.29.3",
     "change-case": "^4.1.2",
+    "ramda": "^0.29.0",
     "style-dictionary": "^3.7.2"
   }
 }

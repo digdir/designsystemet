@@ -4,10 +4,10 @@ import { useContext } from 'react';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 
-import type { RadioProps } from './Radio';
-import { RadioGroupContext } from './Group';
+import type { CheckboxProps } from './Checkbox';
+import { CheckboxGroupContext } from './Group';
 
-type UseRadio = (props: RadioProps) => FormField & {
+type UseCheckbox = (props: CheckboxProps) => FormField & {
   inputProps?: Pick<
     InputHTMLAttributes<HTMLInputElement>,
     | 'readOnly'
@@ -20,10 +20,10 @@ type UseRadio = (props: RadioProps) => FormField & {
     | 'onChange'
   >;
 };
-/** Handles props for `Radio` in context with `Radio.Group` (and `Fieldset`) */
-export const useRadio: UseRadio = (props) => {
-  const radioGroup = useContext(RadioGroupContext);
-  const { inputProps, readOnly, ...rest } = useFormField(props, 'radio');
+/** Handles props for `Checkbox` in context with `Checkbox.Group` (and `Fieldset`) */
+export const useCheckbox: UseCheckbox = (props) => {
+  const checkboxGroup = useContext(CheckboxGroupContext);
+  const { inputProps, readOnly, ...rest } = useFormField(props, 'checkbox');
 
   return {
     ...rest,
@@ -31,17 +31,15 @@ export const useRadio: UseRadio = (props) => {
     inputProps: {
       ...inputProps,
       readOnly,
-      type: 'radio',
-      name: radioGroup?.name,
-      required: radioGroup?.required,
+      type: 'checkbox',
       defaultChecked:
-        radioGroup?.defaultValue === undefined
+        checkboxGroup?.defaultValue === undefined
           ? undefined
-          : radioGroup?.defaultValue === props.value,
+          : checkboxGroup?.defaultValue.includes(props.value),
       checked:
-        radioGroup?.value === undefined
+        checkboxGroup?.value === undefined
           ? undefined
-          : radioGroup?.value === props.value,
+          : checkboxGroup?.value.includes(props.value),
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
@@ -55,7 +53,7 @@ export const useRadio: UseRadio = (props) => {
           return;
         }
         props?.onChange?.(e);
-        radioGroup?.onChange?.(props.value);
+        checkboxGroup?.toggleValue(props.value);
       },
     },
   };

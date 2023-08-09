@@ -3,9 +3,9 @@
   --fdsc-alert-icon-color: var(--fdsc-alert-border);
   --fdsc-alert-background: var(--fds-semantic-surface-info-subtle);
   --fdsc-alert-color: var(--fds-semantic-text-neutral-default);
+  --fdsc-alert-box-shadow-left: 8px 0 0 0 var(--fdsc-alert-border) inset;
 
-  /* Negative drop-shadow to place it on the left side of the element */
-  filter: drop-shadow(-8px 0 0 var(--fdsc-alert-border));
+  box-shadow: var(--fdsc-alert-box-shadow-left);
   background: var(--fdsc-alert-background);
   color: var(--fdsc-alert-color);
   padding: var(--fds-spacing-4);
@@ -49,5 +49,5 @@
 }
 
 .elevated {
-  box-shadow: var(--fds-shadow-small);
+  box-shadow: var(--fdsc-alert-box-shadow-left), var(--fds-shadow-small);
 }
