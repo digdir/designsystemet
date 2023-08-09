@@ -230,6 +230,50 @@
           "type": "color"
         }
       }
+    },
+    "border": {
+      "primary": {
+        "default": {
+          "value": "{brand.primary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.primary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.primary.800}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "default": {
+          "value": "{brand.secondary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.secondary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.secondary.800}",
+          "type": "color"
+        }
+      },
+      "tertiary": {
+        "default": {
+          "value": "{brand.tertiary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.tertiary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.tertiary.800}",
+          "type": "color"
+        }
+      }
     }
   }
 }

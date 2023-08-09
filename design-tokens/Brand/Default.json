@@ -117,38 +117,6 @@
   },
   "semantic": {
     "surface": {
-      "action": {
-        "primary": {
-          "default": {
-            "value": "{brand.primary.700}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "{brand.primary.800}",
-            "type": "color"
-          },
-          "active": {
-            "value": "{colors.blue.900}",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          }
-        },
-        "secondary": {
-          "default": {
-            "value": "{brand.primary.900}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "rgba({brand.primary.900}, 0.9)",
-            "type": "color"
-          },
-          "active": {
-            "value": "rgba({brand.primary.900}, 0.8)",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          }
-        }
-      },
       "primary": {
         "light": {
           "value": "{brand.primary.200}",
@@ -200,6 +168,50 @@
         },
         "dark": {
           "value": "{brand.tertiary.900}",
+          "type": "color"
+        }
+      }
+    },
+    "border": {
+      "primary": {
+        "default": {
+          "value": "{brand.primary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.primary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.primary.800}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "default": {
+          "value": "{brand.secondary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.secondary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.secondary.800}",
+          "type": "color"
+        }
+      },
+      "tertiary": {
+        "default": {
+          "value": "{brand.tertiary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.tertiary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.tertiary.800}",
           "type": "color"
         }
       }
