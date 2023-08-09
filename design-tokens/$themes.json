@@ -5,7 +5,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Brand/Brreg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6288:1462",
     "$figmaModeId": "6288:9",
@@ -180,7 +181,8 @@
     "selectedTokenSets": {
       "Brand/Default": "enabled",
       "Base/Semantic": "enabled",
-      "Base/Core": "source"
+      "Base/Core": "source",
+      "Brand/Brreg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6288:1631",
     "$figmaModeId": "6288:10",
@@ -389,7 +391,8 @@
     "selectedTokenSets": {
       "Brand/Digdir": "enabled",
       "Base/Semantic": "enabled",
-      "Base/Core": "source"
+      "Base/Core": "source",
+      "Brand/Brreg": "disabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -846,7 +849,8 @@
     "selectedTokenSets": {
       "Brand/Altinn": "enabled",
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Brand/Brreg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6288:1631",
     "$figmaModeId": "6288:12",
@@ -1055,7 +1059,8 @@
     "selectedTokenSets": {
       "Brand/Tilsynet": "enabled",
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Brand/Brreg": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaCollectionId": "VariableCollectionId:6288:1631",
@@ -1260,11 +1265,23 @@
     "group": "Brand"
   },
   {
+    "id": "9a10a1b0388b775e73993e1126847ed4f5388446",
+    "name": "Brreg",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Base/Semantic": "enabled",
+      "Brand/Brreg": "enabled"
+    },
+    "group": "Brand"
+  },
+  {
     "id": "33e1200e221c81b1bd3439e6f7413a9ac3af9aa4",
     "name": "Default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Density/Default": "enabled"
+      "Density/Default": "enabled",
+      "Brand/Brreg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6288:1827",
     "$figmaModeId": "6288:14",
@@ -1286,7 +1303,8 @@
     "name": "Compact",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Density/Compact": "enabled"
+      "Density/Compact": "enabled",
+      "Brand/Brreg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6288:1827",
     "$figmaModeId": "6288:15",
@@ -1308,41 +1326,44 @@
     "name": "1440",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@1440": "enabled"
+      "Viewport/@1440": "enabled",
+      "Brand/Brreg": "disabled"
     },
-    "group": "Viewport",
     "$figmaCollectionId": "VariableCollectionId:6288:1837",
     "$figmaModeId": "6288:16",
     "$figmaVariableReferences": {
       "viewport.width": "8fe6c1778b224ab0969a0cbe579491e60a776f06"
-    }
+    },
+    "group": "Viewport"
   },
   {
     "id": "d4d7ddc1c15171d32b3b1f585dfccf215924d211",
     "name": "768",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@768": "enabled"
+      "Viewport/@768": "enabled",
+      "Brand/Brreg": "disabled"
     },
-    "group": "Viewport",
     "$figmaCollectionId": "VariableCollectionId:6288:1837",
     "$figmaModeId": "6288:17",
     "$figmaVariableReferences": {
       "viewport.width": "8fe6c1778b224ab0969a0cbe579491e60a776f06"
-    }
+    },
+    "group": "Viewport"
   },
   {
     "id": "066cc74dd8a1205adb8fcec2746c685d329d85ae",
     "name": "320",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@320": "enabled"
+      "Viewport/@320": "enabled",
+      "Brand/Brreg": "disabled"
     },
-    "group": "Viewport",
     "$figmaCollectionId": "VariableCollectionId:6288:1837",
     "$figmaModeId": "6288:18",
     "$figmaVariableReferences": {
       "viewport.width": "8fe6c1778b224ab0969a0cbe579491e60a776f06"
-    }
+    },
+    "group": "Viewport"
   }
 ]

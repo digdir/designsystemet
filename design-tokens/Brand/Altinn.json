@@ -49,49 +49,40 @@
     },
     "secondary": {
       "100": {
-        "value": "#DCD6EA",
-        "type": "color",
-        "description": "AAA 13.3 on grey 800\nAA 6.7 as bkdg for interaction blue"
+        "value": "#D1E4FF",
+        "type": "color"
       },
       "200": {
-        "value": "#C5BBDD",
-        "type": "color",
-        "description": "Light warning color\nAAA 12.3 on grey 800\nAA 1.1 as bkdg for interaction blue"
+        "value": "#9ECAFF",
+        "type": "color"
       },
       "300": {
-        "value": "#A392C8",
-        "type": "color",
-        "description": "AAA 10 on grey 800\nAA 5.4 as bkdg for interaction blue"
+        "value": "#76ADFB",
+        "type": "color"
       },
       "400": {
-        "value": "#806AB4",
-        "type": "color",
-        "description": "AAA 9.2 on grey 800\nAA 4.6 as bkdg for interaction blue"
+        "value": "#5391E9",
+        "type": "color"
       },
       "500": {
-        "value": "#6A52A3",
-        "type": "color",
-        "description": "AAA 7.9 on grey 800\nAA18 4 as bkdg for interaction blue"
+        "value": "#2B77CC",
+        "type": "color"
       },
       "600": {
-        "value": "#594488",
-        "type": "color",
-        "description": "AA 6.8 on grey 800\nAA18 3.4 as bkdg for interaction blue"
+        "value": "#005FAE",
+        "type": "color"
       },
       "700": {
-        "value": "#3F3161",
-        "type": "color",
-        "description": "AA 5.5 on grey 800"
+        "value": "#004785",
+        "type": "color"
       },
       "800": {
-        "value": "#352951",
-        "type": "color",
-        "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
+        "value": "#00315E",
+        "type": "color"
       },
       "900": {
-        "value": "#231B36",
-        "type": "color",
-        "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
+        "value": "#001C3A",
+        "type": "color"
       }
     },
     "tertiary": {
