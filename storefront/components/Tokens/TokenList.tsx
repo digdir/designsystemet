@@ -9,6 +9,7 @@ import { TokenFontSize } from './TokenFontSize/TokenFontSize';
 import { TokenShadow } from './TokenShadow/TokenShadow';
 import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
+import { color } from 'tokens/tokens';
 
 interface TokensProps {
   type: 'color' | 'fontSize' | 'shadow' | 'size';
@@ -48,30 +49,53 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
 
   if (queryResponse.isLoading) return 'Henter tokens...';
 
+  const card = (item: { value: string; name: string; path: [] }) => {
+    console.log(item);
+
+    return (
+      <div className={classes.card}>
+        <div className={classes.preview}>
+          {type === 'color' && <TokenColor value={item.value} />}
+          {type === 'fontSize' && <TokenFontSize value={item.value} />}
+          {type === 'shadow' && <TokenShadow value={item.value} />}
+          {type === 'size' && <TokenSize value={item.value} />}
+        </div>
+        <div className={classes.text}>
+          <h4 className={classes.title}>
+            {item.path[item.path.length - 1]}
+            <ClipboardBtn
+              text='Kopier CSS variabel'
+              value='Kopier CSS variabel'
+            />
+          </h4>
+          <div className={classes.value}>{item.value}</div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={classes.tokens}>
-      <div className={classes.cards}>
-        {Object.keys(items).map((key, index) => (
-          <div
-            key={index}
-            className={classes.card}
-          >
-            <div className={classes.preview}>
-              {type === 'color' && <TokenColor value={items[key]} />}
-              {type === 'fontSize' && <TokenFontSize value={items[key]} />}
-              {type === 'shadow' && <TokenShadow value={items[key]} />}
-              {type === 'size' && <TokenSize value={items[key]} />}
+      {Object.keys(color).map((key, index) => (
+        <div
+          key={index}
+          className={classes.sections}
+        >
+          <h3>{key}</h3>
+          {Array.isArray(color[key]) && (
+            <div className={classes.cards}>
+              {color[key].map((item, index) => card(item))}
             </div>
-            <div className={classes.text}>
-              <h4 className={classes.title}>
-                {capitalizeString(formatTitle(key.split(token)[1].slice(1)))}
-                <ClipboardBtn text={key} />
-              </h4>
-              {showValue && <div className={classes.value}>{items[key]}</div>}
+          )}
+          {!Array.isArray(color[key]) && (
+            <div className={classes.cards}>
+              {Object.keys(color).map((key2, index2) => (
+                <div key={index2}>{key2}</div>
+              ))}
             </div>
-          </div>
-        ))}
-      </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

@@ -6,9 +6,10 @@ import classes from './ClipboardBtn.module.css';
 
 interface ClipboardBtnProps {
   text: string;
+  value?: string;
 }
 
-const ClipboardBtn = ({ text }: ClipboardBtnProps) => {
+const ClipboardBtn = ({ text, value = 'Kopier' }: ClipboardBtnProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
 
   const onClick = (text: string) => {
@@ -26,10 +27,10 @@ const ClipboardBtn = ({ text }: ClipboardBtnProps) => {
         className={classes.tippy}
       >
         <button
-          onMouseEnter={() => setToolTipText('Kopier')}
-          onClick={() => onClick(text)}
+          onMouseEnter={() => setToolTipText(text)}
+          onClick={() => onClick(value)}
           className={classes.btn}
-          title='Kopier'
+          title={text}
         >
           <FilesIcon
             fontSize={21}
