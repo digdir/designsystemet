@@ -22,11 +22,6 @@ export enum IconVariant {
   Search = 'search',
 }
 
-export enum LegacyAccordionIconVariant {
-  Primary = 'primary',
-  Secondary = 'secondary',
-}
-
 export enum ButtonSize {
   Small = 'small',
   Medium = 'medium',
