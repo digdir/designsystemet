@@ -11,7 +11,6 @@ export * from './Select';
 export * from './Spinner';
 export * from './TextArea';
 export * from './TextField';
-export * from './LegacyAccordion';
 export * from './List';
 export * from './Table';
 export * from './ToggleButtonGroup';
