@@ -6,7 +6,7 @@ import { TextField } from '../TextField';
 import { FieldSet } from './FieldSet';
 
 export default {
-  title: 'Kjernekomponenter/FieldSet',
+  title: 'Utgår/FieldSet',
   component: FieldSet,
   parameters: {
     status: {

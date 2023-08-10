@@ -6,7 +6,7 @@ import { Checkbox } from './Checkbox';
 type Story = StoryObj<typeof Checkbox>;
 
 export default {
-  title: 'Kjernekomponenter/Checkbox',
+  title: 'Utgår/Checkbox',
   component: Checkbox,
   parameters: {
     status: {

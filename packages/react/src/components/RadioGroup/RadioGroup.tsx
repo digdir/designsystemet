@@ -30,7 +30,11 @@ export interface RadioGroupProps {
   variant?: 'vertical' | 'horizontal';
   fieldSetProps?: Partial<FieldSetProps>;
 }
-
+/**
+ *
+ * @deprecated
+ * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-radio-group--docs Radio.Group} component.
+ */
 const RadioGroup = ({
   description,
   disabled,
