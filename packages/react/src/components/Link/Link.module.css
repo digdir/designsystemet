@@ -1,0 +1,28 @@
+.link,
+.link:visited {
+  color: var(--fds-semantic-text-action-primary-default);
+}
+
+.link:hover {
+  color: var(--fds-semantic-text-action-primary-hover);
+  text-decoration: none;
+}
+
+.link:active,
+.link:focus {
+  background: var(--fds-semantic-border-focus-outline);
+  border-bottom: 2px solid var(--fds-semantic-border-focus-boxshadow);
+  color: var(--fds-semantic-text-action-primary-active);
+  text-decoration: none;
+  outline: none;
+}
+
+.link:visited {
+  color: var(--fds-semantic-text-visited-default);
+}
+
+.link.inverted:not(:focus, :active),
+.link.inverted:not(:focus, :active):hover,
+.link.inverted:not(:focus, :active):visited {
+  color: white;
+}
