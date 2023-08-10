@@ -3772,7 +3772,6 @@ __metadata:
     "@digdir/design-system-tokens": ^0.2.0
     "@floating-ui/react": 0.24.1
     "@navikt/aksel-icons": ^3.2.4
-    "@navikt/ds-icons": ^2.3.0
     react-number-format: 5.2.2
   peerDependencies:
     react: ">=16.8"
@@ -5429,19 +5428,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 26ad244483d6bd83dab2d99a27cb9cb426030dce614fa081775a8c5b6f8f6e05519ee7d73168453f97d1538d7f897ac88797e515eb133f33028aa1e6f6020582
-  languageName: node
-  linkType: hard
-
-"@navikt/ds-icons@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@navikt/ds-icons@npm:2.3.0"
-  peerDependencies:
-    "@types/react": ^17.0.30 || ^18.0.0
-    react: ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 82868de95a0bcb3e4c93d64d3aea754e9d98af5bd8d845cfbcbfd8231cb3501ff7cf2021c989e80a226585c3203c5d1e9a1bc672b19a087a8778e094f28f7317
   languageName: node
   linkType: hard
 
