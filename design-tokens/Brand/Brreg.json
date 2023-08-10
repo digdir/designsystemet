@@ -102,7 +102,7 @@
             "type": "color"
           },
           "hover": {
-            "value": "$brand.primary.800",
+            "value": "$brand.primary.50",
             "type": "color"
           },
           "active": {
@@ -113,7 +113,7 @@
         },
         "secondary": {
           "default": {
-            "value": "{brand.secondary.600}",
+            "value": "{brand.secondary.800}",
             "type": "color"
           },
           "hover": {
