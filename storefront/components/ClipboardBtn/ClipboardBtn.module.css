@@ -6,6 +6,9 @@
   transition: 0.1s all;
   cursor: pointer;
   background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn:hover {

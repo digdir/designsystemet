@@ -1,71 +1,71 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import cn from 'classnames';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
+import { color } from '../../tokens/tokens';
 
 import { TokenColor } from './TokenColor/TokenColor';
 import { TokenFontSize } from './TokenFontSize/TokenFontSize';
 import { TokenShadow } from './TokenShadow/TokenShadow';
 import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
-import { color } from 'tokens/tokens';
 
-interface TokensProps {
-  type: 'color' | 'fontSize' | 'shadow' | 'size';
+type TokenListProps = {
+  type: 'color-brand' | 'color-semantic' | 'fontSize' | 'shadow' | 'size';
   showValue?: boolean;
-  token: string;
-}
-
-type OutputType = {
-  [key: string]: string;
+  token?: string;
 };
 
-const formatTitle = (title: string) => {
-  return title.replace(/-/g, ' ');
+type TokenType = {
+  value: string;
+  type: string;
+  description: string;
+  filePath: string;
+  isSource: boolean;
+  original: {
+    value: string;
+    type: string;
+    description: string;
+  };
+  name: string;
+  attributes: Record<string, number>;
+  path: string[];
+  lastName: string;
 };
 
-const TokenList = ({ type, showValue = true, token }: TokensProps) => {
-  const [items, setItems] = useState<OutputType>({});
+type ListType = {
+  [key: string]: any;
+};
 
-  const queryResponse = useQuery({
-    queryKey: ['tokens'],
-    queryFn: () => fetch('/api/tokens').then((response) => response.json()),
-  });
-  const data = queryResponse.data as OutputType;
+const TokenList = ({ type }: TokenListProps) => {
+  let tokenList: ListType = {};
 
-  useEffect(() => {
-    if (data) {
-      const obj: OutputType = {};
+  if (type === 'color-semantic') {
+    tokenList = color.semantic;
+  } else {
+    tokenList = color.brand;
+  }
 
-      Object.keys(data).map((key) => {
-        if (key.startsWith(token)) {
-          obj[key] = data[key].replace(';', '').replace('}', '');
-        }
-      });
-      setItems(obj);
-    }
-  }, [data, token]);
-
-  if (queryResponse.isLoading) return 'Henter tokens...';
-
-  const card = (item: { value: string; name: string; path: [] }) => {
-    console.log(item);
-
+  const card = (item: TokenType, index: string) => {
     return (
-      <div className={classes.card}>
+      <div
+        className={classes.card}
+        key={index}
+      >
         <div className={classes.preview}>
-          {type === 'color' && <TokenColor value={item.value} />}
+          {type === 'color-brand' && <TokenColor value={item.value} />}
+          {type === 'color-semantic' && <TokenColor value={item.value} />}
           {type === 'fontSize' && <TokenFontSize value={item.value} />}
           {type === 'shadow' && <TokenShadow value={item.value} />}
           {type === 'size' && <TokenSize value={item.value} />}
         </div>
         <div className={classes.text}>
           <h4 className={classes.title}>
-            {item.path[item.path.length - 1]}
+            {capitalizeString(item.lastName)}
             <ClipboardBtn
               text='Kopier CSS variabel'
-              value='Kopier CSS variabel'
+              value={item.name}
             />
           </h4>
           <div className={classes.value}>{item.value}</div>
@@ -76,21 +76,61 @@ const TokenList = ({ type, showValue = true, token }: TokensProps) => {
 
   return (
     <div className={classes.tokens}>
-      {Object.keys(color).map((key, index) => (
-        <div
-          key={index}
-          className={classes.sections}
-        >
-          <h3>{key}</h3>
-          {Array.isArray(color[key]) && (
-            <div className={classes.cards}>
-              {color[key].map((item, index) => card(item))}
+      {Object.keys(tokenList).map((value, index) => (
+        <div key={index}>
+          <h3>{capitalizeString(value)}</h3>
+          {Array.isArray(tokenList[value]) && (
+            <div className={classes.section}>
+              <div className={classes.cards}>
+                {tokenList[value].map((value: TokenType, index: number) =>
+                  card(value, index),
+                )}
+              </div>
             </div>
           )}
-          {!Array.isArray(color[key]) && (
-            <div className={classes.cards}>
-              {Object.keys(color).map((key2, index2) => (
-                <div key={index2}>{key2}</div>
+          {!Array.isArray(tokenList[value]) && (
+            <div className={classes.section}>
+              {Object.keys(tokenList[value]).map((value2, index2) => (
+                <div
+                  key={index2}
+                  className={cn({
+                    [classes.section2]: Array.isArray(tokenList[value][value2]),
+                  })}
+                >
+                  {Array.isArray(tokenList[value][value2]) && (
+                    <h4>{capitalizeString(value + ' ' + value2)}</h4>
+                  )}
+                  {Array.isArray(tokenList[value][value2]) && (
+                    <div className={classes.cards}>
+                      {tokenList[value][value2].map((item3, index3) =>
+                        card(item3, index3),
+                      )}
+                    </div>
+                  )}
+                  {!Array.isArray(tokenList[value][value2]) && (
+                    <div>
+                      {Object.keys(tokenList[value][value2]).map(
+                        (value3, index3) => (
+                          <div
+                            key={index3}
+                            className={classes.section2}
+                          >
+                            <h4>
+                              {capitalizeString(
+                                value + ' ' + value2 + ' ' + value3,
+                              )}
+                            </h4>
+                            <div className={classes.cards}>
+                              {tokenList[value][value2][value3].map(
+                                (value4, index4) => card(value4, index4),
+                              )}
+                            </div>
+                          </div>
+                        ),
+                      )}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           )}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FilesIcon } from '@navikt/aksel-icons';
+import { ClipboardIcon } from '@navikt/aksel-icons';
 import Tippy from '@tippyjs/react';
 
 import classes from './ClipboardBtn.module.css';
@@ -14,13 +14,13 @@ const ClipboardBtn = ({ text, value = 'Kopier' }: ClipboardBtnProps) => {
 
   const onClick = (text: string) => {
     setToolTipText('Kopiert!');
-    navigator.clipboard.writeText('--' + text).catch((reason) => {
+    navigator.clipboard.writeText(text).catch((reason) => {
       throw Error(String(reason));
     });
   };
 
   return (
-    <div>
+    <>
       <Tippy
         content={toolTipText}
         hideOnClick={false}
@@ -32,13 +32,13 @@ const ClipboardBtn = ({ text, value = 'Kopier' }: ClipboardBtnProps) => {
           className={classes.btn}
           title={text}
         >
-          <FilesIcon
-            fontSize={21}
+          <ClipboardIcon
+            fontSize={20}
             color='#585858'
           />
         </button>
       </Tippy>
-    </div>
+    </>
   );
 };
 

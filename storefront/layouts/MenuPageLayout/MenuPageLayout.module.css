@@ -60,8 +60,7 @@
 .content {
   position: relative;
   display: flex;
-  gap: 56px;
-  /* padding: 16px 32px 24px; */
+  width: 100%;
 }
 
 .content aside {

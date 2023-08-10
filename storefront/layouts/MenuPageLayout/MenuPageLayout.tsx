@@ -44,9 +44,6 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
             id='content'
           >
             <MdxContent>{content}</MdxContent>
-            <aside>
-              <TableOfContents />
-            </aside>
           </div>
         </main>
       </Container>
