@@ -8,12 +8,6 @@ import { FieldSet } from './FieldSet';
 export default {
   title: 'Utgår/FieldSet',
   component: FieldSet,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Eksempel: StoryFn<typeof FieldSet> = (args) => (

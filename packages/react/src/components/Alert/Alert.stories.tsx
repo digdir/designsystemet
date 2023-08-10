@@ -12,10 +12,6 @@ export default {
   title: 'Kjernekomponenter/Alert',
   component: Alert,
   parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
     layout: 'padded',
   },
 } as Meta;

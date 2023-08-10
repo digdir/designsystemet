@@ -11,12 +11,6 @@ type Story = StoryObj<typeof TextField>;
 const meta: Meta<typeof TextField> = {
   title: 'Kjernekomponenter/TextField',
   component: TextField,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 };
 
 export default meta;

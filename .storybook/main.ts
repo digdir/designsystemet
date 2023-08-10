@@ -6,7 +6,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-interactions',
-    '@etchteam/storybook-addon-status',
     '@storybook/addon-essentials',
     '@etchteam/storybook-addon-css-variables-theme',
     {
