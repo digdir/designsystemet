@@ -7,12 +7,6 @@ import { List, ListItem } from '.';
 const meta: Meta<typeof List> = {
   title: 'Kjernekomponenter/List',
   component: List,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
   args: {
     // Just to make the default option pre-selected i <Controls />
     borderStyle: 'solid',

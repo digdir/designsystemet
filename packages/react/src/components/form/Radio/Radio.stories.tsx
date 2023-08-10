@@ -7,12 +7,6 @@ type Story = StoryObj<typeof Radio>;
 export default {
   title: 'ikke utgitt/Radio',
   component: Radio,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Preview: Story = {

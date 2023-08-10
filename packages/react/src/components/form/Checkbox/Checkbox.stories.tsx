@@ -7,12 +7,6 @@ type Story = StoryObj<typeof Checkbox>;
 export default {
   title: 'ikke utgitt/Checkbox',
   component: Checkbox,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Preview: Story = {

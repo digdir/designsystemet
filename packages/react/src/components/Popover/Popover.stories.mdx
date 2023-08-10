@@ -9,13 +9,8 @@ import { ArgsTable } from '@storybook/addon-docs';
 <Meta
   title='Kjernekomponenter/Popover'
   component={Popover}
-  parameters={{
-    status: {
-      type: 'beta', // 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-      url: 'http://www.url.com/status',
-    },
-  }}
-  argTypes={{
+
+argTypes={{
     trigger: {
       description:
         'En `ReactNode` som brukes til å åpne og lukke popoveren. Fungerer også som ankringspunkt til popoverens posisjon. Denne komponenten må ha en `ref`. Dette er en egenskap som finnes på alle primitive React-komponenter, men dersom det er en egendefinert komponent, må man bruke `React.forwardRef` i definisjonen av komponenten til å sette `ref`-egenskapen på riktig plass.',
