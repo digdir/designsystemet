@@ -56,6 +56,11 @@ const reducer = (state: CheckedNames, action: ReducerAction) => {
 const checkedItems = (items: CheckboxGroupItem[]) =>
   items.filter(({ checked }) => checked).map(({ name }) => name);
 
+/**
+ *
+ * @deprecated
+ * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-checkbox-group--docs Checkbox.Group} component.
+ */
 const CheckboxGroup = ({
   compact,
   description,
