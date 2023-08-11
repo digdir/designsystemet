@@ -34,32 +34,22 @@ type TokenType = {
   lastName: string;
 };
 
-type ListType = {
-  [key: string]: any;
-};
-
 const TokenList = ({ type }: TokenListProps) => {
-  let tokenList: ListType = {};
-
-  if (type === 'color-semantic') {
-    tokenList = color.semantic;
-  } else {
-    tokenList = color.brand;
-  }
-
-  const card = (item: TokenType, index: string) => {
+  const card = (item: TokenType, index: number) => {
     return (
       <div
         className={classes.card}
         key={index}
       >
         <div className={classes.preview}>
+          <TokenColor value={item.value} />
           {type === 'color-brand' && <TokenColor value={item.value} />}
           {type === 'color-semantic' && <TokenColor value={item.value} />}
           {type === 'fontSize' && <TokenFontSize value={item.value} />}
           {type === 'shadow' && <TokenShadow value={item.value} />}
           {type === 'size' && <TokenSize value={item.value} />}
         </div>
+
         <div className={classes.text}>
           <h4 className={classes.title}>
             {capitalizeString(item.lastName)}
@@ -74,70 +64,42 @@ const TokenList = ({ type }: TokenListProps) => {
     );
   };
 
-  return (
-    <div className={classes.tokens}>
-      {Object.keys(tokenList).map((value, index) => (
-        <div key={index}>
-          <h3>{capitalizeString(value)}</h3>
-          {Array.isArray(tokenList[value]) && (
-            <div className={classes.section}>
-              <div className={classes.cards}>
-                {tokenList[value].map((value: TokenType, index: number) =>
-                  card(value, index),
-                )}
-              </div>
-            </div>
-          )}
-          {!Array.isArray(tokenList[value]) && (
-            <div className={classes.section}>
-              {Object.keys(tokenList[value]).map((value2, index2) => (
-                <div
-                  key={index2}
-                  className={cn({
-                    [classes.section2]: Array.isArray(tokenList[value][value2]),
-                  })}
-                >
-                  {Array.isArray(tokenList[value][value2]) && (
-                    <h4>{capitalizeString(value + ' ' + value2)}</h4>
-                  )}
-                  {Array.isArray(tokenList[value][value2]) && (
-                    <div className={classes.cards}>
-                      {tokenList[value][value2].map((item3, index3) =>
-                        card(item3, index3),
-                      )}
-                    </div>
-                  )}
-                  {!Array.isArray(tokenList[value][value2]) && (
-                    <div>
-                      {Object.keys(tokenList[value][value2]).map(
-                        (value3, index3) => (
-                          <div
-                            key={index3}
-                            className={classes.section2}
-                          >
-                            <h4>
-                              {capitalizeString(
-                                value + ' ' + value2 + ' ' + value3,
-                              )}
-                            </h4>
-                            <div className={classes.cards}>
-                              {tokenList[value][value2][value3].map(
-                                (value4, index4) => card(value4, index4),
-                              )}
-                            </div>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  )}
+  type Color = typeof color.semantic;
+  const tokenList: Color = color.semantic;
+
+  const recursive = (object: Color, level: number, name: string) => {
+    return (
+      <div>
+        {Object.keys(object).map((value: string, index: number) => {
+          const token = object[value as keyof Color];
+          const Heading = `h${level === 0 ? 3 : 4}`;
+          console.log(value);
+          name += ' ' + value;
+          level++;
+          return (
+            <div key={index}>
+              <Heading>
+                {capitalizeString(name)} {level}
+              </Heading>
+
+              {Array.isArray(token) && (
+                <div className={classes.section}>
+                  <div className={classes.cards}>
+                    {token.map((value, index: number) =>
+                      card(value as TokenType, index),
+                    )}
+                  </div>
                 </div>
-              ))}
+              )}
+              {!Array.isArray(token) && recursive(token, level, name)}
             </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
+          );
+        })}
+      </div>
+    );
+  };
+
+  return <div className={classes.tokens}>{recursive(tokenList, 0, '')}</div>;
 };
 
 export { TokenList };

@@ -9,6 +9,19 @@ interface ClipboardBtnProps {
   value?: string;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 const ClipboardBtn = ({ text, value = 'Kopier' }: ClipboardBtnProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
 
