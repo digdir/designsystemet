@@ -6,12 +6,6 @@ import { Tabs } from './Tabs';
 export default {
   title: 'Kjernekomponenter/Tabs',
   component: Tabs,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Eksempel: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />;

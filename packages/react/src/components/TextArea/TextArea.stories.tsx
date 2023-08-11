@@ -11,12 +11,6 @@ type Story = StoryObj<typeof TextArea>;
 const meta: Meta = {
   title: 'Kjernekomponenter/TextArea',
   component: TextArea,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 };
 
 export default meta;
