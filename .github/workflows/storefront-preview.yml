@@ -2,9 +2,12 @@ name: Vercel Storefront Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
-on: workflow_dispatch
+on:
+  pull_request:
+    types: [ready_for_review]
 jobs:
   Deploy-Preview:
+    if: ${{ github.event.label.name == '🖥️ storefront' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
