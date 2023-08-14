@@ -15,7 +15,7 @@ export type RadioGroupItem = Omit<
   'checked' | 'error' | 'name' | 'onChange' | 'showLabel' | 'size'
 >;
 
-export interface RadioGroupProps {
+export interface LegacyRadioGroupProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
@@ -32,10 +32,10 @@ export interface RadioGroupProps {
 }
 /**
  *
- * @deprecated
+ * @note
  * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-radio-group--docs Radio.Group} component.
  */
-const RadioGroup = ({
+const LegacyRadioGroup = ({
   description,
   disabled,
   error,
@@ -49,7 +49,7 @@ const RadioGroup = ({
   value,
   variant = 'vertical',
   fieldSetProps,
-}: RadioGroupProps) => {
+}: LegacyRadioGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.value))) {
     throw Error('Each value in the radio group must be unique.');
   }
@@ -107,6 +107,6 @@ const RadioGroup = ({
   );
 };
 
-RadioGroup.displayName = 'RadioGroup';
+LegacyRadioGroup.displayName = 'LegacyRadioGroup';
 
-export { RadioGroup };
+export { LegacyRadioGroup };
