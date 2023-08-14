@@ -3,8 +3,8 @@ import React, { useReducer } from 'react';
 import cn from 'classnames';
 
 import { LegacyCheckbox } from '../LegacyCheckbox';
-import type { FieldSetProps } from '../LegacyFieldSet';
-import { FieldSet } from '../LegacyFieldSet';
+import type { LegacyFieldSetProps } from '../LegacyFieldSet';
+import { LegacyFieldSet } from '../LegacyFieldSet';
 import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../../utils';
 import { usePrevious, useUpdate } from '../../../hooks';
 import type { LegacyCheckboxProps } from '../LegacyCheckbox';
@@ -36,7 +36,7 @@ export interface LegacyCheckboxGroupProps {
   onChange?: (names: CheckedNames) => void;
   presentation?: boolean;
   variant?: 'vertical' | 'horizontal';
-  fieldSetProps?: Partial<FieldSetProps>;
+  fieldSetProps?: Partial<LegacyFieldSetProps>;
 }
 
 type ReducerAction =
@@ -94,7 +94,7 @@ const LegacyCheckboxGroup = ({
   }, [checkedNames, onChange, disabled]);
 
   return (
-    <FieldSet
+    <LegacyFieldSet
       contentClassName={cn(
         classes.checkboxGroup,
         classes[variant],
@@ -130,7 +130,7 @@ const LegacyCheckboxGroup = ({
           presentation={presentation}
         />
       ))}
-    </FieldSet>
+    </LegacyFieldSet>
   );
 };
 

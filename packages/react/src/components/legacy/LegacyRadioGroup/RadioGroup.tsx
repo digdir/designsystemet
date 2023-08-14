@@ -2,8 +2,8 @@ import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
 import { RadioButton } from '../LegacyRadioButton';
-import type { FieldSetProps } from '../LegacyFieldSet';
-import { FieldSet } from '../LegacyFieldSet';
+import type { LegacyFieldSetProps } from '../LegacyFieldSet';
+import { LegacyFieldSet } from '../LegacyFieldSet';
 import { usePrevious, useUpdate } from '../../../hooks';
 import { areItemsUnique } from '../../../utils';
 import type { RadioButtonProps } from '../LegacyRadioButton';
@@ -28,7 +28,7 @@ export interface RadioGroupProps {
   size?: 'small' | 'xsmall';
   value?: string;
   variant?: 'vertical' | 'horizontal';
-  fieldSetProps?: Partial<FieldSetProps>;
+  fieldSetProps?: Partial<LegacyFieldSetProps>;
 }
 /**
  *
@@ -73,7 +73,7 @@ const RadioGroup = ({
     e.target.checked && setCheckedValue(val);
 
   return (
-    <FieldSet
+    <LegacyFieldSet
       description={description}
       disabled={disabled}
       error={error}
@@ -103,7 +103,7 @@ const RadioGroup = ({
           />
         ))}
       </div>
-    </FieldSet>
+    </LegacyFieldSet>
   );
 };
 

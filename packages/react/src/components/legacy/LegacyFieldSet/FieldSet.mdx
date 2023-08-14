@@ -4,11 +4,14 @@ import * as FieldSetStories from './FieldSet.stories';
 
 <Meta of={FieldSetStories} />
 
-# FieldSet
+# LegacyFieldSet
 
-<Information text='beta' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Fieldset](/docs/ikke-utgitt-fieldset--docs) komponent.**'
+/>
 
-`FieldSet` brukes til å gruppere innhold i et skjema.
+`LegacyFieldSet` brukes til å gruppere innhold i et skjema.
 
 ## Egenskaper
 
@@ -26,10 +29,10 @@ feltene i gruppen bli deaktivert.
 ```tsx
 import React from 'react';
 import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
-import { FieldSet, TextField } from '@digdir/design-system-react';
+import { LegacyFieldSet, TextField } from '@digdir/design-system-react';
 
 export const Component = () => (
-  <FieldSet
+  <LegacyFieldSet
     legend='Personlig informasjon'
     description='Oppgi navn og fødselsdato.'
   >
@@ -38,7 +41,7 @@ export const Component = () => (
       type='date'
       label='Fødselsdato'
     />
-  </FieldSet>
+  </LegacyFieldSet>
 );
 ```
 

@@ -2,10 +2,10 @@ import React, { createRef } from 'react';
 import type { RefObject } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { FieldSetProps } from './FieldSet';
-import { FieldSet } from './FieldSet';
+import type { LegacyFieldSetProps } from './FieldSet';
+import { LegacyFieldSet } from './FieldSet';
 
-const defaultProps: FieldSetProps = {
+const defaultProps: LegacyFieldSetProps = {
   children: 'Some content.',
 };
 
@@ -108,16 +108,16 @@ describe('FieldSet', () => {
 });
 
 const render = (
-  props: Partial<FieldSetProps> = {},
+  props: Partial<LegacyFieldSetProps> = {},
   ref?: RefObject<HTMLFieldSetElement>,
 ) => {
   const allProps = { ...defaultProps, ...props };
   return renderRtl(
-    <FieldSet
+    <LegacyFieldSet
       {...allProps}
       ref={ref}
     >
       {allProps.children}
-    </FieldSet>,
+    </LegacyFieldSet>,
   );
 };
