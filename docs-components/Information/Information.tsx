@@ -22,9 +22,9 @@ const texts: Record<Texts, { description: string; title?: string }> = {
       'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring.\n\n Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
   },
   deprecated: {
-    title: 'Utgår',
+    title: 'Avviklet',
     description:
-      'Komponenten utgår fordi den ikke er i målgruppen lenger eller erstattet av en eller flere nye komponenter.',
+      'Komponenten er avviklet fordi den ikke er i målgruppen lenger eller erstattet av en eller flere nye komponenter.',
   },
 };
 
