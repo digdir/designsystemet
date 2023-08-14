@@ -7,7 +7,7 @@ on:
     types: [labeled]
 jobs:
   Deploy-Preview:
-    if: ${{ github.event.label.name == 'Storefront' }}
+    if: ${{ github.event.label.name == 'storefront' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
