@@ -1,13 +1,10 @@
 import { Meta, Canvas } from '@storybook/addon-docs';
 import { Information, TokensTable } from '../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
-import * as CheckboxStories from "./Checkbox.stories";
-import {
-  Controls,
-  Primary
-} from "@storybook/blocks";
+import * as CheckboxStories from './Checkbox.stories';
+import { Controls, Primary } from '@storybook/blocks';
 
-<Meta of={CheckboxStories}/>
+<Meta of={CheckboxStories} />
 
 # Checkbox
 
@@ -17,8 +14,8 @@ import {
 
 ## Props
 
-<Primary/>
-<Controls/>
+<Primary />
+<Controls />
 
 ## Bruk
 
@@ -34,9 +31,9 @@ export const Component = () => {
   const [checked, setChecked] = useState<boolean>(false);
   return (
     <Checkbox
-      label="Jeg godtar vilkårene"
+      label='Jeg godtar vilkårene'
       checked={checked}
-      onChange={event => setChecked(event.target.checked)}
+      onChange={(event) => setChecked(event.target.checked)}
     />
   );
 };
@@ -46,26 +43,26 @@ export const Component = () => {
 
 Sjekkboksene kan ha flere forskjellige statuser:
 
-<Canvas of={CheckboxStories.Normal}/>
-<Canvas of={CheckboxStories.Avkrysset}/>
-<Canvas of={CheckboxStories.MedHjelpetekst}/>
-<Canvas of={CheckboxStories.Feil}/>
-<Canvas of={CheckboxStories.Kompakt}/>
-<Canvas of={CheckboxStories.Deaktivert}/>
+<Canvas of={CheckboxStories.Normal} />
+<Canvas of={CheckboxStories.Avkrysset} />
+<Canvas of={CheckboxStories.MedHjelpetekst} />
+<Canvas of={CheckboxStories.Feil} />
+<Canvas of={CheckboxStories.Kompakt} />
+<Canvas of={CheckboxStories.Deaktivert} />
 
 Man kan også velge å legge til en beskrivelse:
 
-<Canvas of={CheckboxStories.MedBeskrivelse}/>
+<Canvas of={CheckboxStories.MedBeskrivelse} />
 
 Sjekkboksen blir midtjustert med første linje selv om teksten går over flere linjer:
 
-<Canvas of={CheckboxStories.MedLangTekst}/>
+<Canvas of={CheckboxStories.MedLangTekst} />
 
 I noen tilfeller kan det være nødvendig å vise en sjekkboks uten tekst, for eksempel i en tabell.
 Man må da sørge for at sjekkboksen likevel har en tekst som er tilgjengelig for skjermlesere.
 Dette kan man gjøre ved å sette `label`-attributten på vanlig måte og sette `hideLabel` til `true`.
 
-<Canvas of={CheckboxStories.MedSkjultTekst}/>
+<Canvas of={CheckboxStories.MedSkjultTekst} />
 
 ## Egenskaper
 
