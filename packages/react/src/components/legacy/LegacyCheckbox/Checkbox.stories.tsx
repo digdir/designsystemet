@@ -6,7 +6,7 @@ import { LegacyCheckbox } from './Checkbox';
 type Story = StoryObj<typeof LegacyCheckbox>;
 
 export default {
-  title: 'Utgår/Checkbox',
+  title: 'Utgår/LegacyCheckbox',
   component: LegacyCheckbox,
 } as Meta;
 

@@ -6,7 +6,7 @@ import { TextField } from '../../TextField';
 import { LegacyFieldSet } from './FieldSet';
 
 export default {
-  title: 'Utgår/FieldSet',
+  title: 'Utgår/LegacyFieldSet',
   component: LegacyFieldSet,
 } as Meta;
 
