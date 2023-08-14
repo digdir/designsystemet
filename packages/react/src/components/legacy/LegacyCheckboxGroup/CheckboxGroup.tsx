@@ -11,7 +11,7 @@ import type { LegacyCheckboxProps } from '../LegacyCheckbox';
 
 import classes from './CheckboxGroup.module.css';
 
-export type CheckboxGroupItem = Pick<
+export type LegacyCheckboxGroupItem = Pick<
   LegacyCheckboxProps,
   | 'checked'
   | 'description'
@@ -25,13 +25,13 @@ export type CheckboxGroupItem = Pick<
 
 export type CheckedNames = string[];
 
-export interface CheckboxGroupProps {
+export interface LegacyCheckboxGroupProps {
   compact?: boolean;
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
   helpText?: ReactNode;
-  items: CheckboxGroupItem[];
+  items: LegacyCheckboxGroupItem[];
   legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;
   presentation?: boolean;
@@ -53,10 +53,10 @@ const reducer = (state: CheckedNames, action: ReducerAction) => {
       return action.state;
   }
 };
-const checkedItems = (items: CheckboxGroupItem[]) =>
+const checkedItems = (items: LegacyCheckboxGroupItem[]) =>
   items.filter(({ checked }) => checked).map(({ name }) => name);
 
-const CheckboxGroup = ({
+const LegacyCheckboxGroup = ({
   compact,
   description,
   disabled,
@@ -68,7 +68,7 @@ const CheckboxGroup = ({
   presentation,
   variant = 'vertical',
   fieldSetProps,
-}: CheckboxGroupProps) => {
+}: LegacyCheckboxGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.name))) {
     throw Error('Each name in the checkbox group must be unique.');
   }
@@ -134,6 +134,6 @@ const CheckboxGroup = ({
   );
 };
 
-CheckboxGroup.displayName = 'CheckboxGroup';
+LegacyCheckboxGroup.displayName = 'LegacyCheckboxGroup';
 
-export { CheckboxGroup };
+export { LegacyCheckboxGroup };
