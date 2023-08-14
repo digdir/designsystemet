@@ -21,8 +21,8 @@ void registerTransforms(StyleDictionary);
 const prettierConfig = path.resolve('./../../prettier.config.js');
 const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
 
-type Brands = 'Altinn' | 'Digdir' | 'Tilsynet';
-const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn'];
+type Brands = 'Altinn' | 'Digdir' | 'Tilsynet' | 'Brreg';
+const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'];
 const prefix = 'fds';
 const basePxFontSize = 16;
 let fontScale: TransformedTokens;
