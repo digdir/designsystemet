@@ -2,9 +2,7 @@ name: Vercel Storefront Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
-on:
-  pull_request:
-    types: [labeled]
+on: workflow_dispatch
 jobs:
   Deploy-Preview:
     if: ${{ github.event.label.name == '🖥️ storefront' }}
