@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 import React, { useReducer } from 'react';
 import cn from 'classnames';
 
-import { Checkbox } from '../Checkbox';
-import type { FieldSetProps } from '../FieldSet';
-import { FieldSet } from '../FieldSet';
-import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../utils';
-import { usePrevious, useUpdate } from '../../hooks';
-import type { CheckboxProps } from '../Checkbox';
+import { Checkbox } from '../LegacyCheckbox';
+import type { FieldSetProps } from '../LegacyFieldSet';
+import { FieldSet } from '../LegacyFieldSet';
+import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../../utils';
+import { usePrevious, useUpdate } from '../../../hooks';
+import type { CheckboxProps } from '../LegacyCheckbox';
 
 import classes from './CheckboxGroup.module.css';
 

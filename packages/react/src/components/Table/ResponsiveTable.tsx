@@ -2,7 +2,7 @@ import React from 'react';
 import * as tokens from '@altinn/figma-design-tokens';
 
 import { useMediaQuery } from '../../hooks';
-import { RadioButton } from '../RadioButton';
+import { RadioButton } from '../legacy/LegacyRadioButton';
 
 import type { SortProps, SortDirection } from './utils';
 import { Table } from './Table';

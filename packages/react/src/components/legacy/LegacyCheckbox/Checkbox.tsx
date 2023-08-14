@@ -2,7 +2,7 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import React from 'react';
 import cn from 'classnames';
 
-import { CheckboxRadioTemplate } from '../../_CheckboxRadioTemplate';
+import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
 import classes from './Checkbox.module.css';
 

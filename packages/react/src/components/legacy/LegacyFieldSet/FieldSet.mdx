@@ -1,13 +1,8 @@
-import {
-  Meta,
-  Canvas,
-  Controls,
-  Primary,
-} from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../../docs-components';
 import * as FieldSetStories from './FieldSet.stories';
 
-<Meta of={FieldSetStories}/>
+<Meta of={FieldSetStories} />
 
 # FieldSet
 
@@ -23,8 +18,8 @@ ved å bruke `helpText`-attributten. Man kan også vise en feilmelding relatert 
 gruppen ved å bruke `error`-attributten. Setter man `disabled` til `true`, vil alle
 feltene i gruppen bli deaktivert.
 
-<Primary/>
-<Controls/>
+<Primary />
+<Controls />
 
 ## Bruk
 
@@ -33,7 +28,7 @@ import React from 'react';
 import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
 import { FieldSet, TextField } from '@digdir/design-system-react';
 
-export const Component = () =>  (
+export const Component = () => (
   <FieldSet
     legend='Personlig informasjon'
     description='Oppgi navn og fødselsdato.'
@@ -49,4 +44,4 @@ export const Component = () =>  (
 
 ## Eksempel
 
-<Canvas of={FieldSetStories.Eksempel}/>
+<Canvas of={FieldSetStories.Eksempel} />

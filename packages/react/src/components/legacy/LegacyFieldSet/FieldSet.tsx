@@ -2,7 +2,7 @@ import type { FieldsetHTMLAttributes, ForwardedRef, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { ErrorMessage, HelpText } from '../';
+import { ErrorMessage, HelpText } from '../..';
 
 import classes from './FieldSet.module.css';
 
