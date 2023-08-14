@@ -2,7 +2,7 @@ import React from 'react';
 import * as tokens from '@altinn/figma-design-tokens';
 
 import { useMediaQuery } from '../../hooks';
-import { RadioButton } from '../legacy/LegacyRadioButton';
+import { LegacyRadioButton } from '../legacy/LegacyRadioButton';
 
 import type { SortProps, SortDirection } from './utils';
 import { Table } from './Table';
@@ -87,7 +87,7 @@ function MobileTable<T>({ config }: ResponsiveTableProps<T>) {
             >
               {rowSelection && (
                 <TableCell radiobutton={true}>
-                  <RadioButton
+                  <LegacyRadioButton
                     name={value}
                     onChange={() => rowSelection.onSelectionChange(row)}
                     value={value}
@@ -190,14 +190,14 @@ function LaptopTable<T>({ config }: ResponsiveTableProps<T>) {
             >
               {rowSelection && (
                 <TableCell radiobutton={true}>
-                  <RadioButton
+                  <LegacyRadioButton
                     name={value}
                     onChange={() => rowSelection.onSelectionChange(row)}
                     value={value}
                     checked={value === selectedRowJson}
                     label={value}
                     hideLabel={true}
-                  ></RadioButton>
+                  ></LegacyRadioButton>
                 </TableCell>
               )}
               {columns.map((column) => {

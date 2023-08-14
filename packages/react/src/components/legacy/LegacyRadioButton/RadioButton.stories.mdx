@@ -1,12 +1,12 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-import { RadioButton } from './index';
+import { LegacyRadioButton } from './index';
 import { RadioButtonSize } from '../../../types/enums';
 import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
 <Meta
-  title='Utgår/RadioButton'
-  component={RadioButton}
+  title='Utgår/LegacyRadioButton'
+  component={LegacyRadioButton}
   argTypes={{
     checked: {
       description: 'Trykker inn radioknappen.',
@@ -75,16 +75,19 @@ export const defaultArgs = {
   onChange: () => {},
 };
 export const Template = (args = {}) => (
-  <RadioButton {...{ ...defaultArgs, ...args }} />
+  <LegacyRadioButton {...{ ...defaultArgs, ...args }} />
 );
 
-# RadioButton
+# LegacyRadioButton
 
-<Information text='beta' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Radio](/docs/ikke-utgitt-radio--docs) komponent.**'
+/>
 
-`RadioButton` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer.
+`LegacyRadioButton` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer.
 Vi anbefaler å bruke `RadioGroup` hvis man har behov for radioknapper,
-men `RadioButton` kan brukes hvis `RadioGruoup` ikke oppfyller kriteriene til brukertilfellet som skal løses.
+men `LegacyRadioButton` kan brukes hvis `RadioGruoup` ikke oppfyller kriteriene til brukertilfellet som skal løses.
 Hvis det er tilfellet, kan man også vurdere å gi et bidrag til designsystemet :-)
 
 ## Eksempler
@@ -229,7 +232,7 @@ Dette kan man gjøre ved å sette `label`-attributten på vanlig måte og sette 
 
 ## Egenskaper
 
-`RadioButton` er en kontrollert komponent; det vil si at det er opp til foreldrenoden å holde styr på om knappen er trykket inn eller ikke.
+`LegacyRadioButton` er en kontrollert komponent; det vil si at det er opp til foreldrenoden å holde styr på om knappen er trykket inn eller ikke.
 Dette gjøres ved å sette `checked`-attributten til `true` eller `false` idet `onChange`-funksjonen blir kalt.
 
 <ArgsTable story='Normal' />

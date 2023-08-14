@@ -1,17 +1,17 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
-import { RadioButton } from '../LegacyRadioButton';
+import { LegacyRadioButton } from '../LegacyRadioButton';
 import type { LegacyFieldSetProps } from '../LegacyFieldSet';
 import { LegacyFieldSet } from '../LegacyFieldSet';
 import { usePrevious, useUpdate } from '../../../hooks';
 import { areItemsUnique } from '../../../utils';
-import type { RadioButtonProps } from '../LegacyRadioButton';
+import type { LegacyRadioButtonProps } from '../LegacyRadioButton';
 
 import classes from './RadioGroup.module.css';
 
 export type RadioGroupItem = Omit<
-  RadioButtonProps,
+  LegacyRadioButtonProps,
   'checked' | 'error' | 'name' | 'onChange' | 'showLabel' | 'size'
 >;
 
@@ -89,7 +89,7 @@ const RadioGroup = ({
         role={presentation ? undefined : 'radiogroup'}
       >
         {items.map((radio) => (
-          <RadioButton
+          <LegacyRadioButton
             {...radio}
             checked={radio.value === checkedValue}
             disabled={disabled || radio.disabled}
