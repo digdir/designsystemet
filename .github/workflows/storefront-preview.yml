@@ -3,14 +3,11 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
 on:
-  push:
-    branches-ignore:
-      - main
-      - github-pages-deployment
-    paths:
-      - 'storefront/**'
+  pull_request:
+    types: [ready_for_review]
 jobs:
   Deploy-Preview:
+    if: ${{ github.event.label.name == 'Storefront' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -37,5 +34,5 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ steps.findPr.outputs.pr }}
-          body: Storefront preview deployment is available at  ${{ steps.deploy.outputs.url }}
+          body: Storefront preview deployment is available at ${{ steps.deploy.outputs.url }}
           reactions: rocket, eyes
