@@ -6,11 +6,13 @@ import { Controls, Primary } from '@storybook/blocks';
 
 <Meta of={CheckboxStories} />
 
-# Checkbox
+# LegacyCheckbox
 
-<Information text='beta' />
+<Information text='deprecated' description='**Denne komponenten er erstattet av ny [Checkbox](/docs/ikke-utgitt-checkbox--docs) komponent.**'>
 
-`Checkbox` er en boks som brukeren kan krysse av i for bolske verdier. Den kan også brukes i en gruppe hvor brukeren kan velge flere verdier.
+</Information>
+
+`LegacyCheckbox` er en boks som brukeren kan krysse av i for bolske verdier. Den kan også brukes i en gruppe hvor brukeren kan velge flere verdier.
 
 ## Props
 
@@ -24,13 +26,13 @@ Det vil si at koden på utsiden må sørge for at `checked`-attributten blir sat
 
 ```tsx
 import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
-import { Checkbox } from '@digdir/design-system-react';
+import { LegacyCheckbox } from '@digdir/design-system-react';
 import React, { useState } from 'react';
 
 export const Component = () => {
   const [checked, setChecked] = useState<boolean>(false);
   return (
-    <Checkbox
+    <LegacyCheckbox
       label='Jeg godtar vilkårene'
       checked={checked}
       onChange={(event) => setChecked(event.target.checked)}
@@ -66,7 +68,7 @@ Dette kan man gjøre ved å sette `label`-attributten på vanlig måte og sette 
 
 ## Egenskaper
 
-`Checkbox` er en kontrollert komponent; det vil si at det er opp til foreldrenoden å holde styr på om sjekkboksen er avkrysset eller ikke.
+`LegacyCheckbox` er en kontrollert komponent; det vil si at det er opp til foreldrenoden å holde styr på om sjekkboksen er avkrysset eller ikke.
 Dette gjøres ved å sette `checked`-attributten til `true` eller `false` idet `onChange`-funksjonen blir kalt.
 
 <ArgsTable story='Normal' />
