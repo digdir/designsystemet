@@ -59,7 +59,11 @@ export interface CheckboxProps {
   /** Set to `true` to apply read-only mode. */
   readOnly?: boolean;
 }
-
+/**
+ *
+ * @deprecated
+ * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-checkbox--docs Checkbox} component.
+ */
 const Checkbox = ({
   checkboxId,
   checked = false,

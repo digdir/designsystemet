@@ -34,20 +34,6 @@ const viewports: Viewport[] = metadata.tokenSetOrder
 const preview: Preview = {
   decorators: [cssVariablesTheme],
   parameters: {
-    status: {
-      statuses: {
-        new: {
-          background: '#0000ff',
-          color: '#ffffff',
-          description: 'This component is stable and released',
-        },
-        beta: {
-          background: '#6544c5',
-          color: '#ffffff',
-          description: 'This component is stable and released',
-        },
-      },
-    },
     cssVariables: {
       files: {
         Altinn: altinn,

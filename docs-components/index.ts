@@ -6,6 +6,5 @@ export {
   TableCellSpace,
 } from './Table/TableCells/TableCells';
 export { Changelog } from './Changelog/Changelog';
-export { ComponentOverview } from './ComponentOverview/component-overview';
 export { Stack } from './Stack/Stack';
 export * from './Information/Information';
