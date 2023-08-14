@@ -4,7 +4,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
 on:
   pull_request:
-    types: [ready_for_review]
+    types: [labeled]
 jobs:
   Deploy-Preview:
     if: ${{ github.event.label.name == 'Storefront' }}
