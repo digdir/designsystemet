@@ -4,6 +4,7 @@ import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
 import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/digdir/tokens.css';
 import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/tilsynet/tokens.css';
+import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/brreg/tokens.css';
 
 import '@altinn/figma-design-tokens/dist/tokens.css';
 import customTheme from './customTheme';
@@ -39,6 +40,7 @@ const preview: Preview = {
         Altinn: altinn,
         Digdir: digdir,
         Tilsynet: tilsynet,
+        Brønnøysundregistrene: brreg,
       },
       defaultTheme: 'Digdir',
     },
