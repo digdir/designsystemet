@@ -2,8 +2,8 @@ import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { RadioGroupProps } from './RadioGroup';
-import { RadioGroup } from './RadioGroup';
+import type { LegacyRadioGroupProps } from './RadioGroup';
+import { LegacyRadioGroup } from './RadioGroup';
 
 const user = userEvent.setup();
 
@@ -14,7 +14,7 @@ const items = [
   { label: 'Goo goo', value: 'goo' },
   { label: 'Blah blah', value: 'blah' },
 ];
-const defaultProps: RadioGroupProps = {
+const defaultProps: LegacyRadioGroupProps = {
   name,
   items,
 };
@@ -97,7 +97,7 @@ describe('RadioGroup', () => {
     const { value } = items[valueIndex];
     const onChange = jest.fn();
     const { rerender } = render({ value, onChange });
-    rerender(<RadioGroup {...{ ...defaultProps, value, onChange }} />);
+    rerender(<LegacyRadioGroup {...{ ...defaultProps, value, onChange }} />);
     expect(onChange).not.toHaveBeenCalled();
   });
 
@@ -106,7 +106,7 @@ describe('RadioGroup', () => {
     const { rerender } = render({ value: items[1].value, onChange });
     const valueIndex = 2;
     const { value } = items[valueIndex];
-    rerender(<RadioGroup {...{ ...defaultProps, value, onChange }} />);
+    rerender(<LegacyRadioGroup {...{ ...defaultProps, value, onChange }} />);
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(value);
   });
@@ -211,9 +211,9 @@ describe('RadioGroup', () => {
   });
 });
 
-const render = (props?: Partial<RadioGroupProps>) =>
+const render = (props?: Partial<LegacyRadioGroupProps>) =>
   renderRtl(
-    <RadioGroup
+    <LegacyRadioGroup
       {...defaultProps}
       {...props}
     />,

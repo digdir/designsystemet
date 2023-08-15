@@ -1,21 +1,21 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
-import { RadioButton } from '../RadioButton';
-import type { FieldSetProps } from '../FieldSet';
-import { FieldSet } from '../FieldSet';
-import { usePrevious, useUpdate } from '../../hooks';
-import { areItemsUnique } from '../../utils';
-import type { RadioButtonProps } from '../RadioButton';
+import { LegacyRadioButton } from '../LegacyRadioButton';
+import type { LegacyFieldSetProps } from '../LegacyFieldSet';
+import { LegacyFieldSet } from '../LegacyFieldSet';
+import { usePrevious, useUpdate } from '../../../hooks';
+import { areItemsUnique } from '../../../utils';
+import type { LegacyRadioButtonProps } from '../LegacyRadioButton';
 
 import classes from './RadioGroup.module.css';
 
 export type RadioGroupItem = Omit<
-  RadioButtonProps,
+  LegacyRadioButtonProps,
   'checked' | 'error' | 'name' | 'onChange' | 'showLabel' | 'size'
 >;
 
-export interface RadioGroupProps {
+export interface LegacyRadioGroupProps {
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
@@ -28,14 +28,14 @@ export interface RadioGroupProps {
   size?: 'small' | 'xsmall';
   value?: string;
   variant?: 'vertical' | 'horizontal';
-  fieldSetProps?: Partial<FieldSetProps>;
+  fieldSetProps?: Partial<LegacyFieldSetProps>;
 }
 /**
  *
- * @deprecated
+ * @note
  * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-radio-group--docs Radio.Group} component.
  */
-const RadioGroup = ({
+const LegacyRadioGroup = ({
   description,
   disabled,
   error,
@@ -49,7 +49,7 @@ const RadioGroup = ({
   value,
   variant = 'vertical',
   fieldSetProps,
-}: RadioGroupProps) => {
+}: LegacyRadioGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.value))) {
     throw Error('Each value in the radio group must be unique.');
   }
@@ -73,7 +73,7 @@ const RadioGroup = ({
     e.target.checked && setCheckedValue(val);
 
   return (
-    <FieldSet
+    <LegacyFieldSet
       description={description}
       disabled={disabled}
       error={error}
@@ -89,7 +89,7 @@ const RadioGroup = ({
         role={presentation ? undefined : 'radiogroup'}
       >
         {items.map((radio) => (
-          <RadioButton
+          <LegacyRadioButton
             {...radio}
             checked={radio.value === checkedValue}
             disabled={disabled || radio.disabled}
@@ -103,10 +103,10 @@ const RadioGroup = ({
           />
         ))}
       </div>
-    </FieldSet>
+    </LegacyFieldSet>
   );
 };
 
-RadioGroup.displayName = 'RadioGroup';
+LegacyRadioGroup.displayName = 'LegacyRadioGroup';
 
-export { RadioGroup };
+export { LegacyRadioGroup };

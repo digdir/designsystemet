@@ -1,12 +1,12 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-import { CheckboxGroup } from './index';
-import { CheckboxGroupVariant } from '../../types/enums';
-import { Information, TokensTable } from '../../../../../docs-components';
+import { LegacyCheckboxGroup } from './index';
+import { CheckboxGroupVariant } from '../../../types/enums';
+import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
 <Meta
-  title='Utgår/CheckboxGroup'
-  component={CheckboxGroup}
+  title='Avviklet/LegacyCheckboxGroup'
+  component={LegacyCheckboxGroup}
   argTypes={{
     items: {
       description: 'Liste over valg som skal vises.',
@@ -77,14 +77,17 @@ export const defaultArgs = {
   variant: CheckboxGroupVariant.Vertical,
 };
 export const Template = (args = {}) => (
-  <CheckboxGroup {...{ ...defaultArgs, ...args }} />
+  <LegacyCheckboxGroup {...{ ...defaultArgs, ...args }} />
 );
 
-# CheckboxGroup
+# LegacyCheckboxGroup
 
-<Information text='beta' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Checkbox.Group](/docs/ikke-utgitt-checkbox--docs#checkboxgroup) komponent.**'
+/>
 
-`CheckboxGroup` er en gruppe med sjekkbokser som gir brukeren mulighet til å velge flere verdier i en liste.
+`LegacyCheckboxGroup` er en gruppe med sjekkbokser som gir brukeren mulighet til å velge flere verdier i en liste.
 
 ## Eksempler
 

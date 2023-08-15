@@ -4,8 +4,8 @@ import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { RadioButton } from './';
-import type { RadioButtonProps } from './';
+import { LegacyRadioButton } from './';
+import type { LegacyRadioButtonProps } from './';
 
 const user = userEvent.setup();
 
@@ -13,7 +13,7 @@ const user = userEvent.setup();
 const onChange = jest.fn();
 const name = 'radio-ga-ga';
 const value = 'radio-goo-goo';
-const defaultProps: RadioButtonProps = {
+const defaultProps: LegacyRadioButtonProps = {
   onChange,
   name,
   value,
@@ -187,13 +187,13 @@ describe('RadioButton', () => {
   });
 });
 
-const render = (props: Partial<RadioButtonProps> = {}) => {
+const render = (props: Partial<LegacyRadioButtonProps> = {}) => {
   const allProps = { ...defaultProps, ...props };
-  return renderRtl(<RadioButton {...allProps} />);
+  return renderRtl(<LegacyRadioButton {...allProps} />);
 };
 
 const renderAndGetWrapper = (
-  props: Partial<RadioButtonProps> = {},
+  props: Partial<LegacyRadioButtonProps> = {},
 ): Element => {
   const { container } = render(props);
   const wrapper = container.querySelector('.radio');

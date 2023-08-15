@@ -2,11 +2,11 @@ import type { FieldsetHTMLAttributes, ForwardedRef, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { ErrorMessage, HelpText } from '../';
+import { ErrorMessage, HelpText } from '../..';
 
 import classes from './FieldSet.module.css';
 
-export type FieldSetProps = {
+export type LegacyFieldSetProps = {
   /** Class name that is applied to the content within the field set. */
   contentClassName?: string;
 
@@ -37,10 +37,10 @@ export type FieldSetProps = {
 
 /**
  *
- * @deprecated
+ * @note
  * Will be replaced by new Fieldset component.
  */
-const FieldSet = forwardRef<HTMLFieldSetElement, FieldSetProps>(
+const LegacyFieldSet = forwardRef<HTMLFieldSetElement, LegacyFieldSetProps>(
   (
     {
       children,
@@ -89,6 +89,6 @@ const FieldSet = forwardRef<HTMLFieldSetElement, FieldSetProps>(
   ),
 );
 
-FieldSet.displayName = 'FieldSet';
+LegacyFieldSet.displayName = 'LegacyFieldSet';
 
-export { FieldSet };
+export { LegacyFieldSet };

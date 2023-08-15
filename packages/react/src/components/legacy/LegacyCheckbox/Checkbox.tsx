@@ -6,7 +6,7 @@ import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
 import classes from './Checkbox.module.css';
 
-export interface CheckboxProps {
+export interface LegacyCheckboxProps {
   /**
    * An ID that will be applied to the ID attribute of the checkbox element.
    * It will be automatically generated to a random value if not set.
@@ -60,11 +60,9 @@ export interface CheckboxProps {
   readOnly?: boolean;
 }
 /**
- *
- * @deprecated
- * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-checkbox--docs Checkbox} component.
+ * @note Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-checkbox--docs Checkbox} component.
  */
-const Checkbox = ({
+const LegacyCheckbox = ({
   checkboxId,
   checked = false,
   compact = false,
@@ -78,7 +76,7 @@ const Checkbox = ({
   onChange,
   presentation = false,
   readOnly = false,
-}: CheckboxProps) => (
+}: LegacyCheckboxProps) => (
   <CheckboxRadioTemplate
     checked={checked}
     className={cn(
@@ -108,6 +106,6 @@ const Checkbox = ({
   </CheckboxRadioTemplate>
 );
 
-Checkbox.displayName = 'Checkbox';
+LegacyCheckbox.displayName = 'LegacyCheckbox';
 
-export { Checkbox };
+export { LegacyCheckbox };

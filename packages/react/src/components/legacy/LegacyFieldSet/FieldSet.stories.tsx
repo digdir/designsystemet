@@ -1,17 +1,17 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { TextField } from '../TextField';
+import { TextField } from '../../TextField';
 
-import { FieldSet } from './FieldSet';
+import { LegacyFieldSet } from './FieldSet';
 
 export default {
-  title: 'Utgår/FieldSet',
-  component: FieldSet,
+  title: 'Avviklet/LegacyFieldSet',
+  component: LegacyFieldSet,
 } as Meta;
 
-export const Eksempel: StoryFn<typeof FieldSet> = (args) => (
-  <FieldSet {...args}>
+export const Eksempel: StoryFn<typeof LegacyFieldSet> = (args) => (
+  <LegacyFieldSet {...args}>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <TextField label='Navn' />
       <TextField
@@ -19,7 +19,7 @@ export const Eksempel: StoryFn<typeof FieldSet> = (args) => (
         label='Fødselsdato'
       />
     </div>
-  </FieldSet>
+  </LegacyFieldSet>
 );
 
 Eksempel.args = {

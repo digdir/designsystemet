@@ -7,8 +7,8 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { forwardRef, useId } from 'react';
 import cn from 'classnames';
 
-import { HelpText } from '../HelpText';
-import utilityClasses from '../../utils/utility.module.css';
+import { HelpText } from '../../HelpText';
+import utilityClasses from '../../../utils/utility.module.css';
 
 import classes from './CheckboxRadioTemplate.module.css';
 

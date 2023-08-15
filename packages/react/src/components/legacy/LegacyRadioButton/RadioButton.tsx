@@ -6,7 +6,7 @@ import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
 import classes from './RadioButton.module.css';
 
-export interface RadioButtonProps {
+export interface LegacyRadioButtonProps {
   checked?: boolean;
   className?: string;
   description?: ReactNode;
@@ -25,10 +25,10 @@ export interface RadioButtonProps {
 
 /**
  *
- * @deprecated
+ * @note
  * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-radio--docs Radio} component.
  */
-const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
+const LegacyRadioButton = forwardRef<HTMLInputElement, LegacyRadioButtonProps>(
   (
     {
       checked,
@@ -77,6 +77,6 @@ const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ),
 );
 
-RadioButton.displayName = 'RadioButton';
+LegacyRadioButton.displayName = 'LegacyRadioButton';
 
-export { RadioButton };
+export { LegacyRadioButton };

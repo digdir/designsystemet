@@ -1,12 +1,12 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-import { RadioGroup } from './index';
-import { RadioGroupSize, RadioGroupVariant } from '../../types/enums';
-import { Information, TokensTable } from '../../../../../docs-components';
+import { LegacyRadioGroup } from './index';
+import { RadioGroupSize, RadioGroupVariant } from '../../../types/enums';
+import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
 <Meta
-  title='Utgår/RadioGroup'
-  component={RadioGroup}
+  title='Avviklet/LegacyRadioGroup'
+  component={LegacyRadioGroup}
   argTypes={{
     items: {
       description: 'Liste over valg som skal vises.',
@@ -77,14 +77,17 @@ export const defaultArgs = {
   name: 'favorittiskrem',
 };
 export const Template = (args = {}) => (
-  <RadioGroup {...{ ...defaultArgs, ...args }} />
+  <LegacyRadioGroup {...{ ...defaultArgs, ...args }} />
 );
 
-# RadioGroup
+# LegacyRadioGroup
 
-<Information text='beta' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Radio.Group](/docs/ikke-utgitt-radio--docs#radiogroup) komponent.**'
+/>
 
-`RadioGroup` er en gruppe med radioknapper som gir brukeren mulighet til å velge ett av flere alternativer.
+`LegacyRadioGroup` er en gruppe med radioknapper som gir brukeren mulighet til å velge ett av flere alternativer.
 Den oppfører seg på samme måte som kanalknapper på en radio, hvorav navnet.
 Kun én knapp kan være trykket inn av gangen.
 

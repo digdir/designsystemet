@@ -2,17 +2,17 @@ import type { ReactNode } from 'react';
 import React, { useReducer } from 'react';
 import cn from 'classnames';
 
-import { Checkbox } from '../Checkbox';
-import type { FieldSetProps } from '../FieldSet';
-import { FieldSet } from '../FieldSet';
-import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../utils';
-import { usePrevious, useUpdate } from '../../hooks';
-import type { CheckboxProps } from '../Checkbox';
+import { LegacyCheckbox } from '../LegacyCheckbox';
+import type { LegacyFieldSetProps } from '../LegacyFieldSet';
+import { LegacyFieldSet } from '../LegacyFieldSet';
+import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../../utils';
+import { usePrevious, useUpdate } from '../../../hooks';
+import type { LegacyCheckboxProps } from '../LegacyCheckbox';
 
 import classes from './CheckboxGroup.module.css';
 
-export type CheckboxGroupItem = Pick<
-  CheckboxProps,
+export type LegacyCheckboxGroupItem = Pick<
+  LegacyCheckboxProps,
   | 'checked'
   | 'description'
   | 'disabled'
@@ -21,22 +21,22 @@ export type CheckboxGroupItem = Pick<
   | 'helpText'
   | 'hideLabel'
 > &
-  Required<Pick<CheckboxProps, 'name'>>;
+  Required<Pick<LegacyCheckboxProps, 'name'>>;
 
 export type CheckedNames = string[];
 
-export interface CheckboxGroupProps {
+export interface LegacyCheckboxGroupProps {
   compact?: boolean;
   description?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
   helpText?: ReactNode;
-  items: CheckboxGroupItem[];
+  items: LegacyCheckboxGroupItem[];
   legend?: ReactNode;
   onChange?: (names: CheckedNames) => void;
   presentation?: boolean;
   variant?: 'vertical' | 'horizontal';
-  fieldSetProps?: Partial<FieldSetProps>;
+  fieldSetProps?: Partial<LegacyFieldSetProps>;
 }
 
 type ReducerAction =
@@ -53,15 +53,10 @@ const reducer = (state: CheckedNames, action: ReducerAction) => {
       return action.state;
   }
 };
-const checkedItems = (items: CheckboxGroupItem[]) =>
+const checkedItems = (items: LegacyCheckboxGroupItem[]) =>
   items.filter(({ checked }) => checked).map(({ name }) => name);
 
-/**
- *
- * @deprecated
- * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-checkbox-group--docs Checkbox.Group} component.
- */
-const CheckboxGroup = ({
+const LegacyCheckboxGroup = ({
   compact,
   description,
   disabled,
@@ -73,7 +68,7 @@ const CheckboxGroup = ({
   presentation,
   variant = 'vertical',
   fieldSetProps,
-}: CheckboxGroupProps) => {
+}: LegacyCheckboxGroupProps) => {
   if (!areItemsUnique(items.map((item) => item.name))) {
     throw Error('Each name in the checkbox group must be unique.');
   }
@@ -99,7 +94,7 @@ const CheckboxGroup = ({
   }, [checkedNames, onChange, disabled]);
 
   return (
-    <FieldSet
+    <LegacyFieldSet
       contentClassName={cn(
         classes.checkboxGroup,
         classes[variant],
@@ -114,7 +109,7 @@ const CheckboxGroup = ({
       {...fieldSetProps}
     >
       {items.map((item) => (
-        <Checkbox
+        <LegacyCheckbox
           checkboxId={item.checkboxId}
           checked={checkedNames.includes(item.name)}
           compact={compact}
@@ -135,10 +130,10 @@ const CheckboxGroup = ({
           presentation={presentation}
         />
       ))}
-    </FieldSet>
+    </LegacyFieldSet>
   );
 };
 
-CheckboxGroup.displayName = 'CheckboxGroup';
+LegacyCheckboxGroup.displayName = 'LegacyCheckboxGroup';
 
-export { CheckboxGroup };
+export { LegacyCheckboxGroup };
