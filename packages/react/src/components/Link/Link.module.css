@@ -1,6 +1,7 @@
-.link,
-.link:visited {
+.link {
   color: var(--fds-semantic-text-action-primary-default);
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .link:hover {
@@ -13,8 +14,8 @@
   background: var(--fds-semantic-border-focus-outline);
   box-shadow: 0 2px 0 var(--fds-semantic-border-focus-boxshadow);
   color: var(--fds-semantic-text-action-primary-active);
-  text-decoration: none;
   outline: none;
+  text-decoration: none;
 }
 
 .link:visited {

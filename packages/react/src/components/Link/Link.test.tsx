@@ -44,6 +44,12 @@ describe('Link', () => {
     render({}, ref);
     expect(ref.current).toBe(screen.getByRole('link'));
   });
+
+  it('Supports polymorphism', () => {
+    render({ as: 'button' });
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
 });
 
 const render = (
