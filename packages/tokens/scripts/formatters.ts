@@ -9,6 +9,17 @@ const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
 type ReferencesFilter = (token: TransformedToken) => boolean;
 
+let prettierOptions: prettier.Options | null;
+
+export const setup = (prettierConfigPath: string) => {
+  prettierOptions = prettier.resolveConfig.sync(
+    path.resolve(prettierConfigPath),
+  );
+  if (!prettierOptions) {
+    throw Error(`Prettier config not found at ${prettierConfigPath}`);
+  }
+};
+
 /**
  *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
  */
@@ -136,15 +147,6 @@ export const groupedTokens: Named<Format> = {
             `export const  ${name} = ${JSON.stringify(token, null, 2)} \n`,
         )
         .join('\n');
-
-    // Expect working directory to be packages/tokens folder
-    const prettierConfigPath = path.resolve(
-      `${process.cwd()}/../../prettier.config.js`,
-    );
-    const prettierOptions = prettier.resolveConfig.sync(prettierConfigPath);
-    if (!prettierOptions) {
-      throw Error(`Prettier config not found at ${prettierConfigPath}`);
-    }
 
     return prettier.format(content, {
       ...prettierOptions,

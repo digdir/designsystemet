@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import StyleDictionary from 'style-dictionary';
 import type {
   Config,
@@ -16,7 +18,11 @@ import {
   calc,
   fontScaleHackFormat,
 } from './transformers';
-import { scopedReferenceVariables, groupedTokens } from './formatters';
+import {
+  scopedReferenceVariables,
+  groupedTokens,
+  setup as setupFormatters,
+} from './formatters';
 
 void registerTransforms(StyleDictionary);
 
@@ -31,6 +37,11 @@ const fileheader: Named<{ fileHeader: FileHeader }> = {
     `These files are generated from design tokens defined in Figma using Token Studio`,
   ],
 };
+
+const storefrontTokensPath = '../../storefront/tokens';
+const packageTokensPath = 'brand';
+
+setupFormatters('./../../prettier.config.js');
 
 StyleDictionary.registerTransform(sizePx);
 StyleDictionary.registerTransform(nameKebab);
@@ -70,12 +81,8 @@ StyleDictionary.registerTransformGroup({
   ],
 });
 
-const excludeSource = (token: TransformedToken) =>
-  !token.filePath.includes('Core.json');
-
-const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
+const baseConfig = (brand: Brands) => {
   const tokensPath = '../../design-tokens';
-  const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
     include: [
@@ -84,6 +91,17 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
       `${tokensPath}/Density/Default.json`,
     ],
     source: [`${tokensPath}/Base/Core.json`],
+  };
+};
+
+const excludeSource = (token: TransformedToken) =>
+  !token.filePath.includes('Core.json');
+
+const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
+  const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
+
+  return {
+    ...baseConfig(brand),
     platforms: {
       hack: {
         prefix,
@@ -139,13 +157,34 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           fileHeader: fileheader.name,
         },
       },
-      storefront: {
+    },
+  };
+};
+
+const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
+  const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
+
+  return {
+    ...baseConfig(brand),
+    platforms: {
+      hack: {
+        prefix,
+        basePxFontSize,
+        transforms: ['ts/resolveMath', nameKebab.name],
+        files: [
+          {
+            format: 'global-values-hack',
+            destination: 'ignore/hack',
+          },
+        ],
+      },
+      Storefront: {
         prefix,
         basePxFontSize,
         transformGroup: 'fds/css',
         files: [
           {
-            destination: `../../storefront/tokens/tokens.ts`,
+            destination: `${destinationPath}.ts`,
             format: groupedTokens.name,
             filter: excludeSource,
           },
@@ -158,20 +197,47 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
   };
 };
 
-console.log('Build started...');
+console.log('🏗️  Started building package tokens…');
 
 brands.map((brand) => {
-  console.log('\n==============================================');
-  console.log(`\nProcessing: ${brand}`);
+  console.log('\n---------------------------------------');
 
-  const extendedStyleDictionary = StyleDictionary.extend(
-    getStyleDictionaryConfig(brand, 'brand'),
+  console.log(`\n👷 Processing ${brand}`);
+
+  const tokensPackageSD = StyleDictionary.extend(
+    getTokensPackageConfig(brand, packageTokensPath),
   );
 
-  extendedStyleDictionary.buildAllPlatforms();
-
-  console.log('\nEnd processing');
+  tokensPackageSD.buildAllPlatforms();
 });
 
-console.log('\n==============================================');
-console.log('\nBuild completed!');
+console.log('\n---------------------------------------');
+console.log('\n🏁 Finished building package tokens!');
+
+console.log('\n=======================================');
+console.log('\n🏗️  Started building storefront tokens…');
+
+brands.map((brand) => {
+  console.log('\n---------------------------------------');
+
+  console.log(`\n👷 Processing ${brand}`);
+
+  const storefrontSD = StyleDictionary.extend(
+    getStorefrontConfig(brand, storefrontTokensPath),
+  );
+
+  storefrontSD.buildAllPlatforms();
+});
+
+const indexFile = brands
+  .map((brand) => {
+    const brandName = brand.toLocaleLowerCase();
+    return `export * as ${brandName} from './${brandName}';`;
+  })
+  .join('\n');
+
+fs.writeFileSync(`${storefrontTokensPath}/index.ts`, `${indexFile}\n`);
+
+console.log('\n---------------------------------------');
+
+console.log('\n🏁 Finished building storefront tokens!');
