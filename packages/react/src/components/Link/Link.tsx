@@ -2,8 +2,9 @@ import type { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
+import type { OverridableComponent } from '../../types/OverridableComponent';
+
 import classes from './Link.module.css';
-import { OverridableComponent } from '../../types/OverridableComponent';
 
 export type LinkProps = {
   /** The component to render the link as. */
