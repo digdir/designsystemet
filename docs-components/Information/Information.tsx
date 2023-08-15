@@ -47,7 +47,6 @@ type InformationProps = {
 export const Information = ({ text, description }: InformationProps) => {
   const textData = texts[text];
 
-  console.log(description);
   return (
     <div className={classes.container + ' ' + colorClass(text)}>
       {textData.title && <h2 className={classes.title}>{textData.title}</h2>}
