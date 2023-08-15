@@ -178,7 +178,7 @@ const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
           },
         ],
       },
-      Storefront: {
+      storefront: {
         prefix,
         basePxFontSize,
         transformGroup: 'fds/css',
