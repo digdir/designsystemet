@@ -1,12 +1,13 @@
-export * from './Button';
-export * from './Tabs';
 export * from './legacy/LegacyFieldSet';
 export * from './legacy/LegacyCheckbox';
 export * from './legacy/LegacyCheckboxGroup';
-export * from './HelpText';
-export * from './Popover';
 export * from './legacy/LegacyRadioButton';
 export * from './legacy/LegacyRadioGroup';
+
+export * from './Button';
+export * from './Tabs';
+export * from './HelpText';
+export * from './Popover';
 export * from './Select';
 export * from './Spinner';
 export * from './TextArea';
@@ -21,3 +22,6 @@ export * from './Alert';
 export * from './Tag';
 export * from './Chip';
 export * from './Pagination';
+export * from './form/Checkbox';
+export * from './form/Radio';
+export * from './form/Fieldset';
