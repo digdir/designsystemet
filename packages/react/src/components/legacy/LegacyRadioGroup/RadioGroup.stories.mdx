@@ -1,6 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { LegacyRadioGroup } from './index';
-import { RadioGroupSize, RadioGroupVariant } from '../../../types/enums';
 import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
@@ -29,7 +28,7 @@ import { ArgsTable } from '@storybook/addon-docs';
       description: 'Vertikal eller horisontal oppstilling.',
       control: {
         type: 'radio',
-        options: [RadioGroupVariant.Vertical, RadioGroupVariant.Horizontal],
+        options: ['vertical', 'horizontal'],
       },
     },
     onChange: {
@@ -53,9 +52,9 @@ import { ArgsTable } from '@storybook/addon-docs';
       description: 'Brukes til å velge størrelse.',
       control: {
         type: 'radio',
-        options: [RadioGroupSize.Small, RadioGroupSize.Xsmall],
+        options: ['small', 'xsmall'],
       },
-      defaultValue: RadioGroupSize.Small,
+      defaultValue: 'small',
     },
     presentation: {
       description:
@@ -98,7 +97,7 @@ Kun én knapp kan være trykket inn av gangen.
 <Canvas>
   <Story
     name='Vertikal'
-    args={{ variant: RadioGroupVariant.Vertical }}
+    args={{ variant: 'vertical' }}
   >
     {Template.bind({})}
   </Story>
@@ -110,7 +109,7 @@ Kun én knapp kan være trykket inn av gangen.
   <Story
     name='Horisontal'
     args={{
-      variant: RadioGroupVariant.Horizontal,
+      variant: 'horizontal',
       name: 'favorittiskrem-horizontal',
     }}
   >
@@ -123,7 +122,7 @@ Kun én knapp kan være trykket inn av gangen.
 <Canvas>
   <Story
     name='Kompakt'
-    args={{ size: RadioGroupSize.Xsmall, name: 'favorittiskrem-compact' }}
+    args={{ size: 'xsmall', name: 'favorittiskrem-compact' }}
   >
     {Template.bind({})}
   </Story>
