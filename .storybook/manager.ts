@@ -4,6 +4,6 @@ import customTheme from './customTheme';
 addons.setConfig({
   theme: customTheme,
   sidebar: {
-    showRoots: false,
+    showRoots: true,
   },
 });
