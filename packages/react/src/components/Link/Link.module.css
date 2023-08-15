@@ -11,7 +11,7 @@
 .link:active,
 .link:focus {
   background: var(--fds-semantic-border-focus-outline);
-  border-bottom: 2px solid var(--fds-semantic-border-focus-boxshadow);
+  box-shadow: 0 2px 0 var(--fds-semantic-border-focus-boxshadow);
   color: var(--fds-semantic-text-action-primary-active);
   text-decoration: none;
   outline: none;
