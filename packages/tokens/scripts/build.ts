@@ -1,5 +1,10 @@
 import StyleDictionary from 'style-dictionary';
-import type { Config, TransformedToken } from 'style-dictionary';
+import type {
+  Config,
+  TransformedToken,
+  Named,
+  FileHeader,
+} from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
 import {
@@ -11,7 +16,7 @@ import {
   calc,
   fontScaleHackFormat,
 } from './transformers';
-import { scopedReferenceVariables, storefront } from './formatters';
+import { scopedReferenceVariables, groupedTokens } from './formatters';
 
 void registerTransforms(StyleDictionary);
 
@@ -19,6 +24,13 @@ type Brands = 'Altinn' | 'Digdir' | 'Tilsynet' | 'Brreg';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'];
 const prefix = 'fds';
 const basePxFontSize = 16;
+const fileheader: Named<{ fileHeader: FileHeader }> = {
+  name: 'fileheader',
+  fileHeader: () => [
+    'Do not edit directly',
+    `These files are generated from design tokens defined in Figma using Token Studio`,
+  ],
+};
 
 StyleDictionary.registerTransform(sizePx);
 StyleDictionary.registerTransform(nameKebab);
@@ -29,13 +41,32 @@ StyleDictionary.registerTransform(calc);
 
 StyleDictionary.registerFormat(fontScaleHackFormat);
 StyleDictionary.registerFormat(scopedReferenceVariables);
-StyleDictionary.registerFormat(storefront);
+StyleDictionary.registerFormat(groupedTokens);
 
-StyleDictionary.registerFileHeader({
-  name: 'fileheader',
-  fileHeader: () => [
-    'Do not edit directly',
-    `These files are generated from design tokens defined in Figma using Token Studio`,
+StyleDictionary.registerFileHeader(fileheader);
+
+StyleDictionary.registerTransformGroup({
+  name: 'fds/css',
+  transforms: [
+    nameKebab.name,
+    'ts/resolveMath',
+    fluidFontSize.name,
+    calc.name,
+    typographyShorthand.name,
+    'ts/size/lineheight',
+    'ts/shadow/css/shorthand',
+    sizePx.name,
+  ],
+});
+StyleDictionary.registerTransformGroup({
+  name: 'fds/js',
+  transforms: [
+    nameKebabUnderscore.name,
+    'ts/resolveMath',
+    typographyShorthand.name,
+    'ts/size/px',
+    'ts/size/lineheight',
+    'ts/shadow/css/shorthand',
   ],
 });
 
@@ -46,7 +77,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
   const tokensPath = '../../design-tokens';
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
-  const config: Config = {
+  return {
     include: [
       `${tokensPath}/Brand/${brand}.json`,
       `${tokensPath}/Base/Semantic.json`,
@@ -57,7 +88,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
       hack: {
         prefix,
         basePxFontSize,
-        transforms: ['ts/resolveMath', 'name/cti/hierarchical-kebab'],
+        transforms: ['ts/resolveMath', nameKebab.name],
         files: [
           {
             format: 'global-values-hack',
@@ -68,17 +99,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
       css: {
         prefix,
         basePxFontSize,
-        transformGroup: 'css',
-        transforms: [
-          'name/cti/hierarchical-kebab',
-          'ts/resolveMath',
-          'css/fontSizes/fluid',
-          'fds/calc',
-          'typography/shorthand',
-          'ts/size/lineheight',
-          'ts/shadow/css/shorthand',
-          'fds/size/px',
-        ],
+        transformGroup: 'fds/css',
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
@@ -87,7 +108,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           },
         ],
         options: {
-          fileHeader: 'fileheader',
+          fileHeader: fileheader.name,
           referencesFilter: (token: TransformedToken) =>
             !(token.path[0] === 'viewport') &&
             ['spacing', 'sizing'].includes(token.type as string),
@@ -96,15 +117,7 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
       },
       js: {
         basePxFontSize,
-        transformGroup: 'js',
-        transforms: [
-          'name/cti/camel_underscore',
-          'ts/resolveMath',
-          'typography/shorthand',
-          'ts/size/px',
-          'ts/size/lineheight',
-          'ts/shadow/css/shorthand',
-        ],
+        transformGroup: 'fds/js',
         files: [
           {
             destination: `${destinationPath}/tokens.cjs.js`,
@@ -123,38 +136,26 @@ const getStyleDictionaryConfig = (brand: Brands, targetFolder = ''): Config => {
           },
         ],
         options: {
-          fileHeader: 'fileheader',
+          fileHeader: fileheader.name,
         },
       },
       storefront: {
         prefix,
         basePxFontSize,
-        transformGroup: 'css',
-        transforms: [
-          'name/cti/hierarchical-kebab',
-          'ts/resolveMath',
-          'css/fontSizes/fluid',
-          'fds/calc',
-          'typography/shorthand',
-          'ts/size/lineheight',
-          'ts/shadow/css/shorthand',
-          'fds/size/px',
-        ],
+        transformGroup: 'fds/css',
         files: [
           {
             destination: `../../storefront/tokens/tokens.ts`,
-            format: 'storefront',
+            format: groupedTokens.name,
             filter: excludeSource,
           },
         ],
         options: {
-          fileHeader: 'fileheader',
+          fileHeader: fileheader.name,
         },
       },
     },
   };
-
-  return config;
 };
 
 console.log('Build started...');

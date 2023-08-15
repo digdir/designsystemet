@@ -7,9 +7,6 @@ import type { Named, TransformedToken, Format } from 'style-dictionary';
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
-const prettierConfig = path.resolve('./../../../prettier.config.js');
-const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
-
 type ReferencesFilter = (token: TransformedToken) => boolean;
 
 /**
@@ -111,11 +108,12 @@ const groupByNextPathIndex = <
 const groupFromPathIndex = R.curry(groupByNextPathIndex);
 const groupTokens = R.pipe(groupByType, groupFromPathIndex(0));
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
+
 /**
  * Format for displaying tokens in storefront
  */
-export const storefront: Named<Format> = {
-  name: 'storefront',
+export const groupedTokens: Named<Format> = {
+  name: 'groupedTokens',
   formatter: function ({ dictionary, file }) {
     const format = createPropertyFormatter({
       dictionary,
@@ -138,6 +136,15 @@ export const storefront: Named<Format> = {
             `export const  ${name} = ${JSON.stringify(token, null, 2)} \n`,
         )
         .join('\n');
+
+    // Expect working directory to be packages/tokens folder
+    const prettierConfigPath = path.resolve(
+      `${process.cwd()}/../../prettier.config.js`,
+    );
+    const prettierOptions = prettier.resolveConfig.sync(prettierConfigPath);
+    if (!prettierOptions) {
+      throw Error(`Prettier config not found at ${prettierConfigPath}`);
+    }
 
     return prettier.format(content, {
       ...prettierOptions,
