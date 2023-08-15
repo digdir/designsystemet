@@ -32,10 +32,22 @@ export const Invertert: Story = {
     href: 'https://designsystemet.no/',
   },
   parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
+    layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          background: '#333333',
+          padding: '32px',
+          justifyContent: 'center',
+          display: 'flex',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const ITekst: StoryFn<typeof Link> = () => (
