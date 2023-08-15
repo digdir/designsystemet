@@ -1,149 +1,35 @@
-import path from 'path';
-
-import { noCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
-import type {
-  Config,
-  TransformedToken,
-  TransformedTokens,
-} from 'style-dictionary';
-import {
-  registerTransforms,
-  transformDimension,
-} from '@tokens-studio/sd-transforms';
-import * as R from 'ramda';
-import prettier from 'prettier';
+import type { Config, TransformedToken } from 'style-dictionary';
+import { registerTransforms } from '@tokens-studio/sd-transforms';
 
-const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
+import {
+  sizePx,
+  nameKebab,
+  nameKebabUnderscore,
+  typographyShorthand,
+  fluidFontSize,
+  calc,
+  fontScaleHackFormat,
+} from './transformers';
+import { scopedReferenceVariables, storefront } from './formatters';
 
 void registerTransforms(StyleDictionary);
-
-const prettierConfig = path.resolve('./../../prettier.config.js');
-const prettierOptions = prettier.resolveConfig.sync(prettierConfig);
 
 type Brands = 'Altinn' | 'Digdir' | 'Tilsynet' | 'Brreg';
 const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'];
 const prefix = 'fds';
 const basePxFontSize = 16;
-let fontScale: TransformedTokens;
 
-StyleDictionary.registerTransform({
-  name: 'fds/size/px',
-  type: 'value',
-  transitive: true,
-  matcher: (token) =>
-    ['sizing', 'spacing'].includes(token.type as string) &&
-    !token.name.includes('base'),
-  transformer: (token) => transformDimension(token.value as number),
-});
+StyleDictionary.registerTransform(sizePx);
+StyleDictionary.registerTransform(nameKebab);
+StyleDictionary.registerTransform(nameKebabUnderscore);
+StyleDictionary.registerTransform(typographyShorthand);
+StyleDictionary.registerTransform(fluidFontSize);
+StyleDictionary.registerTransform(calc);
 
-StyleDictionary.registerTransform({
-  name: 'name/cti/hierarchical-kebab',
-  type: 'name',
-  transformer: (token, options) => {
-    return noCase([options?.prefix].concat(token.path).join('-'), {
-      delimiter: '-',
-      stripRegexp: /[^A-Z0-9_]+/gi,
-    });
-  },
-});
-
-StyleDictionary.registerTransform({
-  name: 'name/cti/camel_underscore',
-  type: 'name',
-  transformer: function (token, options) {
-    return noCase([options?.prefix].concat(token.path).join(' '), {
-      delimiter: '_',
-      stripRegexp: /[^A-Z0-9_]+/gi,
-    });
-  },
-});
-
-type Typgraphy = {
-  fontWeight: string;
-  fontSize: string;
-  lineHeight: number;
-  fontFamily: string;
-};
-
-StyleDictionary.registerTransform({
-  name: 'typography/shorthand',
-  type: 'value',
-  transitive: true,
-  matcher: (token) => token.type === 'typography',
-  transformer: (token, options) => {
-    const typography = token.value as Typgraphy;
-    let fontSize = typography.fontSize;
-
-    if (!fontSize.startsWith('clamp')) {
-      const baseFontPx = options?.basePxFontSize || 1;
-      fontSize = `${parseFloat(fontSize) / baseFontPx}rem`;
-    }
-    return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
-  },
-});
-
-type FontScale = {
-  min: TransformedToken;
-  max: TransformedToken;
-  v: TransformedToken;
-  r: TransformedToken;
-  fluid: TransformedToken;
-};
-
-StyleDictionary.registerTransform({
-  name: 'css/fontSizes/fluid',
-  type: 'value',
-  transitive: true,
-  matcher: (token) =>
-    token.type === 'fontSizes' &&
-    token.path[0] === 'font-size' &&
-    token.path[1].startsWith('f'),
-  transformer: (token, options) => {
-    if (fontScale) {
-      const baseFontPx = options?.basePxFontSize || 1;
-
-      const scale = fontScale[token.path[1]] as unknown as FontScale;
-
-      const { min, max, v, r } = scale;
-      const minRem = (parseFloat(min.value as string) / baseFontPx).toFixed(2);
-      const maxRem = (parseFloat(max.value as string) / baseFontPx).toFixed(2);
-      const fontR = (parseFloat(r.value as string) / baseFontPx).toFixed(2);
-      const fontV = parseFloat(v.value as string).toFixed(2);
-
-      const fluid = `clamp(${minRem}rem, calc(${fontV}vw + ${fontR}rem), ${maxRem}rem)`;
-
-      return fluid;
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return token.value;
-  },
-});
-
-StyleDictionary.registerTransform({
-  name: 'fds/calc',
-  type: 'value',
-  transitive: true,
-  matcher: (token) =>
-    (token.type === 'spacing' && token.path[0] === 'spacing') ||
-    (token.type === 'sizing' && token.path[0] === 'sizing'),
-  transformer: (token) => {
-    const value = token.value as string;
-
-    return `calc(${value})`;
-  },
-});
-
-StyleDictionary.registerFormat({
-  name: 'global-values-hack',
-  formatter: ({ dictionary }) => {
-    console.info('\x1b[34m✔ Setting global values');
-    fontScale = dictionary.tokens['font-scale'];
-
-    return `/** Style Dictionary hack because it must write to file for some reason... */\n`;
-  },
-});
+StyleDictionary.registerFormat(fontScaleHackFormat);
+StyleDictionary.registerFormat(scopedReferenceVariables);
+StyleDictionary.registerFormat(storefront);
 
 StyleDictionary.registerFileHeader({
   name: 'fileheader',
@@ -151,140 +37,6 @@ StyleDictionary.registerFileHeader({
     'Do not edit directly',
     `These files are generated from design tokens defined in Figma using Token Studio`,
   ],
-});
-
-type ReferencesFilter = (token: TransformedToken) => boolean;
-
-/**
- *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
- */
-StyleDictionary.registerFormat({
-  name: 'css/variables-scoped-references',
-  formatter: function ({ dictionary, options, file }) {
-    const { outputReferences } = options;
-    const includeReferences = options.referencesFilter as ReferencesFilter;
-    let referencedTokens: TransformedToken[] = [];
-
-    const format = createPropertyFormatter({
-      outputReferences,
-      dictionary,
-      format: 'css',
-    });
-
-    const formatWithReference = createPropertyFormatter({
-      outputReferences: true,
-      dictionary,
-      format: 'css',
-    });
-
-    const tokens = dictionary.allTokens
-      .map((token) => {
-        if (
-          dictionary.usesReference(token.original.value) &&
-          includeReferences(token)
-        ) {
-          const refs = dictionary.getReferences(token.original.value);
-
-          referencedTokens = [
-            ...referencedTokens,
-            ...refs.filter((x) => x.isSource),
-          ];
-
-          return formatWithReference(token);
-        }
-
-        return !token.isSource && format(token);
-      })
-      .filter((x) => x);
-
-    const referenceTokens = referencedTokens
-      .reduce<{ name: string; formatted: string }[]>((acc, token) => {
-        if (acc.find((x) => x.name === token.name)) {
-          return acc;
-        }
-
-        return [...acc, { name: token.name, formatted: format(token) }];
-      }, [])
-      .map((x) => x.formatted)
-      .filter((x) => x);
-
-    return (
-      fileHeader({ file }) +
-      ':root {\n' +
-      '  /** Referenced source tokens */ \n' +
-      referenceTokens.join('\n') +
-      '\n\n  /** Tokens */ \n' +
-      tokens.join('\n') +
-      '\n}\n'
-    );
-  },
-});
-
-const groupByType = R.groupBy(
-  (token: TransformedToken) => token.type as string,
-);
-
-const groupByPathIndex = (level: number, tokens: TransformedToken[]) =>
-  R.groupBy((token: TransformedToken) => token.path[level], tokens);
-
-const shouldGroupPath = (level: number, tokens: TransformedToken[]) => {
-  const token = R.head(tokens);
-  const [, next] = R.splitAt(level, token?.path ?? []);
-  return next.length > 1;
-};
-
-const groupByNextPathIndex = <
-  T extends Partial<Record<string, TransformedToken[]>>,
->(
-  level: number,
-  record: T,
-): Record<string, unknown> =>
-  R.mapObjIndexed((tokens, key, obj) => {
-    if (R.isNil(tokens) || R.isNil(obj)) {
-      return tokens;
-    }
-
-    if (shouldGroupPath(level, tokens)) {
-      const grouped = groupByPathIndex(level, tokens);
-      return groupByNextPathIndex(level + 1, grouped);
-    }
-    return tokens;
-  }, record || {});
-
-const groupFromPathIndex = R.curry(groupByNextPathIndex);
-const groupTokens = R.pipe(groupByType, groupFromPathIndex(0));
-const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
-
-StyleDictionary.registerFormat({
-  name: 'storefront',
-  formatter: function ({ dictionary, file }) {
-    const format = createPropertyFormatter({
-      dictionary,
-      format: 'css',
-    });
-
-    const formattedTokens = dictionary.allTokens.map((token) => ({
-      ...token,
-      lastName: R.last(token.path),
-      name: toCssVarName(format(token)),
-    }));
-
-    const tokens = groupTokens(formattedTokens);
-
-    const content =
-      fileHeader({ file }) +
-      Object.entries(tokens)
-        .map(
-          ([name, token]) =>
-            `export const  ${name} = ${JSON.stringify(token, null, 2)} \n`,
-        )
-        .join('\n');
-
-    return prettier.format(content, {
-      ...prettierOptions,
-      parser: 'babel',
-    });
-  },
 });
 
 const excludeSource = (token: TransformedToken) =>
