@@ -1,6 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { Popover } from './index';
-import { PopoverVariant } from '../../types/enums';
 
 import { Button } from './../Button/index';
 import { Information, TokensTable } from '../../../../../docs-components';
@@ -116,7 +115,7 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
     }}
     args={{
       placement: 'top',
-      variant: PopoverVariant.Default,
+      variant: 'default',
     }}
   >
     {Template.bind({})}
@@ -140,7 +139,7 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
     }}
     args={{
       placement: 'right',
-      variant: PopoverVariant.Warning,
+      variant: 'warning',
     }}
   >
     {ComplexTemplate.bind({})}
