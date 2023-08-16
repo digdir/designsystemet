@@ -95,7 +95,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         <ul className={classes.pagination}>
           <li className={cn(classes.chevronLeft, classes[size])}>
             <Button
-              icon={<ChevronLeftIcon />}
+              icon={<ChevronLeftIcon aria-hidden />}
               aria-label={previousLabel}
               onClick={() => {
                 onChange(currentPage - 1);
@@ -136,7 +136,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               variant={'quiet'}
               color={'primary'}
               size={size}
-              icon={<ChevronRightIcon />}
+              icon={<ChevronRightIcon aria-hidden />}
               aria-label={nextLabel}
               onClick={() => {
                 onChange(currentPage + 1);
