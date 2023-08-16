@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.22.0...@digdir/design-system-react@0.23.0) (2023-08-16)
+
+### Bug Fixes
+
+- **Pagination:** :wheelchair: Fix 'a11y' error for Pagination next/prev buttons ([#726](https://github.com/digdir/designsystem/issues/726)) ([e0e6fa4](https://github.com/digdir/designsystem/commit/e0e6fa424c9d1af54546eb344e58105271c8ea63))
+
+### Features
+
+- **Checkbox, CheckboxGroup, FieldSet, RadioButton, RadioGroup:** :wastebasket: Change to Legacy ([#716](https://github.com/digdir/designsystem/issues/716)) ([b22d836](https://github.com/digdir/designsystem/commit/b22d836c51ffcb024331eb07109547b288151888))
+- **Checkbox, Radio, Fieldset:** :sparkles: Release new components ([#720](https://github.com/digdir/designsystem/issues/720)) ([7facb4d](https://github.com/digdir/designsystem/commit/7facb4d1c77deffedb350fc7ed3e4bceecd4ff75))
+- **Link:** Create the component ([#711](https://github.com/digdir/designsystem/issues/711)) ([ac0adcc](https://github.com/digdir/designsystem/commit/ac0adcc2992499fd850e7974a54a7e4b19dfdd06))
+
+### BREAKING CHANGE
+
+- **enums:** 🔥 Remove `enums` ([#721](https://github.com/digdir/designsystem/issues/721))
+- **LegacyAccordion:** 🔥 Remove `LegacyAccordion` ([#721](https://github.com/digdir/designsystem/issues/721))
+
 # [0.22.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.21.0...@digdir/design-system-react@0.22.0) (2023-08-09)
 
 ### Bug Fixes
