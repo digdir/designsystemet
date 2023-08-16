@@ -5,7 +5,7 @@ import { Button, Paragraph } from '../../..';
 import { Radio } from '../';
 
 export default {
-  title: 'ikke utgitt/Radio/Group',
+  title: 'Kjernekomponenter/Radio/Group',
   component: Radio.Group,
 } as Meta;
 
