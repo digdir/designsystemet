@@ -18,7 +18,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGE
 
 - **enums:** 🔥 Remove `enums` ([#721](https://github.com/digdir/designsystem/issues/721))
-- **LegacyAccordion:** 🔥 Remove `LegacyAccordion` ([#721](https://github.com/digdir/designsystem/issues/721))
+- **LegacyAccordion:** 🔥 Remove `LegacyAccordion` ([#707](https://github.com/digdir/designsystem/issues/707))
 
 # [0.22.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.21.0...@digdir/design-system-react@0.22.0) (2023-08-09)
 
