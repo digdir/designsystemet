@@ -9,8 +9,8 @@ import classes from './Group.module.css';
 
 export type RadioGroupContextProps = {
   name?: string;
-  value?: string | ReadonlyArray<string> | number;
-  defaultValue?: string | ReadonlyArray<string> | number;
+  value?: string;
+  defaultValue?: string;
   required?: boolean;
   onChange?: (value: string) => void;
 };
@@ -23,9 +23,9 @@ export type RadioGroupProps = {
   /** Collection of `Radio` components */
   children?: ReactNode;
   /** Controlled state for `Radio` */
-  value?: string | ReadonlyArray<string> | number;
+  value?: string;
   /** Default checked `Radio` */
-  defaultValue?: string | ReadonlyArray<string> | number;
+  defaultValue?: string;
   /** Callback event with checked `Radio` value */
   onChange?: (value: string) => void;
   /** Toggle if collection of `Radio` are required  */
