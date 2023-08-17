@@ -1,8 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ReadOnlyVariant } from '../../types/enums';
-
 import type { TextAreaProps } from '.';
 import { TextArea } from '.';
 
@@ -11,12 +9,6 @@ type Story = StoryObj<typeof TextArea>;
 const meta: Meta = {
   title: 'Kjernekomponenter/TextArea',
   component: TextArea,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 };
 
 export default meta;
@@ -36,14 +28,14 @@ export const MedFeil: Story = createTemplate('Med feil', {
 });
 
 export const Skrivebeskyttet: Story = createTemplate('Skrivebeskyttet', {
-  readOnly: ReadOnlyVariant.ReadOnlyInfo,
+  readOnly: 'readonlyInfo',
   value: 'Dette er en skrivebeskyttet tekst.',
 });
 
 export const Bekreftelsesvisning: Story = createTemplate(
   'Bekreftelsesvisning',
   {
-    readOnly: ReadOnlyVariant.ReadOnlyConfirm,
+    readOnly: 'readonlyConfirm',
     value:
       'Dette er en bekreftelsesvisning av en tekst som er skrevet inn i et tekstfelt.',
   },

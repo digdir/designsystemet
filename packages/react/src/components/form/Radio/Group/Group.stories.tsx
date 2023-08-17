@@ -5,14 +5,8 @@ import { Button, Paragraph } from '../../..';
 import { Radio } from '../';
 
 export default {
-  title: 'ikke utgitt/Radio/Group',
+  title: 'Kjernekomponenter/Radio/Group',
   component: Radio.Group,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Preview: StoryFn<typeof Radio.Group> = (args) => (
@@ -69,7 +63,7 @@ export const Controlled: StoryFn<typeof Radio> = () => {
         legend='Velg pizza (påkreved)'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={setValue}
       >
         <Radio value='ost'>Bare ost</Radio>
         <Radio

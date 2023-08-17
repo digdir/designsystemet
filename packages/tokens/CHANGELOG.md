@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.2.0...@digdir/design-system-tokens@0.3.0) (2023-08-16)
+
+
+### Features
+
+* **tokens:** Add Brreg theme ([#701](https://github.com/digdir/designsystem/issues/701)) ([64c4f7a](https://github.com/digdir/designsystem/commit/64c4f7ad121ecbaaf881d1fd198645250ec5f8fd))
+
+
+
+
+
+# [0.2.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.1.7...@digdir/design-system-tokens@0.2.0) (2023-08-09)
+
+### Features
+
+- **tokens:** Removed font-weight for radio-and-checkbox tokens ([#692](https://github.com/digdir/designsystem/issues/692)) ([f1bb5ef](https://github.com/digdir/designsystem/commit/f1bb5ef09066a7d4bff348f4ce620fd86e203f08))
+
 ## [0.1.7](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.1.6...@digdir/design-system-tokens@0.1.7) (2023-08-02)
 
 **Note:** Version bump only for package @digdir/design-system-tokens

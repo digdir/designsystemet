@@ -33,7 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       color = 'primary',
       variant = 'filled',
-      size = 'small',
+      size = 'medium',
       fullWidth = false,
       dashedBorder = false,
       iconPlacement = 'left',

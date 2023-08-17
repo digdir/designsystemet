@@ -1,6 +1,12 @@
 import type { Preview } from '@storybook/react';
+import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
+
+import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
+import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/digdir/tokens.css';
+import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/tilsynet/tokens.css';
+import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/brreg/tokens.css';
+
 import '@altinn/figma-design-tokens/dist/tokens.css';
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
 
@@ -27,20 +33,16 @@ const viewports: Viewport[] = metadata.tokenSetOrder
   });
 
 const preview: Preview = {
+  decorators: [cssVariablesTheme],
   parameters: {
-    status: {
-      statuses: {
-        new: {
-          background: '#0000ff',
-          color: '#ffffff',
-          description: 'This component is stable and released',
-        },
-        beta: {
-          background: '#6544c5',
-          color: '#ffffff',
-          description: 'This component is stable and released',
-        },
+    cssVariables: {
+      files: {
+        Altinn: altinn,
+        Digdir: digdir,
+        Tilsynet: tilsynet,
+        Brønnøysundregistrene: brreg,
       },
+      defaultTheme: 'Digdir',
     },
     layout: 'centered',
     viewMode: 'docs',

@@ -14,11 +14,24 @@ const createWrapper = (Wrapper: typeof Fieldset, props?: FieldsetProps) => {
 };
 
 describe('useFormField', () => {
-  test('has correct error props', () => {
+  test('has correct error props when error is string', () => {
     const { result } = renderHook(
       () => useFormField({ error: 'error' }, 'test'),
       { wrapper: createWrapper(Fieldset) },
     );
+
+    const field = result.current;
+
+    expect(field.hasError).toBeTruthy();
+    expect(field.errorId).toBeDefined();
+    expect(field.inputProps['aria-invalid']).toBeTruthy();
+    expect(field.inputProps['aria-describedby']).toEqual(field.errorId);
+  });
+
+  test('has correct error props when error is boolean', () => {
+    const { result } = renderHook(() => useFormField({ error: true }, 'test'), {
+      wrapper: createWrapper(Fieldset),
+    });
 
     const field = result.current;
 

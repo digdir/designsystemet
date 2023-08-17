@@ -5,12 +5,6 @@ import { Paragraph, Heading, Ingress } from './';
 
 const meta: Meta = {
   title: 'Kjernekomponenter/Typography',
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 };
 
 export default meta;

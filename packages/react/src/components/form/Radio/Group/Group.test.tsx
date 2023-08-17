@@ -55,7 +55,7 @@ describe('RadioGroup', () => {
     let onChangeValue = '';
 
     render(
-      <RadioGroup onChange={(e) => (onChangeValue = e.currentTarget.value)}>
+      <RadioGroup onChange={(value) => (onChangeValue = value)}>
         <Radio value='test1'>test1</Radio>
         <Radio value='test2'>test2</Radio>
         <Radio value='test3'>test3</Radio>

@@ -11,12 +11,6 @@ type Story = StoryObj<typeof Tag>;
 export default {
   title: 'Kjernekomponenter/Tag',
   component: Tag,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
   decorators: [
     (Story) => (
       <Stack style={{ justifyContent: 'start' }}>

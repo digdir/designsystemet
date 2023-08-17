@@ -1,19 +1,19 @@
-import type { ChangeEventHandler, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import React, { forwardRef, createContext, useId } from 'react';
 import cn from 'classnames';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
-import type { RadioProps } from '../Radio';
 
 import classes from './Group.module.css';
 
 export type RadioGroupContextProps = {
   name?: string;
-  value?: string | ReadonlyArray<string> | number;
-  defaultValue?: string | ReadonlyArray<string> | number;
+  value?: string;
+  defaultValue?: string;
   required?: boolean;
-} & Pick<RadioProps, 'onChange'>;
+  onChange?: (value: string) => void;
+};
 
 export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
   null,
@@ -23,11 +23,11 @@ export type RadioGroupProps = {
   /** Collection of `Radio` components */
   children?: ReactNode;
   /** Controlled state for `Radio` */
-  value?: string | ReadonlyArray<string> | number;
+  value?: string;
   /** Default checked `Radio` */
-  defaultValue?: string | ReadonlyArray<string> | number;
-  /** Callback event with changed `Radio` */
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  defaultValue?: string;
+  /** Callback event with checked `Radio` value */
+  onChange?: (value: string) => void;
   /** Toggle if collection of `Radio` are required  */
   required?: boolean;
   /** Orientation of `Radio` components.

@@ -1,12 +1,12 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { HelptextFilled, Helptext } from '@navikt/ds-icons';
 
 import { Popover } from '../Popover';
 import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
+import { HelpTextIcon } from './HelpTextIcon';
 
 export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -54,20 +54,19 @@ const HelpText = ({
             onClick?.(event);
           }}
         >
-          <HelptextFilled
+          <HelpTextIcon
+            filled
             className={cn(
               classes.helpTextIcon,
               classes.helpTextIconFilled,
               classes[size],
               className,
             )}
-            data-state={open ? 'open' : 'closed'}
-            aria-hidden={true}
+            openState={open}
           />
-          <Helptext
+          <HelpTextIcon
             className={cn(classes.helpTextIcon, classes[size], className)}
-            data-state={open ? 'open' : 'closed'}
-            aria-hidden={true}
+            openState={open}
           />
           <span className={utilClasses.visuallyHidden}>{title}</span>
         </button>

@@ -49,12 +49,6 @@ type Story = StoryObj<typeof ${componentName}>;
 export default {
   title: 'Kjernekomponenter/${componentName}',
   component: ${componentName},
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 // Simple story
