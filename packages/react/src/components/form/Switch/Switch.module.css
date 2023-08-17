@@ -87,14 +87,18 @@
   transform: translateX(2px);
 }
 
-.input:checked:hover ~ .icon .checked {
-  transition: transform 200ms ease;
-  transform: translateX(11px);
+.input:disabled ~ .icon .checked {
+  fill: var(--fds-semantic-border-neutral-subtle);
 }
 
 .input:checked ~ .icon .checked {
   fill: #fff;
   transform: translateX(13px);
+}
+
+.input:checked:hover ~ .icon .checked {
+  transition: transform 200ms ease;
+  transform: translateX(11px);
 }
 
 .input:not(:checked) ~ .icon .box {
@@ -122,10 +126,6 @@
 .input:focus-visible:not(:disabled) ~ .icon .box {
   stroke: var(--fds-semantic-border-focus-boxshadow);
   stroke-width: var(--fds-focus-border-width);
-}
-
-.input:disabled ~ .icon .checked {
-  fill: var(--fds-semantic-border-neutral-subtle);
 }
 
 .error .input:not(:disabled, :focus-visible, :checked) ~ .icon .box {
