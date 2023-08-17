@@ -107,6 +107,10 @@
             "value": "rgba({colors.blue.900}, 0.2)",
             "type": "color"
           }
+        },
+        "checked": {
+          "value": "{colors.blue.700}",
+          "type": "color"
         }
       },
       "success": {
