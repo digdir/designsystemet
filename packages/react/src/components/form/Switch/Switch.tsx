@@ -40,16 +40,16 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
   // </svg>
   <svg
     width='36'
-    height='22'
-    viewBox='0 0 36 22'
+    height='16'
+    viewBox='0 0 36 16'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
     <rect
       className={classes.box}
-      x='1'
-      y='1'
+      x='0'
+      y='0'
       width='34'
       height='20'
       rx='10'
@@ -58,8 +58,8 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
     />
     <circle
       className={classes.checked}
-      cx='11'
-      cy='11'
+      cx='10'
+      cy='10'
       width='14'
       height='14'
       r='7'
