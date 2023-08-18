@@ -258,6 +258,7 @@ describe('InputWrapper', () => {
       render({
         label: 'Comment',
         value: 'Hello',
+        isValid: false,
         characterLimit: {
           maxCount: 2,
           label: (count: number) => `${count} signs left`,
@@ -272,6 +273,21 @@ describe('InputWrapper', () => {
       render({
         label: 'Comment',
         value: 'He',
+        characterLimit: {
+          maxCount: 2,
+          label: (count: number) => `${count} signs left`,
+          srLabel: '2 signs allowed',
+        },
+      });
+
+      expect(screen.queryByTestId('input-icon-error')).not.toBeInTheDocument();
+    });
+
+    it('isValid should override character-limit error', () => {
+      render({
+        label: 'Comment',
+        value: 'Hello',
+        isValid: true,
         characterLimit: {
           maxCount: 2,
           label: (count: number) => `${count} signs left`,
