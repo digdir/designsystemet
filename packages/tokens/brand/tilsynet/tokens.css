@@ -51,6 +51,7 @@
   --fds-semantic-surface-action-secondary-no_fill: #ffffff;
   --fds-semantic-surface-action-secondary-no_fill-hover: rgba(#00315d, 0.1);
   --fds-semantic-surface-action-secondary-no_fill-active: rgba(#00315d, 0.2);
+  --fds-semantic-surface-action-checked: #0062ba;
   --fds-semantic-surface-primary-light: #dedff6;
   --fds-semantic-surface-primary-light-hover: #bec0ed;
   --fds-semantic-surface-primary-light-active: #9da0e4;
@@ -116,6 +117,8 @@
   --fds-semantic-border-action-secondary-default: #00315d;
   --fds-semantic-border-action-secondary-hover: #00315d;
   --fds-semantic-border-action-secondary-active: #00315d;
+  --fds-semantic-border-action-default: #00315d;
+  --fds-semantic-border-action-hover: #0062ba;
   --fds-semantic-border-neutral-default: #68707c;
   --fds-semantic-border-neutral-subtle: #d2d5d8;
   --fds-semantic-border-neutral-strong: #1e2b3c;
