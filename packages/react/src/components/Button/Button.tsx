@@ -3,7 +3,6 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
-import { Paragraph } from '../Typography';
 
 import classes from './Button.module.css';
 

@@ -66,6 +66,7 @@
   gap: var(--fds-sizing-2);
   min-width: var(--fdsc-button-size);
   font: var(--fds-typography-paragraph-small);
+  font-family: inherit;
 }
 
 .button.medium {
@@ -76,6 +77,7 @@
   gap: var(--fds-sizing-3);
   min-width: var(--fdsc-button-size);
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
 }
 
 .button.large {
@@ -86,6 +88,7 @@
   gap: var(--fds-sizing-3);
   min-width: var(--fdsc-button-size);
   font: var(--fds-typography-paragraph-large);
+  font-family: inherit;
 }
 
 .button.fullWidth {
