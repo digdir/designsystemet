@@ -65,15 +65,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={classes.icon}
         />
       )}
-      {children && (
-        <Paragraph
-          as='span'
-          size={size}
-          className={classes.typography}
-        >
-          {children}
-        </Paragraph>
-      )}
+      {children}
       {icon && iconPlacement === 'right' && (
         <SvgIcon
           svgIconComponent={icon}

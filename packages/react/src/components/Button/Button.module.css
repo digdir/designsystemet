@@ -65,6 +65,7 @@
 
   gap: var(--fds-sizing-2);
   min-width: var(--fdsc-button-size);
+  font: var(--fds-typography-paragraph-small);
 }
 
 .button.medium {
@@ -74,6 +75,7 @@
 
   gap: var(--fds-sizing-3);
   min-width: var(--fdsc-button-size);
+  font: var(--fds-typography-paragraph-medium);
 }
 
 .button.large {
@@ -83,6 +85,7 @@
 
   gap: var(--fds-sizing-3);
   min-width: var(--fdsc-button-size);
+  font: var(--fds-typography-paragraph-large);
 }
 
 .button.fullWidth {
@@ -360,11 +363,4 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-active);
-}
-
-.typography {
-  color: inherit;
-  display: flex;
-  align-items: center;
-  gap: var(--fds-sizing-2);
 }
