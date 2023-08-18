@@ -69,7 +69,7 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
 );
 
 export type SwitchProps = {
-  /** Radio label */
+  /** Switch label */
   children?: ReactNode;
   /** Value of the `input` element */
   value: string;

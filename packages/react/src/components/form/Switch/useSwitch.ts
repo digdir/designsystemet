@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
-import { FieldsetContext } from '../Fieldset';
+import { CheckboxGroupContext } from '../Checkbox/Group';
 
 import type { SwitchProps } from './Switch';
 
@@ -20,10 +20,9 @@ type UseCheckbox = (props: SwitchProps) => FormField & {
     | 'onChange'
   >;
 };
-/** Handles props for `Checkbox` in context with `Checkbox.Group` (and `Fieldset`) */
+/** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
 export const useSwitch: UseCheckbox = (props) => {
-  const fieldset = useContext(FieldsetContext);
-
+  const checkboxGroup = useContext(CheckboxGroupContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'checkbox');
 
   return {
@@ -33,14 +32,14 @@ export const useSwitch: UseCheckbox = (props) => {
       ...inputProps,
       readOnly,
       type: 'checkbox',
-      // defaultChecked:
-      //   fieldset?.defaultValue === undefined
-      //     ? undefined
-      //     : fieldset?.defaultValue.includes(props.value),
-      // checked:
-      //   fieldset?.value === undefined
-      //     ? undefined
-      //     : fieldset?.value.includes(props.value),
+      defaultChecked:
+        checkboxGroup?.defaultValue === undefined
+          ? undefined
+          : checkboxGroup?.defaultValue.includes(props.value),
+      checked:
+        checkboxGroup?.value === undefined
+          ? undefined
+          : checkboxGroup?.value.includes(props.value),
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
@@ -54,6 +53,7 @@ export const useSwitch: UseCheckbox = (props) => {
           return;
         }
         props?.onChange?.(e);
+        checkboxGroup?.toggleValue(props.value);
       },
     },
   };

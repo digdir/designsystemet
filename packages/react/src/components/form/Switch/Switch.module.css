@@ -96,12 +96,12 @@
   transform: translateX(13px);
 }
 
-.input:checked:hover ~ .icon .checked {
+.input:not(:disabled, :read-only):checked:hover ~ .icon .checked {
   transition: transform 200ms ease;
   transform: translateX(11px);
 }
 
-.input:not(:checked) ~ .icon .box {
+.input:not(:checked, :disabled, :read-only) ~ .icon .box {
   stroke: var(--fds-semantic-border-input-default);
   transition-property: fill;
   transition-duration: 200ms;
@@ -137,6 +137,11 @@
   fill: var(--fds-semantic-background-subtle);
 }
 
+.container:not(.disabled, .readonly) > .control:hover > .icon > .checked,
+.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .checked {
+  fill: var(--fds-semantic-border-input-hover);
+}
+
 .readonly .input:read-only:not(:focus-visible):is(:checked) ~ .icon .checked {
   fill: var(--fds-semantic-border-neutral-default);
 }
@@ -153,6 +158,6 @@
 
 .container:not(.disabled, .readonly) > .control:hover > .icon > .box,
 .container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
-  fill: var(--fds-semantic-surface-neutral-subtle-hover);
-  stroke: var(--fds-semantic-text-neutral-subtle);
+  stroke: var(--fds-semantic-border-input-hover);
+  fill: var(--fds-semantic-surface-info-subtle-hover);
 }
