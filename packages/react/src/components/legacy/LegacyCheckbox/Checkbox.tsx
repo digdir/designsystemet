@@ -60,7 +60,7 @@ export interface LegacyCheckboxProps {
   readOnly?: boolean;
 }
 /**
- * @note Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/ikke-utgitt-checkbox--docs Checkbox} component.
+ * @note Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/kjernekomponenter-checkbox--docs Checkbox} component.
  */
 const LegacyCheckbox = ({
   checkboxId,

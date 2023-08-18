@@ -1,6 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { LegacyRadioButton } from './index';
-import { RadioButtonSize } from '../../../types/enums';
 import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
@@ -54,9 +53,9 @@ import { ArgsTable } from '@storybook/addon-docs';
       description: 'Brukes til å velge størrelse.',
       control: {
         type: 'radio',
-        options: [RadioButtonSize.Small, RadioButtonSize.Xsmall],
+        options: ['small', 'xsmall'],
       },
-      defaultValue: RadioButtonSize.Small,
+      defaultValue: 'small',
     },
     presentation: {
       description:
@@ -82,7 +81,7 @@ export const Template = (args = {}) => (
 
 <Information
   text='deprecated'
-  description='**Denne komponenten er erstattet av ny [Radio](/docs/ikke-utgitt-radio--docs) komponent.**'
+  description='**Denne komponenten er erstattet av ny [Radio](/docs/kjernekomponenter-radio--docs) komponent.**'
 />
 
 `LegacyRadioButton` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer.
@@ -125,7 +124,7 @@ Radioknappene kan ha flere forskjellige statuser:
   <Story
     name='Kompakt'
     args={{
-      size: RadioButtonSize.Xsmall,
+      size: 'xsmall',
       label: 'Kompakt',
     }}
   >
@@ -167,7 +166,7 @@ I avkrysset tilstand
   <Story
     name='Kompakt Avkrysset'
     args={{
-      size: RadioButtonSize.Xsmall,
+      size: 'xsmall',
       label: 'Kompakt',
       checked: true,
     }}

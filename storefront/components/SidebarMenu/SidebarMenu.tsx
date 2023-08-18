@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
-import {
-  Button,
-  ButtonColor,
-  ButtonSize,
-  ButtonVariant,
-} from '@digdir/design-system-react';
+import { Button } from '@digdir/design-system-react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';
@@ -45,9 +40,9 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
           <Button
             className={classes.toggleBtn}
             fullWidth
-            size={ButtonSize.Medium}
-            color={ButtonColor.Secondary}
-            variant={ButtonVariant.Outline}
+            size='medium'
+            color='secondary'
+            variant='outline'
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
           >

@@ -58,7 +58,13 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Komponentoversikt', 'Kjernekomponenter'],
+        method: 'alphabetical',
+        order: [
+          'Komponentoversikt',
+          'Kjernekomponenter',
+          'Endringslogger',
+          'Avviklet',
+        ],
       },
     },
     viewport: {
