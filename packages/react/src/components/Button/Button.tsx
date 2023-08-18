@@ -3,7 +3,6 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
-import { Paragraph } from '../Typography';
 
 import classes from './Button.module.css';
 
@@ -65,15 +64,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={classes.icon}
         />
       )}
-      {children && (
-        <Paragraph
-          as='span'
-          size={size}
-          className={classes.typography}
-        >
-          {children}
-        </Paragraph>
-      )}
+      {children}
       {icon && iconPlacement === 'right' && (
         <SvgIcon
           svgIconComponent={icon}
