@@ -104,15 +104,10 @@ export const InputWrapper = ({
     : undefined;
   const currentInputValue = value ? value.toString() : '';
 
-  const isFieldValid =
-    isValid ||
-    (characterLimit && currentInputValue.length <= characterLimit.maxCount) ||
-    false;
-
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
-    isValid: isFieldValid,
+    isValid,
     readOnly,
   });
 
