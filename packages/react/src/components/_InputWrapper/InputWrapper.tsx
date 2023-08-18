@@ -107,9 +107,9 @@ export const InputWrapper = ({
   const { variant, iconVariant } = getVariant({
     disabled,
     isSearch,
-    isValid: characterLimit
-      ? currentInputValue.length <= characterLimit.maxCount && isValid
-      : isValid,
+    isValid:
+      isValid ||
+      (characterLimit && currentInputValue.length <= characterLimit.maxCount),
     readOnly,
   });
 
