@@ -164,6 +164,6 @@
 
 .container:not(.disabled, .readonly) > .control:hover > .icon > .box,
 .container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
-  stroke: var(--fds-semantic-border-input-hover);
-  fill: var(--fds-semantic-surface-info-subtle-hover);
+  stroke: var(--fds-semantic-surface-action-primary-hover);
+  fill: var(--fds-semantic-surface-action-primary-no_fill-hover);
 }
