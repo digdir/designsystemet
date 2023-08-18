@@ -985,6 +985,22 @@ export const color = {
             lastName: 'no_fill-active',
           },
         ],
+        checked: [
+          {
+            value: '#0062ba',
+            type: 'color',
+            filePath: '../../design-tokens/Base/Semantic.json',
+            isSource: false,
+            original: {
+              value: '{colors.blue.700}',
+              type: 'color',
+            },
+            name: '--fds-semantic-surface-action-checked',
+            attributes: {},
+            path: ['semantic', 'surface', 'action', 'checked'],
+            lastName: 'checked',
+          },
+        ],
       },
       success: [
         {
@@ -1667,6 +1683,38 @@ export const color = {
             attributes: {},
             path: ['semantic', 'border', 'action', 'secondary', 'active'],
             lastName: 'active',
+          },
+        ],
+        default: [
+          {
+            value: '#00315d',
+            type: 'color',
+            filePath: '../../design-tokens/Base/Semantic.json',
+            isSource: false,
+            original: {
+              value: '{colors.blue.900}',
+              type: 'color',
+            },
+            name: '--fds-semantic-border-action-default',
+            attributes: {},
+            path: ['semantic', 'border', 'action', 'default'],
+            lastName: 'default',
+          },
+        ],
+        hover: [
+          {
+            value: '#0062ba',
+            type: 'color',
+            filePath: '../../design-tokens/Base/Semantic.json',
+            isSource: false,
+            original: {
+              value: '{colors.blue.700}',
+              type: 'color',
+            },
+            name: '--fds-semantic-border-action-hover',
+            attributes: {},
+            path: ['semantic', 'border', 'action', 'hover'],
+            lastName: 'hover',
           },
         ],
       },
