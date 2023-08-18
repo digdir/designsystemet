@@ -42,6 +42,7 @@
   --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
   --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
   --fds-focus-border-width: 3px;
+  --fds-transition: 200ms;
 
   position: absolute;
   left: 0;
@@ -81,9 +82,14 @@
 .icon .checked {
   position: absolute;
 }
+@media (prefers-reduced-motion) {
+  .icon {
+    --fds-transition: 0;
+  }
+}
 
 .input:hover ~ .icon .checked {
-  transition: transform 200ms ease;
+  transition: transform var(--fds-transition) ease;
   transform: translateX(2px);
 }
 
@@ -97,14 +103,14 @@
 }
 
 .input:not(:disabled, :read-only):checked:hover ~ .icon .checked {
-  transition: transform 200ms ease;
+  transition: transform var(--fds-transition) ease;
   transform: translateX(11px);
 }
 
 .input:not(:checked, :disabled, :read-only) ~ .icon .box {
   stroke: var(--fds-semantic-border-input-default);
   transition-property: fill;
-  transition-duration: 200ms;
+  transition-duration: var(--fds-transition);
   transition-timing-function: ease;
 }
 
