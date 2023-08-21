@@ -20,28 +20,22 @@ I Figma finner du komponenter og stiler fra designsystemet som du kan bruke i de
 
 Biblioteket er foreløpig ikke tilgjengeliggjort i Figma Community, da vi er i en veldig tidlig fase av arbeidet. Ønsker du å være med å utvikle dette i fellesskap - [ta kontakt](mailto:designsystem@digdir.no) så kan vi se på mulige samarbeidsformer.
 
-Har du tilgang til Figma-kontoen "Digdir" kan du joine "Felles designsystem" allerede nå og å få tilgang til stilene og komponentene.
-
-![Stegene for å joine Designsystem-teamet i Figma. Skjermbilde av Figma.](/img/join-team.png)
-
-For å finne designsystemet:
-
-1. Gå til "All teams"
-2. Søk etter "Designsystemet"
-3. Klikk på fanen som heter "Teams"
-4. Join teamet.
+Har du tilgang til Figma-kontoen "Digdir" kan du bruke stilene og komponentene allerede nå. Har du ikke @digdir e-postadresse, må du ha fått en invitasjon.
 
 ## Kom i gang med komponenter
 
-Etter å ha joinet "Felles designsystem" må du sjekke at du har slått på bibliotekene du vil bruke stiler og komponenter fra. Dette gjør du under "Assets" og bok-symbolet.
+Sjekk at du har aktivert de 3 fellesbibliotekene:
+
+- [Felles komponententer](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=503%3A3192&mode=design&t=Pou3e2YNIkM4t0Av-1)
+- [Felles tokens](https://www.figma.com/file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?type=design&node-id=2%3A193&mode=design&t=vJ1dV7QQyAAq6EPC-1)
+- [Felles ikonbibliotek](<https://www.figma.com/file/zixZT8aTsPEUSb41LIcsRr/Core-Icons-3-(Community)?type=design&node-id=774%3A2351&mode=design&t=FFPI6NYOtONV1lk4-1>)
 
 ![Skjermbilde av Figma. Stegene for å aktivere bibliotekene.](/img/activate-library.png)
 
-Alle bør ha aktivert de 3 fellesbibliotekene:
+1. Trykk på bok-symbolet under "Assets"
+2. Aktiver "Felles komponenter", "Felles tokens", "Felles ikonbibliotek"
 
-- Felles komponententer
-- Felles tokens
-- Felles ikonbibliotek
+NB. Dersom du ikke har @digdir e-postadresse, vil bibliotekene ikke vise med mindre du har fått tilsendt en invitasjon.
 
 Når du har slått på bibliotekene skal du kunne se komponentene ved å klikke på "Assets" og søke på det du trenger. Du kan også bruke tastatursnarveien SHIFT + I. Nå er det bare å dra komponentene inn i dine egne filer!
 
@@ -53,34 +47,42 @@ Alle komponenter kommer med ulike varianter og egenskaper. I Button-komponenten 
 
 <ResponsiveIframe
   src='/img/button-variant-properties.mp4'
-  title='Skjermopptak av Figma. Stegene for å aktivere bibliotekene.'
+  title='Skjermopptak av Figma som viser hvordan bytte mellom ulike varianter av en knapp.'
   frameborder='0'
   allow='autoplay; fullscreen; picture-in-picture'
   allowfullscreen
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-### Kom i gang med stiler
+### Kom i gang med stiler og variabler
 
-Stilene vil være tilgjengelige i høyremargen når du for eksempel skal velge en farge eller font og du trykker på de fire dottene.
+Stiler og variabler skal være tilgjengelige i høyremargen når du for eksempel trenger å velge en farge, skygge eller font.
 
-### Bruk egen fargepalett på komponentene
+#### Bruk egen fargepalett på komponentene
 
-Tokens er foreløpig ikke laget som [Figma variabler](https://docs.tokens.studio/variables/creating-variables), men det står på planen! 🙌 🤩
+Alle tokens er i sync med [Figma variabler](https://docs.tokens.studio/variables/creating-variables) og styles. For å få dine egne brand-farger kan du aktivere ditt brand i høyremargen. Du kan også aktivere det kun på en bestemt frame:
 
-Inntil videre må du derfor ha installert pluginen [Tokens Studio for Figma](https://docs.tokens.studio/) for å kunne aktivere ditt eget theme med egne fargepaletter. Du trenger en Github-bruker for dette.
+<ResponsiveIframe
+  src='/img/brand-variables.mp4'
+  title='Skjermopptak av Figma som viser hvordan man kan bytte mellom ulike brands i Figma'
+  frameborder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowfullscreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
 
-1. [Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens-plugin
-1. Generer et nytt "Personal Access Token" (PAT) i [GitHub Developer Settings](https://github.com/settings/tokens) med omfanget "repo"
-1. Kopier PAT-en (du kan bare se den én gang)
-1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
-   - Navn: `Digdir Figma Tokens`
-   - Personlig tilgangstoken: _din PAT_
-   - Repository: `digdir/designsystem`
-   - Standard gren: "hoved".
-   - Filbane: `design-tokens`
+#### Kompakte grensesnitt
 
-![Skjermbilde av Tokens Studio og innstillingene](/img/connect-tokens-studio-to-git.png)
+For admingrensesnitt eller ekspertverktøy kan compact-mode benyttes. Tekststørrelser og komponenter vil da bli mindre og passe bede inn i mer kompakte grensesnitt. NB: Font-size er ikke støttet i Figma variabler enda.
+
+<ResponsiveIframe
+  src='/img/density2.mp4'
+  title='Skjermopptak av Figma som viser hvordan man kan bytte mellom normal og kompakt i Figma'
+  frameborder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowfullscreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
 
 ### Typografi på små og store skjermer
 
@@ -96,3 +98,17 @@ Les mer om [typografi](/grunnleggende/designelementer/typografi).
   allowfullscreen
   aspectRatio='16-9'
 ></ResponsiveIframe>
+
+Typografi er foreløpig ikke støttet som variabler i Figma, inntil videre må du derfor ha installert pluginen [Tokens Studio for Figma](https://docs.tokens.studio/) for å kunne aktivere riktig viewport. Du trenger en Github-bruker for dette.
+
+1. [Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens-plugin
+1. Generer et nytt "Personal Access Token" (PAT) i [GitHub Developer Settings](https://github.com/settings/tokens) med omfanget "repo"
+1. Kopier PAT-en (du kan bare se den én gang)
+1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
+   - Navn: `Digdir Figma Tokens`
+   - Personlig tilgangstoken: _din PAT_
+   - Repository: `digdir/designsystem`
+   - Standard gren: "hoved".
+   - Filbane: `design-tokens`
+
+![Skjermbilde av Tokens Studio og innstillingene](/img/connect-tokens-studio-to-git.png)
