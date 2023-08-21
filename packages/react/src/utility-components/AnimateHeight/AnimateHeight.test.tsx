@@ -1,5 +1,8 @@
 import React from 'react';
-import { render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen, waitFor } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+
+import * as hooks from '../../hooks';
 
 import type { AnimateHeightProps } from './AnimateHeight';
 import { AnimateHeight } from './AnimateHeight';
@@ -8,7 +11,13 @@ const defaultProps: AnimateHeightProps = {
   open: false,
 };
 
+jest.useFakeTimers();
+
 describe('AnimateHeight', () => {
+  beforeEach(() => {
+    jest.spyOn(hooks, 'useMediaQuery').mockReturnValue(false); // Set prefers-reduced-motion to false
+  });
+
   it('Renders children', () => {
     const childTestId = 'content';
     const children = <div data-testid={childTestId} />;
@@ -36,14 +45,52 @@ describe('AnimateHeight', () => {
     expect(container.firstChild).toHaveAttribute('id', id);
   });
 
-  it('Sets content class to "open" when open', () => {
+  it('Sets class to "open" when open', () => {
     const { container } = render({ open: true });
-    expect(container.firstChild?.firstChild).toHaveClass('open');
+    expect(container.firstChild).toHaveClass('open');
   });
 
-  it('Sets content class to "closed" when closed', () => {
+  it('Sets class to "closed" when closed', () => {
     const { container } = render({ open: false });
-    expect(container.firstChild?.firstChild).toHaveClass('closed');
+    expect(container.firstChild).toHaveClass('closed');
+  });
+
+  it('Sets class to "openingOrClosing" when opening and "open" when timer has run', async () => {
+    const { container, rerender } = render({ open: false });
+    rerender(<AnimateHeight open />);
+    expect(container.firstChild).toHaveClass('openingOrClosing');
+    await act(jest.runAllTimers);
+    await waitFor(() => {
+      expect(container.firstChild).not.toHaveClass('openingOrClosing');
+    });
+    expect(container.firstChild).toHaveClass('open');
+  });
+
+  it('Sets class to "openingOrClosing" when closing and "closed" when timer has run', async () => {
+    const { container, rerender } = render({ open: true });
+    rerender(<AnimateHeight open={false} />);
+    expect(container.firstChild).toHaveClass('openingOrClosing');
+    await act(jest.runAllTimers);
+    await waitFor(() => {
+      expect(container.firstChild).not.toHaveClass('openingOrClosing');
+    });
+    expect(container.firstChild).toHaveClass('closed');
+  });
+
+  it('Sets class to "open" immediately when opening and "prefers-reduced-motion" is set', () => {
+    jest.spyOn(hooks, 'useMediaQuery').mockReturnValue(true);
+    const { container, rerender } = render({ open: false });
+    rerender(<AnimateHeight open />);
+    expect(container.firstChild).toHaveClass('open');
+    expect(container.firstChild).not.toHaveClass('openingOrClosing');
+  });
+
+  it('Sets class to "closed" immediately when closing and "prefers-reduced-motion" is set', () => {
+    jest.spyOn(hooks, 'useMediaQuery').mockReturnValue(true);
+    const { container, rerender } = render({ open: true });
+    rerender(<AnimateHeight open={false} />);
+    expect(container.firstChild).toHaveClass('closed');
+    expect(container.firstChild).not.toHaveClass('openingOrClosing');
   });
 });
 

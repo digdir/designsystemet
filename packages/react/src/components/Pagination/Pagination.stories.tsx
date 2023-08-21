@@ -6,12 +6,6 @@ import { Pagination } from '.';
 export default {
   title: 'Kjernekomponenter/Pagination',
   component: Pagination,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Preview: StoryFn<typeof Pagination> = (args) => {

@@ -7,10 +7,6 @@ export default {
   title: 'Kjernekomponenter/NativeSelect',
   component: NativeSelect,
   parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
     layout: 'padded',
   },
 } as Meta;

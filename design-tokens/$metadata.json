@@ -2,10 +2,10 @@
   "tokenSetOrder": [
     "Base/Core",
     "Base/Semantic",
-    "Brand/Default",
     "Brand/Digdir",
     "Brand/Tilsynet",
     "Brand/Altinn",
+    "Brand/Brreg",
     "Density/Default",
     "Density/Compact",
     "Viewport/@320",

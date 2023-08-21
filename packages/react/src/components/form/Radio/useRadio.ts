@@ -34,14 +34,12 @@ export const useRadio: UseRadio = (props) => {
       type: 'radio',
       name: radioGroup?.name,
       required: radioGroup?.required,
-      defaultChecked:
-        radioGroup?.defaultValue === undefined
-          ? undefined
-          : radioGroup?.defaultValue === props.value,
-      checked:
-        radioGroup?.value === undefined
-          ? undefined
-          : radioGroup?.value === props.value,
+      defaultChecked: radioGroup?.defaultValue
+        ? radioGroup?.defaultValue === props.value
+        : props.defaultChecked,
+      checked: radioGroup?.value
+        ? radioGroup?.value === props.value
+        : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();

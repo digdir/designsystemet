@@ -7,12 +7,6 @@ type Story = StoryObj<typeof Chip.Toggle>;
 export default {
   title: 'Kjernekomponenter/Chip',
   component: Chip.Toggle,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Preview: Story = {

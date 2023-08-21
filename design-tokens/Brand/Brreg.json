@@ -1,0 +1,276 @@
+{
+  "brand": {
+    "primary": {
+      "50": {
+        "value": "#FFFFFF",
+        "type": "color"
+      },
+      "100": {
+        "value": "#D1E4FF",
+        "type": "color"
+      },
+      "200": {
+        "value": "#9ECAFF",
+        "type": "color"
+      },
+      "300": {
+        "value": "#76ADFB",
+        "type": "color"
+      },
+      "400": {
+        "value": "#5391E9",
+        "type": "color"
+      },
+      "500": {
+        "value": "#2B77CC",
+        "type": "color"
+      },
+      "600": {
+        "value": "#005FAE",
+        "type": "color"
+      },
+      "700": {
+        "value": "#004785",
+        "type": "color"
+      },
+      "800": {
+        "value": "#00315E",
+        "type": "color"
+      },
+      "900": {
+        "value": "#001C3A",
+        "type": "color"
+      },
+      "950": {
+        "value": "#001127",
+        "type": "color"
+      }
+    },
+    "secondary": {
+      "50": {
+        "value": "#FFFFFF",
+        "type": "color"
+      },
+      "100": {
+        "value": "#E5F3F9",
+        "type": "color"
+      },
+      "200": {
+        "value": "#C9E7F4",
+        "type": "color"
+      },
+      "300": {
+        "value": "#70B3D7",
+        "type": "color"
+      },
+      "400": {
+        "value": "#4E99BD",
+        "type": "color"
+      },
+      "500": {
+        "value": "#3B7D9B",
+        "type": "color"
+      },
+      "600": {
+        "value": "#2C647E",
+        "type": "color"
+      },
+      "700": {
+        "value": "#1F4B63",
+        "type": "color"
+      },
+      "800": {
+        "value": "#133349",
+        "type": "color"
+      },
+      "900": {
+        "value": "#071D2C",
+        "type": "color"
+      },
+      "950": {
+        "value": "#03121D",
+        "type": "color"
+      }
+    },
+    "tertiary": {
+      "50": {
+        "value": "#EBF2F3",
+        "type": "color"
+      },
+      "100": {
+        "value": "#D7E5E7",
+        "type": "color"
+      },
+      "200": {
+        "value": "#B9CACB",
+        "type": "color"
+      },
+      "300": {
+        "value": "#9FAEAF",
+        "type": "color"
+      },
+      "400": {
+        "value": "#879394",
+        "type": "color"
+      },
+      "500": {
+        "value": "#6D7879",
+        "type": "color"
+      },
+      "600": {
+        "value": "#576061",
+        "type": "color"
+      },
+      "700": {
+        "value": "#414849",
+        "type": "color"
+      },
+      "800": {
+        "value": "#2C3132",
+        "type": "color"
+      },
+      "900": {
+        "value": "#191C1C",
+        "type": "color"
+      },
+      "950": {
+        "value": "#0F1112",
+        "type": "color"
+      }
+    }
+  },
+  "semantic": {
+    "surface": {
+      "action": {
+        "primary": {
+          "default": {
+            "value": "{brand.primary.600}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "$brand.primary.50",
+            "type": "color"
+          },
+          "active": {
+            "value": "$brand.primary.900",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        },
+        "secondary": {
+          "default": {
+            "value": "{brand.secondary.800}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{brand.secondary.50}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{brand.secondary.900}",
+            "type": "color",
+            "description": "Standard farge for handlinger"
+          }
+        }
+      },
+      "primary": {
+        "light": {
+          "value": "{brand.primary.100}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.primary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.primary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.primary.700}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "light": {
+          "value": "{brand.secondary.200}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.secondary.300}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.secondary.400}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.secondary.700}",
+          "type": "color"
+        }
+      },
+      "tertiary": {
+        "light": {
+          "value": "{brand.tertiary.100}",
+          "type": "color"
+        },
+        "light-hover": {
+          "value": "{brand.tertiary.200}",
+          "type": "color"
+        },
+        "light-active": {
+          "value": "{brand.tertiary.300}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{brand.tertiary.700}",
+          "type": "color"
+        }
+      }
+    },
+    "border": {
+      "primary": {
+        "default": {
+          "value": "{brand.primary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.primary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.primary.800}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "default": {
+          "value": "{brand.secondary.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.secondary.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.secondary.800}",
+          "type": "color"
+        }
+      },
+      "tertiary": {
+        "default": {
+          "value": "{brand.tertiary.400}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.tertiary.500}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{brand.tertiary.600}",
+          "type": "color"
+        }
+      }
+    }
+  }
+}

@@ -353,15 +353,15 @@
   },
   "component-mode-height": {
     "small": {
-      "value": "36",
+      "value": "{sizing.6}",
       "type": "sizing"
     },
     "medium": {
-      "value": "{sizing.10}",
+      "value": "{sizing.8}",
       "type": "sizing"
     },
     "large": {
-      "value": "{sizing.12}",
+      "value": "{sizing.10}",
       "type": "sizing"
     }
   },

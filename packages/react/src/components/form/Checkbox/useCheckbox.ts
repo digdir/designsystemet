@@ -32,14 +32,12 @@ export const useCheckbox: UseCheckbox = (props) => {
       ...inputProps,
       readOnly,
       type: 'checkbox',
-      defaultChecked:
-        checkboxGroup?.defaultValue === undefined
-          ? undefined
-          : checkboxGroup?.defaultValue.includes(props.value),
-      checked:
-        checkboxGroup?.value === undefined
-          ? undefined
-          : checkboxGroup?.value.includes(props.value),
+      defaultChecked: checkboxGroup?.defaultValue
+        ? checkboxGroup?.defaultValue.includes(props.value)
+        : props.defaultChecked,
+      checked: checkboxGroup?.value
+        ? checkboxGroup?.value.includes(props.value)
+        : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();

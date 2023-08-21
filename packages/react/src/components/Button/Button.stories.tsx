@@ -13,12 +13,6 @@ type Story = StoryObj<typeof Button>;
 const meta: Meta<typeof Button> = {
   title: 'Kjernekomponenter/Button',
   component: Button,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 };
 
 export default meta;
