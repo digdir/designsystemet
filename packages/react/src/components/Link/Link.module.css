@@ -4,7 +4,11 @@
   color: var(--fds-semantic-text-action-primary-default);
   cursor: pointer;
   text-decoration: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fds-spacing-1);
 }
 
 .link:visited {
@@ -13,9 +17,8 @@
 }
 
 .link:hover {
-  box-shadow: 0 2px 0 var(--fdsc-link-hover-underline-color);
   color: var(--fds-semantic-text-action-primary-default);
-  text-decoration: none;
+  text-decoration-thickness: 2px;
 }
 
 .link:active,
