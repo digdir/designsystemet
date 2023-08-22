@@ -1,29 +1,36 @@
 .link {
+  --fdsc-link-hover-underline-color: var(--fds-semantic-text-action-primary-default);
+
   color: var(--fds-semantic-text-action-primary-default);
   cursor: pointer;
   text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.link:visited {
+  color: var(--fds-semantic-text-visited-default);
+  text-decoration: none;
 }
 
 .link:hover {
-  color: var(--fds-semantic-text-action-primary-hover);
+  box-shadow: 0 2px 0 var(--fdsc-link-hover-underline-color);
+  color: var(--fds-semantic-text-action-primary-default);
   text-decoration: none;
 }
 
 .link:active,
 .link:focus {
   background: var(--fds-semantic-border-focus-outline);
-  box-shadow: 0 2px 0 var(--fds-semantic-border-focus-boxshadow);
+  box-shadow: 0 3px var(--fds-semantic-border-focus-boxshadow);
   color: var(--fds-semantic-text-action-primary-active);
   outline: none;
   text-decoration: none;
 }
 
-.link:visited {
-  color: var(--fds-semantic-text-visited-default);
-}
-
 .link.inverted:not(:focus, :active),
 .link.inverted:not(:focus, :active):hover,
 .link.inverted:not(:focus, :active):visited {
+  --fdsc-link-hover-underline-color: white;
+
   color: white;
 }
