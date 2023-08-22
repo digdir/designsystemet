@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Stack } from '../../../../../docs-components';
-import { Heading, Paragraph } from '../';
+import { Heading, Paragraph, Link } from '../';
 
 import { Alert } from '.';
 
@@ -38,6 +38,24 @@ export const MedHeading: Story = () => (
       <Paragraph>
         Det er lange køer for å bestille pass om dagen, det kan være lurt å
         bestille i god tid om du trenger pass til sommeren.
+      </Paragraph>
+    </Alert>
+  </>
+);
+
+export const MedLenke: Story = () => (
+  <>
+    <Alert severity='warning'>
+      <Heading
+        level={2}
+        size='xsmall'
+        spacing
+      >
+        Søknadsfristen går ut om 3 dager
+      </Heading>
+      <Paragraph>
+        Fristen for å søke opptak til utdanning er 15. april.{' '}
+        <Link href='https://designsystemet.no/'>Søk nå</Link>
       </Paragraph>
     </Alert>
   </>

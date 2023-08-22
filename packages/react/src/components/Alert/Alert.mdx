@@ -6,14 +6,20 @@ import * as AlertStories from './Alert.stories';
 
 # Alert
 
-`Alert` skal brukes til å vise viktige meldinger, varsler eller advarsler til brukere. Den er designet for å fange brukernes oppmerksomhet og gi dem relevant informasjon som krever handling eller gjøre dem bevisst på viktig informasjon
+Bruk `Alert` til budskap det er ekstra viktig at brukerne ser og forstår. Den er designet for å fange brukernes oppmerksomhet. Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. Hvis vi bruker varsler ofte, kan vi forverre dette problemet.
+
+Komponenten har flere varianter fordi den kan brukes til fire ulike budskap: Informasjon, advarsler, suksess og feilmelding.
+
+Du skal ikke bruke Alert som feilmelding til et enkelt skjemaelement. Alle komponenter har egen feilmelding til dette formålet.
+
+Vær sikker på at budskapet du bruker Alert til er så tydelig at det gir mening selv om teksten er svært kort.
 
 <Primary />
 <Controls />
 
 ## Bruk
 
-<Information text='token' />
+Husk å importere ny tokens-pakke **`@digdir/design-system-tokens/brand/<brand>/tokens.css`** før du tar i bruk denne komponenten. Importer tokens i henhold til ditt brand; `altinn`, `digdir`, `tilsynet` eller `brreg`.'
 
 ```tsx
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
@@ -41,6 +47,12 @@ Du kan legge på `role=alert` men vær opperksom på forventet oppførsel dette 
 Dersom du ønsker en tittel i komponenten så kan du bruke [Typografi](/docs/kjernekomponenter-typography--docs) komponentene. Husk å velg riktig `Heading` nivå basert `Alert` sin plass i innholdstruktur på siden.
 
 <Canvas of={AlertStories.MedHeading} />
+
+### Med lenke
+
+Du kan ha en lenke i Alert hvis det hjelper brukeren å løse oppgaven. Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
+
+<Canvas of={AlertStories.MedLenke} />
 
 ### Andre eksempler
 
