@@ -71,7 +71,12 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             required,
           }}
         >
-          <div className={cn(classes[size], inline && classes.inline)}>
+          <div
+            className={cn(
+              !rest.hideLegend && classes.spacing,
+              inline && classes.inline,
+            )}
+          >
             {children}
           </div>
         </RadioGroupContext.Provider>

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { useState, forwardRef, createContext } from 'react';
+import cn from 'classnames';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
@@ -74,7 +75,9 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div className={classes[size]}>{children}</div>
+          <div className={cn(!rest.hideLegend && classes.spacing)}>
+            {children}
+          </div>
         </CheckboxGroupContext.Provider>
       </Fieldset>
     );
