@@ -13,7 +13,7 @@ import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
 
 type TokenListProps = {
-  type: 'color' | 'typography' | 'shadow' | 'size';
+  type: 'color' | 'typography' | 'shadow' | 'sizing' | 'spacing';
   showValue?: boolean;
   token?: string;
   showThemePicker?: boolean;
@@ -36,7 +36,7 @@ type TokenItemType = {
   lastName: string;
 };
 
-type CardColumns = 2 | 3;
+type CardColumnType = 2 | 3;
 type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
 
 /**
@@ -56,7 +56,7 @@ const stripLabelByLevel = (str: string, level: number) => {
 
 const TokenList = ({ type, showThemePicker }: TokenListProps) => {
   const [brand, setBrand] = useState<BrandType>('digdir');
-  const [cardColumns, setCardColumns] = useState<CardColumns>(3);
+  const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
 
   useEffect(() => {
     setCardColumns(type === 'color' ? 3 : 2);
@@ -72,7 +72,8 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
           {type === 'color' && <TokenColor value={item.value} />}
           {type === 'typography' && <TokenFontSize value={item.value} />}
           {type === 'shadow' && <TokenShadow value={item.value} />}
-          {type === 'size' && <TokenSize value={item.value} />}
+          {type === 'sizing' && <TokenSize value={item.value} />}
+          {type === 'spacing' && <TokenSize value={item.value} />}
         </div>
 
         <div className={classes.text}>

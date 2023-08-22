@@ -1,16 +1,15 @@
 .size {
   min-height: var(--preview-min-height);
-  width: 100%;
+  width: 150px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #f1d7ff;
+  background-color: #d2ffce;
   border-radius: 4px;
-  padding: 16px 0;
+  padding: 16px 16px;
 }
 
 .bar {
-  height: 20px;
-  background-color: #ae48e4;
+  height: 50px;
+  background-color: #8de285;
   border-radius: 2px;
 }
