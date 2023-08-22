@@ -6,13 +6,12 @@ import * as AlertStories from './Alert.stories';
 
 # Alert
 
-Bruk `Alert` til budskap det er ekstra viktig at brukerne ser og forstår. Den er designet for å fange brukernes oppmerksomhet. Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. Hvis vi bruker varsler ofte, kan vi forverre dette problemet.
+Bruk `Alert` til budskap det er ekstra viktig at brukerne ser og forstår. Den er designet for å fange brukernes oppmerksomhet. Vær sikker på at budskapet er så tydelig at det gir mening selv om teksten er svært kort.
 
-Komponenten har flere varianter fordi den kan brukes til fire ulike budskap: Informasjon, advarsler, suksess og feilmelding.
+**Vær oppmerksom på:**
 
-Du skal ikke bruke Alert som feilmelding til et enkelt skjemaelement. Alle komponenter har egen feilmelding til dette formålet.
-
-Vær sikker på at budskapet du bruker Alert til er så tydelig at det gir mening selv om teksten er svært kort.
+- Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. Hvis vi bruker varsler ofte, kan vi forverre dette problemet.
+- Du skal _ikke_ bruke `Alert` som feilmelding til et enkelt skjemaelement. Alle komponenter har egen feilmelding til dette formålet.
 
 <Primary />
 <Controls />
@@ -28,25 +27,47 @@ import { Alert } from '@digdir/design-system-react';
 <Alert>You are using the Alert component!</Alert>;
 ```
 
-## Tilgjengelighet
+## Varianter med eksempler
 
-### Alternativ-tekst
+`Alert` har flere varianter fordi den kan brukes til fire ulike budskap: Informasjon, advarsler, suksess og feilmelding.
 
-Ikonene er ikke bare dekorative. De har default alternativ-tekst som kommuniserer alvorlighetsgrad: "Informasjon", "Suksess", "Advarsel" og "Feil". Denne blir lest opp som en del av innholdet for skjermleserbrukere.
+### Informasjon
 
-### Interaksjon Skjermleser
+Bruk `info` til informasjon som er nyttig for brukerne, men ikke avgjørende for at de skal forstå oppgaven.
 
-Alert-komponenten er ikke en ARIA live region og er ikke relatert til ARIA `role="alert"`. Komponenten skal ikke motta dynamiske oppdateringer. Den blir presentert for skjermleserbrukere som vanlig statisk innhold.
+<Canvas of={AlertStories.VariantInfo} />
 
-Du kan legge på `role=alert` men vær opperksom på forventet oppførsel dette medfører. Les mer om dette på [W3 Alert pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
+### Suksess
 
-## Eksempler
+Bruk `success` når du vil bekrefte at brukeren har fullført en oppgave, at handlingen var vellykket.
 
-### Med Heading
+<Canvas of={AlertStories.VariantSuccess} />
 
-Dersom du ønsker en tittel i komponenten så kan du bruke [Typografi](/docs/kjernekomponenter-typography--docs) komponentene. Husk å velg riktig `Heading` nivå basert `Alert` sin plass i innholdstruktur på siden.
+### Advarsel
+
+Bruk `warning` når du vil at brukeren skal foreta en bestemt handling eller for å advare dem om noe viktig.
+
+<Canvas of={AlertStories.VariantWarning} />
+
+### Feilmelding
+
+Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren i å komme videre.
+
+<Canvas of={AlertStories.VariantDanger} />
+
+## Andre eksempler
+
+`Alert` kan brukes sammen med andre komponenter og stiler. Her er noen eksempler.
+
+### Med overskrift
+
+Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/kjernekomponenter-typography--docs)-komponentene. Husk å velg riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Canvas of={AlertStories.MedHeading} />
+
+Dersom tittel og beskrivelse gjentar det samme er det bedre å bruke en enkel setning uten overskrift.
+
+<Canvas of={AlertStories.MedKunHeading} />
 
 ### Med lenke
 
@@ -54,6 +75,57 @@ Du kan ha en lenke i Alert hvis det hjelper brukeren å løse oppgaven. Men vær
 
 <Canvas of={AlertStories.MedLenke} />
 
-### Andre eksempler
+### Med skygge
 
-<Canvas of={AlertStories.Eksempler} />
+Kan brukes når alerten skal fremheves mer fra bakgrunnen, for eksempel dersom den skal legges over annet innhold
+
+<Canvas of={AlertStories.MedShadow} />
+
+## Tekst i komponenten
+
+Det er ikke alle som intuitivt forstår forskjellen på varslene selv om de har ulike ikoner og farger. Derfor er det viktig at ordene du bruker gjør det klart for brukerne hvordan de skal forholde seg til informasjonen i varselet.
+
+Det må være tydelig hvem som gjør hva. Tenk på teksten som en samtale med brukeren, bruk ord som «vi» og «du».
+
+Hvis meldingen er knyttet til en bestemt handling, for eksempel svar på et spørsmål, bør teksten gjenta nøkkelord fra label.
+
+Det er spesielt viktig at teksten i feilmeldingene forteller om det er noe brukene må eller kan gjøre for å komme videre med oppgaven sin. Her er en liste med hvilken type informasjon en feilmelding bør inneholde:
+
+• Fortell hva som har skjedd
+Eksempel: “Kunne ikke koble til konto.”
+
+• Fortell hvorfor det skjedde
+Eksempel: “Vi kunne ikke koble til kontoen din på grunn av tekniske problemer fra vår side.”
+
+• Forsikre brukeren
+Eksempel: “Endringene dine har blitt lagret.”
+
+• Gi dem en vei ut av problemet
+Eksempel: “Hvis dette problemet oppstår igjen, kontakt Kundeservice.”
+
+• Hjelp dem å fikse problemet selv
+Eksempel: “Vennligst prøv igjen.”
+
+## Tilgjengelighet
+
+### Alternativtekst
+
+Ikonene er ikke bare dekorative. De har en standard alternativtekst som kommuniserer alvorlighetsgrad: "Informasjon", "Suksess", "Advarsel" og "Feil". Denne blir lest opp som en del av innholdet for skjermleserbrukere.
+
+### Interaksjon med skjermleser
+
+Alert-komponenten er ikke en ARIA live region og er ikke relatert til ARIA `role="alert"`. Komponenten skal ikke motta dynamiske oppdateringer. Den blir presentert for skjermleserbrukere som vanlig statisk innhold.
+
+Du kan legge på `role=alert` men vær opperksom på forventet oppførsel dette medfører.
+
+#### Ikke gjør dette
+
+Ikke bruk `role=alert` om alerten blir synlig når siden lastes inn. Dette er basert på forventet oppførsel av denne attributten. Du kan lese mer om dette på [dokumentasjonen til ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
+
+<Canvas of={AlertStories.UtenAria} />
+
+#### Gjør dette
+
+Bruk `role=alert` hvis den dukker opp dynamisk pga brukerinput eller andre faktorer som kan trigge en alert.
+
+<Canvas of={AlertStories.MedAria} />
