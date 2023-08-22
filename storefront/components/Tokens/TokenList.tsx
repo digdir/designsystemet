@@ -1,27 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Dropdown, Button } from '@navikt/ds-react';
 import cn from 'classnames';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
-import * as color from '../../tokens';
+import * as tokens from '../../tokens';
 
 import { TokenColor } from './TokenColor/TokenColor';
 import { TokenFontSize } from './TokenFontSize/TokenFontSize';
 import { TokenShadow } from './TokenShadow/TokenShadow';
 import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
-import {
-  ToggleButtonGroup,
-  ToggleButtonProps,
-} from '@digdir/design-system-react';
 
 type TokenListProps = {
-  type: 'color-brand' | 'color-semantic' | 'fontSize' | 'shadow' | 'size';
+  type: 'color' | 'typography' | 'shadow' | 'size';
   showValue?: boolean;
   token?: string;
+  showThemePicker?: boolean;
 };
 
-type TokenType = {
+type TokenItemType = {
   value: string;
   type: string;
   description: string;
@@ -38,18 +36,41 @@ type TokenType = {
   lastName: string;
 };
 
-const TokenList = ({ type }: TokenListProps) => {
-  const card = (item: TokenType, index: number) => {
+type CardColumns = 2 | 3;
+type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
+
+/**
+ * Strips words in string by the level
+ */
+const stripLabelByLevel = (str: string, level: number) => {
+  const strArr = str.split(' ');
+  let res = '';
+  for (let i = 1; i < strArr.length; i++) {
+    if (i === level) {
+      break;
+    }
+    res += ' ' + strArr[i];
+  }
+  return res;
+};
+
+const TokenList = ({ type, showThemePicker }: TokenListProps) => {
+  const [brand, setBrand] = useState<BrandType>('digdir');
+  const [cardColumns, setCardColumns] = useState<CardColumns>(3);
+
+  useEffect(() => {
+    setCardColumns(type === 'color' ? 3 : 2);
+  }, [type]);
+
+  const card = (item: TokenItemType, index: number) => {
     return (
       <div
         className={classes.card}
         key={index}
       >
         <div className={classes.preview}>
-          <TokenColor value={item.value} />
-          {type === 'color-brand' && <TokenColor value={item.value} />}
-          {type === 'color-semantic' && <TokenColor value={item.value} />}
-          {type === 'fontSize' && <TokenFontSize value={item.value} />}
+          {type === 'color' && <TokenColor value={item.value} />}
+          {type === 'typography' && <TokenFontSize value={item.value} />}
           {type === 'shadow' && <TokenShadow value={item.value} />}
           {type === 'size' && <TokenSize value={item.value} />}
         </div>
@@ -68,8 +89,8 @@ const TokenList = ({ type }: TokenListProps) => {
     );
   };
 
-  type Color = typeof color;
-  const tokenList: Color = color.digdir.color;
+  type Color = typeof tokens;
+  const tokenList: Color = tokens[brand][type];
 
   const recursive = (object: Color, level: number, name: string) => {
     level++;
@@ -77,21 +98,26 @@ const TokenList = ({ type }: TokenListProps) => {
       <div>
         {Object.keys(object).map((value: string, index: number) => {
           const token = object[value as keyof Color];
-          const Heading = `h${level === 0 ? 3 : 4}`;
-          console.log(value);
+          const Heading = `h${level === 1 ? 3 : 4}`;
+
+          name = stripLabelByLevel(name, level);
           name += ' ' + value;
 
           return (
             <div key={index}>
-              <Heading>
-                {capitalizeString(name)} {level}
-              </Heading>
+              {(level === 1 || Array.isArray(token)) && (
+                <Heading>{capitalizeString(name)}</Heading>
+              )}
 
               {Array.isArray(token) && (
                 <div className={classes.section}>
-                  <div className={classes.cards}>
+                  <div
+                    className={cn(classes.cards, {
+                      [classes.cards2]: cardColumns === 2,
+                    })}
+                  >
                     {token.map((value, index: number) =>
-                      card(value as TokenType, index),
+                      card(value as TokenItemType, index),
                     )}
                   </div>
                 </div>
@@ -106,16 +132,34 @@ const TokenList = ({ type }: TokenListProps) => {
 
   return (
     <div className={classes.tokens}>
-      <div className={classes.toggleGroup}>
-        <ToggleButtonGroup
-          items={[
-            { value: 'digdir', label: 'Digdir' },
-            { value: 'altinn', label: 'altinn' },
-            { value: 'tilsynet', label: 'tilsynet' },
-            { value: 'Brreg', label: 'Brreg' },
-          ]}
-        ></ToggleButtonGroup>
-      </div>
+      {showThemePicker && (
+        <div className={classes.toggleGroup}>
+          <Dropdown>
+            <Button
+              variant='secondary'
+              as={Dropdown.Toggle}
+            >
+              {capitalizeString(brand)}
+            </Button>
+            <Dropdown.Menu>
+              <Dropdown.Menu.List>
+                <Dropdown.Menu.List.Item onClick={() => setBrand('digdir')}>
+                  Digdir
+                </Dropdown.Menu.List.Item>
+                <Dropdown.Menu.List.Item onClick={() => setBrand('altinn')}>
+                  Altinn
+                </Dropdown.Menu.List.Item>
+                <Dropdown.Menu.List.Item onClick={() => setBrand('tilsynet')}>
+                  Tilsynet
+                </Dropdown.Menu.List.Item>
+                <Dropdown.Menu.List.Item onClick={() => setBrand('brreg')}>
+                  Brreg
+                </Dropdown.Menu.List.Item>
+              </Dropdown.Menu.List>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      )}
 
       <div className={classes.tokens}>{recursive(tokenList, 0, '')}</div>
     </div>

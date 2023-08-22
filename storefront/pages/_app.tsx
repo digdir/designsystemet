@@ -3,6 +3,7 @@ import 'normalize.css/normalize.css';
 import 'tippy.js/dist/tippy.css';
 import '@altinn/figma-design-tokens/dist/tokens.css';
 import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+import '@navikt/ds-css';
 import '../globals.css';
 import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';

@@ -5,16 +5,16 @@
 }
 
 .toggleGroup {
-  width: 55%;
+  width: 52%;
 }
 
 .toggleGroup > span {
-  height: 63px;
+  height: 58px;
   border-radius: 4px;
 }
 
 .toggleGroup button {
-  margin: 8px;
+  margin: 5px;
   height: 44px;
   border-radius: 4px;
 }
@@ -35,6 +35,10 @@
   grid-row-gap: 24px;
   grid-template-columns: repeat(3, 1fr);
   margin-top: var(--spacing-4);
+}
+
+.cards2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .tokens h3 {
@@ -64,8 +68,6 @@
 
 .preview {
   border-radius: 50%;
-  height: 60px;
-  width: 60px;
 }
 
 .text {

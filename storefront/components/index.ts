@@ -18,7 +18,6 @@ export type { NavigationCardProps } from './NavigationCard';
 export { ResponsiveIframe } from './ResponsiveIframe';
 export { Section } from './Section';
 export { SidebarMenu } from './SidebarMenu';
-export { TableOfContents } from './TableOfContents';
 export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
