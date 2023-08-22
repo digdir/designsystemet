@@ -1,21 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
-
 import Image from 'next/image';
 
 import { Container } from '../Container/Container';
 
 import classes from './Section.module.css';
-
-
-
-
-
-
-
-
-
-
 
 interface SectionProps {
   children: React.ReactNode;
@@ -28,7 +17,7 @@ const Section = ({
   children,
   title,
   backgroundColor = 'grey',
-   detail,
+  detail,
 }: SectionProps) => {
   return (
     <div className={cn(classes.section, classes[backgroundColor])}>

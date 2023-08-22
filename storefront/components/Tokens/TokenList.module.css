@@ -4,6 +4,21 @@
   border-bottom: 1px solid rgb(214, 214, 214);
 }
 
+.toggleGroup {
+  width: 55%;
+}
+
+.toggleGroup > span {
+  height: 63px;
+  border-radius: 4px;
+}
+
+.toggleGroup button {
+  margin: 8px;
+  height: 44px;
+  border-radius: 4px;
+}
+
 .section {
   border-bottom: 1px solid rgb(221, 221, 221);
   padding-bottom: 36px;

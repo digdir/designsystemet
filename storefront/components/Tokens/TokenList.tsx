@@ -3,13 +3,17 @@ import cn from 'classnames';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
-import { color } from '../../tokens/tokens';
+import * as color from '../../tokens';
 
 import { TokenColor } from './TokenColor/TokenColor';
 import { TokenFontSize } from './TokenFontSize/TokenFontSize';
 import { TokenShadow } from './TokenShadow/TokenShadow';
 import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
+import {
+  ToggleButtonGroup,
+  ToggleButtonProps,
+} from '@digdir/design-system-react';
 
 type TokenListProps = {
   type: 'color-brand' | 'color-semantic' | 'fontSize' | 'shadow' | 'size';
@@ -64,10 +68,11 @@ const TokenList = ({ type }: TokenListProps) => {
     );
   };
 
-  type Color = typeof color.semantic;
-  const tokenList: Color = color.semantic;
+  type Color = typeof color;
+  const tokenList: Color = color.digdir.color;
 
   const recursive = (object: Color, level: number, name: string) => {
+    level++;
     return (
       <div>
         {Object.keys(object).map((value: string, index: number) => {
@@ -75,7 +80,7 @@ const TokenList = ({ type }: TokenListProps) => {
           const Heading = `h${level === 0 ? 3 : 4}`;
           console.log(value);
           name += ' ' + value;
-          level++;
+
           return (
             <div key={index}>
               <Heading>
@@ -99,7 +104,22 @@ const TokenList = ({ type }: TokenListProps) => {
     );
   };
 
-  return <div className={classes.tokens}>{recursive(tokenList, 0, '')}</div>;
+  return (
+    <div className={classes.tokens}>
+      <div className={classes.toggleGroup}>
+        <ToggleButtonGroup
+          items={[
+            { value: 'digdir', label: 'Digdir' },
+            { value: 'altinn', label: 'altinn' },
+            { value: 'tilsynet', label: 'tilsynet' },
+            { value: 'Brreg', label: 'Brreg' },
+          ]}
+        ></ToggleButtonGroup>
+      </div>
+
+      <div className={classes.tokens}>{recursive(tokenList, 0, '')}</div>
+    </div>
+  );
 };
 
 export { TokenList };
