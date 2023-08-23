@@ -115,18 +115,16 @@ Ikonene er ikke bare dekorative. De har en standard alternativtekst som kommunis
 
 ### Interaksjon med skjermleser
 
-Alert-komponenten er ikke en ARIA live region og er ikke relatert til ARIA `role="alert"`. Komponenten skal ikke motta dynamiske oppdateringer. Den blir presentert for skjermleserbrukere som vanlig statisk innhold.
-
-Du kan legge på `role=alert` men vær opperksom på forventet oppførsel dette medfører.
+Alert-komponenten kommer ikke med en `role="alert"` som default, den blir presentert for skjermleserbrukere som vanlig statisk innhold. Du kan legge på `role=alert` selv, men vær opperksom på forventet oppførsel dette medfører. Du kan lese mer om dette på [dokumentasjonen til ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
 
 #### Ikke gjør dette
 
-Ikke bruk `role=alert` om alerten blir synlig når siden lastes inn. Dette er basert på forventet oppførsel av denne attributten. Du kan lese mer om dette på [dokumentasjonen til ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
+Ikke bruk `role=alert` om alert er synlig når siden lastes inn.
 
 <Canvas of={AlertStories.UtenAria} />
 
 #### Gjør dette
 
-Bruk `role=alert` hvis den dukker opp dynamisk pga brukerinput eller andre faktorer som kan trigge en alert.
+Bruk `role=alert` hvis den dukker opp dynamisk underveis pga brukerinput eller andre faktorer som kan trigge en alert.
 
 <Canvas of={AlertStories.MedAria} />
