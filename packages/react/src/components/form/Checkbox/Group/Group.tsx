@@ -75,7 +75,7 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div className={cn(!rest.hideLegend && classes.spacing)}>
+          <div className={cn(!rest.hideLegend && classes.alignToLegend)}>
             {children}
           </div>
         </CheckboxGroupContext.Provider>

@@ -1,4 +1,4 @@
-.spacing {
+.alignToLegend {
   margin-left: calc(var(--fds-spacing-2) * -1);
 }
 
