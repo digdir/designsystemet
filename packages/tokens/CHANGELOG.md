@@ -3,16 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.3.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.2.0...@digdir/design-system-tokens@0.3.0) (2023-08-16)
-
+# [0.4.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.3.0...@digdir/design-system-tokens@0.4.0) (2023-08-23)
 
 ### Features
 
-* **tokens:** Add Brreg theme ([#701](https://github.com/digdir/designsystem/issues/701)) ([64c4f7a](https://github.com/digdir/designsystem/commit/64c4f7ad121ecbaaf881d1fd198645250ec5f8fd))
+- added default action colors ([#728](https://github.com/digdir/designsystem/issues/728)) ([d578067](https://github.com/digdir/designsystem/commit/d578067bd0478044904896156ba3154685af58a1))
 
+# [0.3.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.2.0...@digdir/design-system-tokens@0.3.0) (2023-08-16)
 
+### Features
 
-
+- **tokens:** Add Brreg theme ([#701](https://github.com/digdir/designsystem/issues/701)) ([64c4f7a](https://github.com/digdir/designsystem/commit/64c4f7ad121ecbaaf881d1fd198645250ec5f8fd))
 
 # [0.2.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.1.7...@digdir/design-system-tokens@0.2.0) (2023-08-09)
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.0...@digdir/design-system-react@0.23.1) (2023-08-23)
+
+### Bug Fixes
+
+- **Accordion:** Apply height animation on opening and closing only ([#730](https://github.com/digdir/designsystem/issues/730)) ([78852e1](https://github.com/digdir/designsystem/commit/78852e195efea10b9eb93085b5ad20b843f39aa5))
+- **Checkbox, Radio, Fieldset:** :bug: Make sure spacings are only applied when needed ([#746](https://github.com/digdir/designsystem/issues/746)) ([f03df61](https://github.com/digdir/designsystem/commit/f03df61dd5b5ca3e93e62a30bd480c9541a71ccf))
+- **InputWrapper:** isValid works now independent of charLimit validation ([#734](https://github.com/digdir/designsystem/issues/734)) ([bf4ecd8](https://github.com/digdir/designsystem/commit/bf4ecd83f71f66351d6de0cae4343fcded53ed0a))
+- **Link:** :lipstick: Tweaked style for better visibility between states ([#744](https://github.com/digdir/designsystem/issues/744)) ([cfc37e2](https://github.com/digdir/designsystem/commit/cfc37e2687db883a25dc16042c1e3c602455850b))
+- **Pagination:** :bug: Fix compact spacings and ellipsis alignment ([#748](https://github.com/digdir/designsystem/issues/748)) ([c54eb1e](https://github.com/digdir/designsystem/commit/c54eb1ec90b6088774202effa630d3c1d4a0425f))
+- **Radio, Checkbox:** :bug: Fallback to `checked` or `defaultChecked` if `Group` `value` is not set ([#733](https://github.com/digdir/designsystem/issues/733)) ([4777dac](https://github.com/digdir/designsystem/commit/4777dac6bef610cbf5010ff37eff5d6c42820df9))
+
 # [0.23.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.22.0...@digdir/design-system-react@0.23.0) (2023-08-16)
 
 ### Bug Fixes
