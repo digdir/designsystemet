@@ -124,11 +124,11 @@
             "type": "color"
           },
           "hover": {
-            "value": "$brand.primary.800",
+            "value": "{brand.primary.800}",
             "type": "color"
           },
           "active": {
-            "value": "$brand.primary.900",
+            "value": "{brand.primary.900}",
             "type": "color",
             "description": "Standard farge for handlinger"
           }
