@@ -86,9 +86,9 @@ const baseConfig = (brand: Brands) => {
 
   return {
     include: [
-      `${tokensPath}/Brand/${brand}.json`,
       `${tokensPath}/Base/Semantic.json`,
       `${tokensPath}/Density/Default.json`,
+      `${tokensPath}/Brand/${brand}.json`,
     ],
     source: [`${tokensPath}/Base/Core.json`],
   };
