@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.4.0...@digdir/design-system-tokens@0.4.1) (2023-08-23)
+
+### Bug Fixes
+
+- **tokens:** Brand tokens not always overriding correctly in tokens export ([#750](https://github.com/digdir/designsystem/issues/750)) ([4ae2c5b](https://github.com/digdir/designsystem/commit/4ae2c5b99139c3cef5b5ffc67d201a61220e89a8))
+
 # [0.4.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.3.0...@digdir/design-system-tokens@0.4.0) (2023-08-23)
 
 ### Features

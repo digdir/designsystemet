@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.1...@digdir/design-system-react@0.23.2) (2023-08-23)
+
+### Bug Fixes
+
+- **Accordion:** :bug: Correct header color opacity ([f68ad25](https://github.com/digdir/designsystem/commit/f68ad25d4693505bfa78679d1cb14454bbf99644))
+
 ## [0.23.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.0...@digdir/design-system-react@0.23.1) (2023-08-23)
 
 ### Bug Fixes
