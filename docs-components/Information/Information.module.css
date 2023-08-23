@@ -1,10 +1,4 @@
 .container {
-  background-color: var(--fds-semantic-surface-warning-subtle);
-  border-left: 8px solid var(--fds-semantic-border-warning-default);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  width: auto;
   margin-top: 24px !important;
   margin-bottom: 2rem !important;
 }
@@ -17,13 +11,30 @@
 }
 
 .beta {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
   background-color: #f1ecff;
   border-left: 8px solid #6544c5;
 }
 
 .danger {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
   background-color: var(--fds-semantic-surface-danger-subtle);
   border-left: 8px solid var(--fds-semantic-border-danger-default);
+}
+
+.warning {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  background-color: var(--fds-semantic-surface-warning-subtle);
+  border-left: 8px solid var(--fds-semantic-border-warning-default);
 }
 
 .title {

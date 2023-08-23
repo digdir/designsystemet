@@ -1,5 +1,6 @@
 import React from 'react';
 import { Markdown } from '@storybook/blocks';
+import cn from 'classnames';
 
 import classes from './Information.module.css';
 
@@ -7,7 +8,7 @@ type Texts = 'token' | 'development' | 'beta' | 'deprecated';
 
 const texts: Record<Texts, { description: string; title?: string }> = {
   token: {
-    title: 'Tokens',
+    title: '',
     description:
       'Husk å importere ny tokens-pakke **`@digdir/design-system-tokens/brand/<brand>/tokens.css`** før du tar i bruk denne komponenten.\n\n Importer tokens i henhold til ditt brand; `altinn`, `digdir`, `brreg` eller `tilsynet`.',
   },
@@ -34,8 +35,10 @@ const colorClass = (text: Texts) => {
       return classes.beta;
     case 'deprecated':
       return classes.danger;
+    case 'development':
+      return classes.warning;
     default:
-      return '';
+      return null;
   }
 };
 
@@ -48,7 +51,7 @@ export const Information = ({ text, description }: InformationProps) => {
   const textData = texts[text];
 
   return (
-    <div className={classes.container + ' ' + colorClass(text)}>
+    <div className={cn(classes.container, colorClass(text))}>
       {textData.title && <h2 className={classes.title}>{textData.title}</h2>}
       <div className={classes.desc}>
         <Markdown>{`${textData.description} \n\n  ${
