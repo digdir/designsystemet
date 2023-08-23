@@ -5,7 +5,7 @@
   min-width: 0;
 }
 
-.fieldset > :not(:first-child, :empty) {
+.spacing > :not(:first-child, :empty) {
   margin-top: var(--fds-spacing-2);
 }
 
