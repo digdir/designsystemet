@@ -24,7 +24,7 @@ describe('Pagination', () => {
     const buttons = screen.getAllByRole('button');
     expect(buttons.length).toBe(7);
 
-    const ellipsisElements = screen.getAllByText('...');
+    const ellipsisElements = screen.getAllByText('…');
     expect(ellipsisElements.length).toBe(2);
 
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('Pagination', () => {
     const buttons = screen.getAllByRole('button');
     expect(buttons.length).toBe(5);
 
-    const ellipsisElements = screen.getAllByText('...');
+    const ellipsisElements = screen.getAllByText('…');
     expect(ellipsisElements.length).toBe(2);
 
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
