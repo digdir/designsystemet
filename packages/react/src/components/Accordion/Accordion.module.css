@@ -7,7 +7,6 @@
   --fdsc-accordion-header-padding-left: var(--fds-spacing-5);
   --fdsc-accordion-header-bg-neutral: var(--fds-semantic-surface-neutral-default);
   --fdsc-accordion-header-bg-neutral-active: var(--fds-semantic-surface-action-primary-no_fill-hover);
-  --fdsc-accordion-header-bg-brand-active: var(--fds-semantic-surface-neutral-subtle-hover);
   --fdsc-accordion-header-bg-subtle: var(--fds-semantic-surface-neutral-subtle);
   --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);
   --fdsc-accordion-header-bg-primary: var(--fds-semantic-surface-primary-light);
@@ -153,7 +152,7 @@
 .accordion.primary > .item.open > .header > button,
 .accordion.secondary > .item.open > .header > button,
 .accordion.tertiary > .item.open > .header > button {
-  background-color: var(--fdsc-accordion-header-bg-brand-active);
+  background-color: rgba(0 0 0 / 0.03);
 }
 
 .item.open > .header > button:hover + * .content {
