@@ -210,15 +210,6 @@
   --fds-shadow-medium: 0 2px 4px -2px #0000001a, 0 4px 5px #0000001a;
   --fds-shadow-large: 0 4px 6px -4px #0000001a, 0 10px 12px #0000001a;
   --fds-shadow-xlarge: 0 8px 10px -6px #0000001a, 0 25px 45px #0000001a;
-  --fds-component-mode-height-small: 36px;
-  --fds-component-mode-height-medium: var(--fds-sizing-10);
-  --fds-component-mode-height-large: var(--fds-sizing-12);
-  --fds-component-mode-spacing-small: var(--fds-spacing-2);
-  --fds-component-mode-spacing-medium: var(--fds-spacing-3);
-  --fds-component-mode-spacing-large: var(--fds-spacing-4);
-  --fds-component-mode-gap-small: var(--fds-spacing-1);
-  --fds-component-mode-gap-medium: var(--fds-spacing-2);
-  --fds-component-mode-gap-large: var(--fds-spacing-3);
   --fds-brand-primary-50: #FFFFFF;
   --fds-brand-primary-100: #D1E4FF;
   --fds-brand-primary-200: #9ECAFF;
@@ -252,4 +243,13 @@
   --fds-brand-tertiary-800: #2C3132;
   --fds-brand-tertiary-900: #191C1C;
   --fds-brand-tertiary-950: #0F1112;
+  --fds-component-mode-height-small: 36px;
+  --fds-component-mode-height-medium: var(--fds-sizing-10);
+  --fds-component-mode-height-large: var(--fds-sizing-12);
+  --fds-component-mode-spacing-small: var(--fds-spacing-2);
+  --fds-component-mode-spacing-medium: var(--fds-spacing-3);
+  --fds-component-mode-spacing-large: var(--fds-spacing-4);
+  --fds-component-mode-gap-small: var(--fds-spacing-1);
+  --fds-component-mode-gap-medium: var(--fds-spacing-2);
+  --fds-component-mode-gap-large: var(--fds-spacing-3);
 }
