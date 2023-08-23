@@ -157,6 +157,7 @@ export const MedAria: Story = () => (
       level={2}
       size='xsmall'
       spacing
+      role='alert'
     >
       Vi klarer ikke lagre skjema
     </Heading>
