@@ -3787,7 +3787,7 @@ __metadata:
     "@types/ramda": ^0.29.3
     change-case: ^4.1.2
     ramda: ^0.29.0
-    style-dictionary: ^3.7.2
+    style-dictionary: ^3.8.0
   languageName: unknown
   linkType: soft
 
@@ -22561,6 +22561,25 @@ __metadata:
   bin:
     style-dictionary: bin/style-dictionary
   checksum: eaa78247304a8ddf2f8771deabe72b91ba59392bc3e5071ea7f286d4ae7e294e785d7b13e592dea7debcc3cd2f38dbda937ef191cdbb79056550c4982b496aa5
+  languageName: node
+  linkType: hard
+
+"style-dictionary@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "style-dictionary@npm:3.8.0"
+  dependencies:
+    chalk: ^4.0.0
+    change-case: ^4.1.2
+    commander: ^8.3.0
+    fs-extra: ^10.0.0
+    glob: ^7.2.0
+    json5: ^2.2.2
+    jsonc-parser: ^3.0.0
+    lodash: ^4.17.15
+    tinycolor2: ^1.4.1
+  bin:
+    style-dictionary: bin/style-dictionary
+  checksum: ed2440c2d1bd84593f9f60ffbfbb7c85c9592d125e169ea63e2044fe681191e8c9c156853d82ae606f9adf6aacbaa162e03d5ef85b80be334d76e28a57bfc189
   languageName: node
   linkType: hard
 
