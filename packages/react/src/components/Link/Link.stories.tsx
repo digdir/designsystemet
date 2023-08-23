@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 
 import { Paragraph } from '../Typography';
 
@@ -50,9 +51,33 @@ export const Invertert: Story = {
   ],
 };
 
-export const ITekst: StoryFn<typeof Link> = () => (
+export const InText: StoryFn<typeof Link> = () => (
+  <>
+    <Paragraph>
+      Vi bruker komponenter fra{' '}
+      <Link href='https://designsystem.no/'>et fantastisk designsystem</Link>.
+    </Paragraph>
+    <Paragraph>
+      <Link href='mailto:designsystem@digdir.no'>
+        <EnvelopeClosedIcon aria-hidden />
+        Kontakt oss
+      </Link>
+    </Paragraph>
+  </>
+);
+
+export const LongLink: StoryFn<typeof Link> = () => (
   <Paragraph>
-    Vi bruker komponenter fra{' '}
-    <Link href='https://designsystemet.no/'>et fantastisk designsystem</Link>.
+    <Link href='https://designsystem.no/'>
+      Dette er en linke som brekker over flere linjer
+    </Link>
   </Paragraph>
 );
+
+LongLink.decorators = [
+  (Story) => (
+    <div style={{ width: '200px' }}>
+      <Story></Story>
+    </div>
+  ),
+];
