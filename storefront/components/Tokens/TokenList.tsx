@@ -14,7 +14,6 @@ import classes from './TokenList.module.css';
 
 type TokenListProps = {
   type: 'color' | 'typography' | 'shadow' | 'sizing' | 'spacing';
-  showValue?: boolean;
   token?: string;
   showThemePicker?: boolean;
 };
@@ -72,11 +71,12 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
           {type === 'color' && <TokenColor value={item.value} />}
           {type === 'typography' && <TokenFontSize value={item.value} />}
           {type === 'shadow' && <TokenShadow value={item.value} />}
-          {type === 'sizing' && <TokenSize value={item.value} />}
-          {type === 'spacing' && <TokenSize value={item.value} />}
+          {(type === 'sizing' || type === 'spacing') && (
+            <TokenSize value={item.value} />
+          )}
         </div>
 
-        <div className={classes.text}>
+        <div className={classes.textContainer}>
           <h4 className={classes.title}>
             {capitalizeString(item.lastName)}
             <ClipboardBtn
@@ -90,16 +90,18 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
     );
   };
 
-  type Color = typeof tokens;
-  const tokenList: Color = tokens[brand][type];
+  type TokenImportType = typeof tokens;
+  const tokenList: TokenImportType = tokens[brand][type];
 
-  const recursive = (object: Color, level: number, name: string) => {
+  const recursive = (object: TokenImportType, level: number, name: string) => {
     level++;
     return (
       <div>
         {Object.keys(object).map((value: string, index: number) => {
-          const token = object[value as keyof Color];
-          const Heading = `h${level === 1 ? 3 : 4}`;
+          const token = object[value as keyof TokenImportType];
+          const DynamicHeading = `h${
+            level === 1 ? 3 : 4
+          }` as keyof JSX.IntrinsicElements;
 
           name = stripLabelByLevel(name, level);
           name += ' ' + value;
@@ -107,7 +109,7 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
           return (
             <div key={index}>
               {(level === 1 || Array.isArray(token)) && (
-                <Heading>{capitalizeString(name)}</Heading>
+                <DynamicHeading>{capitalizeString(name)}</DynamicHeading>
               )}
 
               {Array.isArray(token) && (
@@ -140,7 +142,7 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
               variant='secondary'
               as={Dropdown.Toggle}
             >
-              {capitalizeString(brand)}
+              Brand: {capitalizeString(brand)}
             </Button>
             <Dropdown.Menu>
               <Dropdown.Menu.List>
@@ -161,8 +163,7 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
           </Dropdown>
         </div>
       )}
-
-      <div className={classes.tokens}>{recursive(tokenList, 0, '')}</div>
+      {recursive(tokenList, 0, '')}
     </div>
   );
 };

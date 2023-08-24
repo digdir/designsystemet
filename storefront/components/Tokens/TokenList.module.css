@@ -1,11 +1,11 @@
 .tokens {
   margin-top: 32px;
-  padding-bottom: 46px;
-  border-bottom: 1px solid rgb(214, 214, 214);
 }
 
 .toggleGroup {
   width: 52%;
+  margin-bottom: 32px;
+  margin-top: -4px;
 }
 
 .toggleGroup > span {
@@ -20,9 +20,9 @@
 }
 
 .section {
-  border-bottom: 1px solid rgb(221, 221, 221);
-  padding-bottom: 36px;
-  margin-bottom: 31px;
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 32px;
+  margin-bottom: 26px;
 }
 
 .section2 {
@@ -31,10 +31,10 @@
 
 .cards {
   display: grid;
-  grid-column-gap: 32px;
-  grid-row-gap: 24px;
+  grid-column-gap: 38px;
+  grid-row-gap: 22px;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: var(--spacing-4);
+  margin-top: var(--spacing-3);
 }
 
 .cards2 {
@@ -43,14 +43,14 @@
 
 .tokens h3 {
   font-size: 24px;
-  border-bottom: 2px solid rgb(202, 202, 202);
+  border-bottom: 2px solid #cacaca;
   display: inline-flex;
   padding-bottom: 5px;
 }
 
 .tokens h4 {
   font-size: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .tokens h5 {
@@ -70,7 +70,7 @@
   border-radius: 50%;
 }
 
-.text {
+.textContainer {
   display: flex;
   flex-direction: column;
 }
