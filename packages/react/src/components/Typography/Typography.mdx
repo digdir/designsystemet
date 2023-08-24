@@ -20,14 +20,14 @@ import * as ErrorMessageStories from './ErrorMessage/ErrorMessage.stories';
 
 Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er avgjørende
 at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt kan
-prosessere informasjonen som er der. Typografien er delt inn i 4 katogorier som er
+prosessere informasjonen som er der. Typografien er delt inn i fire kategorier som er
 ment å dekke alle behov som måtte dukke opp på et nettsted:
 
 ## Bruk
 
 <Information text='token' />
 
-Typografi komponentene kommer med hverken innebygd eller definert font familie. Det er opp til bruker å selv å importere ønsket font.
+Typografikomponentene kommer med hverken innebygd eller definert font-familie. Det er opp til bruker å selv å importere ønsket font.
 
 Vi anbefaler å bruke fonten [Inter](https://rsms.me/inter/) da det er denne fonten komponentene i designsystemet har blitt designet og testet med. Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer.
 
@@ -40,7 +40,7 @@ Den er tilgjengelig i Altinn CDN.
 />
 ```
 
-Til `font-family` anbefaler vi følge sammensetning med fallback til `Arial`.
+Til `font-family` anbefaler vi følgende sammensetning med fallback til `Arial`.
 
 ```css
 font-family: 'Inter', Arial, sans-serif;
@@ -48,7 +48,7 @@ font-family: 'Inter', Arial, sans-serif;
 
 ## Heading
 
-Alle oversikrifter skal bruke `Heading` komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+Alle oversikrifter skal bruke `Heading`-komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
 
 Det skal kun vere 1 `<h1>` tag per side, men det kan vere flere h2-h6. Det er viktig at heading-hirarkiet på en side går logisk fra `<h1>` og nedover både når det kommer til størrelse og rekkefølge (se bruk).
 
@@ -66,14 +66,14 @@ Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et ne
 
 ## Ingress
 
-`Ingress` kommer ofte mellom `Heading`- og `Paragraph` komponenten, og er ment å innlede en artikkel eller et avsnitt. Det er ofte et kort sammendrag av en større enhet, og skiller seg litt ut fra `Paragraph` ved at den har litt høyere linjehøyde og større font-størrelse.
+`Ingress` kommer ofte mellom `Heading`- og `Paragraph`-komponenten, og er ment å innlede en artikkel eller et avsnitt. Det er ofte et kort sammendrag av en større enhet, og skiller seg litt ut fra `Paragraph` ved at den har litt høyere linjehøyde og større font-størrelse.
 
 <Canvas of={IngressStories.Preview} />
 <Controls of={IngressStories.Preview} />
 
 ## Label
 
-`Label` blir brukt for å framheve tekst, ofte sammen med `Paragraph`. Den har mindre linje-høyde enn `Paragraph`, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjema-komponenter.
+`Label` blir brukt for å framheve tekst, ofte sammen med `Paragraph`. Den har mindre linjehøyde enn `Paragraph`, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjemakomponenter.
 
 <Canvas of={LabelStories.Preview} />
 <Controls of={LabelStories.Preview} />

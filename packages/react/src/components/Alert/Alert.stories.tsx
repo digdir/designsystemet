@@ -131,7 +131,7 @@ export const MedShadow: Story = () => (
     elevated
     severity='success'
   >
-    <Paragraph>Skjema er lagret automatisk.</Paragraph>
+    <Paragraph>Skjemaet er lagret automatisk.</Paragraph>
   </Alert>
 );
 
@@ -159,10 +159,10 @@ export const MedAria: Story = () => (
       spacing
       role='alert'
     >
-      Vi klarer ikke lagre skjema
+      Vi klarer ikke lagre skjemaet
     </Heading>
     <Paragraph>
-      Vi har mistet forbindelsen med serveren og får ikke lagret skjema. Vent
+      Vi har mistet forbindelsen med serveren og får ikke lagret skjemaet. Vent
       litt og prøv en gang til.
     </Paragraph>
   </Alert>
