@@ -65,7 +65,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 
 ### Med overskrift
 
-Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/kjernekomponenter-typography--docs)-komponentene. Husk å velg riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
+Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/kjernekomponenter-typography--docs)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Canvas of={AlertStories.MedHeading} />
 
@@ -75,7 +75,7 @@ Dersom tittel og beskrivelse gjentar det samme er det bedre å bruke en enkel se
 
 ### Med lenke
 
-Du kan ha en lenke i Alert hvis det hjelper brukeren å løse oppgaven. Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
+Du kan ha en lenke i Alert hvis det hjelper brukeren med å løse oppgaven. Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
 
 <Canvas of={AlertStories.MedLenke} />
 
@@ -93,7 +93,7 @@ Det må være tydelig hvem som gjør hva. Tenk på teksten som en samtale med br
 
 Hvis meldingen er knyttet til en bestemt handling, for eksempel svar på et spørsmål, bør teksten gjenta nøkkelord fra label.
 
-Det er spesielt viktig at teksten i feilmeldingene forteller om det er noe brukene må eller kan gjøre for å komme videre med oppgaven sin. Her er en liste med hvilken type informasjon en feilmelding bør inneholde:
+Det er spesielt viktig at teksten i feilmeldingene forteller om det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin. Her er en liste med hvilken type informasjon en feilmelding bør inneholde:
 
 - Fortell hva som har skjedd
   - Eksempel: "Kunne ikke koble til konto."
@@ -125,6 +125,6 @@ Ikke bruk `role=alert` om alert er synlig når siden lastes inn.
 
 #### Gjør dette
 
-Bruk `role=alert` hvis den dukker opp dynamisk underveis pga brukerinput eller andre faktorer som kan trigge en alert.
+Bruk `role=alert` hvis den dukker opp dynamisk underveis pga. brukerinput eller andre faktorer som kan utløse en alert.
 
 <Canvas of={AlertStories.MedAria} />

@@ -25,7 +25,7 @@ export const Preview: StoryFn<typeof Checkbox.Group> = (args) => (
 
 Preview.args = {
   legend: 'Middag',
-  description: 'Mat servers klokken 18:00',
+  description: 'Mat serveres klokken 18:00',
   readOnly: false,
   disabled: false,
   error: '',

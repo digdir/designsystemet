@@ -45,13 +45,13 @@ import { Button } from '@digdir/design-system-react';
 
 ### Bruk av Spinner til å lage en knapp som laster
 
-Dersom du ønsker å vise brukeren at knappen laster noe kan du gjøre det ved å kombinere den med en spinner.
+Dersom du ønsker å vise brukeren at knappen laster noe, kan du gjøre det ved å kombinere den med en spinner.
 
-**OBS**: I dette eksempelet er det brukt aria-disabled til å deaktivere knappene.
-Dette er den anbefalte metoden for å vise at en knapp er deaktivert da det gjør at den fremdeles kan fokuseres på, f.eks. ved navigasjon med tab.
-Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er aktiv) noe som ofte ikke er tilfellet ved bruk av kun disabled.
+**OBS**: I dette eksempelet er det brukt `aria-disabled` til å deaktivere knappene.
+Dette er den anbefalte metoden for å vise at en knapp er deaktivert, da det gjør at den fremdeles kan fokuseres på, f.eks. ved navigasjon med tastatur.
+Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er aktiv), noe som ofte ikke er tilfellet ved bruk av kun `disabled`.
 
-Det er imidlertid viktig å vite at denne prop-en ikke automatisk stopper knappen fra å trigge sin onClick metode.
+Det er imidlertid viktig å vite at denne egenskapen ikke automatisk stopper knappen fra å utløse sin `onCLick`-metode.
 Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
 
 <Canvas of={ButtonStories.withSpinner} />

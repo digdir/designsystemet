@@ -11,7 +11,7 @@ import { Pagination } from './index';
 
 `Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
 
-Dette er en controlled component som vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side skjules forrige/neste pilene.```
+Dette er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
 
 <Primary />
 <Controls of={PaginationStories.Preview} />
@@ -33,5 +33,5 @@ const [currentPage, setCurrentPage] = useState(1);
   nextLabel='Neste'
   previousLabel='Forrige'
   itemLabel={(num) => `Side ${num}}`
-></Pagination>;
+/>;
 ```
