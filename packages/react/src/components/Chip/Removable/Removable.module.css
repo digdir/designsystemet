@@ -2,6 +2,9 @@
   --fdsc-removable-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-removable-chip-size: var(--fds-sizing-7);
+  --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
+  --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-1);
+  --fdsc-removable-chip-xmark-wrapper-width: calc(var(--fdsc-removable-chip-xmark-size) + var(--fdsc-removable-chip-xmark-padding_right));
 
   color: var(--fdsc-removable-text-color);
   background: var(--fdsc-removable-background);
@@ -10,26 +13,12 @@
   min-height: var(--fdsc-removable-chip-size);
 }
 
-.removable:focus {
-  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-strong);
-}
-
 .xMark {
-  --fdsc-xmark-background: transparent;
   --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--fdsc-xmark-color);
-  padding: 0 4px;
-  background: var(--fdsc-xmark-background);
-  border-radius: 0 var(--fds-border_radius-full) var(--fds-border_radius-full) 0;
-  height: var(--fdsc-removable-chip-size);
-}
-
-.removable:focus .xMark {
-  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-strong);
+  display: inline-flex;
+  padding-right: var(--fdsc-removable-chip-xmark-padding_right);
 }
 
 .removable.xsmall {
@@ -40,13 +29,21 @@
   --fdsc-removable-chip-size: var(--fds-sizing-7);
 }
 
+.removable:hover,
+.removable:focus {
+  --fdsc-removable-background: linear-gradient(
+    to left,
+    var(--fds-semantic-surface-danger-default) var(--fdsc-removable-chip-xmark-wrapper-width),
+    var(--fds-semantic-surface-action-primary-active) var(--fdsc-removable-chip-xmark-wrapper-width)
+  );
+}
+
 .removable:hover .xMark,
 .removable:focus .xMark {
-  --fdsc-xmark-background: var(--fds-semantic-surface-danger-default);
   --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.iconSize {
-  height: var(--fds-sizing-5);
-  width: var(--fds-sizing-5);
+.xMark .icon {
+  height: var(--fdsc-removable-chip-xmark-size);
+  width: var(--fdsc-removable-chip-xmark-size);
 }
