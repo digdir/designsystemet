@@ -23,6 +23,7 @@ Currently supported brands:
 - `altinn`
 - `digdir`
 - `tilsynet`
+- `brreg`
 
 When importing the package make sure to specify which brand tokens you want to import. By default the `digdir` is imported if you don't specify a brand.
 
