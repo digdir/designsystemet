@@ -2,8 +2,9 @@
   --fdsc-removable-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-removable-chip-size: var(--fds-sizing-7);
-  --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
+  --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-1);
+  --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
   --fdsc-removable-chip-xmark-wrapper-width: calc(var(--fdsc-removable-chip-xmark-size) + var(--fdsc-removable-chip-xmark-padding_right));
 
   color: var(--fdsc-removable-text-color);
@@ -14,9 +15,7 @@
 }
 
 .xMark {
-  --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
-
-  color: var(--fdsc-xmark-color);
+  color: var(--fdsc-removable-chip-xmark-color);
   display: inline-flex;
   padding-right: var(--fdsc-removable-chip-xmark-padding_right);
 }
@@ -36,11 +35,7 @@
     var(--fds-semantic-surface-danger-default) var(--fdsc-removable-chip-xmark-wrapper-width),
     var(--fds-semantic-surface-action-primary-active) var(--fdsc-removable-chip-xmark-wrapper-width)
   );
-}
-
-.removable:hover .xMark,
-.removable:focus .xMark {
-  --fdsc-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
+  --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
 }
 
 .xMark .icon {
