@@ -20,7 +20,7 @@ const texts: Record<Texts, { description: string; title?: string }> = {
   beta: {
     title: 'Beta',
     description:
-      'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring.\n\n Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
+      'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring. Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
   },
   deprecated: {
     title: 'Avviklet',
