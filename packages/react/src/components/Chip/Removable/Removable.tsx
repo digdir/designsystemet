@@ -25,7 +25,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           className={classes.xMark}
           aria-hidden
         >
-          <XMarkIcon className={classes.iconSize} />
+          <XMarkIcon className={classes.icon} />
         </span>
       </ChipBase>
     );

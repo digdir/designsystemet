@@ -51,7 +51,8 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  gap: var(--fds-spacing-1);
+  gap: var(--fds-spacing-2);
+  padding: var(--fds-spacing-1) 0;
 }
 
 .xsmall {
