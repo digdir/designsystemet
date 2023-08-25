@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Ingress } from './';
 
 const meta: Meta<typeof Ingress> = {
-  title: 'Kjernekomponenter/Typography/Ingress',
+  title: 'felles/Typography/Ingress',
   component: Ingress,
 };
 

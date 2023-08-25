@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Tabs } from './Tabs';
 
 export default {
-  title: 'Kjernekomponenter/Tabs',
+  title: 'Altinn/Tabs',
   component: Tabs,
 } as Meta;
 

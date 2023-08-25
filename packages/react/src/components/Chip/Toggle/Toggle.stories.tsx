@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ToggleChip } from './';
 
 const meta: Meta<typeof ToggleChip> = {
-  title: 'Kjernekomponenter/Chip/Toggle',
+  title: 'Felles/Chip/Toggle',
   component: ToggleChip,
 };
 

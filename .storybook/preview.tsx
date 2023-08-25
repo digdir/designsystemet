@@ -106,8 +106,9 @@ const preview: Preview = {
         method: 'alphabetical',
         order: [
           'Komponentoversikt',
-          'Kjernekomponenter',
           'Endringslogger',
+          'Felles',
+          'Altinn',
           'Avviklet',
         ],
       },

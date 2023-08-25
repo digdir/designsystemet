@@ -7,7 +7,7 @@ import { TextField } from '.';
 type Story = StoryObj<typeof TextField>;
 
 const meta: Meta<typeof TextField> = {
-  title: 'Kjernekomponenter/TextField',
+  title: 'Altinn/TextField',
   component: TextField,
 };
 
