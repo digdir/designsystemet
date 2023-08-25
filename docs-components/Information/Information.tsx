@@ -1,10 +1,11 @@
 import React from 'react';
 import { Markdown } from '@storybook/blocks';
-import cn from 'classnames';
+import type { AlertProps } from '@digdir/design-system-react';
+import { Paragraph, Alert, Heading } from '@digdir/design-system-react';
 
 import classes from './Information.module.css';
 
-type Texts = 'token' | 'development' | 'beta' | 'deprecated';
+type Texts = 'token' | 'development' | 'altinn' | 'deprecated';
 
 const texts: Record<Texts, { description: string; title?: string }> = {
   token: {
@@ -17,10 +18,10 @@ const texts: Record<Texts, { description: string; title?: string }> = {
     description:
       'Komponenten er under utvikling og dermed ikke tilgjenglig i `@digdir/design-system-react`.',
   },
-  beta: {
-    title: 'Beta',
+  altinn: {
+    title: 'Altinn',
     description:
-      'Komponenten er i beta og kan dermed ha mangelfull funksjonalitet eller være flagget for endring. Dette kan medføre breaking-changes i patch/minor versjon av kodepakker.',
+      'Denne komponenten er hentet fra et annet bibliotek. Den skal gjennomgås for å komme opp på ønsket nivå. Når den er ferdig blir den flyttet til Felleskomponenter. Endringer som kreves kan medføre breaking-changes i patch/minor versjon av kodepakker',
   },
   deprecated: {
     title: 'Avviklet',
@@ -29,16 +30,15 @@ const texts: Record<Texts, { description: string; title?: string }> = {
   },
 };
 
-const colorClass = (text: Texts) => {
+const getSeverity = (text: Texts): AlertProps['severity'] => {
   switch (text) {
-    case 'beta':
-      return classes.beta;
     case 'deprecated':
-      return classes.danger;
+      return 'danger';
     case 'development':
-      return classes.warning;
+      return 'warning';
+    case 'altinn':
     default:
-      return null;
+      return 'info';
   }
 };
 
@@ -51,13 +51,30 @@ export const Information = ({ text, description }: InformationProps) => {
   const textData = texts[text];
 
   return (
-    <div className={cn(classes.container, colorClass(text))}>
-      {textData.title && <h2 className={classes.title}>{textData.title}</h2>}
-      <div className={classes.desc}>
-        <Markdown>{`${textData.description} \n\n  ${
-          description || ''
-        }`}</Markdown>
-      </div>
-    </div>
+    <Alert
+      className={classes.container}
+      severity={getSeverity(text)}
+    >
+      {textData.title && (
+        <Heading
+          level={2}
+          size='medium'
+        >
+          {textData.title}
+        </Heading>
+      )}
+      <Markdown
+        options={{
+          overrides: {
+            p: (props: Record<string, unknown>) => (
+              <Paragraph
+                style={{ maxWidth: '70ch' }}
+                {...props}
+              ></Paragraph>
+            ),
+          },
+        }}
+      >{`${textData.description} \n\n  ${description || ''}`}</Markdown>
+    </Alert>
   );
 };
