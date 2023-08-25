@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.3](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.2...@digdir/design-system-react@0.23.3) (2023-08-25)
+
+### Bug Fixes
+
+- **Chip:** Proper styling on tall chips ([#756](https://github.com/digdir/designsystem/issues/756)) ([b47eb37](https://github.com/digdir/designsystem/commit/b47eb37a40019eb4cfeb755551a688541ab60dd7))
+
 ## [0.23.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.1...@digdir/design-system-react@0.23.2) (2023-08-23)
 
 ### Bug Fixes
