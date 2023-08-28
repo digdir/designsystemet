@@ -141,38 +141,6 @@
   },
   "semantic": {
     "surface": {
-      "action": {
-        "primary": {
-          "default": {
-            "value": "{brand.primary.600}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "$brand.primary.50",
-            "type": "color"
-          },
-          "active": {
-            "value": "$brand.primary.900",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          }
-        },
-        "secondary": {
-          "default": {
-            "value": "{brand.secondary.800}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "{brand.secondary.50}",
-            "type": "color"
-          },
-          "active": {
-            "value": "{brand.secondary.900}",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          }
-        }
-      },
       "primary": {
         "light": {
           "value": "{brand.primary.100}",
