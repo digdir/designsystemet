@@ -3,11 +3,24 @@
 name: Build and deploy Storybook
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Artifact name'
+        required: false
+        default: 'github-pages'
+      path:
+        description: 'Path of the directory containing the static assets.'
+        required: true
+        default: 'dist/storybook'
+      retention-days:
+        description: 'Duration after which artifact will expire in days.'
+        required: false
+        default: '1'
   push:
     branches:
       - main
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,10 +42,41 @@ jobs:
 
       - name: Build docs 🔧
         run: yarn build:storybook
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          branch: github-pages-deployment
-          folder: dist/storybook # Source folder (output from build step)
-          target-folder: dist/storybook # Target folder (create a directory to put the deployment content in)
+          name: github-pages
+          path: ./dist/storybook
+      - name: Archive artifact
+        shell: sh
+        if: runner.os == 'Linux'
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --directory "$INPUT_PATH" \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            .
+        env:
+          INPUT_PATH: ${{ inputs.path }}
+
+  deploy:
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
