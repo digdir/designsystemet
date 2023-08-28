@@ -8,7 +8,7 @@ on:
     types: [ready_for_review]
 jobs:
   Deploy-Preview:
-    if: ${{ github.event.label.name == '📔 storybook' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == '📔 storybook' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
