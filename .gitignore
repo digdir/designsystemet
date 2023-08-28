@@ -22,8 +22,8 @@ coverage/
 # JetBrains IntelliJ IDEA
 .idea
 
-# Storybook build files
-docs
+# Build files
+build
 
 # Hidden macOS files
 .DS_Store
