@@ -1,0 +1,39 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as LinkStories from './Link.stories';
+
+<Meta of={LinkStories} />
+
+# Link
+
+`Link` er basert på HTML-taggen `<a>`, som brukes til å lage en lenke til andre sider.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun én gang i din applikasjon
+import { Link } from '@digdir/design-system-react';
+
+<Link href='https://designsystemet.no/'>Gå til designsystemet</Link>;
+```
+
+### Invertert
+
+Bruk `inverted` på mørke bakgrunner for å få hvit tekst.
+
+<Canvas of={LinkStories.Invertert} />
+
+### I tekst
+
+En lenke brukes ofte som en del av en tekst. Teksten som omfattes av lenken bør indikere tydelig hvor den går.
+
+<Canvas of={LinkStories.InText} />
+
+### Flere linjer
+
+<Canvas of={LinkStories.LongLink} />

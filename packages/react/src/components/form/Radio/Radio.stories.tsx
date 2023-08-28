@@ -5,7 +5,7 @@ import { Radio } from '.';
 type Story = StoryObj<typeof Radio>;
 
 export default {
-  title: 'ikke utgitt/Radio',
+  title: 'Felles/Radio',
   component: Radio,
 } as Meta;
 

@@ -3,64 +3,50 @@
   display: flex;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
-.container {
-  display: flex;
-}
-
-.ellipsis {
-  margin-top: 10px;
-  font-size: 16px;
-  text-align: center;
-}
-
-.listitem {
-  margin-right: var(--listitem-margin-right);
-  width: var(--pages-width);
-
-  --pages-width: var(--pages-width-size);
-  --listitem-margin-right: var(--listitem-margin);
-}
-
-.listitem.small {
-  --listitem-margin: var(--fds-spacing-2);
-  --pages-width-size: var(--fds-component-mode-height-small);
-}
-
-.listitem.medium {
-  --listitem-margin: var(--fds-spacing-4);
-  --pages-width-size: var(--fds-component-mode-height-medium);
-}
-
-.chevron {
+.hidden {
   visibility: hidden;
 }
 
-.chevronLeft {
-  margin-right: var(--listitem-margin);
-
-  --listitem-margin: var(--pagination-margin);
+.pagination.small {
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
 }
 
-.chevronLeft.small {
-  --pagination-margin: var(--fds-spacing-2);
+.pagination.medium {
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-6);
 }
 
-.chevronLeft.medium {
-  --pagination-margin: var(--fds-spacing-6);
+.pagination li:first-child {
+  margin-right: var(--fdsc-pagination-chevron-margin);
 }
 
-.chevronRight {
-  margin-left: var(--pagination-margin-left);
-
-  --pagination-margin-left: var(--pagination-margin);
+.pagination li:last-child {
+  margin-left: var(--fdsc-pagination-chevron-margin);
 }
 
-.chevronRight.small {
-  --pagination-margin: var(--fds-spacing-2);
+.listitem {
+  flex: 1;
+  margin-right: var(--fsdc-pagination-listitem-margin);
 }
 
-.chevronRight.medium {
-  --pagination-margin: var(--fds-spacing-6);
+.listitem.small {
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-2);
+  --fdsc-pagination-ellipsis-width: var(--fds-component-mode-height-small);
+}
+
+.listitem.medium {
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-4);
+  --fdsc-pagination-ellipsis-width: var(--fds-component-mode-height-medium);
+}
+
+.listitem.compact {
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-1);
+}
+
+.ellipsis {
+  margin-top: 0.5em;
+  text-align: center;
+  width: var(--fdsc-pagination-ellipsis-width);
 }

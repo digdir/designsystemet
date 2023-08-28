@@ -1,13 +1,12 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { Popover } from './index';
-import { PopoverVariant } from '../../types/enums';
 
 import { Button } from './../Button/index';
 import { Information, TokensTable } from '../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
 <Meta
-  title='Kjernekomponenter/Popover'
+  title='Altinn/Popover'
   component={Popover}
 
 argTypes={{
@@ -93,7 +92,7 @@ export const ComplexTemplate = (args) => {
 
 # Popover
 
-<Information text='beta' />
+<Information text='altinn' />
 
 Popover er et felt som plasseres over annet innhold og kan vises og skjules ved hjelp av å aktivere en gitt `trigger`.
 
@@ -116,7 +115,7 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
     }}
     args={{
       placement: 'top',
-      variant: PopoverVariant.Default,
+      variant: 'default',
     }}
   >
     {Template.bind({})}
@@ -140,7 +139,7 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
     }}
     args={{
       placement: 'right',
-      variant: PopoverVariant.Warning,
+      variant: 'warning',
     }}
   >
     {ComplexTemplate.bind({})}

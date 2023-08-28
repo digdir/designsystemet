@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
+import { Paragraph } from '../Typography';
 
 import classes from './Pagination.module.css';
 
@@ -92,10 +93,10 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         ref={ref}
         {...rest}
       >
-        <ul className={classes.pagination}>
-          <li className={cn(classes.chevronLeft, classes[size])}>
+        <ul className={cn(classes.pagination, classes[size])}>
+          <li>
             <Button
-              icon={<ChevronLeftIcon />}
+              icon={<ChevronLeftIcon aria-hidden />}
               aria-label={previousLabel}
               onClick={() => {
                 onChange(currentPage - 1);
@@ -103,18 +104,27 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               variant={'quiet'}
               color={'primary'}
               size={size}
-              className={cn({ [classes.chevron]: currentPage === 1 })}
+              className={cn({ [classes.hidden]: currentPage === 1 })}
             >
               {!hideLabels && previousLabel}
             </Button>
           </li>
           {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
             <li
-              className={cn(classes.listitem, classes[size])}
+              className={cn(
+                classes.listitem,
+                classes[size],
+                compact && classes.compact,
+              )}
               key={`${step}${i}`}
             >
               {step === 'ellipsis' ? (
-                <p className={cn(classes.ellipsis)}>...</p>
+                <Paragraph
+                  className={cn(classes.ellipsis)}
+                  size={size}
+                >
+                  …
+                </Paragraph>
               ) : (
                 <Button
                   variant={currentPage === step ? 'filled' : 'quiet'}
@@ -131,19 +141,19 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               )}
             </li>
           ))}
-          <li className={cn(classes.chevronRight, classes[size])}>
+          <li>
             <Button
               variant={'quiet'}
               color={'primary'}
               size={size}
-              icon={<ChevronRightIcon />}
+              icon={<ChevronRightIcon aria-hidden />}
               aria-label={nextLabel}
               onClick={() => {
                 onChange(currentPage + 1);
               }}
               iconPlacement='right'
               className={cn({
-                [classes.chevron]: currentPage === totalPages,
+                [classes.hidden]: currentPage === totalPages,
               })}
             >
               {!hideLabels && nextLabel}

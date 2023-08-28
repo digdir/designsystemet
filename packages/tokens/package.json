@@ -1,6 +1,6 @@
 {
   "name": "@digdir/design-system-tokens",
-  "version": "0.2.0",
+  "version": "0.4.2",
   "description": "Tokens for the Digdir Common Design System",
   "repository": "https://github.com/digdir/designsystem",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "brand"
   ],
   "scripts": {
-    "build": "yarn run clean && ts-node ./build.ts",
+    "build": "yarn run clean && ts-node ./scripts/build.ts",
     "clean": "rimraf brand"
   },
   "devDependencies": {
@@ -19,6 +19,6 @@
     "@types/ramda": "^0.29.3",
     "change-case": "^4.1.2",
     "ramda": "^0.29.0",
-    "style-dictionary": "^3.7.2"
+    "style-dictionary": "^3.8.0"
   }
 }

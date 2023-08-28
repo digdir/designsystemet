@@ -61,6 +61,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {...fieldsetProps}
           className={cn(
             classes.fieldset,
+            !hideLegend && classes.spacing,
             readOnly && classes.readonly,
             props?.disabled && classes.disabled,
             rest.className,

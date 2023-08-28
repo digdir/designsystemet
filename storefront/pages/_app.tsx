@@ -8,6 +8,7 @@ import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import cn from 'classnames';
+import { Analytics } from '@vercel/analytics/react';
 
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
@@ -30,6 +31,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Header />
         <Component {...pageProps} />
         <Footer />
+        <Analytics />
       </div>
     </QueryClientProvider>
   );

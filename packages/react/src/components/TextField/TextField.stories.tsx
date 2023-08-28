@@ -1,15 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { ReadOnlyVariant } from '../../types/enums';
-
 import type { TextFieldProps } from '.';
 import { TextField } from '.';
 
 type Story = StoryObj<typeof TextField>;
 
 const meta: Meta<typeof TextField> = {
-  title: 'Kjernekomponenter/TextField',
+  title: 'Altinn/TextField',
   component: TextField,
 };
 
@@ -40,14 +38,14 @@ export const MedFeil: Story = createTemplate('Med feil', {
 });
 
 export const Skrivebeskyttet: Story = createTemplate('Skrivebeskyttet', {
-  readOnly: ReadOnlyVariant.ReadOnlyInfo,
+  readOnly: 'readonlyInfo',
   value: 'Dette er en skrivebeskyttet tekst.',
 });
 
 export const Bekreftelsesvisning: Story = createTemplate(
   'Bekreftelsesvisning',
   {
-    readOnly: ReadOnlyVariant.ReadOnlyConfirm,
+    readOnly: 'readonlyConfirm',
     value:
       'Dette er en bekreftelsesvisning av en tekst som er skrevet inn i et tekstfelt.',
   },

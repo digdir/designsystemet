@@ -5,7 +5,7 @@ import { Button, Paragraph } from '../../..';
 import { Checkbox } from '../';
 
 export default {
-  title: 'ikke utgitt/Checkbox/Group',
+  title: 'Felles/Checkbox/Group',
   component: Checkbox.Group,
 } as Meta;
 
@@ -25,7 +25,7 @@ export const Preview: StoryFn<typeof Checkbox.Group> = (args) => (
 
 Preview.args = {
   legend: 'Middag',
-  description: 'Mat servers klokken 18:00',
+  description: 'Mat serveres klokken 18:00',
   readOnly: false,
   disabled: false,
   error: '',

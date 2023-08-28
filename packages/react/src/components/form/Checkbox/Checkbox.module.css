@@ -1,8 +1,11 @@
 .container {
   position: relative;
-  padding-left: calc(var(--fds-spacing-6) + 17px);
   min-width: 44px;
   min-height: 44px;
+}
+
+.spacing {
+  padding-left: calc(var(--fds-spacing-6) + 17px);
 }
 
 .icon {

@@ -5,7 +5,7 @@ import type { ListProps } from '.';
 import { List, ListItem } from '.';
 
 const meta: Meta<typeof List> = {
-  title: 'Kjernekomponenter/List',
+  title: 'Altinn/List',
   component: List,
   args: {
     // Just to make the default option pre-selected i <Controls />
