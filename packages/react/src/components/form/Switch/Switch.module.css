@@ -8,7 +8,7 @@
 .icon {
   grid-area: input;
   pointer-events: none;
-  height: 2em;
+  height: 1.3em;
   width: 2em;
   z-index: 1;
   margin: auto;
@@ -18,7 +18,7 @@
 
 .switch,
 .switch .icon {
-  border-radius: var(--fds-border_radius-interactive);
+  border-radius: 10px;
 }
 
 .label {
@@ -79,7 +79,7 @@
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.icon .checked {
+.icon .thumb {
   position: absolute;
 }
 @media (prefers-reduced-motion) {
@@ -88,38 +88,38 @@
   }
 }
 
-.input:hover ~ .icon .checked {
+.input:hover ~ .icon .thumb {
   transition: transform var(--fds-transition) ease;
   transform: translateX(2px);
 }
 
-.input:disabled ~ .icon .checked {
+.input:disabled ~ .icon .thumb {
   fill: var(--fds-semantic-border-neutral-subtle);
 }
 
-.input:checked ~ .icon .checked {
+.input:checked ~ .icon .thumb {
   fill: #fff;
   transform: translateX(13px);
 }
 
-.input:not(:disabled, :read-only):checked:hover ~ .icon .checked {
+.input:not(:disabled, :read-only):checked:hover ~ .icon .thumb {
   transition: transform var(--fds-transition) ease;
   transform: translateX(11px);
 }
 
-.input:not(:checked, :disabled, :read-only) ~ .icon .box {
+.input:not(:checked, :disabled, :read-only) ~ .icon .track {
   stroke: var(--fds-semantic-border-input-default);
   transition-property: fill;
   transition-duration: var(--fds-transition);
   transition-timing-function: ease;
 }
 
-.input:disabled ~ .icon .box {
+.input:disabled ~ .icon .track {
   stroke: var(--fds-semantic-border-neutral-subtle);
-  fill: white;
+  fill: var(--fds-semantic-border-neutral-subtle);
 }
 
-.input:checked:not(:disabled) ~ .icon .box {
+.input:checked:not(:disabled) ~ .icon .track {
   stroke: var(--fds-semantic-surface-success-default);
   fill: var(--fds-semantic-surface-success-default);
 }
@@ -129,26 +129,26 @@
   outline-offset: 0;
 }
 
-.input:focus-visible:not(:disabled) ~ .icon .box {
+.input:focus-visible:not(:disabled) ~ .icon .track {
   stroke: var(--fds-semantic-border-focus-boxshadow);
   stroke-width: var(--fds-focus-border-width);
 }
 
-.error .input:not(:disabled, :focus-visible, :checked) ~ .icon .box {
+.error .input:not(:disabled, :focus-visible, :checked) ~ .icon .track {
   stroke: var(--fds-semantic-border-danger-default);
 }
 
-.readonly .input:read-only:not(:focus-visible) ~ .icon .box {
+.readonly .input:read-only:not(:focus-visible) ~ .icon .track {
   stroke: var(--fds-semantic-border-neutral-subtle);
   fill: var(--fds-semantic-background-subtle);
 }
 
-.container:not(.disabled, .readonly) > .control:hover > .icon > .checked,
-.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .checked {
+.container:not(.disabled, .readonly) > .control:hover > .icon > .thumb,
+.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .thumb {
   fill: var(--fds-semantic-border-input-hover);
 }
 
-.readonly .input:read-only:not(:focus-visible):is(:checked) ~ .icon .checked {
+.readonly .input:read-only:not(:focus-visible):is(:checked) ~ .icon .thumb {
   fill: var(--fds-semantic-border-neutral-default);
 }
 
@@ -162,8 +162,8 @@
   color: var(--fds-semantic-border-input-hover);
 }
 
-.container:not(.disabled, .readonly) > .control:hover > .icon > .box,
-.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
+.container:not(.disabled, .readonly) > .control:hover > .icon > .track,
+.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .track {
   stroke: var(--fds-semantic-surface-action-primary-hover);
   fill: var(--fds-semantic-surface-action-primary-no_fill-hover);
 }

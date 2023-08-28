@@ -5,7 +5,7 @@ import { Switch } from '.';
 type Story = StoryObj<typeof Switch>;
 
 export default {
-  title: 'Kjernekomponenter/Switch',
+  title: 'Felles/Switch',
   component: Switch,
 } as Meta;
 
