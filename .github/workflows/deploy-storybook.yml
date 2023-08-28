@@ -1,21 +1,8 @@
 # Builds and deploys Storybook to github pages
 # Requires github pages source settings to target the branch and folder in the deploy step from this action
-name: Build and deploy Storybook
+name: Deploy Storybook to Github Pages
 on:
   workflow_dispatch:
-    inputs:
-      name:
-        description: 'Artifact name'
-        required: false
-        default: 'github-pages'
-      path:
-        description: 'Path of the directory containing the static assets.'
-        required: true
-        default: 'dist/storybook'
-      retention-days:
-        description: 'Duration after which artifact will expire in days.'
-        required: false
-        default: '1'
   push:
     branches:
       - main
@@ -42,17 +29,18 @@ jobs:
 
       - name: Build docs 🔧
         run: yarn build:storybook
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           name: github-pages
-          path: ${{ inputs.path }}
-
+          path: dist/storybook
+  # https://github.com/actions/deploy-pages
   deploy:
     needs: build
     permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -60,4 +48,6 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
+        uses: actions/deploy-pages@v2
+        with:
+          artifact_name: github-pages
