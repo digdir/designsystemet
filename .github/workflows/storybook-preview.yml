@@ -1,4 +1,4 @@
-name: Deploy Storybook Preview 
+name: Deploy Storybook Preview
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
@@ -8,7 +8,7 @@ on:
     types: [ready_for_review]
 jobs:
   Deploy-Preview:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == '📔 storybook' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || contains( github.event.pull_request.labels.*.name, '📔 storybook') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
