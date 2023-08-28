@@ -8726,6 +8726,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/analytics@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@vercel/analytics@npm:1.0.2"
+  checksum: 5f596db6ed3c959057927985ffc6394ab12f9a5e9e9c65d00a33f1ffb3a7ced95d63f33b31e746939e50c0284d7999b90e9ed5d3d1e8b0d37a135219fd93a6e4
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.11.1":
   version: 1.11.1
   resolution: "@webassemblyjs/ast@npm:1.11.1"
@@ -21881,6 +21888,7 @@ __metadata:
     "@types/react": 18.0.26
     "@types/react-dom": 18.0.9
     "@types/react-syntax-highlighter": ^15.5.6
+    "@vercel/analytics": ^1.0.2
     classnames: ^2.3.2
     directory-tree: ^3.5.1
     gray-matter: ^4.0.3
