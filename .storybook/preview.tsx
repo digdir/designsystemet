@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 
@@ -7,6 +8,12 @@ import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/
 import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/brreg/tokens.css';
 
 import '@altinn/figma-design-tokens/dist/tokens.css';
+import {
+  Paragraph,
+  Link,
+  Heading,
+  HeadingProps,
+} from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
 
@@ -32,6 +39,16 @@ const viewports: Viewport[] = metadata.tokenSetOrder
     };
   });
 
+type Props = Record<string, unknown>;
+
+const getHeading = (headingProps: HeadingProps) => (props: Props) =>
+  (
+    <Heading
+      {...headingProps}
+      {...props}
+    ></Heading>
+  );
+
 const preview: Preview = {
   decorators: [cssVariablesTheme],
   parameters: {
@@ -49,6 +66,34 @@ const preview: Preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       theme: customTheme,
+      components: {
+        p: (props: Props) => (
+          <Paragraph
+            style={{ maxWidth: '70ch' }}
+            {...props}
+          ></Paragraph>
+        ),
+        a: Link,
+        h1: getHeading({ level: 1, size: 'xlarge' }),
+        h2: getHeading({ level: 2, size: 'large' }),
+        h3: getHeading({ level: 3, size: 'medium' }),
+        h4: getHeading({ level: 4, size: 'small' }),
+        h5: getHeading({ level: 5, size: 'xsmall' }),
+        ul: (props: Props) => (
+          <ul
+            style={{ maxWidth: '70ch' }}
+            {...props}
+          ></ul>
+        ),
+        li: (props: Props) => (
+          <Paragraph
+            as='li'
+            size='small'
+            style={{ maxWidth: '70ch' }}
+            {...props}
+          ></Paragraph>
+        ),
+      },
     },
     controls: {
       matchers: {
@@ -59,12 +104,7 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: [
-          'Komponentoversikt',
-          'Kjernekomponenter',
-          'Endringslogger',
-          'Avviklet',
-        ],
+        order: ['Oversikt', 'Endringslogger', 'Felles', 'Altinn', 'Avviklet'],
       },
     },
     viewport: {

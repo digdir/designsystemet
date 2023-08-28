@@ -5,7 +5,7 @@ import { Button, Paragraph } from '../../..';
 import { Checkbox } from '../';
 
 export default {
-  title: 'Kjernekomponenter/Checkbox/Group',
+  title: 'Felles/Checkbox/Group',
   component: Checkbox.Group,
 } as Meta;
 

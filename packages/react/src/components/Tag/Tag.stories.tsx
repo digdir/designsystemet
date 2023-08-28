@@ -9,7 +9,7 @@ import { Tag } from '.';
 type Story = StoryObj<typeof Tag>;
 
 export default {
-  title: 'Kjernekomponenter/Tag',
+  title: 'Felles/Tag',
   component: Tag,
   decorators: [
     (Story) => (

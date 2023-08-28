@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Pagination } from '.';
 
 export default {
-  title: 'Kjernekomponenter/Pagination',
+  title: 'Felles/Pagination',
   component: Pagination,
 } as Meta;
 

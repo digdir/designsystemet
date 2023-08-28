@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Paragraph, Heading, Ingress } from './';
 
 const meta: Meta = {
-  title: 'Kjernekomponenter/Typography',
+  title: 'felles/Typography',
 };
 
 export default meta;

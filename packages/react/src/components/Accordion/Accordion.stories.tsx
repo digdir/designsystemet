@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Accordion } from '.';
 
 export default {
-  title: 'Kjernekomponenter/Accordion',
+  title: 'Felles/Accordion',
   component: Accordion,
   parameters: {
     layout: 'padded',

@@ -7,7 +7,7 @@ import { TextArea } from '.';
 type Story = StoryObj<typeof TextArea>;
 
 const meta: Meta = {
-  title: 'Kjernekomponenter/TextArea',
+  title: 'Altinn/TextArea',
   component: TextArea,
 };
 

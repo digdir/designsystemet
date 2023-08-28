@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { NativeSelect } from './NativeSelect';
 
 export default {
-  title: 'Kjernekomponenter/NativeSelect',
+  title: 'Altinn/NativeSelect',
   component: NativeSelect,
   parameters: {
     layout: 'padded',
