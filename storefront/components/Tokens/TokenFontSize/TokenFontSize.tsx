@@ -17,5 +17,4 @@ const TokenFontSize = ({ value }: TokenFontSizeProps) => {
   );
 };
 
-
 export { TokenFontSize };

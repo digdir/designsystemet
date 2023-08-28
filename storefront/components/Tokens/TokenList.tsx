@@ -13,9 +13,10 @@ import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
 
 type TokenListProps = {
-  type: 'color' | 'typography' | 'shadow' | 'sizing' | 'spacing';
+  type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';
   token?: string;
   showThemePicker?: boolean;
+  hideValue?: boolean;
 };
 
 type TokenItemType = {
@@ -53,7 +54,11 @@ const stripLabelByLevel = (str: string, level: number) => {
   return res;
 };
 
-const TokenList = ({ type, showThemePicker }: TokenListProps) => {
+const TokenList = ({
+  type,
+  showThemePicker,
+  hideValue = false,
+}: TokenListProps) => {
   const [brand, setBrand] = useState<BrandType>('digdir');
   const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
 
@@ -70,7 +75,7 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
         <div className={classes.preview}>
           {type === 'color' && <TokenColor value={item.value} />}
           {type === 'typography' && <TokenFontSize value={item.value} />}
-          {type === 'shadow' && <TokenShadow value={item.value} />}
+          {type === 'boxShadow' && <TokenShadow value={item.value} />}
           {(type === 'sizing' || type === 'spacing') && (
             <TokenSize value={item.value} />
           )}
@@ -84,7 +89,7 @@ const TokenList = ({ type, showThemePicker }: TokenListProps) => {
               value={item.name}
             />
           </h4>
-          <div className={classes.value}>{item.value}</div>
+          {!hideValue && <div className={classes.value}>{item.value}</div>}
         </div>
       </div>
     );
