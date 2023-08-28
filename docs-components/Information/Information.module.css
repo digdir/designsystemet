@@ -7,6 +7,6 @@
   border-bottom: none !important;
 }
 
-.container p:first-child {
+.container p {
   margin: 0 !important;
 }

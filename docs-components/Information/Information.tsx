@@ -58,7 +58,8 @@ export const Information = ({ text, description }: InformationProps) => {
       {textData.title && (
         <Heading
           level={2}
-          size='medium'
+          size='xsmall'
+          spacing
         >
           {textData.title}
         </Heading>
