@@ -1,20 +1,20 @@
 # Builds and deploys Storybook to github pages
 # Requires github pages source settings to target the branch and folder in the deploy step from this action
-name: Build and deploy Storybook
+name: Deploy Storybook to Github Pages
 on:
   workflow_dispatch:
   push:
     branches:
       - main
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v3
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: node-modules-cache
         with:
           path: '**/node_modules'
@@ -30,9 +30,24 @@ jobs:
       - name: Build docs 🔧
         run: yarn build:storybook
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          branch: github-pages-deployment
-          folder: dist/storybook # Source folder (output from build step)
-          target-folder: dist/storybook # Target folder (create a directory to put the deployment content in)
+          name: github-pages
+          path: dist/storybook
+  # https://github.com/actions/deploy-pages
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          artifact_name: github-pages
