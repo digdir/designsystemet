@@ -34,5 +34,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: github-pages-deployment
-          folder: build/storybook # Source folder (output from build step)
-          target-folder: build/storybook # Target folder (create a directory to put the deployment content in)
+          folder: dist/storybook # Source folder (output from build step)
+          target-folder: dist/storybook # Target folder (create a directory to put the deployment content in)
