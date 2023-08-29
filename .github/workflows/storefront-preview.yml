@@ -11,7 +11,7 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || contains( github.event.pull_request.labels.*.name, '🖥️ storefront') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use node 20 and yarn cache
         uses: actions/setup-node@v3
