@@ -94,7 +94,7 @@
 }
 
 .input:checked ~ .icon > .thumb {
-  transform: translateX(21px);
+  transform: translateX(22px);
 }
 
 .input:checked ~ .icon > .track {
@@ -110,14 +110,12 @@
 }
 
 .input:not(:disabled, [readonly]) ~ .icon > .track {
-  /* stroke: var(--fds-semantic-border-input-default); */
   transition-property: color;
   transition-duration: var(--fds-transition);
   transition-timing-function: ease;
 }
 
 .input:disabled ~ .icon > .track {
-  /* stroke: var(--fds-semantic-border-neutral-subtle); */
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
@@ -129,7 +127,7 @@
   color: var(--fds-semantic-surface-success-hover);
 }
 
-.input:focus-visible ~ .icon {
+.input:focus-visible:not(:disabled) ~ .icon {
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
   outline-offset: 0;
 }

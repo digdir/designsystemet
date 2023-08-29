@@ -41,7 +41,7 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
     width='54'
     height='32'
-    viewBox='0 0 54 32'
+    viewBox='0 0 56 34'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -49,18 +49,19 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
     <rect
       className={classes.track}
       x='1'
-      y='0'
+      y='1'
       width='54'
       height='32'
       rx='16'
       stroke='currentcolor'
       strokeWidth='2'
+      strokeLinejoin='round'
       fill='currentcolor'
     />
     <circle
       className={classes.thumb}
       cx='17'
-      cy='16'
+      cy='17'
       width='30'
       height='30'
       r='14'
