@@ -4,12 +4,11 @@
   --fds-focus-border-width: 3px;
   --fds-transition: 200ms;
 
-  position: relative;
   min-width: 44px;
   min-height: 44px;
   display: inline-grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
     'input label'
     '. description';
@@ -29,10 +28,8 @@
   height: 1.75em;
   width: min-content;
   z-index: 1;
-  align-self: center;
   margin: auto;
   overflow: visible;
-  position: relative;
   border-radius: 16px;
 }
 
@@ -56,9 +53,6 @@
 }
 
 .input {
-  position: absolute;
-  left: 0;
-  top: 0;
   min-width: 44px;
   width: 100%;
   min-height: 44px;
