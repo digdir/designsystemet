@@ -97,8 +97,8 @@
 }
 
 .icon > .thumb > .checkmark {
-  visibility: hidden;
-  transition: visibility var(--fds-transition) ease-in-out;
+  opacity: 0;
+  transition: opacity var(--fds-transition) ease-in-out;
   transform: translate(6px, 6px);
 }
 
@@ -108,7 +108,7 @@
 
 .input:not([readonly], :disabled):checked ~ .icon > .track,
 .input:not([readonly], :disabled):checked ~ .icon > .thumb > .checkmark {
-  visibility: visible;
+  opacity: 1;
   color: var(--fds-semantic-surface-success-default);
 }
 
@@ -116,12 +116,26 @@
   transform: translateX(22px);
 }
 
-.input:not([readonly], :disabled):hover ~ .icon > .thumb {
-  transform: translateX(4px);
-}
+@media (hover: hover) and (pointer: fine) {
+  .input:not([readonly], :disabled):hover ~ .icon > .thumb {
+    transform: translateX(4px);
+  }
 
-.input:not([readonly], :disabled):hover ~ .label {
-  color: var(--fds-semantic-border-input-hover);
+  .input:not([readonly], :disabled):hover ~ .label {
+    color: var(--fds-semantic-border-input-hover);
+  }
+
+  .input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb {
+    transform: translateX(17px);
+  }
+
+  .input:not(:checked, :disabled, [readonly]):hover ~ .icon > .track {
+    color: var(--fds-semantic-surface-neutral-inverted);
+  }
+
+  .input:not(:checked, :disabled, [readonly]):checked:hover ~ .icon > .track {
+    color: var(--fds-semantic-surface-success-hover);
+  }
 }
 
 .readonly .input[readonly] ~ .icon > .track {
@@ -130,7 +144,7 @@
 }
 
 .readonly .input[readonly]:checked ~ .icon .thumb > .checkmark {
-  visibility: visible;
+  opacity: 1;
   color: var(--fds-semantic-background-subtle);
 }
 
@@ -138,21 +152,9 @@
   color: var(--fds-semantic-border-neutral-default);
 }
 
-.input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb {
-  transform: translateX(17px);
-}
-
 .input:focus-visible:not(:disabled) ~ .icon > .track {
   stroke: var(--fds-inner-focus-border-color);
   stroke-width: var(--fds-focus-border-width);
-}
-
-.input:not(:checked, :disabled, [readonly]):hover ~ .icon > .track {
-  color: var(--fds-semantic-surface-neutral-inverted);
-}
-
-.input:not(:checked, :disabled, [readonly]):checked:hover ~ .icon > .track {
-  color: var(--fds-semantic-surface-success-hover);
 }
 
 .input:focus-visible:not(:disabled) ~ .icon {
