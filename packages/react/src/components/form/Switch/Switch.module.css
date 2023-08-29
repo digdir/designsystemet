@@ -17,6 +17,12 @@
   grid-auto-flow: column;
 }
 
+.leftLabel {
+  grid-template-areas:
+    'label input'
+    'description .';
+}
+
 .icon {
   grid-area: input;
   pointer-events: none;

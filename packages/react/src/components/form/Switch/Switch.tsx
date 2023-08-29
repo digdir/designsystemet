@@ -10,34 +10,6 @@ import classes from './Switch.module.css';
 import { useSwitch } from './useSwitch';
 
 const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
-  // <svg
-  //   width='54'
-  //   height='32'
-  //   viewBox='0 0 54 32'
-  //   fill='none'
-  //   xmlns='http://www.w3.org/2000/svg'
-  //   {...props}
-  // >
-  //   <rect
-  //     className={classes.box}
-  //     x='1'
-  //     y='1'
-  //     width='52'
-  //     height='30'
-  //     rx='15'
-  //     stroke='#68707C'
-  //     strokeWidth='2'
-  //   />
-  //   <rect
-  //     className={classes.checked}
-  //     x='6'
-  //     y='6'
-  //     width='20'
-  //     height='20'
-  //     rx='10'
-  //     fill='#68707C'
-  //   />
-  // </svg>
   <svg
     width='54'
     height='32'
@@ -54,7 +26,7 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
       height='32'
       rx='16'
       stroke='currentcolor'
-      strokeWidth='2'
+      strokeWidth='2px'
       strokeLinejoin='round'
       fill='currentcolor'
     />
@@ -64,7 +36,7 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
       cy='17'
       width='30'
       height='30'
-      r='14'
+      r='15'
       fill='currentcolor'
     />
   </svg>

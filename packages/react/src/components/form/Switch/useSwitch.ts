@@ -23,7 +23,7 @@ type UseCheckbox = (props: SwitchProps) => FormField & {
 /** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
 export const useSwitch: UseCheckbox = (props) => {
   const checkboxGroup = useContext(CheckboxGroupContext);
-  const { inputProps, readOnly, ...rest } = useFormField(props, 'checkbox');
+  const { inputProps, readOnly, ...rest } = useFormField(props, 'switch');
 
   return {
     ...rest,
