@@ -20,14 +20,14 @@
 .icon {
   grid-area: input;
   pointer-events: none;
-  height: 1.3em;
-  width: 2em;
+  height: 1.75em;
+  width: min-content;
   z-index: 1;
   align-self: center;
   margin: auto;
   overflow: visible;
   position: relative;
-  border-radius: 11px;
+  border-radius: 16px;
 }
 
 .label {
@@ -54,6 +54,7 @@
   left: 0;
   top: 0;
   min-width: 44px;
+  width: 100%;
   min-height: 44px;
   opacity: 0;
   margin: 0;
@@ -93,7 +94,7 @@
 }
 
 .input:checked ~ .icon > .thumb {
-  transform: translateX(13px);
+  transform: translateX(21px);
 }
 
 .input:checked ~ .icon > .track {
@@ -101,11 +102,11 @@
 }
 
 .input:not([readonly], :disabled):hover ~ .icon > .thumb {
-  transform: translateX(2px);
+  transform: translateX(4px);
 }
 
 .input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb {
-  transform: translateX(11px);
+  transform: translateX(17px);
 }
 
 .input:not(:disabled, [readonly]) ~ .icon > .track {

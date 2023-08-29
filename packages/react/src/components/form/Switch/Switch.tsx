@@ -39,9 +39,9 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
   //   />
   // </svg>
   <svg
-    width='36'
-    height='20'
-    viewBox='0 0 36 20'
+    width='54'
+    height='32'
+    viewBox='0 0 54 32'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -50,20 +50,20 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
       className={classes.track}
       x='1'
       y='0'
-      width='34'
-      height='20'
-      rx='10'
+      width='54'
+      height='32'
+      rx='16'
       stroke='currentcolor'
       strokeWidth='2'
       fill='currentcolor'
     />
     <circle
       className={classes.thumb}
-      cx='11'
-      cy='10'
-      width='14'
-      height='14'
-      r='7'
+      cx='17'
+      cy='16'
+      width='30'
+      height='30'
+      r='14'
       fill='currentcolor'
     />
   </svg>
