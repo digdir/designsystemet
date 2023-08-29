@@ -53,8 +53,9 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
       width='34'
       height='20'
       rx='10'
-      stroke='#68707C'
+      stroke='currentcolor'
       strokeWidth='2'
+      fill='currentcolor'
     />
     <circle
       className={classes.thumb}
@@ -63,7 +64,7 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
       width='14'
       height='14'
       r='7'
-      fill='#68707C'
+      fill='currentcolor'
     />
   </svg>
 );
@@ -99,15 +100,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           rest.className,
         )}
       >
-        <span className={cn(classes.control, classes.switch)}>
-          <input
-            {...omit(['size', 'error'], rest)}
-            {...inputProps}
-            className={classes.input}
-            ref={ref}
-          />
-          <SwitchIcon className={classes.icon} />
-        </span>
+        <input
+          {...omit(['size', 'error'], rest)}
+          {...inputProps}
+          className={classes.input}
+          ref={ref}
+        />
+        <SwitchIcon className={classes.icon} />
 
         {children && (
           <Label

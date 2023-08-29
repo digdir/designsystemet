@@ -1,8 +1,20 @@
 .container {
+  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
+  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
+  --fds-focus-border-width: 3px;
+  --fds-transition: 200ms;
+
   position: relative;
-  padding-left: calc(var(--fds-spacing-6) + 17px);
   min-width: 44px;
   min-height: 44px;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'input label'
+    '. description';
+  gap: 0 var(--fds-spacing-2);
+  grid-auto-flow: column;
 }
 
 .icon {
@@ -11,17 +23,15 @@
   height: 1.3em;
   width: 2em;
   z-index: 1;
+  align-self: center;
   margin: auto;
   overflow: visible;
   position: relative;
-}
-
-.switch,
-.switch .icon {
-  border-radius: 10px;
+  border-radius: 11px;
 }
 
 .label {
+  grid-area: label;
   padding-left: 3px;
   min-height: 44px;
   min-width: min-content;
@@ -33,43 +43,30 @@
 }
 
 .description {
+  grid-area: description;
   padding-left: 3px;
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
-.control {
-  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
-  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
-  --fds-focus-border-width: 3px;
-  --fds-transition: 200ms;
-
+.input {
   position: absolute;
   left: 0;
   top: 0;
   min-width: 44px;
   min-height: 44px;
-  display: inline-grid;
-  grid: [input] 1fr / [input] 1fr;
-  gap: var(--fds-spacing-2);
-  grid-auto-flow: column;
-}
-
-.input {
-  height: 100%;
-  width: 100%;
   opacity: 0;
   margin: 0;
   grid-area: input;
   cursor: pointer;
 }
 
-.readonly > .control > .input,
+.readonly > .input,
 .readonly > .label {
   cursor: default;
 }
 
-.disabled > .control .input,
+.disabled > .input,
 .disabled > .label {
   cursor: not-allowed;
   color: var(--fds-semantic-border-neutral-subtle);
@@ -79,49 +76,56 @@
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.icon .thumb {
-  position: absolute;
-}
 @media (prefers-reduced-motion) {
   .icon {
     --fds-transition: 0;
   }
 }
 
-.input:hover ~ .icon .thumb {
+.icon > .track {
   transition: transform var(--fds-transition) ease;
-  transform: translateX(2px);
+  color: var(--fds-semantic-surface-neutral-dark);
 }
 
-.input:disabled ~ .icon .thumb {
-  fill: var(--fds-semantic-border-neutral-subtle);
+.icon > .thumb {
+  transition: transform var(--fds-transition) ease;
+  color: var(--fds-semantic-background-default);
 }
 
-.input:checked ~ .icon .thumb {
-  fill: #fff;
+.input:checked ~ .icon > .thumb {
   transform: translateX(13px);
 }
 
-.input:not(:disabled, :read-only):checked:hover ~ .icon .thumb {
-  transition: transform var(--fds-transition) ease;
+.input:checked ~ .icon > .track {
+  color: var(--fds-semantic-surface-success-default);
+}
+
+.input:not([readonly], :disabled):hover ~ .icon > .thumb {
+  transform: translateX(2px);
+}
+
+.input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb {
   transform: translateX(11px);
 }
 
-.input:not(:checked, :disabled, :read-only) ~ .icon .track {
-  stroke: var(--fds-semantic-border-input-default);
-  transition-property: fill;
+.input:not(:disabled, [readonly]) ~ .icon > .track {
+  /* stroke: var(--fds-semantic-border-input-default); */
+  transition-property: color;
   transition-duration: var(--fds-transition);
   transition-timing-function: ease;
 }
 
-.input:disabled ~ .icon .track {
-  stroke: var(--fds-semantic-border-neutral-subtle);
-  fill: var(--fds-semantic-border-neutral-subtle);
+.input:disabled ~ .icon > .track {
+  /* stroke: var(--fds-semantic-border-neutral-subtle); */
+  color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.input:checked:not(:disabled) ~ .icon .track {
-  stroke: var(--fds-semantic-surface-success-default);
-  fill: var(--fds-semantic-surface-success-default);
+.input:not(:checked, :disabled, [readonly]):hover ~ .icon > .track {
+  color: var(--fds-semantic-surface-neutral-inverted);
+}
+
+.input:checked:hover ~ .icon > .track {
+  color: var(--fds-semantic-surface-success-hover);
 }
 
 .input:focus-visible ~ .icon {
@@ -129,41 +133,20 @@
   outline-offset: 0;
 }
 
-.input:focus-visible:not(:disabled) ~ .icon .track {
+.input:focus-visible:not(:disabled) ~ .icon > .track {
   stroke: var(--fds-semantic-border-focus-boxshadow);
   stroke-width: var(--fds-focus-border-width);
 }
 
-.error .input:not(:disabled, :focus-visible, :checked) ~ .icon .track {
+.error .input:not(:disabled, :focus-visible, :checked) ~ .icon > .track {
   stroke: var(--fds-semantic-border-danger-default);
 }
 
-.readonly .input:read-only:not(:focus-visible) ~ .icon .track {
+.readonly .input[readonly]:not(:focus-visible) ~ .icon > .track {
   stroke: var(--fds-semantic-border-neutral-subtle);
-  fill: var(--fds-semantic-background-subtle);
+  color: var(--fds-semantic-background-subtle);
 }
 
-.container:not(.disabled, .readonly) > .control:hover > .icon > .thumb,
-.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .thumb {
-  fill: var(--fds-semantic-border-input-hover);
-}
-
-.readonly .input:read-only:not(:focus-visible):is(:checked) ~ .icon .thumb {
-  fill: var(--fds-semantic-border-neutral-default);
-}
-
-/* .container:not(.disabled, .readonly) > .control:hover,
-.container:not(.disabled, .readonly):has(.label:hover) > .control {
-  background: var(--fds-semantic-surface-info-subtle-hover);
-} */
-
-.container:not(.disabled, .readonly) > .label:hover,
-.container:not(.disabled, .readonly) > .control:hover ~ .label {
-  color: var(--fds-semantic-border-input-hover);
-}
-
-.container:not(.disabled, .readonly) > .control:hover > .icon > .track,
-.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .track {
-  stroke: var(--fds-semantic-surface-action-primary-hover);
-  fill: var(--fds-semantic-surface-action-primary-no_fill-hover);
+.readonly .input[readonly]:not(:focus-visible) ~ .icon .thumb {
+  color: var(--fds-semantic-border-neutral-default);
 }
