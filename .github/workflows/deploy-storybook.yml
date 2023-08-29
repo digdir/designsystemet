@@ -13,21 +13,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Cache node modules
-        uses: actions/cache@v3
-        id: node-modules-cache
+      - name: Use node 20 and yarn cache
+        uses: actions/setup-node@v3
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: '20'
+          cache: 'yarn'
 
-      - name: Install modules
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+      - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: yarn source files 🔧
+      - name: Build
         run: yarn build
 
-      - name: Build docs 🔧
+      - name: Build Storybook
         run: yarn build:storybook
 
       - name: Upload artifact
