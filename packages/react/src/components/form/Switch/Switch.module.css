@@ -16,6 +16,12 @@
   grid-auto-flow: column;
 }
 
+@media (prefers-reduced-motion) {
+  .container {
+    --fds-transition: 0;
+  }
+}
+
 .leftLabel {
   grid-template-areas:
     'label input'
@@ -26,7 +32,7 @@
   grid-area: input;
   pointer-events: none;
   height: 1.75em;
-  width: min-content;
+  width: auto;
   z-index: 1;
   margin: auto;
   overflow: visible;
@@ -78,12 +84,6 @@
   cursor: not-allowed;
 }
 
-@media (prefers-reduced-motion) {
-  .icon {
-    --fds-transition: 0;
-  }
-}
-
 .icon > .track {
   transition: color var(--fds-transition) ease;
   color: var(--fds-semantic-surface-neutral-dark);
@@ -94,11 +94,19 @@
   color: var(--fds-semantic-background-default);
 }
 
+.icon > .thumb > .checkmark {
+  visibility: hidden;
+  transition: visibility var(--fds-transition) ease-in-out;
+  transform: translate(6px, 6px);
+}
+
 .input:disabled ~ .icon > .track {
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.input:not([readonly], :disabled):checked ~ .icon > .track {
+.input:not([readonly], :disabled):checked ~ .icon > .track,
+.input:not([readonly], :disabled):checked ~ .icon > .thumb > .checkmark {
+  visibility: visible;
   color: var(--fds-semantic-surface-success-default);
 }
 
@@ -119,16 +127,17 @@
   color: var(--fds-semantic-background-subtle);
 }
 
+.readonly .input[readonly]:checked ~ .icon .thumb > .checkmark {
+  visibility: visible;
+  color: var(--fds-semantic-background-subtle);
+}
+
 .readonly .input[readonly] ~ .icon .thumb {
   color: var(--fds-semantic-border-neutral-default);
 }
 
 .input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb {
   transform: translateX(17px);
-}
-
-.error .input:not(:disabled, :focus-visible, :checked) ~ .icon > .track {
-  stroke: var(--fds-semantic-border-danger-default);
 }
 
 .input:focus-visible:not(:disabled) ~ .icon > .track {
@@ -147,4 +156,10 @@
 .input:focus-visible:not(:disabled) ~ .icon {
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
   outline-offset: 0;
+}
+
+.padlock {
+  grid-area: label;
+  height: 1.2rem;
+  width: 1.2rem;
 }

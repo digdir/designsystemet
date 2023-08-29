@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
+import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utils';
 import { Label, Paragraph } from '../../Typography';
@@ -30,15 +31,23 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
       strokeLinejoin='round'
       fill='currentcolor'
     />
-    <circle
-      className={classes.thumb}
-      cx='17'
-      cy='17'
-      width='30'
-      height='30'
-      r='15'
-      fill='currentcolor'
-    />
+    <g className={classes.thumb}>
+      <circle
+        cx='17'
+        cy='17'
+        width='30'
+        height='30'
+        r='15'
+        fill='currentcolor'
+      />
+      <path
+        className={classes.checkmark}
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M18.1958 5.63756C18.8792 6.32098 18.8792 7.42902 18.1958 8.11244L10.4041 15.9041C9.72068 16.5875 8.61264 16.5875 7.92922 15.9041L3.80422 11.7791C3.1208 11.0957 3.1208 9.98765 3.80422 9.30423C4.48764 8.62081 5.59568 8.62081 6.27909 9.30423L9.16666 12.1918L15.7209 5.63756C16.4043 4.95415 17.5123 4.95415 18.1958 5.63756Z'
+        fill='currentcolor'
+      />
+    </g>
   </svg>
 );
 
@@ -56,7 +65,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const {
       inputProps,
       descriptionId,
-      hasError,
       size = 'medium',
       readOnly,
     } = useSwitch(props);
@@ -68,7 +76,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         className={cn(
           classes.container,
           inputProps.disabled && classes.disabled,
-          hasError && classes.error,
           readOnly && classes.readonly,
           rest.className,
         )}
@@ -88,7 +95,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             size={size}
             weight='regular'
           >
-            <span>{children}</span>
+            {readOnly && (
+              <PadlockLockedFillIcon
+                aria-hidden
+                className={classes.padlock}
+              />
+            )}
+            <span> {children}</span>
           </Label>
         )}
         {description && (
