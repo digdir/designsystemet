@@ -25,6 +25,7 @@ export const useSwitch: UseCheckbox = (props) => {
   const checkboxGroup = useContext(CheckboxGroupContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'switch');
 
+  const propsValue = props.value || '';
   return {
     ...rest,
     readOnly,
@@ -35,11 +36,11 @@ export const useSwitch: UseCheckbox = (props) => {
       defaultChecked:
         checkboxGroup?.defaultValue === undefined
           ? undefined
-          : checkboxGroup?.defaultValue.includes(props.value),
+          : checkboxGroup?.defaultValue.includes(propsValue),
       checked:
         checkboxGroup?.value === undefined
           ? undefined
-          : checkboxGroup?.value.includes(props.value),
+          : checkboxGroup?.value.includes(propsValue),
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
@@ -53,7 +54,7 @@ export const useSwitch: UseCheckbox = (props) => {
           return;
         }
         props?.onChange?.(e);
-        checkboxGroup?.toggleValue(props.value);
+        checkboxGroup?.toggleValue(propsValue);
       },
     },
   };

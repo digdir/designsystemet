@@ -37,7 +37,7 @@ const SwitchIcon = (props: SVGAttributes<SVGElement>) => (
         cy='17'
         width='30'
         height='30'
-        r='15'
+        r='14'
         fill='currentcolor'
       />
       <path
@@ -55,13 +55,15 @@ export type SwitchProps = {
   /** Switch label */
   children?: ReactNode;
   /** Value of the `input` element */
-  value: string;
+  value?: string;
+  /** Position of label around the switch */
+  position?: 'left' | 'right';
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {
-    const { children, description, ...rest } = props;
+    const { children, description, position = 'right', ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -77,6 +79,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           classes.container,
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
+          position === 'left' && classes.left,
           rest.className,
         )}
       >

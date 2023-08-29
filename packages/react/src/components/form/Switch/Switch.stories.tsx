@@ -1,4 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import React from 'react';
+
+import { Fieldset } from '../Fieldset';
+import { Checkbox } from '../Checkbox';
 
 import { Switch } from '.';
 
@@ -17,4 +21,33 @@ export const Preview: Story = {
     readOnly: false,
     value: 'value',
   },
+};
+
+export const fullWidth: StoryFn<typeof Switch> = (args) => (
+  <Fieldset legend='Skru av/på en eller flere alternativer'>
+    <Switch
+      value='alt1'
+      {...args}
+    >
+      Alternativ 1
+    </Switch>
+    <Switch
+      value='alt1'
+      {...args}
+    >
+      Alternativ 2
+    </Switch>
+    <Switch
+      value='alt1'
+      {...args}
+    >
+      Alternativ 3
+    </Switch>
+  </Fieldset>
+);
+
+export const fullWidthLeft = fullWidth.bind({});
+
+fullWidthLeft.args = {
+  position: 'left',
 };

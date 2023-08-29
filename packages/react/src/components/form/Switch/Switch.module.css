@@ -6,9 +6,9 @@
 
   min-width: 44px;
   min-height: 44px;
-  display: inline-grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     'input label'
     '. description';
@@ -22,7 +22,9 @@
   }
 }
 
-.leftLabel {
+.left {
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
   grid-template-areas:
     'label input'
     'description .';
@@ -141,7 +143,7 @@
 }
 
 .input:focus-visible:not(:disabled) ~ .icon > .track {
-  stroke: var(--fds-semantic-border-focus-boxshadow);
+  stroke: var(--fds-inner-focus-border-color);
   stroke-width: var(--fds-focus-border-width);
 }
 
