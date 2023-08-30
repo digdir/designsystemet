@@ -11,6 +11,7 @@ module.exports = {
   "semantic_surface_neutral_subtle": "#f4f5f6",
   "semantic_surface_neutral_subtle_hover": "#e9eaec",
   "semantic_surface_neutral_dark": "#68707c",
+  "semantic_surface_neutral_dark_hover": "#4b5563",
   "semantic_surface_neutral_inverted": "#1e2b3c",
   "semantic_surface_action_primary_subtle": "#e6eff8",
   "semantic_surface_action_primary_subtle_hover": "#b3d0ea",
