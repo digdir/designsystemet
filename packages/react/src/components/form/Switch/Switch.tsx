@@ -58,7 +58,7 @@ export type SwitchProps = {
   value?: string;
   /** Position of label around the switch */
   position?: 'left' | 'right';
-} & Omit<FormFieldProps, 'error' | 'errorId'> &
+} & Omit<FormFieldProps, 'error' | 'errorId' | 'id'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
