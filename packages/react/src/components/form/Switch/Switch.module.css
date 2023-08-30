@@ -130,7 +130,7 @@
   }
 
   .input:not(:checked, :disabled, [readonly]):hover ~ .icon > .track {
-    color: var(--fds-semantic-surface-neutral-inverted);
+    color: var(--fds-semantic-surface-neutral-dark-hover);
   }
 
   .input:not(:checked, :disabled, [readonly]):checked:hover ~ .icon > .track {
