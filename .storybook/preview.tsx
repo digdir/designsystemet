@@ -14,6 +14,7 @@ import {
   Link,
   Heading,
   HeadingProps,
+  LinkProps,
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
@@ -70,11 +71,16 @@ const preview: Preview = {
       components: {
         p: (props: Props) => (
           <Paragraph
-            style={{ maxWidth: '70ch' }}
             {...props}
+            style={{ maxWidth: '70ch' }}
           ></Paragraph>
         ),
-        a: Link,
+        a: (props: LinkProps) => (
+          <Link
+            {...props}
+            href={`/?path=${props.href}`}
+          />
+        ),
         h1: getHeading({ level: 1, size: 'xlarge' }),
         h2: getHeading({ level: 2, size: 'large' }),
         h3: getHeading({ level: 3, size: 'medium' }),
