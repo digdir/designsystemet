@@ -1,5 +1,5 @@
-.container {
-  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
+.switch {
+  --fds-inner-switchder-color: var(--fds-semantic-border-focus-boxshadow);
   --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
   --fds-focus-border-width: 3px;
   --fds-transition: 200ms;
@@ -22,7 +22,7 @@
   }
 }
 
-.left {
+.right {
   grid-template-columns: 1fr auto;
   grid-template-rows: 1fr auto;
   grid-template-areas:

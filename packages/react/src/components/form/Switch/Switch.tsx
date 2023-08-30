@@ -56,14 +56,14 @@ export type SwitchProps = {
   children?: ReactNode;
   /** Value of the `input` element */
   value?: string;
-  /** Position of label around the switch */
+  /** Position of switch around the label */
   position?: 'left' | 'right';
 } & Omit<FormFieldProps, 'error' | 'errorId' | 'id'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {
-    const { children, description, position = 'right', ...rest } = props;
+    const { children, description, position = 'left', ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -76,10 +76,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         as='div'
         size={size}
         className={cn(
-          classes.container,
+          classes.switch,
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
-          position === 'left' && classes.left,
+          position === 'right' && classes.right,
           rest.className,
         )}
       >

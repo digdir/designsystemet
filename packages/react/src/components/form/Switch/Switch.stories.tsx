@@ -46,8 +46,8 @@ export const fullWidth: StoryFn<typeof Switch> = (args) => (
   </Fieldset>
 );
 
-export const fullWidthLeft = fullWidth.bind({});
+export const fullWidthRight = fullWidth.bind({});
 
-fullWidthLeft.args = {
-  position: 'left',
+fullWidthRight.args = {
+  position: 'right',
 };
