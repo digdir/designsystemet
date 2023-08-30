@@ -133,7 +133,8 @@
     color: var(--fds-semantic-surface-neutral-dark-hover);
   }
 
-  .input:not(:checked, :disabled, [readonly]):checked:hover ~ .icon > .track {
+  .input:not(:disabled, [readonly]):checked:hover ~ .icon > .track,
+  .input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb > .checkmark {
     color: var(--fds-semantic-surface-success-hover);
   }
 }
