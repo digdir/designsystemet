@@ -1,5 +1,5 @@
 .switch {
-  --fds-inner-switchder-color: var(--fds-semantic-border-focus-boxshadow);
+  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
   --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
   --fds-focus-border-width: 3px;
   --fds-transition: 200ms;
@@ -153,14 +153,14 @@
   color: var(--fds-semantic-border-neutral-default);
 }
 
-.input:focus-visible:not(:disabled) ~ .icon > .track {
-  stroke: var(--fds-inner-focus-border-color);
-  stroke-width: var(--fds-focus-border-width);
-}
-
 .input:focus-visible:not(:disabled) ~ .icon {
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
   outline-offset: 0;
+}
+
+.input:focus-visible:not(:disabled) ~ .icon .track {
+  stroke: var(--fds-inner-focus-border-color);
+  stroke-width: var(--fds-focus-border-width);
 }
 
 .padlock {
