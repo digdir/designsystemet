@@ -108,6 +108,20 @@ export const color = {
           lastName: 'dark',
         },
         {
+          value: '#4b5563',
+          type: 'color',
+          filePath: '../../design-tokens/Base/Semantic.json',
+          isSource: false,
+          original: {
+            value: '{colors.grey.700}',
+            type: 'color',
+          },
+          name: '--fds-semantic-surface-neutral-dark-hover',
+          attributes: {},
+          path: ['semantic', 'surface', 'neutral', 'dark-hover'],
+          lastName: 'dark-hover',
+        },
+        {
           value: '#1e2b3c',
           type: 'color',
           filePath: '../../design-tokens/Base/Semantic.json',

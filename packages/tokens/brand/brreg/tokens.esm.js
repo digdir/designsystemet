@@ -10,6 +10,7 @@ export const semantic_surface_neutral_selected = "#e6eff8";
 export const semantic_surface_neutral_subtle = "#f4f5f6";
 export const semantic_surface_neutral_subtle_hover = "#e9eaec";
 export const semantic_surface_neutral_dark = "#68707c";
+export const semantic_surface_neutral_dark_hover = "#4b5563";
 export const semantic_surface_neutral_inverted = "#1e2b3c";
 export const semantic_surface_action_primary_subtle = "#e6eff8";
 export const semantic_surface_action_primary_subtle_hover = "#b3d0ea";

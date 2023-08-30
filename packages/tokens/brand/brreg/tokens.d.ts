@@ -10,6 +10,7 @@ export const semantic_surface_neutral_selected : string;
 export const semantic_surface_neutral_subtle : string;
 export const semantic_surface_neutral_subtle_hover : string;
 export const semantic_surface_neutral_dark : string;
+export const semantic_surface_neutral_dark_hover : string;
 export const semantic_surface_neutral_inverted : string;
 export const semantic_surface_action_primary_subtle : string;
 export const semantic_surface_action_primary_subtle_hover : string;
