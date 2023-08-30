@@ -75,10 +75,10 @@ const preview: Preview = {
             style={{ maxWidth: '70ch' }}
           ></Paragraph>
         ),
-        a: (props: LinkProps) => (
+        a: ({ href, ...rest }: LinkProps) => (
           <Link
-            {...props}
-            href={`/?path=${props.href}`}
+            {...rest}
+            href={href?.startsWith('/') ? `/?path=${href}` : href}
           />
         ),
         h1: getHeading({ level: 1, size: 'xlarge' }),
