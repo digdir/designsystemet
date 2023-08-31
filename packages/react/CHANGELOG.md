@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.3...@digdir/design-system-react@0.24.0) (2023-08-31)
+
+### Features
+
+- **Switch:** :sparkles: New `Switch` component ([#727](https://github.com/digdir/designsystem/issues/727)) ([8fa362b](https://github.com/digdir/designsystem/commit/8fa362bde7ac7d7c6d242e625bf2e4f42f90aa8d))
+
 ## [0.23.3](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.2...@digdir/design-system-react@0.23.3) (2023-08-25)
 
 ### Bug Fixes

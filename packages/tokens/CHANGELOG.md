@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.4.2...@digdir/design-system-tokens@0.5.0) (2023-08-31)
+
+### Bug Fixes
+
+- remove brreg action colors, we have to agree upon hover behavior ([#758](https://github.com/digdir/designsystem/issues/758)) ([02ae6ee](https://github.com/digdir/designsystem/commit/02ae6ee786aa1cf77d2fdf88ef1041199e81b8f2))
+
+### Features
+
+- added token for surface.neutral.dark-hover ([#767](https://github.com/digdir/designsystem/issues/767)) ([c083348](https://github.com/digdir/designsystem/commit/c083348f200fe594eb3d1aeb805e95b7b00df5d9))
+
 ## [0.4.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.4.1...@digdir/design-system-tokens@0.4.2) (2023-08-25)
 
 **Note:** Version bump only for package @digdir/design-system-tokens
