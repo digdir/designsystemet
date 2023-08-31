@@ -53,6 +53,14 @@ interface IPopoverRequiredProps {
 
 export type PopoverProps = IPopoverOptions & IPopoverRequiredProps;
 
+type IPopoverContext = IPopoverOptions &
+  Required<Pick<IPopoverOptions, 'variant'>> &
+  ReturnType<typeof useInteractions> &
+  ReturnType<typeof useFloating<HTMLDivElement>> & {
+    arrowRef: React.RefObject<HTMLDivElement>;
+    setOpen: (open: boolean) => void;
+  };
+
 export function usePopover({
   variant = 'default',
   arrow,
@@ -62,7 +70,7 @@ export function usePopover({
   open: controlledOpen,
   onOpenChange: setControlledOpen,
   ...restOptions
-}: IPopoverOptions) {
+}: IPopoverOptions): IPopoverContext {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
   const open = controlledOpen ?? uncontrolledOpen;
@@ -70,7 +78,7 @@ export function usePopover({
 
   const arrowRef = useRef<HTMLDivElement | null>(null);
 
-  const data = useFloating({
+  const data = useFloating<HTMLDivElement>({
     placement,
     open,
     onOpenChange: setOpen,
@@ -95,27 +103,28 @@ export function usePopover({
 
   const interactions = useInteractions([click, dismiss, role]);
 
-  return useMemo(
-    () => ({
-      open,
-      setOpen,
-      ...interactions,
-      ...data,
-      ...restOptions,
-      arrow,
-      arrowRef,
-      variant,
-    }),
+  return useMemo<IPopoverContext>(
+    () =>
+      ({
+        open,
+        setOpen,
+        ...interactions,
+        ...data,
+        ...restOptions,
+        arrow,
+        arrowRef,
+        variant,
+      } satisfies IPopoverContext),
     [open, setOpen, interactions, data, restOptions, arrow, arrowRef, variant],
   );
 }
 
-type ContextType = ReturnType<typeof usePopover> | null;
+type NullablePopoverContext = IPopoverContext | null;
 
-const PopoverContext = createContext<ContextType>(null);
+const PopoverContext = createContext<NullablePopoverContext>(null);
 
-export const usePopoverContext = () => {
-  const context = useContext(PopoverContext);
+export const usePopoverContext = (): IPopoverContext => {
+  const context = useContext<NullablePopoverContext>(PopoverContext);
 
   if (context == null) {
     throw new Error('Popover components must be wrapped in <Popover />');
