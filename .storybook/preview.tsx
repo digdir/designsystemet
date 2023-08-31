@@ -75,12 +75,20 @@ const preview: Preview = {
             style={{ maxWidth: '70ch' }}
           ></Paragraph>
         ),
-        a: ({ href, ...rest }: LinkProps) => (
-          <Link
-            {...rest}
-            href={href?.startsWith('/') ? `/?path=${href}` : href}
-          />
-        ),
+        // a: ({ href, ...rest }: LinkProps) => {
+        //   const { pathname = '', origin = '' } = document?.location;
+
+        //   return (
+        //     <Link
+        //       {...rest}
+        //       href={
+        //         href?.startsWith('/')
+        //           ? `${origin}${pathname}/?path=${href}`
+        //           : href
+        //       }
+        //     />
+        //   );
+        // },
         h1: getHeading({ level: 1, size: 'xlarge' }),
         h2: getHeading({ level: 2, size: 'large' }),
         h3: getHeading({ level: 3, size: 'medium' }),
