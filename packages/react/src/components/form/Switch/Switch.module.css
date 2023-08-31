@@ -43,7 +43,6 @@
 
 .label {
   grid-area: label;
-  padding-left: 3px;
   min-height: 44px;
   min-width: min-content;
   display: inline-flex;
