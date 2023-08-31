@@ -1,0 +1,67 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../../docs-components';
+import * as SwitchStories from './Switch.stories';
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Switch, Fieldset } from '@digdir/design-system-react';
+
+<Fieldset legend='Profil instillinger'>
+  <Switch>Mørk modus</Switch>
+</Fieldset>;
+```
+
+## Gruppering
+
+Bruker [Fieldset](/docs/felles-fieldset--docs) til gruppering.
+
+<Canvas of={SwitchStories.fullWidth} />
+
+### Høyrejustert
+
+Bruk `position="right"` til å plassere `Switch` på høyre side av label dersom
+du har behov for det.
+
+<Canvas of={SwitchStories.fullWidthRight} />
+
+## Retningslinjer
+
+Vi bruker switch når brukeren skal kunne slå noe av eller på. Switch er den digitale varianten av av/på-brytere, for eksempel en lysbryter. Et eksempel fra telefon er Flymodus av/på.
+
+Switch skal være et valg mellom to alternativer som utelukker hverandre, og komponenten skal alltid ha et standardvalg.
+
+Du skal bare bruke switch når resultatet av valget umiddelbart blir synlig for brukeren. Det betyr at brukeren ikke må bekrefte eller lagre for å se resultatet av å ha trykket på bryteren.
+
+Ikke bruk Switch
+
+- til filtrering av innhold. Bruk heller Chips
+- hvis det er flere alternativer enn to
+- hvis brukeren må velge «lagre» for å kunne se endringen. Bruk heller en Checkbox eller to Radio button.
+
+### Tekst i komponenten
+
+Teksten til en switch må være kort og presis. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. Bruk nøkkelord i teksten, og unngå å formulere label som et spørsmål.
+
+### Eksempel:
+
+- ⚠️ Ikke: Skru på flymodus (Av/på)
+- 👍 Riktig: Flymodus (Av/på)
+
+### Plassering av tekst
+
+Som regel er det høyre som er den beste plasseringen for tekst, unntaket er når switch er fast plassert på høyre side i grensesnittet er det best at teksten er på venstre side. Slik at alle knappene blir justert etter samme vertikale linje.
+
+Semantisk struktur
+
+Universell utforming spesielt for denne komponenten
