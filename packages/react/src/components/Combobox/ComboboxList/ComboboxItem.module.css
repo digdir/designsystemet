@@ -1,0 +1,8 @@
+.item {
+  cursor: pointer;
+  padding: var(--fds-spacing-1);
+}
+
+.item[aria-selected='true'] {
+  background-color: var(--fds-semantic-surface-neutral-selected);
+}

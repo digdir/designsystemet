@@ -5,6 +5,7 @@ export * from './legacy/LegacyRadioButton';
 export * from './legacy/LegacyRadioGroup';
 
 export * from './Button';
+export * from './Combobox';
 export * from './Tabs';
 export * from './HelpText';
 export * from './Popover';
