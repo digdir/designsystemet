@@ -1,9 +1,4 @@
-import {
-  Meta,
-  Canvas,
-  Controls,
-  Primary,
-} from '@storybook/blocks';
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 import * as TabsStories from './Tabs.stories';
 
@@ -11,7 +6,7 @@ import * as TabsStories from './Tabs.stories';
 
 # Tabs
 
-<Information text='beta' />
+<Information text='altinn' />
 
 ## Egenskaper
 
@@ -32,6 +27,7 @@ Disse blir automatisk generert dersom de ikke er satt.
 <Controls />
 
 ## Bruk
+
 ```tsx
 import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
 import { Tabs } from '@digdir/design-system-react';
@@ -55,4 +51,5 @@ import { Tabs } from '@digdir/design-system-react';
 ```
 
 ## Eksempel
-<Canvas of={TabsStories.Eksempel}/>
+
+<Canvas of={TabsStories.Eksempel} />

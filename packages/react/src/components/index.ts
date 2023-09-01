@@ -26,3 +26,4 @@ export * from './Pagination';
 export * from './form/Checkbox';
 export * from './form/Radio';
 export * from './form/Fieldset';
+export * from './form/Switch';

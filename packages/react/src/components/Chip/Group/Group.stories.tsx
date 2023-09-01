@@ -6,7 +6,7 @@ import { Chip } from '..';
 import { Group } from './';
 
 const meta: Meta<typeof Group> = {
-  title: 'Kjernekomponenter/Chip/Group',
+  title: 'Felles/Chip/Group',
   component: Group,
 };
 

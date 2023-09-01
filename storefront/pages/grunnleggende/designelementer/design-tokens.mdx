@@ -1,7 +1,6 @@
 import { Meta } from '@components';
 import { MenuPageLayout } from '@layouts';
 import { Figma } from 'mdx-embed';
-import { CodeSnippet } from '@components';
 
 <Meta
   title='Design Tokens'
@@ -22,8 +21,6 @@ export default ({ children, menu }) => (
 
 Design tokens er fleksible verdier som sikrer at designere og utviklere jobber med de samme reglene og retningslinjene. Dette gjelder for eksempel variabler for farger, typografi, størrelser, avstander og andre stilegenskaper. Design tokens fungerer som bindeleddet mellom alle flater og verktøy.
 
-Ved bruk av pakken [@digdir/design-system-tokens](https://www.npmjs.com/package/@digdir/design-system-tokens) har man tilgang på alle gjenbrukbare verdier som skal brukes i designet.
-
 ## Design tokens i Figma
 
 Vi bruker Figma-pluginen "Tokens Studio", da denne lar oss administrere flere stiler og egenskaper enn Figma i seg selv kan.
@@ -39,33 +36,4 @@ Videoen over viser at når settet for «Tilsynet» slås på, overstyres både f
 
 ### Design tokens for utviklere
 
-Installer NPM-pakken `@digdir/design-system-tokens` med NPM, Yarn eller PNPM og importer inn tokens med CSS-, SCSS- eller Javascript-variabler. Overstyres ved behov.
-
-#### CSS
-
-<CodeSnippet
-  children='
-@import "@digdir/design-system-tokens/build/tokens.css";
-:root {
-  --my-text-color: var(--color-text-background-light);
-}'
-  language='css'
-/>
-
-#### SCSS
-
-<CodeSnippet
-  children='
-@use "@digdir/design-system-tokens/build/tokens.scss" as tokens;
-$my-text-color: tokens.$color-text-background-light;'
-  language='scss'
-/>
-
-#### Javascript
-
-<CodeSnippet
-  children='
-import tokens from "@digdir/design-system-tokens/build/tokens"
-const myTextColor = tokens.color.text.background.light'
-  language='javascript'
-/>
+Installer NPM-pakken [@digdir/design-system-tokens](https://www.npmjs.com/package/@digdir/design-system-tokens) og følg beskrivelsen der på bruk av tokens. Overstyres ved behov.

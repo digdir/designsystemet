@@ -26,7 +26,7 @@ export interface LegacyRadioButtonProps {
 /**
  *
  * @note
- * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/kjernekomponenter-radio--docs Radio} component.
+ * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-radio--docs Radio} component.
  */
 const LegacyRadioButton = forwardRef<HTMLInputElement, LegacyRadioButtonProps>(
   (
