@@ -67,7 +67,7 @@ const preview: Preview = {
     viewMode: 'docs',
     actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
-      toc: { headingSelector: 'h2, h3' },
+      toc: { headingSelector: 'h2' },
       theme: customTheme,
       components: {
         p: (props: Props) => (
