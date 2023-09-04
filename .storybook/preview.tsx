@@ -76,11 +76,11 @@ const preview: Preview = {
             style={{ maxWidth: '70ch' }}
           ></Paragraph>
         ),
-        h1: getHeading({ level: 1, size: 'xlarge' }),
-        h2: getHeading({ level: 2, size: 'large' }),
-        h3: getHeading({ level: 3, size: 'medium' }),
-        h4: getHeading({ level: 4, size: 'small' }),
-        h5: getHeading({ level: 5, size: 'xsmall' }),
+        // h1: getHeading({ level: 1, size: 'xlarge' }),
+        // h2: getHeading({ level: 2, size: 'large' }),
+        // h3: getHeading({ level: 3, size: 'medium' }),
+        // h4: getHeading({ level: 4, size: 'small' }),
+        // h5: getHeading({ level: 5, size: 'xsmall' }),
         ul: (props: Props) => (
           <ul
             style={{ maxWidth: '70ch' }}
