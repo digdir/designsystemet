@@ -1,14 +1,14 @@
 .btn {
-  border: none;
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  transition: 0.1s all;
-  cursor: pointer;
-  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 32px;
+  border-radius: 32px;
+  padding: 0 8px;
+  transition: 0.1s all;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .btn:hover {
@@ -21,4 +21,8 @@
 
 .tippy {
   font-family: 'Inter', sans-serif;
+}
+
+.text {
+  margin-left: 2px;
 }

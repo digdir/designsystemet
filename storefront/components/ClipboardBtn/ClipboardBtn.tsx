@@ -5,14 +5,15 @@ import Tippy from '@tippyjs/react';
 import classes from './ClipboardBtn.module.css';
 
 interface ClipboardBtnProps {
-  text: string;
-  value?: string;
+  title: string;
+  value: string;
+  text?: string;
 }
 
-const ClipboardBtn = ({ text, value = 'Kopier' }: ClipboardBtnProps) => {
+const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
 
-  const onClick = (text: string) => {
+  const onBtnClick = (text: string) => {
     setToolTipText('Kopiert!');
     navigator.clipboard.writeText(text).catch((reason) => {
       throw Error(String(reason));
@@ -27,15 +28,16 @@ const ClipboardBtn = ({ text, value = 'Kopier' }: ClipboardBtnProps) => {
         className={classes.tippy}
       >
         <button
-          onMouseEnter={() => setToolTipText(text)}
-          onClick={() => onClick(value)}
+          onMouseEnter={() => setToolTipText(title)}
+          onClick={() => onBtnClick(value)}
           className={classes.btn}
-          title={text}
+          title={title}
         >
           <ClipboardIcon
             fontSize={20}
             color='#585858'
           />
+          {text && <span className={classes.text}>{text}</span>}
         </button>
       </Tippy>
     </>

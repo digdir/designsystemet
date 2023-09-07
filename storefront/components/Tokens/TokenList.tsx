@@ -69,7 +69,8 @@ const TokenCard = ({ item, key, type, hideValue }: TokenCardProps) => {
         <h4 className={classes.title}>
           {capitalizeString(item.lastName)}
           <ClipboardBtn
-            text='Kopier CSS variabel'
+            title='Kopier CSS variabel'
+            text='CSS'
             value={item.name}
           />
         </h4>
