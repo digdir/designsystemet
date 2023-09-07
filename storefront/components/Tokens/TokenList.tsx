@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Dropdown, Button } from '@navikt/ds-react';
 import cn from 'classnames';
+import type { TransformedToken } from 'style-dictionary';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
@@ -19,22 +20,11 @@ type TokenListProps = {
   hideValue?: boolean;
 };
 
-type TokenItemType = {
-  value: string;
-  type: string;
-  description: string;
-  filePath: string;
-  isSource: boolean;
-  original: {
-    value: string;
-    type: string;
-    description: string;
-  };
-  name: string;
-  attributes: Record<string, number>;
-  path: string[];
+type Token = {
   lastName: string;
-};
+  name: string;
+  value: string;
+} & TransformedToken;
 
 type CardColumnType = 2 | 3;
 type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
@@ -54,9 +44,44 @@ const stripLabelByLevel = (str: string, level: number) => {
   return res;
 };
 
+type TokenCardProps = {
+  item: Token;
+  key: number;
+  hideValue: TokenListProps['hideValue'];
+  type: TokenListProps['type'];
+};
+
+const TokenCard = ({ item, key, type, hideValue }: TokenCardProps) => {
+  const val = item.value as string;
+  return (
+    <div
+      className={classes.card}
+      key={key}
+    >
+      <div className={classes.preview}>
+        {type === 'color' && <TokenColor value={val} />}
+        {type === 'typography' && <TokenFontSize value={val} />}
+        {type === 'boxShadow' && <TokenShadow value={val} />}
+        {(type === 'sizing' || type === 'spacing') && <TokenSize value={val} />}
+      </div>
+
+      <div className={classes.textContainer}>
+        <h4 className={classes.title}>
+          {capitalizeString(item.lastName)}
+          <ClipboardBtn
+            text='Kopier CSS variabel'
+            value={item.name}
+          />
+        </h4>
+        {!hideValue && <div className={classes.value}>{item.value}</div>}
+      </div>
+    </div>
+  );
+};
+
 const TokenList = ({
-  type,
   showThemePicker,
+  type = 'color',
   hideValue = false,
 }: TokenListProps) => {
   const [brand, setBrand] = useState<BrandType>('digdir');
@@ -66,72 +91,61 @@ const TokenList = ({
     setCardColumns(type === 'color' ? 3 : 2);
   }, [type]);
 
-  const card = (item: TokenItemType, index: number) => {
-    return (
-      <div
-        className={classes.card}
-        key={index}
-      >
-        <div className={classes.preview}>
-          {type === 'color' && <TokenColor value={item.value} />}
-          {type === 'typography' && <TokenFontSize value={item.value} />}
-          {type === 'boxShadow' && <TokenShadow value={item.value} />}
-          {(type === 'sizing' || type === 'spacing') && (
-            <TokenSize value={item.value} />
-          )}
-        </div>
+  const brandTypeTokens = tokens[brand][type] as unknown as Record<
+    string,
+    Token
+  >;
 
-        <div className={classes.textContainer}>
-          <h4 className={classes.title}>
-            {capitalizeString(item.lastName)}
-            <ClipboardBtn
-              text='Kopier CSS variabel'
-              value={item.name}
-            />
-          </h4>
-          {!hideValue && <div className={classes.value}>{item.value}</div>}
-        </div>
-      </div>
-    );
-  };
-
-  type TokenImportType = typeof tokens;
-  const tokenList: TokenImportType = tokens[brand][type];
-
-  const recursive = (object: TokenImportType, level: number, name: string) => {
+  const recursive = <T extends Partial<Record<string, Token>>>(
+    tokens: T,
+    level = 0,
+    name = '',
+  ) => {
     level++;
     return (
       <div>
-        {Object.keys(object).map((value: string, index: number) => {
-          const token = object[value as keyof TokenImportType];
-          const DynamicHeading = `h${
+        {Object.keys(tokens).map((value: string, index: number) => {
+          const token = tokens[value];
+          const DynamicHeading: keyof JSX.IntrinsicElements = `h${
             level === 1 ? 3 : 4
-          }` as keyof JSX.IntrinsicElements;
+          }`;
 
           name = stripLabelByLevel(name, level);
           name += ' ' + value;
 
           return (
-            <div key={index}>
-              {(level === 1 || Array.isArray(token)) && (
-                <DynamicHeading>{capitalizeString(name)}</DynamicHeading>
-              )}
+            token && (
+              <div key={index}>
+                {(level === 1 || Array.isArray(token)) && (
+                  <DynamicHeading>{capitalizeString(name)}</DynamicHeading>
+                )}
 
-              {Array.isArray(token) && (
-                <div className={classes.section}>
-                  <div
-                    className={cn(classes.cards, {
-                      [classes.cards2]: cardColumns === 2,
-                    })}
-                  >
-                    {token.map((value, index: number) =>
-                      card(value as TokenItemType, index),
-                    )}
+                {Array.isArray(token) ? (
+                  <div className={classes.section}>
+                    <div
+                      className={cn(classes.cards, {
+                        [classes.cards2]: cardColumns === 2,
+                      })}
+                    >
+                      {token.map((value, index: number) => (
+                        <TokenCard
+                          item={value as Token}
+                          key={index}
+                          hideValue={hideValue}
+                          type={type}
+                        ></TokenCard>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-              {!Array.isArray(token) && recursive(token, level, name)}
-            </div>
+                ) : (
+                  recursive(
+                    token as unknown as Record<string, Token>,
+                    level,
+                    name,
+                  )
+                )}
+              </div>
+            )
           );
         })}
       </div>
@@ -168,7 +182,7 @@ const TokenList = ({
           </Dropdown>
         </div>
       )}
-      {recursive(tokenList, 0, '')}
+      {recursive(brandTypeTokens)}
     </div>
   );
 };
