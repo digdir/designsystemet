@@ -1,4 +1,4 @@
-import { Meta } from '@components';
+import { Meta, Banner, Section, NavigationCard } from '@components';
 import { FrontpageLayout } from '@layouts';
 import {
   ImageIcon,
@@ -17,9 +17,6 @@ export default ({ children }) => (
   <FrontpageLayout
     Content={children}
     data={{
-      title: 'Felles Designsystem',
-      description:
-        'Felles designsystem består av grunnleggende designelementer, komponenter og mønstre du kan bruke når du utvikler tjenester. Vi håper dette kan bli en felles verktøykasse der vi samarbeider på tvers om å lage det beste grunnlaget for offentlige tjenester.',
       navigationCards: {
         title: 'Kom i gang',
         items: [
@@ -81,3 +78,15 @@ export default ({ children }) => (
 
 />
 );
+
+<Banner
+  title='Felles Designsystem'
+  desc='Felles designsystem består av grunnleggende designelementer, komponenter og mønstre du kan bruke når du utvikler tjenester. Vi håper dette kan bli en felles verktøykasse der vi samarbeider på tvers om å lage det beste grunnlaget for offentlige tjenester.'
+></Banner>
+
+<Section>
+  <NavigationCard
+    title='For designere'
+    description='Lær hvordan du kommer i gang med designsystemet som designer.'
+  ></NavigationCard>
+</Section>
