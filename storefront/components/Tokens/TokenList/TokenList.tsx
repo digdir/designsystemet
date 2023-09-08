@@ -3,14 +3,14 @@ import { Dropdown, Button } from '@navikt/ds-react';
 import cn from 'classnames';
 import type { TransformedToken } from 'style-dictionary';
 
-import { capitalizeString } from '../../utils/StringHelpers';
-import { ClipboardBtn } from '../ClipboardBtn/ClipboardBtn';
-import * as tokens from '../../tokens';
+import { capitalizeString } from '../../../utils/StringHelpers';
+import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
+import * as tokens from '../../../tokens';
+import { TokenColor } from '../TokenColor/TokenColor';
+import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
+import { TokenShadow } from '../TokenShadow/TokenShadow';
+import { TokenSize } from '../TokenSize/TokenSize';
 
-import { TokenColor } from './TokenColor/TokenColor';
-import { TokenFontSize } from './TokenFontSize/TokenFontSize';
-import { TokenShadow } from './TokenShadow/TokenShadow';
-import { TokenSize } from './TokenSize/TokenSize';
 import classes from './TokenList.module.css';
 
 type TokenListProps = {
