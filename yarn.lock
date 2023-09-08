@@ -4947,13 +4947,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/font@npm:13.0.7":
-  version: 13.0.7
-  resolution: "@next/font@npm:13.0.7"
-  checksum: 88324e483561ed1372b97d434b98cff3c3adfeafc4217b45ff96f429c42ea4c6eebb089b34d8ef353aaf6413aa5f6d918a2ea83701ad129d2cc6f6751184d82a
-  languageName: node
-  linkType: hard
-
 "@next/swc-darwin-arm64@npm:13.4.7":
   version: 13.4.7
   resolution: "@next/swc-darwin-arm64@npm:13.4.7"
@@ -22361,7 +22354,6 @@ __metadata:
     "@navikt/aksel-icons": ^2.8.4
     "@navikt/ds-css": ^5.0.2
     "@navikt/ds-react": ^5.0.2
-    "@next/font": 13.0.7
     "@reach/disclosure": ^0.18.0
     "@tanstack/react-query": ^4.29.5
     "@tippyjs/react": ^4.2.6
