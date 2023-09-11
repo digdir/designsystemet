@@ -131,6 +131,7 @@
   fill: var(--fds-semantic-border-neutral-default);
 }
 
+/* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
   .container:not(.disabled, .readonly) > .control:hover,
   .container:not(.disabled, .readonly):has(.label:hover) > .control {
