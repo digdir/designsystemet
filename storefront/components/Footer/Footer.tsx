@@ -31,7 +31,7 @@ const rightLinks = [
   },
   {
     text: 'Bli invitert til slack',
-    url: '/grunnleggende/introduksjon/slack',
+    url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-22v5yui1f-XlDpD9FKhWT7dyUy6NVCHA',
     prefix: (
       <Image
         height={20}
