@@ -16,6 +16,7 @@
   font-family: inherit;
 }
 
+/* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
   .chipButton:hover {
     --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle-hover);
