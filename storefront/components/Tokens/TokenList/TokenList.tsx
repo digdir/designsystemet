@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import React, { useEffect, useState } from 'react';
 import { Dropdown, Button } from '@navikt/ds-react';
 import cn from 'classnames';
-import type { TransformedToken } from 'style-dictionary';
+import type { TransformedToken as Token } from 'style-dictionary';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
 import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
@@ -21,8 +21,6 @@ type TokenListProps = {
   hideValue?: boolean;
 };
 
-type Token = TransformedToken;
-
 type CardColumnType = 2 | 3;
 type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
 
@@ -37,6 +35,8 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
   const title = token.path
     .slice(token.path.length - 1, token.path.length)
     .toString();
+
+  const isSlim = type === 'sizing' || type === 'spacing';
   return (
     <div
       className={classes.card}
@@ -46,18 +46,19 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
         {type === 'color' && <TokenColor value={val} />}
         {type === 'typography' && <TokenFontSize value={val} />}
         {type === 'boxShadow' && <TokenShadow value={val} />}
-        {(type === 'sizing' || type === 'spacing') && <TokenSize value={val} />}
+        {isSlim && <TokenSize value={val} />}
       </div>
 
       <div className={classes.textContainer}>
-        <h5 className={classes.title}>
+        <h4 className={classes.title}>
           {capitalizeString(title)}
+          {/* {isSlim && <small>{` (${token.description as string})`}</small>} */}
           <ClipboardBtn
             title='Kopier CSS variabel'
             text='CSS'
             value={token.name}
           />
-        </h5>
+        </h4>
         {!hideValue && <div className={classes.value}>{token.value}</div>}
       </div>
     </div>
@@ -99,6 +100,8 @@ const TokenList = ({
     }, new Set<string>()),
   );
 
+  console.log('sections', sections);
+
   const sectionedTokens = Array.from(
     sections.map((section) => [
       section,
@@ -106,7 +109,7 @@ const TokenList = ({
     ]),
   );
 
-  console.log(sectionedTokens);
+  console.log('tokens', sectionedTokens);
 
   return (
     <div className={classes.tokens}>
@@ -140,30 +143,37 @@ const TokenList = ({
       )}
       <>
         {sectionedTokens.map(([section, tokens]) => (
-          <>
+          <div
+            key={section as string}
+            className={classes.section}
+          >
             <h3>{capitalizeString(section as string)}</h3>
-            {(tokens as [string, Token[]][]).map(([group, tokens]) => (
-              <div key={group}>
-                <h4>{capitalizeString(group)}</h4>
-                <div className={classes.section}>
-                  <div
-                    className={cn(classes.cards, {
-                      [classes.cards2]: cardColumns === 2,
-                    })}
-                  >
-                    {tokens.map((token) => (
-                      <TokenCard
-                        token={token}
-                        key={token.name}
-                        hideValue={hideValue}
-                        type={type}
-                      ></TokenCard>
-                    ))}
+            {(tokens as [string, Token[]][]).map(([group, tokens]) => {
+              const isSlim = type === 'sizing' || type === 'spacing';
+
+              return (
+                <div key={group}>
+                  {!isSlim && <h4>{capitalizeString(group)}</h4>}
+                  <div className={cn(!isSlim && classes.group)}>
+                    <div
+                      className={cn(classes.cards, {
+                        [classes.cards2]: cardColumns === 2,
+                      })}
+                    >
+                      {tokens.map((token) => (
+                        <TokenCard
+                          token={token}
+                          key={token.name}
+                          hideValue={hideValue}
+                          type={type}
+                        ></TokenCard>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </>
+              );
+            })}
+          </div>
         ))}
       </>
     </div>

@@ -20,9 +20,11 @@
 }
 
 .section {
-  border-bottom: 1px solid #dadada;
-  padding-bottom: 32px;
-  margin-bottom: 26px;
+  margin-bottom: 5rem;
+}
+
+.group {
+  margin-bottom: 4rem;
 }
 
 .section2 {
