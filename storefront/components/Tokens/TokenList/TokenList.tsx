@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'react';
 import React, { useEffect, useState } from 'react';
 import { Dropdown, Button } from '@navikt/ds-react';
 import cn from 'classnames';
@@ -29,34 +30,19 @@ type Token = {
 type CardColumnType = 2 | 3;
 type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
 
-/**
- * Strips words in string by the level
- */
-const stripLabelByLevel = (str: string, level: number) => {
-  const strArr = str.split(' ');
-  let res = '';
-  for (let i = 1; i < strArr.length; i++) {
-    if (i === level) {
-      break;
-    }
-    res += ' ' + strArr[i];
-  }
-  return res;
-};
-
 type TokenCardProps = {
   item: Token;
   key: number;
   hideValue: TokenListProps['hideValue'];
   type: TokenListProps['type'];
-};
+} & HTMLAttributes<HTMLDivElement>;
 
-const TokenCard = ({ item, key, type, hideValue }: TokenCardProps) => {
+const TokenCard = ({ item, type, hideValue, ...rest }: TokenCardProps) => {
   const val = item.value as string;
   return (
     <div
       className={classes.card}
-      key={key}
+      {...rest}
     >
       <div className={classes.preview}>
         {type === 'color' && <TokenColor value={val} />}
@@ -92,66 +78,22 @@ const TokenList = ({
     setCardColumns(type === 'color' ? 3 : 2);
   }, [type]);
 
-  const brandTypeTokens = tokens[brand][type] as unknown as Record<
-    string,
-    Token
-  >;
+  const brandTypeTokens = tokens[brand][type] as unknown as Token[];
 
-  const recursive = <T extends Partial<Record<string, Token>>>(
-    tokens: T,
-    level = 0,
-    name = '',
-  ) => {
-    level++;
-    return (
-      <div>
-        {Object.keys(tokens).map((value: string, index: number) => {
-          const token = tokens[value];
-          const DynamicHeading: keyof JSX.IntrinsicElements = `h${
-            level === 1 ? 3 : 4
-          }`;
+  const groupedTokens = Array.from(
+    brandTypeTokens
+      .reduce((acc, token) => {
+        const path =
+          token.path.length > 1 ? token.path.slice(0, -1) : token.path;
+        const key = path.toString().replace(/,/g, ' ');
+        const tokens = acc.get(key);
 
-          name = stripLabelByLevel(name, level);
-          name += ' ' + value;
+        !tokens ? acc.set(key, [token]) : acc.set(key, [...tokens, token]);
 
-          return (
-            token && (
-              <div key={index}>
-                {(level === 1 || Array.isArray(token)) && (
-                  <DynamicHeading>{capitalizeString(name)}</DynamicHeading>
-                )}
-
-                {Array.isArray(token) ? (
-                  <div className={classes.section}>
-                    <div
-                      className={cn(classes.cards, {
-                        [classes.cards2]: cardColumns === 2,
-                      })}
-                    >
-                      {token.map((value, index: number) => (
-                        <TokenCard
-                          item={value as Token}
-                          key={index}
-                          hideValue={hideValue}
-                          type={type}
-                        ></TokenCard>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  recursive(
-                    token as unknown as Record<string, Token>,
-                    level,
-                    name,
-                  )
-                )}
-              </div>
-            )
-          );
-        })}
-      </div>
-    );
-  };
+        return acc;
+      }, new Map<string, Token[]>())
+      .entries(),
+  );
 
   return (
     <div className={classes.tokens}>
@@ -183,7 +125,29 @@ const TokenList = ({
           </Dropdown>
         </div>
       )}
-      {recursive(brandTypeTokens)}
+      <>
+        {groupedTokens.map(([key, tokens]) => (
+          <div key={key}>
+            <h3>{capitalizeString(key)}</h3>
+            <div className={classes.section}>
+              <div
+                className={cn(classes.cards, {
+                  [classes.cards2]: cardColumns === 2,
+                })}
+              >
+                {tokens.map((value, index: number) => (
+                  <TokenCard
+                    item={value}
+                    key={index}
+                    hideValue={hideValue}
+                    type={type}
+                  ></TokenCard>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </>
     </div>
   );
 };

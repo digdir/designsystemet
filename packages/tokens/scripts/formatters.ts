@@ -89,35 +89,7 @@ const groupByType = R.groupBy(
   (token: TransformedToken) => token.type as string,
 );
 
-const groupByPathIndex = (level: number, tokens: TransformedToken[]) =>
-  R.groupBy((token: TransformedToken) => token.path[level], tokens);
-
-const shouldGroupPath = (level: number, tokens: TransformedToken[]) => {
-  const token = R.head(tokens);
-  const [, next] = R.splitAt(level, token?.path ?? []);
-  return next.length > 1;
-};
-
-const groupByNextPathIndex = <
-  T extends Partial<Record<string, TransformedToken[]>>,
->(
-  level: number,
-  record: T,
-): Record<string, unknown> =>
-  R.mapObjIndexed((tokens, key, obj) => {
-    if (R.isNil(tokens) || R.isNil(obj)) {
-      return tokens;
-    }
-
-    if (shouldGroupPath(level, tokens)) {
-      const grouped = groupByPathIndex(level, tokens);
-      return groupByNextPathIndex(level + 1, grouped);
-    }
-    return tokens;
-  }, record || {});
-
-const groupFromPathIndex = R.curry(groupByNextPathIndex);
-const groupTokens = R.pipe(groupByType, groupFromPathIndex(0));
+const groupTokens = R.pipe(groupByType);
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
 /**
