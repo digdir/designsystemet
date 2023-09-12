@@ -21,24 +21,22 @@ type TokenListProps = {
   hideValue?: boolean;
 };
 
-type Token = {
-  lastName: string;
-  name: string;
-  value: string;
-} & TransformedToken;
+type Token = TransformedToken;
 
 type CardColumnType = 2 | 3;
 type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
 
 type TokenCardProps = {
-  item: Token;
-  key: number;
+  token: Token;
   hideValue: TokenListProps['hideValue'];
   type: TokenListProps['type'];
 } & HTMLAttributes<HTMLDivElement>;
 
-const TokenCard = ({ item, type, hideValue, ...rest }: TokenCardProps) => {
-  const val = item.value as string;
+const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
+  const val = token.value as string;
+  const title = token.path
+    .slice(token.path.length - 1, token.path.length)
+    .toString();
   return (
     <div
       className={classes.card}
@@ -52,19 +50,32 @@ const TokenCard = ({ item, type, hideValue, ...rest }: TokenCardProps) => {
       </div>
 
       <div className={classes.textContainer}>
-        <h4 className={classes.title}>
-          {capitalizeString(item.lastName)}
+        <h5 className={classes.title}>
+          {capitalizeString(title)}
           <ClipboardBtn
             title='Kopier CSS variabel'
             text='CSS'
-            value={item.name}
+            value={token.name}
           />
-        </h4>
-        {!hideValue && <div className={classes.value}>{item.value}</div>}
+        </h5>
+        {!hideValue && <div className={classes.value}>{token.value}</div>}
       </div>
     </div>
   );
 };
+
+const mapTokens = (tokens: Token[]): [string, Token[]][] =>
+  Array.from(
+    tokens.reduce((acc, token) => {
+      const path = token.path.length > 2 ? token.path.slice(1, -1) : token.path;
+      const key = path.toString().replace(/,/g, ' ').trim();
+      const tokens = acc.get(key);
+
+      !tokens ? acc.set(key, [token]) : acc.set(key, [...tokens, token]);
+
+      return acc;
+    }, new Map<string, Token[]>()),
+  );
 
 const TokenList = ({
   showThemePicker,
@@ -80,20 +91,22 @@ const TokenList = ({
 
   const brandTypeTokens = tokens[brand][type] as unknown as Token[];
 
-  const groupedTokens = Array.from(
-    brandTypeTokens
-      .reduce((acc, token) => {
-        const path =
-          token.path.length > 1 ? token.path.slice(0, -1) : token.path;
-        const key = path.toString().replace(/,/g, ' ');
-        const tokens = acc.get(key);
-
-        !tokens ? acc.set(key, [token]) : acc.set(key, [...tokens, token]);
-
-        return acc;
-      }, new Map<string, Token[]>())
-      .entries(),
+  const sections = Array.from(
+    brandTypeTokens.reduce((acc, token) => {
+      const [section] = token.path;
+      acc.add(section);
+      return acc;
+    }, new Set<string>()),
   );
+
+  const sectionedTokens = Array.from(
+    sections.map((section) => [
+      section,
+      mapTokens(brandTypeTokens.filter((token) => token.path[0] === section)),
+    ]),
+  );
+
+  console.log(sectionedTokens);
 
   return (
     <div className={classes.tokens}>
@@ -126,26 +139,31 @@ const TokenList = ({
         </div>
       )}
       <>
-        {groupedTokens.map(([key, tokens]) => (
-          <div key={key}>
-            <h3>{capitalizeString(key)}</h3>
-            <div className={classes.section}>
-              <div
-                className={cn(classes.cards, {
-                  [classes.cards2]: cardColumns === 2,
-                })}
-              >
-                {tokens.map((value, index: number) => (
-                  <TokenCard
-                    item={value}
-                    key={index}
-                    hideValue={hideValue}
-                    type={type}
-                  ></TokenCard>
-                ))}
+        {sectionedTokens.map(([section, tokens]) => (
+          <>
+            <h3>{capitalizeString(section as string)}</h3>
+            {(tokens as [string, Token[]][]).map(([group, tokens]) => (
+              <div key={group}>
+                <h4>{capitalizeString(group)}</h4>
+                <div className={classes.section}>
+                  <div
+                    className={cn(classes.cards, {
+                      [classes.cards2]: cardColumns === 2,
+                    })}
+                  >
+                    {tokens.map((token) => (
+                      <TokenCard
+                        token={token}
+                        key={token.name}
+                        hideValue={hideValue}
+                        type={type}
+                      ></TokenCard>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            ))}
+          </>
         ))}
       </>
     </div>

@@ -89,7 +89,6 @@ const groupByType = R.groupBy(
   (token: TransformedToken) => token.type as string,
 );
 
-const groupTokens = R.pipe(groupByType);
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
 /**
@@ -105,11 +104,10 @@ export const groupedTokens: Named<Format> = {
 
     const formattedTokens = dictionary.allTokens.map((token) => ({
       ...token,
-      lastName: R.last(token.path),
       name: toCssVarName(format(token)),
     }));
 
-    const tokens = groupTokens(formattedTokens);
+    const tokens = groupByType(formattedTokens);
 
     const content =
       fileHeader({ file }) +

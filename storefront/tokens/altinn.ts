@@ -16,7 +16,6 @@ export const color = [
     name: '--fds-semantic-background-default',
     attributes: {},
     path: ['semantic', 'background', 'default'],
-    lastName: 'default',
   },
   {
     value: '#f4f5f6',
@@ -30,7 +29,6 @@ export const color = [
     name: '--fds-semantic-background-subtle',
     attributes: {},
     path: ['semantic', 'background', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#ffffff',
@@ -44,7 +42,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-default',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'default'],
-    lastName: 'default',
   },
   {
     value: '#e6eff8',
@@ -58,7 +55,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-selected',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'selected'],
-    lastName: 'selected',
   },
   {
     value: '#f4f5f6',
@@ -72,7 +68,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#e9eaec',
@@ -86,7 +81,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#68707c',
@@ -100,7 +94,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-dark',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'dark'],
-    lastName: 'dark',
   },
   {
     value: '#4b5563',
@@ -114,7 +107,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-dark-hover',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'dark-hover'],
-    lastName: 'dark-hover',
   },
   {
     value: '#1e2b3c',
@@ -128,7 +120,6 @@ export const color = [
     name: '--fds-semantic-surface-neutral-inverted',
     attributes: {},
     path: ['semantic', 'surface', 'neutral', 'inverted'],
-    lastName: 'inverted',
   },
   {
     value: '#e6eff8',
@@ -142,7 +133,6 @@ export const color = [
     name: '--fds-semantic-surface-action-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#b3d0ea',
@@ -156,7 +146,6 @@ export const color = [
     name: '--fds-semantic-surface-action-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#0062ba',
@@ -170,7 +159,6 @@ export const color = [
     name: '--fds-semantic-surface-action-default',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'default'],
-    lastName: 'default',
   },
   {
     value: '#004e95',
@@ -184,7 +172,6 @@ export const color = [
     name: '--fds-semantic-surface-action-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -200,7 +187,6 @@ export const color = [
     name: '--fds-semantic-surface-action-active',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -214,7 +200,6 @@ export const color = [
     name: '--fds-semantic-surface-action-no_fill',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'no_fill'],
-    lastName: 'no_fill',
   },
   {
     value: '#e6eff8',
@@ -228,7 +213,6 @@ export const color = [
     name: '--fds-semantic-surface-action-no_fill-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'no_fill-hover'],
-    lastName: 'no_fill-hover',
   },
   {
     value: '#b3d0ea',
@@ -242,7 +226,6 @@ export const color = [
     name: '--fds-semantic-surface-action-no_fill-active',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'no_fill-active'],
-    lastName: 'no_fill-active',
   },
   {
     value: '#0062ba',
@@ -256,7 +239,6 @@ export const color = [
     name: '--fds-semantic-surface-action-checked',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'checked'],
-    lastName: 'checked',
   },
   {
     value: '#e6eff8',
@@ -270,7 +252,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#b3d0ea',
@@ -284,7 +265,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#0062ba',
@@ -298,7 +278,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-default',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#004e95',
@@ -312,7 +291,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -328,7 +306,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-active',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -342,7 +319,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-no_fill',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'no_fill'],
-    lastName: 'no_fill',
   },
   {
     value: '#e6eff8',
@@ -356,7 +332,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-no_fill-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'no_fill-hover'],
-    lastName: 'no_fill-hover',
   },
   {
     value: '#b3d0ea',
@@ -370,7 +345,6 @@ export const color = [
     name: '--fds-semantic-surface-action-primary-no_fill-active',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'primary', 'no_fill-active'],
-    lastName: 'no_fill-active',
   },
   {
     value: '#f4f5f6',
@@ -384,7 +358,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#e9eaec',
@@ -398,7 +371,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#00315d',
@@ -412,7 +384,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-default',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'default'],
-    lastName: 'default',
   },
   {
     value: 'rgba(#00315d, 0.9)',
@@ -426,7 +397,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: 'rgba(#00315d, 0.8)',
@@ -442,7 +412,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-active',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -456,7 +425,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-no_fill',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'no_fill'],
-    lastName: 'no_fill',
   },
   {
     value: 'rgba(#00315d, 0.1)',
@@ -470,7 +438,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-no_fill-hover',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'no_fill-hover'],
-    lastName: 'no_fill-hover',
   },
   {
     value: 'rgba(#00315d, 0.2)',
@@ -484,7 +451,6 @@ export const color = [
     name: '--fds-semantic-surface-action-secondary-no_fill-active',
     attributes: {},
     path: ['semantic', 'surface', 'action', 'secondary', 'no_fill-active'],
-    lastName: 'no_fill-active',
   },
   {
     value: '#d1f4e1',
@@ -498,7 +464,6 @@ export const color = [
     name: '--fds-semantic-surface-success-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#8be4b5',
@@ -512,7 +477,6 @@ export const color = [
     name: '--fds-semantic-surface-success-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#118849',
@@ -526,7 +490,6 @@ export const color = [
     name: '--fds-semantic-surface-success-default',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'default'],
-    lastName: 'default',
   },
   {
     value: '#0c6536',
@@ -540,7 +503,6 @@ export const color = [
     name: '--fds-semantic-surface-success-hover',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#084826',
@@ -554,7 +516,6 @@ export const color = [
     name: '--fds-semantic-surface-success-active',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -568,7 +529,6 @@ export const color = [
     name: '--fds-semantic-surface-success-no_fill',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'no_fill'],
-    lastName: 'no_fill',
   },
   {
     value: '#d1f4e1',
@@ -582,7 +542,6 @@ export const color = [
     name: '--fds-semantic-surface-success-no_fill-hover',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'no_fill-hover'],
-    lastName: 'no_fill-hover',
   },
   {
     value: '#8be4b5',
@@ -596,7 +555,6 @@ export const color = [
     name: '--fds-semantic-surface-success-no_fill-active',
     attributes: {},
     path: ['semantic', 'surface', 'success', 'no_fill-active'],
-    lastName: 'no_fill-active',
   },
   {
     value: '#fffbe6',
@@ -610,7 +568,6 @@ export const color = [
     name: '--fds-semantic-surface-warning-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'warning', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#fff4b4',
@@ -624,7 +581,6 @@ export const color = [
     name: '--fds-semantic-surface-warning-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'warning', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#ff8c06',
@@ -638,7 +594,6 @@ export const color = [
     name: '--fds-semantic-surface-warning-default',
     attributes: {},
     path: ['semantic', 'surface', 'warning', 'default'],
-    lastName: 'default',
   },
   {
     value: '#f9d5db',
@@ -652,7 +607,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#f3abb6',
@@ -666,7 +620,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#e02e49',
@@ -680,7 +633,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-default',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'default'],
-    lastName: 'default',
   },
   {
     value: '#b3253a',
@@ -694,7 +646,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-hover',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#861c2c',
@@ -708,7 +659,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-active',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -722,7 +672,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-no_fill',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'no_fill'],
-    lastName: 'no_fill',
   },
   {
     value: '#f9d5db',
@@ -736,7 +685,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-no_fill-hover',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'no_fill-hover'],
-    lastName: 'no_fill-hover',
   },
   {
     value: '#f3abb6',
@@ -750,7 +698,6 @@ export const color = [
     name: '--fds-semantic-surface-danger-no_fill-active',
     attributes: {},
     path: ['semantic', 'surface', 'danger', 'no_fill-active'],
-    lastName: 'no_fill-active',
   },
   {
     value: '#e6eff8',
@@ -764,7 +711,6 @@ export const color = [
     name: '--fds-semantic-surface-info-subtle',
     attributes: {},
     path: ['semantic', 'surface', 'info', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#b3d0ea',
@@ -778,7 +724,6 @@ export const color = [
     name: '--fds-semantic-surface-info-subtle-hover',
     attributes: {},
     path: ['semantic', 'surface', 'info', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#ffffff',
@@ -792,7 +737,6 @@ export const color = [
     name: '--fds-semantic-surface-on_inverted-default',
     attributes: {},
     path: ['semantic', 'surface', 'on_inverted', 'default'],
-    lastName: 'default',
   },
   {
     value: '#ffffffe6',
@@ -806,7 +750,6 @@ export const color = [
     name: '--fds-semantic-surface-on_inverted-hover',
     attributes: {},
     path: ['semantic', 'surface', 'on_inverted', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#ffffffcc',
@@ -820,7 +763,6 @@ export const color = [
     name: '--fds-semantic-surface-on_inverted-active',
     attributes: {},
     path: ['semantic', 'surface', 'on_inverted', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff00',
@@ -834,7 +776,6 @@ export const color = [
     name: '--fds-semantic-surface-on_inverted-no_fill',
     attributes: {},
     path: ['semantic', 'surface', 'on_inverted', 'no_fill'],
-    lastName: 'no_fill',
   },
   {
     value: '#ffffff1a',
@@ -848,7 +789,6 @@ export const color = [
     name: '--fds-semantic-surface-on_inverted-no_fill-hover',
     attributes: {},
     path: ['semantic', 'surface', 'on_inverted', 'no_fill-hover'],
-    lastName: 'no_fill-hover',
   },
   {
     value: '#ffffff33',
@@ -862,7 +802,6 @@ export const color = [
     name: '--fds-semantic-surface-on_inverted-no_fill-active',
     attributes: {},
     path: ['semantic', 'surface', 'on_inverted', 'no_fill-active'],
-    lastName: 'no_fill-active',
   },
   {
     value: '#B3D0EA',
@@ -876,7 +815,6 @@ export const color = [
     name: '--fds-semantic-surface-primary-light',
     attributes: {},
     path: ['semantic', 'surface', 'primary', 'light'],
-    lastName: 'light',
   },
   {
     value: '#80B1DD',
@@ -890,7 +828,6 @@ export const color = [
     name: '--fds-semantic-surface-primary-light-hover',
     attributes: {},
     path: ['semantic', 'surface', 'primary', 'light-hover'],
-    lastName: 'light-hover',
   },
   {
     value: '#66A1D6',
@@ -904,7 +841,6 @@ export const color = [
     name: '--fds-semantic-surface-primary-light-active',
     attributes: {},
     path: ['semantic', 'surface', 'primary', 'light-active'],
-    lastName: 'light-active',
   },
   {
     value: '#004E95',
@@ -918,7 +854,6 @@ export const color = [
     name: '--fds-semantic-surface-primary-dark',
     attributes: {},
     path: ['semantic', 'surface', 'primary', 'dark'],
-    lastName: 'dark',
   },
   {
     value: '#C5BBDD',
@@ -932,7 +867,6 @@ export const color = [
     name: '--fds-semantic-surface-secondary-light',
     attributes: {},
     path: ['semantic', 'surface', 'secondary', 'light'],
-    lastName: 'light',
   },
   {
     value: '#A392C8',
@@ -946,7 +880,6 @@ export const color = [
     name: '--fds-semantic-surface-secondary-light-hover',
     attributes: {},
     path: ['semantic', 'surface', 'secondary', 'light-hover'],
-    lastName: 'light-hover',
   },
   {
     value: '#806AB4',
@@ -960,7 +893,6 @@ export const color = [
     name: '--fds-semantic-surface-secondary-light-active',
     attributes: {},
     path: ['semantic', 'surface', 'secondary', 'light-active'],
-    lastName: 'light-active',
   },
   {
     value: '#231B36',
@@ -974,7 +906,6 @@ export const color = [
     name: '--fds-semantic-surface-secondary-dark',
     attributes: {},
     path: ['semantic', 'surface', 'secondary', 'dark'],
-    lastName: 'dark',
   },
   {
     value: '#F3ABB6',
@@ -988,7 +919,6 @@ export const color = [
     name: '--fds-semantic-surface-tertiary-light',
     attributes: {},
     path: ['semantic', 'surface', 'tertiary', 'light'],
-    lastName: 'light',
   },
   {
     value: '#EC8292',
@@ -1002,7 +932,6 @@ export const color = [
     name: '--fds-semantic-surface-tertiary-light-hover',
     attributes: {},
     path: ['semantic', 'surface', 'tertiary', 'light-hover'],
-    lastName: 'light-hover',
   },
   {
     value: '#E6586D',
@@ -1016,7 +945,6 @@ export const color = [
     name: '--fds-semantic-surface-tertiary-light-active',
     attributes: {},
     path: ['semantic', 'surface', 'tertiary', 'light-active'],
-    lastName: 'light-active',
   },
   {
     value: '#5A121D',
@@ -1030,7 +958,6 @@ export const color = [
     name: '--fds-semantic-surface-tertiary-dark',
     attributes: {},
     path: ['semantic', 'surface', 'tertiary', 'dark'],
-    lastName: 'dark',
   },
   {
     value: '#004e95',
@@ -1044,7 +971,6 @@ export const color = [
     name: '--fds-semantic-border-info-default',
     attributes: {},
     path: ['semantic', 'border', 'info', 'default'],
-    lastName: 'default',
   },
   {
     value: '#b3d0ea',
@@ -1058,7 +984,6 @@ export const color = [
     name: '--fds-semantic-border-action-subtle',
     attributes: {},
     path: ['semantic', 'border', 'action', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#66a1d6',
@@ -1072,7 +997,6 @@ export const color = [
     name: '--fds-semantic-border-action-subtle-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#0062ba',
@@ -1086,7 +1010,6 @@ export const color = [
     name: '--fds-semantic-border-action-default',
     attributes: {},
     path: ['semantic', 'border', 'action', 'default'],
-    lastName: 'default',
   },
   {
     value: '#0062ba',
@@ -1100,7 +1023,6 @@ export const color = [
     name: '--fds-semantic-border-action-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -1114,7 +1036,6 @@ export const color = [
     name: '--fds-semantic-border-action-active',
     attributes: {},
     path: ['semantic', 'border', 'action', 'active'],
-    lastName: 'active',
   },
   {
     value: '#00315d',
@@ -1128,7 +1049,6 @@ export const color = [
     name: '--fds-semantic-border-action-dark',
     attributes: {},
     path: ['semantic', 'border', 'action', 'dark'],
-    lastName: 'dark',
   },
   {
     value: '#0062ba',
@@ -1142,7 +1062,6 @@ export const color = [
     name: '--fds-semantic-border-action-dark-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'dark-hover'],
-    lastName: 'dark-hover',
   },
   {
     value: '#b3d0ea',
@@ -1156,7 +1075,6 @@ export const color = [
     name: '--fds-semantic-border-action-primary-subtle',
     attributes: {},
     path: ['semantic', 'border', 'action', 'primary', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#66a1d6',
@@ -1170,7 +1088,6 @@ export const color = [
     name: '--fds-semantic-border-action-primary-subtle-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'primary', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#0062ba',
@@ -1184,7 +1101,6 @@ export const color = [
     name: '--fds-semantic-border-action-primary-default',
     attributes: {},
     path: ['semantic', 'border', 'action', 'primary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#004e95',
@@ -1198,7 +1114,6 @@ export const color = [
     name: '--fds-semantic-border-action-primary-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'primary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -1212,7 +1127,6 @@ export const color = [
     name: '--fds-semantic-border-action-primary-active',
     attributes: {},
     path: ['semantic', 'border', 'action', 'primary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#e9eaec',
@@ -1226,7 +1140,6 @@ export const color = [
     name: '--fds-semantic-border-action-secondary-subtle',
     attributes: {},
     path: ['semantic', 'border', 'action', 'secondary', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#d2d5d8',
@@ -1240,7 +1153,6 @@ export const color = [
     name: '--fds-semantic-border-action-secondary-subtle-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'secondary', 'subtle-hover'],
-    lastName: 'subtle-hover',
   },
   {
     value: '#00315d',
@@ -1254,7 +1166,6 @@ export const color = [
     name: '--fds-semantic-border-action-secondary-default',
     attributes: {},
     path: ['semantic', 'border', 'action', 'secondary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#00315d',
@@ -1268,7 +1179,6 @@ export const color = [
     name: '--fds-semantic-border-action-secondary-hover',
     attributes: {},
     path: ['semantic', 'border', 'action', 'secondary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -1282,7 +1192,6 @@ export const color = [
     name: '--fds-semantic-border-action-secondary-active',
     attributes: {},
     path: ['semantic', 'border', 'action', 'secondary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#68707c',
@@ -1296,7 +1205,6 @@ export const color = [
     name: '--fds-semantic-border-neutral-default',
     attributes: {},
     path: ['semantic', 'border', 'neutral', 'default'],
-    lastName: 'default',
   },
   {
     value: '#d2d5d8',
@@ -1310,7 +1218,6 @@ export const color = [
     name: '--fds-semantic-border-neutral-subtle',
     attributes: {},
     path: ['semantic', 'border', 'neutral', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#1e2b3c',
@@ -1324,7 +1231,6 @@ export const color = [
     name: '--fds-semantic-border-neutral-strong',
     attributes: {},
     path: ['semantic', 'border', 'neutral', 'strong'],
-    lastName: 'strong',
   },
   {
     value: '#bcbfc5',
@@ -1338,7 +1244,6 @@ export const color = [
     name: '--fds-semantic-border-neutral-divider',
     attributes: {},
     path: ['semantic', 'border', 'neutral', 'divider'],
-    lastName: 'divider',
   },
   {
     value: '#118849',
@@ -1352,7 +1257,6 @@ export const color = [
     name: '--fds-semantic-border-success-default',
     attributes: {},
     path: ['semantic', 'border', 'success', 'default'],
-    lastName: 'default',
   },
   {
     value: '#0c6536',
@@ -1366,7 +1270,6 @@ export const color = [
     name: '--fds-semantic-border-success-hover',
     attributes: {},
     path: ['semantic', 'border', 'success', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#084826',
@@ -1380,7 +1283,6 @@ export const color = [
     name: '--fds-semantic-border-success-active',
     attributes: {},
     path: ['semantic', 'border', 'success', 'active'],
-    lastName: 'active',
   },
   {
     value: '#cc7005',
@@ -1394,7 +1296,6 @@ export const color = [
     name: '--fds-semantic-border-warning-default',
     attributes: {},
     path: ['semantic', 'border', 'warning', 'default'],
-    lastName: 'default',
   },
   {
     value: '#995404',
@@ -1408,7 +1309,6 @@ export const color = [
     name: '--fds-semantic-border-warning-hover',
     attributes: {},
     path: ['semantic', 'border', 'warning', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#663802',
@@ -1422,7 +1322,6 @@ export const color = [
     name: '--fds-semantic-border-warning-active',
     attributes: {},
     path: ['semantic', 'border', 'warning', 'active'],
-    lastName: 'active',
   },
   {
     value: '#e02e49',
@@ -1436,7 +1335,6 @@ export const color = [
     name: '--fds-semantic-border-danger-default',
     attributes: {},
     path: ['semantic', 'border', 'danger', 'default'],
-    lastName: 'default',
   },
   {
     value: '#b3253a',
@@ -1450,7 +1348,6 @@ export const color = [
     name: '--fds-semantic-border-danger-hover',
     attributes: {},
     path: ['semantic', 'border', 'danger', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#861c2c',
@@ -1464,7 +1361,6 @@ export const color = [
     name: '--fds-semantic-border-danger-active',
     attributes: {},
     path: ['semantic', 'border', 'danger', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffda06',
@@ -1478,7 +1374,6 @@ export const color = [
     name: '--fds-semantic-border-focus-outline',
     attributes: {},
     path: ['semantic', 'border', 'focus', 'outline'],
-    lastName: 'outline',
   },
   {
     value: '#1e2b3c',
@@ -1492,7 +1387,6 @@ export const color = [
     name: '--fds-semantic-border-focus-boxshadow',
     attributes: {},
     path: ['semantic', 'border', 'focus', 'boxshadow'],
-    lastName: 'boxshadow',
   },
   {
     value: '#ffffff',
@@ -1506,7 +1400,6 @@ export const color = [
     name: '--fds-semantic-border-on_inverted-default',
     attributes: {},
     path: ['semantic', 'border', 'on_inverted', 'default'],
-    lastName: 'default',
   },
   {
     value: '#00315d',
@@ -1520,7 +1413,6 @@ export const color = [
     name: '--fds-semantic-border-input-default',
     attributes: {},
     path: ['semantic', 'border', 'input', 'default'],
-    lastName: 'default',
   },
   {
     value: '#0062ba',
@@ -1534,7 +1426,6 @@ export const color = [
     name: '--fds-semantic-border-input-hover',
     attributes: {},
     path: ['semantic', 'border', 'input', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#1A72C1',
@@ -1548,7 +1439,6 @@ export const color = [
     name: '--fds-semantic-border-primary-default',
     attributes: {},
     path: ['semantic', 'border', 'primary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#0062BA',
@@ -1562,7 +1452,6 @@ export const color = [
     name: '--fds-semantic-border-primary-hover',
     attributes: {},
     path: ['semantic', 'border', 'primary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#004E95',
@@ -1576,7 +1465,6 @@ export const color = [
     name: '--fds-semantic-border-primary-active',
     attributes: {},
     path: ['semantic', 'border', 'primary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#594488',
@@ -1590,7 +1478,6 @@ export const color = [
     name: '--fds-semantic-border-secondary-default',
     attributes: {},
     path: ['semantic', 'border', 'secondary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#3F3161',
@@ -1604,7 +1491,6 @@ export const color = [
     name: '--fds-semantic-border-secondary-hover',
     attributes: {},
     path: ['semantic', 'border', 'secondary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#352951',
@@ -1618,7 +1504,6 @@ export const color = [
     name: '--fds-semantic-border-secondary-active',
     attributes: {},
     path: ['semantic', 'border', 'secondary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#B3253A',
@@ -1632,7 +1517,6 @@ export const color = [
     name: '--fds-semantic-border-tertiary-default',
     attributes: {},
     path: ['semantic', 'border', 'tertiary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#861C2C',
@@ -1646,7 +1530,6 @@ export const color = [
     name: '--fds-semantic-border-tertiary-hover',
     attributes: {},
     path: ['semantic', 'border', 'tertiary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#5A121D',
@@ -1660,7 +1543,6 @@ export const color = [
     name: '--fds-semantic-border-tertiary-active',
     attributes: {},
     path: ['semantic', 'border', 'tertiary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#0c6536',
@@ -1674,7 +1556,6 @@ export const color = [
     name: '--fds-semantic-text-success-default',
     attributes: {},
     path: ['semantic', 'text', 'success', 'default'],
-    lastName: 'default',
   },
   {
     value: '#084826',
@@ -1688,7 +1569,6 @@ export const color = [
     name: '--fds-semantic-text-success-hover',
     attributes: {},
     path: ['semantic', 'text', 'success', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#084826',
@@ -1702,7 +1582,6 @@ export const color = [
     name: '--fds-semantic-text-success-active',
     attributes: {},
     path: ['semantic', 'text', 'success', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -1716,7 +1595,6 @@ export const color = [
     name: '--fds-semantic-text-success-on_success',
     attributes: {},
     path: ['semantic', 'text', 'success', 'on_success'],
-    lastName: 'on_success',
   },
   {
     value: '#1e2b3c',
@@ -1730,7 +1608,6 @@ export const color = [
     name: '--fds-semantic-text-success-on_success_subtle',
     attributes: {},
     path: ['semantic', 'text', 'success', 'on_success_subtle'],
-    lastName: 'on_success_subtle',
   },
   {
     value: '#1e2b3c',
@@ -1744,7 +1621,6 @@ export const color = [
     name: '--fds-semantic-text-neutral-default',
     attributes: {},
     path: ['semantic', 'text', 'neutral', 'default'],
-    lastName: 'default',
   },
   {
     value: '#4b5563',
@@ -1758,7 +1634,6 @@ export const color = [
     name: '--fds-semantic-text-neutral-subtle',
     attributes: {},
     path: ['semantic', 'text', 'neutral', 'subtle'],
-    lastName: 'subtle',
   },
   {
     value: '#ffffff',
@@ -1772,7 +1647,6 @@ export const color = [
     name: '--fds-semantic-text-neutral-on_inverted',
     attributes: {},
     path: ['semantic', 'text', 'neutral', 'on_inverted'],
-    lastName: 'on_inverted',
   },
   {
     value: '#0062ba',
@@ -1786,7 +1660,6 @@ export const color = [
     name: '--fds-semantic-text-action-default',
     attributes: {},
     path: ['semantic', 'text', 'action', 'default'],
-    lastName: 'default',
   },
   {
     value: '#004e95',
@@ -1800,7 +1673,6 @@ export const color = [
     name: '--fds-semantic-text-action-hover',
     attributes: {},
     path: ['semantic', 'text', 'action', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -1814,7 +1686,6 @@ export const color = [
     name: '--fds-semantic-text-action-active',
     attributes: {},
     path: ['semantic', 'text', 'action', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -1828,7 +1699,6 @@ export const color = [
     name: '--fds-semantic-text-action-on_action',
     attributes: {},
     path: ['semantic', 'text', 'action', 'on_action'],
-    lastName: 'on_action',
   },
   {
     value: '#0062ba',
@@ -1842,7 +1712,6 @@ export const color = [
     name: '--fds-semantic-text-action-primary-default',
     attributes: {},
     path: ['semantic', 'text', 'action', 'primary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#004e95',
@@ -1856,7 +1725,6 @@ export const color = [
     name: '--fds-semantic-text-action-primary-hover',
     attributes: {},
     path: ['semantic', 'text', 'action', 'primary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -1870,7 +1738,6 @@ export const color = [
     name: '--fds-semantic-text-action-primary-active',
     attributes: {},
     path: ['semantic', 'text', 'action', 'primary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -1884,7 +1751,6 @@ export const color = [
     name: '--fds-semantic-text-action-primary-on_action',
     attributes: {},
     path: ['semantic', 'text', 'action', 'primary', 'on_action'],
-    lastName: 'on_action',
   },
   {
     value: '#00315d',
@@ -1898,7 +1764,6 @@ export const color = [
     name: '--fds-semantic-text-action-secondary-default',
     attributes: {},
     path: ['semantic', 'text', 'action', 'secondary', 'default'],
-    lastName: 'default',
   },
   {
     value: '#00315d',
@@ -1912,7 +1777,6 @@ export const color = [
     name: '--fds-semantic-text-action-secondary-hover',
     attributes: {},
     path: ['semantic', 'text', 'action', 'secondary', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#00315d',
@@ -1926,7 +1790,6 @@ export const color = [
     name: '--fds-semantic-text-action-secondary-active',
     attributes: {},
     path: ['semantic', 'text', 'action', 'secondary', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -1940,7 +1803,6 @@ export const color = [
     name: '--fds-semantic-text-action-secondary-on_action',
     attributes: {},
     path: ['semantic', 'text', 'action', 'secondary', 'on_action'],
-    lastName: 'on_action',
   },
   {
     value: '#995404',
@@ -1954,7 +1816,6 @@ export const color = [
     name: '--fds-semantic-text-warning-default',
     attributes: {},
     path: ['semantic', 'text', 'warning', 'default'],
-    lastName: 'default',
   },
   {
     value: '#cc7005',
@@ -1968,7 +1829,6 @@ export const color = [
     name: '--fds-semantic-text-warning-icon_warning',
     attributes: {},
     path: ['semantic', 'text', 'warning', 'icon_warning'],
-    lastName: 'icon_warning',
   },
   {
     value: '#663802',
@@ -1982,7 +1842,6 @@ export const color = [
     name: '--fds-semantic-text-warning-on_warning',
     attributes: {},
     path: ['semantic', 'text', 'warning', 'on_warning'],
-    lastName: 'on_warning',
   },
   {
     value: '#b3253a',
@@ -1996,7 +1855,6 @@ export const color = [
     name: '--fds-semantic-text-danger-default',
     attributes: {},
     path: ['semantic', 'text', 'danger', 'default'],
-    lastName: 'default',
   },
   {
     value: '#861c2c',
@@ -2010,7 +1868,6 @@ export const color = [
     name: '--fds-semantic-text-danger-hover',
     attributes: {},
     path: ['semantic', 'text', 'danger', 'hover'],
-    lastName: 'hover',
   },
   {
     value: '#5a121d',
@@ -2024,7 +1881,6 @@ export const color = [
     name: '--fds-semantic-text-danger-active',
     attributes: {},
     path: ['semantic', 'text', 'danger', 'active'],
-    lastName: 'active',
   },
   {
     value: '#ffffff',
@@ -2038,7 +1894,6 @@ export const color = [
     name: '--fds-semantic-text-danger-on_danger',
     attributes: {},
     path: ['semantic', 'text', 'danger', 'on_danger'],
-    lastName: 'on_danger',
   },
   {
     value: '#1e2b3c',
@@ -2052,7 +1907,6 @@ export const color = [
     name: '--fds-semantic-text-danger-on_danger_subtle',
     attributes: {},
     path: ['semantic', 'text', 'danger', 'on_danger_subtle'],
-    lastName: 'on_danger_subtle',
   },
   {
     value: '#7a1265',
@@ -2066,7 +1920,6 @@ export const color = [
     name: '--fds-semantic-text-visited-default',
     attributes: {},
     path: ['semantic', 'text', 'visited', 'default'],
-    lastName: 'default',
   },
   {
     value: '#E6EFF8',
@@ -2082,7 +1935,6 @@ export const color = [
     name: '--fds-brand-primary-100',
     attributes: {},
     path: ['brand', 'primary', '100'],
-    lastName: '100',
   },
   {
     value: '#B3D0EA',
@@ -2100,7 +1952,6 @@ export const color = [
     name: '--fds-brand-primary-200',
     attributes: {},
     path: ['brand', 'primary', '200'],
-    lastName: '200',
   },
   {
     value: '#80B1DD',
@@ -2116,7 +1967,6 @@ export const color = [
     name: '--fds-brand-primary-300',
     attributes: {},
     path: ['brand', 'primary', '300'],
-    lastName: '300',
   },
   {
     value: '#66A1D6',
@@ -2132,7 +1982,6 @@ export const color = [
     name: '--fds-brand-primary-400',
     attributes: {},
     path: ['brand', 'primary', '400'],
-    lastName: '400',
   },
   {
     value: '#3381C8',
@@ -2148,7 +1997,6 @@ export const color = [
     name: '--fds-brand-primary-500',
     attributes: {},
     path: ['brand', 'primary', '500'],
-    lastName: '500',
   },
   {
     value: '#1A72C1',
@@ -2164,7 +2012,6 @@ export const color = [
     name: '--fds-brand-primary-600',
     attributes: {},
     path: ['brand', 'primary', '600'],
-    lastName: '600',
   },
   {
     value: '#0062BA',
@@ -2180,7 +2027,6 @@ export const color = [
     name: '--fds-brand-primary-700',
     attributes: {},
     path: ['brand', 'primary', '700'],
-    lastName: '700',
   },
   {
     value: '#004E95',
@@ -2196,7 +2042,6 @@ export const color = [
     name: '--fds-brand-primary-800',
     attributes: {},
     path: ['brand', 'primary', '800'],
-    lastName: '800',
   },
   {
     value: '#00315D',
@@ -2212,7 +2057,6 @@ export const color = [
     name: '--fds-brand-primary-900',
     attributes: {},
     path: ['brand', 'primary', '900'],
-    lastName: '900',
   },
   {
     value: '#DCD6EA',
@@ -2228,7 +2072,6 @@ export const color = [
     name: '--fds-brand-secondary-100',
     attributes: {},
     path: ['brand', 'secondary', '100'],
-    lastName: '100',
   },
   {
     value: '#C5BBDD',
@@ -2246,7 +2089,6 @@ export const color = [
     name: '--fds-brand-secondary-200',
     attributes: {},
     path: ['brand', 'secondary', '200'],
-    lastName: '200',
   },
   {
     value: '#A392C8',
@@ -2262,7 +2104,6 @@ export const color = [
     name: '--fds-brand-secondary-300',
     attributes: {},
     path: ['brand', 'secondary', '300'],
-    lastName: '300',
   },
   {
     value: '#806AB4',
@@ -2278,7 +2119,6 @@ export const color = [
     name: '--fds-brand-secondary-400',
     attributes: {},
     path: ['brand', 'secondary', '400'],
-    lastName: '400',
   },
   {
     value: '#6A52A3',
@@ -2294,7 +2134,6 @@ export const color = [
     name: '--fds-brand-secondary-500',
     attributes: {},
     path: ['brand', 'secondary', '500'],
-    lastName: '500',
   },
   {
     value: '#594488',
@@ -2310,7 +2149,6 @@ export const color = [
     name: '--fds-brand-secondary-600',
     attributes: {},
     path: ['brand', 'secondary', '600'],
-    lastName: '600',
   },
   {
     value: '#3F3161',
@@ -2326,7 +2164,6 @@ export const color = [
     name: '--fds-brand-secondary-700',
     attributes: {},
     path: ['brand', 'secondary', '700'],
-    lastName: '700',
   },
   {
     value: '#352951',
@@ -2342,7 +2179,6 @@ export const color = [
     name: '--fds-brand-secondary-800',
     attributes: {},
     path: ['brand', 'secondary', '800'],
-    lastName: '800',
   },
   {
     value: '#231B36',
@@ -2358,7 +2194,6 @@ export const color = [
     name: '--fds-brand-secondary-900',
     attributes: {},
     path: ['brand', 'secondary', '900'],
-    lastName: '900',
   },
   {
     value: '#F9D5DB',
@@ -2374,7 +2209,6 @@ export const color = [
     name: '--fds-brand-tertiary-100',
     attributes: {},
     path: ['brand', 'tertiary', '100'],
-    lastName: '100',
   },
   {
     value: '#F3ABB6',
@@ -2392,7 +2226,6 @@ export const color = [
     name: '--fds-brand-tertiary-200',
     attributes: {},
     path: ['brand', 'tertiary', '200'],
-    lastName: '200',
   },
   {
     value: '#EC8292',
@@ -2408,7 +2241,6 @@ export const color = [
     name: '--fds-brand-tertiary-300',
     attributes: {},
     path: ['brand', 'tertiary', '300'],
-    lastName: '300',
   },
   {
     value: '#E6586D',
@@ -2424,7 +2256,6 @@ export const color = [
     name: '--fds-brand-tertiary-400',
     attributes: {},
     path: ['brand', 'tertiary', '400'],
-    lastName: '400',
   },
   {
     value: '#E02E49',
@@ -2440,7 +2271,6 @@ export const color = [
     name: '--fds-brand-tertiary-500',
     attributes: {},
     path: ['brand', 'tertiary', '500'],
-    lastName: '500',
   },
   {
     value: '#B3253A',
@@ -2456,7 +2286,6 @@ export const color = [
     name: '--fds-brand-tertiary-600',
     attributes: {},
     path: ['brand', 'tertiary', '600'],
-    lastName: '600',
   },
   {
     value: '#861C2C',
@@ -2472,7 +2301,6 @@ export const color = [
     name: '--fds-brand-tertiary-700',
     attributes: {},
     path: ['brand', 'tertiary', '700'],
-    lastName: '700',
   },
   {
     value: '#5A121D',
@@ -2488,7 +2316,6 @@ export const color = [
     name: '--fds-brand-tertiary-800',
     attributes: {},
     path: ['brand', 'tertiary', '800'],
-    lastName: '800',
   },
   {
     value: '#480e17',
@@ -2504,7 +2331,6 @@ export const color = [
     name: '--fds-brand-tertiary-900',
     attributes: {},
     path: ['brand', 'tertiary', '900'],
-    lastName: '900',
   },
 ];
 
@@ -2533,7 +2359,6 @@ export const typography = [
     name: '--fds-typography-heading-xlarge',
     attributes: {},
     path: ['typography', 'heading', 'xlarge'],
-    lastName: 'xlarge',
   },
   {
     value: "500 clamp(1.47rem, calc(0.86vw + 1.30rem), 2.03rem)/1.3 'Inter'",
@@ -2559,7 +2384,6 @@ export const typography = [
     name: '--fds-typography-heading-large',
     attributes: {},
     path: ['typography', 'heading', 'large'],
-    lastName: 'large',
   },
   {
     value: "500 clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem)/1.3 'Inter'",
@@ -2585,7 +2409,6 @@ export const typography = [
     name: '--fds-typography-heading-medium',
     attributes: {},
     path: ['typography', 'heading', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "500 clamp(1.22rem, calc(0.43vw + 1.13rem), 1.50rem)/1.3 'Inter'",
@@ -2611,7 +2434,6 @@ export const typography = [
     name: '--fds-typography-heading-small',
     attributes: {},
     path: ['typography', 'heading', 'small'],
-    lastName: 'small',
   },
   {
     value: "500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
@@ -2637,7 +2459,6 @@ export const typography = [
     name: '--fds-typography-heading-xsmall',
     attributes: {},
     path: ['typography', 'heading', 'xsmall'],
-    lastName: 'xsmall',
   },
   {
     value: "500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
@@ -2663,7 +2484,6 @@ export const typography = [
     name: '--fds-typography-heading-xxsmall',
     attributes: {},
     path: ['typography', 'heading', 'xxsmall'],
-    lastName: 'xxsmall',
   },
   {
     value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.6 'Inter'",
@@ -2687,7 +2507,6 @@ export const typography = [
     name: '--fds-typography-ingress-medium',
     attributes: {},
     path: ['typography', 'ingress', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.5 'Inter'",
@@ -2711,7 +2530,6 @@ export const typography = [
     name: '--fds-typography-paragraph-large',
     attributes: {},
     path: ['typography', 'paragraph', 'large'],
-    lastName: 'large',
   },
   {
     value: "400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.5 'Inter'",
@@ -2735,7 +2553,6 @@ export const typography = [
     name: '--fds-typography-paragraph-medium',
     attributes: {},
     path: ['typography', 'paragraph', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.5 'Inter'",
@@ -2759,7 +2576,6 @@ export const typography = [
     name: '--fds-typography-paragraph-small',
     attributes: {},
     path: ['typography', 'paragraph', 'small'],
-    lastName: 'small',
   },
   {
     value: "400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.5 'Inter'",
@@ -2783,7 +2599,6 @@ export const typography = [
     name: '--fds-typography-paragraph-xsmall',
     attributes: {},
     path: ['typography', 'paragraph', 'xsmall'],
-    lastName: 'xsmall',
   },
   {
     value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
@@ -2807,7 +2622,6 @@ export const typography = [
     name: '--fds-typography-paragraph-short-large',
     attributes: {},
     path: ['typography', 'paragraph', 'short', 'large'],
-    lastName: 'large',
   },
   {
     value: "400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
@@ -2831,7 +2645,6 @@ export const typography = [
     name: '--fds-typography-paragraph-short-medium',
     attributes: {},
     path: ['typography', 'paragraph', 'short', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
@@ -2855,7 +2668,6 @@ export const typography = [
     name: '--fds-typography-paragraph-short-small',
     attributes: {},
     path: ['typography', 'paragraph', 'short', 'small'],
-    lastName: 'small',
   },
   {
     value: "400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
@@ -2879,7 +2691,6 @@ export const typography = [
     name: '--fds-typography-paragraph-short-xsmall',
     attributes: {},
     path: ['typography', 'paragraph', 'short', 'xsmall'],
-    lastName: 'xsmall',
   },
   {
     value: "500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
@@ -2903,7 +2714,6 @@ export const typography = [
     name: '--fds-typography-label-large',
     attributes: {},
     path: ['typography', 'label', 'large'],
-    lastName: 'large',
   },
   {
     value: "500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
@@ -2927,7 +2737,6 @@ export const typography = [
     name: '--fds-typography-label-medium',
     attributes: {},
     path: ['typography', 'label', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "500 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
@@ -2951,7 +2760,6 @@ export const typography = [
     name: '--fds-typography-label-small',
     attributes: {},
     path: ['typography', 'label', 'small'],
-    lastName: 'small',
   },
   {
     value: "500 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
@@ -2975,7 +2783,6 @@ export const typography = [
     name: '--fds-typography-label-xsmall',
     attributes: {},
     path: ['typography', 'label', 'xsmall'],
-    lastName: 'xsmall',
   },
   {
     value: "400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
@@ -2999,7 +2806,6 @@ export const typography = [
     name: '--fds-typography-error_message-medium',
     attributes: {},
     path: ['typography', 'error_message', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
@@ -3023,7 +2829,6 @@ export const typography = [
     name: '--fds-typography-error_message-small',
     attributes: {},
     path: ['typography', 'error_message', 'small'],
-    lastName: 'small',
   },
   {
     value: "400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
@@ -3047,7 +2852,6 @@ export const typography = [
     name: '--fds-typography-error_message-xsmall',
     attributes: {},
     path: ['typography', 'error_message', 'xsmall'],
-    lastName: 'xsmall',
   },
   {
     value: "400 1.5rem/1.3 'Inter'",
@@ -3071,7 +2875,6 @@ export const typography = [
     name: '--fds-typography-interactive-large',
     attributes: {},
     path: ['typography', 'interactive', 'large'],
-    lastName: 'large',
   },
   {
     value: "400 1.125rem/1.3 'Inter'",
@@ -3095,7 +2898,6 @@ export const typography = [
     name: '--fds-typography-interactive-medium',
     attributes: {},
     path: ['typography', 'interactive', 'medium'],
-    lastName: 'medium',
   },
   {
     value: "400 1rem/1.3 'Inter'",
@@ -3119,7 +2921,6 @@ export const typography = [
     name: '--fds-typography-interactive-small',
     attributes: {},
     path: ['typography', 'interactive', 'small'],
-    lastName: 'small',
   },
 ];
 
@@ -3136,7 +2937,6 @@ export const opacity = [
     name: '--fds-opacity-disabled',
     attributes: {},
     path: ['opacity', 'disabled'],
-    lastName: 'disabled',
   },
 ];
 
@@ -3153,7 +2953,6 @@ export const borderRadius = [
     name: '--fds-border_radius-interactive',
     attributes: {},
     path: ['border_radius', 'interactive'],
-    lastName: 'interactive',
   },
   {
     value: '2px',
@@ -3167,7 +2966,6 @@ export const borderRadius = [
     name: '--fds-border_radius-small',
     attributes: {},
     path: ['border_radius', 'small'],
-    lastName: 'small',
   },
   {
     value: '4px',
@@ -3181,7 +2979,6 @@ export const borderRadius = [
     name: '--fds-border_radius-medium',
     attributes: {},
     path: ['border_radius', 'medium'],
-    lastName: 'medium',
   },
   {
     value: '8px',
@@ -3195,7 +2992,6 @@ export const borderRadius = [
     name: '--fds-border_radius-large',
     attributes: {},
     path: ['border_radius', 'large'],
-    lastName: 'large',
   },
   {
     value: '12px',
@@ -3209,7 +3005,6 @@ export const borderRadius = [
     name: '--fds-border_radius-xlarge',
     attributes: {},
     path: ['border_radius', 'xlarge'],
-    lastName: 'xlarge',
   },
   {
     value: '9999px',
@@ -3223,7 +3018,6 @@ export const borderRadius = [
     name: '--fds-border_radius-full',
     attributes: {},
     path: ['border_radius', 'full'],
-    lastName: 'full',
   },
 ];
 
@@ -3242,7 +3036,6 @@ export const spacing = [
     name: '--fds-spacing-0',
     attributes: {},
     path: ['spacing', '0'],
-    lastName: '0',
   },
   {
     value: 'calc(4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3258,7 +3051,6 @@ export const spacing = [
     name: '--fds-spacing-1',
     attributes: {},
     path: ['spacing', '1'],
-    lastName: '1',
   },
   {
     value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3274,7 +3066,6 @@ export const spacing = [
     name: '--fds-spacing-2',
     attributes: {},
     path: ['spacing', '2'],
-    lastName: '2',
   },
   {
     value: 'calc(4*3/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3290,7 +3081,6 @@ export const spacing = [
     name: '--fds-spacing-3',
     attributes: {},
     path: ['spacing', '3'],
-    lastName: '3',
   },
   {
     value: 'calc(4*4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3306,7 +3096,6 @@ export const spacing = [
     name: '--fds-spacing-4',
     attributes: {},
     path: ['spacing', '4'],
-    lastName: '4',
   },
   {
     value: 'calc(4*5/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3322,7 +3111,6 @@ export const spacing = [
     name: '--fds-spacing-5',
     attributes: {},
     path: ['spacing', '5'],
-    lastName: '5',
   },
   {
     value: 'calc(4*6/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3338,7 +3126,6 @@ export const spacing = [
     name: '--fds-spacing-6',
     attributes: {},
     path: ['spacing', '6'],
-    lastName: '6',
   },
   {
     value: 'calc(4*7/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3354,7 +3141,6 @@ export const spacing = [
     name: '--fds-spacing-7',
     attributes: {},
     path: ['spacing', '7'],
-    lastName: '7',
   },
   {
     value: 'calc((4*8/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3370,7 +3156,6 @@ export const spacing = [
     name: '--fds-spacing-8',
     attributes: {},
     path: ['spacing', '8'],
-    lastName: '8',
   },
   {
     value: 'calc((4*10/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3386,7 +3171,6 @@ export const spacing = [
     name: '--fds-spacing-10',
     attributes: {},
     path: ['spacing', '10'],
-    lastName: '10',
   },
   {
     value: 'calc((4*12/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3402,7 +3186,6 @@ export const spacing = [
     name: '--fds-spacing-12',
     attributes: {},
     path: ['spacing', '12'],
-    lastName: '12',
   },
   {
     value: 'calc((4*14/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3418,7 +3201,6 @@ export const spacing = [
     name: '--fds-spacing-14',
     attributes: {},
     path: ['spacing', '14'],
-    lastName: '14',
   },
   {
     value: 'calc((4*18/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3434,7 +3216,6 @@ export const spacing = [
     name: '--fds-spacing-18',
     attributes: {},
     path: ['spacing', '18'],
-    lastName: '18',
   },
   {
     value: 'calc((4*22/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3450,7 +3231,6 @@ export const spacing = [
     name: '--fds-spacing-22',
     attributes: {},
     path: ['spacing', '22'],
-    lastName: '22',
   },
   {
     value: 'calc((4*26/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3466,7 +3246,6 @@ export const spacing = [
     name: '--fds-spacing-26',
     attributes: {},
     path: ['spacing', '26'],
-    lastName: '26',
   },
   {
     value: 'calc((4*30/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3482,7 +3261,6 @@ export const spacing = [
     name: '--fds-spacing-30',
     attributes: {},
     path: ['spacing', '30'],
-    lastName: '30',
   },
   {
     value: '4',
@@ -3498,7 +3276,6 @@ export const spacing = [
     name: '--fds-base_spacing',
     attributes: {},
     path: ['base_spacing'],
-    lastName: 'base_spacing',
   },
   {
     value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3512,7 +3289,6 @@ export const spacing = [
     name: '--fds-component-mode-spacing-small',
     attributes: {},
     path: ['component-mode-spacing', 'small'],
-    lastName: 'small',
   },
   {
     value: 'calc(4*3/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3526,7 +3302,6 @@ export const spacing = [
     name: '--fds-component-mode-spacing-medium',
     attributes: {},
     path: ['component-mode-spacing', 'medium'],
-    lastName: 'medium',
   },
   {
     value: 'calc(4*4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3540,7 +3315,6 @@ export const spacing = [
     name: '--fds-component-mode-spacing-large',
     attributes: {},
     path: ['component-mode-spacing', 'large'],
-    lastName: 'large',
   },
   {
     value: 'calc(4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3554,7 +3328,6 @@ export const spacing = [
     name: '--fds-component-mode-gap-small',
     attributes: {},
     path: ['component-mode-gap', 'small'],
-    lastName: 'small',
   },
   {
     value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3568,7 +3341,6 @@ export const spacing = [
     name: '--fds-component-mode-gap-medium',
     attributes: {},
     path: ['component-mode-gap', 'medium'],
-    lastName: 'medium',
   },
   {
     value: 'calc(4*3/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3582,7 +3354,6 @@ export const spacing = [
     name: '--fds-component-mode-gap-large',
     attributes: {},
     path: ['component-mode-gap', 'large'],
-    lastName: 'large',
   },
 ];
 
@@ -3601,7 +3372,6 @@ export const sizing = [
     name: '--fds-sizing-1',
     attributes: {},
     path: ['sizing', '1'],
-    lastName: '1',
   },
   {
     value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3617,7 +3387,6 @@ export const sizing = [
     name: '--fds-sizing-2',
     attributes: {},
     path: ['sizing', '2'],
-    lastName: '2',
   },
   {
     value: 'calc(4*3/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3633,7 +3402,6 @@ export const sizing = [
     name: '--fds-sizing-3',
     attributes: {},
     path: ['sizing', '3'],
-    lastName: '3',
   },
   {
     value: 'calc(4*4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3649,7 +3417,6 @@ export const sizing = [
     name: '--fds-sizing-4',
     attributes: {},
     path: ['sizing', '4'],
-    lastName: '4',
   },
   {
     value: 'calc(4*5/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3665,7 +3432,6 @@ export const sizing = [
     name: '--fds-sizing-5',
     attributes: {},
     path: ['sizing', '5'],
-    lastName: '5',
   },
   {
     value: 'calc(4*6/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3681,7 +3447,6 @@ export const sizing = [
     name: '--fds-sizing-6',
     attributes: {},
     path: ['sizing', '6'],
-    lastName: '6',
   },
   {
     value: 'calc(4*7/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3697,7 +3462,6 @@ export const sizing = [
     name: '--fds-sizing-7',
     attributes: {},
     path: ['sizing', '7'],
-    lastName: '7',
   },
   {
     value: 'calc(4*8/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3713,7 +3477,6 @@ export const sizing = [
     name: '--fds-sizing-8',
     attributes: {},
     path: ['sizing', '8'],
-    lastName: '8',
   },
   {
     value: 'calc(4*10/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3729,7 +3492,6 @@ export const sizing = [
     name: '--fds-sizing-10',
     attributes: {},
     path: ['sizing', '10'],
-    lastName: '10',
   },
   {
     value: 'calc((4*12/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3745,7 +3507,6 @@ export const sizing = [
     name: '--fds-sizing-12',
     attributes: {},
     path: ['sizing', '12'],
-    lastName: '12',
   },
   {
     value: 'calc((4*14/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3761,7 +3522,6 @@ export const sizing = [
     name: '--fds-sizing-14',
     attributes: {},
     path: ['sizing', '14'],
-    lastName: '14',
   },
   {
     value: 'calc((4*18/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3777,7 +3537,6 @@ export const sizing = [
     name: '--fds-sizing-18',
     attributes: {},
     path: ['sizing', '18'],
-    lastName: '18',
   },
   {
     value: 'calc((4*22/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3793,7 +3552,6 @@ export const sizing = [
     name: '--fds-sizing-22',
     attributes: {},
     path: ['sizing', '22'],
-    lastName: '22',
   },
   {
     value: 'calc((4*26/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3809,7 +3567,6 @@ export const sizing = [
     name: '--fds-sizing-26',
     attributes: {},
     path: ['sizing', '26'],
-    lastName: '26',
   },
   {
     value: 'calc((4*30/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3825,7 +3582,6 @@ export const sizing = [
     name: '--fds-sizing-30',
     attributes: {},
     path: ['sizing', '30'],
-    lastName: '30',
   },
   {
     value: '4',
@@ -3841,7 +3597,6 @@ export const sizing = [
     name: '--fds-base_sizing',
     attributes: {},
     path: ['base_sizing'],
-    lastName: 'base_sizing',
   },
   {
     value: '36px',
@@ -3855,7 +3610,6 @@ export const sizing = [
     name: '--fds-component-mode-height-small',
     attributes: {},
     path: ['component-mode-height', 'small'],
-    lastName: 'small',
   },
   {
     value: 'calc(4*10/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3869,7 +3623,6 @@ export const sizing = [
     name: '--fds-component-mode-height-medium',
     attributes: {},
     path: ['component-mode-height', 'medium'],
-    lastName: 'medium',
   },
   {
     value: 'calc((4*12/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
@@ -3883,7 +3636,6 @@ export const sizing = [
     name: '--fds-component-mode-height-large',
     attributes: {},
     path: ['component-mode-height', 'large'],
-    lastName: 'large',
   },
 ];
 
@@ -3900,7 +3652,6 @@ export const borderWidth = [
     name: '--fds-border_width-default',
     attributes: {},
     path: ['border_width', 'default'],
-    lastName: 'default',
   },
   {
     value: '2px',
@@ -3914,7 +3665,6 @@ export const borderWidth = [
     name: '--fds-border_width-active',
     attributes: {},
     path: ['border_width', 'active'],
-    lastName: 'active',
   },
   {
     value: '2px',
@@ -3928,7 +3678,6 @@ export const borderWidth = [
     name: '--fds-border_width-tab_focus',
     attributes: {},
     path: ['border_width', 'tab_focus'],
-    lastName: 'tab_focus',
   },
 ];
 
@@ -3945,7 +3694,6 @@ export const boxShadow = [
     name: '--fds-shadow-xsmall',
     attributes: {},
     path: ['shadow', 'xsmall'],
-    lastName: 'xsmall',
   },
   {
     value: '0 1px 2px -1px #0000001a, 0 1px 4px 0 #0000001a',
@@ -3959,7 +3707,6 @@ export const boxShadow = [
     name: '--fds-shadow-small',
     attributes: {},
     path: ['shadow', 'small'],
-    lastName: 'small',
   },
   {
     value: '0 2px 4px -2px #0000001a, 0 4px 5px #0000001a',
@@ -3973,7 +3720,6 @@ export const boxShadow = [
     name: '--fds-shadow-medium',
     attributes: {},
     path: ['shadow', 'medium'],
-    lastName: 'medium',
   },
   {
     value: '0 4px 6px -4px #0000001a, 0 10px 12px #0000001a',
@@ -3987,7 +3733,6 @@ export const boxShadow = [
     name: '--fds-shadow-large',
     attributes: {},
     path: ['shadow', 'large'],
-    lastName: 'large',
   },
   {
     value: '0 8px 10px -6px #0000001a, 0 25px 45px #0000001a',
@@ -4001,6 +3746,5 @@ export const boxShadow = [
     name: '--fds-shadow-xlarge',
     attributes: {},
     path: ['shadow', 'xlarge'],
-    lastName: 'xlarge',
   },
 ];
