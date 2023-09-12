@@ -3257,21 +3257,6 @@ export const spacing = [
     path: ['spacing', '30'],
   },
   {
-    value: '4',
-    type: 'spacing',
-    description: '4px',
-    filePath: '../../design-tokens/Base/Semantic.json',
-    isSource: false,
-    original: {
-      value: '4',
-      type: 'spacing',
-      description: '4px',
-    },
-    name: '--fds-base_spacing',
-    attributes: {},
-    path: ['base_spacing'],
-  },
-  {
     value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
     type: 'spacing',
     filePath: '../../design-tokens/Density/Default.json',
@@ -3576,21 +3561,6 @@ export const sizing = [
     name: '--fds-sizing-30',
     attributes: {},
     path: ['sizing', '30'],
-  },
-  {
-    value: '4',
-    type: 'sizing',
-    description: '4px',
-    filePath: '../../design-tokens/Base/Semantic.json',
-    isSource: false,
-    original: {
-      value: '4',
-      type: 'sizing',
-      description: '4px',
-    },
-    name: '--fds-base_sizing',
-    attributes: {},
-    path: ['base_sizing'],
   },
   {
     value: '36px',

@@ -89,6 +89,12 @@ const groupByType = R.groupBy(
   (token: TransformedToken) => token.type as string,
 );
 
+/** Add token name with prefix to list for removal */
+const removeUnwatedTokens = R.filter(
+  (token: TransformedToken) =>
+    !['fds-base_spacing', 'fds-base_sizing'].includes(token.name),
+);
+
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
 /**
@@ -102,12 +108,18 @@ export const groupedTokens: Named<Format> = {
       format: 'css',
     });
 
-    const formattedTokens = dictionary.allTokens.map((token) => ({
+    const formatTokens = R.map((token: TransformedToken) => ({
       ...token,
       name: toCssVarName(format(token)),
     }));
 
-    const tokens = groupByType(formattedTokens);
+    const processTokens = R.pipe(
+      removeUnwatedTokens,
+      formatTokens,
+      groupByType,
+    );
+
+    const tokens = processTokens(dictionary.allTokens);
 
     const content =
       fileHeader({ file }) +
