@@ -16,12 +16,19 @@
   font-family: inherit;
 }
 
-.chipButton:hover {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle-hover);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle-hover);
+@media (hover: hover) and (pointer: fine) {
+  .chipButton:hover {
+    --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle-hover);
+    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+    --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle-hover);
 
-  cursor: pointer;
+    cursor: pointer;
+  }
+
+  .chipButton:is([aria-pressed='true']):hover {
+    --fdsc-chip-background: var(--fds-semantic-surface-action-primary-no_fill-active);
+    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+  }
 }
 
 .chipButton:focus {
@@ -38,11 +45,6 @@
   --fdsc-chip-background: var(--fds-semantic-surface-action-primary-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-chip-border: var(--fds-semantic-surface-action-primary-active);
-}
-
-.chipButton:is([aria-pressed='true']):hover {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-no_fill-active);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
 }
 
 .chipButton .label {
