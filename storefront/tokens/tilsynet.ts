@@ -427,7 +427,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'secondary', 'no_fill'],
   },
   {
-    value: 'rgba(#00315d, 0.1)',
+    value: 'rgba(0, 49, 93, 0.1)',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -440,7 +440,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'secondary', 'no_fill-hover'],
   },
   {
-    value: 'rgba(#00315d, 0.2)',
+    value: 'rgba(0, 49, 93, 0.2)',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
