@@ -103,16 +103,12 @@ const TokenList = ({
     }, new Set<string>()),
   );
 
-  console.log('sections', sections);
-
   const sectionedTokens = Array.from(
     sections.map((section) => [
       section,
       mapTokens(brandTypeTokens.filter((token) => token.path[0] === section)),
     ]),
   );
-
-  console.log('tokens', sectionedTokens);
 
   return (
     <div className={classes.tokens}>
