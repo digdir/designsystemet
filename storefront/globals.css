@@ -58,6 +58,7 @@ h6 {
   justify-content: space-between;
   min-height: calc(100vh);
   position: relative;
+  font-family: 'Inter', sans-serif;
 }
 
 .root > main {
