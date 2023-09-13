@@ -52,7 +52,10 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       <div className={classes.textContainer}>
         <h4 className={classes.title}>
           {capitalizeString(title)}
-          {/* {isSlim && <small>{` (${token.description as string})`}</small>} */}
+          &nbsp;
+          {isSlim && typeof token.description === 'string' && (
+            <small>{`(${token.description})`}</small>
+          )}
           <ClipboardBtn
             title='Kopier CSS variabel'
             text='CSS'
