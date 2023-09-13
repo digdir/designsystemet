@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-7);
+  gap: var(--page-gap);
   margin-top: var(--page-spacing-top);
   margin-bottom: var(--page-spacing-bottom);
 }
@@ -15,11 +15,6 @@
 .right {
   flex-basis: 600px;
   flex-grow: 500;
-}
-
-.title {
-  margin-bottom: 0;
-  font: var(--fds-typography-heading-xlarge);
 }
 
 .header {
@@ -43,6 +38,11 @@
   width: 250px;
   border-radius: 8px;
   border: 8px solid var(--fds-brand-tertiary-600);
+}
+
+.title {
+  margin-bottom: 0;
+  font: var(--fds-typography-heading-xlarge);
 }
 
 .date {

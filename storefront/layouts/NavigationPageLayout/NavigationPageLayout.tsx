@@ -2,17 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
-import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 
 import classes from './NavigationPageLayout.module.css';
-
-type PageItem = NavigationCardProps;
-
-type PageSection = {
-  title: string;
-  description: string;
-  items: PageItem[];
-};
 
 interface PageLandingLayoutProps {
   content: React.ReactNode;
