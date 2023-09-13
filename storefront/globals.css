@@ -55,6 +55,7 @@ h6 {
   min-height: calc(100vh);
   overflow: hidden;
   position: relative;
+  font-family: 'Inter', sans-serif;
 }
 
 .root > main {
