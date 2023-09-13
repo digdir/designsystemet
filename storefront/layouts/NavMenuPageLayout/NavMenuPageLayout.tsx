@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
 
-import classes from './NavigationPageLayout.module.css';
+import classes from './NavMenuPageLayout.module.css';
 
-interface PageLandingLayoutProps {
+interface NavMenuPageLayoutProps {
   content: React.ReactNode;
 }
 
-const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
+const NavMenuPageLayout = ({ content }: NavMenuPageLayoutProps) => {
   const router = useRouter();
 
   return (
@@ -31,4 +31,4 @@ const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
   );
 };
 
-export { NavigationPageLayout };
+export { NavMenuPageLayout };

@@ -1,5 +1,5 @@
 import { Meta, NavigationCard, Grid } from '@components';
-import { NavigationPageLayout } from '@layouts';
+import { NavMenuPageLayout } from '@layouts';
 import {
   ImageIcon,
   TokenIcon,
@@ -13,9 +13,7 @@ import {
   LightBulbIcon,
   TerminalIcon,
 } from '@navikt/aksel-icons';
-export default ({ children, menu }) => (
-  <NavigationPageLayout content={children} />
-);
+export default ({ children, menu }) => <NavMenuPageLayout content={children} />;
 
 <Meta
   title='Grunnleggende'
