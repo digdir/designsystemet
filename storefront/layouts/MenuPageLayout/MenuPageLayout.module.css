@@ -19,8 +19,7 @@
 
 .title {
   margin-bottom: 0;
-  font-size: 36px;
-  line-height: 1.3em;
+  font: var(--fds-typography-heading-xlarge);
 }
 
 .header {
@@ -48,7 +47,6 @@
 
 .date {
   margin-top: var(--fds-spacing-3);
-  font-size: 1rem;
 }
 
 .content {
