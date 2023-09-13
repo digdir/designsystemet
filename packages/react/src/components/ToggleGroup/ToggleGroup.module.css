@@ -1,0 +1,15 @@
+.toggleGroupContainer {
+  background-color: var(--fds-semantic-background-default);
+  display: flex;
+  border: var(--fds-semantic-border-neutral-default);
+}
+
+.groupContent {
+  display: inline-grid;
+  gap: var(--fds-spacing-1);
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  border: var(--fds-semantic-border-neutral-default) solid var(--fds-border_width-default);
+  border-radius: var(--fds-border_radius-medium);
+  padding: var(--fds-spacing-1);
+}

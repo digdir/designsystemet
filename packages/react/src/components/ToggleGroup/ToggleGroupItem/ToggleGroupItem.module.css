@@ -1,0 +1,7 @@
+.toggleItem {
+  padding: var(--fds-spacing-1);
+}
+
+.notActive {
+  border: none;
+}
