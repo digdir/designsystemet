@@ -112,13 +112,96 @@
   padding: calc((var(--fdsc-button-size) - var(--fdsc-icon-size)) / 2 - var(--fds-border_width-default));
 }
 
+/* Only use hover for non-touch devices to prevent sticky-hovering */
+@media (hover: hover) and (pointer: fine) {
+  .button.filled.primary:not([aria-disabled='true'], :disabled):hover {
+    background: var(--fds-semantic-surface-action-primary-hover);
+  }
+
+  .button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
+    /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+    background: #1a466d;
+  }
+
+  .button.filled.success:not([aria-disabled='true'], :disabled):hover {
+    background: var(--fds-semantic-surface-success-hover);
+  }
+
+  .button.filled.danger:not([aria-disabled='true'], :disabled):hover {
+    background: var(--fds-semantic-surface-danger-hover);
+  }
+
+  .button.filled.inverted:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
+
+    background: var(--fds-semantic-surface-on_inverted-hover);
+  }
+
+  .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+
+    border-color: var(--fds-semantic-border-action-primary-hover);
+    background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+  }
+
+  .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
+    border-color: var(--fds-semantic-border-action-secondary-hover);
+
+    /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+    background: #e5eaef;
+  }
+
+  .button.outline.success:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
+
+    border-color: var(--fds-semantic-border-success-hover);
+    background: var(--fds-semantic-surface-success-no_fill-hover);
+  }
+
+  .button.outline.danger:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
+
+    border-color: var(--fds-semantic-border-danger-hover);
+    background: var(--fds-semantic-surface-danger-no_fill-hover);
+  }
+
+  .button.outline.inverted:not([aria-disabled='true'], :disabled):hover {
+    background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
+  }
+
+  .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+
+    background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+  }
+
+  .button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
+    /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+    background: #e5eaef;
+  }
+
+  .button.quiet.success:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
+
+    background: var(--fds-semantic-surface-success-no_fill-hover);
+  }
+
+  .button.quiet.danger:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
+
+    background: var(--fds-semantic-surface-danger-no_fill-hover);
+  }
+
+  .button.quiet.inverted:not([aria-disabled='true'], :disabled):hover {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
+
+    background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
+  }
+}
+
 /* Filled button colors */
 .button.filled.primary {
   background: var(--fds-semantic-surface-action-primary-default);
-}
-
-.button.filled.primary:not([aria-disabled='true'], :disabled):hover {
-  background: var(--fds-semantic-surface-action-primary-hover);
 }
 
 .button.filled.primary:not([aria-disabled='true'], :disabled):active {
@@ -127,11 +210,6 @@
 
 .button.filled.secondary {
   background: var(--fds-semantic-surface-action-secondary-default);
-}
-
-.button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
-  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
-  background: #1a466d;
 }
 
 .button.filled.secondary:not([aria-disabled='true'], :disabled):active {
@@ -143,20 +221,12 @@
   background: var(--fds-semantic-surface-success-default);
 }
 
-.button.filled.success:not([aria-disabled='true'], :disabled):hover {
-  background: var(--fds-semantic-surface-success-hover);
-}
-
 .button.filled.success:not([aria-disabled='true'], :disabled):active {
   background: var(--fds-semantic-surface-success-active);
 }
 
 .button.filled.danger {
   background: var(--fds-semantic-surface-danger-default);
-}
-
-.button.filled.danger:not([aria-disabled='true'], :disabled):hover {
-  background: var(--fds-semantic-surface-danger-hover);
 }
 
 .button.filled.danger:not([aria-disabled='true'], :disabled):active {
@@ -167,12 +237,6 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
 
   background: var(--fds-semantic-surface-on_inverted-default);
-}
-
-.button.filled.inverted:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
-
-  background: var(--fds-semantic-surface-on_inverted-hover);
 }
 
 .button.filled.inverted:not([aria-disabled='true'], :disabled):active {
@@ -189,13 +253,6 @@
   background: var(--fds-semantic-surface-action-primary-no_fill);
 }
 
-.button.outline.primary:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
-
-  border-color: var(--fds-semantic-border-action-primary-hover);
-  background: var(--fds-semantic-surface-action-primary-no_fill-hover);
-}
-
 .button.outline.primary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
@@ -208,13 +265,6 @@
 
   border-color: var(--fds-semantic-border-action-secondary-default);
   background: var(--fds-semantic-surface-action-secondary-no_fill);
-}
-
-.button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
-  border-color: var(--fds-semantic-border-action-secondary-hover);
-
-  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
-  background: #e5eaef;
 }
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):active {
@@ -233,13 +283,6 @@
   background: var(--fds-semantic-surface-success-no_fill);
 }
 
-.button.outline.success:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
-
-  border-color: var(--fds-semantic-border-success-hover);
-  background: var(--fds-semantic-surface-success-no_fill-hover);
-}
-
 .button.outline.success:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-success-active);
 
@@ -252,13 +295,6 @@
 
   border-color: var(--fds-semantic-border-danger-default);
   background: var(--fds-semantic-surface-danger-no_fill);
-}
-
-.button.outline.danger:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
-
-  border-color: var(--fds-semantic-border-danger-hover);
-  background: var(--fds-semantic-surface-danger-no_fill-hover);
 }
 
 .button.outline.danger:not([aria-disabled='true'], :disabled):active {
@@ -275,10 +311,6 @@
   background: transparent;
 }
 
-.button.outline.inverted:not([aria-disabled='true'], :disabled):hover {
-  background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
-}
-
 .button.outline.inverted:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
@@ -290,12 +322,6 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
 }
 
-.button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
-
-  background: var(--fds-semantic-surface-action-primary-no_fill-hover);
-}
-
 .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
@@ -304,11 +330,6 @@
 
 .button.quiet.secondary {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-default);
-}
-
-.button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
-  /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
-  background: #e5eaef;
 }
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
@@ -322,12 +343,6 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-success-default);
 }
 
-.button.quiet.success:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
-
-  background: var(--fds-semantic-surface-success-no_fill-hover);
-}
-
 .button.quiet.success:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-success-active);
 
@@ -336,12 +351,6 @@
 
 .button.quiet.danger {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-default);
-}
-
-.button.quiet.danger:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
-
-  background: var(--fds-semantic-surface-danger-no_fill-hover);
 }
 
 .button.quiet.danger:not([aria-disabled='true'], :disabled):active {
@@ -354,12 +363,6 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: transparent;
-}
-
-.button.quiet.inverted:not([aria-disabled='true'], :disabled):hover {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
-
-  background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
 }
 
 .button.quiet.inverted:not([aria-disabled='true'], :disabled):active {
