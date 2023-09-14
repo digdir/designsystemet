@@ -17,10 +17,10 @@ export const ToggleGroupContext = createContext<ToggleGroupContextProps | null>(
 
 export type ToggleGroupProps = {
   /** Description of what myProp does in the component */
-  value: string;
+  value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
@@ -28,6 +28,21 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
     { children, value, defaultValue, onChange, size = 'medium', ...rest },
     ref,
   ) => {
+    const isControlled = value !== undefined;
+
+    const [uncontrolledValue, setUncontrolledValue] = React.useState<
+      string | undefined
+    >(defaultValue);
+
+    let onValueChange = onChange;
+    if (!isControlled) {
+      onValueChange = (newValue: string) => {
+        setUncontrolledValue(newValue);
+        onChange?.(newValue);
+      };
+      value = uncontrolledValue;
+    }
+
     return (
       <div
         {...rest}
@@ -38,7 +53,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
           value={{
             value,
             defaultValue,
-            onChange,
+            onChange: onValueChange,
             size,
           }}
         >

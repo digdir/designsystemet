@@ -10,7 +10,7 @@ type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   buttonProps?: Pick<ButtonProps, 'onClick' | 'variant' | 'size'>;
 };
 
-/** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` (and `Fieldset`) */
+/** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` */
 export const useToggleGroupItem: UseToggleGroupItem = (props) => {
   const { ...rest } = props;
   const toggleGroup = useContext(ToggleGroupContext);
@@ -22,7 +22,6 @@ export const useToggleGroupItem: UseToggleGroupItem = (props) => {
       variant: toggleGroup?.value == props.value ? 'filled' : 'outline',
       size: toggleGroup?.size,
       onClick: () => {
-        console.log('test');
         toggleGroup?.onChange?.(props.value);
       },
     },

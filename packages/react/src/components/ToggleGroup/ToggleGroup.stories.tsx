@@ -69,3 +69,35 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
     </ToggleGroup>
   );
 };
+
+export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
+  const handleChange = (value: string) => {
+    console.log(value);
+  };
+  return (
+    <ToggleGroup
+      defaultValue={'test'}
+      size='medium'
+      onChange={handleChange}
+    >
+      <ToggleGroup.Item
+        value='test'
+        icon={<AkselIcon />}
+      >
+        Test
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value='test2'
+        icon={icon}
+      >
+        Test
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value='test3'
+        icon={<AkselIcon2 />}
+      >
+        Test Test
+      </ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
