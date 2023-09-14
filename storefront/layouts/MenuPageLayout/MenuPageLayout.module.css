@@ -50,7 +50,7 @@
 }
 
 .content {
-  padding: var(--fds-spacing-4) var(--fds-spacing-7) var(--fds-spacing-7);
+  padding: var(--fds-spacing-4) var(--fds-spacing-7) 0 var(--fds-spacing-7);
 }
 
 @media (max-width: 576px) {

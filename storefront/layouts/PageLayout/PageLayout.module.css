@@ -22,6 +22,11 @@
 
 .backBtn {
   margin-bottom: var(--fds-spacing-10);
+  color: inherit;
+}
+
+.backBtn:visited {
+  color: inherit !important;
 }
 
 .backBtn svg {
