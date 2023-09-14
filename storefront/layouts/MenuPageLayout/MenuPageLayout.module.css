@@ -23,7 +23,7 @@
   margin-bottom: var(--fds-spacing-6);
   padding: var(--fds-spacing-7);
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--fds-border_radius-large);
   background-color: var(--fds-semantic-background-subtle);
 }
 
@@ -36,7 +36,7 @@
   opacity: 0.2;
   height: 250px;
   width: 250px;
-  border-radius: 8px;
+  border-radius: var(--fds-border_radius-large);
   border: 8px solid var(--fds-brand-tertiary-600);
 }
 
