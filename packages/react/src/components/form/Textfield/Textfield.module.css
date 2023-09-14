@@ -1,27 +1,42 @@
 .textfield {
-  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
-  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
-  --fds-focus-border-width: 3px;
-
   display: grid;
-  grid-auto-rows: 1fr;
-  grid-auto-flow: row;
+  gap: var(--fds-spacing-2);
 }
 
 .input {
+  font-family: inherit;
+  border-radius: var(--fds-border_radius-medium);
+  min-height: 2.9em;
+  appearance: none;
+  width: 100%;
+  padding: 0 var(--fds-spacing-3);
+  border: solid 1px var(--fds-semantic-border-action-default);
 }
 
 .label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
+  align-items: center;
 }
 
 .description {
+  color: var(--fds-semantic-text-neutral-subtle);
 }
 
-.disabled {
+.disabled > .input,
+.disabled > .label,
+.disabled > .description {
+  color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.readonly {
+.readonly > .input,
+.readonly > .label {
+  cursor: default;
 }
 
 .padlock {
+  height: 1.2rem;
+  width: 1.2rem;
 }

@@ -7,21 +7,14 @@ import { FieldsetContext } from '../Fieldset';
 
 import type { TextfieldProps } from './Textfield';
 
-type UseCheckbox = (props: TextfieldProps) => FormField & {
+type UseTextfield = (props: TextfieldProps) => FormField & {
   inputProps?: Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    | 'readOnly'
-    | 'type'
-    | 'name'
-    | 'required'
-    | 'defaultChecked'
-    | 'checked'
-    | 'onClick'
-    | 'onChange'
+    'readOnly' | 'type' | 'name' | 'required' | 'onClick' | 'onChange'
   >;
 };
 /** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
-export const useTextfield: UseCheckbox = (props) => {
+export const useTextfield: UseTextfield = (props) => {
   const fieldset = useContext(FieldsetContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'textfield');
 
