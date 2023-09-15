@@ -1,6 +1,6 @@
 .footer {
   background-color: #1e2b3c;
-  color: #e6e6e6;
+  color: var(--color-text-on_inverted-subtle);
   font-weight: 300;
   letter-spacing: 0.3px;
 }
@@ -8,27 +8,26 @@
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: 40px;
+  gap: var(--fds-spacing-10);
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 16px;
+  font: var(--fds-typography-heading-xsmall);
+  margin-bottom: var(--fds-spacing-4);
 }
 
 .footer .logos img {
-  margin-right: 10px;
   height: 26px;
   width: auto;
+  margin-right: var(--fds-spacing-2);
 }
 
 .logos {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 32px;
-  margin-top: 30px;
+  gap: var(--fds-spacing-8);
+  margin-top: var(--fds-spacing-8);
 }
 
 .links {
@@ -38,7 +37,7 @@
 
 .links li {
   list-style: none;
-  margin-bottom: 22px;
+  margin-bottom: var(--fds-spacing-5);
 }
 
 .links li:last-child {
@@ -46,30 +45,30 @@
 }
 
 .top {
-  padding: var(--spacing-8) 0;
+  padding: var(--fds-spacing-18) 0;
 }
 
 .bottom {
   background-color: #17202e;
-  padding: 30px 0;
+  padding: var(--fds-spacing-7) 0;
   color: #d4d4d4;
   font-size: 15px;
 }
 
 .button {
-  border: 1px dashed #e6e6e6;
-  height: 48px;
-  padding: 0 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #e6e6e6;
   text-decoration: none;
+  height: 48px;
+  padding: 0 20px;
   margin-top: 32px;
   border-radius: 2px;
   font-weight: 400;
   transition: 0.1s all;
   font-size: 15px;
+  color: var(--color-text-on_inverted-subtle);
+  border: 1px dashed var(--color-text-on_inverted-subtle);
 }
 
 .button:hover {

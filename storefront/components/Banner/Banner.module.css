@@ -1,45 +1,43 @@
 .banner {
-  min-height: 460px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding-top: var(--spacing-7);
-  padding-bottom: var(--spacing-7);
-  gap: var(--spacing-5);
+  gap: var(--fds-spacing-6);
+  min-height: 460px;
+  padding-top: var(--fds-spacing-12);
+  padding-bottom: var(--fds-spacing-12);
 }
 
 .left {
-  flex-basis: calc(53% - (var(--spacing-5) / 2));
+  flex-basis: calc(53% - (var(--fds-spacing-6) / 2));
   flex-grow: 1;
 }
 
 .right {
-  flex-basis: calc(47% - (var(--spacing-5) / 2));
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 275px;
+  flex-basis: calc(47% - (var(--fds-spacing-6) / 2));
   flex-grow: 1;
+  height: 275px;
 }
 
 .title {
-  font-weight: 500;
-  font-size: var(--font-900);
-  margin-bottom: var(--spacing-3);
   display: flex;
   align-items: center;
+  margin-bottom: var(--fds-spacing-3);
+  font: var(--fds-typography-heading-xlarge);
 }
 
 .title > span {
-  margin-left: 20px;
+  margin-left: var(--fds-spacing-4);
 }
 
 .desc {
-  font-size: var(--font-400);
-  line-height: 1.7em;
-  padding-right: 30px;
+  padding-right: var(--fds-spacing-7);
   margin-bottom: 0;
+  font: var(--fds-typography-ingress-medium);
 }
 
 .shapes {
@@ -58,30 +56,30 @@
 }
 
 .one {
-  left: 0;
   top: 0;
-  border-color: #f45f63;
+  left: 0;
+  border-color: var(--fds-brand-primary-600);
   animation: one 1.5s forwards ease-out;
 }
 
 .two {
-  right: 0;
   top: 0;
-  border-color: #1e98f5;
+  right: 0;
+  border-color: var(--fds-brand-tertiary-600);
   animation: two 1.5s forwards ease-out;
 }
 
 .three {
   right: 0;
   bottom: 0;
-  border-color: #68707c;
+  border-color: var(--fds-semantic-border-neutral-default);
   animation: three 1.5s forwards ease-out;
 }
 
 .four {
   left: 0;
   bottom: 0;
-  border-color: #e5aa20;
+  border-color: var(--fds-brand-secondary-600);
   animation: four 1.5s forwards ease-out;
 }
 
