@@ -1,7 +1,8 @@
-.toggleItem {
-  padding: var(--fds-spacing-1);
-}
-
 .notActive {
   border: none;
+}
+
+.toggleGroupItem:focus-visible,
+.toggleGroupItem:focus {
+  z-index: 1;
 }

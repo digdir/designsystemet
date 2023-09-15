@@ -1,36 +1,42 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef } from 'react';
+import React, { createContext, forwardRef, useId, useState } from 'react';
 import cn from 'classnames';
 
+import { RovingTabindexRoot } from '../../utility-components/RovingTabIndex';
+
 import classes from './ToggleGroup.module.css';
+
+export type RovingTabindexItem = {
+  value: string;
+  element: HTMLElement;
+};
 
 export type ToggleGroupContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  size: 'small' | 'medium' | 'large';
+  name?: string;
+  size?: 'small' | 'medium' | 'large';
 };
 
-export const ToggleGroupContext = createContext<ToggleGroupContextProps | null>(
-  null,
-);
+export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 
 export type ToggleGroupProps = {
   /** Description of what myProp does in the component */
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  name?: string;
   size?: 'small' | 'medium' | 'large';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
-    { children, value, defaultValue, onChange, size = 'medium', ...rest },
+    { children, value, defaultValue, onChange, size = 'medium', name, ...rest },
     ref,
   ) => {
     const isControlled = value !== undefined;
-
-    const [uncontrolledValue, setUncontrolledValue] = React.useState<
+    const [uncontrolledValue, setUncontrolledValue] = useState<
       string | undefined
     >(defaultValue);
 
@@ -42,6 +48,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
       };
       value = uncontrolledValue;
     }
+    const nameId = useId();
 
     return (
       <div
@@ -53,16 +60,19 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
           value={{
             value,
             defaultValue,
+            name: name ?? `radiogroup-name-${nameId}`,
             onChange: onValueChange,
             size,
           }}
         >
-          <div
+          <RovingTabindexRoot
+            as='div'
+            valueId={value}
             className={classes.groupContent}
             role='radiogroup'
           >
             {children}
-          </div>
+          </RovingTabindexRoot>
         </ToggleGroupContext.Provider>
       </div>
     );

@@ -44,7 +44,6 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
   return (
     <ToggleGroup
       value={value}
-      defaultValue={'test'}
       size='medium'
       onChange={setValue}
     >

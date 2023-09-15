@@ -11,7 +11,8 @@ export type ToggleGroupItemProps = {
   /** Description of what myProp does in the component */
   value: string;
   icon?: React.ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  children: string;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'children'>;
 
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
@@ -23,14 +24,13 @@ export const ToggleGroupItem = forwardRef<
     <Button
       {...rest}
       {...buttonProps}
-      color='primary'
-      variant={buttonProps?.variant}
-      iconPlacement='left'
       icon={icon}
-      className={cn(classes.notActive, rest.className)}
-      ref={ref}
-      aria-current={active}
-      role='radio'
+      className={cn(
+        !active && classes.notActive,
+        classes.toggleGroupItem,
+        rest.className,
+      )}
+      color='primary'
     >
       {children}
     </Button>
