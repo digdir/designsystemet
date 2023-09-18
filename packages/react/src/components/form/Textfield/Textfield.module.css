@@ -4,13 +4,14 @@
 }
 
 .input {
+  font: inherit;
   font-family: inherit;
   border-radius: var(--fds-border_radius-medium);
-  min-height: 2.9em;
+  min-height: 2.5em;
   appearance: none;
   width: 100%;
   padding: 0 var(--fds-spacing-3);
-  border: solid 1px var(--fds-semantic-border-action-default);
+  border: solid 1px var(--fds-semantic-border-action-dark);
 }
 
 .label {
