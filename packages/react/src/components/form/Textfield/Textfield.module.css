@@ -6,12 +6,26 @@
 .input {
   font: inherit;
   font-family: inherit;
-  border-radius: var(--fds-border_radius-medium);
   min-height: 2.5em;
   appearance: none;
-  width: 100%;
   padding: 0 var(--fds-spacing-3);
+}
+
+.field {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--fds-border_radius-medium);
   border: solid 1px var(--fds-semantic-border-action-dark);
+}
+
+.field > *:first-child {
+  border-top-left-radius: var(--fds-border_radius-medium);
+  border-bottom-left-radius: var(--fds-border_radius-medium);
+}
+
+.field > *:last-child {
+  border-top-right-radius: var(--fds-border_radius-medium);
+  border-bottom-right-radius: var(--fds-border_radius-medium);
 }
 
 .label {
@@ -40,4 +54,16 @@
 .padlock {
   height: 1.2rem;
   width: 1.2rem;
+}
+
+.adornment {
+  color: var(--fds-semantic-border-neutral-default);
+  background: var(--fds-semantic-surface-neutral-subtle);
+  padding: 5px var(--fds-spacing-3);
+  display: flex;
+  align-items: center;
+}
+
+.prefix {
+  border-top-left-radius: var(--fds-border_radius-medium);
 }

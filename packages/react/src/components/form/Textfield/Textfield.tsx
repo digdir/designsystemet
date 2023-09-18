@@ -8,18 +8,20 @@ import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useTextfield } from './useTextfield';
-import classes from './Textfield.module.css';
+import classes, { prefix } from './Textfield.module.css';
 import utilityClasses from './../../../utils/utility.module.css';
 
 export type TextfieldProps = {
   label?: ReactNode;
   size?: 'xsmall' | 'small' | 'medium' | 'large';
+  prefix?: string;
+  sufix?: string;
 } & Omit<FormFieldProps, 'size'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
   (props, ref) => {
-    const { label, description, ...rest } = props;
+    const { label, description, sufix, prefix, ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -66,12 +68,17 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             {description}
           </Paragraph>
         )}
-        <input
-          {...omit(['size', 'error', 'errorId'], rest)}
-          {...inputProps}
-          className={cn(classes.input, utilityClasses.focusable)}
-          ref={ref}
-        />
+        <div className={classes.field}>
+          {prefix && <span className={cn(classes.adornment)}>{prefix}</span>}
+          <input
+            {...omit(['size', 'error', 'errorId'], rest)}
+            {...inputProps}
+            className={cn(classes.input, utilityClasses.focusable)}
+            ref={ref}
+          />
+          {sufix && <span className={cn(classes.adornment)}>{sufix}</span>}
+        </div>
+
         <div
           id={errorId}
           aria-live='polite'
