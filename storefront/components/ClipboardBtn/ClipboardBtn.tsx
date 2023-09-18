@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
-import { FilesIcon } from '@navikt/aksel-icons';
+import { ClipboardIcon } from '@navikt/aksel-icons';
 import Tippy from '@tippyjs/react';
 
 import classes from './ClipboardBtn.module.css';
 
 interface ClipboardBtnProps {
-  text: string;
+  title: string;
+  value: string;
+  text?: string;
 }
 
-const ClipboardBtn = ({ text }: ClipboardBtnProps) => {
+const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
 
-  const onClick = (text: string) => {
+  const onBtnClick = (text: string) => {
     setToolTipText('Kopiert!');
-    navigator.clipboard.writeText('--' + text).catch((reason) => {
+    navigator.clipboard.writeText(text).catch((reason) => {
       throw Error(String(reason));
     });
   };
 
   return (
-    <div>
+    <>
       <Tippy
         content={toolTipText}
         hideOnClick={false}
         className={classes.tippy}
       >
         <button
-          onMouseEnter={() => setToolTipText('Kopier')}
-          onClick={() => onClick(text)}
+          onMouseEnter={() => setToolTipText(title)}
+          onClick={() => onBtnClick(value)}
           className={classes.btn}
-          title='Kopier'
+          title={title}
         >
-          <FilesIcon
-            fontSize={24}
+          <ClipboardIcon
+            fontSize={20}
             color='#585858'
           />
+          {text && <span className={classes.text}>{text}</span>}
         </button>
       </Tippy>
-    </div>
+    </>
   );
 };
 
