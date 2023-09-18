@@ -169,7 +169,8 @@
     "selectedTokenSets": {
       "Brand/Digdir": "enabled",
       "Base/Semantic": "enabled",
-      "Base/Core": "source"
+      "Base/Core": "source",
+      "Density/Default": "enabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -295,7 +296,6 @@
       "semantic.background.default": "S:aa05601b5bcf03508012ba6b87a2293984b31e3f,",
       "semantic.background.subtle": "S:69bc5795ca06ab12402fab8778139626f3de589f,",
       "semantic.surface.neutral.inverted": "S:342e6a24beb1d93152914f61f3a1a11a2f8188e2,",
-      "semantic.surface.action.subtle": "S:f159c7f63f4e095cb75bf770cf0625366a56d8b6,",
       "semantic.surface.action.subtle-hover": "S:71d1e125704adf63c5b0ffd42421d808bd322531,",
       "semantic.surface.action.default": "S:eb4951e1f7cfd99d167e4ab67d3edc2c3e412a60,",
       "semantic.surface.action.hover": "S:4e4bb9c41d91a71b50bc5d84fcd0e22630628ba4,",
@@ -328,7 +328,6 @@
       "semantic.surface.tertiary.tertiary-hover": "S:80e9253afce445a3c6f2a6bd98c372501933ee6b,",
       "semantic.surface.tertiary.tertiary-active": "S:b689fae8c6cc5fd27dae42b560d971d5e7dbb9ae,",
       "semantic.border.info.default": "S:19df2fc03ec24346fa30c0b37d50b64cb0c85614,",
-      "semantic.border.action.subtle": "S:04ad95c402fd76ed849b1031835632c8d3c06236,",
       "semantic.border.action.hover": "S:bc8730939b4c02ed642ca9a8e5397ecaad9ec020,",
       "semantic.border.action.active": "S:019654324698b19d71ba02e616e183dfb30f15b9,",
       "semantic.border.neutral.default": "S:86de0ad5e55f2e4ac7cb2a0ad8f48105e6e9a626,",
@@ -352,8 +351,6 @@
       "semantic.text.neutral.default": "S:ff25f9c6a756a42bc0124e07113dcf88a850b704,",
       "semantic.text.neutral.subtle": "S:b9232f360e337f73b13c80760edd2348d3869247,",
       "semantic.text.neutral.on_inverted": "S:eb14dc1096bbccf930da18005deb357bafa6bc21,",
-      "semantic.text.action.default": "S:e7ff72a6683853f5403350ace19fdef1cf265a06,",
-      "semantic.text.action.on_action": "S:a8b81cc349e852d00861be87404778bc6aab598c,",
       "semantic.text.warning.default": "S:fe3805478223d98b0a890f4aa9c9f748402ad858,",
       "semantic.text.warning.icon_warning": "S:d839a0ba929a7eb4596f88a46c2d78ef19c8bb4a,",
       "semantic.text.warning.on_warning": "S:37cbee9d1eb7e246fab472e635705bee4ba871cc,",
@@ -416,7 +413,11 @@
       "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
       "brand.secondary.900": "S:23925b130515fb61d12fb3414165f61e094a6262,",
       "semantic.surface.danger.no_fill-active": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,",
-      "semantic.border.action.dark": "S:38130df3c467c65fd93968897876556bc5bf60e7,"
+      "semantic.border.action.dark": "S:38130df3c467c65fd93968897876556bc5bf60e7,",
+      "semantic.surface.action.common.subtle": "S:f159c7f63f4e095cb75bf770cf0625366a56d8b6,",
+      "semantic.border.action.common.subtle": "S:04ad95c402fd76ed849b1031835632c8d3c06236,",
+      "semantic.text.action.common.default": "S:e7ff72a6683853f5403350ace19fdef1cf265a06,",
+      "semantic.text.action.common.on_action": "S:a8b81cc349e852d00861be87404778bc6aab598c,"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
     "$figmaModeId": "6324:1",
