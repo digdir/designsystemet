@@ -8,7 +8,7 @@ import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useTextfield } from './useTextfield';
-import classes, { prefix } from './Textfield.module.css';
+import classes from './Textfield.module.css';
 import utilityClasses from './../../../utils/utility.module.css';
 
 export type TextfieldProps = {
@@ -68,15 +68,40 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             {description}
           </Paragraph>
         )}
-        <div className={classes.field}>
-          {prefix && <span className={cn(classes.adornment)}>{prefix}</span>}
+        <div className={cn(classes.field, hasError && classes.error)}>
+          {prefix && (
+            <Paragraph
+              as='div'
+              size={size}
+              className={cn(classes.adornment, classes.prefix)}
+              aria-hidden='true'
+              short
+            >
+              {prefix}
+            </Paragraph>
+          )}
           <input
             {...omit(['size', 'error', 'errorId'], rest)}
             {...inputProps}
-            className={cn(classes.input, utilityClasses.focusable)}
+            className={cn(
+              classes.input,
+              utilityClasses.focusable,
+              prefix && classes.inputPrefix,
+              sufix && classes.inputSufix,
+            )}
             ref={ref}
           />
-          {sufix && <span className={cn(classes.adornment)}>{sufix}</span>}
+          {sufix && (
+            <Paragraph
+              as='div'
+              size={size}
+              className={cn(classes.adornment, classes.sufix)}
+              aria-hidden='true'
+              short
+            >
+              {sufix}
+            </Paragraph>
+          )}
         </div>
 
         <div

@@ -1,31 +1,33 @@
 .textfield {
+  --fdsc-textfield-border: var(--fds-semantic-border-action-dark);
+
   display: grid;
   gap: var(--fds-spacing-2);
+}
+
+.adornment {
+  color: var(--fds-semantic-border-neutral-default);
+  background: var(--fds-semantic-surface-neutral-subtle);
+  padding: var(--fds-spacing-3);
+  border-radius: var(--fds-border_radius-medium);
+  border: solid 1px var(--fdsc-textfield-border);
+  box-sizing: border-box;
+  display: inline-block;
 }
 
 .input {
   font: inherit;
   font-family: inherit;
+  display: block;
+  position: relative;
+  flex: 0 1 auto;
   min-height: 2.5em;
   appearance: none;
   padding: 0 var(--fds-spacing-3);
-}
-
-.field {
-  display: flex;
-  align-items: stretch;
+  width: 100%;
+  border: solid 1px var(--fdsc-textfield-border);
   border-radius: var(--fds-border_radius-medium);
-  border: solid 1px var(--fds-semantic-border-action-dark);
-}
-
-.field > *:first-child {
-  border-top-left-radius: var(--fds-border_radius-medium);
-  border-bottom-left-radius: var(--fds-border_radius-medium);
-}
-
-.field > *:last-child {
-  border-top-right-radius: var(--fds-border_radius-medium);
-  border-bottom-right-radius: var(--fds-border_radius-medium);
+  box-sizing: border-box;
 }
 
 .label {
@@ -51,19 +53,55 @@
   cursor: default;
 }
 
-.padlock {
-  height: 1.2rem;
-  width: 1.2rem;
+.error > .input:not(:focus-visible) {
+  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-danger-default);
 }
 
-.adornment {
-  color: var(--fds-semantic-border-neutral-default);
-  background: var(--fds-semantic-surface-neutral-subtle);
-  padding: 5px var(--fds-spacing-3);
-  display: flex;
-  align-items: center;
+@media (hover: hover) and (pointer: fine) {
+  .input:not(:focus-visible):hover {
+    box-shadow: inset 0 0 0 2px var(--fds-semantic-border-action-hover);
+  }
+}
+
+.inputSufix {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.inputPrefix {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .prefix {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.sufix {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.field {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--fds-border_radius-medium);
+}
+
+.field > *:first-child {
   border-top-left-radius: var(--fds-border_radius-medium);
+  border-bottom-left-radius: var(--fds-border_radius-medium);
+}
+
+.field > *:last-child {
+  border-top-right-radius: var(--fds-border_radius-medium);
+  border-bottom-right-radius: var(--fds-border_radius-medium);
+}
+
+.padlock {
+  height: 1.2rem;
+  width: 1.2rem;
 }
