@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.0...@digdir/design-system-react@0.24.1) (2023-09-18)
+
+### Bug Fixes
+
+- **Accordion:** hide content in Accordions from screen readers when Accordion is closed ([#815](https://github.com/digdir/designsystem/issues/815)) ([eea59af](https://github.com/digdir/designsystem/commit/eea59af9d09c59ba8da734a0b5cf60bd704661d1))
+- **Radio, Checkbox, Button, Chip.Toggle:** Remove sticky hover on touch devices ([#803](https://github.com/digdir/designsystem/issues/803)) ([a4be791](https://github.com/digdir/designsystem/commit/a4be7918b49a607ebfa7042b3aa2d8e2f798a016))
+- **Radio, Checkbox, Switch:** :bug: Remove z-index on selection control icon ([#798](https://github.com/digdir/designsystem/issues/798)) ([6c1db8b](https://github.com/digdir/designsystem/commit/6c1db8bf213e62eb9b788ac82e3114e90cd9f052))
+
 # [0.24.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.23.3...@digdir/design-system-react@0.24.0) (2023-08-31)
 
 ### Features
