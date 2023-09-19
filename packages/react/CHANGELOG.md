@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.1...@digdir/design-system-react@0.24.2) (2023-09-19)
+
+### Bug Fixes
+
+- **Switch:** :bug: Adher to passed `checked` & `defaultChecked` props ([#832](https://github.com/digdir/designsystem/issues/832)) ([13a4577](https://github.com/digdir/designsystem/commit/13a45774943d01c6ea3cb9e7056b1686dfa9a358))
+
 ## [0.24.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.0...@digdir/design-system-react@0.24.1) (2023-09-18)
 
 ### Bug Fixes
