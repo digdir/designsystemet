@@ -1,11 +1,13 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import React, { useState, useId, forwardRef } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utils';
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
+import type { CharacterLimitProps } from '../CharacterCounter';
+import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 import classes from './Textfield.module.css';
@@ -29,12 +31,26 @@ export type TextfieldProps = {
     | 'time'
     | 'url'
     | 'week';
+  /**
+   *  The characterLimit function calculates remaining characters.
+   *  Provide a `label` function that takes count as parameter and returns a message.
+   *  Use `srLabel` to describe `maxCount` for screen readers.
+   */
+  characterLimit?: CharacterLimitProps;
 } & Omit<FormFieldProps, 'size'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
   (props, ref) => {
-    const { label, description, sufix, prefix, style, ...rest } = props;
+    const {
+      label,
+      description,
+      sufix,
+      prefix,
+      style,
+      characterLimit,
+      ...rest
+    } = props;
     const {
       inputProps,
       descriptionId,
@@ -43,6 +59,15 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       size = 'medium',
       readOnly,
     } = useTextfield(props);
+
+    const [inputValue, setInputValue] = useState(props.defaultValue);
+    const characterLimitId = `charactercount-${useId()}`;
+    const hasCharacterLimit = characterLimit != null;
+
+    const describedBy = cn(
+      inputProps['aria-describedby'],
+      hasCharacterLimit && characterLimitId,
+    );
 
     return (
       <Paragraph
@@ -104,6 +129,11 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               sufix && classes.inputSufix,
             )}
             ref={ref}
+            aria-describedby={describedBy}
+            onChange={(e) => {
+              inputProps?.onChange?.(e);
+              setInputValue(e.target.value);
+            }}
           />
           {sufix && (
             <Paragraph
@@ -117,7 +147,14 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             </Paragraph>
           )}
         </div>
-
+        {hasCharacterLimit && (
+          <CharacterCounter
+            size={size}
+            value={inputValue ? inputValue.toString() : ''}
+            id={characterLimitId}
+            {...characterLimit}
+          />
+        )}
         <div
           id={errorId}
           aria-live='polite'
