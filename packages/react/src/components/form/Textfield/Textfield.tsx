@@ -16,12 +16,25 @@ export type TextfieldProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   prefix?: string;
   sufix?: string;
+  type?:
+    | 'text'
+    | 'password'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'month'
+    | 'number'
+    | 'search'
+    | 'tel'
+    | 'time'
+    | 'url'
+    | 'week';
 } & Omit<FormFieldProps, 'size'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
   (props, ref) => {
-    const { label, description, sufix, prefix, ...rest } = props;
+    const { label, description, sufix, prefix, style, ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -35,6 +48,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       <Paragraph
         as='div'
         size={size}
+        style={style}
         className={cn(
           classes.textfield,
           inputProps.disabled && classes.disabled,
