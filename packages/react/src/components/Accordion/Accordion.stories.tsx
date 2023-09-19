@@ -33,6 +33,48 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
   </Accordion>
 );
 
+export const AccordionBorder: StoryFn<typeof Accordion> = (args) => (
+  <Accordion
+    border
+    color='subtle'
+  >
+    <Accordion.Item>
+      <Accordion.Header level={3}>Hva er Lorem Ipsum?</Accordion.Header>
+      <Accordion.Content>
+        Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
+        Lorem Ipsum har vært bransjens standard for dummytekst helt siden
+        1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
+        lage et prøveeksemplar av en bok.
+      </Accordion.Content>
+    </Accordion.Item>
+  </Accordion>
+);
+
+export const AccordionColor: StoryFn<typeof Accordion> = (args) => (
+  <Accordion
+    border
+    color='secondary'
+  >
+    <Accordion.Item>
+      <Accordion.Header level={3}>Hva er Lorem Ipsum?</Accordion.Header>
+      <Accordion.Content>
+        Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
+        Lorem Ipsum har vært bransjens standard for dummytekst helt siden
+        1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
+        lage et prøveeksemplar av en bok.
+      </Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item>
+      <Accordion.Header level={3}>Hvor kommer det fra?</Accordion.Header>
+      <Accordion.Content>
+        I motsetning til hva mange tror, er ikke Lorem Ipsum bare tilfeldig
+        tekst. Dets røtter springer helt tilbake til et stykke klassisk latinsk
+        litteratur fra 45 år f.kr., hvilket gjør det over 2000 år gammelt.
+      </Accordion.Content>
+    </Accordion.Item>
+  </Accordion>
+);
+
 // Default values are selected in Controls
 Preview.args = {
   border: false,
