@@ -40,8 +40,8 @@
   --fds-semantic-surface-action-secondary-hover: #376C5E;
   --fds-semantic-surface-action-secondary-active: #376C5E;
   --fds-semantic-surface-action-secondary-no_fill: #ffffff;
-  --fds-semantic-surface-action-secondary-no_fill-hover: rgba(#00315d, 0.1);
-  --fds-semantic-surface-action-secondary-no_fill-active: rgba(#00315d, 0.2);
+  --fds-semantic-surface-action-secondary-no_fill-hover: rgba(0, 49, 93, 0.1);
+  --fds-semantic-surface-action-secondary-no_fill-active: rgba(0, 49, 93, 0.2);
   --fds-semantic-surface-success-subtle: #d1f4e1;
   --fds-semantic-surface-success-subtle-hover: #8be4b5;
   --fds-semantic-surface-success-default: #118849;
