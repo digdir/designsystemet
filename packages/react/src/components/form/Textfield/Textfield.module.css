@@ -1,6 +1,4 @@
 .textfield {
-  --fdsc-textfield-border: var(--fds-semantic-border-action-dark);
-
   display: grid;
   gap: var(--fds-spacing-2);
 }
@@ -17,17 +15,14 @@
 
 .input {
   font: inherit;
-  font-family: inherit;
-  display: block;
-  position: relative;
   flex: 0 1 auto;
-  min-height: 2.5em;
+  min-height: 2.25em;
+  width: 100%;
+  height: 100%;
   appearance: none;
   padding: 0 var(--fds-spacing-3);
-  width: 100%;
   border: solid 1px var(--fds-semantic-border-action-dark);
   border-radius: var(--fds-border_radius-medium);
-  box-sizing: border-box;
 }
 
 .label {
@@ -42,24 +37,28 @@
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
-.disabled > .input,
-.disabled > .label,
-.disabled > .description {
-  color: var(--fds-semantic-border-neutral-subtle);
+.disabled {
+  opacity: 0.3;
 }
 
-.readonly > .input,
-.readonly > .label {
-  cursor: default;
+.disabled .input {
+  cursor: not-allowed;
+}
+
+.readonly .input {
+  background: var(--fds-semantic-surface-neutral-subtle);
+  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 .error > .input:not(:focus-visible) {
-  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-danger-default);
+  border-color: var(--fds-semantic-border-danger-default);
+  box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .input:not(:focus-visible):hover {
-    box-shadow: inset 0 0 0 2px var(--fds-semantic-border-action-hover);
+  .input:not(:focus-visible, :disabled):hover {
+    border-color: var(--fds-semantic-border-action-hover);
+    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
   }
 }
 
