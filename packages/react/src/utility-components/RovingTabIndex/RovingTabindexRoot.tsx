@@ -7,8 +7,13 @@ import type {
 } from 'react';
 
 type RovingTabindexRootBaseProps<T> = {
+  /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */
   children: ReactNode | ReactNode[];
+  /** Determines the type of HTMLElement will be used as the TabIndexRoot
+   * @default 'div'
+   */
   as?: T;
+  /** The value of the element that should be focused when the `RovingTabindexRoot` receives focus. */
   valueId?: string;
 };
 
@@ -41,7 +46,7 @@ export const RovingTabindexContext = createContext<RovingTabindexProps>({
   focusableValue: null,
 });
 
-export function getNextFocusableId(
+export function getNextFocusableValue(
   items: RovingTabindexItem[],
   value: string,
 ): RovingTabindexItem | undefined {
@@ -49,7 +54,7 @@ export function getNextFocusableId(
   return items.at(currIndex === items.length - 1 ? 0 : currIndex + 1);
 }
 
-export function getPrevFocusableId(
+export function getPrevFocusableValue(
   items: RovingTabindexItem[],
   value: string,
 ): RovingTabindexItem | undefined {

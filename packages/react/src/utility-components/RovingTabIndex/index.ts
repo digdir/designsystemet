@@ -1,6 +1,6 @@
 export {
   RovingTabindexRoot,
-  getNextFocusableId,
-  getPrevFocusableId,
+  getNextFocusableValue,
+  getPrevFocusableValue,
 } from './RovingTabindexRoot';
 export { useRovingTabindex } from './useRovingTabindex';

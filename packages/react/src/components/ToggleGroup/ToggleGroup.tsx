@@ -22,11 +22,15 @@ export type ToggleGroupContextProps = {
 export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 
 export type ToggleGroupProps = {
-  /** Description of what myProp does in the component */
+  /** Value of the ToggleGroup component. Set when you want to controll the value of the component. */
   value?: string;
+  /** Default value of the ToggleGroup component. Set when you want to use the component as an uncontrolled component. */
   defaultValue?: string;
+  /** Function that is called when the value of the ToggleGroup component changes. The current value is available in the callback. */
   onChange?: (value: string) => void;
+  /** Name of the ToggleGroup component. */
   name?: string;
+  /** Size of the ToggleGroup component. */
   size?: 'small' | 'medium' | 'large';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 

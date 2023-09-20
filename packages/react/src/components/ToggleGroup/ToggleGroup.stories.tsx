@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import * as icons from '@navikt/aksel-icons';
 
+import { Button } from '../Button';
+
 import { ToggleGroup } from '.';
 
 type Story = StoryObj<typeof ToggleGroup>;
@@ -37,42 +39,11 @@ export const Preview: Story = {
   },
 };
 
-// Function story
-// Use this story for listing our different variants, patterns with other components or examples usage with useState
-export const Controlled: StoryFn<typeof ToggleGroup> = () => {
-  const [value, setValue] = useState<string>('test2');
-  return (
-    <ToggleGroup
-      value={value}
-      size='medium'
-      onChange={setValue}
-    >
-      <ToggleGroup.Item
-        value='test'
-        icon={<AkselIcon />}
-      >
-        Test
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='test2'
-        icon={icon}
-      >
-        Test
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='test3'
-        icon={<AkselIcon2 />}
-      >
-        Test Test
-      </ToggleGroup.Item>
-    </ToggleGroup>
-  );
-};
-
 export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
   const handleChange = (value: string) => {
     console.log(value);
   };
+
   return (
     <ToggleGroup
       defaultValue={'test'}
@@ -98,5 +69,56 @@ export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
         Test Test
       </ToggleGroup.Item>
     </ToggleGroup>
+  );
+};
+
+export const Controlled: StoryFn<typeof ToggleGroup> = () => {
+  const [value, setValue] = useState<string>('test2');
+  const myGroupRef = React.createRef<HTMLDivElement>();
+  const myItemRef = React.createRef<HTMLButtonElement>();
+  return (
+    <>
+      <div style={{ display: 'flex', gap: '4px' }}>
+        <Button
+          size='small'
+          onClick={() => myItemRef.current?.focus()}
+        >
+          Focus last item!
+        </Button>
+        <Button
+          size='small'
+          onClick={() => setValue('test2')}
+        >
+          Activate middle button!
+        </Button>
+      </div>
+      <br />
+      <ToggleGroup
+        value={value}
+        size='medium'
+        onChange={setValue}
+        ref={myGroupRef}
+      >
+        <ToggleGroup.Item
+          value='test'
+          icon={<AkselIcon />}
+        >
+          Test
+        </ToggleGroup.Item>
+        <ToggleGroup.Item
+          value='test2'
+          icon={icon}
+        >
+          Test
+        </ToggleGroup.Item>
+        <ToggleGroup.Item
+          value='test3'
+          icon={<AkselIcon2 />}
+          ref={myItemRef}
+        >
+          Test Test
+        </ToggleGroup.Item>
+      </ToggleGroup>
+    </>
   );
 };

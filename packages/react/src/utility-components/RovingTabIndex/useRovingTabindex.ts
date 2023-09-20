@@ -3,6 +3,7 @@ import { useContext } from 'react';
 
 import { RovingTabindexContext } from './RovingTabindexRoot';
 
+/** Handles props for `RovingTabIndex` in context with `RovingTabIndexRoot` */
 export const useRovingTabindex = (value: string) => {
   const {
     elements,

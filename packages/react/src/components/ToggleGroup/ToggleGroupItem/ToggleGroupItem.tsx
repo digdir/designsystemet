@@ -8,9 +8,11 @@ import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
 
 export type ToggleGroupItemProps = {
-  /** Description of what myProp does in the component */
+  /** The value of the ToggleGroupItem */
   value: string;
+  /** Icon to be displayed on the ToggleGroupItem */
   icon?: React.ReactNode;
+  /** The text to be displayed on the ToggleGroupItem */
   children: string;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'children'>;
 
@@ -19,7 +21,7 @@ export const ToggleGroupItem = forwardRef<
   ToggleGroupItemProps
 >((props, ref) => {
   const { children, icon, ...rest } = props;
-  const { active, buttonProps } = useToggleGroupItem(props);
+  const { active, buttonProps } = useToggleGroupItem(props, ref);
   return (
     <Button
       {...rest}
