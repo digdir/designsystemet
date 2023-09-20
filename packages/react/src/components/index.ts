@@ -11,7 +11,7 @@ export * from './Popover';
 export * from './Select';
 export * from './Spinner';
 export * from './TextArea';
-export * from './TextField';
+export * from './legacy/TextField';
 export * from './Link';
 export * from './List';
 export * from './Table';
