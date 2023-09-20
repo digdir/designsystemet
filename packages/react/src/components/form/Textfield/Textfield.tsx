@@ -14,32 +14,51 @@ import classes from './Textfield.module.css';
 import utilityClasses from './../../../utils/utility.module.css';
 
 export type TextfieldProps = {
+  /** Label */
   label?: ReactNode;
+  /** Visually hides `label` and `description` (still available for screen readers)  */
+  hideLabel?: boolean;
+  /** Changes field size and paddings */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /** Prefix for field. */
   prefix?: string;
+  /** Sufix for field. */
   sufix?: string;
+  /** Supported `input` types */
   type?:
-    | 'text'
-    | 'password'
     | 'date'
     | 'datetime-local'
     | 'email'
+    | 'file'
     | 'month'
     | 'number'
+    | 'password'
     | 'search'
     | 'tel'
+    | 'text'
     | 'time'
     | 'url'
     | 'week';
   /**
-   *  The characterLimit function calculates remaining characters.
+   *  The characterLimit function calculates remaining characters based on `maxCount`
+   *
    *  Provide a `label` function that takes count as parameter and returns a message.
+   *
    *  Use `srLabel` to describe `maxCount` for screen readers.
+   *
+   *  Defaults to Norwegian if no labels are provided.
    */
   characterLimit?: CharacterLimitProps;
 } & Omit<FormFieldProps, 'size'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
+/** Text input field
+ *
+ * @example
+ * ```tsx
+ * <Textfield label="Textfield label">
+ * ```
+ */
 export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
   (props, ref) => {
     const {
@@ -49,8 +68,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       prefix,
       style,
       characterLimit,
+      hideLabel,
       ...rest
     } = props;
+
     const {
       inputProps,
       descriptionId,
@@ -61,7 +82,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
     } = useTextfield(props);
 
     const [inputValue, setInputValue] = useState(props.defaultValue);
-    const characterLimitId = `charactercount-${useId()}`;
+    const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 
     const describedBy = cn(
@@ -83,7 +104,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       >
         {label && (
           <Label
-            className={classes.label}
+            className={cn(
+              classes.label,
+              hideLabel && utilityClasses.visuallyHidden,
+            )}
             htmlFor={inputProps.id}
             size={size}
             weight='regular'
@@ -102,7 +126,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             id={descriptionId}
             as='div'
             size={size}
-            className={classes.description}
+            className={cn(
+              classes.description,
+              hideLabel && utilityClasses.visuallyHidden,
+            )}
           >
             {description}
           </Paragraph>
