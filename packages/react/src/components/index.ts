@@ -3,7 +3,7 @@ export * from './legacy/LegacyCheckbox';
 export * from './legacy/LegacyCheckboxGroup';
 export * from './legacy/LegacyRadioButton';
 export * from './legacy/LegacyRadioGroup';
-export * from './legacy/TextField';
+export * from './legacy/LegacyTextField';
 
 export * from './Button';
 export * from './Tabs';

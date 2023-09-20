@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyTextField } from '../TextField';
+import { LegacyTextField } from '../LegacyTextField';
 
 import { LegacyFieldSet } from './FieldSet';
 
