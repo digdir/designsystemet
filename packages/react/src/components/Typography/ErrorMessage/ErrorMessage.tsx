@@ -11,6 +11,8 @@ export type ErrorMessageProps = {
   size?: 'xsmall' | 'small' | 'medium';
   /** Adds margin-bottom */
   spacing?: boolean;
+  /** Toggle error color */
+  error?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `ErrorMessage` to display text as error message. */
@@ -19,7 +21,14 @@ export const ErrorMessage: OverridableComponent<
   HTMLParagraphElement
 > = forwardRef(
   (
-    { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+    {
+      className,
+      size = 'medium',
+      spacing,
+      as: Component = 'p',
+      error = true,
+      ...rest
+    },
     ref,
   ) => (
     <Component
@@ -31,6 +40,7 @@ export const ErrorMessage: OverridableComponent<
         {
           [classes.spacing]: !!spacing,
         },
+        error && classes.error,
         className,
       )}
     />

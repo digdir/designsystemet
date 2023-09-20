@@ -3,6 +3,9 @@
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   margin: 0;
+}
+
+.errorMessage.error {
   color: var(--fds-semantic-text-danger-default);
 }
 
