@@ -89,15 +89,25 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
     <Accordion>
       <Accordion.Item open={open}>
         <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-          Accordion header text
+          Hva er Lorem Ipsum?
         </Accordion.Header>
-        <Accordion.Content>Accordion content</Accordion.Content>
+        <Accordion.Content>
+          Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
+          Lorem Ipsum har vært bransjens standard for dummytekst helt siden
+          1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
+          lage et prøveeksemplar av en bok.
+        </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item open={open2}>
         <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
-          Accordion header text
+          Hvor kommer det fra?
         </Accordion.Header>
-        <Accordion.Content>Accordion content</Accordion.Content>
+        <Accordion.Content>
+          I motsetning til hva mange tror, er ikke Lorem Ipsum bare tilfeldig
+          tekst. Dets røtter springer helt tilbake til et stykke klassisk
+          latinsk litteratur fra 45 år f.kr., hvilket gjør det over 2000 år
+          gammelt.
+        </Accordion.Content>
       </Accordion.Item>
     </Accordion>
   );
