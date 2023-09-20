@@ -27,3 +27,4 @@ export * from './form/Checkbox';
 export * from './form/Radio';
 export * from './form/Fieldset';
 export * from './form/Switch';
+export * from './form/Textfield';
