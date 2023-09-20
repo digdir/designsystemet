@@ -69,6 +69,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       style,
       characterLimit,
       hideLabel,
+      type = 'text',
       ...rest
     } = props;
 
@@ -156,6 +157,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               sufix && classes.inputSufix,
             )}
             ref={ref}
+            type={type}
             aria-describedby={describedBy}
             onChange={(e) => {
               inputProps?.onChange?.(e);
