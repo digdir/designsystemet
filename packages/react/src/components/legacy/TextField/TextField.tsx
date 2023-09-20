@@ -13,7 +13,7 @@ import { isNumericFormat, isPatternFormat } from '../../../utils';
 import { InputWrapper } from '../../_InputWrapper';
 import type { ReadOnlyVariant_, CharacterLimit } from '../../_InputWrapper';
 
-export type TextFieldProps = {
+export type LegacyTextFieldProps = {
   /**
    *  The characterLimit function calculates remaining characters.
    *  Provide a `label` function that takes count as parameter and returns a message.
@@ -25,7 +25,7 @@ export type TextFieldProps = {
   defaultValue?: string | number;
 
   /** The formatting options for the text field. */
-  formatting?: TextFieldFormatting;
+  formatting?: LegacyTextFieldFormatting;
 
   /** Specifies whether the value of the text field is valid. */
   isValid?: boolean;
@@ -65,7 +65,7 @@ export type TextFieldProps = {
   'readOnly' | 'value' | 'defaultValue' | 'type'
 >; // Todo: We should extend the props of <input> here, but it's complex because of the number format implementation. We should move that out to a separate component first.
 
-export type TextFieldFormatting = {
+export type LegacyTextFieldFormatting = {
   align?: 'right' | 'center' | 'left';
   number?: NumericFormatProps | PatternFormatProps;
 };
@@ -91,7 +91,10 @@ const replaceTargetValueWithUnformattedValue = ({
     },
   };
 };
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+export const LegacyTextField = forwardRef<
+  HTMLInputElement,
+  LegacyTextFieldProps
+>(
   (
     {
       id,
@@ -107,7 +110,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       characterLimit,
       'aria-describedby': ariaDescribedBy,
       ...rest
-    }: TextFieldProps,
+    }: LegacyTextFieldProps,
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const [currentValue, setCurrentValue] = useState<string>(

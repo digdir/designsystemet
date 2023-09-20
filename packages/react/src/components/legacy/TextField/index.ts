@@ -1,2 +1,5 @@
-export { TextField } from './TextField';
-export type { TextFieldProps, TextFieldFormatting } from './TextField';
+export { LegacyTextField } from './TextField';
+export type {
+  LegacyTextFieldProps,
+  LegacyTextFieldFormatting,
+} from './TextField';

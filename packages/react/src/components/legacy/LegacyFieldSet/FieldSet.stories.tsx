@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { TextField } from '../../TextField';
+import { LegacyTextField } from '../TextField';
 
 import { LegacyFieldSet } from './FieldSet';
 
@@ -13,8 +13,8 @@ export default {
 export const Eksempel: StoryFn<typeof LegacyFieldSet> = (args) => (
   <LegacyFieldSet {...args}>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <TextField label='Navn' />
-      <TextField
+      <LegacyTextField label='Navn' />
+      <LegacyTextField
         type='date'
         label='Fødselsdato'
       />
