@@ -40,12 +40,21 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
   return (
     <>
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <Textfield
-        label='Kontroller meg!'
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <Button onClick={() => setValue('Kake 🎂')}>Jeg vil ha Kake 🎂</Button>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'end',
+          marginTop: 'var(--fds-spacing-2)',
+          gap: 'var(--fds-spacing-2)',
+        }}
+      >
+        <Textfield
+          label='Kontroller meg!'
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Button onClick={() => setValue('Kake 🎂')}>Jeg vil ha Kake 🎂</Button>
+      </div>
     </>
   );
 };

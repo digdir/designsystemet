@@ -24,10 +24,10 @@ type CharacterCounterProps = {
 };
 
 const defaultLabel: CharacterCounterProps['label'] = (count) =>
-  count > -1 ? `${count} tegn igjen` : `${Math.abs(count)} tegn for mye.`;
+  count > -1 ? `${count} tegn igjen` : `${Math.abs(count)} tegn for mye`;
 
 const defaultSrLabel = (maxCount: number) =>
-  `Tekstfelt med plass til ${maxCount} tegn.`;
+  `Tekstfelt med plass til ${maxCount} tegn`;
 
 export const CharacterCounter = ({
   label = defaultLabel,

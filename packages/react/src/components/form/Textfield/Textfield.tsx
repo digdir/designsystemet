@@ -110,7 +110,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             )}
             htmlFor={inputProps.id}
             size={size}
-            weight='regular'
+            weight='medium'
           >
             {readOnly && (
               <PadlockLockedFillIcon
@@ -183,6 +183,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           />
         )}
         <div
+          className={classes.errorMessage}
           id={errorId}
           aria-live='polite'
           aria-relevant='additions removals'

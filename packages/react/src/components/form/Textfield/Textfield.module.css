@@ -1,6 +1,6 @@
 .textfield {
   display: grid;
-  gap: var(--fds-spacing-2);
+  gap: var(--fds-spacing-1);
 }
 
 .adornment {
@@ -104,4 +104,8 @@
 .padlock {
   height: 1.2rem;
   width: 1.2rem;
+}
+
+.errorMessage:empty {
+  display: none;
 }
