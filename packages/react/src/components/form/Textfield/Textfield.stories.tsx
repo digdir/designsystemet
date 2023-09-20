@@ -17,6 +17,7 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
+    size: 'medium',
     description: '',
   },
 };
@@ -25,12 +26,7 @@ export const WithCharacterCounter: Story = {
   args: {
     label: 'Label',
     characterLimit: {
-      label: (count) =>
-        count > -1
-          ? `${count} character Left`
-          : `${Math.abs(count)} characters to many.`,
       maxCount: 5,
-      srLabel: `Field with room for ${5} characters.`,
     },
   },
 };

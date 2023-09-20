@@ -104,13 +104,13 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       >
         {label && (
           <Label
+            size={size}
+            weight='medium'
+            htmlFor={inputProps.id}
             className={cn(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
             )}
-            htmlFor={inputProps.id}
-            size={size}
-            weight='medium'
           >
             {readOnly && (
               <PadlockLockedFillIcon

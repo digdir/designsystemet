@@ -13,6 +13,18 @@
   display: inline-block;
 }
 
+.label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
+  align-items: center;
+}
+
+.description {
+  color: var(--fds-semantic-text-neutral-subtle);
+}
+
 .input {
   font: inherit;
   position: relative;
@@ -24,18 +36,6 @@
   padding: 0 var(--fds-spacing-3);
   border: solid 1px var(--fds-semantic-border-action-dark);
   border-radius: var(--fds-border_radius-medium);
-}
-
-.label {
-  min-width: min-content;
-  display: inline-flex;
-  flex-direction: row;
-  gap: var(--fds-spacing-1);
-  align-items: center;
-}
-
-.description {
-  color: var(--fds-semantic-text-neutral-subtle);
 }
 
 .disabled {
@@ -63,14 +63,14 @@
   }
 }
 
-.inputSufix {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .inputPrefix {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.inputSufix {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .prefix {
