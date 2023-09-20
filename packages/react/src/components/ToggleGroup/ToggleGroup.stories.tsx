@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import * as icons from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
 
 import { ToggleGroup } from '.';
-
-type Story = StoryObj<typeof ToggleGroup>;
 
 const icon = (
   <svg
@@ -31,12 +29,34 @@ export default {
   component: ToggleGroup,
 } as Meta;
 
-// Simple story
-// First story is the one displayed by <Preview /> and used for <Controls />
-export const Preview: Story = {
-  args: {
-    children: 'You created the ToggleGroup component!',
-  },
+export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
+  return (
+    <ToggleGroup {...args}>
+      <ToggleGroup.Item
+        value='test'
+        icon={<AkselIcon />}
+      >
+        Test
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value='test2'
+        icon={icon}
+      >
+        Test
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value='test3'
+        icon={<AkselIcon2 />}
+      >
+        Test Test
+      </ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
+Preview.args = {
+  size: 'medium',
+  defaultValue: 'test',
 };
 
 export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {

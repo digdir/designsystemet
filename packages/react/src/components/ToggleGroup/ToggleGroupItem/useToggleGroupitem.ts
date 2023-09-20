@@ -59,10 +59,8 @@ export const useToggleGroupItem: UseToggleGroupItem = (
       const items = getOrderedItems();
       let nextItem: RovingTabindexItem | undefined;
       if (e.key === 'ArrowRight') {
-        console.log('right');
         nextItem = getNextFocusableValue(items, props.value);
       } else if (e.key === 'ArrowLeft') {
-        console.log('left');
         nextItem = getPrevFocusableValue(items, props.value);
       }
       nextItem?.element.focus();
