@@ -53,11 +53,7 @@ export const CharacterCounter = ({
         as='span'
         size={size}
         aria-live={hasExceededLimit ? 'polite' : 'off'}
-        style={{
-          color: hasExceededLimit
-            ? 'var(--fds-semantic-text-danger-default)'
-            : 'var(--fds-semantic-text-neutral-default)',
-        }}
+        error={hasExceededLimit}
       >
         {label(currentCount)}
       </ErrorMessage>
