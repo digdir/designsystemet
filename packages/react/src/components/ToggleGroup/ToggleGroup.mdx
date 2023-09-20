@@ -6,8 +6,6 @@ import * as ToggleGroupStories from './ToggleGroup.stories';
 
 # ToggleGroup
 
-<Information text='development' />
-
 Description of the ToggleGroup component.
 
 <Primary />
@@ -21,7 +19,11 @@ Description of the ToggleGroup component.
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
 import { ToggleGroup } from '@digdir/design-system-react';
 
-<ToggleGroup>You are using the ToggleGroup component!</ToggleGroup>;
+<ToggleGroup>
+  <ToggleGroup value="value1">Option 1</ToggleGroup.Item>
+  <ToggleGroup value="value2">Option 2</ToggleGroup.Item>
+  <ToggleGroup value="value3">Option 3</ToggleGroup.Item>
+</ToggleGroup>;
 ```
 
 ## Controlled
