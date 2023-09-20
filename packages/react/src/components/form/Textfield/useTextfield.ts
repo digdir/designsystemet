@@ -13,7 +13,7 @@ type UseTextfield = (props: TextfieldProps) => FormField & {
     'readOnly' | 'type' | 'name' | 'required' | 'onClick' | 'onChange'
   >;
 };
-/** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
+/** Handles props for `Textfield` in context with `Fieldset` */
 export const useTextfield: UseTextfield = (props) => {
   const fieldset = useContext(FieldsetContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'textfield');
