@@ -8,7 +8,7 @@ import classes from './ErrorMessage.module.css';
 
 export type ErrorMessageProps = {
   /** Changes text sizing */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
   /** Toggle error color */
