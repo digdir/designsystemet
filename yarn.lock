@@ -3913,7 +3913,7 @@ __metadata:
   resolution: "@digdir/design-system-react@workspace:packages/react"
   dependencies:
     "@altinn/figma-design-tokens": ^6.0.1
-    "@digdir/design-system-tokens": ^0.6.1
+    "@digdir/design-system-tokens": ^0.7.0
     "@floating-ui/react": 0.25.2
     "@navikt/aksel-icons": ^3.2.4
     react-number-format: 5.2.2
@@ -3923,7 +3923,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/design-system-tokens@*, @digdir/design-system-tokens@^0.6.1, @digdir/design-system-tokens@workspace:packages/tokens":
+"@digdir/design-system-tokens@*, @digdir/design-system-tokens@^0.7.0, @digdir/design-system-tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
