@@ -18,8 +18,8 @@ import {
 } from '@floating-ui/react';
 import { size } from '@floating-ui/dom';
 
-import type { TextFieldProps } from '../TextField';
-import { TextField } from '../TextField';
+import type { LegacyTextFieldProps } from '../legacy/LegacyTextField';
+import { LegacyTextField } from '../legacy/LegacyTextField';
 
 import { ComboboxActionType, comboboxReducer } from './ComboboxReducer';
 import { ComboboxList } from './ComboboxList';
@@ -46,7 +46,7 @@ export type ComboboxProps = {
   /** The value of the input field. */
   value?: string;
 } & Pick<
-  TextFieldProps,
+  LegacyTextFieldProps,
   'onChange' | 'isValid' | 'label' | 'disabled' | 'required'
 >;
 
@@ -134,7 +134,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     return (
       <>
-        <TextField
+        <LegacyTextField
           autoComplete='off'
           type='text'
           {...getReferenceProps({

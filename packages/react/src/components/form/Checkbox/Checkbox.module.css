@@ -13,7 +13,6 @@
   pointer-events: none;
   height: 1.75em;
   width: 1.75em;
-  z-index: 1;
   margin: auto;
   overflow: visible;
 }
@@ -134,17 +133,20 @@
   fill: var(--fds-semantic-border-neutral-default);
 }
 
-.container:not(.disabled, .readonly) > .control:hover,
-.container:not(.disabled, .readonly):has(.label:hover) > .control {
-  background: var(--fds-semantic-surface-info-subtle-hover);
-}
+/* Only use hover for non-touch devices to prevent sticky-hovering */
+@media (hover: hover) and (pointer: fine) {
+  .container:not(.disabled, .readonly) > .control:hover,
+  .container:not(.disabled, .readonly):has(.label:hover) > .control {
+    background: var(--fds-semantic-surface-info-subtle-hover);
+  }
 
-.container:not(.disabled, .readonly) > .label:hover,
-.container:not(.disabled, .readonly) > .control:hover ~ .label {
-  color: var(--fds-semantic-border-input-hover);
-}
+  .container:not(.disabled, .readonly) > .label:hover,
+  .container:not(.disabled, .readonly) > .control:hover ~ .label {
+    color: var(--fds-semantic-border-input-hover);
+  }
 
-.container:not(.disabled, .readonly) > .control:hover > .icon > .box,
-.container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
-  stroke: var(--fds-semantic-border-input-hover);
+  .container:not(.disabled, .readonly) > .control:hover > .icon > .box,
+  .container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
+    stroke: var(--fds-semantic-border-input-hover);
+  }
 }

@@ -42,6 +42,43 @@
         }
       },
       "action": {
+        "subtle": {
+          "value": "{colors.blue.100}",
+          "type": "color"
+        },
+        "subtle-hover": {
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "default": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.blue.800}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{colors.blue.900}",
+          "type": "color",
+          "description": "Standard farge for handlinger"
+        },
+        "no_fill": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "no_fill-hover": {
+          "value": "{colors.blue.100}",
+          "type": "color"
+        },
+        "no_fill-active": {
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "checked": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
         "primary": {
           "subtle": {
             "value": "{colors.blue.100}",
@@ -111,10 +148,6 @@
             "value": "rgba({colors.blue.900}, 0.2)",
             "type": "color"
           }
-        },
-        "checked": {
-          "value": "{colors.blue.700}",
-          "type": "color"
         }
       },
       "success": {
@@ -244,6 +277,34 @@
         }
       },
       "action": {
+        "subtle": {
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "subtle-hover": {
+          "value": "{colors.blue.400}",
+          "type": "color"
+        },
+        "default": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{colors.blue.900}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{colors.blue.900}",
+          "type": "color"
+        },
+        "dark-hover": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
         "primary": {
           "subtle": {
             "value": "{colors.blue.200}",
@@ -287,14 +348,6 @@
             "value": "{colors.blue.900}",
             "type": "color"
           }
-        },
-        "default": {
-          "value": "{colors.blue.900}",
-          "type": "color"
-        },
-        "hover": {
-          "value": "{colors.blue.700}",
-          "type": "color"
         }
       },
       "neutral": {
@@ -422,6 +475,22 @@
         }
       },
       "action": {
+        "default": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#004e95",
+          "type": "color"
+        },
+        "active": {
+          "value": "#00315d",
+          "type": "color"
+        },
+        "on_action": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
         "primary": {
           "default": {
             "value": "{colors.blue.700}",
@@ -787,6 +856,20 @@
       }
     },
     "error_message": {
+      "large": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f1}",
+          "letterSpacing": "{letterSpacing.1}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
       "medium": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",

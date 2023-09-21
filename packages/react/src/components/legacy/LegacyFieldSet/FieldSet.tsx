@@ -38,7 +38,7 @@ export type LegacyFieldSetProps = {
 /**
  *
  * @note
- * Will be replaced by new Fieldset component.
+ * Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-fieldset--docs Fieldset} component.
  */
 const LegacyFieldSet = forwardRef<HTMLFieldSetElement, LegacyFieldSetProps>(
   (
