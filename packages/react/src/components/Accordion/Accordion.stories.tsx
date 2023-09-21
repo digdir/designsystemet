@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Button } from '../';
+
 import { Accordion } from '.';
 
 export default {
@@ -33,7 +35,7 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
   </Accordion>
 );
 
-export const AccordionBorder: StoryFn<typeof Accordion> = (args) => (
+export const AccordionBorder: StoryFn<typeof Accordion> = () => (
   <Accordion
     border
     color='subtle'
@@ -50,7 +52,7 @@ export const AccordionBorder: StoryFn<typeof Accordion> = (args) => (
   </Accordion>
 );
 
-export const AccordionColor: StoryFn<typeof Accordion> = (args) => (
+export const AccordionColor: StoryFn<typeof Accordion> = () => (
   <Accordion
     border
     color='secondary'
@@ -83,22 +85,24 @@ Preview.args = {
 
 export const Controlled: StoryFn<typeof Accordion> = () => {
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
 
   return (
-    <Accordion>
-      <Accordion.Item open={open}>
-        <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-          Accordion header text
-        </Accordion.Header>
-        <Accordion.Content>Accordion content</Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item open={open2}>
-        <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
-          Accordion header text
-        </Accordion.Header>
-        <Accordion.Content>Accordion content</Accordion.Content>
-      </Accordion.Item>
-    </Accordion>
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle Accordions</Button>
+      <Accordion>
+        <Accordion.Item open={open}>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+            Accordion header text
+          </Accordion.Header>
+          <Accordion.Content>Accordion content</Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item open={open}>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+            Accordion header text
+          </Accordion.Header>
+          <Accordion.Content>Accordion content</Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+    </>
   );
 };
