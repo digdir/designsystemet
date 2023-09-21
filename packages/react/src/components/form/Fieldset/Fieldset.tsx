@@ -14,7 +14,7 @@ export type FieldsetContextType = {
   errorId?: string;
   disabled?: boolean;
   readOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 export const FieldsetContext = createContext<FieldsetContextType | null>(null);

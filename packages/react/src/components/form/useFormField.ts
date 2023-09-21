@@ -20,7 +20,7 @@ export type FormFieldProps = {
   /** Toggle `readOnly` */
   readOnly?: boolean;
   /** Changes field size and paddings */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
 export type FormField = {
@@ -32,7 +32,7 @@ export type FormField = {
     'id' | 'disabled' | 'aria-invalid' | 'aria-describedby'
   >;
   readOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 /**
