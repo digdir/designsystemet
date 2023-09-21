@@ -31,9 +31,7 @@ export type FormField = {
     InputHTMLAttributes<HTMLInputElement>,
     'id' | 'disabled' | 'aria-invalid' | 'aria-describedby'
   >;
-  readOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-};
+} & Pick<FormFieldProps, 'size' | 'readOnly'>;
 
 /**
  * Handles props and their state for various form-fields in context with Fieldset

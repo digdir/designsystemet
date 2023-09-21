@@ -5,17 +5,15 @@ import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import utilityclasses from '../../../utils/utility.module.css';
+import type { FormFieldProps } from '../useFormField';
 
 import { useFieldset } from './useFieldset';
 import classes from './Fieldset.module.css';
 
-export type FieldsetContextType = {
-  error?: ReactNode;
-  errorId?: string;
-  disabled?: boolean;
-  readOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-};
+export type FieldsetContextType = Pick<
+  FormFieldProps,
+  'error' | 'errorId' | 'disabled' | 'readOnly' | 'size'
+>;
 
 export const FieldsetContext = createContext<FieldsetContextType | null>(null);
 
@@ -28,14 +26,13 @@ export type FieldsetProps = {
   error?: ReactNode;
   /** The legend of the fieldset. */
   legend?: ReactNode;
-  /** The size of the fieldset. */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Toggle `readOnly` on fieldset context.
    * @note This does not prevent fieldset values from being submited */
   readOnly?: boolean;
   /** Visually hide `legend` and `description` (still available for screen readers)  */
   hideLegend?: boolean;
-} & FieldsetHTMLAttributes<HTMLFieldSetElement>;
+} & Pick<FormFieldProps, 'size'> &
+  FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   (props, ref) => {
