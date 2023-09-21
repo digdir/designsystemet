@@ -1,0 +1,18 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../../docs-components';
+import * as TextfieldStories from './Textfield.stories';
+
+<Meta of={TextfieldStories} />
+
+# Textfield
+
+<Primary />
+<Controls />
+
+## Antall tegn
+
+<Canvas of={TextfieldStories.WithCharacterCounter} />
+
+## Kontrollert
+
+<Canvas of={TextfieldStories.Controlled} />
