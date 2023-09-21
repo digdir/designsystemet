@@ -29,7 +29,7 @@ export type FieldsetProps = {
   /** The legend of the fieldset. */
   legend?: ReactNode;
   /** The size of the fieldset. */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Toggle `readOnly` on fieldset context.
    * @note This does not prevent fieldset values from being submited */
   readOnly?: boolean;
