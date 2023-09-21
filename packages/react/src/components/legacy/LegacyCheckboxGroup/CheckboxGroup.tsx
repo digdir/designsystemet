@@ -136,4 +136,9 @@ const LegacyCheckboxGroup = ({
 
 LegacyCheckboxGroup.displayName = 'LegacyCheckboxGroup';
 
+/**
+ *
+ * @note
+ * Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-checkbox-group--docs Checkbox.Group} component.
+ */
 export { LegacyCheckboxGroup };
