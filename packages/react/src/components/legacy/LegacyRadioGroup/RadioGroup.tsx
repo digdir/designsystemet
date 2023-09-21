@@ -33,7 +33,7 @@ export interface LegacyRadioGroupProps {
 /**
  *
  * @note
- * Will be replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-radio-group--docs Radio.Group} component.
+ * Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-radio-group--docs Radio.Group} component.
  */
 const LegacyRadioGroup = ({
   description,

@@ -91,6 +91,12 @@ const replaceTargetValueWithUnformattedValue = ({
     },
   };
 };
+
+/**
+ *
+ * @note
+ * Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-textfield--docs Textfield} component.
+ */
 export const LegacyTextField = forwardRef<
   HTMLInputElement,
   LegacyTextFieldProps
