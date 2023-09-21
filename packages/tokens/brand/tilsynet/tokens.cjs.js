@@ -170,6 +170,7 @@ module.exports = {
   "typography_label_medium": "500 1.125rem/1.3 'Inter'",
   "typography_label_small": "500 0.9375rem/1.3 'Inter'",
   "typography_label_xsmall": "500 0.8125rem/1.3 'Inter'",
+  "typography_error_message_large": "400 1.3125rem/1.3 'Inter'",
   "typography_error_message_medium": "400 1.125rem/1.3 'Inter'",
   "typography_error_message_small": "400 0.9375rem/1.3 'Inter'",
   "typography_error_message_xsmall": "400 0.8125rem/1.3 'Inter'",
