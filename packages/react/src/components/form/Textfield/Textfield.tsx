@@ -22,8 +22,8 @@ export type TextfieldProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Prefix for field. */
   prefix?: string;
-  /** Sufix for field. */
-  sufix?: string;
+  /** Suffix for field. */
+  suffix?: string;
   /** Supported `input` types */
   type?:
     | 'date'
@@ -64,7 +64,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
     const {
       label,
       description,
-      sufix,
+      suffix,
       prefix,
       style,
       characterLimit,
@@ -154,7 +154,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               classes.input,
               utilityClasses.focusable,
               prefix && classes.inputPrefix,
-              sufix && classes.inputSufix,
+              suffix && classes.inputSuffix,
             )}
             ref={ref}
             type={type}
@@ -164,15 +164,15 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               setInputValue(e.target.value);
             }}
           />
-          {sufix && (
+          {suffix && (
             <Paragraph
               as='div'
               size={size}
-              className={cn(classes.adornment, classes.sufix)}
+              className={cn(classes.adornment, classes.suffix)}
               aria-hidden='true'
               short
             >
-              {sufix}
+              {suffix}
             </Paragraph>
           )}
         </div>
