@@ -97,7 +97,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         size={size}
         style={style}
         className={cn(
-          classes.textfield,
+          classes.formField,
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
           rest.className,
@@ -152,6 +152,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             {...inputProps}
             className={cn(
               classes.input,
+              classes[size],
               utilityClasses.focusable,
               prefix && classes.inputPrefix,
               suffix && classes.inputSuffix,
