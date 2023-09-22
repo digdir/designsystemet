@@ -27,9 +27,11 @@ export type FormField = {
   hasError: boolean;
   errorId: string;
   descriptionId: string;
-  inputProps: Pick<
+  inputProps: {
+    id: string;
+  } & Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    'id' | 'disabled' | 'aria-invalid' | 'aria-describedby'
+    'disabled' | 'aria-invalid' | 'aria-describedby'
   >;
 } & Pick<FormFieldProps, 'size' | 'readOnly'>;
 
