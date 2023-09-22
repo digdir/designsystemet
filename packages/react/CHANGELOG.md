@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.25.0...@digdir/design-system-react@0.25.1) (2023-09-22)
+
+### Bug Fixes
+
+- **Textfield:** Prop typo ([#848](https://github.com/digdir/designsystem/issues/848)) ([0c59b86](https://github.com/digdir/designsystem/commit/0c59b86f661222e0021311cd5eba6c7aa429ea8c))
+
 # [0.25.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.2...@digdir/design-system-react@0.25.0) (2023-09-21)
 
 ### Features
