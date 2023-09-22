@@ -47,7 +47,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       props;
 
     const {
-      inputProps,
+      textareaProps,
       descriptionId,
       hasError,
       errorId,
@@ -55,12 +55,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       readOnly,
     } = useTextarea(props);
 
-    const [inputValue, setInputValue] = useState(props.defaultValue);
-    const characterLimitId = `textfield-charactercount-${useId()}`;
+    const [value, setValue] = useState(props.defaultValue);
+    const characterLimitId = `${textareaProps.id}-charactercount}`;
     const hasCharacterLimit = characterLimit != null;
 
     const describedBy = cn(
-      inputProps['aria-describedby'],
+      textareaProps['aria-describedby'],
       hasCharacterLimit && characterLimitId,
     );
 
@@ -71,7 +71,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         style={style}
         className={cn(
           classes.formField,
-          inputProps.disabled && classes.disabled,
+          textareaProps.disabled && classes.disabled,
           readOnly && classes.readonly,
           rest.className,
         )}
@@ -80,7 +80,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           <Label
             size={size}
             weight='medium'
-            htmlFor={inputProps.id}
+            htmlFor={textareaProps.id}
             className={cn(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
@@ -110,7 +110,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
         <textarea
           {...omit(['size', 'error', 'errorId'], rest)}
-          {...inputProps}
+          {...textareaProps}
           className={cn(
             classes.textarea,
             utilityClasses.focusable,
@@ -119,14 +119,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           aria-describedby={describedBy}
           onChange={(e) => {
-            inputProps?.onChange?.(e);
-            setInputValue(e.target.value);
+            textareaProps?.onChange?.(e);
+            setValue(e.target.value);
           }}
         />
         {hasCharacterLimit && (
           <CharacterCounter
             size={size}
-            value={inputValue ? inputValue.toString() : ''}
+            value={value ? value.toString() : ''}
             id={characterLimitId}
             {...characterLimit}
           />

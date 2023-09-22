@@ -7,11 +7,12 @@ import { FieldsetContext } from '../Fieldset';
 
 import type { TextareaProps } from './Textarea';
 
-type UseTextarea = (props: TextareaProps) => FormField & {
-  inputProps?: Pick<
+type UseTextarea = (props: TextareaProps) => Omit<FormField, 'inputProps'> & {
+  textareaProps: Pick<
     TextareaHTMLAttributes<HTMLTextAreaElement>,
     'readOnly' | 'name' | 'required' | 'onClick' | 'onChange'
-  >;
+  > &
+    FormField['inputProps'];
 };
 
 /** Handles props for `Textarea` in context with `Fieldset` */
@@ -23,7 +24,7 @@ export const useTextarea: UseTextarea = (props) => {
     ...rest,
     readOnly,
     size: fieldset?.size ?? props.size,
-    inputProps: {
+    textareaProps: {
       ...inputProps,
       readOnly,
       onClick: (e) => {
