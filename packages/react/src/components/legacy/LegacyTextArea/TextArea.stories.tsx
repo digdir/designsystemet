@@ -7,7 +7,7 @@ import { LegacyTextArea } from '.';
 type Story = StoryObj<typeof LegacyTextArea>;
 
 const meta: Meta = {
-  title: 'Altinn/TextArea',
+  title: 'Avviklet/TextArea',
   component: LegacyTextArea,
 };
 
