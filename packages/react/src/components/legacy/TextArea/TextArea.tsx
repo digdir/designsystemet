@@ -1,8 +1,8 @@
 import React, { forwardRef, useId, useState } from 'react';
 import type { ChangeEvent, ForwardedRef, TextareaHTMLAttributes } from 'react';
 
-import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
+import { InputWrapper } from '../../_InputWrapper';
+import type { ReadOnlyVariant_, CharacterLimit } from '../../_InputWrapper';
 
 import classes from './TextArea.module.css';
 

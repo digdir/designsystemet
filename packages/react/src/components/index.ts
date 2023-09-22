@@ -11,7 +11,7 @@ export * from './HelpText';
 export * from './Popover';
 export * from './Select';
 export * from './Spinner';
-export * from './TextArea';
+export * from './legacy/TextArea';
 export * from './Link';
 export * from './List';
 export * from './Table';
