@@ -712,6 +712,20 @@
       }
     },
     "error_message": {
+      "large": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f1}",
+          "letterSpacing": "{letterSpacing.1}",
+          "paragraphSpacing": "{paragraphSpacing.0}",
+          "paragraphIndent": "{paragraphIndent.0}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "{textDecoration.none}"
+        },
+        "type": "typography"
+      },
       "medium": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",

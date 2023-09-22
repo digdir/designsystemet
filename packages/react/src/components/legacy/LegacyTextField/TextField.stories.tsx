@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import type { TextFieldProps } from '.';
-import { TextField } from '.';
+import type { LegacyTextFieldProps } from '.';
+import { LegacyTextField } from '.';
 
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof LegacyTextField>;
 
-const meta: Meta<typeof TextField> = {
-  title: 'Altinn/TextField',
-  component: TextField,
+const meta: Meta<typeof LegacyTextField> = {
+  title: 'Avviklet/LegacyTextField',
+  component: LegacyTextField,
 };
 
 export default meta;
 
-const createTemplate = (name: string, args?: TextFieldProps): Story => ({
-  render: (args) => <TextField {...args} />,
+const createTemplate = (name: string, args?: LegacyTextFieldProps): Story => ({
+  render: (args) => <LegacyTextField {...args} />,
   args,
   name,
 });

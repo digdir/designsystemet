@@ -1,6 +1,7 @@
 /** Captitilize first character of a string */
 const capitalizeString = (string: string) => {
-  return string[0].toUpperCase() + string.slice(1).toLowerCase();
+  const trimmedString: string = string.trim();
+  return trimmedString[0].toUpperCase() + trimmedString.slice(1).toLowerCase();
 };
 
 /** Make query string readable by replacing hyphen with space  */

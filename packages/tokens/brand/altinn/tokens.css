@@ -37,11 +37,11 @@
   --fds-semantic-surface-action-secondary-subtle: #f4f5f6;
   --fds-semantic-surface-action-secondary-subtle-hover: #e9eaec;
   --fds-semantic-surface-action-secondary-default: #00315d;
-  --fds-semantic-surface-action-secondary-hover: rgba(#00315d, 0.9);
-  --fds-semantic-surface-action-secondary-active: rgba(#00315d, 0.8);
+  --fds-semantic-surface-action-secondary-hover: rgba(0, 49, 93, 0.9);
+  --fds-semantic-surface-action-secondary-active: rgba(0, 49, 93, 0.8);
   --fds-semantic-surface-action-secondary-no_fill: #ffffff;
-  --fds-semantic-surface-action-secondary-no_fill-hover: rgba(#00315d, 0.1);
-  --fds-semantic-surface-action-secondary-no_fill-active: rgba(#00315d, 0.2);
+  --fds-semantic-surface-action-secondary-no_fill-hover: rgba(0, 49, 93, 0.1);
+  --fds-semantic-surface-action-secondary-no_fill-active: rgba(0, 49, 93, 0.2);
   --fds-semantic-surface-success-subtle: #d1f4e1;
   --fds-semantic-surface-success-subtle-hover: #8be4b5;
   --fds-semantic-surface-success-default: #118849;
@@ -174,6 +174,7 @@
   --fds-typography-label-medium: 500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
   --fds-typography-label-small: 500 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
   --fds-typography-label-xsmall: 500 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter';
+  --fds-typography-error_message-large: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter';
   --fds-typography-error_message-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
   --fds-typography-error_message-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
   --fds-typography-error_message-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter';

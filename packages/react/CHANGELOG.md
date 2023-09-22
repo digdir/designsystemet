@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.25.0...@digdir/design-system-react@0.25.1) (2023-09-22)
+
+### Bug Fixes
+
+- **Textfield:** Prop typo ([#848](https://github.com/digdir/designsystem/issues/848)) ([0c59b86](https://github.com/digdir/designsystem/commit/0c59b86f661222e0021311cd5eba6c7aa429ea8c))
+
+# [0.25.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.2...@digdir/design-system-react@0.25.0) (2023-09-21)
+
+### Features
+
+- **ErrorMessage:** :sparkles: Add new option to toggle error color ([#836](https://github.com/digdir/designsystem/issues/836)) ([8b177f3](https://github.com/digdir/designsystem/commit/8b177f3f25b3c2075d38f8f5e8a438d8727b5c98))
+- **ErrorMessage:** ✨ Add `large` size ([#840](https://github.com/digdir/designsystem/issues/840)) ([9742abf](https://github.com/digdir/designsystem/commit/9742abf1d002967fdfdb6b3caa8f33bb11a85019))
+- **Fieldset, Switch, Radio, Checkbox:** :sparkles: Add `large` size ([#841](https://github.com/digdir/designsystem/issues/841)) ([4e8052f](https://github.com/digdir/designsystem/commit/4e8052fc6a886b68676ca5de0a47d80eadb93656))
+- **Textfield:** :sparkles: New `Textfield` component ([#816](https://github.com/digdir/designsystem/issues/816)) ([0c14cfa](https://github.com/digdir/designsystem/commit/0c14cfa3c6add379ada2f5e11dd2b6a0de05aa56))
+- **TextField:** 🗑️ Change to Legacy ([#838](https://github.com/digdir/designsystem/issues/838)) ([c3d6d2d](https://github.com/digdir/designsystem/commit/c3d6d2d684ff764fe96a92e1852ddf115cf1ec62))
+
+## [0.24.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.1...@digdir/design-system-react@0.24.2) (2023-09-19)
+
+### Bug Fixes
+
+- **Switch:** :bug: Adher to passed `checked` & `defaultChecked` props ([#832](https://github.com/digdir/designsystem/issues/832)) ([13a4577](https://github.com/digdir/designsystem/commit/13a45774943d01c6ea3cb9e7056b1686dfa9a358))
+
 ## [0.24.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.0...@digdir/design-system-react@0.24.1) (2023-09-18)
 
 ### Bug Fixes
