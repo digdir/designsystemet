@@ -31,6 +31,15 @@ export const WithCharacterCounter: Story = {
   },
 };
 
+export const FullWidth: Story = {
+  args: {
+    label: 'Label',
+  },
+  parameters: {
+    layout: 'padded',
+  },
+};
+
 export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>();
   return (
@@ -49,7 +58,7 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <Button onClick={() => setValue('Kake 🎂')}>Jeg vil ha Kake 🎂</Button>
+        <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
       </div>
     </>
   );
