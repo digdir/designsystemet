@@ -1,23 +1,26 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
-import { TextArea } from './';
-import { Information, TokensTable } from '../../../../../docs-components';
+import { LegacyTextArea } from './';
+import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/blocks';
-import * as TextAreaStories from './TextArea.stories';
+import * as LegacyTextAreaStories from './TextArea.stories';
 
-<Meta of={TextAreaStories} />
+<Meta of={LegacyTextAreaStories} />
 
-# TextArea
+# LegacyTextArea
 
-<Information text='altinn' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Textarea](/?path=/docs/felles-textarea--docs) komponent.**'
+/>
 
-`TextArea` brukes til å ta imot lengre tekster, gjerne over flere linjer.
+`LegacyTextArea` brukes til å ta imot lengre tekster, gjerne over flere linjer.
 
 ## Bruk
 
 ```tsx
-import { TextArea } from '@digdir/design-system-react';
+import { LegacyTextArea } from '@digdir/design-system-react';
 
-<TextArea {...props} />;
+<LegacyTextArea {...props} />;
 ```
 
 ## Props
@@ -30,37 +33,37 @@ import { TextArea } from '@digdir/design-system-react';
 ### Standard
 
 <Canvas>
-  <Story of={TextAreaStories.Standard} />
+  <Story of={LegacyTextAreaStories.Standard} />
 </Canvas>
 
 ### Med feil
 
 <Canvas>
-  <Story of={TextAreaStories.MedFeil} />
+  <Story of={LegacyTextAreaStories.MedFeil} />
 </Canvas>
 
 ### Skrivebeskyttet
 
 <Canvas>
-  <Story of={TextAreaStories.Skrivebeskyttet} />
+  <Story of={LegacyTextAreaStories.Skrivebeskyttet} />
 </Canvas>
 
 ### Bekreftelsesvisning
 
 <Canvas>
-  <Story of={TextAreaStories.Bekreftelsesvisning} />
+  <Story of={LegacyTextAreaStories.Bekreftelsesvisning} />
 </Canvas>
 
 ### Deaktivert
 
 <Canvas>
-  <Story of={TextAreaStories.Deaktivert} />
+  <Story of={LegacyTextAreaStories.Deaktivert} />
 </Canvas>
 
 ### Viser antall tegn igjen å skrive
 
 <Canvas>
-  <Story of={TextAreaStories.AntallTegnIgjenASkrive} />
+  <Story of={LegacyTextAreaStories.AntallTegnIgjenASkrive} />
 </Canvas>
 
 ## Tokens

@@ -1,2 +1,2 @@
-export { TextArea } from './TextArea';
-export type { TextAreaProps } from './TextArea';
+export { LegacyTextArea } from './TextArea';
+export type { LegacyTextAreaProps } from './TextArea';
