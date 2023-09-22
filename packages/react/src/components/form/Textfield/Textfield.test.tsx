@@ -7,7 +7,7 @@ import { Textfield } from './Textfield';
 
 const user = userEvent.setup();
 
-describe('TextField', () => {
+describe('Textfield', () => {
   test('has correct value and label', () => {
     render({ value: 'test', label: 'label' });
     expect(screen.getByLabelText('label')).toBeDefined();
