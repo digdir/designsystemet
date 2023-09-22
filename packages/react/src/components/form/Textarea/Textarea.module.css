@@ -22,7 +22,7 @@
 
 .description {
   color: var(--fds-semantic-text-neutral-subtle);
-  margin-top: calc(var(--fds-spacing-1) * -2);
+  margin-top: calc(var(--fds-spacing-2) * -1);
 }
 
 .textarea {
