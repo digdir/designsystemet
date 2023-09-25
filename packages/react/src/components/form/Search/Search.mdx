@@ -1,0 +1,18 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../../docs-components';
+import * as SearchStories from './Search.stories';
+
+<Meta of={SearchStories} />
+
+# Search
+
+<Primary />
+<Controls />
+
+## Kontrollert
+
+<Canvas of={SearchStories.Controlled} />
+
+## Full bredde
+
+<Canvas of={SearchStories.FullWidth} />

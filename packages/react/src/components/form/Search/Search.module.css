@@ -1,0 +1,63 @@
+.formField {
+  display: grid;
+  gap: var(--fds-spacing-2);
+}
+
+.errorMessage:empty {
+  display: none;
+}
+
+.label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
+  align-items: center;
+}
+
+.input {
+  font: inherit;
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  min-height: 2.5em;
+  width: 100%;
+  appearance: none;
+  padding: var(--fds-spacing-3);
+  border: solid 1px var(--fds-semantic-border-action-dark);
+  border-radius: var(--fds-border_radius-medium);
+  resize: vertical;
+}
+
+.input.xsmall,
+.input.small {
+  padding: var(--fds-spacing-2);
+}
+
+.input.medium {
+  padding: var(--fds-spacing-3);
+}
+
+.input.large {
+  padding: var(--fds-spacing-4);
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+.disabled .input {
+  cursor: not-allowed;
+}
+
+.error > .input:not(:focus-visible) {
+  border-color: var(--fds-semantic-border-danger-default);
+  box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .input:not(:focus-visible, :disabled):hover {
+    border-color: var(--fds-semantic-border-action-hover);
+    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
+  }
+}
