@@ -1,5 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
+import NextLink from 'next/link';
+import { Link } from '@digdir/design-system-react';
+import Image from 'next/image';
 
 import { Container } from '../../components/Container/Container';
 
@@ -18,17 +20,19 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
     <div className={classes.content}>
       <Container className={classes.container}>
         <div className={classes.imgContainer}>
-          <img
+          <Image
+            className={classes.img}
             src='/img/man-binoculars.svg'
             alt='Mann med kikkert'
+            height={205}
+            width={290}
           />
         </div>
         <div className={classes.textContainer}>
-          <h1 className={classes.title}>
-            {data.title} <span></span>
-          </h1>
+          <h1 className={classes.title}>{data.title}</h1>
           <p className={classes.desc}>{data.description}</p>
           <Link
+            as={NextLink}
             className={classes.link}
             href='/'
             prefetch={false}
@@ -36,6 +40,7 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
             Gå til forsiden
           </Link>
         </div>
+        {content}
       </Container>
       ;
     </div>

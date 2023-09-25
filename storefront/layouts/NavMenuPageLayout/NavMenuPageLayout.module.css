@@ -16,30 +16,3 @@
   flex-basis: 600px;
   flex-grow: 500;
 }
-
-.list {
-  margin-bottom: 32px;
-  color: #4d4d4d;
-}
-
-.list ul {
-  margin: 0;
-  padding: 0;
-}
-
-.list h3 {
-  font-size: 19px;
-  margin-bottom: 10px;
-}
-
-.list li {
-  list-style: none;
-}
-
-.list li a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 15px;
-  display: block;
-  margin-bottom: 10px;
-}

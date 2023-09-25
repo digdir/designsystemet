@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
+import NextLink from 'next/link';
+import { Link } from '@digdir/design-system-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 
 import { Container, MdxContent } from '../../components';
@@ -26,11 +27,12 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
       className={classes.page}
     >
       <div className={classes.header}>
-        <Container className={classes.headerContainer}>
+        <Container>
           <div className={classes.headerContent}>
             <Link
+              as={NextLink}
               href={'/' + data.backUrl}
-              className={classes.back}
+              className={classes.backBtn}
               prefetch={false}
             >
               <ArrowLeftIcon
