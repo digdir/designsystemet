@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ElementType } from 'react';
+import type { HTMLAttributes } from 'react';
 import { useContext } from 'react';
 
 import { RovingTabindexContext } from './RovingTabindexRoot';
@@ -16,9 +16,7 @@ export const useRovingTabindex = (value: string) => {
   return {
     getOrderedItems,
     isFocusable: focusableValue === value,
-    getRovingProps: <T extends ElementType>(
-      props: ComponentPropsWithoutRef<T>,
-    ) => ({
+    getRovingProps: <T extends HTMLElement>(props: HTMLAttributes<T>) => ({
       ...props,
       ref: (element: HTMLElement | null) => {
         if (element) {
@@ -27,14 +25,14 @@ export const useRovingTabindex = (value: string) => {
           elements.current.delete(value);
         }
       },
-      onKeyDown: (e: KeyboardEvent) => {
+      onKeyDown: (e: React.KeyboardEvent<T>) => {
         props?.onKeyDown?.(e);
         if (e.shiftKey && e.key === 'Tab') {
           onShiftTab();
           return;
         }
       },
-      onFocus: (e: FocusEvent) => {
+      onFocus: (e: React.FocusEvent<T>) => {
         props?.onFocus?.(e);
         setFocusableValue(value);
       },

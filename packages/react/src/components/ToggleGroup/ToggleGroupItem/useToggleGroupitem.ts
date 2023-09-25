@@ -53,16 +53,20 @@ export const useToggleGroupItem: UseToggleGroupItem = (
   const { getOrderedItems, getRovingProps } = useRovingTabindex(props.value);
   const active = toggleGroup.value == props.value;
   const buttonId = `toggleButton-${useId()}`;
-  const rovingProps = getRovingProps<'button'>({
+  const rovingProps = getRovingProps<HTMLButtonElement>({
     onKeyDown: (e) => {
       props?.onKeyDown?.(e);
       const items = getOrderedItems();
       let nextItem: RovingTabindexItem | undefined;
+
       if (e.key === 'ArrowRight') {
         nextItem = getNextFocusableValue(items, props.value);
-      } else if (e.key === 'ArrowLeft') {
+      }
+
+      if (e.key === 'ArrowLeft') {
         nextItem = getPrevFocusableValue(items, props.value);
       }
+
       nextItem?.element.focus();
     },
   });
@@ -76,9 +80,9 @@ export const useToggleGroupItem: UseToggleGroupItem = (
       id: buttonId,
       'aria-checked': active,
       'aria-current': active,
-      variant: active ? 'filled' : 'outline',
-      size: toggleGroup?.size,
-      iconPlacement: 'left',
+      variant: active ? 'filled' : 'quiet', // move to Item compoenent
+      size: toggleGroup?.size, // move to Item compoenent
+      iconPlacement: 'left', // move to Item compoenent
       role: 'radio',
       name: toggleGroup.name,
       onClick: () => {
