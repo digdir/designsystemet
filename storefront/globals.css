@@ -1,3 +1,5 @@
+@import url('https://altinncdn.no/fonts/inter/inter.css');
+
 :root {
   --bs-body-color: #1e2b3c;
   --color-beta: #eceaff;
@@ -27,12 +29,15 @@
   --grid-gap: var(--spacing-5);
   --page-spacing-top: var(--spacing-7);
   --page-spacing-bottom: var(--spacing-7);
+  --page-gap: var(--fds-spacing-7);
   --preview-min-height: 81px;
 }
 
 body {
   color: #1e2b3c;
   line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
 }
 
 * {
@@ -54,7 +59,6 @@ h6 {
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100vh);
-  overflow: hidden;
   position: relative;
   font-family: 'Inter', sans-serif;
 }

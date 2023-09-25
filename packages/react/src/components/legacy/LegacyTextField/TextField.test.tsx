@@ -2,8 +2,8 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import type { TextFieldProps } from './TextField';
-import { TextField } from './TextField';
+import type { LegacyTextFieldProps } from './TextField';
+import { LegacyTextField } from './TextField';
 
 const user = userEvent.setup();
 
@@ -172,7 +172,7 @@ describe('TextField', () => {
       expect(screen.getByDisplayValue('$1 234')).toBeInTheDocument();
       expect(onChange).not.toHaveBeenCalled();
       rerender(
-        <TextField
+        <LegacyTextField
           onChange={onChange}
           value='12345'
           formatting={{ number: { prefix: '$', thousandSeparator: ' ' } }}
@@ -301,11 +301,11 @@ describe('TextField', () => {
   });
 });
 
-const render = (props: Partial<TextFieldProps> = {}) => {
+const render = (props: Partial<LegacyTextFieldProps> = {}) => {
   const allProps = {
     onChange: jest.fn(),
     ...props,
-  } as TextFieldProps;
+  } as LegacyTextFieldProps;
 
-  return renderRtl(<TextField {...allProps} />);
+  return renderRtl(<LegacyTextField {...allProps} />);
 };

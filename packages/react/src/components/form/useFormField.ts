@@ -20,20 +20,20 @@ export type FormFieldProps = {
   /** Toggle `readOnly` */
   readOnly?: boolean;
   /** Changes field size and paddings */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
 export type FormField = {
   hasError: boolean;
   errorId: string;
   descriptionId: string;
-  inputProps: Pick<
+  inputProps: {
+    id: string;
+  } & Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    'id' | 'disabled' | 'aria-invalid' | 'aria-describedby'
+    'disabled' | 'aria-invalid' | 'aria-describedby'
   >;
-  readOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium';
-};
+} & Pick<FormFieldProps, 'size' | 'readOnly'>;
 
 /**
  * Handles props and their state for various form-fields in context with Fieldset

@@ -5,15 +5,14 @@ import { Container, SidebarMenu, MdxContent } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
 
-interface PageLayoutProps {
+type PageLayoutProps = {
   content: React.ReactNode;
   data: PageLayoutData;
-}
+};
 
 type PageLayoutData = {
   title: string;
   date: string;
-  showMenu: boolean;
 };
 
 const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
@@ -34,7 +33,10 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
             {data.date && <div className={classes.date}>{data.date}</div>}
           </div>
 
-          <div className={classes.content}>
+          <div
+            className={classes.content}
+            id='content'
+          >
             <MdxContent>{content}</MdxContent>
           </div>
         </main>

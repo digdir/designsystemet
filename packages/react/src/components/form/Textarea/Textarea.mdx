@@ -1,0 +1,22 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../../docs-components';
+import * as TextareaStories from './Textarea.stories';
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+<Primary />
+<Controls />
+
+## Antall tegn
+
+<Canvas of={TextareaStories.WithCharacterCounter} />
+
+## Kontrollert
+
+<Canvas of={TextareaStories.Controlled} />
+
+## Full bredde
+
+<Canvas of={TextareaStories.FullWidth} />
