@@ -1,6 +1,6 @@
-.textfield {
+.formField {
   display: grid;
-  gap: var(--fds-spacing-1);
+  gap: var(--fds-spacing-2);
 }
 
 .adornment {
@@ -23,6 +23,7 @@
 
 .description {
   color: var(--fds-semantic-text-neutral-subtle);
+  margin-top: calc(var(--fds-spacing-2) * -1);
 }
 
 .input {
@@ -36,6 +37,19 @@
   padding: 0 var(--fds-spacing-3);
   border: solid 1px var(--fds-semantic-border-action-dark);
   border-radius: var(--fds-border_radius-medium);
+}
+
+.input.xsmall,
+.input.small {
+  padding: 0 var(--fds-spacing-2);
+}
+
+.input.medium {
+  padding: 0 var(--fds-spacing-3);
+}
+
+.input.large {
+  padding: 0 var(--fds-spacing-4);
 }
 
 .disabled {

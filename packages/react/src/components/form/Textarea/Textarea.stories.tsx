@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 
-import { Textfield } from '.';
+import { Textarea } from '.';
 
-type Story = StoryObj<typeof Textfield>;
+type Story = StoryObj<typeof Textarea>;
 
 export default {
-  title: 'Felles/Textfield',
-  component: Textfield,
+  title: 'Felles/Textarea',
+  component: Textarea,
 } as Meta;
 
 export const Preview: Story = {
@@ -19,12 +19,15 @@ export const Preview: Story = {
     readOnly: false,
     size: 'medium',
     description: '',
+    error: '',
+    cols: 40,
   },
 };
 
 export const WithCharacterCounter: Story = {
   args: {
     label: 'Label',
+    cols: 40,
     characterLimit: {
       maxCount: 5,
     },
@@ -34,13 +37,15 @@ export const WithCharacterCounter: Story = {
 export const FullWidth: Story = {
   args: {
     label: 'Label',
+    rows: 10,
+    cols: 40,
   },
   parameters: {
     layout: 'padded',
   },
 };
 
-export const Controlled: StoryFn<typeof Textfield> = () => {
+export const Controlled: StoryFn<typeof Textarea> = () => {
   const [value, setValue] = useState<string>();
   return (
     <>
@@ -48,17 +53,18 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
       <div
         style={{
           display: 'flex',
-          alignItems: 'end',
+          flexDirection: 'column',
           marginTop: 'var(--fds-spacing-2)',
           gap: 'var(--fds-spacing-2)',
         }}
       >
-        <Textfield
+        <Textarea
           label='Kontroller meg!'
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          cols={40}
         />
-        <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
+        <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
       </div>
     </>
   );
