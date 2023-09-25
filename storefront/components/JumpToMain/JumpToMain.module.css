@@ -16,7 +16,7 @@
   height: auto;
   width: auto;
   padding: 10px 0;
-  background-color: var(--color-link);
+  background-color: var(--fds-semantic-text-action-default);
   color: white;
   padding-left: 24px;
   border: none;

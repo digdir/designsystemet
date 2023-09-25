@@ -7,6 +7,7 @@
   --color-decprecated: #ffd4d4;
   --color-link: #0062ba;
   --color-text-on_inverted-subtle: #e6e6e6;
+  --color-surface-neutral-inverted-darker: #17202e;
 
   /* Fluid spacing from 1200px to 320px */
   --spacing-1: clamp(0.38rem, calc(0.33rem + 0.23vw), 0.5rem); /* 8px-6px */
@@ -26,9 +27,9 @@
   --font-300: clamp(1rem, calc(0.95rem + 0.23vw), 1.13rem); /* 18px-16px */
   --grid-max-width: 1380px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
-  --grid-gap: var(--spacing-5);
-  --page-spacing-top: var(--spacing-7);
-  --page-spacing-bottom: var(--spacing-7);
+  --grid-gap: var(--fds-spacing-8);
+  --page-spacing-top: var(--fds-spacing-14);
+  --page-spacing-bottom: var(--fds-spacing-14);
   --page-gap: var(--fds-spacing-7);
   --preview-min-height: 81px;
 }
