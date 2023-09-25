@@ -5,12 +5,12 @@ import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 
 import styles from './DoAndDont.module.css';
 
-function Wrapper({ variant, description, image }: WrapperProps) {
+function Wrapper({ variant, description, image, alt }: WrapperProps) {
   const icon = variant === 'do' ? <CheckmarkIcon /> : <XMarkIcon />;
   const heading = variant === 'do' ? 'Gjør' : 'Unngå';
 
   return (
-    <div className={cn(styles.wrapper, styles[variant])}>
+    <figure className={cn(styles.wrapper, styles[variant])}>
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
         <Heading
@@ -25,33 +25,37 @@ function Wrapper({ variant, description, image }: WrapperProps) {
           {heading}
         </Heading>
       </div>
-      <Paragraph className={styles.description}>{description}</Paragraph>
-      <div className={styles.image}>
-        <img
-          src={image}
-          alt={heading}
-        />
-      </div>
-    </div>
+      <figcaption>
+        <Paragraph className={styles.description}>{description}</Paragraph>
+      </figcaption>
+
+      <img
+        src={image}
+        alt={alt ? alt : `${heading}: ${description}`}
+        draggable={false}
+      />
+    </figure>
   );
 }
 
-export function Do({ description, image }: DoAndDontProps) {
+export function Do({ description, image, alt }: DoAndDontProps) {
   return (
     <Wrapper
       variant='do'
       description={description}
       image={image}
+      alt={alt}
     />
   );
 }
 
-export function Dont({ description, image }: DoAndDontProps) {
+export function Dont({ description, image, alt }: DoAndDontProps) {
   return (
     <Wrapper
       variant='dont'
       description={description}
       image={image}
+      alt={alt}
     />
   );
 }
@@ -59,6 +63,7 @@ export function Dont({ description, image }: DoAndDontProps) {
 interface DoAndDontProps {
   description: string;
   image: string;
+  alt?: string;
 }
 
 interface WrapperProps extends DoAndDontProps {
