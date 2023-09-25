@@ -6,11 +6,25 @@ import {
   Primary,
   ArgTypes,
 } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Information, Do, Dont, Stack } from '../../../../../docs-components';
 import * as AccordionStories from './Accordion.stories';
 import { Accordion } from '.';
 
 <Meta of={AccordionStories} />
+
+## Do's and don'ts
+
+<Stack>
+  <Do
+    description='Gjer dette'
+    image='https://cdn.sanity.io/images/hnbe3yhs/production/71ca8ee3e5df931cdcd64b36aec09f62371eb2b6-768x500.png?auto=format'
+  />
+
+  <Dont
+    description='Gjer dette'
+    image='https://cdn.sanity.io/images/hnbe3yhs/production/263d2dfb52c5295c3c58baf95a6b1774d536dcda-768x500.png?auto=format'
+  />
+</Stack>
 
 # Accordion
 
