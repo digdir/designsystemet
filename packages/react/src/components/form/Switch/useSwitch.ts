@@ -33,14 +33,12 @@ export const useSwitch: UseCheckbox = (props) => {
       ...inputProps,
       readOnly,
       type: 'checkbox',
-      defaultChecked:
-        checkboxGroup?.defaultValue === undefined
-          ? undefined
-          : checkboxGroup?.defaultValue.includes(propsValue),
-      checked:
-        checkboxGroup?.value === undefined
-          ? undefined
-          : checkboxGroup?.value.includes(propsValue),
+      defaultChecked: checkboxGroup?.defaultValue
+        ? checkboxGroup?.defaultValue.includes(propsValue)
+        : props.defaultChecked,
+      checked: checkboxGroup?.value
+        ? checkboxGroup?.value.includes(propsValue)
+        : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();

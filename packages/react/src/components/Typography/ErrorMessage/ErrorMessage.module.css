@@ -3,11 +3,21 @@
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   margin: 0;
+}
+
+.errorMessage.error {
   color: var(--fds-semantic-text-danger-default);
 }
 
 .errorMessage.spacing {
   margin-bottom: var(--fdsc-bottom-spacing);
+}
+
+.errorMessage.large {
+  --fdsc-bottom-spacing: var(--fds-spacing-5);
+
+  font: var(--fds-typography-error_message-large);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .errorMessage.medium {

@@ -33,7 +33,10 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
             {data.date && <div className={classes.date}>{data.date}</div>}
           </div>
 
-          <div className={classes.content}>
+          <div
+            className={classes.content}
+            id='content'
+          >
             <MdxContent>{content}</MdxContent>
           </div>
         </main>

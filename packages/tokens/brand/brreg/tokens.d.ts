@@ -169,6 +169,7 @@ export const typography_label_large : string;
 export const typography_label_medium : string;
 export const typography_label_small : string;
 export const typography_label_xsmall : string;
+export const typography_error_message_large : string;
 export const typography_error_message_medium : string;
 export const typography_error_message_small : string;
 export const typography_error_message_xsmall : string;

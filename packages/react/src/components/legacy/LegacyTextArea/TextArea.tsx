@@ -1,12 +1,12 @@
 import React, { forwardRef, useId, useState } from 'react';
 import type { ChangeEvent, ForwardedRef, TextareaHTMLAttributes } from 'react';
 
-import { InputWrapper } from '../_InputWrapper';
-import type { ReadOnlyVariant_, CharacterLimit } from '../_InputWrapper';
+import { InputWrapper } from '../../_InputWrapper';
+import type { ReadOnlyVariant_, CharacterLimit } from '../../_InputWrapper';
 
 import classes from './TextArea.module.css';
 
-export type TextAreaProps = {
+export type LegacyTextAreaProps = {
   /** Whether the textarea value is valid. */
   isValid?: boolean;
   /** Whether the textarea is read-only. */
@@ -23,7 +23,12 @@ export type TextAreaProps = {
   label?: string;
 } & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'readOnly'>;
 
-export const TextArea = forwardRef(
+/**
+ *
+ * @note
+ * Replaced by new {@link https://digdir.github.io/designsystem/?path=/docs/felles-textarea--docs Textarea} component.
+ */
+export const LegacyTextArea = forwardRef(
   (
     {
       isValid = true,
@@ -36,7 +41,7 @@ export const TextArea = forwardRef(
       onChange,
       'aria-describedby': ariaDescribedBy,
       ...rest
-    }: TextAreaProps,
+    }: LegacyTextAreaProps,
     ref: ForwardedRef<HTMLTextAreaElement>,
   ): JSX.Element => {
     const [currentInputValue, setCurrentInputValue] = useState<string>(

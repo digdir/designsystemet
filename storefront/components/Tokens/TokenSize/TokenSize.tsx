@@ -14,7 +14,7 @@ const TokenSize = ({ value }: TokenFontSizeProps) => {
     >
       <div
         className={classes.bar}
-        style={{ width: value, height: value }}
+        style={{ width: value }}
       ></div>
     </div>
   );

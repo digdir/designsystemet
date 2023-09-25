@@ -2,12 +2,12 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { TextArea } from './TextArea';
-import type { TextAreaProps } from './TextArea';
+import { LegacyTextArea } from './TextArea';
+import type { LegacyTextAreaProps } from './TextArea';
 
 const user = userEvent.setup();
 
-describe('TextArea', () => {
+describe('LegacyTextArea', () => {
   it('Triggers onPaste when pasting into input', async () => {
     const onPaste = jest.fn();
     const data = 'Hello world';
@@ -83,9 +83,9 @@ describe('TextArea', () => {
   });
 });
 
-const render = (props: Partial<TextAreaProps> = {}) =>
+const render = (props: Partial<LegacyTextAreaProps> = {}) =>
   renderRtl(
-    <TextArea
+    <LegacyTextArea
       id='id'
       onChange={jest.fn()}
       {...props}
