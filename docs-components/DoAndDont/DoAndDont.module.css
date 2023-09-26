@@ -7,7 +7,11 @@
   border-radius: var(--fds-spacing-1);
   box-shadow: var(--fds-shadow-medium);
   margin: 0;
-  flex-wrap: wrap;
+}
+
+.wrapper.landscape {
+  width: 100%;
+  max-width: 100%;
 }
 
 .dont {
@@ -41,4 +45,9 @@
 
 .description {
   color: var(--semantic-text-neutral-default);
+}
+
+.imageWrapper {
+  display: grid;
+  place-items: center;
 }

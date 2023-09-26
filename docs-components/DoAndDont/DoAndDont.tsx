@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import cn from 'classnames';
 import { Heading, Paragraph } from '@digdir/design-system-react';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
@@ -9,8 +9,20 @@ function Wrapper({ variant, description, image, alt }: WrapperProps) {
   const icon = variant === 'do' ? <CheckmarkIcon /> : <XMarkIcon />;
   const heading = variant === 'do' ? 'Gjør' : 'Unngå';
 
+  const aspectRatio = useMemo(() => {
+    return getAspectRatio(image);
+  }, [image]);
+
+  console.log(aspectRatio);
+
   return (
-    <figure className={cn(styles.wrapper, styles[variant])}>
+    <figure
+      className={cn(
+        styles.wrapper,
+        styles[variant],
+        aspectRatio > 2 && styles.landscape,
+      )}
+    >
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
         <Heading
@@ -29,11 +41,13 @@ function Wrapper({ variant, description, image, alt }: WrapperProps) {
         <Paragraph className={styles.description}>{description}</Paragraph>
       </figcaption>
 
-      <img
-        src={image}
-        alt={alt ? alt : `${heading}: ${description}`}
-        draggable={false}
-      />
+      <div className={styles.imageWrapper}>
+        <img
+          src={image}
+          alt={alt ? alt : `${heading}: ${description}`}
+          draggable={false}
+        />
+      </div>
     </figure>
   );
 }
@@ -68,4 +82,14 @@ interface DoAndDontProps {
 
 interface WrapperProps extends DoAndDontProps {
   variant: 'do' | 'dont';
+}
+
+function getAspectRatio(image: string): number {
+  const img = new Image();
+  img.src = image;
+
+  const w = img.naturalWidth;
+  const h = img.naturalHeight;
+
+  return w / h;
 }

@@ -11,6 +11,7 @@ import styles from './FlexContainer.module.css';
  */
 export function FlexContainer({
   children,
+  style,
   gap = 'var(--fds-spacing-4)',
   direction = 'row',
   wrap = 'wrap',
@@ -19,6 +20,7 @@ export function FlexContainer({
     <div
       className={styles.flex}
       style={{
+        ...style,
         gap,
         flexDirection: direction,
         flexWrap: wrap,
@@ -31,6 +33,7 @@ export function FlexContainer({
 
 interface FlexContainerProps {
   children: React.ReactNode;
+  style?: React.CSSProperties;
   gap?: string;
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
