@@ -1,3 +1,6 @@
+// Logic from: https://www.joshuawootonn.com/react-roving-tabindex
+// Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
+
 import React, { createContext, useRef, useState, forwardRef } from 'react';
 import type { MutableRefObject, ReactNode, HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
