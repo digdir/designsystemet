@@ -9,9 +9,11 @@ import type { RovingTabindexElement } from './RovingTabindexRoot';
 import { useRovingTabindex } from '.';
 
 type RovingTabindexItemProps = {
+  /** The value of the `RovingTabindexItem` used to determine which item should have focus. */
   value?: string;
 } & HTMLAttributes<HTMLElement>;
 
+/** Get the next focusable RovingTabindexItem */
 export function getNextFocusableValue(
   items: RovingTabindexElement[],
   value: string,
@@ -20,6 +22,7 @@ export function getNextFocusableValue(
   return items.at(currIndex === items.length - 1 ? 0 : currIndex + 1);
 }
 
+/** Get the previous focusable RovingTabindexItem */
 export function getPrevFocusableValue(
   items: RovingTabindexElement[],
   value: string,
