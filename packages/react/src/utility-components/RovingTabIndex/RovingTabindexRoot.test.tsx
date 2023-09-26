@@ -4,44 +4,12 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { RovingTabindexItem } from './RovingTabindexRoot';
-import {
-  RovingTabindexRoot,
-  getNextFocusableValue,
-  getPrevFocusableValue,
-} from './RovingTabindexRoot';
-import { useRovingTabindex } from './useRovingTabindex';
+import { RovingTabindexRoot } from './RovingTabindexRoot';
+import { RovingTabindexItem } from './RovingTabindexItem';
 
 const user = userEvent.setup();
 
 describe('RovingTabindexRoot', () => {
-  // implement the RovingTabindexItem component
-  const RovingTabindexItem = (props: React.HTMLAttributes<HTMLDivElement>) => {
-    const { getOrderedItems, getRovingProps } = useRovingTabindex(
-      (props.children as string) ?? '',
-    );
-    const rovingProps = getRovingProps<'div'>({
-      onKeyDown: (e) => {
-        props?.onKeyDown?.(e);
-        const items = getOrderedItems();
-        let nextItem: RovingTabindexItem | undefined;
-        if (e.key === 'ArrowRight') {
-          nextItem = getNextFocusableValue(
-            items,
-            (props.children as string) ?? '',
-          );
-        } else if (e.key === 'ArrowLeft') {
-          nextItem = getPrevFocusableValue(
-            items,
-            (props.children as string) ?? '',
-          );
-        }
-        nextItem?.element.focus();
-      },
-    });
-    return <div {...rovingProps}>{props.children}</div>;
-  };
-
   test('can navigate with tab and arrow keys', async () => {
     render(
       <RovingTabindexRoot>
