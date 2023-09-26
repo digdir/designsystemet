@@ -89,35 +89,12 @@ const groupByType = R.groupBy(
   (token: TransformedToken) => token.type as string,
 );
 
-const groupByPathIndex = (level: number, tokens: TransformedToken[]) =>
-  R.groupBy((token: TransformedToken) => token.path[level], tokens);
+/** Add token name with prefix to list for removal */
+const removeUnwatedTokens = R.filter(
+  (token: TransformedToken) =>
+    !['fds-base_spacing', 'fds-base_sizing'].includes(token.name),
+);
 
-const shouldGroupPath = (level: number, tokens: TransformedToken[]) => {
-  const token = R.head(tokens);
-  const [, next] = R.splitAt(level, token?.path ?? []);
-  return next.length > 1;
-};
-
-const groupByNextPathIndex = <
-  T extends Partial<Record<string, TransformedToken[]>>,
->(
-  level: number,
-  record: T,
-): Record<string, unknown> =>
-  R.mapObjIndexed((tokens, key, obj) => {
-    if (R.isNil(tokens) || R.isNil(obj)) {
-      return tokens;
-    }
-
-    if (shouldGroupPath(level, tokens)) {
-      const grouped = groupByPathIndex(level, tokens);
-      return groupByNextPathIndex(level + 1, grouped);
-    }
-    return tokens;
-  }, record || {});
-
-const groupFromPathIndex = R.curry(groupByNextPathIndex);
-const groupTokens = R.pipe(groupByType, groupFromPathIndex(0));
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
 /**
@@ -131,13 +108,18 @@ export const groupedTokens: Named<Format> = {
       format: 'css',
     });
 
-    const formattedTokens = dictionary.allTokens.map((token) => ({
+    const formatTokens = R.map((token: TransformedToken) => ({
       ...token,
-      lastName: R.last(token.path),
       name: toCssVarName(format(token)),
     }));
 
-    const tokens = groupTokens(formattedTokens);
+    const processTokens = R.pipe(
+      removeUnwatedTokens,
+      formatTokens,
+      groupByType,
+    );
+
+    const tokens = processTokens(dictionary.allTokens);
 
     const content =
       fileHeader({ file }) +

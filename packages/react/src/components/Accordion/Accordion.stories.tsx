@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Button } from '../';
+
 import { Accordion } from '.';
 
 export default {
@@ -33,7 +35,7 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
   </Accordion>
 );
 
-export const AccordionBorder: StoryFn<typeof Accordion> = (args) => (
+export const AccordionBorder: StoryFn<typeof Accordion> = () => (
   <Accordion
     border
     color='subtle'
@@ -50,7 +52,7 @@ export const AccordionBorder: StoryFn<typeof Accordion> = (args) => (
   </Accordion>
 );
 
-export const AccordionColor: StoryFn<typeof Accordion> = (args) => (
+export const AccordionColor: StoryFn<typeof Accordion> = () => (
   <Accordion
     border
     color='secondary'
@@ -83,32 +85,24 @@ Preview.args = {
 
 export const Controlled: StoryFn<typeof Accordion> = () => {
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
 
   return (
-    <Accordion>
-      <Accordion.Item open={open}>
-        <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-          Hva er Lorem Ipsum?
-        </Accordion.Header>
-        <Accordion.Content>
-          Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
-          Lorem Ipsum har vært bransjens standard for dummytekst helt siden
-          1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
-          lage et prøveeksemplar av en bok.
-        </Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item open={open2}>
-        <Accordion.Header onHeaderClick={() => setOpen2(!open2)}>
-          Hvor kommer det fra?
-        </Accordion.Header>
-        <Accordion.Content>
-          I motsetning til hva mange tror, er ikke Lorem Ipsum bare tilfeldig
-          tekst. Dets røtter springer helt tilbake til et stykke klassisk
-          latinsk litteratur fra 45 år f.kr., hvilket gjør det over 2000 år
-          gammelt.
-        </Accordion.Content>
-      </Accordion.Item>
-    </Accordion>
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle Accordions</Button>
+      <Accordion>
+        <Accordion.Item open={open}>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+            Accordion header text
+          </Accordion.Header>
+          <Accordion.Content>Accordion content</Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item open={open}>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+            Accordion header text
+          </Accordion.Header>
+          <Accordion.Content>Accordion content</Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+    </>
   );
 };

@@ -8,9 +8,11 @@ import classes from './ErrorMessage.module.css';
 
 export type ErrorMessageProps = {
   /** Changes text sizing */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
+  /** Toggle error color */
+  error?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `ErrorMessage` to display text as error message. */
@@ -19,7 +21,14 @@ export const ErrorMessage: OverridableComponent<
   HTMLParagraphElement
 > = forwardRef(
   (
-    { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+    {
+      className,
+      size = 'medium',
+      spacing,
+      as: Component = 'p',
+      error = true,
+      ...rest
+    },
     ref,
   ) => (
     <Component
@@ -31,6 +40,7 @@ export const ErrorMessage: OverridableComponent<
         {
           [classes.spacing]: !!spacing,
         },
+        error && classes.error,
         className,
       )}
     />

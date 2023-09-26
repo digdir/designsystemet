@@ -46,6 +46,7 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'react/display-name': 'off',
     'import/no-unresolved': 'error',
+    'import/namespace': ['error', { allowComputed: true }],
     'import/order': [
       'warn',
       {
