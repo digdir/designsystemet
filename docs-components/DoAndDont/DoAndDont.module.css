@@ -1,12 +1,18 @@
 .wrapper {
+  box-sizing: border-box;
   background-color: var(--fds-semantic-background-subtle);
   padding: 24px;
-  min-width: 200px;
-  max-width: 400px;
+  width: calc(50% - (var(--fds-spacing-4) / 2));
   border-bottom: 10px solid var(--color);
   border-radius: var(--fds-spacing-1);
   box-shadow: var(--fds-shadow-medium);
   margin: 0;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
 }
 
 .wrapper.landscape {

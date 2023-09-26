@@ -13,8 +13,6 @@ function Wrapper({ variant, description, image, alt }: WrapperProps) {
     return getAspectRatio(image);
   }, [image]);
 
-  console.log(aspectRatio);
-
   return (
     <figure
       className={cn(
