@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Button } from '../../Button';
+import { RovingTabindexItem } from '../../../utility-components/RovingTabIndex';
 
 import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
@@ -21,20 +22,25 @@ export const ToggleGroupItem = forwardRef<
   ToggleGroupItemProps
 >((props, ref) => {
   const { children, icon, ...rest } = props;
-  const { active, buttonProps } = useToggleGroupItem(props, ref);
+  const { active, buttonProps } = useToggleGroupItem(props);
   return (
-    <Button
+    <RovingTabindexItem
       {...rest}
       {...buttonProps}
-      icon={icon}
       className={cn(
         !active && classes.notActive,
         classes.toggleGroupItem,
         rest.className,
       )}
+      as={Button}
+      value={rest.value}
+      icon={icon}
       color='primary'
+      variant={active ? 'filled' : 'quiet'}
+      iconPlacement='left'
+      ref={ref}
     >
       {children}
-    </Button>
+    </RovingTabindexItem>
   );
 });

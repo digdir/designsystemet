@@ -59,6 +59,7 @@ export const RovingTabindexItem: OverridableComponent<
 
   return (
     <Component
+      {...rest}
       {...rovingProps}
       ref={mergedRefs}
     >
