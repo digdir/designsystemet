@@ -1,5 +1,5 @@
 .formField {
-  display: grid;
+  display: inline-grid;
   gap: var(--fds-spacing-2);
 }
 
@@ -23,23 +23,22 @@
   min-height: 2.5em;
   width: 100%;
   appearance: none;
-  padding: var(--fds-spacing-3);
+  padding: 0 var(--fds-spacing-3);
   border: solid 1px var(--fds-semantic-border-action-dark);
   border-radius: var(--fds-border_radius-medium);
-  resize: vertical;
 }
 
 .input.xsmall,
 .input.small {
-  padding: var(--fds-spacing-2);
+  padding: 0 var(--fds-spacing-2);
 }
 
 .input.medium {
-  padding: var(--fds-spacing-3);
+  padding: 0 var(--fds-spacing-3);
 }
 
 .input.large {
-  padding: var(--fds-spacing-4);
+  padding: 0 var(--fds-spacing-4);
 }
 
 .disabled {
