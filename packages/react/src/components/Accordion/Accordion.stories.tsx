@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../';
-
+import { Link } from '../';
 import { Accordion } from '.';
 
 export default {
@@ -16,20 +16,24 @@ export default {
 export const Preview: StoryFn<typeof Accordion> = (args) => (
   <Accordion {...args}>
     <Accordion.Item>
-      <Accordion.Header level={3}>Hva er Lorem Ipsum?</Accordion.Header>
+      <Accordion.Header level={3}>
+        Hvem kan registrere seg i Frivillighetsregisteret?
+      </Accordion.Header>
       <Accordion.Content>
-        Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
-        Lorem Ipsum har vært bransjens standard for dummytekst helt siden
-        1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
-        lage et prøveeksemplar av en bok.
+        For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
+        drive frivillig virksomhet. Det er bare foreninger, stiftelser og
+        aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
+        til fysiske personer. Virksomheten må ha et styre.
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Header level={3}>Hvor kommer det fra?</Accordion.Header>
+      <Accordion.Header level={3}>
+        Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
+      </Accordion.Header>
       <Accordion.Content>
-        I motsetning til hva mange tror, er ikke Lorem Ipsum bare tilfeldig
-        tekst. Dets røtter springer helt tilbake til et stykke klassisk latinsk
-        litteratur fra 45 år f.kr., hvilket gjør det over 2000 år gammelt.
+        Virksomheten må være registrert i Enhetsregisteret før den kan bli
+        registrert i Frivillighetsregisteret. Du kan registrere i begge
+        registrene samtidig i Samordnet registermelding.
       </Accordion.Content>
     </Accordion.Item>
   </Accordion>
@@ -41,13 +45,8 @@ export const AccordionBorder: StoryFn<typeof Accordion> = () => (
     color='subtle'
   >
     <Accordion.Item>
-      <Accordion.Header level={3}>Hva er Lorem Ipsum?</Accordion.Header>
-      <Accordion.Content>
-        Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
-        Lorem Ipsum har vært bransjens standard for dummytekst helt siden
-        1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
-        lage et prøveeksemplar av en bok.
-      </Accordion.Content>
+      <Accordion.Header level={3}>Vedlegg</Accordion.Header>
+      <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
     </Accordion.Item>
   </Accordion>
 );
@@ -58,20 +57,21 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
     color='secondary'
   >
     <Accordion.Item>
-      <Accordion.Header level={3}>Hva er Lorem Ipsum?</Accordion.Header>
+      <Accordion.Header level={3}>
+        Hvordan får jeg tildelt et jegernummer?
+      </Accordion.Header>
       <Accordion.Content>
-        Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien.
-        Lorem Ipsum har vært bransjens standard for dummytekst helt siden
-        1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å
-        lage et prøveeksemplar av en bok.
+        Du vil automatisk få tildelt jegernummer og bli registrert i
+        Jegerregisteret når du har bestått jegerprøven.
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Header level={3}>Hvor kommer det fra?</Accordion.Header>
+      <Accordion.Header level={3}>
+        Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
+      </Accordion.Header>
       <Accordion.Content>
-        I motsetning til hva mange tror, er ikke Lorem Ipsum bare tilfeldig
-        tekst. Dets røtter springer helt tilbake til et stykke klassisk latinsk
-        litteratur fra 45 år f.kr., hvilket gjør det over 2000 år gammelt.
+        Du kan finne dette ved å logge inn på{' '}
+        <Link href='https://minjegerside.brreg.no/'> Min jegerside</Link>
       </Accordion.Content>
     </Accordion.Item>
   </Accordion>
@@ -89,18 +89,42 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
   return (
     <>
       <Button onClick={() => setOpen(!open)}>Toggle Accordions</Button>
+      <br />
       <Accordion>
         <Accordion.Item open={open}>
           <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Accordion header text
+            Enkeltpersonforetak
           </Accordion.Header>
-          <Accordion.Content>Accordion content</Accordion.Content>
+          <Accordion.Content>
+            Skal du starte for deg selv? Enkeltpersonforetak er ofte den
+            enkleste måten å etablere bedrift på. Denne organisasjonsformen har
+            noen fordeler. Og noen ulemper. Det gir deg stor grad av frihet, men
+            kan også gi betydelig risiko fordi du har personlig ansvar for
+            økonomien.
+          </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
           <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Accordion header text
+            Aksjeselskap (AS)
           </Accordion.Header>
-          <Accordion.Content>Accordion content</Accordion.Content>
+          <Accordion.Content>
+            Planlegger du å starte næringsvirksomhet alene eller sammen med
+            andre? Innebærer næringsvirksomheten en økonomisk risiko? Vil du ha
+            rettigheter som arbeidstaker og muligheten til at andre vil
+            investere i selskapet ditt? Da kan aksjeselskap være en
+            hensiktsmessig organisasjonsform.
+          </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item open={open}>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+            Ansvarlig selskap (ANS/DA)
+          </Accordion.Header>
+          <Accordion.Content>
+            Er dere minst to personer som skal starte opp egen virksomhet?
+            Samarbeider du godt med den/de som du skal starte opp sammen med?
+            Krever virksomheten få investeringer og tar du liten økonomisk
+            risiko? Da kan du vurdere å etablere et ansvarlig selskap.
+          </Accordion.Content>
         </Accordion.Item>
       </Accordion>
     </>
