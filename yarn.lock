@@ -3908,9 +3908,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/design-system-react@*, @digdir/design-system-react@workspace:packages/react":
-  version: 0.0.0-use.local
-  resolution: "@digdir/design-system-react@workspace:packages/react"
+"@digdir/design-system-react@npm:*":
+  version: 0.26.0
+  resolution: "@digdir/design-system-react@npm:0.26.0"
   dependencies:
     "@altinn/figma-design-tokens": ^6.0.1
     "@digdir/design-system-tokens": ^0.7.0
@@ -3920,6 +3920,22 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
+  checksum: 1419a234ce6078c2e5899f5c05ec730f45c4fa0a06df72a657d05d5e6b61a3576c21713c138dd8209bffd74020c6720c07efd7584d5990e040924b0756d04937
+  languageName: node
+  linkType: hard
+
+"@digdir/design-system-react__local@workspace:packages/react":
+  version: 0.0.0-use.local
+  resolution: "@digdir/design-system-react__local@workspace:packages/react"
+  dependencies:
+    "@altinn/figma-design-tokens": ^6.0.1
+    "@digdir/design-system-tokens": ^0.7.0
+    "@floating-ui/react": 0.25.2
+    "@navikt/aksel-icons": ^3.2.4
+    react-number-format: 5.2.2
+  peerDependencies:
+    react: ">=18.2.0"
+    react-dom: ">=18.2.0"
   languageName: unknown
   linkType: soft
 

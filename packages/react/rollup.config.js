@@ -21,10 +21,12 @@ export default [
       {
         file: packageJson.main,
         format: 'cjs',
+        banner: "'use client';",
       },
       {
         file: packageJson.module,
         format: 'esm',
+        banner: "'use client';",
       },
     ],
     external: [
@@ -51,6 +53,7 @@ export default [
   {
     input: 'dist/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+
     plugins: [dts()],
     external: [/@altinn\/figma-design-tokens/, /\.css$/],
   },

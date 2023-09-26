@@ -7,30 +7,37 @@ simpler plugin that invokes Terser without Jest workers.
 
 import { minify } from 'terser';
 
-function terser(terserOptions = {}) {
-    return {
-        name: 'terser',
+function terser(
+  terserOptions = {
+    compress: {
+      // Needed until https://github.com/terser/terser/issues/1320 is fixed
+      directives: false,
+    },
+  },
+) {
+  return {
+    name: 'terser',
 
-        async renderChunk(code, _chunk, outputOptions) {
-            const defaultOptions = {
-                sourceMap: !!outputOptions.sourcemap,
-            };
+    async renderChunk(code, _chunk, outputOptions) {
+      const defaultOptions = {
+        sourceMap: !!outputOptions.sourcemap,
+      };
 
-            // eslint-disable-next-line default-case
-            switch (outputOptions.format) {
-                case 'es':
-                case 'esm':
-                    defaultOptions.module = true;
-                    break;
-                case 'cjs':
-                    defaultOptions.toplevel = true;
-                    break;
-            }
+      // eslint-disable-next-line default-case
+      switch (outputOptions.format) {
+        case 'es':
+        case 'esm':
+          defaultOptions.module = true;
+          break;
+        case 'cjs':
+          defaultOptions.toplevel = true;
+          break;
+      }
 
-            const effectiveTerserOptions = { ...defaultOptions, ...terserOptions };
-            return await minify(code, effectiveTerserOptions);
-        },
-    };
+      const effectiveTerserOptions = { ...defaultOptions, ...terserOptions };
+      return await minify(code, effectiveTerserOptions);
+    },
+  };
 }
 
 export default terser;
