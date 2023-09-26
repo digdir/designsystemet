@@ -16,7 +16,6 @@ export const Preview: Story = {
   args: {
     label: 'Label',
     disabled: false,
-    readOnly: false,
     size: 'medium',
     error: '',
   },

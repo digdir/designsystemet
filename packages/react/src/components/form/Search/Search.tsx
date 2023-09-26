@@ -17,8 +17,8 @@ export type SearchProps = {
   hideLabel?: boolean;
   /** Changes field size and paddings */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
-} & Omit<FormFieldProps, 'size' | 'description'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+} & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
 
 /** Search field
  *

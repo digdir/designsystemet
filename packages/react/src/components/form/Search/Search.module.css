@@ -1,5 +1,6 @@
 .formField {
   display: inline-grid;
+  width: 100%;
   gap: var(--fds-spacing-2);
 }
 
