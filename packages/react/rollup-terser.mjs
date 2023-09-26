@@ -7,14 +7,7 @@ simpler plugin that invokes Terser without Jest workers.
 
 import { minify } from 'terser';
 
-function terser(
-  terserOptions = {
-    compress: {
-      // Needed until https://github.com/terser/terser/issues/1320 is fixed
-      directives: false,
-    },
-  },
-) {
+function terser(terserOptions = {}) {
   return {
     name: 'terser',
 

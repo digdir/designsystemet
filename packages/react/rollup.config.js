@@ -46,7 +46,12 @@ export default [
       typescript({ tsconfig: './tsconfig.build.json' }),
       svgr({ exportType: 'named' }),
       postcss(),
-      terser(),
+      terser({
+        compress: {
+          // Needed until https://github.com/terser/terser/issues/1320 is fixed
+          directives: false,
+        },
+      }),
       image(),
     ],
   },
