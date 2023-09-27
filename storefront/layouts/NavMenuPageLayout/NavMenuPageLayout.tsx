@@ -2,23 +2,14 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
-import type { NavigationCardProps } from '../../components/NavigationCard/NavigationCard';
 
-import classes from './NavigationPageLayout.module.css';
+import classes from './NavMenuPageLayout.module.css';
 
-type PageItem = NavigationCardProps;
-
-type PageSection = {
-  title: string;
-  description: string;
-  items: PageItem[];
+type NavMenuPageLayoutProps = {
+  content: React.ReactNode;
 };
 
-interface PageLandingLayoutProps {
-  content: React.ReactNode;
-}
-
-const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
+const NavMenuPageLayout = ({ content }: NavMenuPageLayoutProps) => {
   const router = useRouter();
 
   return (
@@ -40,4 +31,4 @@ const NavigationPageLayout = ({ content }: PageLandingLayoutProps) => {
   );
 };
 
-export { NavigationPageLayout };
+export { NavMenuPageLayout };

@@ -1,60 +1,48 @@
 .container {
   margin-top: var(--page-spacing-top);
   margin-bottom: var(--page-spacing-bottom);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--spacing-5);
 }
 
 .header {
-  background-color: #c2e4fe;
-  padding-top: 32px;
+  background-color: var(--fds-brand-tertiary-300);
+  padding-top: var(--fds-spacing-7);
 }
 
 .headerContent {
   max-width: 780px;
   margin: 0 auto;
-  padding-bottom: 72px;
+  padding-bottom: var(--fds-spacing-18);
 }
 
 .title {
-  font-size: 36px;
   margin-bottom: 0;
-  line-height: 1.3em;
   text-align: center;
+  font: var(--fds-typography-heading-xlarge);
 }
 
-.back {
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
+.backBtn {
+  margin-bottom: var(--fds-spacing-10);
   color: inherit;
-  text-underline-offset: 5px;
 }
 
-.back:hover {
-  text-decoration-thickness: 2px;
+.backBtn:visited {
+  color: inherit !important;
 }
 
-.back svg {
-  margin-right: 8px;
-}
-
-.date {
-  font-size: 18px;
-  text-align: center;
+.backBtn svg {
+  margin-right: var(--fds-spacing-2);
 }
 
 .separator {
-  margin: 0 8px;
+  margin: 0 var(--fds-spacing-2);
 }
 
 .meta {
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: var(--fds-spacing-3);
+  font: var(--fds-typography-paragraph-short-large);
 }
 
 .content {

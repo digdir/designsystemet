@@ -1,21 +1,23 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { TextAreaProps } from '.';
-import { TextArea } from '.';
+import type { LegacyTextAreaProps } from '.';
+import { LegacyTextArea } from '.';
 
-type Story = StoryObj<typeof TextArea>;
+type Story = StoryObj<typeof LegacyTextArea>;
 
 const meta: Meta = {
-  title: 'Altinn/TextArea',
-  component: TextArea,
+  title: 'Avviklet/TextArea',
+  component: LegacyTextArea,
 };
 
 export default meta;
 
-const Template = (args: TextAreaProps): JSX.Element => <TextArea {...args} />;
+const Template = (args: LegacyTextAreaProps): JSX.Element => (
+  <LegacyTextArea {...args} />
+);
 
-const createTemplate = (name: string, args?: TextAreaProps): Story => ({
+const createTemplate = (name: string, args?: LegacyTextAreaProps): Story => ({
   render: Template,
   name,
   args: { ...args },

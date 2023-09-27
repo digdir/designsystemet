@@ -1,5 +1,5 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
-import React, { useState, useId, forwardRef } from 'react';
+import type { ReactNode, TextareaHTMLAttributes } from 'react';
+import React, { useState, forwardRef } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
@@ -9,36 +9,18 @@ import type { FormFieldProps } from '../useFormField';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 
-import { useTextfield } from './useTextfield';
-import classes from './Textfield.module.css';
+import { useTextarea } from './useTextarea';
+import classes from './Textarea.module.css';
 import utilityClasses from './../../../utils/utility.module.css';
 
-export type TextfieldProps = {
+export type TextareaProps = {
   /** Label */
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
   /** Changes field size and paddings */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
-  /** Prefix for field. */
-  prefix?: string;
-  /** Suffix for field. */
-  suffix?: string;
-  /** Supported `input` types */
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
+
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *
@@ -50,44 +32,35 @@ export type TextfieldProps = {
    */
   characterLimit?: CharacterLimitProps;
 } & Omit<FormFieldProps, 'size'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>;
 
-/** Text input field
+/** Textarea field
  *
  * @example
  * ```tsx
- * <Textfield label="Textfield label">
+ * <Textarea label="Textarea label">
  * ```
  */
-export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
-    const {
-      label,
-      description,
-      suffix,
-      prefix,
-      style,
-      characterLimit,
-      hideLabel,
-      type = 'text',
-      ...rest
-    } = props;
+    const { label, description, style, characterLimit, hideLabel, ...rest } =
+      props;
 
     const {
-      inputProps,
+      textareaProps,
       descriptionId,
       hasError,
       errorId,
       size = 'medium',
       readOnly,
-    } = useTextfield(props);
+    } = useTextarea(props);
 
-    const [inputValue, setInputValue] = useState(props.defaultValue);
-    const characterLimitId = `textfield-charactercount-${useId()}`;
+    const [value, setValue] = useState(props.defaultValue);
+    const characterLimitId = `${textareaProps.id}-charactercount}`;
     const hasCharacterLimit = characterLimit != null;
 
     const describedBy = cn(
-      inputProps['aria-describedby'],
+      textareaProps['aria-describedby'],
       hasCharacterLimit && characterLimitId,
     );
 
@@ -98,7 +71,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         style={style}
         className={cn(
           classes.formField,
-          inputProps.disabled && classes.disabled,
+          textareaProps.disabled && classes.disabled,
           readOnly && classes.readonly,
           rest.className,
         )}
@@ -107,7 +80,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           <Label
             size={size}
             weight='medium'
-            htmlFor={inputProps.id}
+            htmlFor={textareaProps.id}
             className={cn(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
@@ -135,52 +108,25 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             {description}
           </Paragraph>
         )}
-        <div className={cn(classes.field, hasError && classes.error)}>
-          {prefix && (
-            <Paragraph
-              as='div'
-              size={size}
-              className={cn(classes.adornment, classes.prefix)}
-              aria-hidden='true'
-              short
-            >
-              {prefix}
-            </Paragraph>
+        <textarea
+          {...omit(['size', 'error', 'errorId'], rest)}
+          {...textareaProps}
+          className={cn(
+            classes.textarea,
+            utilityClasses.focusable,
+            classes[size],
           )}
-          <input
-            {...omit(['size', 'error', 'errorId'], rest)}
-            {...inputProps}
-            className={cn(
-              classes.input,
-              classes[size],
-              utilityClasses.focusable,
-              prefix && classes.inputPrefix,
-              suffix && classes.inputSuffix,
-            )}
-            ref={ref}
-            type={type}
-            aria-describedby={describedBy}
-            onChange={(e) => {
-              inputProps?.onChange?.(e);
-              setInputValue(e.target.value);
-            }}
-          />
-          {suffix && (
-            <Paragraph
-              as='div'
-              size={size}
-              className={cn(classes.adornment, classes.suffix)}
-              aria-hidden='true'
-              short
-            >
-              {suffix}
-            </Paragraph>
-          )}
-        </div>
+          ref={ref}
+          aria-describedby={describedBy}
+          onChange={(e) => {
+            textareaProps?.onChange?.(e);
+            setValue(e.target.value);
+          }}
+        />
         {hasCharacterLimit && (
           <CharacterCounter
             size={size}
-            value={inputValue ? inputValue.toString() : ''}
+            value={value ? value.toString() : ''}
             id={characterLimitId}
             {...characterLimit}
           />
