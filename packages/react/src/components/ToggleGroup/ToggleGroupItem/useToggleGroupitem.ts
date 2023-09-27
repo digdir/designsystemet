@@ -16,13 +16,13 @@ export type RovingTabindexContextProps = {
 
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   active: boolean;
+  size?: 'small' | 'medium' | 'large';
   elements?: React.MutableRefObject<Map<string, HTMLElement>>;
   keyDown?: (e: KeyboardEvent) => void;
   buttonProps?: Pick<
     ButtonProps,
     | 'onClick'
     | 'variant'
-    | 'size'
     | 'tabIndex'
     | 'iconPlacement'
     | 'role'
@@ -46,11 +46,11 @@ export const useToggleGroupItem: UseToggleGroupItem = (
   return {
     ...rest,
     active: active,
+    size: toggleGroup?.size,
     buttonProps: {
       id: buttonId,
       'aria-checked': active,
       'aria-current': active,
-      size: toggleGroup?.size,
       role: 'radio',
       name: toggleGroup.name,
       onClick: () => {

@@ -1,3 +1,15 @@
+.toggleGroupItem.small {
+  padding: var(--fds-spacing-1) var(--fds-spacing-2);
+}
+
+.toggleGroupItem.medium {
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
+.toggleGrouppItem.large {
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
 .toggleGroupItem:focus-visible,
 .toggleGroupItem:focus {
   z-index: 1;

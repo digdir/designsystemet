@@ -22,21 +22,18 @@ export const ToggleGroupItem = forwardRef<
   ToggleGroupItemProps
 >((props, ref) => {
   const { children, icon, ...rest } = props;
-  const { active, buttonProps } = useToggleGroupItem(props);
+  const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
       {...rest}
       {...buttonProps}
-      className={cn(
-        !active && classes.notActive,
-        classes.toggleGroupItem,
-        rest.className,
-      )}
+      className={cn(classes[size], classes.toggleGroupItem, rest.className)}
       as={Button}
       value={rest.value}
       icon={icon}
       color='primary'
       variant={active ? 'filled' : 'quiet'}
+      size={size}
       iconPlacement='left'
       ref={ref}
     >
