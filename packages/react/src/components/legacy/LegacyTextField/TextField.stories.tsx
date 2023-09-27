@@ -1,27 +1,37 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
-import type { TextAreaProps } from '.';
-import { TextArea } from '.';
+import type { LegacyTextFieldProps } from '.';
+import { LegacyTextField } from '.';
 
-type Story = StoryObj<typeof TextArea>;
+type Story = StoryObj<typeof LegacyTextField>;
 
-const meta: Meta = {
-  title: 'Altinn/TextArea',
-  component: TextArea,
+const meta: Meta<typeof LegacyTextField> = {
+  title: 'Avviklet/LegacyTextField',
+  component: LegacyTextField,
 };
 
 export default meta;
 
-const Template = (args: TextAreaProps): JSX.Element => <TextArea {...args} />;
-
-const createTemplate = (name: string, args?: TextAreaProps): Story => ({
-  render: Template,
+const createTemplate = (name: string, args?: LegacyTextFieldProps): Story => ({
+  render: (args) => <LegacyTextField {...args} />,
+  args,
   name,
-  args: { ...args },
 });
 
-export const Standard: Story = createTemplate('Standard');
+export const Standard: Story = createTemplate('Standard', {
+  isValid: false,
+});
+
+export const Tallformat: Story = createTemplate('Tallformat', {
+  formatting: {
+    number: {
+      thousandSeparator: ' ',
+      prefix: 'NOK ',
+    },
+  },
+  defaultValue: 1000000,
+});
 
 export const MedFeil: Story = createTemplate('Med feil', {
   isValid: false,
