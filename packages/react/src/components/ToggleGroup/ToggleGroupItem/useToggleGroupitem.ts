@@ -20,7 +20,9 @@ export const useToggleGroupItem: UseToggleGroupItem = (
 ) => {
   const { ...rest } = props;
   const toggleGroup = useContext(ToggleGroupContext);
-  const active = toggleGroup.value == props.value;
+  const itemValue =
+    props.value ?? (typeof props.children === 'string' ? props.children : '');
+  const active = toggleGroup.value == itemValue;
   const buttonId = `toggleButton-${useId()}`;
 
   return {
@@ -34,7 +36,7 @@ export const useToggleGroupItem: UseToggleGroupItem = (
       role: 'radio',
       name: toggleGroup.name,
       onClick: () => {
-        toggleGroup.onChange?.(props.value);
+        toggleGroup.onChange?.(itemValue);
       },
     },
   };

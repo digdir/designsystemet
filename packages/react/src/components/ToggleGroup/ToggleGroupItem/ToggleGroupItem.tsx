@@ -9,8 +9,8 @@ import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
 
 export type ToggleGroupItemProps = {
-  /** The value of the ToggleGroupItem */
-  value: string;
+  /** The value of the ToggleGroupItem. If not set, the string value of the items children will be used. */
+  value?: string;
   /** Icon to be displayed on the ToggleGroupItem */
   icon?: React.ReactNode;
   /** The text to be displayed on the ToggleGroupItem */

@@ -31,25 +31,13 @@ export default {
 
 export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
   return (
-    <ToggleGroup {...args}>
-      <ToggleGroup.Item
-        value='test'
-        icon={<AkselIcon />}
-      >
-        Test
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='test2'
-        icon={icon}
-      >
-        Test
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='test3'
-        icon={<AkselIcon2 />}
-      >
-        Test Test
-      </ToggleGroup.Item>
+    <ToggleGroup
+      {...args}
+      defaultValue='Peanut'
+    >
+      <ToggleGroup.Item>Peanut</ToggleGroup.Item>
+      <ToggleGroup.Item>Walnut</ToggleGroup.Item>
+      <ToggleGroup.Item>Pistachio 🤤</ToggleGroup.Item>
     </ToggleGroup>
   );
 };
@@ -66,28 +54,13 @@ export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
 
   return (
     <ToggleGroup
-      defaultValue={'test'}
+      defaultValue={'Pistachio'}
       size='medium'
       onChange={handleChange}
     >
-      <ToggleGroup.Item
-        value='test'
-        icon={<AkselIcon />}
-      >
-        Test
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='test2'
-        icon={icon}
-      >
-        Test
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='test3'
-        icon={<AkselIcon2 />}
-      >
-        Test Test
-      </ToggleGroup.Item>
+      <ToggleGroup.Item icon={<AkselIcon />}>Pistachio</ToggleGroup.Item>
+      <ToggleGroup.Item icon={icon}>Peanut</ToggleGroup.Item>
+      <ToggleGroup.Item icon={<AkselIcon2 />}>Walnut</ToggleGroup.Item>
     </ToggleGroup>
   );
 };
@@ -123,20 +96,20 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
           value='test'
           icon={<AkselIcon />}
         >
-          Test
+          Pistachio
         </ToggleGroup.Item>
         <ToggleGroup.Item
           value='test2'
           icon={icon}
         >
-          Test
+          Peanut
         </ToggleGroup.Item>
         <ToggleGroup.Item
           value='test3'
           icon={<AkselIcon2 />}
           ref={myItemRef}
         >
-          Test Test
+          Walnut
         </ToggleGroup.Item>
       </ToggleGroup>
     </>
