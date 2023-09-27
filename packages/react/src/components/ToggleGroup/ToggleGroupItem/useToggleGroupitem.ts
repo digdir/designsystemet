@@ -1,36 +1,16 @@
 import { useContext, useId } from 'react';
 
-import type { RovingTabindexItem } from '../ToggleGroup';
 import { ToggleGroupContext } from '../ToggleGroup';
 import type { ButtonProps } from '../../Button';
 
 import type { ToggleGroupItemProps } from './ToggleGroupItem';
 
-export type RovingTabindexContextProps = {
-  elements: React.MutableRefObject<Map<string, HTMLElement>>;
-  getOrderedItems: () => RovingTabindexItem[];
-  setFocusableValue: (value: string) => void;
-  focusableValue: string | null;
-  onShiftTab: () => void;
-};
-
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   active: boolean;
   size?: 'small' | 'medium' | 'large';
-  elements?: React.MutableRefObject<Map<string, HTMLElement>>;
-  keyDown?: (e: KeyboardEvent) => void;
   buttonProps?: Pick<
     ButtonProps,
-    | 'onClick'
-    | 'variant'
-    | 'tabIndex'
-    | 'iconPlacement'
-    | 'role'
-    | 'aria-checked'
-    | 'aria-current'
-    | 'name'
-    | 'onKeyDown'
-    | 'onFocus'
+    'id' | 'onClick' | 'role' | 'aria-checked' | 'aria-current' | 'name'
   >;
 };
 

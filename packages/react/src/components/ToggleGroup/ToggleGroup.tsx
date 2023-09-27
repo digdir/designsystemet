@@ -6,11 +6,6 @@ import { RovingTabindexRoot } from '../../utility-components/RovingTabIndex';
 
 import classes from './ToggleGroup.module.css';
 
-export type RovingTabindexItem = {
-  value: string;
-  element: HTMLElement;
-};
-
 export type ToggleGroupContextProps = {
   value?: string;
   defaultValue?: string;
