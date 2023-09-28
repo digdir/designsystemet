@@ -32,8 +32,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/consistent-type-exports': 'warn',
         '@typescript-eslint/consistent-type-imports': 'warn',
-        '@typescript-eslint/no-unsafe-enum-comparison': 'off',
-        '@typescript-eslint/no-redundant-type-constituents': 'off',
       },
     },
     {
