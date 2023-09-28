@@ -21,7 +21,7 @@ export type ToggleGroupProps = {
   value?: string;
   /** Default value. */
   defaultValue?: string;
-  /** Function that is called when the value of the ToggleGroup component changes. The current value is available in the callback. */
+  /** Callback with selected `ToggleGroupItem` `value` */
   onChange?: (value: string) => void;
   /** Name of the ToggleGroup component. */
   name?: string;
