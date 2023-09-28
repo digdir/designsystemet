@@ -19,7 +19,7 @@ export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 export type ToggleGroupProps = {
   /** Controlled state for `ToggleGroup` component. */
   value?: string;
-  /** Default value of the ToggleGroup component. Set when you want to use the component as an uncontrolled component. */
+  /** Default value. */
   defaultValue?: string;
   /** Function that is called when the value of the ToggleGroup component changes. The current value is available in the callback. */
   onChange?: (value: string) => void;
