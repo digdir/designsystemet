@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.26.0...@digdir/design-system-react@0.27.0) (2023-09-28)
+
+### Features
+
+- **Button, Chip, Accordion:** :recycle: Change components to use the same class for focus behaviour ([#868](https://github.com/digdir/designsystem/issues/868)) ([b3fa591](https://github.com/digdir/designsystem/commit/b3fa591d86bbf2b497a618464e3f3af10b852ad6))
+- **ToggleButtonGroup:** :wastebasket: Change to Legacy ([#870](https://github.com/digdir/designsystem/issues/870)) ([3298aba](https://github.com/digdir/designsystem/commit/3298aba96e343af73bcf8b12cfcb64f9cf0a61a0))
+- **ToggleGroup:** ✨ New `ToggleGroup` component ([#813](https://github.com/digdir/designsystem/issues/813)) ([bc45c2e](https://github.com/digdir/designsystem/commit/bc45c2e50a941fdd49028607fa3d94c4876e4cc0))
+
 # [0.26.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.25.1...@digdir/design-system-react@0.26.0) (2023-09-22)
 
 ### Bug Fixes
