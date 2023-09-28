@@ -33,10 +33,7 @@ export default {
 
 export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
   return (
-    <ToggleGroup
-      {...args}
-      defaultValue='Peanut'
-    >
+    <ToggleGroup {...args}>
       <ToggleGroup.Item>Peanut</ToggleGroup.Item>
       <ToggleGroup.Item>Walnut</ToggleGroup.Item>
       <ToggleGroup.Item>Pistachio 🤤</ToggleGroup.Item>
@@ -45,7 +42,9 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 };
 
 Preview.args = {
+  defaultValue: 'Peanut',
   size: 'medium',
+  name: 'toggle-group-nuts',
 };
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
@@ -73,7 +72,6 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
     </ToggleGroup>
   );
 };
-
 
 export const Controlled: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('peanut');
