@@ -2,11 +2,11 @@ import type { ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import { areItemsUnique } from '../../utils';
+import { areItemsUnique } from '../../../utils';
 
 import classes from './ToggleButtonGroup.module.css';
 
-export interface ToggleButtonProps {
+export interface LegacyToggleButtonProps {
   /**
    * The value of the toggle button. The onChange function will be called with this value when the button is selected.
    */
@@ -18,11 +18,11 @@ export interface ToggleButtonProps {
   label: ReactNode;
 }
 
-export interface ToggleButtonGroupProps {
+export interface LegacyToggleButtonGroupProps {
   /**
    * The list of toggle buttons to render.
    */
-  items: ToggleButtonProps[];
+  items: LegacyToggleButtonProps[];
 
   /**
    * Optional function to be called when the selected value changes.
@@ -40,11 +40,11 @@ export interface ToggleButtonGroupProps {
 /**
  * Component for rendering a group of toggle buttons. At any given time, only one button in the group can be selected.
  */
-export const ToggleButtonGroup = ({
+export const LegacyToggleButtonGroup = ({
   onChange,
   items,
   selectedValue,
-}: ToggleButtonGroupProps) => {
+}: LegacyToggleButtonGroupProps) => {
   const initiallySelected = selectedValue ?? items[0].value;
   const [selected, setSelected] = useState(initiallySelected);
 

@@ -5,6 +5,7 @@ export * from './legacy/LegacyRadioButton';
 export * from './legacy/LegacyRadioGroup';
 export * from './legacy/LegacyTextField';
 export * from './legacy/LegacyTextArea';
+export * from './legacy/LegacyToggleButtonGroup';
 
 export * from './Button';
 export * from './Combobox';
@@ -16,7 +17,6 @@ export * from './Spinner';
 export * from './Link';
 export * from './List';
 export * from './Table';
-export * from './ToggleButtonGroup';
 export * from './Typography/';
 export * from './Accordion';
 export * from './NativeSelect';
