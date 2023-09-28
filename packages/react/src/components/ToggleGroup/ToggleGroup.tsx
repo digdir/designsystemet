@@ -25,7 +25,7 @@ export type ToggleGroupProps = {
   onChange?: (value: string) => void;
   /** Name of the ToggleGroup component. */
   name?: string;
-  /** Size of the ToggleGroup component. */
+  /** Changes items size and paddings */
   size?: 'small' | 'medium' | 'large';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
