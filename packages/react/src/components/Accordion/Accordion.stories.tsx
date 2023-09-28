@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from '../';
-import { Link } from '../';
+import { Button, Link } from '../';
+
 import { Accordion } from '.';
 
 export default {
@@ -98,8 +98,8 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
           <Accordion.Content>
             Skal du starte for deg selv? Enkeltpersonforetak er ofte den
             enkleste måten å etablere bedrift på. Denne organisasjonsformen har
-            både fordeler og ulemper. Det gir deg stor grad av frihet, men
-            kan også gi betydelig risiko fordi du har personlig ansvar for
+            både fordeler og ulemper. Det gir deg stor grad av frihet, men kan
+            også gi betydelig risiko fordi du har personlig ansvar for
             økonomien.
           </Accordion.Content>
         </Accordion.Item>
