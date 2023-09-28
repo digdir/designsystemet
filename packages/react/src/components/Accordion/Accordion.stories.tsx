@@ -110,7 +110,7 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
           <Accordion.Content>
             Planlegger du å starte næringsvirksomhet alene eller sammen med
             andre? Innebærer næringsvirksomheten en økonomisk risiko? Vil du ha
-            rettigheter som arbeidstaker og muligheten til at andre vil
+            rettigheter som arbeidstaker og muligheten til at andre kan
             investere i selskapet ditt? Da kan aksjeselskap være en
             hensiktsmessig organisasjonsform.
           </Accordion.Content>
