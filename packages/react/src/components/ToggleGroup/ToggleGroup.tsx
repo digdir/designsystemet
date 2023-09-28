@@ -59,7 +59,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
           value={{
             value,
             defaultValue,
-            name: name ?? `radiogroup-name-${nameId}`,
+            name: name ?? `togglegroup-name-${nameId}`,
             onChange: onValueChange,
             size,
           }}
