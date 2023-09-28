@@ -129,7 +129,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         </ToggleGroup.Item>
       </ToggleGroup>
       <br />
-      <span>Du har valgt: {value}</span>
+      <span>You have chosen: {value}</span>
     </>
   );
 };
