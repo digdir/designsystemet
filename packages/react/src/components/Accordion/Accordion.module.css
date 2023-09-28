@@ -67,20 +67,6 @@
   padding-left: var(--fdsc-accordion-header-padding-left);
 }
 
-.header > button:focus-visible,
-.header > button:focus {
-  --fdsc-focus-border-width: 3px;
-
-  outline: var(--fdsc-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-  outline-offset: var(--fdsc-focus-border-width);
-  box-shadow: 0 0 0 var(--fdsc-focus-border-width) var(--fds-semantic-border-neutral-strong);
-  border-radius: var(--fds-border_radius-interactive);
-}
-
-.header > .button:focus:not(:focus-visible) {
-  outline: none;
-}
-
 @media (hover: hover) and (pointer: fine) {
   .header > button:hover {
     color: var(--fdsc-accordion-header-color-hover);
