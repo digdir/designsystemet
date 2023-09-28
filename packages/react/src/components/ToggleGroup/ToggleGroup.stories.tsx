@@ -47,6 +47,32 @@ Preview.args = {
   defaultValue: 'test',
 };
 
+export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
+  const handleChange = (value: string) => {
+    console.log(value);
+  };
+
+  return (
+    <ToggleGroup
+      defaultValue={'test'}
+      onChange={handleChange}
+    >
+      <ToggleGroup.Item
+        value={'option-1'}
+        icon={<AkselIcon />}
+      />
+      <ToggleGroup.Item
+        value={'option-2'}
+        icon={icon}
+      />
+      <ToggleGroup.Item
+        value={'option-3'}
+        icon={<AkselIcon2 />}
+      />
+    </ToggleGroup>
+  );
+};
+
 export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
   const handleChange = (value: string) => {
     console.log(value);
@@ -55,7 +81,6 @@ export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
   return (
     <ToggleGroup
       defaultValue={'Pistachio'}
-      size='medium'
       onChange={handleChange}
     >
       <ToggleGroup.Item icon={<AkselIcon />}>Pistachio</ToggleGroup.Item>
@@ -80,7 +105,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         </Button>
         <Button
           size='small'
-          onClick={() => setValue('test2')}
+          onClick={() => setValue('peanut')}
         >
           Activate middle button!
         </Button>

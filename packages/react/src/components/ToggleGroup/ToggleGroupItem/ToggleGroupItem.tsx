@@ -14,7 +14,7 @@ export type ToggleGroupItemProps = {
   /** Icon to be displayed on the ToggleGroupItem */
   icon?: React.ReactNode;
   /** The text to be displayed on the ToggleGroupItem */
-  children: string;
+  children?: string;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'children'>;
 
 export const ToggleGroupItem = forwardRef<
