@@ -1,10 +1,10 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { TokensTable, Information } from '../../../../../docs-components';
-import { ToggleButtonGroup } from './ToggleButtonGroup';
+import { TokensTable, Information } from '../../../../../../docs-components';
+import { LegacyToggleButtonGroup } from '.';
 
 <Meta
-  title='Altinn/ToggleButtonGroup'
-  component={ToggleButtonGroup}
+  title='Avviklet/LegacyToggleButtonGroup'
+  component={LegacyToggleButtonGroup}
 />
 
 export const defaultArgs = {
@@ -26,10 +26,10 @@ export const defaultArgs = {
 };
 
 export const Template = (args = {}) => (
-  <ToggleButtonGroup {...{ ...defaultArgs, ...args }} />
+  <LegacyToggleButtonGroup {...{ ...defaultArgs, ...args }} />
 );
 
-# ToggleButtonGroup
+# LegacyToggleButtonGroup
 
 <Information text='altinn' />
 ## Variants
