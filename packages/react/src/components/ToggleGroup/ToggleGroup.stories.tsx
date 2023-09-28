@@ -66,7 +66,7 @@ export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
 };
 
 export const Controlled: StoryFn<typeof ToggleGroup> = () => {
-  const [value, setValue] = useState<string>('test2');
+  const [value, setValue] = useState<string>('peanut');
   const myGroupRef = React.createRef<HTMLDivElement>();
   const myItemRef = React.createRef<HTMLButtonElement>();
   return (
@@ -93,25 +93,27 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         ref={myGroupRef}
       >
         <ToggleGroup.Item
-          value='test'
+          value='pistachio'
           icon={<AkselIcon />}
         >
           Pistachio
         </ToggleGroup.Item>
         <ToggleGroup.Item
-          value='test2'
+          value='peanut'
           icon={icon}
         >
           Peanut
         </ToggleGroup.Item>
         <ToggleGroup.Item
-          value='test3'
+          value='walnut'
           icon={<AkselIcon2 />}
           ref={myItemRef}
         >
           Walnut
         </ToggleGroup.Item>
       </ToggleGroup>
+      <br />
+      <span>Du har valgt: {value}</span>
     </>
   );
 };
