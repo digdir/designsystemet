@@ -10,7 +10,7 @@
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
 }
 
-.toggleGroupItem:focus-visible,
-.toggleGroupItem:focus {
-  z-index: 1;
+.toggleGroupItem:focus:not(:focus-visible) {
+  outline: unset;
+  box-shadow: unset;
 }
