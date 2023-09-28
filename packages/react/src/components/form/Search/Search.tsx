@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { omit } from '../../../utils';
+import { Button } from '../../Button';
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
@@ -58,12 +59,19 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           </Label>
         )}
 
-        <input
-          {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
-          {...inputProps}
-          className={cn(classes.input, utilityClasses.focusable, classes[size])}
-          ref={ref}
-        />
+        <div className={classes.field}>
+          <input
+            {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+            {...inputProps}
+            className={cn(
+              classes.input,
+              utilityClasses.focusable,
+              classes[size],
+            )}
+            ref={ref}
+          />
+        </div>
+
         <div
           className={classes.errorMessage}
           id={errorId}

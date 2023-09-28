@@ -16,6 +16,12 @@
   align-items: center;
 }
 
+.field {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--fds-border_radius-medium);
+}
+
 .input {
   font: inherit;
   position: relative;
