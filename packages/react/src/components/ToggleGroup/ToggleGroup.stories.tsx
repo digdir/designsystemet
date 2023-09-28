@@ -74,22 +74,6 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
   );
 };
 
-export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
-  const handleChange = (value: string) => {
-    console.log(value);
-  };
-
-  return (
-    <ToggleGroup
-      defaultValue={'Pistachio'}
-      onChange={handleChange}
-    >
-      <ToggleGroup.Item icon={<AkselIcon />}>Pistachio</ToggleGroup.Item>
-      <ToggleGroup.Item icon={icon}>Peanut</ToggleGroup.Item>
-      <ToggleGroup.Item icon={<AkselIcon2 />}>Walnut</ToggleGroup.Item>
-    </ToggleGroup>
-  );
-};
 
 export const Controlled: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('peanut');
