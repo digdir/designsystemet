@@ -101,7 +101,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
           size='small'
           onClick={() => setValue('peanut')}
         >
-          Activate middle button!
+          Select Peanut
         </Button>
       </div>
       <br />
