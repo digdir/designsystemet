@@ -56,7 +56,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
 
   return (
     <ToggleGroup
-      defaultValue={'test'}
+      defaultValue={'option-1'}
       onChange={handleChange}
     >
       <ToggleGroup.Item
@@ -65,7 +65,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
       />
       <ToggleGroup.Item
         value={'option-2'}
-        icon={icon}
+        icon={<AkselIcon2 />}
       />
       <ToggleGroup.Item
         value={'option-3'}
