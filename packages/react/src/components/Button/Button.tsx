@@ -3,6 +3,7 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
+import utilityClasses from '../../utils/utility.module.css';
 
 import classes from './Button.module.css';
 
@@ -48,6 +49,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ref={ref}
       className={cn(
         classes.button,
+        utilityClasses.focusable,
         classes[size],
         classes[variant],
         classes[color],

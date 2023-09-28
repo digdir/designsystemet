@@ -35,22 +35,16 @@ describe('Popover', () => {
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
       expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-      await act(async () => {
-        await user.click(popoverTrigger);
-      });
+      await act(async () => user.click(popoverTrigger));
       expect(screen.queryByText('Popover text')).toBeInTheDocument();
     });
 
     it('should close popover on trigger click when open', async () => {
-      await act(() => {
-        render({ initialOpen: true });
-      });
+      render({ initialOpen: true });
       const popoverTrigger = screen.getByRole('button', { name: 'Open' });
 
       expect(screen.queryByText('Popover text')).toBeInTheDocument();
-      await act(async () => {
-        await user.click(popoverTrigger);
-      });
+      await act(async () => user.click(popoverTrigger));
       expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
     });
 
@@ -67,9 +61,7 @@ describe('Popover', () => {
     });
 
     it('should close popover on ESC pressed click when open', async () => {
-      await act(() => {
-        render({ initialOpen: true });
-      });
+      render({ initialOpen: true });
 
       expect(screen.queryByText('Popover text')).toBeInTheDocument();
       await act(async () => {
@@ -79,10 +71,9 @@ describe('Popover', () => {
     });
   });
 
-  it('should show popover content when initialOpen=true', async () => {
-    await act(() => {
-      render({ initialOpen: true });
-    });
+  it('should show popover content when initialOpen=true', () => {
+    render({ initialOpen: true });
+
     expect(screen.queryByText('Popover text')).toBeInTheDocument();
   });
 
@@ -122,10 +113,8 @@ describe('Popover', () => {
 
   test.each(popoverVariants)(
     'should render popover with correct variant when variant is %s',
-    async (variant) => {
-      await act(() => {
-        render({ variant: variant, initialOpen: true });
-      });
+    (variant) => {
+      render({ variant: variant, initialOpen: true });
       const otherColors = popoverVariants.filter((v) => v !== variant);
 
       const popoverContent = screen.getByRole('dialog');

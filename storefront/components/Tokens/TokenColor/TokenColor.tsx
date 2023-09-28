@@ -1,7 +1,6 @@
 import React from 'react';
 
 import classes from './TokenColor.module.css';
-import cn from 'classnames';
 
 interface TokenColorProps {
   value: string;
