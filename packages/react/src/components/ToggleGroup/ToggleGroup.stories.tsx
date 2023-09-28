@@ -23,6 +23,8 @@ const icon = (
 
 const AkselIcon = icons.AirplaneFillIcon;
 const AkselIcon2 = icons.NewspaperFillIcon;
+const AkselIcon3 = icons.BrailleIcon;
+const AkselIcon4 = icons.BackpackFillIcon;
 
 export default {
   title: 'Felles/ToggleGroup',
@@ -59,7 +61,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
     >
       <ToggleGroup.Item
         value={'option-1'}
-        icon={<AkselIcon />}
+        icon={<AkselIcon3 />}
       />
       <ToggleGroup.Item
         value={'option-2'}
@@ -67,7 +69,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
       />
       <ToggleGroup.Item
         value={'option-3'}
-        icon={<AkselIcon2 />}
+        icon={<AkselIcon4 />}
       />
     </ToggleGroup>
   );
