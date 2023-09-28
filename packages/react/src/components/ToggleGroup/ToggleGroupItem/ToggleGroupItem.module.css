@@ -13,8 +13,3 @@
 .toggleGroupItem:focus-visible {
   z-index: 1;
 }
-
-.toggleGroupItem:focus:not(:focus-visible) {
-  outline: unset;
-  box-shadow: unset;
-}
