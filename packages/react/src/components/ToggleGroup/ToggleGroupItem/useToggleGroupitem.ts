@@ -23,7 +23,7 @@ export const useToggleGroupItem: UseToggleGroupItem = (
   const itemValue =
     props.value ?? (typeof props.children === 'string' ? props.children : '');
   const active = toggleGroup.value == itemValue;
-  const buttonId = `toggleButton-${useId()}`;
+  const buttonId = `togglegroup-item-${useId()}`;
 
   return {
     ...rest,
