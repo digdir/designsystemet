@@ -94,17 +94,9 @@ export const Uncontrolled: StoryFn<typeof ToggleGroup> = () => {
 
 export const Controlled: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('peanut');
-  const myGroupRef = React.createRef<HTMLDivElement>();
-  const myItemRef = React.createRef<HTMLButtonElement>();
   return (
     <>
       <div style={{ display: 'flex', gap: '4px' }}>
-        <Button
-          size='small'
-          onClick={() => myItemRef.current?.focus()}
-        >
-          Focus last item!
-        </Button>
         <Button
           size='small'
           onClick={() => setValue('peanut')}
@@ -117,7 +109,6 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         value={value}
         size='medium'
         onChange={setValue}
-        ref={myGroupRef}
       >
         <ToggleGroup.Item
           value='pistachio'
@@ -134,7 +125,6 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         <ToggleGroup.Item
           value='walnut'
           icon={<AkselIcon2 />}
-          ref={myItemRef}
         >
           Walnut
         </ToggleGroup.Item>
