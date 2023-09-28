@@ -44,6 +44,7 @@ const TokensTable = (tokenTable: TokenTableProps) => {
       '$' + tokenTable.componentName + '-',
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     const rows: { row: (string | JSX.Element | unknown)[] }[] = [];
 
     Object.entries(row).map(([key, value]) => {
