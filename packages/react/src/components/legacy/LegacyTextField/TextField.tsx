@@ -127,6 +127,7 @@ export const LegacyTextField = forwardRef<
       values: NumberFormatValues,
       sourceInfo: SourceInfo,
     ): void => {
+      /* eslint-disable-next-line */
       if (sourceInfo.source === 'event' && onChange) {
         const parsedEvent = replaceTargetValueWithUnformattedValue({
           values,
