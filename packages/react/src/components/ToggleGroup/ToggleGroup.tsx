@@ -23,7 +23,7 @@ export type ToggleGroupProps = {
   defaultValue?: string;
   /** Callback with selected `ToggleGroupItem` `value` */
   onChange?: (value: string) => void;
-  /** Name of the ToggleGroup component. */
+  /** Form element name */
   name?: string;
   /** Changes items size and paddings */
   size?: 'small' | 'medium' | 'large';
