@@ -71,7 +71,7 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
       </Accordion.Header>
       <Accordion.Content>
         Du kan finne dette ved å logge inn på{' '}
-        <Link href='https://minjegerside.brreg.no/'> Min jegerside</Link>
+        <Link href='https://minjegerside.brreg.no/'>Min jegerside</Link>
       </Accordion.Content>
     </Accordion.Item>
   </Accordion>
