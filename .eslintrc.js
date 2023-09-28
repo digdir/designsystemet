@@ -45,10 +45,12 @@ module.exports = {
     'react/prop-types': ['off'],
     'react/jsx-no-bind': 'off',
     'react/display-name': 'off',
+    '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+    '@typescript-eslint/no-redundant-type-constituents': 'off',
     'import/no-unresolved': 'error',
     'import/namespace': ['error', { allowComputed: true }],
-    'no-html-link-for-pages': 'off',
     'import/no-named-as-default': 'off',
+    '@next/next/no-html-link-for-pages': ['error', '/storefront/pages/'],
     'import/order': [
       'warn',
       {
