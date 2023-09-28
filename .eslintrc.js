@@ -47,6 +47,8 @@ module.exports = {
     'react/display-name': 'off',
     'import/no-unresolved': 'error',
     'import/namespace': ['error', { allowComputed: true }],
+    'no-html-link-for-pages': 'off',
+    'import/no-named-as-default': 'off',
     'import/order': [
       'warn',
       {
