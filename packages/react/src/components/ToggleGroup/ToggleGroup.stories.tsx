@@ -46,7 +46,6 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 
 Preview.args = {
   size: 'medium',
-  defaultValue: 'test',
 };
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {

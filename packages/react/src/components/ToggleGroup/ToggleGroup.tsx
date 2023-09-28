@@ -29,11 +29,22 @@ export type ToggleGroupProps = {
   size?: 'small' | 'medium' | 'large';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
+/** `ToggleGroup` component.
+ * @example
+ * ```tsx
+ * <ToggleGroup onChange={(value) => console.log(value)}>
+ *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
+ *   <ToggleGroup.Item value='2'>Toggle 2</ToggleGroup.Item>
+ *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
+ * </ToggleGroup>
+ * ```
+ */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
     { children, value, defaultValue, onChange, size = 'medium', name, ...rest },
     ref,
   ) => {
+    const nameId = useId();
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
       string | undefined
@@ -47,7 +58,6 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
       };
       value = uncontrolledValue;
     }
-    const nameId = useId();
 
     return (
       <div
