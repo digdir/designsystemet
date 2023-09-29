@@ -29,4 +29,4 @@ export type {
   AccordionHeaderProps,
   AccordionItemProps,
 };
-export { Accordion };
+export { Accordion, AccordionItem, AccordionContent, AccordionHeader };
