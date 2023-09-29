@@ -20,4 +20,3 @@ export { SidebarMenu } from './SidebarMenu';
 export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
-export { ComponentUsage } from './Usage';

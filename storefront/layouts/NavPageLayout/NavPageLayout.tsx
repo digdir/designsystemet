@@ -19,7 +19,7 @@ const NavPageLayout = ({ content, data }: NavPageLayoutProps) => {
   return (
     <main
       id='main'
-      className='grey-background'
+      className='greyBackground'
     >
       <ImageSection
         imgSrc={data.imageSection.imgSrc}
