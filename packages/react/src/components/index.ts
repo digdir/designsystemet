@@ -6,9 +6,9 @@ export * from './legacy/LegacyRadioGroup';
 export * from './legacy/LegacyTextField';
 export * from './legacy/LegacyTextArea';
 export * from './legacy/LegacyToggleButtonGroup';
+export * from './legacy/LegacyTabs';
 
 export * from './Button';
-export * from './Tabs';
 export * from './HelpText';
 export * from './Popover';
 export * from './Select';

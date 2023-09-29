@@ -1,10 +1,10 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 import * as TabsStories from './Tabs.stories';
 
 <Meta of={TabsStories} />
 
-# Tabs
+# LegacyTabs
 
 <Information text='altinn' />
 
@@ -30,9 +30,9 @@ Disse blir automatisk generert dersom de ikke er satt.
 
 ```tsx
 import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
-import { Tabs } from '@digdir/design-system-react';
+import { LegacyTabs } from '@digdir/design-system-react';
 
-<Tabs
+<LegacyTabs
   items={[
     {
       name: 'Donec finibus',
