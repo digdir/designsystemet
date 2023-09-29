@@ -6,7 +6,7 @@ import { Tabs } from '.';
 type Story = StoryObj<typeof Tabs>;
 
 export default {
-  title: 'Kjernekomponenter/Tabs',
+  title: 'Felles/Tabs',
   component: Tabs,
 } as Meta;
 
@@ -21,7 +21,14 @@ export const Preview: Story = {
 // Function story
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
 export const Composed: StoryFn<typeof Tabs> = () => (
-  <>
-    <Tabs />
-  </>
+  <Tabs>
+    <Tabs.List>
+      <Tabs.Tab>Tab 1</Tabs.Tab>
+      <Tabs.Tab>Tab 2</Tabs.Tab>
+      <Tabs.Tab>Tab 3</Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Content>content 1</Tabs.Content>
+    <Tabs.Content>content 2</Tabs.Content>
+    <Tabs.Content>content 3</Tabs.Content>
+  </Tabs>
 );

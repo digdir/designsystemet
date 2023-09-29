@@ -9,19 +9,19 @@ export type { TabItemListProps } from './TabItemList';
 export type { TabContentProps } from './TabContent';
 
 type TabsComponent = typeof TabsRoot & {
-  Item: typeof TabItem;
-  ItemList: typeof TabItemList;
+  Tab: typeof TabItem;
+  List: typeof TabItemList;
   Content: typeof TabContent;
 };
 
 const Tabs = TabsRoot as TabsComponent;
 
-Tabs.Item = TabItem;
-Tabs.ItemList = TabItemList;
+Tabs.Tab = TabItem;
+Tabs.List = TabItemList;
 Tabs.Content = TabContent;
 
-Tabs.Item.displayName = 'Tabs.Item';
-Tabs.ItemList.displayName = 'Tabs.ItemList';
+Tabs.Tab.displayName = 'Tabs.Tab';
+Tabs.List.displayName = 'Tabs.List';
 Tabs.Content.displayName = 'Tabs.Content';
 
 export { Tabs, TabItem, TabItemList, TabContent };
