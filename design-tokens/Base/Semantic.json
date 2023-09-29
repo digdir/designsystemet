@@ -42,44 +42,42 @@
         }
       },
       "action": {
-        "common": {
-          "subtle": {
-            "value": "{colors.blue.100}",
-            "type": "color"
-          },
-          "subtle-hover": {
-            "value": "{colors.blue.200}",
-            "type": "color"
-          },
-          "default": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "{colors.blue.800}",
-            "type": "color"
-          },
-          "active": {
-            "value": "{colors.blue.900}",
-            "type": "color",
-            "description": "Standard farge for handlinger"
-          },
-          "no_fill": {
-            "value": "{colors.white}",
-            "type": "color"
-          },
-          "no_fill-hover": {
-            "value": "{colors.blue.100}",
-            "type": "color"
-          },
-          "no_fill-active": {
-            "value": "{colors.blue.200}",
-            "type": "color"
-          },
-          "checked": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          }
+        "subtle": {
+          "value": "{colors.blue.100}",
+          "type": "color"
+        },
+        "subtle-hover": {
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "default": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.blue.800}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{colors.blue.900}",
+          "type": "color",
+          "description": "Standard farge for handlinger"
+        },
+        "no_fill": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "no_fill-hover": {
+          "value": "{colors.blue.100}",
+          "type": "color"
+        },
+        "no_fill-active": {
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "checked": {
+          "value": "{colors.blue.700}",
+          "type": "color"
         }
       },
       "success": {
@@ -209,35 +207,33 @@
         }
       },
       "action": {
-        "common": {
-          "subtle": {
-            "value": "{colors.blue.200}",
-            "type": "color"
-          },
-          "subtle-hover": {
-            "value": "{colors.blue.400}",
-            "type": "color"
-          },
-          "default": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          },
-          "active": {
-            "value": "{colors.blue.900}",
-            "type": "color"
-          },
-          "dark": {
-            "value": "{colors.blue.900}",
-            "type": "color"
-          },
-          "dark-hover": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          }
+        "subtle": {
+          "value": "{colors.blue.200}",
+          "type": "color"
+        },
+        "subtle-hover": {
+          "value": "{colors.blue.400}",
+          "type": "color"
+        },
+        "default": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{colors.blue.900}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{colors.blue.900}",
+          "type": "color"
+        },
+        "dark-hover": {
+          "value": "{colors.blue.700}",
+          "type": "color"
         }
       },
       "neutral": {
@@ -365,23 +361,21 @@
         }
       },
       "action": {
-        "common": {
-          "default": {
-            "value": "{colors.blue.700}",
-            "type": "color"
-          },
-          "hover": {
-            "value": "#004e95",
-            "type": "color"
-          },
-          "active": {
-            "value": "#00315d",
-            "type": "color"
-          },
-          "on_action": {
-            "value": "{colors.white}",
-            "type": "color"
-          }
+        "default": {
+          "value": "{colors.blue.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#004e95",
+          "type": "color"
+        },
+        "active": {
+          "value": "#00315d",
+          "type": "color"
+        },
+        "on_action": {
+          "value": "{colors.white}",
+          "type": "color"
         }
       },
       "warning": {
