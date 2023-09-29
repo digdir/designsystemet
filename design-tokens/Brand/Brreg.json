@@ -196,7 +196,7 @@
         }
       },
       "action": {
-        "default": {
+        "brand_alt1": {
           "subtle": {
             "value": "{colors.blue.100}",
             "type": "color"
@@ -231,7 +231,7 @@
             "type": "color"
           }
         },
-        "secondary": {
+        "brand_alt2": {
           "subtle": {
             "value": "{colors.grey.100}",
             "type": "color"
@@ -312,21 +312,21 @@
         }
       },
       "action": {
-        "default": {
+        "brand_alt1": {
           "subtle": {
-            "value": "{colors.blue.200}",
+            "value": "{colors.grey.200}",
             "type": "color"
           },
           "subtle-hover": {
-            "value": "{colors.blue.400}",
+            "value": "{colors.grey.300}",
             "type": "color"
           },
           "default": {
-            "value": "{colors.blue.700}",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "hover": {
-            "value": "{colors.blue.800}",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "active": {
@@ -334,7 +334,7 @@
             "type": "color"
           }
         },
-        "neutral": {
+        "brand_alt2": {
           "subtle": {
             "value": "{colors.grey.200}",
             "type": "color"
@@ -360,17 +360,17 @@
     },
     "text": {
       "action": {
-        "default": {
+        "brand_alt1": {
           "default": {
-            "value": "{colors.blue.700}",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "hover": {
-            "value": "#004e95",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "active": {
-            "value": "#00315d",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "on_action": {
@@ -378,7 +378,7 @@
             "type": "color"
           }
         },
-        "neutral": {
+        "brand_alt2": {
           "default": {
             "value": "{colors.blue.900}",
             "type": "color"
