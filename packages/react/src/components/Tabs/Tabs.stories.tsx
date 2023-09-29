@@ -15,7 +15,6 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'You created the Tabs component!',
-    myProp: false, // we set this so "boolean" is set in props table
   },
 };
 
@@ -23,8 +22,6 @@ export const Preview: Story = {
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
 export const Composed: StoryFn<typeof Tabs> = () => (
   <>
-    <Tabs myProp>I</Tabs>
-    <Tabs>am</Tabs>
-    <Tabs myProp>stacked</Tabs>
+    <Tabs />
   </>
 );

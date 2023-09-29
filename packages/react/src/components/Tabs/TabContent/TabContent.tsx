@@ -2,20 +2,19 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import classes from './Tabs.module.css';
+import classes from './TabContent.module.css';
 
-export type TabsProps = {
+export type TabContentProps = {
   /** Description of what myProp does in the component */
   value?: string;
-  defaultValue?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
+export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, ...rest }, ref) => {
     return (
       <div
         {...rest}
-        className={cn(classes.tabs, rest.className)}
+        className={cn(classes.tabItemList, rest.className)}
         ref={ref}
       >
         {children}
