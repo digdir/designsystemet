@@ -52,6 +52,11 @@
 
 ---
 
+## Quick links
+
+- [Storefront](https://designsystemet.no)
+- [Storybook](https://digdir.github.io/designsystem/)
+
 ## About the design system 📖
 
 The Common Designsystem is a collection of important design elements and building blocks that can be used when creating different services. It's like a toolbox that everyone can use to work together and create the best foundation for public services across the country. By using this Designsystem, we aim to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.

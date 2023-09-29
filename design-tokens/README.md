@@ -12,6 +12,6 @@ You should use Figma to edit the tokens. You'll need the [Tokens Studio for Figm
    - Personal Access Token: _your PAT_
    - Repository: `digdir/designsystem`
    - Default Branch: `main`
-   - File Path: `design-tokens/tokens.json`
+   - File Path: `design-tokens`
 
 You can now "pull from GitHub" (button on top right) to fetch the tokens. When done editing tokens, you should "push to GitHub" (second button on top right).

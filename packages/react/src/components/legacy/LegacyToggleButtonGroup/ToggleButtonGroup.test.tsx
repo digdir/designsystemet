@@ -2,25 +2,22 @@ import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { ToggleButtonGroup } from './ToggleButtonGroup';
-import type {
-  ToggleButtonGroupProps,
-  ToggleButtonProps,
-} from './ToggleButtonGroup';
+import { LegacyToggleButtonGroup } from '.';
+import type { LegacyToggleButtonGroupProps, LegacyToggleButtonProps } from '.';
 
 const user = userEvent.setup();
 
 // Test data:
-const items: ToggleButtonProps[] = [
+const items: LegacyToggleButtonProps[] = [
   { value: 'value 1', label: 'Label 1' },
   { value: 'value 2', label: 'Label 2' },
   { value: 'value 3', label: 'Label 3' },
 ];
-const defaultProps: ToggleButtonGroupProps = {
+const defaultProps: LegacyToggleButtonGroupProps = {
   items,
 };
 
-describe('ToggleButtonGroup', () => {
+describe('LegacyToggleButtonGroup', () => {
   it('Renders all items', () => {
     render();
     expect(getAllButtons()).toHaveLength(items.length);
@@ -46,7 +43,7 @@ describe('ToggleButtonGroup', () => {
     const index = 1;
     const value = items[index].value;
     rerender(
-      <ToggleButtonGroup
+      <LegacyToggleButtonGroup
         {...defaultProps}
         selectedValue={value}
       />,
@@ -121,9 +118,9 @@ describe('ToggleButtonGroup', () => {
   };
 });
 
-const render = (props: Partial<ToggleButtonGroupProps> = {}) =>
+const render = (props: Partial<LegacyToggleButtonGroupProps> = {}) =>
   renderRtl(
-    <ToggleButtonGroup
+    <LegacyToggleButtonGroup
       {...defaultProps}
       {...props}
     />,
