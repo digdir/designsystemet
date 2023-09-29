@@ -14,4 +14,4 @@ ToggleGroup.Item = ToggleGroupItem;
 
 ToggleGroup.Item.displayName = 'ToggleGroup.Item';
 
-export { ToggleGroup };
+export { ToggleGroup, ToggleGroupItem };

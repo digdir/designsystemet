@@ -26,4 +26,4 @@ Checkbox.Group.displayName = 'Checkbox.Group';
 
 export type { CheckboxProps, CheckboxGroupProps };
 
-export { Checkbox };
+export { Checkbox, CheckboxGroup };
