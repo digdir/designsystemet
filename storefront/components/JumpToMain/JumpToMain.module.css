@@ -15,10 +15,10 @@
   position: relative;
   height: auto;
   width: auto;
-  padding: 10px 0;
+  padding: var(--fds-spacing-2) 0;
   background-color: var(--fds-semantic-text-action-default);
   color: white;
-  padding-left: 24px;
+  padding-left: var(--fds-spacing-5);
   border: none;
   text-decoration: none;
 }

@@ -61,7 +61,7 @@
 
 .button {
   height: 48px;
-  padding: 0 16px;
+  padding: 0 var(--fds-spacing-4);
   border: 1px solid #c0c0c0;
   display: flex;
   align-items: center;
@@ -96,7 +96,7 @@
 
 .link {
   text-underline-offset: 5px;
-  color: #1e2b3c;
+  color: var(--fds-semantic-text-neutral-default);
   display: flex;
   align-items: center;
   margin-top: var(--fds-spacing-5);

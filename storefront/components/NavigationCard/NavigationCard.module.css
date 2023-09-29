@@ -1,6 +1,6 @@
 .card {
   background-color: white;
-  padding: var(--fds-spacing-10);
+  padding: var(--fds-spacing-8);
   display: block;
   color: inherit;
   text-decoration: none;

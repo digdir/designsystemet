@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 var(--grid-padding);
+  padding: 0 var(--fds-spacing-7);
 }
 
 .logo {
@@ -38,7 +38,7 @@
 
 .item {
   list-style: none;
-  margin-left: 32px;
+  margin-left: var(--fds-spacing-7);
 }
 
 .link {
@@ -51,7 +51,7 @@
 }
 
 .link:hover {
-  border-color: #c3c3c3;
+  border-color: var(--fds-semantic-border-neutral-divider);
 }
 
 .item .active {
