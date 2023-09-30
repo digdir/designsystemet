@@ -1,4 +1,6 @@
 .tabItem {
+  --fdsc-icon-size: var(--fds-sizing-4);
+
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
   border: none;
   background-color: transparent;
@@ -20,6 +22,12 @@
 
 .tabItem svg {
   overflow: visible;
+}
+
+.icon {
+  display: inline-block;
+  height: var(--fdsc-icon-size);
+  width: var(--fdsc-icon-size);
 }
 
 .tabItem:hover {
