@@ -17,23 +17,23 @@ type UseTabItem = (props: TabItemProps) => {
 /** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` and `RovingTabIndex` */
 export const useTabItem: UseTabItem = (props: TabItemProps) => {
   const { ...rest } = props;
-  const toggleGroup = useContext(TabsContext);
+  const tabs = useContext(TabsContext);
   const itemValue =
     props.value ?? (typeof props.children === 'string' ? props.children : '');
-  const active = toggleGroup.value == itemValue;
+  const active = tabs.value == itemValue;
   const buttonId = `togglegroup-item-${useId()}`;
 
   return {
     ...rest,
     active: active,
-    size: toggleGroup?.size,
+    size: tabs?.size,
     buttonProps: {
       id: buttonId,
       'aria-checked': active,
       'aria-current': active,
       role: 'radio',
       onClick: () => {
-        toggleGroup.onChange?.(itemValue);
+        tabs.onChange?.(itemValue);
       },
     },
   };
