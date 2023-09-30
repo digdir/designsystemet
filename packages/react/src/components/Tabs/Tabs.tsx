@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import React, { createContext, forwardRef, useState } from 'react';
 import cn from 'classnames';
 
 import classes from './Tabs.module.css';
@@ -8,18 +8,51 @@ export type TabsProps = {
   /** Description of what myProp does in the component */
   value?: string;
   defaultValue?: string;
-} & HTMLAttributes<HTMLDivElement>;
+  onChange?: (value: string) => void;
+  size?: 'small' | 'medium' | 'large';
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
+
+export type TabsContextProps = {
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  size?: 'small' | 'medium' | 'large';
+};
+
+export const TabsContext = createContext<TabsContextProps>({});
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  ({ children, ...rest }, ref) => {
+  ({ children, value, defaultValue, onChange, size, ...rest }, ref) => {
+    const isControlled = value !== undefined;
+    const [uncontrolledValue, setUncontrolledValue] = useState<
+      string | undefined
+    >(defaultValue);
+
+    let onValueChange = onChange;
+    if (!isControlled) {
+      onValueChange = (newValue: string) => {
+        setUncontrolledValue(newValue);
+        onChange?.(newValue);
+      };
+      value = uncontrolledValue;
+    }
     return (
-      <div
-        {...rest}
-        className={cn(classes.tabs, rest.className)}
-        ref={ref}
+      <TabsContext.Provider
+        value={{
+          value,
+          defaultValue,
+          onChange: onValueChange,
+          size,
+        }}
       >
-        {children}
-      </div>
+        <div
+          {...rest}
+          className={cn(classes.tabs, rest.className)}
+          ref={ref}
+        >
+          {children}
+        </div>
+      </TabsContext.Provider>
     );
   },
 );
