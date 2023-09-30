@@ -1,6 +1,8 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import cn from 'classnames';
+
+import { TabsContext } from '../Tabs';
 
 import classes from './TabContent.module.css';
 
@@ -10,15 +12,22 @@ export type TabContentProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
-  ({ children, ...rest }, ref) => {
+  ({ children, value, ...rest }, ref) => {
+    const tabs = useContext(TabsContext);
+    const active = value == tabs.value;
+
     return (
-      <div
-        {...rest}
-        className={cn(classes.tabItemList, rest.className)}
-        ref={ref}
-      >
-        {children}
-      </div>
+      <>
+        {active && (
+          <div
+            {...rest}
+            className={cn(classes.tabContent, rest.className)}
+            ref={ref}
+          >
+            {children}
+          </div>
+        )}
+      </>
     );
   },
 );
