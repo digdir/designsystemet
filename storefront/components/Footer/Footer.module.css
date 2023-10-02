@@ -51,8 +51,8 @@
 .bottom {
   background-color: var(--color-surface-neutral-inverted-darker);
   padding: var(--fds-spacing-7) 0;
-  color: #d4d4d4;
-  font-size: 15px;
+  color: var(--color-text-on_inverted-subtle);
+  font: var(--fds-typography-paragraph-short-small);
 }
 
 .button {
@@ -61,12 +61,11 @@
   justify-content: center;
   text-decoration: none;
   height: 48px;
-  padding: 0 20px;
-  margin-top: 32px;
+  padding: 0 var(--fds-spacing-5);
+  margin-top: var(--fds-spacing-7);
   border-radius: 2px;
-  font-weight: 400;
   transition: 0.1s all;
-  font-size: 15px;
+  font: var(--fds-typography-paragraph-short-small);
   color: var(--color-text-on_inverted-subtle);
   border: 1px dashed var(--color-text-on_inverted-subtle);
 }
