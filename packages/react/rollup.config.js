@@ -21,10 +21,12 @@ export default [
       {
         file: packageJson.main,
         format: 'cjs',
+        banner: "'use client';",
       },
       {
         file: packageJson.module,
         format: 'esm',
+        banner: "'use client';",
       },
     ],
     external: [
@@ -44,13 +46,19 @@ export default [
       typescript({ tsconfig: './tsconfig.build.json' }),
       svgr({ exportType: 'named' }),
       postcss(),
-      terser(),
+      terser({
+        compress: {
+          // Needed until https://github.com/terser/terser/issues/1320 is fixed
+          directives: false,
+        },
+      }),
       image(),
     ],
   },
   {
     input: 'dist/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+
     plugins: [dts()],
     external: [/@altinn\/figma-design-tokens/, /\.css$/],
   },
