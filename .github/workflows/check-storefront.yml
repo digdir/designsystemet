@@ -31,6 +31,6 @@ jobs:
       - name: Lint Code
         run: yarn lint ./storefront
       - name: Lint CSS
-        run: yarn lint-style ./storefront
+        run: yarn lint-style ./storefront/**/*.css
       - name: Test
         run: yarn test
