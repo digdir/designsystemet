@@ -8,7 +8,6 @@ import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from '@svgr/rollup';
 
-import terser from './rollup-terser.mjs';
 import packageJson from './package.json';
 
 // css files needs to be bundled
@@ -46,12 +45,6 @@ export default [
       typescript({ tsconfig: './tsconfig.build.json' }),
       svgr({ exportType: 'named' }),
       postcss(),
-      terser({
-        compress: {
-          // Needed until https://github.com/terser/terser/issues/1320 is fixed
-          directives: false,
-        },
-      }),
       image(),
     ],
   },
