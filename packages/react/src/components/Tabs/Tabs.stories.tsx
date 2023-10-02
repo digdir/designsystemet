@@ -31,35 +31,15 @@ export default {
   component: Tabs,
 } as Meta;
 
-// Simple story
-// First story is the one displayed by <Preview /> and used for <Controls />
-
-// Function story
-// Use this story for listing our different variants, patterns with other components or examples usage with useState
 export const Preview: StoryFn<typeof Tabs> = (args) => (
   <Tabs
     {...args}
     defaultValue='value1'
   >
     <Tabs.List>
-      <Tabs.Tab
-        value='value1'
-        icon={icon}
-      >
-        Tab 1
-      </Tabs.Tab>
-      <Tabs.Tab
-        value='value2'
-        icon={<AkselIcon2 />}
-      >
-        Tab 2
-      </Tabs.Tab>
-      <Tabs.Tab
-        value='value3'
-        icon={<AkselIcon4 />}
-      >
-        Tab 3
-      </Tabs.Tab>
+      <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+      <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
     </Tabs.List>
     <Tabs.Content value='value1'>content 1</Tabs.Content>
     <Tabs.Content value='value2'>content 2</Tabs.Content>
