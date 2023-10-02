@@ -7,7 +7,14 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 # Checkbox
 
-`Checkbox` er en knapp som skal brukes i kombinasjon med andre Checkboxknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Checkbox.Group` hvis man har behov for Checkboxknapper.
+Vi bruker `Checkbox` til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/felles-checkbox-group--docs) for gruppering av flere valg.
+
+Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en avmerkingsboks stå alene. For eksempel når brukeren skal samtykke til vilkår.
+
+Vær oppmerksom på:
+
+- Vis listen med avmerkingsbokser vertikalt, slik at de presenteres i leseretningen.
+- Ikke bruk checkbox når det er flere enn 7 alternativer.
 
 <Primary />
 <Controls />
@@ -28,6 +35,8 @@ import { Checkbox } from '@digdir/design-system-react';
 </Checkbox.Group>;
 ```
 
+## Eksempler
+
 ### Enkel
 
 `Checkbox` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
@@ -36,7 +45,7 @@ import { Checkbox } from '@digdir/design-system-react';
 
 ## `Checkbox.Group`
 
-Bruk `Checkbox.Group` for gruppering av Checkboxknapper.
+Bruk `Checkbox.Group` for gruppering av flere valg.
 
 <Canvas of={CheckboxGroupStories.Preview} />
 <Controls of={CheckboxGroupStories.Preview} />
@@ -45,7 +54,7 @@ Bruk `Checkbox.Group` for gruppering av Checkboxknapper.
 
 Bruk `error` på `Checkbox.Group` for å vise feilmelding.
 
-Her må `Checkbox.Group` brukes da den aktivere korrekt stil og sørger for at innholdet har riktige attributter mtp. tilgjengelighet.
+Her må `Checkbox.Group` brukes da den aktiverer riktig stil og sørger for at innholdet er tilgjengelig.
 
 <Canvas of={CheckboxGroupStories.Error} />
 
@@ -57,8 +66,35 @@ Bruk `value` på `Checkbox.Group` for å kontrollere verdiene selv.
 
 ### Readonly
 
+Ikke bruk readonly med mindre det er absolutt umulig å gjøre noe annet.
+
 <Canvas of={CheckboxGroupStories.ReadOnly} />
 
 ### Disabled
 
+Ikke bruk disabled med mindre det er absolutt umulig å gjøre noe annet.
+
 <Canvas of={CheckboxGroupStories.Disabled} />
+
+<br />
+
+## Retningslinjer for checkbox
+
+- Hvis det er syv eller flere svaralternativer bruker vi heller [`select`](/docs/altinn-nativeselect--docs) (nedtrekksmeny).
+
+- Ikke bruk avmerkingsbokser til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
+
+### Plasering og leseretning
+
+`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å scanne listen når alternativene ligger under hverandre. En horisontal visning vil være problematisk for brukere med nedsatt synsfelt og for brukere som må forstørre websiden med zoom.
+
+Det finnes noen unntak:
+
+- I tabeller, for eksempel i et spørreskjema.
+- For å velge rader i tabeller.
+
+Hvis avmerkingsboksene står horisontalt er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+
+<br />
+
+## Tekst i komponenten
