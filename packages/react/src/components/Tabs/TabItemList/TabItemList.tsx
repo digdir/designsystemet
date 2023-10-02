@@ -19,6 +19,7 @@ export const TabItemList = forwardRef<HTMLDivElement, TabItemListProps>(
     return (
       <RovingTabindexRoot
         {...rest}
+        role='tablist'
         className={cn(classes.tabItemList, rest.className)}
         ref={ref}
       >

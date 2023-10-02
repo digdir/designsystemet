@@ -29,9 +29,8 @@ export const useTabItem: UseTabItem = (props: TabItemProps) => {
     size: tabs?.size,
     buttonProps: {
       id: buttonId,
-      'aria-checked': active,
-      'aria-current': active,
-      role: 'radio',
+      'aria-selected': active,
+      role: 'tab',
       onClick: () => {
         tabs.onChange?.(itemValue);
       },
