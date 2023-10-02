@@ -7,9 +7,9 @@ import { TabsContext } from '../Tabs';
 import classes from './TabContent.module.css';
 
 export type TabContentProps = {
-  /** Description of what myProp does in the component */
+  /** Value of the content to be dislpayed */
   value?: string;
-} & HTMLAttributes<HTMLDivElement>;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, value, ...rest }, ref) => {

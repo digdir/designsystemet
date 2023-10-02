@@ -1,5 +1,3 @@
-// react component that takes a list of tabitems and selects one of them as active. uses the RovingTabindex pattern.
-
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
@@ -11,9 +9,11 @@ import classes from './TabItem.module.css';
 import { useTabItem } from './useTabItem';
 
 export type TabItemProps = {
-  /** Description of what myProp does in the component */
+  /** Value of the TabItem */
   value: string;
+  /** The Children */
   children?: string;
+  /** Icon to display */
   icon?: React.ReactNode;
 } & Omit<HTMLAttributes<HTMLButtonElement>, 'children' | 'value'>;
 

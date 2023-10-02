@@ -5,7 +5,6 @@ import { TabContent } from './TabContent';
 
 export type { TabsProps } from './Tabs';
 export type { TabItemProps } from './TabItem';
-export type { TabItemListProps } from './TabItemList';
 export type { TabContentProps } from './TabContent';
 
 type TabsComponent = typeof TabsRoot & {

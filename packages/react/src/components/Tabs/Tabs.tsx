@@ -5,13 +5,31 @@ import cn from 'classnames';
 import classes from './Tabs.module.css';
 
 export type TabsProps = {
-  /** Description of what myProp does in the component */
+  /** Controlled state for `Tabs` component. */
   value?: string;
+  /** Default value. */
   defaultValue?: string;
+  /** Callback with selected `TabItem` `value` */
   onChange?: (value: string) => void;
+  /** Changes items size and paddings */
   size?: 'small' | 'medium' | 'large';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
+/** `Tabs` component.
+ * @example
+ * ```tsx
+ * <Tabs onChange={(value) => console.log(value)}>
+ *   <Tabs.List>
+ *     <Tabs.Item value='1'>Tab 1</Tabs.Item>
+ *     <Tabs.Item value='2'>Tab 2</Tabs.Item>
+ *     <Tabs.Item value='3'>Tab 3</Tabs.Item>
+ *   </Tabs.List>
+ *   <Tabs.Content value='1'>content 1</Tabs.Content>
+ *   <Tabs.Content value='2'>content 2</Tabs.Content>
+ *   <Tabs.Content value='3'>content 3</Tabs.Content>
+ * </Tabs>
+ * ```
+ */
 export type TabsContextProps = {
   value?: string;
   defaultValue?: string;

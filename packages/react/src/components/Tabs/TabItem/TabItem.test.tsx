@@ -1,11 +1,11 @@
-// tests for TabItem
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { TabItem } from '.';
 import { TabItemList } from '../TabItemList';
 import { Tabs } from '..';
+
+import { TabItem } from '.';
 
 const user = userEvent.setup();
 

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import * as icons from '@navikt/aksel-icons';
 
-import { Tabs } from '.';
 import { Button } from '../Button';
+
+import { Tabs } from '.';
 
 const icon = (
   <svg
