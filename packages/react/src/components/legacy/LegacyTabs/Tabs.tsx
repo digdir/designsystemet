@@ -2,12 +2,12 @@ import type { KeyboardEventHandler } from 'react';
 import React, { useEffect, useId, useRef, useState } from 'react';
 import cn from 'classnames';
 
-import { useUpdate } from '../../hooks';
-import { areItemsUnique } from '../../utils/arrayUtils';
+import { useUpdate } from '../../../hooks';
+import { areItemsUnique } from '../../../utils/arrayUtils';
 
 import classes from './Tabs.module.css';
 
-export interface TabItem {
+export interface LegacyTabItem {
   name: string;
   content: React.ReactNode;
   tabId?: string;
@@ -15,19 +15,19 @@ export interface TabItem {
   value?: string;
 }
 
-export interface TabsProps {
+export interface LegacyTabsProps {
   activeTab?: string;
-  items: TabItem[];
+  items: LegacyTabItem[];
   onChange?: (name: string) => void;
 }
 
 const validId = (str: string) => str.replace(/\s/, '_');
 
-const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
+const LegacyTabs = ({ activeTab, items, onChange }: LegacyTabsProps) => {
   const idBase = useId();
 
   // Generate values for undefined properties
-  const tabs: Required<TabItem>[] = items.map(
+  const tabs: Required<LegacyTabItem>[] = items.map(
     ({
       name,
       content,
@@ -136,6 +136,6 @@ const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
   );
 };
 
-Tabs.displayName = 'Tabs';
+LegacyTabs.displayName = 'LegacyTabs';
 
-export { Tabs };
+export { LegacyTabs };
