@@ -12,7 +12,7 @@ on:
       - 'packages/**'
 jobs:
   checks:
-    name: Checks, builds and tests code
+    name: Builds, lints and tests code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
