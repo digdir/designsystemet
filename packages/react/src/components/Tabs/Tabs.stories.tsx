@@ -1,8 +1,9 @@
-import React from 'react';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import React, { useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 import * as icons from '@navikt/aksel-icons';
 
 import { Tabs } from '.';
+import { Button } from '../Button';
 
 const icon = (
   <svg
@@ -23,8 +24,6 @@ const AkselIcon = icons.AirplaneFillIcon;
 const AkselIcon2 = icons.NewspaperFillIcon;
 const AkselIcon3 = icons.BrailleIcon;
 const AkselIcon4 = icons.BackpackFillIcon;
-
-type Story = StoryObj<typeof Tabs>;
 
 export default {
   title: 'Felles/Tabs',
@@ -88,3 +87,46 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
     <Tabs.Content value='value3'>content 3</Tabs.Content>
   </Tabs>
 );
+
+export const Controlled: StoryFn<typeof Tabs> = () => {
+  const [value, setValue] = useState('value1');
+
+  return (
+    <>
+      <Button
+        size='small'
+        onClick={() => setValue('value3')}
+      >
+        Choose Tab 3
+      </Button>
+      <Tabs
+        value={value}
+        onChange={setValue}
+      >
+        <Tabs.List>
+          <Tabs.Tab
+            value='value1'
+            icon={icon}
+          >
+            Tab 1
+          </Tabs.Tab>
+          <Tabs.Tab
+            value='value2'
+            icon={<AkselIcon2 />}
+          >
+            Tab 2
+          </Tabs.Tab>
+          <Tabs.Tab
+            value='value3'
+            icon={<AkselIcon4 />}
+          >
+            Tab 3
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Content value='value1'>content 1</Tabs.Content>
+        <Tabs.Content value='value2'>content 2</Tabs.Content>
+        <Tabs.Content value='value3'>content 3</Tabs.Content>
+      </Tabs>
+    </>
+  );
+};
