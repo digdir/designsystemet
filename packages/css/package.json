@@ -1,0 +1,12 @@
+{
+  "name": "@digdir/designsystemet-css",
+  "version": "1.0.0",
+  "description": "CSS files for the Digdir Common Design System",
+  "main": "dist/index.cjs.js",
+  "repository": "https://github.com/digdir/designsystem",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
