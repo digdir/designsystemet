@@ -4,10 +4,10 @@ import React from 'react';
 import { act, screen, render as renderRtl } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { lastItem } from '../../utils/arrayUtils';
+import { lastItem } from '../../../utils/arrayUtils';
 
-import type { TabItem, TabsProps } from './Tabs';
-import { Tabs } from './Tabs';
+import type { LegacyTabItem, LegacyTabsProps } from './Tabs';
+import { LegacyTabs } from './Tabs';
 
 const user = userEvent.setup();
 
@@ -29,20 +29,20 @@ const itemInfo = [
     value: 'item3',
   },
 ];
-const items: TabItem[] = itemInfo.map((item) => ({
+const items: LegacyTabItem[] = itemInfo.map((item) => ({
   name: item.name,
   content: <p>{item.textContent}</p>,
 }));
-const itemsWithValues: TabItem[] = itemInfo.map((item) => ({
+const itemsWithValues: LegacyTabItem[] = itemInfo.map((item) => ({
   name: item.name,
   content: <p>{item.textContent}</p>,
   value: item.value,
 }));
-const defaultProps: TabsProps = {
+const defaultProps: LegacyTabsProps = {
   items,
 };
 
-describe('Tabs', () => {
+describe('LegacyTabs', () => {
   it('Renders expected elements', () => {
     render();
     expect(getTablist()).toBeInTheDocument();
@@ -224,7 +224,7 @@ describe('Tabs', () => {
   it('Switches selected tab when rerendered with a new name in the activeTab property and values are not set', () => {
     const { rerender } = render();
     rerender(
-      <Tabs
+      <LegacyTabs
         {...defaultProps}
         activeTab={items[1].name}
       />,
@@ -235,7 +235,7 @@ describe('Tabs', () => {
   it('Switches selected tab when rerendered with a new value in the activeTab property and values are set', () => {
     const { rerender } = render();
     rerender(
-      <Tabs
+      <LegacyTabs
         {...defaultProps}
         items={itemsWithValues}
         activeTab={itemsWithValues[1].value}
@@ -301,9 +301,9 @@ describe('Tabs', () => {
   });
 });
 
-const render = (props?: Partial<TabsProps>) => {
+const render = (props?: Partial<LegacyTabsProps>) => {
   return renderRtl(
-    <Tabs
+    <LegacyTabs
       {...defaultProps}
       {...props}
     />,
