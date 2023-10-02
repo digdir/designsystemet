@@ -11,7 +11,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist"
   },
   "peerDependencies": {
