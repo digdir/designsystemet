@@ -9,15 +9,15 @@
 }
 
 .blue {
-  background-color: var(--fds-brand-tertiary-300);
+  background-color: var(--fds-brand-third-300);
 }
 
 .red {
-  background-color: var(--fds-brand-primary-300);
+  background-color: var(--fds-brand-first-300);
 }
 
 .yellow {
-  background-color: var(--fds-brand-secondary-300);
+  background-color: var(--fds-brand-second-300);
 }
 
 .grey {
