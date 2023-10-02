@@ -2,20 +2,21 @@
   --fdsc-icon-size: var(--fds-sizing-4);
   --fdsc-typography-font-family: inherit;
 
-  padding: var(--fds-spacing-2) var(--fds-spacing-3);
-  border: none;
-  background-color: transparent;
-  color: var(--fds-semantic-text-neutral-default);
-  box-sizing: border-box;
-  cursor: pointer;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
   gap: var(--fds-spacing-1);
   justify-content: center;
   text-align: center;
   align-items: center;
-  letter-spacing: var(--typography-default-letter-spacing);
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  border: none;
+  border-bottom: var(--fds-border_width-active) solid transparent;
   border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--fds-semantic-text-neutral-default);
+  letter-spacing: var(--typography-default-letter-spacing);
 }
 
 .tabItem.small {
