@@ -4,7 +4,7 @@
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
   border: none;
   background-color: transparent;
-  color: var(--fds-semantic-text-neutral-subtle);
+  color: var(--fds-semantic-text-neutral-default);
   box-sizing: border-box;
   cursor: pointer;
   font-family: inherit;
@@ -15,8 +15,6 @@
   text-align: center;
   align-items: center;
   letter-spacing: var(--typography-default-letter-spacing);
-  text-decoration: none;
-  position: relative;
   border-radius: 0;
 }
 
@@ -34,13 +32,14 @@
   border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-neutral-subtle);
 }
 
-.tabItem:focus-visible {
-  background: var(--fds-semantic-border-focus-outline);
-  border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-focus-boxshadow);
-  outline: none;
-}
-
 .tabItem.isActive {
   color: var(--fds-semantic-text-action-default);
   border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-action-default);
+}
+
+.tabItem:focus-visible {
+  background: var(--fds-semantic-border-focus-outline);
+  color: var(--fds-semantic-text-neutral-default);
+  border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-focus-boxshadow);
+  outline: none;
 }
