@@ -21,12 +21,19 @@ Description of the Tabs component.
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
 import { Tabs } from '@digdir/design-system-react';
 
-<Tabs>You are using the Tabs component!</Tabs>;
+  <Tabs
+    defaultValue='value1'
+  >
+    <Tabs.List>
+      <Tabs.Tab value='value1' >Tab 1</Tabs.Tab>
+      <Tabs.Tab value='value2' >Tab 2</Tabs.Tab>
+      <Tabs.Tab value='value3' >Tab 3</Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Content value='value1'>content 1</Tabs.Content>
+    <Tabs.Content value='value2'>content 2</Tabs.Content>
+    <Tabs.Content value='value3'>content 3</Tabs.Content>
+  </Tabs>
 ```
-
-## Composed
-
-<Canvas of={TabsStories.Composed} />
 
 ## Icons only
 

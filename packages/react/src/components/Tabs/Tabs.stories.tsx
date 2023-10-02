@@ -33,16 +33,14 @@ export default {
 
 // Simple story
 // First story is the one displayed by <Preview /> and used for <Controls />
-export const Preview: Story = {
-  args: {
-    children: 'You created the Tabs component!',
-  },
-};
 
 // Function story
 // Use this story for listing our different variants, patterns with other components or examples usage with useState
-export const Composed: StoryFn<typeof Tabs> = () => (
-  <Tabs defaultValue='value1'>
+export const Preview: StoryFn<typeof Tabs> = (args) => (
+  <Tabs
+    {...args}
+    defaultValue='value1'
+  >
     <Tabs.List>
       <Tabs.Tab
         value='value1'
