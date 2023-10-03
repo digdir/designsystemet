@@ -74,6 +74,7 @@
     "babel-jest": "^29.5.0",
     "babel-loader": "^9.1.2",
     "classnames": "^2.3.1",
+    "copyfiles": "^2.4.1",
     "eslint": "8.50.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-import-resolver-typescript": "3.6.1",

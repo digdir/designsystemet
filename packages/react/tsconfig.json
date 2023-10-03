@@ -1,10 +1,20 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./dist",
-        "declarationDir": "dist/types",
-        "emitDeclarationOnly": true
-    },
-    "include": ["./src", "declarations.d.ts"],
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./tsc-build",
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": false,
+
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "lib": ["es2017"],
+    "strict": true,
+    "esModuleInterop": false,
     "rootDir": "./src",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["./src", "declarations.d.ts"],
+  "rootDir": "./src"
 }
