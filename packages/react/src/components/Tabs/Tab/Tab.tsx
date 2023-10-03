@@ -11,11 +11,9 @@ import { useTabItem } from './useTab';
 export type TabProps = {
   /** Value of the TabItem */
   value: string;
-  /** The Children */
-  children?: string;
   /** Icon to display */
   icon?: React.ReactNode;
-} & Omit<HTMLAttributes<HTMLButtonElement>, 'children' | 'value'>;
+} & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { children, className, icon, ...rest } = props;
