@@ -32,10 +32,7 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Tabs> = (args) => (
-  <Tabs
-    {...args}
-    defaultValue='value1'
-  >
+  <Tabs {...args}>
     <Tabs.List>
       <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
       <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -46,6 +43,11 @@ export const Preview: StoryFn<typeof Tabs> = (args) => (
     <Tabs.Content value='value3'>content 3</Tabs.Content>
   </Tabs>
 );
+
+Preview.args = {
+  defaultValue: 'value1',
+  size: 'medium',
+};
 
 export const IconsOnly: StoryFn<typeof Tabs> = () => (
   <Tabs defaultValue='value1'>
