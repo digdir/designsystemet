@@ -1,6 +1,6 @@
 {
   "name": "@digdir/design-system-react",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -15,8 +15,8 @@
     "clean": "rimraf dist"
   },
   "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "publishConfig": {
     "access": "public"

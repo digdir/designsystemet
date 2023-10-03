@@ -1,14 +1,16 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Tabs } from './Tabs';
+import { LegacyTabs } from './Tabs';
 
 export default {
-  title: 'Altinn/Tabs',
-  component: Tabs,
+  title: 'Avviklet/LegacyTabs',
+  component: LegacyTabs,
 } as Meta;
 
-export const Eksempel: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />;
+export const Eksempel: StoryFn<typeof LegacyTabs> = (args) => (
+  <LegacyTabs {...args} />
+);
 
 Eksempel.args = {
   items: [

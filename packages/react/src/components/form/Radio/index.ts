@@ -24,4 +24,4 @@ Radio.Group.displayName = 'Radio.Group';
 
 export type { RadioProps, RadioGroupProps };
 
-export { Radio };
+export { Radio, RadioGroup };

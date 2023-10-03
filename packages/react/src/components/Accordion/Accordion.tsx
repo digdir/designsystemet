@@ -13,19 +13,20 @@ export type AccordionProps = {
   children: React.ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ border = false, color = 'neutral', className, ...rest }, ref) => (
-    <div
-      {...rest}
-      className={cn(
-        classes.accordion,
-        classes[color],
-        {
-          [classes.border]: border,
-        },
-        className,
-      )}
-      ref={ref}
-    />
-  ),
-);
+export const Accordion = forwardRef<
+  HTMLDivElement,
+  AccordionProps & { children: React.ReactNode }
+>(({ border = false, color = 'neutral', className, ...rest }, ref) => (
+  <div
+    {...rest}
+    className={cn(
+      classes.accordion,
+      classes[color],
+      {
+        [classes.border]: border,
+      },
+      className,
+    )}
+    ref={ref}
+  />
+));

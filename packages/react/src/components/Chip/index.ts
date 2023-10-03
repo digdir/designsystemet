@@ -1,8 +1,8 @@
-import { Group } from './Group';
+import { Group as ChipGroup } from './Group';
 import type { ChipGroupProps } from './Group';
-import { RemovableChip } from './Removable';
+import { RemovableChip as ChipRemovable } from './Removable';
 import type { RemovableChipProps } from './Removable';
-import { ToggleChip } from './Toggle';
+import { ToggleChip as ChipToggle } from './Toggle';
 import type { ToggleChipProps } from './Toggle/';
 
 type ChipComponent = {
@@ -14,15 +14,15 @@ type ChipComponent = {
    *    <Chip.Removable>Tekst</Chip.Removable>
    * </Chip.Group>
    */
-  Group: typeof Group;
-  Removable: typeof RemovableChip;
-  Toggle: typeof ToggleChip;
+  Group: typeof ChipGroup;
+  Removable: typeof ChipRemovable;
+  Toggle: typeof ChipToggle;
 };
 
 const Chip: ChipComponent = {
-  Group: Group,
-  Removable: RemovableChip,
-  Toggle: ToggleChip,
+  Group: ChipGroup,
+  Removable: ChipRemovable,
+  Toggle: ChipToggle,
 };
 
 Chip.Group.displayName = 'Chip.Group';
@@ -30,4 +30,4 @@ Chip.Removable.displayName = 'Chip.Removable';
 Chip.Toggle.displayName = 'Chip.Toggle';
 
 export type { RemovableChipProps, ToggleChipProps, ChipGroupProps };
-export { Chip };
+export { Chip, ChipGroup, ChipRemovable, ChipToggle };

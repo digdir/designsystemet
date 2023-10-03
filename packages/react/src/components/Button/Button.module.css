@@ -5,7 +5,6 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-on_action);
   --fdsc-icon-size: var(--fds-sizing-4);
 
-  composes: focusable from '../../utils/utility.module.css';
   display: flex;
   align-items: center;
   border-radius: var(--fdsc-border-radius);

@@ -29,7 +29,7 @@ export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
       <ChipGroupContext.Provider value={{ size }}>
         {React.Children.toArray(children).map((child, index) =>
           React.isValidElement(child) ? (
-            <li key={`${child.toString()}-${index}`}>{child}</li>
+            <li key={`chip-${index}`}>{child}</li>
           ) : null,
         )}
       </ChipGroupContext.Provider>

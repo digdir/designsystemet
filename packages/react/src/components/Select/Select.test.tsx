@@ -40,6 +40,7 @@ const sortedOptions: SingleSelectOption[] = [
   singleSelectOptions[2],
   singleSelectOptions[0],
 ];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const optionSearch = jest.fn((_o, _k) => sortedOptions);
 jest.mock('./utils', () => ({
   optionSearch: (
