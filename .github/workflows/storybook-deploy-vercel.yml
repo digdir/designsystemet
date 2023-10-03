@@ -9,7 +9,7 @@ on:
       - main
 jobs:
   deploy:
-    name: Build & deploy to Vercel
+    name: Build and deploy to Vercel
     runs-on: ubuntu-latest
 
     steps:
