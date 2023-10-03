@@ -96,7 +96,6 @@
     "remark-gfm": "^3.0.1",
     "rimraf": "^5.0.0",
     "rollup": "^3.29.4",
-    "rollup-plugin-dts": "^6.0.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^7.4.0",
