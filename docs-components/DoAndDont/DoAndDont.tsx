@@ -5,7 +5,7 @@ import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 
 import styles from './DoAndDont.module.css';
 
-function Wrapper({ variant, description, image, alt }: WrapperProps) {
+const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
   const icon = variant === 'do' ? <CheckmarkIcon /> : <XMarkIcon />;
   const heading = variant === 'do' ? 'Gjør' : 'Unngå';
 
@@ -48,9 +48,9 @@ function Wrapper({ variant, description, image, alt }: WrapperProps) {
       </div>
     </figure>
   );
-}
+};
 
-export function Do({ description, image, alt }: DoAndDontProps) {
+export const Do = ({ description, image, alt }: DoAndDontProps) => {
   return (
     <Wrapper
       variant='do'
@@ -59,9 +59,9 @@ export function Do({ description, image, alt }: DoAndDontProps) {
       alt={alt}
     />
   );
-}
+};
 
-export function Dont({ description, image, alt }: DoAndDontProps) {
+export const Dont = ({ description, image, alt }: DoAndDontProps) => {
   return (
     <Wrapper
       variant='dont'
@@ -70,19 +70,9 @@ export function Dont({ description, image, alt }: DoAndDontProps) {
       alt={alt}
     />
   );
-}
+};
 
-interface DoAndDontProps {
-  description: string;
-  image: string;
-  alt?: string;
-}
-
-interface WrapperProps extends DoAndDontProps {
-  variant: 'do' | 'dont';
-}
-
-function getAspectRatio(image: string): number {
+const getAspectRatio = (image: string): number => {
   const img = new Image();
   img.src = image;
 
@@ -90,4 +80,14 @@ function getAspectRatio(image: string): number {
   const h = img.naturalHeight;
 
   return w / h;
-}
+};
+
+type DoAndDontProps = {
+  description: string;
+  image: string;
+  alt?: string;
+};
+
+type WrapperProps = DoAndDontProps & {
+  variant: 'do' | 'dont';
+};
