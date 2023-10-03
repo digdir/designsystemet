@@ -3,9 +3,9 @@ import { useContext, useId } from 'react';
 import { TabsContext } from '../Tabs';
 import type { ButtonProps } from '../../Button';
 
-import type { TabItemProps } from './TabItem';
+import type { TabProps } from './Tab';
 
-type UseTabItem = (props: TabItemProps) => {
+type UseTabItem = (props: TabProps) => {
   active: boolean;
   size?: 'small' | 'medium' | 'large';
   buttonProps?: Pick<
@@ -15,7 +15,7 @@ type UseTabItem = (props: TabItemProps) => {
 };
 
 /** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` and `RovingTabIndex` */
-export const useTabItem: UseTabItem = (props: TabItemProps) => {
+export const useTabItem: UseTabItem = (props: TabProps) => {
   const { ...rest } = props;
   const tabs = useContext(TabsContext);
   const itemValue =

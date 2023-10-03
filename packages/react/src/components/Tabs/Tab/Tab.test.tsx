@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { TabItemList } from '../TabItemList';
 import { Tabs } from '..';
 
-import { TabItem } from '.';
+import { Tab } from '.';
 
 const user = userEvent.setup();
 
@@ -14,8 +14,8 @@ describe('TabItem', () => {
     render(
       <Tabs defaultValue='value1'>
         <TabItemList>
-          <TabItem value='value1'>Tab 1</TabItem>
-          <TabItem value='value2'>Tab 2</TabItem>
+          <Tab value='value1'>Tab 1</Tab>
+          <Tab value='value2'>Tab 2</Tab>
         </TabItemList>
       </Tabs>,
     );

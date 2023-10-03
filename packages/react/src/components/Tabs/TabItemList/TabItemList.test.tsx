@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { TabItem } from '../TabItem';
+import { Tab } from '../Tab';
 
 import { TabItemList } from '.';
 
@@ -12,8 +12,8 @@ describe('TabItemList', () => {
   test('can navigate tabs with keyboard', async () => {
     render(
       <TabItemList>
-        <TabItem value='value1'>Tab 1</TabItem>
-        <TabItem value='value2'>Tab 2</TabItem>
+        <Tab value='value1'>Tab 1</Tab>
+        <Tab value='value2'>Tab 2</Tab>
       </TabItemList>,
     );
 
