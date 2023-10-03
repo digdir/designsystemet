@@ -1,4 +1,5 @@
-import { HTMLAttributes, useContext, useId } from 'react';
+import type { HTMLAttributes } from 'react';
+import { useContext, useId } from 'react';
 
 import { TabsContext } from '../Tabs';
 
@@ -14,11 +15,9 @@ type UseTab = (props: TabProps) => {
 
 /** Handles props for `Tab` in context with `Tabs` */
 export const useTabItem: UseTab = (props: TabProps) => {
-  const { ...rest } = props;
+  const { value, ...rest } = props;
   const tabs = useContext(TabsContext);
-  const itemValue =
-    props.value ?? (typeof props.children === 'string' ? props.children : '');
-  const active = tabs.value == itemValue;
+  const active = tabs.value == value;
   const buttonId = `tab-${useId()}`;
 
   return {
@@ -29,7 +28,7 @@ export const useTabItem: UseTab = (props: TabProps) => {
     'aria-selected': active,
     role: 'tab',
     onClick: () => {
-      tabs.onChange?.(itemValue);
+      tabs.onChange?.(value);
     },
   };
 };

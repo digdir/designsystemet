@@ -9,7 +9,7 @@ import classes from './Tab.module.css';
 import { useTabItem } from './useTab';
 
 export type TabProps = {
-  /** Value of the TabItem */
+  /** Value that will be set in the `Tabs` components state when the tab is activated*/
   value: string;
   /** Icon to display */
   icon?: React.ReactNode;
