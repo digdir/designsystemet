@@ -1,8 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useState } from 'react';
-import cn from 'classnames';
-
-import classes from './Tabs.module.css';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
@@ -68,7 +65,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       >
         <div
           {...rest}
-          className={cn(classes.tabs, rest.className)}
           ref={ref}
         >
           {children}

@@ -16,7 +16,6 @@
   background-color: transparent;
   cursor: pointer;
   color: var(--fds-semantic-text-neutral-default);
-  letter-spacing: var(--typography-default-letter-spacing);
 }
 
 .tabItem.small {
