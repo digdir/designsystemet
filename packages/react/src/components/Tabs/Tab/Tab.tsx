@@ -19,12 +19,12 @@ export type TabProps = {
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { children, className, icon, ...rest } = props;
-  const { active, size = 'medium', buttonProps } = useTabItem(props);
+  const { active, size = 'medium', ...useTabRest } = useTabItem(props);
 
   return (
     <RovingTabindexItem
       {...rest}
-      {...buttonProps}
+      {...useTabRest}
       as={'button'}
       className={cn(
         classes.tabItem,
