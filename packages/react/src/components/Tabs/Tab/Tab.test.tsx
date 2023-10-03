@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { TabItemList } from '../TabItemList';
+import { TabList } from '../TabItemList';
 import { Tabs } from '..';
 
 import { Tab } from '.';
@@ -13,10 +13,10 @@ describe('TabItem', () => {
   test('item renders with correct aria attributes', async () => {
     render(
       <Tabs defaultValue='value1'>
-        <TabItemList>
+        <TabList>
           <Tab value='value1'>Tab 1</Tab>
           <Tab value='value2'>Tab 2</Tab>
-        </TabItemList>
+        </TabList>
       </Tabs>,
     );
 

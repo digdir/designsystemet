@@ -4,17 +4,17 @@ import userEvent from '@testing-library/user-event';
 
 import { Tab } from '../Tab';
 
-import { TabItemList } from '.';
+import { TabList } from '.';
 
 const user = userEvent.setup();
 
 describe('TabItemList', () => {
   test('can navigate tabs with keyboard', async () => {
     render(
-      <TabItemList>
+      <TabList>
         <Tab value='value1'>Tab 1</Tab>
         <Tab value='value2'>Tab 2</Tab>
-      </TabItemList>,
+      </TabList>,
     );
 
     const tab1 = screen.getByRole('tab', { name: 'Tab 1' });

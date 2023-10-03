@@ -6,7 +6,7 @@ import { RovingTabindexRoot } from '../../../utility-components/RovingTabIndex';
 
 import classes from './TabItemList.module.css';
 
-export const TabItemList = forwardRef<
+export const TabList = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
 >(({ children, ...rest }, ref) => {
