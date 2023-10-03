@@ -1,6 +1,6 @@
 import { Tabs as TabsRoot } from './Tabs';
 import { Tab } from './Tab';
-import { TabList } from './TabItemList';
+import { TabList } from './TabList';
 import { TabContent } from './TabContent';
 
 export type { TabsProps } from './Tabs';
