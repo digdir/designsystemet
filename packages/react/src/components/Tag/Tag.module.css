@@ -65,8 +65,8 @@
 }
 
 .outlined.primary {
-  --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-primary-light);
+  --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-first-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
@@ -113,8 +113,8 @@
 }
 
 .filled.primary {
-  --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-primary-dark);
+  --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-first-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 

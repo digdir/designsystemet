@@ -9,8 +9,8 @@
   --fdsc-accordion-header-bg-neutral-active: var(--fds-semantic-surface-action-first-no_fill-hover);
   --fdsc-accordion-header-bg-subtle: var(--fds-semantic-surface-neutral-subtle);
   --fdsc-accordion-header-bg-subtle-hover: var(--fds-semantic-surface-neutral-subtle-hover);
-  --fdsc-accordion-header-bg-primary: var(--fds-semantic-surface-primary-light);
-  --fdsc-accordion-header-bg-primary-hover: var(--fds-semantic-surface-primary-light-hover);
+  --fdsc-accordion-header-bg-primary: var(--fds-semantic-surface-first-light);
+  --fdsc-accordion-header-bg-primary-hover: var(--fds-semantic-surface-first-light-hover);
   --fdsc-accordion-header-bg-secondary: var(--fds-semantic-surface-secondary-light);
   --fdsc-accordion-header-bg-secondary-hover: var(--fds-semantic-surface-secondary-light-hover);
   --fdsc-accordion-header-bg-tertiary: var(--fds-semantic-surface-tertiary-light);
