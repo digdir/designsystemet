@@ -2,7 +2,7 @@
   --fdsc-border-radius: var(--fds-border_radius-interactive);
   --fdsc-button-size: var(--fds-component-mode-height-small);
   --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-on_action);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-on_action);
   --fdsc-icon-size: var(--fds-sizing-4);
 
   display: flex;
@@ -137,7 +137,7 @@
   }
 
   .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-hover);
 
     border-color: var(--fds-semantic-border-action-first-hover);
     background: var(--fds-semantic-surface-action-first-no_fill-hover);
@@ -169,7 +169,7 @@
   }
 
   .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-hover);
 
     background: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
@@ -246,14 +246,14 @@
 
 /* Outline button colors */
 .button.outline.primary {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-default);
 
   border-color: var(--fds-semantic-border-action-first-default);
   background: var(--fds-semantic-surface-action-first-no_fill);
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-active);
 
   border-color: var(--fds-semantic-border-action-first-active);
   background: var(--fds-semantic-surface-action-first-no_fill-active);
@@ -318,11 +318,11 @@
 
 /* Quiet button colors */
 .button.quiet.primary {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-default);
 }
 
 .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-active);
 
   background: var(--fds-semantic-surface-action-first-no_fill-active);
 }

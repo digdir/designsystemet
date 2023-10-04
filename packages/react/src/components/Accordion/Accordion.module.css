@@ -18,7 +18,7 @@
   --fdsc-accordion-header-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-header-border-inverted: var(--fds-semantic-border-on_inverted-default);
   --fdsc-accordion-header-shadow-focus: 2px 2px 3px var(--fds-semantic-border-neutral-subtle);
-  --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-primary-default);
+  --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-first-default);
   --fdsc-accordion-content-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-content-border-open: var(--fds-semantic-border-neutral-strong);
 }
