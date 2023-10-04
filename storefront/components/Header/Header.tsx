@@ -35,7 +35,7 @@ const Header = () => {
     },
     {
       name: 'Komponenter',
-      url: 'https://digdir.github.io/designsystem',
+      url: 'https://storybook.designsystemet.no',
     },
   ];
 
