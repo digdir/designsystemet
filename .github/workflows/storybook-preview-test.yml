@@ -4,7 +4,7 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
   PR_NUMBER: ${{ github.event.number }}
-on: push
+on: pull_request
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
