@@ -2,7 +2,7 @@ import React from 'react';
 import { render as renderRtl, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
-import * as hooks from '../../../hooks';
+import * as hooks from '../../hooks';
 
 import type { AnimateHeightProps } from './AnimateHeight';
 import { AnimateHeight } from './AnimateHeight';

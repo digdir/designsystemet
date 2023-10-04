@@ -1,11 +1,11 @@
 import React, { forwardRef, useId, useState } from 'react';
 import type { ChangeEvent, ForwardedRef, TextareaHTMLAttributes } from 'react';
 
-import { InputWrapper } from '../../utilities/InputWrapper';
+import { InputWrapper } from '../../../utilities/InputWrapper';
 import type {
   ReadOnlyVariant_,
   CharacterLimit,
-} from '../../utilities/InputWrapper';
+} from '../../../utilities/InputWrapper';
 
 import classes from './TextArea.module.css';
 

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 
 import { Popover } from '../Popover';
-import utilClasses from '../../utils/utility.module.css';
+import utilClasses from '../../utilities/Utility.module.css';
 
 import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';

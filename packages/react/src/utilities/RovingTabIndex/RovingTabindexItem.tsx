@@ -5,7 +5,7 @@ import React, { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
+import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import type { RovingTabindexElement } from './RovingTabindexRoot';
 

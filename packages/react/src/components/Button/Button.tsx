@@ -3,7 +3,7 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
-import utilityClasses from '../../utils/utility.module.css';
+import utilityClasses from '../../utilities/utility.module.css';
 
 import classes from './Button.module.css';
 

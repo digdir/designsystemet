@@ -5,7 +5,7 @@ import React, { createContext, useRef, useState, forwardRef } from 'react';
 import type { MutableRefObject, ReactNode, HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
+import type { OverridableComponent } from '../../types/OverridableComponent';
 
 type RovingTabindexRootBaseProps = {
   /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */

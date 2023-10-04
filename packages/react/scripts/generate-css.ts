@@ -45,37 +45,37 @@ async function createFiles() {
   // group files that are under src/components/{THIS IS THE NAME}
   const components: { [key: string]: string[] } = {};
   modules.forEach((file) => {
-    if (file.includes('/components')) {
-      let componentName = file.split('/components/')[1];
-
-      /* if (componentName.includes('form/')) {
-        componentName = componentName.split('form/')[1].split('/')[0];
-      } else  */
-      if (componentName.includes('legacy/')) {
-        componentName = componentName.split('legacy/')[1].split('/')[0];
-      } else if (componentName.includes('utilities/')) {
-        componentName = componentName.split('utilities/')[1].split('/')[0];
-      } else {
-        // find first uppercase letter
-        const filenameParts = componentName.split('/');
-        const uppercasePart = filenameParts.find(
-          (part) => part[0] === part[0].toUpperCase(),
-        );
-
-        if (!uppercasePart) {
-          throw new Error(
-            `Could not find uppercase part in ${componentName} from ${file}`,
-          );
-        }
-
-        componentName = uppercasePart;
-      }
-
-      if (!components[componentName]) {
-        components[componentName] = [];
-      }
-      components[componentName].push(file);
+    let componentName = '';
+    if (file.includes('/utilities/')) {
+      componentName = file.split('/src/')[1];
+    } else {
+      componentName = file.split('/components/')[1];
     }
+
+    if (componentName.includes('legacy/')) {
+      componentName = componentName.split('legacy/')[1].split('/')[0];
+    } else if (componentName.includes('utilities/')) {
+      componentName = componentName.split('utilities/')[1].split('/')[0];
+    } else {
+      // find first uppercase letter
+      const filenameParts = componentName.split('/');
+      const uppercasePart = filenameParts.find(
+        (part) => part[0] === part[0].toUpperCase(),
+      );
+
+      if (!uppercasePart) {
+        throw new Error(
+          `Could not find uppercase part in ${componentName} from ${file}`,
+        );
+      }
+
+      componentName = uppercasePart;
+    }
+
+    if (!components[componentName]) {
+      components[componentName] = [];
+    }
+    components[componentName].push(file);
   });
 
   console.log({ components });
@@ -85,6 +85,7 @@ async function createFiles() {
   // go over the components, and create a file that contains all the css for that component
   await Promise.all(
     Object.entries(components).map(async ([componentName, files]) => {
+      componentName = componentName.toLowerCase().split('.')[0];
       const result = await postcss([
         postcssModules({
           generateScopedName,
@@ -139,13 +140,13 @@ async function createFiles() {
 
       generatedComponents.push(
         path
-          .join(outputFolder, `${componentName.toLowerCase()}.css`)
+          .join(outputFolder, `${componentName}.css`)
           .replace(/\\/g, '/')
           .split('/css/')[1],
       );
 
       return fs.writeFile(
-        path.join(outputFolder, `${componentName.toLowerCase()}.css`),
+        path.join(outputFolder, `${componentName}.css`),
         result.css,
       );
     }),

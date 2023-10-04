@@ -2,7 +2,7 @@ import cn from 'classnames';
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
-import { AnimateHeight } from '../../utilities/AnimateHeight';
+import { AnimateHeight } from '../../../utilities/AnimateHeight';
 import { Paragraph } from '../../..';
 import classes from '../Accordion.module.css';
 import { AccordionItemContext } from '../AccordionItem';
