@@ -37,41 +37,6 @@ function prepareFileName(filePath: string) {
 const outputFolder = path.resolve(__dirname, '../../css');
 fs.ensureDirSync(outputFolder);
 
-async function processFile(
-  filePath: string,
-  scopeBehaviour: 'local' | 'global',
-) {
-  const result = await postcss([
-    postcssModules({
-      generateScopedName,
-      getJSON: () => {
-        return;
-      },
-      scopeBehaviour,
-    }),
-    cssnano({ preset: 'default' }),
-  ]).process(fs.readFileSync(filePath, 'utf-8'), {
-    from: path.basename(filePath),
-  });
-
-  const fileName = prepareFileName(filePath);
-
-  // if file comes from ./legacy folder, add it to the legacy folder
-  if (filePath.includes('legacy')) {
-    // if legacy folder does not exist, create it
-    if (!fs.existsSync(path.join(outputFolder, 'legacy'))) {
-      fs.mkdirSync(path.join(outputFolder, 'legacy'));
-    }
-
-    return fs.writeFile(
-      path.join(outputFolder, 'legacy', fileName),
-      result.css,
-    );
-  }
-
-  return fs.writeFile(path.join(outputFolder, fileName), result.css);
-}
-
 async function createFiles() {
   if (typeof global !== 'string') {
     throw new Error('Could not find global.css file');
@@ -88,6 +53,8 @@ async function createFiles() {
       } else  */
       if (componentName.includes('legacy/')) {
         componentName = componentName.split('legacy/')[1].split('/')[0];
+      } else if (componentName.includes('utilities/')) {
+        componentName = componentName.split('utilities/')[1].split('/')[0];
       } else {
         // find first uppercase letter
         const filenameParts = componentName.split('/');
@@ -151,6 +118,23 @@ async function createFiles() {
           path.join(outputFolder, 'legacy', `${componentName}.css`),
           result.css,
         );
+      } else if (files[0].includes('utilities')) {
+        // if utilities folder does not exist, create it
+        if (!fs.existsSync(path.join(outputFolder, 'utilities'))) {
+          fs.mkdirSync(path.join(outputFolder, 'utilities'));
+        }
+
+        generatedComponents.push(
+          path
+            .join(outputFolder, 'utilities', `${componentName}.css`)
+            .replace(/\\/g, '/')
+            .split('/css/')[1],
+        );
+
+        return fs.writeFile(
+          path.join(outputFolder, 'utilities', `${componentName}.css`),
+          result.css,
+        );
       }
 
       generatedComponents.push(
@@ -166,10 +150,27 @@ async function createFiles() {
       );
     }),
   ).then(async () => {
+    const utlityFiles = generatedComponents.filter((file) =>
+      file.includes('utilities/'),
+    );
+    await generateConcactenatedUtilities(utlityFiles);
     await concatIntoGlobal(generatedComponents);
   });
 
   console.log('Done generating css files');
+}
+
+async function generateConcactenatedUtilities(utlityFiles: string[]) {
+  await new Promise<void>((resolve) => {
+    const cssFilesContent = utlityFiles.map(
+      (file) => `@import url('${file}');`,
+    );
+    fs.writeFileSync(
+      path.join(outputFolder, 'utilities.css'),
+      cssFilesContent.join('\n'),
+    );
+    resolve();
+  });
 }
 
 async function concatIntoGlobal(cssFiles: string[]) {

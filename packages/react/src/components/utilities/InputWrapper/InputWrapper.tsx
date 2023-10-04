@@ -2,7 +2,7 @@ import React, { useId } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
-import utilityClasses from '../../utils/utility.module.css';
+import utilityClasses from '../../../utils/utility.module.css';
 import { ErrorMessage, Paragraph } from '../../Typography';
 
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';

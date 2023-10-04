@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useId, useState } from 'react';
 import cn from 'classnames';
 
-import { RovingTabindexRoot } from '../../utility-components/RovingTabIndex';
+import { RovingTabindexRoot } from '../utilities//RovingTabIndex';
 
 import classes from './ToggleGroup.module.css';
 
