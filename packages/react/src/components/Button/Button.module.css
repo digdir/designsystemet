@@ -260,14 +260,14 @@
 }
 
 .button.outline.secondary {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-default);
 
   border-color: var(--fds-semantic-border-action-second-default);
   background: var(--fds-semantic-surface-action-second-no_fill);
 }
 
 .button.outline.secondary:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-active);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-active);
 
   border-color: var(--fds-semantic-border-action-second-active);
 
@@ -328,11 +328,11 @@
 }
 
 .button.quiet.secondary {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-default);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-default);
 }
 
 .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
-  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-secondary-active);
+  --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-active);
 
   /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
   background: #ccd6df;
