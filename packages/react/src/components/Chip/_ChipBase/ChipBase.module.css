@@ -1,7 +1,7 @@
 .chipButton {
   --fdsc-chip-height: var(--fds-sizing-7);
   --fdsc-chip-padding: var(--fds-spacing-3);
-  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
   --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle);
   --fdsc-chip-border-radius: var(--fds-border_radius-full);
@@ -19,7 +19,7 @@
 /* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
   .chipButton:hover {
-    --fdsc-chip-background: var(--fds-semantic-surface-action-primary-subtle-hover);
+    --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle-hover);
     --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
     --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle-hover);
 
@@ -27,16 +27,16 @@
   }
 
   .chipButton:is([aria-pressed='true']):hover {
-    --fdsc-chip-background: var(--fds-semantic-surface-action-primary-no_fill-active);
+    --fdsc-chip-background: var(--fds-semantic-surface-action-first-no_fill-active);
     --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
   }
 }
 
 .chipButton:is([aria-pressed='true']),
 .chipButton:active {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-primary-active);
+  --fdsc-chip-background: var(--fds-semantic-surface-action-first-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
-  --fdsc-chip-border: var(--fds-semantic-surface-action-primary-active);
+  --fdsc-chip-border: var(--fds-semantic-surface-action-first-active);
 }
 
 .chipButton .label {

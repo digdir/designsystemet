@@ -114,7 +114,7 @@
 /* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
   .button.filled.primary:not([aria-disabled='true'], :disabled):hover {
-    background: var(--fds-semantic-surface-action-primary-hover);
+    background: var(--fds-semantic-surface-action-first-hover);
   }
 
   .button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
@@ -140,7 +140,7 @@
     --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
 
     border-color: var(--fds-semantic-border-action-primary-hover);
-    background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+    background: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
   .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
@@ -171,7 +171,7 @@
   .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
     --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
 
-    background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+    background: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
   .button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
@@ -200,11 +200,11 @@
 
 /* Filled button colors */
 .button.filled.primary {
-  background: var(--fds-semantic-surface-action-primary-default);
+  background: var(--fds-semantic-surface-action-first-default);
 }
 
 .button.filled.primary:not([aria-disabled='true'], :disabled):active {
-  background: var(--fds-semantic-surface-action-primary-active);
+  background: var(--fds-semantic-surface-action-first-active);
 }
 
 .button.filled.secondary {
@@ -249,14 +249,14 @@
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
 
   border-color: var(--fds-semantic-border-action-primary-default);
-  background: var(--fds-semantic-surface-action-primary-no_fill);
+  background: var(--fds-semantic-surface-action-first-no_fill);
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
   border-color: var(--fds-semantic-border-action-primary-active);
-  background: var(--fds-semantic-surface-action-primary-no_fill-active);
+  background: var(--fds-semantic-surface-action-first-no_fill-active);
 }
 
 .button.outline.secondary {
@@ -324,7 +324,7 @@
 .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
-  background: var(--fds-semantic-surface-action-primary-no_fill-active);
+  background: var(--fds-semantic-surface-action-first-no_fill-active);
 }
 
 .button.quiet.secondary {
