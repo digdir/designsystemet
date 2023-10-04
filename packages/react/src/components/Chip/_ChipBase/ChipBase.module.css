@@ -3,7 +3,7 @@
   --fdsc-chip-padding: var(--fds-spacing-3);
   --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle);
+  --fdsc-chip-border: var(--fds-semantic-border-action-first-subtle);
   --fdsc-chip-border-radius: var(--fds-border_radius-full);
 
   background: var(--fdsc-chip-background);
@@ -21,7 +21,7 @@
   .chipButton:hover {
     --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle-hover);
     --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-    --fdsc-chip-border: var(--fds-semantic-border-action-primary-subtle-hover);
+    --fdsc-chip-border: var(--fds-semantic-border-action-first-subtle-hover);
 
     cursor: pointer;
   }

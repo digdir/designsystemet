@@ -139,7 +139,7 @@
   .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
     --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
 
-    border-color: var(--fds-semantic-border-action-primary-hover);
+    border-color: var(--fds-semantic-border-action-first-hover);
     background: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
@@ -248,14 +248,14 @@
 .button.outline.primary {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
 
-  border-color: var(--fds-semantic-border-action-primary-default);
+  border-color: var(--fds-semantic-border-action-first-default);
   background: var(--fds-semantic-surface-action-first-no_fill);
 }
 
 .button.outline.primary:not([aria-disabled='true'], :disabled):active {
   --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
 
-  border-color: var(--fds-semantic-border-action-primary-active);
+  border-color: var(--fds-semantic-border-action-first-active);
   background: var(--fds-semantic-surface-action-first-no_fill-active);
 }
 
