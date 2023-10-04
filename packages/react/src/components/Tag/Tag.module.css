@@ -71,8 +71,8 @@
 }
 
 .outlined.secondary {
-  --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-secondary-light);
+  --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-second-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
@@ -119,8 +119,8 @@
 }
 
 .filled.secondary {
-  --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-secondary-dark);
+  --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-second-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 
