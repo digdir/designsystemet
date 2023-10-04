@@ -3,7 +3,6 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { RovingTabindexItem } from '../../../utility-components/RovingTabIndex';
-import { SvgIcon } from '../../SvgIcon';
 
 import classes from './Tab.module.css';
 import { useTabItem } from './useTab';
@@ -32,12 +31,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
       )}
       ref={ref}
     >
-      {icon && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
+      {icon && <span className={classes.icon}>{icon}</span>}
       {children}
     </RovingTabindexItem>
   );

@@ -13,10 +13,16 @@
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
   border: none;
   border-radius: 0;
-  background-color: var(--fds-semantic-background-default);
+  background-color: transparent;
   cursor: pointer;
   color: var(--fds-semantic-text-neutral-subtle);
   position: relative;
+}
+
+.icon > svg {
+  display: flex;
+  height: 1.75em;
+  width: auto;
 }
 
 .tabItem.small {
@@ -41,16 +47,6 @@
   font: var(--fds-typography-interactive-large);
   font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-4) var(--fds-spacing-6);
-}
-
-.tabItem svg {
-  overflow: visible;
-}
-
-.icon {
-  display: inline-block;
-  height: var(--fdsc-icon-size);
-  width: var(--fdsc-icon-size);
 }
 
 .tabItem:hover {
