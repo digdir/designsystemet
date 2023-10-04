@@ -3,7 +3,7 @@
   "version": "0.27.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "author": "Digdir Designsystem Team",
@@ -11,8 +11,9 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c",
-    "clean": "rimraf dist"
+    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist && rimraf tsc-build",
+    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
@@ -27,5 +28,8 @@
     "@floating-ui/react": "0.25.2",
     "@navikt/aksel-icons": "^3.2.4",
     "react-number-format": "5.2.2"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
   }
 }

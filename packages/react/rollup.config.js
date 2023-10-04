@@ -1,36 +1,36 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
-import dts from 'rollup-plugin-dts';
 import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from '@svgr/rollup';
 
-import terser from './rollup-terser.mjs';
-import packageJson from './package.json';
-
-// css files needs to be bundled
-const altinnFigmaTokensExceptCss = /@altinn\/figma-design-tokens.*(?<!css)$/;
+const input = './tsc-build/index.js';
 
 export default [
   {
-    input: 'src/index.ts',
+    input,
     output: [
       {
-        file: packageJson.main,
+        input,
+        dir: './dist/cjs',
         format: 'cjs',
         banner: "'use client';",
+        preserveModules: true,
+        preserveModulesRoot: 'tsc-build',
       },
       {
-        file: packageJson.module,
-        format: 'esm',
+        input,
+        dir: './dist/esm',
+        format: 'es',
         banner: "'use client';",
+        preserveModules: true,
+        preserveModulesRoot: 'tsc-build',
       },
     ],
     external: [
-      altinnFigmaTokensExceptCss,
+      /@altinn\/figma-design-tokens.*(?<!css)$/,
       /@react-hookz\/web/,
       /@radix-ui\/react-popover$/,
       /react-number-format/,
@@ -43,23 +43,9 @@ export default [
       resolve(),
       commonjs(),
       json(),
-      typescript({ tsconfig: './tsconfig.build.json' }),
       svgr({ exportType: 'named' }),
       postcss(),
-      terser({
-        compress: {
-          // Needed until https://github.com/terser/terser/issues/1320 is fixed
-          directives: false,
-        },
-      }),
       image(),
     ],
-  },
-  {
-    input: 'dist/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-
-    plugins: [dts()],
-    external: [/@altinn\/figma-design-tokens/, /\.css$/],
   },
 ];

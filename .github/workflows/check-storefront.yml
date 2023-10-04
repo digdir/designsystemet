@@ -1,16 +1,20 @@
 # Runs conventional commit check on PR
-name: Checks
+name: Checks storefront
 on:
   workflow_dispatch:
   pull_request:
     branches:
       - main
+    paths:
+      - 'storefront/**'
   push:
     branches:
       - main
+    paths:
+      - 'storefront/**'
 jobs:
   checks:
-    name: Checks, builds and tests code
+    name: Builds, lints and tests code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,11 +26,13 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable
-      - name: Build
+      - name: Build packages
         run: yarn build
+      - name: Build storefront
+        run: yarn build:storefront
       - name: Lint Code
-        run: yarn lint:all
+        run: yarn lint ./storefront
       - name: Lint CSS
-        run: yarn lint-style
+        run: yarn lint-style ./storefront/**/*.css
       - name: Test
         run: yarn test
