@@ -1,6 +1,7 @@
 .tabItem {
   --fdsc-icon-size: var(--fds-sizing-4);
   --fdsc-typography-font-family: inherit;
+  --fdsc-bottom-border-color: transparent;
 
   display: flex;
   flex-direction: row;
@@ -11,11 +12,11 @@
   align-items: center;
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
   border: none;
-  border-bottom: var(--fds-border_width-active) solid transparent;
   border-radius: 0;
-  background-color: transparent;
+  background-color: var(--fds-semantic-background-default);
   cursor: pointer;
   color: var(--fds-semantic-text-neutral-default);
+  position: relative;
 }
 
 .tabItem.small {
@@ -53,17 +54,31 @@
 }
 
 .tabItem:hover {
-  border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-neutral-subtle);
+  --fdsc-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
 }
 
 .tabItem.isActive {
+  --fdsc-bottom-border-color: var(--fds-semantic-border-action-default);
+
   color: var(--fds-semantic-text-action-default);
-  border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-action-default);
 }
 
 .tabItem:focus-visible {
+  --fdsc-bottom-border-color: var(--fds-semantic-text-neutral-default);
+
   background: var(--fds-semantic-border-focus-outline);
   color: var(--fds-semantic-text-neutral-default);
-  border-bottom: var(--fds-border_width-active) solid var(--fds-semantic-border-focus-boxshadow);
   outline: none;
+}
+
+.tabItem::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  border-radius: var(--fds-border_radius-full);
+  background-color: var(--fdsc-bottom-border-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }

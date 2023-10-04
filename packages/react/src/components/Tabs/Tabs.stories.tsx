@@ -21,10 +21,10 @@ const icon = (
   </svg>
 );
 
-const AkselIcon = icons.AirplaneFillIcon;
-const AkselIcon2 = icons.NewspaperFillIcon;
-const AkselIcon3 = icons.BrailleIcon;
-const AkselIcon4 = icons.BackpackFillIcon;
+const AkselIcon = icons.AirplaneIcon;
+const AkselIcon2 = icons.NewspaperIcon;
+const AkselIcon3 = icons.DogIcon;
+const AkselIcon4 = icons.BackpackIcon;
 
 export default {
   title: 'Felles/Tabs',
