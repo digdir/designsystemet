@@ -15,7 +15,7 @@
   border-radius: 0;
   background-color: var(--fds-semantic-background-default);
   cursor: pointer;
-  color: var(--fds-semantic-text-neutral-default);
+  color: var(--fds-semantic-text-neutral-subtle);
   position: relative;
 }
 
@@ -55,6 +55,8 @@
 
 .tabItem:hover {
   --fdsc-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
+
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .tabItem.isActive {

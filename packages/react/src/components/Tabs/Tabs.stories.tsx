@@ -82,6 +82,7 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
       >
         Choose Tab 3
       </Button>
+      <br />
       <Tabs
         value={value}
         onChange={setValue}
