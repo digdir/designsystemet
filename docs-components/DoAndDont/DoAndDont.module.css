@@ -5,6 +5,7 @@
   background-color: var(--fds-semantic-background-subtle);
   padding: 24px;
   width: calc(50% - (var(--fds-spacing-4) / 2));
+  height: 100%;
   border-bottom: 10px solid var(--color);
   border-radius: var(--fds-spacing-1);
   box-shadow: var(--fds-shadow-medium);

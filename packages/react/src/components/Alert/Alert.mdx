@@ -1,10 +1,5 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import {
-  Information,
-  Do,
-  Dont,
-  FlexContainer,
-} from '../../../../../docs-components';
+import { Information, Do, Dont, Stack } from '../../../../../docs-components';
 import * as AlertStories from './Alert.stories';
 
 <Meta of={AlertStories} />
@@ -90,7 +85,10 @@ Kan brukes når alerten skal fremheves mer fra bakgrunnen, for eksempel dersom d
 
 Det er viktig at Alerts har samme utseende og formspråk på tvers av produktene, så den skal ikke justeres.
 
-<FlexContainer>
+<Stack direction="row" style={{
+  justifyContent: 'unset',
+  alignItems: 'unset'
+}}>
   <Do
     description='Alert brukes på tvers av produkter og skal se like ut'
     image='/img/component-guidelines/alert/alert-ex1-do.png'
@@ -100,7 +98,7 @@ Det er viktig at Alerts har samme utseende og formspråk på tvers av produktene
     description='Ikke fjern border, bytt ikon, eller gjør andre visuelle endringer på alert'
     image='/img/component-guidelines/alert/alert-ex1-dont.png'
   />
-</FlexContainer>
+</Stack>
 <br />
 
 ## Tekst i komponenten
