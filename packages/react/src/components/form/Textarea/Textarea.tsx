@@ -11,7 +11,7 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextarea } from './useTextarea';
 import classes from './Textarea.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
+import utilityClasses from './../../../utilities/Utility.module.css';
 
 export type TextareaProps = {
   /** Label */

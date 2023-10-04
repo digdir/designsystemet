@@ -11,7 +11,7 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 import classes from './Textfield.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
+import utilityClasses from './../../../utilities/Utility.module.css';
 
 export type TextfieldProps = {
   /** Label */

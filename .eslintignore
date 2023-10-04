@@ -5,3 +5,4 @@ coverage/
 storybook-static/
 packages/tokens/brand/**/*
 tsc-build/
+packages/css/**/*.css

@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Paragraph } from '../../Typography';
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 import { ChipGroupContext } from '../Group';
-import utilityClasses from '../../../utilities/utility.module.css';
+import utilityClasses from '../../../utilities/Utility.module.css';
 
 import classes from './ChipBase.module.css';
 

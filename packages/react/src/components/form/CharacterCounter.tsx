@@ -1,6 +1,6 @@
 import React from 'react';
 
-import utilityClasses from '../../utilities/utility.module.css';
+import utilityClasses from '../../utilities/Utility.module.css';
 import { ErrorMessage } from '../Typography';
 
 export type CharacterLimitProps = Omit<
