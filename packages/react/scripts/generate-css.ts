@@ -83,12 +83,25 @@ async function createFiles() {
     if (file.includes('/components')) {
       let componentName = file.split('/components/')[1];
 
-      if (componentName.includes('form/')) {
+      /* if (componentName.includes('form/')) {
         componentName = componentName.split('form/')[1].split('/')[0];
-      } else if (componentName.includes('legacy/')) {
+      } else  */
+      if (componentName.includes('legacy/')) {
         componentName = componentName.split('legacy/')[1].split('/')[0];
       } else {
-        componentName = componentName.split('/')[0];
+        // find first uppercase letter
+        const filenameParts = componentName.split('/');
+        const uppercasePart = filenameParts.find(
+          (part) => part[0] === part[0].toUpperCase(),
+        );
+
+        if (!uppercasePart) {
+          throw new Error(
+            `Could not find uppercase part in ${componentName} from ${file}`,
+          );
+        }
+
+        componentName = uppercasePart;
       }
 
       if (!components[componentName]) {
@@ -99,6 +112,8 @@ async function createFiles() {
   });
 
   console.log({ components });
+
+  const generatedComponents: string[] = [];
 
   // go over the components, and create a file that contains all the css for that component
   await Promise.all(
@@ -125,49 +140,58 @@ async function createFiles() {
           fs.mkdirSync(path.join(outputFolder, 'legacy'));
         }
 
+        generatedComponents.push(
+          path
+            .join(outputFolder, 'legacy', `${componentName}.css`)
+            .replace(/\\/g, '/')
+            .split('/css/')[1],
+        );
+
         return fs.writeFile(
           path.join(outputFolder, 'legacy', `${componentName}.css`),
           result.css,
         );
       }
 
+      generatedComponents.push(
+        path
+          .join(outputFolder, `${componentName.toLowerCase()}.css`)
+          .replace(/\\/g, '/')
+          .split('/css/')[1],
+      );
+
       return fs.writeFile(
         path.join(outputFolder, `${componentName.toLowerCase()}.css`),
         result.css,
       );
     }),
-  );
-
-  await processFile(global, 'global');
-  /* await Promise.all(modules.map((file) => processFile(file, 'local'))); */
-  concatIntoGlobal();
+  ).then(async () => {
+    await concatIntoGlobal(generatedComponents);
+  });
 
   console.log('Done generating css files');
 }
 
-function concatIntoGlobal() {
-  // find all css files in the css folder
-  const cssFiles = glob.sync(
-    path.resolve(__dirname, '../../css/**/*.css').replace(/\\/g, '/'),
-  );
+async function concatIntoGlobal(cssFiles: string[]) {
+  await new Promise<void>((resolve) => {
+    fs.writeJsonSync(
+      path.join(__dirname, '../../css/css-exports.json'),
+      {
+        modules: cssFiles.filter((file) => !file.includes('global.css')),
+        index: prepareFileName('index.css'),
+      },
+      { spaces: 2 },
+    );
 
-  fs.writeJsonSync(
-    path.join(__dirname, '../../css/css-exports.json'),
-    {
-      modules: cssFiles.filter((file) => !file.includes('global.css')),
-      index: prepareFileName('index.css'),
-    },
-    { spaces: 2 },
-  );
+    console.log({ generatedCssFiles: cssFiles });
+    const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
+    fs.writeFileSync(
+      path.join(outputFolder, 'index.css'),
+      cssFilesContent.join('\n'),
+    );
 
-  console.log({ generatedCssFiles: cssFiles });
-  const cssFilesContent = cssFiles.map((file) =>
-    fs.readFileSync(file, 'utf-8'),
-  );
-  fs.writeFileSync(
-    path.join(outputFolder, 'index.css'),
-    cssFilesContent.join('\n'),
-  );
+    resolve();
+  });
 }
 
-createFiles();
+void createFiles();
