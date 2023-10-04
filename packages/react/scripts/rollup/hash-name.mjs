@@ -16,5 +16,5 @@ export function generateScopedName(selector, fileName) {
     .basename(fileName)
     .replace('.module', '')
     .replace('.css', '');
-  return `tlp-${hashCode(`${componentName}-${selector}`)}`;
+  return `dig-ds-${hashCode(`${componentName}-${selector}`)}`;
 }

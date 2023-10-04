@@ -6,6 +6,8 @@ import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from '@svgr/rollup';
 
+import { generateScopedName } from './scripts/rollup/hash-name.mjs';
+
 const input = './tsc-build/index.js';
 
 export default [
@@ -44,7 +46,12 @@ export default [
       commonjs(),
       json(),
       svgr({ exportType: 'named' }),
-      postcss(),
+      postcss({
+        extract: true,
+        modules: {
+          generateScopedName,
+        },
+      }),
       image(),
     ],
   },
