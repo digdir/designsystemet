@@ -15,13 +15,19 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, value, ...rest }, ref) => {
     const { value: tabsValue, size = 'medium' } = useContext(TabsContext);
     const active = value == tabsValue;
+    const onlyText = typeof children === 'string';
 
     return (
       <>
         {active && (
           <div
             {...rest}
-            className={cn(classes[size], classes.tabContent, rest.className)}
+            className={cn(
+              classes[size],
+              classes.tabContent,
+              onlyText && classes.onlyText,
+              rest.className,
+            )}
             ref={ref}
           >
             {children}
