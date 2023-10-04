@@ -1,0 +1,11 @@
+.tabContent.small {
+  padding: var(--fds-spacing-2) var(--fds-spacing-4);
+}
+
+.tabContent.medium {
+  padding: var(--fds-spacing-3) var(--fds-spacing-5);
+}
+
+.tabContent.large {
+  padding: var(--fds-spacing-4) var(--fds-spacing-6);
+}
