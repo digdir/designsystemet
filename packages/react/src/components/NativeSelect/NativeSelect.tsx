@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
 
-import { InputWrapper } from '../_InputWrapper';
+import { InputWrapper } from '../utilities/InputWrapper';
 
 export type NativeSelectProps = {
   /** Instances of `option` */

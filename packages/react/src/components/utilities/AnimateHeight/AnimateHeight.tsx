@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import cn from 'classnames';
 
-import { useMediaQuery, usePrevious } from '../../hooks';
+import { useMediaQuery, usePrevious } from '../../../hooks';
 
 import classes from './AnimateHeight.module.css';
 

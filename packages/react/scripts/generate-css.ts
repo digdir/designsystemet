@@ -6,7 +6,7 @@ import postcssModules from 'postcss-modules';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 
-import { generateScopedName } from './rollup/hash-name.mjs';
+import { generateScopedName } from './rollup/hash-name';
 
 console.log('Generating css files');
 

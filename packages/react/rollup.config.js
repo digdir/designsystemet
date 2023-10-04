@@ -6,7 +6,7 @@ import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from '@svgr/rollup';
 
-import { generateScopedName } from './scripts/rollup/hash-name.mjs';
+import { generateScopedName } from './scripts/rollup/hash-name';
 
 const input = './tsc-build/index.js';
 
