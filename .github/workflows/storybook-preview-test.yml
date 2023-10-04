@@ -31,10 +31,11 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - id: deploy
-        name: Deploy Project Artifacts to Vercel and set alias
-        run: |
-          echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
-          vercel alias --token=${{ secrets.VERCEL_TOKEN }} set "$url" test.oyvindthune.com
+        name: Deploy Project Artifacts to Vercel
+        run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+
+      - name: Set alias
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} set ${{ steps.deploy.outputs.url }} test.oyvindthune.com
 
       - uses: jwalton/gh-find-current-pr@v1
         id: findPr
