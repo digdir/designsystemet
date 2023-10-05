@@ -5,10 +5,26 @@ import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from '@svgr/rollup';
+import cssnano from 'cssnano';
 
 import { generateScopedName } from './scripts/rollup/hash-name';
 
 const input = './tsc-build/index.js';
+const plugins = [
+  peerDepsExternal(),
+  resolve(),
+  commonjs(),
+  json(),
+  svgr({ exportType: 'named' }),
+  postcss({
+    extract: true,
+    modules: {
+      generateScopedName,
+    },
+    plugins: [cssnano({ preset: 'default' })],
+  }),
+  image(),
+];
 
 export default [
   {
@@ -40,19 +56,6 @@ export default [
       /leaflet/,
       /@navikt\/ds-icons/,
     ],
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      json(),
-      svgr({ exportType: 'named' }),
-      postcss({
-        extract: true,
-        modules: {
-          generateScopedName,
-        },
-      }),
-      image(),
-    ],
+    plugins,
   },
 ];

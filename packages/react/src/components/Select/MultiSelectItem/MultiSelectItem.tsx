@@ -1,4 +1,7 @@
 import React from 'react';
+import cn from 'classnames';
+
+import utilClasses from '../../../utilities/Utility.module.css';
 
 import classes from './MultiSelectItem.module.css';
 
@@ -19,7 +22,7 @@ const MultiSelectItem = ({
     <span>{label}</span>
     <button
       aria-label={deleteButtonLabel}
-      className={classes.deleteButton}
+      className={cn(classes.deleteButton, utilClasses.focusable)}
       disabled={disabled}
       onClick={onDeleteButtonClick}
       type='button'

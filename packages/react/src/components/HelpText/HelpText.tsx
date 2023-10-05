@@ -48,7 +48,11 @@ const HelpText = ({
       trigger={
         <button
           {...rest}
-          className={cn(classes.helpTextButton, className)}
+          className={cn(
+            classes.helpTextButton,
+            utilClasses.focusable,
+            className,
+          )}
           onClick={(event) => {
             setOpen((isOpen) => !isOpen);
             onClick?.(event);
