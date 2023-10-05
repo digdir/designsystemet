@@ -60,14 +60,17 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
       <ToggleGroup.Item
         value={'option-1'}
         icon={<AkselIcon3 />}
+        iconTitle='Braille'
       />
       <ToggleGroup.Item
         value={'option-2'}
         icon={<AkselIcon2 />}
+        iconTitle='Newspaper'
       />
       <ToggleGroup.Item
         value={'option-3'}
         icon={<AkselIcon4 />}
+        iconTitle='Backpack'
       />
     </ToggleGroup>
   );
