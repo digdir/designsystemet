@@ -49,10 +49,12 @@
   padding: var(--fds-spacing-4) var(--fds-spacing-6);
 }
 
-.tabItem:hover {
-  --fdsc-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
+@media (hover: hover) and (pointer: fine) {
+  .tabItem:hover {
+    --fdsc-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
 
-  color: var(--fds-semantic-text-neutral-default);
+    color: var(--fds-semantic-text-neutral-default);
+  }
 }
 
 .tabItem.isActive {
