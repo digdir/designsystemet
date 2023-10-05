@@ -55,17 +55,17 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
       <Tabs.Tab
         value='value1'
         icon={<AkselIcon />}
-        iconTitle='Tab 1'
+        iconTitle='Airplane'
       />
       <Tabs.Tab
         value='value2'
         icon={<AkselIcon2 />}
-        iconTitle='Tab 2'
+        iconTitle='Newspaper'
       />
       <Tabs.Tab
         value='value3'
         icon={<AkselIcon3 />}
-        iconTitle='Tab 3'
+        iconTitle='Dog'
       />
     </Tabs.List>
     <Tabs.Content value='value1'>content 1</Tabs.Content>
