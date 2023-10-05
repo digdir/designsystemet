@@ -13,6 +13,13 @@
   margin-bottom: var(--fdsc-bottom-spacing);
 }
 
+.errorMessage.large {
+  --fdsc-bottom-spacing: var(--fds-spacing-5);
+
+  font: var(--fds-typography-error_message-large);
+  font-family: var(--fdsc-typography-font-family);
+}
+
 .errorMessage.medium {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 

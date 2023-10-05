@@ -3,6 +3,7 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
+import utilityClasses from '../../utils/utility.module.css';
 
 import classes from './Button.module.css';
 
@@ -10,7 +11,7 @@ export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'filled' | 'outline' | 'quiet';
   /** Specify which color palette to use */
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'inverted';
+  color?: 'first' | 'second' | 'success' | 'danger' | 'inverted';
   /** Size */
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
@@ -30,7 +31,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      color = 'primary',
+      color = 'first',
       variant = 'filled',
       size = 'medium',
       fullWidth = false,
@@ -48,6 +49,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ref={ref}
       className={cn(
         classes.button,
+        utilityClasses.focusable,
         classes[size],
         classes[variant],
         classes[color],

@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Information, Do, Dont, Stack } from '../../../../../docs-components';
 import * as AlertStories from './Alert.stories';
 
 <Meta of={AlertStories} />
@@ -27,9 +27,9 @@ import { Alert } from '@digdir/design-system-react';
 <Alert>You are using the Alert component!</Alert>;
 ```
 
-## Varianter med eksempler
+## Eksempler
 
-`Alert` har flere varianter fordi den kan brukes til fire ulike budskap: Informasjon, advarsler, suksess og feilmelding.
+`Alert` kan brukes til fire ulike budskap: Informasjon, advarsler, suksess og feilmelding. Den kan også brukes sammen med andre komponenter og stiler. Her er noen eksempler.
 
 <br />
 
@@ -57,13 +57,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 
 <Canvas of={AlertStories.VariantDanger} />
 
-## Andre eksempler
-
-`Alert` kan brukes sammen med andre komponenter og stiler. Her er noen eksempler.
-
-<br />
-
-### Med overskrift
+### Med og uten overskrift
 
 Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/felles-typography--docs)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
@@ -84,6 +78,28 @@ Du kan ha en lenke i Alert hvis det hjelper brukeren med å løse oppgaven. Men 
 Kan brukes når alerten skal fremheves mer fra bakgrunnen, for eksempel dersom den skal legges over annet innhold
 
 <Canvas of={AlertStories.MedShadow} />
+
+## Retningslinjer
+
+### Ikke lag andre versjoner
+
+Det er viktig at Alerts har samme utseende og formspråk på tvers av produktene, så den skal ikke justeres.
+
+<Stack direction="row" style={{
+  justifyContent: 'unset',
+  alignItems: 'unset'
+}}>
+  <Do
+    description='Alert brukes på tvers av produkter og skal se like ut'
+    image='/img/component-guidelines/alert/alert-ex1-do.png'
+  />
+
+  <Dont
+    description='Ikke fjern border, bytt ikon, eller gjør andre visuelle endringer på alert'
+    image='/img/component-guidelines/alert/alert-ex1-dont.png'
+  />
+</Stack>
+<br />
 
 ## Tekst i komponenten
 

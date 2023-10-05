@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.27.0...@digdir/design-system-react@0.28.0) (2023-10-05)
+
+### Features
+
+- Add basic SSR support and peerDependecies to `react 18.2.0` ([#864](https://github.com/digdir/designsystem/issues/864)) ([d512ee2](https://github.com/digdir/designsystem/commit/d512ee26e6f50e61588538961dd185b92e3e6654))
+- Change `color` names `primary`, `secondary`, `tertiary` to `first`, `second`, `third` ([#887](https://github.com/digdir/designsystem/issues/887)) ([50f4eee](https://github.com/digdir/designsystem/commit/50f4eee4bf2ce813001ad1e28fa12648149fe677))
+- **DosAndDonts:** Add Do and Dont component ([#857](https://github.com/digdir/designsystem/issues/857)) ([8116d00](https://github.com/digdir/designsystem/commit/8116d00eb8afbb606bd325a7a1695c31bbc3fcbe))
+- **Tabs:** :sparkles: New `Tabs` Component ([#876](https://github.com/digdir/designsystem/issues/876)) ([6ae19e7](https://github.com/digdir/designsystem/commit/6ae19e75e7f874dc7d1acbfe9587c8ffbb29e641))
+- **Tabs:** :wastebasket: Change to Legacy ([#875](https://github.com/digdir/designsystem/issues/875)) ([1863383](https://github.com/digdir/designsystem/commit/186338375861af241c565be4bf86ab9c05d1867b))
+- **ToggleGroup:** Add accessible title for items with only icon ([#897](https://github.com/digdir/designsystem/issues/897)) ([9482315](https://github.com/digdir/designsystem/commit/94823150b5585ba9612fbbfbb70c32818812fcaa))
+
+# [0.27.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.26.0...@digdir/design-system-react@0.27.0) (2023-09-28)
+
+### Features
+
+- **Button, Chip, Accordion:** :recycle: Change components to use the same class for focus behaviour ([#868](https://github.com/digdir/designsystem/issues/868)) ([b3fa591](https://github.com/digdir/designsystem/commit/b3fa591d86bbf2b497a618464e3f3af10b852ad6))
+- **ToggleButtonGroup:** :wastebasket: Change to Legacy ([#870](https://github.com/digdir/designsystem/issues/870)) ([3298aba](https://github.com/digdir/designsystem/commit/3298aba96e343af73bcf8b12cfcb64f9cf0a61a0))
+- **ToggleGroup:** ✨ New `ToggleGroup` component ([#813](https://github.com/digdir/designsystem/issues/813)) ([bc45c2e](https://github.com/digdir/designsystem/commit/bc45c2e50a941fdd49028607fa3d94c4876e4cc0))
+
+# [0.26.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.25.1...@digdir/design-system-react@0.26.0) (2023-09-22)
+
+### Bug Fixes
+
+- **Textfield:** :lipstick: Style adjustments after feedback ([#852](https://github.com/digdir/designsystem/issues/852)) ([4544f1e](https://github.com/digdir/designsystem/commit/4544f1e96fb90c00360377b2a18998e9bce36f16))
+
+### Features
+
+- **Textarea:** :sparkles: New `Textarea` component ([#851](https://github.com/digdir/designsystem/issues/851)) ([9d9c3ab](https://github.com/digdir/designsystem/commit/9d9c3ab390cea40bd3137845fd2b7fb251c84b7a))
+- **TextArea:** :wastebasket: Change to Legacy ([#853](https://github.com/digdir/designsystem/issues/853)) ([9da973f](https://github.com/digdir/designsystem/commit/9da973f9db34576ad89f5d31f07ccfc933f84ee7))
+
+## [0.25.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.25.0...@digdir/design-system-react@0.25.1) (2023-09-22)
+
+### Bug Fixes
+
+- **Textfield:** Prop typo ([#848](https://github.com/digdir/designsystem/issues/848)) ([0c59b86](https://github.com/digdir/designsystem/commit/0c59b86f661222e0021311cd5eba6c7aa429ea8c))
+
+# [0.25.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.2...@digdir/design-system-react@0.25.0) (2023-09-21)
+
+### Features
+
+- **ErrorMessage:** :sparkles: Add new option to toggle error color ([#836](https://github.com/digdir/designsystem/issues/836)) ([8b177f3](https://github.com/digdir/designsystem/commit/8b177f3f25b3c2075d38f8f5e8a438d8727b5c98))
+- **ErrorMessage:** ✨ Add `large` size ([#840](https://github.com/digdir/designsystem/issues/840)) ([9742abf](https://github.com/digdir/designsystem/commit/9742abf1d002967fdfdb6b3caa8f33bb11a85019))
+- **Fieldset, Switch, Radio, Checkbox:** :sparkles: Add `large` size ([#841](https://github.com/digdir/designsystem/issues/841)) ([4e8052f](https://github.com/digdir/designsystem/commit/4e8052fc6a886b68676ca5de0a47d80eadb93656))
+- **Textfield:** :sparkles: New `Textfield` component ([#816](https://github.com/digdir/designsystem/issues/816)) ([0c14cfa](https://github.com/digdir/designsystem/commit/0c14cfa3c6add379ada2f5e11dd2b6a0de05aa56))
+- **TextField:** 🗑️ Change to Legacy ([#838](https://github.com/digdir/designsystem/issues/838)) ([c3d6d2d](https://github.com/digdir/designsystem/commit/c3d6d2d684ff764fe96a92e1852ddf115cf1ec62))
+
 ## [0.24.2](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.24.1...@digdir/design-system-react@0.24.2) (2023-09-19)
 
 ### Bug Fixes

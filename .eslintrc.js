@@ -47,6 +47,8 @@ module.exports = {
     'react/display-name': 'off',
     'import/no-unresolved': 'error',
     'import/namespace': ['error', { allowComputed: true }],
+    'import/no-named-as-default': 'off',
+    '@next/next/no-html-link-for-pages': ['error', '/storefront/pages/'],
     'import/order': [
       'warn',
       {

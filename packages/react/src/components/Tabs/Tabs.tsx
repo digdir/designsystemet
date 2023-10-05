@@ -1,141 +1,75 @@
-import type { KeyboardEventHandler } from 'react';
-import React, { useEffect, useId, useRef, useState } from 'react';
-import cn from 'classnames';
+import type { HTMLAttributes } from 'react';
+import React, { createContext, forwardRef, useState } from 'react';
 
-import { useUpdate } from '../../hooks';
-import { areItemsUnique } from '../../utils/arrayUtils';
-
-import classes from './Tabs.module.css';
-
-export interface TabItem {
-  name: string;
-  content: React.ReactNode;
-  tabId?: string;
-  panelId?: string;
+export type TabsProps = {
+  /** Controlled state for `Tabs` component. */
   value?: string;
-}
+  /** Default value. */
+  defaultValue?: string;
+  /** Callback with selected `TabItem` `value` */
+  onChange?: (value: string) => void;
+  /** Changes items size and paddings */
+  size?: 'small' | 'medium' | 'large';
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
-export interface TabsProps {
-  activeTab?: string;
-  items: TabItem[];
-  onChange?: (name: string) => void;
-}
-
-const validId = (str: string) => str.replace(/\s/, '_');
-
-const Tabs = ({ activeTab, items, onChange }: TabsProps) => {
-  const idBase = useId();
-
-  // Generate values for undefined properties
-  const tabs: Required<TabItem>[] = items.map(
-    ({
-      name,
-      content,
-      value: optionalValue,
-      tabId: optionalTabId,
-      panelId: optionalPanelId,
-    }) => {
-      const value = optionalValue ?? name;
-      const tabId = optionalTabId ?? idBase + validId(value) + '-tab';
-      const panelId = optionalPanelId ?? idBase + validId(value) + '-panel';
-      return { name, content, value, tabId, panelId };
-    },
-  );
-
-  if (!areItemsUnique(tabs.map(({ value }) => value))) {
-    throw Error('Each tab value must be unique.');
-  }
-  if (activeTab !== undefined && !tabs.some((tab) => tab.value === activeTab)) {
-    throw Error('The given active tab value must exist in the list of items.');
-  }
-
-  const findTabIndexByValue = (value: string) =>
-    tabs.findIndex((tab) => tab.value === value);
-  const initialTab = activeTab ?? tabs[0].value;
-  const [visiblePanel, setVisiblePanel] = useState<string>(initialTab);
-  const [focusIndex, setFocusIndex] = useState<number>(
-    findTabIndexByValue(initialTab),
-  );
-  useEffect(() => setVisiblePanel(initialTab), [initialTab]);
-  const tablistRef = useRef<HTMLDivElement>(null);
-  const lastIndex = tabs.length - 1;
-
-  useUpdate(() => {
-    tablistRef.current
-      ?.querySelectorAll<HTMLButtonElement>('[role="tab"]')
-      [focusIndex].focus();
-  }, [focusIndex]);
-
-  const selectTab = (value: string) => {
-    visiblePanel !== value && onChange && onChange(value);
-    setVisiblePanel(value);
-    setFocusIndex(findTabIndexByValue(value));
-  };
-
-  const moveFocusRight = () =>
-    focusIndex !== undefined &&
-    setFocusIndex(focusIndex === lastIndex ? 0 : focusIndex + 1);
-  const moveFocusLeft = () =>
-    focusIndex !== undefined &&
-    setFocusIndex(focusIndex === 0 ? lastIndex : focusIndex - 1);
-
-  const onKeyDown =
-    (name: string) => (event: Parameters<KeyboardEventHandler>[0]) => {
-      switch (event.key) {
-        case 'ArrowRight':
-          moveFocusRight();
-          break;
-        case 'ArrowLeft':
-          moveFocusLeft();
-          break;
-        case 'Space':
-          selectTab(name);
-      }
-    };
-
-  return (
-    <div className={classes.tabs}>
-      <div
-        className={classes.tablist}
-        ref={tablistRef}
-        role='tablist'
-      >
-        {tabs.map((tab, i) => {
-          const isSelected = tab.value === visiblePanel;
-          return (
-            <button
-              aria-controls={tab.panelId}
-              aria-selected={isSelected}
-              className={cn(classes.tab, isSelected && classes.selected)}
-              id={tab.tabId}
-              key={tab.value}
-              onClick={() => selectTab(tab.value)}
-              onKeyDown={onKeyDown(tab.value)}
-              role='tab'
-              tabIndex={focusIndex === i ? 0 : -1}
-            >
-              {tab.name}
-            </button>
-          );
-        })}
-      </div>
-      <hr className={classes.divider} />
-      {tabs.map((tab) => (
-        <div
-          className={classes.tabpanel}
-          aria-labelledby={tab.tabId}
-          hidden={tab.value !== visiblePanel}
-          id={tab.panelId}
-          key={tab.panelId}
-          role='tabpanel'
-        >
-          {tab.content}
-        </div>
-      ))}
-    </div>
-  );
+/** `Tabs` component.
+ * @example
+ * ```tsx
+ * <Tabs onChange={(value) => console.log(value)}>
+ *   <Tabs.List>
+ *     <Tabs.Item value='1'>Tab 1</Tabs.Item>
+ *     <Tabs.Item value='2'>Tab 2</Tabs.Item>
+ *     <Tabs.Item value='3'>Tab 3</Tabs.Item>
+ *   </Tabs.List>
+ *   <Tabs.Content value='1'>content 1</Tabs.Content>
+ *   <Tabs.Content value='2'>content 2</Tabs.Content>
+ *   <Tabs.Content value='3'>content 3</Tabs.Content>
+ * </Tabs>
+ * ```
+ */
+export type TabsContextProps = {
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  size?: 'small' | 'medium' | 'large';
 };
 
-Tabs.displayName = 'Tabs';
+export const TabsContext = createContext<TabsContextProps>({});
 
-export { Tabs };
+export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
+  (
+    { children, value, defaultValue, onChange, size = 'medium', ...rest },
+    ref,
+  ) => {
+    const isControlled = value !== undefined;
+    const [uncontrolledValue, setUncontrolledValue] = useState<
+      string | undefined
+    >(defaultValue);
+
+    let onValueChange = onChange;
+    if (!isControlled) {
+      onValueChange = (newValue: string) => {
+        setUncontrolledValue(newValue);
+        onChange?.(newValue);
+      };
+      value = uncontrolledValue;
+    }
+    return (
+      <TabsContext.Provider
+        value={{
+          value,
+          defaultValue,
+          onChange: onValueChange,
+          size,
+        }}
+      >
+        <div
+          {...rest}
+          ref={ref}
+        >
+          {children}
+        </div>
+      </TabsContext.Provider>
+    );
+  },
+);
