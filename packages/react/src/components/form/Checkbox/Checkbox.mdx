@@ -37,13 +37,14 @@ import { Checkbox } from '@digdir/design-system-react';
 
 ## Eksempler
 
+<br />
 ### Enkel
 
-`Checkbox` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
+`Checkbox` skal alltid ha en label. Bruker du ledetekst fra en annen plass, husk da å bruke `aria-label` eller `aria-labelledby`.
 
 <Canvas of={CheckboxStories.Single} />
 
-## `Checkbox.Group`
+## Checkbox.Group
 
 Bruk `Checkbox.Group` for gruppering av flere valg.
 
@@ -98,3 +99,54 @@ Hvis avmerkingsboksene står horisontalt er det viktig at det kommer tydelig fra
 <br />
 
 ## Tekst i komponenten
+
+Plasser både forklaringen (legend) og eventuell hjelpetekst brukeren trenger for å forstå oppgaven, før avmerkingsboksene. I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer. Ledeteksten til hver boks (label) må beskrive alternativet.
+
+Ledeteksten skal stå til høyre for boksen. Hvis det er nødvendig, kan du ha en ekstra beskrivelse under ledeteksten.
+
+Ledeteksten skal alltid ha stor forbokstav.
+
+En checkbox som står alene trenger ikke egen overskrift med forklaring hvis ledeteksten til høyre for boksen beskriver tydelig hva det det vil si å krysse av.
+
+Eksempel: Jeg har lest og forstått betingelsene for kjøpet
+
+### Synlig eller skjult overskrift + forklaring (legend)
+
+En forklaring gjør det lettere for brukeren å skjønne hva de skal gjøre, men hvis det er nødvendig kan vi skjule forklaringen.
+
+### Språket i tekstene til checkbox
+
+Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når ledeteksten er en setning, kan du skrive den i du-form og svaralternativene i jeg-form.
+
+#### Lag logisk sammenheng mellom forklaringen og svaralternativene
+
+Brukeren skal kunne lese hvert svaralternativ som en logisk respons på forklaringen over boksene.
+
+Eksempel på riktig logisk sammenheng:
+
+Forklaring/spørsmål: Hvor lenge har du jobbet i Digdir? Ledetekster:
+I under ett år.
+Fra 1-3 år
+Mer enn 3 år.
+
+#### Gi svaralternativene samme språklige form
+
+Det betyr at de kan ha enten fullstendige setninger eller ett ord, ikke begge deler.
+
+Enten:
+Ledetekster: Jeg liker å jobbe med selvstendige oppgaver Jeg elsker møter Lunsjen er best, Jeg liker å møte kolleger
+
+Eller:
+Ledetekster:
+Selvstendige oppgaver
+Møter
+Lunsj
+Kolleger
+
+## Tilgjengelighet
+
+Det skal være mulig å velge avmerkingsboksene kun ved å bruke tab-tasten, uten å klikke.
+
+Sett alternativene under hverandre i en liste for å gjøre det enkelt å skanne listen. Vi plasserer ikke alternativer horisontalt fordi det gjør det vanskelig å lese.
+
+Merk: For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
