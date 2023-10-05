@@ -7,7 +7,7 @@ import { Paragraph } from '../Typography';
 
 import classes from './Tag.module.css';
 
-type BrandColor = 'primary' | 'secondary' | 'tertiary';
+type BrandColor = 'first' | 'second' | 'third';
 type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 type Size = Exclude<ParagraphProps['size'], 'large'>;
 
