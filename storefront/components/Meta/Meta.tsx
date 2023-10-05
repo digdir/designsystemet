@@ -21,10 +21,6 @@ const Meta = ({ title, description }: MetaProps) => {
         content='width=device-width, initial-scale=1'
       />
       <link
-        rel='stylesheet'
-        href='https://altinncdn.no/fonts/inter/inter.css'
-      />
-      <link
         rel='shortcut icon'
         href='/favicon.ico'
       />
