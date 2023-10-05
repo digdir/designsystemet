@@ -64,21 +64,21 @@
   --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger_subtle);
 }
 
-.outlined.primary {
-  --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-primary-light);
+.outlined.first {
+  --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-first-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.secondary {
-  --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-secondary-light);
+.outlined.second {
+  --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-second-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.tertiary {
-  --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-tertiary-light);
+.outlined.third {
+  --fdsc-tag-border: var(--fds-semantic-surface-third-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-third-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
@@ -112,20 +112,20 @@
   --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger);
 }
 
-.filled.primary {
-  --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-primary-dark);
+.filled.first {
+  --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-first-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.filled.secondary {
-  --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-secondary-dark);
+.filled.second {
+  --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-second-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.filled.tertiary {
-  --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
-  --fdsc-tag-background: var(--fds-semantic-surface-tertiary-dark);
+.filled.third {
+  --fdsc-tag-border: var(--fds-semantic-surface-third-dark);
+  --fdsc-tag-background: var(--fds-semantic-surface-third-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }

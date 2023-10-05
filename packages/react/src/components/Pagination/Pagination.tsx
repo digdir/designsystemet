@@ -102,7 +102,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 onChange(currentPage - 1);
               }}
               variant={'quiet'}
-              color={'primary'}
+              color={'first'}
               size={size}
               className={cn({ [classes.hidden]: currentPage === 1 })}
             >
@@ -129,7 +129,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 <Button
                   variant={currentPage === step ? 'filled' : 'quiet'}
                   aria-current={currentPage === step}
-                  color={'primary'}
+                  color={'first'}
                   size={size}
                   aria-label={itemLabel(step)}
                   onClick={() => {
@@ -144,7 +144,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           <li>
             <Button
               variant={'quiet'}
-              color={'primary'}
+              color={'first'}
               size={size}
               icon={<ChevronRightIcon aria-hidden />}
               aria-label={nextLabel}
