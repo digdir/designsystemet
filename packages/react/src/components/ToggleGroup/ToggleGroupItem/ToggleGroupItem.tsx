@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utility-components/RovingTabIndex';
+import utilityClasses from '../../../utils/utility.module.css';
 
 import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
@@ -13,6 +14,8 @@ export type ToggleGroupItemProps = {
   value?: string;
   /** Icon to be displayed on the ToggleGroupItem */
   icon?: React.ReactNode;
+  /** Title for icon when only icons are used */
+  iconTitle?: string;
   /** The text to be displayed on the ToggleGroupItem */
   children?: string;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'children'>;
@@ -21,7 +24,7 @@ export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupItemProps
 >((props, ref) => {
-  const { children, icon, ...rest } = props;
+  const { children, icon, iconTitle, ...rest } = props;
   const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
@@ -41,6 +44,9 @@ export const ToggleGroupItem = forwardRef<
       iconPlacement='left'
       ref={ref}
     >
+      {iconTitle && (
+        <span className={utilityClasses.visuallyHidden}>{iconTitle}</span>
+      )}
       {children}
     </RovingTabindexItem>
   );
