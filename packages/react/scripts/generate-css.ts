@@ -18,16 +18,10 @@ const files = glob.sync(
   path.resolve(__dirname, '../src/**/*.css').replace(/\\/g, '/'),
 );
 const modules = files.filter((file) => file.endsWith('.module.css'));
-const global = files.find((file) => file.endsWith('global.css'));
-
-if (typeof global !== 'string') {
-  throw new Error('Could not find global.css file');
-}
 
 console.log({
   allCssFiles: files,
   allCssModules: modules,
-  globalCssFile: global,
 });
 
 function prepareFileName(filePath: string) {
@@ -38,10 +32,6 @@ const outputFolder = path.resolve(__dirname, '../../css');
 fs.ensureDirSync(outputFolder);
 
 async function createFiles() {
-  if (typeof global !== 'string') {
-    throw new Error('Could not find global.css file');
-  }
-
   // group files that are under src/components/{THIS IS THE NAME}
   const components: { [key: string]: string[] } = {};
   modules.forEach((file) => {
