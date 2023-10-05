@@ -8,8 +8,8 @@ import { Button } from './Button';
 
 const sizes: ButtonProps['size'][] = ['small', 'medium', 'large'];
 const colors: ButtonProps['color'][] = [
-  'primary',
-  'secondary',
+  'first',
+  'second',
   'success',
   'danger',
   'inverted',
@@ -19,12 +19,12 @@ const variants: ButtonProps['variant'][] = ['filled', 'outline', 'quiet'];
 const user = userEvent.setup();
 
 describe('Button', () => {
-  it('should render a button with primary classname when no variant is specified', () => {
+  it('should render a button with first classname when no variant is specified', () => {
     render();
     const button = screen.getByRole('button');
 
-    expect(button.classList).toContain('primary');
-    expect(button.classList).not.toContain('secondary');
+    expect(button.classList).toContain('first');
+    expect(button.classList).not.toContain('second');
     expect(button.classList).not.toContain('submit');
     expect(button.classList).not.toContain('cancel');
   });
