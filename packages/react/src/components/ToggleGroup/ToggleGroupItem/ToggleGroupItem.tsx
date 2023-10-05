@@ -14,7 +14,7 @@ export type ToggleGroupItemProps = {
   value?: string;
   /** Icon to be displayed on the ToggleGroupItem */
   icon?: React.ReactNode;
-  /** Title for icon when only icons are used */
+  /** Title for icon when only icon is used */
   iconTitle?: string;
   /** The text to be displayed on the ToggleGroupItem */
   children?: string;
