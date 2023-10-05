@@ -1,12 +1,20 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "CSS files for the Digdir Common Design System",
-  "main": "index.css",
+  "main": "./index.css",
   "repository": "https://github.com/digdir/designsystem",
+  "files": [
+    "*"
+  ],
+  "keywords": [
+    "css",
+    "designsystem",
+    "digdir"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Digdir Designsystem Team",
+  "license": "MIT"
 }
