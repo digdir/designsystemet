@@ -87,18 +87,18 @@
   background: var(--fdsc-accordion-header-bg-subtle);
 }
 
-.accordion.primary,
-.accordion.primary > .item > .header > button {
+.accordion.first,
+.accordion.first > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-primary);
 }
 
-.accordion.secondary,
-.accordion.secondary > .item > .header > button {
+.accordion.second,
+.accordion.second > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-secondary);
 }
 
-.accordion.tertiary,
-.accordion.tertiary > .item > .header > button {
+.accordion.third,
+.accordion.third > .item > .header > button {
   background: var(--fdsc-accordion-header-bg-tertiary);
 }
 
@@ -106,9 +106,9 @@
   border-top: 0;
 }
 
-.accordion.primary > .item:not(:first-child) > .header > button,
-.accordion.secondary > .item:not(:first-child) > .header > button,
-.accordion.tertiary > .item:not(:first-child) > .header > button {
+.accordion.first > .item:not(:first-child) > .header > button,
+.accordion.second > .item:not(:first-child) > .header > button,
+.accordion.third > .item:not(:first-child) > .header > button {
   border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
 }
 
@@ -117,15 +117,15 @@
     background: var(--fdsc-accordion-header-bg-subtle-hover);
   }
 
-  .accordion.primary > .item > .header > button:hover {
+  .accordion.first > .item > .header > button:hover {
     background: var(--fdsc-accordion-header-bg-primary-hover);
   }
 
-  .accordion.secondary > .item > .header > button:hover {
+  .accordion.second > .item > .header > button:hover {
     background: var(--fdsc-accordion-header-bg-secondary-hover);
   }
 
-  .accordion.tertiary > .item > .header > button:hover {
+  .accordion.third > .item > .header > button:hover {
     background: var(--fdsc-accordion-header-bg-tertiary-hover);
   }
 }
@@ -135,9 +135,9 @@
   background-color: var(--fdsc-accordion-header-bg-neutral-active);
 }
 
-.accordion.primary > .item.open > .header > button,
-.accordion.secondary > .item.open > .header > button,
-.accordion.tertiary > .item.open > .header > button {
+.accordion.first > .item.open > .header > button,
+.accordion.second > .item.open > .header > button,
+.accordion.third > .item.open > .header > button {
   background-color: rgba(0 0 0 / 0.03);
 }
 
