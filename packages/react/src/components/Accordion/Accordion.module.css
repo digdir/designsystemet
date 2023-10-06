@@ -21,6 +21,8 @@
   --fdsc-accordion-header-color-hover: var(--fds-semantic-text-action-first-default);
   --fdsc-accordion-content-border: var(--fds-semantic-border-neutral-subtle);
   --fdsc-accordion-content-border-open: var(--fds-semantic-border-neutral-strong);
+
+  border-bottom: 1px solid var(--fdsc-accordion-content-border);
 }
 
 .border {
@@ -39,10 +41,6 @@
   background-color: #ffffff50;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.item:last-child .contentWrapper {
-  border-bottom: 1px solid var(--fdsc-accordion-content-border);
 }
 
 .header {
