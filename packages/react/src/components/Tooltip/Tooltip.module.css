@@ -10,3 +10,7 @@
   height: 10px;
   background: #232323;
 }
+
+.content {
+  display: inline;
+}
