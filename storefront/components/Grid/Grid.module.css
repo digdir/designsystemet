@@ -1,8 +1,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin: 30px 0;
+  gap: var(--grid-gap);
+  margin: var(--fds-spacing-7) 0;
 }
 
 @media (max-width: 1200px) {

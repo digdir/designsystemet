@@ -52,7 +52,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
   };
 
   return (
-    <div className={classes['code-snippet']}>
+    <div className={classes.codeSnippet}>
       <Tippy
         content={toolTipText}
         hideOnClick={false}
@@ -60,10 +60,10 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
         <button
           onMouseEnter={() => setToolTipText('Kopier')}
           onClick={() => onButtonClick()}
-          className={classes['code-snippet__icon']}
+          className={classes.icon}
           title='Kopier'
         >
-          <FilesIcon scale={16} />
+          <FilesIcon fontSize={20} />
         </button>
       </Tippy>
       <SyntaxHighlighter
