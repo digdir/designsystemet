@@ -11,7 +11,7 @@
 }
 
 .interactionForeground {
-  stroke: var(--fds-semantic-border-action-primary-default);
+  stroke: var(--fds-semantic-border-action-first-default);
 }
 
 .invertedForeground {

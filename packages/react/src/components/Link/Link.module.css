@@ -1,7 +1,7 @@
 .link {
-  --fdsc-link-hover-underline-color: var(--fds-semantic-text-action-primary-default);
+  --fdsc-link-hover-underline-color: var(--fds-semantic-text-action-first-default);
 
-  color: var(--fds-semantic-text-action-primary-default);
+  color: var(--fds-semantic-text-action-first-default);
   cursor: pointer;
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
@@ -17,7 +17,7 @@
 }
 
 .link:hover {
-  color: var(--fds-semantic-text-action-primary-default);
+  color: var(--fds-semantic-text-action-first-default);
   text-decoration-thickness: max(2px, 0.125rem, 0.12em);
 }
 
@@ -25,7 +25,7 @@
 .link:focus {
   background: var(--fds-semantic-border-focus-outline);
   box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--fds-semantic-border-focus-boxshadow);
-  color: var(--fds-semantic-text-action-primary-active);
+  color: var(--fds-semantic-text-action-first-active);
   outline: none;
   text-decoration: none;
 }
