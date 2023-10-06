@@ -58,6 +58,7 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
         <Button onClick={() => myToggle('snadder')}>Toggle Snadder</Button>
         <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
       </span>
+      <br />
       <Checkbox.Group
         legend='Velg pizza'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
