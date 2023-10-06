@@ -20,14 +20,14 @@ export const Template = (args) => {
       content='This is my content'
       {...args}
     >
-      <Button>My trigger</Button>
+      <Button>Hover or focus me</Button>
     </Tooltip>
   );
 };
 
 <Canvas>
   <Story
-    name='Default Tooltip'
+    name='Tooltip'
     decorators={[
       (Story) => (
         <div style={{ margin: '3em' }}>
@@ -39,6 +39,12 @@ export const Template = (args) => {
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## Props
+
+<ArgsTable story='Tooltip' />
+
+### Plassering
 
 <Canvas>
   <Story
@@ -58,4 +64,4 @@ export const Template = (args) => {
   </Story>
 </Canvas>
 
-<ArgsTable story='Tooltip' />
+<ArgsTable story='Tooltip with placement' />

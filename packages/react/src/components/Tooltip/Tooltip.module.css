@@ -1,3 +1,12 @@
 .wrapper {
-  background: red;
+  background: #232323;
+  padding: var(--fds-spacing-1) var(--fds-spacing-2);
+  color: white;
+  border-radius: var(--fds-spacing-1);
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  background: #232323;
 }
