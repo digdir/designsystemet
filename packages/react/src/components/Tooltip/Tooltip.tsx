@@ -91,6 +91,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       () => mergeRefs([ref, refs.setFloating]),
       [refs.setFloating, ref],
     );
+
     const childMergedRef = useMemo(
       () =>
         mergeRefs([
@@ -121,7 +122,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           }),
         )}
         <FloatingPortal>
-          {isOpen && (
+          {(userOpen ?? isOpen) && (
             <>
               <div
                 ref={refs.setFloating}
