@@ -7,14 +7,14 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 # Checkbox
 
-Vi bruker `Checkbox` til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/felles-checkbox-group--docs) for gruppering av flere valg.
+Vi bruker `checkbox` til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/felles-checkbox-group--docs) for gruppering av flere valg.
 
-Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en avmerkingsboks stå alene. For eksempel når brukeren skal samtykke til vilkår.
+Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
 
 Vær oppmerksom på:
 
-- Vis listen med avmerkingsbokser vertikalt, slik at de presenteres i leseretningen.
-- Ikke bruk checkbox når det er flere enn 7 alternativer.
+- Ikke bruk `checkbox` når det er flere enn 7 alternativer.
+- Vis listen vertikalt, slik at valgene presenteres i leseretningen.
 
 <Primary />
 <Controls />
@@ -83,7 +83,7 @@ Ikke bruk disabled med mindre det er absolutt umulig å gjøre noe annet.
 
 - Hvis det er syv eller flere svaralternativer bruker vi heller [`select`](/docs/altinn-nativeselect--docs) (nedtrekksmeny).
 
-- Ikke bruk avmerkingsbokser til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
+- Ikke bruk `checkbox` til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
 
 ### Plasering og leseretning
 
@@ -94,25 +94,17 @@ Det finnes noen unntak:
 - I tabeller, for eksempel i et spørreskjema.
 - For å velge rader i tabeller.
 
-Hvis avmerkingsboksene står horisontalt er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
 
 <br />
 
-## Tekst i komponenten
+## Tekst i checkbox
 
-Plasser både forklaringen (legend) og eventuell hjelpetekst brukeren trenger for å forstå oppgaven, før avmerkingsboksene. I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer. Ledeteksten til hver boks (label) må beskrive alternativet.
+Plasser både forklaringen (legend) og eventuell hjelpetekst brukeren trenger for å forstå oppgaven, før `checkbox`-gruppen kommer. I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer. Ledeteksten til hver boks (label) må beskrive alternativet.
 
 Ledeteksten skal stå til høyre for boksen. Hvis det er nødvendig, kan du ha en ekstra beskrivelse under ledeteksten.
 
 Ledeteksten skal alltid ha stor forbokstav.
-
-En checkbox som står alene trenger ikke egen overskrift med forklaring hvis ledeteksten til høyre for boksen beskriver tydelig hva det det vil si å krysse av.
-
-Eksempel: Jeg har lest og forstått betingelsene for kjøpet
-
-### Synlig eller skjult overskrift + forklaring (legend)
-
-En forklaring gjør det lettere for brukeren å skjønne hva de skal gjøre, men hvis det er nødvendig kan vi skjule forklaringen.
 
 ### Språket i tekstene til checkbox
 
@@ -124,28 +116,40 @@ Brukeren skal kunne lese hvert svaralternativ som en logisk respons på forklari
 
 Eksempel på riktig logisk sammenheng:
 
-Forklaring/spørsmål: Hvor lenge har du jobbet i Digdir? Ledetekster:
-I under ett år.
-Fra 1-3 år
-Mer enn 3 år.
+**Forklaring/spørsmål:**\
+Hvor lenge har du jobbet i det offentlige?
+
+**Ledetekster:**
+
+- I under ett år.
+- Fra 1-3 år
+- Mer enn 3 år.
 
 #### Gi svaralternativene samme språklige form
 
 Det betyr at de kan ha enten fullstendige setninger eller ett ord, ikke begge deler.
 
-Enten:
-Ledetekster: Jeg liker å jobbe med selvstendige oppgaver Jeg elsker møter Lunsjen er best, Jeg liker å møte kolleger
-
-Eller:
+**Enten:**\
 Ledetekster:
-Selvstendige oppgaver
-Møter
-Lunsj
-Kolleger
+
+- Jeg liker å jobbe med selvstendige oppgaver
+- Jeg elsker møter
+- Lunsjen er best
+- Jeg liker å møte kolleger
+
+**Eller:**\
+Ledetekster:
+
+- Selvstendige oppgaver
+- Møter
+- Lunsj
+- Kolleger
+
+<br />
 
 ## Tilgjengelighet
 
-Det skal være mulig å velge avmerkingsboksene kun ved å bruke tab-tasten, uten å klikke.
+Det skal være mulig å velge en `checkbox` kun ved å bruke tab-tasten, uten å klikke.
 
 Sett alternativene under hverandre i en liste for å gjøre det enkelt å skanne listen. Vi plasserer ikke alternativer horisontalt fordi det gjør det vanskelig å lese.
 
