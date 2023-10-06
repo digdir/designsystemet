@@ -55,11 +55,11 @@
 }
 
 .item .active {
-  border-color: var(--fds-brand-third-600);
+  border-color: var(--fds-brand-alt3-600);
 }
 
 .item .active.link:hover {
-  border-color: var(--fds-brand-third-600);
+  border-color: var(--fds-brand-alt3-600);
 }
 
 @media (max-width: 991.98px) {
