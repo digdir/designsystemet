@@ -54,7 +54,7 @@ export const AccordionBorder: StoryFn<typeof Accordion> = () => (
 export const AccordionColor: StoryFn<typeof Accordion> = () => (
   <Accordion
     border
-    color='secondary'
+    color='second'
   >
     <Accordion.Item>
       <Accordion.Header level={3}>

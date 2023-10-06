@@ -29,7 +29,6 @@ export const AccordionContent = forwardRef<
     <AnimateHeight
       id={context.contentId}
       open={context.open}
-      className={classes.contentWrapper}
     >
       <Paragraph
         {...rest}

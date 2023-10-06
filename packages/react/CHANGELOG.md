@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.0...@digdir/design-system-react@0.28.1) (2023-10-06)
+
+### Bug Fixes
+
+- **Accordion:** Make border styling overridable ([#900](https://github.com/digdir/designsystem/issues/900)) ([b4af852](https://github.com/digdir/designsystem/commit/b4af8521ecf66bb0dbd38bc431cec4db98e6ebc7))
+- **Radio:** Adhere to provided name prop ([#903](https://github.com/digdir/designsystem/issues/903)) ([f0cfa2a](https://github.com/digdir/designsystem/commit/f0cfa2a1139b5e2291123763cba5a8ac69f390f5))
+
+# [0.28.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.27.0...@digdir/design-system-react@0.28.0) (2023-10-05)
+
+### Features
+
+- Add basic SSR support and peerDependecies to `react 18.2.0` ([#864](https://github.com/digdir/designsystem/issues/864)) ([d512ee2](https://github.com/digdir/designsystem/commit/d512ee26e6f50e61588538961dd185b92e3e6654))
+- Change `color` names `primary`, `secondary`, `tertiary` to `first`, `second`, `third` ([#887](https://github.com/digdir/designsystem/issues/887)) ([50f4eee](https://github.com/digdir/designsystem/commit/50f4eee4bf2ce813001ad1e28fa12648149fe677))
+- **DosAndDonts:** Add Do and Dont component ([#857](https://github.com/digdir/designsystem/issues/857)) ([8116d00](https://github.com/digdir/designsystem/commit/8116d00eb8afbb606bd325a7a1695c31bbc3fcbe))
+- **Tabs:** :sparkles: New `Tabs` Component ([#876](https://github.com/digdir/designsystem/issues/876)) ([6ae19e7](https://github.com/digdir/designsystem/commit/6ae19e75e7f874dc7d1acbfe9587c8ffbb29e641))
+- **Tabs:** :wastebasket: Change to Legacy ([#875](https://github.com/digdir/designsystem/issues/875)) ([1863383](https://github.com/digdir/designsystem/commit/186338375861af241c565be4bf86ab9c05d1867b))
+- **ToggleGroup:** Add accessible title for items with only icon ([#897](https://github.com/digdir/designsystem/issues/897)) ([9482315](https://github.com/digdir/designsystem/commit/94823150b5585ba9612fbbfbb70c32818812fcaa))
+
 # [0.27.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.26.0...@digdir/design-system-react@0.27.0) (2023-09-28)
 
 ### Features

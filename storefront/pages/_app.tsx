@@ -6,26 +6,21 @@ import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import '@navikt/ds-css';
 import '../globals.css';
 import type { AppProps } from 'next/app';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Analytics } from '@vercel/analytics/react';
 
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { JumpToMain } from '../components/JumpToMain';
 
-const queryClient = new QueryClient();
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className='root'>
-        <JumpToMain />
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-        <Analytics />
-      </div>
-    </QueryClientProvider>
+    <div className='root'>
+      <JumpToMain />
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
+      <Analytics />
+    </div>
   );
 };
 

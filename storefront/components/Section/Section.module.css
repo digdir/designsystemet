@@ -1,6 +1,6 @@
 .section {
-  background-color: #f4f5f6;
-  padding: var(--spacing-7) 0 var(--spacing-8) 0;
+  background-color: var(--fds-semantic-background-subtle);
+  padding: var(--fds-spacing-14) 0 var(--fds-spacing-18) 0;
   text-align: center;
 }
 
@@ -9,12 +9,11 @@
 }
 
 .title {
-  font-size: var(--font-700);
-  font-weight: 500;
+  font: var(--fds-typography-heading-large);
 }
 
 .header {
-  margin-bottom: var(--spacing-5);
+  margin-bottom: var(--fds-spacing-8);
 }
 
 .content {
@@ -25,6 +24,6 @@
 }
 
 .detail {
-  margin-top: 16px;
-  height: 32px;
+  margin-top: var(--fds-spacing-4);
+  height: var(--fds-spacing-7);
 }
