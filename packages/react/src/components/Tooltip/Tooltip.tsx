@@ -25,7 +25,7 @@ import mergeRefs from './utils';
 const ARROW_HEIGHT = 7;
 const GAP = 2;
 
-type TooltipProps = {
+export type TooltipProps = {
   children: React.ReactElement & React.RefAttributes<HTMLElement>;
   content: string;
   /** Placement of the tooltip on the trigger. Defaults to 'top' */
