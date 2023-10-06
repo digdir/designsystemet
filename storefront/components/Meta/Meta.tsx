@@ -28,7 +28,7 @@ const Meta = ({ title, description }: MetaProps) => {
   );
 };
 
-// let's set a default title
+// Let's set a default title
 Meta.defaultProps = {
   title: 'Felles Designsystem',
 };
