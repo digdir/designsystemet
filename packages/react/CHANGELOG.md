@@ -3,13 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.28.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.0...@digdir/design-system-react@0.28.1) (2023-10-06)
-
-### Bug Fixes
-
-- **Accordion:** Make border styling overridable ([#900](https://github.com/digdir/designsystem/issues/900)) ([b4af852](https://github.com/digdir/designsystem/commit/b4af8521ecf66bb0dbd38bc431cec4db98e6ebc7))
-- **Radio:** Adhere to provided name prop ([#903](https://github.com/digdir/designsystem/issues/903)) ([f0cfa2a](https://github.com/digdir/designsystem/commit/f0cfa2a1139b5e2291123763cba5a8ac69f390f5))
-
 # [0.28.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.27.0...@digdir/design-system-react@0.28.0) (2023-10-05)
 
 ### Features
