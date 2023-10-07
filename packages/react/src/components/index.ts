@@ -1,3 +1,5 @@
+import { fromJSON } from 'postcss';
+
 export * from './legacy/LegacyFieldSet';
 export * from './legacy/LegacyCheckbox';
 export * from './legacy/LegacyCheckboxGroup';
@@ -29,3 +31,4 @@ export * from './form/Fieldset';
 export * from './form/Switch';
 export * from './form/Textfield';
 export * from './form/Textarea';
+export * from './Tabs';
