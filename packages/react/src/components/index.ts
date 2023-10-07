@@ -1,5 +1,3 @@
-import { fromJSON } from 'postcss';
-
 export * from './legacy/LegacyFieldSet';
 export * from './legacy/LegacyCheckbox';
 export * from './legacy/LegacyCheckboxGroup';
