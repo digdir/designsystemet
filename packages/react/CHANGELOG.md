@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.1...@digdir/design-system-react@0.29.0) (2023-10-07)
+
+### Features
+
+- **Tabs:** :sparkles: Add missing export for new Tabs ([#915](https://github.com/digdir/designsystem/issues/915)) ([6cf70ec](https://github.com/digdir/designsystem/commit/6cf70ec65d8ae713b71f7345cb73b70b62a1997c))
+
 ## [0.28.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.0...@digdir/design-system-react@0.28.1) (2023-10-06)
 
 ### Bug Fixes
