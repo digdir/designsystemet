@@ -30,3 +30,4 @@ export * from './form/Fieldset';
 export * from './form/Switch';
 export * from './form/Textfield';
 export * from './form/Textarea';
+export * from './Tabs';
