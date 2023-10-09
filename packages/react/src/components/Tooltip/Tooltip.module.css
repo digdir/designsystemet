@@ -1,16 +1,13 @@
 .wrapper {
-  background: #232323;
+  background: var(--fds-semantic-border-neutral-strong);
   padding: var(--fds-spacing-1) var(--fds-spacing-2);
   color: white;
   border-radius: var(--fds-spacing-1);
+  font-size: var(--fds-typography-paragraph-small);
 }
 
 .arrow {
   width: 10px;
   height: 10px;
-  background: #232323;
-}
-
-.content {
-  display: inline;
+  background: var(--fds-semantic-border-neutral-strong);
 }

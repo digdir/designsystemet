@@ -18,7 +18,7 @@ const user = userEvent.setup();
 
 describe('Tooltip', () => {
   describe('should render children', () => {
-    it('should render children', () => {
+    it('should render child', () => {
       render();
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
@@ -30,21 +30,18 @@ describe('Tooltip', () => {
       render();
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
-      expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
-      await act(async () => user.hover(tooltipTrigger));
-      expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+      expect(screen.getByRole('tooltip')).not.toBeInTheDocument();
+      await act(async () => await user.hover(tooltipTrigger));
+      expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     });
 
-    it('should render tooltip on focus', async () => {
+    it('should render tooltip on focus', () => {
       render();
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
       expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
       tooltipTrigger.focus();
-      await act(async () => {
-        await user.tab();
-      });
-      expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+      expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     });
 
     it('should render tooltip on click', async () => {
@@ -53,7 +50,7 @@ describe('Tooltip', () => {
 
       expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
       await act(async () => user.click(tooltipTrigger));
-      expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+      expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     });
   });
 
@@ -61,7 +58,22 @@ describe('Tooltip', () => {
     render({ open: true });
     const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
-    expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+    expect(screen.getByRole('tooltip')).toBeInTheDocument();
     expect(tooltipTrigger).toHaveAttribute('aria-describedby');
+  });
+
+  it('delay', async () => {
+    const user = userEvent.setup();
+
+    render({ delay: 300 });
+
+    await act(async () => {
+      await user.hover(screen.getByRole('button'));
+      await new Promise((r) => setTimeout(r, 250));
+      expect(screen.queryByRole('tooltip')).toBeNull();
+      await new Promise((r) => setTimeout(r, 600));
+    });
+
+    expect(screen.getByRole('tooltip')).toBeVisible();
   });
 });

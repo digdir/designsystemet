@@ -26,11 +26,20 @@ const ARROW_HEIGHT = 7;
 const GAP = 2;
 
 export type TooltipProps = {
+  /**
+   * The element that triggers the tooltip.
+   * @note Needs to be a single ReactElement and not: <React.Fragment/> | <></>
+   */
   children: React.ReactElement & React.RefAttributes<HTMLElement>;
   content: string;
-  /** Placement of the tooltip on the trigger. Defaults to 'top' */
+  /**
+   * Placement of the tooltip on the trigger.
+   * @default 'top'
+   */
   placement?: Placement;
-  /** Delay in milliseconds before the tooltip appears. Defaults to 0 */
+  /** Delay in milliseconds before opening.
+   * @default 150
+   */
   delay?: number;
   open?: boolean;
   defaultOpen?: boolean;
@@ -42,7 +51,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       children,
       content,
       placement = 'top',
-      delay = 0,
+      delay = 150,
       open: userOpen,
       defaultOpen = false,
       className,
@@ -132,6 +141,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                   className: cn(styles.wrapper, className),
                   ref: mergedRef,
                 })}
+                role='tooltip'
               >
                 {content}
                 <FloatingArrow
