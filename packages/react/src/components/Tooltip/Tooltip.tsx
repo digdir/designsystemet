@@ -22,7 +22,7 @@ import styles from './Tooltip.module.css';
 import mergeRefs from './utils';
 
 const ARROW_HEIGHT = 7;
-const GAP = 2;
+const GAP = 4;
 
 export type TooltipProps = {
   /**
@@ -146,7 +146,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 <FloatingArrow
                   ref={arrowRef}
                   context={context}
-                  fill='#232323'
+                  fill='var(--fds-semantic-border-neutral-strong)'
                   height={ARROW_HEIGHT}
                 />
               </div>
