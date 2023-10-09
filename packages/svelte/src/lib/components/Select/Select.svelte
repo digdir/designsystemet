@@ -1,34 +1,43 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
-	export let options: { value: string; label: string }[];
+	export let options: { label: string; value: string }[] = [];
 	export let value: string;
-	export let onInput: (value: string) => void;
 
-	let selectedOption = options.find((option) => option.value === value);
+	let className: string;
+	export { className as class };
 
-	onMount(() => {
-		selectedOption = options.find((option) => option.value === value);
-	});
+	const dispatch = createEventDispatcher();
 
-	const handleChange = (event: Event) => {
-		const target = event.target as HTMLSelectElement;
-		const selectedValue = target.value;
-		if (onInput) {
-			onInput(selectedValue);
-		}
-	};
+	function handleClick() {
+		dispatch('click');
+	}
+
+	function handleBlur() {
+		dispatch('blur');
+	}
+
+	function handleChange(event: Event) {
+		value = (event.target as HTMLSelectElement).value;
+		dispatch('change', value);
+	}
+
+	let selectedOption: { label: string; value: string } | undefined;
+	$: selectedOption = options.find((option) => option.value === value);
 </script>
 
 <select
 	bind:value
 	on:change={handleChange}
+	on:click={handleClick}
+	on:blur={handleBlur}
 	aria-label="Select an option"
 	aria-selected={selectedOption ? 'true' : 'false'}
 	style="select"
+	class={className}
 >
-	{#each options as option, i}
-		<option value={option.value} selected={option.value === selectedOption?.value}>
+	{#each options as option (option.value)}
+		<option value={option.value} selected={option.value === value}>
 			{option.label}
 		</option>
 	{/each}
