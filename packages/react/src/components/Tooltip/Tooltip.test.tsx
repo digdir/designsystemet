@@ -25,4 +25,43 @@ describe('Tooltip', () => {
       expect(tooltipTrigger).toBeInTheDocument();
     });
   });
+  describe('should render tooltip', () => {
+    it('should render tooltip on hover', async () => {
+      render();
+      const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+
+      expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
+      await act(async () => user.hover(tooltipTrigger));
+      expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+    });
+
+    it('should render tooltip on focus', async () => {
+      render();
+      const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+
+      expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
+      tooltipTrigger.focus();
+      await act(async () => {
+        await user.tab();
+      });
+      expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+    });
+
+    it('should render tooltip on click', async () => {
+      render();
+      const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+
+      expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
+      await act(async () => user.click(tooltipTrigger));
+      expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+    });
+  });
+
+  it('should render open when we pass open prop', () => {
+    render({ open: true });
+    const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+
+    expect(screen.queryByText('Tooltip text')).toBeInTheDocument();
+    expect(tooltipTrigger).toHaveAttribute('aria-describedby');
+  });
 });
