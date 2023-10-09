@@ -22,17 +22,17 @@
         "description": "AAA 7.1 on grey 800\nAA18 3.5 as bkdg for interaction blue"
       },
       "500": {
-        "value": "#f67f82",
+        "value": "rgba($brand.first.900, 0.5)",
         "type": "color",
         "description": "AA 5.6 on grey 800"
       },
       "600": {
-        "value": "#f45f63",
+        "value": "rgba($brand.first.900, 0.6)",
         "type": "color",
         "description": "AA 4.5 on grey 800"
       },
       "700": {
-        "value": "#dc5659",
+        "value": "rgba($brand.first.900, 0.7)",
         "type": "color",
         "description": "AA18 3.7 on grey 800"
       },
