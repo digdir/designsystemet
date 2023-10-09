@@ -11,20 +11,46 @@
   export let color = 'neutral';
   export let size = 'medium';
   export let variant = 'filled';
-
-  // Compute the dynamic class string for the tag based on the props.
-  $: computedClass = `tag ${color} ${size} ${variant} ${$$props.class}`;
 </script>
 
-<Paragraph
-  as="span"
-  {size}
-  class={computedClass}
+<span
+  class={`paragraph ${size} tag ${color}  ${variant} ${$$props.class || ''}`}
 >
   <slot />
-</Paragraph>
+</span>
 
-<style>
+<style lang="scss">
+  .paragraph {
+    --fdsc-typography-font-family: inherit;
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
+    color: var(--fds-semantic-text-neutral-default);
+    margin: 0;
+
+    &.large {
+      --fdsc-bottom-spacing: var(--fds-spacing-6);
+      font: var(--fds-typography-paragraph-large);
+      font-family: var(--fdsc-typography-font-family);
+    }
+
+    &.medium {
+      --fdsc-bottom-spacing: var(--fds-spacing-5);
+      font: var(--fds-typography-paragraph-medium);
+      font-family: var(--fdsc-typography-font-family);
+    }
+
+    &.small {
+      --fdsc-bottom-spacing: var(--fds-spacing-4);
+      font: var(--fds-typography-paragraph-small);
+      font-family: var(--fdsc-typography-font-family);
+    }
+
+    &.xsmall {
+      --fdsc-bottom-spacing: var(--fds-spacing-3);
+      font: var(--fds-typography-paragraph-xsmall);
+      font-family: var(--fdsc-typography-font-family);
+    }
+  }
+
   .tag {
     --fdsc-tag-border: var(--fds-semantic-border-neutral-default);
     --fdsc-tag-background: var(--fds-semantic-surface-neutral-subtle);
@@ -32,7 +58,6 @@
     --fdsc-tag-padding: var(--fds-spacing-2);
     --fdsc-tag-min-height: var(--fds-sizing-7);
     --fdsc-tag-border-radius: var(--fds-border_radius-small);
-
     color: var(--fdsc-tag-text);
     padding: 0 var(--fdsc-tag-padding);
     border: var(--fds-border_width-default) solid var(--fdsc-tag-border);
@@ -44,116 +69,120 @@
     box-sizing: border-box;
     word-break: break-word;
     width: max-content;
-  }
 
-  .xsmall {
-    --fdsc-tag-padding: var(--fds-spacing-1);
-    --fdsc-tag-min-height: var(--fds-sizing-5);
-  }
+    &.xsmall {
+      --fdsc-tag-padding: var(--fds-spacing-1);
+      --fdsc-tag-min-height: var(--fds-sizing-5);
+    }
 
-  .small {
-    --fdsc-tag-padding: var(--fds-spacing-1);
-    --fdsc-tag-min-height: var(--fds-sizing-6);
-  }
+    &.small {
+      --fdsc-tag-padding: var(--fds-spacing-1);
+      --fdsc-tag-min-height: var(--fds-sizing-6);
+    }
 
-  .medium {
-    --fdsc-tag-padding: var(--fds-spacing-2);
-    --fdsc-tag-min-height: var(--fds-sizing-7);
-  }
+    &.medium {
+      --fdsc-tag-padding: var(--fds-spacing-2);
+      --fdsc-tag-min-height: var(--fds-sizing-7);
+    }
 
-  .outlined.neutral {
-    --fdsc-tag-border: var(--fds-semantic-border-neutral-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-neutral-subtle);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+    &.outlined {
+      &.neutral {
+        --fdsc-tag-border: var(--fds-semantic-border-neutral-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-neutral-subtle);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .outlined.info {
-    --fdsc-tag-border: var(--fds-semantic-border-info-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-info-subtle);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.info {
+        --fdsc-tag-border: var(--fds-semantic-border-info-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-info-subtle);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .outlined.success {
-    --fdsc-tag-border: var(--fds-semantic-border-success-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-success-subtle);
-    --fdsc-tag-text: var(--fds-semantic-text-success-on_success_subtle);
-  }
+      &.success {
+        --fdsc-tag-border: var(--fds-semantic-border-success-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-success-subtle);
+        --fdsc-tag-text: var(--fds-semantic-text-success-on_success_subtle);
+      }
 
-  .outlined.warning {
-    --fdsc-tag-border: var(--fds-semantic-border-warning-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-warning-subtle);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.warning {
+        --fdsc-tag-border: var(--fds-semantic-border-warning-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-warning-subtle);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .outlined.danger {
-    --fdsc-tag-border: var(--fds-semantic-border-danger-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-danger-subtle);
-    --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger_subtle);
-  }
+      &.danger {
+        --fdsc-tag-border: var(--fds-semantic-border-danger-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-danger-subtle);
+        --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger_subtle);
+      }
 
-  .outlined.primary {
-    --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-primary-light);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.primary {
+        --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-primary-light);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .outlined.secondary {
-    --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-secondary-light);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.secondary {
+        --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-secondary-light);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .outlined.tertiary {
-    --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-tertiary-light);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.tertiary {
+        --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-tertiary-light);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
+    }
 
-  .filled.neutral {
-    --fdsc-tag-border: var(--fds-semantic-surface-neutral-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-neutral-dark);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
-  }
+    &.filled {
+      &.neutral {
+        --fdsc-tag-border: var(--fds-semantic-surface-neutral-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-neutral-dark);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
+      }
 
-  .filled.info {
-    --fdsc-tag-border: var(--fds-semantic-surface-info-subtle-hover);
-    --fdsc-tag-background: var(--fds-semantic-surface-info-subtle-hover);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.info {
+        --fdsc-tag-border: var(--fds-semantic-surface-info-subtle-hover);
+        --fdsc-tag-background: var(--fds-semantic-surface-info-subtle-hover);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .filled.success {
-    --fdsc-tag-border: var(--fds-semantic-surface-success-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-success-default);
-    --fdsc-tag-text: var(--fds-semantic-text-success-on_success);
-  }
+      &.success {
+        --fdsc-tag-border: var(--fds-semantic-surface-success-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-success-default);
+        --fdsc-tag-text: var(--fds-semantic-text-success-on_success);
+      }
 
-  .filled.warning {
-    --fdsc-tag-border: var(--fds-semantic-surface-warning-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-warning-default);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
-  }
+      &.warning {
+        --fdsc-tag-border: var(--fds-semantic-surface-warning-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-warning-default);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .filled.danger {
-    --fdsc-tag-border: var(--fds-semantic-surface-danger-default);
-    --fdsc-tag-background: var(--fds-semantic-surface-danger-default);
-    --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger);
-  }
+      &.danger {
+        --fdsc-tag-border: var(--fds-semantic-surface-danger-default);
+        --fdsc-tag-background: var(--fds-semantic-surface-danger-default);
+        --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger);
+      }
 
-  .filled.primary {
-    --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-primary-dark);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
-  }
+      &.primary {
+        --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-primary-dark);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .filled.secondary {
-    --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-secondary-dark);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
-  }
+      &.secondary {
+        --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-secondary-dark);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
 
-  .filled.tertiary {
-    --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
-    --fdsc-tag-background: var(--fds-semantic-surface-tertiary-dark);
-    --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
+      &.tertiary {
+        --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-tertiary-dark);
+        --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
+      }
+    }
   }
 </style>

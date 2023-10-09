@@ -1,3 +1,427 @@
-<button on:click>
-	<slot />
+<script lang="ts">
+  /**
+   * `Button` used for interaction.
+   * @prop {string} [variant='filled'] - Specify which variant to use. Options are 'filled', 'outline', 'quiet'.
+   * @prop {string} [color='primary'] - Specify which color palette to use. Options are 'primary', 'secondary', 'success', 'danger', 'inverted'.
+   * @prop {string} [size='medium'] - Size of the button. Options are 'small', 'medium', 'large'.
+   * @prop {boolean} [fullWidth=false] - If `Button` should fill full width of its container.
+   * @prop {boolean} [dashedBorder=false] - Enable dashed border for `outline` variant.
+   * @prop {any} icon - Icon to be rendered in the button. This should be a component that renders an SVG object.
+   * @prop {string} [iconPlacement='left'] - Icon position inside Button. Options are 'right' or 'left'.
+   * @prop {string} [class=''] - Additional classes to add to the component.
+   */
+  export let variant = 'filled';
+  export let color = 'primary';
+  export let size = 'medium';
+  export let fullWidth = false;
+  export let dashedBorder = false;
+  export let icon = '';
+  // export let iconPlacement = 'left';
+  // export let type = 'button';
+
+  const computedClass = `button ${size} ${variant} ${color} ${
+    fullWidth ? 'full-width' : ''
+  } ${dashedBorder ? 'dashed-border' : ''} ${icon ? 'only-icon' : ''} ${
+    $$props.class || ''
+  }`;
+</script>
+
+<button
+  on:click
+  class={computedClass}
+>
+  <!-- {#if icon && iconPlacement === 'left'}
+    <SvgIcon svgIconComponent={icon} />
+  {/if} -->
+  <slot />
+  <!-- {#if icon && iconPlacement === 'right'}
+    <SvgIcon svgIconComponent={icon} />
+  {/if} -->
 </button>
+
+<style>
+  .button {
+    --fdsc-border-radius: var(--fds-border_radius-interactive);
+    --fdsc-button-size: var(--fds-component-mode-height-small);
+    --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-text-action-primary-on_action
+    );
+    --fdsc-icon-size: var(--fds-sizing-4);
+
+    display: flex;
+    align-items: center;
+    border-radius: var(--fdsc-border-radius);
+    border: var(--fds-border_width-default) solid transparent;
+    color: var(--fdsc-font-and-icon-color);
+    fill: var(--fdsc-font-and-icon-color);
+    height: var(--fdsc-button-size);
+    padding: var(--fdsc-button-padding);
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: inherit;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: var(--typography-default-letter-spacing);
+    text-decoration: none;
+    position: relative;
+  }
+
+  .button svg {
+    overflow: visible;
+  }
+
+  .button.small::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    min-height: auto;
+    content: '';
+  }
+
+  .button.small::after {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    content: '';
+  }
+
+  .button:disabled,
+  .button[aria-disabled='true'] {
+    cursor: auto;
+    opacity: var(--fds-opacity-disabled);
+  }
+
+  .icon {
+    display: inline-block;
+    height: var(--fdsc-icon-size);
+    width: var(--fdsc-icon-size);
+  }
+
+  .button.small {
+    --fdsc-button-size: var(--fds-component-mode-height-small);
+    --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
+    --fdsc-icon-size: var(--fds-sizing-4);
+
+    gap: var(--fds-sizing-2);
+    min-width: var(--fdsc-button-size);
+    font: var(--fds-typography-paragraph-small);
+    font-family: inherit;
+  }
+
+  .button.medium {
+    --fdsc-button-size: var(--fds-component-mode-height-medium);
+    --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+    --fdsc-icon-size: var(--fds-sizing-6);
+
+    gap: var(--fds-sizing-3);
+    min-width: var(--fdsc-button-size);
+    font: var(--fds-typography-paragraph-medium);
+    font-family: inherit;
+  }
+
+  .button.large {
+    --fdsc-button-size: var(--fds-component-mode-height-large);
+    --fdsc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+    --fdsc-icon-size: var(--fds-sizing-8);
+
+    gap: var(--fds-sizing-3);
+    min-width: var(--fdsc-button-size);
+    font: var(--fds-typography-paragraph-large);
+    font-family: inherit;
+  }
+
+  .button.fullWidth {
+    width: 100%;
+  }
+
+  .button.dashedBorder {
+    border-style: dashed;
+  }
+
+  .button.outline {
+    background-color: transparent;
+  }
+
+  .button.quiet {
+    padding: 0 var(--fds-spacing-2);
+    background-color: transparent;
+  }
+
+  .button.onlyIcon {
+    padding: calc(
+      (var(--fdsc-button-size) - var(--fdsc-icon-size)) / 2 -
+        var(--fds-border_width-default)
+    );
+  }
+
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
+  @media (hover: hover) and (pointer: fine) {
+    .button.filled.primary:not([aria-disabled='true'], :disabled):hover {
+      background: var(--fds-semantic-surface-action-primary-hover);
+    }
+
+    .button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
+      /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+      background: #1a466d;
+    }
+
+    .button.filled.success:not([aria-disabled='true'], :disabled):hover {
+      background: var(--fds-semantic-surface-success-hover);
+    }
+
+    .button.filled.danger:not([aria-disabled='true'], :disabled):hover {
+      background: var(--fds-semantic-surface-danger-hover);
+    }
+
+    .button.filled.inverted:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
+
+      background: var(--fds-semantic-surface-on_inverted-hover);
+    }
+
+    .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+
+      border-color: var(--fds-semantic-border-action-primary-hover);
+      background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+    }
+
+    .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
+      border-color: var(--fds-semantic-border-action-secondary-hover);
+
+      /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+      background: #e5eaef;
+    }
+
+    .button.outline.success:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
+
+      border-color: var(--fds-semantic-border-success-hover);
+      background: var(--fds-semantic-surface-success-no_fill-hover);
+    }
+
+    .button.outline.danger:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
+
+      border-color: var(--fds-semantic-border-danger-hover);
+      background: var(--fds-semantic-surface-danger-no_fill-hover);
+    }
+
+    .button.outline.inverted:not([aria-disabled='true'], :disabled):hover {
+      background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
+    }
+
+    .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+
+      background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+    }
+
+    .button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
+      /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+      background: #e5eaef;
+    }
+
+    .button.quiet.success:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-success-hover);
+
+      background: var(--fds-semantic-surface-success-no_fill-hover);
+    }
+
+    .button.quiet.danger:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-hover);
+
+      background: var(--fds-semantic-surface-danger-no_fill-hover);
+    }
+
+    .button.quiet.inverted:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
+
+      background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
+    }
+  }
+
+  /* Filled button colors */
+  .button.filled.primary {
+    background: var(--fds-semantic-surface-action-primary-default);
+  }
+
+  .button.filled.primary:not([aria-disabled='true'], :disabled):active {
+    background: var(--fds-semantic-surface-action-primary-active);
+  }
+
+  .button.filled.secondary {
+    background: var(--fds-semantic-surface-action-secondary-default);
+  }
+
+  .button.filled.secondary:not([aria-disabled='true'], :disabled):active {
+    /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+    background: #335a7d;
+  }
+
+  .button.filled.success {
+    background: var(--fds-semantic-surface-success-default);
+  }
+
+  .button.filled.success:not([aria-disabled='true'], :disabled):active {
+    background: var(--fds-semantic-surface-success-active);
+  }
+
+  .button.filled.danger {
+    background: var(--fds-semantic-surface-danger-default);
+  }
+
+  .button.filled.danger:not([aria-disabled='true'], :disabled):active {
+    background: var(--fds-semantic-surface-danger-active);
+  }
+
+  .button.filled.inverted {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
+
+    background: var(--fds-semantic-surface-on_inverted-default);
+  }
+
+  .button.filled.inverted:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-default);
+
+    background: var(--fds-semantic-surface-on_inverted-active);
+  }
+
+  /* Outline button colors */
+  .button.outline.primary {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
+
+    border-color: var(--fds-semantic-border-action-primary-default);
+    background: var(--fds-semantic-surface-action-primary-no_fill);
+  }
+
+  .button.outline.primary:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
+
+    border-color: var(--fds-semantic-border-action-primary-active);
+    background: var(--fds-semantic-surface-action-primary-no_fill-active);
+  }
+
+  .button.outline.secondary {
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-text-action-secondary-default
+    );
+
+    border-color: var(--fds-semantic-border-action-secondary-default);
+    background: var(--fds-semantic-surface-action-secondary-no_fill);
+  }
+
+  .button.outline.secondary:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-text-action-secondary-active
+    );
+
+    border-color: var(--fds-semantic-border-action-secondary-active);
+
+    /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+    background: #ccd6df;
+  }
+
+  .button.outline.success {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-success-default);
+
+    border-color: var(--fds-semantic-border-success-default);
+    background: var(--fds-semantic-surface-success-no_fill);
+  }
+
+  .button.outline.success:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-success-active);
+
+    border-color: var(--fds-semantic-border-success-active);
+    background: var(--fds-semantic-surface-success-no_fill-active);
+  }
+
+  .button.outline.danger {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-default);
+
+    border-color: var(--fds-semantic-border-danger-default);
+    background: var(--fds-semantic-surface-danger-no_fill);
+  }
+
+  .button.outline.danger:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-active);
+
+    border-color: var(--fds-semantic-border-danger-active);
+    background: var(--fds-semantic-surface-danger-no_fill-active);
+  }
+
+  .button.outline.inverted {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
+
+    border: 1px solid var(--fds-semantic-border-on_inverted-default);
+    background: transparent;
+  }
+
+  .button.outline.inverted:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
+
+    background: var(--fds-semantic-surface-on_inverted-no_fill-active);
+  }
+
+  /* Quiet button colors */
+  .button.quiet.primary {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
+  }
+
+  .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
+
+    background: var(--fds-semantic-surface-action-primary-no_fill-active);
+  }
+
+  .button.quiet.secondary {
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-text-action-secondary-default
+    );
+  }
+
+  .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-text-action-secondary-active
+    );
+
+    /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
+    background: #ccd6df;
+  }
+
+  .button.quiet.success {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-success-default);
+  }
+
+  .button.quiet.success:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-success-active);
+
+    background: var(--fds-semantic-surface-success-no_fill-active);
+  }
+
+  .button.quiet.danger {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-default);
+  }
+
+  .button.quiet.danger:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-active);
+
+    background: var(--fds-semantic-surface-danger-no_fill-active);
+  }
+
+  .button.quiet.inverted {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
+
+    background: transparent;
+  }
+
+  .button.quiet.inverted:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
+
+    background: var(--fds-semantic-surface-on_inverted-no_fill-active);
+  }
+</style>
