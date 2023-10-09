@@ -4,9 +4,6 @@
 	export let options: { label: string; value: string }[] = [];
 	export let value: string;
 
-	let className: string;
-	export { className as class };
-
 	const dispatch = createEventDispatcher();
 
 	function handleClick() {
@@ -34,7 +31,7 @@
 	aria-label="Select an option"
 	aria-selected={selectedOption ? 'true' : 'false'}
 	style="select"
-	class={className}
+	class={$$props.class}
 >
 	{#each options as option (option.value)}
 		<option value={option.value} selected={option.value === value}>
@@ -42,3 +39,13 @@
 		</option>
 	{/each}
 </select>
+
+<style>
+	.hidden-select-arrow {
+		appearance: none;
+		border: none;
+		background-color: transparent;
+		padding: 5px 35px 5px 5px;
+		margin-left: 0.3rem;
+	}
+</style>
