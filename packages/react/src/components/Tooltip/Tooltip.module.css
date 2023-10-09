@@ -5,9 +5,3 @@
   border-radius: var(--fds-spacing-1);
   font-size: var(--fds-typography-paragraph-xsmall);
 }
-
-.arrow {
-  width: 10px;
-  height: 10px;
-  background: var(--fds-semantic-border-neutral-strong);
-}
