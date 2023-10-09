@@ -3,7 +3,7 @@
   padding: var(--fds-spacing-1) var(--fds-spacing-2);
   color: white;
   border-radius: var(--fds-spacing-1);
-  font-size: var(--fds-typography-paragraph-small);
+  font-size: var(--fds-typography-paragraph-xsmall);
 }
 
 .arrow {

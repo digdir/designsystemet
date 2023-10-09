@@ -1,7 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { cloneElement, forwardRef, useMemo, useState } from 'react';
 import cn from 'classnames';
-import type { Placement } from '@floating-ui/react';
 import {
   useFloating,
   autoUpdate,
@@ -36,7 +35,7 @@ export type TooltipProps = {
    * Placement of the tooltip on the trigger.
    * @default 'top'
    */
-  placement?: Placement;
+  placement?: 'top' | 'right' | 'bottom' | 'left';
   /** Delay in milliseconds before opening.
    * @default 150
    */
