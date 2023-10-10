@@ -24,6 +24,47 @@ describe('Radio', () => {
       screen.getByRole('radio', { description: 'description' }),
     ).toBeDefined();
   });
+
+  test('should pass down name attribute to input', () => {
+    render(
+      <Radio
+        value='test'
+        name='radio-group123'
+      >
+        label
+      </Radio>,
+    );
+    expect(screen.getByRole('radio', { name: 'label' })).toHaveAttribute(
+      'name',
+      'radio-group123',
+    );
+  });
+
+  test('has correct label when using aria-label', () => {
+    render(
+      <Radio
+        value='test'
+        aria-label='label'
+      />,
+    );
+    expect(screen.getByRole('radio', { name: 'label' })).toBeVisible();
+  });
+
+  test('has correct label when using aria-labelledby', () => {
+    render(
+      <div>
+        <div id='label-id'>label outside radio</div>
+        <Radio
+          value='test'
+          aria-labelledby='label-id'
+        />
+      </div>,
+    );
+    expect(
+      screen.getByRole('radio', { name: 'label outside radio' }),
+    ).toBeVisible();
+  });
+
   it('calls onChange and onClick when user clicks', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();

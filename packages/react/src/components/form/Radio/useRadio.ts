@@ -32,7 +32,7 @@ export const useRadio: UseRadio = (props) => {
       ...inputProps,
       readOnly,
       type: 'radio',
-      name: radioGroup?.name,
+      name: radioGroup?.name ?? props.name,
       required: radioGroup?.required,
       defaultChecked: radioGroup?.defaultValue
         ? radioGroup?.defaultValue === props.value

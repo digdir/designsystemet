@@ -37,9 +37,9 @@ describe('Tag', () => {
       expect(screen.getByText('Beta')).toHaveClass('outlined');
     });
 
-    test('should render color primary', (): void => {
-      render(<Tag color='primary'>Beta</Tag>);
-      expect(screen.getByText('Beta')).toHaveClass('primary');
+    test('should render color first', (): void => {
+      render(<Tag color='first'>Beta</Tag>);
+      expect(screen.getByText('Beta')).toHaveClass('first');
     });
 
     test('should have custom className', () => {

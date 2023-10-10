@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.7.0...@digdir/design-system-tokens@0.8.0) (2023-10-05)
+
+### Features
+
+- Change `color` names `primary`, `secondary`, `tertiary` to `first`, `second`, `third` ([#887](https://github.com/digdir/designsystem/issues/887)) ([50f4eee](https://github.com/digdir/designsystem/commit/50f4eee4bf2ce813001ad1e28fa12648149fe677))
+
 # [0.7.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.6.1...@digdir/design-system-tokens@0.7.0) (2023-09-21)
 
 ### Features
