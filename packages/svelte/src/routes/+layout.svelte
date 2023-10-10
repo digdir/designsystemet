@@ -1,11 +1,14 @@
+<script>
+  import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+</script>
+
 <slot />
 
 <style>
+  /*
   :root {
-    /** Referenced source tokens */
     --fds-font-size-f0: clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem);
 
-    /** Tokens */
     --fds-semantic-background-default: #ffffff;
     --fds-semantic-background-subtle: #f4f5f6;
     --fds-semantic-surface-neutral-default: #ffffff;
@@ -349,5 +352,5 @@
     --fds-component-mode-gap-small: var(--fds-spacing-1);
     --fds-component-mode-gap-medium: var(--fds-spacing-2);
     --fds-component-mode-gap-large: var(--fds-spacing-3);
-  }
+  }*/
 </style>

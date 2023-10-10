@@ -2,7 +2,7 @@
   /**
    * `Button` used for interaction.
    * @prop {string} [variant='filled'] - Specify which variant to use. Options are 'filled', 'outline', 'quiet'.
-   * @prop {string} [color='primary'] - Specify which color palette to use. Options are 'primary', 'secondary', 'success', 'danger', 'inverted'.
+   * @prop {string} [color='first'] - Specify which color palette to use. Options are 'first', 'second', 'success', 'danger', 'inverted'.
    * @prop {string} [size='medium'] - Size of the button. Options are 'small', 'medium', 'large'.
    * @prop {boolean} [fullWidth=false] - If `Button` should fill full width of its container.
    * @prop {boolean} [dashedBorder=false] - Enable dashed border for `outline` variant.
@@ -11,7 +11,7 @@
    * @prop {string} [class=''] - Additional classes to add to the component.
    */
   export let variant = 'filled';
-  export let color = 'primary';
+  export let color = 'first';
   export let size = 'medium';
   export let fullWidth = false;
   export let dashedBorder = false;
@@ -44,9 +44,7 @@
     --fdsc-border-radius: var(--fds-border_radius-interactive);
     --fdsc-button-size: var(--fds-component-mode-height-small);
     --fdsc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
-    --fdsc-font-and-icon-color: var(
-      --fds-semantic-text-action-primary-on_action
-    );
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-on_action);
     --fdsc-icon-size: var(--fds-sizing-4);
 
     display: flex;
@@ -160,11 +158,11 @@
 
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    .button.filled.primary:not([aria-disabled='true'], :disabled):hover {
-      background: var(--fds-semantic-surface-action-primary-hover);
+    .button.filled.first:not([aria-disabled='true'], :disabled):hover {
+      background: var(--fds-semantic-surface-action-first-hover);
     }
 
-    .button.filled.secondary:not([aria-disabled='true'], :disabled):hover {
+    .button.filled.second:not([aria-disabled='true'], :disabled):hover {
       /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
       background: #1a466d;
     }
@@ -183,15 +181,15 @@
       background: var(--fds-semantic-surface-on_inverted-hover);
     }
 
-    .button.outline.primary:not([aria-disabled='true'], :disabled):hover {
-      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+    .button.outline.first:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-hover);
 
-      border-color: var(--fds-semantic-border-action-primary-hover);
-      background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+      border-color: var(--fds-semantic-border-action-first-hover);
+      background: var(--fds-semantic-surface-action-first-no_fill-hover);
     }
 
-    .button.outline.secondary:not([aria-disabled='true'], :disabled):hover {
-      border-color: var(--fds-semantic-border-action-secondary-hover);
+    .button.outline.second:not([aria-disabled='true'], :disabled):hover {
+      border-color: var(--fds-semantic-border-action-second-hover);
 
       /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
       background: #e5eaef;
@@ -215,13 +213,13 @@
       background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
     }
 
-    .button.quiet.primary:not([aria-disabled='true'], :disabled):hover {
-      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-hover);
+    .button.quiet.first:not([aria-disabled='true'], :disabled):hover {
+      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-hover);
 
-      background: var(--fds-semantic-surface-action-primary-no_fill-hover);
+      background: var(--fds-semantic-surface-action-first-no_fill-hover);
     }
 
-    .button.quiet.secondary:not([aria-disabled='true'], :disabled):hover {
+    .button.quiet.second:not([aria-disabled='true'], :disabled):hover {
       /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
       background: #e5eaef;
     }
@@ -246,19 +244,19 @@
   }
 
   /* Filled button colors */
-  .button.filled.primary {
-    background: var(--fds-semantic-surface-action-primary-default);
+  .button.filled.first {
+    background: var(--fds-semantic-surface-action-first-default);
   }
 
-  .button.filled.primary:not([aria-disabled='true'], :disabled):active {
-    background: var(--fds-semantic-surface-action-primary-active);
+  .button.filled.first:not([aria-disabled='true'], :disabled):active {
+    background: var(--fds-semantic-surface-action-first-active);
   }
 
-  .button.filled.secondary {
-    background: var(--fds-semantic-surface-action-secondary-default);
+  .button.filled.second {
+    background: var(--fds-semantic-surface-action-second-default);
   }
 
-  .button.filled.secondary:not([aria-disabled='true'], :disabled):active {
+  .button.filled.second:not([aria-disabled='true'], :disabled):active {
     /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
     background: #335a7d;
   }
@@ -292,35 +290,31 @@
   }
 
   /* Outline button colors */
-  .button.outline.primary {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
+  .button.outline.first {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-default);
 
-    border-color: var(--fds-semantic-border-action-primary-default);
-    background: var(--fds-semantic-surface-action-primary-no_fill);
+    border-color: var(--fds-semantic-border-action-first-default);
+    background: var(--fds-semantic-surface-action-first-no_fill);
   }
 
-  .button.outline.primary:not([aria-disabled='true'], :disabled):active {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
+  .button.outline.first:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-active);
 
-    border-color: var(--fds-semantic-border-action-primary-active);
-    background: var(--fds-semantic-surface-action-primary-no_fill-active);
+    border-color: var(--fds-semantic-border-action-first-active);
+    background: var(--fds-semantic-surface-action-first-no_fill-active);
   }
 
-  .button.outline.secondary {
-    --fdsc-font-and-icon-color: var(
-      --fds-semantic-text-action-secondary-default
-    );
+  .button.outline.second {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-default);
 
-    border-color: var(--fds-semantic-border-action-secondary-default);
-    background: var(--fds-semantic-surface-action-secondary-no_fill);
+    border-color: var(--fds-semantic-border-action-second-default);
+    background: var(--fds-semantic-surface-action-second-no_fill);
   }
 
-  .button.outline.secondary:not([aria-disabled='true'], :disabled):active {
-    --fdsc-font-and-icon-color: var(
-      --fds-semantic-text-action-secondary-active
-    );
+  .button.outline.second:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-active);
 
-    border-color: var(--fds-semantic-border-action-secondary-active);
+    border-color: var(--fds-semantic-border-action-second-active);
 
     /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
     background: #ccd6df;
@@ -368,26 +362,22 @@
   }
 
   /* Quiet button colors */
-  .button.quiet.primary {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-default);
+  .button.quiet.first {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-default);
   }
 
-  .button.quiet.primary:not([aria-disabled='true'], :disabled):active {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-primary-active);
+  .button.quiet.first:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-active);
 
-    background: var(--fds-semantic-surface-action-primary-no_fill-active);
+    background: var(--fds-semantic-surface-action-first-no_fill-active);
   }
 
-  .button.quiet.secondary {
-    --fdsc-font-and-icon-color: var(
-      --fds-semantic-text-action-secondary-default
-    );
+  .button.quiet.second {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-default);
   }
 
-  .button.quiet.secondary:not([aria-disabled='true'], :disabled):active {
-    --fdsc-font-and-icon-color: var(
-      --fds-semantic-text-action-secondary-active
-    );
+  .button.quiet.second:not([aria-disabled='true'], :disabled):active {
+    --fdsc-font-and-icon-color: var(--fds-semantic-text-action-second-active);
 
     /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
     background: #ccd6df;

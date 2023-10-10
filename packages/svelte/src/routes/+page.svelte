@@ -9,11 +9,14 @@
 
 <h1>Test components here!</h1>
 
-<Button>Hello</Button>
+<Button>First</Button>
+<Button color="second">Secondary</Button>
+<Button color="success">Success</Button>
+<Button variant="quiet">First (Quiet)</Button>
+<Button variant="outline">First (Outline)</Button>
 
 <Link href="/route">Link</Link>
 <Paragraph
-  color="primary"
   spacing
   short>Lorem ipsum dorem</Paragraph
 >
