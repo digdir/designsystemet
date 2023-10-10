@@ -27,9 +27,9 @@
   <li><Alert severity="danger">Alert (danger)</Alert></li>
 </List>
 
-<Tag color="primary">Tag Primary</Tag>
-<Tag color="secondary">Tag Secondary</Tag>
-<Tag color="tertiary">Tag tertiary</Tag>
+<Tag color="first">Tag Primary</Tag>
+<Tag color="second">Tag Secondary</Tag>
+<Tag color="third">Tag tertiary</Tag>
 <Tag color="neutral">Tag neutral</Tag>
 <Tag color="success">Tag success</Tag>
 <Tag color="warning">Tag warning</Tag>
@@ -37,7 +37,7 @@
 <Tag color="info">Tag info</Tag>
 
 <Tag
-  color="primary"
+  color="first"
   variant="outlined">Tag Outlined</Tag
 >
 
