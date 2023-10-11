@@ -7,15 +7,7 @@ import { Tooltip } from '.';
 
 type Story = StoryObj<typeof Tooltip>;
 
-const defaultChildren = (
-  <Button
-    style={{
-      margin: '3rem',
-    }}
-  >
-    My trigger
-  </Button>
-);
+const defaultChildren = <Button>My trigger</Button>;
 
 export default {
   title: 'Felles/Tooltip',
@@ -27,6 +19,13 @@ export const Preview: Story = {
     content: 'Tooltip text',
     children: defaultChildren,
   },
+  decorators: [
+    (Story: StoryFn) => (
+      <div style={{ margin: '3rem' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Placement: Story = {

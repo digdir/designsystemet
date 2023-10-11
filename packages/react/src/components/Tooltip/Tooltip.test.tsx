@@ -48,7 +48,7 @@ describe('Tooltip', () => {
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
       expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
-      tooltipTrigger.focus();
+      act(() => tooltipTrigger.focus());
       const tooltip = await screen.findByText('Tooltip text');
       expect(tooltip).toBeInTheDocument();
       expect(screen.queryByRole('tooltip')).toBeInTheDocument();
