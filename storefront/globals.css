@@ -1,5 +1,9 @@
 @import url('https://altinncdn.no/fonts/inter/inter.css');
 
+* {
+  font-feature-settings: 'cv05' 1;
+}
+
 :root {
   --color-beta: #d6d4ff;
   --color-text-on_inverted-subtle: #dbdbdb;
