@@ -1,6 +1,6 @@
 {
   "brand": {
-    "first": {
+    "alt1": {
       "100": {
         "value": "#efeffb",
         "type": "color"
@@ -38,7 +38,7 @@
         "type": "color"
       }
     },
-    "second": {
+    "alt2": {
       "100": {
         "value": "#ffeee1",
         "type": "color"
@@ -76,7 +76,7 @@
         "type": "color"
       }
     },
-    "third": {
+    "alt3": {
       "100": {
         "value": "#eff6f4",
         "type": "color"
@@ -117,80 +117,80 @@
   },
   "semantic": {
     "surface": {
-      "alt1": {
+      "first": {
         "light": {
-          "value": "{brand.first.200}",
+          "value": "{brand.alt1.200}",
           "type": "color"
         },
         "light-hover": {
-          "value": "{brand.first.300}",
+          "value": "{brand.alt1.300}",
           "type": "color"
         },
         "light-active": {
-          "value": "{brand.first.400}",
+          "value": "{brand.alt1.400}",
           "type": "color"
         },
         "dark": {
-          "value": "{brand.first.800}",
+          "value": "{brand.alt1.800}",
           "type": "color"
         }
       },
-      "alt2": {
+      "second": {
         "light": {
-          "value": "{brand.second.200}",
+          "value": "{brand.alt2.200}",
           "type": "color"
         },
         "light-hover": {
-          "value": "{brand.second.300}",
+          "value": "{brand.alt2.300}",
           "type": "color"
         },
         "light-active": {
-          "value": "{brand.second.400}",
+          "value": "{brand.alt2.400}",
           "type": "color"
         },
         "dark": {
-          "value": "{brand.second.900}",
+          "value": "{brand.alt2.900}",
           "type": "color"
         }
       },
-      "alt3": {
+      "third": {
         "light": {
-          "value": "{brand.third.200}",
+          "value": "{brand.alt3.200}",
           "type": "color"
         },
         "light-hover": {
-          "value": "{brand.third.300}",
+          "value": "{brand.alt3.300}",
           "type": "color"
         },
         "light-active": {
-          "value": "{brand.third.400}",
+          "value": "{brand.alt3.400}",
           "type": "color"
         },
         "dark": {
-          "value": "{brand.third.800}",
+          "value": "{brand.alt3.800}",
           "type": "color"
         }
       },
       "action": {
-        "alt1": {
+        "first": {
           "subtle": {
-            "value": "{colors.blue.100}",
+            "value": "{colors.grey.100}",
             "type": "color"
           },
           "subtle-hover": {
-            "value": "{colors.blue.200}",
+            "value": "{colors.grey.200}",
             "type": "color"
           },
           "default": {
-            "value": "{colors.blue.700}",
+            "value": "{colors.blue.900}",
             "type": "color"
           },
           "hover": {
-            "value": "{colors.blue.800}",
+            "value": "rgba({colors.blue.900}, 0.9)",
             "type": "color"
           },
           "active": {
-            "value": "{colors.blue.900}",
+            "value": "rgba({colors.blue.900}, 0.8)",
             "type": "color",
             "description": "Standard farge for handlinger"
           },
@@ -199,15 +199,15 @@
             "type": "color"
           },
           "no_fill-hover": {
-            "value": "{colors.blue.100}",
+            "value": "rgba({colors.blue.900}, 0.1)",
             "type": "color"
           },
           "no_fill-active": {
-            "value": "{colors.blue.200}",
+            "value": "rgba({colors.blue.900}, 0.2)",
             "type": "color"
           }
         },
-        "alt2": {
+        "second": {
           "subtle": {
             "value": "{colors.grey.100}",
             "type": "color"
@@ -245,50 +245,50 @@
       }
     },
     "border": {
-      "alt1": {
+      "first": {
         "default": {
-          "value": "{brand.first.600}",
+          "value": "{brand.alt1.600}",
           "type": "color"
         },
         "hover": {
-          "value": "{brand.first.700}",
+          "value": "{brand.alt1.700}",
           "type": "color"
         },
         "active": {
-          "value": "{brand.first.800}",
+          "value": "{brand.alt1.800}",
           "type": "color"
         }
       },
-      "alt2": {
+      "second": {
         "default": {
-          "value": "{brand.second.600}",
+          "value": "{brand.alt2.600}",
           "type": "color"
         },
         "hover": {
-          "value": "{brand.second.700}",
+          "value": "{brand.alt2.700}",
           "type": "color"
         },
         "active": {
-          "value": "{brand.second.800}",
+          "value": "{brand.alt2.800}",
           "type": "color"
         }
       },
-      "alt3": {
+      "third": {
         "default": {
-          "value": "{brand.third.600}",
+          "value": "{brand.alt3.600}",
           "type": "color"
         },
         "hover": {
-          "value": "{brand.third.700}",
+          "value": "{brand.alt3.700}",
           "type": "color"
         },
         "active": {
-          "value": "{brand.third.800}",
+          "value": "{brand.alt3.800}",
           "type": "color"
         }
       },
       "action": {
-        "alt1": {
+        "first": {
           "subtle": {
             "value": "{colors.blue.200}",
             "type": "color"
@@ -310,7 +310,7 @@
             "type": "color"
           }
         },
-        "alt2": {
+        "second": {
           "subtle": {
             "value": "{colors.grey.200}",
             "type": "color"
@@ -336,7 +336,7 @@
     },
     "text": {
       "action": {
-        "alt1": {
+        "first": {
           "default": {
             "value": "{colors.blue.700}",
             "type": "color"
@@ -354,7 +354,7 @@
             "type": "color"
           }
         },
-        "alt2": {
+        "second": {
           "default": {
             "value": "{colors.blue.900}",
             "type": "color"

@@ -1,0 +1,36 @@
+# Runs conventional commit check on PR
+name: Checks packages
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+jobs:
+  checks:
+    name: Builds, lints and tests code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Use node 20 and yarn cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Build
+        run: yarn build
+      - name: Lint Code
+        run: yarn lint:all
+      - name: Lint CSS
+        run: yarn lint-style
+      - name: Test
+        run: yarn test

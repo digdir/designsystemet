@@ -27,28 +27,20 @@
  */
 declare module '$env/static/private' {
 	export const SHELL: string;
-	export const npm_command: string;
 	export const SESSION_MANAGER: string;
-	export const npm_config_userconfig: string;
 	export const COLORTERM: string;
 	export const XDG_CONFIG_DIRS: string;
-	export const npm_config_cache: string;
 	export const XDG_SESSION_PATH: string;
 	export const TERM_PROGRAM_VERSION: string;
-	export const NODE: string;
 	export const LC_ADDRESS: string;
 	export const DOTNET_ROOT: string;
 	export const LC_NAME: string;
 	export const MEMORY_PRESSURE_WRITE: string;
-	export const COLOR: string;
-	export const npm_config_local_prefix: string;
 	export const DESKTOP_SESSION: string;
 	export const LC_MONETARY: string;
 	export const GTK_RC_FILES: string;
 	export const NO_AT_BRIDGE: string;
-	export const npm_config_globalconfig: string;
 	export const XCURSOR_SIZE: string;
-	export const EDITOR: string;
 	export const GTK_MODULES: string;
 	export const XDG_SEAT: string;
 	export const PROKOM_NPM_ACCESS_KEY: string;
@@ -56,7 +48,6 @@ declare module '$env/static/private' {
 	export const LOGNAME: string;
 	export const XDG_SESSION_DESKTOP: string;
 	export const XDG_SESSION_TYPE: string;
-	export const npm_config_init_module: string;
 	export const SYSTEMD_EXEC_PID: string;
 	export const _: string;
 	export const XAUTHORITY: string;
@@ -78,14 +69,12 @@ declare module '$env/static/private' {
 	export const DOTNET_BUNDLE_EXTRACT_BASE_DIR: string;
 	export const CHROME_DESKTOP: string;
 	export const KDE_SESSION_UID: string;
-	export const npm_lifecycle_script: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-	export const npm_config_npm_version: string;
 	export const XDG_SESSION_CLASS: string;
 	export const LC_IDENTIFICATION: string;
 	export const TERM: string;
 	export const npm_package_name: string;
-	export const npm_config_prefix: string;
+	export const PROJECT_CWD: string;
 	export const USER: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const KDE_SESSION_VERSION: string;
@@ -103,6 +92,7 @@ declare module '$env/static/private' {
 	export const DEBUGINFOD_URLS: string;
 	export const npm_package_json: string;
 	export const LC_TIME: string;
+	export const BERRY_BIN_FOLDER: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const QT_AUTO_SCREEN_SCALE_FACTOR: string;
 	export const GITHUB_PACKAGE_TOKEN: string;
@@ -112,20 +102,15 @@ declare module '$env/static/private' {
 	export const XDG_DATA_DIRS: string;
 	export const KDE_FULL_SESSION: string;
 	export const GDK_BACKEND: string;
-	export const npm_config_noproxy: string;
 	export const PATH: string;
-	export const npm_config_node_gyp: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
-	export const npm_config_global_prefix: string;
 	export const KDE_APPLICATIONS_AS_SCOPE: string;
 	export const MAIL: string;
-	export const npm_config_scripts_prepend_node_path: string;
 	export const npm_node_execpath: string;
 	export const LC_NUMERIC: string;
 	export const OLDPWD: string;
 	export const TERM_PROGRAM: string;
-	export const NODE_ENV: string;
 }
 
 /**
@@ -156,28 +141,20 @@ declare module '$env/static/public' {
 declare module '$env/dynamic/private' {
 	export const env: {
 		SHELL: string;
-		npm_command: string;
 		SESSION_MANAGER: string;
-		npm_config_userconfig: string;
 		COLORTERM: string;
 		XDG_CONFIG_DIRS: string;
-		npm_config_cache: string;
 		XDG_SESSION_PATH: string;
 		TERM_PROGRAM_VERSION: string;
-		NODE: string;
 		LC_ADDRESS: string;
 		DOTNET_ROOT: string;
 		LC_NAME: string;
 		MEMORY_PRESSURE_WRITE: string;
-		COLOR: string;
-		npm_config_local_prefix: string;
 		DESKTOP_SESSION: string;
 		LC_MONETARY: string;
 		GTK_RC_FILES: string;
 		NO_AT_BRIDGE: string;
-		npm_config_globalconfig: string;
 		XCURSOR_SIZE: string;
-		EDITOR: string;
 		GTK_MODULES: string;
 		XDG_SEAT: string;
 		PROKOM_NPM_ACCESS_KEY: string;
@@ -185,7 +162,6 @@ declare module '$env/dynamic/private' {
 		LOGNAME: string;
 		XDG_SESSION_DESKTOP: string;
 		XDG_SESSION_TYPE: string;
-		npm_config_init_module: string;
 		SYSTEMD_EXEC_PID: string;
 		_: string;
 		XAUTHORITY: string;
@@ -207,14 +183,12 @@ declare module '$env/dynamic/private' {
 		DOTNET_BUNDLE_EXTRACT_BASE_DIR: string;
 		CHROME_DESKTOP: string;
 		KDE_SESSION_UID: string;
-		npm_lifecycle_script: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-		npm_config_npm_version: string;
 		XDG_SESSION_CLASS: string;
 		LC_IDENTIFICATION: string;
 		TERM: string;
 		npm_package_name: string;
-		npm_config_prefix: string;
+		PROJECT_CWD: string;
 		USER: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		KDE_SESSION_VERSION: string;
@@ -232,6 +206,7 @@ declare module '$env/dynamic/private' {
 		DEBUGINFOD_URLS: string;
 		npm_package_json: string;
 		LC_TIME: string;
+		BERRY_BIN_FOLDER: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		QT_AUTO_SCREEN_SCALE_FACTOR: string;
 		GITHUB_PACKAGE_TOKEN: string;
@@ -241,20 +216,15 @@ declare module '$env/dynamic/private' {
 		XDG_DATA_DIRS: string;
 		KDE_FULL_SESSION: string;
 		GDK_BACKEND: string;
-		npm_config_noproxy: string;
 		PATH: string;
-		npm_config_node_gyp: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
-		npm_config_global_prefix: string;
 		KDE_APPLICATIONS_AS_SCOPE: string;
 		MAIL: string;
-		npm_config_scripts_prepend_node_path: string;
 		npm_node_execpath: string;
 		LC_NUMERIC: string;
 		OLDPWD: string;
 		TERM_PROGRAM: string;
-		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
