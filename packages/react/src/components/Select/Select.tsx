@@ -2,7 +2,7 @@ import type { ChangeEvent } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
 import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
-import { flip, size } from '@floating-ui/dom';
+import { flip, size, hide } from '@floating-ui/dom';
 
 import { InputWrapper } from '../_InputWrapper';
 import { useKeyboardEventListener, usePrevious, useUpdate } from '../../hooks';
@@ -114,25 +114,28 @@ const Select = (props: SelectProps) => {
     [setKeyword, multiple],
   );
 
-  const { x, y, elements, refs } = useFloating<HTMLSpanElement>({
-    placement: 'bottom',
-    whileElementsMounted: autoUpdate,
-    middleware: [
-      flip(),
-      size({
-        apply: ({ availableHeight, elements, rects }) => {
-          requestAnimationFrame(() => {
-            // This must be wrapped in requestAnimationFrame to avoid ResizeObserver loop error; https://github.com/floating-ui/floating-ui/issues/1740
-            // The error is difficult/impossible to reproduce in Storybook, but it appears in other apps when the component is used without a fixed width.
-            Object.assign(elements.floating.style, {
-              maxHeight: `min(${availableHeight}px, var(--option_list-max_height))`,
-              width: `${rects.reference.width}px`,
+  const { x, y, elements, refs, middlewareData } = useFloating<HTMLSpanElement>(
+    {
+      placement: 'bottom',
+      whileElementsMounted: autoUpdate,
+      middleware: [
+        flip(),
+        size({
+          apply: ({ availableHeight, elements, rects }) => {
+            requestAnimationFrame(() => {
+              // This must be wrapped in requestAnimationFrame to avoid ResizeObserver loop error; https://github.com/floating-ui/floating-ui/issues/1740
+              // The error is difficult/impossible to reproduce in Storybook, but it appears in other apps when the component is used without a fixed width.
+              Object.assign(elements.floating.style, {
+                maxHeight: `min(${availableHeight}px, var(--option_list-max_height))`,
+                width: `${rects.reference.width}px`,
+              });
             });
-          });
-        },
-      }),
-    ],
-  });
+          },
+        }),
+        hide(),
+      ],
+    },
+  );
   const listboxWrapper = elements.floating as HTMLSpanElement;
   const selectField = elements.reference as HTMLSpanElement;
 
@@ -425,6 +428,7 @@ const Select = (props: SelectProps) => {
         onOptionClick={addOrRemoveSelectedValue}
         optionId={(val) => `${givenOrRandomInputId}-${val}`}
         options={sortedOptions}
+        referenceHidden={middlewareData.hide?.referenceHidden}
         selectedValues={selectedValues}
         setFloating={refs.setFloating}
         x={x}
