@@ -1,0 +1,22 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+
+import * as TooltipStories from './Tooltip.stories.tsx';
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+<Primary />
+<Controls />
+
+## Plassering
+
+<Canvas of={TooltipStories.Placement} />
+
+## Åpen som standard
+
+<Canvas of={TooltipStories.DefaultOpen} />
+
+## Avansert bruk
+
+<Canvas of={TooltipStories.Complex} />
