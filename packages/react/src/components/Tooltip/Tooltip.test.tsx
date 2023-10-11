@@ -11,12 +11,15 @@ const render = async (props: Partial<TooltipProps> = {}) => {
     content: 'Tooltip text',
     ...props,
   };
-  renderRtl(<Tooltip {...allProps} />);
   /* Flush microtasks */
   await act(async () => {});
-};
+  const user = userEvent.setup();
 
-const user = userEvent.setup();
+  return {
+    user,
+    ...renderRtl(<Tooltip {...allProps} />),
+  };
+};
 
 describe('Tooltip', () => {
   describe('should render children', () => {
@@ -30,7 +33,7 @@ describe('Tooltip', () => {
 
   describe('should render tooltip', () => {
     it('should render tooltip on hover', async () => {
-      await render();
+      const { user } = await render();
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
@@ -52,7 +55,7 @@ describe('Tooltip', () => {
     });
 
     it('should close tooltip on escape', async () => {
-      await render();
+      const { user } = await render();
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
       expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();

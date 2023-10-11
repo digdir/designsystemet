@@ -2,6 +2,6 @@
   background: var(--fds-semantic-border-neutral-strong);
   padding: var(--fds-spacing-1) var(--fds-spacing-2);
   color: white;
-  border-radius: var(--fds-spacing-1);
-  font-size: var(--fds-typography-paragraph-xsmall);
+  border-radius: var(--fds-border_radius-medium);
+  font: var(--fds-typography-paragraph-xsmall);
 }

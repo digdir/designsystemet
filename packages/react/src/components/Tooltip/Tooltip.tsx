@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { cloneElement, forwardRef, useMemo, useState } from 'react';
+import React, { cloneElement, forwardRef, useState } from 'react';
 import cn from 'classnames';
 import {
   useFloating,
@@ -14,15 +14,15 @@ import {
   useRole,
   useInteractions,
   useTransitionStyles,
+  useMergeRefs,
   FloatingArrow,
   FloatingPortal,
 } from '@floating-ui/react';
 
 import styles from './Tooltip.module.css';
-import mergeRefs from './utils';
 
 const ARROW_HEIGHT = 7;
-const GAP = 4;
+const ARROW_GAP = 4;
 
 export type TooltipProps = {
   /**
@@ -30,6 +30,7 @@ export type TooltipProps = {
    * @note Needs to be a single ReactElement and not: <React.Fragment/> | <></>
    */
   children: React.ReactElement & React.RefAttributes<HTMLElement>;
+  /** Content of the tooltip */
   content: string;
   /**
    * Placement of the tooltip on the trigger.
@@ -40,7 +41,11 @@ export type TooltipProps = {
    * @default 150
    */
   delay?: number;
+  /** Whether the tooltip is open or not.
+   * This overrides the internal state of the tooltip.
+   */
   open?: boolean;
+  /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -61,15 +66,15 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     const arrowRef = React.useRef<SVGSVGElement>(null);
+    const internalOpen = userOpen ?? isOpen;
 
     const { refs, floatingStyles, context } = useFloating({
-      open: userOpen ?? isOpen,
+      open: internalOpen,
       onOpenChange: setIsOpen,
       placement,
-      // Make sure the tooltip stays on the screen
       whileElementsMounted: autoUpdate,
       middleware: [
-        offset(ARROW_HEIGHT + GAP),
+        offset(ARROW_HEIGHT + ARROW_GAP),
         flip({
           fallbackAxisSideDirection: 'start',
         }),
@@ -91,24 +96,16 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       useHover(context, { move: false, delay }),
       useFocus(context),
       useDismiss(context),
-      // Role props for screen readers
       useRole(context, { role: 'tooltip' }),
     ]);
 
-    const mergedRef = useMemo(
-      () => mergeRefs([ref, refs.setFloating]),
-      [refs.setFloating, ref],
-    );
+    const mergedRef = useMergeRefs([ref, refs.setFloating]);
 
-    const childMergedRef = useMemo(
-      () =>
-        mergeRefs([
-          (children as React.ReactElement & React.RefAttributes<HTMLElement>)
-            .ref as React.MutableRefObject<HTMLElement>,
-          refs.setReference,
-        ]),
-      [children, refs.setReference],
-    );
+    const childMergedRef = useMergeRefs([
+      (children as React.ReactElement & React.RefAttributes<HTMLElement>)
+        .ref as React.MutableRefObject<HTMLElement>,
+      refs.setReference,
+    ]);
 
     if (
       !children ||
@@ -130,7 +127,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           }),
         )}
         <FloatingPortal>
-          {(userOpen ?? isOpen) && (
+          {internalOpen && (
             <>
               <div
                 ref={refs.setFloating}
