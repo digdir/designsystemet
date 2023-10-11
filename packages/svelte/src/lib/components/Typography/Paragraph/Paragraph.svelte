@@ -12,12 +12,6 @@
   export let spacing = false;
   export let short = false;
 
-  /*  $: computedClass = `paragraph ${size}${spacing ? ' spacing' : ''}${
-    short ? ' short' : ''
-  }${$$props.class ? ' ' + $$props.class : ''}`;
-
- */
-
   $: computedClass = [
     'paragraph',
     size,

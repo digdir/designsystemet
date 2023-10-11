@@ -1,10 +1,13 @@
 <script>
   import Alert from '$lib/components/Alert/Alert.svelte';
   import Button from '$lib/components/Button/Button.svelte';
+  import Textfield from '$lib/components/Form/Textfield/Textfield.svelte';
   import Link from '$lib/components/Link/Link.svelte';
   import List from '$lib/components/List/List.svelte';
   import Tag from '$lib/components/Tag/Tag.svelte';
   import Paragraph from '$lib/components/Typography/Paragraph/Paragraph.svelte';
+
+  let textfieldValue = '';
 </script>
 
 <h1>Test components here!</h1>
@@ -14,6 +17,8 @@
 <Button color="success">Success</Button>
 <Button variant="quiet">First (Quiet)</Button>
 <Button variant="outline">First (Outline)</Button>
+
+<Textfield bind:value={textfieldValue} />
 
 <Link href="/route">Link</Link>
 <Paragraph
