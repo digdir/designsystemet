@@ -44,7 +44,7 @@ const Header = () => {
       <div className={classes.container}>
         <div className={classes.left}>
           <Link
-            className={classes['logo-link']}
+            className={classes.logoLink}
             href='/'
             aria-label='Designsystem forside'
             onClick={() => setOpen(false)}
