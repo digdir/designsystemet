@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.29.0...@digdir/design-system-react@0.30.0) (2023-10-11)
+
+### Bug Fixes
+
+- **Select:** Hide list when reference is hidden ([#917](https://github.com/digdir/designsystem/issues/917)) ([bccea75](https://github.com/digdir/designsystem/commit/bccea7520cb7f7de13b434dbd4dcef646885aa36))
+
+### Features
+
+- **Tooltip:** Create new tooltip component ([#914](https://github.com/digdir/designsystem/issues/914)) ([eccc36d](https://github.com/digdir/designsystem/commit/eccc36d24b4e8cdf77939d88e45a2a9eb9e76998))
+
+# [0.29.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.1...@digdir/design-system-react@0.29.0) (2023-10-07)
+
+### Features
+
+- **Tabs:** :sparkles: Add missing export for new Tabs ([#915](https://github.com/digdir/designsystem/issues/915)) ([6cf70ec](https://github.com/digdir/designsystem/commit/6cf70ec65d8ae713b71f7345cb73b70b62a1997c))
+
 ## [0.28.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.0...@digdir/design-system-react@0.28.1) (2023-10-06)
 
 ### Bug Fixes
