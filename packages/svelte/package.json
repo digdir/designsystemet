@@ -25,6 +25,7 @@
     "./Alert": "./dist/Alert/Alert.svelte",
     "./Paragraph": "./dist/Typography/Paragraph/Paragraph.svelte",
     "./Tag": "./dist/Tag/Tag.svelte",
+    "./Textfield": "./dist/Form/Textfield/Textfield.svelte",
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
