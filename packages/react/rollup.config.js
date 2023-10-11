@@ -31,7 +31,6 @@ export default [
     input,
     output: [
       {
-        input,
         dir: './dist/cjs',
         format: 'cjs',
         banner: "'use client';",
@@ -39,7 +38,6 @@ export default [
         preserveModulesRoot: 'tsc-build',
       },
       {
-        input,
         dir: './dist/esm',
         format: 'es',
         banner: "'use client';",
