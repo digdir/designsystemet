@@ -5,13 +5,15 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "storefront"
+    "storefront",
+    "dev"
   ],
   "scripts": {
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "storybook:clean": "storybook dev -p 6006 --no-manager-cache",
     "storefront": "yarn workspace storefront dev",
+    "dev": "yarn workspace dev dev",
     "build": "lerna run build",
     "build:react": "yarn workspace @digdir/design-system-react build",
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
@@ -109,5 +111,8 @@
     "tslib": "^2.4.1",
     "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/luxon": "^3.3.2"
   }
 }
