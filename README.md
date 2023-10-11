@@ -55,7 +55,7 @@
 ## Quick links
 
 - [Storefront](https://designsystemet.no)
-- [Storybook](https://digdir.github.io/designsystem/)
+- [Storybook](https://storybook.designsystemet.no/)
 
 ## About the design system 📖
 
@@ -75,7 +75,7 @@ Design tokens contain UI data like colors, fonts and spacing for styling and bui
 
 ### Storybook
 
-We use Storybook to develop and test our React components. Check it out [here](https://digdir.github.io/designsystem/).
+We use Storybook to develop and test our React components. Check it out [here](https://storybook.designsystemet.no/).
 
 ### Storefront
 
