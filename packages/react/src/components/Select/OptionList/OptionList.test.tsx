@@ -47,6 +47,7 @@ const defaultProps: OptionListProps = {
   onOptionClick: jest.fn(),
   optionId: jest.fn(),
   options: singleSelectOptions,
+  referenceHidden: false,
   selectedValues,
   setFloating: jest.fn(),
   x: 0,
