@@ -4,7 +4,11 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
   PR_NUMBER: ${{ github.event.number }}
-on: pull_request
+on:
+  pull_request:
+    paths:
+      - 'packages/**'
+      - '.storybook/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
