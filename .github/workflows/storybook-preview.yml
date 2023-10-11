@@ -27,14 +27,14 @@ jobs:
         run: yarn add vercel@latest
 
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ env.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: vercel build --token=${{ env.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - id: deploy
         name: Deploy Project Artifacts to Vercel
-        run: echo "url=$(vercel deploy --prebuilt --token=${{ env.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+        run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set alias
-        run: vercel alias --token=${{ env.VERCEL_TOKEN }} --scope=${{ env.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} storybook-pr-${{ env.PR_NUMBER }}.designsystetmet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} storybook-pr-${{ env.PR_NUMBER }}.designsystetmet.no
