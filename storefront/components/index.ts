@@ -1,5 +1,4 @@
 export { Banner } from './Banner';
-export { Card } from './Card';
 export { ClipboardBtn } from './ClipboardBtn';
 export { CodeSnippet } from './CodeSnippet';
 export { Container } from './Container';
@@ -21,4 +20,3 @@ export { SidebarMenu } from './SidebarMenu';
 export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
-export { ComponentUsage } from './Usage';
