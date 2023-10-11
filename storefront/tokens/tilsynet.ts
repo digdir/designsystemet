@@ -2276,7 +2276,8 @@ export const color = [
 
 export const typography = [
   {
-    value: "500 clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H1',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -2301,7 +2302,8 @@ export const typography = [
     path: ['typography', 'heading', 'xlarge'],
   },
   {
-    value: "500 clamp(1.47rem, calc(0.86vw + 1.30rem), 2.03rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.47rem, calc(0.86vw + 1.30rem), 2.03rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H2',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -2326,7 +2328,8 @@ export const typography = [
     path: ['typography', 'heading', 'large'],
   },
   {
-    value: "500 clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H3',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -2351,7 +2354,8 @@ export const typography = [
     path: ['typography', 'heading', 'medium'],
   },
   {
-    value: "500 clamp(1.22rem, calc(0.43vw + 1.13rem), 1.50rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.22rem, calc(0.43vw + 1.13rem), 1.50rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H4',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -2376,7 +2380,8 @@ export const typography = [
     path: ['typography', 'heading', 'small'],
   },
   {
-    value: "500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H5',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -2401,7 +2406,8 @@ export const typography = [
     path: ['typography', 'heading', 'xsmall'],
   },
   {
-    value: "500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H6',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -2426,7 +2432,8 @@ export const typography = [
     path: ['typography', 'heading', 'xxsmall'],
   },
   {
-    value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.6 'Inter'",
+    value:
+      "unset 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.6 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2449,7 +2456,8 @@ export const typography = [
     path: ['typography', 'ingress', 'medium'],
   },
   {
-    value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.5 'Inter'",
+    value:
+      "unset 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.5 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2472,7 +2480,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'large'],
   },
   {
-    value: "400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.5 'Inter'",
+    value:
+      "unset 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.5 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2495,7 +2504,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'medium'],
   },
   {
-    value: "400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.5 'Inter'",
+    value:
+      "unset 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.5 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2518,7 +2528,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'small'],
   },
   {
-    value: "400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.5 'Inter'",
+    value:
+      "unset 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.5 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2541,7 +2552,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'xsmall'],
   },
   {
-    value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2564,7 +2576,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'short', 'large'],
   },
   {
-    value: "400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2587,7 +2600,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'short', 'medium'],
   },
   {
-    value: "400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2610,7 +2624,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'short', 'small'],
   },
   {
-    value: "400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2633,7 +2648,8 @@ export const typography = [
     path: ['typography', 'paragraph', 'short', 'xsmall'],
   },
   {
-    value: "500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2656,7 +2672,8 @@ export const typography = [
     path: ['typography', 'label', 'large'],
   },
   {
-    value: "500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2679,7 +2696,8 @@ export const typography = [
     path: ['typography', 'label', 'medium'],
   },
   {
-    value: "500 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2702,7 +2720,8 @@ export const typography = [
     path: ['typography', 'label', 'small'],
   },
   {
-    value: "500 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
+    value:
+      "unset 500 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2725,7 +2744,8 @@ export const typography = [
     path: ['typography', 'label', 'xsmall'],
   },
   {
-    value: "400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2748,7 +2768,8 @@ export const typography = [
     path: ['typography', 'error_message', 'large'],
   },
   {
-    value: "400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2771,7 +2792,8 @@ export const typography = [
     path: ['typography', 'error_message', 'medium'],
   },
   {
-    value: "400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2794,7 +2816,8 @@ export const typography = [
     path: ['typography', 'error_message', 'small'],
   },
   {
-    value: "400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
+    value:
+      "unset 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2817,7 +2840,7 @@ export const typography = [
     path: ['typography', 'error_message', 'xsmall'],
   },
   {
-    value: "400 1.5rem/1.3 'Inter'",
+    value: "unset 400 1.5rem/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2840,7 +2863,7 @@ export const typography = [
     path: ['typography', 'interactive', 'large'],
   },
   {
-    value: "400 1.125rem/1.3 'Inter'",
+    value: "unset 400 1.125rem/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2863,7 +2886,7 @@ export const typography = [
     path: ['typography', 'interactive', 'medium'],
   },
   {
-    value: "400 1rem/1.3 'Inter'",
+    value: "unset 400 1rem/1.3 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
