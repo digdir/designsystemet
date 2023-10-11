@@ -4139,6 +4139,7 @@ __metadata:
   dependencies:
     "@altinn/figma-design-tokens": ^6.0.1
     "@digdir/design-system-tokens": ^0.8.0
+    "@digdir/designsystemet-css": "*"
     "@floating-ui/react": 0.25.2
     "@navikt/aksel-icons": ^3.2.4
     copyfiles: ^2.4.1
@@ -4161,7 +4162,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-css@workspace:packages/css":
+"@digdir/designsystemet-css@*, @digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   languageName: unknown
