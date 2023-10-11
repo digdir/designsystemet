@@ -8,10 +8,18 @@ import { Tooltip } from '.';
 type Story = StoryObj<typeof Tooltip>;
 
 const defaultChildren = <Button>My trigger</Button>;
+const decorators = [
+  (Story: StoryFn) => (
+    <div style={{ margin: '2rem' }}>
+      <Story />
+    </div>
+  ),
+];
 
 export default {
   title: 'Felles/Tooltip',
   component: Tooltip,
+  decorators,
 } as Meta;
 
 export const Preview: Story = {
@@ -19,13 +27,6 @@ export const Preview: Story = {
     content: 'Tooltip text',
     children: defaultChildren,
   },
-  decorators: [
-    (Story: StoryFn) => (
-      <div style={{ margin: '3rem' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const Placement: Story = {
@@ -49,11 +50,11 @@ export const Complex: StoryFn<typeof Tooltip> = () => {
     <Paragraph>
       Du kan ha{' '}
       <Tooltip content='Kan gi bra brukeropplevelse'>
-        <span
+        <abbr
           style={{ fontWeight: 'bold', textDecoration: 'underline dotted' }}
         >
           tooltip
-        </span>
+        </abbr>
       </Tooltip>{' '}
       inne i tekst også
     </Paragraph>
