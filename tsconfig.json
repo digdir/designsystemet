@@ -4,7 +4,8 @@
   "compilerOptions": {
     "target": "es2020",
     "module": "es2020",
-    "lib": ["dom", "esnext"],
+    // This allows our files to use window. Should be removed when RSC is added
+    "lib": ["dom", "esnext", "DOM.Iterable"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
@@ -14,7 +15,7 @@
     // stricter type-checking for stronger correctness. Recommended by TS
     "strict": true,
     // use Node's module resolution algorithm, instead of the legacy TS one
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     // transpile JSX to React.createElement
     "jsx": "react",
     // interop between ESM and CJS modules. Recommended by TS
@@ -25,12 +26,17 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
 
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+
+    "moduleDetection": "force",
+    "composite": true,
+    "declarationMap": true
   },
   "ts-node": {
     "transpileOnly": true,
     "files": true,
     "compilerOptions": {
+      "moduleResolution": "node",
       "module": "CommonJS"
     }
   }
