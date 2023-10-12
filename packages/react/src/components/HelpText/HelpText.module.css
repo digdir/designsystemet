@@ -1,5 +1,4 @@
 .helpTextButton {
-  composes: focusable from '../../utils/utility.module.css';
   background-color: transparent;
   border-radius: 50px;
   padding: 0;

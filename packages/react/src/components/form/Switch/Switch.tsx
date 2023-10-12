@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
-import { omit } from '../../../utils';
+import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 

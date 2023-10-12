@@ -6,3 +6,4 @@ storybook-static/
 packages/tokens/brand/**/*
 tsc-build/
 .storybook
+packages/css/**/*

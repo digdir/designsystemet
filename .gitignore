@@ -3,6 +3,8 @@ dist
 build
 ignore
 tsc-build
+packages/css/**/*.css
+css-exports.json
 
 # Yarn stuff; we're not using PnP/Zero installs
 .pnp.*

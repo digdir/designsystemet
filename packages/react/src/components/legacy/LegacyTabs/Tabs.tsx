@@ -3,7 +3,7 @@ import React, { useEffect, useId, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import { useUpdate } from '../../../hooks';
-import { areItemsUnique } from '../../../utils/arrayUtils';
+import { areItemsUnique } from '../../../utilities/arrayUtils';
 
 import classes from './Tabs.module.css';
 

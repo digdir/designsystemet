@@ -4,11 +4,11 @@ import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 import { flip, size } from '@floating-ui/dom';
 
-import { InputWrapper } from '../_InputWrapper';
+import { InputWrapper } from '../../utilities/InputWrapper';
 import { useKeyboardEventListener, usePrevious, useUpdate } from '../../hooks';
-import { arraysEqual, objectValuesEqual } from '../../utils';
+import { arraysEqual, objectValuesEqual } from '../../utilities';
 import { useFocusWithin } from '../../hooks/useFocusWithin';
-import utilClasses from '../../utils/utility.module.css';
+import utilClasses from '../../utilities/Utility.module.css';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';

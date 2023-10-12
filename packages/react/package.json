@@ -11,7 +11,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
+    "build": "yarn run clean && esno ./scripts/generate-css.ts && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build",
     "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
     "types": "tsc --noEmit"
@@ -26,6 +26,7 @@
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
     "@digdir/design-system-tokens": "^0.8.1",
+    "@digdir/designsystemet-css": "*",
     "@floating-ui/react": "0.25.2",
     "@navikt/aksel-icons": "^3.2.4",
     "react-number-format": "5.2.2"

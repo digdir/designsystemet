@@ -3,8 +3,8 @@ import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
-import utilityClasses from '../../utils/utility.module.css';
 import type { OverridableComponent } from '../../types/OverridableComponent';
+import utilityClasses from '../../utilities/Utility.module.css';
 
 import classes from './Button.module.css';
 

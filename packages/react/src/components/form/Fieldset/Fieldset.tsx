@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
-import utilityclasses from '../../../utils/utility.module.css';
+import utilityclasses from '../../../utilities/Utility.module.css';
 import type { FormFieldProps } from '../useFormField';
 
 import { useFieldset } from './useFieldset';

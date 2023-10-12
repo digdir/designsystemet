@@ -21,4 +21,5 @@ module.exports = {
     'alpha-value-notation': 'number',
     'font-family-name-quotes': 'always-unless-keyword',
   },
+  ignoreFiles: ['packages/css/**/*.css', 'packages/react/tsc-build/**/*.css'],
 };
