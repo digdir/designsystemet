@@ -36,7 +36,7 @@
   grid-column-gap: 16px;
   grid-row-gap: 22px;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: var(--spacing-3);
+  margin-top: var(--fds-spacing-3);
 }
 
 .cards2 {
@@ -64,7 +64,7 @@
   align-items: flex-start;
   align-items: center;
   display: flex;
-  gap: var(--spacing-3);
+  gap: var(--fds-spacing-3);
 }
 
 .preview {

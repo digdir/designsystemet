@@ -35,7 +35,7 @@ const Header = () => {
     },
     {
       name: 'Komponenter',
-      url: 'https://digdir.github.io/designsystem',
+      url: 'https://storybook.designsystemet.no',
     },
   ];
 
@@ -44,7 +44,7 @@ const Header = () => {
       <div className={classes.container}>
         <div className={classes.left}>
           <Link
-            className={classes['logo-link']}
+            className={classes.logoLink}
             href='/'
             aria-label='Designsystem forside'
             onClick={() => setOpen(false)}

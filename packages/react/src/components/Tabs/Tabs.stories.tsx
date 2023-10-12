@@ -1,89 +1,116 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import * as icons from '@navikt/aksel-icons';
 
-import { Tabs } from './Tabs';
+import { Button } from '../Button';
+
+import { Tabs } from '.';
+
+const icon = (
+  <svg
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      fillRule='evenodd'
+      clipRule='evenodd'
+      d='M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0Zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm5.047 5.671 1.399 1.43-8.728 8.398L6 14.02l1.395-1.434 2.319 2.118 7.333-7.032Z'
+      fill='currentColor'
+    />
+  </svg>
+);
+
+const AkselIcon = icons.AirplaneIcon;
+const AkselIcon2 = icons.NewspaperIcon;
+const AkselIcon3 = icons.DogIcon;
+const AkselIcon4 = icons.BackpackIcon;
 
 export default {
-  title: 'Altinn/Tabs',
+  title: 'Felles/Tabs',
   component: Tabs,
 } as Meta;
 
-export const Eksempel: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />;
+export const Preview: StoryFn<typeof Tabs> = (args) => (
+  <Tabs {...args}>
+    <Tabs.List>
+      <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+      <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Content value='value1'>content 1</Tabs.Content>
+    <Tabs.Content value='value2'>content 2</Tabs.Content>
+    <Tabs.Content value='value3'>content 3</Tabs.Content>
+  </Tabs>
+);
 
-Eksempel.args = {
-  items: [
-    {
-      name: 'Ild',
-      content: (
-        <p>
-          Nulla nec rutrum libero. Curabitur lorem est, tempor nec iaculis in,
-          egestas eu lacus. Ut malesuada risus ut ipsum consequat mattis. Donec
-          quis nunc ut lorem suscipit pharetra. Nulla ornare sed nisl nec
-          facilisis. Sed in lacinia elit. Sed et eleifend nisi. Sed egestas
-          nulla lobortis sapien scelerisque, at venenatis risus elementum.
-          Aliquam eleifend, metus non molestie viverra, erat sem ornare enim,
-          nec suscipit nulla nisi vel dolor. Etiam volutpat sapien arcu. Orci
-          varius natoque penatibus et magnis dis parturient montes, nascetur
-          ridiculus mus. Nulla sollicitudin molestie leo sit amet faucibus. Sed
-          interdum condimentum interdum. Praesent volutpat turpis mattis purus
-          venenatis egestas. In iaculis condimentum fringilla. Duis dignissim
-          turpis mattis tristique vulputate.
-        </p>
-      ),
-    },
-    {
-      name: 'Jord',
-      content: (
-        <p>
-          Vestibulum nisl diam, tempus sit amet justo eu, semper facilisis
-          dolor. Proin scelerisque tellus sit amet consectetur condimentum.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et
-          dui vehicula, semper arcu vitae, posuere odio. Pellentesque eu ante in
-          elit semper pellentesque. Donec cursus eros non diam condimentum
-          viverra. Pellentesque at odio lorem. Aenean ac enim et risus bibendum
-          scelerisque et a purus. Donec ultricies, ex et ornare fringilla,
-          turpis ex consectetur ante, ut porta libero metus quis magna. Nulla eu
-          hendrerit ex, non dapibus quam. Nulla dictum ligula tellus, et
-          elementum orci convallis sit amet. Class aptent taciti sociosqu ad
-          litora torquent per conubia nostra, per inceptos himenaeos. Fusce
-          dolor orci, sagittis vel elit eget, viverra ultrices nulla.
-        </p>
-      ),
-    },
-    {
-      name: 'Luft',
-      content: (
-        <p>
-          Integer dictum lacus vitae urna lobortis, scelerisque varius metus
-          maximus. Integer ornare pharetra metus, vel mattis urna. Interdum et
-          malesuada fames ac ante ipsum primis in faucibus. Nulla consectetur
-          ipsum ac magna sollicitudin, ac fermentum sem tempus. Proin rutrum
-          aliquam eros eu accumsan. Duis rhoncus urna a tellus sagittis, eu
-          aliquam dui pharetra. Praesent eu libero consectetur, varius urna
-          quis, volutpat magna. Vivamus ornare magna at vehicula pulvinar.
-          Curabitur risus lorem, placerat sit amet mollis venenatis, placerat
-          sed ligula. Donec pellentesque quis est nec viverra. Sed ultricies
-          aliquam nunc, sit amet faucibus augue tempor quis. Pellentesque
-          porttitor sapien quis risus placerat, in facilisis augue molestie.
-        </p>
-      ),
-    },
-    {
-      name: 'Vann',
-      content: (
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
-          leo nibh. Fusce neque nulla, semper quis rutrum eu, volutpat nec
-          mauris. In lacinia iaculis venenatis. Aliquam pulvinar lectus lorem, a
-          congue nulla dictum vel. Donec augue eros, cursus ut porta eu, mollis
-          sodales odio. Vestibulum rutrum sollicitudin nisi, sed facilisis nibh
-          dictum at. Nulla arcu mi, iaculis quis luctus at, vulputate hendrerit
-          quam. Suspendisse condimentum pellentesque varius. Nullam molestie
-          dictum pellentesque. Nunc felis sem, elementum a sapien a, consectetur
-          ullamcorper tellus. Nullam porta tempus nisl, in vehicula quam congue
-          eget.
-        </p>
-      ),
-    },
-  ],
+Preview.args = {
+  defaultValue: 'value1',
+  size: 'medium',
+};
+
+export const IconsOnly: StoryFn<typeof Tabs> = () => (
+  <Tabs defaultValue='value1'>
+    <Tabs.List>
+      <Tabs.Tab
+        value='value1'
+        icon={<AkselIcon title='Airplane' />}
+      />
+      <Tabs.Tab
+        value='value2'
+        icon={<AkselIcon2 title='Newspaper' />}
+      />
+      <Tabs.Tab
+        value='value3'
+        icon={<AkselIcon3 title='Dog' />}
+      />
+    </Tabs.List>
+    <Tabs.Content value='value1'>content 1</Tabs.Content>
+    <Tabs.Content value='value2'>content 2</Tabs.Content>
+    <Tabs.Content value='value3'>content 3</Tabs.Content>
+  </Tabs>
+);
+
+export const Controlled: StoryFn<typeof Tabs> = () => {
+  const [value, setValue] = useState('value1');
+
+  return (
+    <>
+      <Button
+        size='small'
+        onClick={() => setValue('value3')}
+      >
+        Choose Tab 3
+      </Button>
+      <br />
+      <Tabs
+        value={value}
+        onChange={setValue}
+      >
+        <Tabs.List>
+          <Tabs.Tab
+            value='value1'
+            icon={icon}
+          >
+            Tab 1
+          </Tabs.Tab>
+          <Tabs.Tab
+            value='value2'
+            icon={<AkselIcon2 />}
+          >
+            Tab 2
+          </Tabs.Tab>
+          <Tabs.Tab
+            value='value3'
+            icon={<AkselIcon4 />}
+          >
+            Tab 3
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Content value='value1'>content 1</Tabs.Content>
+        <Tabs.Content value='value2'>content 2</Tabs.Content>
+        <Tabs.Content value='value3'>content 3</Tabs.Content>
+      </Tabs>
+    </>
+  );
 };

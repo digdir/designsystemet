@@ -1,6 +1,7 @@
 # Built files
 dist
 ignore
+tsc-build
 
 # Yarn stuff; we're not using PnP/Zero installs
 .pnp.*
