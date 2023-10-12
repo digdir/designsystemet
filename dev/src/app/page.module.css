@@ -1,7 +1,7 @@
 .main {
   color: var(--color-text);
-  margin-bottom: 72px;
-  margin-top: 64px;
+  margin-bottom: 70px;
+  margin-top: 60px;
 }
 
 .empty {
@@ -12,7 +12,7 @@
 .mainTitle {
   font-weight: 500;
   margin-top: 0;
-  margin-bottom: 64px;
+  margin-bottom: 52px;
   font-size: 28px;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
 .subTitle {
   font-weight: 500;
   font-size: 22px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .logo {
