@@ -9,27 +9,28 @@ import { getAliases } from '@/services/VercelService';
 import classes from './page.module.css';
 
 /**
- * Combines pullRequests and aliases to create the output items22
+ * Combines pullRequests and aliases to create the output item
  */
 const generateItemsList = (pullRequests: any, aliases: any) => {
   let items = [];
 
   for (let i = 0; i < pullRequests.length; i++) {
+    const pullRequest = pullRequests[i];
     let item = {
-      title: pullRequests[i].title,
-      PRNumber: pullRequests[i].number,
-      PRLink: pullRequests[i].html_url,
-      user: pullRequests[i].user ? pullRequests[i].user.login : '',
-      userAvatar: pullRequests[i].user ? pullRequests[i].user.avatar_url : '',
+      title: pullRequest.title,
+      PRNumber: pullRequest.number,
+      PRLink: pullRequest.html_url,
+      user: pullRequest.user ? pullRequest.user.login : '',
+      userAvatar: pullRequest.user ? pullRequest.user.avatar_url : '',
       storefront: aliases.filter((alias: any, index: number) => {
         return (
-          alias.alias.includes(pullRequests[i].number) &&
+          alias.alias.includes(pullRequest.number) &&
           alias.alias.includes('storefront')
         );
       }),
       storybook: aliases.filter((alias: any, index: number) => {
         return (
-          alias.alias.includes(pullRequests[i].number) &&
+          alias.alias.includes(pullRequest.number) &&
           alias.alias.includes('storybook')
         );
       }),
@@ -45,8 +46,6 @@ const generateItemsList = (pullRequests: any, aliases: any) => {
 const getItems = async () => {
   const aliases = await getAliases();
   const pullRequests = await getActivePullRequests();
-  console.log(aliases);
-  console.log(pullRequests);
   return generateItemsList(pullRequests, aliases);
 };
 
