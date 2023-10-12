@@ -60,7 +60,7 @@ export const typographyShorthand: Named<Transform> = {
       const baseFontPx = options?.basePxFontSize || 1;
       fontSize = `${parseFloat(fontSize) / baseFontPx}rem`;
     }
-    return `unset ${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
+    return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
   },
 };
 
