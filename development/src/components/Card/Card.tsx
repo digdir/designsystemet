@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Card.module.css';
-import { PersonIcon } from '@navikt/aksel-icons';
 
 type CardProps = {
   children: React.ReactNode;
