@@ -28,7 +28,7 @@ export const Card = ({
             className={classes.link}
             target='blank'
           >
-            {title} <span className={classes.number}>(#{PRNumber})</span>
+            {title} <span className={classes.number}> #{PRNumber}</span>
           </a>
         </h2>
         <div className={classes.author}>

@@ -2,7 +2,7 @@
   margin-top: 24px;
   background-color: var(--color-background-darker);
   color: var(--color-text);
-  padding: 24px;
+  padding: var(--card-padding);
 }
 
 .top {
@@ -21,6 +21,8 @@
 .content {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 .content > * {

@@ -46,6 +46,8 @@ const generateItemsList = (pullRequests: any, aliases: any) => {
 const getItems = async () => {
   const aliases = await getAliases();
   const pullRequests = await getActivePullRequests();
+  console.log(aliases);
+  console.log(pullRequests);
   return generateItemsList(pullRequests, aliases);
 };
 
@@ -94,7 +96,7 @@ export default function Home() {
       </div>
       <div>
         <h2 className={classes.subTitle}>
-          Active pull request and deployments
+          Active pull requests and deployments
         </h2>
         <div>
           {items.map((item: any, index: number) => (
