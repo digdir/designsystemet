@@ -17,6 +17,8 @@ const generateItemsList = (pullRequests: any, aliases: any) => {
   for (let i = 0; i < pullRequests.length; i++) {
     let item = {
       title: pullRequests[i].title,
+      PRNumber: pullRequests[i].number,
+      PRLink: pullRequests[i].html_url,
       user: pullRequests[i].user ? pullRequests[i].user.login : '',
       userAvatar: pullRequests[i].user ? pullRequests[i].user.avatar_url : '',
       storefront: aliases.filter((alias: any, index: number) => {
@@ -102,6 +104,8 @@ export default function Home() {
               key={index}
               user={item.user}
               userAvatar={item.userAvatar}
+              PRNumber={item.PRNumber}
+              PRLink={item.PRLink}
             >
               {!!item.storybook.length && (
                 <Alias

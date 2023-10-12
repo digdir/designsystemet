@@ -7,13 +7,30 @@ type CardProps = {
   title: string;
   user: string;
   userAvatar: string;
+  PRNumber: number;
+  PRLink: string;
 };
 
-export const Card = ({ children, title, user, userAvatar }: CardProps) => {
+export const Card = ({
+  children,
+  title,
+  user,
+  userAvatar,
+  PRNumber,
+  PRLink,
+}: CardProps) => {
   return (
     <div className={classes.card}>
       <div className={classes.top}>
-        <h2>{title}</h2>
+        <h2>
+          <a
+            href={PRLink}
+            className={classes.link}
+            target='blank'
+          >
+            {title} <span className={classes.number}>(#{PRNumber})</span>
+          </a>
+        </h2>
         <div className={classes.author}>
           <img
             src={userAvatar}

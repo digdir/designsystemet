@@ -11,6 +11,7 @@
 .card:hover {
   background-color: var(--color-background-dark);
   border-radius: 4px;
+  color: white;
 }
 
 .type {

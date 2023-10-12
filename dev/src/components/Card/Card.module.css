@@ -39,3 +39,19 @@
   border-radius: 50%;
   margin-right: 8px;
 }
+
+.number {
+  color: var(--color-text-subtle);
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: 0.1s all;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: white;
+}
