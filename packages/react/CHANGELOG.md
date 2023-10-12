@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.30.0...@digdir/design-system-react@0.31.0) (2023-10-12)
+
+### Bug Fixes
+
+- Add missing export `ToggleGroup` ([#931](https://github.com/digdir/designsystem/issues/931)) ([782d77d](https://github.com/digdir/designsystem/commit/782d77d7cbbdba83744649134c1e30ec8a682b0d))
+
+### Features
+
+- **Button:** :sparkles: Support for overriding html element using `as` ([#926](https://github.com/digdir/designsystem/issues/926)) ([5689052](https://github.com/digdir/designsystem/commit/5689052b461c424bf26bc750c2e1212f3034c430))
+
 # [0.30.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.29.0...@digdir/design-system-react@0.30.0) (2023-10-11)
 
 ### Bug Fixes
