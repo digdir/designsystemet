@@ -11,7 +11,7 @@
     "brand"
   ],
   "scripts": {
-    "build": "yarn run clean && ts-node ./scripts/build.ts",
+    "build": "yarn run clean && esno ./scripts/build.ts",
     "clean": "rimraf brand"
   },
   "devDependencies": {
