@@ -11,7 +11,11 @@ type CardProps = {
 
 export const Alias = ({ date, type, alias }: CardProps) => {
   return (
-    <div className={classes.card}>
+    <a
+      className={classes.card}
+      href={'https://' + alias}
+      target='blank'
+    >
       <div className={classes.type}>
         <img
           src={'img/' + type + '-logo.png'}
@@ -21,20 +25,13 @@ export const Alias = ({ date, type, alias }: CardProps) => {
       <div className={classes.textContainer}>
         <h3 className={classes.title}>
           {type === 'storefront' ? 'Storefront' : 'Storybook'}
-
-          <a
-            href={'https://' + alias}
-            target='blank'
-            className={classes.alias}
-          >
-            <ExternalLinkIcon fontSize={17} />
-          </a>
+          <ExternalLinkIcon fontSize={17} />
         </h3>
         <div className={classes.date}>
           <ClockIcon fontSize={16} />
           {DateTime.fromMillis(date).toRelative()}
         </div>
       </div>
-    </div>
+    </a>
   );
 };
