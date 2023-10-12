@@ -1,171 +1,256 @@
-import {
-  useFloating,
-  offset,
-  shift,
-  flip,
-  autoUpdate,
-  useClick,
-  useFocus,
-  useDismiss,
-  FloatingArrow,
-  arrow,
-  useInteractions,
-  useMergeRefs,
-  useRole,
-  useHover,
-} from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
 import React, {
-  forwardRef,
-  useEffect,
-  useLayoutEffect,
   useRef,
   useState,
+  useMemo,
+  createContext,
+  useContext,
+  forwardRef,
+  isValidElement,
+  cloneElement,
 } from 'react';
+import type { Placement } from '@floating-ui/react';
+import {
+  arrow as flArrow,
+  useFloating,
+  autoUpdate,
+  offset as flOffset,
+  flip,
+  shift,
+  useClick,
+  useDismiss,
+  useRole,
+  useInteractions,
+  useMergeRefs,
+} from '@floating-ui/react';
 import cn from 'classnames';
 
-import styles from './Popover.module.css';
+import classes from './Popover.module.css';
 
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
+export const popoverVariants = [
+  'default',
+  'info',
+  'warning',
+  'danger',
+] as const;
 
-export type PopoverProps = {
-  anchorEl: Element | null;
-  children: React.ReactElement & React.RefAttributes<HTMLElement>;
-  /**
-   * Placement of the tooltip on the trigger.
-   * @default 'top'
-   */
-  placement?: 'top' | 'right' | 'bottom' | 'left';
-  /** Delay in milliseconds before opening.
-   * @default 150
-   */
-  delay?: number;
-  /** Whether the tooltip is open or not.
-   * This overrides the internal state of the tooltip.
-   */
+type PopoverVariant_ = typeof popoverVariants[number];
+
+interface IPopoverOptions extends HTMLAttributes<HTMLDivElement> {
+  variant?: PopoverVariant_;
+  arrow?: boolean;
+  offset?: number;
+  initialOpen?: boolean;
+  placement?: Placement;
   open?: boolean;
-  /** Whether the tooltip is open by default or not. */
-  defaultOpen?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+  onOpenChange?: (open: boolean) => void;
+}
 
-export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
-  (
-    {
-      children,
-      placement = 'bottom',
-      delay = 150,
-      open: userOpen,
-      defaultOpen = false,
-      anchorEl,
-      className,
-      ...restHTMLProps
-    },
-    ref,
-  ) => {
-    const arrowRef = useRef<HTMLDivElement>(null);
-    const floatingEl = useRef<HTMLDivElement>(null);
+interface IPopoverRequiredProps {
+  children: React.ReactNode;
+  trigger: React.ReactNode;
+}
 
-    const [isOpen, setIsOpen] = useState(defaultOpen);
-    console.log({ isOpen });
+export type PopoverProps = IPopoverOptions & IPopoverRequiredProps;
 
-    const internalOpen = userOpen ?? isOpen;
+type IPopoverContext = IPopoverOptions &
+  Required<Pick<IPopoverOptions, 'variant'>> &
+  ReturnType<typeof useInteractions> &
+  ReturnType<typeof useFloating<HTMLDivElement>> & {
+    arrowRef: React.RefObject<HTMLDivElement>;
+    setOpen: (open: boolean) => void;
+  };
 
-    const {
-      context,
-      update,
-      refs,
-      floatingStyles,
-      placement: flPlacement,
-      middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
-    } = useFloating({
-      placement,
-      open: internalOpen,
-      onOpenChange: setIsOpen,
-      whileElementsMounted: autoUpdate,
-      elements: {
-        reference: anchorEl,
-        floating: floatingEl.current,
-      },
-      middleware: [
-        offset(ARROW_HEIGHT + ARROW_GAP),
-        flip({
-          fallbackAxisSideDirection: 'start',
-        }),
-        shift(),
-        arrow({
-          element: arrowRef,
-        }),
-      ],
-    });
+export function usePopover({
+  variant = 'default',
+  arrow,
+  initialOpen,
+  placement,
+  offset: offset,
+  open: controlledOpen,
+  onOpenChange: setControlledOpen,
+  ...restOptions
+}: IPopoverOptions): IPopoverContext {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
-    const { getFloatingProps, getReferenceProps } = useInteractions([
-      /* useHover(context, { move: false }), */
-      useFocus(context),
-      useClick(context),
-      useDismiss(context),
-      useRole(context),
-    ]);
-    useLayoutEffect(() => {
-      refs.setReference(anchorEl);
-      if (anchorEl) {
-        const refProps = getReferenceProps();
+  const open = controlledOpen ?? uncontrolledOpen;
+  const setOpen = setControlledOpen ?? setUncontrolledOpen;
 
-        const refPropsLower = Object.keys(refProps).reduce(
-          (acc, key) => ({
-            ...acc,
-            [key.toLowerCase()]: refProps[key],
-          }),
-          {},
-        );
+  const arrowRef = useRef<HTMLDivElement | null>(null);
 
-        Object.assign(anchorEl, refPropsLower);
-      }
-    }, [anchorEl, getFloatingProps, getReferenceProps, isOpen, refs]);
+  const data = useFloating<HTMLDivElement>({
+    placement,
+    open,
+    onOpenChange: setOpen,
+    whileElementsMounted: autoUpdate,
+    middleware: [
+      flOffset(offset ?? (arrow ? 12 : 4)),
+      flip({ padding: 5, fallbackPlacements: ['bottom', 'top'] }),
+      shift({ padding: 5 }),
+      flArrow({ element: arrowRef, padding: 8 }),
+    ],
+  });
 
-    const floatingRef = useMergeRefs([refs.setFloating, ref]);
+  const context = data.context;
 
-    useLayoutEffect(() => {
-      if (!refs.reference.current || !refs.floating.current || !open) return;
-      const cleanup = autoUpdate(
-        refs.reference.current,
-        refs.floating.current,
-        update,
-      );
-      return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchorEl]);
+  const click = useClick(context, {
+    enabled: controlledOpen == null,
+  });
+  const dismiss = useDismiss(context, {
+    referencePress: false,
+  });
+  const role = useRole(context);
 
-    console.log({ internalOpen });
+  const interactions = useInteractions([click, dismiss, role]);
 
-    return (
-      <div
-        ref={floatingEl}
-        className={cn(
-          styles.popover,
-          className,
-          !internalOpen && styles.hidden,
-        )}
-        data-placement={flPlacement}
-        aria-hidden={!open || !anchorEl}
-        {...getFloatingProps({
-          ref: floatingRef,
-          tabIndex: undefined,
-        })}
-        style={{ ...floatingStyles }}
-        {...restHTMLProps}
-      >
+  return useMemo<IPopoverContext>(
+    () =>
+      ({
+        open,
+        setOpen,
+        ...interactions,
+        ...data,
+        ...restOptions,
+        arrow,
+        arrowRef,
+        variant,
+      } satisfies IPopoverContext),
+    [open, setOpen, interactions, data, restOptions, arrow, arrowRef, variant],
+  );
+}
+
+type NullablePopoverContext = IPopoverContext | null;
+
+const PopoverContext = createContext<NullablePopoverContext>(null);
+
+export const usePopoverContext = (): IPopoverContext => {
+  const context = useContext<NullablePopoverContext>(PopoverContext);
+
+  if (context == null) {
+    throw new Error('Popover components must be wrapped in <Popover />');
+  }
+
+  return context;
+};
+
+function Popover({
+  children,
+  trigger,
+  arrow = true,
+  initialOpen = false,
+  ...restOptions
+}: PopoverProps) {
+  const popover = usePopover({
+    arrow,
+    initialOpen,
+    ...restOptions,
+  });
+
+  return (
+    <PopoverContext.Provider value={popover}>
+      <PopoverTrigger>{trigger}</PopoverTrigger>
+      <PopoverContent>
         {children}
-        <div
-          ref={arrowRef}
-          className={styles.arrow}
-          style={{
-            height: ARROW_HEIGHT,
-            width: ARROW_HEIGHT,
-            ...(arrowX != null ? { left: arrowX } : {}),
-            ...(arrowY != null ? { top: arrowY } : {}),
-          }}
-        />
-      </div>
-    );
-  },
-);
+        {popover.arrow && <PopoverArrow />}
+      </PopoverContent>
+    </PopoverContext.Provider>
+  );
+}
+
+Popover.displayName = 'Popover';
+
+export { Popover };
+
+interface PopoverTriggerProps {
+  children: React.ReactNode;
+}
+
+const PopoverTrigger = forwardRef<
+  HTMLElement,
+  React.HTMLProps<HTMLElement> & PopoverTriggerProps
+>(function PopoverTrigger({ children, ...props }, propRef) {
+  const context = usePopoverContext();
+
+  const child = isValidElement(children)
+    ? (children as React.ReactElement & React.RefAttributes<HTMLElement>)
+    : null;
+  const ref = useMergeRefs([context.refs.setReference, propRef]);
+
+  if (child) {
+    const childProps = {
+      ref,
+      ...props,
+      ...(child.props as Record<string, unknown>),
+      ...context.getReferenceProps(),
+      'data-state': context.open ? 'open' : 'closed',
+      'aria-expanded': context.open,
+    };
+
+    return cloneElement(child, childProps);
+  }
+
+  return null;
+});
+
+const PopoverContent = forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>(function PopoverContent(props, propRef) {
+  const context = usePopoverContext();
+  const ref = useMergeRefs([context.refs.setFloating, propRef]);
+
+  return context.open ? (
+    <div
+      ref={ref}
+      style={{
+        position: context.strategy,
+        top: context.y ?? 0,
+        left: context.x ?? 0,
+      }}
+      data-placement={context.placement}
+      className={cn(
+        classes.popover,
+        classes[context.variant],
+        context.className,
+      )}
+      {...context.getFloatingProps(props)}
+      tabIndex={-1}
+      role={context.role || 'dialog'}
+    >
+      {props.children}
+    </div>
+  ) : null;
+});
+
+const PopoverArrow = forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>(function PopoverContent(props, propRef) {
+  const context = usePopoverContext();
+  const ref = useMergeRefs([context.arrowRef, propRef]);
+
+  const arrowX = context.middlewareData.arrow?.x;
+  const arrowY = context.middlewareData.arrow?.y;
+
+  // Get the placement of the popover arrow independent of alignment, which is opposite of popover content placement.
+  // Used to align the arrow to the edge of the content.
+  const staticSide: string | undefined = {
+    top: 'bottom',
+    right: 'left',
+    bottom: 'top',
+    left: 'right',
+  }[context.placement.split('-')[0]];
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        ...(arrowX != null ? { left: arrowX } : {}),
+        ...(arrowY != null ? { top: arrowY } : {}),
+        ...(staticSide ? { [staticSide]: '-7px' } : {}),
+      }}
+      className={classes.arrow}
+      {...props}
+    />
+  );
+});
