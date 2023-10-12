@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   /**
    * `Button` used for interaction.
    * @prop {string} [variant='filled'] - Specify which variant to use. Options are 'filled', 'outline', 'quiet'.
@@ -6,7 +6,7 @@
    * @prop {string} [size='medium'] - Size of the button. Options are 'small', 'medium', 'large'.
    * @prop {boolean} [fullWidth=false] - If `Button` should fill full width of its container.
    * @prop {boolean} [dashedBorder=false] - Enable dashed border for `outline` variant.
-   * @prop {any} icon - Icon to be rendered in the button. This should be a component that renders an SVG object.
+   * @prop {any} icon - Icon to be rendered in the button. This SVG object needs to be passed to the component as a named slot called "icon".
    * @prop {string} [iconPlacement='left'] - Icon position inside Button. Options are 'right' or 'left'.
    * @prop {string} [class=''] - Additional classes to add to the component.
    */
@@ -15,28 +15,27 @@
   export let size = 'medium';
   export let fullWidth = false;
   export let dashedBorder = false;
-  export let icon = '';
-  // export let iconPlacement = 'left';
+  export let iconPlacement = 'left';
   // export let type = 'button';
 
   const computedClass = `button ${size} ${variant} ${color} ${
     fullWidth ? 'full-width' : ''
-  } ${dashedBorder ? 'dashed-border' : ''} ${icon ? 'only-icon' : ''} ${
-    $$props.class || ''
-  }`;
+  } ${dashedBorder ? 'dashed-border' : ''} ${
+    $$slots.icon !== undefined ? 'only-icon' : ''
+  } ${$$props.class || ''}`;
 </script>
 
 <button
   on:click
   class={computedClass}
 >
-  <!-- {#if icon && iconPlacement === 'left'}
-    <SvgIcon svgIconComponent={icon} />
-  {/if} -->
+  {#if iconPlacement === 'left'}
+    <slot name="icon" />
+  {/if}
   <slot />
-  <!-- {#if icon && iconPlacement === 'right'}
-    <SvgIcon svgIconComponent={icon} />
-  {/if} -->
+  {#if iconPlacement === 'right'}
+    <slot name="icon" />
+  {/if}
 </button>
 
 <style>
