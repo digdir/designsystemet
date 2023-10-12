@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
 import utilityClasses from '../../utils/utility.module.css';
+import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Button.module.css';
 
@@ -27,54 +28,54 @@ export type ButtonProps = {
 /**
  * Button used for interaction
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      children,
-      color = 'first',
-      variant = 'filled',
-      size = 'medium',
-      fullWidth = false,
-      dashedBorder = false,
-      iconPlacement = 'left',
-      icon,
-      type = 'button',
-      className,
-      ...restHTMLProps
-    },
-    ref,
-  ) => (
-    <button
-      {...restHTMLProps}
-      ref={ref}
-      className={cn(
-        classes.button,
-        utilityClasses.focusable,
-        classes[size],
-        classes[variant],
-        classes[color],
-        { [classes.fullWidth]: fullWidth },
-        { [classes.dashedBorder]: dashedBorder },
-        { [classes.onlyIcon]: !children && icon },
+export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
+  forwardRef(
+    (
+      {
+        children,
+        color = 'first',
+        variant = 'filled',
+        size = 'medium',
+        fullWidth = false,
+        dashedBorder = false,
+        iconPlacement = 'left',
+        icon,
+        type = 'button',
         className,
-      )}
-      type={type}
-    >
-      {icon && iconPlacement === 'left' && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
-      {children}
-      {icon && iconPlacement === 'right' && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
-    </button>
-  ),
-);
-
-Button.displayName = 'Button';
+        as: Component = 'button',
+        ...restHTMLProps
+      },
+      ref,
+    ) => (
+      <Component
+        {...restHTMLProps}
+        ref={ref}
+        type={type}
+        className={cn(
+          classes.button,
+          utilityClasses.focusable,
+          classes[size],
+          classes[variant],
+          classes[color],
+          { [classes.fullWidth]: fullWidth },
+          { [classes.dashedBorder]: dashedBorder },
+          { [classes.onlyIcon]: !children && icon },
+          className,
+        )}
+      >
+        {icon && iconPlacement === 'left' && (
+          <SvgIcon
+            svgIconComponent={icon}
+            className={classes.icon}
+          />
+        )}
+        {children}
+        {icon && iconPlacement === 'right' && (
+          <SvgIcon
+            svgIconComponent={icon}
+            className={classes.icon}
+          />
+        )}
+      </Component>
+    ),
+  );
