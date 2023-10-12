@@ -9,7 +9,7 @@ import { getAliases } from '@/services/VercelService';
 import classes from './page.module.css';
 
 /**
- * Combines pullRequests and aliases to create the output items
+ * Combines pullRequests and aliases to create the output items2
  */
 const generateItemsList = (pullRequests: any, aliases: any) => {
   let items = [];
