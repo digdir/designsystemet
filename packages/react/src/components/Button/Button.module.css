@@ -1,13 +1,11 @@
 .button {
   --fc-button-size: var(--fds-component-mode-height-small);
   --fc-button-icon-size: var(--fds-sizing-4);
-  --fc-border-radius: var(--fds-border_radius-interactive);
   --fc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
   --fc-button-color: var(--fds-semantic-text-action-first-on_action);
 
   display: flex;
   align-items: center;
-  border-radius: var(--fc-border-radius);
   border: var(--fds-border_width-default) solid transparent;
   color: var(--fc-button-color);
   fill: var(--fc-button-color);
@@ -22,6 +20,14 @@
   letter-spacing: var(--typography-default-letter-spacing);
   text-decoration: none;
   position: relative;
+}
+
+.button.mediumRadius {
+  border-radius: var(--fds-border_radius-interactive);
+}
+
+.button.fullRadius {
+  border-radius: var(--fds-border_radius-full);
 }
 
 .button svg {
