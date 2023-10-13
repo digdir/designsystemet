@@ -1,9 +1,8 @@
 import React, { forwardRef } from 'react';
 
-export interface PopoverContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export type PopoverContentProps = {
   children: React.ReactNode;
-}
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export type PopoverContentType = React.ForwardRefExoticComponent<
   PopoverContentProps & React.RefAttributes<HTMLDivElement>
