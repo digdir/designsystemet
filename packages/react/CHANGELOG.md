@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.31.1) (2023-10-13)
+
+### Bug Fixes
+
+- Revert "fix(Select): Hide list when reference is hidden (#917)" ([#936](https://github.com/digdir/designsystem/issues/936))
+
 # [0.31.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.30.0...@digdir/design-system-react@0.31.0) (2023-10-12)
 
 ### Bug Fixes
