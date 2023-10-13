@@ -53,7 +53,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   (
     {
       children,
-      placement = 'bottom',
+      placement = 'top',
       delay = 150,
       open: userOpen,
       defaultOpen = false,
@@ -137,6 +137,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     console.log({ internalOpen });
 
+    const staticSide = {
+      top: 'bottom',
+      right: 'left',
+      bottom: 'top',
+      left: 'right',
+    }[flPlacement.split('-')[0]];
+
     return (
       <div
         ref={floatingEl}
@@ -157,12 +164,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {children}
         <div
           ref={arrowRef}
-          className={styles.arrow}
+          className={cn(styles.arrow, styles[flPlacement])}
           style={{
             height: ARROW_HEIGHT,
             width: ARROW_HEIGHT,
             ...(arrowX != null ? { left: arrowX } : {}),
             ...(arrowY != null ? { top: arrowY } : {}),
+            ...(staticSide ? { [staticSide]: -6 } : {}),
           }}
         />
       </div>

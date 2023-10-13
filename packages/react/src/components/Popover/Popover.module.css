@@ -1,8 +1,10 @@
 .popover {
+  --border: 2px solid black;
+
   background: white;
   font: var(--fds-typography-paragraph-small);
   padding: var(--fds-spacing-3);
-  border: 2px solid black;
+  border: var(--border);
   border-radius: var(--fds-border_radius-medium);
 }
 
@@ -12,8 +14,26 @@
 
 .arrow {
   position: absolute;
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
   background: white;
-  transform: rotate(45deg) translate(50%, 50%);
+  transform: rotate(45deg);
+}
+
+.arrow.bottom {
+  border-top: var(--border);
+  border-left: var(--border);
+}
+
+.arrow.top {
+  border-bottom: var(--border);
+  border-right: var(--border);
+}
+
+.arrow.left {
+  border-top: var(--border);
+  border-right: var(--border);
+}
+
+.arrow.right {
+  border-bottom: var(--border);
+  border-left: var(--border);
 }
