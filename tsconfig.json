@@ -3,7 +3,7 @@
   //  "exclude": ["src/components/*.test.tsx", "src/components/*.stories.tsx"],
   "compilerOptions": {
     "target": "es2020",
-    "module": "NodeNext",
+    "module": "es2020",
     // This allows our files to use window. Should be removed when RSC is added
     "lib": ["dom", "esnext", "DOM.Iterable"],
     "importHelpers": true,
@@ -15,7 +15,7 @@
     // stricter type-checking for stronger correctness. Recommended by TS
     "strict": true,
     // use Node's module resolution algorithm, instead of the legacy TS one
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     // transpile JSX to React.createElement
     "jsx": "react-jsx",
     // interop between ESM and CJS modules. Recommended by TS
