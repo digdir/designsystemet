@@ -22,12 +22,27 @@ export default {
 export const Preview: StoryFn<typeof Popover> = () => {
   const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
 
-  console.log('buttonRef', buttonRef);
-
   return (
     <>
       <Button ref={(ref) => setButtonRef(ref)}>My trigger</Button>
       <Popover anchorEl={buttonRef}>
+        <Popover.Content>popover content</Popover.Content>
+      </Popover>
+    </>
+  );
+};
+
+export const Variants: StoryFn<typeof Popover> = () => {
+  const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
+
+  return (
+    <>
+      <Button ref={(ref) => setButtonRef(ref)}>My trigger</Button>
+      <Popover
+        anchorEl={buttonRef}
+        open
+        variant='danger'
+      >
         <Popover.Content>popover content</Popover.Content>
       </Popover>
     </>

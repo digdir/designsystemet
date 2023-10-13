@@ -29,6 +29,11 @@ export type PopoverProps = {
    * @default 'top'
    */
   placement?: 'top' | 'right' | 'bottom' | 'left';
+  /**
+   * Variant of the popover.
+   * @default 'default'
+   */
+  variant?: 'default' | 'info' | 'warning' | 'danger';
   /** Whether the tooltip is open or not.
    * This overrides the internal state of the tooltip.
    */
@@ -46,6 +51,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       defaultOpen = false,
       anchorEl,
       className,
+      variant = 'default',
       ...restHTMLProps
     },
     ref,
@@ -93,6 +99,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       useDismiss(context),
       useRole(context),
     ]);
+
     useLayoutEffect(() => {
       refs.setReference(anchorEl);
       if (anchorEl) {
@@ -138,6 +145,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             ref={floatingEl}
             className={cn(
               styles.popover,
+              styles[variant],
               className,
               !internalOpen && styles.hidden,
             )}

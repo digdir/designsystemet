@@ -1,11 +1,36 @@
 .popover {
-  --border: 2px solid black;
+  --border: 2px solid;
 
-  background: white;
+  z-index: 1500;
+  background: var(--background);
   font: var(--fds-typography-paragraph-small);
   padding: var(--fds-spacing-3);
   border: var(--border);
   border-radius: var(--fds-border_radius-medium);
+}
+
+.popover.default {
+  --background: var(--fds-semantic-surface-neutral-default);
+
+  border-color: var(--fds-semantic-border-neutral-default);
+}
+
+.popover.info {
+  --background: var(--fds-semantic-surface-info-subtle);
+
+  border-color: var(--fds-semantic-border-info-default);
+}
+
+.popover.warning {
+  --background: var(--fds-semantic-surface-warning-subtle);
+
+  border-color: var(--fds-semantic-border-warning-default);
+}
+
+.popover.danger {
+  --background: var(--fds-semantic-surface-danger-subtle);
+
+  border-color: var(--fds-semantic-border-danger-default);
 }
 
 .hidden {
@@ -14,26 +39,30 @@
 
 .arrow {
   position: absolute;
-  background: white;
+  background: var(--background);
   transform: rotate(45deg);
 }
 
 .arrow.bottom {
   border-top: var(--border);
   border-left: var(--border);
+  border-color: inherit;
 }
 
 .arrow.top {
   border-bottom: var(--border);
   border-right: var(--border);
+  border-color: inherit;
 }
 
 .arrow.left {
   border-top: var(--border);
   border-right: var(--border);
+  border-color: inherit;
 }
 
 .arrow.right {
   border-bottom: var(--border);
   border-left: var(--border);
+  border-color: inherit;
 }
