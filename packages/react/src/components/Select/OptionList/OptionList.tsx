@@ -15,7 +15,6 @@ type OptionListPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
   onOptionClick: (value: string) => void;
   optionId: (value: string) => string;
   options: T[];
-  referenceHidden?: boolean;
   selectedValues: string[];
   setFloating: (node: HTMLElement | null) => void;
   x: number;
@@ -34,7 +33,6 @@ const OptionList = ({
   onOptionClick,
   optionId,
   options,
-  referenceHidden = false,
   selectedValues,
   setFloating,
   x,
@@ -56,7 +54,6 @@ const OptionList = ({
           classes.wrapper,
           expanded && classes.expanded,
           usingKeyboard && classes.usingKeyboard,
-          referenceHidden && classes.referenceHidden,
         )}
         ref={setFloating}
         style={{ left: x, top: y, zIndex: 1500 }}
