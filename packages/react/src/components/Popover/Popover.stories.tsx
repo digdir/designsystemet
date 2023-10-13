@@ -33,7 +33,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
       </Button>
       <Popover
         {...args}
-        open={open}
+        open={open || args.open}
         onClose={() => setOpen(false)}
         anchorEl={buttonRef}
       >
@@ -58,15 +58,33 @@ export const Variants: StoryFn<typeof Popover> = () => {
       <Popover
         anchorEl={buttonRef}
         open
-        variant='danger'
-        className='iuoergeriugheriugehugi'
+        placement='top'
       >
-        <Popover.Content className='owrigeorigeorigjeroig'>
-          Alt for mye tekst som ligger i en hjelpetekst som er av vår advarsel
-          variant. Alt for mye tekst som ligger i en hjelpetekst som er av vår
-          advarsel variant. Alt for mye tekst som ligger i en hjelpetekst som er
-          av vår advarsel variant.
-        </Popover.Content>
+        <Popover.Content>default</Popover.Content>
+      </Popover>
+      <Popover
+        anchorEl={buttonRef}
+        open
+        placement='right'
+        variant='danger'
+      >
+        <Popover.Content>danger</Popover.Content>
+      </Popover>
+      <Popover
+        anchorEl={buttonRef}
+        open
+        placement='bottom'
+        variant='info'
+      >
+        <Popover.Content>info</Popover.Content>
+      </Popover>
+      <Popover
+        anchorEl={buttonRef}
+        open
+        placement='left'
+        variant='warning'
+      >
+        <Popover.Content>warning</Popover.Content>
       </Popover>
     </>
   );

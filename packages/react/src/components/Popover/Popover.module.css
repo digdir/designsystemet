@@ -7,7 +7,7 @@
   padding: var(--fds-spacing-3);
   border: var(--border);
   border-radius: var(--fds-border_radius-medium);
-  max-width: 560px;
+  max-width: 300px;
   max-height: 80vh;
 }
 

@@ -110,8 +110,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       return () => cleanup();
     }, [refs.floating, refs.reference, update, anchorEl, refs]);
 
-    console.log({ internalOpen });
-
     const staticSide = {
       top: 'bottom',
       right: 'left',
