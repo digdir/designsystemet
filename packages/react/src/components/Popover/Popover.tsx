@@ -7,21 +7,13 @@ import {
   useClick,
   useFocus,
   useDismiss,
-  FloatingArrow,
   arrow,
   useInteractions,
   useMergeRefs,
   useRole,
-  useHover,
 } from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
-import React, {
-  forwardRef,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { forwardRef, useLayoutEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import styles from './Popover.module.css';
@@ -37,10 +29,6 @@ export type PopoverProps = {
    * @default 'top'
    */
   placement?: 'top' | 'right' | 'bottom' | 'left';
-  /** Delay in milliseconds before opening.
-   * @default 150
-   */
-  delay?: number;
   /** Whether the tooltip is open or not.
    * This overrides the internal state of the tooltip.
    */
@@ -54,7 +42,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     {
       children,
       placement = 'top',
-      delay = 150,
       open: userOpen,
       defaultOpen = false,
       anchorEl,
@@ -145,35 +132,39 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     }[flPlacement.split('-')[0]];
 
     return (
-      <div
-        ref={floatingEl}
-        className={cn(
-          styles.popover,
-          className,
-          !internalOpen && styles.hidden,
+      <>
+        {internalOpen && (
+          <div
+            ref={floatingEl}
+            className={cn(
+              styles.popover,
+              className,
+              !internalOpen && styles.hidden,
+            )}
+            data-placement={flPlacement}
+            aria-hidden={!open || !anchorEl}
+            {...getFloatingProps({
+              ref: floatingRef,
+              tabIndex: undefined,
+            })}
+            style={{ ...floatingStyles }}
+            {...restHTMLProps}
+          >
+            {children}
+            <div
+              ref={arrowRef}
+              className={cn(styles.arrow, styles[flPlacement])}
+              style={{
+                height: ARROW_HEIGHT,
+                width: ARROW_HEIGHT,
+                ...(arrowX != null ? { left: arrowX } : {}),
+                ...(arrowY != null ? { top: arrowY } : {}),
+                ...(staticSide ? { [staticSide]: -6 } : {}),
+              }}
+            />
+          </div>
         )}
-        data-placement={flPlacement}
-        aria-hidden={!open || !anchorEl}
-        {...getFloatingProps({
-          ref: floatingRef,
-          tabIndex: undefined,
-        })}
-        style={{ ...floatingStyles }}
-        {...restHTMLProps}
-      >
-        {children}
-        <div
-          ref={arrowRef}
-          className={cn(styles.arrow, styles[flPlacement])}
-          style={{
-            height: ARROW_HEIGHT,
-            width: ARROW_HEIGHT,
-            ...(arrowX != null ? { left: arrowX } : {}),
-            ...(arrowY != null ? { top: arrowY } : {}),
-            ...(staticSide ? { [staticSide]: -6 } : {}),
-          }}
-        />
-      </div>
+      </>
     );
   },
 );

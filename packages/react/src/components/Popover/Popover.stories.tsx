@@ -27,10 +27,7 @@ export const Preview: StoryFn<typeof Popover> = () => {
   return (
     <>
       <Button ref={(ref) => setButtonRef(ref)}>My trigger</Button>
-      <Popover
-        anchorEl={buttonRef}
-        open
-      >
+      <Popover anchorEl={buttonRef}>
         <Popover.Content>popover content</Popover.Content>
       </Popover>
     </>
