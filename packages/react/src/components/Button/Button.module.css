@@ -92,10 +92,7 @@
   width: 100%;
 }
 
-.button.secondary {
-  background-color: transparent;
-}
-
+.button.secondary,
 .button.tertiary {
   background-color: transparent;
 }
