@@ -1,3 +1,4 @@
+import type { Placement } from '@floating-ui/react';
 import {
   useFloating,
   offset,
@@ -22,13 +23,13 @@ const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
 export type PopoverProps = {
+  /** Element the popover anchors to */
   anchorEl: Element | null;
-  children: React.ReactElement & React.RefAttributes<HTMLElement>;
   /**
    * Placement of the tooltip on the trigger.
    * @default 'top'
    */
-  placement?: 'top' | 'right' | 'bottom' | 'left';
+  placement?: Placement;
   /**
    * Variant of the popover.
    * @default 'default'
@@ -47,7 +48,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     {
       children,
       placement = 'top',
-      open: userOpen,
+      open,
       anchorEl,
       className,
       variant = 'default',
@@ -59,8 +60,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const arrowRef = useRef<HTMLDivElement>(null);
     const floatingEl = useRef<HTMLDivElement>(null);
 
-    const internalOpen = userOpen;
-
     const {
       context,
       update,
@@ -70,7 +69,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
     } = useFloating({
       placement,
-      open: internalOpen,
+      open,
       onOpenChange: () => onClose && onClose(),
       whileElementsMounted: autoUpdate,
       elements: {
@@ -108,9 +107,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         update,
       );
       return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchorEl, refs]);
+    }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
 
-    const staticSide = {
+    const arrowPlacement = {
       top: 'bottom',
       right: 'left',
       bottom: 'top',
@@ -119,17 +118,17 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     return (
       <>
-        {internalOpen && (
+        {open && (
           <div
             ref={floatingEl}
             className={cn(
               styles.popover,
               styles[variant],
               className,
-              !internalOpen && styles.hidden,
+              !open && styles.hidden,
             )}
             data-placement={flPlacement}
-            aria-hidden={!internalOpen || !anchorEl}
+            aria-hidden={!open || !anchorEl}
             {...getFloatingProps({
               ref: floatingRef,
               tabIndex: undefined,
@@ -140,13 +139,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             {children}
             <div
               ref={arrowRef}
-              className={cn(styles.arrow, styles[flPlacement])}
+              className={cn(styles.arrow, styles[arrowPlacement || ''])}
               style={{
                 height: ARROW_HEIGHT,
                 width: ARROW_HEIGHT,
                 ...(arrowX != null ? { left: arrowX } : {}),
                 ...(arrowY != null ? { top: arrowY } : {}),
-                ...(staticSide ? { [staticSide]: -6 } : {}),
+                ...(arrowPlacement ? { [arrowPlacement]: -6 } : {}),
               }}
             />
           </div>

@@ -45,25 +45,25 @@
   transform: rotate(45deg);
 }
 
-.arrow.bottom {
+.arrow.top {
   border-top: var(--border);
   border-left: var(--border);
   border-color: inherit;
 }
 
-.arrow.top {
+.arrow.bottom {
   border-bottom: var(--border);
   border-right: var(--border);
   border-color: inherit;
 }
 
-.arrow.left {
+.arrow.right {
   border-top: var(--border);
   border-right: var(--border);
   border-color: inherit;
 }
 
-.arrow.right {
+.arrow.left {
   border-bottom: var(--border);
   border-left: var(--border);
   border-color: inherit;
