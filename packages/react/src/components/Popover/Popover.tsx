@@ -13,7 +13,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useLayoutEffect, useRef, useState } from 'react';
+import React, { forwardRef, useLayoutEffect, useRef } from 'react';
 import cn from 'classnames';
 
 import styles from './Popover.module.css';
@@ -38,8 +38,8 @@ export type PopoverProps = {
    * This overrides the internal state of the tooltip.
    */
   open?: boolean;
-  /** Whether the tooltip is open by default or not. */
-  defaultOpen?: boolean;
+  /** Callback function when popover closes */
+  onClose?: () => void;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
@@ -48,10 +48,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       children,
       placement = 'top',
       open: userOpen,
-      defaultOpen = false,
       anchorEl,
       className,
       variant = 'default',
+      onClose,
       ...restHTMLProps
     },
     ref,
@@ -59,10 +59,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const arrowRef = useRef<HTMLDivElement>(null);
     const floatingEl = useRef<HTMLDivElement>(null);
 
-    const [isOpen, setIsOpen] = useState(defaultOpen);
-    console.log({ isOpen });
-
-    const internalOpen = userOpen ?? isOpen;
+    const internalOpen = userOpen;
 
     const {
       context,
@@ -74,7 +71,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     } = useFloating({
       placement,
       open: internalOpen,
-      onOpenChange: setIsOpen,
+      onOpenChange: () => onClose && onClose(),
       whileElementsMounted: autoUpdate,
       elements: {
         reference: anchorEl,
@@ -92,7 +89,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       ],
     });
 
-    const { getFloatingProps, getReferenceProps } = useInteractions([
+    const { getFloatingProps } = useInteractions([
       /* useHover(context, { move: false }), */
       useFocus(context),
       useClick(context),
@@ -100,26 +97,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       useRole(context),
     ]);
 
-    useLayoutEffect(() => {
-      refs.setReference(anchorEl);
-      if (anchorEl) {
-        const refProps = getReferenceProps();
-
-        const refPropsLower = Object.keys(refProps).reduce(
-          (acc, key) => ({
-            ...acc,
-            [key.toLowerCase()]: refProps[key],
-          }),
-          {},
-        );
-
-        Object.assign(anchorEl, refPropsLower);
-      }
-    }, [anchorEl, getFloatingProps, getReferenceProps, isOpen, refs]);
-
     const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
     useLayoutEffect(() => {
+      refs.setReference(anchorEl);
       if (!refs.reference.current || !refs.floating.current || !open) return;
       const cleanup = autoUpdate(
         refs.reference.current,
@@ -127,7 +108,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         update,
       );
       return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchorEl]);
+    }, [refs.floating, refs.reference, update, anchorEl, refs]);
 
     console.log({ internalOpen });
 
@@ -150,7 +131,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
               !internalOpen && styles.hidden,
             )}
             data-placement={flPlacement}
-            aria-hidden={!open || !anchorEl}
+            aria-hidden={!internalOpen || !anchorEl}
             {...getFloatingProps({
               ref: floatingRef,
               tabIndex: undefined,
