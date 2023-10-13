@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.31.1) (2023-10-13)
+
+**Note:** Version bump only for package @digdir/design-system-react
+
 # [0.31.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.30.0...@digdir/design-system-react@0.31.0) (2023-10-12)
 
 ### Bug Fixes
