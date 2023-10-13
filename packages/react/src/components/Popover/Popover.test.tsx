@@ -73,8 +73,7 @@ describe('Popover', () => {
 
     await user.click(popoverTrigger);
 
-    const content = await screen.findByText(contentText);
-    expect(content).toBeInTheDocument();
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
 
     await user.click(document.body);
 

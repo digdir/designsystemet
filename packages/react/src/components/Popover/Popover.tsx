@@ -121,12 +121,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {open && (
           <div
             ref={floatingEl}
-            className={cn(
-              styles.popover,
-              styles[variant],
-              className,
-              !open && styles.hidden,
-            )}
+            className={cn(styles.popover, styles[variant], className)}
             data-placement={flPlacement}
             aria-hidden={!open || !anchorEl}
             {...getFloatingProps({

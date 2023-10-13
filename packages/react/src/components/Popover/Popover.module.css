@@ -35,10 +35,6 @@
   border-color: var(--fds-semantic-border-danger-default);
 }
 
-.hidden {
-  display: none;
-}
-
 .arrow {
   position: absolute;
   background: var(--background);
