@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 
-import { Button } from '../..';
+import { Button, Paragraph } from '../..';
 
 import { Popover } from '.';
 
@@ -85,6 +85,39 @@ export const Variants: StoryFn<typeof Popover> = () => {
         variant='warning'
       >
         <Popover.Content>warning</Popover.Content>
+      </Popover>
+    </>
+  );
+};
+
+export const InteractiveContent: StoryFn<typeof Popover> = () => {
+  const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button
+        ref={(ref) => setButtonRef(ref)}
+        onClick={() => setOpen(!open)}
+      >
+        My trigger
+      </Button>
+      <Popover
+        anchorEl={buttonRef}
+        placement='top'
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Popover.Content>
+          <Paragraph>Er du sikker på at du vil slette?</Paragraph>
+          <Button
+            size='small'
+            color='danger'
+            onClick={() => setOpen(false)}
+          >
+            Slett
+          </Button>
+        </Popover.Content>
       </Popover>
     </>
   );
