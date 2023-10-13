@@ -5,6 +5,18 @@
   import List from '$lib/components/List/List.svelte';
   import Tag from '$lib/components/Tag/Tag.svelte';
   import Paragraph from '$lib/components/Typography/Paragraph/Paragraph.svelte';
+  import Modal from '$lib/components/Modal/Modal.svelte';
+
+  let showModal = false;
+
+  function openModal(event) {
+    event.stopPropagation();
+    showModal = true;
+  }
+
+  function closeModal() {
+    showModal = false;
+  }
 </script>
 
 <h1>Test components here!</h1>
@@ -41,3 +53,9 @@
 <Tag size="xsmall">Tag XS</Tag>
 <Tag size="small">Tag small</Tag>
 <Tag size="medium">Tag medium</Tag>
+
+<Button on:click={openModal}>Open Modal</Button>
+<Modal
+  show={showModal}
+  onClose={closeModal}
+/>
