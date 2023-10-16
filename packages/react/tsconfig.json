@@ -4,6 +4,7 @@
     "outDir": "./tsc-build",
     "declarationDir": "./dist/types",
     "emitDeclarationOnly": false,
+    "composite": false,
     "allowSyntheticDefaultImports": true
   },
   "include": ["./src", "declarations.d.ts"],

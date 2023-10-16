@@ -10,7 +10,7 @@ import classes from './Button.module.css';
 
 export type ButtonProps = {
   /** Specify which variant to use */
-  variant?: 'filled' | 'outline' | 'quiet';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   /** Specify which color palette to use */
   color?: 'first' | 'second' | 'success' | 'danger' | 'inverted';
   /** Size */
@@ -32,7 +32,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
       {
         children,
         color = 'first',
-        variant = 'filled',
+        variant = 'primary',
         size = 'medium',
         fullWidth = false,
         iconPlacement = 'left',
@@ -40,12 +40,12 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         type = 'button',
         className,
         as: Component = 'button',
-        ...restHTMLProps
+        ...rest
       },
       ref,
     ) => (
       <Component
-        {...restHTMLProps}
+        {...rest}
         ref={ref}
         type={type}
         className={cn(
@@ -56,6 +56,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           classes[color],
           { [classes.fullWidth]: fullWidth },
           { [classes.onlyIcon]: !children && icon },
+
           className,
         )}
       >

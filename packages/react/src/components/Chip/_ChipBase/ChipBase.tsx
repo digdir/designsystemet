@@ -6,8 +6,7 @@ import { Paragraph } from '../../Typography';
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 import { ChipGroupContext } from '../Group';
 import utilityClasses from '../../../utils/utility.module.css';
-
-import classes from './ChipBase.module.css';
+import classes from '../Chip.module.css';
 
 export type ChipBaseProps = {
   /**
