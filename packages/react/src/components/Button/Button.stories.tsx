@@ -62,7 +62,7 @@ export const UsedAsLink: StoryFn<typeof Button> = () => (
     target='_blank'
     href='https://www.designsystemet.no'
   >
-    Bli med på Slack
+    Gå til Designsystemet
   </Button>
 );
 
