@@ -94,10 +94,6 @@
   width: 100%;
 }
 
-.button.dashedBorder {
-  border-style: dashed;
-}
-
 .button.outline {
   background-color: transparent;
 }

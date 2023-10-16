@@ -126,8 +126,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
             ref: childMergedRef,
           }),
         )}
-        <FloatingPortal>
-          {internalOpen && (
+        {internalOpen && (
+          <FloatingPortal>
             <>
               <div
                 ref={refs.setFloating}
@@ -148,8 +148,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 />
               </div>
             </>
-          )}
-        </FloatingPortal>
+          </FloatingPortal>
+        )}
       </>
     );
   },

@@ -17,8 +17,6 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
-  /** Enabled dashed border for `outline` variant */
-  dashedBorder?: boolean;
   /** Icon to be rendered in the button. This should be a React component that renders an SVG object. */
   icon?: ReactNode;
   /** Icon position inside Button */
@@ -37,7 +35,6 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         variant = 'filled',
         size = 'medium',
         fullWidth = false,
-        dashedBorder = false,
         iconPlacement = 'left',
         icon,
         type = 'button',
@@ -58,7 +55,6 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           classes[variant],
           classes[color],
           { [classes.fullWidth]: fullWidth },
-          { [classes.dashedBorder]: dashedBorder },
           { [classes.onlyIcon]: !children && icon },
           className,
         )}

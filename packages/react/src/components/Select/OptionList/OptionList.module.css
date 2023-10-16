@@ -33,10 +33,6 @@
   display: none;
 }
 
-.wrapper.referenceHidden {
-  visibility: hidden;
-}
-
 .optionList {
   display: flex;
   flex-direction: column;
