@@ -40,9 +40,9 @@ export const ChipBase: OverridableComponent<ChipBaseProps, HTMLLabelElement> =
           aria-pressed={selected}
           className={cn(
             classes.chipButton,
-            className,
             utilityClasses.focusable,
             classes[group?.size || size],
+            className,
           )}
         >
           <Paragraph
