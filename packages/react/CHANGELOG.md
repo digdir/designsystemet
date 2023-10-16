@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.32.0) (2023-10-16)
+
+### Bug Fixes
+
+- **Chip:** Move all `Chip` css to one file ([#944](https://github.com/digdir/designsystem/issues/944)) ([ee4f4d3](https://github.com/digdir/designsystem/commit/ee4f4d3243d3be08d6c9cdfc28729ee2240e546a))
+
+### Features
+
+- **Button:** :boom: Removed `dashedBorder` ([#941](https://github.com/digdir/designsystem/issues/941)) ([2297429](https://github.com/digdir/designsystem/commit/2297429a2cbc00a2287954210aeccb02ca3fc56d))
+- **Button:** New `variants` and minor fixes ([#938](https://github.com/digdir/designsystem/issues/938)) ([bc7a052](https://github.com/digdir/designsystem/commit/bc7a052e75499afd0e2260ee7e2557191b8b12bd))
+
 ## [0.31.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.31.1) (2023-10-13)
 
 ### Bug Fixes
