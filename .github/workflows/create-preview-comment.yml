@@ -1,4 +1,4 @@
-name: Create Preview Comment
+name: Create Initial Preview Comment
 on:
   pull_request:
     types: [opened]
@@ -6,18 +6,13 @@ on:
 env:
   PR_NUMBER: ${{ github.event.number }}
 
-permissions:
-  pull-requests: write
-  issues: write
-  repository-projects: write
-
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Create a new comment when pull request is opened
+      - name: Create a new comment
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ env.PR_NUMBER }}
