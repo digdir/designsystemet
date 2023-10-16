@@ -141,7 +141,7 @@ export const withIcon: StoryFn<typeof Button> = () => (
     <Button
       icon={icon}
       variant='secondary'
-      aria-label=' Sekundær med ikon'
+      aria-label=' Secondary med ikon'
     ></Button>
     <Button
       icon={icon}
@@ -158,7 +158,7 @@ export const withIcon: StoryFn<typeof Button> = () => (
       icon={icon}
       color='second'
       variant='secondary'
-      aria-label=' Sekundær med ikon'
+      aria-label=' Secondary med ikon'
     ></Button>
     <Button
       icon={icon}
@@ -176,7 +176,7 @@ export const withIcon: StoryFn<typeof Button> = () => (
       icon={<akselIcons.CheckmarkIcon />}
       color='success'
       variant='secondary'
-      aria-label=' Sekundær med ikon'
+      aria-label=' Secondary med ikon'
     ></Button>
     <Button
       icon={<akselIcons.CheckmarkIcon />}
@@ -194,7 +194,7 @@ export const withIcon: StoryFn<typeof Button> = () => (
       icon={<akselIcons.TrashIcon />}
       color='danger'
       variant='secondary'
-      aria-label=' Sekundær med ikon'
+      aria-label=' Secondary med ikon'
     ></Button>
     <Button
       icon={<akselIcons.TrashIcon />}
