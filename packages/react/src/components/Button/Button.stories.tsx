@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
-import * as icons from '@navikt/aksel-icons';
+import * as akselIcons from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
@@ -23,15 +23,17 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
   </Stack>
 );
 
-const icon = <icons.FloppydiskIcon />;
+const icon = <akselIcons.FloppydiskIcon />;
 
-type AkselIcon = typeof icons['AirplaneFillIcon'];
+type AkselIcon = typeof akselIcons['AirplaneFillIcon'];
 type AkselIcons = Record<string, AkselIcon>;
 
 export const Preview: Story = {
   render: ({ icon = '', ...args }) => {
     // Hack to get dynamic preview of Aksel icons in Storybook
-    const Icon: AkselIcon | undefined = (icons as AkselIcons)[icon as string];
+    const Icon: AkselIcon | undefined = (akselIcons as AkselIcons)[
+      icon as string
+    ];
 
     return (
       <Button
@@ -47,10 +49,22 @@ export const Preview: Story = {
   argTypes: {
     icon: {
       control: 'select',
-      options: Object.keys(icons),
+      options: Object.keys(akselIcons),
     },
   },
 };
+
+export const UsedAsLink: StoryFn<typeof Button> = () => (
+  <Button
+    as='a'
+    icon={<akselIcons.PersonChatIcon />}
+    iconPlacement='right'
+    target='_blank'
+    href='https://www.designsystemet.no'
+  >
+    Bli med på Slack
+  </Button>
+);
 
 export const Variants: StoryFn<typeof Button> = () => {
   return (
@@ -153,37 +167,37 @@ export const withIcon: StoryFn<typeof Button> = () => (
       aria-label='Tertiary med ikon'
     ></Button>
     <Button
-      icon={icon}
+      icon={<akselIcons.CheckmarkIcon />}
       color='success'
       variant='primary'
       aria-label='Primary med ikon'
     ></Button>
     <Button
-      icon={icon}
+      icon={<akselIcons.CheckmarkIcon />}
       color='success'
       variant='secondary'
       aria-label=' Sekundar med ikon'
     ></Button>
     <Button
-      icon={icon}
+      icon={<akselIcons.CheckmarkIcon />}
       color='success'
       variant='tertiary'
       aria-label='Tertiary med ikon'
     ></Button>
     <Button
-      icon={icon}
+      icon={<akselIcons.TrashIcon />}
       color='danger'
       variant='primary'
       aria-label='Primary med ikon'
     ></Button>
     <Button
-      icon={icon}
+      icon={<akselIcons.TrashIcon />}
       color='danger'
       variant='secondary'
       aria-label=' Sekundar med ikon'
     ></Button>
     <Button
-      icon={icon}
+      icon={<akselIcons.TrashIcon />}
       color='danger'
       variant='tertiary'
       aria-label='Tertiary med ikon'
