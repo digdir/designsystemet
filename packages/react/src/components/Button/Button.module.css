@@ -22,14 +22,6 @@
   position: relative;
 }
 
-.button.mediumRadius {
-  border-radius: var(--fds-border_radius-interactive);
-}
-
-.button.fullRadius {
-  border-radius: var(--fds-border_radius-full);
-}
-
 .button svg {
   overflow: visible;
 }

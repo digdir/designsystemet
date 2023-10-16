@@ -21,8 +21,6 @@ export type ButtonProps = {
   icon?: ReactNode;
   /** Icon position inside Button */
   iconPlacement?: 'right' | 'left';
-  /** Sets border radius. `full` is only recommend to be used with only icon buttons */
-  radius?: 'medium' | 'full';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
@@ -42,7 +40,6 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         type = 'button',
         className,
         as: Component = 'button',
-        radius = 'medium',
         ...rest
       },
       ref,
@@ -57,7 +54,6 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           classes[size],
           classes[variant],
           classes[color],
-          classes[`${radius}Radius`],
           { [classes.fullWidth]: fullWidth },
           { [classes.onlyIcon]: !children && icon },
 
