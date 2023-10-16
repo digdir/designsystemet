@@ -4,3 +4,4 @@ dist/
 coverage/
 storybook-static/
 packages/tokens/brand/**/*
+tsc-build/

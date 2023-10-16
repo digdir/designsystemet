@@ -641,7 +641,8 @@
     "selectedTokenSets": {
       "Brand/Altinn": "enabled",
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Density/Default": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
     "$figmaModeId": "6324:2",
@@ -871,7 +872,8 @@
     "selectedTokenSets": {
       "Brand/Tilsynet": "enabled",
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Density/Default": "enabled"
     },
     "$figmaStyleReferences": {},
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
@@ -1103,7 +1105,8 @@
     "selectedTokenSets": {
       "Base/Core": "source",
       "Base/Semantic": "enabled",
-      "Brand/Brreg": "enabled"
+      "Brand/Brreg": "enabled",
+      "Density/Default": "enabled"
     },
     "$figmaVariableReferences": {
       "brand.alt1.50": "741f3f885aa3f266feda96defb70e59752495075",
@@ -1329,9 +1332,9 @@
       "border_width.active": "82d06b8c6fdeea622611fa744ff261661a211760",
       "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7"
     },
-    "group": "Brand",
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
-    "$figmaModeId": "6324:4"
+    "$figmaModeId": "6324:4",
+    "group": "Brand"
   },
   {
     "id": "33e1200e221c81b1bd3439e6f7413a9ac3af9aa4",

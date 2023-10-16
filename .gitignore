@@ -1,6 +1,7 @@
 # Built files
 dist
 ignore
+tsc-build
 
 # Yarn stuff; we're not using PnP/Zero installs
 .pnp.*
@@ -8,6 +9,7 @@ yarn-error.log
 
 # Really don't want that
 node_modules
+.svelte-kit
 
 # Local env variables should stay local
 .env

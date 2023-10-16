@@ -3,7 +3,7 @@
 
   /**
    * `Tag` component for labeling or categorizing.
-   * @prop {string} [color='neutral'] - Color of the tag. Options are 'primary', 'secondary', 'tertiary', 'neutral', 'success', 'warning', 'danger', 'info'.
+   * @prop {string} [color='neutral'] - Color of the tag. Options are 'first', 'second', 'third', 'neutral', 'success', 'warning', 'danger', 'info'.
    * @prop {string} [size='medium'] - Size of the tag. Options are 'xsmall', 'small', 'medium'.
    * @prop {string} [variant='filled'] - Variant of the tag. Options are 'filled', 'outlined'.
    * @prop {string} [class=''] - Additional classes to add to the component.
@@ -116,21 +116,21 @@
         --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger_subtle);
       }
 
-      &.primary {
-        --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-        --fdsc-tag-background: var(--fds-semantic-surface-primary-light);
+      &.first {
+        --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-first-light);
         --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
       }
 
-      &.secondary {
-        --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-        --fdsc-tag-background: var(--fds-semantic-surface-secondary-light);
+      &.second {
+        --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-second-light);
         --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
       }
 
-      &.tertiary {
-        --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
-        --fdsc-tag-background: var(--fds-semantic-surface-tertiary-light);
+      &.third {
+        --fdsc-tag-border: var(--fds-semantic-surface-third-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-third-light);
         --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
       }
     }
@@ -166,21 +166,21 @@
         --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger);
       }
 
-      &.primary {
-        --fdsc-tag-border: var(--fds-semantic-surface-primary-dark);
-        --fdsc-tag-background: var(--fds-semantic-surface-primary-dark);
+      &.first {
+        --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-first-dark);
         --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
       }
 
-      &.secondary {
-        --fdsc-tag-border: var(--fds-semantic-surface-secondary-dark);
-        --fdsc-tag-background: var(--fds-semantic-surface-secondary-dark);
+      &.second {
+        --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-second-dark);
         --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
       }
 
-      &.tertiary {
-        --fdsc-tag-border: var(--fds-semantic-surface-tertiary-dark);
-        --fdsc-tag-background: var(--fds-semantic-surface-tertiary-dark);
+      &.third {
+        --fdsc-tag-border: var(--fds-semantic-surface-third-dark);
+        --fdsc-tag-background: var(--fds-semantic-surface-third-dark);
         --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
       }
     }
