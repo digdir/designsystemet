@@ -4,8 +4,7 @@ import { XMarkIcon } from '@navikt/aksel-icons';
 
 import type { ChipBaseProps } from '../_ChipBase';
 import { ChipBase } from '../_ChipBase';
-
-import classes from './Removable.module.css';
+import classes from '../Chip.module.css';
 
 export type RemovableChipProps = Omit<ChipBaseProps, 'selected'>;
 

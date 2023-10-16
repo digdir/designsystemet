@@ -3,8 +3,7 @@ import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
 
 import { ChipBase, type ChipBaseProps } from '../_ChipBase';
-
-import classes from './Toggle.module.css';
+import classes from '../Chip.module.css';
 
 export type ToggleChipProps = {
   /**

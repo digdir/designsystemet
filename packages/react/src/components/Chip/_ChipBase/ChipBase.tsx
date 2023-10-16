@@ -6,8 +6,7 @@ import { Paragraph } from '../../Typography';
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 import { ChipGroupContext } from '../Group';
 import utilityClasses from '../../../utils/utility.module.css';
-
-import classes from './ChipBase.module.css';
+import classes from '../Chip.module.css';
 
 export type ChipBaseProps = {
   /**
@@ -41,9 +40,9 @@ export const ChipBase: OverridableComponent<ChipBaseProps, HTMLLabelElement> =
           aria-pressed={selected}
           className={cn(
             classes.chipButton,
+            className,
             utilityClasses.focusable,
             classes[group?.size || size],
-            className,
           )}
         >
           <Paragraph
