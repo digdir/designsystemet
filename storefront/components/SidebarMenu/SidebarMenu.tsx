@@ -42,7 +42,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
             fullWidth
             size='medium'
             color='second'
-            variant='outline'
+            variant='secondary'
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
           >
