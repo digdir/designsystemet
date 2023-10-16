@@ -53,12 +53,12 @@ jobs:
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
 
-      - name: Find Storefront deployment
+      - name: Find Storybook deployment
         uses: actions-ecosystem/action-regex-match@v2
-        id: regex-storefront
+        id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '🖥 \[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '📖 \[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -67,7 +67,7 @@ jobs:
           format: D. MMM YYYY - HH:mm
           utcOffset: '+02:00'
 
-      - name: Update comment with Storybook preview deployment
+      - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ env.PR_NUMBER }}
@@ -77,8 +77,8 @@ jobs:
           body: |
             **Preview deployments for this pull request:**
 
-            📖 [Storybook](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (CEST)`
+            🖥 [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (CEST)`
 
-            ${{ steps.regex-storefront.outputs.match }}
+            ${{ steps.regex-storybook.outputs.match }}
 
             See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
