@@ -14,7 +14,7 @@ const colors: ButtonProps['color'][] = [
   'danger',
   'inverted',
 ];
-const variants: ButtonProps['variant'][] = ['filled', 'outline', 'quiet'];
+const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
 
 const user = userEvent.setup();
 
@@ -94,7 +94,6 @@ describe('Button', () => {
 
   it('should render as aria-disabled when aria-disabled is true regardless of variant', () => {
     render({
-      variant: 'outline',
       'aria-disabled': true,
     });
 
@@ -105,7 +104,6 @@ describe('Button', () => {
 
   it('should render as disabled when disabled is true regardless of variant', () => {
     render({
-      variant: 'outline',
       disabled: true,
     });
 
@@ -117,7 +115,6 @@ describe('Button', () => {
   it('should not call onClick when disabled', async () => {
     const fn = jest.fn();
     render({
-      variant: 'outline',
       disabled: true,
       onClick: fn,
     });
