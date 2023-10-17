@@ -6,6 +6,7 @@ env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   PR_NUMBER: ${{ github.event.number }}
+  ALIASES:
 
 jobs:
   Deploy-Preview:
@@ -18,11 +19,12 @@ jobs:
         run: |
           {
             echo 'ALIASES<<EOF'
-            vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }}
+            vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} --limit 50
             echo EOF
           } >> "$GITHUB_ENV"
 
       - name: Create comment with the vercel preview deployment
+        if: ${{ env.ALIASES != '' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ env.PR_NUMBER }}
