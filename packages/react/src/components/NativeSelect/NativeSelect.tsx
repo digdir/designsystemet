@@ -37,8 +37,6 @@ export type NativeSelectProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Error message for form field */
   error?: ReactNode;
-  /** Override generated errorId */
-  errorId?: string;
   /** Defines if the select is readOnly
    * @default false
    */
@@ -65,6 +63,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         className={cn(
           disabled && classes.disabled,
           readOnly && classes.readOnly,
+          error && classes.error,
         )}
       >
         {label && (

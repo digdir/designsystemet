@@ -64,7 +64,7 @@ export const Error: StoryFn<typeof NativeSelect> = (args) => (
 
 Error.args = {
   label: 'Velg et fjell',
-  isValid: false,
+  error: 'Du må velge et fjell',
 };
 
 export const Multiple: StoryFn<typeof NativeSelect> = (args) => (
