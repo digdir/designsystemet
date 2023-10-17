@@ -14,13 +14,21 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useLayoutEffect, useRef } from 'react';
+import React, { forwardRef, useLayoutEffect, useMemo, useRef } from 'react';
 import cn from 'classnames';
 
-import styles from './Popover.module.css';
+import { Paragraph } from '../Typography';
+
+import classes from './Popover.module.css';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
+const ARROW_PLACEMENT: Record<string, 'top' | 'left' | 'bottom' | 'right'> = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right',
+};
 
 export type PopoverProps = {
   /** Element the popover anchors to */
@@ -89,7 +97,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     });
 
     const { getFloatingProps } = useInteractions([
-      /* useHover(context, { move: false }), */
       useFocus(context),
       useClick(context),
       useDismiss(context),
@@ -109,19 +116,18 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       return () => cleanup();
     }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
 
-    const arrowPlacement = {
-      top: 'bottom',
-      right: 'left',
-      bottom: 'top',
-      left: 'right',
-    }[flPlacement.split('-')[0]];
+    const arrowPlacement = useMemo(() => {
+      return ARROW_PLACEMENT[flPlacement.split('-')[0]];
+    }, [flPlacement]);
 
     return (
       <>
         {open && (
-          <div
+          <Paragraph
             ref={floatingEl}
-            className={cn(styles.popover, styles[variant], className)}
+            as={'div'}
+            size='small'
+            className={cn(classes.popover, classes[variant], className)}
             data-placement={flPlacement}
             aria-hidden={!open || !anchorEl}
             {...getFloatingProps({
@@ -134,7 +140,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             {children}
             <div
               ref={arrowRef}
-              className={cn(styles.arrow, styles[arrowPlacement || ''])}
+              className={cn(classes.arrow, classes[arrowPlacement])}
               style={{
                 height: ARROW_HEIGHT,
                 width: ARROW_HEIGHT,
@@ -143,7 +149,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
                 ...(arrowPlacement ? { [arrowPlacement]: -6 } : {}),
               }}
             />
-          </div>
+          </Paragraph>
         )}
       </>
     );
