@@ -24,7 +24,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Create comment with the vercel preview deployment
-        if: ${{ env.ALIASES != '' && contains(env.ALIASES, 'storefront-pr-895.dev.designsystemet.no') }}
+        if: ${{ env.ALIASES != '' && contains(env.ALIASES, 'storefront-pr-896.dev.designsystemet.no') }}
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ env.PR_NUMBER }}
