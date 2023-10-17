@@ -2,52 +2,68 @@ import React, { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
 
-import { InputWrapper } from '../_InputWrapper';
+import { Label, Paragraph } from '../Typography';
+
+import classes from './NativeSelect.module.css';
 
 export type NativeSelectProps = {
   /** Instances of `option` */
   children?: ReactNode;
-
-  /** Specifies whether the select box is disabled. */
+  /**
+   * Specifies whether the select box is disabled.
+   * @default false
+   * */
   disabled?: boolean;
-
-  /** Specifies whether the selected value is valid. */
+  /** Specifies whether the selected value is valid.
+   * @default true
+   */
   isValid?: boolean;
-
-  /** Label that appears over the select box. */
+  /**
+   * Label that appears over the select box. */
   label?: string;
-
   /** Set to true to enable multiple selection. */
   multiple?: boolean;
-
   /** The ID of the `select` element. This will be generated if not provided. */
   id?: string;
-
-  /** Defines the number of visible options. */
-  size?: number;
+  /**
+   * Defines the number of visible options.
+   * @default 'medium'
+   * */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
-    { children, disabled = false, id, isValid = true, label, ...selectProps },
+    {
+      children,
+      disabled = false,
+      id,
+      isValid = true,
+      label,
+      size = 'medium',
+      ...selectProps
+    },
     ref: ForwardedRef<HTMLSelectElement>,
   ) => (
-    <InputWrapper
-      disabled={disabled}
-      inputId={id}
-      isValid={isValid}
-      inputRenderer={({ className, inputId }) => (
-        <select
-          disabled={disabled}
-          id={inputId}
-          ref={ref}
-          {...selectProps}
-          className={cn(className, selectProps.className)}
+    <Paragraph>
+      {label && (
+        <Label
+          weight='medium'
+          htmlFor={id}
+          className={cn(label && classes.label)}
         >
-          {children}
-        </select>
+          <span>{label}</span>
+        </Label>
       )}
-      label={label}
-    />
+      <select
+        disabled={disabled}
+        id={id}
+        ref={ref}
+        {...selectProps}
+        className={cn(classes.input, classes[size], selectProps.className)}
+      >
+        {children}
+      </select>
+    </Paragraph>
   ),
 );

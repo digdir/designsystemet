@@ -1,0 +1,29 @@
+.input {
+  font: inherit;
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  min-height: 2.5em;
+  width: 100%;
+  appearance: none;
+  padding: 0 var(--fds-spacing-3);
+  border: solid 1px var(--fds-semantic-border-action-dark);
+  border-radius: var(--fds-border_radius-medium);
+}
+
+.input.xsmall,
+.input.small {
+  padding: 0 var(--fds-spacing-2);
+}
+
+.input.medium {
+  padding: 0 var(--fds-spacing-3);
+}
+
+.input.large {
+  padding: 0 var(--fds-spacing-4);
+}
+
+.disabled {
+  opacity: 0.3;
+}
