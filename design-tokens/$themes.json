@@ -1421,5 +1421,17 @@
       "viewport.width": "058d519667ea0f54b56ab8b9d61554fed6a6f899"
     },
     "group": "Viewport"
+  },
+  {
+    "id": "da7b5d797e5edb30c942b9e55dda1eac7d4fe3f8",
+    "name": "STAF",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "Base/Core": "source",
+      "Base/Semantic": "enabled",
+      "Brand/STAF": "enabled",
+      "Density/Default": "enabled"
+    },
+    "group": "Brand"
   }
 ]

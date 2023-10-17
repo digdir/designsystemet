@@ -426,7 +426,7 @@
     "heading": {
       "xlarge": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f5}",
@@ -441,7 +441,7 @@
       },
       "large": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f4}",
@@ -456,7 +456,7 @@
       },
       "medium": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f3}",
@@ -471,7 +471,7 @@
       },
       "small": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f2}",
@@ -486,7 +486,7 @@
       },
       "xsmall": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f1}",
@@ -501,7 +501,7 @@
       },
       "xxsmall": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f0}",
@@ -518,7 +518,7 @@
     "ingress": {
       "medium": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.600}",
           "fontSize": "{font-size.f1}",
@@ -534,7 +534,7 @@
     "paragraph": {
       "large": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
           "fontSize": "{font-size.f1}",
@@ -548,7 +548,7 @@
       },
       "medium": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
           "fontSize": "{font-size.f0}",
@@ -562,7 +562,7 @@
       },
       "small": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
           "fontSize": "{font-size.f-1}",
@@ -576,7 +576,7 @@
       },
       "xsmall": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
           "fontSize": "{font-size.f-2}",
@@ -591,7 +591,7 @@
       "short": {
         "large": {
           "value": {
-            "fontFamily": "{fontFamilies.opensans}",
+            "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
             "fontSize": "{font-size.f1}",
@@ -605,7 +605,7 @@
         },
         "medium": {
           "value": {
-            "fontFamily": "{fontFamilies.opensans}",
+            "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
             "fontSize": "{font-size.f0}",
@@ -619,7 +619,7 @@
         },
         "small": {
           "value": {
-            "fontFamily": "{fontFamilies.opensans}",
+            "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
             "fontSize": "{font-size.f-1}",
@@ -633,7 +633,7 @@
         },
         "xsmall": {
           "value": {
-            "fontFamily": "{fontFamilies.opensans}",
+            "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
             "fontSize": "{font-size.f-2}",
@@ -650,7 +650,7 @@
     "label": {
       "large": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f1}",
@@ -664,7 +664,7 @@
       },
       "medium": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f0}",
@@ -678,7 +678,7 @@
       },
       "small": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f-1}",
@@ -692,7 +692,7 @@
       },
       "xsmall": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f-2}",
@@ -708,7 +708,7 @@
     "error_message": {
       "large": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f1}",
@@ -722,7 +722,7 @@
       },
       "medium": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f0}",
@@ -736,7 +736,7 @@
       },
       "small": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f-1}",
@@ -750,7 +750,7 @@
       },
       "xsmall": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-size.f-2}",
@@ -766,7 +766,7 @@
     "interactive": {
       "large": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-static.large}",
@@ -780,7 +780,7 @@
       },
       "medium": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-static.medium}",
@@ -794,7 +794,7 @@
       },
       "small": {
         "value": {
-          "fontFamily": "{fontFamilies.opensans}",
+          "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
           "fontSize": "{font-static.small}",

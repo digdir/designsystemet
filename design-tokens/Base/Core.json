@@ -320,8 +320,8 @@
     }
   },
   "fontFamilies": {
-    "opensans": {
-      "value": "Open Sans",
+    "inter": {
+      "value": "Inter",
       "type": "fontFamilies"
     }
   },
