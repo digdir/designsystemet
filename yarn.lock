@@ -12624,9 +12624,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"development@workspace:development":
+"dev@workspace:apps/dev":
   version: 0.0.0-use.local
-  resolution: "development@workspace:development"
+  resolution: "dev@workspace:apps/dev"
   dependencies:
     "@navikt/aksel-icons": ^5.6.5
     "@types/luxon": ^3.3.2

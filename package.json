@@ -6,14 +6,14 @@
   "workspaces": [
     "packages/*",
     "storefront",
-    "development"
+    "apps/dev"
   ],
   "scripts": {
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "storybook:clean": "storybook dev -p 6006 --no-manager-cache",
     "storefront": "yarn workspace storefront dev",
-    "development": "yarn workspace development dev",
+    "devsite": "yarn workspace dev dev",
     "build": "lerna run build",
     "build:react": "yarn workspace @digdir/design-system-react build",
     "build:tokens": "yarn workspace @digdir/design-system-tokens build",
