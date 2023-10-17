@@ -17,7 +17,13 @@ jobs:
         name: Get a list of all Vercel aliases
         run: |
           {
-            echo 'aliases<<EOF'
+            echo 'ALIASES<<EOF'
             vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }}
             echo EOF
           } >> "$GITHUB_ENV"
+
+      - name: Create comment with the vercel preview deployment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ env.PR_NUMBER }}
+          body: ${{ env.ALIASES }}
