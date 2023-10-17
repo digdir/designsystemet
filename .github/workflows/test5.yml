@@ -15,4 +15,6 @@ jobs:
 
       - id: get-aliases
         name: Get a list of all Vercel aliases
-        run: echo "aliases=$(vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }})" >> $GITHUB_ENV
+        run: |
+          aliases=$(vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }})
+          echo "aliases=$aliases" >> $GITHUB_ENV
