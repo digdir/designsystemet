@@ -15,8 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - id: get-aliases
+        name: Get a list of all Vercel aliases
+        run: echo "aliases=$(vercel ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }})" >> $GITHUB_OUTPUT
+
       - name: Remove Storybook alias
+        if: contains(steps.get-aliases.output.aliases, 'storybook-pr-${{ github.event.number }}.dev.designsystemet.no')
         run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
 
       - name: Remove Storefront alias
+        if: contains(steps.get-aliases.output.aliases, 'storefront-pr-${{ github.event.number }}.dev.designsystemet.no')
         run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
