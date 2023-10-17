@@ -1,0 +1,22 @@
+name: Cleanup Preview Deployments
+on:
+  pull_request:
+    types: [labeled]
+
+env:
+  VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
+  PR_NUMBER: ${{ github.event.number }}
+
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Remove Storybook alias
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+
+      - name: Remove Storefront alias
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
