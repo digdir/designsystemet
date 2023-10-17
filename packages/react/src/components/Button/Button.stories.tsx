@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
-import * as icons from '@navikt/aksel-icons';
+import * as akselIcons from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
@@ -11,7 +11,7 @@ import { Button } from './';
 type Story = StoryObj<typeof Button>;
 
 const meta: Meta<typeof Button> = {
-  title: 'Altinn/Button',
+  title: 'Felles/Button',
   component: Button,
 };
 
@@ -23,38 +23,17 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
   </Stack>
 );
 
-const icon = (
-  <svg
-    viewBox='0 0 24 24'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path
-      fillRule='evenodd'
-      clipRule='evenodd'
-      d='M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0Zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm5.047 5.671 1.399 1.43-8.728 8.398L6 14.02l1.395-1.434 2.319 2.118 7.333-7.032Z'
-      fill='currentColor'
-    />
-  </svg>
-);
+const icon = <akselIcons.FloppydiskIcon />;
 
-const VariantsTemplate = () => {
-  return (
-    <>
-      <Button {...Filled.args}>Fylt</Button>
-      <Button {...Outline.args}>Omriss</Button>
-      <Button {...Quiet.args}>Gjennomsiktig</Button>
-    </>
-  );
-};
-
-type AkselIcon = typeof icons['AirplaneFillIcon'];
+type AkselIcon = typeof akselIcons['AirplaneFillIcon'];
 type AkselIcons = Record<string, AkselIcon>;
 
 export const Preview: Story = {
   render: ({ icon = '', ...args }) => {
     // Hack to get dynamic preview of Aksel icons in Storybook
-    const Icon: AkselIcon | undefined = (icons as AkselIcons)[icon as string];
+    const Icon: AkselIcon | undefined = (akselIcons as AkselIcons)[
+      icon as string
+    ];
 
     return (
       <Button
@@ -70,88 +49,194 @@ export const Preview: Story = {
   argTypes: {
     icon: {
       control: 'select',
-      options: Object.keys(icons),
+      options: Object.keys(akselIcons),
     },
   },
 };
 
-// This is an example of composed story
-export const Variants: Story = {
-  render: VariantsTemplate,
-  decorators: [
-    (Story) => (
-      <Stack>
-        <Story />
-      </Stack>
-    ),
-  ],
+export const UsedAsLink: StoryFn<typeof Button> = () => (
+  <Button
+    as='a'
+    icon={<akselIcons.PersonChatIcon />}
+    iconPlacement='right'
+    target='_blank'
+    href='https://www.designsystemet.no'
+  >
+    Gå til Designsystemet
+  </Button>
+);
+
+export const Variants: StoryFn<typeof Button> = () => {
+  return (
+    <>
+      <Button>Primary</Button>
+      <Button variant='secondary'>Secondary</Button>
+      <Button variant='tertiary'>Tertiary</Button>
+
+      <Button color='second'>Primary</Button>
+      <Button
+        color='second'
+        variant='secondary'
+      >
+        Secondary
+      </Button>
+      <Button
+        color='second'
+        variant='tertiary'
+      >
+        Tertiary
+      </Button>
+
+      <Button color='success'>Primary</Button>
+      <Button
+        color='success'
+        variant='secondary'
+      >
+        Secondary
+      </Button>
+      <Button
+        color='success'
+        variant='tertiary'
+      >
+        Tertiary
+      </Button>
+
+      <Button color='danger'>Primary</Button>
+      <Button
+        color='danger'
+        variant='secondary'
+      >
+        Secondary
+      </Button>
+      <Button
+        color='danger'
+        variant='tertiary'
+      >
+        Tertiary
+      </Button>
+    </>
+  );
 };
 
-const Filled: Story = {
-  name: 'Fylt med tekst',
-  args: {
-    children: 'Fylt',
-    variant: 'filled',
-  },
-};
-
-const Outline: Story = {
-  name: 'Omriss med tekst',
-  args: {
-    children: 'Omriss',
-    variant: 'outline',
-  },
-};
-
-const Quiet: Story = {
-  name: 'Gjennomsiktig med tekst',
-  args: {
-    children: 'Gjennomsiktig',
-    variant: 'quiet',
-  },
-};
+Variants.decorators = [
+  (Story) => (
+    <Stack
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, auto)',
+      }}
+    >
+      <Story />
+    </Stack>
+  ),
+];
 
 export const withIcon: StoryFn<typeof Button> = () => (
   <>
     <Button
       icon={icon}
-      variant='filled'
-      aria-label='Fylt med ikon'
+      variant='primary'
+      aria-label='Primary med ikon'
     ></Button>
     <Button
       icon={icon}
-      variant='outline'
-      aria-label=' Omriss med ikon'
+      variant='secondary'
+      aria-label=' Secondary med ikon'
     ></Button>
     <Button
       icon={icon}
-      variant='quiet'
-      aria-label='Gjennomsiktig med ikon'
+      variant='tertiary'
+      aria-label='Tertiary med ikon'
+    ></Button>
+    <Button
+      icon={icon}
+      color='second'
+      variant='primary'
+      aria-label='Primary med ikon'
+    ></Button>
+    <Button
+      icon={icon}
+      color='second'
+      variant='secondary'
+      aria-label=' Secondary med ikon'
+    ></Button>
+    <Button
+      icon={icon}
+      color='second'
+      variant='tertiary'
+      aria-label='Tertiary med ikon'
+    ></Button>
+    <Button
+      icon={<akselIcons.CheckmarkIcon />}
+      color='success'
+      variant='primary'
+      aria-label='Primary med ikon'
+    ></Button>
+    <Button
+      icon={<akselIcons.CheckmarkIcon />}
+      color='success'
+      variant='secondary'
+      aria-label=' Secondary med ikon'
+    ></Button>
+    <Button
+      icon={<akselIcons.CheckmarkIcon />}
+      color='success'
+      variant='tertiary'
+      aria-label='Tertiary med ikon'
+    ></Button>
+    <Button
+      icon={<akselIcons.TrashIcon />}
+      color='danger'
+      variant='primary'
+      aria-label='Primary med ikon'
+    ></Button>
+    <Button
+      icon={<akselIcons.TrashIcon />}
+      color='danger'
+      variant='secondary'
+      aria-label=' Secondary med ikon'
+    ></Button>
+    <Button
+      icon={<akselIcons.TrashIcon />}
+      color='danger'
+      variant='tertiary'
+      aria-label='Tertiary med ikon'
     ></Button>
   </>
 );
 
-withIcon.decorators = [stack];
+withIcon.decorators = [
+  (Story) => (
+    <Stack
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, auto)',
+      }}
+    >
+      <Story />
+    </Stack>
+  ),
+];
 
 export const withIconAndText: StoryFn<typeof Button> = () => (
   <>
     <Button
       icon={icon}
-      variant='filled'
+      variant='primary'
     >
-      Fylt med ikon
+      Primary
     </Button>
     <Button
       icon={icon}
-      variant='outline'
+      variant='secondary'
     >
-      Omriss med ikon
+      Secondary
     </Button>
     <Button
       icon={icon}
-      variant='quiet'
+      variant='tertiary'
     >
-      Gjennomsiktig med ikon
+      Tertiary
     </Button>
   </>
 );
@@ -162,7 +247,7 @@ export const withSpinner: StoryFn<typeof Button> = () => (
   <>
     <Button
       icon={icon}
-      variant='filled'
+      variant='primary'
       aria-disabled
     >
       <Spinner
@@ -173,7 +258,7 @@ export const withSpinner: StoryFn<typeof Button> = () => (
     </Button>
     <Button
       icon={icon}
-      variant='outline'
+      variant='secondary'
       aria-disabled
     >
       <Spinner
@@ -184,7 +269,7 @@ export const withSpinner: StoryFn<typeof Button> = () => (
     </Button>
     <Button
       icon={icon}
-      variant='quiet'
+      variant='tertiary'
       aria-disabled
     >
       <Spinner

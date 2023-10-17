@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.32.0) (2023-10-16)
+
+### Bug Fixes
+
+- **Chip:** Move all `Chip` css to one file ([#944](https://github.com/digdir/designsystem/issues/944)) ([ee4f4d3](https://github.com/digdir/designsystem/commit/ee4f4d3243d3be08d6c9cdfc28729ee2240e546a))
+
+### Features
+
+- **Button:** :boom: Removed `dashedBorder` ([#941](https://github.com/digdir/designsystem/issues/941)) ([2297429](https://github.com/digdir/designsystem/commit/2297429a2cbc00a2287954210aeccb02ca3fc56d))
+- **Button:** New `variants` and minor fixes ([#938](https://github.com/digdir/designsystem/issues/938)) ([bc7a052](https://github.com/digdir/designsystem/commit/bc7a052e75499afd0e2260ee7e2557191b8b12bd))
+
+## [0.31.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.31.1) (2023-10-13)
+
+### Bug Fixes
+
+- Revert "fix(Select): Hide list when reference is hidden (#917)" ([#936](https://github.com/digdir/designsystem/issues/936))
+
+# [0.31.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.30.0...@digdir/design-system-react@0.31.0) (2023-10-12)
+
+### Bug Fixes
+
+- Add missing export `ToggleGroup` ([#931](https://github.com/digdir/designsystem/issues/931)) ([782d77d](https://github.com/digdir/designsystem/commit/782d77d7cbbdba83744649134c1e30ec8a682b0d))
+
+### Features
+
+- **Button:** :sparkles: Support for overriding html element using `as` ([#926](https://github.com/digdir/designsystem/issues/926)) ([5689052](https://github.com/digdir/designsystem/commit/5689052b461c424bf26bc750c2e1212f3034c430))
+
+# [0.30.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.29.0...@digdir/design-system-react@0.30.0) (2023-10-11)
+
+### Bug Fixes
+
+- **Select:** Hide list when reference is hidden ([#917](https://github.com/digdir/designsystem/issues/917)) ([bccea75](https://github.com/digdir/designsystem/commit/bccea7520cb7f7de13b434dbd4dcef646885aa36))
+
+### Features
+
+- **Tooltip:** Create new tooltip component ([#914](https://github.com/digdir/designsystem/issues/914)) ([eccc36d](https://github.com/digdir/designsystem/commit/eccc36d24b4e8cdf77939d88e45a2a9eb9e76998))
+
+# [0.29.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.1...@digdir/design-system-react@0.29.0) (2023-10-07)
+
+### Features
+
+- **Tabs:** :sparkles: Add missing export for new Tabs ([#915](https://github.com/digdir/designsystem/issues/915)) ([6cf70ec](https://github.com/digdir/designsystem/commit/6cf70ec65d8ae713b71f7345cb73b70b62a1997c))
+
 ## [0.28.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.28.0...@digdir/design-system-react@0.28.1) (2023-10-06)
 
 ### Bug Fixes
