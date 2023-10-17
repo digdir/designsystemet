@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useId } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
@@ -58,6 +58,8 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     },
     ref: ForwardedRef<HTMLSelectElement>,
   ) => {
+    const randomInputId = useId();
+
     return (
       <Paragraph
         className={cn(
@@ -68,6 +70,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       >
         {label && (
           <Label
+            for={id ? id : randomInputId}
             weight='medium'
             htmlFor={id}
             className={cn(
@@ -81,12 +84,12 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
                 className={classes.padlock}
               />
             )}
-            <span>{label}</span>
+            {label}
           </Label>
         )}
         <select
           disabled={disabled || readOnly}
-          id={id}
+          id={id ? id : randomInputId}
           ref={ref}
           {...selectProps}
           className={cn(classes.input, classes[size], selectProps.className)}
