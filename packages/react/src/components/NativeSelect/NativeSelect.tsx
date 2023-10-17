@@ -1,14 +1,14 @@
 import React, { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
+import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
-import { Label, Paragraph } from '../Typography';
+import { ErrorMessage, Label, Paragraph } from '../Typography';
 
 import classes from './NativeSelect.module.css';
+import utilityClasses from './../../utils/utility.module.css';
 
 export type NativeSelectProps = {
-  /** Instances of `option` */
-  children?: ReactNode;
   /**
    * Specifies whether the select box is disabled.
    * @default false
@@ -21,6 +21,11 @@ export type NativeSelectProps = {
   /**
    * Label that appears over the select box. */
   label?: string;
+  /**
+   * Visually hides `label` and `description` (still available for screen readers)
+   * @default false
+   * */
+  hideLabel?: boolean;
   /** Set to true to enable multiple selection. */
   multiple?: boolean;
   /** The ID of the `select` element. This will be generated if not provided. */
@@ -30,7 +35,15 @@ export type NativeSelectProps = {
    * @default 'medium'
    * */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
-} & SelectHTMLAttributes<HTMLSelectElement>;
+  /** Error message for form field */
+  error?: ReactNode;
+  /** Override generated errorId */
+  errorId?: string;
+  /** Defines if the select is readOnly
+   * @default false
+   */
+  readOnly?: boolean;
+} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
 
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
@@ -38,32 +51,57 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       children,
       disabled = false,
       id,
-      isValid = true,
       label,
+      hideLabel = false,
       size = 'medium',
+      error,
+      readOnly = false,
       ...selectProps
     },
     ref: ForwardedRef<HTMLSelectElement>,
-  ) => (
-    <Paragraph>
-      {label && (
-        <Label
-          weight='medium'
-          htmlFor={id}
-          className={cn(label && classes.label)}
-        >
-          <span>{label}</span>
-        </Label>
-      )}
-      <select
-        disabled={disabled}
-        id={id}
-        ref={ref}
-        {...selectProps}
-        className={cn(classes.input, classes[size], selectProps.className)}
+  ) => {
+    return (
+      <Paragraph
+        className={cn(
+          disabled && classes.disabled,
+          readOnly && classes.readOnly,
+        )}
       >
-        {children}
-      </select>
-    </Paragraph>
-  ),
+        {label && (
+          <Label
+            weight='medium'
+            htmlFor={id}
+            className={cn(
+              classes.label,
+              hideLabel && utilityClasses.visuallyHidden,
+            )}
+          >
+            {readOnly && (
+              <PadlockLockedFillIcon
+                aria-hidden
+                className={classes.padlock}
+              />
+            )}
+            <span>{label}</span>
+          </Label>
+        )}
+        <select
+          disabled={disabled || readOnly}
+          id={id}
+          ref={ref}
+          {...selectProps}
+          className={cn(classes.input, classes[size], selectProps.className)}
+        >
+          {children}
+        </select>
+        <div
+          className={classes.errorMessage}
+          aria-live='polite'
+          aria-relevant='additions removals'
+        >
+          {error && <ErrorMessage size={size}>{error}</ErrorMessage>}
+        </div>
+      </Paragraph>
+    );
+  },
 );
