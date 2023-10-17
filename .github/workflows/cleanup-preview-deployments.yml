@@ -17,7 +17,7 @@ jobs:
 
       - id: get-aliases
         name: Get a list of all Vercel aliases
-        run: echo "aliases=$(vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }})" >> $GITHUB_OUTPUT
+        run: echo "aliases=$(vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }})" >> $GITHUB_ENV
 
       - name: Remove Storybook alias
         if: contains(steps.get-aliases.output.aliases, 'storybook-pr-${{ github.event.number }}.dev.designsystemet.no')
