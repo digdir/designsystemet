@@ -1,3 +1,5 @@
+@import url('https://altinncdn.no/fonts/inter/inter.css');
+
 :root {
   --color-background-darkest: #121212;
   --color-background-darker: #1f1f1f;
@@ -12,6 +14,7 @@ body {
   max-width: 1000px;
   margin: 0 auto !important;
   padding: 0 16px;
+  font-family: 'Inter', sans-serif;
 }
 
 @media (max-width: 500px) {

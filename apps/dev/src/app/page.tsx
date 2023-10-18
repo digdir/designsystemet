@@ -1,17 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card } from '@/components/Card/Card';
+import { PullRequestCard } from '@/components/PullRequestCard/PullRequestCard';
 import { Alias } from '@/components/Alias/Alias';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { getActivePullRequests } from '@/services/GithubService';
 import { getAliases } from '@/services/VercelService';
+import { SkeletonCard } from '@/components/SkeletonCard/SkeletonCard';
 import classes from './page.module.css';
 
 /**
  * Combines pullRequests and aliases to create the output itemm
  */
-const generateItemsList = (pullRequests: any, aliases: any) => {
+const combineItemsList = (pullRequests: any, aliases: any) => {
   let items = [];
 
   for (let i = 0; i < pullRequests.length; i++) {
@@ -46,7 +47,7 @@ const generateItemsList = (pullRequests: any, aliases: any) => {
 const getItems = async () => {
   const aliases = await getAliases();
   const pullRequests = await getActivePullRequests();
-  return generateItemsList(pullRequests, aliases);
+  return combineItemsList(pullRequests, aliases);
 };
 
 export default function Home() {
@@ -96,36 +97,45 @@ export default function Home() {
         <h2 className={classes.subTitle}>
           Active pull requests and deployments
         </h2>
-        <div>
-          {items.map((item: any, index: number) => (
-            <Card
-              title={item.title}
-              key={index}
-              user={item.user}
-              userAvatar={item.userAvatar}
-              PRNumber={item.PRNumber}
-              PRLink={item.PRLink}
-            >
-              {!!item.storybook.length && (
-                <Alias
-                  type='storybook'
-                  date={item.storybook[0].updatedAt}
-                  alias={item.storybook[0].alias}
-                />
-              )}
-              {!!item.storefront.length && (
-                <Alias
-                  type='storefront'
-                  date={item.storefront[0].updatedAt}
-                  alias={item.storefront[0].alias}
-                />
-              )}
-              {!item.storefront.length && !item.storybook.length && (
-                <div className={classes.empty}>No deployments found.</div>
-              )}
-            </Card>
-          ))}
-        </div>
+        {items.length === 0 && (
+          <>
+            {[1, 2, 3, 4, 5].map((item: any, index: number) => (
+              <SkeletonCard key={index} />
+            ))}
+          </>
+        )}
+        {items.length > 0 && (
+          <div>
+            {items.map((item: any, index: number) => (
+              <PullRequestCard
+                title={item.title}
+                key={index}
+                user={item.user}
+                userAvatar={item.userAvatar}
+                PRNumber={item.PRNumber}
+                PRLink={item.PRLink}
+              >
+                {!!item.storybook.length && (
+                  <Alias
+                    type='storybook'
+                    date={item.storybook[0].updatedAt}
+                    alias={item.storybook[0].alias}
+                  />
+                )}
+                {!!item.storefront.length && (
+                  <Alias
+                    type='storefront'
+                    date={item.storefront[0].updatedAt}
+                    alias={item.storefront[0].alias}
+                  />
+                )}
+                {!item.storefront.length && !item.storybook.length && (
+                  <div className={classes.empty}>No deployments found.</div>
+                )}
+              </PullRequestCard>
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );

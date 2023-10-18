@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './Card.module.css';
+import classes from './PullRequestCard.module.css';
 
-type CardProps = {
+type PullRequestCardProps = {
   children: React.ReactNode;
   title: string;
   user: string;
@@ -10,14 +10,14 @@ type CardProps = {
   PRLink: string;
 };
 
-export const Card = ({
+export const PullRequestCard = ({
   children,
   title,
   user,
   userAvatar,
   PRNumber,
   PRLink,
-}: CardProps) => {
+}: PullRequestCardProps) => {
   return (
     <div className={classes.card}>
       <div className={classes.top}>
