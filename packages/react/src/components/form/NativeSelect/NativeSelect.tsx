@@ -3,10 +3,11 @@ import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
-import { ErrorMessage, Label, Paragraph } from '../Typography';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import classes from './NativeSelect.module.css';
-import utilityClasses from './../../utils/utility.module.css';
+import utilityClasses from './../../../utils/utility.module.css';
+import { useNativeSelect } from './useNativeSelect';
 
 export type NativeSelectProps = {
   /**
@@ -44,21 +45,27 @@ export type NativeSelectProps = {
 } & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
 
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
-  (
-    {
+  (props, ref: ForwardedRef<HTMLSelectElement>) => {
+    const randomInputId = useId();
+
+    const {
       children,
       disabled = false,
       id,
       label,
       hideLabel = false,
-      size = 'medium',
       error,
+      ...rest
+    } = props;
+
+    const {
+      inputProps: selectProps,
+      descriptionId,
+      hasError,
+      errorId,
       readOnly = false,
-      ...selectProps
-    },
-    ref: ForwardedRef<HTMLSelectElement>,
-  ) => {
-    const randomInputId = useId();
+      size = 'medium',
+    } = useNativeSelect(props);
 
     return (
       <Paragraph
