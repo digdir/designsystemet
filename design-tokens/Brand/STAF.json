@@ -198,23 +198,23 @@
       "action": {
         "first": {
           "subtle": {
-            "value": "{colors.blue.100}",
+            "value": "{brand.alt1.100}",
             "type": "color"
           },
           "subtle-hover": {
-            "value": "{colors.blue.200}",
+            "value": "{brand.alt1.200}",
             "type": "color"
           },
           "default": {
-            "value": "{colors.blue.700}",
+            "value": "{brand.alt1.700}",
             "type": "color"
           },
           "hover": {
-            "value": "{colors.blue.800}",
+            "value": "{brand.alt1.800}",
             "type": "color"
           },
           "active": {
-            "value": "{colors.blue.900}",
+            "value": "{brand.alt1.900}",
             "type": "color",
             "description": "Standard farge for handlinger"
           },
@@ -223,11 +223,11 @@
             "type": "color"
           },
           "no_fill-hover": {
-            "value": "{colors.blue.100}",
+            "value": "{brand.alt1.100}",
             "type": "color"
           },
           "no_fill-active": {
-            "value": "{colors.blue.200}",
+            "value": "{brand.alt1.200}",
             "type": "color"
           }
         },
@@ -249,7 +249,7 @@
             "type": "color"
           },
           "active": {
-            "value": "rgba({colors.blue.900}, 0.8)",
+            "value": "{brand.alt2.900}",
             "type": "color",
             "description": "Standard farge for handlinger"
           },
@@ -312,7 +312,7 @@
         }
       },
       "action": {
-        "alt1": {
+        "first": {
           "subtle": {
             "value": "{colors.blue.200}",
             "type": "color"
@@ -334,7 +334,7 @@
             "type": "color"
           }
         },
-        "alt2": {
+        "second": {
           "subtle": {
             "value": "{colors.grey.200}",
             "type": "color"
@@ -360,7 +360,7 @@
     },
     "text": {
       "action": {
-        "alt1": {
+        "first": {
           "default": {
             "value": "{colors.blue.700}",
             "type": "color"
@@ -378,7 +378,7 @@
             "type": "color"
           }
         },
-        "alt2": {
+        "second": {
           "default": {
             "value": "{colors.blue.900}",
             "type": "color"
@@ -403,12 +403,6 @@
     "inter": {
       "value": "Open Sans",
       "type": "fontFamilies"
-    }
-  },
-  "fontWeights": {
-    "medium": {
-      "value": "SemiBold",
-      "type": "fontWeights"
     }
   }
 }
