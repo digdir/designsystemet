@@ -1,6 +1,8 @@
 <script>
   import Alert from '$lib/components/Alert/Alert.svelte';
   import Button from '$lib/components/Button/Button.svelte';
+  import Radio from '$lib/components/Form/Radio/Radio.svelte';
+  import RadioGroup from '$lib/components/Form/Radio/RadioGroup.svelte';
   import Textfield from '$lib/components/Form/Textfield/Textfield.svelte';
   import Link from '$lib/components/Link/Link.svelte';
   import List from '$lib/components/List/List.svelte';
@@ -20,6 +22,11 @@
   }
 
   let textfieldValue = '';
+
+  let selectedValue;
+  function handleGroupChange(event) {
+    selectedValue = event.detail;
+  }
 </script>
 
 <h1>Test components here!</h1>
@@ -71,12 +78,46 @@
   color="first"
   variant="outlined">Tag Outlined</Tag
 >
-
+<Button on:click={openModal}>Open Modal</Button>
 <Tag size="xsmall">Tag XS</Tag>
 <Tag size="small">Tag small</Tag>
 <Tag size="medium">Tag medium</Tag>
-
-<Button on:click={openModal}>Open Modal</Button>
+<RadioGroup
+  bind:value={selectedValue}
+  on:change={handleGroupChange}
+  inline={false}
+  legend="RadioGroup legend"
+  description="RadioGroup description"
+  size="medium"
+  defaultValue="option1"
+  readOnly={false}
+  disabled={false}
+  error="Lorem ipsum error."
+  hideLegend={false}
+>
+  <Radio
+    value="option1"
+    label="Lorem ipsum."
+  />
+  <Radio
+    value="option2"
+    label="Lorem ipsum 2."
+    description="Lorem ipsum description."
+  />
+  <Radio
+    readOnly={true}
+    value="option3"
+    label="Lorem ipsum dolor sit amet."
+    description="Lorem ipsum dolor sit amet description."
+  />
+  <Radio
+    disabled={true}
+    value="option4"
+    label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum description."
+  />
+</RadioGroup>
+<p>Selected RadioGroup value: {selectedValue}</p>
 <Modal
   show={showModal}
   onClose={closeModal}
