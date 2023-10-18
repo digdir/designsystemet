@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.32.0...@digdir/design-system-react@0.32.1) (2023-10-17)
+
+### Bug Fixes
+
+- **ToggleGroup:** :bug: Fix missing styling on `ToggleGroup.Item` ([#952](https://github.com/digdir/designsystem/issues/952)) ([9ebf8c1](https://github.com/digdir/designsystem/commit/9ebf8c1b676c55aae0f951a30a684c5c325966b1))
+
 # [0.32.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.31.0...@digdir/design-system-react@0.32.0) (2023-10-16)
 
 ### Bug Fixes
