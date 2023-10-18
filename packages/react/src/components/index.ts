@@ -10,7 +10,7 @@ export * from './legacy/LegacyTabs';
 
 export * from './Button';
 export * from './HelpText';
-export * from './Popover';
+export * from './legacy/LegacyPopover';
 export * from './Select';
 export * from './Spinner';
 export * from './Link';

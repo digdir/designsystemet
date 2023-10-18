@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import React, { useState } from 'react';
 import cn from 'classnames';
 
-import { Popover } from '../Popover';
+import { Popover } from '../legacy/LegacyPopover';
 import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
