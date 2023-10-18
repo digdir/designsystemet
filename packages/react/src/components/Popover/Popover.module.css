@@ -3,7 +3,6 @@
 
   z-index: 1500;
   background: var(--background);
-  font: var(--fds-typography-paragraph-small);
   padding: var(--fds-spacing-3);
   border: var(--border);
   border-radius: var(--fds-border_radius-medium);
