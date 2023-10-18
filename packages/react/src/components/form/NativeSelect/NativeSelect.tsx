@@ -94,7 +94,12 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           {...selectProps}
           disabled={disabled || readOnly}
           ref={ref}
-          className={cn(classes.input, classes[size], className)}
+          className={cn(
+            classes.input,
+            classes[size],
+            utilityClasses.focusable,
+            className,
+          )}
         >
           {children}
         </select>
