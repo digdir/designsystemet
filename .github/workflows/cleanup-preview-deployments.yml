@@ -1,7 +1,7 @@
 name: Cleanup Preview Deployments
 on:
   pull_request:
-    types: [labeled]
+    types: [closed]
 
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
