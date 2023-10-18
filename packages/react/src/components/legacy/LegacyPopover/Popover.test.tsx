@@ -2,11 +2,11 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 
-import type { PopoverProps } from './Popover';
-import { popoverVariants, Popover } from './Popover';
+import type { LegacyPopoverProps } from './Popover';
+import { popoverVariants, LegacyPopover } from './Popover';
 
-const render = (props: Partial<PopoverProps> = {}) => {
-  const allProps: PopoverProps = {
+const render = (props: Partial<LegacyPopoverProps> = {}) => {
+  const allProps: LegacyPopoverProps = {
     children: (
       <div>
         <button>My button</button>
@@ -16,7 +16,7 @@ const render = (props: Partial<PopoverProps> = {}) => {
     trigger: <button>Open</button>,
     ...props,
   };
-  renderRtl(<Popover {...allProps} />);
+  renderRtl(<LegacyPopover {...allProps} />);
 };
 
 const user = userEvent.setup();

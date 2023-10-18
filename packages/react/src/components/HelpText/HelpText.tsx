@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import React, { useState } from 'react';
 import cn from 'classnames';
 
-import { Popover } from '../Popover';
+import { LegacyPopover } from '../legacy/LegacyPopover';
 import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
@@ -38,7 +38,7 @@ const HelpText = ({
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <Popover
+    <LegacyPopover
       variant='info'
       placement={placement}
       open={open}
@@ -73,7 +73,7 @@ const HelpText = ({
       }
     >
       {children}
-    </Popover>
+    </LegacyPopover>
   );
 };
 

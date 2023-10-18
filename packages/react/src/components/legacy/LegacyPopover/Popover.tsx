@@ -51,7 +51,7 @@ interface IPopoverRequiredProps {
   trigger: React.ReactNode;
 }
 
-export type PopoverProps = IPopoverOptions & IPopoverRequiredProps;
+export type LegacyPopoverProps = IPopoverOptions & IPopoverRequiredProps;
 
 type IPopoverContext = IPopoverOptions &
   Required<Pick<IPopoverOptions, 'variant'>> &
@@ -133,13 +133,13 @@ export const usePopoverContext = (): IPopoverContext => {
   return context;
 };
 
-function Popover({
+function LegacyPopover({
   children,
   trigger,
   arrow = true,
   initialOpen = false,
   ...restOptions
-}: PopoverProps) {
+}: LegacyPopoverProps) {
   const popover = usePopover({
     arrow,
     initialOpen,
@@ -157,9 +157,9 @@ function Popover({
   );
 }
 
-Popover.displayName = 'Popover';
+LegacyPopover.displayName = 'LegacyPopover';
 
-export { Popover };
+export { LegacyPopover };
 
 interface PopoverTriggerProps {
   children: React.ReactNode;
