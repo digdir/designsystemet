@@ -23,6 +23,11 @@
   padding: 0 var(--fds-spacing-4);
 }
 
+.formField {
+  display: grid;
+  gap: var(--fds-spacing-2);
+}
+
 .disabled {
   opacity: 0.3;
 }
@@ -39,4 +44,21 @@
 .error > .input:not(:focus-visible) {
   border-color: var(--fds-semantic-border-danger-default);
   box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+}
+
+.padlock {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.errorMessage:empty {
+  display: none;
+}
+
+.label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
+  align-items: center;
 }

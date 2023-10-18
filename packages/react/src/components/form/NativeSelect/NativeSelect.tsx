@@ -29,7 +29,7 @@ export type NativeSelectProps = {
   /** The ID of the `select` element. This will be generated if not provided. */
   id?: string;
   /**
-   * Defines the number of visible options.
+   * Defines the size of the select.
    * @default 'medium'
    * */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -65,6 +65,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         as='div'
         size={size}
         className={cn(
+          classes.formField,
           disabled && classes.disabled,
           readOnly && classes.readOnly,
           error && classes.error,
