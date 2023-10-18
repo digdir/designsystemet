@@ -1,13 +1,13 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-import { Popover } from './index';
+import { LegacyPopover } from './index';
 
-import { Button } from './../Button/index';
-import { Information, TokensTable } from '../../../../../docs-components';
+import { Button } from '../../Button/index';
+import { Information, TokensTable } from '../../../../../../docs-components';
 import { ArgsTable } from '@storybook/addon-docs';
 
 <Meta
-  title='Altinn/Popover'
-  component={Popover}
+  title='Avviklet/LegacyPopover'
+  component={LegacyPopover}
 
 argTypes={{
     trigger: {
@@ -56,7 +56,7 @@ export const defaultArgs = {
 
 export const Template = (args) => {
   return (
-    <Popover
+    <LegacyPopover
       placement={args.placement}
       variant={args.variant}
       arrow={args.arrow}
@@ -64,13 +64,13 @@ export const Template = (args) => {
       {...defaultArgs}
     >
       Lorem ipsum dolor sit amet...
-    </Popover>
+    </LegacyPopover>
   );
 };
 
 export const ComplexTemplate = (args) => {
   return (
-    <Popover
+    <LegacyPopover
       placement={args.placement}
       variant={args.variant}
       arrow={args.arrow}
@@ -86,15 +86,18 @@ export const ComplexTemplate = (args) => {
         </ul>
         <Button>Click me!</Button>
       </div>
-    </Popover>
+    </LegacyPopover>
   );
 };
 
-# Popover
+# LegacyPopover
 
-<Information text='altinn' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Popover](/?path=/docs/felles-popover--docs) komponent.**'
+/>
 
-Popover er et felt som plasseres over annet innhold og kan vises og skjules ved hjelp av å aktivere en gitt `trigger`.
+LegacyPopover er et felt som plasseres over annet innhold og kan vises og skjules ved hjelp av å aktivere en gitt `trigger`.
 
 ## Varianter
 
@@ -102,7 +105,7 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
 
 <Canvas>
   <Story
-    name='Popover'
+    name='LegacyPopover'
     decorators={[
       (Story) => (
         <div style={{ margin: '3em' }}>
@@ -148,7 +151,7 @@ Popover er et felt som plasseres over annet innhold og kan vises og skjules ved 
 
 ## Props
 
-<ArgsTable story='Popover' />
+<ArgsTable story='LegacyPopover' />
 
 ## Tokens
 
