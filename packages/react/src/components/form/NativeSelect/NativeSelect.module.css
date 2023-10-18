@@ -36,7 +36,7 @@
   cursor: not-allowed;
 }
 
-.readonly .input {
+.readOnly .input {
   background: var(--fds-semantic-surface-neutral-subtle);
   border-color: var(--fds-semantic-border-neutral-default);
 }
