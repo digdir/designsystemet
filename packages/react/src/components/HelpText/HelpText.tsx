@@ -1,31 +1,30 @@
 import type { ButtonHTMLAttributes } from 'react';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import cn from 'classnames';
+import type { Placement } from '@floating-ui/utils';
 
-import { LegacyPopover } from '../legacy/LegacyPopover';
+import { Popover } from '../Popover';
 import utilClasses from '../../utils/utility.module.css';
 
 import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';
 
-export interface HelpTextProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+export type HelpTextProps = {
+  /**
+   * The content of the HelpText.
+   **/
   title: string;
+  /**
+   * Size of the icon.
+   * @default small
+   */
   size?: 'small' | 'xsmall';
-  placement?:
-    | 'top'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
-}
+  /**
+   * Placement of the tooltip on the trigger.
+   * @default 'right'
+   */
+  placement?: Placement;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const HelpText = ({
   className,
@@ -37,43 +36,47 @@ const HelpText = ({
   ...rest
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   return (
-    <LegacyPopover
-      variant='info'
-      placement={placement}
-      open={open}
-      onOpenChange={setOpen}
-      className={classes.helpTextContent}
-      role={'tooltip'}
-      trigger={
-        <button
-          {...rest}
-          className={cn(classes.helpTextButton, className)}
-          onClick={(event) => {
-            setOpen((isOpen) => !isOpen);
-            onClick?.(event);
-          }}
-        >
-          <HelpTextIcon
-            filled
-            className={cn(
-              classes.helpTextIcon,
-              classes.helpTextIconFilled,
-              classes[size],
-              className,
-            )}
-            openState={open}
-          />
-          <HelpTextIcon
-            className={cn(classes.helpTextIcon, classes[size], className)}
-            openState={open}
-          />
-          <span className={utilClasses.visuallyHidden}>{title}</span>
-        </button>
-      }
-    >
-      {children}
-    </LegacyPopover>
+    <>
+      <button
+        {...rest}
+        ref={buttonRef}
+        className={cn(classes.helpTextButton, className)}
+        onClick={(event) => {
+          setOpen((isOpen) => !isOpen);
+          onClick?.(event);
+        }}
+      >
+        <HelpTextIcon
+          filled
+          className={cn(
+            classes.helpTextIcon,
+            classes.helpTextIconFilled,
+            classes[size],
+            className,
+          )}
+          openState={open}
+        />
+        <HelpTextIcon
+          className={cn(classes.helpTextIcon, classes[size], className)}
+          openState={open}
+        />
+        <span className={utilClasses.visuallyHidden}>{title}</span>
+      </button>
+      <Popover
+        variant='info'
+        anchorEl={buttonRef.current}
+        placement={placement}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Popover.Content className={classes.helpTextContent}>
+          {children}
+        </Popover.Content>
+      </Popover>
+    </>
   );
 };
 
