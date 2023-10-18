@@ -1,8 +1,9 @@
-import React, { forwardRef, useId } from 'react';
+import React, { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
+import { omit } from '../../../utils';
 import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import classes from './NativeSelect.module.css';
@@ -15,10 +16,6 @@ export type NativeSelectProps = {
    * @default false
    * */
   disabled?: boolean;
-  /** Specifies whether the selected value is valid.
-   * @default true
-   */
-  isValid?: boolean;
   /**
    * Label that appears over the select box. */
   label?: string;
@@ -46,22 +43,18 @@ export type NativeSelectProps = {
 
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (props, ref: ForwardedRef<HTMLSelectElement>) => {
-    const randomInputId = useId();
-
     const {
       children,
       disabled = false,
-      id,
       label,
       hideLabel = false,
       error,
+      className,
       ...rest
     } = props;
 
     const {
       inputProps: selectProps,
-      descriptionId,
-      hasError,
       errorId,
       readOnly = false,
       size = 'medium',
@@ -69,6 +62,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
     return (
       <Paragraph
+        as='div'
         className={cn(
           disabled && classes.disabled,
           readOnly && classes.readOnly,
@@ -77,9 +71,8 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       >
         {label && (
           <Label
-            for={id ? id : randomInputId}
             weight='medium'
-            htmlFor={id}
+            htmlFor={selectProps.id}
             className={cn(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
@@ -95,15 +88,16 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           </Label>
         )}
         <select
-          disabled={disabled || readOnly}
-          id={id ? id : randomInputId}
-          ref={ref}
+          {...omit(['size', 'error', 'errorId'], rest)}
           {...selectProps}
-          className={cn(classes.input, classes[size], selectProps.className)}
+          disabled={disabled || readOnly}
+          ref={ref}
+          className={cn(classes.input, classes[size], className)}
         >
           {children}
         </select>
         <div
+          id={errorId}
           className={classes.errorMessage}
           aria-live='polite'
           aria-relevant='additions removals'
