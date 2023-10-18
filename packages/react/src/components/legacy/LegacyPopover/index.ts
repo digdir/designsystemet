@@ -1,2 +1,2 @@
-export type { PopoverProps as LegacyPopoverProps } from './Popover';
-export { Popover as LegacyPopover } from './Popover';
+export type { LegacyPopoverProps } from './Popover';
+export { LegacyPopover } from './Popover';
