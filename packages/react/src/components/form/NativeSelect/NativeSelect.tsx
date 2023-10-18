@@ -63,6 +63,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     return (
       <Paragraph
         as='div'
+        size={size}
         className={cn(
           disabled && classes.disabled,
           readOnly && classes.readOnly,
@@ -96,14 +97,16 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         >
           {children}
         </select>
-        <div
-          id={errorId}
-          className={classes.errorMessage}
-          aria-live='polite'
-          aria-relevant='additions removals'
-        >
-          {error && <ErrorMessage size={size}>{error}</ErrorMessage>}
-        </div>
+        {error && (
+          <div
+            id={errorId}
+            className={classes.errorMessage}
+            aria-live='polite'
+            aria-relevant='additions removals'
+          >
+            <ErrorMessage size={size}>{error}</ErrorMessage>
+          </div>
+        )}
       </Paragraph>
     );
   },
