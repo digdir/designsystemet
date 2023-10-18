@@ -9,6 +9,7 @@ on:
     types: [opened, synchronize]
     paths:
       - 'storefront/**'
+      - 'packages/tokens/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest

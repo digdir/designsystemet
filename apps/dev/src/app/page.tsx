@@ -46,8 +46,6 @@ const generateItemsList = (pullRequests: any, aliases: any) => {
 const getItems = async () => {
   const aliases = await getAliases();
   const pullRequests = await getActivePullRequests();
-  console.log(aliases);
-  console.log(pullRequests);
   return generateItemsList(pullRequests, aliases);
 };
 
