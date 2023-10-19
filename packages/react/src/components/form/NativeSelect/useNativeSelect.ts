@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react';
+import type { SelectHTMLAttributes } from 'react';
 import { useContext } from 'react';
 
 import type { FormField } from '../useFormField';
@@ -7,23 +7,30 @@ import { FieldsetContext } from '../Fieldset';
 
 import type { NativeSelectProps } from './NativeSelect';
 
-type UseNativeSelect = (props: NativeSelectProps) => FormField & {
-  inputProps?: Pick<
-    InputHTMLAttributes<HTMLSelectElement>,
-    'readOnly' | 'type' | 'name' | 'required' | 'onClick' | 'onChange'
+type UseNativeSelect = (props: NativeSelectProps) => Omit<
+  FormField,
+  'inputProps'
+> & {
+  selectProps?: Pick<
+    SelectHTMLAttributes<HTMLSelectElement>,
+    'name' | 'required' | 'onClick' | 'onChange' | 'id'
   >;
 };
-/** Handles props for `Textfield` in context with `Fieldset` */
+/** Handles props for `NativeSelect` in context with `Fieldset` */
 export const useNativeSelect: UseNativeSelect = (props) => {
   const fieldset = useContext(FieldsetContext);
-  const { inputProps, readOnly, ...rest } = useFormField(props, 'select');
+  const {
+    inputProps: selectProps,
+    readOnly,
+    ...rest
+  } = useFormField(props, 'select');
 
   return {
     ...rest,
     readOnly,
     size: fieldset?.size ?? props.size,
-    inputProps: {
-      ...inputProps,
+    selectProps: {
+      ...selectProps,
       readOnly,
       onClick: (e) => {
         if (readOnly) {

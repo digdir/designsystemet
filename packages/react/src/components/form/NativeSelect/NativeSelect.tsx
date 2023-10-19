@@ -54,7 +54,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     } = props;
 
     const {
-      inputProps: selectProps,
+      selectProps,
       errorId,
       readOnly = false,
       size = 'medium',
@@ -74,7 +74,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         {label && (
           <Label
             weight='medium'
-            htmlFor={selectProps.id}
+            htmlFor={selectProps?.id}
             className={cn(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
