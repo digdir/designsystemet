@@ -11,7 +11,7 @@ export default {
   },
 } as Meta;
 
-export const Normal: StoryFn<typeof NativeSelect> = (args) => (
+export const Preview: StoryFn<typeof NativeSelect> = (args) => (
   <NativeSelect {...args}>
     <option value='blank'>Velg &hellip;</option>
     <option value='everest'>Mount Everest</option>
@@ -25,7 +25,7 @@ export const Normal: StoryFn<typeof NativeSelect> = (args) => (
   </NativeSelect>
 );
 
-Normal.args = {
+Preview.args = {
   label: 'Velg et fjell',
 };
 
