@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.33.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.32.1...@digdir/design-system-react@0.33.0) (2023-10-19)
+
+### Features
+
+- **HelpText:** Use new Popover ([#960](https://github.com/digdir/designsystem/issues/960)) ([b12da58](https://github.com/digdir/designsystem/commit/b12da582879ceb9847d0b63944fe4d3ab643b146))
+- **NativeSelect:** Updated to match other form components ([#955](https://github.com/digdir/designsystem/issues/955)) ([71f048e](https://github.com/digdir/designsystem/commit/71f048ee01e4c0d638bb2204dd40b289fd422d75))
+- **Popover:** :wastebasket: Change to Legacy ([#956](https://github.com/digdir/designsystem/issues/956)) ([cf9be72](https://github.com/digdir/designsystem/commit/cf9be72215ff813b80d881852c52ccb083b5ca5a))
+- **Popover:** New component and method for attaching to anchor element ([#959](https://github.com/digdir/designsystem/issues/959)) ([98f9985](https://github.com/digdir/designsystem/commit/98f99853bfd55c9dde0d307188be2b00528800bc))
+- **Tag:** Change `filled` and `outline` to `primary` and `secondary` ([#958](https://github.com/digdir/designsystem/issues/958)) ([9c230af](https://github.com/digdir/designsystem/commit/9c230af1fae54db02420241f30261971d3aaa83c))
+
 ## [0.32.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.32.0...@digdir/design-system-react@0.32.1) (2023-10-17)
 
 ### Bug Fixes
