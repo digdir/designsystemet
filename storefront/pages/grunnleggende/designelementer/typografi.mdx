@@ -48,7 +48,10 @@ For hosting kan Altinn CDN benyttes:
 
 ```css
 font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */
 ```
+
+Use `!important` for `font-feature-settings` because our typography tokens & components use the [font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) shorthand which resets this to its initial values.
 
 ## Tekststørrelse
 

@@ -20,9 +20,9 @@ describe('Tag', () => {
       expect(screen.getByText('Beta')).toHaveClass('neutral');
     });
 
-    test('should render variant as filled by default', () => {
+    test('should render variant as primary by default', () => {
       render(<Tag>Beta</Tag>);
-      expect(screen.getByText('Beta')).toHaveClass('filled');
+      expect(screen.getByText('Beta')).toHaveClass('primary');
     });
   });
 
@@ -33,8 +33,8 @@ describe('Tag', () => {
     });
 
     test('should render as variant outline', (): void => {
-      render(<Tag variant='outlined'>Beta</Tag>);
-      expect(screen.getByText('Beta')).toHaveClass('outlined');
+      render(<Tag variant='secondary'>Beta</Tag>);
+      expect(screen.getByText('Beta')).toHaveClass('secondary');
     });
 
     test('should render color first', (): void => {

@@ -7,10 +7,10 @@ export * from './legacy/LegacyTextField';
 export * from './legacy/LegacyTextArea';
 export * from './legacy/LegacyToggleButtonGroup';
 export * from './legacy/LegacyTabs';
+export * from './legacy/LegacyPopover';
 
 export * from './Button';
 export * from './HelpText';
-export * from './Popover';
 export * from './Select';
 export * from './Spinner';
 export * from './Link';
@@ -31,3 +31,5 @@ export * from './form/Switch';
 export * from './form/Textfield';
 export * from './form/Textarea';
 export * from './Tabs';
+export * from './ToggleGroup';
+export * from './Popover';

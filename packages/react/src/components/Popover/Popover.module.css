@@ -1,79 +1,65 @@
 .popover {
-  width: max-content;
-  z-index: 2;
-  padding: 12px;
-  max-width: calc(100vw - 20px);
-  border: 1px solid gray;
-  border-radius: 3px;
-  box-shadow: 0 3px 6px 0 #0003;
-}
+  --border: 2px solid;
 
-.popover:focus-visible {
-  outline: var(--semantic-tab_focus-outline-color) solid var(--semantic-tab_focus-outline-width);
-  outline-offset: var(--semantic-tab_focus-outline-offset);
-}
-
-.popover:focus:not(:focus-visible) {
-  outline: none;
+  z-index: 1500;
+  background: var(--background);
+  padding: var(--fds-spacing-3);
+  border: var(--border);
+  border-radius: var(--fds-border_radius-medium);
+  max-width: 300px;
+  max-height: 80vh;
 }
 
 .popover.default {
-  background-color: #fff;
-  border-color: #68707c;
+  --background: var(--fds-semantic-surface-neutral-default);
+
+  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 .popover.info {
-  background-color: #e6eff8;
-  border-color: #004c8f;
+  --background: var(--fds-semantic-surface-info-subtle);
+
+  border-color: var(--fds-semantic-border-info-default);
 }
 
 .popover.warning {
-  background-color: #fffbe6;
-  border-color: #cc7005;
+  --background: var(--fds-semantic-surface-warning-subtle);
+
+  border-color: var(--fds-semantic-border-warning-default);
 }
 
 .popover.danger {
-  background-color: #f9d5db;
-  border-color: #b3253a;
+  --background: var(--fds-semantic-surface-danger-subtle);
+
+  border-color: var(--fds-semantic-border-danger-default);
 }
 
 .arrow {
   position: absolute;
-  box-sizing: content-box;
-  z-index: -1;
+  background: var(--background);
   transform: rotate(45deg);
-  background-color: inherit;
-  border: 1px solid;
+}
 
-  /* Set border color separately in order to make inheritance work. */
+.arrow.top {
+  border-top: var(--border);
+  border-left: var(--border);
   border-color: inherit;
-  width: 12px;
-  height: 12px;
 }
 
-.popover[data-placement^='top'] > .arrow {
-  box-shadow: 3px 3px 6px 0 #0003;
-  clip-path: inset(0 -10px -10px 0);
-  border-left-color: transparent;
-  border-top-color: transparent;
+.arrow.bottom {
+  border-bottom: var(--border);
+  border-right: var(--border);
+  border-color: inherit;
 }
 
-.popover[data-placement^='bottom'] > .arrow {
-  clip-path: inset(-10px 0 0 -10px);
-  border-bottom-color: transparent;
-  border-right-color: transparent;
+.arrow.right {
+  border-top: var(--border);
+  border-right: var(--border);
+  border-color: inherit;
 }
 
-.popover[data-placement^='left'] > .arrow {
-  box-shadow: 1px 3px 6px 0 #0003;
-  clip-path: inset(-10px -10px 0 0);
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-}
-
-.popover[data-placement^='right'] > .arrow {
-  box-shadow: -1px 3px 6px 0 #0003;
-  clip-path: inset(0 0 -10px -10px);
-  border-right-color: transparent;
-  border-top-color: transparent;
+.arrow.left {
+  border-bottom: var(--border);
+  border-left: var(--border);
+  border-color: inherit;
 }
