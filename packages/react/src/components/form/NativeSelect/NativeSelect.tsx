@@ -28,7 +28,7 @@ export type NativeSelectProps = {
   multiple?: boolean;
   /**
    * Defines the size of the select.
-   * @default 'medium'
+   * @default medium
    * */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Error message for form field */
