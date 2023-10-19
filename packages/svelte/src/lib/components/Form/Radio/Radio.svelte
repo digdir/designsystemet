@@ -23,6 +23,9 @@
   let groupUniqueId;
   let error;
 
+  let groupDisabled = false;
+  let groupReadOnly = false;
+
   const uniqueId = uuidv4();
   const radioId = `radio-${uniqueId}`;
   const labelId = `label-${uniqueId}`;
@@ -32,28 +35,13 @@
 
   const radioGroup = getContext('radioGroup');
 
-  if (radioGroup && radioGroup.size) {
-    size = radioGroup.size;
-  }
-
-  if (radioGroup && radioGroup.disabled && disabled === undefined) {
-    disabled = radioGroup.disabled;
-  }
-
-  if (radioGroup && radioGroup.readOnly && readOnly === undefined) {
-    readOnly = radioGroup.readOnly;
-  }
-
-  if (radioGroup && radioGroup.uniqueId) {
-    groupUniqueId = radioGroup.uniqueId;
-  }
-
-  if (radioGroup && radioGroup.value) {
-    selectedValue = radioGroup.value;
-  }
-
-  if (radioGroup && radioGroup.error) {
-    error = radioGroup.error;
+  $: if ($radioGroup) {
+    size = $radioGroup.size;
+    groupDisabled = $radioGroup.disabled;
+    groupReadOnly = $radioGroup.readOnly;
+    groupUniqueId = $radioGroup.uniqueId;
+    selectedValue = $radioGroup.value;
+    error = $radioGroup.error;
   }
 
   let iconSizeClass;
@@ -81,18 +69,18 @@
       spacingClass = 'spacing-medium';
       break;
   }
-  let containerClasses = `container ${spacingClass} ${
-    disabled ? 'disabled' : ''
-  } ${error ? 'error' : ''} ${readOnly ? 'readonly' : ''} ${
+  $: containerClasses = `container ${spacingClass} ${
+    disabled || groupDisabled ? 'disabled' : ''
+  } ${error ? 'error' : ''} ${readOnly || groupReadOnly ? 'readonly' : ''} ${
     $$props.class || ''
   }`;
 
-  let labelClasses = `label ${readOnly ? 'readonly' : ''} 
-                            ${disabled ? 'disabled' : ''}`;
-  let descriptionClasses = `description ${fontSizeClass}`;
+  $: labelClasses = `label ${readOnly || groupReadOnly ? 'readonly' : ''} 
+                            ${disabled || groupDisabled ? 'disabled' : ''}`;
+  $: descriptionClasses = `description ${fontSizeClass}`;
 
-  let inputClasses = `input ${readOnly ? 'readonly' : ''} 
-                            ${disabled ? 'disabled' : ''}`;
+  $: inputClasses = `input ${readOnly || groupReadOnly ? 'readonly' : ''} 
+                            ${disabled || groupDisabled ? 'disabled' : ''}`;
 </script>
 
 <div
@@ -112,7 +100,7 @@
       {value}
       bind:group={selectedValue}
       name={`radio-${groupUniqueId}`}
-      disabled={disabled || readOnly}
+      disabled={disabled || readOnly || groupDisabled || groupReadOnly}
     />
     <svg
       class="icon {iconSizeClass}"

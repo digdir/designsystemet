@@ -27,6 +27,31 @@
   function handleGroupChange(event) {
     selectedValue = event.detail;
   }
+
+  let showError = false;
+  function toggleShowError() {
+    showError = !showError;
+  }
+
+  let isInline = false;
+  function toggleInline() {
+    isInline = !isInline;
+  }
+
+  let isHideLegend = false;
+  function toggleIsHideLegend() {
+    isHideLegend = !isHideLegend;
+  }
+
+  let isDisabled = false;
+  function toggleIsDisabled() {
+    isDisabled = !isDisabled;
+  }
+
+  let isReadOnly = false;
+  function toggleIsReadOnly() {
+    isReadOnly = !isReadOnly;
+  }
 </script>
 
 <h1>Test components here!</h1>
@@ -85,38 +110,49 @@
 <RadioGroup
   bind:value={selectedValue}
   on:change={handleGroupChange}
-  inline={false}
+  inline={isInline}
   legend="RadioGroup legend"
   description="RadioGroup description"
   size="medium"
   defaultValue="option1"
-  readOnly={false}
-  disabled={false}
-  error="Lorem ipsum error."
-  hideLegend={false}
+  readOnly={isReadOnly}
+  disabled={isDisabled}
+  error={showError ? 'Lorem ipsum error.' : ''}
+  hideLegend={isHideLegend}
 >
   <Radio
     value="option1"
-    label="Lorem ipsum."
+    label="Lorem ipsum label."
   />
   <Radio
     value="option2"
-    label="Lorem ipsum 2."
-    description="Lorem ipsum description."
+    label="Lorem ipsum dolor sit label."
+    description="Lorem ipsum dolor sit description."
   />
   <Radio
     readOnly={true}
     value="option3"
-    label="Lorem ipsum dolor sit amet."
-    description="Lorem ipsum dolor sit amet description."
+    label="Lorem ipsum dolor sit amet readonly label."
+    description="Lorem ipsum dolor sit amet readonly description."
   />
   <Radio
     disabled={true}
     value="option4"
-    label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum description."
+    label="Lorem ipsum dolor sit amet disabled label."
+    description="Lorem ipsum dolor sit amet disabled description."
   />
 </RadioGroup>
+<Button on:click={toggleIsHideLegend}
+  >{isHideLegend ? 'Show legend' : 'Hide legend'}</Button
+>
+<Button on:click={toggleInline}>{isInline ? 'Vertical' : 'Inline'}</Button>
+<Button on:click={toggleShowError}
+  >{showError ? 'Hide error' : 'Show error'}</Button
+>
+<Button on:click={toggleIsDisabled}>{isDisabled ? 'Enable' : 'Disable'}</Button>
+<Button on:click={toggleIsReadOnly}
+  >{isReadOnly ? 'Selectable' : 'ReadOnly'}</Button
+>
 <p>Selected RadioGroup value: {selectedValue}</p>
 <Modal
   show={showModal}

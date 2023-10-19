@@ -1,5 +1,6 @@
 <script>
-  import { setContext, createEventDispatcher } from 'svelte';
+  import { setContext } from 'svelte';
+  import { writable } from 'svelte/store';
   import { v4 as uuidv4 } from 'uuid';
 
   /**
@@ -50,16 +51,17 @@
       break;
   }
 
-  let radioGroupClasses = `radio-group ${readOnly ? 'readonly' : ''} ${size}`;
-  let legendClasses = `legend ${fontSizeClass} ${
+  $: radioGroupClasses = `radio-group ${readOnly ? 'readonly' : ''} ${size}`;
+  $: legendWrapperClasses = `legend-wrapper ${
     hideLegend ? 'visually-hidden' : ''
   }`;
-  let descriptionClasses = `description ${fontSizeClass}  ${
+  $: legendClasses = `legend ${fontSizeClass}`;
+  $: descriptionClasses = `description ${fontSizeClass}  ${
     hideLegend ? 'visually-hidden' : ''
   }`;
-  let errorClasses = `error ${fontSizeClass}`;
+  $: errorClasses = `error ${fontSizeClass}`;
 
-  setContext('radioGroup', {
+  const radioGroup = writable({
     readOnly,
     disabled,
     size,
@@ -69,12 +71,18 @@
     required,
   });
 
-  const dispatch = createEventDispatcher();
-  function handleChange(event) {
-    if (event.target.type === 'radio') {
-      value = event.target.value;
-      dispatch('change', value);
-    }
+  $: setContext('radioGroup', radioGroup);
+
+  $: {
+    radioGroup.update((storeValue) => ({
+      ...storeValue,
+      readOnly: readOnly,
+      disabled: disabled,
+      size: size,
+      error: error,
+      value: value,
+      required: required,
+    }));
   }
 </script>
 
@@ -82,21 +90,30 @@
   class={radioGroupClasses}
   id={`group-${uniqueId}`}
   aria-labelledby={`label-${uniqueId}`}
-  on:change={handleChange}
+  on:change={(change) => {
+    if (
+      change.target instanceof HTMLInputElement &&
+      change.target.type === 'radio'
+    ) {
+      value = change.target.value;
+    }
+  }}
 >
   {#if legend}
-    {#if readOnly}
-      <span
-        aria-hidden
-        class="padlock-icon">🔒</span
+    <div class={`${legendWrapperClasses}`}>
+      {#if readOnly}
+        <span
+          aria-hidden
+          class="padlock-icon">🔒</span
+        >
+      {/if}
+      <legend
+        class={legendClasses}
+        id={`label-${uniqueId}`}
       >
-    {/if}
-    <legend
-      class={legendClasses}
-      id={`label-${uniqueId}`}
-    >
-      {legend}
-    </legend>
+        {legend}
+      </legend>
+    </div>
   {/if}
   {#if description}
     <p class={descriptionClasses}>
@@ -143,6 +160,12 @@
     position: absolute;
     white-space: nowrap;
     width: 0.0625rem;
+  }
+
+  .legend-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   fieldset {
