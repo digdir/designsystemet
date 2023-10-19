@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
       - name: Types
-        run: yarn types
+        run: yarn types:react
       - name: Build
         run: yarn build
       - name: Lint Code

@@ -31,15 +31,6 @@
     "react-number-format": "5.2.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.4",
-    "@rollup/plugin-image": "^3.0.2",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.2.1",
-    "copyfiles": "^2.4.1",
-    "rimraf": "^5.0.5",
-    "rollup": "^3.29.4",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "typescript": "^5.2.2"
+    "copyfiles": "^2.4.1"
   }
 }

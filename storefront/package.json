@@ -6,7 +6,8 @@
     "dev": "next dev",
     "building": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "types": "tsc"
   },
   "dependencies": {
     "@altinn/altinn-design-system": "^0.27.2",
