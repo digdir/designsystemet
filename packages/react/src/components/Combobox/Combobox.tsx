@@ -1,4 +1,4 @@
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, KeyboardEvent, ReactNode } from 'react';
 import React, {
   forwardRef,
   useEffect,
@@ -21,13 +21,18 @@ import { size } from '@floating-ui/dom';
 import type { TextfieldProps } from '../form/Textfield';
 import { Textfield } from '../form/Textfield';
 
-import { ComboboxActionType, comboboxReducer } from './ComboboxReducer';
+import { comboboxReducer } from './ComboboxReducer';
 import { ComboboxList } from './ComboboxList';
 import type { ComboboxFilter } from './types/ComboboxFilter';
 import { defaultFilter } from './utils/defaultFilter';
-import type { ComboboxOption } from './types/ComboboxOption';
 
 export type ComboboxProps = {
+  /** The list of all available options. */
+  options: string[];
+
+  /** Function that returns a label based on the value. Defaults to return the value itself. */
+  optionLabel?: (value: string) => ReactNode;
+
   /**
    * Custom filter.
    * Use this to customise filtering and ordering of the options based on the input value.
@@ -37,25 +42,19 @@ export type ComboboxProps = {
   /** Function that is called with the input value when it is selected from the option list. */
   onSelect?: (value: string) => void;
 
-  /** The list of all available options. */
-  options: ComboboxOption[];
-
-  /** Placeholder text for the input field. */
-  placeholder?: string;
-
   /** The value of the input field. */
   value?: string;
 } & TextfieldProps;
 
-export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
+const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   (
     {
-      options,
+      filter = defaultFilter,
       onChange,
       onSelect,
-      placeholder,
+      optionLabel = (value) => value,
+      options,
       value = '',
-      filter = defaultFilter,
       ...rest
     },
     ref,
@@ -68,7 +67,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     useEffect(() => {
       dispatch({
-        type: ComboboxActionType.ChangeInputValue,
+        type: 'changeInputValue',
         inputValue: value,
       });
     }, [value]);
@@ -76,8 +75,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const floating = useFloating<HTMLInputElement>({
       whileElementsMounted: autoUpdate,
       open: state.isOpen,
-      onOpenChange: (open) =>
-        dispatch({ type: ComboboxActionType.OpenOrClose, open }),
+      onOpenChange: (open) => dispatch({ type: 'openOrClose', open }),
       middleware: [
         flip({ padding: 10 }),
         size({
@@ -103,7 +101,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       listRef,
       activeIndex: state.activeIndex,
       onNavigate: (activeIndex) =>
-        dispatch({ type: ComboboxActionType.SetActiveIndex, activeIndex }),
+        dispatch({ type: 'setActiveIndex', activeIndex }),
       virtual: true,
       loop: true,
     });
@@ -116,17 +114,27 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       [filter, state.inputValue, options],
     );
 
-    const handleSelect = (value: string) => {
-      onSelect?.(value);
-      dispatch({ type: ComboboxActionType.Select, value });
-    };
-
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       onChange?.(event);
       dispatch({
-        type: ComboboxActionType.ChangeInputValue,
+        type: 'changeInputValue',
         inputValue: event.target?.value,
       });
+    };
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+      if (
+        event.key === 'Enter' &&
+        state.activeIndex != null &&
+        filteredOptions[state.activeIndex]
+      ) {
+        handleSelect(filteredOptions[state.activeIndex]);
+      }
+    };
+
+    const handleSelect = (value: string) => {
+      onSelect?.(value);
+      dispatch({ type: 'select', value });
     };
 
     return (
@@ -139,17 +147,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             ref: inputRef,
             onChange: handleChange,
             value: state.inputValue,
-            placeholder,
             'aria-autocomplete': 'list',
-            onKeyDown(event) {
-              if (
-                event.key === 'Enter' &&
-                state.activeIndex != null &&
-                filteredOptions[state.activeIndex]
-              ) {
-                handleSelect(filteredOptions[state.activeIndex].value);
-              }
-            },
+            onKeyDown: handleKeyDown,
           })}
         />
         <ComboboxList
@@ -158,6 +157,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           interactions={interactions}
           listRef={listRef}
           open={state.isOpen}
+          optionLabel={optionLabel}
           options={filteredOptions}
           onSelect={handleSelect}
         />
@@ -165,3 +165,5 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     );
   },
 );
+
+export { Combobox as EXPERIMENTAL_Combobox };

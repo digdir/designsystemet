@@ -1,5 +1,3 @@
-import type { ComboboxOption } from './ComboboxOption';
-
 export type ComboboxFilter =
-  | ((inputValue: string, options: ComboboxOption[]) => ComboboxOption[])
-  | ((inputValue: string) => ComboboxOption[]);
+  | ((inputValue: string, options: string[]) => string[])
+  | ((inputValue: string) => string[]);

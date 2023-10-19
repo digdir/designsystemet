@@ -1,6 +1,3 @@
 import type { ReactNode } from 'react';
 
-export type ComboboxOption = {
-  value: string;
-  label: ReactNode;
-};
+export type ComboboxOption = (value: string) => ReactNode;

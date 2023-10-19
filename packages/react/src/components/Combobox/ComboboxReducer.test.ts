@@ -1,5 +1,5 @@
 import type { ComboboxAction, ComboboxState } from './ComboboxReducer';
-import { ComboboxActionType, comboboxReducer } from './ComboboxReducer';
+import { comboboxReducer } from './ComboboxReducer';
 
 // Test data:
 const state: ComboboxState = {
@@ -12,7 +12,7 @@ describe('ComboboxReducer', () => {
   describe('openOrClose', () => {
     it.each([true, false])('Sets isOpen to open when %s', (open) => {
       const action: ComboboxAction = {
-        type: ComboboxActionType.OpenOrClose,
+        type: 'openOrClose',
         open,
       };
       const newState = comboboxReducer(state, action);
@@ -24,7 +24,7 @@ describe('ComboboxReducer', () => {
     it('Sets inputValue to the given value', () => {
       const inputValue = 'Lorem ipsum';
       const action: ComboboxAction = {
-        type: ComboboxActionType.ChangeInputValue,
+        type: 'changeInputValue',
         inputValue,
       };
       const newState = comboboxReducer(state, action);
@@ -33,7 +33,7 @@ describe('ComboboxReducer', () => {
 
     it('Sets isOpen to true when the new value is not empty', () => {
       const action: ComboboxAction = {
-        type: ComboboxActionType.ChangeInputValue,
+        type: 'changeInputValue',
         inputValue: 'Lorem ipsum',
       };
       const newState = comboboxReducer(state, action);
@@ -46,7 +46,7 @@ describe('ComboboxReducer', () => {
         isOpen: true,
       };
       const action: ComboboxAction = {
-        type: ComboboxActionType.ChangeInputValue,
+        type: 'changeInputValue',
         inputValue: '',
       };
       const newState = comboboxReducer(prevState, action);
@@ -58,7 +58,7 @@ describe('ComboboxReducer', () => {
     it('Sets activeIndex to the given value', () => {
       const activeIndex = 1;
       const action: ComboboxAction = {
-        type: ComboboxActionType.SetActiveIndex,
+        type: 'setActiveIndex',
         activeIndex,
       };
       const newState = comboboxReducer(state, action);
@@ -70,7 +70,7 @@ describe('ComboboxReducer', () => {
     it('Sets inputValue to the given value', () => {
       const value = 'Lorem ipsum';
       const action: ComboboxAction = {
-        type: ComboboxActionType.Select,
+        type: 'select',
         value,
       };
       const newState = comboboxReducer(state, action);
@@ -83,7 +83,7 @@ describe('ComboboxReducer', () => {
         isOpen: true,
       };
       const action: ComboboxAction = {
-        type: ComboboxActionType.Select,
+        type: 'select',
         value: 'Lorem ipsum',
       };
       const newState = comboboxReducer(prevState, action);

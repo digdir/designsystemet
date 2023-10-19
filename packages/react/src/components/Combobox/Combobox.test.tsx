@@ -4,24 +4,23 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import type { ComboboxProps } from './Combobox';
-import { Combobox } from './Combobox';
+import { EXPERIMENTAL_Combobox } from './Combobox';
 import { countries } from './test-data/countries';
 import type { ComboboxFilter } from './types/ComboboxFilter';
 import type { ComboboxOption } from './types/ComboboxOption';
+import { getCountryName } from './test-data/getCountryName';
 
 const user = userEvent.setup();
 
 // Test data:
 const placeholder = 'Enter a country';
-const options: ComboboxOption[] = Object.entries(countries).map(
-  ([value, name]) => ({
-    label: `${name} (${value})`,
-    value,
-  }),
-);
+const options = Object.keys(countries);
+const optionLabel: ComboboxOption = (key: string) =>
+  `${getCountryName(key)} (${key})`;
 const defaultProps: ComboboxProps = {
   placeholder,
   options,
+  optionLabel,
 };
 
 describe('Combobox', () => {
@@ -42,6 +41,14 @@ describe('Combobox', () => {
     expect(screen.getByRole('listbox')).toBeInTheDocument();
   });
 
+  it('Renders the values as labels by default', async () => {
+    render({ optionLabel: undefined });
+    const input = screen.getByRole('combobox');
+    await user.type(input, 'n');
+    const norwayOption = screen.getByRole('option', { name: /NO/i });
+    expect(norwayOption).toBeInTheDocument();
+  });
+
   it('Sets value correctly when something is selected', async () => {
     render();
     await user.type(screen.getByRole('combobox'), 'n');
@@ -53,7 +60,7 @@ describe('Combobox', () => {
     const onChange = jest.fn();
     const onSelect = jest.fn();
     render({ onChange, onSelect });
-    await user.type(screen.getByRole('combobox'), 'a');
+    await user.type(screen.getByRole('combobox'), 'f');
     await user.click(screen.getByRole('option', { name: /Frankrike/i }));
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(
@@ -94,7 +101,7 @@ describe('Combobox', () => {
     const testInput = 'a';
     const filter: ComboboxFilter = (input, options) =>
       input === testInput
-        ? options.filter((option) => option.value === 'NO')
+        ? options.filter((option) => option === 'NO')
         : options; // Only show Norway if the user types the testInput value
     render({ filter });
     await user.type(screen.getByRole('combobox'), '{arrowdown}');
@@ -116,7 +123,7 @@ const render = (
   ref?: RefObject<HTMLInputElement>,
 ) =>
   renderRtl(
-    <Combobox
+    <EXPERIMENTAL_Combobox
       {...defaultProps}
       {...props}
       ref={ref}

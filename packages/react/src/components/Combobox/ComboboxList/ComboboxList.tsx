@@ -1,9 +1,7 @@
-import type { MutableRefObject } from 'react';
+import type { MutableRefObject, ReactNode } from 'react';
 import React from 'react';
 import type { UseFloatingReturn, useInteractions } from '@floating-ui/react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
-
-import type { ComboboxOption } from '../types/ComboboxOption';
 
 import style from './ComboboxList.module.css';
 import { ComboboxItem } from './ComboboxItem';
@@ -13,9 +11,10 @@ export interface ComboboxListProps {
   floating: UseFloatingReturn<HTMLInputElement>;
   interactions: ReturnType<typeof useInteractions>;
   listRef: MutableRefObject<(HTMLElement | null)[]>;
-  open: boolean;
-  options: ComboboxOption[];
   onSelect: (value: string) => void;
+  open: boolean;
+  optionLabel: (value: string) => ReactNode;
+  options: string[];
 }
 
 export const ComboboxList = ({
@@ -23,9 +22,10 @@ export const ComboboxList = ({
   floating,
   interactions,
   listRef,
-  open,
-  options,
   onSelect,
+  open,
+  optionLabel,
+  options,
 }: ComboboxListProps) => {
   const { refs, floatingStyles, context } = floating;
   const { getFloatingProps, getItemProps } = interactions;
@@ -46,19 +46,19 @@ export const ComboboxList = ({
           >
             {options.map((item, index) => (
               <ComboboxItem
-                key={item.value}
+                key={item}
                 {...getItemProps({
                   ref: (node) => {
                     listRef.current[index] = node;
                   },
                   onClick: () => {
-                    onSelect(item.value);
+                    onSelect(item);
                     refs.domReference.current?.focus();
                   },
                 })}
                 active={activeIndex === index}
               >
-                {item.label}
+                {optionLabel(item)}
               </ComboboxItem>
             ))}
           </ul>

@@ -6,30 +6,29 @@ export type ComboboxState = {
   activeIndex: number | null;
 };
 
-export enum ComboboxActionType {
-  OpenOrClose = 'OPEN_OR_CLOSE',
-  ChangeInputValue = 'CHANGE_INPUT_VALUE',
-  SetActiveIndex = 'SET_ACTIVE_INDEX',
-  Select = 'SELECT',
-}
+export type ComboboxActionType =
+  | 'openOrClose'
+  | 'changeInputValue'
+  | 'setActiveIndex'
+  | 'select';
 
 type OpenOrCloseAction = {
-  type: ComboboxActionType.OpenOrClose;
+  type: 'openOrClose';
   open: boolean;
 };
 
 type ChangeInputValueAction = {
-  type: ComboboxActionType.ChangeInputValue;
+  type: 'changeInputValue';
   inputValue: string;
 };
 
 type SetActiveIndexAction = {
-  type: ComboboxActionType.SetActiveIndex;
+  type: 'setActiveIndex';
   activeIndex: number | null;
 };
 
 type SelectAction = {
-  type: ComboboxActionType.Select;
+  type: 'select';
   value: string;
 };
 
@@ -79,13 +78,13 @@ export const comboboxReducer: Reducer<ComboboxState, ComboboxAction> = (
   action,
 ) => {
   switch (action.type) {
-    case ComboboxActionType.OpenOrClose:
+    case 'openOrClose':
       return openOrClose(state, action);
-    case ComboboxActionType.ChangeInputValue:
+    case 'changeInputValue':
       return changeInputValue(state, action);
-    case ComboboxActionType.SetActiveIndex:
+    case 'setActiveIndex':
       return setActiveIndex(state, action);
-    case ComboboxActionType.Select:
+    case 'select':
       return select(state, action);
     default:
       return state;
