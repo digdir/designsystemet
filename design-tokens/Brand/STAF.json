@@ -2,44 +2,108 @@
   "brand": {
     "alt1": {
       "100": {
-        "value": "rgba($brand.alt1.900, 0.1)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AAA 12.8 on grey 800\nAA 6.4 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.8",
+              "space": "lch"
+            }
+          }
+        }
       },
       "200": {
-        "value": "rgba($brand.alt1.900, 0.2)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "Light error color\nAAA 11.4 on grey 800\nAA 5.7 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.7",
+              "space": "lch"
+            }
+          }
+        }
       },
       "300": {
-        "value": "rgba($brand.alt1.900, 0.3)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AAA 9 on grey 800\nAA 4.5 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.6",
+              "space": "lch"
+            }
+          }
+        }
       },
       "400": {
-        "value": "rgba($brand.alt1.900, 0.4)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AAA 7.1 on grey 800\nAA18 3.5 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.5",
+              "space": "lch"
+            }
+          }
+        }
       },
       "500": {
-        "value": "rgba($brand.alt1.900, 0.5)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AA 5.6 on grey 800"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.4",
+              "space": "lch"
+            }
+          }
+        }
       },
       "600": {
-        "value": "rgba($brand.alt1.900, 0.6)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AA 4.5 on grey 800"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.3",
+              "space": "lch"
+            }
+          }
+        }
       },
       "700": {
-        "value": "rgba($brand.alt1.900, 0.7)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AA18 3.7 on grey 800"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.2",
+              "space": "lch"
+            }
+          }
+        }
       },
       "800": {
-        "value": "rgba($brand.alt1.900, 0.8)",
+        "value": "{brand.alt1.900}",
         "type": "color",
-        "description": "AA 4.7 on white"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.1",
+              "space": "lch"
+            }
+          }
+        }
       },
       "900": {
         "value": "#00244E",
@@ -48,43 +112,112 @@
     },
     "alt2": {
       "100": {
-        "value": "rgba($brand.alt2.900, 0.1)",
+        "value": "{brand.alt2.900}",
         "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.8",
+              "space": "lch"
+            }
+          }
+        },
         "description": "AAA 13.3 on grey 800\nAA 6.7 as bkdg for interaction blue"
       },
       "200": {
-        "value": "rgba($brand.alt2.900, 0.2)",
+        "value": "$brand.alt2.900",
         "type": "color",
-        "description": "Light warning color\nAAA 12.3 on grey 800\nAA 1.1 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.7",
+              "space": "lch"
+            }
+          }
+        }
       },
       "300": {
-        "value": "rgba($brand.alt2.900, 0.3)",
+        "value": "$brand.alt2.900",
         "type": "color",
-        "description": "AAA 10 on grey 800\nAA 5.4 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.6",
+              "space": "lch"
+            }
+          }
+        }
       },
       "400": {
-        "value": "rgba($brand.alt2.900, 0.4)",
+        "value": "$brand.alt2.900",
         "type": "color",
-        "description": "AAA 9.2 on grey 800\nAA 4.6 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.5",
+              "space": "lch"
+            }
+          }
+        }
       },
       "500": {
-        "value": "rgba($brand.alt2.900, 0.5)",
+        "value": "{brand.alt2.900}",
         "type": "color",
-        "description": "AAA 7.9 on grey 800\nAA18 4 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.4",
+              "space": "lch"
+            }
+          }
+        },
+        "description": "ue"
       },
       "600": {
-        "value": "rgba($brand.alt2.900, 0.6)",
+        "value": "$brand.alt2.900",
         "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.3",
+              "space": "lch"
+            }
+          }
+        },
         "description": "AA 6.8 on grey 800\nAA18 3.4 as bkdg for interaction blue"
       },
       "700": {
-        "value": "rgba($brand.alt2.900, 0.7)",
+        "value": "$brand.alt2.900",
         "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.2",
+              "space": "lch"
+            }
+          }
+        },
         "description": "AA 5.5 on grey 800"
       },
       "800": {
-        "value": "rgba($brand.alt2.900, 0.9)",
+        "value": "$brand.alt2.900",
         "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.1",
+              "space": "lch"
+            }
+          }
+        },
         "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
       },
       "900": {
@@ -94,43 +227,108 @@
     },
     "alt3": {
       "100": {
-        "value": "rgba($brand.alt3.900, 0.1)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "AAA 12.9 on grey 800\nAA 6.5 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.8",
+              "space": "lch"
+            }
+          }
+        }
       },
       "200": {
-        "value": "rgba($brand.alt3.900, 0.2)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "Light information color \nAAA 11.5 on grey 800\nAA 5.8 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.7",
+              "space": "lch"
+            }
+          }
+        }
       },
       "300": {
-        "value": "rgba($brand.alt3.900, 0.3)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "AAA 9.2 on grey 800\nAA 4.6 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.6",
+              "space": "lch"
+            }
+          }
+        }
       },
       "400": {
-        "value": "rgba($brand.alt3.900, 0.4)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "AAA 7.3 on grey 800\nAA18 3.7 as bkdg for interaction blue"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.5",
+              "space": "lch"
+            }
+          }
+        }
       },
       "500": {
-        "value": "rgba($brand.alt3.900, 0.5)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "AA 5.8 on grey 800"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.4",
+              "space": "lch"
+            }
+          }
+        }
       },
       "600": {
-        "value": "rgba($brand.alt3.900, 0.6)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "AA 4.6 on grey 800"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.3",
+              "space": "lch"
+            }
+          }
+        }
       },
       "700": {
-        "value": "rgba($brand.alt3.900, 0.7)",
+        "value": "$brand.alt3.900",
         "type": "color",
-        "description": "AA18 3.8 on grey 800"
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.2",
+              "space": "lch"
+            }
+          }
+        }
       },
       "800": {
-        "value": "rgba($brand.alt3.900, 0.8)",
+        "value": "$brand.alt3.900",
         "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "lighten",
+              "value": "0.1",
+              "space": "lch"
+            }
+          }
+        },
         "description": "AA 5.6 on white"
       },
       "900": {
