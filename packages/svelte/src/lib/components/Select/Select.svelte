@@ -1,8 +1,8 @@
-<script lang="ts">
+<script>
 	import { createEventDispatcher } from 'svelte';
 
-	export let options: { label: string; value: string }[] = [];
-	export let value: string;
+	export let options = [];
+	export let value;
 
 	const dispatch = createEventDispatcher();
 
@@ -14,12 +14,12 @@
 		dispatch('blur');
 	}
 
-	function handleChange(event: Event) {
-		value = (event.target as HTMLSelectElement).value;
+	function handleChange(event) {
+		value = (event.target).value;
 		dispatch('change', value);
 	}
 
-	let selectedOption: { label: string; value: string } | undefined;
+	let selectedOption;
 	$: selectedOption = options.find((option) => option.value === value);
 </script>
 
