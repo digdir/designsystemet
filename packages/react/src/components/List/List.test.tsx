@@ -31,7 +31,7 @@ describe('List', () => {
   });
 
   it('Renders an ordered list', () => {
-    render({ component: 'ol' });
+    render({ as: 'ol' });
     const list = document.querySelector('ol');
     expect(list).toBeInTheDocument();
   });

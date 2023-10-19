@@ -9,7 +9,7 @@ const meta: Meta<typeof List> = {
   component: List,
   args: {
     // Just to make the default option pre-selected i <Controls />
-    component: 'ul',
+    as: 'ul',
     size: 'medium',
   },
 };
@@ -29,7 +29,7 @@ export const Advanced = (args: ListProps) => (
     <List.Item>List Item 1</List.Item>
     <List.Item>
       List Item 2
-      <List component='ol'>
+      <List as='ol'>
         <List.Item>List Item 2.1</List.Item>
         <List.Item>List Item 2.2</List.Item>
         <List.Item>List Item 2.3</List.Item>
