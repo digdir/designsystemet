@@ -29,7 +29,8 @@
     "generate-component-storefront": "ts-node ./scripts/generate-component/storefront.ts",
     "gcsf": "ts-node ./scripts/generate-component/storefront.ts",
     "generate-component-react": "ts-node ./scripts/generate-component/react.ts",
-    "gcr": "ts-node ./scripts/generate-component/react.ts"
+    "gcr": "ts-node ./scripts/generate-component/react.ts",
+    "types": "yarn workspace @digdir/design-system-react types"
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
@@ -95,9 +96,6 @@
     "react-markdown": "^8.0.5",
     "remark-gfm": "^3.0.1",
     "rimraf": "^5.0.0",
-    "rollup": "^3.29.4",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^7.4.0",
     "storybook-css-modules": "^1.0.8",
     "stylelint": "^15.3.0",

@@ -26,6 +26,8 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable
+      - name: Types
+        run: yarn types
       - name: Build
         run: yarn build
       - name: Lint Code

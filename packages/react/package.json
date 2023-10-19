@@ -13,7 +13,8 @@
   "scripts": {
     "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build",
-    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/"
+    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "types": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
@@ -30,6 +31,15 @@
     "react-number-format": "5.2.2"
   },
   "devDependencies": {
-    "copyfiles": "^2.4.1"
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-image": "^3.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.5",
+    "rollup": "^3.29.4",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.2.2"
   }
 }
