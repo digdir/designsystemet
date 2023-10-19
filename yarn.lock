@@ -4067,7 +4067,6 @@ __metadata:
     "@types/ramda": ^0.29.3
     change-case: ^4.1.2
     ramda: ^0.29.0
-    rimraf: ^5.0.5
     style-dictionary: ^3.8.0
   languageName: unknown
   linkType: soft
