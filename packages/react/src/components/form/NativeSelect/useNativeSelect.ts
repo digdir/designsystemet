@@ -11,11 +11,12 @@ type UseNativeSelect = (props: NativeSelectProps) => Omit<
   FormField,
   'inputProps'
 > & {
-  selectProps?: Pick<
+  selectProps: Pick<
     SelectHTMLAttributes<HTMLSelectElement>,
     'name' | 'required' | 'onClick' | 'onChange' | 'id'
   >;
 };
+
 /** Handles props for `NativeSelect` in context with `Fieldset` */
 export const useNativeSelect: UseNativeSelect = (props) => {
   const fieldset = useContext(FieldsetContext);
