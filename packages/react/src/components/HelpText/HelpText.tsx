@@ -20,7 +20,7 @@ export type HelpTextProps = {
    */
   size?: 'small' | 'xsmall';
   /**
-   * Placement of the tooltip on the trigger.
+   * Placement of the Popover.
    * @default 'right'
    */
   placement?: Placement;
