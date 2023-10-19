@@ -26,8 +26,6 @@ export type NativeSelectProps = {
   hideLabel?: boolean;
   /** Set to true to enable multiple selection. */
   multiple?: boolean;
-  /** The ID of the `select` element. This will be generated if not provided. */
-  id?: string;
   /**
    * Defines the size of the select.
    * @default 'medium'
