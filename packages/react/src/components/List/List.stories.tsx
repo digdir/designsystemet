@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta } from '@storybook/react';
 
 import type { ListProps } from '.';
-import { List, ListItem } from '.';
+import { List } from '.';
 
 const meta: Meta<typeof List> = {
   title: 'Felles/List',
@@ -18,23 +18,23 @@ export default meta;
 
 export const Preview = (args: ListProps) => (
   <List {...args}>
-    <ListItem>List Item 1</ListItem>
-    <ListItem>List Item 2</ListItem>
-    <ListItem>List Item 3</ListItem>
+    <List.Item>List Item 1</List.Item>
+    <List.Item>List Item 2</List.Item>
+    <List.Item>List Item 3</List.Item>
   </List>
 );
 
 export const Advanced = (args: ListProps) => (
   <List {...args}>
-    <ListItem>List Item 1</ListItem>
-    <ListItem>
+    <List.Item>List Item 1</List.Item>
+    <List.Item>
       List Item 2
       <List component='ol'>
-        <ListItem>List Item 3.1</ListItem>
-        <ListItem>List Item 3.2</ListItem>
-        <ListItem>List Item 3.3</ListItem>
+        <List.Item>List Item 2.1</List.Item>
+        <List.Item>List Item 2.2</List.Item>
+        <List.Item>List Item 2.3</List.Item>
       </List>
-    </ListItem>
-    <ListItem>List Item 3</ListItem>
+    </List.Item>
+    <List.Item>List Item 3</List.Item>
   </List>
 );
