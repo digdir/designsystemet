@@ -11,7 +11,7 @@ export type ListProps = {
    * The type of list to render.
    * @default ul
    */
-  component?: 'ul' | 'ol';
+  as?: 'ul' | 'ol';
   /** Changes text sizing
    * @default medium
    */
@@ -22,14 +22,14 @@ export type ListProps = {
 export const List = ({
   children,
   className,
-  component = 'ul',
+  as = 'ul',
   size = 'medium',
   ...rest
 }: ListProps) => (
   <Paragraph
-    as={component}
+    as={as}
     size={size}
-    className={cn([classes.list, className])}
+    className={cn(classes.list, className)}
     role='list'
     {...rest}
   >
