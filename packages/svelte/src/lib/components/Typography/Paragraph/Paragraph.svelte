@@ -38,7 +38,7 @@
 {/if}
 
 <style>
-  .paragraph {
+  :global(.paragraph) {
     --fdsc-typography-font-family: inherit;
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 

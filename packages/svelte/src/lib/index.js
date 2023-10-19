@@ -23,7 +23,7 @@ import {
 // @ts-ignore
 import { Paragraph, Heading } from './components/Typography';
 // @ts-ignore
-import { Textfield, Radio, RadioGroup } from './components/Form';
+import { Textfield, Radio, RadioGroup, Switch } from './components/Form';
 
 export {
   Button,
@@ -42,4 +42,5 @@ export {
   AccordionItem,
   Radio,
   RadioGroup,
+  Switch,
 };

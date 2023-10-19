@@ -23,9 +23,10 @@ WIP Component library for Statsforvalternes Fellesorganisasjon
 3. In your browser, navigate to the route you placed the component
 4. You should now be able to iterate over and test your component as you would in a regular Svelte application
 
-### Publishing the component-library
+### Publishing to NPM
 
-0. Navigate to the package.json inside the /packages/svelte folder.
-1. Bump the version number of the package: `0.0.x + 1`.
-2. Commit and push your changes.
-3. Run `npm publish --access public` in the /packages/svelte folder. (This step requires you to be logged in to npm with the correct credentials.)
+0. Navigate to the /packages/svelte folder
+1. Bump the version number of the package in package.json: `0.0.x + 1`.
+2. Commit and push your changes
+3. Use this terminal command to publish: npm publish --access public
+   3b. You may need to log in with NPM credentials if you haven't already done so

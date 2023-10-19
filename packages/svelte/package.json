@@ -1,7 +1,7 @@
 {
   "name": "@kjetil-hoel/design-system-svelte",
   "license": "MIT",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
@@ -28,6 +28,7 @@
     "./Textfield": "./dist/Form/Textfield/Textfield.svelte",
     "./Radio": "./dist/Form/Radio/Radio.svelte",
     "./RadioGroup": "./dist/Form/Radio/RadioGroup.svelte",
+    "./Switch": "./dist/Form/Switch/Switch.svelte",
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
