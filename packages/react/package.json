@@ -14,7 +14,7 @@
     "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build",
     "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
-    "types": "tsc -p tsconfig.build.json"
+    "types": "tsc"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
