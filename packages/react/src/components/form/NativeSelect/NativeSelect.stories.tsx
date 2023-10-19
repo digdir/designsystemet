@@ -4,14 +4,14 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { NativeSelect } from './NativeSelect';
 
 export default {
-  title: 'Altinn/NativeSelect',
+  title: 'Felles/NativeSelect',
   component: NativeSelect,
   parameters: {
     layout: 'padded',
   },
 } as Meta;
 
-export const Normal: StoryFn<typeof NativeSelect> = (args) => (
+export const Preview: StoryFn<typeof NativeSelect> = (args) => (
   <NativeSelect {...args}>
     <option value='blank'>Velg &hellip;</option>
     <option value='everest'>Mount Everest</option>
@@ -25,7 +25,7 @@ export const Normal: StoryFn<typeof NativeSelect> = (args) => (
   </NativeSelect>
 );
 
-Normal.args = {
+Preview.args = {
   label: 'Velg et fjell',
 };
 
@@ -64,7 +64,7 @@ export const Error: StoryFn<typeof NativeSelect> = (args) => (
 
 Error.args = {
   label: 'Velg et fjell',
-  isValid: false,
+  error: 'Du må velge et fjell',
 };
 
 export const Multiple: StoryFn<typeof NativeSelect> = (args) => (

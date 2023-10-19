@@ -18,7 +18,7 @@ export * from './List';
 export * from './Table';
 export * from './Typography/';
 export * from './Accordion';
-export * from './NativeSelect';
+export * from './form/NativeSelect';
 export * from './Alert';
 export * from './Tag';
 export * from './Chip';
