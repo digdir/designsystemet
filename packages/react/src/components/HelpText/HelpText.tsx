@@ -11,7 +11,7 @@ import { HelpTextIcon } from './HelpTextIcon';
 
 export type HelpTextProps = {
   /**
-   * The content of the HelpText.
+   * Title for screen readers.
    **/
   title: string;
   /**
