@@ -1,4 +1,4 @@
-.input {
+.select {
   font: inherit;
   position: relative;
   box-sizing: border-box;
@@ -10,16 +10,16 @@
   border-radius: var(--fds-border_radius-medium);
 }
 
-.input.xsmall,
-.input.small {
+.select.xsmall,
+.select.small {
   padding: 0 var(--fds-spacing-2);
 }
 
-.input.medium {
+.select.medium {
   padding: 0 var(--fds-spacing-3);
 }
 
-.input.large {
+.select.large {
   padding: 0 var(--fds-spacing-4);
 }
 
@@ -32,16 +32,16 @@
   opacity: 0.3;
 }
 
-.disabled .input {
+.disabled .select {
   cursor: not-allowed;
 }
 
-.readOnly .input {
+.readOnly .select {
   background: var(--fds-semantic-surface-neutral-subtle);
   border-color: var(--fds-semantic-border-neutral-default);
 }
 
-.error > .input:not(:focus-visible) {
+.error > .select:not(:focus-visible) {
   border-color: var(--fds-semantic-border-danger-default);
   box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
 }

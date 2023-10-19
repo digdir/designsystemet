@@ -12,11 +12,6 @@ import { useNativeSelect } from './useNativeSelect';
 
 export type NativeSelectProps = {
   /**
-   * Specifies whether the select box is disabled.
-   * @default false
-   * */
-  disabled?: boolean;
-  /**
    * Label that appears over the select box. */
   label?: string;
   /**
@@ -72,6 +67,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         {label && (
           <Label
             weight='medium'
+            size={size}
             htmlFor={selectProps?.id}
             className={cn(
               classes.label,
@@ -93,7 +89,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           disabled={disabled || readOnly}
           ref={ref}
           className={cn(
-            classes.input,
+            classes.select,
             classes[size],
             utilityClasses.focusable,
             className,
