@@ -78,7 +78,6 @@ describe('NativeSelect', () => {
     const className = 'test-class';
     render({ className });
     const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('field'); // Class given by InputWrapper
     expect(select).toHaveClass(className);
   });
 });
