@@ -15,7 +15,7 @@ export type ListProps = {
   /** Changes text sizing
    * @default medium
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 

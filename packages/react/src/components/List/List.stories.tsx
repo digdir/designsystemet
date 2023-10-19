@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
 
+import { Heading } from '../Typography';
+
 import type { ListProps } from '.';
 import { List } from '.';
 
@@ -37,4 +39,23 @@ export const Advanced = (args: ListProps) => (
     </List.Item>
     <List.Item>List Item 3</List.Item>
   </List>
+);
+
+export const WithHeading = (args: ListProps) => (
+  <>
+    <Heading
+      id='list-heading'
+      size='medium'
+    >
+      Hva vi kan ha til middag
+    </Heading>
+    <List
+      {...args}
+      aria-labelledby='list-heading'
+    >
+      <List.Item>Lasagne</List.Item>
+      <List.Item>Taco</List.Item>
+      <List.Item>Pizza</List.Item>
+    </List>
+  </>
 );
