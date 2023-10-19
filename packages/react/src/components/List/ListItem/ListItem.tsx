@@ -7,8 +7,8 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
   ({ children, ...rest }: ListItemProps, ref) => (
     <li
       {...rest}
-      className={rest.className}
       ref={ref}
+      className={rest.className}
     >
       {children}
     </li>

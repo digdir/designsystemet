@@ -30,6 +30,7 @@ export const List = ({
     as={component}
     size={size}
     className={cn([classes.list, className])}
+    role='list'
     {...rest}
   >
     {children}
