@@ -50,4 +50,14 @@ describe('List', () => {
     render({ size: 'large' });
     expect(screen.getByRole('list')).toHaveClass('large');
   });
+
+  it('should have the passed heading', () => {
+    render({ heading: 'Test' });
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+  });
+
+  it('should have aria-labelledby when heading is passed', () => {
+    render({ heading: 'Test' });
+    expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
+  });
 });

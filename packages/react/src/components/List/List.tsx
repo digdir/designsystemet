@@ -1,8 +1,8 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import React from 'react';
+import React, { useId } from 'react';
 import cn from 'classnames';
 
-import { Paragraph } from '../Typography';
+import { Heading, Paragraph } from '../Typography';
 
 import classes from './List.module.css';
 
@@ -16,6 +16,15 @@ export type ListProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Heading above the list
+   */
+  heading?: string;
+  /**
+   * Level of the heading
+   * @default 2
+   */
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
@@ -24,15 +33,33 @@ export const List = ({
   className,
   as = 'ul',
   size = 'medium',
+  heading,
+  headingLevel = 2,
   ...rest
-}: ListProps) => (
-  <Paragraph
-    as={as}
-    size={size}
-    className={cn(classes.list, className)}
-    role='list'
-    {...rest}
-  >
-    {children}
-  </Paragraph>
-);
+}: ListProps) => {
+  const headingId = useId();
+
+  return (
+    <>
+      {heading && (
+        <Heading
+          size={size}
+          level={headingLevel}
+          id={headingId}
+        >
+          {heading}
+        </Heading>
+      )}
+      <Paragraph
+        as={as}
+        size={size}
+        className={cn(classes.list, className)}
+        role='list'
+        {...(heading ? { 'aria-labelledby': headingId } : {})}
+        {...rest}
+      >
+        {children}
+      </Paragraph>
+    </>
+  );
+};
