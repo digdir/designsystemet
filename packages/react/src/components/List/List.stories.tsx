@@ -1,21 +1,22 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import type { ListProps } from '.';
 import { List, ListItem } from '.';
 
 const meta: Meta<typeof List> = {
-  title: 'Altinn/List',
+  title: 'Felles/List',
   component: List,
   args: {
     // Just to make the default option pre-selected i <Controls />
-    borderStyle: 'solid',
+    component: 'ul',
+    size: 'medium',
   },
 };
 
 export default meta;
 
-const Template = (args: ListProps) => (
+export const Preview = (args: ListProps) => (
   <List {...args}>
     <ListItem>List Item 1</ListItem>
     <ListItem>List Item 2</ListItem>
@@ -23,4 +24,17 @@ const Template = (args: ListProps) => (
   </List>
 );
 
-export const Props: StoryFn = Template;
+export const Advanced = (args: ListProps) => (
+  <List {...args}>
+    <ListItem>List Item 1</ListItem>
+    <ListItem>
+      List Item 2
+      <List component='ol'>
+        <ListItem>List Item 3.1</ListItem>
+        <ListItem>List Item 3.2</ListItem>
+        <ListItem>List Item 3.3</ListItem>
+      </List>
+    </ListItem>
+    <ListItem>List Item 3</ListItem>
+  </List>
+);

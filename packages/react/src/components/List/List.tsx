@@ -1,24 +1,37 @@
-import type { ComponentPropsWithoutRef } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import React from 'react';
 import cn from 'classnames';
+
+import { Paragraph } from '../Typography';
 
 import classes from './List.module.css';
 
 export type ListProps = {
-  /** Select which border style between items*/
-  borderStyle?: 'solid' | 'dashed';
-} & ComponentPropsWithoutRef<'ul'>;
+  /**
+   * The type of list to render.
+   * @default ul
+   */
+  component?: 'ul' | 'ol';
+  /** Changes text sizing
+   * @default medium
+   */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  children: ReactNode;
+} & HTMLAttributes<HTMLElement>;
 
 export const List = ({
-  borderStyle = 'solid',
   children,
   className,
+  component = 'ul',
+  size = 'medium',
   ...rest
 }: ListProps) => (
-  <ul
+  <Paragraph
+    as={component}
+    size={size}
+    className={cn([classes.list, className])}
     {...rest}
-    className={cn([classes.list, classes[borderStyle], className])}
   >
     {children}
-  </ul>
+  </Paragraph>
 );
