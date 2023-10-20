@@ -34,97 +34,97 @@
   --fdsc-tag-min-height: var(--fds-sizing-7);
 }
 
-.outlined.neutral {
+.secondary.neutral {
   --fdsc-tag-border: var(--fds-semantic-border-neutral-default);
   --fdsc-tag-background: var(--fds-semantic-surface-neutral-subtle);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.info {
+.secondary.info {
   --fdsc-tag-border: var(--fds-semantic-border-info-default);
   --fdsc-tag-background: var(--fds-semantic-surface-info-subtle);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.success {
+.secondary.success {
   --fdsc-tag-border: var(--fds-semantic-border-success-default);
   --fdsc-tag-background: var(--fds-semantic-surface-success-subtle);
   --fdsc-tag-text: var(--fds-semantic-text-success-on_success_subtle);
 }
 
-.outlined.warning {
+.secondary.warning {
   --fdsc-tag-border: var(--fds-semantic-border-warning-default);
   --fdsc-tag-background: var(--fds-semantic-surface-warning-subtle);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.danger {
+.secondary.danger {
   --fdsc-tag-border: var(--fds-semantic-border-danger-default);
   --fdsc-tag-background: var(--fds-semantic-surface-danger-subtle);
   --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger_subtle);
 }
 
-.outlined.first {
+.secondary.first {
   --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-first-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.second {
+.secondary.second {
   --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-second-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.outlined.third {
+.secondary.third {
   --fdsc-tag-border: var(--fds-semantic-surface-third-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-third-light);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.filled.neutral {
+.primary.neutral {
   --fdsc-tag-border: var(--fds-semantic-surface-neutral-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-neutral-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.filled.info {
+.primary.info {
   --fdsc-tag-border: var(--fds-semantic-surface-info-subtle-hover);
   --fdsc-tag-background: var(--fds-semantic-surface-info-subtle-hover);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.filled.success {
+.primary.success {
   --fdsc-tag-border: var(--fds-semantic-surface-success-default);
   --fdsc-tag-background: var(--fds-semantic-surface-success-default);
   --fdsc-tag-text: var(--fds-semantic-text-success-on_success);
 }
 
-.filled.warning {
+.primary.warning {
   --fdsc-tag-border: var(--fds-semantic-surface-warning-default);
   --fdsc-tag-background: var(--fds-semantic-surface-warning-default);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
 }
 
-.filled.danger {
+.primary.danger {
   --fdsc-tag-border: var(--fds-semantic-surface-danger-default);
   --fdsc-tag-background: var(--fds-semantic-surface-danger-default);
   --fdsc-tag-text: var(--fds-semantic-text-danger-on_danger);
 }
 
-.filled.first {
+.primary.first {
   --fdsc-tag-border: var(--fds-semantic-surface-first-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-first-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.filled.second {
+.primary.second {
   --fdsc-tag-border: var(--fds-semantic-surface-second-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-second-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
 }
 
-.filled.third {
+.primary.third {
   --fdsc-tag-border: var(--fds-semantic-surface-third-dark);
   --fdsc-tag-background: var(--fds-semantic-surface-third-dark);
   --fdsc-tag-text: var(--fds-semantic-text-neutral-on_inverted);
