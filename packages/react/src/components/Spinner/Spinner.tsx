@@ -3,28 +3,23 @@ import cn from 'classnames';
 
 import classes from './Spinner.module.css';
 
+const baseSize = 54;
+const modifier = 1.13;
+
 const sizeMap: { [key in NonNullable<SpinnerProps['size']>]: number } = {
-  xSmall: 13,
-  small: 20,
-  medium: 27,
-  large: 40,
-  '1xLarge': 44,
-  '2xLarge': 56,
-  '3xLarge': 79,
+  xxsmall: baseSize * Math.pow(modifier, 0),
+  xsmall: baseSize * Math.pow(modifier, 1),
+  small: baseSize * Math.pow(modifier, 2),
+  medium: baseSize * Math.pow(modifier, 3),
+  large: baseSize * Math.pow(modifier, 4),
+  xlarge: baseSize * Math.pow(modifier, 5),
 };
 
 export type SpinnerProps = {
   /** Spinner title  */
   title: string;
   /** Spinner size  */
-  size?:
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | '1xLarge'
-    | '2xLarge'
-    | '3xLarge';
+  size?: 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   /** Spinner appearance  */
   variant?: 'default' | 'interaction' | 'inverted';
 } & React.ComponentPropsWithoutRef<'svg'>;

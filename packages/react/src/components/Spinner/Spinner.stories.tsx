@@ -32,17 +32,52 @@ export const Variants: Story = () => (
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='3xLarge'
+      size='xlarge'
     />
     <Spinner
       title='Henter kaffi'
       variant='interaction'
-      size='3xLarge'
+      size='xlarge'
     />
     <Spinner
       title='Henter kaffi'
       variant='inverted'
-      size='3xLarge'
+      size='xlarge'
+    />
+  </>
+);
+
+export const Sizes: Story = () => (
+  <>
+    <Spinner
+      title='Henter kaffi'
+      variant='default'
+      size='xxsmall'
+    />
+    <Spinner
+      title='Henter kaffi'
+      variant='default'
+      size='xsmall'
+    />
+    <Spinner
+      title='Henter kaffi'
+      variant='default'
+      size='small'
+    />
+    <Spinner
+      title='Henter kaffi'
+      variant='default'
+      size='medium'
+    />
+    <Spinner
+      title='Henter kaffi'
+      variant='default'
+      size='large'
+    />
+    <Spinner
+      title='Henter kaffi'
+      variant='default'
+      size='xlarge'
     />
   </>
 );

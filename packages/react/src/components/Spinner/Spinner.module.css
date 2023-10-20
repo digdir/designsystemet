@@ -1,9 +1,9 @@
 .spinner {
-  animation: rotate-animation 2s linear infinite;
+  animation: rotate-animation 1.5s linear infinite;
 }
 
 .spinnerCircle {
-  animation: stroke-animation 1.5s ease-in-out infinite;
+  animation: stroke-animation 1.5s linear infinite;
 }
 
 /* Prefers reduced motion needs longer animation, 
@@ -43,17 +43,17 @@
 
 @keyframes stroke-animation {
   0% {
-    stroke-dasharray: 1, 150;
+    stroke-dasharray: 1px, 200px;
     stroke-dashoffset: 0;
   }
 
   50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -62;
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
   }
 
   100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
   }
 }
