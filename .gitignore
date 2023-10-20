@@ -1,5 +1,6 @@
 # Built files
 dist
+build
 ignore
 tsc-build
 
@@ -12,6 +13,7 @@ node_modules
 
 # Local env variables should stay local
 .env
+.env.local
 
 coverage/
 .eslintcache
@@ -26,5 +28,11 @@ coverage/
 # Hidden macOS files
 .DS_Store
 
-# Vercel connfig files
+# Vercel config files
 .vercel/
+
+# Next
+.next
+
+# Typescript
+next-env.d.ts

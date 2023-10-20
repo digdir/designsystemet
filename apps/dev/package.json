@@ -1,0 +1,21 @@
+{
+  "name": "dev",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.5.4"
+  },
+  "devDependencies": {
+    "@navikt/aksel-icons": "^5.6.5",
+    "@types/luxon": "^3.3.2",
+    "luxon": "^3.4.3",
+    "normalize.css": "^8.0.1",
+    "react-countdown-circle-timer": "^3.2.1"
+  }
+}

@@ -5208,6 +5208,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/aksel-icons@npm:^5.6.5":
+  version: 5.6.5
+  resolution: "@navikt/aksel-icons@npm:5.6.5"
+  checksum: 67eb9952b1eb2134d775b4516e80a4bd347dcc27838280dbfc94f4b476f526b68d32ba083037d4afe09f1f80b1218a4ef50b46cbd6ca2d5710fb65c06569a3d2
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-css@npm:^5.0.2":
   version: 5.0.2
   resolution: "@navikt/ds-css@npm:5.0.2"
@@ -9090,6 +9097,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/luxon@npm:^3.3.2":
+  version: 3.3.2
+  resolution: "@types/luxon@npm:3.3.2"
+  checksum: b9111132720eae0269538872a5a496b29587ecfc8edc3b0ff7d269aa93a5ff00a131b23d1e9d1f12ec39f2c779ad21bd8d9f90b122c85a182771aabde7f676b8
+  languageName: node
+  linkType: hard
+
 "@types/mdast@npm:^3.0.0":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
@@ -12547,6 +12561,19 @@ __metadata:
   checksum: b48da9340481742547263d5d985e65d078592557863402ecf538511735e83575867e94f91fe74405ea19b61351feb99efccae7e55de9a151d5654e3417cea05b
   languageName: node
   linkType: hard
+
+"dev@workspace:apps/dev":
+  version: 0.0.0-use.local
+  resolution: "dev@workspace:apps/dev"
+  dependencies:
+    "@navikt/aksel-icons": ^5.6.5
+    "@types/luxon": ^3.3.2
+    luxon: ^3.4.3
+    next: 13.5.4
+    normalize.css: ^8.0.1
+    react-countdown-circle-timer: ^3.2.1
+  languageName: unknown
+  linkType: soft
 
 "diff-sequences@npm:^29.3.1":
   version: 29.3.1
@@ -17585,6 +17612,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"luxon@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "luxon@npm:3.4.3"
+  checksum: 3eade81506224d038ed24035a0cd0dd4887848d7eba9361dce9ad8ef81380596a68153240be3988721f9690c624fb449fcf8fd8c3fc0681a6a8496faf48e92a3
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
@@ -18977,7 +19011,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.5.4":
+"next@npm:13.5.4, next@npm:^13.5.4":
   version: 13.5.4
   resolution: "next@npm:13.5.4"
   dependencies:
@@ -21093,6 +21127,15 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: e432b7cb0df57e8f0bcdc3b012d2e93fcbcb6092c9e0f85654788d5ebfc4442536d8cc35b2418061ba3c4afb8b7788cc101c606d86a1732407921de7a9244c8d
+  languageName: node
+  linkType: hard
+
+"react-countdown-circle-timer@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "react-countdown-circle-timer@npm:3.2.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: df61291c641a6484ae03ab7b57f5b56caf7187e9ba8364f33d7c0e107c8174a2e59e40fa555103258041a6af7563c377ae3b35e2bcbc52aa17b3f13151ec69dc
   languageName: node
   linkType: hard
 
