@@ -1,10 +1,16 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import React, { useId } from 'react';
+import React, { useId, useMemo } from 'react';
 import cn from 'classnames';
 
 import { Heading, Paragraph } from '../Typography';
 
 import classes from './List.module.css';
+
+const HEADING_SIZE_MAP = {
+  small: 'xxsmall',
+  medium: 'xsmall',
+  large: 'small',
+} as const;
 
 export type ListProps = {
   /**
@@ -39,11 +45,13 @@ export const List = ({
 }: ListProps) => {
   const headingId = useId();
 
+  const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
+
   return (
     <>
       {heading && (
         <Heading
-          size={size}
+          size={headingSize}
           level={headingLevel}
           id={headingId}
         >
