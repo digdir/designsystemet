@@ -1,19 +1,9 @@
 import React from 'react';
+import cn from 'classnames';
 
 import classes from './Spinner.module.css';
 
-type Size =
-  | 'xSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | '1xLarge'
-  | '2xLarge'
-  | '3xLarge';
-
-type Variant = 'default' | 'interaction' | 'inverted';
-
-const sizeMap: Record<Size, number> = {
+const sizeMap: { [key in NonNullable<SpinnerProps['size']>]: number } = {
   xSmall: 13,
   small: 20,
   medium: 27,
@@ -23,29 +13,20 @@ const sizeMap: Record<Size, number> = {
   '3xLarge': 79,
 };
 
-const variantMap: Record<Variant, { foreground: string; background: string }> =
-  {
-    default: {
-      foreground: classes.defaultForeground,
-      background: classes.defaultBackground,
-    },
-    interaction: {
-      foreground: classes.interactionForeground,
-      background: classes.interactionBackground,
-    },
-    inverted: {
-      foreground: classes.invertedForeground,
-      background: classes.invertedBackground,
-    },
-  };
-
 export type SpinnerProps = {
   /** Spinner title  */
   title: string;
   /** Spinner size  */
-  size?: Size;
+  size?:
+    | 'xSmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | '1xLarge'
+    | '2xLarge'
+    | '3xLarge';
   /** Spinner appearance  */
-  variant?: Variant;
+  variant?: 'default' | 'interaction' | 'inverted';
 } & React.ComponentPropsWithoutRef<'svg'>;
 
 /**  Spinner component used for indicating busy or indeterminate loading */
@@ -53,19 +34,19 @@ export const Spinner = ({
   title,
   size = 'medium',
   variant = 'default',
-  className = '',
+  className,
   ...rest
 }: SpinnerProps): JSX.Element => {
   return (
     <svg
-      className={`${classes.spinner} ${className}`}
+      className={cn(classes.spinner, className)}
       style={{ width: sizeMap[size], height: sizeMap[size] }}
       viewBox='0 0 50 50'
       {...rest}
     >
       <title>{title}</title>
       <circle
-        className={variantMap[variant].background}
+        className={classes.background}
         cx='25'
         cy='25'
         r='20'
@@ -73,7 +54,7 @@ export const Spinner = ({
         strokeWidth='5'
       ></circle>
       <circle
-        className={`${classes.spinnerCircle} ${variantMap[variant].foreground}`}
+        className={cn(classes.spinnerCircle, classes[variant])}
         cx='25'
         cy='25'
         r='20'

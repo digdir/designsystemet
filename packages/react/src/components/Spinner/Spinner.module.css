@@ -6,21 +6,32 @@
   animation: stroke-animation 1.5s ease-in-out infinite;
 }
 
-.defaultForeground {
+/* Prefers reduced motion needs longer animation, 
+  but don't remove it since it is not decorative.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: rotate-animation 6s linear infinite;
+  }
+
+  .spinnerCircle {
+    animation: stroke-animation 5s ease-in-out infinite;
+  }
+}
+
+.default {
   stroke: var(--colors-grey-500);
 }
 
-.interactionForeground {
+.interaction {
   stroke: var(--fds-semantic-border-action-first-default);
 }
 
-.invertedForeground {
+.inverted {
   stroke: var(--colors-white);
 }
 
-.defaultBackground,
-.interactionBackground,
-.invertedBackground {
+.background {
   stroke: var(--colors-grey-200);
 }
 
