@@ -25,7 +25,7 @@ export type ListProps = {
   /**
    * Heading above the list
    */
-  heading?: string;
+  heading?: ReactNode;
   /**
    * Level of the heading
    * @default 2
