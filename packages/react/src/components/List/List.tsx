@@ -2,11 +2,16 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import React, { useId, useMemo } from 'react';
 import cn from 'classnames';
 
+import type { HeadingProps } from '../Typography';
 import { Heading, Paragraph } from '../Typography';
 
 import classes from './List.module.css';
 
-const HEADING_SIZE_MAP = {
+type ListSize = 'small' | 'medium' | 'large';
+
+const HEADING_SIZE_MAP: {
+  [key in ListSize]: HeadingProps['size'];
+} = {
   small: 'xxsmall',
   medium: 'xsmall',
   large: 'small',
@@ -21,7 +26,7 @@ export type ListProps = {
   /** Changes text sizing
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ListSize;
   /**
    * Heading above the list
    */
