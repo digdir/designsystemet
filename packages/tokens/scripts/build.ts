@@ -26,9 +26,9 @@ import {
 
 void registerTransforms(StyleDictionary);
 
-type Brands = 'Altinn' | 'Digdir' | 'Tilsynet' | 'Brreg';
+type Brands = 'STAF';
 type Densities = 'Default' | 'Compact';
-const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'];
+const brands: Brands[] = ['STAF'];
 const prefix = 'fds';
 const basePxFontSize = 16;
 const fileheader: Named<{ fileHeader: FileHeader }> = {

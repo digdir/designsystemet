@@ -1,12 +1,10 @@
 {
-  "name": "@digdir/design-system-tokens",
-  "version": "0.8.0",
-  "description": "Tokens for the Digdir Common Design System",
-  "repository": "https://github.com/digdir/designsystem",
+  "name": "@kjetil-hoel/design-system-tokens",
+  "version": "0.0.1",
   "license": "MIT",
-  "main": "brand/digdir/tokens.cjs.js",
-  "module": "brand/digdir/tokens.esm.js",
-  "types": "brand/digdir/tokens.d.ts",
+  "main": "brand/staf/tokens.cjs.js",
+  "module": "brand/staf/tokens.esm.js",
+  "types": "brand/staf/tokens.d.ts",
   "files": [
     "brand"
   ],
