@@ -16,6 +16,6 @@ export const Preview: Story = {
     children: 'Dette er en beskrivende feilmelding.',
     spacing: false,
     size: 'medium',
-    error: true,
+    error: 'true',
   },
 };
