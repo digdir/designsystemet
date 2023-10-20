@@ -7,10 +7,8 @@ import { Heading, Paragraph } from '../Typography';
 
 import classes from './List.module.css';
 
-type ListSize = 'small' | 'medium' | 'large';
-
 const HEADING_SIZE_MAP: {
-  [key in ListSize]: HeadingProps['size'];
+  [key in NonNullable<ListProps['size']>]: HeadingProps['size'];
 } = {
   small: 'xxsmall',
   medium: 'xsmall',
@@ -26,7 +24,7 @@ export type ListProps = {
   /** Changes text sizing
    * @default medium
    */
-  size?: ListSize;
+  size?: 'small' | 'medium' | 'large';
   /**
    * Heading above the list
    */
