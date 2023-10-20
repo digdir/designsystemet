@@ -1,4 +1,4 @@
-export async function GET(request: Request) {
+export async function GET() {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('Content-Type', 'application/json');
   requestHeaders.set('Authorization', 'Bearer ' + process.env.VERCEL_TOKEN);
@@ -9,6 +9,6 @@ export async function GET(request: Request) {
       headers: requestHeaders,
     },
   );
-  const data = await res.json();
+  const data = (await res.json()) as Promise<Response>;
   return Response.json(data);
 }

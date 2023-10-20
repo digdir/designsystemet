@@ -1,7 +1,8 @@
 import React from 'react';
-import classes from './Alias.module.css';
 import { DateTime } from 'luxon';
 import { ExternalLinkIcon, ClockIcon } from '@navikt/aksel-icons';
+
+import classes from './Alias.module.css';
 
 type CardProps = {
   date: number;
