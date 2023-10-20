@@ -1,8 +1,9 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import type { ListProps } from '.';
 import { List } from '.';
+
+type Story = StoryFn<typeof List>;
 
 const decorators = [
   (Story: StoryFn) => (
@@ -18,7 +19,7 @@ export default {
   decorators,
 } as Meta;
 
-export const Preview = (args: ListProps) => (
+export const Preview: Story = (args) => (
   <List {...args}>
     <List.Item>List Item 1</List.Item>
     <List.Item>List Item 2</List.Item>
@@ -31,7 +32,7 @@ Preview.args = {
   size: 'medium',
 };
 
-export const WithHeading = (args: ListProps) => (
+export const WithHeading: Story = (args) => (
   <List
     {...args}
     heading='Hva vi kan ha til middag i dag'
@@ -42,7 +43,7 @@ export const WithHeading = (args: ListProps) => (
   </List>
 );
 
-export const Advanced = (args: ListProps) => (
+export const Advanced: Story = (args) => (
   <List {...args}>
     <List.Item>List Item 1</List.Item>
     <List.Item>
