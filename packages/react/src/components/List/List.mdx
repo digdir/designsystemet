@@ -1,4 +1,4 @@
-import { Meta, Primary, Controls } from '@storybook/blocks';
+import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 import * as ListStories from './List.stories';
 
@@ -6,20 +6,13 @@ import * as ListStories from './List.stories';
 
 # List
 
-<Information text='altinn' />
-## Props
-
 <Primary />
 <Controls />
 
-## Bruk
+## Med heading
 
-```tsx
-import { List, ListItem } from '@digdir/design-system-react';
+<Canvas of={ListStories.WithHeading} />
 
-<List>
-  <ListItem>List Item 1</ListItem>
-  <ListItem>List Item 2</ListItem>
-  <ListItem>List Item 3</ListItem>
-</List>;
-```
+## Avansert
+
+<Canvas of={ListStories.Advanced} />

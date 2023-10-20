@@ -1,4 +1,15 @@
-export { List } from './List';
-export { ListItem } from './ListItem';
+import { List as ListRoot } from './List';
+import { ListItem } from './ListItem/ListItem';
+
 export type { ListProps } from './List';
-export type { ListItemProps } from './ListItem';
+export type { ListItemProps } from './ListItem/ListItem';
+
+type ListComponent = typeof ListRoot & {
+  Item: typeof ListItem;
+};
+
+const List = ListRoot as ListComponent;
+
+List.Item = ListItem;
+
+export { List, ListItem };
