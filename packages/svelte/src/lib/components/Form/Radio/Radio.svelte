@@ -63,6 +63,11 @@
       fontSizeClass = 'font-medium';
       spacingClass = 'spacing-medium';
       break;
+    case 'large':
+      iconSizeClass = 'icon-large';
+      fontSizeClass = 'font-large';
+      spacingClass = 'spacing-large';
+      break;
     default:
       iconSizeClass = 'icon-medium';
       fontSizeClass = 'font-medium';
@@ -328,6 +333,10 @@
       height: 2rem;
       width: 2rem;
     }
+    .icon-large {
+      height: 2.25rem;
+      width: 2.25rem;
+    }
 
     .font-xsmall {
       font-size: 0.8125rem;
@@ -337,6 +346,9 @@
     }
     .font-medium {
       font-size: 1.125rem;
+    }
+    .font-large {
+      font-size: 1.25rem;
     }
   }
 </style>

@@ -121,7 +121,15 @@
   >First Icon</Button
 >
 
-<Textfield bind:value={textfieldValue} />
+<Textfield
+  bind:value={textfieldValue}
+  size="small"
+  characterLimit={10}
+  characterLimitLabel={(count) =>
+    count > -1
+      ? `Du har ${count} tegn igjen.`
+      : `Du har ${Math.abs(count)} tegn for mye.`}
+/>
 
 <Link href="/route">Link</Link>
 <Paragraph
