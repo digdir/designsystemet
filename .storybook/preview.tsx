@@ -15,6 +15,8 @@ import {
   Heading,
   HeadingProps,
   LinkProps,
+  List,
+  ListItem,
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
@@ -94,19 +96,25 @@ const preview: Preview = {
         h3: getHeading({ level: 3, size: 'medium' }),
         h4: getHeading({ level: 4, size: 'small' }),
         h5: getHeading({ level: 5, size: 'xsmall' }),
-        ul: (props: Props) => (
-          <ul
-            style={{ maxWidth: '70ch' }}
+        ol: (props: Props) => (
+          <List
             {...props}
-          ></ul>
+            as='ol'
+            style={{ maxWidth: '70ch' }}
+          ></List>
+        ),
+        ul: (props: Props) => (
+          <List
+            {...props}
+            style={{ maxWidth: '70ch' }}
+          ></List>
         ),
         li: (props: Props) => (
-          <Paragraph
-            as='li'
-            size='small'
-            style={{ maxWidth: '70ch' }}
+          <ListItem
             {...props}
-          ></Paragraph>
+            className='sb-unstyled'
+            style={{ maxWidth: '70ch' }}
+          ></ListItem>
         ),
         a: (props: LinkProps) => {
           console.log(props);
