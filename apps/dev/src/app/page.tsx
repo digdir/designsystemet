@@ -1,37 +1,54 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { PullRequestCard } from '@/components/PullRequestCard/PullRequestCard';
-import { Alias } from '@/components/Alias/Alias';
+import React, { useState, useEffect } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import { getActivePullRequests } from '@/services/GithubService';
-import { getAliases } from '@/services/VercelService';
-import { SkeletonCard } from '@/components/SkeletonCard/SkeletonCard';
+
+import { PullRequestCard } from '../components/PullRequestCard/PullRequestCard';
+import { Alias } from '../components/Alias/Alias';
+import { getActivePullRequests } from '../services/GithubService';
+import { getAliases } from '../services/VercelService';
+import { SkeletonCard } from '../components/SkeletonCard/SkeletonCard';
+import type { PullRequestType } from '../types/PullRequest';
+import type { AliasType } from '../types/Aliases';
+
 import classes from './page.module.css';
+
+type CombinedItemType = {
+  title: string;
+  PRNumber: number;
+  PRLink: string;
+  user: string;
+  userAvatar: string;
+  storefront: AliasType[];
+  storybook: AliasType[];
+};
 
 /**
  * Combines pullRequests and aliases to create the output itemm
  */
-const combineItemsList = (pullRequests: any, aliases: any) => {
-  let items = [];
+const combineItemsList = (
+  pullRequests: PullRequestType[],
+  aliases: AliasType[],
+) => {
+  const items = [];
 
   for (let i = 0; i < pullRequests.length; i++) {
     const pullRequest = pullRequests[i];
-    let item = {
+    const item: CombinedItemType = {
       title: pullRequest.title,
       PRNumber: pullRequest.number,
       PRLink: pullRequest.html_url,
       user: pullRequest.user ? pullRequest.user.login : '',
       userAvatar: pullRequest.user ? pullRequest.user.avatar_url : '',
-      storefront: aliases.filter((alias: any, index: number) => {
+      storefront: aliases.filter((alias: AliasType) => {
         return (
-          alias.alias.includes(pullRequest.number) &&
+          alias.alias.includes(pullRequest.number.toString()) &&
           alias.alias.includes('storefront')
         );
       }),
-      storybook: aliases.filter((alias: any, index: number) => {
+      storybook: aliases.filter((alias: AliasType) => {
         return (
-          alias.alias.includes(pullRequest.number) &&
+          alias.alias.includes(pullRequest.number.toString()) &&
           alias.alias.includes('storybook')
         );
       }),
@@ -45,17 +62,17 @@ const combineItemsList = (pullRequests: any, aliases: any) => {
  * Returns the items that are going to be rendered in view
  */
 const getItems = async () => {
-  const aliases = await getAliases();
-  const pullRequests = await getActivePullRequests();
+  const aliases: AliasType[] = await getAliases();
+  const pullRequests: PullRequestType[] = await getActivePullRequests();
   return combineItemsList(pullRequests, aliases);
 };
 
 export default function Home() {
-  const [items, setItems] = useState<any>([]);
+  const [items, setItems] = useState<CombinedItemType[]>([]);
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    setItemsAsync();
+    void setItemsAsync();
   }, []);
 
   /**
@@ -86,7 +103,7 @@ export default function Home() {
             size={32}
             strokeWidth={2}
             onComplete={() => {
-              setItemsAsync();
+              void setItemsAsync();
               // This is a technique to reset the timer when it completes
               setKey((prevKey) => prevKey + 1);
             }}
@@ -99,14 +116,14 @@ export default function Home() {
         </h2>
         {items.length === 0 && (
           <>
-            {[1, 2, 3, 4, 5].map((item: any, index: number) => (
+            {[1, 2, 3, 4, 5].map((item: number, index: number) => (
               <SkeletonCard key={index} />
             ))}
           </>
         )}
         {items.length > 0 && (
           <div>
-            {items.map((item: any, index: number) => (
+            {items.map((item: CombinedItemType, index: number) => (
               <PullRequestCard
                 title={item.title}
                 key={index}
