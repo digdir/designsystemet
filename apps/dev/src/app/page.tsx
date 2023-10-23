@@ -63,7 +63,6 @@ const combineItemsList = (
  */
 const getItems = async () => {
   const aliases: AliasType[] = await getAliases();
-  console.log('out aliases', aliases);
   const pullRequests: PullRequestType[] = await getActivePullRequests();
   return combineItemsList(pullRequests, aliases);
 };
