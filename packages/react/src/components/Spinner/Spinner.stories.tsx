@@ -7,7 +7,14 @@ type Story = StoryFn<typeof Spinner>;
 
 const decorators = [
   (Story: StoryFn) => (
-    <div style={{ margin: '5rem' }}>
+    <div
+      style={{
+        margin: '5rem',
+        display: 'flex',
+        gap: '1rem',
+        alignItems: 'flex-end',
+      }}
+    >
       <Story />
     </div>
   ),
@@ -39,6 +46,7 @@ export const Variants: Story = () => (
       variant='interaction'
       size='xlarge'
     />
+
     <Spinner
       title='Henter kaffi'
       variant='inverted'
