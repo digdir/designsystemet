@@ -3,16 +3,13 @@ import cn from 'classnames';
 
 import classes from './Spinner.module.css';
 
-const baseSize = 54;
-const modifier = 1.13;
-
 const sizeMap: { [key in NonNullable<SpinnerProps['size']>]: number } = {
-  xxsmall: baseSize * Math.pow(modifier, 0),
-  xsmall: baseSize * Math.pow(modifier, 1),
-  small: baseSize * Math.pow(modifier, 2),
-  medium: baseSize * Math.pow(modifier, 3),
-  large: baseSize * Math.pow(modifier, 4),
-  xlarge: baseSize * Math.pow(modifier, 5),
+  xxsmall: 13,
+  xsmall: 20,
+  small: 27,
+  medium: 40,
+  large: 56,
+  xlarge: 79,
 };
 
 export type SpinnerProps = {
