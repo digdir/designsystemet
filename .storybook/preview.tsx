@@ -108,6 +108,23 @@ const preview: Preview = {
             {...props}
           ></Paragraph>
         ),
+        a: (props: LinkProps) => {
+          console.log(props);
+
+          // if link starts with /, add current path to link
+          if (props.href?.startsWith('/')) {
+            const { origin = '' } = document?.location;
+
+            return (
+              <Link
+                {...props}
+                href={`${origin}/?path=${props.href}`}
+              />
+            );
+          }
+
+          return <Link {...props}></Link>;
+        },
       },
     },
     controls: {
