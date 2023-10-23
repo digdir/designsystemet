@@ -10,5 +10,6 @@ export async function GET() {
     },
   );
   const data = (await res.json()) as Promise<Response>;
+  console.log('api: ', data);
   return Response.json(data);
 }
