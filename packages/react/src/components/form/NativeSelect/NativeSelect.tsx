@@ -3,11 +3,11 @@ import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
-import { omit } from '../../../utils';
+import { omit } from '../../../utilities/';
+import utilityClasses from '../../../utilities/Utility.module.css';
 import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import classes from './NativeSelect.module.css';
-import utilityClasses from './../../../utils/utility.module.css';
 import { useNativeSelect } from './useNativeSelect';
 
 export type NativeSelectProps = {
