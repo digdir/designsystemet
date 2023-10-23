@@ -17,6 +17,11 @@
     AccordionHeader,
     AccordionItem,
   } from '$lib';
+  import Tab from '$lib/components/Tab/Tab.svelte';
+
+  import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
+  import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
+  import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
 
   let showModal = false;
 
@@ -73,6 +78,23 @@
   function toggleIsReadOnly() {
     isReadOnly = !isReadOnly;
   }
+  const tabs = [
+    {
+      icon: InformationSquareFillIcon,
+      title: 'Tabulator 1',
+      content: 'Tab 1 content',
+    },
+    {
+      icon: CheckmarkCircleFillIcon,
+      title: 'Tab 2',
+      content: 'Tab 2 content',
+    },
+    {
+      icon: XMarkOctagonFillIcon,
+      title: 'Tab 3',
+      content: 'Tab 3 content',
+    },
+  ];
 </script>
 
 <h1>Test components here!</h1>
@@ -249,3 +271,5 @@
   show={showModal}
   onClose={closeModal}
 />
+
+<Tab {tabs} />
