@@ -1,0 +1,21 @@
+.linkHeading {
+  position: relative;
+}
+
+.linkHeading a {
+  position: absolute;
+  top: 0;
+  left: -1em;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1;
+  opacity: 0;
+  font-size: 1rem;
+  width: 1em;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.linkHeading:hover a {
+  opacity: 1;
+}
