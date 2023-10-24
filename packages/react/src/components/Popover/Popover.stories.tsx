@@ -53,18 +53,16 @@ export const Variants: StoryFn<typeof Popover> = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
 
+  React.useEffect(() => {
+    setOpen(true);
+  }, []);
+
   return (
     <>
-      <Button
-        ref={buttonRef}
-        onClick={() => setOpen(!open)}
-      >
-        My trigger
-      </Button>
+      <Button ref={buttonRef}>My trigger</Button>
       <Popover
         anchorEl={buttonRef.current}
         open={open}
-        onClose={() => setOpen(false)}
         placement='top'
       >
         <Popover.Content>default</Popover.Content>
@@ -72,7 +70,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
       <Popover
         anchorEl={buttonRef.current}
         open={open}
-        onClose={() => setOpen(false)}
         placement='right'
         variant='danger'
       >
@@ -81,7 +78,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
       <Popover
         anchorEl={buttonRef.current}
         open={open}
-        onClose={() => setOpen(false)}
         placement='bottom'
         variant='info'
       >
@@ -90,7 +86,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
       <Popover
         anchorEl={buttonRef.current}
         open={open}
-        onClose={() => setOpen(false)}
         placement='left'
         variant='warning'
       >
