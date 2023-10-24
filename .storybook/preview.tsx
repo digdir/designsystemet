@@ -1,8 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 import type { Preview } from '@storybook/react';
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
-import { MDXProvider } from '@mdx-js/react';
-import { DocsContainer } from '@storybook/blocks';
 
 import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
@@ -83,12 +81,14 @@ const components = {
       {...props}
       as='ol'
       style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
     ></List>
   ),
   ul: (props: Props) => (
     <List
       {...props}
       style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
     ></List>
   ),
   li: (props: Props) => (
