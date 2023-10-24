@@ -57,6 +57,7 @@ export const List = ({
           size={headingSize}
           level={headingLevel}
           id={headingId}
+          className={classes.heading}
         >
           {heading}
         </Heading>
