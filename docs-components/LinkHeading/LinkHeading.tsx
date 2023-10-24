@@ -6,11 +6,11 @@ import React from 'react';
 
 import classes from './LinkHeading.module.css';
 
-interface LinkHeadingProps extends Omit<HeadingProps, 'id'> {
+type LinkHeadingProps = {
   id: string;
   children: React.ReactNode;
   className?: string;
-}
+} & Omit<HeadingProps, 'id'>;
 
 export const LinkHeading = ({ ...rest }: LinkHeadingProps) => {
   return (
