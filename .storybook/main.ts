@@ -1,4 +1,6 @@
 import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 const config: StorybookConfig = {
   stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
@@ -22,10 +24,8 @@ const config: StorybookConfig = {
     {
       name: '@storybook/addon-docs',
       options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
+        mdxLoaderOptions: {
+          remarkPlugins: [remarkGfm],
         },
       },
     },

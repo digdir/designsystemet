@@ -1,6 +1,7 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React from 'react';
 import type { Preview } from '@storybook/react';
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
+import { LinkHeading } from '../docs-components';
 
 import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
@@ -12,7 +13,6 @@ import '@altinn/figma-design-tokens/dist/tokens.css';
 import {
   Paragraph,
   Link,
-  Heading,
   HeadingProps,
   LinkProps,
   List,
@@ -47,10 +47,10 @@ type Props = Record<string, unknown>;
 
 const getHeading = (headingProps: HeadingProps) => (props: Props) => {
   return (
-    <Heading
+    <LinkHeading
       {...headingProps}
       {...props}
-    ></Heading>
+    />
   );
 };
 
