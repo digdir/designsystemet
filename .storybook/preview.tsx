@@ -20,6 +20,7 @@ import {
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
+import { Heading } from '@digdir/design-system-react';
 
 type Viewport = {
   name: string;
@@ -47,7 +48,7 @@ type Props = Record<string, unknown>;
 
 const getHeading = (headingProps: HeadingProps) => (props: Props) => {
   return (
-    <LinkHeading
+    <Heading
       {...headingProps}
       {...props}
     />
