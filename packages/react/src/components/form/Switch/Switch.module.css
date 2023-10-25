@@ -16,6 +16,10 @@
   grid-auto-flow: column;
 }
 
+.switch.noLabel {
+  gap: 0;
+}
+
 @media (prefers-reduced-motion) {
   .container {
     --fds-transition: 0;
