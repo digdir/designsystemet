@@ -26,6 +26,8 @@ export const useSearch: UseSearch = (props) => {
     size: fieldset?.size ?? props.size,
     inputProps: {
       ...inputProps,
+      type: 'search',
+      name: props.name ?? 'q',
       readOnly,
       onClick: (e) => {
         if (readOnly) {

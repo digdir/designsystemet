@@ -23,7 +23,7 @@ describe('Search', () => {
   test('is invalid with correct error message', () => {
     render({ error: 'error-message' });
 
-    const search = screen.getByRole('textbox', {
+    const search = screen.getByRole('searchbox', {
       description: 'error-message',
     });
     expect(search).toBeDefined();
@@ -40,7 +40,7 @@ describe('Search', () => {
       </>,
     );
 
-    const search = screen.getByRole('textbox', {
+    const search = screen.getByRole('searchbox', {
       description: 'my error message',
     });
     expect(search).toBeDefined();
@@ -50,7 +50,7 @@ describe('Search', () => {
   it('Triggers onBlur event when field loses focus', async () => {
     const onBlur = jest.fn();
     render({ onBlur });
-    const element = screen.getByRole('textbox');
+    const element = screen.getByRole('searchbox');
     await user.click(element);
     expect(element).toHaveFocus();
     await user.tab();
@@ -61,7 +61,7 @@ describe('Search', () => {
     const onChange = jest.fn();
     const data = 'test';
     render({ onChange });
-    const element = screen.getByRole('textbox');
+    const element = screen.getByRole('searchbox');
     await user.click(element);
     expect(element).toHaveFocus();
     await user.keyboard(data);
@@ -71,21 +71,21 @@ describe('Search', () => {
   it('Sets given id on search field', () => {
     const id = 'some-unique-id';
     render({ id });
-    expect(screen.getByRole('textbox')).toHaveAttribute('id', id);
+    expect(screen.getByRole('searchbox')).toHaveAttribute('id', id);
   });
 
   it('Focuses on search field when label is clicked and id is not given', async () => {
     const label = 'Lorem ipsum';
     render({ label });
     await user.click(screen.getByText(label));
-    expect(screen.getByRole('textbox')).toHaveFocus();
+    expect(screen.getByRole('searchbox')).toHaveFocus();
   });
 
   it('Focuses on search field when label is clicked and id is given', async () => {
     const label = 'Lorem ipsum';
     render({ id: 'some-unique-id', label });
     await user.click(screen.getByText(label));
-    expect(screen.getByRole('textbox')).toHaveFocus();
+    expect(screen.getByRole('searchbox')).toHaveFocus();
   });
 });
 

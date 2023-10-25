@@ -1,6 +1,7 @@
 import type { ReactNode, InputHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
+import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utils';
 import { Button } from '../../Button';
@@ -17,7 +18,9 @@ export type SearchProps = {
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
   /** Changes field size and paddings */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
+  /** Variant */
+  variant?: 'primary' | 'secondary' | 'simple';
 } & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
 
@@ -30,9 +33,17 @@ export type SearchProps = {
  */
 export const Search = forwardRef<HTMLInputElement, SearchProps>(
   (props, ref) => {
-    const { label, style, hideLabel = true, ...rest } = props;
+    const {
+      label,
+      style,
+      hideLabel = true,
+      variant = 'simple',
+      ...rest
+    } = props;
 
     const { inputProps, hasError, errorId, size = 'medium' } = useSearch(props);
+
+    const isSimple = variant === 'simple';
 
     return (
       <Paragraph
@@ -60,16 +71,42 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         )}
 
         <div className={classes.field}>
-          <input
-            {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
-            {...inputProps}
-            className={cn(
-              classes.input,
-              utilityClasses.focusable,
-              classes[size],
+          <div className={classes.field}>
+            {isSimple && (
+              <MagnifyingGlassIcon
+                className={classes.icon}
+                aria-hidden
+              ></MagnifyingGlassIcon>
             )}
-            ref={ref}
-          />
+            <input
+              {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+              {...inputProps}
+              className={cn(
+                classes.input,
+                utilityClasses.focusable,
+                classes[size],
+                isSimple && classes.simple,
+              )}
+              ref={ref}
+            />
+            {/* <Button
+              className={classes.buttonClear}
+              variant='tertiary'
+              size='small'
+              type='button'
+            >
+              <XMarkIcon aria-hidden />
+            </Button> */}
+          </div>
+          {!isSimple && (
+            <Button
+              size={size}
+              variant={variant}
+              type='submit'
+            >
+              Søk
+            </Button>
+          )}
         </div>
 
         <div
