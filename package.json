@@ -38,8 +38,6 @@
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@commitlint/cli": "^17.4.1",
-    "@commitlint/config-conventional": "^17.4.0",
     "@digdir/design-system-react": "*",
     "@digdir/design-system-tokens": "*",
     "@etchteam/storybook-addon-css-variables-theme": "^1.5.1",
