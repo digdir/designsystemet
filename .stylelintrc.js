@@ -8,8 +8,8 @@ module.exports = {
   rules: {
     'prettier/prettier': true,
     'declaration-block-no-redundant-longhand-properties': null,
+    'media-feature-range-notation': 'prefix',
     'custom-property-pattern': null,
-    'media-feature-range-notation': null,
     // 'custom-property-pattern': 'fds-.+', // this rule needs to replaced the one above once we have new tokens
     'selector-class-pattern': [
       '^[a-z][a-zA-Z0-9]+$',
