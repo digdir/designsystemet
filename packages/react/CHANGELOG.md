@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.34.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.33.0...@digdir/design-system-react@0.34.0) (2023-10-25)
+
+### Bug Fixes
+
+- **InputWrapper:** Remove gap ([#989](https://github.com/digdir/designsystem/issues/989)) ([1fac2f7](https://github.com/digdir/designsystem/commit/1fac2f784ca5814a66529c51d800307e70def9d1))
+- **List:** Add more spacing between items ([#982](https://github.com/digdir/designsystem/issues/982)) ([6febc88](https://github.com/digdir/designsystem/commit/6febc887f165802efd5a8ded9d63ec547b2032cf))
+- **Switch:** Remove `gap` when there is no children ([#986](https://github.com/digdir/designsystem/issues/986)) ([1c95186](https://github.com/digdir/designsystem/commit/1c951865d51b042bf4f00998e3d71d2ec9e6ded2))
+
+### Features
+
+- Add `htmlSize` to `NativeSelect` and `Textfield` ([#972](https://github.com/digdir/designsystem/issues/972)) ([bf72f3b](https://github.com/digdir/designsystem/commit/bf72f3b7cf5b97ed7af53c731c757c6acbc90048))
+- **List:** More options for `List` component ([#913](https://github.com/digdir/designsystem/issues/913)) ([8903110](https://github.com/digdir/designsystem/commit/8903110823ce7d5ce85651724d057efc3d09ffd4))
+
 # [0.33.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.32.1...@digdir/design-system-react@0.33.0) (2023-10-19)
 
 ### Features
