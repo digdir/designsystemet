@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
+import { LinkHeading } from '../docs-components';
 
 import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
@@ -12,12 +13,14 @@ import '@altinn/figma-design-tokens/dist/tokens.css';
 import {
   Paragraph,
   Link,
-  Heading,
   HeadingProps,
   LinkProps,
+  List,
+  ListItem,
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
+import { Heading } from '@digdir/design-system-react';
 
 type Viewport = {
   name: string;
@@ -43,13 +46,71 @@ const viewports: Viewport[] = metadata.tokenSetOrder
 
 type Props = Record<string, unknown>;
 
-const getHeading = (headingProps: HeadingProps) => (props: Props) =>
-  (
+const getHeading = (headingProps: HeadingProps) => (props: Props) => {
+  return (
     <Heading
       {...headingProps}
       {...props}
-    ></Heading>
+    />
   );
+};
+
+const getPath = (href: string | undefined): string => {
+  if (!href) {
+    return '';
+  }
+
+  // if link starts with /, add current path to link
+  if (href.startsWith('/')) {
+    const { origin = '' } = document?.location;
+
+    return `${origin}/?path=${href}`;
+  }
+
+  return href;
+};
+
+const components = {
+  h1: getHeading({ level: 1, size: 'xlarge' }),
+  h2: getHeading({ level: 2, size: 'large' }),
+  h3: getHeading({ level: 3, size: 'medium' }),
+  h4: getHeading({ level: 4, size: 'small' }),
+  h5: getHeading({ level: 5, size: 'xsmall' }),
+  p: Paragraph,
+  ol: (props: Props) => (
+    <List
+      {...props}
+      as='ol'
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+    ></List>
+  ),
+  ul: (props: Props) => (
+    <List
+      {...props}
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+    ></List>
+  ),
+  li: (props: Props) => (
+    <ListItem
+      {...props}
+      className='sb-unstyled'
+      style={{ maxWidth: '70ch' }}
+    ></ListItem>
+  ),
+  a: (props: LinkProps) => {
+    // if link starts with /, add current path to link
+    const href = getPath(props.href);
+
+    return (
+      <Link
+        {...props}
+        href={href}
+      ></Link>
+    );
+  },
+};
 
 const preview: Preview = {
   decorators: [cssVariablesTheme],
@@ -68,47 +129,7 @@ const preview: Preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       theme: customTheme,
-      components: {
-        p: (props: Props) => (
-          <Paragraph
-            {...props}
-            style={{ maxWidth: '70ch' }}
-          ></Paragraph>
-        ),
-        // a: ({ href, ...rest }: LinkProps) => {
-        //   const { pathname = '', origin = '' } = document?.location;
-
-        //   return (
-        //     <Link
-        //       {...rest}
-        //       href={
-        //         href?.startsWith('/')
-        //           ? `${origin}${pathname}/?path=${href}`
-        //           : href
-        //       }
-        //     />
-        //   );
-        // },
-        h1: getHeading({ level: 1, size: 'xlarge' }),
-        h2: getHeading({ level: 2, size: 'large' }),
-        h3: getHeading({ level: 3, size: 'medium' }),
-        h4: getHeading({ level: 4, size: 'small' }),
-        h5: getHeading({ level: 5, size: 'xsmall' }),
-        ul: (props: Props) => (
-          <ul
-            style={{ maxWidth: '70ch' }}
-            {...props}
-          ></ul>
-        ),
-        li: (props: Props) => (
-          <Paragraph
-            as='li'
-            size='small'
-            style={{ maxWidth: '70ch' }}
-            {...props}
-          ></Paragraph>
-        ),
-      },
+      components,
     },
     controls: {
       matchers: {

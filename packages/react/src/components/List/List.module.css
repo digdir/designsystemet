@@ -1,3 +1,11 @@
 .list {
-  padding-left: var(--fds-spacing-6);
+  padding-left: var(--fds-spacing-4);
+}
+
+.heading {
+  margin-bottom: var(--fds-spacing-2);
+}
+
+li > .list {
+  margin-top: var(--fds-spacing-2);
 }

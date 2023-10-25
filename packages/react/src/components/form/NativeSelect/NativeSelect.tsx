@@ -32,6 +32,10 @@ export type NativeSelectProps = {
    * @default false
    */
   readOnly?: boolean;
+  /** Exposes the HTML `size` attribute.
+   * @default 0
+   */
+  htmlSize?: number;
 } & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
 
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
@@ -43,6 +47,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       hideLabel = false,
       error,
       className,
+      htmlSize = 0,
       ...rest
     } = props;
 
@@ -88,6 +93,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           {...selectProps}
           disabled={disabled || readOnly}
           ref={ref}
+          size={htmlSize}
           className={cn(
             classes.select,
             classes[size],

@@ -80,6 +80,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
           position === 'right' && classes.right,
+          !children && classes.noLabel,
           rest.className,
         )}
       >

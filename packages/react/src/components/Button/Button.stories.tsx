@@ -131,7 +131,7 @@ Variants.decorators = [
   ),
 ];
 
-export const withIcon: StoryFn<typeof Button> = () => (
+export const WithIcon: StoryFn<typeof Button> = () => (
   <>
     <Button
       icon={icon}
@@ -205,7 +205,7 @@ export const withIcon: StoryFn<typeof Button> = () => (
   </>
 );
 
-withIcon.decorators = [
+WithIcon.decorators = [
   (Story) => (
     <Stack
       style={{
@@ -218,7 +218,7 @@ withIcon.decorators = [
   ),
 ];
 
-export const withIconAndText: StoryFn<typeof Button> = () => (
+export const WithIconAndText: StoryFn<typeof Button> = () => (
   <>
     <Button
       icon={icon}
@@ -241,9 +241,9 @@ export const withIconAndText: StoryFn<typeof Button> = () => (
   </>
 );
 
-withIconAndText.decorators = [stack];
+WithIconAndText.decorators = [stack];
 
-export const withSpinner: StoryFn<typeof Button> = () => (
+export const WithSpinner: StoryFn<typeof Button> = () => (
   <>
     <Button
       icon={icon}
@@ -281,9 +281,9 @@ export const withSpinner: StoryFn<typeof Button> = () => (
   </>
 );
 
-withSpinner.decorators = [stack];
+WithSpinner.decorators = [stack];
 
-export const fullWidth: Story = {
+export const FullWidth: Story = {
   name: 'Full bredde',
   args: {
     children: 'Full bredde',
