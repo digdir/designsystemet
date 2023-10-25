@@ -14,11 +14,10 @@ export default {
 
 export const Preview: Story = {
   args: {
+    children: 'Switch',
     disabled: false,
     readOnly: false,
-    children: 'Switch',
   },
-  decorators: [(Story: StoryFn) => <Story />],
 };
 
 export const fullWidth: StoryFn<typeof Switch> = (args) => (
