@@ -66,7 +66,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
           <FilesIcon fontSize={20} />
         </button>
       </Tippy>
-      {/* @ts-ignore */}
+      {/* @ts-expect-error */}
       <SyntaxHighlighter
         style={nightOwl}
         language='jsx'
