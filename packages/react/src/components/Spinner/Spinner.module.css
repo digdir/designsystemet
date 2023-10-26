@@ -1,20 +1,12 @@
 .spinner {
-  /* animation: rotate-animation 10s linear infinite; */
+  animation: rotate-animation 2s linear infinite;
 }
 
 .spinnerCircle {
   /* r(20) * 2 * pi = 126 */
   stroke-dasharray: 126;
-  animation: stroke-animation 10s ease-in-out infinite;
-}
-
-.spinnerCircle2 {
-  /* r(20) * 2 * pi = 126 */
-  animation: stroke-animation-tail 10s ease-in-out infinite;
-  stroke: #ff000050 !important;
-  transform: scale(-1, 1) rotate(180deg);
   transform-origin: center;
-  stroke-dasharray: 126;
+  animation: stroke-animation 2s ease-in-out infinite;
 }
 
 /* Prefers reduced motion needs longer animation, 
@@ -47,6 +39,10 @@
 }
 
 @keyframes rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(360deg);
   }
@@ -55,35 +51,23 @@
 @keyframes stroke-animation {
   0% {
     stroke-dashoffset: 124;
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
   }
 
   50% {
     stroke-dashoffset: 18;
+    transform: rotate(54deg);
+    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
   }
 
   60% {
     stroke-dashoffset: 30;
+    transform: rotate(89deg);
   }
 
   100% {
     stroke-dashoffset: 124;
-  }
-}
-
-@keyframes stroke-animation-tail {
-  0% {
-    stroke-dashoffset: 124;
-  }
-
-  50% {
-    stroke-dashoffset: 124;
-  }
-
-  60% {
-    stroke-dashoffset: 40;
-  }
-
-  100% {
-    stroke-dashoffset: 124;
+    transform: rotate(360deg);
   }
 }
