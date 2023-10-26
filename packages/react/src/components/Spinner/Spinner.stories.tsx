@@ -46,7 +46,6 @@ export const Variants: Story = () => (
       variant='interaction'
       size='xlarge'
     />
-
     <Spinner
       title='Henter kaffi'
       variant='inverted'
