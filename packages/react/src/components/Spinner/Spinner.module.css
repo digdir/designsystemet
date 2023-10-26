@@ -1,12 +1,13 @@
 .spinner {
-  animation: rotate-animation 2s linear infinite;
+  animation: rotate-animation linear infinite;
+  animation-duration: 2s;
 }
 
 .spinnerCircle {
-  /* r(20) * 2 * pi = 126 */
   stroke-dasharray: 1px, 200px;
   transform-origin: center;
-  animation: stroke-animation 2s ease-in-out infinite;
+  animation: stroke-animation ease-in-out infinite;
+  animation-duration: 2s;
 }
 
 /* Prefers reduced motion needs longer animation, 
@@ -14,11 +15,11 @@
  */
 @media (prefers-reduced-motion: reduce) {
   .spinner {
-    animation: rotate-animation 6s linear infinite;
+    animation-duration: 6s;
   }
 
   .spinnerCircle {
-    animation: stroke-animation 5s ease-in-out infinite;
+    animation-duration: 6s;
   }
 }
 
@@ -65,26 +66,4 @@
     stroke-dashoffset: -120px;
     transform: rotate(15deg);
   }
-
-  /*   0% {
-    stroke-dashoffset: 124;
-    transform: rotate(0deg);
-    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-  }
-
-  50% {
-    stroke-dashoffset: 30;
-    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-  }
-
-  60% {
-    stroke-dashoffset: 30;
-    transform: rotate(89deg);
-    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-  }
-
-  100% {
-    stroke-dashoffset: 124;
-    transform: rotate(360deg);
-  } */
 }
