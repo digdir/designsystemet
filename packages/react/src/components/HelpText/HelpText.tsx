@@ -44,6 +44,7 @@ const HelpText = ({
         {...rest}
         ref={buttonRef}
         className={cn(classes.helpTextButton, className)}
+        aria-expanded={open}
         onClick={(event) => {
           setOpen((isOpen) => !isOpen);
           onClick?.(event);
