@@ -4,7 +4,7 @@
 
 .spinnerCircle {
   /* r(20) * 2 * pi = 126 */
-  stroke-dasharray: 126;
+  stroke-dasharray: 1px, 200px;
   transform-origin: center;
   animation: stroke-animation 2s ease-in-out infinite;
 }
@@ -50,6 +50,23 @@
 
 @keyframes stroke-animation {
   0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: -120px;
+    transform: rotate(15deg);
+  }
+
+  /*   0% {
     stroke-dashoffset: 124;
     transform: rotate(0deg);
     animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
@@ -69,5 +86,5 @@
   100% {
     stroke-dashoffset: 124;
     transform: rotate(360deg);
-  }
+  } */
 }
