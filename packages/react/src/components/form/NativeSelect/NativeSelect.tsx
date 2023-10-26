@@ -88,6 +88,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             {label}
           </Label>
         )}
+
         <select
           {...omit(['size', 'error', 'errorId'], rest)}
           {...selectProps}
@@ -98,11 +99,13 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             classes.select,
             classes[size],
             utilityClasses.focusable,
+            props.multiple && classes.multiple,
             className,
           )}
         >
           {children}
         </select>
+
         {error && (
           <div
             id={errorId}
