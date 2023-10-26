@@ -28,6 +28,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
       <Button
         ref={buttonRef}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         My trigger
       </Button>
@@ -59,7 +60,12 @@ export const Variants: StoryFn<typeof Popover> = () => {
 
   return (
     <>
-      <Button ref={buttonRef}>My trigger</Button>
+      <Button
+        ref={buttonRef}
+        aria-expanded={open}
+      >
+        My trigger
+      </Button>
       <Popover
         anchorEl={buttonRef.current}
         open={open}
@@ -104,6 +110,7 @@ export const InteractiveContent: StoryFn<typeof Popover> = () => {
       <Button
         ref={buttonRef}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         My trigger
       </Button>
