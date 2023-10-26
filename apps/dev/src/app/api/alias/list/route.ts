@@ -7,6 +7,7 @@ export async function GET() {
     'https://api.vercel.com/v4/aliases?teamId=' + process.env.VERCEL_TEAM_ID,
     {
       headers: requestHeaders,
+      next: { revalidate: 0 },
     },
   );
   const data = (await res.json()) as Promise<Response>;
