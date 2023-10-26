@@ -56,14 +56,14 @@
   }
 
   50% {
-    stroke-dashoffset: 18;
-    transform: rotate(54deg);
+    stroke-dashoffset: 30;
     animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
   }
 
   60% {
     stroke-dashoffset: 30;
     transform: rotate(89deg);
+    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
   }
 
   100% {
