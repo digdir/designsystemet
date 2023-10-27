@@ -84,6 +84,7 @@
     {/if}
     <input
       bind:value
+      on:input
       class={inputClasses}
       id="input-field"
       type="text"
