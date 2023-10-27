@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - 'storefront/**'
+      - 'apps/storefront/**'
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
