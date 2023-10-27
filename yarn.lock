@@ -23038,9 +23038,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storefront@workspace:storefront":
+"storefront@workspace:apps/storefront":
   version: 0.0.0-use.local
-  resolution: "storefront@workspace:storefront"
+  resolution: "storefront@workspace:apps/storefront"
   dependencies:
     "@altinn/altinn-design-system": ^0.27.2
     "@altinn/figma-design-tokens": ^5.0.0
