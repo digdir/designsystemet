@@ -40,5 +40,19 @@
       "value": "{spacing.3}",
       "type": "spacing"
     }
+  },
+  "component-size-2": {
+    "small": {
+      "value": "27",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "{sizing.8}",
+      "type": "sizing"
+    },
+    "large": {
+      "value": "{sizing.10}",
+      "type": "sizing"
+    }
   }
 }

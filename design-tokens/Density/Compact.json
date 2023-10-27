@@ -351,7 +351,7 @@
       }
     }
   },
-  "component-mode-height": {
+  "component-size-1": {
     "small": {
       "value": "{sizing.6}",
       "type": "sizing"
@@ -391,6 +391,20 @@
     "large": {
       "value": "{spacing.2}",
       "type": "spacing"
+    }
+  },
+  "component-size-2": {
+    "small": {
+      "value": "{sizing.5}",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "{sizing.6}",
+      "type": "sizing"
+    },
+    "large": {
+      "value": "{sizing.8}",
+      "type": "sizing"
     }
   }
 }
