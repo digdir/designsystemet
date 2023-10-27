@@ -24,7 +24,7 @@ import {
 import { Paragraph, Heading } from './components/Typography';
 // @ts-ignore
 import { Textfield, Radio, RadioGroup, Switch } from './components/Form';
-import Tab from './components/Tab/Tab.svelte';
+import Tabs from './components/Tabs/Tabs.svelte';
 
 export {
   Button,
@@ -44,5 +44,5 @@ export {
   Radio,
   RadioGroup,
   Switch,
-  Tab,
+  Tabs,
 };

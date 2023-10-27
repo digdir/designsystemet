@@ -6,7 +6,7 @@
   export let tabContentSize = 'medium';
 </script>
 
-<div class="tab-group">
+<div class="tabs-group">
   {#each tabs as tab, i}
     <button
       class={i === activeTab ? `active ${tabButtonSize}` : `${tabButtonSize}`}
@@ -30,7 +30,7 @@
 </div>
 
 <style>
-  .tab-group {
+  .tabs-group {
     display: inline-flex;
     flex-direction: row;
     border-bottom: var(--fds-border_width-default) solid

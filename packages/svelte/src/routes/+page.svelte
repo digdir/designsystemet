@@ -17,7 +17,7 @@
     AccordionHeader,
     AccordionItem,
   } from '$lib';
-  import Tab from '$lib/components/Tab/Tab.svelte';
+  import Tabs from '$lib/components/Tabs/Tabs.svelte';
 
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
@@ -272,4 +272,4 @@
   onClose={closeModal}
 />
 
-<Tab {tabs} />
+<Tabs {tabs} />
