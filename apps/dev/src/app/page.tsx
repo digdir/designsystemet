@@ -2,6 +2,7 @@
 
 export const revalidate = 0;
 export const fetchCache = 'force-no-store';
+export const dynamic = 'force-dynamic';
 
 import React, { useState, useEffect } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
