@@ -65,3 +65,11 @@
 .largeBorderRadius {
   border-radius: var(--interactive_components-border_radius-large);
 }
+
+.defaultBackground {
+  background-color: var(--fds-semantic-background-default);
+}
+
+.subtleBackground {
+  background-color: var(--fds-semantic-background-subtle);
+}

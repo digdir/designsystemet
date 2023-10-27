@@ -26,9 +26,9 @@ export type BoxProps = {
   borderRadius?: 'small' | 'medium' | 'large';
   /**
    * Background color of the box
-   * @default var(--fds-semantic-background-default)
+   * @default 'defualt'
    */
-  background?: string;
+  background?: 'default' | 'subtle';
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Box = ({
@@ -36,7 +36,7 @@ export const Box = ({
   padding = 'medium',
   borderColor,
   borderRadius = 'medium',
-  background = 'var(--fds-semantic-background-default)',
+  background = 'default',
   children,
   ...rest
 }: BoxProps) => {
@@ -48,10 +48,11 @@ export const Box = ({
         classes[padding + 'Padding'],
         classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],
+        classes[background + 'Background'],
         rest.className,
       )}
       style={{
-        background: background,
+        ...rest.style,
       }}
       {...rest}
     >
