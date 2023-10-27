@@ -8,6 +8,7 @@ export async function GET() {
     {
       headers: requestHeaders,
       next: { revalidate: 0 },
+      cache: 'no-store',
     },
   );
   const data = (await res.json()) as Promise<Response>;
