@@ -1,13 +1,20 @@
 <script>
-  /**
-   * Link component that can render as an anchor or button.
-   * @prop {string} [as='a'] - The type of element to render. Options are 'a' or 'button'.
-   * @prop {boolean} [inverted=false] - Inverts the color of the link. Use this on dark backgrounds.
-   * @prop {string} [href] - The URL the link points to. Only used if `as` is 'a'.
-   * @prop {string} [class=''] - Additional classes to add to the component.
+/**
+   * The type of element to render. Options are 'a' or 'button'.
+   * @type {'a' | 'button'}
    */
-  export let as = 'a';
+   export let as = 'a';
+  
+  /**
+   * Inverts the color of the link. Use this on dark backgrounds.
+   * @type {boolean}
+   */
   export let inverted = false;
+  
+  /**
+   * The URL the link points to. Only used if `as` is 'a'.
+   * @type {string}
+   */
   export let href = '';
 
   $: computedClass = `link ${inverted ? 'inverted' : ''} ${
@@ -19,11 +26,12 @@
   <a
     class={computedClass}
     {href}
+    {...$$restProps}
   >
     <slot />
   </a>
 {:else if as === 'button'}
-  <button class={computedClass}>
+  <button class={computedClass} {...$$restProps}>
     <slot />
   </button>
 {/if}
