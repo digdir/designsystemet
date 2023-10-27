@@ -45,3 +45,23 @@
 .xlargePadding {
   padding: var(--fds-spacing-10);
 }
+
+.defaultBorderColor {
+  border-color: var(--fds-semantic-border-neutral-default);
+}
+
+.subtleBorderColor {
+  border-color: var(--fds-semantic-border-neutral-subtle);
+}
+
+.smallBorderRadius {
+  border-radius: var(--interactive_components-border_radius-small);
+}
+
+.mediumBorderRadius {
+  border-radius: var(--interactive_components-border_radius-normal);
+}
+
+.largeBorderRadius {
+  border-radius: var(--interactive_components-border_radius-large);
+}
