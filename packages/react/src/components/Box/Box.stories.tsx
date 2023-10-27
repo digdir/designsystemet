@@ -1,15 +1,19 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
+
 import { Box } from './Box';
 
 type Story = StoryFn<typeof Box>;
 
-export default {
+const meta: Meta<typeof Box> = {
   title: 'Felles/Box',
   component: Box,
   parameters: {
     layout: 'padded',
   },
-} as Meta;
+};
+
+export default meta;
 
 export const Preview: Story = (args) => <Box {...args}>Box!</Box>;
 
