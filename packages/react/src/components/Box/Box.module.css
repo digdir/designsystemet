@@ -55,15 +55,15 @@
 }
 
 .smallBorderRadius {
-  border-radius: var(--interactive_components-border_radius-small);
+  border-radius: var(--fds-border_radius-small);
 }
 
 .mediumBorderRadius {
-  border-radius: var(--interactive_components-border_radius-normal);
+  border-radius: var(--fds-border_radius-medium);
 }
 
 .largeBorderRadius {
-  border-radius: var(--interactive_components-border_radius-large);
+  border-radius: var(--fds-border_radius-large);
 }
 
 .defaultBackground {
