@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.34.0...@digdir/design-system-react@0.35.0) (2023-10-30)
+
+### Bug Fixes
+
+- **HelpText:** Add missing `aria-expanded` ([#992](https://github.com/digdir/designsystem/issues/992)) ([383ed03](https://github.com/digdir/designsystem/commit/383ed0366e1fd831c1b354411df78a5670b657d2))
+- **LegacyTextField, LegacyTextArea:** :bug: Fix wrong placement of character counter ([#1008](https://github.com/digdir/designsystem/issues/1008)) ([c75aa3f](https://github.com/digdir/designsystem/commit/c75aa3fd4e7322d4b6870423dfbc1264b3e7ba11))
+
+### Features
+
+- **Spinner:** Update component and docs ([#970](https://github.com/digdir/designsystem/issues/970)) ([269f157](https://github.com/digdir/designsystem/commit/269f1578b7571ab6eb53c52cb8055734abaa14f9))
+
 # [0.34.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.33.0...@digdir/design-system-react@0.34.0) (2023-10-25)
 
 ### Bug Fixes
