@@ -126,6 +126,7 @@ export const InputWrapper = ({
       style={{
         height: '100%',
         display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
