@@ -23,15 +23,15 @@
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
 
-  let showModal = false;
+  let isModalOpen = false;
 
   function openModal(event) {
     event.stopPropagation();
-    showModal = true;
+    isModalOpen = true;
   }
 
   function closeModal() {
-    showModal = false;
+    isModalOpen = false;
   }
 
   let textfieldValue = '';
@@ -216,6 +216,10 @@
 
 <Button on:click={openModal}>Open Modal</Button>
 
+{#if isModalOpen}
+  <Modal onClose={closeModal} />
+{/if}
+
 <Tag size="xsmall">Tag XS</Tag>
 <Tag size="small">Tag small</Tag>
 <Tag size="medium">Tag medium</Tag>
@@ -267,9 +271,5 @@
   >{isReadOnly ? 'Selectable' : 'ReadOnly'}</Button
 >
 <p>Selected RadioGroup value: {selectedValue}</p>
-<Modal
-  show={showModal}
-  onClose={closeModal}
-/>
 
 <Tabs {tabs} />
