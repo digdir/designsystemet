@@ -54,7 +54,9 @@ npm install @digdir/design-system-react @digdir/design-system-tokens
 
 Add the `<link>` tag to your application and set the `font-family` to `Inter`.
 
-The `font-feature-settings` adds a tail to lowecase `L`s and must be set with the `!important` flag.
+The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
+
+#### HTML
 
 ```html
 <link
@@ -63,6 +65,8 @@ The `font-feature-settings` adds a tail to lowecase `L`s and must be set with th
 />
 ```
 
+#### CSS
+
 ```css
 body {
   font-family: 'Inter', sans-serif;
@@ -70,7 +74,7 @@ body {
 }
 ```
 
-If you choose to install the font in other ways remember to include the `400, 500 and 600` font weights.
+If you choose to install the font in a different way remember to include the `400, 500 and 600` font weights.
 
 ### 3. Usage
 
