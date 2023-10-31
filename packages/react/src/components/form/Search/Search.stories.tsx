@@ -18,6 +18,8 @@ export const Preview: Story = {
     disabled: false,
     size: 'medium',
     error: '',
+    placeholder: 'placholder',
+    variant: 'primary',
   },
 };
 
