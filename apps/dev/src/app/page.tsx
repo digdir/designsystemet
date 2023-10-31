@@ -91,7 +91,7 @@ export default function Home() {
             src='/img/storefront-logo-white.png'
             alt=''
           />
-          Designsystemet DEV test
+          Designsystemet DEV
         </h1>
         <div className={classes.timer}>
           <CountdownCircleTimer
