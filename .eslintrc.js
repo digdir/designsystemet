@@ -11,10 +11,10 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
     'plugin:storybook/recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['import', 'react', 'jsx-a11y', 'prettier'],
+  plugins: ['import', 'react', 'jsx-a11y'],
   overrides: [
     {
       // Typescript
@@ -41,7 +41,10 @@ module.exports = {
     },
   ],
   rules: {
+    // https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
     // Disabled because we use Typescript types for props
     'react/prop-types': ['off'],
     'react/jsx-no-bind': 'off',
@@ -49,7 +52,7 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/namespace': ['error', { allowComputed: true }],
     'import/no-named-as-default': 'off',
-    '@next/next/no-html-link-for-pages': ['error', '/storefront/pages/'],
+    '@next/next/no-html-link-for-pages': ['error', 'apps/storefront/pages/'],
     'import/order': [
       'warn',
       {
