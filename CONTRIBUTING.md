@@ -31,9 +31,9 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[Designsystemet Code of Conduct](https://github.com/digdir/designsystemblob/master/CODE_OF_CONDUCT.md).
+[Designsystemet Code of Conduct](./CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
-to <kontakt@designsystemet.no>.
+to <designsystem@digdir.no>.
 
 ## I Have a Question
 
@@ -43,7 +43,7 @@ Before you ask a question, it is best to search for existing [Issues](https://gi
 
 If you then still feel the need to ask a question and need clarification, we recommend the following:
 
-- Open an [Issue](https://github.com/digdir/designsystem/issues/new).
+- Open an [Issue](https://github.com/digdir/designsystem/issues/new/choose).
 - Provide as much context as you can about what you're running into.
 - Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.
 
@@ -229,15 +229,3 @@ fix(button): changed name of font-size prop to size
 
 BREAKING CHANGE: changed the name of the font-size prop to size to make it more readable
 ```
-
--->
-
-## Join The Project Team
-
-<!-- TODO -->
-
-<!-- omit in toc -->
-
-## Attribution
-
-This guide is based on the **contributing-gen**. [Make your own](https://github.com/bttger/contributing-gen)!

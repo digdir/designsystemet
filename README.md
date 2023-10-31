@@ -40,7 +40,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ---
 
-## 💡 Get started
+## 🚀 Get started
 
 Follow these steps to get started with the React components.
 
@@ -76,7 +76,7 @@ body {
 
 If you choose to install the font in a different way remember to include the `400, 500 and 600` font weights.
 
-### 3. Usage
+### 3. Use a React component
 
 ```jsx
 import '@digdir/design-system/tokens/brand/digdir/tokens.css';
