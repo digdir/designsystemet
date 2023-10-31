@@ -22,6 +22,7 @@
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
+  import Spinner from '$lib/components/Spinner/Spinner.svelte';
 
   let isModalOpen = false;
 
@@ -273,3 +274,17 @@
 <p>Selected RadioGroup value: {selectedValue}</p>
 
 <Tabs {tabs} />
+
+<h1>Spinner</h1>
+<div class="spinner">
+  <Spinner size="xLarge" title="xLarge" variant="interaction"/>
+  <Spinner size="large" title="large" variant="interaction"/>
+  <Spinner size="medium" title="medium" variant="interaction"/>
+  <Spinner size="small" title="small" variant="interaction"/>
+  <Spinner size="xSmall" title="xSmall" variant="interaction"/>
+</div>
+<div class="spinner">
+  <Spinner size="xLarge" title="xLarge default"/>
+  <Spinner size="xLarge" title="xLarge interaction" variant="interaction"/>
+  <Spinner size="xLarge" title="xLarge inverted" variant="inverted"/>
+</div>
