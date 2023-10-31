@@ -21,4 +21,15 @@ Preview.args = {
   children: 'Box!',
   shadow: 'medium',
   padding: 'medium',
+  borderRadius: 'medium',
+  background: 'default',
 };
+
+export const AsHeader: Story = (args) => (
+  <Box
+    {...args}
+    as='header'
+  >
+    Box!
+  </Box>
+);

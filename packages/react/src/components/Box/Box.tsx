@@ -1,9 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import React, { ElementType, HTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import classes from './Box.module.css';
 
 export type BoxProps = {
+  /**
+   * The element to render as
+   */
+  as?: ElementType;
   /**
    * Shadow size of the box
    * @default medium
@@ -32,6 +36,7 @@ export type BoxProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Box = ({
+  as: Component = 'div',
   shadow = 'medium',
   padding = 'medium',
   borderColor,
@@ -41,7 +46,7 @@ export const Box = ({
   ...rest
 }: BoxProps) => {
   return (
-    <div
+    <Component
       className={cn(
         classes.box,
         classes[shadow + 'Shadow'],
@@ -57,6 +62,6 @@ export const Box = ({
       {...rest}
     >
       {children}
-    </div>
+    </Component>
   );
 };
