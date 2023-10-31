@@ -2,6 +2,7 @@
 <div align="center">
   <picture align="center">
     <img align="center" alt="Designsystemet logo" src="assets/img/logo.svg">
+  
   </picture>
 </div>
 
@@ -22,20 +23,24 @@
 - thsi
 - thsi
 
-## Links
+---
 
-- [Documentation](https://mantine.dev/)
-- [Contribute](https://mantine.dev/contribute)
+## Links 🔗
 
-### Packages
-
-[`@mantine/styles`](https://mantine.dev/styles/create-styles/) – [emotion](https://emotion.sh/) based css-in-js library that is used in all Mantine components
-
-[`@mantine/styles`](https://mantine.dev/styles/create-styles/) – [emotion](https://emotion.sh/) based css-in-js library that is used in all Mantine components
+- [Storybook](https://storybook.designsystemet.no/)
+- [Storefront](https://designsystemet.no/)
 
 ---
 
-## Get started
+## Packages 📦
+
+[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – React library with common UI components like Buttons and Checkboxes.
+
+[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Design tokens that contain UI data like colors, fonts and spacing for styling and building user interfaces.
+
+---
+
+## Get started 💡
 
 Teskt
 
@@ -45,11 +50,11 @@ Teskt
 
 Tekst
 
-### [Code of Conduct](https://code.fb.com/codeofconduct)
+### [Code of Conduct](./CODE_OF_CONDUCT.md)
 
 Tekst
 
-### [Contributing Guide](https://reactjs.org/docs/how-to-contribute.html)
+### [Contributing Guide](./CONTRIBUTING.md)
 
 Tekst
 
@@ -57,7 +62,7 @@ Tekst
 
 ## Contributors 💪
 
-We are fortunate to have an awesome group of individuals who contribute to the design system.
+We are lucky to have a great group of people who help with the design system.
 
 <a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystem/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
@@ -65,4 +70,4 @@ We are fortunate to have an awesome group of individuals who contribute to the d
 
 ## Licence
 
-Link to MIT license
+Designsystemet is [MIT licensed](./LICENSE)
