@@ -1,35 +1,31 @@
 <script>
   /**
    * List component to render an unordered list with customizable border styles between items.
-   * @prop {string} [borderStyle='solid'] - The style of border between items. Options are 'solid' or 'dashed'.
-   * @prop {string} [className=''] - Additional classes to add to the component.
+   * @prop {string} [as='ul'] - The HTML element to render the component as. Options are 'ul', 'ol', 'none'.
    */
-  let borderStyle = 'solid';
-  let className = '';
+  export let as = 'ul';
 </script>
 
-<ul class={`list ${borderStyle} ${className} ${$$props.class || ''}`}>
-  <slot />
-</ul>
+{#if as === 'ul'}
+  <ul>
+    <slot />
+  </ul>
+{/if}
 
-<style lang="scss">
-  .list {
-    --component-list-border_width: 1px;
+{#if as === 'ol'}
+  <ol>
+    <slot />
+  </ol>
+{/if}
 
-    border-top-color: var(--component-list-border_color);
-    border-top-style: var(--component-list-border_style);
-    border-top-width: var(--component-list-border_width);
+{#if as === 'none'}
+  <ul class="list none">
+    <slot />
+  </ul>
+{/if}
+
+<style>
+  .list.none {
     list-style-type: none;
-    padding-left: 0;
-
-    &.solid {
-      --component-list-border_color: #bcc7cc;
-      --component-list-border_style: solid;
-    }
-
-    &.dashed {
-      --component-list-border_color: #1eadf7;
-      --component-list-border_style: dashed;
-    }
   }
 </style>

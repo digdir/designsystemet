@@ -159,10 +159,20 @@
   spacing
   short>Lorem ipsum dorem</Paragraph
 >
-<List>
+
+<List as="ol">
   <li><Alert severity="info">Alert (info, default)</Alert></li>
   <li><Alert severity="warning">Alert (warning)</Alert></li>
+  <li><Button>knapp</Button><Button>knapp</Button></li>
+</List>
+
+<List>
   <li><Alert severity="success">Alert (success)</Alert></li>
+  <li><Alert severity="danger">Alert (danger)</Alert></li>
+</List>
+
+<List as="none">
+  <li><Alert severity="info">Alert (info, default)</Alert></li>
   <li><Alert severity="danger">Alert (danger)</Alert></li>
 </List>
 
@@ -277,14 +287,45 @@
 
 <h1>Spinner</h1>
 <div class="spinner">
-  <Spinner size="xLarge" title="xLarge" variant="interaction"/>
-  <Spinner size="large" title="large" variant="interaction"/>
-  <Spinner size="medium" title="medium" variant="interaction"/>
-  <Spinner size="small" title="small" variant="interaction"/>
-  <Spinner size="xSmall" title="xSmall" variant="interaction"/>
+  <Spinner
+    size="xLarge"
+    title="xLarge"
+    variant="interaction"
+  />
+  <Spinner
+    size="large"
+    title="large"
+    variant="interaction"
+  />
+  <Spinner
+    size="medium"
+    title="medium"
+    variant="interaction"
+  />
+  <Spinner
+    size="small"
+    title="small"
+    variant="interaction"
+  />
+  <Spinner
+    size="xSmall"
+    title="xSmall"
+    variant="interaction"
+  />
 </div>
 <div class="spinner">
-  <Spinner size="xLarge" title="xLarge default"/>
-  <Spinner size="xLarge" title="xLarge interaction" variant="interaction"/>
-  <Spinner size="xLarge" title="xLarge inverted" variant="inverted"/>
+  <Spinner
+    size="xLarge"
+    title="xLarge default"
+  />
+  <Spinner
+    size="xLarge"
+    title="xLarge interaction"
+    variant="interaction"
+  />
+  <Spinner
+    size="xLarge"
+    title="xLarge inverted"
+    variant="inverted"
+  />
 </div>
