@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('Content-Type', 'application/json');
