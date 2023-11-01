@@ -38,14 +38,6 @@ export default [
       /leaflet/,
       /@navikt\/ds-icons/,
     ],
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      json(),
-      svgr({ exportType: 'named' }),
-      postcss(),
-      image(),
-    ],
+    plugins: [peerDepsExternal(), resolve(), commonjs(), postcss()],
   },
 ];
