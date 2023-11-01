@@ -69,6 +69,7 @@
     "@altinn/figma-design-tokens": "^6.0.1",
     "@navikt/aksel-icons": "^5.6.0",
     "altinn-designsystem": "^4.2.0",
+    "svelte-floating-ui": "^1.5.5",
     "uuid": "^9.0.1"
   }
 }

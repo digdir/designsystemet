@@ -16,6 +16,7 @@
     AccordionContent,
     AccordionHeader,
     AccordionItem,
+    Tooltip,
   } from '$lib';
   import Tabs from '$lib/components/Tabs/Tabs.svelte';
 
@@ -284,6 +285,25 @@
 <p>Selected RadioGroup value: {selectedValue}</p>
 
 <Tabs {tabs} />
+
+<Tooltip
+  content="Tooltip text"
+  placement="top"
+>
+  <Button>Tooltip</Button>
+</Tooltip>
+
+<p>
+  Tooltips kan også legges <nobr
+    ><Tooltip
+      content="Ganske kult?"
+      placement="bottom"
+      ><abbr style="font-weight: bold; text-decoration: underline dotted;"
+        >til i en tekst</abbr
+      ></Tooltip
+    ></nobr
+  > for å gi mer informasjon!
+</p>
 
 <h1>Spinner</h1>
 <div class="spinner">

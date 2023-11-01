@@ -14,6 +14,8 @@ import Alert from './components/Alert/Alert.svelte';
 // @ts-ignore
 import Tag from './components/Tag/Tag.svelte';
 // @ts-ignore
+import Tooltip from './components/Tooltip/Tooltip.svelte';
+// @ts-ignore
 import {
   Accordion,
   AccordionContent,
@@ -47,4 +49,5 @@ export {
   Switch,
   Tabs,
   Spinner,
+  Tooltip,
 };
