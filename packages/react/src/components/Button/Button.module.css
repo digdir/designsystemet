@@ -16,7 +16,6 @@
   font-family: inherit;
   justify-content: center;
   text-align: center;
-  letter-spacing: var(--typography-default-letter-spacing);
   text-decoration: none;
   position: relative;
   border-radius: var(--fds-border_radius-interactive);
