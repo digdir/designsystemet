@@ -74,16 +74,19 @@ body {
 }
 ```
 
-If you choose to install the font in a different way remember to include the `400, 500 and 600` font weights.
+If you choose to install the font in a different way, remember to include the `400`, `500` and `600` font weights.
 
 ### 3. Use a React component
 
 ```jsx
 import '@digdir/design-system/tokens/brand/digdir/tokens.css';
+
 import { Button } from '@digdir/design-system-react';
 
 <Button variant='secondary'>I am a button!</Button>;
 ```
+
+The `tokens.css` file only has to be imported once in your application.
 
 ---
 
