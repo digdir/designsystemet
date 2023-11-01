@@ -1,30 +1,49 @@
 .spinner {
-  animation: rotate-animation 2s linear infinite;
+  animation: rotate-animation linear infinite;
+  animation-duration: 2s;
 }
 
 .spinnerCircle {
-  animation: stroke-animation 1.5s ease-in-out infinite;
+  stroke-dasharray: 1px, 200px;
+  transform-origin: center;
+  animation: stroke-animation ease-in-out infinite;
+  animation-duration: 2s;
 }
 
-.defaultForeground {
+/* Prefers reduced motion needs longer animation, 
+  but don't remove it since it is not decorative.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 6s;
+  }
+
+  .spinnerCircle {
+    animation-duration: 6s;
+  }
+}
+
+.default {
   stroke: var(--colors-grey-500);
 }
 
-.interactionForeground {
+.interaction {
   stroke: var(--fds-semantic-border-action-first-default);
 }
 
-.invertedForeground {
+.inverted {
   stroke: var(--colors-white);
 }
 
-.defaultBackground,
-.interactionBackground,
-.invertedBackground {
+.background {
   stroke: var(--colors-grey-200);
 }
 
 @keyframes rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(360deg);
   }
@@ -32,17 +51,19 @@
 
 @keyframes stroke-animation {
   0% {
-    stroke-dasharray: 1, 150;
+    stroke-dasharray: 1px, 200px;
     stroke-dashoffset: 0;
   }
 
   50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -62;
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+    transform: rotate(0deg);
   }
 
   100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: -120px;
+    transform: rotate(15deg);
   }
 }
