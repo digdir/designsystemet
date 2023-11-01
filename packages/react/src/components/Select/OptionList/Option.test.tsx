@@ -1,4 +1,5 @@
 import React from 'react';
+import '@testing-library/jest-dom';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -25,8 +26,6 @@ const defaultProps: OptionProps = {
 };
 
 describe('Option', () => {
-  afterEach(jest.clearAllMocks);
-
   it('Renders label by default', () => {
     render();
     expect(screen.getByRole('option')).toHaveTextContent(label);
@@ -34,7 +33,7 @@ describe('Option', () => {
 
   it('Renders with given value', () => {
     render();
-    expect(screen.getByRole('option')).toHaveValue(value);
+    expect(screen.getByRole('option')).toHaveAttribute('value', value);
   });
 
   it('Renders formattedLabel if provided', () => {

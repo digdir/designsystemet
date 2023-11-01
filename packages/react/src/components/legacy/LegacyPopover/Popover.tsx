@@ -34,7 +34,7 @@ export const popoverVariants = [
   'danger',
 ] as const;
 
-type PopoverVariant_ = typeof popoverVariants[number];
+type PopoverVariant_ = (typeof popoverVariants)[number];
 
 interface IPopoverOptions extends HTMLAttributes<HTMLDivElement> {
   variant?: PopoverVariant_;
