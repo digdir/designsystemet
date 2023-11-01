@@ -28,7 +28,7 @@
   export let readOnly = false;
   export let disabled = false;
   export let value;
-  export let error = false;
+  export let error = '';
   export let prefix = '';
   export let suffix = '';
   export let characterLimit = null;
@@ -245,5 +245,9 @@
 
   .errorMessage:empty {
     display: none;
+  }
+
+  .error-message {
+    color: var(--fds-semantic-border-danger-default);
   }
 </style>
