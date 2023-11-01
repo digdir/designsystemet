@@ -59,11 +59,13 @@
         left: 'right',
       }[placement.split('-')[0]];
 
-      Object.assign($arrowRef.style, {
-        left: x != null ? `${x - 0}px` : '',
-        top: y != null ? `${y - 0}px` : '',
-        [staticSide]: '-4px',
-      });
+      if ($arrowRef) {
+        Object.assign($arrowRef.style, {
+          left: x != null ? `${x - 0}px` : '',
+          top: y != null ? `${y - 0}px` : '',
+          [staticSide]: '-4px',
+        });
+      }
     },
   });
 </script>
