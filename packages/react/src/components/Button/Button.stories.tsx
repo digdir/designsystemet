@@ -253,6 +253,7 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
+        size='small'
       />
       Laster...
     </Button>
@@ -264,6 +265,7 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
+        size='small'
       />
       Laster...
     </Button>
@@ -275,6 +277,7 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
+        size='small'
       />
       Laster...
     </Button>
