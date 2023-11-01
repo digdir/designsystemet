@@ -29,7 +29,7 @@ void registerTransforms(StyleDictionary);
 
 // File name under design-tokens/Brand
 const brands = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'] as const;
-type Brands = typeof brands[number];
+type Brands = (typeof brands)[number];
 
 type Densities = 'Default' | 'Compact';
 const prefix = 'fds';
