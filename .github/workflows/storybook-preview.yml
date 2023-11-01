@@ -67,7 +67,7 @@ jobs:
         id: current-time
         with:
           format: D. MMM YYYY - HH:mm
-          utcOffset: '+02:00'
+          timezone: Europe/Oslo
 
       - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v3
