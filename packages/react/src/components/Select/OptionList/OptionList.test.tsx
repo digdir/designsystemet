@@ -27,7 +27,7 @@ const multiSelectOptions: MultiSelectOption[] = [
 
 const specificPropKeys = ['Single', 'Multiple'] as const;
 const specificProps: Record<
-  typeof specificPropKeys[number],
+  (typeof specificPropKeys)[number],
   Pick<OptionListProps, 'options' | 'multiple'>
 > = {
   Single: {
