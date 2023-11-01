@@ -14,11 +14,6 @@ export type BoxProps = {
    */
   shadow?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   /**
-   * Padding size of the box
-   * @default medium
-   */
-  padding?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-  /**
    * Border color of the box
    * @default undefined
    */
@@ -38,7 +33,6 @@ export type BoxProps = {
 export const Box = ({
   as: Component = 'div',
   shadow = 'medium',
-  padding = 'medium',
   borderColor,
   borderRadius = 'medium',
   background = 'default',
@@ -50,15 +44,11 @@ export const Box = ({
       className={cn(
         classes.box,
         classes[shadow + 'Shadow'],
-        classes[padding + 'Padding'],
         classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],
         classes[background + 'Background'],
         rest.className,
       )}
-      style={{
-        ...rest.style,
-      }}
       {...rest}
     >
       {children}

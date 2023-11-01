@@ -1,6 +1,5 @@
 .box {
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  display: block;
 }
 
 .xsmallShadow {
@@ -21,26 +20,6 @@
 
 .xlargeShadow {
   box-shadow: var(--fds-shadow-xlarge);
-}
-
-.xsmallPadding {
-  padding: var(--fds-spacing-2);
-}
-
-.smallPadding {
-  padding: var(--fds-spacing-4);
-}
-
-.mediumPadding {
-  padding: var(--fds-spacing-6);
-}
-
-.largePadding {
-  padding: var(--fds-spacing-8);
-}
-
-.xlargePadding {
-  padding: var(--fds-spacing-10);
 }
 
 .defaultBorderColor {
