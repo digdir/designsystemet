@@ -60,7 +60,7 @@
   --fc-button-icon-size: var(--fds-sizing-4);
 
   gap: var(--fds-sizing-2);
-  font: var(--fds-typography-paragraph-small);
+  font: var(--fds-typography-paragraph-short-small);
   font-family: inherit;
 }
 
@@ -68,7 +68,7 @@
   --fc-button-icon-size: var(--fds-sizing-6);
 
   gap: var(--fds-sizing-3);
-  font: var(--fds-typography-paragraph-medium);
+  font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
 }
 
@@ -76,7 +76,7 @@
   --fc-button-icon-size: var(--fds-sizing-8);
 
   gap: var(--fds-sizing-3);
-  font: var(--fds-typography-paragraph-large);
+  font: var(--fds-typography-paragraph-short-large);
   font-family: inherit;
 }
 
