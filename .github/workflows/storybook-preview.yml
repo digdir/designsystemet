@@ -79,7 +79,7 @@ jobs:
           body: |
             **Preview deployments for this pull request:**
 
-            📖 [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (CEST)`
+            📖 [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (OSLO time)`
 
             ${{ steps.regex-storefront.outputs.match }}
 
