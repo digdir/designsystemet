@@ -17,7 +17,7 @@ export type BoxProps = {
    * Border color of the box
    * @default undefined
    */
-  borderColor?: 'default' | 'sublte';
+  borderColor?: 'default' | 'subtle';
   /**
    * Border radius of the box
    * @default medium

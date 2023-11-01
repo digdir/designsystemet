@@ -20,7 +20,6 @@ export const Preview: Story = (args) => <Box {...args}>Box!</Box>;
 Preview.args = {
   children: 'Box!',
   shadow: 'medium',
-  padding: 'medium',
   borderRadius: 'medium',
   background: 'default',
 };
