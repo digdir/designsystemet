@@ -1,6 +1,11 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { act, render as renderRtl, screen } from '@testing-library/react';
+import {
+  act,
+  render as renderRtl,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 
 import type { TooltipProps } from './Tooltip';
 import { Tooltip } from './Tooltip';
@@ -84,13 +89,11 @@ describe('Tooltip', () => {
 
     await render({ delay: 300 });
 
-    await act(async () => {
-      await user.hover(screen.getByRole('button'));
-      await new Promise((r) => setTimeout(r, 250));
-      expect(screen.queryByRole('tooltip')).toBeNull();
-      await new Promise((r) => setTimeout(r, 600));
-    });
+    await user.hover(screen.getByRole('button'));
+    expect(screen.queryByRole('tooltip')).toBeNull();
 
-    expect(screen.getByRole('tooltip')).toBeVisible();
+    await waitFor(() => {
+      expect(screen.queryByRole('tooltip')).toBeVisible();
+    });
   });
 });

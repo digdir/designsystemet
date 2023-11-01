@@ -25,7 +25,7 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
 
 const icon = <akselIcons.FloppydiskIcon />;
 
-type AkselIcon = typeof akselIcons['AirplaneFillIcon'];
+type AkselIcon = (typeof akselIcons)['AirplaneFillIcon'];
 type AkselIcons = Record<string, AkselIcon>;
 
 export const Preview: Story = {
