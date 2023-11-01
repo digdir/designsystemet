@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { List } from '.';
+import { Link } from '../Link';
 
 type Story = StoryFn<typeof List>;
 
@@ -55,5 +56,41 @@ export const Advanced: Story = (args) => (
       </List>
     </List.Item>
     <List.Item>List Item 3</List.Item>
+  </List>
+);
+
+export const LinkList: Story = (args) => (
+  <List
+    {...args}
+    heading='Designsystemet'
+    style={{
+      listStyle: 'none',
+      paddingLeft: 0,
+    }}
+  >
+    <List.Item>
+      <Link
+        href='https://www.designsystemet.no/grunnleggende'
+        target='_blank'
+      >
+        Grunnleggende
+      </Link>
+    </List.Item>
+    <List.Item>
+      <Link
+        href='https://www.designsystemet.no/god-praksis'
+        target='_blank'
+      >
+        God praksis
+      </Link>
+    </List.Item>
+    <List.Item>
+      <Link
+        href='https://www.designsystemet.no/monstre'
+        target='_blank'
+      >
+        Mønstre
+      </Link>
+    </List.Item>
   </List>
 );
