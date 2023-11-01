@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 
 import StyleDictionary from 'style-dictionary';
 import type {
@@ -26,9 +27,11 @@ import {
 
 void registerTransforms(StyleDictionary);
 
-type Brands = 'Altinn' | 'Digdir' | 'Tilsynet' | 'Brreg';
+// File name under design-tokens/Brand
+const brands = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'] as const;
+type Brands = typeof brands[number];
+
 type Densities = 'Default' | 'Compact';
-const brands: Brands[] = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'];
 const prefix = 'fds';
 const basePxFontSize = 16;
 const fileheader: Named<{ fileHeader: FileHeader }> = {
@@ -39,7 +42,7 @@ const fileheader: Named<{ fileHeader: FileHeader }> = {
   ],
 };
 
-const storefrontTokensPath = '../../storefront/tokens';
+const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
 const packageTokensPath = 'brand';
 
 setupFormatters('./../../prettier.config.js');
