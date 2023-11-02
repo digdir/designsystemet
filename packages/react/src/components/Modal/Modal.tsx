@@ -21,7 +21,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   ({ closeOnBackdropClick = false, children, ...props }, ref) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const mergedRefs = useMergeRefs([modalRef, ref]);
-
     useEffect(() => {
       if (!closeOnBackdropClick) return;
 
