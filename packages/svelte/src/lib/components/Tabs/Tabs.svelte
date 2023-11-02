@@ -25,7 +25,14 @@
   {#each tabs as tab, i}
     {#if i === activeTab}
       {#if typeof tab.content === 'function'}
-        <svelte:component this={tab.content} />
+        {#if tab.props !== undefined}
+          <svelte:component
+            this={tab.content}
+            {...tab.props}
+          />
+        {:else}
+          <svelte:component this={tab.content} />
+        {/if}
       {:else}
         {tab.content}
       {/if}

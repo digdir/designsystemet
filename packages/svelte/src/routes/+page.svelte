@@ -91,11 +91,15 @@
       icon: CheckmarkCircleFillIcon,
       title: 'Tab 2',
       content: Button,
+      props: {
+        color: 'second',
+        variant: 'filled',
+      },
     },
     {
       icon: XMarkOctagonFillIcon,
       title: 'Tab 3',
-      content: 'Tab 3 content',
+      content: Button,
     },
   ];
 </script>
