@@ -6,7 +6,7 @@ import { Box } from './Box';
 type Story = StoryFn<typeof Box>;
 
 const meta: Meta<typeof Box> = {
-  title: 'Felles/Box',
+  title: 'Primitives/Box',
   component: Box,
   parameters: {
     layout: 'padded',
