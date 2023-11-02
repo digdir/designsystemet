@@ -124,7 +124,11 @@ Do the same for smaller feature requests. We cannot guarantee that the new featu
 #### Developing new components and handling larger tasks
 
 Your team needs a new component that doesn't exist in the the design system and want to help develop it?
-Great news! We have created a process tohandle just this use case!
+Great news! We have created a process to handle just this use case!
+
+1. Submit a [feature request]() detailing your requirements, and indicate your interest in contributing to the development of this component.
+2. The design system team will review the feature request and assess its compatibility with the design system.
+3.
 
 #### 1. Install Node 16+ and Yarn 3
 
