@@ -1,0 +1,27 @@
+.modal {
+  width: 500px;
+  padding: 0;
+  border: none;
+  border-radius: var(--fds-border_radius-medium);
+  box-shadow: var(--fds-shadow-medium);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--fds-spacing-2) var(--fds-spacing-4);
+  border-bottom: 1px solid #ccc;
+}
+
+.modalContent {
+  padding: var(--fds-spacing-4);
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--fds-spacing-4);
+  border-top: 1px solid #ccc;
+}

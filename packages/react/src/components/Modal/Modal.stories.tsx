@@ -32,7 +32,8 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
         <Modal.Header closeModal={() => modalRef.current?.close()}>
           Modal header
         </Modal.Header>
-        This is my modal!
+        <Modal.Content>This is my modal!</Modal.Content>
+        <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
     </>
   );
