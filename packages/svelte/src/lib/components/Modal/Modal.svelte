@@ -60,6 +60,11 @@
     }
   }
 
+  function handlePrimaryButtonClick() {
+    onPrimaryButtonClick();
+    dispatch('primaryButtonClick');
+  }
+
   onMount(() => {
     window.addEventListener('click', handleClick);
     window.addEventListener('keydown', handleKeyDown);
@@ -94,7 +99,7 @@
     <div class="modal-footer">
       <button
         class={`button ${primaryButtonSize} ${primaryButtonVariant} ${primaryButtonColor}`}
-        on:click={onPrimaryButtonClick}>{primaryButtonText}</button
+        on:click={handlePrimaryButtonClick}>{primaryButtonText}</button
       >
       <div style="width: 8px;" />
       <button
