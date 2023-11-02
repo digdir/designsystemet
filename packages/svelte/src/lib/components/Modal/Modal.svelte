@@ -13,21 +13,23 @@
    * @prop {string} [secondaryButtonVariant='outline'] - Specify which variant to use for secondary button. Options are 'filled', 'outline', 'quiet'.
    * @prop {string} [secondaryButtonColor='first'] - Specify which color palette to use for secondary button. Options are 'first', 'second', 'success', 'danger', 'inverted'.
    * @prop {string} [secondaryButtonSize='medium'] - Size of the secondary button. Options are 'small', 'medium', 'large'.
+   * @prop {number} [numberOfErrors=0] - Number of errors.
    */
 
   export let modalVariant = 'default';
   export let title = 'Dette er en tittel';
   export let primaryButtonText = 'OK';
   export let primaryButtonVariant = 'filled';
-  export let primaryButtonColor =
-    modalVariant === 'alert' ? 'danger' : 'second';
+  export let primaryButtonColor = modalVariant === 'alert' ? 'danger' : 'first';
   export let primaryButtonSize = 'medium';
   export let secondaryButtonText = 'Avbryt';
   export let secondaryButtonVariant = 'outline';
   export let secondaryButtonColor = 'first';
   export let secondaryButtonSize = 'medium';
+  export let numberOfErrors = 0;
 
   export let onClose = () => {};
+  export let onPrimaryButtonClick = () => {};
 
   const dispatch = createEventDispatcher();
 
@@ -79,7 +81,7 @@
       on:focus={() => lastButton.focus()}><div /></a
     >
     <div class="modal-header">
-      <h2>{title}</h2>
+      <h2 style="margin: 0;">{title}</h2>
       <button
         class="close-btn"
         on:click={close}
@@ -92,14 +94,20 @@
     <div class="modal-footer">
       <button
         class={`button ${primaryButtonSize} ${primaryButtonVariant} ${primaryButtonColor}`}
-        bind:this={lastButton}>{primaryButtonText}</button
+        on:click={onPrimaryButtonClick}>{primaryButtonText}</button
       >
       <div style="width: 8px;" />
       <button
         class={`button ${secondaryButtonSize} ${secondaryButtonVariant} ${secondaryButtonColor}`}
-        on:click={close}>{secondaryButtonText}</button
+        on:click={close}
+        bind:this={lastButton}>{secondaryButtonText}</button
       >
     </div>
+    {#if numberOfErrors > 0}
+      <p class="error-text">
+        {`${numberOfErrors} feil må rettes før du kan gå videre.`}
+      </p>
+    {/if}
     <a
       href="/"
       on:focus={() => closeButton.focus()}><div /></a
@@ -512,5 +520,10 @@
     --fdsc-font-and-icon-color: var(--fds-semantic-text-neutral-on_inverted);
 
     background: var(--fds-semantic-surface-on_inverted-no_fill-active);
+  }
+  .error-text {
+    color: red;
+    padding: 0;
+    margin: 0;
   }
 </style>
