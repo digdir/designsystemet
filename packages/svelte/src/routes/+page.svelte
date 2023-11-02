@@ -150,7 +150,7 @@
 <Textfield
   bind:value={textfieldValue}
   error={showTextfieldError ? 'Lorem ipsum error' : ''}
-  size="small"
+  size="medium"
   characterLimit={10}
   characterLimitLabel={(count) =>
     count > -1

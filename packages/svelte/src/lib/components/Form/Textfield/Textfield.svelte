@@ -36,17 +36,39 @@
 
   let componentId = uuidv4();
 
+  let fontSizeClass;
+
+  switch (size) {
+    case 'xsmall':
+      fontSizeClass = 'font-xsmall';
+      break;
+    case 'small':
+      fontSizeClass = 'font-small';
+      break;
+    case 'medium':
+      fontSizeClass = 'font-medium';
+      break;
+    case 'large':
+      fontSizeClass = 'font-large';
+      break;
+    default:
+      fontSizeClass = 'font-medium';
+      break;
+  }
+
   // Computed class names for the component elements
   let formFieldClasses = `form-field ${size} ${disabled ? 'disabled' : ''} ${
     readOnly ? 'readonly' : ''
-  } ${$$props.class || ''}`;
+  } ${$$props.class || ''} ${fontSizeClass}`;
   let labelClasses = `label ${hideLabel ? 'visually-hidden' : ''}`;
-  let descriptionClasses = `description ${hideLabel ? 'visually-hidden' : ''}`;
+  let descriptionClasses = `description ${
+    hideLabel ? 'visually-hidden' : ''
+  } ${fontSizeClass}`;
   $: fieldClasses = `field ${error ? 'error' : ''}`;
   let inputClasses = `input ${size} ${prefix ? 'input-prefix' : ''} ${
     suffix ? 'input-suffix' : ''
   }`;
-  let errorMessageClasses = 'error-message';
+  let errorMessageClasses = `error-message ${fontSizeClass}`;
 </script>
 
 <div class={formFieldClasses}>
@@ -249,5 +271,18 @@
 
   .error-message {
     color: var(--fds-semantic-border-danger-default);
+  }
+
+  .font-xsmall {
+    font-size: 0.8125rem;
+  }
+  .font-small {
+    font-size: 0.9375rem;
+  }
+  .font-medium {
+    font-size: 1.125rem;
+  }
+  .font-large {
+    font-size: 1.25rem;
   }
 </style>
