@@ -12,9 +12,9 @@ import '@altinn/figma-design-tokens/dist/tokens.css';
 import {
   Paragraph,
   Link,
-  Heading,
-  HeadingProps,
   LinkProps,
+  List,
+  ListItem,
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
@@ -43,13 +43,57 @@ const viewports: Viewport[] = metadata.tokenSetOrder
 
 type Props = Record<string, unknown>;
 
-const getHeading = (headingProps: HeadingProps) => (props: Props) =>
-  (
-    <Heading
-      {...headingProps}
+const getPath = (href: string | undefined): string => {
+  if (!href) {
+    return '';
+  }
+
+  // if link starts with /, add current path to link
+  if (href.startsWith('/')) {
+    const { origin = '' } = document?.location;
+
+    return `${origin}/?path=${href}`;
+  }
+
+  return href;
+};
+
+const components = {
+  p: Paragraph,
+  ol: (props: Props) => (
+    <List
       {...props}
-    ></Heading>
-  );
+      as='ol'
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+    ></List>
+  ),
+  ul: (props: Props) => (
+    <List
+      {...props}
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+    ></List>
+  ),
+  li: (props: Props) => (
+    <ListItem
+      {...props}
+      className='sb-unstyled'
+      style={{ maxWidth: '70ch' }}
+    ></ListItem>
+  ),
+  a: (props: LinkProps) => {
+    // if link starts with /, add current path to link
+    const href = getPath(props.href);
+
+    return (
+      <Link
+        {...props}
+        href={href}
+      ></Link>
+    );
+  },
+};
 
 const preview: Preview = {
   decorators: [cssVariablesTheme],
@@ -68,47 +112,7 @@ const preview: Preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       theme: customTheme,
-      components: {
-        p: (props: Props) => (
-          <Paragraph
-            {...props}
-            style={{ maxWidth: '70ch' }}
-          ></Paragraph>
-        ),
-        // a: ({ href, ...rest }: LinkProps) => {
-        //   const { pathname = '', origin = '' } = document?.location;
-
-        //   return (
-        //     <Link
-        //       {...rest}
-        //       href={
-        //         href?.startsWith('/')
-        //           ? `${origin}${pathname}/?path=${href}`
-        //           : href
-        //       }
-        //     />
-        //   );
-        // },
-        h1: getHeading({ level: 1, size: 'xlarge' }),
-        h2: getHeading({ level: 2, size: 'large' }),
-        h3: getHeading({ level: 3, size: 'medium' }),
-        h4: getHeading({ level: 4, size: 'small' }),
-        h5: getHeading({ level: 5, size: 'xsmall' }),
-        ul: (props: Props) => (
-          <ul
-            style={{ maxWidth: '70ch' }}
-            {...props}
-          ></ul>
-        ),
-        li: (props: Props) => (
-          <Paragraph
-            as='li'
-            size='small'
-            style={{ maxWidth: '70ch' }}
-            {...props}
-          ></Paragraph>
-        ),
-      },
+      components,
     },
     controls: {
       matchers: {
@@ -119,7 +123,14 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Oversikt', 'Endringslogger', 'Felles', 'Altinn', 'Avviklet'],
+        order: [
+          'Oversikt',
+          'Endringslogger',
+          'Felles',
+          'Primitives',
+          'Altinn',
+          'Avviklet',
+        ],
       },
     },
     viewport: {

@@ -17,23 +17,47 @@ const render = (props: Partial<ListProps> = {}) => {
   return renderRtl(<List {...allProps} />);
 };
 
-const borderStyles: ListProps['borderStyle'][] = [undefined, 'solid'];
-
 describe('List', () => {
-  it.each(borderStyles)(
-    'Renders a list with solid border when "borderStyle" is %s',
-    (borderStyle) => {
-      render({ borderStyle });
-      const list = screen.getByRole('list');
-      expect(list).toHaveClass('solid');
-      expect(list).not.toHaveClass('dashed');
-    },
-  );
+  it('Renders the list', () => {
+    render();
 
-  it('Renders a list with dashed border when "borderStyle" is dashed', () => {
-    render({ borderStyle: 'dashed' });
-    const list = screen.getByRole('list');
-    expect(list).toHaveClass('dashed');
-    expect(list).not.toHaveClass('solid');
+    expect(screen.getByRole('list')).toBeInTheDocument();
+  });
+
+  it('Renders an unordered list', () => {
+    render();
+    const list = document.querySelector('ul');
+    expect(list).toBeInTheDocument();
+  });
+
+  it('Renders an ordered list', () => {
+    render({ as: 'ol' });
+    const list = document.querySelector('ol');
+    expect(list).toBeInTheDocument();
+  });
+
+  it('Renders the children', () => {
+    render();
+    expect(screen.getByText('Test')).toBeInTheDocument();
+  });
+
+  it('should have the passed className', () => {
+    render({ className: 'test' });
+    expect(screen.getByRole('list')).toHaveClass('test');
+  });
+
+  it('should have the passed size', () => {
+    render({ size: 'large' });
+    expect(screen.getByRole('list')).toHaveClass('large');
+  });
+
+  it('should have the passed heading', () => {
+    render({ heading: 'Test' });
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+  });
+
+  it('should have aria-labelledby when heading is passed', () => {
+    render({ heading: 'Test' });
+    expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
   });
 });

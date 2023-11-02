@@ -17,7 +17,7 @@ export type TagProps = {
   /** Size of the tag */
   size?: Size;
   /** Variant of the tag */
-  variant?: 'filled' | 'outlined';
+  variant?: 'primary' | 'secondary';
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
@@ -26,7 +26,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       children,
       color = 'neutral',
       size = 'medium',
-      variant = 'filled',
+      variant = 'primary',
       className,
       ...restHTMLProps
     },

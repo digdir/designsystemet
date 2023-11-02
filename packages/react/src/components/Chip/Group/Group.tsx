@@ -3,8 +3,7 @@ import React, { forwardRef, createContext } from 'react';
 import cn from 'classnames';
 
 import type { ChipBaseProps } from '../_ChipBase';
-
-import classes from './Group.module.css';
+import classes from '../Chip.module.css';
 
 export type ChipGroupContext = {
   size?: ChipBaseProps['size'];

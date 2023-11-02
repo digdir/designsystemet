@@ -1,0 +1,80 @@
+.select {
+  position: relative;
+  font: inherit;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  min-height: 2.5em;
+  width: 100%;
+  padding: 0 var(--fds-spacing-2);
+  border: solid 1px var(--fds-semantic-border-action-dark);
+  border-radius: var(--fds-border_radius-medium);
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMWVtJyBoZWlnaHQ9JzFlbScgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZvY3VzYWJsZT0nZmFsc2UnIHJvbGU9J2ltZyc+PHBhdGggZmlsbC1ydWxlPSdldmVub2RkJyBjbGlwLXJ1bGU9J2V2ZW5vZGQnIGQ9J001Ljk3IDkuNDdhLjc1Ljc1IDAgMCAxIDEuMDYgMEwxMiAxNC40NGw0Ljk3LTQuOTdhLjc1Ljc1IDAgMSAxIDEuMDYgMS4wNmwtNS41IDUuNWEuNzUuNzUgMCAwIDEtMS4wNiAwbC01LjUtNS41YS43NS43NSAwIDAgMSAwLTEuMDZaJyBmaWxsPSdjdXJyZW50Q29sb3InPjwvcGF0aD48L3N2Zz4=');
+  background-repeat: no-repeat;
+  background-position: right var(--fds-spacing-2) center;
+  background-size: 1.5em 1.5em;
+  appearance: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .select:not(:focus-visible, :disabled):hover {
+    border-color: var(--fds-semantic-border-action-hover);
+    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
+  }
+}
+
+.select.multiple {
+  background-image: none;
+}
+
+.select.xsmall,
+.select.small {
+  padding: 0 var(--fds-spacing-1);
+}
+
+.select.medium {
+  padding: 0 var(--fds-spacing-2);
+}
+
+.select.large {
+  padding: 0 var(--fds-spacing-3);
+}
+
+.formField {
+  display: grid;
+  gap: var(--fds-spacing-2);
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+.disabled .select {
+  cursor: not-allowed;
+}
+
+.readOnly .select {
+  background: var(--fds-semantic-surface-neutral-subtle);
+  border-color: var(--fds-semantic-border-neutral-default);
+}
+
+.error > .select:not(:focus-visible) {
+  border-color: var(--fds-semantic-border-danger-default);
+  box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+}
+
+.padlock {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.errorMessage:empty {
+  display: none;
+}
+
+.label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
+  align-items: center;
+}

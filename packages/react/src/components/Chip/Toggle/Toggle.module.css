@@ -1,8 +1,0 @@
-.spacing {
-  padding-left: var(--fds-spacing-1) !important;
-}
-
-.checkmarkIcon {
-  height: var(--fds-sizing-5);
-  width: auto;
-}

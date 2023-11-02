@@ -20,7 +20,7 @@ export const Preview: Story = {
   },
 };
 
-export const fullWidth: StoryFn<typeof Switch> = (args) => (
+export const FullWidth: StoryFn<typeof Switch> = (args) => (
   <Fieldset legend='Skru av/på en eller flere instillinger'>
     <Switch
       value='alt1'
@@ -43,8 +43,8 @@ export const fullWidth: StoryFn<typeof Switch> = (args) => (
   </Fieldset>
 );
 
-export const fullWidthRight = fullWidth.bind({});
+export const FullWidthRight = FullWidth.bind({});
 
-fullWidthRight.args = {
+FullWidthRight.args = {
   position: 'right',
 };

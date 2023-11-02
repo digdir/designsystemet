@@ -28,6 +28,8 @@ jobs:
         run: yarn install --immutable
       - name: Build
         run: yarn build
+      - name: Types
+        run: yarn types:react
       - name: Lint Code
         run: yarn lint:all
       - name: Lint CSS

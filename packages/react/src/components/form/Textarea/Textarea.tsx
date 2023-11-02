@@ -32,7 +32,7 @@ export type TextareaProps = {
    */
   characterLimit?: CharacterLimitProps;
 } & Omit<FormFieldProps, 'size'> &
-  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>;
+  TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 /** Textarea field
  *

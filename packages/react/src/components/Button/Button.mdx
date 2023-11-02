@@ -6,26 +6,31 @@ import * as ButtonStories from './Button.stories';
 
 # Button
 
-<Information text='altinn' />
-
 Button lar brukeren utføre en handling.
-
-## Bruk
-
-```tsx
-import { Button } from '@digdir/design-system-react';
-
-<Button>Trykk på meg!</Button>;
-```
 
 ## Props
 
 <Primary />
 <Controls />
 
+## Bruk
+
 <Information text='token' />
 
-## Varianter
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Button } from '@digdir/design-system-react';
+
+<Button>Trykk på meg!</Button>;
+```
+
+## Eksempler
+
+### Lenke
+
+Sett `as="a"` dersom du trenger å bruke knappen som en lenke. Vurder først om det ikke holder å bruke [Link](/docs/felles-link--docs) komponenten.
+
+<Canvas of={ButtonStories.UsedAsLink} />
 
 ### Knapp med tekst
 
@@ -33,15 +38,15 @@ import { Button } from '@digdir/design-system-react';
 
 ### Knapp med ikon
 
-<Canvas of={ButtonStories.withIcon} />
+<Canvas of={ButtonStories.WithIcon} />
 
 ### Knapp med tekst og ikon
 
-<Canvas of={ButtonStories.withIconAndText} />
+<Canvas of={ButtonStories.WithIconAndText} />
 
 ### Full bredde
 
-<Canvas of={ButtonStories.fullWidth} />
+<Canvas of={ButtonStories.FullWidth} />
 
 ### Bruk av Spinner til å lage en knapp som laster
 
@@ -54,4 +59,4 @@ Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er 
 Det er imidlertid viktig å vite at denne egenskapen ikke automatisk stopper knappen fra å utløse sin `onCLick`-metode.
 Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
 
-<Canvas of={ButtonStories.withSpinner} />
+<Canvas of={ButtonStories.WithSpinner} />
