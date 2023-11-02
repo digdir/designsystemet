@@ -1,8 +1,9 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { List } from '.';
 import { Link } from '../Link';
+
+import { List } from '.';
 
 type Story = StoryFn<typeof List>;
 
