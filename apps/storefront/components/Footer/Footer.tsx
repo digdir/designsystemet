@@ -73,6 +73,11 @@ type LinkListItemProps = {
   prefix?: React.ReactNode;
 };
 
+const getCurrentYear = () => {
+  const date = new Date();
+  return date.getFullYear();
+};
+
 const LinkList = (links: LinkListItemProps[]) => {
   return (
     <ul className={classes.links}>
@@ -131,7 +136,7 @@ const Footer = () => {
         </Container>
       </div>
       <div className={classes.bottom}>
-        <Container>© 2023 Designsystemet</Container>
+        <Container>© {getCurrentYear()} Designsystemet</Container>
       </div>
     </footer>
   );
