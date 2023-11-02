@@ -114,6 +114,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
           <Button
             onClick={() => {
               window.alert(`Du har sendt inn skjema med navn: ${input}`);
+              setInput('');
               modalRef.current?.close();
             }}
           >

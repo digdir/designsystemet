@@ -8,6 +8,8 @@ import { Button } from '../Button';
 
 import classes from './Modal.module.css';
 
+// TODO: Add scroll lock
+
 export type ModalProps = {
   /**
    * Close modal when clicking on backdrop.
