@@ -42,7 +42,7 @@
   } ${$$props.class || ''}`;
   let labelClasses = `label ${hideLabel ? 'visually-hidden' : ''}`;
   let descriptionClasses = `description ${hideLabel ? 'visually-hidden' : ''}`;
-  let fieldClasses = `field ${error ? 'error' : ''}`;
+  $: fieldClasses = `field ${error ? 'error' : ''}`;
   let inputClasses = `input ${size} ${prefix ? 'input-prefix' : ''} ${
     suffix ? 'input-suffix' : ''
   }`;

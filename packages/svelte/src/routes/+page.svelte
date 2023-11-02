@@ -26,6 +26,7 @@
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
 
   let isModalOpen = false;
+  let showTextfieldError = false;
 
   function openModal(event) {
     event.stopPropagation();
@@ -145,8 +146,10 @@
   >First Icon</Button
 >
 
+<Switch bind:checked={showTextfieldError}>Show Error</Switch>
 <Textfield
   bind:value={textfieldValue}
+  error={showTextfieldError ? 'Lorem ipsum error' : ''}
   size="small"
   characterLimit={10}
   characterLimitLabel={(count) =>
