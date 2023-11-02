@@ -2,7 +2,7 @@
   import { createEventDispatcher, onMount } from 'svelte';
 
   /**
-   * `Button` used for interaction.
+   * `Modal`.
    * @prop {string} [modalVariant = 'default'] - Specify which variant to use for the modal. Options are 'default', 'alert'.
    * @prop {string} [title = 'Dette er en tittel'] - Title of the modal.
    * @prop {string} [primaryButtonText = 'OK'] - Text on primary button.
@@ -14,6 +14,7 @@
    * @prop {string} [secondaryButtonColor='first'] - Specify which color palette to use for secondary button. Options are 'first', 'second', 'success', 'danger', 'inverted'.
    * @prop {string} [secondaryButtonSize='medium'] - Size of the secondary button. Options are 'small', 'medium', 'large'.
    * @prop {number} [numberOfErrors=0] - Number of errors.
+   * @prop {boolean} [isModalValidating=false] - Whether the modal is validating.
    */
 
   export let modalVariant = 'default';
