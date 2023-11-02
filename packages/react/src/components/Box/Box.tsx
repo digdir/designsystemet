@@ -1,4 +1,5 @@
-import React, { ElementType, HTMLAttributes } from 'react';
+import type { ElementType, HTMLAttributes } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
 import classes from './Box.module.css';
