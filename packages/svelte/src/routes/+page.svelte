@@ -1,5 +1,4 @@
 <script>
-  import { writable } from 'svelte/store';
   import Alert from '$lib/components/Alert/Alert.svelte';
   import Button from '$lib/components/Button/Button.svelte';
   import Switch from '$lib/components/Form/Switch/Switch.svelte';
@@ -8,6 +7,7 @@
   import Textfield from '$lib/components/Form/Textfield/Textfield.svelte';
   import Link from '$lib/components/Link/Link.svelte';
   import List from '$lib/components/List/List.svelte';
+  import ListItem from '$lib/components/List/ListItem.svelte';
   import Tag from '$lib/components/Tag/Tag.svelte';
   import Paragraph from '$lib/components/Typography/Paragraph/Paragraph.svelte';
   import Modal from '$lib/components/Modal/Modal.svelte';
@@ -105,7 +105,7 @@
 </script>
 
 <h1>Test components here!</h1>
-
+<h1>Switch</h1>
 <Switch
   on:click={handleSwitchClickEvent}
   on:change={handleSwitchChangeEvent}
@@ -130,6 +130,7 @@
   description="Ipsum lorem dorem durem">Switch with Description</Switch
 >
 
+<h1>Button</h1>
 <Button>First</Button>
 <Button color="second">Secondary</Button>
 <Button color="success">Success</Button>
@@ -150,6 +151,7 @@
   >First Icon</Button
 >
 
+<h1>Textfield</h1>
 <Switch bind:checked={showTextfieldError}>Show Error</Switch>
 <Textfield
   bind:value={textfieldValue}
@@ -162,28 +164,38 @@
       : `Du har ${Math.abs(count)} tegn for mye.`}
 />
 
+<h1>Link</h1>
 <Link href="/route">Link</Link>
+
+<h1>Paragraph</h1>
 <Paragraph
   spacing
   short>Lorem ipsum dorem</Paragraph
 >
 
+<h1>List components</h1>
+<h2>Ordered list:</h2>
 <List as="ol">
-  <li><Alert severity="info">Alert (info, default)</Alert></li>
-  <li><Alert severity="warning">Alert (warning)</Alert></li>
-  <li><Button>knapp</Button><Button>knapp</Button></li>
+  <ListItem><Alert severity="info">Alert (info, default)</Alert></ListItem>
+  <ListItem><Alert severity="warning">Alert (warning)</Alert></ListItem>
+  <ListItem><Button>knapp</Button><Button>knapp</Button></ListItem>
 </List>
-
+<h2>Unordered list:</h2>
 <List>
-  <li><Alert severity="success">Alert (success)</Alert></li>
-  <li><Alert severity="danger">Alert (danger)</Alert></li>
+  <ListItem><Alert severity="success">Alert (success)</Alert></ListItem>
+  <ListItem><Alert severity="danger">Alert (danger)</Alert></ListItem>
 </List>
-
+<h2>Unstyled list:</h2>
 <List as="none">
-  <li><Alert severity="info">Alert (info, default)</Alert></li>
-  <li><Alert severity="danger">Alert (danger)</Alert></li>
+  <ListItem className="no-padding"
+    ><Alert severity="info">Alert (info, default)</Alert></ListItem
+  >
+  <ListItem className="no-padding"
+    ><Alert severity="danger">Alert (danger)</Alert></ListItem
+  >
 </List>
 
+<h1>Tags</h1>
 <Tag color="first">Tag Primary</Tag>
 <Tag color="second">Tag Secondary</Tag>
 <Tag color="third">Tag tertiary</Tag>
@@ -198,6 +210,7 @@
   variant="outlined">Tag Outlined</Tag
 >
 
+<h1>Accordion</h1>
 <Accordion
   border={true}
   color="second"
@@ -233,16 +246,19 @@
   </AccordionItem>
 </Accordion>
 
+<h1>Modal</h1>
 <Button on:click={openModal}>Open Modal</Button>
 
 {#if isModalOpen}
   <Modal onClose={closeModal} />
 {/if}
 
+<h1>Tags</h1>
 <Tag size="xsmall">Tag XS</Tag>
 <Tag size="small">Tag small</Tag>
 <Tag size="medium">Tag medium</Tag>
 
+<h1>Radio</h1>
 <RadioGroup
   bind:value={selectedValue}
   on:change={handleGroupChange}
@@ -291,8 +307,10 @@
 >
 <p>Selected RadioGroup value: {selectedValue}</p>
 
+<h1>Tabs</h1>
 <Tabs {tabs} />
 
+<h1>Tooltip</h1>
 <Tooltip
   content="Tooltip text"
   placement="top"

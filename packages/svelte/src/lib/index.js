@@ -10,6 +10,8 @@ import Link from './components/Link/Link.svelte';
 // @ts-ignore
 import List from './components/List/List.svelte';
 // @ts-ignore
+import ListItem from './components/List/ListItem.svelte';
+// @ts-ignore
 import Alert from './components/Alert/Alert.svelte';
 // @ts-ignore
 import Tag from './components/Tag/Tag.svelte';
@@ -35,6 +37,7 @@ export {
   Select,
   Link,
   List,
+  ListItem,
   Alert,
   Paragraph,
   Heading,
