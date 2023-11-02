@@ -45,6 +45,17 @@
   border-radius: var(--fds-border_radius-medium);
 }
 
+.inputSuffix {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.suffix {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .input.xsmall,
 .input.small {
   padding: 0 var(--fds-spacing-2);

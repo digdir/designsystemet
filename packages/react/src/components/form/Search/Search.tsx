@@ -86,6 +86,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 utilityClasses.focusable,
                 classes[size],
                 isSimple && classes.simple,
+                !isSimple && classes.inputSuffix,
               )}
               ref={ref}
             />
@@ -100,6 +101,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           </div>
           {!isSimple && (
             <Button
+              className={classes.suffix}
               size={size}
               variant={variant}
               type='submit'
