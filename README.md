@@ -79,7 +79,7 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/design-system/tokens/brand/digdir/tokens.css';
+import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 
 import { Button } from '@digdir/design-system-react';
 

@@ -1,5 +1,3 @@
-<!-- omit in toc -->
-
 # Contributing to Designsystemet
 
 First off, thanks for taking the time to contribute! ❤️
@@ -9,11 +7,8 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 > And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
 >
 > - Star the project
-> - Tweet about it
 > - Refer this project in your project's readme
 > - Mention the project at local meetups and tell your friends/colleagues
-
-<!-- omit in toc -->
 
 ## Table of Contents
 
@@ -22,11 +17,13 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [I Want To Contribute](#i-want-to-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Your First Code Contribution](#your-first-code-contribution)
   - [Improving The Documentation](#improving-the-documentation)
+  - [Getting involved with development](#your-first-code-contribution)
+  - [Getting started with development](#your-first-code-contribution)
+  - [Pull requests](#pull-requests)
 - [Styleguides](#styleguides)
   - [Commit Messages](#commit-messages)
-- [Join The Project Team](#join-the-project-team)
+  - [Code standards](#code-standards)
 
 ## Code of Conduct
 
@@ -49,30 +46,13 @@ If you then still feel the need to ask a question and need clarification, we rec
 
 We will then take care of the issue as soon as possible.
 
-<!--
-You might want to create a separate issue tag for questions and include it in this description. People should then tag their issues accordingly.
-
-Depending on how large the project is, you may want to outsource the questioning, e.g. to Stack Overflow or Gitter. You may add additional contact and information possibilities:
-- IRC
-- Slack
-- Gitter
-- Stack Overflow tag
-- Blog
-- FAQ
-- Roadmap
-- E-Mail List
-- Forum
--->
-
 ## I Want To Contribute
 
-> ### Legal Notice <!-- omit in toc -->
+> ### Legal Notice
 >
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
 
 ### Reporting Bugs
-
-<!-- omit in toc -->
 
 #### Before Submitting a Bug Report
 
@@ -89,13 +69,9 @@ A good bug report shouldn't leave others needing to chase you up for more inform
   - Possibly your input and the output
   - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
 
-<!-- omit in toc -->
-
 #### How Do I Submit a Good Bug Report?
 
 > You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <designystem@digdir.no>.
-
-<!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
@@ -104,19 +80,9 @@ We use GitHub issues to track bugs and errors. If you run into an issue with the
 - Please provide as much context as possible and describe the _reproduction steps_ that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
 - Provide the information you collected in the previous section.
 
-Once it's filed:
-
-- The project team will label the issue accordingly.
-- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
-- If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
-
-<!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
-
 ### Suggesting Enhancements
 
 This section guides you through submitting an enhancement suggestion for Designsystemet, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
-
-<!-- omit in toc -->
 
 #### Before Submitting an Enhancement
 
@@ -124,8 +90,6 @@ This section guides you through submitting an enhancement suggestion for Designs
 - Read the [documentation](https://www.designsystemet.no/) carefully and find out if the functionality is already covered, maybe by an individual configuration.
 - Perform a [search](https://github.com/digdir/designsystem/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
-
-<!-- omit in toc -->
 
 #### How Do I Submit a Good Enhancement Suggestion?
 
@@ -137,9 +101,30 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/digdir
 - You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux. <!-- this should only be included if the project has a GUI -->
 - **Explain why this enhancement would be useful** to most Designsystemet users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
-<!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
+### Improving The Documentation
 
-### Get started with development
+If you have suggestions on improving the documention either on [www.designsystemet.no](https://www.designsystemet.no/) or in the Github repo, please feel free to create an [Issue](https://github.com/digdir/designsystem/issues/new/choose) with the `Feature Request` template. All contributions are very much appriciated!
+
+### Getting involved with development
+
+It's fantastic that you want to join in and help with our development efforts!
+We have established two contribution levels to suit task size: the first level for smaller tasks and the second for larger ones. The main difference is how involved you will be with the Design System Team.
+
+Unsure which level to choose? Send us an [email]() and we will get back to you as soon as we can!
+
+Before you start coding also take a look at [how to get started with development]() and our [coding standards]().
+
+#### Addressing minor bugs and handling smaller feature requests
+
+Spotted a bug you would like to help fix? Easy! Just fork this repository and submit a [pull request](#pull-requests).
+A person from the design system team will follow up from there.
+
+Do the same for smaller feature requests. We cannot guarantee that the new feature will be implemented, but we will try our best to make it happen!
+
+#### Developing new components and handling larger tasks
+
+Your team needs a new component that doesn't exist in the the design system and want to help develop it?
+Great news! We have created a process tohandle just this use case!
 
 #### 1. Install Node 16+ and Yarn 3
 
