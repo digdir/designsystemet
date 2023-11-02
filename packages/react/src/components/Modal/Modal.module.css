@@ -6,16 +6,34 @@
   box-shadow: var(--fds-shadow-medium);
 }
 
+.modal::backdrop {
+  background-color: #00000040;
+  animation: fade-in 300ms ease-in-out;
+}
+
+.modal[open] {
+  animation: slide-in 300ms ease-in-out, fade-in 300ms ease-in-out;
+}
+
 .modalHeader {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--fds-spacing-2) var(--fds-spacing-4);
+  padding: var(--fds-spacing-4);
+  padding-right: var(--fds-spacing-12);
   border-bottom: 1px solid #ccc;
+}
+
+.modalHeader button {
+  position: absolute;
+  top: var(--fds-spacing-2);
+  right: var(--fds-spacing-2);
 }
 
 .modalContent {
   padding: var(--fds-spacing-4);
+  max-height: 600px;
 }
 
 .modalFooter {
@@ -24,4 +42,24 @@
   align-items: center;
   padding: var(--fds-spacing-4);
   border-top: 1px solid #ccc;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-50px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

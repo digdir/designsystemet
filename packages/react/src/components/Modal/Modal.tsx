@@ -1,24 +1,52 @@
-import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import type { DialogHTMLAttributes, HTMLAttributes } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { Button } from '../Button';
 
 import classes from './Modal.module.css';
 
 export type ModalProps = {
+  /**
+   * Close modal when clicking on backdrop.
+   * @default false
+   */
+  closeOnBackdropClick?: boolean;
   children: React.ReactNode;
-} & React.DetailedHTMLProps<
-  React.DialogHTMLAttributes<HTMLDialogElement>,
-  HTMLDialogElement
->;
+} & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
-  ({ children, ...props }, ref) => {
+  ({ closeOnBackdropClick = false, children, ...props }, ref) => {
+    const modalRef = useRef<HTMLDialogElement>(null);
+    const mergedRefs = useMergeRefs([modalRef, ref]);
+
+    useEffect(() => {
+      if (!closeOnBackdropClick) return;
+
+      const handleBackdropClick = (e: MouseEvent) => {
+        console.log('click');
+        if (e.target === modalRef.current && closeOnBackdropClick) {
+          modalRef.current?.close();
+        }
+      };
+
+      const currentModalRef = modalRef.current;
+
+      if (currentModalRef)
+        currentModalRef.addEventListener('click', handleBackdropClick);
+
+      return () => {
+        if (currentModalRef) {
+          currentModalRef.removeEventListener('click', handleBackdropClick);
+        }
+      };
+    }, [closeOnBackdropClick, modalRef, ref]);
+
     return (
       <dialog
-        ref={ref}
+        ref={mergedRefs}
         {...props}
         className={cn(classes.modal, props.className)}
       >

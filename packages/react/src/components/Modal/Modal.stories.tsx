@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../Button';
+import { Heading } from '../Typography';
 
 import { Modal } from './index';
 
@@ -30,11 +31,20 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
         ref={modalRef}
       >
         <Modal.Header closeModal={() => modalRef.current?.close()}>
-          Modal header
+          <Heading
+            level={2}
+            size='medium'
+          >
+            Modal header
+          </Heading>
         </Modal.Header>
         <Modal.Content>This is my modal!</Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
     </>
   );
+};
+
+Preview.args = {
+  closeOnBackdropClick: true,
 };
