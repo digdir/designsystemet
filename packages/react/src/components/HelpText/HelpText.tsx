@@ -43,7 +43,7 @@ const HelpText = ({
       <button
         {...rest}
         ref={buttonRef}
-        className={cn(classes.helpTextButton, className)}
+        className={cn(classes.helpTextButton, utilClasses.focusable, className)}
         aria-expanded={open}
         onClick={(event) => {
           setOpen((isOpen) => !isOpen);
