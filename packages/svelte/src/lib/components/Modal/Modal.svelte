@@ -27,6 +27,7 @@
   export let secondaryButtonColor = 'first';
   export let secondaryButtonSize = 'medium';
   export let numberOfErrors = 0;
+  export let isModalValidating = false;
 
   export let onClose = () => {};
   export let onPrimaryButtonClick = () => {};
@@ -108,7 +109,7 @@
         bind:this={lastButton}>{secondaryButtonText}</button
       >
     </div>
-    {#if numberOfErrors > 0}
+    {#if numberOfErrors > 0 && isModalValidating}
       <p class="error-text">
         {`${numberOfErrors} feil må rettes før du kan gå videre.`}
       </p>
