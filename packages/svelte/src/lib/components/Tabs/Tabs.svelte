@@ -24,7 +24,11 @@
 <div class={`tab-content ${tabContentSize}`}>
   {#each tabs as tab, i}
     {#if i === activeTab}
-      {tab.content}
+      {#if typeof tab.content === 'function'}
+        <svelte:component this={tab.content} />
+      {:else}
+        {tab.content}
+      {/if}
     {/if}
   {/each}
 </div>

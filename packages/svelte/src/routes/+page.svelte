@@ -90,7 +90,7 @@
     {
       icon: CheckmarkCircleFillIcon,
       title: 'Tab 2',
-      content: 'Tab 2 content',
+      content: Button,
     },
     {
       icon: XMarkOctagonFillIcon,
