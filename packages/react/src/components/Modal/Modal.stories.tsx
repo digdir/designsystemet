@@ -42,6 +42,7 @@ Preview.args = {
   headerTitle: 'Modal tittel',
   headerSubtitle: 'Modal undertittel',
   headerDivider: false,
+  closeButton: true,
 };
 
 export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {

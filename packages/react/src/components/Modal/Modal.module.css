@@ -44,6 +44,10 @@
   right: var(--fds-spacing-4);
 }
 
+.modalHeader.noCloseButton {
+  padding-right: var(--fds-spacing-6);
+}
+
 .divider .modalHeader {
   border-bottom: 1px solid var(--fds-semantic-border-neutral-divider);
   padding-bottom: var(--fds-spacing-6);

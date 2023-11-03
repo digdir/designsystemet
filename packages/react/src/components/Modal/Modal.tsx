@@ -115,6 +115,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
         className={cn(
           classes.modal,
           headerDivider && classes.divider,
+
           props.className,
         )}
         {...props}
@@ -122,7 +123,12 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
         {open && (
           <FloatingFocusManager context={context}>
             <>
-              <div className={cn(classes.modalHeader)}>
+              <div
+                className={cn(
+                  classes.modalHeader,
+                  !closeButton && classes.noCloseButton,
+                )}
+              >
                 {headerSubtitle && (
                   <Paragraph size='small'>{headerSubtitle}</Paragraph>
                 )}
