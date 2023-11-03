@@ -1,4 +1,5 @@
 .modal {
+  transform: translateY(-50%);
   width: 500px;
   padding: 0;
   border: none;
@@ -50,11 +51,11 @@
 
 @keyframes slide-in {
   0% {
-    transform: translateY(-50px);
+    transform: translateY(calc(-50% + 50px));
   }
 
   100% {
-    transform: translateY(0);
+    transform: translateY(-50%);
   }
 }
 

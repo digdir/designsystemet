@@ -5,6 +5,7 @@ export const useModalState = (modalRef: React.RefObject<HTMLDialogElement>) => {
 
   React.useEffect(() => {
     if (!modalRef?.current) return;
+    if (modalRef.current?.open) setIsOpen(true);
 
     const observer = new MutationObserver(() => {
       if (modalRef.current?.open) setIsOpen(true);

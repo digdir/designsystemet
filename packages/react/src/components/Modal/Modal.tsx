@@ -66,7 +66,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
     }, [closeOnBackdropClick, modalRef, ref]);
 
-    // check when modal is closed
     useEffect(() => {
       if (!onClose) return;
 
@@ -89,8 +88,8 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     return (
       <dialog
         ref={mergedRefs}
-        {...props}
         className={cn(classes.modal, props.className)}
+        {...props}
       >
         {open && (
           <FloatingFocusManager
