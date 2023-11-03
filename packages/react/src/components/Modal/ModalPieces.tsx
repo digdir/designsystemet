@@ -18,7 +18,7 @@ export const ModalHeader = ({
   ...props
 }: ModalHeaderProps) => {
   return (
-    <div
+    <header
       {...props}
       className={cn(classes.modalHeader, props.className)}
     >
@@ -36,7 +36,7 @@ export const ModalHeader = ({
           />
         </Button>
       )}
-    </div>
+    </header>
   );
 };
 
@@ -59,12 +59,12 @@ export const ModalFooter = ({
   ...props
 }: HTMLAttributes<HTMLElement>) => {
   return (
-    <div
+    <footer
       {...props}
       className={cn(classes.modalFooter, props.className)}
     >
       {children}
-    </div>
+    </footer>
   );
 };
 
