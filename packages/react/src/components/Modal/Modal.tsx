@@ -1,15 +1,15 @@
-import type { DialogHTMLAttributes, HTMLAttributes } from 'react';
+import type { DialogHTMLAttributes } from 'react';
 import React, { forwardRef, useEffect, useRef } from 'react';
-import { XMarkIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
-import { useMergeRefs } from '@floating-ui/react';
+import {
+  FloatingFocusManager,
+  useFloating,
+  useMergeRefs,
+} from '@floating-ui/react';
 
-import { Button } from '../Button';
-import { useScrollLock } from '../../utils/useScrollLock';
-
+import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
-
-// TODO: Add scroll lock
+import { useModalState } from './useModalState';
 
 export type ModalProps = {
   /**
@@ -22,17 +22,28 @@ export type ModalProps = {
    * @default undefined
    */
   onClose?: () => void;
-  children: React.ReactNode;
+  /**
+   * Item to recieve inital focus when modal is opened.
+   */
+  initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   (
-    { closeOnBackdropClick = false, onClose = undefined, children, ...props },
+    {
+      closeOnBackdropClick = false,
+      onClose = undefined,
+      initialFocus,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const mergedRefs = useMergeRefs([modalRef, ref]);
+    const { context } = useFloating();
     useScrollLock(modalRef, classes.lockScroll);
+    const open = useModalState(modalRef);
 
     useEffect(() => {
       if (!closeOnBackdropClick) return;
@@ -81,73 +92,17 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
         {...props}
         className={cn(classes.modal, props.className)}
       >
-        {children}
+        {open && (
+          <FloatingFocusManager
+            context={context}
+            initialFocus={initialFocus}
+          >
+            <>{children}</>
+          </FloatingFocusManager>
+        )}
       </dialog>
     );
   },
 );
 
-export type ModalHeaderProps = {
-  closeModal?: () => void;
-  children: React.ReactNode;
-} & HTMLAttributes<HTMLElement>;
-
-export const ModalHeader = ({
-  closeModal,
-  children,
-  ...props
-}: ModalHeaderProps) => {
-  return (
-    <div
-      {...props}
-      className={cn(classes.modalHeader, props.className)}
-    >
-      {children}
-      {closeModal && (
-        <Button
-          variant='tertiary'
-          size='small'
-          onClick={closeModal}
-        >
-          <XMarkIcon
-            title='close modal'
-            fontSize='1.5em'
-          />
-        </Button>
-      )}
-    </div>
-  );
-};
-
-export const ModalContent = ({
-  children,
-  ...props
-}: HTMLAttributes<HTMLElement>) => {
-  return (
-    <div
-      {...props}
-      className={cn(classes.modalContent, props.className)}
-    >
-      {children}
-    </div>
-  );
-};
-
-export const ModalFooter = ({
-  children,
-  ...props
-}: HTMLAttributes<HTMLElement>) => {
-  return (
-    <div
-      {...props}
-      className={cn(classes.modalFooter, props.className)}
-    >
-      {children}
-    </div>
-  );
-};
-
 Modal.displayName = 'Modal';
-ModalHeader.displayName = 'Modal.Header';
-ModalContent.displayName = 'Modal.Content';
-ModalFooter.displayName = 'Modal.Footer';
