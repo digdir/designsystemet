@@ -16,6 +16,16 @@
   animation: slide-in 300ms ease-in-out, fade-in 300ms ease-in-out;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .modal[open] {
+    animation: none;
+  }
+
+  .modal::backdrop {
+    animation: none;
+  }
+}
+
 .modalHeader {
   position: relative;
   display: flex;
