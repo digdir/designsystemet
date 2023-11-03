@@ -216,6 +216,12 @@ describe('Select', () => {
       expect(screen.getByRole('combobox')).toHaveAttribute('id', inputId);
     });
 
+    it('Sets given input name on combobox', () => {
+      const inputName = 'country';
+      renderSingleSelect({ inputName });
+      expect(screen.getByRole('combobox')).toHaveAttribute('name', inputName);
+    })
+
     it('Focuses on combobox when label is clicked', async () => {
       const label = 'Lorem ipsum';
       renderSingleSelect({ label });

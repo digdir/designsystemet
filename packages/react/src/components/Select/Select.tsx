@@ -33,6 +33,7 @@ const Select = (props: SelectProps) => {
     error,
     hideLabel,
     inputId,
+    inputName,
     label,
     multiple,
     onBlur,
@@ -325,6 +326,7 @@ const Select = (props: SelectProps) => {
       <InputWrapper
         disabled={disabled}
         inputId={givenOrRandomInputId}
+
         inputRenderer={({ className, inputId: id, hasIcon }) => (
           <span
             className={cn(className, classes.field, hasIcon && classes.hasIcon)}
@@ -372,6 +374,7 @@ const Select = (props: SelectProps) => {
                 role='combobox'
                 type='text'
                 value={keyword}
+                name={inputName}
               />
             </span>
             {multiple && (

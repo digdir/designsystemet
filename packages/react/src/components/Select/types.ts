@@ -26,6 +26,7 @@ interface SelectPropsBase {
   error?: boolean;
   hideLabel?: boolean;
   inputId?: string;
+  inputName?: string;
   label?: string;
   searchLabel?: string;
 }
