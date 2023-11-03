@@ -21,7 +21,7 @@
 }
 
 @media (prefers-reduced-motion) {
-  .container {
+  .switch {
     --fds-transition: 0;
   }
 }
