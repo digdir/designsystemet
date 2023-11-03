@@ -110,9 +110,9 @@ If you have suggestions on improving the documention either on [www.designsystem
 It's fantastic that you want to join in and help with our development efforts!
 We have established two contribution levels to suit task size: the first level for smaller tasks and the second for larger ones. The main difference is how involved you will be with the Design System Team.
 
-Unsure which level to choose? Send us an [email]() and we will get back to you as soon as we can!
+Unsure which level to choose? Send us an email at <designsystem@digdir.no> and we will get back to you as soon as we can!
 
-Before you start coding also take a look at [how to get started with development]() and our [coding standards]().
+Before you start coding also take a look at [how to get started with development](#getting-started-with-development) and our [coding standards](#how-to-write-and-structure-your-code).
 
 #### Addressing minor bugs and handling smaller feature requests
 
@@ -126,7 +126,7 @@ Do the same for smaller feature requests. We cannot guarantee that the new featu
 Your team needs a new component that doesn't exist in the the design system and want to help develop it?
 Great news! We have created a process to handle just this use case!
 
-1. Submit a [feature request]() detailing your requirements, and indicate your interest in contributing to the development of this component.
+1. Submit a [feature request](https://github.com/digdir/designsystem/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development of this component.
 2. The design system team will review the feature request and assess its compatibility with the design system.
 3. If the component fits within the scope of the design system we will follow you up from there.
 
