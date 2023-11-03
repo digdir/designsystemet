@@ -23,6 +23,16 @@ export const Preview: StoryFn<typeof Checkbox.Group> = (args) => (
   </Checkbox.Group>
 );
 
+export const OneOption: StoryFn<typeof Checkbox.Group> = (args) => (
+  <Checkbox.Group
+    legend='Bekreft ditt samtykke'
+    description='For å kunne gi deg .... , trenger vi ditt samtykke.'
+    error='For å kunne søke digitalt om å ... må du samtykke til at ... kan se dine opplysninger i registrene. Samtykket gir du ved å aktivere avkrysningsboksen over.'
+  >
+    <Checkbox value='samtykke'>Jeg bekrefter at..</Checkbox>
+  </Checkbox.Group>
+);
+
 Preview.args = {
   legend: 'Middag',
   description: 'Mat serveres klokken 18:00',
