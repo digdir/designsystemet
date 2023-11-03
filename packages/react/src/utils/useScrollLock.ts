@@ -5,8 +5,8 @@ export function useScrollLock(
   bodyClass: string,
 ) {
   useEffect(() => {
-    if (!modalRef.current) return; // We check both to avoid running this twice when not using portal
-    if (modalRef.current.open) document.body.classList.add(bodyClass); // In case `open` is true initially
+    if (!modalRef.current) return;
+    if (modalRef.current.open) document.body.classList.add(bodyClass);
 
     const observer = new MutationObserver(() => {
       if (modalRef.current?.open) document.body.classList.add(bodyClass);
@@ -18,7 +18,7 @@ export function useScrollLock(
     });
     return () => {
       observer.disconnect();
-      document.body.classList.remove(bodyClass); // In case modal is unmounted before it's closed
+      document.body.classList.remove(bodyClass);
     };
   }, [bodyClass, modalRef]);
 }
