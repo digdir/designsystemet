@@ -99,6 +99,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
             label='Navn'
             placeholder='Ola Nordmann'
             value={input}
+            autoFocus
             onChange={(e) => setInput(e.target.value)}
           />
         </Modal.Content>

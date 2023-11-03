@@ -28,6 +28,7 @@ export const ModalHeader = ({
           variant='tertiary'
           size='small'
           onClick={closeModal}
+          autoFocus
         >
           <XMarkIcon
             title='close modal'

@@ -22,21 +22,11 @@ export type ModalProps = {
    * @default undefined
    */
   onClose?: () => void;
-  /**
-   * Item to recieve inital focus when modal is opened.
-   */
-  initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   (
-    {
-      closeOnBackdropClick = false,
-      onClose = undefined,
-      initialFocus,
-      children,
-      ...props
-    },
+    { closeOnBackdropClick = false, onClose = undefined, children, ...props },
     ref,
   ) => {
     const modalRef = useRef<HTMLDialogElement>(null);
@@ -95,10 +85,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
         {...props}
       >
         {open && (
-          <FloatingFocusManager
-            context={context}
-            initialFocus={initialFocus}
-          >
+          <FloatingFocusManager context={context}>
             <>{children}</>
           </FloatingFocusManager>
         )}
