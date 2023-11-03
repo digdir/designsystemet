@@ -50,6 +50,9 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
 
       const handleBackdropClick = (e: MouseEvent) => {
         if (e.target === modalRef.current && closeOnBackdropClick) {
+          // Fix bug where if you select text spanning two divs it closes the modal
+          if (window.getSelection()?.toString()) return;
+
           modalRef.current?.close();
         }
       };
