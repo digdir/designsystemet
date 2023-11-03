@@ -24,6 +24,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Styleguides](#styleguides)
   - [Commit Messages](#commit-messages)
   - [How to write and structure your code](#how-to-write-and-structure-your-code)
+- [Publishing NPM packages](#publishing-npm-packages)
 
 ## Code of Conduct
 
@@ -71,7 +72,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 #### How Do I Submit a Good Bug Report?
 
-> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <designystem@digdir.no>.
+> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <designsystem@digdir.no>.
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
@@ -247,3 +248,44 @@ TypeScript and CSS files have been configured with linting, which means that the
 #### Use of TypeScript files
 
 In code contributions for this project, we do not permit JavaScript files. The use of TypeScript ensures the safety and testability of our code.
+
+---
+
+## Publishing NPM packages
+
+The following documentation outlines the process for releasing new versions of the NPM packages. Please note that in order to release, you must have an NPM account that is connected to the Digdir organization on NPM. Make sure you are in the `main` branch before proceeding further. Publishing from other branches may lead to issues with the changelog.
+
+### 1. Build distribution files
+
+`yarn build`
+
+Build distribution files for all the packages. Make sure they all run successfully before proceeding to next step.
+
+### 2. Prepare new version
+
+`yarn lerna:version`
+
+This step does a few things:
+
+- Suggests a new version based on the latest commits. Make sure the version is correct before clicking enter. A user error with a commit message might suggest a version that is wrong.
+- Creates a new tag with the latest version number.
+- Commits the changes.
+- Pushes the changes to github.
+
+### 3. Publish to NPM
+
+`yarn lerna:publish`
+
+Make sure you are logged in to your NPM account from the terminal you are trying to publish from.
+
+`npm whoami` wil check if you are logged in.
+
+Your account also has to be added to the Digdir organisation on NPM.
+
+### 4. Paste the latest changelog entry into the design system Slack channel
+
+You can copy markdown from the changelog in storybook to get nice styling and commit links.
+
+Please ensure that the appearance closely matches the image below. Consistency plays a vital role when interacting with our end users.
+
+![te](https://i.imgur.com/Uw0qA1O.png)
