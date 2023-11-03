@@ -3,6 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
+import { Paragraph } from '../Typography';
 
 import { Modal } from '.';
 
@@ -30,7 +31,12 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
         {...args}
         ref={modalRef}
       >
-        <Modal.Content>This is my modal!</Modal.Content>
+        <Modal.Content>
+          <Paragraph>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+            doloremque obcaecati assumenda odio ducimus sunt et.
+          </Paragraph>
+        </Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
     </>
@@ -56,7 +62,12 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
         closeOnBackdropClick
         headerTitle='Modal med closeOnBackdropClick og en veldig lang tittel'
       >
-        <Modal.Content>This is my modal!</Modal.Content>
+        <Modal.Content>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et. Eaque autem
+          officia minima quia, numquam dolorum blanditiis dolores tempore qui
+          distinctio, labore beatae?
+        </Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
     </>

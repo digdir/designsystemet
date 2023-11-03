@@ -15,6 +15,8 @@ import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
 
+// TODO: Add width prop support
+
 export type ModalProps = {
   /**
    * Close modal when clicking on backdrop.
@@ -130,7 +132,12 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
                 )}
               >
                 {headerSubtitle && (
-                  <Paragraph size='small'>{headerSubtitle}</Paragraph>
+                  <Paragraph
+                    size='small'
+                    variant='short'
+                  >
+                    {headerSubtitle}
+                  </Paragraph>
                 )}
                 <Heading
                   level={2}

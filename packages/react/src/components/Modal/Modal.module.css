@@ -1,6 +1,6 @@
 .modal {
-  transform: translateY(-50%);
-  width: 500px;
+  min-width: 650px;
+  max-width: min(650px, calc(100% - 6px - 2em));
   padding: 0;
   border: none;
   border-radius: var(--fds-border_radius-medium);
@@ -14,6 +14,14 @@
 
 .modal[open] {
   animation: slide-in 300ms ease-in-out, fade-in 300ms ease-in-out;
+}
+
+@media (max-width: 767px) {
+  .modal {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -32,16 +40,17 @@
   justify-content: space-between;
   flex-direction: column;
   padding-top: var(--fds-spacing-6);
-  padding-bottom: var(--fds-spacing-4);
+  padding-bottom: 0;
   padding-left: var(--fds-spacing-6);
   padding-right: var(--fds-spacing-18);
+  gap: var(--fds-spacing-1);
   color: var(--fds-semantic-text-neutral-default);
 }
 
 .modalHeader button {
   position: absolute;
   top: var(--fds-spacing-4);
-  right: var(--fds-spacing-4);
+  right: var(--fds-spacing-3);
 }
 
 .modalHeader.noCloseButton {
@@ -50,24 +59,21 @@
 
 .divider .modalHeader {
   border-bottom: 1px solid var(--fds-semantic-border-neutral-divider);
-  padding-bottom: var(--fds-spacing-6);
+  padding-bottom: var(--fds-spacing-5);
 }
 
 .modalContent {
   padding: var(--fds-spacing-6);
-  padding-top: var(--fds-spacing-2);
-  max-height: 600px;
-}
-
-.divider .modalContent {
-  padding-top: var(--fds-spacing-7);
+  padding-top: var(--fds-spacing-5);
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .modalFooter {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: var(--fds-spacing-5);
+  gap: var(--fds-spacing-4);
   padding: var(--fds-spacing-6);
   padding-top: 0;
 }
@@ -78,11 +84,11 @@
 
 @keyframes slide-in {
   0% {
-    transform: translateY(calc(-50% + 50px));
+    transform: translateY(50px);
   }
 
   100% {
-    transform: translateY(-50%);
+    transform: translateY(0);
   }
 }
 
