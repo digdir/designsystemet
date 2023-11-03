@@ -1,9 +1,6 @@
 <br>
 <div align="center">
-  <picture align="center">
-    <img align="center" alt="Designsystemet logo" src="assets/img/logo.svg">
-  
-  </picture>
+    <img alt="Designsystemet logo" src="assets/img/logo.svg">
 </div>
 
 <h1 align="center">
