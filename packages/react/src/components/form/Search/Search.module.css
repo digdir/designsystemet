@@ -50,6 +50,19 @@
   border-bottom-right-radius: 0;
 }
 
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  background: none;
+  border: none;
+  right: 0;
+  top: 0.3em;
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+}
+
 .suffix {
   border-left: 0;
   border-top-left-radius: 0;

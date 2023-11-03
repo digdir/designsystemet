@@ -1,7 +1,7 @@
 import type { ReactNode, InputHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
-import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
+import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utils';
 import { Button } from '../../Button';
@@ -90,14 +90,12 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               )}
               ref={ref}
             />
-            {/* <Button
-              className={classes.buttonClear}
-              variant='tertiary'
-              size='small'
+            <button
+              className={classes.clearButton}
               type='button'
             >
               <XMarkIcon aria-hidden />
-            </Button> */}
+            </button>
           </div>
           {!isSimple && (
             <Button
