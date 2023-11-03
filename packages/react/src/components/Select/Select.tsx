@@ -326,7 +326,6 @@ const Select = (props: SelectProps) => {
       <InputWrapper
         disabled={disabled}
         inputId={givenOrRandomInputId}
-
         inputRenderer={({ className, inputId: id, hasIcon }) => (
           <span
             className={cn(className, classes.field, hasIcon && classes.hasIcon)}
