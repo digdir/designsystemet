@@ -91,7 +91,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               ref={ref}
             />
             <button
-              className={classes.clearButton}
+              className={cn(classes.clearButton, utilityClasses.focusable)}
               type='button'
             >
               <XMarkIcon aria-hidden />
