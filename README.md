@@ -92,7 +92,7 @@ The `tokens.css` file only has to be imported once in your application.
 
 ## 🫶 Contributing
 
-Learn how you can contribute to this project by reading our Code of Conduct and Contributing guide.
+Learn how you can contribute to this project by reading our Code of Conduct and Contributing Guide.
 
 ### Code of Conduct
 

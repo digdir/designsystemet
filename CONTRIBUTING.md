@@ -18,12 +18,12 @@ All types of contributions are encouraged and valued. See the [Table of Contents
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
   - [Improving The Documentation](#improving-the-documentation)
-  - [Getting involved with development](#your-first-code-contribution)
-  - [Getting started with development](#your-first-code-contribution)
+  - [Getting involved with development](#getting-involved-with-development)
+  - [Getting started with development](#getting-started-with-development)
   - [Pull requests](#pull-requests)
 - [Styleguides](#styleguides)
   - [Commit Messages](#commit-messages)
-  - [Code standards](#code-standards)
+  - [How to write and structure your code](#how-to-write-and-structure-your-code)
 
 ## Code of Conduct
 
@@ -128,7 +128,15 @@ Great news! We have created a process to handle just this use case!
 
 1. Submit a [feature request]() detailing your requirements, and indicate your interest in contributing to the development of this component.
 2. The design system team will review the feature request and assess its compatibility with the design system.
-3.
+3. If the component fits within the scope of the design system we will follow you up from there.
+
+Developing components for the design system requires that developers are closely connected to the design system team. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
+
+### Getting started with development
+
+Follow these steps to get up and running with storybook and the storefront.
+
+Run the commands from the root of your project.
 
 #### 1. Install Node 16+ and Yarn 3
 
@@ -138,7 +146,7 @@ Make sure `node` and `yarn` is installed by running: `node --version && yarn --v
 
 `yarn install`
 
-Run command from root of the project.
+This will install all the dependancies.
 
 #### 3. Build packages
 
@@ -148,9 +156,19 @@ This is required to make sure dependencies between local packages are available.
 
 #### 4. Start local development servers
 
-`yarn storybook | storefront | devsite`
+`yarn storybook | storefront`
 
-You can now start developing for storybook, the storefront or the devsite.
+You can now start developing for storybook and the storefront.
+
+### Pull requests
+
+When creating a pull request for the design system, there are a few things to keep in mind:
+
+- When you create your pull request for the first time make sure to mark it as a [draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/). This is mainly to prevent unnecessary notifications for reviewers during the development process. If you forget then no problem!
+- We utilize automated code checks to verify that pull requests align with our established standards. These checks must be successful for the pull request to be merged into the main branch. You don't need to worry about this during development.
+  - The pull request title must adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
+  - We run linting and formatting checks on all the code.
+- When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from the design system team will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
 
 ## Styleguides
 
@@ -201,4 +219,31 @@ It is crucial to understand the distinctions between the two sections mentioned 
 - `revert:` Reverts a previous commit
 - `perf:` A code change that improves performance
 
-### Code linting and formatting
+---
+
+### How to write and structure your code
+
+To ensure a consistent and enjoyable coding experience for everyone, we have established guidelines for writing our code.
+
+#### Styling with CSS Modules
+
+We use CSS modules to style our components. This prevents naming conflicts by adding a unique prefix to all components.
+A CSS module file is created by adding `.module.css` to the end of the CSS file.
+
+#### Use of design tokens
+
+When styling our components we try to always use semantic tokens from the `@digdir/design-system-tokens` package when available.
+Using hard-coded values is not reusable and we therefore try to avoid this.
+Take a look at how other components are styled to see examples.
+
+#### Code formatting with Prettier
+
+In this project, we employ [Prettier](https://prettier.io/) for code formatting. It is advisable to configure your code editor to automatically format files upon saving. This practice will prove beneficial when merging your changes into the main branch. It's worth noting that we enforce rigorous code checks in pull requests, emphasizing the importance of consistent code formatting.
+
+#### Linting with ESLint and Stylelint
+
+TypeScript and CSS files have been configured with linting, which means that the project will scan these files for potential problems or issues. Linting helps maintain code quality by detecting errors, enforcing coding conventions, and promoting best practices. You have to fix all errors and warnings before the code can be merged into the main branch.
+
+#### Use of TypeScript files
+
+In code contributions for this project, we do not permit JavaScript files. The use of TypeScript ensures the safety and testability of our code.
