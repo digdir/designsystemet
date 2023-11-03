@@ -33,6 +33,7 @@ const Select = (props: SelectProps) => {
     error,
     hideLabel,
     inputId,
+    inputName,
     label,
     multiple,
     onBlur,
@@ -372,6 +373,7 @@ const Select = (props: SelectProps) => {
                 role='combobox'
                 type='text'
                 value={keyword}
+                name={inputName}
               />
             </span>
             {multiple && (
