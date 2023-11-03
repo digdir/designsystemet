@@ -44,6 +44,10 @@
   border-top: 1px solid #ccc;
 }
 
+.lockScroll {
+  overflow: hidden;
+}
+
 @keyframes slide-in {
   0% {
     transform: translateY(-50px);

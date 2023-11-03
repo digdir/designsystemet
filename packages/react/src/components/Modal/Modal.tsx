@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { Button } from '../Button';
+import { useScrollLock } from '../../utils/useScrollLock';
 
 import classes from './Modal.module.css';
 
@@ -16,18 +17,27 @@ export type ModalProps = {
    * @default false
    */
   closeOnBackdropClick?: boolean;
+  /**
+   * Callback that is called when the modal is closed.
+   * @default undefined
+   */
+  onClose?: () => void;
   children: React.ReactNode;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
-  ({ closeOnBackdropClick = false, children, ...props }, ref) => {
+  (
+    { closeOnBackdropClick = false, onClose = undefined, children, ...props },
+    ref,
+  ) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const mergedRefs = useMergeRefs([modalRef, ref]);
+    useScrollLock(modalRef, classes.lockScroll);
+
     useEffect(() => {
       if (!closeOnBackdropClick) return;
 
       const handleBackdropClick = (e: MouseEvent) => {
-        console.log('click');
         if (e.target === modalRef.current && closeOnBackdropClick) {
           modalRef.current?.close();
         }
@@ -44,6 +54,26 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
         }
       };
     }, [closeOnBackdropClick, modalRef, ref]);
+
+    // check when modal is closed
+    useEffect(() => {
+      if (!onClose) return;
+
+      const handleModalClose = () => {
+        onClose();
+      };
+
+      const currentModalRef = modalRef.current;
+
+      if (currentModalRef)
+        currentModalRef.addEventListener('close', handleModalClose);
+
+      return () => {
+        if (currentModalRef) {
+          currentModalRef.removeEventListener('close', handleModalClose);
+        }
+      };
+    }, [modalRef, onClose]);
 
     return (
       <dialog

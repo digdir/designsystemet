@@ -82,7 +82,10 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
   return (
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
-      <Modal ref={modalRef}>
+      <Modal
+        ref={modalRef}
+        onClose={() => setInput('')}
+      >
         <Modal.Header closeModal={() => modalRef.current?.close()}>
           <Heading
             level={2}
@@ -114,7 +117,6 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
           <Button
             onClick={() => {
               window.alert(`Du har sendt inn skjema med navn: ${input}`);
-              setInput('');
               modalRef.current?.close();
             }}
           >
