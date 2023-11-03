@@ -1,4 +1,4 @@
-import type { DialogHTMLAttributes } from 'react';
+import type { DialogHTMLAttributes, ReactNode } from 'react';
 import React, { forwardRef, useEffect, useRef } from 'react';
 import cn from 'classnames';
 import {
@@ -6,6 +6,10 @@ import {
   useFloating,
   useMergeRefs,
 } from '@floating-ui/react';
+import { XMarkIcon } from '@navikt/aksel-icons';
+
+import { Button } from '../Button';
+import { Heading, Paragraph } from '../Typography';
 
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
@@ -22,11 +26,38 @@ export type ModalProps = {
    * @default undefined
    */
   onClose?: () => void;
+  /**
+   * Header title.
+   */
+  headerTitle: ReactNode;
+  /**
+   * Header subtitle.
+   */
+  headerSubtitle?: string;
+  /**
+   * Show close button in header.
+   * @default true
+   */
+  closeButton?: boolean;
+  /**
+   * Show divider between header and content.
+   * @default false
+   */
+  headerDivider?: boolean;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   (
-    { closeOnBackdropClick = false, onClose = undefined, children, ...props },
+    {
+      headerTitle,
+      headerSubtitle,
+      headerDivider = false,
+      closeOnBackdropClick = false,
+      onClose = undefined,
+      closeButton = true,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const modalRef = useRef<HTMLDialogElement>(null);
@@ -81,12 +112,43 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     return (
       <dialog
         ref={mergedRefs}
-        className={cn(classes.modal, props.className)}
+        className={cn(
+          classes.modal,
+          headerDivider && classes.divider,
+          props.className,
+        )}
         {...props}
       >
         {open && (
           <FloatingFocusManager context={context}>
-            <>{children}</>
+            <>
+              <div className={cn(classes.modalHeader)}>
+                {headerSubtitle && (
+                  <Paragraph size='small'>{headerSubtitle}</Paragraph>
+                )}
+                <Heading
+                  level={2}
+                  size='xsmall'
+                >
+                  {headerTitle}
+                </Heading>
+                {closeButton && (
+                  <Button
+                    variant='tertiary'
+                    color='second'
+                    size='medium'
+                    onClick={() => modalRef.current?.close()}
+                    autoFocus
+                  >
+                    <XMarkIcon
+                      title='close modal'
+                      fontSize='1.5em'
+                    />
+                  </Button>
+                )}
+              </div>
+              {children}
+            </>
           </FloatingFocusManager>
         )}
       </dialog>

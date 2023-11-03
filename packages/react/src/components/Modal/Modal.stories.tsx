@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../Button';
-import { Heading } from '../Typography';
 import { Textfield } from '../form/Textfield';
 
 import { Modal } from '.';
@@ -31,14 +30,6 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
         {...args}
         ref={modalRef}
       >
-        <Modal.Header closeModal={() => modalRef.current?.close()}>
-          <Heading
-            level={2}
-            size='medium'
-          >
-            Modal header
-          </Heading>
-        </Modal.Header>
         <Modal.Content>This is my modal!</Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
@@ -48,6 +39,9 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
 
 Preview.args = {
   closeOnBackdropClick: false,
+  headerTitle: 'Modal tittel',
+  headerSubtitle: 'Modal undertittel',
+  headerDivider: false,
 };
 
 export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
@@ -59,15 +53,8 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
       <Modal
         ref={modalRef}
         closeOnBackdropClick
+        headerTitle='Modal med closeOnBackdropClick og en veldig lang tittel'
       >
-        <Modal.Header closeModal={() => modalRef.current?.close()}>
-          <Heading
-            level={2}
-            size='medium'
-          >
-            Modal header
-          </Heading>
-        </Modal.Header>
         <Modal.Content>This is my modal!</Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
@@ -85,15 +72,8 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
       <Modal
         ref={modalRef}
         onClose={() => setInput('')}
+        headerTitle='Modal med skjema'
       >
-        <Modal.Header closeModal={() => modalRef.current?.close()}>
-          <Heading
-            level={2}
-            size='medium'
-          >
-            Modal header
-          </Heading>
-        </Modal.Header>
         <Modal.Content>
           <Textfield
             label='Navn'
@@ -103,12 +83,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
             onChange={(e) => setInput(e.target.value)}
           />
         </Modal.Content>
-        <Modal.Footer
-          style={{
-            display: 'flex',
-            gap: '.5rem',
-          }}
-        >
+        <Modal.Footer>
           <Button
             variant='secondary'
             onClick={() => modalRef.current?.close()}

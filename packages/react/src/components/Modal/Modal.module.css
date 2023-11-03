@@ -30,29 +30,42 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: var(--fds-spacing-4);
-  padding-right: var(--fds-spacing-12);
-  border-bottom: 1px solid #ccc;
+  flex-direction: column;
+  padding-top: var(--fds-spacing-6);
+  padding-bottom: var(--fds-spacing-4);
+  padding-left: var(--fds-spacing-6);
+  padding-right: var(--fds-spacing-18);
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .modalHeader button {
   position: absolute;
-  top: var(--fds-spacing-2);
-  right: var(--fds-spacing-2);
+  top: var(--fds-spacing-4);
+  right: var(--fds-spacing-4);
+}
+
+.divider .modalHeader {
+  border-bottom: 1px solid var(--fds-semantic-border-neutral-divider);
+  padding-bottom: var(--fds-spacing-6);
 }
 
 .modalContent {
-  padding: var(--fds-spacing-4);
+  padding: var(--fds-spacing-6);
+  padding-top: var(--fds-spacing-2);
   max-height: 600px;
+}
+
+.divider .modalContent {
+  padding-top: var(--fds-spacing-7);
 }
 
 .modalFooter {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: var(--fds-spacing-4);
-  border-top: 1px solid #ccc;
+  gap: var(--fds-spacing-5);
+  padding: var(--fds-spacing-6);
+  padding-top: 0;
 }
 
 .lockScroll {
