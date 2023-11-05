@@ -1,9 +1,12 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { TrashFillIcon } from '@navikt/aksel-icons';
 
 import { Card } from '..';
 import { Select } from '../../Select';
 import { Textfield } from '../../form/Textfield';
+import { Paragraph } from '../../Typography';
+import { Button } from '../../Button';
 
 import { CardGroup } from './';
 
@@ -18,8 +21,22 @@ type Story = StoryFn<typeof CardGroup>;
 
 export const Preview: Story = (args) => (
   <Card.Group {...args}>
-    <Card.RoleCard title='Rolle 1'>
-      <Card.Section>
+    <Card
+      borderRadius='large'
+      border='subtle'
+    >
+      <Card.Header divided>
+        <Paragraph size='medium'>Rolle 1</Paragraph>
+        <Button
+          variant='secondary'
+          color='danger'
+          size='small'
+          icon={<TrashFillIcon aria-hidden />}
+        >
+          Fjern
+        </Button>
+      </Card.Header>
+      <Card.Content>
         <Select
           label='Velg rolle'
           options={[
@@ -35,10 +52,24 @@ export const Preview: Story = (args) => (
           size='small'
           label='Etternavn'
         />
-      </Card.Section>
-    </Card.RoleCard>
-    <Card.RoleCard title='Rolle 2'>
-      <Card.Section>
+      </Card.Content>
+    </Card>
+    <Card
+      borderRadius='large'
+      border='subtle'
+    >
+      <Card.Header divided>
+        <Paragraph size='medium'>Rolle 2</Paragraph>
+        <Button
+          variant='secondary'
+          color='danger'
+          size='small'
+          icon={<TrashFillIcon aria-hidden />}
+        >
+          Fjern
+        </Button>
+      </Card.Header>
+      <Card.Content>
         <Select
           label='Velg rolle'
           options={[
@@ -54,7 +85,7 @@ export const Preview: Story = (args) => (
           size='small'
           label='Etternavn'
         />
-      </Card.Section>
-    </Card.RoleCard>
+      </Card.Content>
+    </Card>
   </Card.Group>
 );

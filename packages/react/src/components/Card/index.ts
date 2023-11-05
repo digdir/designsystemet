@@ -1,26 +1,38 @@
-import type { CardSectionProps } from './CardSection';
-import type { RoleCardProps } from './CardRoleCard';
+import type { CardHeaderProps } from './CardHeader';
+import type { CardContentProps } from './CardContent';
+import type { CardFooterProps } from './CardFooter';
+import type { CardGroupProps } from './CardGroup';
 import type { CardProps } from './Card';
-import { CardSection } from './CardSection';
+import { CardHeader } from './CardHeader';
 import { CardGroup } from './CardGroup';
-import { RoleCard as CardRoleCard } from './CardRoleCard';
+import { CardContent } from './CardContent';
+import { CardFooter } from './CardFooter';
 import { Card as CardParent } from './Card';
 
 type CardComponent = typeof CardParent & {
-  Section: typeof CardSection;
+  Header: typeof CardHeader;
+  Content: typeof CardContent;
+  Footer: typeof CardFooter;
   Group: typeof CardGroup;
-  RoleCard: typeof CardRoleCard;
 };
 
 const Card = CardParent as CardComponent;
 
-Card.Section = CardSection;
+Card.Header = CardHeader;
+Card.Content = CardContent;
+Card.Footer = CardFooter;
 Card.Group = CardGroup;
-Card.RoleCard = CardRoleCard;
 
-Card.Section.displayName = 'Card.Section';
+Card.Header.displayName = 'Card.Header';
+Card.Content.displayName = 'Card.Content';
+Card.Footer.displayName = 'Card.Footer';
 Card.Group.displayName = 'Card.Group';
-Card.RoleCard.displayName = 'Card.RoleCard';
 
-export type { CardProps, CardSectionProps, RoleCardProps };
-export { Card, CardGroup, CardSection, CardRoleCard };
+export type {
+  CardProps,
+  CardHeaderProps,
+  CardContentProps,
+  CardFooterProps,
+  CardGroupProps,
+};
+export { Card, CardHeader, CardContent, CardFooter, CardGroup };

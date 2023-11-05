@@ -1,13 +1,86 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: var(--fds-border_width-default) solid var(--fds-semantic-border-neutral-subtle);
-  border-radius: var(--fds-border_radius-large);
-  max-width: 330px;
+
+  /*
+   * TODO: discuss how we would like to determine max width
+   */
+  width: 330px;
 }
 
-.card > .section:not(:last-child) {
+a.card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card img {
+  /*
+   * TODO: discuss if we want to control the image size/scale based on props, or if it should be svg in all cases
+   */
+  width: 100%;
+  height: auto;
+}
+
+.card.neutralBackground {
+  background-color: var(--fds-semantic-surface-neutral-default);
+}
+
+.card.subtleBackground {
+  background-color: var(--fds-semantic-surface-neutral-subtle);
+}
+
+.card.neutralBackground:hover,
+.card.subtleBackground:hover {
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+}
+
+.card.neutralBackground:active,
+.card.subtleBackground:active {
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+}
+
+.card.firstBackground {
+  background-color: var(--fds-semantic-surface-first-light);
+}
+
+.card.firstBackground:hover {
+  background-color: var(--fds-semantic-surface-first-light-hover);
+}
+
+.card.firstBackground:active {
+  background-color: var(--fds-semantic-surface-first-light-active);
+}
+
+.card.secondBackground {
+  background-color: var(--fds-semantic-surface-second-light);
+}
+
+.card.secondBackground:hover {
+  background-color: var(--fds-semantic-surface-second-light-hover);
+}
+
+.card.secondBackground:active {
+  background-color: var(--fds-semantic-surface-second-light-active);
+}
+
+.card.thirdBackground {
+  background-color: var(--fds-semantic-surface-third-light);
+}
+
+.card.thirdBackground:hover {
+  background-color: var(--fds-semantic-surface-third-light-hover);
+}
+
+.card.thirdBackground:active {
+  background-color: var(--fds-semantic-surface-third-light-active);
+}
+
+.headerDivided {
   border-bottom: var(--fds-border_width-default) solid var(--fds-semantic-border-neutral-subtle);
+}
+
+.footerDivided {
+  border-top: var(--fds-border_width-default) solid var(--fds-semantic-border-neutral-subtle);
 }
 
 .section {
@@ -17,23 +90,23 @@
   word-wrap: break-word;
 }
 
-.section.flex-start {
+.section.flexStartJustify {
   justify-content: flex-start;
 }
 
-.section.flex-end {
+.section.flexEndJustify {
   justify-content: flex-end;
 }
 
-.section.center {
+.section.centerJustify {
   justify-content: center;
 }
 
-.section.space-between {
+.section.spaceBetweenJustify {
   justify-content: space-between;
 }
 
-.section.column {
+.section.section.column {
   flex-direction: column;
 }
 
@@ -41,23 +114,23 @@
   flex-direction: row;
 }
 
-.section.align-flex-start {
+.section.flexStartAlign {
   align-items: flex-start;
 }
 
-.section.align-flex-end {
+.section.flexEndAlign {
   align-items: flex-end;
 }
 
-.section.align-center {
+.section.centerAlign {
   align-items: center;
 }
 
-.section.align-baseline {
+.section.baselineAlign {
   align-items: baseline;
 }
 
-.section.align-stretch {
+.section.stretchAlign {
   align-items: stretch;
 }
 
