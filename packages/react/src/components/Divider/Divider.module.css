@@ -1,0 +1,15 @@
+.divider {
+  border: 1px solid;
+}
+
+.defaultDivider {
+  border-color: var(--fds-semantic-border-neutral-default);
+}
+
+.strongDivider {
+  border-color: var(--fds-semantic-border-neutral-strong);
+}
+
+.subtleDivider {
+  border-color: var(--fds-semantic-border-neutral-subtle);
+}
