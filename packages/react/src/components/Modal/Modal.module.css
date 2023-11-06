@@ -49,8 +49,8 @@
 
 .modalHeader button {
   position: absolute;
-  top: var(--fds-spacing-5);
-  right: var(--fds-spacing-4);
+  top: var(--fds-spacing-4);
+  right: var(--fds-spacing-3);
 }
 
 .modalHeader.noCloseButton {
