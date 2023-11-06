@@ -78,4 +78,14 @@ describe('Modal', () => {
     await render({ children });
     expect(screen.getByText(children)).toBeInTheDocument();
   });
+
+  it('should render the header divider', async () => {
+    await render({ headerDivider: true });
+    expect(document.querySelector(`.divider`)).toBeInTheDocument();
+  });
+
+  it('should not render the header divider', async () => {
+    await render({ headerDivider: false });
+    expect(document.querySelector(`.divider`)).toBeNull();
+  });
 });
