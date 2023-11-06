@@ -1,7 +1,8 @@
-import type { ReactNode, InputHTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
+import React, { forwardRef, useCallback, useRef, useState } from 'react';
 import cn from 'classnames';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utils';
 import { Button } from '../../Button';
@@ -21,6 +22,8 @@ export type SearchProps = {
   size?: 'small' | 'medium' | 'large';
   /** Variant */
   variant?: 'primary' | 'secondary' | 'simple';
+  /** Callback for when clear button is activated */
+  onClear?: (value: InputHTMLAttributes<HTMLInputElement>['value']) => void;
 } & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
 
@@ -38,12 +41,38 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       style,
       hideLabel = true,
       variant = 'simple',
+      defaultValue,
+      value,
+      onChange,
+      onClear,
       ...rest
     } = props;
 
     const { inputProps, hasError, errorId, size = 'medium' } = useSearch(props);
 
+    const inputRef = useRef<HTMLInputElement>();
+    const refs = useMergeRefs([ref, inputRef]);
+
+    const [internalValue, setInternalValue] = useState(defaultValue ?? '');
+
+    const handleChange = useCallback(
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        value === undefined && setInternalValue(newValue);
+        onChange?.(e);
+      },
+      [onChange, value],
+    );
+
+    const handleClear = () => {
+      onClear?.(internalValue);
+      setInternalValue('');
+      inputRef?.current && inputRef.current.focus();
+    };
+
     const isSimple = variant === 'simple';
+
+    const showClear = value || internalValue;
 
     return (
       <Paragraph
@@ -81,6 +110,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             <input
               {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
               {...inputProps}
+              ref={refs}
+              value={value ?? internalValue}
+              onChange={handleChange}
               className={cn(
                 classes.input,
                 utilityClasses.focusable,
@@ -88,14 +120,16 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 isSimple && classes.simple,
                 !isSimple && classes.inputSuffix,
               )}
-              ref={ref}
             />
-            <button
-              className={cn(classes.clearButton, utilityClasses.focusable)}
-              type='button'
-            >
-              <XMarkIcon aria-hidden />
-            </button>
+            {showClear && (
+              <button
+                className={cn(classes.clearButton, utilityClasses.focusable)}
+                type='button'
+                onClick={handleClear}
+              >
+                <XMarkIcon aria-hidden />
+              </button>
+            )}
           </div>
           {!isSimple && (
             <Button

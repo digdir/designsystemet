@@ -34,6 +34,11 @@
   top: 0.4em;
 }
 
+[type='search']::-webkit-search-decoration,
+[type='search']::-webkit-search-cancel-button {
+  appearance: none;
+}
+
 .input {
   font: inherit;
   position: relative;
@@ -66,6 +71,8 @@
   height: var(--f-search-button-clear-size);
   width: var(--f-search-button-clear-size);
   border-radius: var(--fds-border_radius-medium);
+  font-size: 1.25rem;
+  padding: 0;
 }
 
 .suffix {
