@@ -182,12 +182,13 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
                       modalRef.current?.close();
                     }}
                     autoFocus
-                  >
-                    <XMarkIcon
-                      title='close modal'
-                      fontSize='1.5em'
-                    />
-                  </Button>
+                    icon={
+                      <XMarkIcon
+                        title='close modal'
+                        fontSize='1.5em'
+                      />
+                    }
+                  />
                 )}
               </div>
               {children}

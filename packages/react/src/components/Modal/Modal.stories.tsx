@@ -63,10 +63,10 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
         headerTitle='Modal med closeOnBackdropClick og en veldig lang tittel'
       >
         <Modal.Content>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-          doloremque obcaecati assumenda odio ducimus sunt et. Eaque autem
-          officia minima quia, numquam dolorum blanditiis dolores tempore qui
-          distinctio, labore beatae?
+          <Paragraph>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+            doloremque obcaecati assumenda odio ducimus sunt et.
+          </Paragraph>
         </Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>

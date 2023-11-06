@@ -6,14 +6,19 @@ import * as ModalStories from './Modal.stories';
 # Modal
 
 `Modal` bruker native `dialog` elementet, og for å åpne/lukke må du bruke `ref`.
+Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for mer info.
 
 <Primary />
 <Controls />
+
+Legg merke til at modalen har focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
 
 ## Close on backdrop click
 
 <Canvas of={ModalStories.CloseOnBackdropClick} />
 
 ## Form
+
+Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
 
 <Canvas of={ModalStories.ModalWithForm} />
