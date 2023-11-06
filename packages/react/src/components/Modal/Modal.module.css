@@ -4,7 +4,7 @@
   padding: 0;
   border: none;
   border-radius: var(--fds-border_radius-medium);
-  box-shadow: var(--fds-shadow-medium);
+  box-shadow: var(--fds-xlarge-medium);
 }
 
 .modal::backdrop {
@@ -49,8 +49,8 @@
 
 .modalHeader button {
   position: absolute;
-  top: var(--fds-spacing-4);
-  right: var(--fds-spacing-3);
+  top: var(--fds-spacing-5);
+  right: var(--fds-spacing-4);
 }
 
 .modalHeader.noCloseButton {

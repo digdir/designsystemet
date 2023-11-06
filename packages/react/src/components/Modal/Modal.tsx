@@ -15,8 +15,6 @@ import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
 
-// TODO: Add width prop support
-
 export type ModalProps = {
   /**
    * Close modal when clicking on backdrop.
@@ -46,6 +44,16 @@ export type ModalProps = {
    * @default false
    */
   headerDivider?: boolean;
+  /**
+   * The width of the modal.
+   * @default '650px'
+   */
+  width?: string;
+  /**
+   * Called before the modal is closed when using the close button, `closeOnBackdropClick` or `ESCAPE`.
+   * If the function returns `false` the modal will not close.
+   */
+  onBeforeClose?: () => boolean | void;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
@@ -57,6 +65,8 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       closeOnBackdropClick = false,
       onClose = undefined,
       closeButton = true,
+      width = '650px',
+      onBeforeClose,
       children,
       ...props
     },
@@ -73,6 +83,8 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
 
       const handleBackdropClick = (e: MouseEvent) => {
         if (e.target === modalRef.current && closeOnBackdropClick) {
+          if (onBeforeClose && onBeforeClose() === false) return;
+
           // Fix bug where if you select text spanning two divs it closes the modal
           if (window.getSelection()?.toString()) return;
 
@@ -90,7 +102,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           currentModalRef.removeEventListener('click', handleBackdropClick);
         }
       };
-    }, [closeOnBackdropClick, modalRef, ref]);
+    }, [closeOnBackdropClick, modalRef, onBeforeClose, ref]);
 
     useEffect(() => {
       if (!onClose) return;
@@ -111,16 +123,31 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
     }, [modalRef, onClose]);
 
+    const onCancel: React.DialogHTMLAttributes<HTMLDialogElement>['onCancel'] =
+      (evt) => {
+        if (onBeforeClose && onBeforeClose() === false) {
+          evt.preventDefault();
+          return;
+        }
+
+        modalRef.current?.close();
+      };
+
     return (
       <dialog
         ref={mergedRefs}
+        {...props}
         className={cn(
           classes.modal,
           headerDivider && classes.divider,
-
           props.className,
         )}
-        {...props}
+        style={{
+          minWidth: width,
+          maxWidth: `min(${width}, calc(100% - 6px - 2em))`,
+          ...props.style,
+        }}
+        onCancel={onCancel}
       >
         {open && (
           <FloatingFocusManager context={context}>
@@ -150,7 +177,10 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
                     variant='tertiary'
                     color='second'
                     size='medium'
-                    onClick={() => modalRef.current?.close()}
+                    onClick={() => {
+                      if (onBeforeClose && onBeforeClose() === false) return;
+                      modalRef.current?.close();
+                    }}
                     autoFocus
                   >
                     <XMarkIcon
