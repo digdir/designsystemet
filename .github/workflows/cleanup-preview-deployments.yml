@@ -27,7 +27,7 @@ jobs:
 
       - name: Remove Storybook alias if it exists
         if: contains(env.ALIASES, 'storefront-pr-1028.dev.designsystemet.no')
-        run: echo "test1=first" >> $GITHUB_OUTPUT
+        run: echo "test1=first1" >> $GITHUB_OUTPUT
 
       - name: Remove Storefront alias if it exists
         if: contains(env.ALIASES, 'storefront-pr-1028.dev.designsystemet.no')
