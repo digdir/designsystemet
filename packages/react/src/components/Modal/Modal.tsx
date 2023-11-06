@@ -174,6 +174,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
                 </Heading>
                 {closeButton && (
                   <Button
+                    name='close'
                     variant='tertiary'
                     color='second'
                     size='medium'
