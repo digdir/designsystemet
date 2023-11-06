@@ -8,9 +8,7 @@ import Select from './components/Select/Select.svelte';
 // @ts-ignore
 import Link from './components/Link/Link.svelte';
 // @ts-ignore
-import List from './components/List/List.svelte';
-// @ts-ignore
-import ListItem from './components/List/ListItem.svelte';
+import { List, ListItem } from './components/List';
 // @ts-ignore
 import Alert from './components/Alert/Alert.svelte';
 // @ts-ignore
