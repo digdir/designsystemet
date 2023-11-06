@@ -133,7 +133,10 @@
 <h1>Button</h1>
 <Button>First</Button>
 <Button color="second">Secondary</Button>
-<Button color="success">Success</Button>
+<Button
+  disabled={true}
+  color="success">Success</Button
+>
 <Button variant="quiet">First (Quiet)</Button>
 <Button variant="outline">First (Outline)</Button>
 <Button iconPlacement="right"

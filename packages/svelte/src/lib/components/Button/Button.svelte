@@ -1,22 +1,42 @@
 <script>
   /**
    * `Button` used for interaction.
-   * @prop {string} [variant='filled'] - Specify which variant to use. Options are 'filled', 'outline', 'quiet'.
-   * @prop {string} [color='first'] - Specify which color palette to use. Options are 'first', 'second', 'success', 'danger', 'inverted'.
-   * @prop {string} [size='medium'] - Size of the button. Options are 'small', 'medium', 'large'.
-   * @prop {boolean} [fullWidth=false] - If `Button` should fill full width of its container.
-   * @prop {boolean} [dashedBorder=false] - Enable dashed border for `outline` variant.
    * @prop {any} icon - Icon to be rendered in the button. This SVG object needs to be passed to the component as a named slot called "icon".
-   * @prop {string} [iconPlacement='left'] - Icon position inside Button. Options are 'right' or 'left'.
-   * @prop {string} [class=''] - Additional classes to add to the component.
+   */
+
+  /**
+   * Specify which variant to use. Options are 'filled', 'outline', 'quiet'.
+   * @type {'filled' | 'outline' | 'quiet'}
    */
   export let variant = 'filled';
+
+  /**
+   * Specify which color palette to use. Options are 'first', 'second', 'success', 'danger', 'inverted'.
+   * @type {'first' | 'second' | 'success' | 'danger' | 'inverted'}
+   */
   export let color = 'first';
+
+  /**
+   * Size of the button. Options are 'small', 'medium', 'large'.
+   * @type {'small' | 'medium' | 'large'}
+   */
   export let size = 'medium';
+
+  /**
+   * If `Button` should fill full width of its container.
+   */
   export let fullWidth = false;
+
+  /**
+   * Enable dashed border for `outline` variant.
+   */
   export let dashedBorder = false;
+
+  /**
+   * Icon position inside Button. Options are 'right' or 'left'.
+   * @type {'right' | 'left'}
+   */
   export let iconPlacement = 'left';
-  // export let type = 'button';
 
   const computedClass = `button ${size} ${variant} ${color} ${
     fullWidth ? 'full-width' : ''
@@ -26,6 +46,7 @@
 </script>
 
 <button
+  {...$$restProps}
   on:click
   class={computedClass}
 >
