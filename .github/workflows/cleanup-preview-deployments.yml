@@ -1,7 +1,7 @@
 name: Cleanup Preview Deployments
 on:
   pull_request:
-    types: [closed]
+    types: [synchronize]
 
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
@@ -26,9 +26,9 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Remove Storybook alias if it exists
-        if: contains(env.ALIASES, 'storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no')
-        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        if: contains(env.ALIASES, 'storefront-pr-1028.dev.designsystemet.no')
+        run: echo "test1=first" >> $GITHUB_OUTPUT
 
       - name: Remove Storefront alias if it exists
-        if: contains(env.ALIASES, 'storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no')
-        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        if: contains(env.ALIASES, 'storefront-pr-1028.dev.designsystemet.no')
+        run: echo "test2=second" >> $GITHUB_OUTPUT
