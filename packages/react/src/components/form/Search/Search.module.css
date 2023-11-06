@@ -20,6 +20,7 @@
   --f-search-button-clear-size: var(--fds-sizing-5);
 
   display: flex;
+  width: 100%;
   align-items: stretch;
   border-radius: var(--fds-border_radius-medium);
   position: relative;
@@ -52,9 +53,15 @@
   border-radius: var(--fds-border_radius-medium);
 }
 
-.inputSuffix {
+.input.withSearchButton {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.searchButton {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .clearButton {
@@ -73,12 +80,6 @@
   border-radius: var(--fds-border_radius-medium);
   font-size: 1.25rem;
   padding: 0;
-}
-
-.suffix {
-  border-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .input.xsmall,
@@ -109,10 +110,6 @@
 
 .input.simple {
   padding-left: 2em;
-}
-
-.disabled .input {
-  cursor: not-allowed;
 }
 
 .error > .input:not(:focus-visible) {

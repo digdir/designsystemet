@@ -1,5 +1,6 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
+import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 
 import { Button, Paragraph } from '../..';
 
@@ -18,7 +19,7 @@ export const Preview: Story = {
     disabled: false,
     size: 'medium',
     error: '',
-    placeholder: 'placholder',
+    placeholder: '',
     variant: 'primary',
   },
 };
@@ -26,6 +27,7 @@ export const Preview: Story = {
 export const FullWidth: Story = {
   args: {
     label: 'Label',
+    variant: 'primary',
   },
   parameters: {
     layout: 'padded',
@@ -53,5 +55,32 @@ export const Controlled: StoryFn<typeof Search> = () => {
         <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
       </div>
     </>
+  );
+};
+
+export const Landmark: StoryFn<typeof Search> = () => {
+  return (
+    <form
+      role='search'
+      onSubmit={(e) => {
+        // Prevent browser navigate on submit
+        e.preventDefault();
+        alert('du har søkt!');
+      }}
+    >
+      <Search
+        label='Søk etter innhold'
+        searchButton={
+          <MagnifyingGlassIcon
+            aria-hidden
+            fontSize={'1.5em'}
+          />
+        }
+        variant='primary'
+        onSearchClick={(val) => {
+          alert(`Du har trykkket på søk: ${val?.toString()}`);
+        }}
+      />
+    </form>
   );
 };
