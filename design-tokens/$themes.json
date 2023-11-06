@@ -5,8 +5,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Base/Core": "source",
-      "Base/Semantic": "enabled",
-      "Figma/components": "disabled"
+      "Base/Semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:7721:2966",
     "$figmaModeId": "7721:0",
@@ -67,7 +66,6 @@
       "semantic.border.neutral.default": "dc2a2d770f8d9be91f770503320fcb0c55153f9b",
       "semantic.border.neutral.subtle": "99692cc14a56e45ca439e9c3c608ac73161fe000",
       "semantic.border.neutral.strong": "defaa2623c44046838342f1da6b56efd9ac38f12",
-      "semantic.border.neutral.divider": "a322abf8d224aa60e30f620ec4474bf6b25905b4",
       "semantic.border.success.default": "661504b28de00dc73f336ffb1dc5f9ee1e824e00",
       "semantic.border.success.hover": "1e8ae8f06aee321425fe575836321339b295dd83",
       "semantic.border.success.active": "1e070adae5bfd459b90e86a0bcad8080a312ffa7",
@@ -155,8 +153,7 @@
       "Brand/Digdir": "enabled",
       "Base/Semantic": "enabled",
       "Base/Core": "source",
-      "Density/Default": "enabled",
-      "Figma/components": "disabled"
+      "Density/Default": "enabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -319,7 +316,6 @@
       "semantic.border.neutral.default": "S:86de0ad5e55f2e4ac7cb2a0ad8f48105e6e9a626,",
       "semantic.border.neutral.subtle": "S:c83ce58dfe9f37c06045c18f6bd43a2409fd505b,",
       "semantic.border.neutral.strong": "S:3a30947a6c322e1d5a9c832f91df7f99dd2ee5c0,",
-      "semantic.border.neutral.divider": "S:f0390210fcfe9727f468921df885ed66e812d737,",
       "semantic.border.success.default": "S:d42bc7bbcff1aa4a0ed05bafad450b3b937f062d,",
       "semantic.border.warning.default": "S:184f244593a781b9b80ee0c018a00fbd9844ac30,",
       "semantic.border.danger.default": "S:af4cecc3564bb13c1f1b27ed9214420fd45c9a7c,",
@@ -555,7 +551,6 @@
       "semantic.border.neutral.default": "926cf2c12ee7510e905c5935d04a99c27e780bb6",
       "semantic.border.neutral.subtle": "61eaf517c6981184009c98e80d58a953ab69422f",
       "semantic.border.neutral.strong": "5832f6ab88c2f25a74ff6f18d74d8981513ed59f",
-      "semantic.border.neutral.divider": "5811ba8d3c6429679ffc2609916e80df36d69ac6",
       "semantic.border.success.default": "d3c11dfc01d423a8f5c5096dd0592de278e6aa1e",
       "semantic.border.success.hover": "4b4b3b6e841961c7fcc65467c6e563a4b7a26c0a",
       "semantic.border.success.active": "97df82d954cf8e2ba01a37ca05476ea04906bb28",
@@ -644,8 +639,7 @@
       "Brand/Altinn": "enabled",
       "Base/Core": "source",
       "Base/Semantic": "enabled",
-      "Density/Default": "enabled",
-      "Figma/components": "disabled"
+      "Density/Default": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
     "$figmaModeId": "6324:2",
@@ -788,7 +782,6 @@
       "semantic.border.neutral.default": "926cf2c12ee7510e905c5935d04a99c27e780bb6",
       "semantic.border.neutral.subtle": "61eaf517c6981184009c98e80d58a953ab69422f",
       "semantic.border.neutral.strong": "5832f6ab88c2f25a74ff6f18d74d8981513ed59f",
-      "semantic.border.neutral.divider": "5811ba8d3c6429679ffc2609916e80df36d69ac6",
       "semantic.border.success.default": "d3c11dfc01d423a8f5c5096dd0592de278e6aa1e",
       "semantic.border.success.hover": "4b4b3b6e841961c7fcc65467c6e563a4b7a26c0a",
       "semantic.border.success.active": "97df82d954cf8e2ba01a37ca05476ea04906bb28",
@@ -876,8 +869,7 @@
       "Brand/Tilsynet": "enabled",
       "Base/Core": "source",
       "Base/Semantic": "enabled",
-      "Density/Default": "enabled",
-      "Figma/components": "disabled"
+      "Density/Default": "enabled"
     },
     "$figmaStyleReferences": {},
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
@@ -1021,7 +1013,6 @@
       "semantic.border.neutral.default": "926cf2c12ee7510e905c5935d04a99c27e780bb6",
       "semantic.border.neutral.subtle": "61eaf517c6981184009c98e80d58a953ab69422f",
       "semantic.border.neutral.strong": "5832f6ab88c2f25a74ff6f18d74d8981513ed59f",
-      "semantic.border.neutral.divider": "5811ba8d3c6429679ffc2609916e80df36d69ac6",
       "semantic.border.success.default": "d3c11dfc01d423a8f5c5096dd0592de278e6aa1e",
       "semantic.border.success.hover": "4b4b3b6e841961c7fcc65467c6e563a4b7a26c0a",
       "semantic.border.success.active": "97df82d954cf8e2ba01a37ca05476ea04906bb28",
@@ -1110,8 +1101,7 @@
       "Base/Core": "source",
       "Base/Semantic": "enabled",
       "Brand/Brreg": "enabled",
-      "Density/Default": "enabled",
-      "Figma/components": "disabled"
+      "Density/Default": "enabled"
     },
     "$figmaVariableReferences": {
       "brand.alt1.50": "741f3f885aa3f266feda96defb70e59752495075",
@@ -1258,7 +1248,6 @@
       "semantic.border.neutral.default": "926cf2c12ee7510e905c5935d04a99c27e780bb6",
       "semantic.border.neutral.subtle": "61eaf517c6981184009c98e80d58a953ab69422f",
       "semantic.border.neutral.strong": "5832f6ab88c2f25a74ff6f18d74d8981513ed59f",
-      "semantic.border.neutral.divider": "5811ba8d3c6429679ffc2609916e80df36d69ac6",
       "semantic.border.success.default": "d3c11dfc01d423a8f5c5096dd0592de278e6aa1e",
       "semantic.border.success.hover": "4b4b3b6e841961c7fcc65467c6e563a4b7a26c0a",
       "semantic.border.success.active": "97df82d954cf8e2ba01a37ca05476ea04906bb28",
@@ -1346,8 +1335,7 @@
     "name": "Default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Density/Default": "enabled",
-      "Figma/components": "disabled"
+      "Density/Default": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1809",
     "$figmaModeId": "6324:5",
@@ -1369,8 +1357,7 @@
     "name": "Compact",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Density/Compact": "enabled",
-      "Figma/components": "disabled"
+      "Density/Compact": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1809",
     "$figmaModeId": "6324:6",
@@ -1392,8 +1379,7 @@
     "name": "1440",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@1440": "enabled",
-      "Figma/components": "disabled"
+      "Viewport/@1440": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1819",
     "$figmaModeId": "6324:7",
@@ -1407,8 +1393,7 @@
     "name": "768",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@768": "enabled",
-      "Figma/components": "disabled"
+      "Viewport/@768": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1819",
     "$figmaModeId": "6324:8",
@@ -1422,8 +1407,7 @@
     "name": "320",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@320": "enabled",
-      "Figma/components": "disabled"
+      "Viewport/@320": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1819",
     "$figmaModeId": "6324:9",
