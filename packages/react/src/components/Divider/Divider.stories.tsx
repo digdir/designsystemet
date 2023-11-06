@@ -1,8 +1,9 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Divider } from './';
 import { Paragraph } from '../Typography';
+
+import { Divider } from './';
 
 type Story = StoryFn<typeof Divider>;
 
