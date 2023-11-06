@@ -3,13 +3,13 @@
 }
 
 .defaultDivider {
-  border-color: var(--fds-semantic-border-neutral-default);
+  border-color: var(--fds-semantic-border-divider-default);
 }
 
 .strongDivider {
-  border-color: var(--fds-semantic-border-neutral-strong);
+  border-color: var(--fds-semantic-border-divider-strong);
 }
 
 .subtleDivider {
-  border-color: var(--fds-semantic-border-neutral-subtle);
+  border-color: var(--fds-semantic-border-divider-subtle);
 }
