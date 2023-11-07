@@ -8,7 +8,7 @@ import { Divider } from './';
 type Story = StoryFn<typeof Divider>;
 
 export default {
-  title: 'Primitives/Divider',
+  title: 'Felles/Divider',
   component: Divider,
 } as Meta;
 
