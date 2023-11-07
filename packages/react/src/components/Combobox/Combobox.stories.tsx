@@ -10,7 +10,7 @@ import { EXPERIMENTAL_Combobox } from '.';
 type Story = StoryObj<typeof EXPERIMENTAL_Combobox>;
 
 export default {
-  title: 'Felles/Combobox',
+  title: 'Experimental/Combobox',
   component: EXPERIMENTAL_Combobox,
 } as Meta;
 
