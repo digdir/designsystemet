@@ -57,8 +57,7 @@
   padding-right: var(--fds-spacing-6);
 }
 
-.divider .modalHeader {
-  border-bottom: 1px solid var(--fds-semantic-border-neutral-divider);
+.modalHeader.hasDivider {
   padding-bottom: var(--fds-spacing-5);
 }
 
@@ -75,6 +74,10 @@
   gap: var(--fds-spacing-4);
   padding: var(--fds-spacing-6);
   padding-top: 0;
+}
+
+.modalFooter.hasDivider {
+  padding-top: var(--fds-spacing-6);
 }
 
 .lockScroll {

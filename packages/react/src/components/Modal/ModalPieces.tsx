@@ -34,10 +34,19 @@ export const ModalFooter = ({
 }: ModalFooterProps & HTMLAttributes<HTMLElement>) => {
   return (
     <>
-      {divider && <Divider color='default' />}
+      {divider && (
+        <Divider
+          color='default'
+          style={{ margin: 0 }}
+        />
+      )}
       <footer
         {...props}
-        className={cn(classes.modalFooter, props.className)}
+        className={cn(
+          classes.modalFooter,
+          props.className,
+          divider && classes.hasDivider,
+        )}
       >
         {children}
       </footer>
@@ -68,7 +77,7 @@ export const ModalHeader = ({
       className={cn(
         classes.modalHeader,
         !closeButton && classes.noCloseButton,
-        divider && classes.divider,
+        divider && classes.hasDivider,
       )}
     >
       {headerSubtitle && (
@@ -102,6 +111,11 @@ export const ModalHeader = ({
         />
       )}
     </div>
-    {divider && <Divider color='default' />}
+    {divider && (
+      <Divider
+        color='default'
+        style={{ margin: 0 }}
+      />
+    )}
   </>
 );
