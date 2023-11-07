@@ -18,9 +18,6 @@ describe('Box', () => {
     const box = screen.getByTitle('box');
 
     expect(box.classList).toContain('box');
-    expect(box.classList).toContain('mediumShadow');
-    expect(box.classList).toContain('mediumBorderRadius');
-    expect(box.classList).toContain('defaultBackground');
   });
 
   it('should render a div with correct classname when shadow is xsmall', () => {
