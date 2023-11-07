@@ -1,0 +1,64 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as ComboboxStories from './Combobox.stories';
+
+<Meta of={ComboboxStories} />
+
+# Combobox
+
+<Information text='development' />
+
+Bruk `Combobox` for å gi brukeren mulighet til å søke etter og velge et alternativ fra en liste.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun én gang i din app.
+import { EXPERIMENTAL_Combobox } from '@digdir/design-system-react';
+
+<EXPERIMENTAL_Combobox
+  options={['1', '2', '3']}
+  optionLabel={(value: string) => `Alternativ ${value}`}
+/>;
+```
+
+## Eksempler
+
+### Standard
+
+Standard `Combobox` med mulighet til å søke blant flere alternativer.
+I denne varianten blir den endelige verdien det samme som det synlige alternativet.
+
+<Canvas of={ComboboxStories.Standard}/>
+
+### Kodede alternativer med ledetekst
+
+I mange tilfeller ønsker man at brukeren skal velge mellom kodede verdier med tilhørende ledetekst.
+Da kan man bruke `optionLabel` til å definere en funksjon som returnerer ledeteksten basert på verdien.
+
+<Canvas of={ComboboxStories.MedLedetekst}/>
+
+### Formaterte alternativer
+
+Man kan også bruke `optionLabel` til å formatere alternativene med HTML.
+
+<Canvas of={ComboboxStories.Formatert}/>
+
+### Egendefinert søkefunksjon
+
+Den innebygde søkefunksjonen filtrerer alternativene basert på om verdien inneholder alle tegnene i søkeordet.
+I mange tilfeller vil ikke det være tilstrekkelig. Derfor kan man bruke egenskapen `filter` til å definere en egen søkefunksjon.
+
+I eksemplet med ledetekst ville det for eksempel være optimalt om søket ble gjort på ledeteksten og ikke på alternativene.
+I følgende eksempel er det lagt til en `filter`-funksjon som gjør nettopp dette,
+i tillegg til å sortere alternativene basert på hvor tegnene i søkeordet er plassert i teksten.
+
+<Canvas of={ComboboxStories.MedEgendefinertFilter}/>
+
+
+

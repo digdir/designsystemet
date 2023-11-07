@@ -51,6 +51,11 @@ describe('compareFunctions', () => {
     it('Takes order into account', () => {
       expect(compare('bcd abc', 'dbc abc')).toBe(0); // Should not take the part before "a" into account
     });
+
+    it('Is not case sensitive', () => {
+      expect(compare('abc', 'ABC')).toBe(0);
+      expect(compare('aBc', 'adc')).toBe(-1);
+    });
   });
 
   describe('compareNumberOfMatchingChars', () => {
