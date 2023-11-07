@@ -1,10 +1,14 @@
 import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
+import type { OverridableComponent } from '../../types/OverridableComponent';
+
 import type { BoxProps } from './Box';
 import { Box } from './Box';
 
-const render = (props?: BoxProps) =>
+const render = (
+  props?: Partial<OverridableComponent<BoxProps, HTMLDivElement>>,
+) =>
   renderRtl(
     <Box
       {...props}
@@ -42,9 +46,9 @@ describe('Box', () => {
   });
 
   it('should render the box as a header', () => {
-    render({ as: 'header' });
+    render({ as: 'button' });
     const box = screen.getByTitle('box');
 
-    expect(box.tagName).toBe('HEADER');
+    expect(box.tagName).toBe('BUTTON');
   });
 });
