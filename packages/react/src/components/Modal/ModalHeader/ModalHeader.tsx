@@ -1,61 +1,12 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
-import { Heading, Paragraph } from '../Typography';
-import { Button } from '../Button';
-import { Divider } from '../Divider';
+import { Heading, Paragraph } from '../../Typography';
+import { Button } from '../../Button';
+import { Divider } from '../../Divider';
 
-import classes from './Modal.module.css';
-
-export const ModalContent = ({
-  children,
-  ...props
-}: HTMLAttributes<HTMLElement>) => {
-  return (
-    <div
-      {...props}
-      className={cn(classes.modalContent, props.className)}
-    >
-      {children}
-    </div>
-  );
-};
-
-type ModalFooterProps = {
-  divider?: boolean;
-};
-
-export const ModalFooter = ({
-  divider = false,
-  children,
-  ...props
-}: ModalFooterProps & HTMLAttributes<HTMLElement>) => {
-  return (
-    <>
-      {divider && (
-        <Divider
-          color='default'
-          style={{ margin: 0 }}
-        />
-      )}
-      <footer
-        {...props}
-        className={cn(
-          classes.modalFooter,
-          props.className,
-          divider && classes.hasDivider,
-        )}
-      >
-        {children}
-      </footer>
-    </>
-  );
-};
-
-ModalContent.displayName = 'Modal.Content';
-ModalFooter.displayName = 'Modal.Footer';
+import classes from './ModalHeader.module.css';
 
 type ModalHeaderProps = {
   closeButton?: boolean;

@@ -1,5 +1,6 @@
 import { Modal as ModalRoot } from './Modal';
-import { ModalContent, ModalFooter } from './ModalPieces';
+import { ModalContent } from './ModalContent';
+import { ModalFooter } from './ModalFooter';
 
 export type { ModalProps } from './Modal';
 

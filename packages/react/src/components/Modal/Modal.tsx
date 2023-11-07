@@ -12,7 +12,7 @@ import { Box } from '../Box';
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
-import { ModalHeader } from './ModalPieces';
+import { ModalHeader } from './ModalHeader';
 
 export type ModalProps = {
   /**

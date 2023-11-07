@@ -1,0 +1,26 @@
+.modalHeader {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: var(--fds-spacing-6);
+  padding-bottom: 0;
+  padding-left: var(--fds-spacing-6);
+  padding-right: var(--fds-spacing-18);
+  gap: var(--fds-spacing-1);
+  color: var(--fds-semantic-text-neutral-default);
+}
+
+.modalHeader button {
+  position: absolute;
+  top: var(--fds-spacing-4);
+  right: var(--fds-spacing-3);
+}
+
+.modalHeader.noCloseButton {
+  padding-right: var(--fds-spacing-6);
+}
+
+.modalHeader.hasDivider {
+  padding-bottom: var(--fds-spacing-5);
+}

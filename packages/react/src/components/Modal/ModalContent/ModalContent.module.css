@@ -1,0 +1,6 @@
+.modalContent {
+  padding: var(--fds-spacing-6);
+  padding-top: var(--fds-spacing-5);
+  max-height: 80vh;
+  overflow-y: auto;
+}

@@ -1,0 +1,11 @@
+.modalFooter {
+  display: flex;
+  align-items: center;
+  gap: var(--fds-spacing-4);
+  padding: var(--fds-spacing-6);
+  padding-top: 0;
+}
+
+.modalFooter.hasDivider {
+  padding-top: var(--fds-spacing-6);
+}
