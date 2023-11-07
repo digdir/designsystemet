@@ -8,6 +8,7 @@ import {
 } from '@floating-ui/react';
 
 import { Box } from '../Box';
+import { useMediaQuery } from '../../hooks';
 
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
@@ -45,6 +46,7 @@ export type ModalProps = {
   headerDivider?: boolean;
   /**
    * The width of the modal.
+   * Will go to full width below the specified width.
    * @default '650px'
    */
   width?: string;
@@ -76,6 +78,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     const { context } = useFloating();
     useScrollLock(modalRef, classes.lockScroll);
     const open = useModalState(modalRef);
+    const belowWidth = useMediaQuery(`(max-width: ${width})`);
 
     useEffect(() => {
       if (!closeOnBackdropClick) return;
@@ -144,8 +147,10 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           props.className,
         )}
         style={{
-          minWidth: width,
-          maxWidth: `min(${width}, calc(100% - 6px - 2em))`,
+          minWidth: belowWidth ? '100%' : width,
+          maxWidth: belowWidth
+            ? '100%'
+            : `min(${width}, calc(100% - 6px - 2em))`,
           ...props.style,
         }}
         onCancel={onCancel}

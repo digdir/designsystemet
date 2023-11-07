@@ -16,14 +16,6 @@
   animation: slide-in 300ms ease-in-out, fade-in 300ms ease-in-out;
 }
 
-@media (max-width: 767px) {
-  .modal {
-    min-width: 100%;
-    max-width: 100%;
-    border-radius: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .modal[open] {
     animation: none;

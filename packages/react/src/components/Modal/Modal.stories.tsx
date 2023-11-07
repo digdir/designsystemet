@@ -87,6 +87,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
         ref={modalRef}
         onClose={() => setInput('')}
         headerTitle='Modal med skjema'
+        width='450px'
       >
         <Modal.Content>
           <Textfield
