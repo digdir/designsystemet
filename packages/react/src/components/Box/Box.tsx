@@ -11,19 +11,24 @@ export type BoxProps = {
   as?: ElementType;
   /**
    * Shadow size of the box
-   * @default medium
+   * @default undefined
    */
   shadow?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   /**
    * Border color of the box
    * @default undefined
    */
-  borderColor?: 'default' | 'subtle';
+  borderColor?: 'default' | 'subtle' | 'strong';
   /**
    * Border radius of the box
-   * @default medium
+   * @default undefined
    */
   borderRadius?: 'small' | 'medium' | 'large';
+  /**
+   * Border size
+   * @default undefined
+   */
+  borderSize?: number;
   /**
    * Background color of the box
    * @default 'defualt'
@@ -33,24 +38,28 @@ export type BoxProps = {
 
 export const Box = ({
   as: Component = 'div',
-  shadow = 'medium',
+  shadow,
   borderColor,
-  borderRadius = 'medium',
+  borderRadius,
   background = 'default',
   children,
   ...rest
 }: BoxProps) => {
   return (
     <Component
+      {...rest}
       className={cn(
         classes.box,
-        classes[shadow + 'Shadow'],
-        classes[borderRadius + 'BorderRadius'],
+        shadow && classes[shadow + 'Shadow'],
+        borderRadius && classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],
         classes[background + 'Background'],
         rest.className,
       )}
-      {...rest}
+      style={{
+        borderWidth: rest.borderSize,
+        ...rest.style,
+      }}
     >
       {children}
     </Component>

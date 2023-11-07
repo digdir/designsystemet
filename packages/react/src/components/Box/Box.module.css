@@ -1,5 +1,6 @@
 .box {
   display: block;
+  border-style: solid;
 }
 
 .xsmallShadow {
@@ -28,6 +29,10 @@
 
 .subtleBorderColor {
   border-color: var(--fds-semantic-border-neutral-subtle);
+}
+
+.strongBorderColor {
+  border-color: var(--fds-semantic-border-neutral-strong);
 }
 
 .smallBorderRadius {
