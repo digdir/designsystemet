@@ -26,7 +26,7 @@
    * This overrides the internal state of the tooltip.
    * @type {boolean}
    */
-  export let open = false;
+  export let open = undefined;
 
   /**
    * Whether the tooltip is open by default or not.
@@ -86,7 +86,7 @@
   <slot />
 </div>
 
-{#if internalOpen}
+{#if open || (open === undefined && internalOpen)}
   <div
     class="tooltip"
     use:floatingContent

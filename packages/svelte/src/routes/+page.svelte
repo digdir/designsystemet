@@ -324,6 +324,7 @@
 <p>
   Tooltips kan også legges <nobr
     ><Tooltip
+      open={true}
       content="Ganske kult?"
       placement="bottom"
       ><abbr style="font-weight: bold; text-decoration: underline dotted;"
