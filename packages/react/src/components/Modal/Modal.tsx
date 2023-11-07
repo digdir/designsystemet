@@ -136,7 +136,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
 
     return (
-      /* @ts-expect-error #2769 -- as='dialog' is not yet supported, but works in the browser */
       <Box
         as='dialog'
         ref={mergedRefs}
