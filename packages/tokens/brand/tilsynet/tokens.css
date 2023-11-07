@@ -102,7 +102,6 @@
   --fds-semantic-border-neutral-default: #68707c;
   --fds-semantic-border-neutral-subtle: #d2d5d8;
   --fds-semantic-border-neutral-strong: #1e2b3c;
-  --fds-semantic-border-neutral-divider: #bcbfc5;
   --fds-semantic-border-success-default: #118849;
   --fds-semantic-border-success-hover: #0c6536;
   --fds-semantic-border-success-active: #084826;
@@ -117,6 +116,9 @@
   --fds-semantic-border-on_inverted-default: #ffffff;
   --fds-semantic-border-input-default: #00315d;
   --fds-semantic-border-input-hover: #0062ba;
+  --fds-semantic-border-divider-default: #bcbfc5;
+  --fds-semantic-border-divider-subtle: #d2d5d8;
+  --fds-semantic-border-divider-strong: #68707c;
   --fds-semantic-border-first-default: #5c61d2;
   --fds-semantic-border-first-hover: #3339c6;
   --fds-semantic-border-first-active: #0008b8;

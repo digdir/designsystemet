@@ -248,10 +248,6 @@
         "strong": {
           "value": "{colors.grey.800}",
           "type": "color"
-        },
-        "divider": {
-          "value": "{colors.grey.400}",
-          "type": "color"
         }
       },
       "success": {
@@ -319,6 +315,20 @@
         },
         "hover": {
           "value": "#0062ba",
+          "type": "color"
+        }
+      },
+      "divider": {
+        "default": {
+          "value": "{colors.grey.400}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{colors.grey.300}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{colors.grey.600}",
           "type": "color"
         }
       }
