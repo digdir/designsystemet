@@ -3,6 +3,8 @@
   import { offset, flip, shift } from 'svelte-floating-ui/dom';
   import { arrow, createFloatingActions } from 'svelte-floating-ui';
 
+  const ARROW_HEIGHT = 7;
+
   /**
    * Content of the tooltip.
    * @type {string}
@@ -34,16 +36,20 @@
    */
   export let defaultOpen = false;
 
+  /**
+   * Space between children and tooltip-arrow.
+   * @type {number}
+   */
+  export let arrowGap = 4;
+
   $: internalOpen = open ?? defaultOpen;
-  const ARROW_HEIGHT = 7;
-  const ARROW_GAP = 4;
 
   const arrowRef = writable(null);
   const [floatingRef, floatingContent] = createFloatingActions({
     strategy: 'absolute',
     placement: placement,
     middleware: [
-      offset(ARROW_HEIGHT + ARROW_GAP),
+      offset(ARROW_HEIGHT + arrowGap),
       flip({
         fallbackAxisSideDirection: 'start',
       }),
@@ -115,6 +121,7 @@
     padding: var(--fds-spacing-1) var(--fds-spacing-2);
     border-radius: var(--fds-border_radius-medium);
     font: var(--fds-typography-paragraph-xsmall);
+    z-index: 1000;
   }
   .tooltip-arrow {
     position: absolute;
