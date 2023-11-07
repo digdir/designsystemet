@@ -1,14 +1,12 @@
-import type { ElementType, HTMLAttributes } from 'react';
-import React from 'react';
+import type { HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
+
+import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Box.module.css';
 
 export type BoxProps = {
-  /**
-   * The element to render as
-   */
-  as?: ElementType;
   /**
    * Shadow size of the box
    * @default undefined
@@ -31,18 +29,22 @@ export type BoxProps = {
   background?: 'default' | 'subtle';
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Box = ({
-  as: Component = 'div',
-  shadow,
-  borderColor,
-  borderRadius,
-  background = 'default',
-  children,
-  ...rest
-}: BoxProps) => {
-  return (
+export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
+  (
+    {
+      shadow,
+      borderColor,
+      borderRadius,
+      background = 'default',
+      children,
+      as: Component = 'div',
+      ...rest
+    },
+    ref,
+  ) => (
     <Component
       {...rest}
+      ref={ref}
       className={cn(
         classes.box,
         shadow && classes[shadow + 'Shadow'],
@@ -54,5 +56,5 @@ export const Box = ({
     >
       {children}
     </Component>
-  );
-};
+  ),
+);
