@@ -7,7 +7,6 @@ import {
   useMergeRefs,
 } from '@floating-ui/react';
 
-import { Box } from '../Box';
 import { useMediaQuery } from '../../hooks';
 
 import { useScrollLock } from './useScrollLock';
@@ -136,8 +135,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
 
     return (
-      <Box
-        as='dialog'
+      <dialog
         ref={mergedRefs}
         {...props}
         className={cn(
@@ -153,7 +151,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           ...props.style,
         }}
         onCancel={onCancel}
-        shadow='xlarge'
       >
         {open && (
           <FloatingFocusManager context={context}>
@@ -172,7 +169,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
             </>
           </FloatingFocusManager>
         )}
-      </Box>
+      </dialog>
     );
   },
 );
