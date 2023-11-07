@@ -71,7 +71,6 @@
 
 .modalFooter {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: var(--fds-spacing-4);
   padding: var(--fds-spacing-6);

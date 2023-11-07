@@ -6,14 +6,13 @@ import {
   useFloating,
   useMergeRefs,
 } from '@floating-ui/react';
-import { XMarkIcon } from '@navikt/aksel-icons';
 
-import { Button } from '../Button';
-import { Heading, Paragraph } from '../Typography';
+import { Box } from '../Box';
 
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
+import { ModalHeader } from './ModalPieces';
 
 export type ModalProps = {
   /**
@@ -134,7 +133,9 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
 
     return (
-      <dialog
+      /* @ts-expect-error #2769 -- as='dialog' is not yet supported, but works in the browser */
+      <Box
+        as='dialog'
         ref={mergedRefs}
         {...props}
         className={cn(
@@ -148,55 +149,26 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           ...props.style,
         }}
         onCancel={onCancel}
+        shadow='xlarge'
       >
         {open && (
           <FloatingFocusManager context={context}>
             <>
-              <div
-                className={cn(
-                  classes.modalHeader,
-                  !closeButton && classes.noCloseButton,
-                )}
-              >
-                {headerSubtitle && (
-                  <Paragraph
-                    size='small'
-                    variant='short'
-                  >
-                    {headerSubtitle}
-                  </Paragraph>
-                )}
-                <Heading
-                  level={2}
-                  size='xsmall'
-                >
-                  {headerTitle}
-                </Heading>
-                {closeButton && (
-                  <Button
-                    name='close'
-                    variant='tertiary'
-                    color='second'
-                    size='medium'
-                    onClick={() => {
-                      if (onBeforeClose && onBeforeClose() === false) return;
-                      modalRef.current?.close();
-                    }}
-                    autoFocus
-                    icon={
-                      <XMarkIcon
-                        title='close modal'
-                        fontSize='1.5em'
-                      />
-                    }
-                  />
-                )}
-              </div>
+              <ModalHeader
+                divider={headerDivider}
+                closeButton={closeButton}
+                headerTitle={headerTitle}
+                headerSubtitle={headerSubtitle}
+                onClose={() => {
+                  if (onBeforeClose && onBeforeClose() === false) return;
+                  modalRef.current?.close();
+                }}
+              />
               {children}
             </>
           </FloatingFocusManager>
         )}
-      </dialog>
+      </Box>
     );
   },
 );

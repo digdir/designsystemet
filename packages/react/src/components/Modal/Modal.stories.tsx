@@ -68,7 +68,9 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
             doloremque obcaecati assumenda odio ducimus sunt et.
           </Paragraph>
         </Modal.Content>
-        <Modal.Footer>Modal footer</Modal.Footer>
+        <Modal.Footer divider={true}>
+          Du kan også ha divider på footer
+        </Modal.Footer>
       </Modal>
     </>
   );
@@ -97,18 +99,18 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
         </Modal.Content>
         <Modal.Footer>
           <Button
-            variant='secondary'
-            onClick={() => modalRef.current?.close()}
-          >
-            Avbryt
-          </Button>
-          <Button
             onClick={() => {
               window.alert(`Du har sendt inn skjema med navn: ${input}`);
               modalRef.current?.close();
             }}
           >
             Send inn skjema
+          </Button>
+          <Button
+            variant='secondary'
+            onClick={() => modalRef.current?.close()}
+          >
+            Avbryt
           </Button>
         </Modal.Footer>
       </Modal>
