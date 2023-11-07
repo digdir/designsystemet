@@ -14,12 +14,12 @@ export type DividerProps = {
 export const Divider = ({ color = 'default', ...rest }: DividerProps) => {
   return (
     <hr
+      {...rest}
       className={cn(
         classes.divider,
         classes[color + 'Divider'],
         rest.className,
       )}
-      {...rest}
     />
   );
 };
