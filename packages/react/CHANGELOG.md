@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.34.0...@digdir/design-system-react@0.35.0) (2023-10-30)
+
+### Bug Fixes
+
+- **HelpText:** Add missing `aria-expanded` ([#992](https://github.com/digdir/designsystem/issues/992)) ([383ed03](https://github.com/digdir/designsystem/commit/383ed0366e1fd831c1b354411df78a5670b657d2))
+- **LegacyTextField, LegacyTextArea:** :bug: Fix wrong placement of character counter ([#1008](https://github.com/digdir/designsystem/issues/1008)) ([c75aa3f](https://github.com/digdir/designsystem/commit/c75aa3fd4e7322d4b6870423dfbc1264b3e7ba11))
+
+### Features
+
+- **Spinner:** Update component and docs ([#970](https://github.com/digdir/designsystem/issues/970)) ([269f157](https://github.com/digdir/designsystem/commit/269f1578b7571ab6eb53c52cb8055734abaa14f9))
+
+# [0.34.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.33.0...@digdir/design-system-react@0.34.0) (2023-10-25)
+
+### Bug Fixes
+
+- **InputWrapper:** Remove gap ([#989](https://github.com/digdir/designsystem/issues/989)) ([1fac2f7](https://github.com/digdir/designsystem/commit/1fac2f784ca5814a66529c51d800307e70def9d1))
+- **List:** Add more spacing between items ([#982](https://github.com/digdir/designsystem/issues/982)) ([6febc88](https://github.com/digdir/designsystem/commit/6febc887f165802efd5a8ded9d63ec547b2032cf))
+- **Switch:** Remove `gap` when there is no children ([#986](https://github.com/digdir/designsystem/issues/986)) ([1c95186](https://github.com/digdir/designsystem/commit/1c951865d51b042bf4f00998e3d71d2ec9e6ded2))
+
+### Features
+
+- Add `htmlSize` to `NativeSelect` and `Textfield` ([#972](https://github.com/digdir/designsystem/issues/972)) ([bf72f3b](https://github.com/digdir/designsystem/commit/bf72f3b7cf5b97ed7af53c731c757c6acbc90048))
+- **List:** More options for `List` component ([#913](https://github.com/digdir/designsystem/issues/913)) ([8903110](https://github.com/digdir/designsystem/commit/8903110823ce7d5ce85651724d057efc3d09ffd4))
+
+# [0.33.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.32.1...@digdir/design-system-react@0.33.0) (2023-10-19)
+
+### Features
+
+- **HelpText:** Use new Popover ([#960](https://github.com/digdir/designsystem/issues/960)) ([b12da58](https://github.com/digdir/designsystem/commit/b12da582879ceb9847d0b63944fe4d3ab643b146))
+- **NativeSelect:** Updated to match other form components ([#955](https://github.com/digdir/designsystem/issues/955)) ([71f048e](https://github.com/digdir/designsystem/commit/71f048ee01e4c0d638bb2204dd40b289fd422d75))
+- **Popover:** :wastebasket: Change to Legacy ([#956](https://github.com/digdir/designsystem/issues/956)) ([cf9be72](https://github.com/digdir/designsystem/commit/cf9be72215ff813b80d881852c52ccb083b5ca5a))
+- **Popover:** New component and method for attaching to anchor element ([#959](https://github.com/digdir/designsystem/issues/959)) ([98f9985](https://github.com/digdir/designsystem/commit/98f99853bfd55c9dde0d307188be2b00528800bc))
+- **Tag:** Change `filled` and `outline` to `primary` and `secondary` ([#958](https://github.com/digdir/designsystem/issues/958)) ([9c230af](https://github.com/digdir/designsystem/commit/9c230af1fae54db02420241f30261971d3aaa83c))
+
 ## [0.32.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.32.0...@digdir/design-system-react@0.32.1) (2023-10-17)
 
 ### Bug Fixes

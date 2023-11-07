@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -20,14 +20,15 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
-  const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button
-        ref={(ref) => setButtonRef(ref)}
+        ref={buttonRef}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         My trigger
       </Button>
@@ -35,7 +36,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
         {...args}
         open={open || args.open}
         onClose={() => setOpen(false)}
-        anchorEl={buttonRef}
+        anchorEl={buttonRef.current}
       >
         <Popover.Content>popover content</Popover.Content>
       </Popover>
@@ -50,37 +51,47 @@ Preview.args = {
 };
 
 export const Variants: StoryFn<typeof Popover> = () => {
-  const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [open, setOpen] = useState(false);
+
+  React.useEffect(() => {
+    setOpen(true);
+  }, []);
 
   return (
     <>
-      <Button ref={(ref) => setButtonRef(ref)}>My trigger</Button>
+      <Button
+        ref={buttonRef}
+        aria-expanded={open}
+      >
+        My trigger
+      </Button>
       <Popover
-        anchorEl={buttonRef}
-        open
+        anchorEl={buttonRef.current}
+        open={open}
         placement='top'
       >
         <Popover.Content>default</Popover.Content>
       </Popover>
       <Popover
-        anchorEl={buttonRef}
-        open
+        anchorEl={buttonRef.current}
+        open={open}
         placement='right'
         variant='danger'
       >
         <Popover.Content>danger</Popover.Content>
       </Popover>
       <Popover
-        anchorEl={buttonRef}
-        open
+        anchorEl={buttonRef.current}
+        open={open}
         placement='bottom'
         variant='info'
       >
         <Popover.Content>info</Popover.Content>
       </Popover>
       <Popover
-        anchorEl={buttonRef}
-        open
+        anchorEl={buttonRef.current}
+        open={open}
         placement='left'
         variant='warning'
       >
@@ -91,19 +102,20 @@ export const Variants: StoryFn<typeof Popover> = () => {
 };
 
 export const InteractiveContent: StoryFn<typeof Popover> = () => {
-  const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button
-        ref={(ref) => setButtonRef(ref)}
+        ref={buttonRef}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         My trigger
       </Button>
       <Popover
-        anchorEl={buttonRef}
+        anchorEl={buttonRef.current}
         placement='top'
         open={open}
         onClose={() => setOpen(false)}

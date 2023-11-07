@@ -49,6 +49,10 @@ export type TextfieldProps = {
    *  Defaults to Norwegian if no labels are provided.
    */
   characterLimit?: CharacterLimitProps;
+  /** Exposes the HTML `size` attribute.
+   * @default 20
+   */
+  htmlSize?: number;
 } & Omit<FormFieldProps, 'size'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
@@ -70,6 +74,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       characterLimit,
       hideLabel,
       type = 'text',
+      htmlSize = 20,
       ...rest
     } = props;
 
@@ -160,6 +165,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             ref={ref}
             type={type}
             aria-describedby={describedBy}
+            size={htmlSize}
             onChange={(e) => {
               inputProps?.onChange?.(e);
               setInputValue(e.target.value);

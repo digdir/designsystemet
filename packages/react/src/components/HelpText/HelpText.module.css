@@ -1,5 +1,4 @@
 .helpTextButton {
-  composes: focusable from '../../utils/utility.module.css';
   background-color: transparent;
   border-radius: 50px;
   padding: 0;
@@ -19,7 +18,7 @@
 }
 
 .helpTextIcon {
-  color: var(--colors-blue-700);
+  color: var(--fds-semantic-text-action-default);
   width: var(--help_text-icon-width);
   height: var(--help_text-icon-height);
 }
@@ -33,8 +32,7 @@
 }
 
 .helpTextContent {
-  font-size: var(--font_size-300);
-  line-height: var(--typography-default-line-height);
+  font: var(--fds-typography-paragraph-medium);
   width: fit-content;
   max-width: 700px;
 }

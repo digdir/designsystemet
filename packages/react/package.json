@@ -1,6 +1,6 @@
 {
   "name": "@digdir/design-system-react",
-  "version": "0.32.1",
+  "version": "0.35.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -13,7 +13,8 @@
   "scripts": {
     "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build",
-    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/"
+    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "types": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

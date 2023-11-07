@@ -5,7 +5,7 @@ export const inputVariants = [
   'readonlyInfo',
   'readonlyConfirm',
 ] as const;
-export type InputVariant_ = typeof inputVariants[number];
+export type InputVariant_ = (typeof inputVariants)[number];
 
 export type ReadOnlyVariant_ = 'readonlyInfo' | 'readonlyConfirm';
 
