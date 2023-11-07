@@ -22,11 +22,24 @@ Preview.args = {
   background: 'default',
 };
 
-export const AsHeader: Story = (args) => (
-  <Box
-    {...args}
-    as='header'
-  >
-    Box!
-  </Box>
+export const Polymorphic: Story = (args) => (
+  <>
+    <Box
+      {...args}
+      as='button'
+      borderRadius='medium'
+      borderColor='subtle'
+    >
+      button
+    </Box>
+    <Box
+      {...args}
+      as='a'
+      borderRadius='medium'
+      borderColor='subtle'
+      href='#'
+    >
+      link
+    </Box>
+  </>
 );
