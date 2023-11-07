@@ -25,11 +25,6 @@ export type BoxProps = {
    */
   borderRadius?: 'small' | 'medium' | 'large';
   /**
-   * Border size
-   * @default undefined
-   */
-  borderSize?: number;
-  /**
    * Background color of the box
    * @default 'defualt'
    */
@@ -56,10 +51,6 @@ export const Box = ({
         classes[background + 'Background'],
         rest.className,
       )}
-      style={{
-        borderWidth: rest.borderSize,
-        ...rest.style,
-      }}
     >
       {children}
     </Component>
