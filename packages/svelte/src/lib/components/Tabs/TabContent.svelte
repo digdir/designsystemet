@@ -22,7 +22,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 1.40625rem */
-    margin-left: -2px;
+    margin-left: -.125rem;
     &.small {
       padding: var(--spacing-4, 1.125rem);
       font-size: 0.9375rem;

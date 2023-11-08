@@ -10,7 +10,7 @@
   /**
    * Icon to be displayed in the tab.
    */
-  export let icon;
+  export let icon = null;
 
   let tabButtonSize;
   let isSelected;
@@ -26,7 +26,7 @@
 
 <div class="tab-item {isSelected ? 'selected' : ''}">
   <button
-    class={`${isSelected ? 'active' : ''} ${tabButtonSize}`}
+    class={`${isSelected ? 'active' : ''} ${tabButtonSize} ${!icon ? 'no-icon' : ''}`}
     on:click={handleClick}
   >
     {#if icon}
@@ -80,8 +80,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 3px;
+    margin-bottom: .1875rem;
     scale: 1.4;
+  }
+  .no-icon {
+    margin-bottom: -.125rem;
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -109,7 +112,7 @@
   button::after {
     content: '';
     display: block;
-    height: 3px;
+    height: .1875rem;
     width: 100%;
     border-radius: var(--fds-border_radius-full);
     background-color: var(--fdsc-bottom-border-color);
