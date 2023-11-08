@@ -1,25 +1,42 @@
 <script>
   /**
-   *  @type {'filled' | 'outline' | 'quiet'}
+   * `Button` used for interaction.
+   * @prop {any} icon - Icon to be rendered in the button. This SVG object needs to be passed to the component as a named slot called "icon".
+   */
+
+  /**
+   * Specify which variant to use. Options are 'filled', 'outline', 'quiet'.
+   * @type {'filled' | 'outline' | 'quiet'}
    */
   export let variant = 'filled';
 
-  /** @type {'first' | 'second' | 'success' | 'danger' | 'inverted'} */
+  /**
+   * Specify which color palette to use. Options are 'first', 'second', 'success', 'danger', 'inverted'.
+   * @type {'first' | 'second' | 'success' | 'danger' | 'inverted'}
+   */
   export let color = 'first';
 
-  /** @type {'small' | 'medium' | 'large'} */
+  /**
+   * Size of the button. Options are 'small', 'medium', 'large'.
+   * @type {'small' | 'medium' | 'large'}
+   */
   export let size = 'medium';
 
-  /** @type {boolean} */
+  /**
+   * If `Button` should fill full width of its container.
+   */
   export let fullWidth = false;
 
-  /** @type {boolean} */
+  /**
+   * Enable dashed border for `outline` variant.
+   */
   export let dashedBorder = false;
 
-  /** @type {'right' | 'left'} */
+  /**
+   * Icon position inside Button. Options are 'right' or 'left'.
+   * @type {'right' | 'left'}
+   */
   export let iconPlacement = 'left';
-
-  // export let type = 'button';
 
   const computedClass = `button ${size} ${variant} ${color} ${
     fullWidth ? 'full-width' : ''
@@ -29,6 +46,7 @@
 </script>
 
 <button
+  {...$$restProps}
   on:click
   class={computedClass}
   {...$$restProps}

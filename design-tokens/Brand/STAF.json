@@ -8,7 +8,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.8",
+              "value": "0.9",
               "space": "lch"
             }
           }
@@ -21,7 +21,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.7",
+              "value": "0.8",
               "space": "lch"
             }
           }
@@ -118,7 +118,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.8",
+              "value": "0.9",
               "space": "lch"
             }
           }
@@ -132,7 +132,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.7",
+              "value": "0.8",
               "space": "lch"
             }
           }
@@ -233,7 +233,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.8",
+              "value": "0.9",
               "space": "lch"
             }
           }
@@ -246,7 +246,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.7",
+              "value": "0.8",
               "space": "lch"
             }
           }
@@ -600,7 +600,8 @@
   "fontFamilies": {
     "inter": {
       "value": "Open Sans",
-      "type": "fontFamilies"
+      "type": "fontFamilies",
+      "description": "Vi overskriver default font family Inter, med STAF sin font family Open Sans."
     }
   }
 }

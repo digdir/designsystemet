@@ -8,11 +8,13 @@ import Select from './components/Select/Select.svelte';
 // @ts-ignore
 import Link from './components/Link/Link.svelte';
 // @ts-ignore
-import List from './components/List/List.svelte';
+import { List, ListItem } from './components/List';
 // @ts-ignore
 import Alert from './components/Alert/Alert.svelte';
 // @ts-ignore
 import Tag from './components/Tag/Tag.svelte';
+// @ts-ignore
+import Tooltip from './components/Tooltip/Tooltip.svelte';
 // @ts-ignore
 import {
   Accordion,
@@ -24,7 +26,8 @@ import {
 import { Paragraph, Heading } from './components/Typography';
 // @ts-ignore
 import { Textfield, Radio, RadioGroup, Switch } from './components/Form';
-import Tab from './components/Tab/Tab.svelte';
+import Tabs from './components/Tabs/Tabs.svelte';
+import Spinner from './components/Spinner/Spinner.svelte';
 
 export {
   Button,
@@ -32,6 +35,7 @@ export {
   Select,
   Link,
   List,
+  ListItem,
   Alert,
   Paragraph,
   Heading,
@@ -44,5 +48,7 @@ export {
   Radio,
   RadioGroup,
   Switch,
-  Tab,
+  Tabs,
+  Spinner,
+  Tooltip,
 };

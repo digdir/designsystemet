@@ -6,7 +6,7 @@
   export let tabContentSize = 'medium';
 </script>
 
-<div class="tab-group">
+<div class="tabs-group">
   {#each tabs as tab, i}
     <button
       class={i === activeTab ? `active ${tabButtonSize}` : `${tabButtonSize}`}
@@ -24,13 +24,24 @@
 <div class={`tab-content ${tabContentSize}`}>
   {#each tabs as tab, i}
     {#if i === activeTab}
-      {tab.content}
+      {#if typeof tab.content === 'function'}
+        {#if tab.props !== undefined}
+          <svelte:component
+            this={tab.content}
+            {...tab.props}
+          />
+        {:else}
+          <svelte:component this={tab.content} />
+        {/if}
+      {:else}
+        {tab.content}
+      {/if}
     {/if}
   {/each}
 </div>
 
 <style>
-  .tab-group {
+  .tabs-group {
     display: inline-flex;
     flex-direction: row;
     border-bottom: var(--fds-border_width-default) solid

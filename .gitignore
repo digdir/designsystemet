@@ -29,3 +29,5 @@ coverage/
 
 # Vercel connfig files
 .vercel/
+packages/svelte/.vscode/settings.json
+packages/svelte/.vscode/launch.json

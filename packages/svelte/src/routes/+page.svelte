@@ -1,5 +1,4 @@
-<script lang="ts">
-  import { writable } from 'svelte/store';
+<script>
   import Alert from '$lib/components/Alert/Alert.svelte';
   import Button from '$lib/components/Button/Button.svelte';
   import Switch from '$lib/components/Form/Switch/Switch.svelte';
@@ -8,6 +7,7 @@
   import Textfield from '$lib/components/Form/Textfield/Textfield.svelte';
   import Link from '$lib/components/Link/Link.svelte';
   import List from '$lib/components/List/List.svelte';
+  import ListItem from '$lib/components/List/ListItem.svelte';
   import Tag from '$lib/components/Tag/Tag.svelte';
   import Paragraph from '$lib/components/Typography/Paragraph/Paragraph.svelte';
   import Modal from '$lib/components/Modal/Modal.svelte';
@@ -17,30 +17,29 @@
     AccordionHeader,
     AccordionItem,
     Select,
+    Tooltip,
   } from '$lib';
-  import Tab from '$lib/components/Tab/Tab.svelte';
+  import Tabs from '$lib/components/Tabs/Tabs.svelte';
 
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
+  import Spinner from '$lib/components/Spinner/Spinner.svelte';
 
-  let showModal = false;
+  let isModalOpen = false;
+  let showTextfieldError = false;
 
   function openModal(event) {
     event.stopPropagation();
-    showModal = true;
+    isModalOpen = true;
   }
 
   function closeModal() {
-    showModal = false;
+    isModalOpen = false;
   }
 
   let textfieldValue = '';
   let isSwitchChecked = false;
-
-  $: if (isSwitchChecked !== undefined) {
-    console.log(isSwitchChecked);
-  }
 
   function handleSwitchClickEvent(event) {
     console.log('switch clicked', event);
@@ -88,12 +87,16 @@
     {
       icon: CheckmarkCircleFillIcon,
       title: 'Tab 2',
-      content: 'Tab 2 content',
+      content: Button,
+      props: {
+        color: 'second',
+        variant: 'filled',
+      },
     },
     {
       icon: XMarkOctagonFillIcon,
       title: 'Tab 3',
-      content: 'Tab 3 content',
+      content: Button,
     },
   ];
 
@@ -175,7 +178,10 @@
 
 <Button>First</Button>
 <Button color="second">Secondary</Button>
-<Button color="success">Success</Button>
+<Button
+  disabled={true}
+  color="success">Success</Button
+>
 <Button variant="quiet">First (Quiet)</Button>
 <Button variant="outline">First (Outline)</Button>
 <Button iconPlacement="right"
@@ -197,9 +203,11 @@
 <br />
 <h2 class="componentHeader">TEXTFIELD</h2>
 <br />
+<Switch bind:checked={showTextfieldError}>Show Error</Switch>
 <Textfield
   bind:value={textfieldValue}
-  size="small"
+  error={showTextfieldError ? 'Lorem ipsum error' : ''}
+  size="medium"
   characterLimit={10}
   characterLimitLabel={(count) =>
     count > -1
@@ -226,10 +234,17 @@
 <h2 class="componentHeader">LIST OF ALERTS</h2>
 <br />
 <List>
-  <li><Alert severity="info">Alert (info, default)</Alert></li>
-  <li><Alert severity="warning">Alert (warning)</Alert></li>
-  <li><Alert severity="success">Alert (success)</Alert></li>
-  <li><Alert severity="danger">Alert (danger)</Alert></li>
+  <ListItem><Alert severity="success">Alert (success)</Alert></ListItem>
+  <ListItem><Alert severity="danger">Alert (danger)</Alert></ListItem>
+</List>
+<h2 class="componentHeader">Unstyled list:</h2>
+<List as="none">
+  <ListItem className="no-padding"
+    ><Alert severity="info">Alert (info, default)</Alert></ListItem
+  >
+  <ListItem className="no-padding"
+    ><Alert severity="danger">Alert (danger)</Alert></ListItem
+  >
 </List>
 
 <br />
@@ -301,10 +316,13 @@
 
 <Button on:click={openModal}>Open Modal</Button>
 
+{#if isModalOpen}
+  <Modal onClose={closeModal} />
+{/if}
+
 <br />
 <br />
 <h2 class="componentHeader">RADIO</h2>
-<br />
 <RadioGroup
   bind:value={selectedValue}
   on:change={handleGroupChange}
@@ -340,6 +358,7 @@
     description="Lorem ipsum dolor sit amet disabled description."
   />
 </RadioGroup>
+<p>Selected RadioGroup value: {selectedValue}</p>
 <Button on:click={toggleIsHideLegend}
   >{isHideLegend ? 'Show legend' : 'Hide legend'}</Button
 >
@@ -351,18 +370,10 @@
 <Button on:click={toggleIsReadOnly}
   >{isReadOnly ? 'Selectable' : 'ReadOnly'}</Button
 >
-<p>Selected RadioGroup value: {selectedValue}</p>
-<Modal
-  show={showModal}
-  onClose={closeModal}
-/>
 
-<Tab {tabs} />
 <br />
 <br />
 <h2 class="componentHeader">SELECT</h2>
-<br />
-<h2>Single Select:</h2>
 <form class="selectForm">
   <Select
     {options}
@@ -392,9 +403,9 @@
 </form>
 <h2 class="componentHeader">End of Single select</h2>
 <br />
+<h2 class="componentHeader">MULTI SELECT</h2>
 <br />
 <br />
-<h2>Multi Select:</h2>
 <form class="selectForm">
   <Select
     {options}
@@ -430,6 +441,75 @@
 
 <br />
 <br />
+
+<h1 class="componentHeader">Tabs</h1>
+<Tabs {tabs} />
+
+<h1 class="componentHeader">Tooltip</h1>
+<Tooltip
+  content="Tooltip text"
+  placement="top"
+>
+  <Button>Tooltip</Button>
+</Tooltip>
+
+<p>
+  Tooltips kan også legges <nobr
+    ><Tooltip
+      open={true}
+      content="Ganske kult?"
+      placement="bottom"
+      ><abbr style="font-weight: bold; text-decoration: underline dotted;"
+        >til i en tekst</abbr
+      ></Tooltip
+    ></nobr
+  > for å gi mer informasjon!
+</p>
+
+<h1 class="componentHeader">Spinner</h1>
+<div class="spinner">
+  <Spinner
+    size="xLarge"
+    title="xLarge"
+    variant="interaction"
+  />
+  <Spinner
+    size="large"
+    title="large"
+    variant="interaction"
+  />
+  <Spinner
+    size="medium"
+    title="medium"
+    variant="interaction"
+  />
+  <Spinner
+    size="small"
+    title="small"
+    variant="interaction"
+  />
+  <Spinner
+    size="xSmall"
+    title="xSmall"
+    variant="interaction"
+  />
+</div>
+<div class="spinner">
+  <Spinner
+    size="xLarge"
+    title="xLarge default"
+  />
+  <Spinner
+    size="xLarge"
+    title="xLarge interaction"
+    variant="interaction"
+  />
+  <Spinner
+    size="xLarge"
+    title="xLarge inverted"
+    variant="inverted"
+  />
+</div>
 
 <br />
 <br />
