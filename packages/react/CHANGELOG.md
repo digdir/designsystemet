@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.35.0...@digdir/design-system-react@0.36.0) (2023-11-08)
+
+### Bug Fixes
+
+- **Button:** :bug: Adjust sizing to match `Textfield` and other fixes according to Figma ([#1023](https://github.com/digdir/designsystem/issues/1023)) ([a3252f9](https://github.com/digdir/designsystem/commit/a3252f99c135936b50454957914914e8d965cb5d))
+- **Divider:** Add so it can recieve `HTMLHRElement` props ([#1064](https://github.com/digdir/designsystem/issues/1064)) ([c7c3acd](https://github.com/digdir/designsystem/commit/c7c3acdb2e2d8520e1fedd9961a4c2789ed847d8))
+- **List:** :label: Default type for `children` ([#1032](https://github.com/digdir/designsystem/issues/1032)) ([4f83fa0](https://github.com/digdir/designsystem/commit/4f83fa0a3b4a27fbbd9821b6b95ee2c311cdd647))
+- **Switch:** :bug: Should reduce-motion ([#1049](https://github.com/digdir/designsystem/issues/1049)) ([58926be](https://github.com/digdir/designsystem/commit/58926be00777eb70d2ccf98332ed0d47d09e0d4f))
+
+### Features
+
+- **Box:** add `forwardRef`, make props default `undefined` ([#1059](https://github.com/digdir/designsystem/issues/1059)) ([7e0cd1c](https://github.com/digdir/designsystem/commit/7e0cd1c80c0169b8066d1ab1a40b5317efbf4299))
+- **Box:** Make the component ([#1001](https://github.com/digdir/designsystem/issues/1001)) ([1651d4d](https://github.com/digdir/designsystem/commit/1651d4d2b03f50d27a9b252556b18ebb30dea217))
+- **Combobox:** Create the component ([#774](https://github.com/digdir/designsystem/issues/774)) ([23d4027](https://github.com/digdir/designsystem/commit/23d4027ae422531cc279e2b00b25ab679ba524dd))
+- **Divider:** ✨ New component ([#1057](https://github.com/digdir/designsystem/issues/1057)) ([9d5d257](https://github.com/digdir/designsystem/commit/9d5d257860dc7f2a0886bf8e610799eefe8a62a5))
+- **Select:** should be able to add name to the select component ([#1046](https://github.com/digdir/designsystem/issues/1046)) ([4d9fbb2](https://github.com/digdir/designsystem/commit/4d9fbb28925b9aa052bb8d0026e2c46527c00e0f))
+
 # [0.35.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.34.0...@digdir/design-system-react@0.35.0) (2023-10-30)
 
 ### Bug Fixes
