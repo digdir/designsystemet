@@ -1,152 +1,37 @@
+<!-- Tabs.svelte -->
 <script>
-  export let tabs = [];
-  export let activeTab = 0;
+  import { setContext } from 'svelte';
+  import { nanoid } from 'nanoid'; // Du må installere nanoid eller bruke en annen metode for å generere unik id
+  import { selectedTab, tabSize } from './store';
 
-  export let tabButtonSize = 'medium';
-  export let tabContentSize = 'medium';
+  const TABS_CONTEXT_KEY = `tabs-${nanoid()}`;
+
+  /**
+   * onchange handler for the tabs component.
+   */
+  export let onChange = (value) => {};
+
+  /**
+   * Sets the default value of the tabs component.
+   * @type {string}
+   */
+  export let defaultValue = undefined;
+
+  /**
+   * Controls the size of the tabs component. Defaults to `medium`.
+   * @type {'small' | 'medium' | 'large'}
+   */
+  export let size = 'medium';
+
+  function selectTab(value) {
+    $selectedTab = value;
+  }
+  $tabSize = size;
+  $selectedTab = defaultValue ? defaultValue : '1';
+  setContext(TABS_CONTEXT_KEY, { selectedTab, selectTab, tabSize });
+  $: onChange($selectedTab);
 </script>
 
-<div class="tabs-group">
-  {#each tabs as tab, i}
-    <button
-      class={i === activeTab ? `active ${tabButtonSize}` : `${tabButtonSize}`}
-      on:click={() => (activeTab = i)}
-      >{#if tab.icon}<div class="icon">
-          {@html tab.icon}
-        </div>{/if}
-      {#if tab.title}
-        {tab.title}
-      {/if}
-    </button>
-  {/each}
+<div class="tabs">
+  <slot />
 </div>
-
-<div class={`tab-content ${tabContentSize}`}>
-  {#each tabs as tab, i}
-    {#if i === activeTab}
-      {#if typeof tab.content === 'function'}
-        {#if tab.props !== undefined}
-          <svelte:component
-            this={tab.content}
-            {...tab.props}
-          />
-        {:else}
-          <svelte:component this={tab.content} />
-        {/if}
-      {:else}
-        {tab.content}
-      {/if}
-    {/if}
-  {/each}
-</div>
-
-<style>
-  .tabs-group {
-    display: inline-flex;
-    flex-direction: row;
-    border-bottom: var(--fds-border_width-default) solid
-      var(--fds-semantic-border-neutral-subtle);
-  }
-
-  .icon {
-    scale: 1.5;
-    display: flex;
-  }
-
-  button {
-    --fdsc-icon-size: var(--fds-sizing-4);
-    --fdsc-typography-font-family: inherit;
-    --fdsc-bottom-border-color: transparent;
-
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    gap: var(--fds-spacing-2);
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    padding: var(--fds-spacing-2) var(--fds-spacing-3);
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
-    cursor: pointer;
-    color: var(--fds-semantic-text-neutral-subtle);
-    position: relative;
-  }
-
-  button.small {
-    --fdsc-icon-size: var(--fds-sizing-5);
-
-    font: var(--fds-typography-interactive-small);
-    font-family: var(--fdsc-typography-font-family);
-    padding: var(--fds-spacing-2) var(--fds-spacing-4);
-  }
-
-  button.medium {
-    --fdsc-icon-size: var(--fds-sizing-6);
-
-    font: var(--fds-typography-interactive-medium);
-    font-family: var(--fdsc-typography-font-family);
-    padding: var(--fds-spacing-3) var(--fds-spacing-5);
-  }
-
-  button.large {
-    --fdsc-icon-size: var(--fds-sizing-7);
-
-    font: var(--fds-typography-interactive-large);
-    font-family: var(--fdsc-typography-font-family);
-    padding: var(--fds-spacing-4) var(--fds-spacing-6);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    button:hover {
-      --fdsc-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
-
-      color: var(--fds-semantic-text-neutral-default);
-    }
-  }
-
-  button.active {
-    --fdsc-bottom-border-color: var(--fds-semantic-border-action-default);
-
-    color: var(--fds-semantic-text-action-default);
-  }
-
-  button:focus-visible {
-    --fdsc-bottom-border-color: var(--fds-semantic-text-neutral-default);
-
-    background: var(--fds-semantic-border-focus-outline);
-    color: var(--fds-semantic-text-neutral-default);
-    outline: none;
-  }
-
-  button::after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 100%;
-    border-radius: var(--fds-border_radius-full);
-    background-color: var(--fdsc-bottom-border-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  .tab-content {
-    --fdsc-typography-font-family: inherit;
-
-    font-family: var(--fdsc-typography-font-family);
-  }
-
-  .tab-content.small {
-    padding: var(--fds-spacing-4);
-  }
-
-  .tab-content.medium {
-    padding: var(--fds-spacing-5);
-  }
-
-  .tab-content.large {
-    padding: var(--fds-spacing-6);
-  }
-</style>

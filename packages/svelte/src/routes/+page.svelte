@@ -17,13 +17,20 @@
     AccordionHeader,
     AccordionItem,
     Tooltip,
+    Tabs,
+    TabList,
+    TabItem,
+    TabContent,
   } from '$lib';
-  import Tabs from '$lib/components/Tabs/Tabs.svelte';
 
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
+
+  function handleTabChange(value) {
+    console.log('Tab changed:', value);
+  }
 
   let isModalOpen = false;
   let showTextfieldError = false;
@@ -81,27 +88,6 @@
   function toggleIsReadOnly() {
     isReadOnly = !isReadOnly;
   }
-  const tabs = [
-    {
-      icon: InformationSquareFillIcon,
-      title: 'Tabulator 1',
-      content: 'Tab 1 content',
-    },
-    {
-      icon: CheckmarkCircleFillIcon,
-      title: 'Tab 2',
-      content: Button,
-      props: {
-        color: 'second',
-        variant: 'filled',
-      },
-    },
-    {
-      icon: XMarkOctagonFillIcon,
-      title: 'Tab 3',
-      content: Button,
-    },
-  ];
 </script>
 
 <h1>Test components here!</h1>
@@ -311,7 +297,27 @@
 >
 
 <h1>Tabs</h1>
-<Tabs {tabs} />
+<div class="tabs">
+  <Tabs onChange={handleTabChange}>
+    <TabList>
+      <TabItem
+        value="1"
+        icon={InformationSquareFillIcon}>Tab 1</TabItem
+      >
+      <TabItem
+        value="2"
+        icon={CheckmarkCircleFillIcon}>Tab 2</TabItem
+      >
+      <TabItem
+        value="3"
+        icon={XMarkOctagonFillIcon}>Tab 3</TabItem
+      >
+    </TabList>
+    <TabContent value="1">Content 1</TabContent>
+    <TabContent value="2">Content 2</TabContent>
+    <TabContent value="3">Content 3</TabContent>
+  </Tabs>
+</div>
 
 <h1>Tooltip</h1>
 <Tooltip
