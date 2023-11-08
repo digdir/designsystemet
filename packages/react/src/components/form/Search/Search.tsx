@@ -26,10 +26,10 @@ export type SearchProps = {
   onClear?: (value: InputHTMLAttributes<HTMLInputElement>['value']) => void;
   /**Callback for Search-button submit */
   onSearchClick?: (value: string) => void;
-  /** Search button children. Use this for providing a descriptive button text and/or icon */
-  searchButton?: ReactNode;
-  /** Clear button text. Hidden visually, used for screen readers */
-  clearButton?: string;
+  /** Search button label. Use this for providing a descriptive button text and/or icon */
+  searchButtonLabel?: ReactNode;
+  /** Clear button label. Hidden visually. Used for screen readers */
+  clearButtonLabel?: string;
   /** Exposes the HTML `size` attribute. */
   htmlSize?: number;
 } & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
@@ -49,8 +49,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       style,
       hideLabel = true,
       variant = 'simple',
-      searchButton = 'Søk',
-      clearButton = 'Tøm',
+      searchButtonLabel = 'Søk',
+      clearButtonLabel = 'Tøm',
       defaultValue,
       value,
       onChange,
@@ -88,8 +88,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     };
 
     const isSimple = variant === 'simple';
-    const showClearButton =
-      (Boolean(value ?? internalValue) && !disabled) || !clearButton;
+    const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
       <Paragraph
@@ -148,7 +147,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 disabled={disabled}
               >
                 <span className={utilityClasses.visuallyHidden}>
-                  {clearButton}
+                  {clearButtonLabel}
                 </span>
                 <XMarkIcon aria-hidden />
               </button>
@@ -163,7 +162,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               onClick={handleSearchClick}
               disabled={disabled}
             >
-              {searchButton}
+              {searchButtonLabel}
             </Button>
           )}
         </div>
