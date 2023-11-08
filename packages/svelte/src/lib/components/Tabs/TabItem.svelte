@@ -1,6 +1,6 @@
 <!-- TabItem.svelte -->
 <script>
-  import { selectedTab, tabSize } from './store';
+  import { selectedTab, tabSize } from './store.js';
 
   /**
    * Value of the tab.

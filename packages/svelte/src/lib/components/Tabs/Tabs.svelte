@@ -2,7 +2,7 @@
 <script>
   import { setContext } from 'svelte';
   import { nanoid } from 'nanoid'; // Du må installere nanoid eller bruke en annen metode for å generere unik id
-  import { selectedTab, tabSize } from './store';
+  import { selectedTab, tabSize } from './store.js';
 
   const TABS_CONTEXT_KEY = `tabs-${nanoid()}`;
 
