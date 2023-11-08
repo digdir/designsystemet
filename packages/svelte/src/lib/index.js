@@ -27,6 +27,9 @@ import { Paragraph, Heading } from './components/Typography';
 // @ts-ignore
 import { Textfield, Radio, RadioGroup, Switch } from './components/Form';
 import Tabs from './components/Tabs/Tabs.svelte';
+import TabContent from './components/Tabs/TabContent.svelte';
+import TabItem from './components/Tabs/TabItem.svelte';
+import TabList from './components/Tabs/TabList.svelte';
 import Spinner from './components/Spinner/Spinner.svelte';
 
 export {
@@ -48,7 +51,10 @@ export {
   Radio,
   RadioGroup,
   Switch,
-  Tabs,
   Spinner,
   Tooltip,
+  Tabs,
+  TabContent,
+  TabItem,
+  TabList,
 };

@@ -18,13 +18,20 @@
     AccordionItem,
     Select,
     Tooltip,
+    Tabs,
+    TabList,
+    TabItem,
+    TabContent,
   } from '$lib';
-  import Tabs from '$lib/components/Tabs/Tabs.svelte';
 
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
+
+  function handleTabChange(value) {
+    console.log('Tab changed:', value);
+  }
 
   let isModalOpen = false;
   let showTextfieldError = false;
@@ -78,27 +85,6 @@
   function toggleIsReadOnly() {
     isReadOnly = !isReadOnly;
   }
-  const tabs = [
-    {
-      icon: InformationSquareFillIcon,
-      title: 'Tabulator 1',
-      content: 'Tab 1 content',
-    },
-    {
-      icon: CheckmarkCircleFillIcon,
-      title: 'Tab 2',
-      content: Button,
-      props: {
-        color: 'second',
-        variant: 'filled',
-      },
-    },
-    {
-      icon: XMarkOctagonFillIcon,
-      title: 'Tab 3',
-      content: Button,
-    },
-  ];
 
   // SELECT
 
@@ -121,31 +107,11 @@
     { label: 'Option 1', value: '1' },
     { label: 'Option 3', value: '3' },
   ];
-
-  function handleSingleSelectChange(event) {
-    console.log('Selected value changed', event.detail);
-    singleSelectValue = event.detail.value;
-  }
-
-  function handleMultiSelectChange(event) {
-    console.log('Selected value changed', event.detail);
-    multiSelectValues = event.detail.value;
-  }
-
-  function handleBlur() {
-    console.log('Select lost focus');
-  }
-
-  function handleFocus() {
-    console.log('Select gained focus');
-  }
-
-  function handleChange(event) {}
 </script>
 
 <h1>Test components here!</h1>
 
-<h2 class="componentHeader">SWITCH</h2>
+<h1 class="componentHeader">SWITCH</h1>
 <br />
 <Switch
   on:click={handleSwitchClickEvent}
@@ -172,8 +138,7 @@
 >
 
 <br />
-<br />
-<h2 class="componentHeader">BUTTON</h2>
+<h1 class="componentHeader">BUTTON</h1>
 <br />
 
 <Button>First</Button>
@@ -200,8 +165,7 @@
 >
 
 <br />
-<br />
-<h2 class="componentHeader">TEXTFIELD</h2>
+<h1 class="componentHeader">TEXTFIELD</h1>
 <br />
 <Switch bind:checked={showTextfieldError}>Show Error</Switch>
 <Textfield
@@ -216,13 +180,12 @@
 />
 
 <br />
-<br />
-<h2 class="componentHeader">LINK</h2>
+<h1 class="componentHeader">LINK</h1>
 <br />
 
 <Link href="/route">Link</Link>
 
-<h2 class="componentHeader">PARAGRAPH</h2>
+<h1 class="componentHeader">PARAGRAPH</h1>
 <br />
 <Paragraph
   spacing
@@ -230,8 +193,7 @@
 >
 
 <br />
-<br />
-<h2 class="componentHeader">LIST OF ALERTS</h2>
+<h1 class="componentHeader">LIST OF ALERTS</h1>
 <br />
 <List>
   <ListItem><Alert severity="success">Alert (success)</Alert></ListItem>
@@ -248,8 +210,7 @@
 </List>
 
 <br />
-<br />
-<h2 class="componentHeader">TAG</h2>
+<h1 class="componentHeader">TAG</h1>
 <br />
 
 <Tag color="first">Tag Primary</Tag>
@@ -272,7 +233,7 @@
 
 <br />
 <br />
-<h2 class="componentHeader">ACCORDION</h2>
+<h1 class="componentHeader">ACCORDION</h1>
 <br />
 <Accordion
   border={true}
@@ -311,7 +272,7 @@
 
 <br />
 <br />
-<h2 class="componentHeader">MODAL</h2>
+<h1 class="componentHeader">MODAL</h1>
 <br />
 
 <Button on:click={openModal}>Open Modal</Button>
@@ -322,7 +283,7 @@
 
 <br />
 <br />
-<h2 class="componentHeader">RADIO</h2>
+<h1 class="componentHeader">RADIO</h1>
 <RadioGroup
   bind:value={selectedValue}
   on:change={handleGroupChange}
@@ -370,10 +331,9 @@
 <Button on:click={toggleIsReadOnly}
   >{isReadOnly ? 'Selectable' : 'ReadOnly'}</Button
 >
-
 <br />
 <br />
-<h2 class="componentHeader">SELECT</h2>
+<h1 class="componentHeader">SELECT</h1>
 <form class="selectForm">
   <Select
     {options}
@@ -401,10 +361,8 @@
     label="Single, unselected, w/ error"
   />
 </form>
-<h2 class="componentHeader">End of Single select</h2>
 <br />
-<h2 class="componentHeader">MULTI SELECT</h2>
-<br />
+<h1 class="componentHeader">MULTI SELECT</h1>
 <br />
 <form class="selectForm">
   <Select
@@ -437,13 +395,30 @@
     label="Multi, preselected, readonly"
   />
 </form>
-<h2 class="componentHeader">End of Multi select</h2>
-
-<br />
 <br />
 
 <h1 class="componentHeader">Tabs</h1>
-<Tabs {tabs} />
+<div class="tabs">
+  <Tabs onChange={handleTabChange}>
+    <TabList>
+      <TabItem
+        value="1"
+        icon={InformationSquareFillIcon}>Tab 1</TabItem
+      >
+      <TabItem
+        value="2"
+        icon={CheckmarkCircleFillIcon}>Tab 2</TabItem
+      >
+      <TabItem
+        value="3"
+        icon={XMarkOctagonFillIcon}>Tab 3</TabItem
+      >
+    </TabList>
+    <TabContent value="1">Content 1</TabContent>
+    <TabContent value="2">Content 2</TabContent>
+    <TabContent value="3">Content 3</TabContent>
+  </Tabs>
+</div>
 
 <h1 class="componentHeader">Tooltip</h1>
 <Tooltip
