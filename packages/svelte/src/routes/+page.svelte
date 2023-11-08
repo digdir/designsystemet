@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { writable } from 'svelte/store';
   import Alert from '$lib/components/Alert/Alert.svelte';
   import Button from '$lib/components/Button/Button.svelte';
@@ -16,6 +16,7 @@
     AccordionContent,
     AccordionHeader,
     AccordionItem,
+    Select,
   } from '$lib';
   import Tab from '$lib/components/Tab/Tab.svelte';
 
@@ -95,10 +96,54 @@
       content: 'Tab 3 content',
     },
   ];
+
+  // SELECT
+
+  let singleSelectValue = '';
+  let multiSelectValues = [];
+
+  const options = [
+    { label: 'Norge', value: '1' },
+    { label: 'Sverige', value: '2' },
+    { label: 'Outer Planets Alliance', value: '3' },
+  ];
+
+  $: unSelected = null;
+
+  let singlePreSelected = { label: 'Option 2', value: '2' };
+
+  $: multiUnselected = [];
+
+  let multiPreselected = [
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 3', value: '3' },
+  ];
+
+  function handleSingleSelectChange(event) {
+    console.log('Selected value changed', event.detail);
+    singleSelectValue = event.detail.value;
+  }
+
+  function handleMultiSelectChange(event) {
+    console.log('Selected value changed', event.detail);
+    multiSelectValues = event.detail.value;
+  }
+
+  function handleBlur() {
+    console.log('Select lost focus');
+  }
+
+  function handleFocus() {
+    console.log('Select gained focus');
+  }
+
+  function handleChange(event) {}
 </script>
 
 <h1>Test components here!</h1>
 
+<h2 class="componentHeader">SWITCH</h2>
+<br />
 <Switch
   on:click={handleSwitchClickEvent}
   on:change={handleSwitchChangeEvent}
@@ -123,6 +168,11 @@
   description="Ipsum lorem dorem durem">Switch with Description</Switch
 >
 
+<br />
+<br />
+<h2 class="componentHeader">BUTTON</h2>
+<br />
+
 <Button>First</Button>
 <Button color="second">Secondary</Button>
 <Button color="success">Success</Button>
@@ -143,6 +193,10 @@
   >First Icon</Button
 >
 
+<br />
+<br />
+<h2 class="componentHeader">TEXTFIELD</h2>
+<br />
 <Textfield
   bind:value={textfieldValue}
   size="small"
@@ -153,17 +207,35 @@
       : `Du har ${Math.abs(count)} tegn for mye.`}
 />
 
+<br />
+<br />
+<h2 class="componentHeader">LINK</h2>
+<br />
+
 <Link href="/route">Link</Link>
+
+<h2 class="componentHeader">PARAGRAPH</h2>
+<br />
 <Paragraph
   spacing
   short>Lorem ipsum dorem</Paragraph
 >
+
+<br />
+<br />
+<h2 class="componentHeader">LIST OF ALERTS</h2>
+<br />
 <List>
   <li><Alert severity="info">Alert (info, default)</Alert></li>
   <li><Alert severity="warning">Alert (warning)</Alert></li>
   <li><Alert severity="success">Alert (success)</Alert></li>
   <li><Alert severity="danger">Alert (danger)</Alert></li>
 </List>
+
+<br />
+<br />
+<h2 class="componentHeader">TAG</h2>
+<br />
 
 <Tag color="first">Tag Primary</Tag>
 <Tag color="second">Tag Secondary</Tag>
@@ -179,6 +251,14 @@
   variant="outlined">Tag Outlined</Tag
 >
 
+<Tag size="xsmall">Tag XS</Tag>
+<Tag size="small">Tag small</Tag>
+<Tag size="medium">Tag medium</Tag>
+
+<br />
+<br />
+<h2 class="componentHeader">ACCORDION</h2>
+<br />
 <Accordion
   border={true}
   color="second"
@@ -214,12 +294,17 @@
   </AccordionItem>
 </Accordion>
 
+<br />
+<br />
+<h2 class="componentHeader">MODAL</h2>
+<br />
+
 <Button on:click={openModal}>Open Modal</Button>
 
-<Tag size="xsmall">Tag XS</Tag>
-<Tag size="small">Tag small</Tag>
-<Tag size="medium">Tag medium</Tag>
-
+<br />
+<br />
+<h2 class="componentHeader">RADIO</h2>
+<br />
 <RadioGroup
   bind:value={selectedValue}
   on:change={handleGroupChange}
@@ -273,3 +358,89 @@
 />
 
 <Tab {tabs} />
+<br />
+<br />
+<h2 class="componentHeader">SELECT</h2>
+<br />
+<h2>Single Select:</h2>
+<form class="selectForm">
+  <Select
+    {options}
+    bind:selected={unSelected}
+    label="Single, unselected"
+    hideSelected
+  />
+  <Select
+    {options}
+    bind:selected={singlePreSelected}
+    label="Single, preselected"
+  />
+
+  <Select
+    {options}
+    bind:selected={unSelected}
+    placeholder="Placeholder text"
+    label="Single w/ placeholder"
+  />
+
+  <Select
+    {options}
+    bind:selected={unSelected}
+    error={new Error('Error message')}
+    label="Single, unselected, w/ error"
+  />
+</form>
+<h2 class="componentHeader">End of Single select</h2>
+<br />
+<br />
+<br />
+<h2>Multi Select:</h2>
+<form class="selectForm">
+  <Select
+    {options}
+    bind:selected={multiUnselected}
+    multiple
+    label="Multi, unselected"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiPreselected}
+    multiple
+    label="Multi, preselected"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiPreselected}
+    disabled
+    multiple
+    label="Multi, preselected, disabled"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiPreselected}
+    readOnly
+    multiple
+    label="Multi, preselected, readonly"
+  />
+</form>
+<h2 class="componentHeader">End of Multi select</h2>
+
+<br />
+<br />
+
+<br />
+<br />
+
+<style>
+  .componentHeader {
+    width: 100%;
+    background-color: pink;
+  }
+
+  .selectForm {
+    width: 40%;
+  }
+</style>
