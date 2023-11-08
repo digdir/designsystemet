@@ -1,4 +1,4 @@
 .divider {
   width: 100%;
-  margin: 0;
+  margin: var(--fds-spacing-1) 0;
 }

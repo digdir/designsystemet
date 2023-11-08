@@ -3,16 +3,17 @@ import cn from 'classnames';
 
 import classes from './DropdownList.module.css';
 
-export type DropdownListProps = React.HTMLAttributes<HTMLDivElement>;
+/* The `section` element does not have it's own type, so we use `HTMLElement` */
+export type DropdownListProps = React.HTMLAttributes<HTMLElement>;
 
 export const DropdownList = ({ children, ...rest }: DropdownListProps) => {
   return (
-    <div
+    <section
       {...rest}
       className={cn(classes.list, rest.className)}
     >
       {children}
-    </div>
+    </section>
   );
 };
 

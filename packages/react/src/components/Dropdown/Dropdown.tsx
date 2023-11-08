@@ -1,11 +1,10 @@
 import React, { forwardRef, useLayoutEffect, useRef } from 'react';
 import cn from 'classnames';
+import type { Placement } from '@floating-ui/react';
 import {
   useFloating,
   autoUpdate,
-  flip,
   offset,
-  shift,
   useClick,
   useDismiss,
   useFocus,
@@ -25,14 +24,21 @@ export type DropdownProps = {
   open: boolean;
   /** Callback function when dropdown closes */
   onClose?: () => void;
+  /** The placement of the dropdown
+   * @default 'bottom'
+   */
+  placement?: Placement;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
-  ({ anchorEl, open, onClose, children, ...rest }, ref) => {
+  (
+    { anchorEl, open, onClose, placement = 'bottom', children, ...rest },
+    ref,
+  ) => {
     const floatingEl = useRef<HTMLDivElement>(null);
 
     const { context, update, refs, floatingStyles } = useFloating({
-      placement: 'bottom',
+      placement,
       open,
       onOpenChange: () => onClose && onClose(),
       elements: {
@@ -40,13 +46,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         floating: floatingEl.current,
       },
       whileElementsMounted: autoUpdate,
-      middleware: [
-        offset(3),
-        flip({
-          fallbackAxisSideDirection: 'start',
-        }),
-        shift(),
-      ],
+      middleware: [offset(3)],
     });
 
     const { getFloatingProps } = useInteractions([
@@ -74,13 +74,13 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         {open && (
           <Box
             {...rest}
-            shadow='small'
+            shadow='medium'
             borderRadius='medium'
-            borderColor='strong'
-            className={classes.dropdown}
+            className={cn(classes.dropdown, rest.className)}
             ref={floatingRef}
             style={floatingStyles}
             {...getFloatingProps()}
+            role='menu'
           >
             {children}
           </Box>

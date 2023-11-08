@@ -7,7 +7,7 @@ import { Dropdown } from '.';
 
 const decorators = [
   (Story: StoryFn) => (
-    <div style={{ margin: '10rem' }}>
+    <div style={{ margin: '20rem', marginTop: '0' }}>
       <Story />
     </div>
   ),
@@ -37,12 +37,28 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Dropdown.Header>Header</Dropdown.Header>
+        <Dropdown.List>
+          <Dropdown.Header>Links</Dropdown.Header>
+          <Dropdown.Item
+            as='a'
+            href='https://github.com/digdir/designsystem'
+            target='_black'
+          >
+            Github
+          </Dropdown.Item>
+          <Dropdown.Item
+            as='a'
+            href='https://designsystemet.no'
+            target='_blank'
+          >
+            This is a link!
+          </Dropdown.Item>
+        </Dropdown.List>
         <Dropdown.Divider />
         <Dropdown.List>
-          <Dropdown.Item>Item 1</Dropdown.Item>
-          <Dropdown.Item>Item 2</Dropdown.Item>
-          <Dropdown.Item>Item 3</Dropdown.Item>
+          <Dropdown.Item>Button 3</Dropdown.Item>
+          <Dropdown.Item>Button 4</Dropdown.Item>
+          <Dropdown.Item>Button 5</Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
     </>

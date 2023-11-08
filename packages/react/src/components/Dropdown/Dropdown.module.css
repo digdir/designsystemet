@@ -1,3 +1,4 @@
 .dropdown {
   position: relative;
+  padding: var(--fds-spacing-3);
 }
