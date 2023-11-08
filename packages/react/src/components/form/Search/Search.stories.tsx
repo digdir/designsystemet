@@ -72,8 +72,8 @@ export const Landmark: StoryFn<typeof Search> = () => {
         label='Søk etter innhold'
         searchButtonLabel={
           <MagnifyingGlassIcon
-            aria-hidden
             fontSize={'1.5em'}
+            title='Søk'
           />
         }
         variant='primary'
