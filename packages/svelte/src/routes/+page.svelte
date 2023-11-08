@@ -297,6 +297,7 @@
     description="Lorem ipsum dolor sit amet disabled description."
   />
 </RadioGroup>
+<p>Selected RadioGroup value: {selectedValue}</p>
 <Button on:click={toggleIsHideLegend}
   >{isHideLegend ? 'Show legend' : 'Hide legend'}</Button
 >
@@ -308,7 +309,6 @@
 <Button on:click={toggleIsReadOnly}
   >{isReadOnly ? 'Selectable' : 'ReadOnly'}</Button
 >
-<p>Selected RadioGroup value: {selectedValue}</p>
 
 <h1>Tabs</h1>
 <Tabs {tabs} />

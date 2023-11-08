@@ -18,7 +18,7 @@
   export let label;
   export let value;
 
-  let size = 'medium';
+  let size;
   let selectedValue;
   let groupUniqueId;
   let error;
@@ -44,52 +44,63 @@
     error = $radioGroup.error;
   }
 
-  let iconSizeClass;
-  let fontSizeClass;
-  let spacingClass;
-  switch (size) {
-    case 'xsmall':
-      iconSizeClass = 'icon-xsmall';
-      fontSizeClass = 'font-xsmall';
-      spacingClass = 'spacing-xsmall';
-      break;
-    case 'small':
-      iconSizeClass = 'icon-small';
-      fontSizeClass = 'font-small';
-      spacingClass = 'spacing-small';
-      break;
-    case 'medium':
-      iconSizeClass = 'icon-medium';
-      fontSizeClass = 'font-medium';
-      spacingClass = 'spacing-medium';
-      break;
-    case 'large':
-      iconSizeClass = 'icon-large';
-      fontSizeClass = 'font-large';
-      spacingClass = 'spacing-large';
-      break;
-    default:
-      iconSizeClass = 'icon-medium';
-      fontSizeClass = 'font-medium';
-      spacingClass = 'spacing-medium';
-      break;
+  const sizes = {
+    xsmall: {
+      iconSizeClass: 'icon-xsmall',
+      fontSizeClass: 'font-xsmall',
+      spacingClass: 'spacing-xsmall',
+      controlClass: 'control-xsmall',
+      paddingClass: 'padding-xsmall',
+    },
+    small: {
+      iconSizeClass: 'icon-small',
+      fontSizeClass: 'font-small',
+      spacingClass: 'spacing-small',
+      controlClass: 'control-small',
+      paddingClass: 'padding-small',
+    },
+    medium: {
+      iconSizeClass: 'icon-medium',
+      fontSizeClass: 'font-medium',
+      spacingClass: 'spacing-medium',
+      controlClass: 'control-medium',
+      paddingClass: 'padding-medium',
+    },
+    large: {
+      iconSizeClass: 'icon-large',
+      fontSizeClass: 'font-large',
+      spacingClass: 'spacing-large',
+      controlClass: 'control-large',
+      paddingClass: 'padding-large',
+    },
+  };
+
+  /**
+   * @param {string | number} size
+   */
+  function getSizeClasses(size) {
+    return sizes[size] || sizes.medium;
   }
-  $: containerClasses = `container ${spacingClass} ${
+
+  $: sizeClasses = getSizeClasses(size);
+
+  $: containerClasses = `container ${sizeClasses.spacingClass} ${
     disabled || groupDisabled ? 'disabled' : ''
   } ${error ? 'error' : ''} ${readOnly || groupReadOnly ? 'readonly' : ''} ${
     $$props.class || ''
   }`;
 
   $: labelClasses = `label ${readOnly || groupReadOnly ? 'readonly' : ''} 
-                            ${disabled || groupDisabled ? 'disabled' : ''}`;
-  $: descriptionClasses = `description ${fontSizeClass}`;
+                            ${disabled || groupDisabled ? 'disabled' : ''}
+                            ${sizeClasses.paddingClass}`;
+  $: descriptionClasses = `description ${sizeClasses.fontSizeClass}`;
 
   $: inputClasses = `input ${readOnly || groupReadOnly ? 'readonly' : ''} 
                             ${disabled || groupDisabled ? 'disabled' : ''}`;
 </script>
 
 <div
-  class={`${containerClasses} ${fontSizeClass}`}
+  class={`${containerClasses} ${sizeClasses.fontSizeClass}`}
   tabindex="-1"
   role="radio"
   aria-checked={checked}
@@ -97,7 +108,7 @@
   aria-labelledby={labelId}
   id={radioId}
 >
-  <span class={`control radio`}>
+  <span class={`control radio ${sizeClasses.controlClass}`}>
     <input
       class={inputClasses}
       type="radio"
@@ -108,7 +119,7 @@
       disabled={disabled || readOnly || groupDisabled || groupReadOnly}
     />
     <svg
-      class="icon {iconSizeClass}"
+      class="icon {sizeClasses.iconSizeClass}"
       width="22"
       height="22"
       viewBox="0 0 22 22"
@@ -140,7 +151,7 @@
     for={labelId}
     class={labelClasses}
   >
-    <span class={fontSizeClass}>
+    <span class={sizeClasses.fontSizeClass}>
       {label}
     </span>
   </label>
@@ -157,10 +168,6 @@
 <style lang="scss">
   .container {
     position: relative;
-    min-width: 2.75rem;
-    min-height: 2.75rem;
-    padding-left: 0;
-    margin-left: 0;
   }
 
   .spacing-xsmall {
@@ -172,24 +179,22 @@
   .spacing-medium {
     padding-left: calc(var(--fds-spacing-6) + 1.0625rem);
   }
+  .spacing-large {
+    padding-left: calc(var(--fds-spacing-6) + 1.6rem);
+  }
 
   .icon {
     grid-area: input;
     pointer-events: none;
-    height: 1.75rem;
-    width: 1.75rem;
-    margin: auto;
-    margin-left: 0;
     overflow: visible;
   }
 
   .label {
-    padding-left: 0.1875rem;
-    min-height: 2.75rem;
+    padding-left: 1.1875rem;
+    margin-left: -1rem;
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
-    gap: var(--fds-spacing-1);
     align-items: center;
     cursor: pointer;
   }
@@ -197,7 +202,7 @@
   .description {
     padding-left: 0.1875rem;
     margin-top: calc(var(--fds-spacing-2) * -1);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
     color: var(--fds-semantic-text-neutral-subtle);
   }
 
@@ -207,16 +212,11 @@
     --fds-focus-border-width: 0.1875rem;
 
     position: absolute;
+    margin-left: -0.3rem;
     left: 0;
     top: 0;
-    min-width: 2.75rem;
-    min-height: 2.75rem;
     display: inline-grid;
-    grid: [input] 1fr / [input] 1fr;
-    gap: var(--fds-spacing-2);
     grid-auto-flow: column;
-    left: 0;
-    justify-items: left;
   }
 
   .radio,
@@ -349,6 +349,40 @@
     }
     .font-large {
       font-size: 1.25rem;
+    }
+
+    .control-xsmall {
+      min-width: 1.5rem;
+      min-height: 1.5rem;
+    }
+    .control-small {
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+    .control-medium {
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+    }
+    .control-large {
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+    }
+
+    .padding-xsmall {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    .padding-small {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .padding-medium {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+    }
+    .padding-large {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
     }
   }
 </style>

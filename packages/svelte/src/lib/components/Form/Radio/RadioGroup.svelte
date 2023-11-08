@@ -46,6 +46,9 @@
     case 'medium':
       fontSizeClass = 'font-medium';
       break;
+    case 'large':
+      fontSizeClass = 'font-large';
+      break;
     default:
       fontSizeClass = 'font-medium';
       break;
@@ -144,6 +147,9 @@
   }
   .font-medium {
     font-size: 1.125rem;
+  }
+  .font-large {
+    font-size: 1.25rem;
   }
 
   .error {
