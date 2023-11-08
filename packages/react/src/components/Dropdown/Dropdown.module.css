@@ -1,4 +1,12 @@
 .dropdown {
   position: relative;
-  padding: var(--fds-spacing-3);
+  padding: var(--fds-spacing-2);
+}
+
+.dropdown.small {
+  min-width: 240px;
+}
+
+.dropdown.medium {
+  min-width: 260px;
 }

@@ -97,11 +97,12 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             {...rest}
             shadow='medium'
             borderRadius='medium'
-            className={cn(classes.dropdown, rest.className)}
+            className={cn(classes.dropdown, classes[size], rest.className)}
             ref={floatingRef}
             style={floatingStyles}
             {...getFloatingProps()}
             role='menu'
+            aria-hidden={!open}
             data-placement={flPlacement}
           >
             {children}

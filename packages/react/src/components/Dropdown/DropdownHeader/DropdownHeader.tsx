@@ -16,7 +16,7 @@ export const DropdownHeader = forwardRef<HTMLDivElement, DropdownHeaderProps>(
       <Paragraph
         {...rest}
         ref={ref}
-        as='h6'
+        as='h2'
         size={size}
         className={cn(classes.heading, rest.className)}
       >
