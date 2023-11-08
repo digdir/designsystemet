@@ -17,6 +17,8 @@ import { Box } from '../Box';
 
 import classes from './Dropdown.module.css';
 
+const GAP = 4;
+
 export type DropdownProps = {
   /** Element the popover anchors to */
   anchorEl: Element | null;
@@ -37,7 +39,13 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   ) => {
     const floatingEl = useRef<HTMLDivElement>(null);
 
-    const { context, update, refs, floatingStyles } = useFloating({
+    const {
+      context,
+      update,
+      refs,
+      placement: flPlacement,
+      floatingStyles,
+    } = useFloating({
       placement,
       open,
       onOpenChange: () => onClose && onClose(),
@@ -46,7 +54,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         floating: floatingEl.current,
       },
       whileElementsMounted: autoUpdate,
-      middleware: [offset(3)],
+      middleware: [offset(GAP)],
     });
 
     const { getFloatingProps } = useInteractions([
@@ -81,6 +89,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             style={floatingStyles}
             {...getFloatingProps()}
             role='menu'
+            data-placement={flPlacement}
           >
             {children}
           </Box>
