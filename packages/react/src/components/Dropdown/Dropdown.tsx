@@ -16,6 +16,7 @@ import {
 import { Box } from '../Box';
 
 import classes from './Dropdown.module.css';
+import { DropdownSizeContext } from './DropdownContext';
 
 const GAP = 4;
 
@@ -27,14 +28,26 @@ export type DropdownProps = {
   /** Callback function when dropdown closes */
   onClose?: () => void;
   /** The placement of the dropdown
-   * @default 'bottom'
+   * @default 'bottom-end'
    */
   placement?: Placement;
+  /** The size of the dropdown
+   * @default 'medium'
+   **/
+  size?: 'small' | 'medium';
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   (
-    { anchorEl, open, onClose, placement = 'bottom', children, ...rest },
+    {
+      anchorEl,
+      open,
+      onClose,
+      placement = 'bottom-end',
+      size = 'medium',
+      children,
+      ...rest
+    },
     ref,
   ) => {
     const floatingEl = useRef<HTMLDivElement>(null);
@@ -78,7 +91,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
 
     return (
-      <>
+      <DropdownSizeContext.Provider value={size}>
         {open && (
           <Box
             {...rest}
@@ -94,7 +107,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             {children}
           </Box>
         )}
-      </>
+      </DropdownSizeContext.Provider>
     );
   },
 );

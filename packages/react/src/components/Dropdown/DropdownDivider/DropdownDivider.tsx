@@ -12,7 +12,7 @@ export const DropdownDivider = ({ ...rest }: DropdownDividerProps) => {
     <Divider
       {...rest}
       className={cn(classes.divider, rest.className)}
-      color='default'
+      color='subtle'
     />
   );
 };

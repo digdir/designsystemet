@@ -1,12 +1,12 @@
 import { Dropdown as DropdownRoot } from './Dropdown';
 import { DropdownDivider } from './DropdownDivider';
-import { DropdownList } from './DropdownList';
+import { DropdownSection } from './DropdownSection';
 import { DropdownItem } from './DropdownItem';
 import { DropdownHeader } from './DropdownHeader';
 
 type DropdownComponent = typeof DropdownRoot & {
   Divider: typeof DropdownDivider;
-  List: typeof DropdownList;
+  Section: typeof DropdownSection;
   Item: typeof DropdownItem;
   Header: typeof DropdownHeader;
 };
@@ -14,14 +14,14 @@ type DropdownComponent = typeof DropdownRoot & {
 const Dropdown = DropdownRoot as DropdownComponent;
 
 Dropdown.Divider = DropdownDivider;
-Dropdown.List = DropdownList;
+Dropdown.Section = DropdownSection;
 Dropdown.Item = DropdownItem;
 Dropdown.Header = DropdownHeader;
 
 export {
   Dropdown,
   DropdownDivider,
-  DropdownList,
+  DropdownSection,
   DropdownItem,
   DropdownHeader,
 };
