@@ -26,10 +26,12 @@ export type SearchProps = {
   onClear?: (value: InputHTMLAttributes<HTMLInputElement>['value']) => void;
   /**Callback for Search-button submit */
   onSearchClick?: (value: string) => void;
-  /** Search button children. Use this for providing a descriptive button text */
+  /** Search button children. Use this for providing a descriptive button text and/or icon */
   searchButton?: ReactNode;
   /** Clear button text. Hidden visually, used for screen readers */
   clearButton?: string;
+  /** Exposes the HTML `size` attribute. */
+  htmlSize?: number;
 } & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
 
@@ -55,6 +57,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       onClear,
       disabled,
       onSearchClick,
+      htmlSize = 27,
       ...rest
     } = props;
 
@@ -85,7 +88,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     };
 
     const isSimple = variant === 'simple';
-    const showClearButton = Boolean(value ?? internalValue) && !disabled;
+    const showClearButton =
+      (Boolean(value ?? internalValue) && !disabled) || !clearButton;
 
     return (
       <Paragraph
@@ -124,8 +128,10 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
               {...inputProps}
               ref={mergedRef}
+              size={htmlSize}
               value={value ?? internalValue}
               onChange={handleChange}
+              disabled={disabled}
               className={cn(
                 classes.input,
                 utilityClasses.focusable,
@@ -155,6 +161,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               variant={variant}
               type='submit'
               onClick={handleSearchClick}
+              disabled={disabled}
             >
               {searchButton}
             </Button>
