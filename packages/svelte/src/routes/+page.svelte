@@ -16,6 +16,7 @@
     AccordionContent,
     AccordionHeader,
     AccordionItem,
+    Select,
     Tooltip,
     Tabs,
     TabList,
@@ -46,10 +47,6 @@
 
   let textfieldValue = '';
   let isSwitchChecked = false;
-
-  $: if (isSwitchChecked !== undefined) {
-    console.log(isSwitchChecked);
-  }
 
   function handleSwitchClickEvent(event) {
     console.log('switch clicked', event);
@@ -88,10 +85,34 @@
   function toggleIsReadOnly() {
     isReadOnly = !isReadOnly;
   }
+
+  // SELECT
+
+  let singleSelectValue = '';
+  let multiSelectValues = [];
+
+  const options = [
+    { label: 'Norge', value: '1' },
+    { label: 'Sverige', value: '2' },
+    { label: 'Outer Planets Alliance', value: '3' },
+  ];
+
+  $: unSelected = null;
+
+  let singlePreSelected = { label: 'Option 2', value: '2' };
+
+  $: multiUnselected = [];
+
+  let multiPreselected = [
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 3', value: '3' },
+  ];
 </script>
 
 <h1>Test components here!</h1>
-<h1>Switch</h1>
+
+<h1 class="componentHeader">SWITCH</h1>
+<br />
 <Switch
   on:click={handleSwitchClickEvent}
   on:change={handleSwitchChangeEvent}
@@ -116,7 +137,10 @@
   description="Ipsum lorem dorem durem">Switch with Description</Switch
 >
 
-<h1>Button</h1>
+<br />
+<h1 class="componentHeader">BUTTON</h1>
+<br />
+
 <Button>First</Button>
 <Button color="second">Secondary</Button>
 <Button
@@ -140,7 +164,9 @@
   >First Icon</Button
 >
 
-<h1>Textfield</h1>
+<br />
+<h1 class="componentHeader">TEXTFIELD</h1>
+<br />
 <Switch bind:checked={showTextfieldError}>Show Error</Switch>
 <Textfield
   bind:value={textfieldValue}
@@ -153,28 +179,27 @@
       : `Du har ${Math.abs(count)} tegn for mye.`}
 />
 
-<h1>Link</h1>
+<br />
+<h1 class="componentHeader">LINK</h1>
+<br />
+
 <Link href="/route">Link</Link>
 
-<h1>Paragraph</h1>
+<h1 class="componentHeader">PARAGRAPH</h1>
+<br />
 <Paragraph
   spacing
   short>Lorem ipsum dorem</Paragraph
 >
 
-<h1>List components</h1>
-<h2>Ordered list:</h2>
-<List as="ol">
-  <ListItem><Alert severity="info">Alert (info, default)</Alert></ListItem>
-  <ListItem><Alert severity="warning">Alert (warning)</Alert></ListItem>
-  <ListItem><Button>knapp</Button><Button>knapp</Button></ListItem>
-</List>
-<h2>Unordered list:</h2>
+<br />
+<h1 class="componentHeader">LIST OF ALERTS</h1>
+<br />
 <List>
   <ListItem><Alert severity="success">Alert (success)</Alert></ListItem>
   <ListItem><Alert severity="danger">Alert (danger)</Alert></ListItem>
 </List>
-<h2>Unstyled list:</h2>
+<h2 class="componentHeader">Unstyled list:</h2>
 <List as="none">
   <ListItem className="no-padding"
     ><Alert severity="info">Alert (info, default)</Alert></ListItem
@@ -184,7 +209,10 @@
   >
 </List>
 
-<h1>Tags</h1>
+<br />
+<h1 class="componentHeader">TAG</h1>
+<br />
+
 <Tag color="first">Tag Primary</Tag>
 <Tag color="second">Tag Secondary</Tag>
 <Tag color="third">Tag tertiary</Tag>
@@ -199,7 +227,14 @@
   variant="outlined">Tag Outlined</Tag
 >
 
-<h1>Accordion</h1>
+<Tag size="xsmall">Tag XS</Tag>
+<Tag size="small">Tag small</Tag>
+<Tag size="medium">Tag medium</Tag>
+
+<br />
+<br />
+<h1 class="componentHeader">ACCORDION</h1>
+<br />
 <Accordion
   border={true}
   color="second"
@@ -235,19 +270,20 @@
   </AccordionItem>
 </Accordion>
 
-<h1>Modal</h1>
+<br />
+<br />
+<h1 class="componentHeader">MODAL</h1>
+<br />
+
 <Button on:click={openModal}>Open Modal</Button>
 
 {#if isModalOpen}
   <Modal onClose={closeModal} />
 {/if}
 
-<h1>Tags</h1>
-<Tag size="xsmall">Tag XS</Tag>
-<Tag size="small">Tag small</Tag>
-<Tag size="medium">Tag medium</Tag>
-
-<h1>Radio</h1>
+<br />
+<br />
+<h1 class="componentHeader">RADIO</h1>
 <RadioGroup
   bind:value={selectedValue}
   on:change={handleGroupChange}
@@ -295,8 +331,73 @@
 <Button on:click={toggleIsReadOnly}
   >{isReadOnly ? 'Selectable' : 'ReadOnly'}</Button
 >
+<br />
+<br />
+<h1 class="componentHeader">SELECT</h1>
+<form class="selectForm">
+  <Select
+    {options}
+    bind:selected={unSelected}
+    label="Single, unselected"
+    hideSelected
+  />
+  <Select
+    {options}
+    bind:selected={singlePreSelected}
+    label="Single, preselected"
+  />
 
-<h1>Tabs</h1>
+  <Select
+    {options}
+    bind:selected={unSelected}
+    placeholder="Placeholder text"
+    label="Single w/ placeholder"
+  />
+
+  <Select
+    {options}
+    bind:selected={unSelected}
+    error={new Error('Error message')}
+    label="Single, unselected, w/ error"
+  />
+</form>
+<br />
+<h1 class="componentHeader">MULTI SELECT</h1>
+<br />
+<form class="selectForm">
+  <Select
+    {options}
+    bind:selected={multiUnselected}
+    multiple
+    label="Multi, unselected"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiPreselected}
+    multiple
+    label="Multi, preselected"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiPreselected}
+    disabled
+    multiple
+    label="Multi, preselected, disabled"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiPreselected}
+    readOnly
+    multiple
+    label="Multi, preselected, readonly"
+  />
+</form>
+<br />
+
+<h1 class="componentHeader">Tabs</h1>
 <div class="tabs">
   <Tabs onChange={handleTabChange}>
     <TabList>
@@ -319,7 +420,7 @@
   </Tabs>
 </div>
 
-<h1>Tooltip</h1>
+<h1 class="componentHeader">Tooltip</h1>
 <Tooltip
   content="Tooltip text"
   placement="top"
@@ -340,7 +441,7 @@
   > for å gi mer informasjon!
 </p>
 
-<h1>Spinner</h1>
+<h1 class="componentHeader">Spinner</h1>
 <div class="spinner">
   <Spinner
     size="xLarge"
@@ -384,3 +485,17 @@
     variant="inverted"
   />
 </div>
+
+<br />
+<br />
+
+<style>
+  .componentHeader {
+    width: 100%;
+    background-color: pink;
+  }
+
+  .selectForm {
+    width: 40%;
+  }
+</style>

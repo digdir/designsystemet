@@ -1,7 +1,7 @@
 {
   "name": "@kjetil-hoel/design-system-svelte",
   "license": "MIT",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
@@ -53,7 +53,7 @@
   "type": "module",
   "gitHead": "231bcde4abc405d95f225e3e09b24e5d88a7d7b5",
   "dependencies": {
-    "@altinn/figma-design-tokens": "^6.0.1",
+    "@kjetil-hoel/design-system-tokens": "^0.0.1",
     "@navikt/aksel-icons": "^5.6.0",
     "altinn-designsystem": "^4.2.0",
     "svelte-floating-ui": "^1.5.5",

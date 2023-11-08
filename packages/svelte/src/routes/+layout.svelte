@@ -1,5 +1,5 @@
 <script>
-  import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+  import '@kjetil-hoel/design-system-tokens/brand/staf/tokens.css';
 </script>
 
 <slot />

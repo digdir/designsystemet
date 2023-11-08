@@ -49,6 +49,7 @@
   {...$$restProps}
   on:click
   class={computedClass}
+  {...$$restProps}
 >
   {#if iconPlacement === 'left'}
     <slot name="icon" />
