@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.8.1...@digdir/design-system-tokens@0.9.0) (2023-11-08)
+
+### Features
+
+- Change divider color tokens ([#1056](https://github.com/digdir/designsystem/issues/1056)) ([b01b107](https://github.com/digdir/designsystem/commit/b01b10768f9cda698facf2a7686e495a6df32884))
+
 ## [0.8.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.8.0...@digdir/design-system-tokens@0.8.1) (2023-10-16)
 
 **Note:** Version bump only for package @digdir/design-system-tokens
