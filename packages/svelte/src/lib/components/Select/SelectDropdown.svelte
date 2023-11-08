@@ -69,6 +69,7 @@
           {/if}
         </div>
       </li>
+      <div class="option-separator" />
       <!--  {/if} -->
     {/each}
   </ul>
@@ -76,10 +77,10 @@
 
 <style lang="scss">
   .select-dropdown {
+    background-color: #fff;
     border-radius: 3px;
     border: 1px solid var(--colors-grey-600, #68707c);
     box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
     &:not(.visible) {
       display: none;
     }
@@ -102,24 +103,35 @@
   .option-item {
     display: flex;
     padding: 9px 12px 10px 12px;
-
     align-items: flex-start;
     gap: 10px;
     align-self: stretch;
     list-style: none;
-    border-bottom: solid 1px rgba(2, 47, 81, 0.5);
+    /* border-bottom: solid 1px rgba(2, 47, 81, 0.5); */
     &:hover {
-      background-color: lightblue;
+      background: var(--interface-common-info-200, #e3f7ff);
       cursor: pointer;
     }
   }
-  .option-checkbox {
+  /*   .option-checkbox {
     margin-right: 8px;
-  }
+  } */
 
   .option-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .option-label {
+    color: var(--semantic-text-neutral-default, #1e2b3c);
+    font-weight: 400;
+    line-height: 130%; /* 17.55px */
+  }
+
+  .option-separator {
+    width: 100%;
+    height: 1px;
+    background: rgba(2, 47, 81, 0.5);
   }
 </style>

@@ -264,11 +264,37 @@
     />
   </div>
   {#if error}
-    <p class="errorText">{errorText}</p>
+    <p class="error-message">{errorText}</p>
   {/if}
 </div>
 
 <style lang="scss">
+  .error-message {
+    color: var(--fds-semantic-border-danger-default);
+  }
+
+  .select-container {
+    position: relative;
+    margin-bottom: 1rem;
+    width: auto;
+  }
+
+  .dropdown-container {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .select-label {
+    color: var(--semantic-text-neutral-default, #1e2b3c);
+    font-family: Inter;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 130%; /* 20.15px */
+  }
+
   /* .select {
     --delete_cross_box-border_radius: var(
       --interactive_components-border_radius-normal
@@ -482,26 +508,4 @@
     padding: 8px;
     font-size: 1rem;
   } */
-
-  .select-container {
-    position: relative;
-    margin-bottom: 1rem;
-    width: auto;
-  }
-
-  .dropdown-container {
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-  }
-
-  .select-label {
-    color: var(--semantic-text-neutral-default, #1e2b3c);
-    font-family: Inter;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 130%; /* 20.15px */
-  }
 </style>
