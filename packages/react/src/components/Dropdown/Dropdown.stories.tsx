@@ -56,7 +56,7 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
             href='https://designsystemet.no'
             target='_blank'
           >
-            This is a link!
+            Designsystemet.no
           </Dropdown.Item>
         </Dropdown.Section>
         <Dropdown.Divider />
@@ -114,7 +114,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
             target='_blank'
             icon={<LinkIcon />}
           >
-            This is a link!
+            Designsystemet.no
           </Dropdown.Item>
         </Dropdown.Section>
       </Dropdown>
