@@ -20,7 +20,7 @@ export const Preview: Story = {
     size: 'medium',
     error: '',
     placeholder: '',
-    variant: 'primary',
+    variant: 'simple',
   },
 };
 
@@ -58,29 +58,18 @@ export const Controlled: StoryFn<typeof Search> = () => {
   );
 };
 
-export const Landmark: StoryFn<typeof Search> = () => {
+export const OnlyIcon: StoryFn<typeof Search> = () => {
   return (
-    <form
-      role='search'
-      onSubmit={(e) => {
-        // Prevent browser navigate on submit
-        e.preventDefault();
-        alert('du har søkt!');
-      }}
-    >
-      <Search
-        label='Søk etter innhold'
-        searchButtonLabel={
-          <MagnifyingGlassIcon
-            fontSize={'1.5em'}
-            title='Søk'
-          />
-        }
-        variant='primary'
-        onSearchClick={(val) => {
-          alert(`Du har trykkket på søk: ${val?.toString()}`);
-        }}
-      />
-    </form>
+    <Search
+      label='Search after content'
+      clearButtonLabel='Empty'
+      searchButtonLabel={
+        <MagnifyingGlassIcon
+          fontSize={'1.5em'}
+          title='Search'
+        />
+      }
+      variant='primary'
+    />
   );
 };
