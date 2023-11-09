@@ -3696,7 +3696,7 @@ export const borderWidth = [
 
 export const boxShadow = [
   {
-    value: '0 1px 2px 0 #0000001f',
+    value: '0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3709,7 +3709,8 @@ export const boxShadow = [
     path: ['shadow', 'xsmall'],
   },
   {
-    value: '0 1px 2px -1px #0000001a, 0 1px 4px 0 #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3722,7 +3723,8 @@ export const boxShadow = [
     path: ['shadow', 'small'],
   },
   {
-    value: '0 2px 4px -2px #0000001a, 0 4px 5px #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3735,7 +3737,8 @@ export const boxShadow = [
     path: ['shadow', 'medium'],
   },
   {
-    value: '0 4px 6px -4px #0000001a, 0 10px 12px #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3748,7 +3751,8 @@ export const boxShadow = [
     path: ['shadow', 'large'],
   },
   {
-    value: '0 8px 10px -6px #0000001a, 0 25px 45px #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
