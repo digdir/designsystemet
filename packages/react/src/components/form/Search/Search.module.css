@@ -58,6 +58,14 @@
   border-bottom-right-radius: 0;
 }
 
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
 .searchButton {
   border-left: 0;
   border-top-left-radius: 0;
@@ -102,10 +110,6 @@
 
   padding: 0 var(--fds-spacing-4);
   padding-right: 2em;
-}
-
-.disabled {
-  opacity: 0.3;
 }
 
 .input.simple {
