@@ -30,7 +30,7 @@
   position: absolute;
   height: 1.6em;
   width: 1.6em;
-  z-index: 1;
+  z-index: 2;
   left: 0.5em;
   top: 0.4em;
 }
