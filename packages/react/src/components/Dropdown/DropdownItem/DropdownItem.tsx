@@ -12,7 +12,7 @@ import classes from './DropdownItem.module.css';
 export type DropdownItemProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const DropdownItem: OverridableComponent<
-  Omit<ButtonProps, 'variant' | 'size' | 'color'>,
+  Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>,
   HTMLButtonElement
 > = forwardRef(({ children, ...rest }, ref) => {
   const menu = useContext(DropdownContext);
@@ -26,6 +26,7 @@ export const DropdownItem: OverridableComponent<
       ref={useMergeRefs([item.ref, ref])}
       variant='tertiary'
       size={menu.size}
+      fullWidth
       className={cn(classes.item, rest.className)}
       tabIndex={isActive ? 0 : -1}
       {...(menu.getItemProps

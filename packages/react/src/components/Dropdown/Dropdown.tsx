@@ -27,8 +27,10 @@ const GAP = 4;
 export type DropdownProps = {
   /** Element the popover anchors to */
   anchorEl: Element | null;
-  /** Whether the dropdown is open or not. */
-  open: boolean;
+  /** Whether the dropdown is open or not.
+   *
+   */
+  open?: boolean;
   /** Callback function when dropdown closes */
   onClose?: () => void;
   /** The placement of the dropdown
@@ -45,7 +47,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   (
     {
       anchorEl,
-      open,
+      open = false,
       onClose,
       placement = 'bottom-end',
       size = 'medium',

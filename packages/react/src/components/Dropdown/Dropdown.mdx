@@ -9,3 +9,20 @@ import * as DropdownStories from './Dropdown.stories.tsx';
 
 <Primary />
 <Controls />
+
+`AnchorEl` er en referanse til elementet som dropdownen skal plasseres i forhold til.
+Bruk `useRef` for å få tak i elementet.
+Elementet som åpner popoveren bør bruke `aria-expanded=true/false` for å indikere om den er åpen eller ikke.
+
+```tsx
+const anchorEl = useRef(null);
+
+return (
+    <Button ref={anchorEl}>Button</Button>
+    <Dropdown anchorEl={anchorEl.current} />
+)
+```
+
+## Icons
+
+<Canvas of={DropdownStories.Icons} />
