@@ -11,6 +11,7 @@ import {
   useInteractions,
   useMergeRefs,
   useRole,
+  shift,
 } from '@floating-ui/react';
 
 import { Box } from '../Box';
@@ -69,7 +70,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         floating: floatingEl.current,
       },
       whileElementsMounted: autoUpdate,
-      middleware: [offset(GAP)],
+      middleware: [offset(GAP), shift()],
     });
 
     const { getFloatingProps } = useInteractions([
@@ -106,8 +107,10 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             className={cn(classes.dropdown, classes[size], rest.className)}
             ref={floatingRef}
             style={floatingStyles}
-            {...getFloatingProps()}
-            tabIndex={-1}
+            {...getFloatingProps({
+              ref: floatingRef,
+              tabIndex: undefined,
+            })}
             role='menu'
             aria-hidden={!open}
             data-placement={flPlacement}
