@@ -45,7 +45,7 @@
 
 .button:disabled,
 .button[aria-disabled='true'] {
-  cursor: auto;
+  cursor: not-allowed;
   opacity: var(--fds-opacity-disabled);
 }
 
