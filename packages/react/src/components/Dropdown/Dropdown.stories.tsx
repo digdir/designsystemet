@@ -34,6 +34,7 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
         ref={buttonRef}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-haspopup='menu'
       >
         Dropdown
       </Button>
@@ -90,6 +91,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
         ref={buttonRef}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-haspopup='menu'
       >
         Dropdown
       </Button>
