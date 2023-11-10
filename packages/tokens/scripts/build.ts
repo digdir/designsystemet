@@ -31,7 +31,6 @@ void registerTransforms(StyleDictionary);
 const brands = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'] as const;
 type Brands = (typeof brands)[number];
 
-type Densities = 'Default' | 'Compact';
 const prefix = 'fds';
 const basePxFontSize = 16;
 const fileheader: Named<{ fileHeader: FileHeader }> = {
@@ -87,14 +86,13 @@ StyleDictionary.registerTransformGroup({
   ],
 });
 
-const baseConfig = (brand: Brands, density: Densities): Partial<Config> => {
+const baseConfig = (brand: Brands): Partial<Config> => {
   const tokensPath = '../../design-tokens';
 
   return {
     include: [
       `${tokensPath}/Base/Semantic.json`,
       `${tokensPath}/Brand/${brand}.json`,
-      `${tokensPath}/Density/${density}.json`,
     ],
     source: [`${tokensPath}/Base/Core.json`],
   };
@@ -103,15 +101,11 @@ const baseConfig = (brand: Brands, density: Densities): Partial<Config> => {
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
-const getTokensPackageConfig = (
-  brand: Brands,
-  targetFolder = '',
-  density: Densities = 'Default',
-): Config => {
+const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
-    ...baseConfig(brand, density),
+    ...baseConfig(brand),
     platforms: {
       hack: {
         prefix,
@@ -171,15 +165,11 @@ const getTokensPackageConfig = (
   };
 };
 
-const getStorefrontConfig = (
-  brand: Brands,
-  targetFolder = '',
-  density: Densities = 'Default',
-): Config => {
+const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
-    ...baseConfig(brand, density),
+    ...baseConfig(brand),
     platforms: {
       hack: {
         prefix,
