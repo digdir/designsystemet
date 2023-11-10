@@ -96,6 +96,7 @@
   border-radius: var(--fds-border_radius-medium);
   font-size: 1.25rem;
   padding: 0;
+  z-index: 2;
 }
 
 .input.xsmall,
