@@ -1,6 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
 import cn from 'classnames';
-import { useFloatingTree, useListItem, useMergeRefs } from '@floating-ui/react';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
@@ -16,32 +15,17 @@ export const DropdownItem: OverridableComponent<
   HTMLButtonElement
 > = forwardRef(({ children, ...rest }, ref) => {
   const menu = useContext(DropdownContext);
-  const tree = useFloatingTree();
-  const item = useListItem();
-  const isActive = item.index === menu.activeIndex;
 
   return (
     <li>
       <Button
         {...rest}
-        ref={useMergeRefs([item.ref, ref])}
+        ref={ref}
         variant='tertiary'
         size={menu.size}
         fullWidth
         className={cn(classes.item, rest.className)}
-        tabIndex={isActive ? 0 : -1}
         role='menuitem'
-        {...(menu.getItemProps
-          ? {
-              onClick(event: React.MouseEvent<HTMLButtonElement>) {
-                rest.onClick?.(event);
-                tree?.events.emit('click');
-              },
-              onFocus(event: React.FocusEvent<HTMLButtonElement>) {
-                rest.onFocus?.(event);
-              },
-            }
-          : {})}
       >
         {children}
       </Button>
