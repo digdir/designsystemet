@@ -47,7 +47,7 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
           <Dropdown.Item
             as='a'
             href='https://github.com/digdir/designsystem'
-            target='_black'
+            target='_blank'
           >
             Github
           </Dropdown.Item>
@@ -102,7 +102,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
           <Dropdown.Item
             as='a'
             href='https://github.com/digdir/designsystem'
-            target='_black'
+            target='_blank'
             icon={<LinkIcon />}
           >
             Github
