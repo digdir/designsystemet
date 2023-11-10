@@ -30,6 +30,7 @@ export const DropdownItem: OverridableComponent<
         fullWidth
         className={cn(classes.item, rest.className)}
         tabIndex={isActive ? 0 : -1}
+        role='menuitem'
         {...(menu.getItemProps
           ? {
               onClick(event: React.MouseEvent<HTMLButtonElement>) {

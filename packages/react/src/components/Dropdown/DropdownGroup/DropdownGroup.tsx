@@ -23,21 +23,22 @@ export const DropdownGroup = ({
 
   return (
     <>
-      {heading && (
-        <Paragraph
-          as='h2'
-          id={headingId}
-          size={size}
-          className={cn(classes.heading, rest.className)}
-        >
-          {heading}
-        </Paragraph>
-      )}
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         {...rest}
+        role='group'
         className={cn(classes.section, rest.className)}
       >
+        {heading && (
+          <Paragraph
+            as='h2'
+            id={headingId}
+            size={size}
+            className={cn(classes.heading, rest.className)}
+          >
+            {heading}
+          </Paragraph>
+        )}
         {children}
       </ul>
     </>
