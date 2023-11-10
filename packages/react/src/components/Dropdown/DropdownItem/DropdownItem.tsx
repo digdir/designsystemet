@@ -9,7 +9,7 @@ import { DropdownContext } from '../DropdownContext';
 
 import classes from './DropdownItem.module.css';
 
-export type DropdownItemProps = React.HTMLAttributes<HTMLDivElement>;
+export type DropdownItemProps = React.HTMLAttributes<HTMLLIElement>;
 
 export const DropdownItem: OverridableComponent<
   Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>,
@@ -21,28 +21,30 @@ export const DropdownItem: OverridableComponent<
   const isActive = item.index === menu.activeIndex;
 
   return (
-    <Button
-      {...rest}
-      ref={useMergeRefs([item.ref, ref])}
-      variant='tertiary'
-      size={menu.size}
-      fullWidth
-      className={cn(classes.item, rest.className)}
-      tabIndex={isActive ? 0 : -1}
-      {...(menu.getItemProps
-        ? {
-            onClick(event: React.MouseEvent<HTMLButtonElement>) {
-              rest.onClick?.(event);
-              tree?.events.emit('click');
-            },
-            onFocus(event: React.FocusEvent<HTMLButtonElement>) {
-              rest.onFocus?.(event);
-            },
-          }
-        : {})}
-    >
-      {children}
-    </Button>
+    <li>
+      <Button
+        {...rest}
+        ref={useMergeRefs([item.ref, ref])}
+        variant='tertiary'
+        size={menu.size}
+        fullWidth
+        className={cn(classes.item, rest.className)}
+        tabIndex={isActive ? 0 : -1}
+        {...(menu.getItemProps
+          ? {
+              onClick(event: React.MouseEvent<HTMLButtonElement>) {
+                rest.onClick?.(event);
+                tree?.events.emit('click');
+              },
+              onFocus(event: React.FocusEvent<HTMLButtonElement>) {
+                rest.onFocus?.(event);
+              },
+            }
+          : {})}
+      >
+        {children}
+      </Button>
+    </li>
   );
 });
 

@@ -1,13 +1,22 @@
 import React from 'react';
+import cn from 'classnames';
 
-/** The `section` element does not have it's own type, so we use `HTMLElement` */
-export type DropdownSectionProps = React.HTMLAttributes<HTMLElement>;
+import classes from './DropdownSection.module.css';
+
+export type DropdownSectionProps = React.HTMLAttributes<HTMLUListElement>;
 
 export const DropdownSection = ({
   children,
   ...rest
 }: DropdownSectionProps) => {
-  return <section {...rest}>{children}</section>;
+  return (
+    <ul
+      {...rest}
+      className={cn(classes.section, rest.className)}
+    >
+      {children}
+    </ul>
+  );
 };
 
 DropdownSection.displayName = 'Dropdown.Section';
