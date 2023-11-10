@@ -16,21 +16,33 @@ import utilityClasses from './../../../utils/utility.module.css';
 export type SearchProps = {
   /** Label */
   label?: ReactNode;
-  /** Visually hides `label` and `description` (still available for screen readers)  */
+  /** Visually hides `label` and `description` (still available for screen readers)
+   * @default true
+   */
   hideLabel?: boolean;
-  /** Changes field size and paddings */
+  /** Changes field size and paddings
+   * @default 'medium'
+   */
   size?: 'small' | 'medium' | 'large';
-  /** Variant */
+  /** Variant
+   * @default 'simple'
+   */
   variant?: 'primary' | 'secondary' | 'simple';
   /** Callback for when clear button is activated */
   onClear?: (value: InputHTMLAttributes<HTMLInputElement>['value']) => void;
   /**Callback for Search-button submit */
   onSearchClick?: (value: string) => void;
-  /** Search button label. Use this for providing a descriptive button text and/or icon */
+  /** Search button label. Use this for providing a descriptive button text and/or icon
+   * @default 'Søk'
+   */
   searchButtonLabel?: ReactNode;
-  /** Clear button label. Hidden visually. Used for screen readers */
+  /** Clear button label. Hidden visually. Used for screen readers
+   * @default 'Tøm'
+   */
   clearButtonLabel?: string;
-  /** Exposes the HTML `size` attribute. */
+  /** Exposes the HTML `size` attribute.
+   * @default 27
+   */
   htmlSize?: number;
 } & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
