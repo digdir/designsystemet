@@ -23,11 +23,10 @@ const Comp = (args: Partial<DropdownProps>) => {
         {...args}
         anchorEl={ref.current}
       >
-        <Dropdown.Section>
-          <Dropdown.Header>Links</Dropdown.Header>
+        <Dropdown.Group heading='Links'>
           <Dropdown.Item>Item</Dropdown.Item>
           {args.children}
-        </Dropdown.Section>
+        </Dropdown.Group>
       </Dropdown>
     </>
   );
@@ -139,5 +138,32 @@ describe('Dropdown', () => {
 
     expect(screen.getByText('Item 2')).toHaveAttribute('href', '#');
     expect(screen.getByText('Item 2').tagName).toBe('A');
+  });
+
+  it('Item should have role="menuitem"', async () => {
+    const { user } = await render();
+    const dropdownTrigger = screen.getByRole('button');
+
+    await user.click(dropdownTrigger);
+
+    expect(screen.getByText('Item')).toHaveAttribute('role', 'menuitem');
+  });
+
+  it('Group should have role="group"', async () => {
+    const { user } = await render();
+    const dropdownTrigger = screen.getByRole('button');
+
+    await user.click(dropdownTrigger);
+
+    expect(screen.getByRole('group')).toBeInTheDocument();
+  });
+
+  it('Group should be described by heading', async () => {
+    const { user } = await render();
+    const dropdownTrigger = screen.getByRole('button');
+
+    await user.click(dropdownTrigger);
+
+    expect(screen.getByRole('group')).toHaveAttribute('aria-labelledby');
   });
 });
