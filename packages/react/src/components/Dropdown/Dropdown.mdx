@@ -12,13 +12,14 @@ import * as DropdownStories from './Dropdown.stories.tsx';
 
 `AnchorEl` er en referanse til elementet som dropdownen skal plasseres i forhold til.
 Bruk `useRef` for å få tak i elementet.
+Du må ha `aria-haspopup='menu'` på elementet som åpner dropdownen.
 Elementet som åpner popoveren bør bruke `aria-expanded=true/false` for å indikere om den er åpen eller ikke.
 
 ```tsx
 const anchorEl = useRef(null);
 
 return (
-    <Button ref={anchorEl}>Button</Button>
+    <Button ref={anchorEl} aria-haspopup='menu' aria-expanded={open}>Button</Button>
     <Dropdown anchorEl={anchorEl.current} />
 )
 ```
