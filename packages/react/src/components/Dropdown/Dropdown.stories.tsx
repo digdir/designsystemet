@@ -43,8 +43,7 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Dropdown.Section>
-          <Dropdown.Header>Links</Dropdown.Header>
+        <Dropdown.Group heading='Links'>
           <Dropdown.Item
             as='a'
             href='https://github.com/digdir/designsystem'
@@ -59,13 +58,13 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
           >
             Designsystemet.no
           </Dropdown.Item>
-        </Dropdown.Section>
+        </Dropdown.Group>
         <Dropdown.Divider />
-        <Dropdown.Section>
+        <Dropdown.Group>
           <Dropdown.Item>Button 1</Dropdown.Item>
           <Dropdown.Item>Button 2</Dropdown.Item>
           <Dropdown.Item disabled>Disabled</Dropdown.Item>
-        </Dropdown.Section>
+        </Dropdown.Group>
       </Dropdown>
     </>
   );
@@ -99,8 +98,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Dropdown.Section>
-          <Dropdown.Header>Links</Dropdown.Header>
+        <Dropdown.Group>
           <Dropdown.Item
             as='a'
             href='https://github.com/digdir/designsystem'
@@ -117,7 +115,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
           >
             Designsystemet.no
           </Dropdown.Item>
-        </Dropdown.Section>
+        </Dropdown.Group>
       </Dropdown>
     </>
   );
