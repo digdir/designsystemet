@@ -253,14 +253,5 @@ module.exports = {
   "brand_alt3_600": "#B3253A",
   "brand_alt3_700": "#861C2C",
   "brand_alt3_800": "#5A121D",
-  "brand_alt3_900": "#480e17",
-  "component_mode_height_small": "36px",
-  "component_mode_height_medium": "45px",
-  "component_mode_height_large": "54px",
-  "component_mode_spacing_small": "9px",
-  "component_mode_spacing_medium": "13.5px",
-  "component_mode_spacing_large": "18px",
-  "component_mode_gap_small": "4.5px",
-  "component_mode_gap_medium": "9px",
-  "component_mode_gap_large": "13.5px"
+  "brand_alt3_900": "#480e17"
 };

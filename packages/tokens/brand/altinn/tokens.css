@@ -258,13 +258,4 @@
   --fds-brand-alt3-700: #861C2C;
   --fds-brand-alt3-800: #5A121D;
   --fds-brand-alt3-900: #480e17;
-  --fds-component-mode-height-small: 36px;
-  --fds-component-mode-height-medium: var(--fds-sizing-10);
-  --fds-component-mode-height-large: var(--fds-sizing-12);
-  --fds-component-mode-spacing-small: var(--fds-spacing-2);
-  --fds-component-mode-spacing-medium: var(--fds-spacing-3);
-  --fds-component-mode-spacing-large: var(--fds-spacing-4);
-  --fds-component-mode-gap-small: var(--fds-spacing-1);
-  --fds-component-mode-gap-medium: var(--fds-spacing-2);
-  --fds-component-mode-gap-large: var(--fds-spacing-3);
 }
