@@ -98,6 +98,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         className={cn(
           classes.formField,
           inputProps.disabled && classes.disabled,
+          classes[size],
           rest.className,
         )}
       >
