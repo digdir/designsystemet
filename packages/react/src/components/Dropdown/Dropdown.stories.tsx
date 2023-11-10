@@ -89,6 +89,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
       <Button
         ref={buttonRef}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         Dropdown
       </Button>
