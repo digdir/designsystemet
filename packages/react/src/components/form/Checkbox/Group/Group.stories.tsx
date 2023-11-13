@@ -88,7 +88,7 @@ export const ReadOnly = Preview.bind({});
 ReadOnly.args = {
   ...Preview.args,
   readOnly: true,
-  value: ['burger'],
+  value: ['epost'],
 };
 
 export const Disabled = Preview.bind({});
@@ -96,10 +96,10 @@ export const Disabled = Preview.bind({});
 Disabled.args = {
   ...Preview.args,
   disabled: true,
-  value: ['pizza'],
+  value: ['sms'],
 };
 
-export const ContentEx1: StoryFn<typeof Checkbox.Group> = (args) => (
+export const ContentEx1: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group legend='Hvor lenge har du jobbet i det offentlige?'>
     <Checkbox value='samtykke'>I under ett år</Checkbox>
     <Checkbox value='samtykke'>Fra 1-3 år</Checkbox>
@@ -107,7 +107,7 @@ export const ContentEx1: StoryFn<typeof Checkbox.Group> = (args) => (
   </Checkbox.Group>
 );
 
-export const ContentEx2: StoryFn<typeof Checkbox.Group> = (args) => (
+export const ContentEx2: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group legend='Hva liker du best med jobben din?'>
     <Checkbox value='selvstendige'>
       Jeg liker å jobbe med selvstendige oppgaver
@@ -118,7 +118,7 @@ export const ContentEx2: StoryFn<typeof Checkbox.Group> = (args) => (
   </Checkbox.Group>
 );
 
-export const ContentEx3: StoryFn<typeof Checkbox.Group> = (args) => (
+export const ContentEx3: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group legend='Hva liker du best med jobben din'>
     <Checkbox value='selvstendige'>Selvstendige oppgaver</Checkbox>
     <Checkbox value='moter'>Møter</Checkbox>
