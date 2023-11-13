@@ -17,7 +17,7 @@ export const Preview: StoryFn<typeof Checkbox.Group> = (args) => (
   </Checkbox.Group>
 );
 
-export const OneOption: StoryFn<typeof Checkbox.Group> = (args) => (
+export const OneOption: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group
     legend='Bekreft at du er over 18 år'
     description='For at vi skal kunne sende deg opplysningen du ber om, må du bekrefte at du er myndig.'
