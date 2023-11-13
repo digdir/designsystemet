@@ -133,6 +133,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
   }
 
   .modal {
@@ -144,6 +145,7 @@
     width: 80%;
     border-radius: var(--border-radius-small, 2px);
     border: 1px solid var(--semantic-border-neutral-subtle, #d2d5d8);
+    z-index: 1001;
   }
 
   .modal.default {
