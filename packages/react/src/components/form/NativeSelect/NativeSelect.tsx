@@ -25,7 +25,7 @@ export type NativeSelectProps = {
    * Defines the size of the select.
    * @default medium
    * */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /** Error message for form field */
   error?: ReactNode;
   /** Defines if the select is readOnly

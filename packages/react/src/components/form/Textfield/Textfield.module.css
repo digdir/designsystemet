@@ -39,7 +39,6 @@
   border-radius: var(--fds-border_radius-medium);
 }
 
-.input.xsmall,
 .input.small {
   padding: 0 var(--fds-spacing-2);
 }

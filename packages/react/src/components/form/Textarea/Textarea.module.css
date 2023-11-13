@@ -39,7 +39,6 @@
   resize: vertical;
 }
 
-.textarea.xsmall,
 .textarea.small {
   padding: var(--fds-spacing-2);
 }
