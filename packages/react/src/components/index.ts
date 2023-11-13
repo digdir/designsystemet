@@ -35,3 +35,4 @@ export * from './ToggleGroup';
 export * from './Popover';
 export * from './Divider';
 export * from './Dropdown';
+export * from './form/Search';
