@@ -7,6 +7,7 @@ import { Select } from '../../Select';
 import { Textfield } from '../../form/Textfield';
 import { Paragraph } from '../../Typography';
 import { Button } from '../../Button';
+import { Divider } from '../../Divider';
 
 import { CardGroup } from './';
 
@@ -23,9 +24,9 @@ export const Preview: Story = (args) => (
   <Card.Group {...args}>
     <Card
       borderRadius='large'
-      border='subtle'
+      borderColor='subtle'
     >
-      <Card.Header divided>
+      <Card.Header>
         <Paragraph size='medium'>Rolle 1</Paragraph>
         <Button
           variant='secondary'
@@ -36,6 +37,7 @@ export const Preview: Story = (args) => (
           Fjern
         </Button>
       </Card.Header>
+      <Divider color='subtle' />
       <Card.Content>
         <Select
           label='Velg rolle'
@@ -56,9 +58,9 @@ export const Preview: Story = (args) => (
     </Card>
     <Card
       borderRadius='large'
-      border='subtle'
+      borderColor='subtle'
     >
-      <Card.Header divided>
+      <Card.Header>
         <Paragraph size='medium'>Rolle 2</Paragraph>
         <Button
           variant='secondary'
@@ -69,6 +71,7 @@ export const Preview: Story = (args) => (
           Fjern
         </Button>
       </Card.Header>
+      <Divider color='subtle' />
       <Card.Content>
         <Select
           label='Velg rolle'

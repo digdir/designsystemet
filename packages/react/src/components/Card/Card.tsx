@@ -1,26 +1,11 @@
-import React, { type HTMLAttributes, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { Box } from '../Box';
+import { Box, type BoxProps } from '../Box';
 
 import classes from './Card.module.css';
 
 export type CardProps = {
-  /**
-   * Shadow size of the card
-   * @default undefined
-   */
-  shadow?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-  /**
-   * Border width of the card
-   * @default undefined
-   */
-  border?: 'default' | 'subtle' | 'strong';
-  /**
-   * Border radius of the card
-   * @default undefined
-   */
-  borderRadius?: 'small' | 'medium' | 'large';
   /**
    * Variant background color of the card, undefined for no background and hover or active state
    * @default undefined
@@ -28,24 +13,32 @@ export type CardProps = {
   variant?: 'neutral' | 'subtle' | 'first' | 'second' | 'third';
 
   /**
-   * Image url of the card
+   * Image of the card
    * @default undefined
    */
-  mediaImage?: string;
+  MediaImage?: JSX.Element;
 
-  /** Instances of `Card.Header`, `Card.Content` or `Card.Footer` */
+  /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
   children: React.ReactNode;
-} & HTMLAttributes<HTMLDivElement>;
+} & Omit<BoxProps, 'background'>;
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
-    { shadow, border, borderRadius, variant, mediaImage, children, ...rest },
+    {
+      shadow,
+      borderColor,
+      borderRadius,
+      variant,
+      MediaImage,
+      children,
+      ...rest
+    },
     ref,
   ) => {
     return (
       <Box
         shadow={shadow}
-        borderColor={border}
+        borderColor={borderColor}
         borderRadius={borderRadius}
         {...rest}
         ref={ref}
@@ -55,12 +48,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
           rest.className,
         )}
       >
-        {mediaImage && (
-          <img
-            src={mediaImage}
-            alt='cat'
-          />
-        )}
+        {MediaImage && MediaImage}
         {children}
       </Box>
     );

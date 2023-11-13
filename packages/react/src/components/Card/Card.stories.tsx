@@ -1,13 +1,10 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { TrashFillIcon } from '@navikt/aksel-icons';
 
 import media from '../../../../../assets/img/card-media.png';
-import { Textfield } from '../form/Textfield';
-import { Select } from '../Select';
 import { Heading, Paragraph } from '../Typography';
-import { Button } from '../Button';
 import { Stack } from '../../../../../docs-components';
+import { Divider } from '../..';
 
 import { Card } from '.';
 
@@ -21,42 +18,35 @@ export default {
   },
 } as Meta;
 
+const CatImage: JSX.Element = (
+  <img
+    src={media as string}
+    alt='cat'
+  />
+);
+
 export const Preview: Story = (args) => (
-  <Card
-    borderRadius='large'
-    border='subtle'
-    {...args}
-  >
+  <Card {...args}>
     <Card.Header>
-      <Paragraph size='medium'>Rolle 1</Paragraph>
-      <Button
-        variant='secondary'
-        color='danger'
-        size='small'
-        icon={<TrashFillIcon aria-hidden />}
-      >
-        Fjern
-      </Button>
+      <div>
+        <Heading size='small'>Card Neutral</Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </div>
     </Card.Header>
     <Card.Content>
-      <Select
-        label='Velg rolle'
-        options={[
-          { value: 'daglig leder', label: 'Dalig leder' },
-          { value: 'forretningsfører', label: 'Forretningsfører' },
-        ]}
-      />
-      <Textfield
-        size='small'
-        label='Fødsels- eller d-nummer'
-      />
-      <Textfield
-        size='small'
-        label='Etternavn'
-      />
+      Most provide as with carried business are much better more the perfected
+      designer. Writing slightly explain desk unable at supposedly about this
     </Card.Content>
+    <Card.Footer>
+      <Paragraph size='small'>Footer text</Paragraph>
+    </Card.Footer>
   </Card>
 );
+
+Preview.args = {
+  shadow: 'medium',
+  variant: 'neutral',
+};
 
 export const Variants: StoryFn<typeof Card> = () => {
   return (
@@ -64,8 +54,8 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card
         variant='neutral'
         borderRadius='large'
-        border='subtle'
-        mediaImage={media as string}
+        borderColor='subtle'
+        MediaImage={CatImage}
       >
         <Card.Header>
           <div>
@@ -83,15 +73,16 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Card.Footer divided>
+        <Divider color='subtle' />
+        <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
         </Card.Footer>
       </Card>
       <Card
         variant='subtle'
         borderRadius='large'
-        border='subtle'
-        mediaImage={media as string}
+        borderColor='subtle'
+        MediaImage={CatImage}
       >
         <Card.Header>
           <div>
@@ -114,15 +105,16 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Card.Footer divided>
+        <Divider color='subtle' />
+        <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
         </Card.Footer>
       </Card>
       <Card
         variant='first'
         borderRadius='large'
-        border='subtle'
-        mediaImage={media as string}
+        borderColor='subtle'
+        MediaImage={CatImage}
       >
         <Card.Header>
           <div>
@@ -140,15 +132,16 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Card.Footer divided>
+        <Divider color='subtle' />
+        <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
         </Card.Footer>
       </Card>
       <Card
         variant='second'
         borderRadius='large'
-        border='subtle'
-        mediaImage={media as string}
+        borderColor='subtle'
+        MediaImage={CatImage}
       >
         <Card.Header>
           <div>
@@ -166,15 +159,16 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Card.Footer divided>
+        <Divider color='subtle' />
+        <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
         </Card.Footer>
       </Card>
       <Card
         variant='third'
         borderRadius='large'
-        border='subtle'
-        mediaImage={media as string}
+        borderColor='subtle'
+        MediaImage={CatImage}
       >
         <Card.Header>
           <div>
@@ -192,7 +186,8 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Card.Footer divided>
+        <Divider color='subtle' />
+        <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
         </Card.Footer>
       </Card>
@@ -205,7 +200,8 @@ Variants.decorators = [
     <Stack
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(5, auto)',
+        gridTemplateColumns: 'repeat(2, auto)',
+        gridGap: 'var(--fds-spacing-layout-2-xs)',
       }}
     >
       <Story />

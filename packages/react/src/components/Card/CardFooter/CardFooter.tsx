@@ -4,43 +4,14 @@ import cn from 'classnames';
 import classes from '../Card.module.css';
 
 export type CardFooterProps = {
-  /**
-   * Justifies the direct descendants of the Card Footer
-   * @default spaceBetween
-   * **/
-  justifyContent?: 'flexStart' | 'flexEnd' | 'center' | 'spaceBetween';
-  /**
-   * Alignment of the direct descendants of Card Footer
-   * @default center
-   * **/
-  alignItems?: 'flexStart' | 'flexEnd' | 'center' | 'stretch' | 'baseline';
-  /** Adds a divider to the top of the Card Footer
-   * @default false
-   **/
-  divided?: boolean;
+  children?: React.ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  (
-    {
-      divided = false,
-      justifyContent = 'spaceBetween',
-      alignItems = 'center',
-      className,
-      children,
-      ...rest
-    },
-    ref,
-  ) => (
+  ({ children, ...rest }, ref) => (
     <div
       {...rest}
-      className={cn(
-        classes.section,
-        classes[`${justifyContent}Justify`],
-        classes[`${alignItems}Align`],
-        { [classes.footerDivided]: divided },
-        className,
-      )}
+      className={cn(classes.footer, classes.section, rest.className)}
       ref={ref}
     >
       {children}

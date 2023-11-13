@@ -1,10 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-
-  /*
-   * TODO: discuss how we would like to determine max width
-   */
+  overflow: hidden;
   width: 330px;
 }
 
@@ -13,10 +10,8 @@ a.card {
   text-decoration: none;
 }
 
-.card img {
-  /*
-   * TODO: discuss if we want to control the image size/scale based on props, or if it should be svg in all cases
-   */
+.card > img,
+.card > picture {
   width: 100%;
   height: auto;
 }
@@ -75,12 +70,19 @@ a.card {
   background-color: var(--fds-semantic-surface-third-light-active);
 }
 
-.headerDivided {
-  border-bottom: var(--fds-border_width-default) solid var(--fds-semantic-border-neutral-subtle);
+.card .content {
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
-.footerDivided {
-  border-top: var(--fds-border_width-default) solid var(--fds-semantic-border-neutral-subtle);
+.card .footer,
+.card .header {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card > hr {
+  margin: 0;
 }
 
 .section {
@@ -90,48 +92,12 @@ a.card {
   word-wrap: break-word;
 }
 
-.section.flexStartJustify {
-  justify-content: flex-start;
-}
-
-.section.flexEndJustify {
-  justify-content: flex-end;
-}
-
-.section.centerJustify {
-  justify-content: center;
-}
-
-.section.spaceBetweenJustify {
-  justify-content: space-between;
-}
-
-.section.section.column {
+.section.column {
   flex-direction: column;
 }
 
 .section.row {
   flex-direction: row;
-}
-
-.section.flexStartAlign {
-  align-items: flex-start;
-}
-
-.section.flexEndAlign {
-  align-items: flex-end;
-}
-
-.section.centerAlign {
-  align-items: center;
-}
-
-.section.baselineAlign {
-  align-items: baseline;
-}
-
-.section.stretchAlign {
-  align-items: stretch;
 }
 
 .section.column > * + * {
