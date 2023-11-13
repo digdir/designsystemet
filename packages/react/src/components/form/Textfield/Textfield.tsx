@@ -19,7 +19,7 @@ export type TextfieldProps = {
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
   /** Changes field size and paddings */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
