@@ -10,6 +10,7 @@ on:
     paths:
       - 'packages/**'
       - '.storybook/**'
+      - 'assets/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
