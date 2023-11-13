@@ -14,7 +14,7 @@ export type PaginationProps = {
   /** Sets the text label for the previous page button */
   previousLabel: string;
   /** Sets the size of the component */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /** Sets how compact the component will be. If true, only 5 steps will show. */
   compact?: boolean;
   /** Hides the component's previous and next button labels */

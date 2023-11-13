@@ -18,7 +18,7 @@ export type HelpTextProps = {
    * Size of the icon.
    * @default small
    */
-  size?: 'small' | 'xsmall';
+  size?: 'medium' | 'small';
   /**
    * Placement of the Popover.
    * @default 'right'
@@ -32,7 +32,7 @@ const HelpText = ({
   title,
   placement = 'right',
   onClick,
-  size = 'small',
+  size = 'medium',
   ...rest
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);

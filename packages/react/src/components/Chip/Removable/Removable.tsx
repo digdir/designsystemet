@@ -9,7 +9,7 @@ import classes from '../Chip.module.css';
 export type RemovableChipProps = Omit<ChipBaseProps, 'selected'>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'small', ...rest }, ref) => {
+  ({ children, size = 'medium', ...rest }, ref) => {
     return (
       <ChipBase
         {...rest}

@@ -16,7 +16,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   (
     {
       children,
-      size = 'small',
+      size = 'medium',
       selected = false,
       checkmark = true,
       ...rest
