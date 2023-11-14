@@ -1,0 +1,15 @@
+.fds-list-list {
+  padding-left: var(--fds-spacing-4);
+}
+
+.fds-list-heading {
+  margin-bottom: var(--fds-spacing-2);
+}
+
+li > .fds-list-list {
+  margin-top: var(--fds-spacing-2);
+}
+
+.fds-list-listItem {
+  margin-bottom: var(--fds-spacing-2);
+}

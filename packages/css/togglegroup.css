@@ -1,0 +1,29 @@
+.fds-togglegroup-toggleGroupContainer {
+  background-color: var(--fds-semantic-background-default);
+  border: var(--fds-semantic-border-neutral-default) solid var(--fds-border_width-default);
+  border-radius: var(--fds-border_radius-medium);
+}
+
+.fds-togglegroup-groupContent {
+  display: inline-grid;
+  gap: var(--fds-spacing-1);
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  padding: var(--fds-spacing-1);
+}
+
+.fds-togglegroup-toggleGroupItem.fds-togglegroup-small {
+  padding: var(--fds-spacing-1) var(--fds-spacing-2);
+}
+
+.fds-togglegroup-toggleGroupItem.fds-togglegroup-medium {
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
+.fds-togglegroup-toggleGroupItem.fds-togglegroup-large {
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
+.fds-togglegroup-toggleGroupItem:focus-visible {
+  z-index: 1;
+}

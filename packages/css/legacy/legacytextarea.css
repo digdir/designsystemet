@@ -1,0 +1,20 @@
+.fds-textarea-textArea {
+  font-family: inherit;
+  font-size: var(--component-textarea-font_size-sm);
+}
+
+.fds-textarea-textArea.fds-textarea-resize-none {
+  resize: none;
+}
+
+.fds-textarea-textArea.fds-textarea-resize-both {
+  resize: both;
+}
+
+.fds-textarea-textArea.fds-textarea-resize-horizontal {
+  resize: horizontal;
+}
+
+.fds-textarea-textArea.fds-textarea-resize-vertical {
+  resize: vertical;
+}

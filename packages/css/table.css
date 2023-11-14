@@ -1,0 +1,129 @@
+.fds-table-table {
+  align-self: stretch;
+  background-color: #fff;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.12), 0 2px 2px rgb(0 0 0 / 0.12);
+  flex-grow: 0;
+  order: 3;
+  width: 100%;
+}
+
+.fds-table-img {
+  max-height: 45px;
+  max-width: 45px;
+}
+
+.fds-table-tableBody {
+  align-self: stretch;
+  background-color: #ffff;
+  flex-grow: 0;
+  order: 2;
+}
+
+.fds-table-headerTableCell {
+  background: #f5f5f5;
+  margin: 20px 0;
+  text-align: left;
+  user-select: none;
+}
+
+.fds-table-headerTableCellRadiobutton {
+  background: #f5f5f5;
+  margin: 10px 0;
+  padding: 8px;
+  text-align: left;
+  user-select: none;
+}
+
+.fds-table-bodyTableCell {
+  border-bottom: 1px solid #dde3e5;
+  border-top: 1px solid #dde3e5;
+  margin: 20px 0;
+  max-width: 300px;
+  text-align: left;
+}
+
+.fds-table-bodyTableCellRadiobutton {
+  border-bottom: 1px solid #dde3e5;
+  border-top: 1px solid #dde3e5;
+  text-align: left;
+}
+
+.fds-table-image {
+  max-height: 45px;
+  max-width: 45px;
+}
+
+.fds-table-input {
+  margin: 0 15px;
+}
+
+.fds-table-radioButton {
+  margin: 0 0 0 15px;
+}
+
+.fds-table-containerSortable {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.fds-table-icon {
+  fill: rgb(0 0 0 / 0.4);
+  margin-left: -5px;
+}
+
+.fds-table-iconDesc {
+  fill: rgb(0 0 0);
+  margin-left: -5px;
+}
+
+.fds-table-iconAsc {
+  fill: rgb(0 0 0);
+  margin-left: -5px;
+  transform: rotate(180deg);
+}
+
+.fds-table-header {
+  color: #4b5563;
+  font-weight: 600;
+  margin: 10px 10px 10px 0;
+}
+
+.fds-table-property {
+  margin: 10px 10px 10px 0;
+}
+
+.fds-table-tableFooter {
+  align-self: stretch;
+  background: #f5f5f5;
+  flex-grow: 0;
+  order: 1;
+}
+
+.fds-table-tableHeader {
+  align-self: stretch;
+  background: #f5f5f5;
+  flex-grow: 0;
+  order: 1;
+}
+
+.fds-table-tableRow {
+  height: 60px;
+  width: 1056px;
+}
+
+.fds-table-tableRow.fds-table-selected {
+  background-color: #e0daf7;
+  border-bottom: 1px solid #dde3e5;
+  border-left: 2px solid #011728;
+  border-top: 1px solid #dde3e5;
+}
+
+.fds-table-tableRow.fds-table-body:hover {
+  background-color: #e3f7ff;
+  cursor: pointer;
+}
