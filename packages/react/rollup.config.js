@@ -42,13 +42,16 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      postcss({
-        // extract: true,
-        modules: {
-          generateScopedName,
+      postcss(
+        // This is to make sure names match those in built css files
+        {
+          // extract: true,
+          modules: {
+            generateScopedName,
+          },
+          plugins: [cssnano({ preset: 'default' })],
         },
-        plugins: [cssnano({ preset: 'default' })],
-      }),
+      ),
     ],
   },
 ];

@@ -9,61 +9,58 @@ import * as R from 'ramda';
 
 import { generateScopedName } from './name';
 
-console.log('Generating css files');
-
-console.log({
-  dirPath: path.resolve(__dirname, '../src/**/*.css').replace(/\\/g, '/'),
-});
-
-const files = glob.sync(
-  path.resolve(__dirname, '../src/**/*.css').replace(/\\/g, '/'),
-);
-const modules = files.filter((file) => file.endsWith('.module.css'));
-
-console.log({
-  allCssFiles: files,
-  allCssModules: modules,
-});
-
 const outputFolder = path.resolve(__dirname, '../../css');
 fs.ensureDirSync(outputFolder);
 
+const makeName = (filePath: string) => {
+  const additional = ['utility.module.css'];
+
+  let fileName = filePath.split('/src/')[1];
+
+  if (filePath.includes('utilities/')) {
+    fileName = fileName.split('utilities/')[1].split('/')[0];
+  }
+
+  if (fileName.includes('legacy/')) {
+    fileName = fileName.split('legacy/')[1].split('/')[0];
+  }
+
+  const name = fileName
+    .split('/')
+    .find(
+      (partial) =>
+        partial[0] === partial[0].toUpperCase() || additional.includes(partial),
+    );
+
+  if (!name) {
+    throw new Error(`Could not make name from ${fileName} at ${filePath}`);
+  }
+
+  return name;
+};
+
 async function createFiles() {
+  console.log('🏗️  Started building css files...');
+
+  const modules = glob.sync(
+    path.resolve(__dirname, '../src/**/*.module.css').replace(/\\/g, '/'),
+  );
+
   // group files that are under src/components/{THIS IS THE NAME}
-  const components: { [key: string]: string[] } = {};
+  const components = modules.reduce<{ [key: string]: string[] }>(
+    (components, filePath) => {
+      const name = makeName(filePath);
 
-  modules.forEach((file) => {
-    let componentName = file.split('/src/')[1];
+      components[name] = !components[name]
+        ? [filePath]
+        : [...components[name], filePath];
 
-    if (file.includes('utilities/')) {
-      componentName = componentName.split('utilities/')[1].split('/')[0];
-    }
+      return components;
+    },
+    {},
+  );
 
-    if (componentName.includes('legacy/')) {
-      componentName = componentName.split('legacy/')[1].split('/')[0];
-    }
-
-    // find first uppercase letter
-    const name = componentName
-      .split('/')
-      .find(
-        (part) =>
-          part[0] === part[0].toUpperCase() || part === 'utility.module.css',
-      );
-
-    if (!name) {
-      throw new Error(
-        `Could not find uppercase part in ${componentName} from ${file}`,
-      );
-    }
-
-    if (!components[name]) {
-      components[name] = [];
-    }
-    components[name].push(file);
-  });
-
-  console.log({ components });
+  // console.log({ components });
 
   const generatedComponents: string[] = [];
 
@@ -147,7 +144,7 @@ async function createFiles() {
     createIndex(['utilities.css', ...componentFiles]);
   });
 
-  console.log('Done generating css files');
+  console.log('\n🏁 Finished building css files!');
 }
 
 function createUtilities(utlityFiles: string[]) {
@@ -159,21 +156,13 @@ function createUtilities(utlityFiles: string[]) {
 }
 
 function createIndex(cssFiles: string[]) {
-  // fs.writeJsonSync(
-  //   path.join(__dirname, '../../css/css-exports.json'),
-  //   {
-  //     modules: cssFiles.filter((file) => !file.includes('global.css')),
-  //     index: prepareFileName('index.css'),
-  //   },
-  //   { spaces: 2 },
-  // );
-
-  console.log({ generatedCssFiles: cssFiles });
   const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
   fs.writeFileSync(
     path.join(outputFolder, 'index.css'),
     cssFilesContent.join('\n'),
   );
+
+  console.log('\n👷 Created CSS files: \n ', cssFiles);
 }
 
 void createFiles();
