@@ -2604,6 +2604,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
+    "@digdir/design-system-react": "*"
     cssnano: ^6.0.1
     postcss-cli: ^10.1.0
   languageName: unknown
