@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { Button } from '../../Button';
-import { RovingTabindexItem } from '../../../utility-components/RovingTabIndex';
+import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
 import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
