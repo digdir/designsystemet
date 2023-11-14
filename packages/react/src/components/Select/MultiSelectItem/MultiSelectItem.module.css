@@ -13,7 +13,7 @@
 }
 
 .deleteButton {
-  composes: focusable from '../../../utils/utility.module.css';
+  composes: focusable from '../../../utilities/utility.module.css';
   background-color: transparent;
   border-bottom-right-radius: inherit;
   border-top-right-radius: inherit;

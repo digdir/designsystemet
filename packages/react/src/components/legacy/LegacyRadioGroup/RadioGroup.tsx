@@ -5,7 +5,7 @@ import { LegacyRadioButton } from '../LegacyRadioButton';
 import type { LegacyFieldSetProps } from '../LegacyFieldSet';
 import { LegacyFieldSet } from '../LegacyFieldSet';
 import { usePrevious, useUpdate } from '../../../hooks';
-import { areItemsUnique } from '../../../utils';
+import { areItemsUnique } from '../../../utilities';
 import type { LegacyRadioButtonProps } from '../LegacyRadioButton';
 
 import classes from './RadioGroup.module.css';
