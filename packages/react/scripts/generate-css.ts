@@ -157,7 +157,7 @@ function createIndex(cssFiles: string[]) {
   const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
   fs.writeFileSync(
     path.join(outputFolder, 'index.css'),
-    cssFilesContent.join('\n'),
+    `@charset "UTF-8";\n${cssFilesContent.join('\n')}\n`,
   );
 
   console.log('\n👷 Created CSS files: \n ', cssFiles);
