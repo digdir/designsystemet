@@ -79,6 +79,9 @@ export type InputWrapperProps = {
   value?: string | number | readonly string[] | undefined;
 };
 
+/**
+ * @deprecated Legacy component
+ */
 export const InputWrapper = ({
   className = '',
   disabled = false,
