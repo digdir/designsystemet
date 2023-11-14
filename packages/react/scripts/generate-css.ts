@@ -31,6 +31,7 @@ fs.ensureDirSync(outputFolder);
 async function createFiles() {
   // group files that are under src/components/{THIS IS THE NAME}
   const components: { [key: string]: string[] } = {};
+
   modules.forEach((file) => {
     let componentName = file.split('/src/')[1];
 
@@ -43,23 +44,23 @@ async function createFiles() {
     }
 
     // find first uppercase letter
-    const filenameParts = componentName.split('/');
-    const uppercasePart = filenameParts.find(
-      (part) => part[0] === part[0].toUpperCase(),
-    );
+    const name = componentName
+      .split('/')
+      .find(
+        (part) =>
+          part[0] === part[0].toUpperCase() || part === 'utility.module.css',
+      );
 
-    if (!uppercasePart) {
+    if (!name) {
       throw new Error(
         `Could not find uppercase part in ${componentName} from ${file}`,
       );
     }
 
-    componentName = uppercasePart;
-
-    if (!components[componentName]) {
-      components[componentName] = [];
+    if (!components[name]) {
+      components[name] = [];
     }
-    components[componentName].push(file);
+    components[name].push(file);
   });
 
   console.log({ components });
