@@ -1,7 +1,6 @@
 import path from 'path';
 
 import postcss from 'postcss';
-import cssnano from 'cssnano';
 import postcssModules from 'postcss-modules';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
@@ -76,7 +75,6 @@ async function createFiles() {
           },
           scopeBehaviour: 'local',
         }),
-        cssnano({ preset: 'default' }),
       ]).process(
         files.map((file) => fs.readFileSync(file, 'utf-8')).join('\n'),
         {

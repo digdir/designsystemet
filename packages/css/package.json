@@ -2,10 +2,11 @@
   "name": "@digdir/designsystemet-css",
   "version": "0.1.0",
   "description": "CSS files for Designsystemet",
-  "main": "./index.css",
+  "main": "./dist/index.css",
   "repository": "https://github.com/digdir/designsystem",
   "files": [
-    "*"
+    "*",
+    "dist/css"
   ],
   "keywords": [
     "css",
@@ -14,9 +15,13 @@
     "digdir"
   ],
   "scripts": {
-    "build": "postcss",
+    "build": "postcss *.css --dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Digdir Designsystem Team",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^6.0.1",
+    "postcss-cli": "^10.1.0"
+  }
 }
