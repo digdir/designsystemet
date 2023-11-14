@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-css",
   "version": "0.1.0",
-  "description": "CSS files for the Digdir Designsystemet",
+  "description": "CSS files for Designsystemet",
   "main": "./index.css",
   "repository": "https://github.com/digdir/designsystem",
   "files": [
@@ -10,9 +10,11 @@
   "keywords": [
     "css",
     "designsystem",
+    "designsystemet",
     "digdir"
   ],
   "scripts": {
+    "build": "postcss",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Digdir Designsystem Team",
