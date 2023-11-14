@@ -2,8 +2,8 @@ import React, { useId } from 'react';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 
-import utilityClasses from '../../utils/utility.module.css';
-import { ErrorMessage, Paragraph } from '../Typography';
+import utilityClasses from '../../utilities/utility.module.css';
+import { ErrorMessage, Paragraph } from '../../components/Typography';
 
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
@@ -79,6 +79,9 @@ export type InputWrapperProps = {
   value?: string | number | readonly string[] | undefined;
 };
 
+/**
+ * @deprecated Legacy component
+ */
 export const InputWrapper = ({
   className = '',
   disabled = false,
