@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 import { flip, size } from '@floating-ui/dom';
 
-import { InputWrapper } from '../_InputWrapper';
+import { InputWrapper } from '../../utilities/_InputWrapper';
 import { useKeyboardEventListener, usePrevious, useUpdate } from '../../hooks';
 import { arraysEqual, objectValuesEqual } from '../../utilities';
 import { useFocusWithin } from '../../hooks/useFocusWithin';

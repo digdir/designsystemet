@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import cn from 'classnames';
 
 import utilityClasses from '../../utilities/utility.module.css';
-import { ErrorMessage, Paragraph } from '../Typography';
+import { ErrorMessage, Paragraph } from '../../components/Typography';
 
 import type { ReadOnlyVariant_, InputVariant_ } from './utils';
 import { getVariant } from './utils';
