@@ -11,9 +11,11 @@ import { generateScopedName } from './name';
 const outputFolder = path.resolve(__dirname, '../../css');
 fs.ensureDirSync(outputFolder);
 
-const makeName = (filePath: string) => {
-  const additional = ['utility.module.css'];
+/** To exclude files when we start writing css manually */
+const ignore = [''];
+const additional = ['utility.module.css'];
 
+const findComponentName = (filePath: string) => {
   let fileName = filePath.split('/src/')[1];
 
   if (filePath.includes('utilities/')) {
@@ -60,17 +62,39 @@ const makeCss = async (filePath: string) => {
   });
 };
 
+const makeDir = (folder: string) => {
+  if (!fs.existsSync(folder)) {
+    fs.mkdirSync(folder);
+  }
+};
+
+const writeIndex = (fileName: string, cssFiles: string[]) => {
+  const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
+  fs.writeFileSync(
+    path.join(outputFolder, fileName),
+    `@charset "UTF-8";\n${cssFilesContent.join('\n')}\n`,
+  );
+
+  return [fileName, ...cssFiles];
+};
+
 async function createFiles() {
-  console.log('🏗️  Started building css files...');
+  console.log('\n🏗️  Started building css files...');
 
   const modules = glob.sync(
     path.resolve(__dirname, '../src/**/*.module.css').replace(/\\/g, '/'),
   );
+  const generatedComponents: string[] = [];
 
   // group files that are under src/components/{THIS IS THE NAME}
-  const components = modules.reduce<{ [key: string]: string[] }>(
+  const componentFiles = modules.reduce<{ [key: string]: string[] }>(
     (components, filePath) => {
-      const name = makeName(filePath);
+      const name = findComponentName(filePath);
+
+      if (ignore.includes(name.toLowerCase())) {
+        console.log('🛑 Ignoring component ', name);
+        return components;
+      }
 
       components[name] = !components[name]
         ? [filePath]
@@ -80,70 +104,40 @@ async function createFiles() {
     },
     {},
   );
+  console.log('\n🧩 Found components', Object.keys(componentFiles));
 
-  console.log({ components });
-
-  const generatedComponents: string[] = [];
-
-  // go over the components, and create a file that contains all the css for that component
   await Promise.all(
-    Object.entries(components).map(async ([componentName, files]) => {
+    Object.entries(componentFiles).map(async ([componentName, files]) => {
       componentName = componentName.toLowerCase().split('.')[0];
 
       const fileName = `${componentName}.css`;
 
-      const groupCss = await Promise.all(
+      const results = await Promise.all(
         files.map(async (filePath) => makeCss(filePath)),
       );
 
-      const cssContent = withFileHeader(
-        groupCss.map((result) => result.css).join('\n'),
+      const css = withFileHeader(
+        results.map((result) => result.css).join('\n'),
         files,
       );
 
+      let outputPath = path.join(outputFolder, fileName);
+
       if (files[0].includes('legacy')) {
-        // if legacy folder does not exist, create it
-        if (!fs.existsSync(path.join(outputFolder, 'legacy'))) {
-          fs.mkdirSync(path.join(outputFolder, 'legacy'));
-        }
-
-        generatedComponents.push(
-          path
-            .join(outputFolder, 'legacy', fileName)
-            .replace(/\\/g, '/')
-            .split('/css/')[1],
-        );
-
-        return fs.writeFile(
-          path.join(outputFolder, 'legacy', fileName),
-          cssContent,
-        );
+        makeDir(path.join(outputFolder, 'legacy'));
+        outputPath = path.join(outputFolder, 'legacy', fileName);
       }
 
       if (files[0].includes('utilities')) {
-        // if utilities folder does not exist, create it
-        if (!fs.existsSync(path.join(outputFolder, 'utilities'))) {
-          fs.mkdirSync(path.join(outputFolder, 'utilities'));
-        }
-
-        generatedComponents.push(
-          path
-            .join(outputFolder, 'utilities', fileName)
-            .replace(/\\/g, '/')
-            .split('/css/')[1],
-        );
-
-        return fs.writeFile(
-          path.join(outputFolder, 'utilities', fileName),
-          cssContent,
-        );
+        makeDir(path.join(outputFolder, 'utilities'));
+        outputPath = path.join(outputFolder, 'utilities', fileName);
       }
 
       generatedComponents.push(
-        path.join(outputFolder, fileName).replace(/\\/g, '/').split('/css/')[1],
+        outputPath.replace(/\\/g, '/').split('/css/')[1],
       );
 
-      return fs.writeFile(path.join(outputFolder, fileName), cssContent);
+      return fs.writeFile(outputPath, css);
     }),
   ).then(() => {
     const [utilityFiles, componentFiles] = R.partition(
@@ -151,29 +145,18 @@ async function createFiles() {
       generatedComponents,
     );
 
-    createUtilities(utilityFiles);
-    createIndex(['utilities.css', ...componentFiles]);
+    writeIndex('utilities.css', utilityFiles);
+    const createdFiles = writeIndex('index.css', [
+      'utilities.css',
+      ...componentFiles,
+    ]);
+
+    console.log('\n👷 Created CSS files: \n ', createdFiles);
+
+    return Promise.resolve();
   });
 
   console.log('\n🏁 Finished building css files!');
-}
-
-function createUtilities(utlityFiles: string[]) {
-  const cssFilesContent = utlityFiles.map((file) => `@import url('${file}');`);
-  fs.writeFileSync(
-    path.join(outputFolder, 'utilities.css'),
-    cssFilesContent.join('\n'),
-  );
-}
-
-function createIndex(cssFiles: string[]) {
-  const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
-  fs.writeFileSync(
-    path.join(outputFolder, 'index.css'),
-    `@charset "UTF-8";\n${cssFilesContent.join('\n')}\n`,
-  );
-
-  console.log('\n👷 Created CSS files: \n ', cssFiles);
 }
 
 void createFiles();
