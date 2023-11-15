@@ -22,7 +22,6 @@ const Comp = (args: Partial<ModalProps>) => {
     <>
       <Button onClick={openModal}>Open Modal</Button>
       <Modal
-        headerTitle={HEADER_TITLE}
         {...args}
         open
         ref={modalRef}
@@ -51,25 +50,55 @@ describe('Modal', () => {
   });
 
   it('should render the close button', async () => {
-    await render();
+    await render({
+      children: (
+        <>
+          <Modal.Header title={HEADER_TITLE}></Modal.Header>
+        </>
+      ),
+    });
     expect(screen.getByRole('button', { name: /close/i })).toBeInTheDocument();
   });
 
   it('should not render the close button when closeButton is false', async () => {
-    await render({ closeButton: false });
+    await render({
+      children: (
+        <>
+          <Modal.Header
+            closeButton={false}
+            title={HEADER_TITLE}
+          ></Modal.Header>
+        </>
+      ),
+    });
     expect(
       screen.queryByRole('button', { name: /close/i }),
     ).not.toBeInTheDocument();
   });
 
   it('should render the header title', async () => {
-    await render();
+    await render({
+      children: (
+        <>
+          <Modal.Header title={HEADER_TITLE}></Modal.Header>
+        </>
+      ),
+    });
     expect(screen.getByText(HEADER_TITLE)).toBeInTheDocument();
   });
 
   it('should render the header subtitle', async () => {
     const headerSubtitle = 'Modal header subtitle';
-    await render({ headerSubtitle });
+    await render({
+      children: (
+        <>
+          <Modal.Header
+            title={HEADER_TITLE}
+            subtitle={headerSubtitle}
+          ></Modal.Header>
+        </>
+      ),
+    });
     expect(screen.getByText(headerSubtitle)).toBeInTheDocument();
   });
 
@@ -80,12 +109,38 @@ describe('Modal', () => {
   });
 
   it('should render the header divider', async () => {
-    await render({ headerDivider: true });
+    await render({
+      children: (
+        <>
+          <Modal.Header
+            divider={true}
+            title='title'
+          ></Modal.Header>
+        </>
+      ),
+    });
     expect(document.querySelector(`.divider`)).toBeInTheDocument();
   });
 
   it('should not render the header divider', async () => {
-    await render({ headerDivider: false });
+    await render({
+      children: (
+        <>
+          <Modal.Header title='title'></Modal.Header>
+        </>
+      ),
+    });
     expect(document.querySelector(`.divider`)).toBeNull();
+  });
+
+  it('should render the footer divider', async () => {
+    await render({
+      children: (
+        <>
+          <Modal.Footer divider={true}></Modal.Footer>
+        </>
+      ),
+    });
+    expect(document.querySelector(`.divider`)).toBeInTheDocument();
   });
 });

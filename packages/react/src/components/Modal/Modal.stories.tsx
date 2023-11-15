@@ -32,8 +32,8 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
         ref={modalRef}
       >
         <Modal.Header
-          headerTitle='Modal header'
-          headerSubtitle='Modal subtittel'
+          title='Modal header'
+          subtitle='Modal subtittel'
         ></Modal.Header>
         <Modal.Content>
           <Paragraph>
@@ -62,7 +62,8 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
         closeOnBackdropClick
       >
         <Modal.Header
-          headerTitle='Modal med closeOnBackdropClick og en veldig lang tittel'
+          title='Modal med closeOnBackdropClick og en veldig lang tittel'
+          subtitle='Her er det også divider'
           divider={true}
         ></Modal.Header>
         <Modal.Content>
@@ -91,7 +92,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
         onClose={() => setInput('')}
         width='450px'
       >
-        <Modal.Header headerTitle='Modal med skjema'></Modal.Header>
+        <Modal.Header title='Modal med skjema'></Modal.Header>
         <Modal.Content>
           <Textfield
             label='Navn'

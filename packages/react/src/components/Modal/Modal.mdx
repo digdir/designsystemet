@@ -1,5 +1,7 @@
-import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
 import * as ModalStories from './Modal.stories';
+
+import { Modal } from './';
 
 <Meta of={ModalStories} />
 
@@ -22,3 +24,11 @@ Legg merke til at modalen har focus trap, som betyr at brukeren ikke kan tabbe t
 Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
 
 <Canvas of={ModalStories.ModalWithForm} />
+
+### `Modal.Header`
+
+<ArgTypes of={Modal.Header} />
+
+### `Modal.Footer`
+
+<ArgTypes of={Modal.Footer} />

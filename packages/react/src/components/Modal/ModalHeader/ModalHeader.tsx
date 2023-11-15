@@ -11,15 +11,15 @@ import classes from './ModalHeader.module.css';
 
 type ModalHeaderProps = {
   closeButton?: boolean;
-  headerTitle: React.ReactNode;
-  headerSubtitle?: string;
+  title: React.ReactNode;
+  subtitle?: string;
   divider?: boolean;
 };
 
 export const ModalHeader = ({
   closeButton = true,
-  headerTitle,
-  headerSubtitle,
+  title,
+  subtitle,
   divider = false,
 }: ModalHeaderProps) => {
   const context = useContext(ModalContext);
@@ -33,19 +33,19 @@ export const ModalHeader = ({
           divider && classes.hasDivider,
         )}
       >
-        {headerSubtitle && (
+        {subtitle && (
           <Paragraph
             size='small'
             variant='short'
           >
-            {headerSubtitle}
+            {subtitle}
           </Paragraph>
         )}
         <Heading
           level={2}
           size='xsmall'
         >
-          {headerTitle}
+          {title}
         </Heading>
         {closeButton && (
           <Button
