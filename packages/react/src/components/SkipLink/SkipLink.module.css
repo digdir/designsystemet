@@ -8,16 +8,17 @@
   clip-path: inset(50%);
   white-space: nowrap;
   text-decoration: underline;
-  text-decoration-thickness: max(1px, 0.0625rem);
-  text-underline-offset: 0.1578em;
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 1.1429;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.3em;
   display: block;
-  padding: 10px 15px;
+  padding: 15px;
+  font-weight: 500;
+  color: var(--fds-semantic-text-neutral-default);
+  background: var(--fds-semantic-border-focus-outline);
 }
 
 .skiplink:focus {
+  outline: 0;
   position: static;
   width: auto;
   height: auto;
