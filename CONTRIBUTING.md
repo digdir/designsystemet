@@ -119,7 +119,7 @@ When creating a pull request for the design system, there are a few things to ke
 ### Commit Messages
 
 This project uses Lerna with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-specification in order to create nice and readable changelogs.
+specification in order to generate changelogs.
 
 The [Semantic Versioning 2.0](https://semver.org/) specification is used for versioning.
 
