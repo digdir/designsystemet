@@ -1,5 +1,4 @@
 .modalHeader {
-  position: relative;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -13,7 +12,7 @@
 
 .modalHeader button {
   position: absolute;
-  top: 0;
+  top: var(--fds-spacing-3);
   right: var(--fds-spacing-3);
 }
 

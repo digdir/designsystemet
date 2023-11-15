@@ -5,6 +5,7 @@
   border: none;
   border-radius: var(--fds-border_radius-medium);
   box-shadow: var(--fds-shadow-xlarge);
+  position: relative;
 }
 
 .modal::backdrop {
@@ -18,6 +19,7 @@
 
 .modal > hr {
   margin: var(--fds-spacing-3) 0 !important;
+  border-color: var(--fds-semantic-border-divider-subtle);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -66,14 +66,14 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
           title='Modal med closeOnBackdropClick og en veldig lang tittel'
           subtitle='Her er det også divider'
         ></Modal.Header>
-        <Divider />
+        <Divider color='subtle' />
         <Modal.Content>
           <Paragraph>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
             doloremque obcaecati assumenda odio ducimus sunt et.
           </Paragraph>
         </Modal.Content>
-        <Divider />
+        <Divider color='subtle' />
         <Modal.Footer>Du kan også ha divider på footer</Modal.Footer>
       </Modal>
     </>
