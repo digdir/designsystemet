@@ -17,9 +17,9 @@ import { ModalContext } from './ModalContext';
 export type ModalProps = {
   /**
    * Close modal when clicking on backdrop.
-   * @default false
+   * @default undefined
    */
-  closeOnBackdropClick?: boolean;
+  onInteractOutside?: () => void;
   /**
    * Callback that is called when the modal is closed.
    * @default undefined
@@ -41,7 +41,7 @@ export type ModalProps = {
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   (
     {
-      closeOnBackdropClick = false,
+      onInteractOutside,
       onClose = undefined,
       width = '650px',
       onBeforeClose,
@@ -58,16 +58,13 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     const belowWidth = useMediaQuery(`(max-width: ${width})`);
 
     useEffect(() => {
-      if (!closeOnBackdropClick) return;
+      if (!onInteractOutside) return;
 
       const handleBackdropClick = (e: MouseEvent) => {
-        if (e.target === modalRef.current && closeOnBackdropClick) {
-          if (onBeforeClose && onBeforeClose() === false) return;
-
-          // Fix bug where if you select text spanning two divs it closes the modal
+        if (e.target === modalRef.current && onInteractOutside) {
+          // Fix bug where if you select text spanning two divs it thinks you clicked outside
           if (window.getSelection()?.toString()) return;
-
-          modalRef.current?.close();
+          onInteractOutside();
         }
       };
 
@@ -81,7 +78,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           currentModalRef.removeEventListener('click', handleBackdropClick);
         }
       };
-    }, [closeOnBackdropClick, modalRef, onBeforeClose, ref]);
+    }, [onInteractOutside, modalRef, onBeforeClose, ref]);
 
     useEffect(() => {
       if (!onClose) return;

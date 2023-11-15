@@ -48,7 +48,7 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
 };
 
 Preview.args = {
-  closeOnBackdropClick: false,
+  width: '650px',
 };
 
 export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
@@ -59,7 +59,7 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal
         ref={modalRef}
-        closeOnBackdropClick
+        onInteractOutside={() => modalRef.current?.close()}
       >
         <Modal.Header
           title='Modal med closeOnBackdropClick og en veldig lang tittel'

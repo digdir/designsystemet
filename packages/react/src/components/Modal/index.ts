@@ -17,4 +17,8 @@ Modal.Content = ModalContent;
 Modal.Footer = ModalFooter;
 Modal.Header = ModalHeader;
 
+Modal.Footer.displayName = 'Modal.Footer';
+Modal.Header.displayName = 'Modal.Header';
+Modal.Content.displayName = 'Modal.Content';
+
 export { Modal, ModalContent, ModalFooter, ModalHeader };

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import type { HTMLAttributes } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
@@ -14,62 +15,62 @@ type ModalHeaderProps = {
   title: React.ReactNode;
   subtitle?: string;
   divider?: boolean;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
-export const ModalHeader = ({
-  closeButton = true,
-  title,
-  subtitle,
-  divider = false,
-}: ModalHeaderProps) => {
-  const context = useContext(ModalContext);
+export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
+  ({ closeButton = true, title, subtitle, divider = false, ...rest }, ref) => {
+    const context = useContext(ModalContext);
 
-  return (
-    <>
-      <div
-        className={cn(
-          classes.modalHeader,
-          !closeButton && classes.noCloseButton,
-          divider && classes.hasDivider,
-        )}
-      >
-        {subtitle && (
-          <Paragraph
-            size='small'
-            variant='short'
-          >
-            {subtitle}
-          </Paragraph>
-        )}
-        <Heading
-          level={2}
-          size='xsmall'
+    return (
+      <>
+        <div
+          {...rest}
+          ref={ref}
+          className={cn(
+            classes.modalHeader,
+            !closeButton && classes.noCloseButton,
+            divider && classes.hasDivider,
+            rest.className,
+          )}
         >
-          {title}
-        </Heading>
-        {closeButton && (
-          <Button
-            name='close'
-            variant='tertiary'
-            color='second'
-            size='medium'
-            onClick={context?.closeModal}
-            autoFocus
-            icon={
-              <XMarkIcon
-                title='close modal'
-                fontSize='1.5em'
-              />
-            }
+          {subtitle && (
+            <Paragraph
+              size='small'
+              variant='short'
+            >
+              {subtitle}
+            </Paragraph>
+          )}
+          <Heading
+            level={2}
+            size='xsmall'
+          >
+            {title}
+          </Heading>
+          {closeButton && (
+            <Button
+              name='close'
+              variant='tertiary'
+              color='second'
+              size='medium'
+              onClick={context?.closeModal}
+              autoFocus
+              icon={
+                <XMarkIcon
+                  title='close modal'
+                  fontSize='1.5em'
+                />
+              }
+            />
+          )}
+        </div>
+        {divider && (
+          <Divider
+            color='default'
+            style={{ margin: 0 }}
           />
         )}
-      </div>
-      {divider && (
-        <Divider
-          color='default'
-          style={{ margin: 0 }}
-        />
-      )}
-    </>
-  );
-};
+      </>
+    );
+  },
+);
