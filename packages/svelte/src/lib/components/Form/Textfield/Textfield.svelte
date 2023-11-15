@@ -113,6 +113,7 @@
       aria-describedby="description"
       readonly={readOnly}
       {disabled}
+      {...$$restProps}
     />
     {#if suffix}
       <div

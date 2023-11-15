@@ -46,7 +46,6 @@
 </script>
 
 <button
-  {...$$restProps}
   on:click
   class={computedClass}
   {...$$restProps}
