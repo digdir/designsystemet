@@ -4,7 +4,7 @@ import cn from 'classnames';
 import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';
-import utilClasses from '../../utils/utility.module.css';
+import utilClasses from '../../utilities/utility.module.css';
 
 import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';

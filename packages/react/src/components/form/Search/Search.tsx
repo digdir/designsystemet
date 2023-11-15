@@ -4,14 +4,14 @@ import cn from 'classnames';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
-import { omit } from '../../../utils';
+import { omit } from '../../../utilities';
 import { Button } from '../../Button';
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
 import classes from './Search.module.css';
-import utilityClasses from './../../../utils/utility.module.css';
+import utilityClasses from './../../../utilities/utility.module.css';
 
 export type SearchProps = {
   /** Label */
