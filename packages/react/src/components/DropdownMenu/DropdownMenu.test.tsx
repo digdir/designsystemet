@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { DropdownProps } from './Dropdown';
+import type { DropdownMenuProps } from './DropdownMenu';
 
-import { Dropdown } from './';
+import { DropdownMenu } from '.';
 
-const Comp = (args: Partial<DropdownProps>) => {
+const Comp = (args: Partial<DropdownMenuProps>) => {
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -18,21 +18,21 @@ const Comp = (args: Partial<DropdownProps>) => {
       >
         trigger
       </button>
-      <Dropdown
+      <DropdownMenu
         open={open || args?.open}
         {...args}
         anchorEl={ref.current}
       >
-        <Dropdown.Group heading='Links'>
-          <Dropdown.Item>Item</Dropdown.Item>
+        <DropdownMenu.Group heading='Links'>
+          <DropdownMenu.Item>Item</DropdownMenu.Item>
           {args.children}
-        </Dropdown.Group>
-      </Dropdown>
+        </DropdownMenu.Group>
+      </DropdownMenu>
     </>
   );
 };
 
-const render = async (props: Partial<DropdownProps> = {}) => {
+const render = async (props: Partial<DropdownMenuProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
@@ -67,7 +67,7 @@ describe('Dropdown', () => {
 
   it('should render children', async () => {
     const { user } = await render({
-      children: <Dropdown.Item>Item 2</Dropdown.Item>,
+      children: <DropdownMenu.Item>Item 2</DropdownMenu.Item>,
     });
     const dropdownTrigger = screen.getByRole('button');
 
@@ -108,7 +108,7 @@ describe('Dropdown', () => {
 
   it('should not close if we click inisde the dropdown', async () => {
     const { user } = await render({
-      children: <Dropdown.Item>Item 2</Dropdown.Item>,
+      children: <DropdownMenu.Item>Item 2</DropdownMenu.Item>,
     });
     const dropdownTrigger = screen.getByRole('button');
 
@@ -124,12 +124,12 @@ describe('Dropdown', () => {
   it('should be able to render `Dropdown.Item` as a link', async () => {
     const { user } = await render({
       children: (
-        <Dropdown.Item
+        <DropdownMenu.Item
           as='a'
           href='#'
         >
           Item 2
-        </Dropdown.Item>
+        </DropdownMenu.Item>
       ),
     });
     const dropdownTrigger = screen.getByRole('button');

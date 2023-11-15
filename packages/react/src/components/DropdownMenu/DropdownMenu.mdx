@@ -1,9 +1,9 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 
-import * as DropdownStories from './Dropdown.stories.tsx';
+import * as DropdownMenuStories from './DropdownMenu.stories';
 
-<Meta of={DropdownStories} />
+<Meta of={DropdownMenuStories} />
 
 # Dropdown
 
@@ -20,13 +20,13 @@ const anchorEl = useRef(null);
 
 return (
     <Button ref={anchorEl} aria-haspopup='menu' aria-expanded={open}>Button</Button>
-    <Dropdown anchorEl={anchorEl.current} />
+    <DropdownMenu anchorEl={anchorEl.current} />
 )
 ```
 
 ## Icons
 
-<Canvas of={DropdownStories.Icons} />
+<Canvas of={DropdownMenuStories.Icons} />
 
 ## Referanser
 

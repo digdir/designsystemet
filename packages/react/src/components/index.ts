@@ -34,5 +34,5 @@ export * from './Tabs';
 export * from './ToggleGroup';
 export * from './Popover';
 export * from './Divider';
-export * from './Dropdown';
+export * from './DropdownMenu';
 export * from './form/Search';

@@ -1,24 +1,23 @@
-import React, { useContext, useId } from 'react';
+import React, { forwardRef, useContext, useId } from 'react';
 import cn from 'classnames';
 
 import { Paragraph } from '../../Typography';
-import { DropdownContext } from '../DropdownContext';
+import { DropdownMenuContext } from '../DropdownMenuContext';
 
-import classes from './DropdownGroup.module.css';
+import classes from './DropdownMenuGroup.module.css';
 
-export type DropdownGroupProps = {
+export type DropdownMenuGroupProps = {
   /**
    * Heading of the group
    */
   heading?: React.ReactNode;
 } & React.HTMLAttributes<HTMLUListElement>;
 
-export const DropdownGroup = ({
-  children,
-  heading,
-  ...rest
-}: DropdownGroupProps) => {
-  const { size } = useContext(DropdownContext);
+export const DropdownMenuGroup = forwardRef<
+  HTMLUListElement,
+  DropdownMenuGroupProps
+>(({ children, heading, ...rest }, ref) => {
+  const { size } = useContext(DropdownMenuContext);
   const headingId = useId();
 
   return (
@@ -26,6 +25,7 @@ export const DropdownGroup = ({
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         {...rest}
+        ref={ref}
         role='group'
         className={cn(classes.section, rest.className)}
       >
@@ -43,6 +43,6 @@ export const DropdownGroup = ({
       </ul>
     </>
   );
-};
+});
 
-DropdownGroup.displayName = 'Dropdown.Group';
+DropdownMenuGroup.displayName = 'Dropdown.Group';

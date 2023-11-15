@@ -16,12 +16,12 @@ import {
 
 import { Box } from '../Box';
 
-import classes from './Dropdown.module.css';
-import { DropdownContext } from './DropdownContext';
+import classes from './DropdownMenu.module.css';
+import { DropdownMenuContext } from './DropdownMenuContext';
 
 const GAP = 4;
 
-export type DropdownProps = {
+export type DropdownMenuProps = {
   /** Element the popover anchors to */
   anchorEl: Element | null;
   /** Whether the dropdown is open or not.
@@ -40,7 +40,7 @@ export type DropdownProps = {
   size?: 'small' | 'medium';
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
+export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   (
     {
       anchorEl,
@@ -94,7 +94,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
 
     return (
-      <DropdownContext.Provider
+      <DropdownMenuContext.Provider
         value={{
           size,
         }}
@@ -118,7 +118,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             {children}
           </Box>
         )}
-      </DropdownContext.Provider>
+      </DropdownMenuContext.Provider>
     );
   },
 );

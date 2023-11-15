@@ -2,9 +2,9 @@ import type { StoryFn, Meta } from '@storybook/react';
 import React, { useEffect, useRef } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
 
-import { Button } from '../..';
+import { Button, Divider } from '../..';
 
-import { Dropdown } from '.';
+import { DropdownMenu } from '.';
 
 const decorators = [
   (Story: StoryFn) => (
@@ -15,12 +15,12 @@ const decorators = [
 ];
 
 export default {
-  title: 'Felles/Dropdown',
-  component: Dropdown,
+  title: 'Felles/DropdownMenu',
+  component: DropdownMenu,
   decorators,
 } as Meta;
 
-export const Preview: StoryFn<typeof Dropdown> = (args) => {
+export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -38,35 +38,35 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
       >
         Dropdown
       </Button>
-      <Dropdown
+      <DropdownMenu
         {...args}
         anchorEl={buttonRef.current}
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Dropdown.Group heading='Links'>
-          <Dropdown.Item
+        <DropdownMenu.Group heading='Links'>
+          <DropdownMenu.Item
             as='a'
             href='https://github.com/digdir/designsystem'
             target='_blank'
           >
             Github
-          </Dropdown.Item>
-          <Dropdown.Item
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
             as='a'
             href='https://designsystemet.no'
             target='_blank'
           >
             Designsystemet.no
-          </Dropdown.Item>
-        </Dropdown.Group>
-        <Dropdown.Divider />
-        <Dropdown.Group>
-          <Dropdown.Item>Button 1</Dropdown.Item>
-          <Dropdown.Item>Button 2</Dropdown.Item>
-          <Dropdown.Item disabled>Disabled</Dropdown.Item>
-        </Dropdown.Group>
-      </Dropdown>
+          </DropdownMenu.Item>
+        </DropdownMenu.Group>
+        <Divider color='subtle' />
+        <DropdownMenu.Group>
+          <DropdownMenu.Item>Button 1</DropdownMenu.Item>
+          <DropdownMenu.Item>Button 2</DropdownMenu.Item>
+          <DropdownMenu.Item disabled>Disabled</DropdownMenu.Item>
+        </DropdownMenu.Group>
+      </DropdownMenu>
     </>
   );
 };
@@ -77,7 +77,7 @@ Preview.args = {
   open: false,
 };
 
-export const Icons: StoryFn<typeof Dropdown> = (args) => {
+export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -95,31 +95,31 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
       >
         Dropdown
       </Button>
-      <Dropdown
+      <DropdownMenu
         {...args}
         anchorEl={buttonRef.current}
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Dropdown.Group>
-          <Dropdown.Item
+        <DropdownMenu.Group>
+          <DropdownMenu.Item
             as='a'
             href='https://github.com/digdir/designsystem'
             target='_blank'
             icon={<LinkIcon />}
           >
             Github
-          </Dropdown.Item>
-          <Dropdown.Item
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
             as='a'
             href='https://designsystemet.no'
             target='_blank'
             icon={<LinkIcon />}
           >
             Designsystemet.no
-          </Dropdown.Item>
-        </Dropdown.Group>
-      </Dropdown>
+          </DropdownMenu.Item>
+        </DropdownMenu.Group>
+      </DropdownMenu>
     </>
   );
 };

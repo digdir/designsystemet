@@ -4,17 +4,17 @@ import cn from 'classnames';
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
 import type { OverridableComponent } from '../../../types/OverridableComponent';
-import { DropdownContext } from '../DropdownContext';
+import { DropdownMenuContext } from '../DropdownMenuContext';
 
-import classes from './DropdownItem.module.css';
+import classes from './DropdownMenuItem.module.css';
 
-export type DropdownItemProps = React.HTMLAttributes<HTMLLIElement>;
+export type DropdownMenuItemProps = React.HTMLAttributes<HTMLLIElement>;
 
-export const DropdownItem: OverridableComponent<
+export const DropdownMenuItem: OverridableComponent<
   Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>,
   HTMLButtonElement
 > = forwardRef(({ children, ...rest }, ref) => {
-  const menu = useContext(DropdownContext);
+  const menu = useContext(DropdownMenuContext);
 
   return (
     <li>
@@ -32,5 +32,3 @@ export const DropdownItem: OverridableComponent<
     </li>
   );
 });
-
-/* DropdownItem.displayName = 'Dropdown.Item'; */
