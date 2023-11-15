@@ -60,7 +60,7 @@ export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
-        <Divider color='subtle' />
+        <Divider />
         <DropdownMenu.Group>
           <DropdownMenu.Item>Button 1</DropdownMenu.Item>
           <DropdownMenu.Item>Button 2</DropdownMenu.Item>

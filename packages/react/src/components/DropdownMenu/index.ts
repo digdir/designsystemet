@@ -13,6 +13,7 @@ DropdownMenu.Group = DropdownMenuGroup;
 DropdownMenu.Item = DropdownMenuItem;
 
 DropdownMenu.Group.displayName = 'DropdownMenu.Group';
+/* @ts-expect-error TS2339 - FIX needs to be added in OverridableComponent */
 DropdownMenu.Item.displayName = 'DropdownMenu.Item';
 
 export { DropdownMenu, DropdownMenuGroup, DropdownMenuItem };

@@ -17,3 +17,7 @@
   min-width: 280px;
   padding: var(--fds-spacing-4);
 }
+
+.dropdown > hr {
+  border-color: var(--fds-semantic-border-divider-subtle) !important;
+}
