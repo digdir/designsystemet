@@ -6,6 +6,7 @@ import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
 
 import { Modal } from '.';
+import { Divider } from '../Divider';
 
 const decorators = [
   (Story: StoryFn) => (
@@ -93,6 +94,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
         width='450px'
       >
         <Modal.Header title='Modal med skjema'></Modal.Header>
+        <Divider />
         <Modal.Content>
           <Textfield
             label='Navn'
@@ -102,6 +104,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
             onChange={(e) => setInput(e.target.value)}
           />
         </Modal.Content>
+        <Divider />
         <Modal.Footer>
           <Button
             onClick={() => {
