@@ -23,6 +23,8 @@ All types of contributions are encouraged and valued. See the [Table of Contents
   - [How to write and structure your code](#how-to-write-and-structure-your-code)
 - [Publishing NPM packages](#publishing-npm-packages)
 
+---
+
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
@@ -30,11 +32,15 @@ This project and everyone participating in it is governed by the
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to <designsystem@digdir.no>.
 
+---
+
 ## Share your feedback and report issues
 
 You can report bugs and suggest new features by going to our [Github Issue Templates](https://github.com/digdir/designsystem/issues/new/choose).
 
 If you have any questions you can contact us at <designsystem@digdir.no> or in our [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) channel.
+
+---
 
 ## I Want To Contribute
 
@@ -106,6 +112,8 @@ When creating a pull request for the design system, there are a few things to ke
   - We run linting and formatting checks on all the code.
 - When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from the design system team will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
 
+---
+
 ## Styleguides
 
 ### Commit Messages
@@ -149,8 +157,6 @@ It is crucial to understand the distinctions between the two sections mentioned 
 - `revert:` Reverts a previous commit
 - `perf:` A code change that improves performance
 
----
-
 ### How to write and structure your code
 
 To ensure a consistent and enjoyable coding experience for everyone, we have established guidelines for writing our code.
@@ -171,6 +177,8 @@ To learn more about what tokens are available visit our [documentation page](htt
 In this project, we employ [Prettier](https://prettier.io/) for code formatting. It is advisable to configure your code editor to automatically format files upon saving. This practice will prove beneficial when merging your changes into the main branch. It's worth noting that we enforce rigorous code checks in pull requests, emphasizing the importance of consistent code formatting.
 
 TypeScript and CSS files have been configured with linting, which means that the project will scan these files for potential problems or issues. Linting helps maintain code quality by detecting errors, enforcing coding conventions, and promoting best practices. You have to fix all errors and warnings before the code can be merged into the main branch.
+
+We use [Editorconfig](https://editorconfig.org/) for defining rules and formatting for the IDE.
 
 #### Use of TypeScript files
 
