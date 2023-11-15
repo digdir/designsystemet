@@ -1,4 +1,4 @@
-import type { DialogHTMLAttributes, ReactNode } from 'react';
+import type { DialogHTMLAttributes } from 'react';
 import React, { forwardRef, useEffect, useRef } from 'react';
 import cn from 'classnames';
 import {
@@ -12,7 +12,7 @@ import { useMediaQuery } from '../../hooks';
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
-import { ModalHeader } from './ModalHeader';
+import { ModalContext } from './ModalContext';
 
 export type ModalProps = {
   /**
@@ -25,24 +25,6 @@ export type ModalProps = {
    * @default undefined
    */
   onClose?: () => void;
-  /**
-   * Header title.
-   */
-  headerTitle: ReactNode;
-  /**
-   * Header subtitle.
-   */
-  headerSubtitle?: string;
-  /**
-   * Show close button in header.
-   * @default true
-   */
-  closeButton?: boolean;
-  /**
-   * Show divider between header and content.
-   * @default false
-   */
-  headerDivider?: boolean;
   /**
    * The width of the modal.
    * Will go to full width below the specified width.
@@ -59,12 +41,8 @@ export type ModalProps = {
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   (
     {
-      headerTitle,
-      headerSubtitle,
-      headerDivider = false,
       closeOnBackdropClick = false,
       onClose = undefined,
-      closeButton = true,
       width = '650px',
       onBeforeClose,
       children,
@@ -135,41 +113,35 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
 
     return (
-      <dialog
-        ref={mergedRefs}
-        {...props}
-        className={cn(
-          classes.modal,
-          headerDivider && classes.divider,
-          props.className,
-        )}
-        style={{
-          minWidth: belowWidth ? '100%' : width,
-          maxWidth: belowWidth
-            ? '100%'
-            : `min(${width}, calc(100% - 6px - 2em))`,
-          ...props.style,
+      <ModalContext.Provider
+        value={{
+          closeModal: () => {
+            if (onBeforeClose && onBeforeClose() === false) return;
+
+            modalRef.current?.close();
+          },
         }}
-        onCancel={onCancel}
       >
-        {open && (
-          <FloatingFocusManager context={context}>
-            <>
-              <ModalHeader
-                divider={headerDivider}
-                closeButton={closeButton}
-                headerTitle={headerTitle}
-                headerSubtitle={headerSubtitle}
-                onClose={() => {
-                  if (onBeforeClose && onBeforeClose() === false) return;
-                  modalRef.current?.close();
-                }}
-              />
-              {children}
-            </>
-          </FloatingFocusManager>
-        )}
-      </dialog>
+        <dialog
+          ref={mergedRefs}
+          {...props}
+          className={cn(classes.modal, props.className)}
+          style={{
+            minWidth: belowWidth ? '100%' : width,
+            maxWidth: belowWidth
+              ? '100%'
+              : `min(${width}, calc(100% - 6px - 2em))`,
+            ...props.style,
+          }}
+          onCancel={onCancel}
+        >
+          {open && (
+            <FloatingFocusManager context={context}>
+              <>{children}</>
+            </FloatingFocusManager>
+          )}
+        </dialog>
+      </ModalContext.Provider>
     );
   },
 );

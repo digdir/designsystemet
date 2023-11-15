@@ -31,6 +31,10 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
         {...args}
         ref={modalRef}
       >
+        <Modal.Header
+          headerTitle='Modal header'
+          headerSubtitle='Modal subtittel'
+        ></Modal.Header>
         <Modal.Content>
           <Paragraph>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
@@ -45,10 +49,6 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
 
 Preview.args = {
   closeOnBackdropClick: false,
-  headerTitle: 'Modal tittel',
-  headerSubtitle: 'Modal undertittel',
-  headerDivider: false,
-  closeButton: true,
 };
 
 export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
@@ -60,8 +60,11 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
       <Modal
         ref={modalRef}
         closeOnBackdropClick
-        headerTitle='Modal med closeOnBackdropClick og en veldig lang tittel'
       >
+        <Modal.Header
+          headerTitle='Modal med closeOnBackdropClick og en veldig lang tittel'
+          divider={true}
+        ></Modal.Header>
         <Modal.Content>
           <Paragraph>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
@@ -86,9 +89,9 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
       <Modal
         ref={modalRef}
         onClose={() => setInput('')}
-        headerTitle='Modal med skjema'
         width='450px'
       >
+        <Modal.Header headerTitle='Modal med skjema'></Modal.Header>
         <Modal.Content>
           <Textfield
             label='Navn'
