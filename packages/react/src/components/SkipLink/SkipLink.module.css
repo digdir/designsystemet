@@ -1,0 +1,29 @@
+.skiplink {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1578em;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.1429;
+  display: block;
+  padding: 10px 15px;
+}
+
+.skiplink:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: inherit;
+}
