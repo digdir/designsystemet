@@ -8,7 +8,7 @@ export type DividerProps = {
    * The color of the divider.
    * @default 'default'
    */
-  color: 'default' | 'strong' | 'subtle';
+  color?: 'default' | 'strong' | 'subtle';
 } & React.HTMLAttributes<HTMLHRElement>;
 
 export const Divider = ({ color = 'default', ...rest }: DividerProps) => {

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import { areItemsUnique } from '../../../utils';
+import { areItemsUnique } from '../../../utilities';
 
 import classes from './ToggleButtonGroup.module.css';
 

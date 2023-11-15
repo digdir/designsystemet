@@ -8,7 +8,7 @@ import React, { forwardRef, useId } from 'react';
 import cn from 'classnames';
 
 import { HelpText } from '../../HelpText';
-import utilityClasses from '../../../utils/utility.module.css';
+import utilityClasses from '../../../utilities/utility.module.css';
 
 import classes from './CheckboxRadioTemplate.module.css';
 

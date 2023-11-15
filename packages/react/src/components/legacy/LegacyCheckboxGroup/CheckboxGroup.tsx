@@ -5,7 +5,11 @@ import cn from 'classnames';
 import { LegacyCheckbox } from '../LegacyCheckbox';
 import type { LegacyFieldSetProps } from '../LegacyFieldSet';
 import { LegacyFieldSet } from '../LegacyFieldSet';
-import { areItemsUnique, arraysEqual, objectValuesEqual } from '../../../utils';
+import {
+  areItemsUnique,
+  arraysEqual,
+  objectValuesEqual,
+} from '../../../utilities';
 import { usePrevious, useUpdate } from '../../../hooks';
 import type { LegacyCheckboxProps } from '../LegacyCheckbox';
 

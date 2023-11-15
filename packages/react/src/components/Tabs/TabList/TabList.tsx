@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { RovingTabindexRoot } from '../../../utility-components/RovingTabIndex';
+import { RovingTabindexRoot } from '../../../utilities/RovingTabIndex';
 
 import classes from './TabList.module.css';
 

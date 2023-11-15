@@ -1,4 +1,4 @@
-import { containsAllCharsInOrder } from '../../../utils';
+import { containsAllCharsInOrder } from '../../../utilities';
 import type { ComboboxFilter } from '../types/ComboboxFilter';
 
 export const defaultFilter: ComboboxFilter = (inputValue, options) =>
