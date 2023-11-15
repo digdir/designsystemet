@@ -18,4 +18,4 @@ export type OverridableComponent<
     } & ComponentProps &
       Omit<ComponentPropsWithRef<As>, keyof ComponentProps>,
   ): ReturnType<FC>;
-};
+} & { displayName?: string };
