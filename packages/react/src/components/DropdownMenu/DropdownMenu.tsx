@@ -25,19 +25,19 @@ export type DropdownMenuProps = {
   /** Element the popover anchors to */
   anchorEl: Element | null;
   /** Whether the dropdown is open or not.
-   *
+   *  @default false
    */
   open?: boolean;
   /** Callback function when dropdown closes */
   onClose?: () => void;
   /** The placement of the dropdown
-   * @default 'bottom-end'
+   * @default bottom-end
    */
   placement?: Placement;
   /** The size of the dropdown
-   * @default 'medium'
+   * @default medium
    **/
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
