@@ -107,40 +107,4 @@ describe('Modal', () => {
     await render({ children });
     expect(screen.getByText(children)).toBeInTheDocument();
   });
-
-  it('should render the header divider', async () => {
-    await render({
-      children: (
-        <>
-          <Modal.Header
-            divider={true}
-            title='title'
-          ></Modal.Header>
-        </>
-      ),
-    });
-    expect(document.querySelector(`.divider`)).toBeInTheDocument();
-  });
-
-  it('should not render the header divider', async () => {
-    await render({
-      children: (
-        <>
-          <Modal.Header title='title'></Modal.Header>
-        </>
-      ),
-    });
-    expect(document.querySelector(`.divider`)).toBeNull();
-  });
-
-  it('should render the footer divider', async () => {
-    await render({
-      children: (
-        <>
-          <Modal.Footer divider={true}></Modal.Footer>
-        </>
-      ),
-    });
-    expect(document.querySelector(`.divider`)).toBeInTheDocument();
-  });
 });

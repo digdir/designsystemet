@@ -4,9 +4,9 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
+import { Divider } from '../Divider';
 
 import { Modal } from '.';
-import { Divider } from '../Divider';
 
 const decorators = [
   (Story: StoryFn) => (
@@ -65,17 +65,16 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
         <Modal.Header
           title='Modal med closeOnBackdropClick og en veldig lang tittel'
           subtitle='Her er det også divider'
-          divider={true}
         ></Modal.Header>
+        <Divider />
         <Modal.Content>
           <Paragraph>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
             doloremque obcaecati assumenda odio ducimus sunt et.
           </Paragraph>
         </Modal.Content>
-        <Modal.Footer divider={true}>
-          Du kan også ha divider på footer
-        </Modal.Footer>
+        <Divider />
+        <Modal.Footer>Du kan også ha divider på footer</Modal.Footer>
       </Modal>
     </>
   );
@@ -94,7 +93,6 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
         width='450px'
       >
         <Modal.Header title='Modal med skjema'></Modal.Header>
-        <Divider />
         <Modal.Content>
           <Textfield
             label='Navn'
@@ -104,7 +102,6 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
             onChange={(e) => setInput(e.target.value)}
           />
         </Modal.Content>
-        <Divider />
         <Modal.Footer>
           <Button
             onClick={() => {
