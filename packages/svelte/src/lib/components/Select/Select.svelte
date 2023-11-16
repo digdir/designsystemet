@@ -289,7 +289,7 @@
 
   .select-label {
     color: var(--semantic-text-neutral-default, #1e2b3c);
-    font-family: Inter;
+    font-family: inherit;
     font-size: 1rem;
     font-weight: 500;
     line-height: 130%; /* 20.15px */

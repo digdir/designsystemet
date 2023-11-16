@@ -49,6 +49,7 @@
   }
 
   button {
+    font-family: inherit;
     display: flex;
     padding: var(--spacing-3, 0.84375rem) var(--spacing-5, 1.40625rem);
     justify-content: center;
