@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import { ErrorMessage, HelpText } from '../..';
+import type { HelpTextProps } from '../../HelpText/HelpText';
 
 import classes from './FieldSet.module.css';
 
@@ -34,6 +35,13 @@ export type LegacyFieldSetProps = {
   /** The size of the field set. */
   size?: 'xsmall' | 'small';
 } & FieldsetHTMLAttributes<HTMLFieldSetElement>;
+
+const SIZE_MAP: {
+  [key in NonNullable<LegacyFieldSetProps['size']>]: HelpTextProps['size'];
+} = {
+  xsmall: 'small',
+  small: 'medium',
+};
 
 /**
  *
@@ -69,7 +77,7 @@ const LegacyFieldSet = forwardRef<HTMLFieldSetElement, LegacyFieldSetProps>(
             <span className={classes.legendContent}>{legend}</span>
             {helpText && (
               <HelpText
-                size={size}
+                size={SIZE_MAP[size]}
                 title={helpTextTitle}
               >
                 {helpText}
