@@ -113,7 +113,11 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
         }}
       >
         {open && (
-          <FloatingFocusManager context={context}>
+          <FloatingFocusManager
+            context={context}
+            guards={false}
+            modal={false}
+          >
             <Box
               {...rest}
               shadow='medium'

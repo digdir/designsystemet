@@ -166,4 +166,13 @@ describe('Dropdown', () => {
 
     expect(screen.getByRole('group')).toHaveAttribute('aria-labelledby');
   });
+
+  it('should focus the first item when we open the dropdown', async () => {
+    const { user } = await render();
+    const dropdownTrigger = screen.getByRole('button');
+
+    await user.click(dropdownTrigger);
+
+    expect(document.activeElement).toBe(screen.getByText('Item'));
+  });
 });
