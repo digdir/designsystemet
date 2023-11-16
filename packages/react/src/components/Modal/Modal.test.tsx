@@ -53,7 +53,7 @@ describe('Modal', () => {
     await render({
       children: (
         <>
-          <Modal.Header title={HEADER_TITLE}></Modal.Header>
+          <Modal.Header>{HEADER_TITLE}</Modal.Header>
         </>
       ),
     });
@@ -64,10 +64,7 @@ describe('Modal', () => {
     await render({
       children: (
         <>
-          <Modal.Header
-            closeButton={false}
-            title={HEADER_TITLE}
-          ></Modal.Header>
+          <Modal.Header closeButton={false}>{HEADER_TITLE}</Modal.Header>
         </>
       ),
     });
@@ -80,7 +77,7 @@ describe('Modal', () => {
     await render({
       children: (
         <>
-          <Modal.Header title={HEADER_TITLE}></Modal.Header>
+          <Modal.Header>{HEADER_TITLE}</Modal.Header>
         </>
       ),
     });
@@ -92,10 +89,7 @@ describe('Modal', () => {
     await render({
       children: (
         <>
-          <Modal.Header
-            title={HEADER_TITLE}
-            subtitle={headerSubtitle}
-          ></Modal.Header>
+          <Modal.Header subtitle={headerSubtitle}>{HEADER_TITLE}</Modal.Header>
         </>
       ),
     });
