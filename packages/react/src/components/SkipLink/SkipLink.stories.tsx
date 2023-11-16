@@ -7,12 +7,6 @@ type Story = StoryObj<typeof SkipLink>;
 export default {
   title: 'Felles/SkipLink',
   component: SkipLink,
-  parameters: {
-    status: {
-      type: 'beta',
-      url: 'http://www.url.com/status',
-    },
-  },
 } as Meta;
 
 export const Preview: Story = () => (
