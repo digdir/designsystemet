@@ -1,9 +1,10 @@
 import { Modal as ModalRoot } from './Modal';
-import { ModalContent } from './ModalContent';
-import { ModalFooter } from './ModalFooter';
-import { ModalHeader } from './ModalHeader';
+import { ModalContent } from './ModalContent/ModaContent';
+import { ModalFooter } from './ModalFooter/ModalFooter';
+import { ModalHeader } from './ModalHeader/ModalHeader';
 
 export type { ModalProps } from './Modal';
+export type { ModalHeaderProps } from './ModalHeader/ModalHeader';
 
 type ModalComponent = typeof ModalRoot & {
   Content: typeof ModalContent;

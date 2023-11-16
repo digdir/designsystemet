@@ -1,5 +1,5 @@
 import type { DialogHTMLAttributes } from 'react';
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { createContext, forwardRef, useEffect, useRef } from 'react';
 import cn from 'classnames';
 import {
   FloatingFocusManager,
@@ -12,7 +12,10 @@ import { useMediaQuery } from '../../hooks';
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
-import { ModalContext } from './ModalContext';
+
+export type ModalContextProps = {
+  closeModal?: () => void;
+};
 
 export type ModalProps = {
   /**
@@ -38,11 +41,13 @@ export type ModalProps = {
   onBeforeClose?: () => boolean | void;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
+export const ModalContext = createContext<ModalContextProps | null>(null);
+
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
   (
     {
       onInteractOutside,
-      onClose = undefined,
+      onClose,
       width = '650px',
       onBeforeClose,
       children,

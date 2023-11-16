@@ -5,18 +5,21 @@ import { XMarkIcon } from '@navikt/aksel-icons';
 
 import { Heading, Paragraph } from '../../Typography';
 import { Button } from '../../Button';
-import { ModalContext } from '../ModalContext';
+import { ModalContext } from '../Modal';
 
 import classes from './ModalHeader.module.css';
 
-type ModalHeaderProps = {
+export type ModalHeaderProps = {
+  /**
+   * Display close button.
+   * @default true
+   */
   closeButton?: boolean;
-  title: React.ReactNode;
   subtitle?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-  ({ closeButton = true, title, subtitle, ...rest }, ref) => {
+  ({ closeButton = true, children, subtitle, ...rest }, ref) => {
     const context = useContext(ModalContext);
 
     return (
@@ -41,7 +44,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
           level={2}
           size='xsmall'
         >
-          {title}
+          {children}
         </Heading>
         {closeButton && (
           <Button

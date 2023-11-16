@@ -18,7 +18,15 @@ Legg merke til at modalen har focus trap, som betyr at brukeren ikke kan tabbe t
 
 ## Close on backdrop click
 
+We use the `onInteractOutside` prop to close the modal when the user clicks outside of it.
+
 <Canvas of={ModalStories.CloseOnBackdropClick} />
+
+## Med `Divider`
+
+Du kan legge divider mellom, for å skille innhold fra hverandre. `Divider` får ekstra margin på topp og bunn.
+
+<Canvas of={ModalStories.WithDivider} />
 
 ## Form
 
@@ -29,7 +37,3 @@ Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
 ### `Modal.Header`
 
 <ArgTypes of={Modal.Header} />
-
-### `Modal.Footer`
-
-<ArgTypes of={Modal.Footer} />
