@@ -20,11 +20,17 @@ const PARAGRAPH_SIZE_MAP: {
 };
 
 export type TagProps = {
-  /** Color of the tag */
+  /** Color of the tag
+   * @default neutral
+   */
   color?: BrandColor | VariantColor;
-  /** Size of the tag */
+  /** Size of the tag
+   * @default medium
+   */
   size?: Size;
-  /** Variant of the tag */
+  /** Variant of the tag
+   * @default primary
+   */
   variant?: 'primary' | 'secondary';
 } & HTMLAttributes<HTMLSpanElement>;
 
