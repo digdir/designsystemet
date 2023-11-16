@@ -14,12 +14,13 @@ export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
 export type ChipGroupProps = {
   /**
    * Changes Chip size and gap between chips.
+   * @default small
    */
-  size?: 'xsmall' | 'small';
+  size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLUListElement>;
 
 export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
-  ({ children, size = 'xsmall', ...rest }: ChipGroupProps, ref) => (
+  ({ children, size = 'small', ...rest }: ChipGroupProps, ref) => (
     <ul
       {...rest}
       ref={ref}

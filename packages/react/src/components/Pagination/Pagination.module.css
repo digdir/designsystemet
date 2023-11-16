@@ -18,6 +18,10 @@
   --fdsc-pagination-chevron-margin: var(--fds-spacing-6);
 }
 
+.pagination.large {
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-6);
+}
+
 .pagination li:first-child {
   margin-right: var(--fdsc-pagination-chevron-margin);
 }
@@ -41,8 +45,9 @@
   --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
 }
 
-.listitem.compact {
-  --fsdc-pagination-listitem-margin: var(--fds-spacing-1);
+.listitem.large {
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-4);
+  --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
 }
 
 .ellipsis {

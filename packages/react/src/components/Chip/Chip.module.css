@@ -53,13 +53,18 @@
   padding: var(--fds-spacing-1) 0;
 }
 
-.xsmall {
+.small {
   --fdsc-chip-height: var(--fds-sizing-6);
   --fdsc-chip-padding: var(--fds-spacing-2);
 }
 
-.small {
+.medium {
   --fdsc-chip-height: var(--fds-sizing-7);
+  --fdsc-chip-padding: var(--fds-spacing-3);
+}
+
+.large {
+  --fdsc-chip-height: var(--fds-sizing-8);
   --fdsc-chip-padding: var(--fds-spacing-3);
 }
 
