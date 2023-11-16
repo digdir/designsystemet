@@ -5,7 +5,6 @@
   border: none;
   border-radius: var(--fds-border_radius-medium);
   box-shadow: var(--fds-shadow-xlarge);
-  position: relative;
 }
 
 .modal::backdrop {
