@@ -7,8 +7,6 @@ import {
   useMergeRefs,
 } from '@floating-ui/react';
 
-import { useMediaQuery } from '../../hooks';
-
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
@@ -33,7 +31,7 @@ export type ModalProps = {
    * Will go to full width below the specified width.
    * @default '650px'
    */
-  width?: string;
+  /* width?: string; */
   /**
    * Called before the modal is closed when using the close button, `closeOnBackdropClick` or `ESCAPE`.
    * If the function returns `false` the modal will not close.
@@ -48,7 +46,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     {
       onInteractOutside,
       onClose,
-      width = '650px',
+      /* width = '650px', */
       onBeforeClose,
       children,
       ...props
@@ -60,7 +58,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     const { context } = useFloating();
     useScrollLock(modalRef, classes.lockScroll);
     const open = useModalState(modalRef);
-    const belowWidth = useMediaQuery(`(max-width: ${width})`);
+    /* const belowWidth = useMediaQuery(`(max-width: ${width})`); */
 
     useEffect(() => {
       const currentModalRef = modalRef.current;
@@ -125,10 +123,10 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           {...props}
           className={cn(classes.modal, props.className)}
           style={{
-            minWidth: belowWidth ? '100%' : width,
+            /* minWidth: belowWidth ? '100%' : width,
             maxWidth: belowWidth
               ? '100%'
-              : `min(${width}, calc(100% - 6px - 2em))`,
+              : `min(${width}, calc(100% - 6px - 2em))`, */
             ...props.style,
           }}
           onCancel={onCancel}

@@ -22,6 +22,14 @@
   border-color: var(--fds-semantic-border-divider-subtle);
 }
 
+@media (max-width: 650px) {
+  .modal {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .modal[open] {
     animation: none;
