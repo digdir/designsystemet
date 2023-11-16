@@ -55,7 +55,7 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
         ref={modalRef}
         onInteractOutside={() => modalRef.current?.close()}
       >
-        <Modal.Header subtitle='Her er det også divider'>
+        <Modal.Header>
           Modal med closeOnBackdropClick og en veldig lang tittel
         </Modal.Header>
         <Modal.Content>
@@ -64,7 +64,7 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
             doloremque obcaecati assumenda odio ducimus sunt et.
           </Paragraph>
         </Modal.Content>
-        <Modal.Footer>Du kan også ha divider på footer</Modal.Footer>
+        <Modal.Footer>Footer</Modal.Footer>
       </Modal>
     </>
   );
