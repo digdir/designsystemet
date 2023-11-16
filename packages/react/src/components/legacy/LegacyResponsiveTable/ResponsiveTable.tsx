@@ -1,19 +1,20 @@
 import React from 'react';
 import * as tokens from '@altinn/figma-design-tokens';
 
-import { useMediaQuery } from '../../hooks';
-import { LegacyRadioButton } from '../legacy/LegacyRadioButton';
+import { useMediaQuery } from '../../../hooks';
+import { LegacyRadioButton } from '../LegacyRadioButton';
+import type { SortProps, SortDirection } from '../../Table/utils';
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableFooter,
+} from '../../Table';
+import classes from '../../Table/TableCell.module.css';
 
-import type { SortProps, SortDirection } from './utils';
-import { Table } from './Table';
-import { TableHeader } from './TableHeader';
-import { TableRow } from './TableRow';
-import { TableCell } from './TableCell';
-import { TableBody } from './TableBody';
-import { TableFooter } from './TableFooter';
-import classes from './TableCell.module.css';
-
-export interface ResponsiveTableConfig<T> {
+export interface LegacyResponsiveTableConfig<T> {
   rows: T[];
   headers: { [Col in keyof T]: string | JSX.Element };
   showColumnsMobile?: (keyof T)[];
@@ -47,11 +48,13 @@ export interface ResponsiveTableConfig<T> {
   footer?: JSX.Element;
 }
 
-export interface ResponsiveTableProps<T> {
-  config: ResponsiveTableConfig<T>;
+export interface LegacyResponsiveTableProps<T> {
+  config: LegacyResponsiveTableConfig<T>;
 }
 
-export function ResponsiveTable<T>({ config }: ResponsiveTableProps<T>) {
+export function LegacyResponsiveTable<T>({
+  config,
+}: LegacyResponsiveTableProps<T>) {
   const isMobile = useMediaQuery(`(max-width: ${tokens.BreakpointsSm})`);
 
   return isMobile ? (
@@ -61,7 +64,7 @@ export function ResponsiveTable<T>({ config }: ResponsiveTableProps<T>) {
   );
 }
 
-function MobileTable<T>({ config }: ResponsiveTableProps<T>) {
+function MobileTable<T>({ config }: LegacyResponsiveTableProps<T>) {
   const { rows, headers, showColumnsMobile, renderCell, rowSelection, footer } =
     config;
 
@@ -137,7 +140,7 @@ function MobileTable<T>({ config }: ResponsiveTableProps<T>) {
   );
 }
 
-function LaptopTable<T>({ config }: ResponsiveTableProps<T>) {
+function LaptopTable<T>({ config }: LegacyResponsiveTableProps<T>) {
   const { rows, headers, renderCell, columnSort, rowSelection, footer } =
     config;
 
