@@ -6,9 +6,21 @@ import * as SkipLinkStories from './SkipLink.stories';
 
 # SkipLink
 
-The skip link component is designed to assist users with disabilities, especially keyboard and screen reader users, in bypassing repetitive content and quickly accessing important sections or features of a web page. It enhances the accessibility and usability of a website.
+Hoppelenke-komponenten er designet for å hjelpe de som bruker tastatur og skjermleser, med å hoppe over gjentakende innhold og raskt få tilgang til viktige seksjoner eller funksjoner på en nettside.
+Den forbedrer tilgjengeligheten og brukervennligheten til et nettsted.
 
 <Primary />
 <Controls />
 
 ## Bruk
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { SkipLink } from '@digdir/design-system-react';
+
+<SkipLink href='#main-content'>Hopp til hovedinnhold</SkipLink>
+
+<main id='main-content' tabIndex={-1} >
+  Region som kan motta fokus fra skiplink.
+</main>
+```
