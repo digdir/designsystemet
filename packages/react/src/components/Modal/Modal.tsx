@@ -63,17 +63,15 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     const belowWidth = useMediaQuery(`(max-width: ${width})`);
 
     useEffect(() => {
-      if (!onInteractOutside) return;
+      const currentModalRef = modalRef.current;
 
       const handleBackdropClick = (e: MouseEvent) => {
-        if (e.target === modalRef.current && onInteractOutside) {
+        if (e.target === currentModalRef && onInteractOutside) {
           // Fix bug where if you select text spanning two divs it thinks you clicked outside
           if (window.getSelection()?.toString()) return;
-          onInteractOutside();
+          onInteractOutside?.();
         }
       };
-
-      const currentModalRef = modalRef.current;
 
       if (currentModalRef)
         currentModalRef.addEventListener('click', handleBackdropClick);
@@ -86,13 +84,11 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     }, [onInteractOutside, modalRef, onBeforeClose, ref]);
 
     useEffect(() => {
-      if (!onClose) return;
+      const currentModalRef = modalRef.current;
 
       const handleModalClose = () => {
-        onClose();
+        onClose?.();
       };
-
-      const currentModalRef = modalRef.current;
 
       if (currentModalRef)
         currentModalRef.addEventListener('close', handleModalClose);
