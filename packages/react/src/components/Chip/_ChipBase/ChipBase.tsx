@@ -11,9 +11,8 @@ import classes from '../Chip.module.css';
 export type ChipBaseProps = {
   /**
    * Changes padding and font-sizes.
-   * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small';
   /**
    * Toggles `aria-pressed` and visual-changes
    * */
@@ -24,7 +23,7 @@ export const ChipBase: OverridableComponent<ChipBaseProps, HTMLLabelElement> =
   forwardRef(
     (
       {
-        size = 'medium',
+        size = 'small',
         children,
         selected,
         className,

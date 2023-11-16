@@ -9,14 +9,12 @@ import classes from './Tag.module.css';
 
 type BrandColor = 'first' | 'second' | 'third';
 type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
-type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
+type Size = Exclude<ParagraphProps['size'], 'large'>;
 
 export type TagProps = {
   /** Color of the tag */
   color?: BrandColor | VariantColor;
-  /** Size of the tag
-   * @default small
-   */
+  /** Size of the tag */
   size?: Size;
   /** Variant of the tag */
   variant?: 'primary' | 'secondary';
@@ -27,7 +25,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     {
       children,
       color = 'neutral',
-      size = 'small',
+      size = 'medium',
       variant = 'primary',
       className,
       ...restHTMLProps
