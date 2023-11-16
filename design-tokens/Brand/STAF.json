@@ -47,7 +47,7 @@
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.5",
+              "value": "0.55",
               "space": "lch"
             }
           }
@@ -112,7 +112,7 @@
     },
     "alt2": {
       "100": {
-        "value": "{brand.alt2.900}",
+        "value": "{brand.alt2.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -122,37 +122,23 @@
               "space": "lch"
             }
           }
-        },
-        "description": "AAA 13.3 on grey 800\nAA 6.7 as bkdg for interaction blue"
+        }
       },
       "200": {
-        "value": "$brand.alt2.900",
+        "value": "$brand.alt2.500",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
             "modify": {
               "type": "lighten",
-              "value": "0.8",
+              "value": "0.7",
               "space": "lch"
             }
           }
         }
       },
       "300": {
-        "value": "$brand.alt2.900",
-        "type": "color",
-        "$extensions": {
-          "studio.tokens": {
-            "modify": {
-              "type": "lighten",
-              "value": "0.6",
-              "space": "lch"
-            }
-          }
-        }
-      },
-      "400": {
-        "value": "$brand.alt2.900",
+        "value": "$brand.alt2.500",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -164,22 +150,8 @@
           }
         }
       },
-      "500": {
-        "value": "{brand.alt2.900}",
-        "type": "color",
-        "$extensions": {
-          "studio.tokens": {
-            "modify": {
-              "type": "lighten",
-              "value": "0.4",
-              "space": "lch"
-            }
-          }
-        },
-        "description": "ue"
-      },
-      "600": {
-        "value": "$brand.alt2.900",
+      "400": {
+        "value": "$brand.alt2.500",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -189,40 +161,63 @@
               "space": "lch"
             }
           }
-        },
-        "description": "AA 6.8 on grey 800\nAA18 3.4 as bkdg for interaction blue"
+        }
       },
-      "700": {
-        "value": "$brand.alt2.900",
+      "500": {
+        "value": "#4c76ba",
+        "type": "color"
+      },
+      "600": {
+        "value": "{brand.alt2.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
             "modify": {
-              "type": "lighten",
-              "value": "0.2",
-              "space": "lch"
-            }
-          }
-        },
-        "description": "AA 5.5 on grey 800"
-      },
-      "800": {
-        "value": "$brand.alt2.900",
-        "type": "color",
-        "$extensions": {
-          "studio.tokens": {
-            "modify": {
-              "type": "lighten",
+              "type": "darken",
               "value": "0.1",
               "space": "lch"
             }
           }
-        },
-        "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
+        }
+      },
+      "700": {
+        "value": "$brand.alt2.500",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "darken",
+              "value": "0.2",
+              "space": "lch"
+            }
+          }
+        }
+      },
+      "800": {
+        "value": "$brand.alt2.500",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "darken",
+              "value": "0.3",
+              "space": "lch"
+            }
+          }
+        }
       },
       "900": {
-        "value": "#4C76BA",
-        "type": "color"
+        "value": "{brand.alt2.500}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "darken",
+              "value": "0.4",
+              "space": "lch"
+            }
+          }
+        }
       }
     },
     "alt3": {
@@ -328,8 +323,7 @@
               "space": "lch"
             }
           }
-        },
-        "description": "AA 5.6 on white"
+        }
       },
       "900": {
         "value": "#F39200",
@@ -371,7 +365,7 @@
           "type": "color"
         },
         "dark": {
-          "value": "{brand.alt2.900}",
+          "value": "{brand.alt2.500}",
           "type": "color"
         }
       },
@@ -408,12 +402,13 @@
             "type": "color"
           },
           "hover": {
-            "value": "{brand.alt2.900}",
+            "value": "{brand.alt1.500}",
             "type": "color"
           },
           "active": {
-            "value": "{brand.alt2.900}",
+            "value": "{brand.alt1.700}",
             "type": "color",
+            "$extensions": {},
             "description": "Standard farge for handlinger"
           },
           "no_fill": {
@@ -439,16 +434,17 @@
             "type": "color"
           },
           "default": {
-            "value": "{brand.alt2.900}",
+            "value": "{brand.alt2.500}",
             "type": "color"
           },
           "hover": {
-            "value": "{brand.alt1.900}",
+            "value": "{brand.alt2.700}",
             "type": "color"
           },
           "active": {
             "value": "{brand.alt2.900}",
             "type": "color",
+            "$extensions": {},
             "description": "Standard farge for handlinger"
           },
           "no_fill": {
