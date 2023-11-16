@@ -1,16 +1,16 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ResponsiveTable } from './';
-import { TokensTable, Information } from '../../../../../docs-components';
+import { LegacyResponsiveTable } from './';
+import { TokensTable, Information } from '../../../../../../docs-components';
 import { exampleRows } from './ExampleData';
 import classes from './Table.stories.module.css';
 
 <Meta
-  title='Altinn/Table/ResponsiveTable'
-  component={ResponsiveTable}
+  title='Avviklet/LegacyResponsiveTable'
+  component={LegacyResponsiveTable}
 />
 
 export const Template = () => (
-  <ResponsiveTable
+  <LegacyResponsiveTable
     config={{
       rows: exampleRows,
       headers: {
@@ -60,9 +60,12 @@ export const Template = () => (
   />
 );
 
-# ResponsiveTable
+# LegacyResponsiveTable
 
-<Information text='altinn' />
+<Information
+  text='deprecated'
+  description='**Responsive table vil ikke bli erstattet av en ny komponent.**'
+/>
 
 ## Eksempel
 
