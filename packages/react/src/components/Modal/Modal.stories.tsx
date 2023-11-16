@@ -45,10 +45,6 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
   );
 };
 
-Preview.args = {
-  width: '650px',
-};
-
 export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -105,7 +101,6 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
       <Modal
         ref={modalRef}
         onClose={() => setInput('')}
-        width='450px'
       >
         <Modal.Header>Modal med skjema</Modal.Header>
         <Modal.Content>
