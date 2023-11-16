@@ -17,6 +17,7 @@ import {
   useMergeRefs,
   useRole,
   shift,
+  FloatingFocusManager,
 } from '@floating-ui/react';
 
 import { Box } from '../Box';
@@ -112,23 +113,25 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
         }}
       >
         {open && (
-          <Box
-            {...rest}
-            shadow='medium'
-            borderRadius='medium'
-            className={cn(classes.dropdown, classes[size], rest.className)}
-            ref={floatingRef}
-            style={floatingStyles}
-            {...getFloatingProps({
-              ref: floatingRef,
-              tabIndex: undefined,
-            })}
-            role='menu'
-            aria-hidden={!open}
-            data-placement={flPlacement}
-          >
-            {children}
-          </Box>
+          <FloatingFocusManager context={context}>
+            <Box
+              {...rest}
+              shadow='medium'
+              borderRadius='medium'
+              className={cn(classes.dropdown, classes[size], rest.className)}
+              ref={floatingRef}
+              style={floatingStyles}
+              {...getFloatingProps({
+                ref: floatingRef,
+                tabIndex: undefined,
+              })}
+              role='menu'
+              aria-hidden={!open}
+              data-placement={flPlacement}
+            >
+              {children}
+            </Box>
+          </FloatingFocusManager>
         )}
       </DropdownMenuContext.Provider>
     );
