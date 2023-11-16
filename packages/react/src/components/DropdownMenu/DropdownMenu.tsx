@@ -1,4 +1,9 @@
-import React, { forwardRef, useLayoutEffect, useRef } from 'react';
+import React, {
+  createContext,
+  forwardRef,
+  useLayoutEffect,
+  useRef,
+} from 'react';
 import cn from 'classnames';
 import type { Placement } from '@floating-ui/react';
 import {
@@ -17,9 +22,12 @@ import {
 import { Box } from '../Box';
 
 import classes from './DropdownMenu.module.css';
-import { DropdownMenuContext } from './DropdownMenuContext';
 
 const GAP = 4;
+
+type DropdownMenuContextType = {
+  size: NonNullable<DropdownMenuProps['size']>;
+};
 
 export type DropdownMenuProps = {
   /** Element the popover anchors to */
@@ -39,6 +47,10 @@ export type DropdownMenuProps = {
    **/
   size?: 'small' | 'medium' | 'large';
 } & React.HTMLAttributes<HTMLDivElement>;
+
+export const DropdownMenuContext = createContext<DropdownMenuContextType>({
+  size: 'medium',
+});
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   (

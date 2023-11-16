@@ -4,7 +4,7 @@ import cn from 'classnames';
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
 import type { OverridableComponent } from '../../../types/OverridableComponent';
-import { DropdownMenuContext } from '../DropdownMenuContext';
+import { DropdownMenuContext } from '../DropdownMenu';
 
 import classes from './DropdownMenuItem.module.css';
 

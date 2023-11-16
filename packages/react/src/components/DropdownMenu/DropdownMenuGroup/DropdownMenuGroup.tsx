@@ -2,7 +2,7 @@ import React, { forwardRef, useContext, useId } from 'react';
 import cn from 'classnames';
 
 import { Paragraph } from '../../Typography';
-import { DropdownMenuContext } from '../DropdownMenuContext';
+import { DropdownMenuContext } from '../DropdownMenu';
 
 import classes from './DropdownMenuGroup.module.css';
 
