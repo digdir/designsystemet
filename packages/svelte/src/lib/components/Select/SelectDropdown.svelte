@@ -1,4 +1,7 @@
 <script>
+  import SelectCheckmark from './SelectCheckmark.svelte';
+  import { getContext } from 'svelte';
+
   /**
    * @typedef {Object} SelectOption
    * @property {string} label - Display label of the option.
@@ -14,9 +17,6 @@
   /** @type {function} - Function to handle option selection. */
   export let selectOption;
 
-  /** @type {function} - Function to determine if an option is selected. */
-  export let isSelected;
-
   /**
    * Whether the dropdown is visible.
    * @type {boolean}
@@ -29,6 +29,13 @@
    */
   export let hideSelected;
   export let multiple;
+
+  export let inputId;
+
+  const selectContext = getContext('selectContext-' + inputId);
+
+  $: selected = $selectContext.selected;
+  $: error = $selectContext.error;
 
   /* $: computedOptions = options.map((option) => ({
     ...option,
@@ -43,34 +50,39 @@
 >
   <ul class="options-list">
     {#each options as option (option.value)}
-      {@const selected = isSelected(option)}
+      {@const isSelected = selected.some((sel) => sel.value === option.value)}
       <!--{#if !selected} -->
       <li
         class="option-item"
         role="option"
-        aria-selected={selected}
+        aria-selected={isSelected}
         on:click={(event) => {
           event.stopPropagation();
           selectOption(option);
         }}
       >
-        <!-- {#if multiple}
-          <input
-            type="checkbox"
-            class="option-checkbox"
-            checked={selected}
-            readonly
-          />
-        {/if} -->
         <div class="option-content">
-          <div class="option-label">{option.label}</div>
-          {#if option.description}
-            <div class="option-description">{option.description}</div>
+          {#if multiple}
+            <div class="checkbox-container">
+              <input
+                type="checkbox"
+                checked={isSelected}
+              />
+            </div>
+          {/if}
+          <div class="option-text">
+            <div class="option-label">{option.label}</div>
+            {#if option.description}
+              <div class="option-description">{option.description}</div>
+            {/if}
+          </div>
+          {#if !multiple && isSelected}
+            <div class="checkmark-container">
+              <SelectCheckmark />
+            </div>
           {/if}
         </div>
       </li>
-      <div class="option-separator" />
-      <!--  {/if} -->
     {/each}
   </ul>
 </div>
@@ -84,6 +96,7 @@
     &:not(.visible) {
       display: none;
     }
+    min-width: 100%;
   }
   .options-list {
     max-width: 100%;
@@ -102,7 +115,7 @@
 
   .option-item {
     display: flex;
-    padding: 9px 12px 10px 12px;
+    padding: 9px 12px;
     align-items: flex-start;
     gap: 10px;
     align-self: stretch;
@@ -113,20 +126,37 @@
       cursor: pointer;
     }
   }
-  /*   .option-checkbox {
-    margin-right: 8px;
-  } */
 
-  .option-content {
+  .option-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .option-content {
+    display: flex;
+    align-items: start;
+    width: 100%;
   }
 
   .option-label {
     color: var(--semantic-text-neutral-default, #1e2b3c);
     font-weight: 400;
     line-height: 130%; /* 17.55px */
+  }
+
+  .option-label,
+  .option-description {
+    margin-right: auto;
+  }
+
+  .checkmark-container {
+    margin-left: auto;
+    padding-right: 10px;
+  }
+
+  .checkbox-container {
+    padding-right: 10px;
   }
 
   .option-separator {

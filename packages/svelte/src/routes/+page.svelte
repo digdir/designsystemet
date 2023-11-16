@@ -91,10 +91,29 @@
   let singleSelectValue = '';
   let multiSelectValues = [];
 
-  const options = [
+  $: options = [
     { label: 'Norge', value: '1' },
     { label: 'Sverige', value: '2' },
     { label: 'Outer Planets Alliance', value: '3' },
+  ];
+
+  $: optionsWithDescriptions = [
+    {
+      label: 'Norge',
+      value: '1',
+      description: 'Dårlige i fotball, gode i olje',
+    },
+    {
+      label: 'Sverige',
+      value: '2',
+      description: 'Bedre i fotball, snakker litt rart',
+    },
+    {
+      label: 'Outer Planets Alliance',
+      value: '3',
+      description:
+        'Undertrykkede masser som må finne seg i det meste, inntil videre',
+    },
   ];
 
   $: unSelected = null;
@@ -334,7 +353,7 @@
 <br />
 <br />
 <h1 class="componentHeader">SELECT</h1>
-<form class="selectForm">
+<div class="selectForm">
   <Select
     {options}
     bind:selected={unSelected}
@@ -350,26 +369,48 @@
   <Select
     {options}
     bind:selected={unSelected}
-    placeholder="Placeholder text"
-    label="Single w/ placeholder"
+    label="Single, has filter"
+    hasFilter
   />
 
   <Select
     {options}
     bind:selected={unSelected}
-    error={new Error('Error message')}
+    placeholder="Placeholder text"
+    label="Single w/ placeholder & description"
+    description="Dette er en beskrivelse"
+  />
+
+  <Select
+    {options}
+    bind:selected={unSelected}
+    error="Error message"
     label="Single, unselected, w/ error"
   />
-</form>
+
+  <Select
+    options={optionsWithDescriptions}
+    bind:selected={unSelected}
+    label="Single, unselected, w/ option descriptions"
+  />
+</div>
 <br />
 <h1 class="componentHeader">MULTI SELECT</h1>
 <br />
-<form class="selectForm">
+<div class="selectForm">
   <Select
     {options}
     bind:selected={multiUnselected}
     multiple
     label="Multi, unselected"
+  />
+
+  <Select
+    {options}
+    bind:selected={multiUnselected}
+    multiple
+    hasFilter
+    label="Multi, has filter"
   />
 
   <Select
@@ -394,7 +435,14 @@
     multiple
     label="Multi, preselected, readonly"
   />
-</form>
+
+  <Select
+    options={optionsWithDescriptions}
+    bind:selected={multiUnselected}
+    multiple
+    label="Multi, unselected, w/ option descriptions"
+  />
+</div>
 <br />
 
 <h1 class="componentHeader">Tabs</h1>
