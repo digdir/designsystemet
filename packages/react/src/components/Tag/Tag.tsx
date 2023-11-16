@@ -49,12 +49,12 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     return (
       <Paragraph
         as='span'
-        size={size}
+        size={PARAGRAPH_SIZE_MAP[size as NonNullable<Size>]}
         {...restHTMLProps}
         className={cn(
           classes.tag,
           classes[color],
-          classes[PARAGRAPH_SIZE_MAP[size as NonNullable<Size>]!],
+          classes[size],
           classes[variant],
           classes[variant],
           className,
