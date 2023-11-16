@@ -5,7 +5,7 @@ import React, { forwardRef, useContext } from 'react';
 
 import { Paragraph, Heading } from '../..';
 import classes from '../Accordion.module.css';
-import utilityClasses from '../../../utils/utility.module.css';
+import utilityClasses from '../../../utilities/utility.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionHeaderProps = {

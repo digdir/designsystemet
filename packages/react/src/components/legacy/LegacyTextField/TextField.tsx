@@ -9,9 +9,12 @@ import type {
 } from 'react-number-format';
 import { NumericFormat, PatternFormat } from 'react-number-format';
 
-import { isNumericFormat, isPatternFormat } from '../../../utils';
-import { InputWrapper } from '../../_InputWrapper';
-import type { ReadOnlyVariant_, CharacterLimit } from '../../_InputWrapper';
+import { isNumericFormat, isPatternFormat } from '../../../utilities';
+import { InputWrapper } from '../../../utilities/InputWrapper';
+import type {
+  ReadOnlyVariant_,
+  CharacterLimit,
+} from '../../../utilities/InputWrapper';
 
 export type LegacyTextFieldProps = {
   /**
