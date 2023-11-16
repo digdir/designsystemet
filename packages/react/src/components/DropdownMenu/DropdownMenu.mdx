@@ -1,5 +1,13 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgsTable,
+} from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
+import { DropdownMenu } from './';
 
 import * as DropdownMenuStories from './DropdownMenu.stories';
 
@@ -28,6 +36,10 @@ return (
 ## Icons
 
 <Canvas of={DropdownMenuStories.Icons} />
+
+### `Dropdown.Group`
+
+<ArgsTable of={DropdownMenu.Group} />
 
 ## Referanser
 
