@@ -29,7 +29,7 @@ export const Preview: Story = {
   },
 };
 
-const sizes: TagProps['size'][] = ['xsmall', 'small', 'medium'];
+const sizes: TagProps['size'][] = ['small', 'medium', 'large'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>
