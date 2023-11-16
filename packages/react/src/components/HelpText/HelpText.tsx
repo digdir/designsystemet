@@ -18,7 +18,7 @@ export type HelpTextProps = {
    * Size of the icon.
    * @default small
    */
-  size?: 'medium' | 'small';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Placement of the Popover.
    * @default 'right'
