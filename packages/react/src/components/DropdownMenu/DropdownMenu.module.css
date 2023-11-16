@@ -1,0 +1,23 @@
+.dropdown {
+  position: relative;
+  padding: var(--fds-spacing-2);
+}
+
+.dropdown.small {
+  min-width: 240px;
+  padding: var(--fds-spacing-2);
+}
+
+.dropdown.medium {
+  min-width: 260px;
+  padding: var(--fds-spacing-3);
+}
+
+.dropdown.large {
+  min-width: 280px;
+  padding: var(--fds-spacing-4);
+}
+
+.dropdown > hr {
+  border-color: var(--fds-semantic-border-divider-subtle) !important;
+}

@@ -1,0 +1,39 @@
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
+import * as ModalStories from './Modal.stories';
+
+import { Modal } from './';
+
+<Meta of={ModalStories} />
+
+# Modal
+
+`Modal` bruker native `dialog` elementet, og for å åpne/lukke må du bruke `ref`.
+Dette er valgt for å ha en så lett modal som mulig, og den vil derfor fungere annerledes enn våre andre komponenter.
+Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for mer info.
+
+<Primary />
+<Controls />
+
+Legg merke til at modalen har focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
+
+## Close on backdrop click
+
+Vi bruker `onInteractOutside` proppen for å lukke modalen når brukeren klikker utenfor modalen.
+
+<Canvas of={ModalStories.CloseOnBackdropClick} />
+
+## Med `Divider`
+
+Du kan legge divider mellom, for å skille innhold fra hverandre. `Divider` får ekstra margin på topp og bunn.
+
+<Canvas of={ModalStories.WithDivider} />
+
+## Form
+
+Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
+
+<Canvas of={ModalStories.ModalWithForm} />
+
+### `Modal.Header`
+
+<ArgTypes of={Modal.Header} />

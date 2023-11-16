@@ -1,0 +1,4 @@
+.item {
+  justify-content: start;
+  padding: 0 var(--fds-spacing-4);
+}
