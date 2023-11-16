@@ -8,7 +8,7 @@ import { DropdownMenu } from '.';
 
 const decorators = [
   (Story: StoryFn) => (
-    <div style={{ margin: '20rem', marginTop: '0' }}>
+    <div style={{ margin: '25rem', marginTop: '0' }}>
       <Story />
     </div>
   ),

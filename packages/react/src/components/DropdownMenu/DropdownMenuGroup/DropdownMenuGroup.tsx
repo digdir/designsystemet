@@ -44,5 +44,3 @@ export const DropdownMenuGroup = forwardRef<
     </>
   );
 });
-
-DropdownMenuGroup.displayName = 'Dropdown.Group';
