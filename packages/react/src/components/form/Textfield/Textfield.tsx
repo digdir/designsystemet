@@ -3,7 +3,7 @@ import React, { useState, useId, forwardRef } from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
-import { omit } from '../../../utils';
+import { omit } from '../../../utilities';
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 import type { CharacterLimitProps } from '../CharacterCounter';
@@ -11,7 +11,7 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 import classes from './Textfield.module.css';
-import utilityClasses from './../../../utils/utility.module.css';
+import utilityClasses from './../../../utilities/utility.module.css';
 
 export type TextfieldProps = {
   /** Label */

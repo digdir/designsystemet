@@ -66,7 +66,7 @@ jobs:
         id: current-time
         with:
           format: D. MMM YYYY - HH:mm
-          utcOffset: '+02:00'
+          timezone: Europe/Oslo
 
       - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v3
@@ -80,6 +80,6 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            🖥 [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (CEST)`
+            🖥 [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)

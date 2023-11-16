@@ -1233,19 +1233,6 @@ export const color = [
     path: ['semantic', 'border', 'neutral', 'strong'],
   },
   {
-    value: '#bcbfc5',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
-    isSource: false,
-    original: {
-      value: '{colors.grey.400}',
-      type: 'color',
-    },
-    name: '--fds-semantic-border-neutral-divider',
-    attributes: {},
-    path: ['semantic', 'border', 'neutral', 'divider'],
-  },
-  {
     value: '#118849',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -1426,6 +1413,45 @@ export const color = [
     name: '--fds-semantic-border-input-hover',
     attributes: {},
     path: ['semantic', 'border', 'input', 'hover'],
+  },
+  {
+    value: '#bcbfc5',
+    type: 'color',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{colors.grey.400}',
+      type: 'color',
+    },
+    name: '--fds-semantic-border-divider-default',
+    attributes: {},
+    path: ['semantic', 'border', 'divider', 'default'],
+  },
+  {
+    value: '#d2d5d8',
+    type: 'color',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{colors.grey.300}',
+      type: 'color',
+    },
+    name: '--fds-semantic-border-divider-subtle',
+    attributes: {},
+    path: ['semantic', 'border', 'divider', 'subtle'],
+  },
+  {
+    value: '#68707c',
+    type: 'color',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{colors.grey.600}',
+      type: 'color',
+    },
+    name: '--fds-semantic-border-divider-strong',
+    attributes: {},
+    path: ['semantic', 'border', 'divider', 'strong'],
   },
   {
     value: '#005FAE',
@@ -3303,84 +3329,6 @@ export const spacing = [
     attributes: {},
     path: ['spacing', '30'],
   },
-  {
-    value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'spacing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{spacing.2}',
-      type: 'spacing',
-    },
-    name: '--fds-component-mode-spacing-small',
-    attributes: {},
-    path: ['component-mode-spacing', 'small'],
-  },
-  {
-    value: 'calc(4*3/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'spacing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{spacing.3}',
-      type: 'spacing',
-    },
-    name: '--fds-component-mode-spacing-medium',
-    attributes: {},
-    path: ['component-mode-spacing', 'medium'],
-  },
-  {
-    value: 'calc(4*4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'spacing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{spacing.4}',
-      type: 'spacing',
-    },
-    name: '--fds-component-mode-spacing-large',
-    attributes: {},
-    path: ['component-mode-spacing', 'large'],
-  },
-  {
-    value: 'calc(4/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'spacing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{spacing.1}',
-      type: 'spacing',
-    },
-    name: '--fds-component-mode-gap-small',
-    attributes: {},
-    path: ['component-mode-gap', 'small'],
-  },
-  {
-    value: 'calc(4*2/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'spacing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{spacing.2}',
-      type: 'spacing',
-    },
-    name: '--fds-component-mode-gap-medium',
-    attributes: {},
-    path: ['component-mode-gap', 'medium'],
-  },
-  {
-    value: 'calc(4*3/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'spacing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{spacing.3}',
-      type: 'spacing',
-    },
-    name: '--fds-component-mode-gap-large',
-    attributes: {},
-    path: ['component-mode-gap', 'large'],
-  },
 ];
 
 export const sizing = [
@@ -3609,45 +3557,6 @@ export const sizing = [
     attributes: {},
     path: ['sizing', '30'],
   },
-  {
-    value: '36px',
-    type: 'sizing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '36',
-      type: 'sizing',
-    },
-    name: '--fds-component-mode-height-small',
-    attributes: {},
-    path: ['component-mode-height', 'small'],
-  },
-  {
-    value: 'calc(4*10/16*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'sizing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{sizing.10}',
-      type: 'sizing',
-    },
-    name: '--fds-component-mode-height-medium',
-    attributes: {},
-    path: ['component-mode-height', 'medium'],
-  },
-  {
-    value: 'calc((4*12/16)*clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem))',
-    type: 'sizing',
-    filePath: '../../design-tokens/Density/Default.json',
-    isSource: false,
-    original: {
-      value: '{sizing.12}',
-      type: 'sizing',
-    },
-    name: '--fds-component-mode-height-large',
-    attributes: {},
-    path: ['component-mode-height', 'large'],
-  },
 ];
 
 export const borderWidth = [
@@ -3694,7 +3603,7 @@ export const borderWidth = [
 
 export const boxShadow = [
   {
-    value: '0 1px 2px 0 #0000001f',
+    value: '0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3707,7 +3616,8 @@ export const boxShadow = [
     path: ['shadow', 'xsmall'],
   },
   {
-    value: '0 1px 2px -1px #0000001a, 0 1px 4px 0 #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3720,7 +3630,8 @@ export const boxShadow = [
     path: ['shadow', 'small'],
   },
   {
-    value: '0 2px 4px -2px #0000001a, 0 4px 5px #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3733,7 +3644,8 @@ export const boxShadow = [
     path: ['shadow', 'medium'],
   },
   {
-    value: '0 4px 6px -4px #0000001a, 0 10px 12px #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3746,7 +3658,8 @@ export const boxShadow = [
     path: ['shadow', 'large'],
   },
   {
-    value: '0 8px 10px -6px #0000001a, 0 25px 45px #0000001a',
+    value:
+      '0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)',
     type: 'boxShadow',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,

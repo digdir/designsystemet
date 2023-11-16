@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react';
-import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import type { ReactNode, ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import { SvgIcon } from '../SvgIcon';
-import utilityClasses from '../../utils/utility.module.css';
+import utilityClasses from '../../utilities/utility.module.css';
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Button.module.css';

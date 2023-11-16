@@ -1,2 +1,2 @@
 export * from './components';
-export { formatNumericText } from './utils';
+export { formatNumericText } from './utilities';

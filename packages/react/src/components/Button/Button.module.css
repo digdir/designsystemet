@@ -1,7 +1,6 @@
 .button {
-  --fc-button-size: var(--fds-component-mode-height-small);
   --fc-button-icon-size: var(--fds-sizing-4);
-  --fc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
+  --fc-button-padding: 0 var(--fds-spacing-3);
   --fc-button-color: var(--fds-semantic-text-action-first-on_action);
 
   display: flex;
@@ -9,15 +8,14 @@
   border: var(--fds-border_width-default) solid transparent;
   color: var(--fc-button-color);
   fill: var(--fc-button-color);
-  height: var(--fc-button-size);
-  min-width: var(--fc-button-size);
+  height: 2.5em;
+  min-width: 2.5em;
   padding: var(--fc-button-padding);
   box-sizing: border-box;
   cursor: pointer;
   font-family: inherit;
   justify-content: center;
   text-align: center;
-  letter-spacing: var(--typography-default-letter-spacing);
   text-decoration: none;
   position: relative;
   border-radius: var(--fds-border_radius-interactive);
@@ -47,7 +45,7 @@
 
 .button:disabled,
 .button[aria-disabled='true'] {
-  cursor: auto;
+  cursor: not-allowed;
   opacity: var(--fds-opacity-disabled);
 }
 
@@ -58,32 +56,27 @@
 }
 
 .button.small {
-  --fc-button-size: var(--fds-component-mode-height-small);
-  --fc-button-padding: var(--fds-spacing-1) var(--fds-spacing-2);
+  --fc-button-padding: 0 var(--fds-spacing-2);
   --fc-button-icon-size: var(--fds-sizing-4);
 
-  gap: var(--fds-sizing-2);
-  font: var(--fds-typography-paragraph-small);
+  gap: var(--fds-sizing-1);
+  font: var(--fds-typography-paragraph-short-small);
   font-family: inherit;
 }
 
 .button.medium {
-  --fc-button-size: var(--fds-component-mode-height-medium);
-  --fc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fc-button-icon-size: var(--fds-sizing-6);
 
-  gap: var(--fds-sizing-3);
-  font: var(--fds-typography-paragraph-medium);
+  gap: var(--fds-sizing-2);
+  font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
 }
 
 .button.large {
-  --fc-button-size: var(--fds-component-mode-height-large);
-  --fc-button-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   --fc-button-icon-size: var(--fds-sizing-8);
 
-  gap: var(--fds-sizing-3);
-  font: var(--fds-typography-paragraph-large);
+  gap: var(--fds-sizing-2);
+  font: var(--fds-typography-paragraph-short-large);
   font-family: inherit;
 }
 
@@ -97,7 +90,7 @@
 }
 
 .button.onlyIcon {
-  padding: calc((var(--fc-button-size) - var(--fc-button-icon-size)) / 2 - var(--fds-border_width-default));
+  padding: 0;
 }
 
 /* Only use hover for non-touch devices to prevent sticky-hovering */

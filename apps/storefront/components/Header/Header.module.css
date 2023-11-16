@@ -51,7 +51,7 @@
 }
 
 .link:hover {
-  border-color: var(--fds-semantic-border-neutral-divider);
+  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 .item .active {

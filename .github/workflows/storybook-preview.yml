@@ -10,6 +10,7 @@ on:
     paths:
       - 'packages/**'
       - '.storybook/**'
+      - 'assets/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
@@ -67,7 +68,7 @@ jobs:
         id: current-time
         with:
           format: D. MMM YYYY - HH:mm
-          utcOffset: '+02:00'
+          timezone: Europe/Oslo
 
       - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v3
@@ -79,7 +80,7 @@ jobs:
           body: |
             **Preview deployments for this pull request:**
 
-            📖 [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (CEST)`
+            📖 [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex-storefront.outputs.match }}
 

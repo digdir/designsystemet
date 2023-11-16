@@ -25,7 +25,7 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
 
 const icon = <akselIcons.FloppydiskIcon />;
 
-type AkselIcon = typeof akselIcons['AirplaneFillIcon'];
+type AkselIcon = (typeof akselIcons)['AirplaneFillIcon'];
 type AkselIcons = Record<string, AkselIcon>;
 
 export const Preview: Story = {
@@ -253,6 +253,7 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
+        size='small'
       />
       Laster...
     </Button>
@@ -264,6 +265,7 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
+        size='small'
       />
       Laster...
     </Button>
@@ -275,6 +277,7 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
+        size='small'
       />
       Laster...
     </Button>
