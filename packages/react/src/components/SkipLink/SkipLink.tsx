@@ -13,7 +13,7 @@ export type SkipLinkProps = {
   className?: string;
 
   /** Href of an element in the DOM the skiplink should skip to. E.g #main-content */
-  href?: string;
+  href: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const SkipLink = ({
