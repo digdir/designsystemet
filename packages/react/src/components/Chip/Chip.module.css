@@ -121,8 +121,18 @@
   padding-left: var(--fds-spacing-1) !important;
 }
 
-.checkmarkIcon {
+.small .checkmarkIcon {
   height: var(--fds-sizing-5);
+  width: auto;
+}
+
+.medium .checkmarkIcon {
+  height: 24px;
+  width: auto;
+}
+
+.large .checkmarkIcon {
+  height: 26px;
   width: auto;
 }
 
