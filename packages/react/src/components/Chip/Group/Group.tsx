@@ -2,11 +2,10 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef, createContext } from 'react';
 import cn from 'classnames';
 
-import type { ChipBaseProps } from '../_ChipBase';
 import classes from '../Chip.module.css';
 
 export type ChipGroupContext = {
-  size?: ChipBaseProps['size'];
+  size?: 'xsmall' | 'small';
 };
 
 export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
