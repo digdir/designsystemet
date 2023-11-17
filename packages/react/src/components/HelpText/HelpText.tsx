@@ -5,6 +5,7 @@ import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';
 import utilClasses from '../../utilities/utility.module.css';
+import { Paragraph } from '../Typography';
 
 import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';
@@ -74,7 +75,7 @@ const HelpText = ({
         onClose={() => setOpen(false)}
       >
         <Popover.Content className={classes.helpTextContent}>
-          {children}
+          <Paragraph size={size}>{children}</Paragraph>
         </Popover.Content>
       </Popover>
     </>
