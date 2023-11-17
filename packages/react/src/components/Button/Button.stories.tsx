@@ -45,6 +45,9 @@ export const Preview: Story = {
   args: {
     children: 'Knapp',
     disabled: false,
+    variant: 'primary',
+    color: 'first',
+    size: 'medium',
   },
   argTypes: {
     icon: {
