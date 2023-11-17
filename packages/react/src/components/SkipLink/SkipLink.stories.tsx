@@ -9,7 +9,7 @@ export default {
   component: SkipLink,
 } as Meta;
 
-export const Preview: Story = () => (
+export const Preview: Story = () => {
   <>
     For å vise skiplinken, tab til dette eksempelet, eller klikk inni eksempelet
     og trykk <kbd>Tab</kbd>.
@@ -20,5 +20,5 @@ export const Preview: Story = () => (
     >
       Region som kan motta fokus fra skiplink.
     </main>
-  </>
-);
+  </>;
+};
