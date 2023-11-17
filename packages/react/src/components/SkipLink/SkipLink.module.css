@@ -13,7 +13,6 @@
   text-decoration-thickness: 3px;
   text-underline-offset: 0.3em;
   padding: 15px;
-  font-weight: 500;
   color: var(--fds-semantic-text-neutral-default);
   background: var(--fds-semantic-border-focus-outline);
 }
