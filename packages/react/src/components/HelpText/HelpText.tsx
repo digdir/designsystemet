@@ -5,7 +5,7 @@ import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';
 import utilClasses from '../../utilities/utility.module.css';
-import { Paragraph } from '../Typography';
+import type { PopoverProps } from '../Popover/Popover';
 
 import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';
@@ -17,9 +17,9 @@ export type HelpTextProps = {
   title: string;
   /**
    * Size of the icon.
-   * @default small
+   * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: PopoverProps['size'];
   /**
    * Placement of the Popover.
    * @default 'right'
@@ -72,10 +72,11 @@ const HelpText = ({
         anchorEl={buttonRef.current}
         placement={placement}
         open={open}
+        size={size}
         onClose={() => setOpen(false)}
       >
         <Popover.Content className={classes.helpTextContent}>
-          <Paragraph size={size}>{children}</Paragraph>
+          {children}
         </Popover.Content>
       </Popover>
     </>
