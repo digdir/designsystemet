@@ -9,16 +9,12 @@ export type SkipLinkProps = {
   /** The content to display inside the skiplink. */
   children: ReactNode;
 
-  /** Custom class name for the skiplink. This will be appended to the design system class names. */
-  className?: string;
-
   /** Href of an element in the DOM the skiplink should skip to. E.g #main-content */
   href: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const SkipLink = ({
   href,
-  className,
   children,
   ...rest
 }: SkipLinkProps): JSX.Element => {
@@ -26,7 +22,11 @@ export const SkipLink = ({
     <a
       href={href}
       {...rest}
-      className={cn(utilityClasses.visuallyHidden, classes.skiplink, className)}
+      className={cn(
+        utilityClasses.visuallyHidden,
+        classes.skiplink,
+        rest.className,
+      )}
     >
       {children}
     </a>
