@@ -33,5 +33,9 @@ jobs:
         if: contains(env.ALIASES, 'storybook-pr-1084.dev.designsystemet.no')
         run: echo "deployment=1084" >> $GITHUB_OUTPUT
 
+      - name: storybook 5000 exists
+        if: contains(env.ALIASES, 'storybook-pr-5000.dev.designsystemet.no')
+        run: echo "deployment=5000" >> $GITHUB_OUTPUT
+
       - name: Print multiline secret
         run: echo -e "${{ env.ALIASES }}"
