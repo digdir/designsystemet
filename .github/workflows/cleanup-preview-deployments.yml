@@ -25,13 +25,13 @@ jobs:
             echo EOF
           } >> "$GITHUB_ENV"
 
-      - name: Storybook 1117 exists
-        if: contains(env.ALIASES, 'storybook-pr-1117.dev.designsystemet.no')
-        run: echo "deployment=1117" >> $GITHUB_OUTPUT
+      - name: Storybook 1109 exists
+        if: contains(env.ALIASES, 'storybook-pr-1109.dev.designsystemet.no')
+        run: echo "deployment=1109" >> $GITHUB_OUTPUT
 
-      - name: Storefront 1117 exists
-        if: contains(env.ALIASES, 'storefront-pr-1117.dev.designsystemet.no')
-        run: echo "deployment=1117" >> $GITHUB_OUTPUT
+      - name: storybook 1084 exists
+        if: contains(env.ALIASES, 'storybook-pr-1084.dev.designsystemet.no')
+        run: echo "deployment=1084" >> $GITHUB_OUTPUT
 
       - name: Print multiline secret
         run: echo -e "${{ env.ALIASES }}"
