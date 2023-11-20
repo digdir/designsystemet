@@ -23,7 +23,7 @@ jobs:
             echo 'ALIASES<<EOF'
             vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} --limit 50
             echo EOF
-          } >> "$GITHUB_OUTPUT"
+          } >> "$GITHUB_ENV"
 
       - name: Storybook 9999 exists
         if: contains(env.ALIASES, 'storybook-pr-9999.dev.designsystemet.no')
