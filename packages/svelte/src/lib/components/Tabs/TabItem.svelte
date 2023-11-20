@@ -51,10 +51,10 @@
   button {
     font-family: inherit;
     display: flex;
-    padding: var(--spacing-3, 0.84375rem) var(--spacing-5, 1.40625rem);
+    padding: var(--fds-spacing-3, 0.84375rem) var(--fds-spacing-5, 1.40625rem);
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-2, 0.5625rem);
+    gap: var(--fds-spacing-2, 0.5625rem);
     border: none;
     border-radius: 0;
     background-color: transparent;
@@ -64,15 +64,15 @@
 
     &.small {
       font-size: 0.9375rem;
-      padding: var(--spacing-2, 0.5625rem) var(--spacing-4, 1.125rem);
+      padding: var(--fds-spacing-2, 0.5625rem) var(--fds-spacing-4, 1.125rem);
     }
     &.medium {
       font-size: 1.125rem;
-      padding: var(--spacing-3, 0.84375rem) var(--spacing-5, 1.40625rem);
+      padding: var(--fds-spacing-3, 0.84375rem) var(--fds-spacing-5, 1.40625rem);
     }
     &.large {
       font-size: 1.3125rem;
-      padding: var(--spacing-4, 1.125rem) var(--spacing-6, 1.6875rem);
+      padding: var(--fds-spacing-4, 1.125rem) var(--fds-spacing-6, 1.6875rem);
     }
   }
 

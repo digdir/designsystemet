@@ -24,15 +24,15 @@
     line-height: 150%; /* 1.40625rem */
     margin-left: -.125rem;
     &.small {
-      padding: var(--spacing-4, 1.125rem);
+      padding: var(--fds-spacing-4, 1.125rem);
       font-size: 0.9375rem;
     }
     &.medium {
-      padding: var(--spacing-5, 1.40625rem);
+      padding: var(--fds-spacing-5, 1.40625rem);
       font-size: 1.125rem;
     }
     &.large {
-      padding: var(--spacing-6, 1.6875rem);
+      padding: var(--fds-spacing-6, 1.6875rem);
       font-size: 1.3125rem;
     }
   }
