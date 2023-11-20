@@ -23,20 +23,12 @@ jobs:
             echo 'ALIASES<<EOF'
             vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} --limit 50
             echo EOF
-          } >> "$GITHUB_ENV"
-
-      - name: Storybook 924 exists
-        if: contains(env.ALIASES, 'storybook-pr-924.dev.designsystemet.no')
-        run: echo "deployment=924" >> $GITHUB_OUTPUT
+          } >> "$GITHUB_OUTPUT"
 
       - name: Storybook 9999 exists
         if: contains(env.ALIASES, 'storybook-pr-9999.dev.designsystemet.no')
         run: echo "deployment=9999" >> $GITHUB_OUTPUT
 
-      - name: Storefront 924 exists
-        if: contains(env.ALIASES, 'storefront-pr-924.dev.designsystemet.no')
-        run: echo "deployment=924" >> $GITHUB_OUTPUT
-
-      - name: Storefront 9999 exists
-        if: contains(env.ALIASES, 'storefront-pr-9999.dev.designsystemet.no')
-        run: echo "deployment=9999" >> $GITHUB_OUTPUT
+      - name: Storybook 1109 exists
+        if: contains(env.ALIASES, 'storybook-pr-1109.dev.designsystemet.no')
+        run: echo "deployment=1109" >> $GITHUB_OUTPUT
