@@ -27,8 +27,8 @@ jobs:
 
       - name: Storybook 20 exists
         if: contains(env.ALIASES, 'storybook-pr-20.dev.designsystemet.no')
-        run: echo "deployment=1109" >> $GITHUB_OUTPUT
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storybook-pr-20.dev.designsystemet.no
 
       - name: storefront 20 exists
         if: contains(env.ALIASES, 'storefront-pr-20.dev.designsystemet.no')
-        run: echo "deployment=20" >> $GITHUB_OUTPUT
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storefront-pr-20.dev.designsystemet.no
