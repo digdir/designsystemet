@@ -15,12 +15,13 @@ import {
 import { Textfield } from '../form/Textfield';
 
 import { ComboboxItem } from '.';
+import { Box } from '../Box';
 
 export type ComboboxProps = {
   onValueChange?: (value: string) => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export const Combobox = ({ children }: ComboboxProps) => {
+export const Combobox = ({ onValueChange, children }: ComboboxProps) => {
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -34,16 +35,18 @@ export const Combobox = ({ children }: ComboboxProps) => {
     middleware: [
       flip({ padding: 10 }),
       size({
-        apply({ rects, availableHeight, elements }) {
+        apply({ rects, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
-            maxHeight: `${availableHeight}px`,
+            maxHeight: `200px`,
           });
         },
         padding: 10,
       }),
     ],
   });
+
+  console.log('listRef', listRef);
 
   const role = useRole(context, { role: 'listbox' });
   const dismiss = useDismiss(context);
@@ -62,6 +65,7 @@ export const Combobox = ({ children }: ComboboxProps) => {
   function onChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     setInputValue(value);
+    onValueChange?.(value);
 
     if (value) {
       setOpen(true);
@@ -96,7 +100,7 @@ export const Combobox = ({ children }: ComboboxProps) => {
           value: inputValue,
           placeholder: 'Enter fruit',
           'aria-autocomplete': 'list',
-          onFocus() {
+          onClick() {
             setOpen(true);
           },
           onKeyDown(event) {
@@ -115,25 +119,21 @@ export const Combobox = ({ children }: ComboboxProps) => {
             initialFocus={-1}
             visuallyHiddenDismiss
           >
-            <div
+            <Box
+              shadow='medium'
+              borderRadius='medium'
               {...getFloatingProps({
                 ref: refs.setFloating,
                 style: {
                   ...floatingStyles,
-                  background: '#eee',
+                  background: '#fff',
                   color: 'black',
                   overflowY: 'auto',
+                  padding: 'var(--fds-spacing-4)',
+                  overflowX: 'hidden',
                 },
               })}
             >
-              {/* {items.map((item, index) => (
-                <Item
-                  key={item}
-                  active={activeIndex === index}
-                >
-                  {item}
-                </Item>
-              ))} */}
               {React.Children.map(children, (child, index) => {
                 if (
                   React.isValidElement(child) &&
@@ -147,17 +147,17 @@ export const Combobox = ({ children }: ComboboxProps) => {
                       },
                       onClick() {
                         setInputValue(child.props?.value as string);
-                        console.log(child.props.value);
                         setOpen(false);
+                        console.log(child.props.value);
                         refs.domReference.current?.focus();
                       },
+                      active: activeIndex === index,
                     }),
-                    /* active: activeIndex === index, */
                   });
                 }
                 return child;
               })}
-            </div>
+            </Box>
           </FloatingFocusManager>
         )}
       </FloatingPortal>

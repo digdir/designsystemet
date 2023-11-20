@@ -21,7 +21,7 @@ export const Item = forwardRef<HTMLElement, ItemProps>(
         aria-selected={active}
         {...rest}
         color='first'
-        variant='secondary'
+        variant='tertiary'
         fullWidth
       >
         {children}
