@@ -25,17 +25,10 @@ jobs:
             echo EOF
           } >> "$GITHUB_ENV"
 
-      - name: Storybook 1109 exists
-        if: contains(env.ALIASES, 'storybook-pr-1109.dev.designsystemet.no')
+      - name: Storybook 20 exists
+        if: contains(env.ALIASES, 'storybook-pr-20.dev.designsystemet.no')
         run: echo "deployment=1109" >> $GITHUB_OUTPUT
 
-      - name: storybook 1084 exists
-        if: contains(env.ALIASES, 'storybook-pr-1084.dev.designsystemet.no')
-        run: echo "deployment=1084" >> $GITHUB_OUTPUT
-
-      - name: storybook 5000 exists
-        if: contains(env.ALIASES, 'storybook-pr-5000.dev.designsystemet.no')
-        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storybook-pr-20.dev.designsystemet.no
-
-      - name: Print multiline secret
-        run: echo -e "${{ env.ALIASES }}"
+      - name: storefront 20 exists
+        if: contains(env.ALIASES, 'storefront-pr-20.dev.designsystemet.no')
+        run: echo "deployment=20" >> $GITHUB_OUTPUT
