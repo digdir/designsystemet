@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - id: get-aliases
-        name: Get a list of all Vercel aliases
+        name: Get a list of all Vercel aliasesf
         run: |
           {
             echo 'ALIASES<<EOF'
