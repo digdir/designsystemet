@@ -18,8 +18,8 @@ import {
 } from '@floating-ui/react';
 import { size } from '@floating-ui/dom';
 
-import type { TextfieldProps } from '../form/Textfield';
-import { Textfield } from '../form/Textfield';
+import type { TextfieldProps } from '../../form/Textfield';
+import { Textfield } from '../../form/Textfield';
 
 import { comboboxReducer } from './ComboboxReducer';
 import { ComboboxList } from './ComboboxList';

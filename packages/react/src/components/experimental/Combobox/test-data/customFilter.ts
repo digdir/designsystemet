@@ -1,7 +1,7 @@
 import {
   compareMatchingCharsInOrder,
   containsAllCharsInOrder,
-} from '../../../utilities';
+} from '../../../../utilities';
 import type { ComboboxFilter } from '../types/ComboboxFilter';
 
 import { getCountryName } from './getCountryName';

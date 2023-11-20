@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 import * as ComboboxStories from './Combobox.stories';
 
 <Meta of={ComboboxStories} />
@@ -34,20 +34,20 @@ import { EXPERIMENTAL_Combobox } from '@digdir/design-system-react';
 Standard `Combobox` med mulighet til å søke blant flere alternativer.
 I denne varianten blir den endelige verdien det samme som det synlige alternativet.
 
-<Canvas of={ComboboxStories.Standard}/>
+<Canvas of={ComboboxStories.Standard} />
 
 ### Kodede alternativer med ledetekst
 
 I mange tilfeller ønsker man at brukeren skal velge mellom kodede verdier med tilhørende ledetekst.
 Da kan man bruke `optionLabel` til å definere en funksjon som returnerer ledeteksten basert på verdien.
 
-<Canvas of={ComboboxStories.MedLedetekst}/>
+<Canvas of={ComboboxStories.MedLedetekst} />
 
 ### Formaterte alternativer
 
 Man kan også bruke `optionLabel` til å formatere alternativene med HTML.
 
-<Canvas of={ComboboxStories.Formatert}/>
+<Canvas of={ComboboxStories.Formatert} />
 
 ### Egendefinert søkefunksjon
 
@@ -58,7 +58,4 @@ I eksemplet med ledetekst ville det for eksempel være optimalt om søket ble gj
 I følgende eksempel er det lagt til en `filter`-funksjon som gjør nettopp dette,
 i tillegg til å sortere alternativene basert på hvor tegnene i søkeordet er plassert i teksten.
 
-<Canvas of={ComboboxStories.MedEgendefinertFilter}/>
-
-
-
+<Canvas of={ComboboxStories.MedEgendefinertFilter} />
