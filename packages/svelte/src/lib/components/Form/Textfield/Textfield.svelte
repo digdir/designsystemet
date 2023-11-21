@@ -3,35 +3,70 @@
   import { v4 as uuidv4 } from 'uuid';
 
   /**
-   * Text input field
-   *
-   * @prop {string} [label] - Label for the textfield.
-   * @prop {string} [description] - Description for the textfield.
-   * @prop {string} [size='medium'] - Changes field size and paddings. Options are 'xsmall', 'small', 'medium', 'large'.
-   * @prop {string} [type='text'] - Supported `input` types.
-   * @prop {boolean} [hideLabel=false] - Visually hides `label` and `description` (still available for screen readers).
-   * @prop {boolean} [readOnly=false] - Makes the field read-only.
-   * @prop {boolean} [disabled=false] - Disables the field.
-   * @prop {string} [value] - Value of the input field.
-   * @prop {string} [error] - Error message to display.
-   * @prop {string} [prefix] - Prefix for field.
-   * @prop {string} [suffix] - Suffix for field.
-   * @prop {number} [characterLimit=null] - Sets limit for number of characters.
-   * @prop {any} [characterLimitLabel=null] - Sets custom label for shown character limit (function is possible to pass in, see example).
+   * Label for the textfield.
    */
-
   export let label = '';
+
+  /**
+   * Description for the textfield.
+   */
   export let description = '';
+
+  /**
+   * Changes field size and paddings. Options are 'xsmall', 'small', 'medium', 'large'.
+   * @type {'xsmall' | 'small' | 'medium' | 'large'}
+   */
   export let size = 'medium';
+
+  /**
+   * Supported `input` types.
+   * @type {'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'}
+   */
   export let type = 'text';
+
+  /**
+   * Visually hides `label` and `description` (still available for screen readers).
+   */
   export let hideLabel = false;
+
+  /**
+   * Makes the field read-only.
+   */
   export let readOnly = false;
+
+  /**
+   * Disables the field.
+   */
   export let disabled = false;
+
+  /**
+   * Value of the input field.
+   */
   export let value;
+
+  /**
+   * Error message to display.
+   */
   export let error = '';
+
+  /**
+   * Prefix for field.
+   */
   export let prefix = '';
+
+  /**
+   * Suffix for field.
+   */
   export let suffix = '';
+
+  /**
+   * Sets limit for number of characters.
+   */
   export let characterLimit = null;
+
+  /**
+   * Sets custom label for shown character limit (function is possible to pass in, see example).
+   */
   export let characterLimitLabel = null;
 
   let componentId = uuidv4();

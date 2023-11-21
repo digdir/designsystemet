@@ -2,32 +2,70 @@
   import { createEventDispatcher, onMount } from 'svelte';
 
   /**
-   * `Modal`.
-   * @prop {string} [modalVariant = 'default'] - Specify which variant to use for the modal. Options are 'default', 'alert'.
-   * @prop {string} [title = 'Dette er en tittel'] - Title of the modal.
-   * @prop {string} [primaryButtonText = 'OK'] - Text on primary button.
-   * @prop {string} [primaryButtonVariant='filled'] - Specify which variant to use for primary button. Options are 'filled', 'outline', 'quiet'.
-   * @prop {string} [primaryButtonColor='first'] - Specify which color palette to use for primary button. Options are 'first', 'second', 'success', 'danger', 'inverted'.
-   * @prop {string} [primaryButtonSize='medium'] - Size of the primary button. Options are 'small', 'medium', 'large'.
-   * @prop {string} [secondaryButtonText = 'Avbryt'] - Text on secondary button.
-   * @prop {string} [secondaryButtonVariant='outline'] - Specify which variant to use for secondary button. Options are 'filled', 'outline', 'quiet'.
-   * @prop {string} [secondaryButtonColor='first'] - Specify which color palette to use for secondary button. Options are 'first', 'second', 'success', 'danger', 'inverted'.
-   * @prop {string} [secondaryButtonSize='medium'] - Size of the secondary button. Options are 'small', 'medium', 'large'.
-   * @prop {number} [numberOfErrors=0] - Number of errors.
-   * @prop {boolean} [isModalValidating=false] - Whether the modal is validating.
+   * Specify which variant to use for the modal. Options are 'default', 'alert'.
+   * @type {'default' | 'alert'}
    */
-
   export let modalVariant = 'default';
+
+  /**
+   * Title of the modal.
+   */
   export let title = 'Dette er en tittel';
+
+  /**
+   * Text on primary button.
+   */
   export let primaryButtonText = 'OK';
+
+  /**
+   * Specify which variant to use for primary button. Options are 'filled', 'outline', 'quiet'.
+   * @type {'filled' | 'outline' | 'quiet'}
+   */
   export let primaryButtonVariant = 'filled';
+
+  /**
+   * Specify which color palette to use for primary button. Options are 'first', 'second', 'success', 'danger', 'inverted'.
+   * @type {'first' | 'second' | 'success' | 'danger' | 'inverted'}
+   */
   export let primaryButtonColor = modalVariant === 'alert' ? 'danger' : 'first';
+
+  /**
+   * Size of the primary button. Options are 'small', 'medium', 'large'.
+   * @type {'small' | 'medium' | 'large'}
+   */
   export let primaryButtonSize = 'medium';
+
+  /**
+   * Text on secondary button.
+   */
   export let secondaryButtonText = 'Avbryt';
+
+  /**
+   * Specify which variant to use for secondary button. Options are 'filled', 'outline', 'quiet'.
+   * @type {'filled' | 'outline' | 'quiet'}
+   */
   export let secondaryButtonVariant = 'outline';
+
+  /**
+   * Specify which color palette to use for secondary button. Options are 'first', 'second', 'success', 'danger', 'inverted'.
+   * @type {'first' | 'second' | 'success' | 'danger' | 'inverted'}
+   */
   export let secondaryButtonColor = 'first';
+
+  /**
+   * Size of the secondary button. Options are 'small', 'medium', 'large'.
+   * @type {'small' | 'medium' | 'large'}
+   */
   export let secondaryButtonSize = 'medium';
+
+  /**
+   * Number of errors.
+   */
   export let numberOfErrors = 0;
+
+  /**
+   * Whether the modal is validating.
+   */
   export let isModalValidating = false;
 
   export let onClose = () => {};

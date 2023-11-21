@@ -42,6 +42,8 @@
    */
   export let arrowGap = 4;
 
+  export let maxWidth = '200px';
+
   $: internalOpen = open ?? defaultOpen;
 
   const arrowRef = writable(null);
@@ -122,6 +124,7 @@
     border-radius: var(--fds-border_radius-medium);
     font: var(--fds-typography-paragraph-xsmall);
     z-index: 1000;
+    overflow-wrap: break-word;
   }
   .tooltip-arrow {
     position: absolute;
