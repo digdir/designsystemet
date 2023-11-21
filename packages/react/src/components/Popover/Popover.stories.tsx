@@ -48,7 +48,7 @@ Preview.args = {
   placement: 'top',
   variant: 'default',
   open: false,
-  size: 'small',
+  size: 'medium',
 };
 
 export const Variants: StoryFn<typeof Popover> = () => {

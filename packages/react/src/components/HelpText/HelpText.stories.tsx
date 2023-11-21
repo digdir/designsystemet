@@ -23,6 +23,6 @@ export const Preview: Story = {
   args: {
     title: 'Help text title',
     children: 'Help text content',
-    size: 'small',
+    size: 'medium',
   },
 };

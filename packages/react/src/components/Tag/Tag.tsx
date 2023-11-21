@@ -11,14 +11,6 @@ type BrandColor = 'first' | 'second' | 'third';
 type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
 
-const PARAGRAPH_SIZE_MAP: {
-  [key in NonNullable<Size>]: ParagraphProps['size'];
-} = {
-  small: 'xsmall',
-  medium: 'small',
-  large: 'medium',
-};
-
 export type TagProps = {
   /** Color of the tag
    * @default neutral
@@ -49,13 +41,12 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     return (
       <Paragraph
         as='span'
-        size={PARAGRAPH_SIZE_MAP[size as NonNullable<Size>]}
+        size={size}
         {...restHTMLProps}
         className={cn(
           classes.tag,
           classes[color],
           classes[size],
-          classes[variant],
           classes[variant],
           className,
         )}
