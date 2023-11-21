@@ -1,0 +1,87 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Controls,
+  Primary,
+  ArgTypes,
+} from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as CardStories from './Card.stories';
+import * as CardGroupStories from './CardGroup/CardGroup.stories';
+import { Card } from '.';
+
+<Meta of={CardStories} />
+
+# Kort (Card)
+
+Med `Card` kan du presentere informasjon på en strukturert og oversiktlig måte. Det er ideelt for å vise innhold som er relatert, men som kan deles inn i forskjellige seksjoner.
+
+**Vær oppmerksom på:**
+
+- `Card.Header` og `Card.Content` er obligatoriske, mens `Card.Footer` er valgfri.
+- Kort bør ikke inneholde for mye informasjon som kan overvelde brukeren.
+
+<br />
+
+<Primary />
+<Controls />
+
+## Bruk
+
+<Information text='token' />
+
+```tsx
+import { Card } from '@digdir/design-system-react';
+
+<Card>
+  <Card.Header>Tittel</Card.Header>
+  <Card.Content>Innhold</Card.Content>
+  <Card.Footer>Valgfri fotnote</Card.Footer>
+</Card>;
+```
+
+## Eksempler
+
+### Standard Kort (Variants)
+
+Viser forskjellige varianter av Card komponenten, inkludert nøytral,
+subtil, og andre stiler.
+
+<Canvas of={CardStories.Variants} />
+
+### Kortgruppe med Rollekort (Role Card)
+
+Demonstrerer hvordan flere Card komponenter kan grupperes sammen.
+
+<Canvas of={CardGroupStories.Preview} />
+
+<br />
+
+## Retningslinjer
+
+### Egnet til
+
+- Presentere relatert informasjon i en oversiktlig format.
+- Vise produktinformasjon, brukeranmeldelser, eller blogginnlegg.
+- Gruppere funksjoner eller tjenester i en app eller på en nettside.
+
+### Ikke egnet til
+
+- Vise store mengder tekst eller data som kan være overveldende.
+- Erstatte navigasjonskomponenter.
+- Skjule viktig informasjon som brukeren må se umiddelbart.
+
+### Unngå
+
+- Å bruke for mange kort på en side, da dette kan skape forvirring.
+- Å blande for mange forskjellige typer innhold i et enkelt kort.
+
+<br />
+## Tekst i komponenten
+
+Sørg for at overskriftene og innholdet i kortet er klare og informative.
+Unngå vage titler og gi brukerne en god forståelse av hva de kan forvente å finne
+i hvert kort.
+
+<br />

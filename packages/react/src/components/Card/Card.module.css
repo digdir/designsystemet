@@ -1,0 +1,120 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 330px;
+}
+
+a.card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card > img,
+.card > picture {
+  width: 100%;
+  height: auto;
+}
+
+.card.neutralBackground {
+  background-color: var(--fds-semantic-surface-neutral-default);
+}
+
+.card.subtleBackground {
+  background-color: var(--fds-semantic-surface-neutral-subtle);
+}
+
+.card.neutralBackground:hover,
+.card.subtleBackground:hover {
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+}
+
+.card.neutralBackground:active,
+.card.subtleBackground:active {
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+}
+
+.card.firstBackground {
+  background-color: var(--fds-semantic-surface-first-light);
+}
+
+.card.firstBackground:hover {
+  background-color: var(--fds-semantic-surface-first-light-hover);
+}
+
+.card.firstBackground:active {
+  background-color: var(--fds-semantic-surface-first-light-active);
+}
+
+.card.secondBackground {
+  background-color: var(--fds-semantic-surface-second-light);
+}
+
+.card.secondBackground:hover {
+  background-color: var(--fds-semantic-surface-second-light-hover);
+}
+
+.card.secondBackground:active {
+  background-color: var(--fds-semantic-surface-second-light-active);
+}
+
+.card.thirdBackground {
+  background-color: var(--fds-semantic-surface-third-light);
+}
+
+.card.thirdBackground:hover {
+  background-color: var(--fds-semantic-surface-third-light-hover);
+}
+
+.card.thirdBackground:active {
+  background-color: var(--fds-semantic-surface-third-light-active);
+}
+
+.card .content {
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.card .footer,
+.card .header {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card > hr {
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  padding: var(--fds-spacing-4);
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.section.column {
+  flex-direction: column;
+}
+
+.section.row {
+  flex-direction: row;
+}
+
+.section.column > * + * {
+  margin-top: var(--fds-spacing-4);
+}
+
+.section.row > * + * {
+  margin-left: var(--fds-spacing-4);
+}
+
+.groupContainer {
+  --fdsc-gap: var(--fds-spacing-2);
+
+  display: flex;
+  max-width: 1000px;
+  gap: var(--fdsc-gap);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
