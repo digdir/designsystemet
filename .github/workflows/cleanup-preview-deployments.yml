@@ -7,7 +7,8 @@ env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
-  PR_NUMBER: ${{ github.event.number }}
+  STORYBOOK_URL: storybook-pr-${{ github.event.number }}.dev.designsystemet.no
+  STOREFRONT_URL: storefront-pr-${{ github.event.number }}.dev.designsystemet.no
   ALIASES:
 
 jobs:
@@ -17,18 +18,18 @@ jobs:
       - uses: actions/checkout@v3
 
       - id: get-aliases
-        name: Get a list of all Vercel aliases
+        name: Get a list of all Vercel aliases and set it to ENV
         run: |
           {
             echo 'ALIASES<<EOF'
-            vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} --limit 50
+            vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} --limit 20
             echo EOF
           } >> "$GITHUB_ENV"
 
       - name: Remove Storybook alias if it exists
-        if: contains(env.ALIASES, 'storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no')
-        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        if: contains(env.ALIASES, env.STORYBOOK_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.STORYBOOK_URL }}
 
       - name: Remove Storefront alias if it exists
-        if: contains(env.ALIASES, 'storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no')
-        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        if: contains(env.ALIASES, env.STOREFRONT_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.STOREFRONT_URL }}
