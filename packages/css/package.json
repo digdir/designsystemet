@@ -1,0 +1,31 @@
+{
+  "name": "@digdir/designsystemet-css",
+  "version": "0.1.0",
+  "description": "CSS files for Designsystemet",
+  "private": true,
+  "main": "./dist/index.css",
+  "repository": "https://github.com/digdir/designsystem",
+  "files": [
+    "*",
+    "dist/css"
+  ],
+  "keywords": [
+    "css",
+    "designsystem",
+    "designsystemet",
+    "digdir"
+  ],
+  "scripts": {
+    "build": "postcss ./!(dist)/*.css ./*.css --base . --dir ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@digdir/design-system-react": "*"
+  },
+  "author": "Digdir Designsystem Team",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^6.0.1",
+    "postcss-cli": "^10.1.0"
+  }
+}

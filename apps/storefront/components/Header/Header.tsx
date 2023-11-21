@@ -52,7 +52,7 @@ const Header = () => {
           >
             <Image
               className={classes.logo}
-              src='/img/logo-positive.svg'
+              src='/img/logos/ds-positive.svg'
               alt=''
               aria-hidden='true'
               width={275}

@@ -28,15 +28,18 @@
 
 .select.xsmall,
 .select.small {
-  padding: 0 var(--fds-spacing-1);
+  padding: 0 var(--fds-spacing-2);
+  padding-right: var(--fds-spacing-8);
 }
 
 .select.medium {
-  padding: 0 var(--fds-spacing-2);
+  padding: 0 var(--fds-spacing-3);
+  padding-right: var(--fds-spacing-10);
 }
 
 .select.large {
-  padding: 0 var(--fds-spacing-3);
+  padding: 0 var(--fds-spacing-4);
+  padding-right: var(--fds-spacing-12);
 }
 
 .formField {

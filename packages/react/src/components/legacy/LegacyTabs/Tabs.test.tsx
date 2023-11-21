@@ -4,7 +4,7 @@ import React from 'react';
 import { act, screen, render as renderRtl } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { lastItem } from '../../../utils/arrayUtils';
+import { lastItem } from '../../../utilities/arrayUtils';
 
 import type { LegacyTabItem, LegacyTabsProps } from './Tabs';
 import { LegacyTabs } from './Tabs';

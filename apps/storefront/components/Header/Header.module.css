@@ -15,7 +15,7 @@
 }
 
 .logo {
-  height: 30px;
+  height: 34px;
   width: auto;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .link:hover {
-  border-color: var(--fds-semantic-border-neutral-divider);
+  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 .item .active {
