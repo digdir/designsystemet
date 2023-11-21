@@ -154,7 +154,7 @@
   font-weight: 600;
 }
 
-.content code {
+.content p code {
   padding: 0.2em 0.5em;
   margin: 1px;
   font-size: 0.9em;
