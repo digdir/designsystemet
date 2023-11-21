@@ -1,4 +1,10 @@
-import React, { useState, useRef, createContext } from 'react';
+import React, {
+  useState,
+  useRef,
+  createContext,
+  useEffect,
+  forwardRef,
+} from 'react';
 import {
   FloatingFocusManager,
   FloatingPortal,
@@ -90,6 +96,17 @@ export const Combobox = ({
     }
   }
 
+  useEffect(() => {
+    if (!open) {
+      setActiveIndex(null);
+    }
+  }, [open]);
+
+  /* Send new value if item was clicked */
+  useEffect(() => {
+    onValueChange?.(inputValue);
+  }, [inputValue, onValueChange]);
+
   const filteredChildren = React.Children.toArray(children)
     .filter((child) => {
       if (React.isValidElement(child) && child.type === ComboboxItem) {
@@ -145,6 +162,14 @@ export const Combobox = ({
         break;
     }
   };
+
+  useEffect(() => {
+    if (activeIndex !== null && listRef.current[activeIndex]) {
+      listRef.current[activeIndex].scrollIntoView({
+        block: 'nearest',
+      });
+    }
+  }, [activeIndex]);
 
   return (
     <ComboboxContext.Provider
@@ -221,15 +246,10 @@ export const Combobox = ({
   );
 };
 
-export const ComboboxItem = ({
-  value,
-  index,
-  children,
-}: {
-  value: string;
-  index?: number;
-  children: React.ReactNode;
-}) => {
+export const ComboboxItem = forwardRef<
+  HTMLButtonElement,
+  { value: string; index?: number; children: React.ReactNode }
+>(({ value, index, children }, ref) => {
   const context = React.useContext(ComboboxContext);
   if (!context) {
     throw new Error('ComboboxItem must be used within a Combobox');
@@ -238,10 +258,14 @@ export const ComboboxItem = ({
 
   return (
     <Button
+      fullWidth
       onClick={() => onItemClick(value)}
       variant={activeIndex === index ? 'primary' : 'secondary'}
+      ref={ref}
     >
       {children}
     </Button>
   );
-};
+});
+
+ComboboxItem.displayName = 'ComboboxItem';
