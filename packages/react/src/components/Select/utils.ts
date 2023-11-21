@@ -1,4 +1,4 @@
-import { compareMatch, orderByKeywords } from '../../utils';
+import { compareMatch, orderByKeywords } from '../../utilities';
 
 import type { MultiSelectOption, SingleSelectOption } from './types';
 

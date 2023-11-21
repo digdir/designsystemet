@@ -2,7 +2,7 @@ import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { omit } from '../../../utils';
+import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
