@@ -132,7 +132,7 @@ export const Combobox = ({
         if (activeIndex !== null && filteredChildren[activeIndex]) {
           const child = filteredChildren[activeIndex];
           if (React.isValidElement(child) && child.type === ComboboxItem) {
-            setInputValue(child.props.value);
+            setInputValue(child.props.value as string);
             setOpen(false);
           }
         }
@@ -145,8 +145,6 @@ export const Combobox = ({
         break;
     }
   };
-
-  console.log(filteredChildren);
 
   return (
     <ComboboxContext.Provider

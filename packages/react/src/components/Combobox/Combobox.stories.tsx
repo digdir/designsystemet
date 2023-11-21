@@ -14,18 +14,21 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState('');
 
   return (
-    <Combobox
-      {...args}
-      onValueChange={(e) => setValue(e)}
-    >
-      {data.map((item, index) => (
-        <Combobox.Item
-          key={index}
-          value={item}
-        >
-          {item}
-        </Combobox.Item>
-      ))}
-    </Combobox>
+    <>
+      <p>Value: {value}</p>
+      <Combobox
+        {...args}
+        onValueChange={(e) => setValue(e)}
+      >
+        {data.map((item, index) => (
+          <Combobox.Item
+            key={index}
+            value={item}
+          >
+            {item}
+          </Combobox.Item>
+        ))}
+      </Combobox>
+    </>
   );
 };
