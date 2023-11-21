@@ -1,5 +1,4 @@
-import { Combobox as ComboboxRoot } from './Combobox';
-import { Item as ComboboxItem } from './Item/Item';
+import { Combobox as ComboboxRoot, ComboboxItem } from './Combobox';
 
 type ComboboxComponent = typeof ComboboxRoot & {
   Item: typeof ComboboxItem;
@@ -9,6 +8,6 @@ const Combobox = ComboboxRoot as ComboboxComponent;
 
 Combobox.Item = ComboboxItem;
 
-Combobox.Item.displayName = 'Combobox.Item';
+/* Combobox.Item.displayName = 'Combobox.Item'; */
 
 export { Combobox, ComboboxItem };

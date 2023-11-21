@@ -9,23 +9,25 @@ export type ItemProps = {
   active?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export const Item = forwardRef<HTMLElement, ItemProps>(
-  ({ children, value, active, ...rest }, ref) => {
-    const id = useId();
+export const ComboboxItem = ({
+  value,
+  children,
+}: {
+  value: string;
+  children: React.ReactNode;
+}) => {
+  const context = React.useContext(ComboboxContext);
+  if (!context) {
+    throw new Error('ComboboxItem must be used within a Combobox');
+  }
+  const { activeIndex, onItemClick } = context;
 
-    return (
-      <Button
-        ref={ref}
-        role='option'
-        id={id}
-        aria-selected={active}
-        {...rest}
-        color='first'
-        variant='tertiary'
-        fullWidth
-      >
-        {children}
-      </Button>
-    );
-  },
-);
+  return (
+    <div
+      onClick={() => onItemClick(value)}
+      style={{ backgroundColor: activeIndex === value ? 'lightgray' : 'white' }}
+    >
+      {children}
+    </div>
+  );
+};
