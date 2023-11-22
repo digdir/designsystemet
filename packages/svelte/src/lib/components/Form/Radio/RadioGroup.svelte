@@ -123,9 +123,10 @@
       {description}
     </p>
   {/if}
-
-  <div class={inline ? 'radio-group-inline' : ''}>
-    <slot />
+  <div class="radio-buttons">
+    <div class={inline ? 'radio-group-inline' : ''}>
+      <slot />
+    </div>
   </div>
   {#if error}
     <p class={errorClasses}>{error}</p>
@@ -198,5 +199,9 @@
     margin-bottom: 0.25rem;
     font-weight: 400;
     color: var(--fds-semantic-text-neutral-subtle);
+  }
+
+  .radio-buttons {
+    margin-top: var(--spacing-3, 0.84375rem);
   }
 </style>

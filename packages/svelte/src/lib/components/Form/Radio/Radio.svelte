@@ -168,19 +168,20 @@
 <style lang="scss">
   .container {
     position: relative;
+    margin-top: var(--fds-spacing-3, 0.84375rem);
   }
 
   .spacing-xsmall {
-    padding-left: calc(var(--fds-spacing-6));
+    padding-left: var(--fds-spacing-6);
   }
   .spacing-small {
-    padding-left: calc(var(--fds-spacing-6) + 0.6rem);
+    padding-left: var(--fds-spacing-7);
   }
   .spacing-medium {
-    padding-left: calc(var(--fds-spacing-6) + 1.0625rem);
+    padding-left: calc(var(--fds-spacing-8) + var(--fds-spacing-1));
   }
   .spacing-large {
-    padding-left: calc(var(--fds-spacing-6) + 1.6rem);
+    padding-left: calc(var(--fds-spacing-8) + var(--fds-spacing-3));
   }
 
   .icon {
@@ -201,8 +202,7 @@
 
   .description {
     padding-left: 0.1875rem;
-    margin-top: calc(var(--fds-spacing-2) * -1);
-    margin-bottom: 0;
+    margin: 0;
     color: var(--fds-semantic-text-neutral-subtle);
   }
 
@@ -212,7 +212,7 @@
     --fds-focus-border-width: 0.1875rem;
 
     position: absolute;
-    margin-left: -0.3rem;
+    margin-left: -0.15rem;
     left: 0;
     top: 0;
     display: inline-grid;
@@ -321,23 +321,6 @@
       stroke: var(--fds-semantic-border-input-hover);
     }
 
-    .icon-xsmall {
-      height: 1.375rem;
-      width: 1.375em;
-    }
-    .icon-small {
-      height: 1.6875rem;
-      width: 1.6875rem;
-    }
-    .icon-medium {
-      height: 2rem;
-      width: 2rem;
-    }
-    .icon-large {
-      height: 2.25rem;
-      width: 2.25rem;
-    }
-
     .font-xsmall {
       font-size: 0.8125rem;
     }
@@ -351,38 +334,51 @@
       font-size: 1.25rem;
     }
 
+    .icon-xsmall {
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+    .icon-small {
+      height: 1.375em;
+      width: 1.375em;
+    }
+    .icon-medium {
+      height: 1.6875rem;
+      width: 1.6875rem;
+    }
+    .icon-large {
+      height: 2rem;
+      width: 2rem;
+    }
+
     .control-xsmall {
+      min-width: 1.4rem;
+      min-height: 1.4rem;
+    }
+    .control-small {
       min-width: 1.5rem;
       min-height: 1.5rem;
     }
-    .control-small {
+    .control-medium {
       min-width: 2rem;
       min-height: 2rem;
     }
-    .control-medium {
+    .control-large {
       min-width: 2.5rem;
       min-height: 2.5rem;
-    }
-    .control-large {
-      min-width: 2.75rem;
-      min-height: 2.75rem;
     }
 
     .padding-xsmall {
       padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
     }
     .padding-small {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding-top: 0.24rem;
     }
     .padding-medium {
-      padding-top: 0.6rem;
-      padding-bottom: 0.6rem;
+      padding-top: 0.37rem;
     }
     .padding-large {
-      padding-top: 0.6rem;
-      padding-bottom: 0.6rem;
+      padding-top: 0.56rem;
     }
   }
 </style>
