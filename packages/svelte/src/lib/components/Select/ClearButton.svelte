@@ -3,12 +3,14 @@
 
   export let handleClick;
   export let deleteButtonLabel = 'Delete';
+  export let disabled;
 </script>
 
 <button
-  on:click={handleClick}
+  on:click={disabled ? null : handleClick}
   aria-label={deleteButtonLabel}
-  class={'delete-button clear-all'}><Cross /></button
+  class={`delete-button clear-all ${disabled ? 'disabled' : ''}`}
+  {disabled}><Cross /></button
 >
 
 <style>
@@ -57,6 +59,9 @@
       border-radius: 4px;
       margin-left: auto;
       background-color: transparent;
+      &:disabled {
+        color: lightgrey;
+      }
     }
   }
 </style>

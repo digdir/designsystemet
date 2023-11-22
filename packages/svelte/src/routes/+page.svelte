@@ -462,7 +462,7 @@
         icon={XMarkOctagonFillIcon}>Tab 3</TabItem
       >
     </TabList>
-    <TabContent value="1">Content 1</TabContent>
+    <TabContent value="1"><button>Content 1</button></TabContent>
     <TabContent value="2">Content 2</TabContent>
     <TabContent value="3">Content 3</TabContent>
   </Tabs>

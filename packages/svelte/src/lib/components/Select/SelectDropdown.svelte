@@ -42,6 +42,16 @@
     isHidden: hideSelected && isSelected(option),
     isSelected: isSelected(option),
   })); */
+
+  $: isOptionSelected = (option) => {
+    if (Array.isArray(selected)) {
+      // Handling for multiple select
+      return selected.some((sel) => sel.value === option.value);
+    } else {
+      // Handling for single select
+      return selected && selected.value === option.value;
+    }
+  };
 </script>
 
 <div
@@ -50,7 +60,7 @@
 >
   <ul class="options-list">
     {#each options as option (option.value)}
-      {@const isSelected = selected.some((sel) => sel.value === option.value)}
+      {@const isSelected = isOptionSelected(option)}
       <!--{#if !selected} -->
       <li
         class="option-item"

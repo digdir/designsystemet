@@ -110,9 +110,11 @@
 
   let selectedStore = writable(normalizeSelected(selected));
 
-  $: selectedStore.set(normalizeSelected(selected));
-
-  $: $selectedStore, (selected = normalizeSelected($selectedStore));
+  /*   $: if ($selectedStore) {
+    console.log('HIDEY HO');
+    selected = !multiple ? $selectedStore ?? null : $selectedStore;
+    console.log('newselected: ', $selectedStore);
+  } */
 
   // Add other values here if necessary for reactivity
   const selectContext = writable({
@@ -128,12 +130,13 @@
     isDropdownVisible = false;
   }
 
-  function normalizeSelected(selected) {
-    if (!selected) return [];
-    return Array.isArray(selected) ? selected : [selected];
+  function normalizeSelected(selectedOptions) {
+    if (!selectedOptions) return [];
+    return Array.isArray(selectedOptions) ? selectedOptions : [selectedOptions];
   }
 
   function selectOption(option) {
+    console.log('selectOption');
     selectedStore.update((currentSelected) => {
       if (multiple) {
         // If multiple selections are allowed
@@ -160,6 +163,10 @@
         return option;
       }
     });
+
+    selected = $selectedStore;
+    /* const asdselected = !multiple ? $selectedStore ?? null : $selectedStore;
+    console.log('asdselected', asdselected); */
 
     if (closeMenuOnSelect) {
       isDropdownVisible = false;
@@ -263,6 +270,8 @@
     {clearAll}
     {handleFilterChange}
     {searchLabel}
+    {disabled}
+    {error}
   />
 
   <SelectDropdown
@@ -280,12 +289,11 @@
 
 <style lang="scss">
   .error-message {
-    color: var(--fds-semantic-text-danger-default, #b3253a);
+    color: var(--fds-semantic-border-danger-default);
   }
 
   .select-label {
     color: var(--semantic-text-neutral-default, #1e2b3c);
-    font-family: Inter;
     font-size: 1rem;
     font-weight: 600;
     line-height: 130%; /* 20.15px */

@@ -26,16 +26,18 @@
    * @type {string}
    */
   export let deleteButtonLabel = 'Slett';
+
+  export let disabled;
 </script>
 
-<span class="multiSelectedOption">
+<span class={`multiSelectedOption ${disabled ? 'disabled' : ''}`}>
   <span class="optionLabel">{option.label}</span>
   {#if !readOnly}
-    <span class="delete-button-container">
+    <span class={`delete-button-container ${disabled ? 'disabled' : ''}`}>
       <button
-        on:click={() => removeOption(option)}
+        on:click={disabled ? null : () => removeOption(option)}
         aria-label={`${deleteButtonLabel} ${option.label}`}
-        class={'delete-button'}><Cross /></button
+        class={`delete-button ${disabled ? 'disabled' : ''}`}><Cross /></button
       >
     </span>
   {/if}
@@ -47,11 +49,14 @@
     align-items: center;
     color: #fff;
     border-radius: var(--border-radius-full, 9999px);
-    background: var(--semantic-surface-action-primary-active, #00315d);
+    background: var(--fds-semantic-surface-action-active, #00315d);
     padding: var(--fds-spacing-1) var(--fds-spacing-2);
     gap: var(--fds-spacing-2);
     --interactive-element-cursor: pointer;
     position: relative;
+    &.disabled {
+      background-color: lightgrey;
+    }
   }
 
   .optionLabel {
@@ -74,6 +79,12 @@
       background-color: var(--colors-red-500);
       cursor: pointer;
     }
+    &.disabled {
+      &:hover {
+        background-color: inherit;
+        cursor: not-allowed;
+      }
+    }
   }
 
   .delete-button {
@@ -94,16 +105,19 @@
       (var(--delete-cross-box-size) - var(--delete-cross-size)) / 2
     );
 
-    &:disabled {
-      --delete-cross-color: var(--delete-cross-color-disabled);
-    }
-
     right: 0;
     border: none;
     padding: 0;
 
     &:hover {
       background: var(--colors-red-500);
+    }
+
+    &.disabled {
+      background: inherit;
+      &:hover {
+        cursor: not-allowed;
+      }
     }
   }
 </style>

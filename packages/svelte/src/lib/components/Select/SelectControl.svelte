@@ -15,29 +15,56 @@
   export let clearAll;
   export let handleFilterChange;
   export let searchLabel;
+  export let disabled;
+  export let error;
 
   const selectContext = getContext('selectContext-' + inputId);
   $: selected = $selectContext.selected;
 
   let inputValue = '';
+  let isFiltering = false;
+  let inputElement;
 
   // Update filter inputValue
   function updateInputValue(event) {
     inputValue = event.target.value;
+    isFiltering = true;
     handleFilterChange(inputValue);
   }
 
-  // Existing logic to update inputValue based on selected option
-  $: if (!multiple && selected.length > 0) {
-    inputValue = selected[0].label;
+  $: if (!multiple && selected !== null) {
+    if (!isFiltering) {
+      inputValue = selected.label;
+    }
   } else if (!hasFilter) {
     inputValue = '';
+  }
+
+  function handleBlur() {
+    isFiltering = false;
+  }
+  function handleClick() {
+    handleSelectControlClick();
+    if (!inputElement) return;
+    inputElement.focus();
+  }
+  // Debounce setting the inputValue to avoid immediate reactivity
+  function setSelectedValue() {
+    if (!isFiltering && !multiple && selected) {
+      inputValue = selected.label;
+    }
+  }
+
+  $: if (selected) {
+    setTimeout(setSelectedValue, 150);
   }
 </script>
 
 <div
-  class="field {multiple ? 'multiple' : 'single'}"
-  on:click={handleSelectControlClick}
+  class="field {disabled ? 'disabled' : ''} {error ? 'error' : ''} {multiple
+    ? 'multiple'
+    : 'single'}"
+  on:click={handleClick}
 >
   <div class="input-container">
     {#if multiple}
@@ -47,13 +74,16 @@
             option={selectedOption}
             {removeOption}
             {readOnly}
+            {disabled}
           />
         {/each}
       </div>
     {/if}
     <input
+      bind:this={inputElement}
       bind:value={inputValue}
       on:input={updateInputValue}
+      on:blur={handleBlur}
       class="textInput {hasFilter ? '' : 'no-filter'}"
       id={inputId}
       placeholder={multiple && !hasFilter && selected && selected.length > 0
@@ -64,9 +94,13 @@
     />
   </div>
   {#if multiple && selected.length > 0}
-    <ClearButton handleClick={clearAll} />
+    <ClearButton
+      handleClick={clearAll}
+      {disabled}
+    />
   {/if}
-  <div class="chevron-container">
+  <hl class="separator {disabled ? 'disabled' : ''}" />
+  <div class={`chevron-container ${disabled ? 'disabled' : ''}`}>
     <Chevron />
   </div>
 </div>
@@ -100,6 +134,10 @@
     align-items: center;
     gap: var(--fds-spacing-2);
     margin-right: var(--fds-spacing-1);
+
+    &.disabled {
+      color: lightgrey;
+    }
   }
 
   .selected-options {
@@ -132,6 +170,24 @@
     padding: 0.25rem 0;
     &:hover {
       cursor: pointer;
+    }
+
+    &.disabled {
+      border: 1px solid lightgrey;
+    }
+    &.error {
+      border: 1px solid var(--fds-semantic-border-danger-default);
+    }
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.5rem;
+    background: var(--interface-common-info-900, #022f51);
+    margin-right: 0.25rem;
+    margin-left: 0.125rem;
+    &.disabled {
+      background: lightgrey;
     }
   }
 </style>
