@@ -285,22 +285,6 @@
       }
     }
   },
-  "letterSpacing": {
-    "0": {
-      "value": "0",
-      "type": "letterSpacing"
-    },
-    "1": {
-      "value": "0%",
-      "type": "letterSpacing"
-    }
-  },
-  "paragraphSpacing": {
-    "0": {
-      "value": "0",
-      "type": "paragraphSpacing"
-    }
-  },
   "textCase": {
     "none": {
       "value": "none",
@@ -315,12 +299,6 @@
     "underline": {
       "value": "underline",
       "type": "textDecoration"
-    }
-  },
-  "paragraphIndent": {
-    "0": {
-      "value": "0px",
-      "type": "dimension"
     }
   },
   "fontFamilies": {
