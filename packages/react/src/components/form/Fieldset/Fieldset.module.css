@@ -18,7 +18,7 @@
   display: inline-flex;
 }
 
-.readonly > .legend > .icon {
+.readonly > .legend > .padlock {
   height: 1.2em;
   width: 1.2em;
 }
