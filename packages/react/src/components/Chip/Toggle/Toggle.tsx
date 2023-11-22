@@ -15,8 +15,9 @@ export type ToggleChipProps = {
   checkmark?: boolean;
   /**
    * Changes padding and font-sizes.
+   * @default medium
    */
-  size?: 'xsmall' | 'small';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Toggles `aria-pressed` and visual-changes
    * */

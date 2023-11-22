@@ -5,7 +5,7 @@ import cn from 'classnames';
 import classes from '../Chip.module.css';
 
 export type ChipGroupContext = {
-  size?: 'xsmall' | 'small';
+  size?: 'small' | 'medium' | 'large';
 };
 
 export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
