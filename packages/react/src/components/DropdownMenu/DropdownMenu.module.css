@@ -1,6 +1,7 @@
 .dropdown {
   position: relative;
   padding: var(--fds-spacing-2);
+  z-index: 1500;
 }
 
 .dropdown.small {
