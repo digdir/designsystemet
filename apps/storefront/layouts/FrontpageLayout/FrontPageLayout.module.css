@@ -3,7 +3,7 @@
 }
 
 .header {
-  height: 520px;
+  height: 530px;
   margin-top: -100px;
   position: relative;
   overflow: hidden;
@@ -51,13 +51,38 @@
 }
 
 .cluster1 {
+  transform: translateY(0);
+  animation: floating 6s ease-in-out infinite;
+}
+
+.cluster2 {
+  transform: translateY(0);
+  animation: floating 6s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.cluster1 {
   position: absolute;
   left: 200px;
-  bottom: 200px;
+  bottom: 210px;
 }
 
 .cluster2 {
   position: absolute;
   right: 200px;
-  bottom: 200px;
+  bottom: 90px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

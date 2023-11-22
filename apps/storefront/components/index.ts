@@ -6,6 +6,7 @@ export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { Header } from './Header';
 export { ImageSection } from './ImageSection';
+export { ImageBanner } from './ImageBanner';
 export type {
   ImageSectionButtonProps,
   ImageSectionProps,
@@ -20,4 +21,3 @@ export { SidebarMenu } from './SidebarMenu';
 export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
-export { ElementCluster } from './ElementCluster';

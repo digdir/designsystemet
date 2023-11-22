@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './FrontPageLayout.module.css';
 import { Heading } from '@digdir/design-system-react';
-import { NavigationCard, Container, ElementCluster } from '@components';
+import { NavigationCard, Container, ImageBanner } from '@components';
 import { PaletteIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
 
 type FrontpageLayoutProps = {
@@ -14,8 +14,16 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
     <main id='main'>
       <div className={classes.header}>
         <div className={classes.content}>
-          <ElementCluster className={classes.cluster1} />
-          <ElementCluster className={classes.cluster2} />
+          <img
+            src='/img/elements/first.svg'
+            alt='test'
+            className={classes.cluster1}
+          />
+          <img
+            src='/img/elements/third.svg'
+            alt='test'
+            className={classes.cluster2}
+          />
           <Container className={classes.container}>
             <div className={classes.test}>
               <Heading size='large'>
@@ -50,6 +58,35 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
           </Container>
         </div>
       </div>
+
+      <ImageBanner
+        title='Bli med på samarbeidet?'
+        description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
+        imgSrc='/img/people-holding-figures.svg'
+        imgAlt='Bilde av 2 personer som går bortover med byggeklosser under armene'
+        headingLevel='h2'
+        imgWidth={1195}
+        imgHeight={270}
+      />
+      <ImageBanner
+        title='Bli med på samarbeidet?'
+        description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
+        imgSrc='/img/people-holding-figures.svg'
+        imgAlt='Bilde av 2 personer som går bortover med byggeklosser under armene'
+        headingLevel='h2'
+        imgWidth={1195}
+        imgHeight={270}
+        imgPosition='right'
+      />
+      <ImageBanner
+        title='Bli med på samarbeidet?'
+        description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
+        imgSrc='/img/people-holding-figures.svg'
+        imgAlt='Bilde av 2 personer som går bortover med byggeklosser under armene'
+        headingLevel='h2'
+        imgWidth={1195}
+        imgHeight={270}
+      />
     </main>
   );
 };
