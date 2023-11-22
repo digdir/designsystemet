@@ -1,0 +1,25 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Information } from '../../../../../docs-components';
+import * as SkipLinkStories from './SkipLink.stories';
+
+<Meta of={SkipLinkStories} />
+
+# SkipLink
+
+Skiplink-komponenten hjelper de som bruker tastatur og skjermleser med å hoppe over gjentakende innhold og raskt få tilgang til viktige seksjoner eller funksjoner på siden.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { SkipLink } from '@digdir/design-system-react';
+
+<SkipLink href='#main-content'>Hopp til hovedinnhold</SkipLink>
+
+<main id='main-content' tabIndex={-1} >
+  Region som kan motta fokus fra skiplink.
+</main>
+```
