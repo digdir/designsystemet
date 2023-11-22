@@ -527,7 +527,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f-3.v} + {font-scale.f-3.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f-3.v} + {font-scale.f-3.r})",
         "type": "fontSizes"
       }
     },
@@ -549,7 +549,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f-2.v} + {font-scale.f-2.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f-2.v} + {font-scale.f-2.r})",
         "type": "fontSizes"
       }
     },
@@ -571,7 +571,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f-1.v} + {font-scale.f-1.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f-1.v} + {font-scale.f-1.r})",
         "type": "fontSizes"
       }
     },
@@ -593,7 +593,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f0.v} + {font-scale.f0.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f0.v} + {font-scale.f0.r})",
         "type": "fontSizes"
       }
     },
@@ -615,7 +615,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f1.v} + {font-scale.f1.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f1.v} + {font-scale.f1.r})",
         "type": "fontSizes"
       }
     },
@@ -637,7 +637,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f2.v} + {font-scale.f2.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f2.v} + {font-scale.f2.r})",
         "type": "fontSizes"
       }
     },
@@ -659,7 +659,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f3.v} + {font-scale.f3.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f3.v} + {font-scale.f3.r})",
         "type": "fontSizes"
       }
     },
@@ -681,7 +681,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f4.v} + {font-scale.f4.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f4.v} + {font-scale.f4.r})",
         "type": "fontSizes"
       }
     },
@@ -703,7 +703,7 @@
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.width}/100) * {font-scale.f5.v} + {font-scale.f5.r})",
+        "value": "round(({viewport.max}/100) * {font-scale.f5.v} + {font-scale.f5.r})",
         "type": "fontSizes"
       }
     }

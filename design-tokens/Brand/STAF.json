@@ -408,7 +408,6 @@
           "active": {
             "value": "{brand.alt1.700}",
             "type": "color",
-            "$extensions": {},
             "description": "Standard farge for handlinger"
           },
           "no_fill": {
@@ -444,7 +443,6 @@
           "active": {
             "value": "{brand.alt2.900}",
             "type": "color",
-            "$extensions": {},
             "description": "Standard farge for handlinger"
           },
           "no_fill": {
@@ -598,6 +596,13 @@
       "value": "Open Sans",
       "type": "fontFamilies",
       "description": "Vi overskriver default font family Inter, med STAF sin font family Open Sans."
+    }
+  },
+  "viewport": {
+    "max": {
+      "value": "1920",
+      "type": "sizing",
+      "description": "STAF øker fra 1360 til 1920 som max viewport."
     }
   }
 }
