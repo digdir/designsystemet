@@ -4,7 +4,7 @@ import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
 
 import { Paragraph } from '../../Typography';
-import { ChipGroupContext } from '../Group';
+import { ChipGroupContext } from '../Group/Group';
 import utilityClasses from '../../../utilities/utility.module.css';
 import classes from '../Chip.module.css';
 
