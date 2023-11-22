@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  max-width: 800px;
+  margin: var(--fds-spacing-7) 0;
+}
+
+.container .img {
+  box-shadow: none;
+  margin: 0;
+}
+
+.boxShadow {
+  box-shadow: var(--fds-shadow-medium);
+}
