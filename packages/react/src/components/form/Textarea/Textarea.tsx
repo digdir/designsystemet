@@ -18,9 +18,10 @@ export type TextareaProps = {
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
-  /** Changes field size and paddings */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-
+  /** Changes field size and paddings
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *

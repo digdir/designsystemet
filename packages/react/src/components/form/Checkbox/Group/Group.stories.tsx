@@ -32,6 +32,7 @@ Preview.args = {
   readOnly: false,
   disabled: false,
   error: '',
+  size: 'medium',
 };
 
 export const Error: StoryFn<typeof Checkbox> = () => (

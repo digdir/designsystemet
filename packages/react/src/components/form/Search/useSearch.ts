@@ -21,7 +21,6 @@ const sizeMap: Record<
   NonNullable<FormField['size']>,
   'small' | 'medium' | 'large'
 > = {
-  xsmall: 'small',
   small: 'small',
   medium: 'medium',
   large: 'large',

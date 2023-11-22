@@ -20,7 +20,7 @@ type CharacterCounterProps = {
   /** The ID of the element that describes the maximum character limit for accessibility purposes. */
   id: string;
   /** Text size */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 const defaultLabel: CharacterCounterProps['label'] = (count) =>

@@ -53,13 +53,18 @@
   padding: var(--fds-spacing-1) 0;
 }
 
-.xsmall {
+.small {
   --fdsc-chip-height: var(--fds-sizing-6);
   --fdsc-chip-padding: var(--fds-spacing-2);
 }
 
-.small {
+.medium {
   --fdsc-chip-height: var(--fds-sizing-7);
+  --fdsc-chip-padding: var(--fds-spacing-3);
+}
+
+.large {
+  --fdsc-chip-height: var(--fds-sizing-8);
   --fdsc-chip-padding: var(--fds-spacing-3);
 }
 
@@ -85,12 +90,16 @@
   padding-right: var(--fdsc-removable-chip-xmark-padding_right);
 }
 
-.removable.xsmall {
+.removable.small {
   --fdsc-removable-chip-size: var(--fds-sizing-6);
 }
 
-.removable.small {
+.removable.medium {
   --fdsc-removable-chip-size: var(--fds-sizing-7);
+}
+
+.removable.large {
+  --fdsc-removable-chip-size: var(--fds-sizing-8);
 }
 
 .removable:hover,
@@ -112,8 +121,18 @@
   padding-left: var(--fds-spacing-1) !important;
 }
 
-.checkmarkIcon {
+.small .checkmarkIcon {
   height: var(--fds-sizing-5);
+  width: auto;
+}
+
+.medium .checkmarkIcon {
+  height: 24px;
+  width: auto;
+}
+
+.large .checkmarkIcon {
+  height: 26px;
   width: auto;
 }
 
@@ -127,10 +146,14 @@
   margin: 0;
 }
 
-.groupContainer.xsmall {
+.groupContainer.small {
   --fdsc-gap: var(--fds-spacing-2);
 }
 
-.groupContainer.small {
-  --fdsc-gap: var(--fds-spacing-3);
+.groupContainer.medium {
+  --fdsc-gap: var(--fds-spacing-2);
+}
+
+.groupContainer.large {
+  --fdsc-gap: var(--fds-spacing-2);
 }

@@ -26,7 +26,6 @@
   background-image: none;
 }
 
-.select.xsmall,
 .select.small {
   padding: 0 var(--fds-spacing-2);
   padding-right: var(--fds-spacing-8);
@@ -66,8 +65,8 @@
 }
 
 .padlock {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 1.2em;
+  width: 1.2em;
 }
 
 .errorMessage:empty {

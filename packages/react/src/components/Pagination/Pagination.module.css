@@ -15,7 +15,11 @@
 }
 
 .pagination.medium {
-  --fdsc-pagination-chevron-margin: var(--fds-spacing-6);
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
+}
+
+.pagination.large {
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
 }
 
 .pagination li:first-child {
@@ -39,6 +43,11 @@
 .listitem.medium {
   --fsdc-pagination-listitem-margin: var(--fds-spacing-4);
   --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
+}
+
+.listitem.large {
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-6);
+  --fdsc-pagination-ellipsis-width: var(--fds-sizing-12);
 }
 
 .listitem.compact {
