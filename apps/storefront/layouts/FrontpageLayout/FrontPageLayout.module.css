@@ -1,0 +1,44 @@
+.frontpage {
+  color: red;
+}
+
+.header {
+  height: 520px;
+  margin-top: -100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  background-color: var(--fds-semantic-background-subtle);
+  position: absolute;
+  height: 200vh;
+  width: 300vw;
+  left: -100vw;
+  bottom: 110px;
+  border-radius: 50%;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 150px;
+}
+
+.cards {
+  display: grid;
+  grid-row-gap: var(--grid-gap);
+  grid-column-gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  width: 1200px;
+}
+
+.test {
+  width: 500px;
+  text-align: center;
+  margin-bottom: 36px;
+}

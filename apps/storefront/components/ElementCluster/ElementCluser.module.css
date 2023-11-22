@@ -1,0 +1,20 @@
+.cluster {
+}
+
+.first {
+  height: 62px;
+  width: 62px;
+  background-color: var(--fds-brand-alt1-300);
+}
+
+.second {
+  height: 62px;
+  width: 62px;
+  background-color: var(--fds-brand-alt2-300);
+}
+
+.third {
+  height: 62px;
+  width: 62px;
+  background-color: var(--fds-brand-alt3-300);
+}

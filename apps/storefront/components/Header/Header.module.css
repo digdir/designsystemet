@@ -2,8 +2,10 @@
   height: 96px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--fds-semantic-border-neutral-subtle);
-  background-color: white;
+  /* border-bottom: 1px solid var(--fds-semantic-border-neutral-subtle);
+  background-color: white; */
+  z-index: 1;
+  position: relative;
 }
 
 .container {
