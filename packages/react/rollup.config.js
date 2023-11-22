@@ -45,8 +45,6 @@ export default [
       postcss(
         // This is to make sure names match those in built css files
         {
-          // to: 'css-react.css',
-
           // extract: true, // disabled until our css package is released and people are informed of new setup
           modules: {
             generateScopedName,
