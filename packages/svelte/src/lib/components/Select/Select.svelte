@@ -280,7 +280,7 @@
 
 <style lang="scss">
   .error-message {
-    color: var(--fds-semantic-border-danger-default);
+    color: var(--fds-semantic-text-danger-default, #b3253a);
   }
 
   .select-label {

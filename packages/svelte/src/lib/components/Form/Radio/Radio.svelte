@@ -285,11 +285,11 @@
   }
 
   .error .input:not(:disabled, :focus-visible) ~ .icon .box {
-    stroke: var(--fds-semantic-border-danger-default);
+    stroke: var(--fds-semantic-text-danger-default, #b3253a);
   }
 
   .error .input:not(:disabled, :focus-visible) ~ .icon .checked {
-    fill: var(--fds-semantic-border-danger-default);
+    fill: var(--fds-semantic-text-danger-default, #b3253a);
   }
 
   .readonly .input:read-only:not(:focus-visible) ~ .icon .box {
