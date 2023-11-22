@@ -1,20 +1,36 @@
 .cluster {
+  height: 140px;
+  width: 160px;
+  position: relative;
+}
+
+.first,
+.second,
+.third {
+  border-radius: 50%;
+  position: absolute;
 }
 
 .first {
-  height: 62px;
-  width: 62px;
+  height: 41px;
+  width: 41px;
   background-color: var(--fds-brand-alt1-300);
+  top: 0;
+  left: calc(50% - 31px);
 }
 
 .second {
-  height: 62px;
-  width: 62px;
+  height: 52px;
+  width: 52px;
   background-color: var(--fds-brand-alt2-300);
+  bottom: 0;
+  right: 0;
 }
 
 .third {
-  height: 62px;
-  width: 62px;
+  height: 63px;
+  width: 63px;
   background-color: var(--fds-brand-alt3-300);
+  bottom: 0;
+  left: 0;
 }

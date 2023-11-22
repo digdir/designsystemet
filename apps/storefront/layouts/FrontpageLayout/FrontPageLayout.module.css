@@ -16,7 +16,7 @@
   height: 200vh;
   width: 300vw;
   left: -100vw;
-  bottom: 110px;
+  bottom: 120px;
   border-radius: 50%;
 }
 
@@ -29,16 +29,35 @@
   padding-top: 150px;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 .cards {
   display: grid;
   grid-row-gap: var(--grid-gap);
   grid-column-gap: var(--grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  width: 1200px;
+  width: 100%;
 }
 
 .test {
   width: 500px;
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 41px;
+}
+
+.cluster1 {
+  position: absolute;
+  left: 200px;
+  bottom: 200px;
+}
+
+.cluster2 {
+  position: absolute;
+  right: 200px;
+  bottom: 200px;
 }
