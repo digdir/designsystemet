@@ -50,6 +50,10 @@
   --fdsc-pagination-ellipsis-width: var(--fds-sizing-12);
 }
 
+.listitem.compact {
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-1);
+}
+
 .ellipsis {
   margin-top: 0.5em;
   text-align: center;
