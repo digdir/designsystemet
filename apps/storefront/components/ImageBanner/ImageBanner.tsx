@@ -1,10 +1,12 @@
-import React, { useEffect, useState, createElement } from 'react';
+import React, { useEffect, useState, createElement, useRef } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 
 import { Container } from '../Container/Container';
 
 import classes from './ImageBanner.module.css';
+
+import * as LottiePlayer from '@lottiefiles/lottie-player';
 
 interface ImageSectionProps {
   title?: string;
@@ -20,6 +22,8 @@ interface ImageSectionProps {
   buttons?: ImageSectionButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
   imgPosition?: 'left' | 'right';
+  region?: React.ReactNode;
+  regionPosition?: 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
 }
 
 type ImageSectionButtonProps = {
@@ -42,8 +46,11 @@ const ImageBanner = ({
   imgPosition = 'left',
   imgAlt = '',
   headingLevel = 'h1',
+  region,
+  regionPosition = 'topLeft',
 }: ImageSectionProps) => {
   const [heading, setHeading] = useState<React.ReactNode | null>(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     setHeading(
@@ -51,20 +58,27 @@ const ImageBanner = ({
     );
   }, [headingLevel, title]);
 
+  React.useEffect(() => {
+    import('@lottiefiles/lottie-player');
+  });
+
   return (
-    <div className={classes[backgroundColor]}>
-      <Container className={cn(classes.section)}>
+    <div className={(classes[backgroundColor], classes.section)}>
+      <div className={classes.region}>{region}</div>
+      <Container className={cn(classes.container)}>
         {imgPosition === 'left' && (
           <div className={classes.imgContainer}>
-            <Image
-              className={classes.img}
-              src={imgSrc}
-              alt={imgAlt}
-              height={imgHeight}
-              width={imgWidth}
-            />
+            <lottie-player
+              autoplay
+              loop
+              mode='normal'
+              ref={ref}
+              src='/animations/animation2.json'
+              style={{ width: '430px' }}
+            ></lottie-player>
           </div>
         )}
+
         <div className={classes.textContainer}>
           {title && heading}
           {description && <p className={classes.desc}>{description}</p>}
@@ -97,13 +111,14 @@ const ImageBanner = ({
         </div>
         {imgPosition === 'right' && (
           <div className={classes.imgContainer}>
-            <Image
-              className={classes.img}
-              src={imgSrc}
-              alt={imgAlt}
-              height={imgHeight}
-              width={imgWidth}
-            />
+            <lottie-player
+              autoplay
+              loop
+              mode='normal'
+              ref={ref}
+              src='/animations/animation1.json'
+              style={{ width: '370px' }}
+            ></lottie-player>
           </div>
         )}
       </Container>

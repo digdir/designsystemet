@@ -12,6 +12,7 @@
   "dependencies": {
     "@altinn/altinn-design-system": "^0.27.2",
     "@altinn/figma-design-tokens": "^5.0.0",
+    "@lottiefiles/lottie-player": "^2.0.2",
     "@mdx-js/loader": "^2.0.0-rc.2",
     "@mdx-js/react": "^1.6.22",
     "@navikt/aksel-icons": "^2.8.4",
@@ -21,6 +22,7 @@
     "@types/react-syntax-highlighter": "^15.5.6",
     "@vercel/analytics": "^1.0.2",
     "hastscript": "^7.2.0",
+    "lottie-react": "^2.4.0",
     "mdx-embed": "^1.1.2",
     "next": "^14.0.0",
     "normalize.css": "^8.0.1",

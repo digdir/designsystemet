@@ -3,8 +3,8 @@
 }
 
 .header {
-  height: 530px;
-  margin-top: -100px;
+  height: 525px;
+  margin-top: -106px;
   position: relative;
   overflow: hidden;
 }
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 140px;
 }
 
 .container {
@@ -45,32 +45,46 @@
 }
 
 .test {
-  width: 500px;
+  width: 550px;
   text-align: center;
   margin-bottom: 41px;
 }
 
-.cluster1 {
-  transform: translateY(0);
-  animation: floating 6s ease-in-out infinite;
-}
-
+.cluster1,
 .cluster2 {
   transform: translateY(0);
   animation: floating 6s ease-in-out infinite;
-  animation-delay: 0.5s;
 }
 
 .cluster1 {
   position: absolute;
-  left: 200px;
+  left: 60px;
   bottom: 210px;
 }
 
 .cluster2 {
   position: absolute;
-  right: 200px;
-  bottom: 90px;
+  right: 60px;
+  bottom: 70px;
+  animation-delay: 0.5s;
+}
+
+.cluster3 {
+  position: absolute;
+  bottom: 70px;
+  left: 100px;
+  transform: rotate(65deg);
+}
+
+.cluster4 {
+  position: absolute;
+  top: 70px;
+  right: 80px;
+  height: 150px;
+}
+
+.banners {
+  margin: 60px 0;
 }
 
 @keyframes floating {
@@ -79,7 +93,7 @@
   }
 
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-25px);
   }
 
   100% {
