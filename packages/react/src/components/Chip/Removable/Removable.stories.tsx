@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { RemovableChip } from './';
+import { RemovableChip } from './Removable';
 
 const meta: Meta<typeof RemovableChip> = {
   title: 'Felles/Chip/Removable',
