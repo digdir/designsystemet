@@ -16,7 +16,7 @@ type Story = StoryFn<typeof Group>;
 
 export const Preview: Story = (args) => (
   <Chip.Group {...args}>
-    <Chip.Toggle>Nynorsk</Chip.Toggle>
+    <Chip.Removable>Nynorsk</Chip.Removable>
     <Chip.Toggle>Bokmål</Chip.Toggle>
   </Chip.Group>
 );
