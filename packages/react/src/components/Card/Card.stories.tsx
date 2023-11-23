@@ -13,9 +13,6 @@ type Story = StoryFn<typeof Card>;
 export default {
   title: 'Felles/Card',
   component: Card,
-  parameters: {
-    layout: 'padded',
-  },
 } as Meta;
 
 const CatImage: JSX.Element = (
@@ -44,17 +41,14 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  shadow: 'medium',
-  variant: 'neutral',
+  color: 'neutral',
 };
 
 export const Variants: StoryFn<typeof Card> = () => {
   return (
     <>
       <Card
-        variant='neutral'
-        borderRadius='large'
-        borderColor='subtle'
+        color='neutral'
         MediaImage={CatImage}
       >
         <Card.Header>
@@ -73,15 +67,9 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Divider color='subtle' />
-        <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
-        </Card.Footer>
       </Card>
       <Card
-        variant='subtle'
-        borderRadius='large'
-        borderColor='subtle'
+        color='subtle'
         MediaImage={CatImage}
       >
         <Card.Header>
@@ -105,15 +93,9 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Divider color='subtle' />
-        <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
-        </Card.Footer>
       </Card>
       <Card
-        variant='first'
-        borderRadius='large'
-        borderColor='subtle'
+        color='first'
         MediaImage={CatImage}
       >
         <Card.Header>
@@ -132,15 +114,9 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Divider color='subtle' />
-        <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
-        </Card.Footer>
       </Card>
       <Card
-        variant='second'
-        borderRadius='large'
-        borderColor='subtle'
+        color='second'
         MediaImage={CatImage}
       >
         <Card.Header>
@@ -159,15 +135,9 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Divider color='subtle' />
-        <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
-        </Card.Footer>
       </Card>
       <Card
-        variant='third'
-        borderRadius='large'
-        borderColor='subtle'
+        color='third'
         MediaImage={CatImage}
       >
         <Card.Header>
@@ -186,10 +156,6 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Card.Content>
-        <Divider color='subtle' />
-        <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
-        </Card.Footer>
       </Card>
     </>
   );

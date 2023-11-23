@@ -25,26 +25,6 @@ describe('Card Component', () => {
     expect(screen.getByTitle('card')).toBeInTheDocument();
   });
 
-  it('applies shadow prop correctly', () => {
-    const shadow = 'xsmall';
-    renderCard({ shadow });
-    expect(screen.getByTitle('card')).toHaveClass(`${shadow}Shadow`);
-  });
-
-  it('applies borderRadius prop correctly', () => {
-    const borderRadius = 'small';
-    renderCard({ borderRadius });
-    expect(screen.getByTitle('card')).toHaveClass(
-      `${borderRadius}BorderRadius`,
-    );
-  });
-
-  it('applies variant prop correctly', () => {
-    const variant = 'neutral';
-    renderCard({ variant });
-    expect(screen.getByTitle('card')).toHaveClass(`${variant}Background`);
-  });
-
   it('renders media image if provided', () => {
     const mediaImage = 'some/media/image/path';
     const media = (

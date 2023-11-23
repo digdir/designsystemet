@@ -16,57 +16,57 @@ a.card {
   height: auto;
 }
 
-.card.neutralBackground {
+.card.neutral {
   background-color: var(--fds-semantic-surface-neutral-default);
 }
 
-.card.subtleBackground {
+.card.subtle {
   background-color: var(--fds-semantic-surface-neutral-subtle);
 }
 
-.card.neutralBackground:hover,
-.card.subtleBackground:hover {
+.card.neutral:hover,
+.card.subtle:hover {
   background-color: var(--fds-semantic-surface-neutral-subtle-hover);
 }
 
-.card.neutralBackground:active,
-.card.subtleBackground:active {
+.card.neutral:active,
+.card.subtle:active {
   background-color: var(--fds-semantic-surface-neutral-subtle-hover);
 }
 
-.card.firstBackground {
+.card.first {
   background-color: var(--fds-semantic-surface-first-light);
 }
 
-.card.firstBackground:hover {
+.card.first:hover {
   background-color: var(--fds-semantic-surface-first-light-hover);
 }
 
-.card.firstBackground:active {
+.card.first:active {
   background-color: var(--fds-semantic-surface-first-light-active);
 }
 
-.card.secondBackground {
+.card.second {
   background-color: var(--fds-semantic-surface-second-light);
 }
 
-.card.secondBackground:hover {
+.card.second:hover {
   background-color: var(--fds-semantic-surface-second-light-hover);
 }
 
-.card.secondBackground:active {
+.card.second:active {
   background-color: var(--fds-semantic-surface-second-light-active);
 }
 
-.card.thirdBackground {
+.card.third {
   background-color: var(--fds-semantic-surface-third-light);
 }
 
-.card.thirdBackground:hover {
+.card.third:hover {
   background-color: var(--fds-semantic-surface-third-light-hover);
 }
 
-.card.thirdBackground:active {
+.card.third:active {
   background-color: var(--fds-semantic-surface-third-light-active);
 }
 
