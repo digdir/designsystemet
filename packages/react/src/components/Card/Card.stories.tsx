@@ -4,7 +4,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import media from '../../../../../assets/img/card-media.png';
 import { Heading, Paragraph } from '../Typography';
 import { Stack } from '../../../../../docs-components';
-import { Divider } from '../..';
 
 import { Card } from '.';
 

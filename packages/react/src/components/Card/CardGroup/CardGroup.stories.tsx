@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
 
 import { Card } from '..';
-import { Select } from '../../Select';
+import { NativeSelect } from '../../form/NativeSelect';
 import { Textfield } from '../../form/Textfield';
 import { Paragraph } from '../../Typography';
 import { Button } from '../../Button';
@@ -18,14 +18,16 @@ const meta: Meta<typeof CardGroup> = {
 
 export default meta;
 
+const options = [
+  { value: 'daglig leder', label: 'Dalig leder' },
+  { value: 'forretningsfører', label: 'Forretningsfører' },
+];
+
 type Story = StoryFn<typeof CardGroup>;
 
 export const Preview: Story = (args) => (
   <Card.Group {...args}>
-    <Card
-      borderRadius='large'
-      borderColor='subtle'
-    >
+    <Card>
       <Card.Header>
         <Paragraph size='medium'>Rolle 1</Paragraph>
         <Button
@@ -39,13 +41,16 @@ export const Preview: Story = (args) => (
       </Card.Header>
       <Divider color='subtle' />
       <Card.Content>
-        <Select
-          label='Velg rolle'
-          options={[
-            { value: 'daglig leder', label: 'Dalig leder' },
-            { value: 'forretningsfører', label: 'Forretningsfører' },
-          ]}
-        />
+        <NativeSelect label='Velg rolle'>
+          {options.map(({ value, label }, index) => (
+            <option
+              key={index}
+              value={value}
+            >
+              {label}
+            </option>
+          ))}
+        </NativeSelect>
         <Textfield
           size='small'
           label='Fødsels- eller d-nummer'
@@ -56,10 +61,7 @@ export const Preview: Story = (args) => (
         />
       </Card.Content>
     </Card>
-    <Card
-      borderRadius='large'
-      borderColor='subtle'
-    >
+    <Card>
       <Card.Header>
         <Paragraph size='medium'>Rolle 2</Paragraph>
         <Button
@@ -73,13 +75,16 @@ export const Preview: Story = (args) => (
       </Card.Header>
       <Divider color='subtle' />
       <Card.Content>
-        <Select
-          label='Velg rolle'
-          options={[
-            { value: 'daglig leder', label: 'Dalig leder' },
-            { value: 'forretningsfører', label: 'Forretningsfører' },
-          ]}
-        />
+        <NativeSelect label='Velg rolle'>
+          {options.map(({ value, label }, index) => (
+            <option
+              key={index}
+              value={value}
+            >
+              {label}
+            </option>
+          ))}
+        </NativeSelect>
         <Textfield
           size='small'
           label='Fødsels- eller d-nummer'
