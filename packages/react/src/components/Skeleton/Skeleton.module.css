@@ -1,0 +1,27 @@
+.skeleton {
+  /* background: linear-gradient(90deg, #ddd, #e8e8e8, #ddd 80px);
+  animation: gradient-animation 1.6s linear infinite;
+  background-size: 200%; */
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  animation: opacity-animation 0.8s linear infinite alternate;
+}
+
+@keyframes opacity-animation {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 150% 50%;
+  }
+
+  100% {
+    background-position: -50% 50%;
+  }
+}
