@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .card.neutral {
@@ -44,8 +46,24 @@
   margin: 0;
 }
 
+.media {
+  width: auto;
+}
+
 .media > * {
+  display: flex;
+  width: 100%;
   border: 0;
+}
+
+.media:first-child > * {
+  border-top-left-radius: var(--fds-border_radius-medium);
+  border-top-right-radius: var(--fds-border_radius-medium);
+}
+
+.media:last-child > * {
+  border-bottom-left-radius: var(--fds-border_radius-medium);
+  border-bottom-right-radius: var(--fds-border_radius-medium);
 }
 
 .section {

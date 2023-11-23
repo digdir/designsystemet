@@ -363,7 +363,7 @@ export const Video: Story = () => (
       <iframe
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
         width='320px'
-        height='180px'
+        height='179px'
         allow='autoplay; fullscreen; picture-in-picture'
         title='30 år med digitalt innsyn'
       ></iframe>
