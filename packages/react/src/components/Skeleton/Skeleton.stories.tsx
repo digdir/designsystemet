@@ -25,16 +25,21 @@ export const Other: StoryFn<typeof Skeleton> = (args) => {
         display: 'flex',
         flexDirection: 'column',
         gap: '5px',
+        height: '700px',
+        width: '700px',
       }}
     >
       <div style={{ display: 'flex', fontSize: '10rem', gap: '5px' }}>
+        <Skeleton.Circle />
         <Skeleton.Circle
           width='100px'
           height='100px'
         />
-        <Skeleton.Circle />
       </div>
-      <Skeleton.Circle />
+      <Skeleton.Circle
+        width='50%'
+        height='50%'
+      />
       <Skeleton.Circle />
       <Skeleton.Circle />
       <Skeleton.Circle />

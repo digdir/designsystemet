@@ -1,6 +1,8 @@
 import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
 import { Information } from '../../../../../docs-components';
 import * as SkeletonStories from './Skeleton.stories';
+import * as CircleStories from './Circle/Circle.stories';
+import * as RectangleStories from './Rectangle/Rectangle.stories';
 
 <Meta of={SkeletonStories} />
 
@@ -12,3 +14,12 @@ import * as SkeletonStories from './Skeleton.stories';
 ## Test
 
 <Canvas of={SkeletonStories.Other} />
+
+## Circle
+
+<Canvas of={CircleStories.Preview} />
+
+## Rectangle
+
+<Canvas of={RectangleStories.Preview} />
+<Canvas of={RectangleStories.RectangleExample} />

@@ -12,7 +12,7 @@ export default {
 
 export const Preview: Story = {
   args: {
-    width: 10,
-    height: '10px',
+    width: '100px',
+    height: '100px',
   },
 };

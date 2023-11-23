@@ -1,4 +1,8 @@
 import { Circle as SkeletonCircle, type CircleProps } from './Circle/Circle';
+import {
+  Rectangle as SkeletonRectangle,
+  type RectangleProps,
+} from './Rectangle/Rectangle';
 
 type SkeletonComponent = {
   /**
@@ -11,13 +15,16 @@ type SkeletonComponent = {
    *   <Skeleton.Rectangle />
    */
   Circle: typeof SkeletonCircle;
+  Rectangle: typeof SkeletonRectangle;
 };
 
 const Skeleton: SkeletonComponent = {
   Circle: SkeletonCircle,
+  Rectangle: SkeletonRectangle,
 };
 
 Skeleton.Circle.displayName = 'Skeleton.Circle';
+Skeleton.Rectangle.displayName = 'Skeleton.Rectangle';
 
-export type { CircleProps };
-export { Skeleton, SkeletonCircle };
+export type { CircleProps, RectangleProps };
+export { Skeleton, SkeletonCircle, SkeletonRectangle };
