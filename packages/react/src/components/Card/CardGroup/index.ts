@@ -1,1 +1,1 @@
-export * from './CardGroup';
+export * from '../CardGroup';

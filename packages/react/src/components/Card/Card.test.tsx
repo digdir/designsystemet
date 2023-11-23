@@ -3,9 +3,9 @@ import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CardProps } from './Card';
 import { Card } from './Card';
-import { CardContent } from './CardContent/CardContent';
-import { CardFooter } from './CardFooter/CardFooter';
-import { CardHeader } from './CardHeader/CardHeader';
+import { CardContent } from './CardContent';
+import { CardFooter } from './CardFooter';
+import { CardHeader } from './CardHeader';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(
