@@ -3,9 +3,7 @@ import cn from 'classnames';
 
 import classes from '../Card.module.css';
 
-export type CardFooterProps = {
-  children?: React.ReactNode;
-} & HTMLAttributes<HTMLDivElement>;
+export type CardFooterProps = HTMLAttributes<HTMLDivElement>;
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ children, ...rest }, ref) => (

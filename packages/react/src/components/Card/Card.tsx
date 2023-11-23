@@ -8,7 +8,7 @@ import classes from './Card.module.css';
 
 export type CardProps = {
   /**
-   * Variant background color of the card, undefined for no background and hover or active state
+   * Changes background & border color
    * @default neutral
    */
   color?: 'neutral' | 'subtle' | 'first' | 'second' | 'third';

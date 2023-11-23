@@ -74,12 +74,9 @@ a.card {
   margin-left: var(--fds-spacing-4);
 }
 
-.groupContainer {
-  --fdsc-gap: var(--fds-spacing-2);
-
+.group {
   display: flex;
-  max-width: 1000px;
-  gap: var(--fdsc-gap);
+  gap: var(--fds-spacing-2);
   list-style-type: none;
   padding: 0;
   margin: 0;
