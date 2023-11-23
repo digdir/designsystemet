@@ -1,7 +1,7 @@
 import React, { forwardRef, type HTMLAttributes } from 'react';
 import cn from 'classnames';
 
-import classes from '../Card.module.css';
+import classes from './Card.module.css';
 
 export type CardFooterProps = HTMLAttributes<HTMLDivElement>;
 
