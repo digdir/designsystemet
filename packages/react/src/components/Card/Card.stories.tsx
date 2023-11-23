@@ -276,15 +276,10 @@ export const Video: Story = () => (
     <Card.Media>
       <iframe
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-        width='320'
-        height='240'
+        width='320px'
+        height='180px'
         allow='autoplay; fullscreen; picture-in-picture'
         title='30 år med digitalt innsyn'
-        style={{
-          borderTopLeftRadius: '4px',
-          borderTopRightRadius: '4px',
-          marginTop: '-2px',
-        }}
       ></iframe>
     </Card.Media>
     <Card.Header>
