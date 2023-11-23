@@ -35,18 +35,22 @@ export type PopoverProps = {
   anchorEl: Element | null;
   /**
    * Placement of the tooltip on the trigger.
-   * @default 'top'
+   * @default top
    */
   placement?: Placement;
   /**
    * Variant of the popover.
-   * @default 'default'
+   * @default default
    */
   variant?: 'default' | 'info' | 'warning' | 'danger';
   /** Whether the tooltip is open or not.
    * This overrides the internal state of the tooltip.
    */
   open?: boolean;
+  /** Size of the popover
+   * @default small
+   */
+  size?: 'small' | 'medium' | 'large';
   /** Callback function when popover closes */
   onClose?: () => void;
 } & HTMLAttributes<HTMLDivElement>;
@@ -60,6 +64,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       anchorEl,
       className,
       variant = 'default',
+      size = 'small',
       onClose,
       ...restHTMLProps
     },
@@ -126,8 +131,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           <Paragraph
             ref={floatingEl}
             as={'div'}
-            size='small'
-            className={cn(classes.popover, classes[variant], className)}
+            size={size}
+            className={cn(
+              classes.popover,
+              classes[variant],
+              classes[size],
+              className,
+            )}
             data-placement={flPlacement}
             aria-hidden={!open || !anchorEl}
             {...getFloatingProps({

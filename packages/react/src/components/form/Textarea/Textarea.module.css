@@ -4,8 +4,8 @@
 }
 
 .padlock {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 1.2em;
+  width: 1.2em;
 }
 
 .errorMessage:empty {
@@ -30,7 +30,7 @@
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
-  min-height: 2.5em;
+  min-height: 44px;
   width: 100%;
   appearance: none;
   padding: var(--fds-spacing-3);
@@ -39,7 +39,6 @@
   resize: vertical;
 }
 
-.textarea.xsmall,
 .textarea.small {
   padding: var(--fds-spacing-2);
 }

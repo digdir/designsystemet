@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Chip } from './index';
+import { Chip } from '.';
 
 type Story = StoryObj<typeof Chip.Toggle>;
 

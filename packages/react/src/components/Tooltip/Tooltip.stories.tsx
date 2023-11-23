@@ -26,6 +26,7 @@ export const Preview: Story = {
   args: {
     content: 'Tooltip text',
     children: defaultChildren,
+    placement: 'top',
   },
 };
 

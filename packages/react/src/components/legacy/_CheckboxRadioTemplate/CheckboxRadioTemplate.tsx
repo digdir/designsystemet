@@ -9,6 +9,7 @@ import cn from 'classnames';
 
 import { HelpText } from '../../HelpText';
 import utilityClasses from '../../../utilities/utility.module.css';
+import type { HelpTextProps } from '../../HelpText/HelpText';
 
 import classes from './CheckboxRadioTemplate.module.css';
 
@@ -31,6 +32,13 @@ export interface CheckboxRadioTemplateProps {
   type: 'checkbox' | 'radio';
   value?: string;
 }
+
+const SIZE_MAP: {
+  [key in CheckboxRadioTemplateProps['size']]: HelpTextProps['size'];
+} = {
+  xsmall: 'small',
+  small: 'medium',
+};
 
 export const CheckboxRadioTemplate = forwardRef<
   HTMLInputElement,
@@ -117,7 +125,7 @@ export const CheckboxRadioTemplate = forwardRef<
               )}
               {helpText && (
                 <HelpText
-                  size={size}
+                  size={SIZE_MAP[size]}
                   title={
                     typeof label === 'string' ? `Help text for ${label}` : ''
                   }
