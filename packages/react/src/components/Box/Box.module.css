@@ -1,7 +1,3 @@
-.box {
-  display: block;
-}
-
 .xsmallShadow {
   box-shadow: var(--fds-shadow-xsmall);
 }

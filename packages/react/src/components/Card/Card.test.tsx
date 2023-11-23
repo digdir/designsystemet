@@ -6,6 +6,7 @@ import { Card } from './Card';
 import { CardContent } from './CardContent';
 import { CardFooter } from './CardFooter';
 import { CardHeader } from './CardHeader';
+import { CardMedia } from './CardMedia';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(
@@ -27,15 +28,20 @@ describe('Card Component', () => {
 
   it('renders media image if provided', () => {
     const mediaImage = 'some/media/image/path';
-    const media = (
-      <img
-        src={mediaImage}
-        alt='cat'
-      />
+
+    renderRtl(
+      <Card title='card'>
+        <CardMedia>
+          <img
+            src={mediaImage}
+            alt='cat'
+          />
+        </CardMedia>
+        <CardHeader />
+        <CardContent />
+        <CardFooter />
+      </Card>,
     );
-    renderCard({
-      MediaImage: media,
-    });
     expect(screen.getByRole('img')).toHaveAttribute('src', mediaImage);
   });
 });

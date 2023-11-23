@@ -2,13 +2,14 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
 
-import media from '../../../../../assets/img/card-media.png';
+import catImage from '../../../../../assets/img/card-media.png';
 import { Stack } from '../../../../../docs-components';
 import { Heading, Paragraph } from '../Typography';
 import { NativeSelect } from '../form/NativeSelect';
 import { Textfield } from '../form/Textfield';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
+import { Link } from '../Link';
 
 import { Card } from '.';
 
@@ -19,15 +20,11 @@ export default {
   component: Card,
 } as Meta;
 
-const CatImage: JSX.Element = (
-  <img
-    src={media}
-    alt='cat'
-  />
-);
-
 export const Preview: Story = (args) => (
-  <Card {...args}>
+  <Card
+    {...args}
+    style={{ width: '320px' }}
+  >
     <Card.Header>
       <div>
         <Heading size='small'>Card Neutral</Heading>
@@ -52,7 +49,12 @@ export const Variants: StoryFn<typeof Card> = () => {
   return (
     <>
       <Card color='neutral'>
-        <Card.Media>{CatImage}</Card.Media>
+        <Card.Media>
+          <img
+            src={catImage}
+            alt='katt'
+          />
+        </Card.Media>
         <Card.Header>
           <div>
             <Heading
@@ -70,10 +72,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card
-        color='subtle'
-        MediaImage={CatImage}
-      >
+      <Card color='subtle'>
+        <Card.Media>
+          <img
+            src={catImage}
+            alt='katt'
+          />
+        </Card.Media>
         <Card.Header>
           <div>
             <Heading
@@ -96,10 +101,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card
-        color='first'
-        MediaImage={CatImage}
-      >
+      <Card color='first'>
+        <Card.Media>
+          <img
+            src={catImage}
+            alt='katt'
+          />
+        </Card.Media>
         <Card.Header>
           <div>
             <Heading
@@ -117,10 +125,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card
-        color='second'
-        MediaImage={CatImage}
-      >
+      <Card color='second'>
+        <Card.Media>
+          <img
+            src={catImage}
+            alt='katt'
+          />
+        </Card.Media>
         <Card.Header>
           <div>
             <Heading
@@ -138,10 +149,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card
-        color='third'
-        MediaImage={CatImage}
-      >
+      <Card color='third'>
+        <Card.Media>
+          <img
+            src={catImage}
+            alt='katt'
+          />
+        </Card.Media>
         <Card.Header>
           <div>
             <Heading
@@ -168,8 +182,7 @@ Variants.decorators = [
     <Stack
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(2, auto)',
-        gridGap: 'var(--fds-spacing-layout-2-xs)',
+        gridTemplateColumns: 'repeat(2, 400px)',
       }}
     >
       <Story />
@@ -184,7 +197,7 @@ const options = [
 
 export const Group: StoryFn<typeof Card.Group> = (args) => (
   <Card.Group {...args}>
-    <Card>
+    <Card style={{ width: '320px' }}>
       <Card.Header>
         <Paragraph size='medium'>Rolle 1</Paragraph>
         <Button
@@ -218,7 +231,7 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
         />
       </Card.Content>
     </Card>
-    <Card>
+    <Card style={{ width: '320px' }}>
       <Card.Header>
         <Paragraph size='medium'>Rolle 2</Paragraph>
         <Button
@@ -256,14 +269,22 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
 );
 
 export const Video: Story = () => (
-  <Card color='neutral'>
+  <Card
+    color='neutral'
+    style={{ width: '320px' }}
+  >
     <Card.Media>
       <iframe
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-        width='426'
+        width='320'
         height='240'
         allow='autoplay; fullscreen; picture-in-picture'
         title='30 år med digitalt innsyn'
+        style={{
+          borderTopLeftRadius: '4px',
+          borderTopRightRadius: '4px',
+          marginTop: '-2px',
+        }}
       ></iframe>
     </Card.Media>
     <Card.Header>
@@ -271,7 +292,12 @@ export const Video: Story = () => (
         level={3}
         size='small'
       >
-        Vi feira 30 år med digitalt innsyn
+        <Link
+          href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
+          target='_blank'
+        >
+          Vi feira 30 år med digitalt innsyn
+        </Link>
       </Heading>
     </Card.Header>
     <Card.Content>
