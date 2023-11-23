@@ -406,7 +406,7 @@
             "type": "color"
           },
           "active": {
-            "value": "{brand.alt1.700}",
+            "value": "{brand.alt3.900}",
             "type": "color",
             "description": "Standard farge for handlinger"
           },
