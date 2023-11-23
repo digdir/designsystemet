@@ -13,6 +13,6 @@ declare module '*.css' {
 }
 
 declare module '*.png' {
-  const value: any;
+  const value: string;
   export = value;
 }

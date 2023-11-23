@@ -21,7 +21,7 @@ export default {
 
 const CatImage: JSX.Element = (
   <img
-    src={media as string}
+    src={media}
     alt='cat'
   />
 );
@@ -51,10 +51,8 @@ Preview.args = {
 export const Variants: StoryFn<typeof Card> = () => {
   return (
     <>
-      <Card
-        color='neutral'
-        MediaImage={CatImage}
-      >
+      <Card color='neutral'>
+        <Card.Media>{CatImage}</Card.Media>
         <Card.Header>
           <div>
             <Heading
@@ -184,7 +182,7 @@ const options = [
   { value: 'forretningsfører', label: 'Forretningsfører' },
 ];
 
-export const Group: Story = (args) => (
+export const Group: StoryFn<typeof Card.Group> = (args) => (
   <Card.Group {...args}>
     <Card>
       <Card.Header>
@@ -255,4 +253,31 @@ export const Group: Story = (args) => (
       </Card.Content>
     </Card>
   </Card.Group>
+);
+
+export const Video: Story = () => (
+  <Card color='neutral'>
+    <Card.Media>
+      <iframe
+        src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
+        width='426'
+        height='240'
+        allow='autoplay; fullscreen; picture-in-picture'
+        title='30 år med digitalt innsyn'
+      ></iframe>
+    </Card.Media>
+    <Card.Header>
+      <Heading
+        level={3}
+        size='small'
+      >
+        Vi feira 30 år med digitalt innsyn
+      </Heading>
+    </Card.Header>
+    <Card.Content>
+      Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i
+      Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var historiske
+      tilbakeblikk og debatt om innsyn og openheit i forvaltninga.
+    </Card.Content>
+  </Card>
 );
