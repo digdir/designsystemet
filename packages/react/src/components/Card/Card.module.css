@@ -29,16 +29,15 @@
   border: 1px solid var(--fds-semantic-border-neutral-subtle);
 }
 
+.card .footer,
 .card .content {
   display: flex;
   justify-content: flex-start;
 }
 
-.card .footer,
 .card .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
 .card > hr {

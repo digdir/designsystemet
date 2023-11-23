@@ -26,10 +26,8 @@ export const Preview: Story = (args) => (
     style={{ width: '320px' }}
   >
     <Card.Header>
-      <div>
-        <Heading size='small'>Card Neutral</Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
-      </div>
+      <Heading size='small'>Card Neutral</Heading>
+      <Paragraph size='small'>Subtitle bottom</Paragraph>
     </Card.Header>
     <Card.Content>
       Most provide as with carried business are much better more the perfected
@@ -56,15 +54,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           />
         </Card.Media>
         <Card.Header>
-          <div>
-            <Heading
-              level={3}
-              size='small'
-            >
-              Card Neutral
-            </Heading>
-            <Paragraph size='small'>Subtitle bottom</Paragraph>
-          </div>
+          <Heading
+            level={3}
+            size='small'
+          >
+            Card Neutral
+          </Heading>
+          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -80,20 +76,18 @@ export const Variants: StoryFn<typeof Card> = () => {
           />
         </Card.Media>
         <Card.Header>
-          <div>
-            <Heading
-              level={3}
-              size='small'
-            >
-              Card Subtle
-            </Heading>
-            <Paragraph
-              style={{ color: 'var(--fds-semantic-text-neutral-subtle)' }}
-              size='small'
-            >
-              Subtitle bottom
-            </Paragraph>
-          </div>
+          <Heading
+            level={3}
+            size='small'
+          >
+            Card Subtle
+          </Heading>
+          <Paragraph
+            style={{ color: 'var(--fds-semantic-text-neutral-subtle)' }}
+            size='small'
+          >
+            Subtitle bottom
+          </Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -109,15 +103,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           />
         </Card.Media>
         <Card.Header>
-          <div>
-            <Heading
-              level={3}
-              size='small'
-            >
-              Card First
-            </Heading>
-            <Paragraph size='small'>Subtitle bottom</Paragraph>
-          </div>
+          <Heading
+            level={3}
+            size='small'
+          >
+            Card First
+          </Heading>
+          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -133,15 +125,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           />
         </Card.Media>
         <Card.Header>
-          <div>
-            <Heading
-              level={3}
-              size='small'
-            >
-              Card Second
-            </Heading>
-            <Paragraph size='small'>Subtitle bottom</Paragraph>
-          </div>
+          <Heading
+            level={3}
+            size='small'
+          >
+            Card Second
+          </Heading>
+          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -157,15 +147,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           />
         </Card.Media>
         <Card.Header>
-          <div>
-            <Heading
-              level={3}
-              size='small'
-            >
-              Card Third
-            </Heading>
-            <Paragraph size='small'>Subtitle bottom</Paragraph>
-          </div>
+          <Heading
+            level={3}
+            size='small'
+          >
+            Card Third
+          </Heading>
+          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -190,6 +178,88 @@ Variants.decorators = [
   ),
 ];
 
+export const Media: Story = () => (
+  <>
+    <Card>
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+      <Card.Header>
+        <Heading
+          level={3}
+          size='small'
+        >
+          Card Neutral
+        </Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+    </Card>
+    <Card>
+      <Card.Header>
+        <Heading
+          level={3}
+          size='small'
+        >
+          Card Neutral
+        </Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+    </Card>
+    <Card>
+      <Card.Header>
+        <Heading
+          level={3}
+          size='small'
+        >
+          Card Neutral
+        </Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+    </Card>
+  </>
+);
+
+Media.decorators = [
+  (Story) => (
+    <Stack
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(1, 400px)',
+      }}
+    >
+      <Story />
+    </Stack>
+  ),
+];
+
 const options = [
   { value: 'daglig leder', label: 'Dalig leder' },
   { value: 'forretningsfører', label: 'Forretningsfører' },
@@ -199,15 +269,23 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
   <Card.Group {...args}>
     <Card style={{ width: '320px' }}>
       <Card.Header>
-        <Paragraph size='medium'>Rolle 1</Paragraph>
-        <Button
-          variant='secondary'
-          color='danger'
-          size='small'
-          icon={<TrashFillIcon aria-hidden />}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
         >
-          Fjern
-        </Button>
+          <Paragraph size='medium'>Rolle 1</Paragraph>
+          <Button
+            variant='secondary'
+            color='danger'
+            size='small'
+            icon={<TrashFillIcon aria-hidden />}
+          >
+            Fjern
+          </Button>
+        </div>
       </Card.Header>
       <Divider color='subtle' />
       <Card.Content>
@@ -233,15 +311,23 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
     </Card>
     <Card style={{ width: '320px' }}>
       <Card.Header>
-        <Paragraph size='medium'>Rolle 2</Paragraph>
-        <Button
-          variant='secondary'
-          color='danger'
-          size='small'
-          icon={<TrashFillIcon aria-hidden />}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
         >
-          Fjern
-        </Button>
+          <Paragraph size='medium'>Rolle 2</Paragraph>
+          <Button
+            variant='secondary'
+            color='danger'
+            size='small'
+            icon={<TrashFillIcon aria-hidden />}
+          >
+            Fjern
+          </Button>
+        </div>
       </Card.Header>
       <Divider color='subtle' />
       <Card.Content>
