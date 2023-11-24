@@ -21,28 +21,20 @@ export const Other: StoryFn<typeof Skeleton> = (args) => {
   return (
     <div
       style={{
-        fontSize: '4rem',
+        fontSize: '16px',
         display: 'flex',
         flexDirection: 'column',
         gap: '5px',
-        height: '700px',
-        width: '700px',
+        width: '400px',
       }}
     >
-      <div style={{ display: 'flex', fontSize: '10rem', gap: '5px' }}>
+      <div style={{ display: 'flex', fontSize: '3rem', gap: '10px' }}>
         <Skeleton.Circle />
-        <Skeleton.Circle
-          width='100px'
-          height='100px'
-        />
+        <Skeleton.Rectangle width='100%' />
       </div>
-      <Skeleton.Circle
-        width='50%'
-        height='50%'
-      />
-      <Skeleton.Circle />
-      <Skeleton.Circle />
-      <Skeleton.Circle />
+      <Skeleton.Text />
+      <Skeleton.Text />
+      <Skeleton.Text />
     </div>
   );
 };

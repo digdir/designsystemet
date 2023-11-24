@@ -25,7 +25,7 @@ export const RectangleExample: StoryFn<typeof Rectangle> = (args) => {
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        width: '700px',
+        width: '500px',
       }}
     >
       <div style={{ display: 'flex', gap: '10px' }}>

@@ -3,6 +3,7 @@ import {
   Rectangle as SkeletonRectangle,
   type RectangleProps,
 } from './Rectangle/Rectangle';
+import { Text as SkeletonText, type TextProps } from './Text/Text';
 
 type SkeletonComponent = {
   /**
@@ -16,15 +17,18 @@ type SkeletonComponent = {
    */
   Circle: typeof SkeletonCircle;
   Rectangle: typeof SkeletonRectangle;
+  Text: typeof SkeletonText;
 };
 
 const Skeleton: SkeletonComponent = {
   Circle: SkeletonCircle,
   Rectangle: SkeletonRectangle,
+  Text: SkeletonText,
 };
 
 Skeleton.Circle.displayName = 'Skeleton.Circle';
 Skeleton.Rectangle.displayName = 'Skeleton.Rectangle';
+Skeleton.Text.displayName = 'Skeleton.Text';
 
-export type { CircleProps, RectangleProps };
+export type { CircleProps, RectangleProps, TextProps };
 export { Skeleton, SkeletonCircle, SkeletonRectangle };
