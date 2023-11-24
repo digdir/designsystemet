@@ -6,6 +6,11 @@
   position: relative;
 }
 
+.card a,
+.card a:visited {
+  color: var(--fds-semantic-text-neutral-default);
+}
+
 .card.neutral {
   background-color: var(--fds-semantic-surface-neutral-default);
   border: 1px solid var(--fds-semantic-border-neutral-default);
