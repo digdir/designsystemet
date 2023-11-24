@@ -276,7 +276,12 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
             alignItems: 'center',
           }}
         >
-          <Paragraph size='medium'>Rolle 1</Paragraph>
+          <Heading
+            level={3}
+            size='xsmall'
+          >
+            Rolle 1
+          </Heading>
           <Button
             variant='secondary'
             color='danger'
@@ -299,14 +304,8 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
             </option>
           ))}
         </NativeSelect>
-        <Textfield
-          size='small'
-          label='Fødsels- eller d-nummer'
-        />
-        <Textfield
-          size='small'
-          label='Etternavn'
-        />
+        <Textfield label='Fødsels- eller d-nummer' />
+        <Textfield label='Etternavn' />
       </Card.Content>
     </Card>
     <Card style={{ width: '320px' }}>
@@ -318,7 +317,12 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
             alignItems: 'center',
           }}
         >
-          <Paragraph size='medium'>Rolle 2</Paragraph>
+          <Heading
+            level={3}
+            size='xsmall'
+          >
+            Rolle 2
+          </Heading>
           <Button
             variant='secondary'
             color='danger'
@@ -341,14 +345,8 @@ export const Group: StoryFn<typeof Card.Group> = (args) => (
             </option>
           ))}
         </NativeSelect>
-        <Textfield
-          size='small'
-          label='Fødsels- eller d-nummer'
-        />
-        <Textfield
-          size='small'
-          label='Etternavn'
-        />
+        <Textfield label='Fødsels- eller d-nummer' />
+        <Textfield label='Etternavn' />
       </Card.Content>
     </Card>
   </Card.Group>
