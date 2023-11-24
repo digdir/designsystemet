@@ -1,6 +1,6 @@
 .link {
   --fdsc-link-hover-underline-color: var(--fds-semantic-text-action-first-default);
-  
+
   color: var(--fds-semantic-text-action-first-default);
   cursor: pointer;
   text-decoration: underline;
