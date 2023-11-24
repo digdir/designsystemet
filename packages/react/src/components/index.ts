@@ -39,4 +39,4 @@ export * from './Divider';
 export * from './Modal';
 export * from './DropdownMenu';
 export * from './form/Search';
-export * from './Box/Box'
+export * from './Box/Box';
