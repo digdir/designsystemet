@@ -9,12 +9,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   ({ children, ...rest }, ref) => (
     <div
       {...rest}
-      className={cn(
-        classes.content,
-        classes.section,
-        classes.column,
-        rest.className,
-      )}
+      className={cn(classes.content, rest.className)}
       ref={ref}
     >
       {children}

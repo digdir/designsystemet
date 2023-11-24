@@ -9,7 +9,7 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ children, ...rest }, ref) => (
     <div
       {...rest}
-      className={cn(classes.footer, classes.section, rest.className)}
+      className={cn(classes.footer, rest.className)}
       ref={ref}
     >
       {children}

@@ -1,3 +1,43 @@
+.media {
+  width: auto;
+}
+
+.media > * {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 0;
+}
+
+.footer,
+.content {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--fds-spacing-4);
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.content {
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: var(--fds-spacing-2) 0;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.group {
+  display: flex;
+  gap: var(--fds-spacing-2);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -10,6 +50,27 @@
 .card a,
 .card a:visited {
   color: var(--fds-semantic-text-neutral-default);
+}
+
+.card > hr {
+  margin: 0;
+}
+
+.card > :not(:first-child, :empty) {
+  padding-top: var(--fds-spacing-4);
+}
+
+.card > *:not(.media) {
+  padding-left: var(--fds-spacing-6);
+  padding-right: var(--fds-spacing-6);
+}
+
+.card > *:not(.media):first-child {
+  padding-top: var(--fds-spacing-6);
+}
+
+.card > *:not(.media):last-child {
+  padding-bottom: var(--fds-spacing-6);
 }
 
 .card.neutral {
@@ -35,60 +96,4 @@
 .card.third {
   background-color: var(--fds-semantic-surface-third-light);
   border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
-
-.card .footer,
-.card .content {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.card .header {
-  display: flex;
-  flex-direction: column;
-}
-
-.card > hr {
-  margin: 0;
-}
-
-.media {
-  width: auto;
-}
-
-.media > * {
-  display: flex;
-  width: 100%;
-  border: 0;
-}
-
-.section {
-  display: flex;
-  padding: var(--fds-spacing-4);
-  flex-wrap: wrap;
-  word-wrap: break-word;
-}
-
-.section.column {
-  flex-direction: column;
-}
-
-.section.row {
-  flex-direction: row;
-}
-
-.section.column > * + * {
-  margin-top: var(--fds-spacing-4);
-}
-
-.section.row > * + * {
-  margin-left: var(--fds-spacing-4);
-}
-
-.group {
-  display: flex;
-  gap: var(--fds-spacing-2);
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
 }

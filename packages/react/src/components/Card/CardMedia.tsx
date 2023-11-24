@@ -9,7 +9,7 @@ export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
   ({ children, ...rest }, ref) => (
     <div
       {...rest}
-      className={cn(classes.media, classes.column, rest.className)}
+      className={cn(classes.media, rest.className)}
       ref={ref}
     >
       {children}
