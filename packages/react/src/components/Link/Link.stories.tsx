@@ -69,7 +69,7 @@ export const InText: StoryFn<typeof Link> = () => (
 export const LongLink: StoryFn<typeof Link> = () => (
   <Paragraph>
     <Link href='https://designsystem.no/'>
-      Dette er en linke som brekker over flere linjer
+      Dette er en link som brekker over flere linjer
     </Link>
   </Paragraph>
 );
