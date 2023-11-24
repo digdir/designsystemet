@@ -16,6 +16,8 @@
   gap: var(--fds-spacing-4);
   flex-wrap: wrap;
   word-wrap: break-word;
+  font: var(--fds-typography-paragraph-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .content {
@@ -28,6 +30,8 @@
   padding: var(--fds-spacing-2) 0;
   flex-wrap: wrap;
   word-wrap: break-word;
+  font: var(--fds-typography-heading-medium);
+  font-family: var(--fdsc-typography-font-family);
 }
 
 .group {
@@ -45,6 +49,7 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .card a,
