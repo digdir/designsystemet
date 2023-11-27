@@ -10,6 +10,15 @@ export default {
   component: Combobox,
 } as Meta;
 
+const FRUITS = [
+  '🍔 Hamburger',
+  '🍕 Pizza',
+  '🍜 Ramen',
+  '🍣 Sushi',
+  '🍝 Pasta',
+  '🍟 Pommes frites',
+];
+
 export const Preview: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState('');
 
@@ -20,7 +29,7 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
         {...args}
         onValueChange={(e) => setValue(e)}
       >
-        {data.map((item, index) => (
+        {FRUITS.map((item, index) => (
           <Combobox.Item
             key={index}
             value={item}
@@ -31,4 +40,8 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
       </Combobox>
     </>
   );
+};
+
+Preview.args = {
+  placeholder: 'Velg mat',
 };

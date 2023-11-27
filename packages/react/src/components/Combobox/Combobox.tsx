@@ -32,12 +32,14 @@ const ComboboxContext = createContext<ComboboxContextType | undefined>(
 );
 
 export type ComboboxProps = {
+  placeholder?: string;
   onValueChange?: (value: string) => void;
   filterFn: (inputValue: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Combobox = ({
   onValueChange,
+  placeholder,
   children,
   filterFn = (inputValue, v) => {
     return v.toLowerCase().includes(inputValue.toLowerCase());
@@ -190,7 +192,7 @@ export const Combobox = ({
           ref: refs.setReference,
           onChange,
           value: inputValue,
-          placeholder: 'Enter fruit',
+          placeholder,
           'aria-autocomplete': 'list',
           onClick() {
             setOpen(true);
@@ -272,7 +274,14 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
       <Button
         fullWidth
         onClick={() => onItemClick(value)}
-        variant={activeIndex === index ? 'primary' : 'secondary'}
+        variant={activeIndex === index ? 'secondary' : 'tertiary'}
+        style={{
+          justifyContent: 'start',
+          backgroundColor:
+            activeIndex === index
+              ? 'var(--fds-semantic-surface-action-first-no_fill-hover)'
+              : '',
+        }}
         ref={ref}
       >
         {children}
