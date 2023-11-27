@@ -43,6 +43,34 @@ Preview.args = {
   color: 'neutral',
 };
 
+export const LinkCard: Story = (args) => (
+  <Card
+    {...args}
+    style={{ width: '320px' }}
+    color='first'
+    as='a'
+    href='https//designsystemet.no'
+  >
+    <Card.Media>
+      <img
+        src={catImage}
+        alt='katt'
+      />
+    </Card.Media>
+    <Card.Header>
+      <Heading size='small'>Link Card</Heading>
+      <Paragraph size='small'>Subtitle bottom</Paragraph>
+    </Card.Header>
+    <Card.Content>
+      Most provide as with carried business are much better more the perfected
+      designer. Writing slightly explain desk unable at supposedly about this
+    </Card.Content>
+    <Card.Footer>
+      <Paragraph size='small'>Footer text</Paragraph>
+    </Card.Footer>
+  </Card>
+);
+
 export const Variants: StoryFn<typeof Card> = () => {
   return (
     <>

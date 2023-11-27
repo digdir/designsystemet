@@ -50,6 +50,7 @@
   position: relative;
   overflow: hidden;
   color: var(--fds-semantic-text-neutral-default);
+  border-radius: var(--fds-border_radius-medium);
 }
 
 .card a,
@@ -65,7 +66,7 @@
   padding-top: var(--fds-spacing-4);
 }
 
-.card > *:not(.media) {
+.card > *:not(.media, hr) {
   padding-left: var(--fds-spacing-6);
   padding-right: var(--fds-spacing-6);
 }
@@ -76,6 +77,19 @@
 
 .card > *:not(.media):last-child {
   padding-bottom: var(--fds-spacing-6);
+}
+
+.linkCard {
+  text-decoration: none;
+}
+
+.linkCard h1,
+.linkCard h2,
+.linkCard h3,
+.linkCard h4,
+.linkCard h5,
+.linkCard h6 {
+  text-decoration: underline;
 }
 
 .neutral {

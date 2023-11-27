@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { Box } from '../Box';
+import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Card.module.css';
 
@@ -17,17 +17,21 @@ export type CardProps = {
   children: React.ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ color = 'neutral', children, ...rest }, ref) => {
+export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
+  ({ color = 'neutral', children, as: Component = 'div', ...rest }, ref) => {
     return (
-      <Box
-        borderRadius='medium'
+      <Component
         {...rest}
         ref={ref}
-        className={cn(classes.card, classes[color], rest.className)}
+        className={cn(
+          classes.card,
+          classes[color],
+          Component === 'a' && classes.linkCard,
+          rest.className,
+        )}
       >
         {children}
-      </Box>
+      </Component>
     );
   },
 );
