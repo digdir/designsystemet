@@ -18,7 +18,10 @@ export type CardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
-  ({ color = 'neutral', children, as: Component = 'div', ...rest }, ref) => {
+  (
+    { color = 'neutral', children, as: Component = 'div', href, ...rest },
+    ref,
+  ) => {
     return (
       <Component
         {...rest}
@@ -26,7 +29,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
         className={cn(
           classes.card,
           classes[color],
-          Component === 'a' && classes.linkCard,
+          href != null && classes.linkCard,
           rest.className,
         )}
       >
