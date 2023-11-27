@@ -30,17 +30,25 @@
   export let disabled;
 </script>
 
-<span class={`multiSelectedOption ${disabled ? 'disabled' : ''}`}>
+<span
+  class={`multiSelectedOption ${disabled ? 'disabled' : ''} ${
+    readOnly ? 'read-only' : ''
+  }`}
+>
   <span class="optionLabel">{option.label}</span>
-  {#if !readOnly}
-    <span class={`delete-button-container ${disabled ? 'disabled' : ''}`}>
-      <button
-        on:click={disabled ? null : () => removeOption(option)}
-        aria-label={`${deleteButtonLabel} ${option.label}`}
-        class={`delete-button ${disabled ? 'disabled' : ''}`}><Cross /></button
-      >
-    </span>
-  {/if}
+  <span
+    class={`delete-button-container ${disabled ? 'disabled' : ''} ${
+      readOnly ? 'read-only' : ''
+    }`}
+  >
+    <button
+      on:click={disabled || readOnly ? null : () => removeOption(option)}
+      aria-label={`${deleteButtonLabel} ${option.label}`}
+      class={`delete-button ${disabled ? 'disabled' : ''} ${
+        readOnly ? 'read-only' : ''
+      }`}><Cross /></button
+    >
+  </span>
 </span>
 
 <style lang="scss">
@@ -85,6 +93,13 @@
         cursor: not-allowed;
       }
     }
+
+    &.read-only {
+      &:hover {
+        background-color: inherit;
+        cursor: not-allowed;
+      }
+    }
   }
 
   .delete-button {
@@ -116,6 +131,12 @@
     &.disabled {
       background: inherit;
       &:hover {
+        cursor: not-allowed;
+      }
+    }
+    &.read-only {
+      &:hover {
+        background-color: inherit;
         cursor: not-allowed;
       }
     }

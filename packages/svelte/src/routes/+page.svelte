@@ -118,13 +118,13 @@
 
   $: unSelected = null;
 
-  let singlePreSelected = { label: 'Option 2', value: '2' };
+  let singlePreSelected = { label: 'Sverige', value: '2' };
 
   $: multiUnselected = [];
 
   let multiPreselected = [
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 3', value: '3' },
+    { label: 'Norge', value: '1' },
+    { label: 'Outer Planets Alliance', value: '3' },
   ];
 </script>
 
@@ -392,6 +392,13 @@
     options={optionsWithDescriptions}
     bind:selected={unSelected}
     label="Single, unselected, w/ option descriptions"
+  />
+
+  <Select
+    {options}
+    bind:selected={singlePreSelected}
+    label="Single, preselected, readonly"
+    readOnly
   />
 </div>
 <br />

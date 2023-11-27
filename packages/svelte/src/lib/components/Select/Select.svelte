@@ -110,12 +110,6 @@
 
   let selectedStore = writable(normalizeSelected(selected));
 
-  /*   $: if ($selectedStore) {
-    console.log('HIDEY HO');
-    selected = !multiple ? $selectedStore ?? null : $selectedStore;
-    console.log('newselected: ', $selectedStore);
-  } */
-
   // Add other values here if necessary for reactivity
   const selectContext = writable({
     selected: $selectedStore,
@@ -136,7 +130,6 @@
   }
 
   function selectOption(option) {
-    console.log('selectOption');
     selectedStore.update((currentSelected) => {
       if (multiple) {
         // If multiple selections are allowed
@@ -159,14 +152,14 @@
           return [option];
         }
       } else {
+        // Clear options filter on single selection
+        handleFilterChange('');
         // If only single selection is allowed
         return option;
       }
     });
 
     selected = $selectedStore;
-    /* const asdselected = !multiple ? $selectedStore ?? null : $selectedStore;
-    console.log('asdselected', asdselected); */
 
     if (closeMenuOnSelect) {
       isDropdownVisible = false;
@@ -183,6 +176,13 @@
         return [];
       }
     });
+  }
+
+  function clearAll() {
+    if (multiple) {
+      selectedStore.set([]);
+      selectContext.update((ctx) => ({ ...ctx, selected: [] }));
+    }
   }
 
   function openDropdown() {
@@ -202,13 +202,6 @@
       closeDropdown();
     } else {
       openDropdown();
-    }
-  }
-
-  function clearAll() {
-    if (multiple) {
-      selectedStore.set([]);
-      selectContext.update((ctx) => ({ ...ctx, selected: [] }));
     }
   }
 
@@ -249,6 +242,7 @@
   aria-label={ariaLabel}
 >
   {#if label}
+    {#if readOnly}🔒{/if}
     <label
       class="select-label"
       for={inputId}>{label}</label
@@ -267,11 +261,11 @@
     {removeOption}
     {multiple}
     {handleSelectControlClick}
-    {clearAll}
     {handleFilterChange}
     {searchLabel}
     {disabled}
     {error}
+    {clearAll}
   />
 
   <SelectDropdown
@@ -290,6 +284,9 @@
 <style lang="scss">
   .error-message {
     color: var(--fds-semantic-border-danger-default);
+  }
+
+  .select-container {
   }
 
   .select-label {
