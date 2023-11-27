@@ -52,8 +52,9 @@ Bruk `Card.Media` dersom du ønsker å ha bilder eller video i kortene.
 
 ### Link Card
 
-Bruk `as` til å endre kortet til en lenke. Hover og aktivt styling blir kun aktivert dersom `href` er definert.
-Vær oppmerksom på gyldig html [innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary) og innholdet da skjermleser alt samlet.
+Bruk `as` til å endre kortet til en lenke. Vær oppmerksom på gyldig html [innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary) og innholdet da skjermleser alt samlet.
+
+Hover og aktivt styling blir kun aktivert dersom `href` er definert. Dette er for å støtte "Link" komponenter fra tredjeparts bibliotek som [NextJS Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React Router Link](https://reactrouter.com/en/main/components/link)
 
 <Canvas of={CardStories.LinkCard} />
 
