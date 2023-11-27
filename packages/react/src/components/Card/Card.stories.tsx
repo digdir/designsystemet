@@ -2,7 +2,10 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
 
-import catImage from '../../../../../assets/img/card-media.png';
+import cat1 from '../../../../../assets/img/cats/cat1.png';
+import cat2 from '../../../../../assets/img/cats/cat2.png';
+import cat3 from '../../../../../assets/img/cats/cat3.jpeg';
+import cats from '../../../../../assets/img/cats/cats.jpeg';
 import { Heading, Paragraph } from '../Typography';
 import { NativeSelect } from '../form/NativeSelect';
 import { Textfield } from '../form/Textfield';
@@ -58,8 +61,8 @@ export const LinkCard: Story = (args) => (
     >
       <Card.Media>
         <img
-          src={catImage}
-          alt='katt'
+          src={cat1}
+          alt='katt 1'
         />
       </Card.Media>
       <Card.Header>
@@ -82,57 +85,8 @@ export const LinkCard: Story = (args) => (
     >
       <Card.Media>
         <img
-          src={catImage}
-          alt='katt'
-        />
-      </Card.Media>
-      <Card.Header>
-        <Heading size='small'>Link Card</Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
-      </Card.Header>
-      <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Card.Content>
-      <Card.Footer>
-        <Paragraph size='small'>Footer text</Paragraph>
-      </Card.Footer>
-    </Card>
-    <Card
-      {...args}
-      color='subtle'
-      as='a'
-      href='https://designsystemet.no'
-    >
-      <Card.Media>
-        <img
-          src={catImage}
-          alt='katt'
-        />
-      </Card.Media>
-      <Card.Header>
-        <Heading size='small'>Link Card</Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
-      </Card.Header>
-      <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Card.Content>
-      <Card.Footer>
-        <Paragraph size='small'>Footer text</Paragraph>
-      </Card.Footer>
-    </Card>
-
-    <Card
-      {...args}
-      color='second'
-      as='a'
-      href='https://www.designsystemet.no'
-    >
-      <Card.Media>
-        <img
-          src={catImage}
-          alt='katt'
+          src={cat2}
+          alt='katt 2'
         />
       </Card.Media>
       <Card.Header>
@@ -162,7 +116,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='neutral'>
         <Card.Media>
           <img
-            src={catImage}
+            src={cat1}
             alt='katt'
           />
         </Card.Media>
@@ -184,7 +138,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='subtle'>
         <Card.Media>
           <img
-            src={catImage}
+            src={cat2}
             alt='katt'
           />
         </Card.Media>
@@ -211,8 +165,8 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='first'>
         <Card.Media>
           <img
-            src={catImage}
-            alt='katt'
+            src={cats}
+            alt='katter'
           />
         </Card.Media>
         <Card.Header>
@@ -233,7 +187,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='second'>
         <Card.Media>
           <img
-            src={catImage}
+            src={cat3}
             alt='katt'
           />
         </Card.Media>
@@ -255,7 +209,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='third'>
         <Card.Media>
           <img
-            src={catImage}
+            src={cat1}
             alt='katt'
           />
         </Card.Media>
@@ -289,7 +243,7 @@ export const Media: Story = () => (
     <Card>
       <Card.Media>
         <img
-          src={catImage}
+          src={cat1}
           alt='katt'
         />
       </Card.Media>
@@ -319,7 +273,7 @@ export const Media: Story = () => (
       </Card.Header>
       <Card.Media>
         <img
-          src={catImage}
+          src={cat1}
           alt='katt'
         />
       </Card.Media>
@@ -345,7 +299,7 @@ export const Media: Story = () => (
       </Card.Content>
       <Card.Media>
         <img
-          src={catImage}
+          src={cat1}
           alt='katt'
         />
       </Card.Media>
