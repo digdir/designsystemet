@@ -3,7 +3,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
 
 import catImage from '../../../../../assets/img/card-media.png';
-import { Stack } from '../../../../../docs-components';
 import { Heading, Paragraph } from '../Typography';
 import { NativeSelect } from '../form/NativeSelect';
 import { Textfield } from '../form/Textfield';
@@ -44,36 +43,122 @@ Preview.args = {
 };
 
 export const LinkCard: Story = (args) => (
-  <Card
-    {...args}
-    style={{ width: '320px' }}
-    color='first'
-    as='a'
-    href='https//designsystemet.no'
+  <div
+    style={{
+      display: 'grid',
+      gap: 'var(--fds-spacing-4)',
+      gridTemplateColumns: 'repeat(2, 400px)',
+    }}
   >
-    <Card.Media>
-      <img
-        src={catImage}
-        alt='katt'
-      />
-    </Card.Media>
-    <Card.Header>
-      <Heading size='small'>Link Card</Heading>
-      <Paragraph size='small'>Subtitle bottom</Paragraph>
-    </Card.Header>
-    <Card.Content>
-      Most provide as with carried business are much better more the perfected
-      designer. Writing slightly explain desk unable at supposedly about this
-    </Card.Content>
-    <Card.Footer>
-      <Paragraph size='small'>Footer text</Paragraph>
-    </Card.Footer>
-  </Card>
+    <Card
+      {...args}
+      color='first'
+      as='a'
+      href='https://designsystemet.no'
+    >
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+      <Card.Header>
+        <Heading size='small'>Link Card</Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+      <Card.Footer>
+        <Paragraph size='small'>Footer text</Paragraph>
+      </Card.Footer>
+    </Card>
+    <Card
+      {...args}
+      color='neutral'
+      as='a'
+      href='https://designsystemet.no'
+    >
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+      <Card.Header>
+        <Heading size='small'>Link Card</Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+      <Card.Footer>
+        <Paragraph size='small'>Footer text</Paragraph>
+      </Card.Footer>
+    </Card>
+    <Card
+      {...args}
+      color='subtle'
+      as='a'
+      href='https://designsystemet.no'
+    >
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+      <Card.Header>
+        <Heading size='small'>Link Card</Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+      <Card.Footer>
+        <Paragraph size='small'>Footer text</Paragraph>
+      </Card.Footer>
+    </Card>
+
+    <Card
+      {...args}
+      color='second'
+      as='a'
+      href='https://www.designsystemet.no'
+    >
+      <Card.Media>
+        <img
+          src={catImage}
+          alt='katt'
+        />
+      </Card.Media>
+      <Card.Header>
+        <Heading size='small'>Link Card</Heading>
+        <Paragraph size='small'>Subtitle bottom</Paragraph>
+      </Card.Header>
+      <Card.Content>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Card.Content>
+      <Card.Footer>
+        <Paragraph size='small'>Footer text</Paragraph>
+      </Card.Footer>
+    </Card>
+  </div>
 );
 
 export const Variants: StoryFn<typeof Card> = () => {
   return (
-    <>
+    <div
+      style={{
+        display: 'grid',
+        gap: 'var(--fds-spacing-4)',
+        gridTemplateColumns: 'repeat(2, 400px)',
+      }}
+    >
       <Card color='neutral'>
         <Card.Media>
           <img
@@ -189,25 +274,18 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-    </>
+    </div>
   );
 };
 
-Variants.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 400px)',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
-
 export const Media: Story = () => (
-  <>
+  <div
+    style={{
+      display: 'grid',
+      gap: 'var(--fds-spacing-4)',
+      gridTemplateColumns: 'repeat(3, 300px)',
+    }}
+  >
     <Card>
       <Card.Media>
         <img
@@ -272,21 +350,8 @@ export const Media: Story = () => (
         />
       </Card.Media>
     </Card>
-  </>
+  </div>
 );
-
-Media.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(1, 400px)',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
 
 const options = [
   { value: 'daglig leder', label: 'Dalig leder' },
