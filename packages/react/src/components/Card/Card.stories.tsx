@@ -187,7 +187,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='second'>
         <Card.Media>
           <img
-            src={cat3}
+            src={cat1}
             alt='katt'
           />
         </Card.Media>
@@ -209,7 +209,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='third'>
         <Card.Media>
           <img
-            src={cat1}
+            src={cat3}
             alt='katt'
           />
         </Card.Media>
@@ -307,98 +307,6 @@ export const Media: Story = () => (
   </div>
 );
 
-const options = [
-  { value: 'daglig leder', label: 'Dalig leder' },
-  { value: 'forretningsfører', label: 'Forretningsfører' },
-];
-
-export const Group: StoryFn<typeof Card.Group> = (args) => (
-  <Card.Group {...args}>
-    <Card style={{ width: '320px' }}>
-      <Card.Header>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Heading
-            level={3}
-            size='xsmall'
-          >
-            Rolle 1
-          </Heading>
-          <Button
-            variant='secondary'
-            color='danger'
-            size='small'
-            icon={<TrashFillIcon aria-hidden />}
-          >
-            Fjern
-          </Button>
-        </div>
-      </Card.Header>
-      <Divider color='subtle' />
-      <Card.Content>
-        <NativeSelect label='Velg rolle'>
-          {options.map(({ value, label }, index) => (
-            <option
-              key={index}
-              value={value}
-            >
-              {label}
-            </option>
-          ))}
-        </NativeSelect>
-        <Textfield label='Fødsels- eller d-nummer' />
-        <Textfield label='Etternavn' />
-      </Card.Content>
-    </Card>
-    <Card style={{ width: '320px' }}>
-      <Card.Header>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Heading
-            level={3}
-            size='xsmall'
-          >
-            Rolle 2
-          </Heading>
-          <Button
-            variant='secondary'
-            color='danger'
-            size='small'
-            icon={<TrashFillIcon aria-hidden />}
-          >
-            Fjern
-          </Button>
-        </div>
-      </Card.Header>
-      <Divider color='subtle' />
-      <Card.Content>
-        <NativeSelect label='Velg rolle'>
-          {options.map(({ value, label }, index) => (
-            <option
-              key={index}
-              value={value}
-            >
-              {label}
-            </option>
-          ))}
-        </NativeSelect>
-        <Textfield label='Fødsels- eller d-nummer' />
-        <Textfield label='Etternavn' />
-      </Card.Content>
-    </Card>
-  </Card.Group>
-);
-
 export const Video: Story = () => (
   <Card
     color='neutral'
@@ -430,6 +338,55 @@ export const Video: Story = () => (
       Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i
       Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var historiske
       tilbakeblikk og debatt om innsyn og openheit i forvaltninga.
+    </Card.Content>
+  </Card>
+);
+
+const options = [
+  { value: 'daglig leder', label: 'Dalig leder' },
+  { value: 'forretningsfører', label: 'Forretningsfører' },
+];
+
+export const Composed: Story = () => (
+  <Card style={{ width: '320px' }}>
+    <Card.Header>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Heading
+          level={3}
+          size='xsmall'
+        >
+          Rolle 1
+        </Heading>
+        <Button
+          variant='secondary'
+          color='danger'
+          size='small'
+          icon={<TrashFillIcon aria-hidden />}
+        >
+          Fjern
+        </Button>
+      </div>
+    </Card.Header>
+    <Divider color='subtle' />
+    <Card.Content>
+      <NativeSelect label='Velg rolle'>
+        {options.map(({ value, label }, index) => (
+          <option
+            key={index}
+            value={value}
+          >
+            {label}
+          </option>
+        ))}
+      </NativeSelect>
+      <Textfield label='Fødsels- eller d-nummer' />
+      <Textfield label='Etternavn' />
     </Card.Content>
   </Card>
 );

@@ -40,9 +40,20 @@ import { Card } from '@digdir/design-system-react';
 
 ## Eksempler
 
+### `Card.Media`
+
+Bruk `Card.Media` dersom du ønsker å ha bilder eller video i kortene.
+
+<Canvas of={CardStories.Media} />
+
+#### Video
+
+<Canvas of={CardStories.Video} />
+
 ### Link Card
 
-Use `as` to change to the `Card` to be an anchor element. If `href` is defined the `Card` will have an `active` and `hover` styling.
+Bruk `as` til å endre kortet til en lenke. Hover og aktivt styling blir kun aktivert dersom `href` er definert.
+Vær oppmerksom på gyldig html [innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary) dersom du endrer kortet til å være en lenke.
 
 <Canvas of={CardStories.LinkCard} />
 
@@ -53,21 +64,11 @@ subtil, og andre stiler.
 
 <Canvas of={CardStories.Variants} />
 
-### Grupper
+### Komponert
 
-Demonstrerer hvordan flere Card komponenter kan grupperes sammen med `Card.Group`.
+Eksempler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
 
-<Canvas of={CardStories.Group} />
-
-<br />
-
-### Media
-
-<Canvas of={CardStories.Media} />
-
-#### Video
-
-<Canvas of={CardStories.Video} />
+<Canvas of={CardStories.Composed} />
 
 ## Retningslinjer
 
