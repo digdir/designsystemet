@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
+import utilityClasses from '../../utilities/utility.module.css';
 
 import classes from './Card.module.css';
 
@@ -18,10 +19,8 @@ export type CardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
-  (
-    { color = 'neutral', children, as: Component = 'div', href, ...rest },
-    ref,
-  ) => {
+  ({ color = 'neutral', children, as: Component = 'div', ...rest }, ref) => {
+    const isLink = rest?.href != null;
     return (
       <Component
         {...rest}
@@ -29,7 +28,8 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
         className={cn(
           classes.card,
           classes[color],
-          href != null && classes.linkCard,
+          isLink && classes.linkCard,
+          isLink && utilityClasses.focusable,
           rest.className,
         )}
       >
