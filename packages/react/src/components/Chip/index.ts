@@ -1,9 +1,9 @@
-import { Group as ChipGroup } from './Group';
-import type { ChipGroupProps } from './Group';
-import { RemovableChip as ChipRemovable } from './Removable';
-import type { RemovableChipProps } from './Removable';
-import { ToggleChip as ChipToggle } from './Toggle';
-import type { ToggleChipProps } from './Toggle/';
+import { Group as ChipGroup } from './Group/Group';
+import type { ChipGroupProps } from './Group/Group';
+import { RemovableChip as ChipRemovable } from './Removable/Removable';
+import type { RemovableChipProps } from './Removable/Removable';
+import { ToggleChip as ChipToggle } from './Toggle/Toggle';
+import type { ToggleChipProps } from './Toggle/Toggle';
 
 type ChipComponent = {
   /**

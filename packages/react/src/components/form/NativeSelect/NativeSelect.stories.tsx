@@ -27,6 +27,7 @@ export const Preview: StoryFn<typeof NativeSelect> = (args) => (
 
 Preview.args = {
   label: 'Velg et fjell',
+  size: 'medium',
 };
 
 export const Disabled: StoryFn<typeof NativeSelect> = (args) => (

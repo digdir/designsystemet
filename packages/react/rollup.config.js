@@ -50,6 +50,9 @@ export default [
             generateScopedName,
           },
           plugins: [cssnano({ preset: 'default' })],
+          inject: {
+            insertAt: 'top',
+          },
         },
       ),
     ],

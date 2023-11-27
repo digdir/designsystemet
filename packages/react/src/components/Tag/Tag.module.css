@@ -19,17 +19,17 @@
   width: max-content;
 }
 
-.xsmall {
+.small {
   --fdsc-tag-padding: var(--fds-spacing-1);
   --fdsc-tag-min-height: var(--fds-sizing-5);
 }
 
-.small {
+.medium {
   --fdsc-tag-padding: var(--fds-spacing-1);
   --fdsc-tag-min-height: var(--fds-sizing-6);
 }
 
-.medium {
+.large {
   --fdsc-tag-padding: var(--fds-spacing-2);
   --fdsc-tag-min-height: var(--fds-sizing-7);
 }

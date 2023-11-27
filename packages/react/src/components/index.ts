@@ -24,6 +24,7 @@ export * from './Alert';
 export * from './Tag';
 export * from './Chip';
 export * from './Pagination';
+export * from './SkipLink';
 export * from './Tooltip';
 export * from './form/Checkbox';
 export * from './form/Radio';

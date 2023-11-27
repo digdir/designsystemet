@@ -75,7 +75,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           >
             {readOnly && (
               <PadlockLockedFillIcon
-                className={classes.icon}
+                className={classes.padlock}
                 aria-hidden
               />
             )}

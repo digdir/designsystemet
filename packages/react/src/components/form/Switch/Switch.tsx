@@ -56,7 +56,9 @@ export type SwitchProps = {
   children?: ReactNode;
   /** Value of the `input` element */
   value?: string;
-  /** Position of switch around the label */
+  /** Position of switch around the label
+   * @default left
+   */
   position?: 'left' | 'right';
 } & Omit<FormFieldProps, 'error' | 'errorId' | 'id'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;

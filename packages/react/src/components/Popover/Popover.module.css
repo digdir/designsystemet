@@ -10,6 +10,18 @@
   max-height: 80vh;
 }
 
+.popover.small {
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
+.popover.medium {
+  padding: var(--fds-spacing-3) var(--fds-spacing-4);
+}
+
+.popover.large {
+  padding: var(--fds-spacing-3) var(--fds-spacing-5);
+}
+
 .popover.default {
   --background: var(--fds-semantic-surface-neutral-default);
 
