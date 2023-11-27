@@ -110,16 +110,19 @@ export const Combobox = ({
   const filteredChildren = React.Children.toArray(children)
     .filter((child) => {
       if (React.isValidElement(child) && child.type === ComboboxItem) {
-        const value = child.props.value as string;
+        const props = child.props as ComboboxItemProps;
+        const value = props.value as string;
         return filterFn(inputValue, value);
       }
       return true;
     })
     .map((child, index) => {
       if (React.isValidElement(child) && child.type === ComboboxItem) {
-        return React.cloneElement(child, {
+        const props: ComboboxItemProps = {
+          ...child.props,
           index,
-        });
+        } as ComboboxItemProps;
+        return React.cloneElement(child, props);
       }
       return child;
     });
@@ -149,7 +152,8 @@ export const Combobox = ({
         if (activeIndex !== null && filteredChildren[activeIndex]) {
           const child = filteredChildren[activeIndex];
           if (React.isValidElement(child) && child.type === ComboboxItem) {
-            setInputValue(child.props.value as string);
+            const props = child.props as ComboboxItemProps;
+            setInputValue(props.value as string);
             setOpen(false);
           }
         }
@@ -164,10 +168,9 @@ export const Combobox = ({
   };
 
   useEffect(() => {
-    if (activeIndex !== null && listRef.current[activeIndex]) {
-      listRef.current[activeIndex].scrollIntoView({
-        block: 'nearest',
-      });
+    if (activeIndex !== null) {
+      const element = document.getElementById(`combobox-item-${activeIndex}`);
+      element?.scrollIntoView({ block: 'nearest' });
     }
   }, [activeIndex]);
 
@@ -228,12 +231,16 @@ export const Combobox = ({
                   React.isValidElement(child) &&
                   child.type === ComboboxItem
                 ) {
-                  return React.cloneElement(child, {
-                    key: index,
+                  const props = {
                     ref(node: HTMLElement | null) {
                       listRef.current[index] = node;
                     },
                     active: activeIndex === index,
+                  };
+
+                  return React.cloneElement(child, {
+                    key: index,
+                    ...props,
                   });
                 }
                 return child;
@@ -246,26 +253,32 @@ export const Combobox = ({
   );
 };
 
-export const ComboboxItem = forwardRef<
-  HTMLButtonElement,
-  { value: string; index?: number; children: React.ReactNode }
->(({ value, index, children }, ref) => {
-  const context = React.useContext(ComboboxContext);
-  if (!context) {
-    throw new Error('ComboboxItem must be used within a Combobox');
-  }
-  const { activeIndex, onItemClick } = context;
+export type ComboboxItemProps = {
+  value: string;
+  index?: number;
+  children: React.ReactNode;
+  active?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-  return (
-    <Button
-      fullWidth
-      onClick={() => onItemClick(value)}
-      variant={activeIndex === index ? 'primary' : 'secondary'}
-      ref={ref}
-    >
-      {children}
-    </Button>
-  );
-});
+export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
+  ({ value, index, children }, ref) => {
+    const context = React.useContext(ComboboxContext);
+    if (!context) {
+      throw new Error('ComboboxItem must be used within a Combobox');
+    }
+    const { activeIndex, onItemClick } = context;
+
+    return (
+      <Button
+        fullWidth
+        onClick={() => onItemClick(value)}
+        variant={activeIndex === index ? 'primary' : 'secondary'}
+        ref={ref}
+      >
+        {children}
+      </Button>
+    );
+  },
+);
 
 ComboboxItem.displayName = 'ComboboxItem';
