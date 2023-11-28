@@ -224,7 +224,7 @@ export const Media: Story = () => (
     style={{
       display: 'grid',
       gap: 'var(--fds-spacing-4)',
-      gridTemplateColumns: 'repeat(3, 300px)',
+      gridTemplateColumns: 'repeat(2, 300px)',
     }}
   >
     <Card>
@@ -247,26 +247,7 @@ export const Media: Story = () => (
         designer. Writing slightly explain desk unable at supposedly about this
       </Card.Content>
     </Card>
-    <Card>
-      <Card.Header>
-        <Heading
-          level={3}
-          size='small'
-        >
-          Card Neutral
-        </Heading>
-      </Card.Header>
-      <Card.Media>
-        <img
-          src={cat1}
-          alt='katt'
-        />
-      </Card.Media>
-      <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Card.Content>
-    </Card>
+
     <Card>
       <Card.Header>
         <Heading

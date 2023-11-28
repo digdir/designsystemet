@@ -18,6 +18,7 @@
   word-wrap: break-word;
   font: var(--fds-typography-paragraph-medium);
   font-family: var(--fdsc-typography-font-family);
+  padding: var(--fds-spacing-2) 0;
 }
 
 .content {
@@ -31,6 +32,7 @@
   word-wrap: break-word;
   font: var(--fds-typography-heading-medium);
   font-family: var(--fdsc-typography-font-family);
+  padding: var(--fds-spacing-2) 0;
 }
 
 .card {
@@ -54,10 +56,6 @@
   margin: var(--fds-spacing-3) 0;
 }
 
-.card > *:not(:first-child, hr) {
-  padding-top: var(--fds-spacing-4);
-}
-
 .card > *:not(.media, hr) {
   padding-left: var(--fds-spacing-6);
   padding-right: var(--fds-spacing-6);
@@ -72,7 +70,7 @@
 }
 
 .media:first-child {
-  padding-bottom: var(--fds-spacing-2);
+  padding-bottom: var(--fds-spacing-4);
 }
 
 .media:last-child {
@@ -96,12 +94,12 @@
 
 .neutral {
   background-color: var(--fds-semantic-surface-neutral-default);
-  border: 1px solid var(--fds-semantic-border-neutral-default);
+  border: 1px solid var(--fds-semantic-border-neutral-subtle);
 }
 
 .subtle {
   background-color: var(--fds-semantic-surface-neutral-subtle);
-  border: 1px solid var(--fds-semantic-border-neutral-default);
+  border: 1px solid var(--fds-semantic-border-neutral-subtle);
 }
 
 .neutral.linkCard:hover,
