@@ -27,6 +27,14 @@ const FRUITS = [
     name: '🍜 Nudler',
     value: 'nudler',
   },
+  {
+    name: '🍝 Pasta',
+    value: 'pasta',
+  },
+  {
+    name: '🍟 Pommes frites',
+    value: 'pommes_frites',
+  },
 ];
 
 export const Preview: StoryFn<typeof Combobox> = (args) => {

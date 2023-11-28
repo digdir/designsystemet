@@ -22,7 +22,11 @@ import { Textfield } from '../form/Textfield';
 import { Box } from '../Box';
 import { Button } from '../Button';
 
+import type { ValueItemType } from './useCombobox';
+import useCombobox from './useCombobox';
+
 type ComboboxContextType = {
+  values: ValueItemType[];
   activeIndex: number | null;
   onItemClick: (value: string) => void;
 };
@@ -34,13 +38,16 @@ const ComboboxContext = createContext<ComboboxContextType | undefined>(
 export type ComboboxProps = {
   placeholder?: string;
   onValueChange?: (value: string) => void;
+  /**
+   * Filter function for filtering the list of items
+   * @param inputValue
+   * @param value
+   * @returns boolean
+   *
+   * @default (inputValue, value) => value.toLowerCase().includes(inputValue.toLowerCase())
+   */
   filterFn: (inputValue: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
-
-type ItemType = {
-  value: string;
-  label: string;
-};
 
 export const Combobox = ({
   onValueChange,
@@ -53,26 +60,13 @@ export const Combobox = ({
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [allValues, setAllValues] = useState<ItemType[]>([]);
+  const { values, filteredChildren } = useCombobox({
+    children,
+    input: inputValue,
+    filterFn,
+  });
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
-
-  // Update all values
-  useEffect(() => {
-    const values: ItemType[] = [];
-    React.Children.forEach(children, (child) => {
-      if (React.isValidElement(child) && child.type === ComboboxItem) {
-        const props = child.props as ComboboxItemProps;
-        values.push({
-          value: props.value,
-          label: props.children?.toString() as string,
-        });
-      }
-    });
-    setAllValues(values);
-  }, [children]);
-
-  console.log(allValues);
 
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
     whileElementsMounted: autoUpdate,
@@ -109,7 +103,6 @@ export const Combobox = ({
   function onChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     setInputValue(value);
-    onValueChange?.(value);
 
     if (value) {
       setOpen(true);
@@ -126,30 +119,10 @@ export const Combobox = ({
 
   /* Send new value if item was clicked */
   useEffect(() => {
-    const item = allValues.find((item) => item.label === inputValue);
+    const item = values.find((item) => item.label === inputValue);
 
     onValueChange?.(item?.value || '');
-  }, [allValues, inputValue, onValueChange]);
-
-  const filteredChildren = React.Children.toArray(children)
-    .filter((child) => {
-      if (React.isValidElement(child) && child.type === ComboboxItem) {
-        const props = child.props as ComboboxItemProps;
-        const value = props.value as string;
-        return filterFn(inputValue, value);
-      }
-      return true;
-    })
-    .map((child, index) => {
-      if (React.isValidElement(child) && child.type === ComboboxItem) {
-        const props: ComboboxItemProps = {
-          ...child.props,
-          index,
-        } as ComboboxItemProps;
-        return React.cloneElement(child, props);
-      }
-      return child;
-    });
+  }, [values, inputValue, onValueChange]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -177,7 +150,9 @@ export const Combobox = ({
           const child = filteredChildren[activeIndex];
           if (React.isValidElement(child) && child.type === ComboboxItem) {
             const props = child.props as ComboboxItemProps;
-            setInputValue(props.value as string);
+            const item = values.find((item) => item.value === props.value);
+
+            setInputValue(item?.label || '');
             setOpen(false);
           }
         }
@@ -191,24 +166,18 @@ export const Combobox = ({
     }
   };
 
-  useEffect(() => {
-    if (activeIndex !== null) {
-      const element = document.getElementById(`combobox-item-${activeIndex}`);
-      element?.scrollIntoView({ block: 'nearest' });
-    }
-  }, [activeIndex]);
-
   return (
     <ComboboxContext.Provider
       value={{
+        values,
+        activeIndex,
         onItemClick: (value: string) => {
-          const item = allValues.find((item) => item.value === value);
+          const item = values.find((item) => item.value === value);
 
           setInputValue(item?.label || '');
           setOpen(false);
           refs.domReference.current?.focus();
         },
-        activeIndex,
       }}
     >
       <Textfield
