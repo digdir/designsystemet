@@ -14,8 +14,8 @@ import {
 } from '@floating-ui/react';
 import cn from 'classnames';
 
-import { Textfield } from '../form/Textfield';
 import { Box } from '../Box';
+import { ChipRemovable } from '../Chip';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
@@ -26,6 +26,7 @@ import classes from './Combobox.module.css';
 type ComboboxContextType = {
   values: ValueItemType[];
   activeIndex: number | null;
+  multiple: boolean;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
   onItemClick: (value: string) => void;
 };
@@ -35,8 +36,23 @@ export const ComboboxContext = createContext<ComboboxContextType | undefined>(
 );
 
 export type ComboboxProps = {
+  /**
+   * Placeholder text for the input
+   */
   placeholder?: string;
-  onValueChange?: (value: string) => void;
+  /**
+   * Value of the selected item, or array of values if multiple is true
+   */
+  value?: string[];
+  /**
+   * Callback function that is called when the value changes
+   */
+  onValueChange?: (value: string[]) => void;
+  /**
+   * If true, multiple items can be selected
+   * @default false
+   */
+  multiple?: boolean;
   /**
    * Filter function for filtering the list of items
    * @param inputValue
@@ -49,20 +65,35 @@ export type ComboboxProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Combobox = ({
+  value,
   onValueChange,
   placeholder,
+  multiple = false,
   children,
   filterFn = (inputValue, v) => {
     return v.toLowerCase().includes(inputValue.toLowerCase());
   },
 }: ComboboxProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeValues, setActiveValues] = useState<ValueItemType[]>([]);
   const { values, filteredChildren, open, setOpen } = useCombobox({
     children,
     input: inputValue,
     filterFn,
+    multiple,
+    activeValues,
   });
+
+  // if value is set, set input value to the label of the value
+  useEffect(() => {
+    if (value && value.length > 0) {
+      const item = values.find((item) => item.value === value[0]);
+      setInputValue(item?.label || '');
+    }
+  }, [value, values]);
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
 
@@ -119,10 +150,10 @@ export const Combobox = ({
 
   /* Send new value if item was clicked */
   useEffect(() => {
-    const item = values.find((item) => item.label === inputValue);
-
-    onValueChange?.(item?.value || '');
-  }, [values, inputValue, onValueChange]);
+    const values = activeValues.map((item) => item.value);
+    console.log('i am in here!!');
+    onValueChange?.(values);
+  }, [onValueChange, activeValues]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -170,19 +201,26 @@ export const Combobox = ({
     <ComboboxContext.Provider
       value={{
         values,
+        multiple,
         activeIndex,
         setActiveIndex,
         onItemClick: (value: string) => {
           const item = values.find((item) => item.value === value);
 
-          setInputValue(item?.label || '');
-          setOpen(false);
+          if (multiple) {
+            setActiveValues([item as ValueItemType, ...activeValues]);
+            setInputValue('');
+          } else {
+            setActiveValues([item as ValueItemType]);
+            setInputValue(item?.label || '');
+          }
+
+          !multiple && setOpen(false);
           refs.domReference.current?.focus();
         },
       }}
     >
-      <Textfield
-        autoComplete='off'
+      <Box
         {...getReferenceProps({
           ref: refs.setReference,
           onChange,
@@ -192,12 +230,34 @@ export const Combobox = ({
           onClick() {
             setOpen(true);
             setActiveIndex(0);
+            inputRef.current?.focus();
           },
           onKeyDown(event) {
             handleKeyDown(event);
           },
         })}
-      />
+      >
+        {multiple &&
+          activeValues.map((item) => {
+            return (
+              <ChipRemovable
+                key={item.value}
+                size='small'
+                onClick={() => {
+                  setActiveValues(
+                    activeValues.filter((i) => i.value !== item.value),
+                  );
+                }}
+              >
+                {item.label}
+              </ChipRemovable>
+            );
+          })}
+        <input
+          ref={inputRef}
+          autoComplete='off'
+        />
+      </Box>
       <FloatingPortal>
         {open && (
           <FloatingFocusManager
