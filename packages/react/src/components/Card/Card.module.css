@@ -51,7 +51,7 @@
 
 .card > hr {
   width: 100%;
-  margin: var(--fds-spacing-2) 0;
+  margin: var(--fds-spacing-3) 0;
 }
 
 .card > *:not(:first-child, hr) {
