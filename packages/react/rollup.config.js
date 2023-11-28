@@ -2,9 +2,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import cssnano from 'cssnano';
-
-import { generateScopedName } from './scripts/name';
 
 const input = './tsc-build/index.js';
 
@@ -17,16 +14,12 @@ export default [
         dir: './dist/cjs',
         format: 'cjs',
         banner: "'use client';",
-        // preserveModules: true,
-        // preserveModulesRoot: 'tsc-build',
       },
       {
         input,
         dir: './dist/esm',
         format: 'es',
         banner: "'use client';",
-        // preserveModules: true,
-        // preserveModulesRoot: 'tsc-build',
       },
     ],
     external: [
@@ -38,22 +31,6 @@ export default [
       /leaflet/,
       /@navikt\/ds-icons/,
     ],
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      postcss(),
-      // This is to make sure names match those in built css files
-      // {
-      //   // extract: true, // disabled until our css package is released and people are informed of new setup
-      //   modules: {
-      //     generateScopedName,
-      //   },
-      //   plugins: [cssnano({ preset: 'default' })],
-      //   inject: {
-      //     insertAt: 'top',
-      //   },
-      // },
-    ],
+    plugins: [peerDepsExternal(), resolve(), commonjs(), postcss()],
   },
 ];
