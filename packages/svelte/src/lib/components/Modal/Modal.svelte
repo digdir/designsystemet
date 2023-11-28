@@ -116,7 +116,10 @@
 </script>
 
 <div class="modal-background">
-  <div class={`modal ${modalVariant}`}>
+  <div
+    class={`modal ${modalVariant}`}
+    {...$$restProps}
+  >
     <a
       href="/"
       on:focus={() => closeButton.focus()}><div /></a
