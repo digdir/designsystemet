@@ -37,6 +37,11 @@ export type ComboboxProps = {
   filterFn: (inputValue: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
+type ItemType = {
+  value: string;
+  label: string;
+};
+
 export const Combobox = ({
   onValueChange,
   placeholder,
@@ -48,8 +53,26 @@ export const Combobox = ({
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [allValues, setAllValues] = useState<ItemType[]>([]);
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
+
+  // Update all values
+  useEffect(() => {
+    const values: ItemType[] = [];
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child) && child.type === ComboboxItem) {
+        const props = child.props as ComboboxItemProps;
+        values.push({
+          value: props.value,
+          label: props.children?.toString() as string,
+        });
+      }
+    });
+    setAllValues(values);
+  }, [children]);
+
+  console.log(allValues);
 
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
     whileElementsMounted: autoUpdate,
@@ -69,15 +92,12 @@ export const Combobox = ({
     ],
   });
 
-  console.log('activeIndex', activeIndex);
-
   const role = useRole(context, { role: 'listbox' });
   const dismiss = useDismiss(context);
   const listNav = useListNavigation(context, {
     listRef,
     activeIndex,
     virtual: true,
-    loop: true,
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
@@ -106,8 +126,10 @@ export const Combobox = ({
 
   /* Send new value if item was clicked */
   useEffect(() => {
-    onValueChange?.(inputValue);
-  }, [inputValue, onValueChange]);
+    const item = allValues.find((item) => item.label === inputValue);
+
+    onValueChange?.(item?.value || '');
+  }, [allValues, inputValue, onValueChange]);
 
   const filteredChildren = React.Children.toArray(children)
     .filter((child) => {
@@ -180,7 +202,9 @@ export const Combobox = ({
     <ComboboxContext.Provider
       value={{
         onItemClick: (value: string) => {
-          setInputValue(value);
+          const item = allValues.find((item) => item.value === value);
+
+          setInputValue(item?.label || '');
           setOpen(false);
           refs.domReference.current?.focus();
         },
@@ -188,6 +212,7 @@ export const Combobox = ({
       }}
     >
       <Textfield
+        autoComplete='off'
         {...getReferenceProps({
           ref: refs.setReference,
           onChange,

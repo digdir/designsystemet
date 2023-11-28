@@ -11,12 +11,22 @@ export default {
 } as Meta;
 
 const FRUITS = [
-  '🍔 Hamburger',
-  '🍕 Pizza',
-  '🍜 Ramen',
-  '🍣 Sushi',
-  '🍝 Pasta',
-  '🍟 Pommes frites',
+  {
+    name: '🍔 Hamburger',
+    value: 'hamburger',
+  },
+  {
+    name: '🍕 Pizza',
+    value: 'pizza',
+  },
+  {
+    name: '🍣 Sushi',
+    value: 'sushi',
+  },
+  {
+    name: '🍜 Nudler',
+    value: 'nudler',
+  },
 ];
 
 export const Preview: StoryFn<typeof Combobox> = (args) => {
@@ -32,9 +42,9 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
         {FRUITS.map((item, index) => (
           <Combobox.Item
             key={index}
-            value={item}
+            value={item.value}
           >
-            {item}
+            {item.name}
           </Combobox.Item>
         ))}
       </Combobox>
