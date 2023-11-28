@@ -280,12 +280,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'default'],
   },
   {
-    value: '#4C76BA',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt1.500}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-first-hover',
@@ -293,13 +293,13 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'hover'],
   },
   {
-    value: '#4C76BA',
+    value: '#F39200',
     type: 'color',
     description: 'Standard farge for handlinger',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt3.900}',
       type: 'color',
       description: 'Standard farge for handlinger',
     },
@@ -347,7 +347,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill-active'],
   },
   {
-    value: '#4C76BA',
+    value: '#4c76ba',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -360,7 +360,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'subtle'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -373,12 +373,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'subtle-hover'],
   },
   {
-    value: '#4C76BA',
+    value: '#4c76ba',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt2.500}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-default',
@@ -386,12 +386,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'default'],
   },
   {
-    value: '#00244E',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.900}',
+      value: '{brand.alt2.700}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-hover',
@@ -399,7 +399,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'hover'],
   },
   {
-    value: '#4C76BA',
+    value: '#4c76ba',
     type: 'color',
     description: 'Standard farge for handlinger',
     filePath: '../../design-tokens/Brand/STAF.json',
@@ -856,7 +856,7 @@ export const color = [
     path: ['semantic', 'surface', 'first', 'dark'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -869,7 +869,7 @@ export const color = [
     path: ['semantic', 'surface', 'second', 'light'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -882,7 +882,7 @@ export const color = [
     path: ['semantic', 'surface', 'second', 'light-hover'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -895,12 +895,12 @@ export const color = [
     path: ['semantic', 'surface', 'second', 'light-active'],
   },
   {
-    value: '#4C76BA',
+    value: '#4c76ba',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt2.500}',
       type: 'color',
     },
     name: '--fds-semantic-surface-second-dark',
@@ -1467,7 +1467,7 @@ export const color = [
     path: ['semantic', 'border', 'first', 'active'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '#4c76ba',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1480,7 +1480,7 @@ export const color = [
     path: ['semantic', 'border', 'second', 'default'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1493,7 +1493,7 @@ export const color = [
     path: ['semantic', 'border', 'second', 'hover'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1928,7 +1928,7 @@ export const color = [
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.8',
+          value: '0.9',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -1944,7 +1944,7 @@ export const color = [
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.8',
+            value: '0.9',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -1963,7 +1963,7 @@ export const color = [
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.7',
+          value: '0.8',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -1979,7 +1979,7 @@ export const color = [
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.7',
+            value: '0.8',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2033,7 +2033,7 @@ export const color = [
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.5',
+          value: '0.55',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -2049,7 +2049,7 @@ export const color = [
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.5',
+            value: '0.55',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2215,44 +2215,42 @@ export const color = [
     path: ['brand', 'alt1', '900'],
   },
   {
-    value: '#4C76BA',
+    value: '#4c76ba',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.8',
+          value: '0.9',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
         },
       },
     },
-    description: 'AAA 13.3 on grey 800\nAA 6.7 as bkdg for interaction blue',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt2.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.8',
+            value: '0.9',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
           },
         },
       },
-      description: 'AAA 13.3 on grey 800\nAA 6.7 as bkdg for interaction blue',
     },
     name: '--fds-brand-alt2-100',
     attributes: {},
     path: ['brand', 'alt2', '100'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2268,7 +2266,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.900',
+      value: '$brand.alt2.500',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2287,42 +2285,7 @@ export const color = [
     path: ['brand', 'alt2', '200'],
   },
   {
-    value: '$brand.alt2.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.6',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt2.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.6',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt2-300',
-    attributes: {},
-    path: ['brand', 'alt2', '300'],
-  },
-  {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2338,7 +2301,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.900',
+      value: '$brand.alt2.500',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2352,49 +2315,12 @@ export const color = [
         },
       },
     },
-    name: '--fds-brand-alt2-400',
+    name: '--fds-brand-alt2-300',
     attributes: {},
-    path: ['brand', 'alt2', '400'],
+    path: ['brand', 'alt2', '300'],
   },
   {
-    value: '#4C76BA',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.4',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    description: 'ue',
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt2.900}',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.4',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-      description: 'ue',
-    },
-    name: '--fds-brand-alt2-500',
-    attributes: {},
-    path: ['brand', 'alt2', '500'],
-  },
-  {
-    value: '$brand.alt2.900',
+    value: '$brand.alt2.500',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2407,11 +2333,10 @@ export const color = [
         },
       },
     },
-    description: 'AA 6.8 on grey 800\nAA18 3.4 as bkdg for interaction blue',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.900',
+      value: '$brand.alt2.500',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2424,56 +2349,31 @@ export const color = [
           },
         },
       },
-      description: 'AA 6.8 on grey 800\nAA18 3.4 as bkdg for interaction blue',
     },
-    name: '--fds-brand-alt2-600',
+    name: '--fds-brand-alt2-400',
     attributes: {},
-    path: ['brand', 'alt2', '600'],
+    path: ['brand', 'alt2', '400'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '#4c76ba',
     type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.2',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    description: 'AA 5.5 on grey 800',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.900',
+      value: '#4c76ba',
       type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.2',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-      description: 'AA 5.5 on grey 800',
     },
-    name: '--fds-brand-alt2-700',
+    name: '--fds-brand-alt2-500',
     attributes: {},
-    path: ['brand', 'alt2', '700'],
+    path: ['brand', 'alt2', '500'],
   },
   {
-    value: '$brand.alt2.900',
+    value: '#4c76ba',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
-          type: 'lighten',
+          type: 'darken',
           value: '0.1',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
@@ -2481,16 +2381,15 @@ export const color = [
         },
       },
     },
-    description: 'AA18 4.4 on grey 800\nAA18 3.2 on white',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.900',
+      value: '{brand.alt2.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
-            type: 'lighten',
+            type: 'darken',
             value: '0.1',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
@@ -2498,24 +2397,150 @@ export const color = [
           },
         },
       },
-      description: 'AA18 4.4 on grey 800\nAA18 3.2 on white',
+    },
+    name: '--fds-brand-alt2-600',
+    attributes: {},
+    path: ['brand', 'alt2', '600'],
+  },
+  {
+    value: '$brand.alt2.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'darken',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt2.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'darken',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt2-700',
+    attributes: {},
+    path: ['brand', 'alt2', '700'],
+  },
+  {
+    value: '$brand.alt2.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'darken',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt2.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'darken',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
     },
     name: '--fds-brand-alt2-800',
     attributes: {},
     path: ['brand', 'alt2', '800'],
   },
   {
-    value: '#4C76BA',
+    value: '#4c76ba',
     type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'darken',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#4C76BA',
+      value: '{brand.alt2.500}',
       type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'darken',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
     },
     name: '--fds-brand-alt2-900',
     attributes: {},
     path: ['brand', 'alt2', '900'],
+  },
+  {
+    value: '$brand.alt3.900',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.9',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.900',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.9',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt3-100',
+    attributes: {},
+    path: ['brand', 'alt3', '100'],
   },
   {
     value: '$brand.alt3.900',
@@ -2541,41 +2566,6 @@ export const color = [
           modify: {
             type: 'lighten',
             value: '0.8',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-100',
-    attributes: {},
-    path: ['brand', 'alt3', '100'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.7',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.7',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2776,7 +2766,6 @@ export const color = [
         },
       },
     },
-    description: 'AA 5.6 on white',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
@@ -2793,7 +2782,6 @@ export const color = [
           },
         },
       },
-      description: 'AA 5.6 on white',
     },
     name: '--fds-brand-alt3-800',
     attributes: {},

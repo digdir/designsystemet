@@ -29,3 +29,12 @@ WIP Component library for Statsforvalternes Fellesorganisasjon
 1. Bump the version number of the package in package.json: `0.0.x + 1`.
 2. Commit and push your changes.
 3. Use this terminal command to publish: `npm publish --access public`. (This step requires you to be logged in with NPM credentials if you haven't already done so)
+
+### Build & Publish Design Tokens
+
+0. Navigate to the root folder
+1. Run `yarn build`
+   1a. You may get errors related to yarn.lock file. You can try to remove the yarn.lock file, and/or run `yarn install`
+2. In the /packages/tokens folder, bump the version number of the package in package.json: `0.0.x + 1`.
+3. Navigate to the /packages/tokens folder
+4. Use this terminal command to publish: `npm publish --access public`. (This step requires you to be logged in with NPM credentials if you haven't already done so)
