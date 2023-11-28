@@ -51,9 +51,10 @@
 
 .card > hr {
   width: 100%;
+  margin: var(--fds-spacing-2) 0;
 }
 
-.card > :not(:first-child, :empty) {
+.card > *:not(:first-child, hr) {
   padding-top: var(--fds-spacing-4);
 }
 
@@ -70,6 +71,14 @@
   padding-bottom: var(--fds-spacing-6);
 }
 
+.media:first-child {
+  padding-bottom: var(--fds-spacing-2);
+}
+
+.media:last-child {
+  padding-top: var(--fds-spacing-6);
+}
+
 .linkCard {
   text-decoration: none;
 }
@@ -81,6 +90,8 @@
 .linkCard h5,
 .linkCard h6 {
   text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
+  text-underline-offset: max(4px, 0.25rem, 0.22em);
 }
 
 .neutral {

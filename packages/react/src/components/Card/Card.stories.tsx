@@ -29,7 +29,6 @@ export const Preview: Story = (args) => (
   >
     <Card.Header>
       <Heading size='small'>Card Neutral</Heading>
-      <Paragraph size='small'>Subtitle bottom</Paragraph>
     </Card.Header>
     <Card.Content>
       Most provide as with carried business are much better more the perfected
@@ -67,7 +66,6 @@ export const LinkCard: Story = (args) => (
       </Card.Media>
       <Card.Header>
         <Heading size='small'>Link Card</Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
       </Card.Header>
       <Card.Content>
         Most provide as with carried business are much better more the perfected
@@ -91,7 +89,6 @@ export const LinkCard: Story = (args) => (
       </Card.Media>
       <Card.Header>
         <Heading size='small'>Link Card</Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
       </Card.Header>
       <Card.Content>
         Most provide as with carried business are much better more the perfected
@@ -127,7 +124,6 @@ export const Variants: StoryFn<typeof Card> = () => {
           >
             Card Neutral
           </Heading>
-          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -149,12 +145,6 @@ export const Variants: StoryFn<typeof Card> = () => {
           >
             Card Subtle
           </Heading>
-          <Paragraph
-            style={{ color: 'var(--fds-semantic-text-neutral-subtle)' }}
-            size='small'
-          >
-            Subtitle bottom
-          </Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -176,7 +166,6 @@ export const Variants: StoryFn<typeof Card> = () => {
           >
             Card First
           </Heading>
-          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -198,7 +187,6 @@ export const Variants: StoryFn<typeof Card> = () => {
           >
             Card Second
           </Heading>
-          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -220,7 +208,6 @@ export const Variants: StoryFn<typeof Card> = () => {
           >
             Card Third
           </Heading>
-          <Paragraph size='small'>Subtitle bottom</Paragraph>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -254,7 +241,6 @@ export const Media: Story = () => (
         >
           Card Neutral
         </Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
       </Card.Header>
       <Card.Content>
         Most provide as with carried business are much better more the perfected
@@ -269,7 +255,6 @@ export const Media: Story = () => (
         >
           Card Neutral
         </Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
       </Card.Header>
       <Card.Media>
         <img
@@ -290,7 +275,6 @@ export const Media: Story = () => (
         >
           Card Neutral
         </Heading>
-        <Paragraph size='small'>Subtitle bottom</Paragraph>
       </Card.Header>
 
       <Card.Content>
