@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Chip } from '..';
 
-import { Group } from './';
+import { Group } from './Group';
 
 const meta: Meta<typeof Group> = {
   title: 'Felles/Chip/Group',

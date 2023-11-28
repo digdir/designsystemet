@@ -123,13 +123,13 @@ describe('useFormField', () => {
 
   test('has correct size', () => {
     const { result } = renderHook(
-      () => useFormField({ size: 'xsmall' }, 'test'),
+      () => useFormField({ size: 'small' }, 'test'),
       { wrapper: createWrapper(Fieldset) },
     );
 
     const field = result.current;
 
-    expect(field.size).toEqual('xsmall');
+    expect(field.size).toEqual('small');
   });
   test('has correct values inherited from Fieldset', () => {
     const { result } = renderHook<FormField, FieldsetProps>(

@@ -2,11 +2,10 @@ import type { HTMLAttributes } from 'react';
 import React, { forwardRef, createContext } from 'react';
 import cn from 'classnames';
 
-import type { ChipBaseProps } from '../_ChipBase';
 import classes from '../Chip.module.css';
 
 export type ChipGroupContext = {
-  size?: ChipBaseProps['size'];
+  size?: 'small' | 'medium' | 'large';
 };
 
 export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
@@ -15,11 +14,11 @@ export type ChipGroupProps = {
   /**
    * Changes Chip size and gap between chips.
    */
-  size?: 'xsmall' | 'small';
+  size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLUListElement>;
 
 export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
-  ({ children, size = 'xsmall', ...rest }: ChipGroupProps, ref) => (
+  ({ children, size = 'medium', ...rest }: ChipGroupProps, ref) => (
     <ul
       {...rest}
       ref={ref}

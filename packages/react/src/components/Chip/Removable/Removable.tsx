@@ -1,32 +1,52 @@
-import React, { forwardRef } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import cn from 'classnames';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
-import type { ChipBaseProps } from '../_ChipBase';
-import { ChipBase } from '../_ChipBase';
 import classes from '../Chip.module.css';
+import { Paragraph } from '../../Typography';
+import { ChipGroupContext } from '../Group/Group';
+import utilityClasses from '../../../utilities/utility.module.css';
 
-export type RemovableChipProps = Omit<ChipBaseProps, 'selected'>;
+export type RemovableChipProps = {
+  /**
+   * Changes padding and font-sizes.
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'small', ...rest }, ref) => {
+  ({ children, size = 'medium', ...rest }, ref) => {
+    const group = useContext(ChipGroupContext);
+
     return (
-      <ChipBase
+      <button
         {...rest}
-        ref={ref}
-        size={size}
-        as='button'
         type='button'
-        className={cn(classes.removable, classes[size], rest.className)}
+        ref={ref}
+        className={cn(
+          classes.chipButton,
+          utilityClasses.focusable,
+          classes[group?.size || size],
+          classes.removable,
+          rest.className,
+        )}
       >
-        <span>{children}</span>
-        <span
-          className={classes.xMark}
-          aria-hidden
+        <Paragraph
+          as='span'
+          size={group?.size || size}
+          className={classes.label}
         >
-          <XMarkIcon className={classes.icon} />
-        </span>
-      </ChipBase>
+          {children}
+          <span
+            className={classes.xMark}
+            aria-hidden
+          >
+            <XMarkIcon className={classes.icon} />
+          </span>
+        </Paragraph>
+      </button>
     );
   },
 );

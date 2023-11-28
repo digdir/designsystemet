@@ -154,6 +154,15 @@
   font-weight: 600;
 }
 
+.content p code {
+  padding: 0.2em 0.5em;
+  margin: 1px;
+  font-size: 0.9em;
+  white-space: break-spaces;
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  border-radius: var(--fds-border_radius-medium);
+}
+
 .content > *:first-child {
   margin-top: 0;
 }

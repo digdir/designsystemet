@@ -24,7 +24,7 @@ export type BoxProps = {
   borderRadius?: 'small' | 'medium' | 'large';
   /**
    * Background color of the box
-   * @default 'defualt'
+   * @default 'default'
    */
   background?: 'default' | 'subtle';
 } & HTMLAttributes<HTMLDivElement>;
