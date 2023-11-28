@@ -157,9 +157,13 @@ export const SiteConfig = {
           ],
         },
         {
-          name: 'Brukerdialoger',
-          url: 'monstre/gjentakende-brukerdialoger',
+          name: 'Skjema',
+          url: 'monstre/skjema',
           children: [
+            {
+              name: 'Obligatoriske og valgfrie skjemafelt',
+              url: 'monstre/obligatoriske-og-valgfrie-felt',
+            },
             {
               name: 'Feilmeldinger',
               url: 'monstre/feilmeldinger',
