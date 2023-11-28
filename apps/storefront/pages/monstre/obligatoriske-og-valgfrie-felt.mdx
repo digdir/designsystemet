@@ -1,4 +1,4 @@
-import { Meta } from '@components';
+import { Meta, ResponsiveIframe, Image } from '@components';
 import { MenuPageLayout } from '@layouts';
 import { Figma } from 'mdx-embed';
 import { Heading, Paragraph, Alert } from '@digdir/design-system-react';
@@ -20,30 +20,50 @@ export default ({ children, menu }) => (
 
 Det er flere måter å markere obligatoriske felt på som oppfyller kravene til merking. I dag gjør vi dette ulikt på tvers. Noen bruker asterisk (stjerne), noen bruker ord, andre informerer i forkant om hva som må fylles ut. Gjør vi dette likt på tvers blir det lettere for innbygger å forstå og kjenne igjen mønsteret på tvers av løsningene våre. Det vil alltid være unntak og ulike kontekster som krever ulik merking.
 
-Her tar vi for oss 3 scenarier.
+Her tar vi for oss 3 eksempler.
+
+1. [Ett spørsmål per side](#1-ett-spørsmål-per-side)
+2. [Når vi _må_ ha flere spørsmål per side](#2-når-vi-må-ha-flere-spørsmål-per-side)
+3. [Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt](#3-når-vi-må-ha-en-kombinasjon-av-obligatoriske-og-valgfrie-felt)
 
 ## 1. Ett spørsmål per side
 
 Hvis vi kan holde oss til ett spørsmål per side så er det aller enkleste for brukeren å forholde seg til. Gjør vi det, trenger vi ikke å markere hvilke felt som må fylles ut.
 
-![Skjermbilde av skjema med ett spørsmål på en side](/img/obligatorisk-eks1.png)
+<Image
+  src='/img/obligatorisk-eks1.png'
+  alt='Skjermbilde av skjema med ett spørsmål på en side'
+  boxShadow={false}
+/>
 
 ## 2. Når vi _må_ ha flere spørsmål per side
 
-Hvis vi _må_ ha flere spørsmål på en side, kan vi informere tydelig i toppen om at _alle felt må fylles ut_. Vi må da bare spørre brukeren om informasjon vi absolutt trenger, og unngå valgfrie felt.
+Hvis vi _må_ ha flere spørsmål på en side, kan vi informere tydelig i toppen om at _alle felt må fylles ut_. Vi skal bare spørre brukeren om informasjon vi absolutt trenger, og unngå valgfrie felt. (Kan du ikke unngå valgfrie felt, se [eksempel 3](#3-når-vi-må-ha-en-kombinasjon-av-obligatoriske-og-valgfrie-felt)).
 
 - Bruk for eksempel en gul tag, som vist i eksemplet under.
 - Bruk teksten **«Alle felt må fylles ut»**. \
   (_Ikke_ bruk _"Obligatorisk"_ eller _"Påkrevd"_)
 
+<Image
+  src='/img/obligatorisk-eks2.png'
+  alt='Skjermbilde av skjema med flere spørsmål per side.'
+  boxShadow={false}
+/>
+
 ## 3. Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt
 
-En kombinasjon av obligatoriske og valgfrie felt er ikke ideellt! Men det vil være situasjoner der vi ikke kommer unna det. Hvis vi _må_ ha med valgfrie felt i tillegg til de obligatoriske, markerer vi alle feltene. Da trenger vi ikke å informere i toppen. Vi anbefaler å bruke dette alternativet så sjelden som mulig.
+En kombinasjon av obligatoriske og valgfrie felt er ikke ideellt! Men det vil være situasjoner der vi ikke kommer unna det. Hvis vi _må_ ha med valgfrie felt i tillegg til de obligatoriske, markerer vi alle feltene. Da trenger vi ikke å informere i toppen.
 
 - Informer tydelig med taggen «Må fylles ut» eller «Valgfritt» bak hvert spørsmål/hver ledetekst.
 - Ikke bruk ordene «Obligatorisk» eller «Påkrevd».
 - Bruk for eksempel gul tag for obligatorisk og blå for valgfritt.
 - Ikke bruk stjerne for å markere felt som må fylles ut.
+
+<Image
+  src='/img/obligatorisk-eks3.png'
+  alt='Skjermbilde av skjema med flere spørsmål per side, både obligatoriske og valgfrie.'
+  boxShadow={false}
+/>
 
 <br />
 
