@@ -1,33 +1,46 @@
-import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useId } from 'react';
+import React, { forwardRef } from 'react';
 
 import { Button } from '../../Button';
+import { ComboboxContext } from '../Combobox';
 
-export type ItemProps = {
-  children: React.ReactNode;
+export type ComboboxItemProps = {
   value: string;
+  index?: number;
+  children: React.ReactNode;
   active?: boolean;
-} & HTMLAttributes<HTMLElement>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ComboboxItem = ({
-  value,
-  children,
-}: {
-  value: string;
-  children: React.ReactNode;
-}) => {
-  const context = React.useContext(ComboboxContext);
-  if (!context) {
-    throw new Error('ComboboxItem must be used within a Combobox');
-  }
-  const { activeIndex, onItemClick } = context;
+export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
+  ({ value, index, children }, ref) => {
+    const context = React.useContext(ComboboxContext);
+    if (!context) {
+      throw new Error('ComboboxItem must be used within a Combobox');
+    }
+    const { activeIndex, setActiveIndex, onItemClick } = context;
 
-  return (
-    <div
-      onClick={() => onItemClick(value)}
-      style={{ backgroundColor: activeIndex === value ? 'lightgray' : 'white' }}
-    >
-      {children}
-    </div>
-  );
-};
+    if (typeof index !== 'number') {
+      throw new Error('Internal error: ComboboxItem did not receive index');
+    }
+
+    return (
+      <Button
+        fullWidth
+        onClick={() => onItemClick(value)}
+        onMouseEnter={() => setActiveIndex(index)} // Set active index on hover
+        variant={activeIndex === index ? 'secondary' : 'tertiary'}
+        style={{
+          justifyContent: 'start',
+          backgroundColor:
+            activeIndex === index
+              ? 'var(--fds-semantic-surface-action-first-no_fill-hover)'
+              : '',
+        }}
+        ref={ref}
+      >
+        {children}
+      </Button>
+    );
+  },
+);
+
+ComboboxItem.displayName = 'ComboboxItem';

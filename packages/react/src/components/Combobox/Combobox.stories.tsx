@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { data } from './data/data';
-
 import { Combobox } from './index';
 
 export default {

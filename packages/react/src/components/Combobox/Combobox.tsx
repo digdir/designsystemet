@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  createContext,
-  useEffect,
-  forwardRef,
-} from 'react';
+import React, { useState, useRef, createContext, useEffect } from 'react';
 import {
   FloatingFocusManager,
   FloatingPortal,
@@ -20,18 +14,20 @@ import {
 
 import { Textfield } from '../form/Textfield';
 import { Box } from '../Box';
-import { Button } from '../Button';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
+import type { ComboboxItemProps } from './Item/Item';
+import { ComboboxItem } from './Item/Item';
 
 type ComboboxContextType = {
   values: ValueItemType[];
   activeIndex: number | null;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
   onItemClick: (value: string) => void;
 };
 
-const ComboboxContext = createContext<ComboboxContextType | undefined>(
+export const ComboboxContext = createContext<ComboboxContextType | undefined>(
   undefined,
 );
 
@@ -171,6 +167,7 @@ export const Combobox = ({
       value={{
         values,
         activeIndex,
+        setActiveIndex,
         onItemClick: (value: string) => {
           const item = values.find((item) => item.value === value);
 
@@ -248,40 +245,3 @@ export const Combobox = ({
     </ComboboxContext.Provider>
   );
 };
-
-export type ComboboxItemProps = {
-  value: string;
-  index?: number;
-  children: React.ReactNode;
-  active?: boolean;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
-  ({ value, index, children }, ref) => {
-    const context = React.useContext(ComboboxContext);
-    if (!context) {
-      throw new Error('ComboboxItem must be used within a Combobox');
-    }
-    const { activeIndex, onItemClick } = context;
-
-    return (
-      <Button
-        fullWidth
-        onClick={() => onItemClick(value)}
-        variant={activeIndex === index ? 'secondary' : 'tertiary'}
-        style={{
-          justifyContent: 'start',
-          backgroundColor:
-            activeIndex === index
-              ? 'var(--fds-semantic-surface-action-first-no_fill-hover)'
-              : '',
-        }}
-        ref={ref}
-      >
-        {children}
-      </Button>
-    );
-  },
-);
-
-ComboboxItem.displayName = 'ComboboxItem';

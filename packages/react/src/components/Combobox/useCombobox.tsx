@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-import type { ComboboxItemProps } from './Combobox';
-import { ComboboxItem } from './Combobox';
+import type { ComboboxItemProps } from './Item/Item';
+import { ComboboxItem } from './Item/Item';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
