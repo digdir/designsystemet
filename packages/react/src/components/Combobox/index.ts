@@ -1,4 +1,5 @@
-import { Combobox as ComboboxRoot, ComboboxItem } from './Combobox';
+import { Combobox as ComboboxRoot } from './Combobox';
+import { ComboboxItem } from './Item/Item';
 
 type ComboboxComponent = typeof ComboboxRoot & {
   Item: typeof ComboboxItem;
