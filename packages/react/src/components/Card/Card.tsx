@@ -1,56 +1,40 @@
+import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
-import { Box, type BoxProps } from '../Box';
+import type { OverridableComponent } from '../../types/OverridableComponent';
+import utilityClasses from '../../utilities/utility.module.css';
 
 import classes from './Card.module.css';
 
 export type CardProps = {
   /**
-   * Variant background color of the card, undefined for no background and hover or active state
-   * @default undefined
+   * Changes background & border color
+   * @default neutral
    */
-  variant?: 'neutral' | 'subtle' | 'first' | 'second' | 'third';
-
-  /**
-   * Image of the card
-   * @default undefined
-   */
-  MediaImage?: JSX.Element;
+  color?: 'neutral' | 'subtle' | 'first' | 'second' | 'third';
 
   /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
   children: React.ReactNode;
-} & Omit<BoxProps, 'background'>;
+} & HTMLAttributes<HTMLDivElement>;
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    {
-      shadow,
-      borderColor,
-      borderRadius,
-      variant,
-      MediaImage,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
+export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
+  ({ color = 'neutral', children, as: Component = 'div', ...rest }, ref) => {
+    const isLink = rest?.href != null;
     return (
-      <Box
-        shadow={shadow}
-        borderColor={borderColor}
-        borderRadius={borderRadius}
+      <Component
         {...rest}
         ref={ref}
         className={cn(
           classes.card,
-          { [classes[`${variant}Background`]]: !!variant },
+          classes[color],
+          isLink && classes.linkCard,
+          isLink && utilityClasses.focusable,
           rest.className,
         )}
       >
-        {MediaImage && MediaImage}
         {children}
-      </Box>
+      </Component>
     );
   },
 );

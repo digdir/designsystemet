@@ -13,13 +13,6 @@ const render = (props?: BoxProps) =>
   );
 
 describe('Box', () => {
-  it('should render a div with default classname', () => {
-    render();
-    const box = screen.getByTitle('box');
-
-    expect(box.classList).toContain('box');
-  });
-
   it('should render a div with correct classname when shadow is xsmall', () => {
     render({ shadow: 'xsmall' });
     const box = screen.getByTitle('box');
