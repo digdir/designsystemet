@@ -2,10 +2,12 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
 
-import cat1 from '../../../../../assets/img/cats/cat1.png';
-import cat2 from '../../../../../assets/img/cats/cat2.png';
-import cat3 from '../../../../../assets/img/cats/cat3.jpeg';
-import cats from '../../../../../assets/img/cats/cats.jpeg';
+import cat1 from '../../../../../assets/img/cats/Cat 1.jpg';
+import cat2 from '../../../../../assets/img/cats/Cat 2.jpg';
+import cat3 from '../../../../../assets/img/cats/Cat 3.jpg';
+import cat4 from '../../../../../assets/img/cats/Cat 4.jpg';
+import cat5 from '../../../../../assets/img/cats/Cat 5.jpg';
+import cat6 from '../../../../../assets/img/cats/Cat 6.jpg';
 import { Heading, Paragraph } from '../Typography';
 import { NativeSelect } from '../form/NativeSelect';
 import { Textfield } from '../form/Textfield';
@@ -60,7 +62,7 @@ export const LinkCard: Story = (args) => (
     >
       <Card.Media>
         <img
-          src={cat1}
+          src={cat5}
           alt='katt 1'
         />
       </Card.Media>
@@ -83,7 +85,7 @@ export const LinkCard: Story = (args) => (
     >
       <Card.Media>
         <img
-          src={cat2}
+          src={cat6}
           alt='katt 2'
         />
       </Card.Media>
@@ -155,7 +157,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='first'>
         <Card.Media>
           <img
-            src={cats}
+            src={cat3}
             alt='katter'
           />
         </Card.Media>
@@ -176,7 +178,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='second'>
         <Card.Media>
           <img
-            src={cat1}
+            src={cat4}
             alt='katt'
           />
         </Card.Media>
@@ -197,7 +199,7 @@ export const Variants: StoryFn<typeof Card> = () => {
       <Card color='third'>
         <Card.Media>
           <img
-            src={cat3}
+            src={cat5}
             alt='katt'
           />
         </Card.Media>

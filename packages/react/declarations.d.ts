@@ -16,7 +16,7 @@ declare module '*.png' {
   const value: string;
   export = value;
 }
-declare module '*.jpeg' {
+declare module '*.jpg' {
   const value: string;
   export = value;
 }
