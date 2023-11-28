@@ -1,0 +1,8 @@
+.item {
+  justify-content: start;
+  background: none;
+}
+
+.active {
+  background: var(--fds-semantic-surface-action-first-no_fill-hover) !important;
+}

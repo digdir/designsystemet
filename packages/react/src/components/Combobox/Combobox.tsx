@@ -4,6 +4,7 @@ import {
   FloatingPortal,
   autoUpdate,
   flip,
+  offset,
   size,
   useDismiss,
   useFloating,
@@ -11,6 +12,7 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react';
+import cn from 'classnames';
 
 import { Textfield } from '../form/Textfield';
 import { Box } from '../Box';
@@ -19,6 +21,7 @@ import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
+import classes from './Combobox.module.css';
 
 type ComboboxContextType = {
   values: ValueItemType[];
@@ -53,10 +56,9 @@ export const Combobox = ({
     return v.toLowerCase().includes(inputValue.toLowerCase());
   },
 }: ComboboxProps) => {
-  const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const { values, filteredChildren } = useCombobox({
+  const { values, filteredChildren, open, setOpen } = useCombobox({
     children,
     input: inputValue,
     filterFn,
@@ -79,6 +81,7 @@ export const Combobox = ({
         },
         padding: 10,
       }),
+      offset(10),
     ],
   });
 
@@ -88,6 +91,7 @@ export const Combobox = ({
     listRef,
     activeIndex,
     virtual: true,
+    scrollItemIntoView: true,
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
@@ -191,9 +195,6 @@ export const Combobox = ({
           },
           onKeyDown(event) {
             handleKeyDown(event);
-            if (event.key === 'Enter') {
-              setOpen(false);
-            }
           },
         })}
       />
@@ -211,13 +212,10 @@ export const Combobox = ({
                 ref: refs.setFloating,
                 style: {
                   ...floatingStyles,
-                  background: '#fff',
-                  color: 'black',
-                  overflowY: 'auto',
-                  padding: 'var(--fds-spacing-4)',
-                  overflowX: 'hidden',
+                  overflowX: 'scroll',
                 },
               })}
+              className={cn(classes.wrapper)}
             >
               {React.Children.map(filteredChildren, (child, index) => {
                 if (

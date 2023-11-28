@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
@@ -19,7 +19,8 @@ export default function useCombobox({
   input,
   filterFn,
 }: UseComboboxProps) {
-  const [values, setValues] = React.useState<ValueItemType[]>([]);
+  const [open, setOpen] = useState(false);
+  const [values, setValues] = useState<ValueItemType[]>([]);
 
   // Update all values
   useEffect(() => {
@@ -60,5 +61,7 @@ export default function useCombobox({
   return {
     filteredChildren,
     values,
+    open,
+    setOpen,
   };
 }

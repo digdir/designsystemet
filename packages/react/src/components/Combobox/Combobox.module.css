@@ -1,0 +1,4 @@
+.wrapper {
+  padding: var(--fds-spacing-2);
+  background: var(--fds-semantic-background-default);
+}
