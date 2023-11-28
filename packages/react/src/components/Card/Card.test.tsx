@@ -3,9 +3,10 @@ import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CardProps } from './Card';
 import { Card } from './Card';
-import { CardContent } from './CardContent/CardContent';
-import { CardFooter } from './CardFooter/CardFooter';
-import { CardHeader } from './CardHeader/CardHeader';
+import { CardContent } from './CardContent';
+import { CardFooter } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardMedia } from './CardMedia';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(
@@ -25,37 +26,22 @@ describe('Card Component', () => {
     expect(screen.getByTitle('card')).toBeInTheDocument();
   });
 
-  it('applies shadow prop correctly', () => {
-    const shadow = 'xsmall';
-    renderCard({ shadow });
-    expect(screen.getByTitle('card')).toHaveClass(`${shadow}Shadow`);
-  });
-
-  it('applies borderRadius prop correctly', () => {
-    const borderRadius = 'small';
-    renderCard({ borderRadius });
-    expect(screen.getByTitle('card')).toHaveClass(
-      `${borderRadius}BorderRadius`,
-    );
-  });
-
-  it('applies variant prop correctly', () => {
-    const variant = 'neutral';
-    renderCard({ variant });
-    expect(screen.getByTitle('card')).toHaveClass(`${variant}Background`);
-  });
-
   it('renders media image if provided', () => {
     const mediaImage = 'some/media/image/path';
-    const media = (
-      <img
-        src={mediaImage}
-        alt='cat'
-      />
+
+    renderRtl(
+      <Card title='card'>
+        <CardMedia>
+          <img
+            src={mediaImage}
+            alt='cat'
+          />
+        </CardMedia>
+        <CardHeader />
+        <CardContent />
+        <CardFooter />
+      </Card>,
     );
-    renderCard({
-      MediaImage: media,
-    });
     expect(screen.getByRole('img')).toHaveAttribute('src', mediaImage);
   });
 });
