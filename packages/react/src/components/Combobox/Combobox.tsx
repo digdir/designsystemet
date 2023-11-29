@@ -80,6 +80,9 @@ export const Combobox = ({
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [activeValues, setActiveValues] = useState<ValueItemType[]>([]);
+  const [prevActiveValues, setPrevActiveValues] = useState(
+    JSON.stringify(activeValues),
+  );
   const { values, filteredChildren, open, setOpen } = useCombobox({
     children,
     input: inputValue,
@@ -132,17 +135,6 @@ export const Combobox = ({
     listNav,
   ]);
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value;
-    setInputValue(value);
-
-    if (value) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  }
-
   useEffect(() => {
     if (!open) {
       setActiveIndex(null);
@@ -151,9 +143,38 @@ export const Combobox = ({
 
   /* Send new value if item was clicked */
   useEffect(() => {
-    const values = activeValues.map((item) => item.value);
-    onValueChange?.(values);
-  }, [onValueChange, activeValues]);
+    const stringifiedActiveValues = JSON.stringify(activeValues);
+    if (prevActiveValues !== stringifiedActiveValues) {
+      const values = activeValues.map((item) => item.value);
+      onValueChange?.(values);
+      setPrevActiveValues(stringifiedActiveValues);
+    }
+  }, [onValueChange, activeValues, prevActiveValues]);
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setInputValue(value);
+
+    if (value) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
+  const handleSelectItem = (item: ValueItemType) => {
+    if (multiple) {
+      setActiveValues([item, ...activeValues]);
+      setInputValue('');
+      inputRef.current?.focus();
+    } else {
+      setActiveValues([item]);
+      setInputValue(item?.label || '');
+    }
+
+    !multiple && setOpen(false);
+    refs.domReference.current?.focus();
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -182,9 +203,7 @@ export const Combobox = ({
           if (React.isValidElement(child) && child.type === ComboboxItem) {
             const props = child.props as ComboboxItemProps;
             const item = values.find((item) => item.value === props.value);
-
-            setInputValue(item?.label || '');
-            setOpen(false);
+            handleSelectItem(item as ValueItemType);
           }
         }
         break;
@@ -213,18 +232,7 @@ export const Combobox = ({
         setActiveIndex,
         onItemClick: (value: string) => {
           const item = values.find((item) => item.value === value);
-
-          if (multiple) {
-            setActiveValues([item as ValueItemType, ...activeValues]);
-            setInputValue('');
-            inputRef.current?.focus();
-          } else {
-            setActiveValues([item as ValueItemType]);
-            setInputValue(item?.label || '');
-          }
-
-          !multiple && setOpen(false);
-          refs.domReference.current?.focus();
+          handleSelectItem(item as ValueItemType);
         },
       }}
     >

@@ -42,29 +42,21 @@ export default function useCombobox({
   }, [children]);
 
   const GET_CHILDREN = () => {
-    // add index to children
-    const indexedChildren = React.Children.toArray(children).map(
-      (child, index) => {
-        if (!React.isValidElement(child)) return child;
-        if (child.type !== ComboboxItem) return child;
-
-        const props: ComboboxItemProps = {
-          ...child.props,
-          index,
-        } as ComboboxItemProps;
-        return React.cloneElement(child, props);
-      },
-    );
+    const childrenArr = React.Children.toArray(children);
 
     const activeValue = values.find((item) => item.label === input);
     // if input has a value that matches a value in the list, show all items
-    if (activeValue && values.find((item) => item === activeValue)) {
-      return indexedChildren;
+    if (
+      activeValue &&
+      !multiple &&
+      values.find((item) => item === activeValue)
+    ) {
+      return childrenArr;
     }
 
-    if (input === '' && !multiple) return indexedChildren;
+    if (input === '' && !multiple) return childrenArr;
 
-    return indexedChildren.filter((child) => {
+    return childrenArr.filter((child) => {
       if (!React.isValidElement(child)) return false;
       if (child.type !== ComboboxItem) return true;
       const props = child.props as ComboboxItemProps;

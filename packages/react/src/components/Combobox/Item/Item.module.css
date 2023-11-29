@@ -1,6 +1,7 @@
 .item {
   justify-content: start;
   background: none;
+  text-align: left;
 }
 
 .active {
