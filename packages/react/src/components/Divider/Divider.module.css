@@ -1,15 +1,16 @@
 .divider {
-  border: 1px solid;
+  border: none;
+  border-top: 1px solid;
 }
 
-.defaultDivider {
+.default {
   border-color: var(--fds-semantic-border-divider-default);
 }
 
-.strongDivider {
+.strong {
   border-color: var(--fds-semantic-border-divider-strong);
 }
 
-.subtleDivider {
+.subtle {
   border-color: var(--fds-semantic-border-divider-subtle);
 }

@@ -17,16 +17,16 @@ export default [
         dir: './dist/cjs',
         format: 'cjs',
         banner: "'use client';",
-        preserveModules: true,
-        preserveModulesRoot: 'tsc-build',
+        // preserveModules: true,
+        // preserveModulesRoot: 'tsc-build',
       },
       {
         input,
         dir: './dist/esm',
         format: 'es',
         banner: "'use client';",
-        preserveModules: true,
-        preserveModulesRoot: 'tsc-build',
+        // preserveModules: true,
+        // preserveModulesRoot: 'tsc-build',
       },
     ],
     external: [
@@ -42,19 +42,14 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      postcss(
-        // This is to make sure names match those in built css files
-        {
-          // extract: true, // disabled until our css package is released and people are informed of new setup
-          modules: {
-            generateScopedName,
-          },
-          plugins: [cssnano({ preset: 'default' })],
-          inject: {
-            insertAt: 'top',
-          },
+      postcss({
+        // disabled until our css package is released and people are informed of new setup
+        // extract: true,
+        modules: {
+          generateScopedName,
         },
-      ),
+        plugins: [cssnano({ preset: 'default' })],
+      }),
     ],
   },
 ];
