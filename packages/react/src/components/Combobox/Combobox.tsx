@@ -16,6 +16,7 @@ import cn from 'classnames';
 
 import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
+import textFieldClasses from '../form/Textfield/Textfield.module.css';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
@@ -192,6 +193,13 @@ export const Combobox = ({
         event.preventDefault();
         setOpen(false);
         break;
+
+      case 'Backspace':
+        if (inputValue === '' && multiple && activeValues.length > 0) {
+          setActiveValues((prev) => prev.slice(0, prev.length - 1));
+        }
+        break;
+
       default:
         break;
     }
@@ -210,6 +218,7 @@ export const Combobox = ({
           if (multiple) {
             setActiveValues([item as ValueItemType, ...activeValues]);
             setInputValue('');
+            inputRef.current?.focus();
           } else {
             setActiveValues([item as ValueItemType]);
             setInputValue(item?.label || '');
@@ -223,9 +232,7 @@ export const Combobox = ({
       <Box
         {...getReferenceProps({
           ref: refs.setReference,
-          onChange,
-          value: inputValue,
-          placeholder,
+
           'aria-autocomplete': 'list',
           onClick() {
             setOpen(true);
@@ -236,6 +243,11 @@ export const Combobox = ({
             handleKeyDown(event);
           },
         })}
+        className={cn(
+          textFieldClasses.input,
+          classes.inputWrapper,
+          classes.focusable,
+        )}
       >
         {multiple &&
           activeValues.map((item) => {
@@ -243,6 +255,9 @@ export const Combobox = ({
               <ChipRemovable
                 key={item.value}
                 size='small'
+                style={{
+                  margin: 'auto',
+                }}
                 onClick={() => {
                   setActiveValues(
                     activeValues.filter((i) => i.value !== item.value),
@@ -255,7 +270,10 @@ export const Combobox = ({
           })}
         <input
           ref={inputRef}
+          placeholder={placeholder}
           autoComplete='off'
+          onChange={onChange}
+          value={inputValue}
         />
       </Box>
       <FloatingPortal>

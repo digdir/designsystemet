@@ -2,3 +2,36 @@
   padding: var(--fds-spacing-2);
   background: var(--fds-semantic-background-default);
 }
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: var(--fds-spacing-1);
+  cursor: text;
+}
+
+.inputWrapper input {
+  height: 100%;
+  min-height: 44px;
+  width: 100%;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+}
+
+.inputWrapper input:focus {
+  outline: none;
+}
+
+/**
+ * Apply a focus outline on an element when it is focused with keyboard
+ */
+.focusable:focus-visible,
+.focusable:focus-within {
+  --fds-focus-border-width: 3px;
+
+  outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+  outline-offset: var(--fds-focus-border-width);
+  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow) !important;
+}

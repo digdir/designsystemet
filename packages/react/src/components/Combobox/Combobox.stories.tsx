@@ -36,15 +36,15 @@ const FRUITS = [
 ];
 
 export const Preview: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = useState(['']);
+  /* const [value, setValue] = useState(['']);
 
   const handleValueChange = (e: string[]) => {
     setValue(e);
-  };
+  }; */
 
   return (
     <>
-      <p>Value: {value.map((value) => value)}</p>
+      {/* <p>Value: {value.map((value) => value)}</p> */}
       <Combobox
         {...args}
         /* onValueChange={handleValueChange} */
