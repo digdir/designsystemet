@@ -13,7 +13,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
+import { ChevronDownIcon, ChevronUpIcon, XMarkIcon } from '@navikt/aksel-icons';
 
 import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
@@ -24,6 +24,7 @@ import useCombobox from './useCombobox';
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
 import classes from './Combobox.module.css';
+import { Button } from '../Button';
 
 type ComboboxContextType = {
   values: ValueItemType[];
@@ -314,6 +315,21 @@ export const Combobox = ({
             value={inputValue}
           />
         </div>
+        {multiple && activeValues.length > 0 && (
+          <Button
+            size={size}
+            variant='tertiary'
+            onClick={() => {
+              setActiveValues([]);
+            }}
+            icon={
+              <XMarkIcon
+                fontSize='1.5em'
+                title='Clear selection'
+              />
+            }
+          ></Button>
+        )}
         <div className={classes.arrow}>
           {open ? (
             <ChevronUpIcon

@@ -3,9 +3,9 @@ import cn from 'classnames';
 
 import { ComboboxContext } from '../Combobox';
 import { Checkbox } from '../../form/Checkbox/Checkbox';
+import { Label } from '../../Typography';
 
 import classes from './Item.module.css';
-import { Label } from '../../Typography';
 
 export type ComboboxItemProps = {
   value: string;
