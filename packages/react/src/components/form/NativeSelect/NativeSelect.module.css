@@ -3,7 +3,7 @@
   font: inherit;
   box-sizing: border-box;
   flex: 0 1 auto;
-  min-height: 2.5em;
+  height: 2.5em;
   width: 100%;
   padding: 0 var(--fds-spacing-2);
   border: solid 1px var(--fds-semantic-border-action-dark);

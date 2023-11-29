@@ -32,6 +32,7 @@
   box-sizing: border-box;
   flex: 0 1 auto;
   min-height: 2.5em;
+  height: 2.5em;
   width: 100%;
   appearance: none;
   padding: 0 var(--fds-spacing-3);

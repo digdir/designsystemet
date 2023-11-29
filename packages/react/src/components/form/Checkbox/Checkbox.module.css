@@ -1,7 +1,6 @@
 .container {
   position: relative;
   min-width: 44px;
-  min-height: 44px;
 }
 
 .spacing {
@@ -24,7 +23,7 @@
 
 .label {
   padding-left: 3px;
-  min-height: 44px;
+  height: 2.5em;
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -47,8 +46,8 @@
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 44px;
-  min-height: 44px;
+  width: 2.5em;
+  height: 2.5em;
   display: inline-grid;
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);

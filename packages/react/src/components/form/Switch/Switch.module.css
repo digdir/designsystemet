@@ -5,7 +5,7 @@
   --fds-transition: 200ms;
 
   min-width: 44px;
-  min-height: 44px;
+  height: 2.5em;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
@@ -46,7 +46,7 @@
 
 .label {
   grid-area: label;
-  min-height: 44px;
+  min-height: 2.5em;
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -65,7 +65,7 @@
 .input {
   min-width: 44px;
   width: 100%;
-  min-height: 44px;
+  min-height: 2.5em;
   opacity: 0;
   margin: 0;
   grid-area: input;
