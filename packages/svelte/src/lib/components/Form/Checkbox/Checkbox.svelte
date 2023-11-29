@@ -3,46 +3,36 @@
   import { v4 as uuidv4 } from 'uuid';
 
   /**
-   * Radio
+   * Checkbox
    *
-   * @prop {string} [description=''] - Description for radio.
-   * @prop {boolean} [disabled=undefined] - Toggle disabled for radio.
-   * @prop {boolean} [readOnly=undefined] - Toggle readOnly for radio.
-   * @prop {string} [label] - Label for radio.
-   * @prop {string} [value] - Value for radio.
+   * @prop {string} [label] - Label for checkbox.
+   * @prop {string} [description=''] - Description for checkbox.
+   * @prop {boolean} [disabled=undefined] - Toggle disabled for checkbox.
+   * @prop {boolean} [readOnly=undefined] - Toggle readOnly for checkbox.
+   * @prop {string} [value] - Value for checkbox.
    */
 
+  export let label;
   export let description = '';
   export let disabled = undefined;
   export let readOnly = undefined;
-  export let label;
   export let value;
+  export let checked = false;
 
   let size;
-  let selectedValue;
   let groupUniqueId;
   let error;
+  let groupValue;
 
   let groupDisabled = false;
   let groupReadOnly = false;
+  let isPartOfGroup = false;
 
   const uniqueId = uuidv4();
-  const radioId = `radio-${uniqueId}`;
+  const checkboxId = `checkbox-${uniqueId}`;
   const labelId = `label-${uniqueId}`;
   const descriptionId = `description-${uniqueId}`;
-
-  $: checked = value === selectedValue;
-
-  const radioGroup = getContext('radioGroup');
-
-  $: if ($radioGroup) {
-    size = $radioGroup.size;
-    groupDisabled = $radioGroup.disabled;
-    groupReadOnly = $radioGroup.readOnly;
-    groupUniqueId = $radioGroup.uniqueId;
-    selectedValue = $radioGroup.value;
-    error = $radioGroup.error;
-  }
+  const checkboxGroup = getContext('checkboxGroup');
 
   const sizes = {
     xsmall: {
@@ -75,11 +65,57 @@
     },
   };
 
+  if (checkboxGroup) {
+    isPartOfGroup = true;
+    checkboxGroup.subscribe(($checkboxGroup) => {
+      groupValue = $checkboxGroup.value;
+      if (groupValue.includes(value)) {
+        checked = true;
+      }
+    });
+  } else {
+    checked = checked;
+  }
+
+  function handleStandaloneChange(event) {
+    checked = event.target.checked;
+  }
+
+  function handleGroupChange(event) {
+    if (event.target.checked) {
+      checkboxGroup.update((storeValue) => ({
+        ...storeValue,
+        value: [...storeValue.value, value],
+      }));
+    } else {
+      checkboxGroup.update((storeValue) => ({
+        ...storeValue,
+        value: storeValue.value.filter((v) => v !== value),
+      }));
+    }
+  }
+
+  function handleChange(event) {
+    if (isPartOfGroup) {
+      handleGroupChange(event);
+    } else {
+      handleStandaloneChange(event);
+    }
+  }
+
   /**
    * @param {string | number} size
    */
   function getSizeClasses(size) {
     return sizes[size] || sizes.medium;
+  }
+
+  $: if ($checkboxGroup) {
+    size = $checkboxGroup.size;
+    groupDisabled = $checkboxGroup.disabled;
+    groupReadOnly = $checkboxGroup.readOnly;
+    groupUniqueId = $checkboxGroup.uniqueId;
+    error = $checkboxGroup.error;
   }
 
   $: sizeClasses = getSizeClasses(size);
@@ -90,32 +126,32 @@
     $$props.class || ''
   }`;
 
+  $: inputClasses = `input ${readOnly || groupReadOnly ? 'readonly' : ''} 
+                            ${disabled || groupDisabled ? 'disabled' : ''}`;
   $: labelClasses = `label ${readOnly || groupReadOnly ? 'readonly' : ''} 
                             ${disabled || groupDisabled ? 'disabled' : ''}
                             ${sizeClasses.paddingClass}`;
   $: descriptionClasses = `description ${sizeClasses.fontSizeClass}`;
-
-  $: inputClasses = `input ${readOnly || groupReadOnly ? 'readonly' : ''} 
-                            ${disabled || groupDisabled ? 'disabled' : ''}`;
 </script>
 
 <div
   class={`${containerClasses} ${sizeClasses.fontSizeClass}`}
   tabindex="-1"
-  role="radio"
+  role="checkbox"
   aria-checked={checked}
   aria-label={label}
   aria-labelledby={labelId}
-  id={radioId}
+  id={checkboxId}
 >
-  <span class={`control radio ${sizeClasses.controlClass}`}>
+  <span class={`control checkbox ${sizeClasses.controlClass}`}>
     <input
       class={inputClasses}
-      type="radio"
+      type="checkbox"
       id={labelId}
       {value}
-      bind:group={selectedValue}
-      name={`radio-${groupUniqueId}`}
+      bind:checked
+      on:change={handleChange}
+      name={`checkbox-${groupUniqueId}`}
       disabled={disabled || readOnly || groupDisabled || groupReadOnly}
     />
     <svg
@@ -125,25 +161,25 @@
       viewBox="0 0 22 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
     >
-      <circle
+      <rect
         class="box"
-        name="circle"
-        cx="11"
-        cy="11"
-        r="10"
+        x="1"
+        y="1"
+        width="20"
+        height="20"
+        rx="0.125rem"
+        ry="0.125rem"
         fill="white"
-        stroke="#00315D"
         stroke-width="2"
+        stroke-linejoin="round"
       />
-      <circle
+      <path
         class="checked"
-        name="checked"
-        cx="11"
-        cy="11"
-        r="4.88889"
-        fill="#0062BA"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M17.7876 6.27838C18.1171 6.60788 18.1171 7.14212 17.7876 7.47162L9.99591 15.2633C9.6664 15.5928 9.13217 15.5928 8.80267 15.2633L4.67767 11.1383C4.34816 10.8088 4.34816 10.2745 4.67767 9.94505C5.00717 9.61554 5.5414 9.61554 5.87091 9.94505L9.39929 13.4734L16.5943 6.27838C16.9238 5.94887 17.4581 5.94887 17.7876 6.27838Z"
+        fill="white"
       />
     </svg>
   </span>
@@ -168,7 +204,8 @@
 <style lang="scss">
   .container {
     position: relative;
-    margin-top: var(--fds-spacing-3, 0.84375rem);
+    min-width: 2.75rem;
+    min-height: 2.75rem;
   }
 
   .spacing-xsmall {
@@ -187,22 +224,32 @@
   .icon {
     grid-area: input;
     pointer-events: none;
+    height: 1.75rem;
+    width: 1.75rem;
+    margin: auto;
     overflow: visible;
+  }
+
+  .checkbox,
+  .checkbox .icon {
+    border-radius: var(--fds-border_radius-interactive);
   }
 
   .label {
     padding-left: 1.1875rem;
     margin-left: -1rem;
+    min-height: 2.75rem;
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
+    gap: var(--fds-spacing-1);
     align-items: center;
     cursor: pointer;
   }
 
   .description {
     padding-left: 0.1875rem;
-    margin: 0;
+    margin-top: calc(var(--fds-spacing-2) * -1);
     color: var(--fds-semantic-text-neutral-subtle);
   }
 
@@ -212,10 +259,14 @@
     --fds-focus-border-width: 0.1875rem;
 
     position: absolute;
-    margin-left: -0.15rem;
+
     left: 0;
     top: 0;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
     display: inline-grid;
+    grid: [input] 1fr / [input] 1fr;
+    gap: var(--fds-spacing-2);
     grid-auto-flow: column;
   }
 
@@ -254,19 +305,20 @@
 
   .input:checked ~ .icon .checked {
     display: inline;
-    fill: var(--fds-semantic-border-input-hover);
   }
 
   .input:not(:checked) ~ .icon .box {
     stroke: var(--fds-semantic-border-input-default);
   }
 
-  .input:checked ~ .icon .box {
-    stroke: var(--fds-semantic-border-input-hover);
-  }
-
   .input:disabled ~ .icon .box {
     stroke: var(--fds-semantic-border-neutral-subtle);
+    fill: white;
+  }
+
+  .input:checked:not(:disabled) ~ .icon .box {
+    stroke: var(--fds-semantic-border-input-hover);
+    fill: var(--fds-semantic-border-input-hover);
   }
 
   .input:focus-visible ~ .icon {
@@ -275,7 +327,7 @@
     outline-offset: 0;
   }
 
-  .input:focus-visible ~ .icon .box {
+  .input:focus-visible:not(:disabled) ~ .icon .box {
     stroke: var(--fds-semantic-border-focus-boxshadow);
     stroke-width: var(--fds-focus-border-width);
   }
@@ -284,12 +336,8 @@
     fill: var(--fds-semantic-border-neutral-subtle);
   }
 
-  .error .input:not(:disabled, :focus-visible) ~ .icon .box {
+  .error .input:not(:disabled, :focus-visible, :checked) ~ .icon .box {
     stroke: var(--fds-semantic-text-danger-default, #b3253a);
-  }
-
-  .error .input:not(:disabled, :focus-visible) ~ .icon .checked {
-    fill: var(--fds-semantic-text-danger-default, #b3253a);
   }
 
   .readonly .input:read-only:not(:focus-visible) ~ .icon .box {
@@ -321,6 +369,19 @@
       stroke: var(--fds-semantic-border-input-hover);
     }
 
+    .control-xsmall {
+      margin-left: -0.8rem;
+    }
+    .control-small {
+      margin-left: -0.75rem;
+    }
+    .control-medium {
+      margin-left: -0.55rem;
+    }
+    .control-large {
+      margin-left: -0.45rem;
+    }
+
     .font-xsmall {
       font-size: 0.8125rem;
     }
@@ -349,36 +410,6 @@
     .icon-large {
       height: 2rem;
       width: 2rem;
-    }
-
-    .control-xsmall {
-      min-width: 1.4rem;
-      min-height: 1.4rem;
-    }
-    .control-small {
-      min-width: 1.5rem;
-      min-height: 1.5rem;
-    }
-    .control-medium {
-      min-width: 2rem;
-      min-height: 2rem;
-    }
-    .control-large {
-      min-width: 2.5rem;
-      min-height: 2.5rem;
-    }
-
-    .padding-xsmall {
-      padding-top: 0.25rem;
-    }
-    .padding-small {
-      padding-top: 0.24rem;
-    }
-    .padding-medium {
-      padding-top: 0.37rem;
-    }
-    .padding-large {
-      padding-top: 0.56rem;
     }
   }
 </style>
