@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Button } from '../Button';
+
 import { Combobox } from './index';
 
 export default {
@@ -66,4 +68,39 @@ Preview.args = {
   placeholder: 'Velg mat',
   multiple: true,
   size: 'medium',
+  label: 'Hvilken mat skal du bestille?',
+};
+
+export const Controlled: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setValue(['pizza']);
+        }}
+        style={{ marginBottom: '1rem' }}
+      >
+        Sett verdi til pizza
+      </Button>
+      <Combobox
+        {...args}
+        value={value}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {FRUITS.map((item, index) => (
+          <Combobox.Item
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Item>
+        ))}
+      </Combobox>
+    </>
+  );
 };
