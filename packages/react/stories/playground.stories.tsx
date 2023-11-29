@@ -9,7 +9,6 @@ import {
   Checkbox,
   Radio,
   type TextfieldProps,
-  Search,
 } from '../src/components';
 
 export default {
@@ -50,11 +49,6 @@ export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
         >
           Checkbox
         </Checkbox>
-        <Search
-          size={size}
-          htmlSize={10}
-          variant='primary'
-        />
       </div>
     </>
   );

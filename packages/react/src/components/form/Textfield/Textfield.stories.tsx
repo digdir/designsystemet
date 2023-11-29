@@ -40,6 +40,22 @@ export const FullWidth: Story = {
   },
 };
 
+export const HtmlSize: Story = {
+  args: {
+    label: 'Label',
+    htmlSize: 10,
+  },
+};
+
+export const Adornments: Story = {
+  args: {
+    label: 'Label',
+    prefix: 'prefix',
+    suffix: 'suffix',
+    size: 'small',
+  },
+};
+
 export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>();
   return (
