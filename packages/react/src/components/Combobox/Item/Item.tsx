@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import cn from 'classnames';
 
 import type { ButtonProps } from '../../Button';
@@ -16,7 +16,7 @@ export type ComboboxItemProps = {
 
 export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
   ({ value, index, children }, ref) => {
-    const context = React.useContext(ComboboxContext);
+    const context = useContext(ComboboxContext);
     if (!context) {
       throw new Error('ComboboxItem must be used within a Combobox');
     }

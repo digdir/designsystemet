@@ -24,6 +24,14 @@
   outline: none;
 }
 
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-1);
+  align-items: center;
+  background-color: transparent;
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */

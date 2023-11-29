@@ -55,14 +55,14 @@ export type ComboboxProps = {
    */
   multiple?: boolean;
   /**
-   * Filter function for filtering the list of items
+   * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
    * @param value
    * @returns boolean
    *
    * @default (inputValue, value) => value.toLowerCase().includes(inputValue.toLowerCase())
    */
-  filterFn: (inputValue: string, value: string) => boolean;
+  filterFn: (inputValue: string, label: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Combobox = ({
@@ -71,8 +71,8 @@ export const Combobox = ({
   placeholder,
   multiple = false,
   children,
-  filterFn = (inputValue, v) => {
-    return v.toLowerCase().includes(inputValue.toLowerCase());
+  filterFn = (inputValue, label) => {
+    return label.toLowerCase().includes(inputValue.toLowerCase());
   },
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -152,7 +152,6 @@ export const Combobox = ({
   /* Send new value if item was clicked */
   useEffect(() => {
     const values = activeValues.map((item) => item.value);
-    console.log('i am in here!!');
     onValueChange?.(values);
   }, [onValueChange, activeValues]);
 
@@ -249,25 +248,25 @@ export const Combobox = ({
           classes.focusable,
         )}
       >
-        {multiple &&
-          activeValues.map((item) => {
-            return (
-              <ChipRemovable
-                key={item.value}
-                size='small'
-                style={{
-                  margin: 'auto',
-                }}
-                onClick={() => {
-                  setActiveValues(
-                    activeValues.filter((i) => i.value !== item.value),
-                  );
-                }}
-              >
-                {item.label}
-              </ChipRemovable>
-            );
-          })}
+        {multiple && (
+          <Box className={classes.chips}>
+            {activeValues.map((item) => {
+              return (
+                <ChipRemovable
+                  key={item.value}
+                  size='small'
+                  onClick={() => {
+                    setActiveValues(
+                      activeValues.filter((i) => i.value !== item.value),
+                    );
+                  }}
+                >
+                  {item.label}
+                </ChipRemovable>
+              );
+            })}
+          </Box>
+        )}
         <input
           ref={inputRef}
           placeholder={placeholder}

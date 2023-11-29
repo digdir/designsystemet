@@ -8,7 +8,7 @@ export type UseComboboxProps = {
   input: string;
   multiple: boolean;
   activeValues: ValueItemType[];
-  filterFn: (inputValue: string, value: string) => boolean;
+  filterFn: (inputValue: string, label: string, value: string) => boolean;
 };
 
 export type ValueItemType = {
@@ -75,13 +75,20 @@ export default function useCombobox({
       const value = props.value as string;
       const item = values.find((item) => item.value === value);
 
-      return filterFn(input, item?.label || '');
+      return filterFn(input, item?.label || '', value);
     });
   };
 
-  const filteredChildren = GET_CHILDREN();
+  const filteredChildren = GET_CHILDREN().map((child, index) => {
+    if (!React.isValidElement(child)) return child;
+    if (child.type !== ComboboxItem) return child;
 
-  console.log(activeValues);
+    const props: ComboboxItemProps = {
+      ...(child.props as ComboboxItemProps),
+      index,
+    } as ComboboxItemProps;
+    return React.cloneElement(child, props);
+  });
 
   return {
     filteredChildren,
