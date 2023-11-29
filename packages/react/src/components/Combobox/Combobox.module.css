@@ -28,6 +28,7 @@
 .inputWrapper.small {
   font: var(--fds-typography-paragraph-small);
   padding: 7px var(--fds-spacing-2);
+  height: 36px;
 }
 
 .inputWrapper.small input {
@@ -37,6 +38,7 @@
 .inputWrapper.medium {
   font: var(--fds-typography-paragraph-medium);
   padding: 7px var(--fds-spacing-3);
+  height: 45px;
 }
 
 .inputWrapper.medium input {
@@ -46,6 +48,7 @@
 .inputWrapper.large {
   font: var(--fds-typography-paragraph-large);
   padding: 7px var(--fds-spacing-4);
+  height: 54px;
 }
 
 .inputWrapper.large input {
@@ -81,6 +84,39 @@
 
 .label {
   margin-bottom: var(--fds-spacing-2);
+}
+
+.clearButton {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--fds-semantic-text-neutral-default);
+  border: none;
+  padding: 0;
+  border-radius: var(--fds-spacing-1);
+  height: 29px;
+  width: 29px;
+  aspect-ratio: 1;
+}
+
+.clearButton.small {
+  height: 25px;
+  width: 25px;
+}
+
+.clearButton.medium {
+  height: 29px;
+  width: 29px;
+}
+
+.clearButton.large {
+  height: 31px;
+  width: 31px;
+}
+
+.clearButton:hover {
+  background-color: var(--fds-semantic-surface-info-subtle-hover);
 }
 
 /**

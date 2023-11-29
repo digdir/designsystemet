@@ -24,7 +24,6 @@ import { ChevronDownIcon, ChevronUpIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
 import textFieldClasses from '../form/Textfield/Textfield.module.css';
-import { Button } from '../Button';
 import { Label } from '../Typography';
 
 import type { ValueItemType } from './useCombobox';
@@ -339,20 +338,18 @@ export const Combobox = ({
           />
         </div>
         {multiple && activeValues.length > 0 && (
-          <Button
-            size={size}
-            variant='tertiary'
+          <button
+            className={cn(classes.clearButton, classes[size])}
             onClick={() => {
               setActiveValues([]);
               setInputValue('');
             }}
-            icon={
-              <XMarkIcon
-                fontSize='1.5em'
-                title='Clear selection'
-              />
-            }
-          ></Button>
+          >
+            <XMarkIcon
+              fontSize='1.5em'
+              title='Clear selection'
+            />
+          </button>
         )}
         <div className={classes.arrow}>
           {open ? (
