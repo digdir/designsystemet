@@ -6,6 +6,7 @@ import { Button } from '../../Button';
 import { ComboboxContext } from '../Combobox';
 
 import classes from './Item.module.css';
+import { Checkbox } from '../../form/Checkbox/Checkbox';
 
 export type ComboboxItemProps = {
   value: string;
@@ -20,14 +21,24 @@ export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
     if (!context) {
       throw new Error('ComboboxItem must be used within a Combobox');
     }
-    const { activeIndex, setActiveIndex, onItemClick } = context;
+    const {
+      activeValues,
+      activeIndex,
+      setActiveIndex,
+      onItemClick,
+      multiple,
+      size,
+    } = context;
 
     if (typeof index !== 'number') {
       throw new Error('Internal error: ComboboxItem did not receive index');
     }
 
+    const active = activeValues.find((item) => item.value === value);
+
     return (
       <Button
+        size={size}
         fullWidth
         onClick={() => {
           onItemClick(value);
@@ -37,6 +48,13 @@ export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
         className={cn(classes.item, activeIndex === index && classes.active)}
         ref={ref}
       >
+        {multiple && (
+          <Checkbox
+            size={size}
+            checked={!!active}
+            value={''}
+          />
+        )}
         {children}
       </Button>
     );

@@ -5,7 +5,7 @@ import {
   autoUpdate,
   flip,
   offset,
-  size,
+  size as floatingSize,
   useDismiss,
   useFloating,
   useInteractions,
@@ -27,9 +27,11 @@ import classes from './Combobox.module.css';
 
 type ComboboxContextType = {
   values: ValueItemType[];
+  activeValues: ValueItemType[];
   activeIndex: number | null;
   multiple: boolean;
   showEmptyChild: boolean;
+  size: ComboboxProps['size'];
   setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
   onItemClick: (value: string) => void;
 };
@@ -39,6 +41,11 @@ export const ComboboxContext = createContext<ComboboxContextType | undefined>(
 );
 
 export type ComboboxProps = {
+  /**
+   * Size of the combobox
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
   /**
    * Placeholder text for the input
    */
@@ -72,6 +79,7 @@ export const Combobox = ({
   onValueChange,
   placeholder,
   multiple = false,
+  size = 'medium',
   children,
   filterFn = (inputValue, label) => {
     return label.toLowerCase().includes(inputValue.toLowerCase());
@@ -110,7 +118,7 @@ export const Combobox = ({
     onOpenChange: setOpen,
     middleware: [
       flip({ padding: 10 }),
-      size({
+      floatingSize({
         apply({ rects, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
@@ -166,6 +174,12 @@ export const Combobox = ({
   };
 
   const handleSelectItem = (item: ValueItemType) => {
+    // if item is already selected, remove it
+    if (activeValues.find((i) => i.value === item.value)) {
+      setActiveValues((prev) => prev.filter((i) => i.value !== item.value));
+      return;
+    }
+
     if (multiple) {
       setActiveValues([...activeValues, item]);
       setInputValue('');
@@ -229,7 +243,9 @@ export const Combobox = ({
   return (
     <ComboboxContext.Provider
       value={{
+        size,
         values,
+        activeValues,
         multiple,
         showEmptyChild,
         activeIndex,

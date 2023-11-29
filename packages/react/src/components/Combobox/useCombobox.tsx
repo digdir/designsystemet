@@ -62,8 +62,8 @@ export default function useCombobox({
       if (child.type !== ComboboxItem) return true;
       const props = child.props as ComboboxItemProps;
 
-      if (multiple && activeValues.find((item) => item.value === props.value))
-        return false;
+      /* if (multiple && activeValues.find((item) => item.value === props.value))
+        return false; */
 
       const value = props.value as string;
       const item = values.find((item) => item.value === value);
