@@ -1,8 +1,6 @@
 import React, { forwardRef, useContext } from 'react';
 import cn from 'classnames';
 
-import type { ButtonProps } from '../../Button';
-import { Button } from '../../Button';
 import { ComboboxContext } from '../Combobox';
 import { Checkbox } from '../../form/Checkbox/Checkbox';
 
@@ -13,9 +11,9 @@ export type ComboboxItemProps = {
   index?: number;
   children: React.ReactNode;
   active?: boolean;
-} & React.ButtonHTMLAttributes<ButtonProps>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
+export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
   ({ value, index, children }, ref) => {
     const context = useContext(ComboboxContext);
     if (!context) {
@@ -37,14 +35,11 @@ export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
     const active = activeValues.find((item) => item.value === value);
 
     return (
-      <Button
-        size={size}
-        fullWidth
+      <button
         onClick={() => {
           onItemClick(value);
         }}
         onMouseEnter={() => setActiveIndex(index)} // Set active index on hover
-        variant={activeIndex === index ? 'secondary' : 'tertiary'}
         className={cn(classes.item, activeIndex === index && classes.active)}
         ref={ref}
       >
@@ -55,8 +50,8 @@ export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
             value={''}
           />
         )}
-        {children}
-      </Button>
+        <div className={classes.itemText}>{children}</div>
+      </button>
     );
   },
 );

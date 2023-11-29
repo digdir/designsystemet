@@ -1,6 +1,17 @@
 import { Combobox as ComboboxRoot } from './Combobox';
-import { ComboboxItem } from './Item/Item';
+import { ComboboxItem as ComboboxItemRoot } from './Item/Item';
 import { ComboboxEmpty } from './Empty/Empty';
+import ComboboxItemDescription from './Item/Description/Description';
+
+type ComboboxItemComponent = typeof ComboboxItemRoot & {
+  Description: typeof ComboboxItemDescription;
+};
+
+const ComboboxItem = ComboboxItemRoot as ComboboxItemComponent;
+
+ComboboxItem.Description = ComboboxItemDescription;
+
+ComboboxItem.Description.displayName = 'Combobox.Item.Description';
 
 type ComboboxComponent = typeof ComboboxRoot & {
   Item: typeof ComboboxItem;

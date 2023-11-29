@@ -10,11 +10,14 @@
   gap: var(--fds-spacing-1);
   cursor: text;
   padding: var(--fds-spacing-2);
+  min-width: 400px;
+  justify-content: space-between;
 }
 
 .inputWrapper input {
   height: 100%;
   min-width: 50px;
+  flex-grow: 1;
   appearance: none;
   border: none;
   background-color: transparent;
@@ -27,6 +30,7 @@
 .chipAndInput {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   gap: var(--fds-spacing-1);
   align-items: center;
   background-color: transparent;

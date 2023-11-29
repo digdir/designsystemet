@@ -1,9 +1,32 @@
 .item {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  border: none;
+  border-left: 5px solid transparent;
+  border-radius: var(--fds-border_radius-interactive);
   justify-content: start;
   background: none;
   text-align: left;
+  height: auto;
+  cursor: pointer;
 }
 
-.active {
-  background: var(--fds-semantic-surface-action-first-no_fill-hover) !important;
+.item.active {
+  background: var(--fds-semantic-surface-action-first-no_fill-hover);
+  border-left: 5px solid var(--fds-semantic-border-action-hover);
+}
+
+.itemText {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-1);
+  color: var(--fds-semantic-text-neutral-default);
+  font: var(--fds-typography-paragraph-medium);
+}
+
+.active .itemText {
+  color: var(--fds-semantic-text-action-hover);
 }
