@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Combobox } from './index';
@@ -36,19 +36,10 @@ const FRUITS = [
 ];
 
 export const Preview: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = useState(['']);
-
-  const handleValueChange = (e: string[]) => {
-    setValue(e);
-  };
-
   return (
     <>
-      <p>Value: {value.map((value) => value)}</p>
-      <Combobox
-        {...args}
-        onValueChange={handleValueChange}
-      >
+      <Combobox {...args}>
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {FRUITS.map((item, index) => (
           <Combobox.Item
             key={index}

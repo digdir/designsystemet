@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
+import ComboboxEmpty from './Empty/Empty';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
@@ -82,8 +83,27 @@ export default function useCombobox({
     return React.cloneElement(child, props);
   });
 
+  const SHOW_EMPTY_CHILD = () => {
+    // check if there are any values left to show
+    if (values.length === activeValues.length) return true;
+    // check if input does not match any values
+
+    if (input === '') return false;
+
+    // check if input will show any values
+    const activeValue = values.find((item) =>
+      item.label.toLowerCase().includes(input.toLowerCase()),
+    );
+    if (!activeValue) return true;
+
+    return false;
+  };
+
+  const showEmptyChild = SHOW_EMPTY_CHILD();
+
   return {
     filteredChildren,
+    showEmptyChild,
     values,
     open,
     setOpen,

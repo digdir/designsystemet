@@ -13,6 +13,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cn from 'classnames';
+import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 
 import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
@@ -28,6 +29,7 @@ type ComboboxContextType = {
   values: ValueItemType[];
   activeIndex: number | null;
   multiple: boolean;
+  showEmptyChild: boolean;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
   onItemClick: (value: string) => void;
 };
@@ -83,13 +85,14 @@ export const Combobox = ({
   const [prevActiveValues, setPrevActiveValues] = useState(
     JSON.stringify(activeValues),
   );
-  const { values, filteredChildren, open, setOpen } = useCombobox({
-    children,
-    input: inputValue,
-    filterFn,
-    multiple,
-    activeValues,
-  });
+  const { values, filteredChildren, open, showEmptyChild, setOpen } =
+    useCombobox({
+      children,
+      input: inputValue,
+      filterFn,
+      multiple,
+      activeValues,
+    });
 
   // if value is set, set input value to the label of the value
   useEffect(() => {
@@ -164,7 +167,7 @@ export const Combobox = ({
 
   const handleSelectItem = (item: ValueItemType) => {
     if (multiple) {
-      setActiveValues([item, ...activeValues]);
+      setActiveValues([...activeValues, item]);
       setInputValue('');
       inputRef.current?.focus();
     } else {
@@ -228,6 +231,7 @@ export const Combobox = ({
       value={{
         values,
         multiple,
+        showEmptyChild,
         activeIndex,
         setActiveIndex,
         onItemClick: (value: string) => {
@@ -256,9 +260,9 @@ export const Combobox = ({
           classes.focusable,
         )}
       >
-        {multiple && (
-          <Box className={classes.chips}>
-            {activeValues.map((item) => {
+        <div className={classes.chipAndInput}>
+          {multiple &&
+            activeValues.map((item) => {
               return (
                 <ChipRemovable
                   key={item.value}
@@ -273,15 +277,27 @@ export const Combobox = ({
                 </ChipRemovable>
               );
             })}
-          </Box>
-        )}
-        <input
-          ref={inputRef}
-          placeholder={placeholder}
-          autoComplete='off'
-          onChange={onChange}
-          value={inputValue}
-        />
+          <input
+            ref={inputRef}
+            placeholder={placeholder}
+            autoComplete='off'
+            onChange={onChange}
+            value={inputValue}
+          />
+        </div>
+        <div>
+          {open ? (
+            <ChevronUpIcon
+              title='arrow up'
+              fontSize='1.5rem'
+            />
+          ) : (
+            <ChevronDownIcon
+              title='arrow down'
+              fontSize='1.5rem'
+            />
+          )}
+        </div>
       </Box>
       <FloatingPortal>
         {open && (

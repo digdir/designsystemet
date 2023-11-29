@@ -29,7 +29,9 @@ export const ComboboxItem = forwardRef<ButtonProps, ComboboxItemProps>(
     return (
       <Button
         fullWidth
-        onClick={() => onItemClick(value)}
+        onClick={() => {
+          onItemClick(value);
+        }}
         onMouseEnter={() => setActiveIndex(index)} // Set active index on hover
         variant={activeIndex === index ? 'secondary' : 'tertiary'}
         className={cn(classes.item, activeIndex === index && classes.active)}
