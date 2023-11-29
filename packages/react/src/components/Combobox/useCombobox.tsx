@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
-import ComboboxEmpty from './Empty/Empty';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
