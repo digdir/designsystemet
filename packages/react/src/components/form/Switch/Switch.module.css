@@ -4,7 +4,6 @@
   --fds-focus-border-width: 3px;
   --fds-transition: 200ms;
 
-  min-width: 44px;
   height: 2.5em;
   display: grid;
   grid-template-columns: auto 1fr;
