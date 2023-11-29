@@ -5,6 +5,7 @@ import { ComboboxContext } from '../Combobox';
 import { Checkbox } from '../../form/Checkbox/Checkbox';
 
 import classes from './Item.module.css';
+import { Label } from '../../Typography';
 
 export type ComboboxItemProps = {
   value: string;
@@ -40,17 +41,26 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
           onItemClick(value);
         }}
         onMouseEnter={() => setActiveIndex(index)} // Set active index on hover
-        className={cn(classes.item, activeIndex === index && classes.active)}
+        className={cn(
+          classes.item,
+          classes[size],
+          activeIndex === index && classes.active,
+        )}
         ref={ref}
       >
         {multiple && (
           <Checkbox
             size={size}
             checked={!!active}
-            value={''}
+            value={value}
           />
         )}
-        <div className={classes.itemText}>{children}</div>
+        <Label
+          className={classes.itemText}
+          size={size}
+        >
+          {children}
+        </Label>
       </button>
     );
   },

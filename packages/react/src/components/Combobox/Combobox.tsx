@@ -31,7 +31,7 @@ type ComboboxContextType = {
   activeIndex: number | null;
   multiple: boolean;
   showEmptyChild: boolean;
-  size: ComboboxProps['size'];
+  size: NonNullable<ComboboxProps['size']>;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
   onItemClick: (value: string) => void;
 };
@@ -201,6 +201,12 @@ export const Combobox = ({
           if (prevActiveIndex === null) {
             return 0;
           }
+
+          // if last item, go to first item
+          if (prevActiveIndex === filteredChildren.length - 1) {
+            return 0;
+          }
+
           return Math.min(prevActiveIndex + 1, filteredChildren.length - 1);
         });
         break;
@@ -210,6 +216,12 @@ export const Combobox = ({
           if (prevActiveIndex === null) {
             return filteredChildren.length - 1;
           }
+
+          // if first item, go to last item
+          if (prevActiveIndex === 0) {
+            return filteredChildren.length - 1;
+          }
+
           return Math.max(prevActiveIndex - 1, 0);
         });
         break;
@@ -274,6 +286,7 @@ export const Combobox = ({
           textFieldClasses.input,
           classes.inputWrapper,
           classes.focusable,
+          classes[size],
         )}
       >
         <div className={classes.chipAndInput}>
@@ -282,7 +295,7 @@ export const Combobox = ({
               return (
                 <ChipRemovable
                   key={item.value}
-                  size='small'
+                  size={size}
                   onClick={() => {
                     setActiveValues(
                       activeValues.filter((i) => i.value !== item.value),
@@ -301,7 +314,7 @@ export const Combobox = ({
             value={inputValue}
           />
         </div>
-        <div>
+        <div className={classes.arrow}>
           {open ? (
             <ChevronUpIcon
               title='arrow up'
@@ -332,7 +345,7 @@ export const Combobox = ({
                   overflowX: 'scroll',
                 },
               })}
-              className={cn(classes.wrapper)}
+              className={cn(classes.itemsWrapper, classes[size])}
             >
               {React.Children.map(filteredChildren, (child, index) => {
                 if (

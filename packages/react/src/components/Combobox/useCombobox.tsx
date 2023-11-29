@@ -20,7 +20,6 @@ export default function useCombobox({
   children,
   input,
   multiple,
-  activeValues,
   filterFn,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
@@ -92,10 +91,7 @@ export default function useCombobox({
   });
 
   const SHOW_EMPTY_CHILD = () => {
-    // check if there are any values left to show
-    if (values.length === activeValues.length) return true;
     // check if input does not match any values
-
     if (input === '') return false;
 
     // check if input will show any values

@@ -1,4 +1,4 @@
-.wrapper {
+.itemsWrapper {
   padding: var(--fds-spacing-2);
   background: var(--fds-semantic-background-default);
 }
@@ -11,7 +11,9 @@
   cursor: text;
   padding: var(--fds-spacing-2);
   min-width: 400px;
+  min-height: 44px;
   justify-content: space-between;
+  font: var(--fds-typography-paragraph-medium);
 }
 
 .inputWrapper input {
@@ -21,6 +23,33 @@
   appearance: none;
   border: none;
   background-color: transparent;
+}
+
+.inputWrapper.small {
+  font: var(--fds-typography-paragraph-small);
+  padding: 7px var(--fds-spacing-2);
+}
+
+.inputWrapper.small input {
+  font: var(--fds-typography-paragraph-small);
+}
+
+.inputWrapper.medium {
+  font: var(--fds-typography-paragraph-medium);
+  padding: 7px var(--fds-spacing-3);
+}
+
+.inputWrapper.medium input {
+  font: var(--fds-typography-paragraph-medium);
+}
+
+.inputWrapper.large {
+  font: var(--fds-typography-paragraph-large);
+  padding: 7px var(--fds-spacing-4);
+}
+
+.inputWrapper.large input {
+  font: var(--fds-typography-paragraph-large);
 }
 
 .inputWrapper input:focus {
@@ -42,6 +71,12 @@
   gap: var(--fds-spacing-1);
   align-items: center;
   background-color: transparent;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
 }
 
 /**

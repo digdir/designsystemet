@@ -22,9 +22,9 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  cursor: pointer;
   gap: var(--fds-spacing-1);
   color: var(--fds-semantic-text-neutral-default);
-  font: var(--fds-typography-paragraph-medium);
 }
 
 .active .itemText {
