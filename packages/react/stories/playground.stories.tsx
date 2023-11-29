@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   Textfield,
@@ -8,14 +8,15 @@ import {
   Button,
   Checkbox,
   Radio,
+  type TextfieldProps,
+  Search,
 } from '../src/components';
 
 export default {
-  title: 'Playground',
+  title: 'Testing',
 } as Meta;
 
-export const Row: StoryFn = () => {
-  const [value, setValue] = useState<string>();
+export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
   return (
     <>
       <div
@@ -28,35 +29,45 @@ export const Row: StoryFn = () => {
         <Textfield
           hideLabel
           label='Kontroller meg!'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          size='small'
+          size={size}
         />
-        <Switch size='small'>Switch</Switch>
-        <NativeSelect size='small'>
+        <Switch size={size}>Switch</Switch>
+        <NativeSelect size={size}>
           <option>opt1</option>
           <option>opt2</option>
           <option>opt3</option>
         </NativeSelect>
-        <Button
-          onClick={() => setValue('Kake')}
-          size='small'
-        >
-          Jeg vil ha Kake
-        </Button>
+        <Button size={size}>Jeg vil ha Kake</Button>
         <Radio
           value='radio'
-          size='small'
+          size={size}
         >
           Radio
         </Radio>
         <Checkbox
           value='checkbox'
-          size='small'
+          size={size}
         >
           Checkbox
         </Checkbox>
+        <Search
+          size={size}
+          htmlSize={10}
+          variant='primary'
+        />
       </div>
     </>
   );
+};
+
+export const SmallRow = Row.bind({});
+
+SmallRow.args = {
+  size: 'small',
+};
+
+export const LargeRow = Row.bind({});
+
+LargeRow.args = {
+  size: 'large',
 };
