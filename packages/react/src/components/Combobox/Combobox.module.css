@@ -79,6 +79,10 @@
   cursor: pointer;
 }
 
+.label {
+  margin-bottom: var(--fds-spacing-2);
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */

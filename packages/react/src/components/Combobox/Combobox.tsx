@@ -1,4 +1,10 @@
-import React, { useState, useRef, createContext, useEffect } from 'react';
+import React, {
+  useState,
+  useRef,
+  createContext,
+  useEffect,
+  useId,
+} from 'react';
 import {
   FloatingFocusManager,
   FloatingPortal,
@@ -18,13 +24,14 @@ import { ChevronDownIcon, ChevronUpIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
 import textFieldClasses from '../form/Textfield/Textfield.module.css';
+import { Button } from '../Button';
+import { Label } from '../Typography';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
 import classes from './Combobox.module.css';
-import { Button } from '../Button';
 
 type ComboboxContextType = {
   values: ValueItemType[];
@@ -42,6 +49,10 @@ export const ComboboxContext = createContext<ComboboxContextType | undefined>(
 );
 
 export type ComboboxProps = {
+  /**
+   * Label for the combobox
+   */
+  label?: string;
   /**
    * Size of the combobox
    * @default medium
@@ -79,6 +90,7 @@ export const Combobox = ({
   value,
   onValueChange,
   placeholder,
+  label,
   multiple = false,
   size = 'medium',
   children,
@@ -87,6 +99,7 @@ export const Combobox = ({
   },
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputId = useId();
 
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -269,6 +282,15 @@ export const Combobox = ({
         },
       }}
     >
+      {label && (
+        <Label
+          size={size}
+          for={inputId}
+          className={classes.label}
+        >
+          {label}
+        </Label>
+      )}
       <Box
         {...getReferenceProps({
           ref: refs.setReference,
@@ -309,6 +331,7 @@ export const Combobox = ({
             })}
           <input
             ref={inputRef}
+            id={inputId}
             placeholder={placeholder}
             autoComplete='off'
             onChange={onChange}
@@ -321,6 +344,7 @@ export const Combobox = ({
             variant='tertiary'
             onClick={() => {
               setActiveValues([]);
+              setInputValue('');
             }}
             icon={
               <XMarkIcon
