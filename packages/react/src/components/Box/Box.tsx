@@ -24,7 +24,7 @@ export type BoxProps = {
   borderRadius?: 'small' | 'medium' | 'large';
   /**
    * Background color of the box
-   * @default 'defualt'
+   * @default 'default'
    */
   background?: 'default' | 'subtle';
 } & HTMLAttributes<HTMLDivElement>;
@@ -46,7 +46,6 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
       {...rest}
       ref={ref}
       className={cn(
-        classes.box,
         shadow && classes[shadow + 'Shadow'],
         borderRadius && classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],
