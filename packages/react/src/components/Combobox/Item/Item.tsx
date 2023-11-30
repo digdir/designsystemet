@@ -43,7 +43,7 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
       <button
         role='option'
         aria-selected={activeIndex === index}
-        aria-labelledby={labelId}
+        aria-describedby={labelId}
         onClick={() => {
           onItemClick(value);
         }}

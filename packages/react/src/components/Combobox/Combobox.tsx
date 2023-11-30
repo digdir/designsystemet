@@ -103,10 +103,13 @@ export const Combobox = ({
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [activeValues, setActiveValues] = useState<ValueItemType[]>([]);
-  const [activeDescendant, setActiveDescendant] = useState<string | null>(null);
+  const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
+    undefined,
+  );
   const [prevActiveValues, setPrevActiveValues] = useState(
     JSON.stringify(activeValues),
   );
+
   const { values, filteredChildren, open, showEmptyChild, setOpen } =
     useCombobox({
       children,
@@ -297,7 +300,7 @@ export const Combobox = ({
       <Box
         {...getReferenceProps({
           ref: refs.setReference,
-          'aria-activedescendant': activeDescendant || undefined,
+          'aria-activedescendant': activeDescendant,
           'aria-autocomplete': 'list',
           onClick() {
             setOpen(true);
