@@ -321,8 +321,7 @@ export const Combobox = ({
       <Box
         {...getReferenceProps({
           ref: refs.setReference,
-          'aria-activedescendant': activeDescendant,
-          'aria-autocomplete': 'list',
+          'aria-expanded': open ? 'true' : 'false',
           onClick() {
             setOpen(true);
             setActiveIndex(0);
@@ -359,8 +358,9 @@ export const Combobox = ({
           <input
             ref={inputRef}
             id={inputId}
+            aria-activedescendant={activeDescendant}
+            aria-autocomplete='list'
             placeholder={placeholder}
-            autoComplete='off'
             onChange={onChange}
             value={inputValue}
           />

@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext, useId } from 'react';
+import React, { forwardRef, useContext, useEffect, useId } from 'react';
 import cn from 'classnames';
 
 import { ComboboxContext } from '../Combobox';
@@ -17,6 +17,7 @@ export type ComboboxItemProps = {
 export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
   ({ value, index, children }, ref) => {
     const labelId = useId();
+    const buttonId = useId();
 
     const context = useContext(ComboboxContext);
     if (!context) {
@@ -37,13 +38,16 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
 
     const active = activeValues.find((item) => item.value === value);
 
-    if (activeIndex === index) setActiveItem(index, labelId);
+    useEffect(() => {
+      if (activeIndex === index) setActiveItem(index, buttonId);
+    }, [activeIndex, index, setActiveItem, buttonId]);
 
     return (
       <button
+        id={buttonId}
         role='option'
         aria-selected={activeIndex === index}
-        aria-describedby={labelId}
+        aria-labelledby={labelId}
         onClick={() => {
           onItemClick(value);
         }}
