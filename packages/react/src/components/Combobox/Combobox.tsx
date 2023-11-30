@@ -39,7 +39,7 @@ type ComboboxContextType = {
   multiple: boolean;
   showEmptyChild: boolean;
   size: NonNullable<ComboboxProps['size']>;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
+  setActiveItem: (index: number, id: string) => void;
   onItemClick: (value: string) => void;
 };
 
@@ -103,6 +103,7 @@ export const Combobox = ({
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [activeValues, setActiveValues] = useState<ValueItemType[]>([]);
+  const [activeDescendant, setActiveDescendant] = useState<string | null>(null);
   const [prevActiveValues, setPrevActiveValues] = useState(
     JSON.stringify(activeValues),
   );
@@ -274,7 +275,10 @@ export const Combobox = ({
         multiple,
         showEmptyChild,
         activeIndex,
-        setActiveIndex,
+        setActiveItem: (index: number, id: string) => {
+          setActiveIndex(index);
+          setActiveDescendant(id);
+        },
         onItemClick: (value: string) => {
           const item = values.find((item) => item.value === value);
           handleSelectItem(item as ValueItemType);
@@ -293,7 +297,7 @@ export const Combobox = ({
       <Box
         {...getReferenceProps({
           ref: refs.setReference,
-
+          'aria-activedescendant': activeDescendant || undefined,
           'aria-autocomplete': 'list',
           onClick() {
             setOpen(true);
@@ -375,6 +379,8 @@ export const Combobox = ({
             <Box
               shadow='medium'
               borderRadius='medium'
+              aria-labelledby={inputId}
+              aria-autocomplete='list'
               {...getFloatingProps({
                 ref: refs.setFloating,
                 style: {

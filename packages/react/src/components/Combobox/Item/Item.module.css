@@ -30,3 +30,8 @@
 .active .itemText {
   color: var(--fds-semantic-text-action-hover);
 }
+
+.checkbox input {
+  min-width: unset;
+  min-height: unset;
+}

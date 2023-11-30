@@ -127,7 +127,7 @@
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .focusable:focus-visible,
-.focusable:not(.clearButton:focus):focus-within {
+.focusable:focus-within {
   --fds-focus-border-width: 3px;
 
   outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
