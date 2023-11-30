@@ -21,6 +21,8 @@
   const selectContext = getContext('selectContext-' + inputId);
   $: selected = $selectContext.selected;
 
+  $: console.log('control selected', selected);
+
   let inputValue = '';
   let isFiltering = false;
   let inputElement;
@@ -70,23 +72,16 @@
     }
   }
 
-  $: if (!multiple && selected !== null) {
-    if (!isFiltering) {
-      inputValue = selected.label;
+  $: if (initialized) {
+    if (!multiple && selected && selected.length === 1 && !isFiltering) {
+      // Single select and one item is selected
+      inputValue = selected[0].label;
+    } else if (multiple || isFiltering) {
+      // No change to inputValue, keep it as user's input
+    } else {
+      // Reset inputValue in other cases
+      inputValue = '';
     }
-  } else if (!hasFilter) {
-    inputValue = '';
-  }
-
-  $: {
-    if (!multiple) {
-      if (selected && selected.length > 0 && !isFiltering) {
-        inputValue = selected[0].label;
-      } else if (!hasFilter) {
-        inputValue = '';
-      }
-    }
-    updateValue();
   }
 </script>
 

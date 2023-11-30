@@ -135,6 +135,12 @@
     { label: 'Norge', value: '1' },
     { label: 'Outer Planets Alliance', value: '3' },
   ];
+
+  function changeSelected() {
+    unSelected = { label: 'Sverige', value: '2' };
+  }
+
+  $: if (unSelected) console.debug('here', unSelected);
 </script>
 
 <h1>Test components here!</h1>
@@ -408,6 +414,9 @@
   <p>Selected values: {selectedValues}</p>
 </div>
 <br />
+
+<Button on:click={changeSelected}>Change selected</Button>
+
 <h1 class="componentHeader">SELECT</h1>
 <div class="selectForm">
   <Select

@@ -118,7 +118,13 @@
   });
 
   setContext('selectContext-' + inputId, selectContext);
-  $: selectContext.set({ selected: $selectedStore, error, multiple });
+  $: {
+    let newSelected = $selectedStore;
+    if (!Array.isArray(selected)) {
+      newSelected = normalizeSelected(selected);
+    }
+    selectContext.set({ selected: newSelected, error, multiple });
+  }
 
   function closeDropdown() {
     isDropdownVisible = false;
@@ -179,7 +185,7 @@
   }
 
   function clearAll() {
-    if (multiple) {
+    if (multiple && !readOnly) {
       selectedStore.set([]);
       selectContext.update((ctx) => ({ ...ctx, selected: [] }));
     }
