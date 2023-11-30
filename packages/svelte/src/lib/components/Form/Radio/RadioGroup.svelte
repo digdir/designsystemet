@@ -36,21 +36,27 @@
   if (value === undefined || value === '') value = defaultValue;
 
   let fontSizeClass;
+  let radioButtonsClass;
   switch (size) {
     case 'xsmall':
       fontSizeClass = 'font-xsmall';
+      radioButtonsClass = 'radio-buttons-xsmall';
       break;
     case 'small':
       fontSizeClass = 'font-small';
+      radioButtonsClass = 'radio-buttons-small';
       break;
     case 'medium':
       fontSizeClass = 'font-medium';
+      radioButtonsClass = 'radio-buttons-medium';
       break;
     case 'large':
       fontSizeClass = 'font-large';
+      radioButtonsClass = 'radio-buttons-large';
       break;
     default:
       fontSizeClass = 'font-medium';
+      radioButtonsClass = 'radio-buttons-medium';
       break;
   }
 
@@ -123,7 +129,7 @@
       {description}
     </p>
   {/if}
-  <div class="radio-buttons">
+  <div class={radioButtonsClass}>
     <div class={inline ? 'radio-group-inline' : ''}>
       <slot />
     </div>
@@ -201,7 +207,16 @@
     color: var(--fds-semantic-text-neutral-subtle);
   }
 
-  .radio-buttons {
-    margin-top: var(--spacing-3, 0.84375rem);
+  .radio-buttons-xsmall {
+    margin-top: var(--fds-spacing-1, 0.84375rem);
+  }
+  .radio-buttons-small {
+    margin-top: var(--fds-spacing-2, 0.84375rem);
+  }
+  .radio-buttons-medium {
+    margin-top: var(--fds-spacing-3, 0.84375rem);
+  }
+  .radio-buttons-large {
+    margin-top: var(--fds-spacing-4, 0.84375rem);
   }
 </style>
