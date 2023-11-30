@@ -1,7 +1,9 @@
 .modal {
-  min-width: 650px;
-  max-width: min(650px, calc(100% - 6px - 2em));
-  padding: var(--fds-spacing-6) 0;
+  --width: 650px;
+
+  padding: 0px;
+  width: 100%;
+  max-width: var(--width);
   border: none;
   border-radius: var(--fds-border_radius-medium);
   box-shadow: var(--fds-shadow-xlarge);

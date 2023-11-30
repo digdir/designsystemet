@@ -60,7 +60,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
     const { context } = useFloating();
     useScrollLock(modalRef, classes.lockScroll);
     const open = useModalState(modalRef);
-    const belowWidth = useMediaQuery(`(max-width: ${width})`);
 
     useEffect(() => {
       const currentModalRef = modalRef.current;
@@ -124,13 +123,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           ref={mergedRefs}
           {...props}
           className={cn(classes.modal, props.className)}
-          style={{
-            minWidth: belowWidth ? '100%' : width,
-            maxWidth: belowWidth
-              ? '100%'
-              : `min(${width}, calc(100% - 6px - 2em))`,
-            ...props.style,
-          }}
+          style={{ '--width': width }}
           onCancel={onCancel}
         >
           {open && (
