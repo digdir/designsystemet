@@ -117,17 +117,10 @@
   background-color: var(--fds-semantic-surface-info-subtle-hover);
 }
 
-.clearButton:focus-visible,
-.clearButton:focus {
-  outline: 3px solid var(--fds-semantic-border-focus-boxshadow);
-  background: var(--fds-semantic-border-focus-outline);
-}
-
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
-.focusable:focus-visible,
-.focusable:focus-within {
+.inFocus {
   --fds-focus-border-width: 3px;
 
   outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);

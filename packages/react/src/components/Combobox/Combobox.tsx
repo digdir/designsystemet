@@ -25,6 +25,7 @@ import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
 import textFieldClasses from '../form/Textfield/Textfield.module.css';
 import { Label } from '../Typography';
+import utilityClasses from '../../utilities/utility.module.css';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
@@ -126,6 +127,26 @@ export const Combobox = ({
       setInputValue(item?.label || '');
     }
   }, [value, values]);
+
+  const [inputInFocus, setInputInFocus] = useState(false);
+  // we need to check if input is in focus
+  useEffect(() => {
+    const input = inputRef.current;
+    const onFocus = () => {
+      setInputInFocus(true);
+    };
+    const onBlur = () => {
+      setInputInFocus(false);
+    };
+
+    input?.addEventListener('focus', onFocus);
+    input?.addEventListener('blur', onBlur);
+
+    return () => {
+      input?.removeEventListener('focus', onFocus);
+      input?.removeEventListener('blur', onBlur);
+    };
+  }, []);
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
 
@@ -314,7 +335,7 @@ export const Combobox = ({
         className={cn(
           textFieldClasses.input,
           classes.inputWrapper,
-          classes.focusable,
+          inputInFocus && classes.inFocus,
           classes[size],
         )}
       >
@@ -346,7 +367,11 @@ export const Combobox = ({
         </div>
         {multiple && activeValues.length > 0 && (
           <button
-            className={cn(classes.clearButton, classes[size])}
+            className={cn(
+              classes.clearButton,
+              classes[size],
+              utilityClasses.focusable,
+            )}
             onClick={() => {
               setActiveValues([]);
               setInputValue('');
