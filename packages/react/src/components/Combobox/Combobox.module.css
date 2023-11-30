@@ -1,6 +1,7 @@
 .itemsWrapper {
   padding: var(--fds-spacing-2);
   background: var(--fds-semantic-background-default);
+  overflow-y: auto;
 }
 
 .inputWrapper {
@@ -28,7 +29,6 @@
 .inputWrapper.small {
   font: var(--fds-typography-paragraph-small);
   padding: 7px var(--fds-spacing-2);
-  height: 36px;
 }
 
 .inputWrapper.small input {
@@ -38,7 +38,6 @@
 .inputWrapper.medium {
   font: var(--fds-typography-paragraph-medium);
   padding: 7px var(--fds-spacing-3);
-  height: 45px;
 }
 
 .inputWrapper.medium input {
@@ -48,7 +47,6 @@
 .inputWrapper.large {
   font: var(--fds-typography-paragraph-large);
   padding: 7px var(--fds-spacing-4);
-  height: 54px;
 }
 
 .inputWrapper.large input {
@@ -119,11 +117,17 @@
   background-color: var(--fds-semantic-surface-info-subtle-hover);
 }
 
+.clearButton:focus-visible,
+.clearButton:focus {
+  outline: 3px solid var(--fds-semantic-border-focus-boxshadow);
+  background: var(--fds-semantic-border-focus-outline);
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .focusable:focus-visible,
-.focusable:focus-within {
+.focusable:not(.clearButton:focus):focus-within {
   --fds-focus-border-width: 3px;
 
   outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);

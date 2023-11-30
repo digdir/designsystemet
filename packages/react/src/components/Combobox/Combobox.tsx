@@ -379,7 +379,6 @@ export const Combobox = ({
                 ref: refs.setFloating,
                 style: {
                   ...floatingStyles,
-                  overflowX: 'scroll',
                 },
               })}
               className={cn(classes.itemsWrapper, classes[size])}
