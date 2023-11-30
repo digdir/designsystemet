@@ -52,7 +52,24 @@ export const Adornments: Story = {
     label: 'Label',
     prefix: 'prefix',
     suffix: 'suffix',
+  },
+};
+
+export const AdornmentsSmall: Story = {
+  args: {
+    label: 'Label',
+    prefix: 'prefix',
+    suffix: 'suffix',
     size: 'small',
+  },
+};
+
+export const AdornmentsLarge: Story = {
+  args: {
+    label: 'Label',
+    prefix: 'prefix',
+    suffix: 'suffix',
+    size: 'large',
   },
 };
 

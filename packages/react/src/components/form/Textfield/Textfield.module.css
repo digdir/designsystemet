@@ -6,11 +6,15 @@
 .adornment {
   color: var(--fds-semantic-border-neutral-default);
   background: var(--fds-semantic-surface-neutral-subtle);
-  padding: var(--fds-spacing-3);
+  padding: var(--fds-spacing-2);
   border-radius: var(--fds-border_radius-medium);
   border: solid 1px var(--fds-semantic-border-neutral-default);
   box-sizing: border-box;
   display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  cursor: default;
+  flex: 1;
 }
 
 .label {
