@@ -128,8 +128,8 @@ export const Combobox = ({
     }
   }, [value, values]);
 
+  // we need to check if input is in focus, to add focus styles to the wrapper
   const [inputInFocus, setInputInFocus] = useState(false);
-  // we need to check if input is in focus
   useEffect(() => {
     const input = inputRef.current;
     const onFocus = () => {
@@ -148,8 +148,8 @@ export const Combobox = ({
     };
   }, []);
 
+  // floating UI
   const listRef = useRef<Array<HTMLElement | null>>([]);
-
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
     whileElementsMounted: autoUpdate,
     open,
@@ -184,13 +184,14 @@ export const Combobox = ({
     listNav,
   ]);
 
+  // remove active index if combobox is closed
   useEffect(() => {
     if (!open) {
       setActiveIndex(null);
     }
   }, [open]);
 
-  /* Send new value if item was clicked */
+  // Send new value if item was clicked
   useEffect(() => {
     const stringifiedActiveValues = JSON.stringify(activeValues);
     if (prevActiveValues !== stringifiedActiveValues) {
@@ -200,6 +201,7 @@ export const Combobox = ({
     }
   }, [onValueChange, activeValues, prevActiveValues]);
 
+  // onChange function for the input
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
@@ -211,6 +213,7 @@ export const Combobox = ({
     }
   };
 
+  // handle click on item, either select or deselect - Handles single or multiple
   const handleSelectItem = (item: ValueItemType) => {
     // if item is already selected, remove it
     if (activeValues.find((i) => i.value === item.value)) {
@@ -231,6 +234,7 @@ export const Combobox = ({
     refs.domReference.current?.focus();
   };
 
+  // handle keyboard navigation in the list
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
       case 'ArrowDown':
@@ -240,7 +244,7 @@ export const Combobox = ({
             return 0;
           }
 
-          // if last item, go to first item
+          // loop - if last item, go to first item
           if (prevActiveIndex === filteredChildren.length - 1) {
             return 0;
           }
@@ -255,7 +259,7 @@ export const Combobox = ({
             return filteredChildren.length - 1;
           }
 
-          // if first item, go to last item
+          // loop - if first item, go to last item
           if (prevActiveIndex === 0) {
             return filteredChildren.length - 1;
           }
