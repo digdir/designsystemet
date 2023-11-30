@@ -303,10 +303,12 @@ export const Combobox = ({
         multiple,
         showEmptyChild,
         activeIndex,
+        /* Recieves index of item, and the ID of the button element */
         setActiveItem: (index: number, id: string) => {
           setActiveIndex(index);
           setActiveDescendant(id);
         },
+        /* Recieves the value of the item, and searches for it in our values lookup */
         onItemClick: (value: string) => {
           const item = values.find((item) => item.value === value);
           handleSelectItem(item as ValueItemType);
@@ -316,21 +318,24 @@ export const Combobox = ({
       {label && (
         <Label
           size={size}
-          for={inputId}
+          htmlFor={inputId}
           className={classes.label}
         >
           {label}
         </Label>
       )}
       <Box
+        /* Props from floating-ui */
         {...getReferenceProps({
           ref: refs.setReference,
-          'aria-expanded': open ? 'true' : 'false',
+          'aria-expanded': open,
+          /* If we click the wrapper, open the list, set index to first item, and focus the input */
           onClick() {
             setOpen(true);
             setActiveIndex(0);
             inputRef.current?.focus();
           },
+          /* Handles list navigation */
           onKeyDown(event) {
             handleKeyDown(event);
           },
@@ -343,6 +348,7 @@ export const Combobox = ({
         )}
       >
         <div className={classes.chipAndInput}>
+          {/* If the input is in multiple mode, we need to display chips */}
           {multiple &&
             activeValues.map((item) => {
               return (
@@ -350,6 +356,7 @@ export const Combobox = ({
                   key={item.value}
                   size={size}
                   onClick={() => {
+                    /* If we click a chip, filter the active values and remove the one we clicked */
                     setActiveValues(
                       activeValues.filter((i) => i.value !== item.value),
                     );
@@ -369,6 +376,7 @@ export const Combobox = ({
             value={inputValue}
           />
         </div>
+        {/* Clear button if we are in multiple mode and have at least one active value */}
         {multiple && activeValues.length > 0 && (
           <button
             className={cn(
@@ -387,6 +395,7 @@ export const Combobox = ({
             />
           </button>
         )}
+        {/* Arrow for combobox. Click is handled by the wrapper */}
         <div className={classes.arrow}>
           {open ? (
             <ChevronUpIcon
@@ -401,6 +410,8 @@ export const Combobox = ({
           )}
         </div>
       </Box>
+
+      {/* This is the floating list with items */}
       <FloatingPortal>
         {open && (
           <FloatingFocusManager
@@ -421,6 +432,7 @@ export const Combobox = ({
               })}
               className={cn(classes.itemsWrapper, classes[size])}
             >
+              {/* Map our children, and add props if it is a ComboboxItem */}
               {React.Children.map(filteredChildren, (child, index) => {
                 if (
                   React.isValidElement(child) &&
