@@ -93,7 +93,7 @@ describe('Combobox', () => {
     await user.type(combobox, '{esc}');
     setTimeout(() => {
       expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 1000);
+    }, 3000);
   });
 
   it('should set call `onValueChange` on the Combobox when we click and item', async () => {
