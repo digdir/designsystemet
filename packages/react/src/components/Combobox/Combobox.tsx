@@ -111,7 +111,7 @@ export const Combobox = ({
     JSON.stringify(activeValues),
   );
 
-  const { values, filteredChildren, open, showEmptyChild, setOpen } =
+  const { values, filteredItems, restChildren, open, showEmptyChild, setOpen } =
     useCombobox({
       children,
       input: inputValue,
@@ -245,23 +245,23 @@ export const Combobox = ({
           }
 
           // loop - if last item, go to first item
-          if (prevActiveIndex === filteredChildren.length - 1) {
+          if (prevActiveIndex === filteredItems.length - 1) {
             return 0;
           }
 
-          return Math.min(prevActiveIndex + 1, filteredChildren.length - 1);
+          return Math.min(prevActiveIndex + 1, filteredItems.length - 1);
         });
         break;
       case 'ArrowUp':
         event.preventDefault();
         setActiveIndex((prevActiveIndex) => {
           if (prevActiveIndex === null) {
-            return filteredChildren.length - 1;
+            return filteredItems.length - 1;
           }
 
           // loop - if first item, go to last item
           if (prevActiveIndex === 0) {
-            return filteredChildren.length - 1;
+            return filteredItems.length - 1;
           }
 
           return Math.max(prevActiveIndex - 1, 0);
@@ -269,8 +269,8 @@ export const Combobox = ({
         break;
       case 'Enter':
         event.preventDefault();
-        if (activeIndex !== null && filteredChildren[activeIndex]) {
-          const child = filteredChildren[activeIndex];
+        if (activeIndex !== null && filteredItems[activeIndex]) {
+          const child = filteredItems[activeIndex];
           if (React.isValidElement(child) && child.type === ComboboxItem) {
             const props = child.props as ComboboxItemProps;
             const item = values.find((item) => item.value === props.value);
@@ -433,7 +433,7 @@ export const Combobox = ({
               className={cn(classes.itemsWrapper, classes[size])}
             >
               {/* Map our children, and add props if it is a ComboboxItem */}
-              {React.Children.map(filteredChildren, (child, index) => {
+              {React.Children.map(filteredItems, (child, index) => {
                 if (
                   React.isValidElement(child) &&
                   child.type === ComboboxItem
@@ -452,6 +452,8 @@ export const Combobox = ({
                 }
                 return child;
               })}
+              {/* Add the rest of the children */}
+              {restChildren}
             </Box>
           </FloatingFocusManager>
         )}

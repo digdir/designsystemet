@@ -49,8 +49,12 @@ export default function useCombobox({
     setValues(allValues);
   }, [children]);
 
-  const GET_CHILDREN = () => {
-    const childrenArr = React.Children.toArray(children);
+  const GET_ITEMS = () => {
+    const childrenArr = React.Children.toArray(children).filter((child) => {
+      if (!React.isValidElement(child)) return false;
+      if (child.type !== ComboboxItem) return false;
+      return true;
+    });
 
     const activeValue = values.find((item) => item.label === input);
     // if input has a value that matches a value in the list, show all items
@@ -66,11 +70,8 @@ export default function useCombobox({
 
     return childrenArr.filter((child) => {
       if (!React.isValidElement(child)) return false;
-      if (child.type !== ComboboxItem) return true;
+      if (child.type !== ComboboxItem) return false;
       const props = child.props as ComboboxItemProps;
-
-      /* if (multiple && activeValues.find((item) => item.value === props.value))
-        return false; */
 
       const value = props.value as string;
       const item = values.find((item) => item.value === value);
@@ -79,7 +80,18 @@ export default function useCombobox({
     });
   };
 
-  const filteredChildren = GET_CHILDREN().map((child, index) => {
+  const GET_REST_CHILDREN = () => {
+    const childrenArr = React.Children.toArray(children);
+
+    return childrenArr.filter((child) => {
+      if (!React.isValidElement(child)) return false;
+      if (child.type === ComboboxItem) return false;
+      return true;
+    });
+  };
+
+  // Get children of type `ComboboxItem` and add index to props
+  const filteredItems = GET_ITEMS().map((child, index) => {
     if (!React.isValidElement(child)) return child;
     if (child.type !== ComboboxItem) return child;
 
@@ -89,6 +101,8 @@ export default function useCombobox({
     } as ComboboxItemProps;
     return React.cloneElement(child, props);
   });
+
+  const restChildren = GET_REST_CHILDREN();
 
   const SHOW_EMPTY_CHILD = () => {
     // check if input does not match any values
@@ -106,7 +120,8 @@ export default function useCombobox({
   const showEmptyChild = SHOW_EMPTY_CHILD();
 
   return {
-    filteredChildren,
+    filteredItems,
+    restChildren,
     showEmptyChild,
     values,
     open,
