@@ -1,6 +1,7 @@
-import React, { forwardRef, type HTMLAttributes } from 'react';
+import React, { type HTMLAttributes } from 'react';
 import cn from 'classnames';
 
+import { useSynchronizedAnimation } from '../../../hooks';
 import classes from '../Skeleton.module.css';
 
 export type RectangleProps = {
@@ -9,19 +10,25 @@ export type RectangleProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 /**  Skeleton component used for indicating loading elements of circular shape */
-export const Rectangle = forwardRef<HTMLDivElement, RectangleProps>(
-  ({ width, height, className, children, ...rest }: RectangleProps, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(classes.skeleton, classes.rectangle, className, {
-          [classes.hasChildren]: Boolean(children),
-        })}
-        style={{ width, height }}
-        {...rest}
-      >
-        {children}
-      </div>
-    );
-  },
-);
+export const Rectangle = ({
+  width,
+  height,
+  className,
+  children,
+  ...rest
+}: RectangleProps) => {
+  const ref = useSynchronizedAnimation('opacity-fade');
+
+  return (
+    <div
+      ref={ref}
+      className={cn(classes.skeleton, classes.rectangle, className, {
+        [classes.hasChildren]: Boolean(children),
+      })}
+      style={{ width, height }}
+      {...rest}
+    >
+      {children}
+    </div>
+  );
+};
