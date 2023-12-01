@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import type { ComboboxProps } from './Combobox';
+
 import { Combobox } from '.';
 
 const PLACES = [
