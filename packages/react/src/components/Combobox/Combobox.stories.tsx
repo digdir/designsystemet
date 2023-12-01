@@ -10,36 +10,41 @@ export default {
   component: Combobox,
 } as Meta;
 
-const FRUITS = [
+const PLACES = [
   {
-    name: '🍔 Hamburger',
-    value: 'hamburger',
-    description: 'Allergener: Gluten, melk, egg, sennep, soya',
+    name: 'Leikanger',
+    value: 'leikanger',
+    description: 'Vestland',
   },
   {
-    name: '🍕 Pizza',
-    value: 'pizza',
-    description: 'Allergener: Gluten, melk, sennep, soya',
+    name: 'Oslo',
+    value: 'oslo',
+    description: 'Oslo',
   },
   {
-    name: '🍣 Sushi',
-    value: 'sushi',
-    description: 'Allergener: Gluten, fisk, soya',
+    name: 'Brønnøysund',
+    value: 'bronnoysund',
+    description: 'Nordland',
   },
   {
-    name: '🍜 Nudler',
-    value: 'nudler',
-    description: 'Allergener: Gluten, soya',
+    name: 'Stavanger',
+    value: 'stavanger',
+    description: 'Rogaland',
   },
   {
-    name: '🍝 Pasta',
-    value: 'pasta',
-    description: 'Allergener: Gluten',
+    name: 'Trondheim',
+    value: 'trondheim',
+    description: 'Trøndelag',
   },
   {
-    name: '🍟 Pommes frites',
-    value: 'pommes_frites',
-    description: 'Allergener: Gluten',
+    name: 'Tromsø',
+    value: 'tromso',
+    description: 'Troms og Finnmark',
+  },
+  {
+    name: 'Bergen',
+    value: 'bergen',
+    description: 'Vestland',
   },
 ];
 
@@ -48,7 +53,7 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
     <>
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {FRUITS.map((item, index) => (
+        {PLACES.map((item, index) => (
           <Combobox.Item
             key={index}
             value={item.value}
@@ -62,10 +67,10 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
 };
 
 Preview.args = {
-  placeholder: 'Velg mat',
+  placeholder: 'Velg sted',
   multiple: false,
   size: 'medium',
-  label: 'Hvilken mat skal du bestille?',
+  label: 'Hvor går reisen?',
 };
 
 export const Multiple: StoryFn<typeof Combobox> = (args) => {
@@ -73,7 +78,7 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
     <>
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {FRUITS.map((item, index) => (
+        {PLACES.map((item, index) => (
           <Combobox.Item
             key={index}
             value={item.value}
@@ -87,10 +92,10 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
 };
 
 Multiple.args = {
-  placeholder: 'Velg mat',
+  placeholder: 'Velg steder',
   multiple: true,
   size: 'medium',
-  label: 'Hvilken mat skal du bestille?',
+  label: 'Hvor går reisen?',
 };
 
 export const WithDescription: StoryFn<typeof Combobox> = (args) => {
@@ -98,7 +103,7 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
     <>
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {FRUITS.map((item, index) => (
+        {PLACES.map((item, index) => (
           <Combobox.Item
             key={index}
             value={item.value}
@@ -115,10 +120,10 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
 };
 
 WithDescription.args = {
-  placeholder: 'Velg mat',
+  placeholder: 'Velg sted',
   multiple: false,
   size: 'medium',
-  label: 'Hvilken mat skal du bestille?',
+  label: 'Hvor går reisen?',
 };
 
 export const Controlled: StoryFn<typeof Combobox> = (args) => {
@@ -128,11 +133,11 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
     <>
       <Button
         onClick={() => {
-          setValue(['pizza']);
+          setValue(['leikanger']);
         }}
         style={{ marginBottom: '1rem' }}
       >
-        Sett verdi til pizza
+        Sett verdi til Leikanger
       </Button>
       <Combobox
         {...args}
@@ -142,7 +147,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
         }}
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {FRUITS.map((item, index) => (
+        {PLACES.map((item, index) => (
           <Combobox.Item
             key={index}
             value={item.value}
