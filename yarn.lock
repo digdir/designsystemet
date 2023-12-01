@@ -5749,6 +5749,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-styling-webpack@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@storybook/addon-styling-webpack@npm:0.0.5"
+  dependencies:
+    "@storybook/node-logger": ^7.0.12
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 43462f6b05b660f9e6a8d70640efeedfaad314ebe65d7a172d84213c9ff9f1f78d69ec5d242914ea704ec6ae9c4fc12cf0a7130d10d29367397e5e2babe2b2ed
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-toolbars@npm:7.5.1":
   version: 7.5.1
   resolution: "@storybook/addon-toolbars@npm:7.5.1"
@@ -6393,6 +6404,13 @@ __metadata:
   version: 7.5.1
   resolution: "@storybook/node-logger@npm:7.5.1"
   checksum: 8c476e49a1ec19adba4c532476d4e5ccf58c8be16f7b70064a127f86a5d8bcf5c5bb947f18b0cb10c59cf3143b1f832379797009071ead5a586060afe9158760
+  languageName: node
+  linkType: hard
+
+"@storybook/node-logger@npm:^7.0.12":
+  version: 7.6.2
+  resolution: "@storybook/node-logger@npm:7.6.2"
+  checksum: c063d829d1356e51a361342469f8f67ab989e67823eb1f74afc9fbb6a531b486c3f705259ea6ca27363cceb22d3640814eb029abbb6025bd05aa59c6531f0bf4
   languageName: node
   linkType: hard
 
@@ -15418,6 +15436,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jiti@npm:^1.18.2":
+  version: 1.21.0
+  resolution: "jiti@npm:1.21.0"
+  bin:
+    jiti: bin/jiti.js
+  checksum: a7bd5d63921c170eaec91eecd686388181c7828e1fa0657ab374b9372bfc1f383cf4b039e6b272383d5cb25607509880af814a39abdff967322459cca41f2961
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -19041,6 +19068,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-loader@npm:^7.3.3":
+  version: 7.3.3
+  resolution: "postcss-loader@npm:7.3.3"
+  dependencies:
+    cosmiconfig: ^8.2.0
+    jiti: ^1.18.2
+    semver: ^7.3.8
+  peerDependencies:
+    postcss: ^7.0.0 || ^8.0.1
+    webpack: ^5.0.0
+  checksum: c724044d6ae56334535c26bb4efc9c151431d44d60bc8300157c760747281a242757d8dab32db72738434531175b38a408cb0b270bb96207c07584dcfcd899ff
+  languageName: node
+  linkType: hard
+
 "postcss-media-query-parser@npm:^0.2.3":
   version: 0.2.3
   resolution: "postcss-media-query-parser@npm:0.2.3"
@@ -19644,7 +19685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.31, postcss@npm:^7.0.30 || ^8.0.0, postcss@npm:^8.0.0, postcss@npm:^8.4.16, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.28":
+"postcss@npm:8.4.31, postcss@npm:^7.0.30 || ^8.0.0, postcss@npm:^8.0.0, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.28, postcss@npm:^8.4.31":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
   dependencies:
@@ -21156,6 +21197,7 @@ __metadata:
     "@storybook/addon-essentials": ^7.5.1
     "@storybook/addon-interactions": ^7.5.1
     "@storybook/addon-links": ^7.5.1
+    "@storybook/addon-styling-webpack": ^0.0.5
     "@storybook/addons": ^7.5.1
     "@storybook/blocks": ^7.5.1
     "@storybook/react": ^7.5.1
@@ -21189,7 +21231,8 @@ __metadata:
     jest-css-modules-transform: ^4.4.2
     jest-environment-jsdom: ^29.7.0
     lerna: ^7.1.5
-    postcss: ^8.4.16
+    postcss: ^8.4.31
+    postcss-loader: ^7.3.3
     prettier: ^2.7.1
     react: ^18.1.0
     react-dom: ^18.0.0
