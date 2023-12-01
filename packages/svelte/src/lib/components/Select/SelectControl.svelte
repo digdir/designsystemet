@@ -17,11 +17,10 @@
   export let disabled;
   export let error;
   export let clearAll;
+  export let clearable;
 
   const selectContext = getContext('selectContext-' + inputId);
   $: selected = $selectContext.selected;
-
-  $: console.log('control selected', selected);
 
   let inputValue = '';
   let isFiltering = false;
@@ -56,14 +55,8 @@
     inputElement.focus();
   }
 
-  function updateValue() {
-    if (initialized && !isFiltering && !multiple && selected) {
-      inputValue = selected.label;
-    }
-  }
-
   function handleClearAll() {
-    if (multiple) {
+    if (multiple || clearable) {
       clearAll();
     }
     if (hasFilter && inputValue) {
@@ -138,7 +131,7 @@
       />
     {/if}
   </div>
-  {#if multiple && selected.length > 0}
+  {#if (multiple || clearable) && selected.length > 0}
     <ClearButton
       handleClick={handleClearAll}
       {disabled}

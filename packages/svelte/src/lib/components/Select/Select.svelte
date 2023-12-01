@@ -103,6 +103,12 @@
    */
   export let readOnly = false;
 
+  /**
+   * If true, allows options to be cleared. Only applies to single select.
+   * @type {boolean}
+   */
+  export let clearable = false;
+
   $: isDropdownVisible = false;
   let selectClasses = 'select';
   let inputClasses = 'textInput';
@@ -161,7 +167,7 @@
         // Clear options filter on single selection
         handleFilterChange('');
         // If only single selection is allowed
-        return option;
+        return [option];
       }
     });
 
@@ -185,7 +191,7 @@
   }
 
   function clearAll() {
-    if (multiple && !readOnly) {
+    if ((multiple || clearable) && !readOnly) {
       selectedStore.set([]);
       selectContext.update((ctx) => ({ ...ctx, selected: [] }));
     }
@@ -272,6 +278,7 @@
     {disabled}
     {error}
     {clearAll}
+    {clearable}
   />
 
   <SelectDropdown

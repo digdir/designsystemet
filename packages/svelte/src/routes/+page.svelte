@@ -424,6 +424,7 @@
     bind:selected={unSelected}
     label="Single, unselected"
     hideSelected
+    clearable
   />
   <Select
     {options}
