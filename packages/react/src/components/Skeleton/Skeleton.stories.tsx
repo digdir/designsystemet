@@ -3,6 +3,7 @@ import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
 import { Paragraph } from '../Typography';
 import { Button } from '../Button';
+
 import { Skeleton } from '.';
 
 type Story = StoryObj<typeof Skeleton.Circle>;
@@ -19,7 +20,7 @@ export const Preview: Story = {
   },
 };
 
-export const Other: StoryFn<typeof Skeleton> = (args) => {
+export const Other: StoryFn<typeof Skeleton> = () => {
   return (
     <div
       style={{

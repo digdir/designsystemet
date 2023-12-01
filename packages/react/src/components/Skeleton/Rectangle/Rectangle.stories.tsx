@@ -17,7 +17,7 @@ export const Preview: Story = {
   },
 };
 
-export const RectangleExample: StoryFn<typeof Rectangle> = (args) => {
+export const RectangleExample: StoryFn<typeof Rectangle> = () => {
   return (
     <div
       style={{

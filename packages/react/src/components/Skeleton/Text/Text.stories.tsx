@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+
 import { Paragraph, Heading } from '../../Typography';
 
 import { Text } from './Text';
@@ -17,7 +18,7 @@ export const Preview: Story = {
   },
 };
 
-export const TextExample: StoryFn<typeof Text> = (args) => {
+export const TextExample: StoryFn<typeof Text> = () => {
   return (
     <>
       <Heading
