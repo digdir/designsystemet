@@ -11,7 +11,7 @@
   gap: var(--fds-spacing-1);
   cursor: text;
   padding: var(--fds-spacing-2);
-  min-width: 400px;
+  width: 100%;
   min-height: 44px;
   justify-content: space-between;
   font: var(--fds-typography-paragraph-medium);
