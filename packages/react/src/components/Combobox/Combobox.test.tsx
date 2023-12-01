@@ -173,4 +173,14 @@ describe('Combobox', () => {
       expect(onValueChange).toHaveBeenCalledWith([]);
     }, 1000);
   });
+
+  it('should show "Fant ingen treff", when input does not match any values', async () => {
+    await render();
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+    await userEvent.type(combobox, 'test');
+
+    expect(screen.getByText('Fant ingen treff')).toBeInTheDocument();
+  });
 });
