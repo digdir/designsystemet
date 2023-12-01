@@ -7,8 +7,6 @@ import {
   useMergeRefs,
 } from '@floating-ui/react';
 
-import { useMediaQuery } from '../../hooks';
-
 import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
 import { useModalState } from './useModalState';
@@ -29,12 +27,6 @@ export type ModalProps = {
    */
   onClose?: () => void;
   /**
-   * The width of the modal.
-   * Will go to full width below the specified width.
-   * @default '650px'
-   */
-  width?: string;
-  /**
    * Called before the modal is closed when using the close button, `closeOnBackdropClick` or `ESCAPE`.
    * If the function returns `false` the modal will not close.
    */
@@ -44,17 +36,7 @@ export type ModalProps = {
 export const ModalContext = createContext<ModalContextProps | null>(null);
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
-  (
-    {
-      onInteractOutside,
-      onClose,
-      width = '650px',
-      onBeforeClose,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ onInteractOutside, onClose, onBeforeClose, children, ...props }, ref) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const mergedRefs = useMergeRefs([modalRef, ref]);
     const { context } = useFloating();
@@ -123,7 +105,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           ref={mergedRefs}
           {...props}
           className={cn(classes.modal, props.className)}
-          style={{ '--width': width }}
           onCancel={onCancel}
         >
           {open && (
