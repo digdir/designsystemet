@@ -2,9 +2,9 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../Button';
+import { Paragraph } from '../Typography';
 
 import { Combobox } from './index';
-import { Paragraph } from '../Typography';
 
 export default {
   title: 'Felles/Combobox',

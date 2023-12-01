@@ -83,7 +83,7 @@ export type ComboboxProps = {
    *
    * @default (inputValue, value) => value.toLowerCase().includes(inputValue.toLowerCase())
    */
-  filterFn: (inputValue: string, label: string, value: string) => boolean;
+  filterFn?: (inputValue: string, label: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Combobox = ({
