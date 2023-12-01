@@ -61,8 +61,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
 
       <div className={classes.banners}>
         <ImageBanner
-          title='Bruk komponenter til å bygge opp
-          nettstedet ditt'
+          title='Bygg opp nettstedet ditt med komponenter fra designsystemet'
           description='The height he dragged would apartment, yourself not he in like he itch as arrives at then liabilities one by leather the facilitate day cost. As where instruments, spirit, are do. Violin, and it and bit a be refinement cut the through in allow eyes. The was a poured the also when open close.'
           imgSrc='/img/people-holding-figures.svg'
           imgAlt='Bilde av 2 personer som går bortover med byggeklosser under armene'

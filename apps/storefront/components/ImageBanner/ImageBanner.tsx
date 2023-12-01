@@ -73,8 +73,8 @@ const ImageBanner = ({
               loop
               mode='normal'
               ref={ref}
-              src='/animations/animation2.json'
-              style={{ width: '430px' }}
+              src='/animations/_Main.json'
+              style={{ width: '560px' }}
             ></lottie-player>
           </div>
         )}

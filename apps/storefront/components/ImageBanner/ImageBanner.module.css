@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding-top: 30px;
+  padding-top: 80px;
 }
 
 .container {
@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 70px;
+  gap: 50px;
 }
 
 .blue {
@@ -28,12 +28,12 @@
 }
 
 .imgContainer {
-  flex-basis: calc(36% - (var(--fds-spacing-20) / 2));
+  flex-basis: calc(45% - (var(--fds-spacing-20) / 2));
   flex-grow: 1;
 }
 
 .textContainer {
-  flex-basis: calc(64% - (var(--fds-spacing-18) / 2));
+  flex-basis: calc(55% - (var(--fds-spacing-18) / 2));
   flex-grow: 1;
   display: flex;
   flex-direction: column;
