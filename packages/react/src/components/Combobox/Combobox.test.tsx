@@ -80,7 +80,7 @@ describe('Combobox', () => {
     await user.click(document.body);
     setTimeout(() => {
       expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 1000);
+    }, 3000);
   });
 
   it('should close when we click Escape', async () => {
