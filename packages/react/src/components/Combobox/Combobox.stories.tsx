@@ -4,6 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../Button';
 
 import { Combobox } from './index';
+import { Paragraph } from '../Typography';
 
 export default {
   title: 'Felles/Combobox',
@@ -74,9 +75,17 @@ Preview.args = {
 };
 
 export const Multiple: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
   return (
     <>
-      <Combobox {...args}>
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
+      <Combobox
+        {...args}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+      >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
           <Combobox.Item
@@ -131,6 +140,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
+      Value er: {value.join(', ')}
       <Button
         onClick={() => {
           setValue(['leikanger']);
