@@ -54,6 +54,56 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
             value={item.value}
           >
             {item.name}
+          </Combobox.Item>
+        ))}
+      </Combobox>
+    </>
+  );
+};
+
+Preview.args = {
+  placeholder: 'Velg mat',
+  multiple: false,
+  size: 'medium',
+  label: 'Hvilken mat skal du bestille?',
+};
+
+export const Multiple: StoryFn<typeof Combobox> = (args) => {
+  return (
+    <>
+      <Combobox {...args}>
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {FRUITS.map((item, index) => (
+          <Combobox.Item
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Item>
+        ))}
+      </Combobox>
+    </>
+  );
+};
+
+Multiple.args = {
+  placeholder: 'Velg mat',
+  multiple: true,
+  size: 'medium',
+  label: 'Hvilken mat skal du bestille?',
+};
+
+export const WithDescription: StoryFn<typeof Combobox> = (args) => {
+  return (
+    <>
+      <Combobox {...args}>
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {FRUITS.map((item, index) => (
+          <Combobox.Item
+            key={index}
+            value={item.value}
+          >
+            {item.name}
             <Combobox.Item.Description>
               {item.description}
             </Combobox.Item.Description>
@@ -64,9 +114,9 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-Preview.args = {
+WithDescription.args = {
   placeholder: 'Velg mat',
-  multiple: true,
+  multiple: false,
   size: 'medium',
   label: 'Hvilken mat skal du bestille?',
 };

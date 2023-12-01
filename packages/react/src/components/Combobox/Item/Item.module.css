@@ -1,6 +1,7 @@
 .item {
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 10px;
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
   border: none;
@@ -16,6 +17,10 @@
 .item.active {
   background: var(--fds-semantic-surface-action-first-no_fill-hover);
   border-left: 5px solid var(--fds-semantic-border-action-hover);
+}
+
+.item > div {
+  align-self: flex-start;
 }
 
 .itemText {

@@ -8,10 +8,14 @@ import { Label } from '../../Typography';
 import classes from './Item.module.css';
 
 export type ComboboxItemProps = {
+  /**
+   * The value returned when the item is selected
+   */
   value: string;
+  /**
+   * The index of the item in the list, will be overwritten by Combobox.
+   */
   index?: number;
-  children: React.ReactNode;
-  active?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(

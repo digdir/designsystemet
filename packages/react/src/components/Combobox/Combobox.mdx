@@ -1,5 +1,6 @@
-import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Meta, Canvas, Controls, Primary, ArgsTable } from '@storybook/blocks';
 import * as ComboboxStories from './Combobox.stories';
+import { Combobox } from './index';
 
 <Meta of={ComboboxStories} />
 
@@ -8,6 +9,26 @@ import * as ComboboxStories from './Combobox.stories';
 <Primary />
 <Controls />
 
+## Multiple
+
+<Canvas of={ComboboxStories.Multiple} />
+
+## Med beskrivelse
+
+<Canvas of={ComboboxStories.WithDescription} />
+
 ## Kontrollert
 
 <Canvas of={ComboboxStories.Controlled} />
+
+### `Combobox.Item`
+
+<ArgsTable of={Combobox.Item} />
+
+### `Combobox.Item.Description`
+
+<ArgsTable of={Combobox.Item.Description} />
+
+### `Combobox.Empty`
+
+<ArgsTable of={Combobox.Empty} />
