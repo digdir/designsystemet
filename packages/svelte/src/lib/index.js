@@ -25,7 +25,14 @@ import {
 // @ts-ignore
 import { Paragraph, Heading } from './components/Typography';
 // @ts-ignore
-import { Textfield, Radio, RadioGroup, Switch } from './components/Form';
+import {
+  Textfield,
+  Radio,
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup,
+  Switch,
+} from './components/Form';
 import Tabs from './components/Tabs/Tabs.svelte';
 import TabContent from './components/Tabs/TabContent.svelte';
 import TabItem from './components/Tabs/TabItem.svelte';
@@ -50,6 +57,8 @@ export {
   AccordionItem,
   Radio,
   RadioGroup,
+  Checkbox,
+  CheckboxGroup,
   Switch,
   Spinner,
   Tooltip,
