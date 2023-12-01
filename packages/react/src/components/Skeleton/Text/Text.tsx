@@ -1,9 +1,7 @@
 import React, { forwardRef, type HTMLAttributes } from 'react';
 import cn from 'classnames';
 
-import skeletonClasses from '../Skeleton.module.css';
-
-import textClasses from './Text.module.css';
+import classes from '../Skeleton.module.css';
 
 export type TextProps = {
   width?: string | number;
@@ -12,14 +10,18 @@ export type TextProps = {
 
 /**  Skeleton component used for indicating loading elements of circular shape */
 export const Text = forwardRef<HTMLDivElement, TextProps>(
-  ({ width, height, className, ...rest }: TextProps, ref) => {
+  ({ width, height, className, children, ...rest }: TextProps, ref) => {
     return (
       <div
         ref={ref}
-        className={cn(skeletonClasses.skeleton, textClasses.text, className)}
+        className={cn(classes.skeleton, classes.text, className, {
+          [classes.hasChildren]: Boolean(children),
+        })}
         style={{ width, height }}
         {...rest}
-      ></div>
+      >
+        {children}
+      </div>
     );
   },
 );
