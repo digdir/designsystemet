@@ -26,4 +26,4 @@ Combobox.Empty = ComboboxEmpty;
 Combobox.Item.displayName = 'Combobox.Item';
 Combobox.Empty.displayName = 'Combobox.Empty';
 
-export { Combobox, ComboboxItem, ComboboxEmpty };
+export { Combobox, ComboboxItem, ComboboxEmpty, ComboboxItemDescription };
