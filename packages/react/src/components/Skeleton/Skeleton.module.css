@@ -1,7 +1,9 @@
 .skeleton {
+  --animation-duration: 0.8s;
+
   height: 1em;
   background-color: var(--fds-semantic-surface-neutral-subtle-hover);
-  animation: opacity-fade 0.8s linear infinite alternate;
+  animation: opacity-fade var(--animation-duration) linear infinite alternate;
 }
 
 .circle {
@@ -28,6 +30,12 @@
 
 .hasChildren > * {
   visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    --animation-duration: 1.6s;
+  }
 }
 
 @keyframes opacity-fade {
