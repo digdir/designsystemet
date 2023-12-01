@@ -16,7 +16,7 @@
 
 .link:hover {
   color: var(--fds-semantic-text-action-hover);
-  text-decoration-thickness: max(2px, 0.125rem);
+  text-decoration-thickness: max(2px, 0.125rem, 0.12em);
 }
 
 .link:active,
