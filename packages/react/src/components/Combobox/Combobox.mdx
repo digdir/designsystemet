@@ -11,9 +11,16 @@ import { Combobox } from './index';
 
 ## Multiple
 
+Legg merke til at `value` er forskjellig fra teksten på `Chip` som blir vist.
+`Chip`-en viser teksten som er satt på direkte i `Combobox.Item`.
+`Combobox.Item.Description` blir ikke vist i `Chip`-en.
+
 <Canvas of={ComboboxStories.Multiple} />
 
 ## Med beskrivelse
+
+Du kan bruke `Combobox.Item.Description` for å vise mer informasjon om et
+element i listen.
 
 <Canvas of={ComboboxStories.WithDescription} />
 
@@ -23,12 +30,18 @@ import { Combobox } from './index';
 
 ### `Combobox.Item`
 
+Brukes som direkte barn av `Combobox` for å vise et element i listen.
+Teksten fra barn blir brukt for å matche mot søketeksten, og vises til brukeren når
+elementet er valgt. Value er det som blir sendt til `onChange` når elementet blir valgt.
+
 <ArgsTable of={Combobox.Item} />
 
 ### `Combobox.Item.Description`
 
-<ArgsTable of={Combobox.Item.Description} />
+Brukes som direkte barn av `Combobox.Item` for å vise mer informasjon om et
+element i listen.
 
 ### `Combobox.Empty`
 
-<ArgsTable of={Combobox.Empty} />
+Brukes som direkte barn av `Combobox` for å vise en melding når det ikke er
+noen elementer i listen.
