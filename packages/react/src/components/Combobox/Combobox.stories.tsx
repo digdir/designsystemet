@@ -70,6 +70,9 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
 Preview.args = {
   placeholder: 'Velg sted',
   multiple: false,
+  readOnly: false,
+  disabled: false,
+  hideLabel: false,
   size: 'medium',
   label: 'Hvor går reisen?',
 };

@@ -69,6 +69,11 @@
   cursor: not-allowed;
 }
 
+.inputWrapper.error {
+  border-color: var(--fds-semantic-border-danger-default);
+  border-width: 2px;
+}
+
 .chipAndInput {
   display: flex;
   flex-wrap: wrap;
@@ -159,6 +164,10 @@
 .padlock {
   height: 1.2em;
   width: 1.2em;
+}
+
+.errorMessage {
+  margin-top: var(--fds-spacing-2);
 }
 
 /**

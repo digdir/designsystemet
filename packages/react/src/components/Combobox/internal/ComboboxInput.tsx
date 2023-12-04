@@ -28,6 +28,7 @@ export default function ComboboxInput() {
     refs,
     inputValue,
     activeDescendant,
+    error,
     setOpen,
     setActiveIndex,
     handleKeyDown,
@@ -94,6 +95,7 @@ export default function ComboboxInput() {
         inputInFocus && classes.inFocus,
         disabled && classes.disabled,
         readOnly && classes.readonly,
+        error && classes.error,
       )}
     >
       <div className={classes.chipAndInput}>

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import React, {
   useState,
   useRef,
@@ -30,6 +31,7 @@ import { ComboboxItem } from './Item/Item';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
+import ComboboxError from './internal/ComboboxError';
 
 type ComboboxContextType = {
   values: ValueItemType[];
@@ -55,6 +57,8 @@ type ComboboxContextType = {
   inputValue: string;
   activeDescendant: string | undefined;
   inputId: string;
+  error: ReactNode;
+  errorId?: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
@@ -117,6 +121,14 @@ export type ComboboxProps = {
    */
   disabled?: boolean;
   /**
+   * Error message for form field
+   */
+  error?: ReactNode;
+  /**
+   * Override generated errorId
+   */
+  errorId?: string;
+  /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
    * @param value
@@ -138,6 +150,8 @@ export const Combobox = ({
   size = 'medium',
   disabled = false,
   readOnly = false,
+  error,
+  errorId,
   children,
   filterFn = (inputValue, label) => {
     return label.toLowerCase().includes(inputValue.toLowerCase());
@@ -329,6 +343,8 @@ export const Combobox = ({
         inputValue,
         activeDescendant,
         inputId,
+        error,
+        errorId,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -353,6 +369,7 @@ export const Combobox = ({
     >
       <ComboboxLabel />
       <ComboboxInput />
+      <ComboboxError />
 
       {/* This is the floating list with items */}
       <FloatingPortal>
