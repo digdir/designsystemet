@@ -75,6 +75,10 @@ export type ComboboxProps = {
    * @default false
    */
   multiple?: boolean;
+  /** Disables element
+   * @note Avoid using if possible for accessibility purposes
+   */
+  disabled?: boolean;
   /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
@@ -93,6 +97,7 @@ export const Combobox = ({
   label,
   multiple = false,
   size = 'medium',
+  disabled = false,
   children,
   filterFn = (inputValue, label) => {
     return label.toLowerCase().includes(inputValue.toLowerCase());
@@ -318,7 +323,7 @@ export const Combobox = ({
         <Label
           size={size}
           htmlFor={inputId}
-          className={classes.label}
+          className={cn(classes.label, disabled && classes.disabled)}
         >
           {label}
         </Label>
@@ -330,6 +335,7 @@ export const Combobox = ({
           'aria-expanded': open,
           /* If we click the wrapper, open the list, set index to first item, and focus the input */
           onClick() {
+            if (disabled) return;
             setOpen(true);
             setActiveIndex(0);
             inputRef.current?.focus();
@@ -339,11 +345,13 @@ export const Combobox = ({
             handleKeyDown(event);
           },
         })}
+        aria-disabled={disabled}
         className={cn(
           textFieldClasses.input,
           classes.inputWrapper,
-          inputInFocus && classes.inFocus,
           classes[size],
+          inputInFocus && classes.inFocus,
+          disabled && classes.disabled,
         )}
       >
         <div className={classes.chipAndInput}>
@@ -368,6 +376,7 @@ export const Combobox = ({
           <input
             ref={inputRef}
             id={inputId}
+            disabled={disabled}
             aria-activedescendant={activeDescendant}
             aria-autocomplete='list'
             placeholder={placeholder}

@@ -57,6 +57,14 @@
   outline: none;
 }
 
+.inputWrapper.disabled {
+  cursor: not-allowed;
+}
+
+.inputWrapper.disabled input {
+  cursor: not-allowed;
+}
+
 .chipAndInput {
   display: flex;
   flex-wrap: wrap;
@@ -78,6 +86,10 @@
   display: grid;
   place-items: center;
   cursor: pointer;
+}
+
+.inputWrapper.disabled .arrow {
+  cursor: not-allowed;
 }
 
 .label {
@@ -115,6 +127,10 @@
 
 .clearButton:hover {
   background-color: var(--fds-semantic-surface-info-subtle-hover);
+}
+
+.disabled {
+  opacity: 0.3;
 }
 
 /**
