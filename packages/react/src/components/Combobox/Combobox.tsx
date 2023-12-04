@@ -19,12 +19,17 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import { ChevronDownIcon, ChevronUpIcon, XMarkIcon } from '@navikt/aksel-icons';
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  XMarkIcon,
+  PadlockLockedFillIcon,
+} from '@navikt/aksel-icons';
 
 import { Box } from '../Box';
 import { ChipRemovable } from '../Chip';
 import textFieldClasses from '../form/Textfield/Textfield.module.css';
-import { Label } from '../Typography';
+import { Label, Paragraph } from '../Typography';
 import utilityClasses from '../../utilities/utility.module.css';
 
 import type { ValueItemType } from './useCombobox';
@@ -39,6 +44,8 @@ type ComboboxContextType = {
   activeIndex: number | null;
   multiple: boolean;
   showEmptyChild: boolean;
+  disabled: boolean;
+  readOnly: boolean;
   size: NonNullable<ComboboxProps['size']>;
   setActiveItem: (index: number, id: string) => void;
   onItemClick: (value: string) => void;
@@ -53,6 +60,20 @@ export type ComboboxProps = {
    * Label for the combobox
    */
   label?: string;
+  /**
+   * Visually hides `label` and `description` (still available for screen readers)
+   * @default false
+   */
+  hideLabel?: boolean;
+  /**
+   * Description for the combobox
+   */
+  description?: string;
+  /**
+   * If true, the input is read-only
+   * @default false
+   */
+  readOnly?: boolean;
   /**
    * Size of the combobox
    * @default medium
@@ -95,9 +116,12 @@ export const Combobox = ({
   onValueChange,
   placeholder,
   label,
+  hideLabel = false,
+  description,
   multiple = false,
   size = 'medium',
   disabled = false,
+  readOnly = false,
   children,
   filterFn = (inputValue, label) => {
     return label.toLowerCase().includes(inputValue.toLowerCase());
@@ -288,6 +312,8 @@ export const Combobox = ({
         break;
 
       case 'Backspace':
+        if (readOnly) return;
+        if (disabled) return;
         if (inputValue === '' && multiple && activeValues.length > 0) {
           setActiveValues((prev) => prev.slice(0, prev.length - 1));
         }
@@ -307,13 +333,19 @@ export const Combobox = ({
         multiple,
         showEmptyChild,
         activeIndex,
+        disabled,
+        readOnly,
         /* Recieves index of item, and the ID of the button element */
         setActiveItem: (index: number, id: string) => {
+          if (readOnly) return;
+          if (disabled) return;
           setActiveIndex(index);
           setActiveDescendant(id);
         },
         /* Recieves the value of the item, and searches for it in our values lookup */
         onItemClick: (value: string) => {
+          if (readOnly) return;
+          if (disabled) return;
           const item = values.find((item) => item.value === value);
           handleSelectItem(item as ValueItemType);
         },
@@ -325,8 +357,27 @@ export const Combobox = ({
           htmlFor={inputId}
           className={cn(classes.label, disabled && classes.disabled)}
         >
+          {readOnly && (
+            <PadlockLockedFillIcon
+              aria-hidden
+              className={classes.padlock}
+            />
+          )}
           {label}
         </Label>
+      )}
+      {description && (
+        <Paragraph
+          as='div'
+          size={size}
+          className={cn(
+            classes.description,
+            hideLabel && utilityClasses.visuallyHidden,
+            disabled && classes.disabled,
+          )}
+        >
+          {description}
+        </Paragraph>
       )}
       <Box
         /* Props from floating-ui */
@@ -336,6 +387,7 @@ export const Combobox = ({
           /* If we click the wrapper, open the list, set index to first item, and focus the input */
           onClick() {
             if (disabled) return;
+            if (readOnly) return;
             setOpen(true);
             setActiveIndex(0);
             inputRef.current?.focus();
@@ -352,6 +404,7 @@ export const Combobox = ({
           classes[size],
           inputInFocus && classes.inFocus,
           disabled && classes.disabled,
+          readOnly && classes.readonly,
         )}
       >
         <div className={classes.chipAndInput}>
@@ -363,6 +416,8 @@ export const Combobox = ({
                   key={item.value}
                   size={size}
                   onClick={() => {
+                    if (readOnly) return;
+                    if (disabled) return;
                     /* If we click a chip, filter the active values and remove the one we clicked */
                     setActiveValues(
                       activeValues.filter((i) => i.value !== item.value),
@@ -376,7 +431,7 @@ export const Combobox = ({
           <input
             ref={inputRef}
             id={inputId}
-            disabled={disabled}
+            disabled={disabled || readOnly}
             aria-activedescendant={activeDescendant}
             aria-autocomplete='list'
             placeholder={placeholder}
@@ -393,6 +448,8 @@ export const Combobox = ({
               utilityClasses.focusable,
             )}
             onClick={() => {
+              if (readOnly) return;
+              if (disabled) return;
               setActiveValues([]);
               setInputValue('');
             }}

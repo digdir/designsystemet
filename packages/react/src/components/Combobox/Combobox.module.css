@@ -4,6 +4,10 @@
   overflow-y: auto;
 }
 
+.readOnly input {
+  pointer-events: none;
+}
+
 .inputWrapper {
   display: flex;
   align-items: center;
@@ -92,8 +96,27 @@
   cursor: not-allowed;
 }
 
+.inputWrapper.readonly {
+  background: var(--fds-semantic-surface-neutral-subtle);
+  border-color: var(--fds-semantic-border-neutral-default);
+}
+
 .label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--fds-spacing-1);
   margin-bottom: var(--fds-spacing-2);
+  align-items: center;
+}
+
+.description {
+  color: var(--fds-semantic-text-neutral-subtle);
+  margin-top: calc(var(--fds-spacing-2) * -1);
+}
+
+.description.disabled {
+  opacity: 0.3;
 }
 
 .clearButton {
@@ -131,6 +154,11 @@
 
 .disabled {
   opacity: 0.3;
+}
+
+.padlock {
+  height: 1.2em;
+  width: 1.2em;
 }
 
 /**
