@@ -24,4 +24,4 @@ export function generateScopedName(name, fileNames) {
 }
 
 // https://github.com/webpack-contrib/css-loader#localidentname
-// export const generateScopedName = 'fds-[name]-[local]-[hash:base64:5]';
+// export const localidentname = 'fds-[name]-[local]-[hash:base64:5]';
