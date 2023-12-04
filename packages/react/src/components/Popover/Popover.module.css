@@ -1,5 +1,5 @@
 .popover {
-  --border: 2px solid;
+  --border: 1px solid;
 
   z-index: 1500;
   background: var(--background);
