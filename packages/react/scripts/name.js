@@ -22,3 +22,6 @@ export function generateScopedName(name, fileNames) {
 
   return `fds-${componentName}-${name}-${hash}`;
 }
+
+// https://github.com/webpack-contrib/css-loader#localidentname
+// export const generateScopedName = 'fds-[name]-[local]-[hash:base64:5]';

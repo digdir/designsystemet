@@ -15436,15 +15436,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^1.18.2":
-  version: 1.21.0
-  resolution: "jiti@npm:1.21.0"
-  bin:
-    jiti: bin/jiti.js
-  checksum: a7bd5d63921c170eaec91eecd686388181c7828e1fa0657ab374b9372bfc1f383cf4b039e6b272383d5cb25607509880af814a39abdff967322459cca41f2961
-  languageName: node
-  linkType: hard
-
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -19068,20 +19059,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:^7.3.3":
-  version: 7.3.3
-  resolution: "postcss-loader@npm:7.3.3"
-  dependencies:
-    cosmiconfig: ^8.2.0
-    jiti: ^1.18.2
-    semver: ^7.3.8
-  peerDependencies:
-    postcss: ^7.0.0 || ^8.0.1
-    webpack: ^5.0.0
-  checksum: c724044d6ae56334535c26bb4efc9c151431d44d60bc8300157c760747281a242757d8dab32db72738434531175b38a408cb0b270bb96207c07584dcfcd899ff
-  languageName: node
-  linkType: hard
-
 "postcss-media-query-parser@npm:^0.2.3":
   version: 0.2.3
   resolution: "postcss-media-query-parser@npm:0.2.3"
@@ -19685,7 +19662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.31, postcss@npm:^7.0.30 || ^8.0.0, postcss@npm:^8.0.0, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.28, postcss@npm:^8.4.31":
+"postcss@npm:8.4.31, postcss@npm:^7.0.30 || ^8.0.0, postcss@npm:^8.0.0, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.28":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
   dependencies:
@@ -21231,8 +21208,6 @@ __metadata:
     jest-css-modules-transform: ^4.4.2
     jest-environment-jsdom: ^29.7.0
     lerna: ^7.1.5
-    postcss: ^8.4.31
-    postcss-loader: ^7.3.3
     prettier: ^2.7.1
     react: ^18.1.0
     react-dom: ^18.0.0
@@ -21243,7 +21218,6 @@ __metadata:
     rollup-plugin-peer-deps-external: ^2.2.4
     rollup-plugin-postcss: ^4.0.2
     storybook: ^7.5.1
-    storybook-css-modules: ^1.0.8
     stylelint: ^15.11.0
     stylelint-config-css-modules: ^4.3.0
     stylelint-config-prettier: ^9.0.5
@@ -21916,13 +21890,6 @@ __metadata:
     remark-gfm: ^3.0.1
   languageName: unknown
   linkType: soft
-
-"storybook-css-modules@npm:^1.0.8":
-  version: 1.0.8
-  resolution: "storybook-css-modules@npm:1.0.8"
-  checksum: 38fb51bd7f7aae83227e4b8e582edc28fc45ed66dcf4c362d555766294856a7250dc5253523a1a48e9f63da1d69bd35445b92267c800412aeb4adb3407b31c63
-  languageName: node
-  linkType: hard
 
 "storybook@npm:^7.5.1":
   version: 7.5.1
