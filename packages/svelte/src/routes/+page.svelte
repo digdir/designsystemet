@@ -522,7 +522,7 @@
 
 <h1 class="componentHeader">Tabs</h1>
 <div class="tabs">
-  <Tabs onChange={handleTabChange}>
+  <Tabs onChange={handleTabChange} size='large'>
     <TabList>
       <TabItem
         value="1"
@@ -541,6 +541,28 @@
     <TabContent value="2">Content 2</TabContent>
     <TabContent value="3">Content 3</TabContent>
   </Tabs>
+
+  <div class="tabs">
+    <Tabs onChange={handleTabChange} size='small' defaultValue=3>
+      <TabList>
+        <TabItem
+          value="1"
+          icon={InformationSquareFillIcon}>Tab 1</TabItem
+        >
+        <TabItem
+          value="2"
+          icon={CheckmarkCircleFillIcon}>Tab 2</TabItem
+        >
+        <TabItem
+          value="3"
+          icon={XMarkOctagonFillIcon}>Tab 3</TabItem
+        >
+      </TabList>
+      <TabContent value="1"><button>Content 1</button></TabContent>
+      <TabContent value="2">Content 2</TabContent>
+      <TabContent value="3">Content 3</TabContent>
+    </Tabs>
+    </div>  
 </div>
 
 <h1 class="componentHeader">Tooltip</h1>

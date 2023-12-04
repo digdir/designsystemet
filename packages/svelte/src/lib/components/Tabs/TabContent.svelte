@@ -1,12 +1,13 @@
 <!-- TabContent.svelte -->
 <script>
-  import { selectedTab, tabSize } from './store.js';
+  import { getContext } from 'svelte';
 
   /**
    * Value of the tab content.
    */
   export let value;
 
+  const { selectedTab, tabSize } = getContext('store');
   let tabContentSize = $tabSize;
 </script>
 
@@ -22,7 +23,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 1.40625rem */
-    margin-left: -.125rem;
+    margin-left: -0.125rem;
     &.small {
       padding: var(--fds-spacing-4, 1.125rem);
       font-size: 0.9375rem;

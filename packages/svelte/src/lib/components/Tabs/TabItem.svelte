@@ -1,6 +1,6 @@
 <!-- TabItem.svelte -->
 <script>
-  import { selectedTab, tabSize } from './store.js';
+  import { getContext } from 'svelte';
 
   /**
    * Value of the tab.
@@ -12,6 +12,7 @@
    */
   export let icon = null;
 
+  const { selectedTab, select, tabSize } = getContext('store');
   let tabButtonSize;
   let isSelected;
 
@@ -20,13 +21,15 @@
   $: tabButtonSize = $tabSize;
 
   function handleClick() {
-    $selectedTab = value;
+    select(value);
   }
 </script>
 
 <div class="tab-item {isSelected ? 'selected' : ''}">
   <button
-    class={`${isSelected ? 'active' : ''} ${tabButtonSize} ${!icon ? 'no-icon' : ''}`}
+    class={`${isSelected ? 'active' : ''} ${tabButtonSize} ${
+      !icon ? 'no-icon' : ''
+    }`}
     on:click={handleClick}
   >
     {#if icon}
@@ -81,11 +84,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: .1875rem;
+    margin-bottom: 0.1875rem;
     scale: 1.4;
   }
   .no-icon {
-    margin-bottom: -.125rem;
+    margin-bottom: -0.125rem;
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -113,7 +116,7 @@
   button::after {
     content: '';
     display: block;
-    height: .1875rem;
+    height: 0.1875rem;
     width: 100%;
     border-radius: var(--fds-border_radius-full);
     background-color: var(--fdsc-bottom-border-color);

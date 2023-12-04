@@ -1,10 +1,6 @@
-<!-- Tabs.svelte -->
 <script>
   import { setContext } from 'svelte';
-  import { nanoid } from 'nanoid'; // Du må installere nanoid eller bruke en annen metode for å generere unik id
-  import { selectedTab, tabSize } from './store.js';
-
-  const TABS_CONTEXT_KEY = `tabs-${nanoid()}`;
+  import { writable } from 'svelte/store';
 
   /**
    * onchange handler for the tabs component.
@@ -23,13 +19,19 @@
    */
   export let size = 'medium';
 
-  function selectTab(value) {
-    $selectedTab = value;
+  let store = {
+    selectedTab: writable('1'),
+    select: (i) => store.selectedTab.set(i),
+    tabSize: writable('medium')
+  };
+  
+  $: selectedTab = store.selectedTab;
+  if (defaultValue) {
+    store.selectedTab.set(defaultValue);
   }
-  $tabSize = size;
-  $selectedTab = defaultValue ? defaultValue : '1';
-  setContext(TABS_CONTEXT_KEY, { selectedTab, selectTab, tabSize });
-  $: onChange($selectedTab);
+  store.tabSize.set(size);
+  $: onChange(selectedTab);
+  setContext('store', store);
 </script>
 
 <div class="tabs">
