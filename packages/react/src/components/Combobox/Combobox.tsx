@@ -29,6 +29,7 @@ import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
+import ComboboxLabel from './internal/ComboboxLabel';
 
 type ComboboxContextType = {
   values: ValueItemType[];
@@ -350,6 +351,7 @@ export const Combobox = ({
         },
       }}
     >
+      <ComboboxLabel />
       <ComboboxInput />
 
       {/* This is the floating list with items */}
