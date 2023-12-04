@@ -22,7 +22,8 @@ const config: StorybookConfig = {
                 loader: 'css-loader',
                 options: {
                   modules: {
-                    // localIdentName: generateScopedName,
+                    // localIdentName,
+                    // or
                     // https://github.com/webpack-contrib/css-loader#getlocalident
                     getLocalIdent: (
                       context: { resourcePath: string },
