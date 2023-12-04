@@ -19,24 +19,16 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  XMarkIcon,
-  PadlockLockedFillIcon,
-} from '@navikt/aksel-icons';
+import type { ReferenceType } from '@floating-ui/react';
 
 import { Box } from '../Box';
-import { ChipRemovable } from '../Chip';
-import textFieldClasses from '../form/Textfield/Textfield.module.css';
-import { Label, Paragraph } from '../Typography';
-import utilityClasses from '../../utilities/utility.module.css';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
 import type { ComboboxItemProps } from './Item/Item';
 import { ComboboxItem } from './Item/Item';
 import classes from './Combobox.module.css';
+import ComboboxInput from './internal/ComboboxInput';
 
 type ComboboxContextType = {
   values: ValueItemType[];
@@ -46,9 +38,32 @@ type ComboboxContextType = {
   showEmptyChild: boolean;
   disabled: boolean;
   readOnly: boolean;
+  label: string | undefined;
+  description: string | undefined;
+  hideLabel: boolean;
+  placeholder: string | undefined;
+  open: boolean;
+  inputRef: React.RefObject<HTMLInputElement>;
+  refs: {
+    reference: React.MutableRefObject<ReferenceType | null>;
+    floating: React.MutableRefObject<HTMLElement | null>;
+    setReference: (node: ReferenceType | null) => void;
+    setFloating: (node: HTMLElement | null) => void;
+  };
   size: NonNullable<ComboboxProps['size']>;
+  inputValue: string;
+  activeDescendant: string | undefined;
+  inputId: string;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  setOpen: (open: boolean) => void;
+  handleKeyDown: (event: React.KeyboardEvent) => void;
+  setActiveIndex: (index: number | null) => void;
   setActiveItem: (index: number, id: string) => void;
+  getReferenceProps: (
+    props?: Record<string, unknown>,
+  ) => Record<string, unknown>;
   onItemClick: (value: string) => void;
+  setActiveValues: React.Dispatch<React.SetStateAction<ValueItemType[]>>;
 };
 
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(
@@ -157,26 +172,6 @@ export const Combobox = ({
     }
   }, [value, values]);
 
-  // we need to check if input is in focus, to add focus styles to the wrapper
-  const [inputInFocus, setInputInFocus] = useState(false);
-  useEffect(() => {
-    const input = inputRef.current;
-    const onFocus = () => {
-      setInputInFocus(true);
-    };
-    const onBlur = () => {
-      setInputInFocus(false);
-    };
-
-    input?.addEventListener('focus', onFocus);
-    input?.addEventListener('blur', onBlur);
-
-    return () => {
-      input?.removeEventListener('focus', onFocus);
-      input?.removeEventListener('blur', onBlur);
-    };
-  }, []);
-
   // floating UI
   const listRef = useRef<Array<HTMLElement | null>>([]);
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
@@ -228,18 +223,6 @@ export const Combobox = ({
       setPrevActiveValues(stringifiedActiveValues);
     }
   }, [onValueChange, activeValues, prevActiveValues]);
-
-  // onChange function for the input
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setInputValue(value);
-
-    if (value) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  };
 
   // handle click on item, either select or deselect - Handles single or multiple
   const handleSelectItem = (item: ValueItemType) => {
@@ -335,6 +318,22 @@ export const Combobox = ({
         activeIndex,
         disabled,
         readOnly,
+        label,
+        description,
+        hideLabel,
+        placeholder,
+        open,
+        inputRef,
+        refs,
+        inputValue,
+        activeDescendant,
+        inputId,
+        setInputValue,
+        setActiveIndex,
+        handleKeyDown,
+        setOpen,
+        getReferenceProps,
+        setActiveValues,
         /* Recieves index of item, and the ID of the button element */
         setActiveItem: (index: number, id: string) => {
           if (readOnly) return;
@@ -351,130 +350,7 @@ export const Combobox = ({
         },
       }}
     >
-      {label && (
-        <Label
-          size={size}
-          htmlFor={inputId}
-          className={cn(classes.label, disabled && classes.disabled)}
-        >
-          {readOnly && (
-            <PadlockLockedFillIcon
-              aria-hidden
-              className={classes.padlock}
-            />
-          )}
-          {label}
-        </Label>
-      )}
-      {description && (
-        <Paragraph
-          as='div'
-          size={size}
-          className={cn(
-            classes.description,
-            hideLabel && utilityClasses.visuallyHidden,
-            disabled && classes.disabled,
-          )}
-        >
-          {description}
-        </Paragraph>
-      )}
-      <Box
-        /* Props from floating-ui */
-        {...getReferenceProps({
-          ref: refs.setReference,
-          'aria-expanded': open,
-          /* If we click the wrapper, open the list, set index to first item, and focus the input */
-          onClick() {
-            if (disabled) return;
-            if (readOnly) return;
-            setOpen(true);
-            setActiveIndex(0);
-            inputRef.current?.focus();
-          },
-          /* Handles list navigation */
-          onKeyDown(event) {
-            handleKeyDown(event);
-          },
-        })}
-        aria-disabled={disabled}
-        className={cn(
-          textFieldClasses.input,
-          classes.inputWrapper,
-          classes[size],
-          inputInFocus && classes.inFocus,
-          disabled && classes.disabled,
-          readOnly && classes.readonly,
-        )}
-      >
-        <div className={classes.chipAndInput}>
-          {/* If the input is in multiple mode, we need to display chips */}
-          {multiple &&
-            activeValues.map((item) => {
-              return (
-                <ChipRemovable
-                  key={item.value}
-                  size={size}
-                  onClick={() => {
-                    if (readOnly) return;
-                    if (disabled) return;
-                    /* If we click a chip, filter the active values and remove the one we clicked */
-                    setActiveValues(
-                      activeValues.filter((i) => i.value !== item.value),
-                    );
-                  }}
-                >
-                  {item.label}
-                </ChipRemovable>
-              );
-            })}
-          <input
-            ref={inputRef}
-            id={inputId}
-            disabled={disabled || readOnly}
-            aria-activedescendant={activeDescendant}
-            aria-autocomplete='list'
-            placeholder={placeholder}
-            onChange={onChange}
-            value={inputValue}
-          />
-        </div>
-        {/* Clear button if we are in multiple mode and have at least one active value */}
-        {multiple && activeValues.length > 0 && (
-          <button
-            className={cn(
-              classes.clearButton,
-              classes[size],
-              utilityClasses.focusable,
-            )}
-            onClick={() => {
-              if (readOnly) return;
-              if (disabled) return;
-              setActiveValues([]);
-              setInputValue('');
-            }}
-          >
-            <XMarkIcon
-              fontSize='1.5em'
-              title='Clear selection'
-            />
-          </button>
-        )}
-        {/* Arrow for combobox. Click is handled by the wrapper */}
-        <div className={classes.arrow}>
-          {open ? (
-            <ChevronUpIcon
-              title='arrow up'
-              fontSize='1.5rem'
-            />
-          ) : (
-            <ChevronDownIcon
-              title='arrow down'
-              fontSize='1.5rem'
-            />
-          )}
-        </div>
-      </Box>
+      <ComboboxInput />
 
       {/* This is the floating list with items */}
       <FloatingPortal>
