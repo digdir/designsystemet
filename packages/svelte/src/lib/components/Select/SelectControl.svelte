@@ -55,7 +55,8 @@
     inputElement.focus();
   }
 
-  function handleClearAll() {
+  function handleClearAll(e) {
+    e.stopPropagation();
     if (multiple || clearable) {
       clearAll();
     }

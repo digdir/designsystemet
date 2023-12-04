@@ -7,7 +7,7 @@
 </script>
 
 <button
-  on:click={disabled ? null : handleClick}
+  on:click={disabled ? null : (e) => handleClick(e)}
   aria-label={deleteButtonLabel}
   class={`delete-button clear-all ${disabled ? 'disabled' : ''}`}
   {disabled}><Cross /></button

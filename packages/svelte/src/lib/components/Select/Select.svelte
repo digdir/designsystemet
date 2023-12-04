@@ -164,14 +164,20 @@
           return [option];
         }
       } else {
-        // Clear options filter on single selection
-        handleFilterChange('');
+        if (hasFilter) {
+          // Clear options filter on single selection
+          handleFilterChange('');
+        }
         // If only single selection is allowed
+        // selected = option;
         return [option];
       }
     });
-
-    selected = $selectedStore;
+    if (multiple) {
+      selected = $selectedStore;
+    } else {
+      selected = $selectedStore[0];
+    }
 
     if (closeMenuOnSelect) {
       isDropdownVisible = false;
@@ -192,6 +198,9 @@
 
   function clearAll() {
     if ((multiple || clearable) && !readOnly) {
+      if (!multiple) {
+        selected = null;
+      }
       selectedStore.set([]);
       selectContext.update((ctx) => ({ ...ctx, selected: [] }));
     }

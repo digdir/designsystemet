@@ -418,6 +418,8 @@
 <Button on:click={changeSelected}>Change selected</Button>
 
 <h1 class="componentHeader">SELECT</h1>
+
+<button on:click={() => console.log('unSelected', unSelected)}>LogValue</button>
 <div class="selectForm">
   <Select
     {options}
