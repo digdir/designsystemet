@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.38.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.37.0...@digdir/design-system-react@0.38.0) (2023-12-01)
+
+### Bug Fixes
+
+- :bug: Temporary change order for injected CSS ([#1137](https://github.com/digdir/designsystem/issues/1137)) ([8f8d978](https://github.com/digdir/designsystem/commit/8f8d97861d96f46f4b1404f24b642993a87a0169))
+- **Checkbox, Radio, Search:** 🐛 Styling interferences ([#1163](https://github.com/digdir/designsystem/issues/1163)) ([b53f050](https://github.com/digdir/designsystem/commit/b53f050ada1446f955082ea95739cb7fe00f006f))
+- **Chip.Toggle:** Make Chip.Toggle fallback on context size ([#1150](https://github.com/digdir/designsystem/issues/1150)) ([c555bca](https://github.com/digdir/designsystem/commit/c555bca248b5c07e87b39c8084802da120c7b334))
+- **DropdownMenu:** :bug: Add missing z-index ([#1142](https://github.com/digdir/designsystem/issues/1142)) ([ae84c10](https://github.com/digdir/designsystem/commit/ae84c10901f1efb9315394d57496982490cff9bb))
+- **Link:** Underline not thicker on hover in safari ([#1151](https://github.com/digdir/designsystem/issues/1151)) ([22580b3](https://github.com/digdir/designsystem/commit/22580b3268e485079679b3875072cb14fc4d9b6e))
+- **Modal:** Change solution for setting width and fixed clicking on top or bottom closing the Modal ([#1171](https://github.com/digdir/designsystem/issues/1171)) ([22fbc6b](https://github.com/digdir/designsystem/commit/22fbc6bad67ef3c6b6a4c1bbef742323a7f65c1d))
+- **Popover:** wrong border size on arrow ([#1176](https://github.com/digdir/designsystem/issues/1176)) ([499c5e2](https://github.com/digdir/designsystem/commit/499c5e2a7a8816ee67ec95f592467df7bbf96fb1))
+
+### Features
+
+- **Card:** ✨ New component ([#1009](https://github.com/digdir/designsystem/issues/1009)) ([c158e01](https://github.com/digdir/designsystem/commit/c158e017b365109a9da34a9ddf49755d53b2b588))
+- **Divider:** :lipstick: Adjusted size ([#1165](https://github.com/digdir/designsystem/issues/1165)) ([71dc2f8](https://github.com/digdir/designsystem/commit/71dc2f8762d0ce25a9f0541a0c9cb4dac457162b))
+- **sizing:** Syncronize sizing between Figma and React components ([#1084](https://github.com/digdir/designsystem/issues/1084)) ([06c9c44](https://github.com/digdir/designsystem/commit/06c9c44bc03e32a8911a910c4e424aea963002d2))
+- **SkipLink:** ✨ New component ([#1111](https://github.com/digdir/designsystem/issues/1111)) ([996f436](https://github.com/digdir/designsystem/commit/996f436e757b0a9f24dc15699539a0781a76c088))
+
 # [0.37.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.35.0...@digdir/design-system-react@0.37.0) (2023-11-17)
 
 ### Bug Fixes

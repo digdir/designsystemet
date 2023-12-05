@@ -5,6 +5,7 @@
   "editor.formatOnSave": true,
   "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "cssvar.files": [
     "node_modules/@altinn/figma-design-tokens/dist/tokens.css",
     "packages/tokens/brand/digdir/tokens.css"

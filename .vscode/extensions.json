@@ -18,6 +18,7 @@
     "formulahendry.auto-rename-tag",
     "formulahendry.auto-close-tag",
     "usernamehw.errorlens",
-    "phoenisx.cssvar"
+    "phoenisx.cssvar",
+    "editorconfig.editorconfig"
   ]
 }

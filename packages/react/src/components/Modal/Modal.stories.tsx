@@ -132,3 +132,46 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
     </>
   );
 };
+
+export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const [input, setInput] = useState('');
+
+  return (
+    <>
+      <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
+      <Modal
+        ref={modalRef}
+        onClose={() => setInput('')}
+        style={{ maxWidth: '1200px' }}
+      >
+        <Modal.Header>Modal med skjema</Modal.Header>
+        <Modal.Content>
+          <Textfield
+            label='Navn'
+            placeholder='Ola Nordmann'
+            value={input}
+            autoFocus
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </Modal.Content>
+        <Modal.Footer>
+          <Button
+            onClick={() => {
+              window.alert(`Du har sendt inn skjema med navn: ${input}`);
+              modalRef.current?.close();
+            }}
+          >
+            Send inn skjema
+          </Button>
+          <Button
+            variant='secondary'
+            onClick={() => modalRef.current?.close()}
+          >
+            Avbryt
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
