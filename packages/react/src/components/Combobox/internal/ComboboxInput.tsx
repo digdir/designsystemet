@@ -111,6 +111,7 @@ export default function ComboboxInput() {
           aria-activedescendant={activeDescendant}
           readOnly={readOnly}
           aria-autocomplete='list'
+          autoComplete='off'
           onChange={onChange}
           value={inputValue}
         />

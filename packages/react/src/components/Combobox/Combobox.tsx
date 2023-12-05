@@ -133,7 +133,6 @@ export const Combobox = ({
     JSON.stringify(activeValues),
   );
 
-  /* TODO: Use this */
   const formFieldProps = useFormField(
     {
       disabled,
