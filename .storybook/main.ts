@@ -1,13 +1,14 @@
+import { dirname, join } from "path";
 import remarkGfm from 'remark-gfm';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 const config: StorybookConfig = {
   stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-links',
-    '@storybook/addon-interactions',
-    '@storybook/addon-essentials',
-    '@etchteam/storybook-addon-css-variables-theme',
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@etchteam/storybook-addon-css-variables-theme"),
     {
       name: 'storybook-css-modules',
       options: {
@@ -32,7 +33,7 @@ const config: StorybookConfig = {
   ],
   staticDirs: ['../assets'],
   framework: {
-    name: '@storybook/react-webpack5',
+    name: getAbsolutePath("@storybook/react-webpack5"),
     options: {},
   },
   docs: {
@@ -40,3 +41,7 @@ const config: StorybookConfig = {
   },
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}
