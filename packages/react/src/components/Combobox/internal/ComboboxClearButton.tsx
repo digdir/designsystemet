@@ -13,38 +13,26 @@ export default function ComboboxClearButton() {
     throw new Error('ComboboxContext is missing');
   }
 
-  const {
-    multiple,
-    size,
-    readOnly,
-    disabled,
-    activeValues,
-    setActiveValues,
-    setInputValue,
-  } = context;
+  const { size, readOnly, disabled, setActiveValues, setInputValue } = context;
 
   return (
-    <>
-      {multiple && activeValues.length > 0 && (
-        <button
-          className={cn(
-            classes.clearButton,
-            classes[size],
-            utilityClasses.focusable,
-          )}
-          onClick={() => {
-            if (readOnly) return;
-            if (disabled) return;
-            setActiveValues([]);
-            setInputValue('');
-          }}
-        >
-          <XMarkIcon
-            fontSize='1.5em'
-            title='Clear selection'
-          />
-        </button>
+    <button
+      className={cn(
+        classes.clearButton,
+        classes[size],
+        utilityClasses.focusable,
       )}
-    </>
+      onClick={() => {
+        if (readOnly) return;
+        if (disabled) return;
+        setActiveValues([]);
+        setInputValue('');
+      }}
+    >
+      <XMarkIcon
+        fontSize='1.5em'
+        title='Clear selection'
+      />
+    </button>
   );
 }

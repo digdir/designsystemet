@@ -29,6 +29,8 @@ export default function ComboboxInput() {
     inputValue,
     activeDescendant,
     error,
+    multiple,
+    activeValues,
     setOpen,
     setActiveIndex,
     handleKeyDown,
@@ -100,7 +102,7 @@ export default function ComboboxInput() {
     >
       <div className={classes.chipAndInput}>
         {/* If the input is in multiple mode, we need to display chips */}
-        <ComboboxChips />
+        {multiple && <ComboboxChips />}
         <input
           ref={inputRef}
           id={inputId}
@@ -113,18 +115,18 @@ export default function ComboboxInput() {
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}
-      <ComboboxClearButton />
+      {multiple && activeValues.length > 0 && <ComboboxClearButton />}
       {/* Arrow for combobox. Click is handled by the wrapper */}
       <div className={classes.arrow}>
         {open ? (
           <ChevronUpIcon
             title='arrow up'
-            fontSize='1.5rem'
+            fontSize='1.5em'
           />
         ) : (
           <ChevronDownIcon
             title='arrow down'
-            fontSize='1.5rem'
+            fontSize='1.5em'
           />
         )}
       </div>

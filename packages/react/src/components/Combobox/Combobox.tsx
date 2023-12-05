@@ -134,9 +134,9 @@ export type ComboboxProps = {
    * @param value
    * @returns boolean
    *
-   * @default (inputValue, value) => value.toLowerCase().includes(inputValue.toLowerCase())
+   * @default (inputValue, value) => value.toLowerCase().startsWith(inputValue.toLowerCase())
    */
-  filterFn?: (inputValue: string, label: string, value: string) => boolean;
+  filter?: (inputValue: string, label: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Combobox = ({
@@ -153,8 +153,8 @@ export const Combobox = ({
   error,
   errorId,
   children,
-  filterFn = (inputValue, label) => {
-    return label.toLowerCase().includes(inputValue.toLowerCase());
+  filter = (inputValue, label) => {
+    return label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -174,7 +174,7 @@ export const Combobox = ({
     useCombobox({
       children,
       input: inputValue,
-      filterFn,
+      filter,
       multiple,
       activeValues,
     });
@@ -402,7 +402,6 @@ export const Combobox = ({
                     ref(node: HTMLElement | null) {
                       listRef.current[index] = node;
                     },
-                    active: activeIndex === index,
                   };
 
                   return React.cloneElement(child, {

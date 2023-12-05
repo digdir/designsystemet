@@ -8,7 +8,7 @@ export type UseComboboxProps = {
   input: string;
   multiple: boolean;
   activeValues: ValueItemType[];
-  filterFn: (inputValue: string, label: string, value: string) => boolean;
+  filter: (inputValue: string, label: string, value: string) => boolean;
 };
 
 export type ValueItemType = {
@@ -20,7 +20,7 @@ export default function useCombobox({
   children,
   input,
   multiple,
-  filterFn,
+  filter,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<ValueItemType[]>([]);
@@ -76,7 +76,7 @@ export default function useCombobox({
       const value = props.value as string;
       const item = values.find((item) => item.value === value);
 
-      return filterFn(input, item?.label || '', value);
+      return filter(input, item?.label || '', value);
     });
   };
 
@@ -110,7 +110,7 @@ export default function useCombobox({
 
     // check if input will show any values
     const activeValue = values.find((item) =>
-      item.label.toLowerCase().includes(input.toLowerCase()),
+      filter(input, item.label, item.value),
     );
     if (!activeValue) return true;
 
