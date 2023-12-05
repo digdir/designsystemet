@@ -87,7 +87,6 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
           id={labelId}
         >
           {children}
-          {/* TODO: Make descrip. prop and use comp. here */}
           <ComboboxItemDescription>{description}</ComboboxItemDescription>
         </Label>
       </button>

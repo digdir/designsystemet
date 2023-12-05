@@ -23,6 +23,7 @@ import cn from 'classnames';
 import type { ReferenceType } from '@floating-ui/react';
 
 import { Box } from '../Box';
+import { useFormField } from '../form/useFormField';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
@@ -44,7 +45,6 @@ type ComboboxContextType = {
   label: string | undefined;
   description: string | undefined;
   hideLabel: boolean;
-  placeholder: string | undefined;
   open: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
   refs: {
@@ -56,9 +56,8 @@ type ComboboxContextType = {
   size: NonNullable<ComboboxProps['size']>;
   inputValue: string;
   activeDescendant: string | undefined;
-  inputId: string;
   error: ReactNode;
-  errorId?: string;
+  formFieldProps: ReturnType<typeof useFormField>;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
@@ -129,6 +128,10 @@ export type ComboboxProps = {
    */
   errorId?: string;
   /**
+   * Override generated inputId
+   */
+  inputId?: string;
+  /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
    * @param value
@@ -142,7 +145,6 @@ export type ComboboxProps = {
 export const Combobox = ({
   value,
   onValueChange,
-  placeholder,
   label,
   hideLabel = false,
   description,
@@ -152,13 +154,14 @@ export const Combobox = ({
   readOnly = false,
   error,
   errorId,
+  inputId,
   children,
   filter = (inputValue, label) => {
     return label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const inputId = useId();
+  const generatedId = useId();
 
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -168,6 +171,20 @@ export const Combobox = ({
   );
   const [prevActiveValues, setPrevActiveValues] = useState(
     JSON.stringify(activeValues),
+  );
+
+  /* TODO: Use this */
+  const formFieldProps = useFormField(
+    {
+      disabled,
+      readOnly,
+      error,
+      errorId,
+      size,
+      description,
+      id: inputId || generatedId,
+    },
+    'combobox',
   );
 
   const { values, filteredItems, restChildren, open, showEmptyChild, setOpen } =
@@ -336,15 +353,13 @@ export const Combobox = ({
         label,
         description,
         hideLabel,
-        placeholder,
         open,
         inputRef,
         refs,
         inputValue,
         activeDescendant,
-        inputId,
         error,
-        errorId,
+        formFieldProps,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -369,7 +384,7 @@ export const Combobox = ({
     >
       <ComboboxLabel />
       <ComboboxInput />
-      <ComboboxError />
+      {formFieldProps.hasError && <ComboboxError />}
 
       {/* This is the floating list with items */}
       <FloatingPortal>
@@ -382,7 +397,7 @@ export const Combobox = ({
             <Box
               shadow='medium'
               borderRadius='medium'
-              aria-labelledby={inputId}
+              aria-labelledby={formFieldProps.inputProps.id}
               aria-autocomplete='list'
               {...getFloatingProps({
                 ref: refs.setFloating,

@@ -1,4 +1,4 @@
-import React, { useContext, useId } from 'react';
+import React, { useContext } from 'react';
 
 import classes from '../Combobox.module.css';
 import { ErrorMessage } from '../../Typography';
@@ -6,18 +6,17 @@ import { ComboboxContext } from '../Combobox';
 
 export default function ComboboxError() {
   const context = useContext(ComboboxContext);
-  const generatedId = useId();
 
   if (!context) {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, error, errorId } = context;
+  const { size, error, formFieldProps } = context;
 
   return (
     <div
       className={classes.errorMessage}
-      id={errorId ? errorId : generatedId}
+      id={formFieldProps.errorId}
       aria-live='polite'
       aria-relevant='additions removals'
     >

@@ -18,12 +18,10 @@ export default function ComboboxInput() {
   }
 
   const {
-    placeholder,
     size,
     readOnly,
     disabled,
     open,
-    inputId,
     inputRef,
     refs,
     inputValue,
@@ -31,6 +29,7 @@ export default function ComboboxInput() {
     error,
     multiple,
     activeValues,
+    formFieldProps,
     setOpen,
     setActiveIndex,
     handleKeyDown,
@@ -105,11 +104,12 @@ export default function ComboboxInput() {
         {multiple && <ComboboxChips />}
         <input
           ref={inputRef}
-          id={inputId}
-          disabled={disabled || readOnly}
+          id={formFieldProps.inputProps.id}
+          disabled={formFieldProps.inputProps.disabled}
+          aria-describedby={formFieldProps.inputProps['aria-describedby']}
+          aria-invalid={formFieldProps.inputProps['aria-invalid']}
           aria-activedescendant={activeDescendant}
           aria-autocomplete='list'
-          placeholder={placeholder}
           onChange={onChange}
           value={inputValue}
         />
