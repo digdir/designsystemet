@@ -143,15 +143,15 @@
     "surface": {
       "first": {
         "light": {
-          "value": "{brand.alt1.200}",
+          "value": "{brand.alt1.100}",
           "type": "color"
         },
         "light-hover": {
-          "value": "{brand.alt1.300}",
+          "value": "{brand.alt1.200}",
           "type": "color"
         },
         "light-active": {
-          "value": "{brand.alt1.400}",
+          "value": "{brand.alt1.300}",
           "type": "color"
         },
         "dark": {
@@ -271,11 +271,11 @@
     "border": {
       "first": {
         "default": {
-          "value": "{brand.alt1.600}",
+          "value": "{brand.alt1.500}",
           "type": "color"
         },
         "hover": {
-          "value": "{brand.alt1.700}",
+          "value": "{brand.alt1.600}",
           "type": "color"
         },
         "active": {
