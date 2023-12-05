@@ -49,7 +49,7 @@ export default function useCombobox({
     setValues(allValues);
   }, [children]);
 
-  const GET_ITEMS = () => {
+  const getComboboxItems = () => {
     const childrenArr = React.Children.toArray(children).filter((child) => {
       if (!React.isValidElement(child)) return false;
       if (child.type !== ComboboxItem) return false;
@@ -80,7 +80,7 @@ export default function useCombobox({
     });
   };
 
-  const GET_REST_CHILDREN = () => {
+  const getRestChildren = () => {
     const childrenArr = React.Children.toArray(children);
 
     return childrenArr.filter((child) => {
@@ -91,7 +91,7 @@ export default function useCombobox({
   };
 
   // Get children of type `ComboboxItem` and add index to props
-  const filteredItems = GET_ITEMS().map((child, index) => {
+  const filteredItems = getComboboxItems().map((child, index) => {
     if (!React.isValidElement(child)) return child;
     if (child.type !== ComboboxItem) return child;
 
@@ -102,9 +102,9 @@ export default function useCombobox({
     return React.cloneElement(child, props);
   });
 
-  const restChildren = GET_REST_CHILDREN();
+  const restChildren = getRestChildren();
 
-  const SHOW_EMPTY_CHILD = () => {
+  const getShowEmptyChild = () => {
     // check if input does not match any values
     if (input === '') return false;
 
@@ -117,7 +117,7 @@ export default function useCombobox({
     return false;
   };
 
-  const showEmptyChild = SHOW_EMPTY_CHILD();
+  const showEmptyChild = getShowEmptyChild();
 
   return {
     filteredItems,

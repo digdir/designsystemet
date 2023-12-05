@@ -34,46 +34,6 @@ import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
 
-type ComboboxContextType = {
-  values: ValueItemType[];
-  activeValues: ValueItemType[];
-  activeIndex: number | null;
-  multiple: boolean;
-  showEmptyChild: boolean;
-  disabled: boolean;
-  readOnly: boolean;
-  label: string | undefined;
-  description: string | undefined;
-  hideLabel: boolean;
-  open: boolean;
-  inputRef: React.RefObject<HTMLInputElement>;
-  refs: {
-    reference: React.MutableRefObject<ReferenceType | null>;
-    floating: React.MutableRefObject<HTMLElement | null>;
-    setReference: (node: ReferenceType | null) => void;
-    setFloating: (node: HTMLElement | null) => void;
-  };
-  size: NonNullable<ComboboxProps['size']>;
-  inputValue: string;
-  activeDescendant: string | undefined;
-  error: ReactNode;
-  formFieldProps: ReturnType<typeof useFormField>;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setOpen: (open: boolean) => void;
-  handleKeyDown: (event: React.KeyboardEvent) => void;
-  setActiveIndex: (index: number | null) => void;
-  setActiveItem: (index: number, id: string) => void;
-  getReferenceProps: (
-    props?: Record<string, unknown>,
-  ) => Record<string, unknown>;
-  onItemClick: (value: string) => void;
-  setActiveValues: React.Dispatch<React.SetStateAction<ValueItemType[]>>;
-};
-
-export const ComboboxContext = createContext<ComboboxContextType | undefined>(
-  undefined,
-);
-
 export type ComboboxProps = {
   /**
    * Label for the combobox
@@ -434,3 +394,43 @@ export const Combobox = ({
     </ComboboxContext.Provider>
   );
 };
+
+type ComboboxContextType = {
+  values: ValueItemType[];
+  activeValues: ValueItemType[];
+  activeIndex: number | null;
+  multiple: boolean;
+  showEmptyChild: boolean;
+  disabled: boolean;
+  readOnly: boolean;
+  label: string | undefined;
+  description: string | undefined;
+  hideLabel: boolean;
+  open: boolean;
+  inputRef: React.RefObject<HTMLInputElement>;
+  refs: {
+    reference: React.MutableRefObject<ReferenceType | null>;
+    floating: React.MutableRefObject<HTMLElement | null>;
+    setReference: (node: ReferenceType | null) => void;
+    setFloating: (node: HTMLElement | null) => void;
+  };
+  size: NonNullable<ComboboxProps['size']>;
+  inputValue: string;
+  activeDescendant: string | undefined;
+  error: ReactNode;
+  formFieldProps: ReturnType<typeof useFormField>;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  setOpen: (open: boolean) => void;
+  handleKeyDown: (event: React.KeyboardEvent) => void;
+  setActiveIndex: (index: number | null) => void;
+  setActiveItem: (index: number, id: string) => void;
+  getReferenceProps: (
+    props?: Record<string, unknown>,
+  ) => Record<string, unknown>;
+  onItemClick: (value: string) => void;
+  setActiveValues: React.Dispatch<React.SetStateAction<ValueItemType[]>>;
+};
+
+export const ComboboxContext = createContext<ComboboxContextType | undefined>(
+  undefined,
+);
