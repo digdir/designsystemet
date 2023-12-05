@@ -109,6 +109,7 @@ export default function ComboboxInput() {
           aria-describedby={formFieldProps.inputProps['aria-describedby']}
           aria-invalid={formFieldProps.inputProps['aria-invalid']}
           aria-activedescendant={activeDescendant}
+          readOnly={readOnly}
           aria-autocomplete='list'
           onChange={onChange}
           value={inputValue}

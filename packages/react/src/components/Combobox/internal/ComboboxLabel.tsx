@@ -30,7 +30,11 @@ export default function ComboboxLabel() {
         <Label
           size={size}
           htmlFor={formFieldProps.inputProps.id}
-          className={cn(classes.label, disabled && classes.disabled)}
+          className={cn(
+            classes.label,
+            disabled && classes.disabled,
+            hideLabel && utilityClasses.visuallyHidden,
+          )}
         >
           {readOnly && (
             <PadlockLockedFillIcon

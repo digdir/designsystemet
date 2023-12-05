@@ -279,6 +279,7 @@ export const Combobox = ({
 
   // handle keyboard navigation in the list
   const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (formFieldProps.readOnly || disabled) return;
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
@@ -327,8 +328,6 @@ export const Combobox = ({
         break;
 
       case 'Backspace':
-        if (readOnly) return;
-        if (disabled) return;
         if (inputValue === '' && multiple && activeValues.length > 0) {
           setActiveValues((prev) => prev.slice(0, prev.length - 1));
         }
