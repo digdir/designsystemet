@@ -6,6 +6,7 @@ import { Checkbox } from '../../form/Checkbox/Checkbox';
 import { Label } from '../../Typography';
 
 import classes from './Item.module.css';
+import ComboboxItemDescription from './Description/Description';
 
 export type ComboboxItemProps = {
   /**
@@ -16,10 +17,18 @@ export type ComboboxItemProps = {
    * The index of the item in the list, will be overwritten by Combobox.
    */
   index?: number;
+  /**
+   * The display name in chips, required if multiple is `true`
+   */
+  displayName?: string;
+  /**
+   * The description of the item, will be displayed below the item text
+   */
+  description?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
-  ({ value, index, children }, ref) => {
+  ({ value, index, description, children }, ref) => {
     const labelId = useId();
     const buttonId = useId();
 
@@ -79,6 +88,7 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
         >
           {children}
           {/* TODO: Make descrip. prop and use comp. here */}
+          <ComboboxItemDescription>{description}</ComboboxItemDescription>
         </Label>
       </button>
     );

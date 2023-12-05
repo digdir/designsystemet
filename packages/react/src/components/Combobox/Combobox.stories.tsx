@@ -119,11 +119,9 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Item
             key={index}
             value={item.value}
+            description={item.description}
           >
             {item.name}
-            <Combobox.Item.Description>
-              {item.description}
-            </Combobox.Item.Description>
           </Combobox.Item>
         ))}
       </Combobox>
