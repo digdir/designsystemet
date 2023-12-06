@@ -78,13 +78,14 @@ Preview.args = {
 };
 
 export const Multiple: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = React.useState<string[]>(['oslo', 'bergen']);
 
   return (
     <>
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
       <Combobox
         {...args}
+        value={value}
         onValueChange={(value) => {
           setValue(value);
         }}

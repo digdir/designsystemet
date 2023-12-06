@@ -215,6 +215,25 @@ export const Combobox = ({
     }
   }, [onValueChange, activeValues, prevActiveValues]);
 
+  useEffect(() => {
+    if (value && values.length > 0) {
+      const newActiveValues = value.map((item) => {
+        const value = values.find((value) => value.value === item);
+        return value as ValueItemType;
+      });
+
+      setActiveValues(newActiveValues);
+
+      if (!multiple) return;
+
+      if (JSON.stringify(newActiveValues) === JSON.stringify(prevActiveValues))
+        return;
+      else {
+        setInputValue('');
+      }
+    }
+  }, [multiple, prevActiveValues, value, values]);
+
   // handle click on item, either select or deselect - Handles single or multiple
   const handleSelectItem = (item: ValueItemType) => {
     // if item is already selected, remove it
@@ -280,10 +299,6 @@ export const Combobox = ({
             handleSelectItem(item as ValueItemType);
           }
         }
-        break;
-      case 'Escape':
-        event.preventDefault();
-        setOpen(false);
         break;
 
       case 'Backspace':

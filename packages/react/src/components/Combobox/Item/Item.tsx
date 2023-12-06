@@ -28,9 +28,11 @@ export type ComboboxItemProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
-  ({ value, index, description, children }, ref) => {
+  ({ value, index, description, children, ...rest }, ref) => {
     const labelId = useId();
-    const buttonId = useId();
+    const generatedId = useId();
+
+    const buttonId = rest.id || generatedId;
 
     const context = useContext(ComboboxContext);
     if (!context) {
@@ -57,6 +59,7 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
 
     return (
       <button
+        {...rest}
         id={buttonId}
         role='option'
         aria-selected={activeIndex === index}
