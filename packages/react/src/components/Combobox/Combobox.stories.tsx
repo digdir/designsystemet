@@ -4,9 +4,9 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../Button';
 import { Paragraph } from '../Typography';
 import { Switch } from '../form/Switch';
+import { Modal } from '../Modal';
 
 import { Combobox } from './index';
-import { Modal } from '../Modal';
 
 export default {
   title: 'Felles/Combobox',
@@ -267,13 +267,14 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
       >
         Open Modal
       </Button>
-      <Modal ref={modalRef}>
+      <Modal
+        ref={modalRef}
+        style={{
+          overflow: 'visible',
+        }}
+      >
         <Modal.Header>Combobox i Modal</Modal.Header>
-        <Modal.Content
-          style={{
-            padding: '1rem 1rem 20rem 1rem',
-          }}
-        >
+        <Modal.Content>
           <Combobox
             {...args}
             value={value}

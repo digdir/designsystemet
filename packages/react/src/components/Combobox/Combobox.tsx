@@ -17,6 +17,7 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
+  FloatingPortal,
 } from '@floating-ui/react';
 import cn from 'classnames';
 import type { ReferenceType } from '@floating-ui/react';
@@ -126,6 +127,7 @@ export const Combobox = ({
   },
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
   const generatedId = useId();
 
   const [inputValue, setInputValue] = useState<string>('');
@@ -353,7 +355,10 @@ export const Combobox = ({
         },
       }}
     >
-      <Box className={classes.combobox}>
+      <Box
+        className={classes.combobox}
+        ref={portalRef}
+      >
         {/* This is only for the Combobox to work in forms */}
         {name && <ComboboxNative />}
 
@@ -364,44 +369,49 @@ export const Combobox = ({
 
       {/* This is the floating list with items */}
       {open && (
-        <FloatingFocusManager
-          context={context}
-          initialFocus={-1}
-          visuallyHiddenDismiss
-        >
-          <Box
-            shadow='medium'
-            borderRadius='medium'
-            aria-labelledby={formFieldProps.inputProps.id}
-            aria-autocomplete='list'
-            {...getFloatingProps({
-              ref: refs.setFloating,
-              style: {
-                ...floatingStyles,
-              },
-            })}
-            className={cn(classes.itemsWrapper, classes[size])}
+        <FloatingPortal root={portalRef}>
+          <FloatingFocusManager
+            context={context}
+            initialFocus={-1}
+            visuallyHiddenDismiss
           >
-            {/* Map our children, and add props if it is a ComboboxItem */}
-            {React.Children.map(filteredItems, (child, index) => {
-              if (React.isValidElement(child) && child.type === ComboboxItem) {
-                const props = {
-                  ref(node: HTMLElement | null) {
-                    listRef.current[index] = node;
-                  },
-                };
+            <Box
+              shadow='medium'
+              borderRadius='medium'
+              aria-labelledby={formFieldProps.inputProps.id}
+              aria-autocomplete='list'
+              {...getFloatingProps({
+                ref: refs.setFloating,
+                style: {
+                  ...floatingStyles,
+                },
+              })}
+              className={cn(classes.itemsWrapper, classes[size])}
+            >
+              {/* Map our children, and add props if it is a ComboboxItem */}
+              {React.Children.map(filteredItems, (child, index) => {
+                if (
+                  React.isValidElement(child) &&
+                  child.type === ComboboxItem
+                ) {
+                  const props = {
+                    ref(node: HTMLElement | null) {
+                      listRef.current[index] = node;
+                    },
+                  };
 
-                return React.cloneElement(child, {
-                  key: index,
-                  ...props,
-                });
-              }
-              return child;
-            })}
-            {/* Add the rest of the children */}
-            {restChildren}
-          </Box>
-        </FloatingFocusManager>
+                  return React.cloneElement(child, {
+                    key: index,
+                    ...props,
+                  });
+                }
+                return child;
+              })}
+              {/* Add the rest of the children */}
+              {restChildren}
+            </Box>
+          </FloatingFocusManager>
+        </FloatingPortal>
       )}
     </ComboboxContext.Provider>
   );
