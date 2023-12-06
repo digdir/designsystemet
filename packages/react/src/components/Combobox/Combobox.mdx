@@ -24,11 +24,15 @@ element i listen.
 
 <Canvas of={ComboboxStories.Controlled} />
 
+## I form
+
+<Canvas of={ComboboxStories.InForm} />
+
 ### `Combobox.Item`
 
 Brukes som direkte barn av `Combobox` for å vise et element i listen.
-Teksten fra barn blir brukt for å matche mot søketeksten, og vises til brukeren når
-elementet er valgt. Value er det som blir sendt til `onChange` når elementet blir valgt.
+Teksten fra `children` vises til brukeren nårelementet er valgt. Value er
+det som blir sendt til `onValueChange` når elementet blir valgt.
 
 <ArgsTable of={Combobox.Item} />
 

@@ -90,7 +90,9 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
           id={labelId}
         >
           {children}
-          <ComboboxItemDescription>{description}</ComboboxItemDescription>
+          {description && (
+            <ComboboxItemDescription>{description}</ComboboxItemDescription>
+          )}
         </Label>
       </button>
     );

@@ -69,17 +69,17 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
 };
 
 Preview.args = {
-  placeholder: 'Velg sted',
   multiple: false,
   readOnly: false,
   disabled: false,
   hideLabel: false,
+  description: 'Velg et sted',
   size: 'medium',
   label: 'Hvor går reisen?',
 };
 
 export const Multiple: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>(['oslo', 'bergen']);
+  const [value, setValue] = React.useState<string[]>([]);
 
   return (
     <>
@@ -106,16 +106,34 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
 };
 
 Multiple.args = {
-  placeholder: 'Velg steder',
   multiple: true,
   size: 'medium',
   label: 'Hvor går reisen?',
 };
 
 export const WithDescription: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+  const [multiple, setMultiple] = React.useState<boolean>(false);
+
   return (
     <>
-      <Combobox {...args}>
+      <Switch
+        checked={multiple}
+        onChange={(e) => {
+          setMultiple(e.target.checked);
+          setValue([]);
+        }}
+      >
+        Multiple
+      </Switch>
+      <Combobox
+        {...args}
+        value={value}
+        multiple={multiple}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+      >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
           <Combobox.Item
@@ -132,7 +150,6 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
 };
 
 WithDescription.args = {
-  placeholder: 'Velg sted',
   multiple: false,
   size: 'medium',
   label: 'Hvor går reisen?',
@@ -183,4 +200,51 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
       </Combobox>
     </>
   );
+};
+
+export const InForm: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // get values from event
+    const form = e.currentTarget;
+
+    // get values from form
+    const formData = new FormData(form);
+
+    console.log('Form data', formData);
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <Combobox
+          {...args}
+          value={value}
+          multiple={true}
+          onValueChange={(value) => {
+            setValue(value);
+          }}
+        >
+          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+          {PLACES.map((item, index) => (
+            <Combobox.Item
+              key={index}
+              value={item.value}
+            >
+              {item.name}
+            </Combobox.Item>
+          ))}
+        </Combobox>
+
+        <Button type='submit'>Send!</Button>
+      </form>
+    </>
+  );
+};
+
+InForm.args = {
+  multiple: true,
+  label: 'Hvor går reisen?',
 };
