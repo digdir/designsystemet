@@ -1,3 +1,8 @@
+.combobox {
+  display: grid;
+  gap: var(--fds-spacing-2);
+}
+
 .itemsWrapper {
   padding: var(--fds-spacing-2);
   background: var(--fds-semantic-background-default);
@@ -111,7 +116,6 @@
   display: inline-flex;
   flex-direction: row;
   gap: var(--fds-spacing-1);
-  margin-bottom: var(--fds-spacing-2);
   align-items: center;
 }
 

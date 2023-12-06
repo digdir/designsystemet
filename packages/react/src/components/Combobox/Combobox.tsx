@@ -354,12 +354,14 @@ export const Combobox = ({
         },
       }}
     >
-      {/* This is only for the Combobox to work in forms */}
-      {name && <ComboboxNative />}
+      <Box className={classes.combobox}>
+        {/* This is only for the Combobox to work in forms */}
+        {name && <ComboboxNative />}
 
-      <ComboboxLabel />
-      <ComboboxInput />
-      {formFieldProps.hasError && <ComboboxError />}
+        <ComboboxLabel />
+        <ComboboxInput />
+        {formFieldProps.hasError && <ComboboxError />}
+      </Box>
 
       {/* This is the floating list with items */}
       <FloatingPortal>
