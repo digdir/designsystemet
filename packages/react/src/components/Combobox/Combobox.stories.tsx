@@ -6,6 +6,7 @@ import { Paragraph } from '../Typography';
 import { Switch } from '../form/Switch';
 
 import { Combobox } from './index';
+import { Modal } from '../Modal';
 
 export default {
   title: 'Felles/Combobox',
@@ -251,4 +252,49 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
 InForm.args = {
   multiple: true,
   label: 'Hvor går reisen?',
+};
+
+export const InModal: StoryFn<typeof Combobox> = (args) => {
+  const modalRef = React.useRef<HTMLDialogElement>(null);
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          modalRef.current?.showModal();
+        }}
+      >
+        Open Modal
+      </Button>
+      <Modal ref={modalRef}>
+        <Modal.Header>Combobox i Modal</Modal.Header>
+        <Modal.Content
+          style={{
+            padding: '1rem 1rem 20rem 1rem',
+          }}
+        >
+          <Combobox
+            {...args}
+            value={value}
+            multiple={true}
+            onValueChange={(value) => {
+              setValue(value);
+            }}
+            label='Hvor går reisen?'
+          >
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            {PLACES.map((item, index) => (
+              <Combobox.Item
+                key={index}
+                value={item.value}
+              >
+                {item.name}
+              </Combobox.Item>
+            ))}
+          </Combobox>
+        </Modal.Content>
+      </Modal>
+    </>
+  );
 };

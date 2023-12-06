@@ -8,7 +8,6 @@ import React, {
 } from 'react';
 import {
   FloatingFocusManager,
-  FloatingPortal,
   autoUpdate,
   flip,
   offset,
@@ -364,51 +363,46 @@ export const Combobox = ({
       </Box>
 
       {/* This is the floating list with items */}
-      <FloatingPortal>
-        {open && (
-          <FloatingFocusManager
-            context={context}
-            initialFocus={-1}
-            visuallyHiddenDismiss
+      {open && (
+        <FloatingFocusManager
+          context={context}
+          initialFocus={-1}
+          visuallyHiddenDismiss
+        >
+          <Box
+            shadow='medium'
+            borderRadius='medium'
+            aria-labelledby={formFieldProps.inputProps.id}
+            aria-autocomplete='list'
+            {...getFloatingProps({
+              ref: refs.setFloating,
+              style: {
+                ...floatingStyles,
+              },
+            })}
+            className={cn(classes.itemsWrapper, classes[size])}
           >
-            <Box
-              shadow='medium'
-              borderRadius='medium'
-              aria-labelledby={formFieldProps.inputProps.id}
-              aria-autocomplete='list'
-              {...getFloatingProps({
-                ref: refs.setFloating,
-                style: {
-                  ...floatingStyles,
-                },
-              })}
-              className={cn(classes.itemsWrapper, classes[size])}
-            >
-              {/* Map our children, and add props if it is a ComboboxItem */}
-              {React.Children.map(filteredItems, (child, index) => {
-                if (
-                  React.isValidElement(child) &&
-                  child.type === ComboboxItem
-                ) {
-                  const props = {
-                    ref(node: HTMLElement | null) {
-                      listRef.current[index] = node;
-                    },
-                  };
+            {/* Map our children, and add props if it is a ComboboxItem */}
+            {React.Children.map(filteredItems, (child, index) => {
+              if (React.isValidElement(child) && child.type === ComboboxItem) {
+                const props = {
+                  ref(node: HTMLElement | null) {
+                    listRef.current[index] = node;
+                  },
+                };
 
-                  return React.cloneElement(child, {
-                    key: index,
-                    ...props,
-                  });
-                }
-                return child;
-              })}
-              {/* Add the rest of the children */}
-              {restChildren}
-            </Box>
-          </FloatingFocusManager>
-        )}
-      </FloatingPortal>
+                return React.cloneElement(child, {
+                  key: index,
+                  ...props,
+                });
+              }
+              return child;
+            })}
+            {/* Add the rest of the children */}
+            {restChildren}
+          </Box>
+        </FloatingFocusManager>
+      )}
     </ComboboxContext.Provider>
   );
 };

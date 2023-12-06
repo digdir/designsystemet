@@ -7,6 +7,7 @@
   padding: var(--fds-spacing-2);
   background: var(--fds-semantic-background-default);
   overflow-y: auto;
+  z-index: 1600;
 }
 
 .readOnly input {
