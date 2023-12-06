@@ -28,6 +28,7 @@
   export let deleteButtonLabel = 'Slett';
 
   export let disabled;
+  export let size;
 </script>
 
 <span

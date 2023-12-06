@@ -4,6 +4,7 @@
   export let handleClick;
   export let deleteButtonLabel = 'Delete';
   export let disabled;
+  export let size;
 </script>
 
 <button

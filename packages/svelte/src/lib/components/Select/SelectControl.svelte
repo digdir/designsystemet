@@ -18,6 +18,7 @@
   export let error;
   export let clearAll;
   export let clearable;
+  export let size;
 
   const selectContext = getContext('selectContext-' + inputId);
   $: selected = $selectContext.selected;
@@ -94,6 +95,7 @@
             {removeOption}
             {readOnly}
             {disabled}
+            {size}
           />
         {/each}
         {#if !(disabled || readOnly) && (hasFilter || selected.length === 0)}
@@ -136,6 +138,7 @@
     <ClearButton
       handleClick={handleClearAll}
       {disabled}
+      {size}
     />
   {/if}
   <div class="separator {disabled ? 'disabled' : ''}" />

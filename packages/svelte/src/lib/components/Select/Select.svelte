@@ -50,6 +50,12 @@
   export let description = '';
 
   /**
+   * Size of the select.
+   * @type {'small' | 'medium'}
+   */
+  export let size = 'medium';
+
+  /**
    * ARIA label for accessibility.
    * @type {string}
    */
@@ -288,6 +294,7 @@
     {error}
     {clearAll}
     {clearable}
+    {size}
   />
 
   <SelectDropdown
@@ -297,6 +304,7 @@
     {hideSelected}
     {multiple}
     {inputId}
+    {size}
   />
   {#if error}
     <div class="error-message">{error}</div>

@@ -1,4 +1,5 @@
 <script>
+  import Checkbox from '../Form/Checkbox/Checkbox.svelte';
   import SelectCheckmark from './SelectCheckmark.svelte';
   import { getContext } from 'svelte';
 
@@ -29,19 +30,13 @@
    */
   export let hideSelected;
   export let multiple;
-
+  export let size;
   export let inputId;
 
   const selectContext = getContext('selectContext-' + inputId);
 
   $: selected = $selectContext.selected;
   $: error = $selectContext.error;
-
-  /* $: computedOptions = options.map((option) => ({
-    ...option,
-    isHidden: hideSelected && isSelected(option),
-    isSelected: isSelected(option),
-  })); */
 
   $: isOptionSelected = (option) => {
     if (Array.isArray(selected)) {
@@ -75,9 +70,42 @@
           {#if multiple}
             <div class="checkbox-container">
               <input
+                class="input"
                 type="checkbox"
                 checked={isSelected}
               />
+              <svg
+                class="icon icon-xsmall"
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  class="box"
+                  x="1"
+                  y="1"
+                  width="20"
+                  height="20"
+                  rx="0.125rem"
+                  ry="0.125rem"
+                  fill="white"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  class="checked"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17.7876 6.27838C18.1171 6.60788 18.1171 7.14212 17.7876 7.47162L9.99591 15.2633C9.6664 15.5928 9.13217 15.5928 8.80267 15.2633L4.67767 11.1383C4.34816 10.8088 4.34816 10.2745 4.67767 9.94505C5.00717 9.61554 5.5414 9.61554 5.87091 9.94505L9.39929 13.4734L16.5943 6.27838C16.9238 5.94887 17.4581 5.94887 17.7876 6.27838Z"
+                  fill="white"
+                />
+              </svg>
+              <!-- <input
+                type="checkbox"
+                checked={isSelected}
+              /> -->
             </div>
           {/if}
           <div class="option-text">
@@ -130,7 +158,6 @@
     gap: 10px;
     align-self: stretch;
     list-style: none;
-    /* border-bottom: solid 1px rgba(2, 47, 81, 0.5); */
     &:hover {
       background: var(--interface-common-info-200, #e3f7ff);
       cursor: pointer;
@@ -167,11 +194,90 @@
 
   .checkbox-container {
     padding-right: 10px;
+    height: 0;
   }
 
-  .option-separator {
-    width: 100%;
-    height: 1px;
-    background: rgba(2, 47, 81, 0.5);
+  .spacing-xsmall {
+    padding-left: var(--fds-spacing-6);
+  }
+  .spacing-small {
+    padding-left: var(--fds-spacing-7);
+  }
+  .spacing-medium {
+    padding-left: calc(var(--fds-spacing-8) + var(--fds-spacing-1));
+  }
+  .spacing-large {
+    padding-left: calc(var(--fds-spacing-8) + var(--fds-spacing-3));
+  }
+
+  .icon {
+    grid-area: input;
+    pointer-events: none;
+    height: 1.75rem;
+    width: 1.75rem;
+    margin: auto;
+    overflow: visible;
+  }
+
+  .input {
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+    grid-area: input;
+    cursor: pointer;
+  }
+
+  .input:not(:checked) ~ .icon .checked {
+    display: none;
+  }
+
+  .input:checked ~ .icon .checked {
+    display: inline;
+  }
+
+  .input:not(:checked) ~ .icon .box {
+    stroke: var(--fds-semantic-border-input-default);
+  }
+
+  .input:disabled ~ .icon .box {
+    stroke: var(--fds-semantic-border-neutral-subtle);
+    fill: white;
+  }
+
+  .input:checked:not(:disabled) ~ .icon .box {
+    stroke: var(--fds-semantic-border-input-hover);
+    fill: var(--fds-semantic-border-input-hover);
+  }
+
+  .input:focus-visible ~ .icon {
+    outline: var(--fds-focus-border-width) solid
+      var(--fds-outer-focus-border-color);
+    outline-offset: 0;
+  }
+
+  .input:focus-visible:not(:disabled) ~ .icon .box {
+    stroke: var(--fds-semantic-border-focus-boxshadow);
+    stroke-width: var(--fds-focus-border-width);
+  }
+
+  .input:disabled ~ .icon .checked {
+    fill: var(--fds-semantic-border-neutral-subtle);
+  }
+
+  .icon-xsmall {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+  .icon-small {
+    height: 1.375em;
+    width: 1.375em;
+  }
+  .icon-medium {
+    height: 1.6875rem;
+    width: 1.6875rem;
+  }
+  .icon-large {
+    height: 2rem;
+    width: 2rem;
   }
 </style>
