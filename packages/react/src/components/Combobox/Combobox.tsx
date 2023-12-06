@@ -33,6 +33,7 @@ import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
+import ComboboxNative from './internal/ComboboxNative';
 
 export type ComboboxProps = {
   /**
@@ -92,6 +93,10 @@ export type ComboboxProps = {
    */
   inputId?: string;
   /**
+   * Name of the value when used in a form
+   */
+  name?: string;
+  /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
    * @param value
@@ -115,6 +120,7 @@ export const Combobox = ({
   error,
   errorId,
   inputId,
+  name,
   children,
   filter = (inputValue, label) => {
     return label.toLowerCase().startsWith(inputValue.toLowerCase());
@@ -325,6 +331,7 @@ export const Combobox = ({
         activeDescendant,
         error,
         formFieldProps,
+        name,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -347,6 +354,9 @@ export const Combobox = ({
         },
       }}
     >
+      {/* This is only for the Combobox to work in forms */}
+      {name && <ComboboxNative />}
+
       <ComboboxLabel />
       <ComboboxInput />
       {formFieldProps.hasError && <ComboboxError />}
@@ -425,6 +435,7 @@ type ComboboxContextType = {
   activeDescendant: string | undefined;
   error: ReactNode;
   formFieldProps: ReturnType<typeof useFormField>;
+  name: string | undefined;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;

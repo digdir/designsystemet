@@ -10,7 +10,7 @@ import textFieldClasses from '../../form/Textfield/Textfield.module.css';
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 
-export default function ComboboxInput() {
+export const ComboboxInput = () => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -134,4 +134,6 @@ export default function ComboboxInput() {
       </div>
     </Box>
   );
-}
+};
+
+export default ComboboxInput;

@@ -7,7 +7,7 @@ import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
 import utilityClasses from '../../../utilities/utility.module.css';
 
-export default function ComboboxLabel() {
+export const ComboboxLabel = () => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -61,4 +61,6 @@ export default function ComboboxLabel() {
       )}
     </>
   );
-}
+};
+
+export default ComboboxLabel;

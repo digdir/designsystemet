@@ -207,13 +207,9 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // get values from event
-    const form = e.currentTarget;
-
-    // get values from form
-    const formData = new FormData(form);
-
-    console.log('Form data', formData);
+    const formData = new FormData(e.currentTarget);
+    const values = Array.from(formData.values());
+    alert(values);
   };
 
   return (
@@ -226,6 +222,7 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
           onValueChange={(value) => {
             setValue(value);
           }}
+          name='sted'
         >
           <Combobox.Empty>Fant ingen treff</Combobox.Empty>
           {PLACES.map((item, index) => (
@@ -238,7 +235,14 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
           ))}
         </Combobox>
 
-        <Button type='submit'>Send!</Button>
+        <Button
+          style={{
+            marginTop: '1rem',
+          }}
+          type='submit'
+        >
+          Send!
+        </Button>
       </form>
     </>
   );

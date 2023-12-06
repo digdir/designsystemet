@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { ChipRemovable } from '../../Chip';
 import { ComboboxContext } from '../Combobox';
 
-export default function ComboboxChips() {
+export const ComboboxChips = () => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -34,4 +34,6 @@ export default function ComboboxChips() {
       })}
     </>
   );
-}
+};
+
+export default ComboboxChips;

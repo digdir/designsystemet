@@ -4,7 +4,7 @@ import classes from '../Combobox.module.css';
 import { ErrorMessage } from '../../Typography';
 import { ComboboxContext } from '../Combobox';
 
-export default function ComboboxError() {
+export const ComboboxError = () => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -23,4 +23,6 @@ export default function ComboboxError() {
       {error && <ErrorMessage size={size}>{error}</ErrorMessage>}
     </div>
   );
-}
+};
+
+export default ComboboxError;

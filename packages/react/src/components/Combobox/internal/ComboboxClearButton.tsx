@@ -6,7 +6,7 @@ import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
 import utilityClasses from '../../../utilities/utility.module.css';
 
-export default function ComboboxClearButton() {
+export const ComboboxClearButton = () => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -35,4 +35,6 @@ export default function ComboboxClearButton() {
       />
     </button>
   );
-}
+};
+
+export default ComboboxClearButton;
