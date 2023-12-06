@@ -157,4 +157,14 @@ describe('useFormField', () => {
 
     expect(field.readOnly).toBeTruthy();
   });
+
+  test('has undefined aria-describedby', () => {
+    const { result } = renderHook<FormField, FieldsetProps>(() =>
+      useFormField({}, 'test'),
+    );
+
+    const field = result.current;
+
+    expect(field.inputProps['aria-describedby']).toBeUndefined();
+  });
 });
