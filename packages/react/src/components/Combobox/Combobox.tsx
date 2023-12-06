@@ -97,6 +97,11 @@ export type ComboboxProps = {
    */
   name?: string;
   /**
+   * If true, the list of items is rendered in a portal
+   * @default true
+   */
+  portal?: boolean;
+  /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
    * @param value
@@ -121,6 +126,7 @@ export const Combobox = ({
   errorId,
   inputId,
   name,
+  portal = true,
   children,
   filter = (inputValue, label) => {
     return label.toLowerCase().startsWith(inputValue.toLowerCase());
@@ -369,7 +375,7 @@ export const Combobox = ({
 
       {/* This is the floating list with items */}
       {open && (
-        <FloatingPortal root={portalRef}>
+        <FloatingPortal root={portal ? null : portalRef}>
           <FloatingFocusManager
             context={context}
             initialFocus={-1}
