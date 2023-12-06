@@ -157,11 +157,11 @@ export const Combobox = ({
 
   // if value is set, set input value to the label of the value
   useEffect(() => {
-    if (value && value.length > 0) {
+    if (value && value.length > 0 && !multiple) {
       const item = values.find((item) => item.value === value[0]);
       setInputValue(item?.label || '');
     }
-  }, [value, values]);
+  }, [multiple, value, values]);
 
   // floating UI
   const listRef = useRef<Array<HTMLElement | null>>([]);
@@ -223,14 +223,6 @@ export const Combobox = ({
       });
 
       setActiveValues(newActiveValues);
-
-      if (!multiple) return;
-
-      if (JSON.stringify(newActiveValues) === JSON.stringify(prevActiveValues))
-        return;
-      else {
-        setInputValue('');
-      }
     }
   }, [multiple, prevActiveValues, value, values]);
 
