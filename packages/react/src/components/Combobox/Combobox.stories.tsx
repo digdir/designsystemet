@@ -3,6 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../Button';
 import { Paragraph } from '../Typography';
+import { Switch } from '../form/Switch';
 
 import { Combobox } from './index';
 
@@ -139,10 +140,19 @@ WithDescription.args = {
 
 export const Controlled: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = React.useState<string[]>([]);
+  const [multiple, setMultiple] = React.useState<boolean>(false);
 
   return (
     <>
-      Value er: {value.join(', ')}
+      <Switch
+        checked={multiple}
+        onChange={(e) => {
+          setMultiple(e.target.checked);
+          setValue([]);
+        }}
+      >
+        Multiple
+      </Switch>
       <Button
         onClick={() => {
           setValue(['leikanger']);
@@ -151,9 +161,12 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
       >
         Sett verdi til Leikanger
       </Button>
+      Value er: {value.join(', ')}
       <Combobox
         {...args}
+        key={multiple ? 'multiple' : 'single'}
         value={value}
+        multiple={multiple}
         onValueChange={(value) => {
           setValue(value);
         }}
