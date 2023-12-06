@@ -12,7 +12,7 @@ export const ComboboxNative = () => {
 
   return (
     <select
-      name={name || 'combobox'}
+      name={name}
       multiple={multiple}
       style={{ display: 'none' }}
       value={activeValues.map((item) => item.value)}
