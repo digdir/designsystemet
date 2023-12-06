@@ -6,6 +6,8 @@ import { Paragraph } from '../Typography';
 import { Switch } from '../form/Switch';
 import { Modal } from '../Modal';
 
+import { data } from './data/data';
+
 import { Combobox } from './index';
 
 export default {
@@ -136,13 +138,13 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
         }}
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
+        {data.map((item, index) => (
           <Combobox.Item
             key={index}
-            value={item.value}
-            description={item.description}
+            value={item.targetName}
+            description={`Orgnr.: ${item.sourceCode}`}
           >
-            {item.name}
+            {item.targetName}
           </Combobox.Item>
         ))}
       </Combobox>
