@@ -19,12 +19,6 @@
   export let size = 'medium';
 
   /**
-   * Supported `input` types.
-   * @type {'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'}
-   */
-  export let type = 'text';
-
-  /**
    * Visually hides `label` and `description` (still available for screen readers).
    */
   export let hideLabel = false;
@@ -48,16 +42,6 @@
    * Error message to display.
    */
   export let error = '';
-
-  /**
-   * Prefix for field.
-   */
-  export let prefix = '';
-
-  /**
-   * Suffix for field.
-   */
-  export let suffix = '';
 
   /**
    * Sets limit for number of characters.
@@ -99,17 +83,15 @@
   let descriptionClasses = `description ${
     hideLabel ? 'visually-hidden' : ''
   } ${fontSizeClass}`;
-  $: fieldClasses = `field ${error ? 'error' : ''}`;
-  let inputClasses = `input ${size} ${prefix ? 'input-prefix' : ''} ${
-    suffix ? 'input-suffix' : ''
-  }`;
+  $: fieldClasses = `${error ? 'error' : ''}`;
+  let textareaClasses = `textarea ${size}`;
   let errorMessageClasses = `error-message ${fontSizeClass}`;
 </script>
 
 <div class={formFieldClasses}>
   {#if label}
     <label
-      for={`input-field-${componentId}`}
+      for={`textarea-${componentId}`}
       class={labelClasses}
     >
       {#if readOnly}
@@ -131,33 +113,16 @@
     </p>
   {/if}
   <div class={fieldClasses}>
-    {#if prefix}
-      <div
-        class="adornment prefix"
-        aria-hidden="true"
-      >
-        {prefix}
-      </div>
-    {/if}
-    <input
+    <textarea
       bind:value
       on:input
-      class={inputClasses}
-      id={`input-field-${componentId}`}
-      {...{ type }}
+      class={textareaClasses}
+      id={`textarea-${componentId}`}
       aria-describedby="description"
       readonly={readOnly}
       {disabled}
       {...$$restProps}
     />
-    {#if suffix}
-      <div
-        class="adornment suffix"
-        aria-hidden="true"
-      >
-        {suffix}
-      </div>
-    {/if}
   </div>
   {#if characterLimit}
     <CharacterCounter
@@ -184,14 +149,13 @@
     gap: var(--fds-spacing-2);
   }
 
-  .adornment {
-    color: var(--fds-semantic-border-neutral-default);
-    background: var(--fds-semantic-surface-neutral-subtle);
-    padding: var(--fds-spacing-3);
-    border-radius: var(--fds-border_radius-medium);
-    border: solid 1px var(--fds-semantic-border-neutral-default);
-    box-sizing: border-box;
-    display: inline-block;
+  .padlock {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+
+  .errorMessage:empty {
+    display: none;
   }
 
   .label {
@@ -209,7 +173,7 @@
     margin-bottom: var(--fds-spacing-2);
   }
 
-  .input {
+  .textarea {
     font: inherit;
     position: relative;
     box-sizing: border-box;
@@ -217,96 +181,49 @@
     min-height: 2.5em;
     width: 100%;
     appearance: none;
-    padding: 0 var(--fds-spacing-3);
+    padding: var(--fds-spacing-3);
     border: solid 1px var(--fds-semantic-border-action-dark);
     border-radius: var(--fds-border_radius-medium);
+    resize: vertical;
   }
 
-  .input.xsmall,
-  .input.small {
-    padding: 0 var(--fds-spacing-2);
+  .textarea.xsmall,
+  .textarea.small {
+    padding: var(--fds-spacing-2);
   }
 
-  .input.medium {
-    padding: 0 var(--fds-spacing-3);
+  .textarea.medium {
+    padding: var(--fds-spacing-3);
   }
 
-  .input.large {
-    padding: 0 var(--fds-spacing-4);
+  .textarea.large {
+    padding: var(--fds-spacing-4);
   }
 
   .disabled {
     opacity: 0.3;
   }
 
-  .disabled .input {
+  .disabled .textarea {
     cursor: not-allowed;
   }
 
-  .readonly .input {
+  .readonly .textarea {
     background: var(--fds-semantic-surface-neutral-subtle);
     border-color: var(--fds-semantic-border-neutral-default);
   }
 
-  .error > .input:not(:focus-visible) {
+  .error > .textarea:not(:focus-visible) {
     border-color: var(--fds-semantic-text-danger-default, #b3253a);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-text-danger-default, #b3253a);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .input:not(:focus-visible, :disabled):hover {
+    .textarea:not(:focus-visible, :disabled):hover {
       border-color: var(--fds-semantic-border-action-hover);
       box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
     }
   }
-
-  .inputPrefix {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .inputSuffix {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .prefix {
-    border-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .suffix {
-    border-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .field {
-    display: flex;
-    align-items: stretch;
-    border-radius: var(--fds-border_radius-medium);
-  }
-
-  .field > *:first-child {
-    border-top-left-radius: var(--fds-border_radius-medium);
-    border-bottom-left-radius: var(--fds-border_radius-medium);
-  }
-
-  .field > *:last-child {
-    border-top-right-radius: var(--fds-border_radius-medium);
-    border-bottom-right-radius: var(--fds-border_radius-medium);
-  }
-
-  .padlock {
-    height: 1.2rem;
-    width: 1.2rem;
-  }
-
-  .errorMessage:empty {
-    display: none;
-  }
-
   .error-message {
     color: var(--fds-semantic-text-danger-default, #b3253a);
   }

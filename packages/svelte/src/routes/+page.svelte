@@ -30,6 +30,7 @@
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
   import CheckboxGroup from '$lib/components/Form/Checkbox/CheckboxGroup.svelte';
+  import Textarea from '$lib/components/Form/Textarea/Textarea.svelte';
 
   function handleTabChange(value) {
     console.log('Tab changed:', value);
@@ -49,6 +50,8 @@
 
   let textfieldValue = '';
   let isSwitchChecked = false;
+
+  let textareaValue = '';
 
   function handleSwitchClickEvent(event) {
     console.log('switch clicked', event);
@@ -219,6 +222,24 @@
   size="medium"
   label="Textfield Overskrift"
   description="Beskrivelse"
+/>
+
+<br />
+<h1 class="componentHeader">TEXTAREA</h1>
+<br />
+
+<Textarea
+  bind:value={textareaValue}
+  label="Overskrift"
+  size="small"
+  description="Beskrivelse"
+  error="Lorem ipsum error"
+  hideLabel={false}
+  characterLimit={10}
+  characterLimitLabel={(count) =>
+    count > -1
+      ? `Du har ${count} tegn igjen.`
+      : `Du har ${Math.abs(count)} tegn for mye.`}
 />
 
 <br />
