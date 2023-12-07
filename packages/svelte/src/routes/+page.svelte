@@ -212,6 +212,14 @@
       ? `Du har ${count} tegn igjen.`
       : `Du har ${Math.abs(count)} tegn for mye.`}
 />
+<br />
+<Textfield
+  bind:value={textfieldValue}
+  error={showTextfieldError ? 'Lorem ipsum error' : ''}
+  size="medium"
+  label="Textfield Overskrift"
+  description="Beskrivelse"
+/>
 
 <br />
 <h1 class="componentHeader">LINK</h1>
@@ -522,7 +530,10 @@
 
 <h1 class="componentHeader">Tabs</h1>
 <div class="tabs">
-  <Tabs onChange={handleTabChange} size='large'>
+  <Tabs
+    onChange={handleTabChange}
+    size="large"
+  >
     <TabList>
       <TabItem
         value="1"
@@ -543,7 +554,11 @@
   </Tabs>
 
   <div class="tabs">
-    <Tabs onChange={handleTabChange} size='small' defaultValue=3>
+    <Tabs
+      onChange={handleTabChange}
+      size="small"
+      defaultValue="3"
+    >
       <TabList>
         <TabItem
           value="1"
@@ -562,7 +577,7 @@
       <TabContent value="2">Content 2</TabContent>
       <TabContent value="3">Content 3</TabContent>
     </Tabs>
-    </div>  
+  </div>
 </div>
 
 <h1 class="componentHeader">Tooltip</h1>

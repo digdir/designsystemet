@@ -109,7 +109,7 @@
 <div class={formFieldClasses}>
   {#if label}
     <label
-      for="input-field"
+      for={`input-field-${componentId}`}
       class={labelClasses}
     >
       {#if readOnly}
@@ -143,7 +143,7 @@
       bind:value
       on:input
       class={inputClasses}
-      id="input-field"
+      id={`input-field-${componentId}`}
       type="text"
       aria-describedby="description"
       readonly={readOnly}
@@ -200,11 +200,13 @@
     flex-direction: row;
     gap: var(--fds-spacing-1);
     align-items: center;
+    margin-bottom: var(--fds-spacing-3);
   }
 
   .description {
     color: var(--fds-semantic-text-neutral-subtle);
     margin-top: calc(var(--fds-spacing-2) * -1);
+    margin-bottom: var(--fds-spacing-2);
   }
 
   .input {

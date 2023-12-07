@@ -12,7 +12,10 @@
 </script>
 
 {#if $selectedTab === value}
-  <div class={`tab-content ${tabContentSize}`}>
+  <div
+    class={`tab-content ${tabContentSize}`}
+    {...$$restProps}
+  >
     <slot />
   </div>
 {/if}
