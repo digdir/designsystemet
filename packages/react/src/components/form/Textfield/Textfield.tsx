@@ -91,10 +91,11 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
     const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 
-    const describedBy = cn(
-      inputProps['aria-describedby'],
-      hasCharacterLimit && characterLimitId,
-    );
+    const describedBy =
+      cn(
+        inputProps['aria-describedby'],
+        hasCharacterLimit && characterLimitId,
+      ) || undefined;
 
     return (
       <Paragraph
