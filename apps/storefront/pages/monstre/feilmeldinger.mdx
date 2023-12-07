@@ -4,7 +4,7 @@ import { Figma } from 'mdx-embed';
 import { Heading, Paragraph, Alert } from '@digdir/design-system-react';
 
 <Meta
-  title='Validering og feilmeldinger'
+  title='Feilmeldinger i ulike komponenter'
   description='Slik forteller du brukeren at noe har gått galt eller mangler.'
 />
 
@@ -12,51 +12,104 @@ export default ({ children, menu }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Validering og feilmeldinger',
-      date: '5. april 2023',
+      title: 'Feilmeldinger i ulike komponenter',
+      date: '7. desember 2023',
     }}
   />
 );
 
-Mønsteret er under arbeid og krever mer innsikt og samarbeid på tvers. Sitter du på innsikt som er relevant for validering og feilmeldinger? [Ta kontakt](mailto:designsystem@digdir.no) så kan vi dele innsikt og diskutere dette mønsteret sammen!
+Feilmeldinger er beskjeder til brukerne om at noe har gått galt. Vi må alltid vise feilmeldinger når brukerne må gjøre noe for å komme videre. Feilmeldingen skal dukke opp med en gang og i riktig kontekst. Den skal vises rett ved der brukerne må gjøre noe, for eksempel ved et felt i et skjema.
 
-## Feilmeldinger
+### Utseende på feilmeldinger
+- Plasser feilmeldingen i nærheten av feltet som er feil, og koble den til feltet med aria-describedby.
+- Bruk rød farge, grafiske virkemidler, aria-invalid og forklarende tekst. 
 
-Feilmeldinger forklarer brukeren hva som gikk galt og hvordan det kan rettes opp i.
+## Slik bruker du feilmeldinger
+Her beskriver utviklere/designere hvordan du teknisk tar den i bruk
 
-Disse retningslinjene bør følges:
+### Utseende på feilmeldinger
+- Plasser feilmeldingen i nærheten av feltet som er feil, og koble den til feltet med aria-describedby.
+- Bruk rød farge, grafiske virkemidler, aria-invalid og forklarende tekst.
 
-- Kravene for å fylle ut feltene riktig skal tydelig fremgå på forhånd uten at brukeren trenger å få noen feilmeldinger fra valideringen for å forstå dette.
-- Felt(ene) som er feil skal være lette å finne. Feilmeldingen bør plasseres i nærheten av feltet som er feil, og koblet til feltet ved hjelp av `aria-describedby`.
-- Feilmeldingen skal være lett å legge merke til og forstå. Bruk rød farge, grafiske midler, `aria-invalid` og forklarende tekst.
-- Brukere skal ikke måtte huske instruksjonene for å fikse feilen.
-- Dersom et skjema har feil når brukeren forsøker å gå videre, bør en oppsummering vise alle feilene og lenke til feltene som har feil. Feilene skal forsvinne fra oppsummeringen etterhvert som de blir utbedret.
+## Varianter av feilmeldinger
+Det finnes to hovedvarianter av feilmeldinger. En som brukes til oppsummerende feil, og en for detaljfeil inne i en tjeneste.
 
-### Formulering av feilmeldinger
+### Oppsummerende feilmeldinger
+En oppsummerende feilmelding vises på toppen av en side og viser hva som er feil et annet sted på siden, for eksempel i et skjema. Meldingen kan gjelde for en eller flere feil. Teksten i en oppsummerende feilmelding skal være lik det du ser i den detaljerte feilen (se eksempel).
+ 
+Vi plasserer oppsummerende feilmeldinger øverst på siden og gir informasjon til brukerne om hva de skal gjøre for å komme videre.
 
-Vær kort og tydelig i formuleringen av feilmeldingene og sørg for at brukeren vet hva som må gjøres for å komme videre. Å skrive “Feltet er ikke fyllt ut korrekt”, gir ikke brukeren en forklaring på hva som er feil. Gi så spesifikk informasjon som mulig om hva problemet er og gjenta gjerne nøkkelord fra label. Foreslå evt. korrigeringer, f.eks. ved ugyldige tegn eller feilstavinger.
+Pass på at
+- oppsummeringen viser alle feilmeldingene som gjelder for siden eller trinnet
+- brukerne kan gå direkte til feilene de må rette og at fokuset blir flyttet dit
+- lenkene i oppsummeringen stemmer med feilmeldingen de lenker til
+- du skriver feilmeldingen slik at den er lett å forstå, at den gir mening for brukerne når de kun leser feilmeldingen i oppsummeringen
+- hvis det er flere feil, så lenker du til den første feilen   i rekken
+- feilene forsvinner fra oppsummeringen etter hvert som brukerne fikser dem
 
-Eksempel på forklarende feilmeldinger:<br/>
+### Detaljerte feilmeldinger, for eksempel for et felt i et skjema
+Feilmeldinger som tilhører ett bestemt område på siden, skal vi plassere så nært feilen som mulig. Feltet skal vise at noe er feil, for eksempel med rød ramme. Teksten som viser hva som er feil og hva brukeren må gjøre, skal komme rett under ledeteksten og eventuelt hjelpeteksten for feltet. 
 
-- “Postnummer må ha 4 siffer”
-- "Fødselsnummer må bestå av fødselsdato (6 siffer) og personnummer (5 siffer)"
-- “Du må velge minst ett av leveringsalternativene”
-- “For å sende inn skjemaet må du bekrefte at navnet er korrekt ved å huke av i avkrysningsboksen”
+## Andre eksempler på denne komponenten
+Feilmeldinger brukes i mange komponenter og kontekster. Hvordan vi viser og utformer feilmeldingen kan variere litt fra kontekst til kontekst, se eksemplene under. 
 
-### Eksempel på feilmelding relatert til avkrysningsbokser
+### Feilmeldinger med accordion (trekkspilliste)
+[Eksempel]
 
-I dette eksempelet har brukeren forsøkt å trykke “Neste” uten å svart på obligatoriske spørsmål. Den røde boksen i bunnen viser kun når “Neste” er forsøkt klikket på.
+### Feilmeldinger med date field (datofelt)
+[Eksempel]
+
+### Feilmeldinger med drop-down menu (nedtrekkesmeny)
+[Eksempel]
+
+### Feilmeldinger med date picker (datovelger)
+[Eksempel]
+
+### Feilmeldinger med input field (inndatafelt)
+[Eksempel]
+
+### Feilmeldinger med radio buttons (alternativknapper)
+[Eksempel]
+
+### Feilmeldinger med text field (tekstfelt)
+[Eksempel]
+
+### Feilmeldinger med checkboxes (avmerkingsbokser)
+
+Her har brukeren trykket på “Neste” uten å ha svart på spørsmål som må fylles ut. Den røde boksen i bunnen vises bare hvis brukeren har trykket på “Neste”.
 
 <Figma
   title='Boop'
   url='file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=17866%3A57910&mode=design&t=3hD9xEYGKMGecg7Q-1'
 />
 
-### Plassering av feilmelding
+### Feilmeldinger når brukerne skal legge ved en fil (attach)
+[Eksempel]
 
-Ved feil i besvarelser skal feilmelding komme så raskt som mulig, men ikke før feltet forlates. Det aktuelle svarfeltet skal markeres, og brukeren skal få hjelp til å løse problemet. Brukeren skal ha adgang til å gå videre uten å rette feilen, der det er mulig. Hvis en feil skyldes kryssvalidering mellom felter skal dette forklares, begge felter skal merkes, og hvis feilen ligger på ulike skjemasider skal det lenkes til det andre feltet. I skjema som er lange, eller har flere trinn, skal feil som gjenstår på slutten vises som en liste med lenker til aktuelle felt.<br/> [Elmer 3 - 4.3](https://brukskvalitet.brreg.no/elmer3/)
 
-Øvrige kilder:<br/>
-[UU-tilsynet](https://www.uutilsynet.no/veiledning/skjema/38#formidle_feil_i_skjema)<br/>
-[NN Group - Error Messages Guidelines](https://www.nngroup.com/articles/error-message-guidelines/)<br/>
-[NN Group - How to Report Errors in Forms](https://www.nngroup.com/articles/errors-forms-design-guidelines/)
+## Retningslinjer for når du skal bruke feilmeldinger
+
+Bruk feilmeldinger til å hjelpe brukeren gjennom de stegene de skal gjennom i en tjeneste.
+
+Ikke bruk feilmeldinger til å fortelle brukerne at det er noe de ikke har rett på, eller ikke tillatelse til å gjøre. Hvis du trenger å gi denne typen informasjon, er det best å vise den på en egen side, og gi dem opplysninger om hva de kan gjøre videre.
+
+Ikke bruk feilmeldinger til å varsle brukeren om feil som ikke kan forbindes med noe med brukeren gjør, for eksempel systemfeil. Da bruker vi heller alert-komponenten.
+
+### Tekst i feilmeldinger
+
+Den viktigste jobben til teksten i en feilmelding er å hjelpe brukerne videre:
+- Tenk på målgruppen og skriv vennlig, klart og tydelig. Unngå passivt eller teknisk språk. Meldingen skal være lett å forstå. 
+- Unngå humor i feilmeldinger. Når folk møter på et problem, vil de heller ha effektive forslag til hvordan de løser det, enn humoristiske «Oops!»
+- Vær konkret. Mange feilmeldinger kan være for generelle og fortelle at «noe gikk galt». 
+- Noen ganger må vi beskrive hva feilen er før vi beskriver hva brukerne skal gjøre, men det viktigste er å vise løsningen på problemet.
+- Tilpass feilmeldingene til ulike situasjoner. Jobben til teksten er å hjelpe brukeren videre.
+- Hold feilmeldingen kort, da sparer du brukerne for tid.
+
+
+Eksempel på forklarende feilmeldinger:<br/>
+
+- “Postnummeret må ha 4 siffer”
+- "Fødselsnummeret må ha 11 siffer"
+- “Velg minst ett av leveringsalternativene”
+- “Kryss av i ruten for å bekrefte at navnet er riktig, før du sender inn skjemaet”
+
