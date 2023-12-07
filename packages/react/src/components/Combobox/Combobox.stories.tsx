@@ -130,6 +130,7 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
         Multiple
       </Switch>
       <Combobox
+        key={multiple ? 'multiple' : 'single'}
         {...args}
         value={value}
         multiple={multiple}

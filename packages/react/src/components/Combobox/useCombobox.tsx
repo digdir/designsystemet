@@ -51,21 +51,15 @@ export default function useCombobox({
   }, [children]);
 
   const getComboboxItems = () => {
+    const valuesArray = Array.from(values);
     const childrenArr = React.Children.toArray(children).filter((child) => {
       if (!React.isValidElement(child)) return false;
       if (child.type !== ComboboxItem) return false;
       return true;
     });
 
-    let activeValue;
-    for (const item of values) {
-      if (item.label === input) {
-        activeValue = item;
-        break;
-      }
-    }
-    // if input has a value that matches a value in the list, show all items
-    if (activeValue && !multiple && values.has(activeValue)) {
+    const activeValue = valuesArray.find((item) => item.label === input);
+    if (activeValue && !multiple) {
       return childrenArr;
     }
 
@@ -77,13 +71,7 @@ export default function useCombobox({
       const props = child.props as ComboboxItemProps;
 
       const value = props.value as string;
-      let item;
-      for (const valueItem of values) {
-        if (valueItem.value === value) {
-          item = valueItem;
-          break;
-        }
-      }
+      const item = valuesArray.find((item) => item.value === value);
 
       return filter(input, item?.label || '', value);
     });
@@ -93,21 +81,20 @@ export default function useCombobox({
     const childrenArr = React.Children.toArray(children);
 
     return childrenArr.filter((child) => {
-      if (!React.isValidElement(child)) return false;
-      if (child.type === ComboboxItem) return false;
-      return true;
+      return React.isValidElement(child) && child.type !== ComboboxItem;
     });
   };
 
   // Get children of type `ComboboxItem` and add index to props
   const filteredItems = getComboboxItems().map((child, index) => {
-    if (!React.isValidElement(child)) return child;
-    if (child.type !== ComboboxItem) return child;
+    if (!React.isValidElement(child) || child.type !== ComboboxItem)
+      return child;
 
     const props: ComboboxItemProps = {
       ...(child.props as ComboboxItemProps),
       index,
     } as ComboboxItemProps;
+
     return React.cloneElement(child, props);
   });
 
@@ -118,9 +105,14 @@ export default function useCombobox({
     if (input === '') return false;
 
     // check if input will show any values
-    const activeValue = Array.from(values).find((item) =>
-      filter(input, item.label, item.value),
-    );
+    let activeValue;
+    for (const item of values) {
+      if (filter(input, item.label, item.value)) {
+        activeValue = item;
+        break;
+      }
+    }
+
     if (!activeValue) return true;
 
     return false;

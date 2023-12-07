@@ -425,13 +425,13 @@ export const Combobox = ({
                   child.type === ComboboxItem
                 ) {
                   const props = {
+                    key: index,
                     ref(node: HTMLElement | null) {
                       listRef.current[index] = node;
                     },
                   };
 
                   return React.cloneElement(child, {
-                    key: index,
                     ...props,
                   });
                 }
