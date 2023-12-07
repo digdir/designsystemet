@@ -1,7 +1,7 @@
 {
   "name": "root",
   "version": "0.0.0",
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.0.2",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -104,5 +104,8 @@
     "tslib": "^2.4.1",
     "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.12.0"
   }
 }
