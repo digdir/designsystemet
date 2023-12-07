@@ -285,6 +285,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
               setValue(value);
             }}
             label='Hvor går reisen?'
+            portal={false}
           >
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             {PLACES.map((item, index) => (

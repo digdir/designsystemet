@@ -18,10 +18,6 @@ export type ComboboxItemProps = {
    */
   index?: number;
   /**
-   * The display name in chips, required if multiple is `true`
-   */
-  displayName?: string;
-  /**
    * The description of the item, will be displayed below the item text
    */
   description?: string;
