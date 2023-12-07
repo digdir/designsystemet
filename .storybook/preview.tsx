@@ -128,7 +128,6 @@ const preview: Preview = {
           'Endringslogger',
           'Felles',
           'Primitives',
-          'Experimental',
           'Altinn',
           'Avviklet',
         ],
