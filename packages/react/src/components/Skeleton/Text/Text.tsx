@@ -26,6 +26,7 @@ export const Text = ({
         [classes.hasChildren]: Boolean(children),
       })}
       style={{ width, height }}
+      aria-hidden
       {...rest}
     >
       {children}

@@ -1,13 +1,14 @@
 .skeleton {
   --animation-duration: 0.8s;
 
-  height: 1em;
-  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  height: 1.3em;
+  pointer-events: none;
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover) !important;
   animation: opacity-fade var(--animation-duration) linear infinite alternate;
 }
 
 .circle {
-  width: 1em;
+  width: 1.3em;
   border-radius: 50%;
 }
 
@@ -18,14 +19,20 @@
 
 .text {
   width: 100%;
-  border-radius: 0.5em;
-  margin-top: 0.2em;
-  margin-bottom: 0.3em;
+  height: auto;
+  transform-origin: 0 55%;
+  transform: scale(1, 0.6);
+  border-radius: 0.55em;
+}
+
+.text:empty::before {
+  content: '\00a0';
 }
 
 .hasChildren {
   width: fit-content;
-  height: auto;
+  height: fit-content;
+  color: transparent !important;
 }
 
 .hasChildren > * {

@@ -29,6 +29,7 @@ export const Circle = ({
         className,
       )}
       style={{ width, height }}
+      aria-hidden
       {...rest}
     >
       {children}
