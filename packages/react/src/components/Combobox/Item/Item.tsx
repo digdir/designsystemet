@@ -65,11 +65,7 @@ export const ComboboxItem = forwardRef<HTMLButtonElement, ComboboxItemProps>(
         }}
         onMouseEnter={() => setActiveItem(index, labelId)} // Set active index on hover
         onFocus={() => setActiveItem(index, labelId)} // Set active index on focus
-        className={cn(
-          classes.item,
-          classes[size],
-          activeIndex === index && classes.active,
-        )}
+        className={cn(classes.item, activeIndex === index && classes.active)}
         ref={ref}
       >
         {multiple && (
