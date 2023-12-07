@@ -6,15 +6,23 @@
 .adornment {
   color: var(--fds-semantic-border-neutral-default);
   background: var(--fds-semantic-surface-neutral-subtle);
-  padding: var(--fds-spacing-2);
+  padding: 9px var(--fds-spacing-4);
   border-radius: var(--fds-border_radius-medium);
   border: solid 1px var(--fds-semantic-border-neutral-default);
   box-sizing: border-box;
   display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  cursor: default;
-  flex: 1;
+}
+
+.formField.small .adornment {
+  padding: 6.5px var(--fds-spacing-3);
+}
+
+.formField.medium .adornment {
+  padding: 9px var(--fds-spacing-4);
+}
+
+.formField.large .adornment {
+  padding: 11px var(--fds-spacing-5);
 }
 
 .label {
@@ -35,7 +43,6 @@
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
-  min-height: 2.5em;
   height: 2.5em;
   width: 100%;
   appearance: none;

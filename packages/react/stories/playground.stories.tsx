@@ -29,6 +29,8 @@ export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
           hideLabel
           label='Kontroller meg!'
           size={size}
+          prefix='prefix'
+          suffix='suffix'
         />
         <Switch size={size}>Switch</Switch>
         <NativeSelect size={size}>
