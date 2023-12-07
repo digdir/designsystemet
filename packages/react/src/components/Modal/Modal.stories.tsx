@@ -7,6 +7,7 @@ import { Paragraph } from '../Typography';
 import { Divider } from '../Divider';
 
 import { Modal } from '.';
+import { NativeSelect } from '../form/NativeSelect';
 
 const decorators = [
   (Story: StoryFn) => (
@@ -154,6 +155,52 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
             autoFocus
             onChange={(e) => setInput(e.target.value)}
           />
+        </Modal.Content>
+        <Modal.Footer>
+          <Button
+            onClick={() => {
+              window.alert(`Du har sendt inn skjema med navn: ${input}`);
+              modalRef.current?.close();
+            }}
+          >
+            Send inn skjema
+          </Button>
+          <Button
+            variant='secondary'
+            onClick={() => modalRef.current?.close()}
+          >
+            Avbryt
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export const ModalWithSelect: StoryFn<typeof Modal> = () => {
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const [input, setInput] = useState('');
+
+  return (
+    <>
+      <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
+      <Modal
+        ref={modalRef}
+        onClose={() => setInput('')}
+        style={{ maxWidth: '1200px' }}
+      >
+        <Modal.Header>Modal med skjema</Modal.Header>
+        <Modal.Content>
+          <NativeSelect>
+            <option value='everest'>Mount Everest</option>
+            <option value='aconcagua'>Aconcagua</option>
+            <option value='denali'>Denali</option>
+            <option value='kilimanjaro'>Kilimanjaro</option>
+            <option value='elbrus'>Elbrus</option>
+            <option value='vinson'>Mount Vinson</option>
+            <option value='puncakjaya'>Puncak Jaya</option>
+            <option value='kosciuszko'>Mount Kosciuszko</option>
+          </NativeSelect>
         </Modal.Content>
         <Modal.Footer>
           <Button
