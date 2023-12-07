@@ -2,3 +2,7 @@
   justify-content: start;
   padding: 0 var(--fds-spacing-4);
 }
+
+.listItem {
+  list-style: none;
+}
