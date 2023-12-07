@@ -27,6 +27,7 @@ import { Paragraph, Heading } from './components/Typography';
 // @ts-ignore
 import {
   Textfield,
+  Textarea,
   Radio,
   RadioGroup,
   Checkbox,
@@ -51,6 +52,7 @@ export {
   Heading,
   Tag,
   Textfield,
+  Textarea,
   Accordion,
   AccordionContent,
   AccordionHeader,
