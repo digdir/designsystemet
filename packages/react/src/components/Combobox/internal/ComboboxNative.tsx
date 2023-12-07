@@ -16,7 +16,7 @@ export const ComboboxNative = () => {
       multiple={multiple}
       style={{ display: 'none' }}
       value={activeValues.map((item) => item.value)}
-      readOnly
+      onChange={() => {}}
     >
       {activeValues.map((item) => (
         <option
