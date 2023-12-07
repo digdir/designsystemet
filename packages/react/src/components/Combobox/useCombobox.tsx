@@ -57,7 +57,13 @@ export default function useCombobox({
       return true;
     });
 
-    const activeValue = Array.from(values).find((item) => item.label === input);
+    let activeValue;
+    for (const item of values) {
+      if (item.label === input) {
+        activeValue = item;
+        break;
+      }
+    }
     // if input has a value that matches a value in the list, show all items
     if (activeValue && !multiple && values.has(activeValue)) {
       return childrenArr;
@@ -71,7 +77,13 @@ export default function useCombobox({
       const props = child.props as ComboboxItemProps;
 
       const value = props.value as string;
-      const item = Array.from(values).find((item) => item.value === value);
+      let item;
+      for (const valueItem of values) {
+        if (valueItem.value === value) {
+          item = valueItem;
+          break;
+        }
+      }
 
       return filter(input, item?.label || '', value);
     });
