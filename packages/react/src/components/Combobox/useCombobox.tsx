@@ -23,7 +23,7 @@ export default function useCombobox({
   filter,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
-  const [values, setValues] = useState<ValueItemType[]>([]);
+  const [values, setValues] = useState<Set<ValueItemType>>(new Set([]));
 
   // Update all values
   useEffect(() => {
@@ -46,7 +46,8 @@ export default function useCombobox({
         });
       }
     });
-    setValues(allValues);
+    const allValuesSet = new Set(allValues);
+    setValues(allValuesSet);
   }, [children]);
 
   const getComboboxItems = () => {
@@ -56,13 +57,9 @@ export default function useCombobox({
       return true;
     });
 
-    const activeValue = values.find((item) => item.label === input);
+    const activeValue = Array.from(values).find((item) => item.label === input);
     // if input has a value that matches a value in the list, show all items
-    if (
-      activeValue &&
-      !multiple &&
-      values.find((item) => item === activeValue)
-    ) {
+    if (activeValue && !multiple && values.has(activeValue)) {
       return childrenArr;
     }
 
@@ -74,7 +71,7 @@ export default function useCombobox({
       const props = child.props as ComboboxItemProps;
 
       const value = props.value as string;
-      const item = values.find((item) => item.value === value);
+      const item = Array.from(values).find((item) => item.value === value);
 
       return filter(input, item?.label || '', value);
     });
@@ -109,7 +106,7 @@ export default function useCombobox({
     if (input === '') return false;
 
     // check if input will show any values
-    const activeValue = values.find((item) =>
+    const activeValue = Array.from(values).find((item) =>
       filter(input, item.label, item.value),
     );
     if (!activeValue) return true;
