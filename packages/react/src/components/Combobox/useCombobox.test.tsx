@@ -49,6 +49,9 @@ describe('useCombobox', () => {
       inputValue: '',
       multiple: false,
       activeOptions: [],
+      listRef: {
+        current: [],
+      },
     });
 
     expect(result.current.open).toBe(false);
@@ -63,6 +66,9 @@ describe('useCombobox', () => {
       inputValue: '3',
       multiple: false,
       activeOptions: [],
+      listRef: {
+        current: [],
+      },
     });
 
     expect(result.current.values.length).toBe(3);
@@ -81,6 +87,9 @@ describe('useCombobox', () => {
           label: 'Oslo',
         },
       ],
+      listRef: {
+        current: [],
+      },
     });
 
     expect(result.current.values.length).toBe(3);
@@ -99,6 +108,9 @@ describe('useCombobox', () => {
           label: 'Oslo',
         },
       ],
+      listRef: {
+        current: [],
+      },
     });
 
     expect(result.current.values.length).toBe(3);
@@ -112,6 +124,9 @@ describe('useCombobox', () => {
       inputValue: 'l',
       multiple: false,
       activeOptions: [],
+      listRef: {
+        current: [],
+      },
     });
 
     expect(result.current.values.length).toBe(3);
@@ -130,6 +145,9 @@ describe('useCombobox', () => {
           label: 'Oslo',
         },
       ],
+      listRef: {
+        current: [],
+      },
     });
 
     expect(result.current.values.length).toBe(3);
