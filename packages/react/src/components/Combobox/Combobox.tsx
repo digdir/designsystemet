@@ -247,6 +247,13 @@ export const Combobox = ({
     } else {
       setActiveOptions([item]);
       setInputValue(item?.label || '');
+      // move cursor to the end of the input
+      setTimeout(() => {
+        inputRef.current?.setSelectionRange(
+          item?.label?.length || 0,
+          item?.label?.length || 0,
+        );
+      }, 0);
     }
 
     !multiple && setOpen(false);
