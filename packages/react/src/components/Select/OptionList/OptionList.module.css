@@ -22,6 +22,7 @@
   border: var(--option_list-border);
   box-shadow: var(--option_list-shadow);
   box-sizing: border-box;
+  margin: 0;
   overflow-y: auto;
   padding: 0;
   position: absolute;
