@@ -7,7 +7,7 @@ export const color = [
   {
     value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
       value: '{colors.white}',
@@ -18,12 +18,12 @@ export const color = [
     path: ['semantic', 'background', 'default'],
   },
   {
-    value: '#f4f5f6',
+    value: '$brand.grey.200',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.100}',
+      value: '{brand.grey.100}',
       type: 'color',
     },
     name: '--fds-semantic-background-subtle',
@@ -33,7 +33,7 @@ export const color = [
   {
     value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
       value: '{colors.white}',
@@ -44,12 +44,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'default'],
   },
   {
-    value: '#e6eff8',
+    value: '#B1B6CD',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
+      value: '{brand.alt1.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-neutral-selected',
@@ -57,12 +57,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'selected'],
   },
   {
-    value: '#f4f5f6',
+    value: '#EFF0EF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.100}',
+      value: '{brand.grey.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-neutral-subtle',
@@ -70,12 +70,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'subtle'],
   },
   {
-    value: '#e9eaec',
+    value: '#DFE0DF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.200}',
+      value: '{brand.grey.500}',
       type: 'color',
     },
     name: '--fds-semantic-surface-neutral-subtle-hover',
@@ -83,12 +83,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'subtle-hover'],
   },
   {
-    value: '#68707c',
+    value: '#7B8C98',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.600}',
+      value: '{brand.black.500}',
       type: 'color',
     },
     name: '--fds-semantic-surface-neutral-dark',
@@ -96,12 +96,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'dark'],
   },
   {
-    value: '#4b5563',
+    value: '#43545F',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.700}',
+      value: '{brand.black.700}',
       type: 'color',
     },
     name: '--fds-semantic-surface-neutral-dark-hover',
@@ -109,12 +109,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'dark-hover'],
   },
   {
-    value: '#1e2b3c',
+    value: '#000000',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
+      value: '{brand.black.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-neutral-inverted',
@@ -122,12 +122,12 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'inverted'],
   },
   {
-    value: '#e6eff8',
+    value: '#D6DAEF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
+      value: '{brand.alt2.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-subtle',
@@ -135,12 +135,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'subtle'],
   },
   {
-    value: '#b3d0ea',
+    value: '#71799D',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
+      value: '{brand.alt1.300}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-subtle-hover',
@@ -148,12 +148,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'subtle-hover'],
   },
   {
-    value: '#0062ba',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-default',
@@ -161,12 +161,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'default'],
   },
   {
-    value: '#004e95',
+    value: '#00315d',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.800}',
+      value: '{colors.blue.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-hover',
@@ -177,7 +177,7 @@ export const color = [
     value: '#00315d',
     type: 'color',
     description: 'Standard farge for handlinger',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
       value: '{colors.blue.900}',
@@ -191,7 +191,7 @@ export const color = [
   {
     value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
       value: '{colors.white}',
@@ -202,12 +202,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'no_fill'],
   },
   {
-    value: '#e6eff8',
+    value: '#B1B6CD',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
+      value: '{brand.alt1.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-no_fill-hover',
@@ -215,12 +215,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'no_fill-hover'],
   },
   {
-    value: '#b3d0ea',
+    value: '#71799D',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
+      value: '{brand.alt1.400}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-no_fill-active',
@@ -228,12 +228,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'no_fill-active'],
   },
   {
-    value: '#0062ba',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-checked',
@@ -246,7 +246,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.100}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-first-subtle',
@@ -254,12 +254,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'subtle'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.200}',
+      value: '{brand.alt1.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-first-subtle-hover',
@@ -280,12 +280,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'default'],
   },
   {
-    value: '#00244E',
+    value: '#71799D',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.500}',
+      value: '{brand.alt1.600}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-first-hover',
@@ -293,13 +293,13 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'hover'],
   },
   {
-    value: '#F39200',
+    value: '#3C4A71',
     type: 'color',
     description: 'Standard farge for handlinger',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.900}',
+      value: '{brand.alt1.700}',
       type: 'color',
       description: 'Standard farge for handlinger',
     },
@@ -321,7 +321,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -334,12 +334,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill-hover'],
   },
   {
-    value: '#00244E',
+    value: '#71799D',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.200}',
+      value: '{brand.alt1.400}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-first-no_fill-active',
@@ -347,12 +347,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill-active'],
   },
   {
-    value: '#4c76ba',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.100}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-subtle',
@@ -360,12 +360,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'subtle'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#D6DAEF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.200}',
+      value: '{brand.alt2.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-subtle-hover',
@@ -373,12 +373,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'subtle-hover'],
   },
   {
-    value: '#4c76ba',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.500}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-default',
@@ -386,12 +386,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'default'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.700}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-hover',
@@ -399,13 +399,13 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'hover'],
   },
   {
-    value: '#4c76ba',
+    value: '#00244E',
     type: 'color',
     description: 'Standard farge for handlinger',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt1.800}',
       type: 'color',
       description: 'Standard farge for handlinger',
     },
@@ -427,12 +427,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'no_fill'],
   },
   {
-    value: '#00244E',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.100}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-no_fill-hover',
@@ -440,12 +440,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'no_fill-hover'],
   },
   {
-    value: '#00244E',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.200}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-no_fill-active',
@@ -728,10 +728,10 @@ export const color = [
   {
     value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#ffffff',
+      value: '{colors.white}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-default',
@@ -739,12 +739,12 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'default'],
   },
   {
-    value: '#ffffffe6',
+    value: '$brand.grey.200',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#ffffffe6',
+      value: '{brand.grey.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-hover',
@@ -752,12 +752,12 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'hover'],
   },
   {
-    value: '#ffffffcc',
+    value: '#EFF0EF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#ffffffcc',
+      value: '{brand.grey.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-active',
@@ -765,12 +765,12 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'active'],
   },
   {
-    value: '#ffffff00',
+    value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#ffffff00',
+      value: '{colors.white}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-no_fill',
@@ -778,12 +778,12 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill'],
   },
   {
-    value: '#ffffff1a',
+    value: '$brand.grey.200',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#ffffff1a',
+      value: '{brand.grey.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-no_fill-hover',
@@ -791,12 +791,12 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill-hover'],
   },
   {
-    value: '#ffffff33',
+    value: '#EFF0EF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#ffffff33',
+      value: '{brand.grey.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-no_fill-active',
@@ -804,12 +804,12 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill-active'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.200}',
+      value: '{brand.alt1.50}',
       type: 'color',
     },
     name: '--fds-semantic-surface-first-light',
@@ -817,12 +817,12 @@ export const color = [
     path: ['semantic', 'surface', 'first', 'light'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.300}',
+      value: '{brand.alt1.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-first-light-hover',
@@ -830,12 +830,12 @@ export const color = [
     path: ['semantic', 'surface', 'first', 'light-hover'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.400}',
+      value: '{brand.alt1.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-first-light-active',
@@ -848,7 +848,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.800}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-first-dark',
@@ -856,12 +856,12 @@ export const color = [
     path: ['semantic', 'surface', 'first', 'dark'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#D6DAEF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.200}',
+      value: '{brand.alt2.100}',
       type: 'color',
     },
     name: '--fds-semantic-surface-second-light',
@@ -869,7 +869,7 @@ export const color = [
     path: ['semantic', 'surface', 'second', 'light'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#AEB6DC',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -882,20 +882,7 @@ export const color = [
     path: ['semantic', 'surface', 'second', 'light-hover'],
   },
   {
-    value: '$brand.alt2.500',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt2.400}',
-      type: 'color',
-    },
-    name: '--fds-semantic-surface-second-light-active',
-    attributes: {},
-    path: ['semantic', 'surface', 'second', 'light-active'],
-  },
-  {
-    value: '#4c76ba',
+    value: '#AEB6DC',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -903,12 +890,25 @@ export const color = [
       value: '{brand.alt2.500}',
       type: 'color',
     },
+    name: '--fds-semantic-surface-second-light-active',
+    attributes: {},
+    path: ['semantic', 'surface', 'second', 'light-active'],
+  },
+  {
+    value: '#8595CA',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt2.700}',
+      type: 'color',
+    },
     name: '--fds-semantic-surface-second-dark',
     attributes: {},
     path: ['semantic', 'surface', 'second', 'dark'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '#F7E5C8',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -921,7 +921,7 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '$brand.alt3.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -934,7 +934,7 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light-hover'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '$brand.alt3.500',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -947,12 +947,12 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light-active'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '#F39200',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.800}',
+      value: '{brand.alt3.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-third-dark',
@@ -973,12 +973,12 @@ export const color = [
     path: ['semantic', 'border', 'info', 'default'],
   },
   {
-    value: '#b3d0ea',
+    value: '#B1B6CD',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
+      value: '{brand.alt1.200}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-subtle',
@@ -986,12 +986,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'subtle'],
   },
   {
-    value: '#66a1d6',
+    value: '#71799D',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.400}',
+      value: '{brand.alt1.300}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-subtle-hover',
@@ -999,12 +999,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'subtle-hover'],
   },
   {
-    value: '#0062ba',
+    value: '#71799D',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt1.500}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-default',
@@ -1012,12 +1012,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'default'],
   },
   {
-    value: '#0062ba',
+    value: '#3C4A71',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-hover',
@@ -1025,12 +1025,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-active',
@@ -1038,12 +1038,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'active'],
   },
   {
-    value: '#00315d',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-dark',
@@ -1051,12 +1051,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'dark'],
   },
   {
-    value: '#0062ba',
+    value: '#4C76BA',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-dark-hover',
@@ -1064,25 +1064,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'dark-hover'],
   },
   {
-    value: '#b3d0ea',
+    value: '#D6DAEF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
-      type: 'color',
-    },
-    name: '--fds-semantic-border-action-first-subtle',
-    attributes: {},
-    path: ['semantic', 'border', 'action', 'first', 'subtle'],
-  },
-  {
-    value: '#66a1d6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{colors.blue.400}',
+      value: '{brand.alt2.200}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-first-subtle-hover',
@@ -1090,12 +1077,25 @@ export const color = [
     path: ['semantic', 'border', 'action', 'first', 'subtle-hover'],
   },
   {
-    value: '#0062ba',
+    value: '#D6DAEF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt2.100}',
+      type: 'color',
+    },
+    name: '--fds-semantic-border-action-first-subtle',
+    attributes: {},
+    path: ['semantic', 'border', 'action', 'first', 'subtle'],
+  },
+  {
+    value: '#00244E',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-first-default',
@@ -1103,12 +1103,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'first', 'default'],
   },
   {
-    value: '#004e95',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.800}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-first-hover',
@@ -1116,12 +1116,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'first', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-first-active',
@@ -1129,38 +1129,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'first', 'active'],
   },
   {
-    value: '#e9eaec',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.200}',
-      type: 'color',
-    },
-    name: '--fds-semantic-border-action-second-subtle',
-    attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'subtle'],
-  },
-  {
-    value: '#d2d5d8',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{colors.grey.300}',
-      type: 'color',
-    },
-    name: '--fds-semantic-border-action-second-subtle-hover',
-    attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'subtle-hover'],
-  },
-  {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-second-default',
@@ -1168,12 +1142,38 @@ export const color = [
     path: ['semantic', 'border', 'action', 'second', 'default'],
   },
   {
-    value: '#00315d',
+    value: '#D6DAEF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt2.200}',
+      type: 'color',
+    },
+    name: '--fds-semantic-border-action-second-subtle-hover',
+    attributes: {},
+    path: ['semantic', 'border', 'action', 'second', 'subtle-hover'],
+  },
+  {
+    value: '#D6DAEF',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt2.100}',
+      type: 'color',
+    },
+    name: '--fds-semantic-border-action-second-subtle',
+    attributes: {},
+    path: ['semantic', 'border', 'action', 'second', 'subtle'],
+  },
+  {
+    value: '#4C76BA',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-second-hover',
@@ -1181,12 +1181,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'second', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-action-second-active',
@@ -1194,12 +1194,12 @@ export const color = [
     path: ['semantic', 'border', 'action', 'second', 'active'],
   },
   {
-    value: '#68707c',
+    value: '#BFC2C0',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.600}',
+      value: '{brand.grey.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-neutral-default',
@@ -1207,12 +1207,12 @@ export const color = [
     path: ['semantic', 'border', 'neutral', 'default'],
   },
   {
-    value: '#d2d5d8',
+    value: '#CFD1CF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.300}',
+      value: '{brand.grey.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-neutral-subtle',
@@ -1220,12 +1220,12 @@ export const color = [
     path: ['semantic', 'border', 'neutral', 'subtle'],
   },
   {
-    value: '#1e2b3c',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-neutral-strong',
@@ -1233,12 +1233,12 @@ export const color = [
     path: ['semantic', 'border', 'neutral', 'strong'],
   },
   {
-    value: '#bcbfc5',
+    value: '#DFE0DF',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.400}',
+      value: '{brand.grey.500}',
       type: 'color',
     },
     name: '--fds-semantic-border-neutral-divider',
@@ -1376,7 +1376,7 @@ export const color = [
     path: ['semantic', 'border', 'focus', 'outline'],
   },
   {
-    value: '#1e2b3c',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -1433,7 +1433,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.600}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-first-default',
@@ -1446,7 +1446,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.700}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-first-hover',
@@ -1467,12 +1467,12 @@ export const color = [
     path: ['semantic', 'border', 'first', 'active'],
   },
   {
-    value: '#4c76ba',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.600}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-second-default',
@@ -1480,12 +1480,12 @@ export const color = [
     path: ['semantic', 'border', 'second', 'default'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.700}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-second-hover',
@@ -1493,12 +1493,12 @@ export const color = [
     path: ['semantic', 'border', 'second', 'hover'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.800}',
+      value: '{brand.alt1.800}',
       type: 'color',
     },
     name: '--fds-semantic-border-second-active',
@@ -1506,12 +1506,12 @@ export const color = [
     path: ['semantic', 'border', 'second', 'active'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '#F39200',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.600}',
+      value: '{brand.alt3.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-third-default',
@@ -1519,12 +1519,12 @@ export const color = [
     path: ['semantic', 'border', 'third', 'default'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '#F39200',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.700}',
+      value: '{brand.alt3.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-third-hover',
@@ -1532,12 +1532,12 @@ export const color = [
     path: ['semantic', 'border', 'third', 'hover'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '#F39200',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.800}',
+      value: '{brand.alt3.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-third-active',
@@ -1610,12 +1610,12 @@ export const color = [
     path: ['semantic', 'text', 'success', 'on_success_subtle'],
   },
   {
-    value: '#1e2b3c',
+    value: '$brand.black.900',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
+      value: '{brand.black.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-neutral-default',
@@ -1623,12 +1623,12 @@ export const color = [
     path: ['semantic', 'text', 'neutral', 'default'],
   },
   {
-    value: '#4b5563',
+    value: '#43545F',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.grey.700}',
+      value: '{brand.black.700}',
       type: 'color',
     },
     name: '--fds-semantic-text-neutral-subtle',
@@ -1638,7 +1638,7 @@ export const color = [
   {
     value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
       value: '{colors.white}',
@@ -1649,12 +1649,12 @@ export const color = [
     path: ['semantic', 'text', 'neutral', 'on_inverted'],
   },
   {
-    value: '#0062ba',
+    value: '#4C76BA',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-default',
@@ -1662,12 +1662,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'default'],
   },
   {
-    value: '#004e95',
+    value: '#3C4A71',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#004e95',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-hover',
@@ -1675,12 +1675,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#00315d',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-active',
@@ -1690,7 +1690,7 @@ export const color = [
   {
     value: '#ffffff',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
       value: '{colors.white}',
@@ -1701,12 +1701,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'on_action'],
   },
   {
-    value: '#0062ba',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-first-default',
@@ -1714,12 +1714,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'first', 'default'],
   },
   {
-    value: '#004e95',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#004e95',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-first-hover',
@@ -1727,12 +1727,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'first', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#00315d',
+      value: '{brand.alt1.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-first-active',
@@ -1753,12 +1753,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'first', 'on_action'],
   },
   {
-    value: '#00315d',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-second-default',
@@ -1766,12 +1766,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'second', 'default'],
   },
   {
-    value: '#00315d',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-second-hover',
@@ -1779,12 +1779,12 @@ export const color = [
     path: ['semantic', 'text', 'action', 'second', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#00244E',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt1.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-second-active',
@@ -1922,13 +1922,13 @@ export const color = [
     path: ['semantic', 'text', 'visited', 'default'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.9',
+          value: '0.5',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -1938,13 +1938,13 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.900}',
+      value: '{brand.alt1.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.9',
+            value: '0.5',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -1952,152 +1952,12 @@ export const color = [
         },
       },
     },
-    name: '--fds-brand-alt1-100',
+    name: '--fds-brand-alt1-50',
     attributes: {},
-    path: ['brand', 'alt1', '100'],
+    path: ['brand', 'alt1', '50'],
   },
   {
-    value: '#00244E',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.8',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt1.900}',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.8',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt1-200',
-    attributes: {},
-    path: ['brand', 'alt1', '200'],
-  },
-  {
-    value: '#00244E',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.6',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt1.900}',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.6',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt1-300',
-    attributes: {},
-    path: ['brand', 'alt1', '300'],
-  },
-  {
-    value: '#00244E',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.55',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt1.900}',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.55',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt1-400',
-    attributes: {},
-    path: ['brand', 'alt1', '400'],
-  },
-  {
-    value: '#00244E',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.4',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt1.900}',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.4',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt1-500',
-    attributes: {},
-    path: ['brand', 'alt1', '500'],
-  },
-  {
-    value: '#00244E',
+    value: '#B1B6CD',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2113,7 +1973,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.900}',
+      value: '{brand.alt1.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2127,18 +1987,31 @@ export const color = [
         },
       },
     },
-    name: '--fds-brand-alt1-600',
+    name: '--fds-brand-alt1-100',
     attributes: {},
-    path: ['brand', 'alt1', '600'],
+    path: ['brand', 'alt1', '100'],
   },
   {
-    value: '#00244E',
+    value: '#B1B6CD',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#B1B6CD',
+      type: 'color',
+    },
+    name: '--fds-brand-alt1-200',
+    attributes: {},
+    path: ['brand', 'alt1', '200'],
+  },
+  {
+    value: '#71799D',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.2',
+          value: '0.3',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -2148,19 +2021,115 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.900}',
+      value: '{brand.alt1.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.2',
+            value: '0.3',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
           },
         },
       },
+    },
+    name: '--fds-brand-alt1-300',
+    attributes: {},
+    path: ['brand', 'alt1', '300'],
+  },
+  {
+    value: '#71799D',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt1.500}',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt1-400',
+    attributes: {},
+    path: ['brand', 'alt1', '400'],
+  },
+  {
+    value: '#71799D',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#71799D',
+      type: 'color',
+    },
+    name: '--fds-brand-alt1-500',
+    attributes: {},
+    path: ['brand', 'alt1', '500'],
+  },
+  {
+    value: '#71799D',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'darken',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt1.500}',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'darken',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt1-600',
+    attributes: {},
+    path: ['brand', 'alt1', '600'],
+  },
+  {
+    value: '#3C4A71',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#3C4A71',
+      type: 'color',
     },
     name: '--fds-brand-alt1-700',
     attributes: {},
@@ -2215,13 +2184,13 @@ export const color = [
     path: ['brand', 'alt1', '900'],
   },
   {
-    value: '#4c76ba',
+    value: '#D6DAEF',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.9',
+          value: '0.5',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -2231,13 +2200,48 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.500}',
+      value: '{brand.alt2.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.9',
+            value: '0.5',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt2-50',
+    attributes: {},
+    path: ['brand', 'alt2', '50'],
+  },
+  {
+    value: '#D6DAEF',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '{brand.alt2.200}',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2250,48 +2254,26 @@ export const color = [
     path: ['brand', 'alt2', '100'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#D6DAEF',
     type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.7',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.500',
+      value: '#D6DAEF',
       type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.7',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
     },
     name: '--fds-brand-alt2-200',
     attributes: {},
     path: ['brand', 'alt2', '200'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#AEB6DC',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.5',
+          value: '0.3',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -2301,13 +2283,13 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.500',
+      value: '{brand.alt2.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.5',
+            value: '0.3',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2320,13 +2302,13 @@ export const color = [
     path: ['brand', 'alt2', '300'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#AEB6DC',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
           type: 'lighten',
-          value: '0.3',
+          value: '0.2',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -2336,13 +2318,13 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.500',
+      value: '{brand.alt2.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
-            value: '0.3',
+            value: '0.2',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2355,12 +2337,12 @@ export const color = [
     path: ['brand', 'alt2', '400'],
   },
   {
-    value: '#4c76ba',
+    value: '#AEB6DC',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#4c76ba',
+      value: '#AEB6DC',
       type: 'color',
     },
     name: '--fds-brand-alt2-500',
@@ -2368,13 +2350,13 @@ export const color = [
     path: ['brand', 'alt2', '500'],
   },
   {
-    value: '#4c76ba',
+    value: '#8595CA',
     type: 'color',
     $extensions: {
       'studio.tokens': {
         modify: {
-          type: 'darken',
-          value: '0.1',
+          type: 'lighten',
+          value: '0.2',
           space: 'lch',
           filePath: '../../design-tokens/Brand/STAF.json',
           isSource: false,
@@ -2384,13 +2366,13 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.500}',
+      value: '{brand.alt2.700}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
-            type: 'darken',
-            value: '0.1',
+            type: 'lighten',
+            value: '0.2',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2403,357 +2385,20 @@ export const color = [
     path: ['brand', 'alt2', '600'],
   },
   {
-    value: '$brand.alt2.500',
+    value: '#8595CA',
     type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'darken',
-          value: '0.2',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt2.500',
+      value: '#8595CA',
       type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'darken',
-            value: '0.2',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
     },
     name: '--fds-brand-alt2-700',
     attributes: {},
     path: ['brand', 'alt2', '700'],
   },
   {
-    value: '$brand.alt2.500',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'darken',
-          value: '0.3',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt2.500',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'darken',
-            value: '0.3',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt2-800',
-    attributes: {},
-    path: ['brand', 'alt2', '800'],
-  },
-  {
-    value: '#4c76ba',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'darken',
-          value: '0.4',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '{brand.alt2.500}',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'darken',
-            value: '0.4',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt2-900',
-    attributes: {},
-    path: ['brand', 'alt2', '900'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.9',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.9',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-100',
-    attributes: {},
-    path: ['brand', 'alt3', '100'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.8',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.8',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-200',
-    attributes: {},
-    path: ['brand', 'alt3', '200'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.6',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.6',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-300',
-    attributes: {},
-    path: ['brand', 'alt3', '300'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.5',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.5',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-400',
-    attributes: {},
-    path: ['brand', 'alt3', '400'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.4',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.4',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-500',
-    attributes: {},
-    path: ['brand', 'alt3', '500'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.3',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.3',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-600',
-    attributes: {},
-    path: ['brand', 'alt3', '600'],
-  },
-  {
-    value: '$brand.alt3.900',
-    type: 'color',
-    $extensions: {
-      'studio.tokens': {
-        modify: {
-          type: 'lighten',
-          value: '0.2',
-          space: 'lch',
-          filePath: '../../design-tokens/Brand/STAF.json',
-          isSource: false,
-        },
-      },
-    },
-    filePath: '../../design-tokens/Brand/STAF.json',
-    isSource: false,
-    original: {
-      value: '$brand.alt3.900',
-      type: 'color',
-      $extensions: {
-        'studio.tokens': {
-          modify: {
-            type: 'lighten',
-            value: '0.2',
-            space: 'lch',
-            filePath: '../../design-tokens/Brand/STAF.json',
-            isSource: false,
-          },
-        },
-      },
-    },
-    name: '--fds-brand-alt3-700',
-    attributes: {},
-    path: ['brand', 'alt3', '700'],
-  },
-  {
-    value: '$brand.alt3.900',
+    value: '#4C76BA',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2769,13 +2414,275 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.900',
+      value: '{brand.alt2.900}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
           modify: {
             type: 'lighten',
             value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt2-800',
+    attributes: {},
+    path: ['brand', 'alt2', '800'],
+  },
+  {
+    value: '#4C76BA',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#4C76BA',
+      type: 'color',
+    },
+    name: '--fds-brand-alt2-900',
+    attributes: {},
+    path: ['brand', 'alt2', '900'],
+  },
+  {
+    value: '$brand.alt3.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt3-50',
+    attributes: {},
+    path: ['brand', 'alt3', '50'],
+  },
+  {
+    value: '$brand.alt3.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt3-100',
+    attributes: {},
+    path: ['brand', 'alt3', '100'],
+  },
+  {
+    value: '#F7E5C8',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#F7E5C8',
+      type: 'color',
+    },
+    name: '--fds-brand-alt3-200',
+    attributes: {},
+    path: ['brand', 'alt3', '200'],
+  },
+  {
+    value: '$brand.alt3.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt3-300',
+    attributes: {},
+    path: ['brand', 'alt3', '300'],
+  },
+  {
+    value: '$brand.alt3.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt3-400',
+    attributes: {},
+    path: ['brand', 'alt3', '400'],
+  },
+  {
+    value: '#EFCA8F',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#EFCA8F',
+      type: 'color',
+    },
+    name: '--fds-brand-alt3-500',
+    attributes: {},
+    path: ['brand', 'alt3', '500'],
+  },
+  {
+    value: '$brand.alt3.700',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.700',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-alt3-600',
+    attributes: {},
+    path: ['brand', 'alt3', '600'],
+  },
+  {
+    value: '#E6AE56',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#E6AE56',
+      type: 'color',
+    },
+    name: '--fds-brand-alt3-700',
+    attributes: {},
+    path: ['brand', 'alt3', '700'],
+  },
+  {
+    value: '$brand.alt3.900',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.alt3.900',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
             space: 'lch',
             filePath: '../../design-tokens/Brand/STAF.json',
             isSource: false,
@@ -2799,6 +2706,1054 @@ export const color = [
     name: '--fds-brand-alt3-900',
     attributes: {},
     path: ['brand', 'alt3', '900'],
+  },
+  {
+    value: '$brand.turkis.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.turkis.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-turkis-50',
+    attributes: {},
+    path: ['brand', 'turkis', '50'],
+  },
+  {
+    value: '$brand.turkis.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.turkis.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-turkis-100',
+    attributes: {},
+    path: ['brand', 'turkis', '100'],
+  },
+  {
+    value: '#DBEBEC',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#DBEBEC',
+      type: 'color',
+    },
+    name: '--fds-brand-turkis-200',
+    attributes: {},
+    path: ['brand', 'turkis', '200'],
+  },
+  {
+    value: '$brand.turkis.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.turkis.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-turkis-300',
+    attributes: {},
+    path: ['brand', 'turkis', '300'],
+  },
+  {
+    value: '$brand.turkis.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.turkis.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-turkis-400',
+    attributes: {},
+    path: ['brand', 'turkis', '400'],
+  },
+  {
+    value: '#B3D6D9',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#B3D6D9',
+      type: 'color',
+    },
+    name: '--fds-brand-turkis-500',
+    attributes: {},
+    path: ['brand', 'turkis', '500'],
+  },
+  {
+    value: '$brand.turkis.700',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.turkis.700',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-turkis-600',
+    attributes: {},
+    path: ['brand', 'turkis', '600'],
+  },
+  {
+    value: '#87C0C4',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#87C0C4',
+      type: 'color',
+    },
+    name: '--fds-brand-turkis-700',
+    attributes: {},
+    path: ['brand', 'turkis', '700'],
+  },
+  {
+    value: '$brand.turkis.900',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.turkis.900',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-turkis-800',
+    attributes: {},
+    path: ['brand', 'turkis', '800'],
+  },
+  {
+    value: '#00ADBA',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#00ADBA',
+      type: 'color',
+    },
+    name: '--fds-brand-turkis-900',
+    attributes: {},
+    path: ['brand', 'turkis', '900'],
+  },
+  {
+    value: '$brand.red.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.red.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-red-50',
+    attributes: {},
+    path: ['brand', 'red', '50'],
+  },
+  {
+    value: '$brand.red.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.red.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-red-100',
+    attributes: {},
+    path: ['brand', 'red', '100'],
+  },
+  {
+    value: '#E8C9BC',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#E8C9BC',
+      type: 'color',
+    },
+    name: '--fds-brand-red-200',
+    attributes: {},
+    path: ['brand', 'red', '200'],
+  },
+  {
+    value: '$brand.red.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.red.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-red-300',
+    attributes: {},
+    path: ['brand', 'red', '300'],
+  },
+  {
+    value: '$brand.red.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.red.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-red-400',
+    attributes: {},
+    path: ['brand', 'red', '400'],
+  },
+  {
+    value: '#D1917C',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#D1917C',
+      type: 'color',
+    },
+    name: '--fds-brand-red-500',
+    attributes: {},
+    path: ['brand', 'red', '500'],
+  },
+  {
+    value: '$brand.red.700',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.red.700',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-red-600',
+    attributes: {},
+    path: ['brand', 'red', '600'],
+  },
+  {
+    value: '#BD5749',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#BD5749',
+      type: 'color',
+    },
+    name: '--fds-brand-red-700',
+    attributes: {},
+    path: ['brand', 'red', '700'],
+  },
+  {
+    value: '$brand.red.900',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.red.900',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-red-800',
+    attributes: {},
+    path: ['brand', 'red', '800'],
+  },
+  {
+    value: '#C90B1C',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#C90B1C',
+      type: 'color',
+    },
+    name: '--fds-brand-red-900',
+    attributes: {},
+    path: ['brand', 'red', '900'],
+  },
+  {
+    value: '$brand.black.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.black.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-black-50',
+    attributes: {},
+    path: ['brand', 'black', '50'],
+  },
+  {
+    value: '$brand.black.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.black.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-black-100',
+    attributes: {},
+    path: ['brand', 'black', '100'],
+  },
+  {
+    value: '#BAC4CD',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#BAC4CD',
+      type: 'color',
+    },
+    name: '--fds-brand-black-200',
+    attributes: {},
+    path: ['brand', 'black', '200'],
+  },
+  {
+    value: '$brand.black.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.black.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-black-300',
+    attributes: {},
+    path: ['brand', 'black', '300'],
+  },
+  {
+    value: '$brand.black.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.black.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-black-400',
+    attributes: {},
+    path: ['brand', 'black', '400'],
+  },
+  {
+    value: '#7B8C98',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#7B8C98',
+      type: 'color',
+    },
+    name: '--fds-brand-black-500',
+    attributes: {},
+    path: ['brand', 'black', '500'],
+  },
+  {
+    value: '$brand.black.700',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.black.700',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-black-600',
+    attributes: {},
+    path: ['brand', 'black', '600'],
+  },
+  {
+    value: '#43545F',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#43545F',
+      type: 'color',
+    },
+    name: '--fds-brand-black-700',
+    attributes: {},
+    path: ['brand', 'black', '700'],
+  },
+  {
+    value: '$brand.black.900',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.black.900',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-black-800',
+    attributes: {},
+    path: ['brand', 'black', '800'],
+  },
+  {
+    value: '#000000',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#000000',
+      type: 'color',
+    },
+    name: '--fds-brand-black-900',
+    attributes: {},
+    path: ['brand', 'black', '900'],
+  },
+  {
+    value: '$brand.grey.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.4',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.grey.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.4',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-grey-50',
+    attributes: {},
+    path: ['brand', 'grey', '50'],
+  },
+  {
+    value: '$brand.grey.200',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.grey.200',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-grey-100',
+    attributes: {},
+    path: ['brand', 'grey', '100'],
+  },
+  {
+    value: '#EFF0EF',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#EFF0EF',
+      type: 'color',
+    },
+    name: '--fds-brand-grey-200',
+    attributes: {},
+    path: ['brand', 'grey', '200'],
+  },
+  {
+    value: '$brand.grey.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.3',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.grey.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.3',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-grey-300',
+    attributes: {},
+    path: ['brand', 'grey', '300'],
+  },
+  {
+    value: '$brand.grey.500',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.2',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.grey.500',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.2',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-grey-400',
+    attributes: {},
+    path: ['brand', 'grey', '400'],
+  },
+  {
+    value: '#DFE0DF',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#DFE0DF',
+      type: 'color',
+    },
+    name: '--fds-brand-grey-500',
+    attributes: {},
+    path: ['brand', 'grey', '500'],
+  },
+  {
+    value: '$brand.grey.700',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.grey.700',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-grey-600',
+    attributes: {},
+    path: ['brand', 'grey', '600'],
+  },
+  {
+    value: '#CFD1CF',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#CFD1CF',
+      type: 'color',
+    },
+    name: '--fds-brand-grey-700',
+    attributes: {},
+    path: ['brand', 'grey', '700'],
+  },
+  {
+    value: '$brand.grey.900',
+    type: 'color',
+    $extensions: {
+      'studio.tokens': {
+        modify: {
+          type: 'lighten',
+          value: '0.1',
+          space: 'lch',
+          filePath: '../../design-tokens/Brand/STAF.json',
+          isSource: false,
+        },
+      },
+    },
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '$brand.grey.900',
+      type: 'color',
+      $extensions: {
+        'studio.tokens': {
+          modify: {
+            type: 'lighten',
+            value: '0.1',
+            space: 'lch',
+            filePath: '../../design-tokens/Brand/STAF.json',
+            isSource: false,
+          },
+        },
+      },
+    },
+    name: '--fds-brand-grey-800',
+    attributes: {},
+    path: ['brand', 'grey', '800'],
+  },
+  {
+    value: '#BFC2C0',
+    type: 'color',
+    filePath: '../../design-tokens/Brand/STAF.json',
+    isSource: false,
+    original: {
+      value: '#BFC2C0',
+      type: 'color',
+    },
+    name: '--fds-brand-grey-900',
+    attributes: {},
+    path: ['brand', 'grey', '900'],
   },
 ];
 
