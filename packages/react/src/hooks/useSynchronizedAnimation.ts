@@ -18,7 +18,7 @@ export function useSynchronizedAnimation(animationName: string) {
         (animation.effect as KeyframeEffect)?.target === ref.current,
     );
 
-    if (myAnimation === animations[0] && stashedTime) {
+    if (myAnimation && myAnimation === animations[0] && stashedTime) {
       myAnimation.currentTime = stashedTime;
     }
 
@@ -27,7 +27,7 @@ export function useSynchronizedAnimation(animationName: string) {
     }
 
     return () => {
-      if (myAnimation === animations[0]) {
+      if (myAnimation && myAnimation === animations[0]) {
         stashedTime = myAnimation.currentTime;
       }
     };
