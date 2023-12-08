@@ -44,7 +44,7 @@
 
 .label {
   grid-area: label;
-  min-height: 2.5em;
+  height: 2.5em;
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -62,8 +62,8 @@
 
 .input {
   min-width: 44px;
+  height: 2.5em;
   width: 100%;
-  min-height: 2.5em;
   opacity: 0;
   margin: 0;
   grid-area: input;

@@ -33,24 +33,48 @@ export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
           suffix='suffix'
         />
         <Switch size={size}>Switch</Switch>
+        <Switch
+          size={size}
+          aria-label='no label switch'
+        ></Switch>
         <NativeSelect size={size}>
           <option>opt1</option>
           <option>opt2</option>
           <option>opt3</option>
         </NativeSelect>
         <Button size={size}>Jeg vil ha Kake</Button>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--fds-spacing-2)',
+          border: '1px solid red',
+          borderTop: '0',
+        }}
+      >
         <Radio
           value='radio'
           size={size}
         >
           Radio
         </Radio>
+        <Radio
+          value='radio2'
+          size={size}
+          aria-label='no label radio'
+        ></Radio>
         <Checkbox
           value='checkbox'
           size={size}
         >
           Checkbox
         </Checkbox>
+        <Checkbox
+          value='checkbox2'
+          size={size}
+          aria-label='no label checkbox'
+        ></Checkbox>
       </div>
     </>
   );
