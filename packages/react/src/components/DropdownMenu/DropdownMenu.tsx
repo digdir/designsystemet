@@ -47,13 +47,13 @@ export type DropdownMenuProps = {
    * @default medium
    **/
   size?: 'small' | 'medium' | 'large';
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   size: 'medium',
 });
 
-export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
+export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
   (
     {
       anchorEl,
@@ -66,7 +66,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
     },
     ref,
   ) => {
-    const floatingEl = useRef<HTMLDivElement>(null);
+    const floatingEl = useRef<HTMLUListElement>(null);
 
     const {
       context,
@@ -129,6 +129,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
+              as={'ul'}
               role='menu'
               aria-hidden={!open}
               data-placement={flPlacement}

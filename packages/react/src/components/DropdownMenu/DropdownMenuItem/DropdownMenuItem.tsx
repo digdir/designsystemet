@@ -17,7 +17,7 @@ export const DropdownMenuItem: OverridableComponent<
   const menu = useContext(DropdownMenuContext);
 
   return (
-    <li className={classes.listItem}>
+    <li>
       <Button
         {...rest}
         ref={ref}
