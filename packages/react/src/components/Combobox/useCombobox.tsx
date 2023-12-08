@@ -23,7 +23,7 @@ export default function useCombobox({
   filter,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
-  const [values, setValues] = useState<Set<Option>>(new Set([]));
+  const [values, setValues] = useState<Option[]>([]);
 
   // Update all values
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function useCombobox({
         });
       }
     });
-    const allValuesSet = new Set(allValues);
+    const allValuesSet = allValues;
     setValues(allValuesSet);
   }, [children]);
 

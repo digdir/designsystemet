@@ -52,7 +52,7 @@ describe('useCombobox', () => {
     });
 
     expect(result.current.open).toBe(false);
-    expect(result.current.values.size).toBe(3);
+    expect(result.current.values.length).toBe(3);
     expect(result.current.filteredItems.length).toBe(3);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(false);
@@ -65,7 +65,7 @@ describe('useCombobox', () => {
       activeOptions: [],
     });
 
-    expect(result.current.values.size).toBe(3);
+    expect(result.current.values.length).toBe(3);
     expect(result.current.filteredItems.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(true);
@@ -83,7 +83,7 @@ describe('useCombobox', () => {
       ],
     });
 
-    expect(result.current.values.size).toBe(3);
+    expect(result.current.values.length).toBe(3);
     expect(result.current.filteredItems.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(true);
@@ -101,7 +101,7 @@ describe('useCombobox', () => {
       ],
     });
 
-    expect(result.current.values.size).toBe(3);
+    expect(result.current.values.length).toBe(3);
     expect(result.current.filteredItems.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(true);
@@ -114,7 +114,7 @@ describe('useCombobox', () => {
       activeOptions: [],
     });
 
-    expect(result.current.values.size).toBe(3);
+    expect(result.current.values.length).toBe(3);
     expect(result.current.filteredItems.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(false);
@@ -132,7 +132,7 @@ describe('useCombobox', () => {
       ],
     });
 
-    expect(result.current.values.size).toBe(3);
+    expect(result.current.values.length).toBe(3);
     expect(result.current.filteredItems.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(false);

@@ -1,11 +1,5 @@
 import type { ReactNode } from 'react';
-import React, {
-  useState,
-  useRef,
-  createContext,
-  useEffect,
-  useId,
-} from 'react';
+import React, { useState, useRef, createContext, useEffect } from 'react';
 import {
   FloatingFocusManager,
   autoUpdate,
@@ -134,7 +128,6 @@ export const Combobox = ({
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
-  const generatedId = useId();
 
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -154,7 +147,7 @@ export const Combobox = ({
       errorId,
       size,
       description,
-      id: inputId || generatedId,
+      id: inputId,
     },
     'combobox',
   );
@@ -235,16 +228,10 @@ export const Combobox = ({
   }, [onValueChange, activeOptions, prevActiveOptions]);
 
   useEffect(() => {
-    if (value && values.size > 0) {
+    if (value && values.length > 0) {
       const newActiveOptions = value.map((item) => {
-        let valueItem;
-        for (const value of values) {
-          if (value.value === item) {
-            valueItem = value;
-            break;
-          }
-        }
-        return valueItem as Option;
+        const value = values.find((value) => value.value === item);
+        return value as Option;
       });
 
       setActiveOptions(newActiveOptions);
@@ -448,7 +435,7 @@ export const Combobox = ({
 };
 
 type ComboboxContextType = {
-  values: Set<Option>;
+  values: Option[];
   activeOptions: Option[];
   activeIndex: number | null;
   multiple: boolean;
