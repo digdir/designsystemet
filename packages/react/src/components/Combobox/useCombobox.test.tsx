@@ -28,8 +28,8 @@ const CHILDREN = [
   <Combobox.Empty key='4'>No items</Combobox.Empty>,
 ];
 
-const FILTER = (inputValue: string, label: string) => {
-  return label.toLowerCase().startsWith(inputValue.toLowerCase());
+const FILTER = (inputValueValue: string, label: string) => {
+  return label.toLowerCase().startsWith(inputValueValue.toLowerCase());
 };
 
 const renderUseCombobox = ({
@@ -46,7 +46,7 @@ const renderUseCombobox = ({
 describe('useCombobox', () => {
   it('should return the correct values', () => {
     const { result } = renderUseCombobox({
-      input: '',
+      inputValue: '',
       multiple: false,
       activeOptions: [],
     });
@@ -60,7 +60,7 @@ describe('useCombobox', () => {
 
   it('should show empty when we type "3"', () => {
     const { result } = renderUseCombobox({
-      input: '3',
+      inputValue: '3',
       multiple: false,
       activeOptions: [],
     });
@@ -73,7 +73,7 @@ describe('useCombobox', () => {
 
   it('should show empty when we type "3" and have active value "oslo"', () => {
     const { result } = renderUseCombobox({
-      input: '3',
+      inputValue: '3',
       multiple: false,
       activeOptions: [
         {
@@ -91,7 +91,7 @@ describe('useCombobox', () => {
 
   it('should show empty when we type "3" and have active value "oslo" and multiple', () => {
     const { result } = renderUseCombobox({
-      input: '3',
+      inputValue: '3',
       multiple: true,
       activeOptions: [
         {
@@ -109,7 +109,7 @@ describe('useCombobox', () => {
 
   it('should show 1 item when we type "l"', () => {
     const { result } = renderUseCombobox({
-      input: 'l',
+      inputValue: 'l',
       multiple: false,
       activeOptions: [],
     });
@@ -122,7 +122,7 @@ describe('useCombobox', () => {
 
   it('should show 1 item when we type "l" and have active value "oslo"', () => {
     const { result } = renderUseCombobox({
-      input: 'l',
+      inputValue: 'l',
       multiple: false,
       activeOptions: [
         {

@@ -25,7 +25,7 @@ import type { ReferenceType } from '@floating-ui/react';
 import { Box } from '../Box';
 import { useFormField } from '../form/useFormField';
 
-import type { ValueItemType } from './useCombobox';
+import type { Option } from './useCombobox';
 import useCombobox from './useCombobox';
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
@@ -138,7 +138,7 @@ export const Combobox = ({
 
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [activeOptions, setActiveOptions] = useState<ValueItemType[]>([]);
+  const [activeOptions, setActiveOptions] = useState<Option[]>([]);
   const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
     undefined,
   );
@@ -162,7 +162,7 @@ export const Combobox = ({
   const { values, filteredItems, restChildren, open, showEmptyChild, setOpen } =
     useCombobox({
       children,
-      input: inputValue,
+      inputValue,
       filter,
       multiple,
       activeOptions,
@@ -244,7 +244,7 @@ export const Combobox = ({
             break;
           }
         }
-        return valueItem as ValueItemType;
+        return valueItem as Option;
       });
 
       setActiveOptions(newActiveOptions);
@@ -252,7 +252,7 @@ export const Combobox = ({
   }, [multiple, prevActiveOptions, value, values]);
 
   // handle click on item, either select or deselect - Handles single or multiple
-  const handleSelectItem = (item: ValueItemType) => {
+  const handleSelectItem = (item: Option) => {
     // if item is already selected, remove it
     if (activeOptions.find((i) => i.value === item.value)) {
       setActiveOptions((prev) => prev.filter((i) => i.value !== item.value));
@@ -319,7 +319,7 @@ export const Combobox = ({
                 break;
               }
             }
-            handleSelectItem(item as ValueItemType);
+            handleSelectItem(item as Option);
           }
         }
         break;
@@ -381,7 +381,7 @@ export const Combobox = ({
               break;
             }
           }
-          handleSelectItem(item as ValueItemType);
+          handleSelectItem(item as Option);
         },
       }}
     >
@@ -448,8 +448,8 @@ export const Combobox = ({
 };
 
 type ComboboxContextType = {
-  values: Set<ValueItemType>;
-  activeOptions: ValueItemType[];
+  values: Set<Option>;
+  activeOptions: Option[];
   activeIndex: number | null;
   multiple: boolean;
   showEmptyChild: boolean;
@@ -481,7 +481,7 @@ type ComboboxContextType = {
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;
   onItemClick: (value: string) => void;
-  setActiveOptions: React.Dispatch<React.SetStateAction<ValueItemType[]>>;
+  setActiveOptions: React.Dispatch<React.SetStateAction<Option[]>>;
 };
 
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(

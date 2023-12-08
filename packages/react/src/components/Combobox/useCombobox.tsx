@@ -5,29 +5,29 @@ import { ComboboxOption } from './Option/Option';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
-  input: string;
+  inputValue: string;
   multiple: boolean;
-  activeOptions: ValueItemType[];
+  activeOptions: Option[];
   filter: (inputValue: string, label: string, value: string) => boolean;
 };
 
-export type ValueItemType = {
+export type Option = {
   value: string;
   label: string;
 };
 
 export default function useCombobox({
   children,
-  input,
+  inputValue,
   multiple,
   filter,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
-  const [values, setValues] = useState<Set<ValueItemType>>(new Set([]));
+  const [values, setValues] = useState<Set<Option>>(new Set([]));
 
   // Update all values
   useEffect(() => {
-    const allValues: ValueItemType[] = [];
+    const allValues: Option[] = [];
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === ComboboxOption) {
         const props = child.props as ComboboxOptionProps;
@@ -58,22 +58,21 @@ export default function useCombobox({
       return true;
     });
 
-    const activeValue = valuesArray.find((item) => item.label === input);
+    const activeValue = valuesArray.find((item) => item.label === inputValue);
     if (activeValue && !multiple) {
       return childrenArr;
     }
 
-    if (input === '' && !multiple) return childrenArr;
+    if (inputValue === '' && !multiple) return childrenArr;
 
     return childrenArr.filter((child) => {
       if (!React.isValidElement(child)) return false;
-      if (child.type !== ComboboxOption) return false;
       const props = child.props as ComboboxOptionProps;
 
       const value = props.value as string;
       const item = valuesArray.find((item) => item.value === value);
 
-      return filter(input, item?.label || '', value);
+      return filter(inputValue, item?.label || '', value);
     });
   };
 
@@ -101,13 +100,13 @@ export default function useCombobox({
   const restChildren = getRestChildren();
 
   const getShowEmptyChild = () => {
-    // check if input does not match any values
-    if (input === '') return false;
+    // check if inputValue does not match any values
+    if (inputValue === '') return false;
 
-    // check if input will show any values
+    // check if inputValue will show any values
     let activeValue;
     for (const item of values) {
-      if (filter(input, item.label, item.value)) {
+      if (filter(inputValue, item.label, item.value)) {
         activeValue = item;
         break;
       }
