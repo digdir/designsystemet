@@ -122,7 +122,7 @@ const Select = (props: SelectProps) => {
     middleware: [
       flip(),
       size({
-        apply: ({ availableHeight, elements, rects }) => {
+        apply: ({ elements, rects }) => {
           requestAnimationFrame(() => {
             // This must be wrapped in requestAnimationFrame to avoid ResizeObserver loop error; https://github.com/floating-ui/floating-ui/issues/1740
             // The error is difficult/impossible to reproduce in Storybook, but it appears in other apps when the component is used without a fixed width.
