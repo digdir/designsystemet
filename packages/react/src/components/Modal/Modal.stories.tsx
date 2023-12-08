@@ -5,9 +5,9 @@ import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
 import { Divider } from '../Divider';
+import { Select } from '../Select';
 
 import { Modal } from '.';
-import { NativeSelect } from '../form/NativeSelect';
 
 const decorators = [
   (Story: StoryFn) => (
@@ -177,47 +177,78 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
   );
 };
 
+export const defaultArgs = {
+  label: 'Velg et fylke',
+  multiple: false,
+  options: [
+    {
+      label: 'Agder',
+      value: 'Agd',
+      keywords: ['agder', 'aust-agder', 'vest-agder'],
+    },
+    {
+      label: 'Innlandet',
+      value: 'Inn',
+      keywords: ['innlandet', 'hedmark', 'oppland'],
+    },
+    {
+      label: 'Møre og Romsdal',
+      value: 'MoR',
+      keywords: ['møre og romsdal', 'møre', 'romsdal'],
+    },
+    { label: 'Nordland', value: 'Nor', keywords: ['nordland'] },
+    { label: 'Oslo', value: 'Osl', keywords: ['oslo'] },
+    { label: 'Rogaland', value: 'Rog', keywords: ['rogaland'] },
+    {
+      label: 'Vestfold og Telemark',
+      value: 'VoT',
+      keywords: ['vestfold og telemark', 'vestfold', 'telemark'],
+    },
+    {
+      label: 'Troms og Finnmark',
+      value: 'ToF',
+      keywords: ['troms og finnmark', 'troms', 'finnmark'],
+    },
+    {
+      label: 'Trøndelag',
+      value: 'Trø',
+      keywords: ['trøndelag', 'nord-trøndelag', 'sør-trøndelag'],
+    },
+    {
+      label: 'Vestland',
+      value: 'Ves',
+      keywords: ['vestland', 'hordaland', 'sogn og fjordane'],
+    },
+    {
+      label: 'Viken',
+      value: 'Vik',
+      keywords: ['viken', 'østfold', 'akershus', 'buskerud'],
+    },
+  ],
+};
+export const Template = (args = {}) => (
+  <div style={{ width: '440px' }}>
+    <Select {...{ ...defaultArgs, ...args }} />
+  </div>
+);
+
 export const ModalWithSelect: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
-  const [input, setInput] = useState('');
 
   return (
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal
         ref={modalRef}
-        onClose={() => setInput('')}
-        style={{ maxWidth: '1200px' }}
+        style={{ maxWidth: '1200px', overflow: 'visible' }}
       >
         <Modal.Header>Modal med skjema</Modal.Header>
         <Modal.Content>
-          <NativeSelect>
-            <option value='everest'>Mount Everest</option>
-            <option value='aconcagua'>Aconcagua</option>
-            <option value='denali'>Denali</option>
-            <option value='kilimanjaro'>Kilimanjaro</option>
-            <option value='elbrus'>Elbrus</option>
-            <option value='vinson'>Mount Vinson</option>
-            <option value='puncakjaya'>Puncak Jaya</option>
-            <option value='kosciuszko'>Mount Kosciuszko</option>
-          </NativeSelect>
+          <Select
+            {...{ ...defaultArgs }}
+            portal={false}
+          />
         </Modal.Content>
-        <Modal.Footer>
-          <Button
-            onClick={() => {
-              window.alert(`Du har sendt inn skjema med navn: ${input}`);
-              modalRef.current?.close();
-            }}
-          >
-            Send inn skjema
-          </Button>
-          <Button
-            variant='secondary'
-            onClick={() => modalRef.current?.close()}
-          >
-            Avbryt
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

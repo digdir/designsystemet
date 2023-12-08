@@ -1,9 +1,10 @@
-import React, { useId, useState } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import cn from 'classnames';
 
 import { useEventListener } from '../../../hooks';
 import type { MultiSelectOption, SingleSelectOption } from '../types';
+import { Box } from '../../Box';
 
 import classes from './OptionList.module.css';
 import { Option } from './Option';
@@ -19,6 +20,7 @@ type OptionListPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
   setFloating: (node: HTMLElement | null) => void;
   x: number;
   y: number;
+  portal?: boolean;
 };
 
 export type OptionListProps =
@@ -37,7 +39,9 @@ const OptionList = ({
   setFloating,
   x,
   y,
+  portal = true,
 }: OptionListProps) => {
+  const portalRef = useRef<HTMLDivElement>(null);
   const portalId = useId();
   const [usingKeyboard, setUsingKeyboard] = useState<boolean>(false);
   useEventListener('click', () => setUsingKeyboard(false));
@@ -48,36 +52,42 @@ const OptionList = ({
     multiple ? selectedValues.includes(val) : isOptionActive(val);
 
   return (
-    <FloatingPortal id={`fds-select-${portalId}`}>
-      <span
-        className={cn(
-          classes.wrapper,
-          expanded && classes.expanded,
-          usingKeyboard && classes.usingKeyboard,
-        )}
-        ref={setFloating}
-        style={{ left: x, top: y, zIndex: 1500 }}
+    <>
+      <Box ref={portalRef}></Box>
+      <FloatingPortal
+        id={`fds-select-${portalId}`}
+        root={portal ? null : portalRef}
       >
         <span
-          aria-expanded={expanded}
-          className={classes.optionList}
-          id={listboxId}
-          role='listbox'
+          className={cn(
+            classes.wrapper,
+            expanded && classes.expanded,
+            usingKeyboard && classes.usingKeyboard,
+          )}
+          ref={setFloating}
+          style={{ left: x, top: y, zIndex: 1500 }}
         >
-          {options.map((option) => (
-            <Option
-              active={isOptionActive(option.value)}
-              id={optionId(option.value)}
-              key={option.value}
-              multiple={multiple}
-              onClick={onOptionClick}
-              option={option}
-              selected={isOptionSelected(option.value)}
-            />
-          ))}
+          <span
+            aria-expanded={expanded}
+            className={classes.optionList}
+            id={listboxId}
+            role='listbox'
+          >
+            {options.map((option) => (
+              <Option
+                active={isOptionActive(option.value)}
+                id={optionId(option.value)}
+                key={option.value}
+                multiple={multiple}
+                onClick={onOptionClick}
+                option={option}
+                selected={isOptionSelected(option.value)}
+              />
+            ))}
+          </span>
         </span>
-      </span>
-    </FloatingPortal>
+      </FloatingPortal>
+    </>
   );
 };
 

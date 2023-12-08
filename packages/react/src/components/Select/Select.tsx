@@ -42,6 +42,7 @@ const Select = (props: SelectProps) => {
     options,
     searchLabel,
     value,
+    portal,
   } = props;
   const allValues = options.map((option) => option.value);
   if (allValues.length !== new Set(allValues).size) {
@@ -126,7 +127,7 @@ const Select = (props: SelectProps) => {
             // This must be wrapped in requestAnimationFrame to avoid ResizeObserver loop error; https://github.com/floating-ui/floating-ui/issues/1740
             // The error is difficult/impossible to reproduce in Storybook, but it appears in other apps when the component is used without a fixed width.
             Object.assign(elements.floating.style, {
-              maxHeight: `min(${availableHeight}px, var(--option_list-max_height))`,
+              maxHeight: `200px`,
               width: `${rects.reference.width}px`,
             });
           });
@@ -431,6 +432,7 @@ const Select = (props: SelectProps) => {
         setFloating={refs.setFloating}
         x={x}
         y={y}
+        portal={portal}
       />
     </span>
   );

@@ -29,6 +29,7 @@ interface SelectPropsBase {
   inputName?: string;
   label?: string;
   searchLabel?: string;
+  portal?: boolean;
 }
 
 export type SingleSelectOption = {
