@@ -152,6 +152,7 @@ export const Combobox = ({
     'combobox',
   );
 
+  const listRef = useRef<Array<HTMLElement | null>>([]);
   const { values, filteredItems, restChildren, open, showEmptyChild, setOpen } =
     useCombobox({
       children,
@@ -159,6 +160,7 @@ export const Combobox = ({
       filter,
       multiple,
       activeOptions,
+      listRef,
     });
 
   // if value is set, set input value to the label of the value
@@ -170,7 +172,6 @@ export const Combobox = ({
   }, [multiple, value, values]);
 
   // floating UI
-  const listRef = useRef<Array<HTMLElement | null>>([]);
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
     whileElementsMounted: autoUpdate,
     open,
@@ -398,24 +399,7 @@ export const Combobox = ({
               className={cn(classes.itemsWrapper, classes[size])}
             >
               {/* Map our children, and add props if it is a ComboboxOption */}
-              {React.Children.map(filteredItems, (child, index) => {
-                if (
-                  React.isValidElement(child) &&
-                  child.type === ComboboxOption
-                ) {
-                  const props = {
-                    key: index,
-                    ref(node: HTMLElement | null) {
-                      listRef.current[index] = node;
-                    },
-                  };
-
-                  return React.cloneElement(child, {
-                    ...props,
-                  });
-                }
-                return child;
-              })}
+              {filteredItems}
               {/* Add the rest of the children */}
               {restChildren}
             </Box>

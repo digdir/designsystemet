@@ -8,6 +8,7 @@ export type UseComboboxProps = {
   inputValue: string;
   multiple: boolean;
   activeOptions: Option[];
+  listRef: React.MutableRefObject<(HTMLElement | null)[]>;
   filter: (inputValue: string, label: string, value: string) => boolean;
 };
 
@@ -20,6 +21,7 @@ export default function useCombobox({
   children,
   inputValue,
   multiple,
+  listRef,
   filter,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
@@ -90,11 +92,14 @@ export default function useCombobox({
       const props: ComboboxOptionProps = {
         ...(child.props as ComboboxOptionProps),
         index,
+        ref(node: HTMLElement | null) {
+          listRef.current[index] = node;
+        },
       } as ComboboxOptionProps;
 
       return React.cloneElement(child, props);
     });
-  }, [comboboxOptions]);
+  }, [comboboxOptions, listRef]);
 
   const showEmptyChild = useMemo(() => {
     // check if inputValue does not match any values
