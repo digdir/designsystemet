@@ -1,49 +1,58 @@
 import React from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress } from '../Typography';
+import { Paragraph, Heading } from '../Typography';
 import { Button } from '../Button';
 
 import { Skeleton } from '.';
 
-type Story = StoryObj<typeof Skeleton.Circle>;
+type Story = StoryObj<typeof Skeleton.Rectangle>;
 
 export default {
   title: 'Felles/Skeleton',
-  component: Skeleton.Circle,
+  component: Skeleton.Rectangle,
 } as Meta;
 
 export const Preview: Story = {
   args: {
-    width: '100px',
+    width: '200px',
     height: '100px',
   },
 };
 
-export const Other: StoryFn<typeof Skeleton> = () => {
+export const DefaultExample: StoryFn<typeof Skeleton> = () => {
   return (
     <div
       style={{
-        fontSize: '16px',
-        display: 'flex',
-        flexDirection: 'column',
         width: '400px',
       }}
     >
+      <Skeleton.Rectangle
+        width='100%'
+        height='150px'
+      />
       <div
         style={{
           display: 'flex',
-          fontSize: '3rem',
           gap: '10px',
-          paddingBottom: '5px',
+          alignItems: 'center',
+          padding: '5px 0 5px 0',
         }}
       >
-        <Skeleton.Circle />
-        <Skeleton.Rectangle width='90%' />
+        <Skeleton.Circle
+          width='30px'
+          height='30px'
+        />
+        <Heading
+          as={Skeleton.Text}
+          size='medium'
+        >
+          En medium tittel
+        </Heading>
       </div>
-      <Skeleton.Text />
-      <Skeleton.Text />
-      <Skeleton.Text />
+      <Skeleton.Text width='100%' />
+      <Skeleton.Text width='100%' />
+      <Skeleton.Text width='80%' />
     </div>
   );
 };
@@ -67,23 +76,47 @@ export const Children: StoryFn<typeof Skeleton> = () => {
 export const As: StoryFn<typeof Skeleton> = () => {
   return (
     <>
-      <Ingress
-        size='medium'
+      <Heading
+        size='large'
         as={Skeleton.Text}
       >
         Her er en heading
-      </Ingress>
+      </Heading>
       <Paragraph as={Skeleton.Text}>
-        Her er en paragraf som blir rendret som en Skeleton.Text.
-      </Paragraph>
-      <Paragraph size='medium'>
-        <Skeleton.Text width='500px' />
+        Her er en paragraf-komponent som blir rendret som en Skeleton.Text.
       </Paragraph>
       <Paragraph as={Skeleton.Text}>
-        Se hvordan Skeleton da tilpasser seg etter det enkelte elementet den
-        dekker.
+        Se hvordan Skeleton da overskriver stylingen til det enkelte elementet.
       </Paragraph>
-      <Button as={Skeleton.Rectangle}>Knapp</Button>
+    </>
+  );
+};
+
+export const TextExample: StoryFn<typeof Text> = () => {
+  return (
+    <>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ width: '140px' }}>
+          <Heading size='medium'>Heading</Heading>
+          <Paragraph size='small'>
+            Her er en paragraf som går over flere linjer
+          </Paragraph>
+        </div>
+        <div style={{ width: '140px' }}>
+          <Heading
+            size='medium'
+            as={Skeleton.Text}
+          >
+            Heading
+          </Heading>
+          <Paragraph size='small'>
+            <Skeleton.Text width='100%' />
+
+            <Skeleton.Text width='100%' />
+            <Skeleton.Text width='40%' />
+          </Paragraph>
+        </div>
+      </div>
     </>
   );
 };
