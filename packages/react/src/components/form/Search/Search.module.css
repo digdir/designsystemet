@@ -141,12 +141,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .input:not(:focus-visible, :disabled):hover {
+  .input:not(:focus-visible, :disabled, [aria-disabled]):hover {
     border-color: var(--fds-semantic-border-action-hover);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
   }
 
-  .clearButton:not(:focus-visible, :disabled):hover {
+  .clearButton:not(:focus-visible, :disabled, [aria-disabled]):hover {
     background: var(--fds-semantic-surface-action-subtle-hover);
   }
 }
