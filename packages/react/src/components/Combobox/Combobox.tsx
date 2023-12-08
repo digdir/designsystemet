@@ -164,13 +164,7 @@ export const Combobox = ({
   // if value is set, set input value to the label of the value
   useEffect(() => {
     if (value && value.length > 0 && !multiple) {
-      let item;
-      for (const valueItem of values) {
-        if (valueItem.value === value[0]) {
-          item = valueItem;
-          break;
-        }
-      }
+      const item = values.find((item) => item.value === value[0]);
       setInputValue(item?.label || '');
     }
   }, [multiple, value, values]);
@@ -299,13 +293,7 @@ export const Combobox = ({
           const child = filteredItems[activeIndex];
           if (React.isValidElement(child) && child.type === ComboboxOption) {
             const props = child.props as ComboboxOptionProps;
-            let item;
-            for (const valueItem of values) {
-              if (valueItem.value === props.value) {
-                item = valueItem;
-                break;
-              }
-            }
+            const item = values.find((item) => item.value === props.value);
             handleSelectItem(item as Option);
           }
         }
@@ -361,13 +349,7 @@ export const Combobox = ({
         onItemClick: (value: string) => {
           if (readOnly) return;
           if (disabled) return;
-          let item;
-          for (const valueItem of values) {
-            if (valueItem.value === value) {
-              item = valueItem;
-              break;
-            }
-          }
+          const item = values.find((item) => item.value === value);
           handleSelectItem(item as Option);
         },
       }}
