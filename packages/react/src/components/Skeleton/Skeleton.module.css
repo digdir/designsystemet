@@ -3,6 +3,7 @@
 
   height: 1.3em;
   pointer-events: none;
+  user-select: none;
   background-color: var(--fds-semantic-surface-neutral-subtle-hover) !important;
   animation: opacity-fade var(--animation-duration) linear infinite alternate;
 }
