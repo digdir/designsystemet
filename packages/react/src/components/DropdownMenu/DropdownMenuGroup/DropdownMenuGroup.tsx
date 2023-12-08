@@ -21,25 +21,27 @@ export const DropdownMenuGroup = forwardRef<
   const headingId = useId();
 
   return (
-    <ul
-      {...(heading ? { 'aria-labelledby': headingId } : {})}
-      {...rest}
-      ref={ref}
-      role='group'
-      className={cn(classes.section, rest.className)}
-    >
-      {heading && (
-        <Paragraph
-          as='h2'
-          id={headingId}
-          size={size}
-          className={cn(classes.heading, rest.className)}
-        >
-          {heading}
-        </Paragraph>
-      )}
-      {children}
-    </ul>
+    <>
+      <ul
+        {...(heading ? { 'aria-labelledby': headingId } : {})}
+        {...rest}
+        ref={ref}
+        role='group'
+        className={cn(classes.section, rest.className)}
+      >
+        {heading && (
+          <Paragraph
+            as='h2'
+            id={headingId}
+            size={size}
+            className={cn(classes.heading, rest.className)}
+          >
+            {heading}
+          </Paragraph>
+        )}
+        {children}
+      </ul>
+    </>
   );
 });
 
