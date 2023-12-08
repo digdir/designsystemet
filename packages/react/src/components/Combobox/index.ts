@@ -1,19 +1,19 @@
 import { Combobox as ComboboxRoot } from './Combobox';
-import { ComboboxItem } from './Item/Item';
+import { ComboboxOption } from './Item/Option';
 import { ComboboxEmpty } from './Empty/Empty';
-import ComboboxItemDescription from './Item/Description/Description';
+import ComboboxOptionDescription from './Item/Description/Description';
 
 type ComboboxComponent = typeof ComboboxRoot & {
-  Item: typeof ComboboxItem;
+  Option: typeof ComboboxOption;
   Empty: typeof ComboboxEmpty;
 };
 
 const Combobox = ComboboxRoot as ComboboxComponent;
 
-Combobox.Item = ComboboxItem;
+Combobox.Option = ComboboxOption;
 Combobox.Empty = ComboboxEmpty;
 
-Combobox.Item.displayName = 'Combobox.Item';
+Combobox.Option.displayName = 'Combobox.Option';
 Combobox.Empty.displayName = 'Combobox.Empty';
 
-export { Combobox, ComboboxItem, ComboboxEmpty, ComboboxItemDescription };
+export { Combobox, ComboboxOption, ComboboxEmpty, ComboboxOptionDescription };

@@ -11,7 +11,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   ({ children, ...rest }, ref) => {
     const context = useContext(ComboboxContext);
     if (!context) {
-      throw new Error('ComboboxItem must be used within a Combobox');
+      throw new Error('ComboboxError must be used within a Combobox');
     }
 
     const { showEmptyChild, size } = context;

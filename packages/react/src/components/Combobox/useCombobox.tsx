@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import type { ComboboxItemProps } from './Item/Item';
-import { ComboboxItem } from './Item/Item';
+import type { ComboboxOptionProps } from './Item/Option';
+import { ComboboxOption } from './Item/Option';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
@@ -29,8 +29,8 @@ export default function useCombobox({
   useEffect(() => {
     const allValues: ValueItemType[] = [];
     React.Children.forEach(children, (child) => {
-      if (React.isValidElement(child) && child.type === ComboboxItem) {
-        const props = child.props as ComboboxItemProps;
+      if (React.isValidElement(child) && child.type === ComboboxOption) {
+        const props = child.props as ComboboxOptionProps;
 
         let label = '';
         // get label from children, but only the string
@@ -50,11 +50,11 @@ export default function useCombobox({
     setValues(allValuesSet);
   }, [children]);
 
-  const getComboboxItems = () => {
+  const getComboboxOptions = () => {
     const valuesArray = Array.from(values);
     const childrenArr = React.Children.toArray(children).filter((child) => {
       if (!React.isValidElement(child)) return false;
-      if (child.type !== ComboboxItem) return false;
+      if (child.type !== ComboboxOption) return false;
       return true;
     });
 
@@ -67,8 +67,8 @@ export default function useCombobox({
 
     return childrenArr.filter((child) => {
       if (!React.isValidElement(child)) return false;
-      if (child.type !== ComboboxItem) return false;
-      const props = child.props as ComboboxItemProps;
+      if (child.type !== ComboboxOption) return false;
+      const props = child.props as ComboboxOptionProps;
 
       const value = props.value as string;
       const item = valuesArray.find((item) => item.value === value);
@@ -81,19 +81,19 @@ export default function useCombobox({
     const childrenArr = React.Children.toArray(children);
 
     return childrenArr.filter((child) => {
-      return React.isValidElement(child) && child.type !== ComboboxItem;
+      return React.isValidElement(child) && child.type !== ComboboxOption;
     });
   };
 
-  // Get children of type `ComboboxItem` and add index to props
-  const filteredItems = getComboboxItems().map((child, index) => {
-    if (!React.isValidElement(child) || child.type !== ComboboxItem)
+  // Get children of type `ComboboxOption` and add index to props
+  const filteredItems = getComboboxOptions().map((child, index) => {
+    if (!React.isValidElement(child) || child.type !== ComboboxOption)
       return child;
 
-    const props: ComboboxItemProps = {
-      ...(child.props as ComboboxItemProps),
+    const props: ComboboxOptionProps = {
+      ...(child.props as ComboboxOptionProps),
       index,
-    } as ComboboxItemProps;
+    } as ComboboxOptionProps;
 
     return React.cloneElement(child, props);
   });

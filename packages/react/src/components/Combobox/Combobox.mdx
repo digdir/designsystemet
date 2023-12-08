@@ -15,7 +15,7 @@ import { Combobox } from './index';
 
 ## Med beskrivelse
 
-Du kan bruke `Combobox.Item.Description` for å vise mer informasjon om et
+Du kan bruke `Combobox.Option.Description` for å vise mer informasjon om et
 element i listen.
 
 <Canvas of={ComboboxStories.WithDescription} />
@@ -28,17 +28,17 @@ element i listen.
 
 Du må legge til `name` på `Combobox` for at den skal fungere i et skjema.
 Den bruker native `select`-elementer under panseret, så du kan bruke
-`Combobox.Item` som vanlig.
+`Combobox.Option` som vanlig.
 
 <Canvas of={ComboboxStories.InForm} />
 
-### `Combobox.Item`
+### `Combobox.Option`
 
 Brukes som direkte barn av `Combobox` for å vise et element i listen.
 Teksten fra `children` vises til brukeren når elementet er valgt. `value` er
 det som blir sendt til `onValueChange` når elementet blir valgt.
 
-<ArgsTable of={Combobox.Item} />
+<ArgsTable of={Combobox.Option} />
 
 ### `Combobox.Empty`
 

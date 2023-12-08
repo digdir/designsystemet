@@ -3,11 +3,11 @@ import cn from 'classnames';
 
 import classes from './Description.module.css';
 
-type ComboboxItemDescriptionProps = React.HTMLAttributes<HTMLSpanElement>;
+type ComboboxOptionDescriptionProps = React.HTMLAttributes<HTMLSpanElement>;
 
-export const ComboboxItemDescription = forwardRef<
+export const ComboboxOptionDescription = forwardRef<
   HTMLSpanElement,
-  ComboboxItemDescriptionProps
+  ComboboxOptionDescriptionProps
 >(({ children, ...rest }, ref) => {
   return (
     <span
@@ -20,4 +20,4 @@ export const ComboboxItemDescription = forwardRef<
   );
 });
 
-export default ComboboxItemDescription;
+export default ComboboxOptionDescription;

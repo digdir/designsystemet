@@ -27,8 +27,8 @@ import { useFormField } from '../form/useFormField';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
-import type { ComboboxItemProps } from './Item/Item';
-import { ComboboxItem } from './Item/Item';
+import type { ComboboxOptionProps } from './Item/Option';
+import { ComboboxOption } from './Item/Option';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -310,8 +310,8 @@ export const Combobox = ({
         event.preventDefault();
         if (activeIndex !== null && filteredItems[activeIndex]) {
           const child = filteredItems[activeIndex];
-          if (React.isValidElement(child) && child.type === ComboboxItem) {
-            const props = child.props as ComboboxItemProps;
+          if (React.isValidElement(child) && child.type === ComboboxOption) {
+            const props = child.props as ComboboxOptionProps;
             let item;
             for (const valueItem of values) {
               if (valueItem.value === props.value) {
@@ -418,11 +418,11 @@ export const Combobox = ({
               })}
               className={cn(classes.itemsWrapper, classes[size])}
             >
-              {/* Map our children, and add props if it is a ComboboxItem */}
+              {/* Map our children, and add props if it is a ComboboxOption */}
               {React.Children.map(filteredItems, (child, index) => {
                 if (
                   React.isValidElement(child) &&
-                  child.type === ComboboxItem
+                  child.type === ComboboxOption
                 ) {
                   const props = {
                     key: index,

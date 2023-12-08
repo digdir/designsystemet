@@ -7,24 +7,24 @@ import useCombobox from './useCombobox';
 import { Combobox } from '.';
 
 const CHILDREN = [
-  <Combobox.Item
+  <Combobox.Option
     key='1'
     value='leikanger'
   >
     Leikanger
-  </Combobox.Item>,
-  <Combobox.Item
+  </Combobox.Option>,
+  <Combobox.Option
     key='2'
     value='oslo'
   >
     Oslo
-  </Combobox.Item>,
-  <Combobox.Item
+  </Combobox.Option>,
+  <Combobox.Option
     key='3'
     value='bronnoysund'
   >
     Brønnøysund
-  </Combobox.Item>,
+  </Combobox.Option>,
   <Combobox.Empty key='4'>No items</Combobox.Empty>,
 ];
 

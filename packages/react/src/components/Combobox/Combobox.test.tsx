@@ -30,12 +30,12 @@ const Comp = (args: Partial<ComboboxProps>) => {
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Item
+          <Combobox.Option
             key={index}
             value={item.value}
           >
             {item.name}
-          </Combobox.Item>
+          </Combobox.Option>
         ))}
       </Combobox>
     </>
