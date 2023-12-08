@@ -61,6 +61,7 @@ export const ComboboxInput = () => {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
+    setActiveIndex(0);
 
     if (value) {
       setOpen(true);
