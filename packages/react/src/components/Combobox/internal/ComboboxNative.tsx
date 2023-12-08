@@ -8,17 +8,17 @@ export const ComboboxNative = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { activeValues, multiple, name } = context;
+  const { activeOptions, multiple, name } = context;
 
   return (
     <select
       name={name}
       multiple={multiple}
       style={{ display: 'none' }}
-      value={activeValues.map((item) => item.value)}
+      value={activeOptions.map((item) => item.value)}
       onChange={() => {}}
     >
-      {activeValues.map((item) => (
+      {activeOptions.map((item) => (
         <option
           key={item.value}
           value={item.value}

@@ -28,7 +28,7 @@ export const ComboboxInput = () => {
     activeDescendant,
     error,
     multiple,
-    activeValues,
+    activeOptions,
     formFieldProps,
     setOpen,
     setActiveIndex,
@@ -104,10 +104,7 @@ export const ComboboxInput = () => {
         {multiple && <ComboboxChips />}
         <input
           ref={inputRef}
-          id={formFieldProps.inputProps.id}
-          disabled={formFieldProps.inputProps.disabled}
-          aria-describedby={formFieldProps.inputProps['aria-describedby']}
-          aria-invalid={formFieldProps.inputProps['aria-invalid']}
+          {...formFieldProps.inputProps}
           aria-activedescendant={activeDescendant}
           readOnly={readOnly}
           aria-autocomplete='list'
@@ -117,7 +114,7 @@ export const ComboboxInput = () => {
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}
-      {multiple && activeValues.length > 0 && <ComboboxClearButton />}
+      {multiple && activeOptions.length > 0 && <ComboboxClearButton />}
       {/* Arrow for combobox. Click is handled by the wrapper */}
       <div className={classes.arrow}>
         {open ? (

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import type { ComboboxOptionProps } from './Item/Option';
-import { ComboboxOption } from './Item/Option';
+import type { ComboboxOptionProps } from './Option/Option';
+import { ComboboxOption } from './Option/Option';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
   input: string;
   multiple: boolean;
-  activeValues: ValueItemType[];
+  activeOptions: ValueItemType[];
   filter: (inputValue: string, label: string, value: string) => boolean;
 };
 

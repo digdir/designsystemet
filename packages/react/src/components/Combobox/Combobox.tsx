@@ -27,8 +27,8 @@ import { useFormField } from '../form/useFormField';
 
 import type { ValueItemType } from './useCombobox';
 import useCombobox from './useCombobox';
-import type { ComboboxOptionProps } from './Item/Option';
-import { ComboboxOption } from './Item/Option';
+import type { ComboboxOptionProps } from './Option/Option';
+import { ComboboxOption } from './Option/Option';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -138,12 +138,12 @@ export const Combobox = ({
 
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [activeValues, setActiveValues] = useState<ValueItemType[]>([]);
+  const [activeOptions, setActiveOptions] = useState<ValueItemType[]>([]);
   const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
     undefined,
   );
-  const [prevActiveValues, setPrevActiveValues] = useState(
-    JSON.stringify(activeValues),
+  const [prevActiveOptions, setPrevActiveOptions] = useState(
+    JSON.stringify(activeOptions),
   );
 
   const formFieldProps = useFormField(
@@ -165,7 +165,7 @@ export const Combobox = ({
       input: inputValue,
       filter,
       multiple,
-      activeValues,
+      activeOptions,
     });
 
   // if value is set, set input value to the label of the value
@@ -226,17 +226,17 @@ export const Combobox = ({
 
   // Send new value if item was clicked
   useEffect(() => {
-    const stringifiedActiveValues = JSON.stringify(activeValues);
-    if (prevActiveValues !== stringifiedActiveValues) {
-      const values = activeValues.map((item) => item.value);
+    const stringifiedActiveOptions = JSON.stringify(activeOptions);
+    if (prevActiveOptions !== stringifiedActiveOptions) {
+      const values = activeOptions.map((item) => item.value);
       onValueChange?.(values);
-      setPrevActiveValues(stringifiedActiveValues);
+      setPrevActiveOptions(stringifiedActiveOptions);
     }
-  }, [onValueChange, activeValues, prevActiveValues]);
+  }, [onValueChange, activeOptions, prevActiveOptions]);
 
   useEffect(() => {
     if (value && values.size > 0) {
-      const newActiveValues = value.map((item) => {
+      const newActiveOptions = value.map((item) => {
         let valueItem;
         for (const value of values) {
           if (value.value === item) {
@@ -247,24 +247,24 @@ export const Combobox = ({
         return valueItem as ValueItemType;
       });
 
-      setActiveValues(newActiveValues);
+      setActiveOptions(newActiveOptions);
     }
-  }, [multiple, prevActiveValues, value, values]);
+  }, [multiple, prevActiveOptions, value, values]);
 
   // handle click on item, either select or deselect - Handles single or multiple
   const handleSelectItem = (item: ValueItemType) => {
     // if item is already selected, remove it
-    if (activeValues.find((i) => i.value === item.value)) {
-      setActiveValues((prev) => prev.filter((i) => i.value !== item.value));
+    if (activeOptions.find((i) => i.value === item.value)) {
+      setActiveOptions((prev) => prev.filter((i) => i.value !== item.value));
       return;
     }
 
     if (multiple) {
-      setActiveValues([...activeValues, item]);
+      setActiveOptions([...activeOptions, item]);
       setInputValue('');
       inputRef.current?.focus();
     } else {
-      setActiveValues([item]);
+      setActiveOptions([item]);
       setInputValue(item?.label || '');
     }
 
@@ -325,8 +325,8 @@ export const Combobox = ({
         break;
 
       case 'Backspace':
-        if (inputValue === '' && multiple && activeValues.length > 0) {
-          setActiveValues((prev) => prev.slice(0, prev.length - 1));
+        if (inputValue === '' && multiple && activeOptions.length > 0) {
+          setActiveOptions((prev) => prev.slice(0, prev.length - 1));
         }
         break;
 
@@ -340,7 +340,7 @@ export const Combobox = ({
       value={{
         size,
         values,
-        activeValues,
+        activeOptions,
         multiple,
         showEmptyChild,
         activeIndex,
@@ -362,7 +362,7 @@ export const Combobox = ({
         handleKeyDown,
         setOpen,
         getReferenceProps,
-        setActiveValues,
+        setActiveOptions,
         /* Recieves index of item, and the ID of the button element */
         setActiveItem: (index: number, id: string) => {
           if (readOnly) return;
@@ -449,7 +449,7 @@ export const Combobox = ({
 
 type ComboboxContextType = {
   values: Set<ValueItemType>;
-  activeValues: ValueItemType[];
+  activeOptions: ValueItemType[];
   activeIndex: number | null;
   multiple: boolean;
   showEmptyChild: boolean;
@@ -481,7 +481,7 @@ type ComboboxContextType = {
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;
   onItemClick: (value: string) => void;
-  setActiveValues: React.Dispatch<React.SetStateAction<ValueItemType[]>>;
+  setActiveOptions: React.Dispatch<React.SetStateAction<ValueItemType[]>>;
 };
 
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(

@@ -13,10 +13,11 @@ export const ComboboxClearButton = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, readOnly, disabled, setActiveValues, setInputValue } = context;
+  const { size, readOnly, disabled, setActiveOptions, setInputValue } = context;
 
   return (
     <button
+      disabled={disabled}
       className={cn(
         classes.clearButton,
         classes[size],
@@ -25,7 +26,7 @@ export const ComboboxClearButton = () => {
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;
-        setActiveValues([]);
+        setActiveOptions([]);
         setInputValue('');
       }}
     >
