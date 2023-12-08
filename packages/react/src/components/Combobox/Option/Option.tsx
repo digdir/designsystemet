@@ -30,8 +30,6 @@ export const ComboboxOption = forwardRef<
   const labelId = useId();
   const generatedId = useId();
 
-  const buttonId = rest.id || generatedId;
-
   const context = useContext(ComboboxContext);
   if (!context) {
     throw new Error('ComboboxOption must be used within a Combobox');
@@ -52,22 +50,33 @@ export const ComboboxOption = forwardRef<
   const active = activeOptions.find((item) => item.value === value);
 
   useEffect(() => {
-    if (activeIndex === index) setActiveItem(index, buttonId);
-  }, [activeIndex, index, setActiveItem, buttonId]);
+    if (activeIndex === index) setActiveItem(index, rest.id || generatedId);
+  }, [activeIndex, generatedId, index, rest.id, setActiveItem]);
 
   return (
     <button
       {...rest}
-      id={buttonId}
+      id={rest.id || generatedId}
       role='option'
       aria-selected={activeIndex === index}
       aria-labelledby={labelId}
-      onClick={() => {
+      onClick={(e) => {
         onItemClick(value);
+        rest.onClick?.(e);
       }}
-      onMouseEnter={() => setActiveItem(index, labelId)} // Set active index on hover
-      onFocus={() => setActiveItem(index, labelId)} // Set active index on focus
-      className={cn(classes.item, activeIndex === index && classes.active)}
+      onMouseEnter={(e) => {
+        setActiveItem(index, labelId);
+        rest.onMouseEnter?.(e);
+      }} // Set active index on hover
+      onFocus={(e) => {
+        setActiveItem(index, labelId);
+        rest.onFocus?.(e);
+      }} // Set active index on focus
+      className={cn(
+        classes.item,
+        activeIndex === index && classes.active,
+        rest.className,
+      )}
       ref={ref}
     >
       {multiple && (
