@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
@@ -23,10 +23,8 @@ export default function useCombobox({
   filter,
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
-  const [values, setValues] = useState<Option[]>([]);
 
-  // Update all values
-  useEffect(() => {
+  const values = useMemo(() => {
     const allValues: Option[] = [];
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === ComboboxOption) {
@@ -46,11 +44,10 @@ export default function useCombobox({
         });
       }
     });
-    const allValuesSet = allValues;
-    setValues(allValuesSet);
+    return allValues;
   }, [children]);
 
-  const getComboboxOptions = () => {
+  const comboboxOptions = useMemo(() => {
     const valuesArray = Array.from(values);
     const childrenArr = React.Children.toArray(children).filter((child) => {
       if (!React.isValidElement(child)) return false;
@@ -74,32 +71,32 @@ export default function useCombobox({
 
       return filter(inputValue, item?.label || '', value);
     });
-  };
+  }, [values, children, inputValue, multiple, filter]);
 
-  const getRestChildren = () => {
+  const restChildren = useMemo(() => {
     const childrenArr = React.Children.toArray(children);
 
     return childrenArr.filter((child) => {
       return React.isValidElement(child) && child.type !== ComboboxOption;
     });
-  };
+  }, [children]);
 
   // Get children of type `ComboboxOption` and add index to props
-  const filteredItems = getComboboxOptions().map((child, index) => {
-    if (!React.isValidElement(child) || child.type !== ComboboxOption)
-      return child;
+  const filteredItems = useMemo(() => {
+    return comboboxOptions.map((child, index) => {
+      if (!React.isValidElement(child) || child.type !== ComboboxOption)
+        return child;
 
-    const props: ComboboxOptionProps = {
-      ...(child.props as ComboboxOptionProps),
-      index,
-    } as ComboboxOptionProps;
+      const props: ComboboxOptionProps = {
+        ...(child.props as ComboboxOptionProps),
+        index,
+      } as ComboboxOptionProps;
 
-    return React.cloneElement(child, props);
-  });
+      return React.cloneElement(child, props);
+    });
+  }, [comboboxOptions]);
 
-  const restChildren = getRestChildren();
-
-  const getShowEmptyChild = () => {
+  const showEmptyChild = useMemo(() => {
     // check if inputValue does not match any values
     if (inputValue === '') return false;
 
@@ -115,9 +112,7 @@ export default function useCombobox({
     if (!activeValue) return true;
 
     return false;
-  };
-
-  const showEmptyChild = getShowEmptyChild();
+  }, [inputValue, values, filter]);
 
   return {
     filteredItems,
