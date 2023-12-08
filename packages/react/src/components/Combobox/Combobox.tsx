@@ -261,8 +261,9 @@ export const Combobox = ({
   };
 
   // handle keyboard navigation in the list
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDownFunc = (event: React.KeyboardEvent) => {
     if (formFieldProps.readOnly || disabled) return;
+    if (!event) return;
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
@@ -316,6 +317,8 @@ export const Combobox = ({
         break;
     }
   };
+
+  const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
 
   return (
     <ComboboxContext.Provider
@@ -458,3 +461,30 @@ type ComboboxContextType = {
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(
   undefined,
 );
+
+type DebounceFunction<T> = (...args: T[]) => void;
+
+function useDebounce<T>(callback: DebounceFunction<T>, delay = 50) {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // Cleanup the previous timeout on re-render
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const debouncedCallback = (...args: T[]) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+
+  return debouncedCallback;
+}
