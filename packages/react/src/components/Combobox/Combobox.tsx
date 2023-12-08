@@ -20,7 +20,7 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import type { ReferenceType } from '@floating-ui/react';
+import type { UseFloatingReturn } from '@floating-ui/react';
 
 import { Box } from '../Box';
 import { useFormField } from '../form/useFormField';
@@ -110,7 +110,7 @@ export type ComboboxProps = {
    * @default (inputValue, value) => value.toLowerCase().startsWith(inputValue.toLowerCase())
    */
   filter?: (inputValue: string, label: string, value: string) => boolean;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLInputElement>;
 
 export const Combobox = ({
   value,
@@ -394,7 +394,7 @@ export const Combobox = ({
 
         <ComboboxLabel />
         <ComboboxInput />
-        {formFieldProps.hasError && <ComboboxError />}
+        <ComboboxError />
       </Box>
 
       {/* This is the floating list with items */}
@@ -460,12 +460,7 @@ type ComboboxContextType = {
   hideLabel: boolean;
   open: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
-  refs: {
-    reference: React.MutableRefObject<ReferenceType | null>;
-    floating: React.MutableRefObject<HTMLElement | null>;
-    setReference: (node: ReferenceType | null) => void;
-    setFloating: (node: HTMLElement | null) => void;
-  };
+  refs: UseFloatingReturn['refs'];
   size: NonNullable<ComboboxProps['size']>;
   inputValue: string;
   activeDescendant: string | undefined;
