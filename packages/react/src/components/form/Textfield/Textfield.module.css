@@ -13,6 +13,43 @@
   display: inline-block;
 }
 
+.input {
+  font: inherit;
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  width: 100%;
+  appearance: none;
+  padding: 0 var(--fds-spacing-3);
+  border: solid 1px var(--fds-semantic-border-action-dark);
+  border-radius: var(--fds-border_radius-medium);
+}
+
+.disabled .input {
+  cursor: not-allowed;
+}
+
+.readonly .input {
+  background: var(--fds-semantic-surface-neutral-subtle);
+  border-color: var(--fds-semantic-border-neutral-default);
+}
+
+.field {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--fds-border_radius-medium);
+}
+
+.field > *:first-child {
+  border-top-left-radius: var(--fds-border_radius-medium);
+  border-bottom-left-radius: var(--fds-border_radius-medium);
+}
+
+.field > *:last-child {
+  border-top-right-radius: var(--fds-border_radius-medium);
+  border-bottom-right-radius: var(--fds-border_radius-medium);
+}
+
 .formField.small .adornment {
   padding: 6.5px var(--fds-spacing-3);
 }
@@ -23,6 +60,18 @@
 
 .formField.large .adornment {
   padding: 11px var(--fds-spacing-5);
+}
+
+.formField.small .field {
+  height: var(--fds-sizing-8);
+}
+
+.formField.medium .field {
+  height: var(--fds-sizing-10);
+}
+
+.formField.large .field {
+  height: var(--fds-sizing-12);
 }
 
 .label {
@@ -36,19 +85,6 @@
 .description {
   color: var(--fds-semantic-text-neutral-subtle);
   margin-top: calc(var(--fds-spacing-2) * -1);
-}
-
-.input {
-  font: inherit;
-  position: relative;
-  box-sizing: border-box;
-  flex: 0 1 auto;
-  height: 2.5em;
-  width: 100%;
-  appearance: none;
-  padding: 0 var(--fds-spacing-3);
-  border: solid 1px var(--fds-semantic-border-action-dark);
-  border-radius: var(--fds-border_radius-medium);
 }
 
 .input.small {
@@ -65,15 +101,6 @@
 
 .disabled {
   opacity: 0.3;
-}
-
-.disabled .input {
-  cursor: not-allowed;
-}
-
-.readonly .input {
-  background: var(--fds-semantic-surface-neutral-subtle);
-  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 .error > .input:not(:focus-visible) {
@@ -108,22 +135,6 @@
   border-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-
-.field {
-  display: flex;
-  align-items: stretch;
-  border-radius: var(--fds-border_radius-medium);
-}
-
-.field > *:first-child {
-  border-top-left-radius: var(--fds-border_radius-medium);
-  border-bottom-left-radius: var(--fds-border_radius-medium);
-}
-
-.field > *:last-child {
-  border-top-right-radius: var(--fds-border_radius-medium);
-  border-bottom-right-radius: var(--fds-border_radius-medium);
 }
 
 .padlock {

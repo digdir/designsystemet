@@ -1,7 +1,20 @@
 .container {
   position: relative;
-  min-width: 44px;
-  min-height: 44px;
+}
+
+.container.small {
+  min-width: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-8);
+}
+
+.container.medium {
+  min-width: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-10);
+}
+
+.container.large {
+  min-width: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-12);
 }
 
 .spacing {
@@ -11,8 +24,8 @@
 .icon {
   grid-area: input;
   pointer-events: none;
-  height: 1.75em;
-  width: 1.75em;
+  height: 1.74em;
+  width: 1.74em;
   margin: auto;
   overflow: visible;
 }
@@ -20,6 +33,21 @@
 .checkbox,
 .checkbox .icon {
   border-radius: var(--fds-border_radius-interactive);
+}
+
+.container.small .icon {
+  width: var(--fds-sizing-5);
+  height: var(--fds-sizing-5);
+}
+
+.container.medium .icon {
+  width: var(--fds-sizing-6);
+  height: var(--fds-sizing-6);
+}
+
+.container.large .icon {
+  width: var(--fds-sizing-7);
+  height: var(--fds-sizing-7);
 }
 
 .label {
@@ -53,11 +81,6 @@
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);
   grid-auto-flow: column;
-}
-
-.radio,
-.radio .icon {
-  border-radius: var(--fds-border_radius-full);
 }
 
 .input {

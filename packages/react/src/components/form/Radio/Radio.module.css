@@ -1,7 +1,20 @@
 .container {
   position: relative;
-  min-width: 44px;
-  min-height: 44px;
+}
+
+.container.small {
+  min-width: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-8);
+}
+
+.container.medium {
+  min-width: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-10);
+}
+
+.container.large {
+  min-width: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-12);
 }
 
 .spacing {

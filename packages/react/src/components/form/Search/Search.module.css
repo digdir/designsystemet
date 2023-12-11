@@ -55,7 +55,7 @@
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
-  height: 2.5em;
+  height: var(--fds-sizing-10);
   width: 100%;
   appearance: none;
   padding: 0 var(--fds-spacing-3);
