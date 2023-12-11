@@ -312,6 +312,10 @@ export const Combobox = ({
         if (inputValue === '' && multiple && activeOptions.length > 0) {
           setActiveOptions((prev) => prev.slice(0, prev.length - 1));
         }
+        // if we are in single mode, we need to set activeValue to null
+        if (!multiple) {
+          setActiveOptions([]);
+        }
         break;
 
       default:
