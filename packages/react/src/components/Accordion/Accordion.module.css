@@ -76,74 +76,74 @@
 }
 
 .accordion.neutral,
-.accordion.neutral > .item > .header > button {
+.accordion.neutral > .item .header > button {
   background: var(--fdsc-accordion-header-bg-neutral);
 }
 
 .accordion.subtle,
-.accordion.subtle > .item > .header > button {
+.accordion.subtle > .item .header > button {
   background: var(--fdsc-accordion-header-bg-subtle);
 }
 
 .accordion.first,
-.accordion.first > .item > .header > button {
+.accordion.first > .item .header > button {
   background: var(--fdsc-accordion-header-bg-primary);
 }
 
 .accordion.second,
-.accordion.second > .item > .header > button {
+.accordion.second > .item .header > button {
   background: var(--fdsc-accordion-header-bg-secondary);
 }
 
 .accordion.third,
-.accordion.third > .item > .header > button {
+.accordion.third > .item .header > button {
   background: var(--fdsc-accordion-header-bg-tertiary);
 }
 
-.accordion.border > .item:first-child > .header > button {
+.accordion.border > .item:first-child .header > button {
   border-top: 0;
 }
 
-.accordion.first > .item:not(:first-child) > .header > button,
-.accordion.second > .item:not(:first-child) > .header > button,
-.accordion.third > .item:not(:first-child) > .header > button {
+.accordion.first > .item:not(:first-child) .header > button,
+.accordion.second > .item:not(:first-child) .header > button,
+.accordion.third > .item:not(:first-child) .header > button {
   border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .accordion.subtle > .item > .header > button:hover {
+  .accordion.subtle > .item .header > button:hover {
     background: var(--fdsc-accordion-header-bg-subtle-hover);
   }
 
-  .accordion.first > .item > .header > button:hover {
+  .accordion.first > .item .header > button:hover {
     background: var(--fdsc-accordion-header-bg-primary-hover);
   }
 
-  .accordion.second > .item > .header > button:hover {
+  .accordion.second > .item .header > button:hover {
     background: var(--fdsc-accordion-header-bg-secondary-hover);
   }
 
-  .accordion.third > .item > .header > button:hover {
+  .accordion.third > .item .header > button:hover {
     background: var(--fdsc-accordion-header-bg-tertiary-hover);
   }
 }
 
-.accordion.neutral > .item.open > .header > button,
-.accordion.subtle > .item.open > .header > button {
+.accordion.neutral > .item.open .header > button,
+.accordion.subtle > .item.open .header > button {
   background-color: var(--fdsc-accordion-header-bg-neutral-active);
 }
 
-.accordion.first > .item.open > .header > button,
-.accordion.second > .item.open > .header > button,
-.accordion.third > .item.open > .header > button {
+.accordion.first > .item.open .header > button,
+.accordion.second > .item.open .header > button,
+.accordion.third > .item.open .header > button {
   background-color: rgba(0 0 0 / 0.03);
 }
 
-.item.open > .header > button:hover + * .content {
+.item.open .header > button:hover + * .content {
   border-color: var(--fdsc-accordion-content-border-open);
 }
 
-.item.open > .header > button .expandIcon {
+.item.open .header > button .expandIcon {
   transform: rotateZ(180deg);
 }
 
