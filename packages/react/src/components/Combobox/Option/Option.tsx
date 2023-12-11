@@ -2,8 +2,8 @@ import React, { forwardRef, useContext, useEffect, useId } from 'react';
 import cn from 'classnames';
 
 import { ComboboxContext } from '../Combobox';
-import { Checkbox } from '../../form/Checkbox/Checkbox';
 import { Label } from '../../Typography';
+import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 
 import classes from './Option.module.css';
 import ComboboxOptionDescription from './Description/Description';
@@ -81,10 +81,9 @@ export const ComboboxOption = forwardRef<
       ref={ref}
     >
       {multiple && (
-        <Checkbox
+        <ComboboxCheckbox
           size={size}
           checked={!!active}
-          value={value}
           className={classes.checkbox}
         />
       )}

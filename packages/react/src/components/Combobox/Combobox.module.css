@@ -185,3 +185,12 @@
   outline-offset: var(--fds-focus-border-width);
   box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow) !important;
 }
+
+.showChecked path {
+  display: inline !important;
+}
+
+.showChecked rect {
+  stroke: var(--fds-semantic-border-input-hover) !important;
+  fill: var(--fds-semantic-border-input-hover) !important;
+}
