@@ -9,8 +9,8 @@
 .icon {
   grid-area: input;
   pointer-events: none;
-  height: 1.75em;
-  width: 1.75em;
+  width: var(--fds-sizing-6);
+  height: var(--fds-sizing-6);
   margin: auto;
   overflow: visible;
 }
@@ -40,8 +40,8 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 2.5em;
-  height: 2.5em;
+  width: var(--fds-sizing-10);
+  height: var(--fds-sizing-10);
   display: inline-grid;
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);

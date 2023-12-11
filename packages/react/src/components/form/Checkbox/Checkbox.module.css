@@ -9,8 +9,8 @@
 .icon {
   grid-area: input;
   pointer-events: none;
-  height: 1.74em;
-  width: 1.74em;
+  width: var(--fds-sizing-6);
+  height: var(--fds-sizing-6);
   margin: auto;
   overflow: visible;
 }

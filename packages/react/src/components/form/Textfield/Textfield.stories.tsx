@@ -49,7 +49,7 @@ export const HtmlSize: Story = {
 
 export const Adornments: Story = {
   args: {
-    label: 'Label',
+    label: 'Medium',
     prefix: 'prefix',
     suffix: 'suffix',
   },
@@ -57,7 +57,7 @@ export const Adornments: Story = {
 
 export const AdornmentsSmall: Story = {
   args: {
-    label: 'Label',
+    label: 'Small',
     prefix: 'prefix',
     suffix: 'suffix',
     size: 'small',
@@ -66,7 +66,7 @@ export const AdornmentsSmall: Story = {
 
 export const AdornmentsLarge: Story = {
   args: {
-    label: 'Label',
+    label: 'Large',
     prefix: 'prefix',
     suffix: 'suffix',
     size: 'large',
