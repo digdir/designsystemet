@@ -5,6 +5,7 @@ import Radio from './Radio/Radio.svelte';
 import RadioGroup from './Radio/RadioGroup.svelte';
 import Checkbox from './Checkbox/Checkbox.svelte';
 import CheckboxGroup from './Checkbox/CheckboxGroup.svelte';
+import Search from './Search/Search.svelte';
 
 export {
   Textfield,
@@ -14,4 +15,5 @@ export {
   Switch,
   Checkbox,
   CheckboxGroup,
+  Search,
 };

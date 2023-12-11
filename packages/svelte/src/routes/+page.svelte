@@ -31,6 +31,7 @@
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
   import CheckboxGroup from '$lib/components/Form/Checkbox/CheckboxGroup.svelte';
   import Textarea from '$lib/components/Form/Textarea/Textarea.svelte';
+  import Search from '$lib/components/Form/Search/Search.svelte';
 
   function handleTabChange(value) {
     console.log('Tab changed:', value);
@@ -38,6 +39,7 @@
 
   let isModalOpen = false;
   let showTextfieldError = false;
+  let showSearchError = false;
 
   function openModal(event) {
     event.stopPropagation();
@@ -49,6 +51,7 @@
   }
 
   let textfieldValue = '';
+  let searchValue = '';
   let isSwitchChecked = false;
 
   let textareaValue = '';
@@ -235,6 +238,21 @@
   description="Beskrivelse"
   error="Lorem ipsum error"
   hideLabel={false}
+  characterLimit={10}
+  characterLimitLabel={(count) =>
+    count > -1
+      ? `Du har ${count} tegn igjen.`
+      : `Du har ${Math.abs(count)} tegn for mye.`}
+/>
+
+<br />
+<h1 class="componentHeader">SEARCH</h1>
+<br />
+<Switch bind:checked={showSearchError}>Show Error</Switch>
+<Search
+  bind:value={searchValue}
+  error={showSearchError ? 'Lorem ipsum error' : ''}
+  size="medium"
   characterLimit={10}
   characterLimitLabel={(count) =>
     count > -1

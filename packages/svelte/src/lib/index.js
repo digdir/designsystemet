@@ -33,6 +33,7 @@ import {
   Checkbox,
   CheckboxGroup,
   Switch,
+  Search,
 } from './components/Form';
 import Tabs from './components/Tabs/Tabs.svelte';
 import TabContent from './components/Tabs/TabContent.svelte';
@@ -68,4 +69,5 @@ export {
   TabContent,
   TabItem,
   TabList,
+  Search,
 };
