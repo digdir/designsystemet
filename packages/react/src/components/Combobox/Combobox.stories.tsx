@@ -210,6 +210,7 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = React.useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('handleSubmit', e);
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const values = Array.from(formData.values());

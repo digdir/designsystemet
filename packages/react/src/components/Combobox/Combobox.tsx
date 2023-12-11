@@ -357,7 +357,7 @@ export const Combobox = ({
           setActiveDescendant(id);
         },
         /* Recieves the value of the item, and searches for it in our values lookup */
-        onItemClick: (value: string) => {
+        onOptionClick: (value: string) => {
           if (readOnly) return;
           if (disabled) return;
           const item = values.find((item) => item.value === value);
@@ -438,7 +438,7 @@ type ComboboxContextType = {
   getReferenceProps: (
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;
-  onItemClick: (value: string) => void;
+  onOptionClick: (value: string) => void;
   setActiveOptions: React.Dispatch<React.SetStateAction<Option[]>>;
 };
 

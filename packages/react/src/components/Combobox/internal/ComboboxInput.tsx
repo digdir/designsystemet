@@ -88,6 +88,12 @@ export const ComboboxInput = () => {
         onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
           handleKeyDown(event);
         },
+        // preventDefault on keydown to avoid sending in form
+        onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+          }
+        },
       })}
       aria-disabled={disabled}
       className={cn(

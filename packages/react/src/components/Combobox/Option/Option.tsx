@@ -38,7 +38,7 @@ export const ComboboxOption = forwardRef<
     activeOptions,
     activeIndex,
     setActiveItem,
-    onItemClick,
+    onOptionClick,
     multiple,
     size,
   } = context;
@@ -61,7 +61,8 @@ export const ComboboxOption = forwardRef<
       aria-selected={activeIndex === index}
       aria-labelledby={labelId}
       onClick={(e) => {
-        onItemClick(value);
+        e.preventDefault();
+        onOptionClick(value);
         rest.onClick?.(e);
       }}
       onMouseEnter={(e) => {
