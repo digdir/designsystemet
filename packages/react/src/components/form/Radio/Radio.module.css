@@ -2,21 +2,6 @@
   position: relative;
 }
 
-.container.small {
-  min-width: var(--fds-sizing-8);
-  min-height: var(--fds-sizing-8);
-}
-
-.container.medium {
-  min-width: var(--fds-sizing-10);
-  min-height: var(--fds-sizing-10);
-}
-
-.container.large {
-  min-width: var(--fds-sizing-12);
-  min-height: var(--fds-sizing-12);
-}
-
 .spacing {
   padding-left: calc(var(--fds-spacing-6) + 17px);
 }
@@ -32,7 +17,7 @@
 
 .label {
   padding-left: 3px;
-  height: 2.5em;
+  min-height: 2.3em;
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -61,6 +46,36 @@
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);
   grid-auto-flow: column;
+}
+
+.container.small {
+  min-width: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-8);
+}
+
+.container.medium {
+  min-width: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-10);
+}
+
+.container.large {
+  min-width: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-12);
+}
+
+.container.small .control {
+  width: var(--fds-sizing-8);
+  height: var(--fds-sizing-8);
+}
+
+.container.medium .control {
+  width: var(--fds-sizing-10);
+  height: var(--fds-sizing-10);
+}
+
+.container.large .control {
+  width: var(--fds-sizing-12);
+  height: var(--fds-sizing-12);
 }
 
 .radio,

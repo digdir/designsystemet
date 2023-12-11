@@ -8,21 +8,22 @@ import {
   Button,
   Checkbox,
   Radio,
-  type TextfieldProps,
+  Tag,
+  type ButtonProps,
 } from '../src/components';
 
 export default {
   title: 'Testing',
 } as Meta;
 
-export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
+export const Row: StoryFn<{ size: ButtonProps['size'] }> = ({ size }) => {
   return (
     <>
       <div
         style={{
           display: 'flex',
           gap: 'var(--fds-spacing-2)',
-          border: '1px solid red',
+          background: 'rgba(255 0 0/0.3)',
         }}
       >
         <Textfield
@@ -42,15 +43,15 @@ export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
           <option>opt2</option>
           <option>opt3</option>
         </NativeSelect>
-        <Button size={size}>Jeg vil ha Kake</Button>
+        <Button size={size}>Knapp</Button>
       </div>
-
+      <br />
       <div
         style={{
           display: 'flex',
           gap: 'var(--fds-spacing-2)',
-          border: '1px solid red',
-          borderTop: '0',
+          background: 'rgba(255 0 0/0.3)',
+          alignItems: 'flex-start',
         }}
       >
         <Radio
@@ -75,6 +76,12 @@ export const Row: StoryFn<{ size: TextfieldProps['size'] }> = ({ size }) => {
           size={size}
           aria-label='no label checkbox'
         ></Checkbox>
+        <Tag
+          variant='secondary'
+          size={size}
+        >
+          Tag
+        </Tag>
       </div>
     </>
   );
