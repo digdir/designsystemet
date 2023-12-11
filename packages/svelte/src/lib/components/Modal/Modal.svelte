@@ -13,6 +13,12 @@
   export let title = 'Dette er en tittel';
 
   /**
+   * Subtitle of the modal.
+   */
+  export let subtitle =
+    'Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel';
+
+  /**
    * Text on primary button.
    */
   export let primaryButtonText = 'OK';
@@ -129,13 +135,28 @@
       on:focus={() => lastButton.focus()}><div /></a
     >
     <div class="modal-header">
-      <h2 style="margin: 0;">{title}</h2>
+      <h2 style="margin: 0; font-weight: normal">{title}</h2>
       <button
         class="close-btn"
         on:click={close}
-        bind:this={closeButton}>&times;</button
+        bind:this={closeButton}
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="15"
+          viewBox="0 0 14 15"
+          fill="none"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M1.40533 0.71967C1.11244 0.426777 0.637563 0.426777 0.34467 0.71967C0.0517767 1.01256 0.0517767 1.48744 0.34467 1.78033L6.00184 7.4375L0.34467 13.0947C0.0517767 13.3876 0.0517767 13.8624 0.34467 14.1553C0.637563 14.4482 1.11244 14.4482 1.40533 14.1553L7.0625 8.49816L12.7197 14.1553C13.0126 14.4482 13.4874 14.4482 13.7803 14.1553C14.0732 13.8624 14.0732 13.3876 13.7803 13.0947L8.12316 7.4375L13.7803 1.78033C14.0732 1.48744 14.0732 1.01256 13.7803 0.71967C13.4874 0.426777 13.0126 0.426777 12.7197 0.71967L7.0625 6.37684L1.40533 0.71967Z"
+            fill="#00315D"
+          />
+        </svg></button
       >
     </div>
+    <p style="margin: 0; padding-top: 1em; line-height: 1.5;">{subtitle}</p>
     <div class="modal-content">
       <slot />
     </div>
@@ -179,19 +200,19 @@
 
   .modal {
     display: inline-flex;
-    padding: var(--component-mode-spacing-large, 18px);
+    padding: var(--spacing-6, 1.6875rem);
     flex-direction: column;
     gap: 8px;
     max-width: 500px;
     width: 80%;
-    border-radius: var(--border-radius-small, 2px);
-    border: 1px solid var(--semantic-border-neutral-subtle, #d2d5d8);
+    border-radius: var(--border-radius-large, 0.5rem);
     z-index: 1001;
   }
 
   .modal.default {
-    background: var(--brand-alt-3100, #fff4e8);
-    box-shadow: 6px 6px 0px -5px #f39200;
+    background: var(--semantic-background-default, #fff);
+    box-shadow: 0px 25px 50px -5px rgba(0, 0, 0, 0.1),
+      0px 8px 10px -6px rgba(0, 0, 0, 0.1);
   }
 
   .modal.alert {
@@ -207,9 +228,9 @@
 
   .close-btn {
     cursor: pointer;
+    color: var(--semantic-text-action-secondary-default, #00315d);
     border: none;
     background: none;
-    font-size: 2em;
   }
 
   .modal-content {
