@@ -16,7 +16,10 @@ export default {
   title: 'Testing',
 } as Meta;
 
-export const Row: StoryFn<{ size: ButtonProps['size'] }> = ({ size }) => {
+export const MediumRow: StoryFn<{
+  size: ButtonProps['size'];
+  direction: 'column' | 'row';
+}> = ({ size, direction = 'row' }) => {
   return (
     <>
       <div
@@ -24,6 +27,7 @@ export const Row: StoryFn<{ size: ButtonProps['size'] }> = ({ size }) => {
           display: 'flex',
           gap: 'var(--fds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
+          flexDirection: direction,
         }}
       >
         <Textfield
@@ -52,6 +56,7 @@ export const Row: StoryFn<{ size: ButtonProps['size'] }> = ({ size }) => {
           gap: 'var(--fds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           alignItems: 'flex-start',
+          flexDirection: direction,
         }}
       >
         <Radio
@@ -87,14 +92,34 @@ export const Row: StoryFn<{ size: ButtonProps['size'] }> = ({ size }) => {
   );
 };
 
-export const SmallRow = Row.bind({});
+export const SmallRow = MediumRow.bind({});
 
 SmallRow.args = {
   size: 'small',
 };
 
-export const LargeRow = Row.bind({});
+export const LargeRow = MediumRow.bind({});
 
 LargeRow.args = {
   size: 'large',
+};
+
+export const SmallCol = MediumRow.bind({});
+
+SmallCol.args = {
+  size: 'small',
+  direction: 'column',
+};
+export const MediumCol = MediumRow.bind({});
+
+MediumCol.args = {
+  size: 'medium',
+  direction: 'column',
+};
+
+export const LargeCol = MediumRow.bind({});
+
+LargeCol.args = {
+  size: 'large',
+  direction: 'column',
 };
