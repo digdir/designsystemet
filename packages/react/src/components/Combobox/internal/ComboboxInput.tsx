@@ -63,7 +63,7 @@ export const ComboboxInput = () => {
     setInputValue(value);
     setActiveIndex(0);
 
-    if (value) {
+    if (typeof value === 'string') {
       setOpen(true);
     } else {
       setOpen(false);
