@@ -101,7 +101,6 @@ export const ComboboxInput = () => {
         classes.inputWrapper,
         classes[size],
         inputInFocus && classes.inFocus,
-        disabled && classes.disabled,
         readOnly && classes.readonly,
         error && classes.error,
       )}

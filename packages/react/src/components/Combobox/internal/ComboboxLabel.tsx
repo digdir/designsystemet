@@ -14,15 +14,8 @@ export const ComboboxLabel = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const {
-    label,
-    description,
-    hideLabel,
-    size,
-    readOnly,
-    disabled,
-    formFieldProps,
-  } = context;
+  const { label, description, hideLabel, size, readOnly, formFieldProps } =
+    context;
 
   return (
     <>
@@ -32,7 +25,6 @@ export const ComboboxLabel = () => {
           htmlFor={formFieldProps.inputProps.id}
           className={cn(
             classes.label,
-            disabled && classes.disabled,
             hideLabel && utilityClasses.visuallyHidden,
           )}
         >
@@ -53,7 +45,6 @@ export const ComboboxLabel = () => {
           className={cn(
             classes.description,
             hideLabel && utilityClasses.visuallyHidden,
-            disabled && classes.disabled,
           )}
         >
           {description}

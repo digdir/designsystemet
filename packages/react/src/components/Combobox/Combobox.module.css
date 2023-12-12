@@ -67,14 +67,6 @@
   outline: none;
 }
 
-.inputWrapper.disabled {
-  cursor: not-allowed;
-}
-
-.inputWrapper.disabled input {
-  cursor: not-allowed;
-}
-
 .inputWrapper.error {
   border-color: var(--fds-semantic-border-danger-default);
   border-width: 2px;
@@ -103,10 +95,6 @@
   cursor: pointer;
 }
 
-.inputWrapper.disabled .arrow {
-  cursor: not-allowed;
-}
-
 .inputWrapper.readonly {
   background: var(--fds-semantic-surface-neutral-subtle);
   border-color: var(--fds-semantic-border-neutral-default);
@@ -125,10 +113,6 @@
   margin-top: calc(var(--fds-spacing-2) * -1);
 }
 
-.description.disabled {
-  opacity: var(--fds-opacity-disabled);
-}
-
 .clearButton {
   display: grid;
   place-items: center;
@@ -141,10 +125,6 @@
   height: 29px;
   width: 29px;
   aspect-ratio: 1;
-}
-
-.clearButton.disabled {
-  cursor: not-allowed;
 }
 
 .clearButton.small {
@@ -167,7 +147,11 @@
 }
 
 .disabled {
-  opacity: 0.3;
+  opacity: var(--fds-opacity-disabled);
+}
+
+.disabled * {
+  cursor: not-allowed;
 }
 
 .padlock {

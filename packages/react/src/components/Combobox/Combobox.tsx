@@ -372,7 +372,7 @@ export const Combobox = ({
       }}
     >
       <Box
-        className={classes.combobox}
+        className={cn(classes.combobox, disabled && classes.disabled)}
         ref={portalRef}
       >
         {/* This is only for the Combobox to work in forms */}
