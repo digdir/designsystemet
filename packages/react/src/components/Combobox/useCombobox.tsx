@@ -27,17 +27,17 @@ export default function useCombobox({
   const [open, setOpen] = useState(false);
 
   const values = useMemo(() => {
-    const allValues: Option[] = [];
+    const allOptions: Option[] = [];
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === ComboboxOption) {
         const props = child.props as ComboboxOptionProps;
-        allValues.push({
+        allOptions.push({
           value: props.value,
           label: props.displayValue,
         });
       }
     });
-    return allValues;
+    return allOptions;
   }, [children]);
 
   const comboboxOptions = useMemo(() => {
