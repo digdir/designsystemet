@@ -34,13 +34,20 @@ export default function useCombobox({
         let label = props.displayValue || '';
 
         if (!props.displayValue) {
-          if (typeof props.children !== 'string') {
-            throw new Error(
-              'if ComboboxOption is not a string, it must have a displayValue prop',
-            );
-          }
+          let childrenLabel = '';
 
-          label = props.children;
+          // go over children and find all string
+          React.Children.forEach(props.children, (child) => {
+            if (typeof child === 'string') {
+              childrenLabel += child;
+            } else {
+              throw new Error(
+                'if ComboboxOption is not a string, it must have a displayValue prop',
+              );
+            }
+          });
+
+          label = childrenLabel;
         }
 
         allOptions.push({
