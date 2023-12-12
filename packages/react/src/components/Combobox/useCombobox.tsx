@@ -42,11 +42,10 @@ export default function useCombobox({
 
   const comboboxOptions = useMemo(() => {
     const valuesArray = Array.from(values);
-    const childrenArr = React.Children.toArray(children).filter((child) => {
-      if (!React.isValidElement(child)) return false;
-      if (child.type !== ComboboxOption) return false;
-      return true;
-    });
+    const childrenArr = React.Children.toArray(children).filter(
+      (child) =>
+        !(!React.isValidElement(child) || child.type !== ComboboxOption),
+    );
 
     const activeValue = valuesArray.find((item) => item.label === inputValue);
     if (activeValue && !multiple) {
