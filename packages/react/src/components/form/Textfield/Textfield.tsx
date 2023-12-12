@@ -104,6 +104,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         style={style}
         className={cn(
           classes.formField,
+          classes[size],
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
           rest.className,
