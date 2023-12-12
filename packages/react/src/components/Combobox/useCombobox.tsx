@@ -26,7 +26,7 @@ export default function useCombobox({
 }: UseComboboxProps) {
   const [open, setOpen] = useState(false);
 
-  const values = useMemo(() => {
+  const options = useMemo(() => {
     const allOptions: Option[] = [];
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === ComboboxOption) {
@@ -41,7 +41,7 @@ export default function useCombobox({
   }, [children]);
 
   const comboboxOptions = useMemo(() => {
-    const valuesArray = Array.from(values);
+    const valuesArray = Array.from(options);
     const childrenArr = React.Children.toArray(children).filter(
       (child) =>
         !(!React.isValidElement(child) || child.type !== ComboboxOption),
@@ -63,7 +63,7 @@ export default function useCombobox({
 
       return filter(inputValue, item?.label || '', value);
     });
-  }, [values, children, inputValue, multiple, filter]);
+  }, [options, children, inputValue, multiple, filter]);
 
   const restChildren = useMemo(() => {
     const childrenArr = React.Children.toArray(children);
@@ -97,7 +97,7 @@ export default function useCombobox({
 
     // check if inputValue will show any values
     let activeValue;
-    for (const item of values) {
+    for (const item of options) {
       if (filter(inputValue, item.label, item.value)) {
         activeValue = item;
         break;
@@ -107,13 +107,13 @@ export default function useCombobox({
     if (!activeValue) return true;
 
     return false;
-  }, [inputValue, values, filter]);
+  }, [inputValue, options, filter]);
 
   return {
     filteredItems,
     restChildren,
     showEmptyChild,
-    values,
+    options,
     open,
     setOpen,
   };
