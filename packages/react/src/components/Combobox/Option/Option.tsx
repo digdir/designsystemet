@@ -29,6 +29,7 @@ export type ComboboxOptionProps = {
   description?: string;
   /**
    * The text displayed in the input or in the chips when the item is selected.
+   * Required if children is not composed of strings only.
    */
   displayValue?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
