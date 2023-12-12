@@ -22,6 +22,7 @@ export const ComboboxClearButton = () => {
       className={cn(
         classes.clearButton,
         classes[size],
+        disabled && classes.disabled,
         utilityClasses.focusable,
       )}
       onClick={() => {
