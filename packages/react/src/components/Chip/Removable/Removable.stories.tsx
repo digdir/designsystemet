@@ -16,5 +16,6 @@ export const Preview: Story = {
     children: 'Nynorsk',
     size: 'small',
     'aria-label': 'Slett nynorsk',
+    disabled: false,
   },
 };
