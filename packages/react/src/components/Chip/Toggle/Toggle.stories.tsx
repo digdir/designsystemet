@@ -17,5 +17,6 @@ export const Preview: Story = {
     size: 'small',
     selected: false,
     checkmark: false,
+    disabled: false,
   },
 };
