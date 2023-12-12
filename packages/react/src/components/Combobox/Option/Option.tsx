@@ -1,4 +1,10 @@
-import React, { forwardRef, useContext, useEffect, useId } from 'react';
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+} from 'react';
 import cn from 'classnames';
 
 import { ComboboxContext } from '../Combobox';
@@ -53,6 +59,16 @@ export const ComboboxOption = forwardRef<
     if (activeIndex === index) setActiveItem(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveItem]);
 
+  const icon = useMemo(() => {
+    return (
+      <ComboboxCheckbox
+        size={size}
+        checked={!!active}
+        className={classes.checkbox}
+      />
+    );
+  }, [active, size]);
+
   return (
     <button
       {...rest}
@@ -80,13 +96,7 @@ export const ComboboxOption = forwardRef<
       )}
       ref={ref}
     >
-      {multiple && (
-        <ComboboxCheckbox
-          size={size}
-          checked={!!active}
-          className={classes.checkbox}
-        />
-      )}
+      {multiple && icon}
       <Label
         className={classes.itemText}
         size={size}
