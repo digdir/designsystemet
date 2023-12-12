@@ -33,6 +33,7 @@ const Comp = (args: Partial<ComboboxProps>) => {
           <Combobox.Option
             key={index}
             value={item.value}
+            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
