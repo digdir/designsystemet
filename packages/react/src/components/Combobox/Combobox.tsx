@@ -94,12 +94,12 @@ export type ComboboxProps = {
   /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
-   * @param value
+   * @param displayValue
    * @returns boolean
    *
-   * @default (inputValue, value) => value.toLowerCase().startsWith(inputValue.toLowerCase())
+   * @default (inputValue, displayValue) => value.toLowerCase().startsWith(inputValue.toLowerCase())
    */
-  filter?: (inputValue: string, label: string, value: string) => boolean;
+  filter?: (inputValue: string, displayValue: string, value: string) => boolean;
 } & React.HTMLAttributes<HTMLInputElement>;
 
 export const Combobox = ({
