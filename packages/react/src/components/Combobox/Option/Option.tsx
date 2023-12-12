@@ -27,12 +27,17 @@ export type ComboboxOptionProps = {
    * The description of the item, will be displayed below the item text
    */
   description?: string;
+  /**
+   * The text displayed in the input or in the chips when the item is selected.
+   */
+  displayValue: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ComboboxOption = forwardRef<
   HTMLButtonElement,
   ComboboxOptionProps
->(({ value, index, description, children, ...rest }, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+>(({ value, index, description, displayValue, children, ...rest }, ref) => {
   const labelId = useId();
   const generatedId = useId();
 
@@ -74,10 +79,10 @@ export const ComboboxOption = forwardRef<
       {...rest}
       id={rest.id || generatedId}
       role='option'
+      type='button'
       aria-selected={activeIndex === index}
       aria-labelledby={labelId}
       onClick={(e) => {
-        e.preventDefault();
         onOptionClick(value);
         rest.onClick?.(e);
       }}

@@ -31,18 +31,9 @@ export default function useCombobox({
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === ComboboxOption) {
         const props = child.props as ComboboxOptionProps;
-
-        let label = '';
-        // get label from children, but only the string
-        React.Children.forEach(props.children, (child) => {
-          if (typeof child === 'string') {
-            label += child;
-          }
-        });
-
         allValues.push({
           value: props.value,
-          label,
+          label: props.displayValue,
         });
       }
     });

@@ -30,6 +30,7 @@ export const ComboboxClearButton = () => {
         setSelectedOptions([]);
         setInputValue('');
       }}
+      type='button'
     >
       <XMarkIcon
         fontSize='1.5em'

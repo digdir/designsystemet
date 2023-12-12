@@ -10,18 +10,21 @@ const CHILDREN = [
   <Combobox.Option
     key='1'
     value='leikanger'
+    displayValue='Leikanger'
   >
     Leikanger
   </Combobox.Option>,
   <Combobox.Option
     key='2'
     value='oslo'
+    displayValue='Oslo'
   >
     Oslo
   </Combobox.Option>,
   <Combobox.Option
     key='3'
     value='bronnoysund'
+    displayValue='Brønnøysund'
   >
     Brønnøysund
   </Combobox.Option>,

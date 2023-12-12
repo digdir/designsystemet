@@ -62,6 +62,7 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Option
             key={index}
             value={item.value}
+            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
@@ -99,6 +100,7 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Option
             key={index}
             value={item.value}
+            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
@@ -144,6 +146,7 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
             key={index}
             value={item.targetName}
             description={`Orgnr.: ${item.sourceCode}`}
+            displayValue={item.targetName}
           >
             {item.targetName}
           </Combobox.Option>
@@ -197,6 +200,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Option
             key={index}
             value={item.value}
+            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
@@ -210,7 +214,6 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = React.useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('handleSubmit', e);
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const values = Array.from(formData.values());
@@ -234,6 +237,7 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
             <Combobox.Option
               key={index}
               value={item.value}
+              displayValue={item.name}
             >
               {item.name}
             </Combobox.Option>
@@ -294,6 +298,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
               <Combobox.Option
                 key={index}
                 value={item.value}
+                displayValue={item.name}
               >
                 {item.name}
               </Combobox.Option>
