@@ -127,12 +127,12 @@ export const Combobox = ({
 
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [activeOptions, setActiveOptions] = useState<Option[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
   const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
     undefined,
   );
   const [prevActiveOptions, setPrevActiveOptions] = useState(
-    JSON.stringify(activeOptions),
+    JSON.stringify(selectedOptions),
   );
 
   const formFieldProps = useFormField(
@@ -155,7 +155,7 @@ export const Combobox = ({
       inputValue,
       filter,
       multiple,
-      activeOptions,
+      selectedOptions,
       listRef,
     });
 
@@ -210,13 +210,13 @@ export const Combobox = ({
 
   // Send new value if item was clicked
   useEffect(() => {
-    const stringifiedActiveOptions = JSON.stringify(activeOptions);
+    const stringifiedActiveOptions = JSON.stringify(selectedOptions);
     if (prevActiveOptions !== stringifiedActiveOptions) {
-      const values = activeOptions.map((item) => item.value);
+      const values = selectedOptions.map((item) => item.value);
       onValueChange?.(values);
       setPrevActiveOptions(stringifiedActiveOptions);
     }
-  }, [onValueChange, activeOptions, prevActiveOptions]);
+  }, [onValueChange, selectedOptions, prevActiveOptions]);
 
   useEffect(() => {
     if (value && values.length > 0) {
@@ -225,24 +225,24 @@ export const Combobox = ({
         return value as Option;
       });
 
-      setActiveOptions(newActiveOptions);
+      setSelectedOptions(newActiveOptions);
     }
   }, [multiple, prevActiveOptions, value, values]);
 
   // handle click on item, either select or deselect - Handles single or multiple
   const handleSelectItem = (item: Option) => {
     // if item is already selected, remove it
-    if (activeOptions.find((i) => i.value === item.value)) {
-      setActiveOptions((prev) => prev.filter((i) => i.value !== item.value));
+    if (selectedOptions.find((i) => i.value === item.value)) {
+      setSelectedOptions((prev) => prev.filter((i) => i.value !== item.value));
       return;
     }
 
     if (multiple) {
-      setActiveOptions([...activeOptions, item]);
+      setSelectedOptions([...selectedOptions, item]);
       setInputValue('');
       inputRef.current?.focus();
     } else {
-      setActiveOptions([item]);
+      setSelectedOptions([item]);
       setInputValue(item?.label || '');
       // move cursor to the end of the input
       setTimeout(() => {
@@ -305,12 +305,12 @@ export const Combobox = ({
         break;
 
       case 'Backspace':
-        if (inputValue === '' && multiple && activeOptions.length > 0) {
-          setActiveOptions((prev) => prev.slice(0, prev.length - 1));
+        if (inputValue === '' && multiple && selectedOptions.length > 0) {
+          setSelectedOptions((prev) => prev.slice(0, prev.length - 1));
         }
         // if we are in single mode, we need to set activeValue to null
         if (!multiple) {
-          setActiveOptions([]);
+          setSelectedOptions([]);
         }
         break;
 
@@ -326,7 +326,7 @@ export const Combobox = ({
       value={{
         size,
         values,
-        activeOptions,
+        selectedOptions,
         multiple,
         showEmptyChild,
         activeIndex,
@@ -348,7 +348,7 @@ export const Combobox = ({
         handleKeyDown,
         setOpen,
         getReferenceProps,
-        setActiveOptions,
+        setSelectedOptions,
         /* Recieves index of item, and the ID of the button element */
         setActiveItem: (index: number, id: string) => {
           if (readOnly) return;
@@ -412,7 +412,7 @@ export const Combobox = ({
 
 type ComboboxContextType = {
   values: Option[];
-  activeOptions: Option[];
+  selectedOptions: Option[];
   activeIndex: number | null;
   multiple: boolean;
   showEmptyChild: boolean;
@@ -439,7 +439,7 @@ type ComboboxContextType = {
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;
   onOptionClick: (value: string) => void;
-  setActiveOptions: React.Dispatch<React.SetStateAction<Option[]>>;
+  setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
 };
 
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(

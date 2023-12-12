@@ -7,7 +7,7 @@ export type UseComboboxProps = {
   children: React.ReactNode;
   inputValue: string;
   multiple: boolean;
-  activeOptions: Option[];
+  selectedOptions: Option[];
   listRef: React.MutableRefObject<(HTMLElement | null)[]>;
   filter: (inputValue: string, label: string, value: string) => boolean;
 };

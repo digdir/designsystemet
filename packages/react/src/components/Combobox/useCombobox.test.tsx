@@ -48,7 +48,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '',
       multiple: false,
-      activeOptions: [],
+      selectedOptions: [],
       listRef: {
         current: [],
       },
@@ -65,7 +65,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: false,
-      activeOptions: [],
+      selectedOptions: [],
       listRef: {
         current: [],
       },
@@ -81,7 +81,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: false,
-      activeOptions: [
+      selectedOptions: [
         {
           value: 'oslo',
           label: 'Oslo',
@@ -102,7 +102,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: true,
-      activeOptions: [
+      selectedOptions: [
         {
           value: 'oslo',
           label: 'Oslo',
@@ -123,7 +123,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,
-      activeOptions: [],
+      selectedOptions: [],
       listRef: {
         current: [],
       },
@@ -139,7 +139,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,
-      activeOptions: [
+      selectedOptions: [
         {
           value: 'oslo',
           label: 'Oslo',

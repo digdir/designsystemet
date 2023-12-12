@@ -10,11 +10,12 @@ export const ComboboxChips = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, readOnly, disabled, activeOptions, setActiveOptions } = context;
+  const { size, readOnly, disabled, selectedOptions, setSelectedOptions } =
+    context;
 
   return (
     <>
-      {activeOptions.map((item) => {
+      {selectedOptions.map((item) => {
         return (
           <ChipRemovable
             key={item.value}
@@ -24,8 +25,8 @@ export const ComboboxChips = () => {
               if (readOnly) return;
               if (disabled) return;
               /* If we click a chip, filter the active values and remove the one we clicked */
-              setActiveOptions(
-                activeOptions.filter((i) => i.value !== item.value),
+              setSelectedOptions(
+                selectedOptions.filter((i) => i.value !== item.value),
               );
             }}
           >

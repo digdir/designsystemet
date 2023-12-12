@@ -28,7 +28,7 @@ export const ComboboxInput = () => {
     activeDescendant,
     error,
     multiple,
-    activeOptions,
+    selectedOptions,
     formFieldProps,
     setOpen,
     setActiveIndex,
@@ -121,7 +121,7 @@ export const ComboboxInput = () => {
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}
-      {multiple && activeOptions.length > 0 && <ComboboxClearButton />}
+      {multiple && selectedOptions.length > 0 && <ComboboxClearButton />}
       {/* Arrow for combobox. Click is handled by the wrapper */}
       <div className={classes.arrow}>
         {open ? (
