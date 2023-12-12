@@ -30,7 +30,7 @@ export type ComboboxOptionProps = {
   /**
    * The text displayed in the input or in the chips when the item is selected.
    */
-  displayValue: string;
+  displayValue?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ComboboxOption = forwardRef<

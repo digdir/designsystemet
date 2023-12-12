@@ -62,7 +62,6 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Option
             key={index}
             value={item.value}
-            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
@@ -100,7 +99,6 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Option
             key={index}
             value={item.value}
-            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
@@ -146,7 +144,6 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
             key={index}
             value={item.targetName}
             description={`Orgnr.: ${item.sourceCode}`}
-            displayValue={item.targetName}
           >
             {item.targetName}
           </Combobox.Option>
@@ -200,7 +197,6 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           <Combobox.Option
             key={index}
             value={item.value}
-            displayValue={item.name}
           >
             {item.name}
           </Combobox.Option>
@@ -237,7 +233,6 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
             <Combobox.Option
               key={index}
               value={item.value}
-              displayValue={item.name}
             >
               {item.name}
             </Combobox.Option>
@@ -298,7 +293,6 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
               <Combobox.Option
                 key={index}
                 value={item.value}
-                displayValue={item.name}
               >
                 {item.name}
               </Combobox.Option>

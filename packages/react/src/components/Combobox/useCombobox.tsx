@@ -31,9 +31,21 @@ export default function useCombobox({
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === ComboboxOption) {
         const props = child.props as ComboboxOptionProps;
+        let label = props.displayValue || '';
+
+        if (!props.displayValue) {
+          if (typeof props.children !== 'string') {
+            throw new Error(
+              'if ComboboxOption is not a string, it must have a displayValue prop',
+            );
+          }
+
+          label = props.children;
+        }
+
         allOptions.push({
           value: props.value,
-          label: props.displayValue,
+          label,
         });
       }
     });
