@@ -29,6 +29,10 @@ export const ComboboxChips = () => {
                 selectedOptions.filter((i) => i.value !== item.value),
               );
             }}
+            style={{
+              /* We already set the opacity on Combobox */
+              opacity: 1,
+            }}
           >
             {item.label}
           </ChipRemovable>
