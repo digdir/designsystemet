@@ -65,6 +65,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         size={size}
         className={cn(
           classes.container,
+          classes[size],
           children && classes.spacing,
           inputProps.disabled && classes.disabled,
           hasError && classes.error,

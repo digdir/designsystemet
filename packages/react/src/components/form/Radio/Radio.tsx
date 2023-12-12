@@ -64,6 +64,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       size={size}
       className={cn(
         classes.container,
+        classes[size],
         children && classes.spacing,
         inputProps.disabled && classes.disabled,
         hasError && classes.error,
