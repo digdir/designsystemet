@@ -54,10 +54,6 @@ export type ComboboxProps = {
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * Placeholder text for the input
-   */
-  placeholder?: string;
-  /**
    * Value of the selected item, or array of values if multiple is true
    */
   value?: string[];
