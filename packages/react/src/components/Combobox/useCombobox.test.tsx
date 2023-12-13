@@ -31,8 +31,14 @@ const CHILDREN = [
   <Combobox.Empty key='4'>No items</Combobox.Empty>,
 ];
 
-const FILTER = (inputValueValue: string, label: string) => {
-  return label.toLowerCase().startsWith(inputValueValue.toLowerCase());
+const FILTER = (
+  inputValueValue: string,
+  option: {
+    value: string;
+    label: string;
+  },
+) => {
+  return option.label.toLowerCase().startsWith(inputValueValue.toLowerCase());
 };
 
 const renderUseCombobox = ({
