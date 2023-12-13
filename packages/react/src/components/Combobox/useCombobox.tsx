@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
@@ -25,8 +25,6 @@ export default function useCombobox({
   multiple,
   filter,
 }: UseComboboxProps) {
-  const [open, setOpen] = useState(false);
-
   const options = useMemo(() => {
     const allOptions: Option[] = [];
     React.Children.forEach(children, (child) => {
@@ -102,8 +100,6 @@ export default function useCombobox({
     optionValues,
     restChildren,
     options,
-    open,
-    setOpen,
   };
 }
 

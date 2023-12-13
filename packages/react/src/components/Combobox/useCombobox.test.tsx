@@ -60,7 +60,6 @@ describe('useCombobox', () => {
       selectedOptions: [],
     });
 
-    expect(result.current.open).toBe(false);
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(3);
     expect(result.current.restChildren.length).toBe(1);

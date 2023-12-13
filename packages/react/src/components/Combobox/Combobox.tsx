@@ -111,6 +111,7 @@ export const Combobox = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
 
+  const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
@@ -135,14 +136,7 @@ export const Combobox = ({
   );
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
-  const {
-    options,
-    optionsChildren,
-    restChildren,
-    open,
-    optionValues,
-    setOpen,
-  } = useCombobox({
+  const { options, optionsChildren, restChildren, optionValues } = useCombobox({
     children,
     inputValue,
     filter,
