@@ -11,7 +11,7 @@ import { data } from './data/data';
 import { Combobox } from './index';
 
 export default {
-  title: 'Felles/Combobox',
+  title: 'Experimental/Combobox',
   component: Combobox,
 } as Meta;
 

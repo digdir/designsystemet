@@ -16,4 +16,9 @@ Combobox.Empty = ComboboxEmpty;
 Combobox.Option.displayName = 'Combobox.Option';
 Combobox.Empty.displayName = 'Combobox.Empty';
 
-export { Combobox, ComboboxOption, ComboboxEmpty, ComboboxOptionDescription };
+export {
+  Combobox as EXPERIMENTAL_Combobox,
+  ComboboxOption as EXPERIMENTAL_ComboboxOption,
+  ComboboxEmpty as EXPERIMENTAL_ComboboxEmpty,
+  ComboboxOptionDescription as EXPERIMENTAL_ComboboxOptionDescription,
+};
