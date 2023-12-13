@@ -8,7 +8,7 @@ import { Modal } from '../Modal';
 
 import { data } from './data/data';
 
-import { Combobox } from './index';
+import { EXPERIMENTAL_Combobox as Combobox } from './index';
 
 export default {
   title: 'Experimental/Combobox',
