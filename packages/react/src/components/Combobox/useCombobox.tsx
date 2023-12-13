@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
+import type { ComboboxProps } from './Combobox';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
@@ -9,12 +10,14 @@ export type UseComboboxProps = {
   multiple: boolean;
   selectedOptions: Option[];
   listRef: React.MutableRefObject<(HTMLElement | null)[]>;
-  filter: (inputValue: string, label: string, value: string) => boolean;
+  filter: NonNullable<ComboboxProps['filter']>;
 };
 
 export type Option = {
   value: string;
   label: string;
+  displayValue?: string;
+  description?: string;
 };
 
 export default function useCombobox({
@@ -53,6 +56,8 @@ export default function useCombobox({
         allOptions.push({
           value: props.value,
           label,
+          displayValue: props.displayValue,
+          description: props.description,
         });
       }
     });
@@ -80,7 +85,9 @@ export default function useCombobox({
       const value = props.value as string;
       const item = valuesArray.find((item) => item.value === value);
 
-      return filter(inputValue, item?.label || '', value);
+      if (!item) return false;
+
+      return filter(inputValue, { ...item });
     });
   }, [options, children, inputValue, multiple, filter]);
 
@@ -117,7 +124,7 @@ export default function useCombobox({
     // check if inputValue will show any values
     let activeValue;
     for (const item of options) {
-      if (filter(inputValue, item.label, item.value)) {
+      if (filter(inputValue, { ...item })) {
         activeValue = item;
         break;
       }
