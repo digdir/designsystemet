@@ -58,14 +58,11 @@ describe('useCombobox', () => {
       inputValue: '',
       multiple: false,
       selectedOptions: [],
-      listRef: {
-        current: [],
-      },
     });
 
     expect(result.current.open).toBe(false);
     expect(result.current.options.length).toBe(3);
-    expect(result.current.filteredItems.length).toBe(3);
+    expect(result.current.optionsChildren.length).toBe(3);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(false);
   });
@@ -75,13 +72,10 @@ describe('useCombobox', () => {
       inputValue: '3',
       multiple: false,
       selectedOptions: [],
-      listRef: {
-        current: [],
-      },
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.filteredItems.length).toBe(0);
+    expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(true);
   });
@@ -96,13 +90,10 @@ describe('useCombobox', () => {
           label: 'Oslo',
         },
       ],
-      listRef: {
-        current: [],
-      },
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.filteredItems.length).toBe(0);
+    expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(true);
   });
@@ -117,13 +108,10 @@ describe('useCombobox', () => {
           label: 'Oslo',
         },
       ],
-      listRef: {
-        current: [],
-      },
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.filteredItems.length).toBe(0);
+    expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(true);
   });
@@ -133,13 +121,10 @@ describe('useCombobox', () => {
       inputValue: 'l',
       multiple: false,
       selectedOptions: [],
-      listRef: {
-        current: [],
-      },
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.filteredItems.length).toBe(1);
+    expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(false);
   });
@@ -154,13 +139,10 @@ describe('useCombobox', () => {
           label: 'Oslo',
         },
       ],
-      listRef: {
-        current: [],
-      },
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.filteredItems.length).toBe(1);
+    expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
     expect(result.current.showEmptyChild).toBe(false);
   });
