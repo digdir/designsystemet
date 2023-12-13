@@ -23,9 +23,7 @@ import type { FormFieldProps } from '../form/useFormField';
 import { useFormField } from '../form/useFormField';
 
 import type { Option } from './useCombobox';
-import useCombobox from './useCombobox';
-import type { ComboboxOptionProps } from './Option/Option';
-import { ComboboxOption } from './Option/Option';
+import useCombobox, { isComboboxOption } from './useCombobox';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -289,8 +287,8 @@ export const Combobox = ({
         event.preventDefault();
         if (activeIndex !== null && optionsChildren[activeIndex]) {
           const child = optionsChildren[activeIndex];
-          if (React.isValidElement(child) && child.type === ComboboxOption) {
-            const props = child.props as ComboboxOptionProps;
+          if (isComboboxOption(child)) {
+            const props = child.props;
             const item = options.find((item) => item.value === props.value);
             handleSelectItem(item as Option);
           }

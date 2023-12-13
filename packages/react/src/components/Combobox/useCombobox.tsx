@@ -107,7 +107,7 @@ export default function useCombobox({
   };
 }
 
-function isComboboxOption(
+export function isComboboxOption(
   child: React.ReactNode,
 ): child is React.ReactElement<ComboboxOptionProps> {
   return React.isValidElement(child) && child.type === ComboboxOption;
