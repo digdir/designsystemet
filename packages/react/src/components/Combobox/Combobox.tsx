@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import React, { useState, useRef, createContext, useEffect } from 'react';
 import {
   FloatingFocusManager,
@@ -17,6 +16,7 @@ import cn from 'classnames';
 import type { UseFloatingReturn } from '@floating-ui/react';
 
 import { Box } from '../Box';
+import type { FormFieldProps } from '../form/useFormField';
 import { useFormField } from '../form/useFormField';
 
 import type { Option } from './useCombobox';
@@ -40,20 +40,6 @@ export type ComboboxProps = {
    */
   hideLabel?: boolean;
   /**
-   * Description for the combobox
-   */
-  description?: string;
-  /**
-   * If true, the input is read-only
-   * @default false
-   */
-  readOnly?: boolean;
-  /**
-   * Size of the combobox
-   * @default medium
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
    * Value of the selected item, or array of values if multiple is true
    */
   value?: string[];
@@ -66,22 +52,6 @@ export type ComboboxProps = {
    * @default false
    */
   multiple?: boolean;
-  /** Disables element
-   * @note Avoid using if possible for accessibility purposes
-   */
-  disabled?: boolean;
-  /**
-   * Error message for form field
-   */
-  error?: ReactNode;
-  /**
-   * Override generated errorId
-   */
-  errorId?: string;
-  /**
-   * Override generated inputId
-   */
-  inputId?: string;
   /**
    * Name of the value when used in a form
    */
@@ -91,6 +61,10 @@ export type ComboboxProps = {
    * @default true
    */
   portal?: boolean;
+  /** Exposes the HTML `size` attribute.
+   * @default 0
+   */
+  htmlSize?: number;
   /**
    * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
    * @param inputValue
@@ -108,7 +82,8 @@ export type ComboboxProps = {
       description?: string;
     },
   ) => boolean;
-} & React.HTMLAttributes<HTMLInputElement>;
+} & Omit<FormFieldProps, 'id'> &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Combobox = ({
   value,
@@ -122,13 +97,15 @@ export const Combobox = ({
   readOnly = false,
   error,
   errorId,
-  inputId,
+  id,
   name,
   portal = true,
+  htmlSize = 0,
   children,
   filter = (inputValue, option) => {
     return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
+  ...rest
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
@@ -151,7 +128,7 @@ export const Combobox = ({
       errorId,
       size,
       description,
-      id: inputId,
+      id,
     },
     'combobox',
   );
@@ -357,6 +334,7 @@ export const Combobox = ({
         error,
         formFieldProps,
         name,
+        htmlSize,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -387,7 +365,7 @@ export const Combobox = ({
         {name && <ComboboxNative />}
 
         <ComboboxLabel />
-        <ComboboxInput />
+        <ComboboxInput {...rest} />
         <ComboboxError />
       </Box>
 
@@ -425,25 +403,26 @@ export const Combobox = ({
 };
 
 type ComboboxContextType = {
+  multiple: ComboboxProps['multiple'];
+  disabled: ComboboxProps['disabled'];
+  readOnly: ComboboxProps['readOnly'];
+  label: ComboboxProps['label'];
+  description: ComboboxProps['description'];
+  name: ComboboxProps['name'];
+  error: ComboboxProps['error'];
+  htmlSize: ComboboxProps['htmlSize'];
   options: Option[];
   selectedOptions: Option[];
+  size: NonNullable<ComboboxProps['size']>;
+  formFieldProps: ReturnType<typeof useFormField>;
+  refs: UseFloatingReturn['refs'];
+  inputRef: React.RefObject<HTMLInputElement>;
   activeIndex: number | null;
-  multiple: boolean;
   showEmptyChild: boolean;
-  disabled: boolean;
-  readOnly: boolean;
-  label: string | undefined;
-  description: string | undefined;
   hideLabel: boolean;
   open: boolean;
-  inputRef: React.RefObject<HTMLInputElement>;
-  refs: UseFloatingReturn['refs'];
-  size: NonNullable<ComboboxProps['size']>;
   inputValue: string;
   activeDescendant: string | undefined;
-  error: ReactNode;
-  formFieldProps: ReturnType<typeof useFormField>;
-  name: string | undefined;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;

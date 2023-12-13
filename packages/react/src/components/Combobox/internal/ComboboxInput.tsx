@@ -10,7 +10,9 @@ import textFieldClasses from '../../form/Textfield/Textfield.module.css';
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 
-export const ComboboxInput = () => {
+export const ComboboxInput = ({
+  ...rest
+}: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -30,6 +32,7 @@ export const ComboboxInput = () => {
     multiple,
     selectedOptions,
     formFieldProps,
+    htmlSize,
     setOpen,
     setActiveIndex,
     handleKeyDown,
@@ -115,8 +118,10 @@ export const ComboboxInput = () => {
           readOnly={readOnly}
           aria-autocomplete='list'
           autoComplete='off'
+          size={htmlSize}
           onChange={onChange}
           value={inputValue}
+          {...rest}
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}
