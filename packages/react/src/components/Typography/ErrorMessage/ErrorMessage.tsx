@@ -25,7 +25,7 @@ export const ErrorMessage: OverridableComponent<
       className,
       size = 'medium',
       spacing,
-      as: Component = 'p',
+      as: Component = 'div',
       error = true,
       ...rest
     },
