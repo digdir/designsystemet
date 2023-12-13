@@ -11,6 +11,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import { ComboboxContext } from '../Combobox';
 import { Label } from '../../Typography';
 import ComboboxCheckbox from '../internal/ComboboxCheckbox';
+import { omit } from '../../../utilities';
 
 import classes from './Option.module.css';
 import ComboboxOptionDescription from './Description/Description';
@@ -34,8 +35,7 @@ export type ComboboxOptionProps = {
 export const ComboboxOption = forwardRef<
   HTMLButtonElement,
   ComboboxOptionProps
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
->(({ value, description, displayValue, children, ...rest }, ref) => {
+>(({ value, description, children, ...rest }, ref) => {
   const labelId = useId();
   const generatedId = useId();
 
@@ -88,7 +88,7 @@ export const ComboboxOption = forwardRef<
 
   return (
     <button
-      {...rest}
+      {...omit(['displayValue'], rest)}
       id={rest.id || generatedId}
       role='option'
       type='button'
