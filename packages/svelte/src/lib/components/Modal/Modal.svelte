@@ -15,8 +15,7 @@
   /**
    * Subtitle of the modal.
    */
-  export let subtitle =
-    'Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel Dette er en undertittel';
+  export let subtitle = 'Dette er en undertittel';
 
   /**
    * Text on primary button.
