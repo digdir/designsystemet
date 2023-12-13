@@ -143,6 +143,7 @@ export const Combobox = ({
     restChildren,
     open,
     showEmptyChild,
+    optionValues,
     setOpen,
   } = useCombobox({
     children,
@@ -337,6 +338,7 @@ export const Combobox = ({
         formFieldProps,
         name,
         htmlSize,
+        optionValues,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -426,6 +428,7 @@ type ComboboxContextType = {
   open: boolean;
   inputValue: string;
   activeDescendant: string | undefined;
+  optionValues: string[];
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;

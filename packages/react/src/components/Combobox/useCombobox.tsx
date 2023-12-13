@@ -63,7 +63,7 @@ export default function useCombobox({
     return allOptions;
   }, [children]);
 
-  const filteredOptions = useMemo(() => {
+  const optionsChildren = useMemo(() => {
     const valuesArray = Array.from(options);
     const children_ = React.Children.toArray(children).filter(
       (child) =>
@@ -73,30 +73,30 @@ export default function useCombobox({
     const activeValue = valuesArray.find((item) => item.label === inputValue);
 
     if (activeValue && !multiple) {
-      return { optionsChildren: children_, optionValues: [] };
+      return children_;
     }
 
-    if (inputValue === '' && !multiple)
-      return { optionsChildren: children_, optionValues: [] };
+    if (inputValue === '' && !multiple) return children_;
 
-    const optionValues: string[] = [];
     const optionsChildren = children_.filter((child) => {
       const { value } = (child as ReactElement<ComboboxOptionProps>).props;
 
       const option = valuesArray.find((item) => item.value === value);
 
       if (!option) return false;
-      if (!filter(inputValue, { ...option })) return false;
-
-      optionValues.push(value);
-
-      return true;
+      return filter(inputValue, { ...option });
     });
 
-    return { optionsChildren, optionValues };
+    return optionsChildren;
   }, [options, children, inputValue, multiple, filter]);
 
-  const { optionsChildren, optionValues } = filteredOptions;
+  const optionValues = useMemo(() => {
+    // create an index map of values from optionsChildren
+    return React.Children.toArray(optionsChildren).map((child) => {
+      const { value } = (child as ReactElement<ComboboxOptionProps>).props;
+      return value;
+    });
+  }, [optionsChildren]);
 
   const restChildren = useMemo(() => {
     const childrenArr = React.Children.toArray(children);
@@ -105,24 +105,6 @@ export default function useCombobox({
       return React.isValidElement(child) && child.type !== ComboboxOption;
     });
   }, [children]);
-
-  // Get children of type `ComboboxOption` and add index to props
-  // const filteredItems = useMemo(() => {
-  //   return optionsChildren.map((child, index) => {
-  //     if (!React.isValidElement(child) || child.type !== ComboboxOption)
-  //       return child;
-
-  //     const props: ComboboxOptionProps = {
-  //       ...(child.props as ComboboxOptionProps),
-  //       index,
-  //       ref(node: HTMLElement | null) {
-  //         listRef.current[index] = node;
-  //       },
-  //     } as ComboboxOptionProps;
-
-  //     return React.cloneElement(child, props);
-  //   });
-  // }, [optionsChildren, listRef]);
 
   const showEmptyChild = useMemo(() => {
     // check if inputValue does not match any values

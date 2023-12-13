@@ -50,13 +50,13 @@ export const ComboboxOption = forwardRef<
     onOptionClick,
     multiple,
     size,
-    options,
     listRef,
+    optionValues,
   } = context;
 
   const index = useMemo(
-    () => options.map((opt) => opt.value).indexOf(value),
-    [options, value],
+    () => optionValues.indexOf(value),
+    [optionValues, value],
   );
 
   const combinedRef = useMergeRefs([
