@@ -6,6 +6,7 @@ import React, {
   useMemo,
 } from 'react';
 import cn from 'classnames';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../Combobox';
 import { Label } from '../../Typography';
@@ -22,10 +23,6 @@ export type ComboboxOptionProps = {
   /**
    * The index of the item in the list, will be overwritten by Combobox.
    */
-  index?: number;
-  /**
-   * The description of the item, will be displayed below the item text
-   */
   description?: string;
   /**
    * The text displayed in the input or in the chips when the item is selected.
@@ -38,7 +35,7 @@ export const ComboboxOption = forwardRef<
   HTMLButtonElement,
   ComboboxOptionProps
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
->(({ value, index, description, displayValue, children, ...rest }, ref) => {
+>(({ value, description, displayValue, children, ...rest }, ref) => {
   const labelId = useId();
   const generatedId = useId();
 
@@ -53,7 +50,21 @@ export const ComboboxOption = forwardRef<
     onOptionClick,
     multiple,
     size,
+    options,
+    listRef,
   } = context;
+
+  const index = useMemo(
+    () => options.map((opt) => opt.value).indexOf(value),
+    [options, value],
+  );
+
+  const combinedRef = useMergeRefs([
+    (node: HTMLElement | null) => {
+      listRef.current[index] = node;
+    },
+    ref,
+  ]);
 
   if (typeof index !== 'number') {
     throw new Error('Internal error: ComboboxOption did not receive index');
@@ -100,7 +111,7 @@ export const ComboboxOption = forwardRef<
         activeIndex === index && classes.active,
         rest.className,
       )}
-      ref={ref}
+      ref={combinedRef}
     >
       {multiple && icon}
       <Label

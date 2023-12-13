@@ -13,7 +13,10 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import type { UseFloatingReturn } from '@floating-ui/react';
+import type {
+  UseFloatingReturn,
+  UseListNavigationProps,
+} from '@floating-ui/react';
 
 import { Box } from '../Box';
 import type { FormFieldProps } from '../form/useFormField';
@@ -136,7 +139,7 @@ export const Combobox = ({
   const listRef = useRef<Array<HTMLElement | null>>([]);
   const {
     options,
-    filteredItems,
+    optionsChildren,
     restChildren,
     open,
     showEmptyChild,
@@ -147,7 +150,6 @@ export const Combobox = ({
     filter,
     multiple,
     selectedOptions,
-    listRef,
   });
 
   // if value is set, set input value to the label of the value
@@ -261,23 +263,23 @@ export const Combobox = ({
           }
 
           // loop - if last item, go to first item
-          if (prevActiveIndex === filteredItems.length - 1) {
+          if (prevActiveIndex === optionsChildren.length - 1) {
             return 0;
           }
 
-          return Math.min(prevActiveIndex + 1, filteredItems.length - 1);
+          return Math.min(prevActiveIndex + 1, optionsChildren.length - 1);
         });
         break;
       case 'ArrowUp':
         event.preventDefault();
         setActiveIndex((prevActiveIndex) => {
           if (prevActiveIndex === null) {
-            return filteredItems.length - 1;
+            return optionsChildren.length - 1;
           }
 
           // loop - if first item, go to last item
           if (prevActiveIndex === 0) {
-            return filteredItems.length - 1;
+            return optionsChildren.length - 1;
           }
 
           return Math.max(prevActiveIndex - 1, 0);
@@ -285,8 +287,8 @@ export const Combobox = ({
         break;
       case 'Enter':
         event.preventDefault();
-        if (activeIndex !== null && filteredItems[activeIndex]) {
-          const child = filteredItems[activeIndex];
+        if (activeIndex !== null && optionsChildren[activeIndex]) {
+          const child = optionsChildren[activeIndex];
           if (React.isValidElement(child) && child.type === ComboboxOption) {
             const props = child.props as ComboboxOptionProps;
             const item = options.find((item) => item.value === props.value);
@@ -355,6 +357,7 @@ export const Combobox = ({
           const item = options.find((item) => item.value === value);
           handleSelectItem(item as Option);
         },
+        listRef,
       }}
     >
       <Box
@@ -391,7 +394,7 @@ export const Combobox = ({
               className={cn(classes.itemsWrapper, classes[size])}
             >
               {/* Map our children, and add props if it is a ComboboxOption */}
-              {filteredItems}
+              {optionsChildren}
               {/* Add the rest of the children */}
               {restChildren}
             </Box>
@@ -433,6 +436,7 @@ type ComboboxContextType = {
   ) => Record<string, unknown>;
   onOptionClick: (value: string) => void;
   setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
+  listRef: UseListNavigationProps['listRef'];
 };
 
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(
