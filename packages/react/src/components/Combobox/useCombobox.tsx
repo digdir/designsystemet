@@ -106,29 +106,10 @@ export default function useCombobox({
     });
   }, [children]);
 
-  const showEmptyChild = useMemo(() => {
-    // check if inputValue does not match any values
-    if (inputValue === '') return false;
-
-    // check if inputValue will show any values
-    let activeValue;
-    for (const item of options) {
-      if (filter(inputValue, { ...item })) {
-        activeValue = item;
-        break;
-      }
-    }
-
-    if (!activeValue) return true;
-
-    return false;
-  }, [inputValue, options, filter]);
-
   return {
     optionsChildren,
     optionValues,
     restChildren,
-    showEmptyChild,
     options,
     open,
     setOpen,

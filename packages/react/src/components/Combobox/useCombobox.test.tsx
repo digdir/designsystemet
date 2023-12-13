@@ -64,7 +64,6 @@ describe('useCombobox', () => {
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(3);
     expect(result.current.restChildren.length).toBe(1);
-    expect(result.current.showEmptyChild).toBe(false);
   });
 
   it('should show empty when we type "3"', () => {
@@ -77,7 +76,6 @@ describe('useCombobox', () => {
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
-    expect(result.current.showEmptyChild).toBe(true);
   });
 
   it('should show empty when we type "3" and have active value "oslo"', () => {
@@ -95,7 +93,6 @@ describe('useCombobox', () => {
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
-    expect(result.current.showEmptyChild).toBe(true);
   });
 
   it('should show empty when we type "3" and have active value "oslo" and multiple', () => {
@@ -113,7 +110,6 @@ describe('useCombobox', () => {
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
-    expect(result.current.showEmptyChild).toBe(true);
   });
 
   it('should show 1 item when we type "l"', () => {
@@ -126,7 +122,6 @@ describe('useCombobox', () => {
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
-    expect(result.current.showEmptyChild).toBe(false);
   });
 
   it('should show 1 item when we type "l" and have active value "oslo"', () => {
@@ -144,6 +139,5 @@ describe('useCombobox', () => {
     expect(result.current.options.length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
-    expect(result.current.showEmptyChild).toBe(false);
   });
 });

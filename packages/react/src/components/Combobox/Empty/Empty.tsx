@@ -14,10 +14,10 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
       throw new Error('ComboboxError must be used within a Combobox');
     }
 
-    const { showEmptyChild, size } = context;
+    const { optionValues, size } = context;
 
     return (
-      showEmptyChild && (
+      optionValues.length === 0 && (
         <div
           {...rest}
           ref={ref}

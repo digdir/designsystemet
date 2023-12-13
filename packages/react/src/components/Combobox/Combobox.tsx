@@ -142,7 +142,6 @@ export const Combobox = ({
     optionsChildren,
     restChildren,
     open,
-    showEmptyChild,
     optionValues,
     setOpen,
   } = useCombobox({
@@ -322,7 +321,6 @@ export const Combobox = ({
         options,
         selectedOptions,
         multiple,
-        showEmptyChild,
         activeIndex,
         disabled,
         readOnly,
@@ -423,7 +421,6 @@ type ComboboxContextType = {
   refs: UseFloatingReturn['refs'];
   inputRef: React.RefObject<HTMLInputElement>;
   activeIndex: number | null;
-  showEmptyChild: boolean;
   hideLabel: boolean;
   open: boolean;
   inputValue: string;
