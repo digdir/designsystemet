@@ -4,7 +4,7 @@ import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
-import type { useFormField } from '../../form/useFormField';
+import type { useFormField } from '../../useFormField';
 import classes from '../Combobox.module.css';
 import utilityClasses from '../../../../utilities/utility.module.css';
 

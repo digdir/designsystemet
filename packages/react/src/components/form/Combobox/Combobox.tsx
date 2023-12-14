@@ -19,7 +19,7 @@ import type {
 } from '@floating-ui/react';
 
 import { Box } from '../../Box';
-import type { FormFieldProps } from '../form/useFormField';
+import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 
 import type { Option } from './useCombobox';
