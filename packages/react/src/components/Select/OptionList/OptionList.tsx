@@ -4,7 +4,6 @@ import cn from 'classnames';
 
 import { useEventListener } from '../../../hooks';
 import type { MultiSelectOption, SingleSelectOption } from '../types';
-import { Box } from '../../Box';
 
 import classes from './OptionList.module.css';
 import { Option } from './Option';
@@ -20,7 +19,7 @@ type OptionListPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
   setFloating: (node: HTMLElement | null) => void;
   x: number;
   y: number;
-  portal?: boolean;
+  portal: boolean;
 };
 
 export type OptionListProps =
@@ -39,7 +38,7 @@ const OptionList = ({
   setFloating,
   x,
   y,
-  portal = true,
+  portal,
 }: OptionListProps) => {
   const portalRef = useRef<HTMLDivElement>(null);
   const portalId = useId();
@@ -53,7 +52,7 @@ const OptionList = ({
 
   return (
     <>
-      <Box ref={portalRef}></Box>
+      <div ref={portalRef}></div>
       <FloatingPortal
         id={`fds-select-${portalId}`}
         root={portal ? null : portalRef}

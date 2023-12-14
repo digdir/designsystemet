@@ -42,7 +42,7 @@ const Select = (props: SelectProps) => {
     options,
     searchLabel,
     value,
-    portal,
+    portal = true,
   } = props;
   const allValues = options.map((option) => option.value);
   if (allValues.length !== new Set(allValues).size) {
