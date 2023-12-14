@@ -12,8 +12,8 @@ const Combobox = ComboboxRoot as ComboboxComponent;
 Combobox.Option = ComboboxOption;
 Combobox.Empty = ComboboxEmpty;
 
-Combobox.Option.displayName = 'EXPERIMENTAL_ Combobox.Option';
-Combobox.Empty.displayName = 'EXPERIMENTAL_ Combobox.Empty';
+Combobox.Option.displayName = 'EXPERIMENTAL_Combobox.Option';
+Combobox.Empty.displayName = 'EXPERIMENTAL_Combobox.Empty';
 
 export {
   Combobox as EXPERIMENTAL_Combobox,

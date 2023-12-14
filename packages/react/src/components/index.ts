@@ -41,4 +41,4 @@ export * from './DropdownMenu';
 export * from './form/Search';
 export * from './Box/Box';
 export * from './Card';
-export * from './Combobox';
+export * from './form/Combobox';
