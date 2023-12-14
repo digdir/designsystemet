@@ -38,11 +38,10 @@
 
 .icon {
   position: absolute;
-  height: 1.6em;
-  width: 1.6em;
+  height: 100%;
   z-index: 2;
-  left: 0.5em;
-  top: 0.4em;
+  left: var(--fds-spacing-3);
+  transform: scale(1.5);
 }
 
 [type='search']::-webkit-search-decoration,
