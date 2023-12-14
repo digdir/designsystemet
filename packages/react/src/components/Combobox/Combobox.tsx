@@ -118,7 +118,7 @@ export const Combobox = ({
   const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
     undefined,
   );
-  const [prevSelectedOptionsHash, setPrevSelectedOptionsHash] = useState(
+  const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
 
@@ -196,23 +196,23 @@ export const Combobox = ({
   // Send new value if option was clicked
   useEffect(() => {
     const selectedHash = JSON.stringify(selectedOptions);
-    if (prevSelectedOptionsHash !== selectedHash) {
+    if (prevSelectedHash !== selectedHash) {
       const values = selectedOptions.map((option) => option.value);
       onValueChange?.(values);
-      setPrevSelectedOptionsHash(selectedHash);
+      setPrevSelectedHash(selectedHash);
     }
-  }, [onValueChange, selectedOptions, prevSelectedOptionsHash]);
+  }, [onValueChange, selectedOptions, prevSelectedHash]);
 
   useEffect(() => {
     if (value && options.length > 0) {
-      const newActiveOptions = value.map((option) => {
+      const updatedSelectedOptions = value.map((option) => {
         const value = options.find((value) => value.value === option);
         return value as Option;
       });
 
-      setSelectedOptions(newActiveOptions);
+      setSelectedOptions(updatedSelectedOptions);
     }
-  }, [multiple, prevSelectedOptionsHash, value, options]);
+  }, [multiple, prevSelectedHash, value, options]);
 
   // handle click on option, either select or deselect - Handles single or multiple
   const handleSelectOption = (option: Option) => {
