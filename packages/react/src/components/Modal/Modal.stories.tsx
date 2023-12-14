@@ -230,17 +230,15 @@ export const defaultArgs = {
 
 export const ModalWithSelect: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
-  const [input, setInput] = useState('');
 
   return (
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal
         ref={modalRef}
-        onClose={() => setInput('')}
         style={{ overflow: 'visible' }}
       >
-        <Modal.Header>Modal med skjema</Modal.Header>
+        <Modal.Header>Modal med select</Modal.Header>
         <Modal.Content>
           <Select
             portal={false}
@@ -248,14 +246,6 @@ export const ModalWithSelect: StoryFn<typeof Modal> = () => {
           ></Select>
         </Modal.Content>
         <Modal.Footer>
-          <Button
-            onClick={() => {
-              window.alert(`Du har sendt inn skjema med navn: ${input}`);
-              modalRef.current?.close();
-            }}
-          >
-            Send inn skjema
-          </Button>
           <Button
             variant='secondary'
             onClick={() => modalRef.current?.close()}
