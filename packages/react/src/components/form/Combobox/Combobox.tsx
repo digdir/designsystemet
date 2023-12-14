@@ -62,6 +62,11 @@ export type ComboboxProps = {
    * @default true
    */
   portal?: boolean;
+  /**
+   * The size of the combobox.
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
   /** Exposes the HTML `size` attribute.
    * @default 0
    */
