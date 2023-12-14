@@ -3,7 +3,7 @@
 }
 
 .spacing {
-  padding-left: calc(var(--fds-spacing-6) + 17px);
+  padding-left: var(--fds-spacing-8);
 }
 
 .icon {
@@ -37,7 +37,7 @@
 
 .label {
   padding-left: 3px;
-  min-height: 2.3em;
+  min-height: var(--fds-sizing-10);
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -66,36 +66,6 @@
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);
   grid-auto-flow: column;
-}
-
-.container.small {
-  min-width: var(--fds-sizing-8);
-  min-height: var(--fds-sizing-8);
-}
-
-.container.medium {
-  min-width: var(--fds-sizing-10);
-  min-height: var(--fds-sizing-10);
-}
-
-.container.large {
-  min-width: var(--fds-sizing-12);
-  min-height: var(--fds-sizing-12);
-}
-
-.container.small .control {
-  width: var(--fds-sizing-8);
-  height: var(--fds-sizing-8);
-}
-
-.container.medium .control {
-  width: var(--fds-sizing-10);
-  height: var(--fds-sizing-10);
-}
-
-.container.large .control {
-  width: var(--fds-sizing-12);
-  height: var(--fds-sizing-12);
 }
 
 .input {
@@ -187,4 +157,60 @@
   .container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
     stroke: var(--fds-semantic-border-input-hover);
   }
+}
+
+/** Sizing mess for now... */
+
+.container.small.spacing {
+  padding-left: calc(var(--fds-spacing-8));
+}
+
+.container.medium.spacing {
+  padding-left: var(--fds-spacing-10);
+}
+
+.container.large.spacing {
+  padding-left: calc(var(--fds-spacing-12));
+}
+
+.container.small {
+  min-width: var(--fds-sizing-8);
+}
+
+.container.medium {
+  min-width: var(--fds-sizing-10);
+}
+
+.container.large {
+  min-width: var(--fds-sizing-12);
+}
+
+.container.small,
+.container.small .label {
+  min-height: var(--fds-sizing-8);
+}
+
+.container.medium,
+.container.medium .label {
+  min-height: var(--fds-sizing-10);
+}
+
+.container.large,
+.container.large .label {
+  min-height: var(--fds-sizing-12);
+}
+
+.container.small .control {
+  width: var(--fds-sizing-8);
+  height: var(--fds-sizing-8);
+}
+
+.container.medium .control {
+  width: var(--fds-sizing-10);
+  height: var(--fds-sizing-10);
+}
+
+.container.large .control {
+  width: var(--fds-sizing-12);
+  height: var(--fds-sizing-12);
 }
