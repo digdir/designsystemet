@@ -320,9 +320,6 @@ export const Combobox = ({
         activeIndex,
         disabled,
         readOnly,
-        label,
-        description,
-        hideLabel,
         open,
         inputRef,
         refs,
@@ -363,9 +360,20 @@ export const Combobox = ({
         {/* This is only for the Combobox to work in forms */}
         {name && <ComboboxNative />}
 
-        <ComboboxLabel />
+        <ComboboxLabel
+          label={label}
+          description={description}
+          size={size}
+          readOnly={readOnly}
+          hideLabel={hideLabel}
+          formFieldProps={formFieldProps}
+        />
         <ComboboxInput {...rest} />
-        <ComboboxError />
+        <ComboboxError
+          size={size}
+          error={error}
+          formFieldProps={formFieldProps}
+        />
       </Box>
 
       {/* This is the floating list with options */}
@@ -405,8 +413,6 @@ type ComboboxContextType = {
   multiple: ComboboxProps['multiple'];
   disabled: ComboboxProps['disabled'];
   readOnly: ComboboxProps['readOnly'];
-  label: ComboboxProps['label'];
-  description: ComboboxProps['description'];
   name: ComboboxProps['name'];
   error: ComboboxProps['error'];
   htmlSize: ComboboxProps['htmlSize'];
@@ -417,7 +423,6 @@ type ComboboxContextType = {
   refs: UseFloatingReturn['refs'];
   inputRef: React.RefObject<HTMLInputElement>;
   activeIndex: number | null;
-  hideLabel: boolean;
   open: boolean;
   inputValue: string;
   activeDescendant: string | undefined;

@@ -1,22 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph } from '../../Typography';
-import { ComboboxContext } from '../Combobox';
+import type { ComboboxProps } from '../Combobox';
+import type { useFormField } from '../../form/useFormField';
 import classes from '../Combobox.module.css';
 import utilityClasses from '../../../utilities/utility.module.css';
 
-export const ComboboxLabel = () => {
-  const context = useContext(ComboboxContext);
+type ComboboxLabelProps = {
+  label?: ComboboxProps['label'];
+  description?: ComboboxProps['description'];
+  hideLabel?: ComboboxProps['hideLabel'];
+  size?: ComboboxProps['size'];
+  readOnly?: ComboboxProps['readOnly'];
+  formFieldProps: ReturnType<typeof useFormField>;
+};
 
-  if (!context) {
-    throw new Error('ComboboxContext is missing');
-  }
-
-  const { label, description, hideLabel, size, readOnly, formFieldProps } =
-    context;
-
+export const ComboboxLabel = ({
+  label,
+  description,
+  hideLabel,
+  size,
+  readOnly,
+  formFieldProps,
+}: ComboboxLabelProps) => {
   return (
     <>
       {label && (

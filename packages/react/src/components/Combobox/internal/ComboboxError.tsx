@@ -1,18 +1,21 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import classes from '../Combobox.module.css';
 import { ErrorMessage } from '../../Typography';
-import { ComboboxContext } from '../Combobox';
+import type { ComboboxProps } from '../Combobox';
+import type { useFormField } from '../../form/useFormField';
 
-export const ComboboxError = () => {
-  const context = useContext(ComboboxContext);
+type ComboboxErrorProps = {
+  size: ComboboxProps['size'];
+  error?: ComboboxProps['error'];
+  formFieldProps: ReturnType<typeof useFormField>;
+};
 
-  if (!context) {
-    throw new Error('ComboboxContext is missing');
-  }
-
-  const { size, error, formFieldProps } = context;
-
+export const ComboboxError = ({
+  size,
+  error,
+  formFieldProps,
+}: ComboboxErrorProps) => {
   return (
     <div
       className={classes.errorMessage}
