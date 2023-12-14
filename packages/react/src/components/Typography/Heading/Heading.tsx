@@ -21,7 +21,7 @@ export type HeadingProps = {
 export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
   forwardRef(
     (
-      { level = 2, size = 'xlarge', spacing = false, className, as, ...rest },
+      { level = 1, size = 'xlarge', spacing = false, className, as, ...rest },
       ref,
     ) => {
       const Component = as ?? (`h${level ?? 1}` as ElementType);
