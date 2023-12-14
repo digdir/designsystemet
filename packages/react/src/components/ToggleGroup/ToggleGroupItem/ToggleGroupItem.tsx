@@ -27,11 +27,7 @@ export const ToggleGroupItem = forwardRef<
     <RovingTabindexItem
       {...rest}
       {...buttonProps}
-      className={cn(
-        children && classes[size],
-        classes.toggleGroupItem,
-        rest.className,
-      )}
+      className={cn(classes.toggleGroupItem, rest.className)}
       as={Button}
       value={rest.value}
       icon={icon}
