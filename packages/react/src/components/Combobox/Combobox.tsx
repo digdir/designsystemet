@@ -41,7 +41,7 @@ export type ComboboxProps = {
    */
   hideLabel?: boolean;
   /**
-   * Value of the selected item, or array of values if multiple is true
+   * Value of the selected option, or array of values if multiple is true
    */
   value?: string[];
   /**
@@ -49,7 +49,7 @@ export type ComboboxProps = {
    */
   onValueChange?: (value: string[]) => void;
   /**
-   * If true, multiple items can be selected
+   * If true, multiple options can be selected
    * @default false
    */
   multiple?: boolean;
@@ -58,7 +58,7 @@ export type ComboboxProps = {
    */
   name?: string;
   /**
-   * If true, the list of items is rendered in a portal
+   * If true, the list of options is rendered in a portal
    * @default true
    */
   portal?: boolean;
@@ -67,7 +67,7 @@ export type ComboboxProps = {
    */
   htmlSize?: number;
   /**
-   * Filter function for filtering the list of items. Return `true` to show item, `false` to hide item.
+   * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
    * @returns boolean
@@ -147,8 +147,8 @@ export const Combobox = ({
   // if value is set, set input value to the label of the value
   useEffect(() => {
     if (value && value.length > 0 && !multiple) {
-      const item = options.find((item) => item.value === value[0]);
-      setInputValue(item?.label || '');
+      const option = options.find((option) => option.value === value[0]);
+      setInputValue(option?.label || '');
     }
   }, [multiple, value, options]);
 
@@ -193,11 +193,11 @@ export const Combobox = ({
     }
   }, [open]);
 
-  // Send new value if item was clicked
+  // Send new value if option was clicked
   useEffect(() => {
     const stringifiedActiveOptions = JSON.stringify(selectedOptions);
     if (prevSelectedOptionsHash !== stringifiedActiveOptions) {
-      const values = selectedOptions.map((item) => item.value);
+      const values = selectedOptions.map((option) => option.value);
       onValueChange?.(values);
       setPrevSelectedOptionsHash(stringifiedActiveOptions);
     }
@@ -205,8 +205,8 @@ export const Combobox = ({
 
   useEffect(() => {
     if (value && options.length > 0) {
-      const newActiveOptions = value.map((item) => {
-        const value = options.find((value) => value.value === item);
+      const newActiveOptions = value.map((option) => {
+        const value = options.find((value) => value.value === option);
         return value as Option;
       });
 
@@ -214,26 +214,28 @@ export const Combobox = ({
     }
   }, [multiple, prevSelectedOptionsHash, value, options]);
 
-  // handle click on item, either select or deselect - Handles single or multiple
-  const handleSelectItem = (item: Option) => {
-    // if item is already selected, remove it
-    if (selectedOptions.find((i) => i.value === item.value)) {
-      setSelectedOptions((prev) => prev.filter((i) => i.value !== item.value));
+  // handle click on option, either select or deselect - Handles single or multiple
+  const handleSelectOption = (option: Option) => {
+    // if option is already selected, remove it
+    if (selectedOptions.find((i) => i.value === option.value)) {
+      setSelectedOptions((prev) =>
+        prev.filter((i) => i.value !== option.value),
+      );
       return;
     }
 
     if (multiple) {
-      setSelectedOptions([...selectedOptions, item]);
+      setSelectedOptions([...selectedOptions, option]);
       setInputValue('');
       inputRef.current?.focus();
     } else {
-      setSelectedOptions([item]);
-      setInputValue(item?.label || '');
+      setSelectedOptions([option]);
+      setInputValue(option?.label || '');
       // move cursor to the end of the input
       setTimeout(() => {
         inputRef.current?.setSelectionRange(
-          item?.label?.length || 0,
-          item?.label?.length || 0,
+          option?.label?.length || 0,
+          option?.label?.length || 0,
         );
       }, 0);
     }
@@ -254,7 +256,7 @@ export const Combobox = ({
             return 0;
           }
 
-          // loop - if last item, go to first item
+          // loop - if last option, go to first option
           if (prevActiveIndex === optionsChildren.length - 1) {
             return 0;
           }
@@ -269,7 +271,7 @@ export const Combobox = ({
             return optionsChildren.length - 1;
           }
 
-          // loop - if first item, go to last item
+          // loop - if first option, go to last option
           if (prevActiveIndex === 0) {
             return optionsChildren.length - 1;
           }
@@ -283,8 +285,10 @@ export const Combobox = ({
           const child = optionsChildren[activeIndex];
           if (isComboboxOption(child)) {
             const props = child.props;
-            const item = options.find((item) => item.value === props.value);
-            handleSelectItem(item as Option);
+            const option = options.find(
+              (option) => option.value === props.value,
+            );
+            handleSelectOption(option as Option);
           }
         }
         break;
@@ -335,19 +339,19 @@ export const Combobox = ({
         setOpen,
         getReferenceProps,
         setSelectedOptions,
-        /* Recieves index of item, and the ID of the button element */
-        setActiveItem: (index: number, id: string) => {
+        /* Recieves index of option, and the ID of the button element */
+        setActiveOption: (index: number, id: string) => {
           if (readOnly) return;
           if (disabled) return;
           setActiveIndex(index);
           setActiveDescendant(id);
         },
-        /* Recieves the value of the item, and searches for it in our values lookup */
+        /* Recieves the value of the option, and searches for it in our values lookup */
         onOptionClick: (value: string) => {
           if (readOnly) return;
           if (disabled) return;
-          const item = options.find((item) => item.value === value);
-          handleSelectItem(item as Option);
+          const option = options.find((option) => option.value === value);
+          handleSelectOption(option as Option);
         },
         listRef,
       }}
@@ -364,7 +368,7 @@ export const Combobox = ({
         <ComboboxError />
       </Box>
 
-      {/* This is the floating list with items */}
+      {/* This is the floating list with options */}
       {open && (
         <FloatingPortal root={portal ? null : portalRef}>
           <FloatingFocusManager
@@ -383,7 +387,7 @@ export const Combobox = ({
                   ...floatingStyles,
                 },
               })}
-              className={cn(classes.itemsWrapper, classes[size])}
+              className={cn(classes.optionsWrapper, classes[size])}
             >
               {/* Map our children, and add props if it is a ComboboxOption */}
               {optionsChildren}
@@ -422,7 +426,7 @@ type ComboboxContextType = {
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
   setActiveIndex: (index: number | null) => void;
-  setActiveItem: (index: number, id: string) => void;
+  setActiveOption: (index: number, id: string) => void;
   getReferenceProps: (
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;

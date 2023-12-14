@@ -18,15 +18,15 @@ import ComboboxOptionDescription from './Description/Description';
 
 export type ComboboxOptionProps = {
   /**
-   * The value returned when the item is selected
+   * The value returned when the option is selected
    */
   value: string;
   /**
-   * The index of the item in the list, will be overwritten by Combobox.
+   * The index of the option in the list, will be overwritten by Combobox.
    */
   description?: string;
   /**
-   * The text displayed in the input or in the chips when the item is selected.
+   * The text displayed in the input or in the chips when the option is selected.
    * Required if children is not composed of strings only.
    */
   displayValue?: string;
@@ -46,7 +46,7 @@ export const ComboboxOption = forwardRef<
   const {
     selectedOptions,
     activeIndex,
-    setActiveItem,
+    setActiveOption,
     onOptionClick,
     multiple,
     size,
@@ -70,11 +70,11 @@ export const ComboboxOption = forwardRef<
     throw new Error('Internal error: ComboboxOption did not receive index');
   }
 
-  const active = selectedOptions.find((item) => item.value === value);
+  const active = selectedOptions.find((option) => option.value === value);
 
   useEffect(() => {
-    if (activeIndex === index) setActiveItem(index, rest.id || generatedId);
-  }, [activeIndex, generatedId, index, rest.id, setActiveItem]);
+    if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
+  }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
 
   const icon = useMemo(() => {
     return (
@@ -99,15 +99,15 @@ export const ComboboxOption = forwardRef<
         rest.onClick?.(e);
       }}
       onMouseEnter={(e) => {
-        setActiveItem(index, labelId);
+        setActiveOption(index, labelId);
         rest.onMouseEnter?.(e);
       }} // Set active index on hover
       onFocus={(e) => {
-        setActiveItem(index, labelId);
+        setActiveOption(index, labelId);
         rest.onFocus?.(e);
       }} // Set active index on focus
       className={cn(
-        classes.item,
+        classes.option,
         activeIndex === index && classes.active,
         rest.className,
       )}
@@ -115,7 +115,7 @@ export const ComboboxOption = forwardRef<
     >
       {multiple && icon}
       <Label
-        className={classes.itemText}
+        className={classes.optionText}
         size={size}
         id={labelId}
       >

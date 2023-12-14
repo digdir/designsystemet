@@ -15,13 +15,13 @@ export const ComboboxNative = () => {
       name={name}
       multiple={multiple}
       style={{ display: 'none' }}
-      value={selectedOptions.map((item) => item.value)}
+      value={selectedOptions.map((option) => option.value)}
       onChange={() => {}}
     >
-      {selectedOptions.map((item) => (
+      {selectedOptions.map((option) => (
         <option
-          key={item.value}
-          value={item.value}
+          key={option.value}
+          value={option.value}
         />
       ))}
     </select>

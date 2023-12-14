@@ -3,7 +3,7 @@
   gap: var(--fds-spacing-2);
 }
 
-.itemsWrapper {
+.optionsWrapper {
   padding: var(--fds-spacing-2);
   background: var(--fds-semantic-background-default);
   overflow-y: auto;

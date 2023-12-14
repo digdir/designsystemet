@@ -15,10 +15,10 @@ export const ComboboxChips = () => {
 
   return (
     <>
-      {selectedOptions.map((item) => {
+      {selectedOptions.map((option) => {
         return (
           <ChipRemovable
-            key={item.value}
+            key={option.value}
             size={size}
             disabled={disabled}
             onClick={() => {
@@ -26,7 +26,7 @@ export const ComboboxChips = () => {
               if (disabled) return;
               /* If we click a chip, filter the active values and remove the one we clicked */
               setSelectedOptions(
-                selectedOptions.filter((i) => i.value !== item.value),
+                selectedOptions.filter((i) => i.value !== option.value),
               );
             }}
             style={{
@@ -34,7 +34,7 @@ export const ComboboxChips = () => {
               opacity: 1,
             }}
           >
-            {item.label}
+            {option.label}
           </ChipRemovable>
         );
       })}

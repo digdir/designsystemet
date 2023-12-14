@@ -1,4 +1,4 @@
-.item {
+.option {
   width: 100%;
   display: flex;
   align-items: center;
@@ -15,16 +15,16 @@
   font: var(--fds-typography-label-medium);
 }
 
-.item.active {
+.option.active {
   background: var(--fds-semantic-surface-action-first-no_fill-hover);
   border-left: 5px solid var(--fds-semantic-border-action-hover);
 }
 
-.item > div {
+.option > div {
   align-self: flex-start;
 }
 
-.itemText {
+.optionText {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -33,7 +33,7 @@
   color: var(--fds-semantic-text-neutral-default);
 }
 
-.active .itemText {
+.active .optionText {
   color: var(--fds-semantic-text-action-hover);
 }
 

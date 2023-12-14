@@ -111,7 +111,7 @@ describe('useCombobox', () => {
     expect(result.current.restChildren.length).toBe(1);
   });
 
-  it('should show 1 item when we type "l"', () => {
+  it('should show 1 option when we type "l"', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,
@@ -123,7 +123,7 @@ describe('useCombobox', () => {
     expect(result.current.restChildren.length).toBe(1);
   });
 
-  it('should show 1 item when we type "l" and have active value "oslo"', () => {
+  it('should show 1 option when we type "l" and have active value "oslo"', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,

@@ -29,13 +29,13 @@ const Comp = (args: Partial<ComboboxProps>) => {
     <>
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
+        {PLACES.map((option, index) => (
           <Combobox.Option
             key={index}
-            value={item.value}
-            displayValue={item.name}
+            value={option.value}
+            displayValue={option.name}
           >
-            {item.name}
+            {option.name}
           </Combobox.Option>
         ))}
       </Combobox>
@@ -97,7 +97,7 @@ describe('Combobox', () => {
     }, 3000);
   });
 
-  it('should set call `onValueChange` on the Combobox when we click and item', async () => {
+  it('should set call `onValueChange` on the Combobox when we click and option', async () => {
     const onValueChange = jest.fn();
     await render({ onValueChange });
     const combobox = screen.getByRole('combobox');
@@ -108,7 +108,7 @@ describe('Combobox', () => {
     expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
   });
 
-  it('should call `onValueChange` with multiple values when we click multiple items', async () => {
+  it('should call `onValueChange` with multiple values when we click multiple options', async () => {
     const onValueChange = jest.fn();
     await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
@@ -120,7 +120,7 @@ describe('Combobox', () => {
     expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
   });
 
-  it('should show a chip of a selected item in multiple mode', async () => {
+  it('should show a chip of a selected option in multiple mode', async () => {
     const { user } = await render({ multiple: true });
     const combobox = screen.getByRole('combobox');
 

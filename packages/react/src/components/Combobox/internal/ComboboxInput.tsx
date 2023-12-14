@@ -79,7 +79,7 @@ export const ComboboxInput = ({
       {...getReferenceProps({
         ref: refs?.setReference,
         'aria-expanded': open,
-        /* If we click the wrapper, open the list, set index to first item, and focus the input */
+        /* If we click the wrapper, open the list, set index to first option, and focus the input */
         onClick() {
           if (disabled) return;
           if (readOnly) return;
