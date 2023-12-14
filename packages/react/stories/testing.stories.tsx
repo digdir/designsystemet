@@ -9,6 +9,7 @@ import {
   Checkbox,
   Radio,
   Tag,
+  EXPERIMENTAL_Combobox as Combobox,
   type ButtonProps,
 } from '../src/components';
 
@@ -48,6 +49,9 @@ export const MediumRow: StoryFn<{
           <option>opt3</option>
         </NativeSelect>
         <Button size={size}>Knapp</Button>
+        <Combobox size={size}>
+          <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>
+        </Combobox>
       </div>
       <br />
       <div

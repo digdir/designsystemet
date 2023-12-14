@@ -22,7 +22,7 @@
   cursor: text;
   padding: var(--fds-spacing-2);
   width: 100%;
-  min-height: 44px;
+  height: auto;
   justify-content: space-between;
   font: var(--fds-typography-paragraph-medium);
 }
@@ -38,7 +38,7 @@
 
 .inputWrapper.small {
   font: var(--fds-typography-paragraph-small);
-  padding: 7px var(--fds-spacing-2);
+  padding: 5px var(--fds-spacing-2);
 }
 
 .inputWrapper.small input {
@@ -161,6 +161,10 @@
 
 .errorMessage {
   margin-top: var(--fds-spacing-2);
+}
+
+.errorMessage:empty {
+  display: none;
 }
 
 /**
