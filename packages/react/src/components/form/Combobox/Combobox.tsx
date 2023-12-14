@@ -83,7 +83,7 @@ export type ComboboxProps = {
       description?: string;
     },
   ) => boolean;
-} & Omit<FormFieldProps, 'id'> &
+} & FormFieldProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Combobox = ({
