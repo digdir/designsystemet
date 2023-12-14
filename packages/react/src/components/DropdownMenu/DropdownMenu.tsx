@@ -118,25 +118,21 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
             guards={false}
             modal={false}
           >
-            <ul>{children}</ul>
-            <Box
+            <ul
               {...rest}
-              shadow='medium'
-              borderRadius='medium'
-              className={cn(classes.dropdown, classes[size], rest.className)}
+              role='menu'
+              aria-hidden={!open}
+              data-placement={flPlacement}
               ref={floatingRef}
               style={floatingStyles}
               {...getFloatingProps({
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              as={'ul'}
-              role='menu'
-              aria-hidden={!open}
-              data-placement={flPlacement}
+              className={cn(classes.dropdown, classes[size], rest.className)}
             >
               {children}
-            </Box>
+            </ul>
           </FloatingFocusManager>
         )}
       </DropdownMenuContext.Provider>

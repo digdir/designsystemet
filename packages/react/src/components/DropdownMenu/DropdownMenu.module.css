@@ -4,6 +4,8 @@
   z-index: 1500;
   margin: 0;
   list-style: none;
+  border-radius: var(--fds-border_radius-medium);
+  box-shadow: var(--fds-shadow-medium);
 }
 
 .dropdown.small {
