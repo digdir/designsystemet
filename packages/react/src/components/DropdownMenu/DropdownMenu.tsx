@@ -118,6 +118,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
             guards={false}
             modal={false}
           >
+            <ul>{children}</ul>
             <Box
               {...rest}
               shadow='medium'
