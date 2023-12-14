@@ -119,7 +119,10 @@ export const ComboboxInput = ({
           aria-autocomplete='list'
           autoComplete='off'
           size={htmlSize}
-          onChange={onChange}
+          onChange={(e) => {
+            onChange(e);
+            rest.onChange && rest.onChange(e);
+          }}
           value={inputValue}
           {...rest}
         />

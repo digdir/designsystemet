@@ -51,6 +51,11 @@ const PLACES = [
     value: 'bergen',
     description: 'Vestland',
   },
+  {
+    name: 'Mo i Rana',
+    value: 'moirana',
+    description: 'Nordland',
+  },
 ];
 
 export const Preview: StoryFn<typeof Combobox> = (args) => {

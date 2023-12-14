@@ -195,11 +195,11 @@ export const Combobox = ({
 
   // Send new value if option was clicked
   useEffect(() => {
-    const stringifiedActiveOptions = JSON.stringify(selectedOptions);
-    if (prevSelectedOptionsHash !== stringifiedActiveOptions) {
+    const selectedHash = JSON.stringify(selectedOptions);
+    if (prevSelectedOptionsHash !== selectedHash) {
       const values = selectedOptions.map((option) => option.value);
       onValueChange?.(values);
-      setPrevSelectedOptionsHash(stringifiedActiveOptions);
+      setPrevSelectedOptionsHash(selectedHash);
     }
   }, [onValueChange, selectedOptions, prevSelectedOptionsHash]);
 
