@@ -23,7 +23,7 @@ document.getAnimations = jest.fn(() => [mockAnimation, mockAnimation2]);
 describe('useSynchronizedAnimation', () => {
   it('should return a ref that is defined', () => {
     const { result } = renderHook(() =>
-      useSynchronizedAnimation('testAnimation'),
+      useSynchronizedAnimation<HTMLDivElement>('testAnimation'),
     );
 
     // Check if the ref is defined:
@@ -31,7 +31,9 @@ describe('useSynchronizedAnimation', () => {
   });
 
   it('should syncronize animation times', () => {
-    renderHook(() => useSynchronizedAnimation('testAnimation2'));
+    renderHook(() =>
+      useSynchronizedAnimation<HTMLDivElement>('testAnimation2'),
+    );
 
     const animations = document.getAnimations();
 

@@ -20,7 +20,32 @@ export const Preview: Story = {
   },
 };
 
-export const DefaultExample: StoryFn<typeof Skeleton> = () => {
+export const Components: StoryFn<typeof Text> = () => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
+      }}
+    >
+      <Skeleton.Circle
+        width='50px'
+        height='50px'
+      />
+      <Skeleton.Rectangle
+        width='100px'
+        height='50px'
+      />
+      <Skeleton.Text
+        width='50px'
+        height='16px'
+      />
+    </div>
+  );
+};
+
+export const UsageExample: StoryFn<typeof Skeleton> = () => {
   return (
     <div
       style={{

@@ -2,8 +2,8 @@ import { useRef, useLayoutEffect } from 'react';
 
 let stashedTime: CSSNumberish | null;
 
-export function useSynchronizedAnimation(animationName: string) {
-  const ref = useRef(null);
+export function useSynchronizedAnimation<T>(animationName: string) {
+  const ref = useRef<T>(null);
 
   useLayoutEffect(() => {
     const animations = document
