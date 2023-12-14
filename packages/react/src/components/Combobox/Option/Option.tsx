@@ -66,8 +66,8 @@ export const ComboboxOption = forwardRef<
     ref,
   ]);
 
-  if (typeof index !== 'number') {
-    throw new Error('Internal error: ComboboxOption did not receive index');
+  if (index === -1) {
+    throw new Error('Internal error: ComboboxOption did not find index');
   }
 
   const active = selectedOptions.find((option) => option.value === value);
