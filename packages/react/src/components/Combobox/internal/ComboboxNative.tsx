@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { ComboboxContext } from '../Combobox';
-export const ComboboxNative = () => {
-  const context = useContext(ComboboxContext);
+import type { Option } from '../useCombobox';
+import type { ComboboxProps } from '../Combobox';
 
-  if (!context) {
-    throw new Error('ComboboxContext is missing');
-  }
+type ComboboxNativeProps = {
+  selectedOptions: Option[];
+  multiple: ComboboxProps['multiple'];
+  name: ComboboxProps['name'];
+};
 
-  const { selectedOptions, multiple, name } = context;
-
+export const ComboboxNative = ({
+  selectedOptions,
+  multiple,
+  name,
+}: ComboboxNativeProps) => {
   return (
     <select
       name={name}

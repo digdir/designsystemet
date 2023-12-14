@@ -358,7 +358,13 @@ export const Combobox = ({
         ref={portalRef}
       >
         {/* This is only for the Combobox to work in forms */}
-        {name && <ComboboxNative />}
+        {name && (
+          <ComboboxNative
+            name={name}
+            selectedOptions={selectedOptions}
+            multiple={multiple}
+          />
+        )}
 
         <ComboboxLabel
           label={label}
