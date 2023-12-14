@@ -20,8 +20,6 @@ import {
   FloatingFocusManager,
 } from '@floating-ui/react';
 
-import { Box } from '../Box';
-
 import classes from './DropdownMenu.module.css';
 
 const GAP = 4;
