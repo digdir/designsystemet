@@ -2,11 +2,11 @@ import React from 'react';
 import cn from 'classnames';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
-import { Label, Paragraph } from '../../Typography';
+import { Label, Paragraph } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../form/useFormField';
 import classes from '../Combobox.module.css';
-import utilityClasses from '../../../utilities/utility.module.css';
+import utilityClasses from '../../../../utilities/utility.module.css';
 
 type ComboboxLabelProps = {
   label?: ComboboxProps['label'];

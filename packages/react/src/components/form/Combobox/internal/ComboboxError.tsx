@@ -1,9 +1,9 @@
 import React from 'react';
 
 import classes from '../Combobox.module.css';
-import { ErrorMessage } from '../../Typography';
+import { ErrorMessage } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
-import type { useFormField } from '../../form/useFormField';
+import type { useFormField } from '../../useFormField';
 
 type ComboboxErrorProps = {
   size: ComboboxProps['size'];

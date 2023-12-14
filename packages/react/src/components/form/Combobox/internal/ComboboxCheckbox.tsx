@@ -1,10 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
 
-import { Paragraph } from '../../Typography';
-import classes from '../../form/Checkbox/Checkbox.module.css';
+import { Paragraph } from '../../../Typography';
+import classes from '../../Checkbox/Checkbox.module.css';
 import comboboxClasses from '../Combobox.module.css';
-import { CheckboxIcon } from '../../form/Checkbox/Checkbox';
+import { CheckboxIcon } from '../../Checkbox/Checkbox';
 
 export default function ComboboxCheckbox({
   size,

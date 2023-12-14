@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from '../Button';
-import { Paragraph } from '../Typography';
-import { Switch } from '../form/Switch';
-import { Modal } from '../Modal';
+import { Button } from '../../Button';
+import { Paragraph } from '../../Typography';
+import { Switch } from '../Switch';
+import { Modal } from '../../Modal';
 
 import { data } from './data/data';
 

@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
-import utilityClasses from '../../../utilities/utility.module.css';
+import utilityClasses from '../../../../utilities/utility.module.css';
 
 export const ComboboxClearButton = () => {
   const context = useContext(ComboboxContext);

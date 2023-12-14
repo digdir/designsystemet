@@ -4,8 +4,8 @@ import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
-import { Box } from '../../Box';
-import textFieldClasses from '../../form/Textfield/Textfield.module.css';
+import { Box } from '../../../Box';
+import textFieldClasses from '../../Textfield/Textfield.module.css';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';

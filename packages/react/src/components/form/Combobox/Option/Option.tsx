@@ -9,9 +9,9 @@ import cn from 'classnames';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../Combobox';
-import { Label } from '../../Typography';
+import { Label } from '../../../Typography';
 import ComboboxCheckbox from '../internal/ComboboxCheckbox';
-import { omit } from '../../../utilities';
+import { omit } from '../../../../utilities';
 
 import classes from './Option.module.css';
 import ComboboxOptionDescription from './Description/Description';

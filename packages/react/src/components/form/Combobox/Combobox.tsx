@@ -18,9 +18,9 @@ import type {
   UseListNavigationProps,
 } from '@floating-ui/react';
 
-import { Box } from '../Box';
+import { Box } from '../../Box';
 import type { FormFieldProps } from '../form/useFormField';
-import { useFormField } from '../form/useFormField';
+import { useFormField } from '../useFormField';
 
 import type { Option } from './useCombobox';
 import useCombobox, { isComboboxOption } from './useCombobox';
