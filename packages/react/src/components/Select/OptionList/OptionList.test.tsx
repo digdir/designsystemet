@@ -51,6 +51,7 @@ const defaultProps: OptionListProps = {
   setFloating: jest.fn(),
   x: 0,
   y: 0,
+  portal: true,
 };
 
 describe('OptionList', () => {
