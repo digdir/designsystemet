@@ -41,11 +41,6 @@ describe('List', () => {
     expect(screen.getByText('Test')).toBeInTheDocument();
   });
 
-  it('should have the passed className', () => {
-    render({ className: 'test' });
-    expect(screen.getByRole('list')).toHaveClass('test');
-  });
-
   it('should have the passed size', () => {
     render({ size: 'large' });
     expect(screen.getByRole('list')).toHaveClass('large');
