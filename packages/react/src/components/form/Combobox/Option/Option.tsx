@@ -10,7 +10,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
-import { Label } from '../../../Typography';
+import { Label, Paragraph } from '../../../Typography';
 // import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
 
@@ -115,12 +115,17 @@ export const ComboboxOption = forwardRef<
       ref={combinedRef}
     >
       {/* {multiple && icon} */}
-      {selected && (
-        <CheckmarkIcon
-          className={classes.selectIcon}
-          aria-hidden
-        />
-      )}
+      <Label
+        as='span'
+        size={size}
+      >
+        {selected && (
+          <CheckmarkIcon
+            className={classes.selectIcon}
+            aria-hidden
+          />
+        )}
+      </Label>
       <Label
         className={classes.optionText}
         size={size}
