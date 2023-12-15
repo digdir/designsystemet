@@ -28,6 +28,8 @@
   export let deleteButtonLabel = 'Slett';
 
   export let disabled;
+  //svelte-ignore unused-export-let
+  export let size = 'medium';
 </script>
 
 <span

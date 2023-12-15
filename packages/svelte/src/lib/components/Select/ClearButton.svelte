@@ -4,6 +4,8 @@
   export let handleClick;
   export let deleteButtonLabel = 'Delete';
   export let disabled;
+  //svelte-ignore unused-export-let
+  export let size = 'medium';
 </script>
 
 <button

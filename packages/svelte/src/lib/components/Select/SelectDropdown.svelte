@@ -1,5 +1,4 @@
 <script>
-  import Checkbox from '../Form/Checkbox/Checkbox.svelte';
   import SelectCheckmark from './SelectCheckmark.svelte';
   import { getContext } from 'svelte';
 
@@ -25,6 +24,15 @@
   export let isDropdownVisible;
 
   export let multiple;
+
+  /**
+   * If true, hides selected options from the dropdown list.
+   * @type {boolean}
+   */
+  //svelte-ignore unused-export-let
+   export let hideSelected = false;
+   //svelte-ignore unused-export-let
+  export let size = 'medium';
   export let inputId;
 
   const selectContext = getContext('selectContext-' + inputId);
