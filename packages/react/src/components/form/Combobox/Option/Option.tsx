@@ -7,13 +7,13 @@ import React, {
 } from 'react';
 import cn from 'classnames';
 import { useMergeRefs } from '@floating-ui/react';
-import { CheckmarkIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
 import { Label } from '../../../Typography';
 // import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
 
+import { SelectedIcon } from './Icon/SelectedIcon';
 import classes from './Option.module.css';
 import ComboboxOptionDescription from './Description/Description';
 
@@ -52,6 +52,7 @@ export const ComboboxOption = forwardRef<
     size,
     listRef,
     optionValues,
+    multiple,
   } = context;
 
   const index = useMemo(
@@ -99,6 +100,7 @@ export const ComboboxOption = forwardRef<
       className={cn(
         classes.option,
         activeIndex === index && classes.active,
+        multiple && classes.multiple,
         rest.className,
       )}
       ref={combinedRef}
@@ -107,12 +109,10 @@ export const ComboboxOption = forwardRef<
         as='span'
         size={size}
       >
-        {selected && (
-          <CheckmarkIcon
-            className={classes.selectIcon}
-            aria-hidden
-          />
-        )}
+        <SelectedIcon
+          multiple={multiple}
+          selected={!!selected}
+        />
       </Label>
       <Label
         className={classes.optionText}
