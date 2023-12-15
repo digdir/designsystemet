@@ -1,9 +1,9 @@
 .option {
   width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1.2em 1fr;
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  padding-left: var(--fds-spacing-1);
   border: none;
   border-left: 5px solid transparent;
   border-radius: var(--fds-border_radius-interactive);
@@ -25,6 +25,7 @@
 }
 
 .optionText {
+  /* grid-area: label; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -55,4 +56,11 @@
   min-height: unset;
   height: unset;
   width: unset;
+}
+
+.selectIcon {
+  box-sizing: border-box;
+  padding-top: 0.2em;
+  transform: scale(1.4);
+  stroke: var(--fds-semantic-border-action-hover);
 }

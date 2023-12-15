@@ -7,10 +7,11 @@ import React, {
 } from 'react';
 import cn from 'classnames';
 import { useMergeRefs } from '@floating-ui/react';
+import { CheckmarkIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
 import { Label } from '../../../Typography';
-import ComboboxCheckbox from '../internal/ComboboxCheckbox';
+// import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
 
 import classes from './Option.module.css';
@@ -48,7 +49,6 @@ export const ComboboxOption = forwardRef<
     activeIndex,
     setActiveOption,
     onOptionClick,
-    multiple,
     size,
     listRef,
     optionValues,
@@ -70,21 +70,11 @@ export const ComboboxOption = forwardRef<
     throw new Error('Internal error: ComboboxOption did not find index');
   }
 
-  const active = selectedOptions.find((option) => option.value === value);
+  const selected = selectedOptions.find((option) => option.value === value);
 
   useEffect(() => {
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
-
-  const icon = useMemo(() => {
-    return (
-      <ComboboxCheckbox
-        size={size}
-        checked={!!active}
-        className={classes.checkbox}
-      />
-    );
-  }, [active, size]);
 
   return (
     <button
@@ -92,7 +82,7 @@ export const ComboboxOption = forwardRef<
       id={rest.id || generatedId}
       role='option'
       type='button'
-      aria-selected={activeIndex === index}
+      aria-selected={!!selected}
       aria-labelledby={labelId}
       onClick={(e) => {
         onOptionClick(value);
@@ -113,7 +103,17 @@ export const ComboboxOption = forwardRef<
       )}
       ref={combinedRef}
     >
-      {multiple && icon}
+      <Label
+        as='span'
+        size={size}
+      >
+        {selected && (
+          <CheckmarkIcon
+            className={classes.selectIcon}
+            aria-hidden
+          />
+        )}
+      </Label>
       <Label
         className={classes.optionText}
         size={size}
