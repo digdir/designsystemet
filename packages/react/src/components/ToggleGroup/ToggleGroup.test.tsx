@@ -154,6 +154,34 @@ describe('ToggleGroup', () => {
     expect(input).toHaveAttribute('value', 'test');
   });
 
+  test('should send the value to a form when the form is submitted', async () => {
+    const formSubmitPromise = new Promise<FormData>((resolve) => {
+      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        resolve(new FormData(event.currentTarget));
+      };
+
+      render(
+        <form onSubmit={handleSubmit}>
+          <ToggleGroup
+            name='test'
+            defaultValue='test2'
+          >
+            <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
+            <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
+          </ToggleGroup>
+          <button type='submit'>Submit</button>
+        </form>,
+      );
+    });
+
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
+    await user.click(submitButton);
+
+    const formData = await formSubmitPromise;
+    expect(formData.get('test')).toBe('test2');
+  });
+
   test('if we dont pass a name, we should not have a hidden input', () => {
     render(
       <ToggleGroup>
