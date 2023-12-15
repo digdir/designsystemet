@@ -94,6 +94,7 @@ export const ComboboxOption = forwardRef<
       role='option'
       type='button'
       aria-selected={activeIndex === index}
+      aria-checked={!!selected}
       aria-labelledby={labelId}
       onClick={(e) => {
         onOptionClick(value);
