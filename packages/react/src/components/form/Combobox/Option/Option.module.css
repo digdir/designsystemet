@@ -63,5 +63,6 @@
 .selectIcon {
   box-sizing: border-box;
   padding-top: 0.2em;
+  transform: scale(1.4);
   stroke: var(--fds-semantic-border-action-hover);
 }
