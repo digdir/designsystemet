@@ -10,7 +10,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
-import { Label, Paragraph } from '../../../Typography';
+import { Label } from '../../../Typography';
 // import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
 
@@ -49,7 +49,6 @@ export const ComboboxOption = forwardRef<
     activeIndex,
     setActiveOption,
     onOptionClick,
-    multiple,
     size,
     listRef,
     optionValues,
@@ -76,16 +75,6 @@ export const ComboboxOption = forwardRef<
   useEffect(() => {
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
-
-  // const icon = useMemo(() => {
-  //   return (
-  //     <ComboboxCheckbox
-  //       size={size}
-  //       checked={!!selected}
-  //       className={classes.checkbox}
-  //     />
-  //   );
-  // }, [selected, size]);
 
   return (
     <button
@@ -115,7 +104,6 @@ export const ComboboxOption = forwardRef<
       )}
       ref={combinedRef}
     >
-      {/* {multiple && icon} */}
       <Label
         as='span'
         size={size}
