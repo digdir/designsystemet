@@ -42,8 +42,6 @@
    */
   export let arrowGap = 4;
 
-  export let maxWidth = '200px';
-
   $: internalOpen = open ?? defaultOpen;
 
   const arrowRef = writable(null);

@@ -76,12 +76,6 @@
   export let searchLabel = 'Search';
 
   /**
-   * Label for the delete button in multi-select mode.
-   * @type {string}
-   */
-  export let deleteButtonLabel = 'Delete';
-
-  /**
    * If true, hides selected options from the dropdown list.
    * @type {boolean}
    */
@@ -314,9 +308,6 @@
 <style lang="scss">
   .error-message {
     color: var(--fds-semantic-border-danger-default);
-  }
-
-  .select-container {
   }
 
   .select-label {

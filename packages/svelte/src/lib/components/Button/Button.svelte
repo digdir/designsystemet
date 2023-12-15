@@ -85,10 +85,6 @@
     position: relative;
   }
 
-  .button svg {
-    overflow: visible;
-  }
-
   .button.small::before {
     position: absolute;
     top: 0;

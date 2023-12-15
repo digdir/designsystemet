@@ -21,7 +21,10 @@
 
   let store = {
     selectedTab: writable('1'),
-    select: (i) => store.selectedTab.set(i),
+    select: (i) => {
+      store.selectedTab.set(i);
+      onChange(i);
+    },
     tabSize: writable('medium')
   };
   

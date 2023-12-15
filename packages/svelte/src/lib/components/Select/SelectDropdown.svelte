@@ -24,13 +24,7 @@
    */
   export let isDropdownVisible;
 
-  /**
-   * If true, hides selected options from the dropdown list.
-   * @type {boolean}
-   */
-  export let hideSelected;
   export let multiple;
-  export let size;
   export let inputId;
 
   const selectContext = getContext('selectContext-' + inputId);
@@ -56,7 +50,8 @@
   <ul class="options-list">
     {#each options as option (option.value)}
       {@const isSelected = isOptionSelected(option)}
-      <!--{#if !selected} -->
+
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <li
         class="option-item"
         role="option"
@@ -102,10 +97,6 @@
                   fill="white"
                 />
               </svg>
-              <!-- <input
-                type="checkbox"
-                checked={isSelected}
-              /> -->
             </div>
           {/if}
           <div class="option-text">
@@ -197,19 +188,6 @@
     height: 0;
   }
 
-  .spacing-xsmall {
-    padding-left: var(--fds-spacing-6);
-  }
-  .spacing-small {
-    padding-left: var(--fds-spacing-7);
-  }
-  .spacing-medium {
-    padding-left: calc(var(--fds-spacing-8) + var(--fds-spacing-1));
-  }
-  .spacing-large {
-    padding-left: calc(var(--fds-spacing-8) + var(--fds-spacing-3));
-  }
-
   .icon {
     grid-area: input;
     pointer-events: none;
@@ -267,17 +245,5 @@
   .icon-xsmall {
     height: 1.2rem;
     width: 1.2rem;
-  }
-  .icon-small {
-    height: 1.375em;
-    width: 1.375em;
-  }
-  .icon-medium {
-    height: 1.6875rem;
-    width: 1.6875rem;
-  }
-  .icon-large {
-    height: 2rem;
-    width: 2rem;
   }
 </style>

@@ -6,15 +6,17 @@
 
   import Paragraph from '../Typography/Paragraph/Paragraph.svelte';
 
-  /**
-   * Alert component to show notifications with varying severity.
-   * @prop {string} [severity='info'] - Sets color & icon according to severity. Options are 'info', 'warning', 'success', or 'danger'.
-   * @prop {boolean} [elevated=false] - Adds a shadow to elevate the component.
-   * @prop {string} [iconTitle] - Sets `title` on the icon. Use this to inform screenreaders of severity. Defaults to Norwegian.
+   /**
+   * Alert component to show notifications with varying severity. Options are 'info', 'warning', 'success', or 'danger'.
+   * @type { 'info' | 'warning' | 'success' | 'danger'}
    */
   export let severity = 'info';
+
+  /**
+   * Adds a shadow to elevate the component.
+   * @type {boolean}
+   */
   export let elevated = false;
-  export let iconTitle = '';
 
   const icons = {
     info: {
