@@ -61,7 +61,10 @@ const PLACES = [
 export const Preview: StoryFn<typeof Combobox> = (args) => {
   return (
     <>
-      <Combobox {...args}>
+      <Combobox
+        {...args}
+        onValueChange={(e) => console.log(e)}
+      >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
           <Combobox.Option

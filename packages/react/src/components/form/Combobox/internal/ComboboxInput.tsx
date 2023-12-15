@@ -33,11 +33,13 @@ export const ComboboxInput = ({
     selectedOptions,
     formFieldProps,
     htmlSize,
+    options,
     setOpen,
     setActiveIndex,
     handleKeyDown,
     getReferenceProps,
     setInputValue,
+    setSelectedOptions,
   } = context;
 
   // we need to check if input is in focus, to add focus styles to the wrapper
@@ -70,6 +72,25 @@ export const ComboboxInput = ({
       setOpen(true);
     } else {
       setOpen(false);
+    }
+
+    // check if input value is the same as a label, if so, select it
+    const option = options.find((option) => option.label === value);
+    if (!option) return;
+    if (multiple) {
+      setSelectedOptions([...selectedOptions, option]);
+      setInputValue('');
+      inputRef.current?.focus();
+    } else {
+      setSelectedOptions([option]);
+      setInputValue(option?.label || '');
+      // move cursor to the end of the input
+      setTimeout(() => {
+        inputRef.current?.setSelectionRange(
+          option?.label?.length || 0,
+          option?.label?.length || 0,
+        );
+      }, 0);
     }
   };
 

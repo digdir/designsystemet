@@ -288,6 +288,16 @@ export const Combobox = ({
             const option = options.find(
               (option) => option.value === props.value,
             );
+
+            if (!multiple) {
+              // check if option is already selected, if so, deselect it
+              if (selectedOptions.find((i) => i.value === option?.value)) {
+                setSelectedOptions([]);
+                setInputValue('');
+                return;
+              }
+            }
+
             handleSelectOption(option as Option);
           }
         }
