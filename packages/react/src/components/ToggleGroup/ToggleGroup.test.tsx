@@ -128,4 +128,40 @@ describe('ToggleGroup', () => {
     expect(onChangeValue).toEqual('test2');
     expect(item2).toHaveAttribute('aria-checked', 'true');
   });
+
+  test('if we pass a name, we should have a hidden input with that name', () => {
+    render(
+      <ToggleGroup name='my-name'>
+        <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const input = document.querySelector('input[type="hidden"]');
+    expect(input).toHaveAttribute('name', 'my-name');
+  });
+
+  test('if we pass a name, we should have a hidden input with that name and value', () => {
+    render(
+      <ToggleGroup
+        name='my-name'
+        defaultValue='test'
+      >
+        <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const input = document.querySelector('input[type="hidden"]');
+    expect(input).toHaveAttribute('value', 'test');
+  });
+
+  test('if we dont pass a name, we should not have a hidden input', () => {
+    render(
+      <ToggleGroup>
+        <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const input = document.querySelector('input[type="hidden"]');
+    expect(input).toBeNull();
+  });
 });
