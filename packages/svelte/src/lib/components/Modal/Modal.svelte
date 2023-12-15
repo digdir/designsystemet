@@ -195,6 +195,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow-y: auto;
   }
 
   .modal {
@@ -204,8 +205,12 @@
     gap: 8px;
     max-width: 500px;
     width: 80%;
+    max-height: 90%;
     border-radius: var(--border-radius-large, 0.5rem);
     z-index: 1001;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .modal.default {
