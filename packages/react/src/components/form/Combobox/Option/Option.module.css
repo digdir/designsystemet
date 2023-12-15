@@ -1,9 +1,11 @@
 .option {
   width: 100%;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: fle;
+
+  /* gap: 10px; */
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  padding-left: var(--fds-spacing-5);
   border: none;
   border-left: 5px solid transparent;
   border-radius: var(--fds-border_radius-interactive);
@@ -55,4 +57,11 @@
   min-height: unset;
   height: unset;
   width: unset;
+}
+
+.selectIcon {
+  margin-left: calc(-1 * var(--fds-spacing-4) + -5px);
+  stroke: var(--fds-semantic-border-action-hover);
+  stroke-width: 2px;
+  margin-right: 4px;
 }

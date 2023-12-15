@@ -7,10 +7,11 @@ import React, {
 } from 'react';
 import cn from 'classnames';
 import { useMergeRefs } from '@floating-ui/react';
+import { CheckmarkIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
 import { Label } from '../../../Typography';
-import ComboboxCheckbox from '../internal/ComboboxCheckbox';
+// import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
 
 import classes from './Option.module.css';
@@ -70,21 +71,21 @@ export const ComboboxOption = forwardRef<
     throw new Error('Internal error: ComboboxOption did not find index');
   }
 
-  const active = selectedOptions.find((option) => option.value === value);
+  const selected = selectedOptions.find((option) => option.value === value);
 
   useEffect(() => {
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
 
-  const icon = useMemo(() => {
-    return (
-      <ComboboxCheckbox
-        size={size}
-        checked={!!active}
-        className={classes.checkbox}
-      />
-    );
-  }, [active, size]);
+  // const icon = useMemo(() => {
+  //   return (
+  //     <ComboboxCheckbox
+  //       size={size}
+  //       checked={!!selected}
+  //       className={classes.checkbox}
+  //     />
+  //   );
+  // }, [selected, size]);
 
   return (
     <button
@@ -113,7 +114,14 @@ export const ComboboxOption = forwardRef<
       )}
       ref={combinedRef}
     >
-      {multiple && icon}
+      {/* {multiple && icon} */}
+      {selected && (
+        <CheckmarkIcon
+          className={classes.selectIcon}
+          fontSize={'1.2em'}
+          aria-hidden
+        />
+      )}
       <Label
         className={classes.optionText}
         size={size}
