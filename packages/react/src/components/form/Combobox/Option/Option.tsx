@@ -118,7 +118,6 @@ export const ComboboxOption = forwardRef<
       {selected && (
         <CheckmarkIcon
           className={classes.selectIcon}
-          fontSize={'1.2em'}
           aria-hidden
         />
       )}

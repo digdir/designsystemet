@@ -1,7 +1,7 @@
 .option {
   width: 100%;
   display: flex;
-  align-items: fle;
+  align-items: center;
 
   /* gap: 10px; */
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
