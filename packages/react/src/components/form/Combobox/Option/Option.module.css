@@ -2,8 +2,6 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1.2em 1fr;
-
-  /* gap: 10px; */
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
   padding-left: var(--fds-spacing-1);
   border: none;
