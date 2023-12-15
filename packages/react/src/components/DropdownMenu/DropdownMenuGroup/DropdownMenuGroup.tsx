@@ -21,7 +21,7 @@ export const DropdownMenuGroup = forwardRef<
   const headingId = useId();
 
   return (
-    <>
+    <li>
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         {...rest}
@@ -41,7 +41,7 @@ export const DropdownMenuGroup = forwardRef<
         )}
         {children}
       </ul>
-    </>
+    </li>
   );
 });
 
