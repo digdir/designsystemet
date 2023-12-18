@@ -72,6 +72,11 @@ export type ComboboxProps = {
    */
   hideChips?: boolean;
   /**
+   * Label for the clear button
+   * @default 'Clear'
+   */
+  cleanButtonLabel?: string;
+  /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
@@ -79,15 +84,15 @@ export type ComboboxProps = {
    *
    * @default (inputValue, option) => option.value.toLowerCase().startsWith(inputValue.toLowerCase())
    */
-  filter?: (
-    inputValue: string,
-    option: {
-      value: string;
-      label: string;
-      displayValue?: string;
-      description?: string;
-    },
-  ) => boolean;
+  filter?: (inputValue: string, option: Option) => boolean;
+  /**
+   * Add a screen reader label to the chips
+   * @param option
+   * @returns string
+   *
+   * @default (option) => option.label
+   */
+  chipSrLabel?: (option: Option) => string;
 } & FormFieldProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
@@ -102,6 +107,7 @@ export const Combobox = ({
   disabled = false,
   readOnly = false,
   hideChips = true,
+  cleanButtonLabel = 'Clear',
   error,
   errorId,
   id,
@@ -112,6 +118,7 @@ export const Combobox = ({
   filter = (inputValue, option) => {
     return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
+  chipSrLabel = (option) => option.label,
   ...rest
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -347,6 +354,7 @@ export const Combobox = ({
         htmlSize,
         optionValues,
         hideChips,
+        cleanButtonLabel,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -367,6 +375,7 @@ export const Combobox = ({
           const option = options.find((option) => option.value === value);
           handleSelectOption(option as Option);
         },
+        chipSrLabel,
         listRef,
       }}
     >
@@ -448,6 +457,7 @@ type ComboboxContextType = {
   error: ComboboxProps['error'];
   htmlSize: ComboboxProps['htmlSize'];
   hideChips: NonNullable<ComboboxProps['hideChips']>;
+  cleanButtonLabel: NonNullable<ComboboxProps['cleanButtonLabel']>;
   options: Option[];
   selectedOptions: Option[];
   size: NonNullable<ComboboxProps['size']>;
@@ -469,6 +479,7 @@ type ComboboxContextType = {
   ) => Record<string, unknown>;
   onOptionClick: (value: string) => void;
   setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
+  chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
   listRef: UseListNavigationProps['listRef'];
 };
 

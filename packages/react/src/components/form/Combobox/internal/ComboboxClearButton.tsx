@@ -13,8 +13,14 @@ export const ComboboxClearButton = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, readOnly, disabled, setSelectedOptions, setInputValue } =
-    context;
+  const {
+    size,
+    readOnly,
+    disabled,
+    cleanButtonLabel,
+    setSelectedOptions,
+    setInputValue,
+  } = context;
 
   return (
     <button
@@ -31,6 +37,7 @@ export const ComboboxClearButton = () => {
         setInputValue('');
       }}
       type='button'
+      aria-label={cleanButtonLabel}
     >
       <XMarkIcon
         fontSize='1.5em'

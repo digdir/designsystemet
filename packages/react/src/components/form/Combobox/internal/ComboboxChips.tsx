@@ -10,8 +10,14 @@ export const ComboboxChips = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, readOnly, disabled, selectedOptions, setSelectedOptions } =
-    context;
+  const {
+    size,
+    readOnly,
+    disabled,
+    selectedOptions,
+    setSelectedOptions,
+    chipSrLabel,
+  } = context;
 
   return (
     <>
@@ -33,6 +39,7 @@ export const ComboboxChips = () => {
               /* We already set the opacity on Combobox */
               opacity: 1,
             }}
+            aria-label={chipSrLabel(option)}
           >
             {option.label}
           </ChipRemovable>

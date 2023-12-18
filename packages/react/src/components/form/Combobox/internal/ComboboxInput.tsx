@@ -36,6 +36,7 @@ export const ComboboxInput = ({
     htmlSize,
     options,
     hideChips,
+
     setOpen,
     setActiveIndex,
     handleKeyDown,
