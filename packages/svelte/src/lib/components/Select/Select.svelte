@@ -261,6 +261,7 @@
   bind:this={node}
   class="select-container"
   aria-label={ariaLabel}
+  {...$$restProps}
 >
   {#if label}
     {#if readOnly}🔒{/if}
