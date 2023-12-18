@@ -99,9 +99,9 @@ export const ComboboxOption = forwardRef<
       }} // Set active index on focus
       className={cn(
         classes.option,
+        classes[size],
         activeIndex === index && classes.active,
         multiple && classes.multiple,
-        classes[size],
         rest.className,
       )}
       ref={combinedRef}

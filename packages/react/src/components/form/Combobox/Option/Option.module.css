@@ -76,6 +76,10 @@
   width: var(--fds-spacing-5);
 }
 
+.medium .selectIconWrapper {
+  width: var(--fds-spacing-6);
+}
+
 .large .selectIconWrapper {
   width: var(--fds-spacing-7);
 }

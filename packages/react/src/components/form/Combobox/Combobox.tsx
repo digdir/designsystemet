@@ -403,6 +403,7 @@ export const Combobox = ({
             <Box
               shadow='medium'
               borderRadius='medium'
+              borderColor='subtle'
               aria-labelledby={formFieldProps.inputProps.id}
               aria-autocomplete='list'
               {...getFloatingProps({
@@ -426,9 +427,9 @@ export const Combobox = ({
 };
 
 type ComboboxContextType = {
-  multiple: ComboboxProps['multiple'];
-  disabled: ComboboxProps['disabled'];
-  readOnly: ComboboxProps['readOnly'];
+  multiple: NonNullable<ComboboxProps['multiple']>;
+  disabled: NonNullable<ComboboxProps['disabled']>;
+  readOnly: NonNullable<ComboboxProps['readOnly']>;
   name: ComboboxProps['name'];
   error: ComboboxProps['error'];
   htmlSize: ComboboxProps['htmlSize'];
