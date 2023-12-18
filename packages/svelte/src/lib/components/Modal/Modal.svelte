@@ -88,8 +88,9 @@
 
   function handleClick(event) {
     const modal = document.querySelector('.modal');
+    const textSelected = window.getSelection().toString().length !== 0;
 
-    if (modal && !modal.contains(event.target)) {
+    if (modal && !modal.contains(event.target) && !textSelected) {
       close();
     }
   }
