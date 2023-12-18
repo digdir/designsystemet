@@ -1402,12 +1402,12 @@ export const color = [
     path: ['semantic', 'border', 'on_inverted', 'default'],
   },
   {
-    value: '#00315d',
+    value: '#00244E',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#00315d',
+      value: '{brand.alt1.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-input-default',
@@ -1415,12 +1415,12 @@ export const color = [
     path: ['semantic', 'border', 'input', 'default'],
   },
   {
-    value: '#0062ba',
+    value: '#4C76BA',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '#0062ba',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-input-hover',
@@ -1909,12 +1909,12 @@ export const color = [
     path: ['semantic', 'text', 'danger', 'on_danger_subtle'],
   },
   {
-    value: '#7a1265',
+    value: '#BD5749',
     type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.purple.700}',
+      value: '{brand.red.700}',
       type: 'color',
     },
     name: '--fds-semantic-text-visited-default',

@@ -1,6 +1,6 @@
 {
   "name": "@kjetil-hoel/design-system-tokens",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "brand/staf/tokens.cjs.js",
   "module": "brand/staf/tokens.esm.js",

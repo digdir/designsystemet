@@ -115,8 +115,8 @@
   --fds-semantic-border-focus-outline: #ffda06;
   --fds-semantic-border-focus-boxshadow: #00244E;
   --fds-semantic-border-on_inverted-default: #ffffff;
-  --fds-semantic-border-input-default: #00315d;
-  --fds-semantic-border-input-hover: #0062ba;
+  --fds-semantic-border-input-default: #00244E;
+  --fds-semantic-border-input-hover: #4C76BA;
   --fds-semantic-border-first-default: #00244E;
   --fds-semantic-border-first-hover: #00244E;
   --fds-semantic-border-first-active: #00244E;
@@ -154,7 +154,7 @@
   --fds-semantic-text-danger-active: #5a121d;
   --fds-semantic-text-danger-on_danger: #ffffff;
   --fds-semantic-text-danger-on_danger_subtle: #1e2b3c;
-  --fds-semantic-text-visited-default: #7a1265;
+  --fds-semantic-text-visited-default: #BD5749;
   --fds-typography-heading-xlarge: 500 clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem)/1.3 'Inter';
   --fds-typography-heading-large: 500 clamp(1.47rem, calc(0.86vw + 1.30rem), 2.03rem)/1.3 'Inter';
   --fds-typography-heading-medium: 500 clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem)/1.3 'Inter';

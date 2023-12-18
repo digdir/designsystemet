@@ -2588,7 +2588,7 @@ __metadata:
   resolution: "@kjetil-hoel/design-system-svelte@workspace:packages/svelte"
   dependencies:
     "@altinn/figma-design-tokens": ^6.0.1
-    "@kjetil-hoel/design-system-tokens": ^0.0.2
+    "@kjetil-hoel/design-system-tokens": ^0.0.5
     "@navikt/aksel-icons": ^5.6.0
     "@playwright/test": ^1.28.1
     "@sveltejs/adapter-auto": ^2.0.0
@@ -2615,14 +2615,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kjetil-hoel/design-system-tokens@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@kjetil-hoel/design-system-tokens@npm:0.0.2"
-  checksum: e41a7c3b12ba936aec64c8fafca3b4f36e65dd915aa729710d29484c39d22ec8d42a8e404011173442be3ba76624cd967909a7d2008be4bc62df559478a9361a
-  languageName: node
-  linkType: hard
-
-"@kjetil-hoel/design-system-tokens@workspace:packages/tokens":
+"@kjetil-hoel/design-system-tokens@^0.0.5, @kjetil-hoel/design-system-tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@kjetil-hoel/design-system-tokens@workspace:packages/tokens"
   dependencies:
