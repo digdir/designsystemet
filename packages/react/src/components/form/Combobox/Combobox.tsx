@@ -403,7 +403,7 @@ export const Combobox = ({
             <Box
               shadow='medium'
               borderRadius='medium'
-              borderColor='subtle'
+              borderColor='default'
               aria-labelledby={formFieldProps.inputProps.id}
               aria-autocomplete='list'
               {...getFloatingProps({
