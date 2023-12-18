@@ -184,4 +184,92 @@ describe('Combobox', () => {
 
     expect(screen.getByText('Fant ingen treff')).toBeInTheDocument();
   });
+
+  it('should work in a form if we pass a name', async () => {
+    const formSubmitPromise = new Promise<FormData>((resolve) => {
+      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        resolve(new FormData(event.currentTarget));
+      };
+
+      renderRtl(
+        <form onSubmit={handleSubmit}>
+          <Combobox name='test'>
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            {PLACES.map((option, index) => (
+              <Combobox.Option
+                key={index}
+                value={option.value}
+                displayValue={option.name}
+              >
+                {option.name}
+              </Combobox.Option>
+            ))}
+          </Combobox>
+          <button type='submit'>Submit</button>
+        </form>,
+      );
+    });
+
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+
+    await userEvent.click(screen.getByText('Leikanger'));
+
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
+    await userEvent.click(submitButton);
+
+    const formData = await formSubmitPromise;
+    expect(formData.get('test')).toBe('leikanger');
+  });
+
+  it('should work in a form if we pass a name, and we click multiple', async () => {
+    const formSubmitPromise = new Promise<FormData>((resolve) => {
+      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        resolve(new FormData(event.currentTarget));
+      };
+
+      renderRtl(
+        <form onSubmit={handleSubmit}>
+          <Combobox
+            name='test'
+            multiple={true}
+          >
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            {PLACES.map((option, index) => (
+              <Combobox.Option
+                key={index}
+                value={option.value}
+                displayValue={option.name}
+              >
+                {option.name}
+              </Combobox.Option>
+            ))}
+          </Combobox>
+          <button
+            data-testid='submit'
+            type='submit'
+          >
+            Submit
+          </button>
+        </form>,
+      );
+    });
+
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+
+    await userEvent.click(screen.getByText('Leikanger'));
+    await userEvent.click(screen.getByText('Oslo'));
+
+    const submitButton = screen.getAllByTestId('submit')[0];
+
+    await userEvent.click(submitButton);
+
+    const formData = await formSubmitPromise;
+    expect(formData.getAll('test')).toEqual(['leikanger', 'oslo']);
+  });
 });
