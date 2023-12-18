@@ -35,7 +35,7 @@ export const ComboboxInput = ({
     formFieldProps,
     htmlSize,
     options,
-    showChips,
+    hideChips,
     setOpen,
     setActiveIndex,
     handleKeyDown,
@@ -133,7 +133,7 @@ export const ComboboxInput = ({
     >
       <div className={classes.chipAndInput}>
         {/* If the input is in multiple mode, we need to display chips */}
-        {multiple && showChips && <ComboboxChips />}
+        {multiple && hideChips && <ComboboxChips />}
         <input
           ref={inputRef}
           {...formFieldProps.inputProps}
