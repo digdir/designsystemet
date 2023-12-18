@@ -67,6 +67,11 @@ export type ComboboxProps = {
    */
   htmlSize?: number;
   /**
+   * If true, the chips will not be rendered in multiple mode
+   * @default true
+   */
+  showChips?: boolean;
+  /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
@@ -96,6 +101,7 @@ export const Combobox = ({
   size = 'medium',
   disabled = false,
   readOnly = false,
+  showChips = true,
   error,
   errorId,
   id,
@@ -340,6 +346,7 @@ export const Combobox = ({
         name,
         htmlSize,
         optionValues,
+        showChips,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -440,6 +447,7 @@ type ComboboxContextType = {
   name: ComboboxProps['name'];
   error: ComboboxProps['error'];
   htmlSize: ComboboxProps['htmlSize'];
+  showChips: NonNullable<ComboboxProps['showChips']>;
   options: Option[];
   selectedOptions: Option[];
   size: NonNullable<ComboboxProps['size']>;
