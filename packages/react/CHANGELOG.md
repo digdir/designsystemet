@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.39.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.38.0...@digdir/design-system-react@0.39.0) (2023-12-14)
+
+### Bug Fixes
+
+- **Accordion:** support for using custom elements inside `Item` and `Header` ([#1198](https://github.com/digdir/designsystem/issues/1198)) ([a09eea1](https://github.com/digdir/designsystem/commit/a09eea1b8c08f91ebb67826aa375f149bb5ea35a))
+- **Button, Checkbox, NativeSelect, Radio, Search, Switch, Textfield:** 🐛 Sizes and alignment ([#1166](https://github.com/digdir/designsystem/issues/1166)) ([716395d](https://github.com/digdir/designsystem/commit/716395dc5f0805f92c485572ae98693d71d5fa6d))
+- **Chip:** :bug: Add missing disabled styling and behaviour ([#1201](https://github.com/digdir/designsystem/issues/1201)) ([d6647bf](https://github.com/digdir/designsystem/commit/d6647bfd8622c10fe23fa76dfbadfbb0a5367e89))
+- **ErrorMessage:** Change default wrapper to `div` ([#1203](https://github.com/digdir/designsystem/issues/1203)) ([f14e22b](https://github.com/digdir/designsystem/commit/f14e22b6bbd14a9e1dbd923583e8573109f9cdaa))
+- **NativeSelect:** Fix firefox background color ([#1185](https://github.com/digdir/designsystem/issues/1185)) ([ddf8d89](https://github.com/digdir/designsystem/commit/ddf8d8976513c87e155d534950955effc8398574))
+- **Search:** :bug: Fix missaligned search icon ([#1207](https://github.com/digdir/designsystem/issues/1207)) ([eac15b2](https://github.com/digdir/designsystem/commit/eac15b283fea8a2c8994b1b8f26b59101a89bb90))
+- **Textfield, Textarea:** :bug: Only apply `aria-describedby` if its defined ([#1184](https://github.com/digdir/designsystem/issues/1184)) ([f510c0c](https://github.com/digdir/designsystem/commit/f510c0cc98b33838da452bd7a89869948247c449))
+- **ToggleGroup:** :bug: Use correct paddings on `ToggleGroup.Item` ([#1209](https://github.com/digdir/designsystem/issues/1209)) ([2b6dade](https://github.com/digdir/designsystem/commit/2b6dade30d65fb5565c3c266130beaf3480a3520))
+
+### Features
+
+- **Heading:** Make `size` optional with default `xlarge` ([#1208](https://github.com/digdir/designsystem/issues/1208)) ([b2aaf27](https://github.com/digdir/designsystem/commit/b2aaf275067bbf2148c7825e8a48f1d8721e7c41))
+
 # [0.38.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.37.0...@digdir/design-system-react@0.38.0) (2023-12-01)
 
 ### Bug Fixes
