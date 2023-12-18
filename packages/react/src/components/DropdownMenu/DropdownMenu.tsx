@@ -20,8 +20,6 @@ import {
   FloatingFocusManager,
 } from '@floating-ui/react';
 
-import { Box } from '../Box';
-
 import classes from './DropdownMenu.module.css';
 
 const GAP = 4;
@@ -47,13 +45,13 @@ export type DropdownMenuProps = {
    * @default medium
    **/
   size?: 'small' | 'medium' | 'large';
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   size: 'medium',
 });
 
-export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
+export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
   (
     {
       anchorEl,
@@ -66,7 +64,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
     },
     ref,
   ) => {
-    const floatingEl = useRef<HTMLDivElement>(null);
+    const floatingEl = useRef<HTMLUListElement>(null);
 
     const {
       context,
@@ -118,23 +116,21 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
             guards={false}
             modal={false}
           >
-            <Box
+            <ul
               {...rest}
-              shadow='medium'
-              borderRadius='medium'
-              className={cn(classes.dropdown, classes[size], rest.className)}
+              role='menu'
+              aria-hidden={!open}
+              data-placement={flPlacement}
               ref={floatingRef}
               style={floatingStyles}
               {...getFloatingProps({
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              role='menu'
-              aria-hidden={!open}
-              data-placement={flPlacement}
+              className={cn(classes.dropdown, classes[size], rest.className)}
             >
               {children}
-            </Box>
+            </ul>
           </FloatingFocusManager>
         )}
       </DropdownMenuContext.Provider>

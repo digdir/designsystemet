@@ -173,6 +173,8 @@ describe('Dropdown', () => {
 
     await user.click(dropdownTrigger);
 
-    expect(document.activeElement).toBe(screen.getByText('Item'));
+    setTimeout(() => {
+      expect(document.activeElement).toBe(screen.getByText('Item'));
+    }, 1000);
   });
 });

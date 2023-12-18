@@ -60,10 +60,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const characterLimitId = `${textareaProps.id}-charactercount}`;
     const hasCharacterLimit = characterLimit != null;
 
-    const describedBy = cn(
-      textareaProps['aria-describedby'],
-      hasCharacterLimit && characterLimitId,
-    );
+    const describedBy =
+      cn(
+        textareaProps['aria-describedby'],
+        hasCharacterLimit && characterLimitId,
+      ) || undefined;
 
     return (
       <Paragraph

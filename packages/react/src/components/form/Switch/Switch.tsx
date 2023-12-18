@@ -79,6 +79,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         size={size}
         className={cn(
           classes.switch,
+          classes[size],
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
           position === 'right' && classes.right,

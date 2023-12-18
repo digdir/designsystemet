@@ -17,7 +17,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .fds-nativeselect-select:not(:focus-visible, :disabled):hover {
+  .fds-nativeselect-select:not(
+      :focus-visible,
+      :disabled,
+      [aria-disabled]
+    ):hover {
     border-color: var(--fds-semantic-border-action-hover);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
   }

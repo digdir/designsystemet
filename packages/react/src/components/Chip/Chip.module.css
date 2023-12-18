@@ -20,24 +20,14 @@
   font-family: inherit;
 }
 
-/* Only use hover for non-touch devices to prevent sticky-hovering */
-@media (hover: hover) and (pointer: fine) {
-  .chipButton:hover {
-    --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle-hover);
-    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-    --fdsc-chip-border: var(--fds-semantic-border-action-first-subtle-hover);
-
-    cursor: pointer;
-  }
-
-  .chipButton:is([aria-pressed='true']):hover {
-    --fdsc-chip-background: var(--fds-semantic-surface-action-first-no_fill-active);
-    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
-  }
+.chipButton:disabled,
+.chipButton[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: var(--fds-opacity-disabled);
 }
 
 .chipButton:is([aria-pressed='true']),
-.chipButton:active {
+.chipButton:not(:disabled, [aria-disabled='true']):active {
   --fdsc-chip-background: var(--fds-semantic-surface-action-first-active);
   --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-chip-border: var(--fds-semantic-surface-action-first-active);
@@ -102,16 +92,6 @@
   --fdsc-removable-chip-size: var(--fds-sizing-8);
 }
 
-.removable:hover,
-.removable:focus {
-  --fdsc-removable-background: linear-gradient(
-    to left,
-    var(--fds-semantic-surface-danger-default) var(--fdsc-removable-chip-xmark-wrapper-width),
-    var(--fds-semantic-surface-action-first-active) var(--fdsc-removable-chip-xmark-wrapper-width)
-  );
-  --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
-}
-
 .xMark .icon {
   height: var(--fdsc-removable-chip-xmark-size);
   width: var(--fdsc-removable-chip-xmark-size);
@@ -156,4 +136,30 @@
 
 .groupContainer.large {
   --fdsc-gap: var(--fds-spacing-2);
+}
+
+/* Only use hover for non-touch devices to prevent sticky-hovering */
+@media (hover: hover) and (pointer: fine) {
+  .chipButton:not(:disabled, [aria-disabled='true']):hover {
+    --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle-hover);
+    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+    --fdsc-chip-border: var(--fds-semantic-border-action-first-subtle-hover);
+
+    cursor: pointer;
+  }
+
+  .chipButton:not(:disabled, [aria-disabled='true']):is([aria-pressed='true']):hover {
+    --fdsc-chip-background: var(--fds-semantic-surface-action-first-no_fill-active);
+    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+  }
+
+  .removable:not(:disabled, [aria-disabled='true']):hover,
+  .removable:not(:disabled, [aria-disabled='true']):focus {
+    --fdsc-removable-background: linear-gradient(
+      to left,
+      var(--fds-semantic-surface-danger-default) var(--fdsc-removable-chip-xmark-wrapper-width),
+      var(--fds-semantic-surface-action-first-active) var(--fdsc-removable-chip-xmark-wrapper-width)
+    );
+    --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
+  }
 }
