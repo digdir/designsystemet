@@ -182,6 +182,7 @@
   .formField {
     display: grid;
     gap: var(--fds-spacing-2);
+    width: 100%;
   }
 
   .adornment {

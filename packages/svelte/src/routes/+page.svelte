@@ -213,6 +213,7 @@
   error={showTextfieldError ? 'Lorem ipsum error' : ''}
   size="medium"
   characterLimit={10}
+  style="width: 50%"
   characterLimitLabel={(count) =>
     count > -1
       ? `Du har ${count} tegn igjen.`
@@ -237,6 +238,7 @@
   size="small"
   description="Beskrivelse"
   error="Lorem ipsum error"
+  style="width: 50%"
   hideLabel={false}
   characterLimit={10}
   characterLimitLabel={(count) =>
