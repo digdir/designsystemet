@@ -1039,6 +1039,16 @@
           "value": "{brand.grey.500}",
           "type": "color"
         }
+      },
+      "input": {
+        "default": {
+          "value": "{brand.alt1.900}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{brand.alt2.900}",
+          "type": "color"
+        }
       }
     },
     "text": {
@@ -1107,6 +1117,12 @@
         },
         "on_inverted": {
           "value": "{colors.white}",
+          "type": "color"
+        }
+      },
+      "visited": {
+        "default": {
+          "value": "{brand.red.700}",
           "type": "color"
         }
       }
