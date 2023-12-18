@@ -6,6 +6,7 @@ import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
 import { Box } from '../../../Box';
 import textFieldClasses from '../../Textfield/Textfield.module.css';
+import { omit } from '../../../../utilities';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
@@ -145,7 +146,7 @@ export const ComboboxInput = ({
             rest.onChange && rest.onChange(e);
           }}
           value={inputValue}
-          {...rest}
+          {...omit(['style', 'className'], rest)}
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}
