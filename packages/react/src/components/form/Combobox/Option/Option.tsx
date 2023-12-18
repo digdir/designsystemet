@@ -101,6 +101,7 @@ export const ComboboxOption = forwardRef<
         classes.option,
         activeIndex === index && classes.active,
         multiple && classes.multiple,
+        classes[size],
         rest.className,
       )}
       ref={combinedRef}

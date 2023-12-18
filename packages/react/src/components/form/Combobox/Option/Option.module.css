@@ -25,12 +25,12 @@
 }
 
 .option.multiple {
-  grid-template-columns: var(--fds-spacing-6) 1fr;
+  grid-template-columns: auto 1fr;
   gap: var(--fds-spacing-2);
 }
 
 .optionText {
-  /* grid-area: label; */
+  margin: auto 0;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -72,6 +72,14 @@
   place-items: center;
 }
 
+.small .selectIconWrapper {
+  width: var(--fds-spacing-5);
+}
+
+.large .selectIconWrapper {
+  width: var(--fds-spacing-7);
+}
+
 .selectIconWrapper.selected {
   border-color: var(--fds-semantic-border-input-hover);
   background-color: var(--fds-semantic-border-input-hover);
@@ -92,6 +100,10 @@
 .active .selectIcon {
   stroke: var(--fds-semantic-text-action-hover);
   color: var(--fds-semantic-text-action-hover);
+}
+
+.active .selectIconWrapper {
+  border-color: var(--fds-semantic-border-input-hover);
 }
 
 .selectIconWrapper.selected .selectIcon {
