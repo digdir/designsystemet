@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.40.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.39.0...@digdir/design-system-react@0.40.0) (2023-12-18)
+
+### Bug Fixes
+
+- **DropDownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystem/issues/1190)) ([11bd19b](https://github.com/digdir/designsystem/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
+- **List:** Wrap in `div` to allow access to `Heading` ([#1217](https://github.com/digdir/designsystem/issues/1217)) ([afcadb7](https://github.com/digdir/designsystem/commit/afcadb7c4cb4b368d247af0c41ed8debf53c4b66))
+- **Pagination:** Only use needed space for buttons ([#1220](https://github.com/digdir/designsystem/issues/1220)) ([4bf3d74](https://github.com/digdir/designsystem/commit/4bf3d745888f500259df5aadf4edee97ec4f95bc))
+- **Select:** Select not working properly in Modal ([#1195](https://github.com/digdir/designsystem/issues/1195)) ([fb8be6a](https://github.com/digdir/designsystem/commit/fb8be6a647ba0da8b5b23e65813508f34e09c8c1))
+- **ToggleGroup:** Only use needed space for buttons ([#1216](https://github.com/digdir/designsystem/issues/1216)) ([3d4f721](https://github.com/digdir/designsystem/commit/3d4f7212c2423eae043578dd5c28e35123d863e8))
+
+### Features
+
+- **ToggleGroup:** Support `form` when `name` is provided ([#1218](https://github.com/digdir/designsystem/issues/1218)) ([75fd99f](https://github.com/digdir/designsystem/commit/75fd99f2d5f22ca9ceaceb022217a399b5e0a56e))
+
 # [0.39.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.38.0...@digdir/design-system-react@0.39.0) (2023-12-14)
 
 ### Bug Fixes
