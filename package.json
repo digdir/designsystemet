@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@babel/preset-typescript": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.3",
     "@digdir/design-system-react": "*",
     "@digdir/design-system-tokens": "*",
     "@etchteam/storybook-addon-css-variables-theme": "^1.5.1",
@@ -63,8 +63,8 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "@types/rimraf": "^4.0.5",
-    "@typescript-eslint/eslint-plugin": "6.9.0",
-    "@typescript-eslint/parser": "6.9.0",
+    "@typescript-eslint/eslint-plugin": "6.15.0",
+    "@typescript-eslint/parser": "6.15.0",
     "classnames": "^2.3.2",
     "copyfiles": "^2.4.1",
     "eslint": "8.52.0",
@@ -100,9 +100,9 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^3.0.0",
     "ts-jest": "^29.1.1",
-    "tslib": "^2.4.1",
-    "typescript": "^5.2.2",
-    "typescript-plugin-css-modules": "^5.0.0"
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "typescript-plugin-css-modules": "^5.0.2"
   },
   "engines": {
     "node": ">=18.12.0"
