@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
 
-let stashedTime: CSSNumberish | null;
+const stashedTime: { [key: string]: CSSNumberish | null } = {};
 
 export function useSynchronizedAnimation<T>(animationName: string) {
   const ref = useRef<T>(null);
@@ -19,8 +19,12 @@ export function useSynchronizedAnimation<T>(animationName: string) {
         (animation.effect as KeyframeEffect)?.target === ref.current,
     );
 
-    if (myAnimation && myAnimation === animations[0] && stashedTime) {
-      myAnimation.currentTime = stashedTime;
+    if (
+      myAnimation &&
+      myAnimation === animations[0] &&
+      stashedTime[animationName]
+    ) {
+      myAnimation.currentTime = stashedTime[animationName];
     }
 
     if (myAnimation && myAnimation !== animations[0]) {
@@ -29,7 +33,7 @@ export function useSynchronizedAnimation<T>(animationName: string) {
 
     return () => {
       if (myAnimation && myAnimation === animations[0]) {
-        stashedTime = myAnimation.currentTime;
+        stashedTime[animationName] = myAnimation.currentTime;
       }
     };
   }, [animationName]);
