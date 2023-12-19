@@ -90,7 +90,7 @@ export type ComboboxProps = {
    * @param option
    * @returns string
    *
-   * @default (option) => option.label
+   * @default (option) => 'Deselect ' + option.label,
    */
   chipSrLabel?: (option: Option) => string;
 } & FormFieldProps &
@@ -118,7 +118,7 @@ export const Combobox = ({
   filter = (inputValue, option) => {
     return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
-  chipSrLabel = (option) => option.label,
+  chipSrLabel = (option) => 'Deselect ' + option.label,
   ...rest
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
