@@ -439,6 +439,7 @@ export const Combobox = ({
               borderColor='default'
               aria-labelledby={formFieldProps.inputProps.id}
               aria-autocomplete='list'
+              tabIndex={-1}
               {...getFloatingProps({
                 ref: refs.setFloating,
                 style: {

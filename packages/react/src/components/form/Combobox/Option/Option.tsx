@@ -85,6 +85,7 @@ export const ComboboxOption = forwardRef<
       type='button'
       aria-selected={!!selected}
       aria-labelledby={labelId}
+      tabIndex={-1}
       onClick={(e) => {
         onOptionClick(value);
         rest.onClick?.(e);
