@@ -385,19 +385,19 @@
     label="Lorem ipsum label."
   />
   <Radio
-    value="option2"
+    value="option1"
     label="Lorem ipsum dolor sit label."
     description="Lorem ipsum dolor sit description."
   />
   <Radio
     readOnly={true}
-    value="option3"
+    value="option1"
     label="Lorem ipsum dolor sit amet readonly label."
     description="Lorem ipsum dolor sit amet readonly description."
   />
   <Radio
     disabled={true}
-    value="option4"
+    value="option1"
     label="Lorem ipsum dolor sit amet disabled label."
     description="Lorem ipsum dolor sit amet disabled description."
   />
