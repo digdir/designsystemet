@@ -24,3 +24,8 @@ jobs:
         run: yarn install --immutable
       - name: Build
         run: yarn build:tokens
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: '🍱 Generated new tokens'
+          add: '.'
