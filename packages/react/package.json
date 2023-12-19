@@ -1,6 +1,6 @@
 {
   "name": "@digdir/design-system-react",
-  "version": "0.40.0",
+  "version": "0.41.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/design-system-tokens": "^0.10.0",
+    "@digdir/design-system-tokens": "^0.11.0",
     "@floating-ui/react": "0.25.2",
     "@navikt/aksel-icons": "^3.2.4",
     "cssnano": "^6.0.1",

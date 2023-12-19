@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.10.0...@digdir/design-system-tokens@0.11.0) (2023-12-19)
+
+### Features
+
+- **tokens:** add missing border-radius tokens ([#1232](https://github.com/digdir/designsystem/issues/1232)) ([85d521e](https://github.com/digdir/designsystem/commit/85d521e5bacda936b5ea7066f41d916925e2186d))
+
 # [0.10.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.8.1...@digdir/design-system-tokens@0.10.0) (2023-11-17)
 
 ### Bug Fixes

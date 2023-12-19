@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.41.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.40.0...@digdir/design-system-react@0.41.0) (2023-12-19)
+
+### Bug Fixes
+
+- **Accordion:** 🐛 Fix wrong border colors for `first`, `second`, `third` colors ([#1246](https://github.com/digdir/designsystem/issues/1246)) ([e38bf41](https://github.com/digdir/designsystem/commit/e38bf415a2ca258bee229f69b4a16f4205a6f90f))
+- **DropdownMenu:** :bug: Add missing background ([#1252](https://github.com/digdir/designsystem/issues/1252)) ([2abe4db](https://github.com/digdir/designsystem/commit/2abe4dbd6065ce4784581c53058019b8fd0c621b))
+
+### Features
+
+- **Combobox:** ✨ New component ([#1126](https://github.com/digdir/designsystem/issues/1126)) ([2d51cd7](https://github.com/digdir/designsystem/commit/2d51cd771e7c32c5e5fc92c037a33875331d2f7e))
+- **Select:** :wastebasket: Change `Select` to legacy ([#1250](https://github.com/digdir/designsystem/issues/1250)) ([6f619d7](https://github.com/digdir/designsystem/commit/6f619d76b60b5e7c28cc82295056d1fc6fcfe3d2))
+
 # [0.40.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.39.0...@digdir/design-system-react@0.40.0) (2023-12-18)
 
 ### Bug Fixes
