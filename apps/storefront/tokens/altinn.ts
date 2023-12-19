@@ -1948,13 +1948,13 @@ export const color = [
     path: ['semantic', 'text', 'visited', 'default'],
   },
   {
-    value: '#B3D0EA',
+    value: '#E6EFF8',
     type: 'color',
     description: 'AAA 12.8 on grey 800\nAA 6.4 as bkdg for interaction blue',
     filePath: '../../design-tokens/Brand/Altinn.json',
     isSource: false,
     original: {
-      value: '#B3D0EA',
+      value: '#E6EFF8',
       type: 'color',
       description: 'AAA 12.8 on grey 800\nAA 6.4 as bkdg for interaction blue',
     },
