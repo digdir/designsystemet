@@ -9,10 +9,10 @@ export * from './legacy/LegacyTextArea';
 export * from './legacy/LegacyToggleButtonGroup';
 export * from './legacy/LegacyTabs';
 export * from './legacy/LegacyPopover';
+export * from './legacy/LegacySelect';
 
 export * from './Button';
 export * from './HelpText';
-export * from './Select';
 export * from './Spinner';
 export * from './Link';
 export * from './List';

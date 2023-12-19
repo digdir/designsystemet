@@ -1,8 +1,13 @@
-import { compareMatch, orderByKeywords } from '../../utilities';
+import { compareMatch, orderByKeywords } from '../../../utilities';
 
-import type { MultiSelectOption, SingleSelectOption } from './types';
+import type {
+  LegacyMultiSelectOption,
+  LegacySingleSelectOption,
+} from './types';
 
-export const optionSearch = <T extends SingleSelectOption | MultiSelectOption>(
+export const optionSearch = <
+  T extends LegacySingleSelectOption | LegacyMultiSelectOption,
+>(
   options: T[],
   search: string,
 ): T[] => {

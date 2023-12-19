@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { SingleSelectOption } from '../types';
+import type { LegacySingleSelectOption } from '../types';
 
 import { Option } from './Option';
 import type { OptionProps } from './Option';
@@ -15,7 +15,7 @@ const id = 'test-id';
 const onClick = jest.fn();
 const label = 'Option';
 const value = 'option';
-const option: SingleSelectOption = { label, value };
+const option: LegacySingleSelectOption = { label, value };
 const defaultProps: OptionProps = {
   active: false,
   id,

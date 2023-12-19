@@ -1,10 +1,10 @@
-import type { SingleSelectOption } from './types';
+import type { LegacySingleSelectOption } from './types';
 import { optionSearch } from './utils';
 
 describe('Select utils', () => {
   describe('optionSearch', () => {
     it('Returns options sorted by labels and keywords', () => {
-      const options: SingleSelectOption[] = [
+      const options: LegacySingleSelectOption[] = [
         {
           label: 'Katt',
           value: 'katt',
@@ -34,7 +34,7 @@ describe('Select utils', () => {
     });
 
     it('Returns options sorted by labels if keywords are not given', () => {
-      const options: SingleSelectOption[] = [
+      const options: LegacySingleSelectOption[] = [
         {
           label: 'Katt',
           value: '1',

@@ -4,20 +4,24 @@ import cn from 'classnames';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 import { flip, size } from '@floating-ui/dom';
 
-import { InputWrapper } from '../../utilities/InputWrapper';
-import { useKeyboardEventListener, usePrevious, useUpdate } from '../../hooks';
-import { arraysEqual, objectValuesEqual } from '../../utilities';
-import { useFocusWithin } from '../../hooks/useFocusWithin';
-import utilClasses from '../../utilities/utility.module.css';
+import { InputWrapper } from '../../../utilities/InputWrapper';
+import {
+  useKeyboardEventListener,
+  usePrevious,
+  useUpdate,
+} from '../../../hooks';
+import { arraysEqual, objectValuesEqual } from '../../../utilities';
+import { useFocusWithin } from '../../../hooks/useFocusWithin';
+import utilClasses from '../../../utilities/utility.module.css';
 
 import { MultiSelectItem } from './MultiSelectItem';
 import classes from './Select.module.css';
 import { optionSearch } from './utils';
 import type {
-  SelectProps,
-  SingleSelectEvent,
-  MultiSelectEvent,
-  MultiSelectOption,
+  LegacySelectProps,
+  LegacySingleSelectEvent,
+  LegacyMultiSelectEvent,
+  LegacyMultiSelectOption,
 } from './types';
 import { OptionList } from './OptionList';
 
@@ -27,7 +31,7 @@ const eventListenerKeys = {
   Enter: 'Enter',
 };
 
-const Select = (props: SelectProps) => {
+const LegacySelect = (props: LegacySelectProps) => {
   const {
     disabled,
     error,
@@ -185,7 +189,7 @@ const Select = (props: SelectProps) => {
       setActiveOption(addedValue);
     }
     setSelectedValues(newValues);
-    onChange && (onChange as MultiSelectEvent)(newValues);
+    onChange && (onChange as LegacyMultiSelectEvent)(newValues);
     resetKeyword();
   };
 
@@ -193,7 +197,7 @@ const Select = (props: SelectProps) => {
     setActiveOption(newValue);
     resetKeyword(findOptionFromValue(newValue).label);
     setExpanded(false);
-    onChange && (onChange as SingleSelectEvent)(newValue);
+    onChange && (onChange as LegacySingleSelectEvent)(newValue);
   };
 
   const addOrRemoveSelectedValue = (activeValue: string) => {
@@ -338,7 +342,7 @@ const Select = (props: SelectProps) => {
                   {selectedValues.map(findOptionFromValue).map((o) => (
                     <MultiSelectItem
                       deleteButtonLabel={
-                        (o as MultiSelectOption).deleteButtonLabel
+                        (o as LegacyMultiSelectOption).deleteButtonLabel
                       }
                       disabled={disabled ?? false}
                       key={o.value}
@@ -438,6 +442,6 @@ const Select = (props: SelectProps) => {
   );
 };
 
-Select.displayName = 'Select';
+LegacySelect.displayName = 'LegacySelect';
 
-export { Select };
+export { LegacySelect };

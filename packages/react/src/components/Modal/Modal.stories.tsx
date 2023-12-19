@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
 import { Divider } from '../Divider';
-import { Select } from '../Select';
+import { LegacySelect } from '../legacy/LegacySelect/';
 
 import { Modal } from '.';
 
@@ -239,10 +239,10 @@ export const ModalWithSelect: StoryFn<typeof Modal> = () => {
       >
         <Modal.Header>Modal med select</Modal.Header>
         <Modal.Content>
-          <Select
+          <LegacySelect
             portal={false}
             {...{ ...defaultArgs }}
-          ></Select>
+          ></LegacySelect>
         </Modal.Content>
         <Modal.Footer>
           <Button
