@@ -5676,12 +5676,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.2.14":
+"@types/react-dom@npm:^18.0.0":
   version: 18.2.14
   resolution: "@types/react-dom@npm:18.2.14"
   dependencies:
     "@types/react": "npm:*"
   checksum: c7feb6542dbeb3de18c9c03260229377e0a0d47a3d2c0bb91861996e2353375a45c57de7216edb8b88448584e363677244bd4355ddec45c243e70e777c2a150b
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.2.18":
+  version: 18.2.18
+  resolution: "@types/react-dom@npm:18.2.18"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 4ef7725b4cebd4a32e049097ddfdfd855a178e63ead97ab6d3084872e7d6c1acd71aa923488123cd1015f0e0b11489d2b44f674a1df8fe82d7827eabbec6dbf1
   languageName: node
   linkType: hard
 
@@ -5694,7 +5703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.31":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.31
   resolution: "@types/react@npm:18.2.31"
   dependencies:
@@ -5702,6 +5711,17 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: ac9f42f1cd6ee34329ea7a81894877dc333a2dc86141545e23121b07dcd7cea902bedc6b645ce017c92610bd8cd2c6e25dbba581379889a705314f3c759371bf
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.45":
+  version: 18.2.45
+  resolution: "@types/react@npm:18.2.45"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    "@types/scheduler": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: bd27fd8a959fa776965997af89cb04e43e7868416850fdff421b5539f389efa35acae3d55915c9f32d7b00fb388550302bf8a7f06010abf9ad431e5bf58cb774
   languageName: node
   linkType: hard
 
@@ -17390,7 +17410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.0.0":
+"react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -17556,7 +17576,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.1.0":
+"react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -18281,8 +18301,8 @@ __metadata:
     "@types/jest": "npm:^29.5.6"
     "@types/node": "npm:^18.11.11"
     "@types/prettier": "npm:^2.7.1"
-    "@types/react": "npm:^18.2.31"
-    "@types/react-dom": "npm:^18.2.14"
+    "@types/react": "npm:^18.2.45"
+    "@types/react-dom": "npm:^18.2.18"
     "@types/rimraf": "npm:^4.0.5"
     "@typescript-eslint/eslint-plugin": "npm:6.9.0"
     "@typescript-eslint/parser": "npm:6.9.0"
@@ -18305,8 +18325,8 @@ __metadata:
     lerna: "npm:^7.1.5"
     postcss: "npm:^8.4.16"
     prettier: "npm:^2.7.1"
-    react: "npm:^18.1.0"
-    react-dom: "npm:^18.0.0"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
     react-markdown: "npm:^8.0.5"
     remark-gfm: "npm:^3.0.1"
     rimraf: "npm:^5.0.5"
