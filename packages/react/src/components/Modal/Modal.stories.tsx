@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
 import { Divider } from '../Divider';
-import { Select } from '../Select';
+import { Select } from '../legacy/LegacySelect/';
 
 import { Modal } from '.';
 

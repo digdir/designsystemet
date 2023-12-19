@@ -2,7 +2,10 @@ import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { MultiSelectOption, SingleSelectOption } from '../types';
+import type {
+  LegacyMultiSelectOption,
+  LegacySingleSelectOption,
+} from '../types';
 
 import { OptionList } from './OptionList';
 import type { OptionListProps } from './OptionList';
@@ -14,13 +17,13 @@ const expanded = true;
 const listboxId = 'test-id';
 const selectedValues: string[] = [];
 
-const singleSelectOptions: SingleSelectOption[] = [
+const singleSelectOptions: LegacySingleSelectOption[] = [
   { label: 'Test 1', value: 'test1' },
   { label: 'Test 2', value: 'test2' },
   { label: 'Test 3', value: 'test3' },
 ];
 
-const multiSelectOptions: MultiSelectOption[] = [
+const multiSelectOptions: LegacyMultiSelectOption[] = [
   { label: 'Test 4', value: 'test4', deleteButtonLabel: 'Delete test 4' },
   { label: 'Test 5', value: 'test5', deleteButtonLabel: 'Delete test 5' },
 ];

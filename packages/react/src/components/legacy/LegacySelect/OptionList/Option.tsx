@@ -1,11 +1,16 @@
 import React from 'react';
 import cn from 'classnames';
 
-import type { MultiSelectOption, SingleSelectOption } from '../types';
+import type {
+  LegacyMultiSelectOption,
+  LegacySingleSelectOption,
+} from '../types';
 
 import classes from './OptionList.module.css';
 
-type OptionPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
+type OptionPropsBase<
+  T extends LegacySingleSelectOption | LegacyMultiSelectOption,
+> = {
   active: boolean;
   id: string;
   onClick: (value: string) => void;
@@ -14,8 +19,8 @@ type OptionPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
 };
 
 export type OptionProps =
-  | (OptionPropsBase<SingleSelectOption> & { multiple: false })
-  | (OptionPropsBase<MultiSelectOption> & { multiple: true });
+  | (OptionPropsBase<LegacySingleSelectOption> & { multiple: false })
+  | (OptionPropsBase<LegacyMultiSelectOption> & { multiple: true });
 
 const Option = ({
   active,

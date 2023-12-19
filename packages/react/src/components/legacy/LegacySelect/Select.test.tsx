@@ -3,39 +3,39 @@ import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import type {
-  MultiSelectOption,
-  MultiSelectProps,
-  SingleSelectOption,
-  SingleSelectProps,
+  LegacyMultiSelectOption,
+  LegacyMultiSelectProps,
+  LegacySingleSelectOption,
+  LegacySingleSelectProps,
 } from './types';
-import { Select } from './Select';
+import { LegacySelect } from './Select';
 
 const user = userEvent.setup();
 
-const singleSelectOptions: SingleSelectOption[] = [
+const singleSelectOptions: LegacySingleSelectOption[] = [
   { label: 'Test 1', value: 'test1' },
   { label: 'Test 2', value: 'test2' },
   { label: 'Test 3', value: 'test3' },
 ];
 
 const multiSelectOptions: Required<
-  Omit<MultiSelectOption, 'keywords' | 'formattedLabel'>
+  Omit<LegacyMultiSelectOption, 'keywords' | 'formattedLabel'>
 >[] = [
   { label: 'Test 1', value: 'test1', deleteButtonLabel: 'Delete test 1' },
   { label: 'Test 2', value: 'test2', deleteButtonLabel: 'Delete test 2' },
   { label: 'Test 3', value: 'test3', deleteButtonLabel: 'Delete test 3' },
 ];
 
-const defaultSingleSelectProps: SingleSelectProps = {
+const defaultSingleSelectProps: LegacySingleSelectProps = {
   options: singleSelectOptions,
 };
-const defaultMultiSelectProps: MultiSelectProps = {
+const defaultMultiSelectProps: LegacyMultiSelectProps = {
   options: multiSelectOptions,
   multiple: true,
 };
 
 // Mock optionSearch. This function is tested separately.
-const sortedOptions: SingleSelectOption[] = [
+const sortedOptions: LegacySingleSelectOption[] = [
   singleSelectOptions[1],
   singleSelectOptions[2],
   singleSelectOptions[0],
@@ -44,7 +44,7 @@ const sortedOptions: SingleSelectOption[] = [
 const optionSearch = jest.fn((_o, _k) => sortedOptions);
 jest.mock('./utils', () => ({
   optionSearch: (
-    options: SingleSelectOption[] | MultiSelectOption[],
+    options: LegacySingleSelectOption[] | LegacyMultiSelectOption[],
     keyword: string,
   ) => optionSearch(options, keyword),
 }));
@@ -107,7 +107,7 @@ describe('Select', () => {
       render(
         <>
           <span data-testid='some-element-outside' />
-          <Select {...defaultSingleSelectProps} />
+          <LegacySelect {...defaultSingleSelectProps} />
         </>,
       );
       await act(() => user.click(screen.getByRole('combobox')));
@@ -242,7 +242,7 @@ describe('Select', () => {
       const newValue = singleSelectOptions[newValueIndex].value;
       const { rerender } = renderSingleSelect({ value: selectedValue });
       rerender(
-        <Select
+        <LegacySelect
           {...defaultSingleSelectProps}
           value={newValue}
         />,
@@ -256,7 +256,7 @@ describe('Select', () => {
 
     it('Renders formatted label if given', () => {
       const formattedLabelText = 'Dolor sit amet';
-      const formattedOption: SingleSelectOption = {
+      const formattedOption: LegacySingleSelectOption = {
         label: 'Lorem ipsum',
         value: 'test',
         formattedLabel: <span>{formattedLabelText}</span>,
@@ -318,7 +318,7 @@ describe('Select', () => {
       const outsideButtonTestid = 'outside-button';
       render(
         <>
-          <Select
+          <LegacySelect
             {...defaultSingleSelectProps}
             {...{ onFocus, value }}
           />
@@ -339,7 +339,7 @@ describe('Select', () => {
       const outsideButtonTestid = 'outside-button';
       render(
         <>
-          <Select
+          <LegacySelect
             {...defaultSingleSelectProps}
             {...{ onBlur, value }}
           />
@@ -375,14 +375,14 @@ describe('Select', () => {
 
     it('Rerenders with new options when the "options" property changes', async () => {
       const options = singleSelectOptions;
-      const newOptions: SingleSelectOption[] = [
+      const newOptions: LegacySingleSelectOption[] = [
         { label: 'Test 4', value: 'test4' },
         { label: 'Test 5', value: 'test5' },
         { label: 'Test 6', value: 'test6' },
       ];
       const { rerender } = renderSingleSelect({ options: options });
       rerender(
-        <Select
+        <LegacySelect
           {...defaultSingleSelectProps}
           options={newOptions}
         />,
@@ -398,7 +398,7 @@ describe('Select', () => {
       const value = options[1].value;
       const { rerender } = renderSingleSelect({ options: [], value });
       rerender(
-        <Select
+        <LegacySelect
           {...defaultSingleSelectProps}
           options={options}
           value={value}
@@ -415,7 +415,7 @@ describe('Select', () => {
       });
     });
 
-    const expectSelectedValue = (option: SingleSelectOption) =>
+    const expectSelectedValue = (option: LegacySingleSelectOption) =>
       expect(getSelectedOption()).toHaveValue(option.value);
 
     const getSelectedOption = () =>
@@ -469,7 +469,7 @@ describe('Select', () => {
       render(
         <>
           <span data-testid='some-element-outside' />
-          <Select {...defaultMultiSelectProps} />
+          <LegacySelect {...defaultMultiSelectProps} />
         </>,
       );
       await act(() => user.click(screen.getByRole('combobox')));
@@ -728,7 +728,7 @@ describe('Select', () => {
       const newValues = newValueIndices.map((i) => multiSelectOptions[i].value);
       const { rerender } = renderMultiSelect({ value: selectedValues });
       rerender(
-        <Select
+        <LegacySelect
           {...defaultMultiSelectProps}
           value={newValues}
         />,
@@ -743,7 +743,7 @@ describe('Select', () => {
 
     it('Renders formatted label if given', () => {
       const formattedLabelText = 'Lorem ipsum';
-      const formattedOption: MultiSelectOption = {
+      const formattedOption: LegacyMultiSelectOption = {
         deleteButtonLabel: 'Fjern test',
         label: 'Test',
         value: 'test',
@@ -794,7 +794,7 @@ describe('Select', () => {
     it('Rerenders with new options when the "options" property changes', async () => {
       const options = multiSelectOptions;
       const newOptions: Required<
-        Omit<MultiSelectOption, 'keywords' | 'formattedLabel'>
+        Omit<LegacyMultiSelectOption, 'keywords' | 'formattedLabel'>
       >[] = [
         { label: 'Test 4', value: 'test4', deleteButtonLabel: 'Delete test 4' },
         { label: 'Test 5', value: 'test5', deleteButtonLabel: 'Delete test 5' },
@@ -802,7 +802,7 @@ describe('Select', () => {
       ];
       const { rerender } = renderSingleSelect({ options: options });
       rerender(
-        <Select
+        <LegacySelect
           {...defaultSingleSelectProps}
           options={newOptions}
         />,
@@ -818,7 +818,7 @@ describe('Select', () => {
       const outsideButtonTestid = 'outside-button';
       render(
         <>
-          <Select
+          <LegacySelect
             {...defaultMultiSelectProps}
             {...{ onFocus, value }}
           />
@@ -839,7 +839,7 @@ describe('Select', () => {
       const outsideButtonTestid = 'outside-button';
       render(
         <>
-          <Select
+          <LegacySelect
             {...defaultMultiSelectProps}
             {...{ onBlur, value }}
           />
@@ -899,7 +899,7 @@ describe('Select', () => {
     const getFocusedOption = () =>
       screen.getByRole('listbox').querySelector('[class*="focused"]');
 
-    const expectFocusedOption = (opt: MultiSelectOption) =>
+    const expectFocusedOption = (opt: LegacyMultiSelectOption) =>
       expect(getFocusedOption()).toHaveTextContent(opt.label);
 
     const expectSelectedValues = (values: string[]) =>
@@ -913,17 +913,17 @@ describe('Select', () => {
   });
 });
 
-const renderSingleSelect = (props?: Partial<SingleSelectProps>) =>
+const renderSingleSelect = (props?: Partial<LegacySingleSelectProps>) =>
   render(
-    <Select
+    <LegacySelect
       {...defaultSingleSelectProps}
       {...props}
     />,
   );
 
-const renderMultiSelect = (props?: Partial<MultiSelectProps>) =>
+const renderMultiSelect = (props?: Partial<LegacyMultiSelectProps>) =>
   render(
-    <Select
+    <LegacySelect
       {...defaultMultiSelectProps}
       {...props}
     />,

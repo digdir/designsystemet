@@ -1,8 +1,8 @@
-export { Select } from './Select';
+export { LegacySelect } from './Select';
 export type {
-  SelectProps,
-  SingleSelectOption,
-  MultiSelectOption,
-  SingleSelectEvent,
-  MultiSelectEvent,
+  LegacySelectProps,
+  LegacySingleSelectOption,
+  LegacyMultiSelectOption,
+  LegacySingleSelectEvent,
+  LegacyMultiSelectEvent,
 } from './types';

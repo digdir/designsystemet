@@ -3,12 +3,17 @@ import { FloatingPortal } from '@floating-ui/react';
 import cn from 'classnames';
 
 import { useEventListener } from '../../../../hooks';
-import type { MultiSelectOption, SingleSelectOption } from '../types';
+import type {
+  LegacyMultiSelectOption,
+  LegacySingleSelectOption,
+} from '../types';
 
 import classes from './OptionList.module.css';
 import { Option } from './Option';
 
-type OptionListPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
+type OptionListPropsBase<
+  T extends LegacySingleSelectOption | LegacyMultiSelectOption,
+> = {
   activeValue?: string;
   expanded: boolean;
   listboxId: string;
@@ -23,8 +28,8 @@ type OptionListPropsBase<T extends SingleSelectOption | MultiSelectOption> = {
 };
 
 export type OptionListProps =
-  | (OptionListPropsBase<SingleSelectOption> & { multiple: false })
-  | (OptionListPropsBase<MultiSelectOption> & { multiple: true });
+  | (OptionListPropsBase<LegacySingleSelectOption> & { multiple: false })
+  | (OptionListPropsBase<LegacyMultiSelectOption> & { multiple: true });
 
 const OptionList = ({
   activeValue,
