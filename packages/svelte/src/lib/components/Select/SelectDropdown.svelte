@@ -30,8 +30,8 @@
    * @type {boolean}
    */
   //svelte-ignore unused-export-let
-   export let hideSelected = false;
-   //svelte-ignore unused-export-let
+  export let hideSelected = false;
+  //svelte-ignore unused-export-let
   export let size = 'medium';
   export let inputId;
 
@@ -222,32 +222,33 @@
   }
 
   .input:not(:checked) ~ .icon .box {
-    stroke: var(--fds-semantic-border-input-default);
+    stroke: var(--fds-semsemantic-border-input-default, #00244e);
+    fill: var(--fds-semantic-surface-action-no_fill, #ffffff);
   }
 
   .input:disabled ~ .icon .box {
-    stroke: var(--fds-semantic-border-neutral-subtle);
-    fill: white;
+    stroke: var(--fds-semantic-border-neutral-subtle, #d2d5d8);
+    fill: var(--fds-semantic-surface-action-no_fill, #ffffff);
   }
 
   .input:checked:not(:disabled) ~ .icon .box {
-    stroke: var(--fds-semantic-border-input-hover);
-    fill: var(--fds-semantic-border-input-hover);
+    stroke: var(--fds-semantic-border-input-default, #00244e);
+    fill: var(--semantic-surface-action-checked, #00244e);
   }
 
   .input:focus-visible ~ .icon {
     outline: var(--fds-focus-border-width) solid
-      var(--fds-outer-focus-border-color);
+      var(--fds-semantic-border-focus-outline, #ffda06);
     outline-offset: 0;
   }
 
   .input:focus-visible:not(:disabled) ~ .icon .box {
-    stroke: var(--fds-semantic-border-focus-boxshadow);
+    stroke: var(--fds-semantic-border-focus-boxshadow, #00244e);
     stroke-width: var(--fds-focus-border-width);
   }
 
   .input:disabled ~ .icon .checked {
-    fill: var(--fds-semantic-border-neutral-subtle);
+    fill: var(--fds-semantic-border-neutral-default, #bfc2c0);
   }
 
   .icon-xsmall {
