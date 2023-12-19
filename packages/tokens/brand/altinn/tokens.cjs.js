@@ -230,7 +230,7 @@ module.exports = {
   "shadow_medium": "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
   "shadow_large": "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
   "shadow_xlarge": "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
-  "brand_alt1_100": "#E6EFF8",
+  "brand_alt1_100": "#B3D0EA",
   "brand_alt1_200": "#B3D0EA",
   "brand_alt1_300": "#80B1DD",
   "brand_alt1_400": "#66A1D6",
