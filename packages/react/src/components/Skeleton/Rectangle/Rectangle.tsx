@@ -19,15 +19,20 @@ export const Rectangle = ({
   children,
   ...rest
 }: RectangleProps) => {
-  const ref = useSynchronizedAnimation<HTMLDivElement>('opacity-fade');
+  const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
 
   return (
     <div
       {...rest}
       ref={ref}
-      className={cn(classes.skeleton, classes.rectangle, className, {
-        [classes.hasChildren]: Boolean(children),
-      })}
+      className={cn(
+        classes.skeleton,
+        classes.rectangle,
+        {
+          [classes.hasChildren]: Boolean(children),
+        },
+        className,
+      )}
       style={{ width, height, ...rest.style }}
       aria-hidden
     >

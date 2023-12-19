@@ -10,7 +10,8 @@ export function useSynchronizedAnimation<T>(animationName: string) {
       .getAnimations()
       .filter(
         (animation) =>
-          animation[animationName as keyof Animation] === animationName,
+          'animationName' in animation &&
+          animation.animationName === animationName,
       );
 
     const myAnimation = animations.find(

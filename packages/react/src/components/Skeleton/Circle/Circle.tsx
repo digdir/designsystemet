@@ -19,7 +19,7 @@ export const Circle = ({
   children,
   ...rest
 }: CircleProps) => {
-  const ref = useSynchronizedAnimation<HTMLDivElement>('opacity-fade');
+  const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
 
   return (
     <div

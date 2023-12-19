@@ -30,4 +30,4 @@ const Skeleton: SkeletonComponent = {
 };
 
 export type { CircleProps, RectangleProps, TextProps };
-export { Skeleton, SkeletonCircle, SkeletonRectangle };
+export { Skeleton, SkeletonCircle, SkeletonRectangle, SkeletonText };
