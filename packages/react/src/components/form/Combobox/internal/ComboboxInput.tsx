@@ -134,7 +134,7 @@ export const ComboboxInput = ({
     >
       <div className={classes.chipAndInput}>
         {/* If the input is in multiple mode, we need to display chips */}
-        {multiple && hideChips && <ComboboxChips />}
+        {multiple && !hideChips && <ComboboxChips />}
         <input
           ref={inputRef}
           {...formFieldProps.inputProps}

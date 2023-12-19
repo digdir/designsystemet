@@ -68,7 +68,7 @@ export type ComboboxProps = {
   htmlSize?: number;
   /**
    * If true, the chips will not be rendered in multiple mode
-   * @default true
+   * @default false
    */
   hideChips?: boolean;
   /**
@@ -106,7 +106,7 @@ export const Combobox = ({
   size = 'medium',
   disabled = false,
   readOnly = false,
-  hideChips = true,
+  hideChips = false,
   cleanButtonLabel = 'Clear',
   error,
   errorId,

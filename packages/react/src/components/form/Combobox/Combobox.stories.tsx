@@ -95,7 +95,6 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
-      <Paragraph>Value er: {value.join(', ')}</Paragraph>
       <Combobox
         {...args}
         value={value}
@@ -174,6 +173,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
       <Switch
         checked={multiple}
         onChange={(e) => {
@@ -191,7 +191,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
       >
         Sett verdi til Leikanger
       </Button>
-      Value er: {value.join(', ')}
+
       <Combobox
         {...args}
         key={multiple ? 'multiple' : 'single'}
