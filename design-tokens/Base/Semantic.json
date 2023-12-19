@@ -715,6 +715,18 @@
       "value": "12px",
       "type": "borderRadius"
     },
+    "xxlarge": {
+      "value": "16px",
+      "type": "borderRadius"
+    },
+    "xxxlarge": {
+      "value": "24px",
+      "type": "borderRadius"
+    },
+    "xxxxlarge": {
+      "value": "32px",
+      "type": "borderRadius"
+    },
     "full": {
       "value": "9999px",
       "type": "borderRadius"
