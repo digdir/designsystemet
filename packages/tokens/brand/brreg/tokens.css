@@ -189,6 +189,9 @@
   --fds-border_radius-medium: 4px;
   --fds-border_radius-large: 8px;
   --fds-border_radius-xlarge: 12px;
+  --fds-border_radius-xxlarge: 16px;
+  --fds-border_radius-xxxlarge: 24px;
+  --fds-border_radius-xxxxlarge: 32px;
   --fds-border_radius-full: 9999px;
   --fds-spacing-0: calc(0);
   --fds-spacing-1: calc(var(--fds-base_spacing)/16*var(--fds-font-size-f0));
