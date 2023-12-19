@@ -117,12 +117,13 @@
     top: 0;
     left: 0;
     background: var(--fds-semantic-border-neutral-strong);
-    color: white;
     padding: var(--fds-spacing-1) var(--fds-spacing-2);
     border-radius: var(--fds-border_radius-medium);
-    font: var(--fds-typography-paragraph-xsmall);
     z-index: 1000;
     overflow-wrap: break-word;
+    color: #fff;
+    font: var(--fds-typography-paragraph-xsmall);
+    font-family: inherit;
   }
   .tooltip-arrow {
     position: absolute;

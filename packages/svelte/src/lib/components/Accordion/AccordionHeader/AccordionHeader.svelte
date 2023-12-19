@@ -85,6 +85,10 @@
 		padding-left: var(--fdsc-accordion-header-padding-left);
 	}
 
+	.button {
+		font-family: inherit;
+	}
+
 	@media (hover: hover) and (pointer: fine) {
 		.header > button:hover {
 			color: var(--fdsc-accordion-header-color-hover);
