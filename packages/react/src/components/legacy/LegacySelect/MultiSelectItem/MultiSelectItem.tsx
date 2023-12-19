@@ -1,6 +1,6 @@
 import React from 'react';
 
-import utilClasses from '../../../utilities/utility.module.css';
+import utilClasses from '../../../../utilities/utility.module.css';
 
 import classes from './MultiSelectItem.module.css';
 

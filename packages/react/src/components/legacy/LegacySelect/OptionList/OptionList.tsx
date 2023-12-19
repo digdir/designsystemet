@@ -2,7 +2,7 @@ import React, { useId, useRef, useState } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import cn from 'classnames';
 
-import { useEventListener } from '../../../hooks';
+import { useEventListener } from '../../../../hooks';
 import type { MultiSelectOption, SingleSelectOption } from '../types';
 
 import classes from './OptionList.module.css';
