@@ -21,6 +21,7 @@ export const ComboboxInput = ({
   }
 
   const {
+    listId,
     size,
     readOnly,
     disabled,
@@ -141,6 +142,9 @@ export const ComboboxInput = ({
           aria-activedescendant={activeDescendant}
           readOnly={readOnly}
           aria-autocomplete='list'
+          role='combobox'
+          aria-expanded={open}
+          aria-controls={listId}
           autoComplete='off'
           size={htmlSize}
           onChange={(e) => {

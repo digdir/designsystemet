@@ -1,4 +1,10 @@
-import React, { useState, useRef, createContext, useEffect } from 'react';
+import React, {
+  useState,
+  useRef,
+  createContext,
+  useEffect,
+  useId,
+} from 'react';
 import {
   FloatingFocusManager,
   autoUpdate,
@@ -123,6 +129,8 @@ export const Combobox = ({
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
+
+  const listId = useId();
 
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>('');
@@ -355,6 +363,7 @@ export const Combobox = ({
         optionValues,
         hideChips,
         cleanButtonLabel,
+        listId,
         setInputValue,
         setActiveIndex,
         handleKeyDown,
@@ -424,6 +433,7 @@ export const Combobox = ({
             visuallyHiddenDismiss
           >
             <Box
+              id={listId}
               shadow='medium'
               borderRadius='medium'
               borderColor='default'
@@ -469,6 +479,7 @@ type ComboboxContextType = {
   inputValue: string;
   activeDescendant: string | undefined;
   optionValues: string[];
+  listId: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
