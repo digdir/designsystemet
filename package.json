@@ -29,10 +29,10 @@
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix",
     "pack:react": "yarn workspace @digdir/design-system-react pack",
-    "generate-component-storefront": "ts-node ./scripts/generate-component/storefront.ts",
-    "gcsf": "ts-node ./scripts/generate-component/storefront.ts",
-    "generate-component-react": "ts-node ./scripts/generate-component/react.ts",
-    "gcr": "ts-node ./scripts/generate-component/react.ts",
+    "generate-component-storefront": "esno ./scripts/generate-component/storefront.ts",
+    "gcsf": "esno ./scripts/generate-component/storefront.ts",
+    "generate-component-react": "esno ./scripts/generate-component/react.ts",
+    "gcr": "esno ./scripts/generate-component/react.ts",
     "types:react": "yarn workspace @digdir/design-system-react types",
     "types:storefront": "yarn workspace storefront types"
   },
@@ -100,7 +100,6 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^3.0.0",
     "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.0"
