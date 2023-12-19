@@ -87,16 +87,22 @@
 
 .accordion.first,
 .accordion.first > .item .header > button {
+  --fdsc-accordion-border: var(--fds-semantic-border-first-default);
+
   background: var(--fdsc-accordion-header-bg-primary);
 }
 
 .accordion.second,
 .accordion.second > .item .header > button {
+  --fdsc-accordion-border: var(--fds-semantic-border-second-default);
+
   background: var(--fdsc-accordion-header-bg-secondary);
 }
 
 .accordion.third,
 .accordion.third > .item .header > button {
+  --fdsc-accordion-border: var(--fds-semantic-border-third-default);
+
   background: var(--fdsc-accordion-header-bg-tertiary);
 }
 
