@@ -1513,6 +1513,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.21.0":
+  version: 7.23.6
+  resolution: "@babel/runtime@npm:7.23.6"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 4c4ab16f0361c59fb23956e4d0a29935f1f8a64aa8dd37876ce38355b6f4d8f0e54237aacb89c73b1532def60539ddde2d651523c8fa887b30b19a8cf0c465b0
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.22.15, @babel/template@npm:^7.3.3":
   version: 7.22.15
   resolution: "@babel/template@npm:7.22.15"
@@ -1625,7 +1634,7 @@ __metadata:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
     "@digdir/design-system-tokens": "npm:^0.11.0"
     "@floating-ui/react": "npm:0.25.2"
-    "@navikt/aksel-icons": "npm:^3.2.4"
+    "@navikt/aksel-icons": "npm:^5.12.1"
     "@types/fs-extra": "npm:^11.0.4"
     copyfiles: "npm:^2.4.1"
     cssnano: "npm:^6.0.1"
@@ -1873,8 +1882,8 @@ __metadata:
   linkType: hard
 
 "@etchteam/storybook-addon-css-variables-theme@npm:^1.5.1":
-  version: 1.5.1
-  resolution: "@etchteam/storybook-addon-css-variables-theme@npm:1.5.1"
+  version: 1.6.0
+  resolution: "@etchteam/storybook-addon-css-variables-theme@npm:1.6.0"
   dependencies:
     "@storybook/addons": "npm:^7.0.0-beta.49"
     "@storybook/api": "npm:^7.0.0-beta.49"
@@ -1883,14 +1892,11 @@ __metadata:
     "@storybook/core-events": "npm:^7.0.0-beta.49"
     "@storybook/theming": "npm:^7.0.0-beta.49"
     core-js: "npm:^3.0.1"
-    lodash: "npm:^4.17.21"
-    memoizerific: "npm:^1.11.3"
     query-string: "npm:^8.1.0"
-    util-deprecate: "npm:^1.0.2"
   peerDependencies:
     react: ">=16"
     react-dom: ">=16"
-  checksum: aa9228819b301c16cf7c5b5912426f2d011b94e2e72a0509edc0ece463574f48e9e3928bfee5da5b34c01a26213869d671de085c082986d732957f7920cf9ba7
+  checksum: 147c0228003c285cc45008d49e468291ddd69b9291298b5b33a808fba58efc12fdbdeeba9e267ffc22b4a6ef46a7714e72fef52eb18328017dc442c3a248e1c6
   languageName: node
   linkType: hard
 
@@ -1961,17 +1967,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/react@npm:0.24.1":
-  version: 0.24.1
-  resolution: "@floating-ui/react@npm:0.24.1"
+"@floating-ui/react-dom@npm:^2.0.2":
+  version: 2.0.4
+  resolution: "@floating-ui/react-dom@npm:2.0.4"
   dependencies:
-    "@floating-ui/react-dom": "npm:^2.0.0"
-    aria-hidden: "npm:^1.1.3"
-    tabbable: "npm:^6.0.1"
+    "@floating-ui/dom": "npm:^1.5.1"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 052027fe26718ab21e60a1e45b4cd66ac4ce35fb5125b17febe4514f6fcdc1a821aa4d03b1a9169fde9d7bf00f93481d657b2022643276561698547d0003a7c5
+  checksum: 4240a718502c797fd2e174cd06dcd7321a6eda9c8966dbaf61864b9e16445e95649a59bfe7c19ee13f68c11f3693724d7970c7e618089a3d3915bd343639cfae
   languageName: node
   linkType: hard
 
@@ -1986,6 +1990,20 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: bdcb4c26da663195de65fe2a986a2f66f9da918ca7e6f02658e41cf61a1fa5eb9d42571606bb2d9965b1be574895b3546723126dddafbcceb473c689b5f96d65
+  languageName: node
+  linkType: hard
+
+"@floating-ui/react@npm:0.25.4":
+  version: 0.25.4
+  resolution: "@floating-ui/react@npm:0.25.4"
+  dependencies:
+    "@floating-ui/react-dom": "npm:^2.0.2"
+    "@floating-ui/utils": "npm:^0.1.1"
+    tabbable: "npm:^6.0.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 9790e2ee5c1060f005aee0d0c21ba63cb9dbfc5eb775e259a84039d5c408b50573e7891733ec8f5fab2152df8615bfe85f30fd04656fc45af319aed99dfdf2dd
   languageName: node
   linkType: hard
 
@@ -2522,31 +2540,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aksel-icons@npm:^2.8.4":
-  version: 2.8.4
-  resolution: "@navikt/aksel-icons@npm:2.8.4"
-  checksum: 9c87916bd65720885d259c8799dd47096df59dc008c8942781981b34bad23902af2b74eac5dbf907a3c300458b6082836f1aeda7a5c2f83f5d35d441c350d1f3
+"@navikt/aksel-icons@npm:^5.12.1":
+  version: 5.12.1
+  resolution: "@navikt/aksel-icons@npm:5.12.1"
+  checksum: c42899c9d12bc26a2b572fe17dce437633b597b0015b67d7b2c0fe9d6ecb0491ebe5066bd0bb631457a0ae2ff5f2ad2ddf6e0f2bf0e87507c5bcf5bb6ebf9aa8
   languageName: node
   linkType: hard
 
-"@navikt/aksel-icons@npm:^3.2.4":
-  version: 3.2.4
-  resolution: "@navikt/aksel-icons@npm:3.2.4"
-  checksum: 971d897e4135d0377ee19b6c80d886f85f20905fb5dc06535bfcb1b5ea1a4b8e5148191dd7c9cc62500dfa8c2be0cdffc428775b907738da4d95cb81b19adc09
-  languageName: node
-  linkType: hard
-
-"@navikt/aksel-icons@npm:^5.0.2, @navikt/aksel-icons@npm:^5.6.5":
-  version: 5.6.5
-  resolution: "@navikt/aksel-icons@npm:5.6.5"
-  checksum: 4b4b2f95315f346e52bcbbb56d6afb0fb3912dd3527f78946c14c38074d6a372a1159df1a1b84397c1013ba632d727fe7d7e61ddc0ef65f0985fa8425095fca1
-  languageName: node
-  linkType: hard
-
-"@navikt/ds-css@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@navikt/ds-css@npm:5.0.2"
-  checksum: 136361022ef81b7881a11b8eb3d65776408648da01006bdc3c37246cf7e039f29f042f091a32711549f8d8ec27440b7a75ca54fbe7552ed0ce660276ae00d2f0
+"@navikt/ds-css@npm:^5.12.1":
+  version: 5.12.1
+  resolution: "@navikt/ds-css@npm:5.12.1"
+  checksum: 09c51351c7410b15bc5310f9a367ff481cdcc7a3971064b41fa29cc4f843075a2f25be0bedb34b51a19a69c3ae092ae8c90936f5b1938ecda9f00d7f1327c45f
   languageName: node
   linkType: hard
 
@@ -2563,16 +2567,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@navikt/ds-react@npm:5.0.2"
+"@navikt/ds-react@npm:^5.12.1":
+  version: 5.12.1
+  resolution: "@navikt/ds-react@npm:5.12.1"
   dependencies:
-    "@floating-ui/react": "npm:0.24.1"
-    "@navikt/aksel-icons": "npm:^5.0.2"
+    "@floating-ui/react": "npm:0.25.4"
+    "@navikt/aksel-icons": "npm:^5.12.1"
+    "@navikt/ds-tokens": "npm:^5.12.1"
     "@radix-ui/react-tabs": "npm:1.0.0"
     "@radix-ui/react-toggle-group": "npm:1.0.0"
     clsx: "npm:^1.2.1"
-    date-fns: "npm:2.29.3"
+    date-fns: "npm:^2.30.0"
     react-day-picker: "npm:8.3.4"
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
@@ -2580,7 +2585,14 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 264f6ca33af8fe542ed4a08467778100b4a07bcc3d25fe1f2c15f594c0b7942f44b6bd8f9e79a65f7e7f0d265df9850c3ecf15d60a9878e0495b3cd4181ef0a1
+  checksum: dd788c5ebd434953253f16476228e7d7ef8850a92ffb75404b42891a2a1fe931c89a4647559e95fd049c0c07bedbd9255d9f844c2a1c2c737338d8cb3d04fba0
+  languageName: node
+  linkType: hard
+
+"@navikt/ds-tokens@npm:^5.12.1":
+  version: 5.12.1
+  resolution: "@navikt/ds-tokens@npm:5.12.1"
+  checksum: a79788e46ffc629d9a0261e113a4d4a06376431b5aabe49bd87c4a68b84b429873fc1d183afdf11751fb98863eba2f67b8fb76d2804e3831c7d54b66b2afc00f
   languageName: node
   linkType: hard
 
@@ -6854,7 +6866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aria-hidden@npm:^1.1.1, aria-hidden@npm:^1.1.3":
+"aria-hidden@npm:^1.1.1":
   version: 1.2.3
   resolution: "aria-hidden@npm:1.2.3"
   dependencies:
@@ -8830,10 +8842,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:2.29.3":
-  version: 2.29.3
-  resolution: "date-fns@npm:2.29.3"
-  checksum: 05b6ce6093ed2a09aafe89bb7a6d51ff72971341d7db1e531299d117df305c4a9f408bcdd533687622ae820ba9ea8859437b12074d7043b76325c7828e5d41fc
+"date-fns@npm:^2.30.0":
+  version: 2.30.0
+  resolution: "date-fns@npm:2.30.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.21.0"
+  checksum: 70b3e8ea7aaaaeaa2cd80bd889622a4bcb5d8028b4de9162cbcda359db06e16ff6e9309e54eead5341e71031818497f19aaf9839c87d1aba1e27bb4796e758a9
   languageName: node
   linkType: hard
 
@@ -9158,7 +9172,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev@workspace:apps/dev"
   dependencies:
-    "@navikt/aksel-icons": "npm:^5.6.5"
+    "@navikt/aksel-icons": "npm:^5.12.1"
     "@types/luxon": "npm:^3.3.2"
     luxon: "npm:^3.4.3"
     next: "npm:^14.0.0"
@@ -19280,9 +19294,9 @@ __metadata:
     "@altinn/figma-design-tokens": "npm:^5.0.0"
     "@mdx-js/loader": "npm:^2.0.0-rc.2"
     "@mdx-js/react": "npm:^1.6.22"
-    "@navikt/aksel-icons": "npm:^2.8.4"
-    "@navikt/ds-css": "npm:^5.0.2"
-    "@navikt/ds-react": "npm:^5.0.2"
+    "@navikt/aksel-icons": "npm:^5.12.1"
+    "@navikt/ds-css": "npm:^5.12.1"
+    "@navikt/ds-react": "npm:^5.12.1"
     "@tippyjs/react": "npm:^4.2.6"
     "@types/react-syntax-highlighter": "npm:^15.5.6"
     "@vercel/analytics": "npm:^1.0.2"
