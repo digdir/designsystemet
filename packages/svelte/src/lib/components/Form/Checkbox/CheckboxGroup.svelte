@@ -162,7 +162,7 @@
   }
 
   .error {
-    color: var(--fds-semantic-text-danger-default, #b3253a);
+    color: var(--fds-semantic-border-danger-default, #e02e49);
   }
 
   .visually-hidden {
@@ -206,7 +206,7 @@
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     font-weight: 400;
-    color: var(--fds-semantic-text-neutral-subtle);
+    color: var(--fds-semantic-text-neutral-default, #1b1b1b);
   }
 
   .legend-description {
