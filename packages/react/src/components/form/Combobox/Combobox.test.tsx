@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import type { ComboboxProps } from './Combobox';
 
-import { EXPERIMENTAL_Combobox as Combobox } from '.';
+import { Combobox } from '.';
 
 const PLACES = [
   {

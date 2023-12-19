@@ -4,7 +4,7 @@ import { renderHook } from '@testing-library/react';
 import type { UseComboboxProps } from './useCombobox';
 import useCombobox from './useCombobox';
 
-import { EXPERIMENTAL_Combobox as Combobox } from '.';
+import { Combobox } from '.';
 
 const CHILDREN = [
   <Combobox.Option

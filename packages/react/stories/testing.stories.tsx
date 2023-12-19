@@ -9,7 +9,7 @@ import {
   Checkbox,
   Radio,
   Tag,
-  EXPERIMENTAL_Combobox as Combobox,
+  Combobox,
   type ButtonProps,
 } from '../src/components';
 

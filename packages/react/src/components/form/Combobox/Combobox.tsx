@@ -79,7 +79,7 @@ export type ComboboxProps = {
   hideChips?: boolean;
   /**
    * Label for the clear button
-   * @default 'Clear'
+   * @default 'Fjern alt'
    */
   cleanButtonLabel?: string;
   /**
@@ -96,7 +96,7 @@ export type ComboboxProps = {
    * @param option
    * @returns string
    *
-   * @default (option) => 'Deselect ' + option.label,
+   * @default (option) => 'Slett ' + option.label,
    */
   chipSrLabel?: (option: Option) => string;
 } & FormFieldProps &
@@ -113,7 +113,7 @@ export const Combobox = ({
   disabled = false,
   readOnly = false,
   hideChips = false,
-  cleanButtonLabel = 'Clear',
+  cleanButtonLabel = 'Fjern alt',
   error,
   errorId,
   id,
@@ -124,7 +124,7 @@ export const Combobox = ({
   filter = (inputValue, option) => {
     return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
-  chipSrLabel = (option) => 'Deselect ' + option.label,
+  chipSrLabel = (option) => 'Slett ' + option.label,
   ...rest
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
