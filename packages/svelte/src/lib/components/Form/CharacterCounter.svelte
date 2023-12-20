@@ -56,7 +56,7 @@
 
 <style>
   .error {
-    color: red;
+    color: var(--fds-semantic-border-danger-default, #e02e49);
   }
 
   .visuallyHidden {

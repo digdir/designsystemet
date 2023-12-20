@@ -234,7 +234,7 @@
       border: 1px solid lightgrey;
     }
     &.error {
-      border: 1px solid var(--fds-semantic-border-danger-default);
+      border: 1px solid var(--fds-semantic-border-danger-default, #e02e49);
     }
     &.read-only {
       border: 1px solid rgb(194, 194, 194);

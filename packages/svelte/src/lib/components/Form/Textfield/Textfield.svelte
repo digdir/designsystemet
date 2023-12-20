@@ -249,8 +249,9 @@
   }
 
   .error > .input:not(:focus-visible) {
-    border-color: var(--fds-semantic-text-danger-default, #b3253a);
-    box-shadow: inset 0 0 0 1px var(--fds-semantic-text-danger-default, #b3253a);
+    border-color: var(--fds-semantic-border-danger-default, #e02e49);
+    box-shadow: inset 0 0 0 1px
+      var(--fds-semantic-border-danger-default, #e02e49);
   }
 
   @media (hover: hover) and (pointer: fine) {
