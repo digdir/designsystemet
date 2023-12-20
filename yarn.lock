@@ -1620,7 +1620,6 @@ __metadata:
   dependencies:
     "@tokens-studio/sd-transforms": "npm:^0.9.3"
     "@types/ramda": "npm:^0.29.3"
-    change-case: "npm:^4.1.2"
     ramda: "npm:^0.29.0"
     style-dictionary: "npm:^3.8.0"
   languageName: unknown
