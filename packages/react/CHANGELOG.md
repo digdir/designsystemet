@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.41.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.41.0...@digdir/design-system-react@0.41.1) (2023-12-20)
+
+### Bug Fixes
+
+- **Radio:** :bug: Correct sizes for icon ([#1255](https://github.com/digdir/designsystem/issues/1255)) ([53d836e](https://github.com/digdir/designsystem/commit/53d836e86d5321be3d48cd3ceccb3ccd4092100d))
+- **Switch:** :bug: Prevent from being clamped in flex container ([#1256](https://github.com/digdir/designsystem/issues/1256)) ([f5d31eb](https://github.com/digdir/designsystem/commit/f5d31eb4ff420fe5bc8a160c90f06eb43ce7d06f))
+
 # [0.41.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.40.0...@digdir/design-system-react@0.41.0) (2023-12-19)
 
 ### Bug Fixes
