@@ -112,12 +112,12 @@
             {#if option.description}
               <div class="option-description">{option.description}</div>
             {/if}
+            {#if !multiple && isSelected}
+              <div class="checkmark-container">
+                <SelectCheckmark />
+              </div>
+            {/if}
           </div>
-          {#if !multiple && isSelected}
-            <div class="checkmark-container">
-              <SelectCheckmark />
-            </div>
-          {/if}
         </div>
       </li>
     {/each}
@@ -133,7 +133,11 @@
     &:not(.visible) {
       display: none;
     }
-    min-width: 100%;
+    min-width: 97%;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: var(--fds-spacing-1);
+    padding: var(--spacing-2, 9px);
   }
   .options-list {
     max-width: 100%;
@@ -148,6 +152,7 @@
     align-items: flex-start;
     flex: 1 0 0;
     padding: 0;
+    margin: 0;
   }
 
   .option-item {
@@ -158,9 +163,19 @@
     align-self: stretch;
     list-style: none;
     &:hover {
-      background: var(--interface-common-info-200, #e3f7ff);
+      background: var(
+        --fds-semantic-surface-action-first-subtle-hover,
+        #c8cbdc
+      );
+      border-radius: var(--fds-border_radius-interactive, 4px);
+      border-left: 5px solid var(--fds-semantic-border-action-hover, #3c4a71);
       cursor: pointer;
+      padding: 9px 12px 9px 7.5px;
     }
+  }
+
+  .option-item:hover rect {
+    stroke: var(--fds-semantic-border-input-hover) !important;
   }
 
   .option-text {
@@ -173,6 +188,8 @@
     display: flex;
     align-items: start;
     width: 100%;
+    position: relative;
+    gap: 10px;
   }
 
   .option-label {
@@ -187,13 +204,12 @@
   }
 
   .checkmark-container {
-    margin-left: auto;
+    position: absolute;
+    right: 0;
     padding-right: 10px;
-  }
-
-  .checkbox-container {
-    padding-right: 10px;
-    height: 0;
+    & svg {
+      margin-top: 2px;
+    }
   }
 
   .icon {
@@ -232,8 +248,8 @@
   }
 
   .input:checked:not(:disabled) ~ .icon .box {
-    stroke: var(--fds-semantic-border-input-default, #00244e);
-    fill: var(--semantic-surface-action-checked, #00244e);
+    stroke: var(--fds-semantic-surface-action-checked);
+    fill: var(--fds-semantic-surface-action-checked);
   }
 
   .input:focus-visible ~ .icon {
@@ -254,5 +270,20 @@
   .icon-xsmall {
     height: 1.2rem;
     width: 1.2rem;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f2f2f2;
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-radius: 50px;
+    background-color: var(--fds-brand-grey-700);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--fds-brand-grey-900);
   }
 </style>

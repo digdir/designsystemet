@@ -77,13 +77,15 @@
   .delete-button-container {
     position: absolute;
     right: 0;
+    width: 20px;
     top: 0;
     bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-right: var(--fds-spacing-2);
-    border-radius: var(--border-radius-full, 9999px);
+    border-radius: 0 var(--border-radius-full, 9999px)
+      var(--border-radius-full, 9999px) 0;
 
     &:hover {
       background-color: var(--colors-red-500);
@@ -105,8 +107,7 @@
   }
 
   .delete-button {
-    --delete-cross-box-color-hover: var(--colors-red-500);
-    --delete-cross-box-size: 25px;
+    --delete-cross-box-size: 27px;
     --delete-cross-size: 12px;
 
     --delete-cross-color: var(--colors-blue-900);
@@ -122,23 +123,19 @@
       (var(--delete-cross-box-size) - var(--delete-cross-size)) / 2
     );
 
-    right: 0;
+    position: relative;
+    right: -2px;
+    padding-top: 6px;
     border: none;
-    padding: 0;
-
-    &:hover {
-      background: var(--colors-red-500);
-    }
+    margin: 0;
 
     &.disabled {
-      background: inherit;
       &:hover {
         cursor: not-allowed;
       }
     }
     &.read-only {
       &:hover {
-        background-color: inherit;
         cursor: not-allowed;
       }
     }

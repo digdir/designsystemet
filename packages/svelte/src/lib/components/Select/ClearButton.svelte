@@ -4,6 +4,7 @@
   export let handleClick;
   export let deleteButtonLabel = 'Delete';
   export let disabled;
+  export let readOnly;
   //svelte-ignore unused-export-let
   export let size = 'medium';
 </script>
@@ -11,7 +12,9 @@
 <button
   on:click={disabled ? null : (e) => handleClick(e)}
   aria-label={deleteButtonLabel}
-  class={`delete-button clear-all ${disabled ? 'disabled' : ''}`}
+  class={`delete-button clear-all ${disabled ? 'disabled' : ''} ${
+    readOnly ? 'read-only' : ''
+  }`}
   {disabled}><Cross /></button
 >
 

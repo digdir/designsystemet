@@ -140,10 +140,12 @@
     <ClearButton
       handleClick={handleClearAll}
       {disabled}
+      {readOnly}
       {size}
     />
+    <div class="separator {disabled ? 'disabled' : ''}" />
   {/if}
-  <div class="separator {disabled ? 'disabled' : ''}" />
+
   <div class={`chevron-container ${disabled ? 'disabled' : ''}`}>
     <Chevron />
   </div>
@@ -194,6 +196,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--fds-spacing-2);
+    padding-left: var(--fds-spacing-1);
   }
 
   .clearAll {
