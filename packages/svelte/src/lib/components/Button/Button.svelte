@@ -351,7 +351,10 @@
   }
 
   .button.outline.danger {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-default);
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-border-danger-default,
+      #e02e49
+    );
 
     border-color: var(--fds-semantic-border-danger-default);
     background: var(--fds-semantic-surface-danger-no_fill);
@@ -410,7 +413,10 @@
   }
 
   .button.quiet.danger {
-    --fdsc-font-and-icon-color: var(--fds-semantic-text-danger-default);
+    --fdsc-font-and-icon-color: var(
+      --fds-semantic-border-danger-default,
+      #e02e49
+    );
   }
 
   .button.quiet.danger:not([aria-disabled='true'], :disabled):active {

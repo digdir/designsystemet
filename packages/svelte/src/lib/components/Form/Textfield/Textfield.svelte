@@ -309,7 +309,7 @@
   }
 
   .error-message {
-    color: var(--fds-semantic-text-danger-default, #b3253a);
+    color: var(--fds-semantic-border-danger-default, #e02e49);
   }
   .font-xsmall {
     font-size: 0.8125rem;
