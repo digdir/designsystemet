@@ -25,7 +25,7 @@
   "author": "Digdir Designsystem Team",
   "license": "MIT",
   "devDependencies": {
-    "cssnano": "^6.0.1",
+    "cssnano": "^6.0.2",
     "postcss-cli": "^10.1.0"
   }
 }
