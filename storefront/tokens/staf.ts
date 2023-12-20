@@ -18,7 +18,7 @@ export const color = [
     path: ['semantic', 'background', 'default'],
   },
   {
-    value: '$brand.grey.200',
+    value: '#EFF0EF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -739,7 +739,7 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'default'],
   },
   {
-    value: '$brand.grey.200',
+    value: '#EFF0EF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -778,7 +778,7 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill'],
   },
   {
-    value: '$brand.grey.200',
+    value: '#EFF0EF',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -921,7 +921,7 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light'],
   },
   {
-    value: '$brand.alt3.500',
+    value: '#EFCA8F',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -934,7 +934,7 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light-hover'],
   },
   {
-    value: '$brand.alt3.500',
+    value: '#EFCA8F',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1610,7 +1610,7 @@ export const color = [
     path: ['semantic', 'text', 'success', 'on_success_subtle'],
   },
   {
-    value: '$brand.black.900',
+    value: '#000000',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -2446,7 +2446,7 @@ export const color = [
     path: ['brand', 'alt2', '900'],
   },
   {
-    value: '$brand.alt3.200',
+    value: '#F7E5C8',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2462,7 +2462,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.200',
+      value: '{brand.alt3.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2481,7 +2481,7 @@ export const color = [
     path: ['brand', 'alt3', '50'],
   },
   {
-    value: '$brand.alt3.200',
+    value: '#F7E5C8',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2497,7 +2497,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.200',
+      value: '{brand.alt3.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2529,7 +2529,7 @@ export const color = [
     path: ['brand', 'alt3', '200'],
   },
   {
-    value: '$brand.alt3.500',
+    value: '#EFCA8F',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2545,7 +2545,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.500',
+      value: '{brand.alt3.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2564,7 +2564,7 @@ export const color = [
     path: ['brand', 'alt3', '300'],
   },
   {
-    value: '$brand.alt3.500',
+    value: '#EFCA8F',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2580,7 +2580,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.500',
+      value: '{brand.alt3.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2612,7 +2612,7 @@ export const color = [
     path: ['brand', 'alt3', '500'],
   },
   {
-    value: '$brand.alt3.700',
+    value: '#E6AE56',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2628,7 +2628,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.700',
+      value: '{brand.alt3.700}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2660,7 +2660,7 @@ export const color = [
     path: ['brand', 'alt3', '700'],
   },
   {
-    value: '$brand.alt3.900',
+    value: '#F39200',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2676,7 +2676,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.alt3.900',
+      value: '{brand.alt3.900}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2708,7 +2708,7 @@ export const color = [
     path: ['brand', 'alt3', '900'],
   },
   {
-    value: '$brand.turkis.200',
+    value: '#DBEBEC',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2724,7 +2724,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.turkis.200',
+      value: '{brand.turkis.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2743,7 +2743,7 @@ export const color = [
     path: ['brand', 'turkis', '50'],
   },
   {
-    value: '$brand.turkis.200',
+    value: '#DBEBEC',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2759,7 +2759,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.turkis.200',
+      value: '{brand.turkis.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2791,7 +2791,7 @@ export const color = [
     path: ['brand', 'turkis', '200'],
   },
   {
-    value: '$brand.turkis.500',
+    value: '#B3D6D9',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2807,7 +2807,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.turkis.500',
+      value: '{brand.turkis.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2826,7 +2826,7 @@ export const color = [
     path: ['brand', 'turkis', '300'],
   },
   {
-    value: '$brand.turkis.500',
+    value: '#B3D6D9',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2842,7 +2842,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.turkis.500',
+      value: '{brand.turkis.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2874,7 +2874,7 @@ export const color = [
     path: ['brand', 'turkis', '500'],
   },
   {
-    value: '$brand.turkis.700',
+    value: '#87C0C4',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2890,7 +2890,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.turkis.700',
+      value: '{brand.turkis.700}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2922,7 +2922,7 @@ export const color = [
     path: ['brand', 'turkis', '700'],
   },
   {
-    value: '$brand.turkis.900',
+    value: '#00ADBA',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2938,7 +2938,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.turkis.900',
+      value: '{brand.turkis.900}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -2970,7 +2970,7 @@ export const color = [
     path: ['brand', 'turkis', '900'],
   },
   {
-    value: '$brand.red.200',
+    value: '#E8C9BC',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2986,7 +2986,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.red.200',
+      value: '{brand.red.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3005,7 +3005,7 @@ export const color = [
     path: ['brand', 'red', '50'],
   },
   {
-    value: '$brand.red.200',
+    value: '#E8C9BC',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3021,7 +3021,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.red.200',
+      value: '{brand.red.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3053,7 +3053,7 @@ export const color = [
     path: ['brand', 'red', '200'],
   },
   {
-    value: '$brand.red.500',
+    value: '#D1917C',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3069,7 +3069,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.red.500',
+      value: '{brand.red.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3088,7 +3088,7 @@ export const color = [
     path: ['brand', 'red', '300'],
   },
   {
-    value: '$brand.red.500',
+    value: '#D1917C',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3104,7 +3104,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.red.500',
+      value: '{brand.red.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3136,7 +3136,7 @@ export const color = [
     path: ['brand', 'red', '500'],
   },
   {
-    value: '$brand.red.700',
+    value: '#BD5749',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3152,7 +3152,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.red.700',
+      value: '{brand.red.700}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3184,7 +3184,7 @@ export const color = [
     path: ['brand', 'red', '700'],
   },
   {
-    value: '$brand.red.900',
+    value: '#C90B1C',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3200,7 +3200,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.red.900',
+      value: '{brand.red.900}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3232,7 +3232,7 @@ export const color = [
     path: ['brand', 'red', '900'],
   },
   {
-    value: '$brand.black.200',
+    value: '#BAC4CD',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3248,7 +3248,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.black.200',
+      value: '{brand.black.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3267,7 +3267,7 @@ export const color = [
     path: ['brand', 'black', '50'],
   },
   {
-    value: '$brand.black.200',
+    value: '#BAC4CD',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3283,7 +3283,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.black.200',
+      value: '{brand.black.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3315,7 +3315,7 @@ export const color = [
     path: ['brand', 'black', '200'],
   },
   {
-    value: '$brand.black.500',
+    value: '#7B8C98',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3331,7 +3331,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.black.500',
+      value: '{brand.black.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3350,7 +3350,7 @@ export const color = [
     path: ['brand', 'black', '300'],
   },
   {
-    value: '$brand.black.500',
+    value: '#7B8C98',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3366,7 +3366,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.black.500',
+      value: '{brand.black.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3398,7 +3398,7 @@ export const color = [
     path: ['brand', 'black', '500'],
   },
   {
-    value: '$brand.black.700',
+    value: '#43545F',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3414,7 +3414,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.black.700',
+      value: '{brand.black.700}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3446,7 +3446,7 @@ export const color = [
     path: ['brand', 'black', '700'],
   },
   {
-    value: '$brand.black.900',
+    value: '#000000',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3462,7 +3462,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.black.900',
+      value: '{brand.black.900}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3494,7 +3494,7 @@ export const color = [
     path: ['brand', 'black', '900'],
   },
   {
-    value: '$brand.grey.200',
+    value: '#EFF0EF',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3510,7 +3510,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.grey.200',
+      value: '{brand.grey.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3529,7 +3529,7 @@ export const color = [
     path: ['brand', 'grey', '50'],
   },
   {
-    value: '$brand.grey.200',
+    value: '#EFF0EF',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3545,7 +3545,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.grey.200',
+      value: '{brand.grey.200}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3577,7 +3577,7 @@ export const color = [
     path: ['brand', 'grey', '200'],
   },
   {
-    value: '$brand.grey.500',
+    value: '#DFE0DF',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3593,7 +3593,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.grey.500',
+      value: '{brand.grey.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3612,7 +3612,7 @@ export const color = [
     path: ['brand', 'grey', '300'],
   },
   {
-    value: '$brand.grey.500',
+    value: '#DFE0DF',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3628,7 +3628,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.grey.500',
+      value: '{brand.grey.500}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3660,7 +3660,7 @@ export const color = [
     path: ['brand', 'grey', '500'],
   },
   {
-    value: '$brand.grey.700',
+    value: '#CFD1CF',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3676,7 +3676,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.grey.700',
+      value: '{brand.grey.700}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
@@ -3708,7 +3708,7 @@ export const color = [
     path: ['brand', 'grey', '700'],
   },
   {
-    value: '$brand.grey.900',
+    value: '#BFC2C0',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3724,7 +3724,7 @@ export const color = [
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '$brand.grey.900',
+      value: '{brand.grey.900}',
       type: 'color',
       $extensions: {
         'studio.tokens': {
