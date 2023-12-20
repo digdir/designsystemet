@@ -10020,17 +10020,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esno@npm:^0.17.0":
-  version: 0.17.0
-  resolution: "esno@npm:0.17.0"
-  dependencies:
-    tsx: "npm:^3.12.7"
-  bin:
-    esno: esno.js
-  checksum: f0d452a66b54fe64258c6354519321791496291e814563cf87f20ec9eef2d1390c435a2db9cf250a52aca74137350eed4a83268e4c12390d3fce2e8376d5e25f
-  languageName: node
-  linkType: hard
-
 "esno@npm:^4.0.0":
   version: 4.0.0
   resolution: "esno@npm:4.0.0"
@@ -18737,7 +18726,7 @@ __metadata:
     eslint-plugin-react: "npm:7.33.2"
     eslint-plugin-react-hooks: "npm:4.6.0"
     eslint-plugin-storybook: "npm:^0.6.15"
-    esno: "npm:^0.17.0"
+    esno: "npm:^4.0.0"
     identity-obj-proxy: "npm:3.0.0"
     jest: "npm:^29.7.0"
     jest-css-modules-transform: "npm:^4.4.2"
@@ -20460,23 +20449,6 @@ __metadata:
   peerDependencies:
     typescript: ">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta"
   checksum: ea036bec1dd024e309939ffd49fda7a351c0e87a1b8eb049570dd119d447250e2c56e0e6c00554e8205760e7417793fdebff752a46e573fbe07d4f375502a5b2
-  languageName: node
-  linkType: hard
-
-"tsx@npm:^3.12.7":
-  version: 3.13.0
-  resolution: "tsx@npm:3.13.0"
-  dependencies:
-    esbuild: "npm:~0.18.20"
-    fsevents: "npm:~2.3.3"
-    get-tsconfig: "npm:^4.7.2"
-    source-map-support: "npm:^0.5.21"
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    tsx: dist/cli.mjs
-  checksum: 53148dbf3025e1d477ba1d4db978ae739e8b5990eae161411332a674bf16dd2a2a255f1c37a572dace4f0a5b8f51240640c0037b012e5b9234f859e290201c7c
   languageName: node
   linkType: hard
 
