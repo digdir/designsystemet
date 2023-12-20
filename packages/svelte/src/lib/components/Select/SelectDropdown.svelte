@@ -275,7 +275,7 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #f2f2f2;
+    background: var(--fds-brand-grey-100);
   }
   ::-webkit-scrollbar-thumb {
     border: 3px solid transparent;

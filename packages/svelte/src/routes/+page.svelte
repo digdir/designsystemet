@@ -110,6 +110,17 @@
     { label: 'Norge', value: '1' },
     { label: 'Sverige', value: '2' },
     { label: 'Outer Planets Alliance', value: '3' },
+    { label: 'Outer Planets Alliance', value: '4' },
+    { label: 'Outer Planets Alliance', value: '5' },
+    { label: 'Outer Planets Alliance', value: '6' },
+    { label: 'Outer Planets Alliance', value: '7' },
+    { label: 'Outer Planets Alliance', value: '8' },
+    { label: 'Outer Planets Alliance', value: '9' },
+    { label: 'Outer Planets Alliance', value: '10' },
+    { label: 'Outer Planets Alliance', value: '11' },
+    { label: 'Outer Planets Alliance', value: '12' },
+    { label: 'Outer Planets Alliance', value: '13' },
+    { label: 'Outer Planets Alliance', value: '14' },
   ];
 
   $: optionsWithDescriptions = [
@@ -364,7 +375,28 @@
 <Button on:click={openModal}>Open Modal</Button>
 
 {#if isModalOpen}
-  <Modal onClose={closeModal} />
+  <Modal onClose={closeModal}>
+    <p style="font-size: 300%">
+      Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem
+      Ipsum har vært bransjens standard for dummytekst helt siden 1500-tallet,
+      da en ukjent boktrykker stokket en mengde bokstaver for å lage et
+      prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig
+      godt, og har i tillegg til å bestå gjennom fem århundrer også tålt
+      spranget over til elektronisk typografi uten vesentlige endringer. Lorem
+      Ipsum ble gjort allment kjent i 1960-årene ved lanseringen av Letraset-ark
+      med avsnitt fra Lorem Ipsum, og senere med sideombrekkingsprogrammet Aldus
+      PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst. Hvorfor
+      bruker vi det? Det er et velkjent faktum at lesere distraheres av lesbart
+      innhold på en side når man ser på dens layout. Poenget med å bruke Lorem
+      Ipsum er at det har en mer eller mindre normal fordeling av bokstaver i
+      ord, i motsetning til 'Innhold her, innhold her', og gir inntrykk av å
+      være lesbar tekst. Mange webside- og sideombrekkingsprogrammer bruker nå
+      Lorem Ipsum som sin standard for provisorisk tekst, og et søk etter 'Lorem
+      Ipsum' vil avdekke mang en uferdig webside. Ulike versjoner har sprunget
+      frem i senere år, noen ved rene uhell og andre mer planlagte (med humor
+      o.l.).
+    </p>
+  </Modal>
 {/if}
 
 <br />

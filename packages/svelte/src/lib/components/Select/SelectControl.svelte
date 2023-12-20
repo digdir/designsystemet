@@ -160,6 +160,7 @@
     gap: 4px;
     max-width: 100%;
     overflow: hidden;
+    padding-left: var(--fds-spacing-1);
   }
 
   .textInput {
@@ -196,7 +197,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--fds-spacing-2);
-    padding-left: var(--fds-spacing-1);
   }
 
   .clearAll {
