@@ -1,9 +1,15 @@
-import { Circle as SkeletonCircle, type CircleProps } from './Circle/Circle';
+import {
+  Circle as SkeletonCircle,
+  type CircleProps as SkeletonCircleProps,
+} from './Circle/Circle';
 import {
   Rectangle as SkeletonRectangle,
-  type RectangleProps,
+  type RectangleProps as SkeletonRectangleProps,
 } from './Rectangle/Rectangle';
-import { Text as SkeletonText, type TextProps } from './Text/Text';
+import {
+  Text as SkeletonText,
+  type TextProps as SkeletonTextProps,
+} from './Text/Text';
 
 /**
  * Represent a draft of page while the content loads. Mix different skeleton components to create your layout.
@@ -29,5 +35,5 @@ const Skeleton: SkeletonComponent = {
   Text: SkeletonText,
 };
 
-export type { CircleProps, RectangleProps, TextProps };
+export type { SkeletonCircleProps, SkeletonRectangleProps, SkeletonTextProps };
 export { Skeleton, SkeletonCircle, SkeletonRectangle, SkeletonText };
