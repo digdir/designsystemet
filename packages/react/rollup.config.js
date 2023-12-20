@@ -6,14 +6,11 @@ import cssnano from 'cssnano';
 
 import { generateScopedName } from './scripts/name';
 
-const input = './tsc-build/index.js';
-
 export default [
   {
-    input,
+    input: './tsc-build/index.js',
     output: [
       {
-        input,
         dir: './dist/cjs',
         format: 'cjs',
         banner: "'use client';",
@@ -21,7 +18,6 @@ export default [
         // preserveModulesRoot: 'tsc-build',
       },
       {
-        input,
         dir: './dist/esm',
         format: 'es',
         banner: "'use client';",
