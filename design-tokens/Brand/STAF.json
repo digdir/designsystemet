@@ -194,7 +194,7 @@
     },
     "alt3": {
       "50": {
-        "value": "$brand.alt3.200",
+        "value": "{brand.alt3.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -207,7 +207,7 @@
         }
       },
       "100": {
-        "value": "$brand.alt3.200",
+        "value": "{brand.alt3.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -224,7 +224,7 @@
         "type": "color"
       },
       "300": {
-        "value": "$brand.alt3.500",
+        "value": "{brand.alt3.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -237,7 +237,7 @@
         }
       },
       "400": {
-        "value": "$brand.alt3.500",
+        "value": "{brand.alt3.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -254,7 +254,7 @@
         "type": "color"
       },
       "600": {
-        "value": "$brand.alt3.700",
+        "value": "{brand.alt3.700}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -271,7 +271,7 @@
         "type": "color"
       },
       "800": {
-        "value": "$brand.alt3.900",
+        "value": "{brand.alt3.900}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -290,7 +290,7 @@
     },
     "turkis": {
       "50": {
-        "value": "$brand.turkis.200",
+        "value": "{brand.turkis.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -303,7 +303,7 @@
         }
       },
       "100": {
-        "value": "$brand.turkis.200",
+        "value": "{brand.turkis.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -320,7 +320,7 @@
         "type": "color"
       },
       "300": {
-        "value": "$brand.turkis.500",
+        "value": "{brand.turkis.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -333,7 +333,7 @@
         }
       },
       "400": {
-        "value": "$brand.turkis.500",
+        "value": "{brand.turkis.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -350,7 +350,7 @@
         "type": "color"
       },
       "600": {
-        "value": "$brand.turkis.700",
+        "value": "{brand.turkis.700}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -367,7 +367,7 @@
         "type": "color"
       },
       "800": {
-        "value": "$brand.turkis.900",
+        "value": "{brand.turkis.900}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -386,7 +386,7 @@
     },
     "red": {
       "50": {
-        "value": "$brand.red.200",
+        "value": "{brand.red.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -399,7 +399,7 @@
         }
       },
       "100": {
-        "value": "$brand.red.200",
+        "value": "{brand.red.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -416,7 +416,7 @@
         "type": "color"
       },
       "300": {
-        "value": "$brand.red.500",
+        "value": "{brand.red.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -429,7 +429,7 @@
         }
       },
       "400": {
-        "value": "$brand.red.500",
+        "value": "{brand.red.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -446,7 +446,7 @@
         "type": "color"
       },
       "600": {
-        "value": "$brand.red.700",
+        "value": "{brand.red.700}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -463,7 +463,7 @@
         "type": "color"
       },
       "800": {
-        "value": "$brand.red.900",
+        "value": "{brand.red.900}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -482,7 +482,7 @@
     },
     "black": {
       "50": {
-        "value": "$brand.black.200",
+        "value": "{brand.black.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -495,7 +495,7 @@
         }
       },
       "100": {
-        "value": "$brand.black.200",
+        "value": "{brand.black.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -512,7 +512,7 @@
         "type": "color"
       },
       "300": {
-        "value": "$brand.black.500",
+        "value": "{brand.black.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -525,7 +525,7 @@
         }
       },
       "400": {
-        "value": "$brand.black.500",
+        "value": "{brand.black.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -542,7 +542,7 @@
         "type": "color"
       },
       "600": {
-        "value": "$brand.black.700",
+        "value": "{brand.black.700}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -559,7 +559,7 @@
         "type": "color"
       },
       "800": {
-        "value": "$brand.black.900",
+        "value": "{brand.black.900}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -578,7 +578,7 @@
     },
     "grey": {
       "50": {
-        "value": "$brand.grey.200",
+        "value": "{brand.grey.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -591,7 +591,7 @@
         }
       },
       "100": {
-        "value": "$brand.grey.200",
+        "value": "{brand.grey.200}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -608,7 +608,7 @@
         "type": "color"
       },
       "300": {
-        "value": "$brand.grey.500",
+        "value": "{brand.grey.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -621,7 +621,7 @@
         }
       },
       "400": {
-        "value": "$brand.grey.500",
+        "value": "{brand.grey.500}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -638,7 +638,7 @@
         "type": "color"
       },
       "600": {
-        "value": "$brand.grey.700",
+        "value": "{brand.grey.700}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
@@ -655,7 +655,7 @@
         "type": "color"
       },
       "800": {
-        "value": "$brand.grey.900",
+        "value": "{brand.grey.900}",
         "type": "color",
         "$extensions": {
           "studio.tokens": {
