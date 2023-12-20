@@ -30,7 +30,7 @@
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
-  min-height: 44px;
+  min-height: 2.5em;
   width: 100%;
   appearance: none;
   padding: var(--fds-spacing-3);
@@ -70,7 +70,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .textarea:not(:focus-visible, :disabled):hover {
+  .textarea:not(:focus-visible, :disabled, [aria-disabled]):hover {
     border-color: var(--fds-semantic-border-action-hover);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
   }

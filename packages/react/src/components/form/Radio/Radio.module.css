@@ -1,25 +1,43 @@
 .container {
   position: relative;
-  min-width: 44px;
-  min-height: 44px;
 }
 
 .spacing {
-  padding-left: calc(var(--fds-spacing-6) + 17px);
+  padding-left: var(--fds-sizing-8);
 }
 
 .icon {
   grid-area: input;
   pointer-events: none;
-  height: 1.75em;
-  width: 1.75em;
+  width: var(--fds-sizing-6);
+  height: var(--fds-sizing-6);
   margin: auto;
   overflow: visible;
 }
 
+.radio,
+.radio .icon {
+  border-radius: var(--fds-border_radius-full);
+}
+
+.container.small .icon {
+  width: var(--fds-sizing-5);
+  height: var(--fds-sizing-5);
+}
+
+.container.medium .icon {
+  width: var(--fds-sizing-6);
+  height: var(--fds-sizing-6);
+}
+
+.container.large .icon {
+  width: var(--fds-sizing-7);
+  height: var(--fds-sizing-7);
+}
+
 .label {
   padding-left: 3px;
-  min-height: 44px;
+  min-height: var(--fds-sizing-10);
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -42,17 +60,12 @@
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 44px;
-  min-height: 44px;
+  width: var(--fds-sizing-10);
+  height: var(--fds-sizing-10);
   display: inline-grid;
   grid: [input] 1fr / [input] 1fr;
   gap: var(--fds-spacing-2);
   grid-auto-flow: column;
-}
-
-.radio,
-.radio .icon {
-  border-radius: var(--fds-border_radius-full);
 }
 
 .input {
@@ -147,4 +160,60 @@
   .container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
     stroke: var(--fds-semantic-border-input-hover);
   }
+}
+
+/** Sizing mess for now... */
+
+.container.small.spacing {
+  padding-left: calc(var(--fds-spacing-8));
+}
+
+.container.medium.spacing {
+  padding-left: var(--fds-spacing-10);
+}
+
+.container.large.spacing {
+  padding-left: calc(var(--fds-spacing-12));
+}
+
+.container.small {
+  min-width: var(--fds-sizing-8);
+}
+
+.container.medium {
+  min-width: var(--fds-sizing-10);
+}
+
+.container.large {
+  min-width: var(--fds-sizing-12);
+}
+
+.container.small,
+.container.small .label {
+  min-height: var(--fds-sizing-8);
+}
+
+.container.medium,
+.container.medium .label {
+  min-height: var(--fds-sizing-10);
+}
+
+.container.large,
+.container.large .label {
+  min-height: var(--fds-sizing-12);
+}
+
+.container.small .control {
+  width: var(--fds-sizing-8);
+  height: var(--fds-sizing-8);
+}
+
+.container.medium .control {
+  width: var(--fds-sizing-10);
+  height: var(--fds-sizing-10);
+}
+
+.container.large .control {
+  width: var(--fds-sizing-12);
+  height: var(--fds-sizing-12);
 }

@@ -156,7 +156,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
                 width: ARROW_HEIGHT,
                 ...(arrowX != null ? { left: arrowX } : {}),
                 ...(arrowY != null ? { top: arrowY } : {}),
-                ...(arrowPlacement ? { [arrowPlacement]: -6 } : {}),
+                ...(arrowPlacement ? { [arrowPlacement]: -4.5 } : {}),
               }}
             />
           </Paragraph>

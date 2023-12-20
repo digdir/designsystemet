@@ -9,7 +9,7 @@ import type { FormFieldProps } from '../useFormField';
 import classes from './Checkbox.module.css';
 import { useCheckbox } from './useCheckbox';
 
-const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
+export const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
     width='22'
     height='22'
@@ -65,6 +65,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         size={size}
         className={cn(
           classes.container,
+          classes[size],
           children && classes.spacing,
           inputProps.disabled && classes.disabled,
           hasError && classes.error,

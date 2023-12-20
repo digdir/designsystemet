@@ -74,6 +74,13 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             size,
           }}
         >
+          {name && (
+            <input
+              type='hidden'
+              name={name}
+              value={value}
+            />
+          )}
           <RovingTabindexRoot
             as='div'
             valueId={value}
