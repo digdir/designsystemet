@@ -86,6 +86,7 @@
     align-items: flex-start;
     margin-bottom: 0.1875rem;
     scale: 1.4;
+    color: var(--fds-semantic-text-neutral-subtle)
   }
   .no-icon {
     margin-bottom: -0.125rem;
@@ -100,9 +101,12 @@
   }
 
   button.active {
-    --fdsc-bottom-border-color: var(--fds-semantic-border-action-default);
+    --fdsc-bottom-border-color: var(--fds-semantic-surface-action-first-default);
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-    color: var(--fds-semantic-text-action-default);
+  button.active .icon {
+    color: var(--fds-semantic-surface-action-first-default);
   }
 
   button:focus-visible {
