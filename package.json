@@ -42,7 +42,7 @@
     "@digdir/design-system-react": "*",
     "@digdir/design-system-tokens": "*",
     "@etchteam/storybook-addon-css-variables-theme": "^2.0.6",
-    "@next/eslint-plugin-next": "^13.5.6",
+    "@next/eslint-plugin-next": "^14.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@storybook/addon-a11y": "^7.6.6",
