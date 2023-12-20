@@ -301,7 +301,10 @@
 <Tag color="third">Tag tertiary</Tag>
 <Tag color="neutral">Tag neutral</Tag>
 <Tag color="success">Tag success</Tag>
-<Tag color="warning">Tag warning</Tag>
+<Tag
+  color="warning"
+  variant="outlined">Tag warning outlined</Tag
+>
 <Tag color="danger">Tag danger</Tag>
 <Tag color="info">Tag info</Tag>
 

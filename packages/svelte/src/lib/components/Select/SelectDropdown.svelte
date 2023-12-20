@@ -126,7 +126,7 @@
 
 <style lang="scss">
   .select-dropdown {
-    background-color: #fff;
+    background-color: var(--fds-semantic-background-default, #ffffff);
     border-radius: 3px;
     border: 1px solid var(--colors-grey-600, #68707c);
     box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);

@@ -200,7 +200,7 @@
   }
 
   .clearAll {
-    background: #f0f0f0;
+    background: var(--colors-white, #ffffff);
     border: none;
     cursor: pointer;
     padding: 4px 8px;
@@ -209,6 +209,7 @@
   }
 
   .field {
+    background-color: var(--fds-semantic-background-default, #ffffff);
     display: flex;
     border: 1px solid var(--interface-common-info-900, #022f51);
     border-radius: 3px;

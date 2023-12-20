@@ -1,16 +1,16 @@
 <script>
-/**
+  /**
    * The type of element to render. Options are 'a' or 'button'.
    * @type {'a' | 'button'}
    */
-   export let as = 'a';
-  
+  export let as = 'a';
+
   /**
    * Inverts the color of the link. Use this on dark backgrounds.
    * @type {boolean}
    */
   export let inverted = false;
-  
+
   /**
    * The URL the link points to. Only used if `as` is 'a'.
    * @type {string}
@@ -27,11 +27,15 @@
     class={computedClass}
     {href}
     {...$$restProps}
+    on:click
   >
     <slot />
   </a>
 {:else if as === 'button'}
-  <button class={computedClass} {...$$restProps}>
+  <button
+    class={computedClass}
+    {...$$restProps}
+  >
     <slot />
   </button>
 {/if}
