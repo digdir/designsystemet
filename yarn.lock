@@ -19441,7 +19441,6 @@ __metadata:
     rehype-highlight: "npm:^7.0.0"
     rehype-slug: "npm:^6.0.0"
     remark-frontmatter: "npm:^4.0.1"
-    remark-gfm: "npm:^3.0.1"
   languageName: unknown
   linkType: soft
 
