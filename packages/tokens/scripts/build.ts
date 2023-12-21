@@ -70,6 +70,7 @@ StyleDictionary.registerTransformGroup({
     'ts/size/lineheight',
     'ts/shadow/css/shorthand',
     sizePx.name,
+    'ts/color/modifiers',
     'ts/color/css/hexrgba',
   ],
 });
@@ -82,6 +83,7 @@ StyleDictionary.registerTransformGroup({
     'ts/size/px',
     'ts/size/lineheight',
     'ts/shadow/css/shorthand',
+    'ts/color/modifiers',
     'ts/color/css/hexrgba',
   ],
 });
