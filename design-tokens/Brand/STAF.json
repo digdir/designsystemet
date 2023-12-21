@@ -912,11 +912,11 @@
           "type": "color"
         },
         "hover": {
-          "value": "{brand.alt1.900}",
+          "value": "{brand.alt1.800}",
           "type": "color"
         },
         "active": {
-          "value": "{brand.alt1.800}",
+          "value": "{brand.alt1.700}",
           "type": "color"
         }
       },
@@ -926,11 +926,11 @@
           "type": "color"
         },
         "hover": {
-          "value": "{brand.alt1.700}",
+          "value": "{brand.alt2.800}",
           "type": "color"
         },
         "active": {
-          "value": "{brand.alt1.800}",
+          "value": "{brand.alt2.700}",
           "type": "color"
         }
       },
@@ -940,11 +940,11 @@
           "type": "color"
         },
         "hover": {
-          "value": "{brand.alt3.900}",
+          "value": "{brand.alt3.800}",
           "type": "color"
         },
         "active": {
-          "value": "{brand.alt3.900}",
+          "value": "{brand.alt3.700}",
           "type": "color"
         }
       },
