@@ -1,6 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { useSynchronizedAnimation } from '../../hooks';
+
 import classes from './Spinner.module.css';
 
 const sizeMap: { [key in NonNullable<SpinnerProps['size']>]: number } = {
@@ -29,12 +31,21 @@ export const Spinner = ({
   className,
   ...rest
 }: SpinnerProps): JSX.Element => {
+  const svgRef = useSynchronizedAnimation<SVGSVGElement>(
+    classes['rotate-animation'],
+  );
+
+  const strokeRef = useSynchronizedAnimation<SVGCircleElement>(
+    classes['stroke-animation'],
+  );
+
   return (
     <svg
       className={cn(classes.spinner, className)}
       style={{ width: sizeMap[size], height: sizeMap[size] }}
       viewBox='0 0 50 50'
       {...rest}
+      ref={svgRef}
     >
       <title>{title}</title>
       <circle
@@ -52,6 +63,7 @@ export const Spinner = ({
         r='20'
         fill='none'
         strokeWidth='5'
+        ref={strokeRef}
       ></circle>
     </svg>
   );
