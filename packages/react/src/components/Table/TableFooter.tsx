@@ -1,6 +1,6 @@
 import type { HTMLProps } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './TableFooter.module.css';
 import { TableRowTypeContext } from './utils';
@@ -19,7 +19,7 @@ export const TableFooter = ({
     <TableRowTypeContext.Provider value={{ variantStandard }}>
       <tfoot
         {...tableFooterProps}
-        className={cn(classes.tableFooter, className)}
+        className={cl(classes.tableFooter, className)}
       >
         {children}
       </tfoot>

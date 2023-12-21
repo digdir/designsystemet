@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import Image from 'next/image';
 
 import { Container } from '../Container/Container';
@@ -20,7 +20,7 @@ const Section = ({
   detail,
 }: SectionProps) => {
   return (
-    <div className={cn(classes.section, classes[backgroundColor])}>
+    <div className={cl(classes.section, classes[backgroundColor])}>
       <Container>
         <div className={classes.header}>
           {title && <h2 className={classes.title}>{title}</h2>}

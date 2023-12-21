@@ -1,4 +1,3 @@
-import { noCase } from 'change-case';
 import type {
   Transform,
   Named,
@@ -7,6 +6,8 @@ import type {
   Format,
 } from 'style-dictionary';
 import { transformDimension } from '@tokens-studio/sd-transforms';
+
+import { noCase } from './noCase';
 
 export const sizePx: Named<Transform> = {
   name: 'fds/size/px',

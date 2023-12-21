@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { useReducer } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { LegacyCheckbox } from '../LegacyCheckbox';
 import type { LegacyFieldSetProps } from '../LegacyFieldSet';
@@ -99,7 +99,7 @@ const LegacyCheckboxGroup = ({
 
   return (
     <LegacyFieldSet
-      contentClassName={cn(
+      contentClassName={cl(
         classes.checkboxGroup,
         classes[variant],
         compact && classes.compact,

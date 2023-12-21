@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import React, { useId, useMemo } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { HeadingProps } from '../Typography';
 import { Heading, Paragraph } from '../Typography';
@@ -63,7 +63,7 @@ export const List = ({
       <Paragraph
         as={as}
         size={size}
-        className={cn(classes.list)}
+        className={cl(classes.list)}
         role='list'
         {...(heading ? { 'aria-labelledby': headingId } : {})}
       >

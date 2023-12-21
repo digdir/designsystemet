@@ -23,7 +23,7 @@ import {
   useInteractions,
   useMergeRefs,
 } from '@floating-ui/react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Popover.module.css';
 
@@ -208,7 +208,7 @@ const PopoverContent = forwardRef<
         left: context.x ?? 0,
       }}
       data-placement={context.placement}
-      className={cn(
+      className={cl(
         classes.popover,
         classes[context.variant],
         context.className,

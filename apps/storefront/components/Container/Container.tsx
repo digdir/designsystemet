@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Container.module.css';
 
@@ -12,7 +12,7 @@ const Container = ({ children, className, ...props }: ContainerProps) => {
   return (
     <div
       {...props}
-      className={cn(className, classes.container)}
+      className={cl(className, classes.container)}
     >
       {children}
     </div>

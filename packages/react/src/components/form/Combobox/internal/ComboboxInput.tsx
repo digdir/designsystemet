@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 
 import { ComboboxContext } from '../Combobox';
@@ -125,7 +125,7 @@ export const ComboboxInput = ({
         },
       })}
       aria-disabled={disabled}
-      className={cn(
+      className={cl(
         textFieldClasses.input,
         classes.inputWrapper,
         classes[size],

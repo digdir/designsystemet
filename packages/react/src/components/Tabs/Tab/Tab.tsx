@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
@@ -23,7 +23,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
       {...rest}
       {...useTabRest}
       as={'button'}
-      className={cn(
+      className={cl(
         classes.tabItem,
         classes[size],
         active && classes.isActive,

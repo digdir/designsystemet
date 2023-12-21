@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Accordion.module.css';
 
@@ -19,7 +19,7 @@ export const Accordion = forwardRef<
 >(({ border = false, color = 'neutral', className, ...rest }, ref) => (
   <div
     {...rest}
-    className={cn(
+    className={cl(
       classes.accordion,
       classes[color],
       {

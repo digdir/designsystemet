@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Description.module.css';
 
@@ -12,7 +12,7 @@ export const ComboboxOptionDescription = forwardRef<
   return (
     <span
       {...rest}
-      className={cn(classes.description, rest.className)}
+      className={cl(classes.description, rest.className)}
       ref={ref}
     >
       {children}

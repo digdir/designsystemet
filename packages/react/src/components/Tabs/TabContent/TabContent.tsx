@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { TabsContext } from '../Tabs';
 
@@ -22,7 +22,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
         {active && (
           <div
             {...rest}
-            className={cn(
+            className={cl(
               classes[size],
               classes.tabContent,
               onlyText && classes.onlyText,

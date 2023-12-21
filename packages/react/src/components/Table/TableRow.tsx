@@ -1,6 +1,6 @@
 import type { HTMLProps } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './TableRow.module.css';
 import { useTableContext, useTableRowTypeContext } from './utils';
@@ -40,7 +40,7 @@ export function TableRow<T>({
   return (
     <tr
       {...tableRowProps}
-      className={cn(
+      className={cl(
         classes.tableRow,
         {
           [classes.selected]: isSelected,

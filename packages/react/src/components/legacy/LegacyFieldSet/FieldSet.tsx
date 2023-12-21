@@ -1,6 +1,6 @@
 import type { FieldsetHTMLAttributes, ForwardedRef, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { ErrorMessage, HelpText } from '../..';
 import type { HelpTextProps } from '../../HelpText/HelpText';
@@ -69,7 +69,7 @@ const LegacyFieldSet = forwardRef<HTMLFieldSetElement, LegacyFieldSetProps>(
       ref={ref}
       disabled={disabled}
       {...rest}
-      className={cn(classes.fieldSet, classes[size], className)}
+      className={cl(classes.fieldSet, classes[size], className)}
     >
       {legend && (
         <legend className={classes.legend}>
@@ -87,7 +87,7 @@ const LegacyFieldSet = forwardRef<HTMLFieldSetElement, LegacyFieldSetProps>(
         </legend>
       )}
       {description && <p className={classes.description}>{description}</p>}
-      <div className={cn(classes.content, contentClassName)}>{children}</div>
+      <div className={cl(classes.content, contentClassName)}>{children}</div>
       {error && (
         <div className={classes.errorMessage}>
           <ErrorMessage role='alert'>{error}</ErrorMessage>

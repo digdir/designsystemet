@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 import type { MouseEventHandler, HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 
@@ -41,7 +41,7 @@ export const AccordionHeader = forwardRef<
       ref={ref}
       size='xsmall'
       level={level}
-      className={cn(classes.header, className)}
+      className={cl(classes.header, className)}
     >
       <button
         type='button'

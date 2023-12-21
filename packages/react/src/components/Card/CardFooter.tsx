@@ -1,5 +1,5 @@
 import React, { forwardRef, type HTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Card.module.css';
 
@@ -9,7 +9,7 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ children, ...rest }, ref) => (
     <div
       {...rest}
-      className={cn(classes.footer, rest.className)}
+      className={cl(classes.footer, rest.className)}
       ref={ref}
     >
       {children}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from '../Option.module.css';
 
@@ -12,7 +12,7 @@ type SelectedIconProps = {
 export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   return (
     <div
-      className={cn(
+      className={cl(
         multiple && classes.selectIconWrapper,
         selected && classes.selected,
       )}

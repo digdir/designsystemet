@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { useMediaQuery, usePrevious } from '../../hooks';
 
@@ -58,7 +58,7 @@ export const AnimateHeight = ({
   return (
     <div
       {...rest}
-      className={cn(classes.root, classes[state], className)}
+      className={cl(classes.root, classes[state], className)}
       style={{ height, transition, ...style }}
     >
       <div

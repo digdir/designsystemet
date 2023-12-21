@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -63,7 +63,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <Paragraph
         as='div'
         size={size}
-        className={cn(
+        className={cl(
           classes.container,
           classes[size],
           children && classes.spacing,
@@ -73,7 +73,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           rest.className,
         )}
       >
-        <span className={cn(classes.control, classes.checkbox)}>
+        <span className={cl(classes.control, classes.checkbox)}>
           <input
             {...omit(['size', 'error'], rest)}
             {...inputProps}

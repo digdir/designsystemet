@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
@@ -49,7 +49,7 @@ const LegacyRadioButton = forwardRef<HTMLInputElement, LegacyRadioButtonProps>(
   ) => (
     <CheckboxRadioTemplate
       checked={checked}
-      className={cn(
+      className={cl(
         classes.radio,
         classes[size],
         checked && classes.checked,

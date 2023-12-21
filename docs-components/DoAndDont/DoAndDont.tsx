@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { Heading, Paragraph } from '@digdir/design-system-react';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 
@@ -15,7 +15,7 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
 
   return (
     <figure
-      className={cn(
+      className={cl(
         styles.wrapper,
         styles[variant],
         aspectRatio > 2 && styles.landscape,

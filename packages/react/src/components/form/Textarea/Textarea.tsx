@@ -1,6 +1,6 @@
 import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import React, { useState, forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -61,7 +61,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const hasCharacterLimit = characterLimit != null;
 
     const describedBy =
-      cn(
+      cl(
         textareaProps['aria-describedby'],
         hasCharacterLimit && characterLimitId,
       ) || undefined;
@@ -71,7 +71,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         as='div'
         size={size}
         style={style}
-        className={cn(
+        className={cl(
           classes.formField,
           textareaProps.disabled && classes.disabled,
           readOnly && classes.readonly,
@@ -83,7 +83,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             size={size}
             weight='medium'
             htmlFor={textareaProps.id}
-            className={cn(
+            className={cl(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -102,7 +102,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             id={descriptionId}
             as='div'
             size={size}
-            className={cn(
+            className={cl(
               classes.description,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -113,7 +113,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <textarea
           {...omit(['size', 'error', 'errorId'], rest)}
           {...textareaProps}
-          className={cn(
+          className={cl(
             classes.textarea,
             utilityClasses.focusable,
             classes[size],

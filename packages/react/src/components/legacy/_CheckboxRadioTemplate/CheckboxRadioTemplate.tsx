@@ -5,7 +5,7 @@
 
 import type { ChangeEventHandler, ReactNode } from 'react';
 import React, { forwardRef, useId } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { HelpText } from '../../HelpText';
 import utilityClasses from '../../../utilities/utility.module.css';
@@ -78,7 +78,7 @@ export const CheckboxRadioTemplate = forwardRef<
 
     return (
       <Wrapper
-        className={cn(
+        className={cl(
           classes.template,
           classes[size],
           !showLabel && classes.hiddenLabel,

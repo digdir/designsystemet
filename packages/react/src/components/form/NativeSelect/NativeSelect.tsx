@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -62,7 +62,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       <Paragraph
         as='div'
         size={size}
-        className={cn(
+        className={cl(
           classes.formField,
           disabled && classes.disabled,
           readOnly && classes.readOnly,
@@ -74,7 +74,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             weight='medium'
             size={size}
             htmlFor={selectProps.id}
-            className={cn(
+            className={cl(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -95,7 +95,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           disabled={disabled || readOnly}
           ref={ref}
           size={htmlSize}
-          className={cn(
+          className={cl(
             classes.select,
             classes[size],
             utilityClasses.focusable,

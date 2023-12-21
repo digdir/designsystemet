@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph } from '../../../Typography';
@@ -31,7 +31,7 @@ export const ComboboxLabel = ({
         <Label
           size={size}
           htmlFor={formFieldProps.inputProps.id}
-          className={cn(
+          className={cl(
             classes.label,
             hideLabel && utilityClasses.visuallyHidden,
           )}
@@ -50,7 +50,7 @@ export const ComboboxLabel = ({
           as='div'
           size={size}
           id={formFieldProps.descriptionId}
-          className={cn(
+          className={cl(
             classes.description,
             hideLabel && utilityClasses.visuallyHidden,
           )}

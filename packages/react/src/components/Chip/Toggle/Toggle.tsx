@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
@@ -44,7 +44,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         ref={ref}
         type='button'
         aria-pressed={selected}
-        className={cn(
+        className={cl(
           classes.chipButton,
           utilityClasses.focusable,
           classes[group?.size || size],

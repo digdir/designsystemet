@@ -1,6 +1,6 @@
 import type { ForwardedRef, ChangeEvent } from 'react';
 import React, { forwardRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import type {
   NumericFormatProps,
   PatternFormatProps,
@@ -166,7 +166,7 @@ export const LegacyTextField = forwardRef<
             readOnly: Boolean(readOnly),
             disabled,
             required,
-            className: cn(className, rest.className),
+            className: cl(className, rest.className),
             style: {
               textAlign: formatting?.align,
               ...rest.style,

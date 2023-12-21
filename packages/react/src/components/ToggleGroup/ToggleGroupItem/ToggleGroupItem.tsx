@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
@@ -27,7 +27,7 @@ export const ToggleGroupItem = forwardRef<
     <RovingTabindexItem
       {...rest}
       {...buttonProps}
-      className={cn(classes.toggleGroupItem, rest.className)}
+      className={cl(classes.toggleGroupItem, rest.className)}
       as={Button}
       value={rest.value}
       icon={icon}

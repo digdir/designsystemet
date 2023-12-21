@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { useContext, forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
 import classes from '../Chip.module.css';
@@ -25,7 +25,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         {...rest}
         type='button'
         ref={ref}
-        className={cn(
+        className={cl(
           classes.chipButton,
           utilityClasses.focusable,
           classes[group?.size || size],

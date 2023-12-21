@@ -1,6 +1,6 @@
 import React, { useId, useRef, useState } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { useEventListener } from '../../../../hooks';
 import type {
@@ -63,7 +63,7 @@ const OptionList = ({
         root={portal ? null : portalRef}
       >
         <span
-          className={cn(
+          className={cl(
             classes.wrapper,
             expanded && classes.expanded,
             usingKeyboard && classes.usingKeyboard,

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Header.module.css';
 
@@ -82,7 +82,7 @@ const Header = () => {
               />
             )}
           </button>
-          <ul className={cn(classes.menu, { [classes.active]: open })}>
+          <ul className={cl(classes.menu, { [classes.active]: open })}>
             {menu.map((item, index) => (
               <li
                 className={classes.item}
@@ -92,7 +92,7 @@ const Header = () => {
                   href={item.url}
                   onClick={() => setOpen(false)}
                   prefetch={false}
-                  className={cn(
+                  className={cl(
                     isMenuItemActive(router.pathname, item.url)
                       ? classes.active
                       : '',

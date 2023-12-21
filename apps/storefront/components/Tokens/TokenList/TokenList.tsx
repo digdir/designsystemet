@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import React, { useEffect, useState } from 'react';
 import { Dropdown, Button } from '@navikt/ds-react';
-import cn from 'classnames';
+import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
@@ -153,9 +153,9 @@ const TokenList = ({
               return (
                 <div key={group}>
                   {!isSlim && <h4>{capitalizeString(group)}</h4>}
-                  <div className={cn(!isSlim && classes.group)}>
+                  <div className={cl(!isSlim && classes.group)}>
                     <div
-                      className={cn(classes.cards, {
+                      className={cl(classes.cards, {
                         [classes.cards2]: cardColumns === 2,
                       })}
                     >

@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -77,7 +77,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       <Paragraph
         as='div'
         size={size}
-        className={cn(
+        className={cl(
           classes.switch,
           classes[size],
           inputProps.disabled && classes.disabled,
