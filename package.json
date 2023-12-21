@@ -89,7 +89,7 @@
     "react-markdown": "^8.0.7",
     "remark-gfm": "^3.0.1",
     "rimraf": "^5.0.5",
-    "rollup": "^3.29.4",
+    "rollup": "^4.9.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^7.6.6",
