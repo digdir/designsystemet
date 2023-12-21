@@ -231,8 +231,7 @@
 
     .button.quiet.first:not([aria-disabled='true'], :disabled):hover {
       --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-hover);
-
-      background: var(--fds-semantic-surface-action-first-no_fill-hover);
+      background: var(--fds-semantic-surface-action-first-hover);
     }
 
     .button.quiet.second:not([aria-disabled='true'], :disabled):hover {
