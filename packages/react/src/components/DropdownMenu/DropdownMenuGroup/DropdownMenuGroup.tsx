@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext, useId } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Paragraph } from '../../Typography';
 import { DropdownMenuContext } from '../DropdownMenu';
@@ -27,14 +27,14 @@ export const DropdownMenuGroup = forwardRef<
         {...rest}
         ref={ref}
         role='group'
-        className={cn(classes.section, rest.className)}
+        className={cl(classes.section, rest.className)}
       >
         {heading && (
           <Paragraph
             as='h2'
             id={headingId}
             size={size}
-            className={cn(classes.heading, rest.className)}
+            className={cl(classes.heading, rest.className)}
           >
             {heading}
           </Paragraph>

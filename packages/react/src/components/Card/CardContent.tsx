@@ -1,5 +1,5 @@
 import React, { forwardRef, type HTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Card.module.css';
 
@@ -9,7 +9,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   ({ children, ...rest }, ref) => (
     <div
       {...rest}
-      className={cn(classes.content, rest.className)}
+      className={cl(classes.content, rest.className)}
       ref={ref}
     >
       {children}

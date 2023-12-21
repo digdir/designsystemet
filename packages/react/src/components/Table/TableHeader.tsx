@@ -1,6 +1,6 @@
 import type { HTMLProps } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './TableHeader.module.css';
 import { TableRowTypeContext } from './utils';
@@ -19,7 +19,7 @@ export const TableHeader = ({
     <TableRowTypeContext.Provider value={{ variantStandard }}>
       <thead
         {...tableHeaderProps}
-        className={cn(classes.tableHeader, className)}
+        className={cl(classes.tableHeader, className)}
       >
         {children}
       </thead>

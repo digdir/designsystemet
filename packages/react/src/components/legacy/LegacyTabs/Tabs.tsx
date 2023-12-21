@@ -1,6 +1,6 @@
 import type { KeyboardEventHandler } from 'react';
 import React, { useEffect, useId, useRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { useUpdate } from '../../../hooks';
 import { areItemsUnique } from '../../../utilities/arrayUtils';
@@ -106,7 +106,7 @@ const LegacyTabs = ({ activeTab, items, onChange }: LegacyTabsProps) => {
             <button
               aria-controls={tab.panelId}
               aria-selected={isSelected}
-              className={cn(classes.tab, isSelected && classes.selected)}
+              className={cl(classes.tab, isSelected && classes.selected)}
               id={tab.tabId}
               key={tab.value}
               onClick={() => selectTab(tab.value)}

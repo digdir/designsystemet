@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Tag } from '../Tag/Tag';
 import { Container } from '../Container/Container';
@@ -28,10 +28,10 @@ const Banner = ({ title, desc }: BannerProps) => {
 
       <div className={classes.right}>
         <div className={classes.shapes}>
-          <div className={cn(classes.shape, classes.one)}></div>
-          <div className={cn(classes.shape, classes.two)}></div>
-          <div className={cn(classes.shape, classes.three)}></div>
-          <div className={cn(classes.shape, classes.four)}></div>
+          <div className={cl(classes.shape, classes.one)}></div>
+          <div className={cl(classes.shape, classes.two)}></div>
+          <div className={cl(classes.shape, classes.three)}></div>
+          <div className={cl(classes.shape, classes.four)}></div>
         </div>
       </div>
     </Container>

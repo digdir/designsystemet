@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createElement } from 'react';
 import Image from 'next/image';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Container } from '../Container/Container';
 
@@ -53,7 +53,7 @@ const ImageSection = ({
 
   return (
     <div className={classes[backgroundColor]}>
-      <Container className={cn(classes.section)}>
+      <Container className={cl(classes.section)}>
         {imgPosition === 'left' && (
           <div className={classes.imgContainer}>
             <Image

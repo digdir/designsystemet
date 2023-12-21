@@ -15,7 +15,7 @@ import {
 } from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useLayoutEffect, useMemo, useRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Paragraph } from '../Typography';
 
@@ -132,7 +132,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             ref={floatingEl}
             as={'div'}
             size={size}
-            className={cn(
+            className={cl(
               classes.popover,
               classes[variant],
               classes[size],
@@ -150,7 +150,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             {children}
             <div
               ref={arrowRef}
-              className={cn(classes.arrow, classes[arrowPlacement])}
+              className={cl(classes.arrow, classes[arrowPlacement])}
               style={{
                 height: ARROW_HEIGHT,
                 width: ARROW_HEIGHT,

@@ -1,6 +1,6 @@
 import type { HTMLProps } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './TableCell.module.css';
 import type { SortHandler, Variant, SortDirection } from './utils';
@@ -54,7 +54,7 @@ export function TableCell({
         <TableHeaderCell
           useTd={!children}
           {...tableCellProps}
-          className={cn(
+          className={cl(
             radiobutton
               ? classes.headerTableCellRadiobutton
               : classes.headerTableCell,
@@ -69,7 +69,7 @@ export function TableCell({
           }
         >
           <div
-            className={cn(
+            className={cl(
               sortDirection != 'notSortable' && classes.containerSortable,
             )}
             onClick={() => handleChange()}
@@ -101,7 +101,7 @@ export function TableCell({
       {isVariant('body') && (
         <td
           {...tableCellProps}
-          className={cn(
+          className={cl(
             radiobutton
               ? classes.bodyTableCellRadiobutton
               : classes.bodyTableCell,

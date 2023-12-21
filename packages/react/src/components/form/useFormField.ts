@@ -1,6 +1,6 @@
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { FieldsetContext } from './Fieldset';
 
@@ -67,7 +67,7 @@ export const useFormField = (
       disabled,
       'aria-invalid': hasError ? true : undefined,
       'aria-describedby':
-        cn(props['aria-describedby'], {
+        cl(props['aria-describedby'], {
           [descriptionId]:
             !!props?.description && typeof props?.description === 'string',
           [errorId]: hasError && !fieldset?.error,

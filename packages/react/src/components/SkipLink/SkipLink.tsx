@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import utilityClasses from './../../utilities/utility.module.css';
 import classes from './SkipLink.module.css';
@@ -22,7 +22,7 @@ export const SkipLink = ({
     <a
       href={href}
       {...rest}
-      className={cn(
+      className={cl(
         utilityClasses.visuallyHidden,
         classes.skiplink,
         rest.className,

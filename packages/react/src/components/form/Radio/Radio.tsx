@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -62,7 +62,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     <Paragraph
       as='div'
       size={size}
-      className={cn(
+      className={cl(
         classes.container,
         classes[size],
         children && classes.spacing,
@@ -72,7 +72,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         rest.className,
       )}
     >
-      <span className={cn(classes.control, classes.radio)}>
+      <span className={cl(classes.control, classes.radio)}>
         <input
           {...omit(['size', 'error'], rest)}
           {...inputProps}

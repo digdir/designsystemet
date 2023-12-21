@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
@@ -25,7 +25,7 @@ export const ComboboxClearButton = () => {
   return (
     <button
       disabled={disabled}
-      className={cn(
+      className={cl(
         classes.clearButton,
         classes[size],
         utilityClasses.focusable,

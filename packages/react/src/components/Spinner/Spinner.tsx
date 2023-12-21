@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { useSynchronizedAnimation } from '../../hooks';
 
@@ -41,7 +41,7 @@ export const Spinner = ({
 
   return (
     <svg
-      className={cn(classes.spinner, className)}
+      className={cl(classes.spinner, className)}
       style={{ width: sizeMap[size], height: sizeMap[size] }}
       viewBox='0 0 50 50'
       {...rest}
@@ -57,7 +57,7 @@ export const Spinner = ({
         strokeWidth='5'
       ></circle>
       <circle
-        className={cn(classes.spinnerCircle, classes[variant])}
+        className={cl(classes.spinnerCircle, classes[variant])}
         cx='25'
         cy='25'
         r='20'

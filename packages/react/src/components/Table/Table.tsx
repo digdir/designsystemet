@@ -1,6 +1,6 @@
 import type { HTMLProps } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Table.module.css';
 import type { ChangeHandler, TableContextType } from './utils';
@@ -27,7 +27,7 @@ export function Table<T>({
   return (
     <table
       {...tableProps}
-      className={cn(classes.table, className)}
+      className={cl(classes.table, className)}
     >
       <TableContext.Provider value={context}>{children}</TableContext.Provider>
     </table>

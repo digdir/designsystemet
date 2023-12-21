@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './MdxContent.module.css';
 
@@ -9,7 +9,7 @@ interface MdxContentProps {
 }
 
 const MdxContent = ({ children, classname }: MdxContentProps) => {
-  return <div className={cn(classname, classes.content)}>{children}</div>;
+  return <div className={cl(classname, classes.content)}>{children}</div>;
 };
 
 export { MdxContent };

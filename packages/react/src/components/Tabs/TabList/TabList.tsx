@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { RovingTabindexRoot } from '../../../utilities/RovingTabIndex';
 
@@ -14,7 +14,7 @@ export const TabList = forwardRef<
     <RovingTabindexRoot
       {...rest}
       role='tablist'
-      className={cn(classes.tabItemList, rest.className)}
+      className={cl(classes.tabItemList, rest.className)}
       ref={ref}
     >
       {children}

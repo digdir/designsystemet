@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { capitalizeString } from '../../utils/StringHelpers';
 
@@ -13,7 +13,7 @@ interface TagProps {
 
 const Tag = ({ color, type, size = 'medium' }: TagProps) => {
   return (
-    <span className={cn(classes.tag, classes[color], classes[size])}>
+    <span className={cl(classes.tag, classes[color], classes[size])}>
       {capitalizeString(type)}
     </span>
   );

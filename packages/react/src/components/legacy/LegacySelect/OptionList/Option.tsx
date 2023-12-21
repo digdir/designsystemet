@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type {
   LegacyMultiSelectOption,
@@ -33,7 +33,7 @@ const Option = ({
   <button
     aria-label={option.label}
     aria-selected={selected}
-    className={cn(
+    className={cl(
       classes.option,
       selected && classes.selected,
       multiple && active && classes.focused,

@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { ComboboxContext } from '../Combobox';
 
@@ -21,7 +21,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
         <div
           {...rest}
           ref={ref}
-          className={cn(classes.empty, classes[size], rest.className)}
+          className={cl(classes.empty, classes[size], rest.className)}
         >
           {children}
         </div>
