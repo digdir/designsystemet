@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.42.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.41.1...@digdir/design-system-react@0.42.0) (2023-12-21)
+
+### Features
+
+- **Skeleton:** ✨ New component ([#1149](https://github.com/digdir/designsystem/issues/1149)) ([ab459e6](https://github.com/digdir/designsystem/commit/ab459e64ca12c64bcd058c445907d5e5b3beb557))
+
 ## [0.41.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.41.0...@digdir/design-system-react@0.41.1) (2023-12-20)
 
 ### Bug Fixes
