@@ -267,7 +267,7 @@
     {#if readOnly}
       <span
         aria-hidden
-        class="padlock"
+        class="padlock-icon"
       >
         <svg
           width="1em"
@@ -339,7 +339,7 @@
     font-weight: 600;
     line-height: 130%; /* 20.15px */
   }
-  .padlock {
+  .padlock-icon {
     grid-area: label;
     position: relative;
     top: 2px;

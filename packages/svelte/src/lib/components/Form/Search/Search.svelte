@@ -24,11 +24,6 @@
   export let hideLabel = false;
 
   /**
-   * Makes the field read-only.
-   */
-  export let readOnly = false;
-
-  /**
    * Disables the field.
    */
   export let disabled = false;
@@ -87,8 +82,8 @@
 
   // Computed class names for the component elements
   let formFieldClasses = `form-field ${size} ${disabled ? 'disabled' : ''} ${
-    readOnly ? 'readonly' : ''
-  } ${$$props.class || ''} ${fontSizeClass}`;
+    $$props.class || ''
+  } ${fontSizeClass}`;
   let labelClasses = `label ${hideLabel ? 'visually-hidden' : ''}`;
   let descriptionClasses = `description ${
     hideLabel ? 'visually-hidden' : ''
@@ -106,13 +101,6 @@
       for="search-field"
       class={labelClasses}
     >
-      {#if readOnly}
-        <!-- Replace the following span with padlock icon component -->
-        <span
-          aria-hidden
-          class="padlock-icon">🔒</span
-        >
-      {/if}
       <span>{label}</span>
     </label>
   {/if}
@@ -142,7 +130,6 @@
       id="search-field"
       type="search"
       aria-describedby="search field"
-      readonly={readOnly}
       {disabled}
       {...$$restProps}
     />
@@ -240,7 +227,7 @@
   }
 
   .input::placeholder {
-    color: var(--semantic-text-neutral-default, #1e2b3c);
+    color: var(--fds-semantic-text-neutral-default, #1e2b3c);
   }
 
   .disabled {
@@ -249,11 +236,6 @@
 
   .disabled .input {
     cursor: not-allowed;
-  }
-
-  .readonly .input {
-    background: var(--fds-semantic-surface-neutral-subtle);
-    border-color: var(--fds-semantic-border-neutral-default);
   }
 
   .error > .input:not(:focus-visible) {
@@ -305,11 +287,6 @@
   .field > *:last-child {
     border-top-right-radius: var(--fds-border_radius-medium);
     border-bottom-right-radius: var(--fds-border_radius-medium);
-  }
-
-  .padlock {
-    height: 1.2rem;
-    width: 1.2rem;
   }
 
   .errorMessage:empty {

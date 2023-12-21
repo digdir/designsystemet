@@ -98,10 +98,9 @@
       for={id}
     >
       {#if readOnly}
-        <!-- PadlockLockedFillIcon from aksel-navikt should come here -->
         <span
           aria-hidden
-          class="padlock"
+          class="padlock-icon"
         >
           <svg
             width="1em"
@@ -331,7 +330,7 @@
     stroke-width: var(--fds-focus-border-width);
   }
 
-  .padlock {
+  .padlock-icon {
     grid-area: label;
     position: relative;
     top: 3px;
