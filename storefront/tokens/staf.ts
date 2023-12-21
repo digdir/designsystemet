@@ -18,7 +18,7 @@ export const color = [
     path: ['semantic', 'background', 'default'],
   },
   {
-    value: '#EFF0EF',
+    value: 'lch(96.3 0.42 143)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -44,7 +44,7 @@ export const color = [
     path: ['semantic', 'surface', 'neutral', 'default'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(81.9 8.69 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -135,7 +135,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'subtle'],
   },
   {
-    value: '#71799D',
+    value: 'lch(65.8 14.6 279)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -161,12 +161,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'default'],
   },
   {
-    value: '#00315d',
+    value: '#4C76BA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt2.900}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-hover',
@@ -174,13 +174,13 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'hover'],
   },
   {
-    value: '#00315d',
+    value: '#3C4A71',
     type: 'color',
     description: 'Standard farge for handlinger',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
+      value: '{brand.alt1.700}',
       type: 'color',
       description: 'Standard farge for handlinger',
     },
@@ -215,7 +215,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'no_fill-hover'],
   },
   {
-    value: '#71799D',
+    value: 'lch(56.1 18.7 279)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -241,12 +241,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'checked'],
   },
   {
-    value: '#00244E',
+    value: 'lch(87.1 6.21 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.900}',
+      value: '{brand.alt1.50}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-first-subtle',
@@ -254,7 +254,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'subtle'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(81.9 8.69 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -280,7 +280,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'default'],
   },
   {
-    value: '#71799D',
+    value: 'lch(46.1 18.7 279)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -321,7 +321,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(81.9 8.69 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -334,7 +334,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill-hover'],
   },
   {
-    value: '#71799D',
+    value: 'lch(56.1 18.7 279)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -347,12 +347,12 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'first', 'no_fill-active'],
   },
   {
-    value: '#4C76BA',
+    value: 'lch(93.6 5.46 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
+      value: '{brand.alt2.50}',
       type: 'color',
     },
     name: '--fds-semantic-surface-action-second-subtle',
@@ -360,7 +360,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'subtle'],
   },
   {
-    value: '#D6DAEF',
+    value: 'lch(91.1 7.65 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -399,7 +399,7 @@ export const color = [
     path: ['semantic', 'surface', 'action', 'second', 'hover'],
   },
   {
-    value: '#00244E',
+    value: 'lch(22.6 27.1 275)',
     type: 'color',
     description: 'Standard farge for handlinger',
     filePath: '../../design-tokens/Brand/STAF.json',
@@ -739,7 +739,7 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'default'],
   },
   {
-    value: '#EFF0EF',
+    value: 'lch(96.3 0.42 143)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -778,7 +778,7 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill'],
   },
   {
-    value: '#EFF0EF',
+    value: 'lch(96.3 0.42 143)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -804,7 +804,7 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill-active'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(87.1 6.21 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -817,7 +817,7 @@ export const color = [
     path: ['semantic', 'surface', 'first', 'light'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(81.9 8.69 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -856,7 +856,7 @@ export const color = [
     path: ['semantic', 'surface', 'first', 'dark'],
   },
   {
-    value: '#D6DAEF',
+    value: 'lch(91.1 7.65 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -869,7 +869,7 @@ export const color = [
     path: ['semantic', 'surface', 'second', 'light'],
   },
   {
-    value: '#AEB6DC',
+    value: 'lch(82.1 14.3 279)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -921,7 +921,7 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light'],
   },
   {
-    value: '#EFCA8F',
+    value: 'lch(90.1 21.3 77.4)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -934,7 +934,7 @@ export const color = [
     path: ['semantic', 'surface', 'third', 'light-hover'],
   },
   {
-    value: '#EFCA8F',
+    value: 'lch(86.8 28.4 77.4)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -986,7 +986,7 @@ export const color = [
     path: ['semantic', 'border', 'action', 'subtle'],
   },
   {
-    value: '#71799D',
+    value: 'lch(65.8 14.6 279)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1077,7 +1077,7 @@ export const color = [
     path: ['semantic', 'border', 'action', 'first', 'subtle-hover'],
   },
   {
-    value: '#D6DAEF',
+    value: 'lch(91.1 7.65 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1155,7 +1155,7 @@ export const color = [
     path: ['semantic', 'border', 'action', 'second', 'subtle-hover'],
   },
   {
-    value: '#D6DAEF',
+    value: 'lch(91.1 7.65 278)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1441,12 +1441,12 @@ export const color = [
     path: ['semantic', 'border', 'first', 'default'],
   },
   {
-    value: '#00244E',
+    value: 'lch(22.6 27.1 275)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.900}',
+      value: '{brand.alt1.800}',
       type: 'color',
     },
     name: '--fds-semantic-border-first-hover',
@@ -1454,12 +1454,12 @@ export const color = [
     path: ['semantic', 'border', 'first', 'hover'],
   },
   {
-    value: '#00244E',
+    value: '#3C4A71',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.800}',
+      value: '{brand.alt1.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-first-active',
@@ -1480,12 +1480,12 @@ export const color = [
     path: ['semantic', 'border', 'second', 'default'],
   },
   {
-    value: '#3C4A71',
+    value: 'lch(54.1 36.9 272)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.700}',
+      value: '{brand.alt2.800}',
       type: 'color',
     },
     name: '--fds-semantic-border-second-hover',
@@ -1493,12 +1493,12 @@ export const color = [
     path: ['semantic', 'border', 'second', 'hover'],
   },
   {
-    value: '#00244E',
+    value: '#8595CA',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt1.800}',
+      value: '{brand.alt2.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-second-active',
@@ -1519,12 +1519,12 @@ export const color = [
     path: ['semantic', 'border', 'third', 'default'],
   },
   {
-    value: '#F39200',
+    value: 'lch(75.9 65.1 66.8)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.900}',
+      value: '{brand.alt3.800}',
       type: 'color',
     },
     name: '--fds-semantic-border-third-hover',
@@ -1532,12 +1532,12 @@ export const color = [
     path: ['semantic', 'border', 'third', 'hover'],
   },
   {
-    value: '#F39200',
+    value: '#E6AE56',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
     original: {
-      value: '{brand.alt3.900}',
+      value: '{brand.alt3.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-third-active',
@@ -1610,7 +1610,7 @@ export const color = [
     path: ['semantic', 'text', 'success', 'on_success_subtle'],
   },
   {
-    value: '#000000',
+    value: 'lch(10 0 0)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1727,7 +1727,7 @@ export const color = [
     path: ['semantic', 'text', 'action', 'first', 'hover'],
   },
   {
-    value: '#00244E',
+    value: 'lch(22.6 27.1 275)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1779,7 +1779,7 @@ export const color = [
     path: ['semantic', 'text', 'action', 'second', 'hover'],
   },
   {
-    value: '#00244E',
+    value: 'lch(22.6 27.1 275)',
     type: 'color',
     filePath: '../../design-tokens/Brand/STAF.json',
     isSource: false,
@@ -1922,7 +1922,7 @@ export const color = [
     path: ['semantic', 'text', 'visited', 'default'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(87.1 6.21 278)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -1957,7 +1957,7 @@ export const color = [
     path: ['brand', 'alt1', '50'],
   },
   {
-    value: '#B1B6CD',
+    value: 'lch(81.9 8.69 278)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2005,7 +2005,7 @@ export const color = [
     path: ['brand', 'alt1', '200'],
   },
   {
-    value: '#71799D',
+    value: 'lch(65.8 14.6 279)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2040,7 +2040,7 @@ export const color = [
     path: ['brand', 'alt1', '300'],
   },
   {
-    value: '#71799D',
+    value: 'lch(56.1 18.7 279)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2088,7 +2088,7 @@ export const color = [
     path: ['brand', 'alt1', '500'],
   },
   {
-    value: '#71799D',
+    value: 'lch(46.1 18.7 279)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2136,7 +2136,7 @@ export const color = [
     path: ['brand', 'alt1', '700'],
   },
   {
-    value: '#00244E',
+    value: 'lch(22.6 27.1 275)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2184,7 +2184,7 @@ export const color = [
     path: ['brand', 'alt1', '900'],
   },
   {
-    value: '#D6DAEF',
+    value: 'lch(93.6 5.46 278)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2219,7 +2219,7 @@ export const color = [
     path: ['brand', 'alt2', '50'],
   },
   {
-    value: '#D6DAEF',
+    value: 'lch(91.1 7.65 278)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2267,7 +2267,7 @@ export const color = [
     path: ['brand', 'alt2', '200'],
   },
   {
-    value: '#AEB6DC',
+    value: 'lch(82.1 14.3 279)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2302,7 +2302,7 @@ export const color = [
     path: ['brand', 'alt2', '300'],
   },
   {
-    value: '#AEB6DC',
+    value: 'lch(79.5 16.3 279)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2350,7 +2350,7 @@ export const color = [
     path: ['brand', 'alt2', '500'],
   },
   {
-    value: '#8595CA',
+    value: 'lch(69.6 23.8 277)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2398,7 +2398,7 @@ export const color = [
     path: ['brand', 'alt2', '700'],
   },
   {
-    value: '#4C76BA',
+    value: 'lch(54.1 36.9 272)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2446,7 +2446,7 @@ export const color = [
     path: ['brand', 'alt2', '900'],
   },
   {
-    value: '#F7E5C8',
+    value: 'lch(95.1 10.1 79.8)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2481,7 +2481,7 @@ export const color = [
     path: ['brand', 'alt3', '50'],
   },
   {
-    value: '#F7E5C8',
+    value: 'lch(93.5 13.4 79.8)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2529,7 +2529,7 @@ export const color = [
     path: ['brand', 'alt3', '200'],
   },
   {
-    value: '#EFCA8F',
+    value: 'lch(90.1 21.3 77.4)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2564,7 +2564,7 @@ export const color = [
     path: ['brand', 'alt3', '300'],
   },
   {
-    value: '#EFCA8F',
+    value: 'lch(86.8 28.4 77.4)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2612,7 +2612,7 @@ export const color = [
     path: ['brand', 'alt3', '500'],
   },
   {
-    value: '#E6AE56',
+    value: 'lch(80.1 43.5 74.6)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2660,7 +2660,7 @@ export const color = [
     path: ['brand', 'alt3', '700'],
   },
   {
-    value: '#F39200',
+    value: 'lch(75.9 65.1 66.8)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2708,7 +2708,7 @@ export const color = [
     path: ['brand', 'alt3', '900'],
   },
   {
-    value: '#DBEBEC',
+    value: 'lch(95.1 3.52 204)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2743,7 +2743,7 @@ export const color = [
     path: ['brand', 'turkis', '50'],
   },
   {
-    value: '#DBEBEC',
+    value: 'lch(94.3 4.1 204)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2791,7 +2791,7 @@ export const color = [
     path: ['brand', 'turkis', '200'],
   },
   {
-    value: '#B3D6D9',
+    value: 'lch(88.2 8.93 206)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2826,7 +2826,7 @@ export const color = [
     path: ['brand', 'turkis', '300'],
   },
   {
-    value: '#B3D6D9',
+    value: 'lch(86.5 10.2 206)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2874,7 +2874,7 @@ export const color = [
     path: ['brand', 'turkis', '500'],
   },
   {
-    value: '#87C0C4',
+    value: 'lch(76.5 18.2 204)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2922,7 +2922,7 @@ export const color = [
     path: ['brand', 'turkis', '700'],
   },
   {
-    value: '#00ADBA',
+    value: 'lch(67.7 35.1 207)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -2970,7 +2970,7 @@ export const color = [
     path: ['brand', 'turkis', '900'],
   },
   {
-    value: '#E8C9BC',
+    value: 'lch(90 8.73 47.7)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3005,7 +3005,7 @@ export const color = [
     path: ['brand', 'red', '50'],
   },
   {
-    value: '#E8C9BC',
+    value: 'lch(88.4 10.2 47.7)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3053,7 +3053,7 @@ export const color = [
     path: ['brand', 'red', '200'],
   },
   {
-    value: '#D1917C',
+    value: 'lch(76.4 22 42.9)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3088,7 +3088,7 @@ export const color = [
     path: ['brand', 'red', '300'],
   },
   {
-    value: '#D1917C',
+    value: 'lch(73 25.2 42.9)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3136,7 +3136,7 @@ export const color = [
     path: ['brand', 'red', '500'],
   },
   {
-    value: '#BD5749',
+    value: 'lch(55.2 45.2 35)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3184,7 +3184,7 @@ export const color = [
     path: ['brand', 'red', '700'],
   },
   {
-    value: '#C90B1C',
+    value: 'lch(48.9 73.8 35.4)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3232,7 +3232,7 @@ export const color = [
     path: ['brand', 'red', '900'],
   },
   {
-    value: '#BAC4CD',
+    value: 'lch(87.1 3.71 249)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3267,7 +3267,7 @@ export const color = [
     path: ['brand', 'black', '50'],
   },
   {
-    value: '#BAC4CD',
+    value: 'lch(85 4.33 249)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3315,7 +3315,7 @@ export const color = [
     path: ['brand', 'black', '200'],
   },
   {
-    value: '#7B8C98',
+    value: 'lch(70 6.73 243)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3350,7 +3350,7 @@ export const color = [
     path: ['brand', 'black', '300'],
   },
   {
-    value: '#7B8C98',
+    value: 'lch(65.7 7.69 243)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3398,7 +3398,7 @@ export const color = [
     path: ['brand', 'black', '500'],
   },
   {
-    value: '#43545F',
+    value: 'lch(41.1 8.9 242)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3446,7 +3446,7 @@ export const color = [
     path: ['brand', 'black', '700'],
   },
   {
-    value: '#000000',
+    value: 'lch(10 0 0)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3494,7 +3494,7 @@ export const color = [
     path: ['brand', 'black', '900'],
   },
   {
-    value: '#EFF0EF',
+    value: 'lch(96.8 0.36 143)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3529,7 +3529,7 @@ export const color = [
     path: ['brand', 'grey', '50'],
   },
   {
-    value: '#EFF0EF',
+    value: 'lch(96.3 0.42 143)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3577,7 +3577,7 @@ export const color = [
     path: ['brand', 'grey', '200'],
   },
   {
-    value: '#DFE0DF',
+    value: 'lch(92.4 0.42 143)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3612,7 +3612,7 @@ export const color = [
     path: ['brand', 'grey', '300'],
   },
   {
-    value: '#DFE0DF',
+    value: 'lch(91.3 0.49 143)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3660,7 +3660,7 @@ export const color = [
     path: ['brand', 'grey', '500'],
   },
   {
-    value: '#CFD1CF',
+    value: 'lch(85.3 1.11 143)',
     type: 'color',
     $extensions: {
       'studio.tokens': {
@@ -3708,7 +3708,7 @@ export const color = [
     path: ['brand', 'grey', '700'],
   },
   {
-    value: '#BFC2C0',
+    value: 'lch(80.3 1.34 155)',
     type: 'color',
     $extensions: {
       'studio.tokens': {

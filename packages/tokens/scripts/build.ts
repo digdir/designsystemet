@@ -69,6 +69,7 @@ StyleDictionary.registerTransformGroup({
     'ts/shadow/css/shorthand',
     sizePx.name,
     'ts/color/css/hexrgba',
+    'ts/color/modifiers',
   ],
 });
 StyleDictionary.registerTransformGroup({
