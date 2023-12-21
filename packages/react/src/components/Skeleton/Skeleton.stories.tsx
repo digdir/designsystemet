@@ -9,7 +9,7 @@ import { Skeleton } from '.';
 type Story = StoryObj<typeof Skeleton.Rectangle>;
 
 export default {
-  title: 'Felles/Skeleton',
+  title: 'Felles/Loaders/Skeleton',
   component: Skeleton.Rectangle,
 } as Meta;
 
