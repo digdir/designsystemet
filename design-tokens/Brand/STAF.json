@@ -753,11 +753,11 @@
           "type": "color"
         },
         "hover": {
-          "value": "{colors.blue.900}",
+          "value": "{brand.alt2.900}",
           "type": "color"
         },
         "active": {
-          "value": "{colors.blue.900}",
+          "value": "{brand.alt1.700}",
           "type": "color",
           "description": "Standard farge for handlinger"
         },
@@ -779,7 +779,7 @@
         },
         "first": {
           "subtle": {
-            "value": "{brand.alt1.900}",
+            "value": "{brand.alt1.50}",
             "type": "color"
           },
           "subtle-hover": {
@@ -814,7 +814,7 @@
         },
         "second": {
           "subtle": {
-            "value": "{brand.alt2.900}",
+            "value": "{brand.alt2.50}",
             "type": "color"
           },
           "subtle-hover": {
