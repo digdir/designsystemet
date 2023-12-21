@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useId, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
 
@@ -62,7 +62,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
     return (
       <div
         {...rest}
-        className={cn(classes.toggleGroupContainer, rest.className)}
+        className={cl(classes.toggleGroupContainer, rest.className)}
         ref={ref}
       >
         <ToggleGroupContext.Provider

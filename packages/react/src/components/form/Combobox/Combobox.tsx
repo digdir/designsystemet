@@ -18,7 +18,7 @@ import {
   useRole,
   FloatingPortal,
 } from '@floating-ui/react';
-import cn from 'classnames';
+import cl from 'clsx';
 import type {
   UseFloatingReturn,
   UseListNavigationProps,
@@ -389,7 +389,7 @@ export const Combobox = ({
       }}
     >
       <Box
-        className={cn(
+        className={cl(
           classes.combobox,
           disabled && classes.disabled,
           rest.className,
@@ -446,7 +446,7 @@ export const Combobox = ({
                   ...floatingStyles,
                 },
               })}
-              className={cn(classes.optionsWrapper, classes[size])}
+              className={cl(classes.optionsWrapper, classes[size])}
             >
               {/* Map our children, and add props if it is a ComboboxOption */}
               {optionsChildren}

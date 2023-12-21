@@ -1,6 +1,6 @@
 import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
 import React, { forwardRef, useCallback, useRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
@@ -107,7 +107,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         as='div'
         size={size}
         style={style}
-        className={cn(
+        className={cl(
           classes.formField,
           inputProps.disabled && classes.disabled,
           classes[size],
@@ -119,7 +119,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             size={size}
             weight='medium'
             htmlFor={inputProps.id}
-            className={cn(
+            className={cl(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -144,7 +144,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               value={value ?? internalValue}
               onChange={handleChange}
               disabled={disabled}
-              className={cn(
+              className={cl(
                 classes.input,
                 utilityClasses.focusable,
                 classes[size],
@@ -154,7 +154,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             />
             {showClearButton && (
               <button
-                className={cn(classes.clearButton, utilityClasses.focusable)}
+                className={cl(classes.clearButton, utilityClasses.focusable)}
                 type='button'
                 onClick={handleClear}
                 disabled={disabled}

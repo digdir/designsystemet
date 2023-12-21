@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -45,7 +45,7 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
     <Component
       {...rest}
       ref={ref}
-      className={cn(
+      className={cl(
         shadow && classes[shadow + 'Shadow'],
         borderRadius && classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],

@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import React, { useState, useId, forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -92,7 +92,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
     const hasCharacterLimit = characterLimit != null;
 
     const describedBy =
-      cn(
+      cl(
         inputProps['aria-describedby'],
         hasCharacterLimit && characterLimitId,
       ) || undefined;
@@ -102,7 +102,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         as='div'
         size={size}
         style={style}
-        className={cn(
+        className={cl(
           classes.formField,
           classes[size],
           inputProps.disabled && classes.disabled,
@@ -115,7 +115,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             size={size}
             weight='medium'
             htmlFor={inputProps.id}
-            className={cn(
+            className={cl(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -134,7 +134,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             id={descriptionId}
             as='div'
             size={size}
-            className={cn(
+            className={cl(
               classes.description,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -142,12 +142,12 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             {description}
           </Paragraph>
         )}
-        <div className={cn(classes.field, hasError && classes.error)}>
+        <div className={cl(classes.field, hasError && classes.error)}>
           {prefix && (
             <Paragraph
               as='div'
               size={size}
-              className={cn(classes.adornment, classes.prefix)}
+              className={cl(classes.adornment, classes.prefix)}
               aria-hidden='true'
               short
             >
@@ -157,7 +157,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           <input
             {...omit(['size', 'error', 'errorId'], rest)}
             {...inputProps}
-            className={cn(
+            className={cl(
               classes.input,
               classes[size],
               utilityClasses.focusable,
@@ -177,7 +177,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             <Paragraph
               as='div'
               size={size}
-              className={cn(classes.adornment, classes.suffix)}
+              className={cl(classes.adornment, classes.suffix)}
               aria-hidden='true'
               short
             >

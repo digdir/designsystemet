@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { cloneElement, forwardRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import {
   useFloating,
   autoUpdate,
@@ -134,7 +134,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 style={{ ...floatingStyles, ...animationStyles }}
                 {...getFloatingProps({
                   ...restHTMLProps,
-                  className: cn(styles.wrapper, className),
+                  className: cl(styles.wrapper, className),
                   ref: mergedRef,
                 })}
                 role='tooltip'

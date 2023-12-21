@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
@@ -24,7 +24,7 @@ export const DropdownMenuItem: OverridableComponent<
         variant='tertiary'
         size={menu.size}
         fullWidth
-        className={cn(classes.item, rest.className)}
+        className={cl(classes.item, rest.className)}
         role='menuitem'
       >
         {children}

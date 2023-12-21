@@ -5,7 +5,7 @@ import React, {
   useId,
   useMemo,
 } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../Combobox';
@@ -98,7 +98,7 @@ export const ComboboxOption = forwardRef<
         setActiveOption(index, labelId);
         rest.onFocus?.(e);
       }} // Set active index on focus
-      className={cn(
+      className={cl(
         classes.option,
         classes[size],
         activeIndex === index && classes.active,

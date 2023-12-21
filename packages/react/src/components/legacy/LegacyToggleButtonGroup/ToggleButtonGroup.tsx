@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { areItemsUnique } from '../../../utilities';
 
@@ -74,7 +74,7 @@ export const LegacyToggleButtonGroup = ({
       {items.map((item) => (
         <button
           aria-pressed={item.value === selected}
-          className={cn(
+          className={cl(
             classes.toggleButton,
             item.value === selected && classes.pressed,
           )}

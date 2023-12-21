@@ -1,6 +1,6 @@
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import React, { useContext, forwardRef, createContext } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
@@ -56,7 +56,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         <fieldset
           {...rest}
           {...fieldsetProps}
-          className={cn(
+          className={cl(
             classes.fieldset,
             !hideLegend && classes.spacing,
             readOnly && classes.readonly,
@@ -68,7 +68,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           <Label
             as='legend'
             size={size}
-            className={cn(
+            className={cl(
               classes.legend,
               hideLegend && utilityclasses.visuallyHidden,
             )}
@@ -84,7 +84,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {description && (
             <Paragraph
               id={descriptionId}
-              className={cn(
+              className={cl(
                 classes.description,
                 hideLegend && utilityclasses.visuallyHidden,
               )}

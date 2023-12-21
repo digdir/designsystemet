@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -31,7 +31,7 @@ export const Link: OverridableComponent<LinkProps, HTMLAnchorElement> =
     ) => (
       <Component
         {...rest}
-        className={cn(classes.link, inverted && classes.inverted, className)}
+        className={cl(classes.link, inverted && classes.inverted, className)}
         ref={ref}
       >
         {children}

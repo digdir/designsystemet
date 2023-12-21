@@ -1,5 +1,5 @@
 import React, { type HTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { useSynchronizedAnimation } from '../../../hooks';
 import classes from '../Skeleton.module.css';
@@ -25,7 +25,7 @@ export const Rectangle = ({
     <div
       {...rest}
       ref={ref}
-      className={cn(
+      className={cl(
         classes.skeleton,
         classes.rectangle,
         {

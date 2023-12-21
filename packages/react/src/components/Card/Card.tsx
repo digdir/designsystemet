@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 import utilityClasses from '../../utilities/utility.module.css';
@@ -25,7 +25,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
       <Component
         {...rest}
         ref={ref}
-        className={cn(
+        className={cl(
           classes.card,
           classes[color],
           isLink && classes.linkCard,

@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Image.module.css';
 
@@ -11,7 +11,7 @@ interface ImageProps {
 
 const Image = ({ alt, src, boxShadow, ...rest }: ImageProps) => {
   return (
-    <div className={cn(classes.container, { [classes.boxShadow]: boxShadow })}>
+    <div className={cl(classes.container, { [classes.boxShadow]: boxShadow })}>
       <img
         className={classes.img}
         src={src}

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './ListItem.module.css';
 
@@ -9,7 +9,7 @@ export type ListItemProps = HTMLAttributes<HTMLLIElement>;
 export const ListItem = ({ children, ...rest }: ListItemProps) => (
   <li
     {...rest}
-    className={cn(classes.listItem, rest.className)}
+    className={cl(classes.listItem, rest.className)}
   >
     {children}
   </li>

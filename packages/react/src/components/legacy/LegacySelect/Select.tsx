@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
 import React, { useCallback, useEffect, useId, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 import { flip, size } from '@floating-ui/dom';
 
@@ -320,7 +320,7 @@ const LegacySelect = (props: LegacySelectProps) => {
 
   return (
     <span
-      className={cn(
+      className={cl(
         classes.select,
         classes[multiple ? 'multiple' : 'single'],
         expanded && classes.expanded,
@@ -333,7 +333,7 @@ const LegacySelect = (props: LegacySelectProps) => {
         inputId={givenOrRandomInputId}
         inputRenderer={({ className, inputId: id, hasIcon }) => (
           <span
-            className={cn(className, classes.field, hasIcon && classes.hasIcon)}
+            className={cl(className, classes.field, hasIcon && classes.hasIcon)}
             ref={refs.setReference}
           >
             <span className={classes.inputArea}>

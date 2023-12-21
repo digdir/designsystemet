@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
 import { Heading, Paragraph } from '../../Typography';
@@ -26,7 +26,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
       <div
         {...rest}
         ref={ref}
-        className={cn(
+        className={cl(
           classes.modalHeader,
           !closeButton && classes.noCloseButton,
           rest.className,

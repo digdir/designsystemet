@@ -1,5 +1,5 @@
 import React, { type HTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from '../Skeleton.module.css';
 import { useSynchronizedAnimation } from '../../../hooks';
@@ -25,7 +25,7 @@ export const Text = ({
     <div
       {...rest}
       ref={ref}
-      className={cn(
+      className={cl(
         classes.skeleton,
         classes.text,
         {

@@ -4,7 +4,7 @@ import React, {
   useLayoutEffect,
   useRef,
 } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import type { Placement } from '@floating-ui/react';
 import {
   useFloating,
@@ -127,7 +127,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              className={cn(classes.dropdown, classes[size], rest.className)}
+              className={cl(classes.dropdown, classes[size], rest.className)}
             >
               {children}
             </ul>

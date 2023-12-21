@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
@@ -43,7 +43,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
         as='span'
         size={size}
         {...restHTMLProps}
-        className={cn(
+        className={cl(
           classes.tag,
           classes[color],
           classes[size],

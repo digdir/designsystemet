@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
+import cl from 'clsx';
 import { Button } from '@digdir/design-system-react';
 
 import { SiteConfig } from '../../siteConfig';
@@ -49,7 +49,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
             {showMenu ? 'Skjul' : 'Vis'} side meny
           </Button>
 
-          <div className={cn(classes.menu, { [classes.activeMenu]: showMenu })}>
+          <div className={cl(classes.menu, { [classes.activeMenu]: showMenu })}>
             <h3 className={classes.title}>
               {SiteConfig.menu[activeIndex].name}
             </h3>
@@ -58,7 +58,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                 (item: PageMenuItemType, index) => (
                   <li
                     key={index}
-                    className={cn(classes.listGroup, {
+                    className={cl(classes.listGroup, {
                       [classes.listGroupCompact]: !item.children,
                     })}
                   >
@@ -75,7 +75,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                                 <Link
                                   href={'/' + item2.url}
                                   prefetch={false}
-                                  className={cn(classes.link, {
+                                  className={cl(classes.link, {
                                     [classes.linkActive]: isItemActive(
                                       item2.url,
                                       routerPath,
@@ -94,7 +94,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                       <Link
                         href={'/' + item.url}
                         prefetch={false}
-                        className={cn(classes.link, classes.linkCompact, {
+                        className={cl(classes.link, classes.linkCompact, {
                           [classes.linkActive]: isItemActive(
                             item.url,
                             routerPath,
