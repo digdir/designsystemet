@@ -1601,7 +1601,7 @@ __metadata:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
     "@digdir/design-system-tokens": "npm:^0.11.0"
     "@floating-ui/react": "npm:0.26.4"
-    "@navikt/aksel-icons": "npm:^5.12.1"
+    "@navikt/aksel-icons": "npm:^5.12.2"
     "@types/fs-extra": "npm:^11.0.4"
     copyfiles: "npm:^2.4.1"
     cssnano: "npm:^6.0.2"
@@ -2470,10 +2470,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^5.12.1":
-  version: 5.12.1
-  resolution: "@navikt/ds-css@npm:5.12.1"
-  checksum: 09c51351c7410b15bc5310f9a367ff481cdcc7a3971064b41fa29cc4f843075a2f25be0bedb34b51a19a69c3ae092ae8c90936f5b1938ecda9f00d7f1327c45f
+"@navikt/aksel-icons@npm:^5.12.2":
+  version: 5.12.2
+  resolution: "@navikt/aksel-icons@npm:5.12.2"
+  checksum: 3458af6d88726a6572f8de01fed89da627e15cf81e7dc21a6f26cae52b137d9f2025efcdea22582cb985ab42c50cf963385bac3435c51d5af42ad1e5bf26d775
+  languageName: node
+  linkType: hard
+
+"@navikt/ds-css@npm:^5.12.2":
+  version: 5.12.2
+  resolution: "@navikt/ds-css@npm:5.12.2"
+  checksum: 1baa75e338daf7753ac5781922f728c3fa468faa82d24d876ecd5f548c180c81191c2e1643e0298834833ceda65daef75b5db6a6bfa9c417bbf6e2c1ac21b8a6
   languageName: node
   linkType: hard
 
@@ -9136,7 +9143,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev@workspace:apps/dev"
   dependencies:
-    "@navikt/aksel-icons": "npm:^5.12.1"
+    "@navikt/aksel-icons": "npm:^5.12.2"
     "@types/luxon": "npm:^3.3.7"
     luxon: "npm:^3.4.4"
     next: "npm:^14.0.4"
@@ -19425,8 +19432,8 @@ __metadata:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
     "@mdx-js/loader": "npm:^2.0.0-rc.2"
     "@mdx-js/react": "npm:^1.6.22"
-    "@navikt/aksel-icons": "npm:^5.12.1"
-    "@navikt/ds-css": "npm:^5.12.1"
+    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@navikt/ds-css": "npm:^5.12.2"
     "@navikt/ds-react": "npm:^5.12.1"
     "@tippyjs/react": "npm:^4.2.6"
     "@types/react-syntax-highlighter": "npm:^15.5.11"
