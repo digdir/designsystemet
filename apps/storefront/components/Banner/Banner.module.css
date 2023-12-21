@@ -94,6 +94,7 @@
     opacity: 1;
   }
 }
+
 @keyframes two {
   0% {
     right: -100px;
@@ -105,6 +106,7 @@
     opacity: 1;
   }
 }
+
 @keyframes three {
   0% {
     bottom: -100px;
@@ -116,6 +118,7 @@
     opacity: 1;
   }
 }
+
 @keyframes four {
   0% {
     left: -100px;
