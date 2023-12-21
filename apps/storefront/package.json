@@ -19,7 +19,7 @@
     "@tippyjs/react": "^4.2.6",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@vercel/analytics": "^1.1.1",
-    "hastscript": "^7.2.0",
+    "hastscript": "^8.0.0",
     "mdx-embed": "^1.1.2",
     "next": "^14.0.4",
     "normalize.css": "^8.0.1",
