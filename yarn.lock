@@ -1619,8 +1619,8 @@ __metadata:
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
     "@tokens-studio/sd-transforms": "npm:^0.9.3"
-    "@types/ramda": "npm:^0.29.3"
-    ramda: "npm:^0.29.0"
+    "@types/ramda": "npm:^0.29.9"
+    ramda: "npm:^0.29.1"
     style-dictionary: "npm:^3.8.0"
   languageName: unknown
   linkType: soft
@@ -5853,12 +5853,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:^0.29.3":
-  version: 0.29.3
-  resolution: "@types/ramda@npm:0.29.3"
+"@types/ramda@npm:^0.29.9":
+  version: 0.29.9
+  resolution: "@types/ramda@npm:0.29.9"
   dependencies:
-    types-ramda: "npm:^0.29.4"
-  checksum: 172b18d62473d4bffb1e4e92fa293e56fa4f85fcf91b1b2c9178955f775e34065cc408e93f1171436b52e240599ecb1be51955dab07ca389bf2da98f85f820a9
+    types-ramda: "npm:^0.29.6"
+  checksum: b4d3746f2770f05f276901e1490ed733cb8a2f2aea1bb8b651914cf89dee93832c1dc61914dad1b35054f0eb7597491963335d27cd98fe4f293a67529b66382d
   languageName: node
   linkType: hard
 
@@ -17715,10 +17715,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ramda@npm:0.29.0, ramda@npm:^0.29.0":
+"ramda@npm:0.29.0":
   version: 0.29.0
   resolution: "ramda@npm:0.29.0"
   checksum: b156660f2c58b4a13bcc4f1a0eabc1145d8db11d33d26a2fb03cd6adf3983a1c1f2bbaaf708c421029e9b09684262d056752623f7e62b79a503fb9217dec69d4
+  languageName: node
+  linkType: hard
+
+"ramda@npm:^0.29.1":
+  version: 0.29.1
+  resolution: "ramda@npm:0.29.1"
+  checksum: 5824249efa18f3c013ea0bae6cdcc167ef357fff5441586b7ad98759e902b1397297d92b50bdc317f49fe73fa6b0e17f806f4d0f7a95270f05c25afa733a8fc5
   languageName: node
   linkType: hard
 
@@ -20633,12 +20640,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"types-ramda@npm:^0.29.4":
-  version: 0.29.4
-  resolution: "types-ramda@npm:0.29.4"
+"types-ramda@npm:^0.29.6":
+  version: 0.29.6
+  resolution: "types-ramda@npm:0.29.6"
   dependencies:
     ts-toolbelt: "npm:^9.6.0"
-  checksum: d1c0cb35d1424898641a0ca996b176b9fa8dab46eccf759bfab4d0ff2f9314d70a2cd56ad7ef676cfa85665ee94a1217f091b2d2992c9335c21389835fcd70b6
+  checksum: bd878cc4321d555fcccedba53665682752b60ec8fe11c7418a109180313b0fd0736a0bf3658d40e5a2c7c62c96f5f83923669cec9295152a52bfd1f35f680677
   languageName: node
   linkType: hard
 

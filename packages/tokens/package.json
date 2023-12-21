@@ -16,8 +16,8 @@
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.9.3",
-    "@types/ramda": "^0.29.3",
-    "ramda": "^0.29.0",
+    "@types/ramda": "^0.29.9",
+    "ramda": "^0.29.1",
     "style-dictionary": "^3.8.0"
   }
 }
