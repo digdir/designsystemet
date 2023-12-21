@@ -1,12 +1,12 @@
-module.exports = {
+export default {
   extends: [
     'stylelint-config-standard',
     'stylelint-config-css-modules',
-    'stylelint-config-prettier',
+    // 'stylelint-config-prettier',
   ],
-  plugins: ['stylelint-prettier'],
+  // plugins: ['stylelint-prettier'],
   rules: {
-    'prettier/prettier': true,
+    // 'prettier/prettier': true,
     'declaration-block-no-redundant-longhand-properties': null,
     'media-feature-range-notation': 'prefix',
     'custom-property-pattern': null,
