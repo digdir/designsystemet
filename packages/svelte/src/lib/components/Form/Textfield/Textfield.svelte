@@ -263,6 +263,8 @@
   .readonly .input {
     background: var(--fds-semantic-surface-neutral-subtle);
     border-color: var(--fds-semantic-border-neutral-default);
+    outline: none;
+    cursor: not-allowed;
   }
 
   .error > .input:not(:focus-visible) {
@@ -272,9 +274,9 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .input:not(:focus-visible, :disabled):hover {
-      border-color: var(--fds-semantic-border-action-hover);
+    .input:not(:focus-visible, :disabled, :read-only):hover {
       box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
+      border-color: var(--fds-semantic-border-action-hover);
     }
   }
 

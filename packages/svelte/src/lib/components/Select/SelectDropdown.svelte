@@ -190,6 +190,7 @@
     width: 100%;
     position: relative;
     gap: 10px;
+    margin-top: 2px;
   }
 
   .option-label {
@@ -217,7 +218,6 @@
     pointer-events: none;
     height: 1.75rem;
     width: 1.75rem;
-    margin: auto;
     overflow: visible;
   }
 

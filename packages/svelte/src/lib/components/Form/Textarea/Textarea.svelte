@@ -223,6 +223,8 @@
   .readonly .textarea {
     background: var(--fds-semantic-surface-neutral-subtle);
     border-color: var(--fds-semantic-border-neutral-default);
+    outline: none;
+    cursor: not-allowed;
   }
 
   .error > .textarea:not(:focus-visible) {
@@ -232,7 +234,7 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .textarea:not(:focus-visible, :disabled):hover {
+    .textarea:not(:focus-visible, :disabled, :read-only):hover {
       border-color: var(--fds-semantic-border-action-hover);
       box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
     }
