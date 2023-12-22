@@ -56,7 +56,7 @@
   class:visible={isDropdownVisible}
 >
   <ul class="options-list">
-    {#each options as option (option.value)}
+    {#each options as option, index (index)}
       {@const isSelected = isOptionSelected(option)}
 
       <!-- svelte-ignore a11y-click-events-have-key-events -->
