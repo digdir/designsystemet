@@ -24,9 +24,11 @@
     TabItem,
     TabContent,
   } from '$lib';
-
+  //@ts-ignore
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
+  //@ts-ignore
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
+  //@ts-ignore
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
   import CheckboxGroup from '$lib/components/Form/Checkbox/CheckboxGroup.svelte';
@@ -38,6 +40,7 @@
   }
 
   let isModalOpen = false;
+  let isModal2Open = false;
   let showTextfieldError = false;
   let showSearchError = false;
 
@@ -396,6 +399,10 @@
       frem i senere år, noen ved rene uhell og andre mer planlagte (med humor
       o.l.).
     </p>
+    <Button on:click={() => (isModal2Open = true)}>Open Modal 2</Button>
+    {#if isModal2Open}
+      <Modal onClose={() => (isModal2Open = false)}><p>More Text</p></Modal>
+    {/if}
   </Modal>
 {/if}
 
