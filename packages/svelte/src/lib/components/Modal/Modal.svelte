@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, onMount } from 'svelte';
+  import { v4 as uuidv4 } from 'uuid';
 
   /**
    * Specify which variant to use for the modal. Options are 'default', 'alert'.
@@ -80,6 +81,7 @@
 
   let closeButton;
   let lastButton;
+  let componentId = uuidv4();
 
   function close() {
     onClose();
@@ -87,7 +89,7 @@
   }
 
   function handleClick(event) {
-    const modal = document.querySelector('.modal');
+    const modal = document.getElementById(`modal-${componentId}`);
     const textSelected = window.getSelection().toString().length !== 0;
 
     if (modal && !modal.contains(event.target) && !textSelected) {
@@ -123,6 +125,7 @@
 
 <div class="modal-background">
   <div
+    id={`modal-${componentId}`}
     class={`modal ${modalVariant}`}
     {...$$restProps}
   >
