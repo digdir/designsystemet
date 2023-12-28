@@ -194,15 +194,14 @@
         return [];
       }
     });
+    selected = $selectedStore;
   }
 
   function clearAll() {
     if ((multiple || clearable) && !readOnly) {
-      if (!multiple) {
-        selected = null;
-      }
       selectedStore.set([]);
       selectContext.update((ctx) => ({ ...ctx, selected: [] }));
+      selected = !multiple ? null : $selectedStore;
     }
   }
 
