@@ -27,7 +27,7 @@ import type {
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
-import type { PortalProp } from '../../../types/Portal';
+import type { PortalProps } from '../../../types/Portal';
 
 import type { Option } from './useCombobox';
 import useCombobox, { isComboboxOption } from './useCombobox';
@@ -95,7 +95,7 @@ export type ComboboxProps = {
    * @default (option) => 'Slett ' + option.label,
    */
   chipSrLabel?: (option: Option) => string;
-} & PortalProp &
+} & PortalProps &
   FormFieldProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 

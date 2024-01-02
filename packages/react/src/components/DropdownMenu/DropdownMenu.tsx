@@ -17,7 +17,7 @@ import {
 } from '@floating-ui/react';
 
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
-import type { PortalProp } from '../../types/Portal';
+import type { PortalProps } from '../../types/Portal';
 
 import classes from './DropdownMenu.module.css';
 
@@ -44,7 +44,7 @@ export type DropdownMenuProps = {
    * @default medium
    **/
   size?: 'small' | 'medium' | 'large';
-} & PortalProp &
+} & PortalProps &
   React.HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
