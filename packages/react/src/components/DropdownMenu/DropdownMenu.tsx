@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-} from 'react';
+import React, { createContext, forwardRef, useRef } from 'react';
 import cl from 'clsx';
 import type { Placement } from '@floating-ui/react';
 import {
@@ -19,6 +14,8 @@ import {
   shift,
   FloatingFocusManager,
 } from '@floating-ui/react';
+
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 import classes from './DropdownMenu.module.css';
 
@@ -93,7 +90,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
 
     const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       refs.setReference(anchorEl);
       if (!refs.reference.current || !refs.floating.current || !open) return;
       const cleanup = autoUpdate(
