@@ -37,6 +37,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           as='span'
           size={group?.size || size}
           className={classes.label}
+          short
         >
           {children}
           <span
