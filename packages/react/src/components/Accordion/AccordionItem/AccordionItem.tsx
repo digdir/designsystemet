@@ -33,9 +33,13 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
     return (
       <div
-        className={cl(classes.item, className, {
-          [classes.open]: open ?? internalOpen,
-        })}
+        className={cl(
+          classes.item,
+          {
+            [classes.open]: open ?? internalOpen,
+          },
+          className,
+        )}
         ref={ref}
         {...rest}
       >

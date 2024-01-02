@@ -41,7 +41,16 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
-    { children, value, defaultValue, onChange, size = 'medium', name, ...rest },
+    {
+      children,
+      value,
+      defaultValue,
+      onChange,
+      size = 'medium',
+      name,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     const nameId = useId();
@@ -62,7 +71,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
     return (
       <div
         {...rest}
-        className={cl(classes.toggleGroupContainer, rest.className)}
+        className={cl(classes.toggleGroupContainer, className)}
         ref={ref}
       >
         <ToggleGroupContext.Provider

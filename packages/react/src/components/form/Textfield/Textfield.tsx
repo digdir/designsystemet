@@ -75,6 +75,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       hideLabel,
       type = 'text',
       htmlSize = 20,
+      className,
       ...rest
     } = props;
 
@@ -107,7 +108,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           classes[size],
           inputProps.disabled && classes.disabled,
           readOnly && classes.readonly,
-          rest.className,
+          className,
         )}
       >
         {label && (
@@ -172,6 +173,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               inputProps?.onChange?.(e);
               setInputValue(e.target.value);
             }}
+            {...rest}
           />
           {suffix && (
             <Paragraph

@@ -36,7 +36,7 @@ export type ComboboxOptionProps = {
 export const ComboboxOption = forwardRef<
   HTMLButtonElement,
   ComboboxOptionProps
->(({ value, description, children, ...rest }, ref) => {
+>(({ value, description, children, className, ...rest }, ref) => {
   const labelId = useId();
   const generatedId = useId();
 
@@ -103,7 +103,7 @@ export const ComboboxOption = forwardRef<
         classes[size],
         activeIndex === index && classes.active,
         multiple && classes.multiple,
-        rest.className,
+        className,
       )}
       ref={combinedRef}
     >

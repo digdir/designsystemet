@@ -17,6 +17,7 @@ export const Circle = ({
   height,
   className,
   children,
+  style,
   ...rest
 }: CircleProps) => {
   const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
@@ -31,7 +32,7 @@ export const Circle = ({
         { [classes.hasChildren]: Boolean(children) },
         className,
       )}
-      style={{ width, height, ...rest.style }}
+      style={{ width, height, ...style }}
       aria-hidden
     >
       {children}

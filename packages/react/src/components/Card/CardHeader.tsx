@@ -6,10 +6,10 @@ import classes from './Card.module.css';
 export type CardHeaderProps = HTMLAttributes<HTMLDivElement>;
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ children, ...rest }, ref) => (
+  ({ children, className, ...rest }, ref) => (
     <div
       {...rest}
-      className={cl(classes.header, rest.className)}
+      className={cl(classes.header, className)}
       ref={ref}
     >
       {children}

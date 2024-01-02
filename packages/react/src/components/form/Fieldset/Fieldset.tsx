@@ -36,7 +36,15 @@ export type FieldsetProps = {
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   (props, ref) => {
-    const { children, legend, description, error, hideLegend, ...rest } = props;
+    const {
+      children,
+      legend,
+      description,
+      error,
+      hideLegend,
+      className,
+      ...rest
+    } = props;
 
     const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } =
       useFieldset(props);
@@ -61,7 +69,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             !hideLegend && classes.spacing,
             readOnly && classes.readonly,
             props?.disabled && classes.disabled,
-            rest.className,
+            className,
           )}
           ref={ref}
         >

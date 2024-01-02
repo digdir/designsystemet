@@ -59,7 +59,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       open: userOpen,
       defaultOpen = false,
       className,
-      ...restHTMLProps
+      style,
+      ...rest
     },
     ref,
   ) => {
@@ -131,9 +132,9 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
             <>
               <div
                 ref={refs.setFloating}
-                style={{ ...floatingStyles, ...animationStyles }}
+                style={{ ...floatingStyles, ...animationStyles, ...style }}
                 {...getFloatingProps({
-                  ...restHTMLProps,
+                  ...rest,
                   className: cl(styles.wrapper, className),
                   ref: mergedRef,
                 })}

@@ -16,6 +16,7 @@ export const Text = ({
   width,
   height,
   className,
+  style,
   children,
   ...rest
 }: TextProps) => {
@@ -33,7 +34,7 @@ export const Text = ({
         },
         className,
       )}
-      style={{ width, height, ...rest.style }}
+      style={{ width, height, style }}
       aria-hidden
     >
       {children}

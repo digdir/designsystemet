@@ -21,13 +21,13 @@ export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupItemProps
 >((props, ref) => {
-  const { children, icon, ...rest } = props;
+  const { children, icon, className, ...rest } = props;
   const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
       {...rest}
       {...buttonProps}
-      className={cl(classes.toggleGroupItem, rest.className)}
+      className={cl(classes.toggleGroupItem, className)}
       as={Button}
       value={rest.value}
       icon={icon}

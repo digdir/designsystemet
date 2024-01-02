@@ -62,11 +62,12 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       placement = 'top',
       open,
       anchorEl,
-      className,
       variant = 'default',
       size = 'small',
       onClose,
-      ...restHTMLProps
+      className,
+      style,
+      ...rest
     },
     ref,
   ) => {
@@ -144,8 +145,8 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
               ref: floatingRef,
               tabIndex: undefined,
             })}
-            style={{ ...floatingStyles }}
-            {...restHTMLProps}
+            style={{ ...floatingStyles, ...style }}
+            {...rest}
           >
             {children}
             <div

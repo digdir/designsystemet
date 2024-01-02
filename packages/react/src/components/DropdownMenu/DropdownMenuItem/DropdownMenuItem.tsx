@@ -13,7 +13,7 @@ export type DropdownMenuItemProps = React.HTMLAttributes<HTMLLIElement>;
 export const DropdownMenuItem: OverridableComponent<
   Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>,
   HTMLButtonElement
-> = forwardRef(({ children, ...rest }, ref) => {
+> = forwardRef(({ children, className, ...rest }, ref) => {
   const menu = useContext(DropdownMenuContext);
 
   return (
@@ -24,7 +24,7 @@ export const DropdownMenuItem: OverridableComponent<
         variant='tertiary'
         size={menu.size}
         fullWidth
-        className={cl(classes.item, rest.className)}
+        className={cl(classes.item, className)}
         role='menuitem'
       >
         {children}

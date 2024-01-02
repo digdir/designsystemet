@@ -9,12 +9,12 @@ import classes from './TabList.module.css';
 export const TabList = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
->(({ children, ...rest }, ref) => {
+>(({ children, className, ...rest }, ref) => {
   return (
     <RovingTabindexRoot
       {...rest}
       role='tablist'
-      className={cl(classes.tabItemList, rest.className)}
+      className={cl(classes.tabItemList, className)}
       ref={ref}
     >
       {children}

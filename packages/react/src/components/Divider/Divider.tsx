@@ -11,11 +11,15 @@ export type DividerProps = {
   color?: 'default' | 'strong' | 'subtle';
 } & React.HTMLAttributes<HTMLHRElement>;
 
-export const Divider = ({ color = 'default', ...rest }: DividerProps) => {
+export const Divider = ({
+  color = 'default',
+  className,
+  ...rest
+}: DividerProps) => {
   return (
     <hr
       {...rest}
-      className={cl(classes.divider, classes[color], rest.className)}
+      className={cl(classes.divider, classes[color], className)}
     />
   );
 };

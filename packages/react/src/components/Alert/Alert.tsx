@@ -43,7 +43,10 @@ export type AlertProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  ({ severity = 'info', elevated, iconTitle, children, ...rest }, ref) => {
+  (
+    { severity = 'info', elevated, iconTitle, children, className, ...rest },
+    ref,
+  ) => {
     const { Icon, title } = icons[severity];
 
     return (
@@ -54,7 +57,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           classes.alert,
           classes[severity],
           elevated && classes.elevated,
-          rest.className,
+          className,
         )}
       >
         <>

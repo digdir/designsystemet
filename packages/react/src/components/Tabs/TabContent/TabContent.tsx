@@ -12,7 +12,7 @@ export type TabContentProps = {
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
-  ({ children, value, ...rest }, ref) => {
+  ({ children, value, className, ...rest }, ref) => {
     const { value: tabsValue, size = 'medium' } = useContext(TabsContext);
     const active = value == tabsValue;
     const onlyText = typeof children === 'string';
@@ -26,7 +26,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
               classes[size],
               classes.tabContent,
               onlyText && classes.onlyText,
-              rest.className,
+              className,
             )}
             ref={ref}
           >

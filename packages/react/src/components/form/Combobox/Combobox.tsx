@@ -121,10 +121,12 @@ export const Combobox = ({
   portal = true,
   htmlSize = 0,
   children,
+  style,
   filter = (inputValue, option) => {
     return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
   },
   chipSrLabel = (option) => 'Slett ' + option.label,
+  className,
   ...rest
 }: ComboboxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -392,11 +394,9 @@ export const Combobox = ({
         className={cl(
           classes.combobox,
           disabled && classes.disabled,
-          rest.className,
+          className,
         )}
-        style={{
-          ...rest.style,
-        }}
+        style={style}
         ref={portalRef}
       >
         {/* This is only for the Combobox to work in forms */}

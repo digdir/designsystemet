@@ -16,7 +16,7 @@ export type DropdownMenuGroupProps = {
 export const DropdownMenuGroup = forwardRef<
   HTMLUListElement,
   DropdownMenuGroupProps
->(({ children, heading, ...rest }, ref) => {
+>(({ children, heading, className, ...rest }, ref) => {
   const { size } = useContext(DropdownMenuContext);
   const headingId = useId();
 
@@ -27,14 +27,14 @@ export const DropdownMenuGroup = forwardRef<
         {...rest}
         ref={ref}
         role='group'
-        className={cl(classes.section, rest.className)}
+        className={cl(classes.section, className)}
       >
         {heading && (
           <Paragraph
             as='h2'
             id={headingId}
             size={size}
-            className={cl(classes.heading, rest.className)}
+            className={cl(classes.heading)}
           >
             {heading}
           </Paragraph>

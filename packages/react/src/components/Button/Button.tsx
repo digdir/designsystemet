@@ -56,7 +56,6 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           classes[color],
           { [classes.fullWidth]: fullWidth },
           { [classes.onlyIcon]: !children && icon },
-
           className,
         )}
       >

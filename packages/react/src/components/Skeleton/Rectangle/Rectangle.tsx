@@ -17,6 +17,7 @@ export const Rectangle = ({
   height,
   className,
   children,
+  style,
   ...rest
 }: RectangleProps) => {
   const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
@@ -33,7 +34,7 @@ export const Rectangle = ({
         },
         className,
       )}
-      style={{ width, height, ...rest.style }}
+      style={{ width, height, style }}
       aria-hidden
     >
       {children}

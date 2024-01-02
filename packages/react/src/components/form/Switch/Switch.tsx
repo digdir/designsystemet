@@ -65,7 +65,13 @@ export type SwitchProps = {
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {
-    const { children, description, position = 'left', ...rest } = props;
+    const {
+      children,
+      description,
+      position = 'left',
+      className,
+      ...rest
+    } = props;
     const {
       inputProps,
       descriptionId,
@@ -84,7 +90,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           readOnly && classes.readonly,
           position === 'right' && classes.right,
           !children && classes.noLabel,
-          rest.className,
+          className,
         )}
       >
         <input
@@ -92,6 +98,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           {...inputProps}
           className={classes.input}
           ref={ref}
+          {...rest}
         />
         <SwitchIcon className={classes.icon} />
 

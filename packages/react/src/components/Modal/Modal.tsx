@@ -36,7 +36,10 @@ export type ModalProps = {
 export const ModalContext = createContext<ModalContextProps | null>(null);
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
-  ({ onInteractOutside, onClose, onBeforeClose, children, ...props }, ref) => {
+  (
+    { onInteractOutside, onClose, onBeforeClose, children, className, ...rest },
+    ref,
+  ) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const mergedRefs = useMergeRefs([modalRef, ref]);
     const { context } = useFloating();
@@ -103,8 +106,8 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       >
         <dialog
           ref={mergedRefs}
-          {...props}
-          className={cl(classes.modal, props.className)}
+          {...rest}
+          className={cl(classes.modal, className)}
           onCancel={onCancel}
         >
           {open && (
