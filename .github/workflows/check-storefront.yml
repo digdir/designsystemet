@@ -6,12 +6,12 @@ on:
     branches:
       - main
     paths:
-      - 'storefront/**'
+      - 'apps/storefront/**'
   push:
     branches:
       - main
     paths:
-      - 'storefront/**'
+      - 'apps/storefront/**'
 jobs:
   checks:
     name: Builds, lints and tests code
@@ -33,8 +33,8 @@ jobs:
       - name: Types
         run: yarn types:storefront
       - name: Lint Code
-        run: yarn lint ./storefront
+        run: yarn lint ./apps/storefront
       - name: Lint CSS
-        run: yarn lint-style ./storefront/**/*.css
+        run: yarn lint-style ./apps/storefront/**/*.css
       - name: Test
         run: yarn test
