@@ -22,7 +22,6 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
 
     return (
       <button
-        {...rest}
         type='button'
         ref={ref}
         className={cl(
@@ -32,6 +31,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           classes.removable,
           className,
         )}
+        {...rest}
       >
         <Paragraph
           as='span'

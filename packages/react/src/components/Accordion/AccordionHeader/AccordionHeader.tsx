@@ -37,11 +37,11 @@ export const AccordionHeader = forwardRef<
 
   return (
     <Heading
-      {...rest}
       ref={ref}
       size='xsmall'
       level={level}
       className={cl(classes.header, className)}
+      {...rest}
     >
       <button
         type='button'

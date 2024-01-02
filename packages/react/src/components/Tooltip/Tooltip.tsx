@@ -133,12 +133,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, ...animationStyles, ...style }}
+                role='tooltip'
                 {...getFloatingProps({
-                  ...rest,
                   className: cl(styles.wrapper, className),
                   ref: mergedRef,
+                  ...rest,
                 })}
-                role='tooltip'
               >
                 {content}
                 <FloatingArrow

@@ -63,10 +63,10 @@ export const CheckboxGroup = forwardRef<
 
     return (
       <Fieldset
-        {...rest}
         readOnly={readOnly}
         size={size}
         ref={ref}
+        {...rest}
       >
         <CheckboxGroupContext.Provider
           value={{

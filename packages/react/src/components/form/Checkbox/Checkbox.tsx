@@ -75,10 +75,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       >
         <span className={cl(classes.control, classes.checkbox)}>
           <input
-            {...omit(['size', 'error'], rest)}
-            {...inputProps}
             className={classes.input}
             ref={ref}
+            {...omit(['size', 'error'], rest)}
+            {...inputProps}
           />
           <CheckboxIcon className={classes.icon} />
         </span>

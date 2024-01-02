@@ -45,7 +45,6 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
       ref,
     ) => (
       <Component
-        {...rest}
         ref={ref}
         type={type}
         className={cl(
@@ -58,6 +57,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           { [classes.onlyIcon]: !children && icon },
           className,
         )}
+        {...rest}
       >
         {icon && iconPlacement === 'left' && (
           <SvgIcon

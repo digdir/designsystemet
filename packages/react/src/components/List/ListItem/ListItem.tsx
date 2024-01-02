@@ -8,8 +8,8 @@ export type ListItemProps = HTMLAttributes<HTMLLIElement>;
 
 export const ListItem = ({ children, className, ...rest }: ListItemProps) => (
   <li
-    {...rest}
     className={cl(classes.listItem, className)}
+    {...rest}
   >
     {children}
   </li>

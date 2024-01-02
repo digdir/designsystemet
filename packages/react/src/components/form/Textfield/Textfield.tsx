@@ -156,8 +156,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             </Paragraph>
           )}
           <input
-            {...omit(['size', 'error', 'errorId'], rest)}
-            {...inputProps}
             className={cl(
               classes.input,
               classes[size],
@@ -169,6 +167,8 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             type={type}
             aria-describedby={describedBy}
             size={htmlSize}
+            {...omit(['size', 'error', 'errorId'], rest)}
+            {...inputProps}
             onChange={(e) => {
               inputProps?.onChange?.(e);
               setInputValue(e.target.value);

@@ -106,9 +106,9 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       >
         <dialog
           ref={mergedRefs}
-          {...rest}
           className={cl(classes.modal, className)}
           onCancel={onCancel}
+          {...rest}
         >
           {open && (
             <FloatingFocusManager context={context}>

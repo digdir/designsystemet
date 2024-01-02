@@ -27,10 +27,10 @@ export const DropdownMenuGroup = forwardRef<
     >
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
-        {...rest}
         ref={ref}
         role='group'
         className={classes.section}
+        {...rest}
       >
         {heading && (
           <Paragraph

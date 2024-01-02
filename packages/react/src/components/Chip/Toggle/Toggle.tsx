@@ -41,7 +41,6 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
 
     return (
       <button
-        {...rest}
         ref={ref}
         type='button'
         aria-pressed={selected}
@@ -52,6 +51,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
           { [classes.spacing]: shouldDisplayCheckmark },
           className,
         )}
+        {...rest}
       >
         <Paragraph
           as='span'

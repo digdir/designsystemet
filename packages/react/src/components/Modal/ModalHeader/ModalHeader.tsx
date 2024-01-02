@@ -24,13 +24,13 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
 
     return (
       <div
-        {...rest}
         ref={ref}
         className={cl(
           classes.modalHeader,
           !closeButton && classes.noCloseButton,
           className,
         )}
+        {...rest}
       >
         {subtitle && (
           <Paragraph

@@ -32,7 +32,6 @@ export const ErrorMessage: OverridableComponent<
     ref,
   ) => (
     <Component
-      {...rest}
       ref={ref}
       className={cl(
         classes.errorMessage,
@@ -43,6 +42,7 @@ export const ErrorMessage: OverridableComponent<
         error && classes.error,
         className,
       )}
+      {...rest}
     />
   ),
 );
