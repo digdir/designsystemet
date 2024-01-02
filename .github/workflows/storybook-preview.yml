@@ -5,6 +5,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
   PR_NUMBER: ${{ github.event.number }}
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
     paths:
