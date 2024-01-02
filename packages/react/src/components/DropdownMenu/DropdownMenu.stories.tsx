@@ -1,10 +1,9 @@
-import type { StoryFn, Meta, StoryObj } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React, { useEffect, useRef } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
 
 import { Button, Divider } from '../..';
 
-import type { DropdownMenuProps } from '.';
 import { DropdownMenu } from '.';
 
 const marginDecorator = (Story: StoryFn) => (
@@ -18,7 +17,7 @@ export default {
   component: DropdownMenu,
 } as Meta;
 
-const PreviewComponent = (args: DropdownMenuProps) => {
+export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -69,7 +68,15 @@ const PreviewComponent = (args: DropdownMenuProps) => {
   );
 };
 
-const IconsComponent = (args: DropdownMenuProps) => {
+Preview.args = {
+  placement: 'bottom-end',
+  size: 'medium',
+  open: false,
+};
+
+Preview.decorators = [marginDecorator];
+
+export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -116,7 +123,9 @@ const IconsComponent = (args: DropdownMenuProps) => {
   );
 };
 
-const InPortalComponent = (args: DropdownMenuProps) => {
+Icons.decorators = [marginDecorator];
+
+export const InPortal: StoryFn<typeof DropdownMenu> = (args) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -140,11 +149,12 @@ const InPortalComponent = (args: DropdownMenuProps) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <DropdownMenu.Group heading='Links'>
+        <DropdownMenu.Group>
           <DropdownMenu.Item
             as='a'
             href='https://github.com/digdir/designsystem'
             target='_blank'
+            icon={<LinkIcon />}
           >
             Github
           </DropdownMenu.Item>
@@ -152,46 +162,12 @@ const InPortalComponent = (args: DropdownMenuProps) => {
             as='a'
             href='https://designsystemet.no'
             target='_blank'
+            icon={<LinkIcon />}
           >
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
-        <Divider />
-        <DropdownMenu.Group>
-          <DropdownMenu.Item>Button 1</DropdownMenu.Item>
-          <DropdownMenu.Item>Button 2</DropdownMenu.Item>
-          <DropdownMenu.Item disabled>Disabled</DropdownMenu.Item>
-        </DropdownMenu.Group>
       </DropdownMenu>
     </>
   );
-};
-
-export const Preview: StoryObj<typeof DropdownMenu> = {
-  decorators: [marginDecorator],
-  args: {
-    placement: 'bottom-end',
-    size: 'medium',
-    open: false,
-  },
-  render: PreviewComponent,
-};
-
-export const Icons: StoryObj<typeof DropdownMenu> = {
-  decorators: [marginDecorator],
-  render: IconsComponent,
-};
-
-export const InPortal: StoryObj<typeof DropdownMenu> = {
-  decorators: [
-    (Story: StoryFn) => (
-      <div>
-        <Story />
-      </div>
-    ),
-  ],
-  args: {
-    portal: true,
-  },
-  render: InPortalComponent,
 };
