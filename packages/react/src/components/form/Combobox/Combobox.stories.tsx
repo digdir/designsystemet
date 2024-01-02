@@ -388,7 +388,7 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
         label='Hvor går reisen?'
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        <Combobox.Option value={'all'}>Velg alle</Combobox.Option>
+        <Combobox.Option value={'all'}>Alle kommuner</Combobox.Option>
         {PLACES.map((item, index) => (
           <Combobox.Option
             key={index}
