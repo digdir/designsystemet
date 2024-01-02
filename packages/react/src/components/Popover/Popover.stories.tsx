@@ -6,7 +6,7 @@ import { Button, Paragraph } from '../..';
 import { Popover } from '.';
 
 const marginDecorator = (Story: StoryFn) => (
-  <div style={{ margin: '10rem', marginTop: '0' }}>
+  <div style={{ margin: '10rem' }}>
     <Story />
   </div>
 );
