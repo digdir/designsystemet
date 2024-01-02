@@ -5,6 +5,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
   PR_NUMBER: ${{ github.event.number }}
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
     paths:
@@ -13,10 +14,10 @@ jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use node 20 and yarn cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'yarn'
