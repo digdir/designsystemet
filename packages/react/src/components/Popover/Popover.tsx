@@ -14,9 +14,10 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useLayoutEffect, useMemo, useRef } from 'react';
+import React, { forwardRef, useMemo, useRef } from 'react';
 import cl from 'clsx';
 
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Paragraph } from '../Typography';
 
 import classes from './Popover.module.css';
@@ -110,7 +111,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       refs.setReference(anchorEl);
       if (!refs.reference.current || !refs.floating.current || !open) return;
       const cleanup = autoUpdate(
