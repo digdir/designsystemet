@@ -70,9 +70,9 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
 
     return (
       <div
-        {...rest}
         className={cl(classes.toggleGroupContainer, className)}
         ref={ref}
+        {...rest}
       >
         <ToggleGroupContext.Provider
           value={{

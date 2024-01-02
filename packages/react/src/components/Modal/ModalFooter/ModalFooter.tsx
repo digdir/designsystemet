@@ -8,9 +8,9 @@ export const ModalFooter = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
   ({ children, className, ...rest }, ref) => {
     return (
       <footer
-        {...rest}
         ref={ref}
         className={cl(classes.modalFooter, className)}
+        {...rest}
       >
         {children}
       </footer>

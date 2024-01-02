@@ -24,7 +24,6 @@ export const Rectangle = ({
 
   return (
     <div
-      {...rest}
       ref={ref}
       className={cl(
         classes.skeleton,
@@ -36,6 +35,7 @@ export const Rectangle = ({
       )}
       style={{ width, height, ...style }}
       aria-hidden
+      {...rest}
     >
       {children}
     </div>

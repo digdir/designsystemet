@@ -10,9 +10,9 @@ export const ModalContent = forwardRef<
 >(({ children, className, ...rest }, ref) => {
   return (
     <div
-      {...rest}
       ref={ref}
       className={cl(classes.modalContent, className)}
+      {...rest}
     >
       {children}
     </div>

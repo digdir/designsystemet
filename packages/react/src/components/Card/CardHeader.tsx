@@ -8,9 +8,9 @@ export type CardHeaderProps = HTMLAttributes<HTMLDivElement>;
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ children, className, ...rest }, ref) => (
     <div
-      {...rest}
       className={cl(classes.header, className)}
       ref={ref}
+      {...rest}
     >
       {children}
     </div>

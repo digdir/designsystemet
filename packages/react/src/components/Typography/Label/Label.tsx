@@ -39,7 +39,6 @@ export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
     ) => {
       return (
         <Component
-          {...rest}
           ref={ref}
           className={cl(
             classes.label,
@@ -48,6 +47,7 @@ export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
             weight && [fontWeightsClasses[weight]],
             className,
           )}
+          {...rest}
         />
       );
     },

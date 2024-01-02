@@ -45,8 +45,8 @@ export const Spinner = ({
       className={cl(classes.spinner, className)}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
-      {...rest}
       ref={svgRef}
+      {...rest}
     >
       <title>{title}</title>
       <circle

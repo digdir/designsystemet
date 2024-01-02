@@ -79,7 +79,6 @@ export const ComboboxOption = forwardRef<
 
   return (
     <button
-      {...omit(['displayValue'], rest)}
       id={rest.id || generatedId}
       role='option'
       type='button'
@@ -106,6 +105,7 @@ export const ComboboxOption = forwardRef<
         className,
       )}
       ref={combinedRef}
+      {...omit(['displayValue'], rest)}
     >
       <Label
         as='span'

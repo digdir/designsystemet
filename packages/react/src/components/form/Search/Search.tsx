@@ -138,12 +138,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               ></MagnifyingGlassIcon>
             )}
             <input
-              {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
-              {...inputProps}
               ref={mergedRef}
               size={htmlSize}
               value={value ?? internalValue}
-              onChange={handleChange}
               disabled={disabled}
               className={cl(
                 classes.input,
@@ -152,6 +149,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 isSimple && classes.simple,
                 !isSimple && classes.withSearchButton,
               )}
+              {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+              {...inputProps}
+              onChange={handleChange}
             />
             {showClearButton && (
               <button

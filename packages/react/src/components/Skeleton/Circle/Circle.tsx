@@ -24,7 +24,6 @@ export const Circle = ({
 
   return (
     <div
-      {...rest}
       ref={ref}
       className={cl(
         classes.skeleton,
@@ -34,6 +33,7 @@ export const Circle = ({
       )}
       style={{ width, height, ...style }}
       aria-hidden
+      {...rest}
     >
       {children}
     </div>

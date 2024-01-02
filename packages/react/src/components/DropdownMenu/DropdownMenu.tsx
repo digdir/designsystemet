@@ -115,7 +115,6 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
             modal={false}
           >
             <ul
-              {...rest}
               role='menu'
               aria-hidden={!open}
               data-placement={flPlacement}
@@ -126,6 +125,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
                 tabIndex: undefined,
               })}
               className={cl(classes.dropdown, classes[size], className)}
+              {...rest}
             >
               {children}
             </ul>

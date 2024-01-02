@@ -94,10 +94,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         )}
       >
         <input
-          {...omit(['size', 'error'], rest)}
-          {...inputProps}
           className={classes.input}
           ref={ref}
+          {...omit(['size', 'error'], rest)}
+          {...inputProps}
         />
         <SwitchIcon className={classes.icon} />
 
