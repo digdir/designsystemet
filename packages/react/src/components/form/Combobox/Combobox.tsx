@@ -27,6 +27,7 @@ import type {
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
+import type { PortalProp } from '../../../types/Portal';
 
 import type { Option } from './useCombobox';
 import useCombobox, { isComboboxOption } from './useCombobox';
@@ -63,11 +64,6 @@ export type ComboboxProps = {
    * Name of the value when used in a form
    */
   name?: string;
-  /**
-   * If true, the list of options is rendered in a portal
-   * @default true
-   */
-  portal?: boolean;
   /** Exposes the HTML `size` attribute.
    * @default 0
    */
@@ -99,7 +95,8 @@ export type ComboboxProps = {
    * @default (option) => 'Slett ' + option.label,
    */
   chipSrLabel?: (option: Option) => string;
-} & FormFieldProps &
+} & PortalProp &
+  FormFieldProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Combobox = ({
