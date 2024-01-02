@@ -21,7 +21,14 @@ export type BoxProps = {
    * Border radius of the box
    * @default undefined
    */
-  borderRadius?: 'small' | 'medium' | 'large';
+  borderRadius?:
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge'
+    | 'xxxlarge'
+    | 'xxxxlarge';
   /**
    * Background color of the box
    * @default 'default'
