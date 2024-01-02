@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.11.0...@digdir/design-system-tokens@0.11.1) (2024-01-02)
+
+**Note:** Version bump only for package @digdir/design-system-tokens
+
 # [0.11.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-tokens@0.10.0...@digdir/design-system-tokens@0.11.0) (2023-12-19)
 
 ### Features

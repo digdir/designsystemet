@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.43.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.42.0...@digdir/design-system-react@0.43.0) (2024-01-02)
+
+### Bug Fixes
+
+- **Chip:** :bug: Use correct font token (short) ([#1290](https://github.com/digdir/designsystem/issues/1290)) ([ddc1166](https://github.com/digdir/designsystem/commit/ddc11669be368c35b9d12e17a8048fad902c8eb9))
+- Make sure `className` and `style` are applied to outer element ([#1277](https://github.com/digdir/designsystem/issues/1277)) ([1a57299](https://github.com/digdir/designsystem/commit/1a57299fac3e0431b22cc9f8b2a6ad649e3146d6))
+
+### Features
+
+- **Box:** Add new border radius tokens ([#1275](https://github.com/digdir/designsystem/issues/1275)) ([59e5cce](https://github.com/digdir/designsystem/commit/59e5ccece893e580b7f32cfc6ae2761a3502a5c1))
+- **DropdownMenu:** Add portal support ([#1289](https://github.com/digdir/designsystem/issues/1289)) ([a0ff1bf](https://github.com/digdir/designsystem/commit/a0ff1bf994492c66e567d4887aae75b6fa4e984e))
+- **Popover:** Add portal support ([#1293](https://github.com/digdir/designsystem/issues/1293)) ([e739c24](https://github.com/digdir/designsystem/commit/e739c24f147819d7afe283b76b1cda4f54a1ad5f))
+- **Tooltip:** Add portal support ([#1294](https://github.com/digdir/designsystem/issues/1294)) ([3e95c3a](https://github.com/digdir/designsystem/commit/3e95c3a1efc2d2d0866f272b4491fff336b03890))
+
+### Performance Improvements
+
+- :zap: Replace `classnames` with `clsx` ([#1272](https://github.com/digdir/designsystem/issues/1272)) ([855f387](https://github.com/digdir/designsystem/commit/855f38756dbc793e471a6718ca7265bb9fc5ff09))
+
 # [0.42.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.41.1...@digdir/design-system-react@0.42.0) (2023-12-21)
 
 ### Features
