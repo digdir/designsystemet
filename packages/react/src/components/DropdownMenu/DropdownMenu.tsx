@@ -13,9 +13,11 @@ import {
   useRole,
   shift,
   FloatingFocusManager,
+  FloatingPortal,
 } from '@floating-ui/react';
 
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import type { PortalProps } from '../../types/Portal';
 
 import classes from './DropdownMenu.module.css';
 
@@ -42,7 +44,8 @@ export type DropdownMenuProps = {
    * @default medium
    **/
   size?: 'small' | 'medium' | 'large';
-} & React.HTMLAttributes<HTMLUListElement>;
+} & PortalProps &
+  React.HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   size: 'medium',
@@ -56,12 +59,14 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
       onClose,
       placement = 'bottom-end',
       size = 'medium',
+      portal,
       children,
       className,
       ...rest
     },
     ref,
   ) => {
+    const Container = portal ? FloatingPortal : React.Fragment;
     const floatingEl = useRef<HTMLUListElement>(null);
 
     const {
@@ -114,21 +119,23 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
             guards={false}
             modal={false}
           >
-            <ul
-              role='menu'
-              aria-hidden={!open}
-              data-placement={flPlacement}
-              ref={floatingRef}
-              style={floatingStyles}
-              {...getFloatingProps({
-                ref: floatingRef,
-                tabIndex: undefined,
-              })}
-              className={cl(classes.dropdown, classes[size], className)}
-              {...rest}
-            >
-              {children}
-            </ul>
+            <Container>
+              <ul
+                role='menu'
+                aria-hidden={!open}
+                data-placement={flPlacement}
+                ref={floatingRef}
+                style={floatingStyles}
+                {...getFloatingProps({
+                  ref: floatingRef,
+                  tabIndex: undefined,
+                })}
+                className={cl(classes.dropdown, classes[size], className)}
+                {...rest}
+              >
+                {children}
+              </ul>
+            </Container>
           </FloatingFocusManager>
         )}
       </DropdownMenuContext.Provider>
