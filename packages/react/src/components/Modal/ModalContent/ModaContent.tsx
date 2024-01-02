@@ -7,12 +7,12 @@ import classes from './ModalContent.module.css';
 export const ModalContent = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLElement>
->(({ children, ...props }, ref) => {
+>(({ children, className, ...rest }, ref) => {
   return (
     <div
-      {...props}
+      {...rest}
       ref={ref}
-      className={cl(classes.modalContent, props.className)}
+      className={cl(classes.modalContent, className)}
     >
       {children}
     </div>

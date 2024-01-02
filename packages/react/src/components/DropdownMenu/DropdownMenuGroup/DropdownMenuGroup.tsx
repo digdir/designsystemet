@@ -16,25 +16,28 @@ export type DropdownMenuGroupProps = {
 export const DropdownMenuGroup = forwardRef<
   HTMLUListElement,
   DropdownMenuGroupProps
->(({ children, heading, ...rest }, ref) => {
+>(({ children, heading, className, style, ...rest }, ref) => {
   const { size } = useContext(DropdownMenuContext);
   const headingId = useId();
 
   return (
-    <li>
+    <li
+      className={className}
+      style={style}
+    >
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         {...rest}
         ref={ref}
         role='group'
-        className={cl(classes.section, rest.className)}
+        className={classes.section}
       >
         {heading && (
           <Paragraph
             as='h2'
             id={headingId}
             size={size}
-            className={cl(classes.heading, rest.className)}
+            className={cl(classes.heading)}
           >
             {heading}
           </Paragraph>

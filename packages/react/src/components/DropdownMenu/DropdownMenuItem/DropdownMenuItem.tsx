@@ -1,5 +1,4 @@
 import React, { forwardRef, useContext } from 'react';
-import cl from 'clsx';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
@@ -13,18 +12,21 @@ export type DropdownMenuItemProps = React.HTMLAttributes<HTMLLIElement>;
 export const DropdownMenuItem: OverridableComponent<
   Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>,
   HTMLButtonElement
-> = forwardRef(({ children, ...rest }, ref) => {
+> = forwardRef(({ children, className, style, ...rest }, ref) => {
   const menu = useContext(DropdownMenuContext);
 
   return (
-    <li>
+    <li
+      className={className}
+      style={style}
+    >
       <Button
         {...rest}
         ref={ref}
         variant='tertiary'
         size={menu.size}
         fullWidth
-        className={cl(classes.item, rest.className)}
+        className={classes.item}
         role='menuitem'
       >
         {children}

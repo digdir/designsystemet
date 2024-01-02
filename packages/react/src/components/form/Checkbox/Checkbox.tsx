@@ -50,7 +50,7 @@ export type CheckboxProps = {
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
-    const { children, description, ...rest } = props;
+    const { children, description, className, ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -70,7 +70,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           inputProps.disabled && classes.disabled,
           hasError && classes.error,
           readOnly && classes.readonly,
-          rest.className,
+          className,
         )}
       >
         <span className={cl(classes.control, classes.checkbox)}>

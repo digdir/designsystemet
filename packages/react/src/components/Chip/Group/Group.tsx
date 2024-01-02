@@ -18,11 +18,11 @@ export type ChipGroupProps = {
 } & HTMLAttributes<HTMLUListElement>;
 
 export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
-  ({ children, size = 'medium', ...rest }: ChipGroupProps, ref) => (
+  ({ children, size = 'medium', className, ...rest }: ChipGroupProps, ref) => (
     <ul
       {...rest}
       ref={ref}
-      className={cl(classes.groupContainer, classes[size], rest.className)}
+      className={cl(classes.groupContainer, classes[size], className)}
     >
       <ChipGroupContext.Provider value={{ size }}>
         {React.Children.toArray(children).map((child, index) =>

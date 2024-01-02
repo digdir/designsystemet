@@ -34,7 +34,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       size = 'medium',
       variant = 'primary',
       className,
-      ...restHTMLProps
+      ...rest
     },
     ref,
   ) => {
@@ -42,7 +42,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       <Paragraph
         as='span'
         size={size}
-        {...restHTMLProps}
+        {...rest}
         className={cl(
           classes.tag,
           classes[color],

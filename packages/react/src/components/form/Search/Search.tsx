@@ -70,6 +70,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       disabled,
       onSearchClick,
       htmlSize = 27,
+      className,
       ...rest
     } = props;
 
@@ -111,7 +112,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           classes.formField,
           inputProps.disabled && classes.disabled,
           classes[size],
-          rest.className,
+          className,
         )}
       >
         {label && (

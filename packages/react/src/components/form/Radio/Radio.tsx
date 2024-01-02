@@ -49,7 +49,7 @@ export type RadioProps = {
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { children, description, ...rest } = props;
+  const { children, description, className, ...rest } = props;
   const {
     inputProps,
     descriptionId,
@@ -69,7 +69,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         inputProps.disabled && classes.disabled,
         hasError && classes.error,
         readOnly && classes.readonly,
-        rest.className,
+        className,
       )}
     >
       <span className={cl(classes.control, classes.radio)}>

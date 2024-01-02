@@ -46,6 +46,7 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
       background = 'default',
       children,
       as: Component = 'div',
+      className,
       ...rest
     },
     ref,
@@ -58,7 +59,7 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
         borderRadius && classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],
         classes[background + 'Background'],
-        rest.className,
+        className,
       )}
     >
       {children}

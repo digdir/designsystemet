@@ -44,8 +44,15 @@ export type TextareaProps = {
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
-    const { label, description, style, characterLimit, hideLabel, ...rest } =
-      props;
+    const {
+      label,
+      description,
+      style,
+      characterLimit,
+      hideLabel,
+      className,
+      ...rest
+    } = props;
 
     const {
       textareaProps,
@@ -75,7 +82,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           classes.formField,
           textareaProps.disabled && classes.disabled,
           readOnly && classes.readonly,
-          rest.className,
+          className,
         )}
       >
         {label && (

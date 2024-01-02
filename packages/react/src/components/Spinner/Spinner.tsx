@@ -29,6 +29,7 @@ export const Spinner = ({
   size = 'medium',
   variant = 'default',
   className,
+  style,
   ...rest
 }: SpinnerProps): JSX.Element => {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
@@ -42,7 +43,7 @@ export const Spinner = ({
   return (
     <svg
       className={cl(classes.spinner, className)}
-      style={{ width: sizeMap[size], height: sizeMap[size] }}
+      style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       {...rest}
       ref={svgRef}

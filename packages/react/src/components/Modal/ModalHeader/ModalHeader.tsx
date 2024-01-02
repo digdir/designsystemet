@@ -19,7 +19,7 @@ export type ModalHeaderProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-  ({ closeButton = true, children, subtitle, ...rest }, ref) => {
+  ({ closeButton = true, children, subtitle, className, ...rest }, ref) => {
     const context = useContext(ModalContext);
 
     return (
@@ -29,7 +29,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
         className={cl(
           classes.modalHeader,
           !closeButton && classes.noCloseButton,
-          rest.className,
+          className,
         )}
       >
         {subtitle && (

@@ -57,6 +57,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
       placement = 'bottom-end',
       size = 'medium',
       children,
+      className,
       ...rest
     },
     ref,
@@ -124,7 +125,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              className={cl(classes.dropdown, classes[size], rest.className)}
+              className={cl(classes.dropdown, classes[size], className)}
             >
               {children}
             </ul>

@@ -5,12 +5,12 @@ import cl from 'clsx';
 import classes from './ModalFooter.module.css';
 
 export const ModalFooter = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
-  ({ children, ...props }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     return (
       <footer
-        {...props}
+        {...rest}
         ref={ref}
-        className={cl(classes.modalFooter, props.className)}
+        className={cl(classes.modalFooter, className)}
       >
         {children}
       </footer>

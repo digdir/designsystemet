@@ -48,6 +48,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       size = 'medium',
       required,
       inline,
+      className,
       ...rest
     },
     ref,
@@ -59,7 +60,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
         {...rest}
         readOnly={readOnly}
         size={size}
-        className={cl(rest.className)}
+        className={className}
         ref={ref}
       >
         <RadioGroupContext.Provider

@@ -6,10 +6,10 @@ import classes from './Card.module.css';
 export type CardFooterProps = HTMLAttributes<HTMLDivElement>;
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ children, ...rest }, ref) => (
+  ({ children, className, ...rest }, ref) => (
     <div
       {...rest}
-      className={cl(classes.footer, rest.className)}
+      className={cl(classes.footer, className)}
       ref={ref}
     >
       {children}

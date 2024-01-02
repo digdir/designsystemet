@@ -16,17 +16,14 @@ export type SkipLinkProps = {
 export const SkipLink = ({
   href,
   children,
+  className,
   ...rest
 }: SkipLinkProps): JSX.Element => {
   return (
     <a
       href={href}
       {...rest}
-      className={cl(
-        utilityClasses.visuallyHidden,
-        classes.skiplink,
-        rest.className,
-      )}
+      className={cl(utilityClasses.visuallyHidden, classes.skiplink, className)}
     >
       {children}
     </a>

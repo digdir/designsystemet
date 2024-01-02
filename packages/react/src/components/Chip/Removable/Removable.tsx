@@ -17,7 +17,7 @@ export type RemovableChipProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'medium', ...rest }, ref) => {
+  ({ children, size = 'medium', className, ...rest }, ref) => {
     const group = useContext(ChipGroupContext);
 
     return (
@@ -30,7 +30,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           utilityClasses.focusable,
           classes[group?.size || size],
           classes.removable,
-          rest.className,
+          className,
         )}
       >
         <Paragraph

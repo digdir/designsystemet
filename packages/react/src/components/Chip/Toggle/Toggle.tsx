@@ -31,6 +31,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
       size = 'medium',
       selected = false,
       checkmark = true,
+      className,
       ...rest
     }: ToggleChipProps,
     ref,
@@ -49,7 +50,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
           utilityClasses.focusable,
           classes[group?.size || size],
           { [classes.spacing]: shouldDisplayCheckmark },
-          rest.className,
+          className,
         )}
       >
         <Paragraph

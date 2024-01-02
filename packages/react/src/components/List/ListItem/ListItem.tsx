@@ -6,10 +6,10 @@ import classes from './ListItem.module.css';
 
 export type ListItemProps = HTMLAttributes<HTMLLIElement>;
 
-export const ListItem = ({ children, ...rest }: ListItemProps) => (
+export const ListItem = ({ children, className, ...rest }: ListItemProps) => (
   <li
     {...rest}
-    className={cl(classes.listItem, rest.className)}
+    className={cl(classes.listItem, className)}
   >
     {children}
   </li>

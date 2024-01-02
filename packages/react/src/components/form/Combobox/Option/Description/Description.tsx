@@ -8,11 +8,11 @@ type ComboboxOptionDescriptionProps = React.HTMLAttributes<HTMLSpanElement>;
 export const ComboboxOptionDescription = forwardRef<
   HTMLSpanElement,
   ComboboxOptionDescriptionProps
->(({ children, ...rest }, ref) => {
+>(({ children, className, ...rest }, ref) => {
   return (
     <span
       {...rest}
-      className={cl(classes.description, rest.className)}
+      className={cl(classes.description, className)}
       ref={ref}
     >
       {children}
