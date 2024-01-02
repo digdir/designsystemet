@@ -1,11 +1,13 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef } from 'react';
+
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 const stashedTime: { [key: string]: CSSNumberish | null } = {};
 
 export function useSynchronizedAnimation<T>(animationName: string) {
   const ref = useRef<T>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const animations = document
       .getAnimations()
       .filter(

@@ -48,6 +48,7 @@ export const semantic_surface_success_no_fill_active : string;
 export const semantic_surface_warning_subtle : string;
 export const semantic_surface_warning_subtle_hover : string;
 export const semantic_surface_warning_default : string;
+export const semantic_surface_warning_default_hover : string;
 export const semantic_surface_danger_subtle : string;
 export const semantic_surface_danger_subtle_hover : string;
 export const semantic_surface_danger_default : string;
