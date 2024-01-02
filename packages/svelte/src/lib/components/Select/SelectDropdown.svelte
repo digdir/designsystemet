@@ -133,7 +133,6 @@
     &:not(.visible) {
       display: none;
     }
-    min-width: 97%;
     max-height: 400px;
     overflow-y: auto;
     margin-top: var(--fds-spacing-1);
