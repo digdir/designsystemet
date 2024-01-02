@@ -98,7 +98,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           {...inputProps}
           className={classes.input}
           ref={ref}
-          {...rest}
         />
         <SwitchIcon className={classes.icon} />
 

@@ -34,7 +34,7 @@ export const Text = ({
         },
         className,
       )}
-      style={{ width, height, style }}
+      style={{ width, height, ...style }}
       aria-hidden
     >
       {children}

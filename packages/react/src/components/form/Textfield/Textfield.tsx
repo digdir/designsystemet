@@ -173,7 +173,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               inputProps?.onChange?.(e);
               setInputValue(e.target.value);
             }}
-            {...rest}
           />
           {suffix && (
             <Paragraph

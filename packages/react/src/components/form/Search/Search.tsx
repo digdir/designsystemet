@@ -152,7 +152,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 isSimple && classes.simple,
                 !isSimple && classes.withSearchButton,
               )}
-              {...rest}
             />
             {showClearButton && (
               <button

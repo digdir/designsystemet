@@ -131,7 +131,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             textareaProps?.onChange?.(e);
             setValue(e.target.value);
           }}
-          {...rest}
         />
         {hasCharacterLimit && (
           <CharacterCounter

@@ -34,7 +34,7 @@ export const Rectangle = ({
         },
         className,
       )}
-      style={{ width, height, style }}
+      style={{ width, height, ...style }}
       aria-hidden
     >
       {children}
