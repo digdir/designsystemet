@@ -148,6 +148,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = (args) => {
         anchorEl={buttonRef.current}
         open={open}
         onClose={() => setOpen(false)}
+        portal
       >
         <DropdownMenu.Group>
           <DropdownMenu.Item
