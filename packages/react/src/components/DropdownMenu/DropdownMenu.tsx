@@ -66,6 +66,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
     },
     ref,
   ) => {
+    const Container = portal ? FloatingPortal : React.Fragment;
     const floatingEl = useRef<HTMLUListElement>(null);
 
     const {
@@ -106,8 +107,6 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
       return () => cleanup();
     }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
 
-    const PortalComp = portal ? FloatingPortal : React.Fragment;
-
     return (
       <DropdownMenuContext.Provider
         value={{
@@ -120,7 +119,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
             guards={false}
             modal={false}
           >
-            <PortalComp>
+            <Container>
               <ul
                 role='menu'
                 aria-hidden={!open}
@@ -136,7 +135,7 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
               >
                 {children}
               </ul>
-            </PortalComp>
+            </Container>
           </FloatingFocusManager>
         )}
       </DropdownMenuContext.Provider>
