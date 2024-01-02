@@ -62,7 +62,6 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         }}
       >
         <fieldset
-          {...rest}
           {...fieldsetProps}
           className={cl(
             classes.fieldset,
@@ -72,6 +71,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             className,
           )}
           ref={ref}
+          {...rest}
         >
           <Label
             as='legend'

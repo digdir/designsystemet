@@ -118,8 +118,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </Paragraph>
         )}
         <textarea
-          {...omit(['size', 'error', 'errorId'], rest)}
-          {...textareaProps}
           className={cl(
             classes.textarea,
             utilityClasses.focusable,
@@ -127,6 +125,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           )}
           ref={ref}
           aria-describedby={describedBy}
+          {...omit(['size', 'error', 'errorId'], rest)}
+          {...textareaProps}
           onChange={(e) => {
             textareaProps?.onChange?.(e);
             setValue(e.target.value);

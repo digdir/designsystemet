@@ -51,7 +51,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 
     return (
       <div
-        {...rest}
         ref={ref}
         className={cl(
           classes.alert,
@@ -59,6 +58,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           elevated && classes.elevated,
           className,
         )}
+        {...rest}
       >
         <>
           <Icon

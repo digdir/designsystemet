@@ -5,6 +5,7 @@ import { Button } from '../../Button';
 import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
 import { Modal } from '../../Modal';
+import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
 
@@ -309,6 +310,95 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
           </Combobox>
         </Modal.Content>
       </Modal>
+    </>
+  );
+};
+
+export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <>
+      <div
+        style={{
+          marginBottom: '2rem',
+        }}
+      >
+        {value.map((item, index) => (
+          <ChipRemovable
+            key={index}
+            onClick={() => {
+              setValue(value.filter((v) => v !== item));
+            }}
+          >
+            {item}
+          </ChipRemovable>
+        ))}
+      </div>
+
+      <Combobox
+        {...args}
+        value={value}
+        multiple={true}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+        label='Hvor går reisen?'
+        hideChips={true}
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {PLACES.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
+    </>
+  );
+};
+
+export const SelectAll: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>(['all']);
+
+  const handleValueChange = (newVal: string[]) => {
+    setValue(newVal);
+
+    // if we have all, and we select something else, remove all
+    if (newVal.includes('all') && newVal.length > 1) {
+      setValue(newVal.filter((v) => v !== 'all'));
+    }
+
+    // if we click all, deselect all other options
+    if (newVal.includes('all') && !value.includes('all')) {
+      setValue(['all']);
+    }
+  };
+
+  return (
+    <>
+      <Combobox
+        {...args}
+        value={value}
+        multiple={true}
+        onValueChange={handleValueChange}
+        label='Hvor går reisen?'
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        <Combobox.Option value={'all'}>Alle kommuner</Combobox.Option>
+        {PLACES.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
     </>
   );
 };

@@ -25,7 +25,6 @@ export const ToggleGroupItem = forwardRef<
   const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
-      {...rest}
       {...buttonProps}
       className={cl(classes.toggleGroupItem, className)}
       as={Button}
@@ -36,6 +35,7 @@ export const ToggleGroupItem = forwardRef<
       size={size}
       iconPlacement='left'
       ref={ref}
+      {...rest}
     >
       {children}
     </RovingTabindexItem>

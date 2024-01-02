@@ -42,7 +42,6 @@ const HelpText = ({
   return (
     <>
       <button
-        {...rest}
         ref={buttonRef}
         className={cl(classes.helpTextButton, utilClasses.focusable, className)}
         aria-expanded={open}
@@ -50,6 +49,7 @@ const HelpText = ({
           setOpen((isOpen) => !isOpen);
           onClick?.(event);
         }}
+        {...rest}
       >
         <HelpTextIcon
           filled
