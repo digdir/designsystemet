@@ -28,7 +28,8 @@ export type BoxProps = {
     | 'xlarge'
     | 'xxlarge'
     | 'xxxlarge'
-    | 'xxxxlarge';
+    | 'xxxxlarge'
+    | 'full';
   /**
    * Background color of the box
    * @default 'default'

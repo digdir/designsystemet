@@ -58,6 +58,10 @@
   border-radius: var(--fds-border_radius-xxxxlarge);
 }
 
+.fullBorderRadius {
+  border-radius: var(--fds-border_radius-full);
+}
+
 .defaultBackground {
   background-color: var(--fds-semantic-background-default);
 }
