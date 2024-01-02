@@ -583,17 +583,30 @@ export const color = [
     path: ['semantic', 'surface', 'warning', 'subtle-hover'],
   },
   {
-    value: '#ff8c06',
+    value: '#fff4b4',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '{colors.orange.500}',
+      value: '{colors.yellow.200}',
       type: 'color',
     },
     name: '--fds-semantic-surface-warning-default',
     attributes: {},
     path: ['semantic', 'surface', 'warning', 'default'],
+  },
+  {
+    value: '#ffed83',
+    type: 'color',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{colors.yellow.300}',
+      type: 'color',
+    },
+    name: '--fds-semantic-surface-warning-default-hover',
+    attributes: {},
+    path: ['semantic', 'surface', 'warning', 'default-hover'],
   },
   {
     value: '#f9d5db',
