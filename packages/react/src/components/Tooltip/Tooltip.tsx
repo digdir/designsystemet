@@ -19,6 +19,8 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
+import type { PortalProps } from '../../types/Portal';
+
 import styles from './Tooltip.module.css';
 
 const ARROW_HEIGHT = 7;
@@ -47,7 +49,8 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & PortalProps &
+  HTMLAttributes<HTMLDivElement>;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -60,11 +63,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       defaultOpen = false,
       className,
       style,
+      portal,
       ...rest
     },
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+
+    const Container = portal ? FloatingPortal : React.Fragment;
 
     const arrowRef = React.useRef<SVGSVGElement>(null);
     const internalOpen = userOpen ?? isOpen;
@@ -129,7 +135,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <FloatingPortal>
-            <>
+            <Container>
               <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, ...animationStyles, ...style }}
@@ -148,7 +154,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                   height={ARROW_HEIGHT}
                 />
               </div>
-            </>
+            </Container>
           </FloatingPortal>
         )}
       </>
