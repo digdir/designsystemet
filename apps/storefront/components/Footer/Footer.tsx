@@ -43,7 +43,7 @@ const rightLinks = [
   },
   {
     text: 'Github',
-    url: 'https://github.com/digdir/designsystem',
+    url: 'https://github.com/digdir/designsystemet',
     prefix: (
       <Image
         height={20}
