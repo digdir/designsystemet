@@ -39,7 +39,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           className={classes.label}
           short
         >
-          {children}
+          <span>{children}</span>
           <span
             className={classes.xMark}
             aria-hidden
