@@ -130,39 +130,52 @@ Variants.decorators = [
 export const WithIcon: StoryFn<typeof Button> = () => (
   <>
     <Button
-      icon={icon}
+      onlyIcon
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      <Button.Icon>{icon}</Button.Icon>
+    </Button>
     <Button
-      icon={icon}
+      onlyIcon
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      <Button.Icon>{icon}</Button.Icon>
+    </Button>
     <Button
-      icon={icon}
+      onlyIcon
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      <Button.Icon>{icon}</Button.Icon>
+    </Button>
     <Button
-      icon={icon}
+      onlyIcon
       color='second'
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      <Button.Icon>{icon}</Button.Icon>
+    </Button>
     <Button
-      icon={icon}
+      onlyIcon
       color='second'
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      <Button.Icon>{icon}</Button.Icon>
+    </Button>
     <Button
-      icon={icon}
+      onlyIcon
       color='second'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      <Button.Icon>{icon}</Button.Icon>
+    </Button>
     <Button
+      onlyIcon
       color='success'
       variant='primary'
       aria-label='Primary med ikon'
@@ -172,35 +185,55 @@ export const WithIcon: StoryFn<typeof Button> = () => (
       </Button.Icon>
     </Button>
     <Button
-      icon={<akselIcons.CheckmarkIcon />}
+      onlyIcon
       color='success'
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      <Button.Icon>
+        <akselIcons.CheckmarkIcon />
+      </Button.Icon>
+    </Button>
     <Button
-      icon={<akselIcons.CheckmarkIcon />}
+      onlyIcon
       color='success'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      <Button.Icon>
+        <akselIcons.CheckmarkIcon />
+      </Button.Icon>
+    </Button>
     <Button
-      icon={<akselIcons.TrashIcon />}
+      onlyIcon
       color='danger'
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      <Button.Icon>
+        <akselIcons.TrashIcon />
+      </Button.Icon>
+    </Button>
     <Button
-      icon={<akselIcons.TrashIcon />}
+      onlyIcon
       color='danger'
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      <Button.Icon>
+        <akselIcons.TrashIcon />
+      </Button.Icon>
+    </Button>
     <Button
-      icon={<akselIcons.TrashIcon />}
+      onlyIcon
       color='danger'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      <Button.Icon>
+        <akselIcons.TrashIcon />
+      </Button.Icon>
+    </Button>
   </>
 );
 
