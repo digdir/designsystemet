@@ -4,7 +4,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import type { BoxProps } from './Box';
 import { Box } from './Box';
 
-const render = (props?: BoxProps) =>
+const render = (props?: BoxProps & { as?: string }) =>
   renderRtl(
     <Box
       {...props}
@@ -47,6 +47,13 @@ describe('Box', () => {
 
   it('should render as a button when we use asChild', () => {
     renderAsChild();
+    const box = screen.getByTitle('box');
+
+    expect(box.tagName).toBe('BUTTON');
+  });
+
+  it('should render as button when we use the as prop', () => {
+    render({ as: 'button' });
     const box = screen.getByTitle('box');
 
     expect(box.tagName).toBe('BUTTON');
