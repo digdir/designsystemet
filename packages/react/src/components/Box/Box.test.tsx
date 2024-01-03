@@ -1,10 +1,11 @@
 import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { BoxProps } from './Box';
 import { Box } from './Box';
 
-const render = (props?: Parameters<typeof Box>['0']) =>
+type BoxProps = Parameters<typeof Box>['0'];
+
+const render = (props?: BoxProps) =>
   renderRtl(
     <Box
       {...props}
