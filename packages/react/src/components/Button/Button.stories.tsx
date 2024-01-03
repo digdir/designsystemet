@@ -25,8 +25,6 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
 
 const icon = <akselIcons.FloppydiskIcon />;
 
-type AkselIcon = (typeof akselIcons)['AirplaneFillIcon'];
-
 export const Preview: Story = {
   render: ({ ...args }) => {
     return <Button {...args}></Button>;
@@ -165,11 +163,14 @@ export const WithIcon: StoryFn<typeof Button> = () => (
       aria-label='Tertiary med ikon'
     ></Button>
     <Button
-      icon={<akselIcons.CheckmarkIcon />}
       color='success'
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      <Button.Icon>
+        <akselIcons.CheckmarkIcon />
+      </Button.Icon>
+    </Button>
     <Button
       icon={<akselIcons.CheckmarkIcon />}
       color='success'

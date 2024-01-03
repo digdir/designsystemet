@@ -17,10 +17,11 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
-  /** Icon to be rendered in the button. This should be a React component that renders an SVG object. */
-  icon?: ReactNode;
-  /** Icon position inside Button */
-  iconPlacement?: 'right' | 'left';
+  /**
+   * If the button only has an icon as a child
+   * @default false
+   */
+  onlyIcon?: boolean;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -40,10 +41,10 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         variant = 'primary',
         size = 'medium',
         fullWidth = false,
-        icon,
         type = 'button',
         className,
         as = 'button',
+        onlyIcon = false,
         asChild = false,
         ...rest
       },
@@ -62,7 +63,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
             classes[variant],
             classes[color],
             { [classes.fullWidth]: fullWidth },
-            { [classes.onlyIcon]: !children && icon },
+            onlyIcon && classes.onlyIcon,
             className,
           )}
           {...rest}
