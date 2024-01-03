@@ -4,7 +4,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import type { BoxProps } from './Box';
 import { Box } from './Box';
 
-const render = (props?: BoxProps & { as?: string }) =>
+const render = (props?: Parameters<typeof Box>['0']) =>
   renderRtl(
     <Box
       {...props}

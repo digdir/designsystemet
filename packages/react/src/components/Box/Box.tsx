@@ -36,6 +36,11 @@ export type BoxProps = {
    * @default 'default'
    */
   background?: 'default' | 'subtle';
+  /**
+   * If true, will morph onto the child element
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
@@ -46,7 +51,7 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
       borderRadius,
       background = 'default',
       children,
-      asChild,
+      asChild = false,
       as = 'div',
       className,
       ...rest
