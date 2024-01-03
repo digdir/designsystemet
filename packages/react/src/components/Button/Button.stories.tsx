@@ -26,21 +26,10 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
 const icon = <akselIcons.FloppydiskIcon />;
 
 type AkselIcon = (typeof akselIcons)['AirplaneFillIcon'];
-type AkselIcons = Record<string, AkselIcon>;
 
 export const Preview: Story = {
-  render: ({ icon = '', ...args }) => {
-    // Hack to get dynamic preview of Aksel icons in Storybook
-    const Icon: AkselIcon | undefined = (akselIcons as AkselIcons)[
-      icon as string
-    ];
-
-    return (
-      <Button
-        {...args}
-        icon={Icon ? <Icon /> : undefined}
-      ></Button>
-    );
+  render: ({ ...args }) => {
+    return <Button {...args}></Button>;
   },
   args: {
     children: 'Knapp',
@@ -59,13 +48,19 @@ export const Preview: Story = {
 
 export const UsedAsLink: StoryFn<typeof Button> = () => (
   <Button
-    as='a'
-    icon={<akselIcons.PersonChatIcon />}
     iconPlacement='right'
-    target='_blank'
-    href='https://www.designsystemet.no'
+    asChild
   >
-    Gå til Designsystemet
+    <a
+      target='_blank'
+      href='https://www.designsystemet.no'
+      rel='noreferrer'
+    >
+      <Button.Icon>
+        <akselIcons.PersonChatIcon />
+      </Button.Icon>
+      Gå til Designsystemet
+    </a>
   </Button>
 );
 

@@ -21,6 +21,11 @@ export type ButtonProps = {
   icon?: ReactNode;
   /** Icon position inside Button */
   iconPlacement?: 'right' | 'left';
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
@@ -35,37 +40,41 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         variant = 'primary',
         size = 'medium',
         fullWidth = false,
-        iconPlacement = 'left',
         icon,
         type = 'button',
         className,
-        as: Component = 'button',
+        as = 'button',
+        asChild = false,
         ...rest
       },
       ref,
-    ) => (
-      <Component
-        ref={ref}
-        type={type}
-        className={cl(
-          classes.button,
-          utilityClasses.focusable,
-          classes[size],
-          classes[variant],
-          classes[color],
-          { [classes.fullWidth]: fullWidth },
-          { [classes.onlyIcon]: !children && icon },
-          className,
-        )}
-        {...rest}
-      >
-        {icon && iconPlacement === 'left' && (
-          <Slot className={classes.icon}>{icon}</Slot>
-        )}
-        {children}
-        {icon && iconPlacement === 'right' && (
-          <Slot className={classes.icon}>{icon}</Slot>
-        )}
-      </Component>
-    ),
+    ) => {
+      const Component = asChild ? Slot : as;
+
+      return (
+        <Component
+          ref={ref}
+          type={type}
+          className={cl(
+            classes.button,
+            utilityClasses.focusable,
+            classes[size],
+            classes[variant],
+            classes[color],
+            { [classes.fullWidth]: fullWidth },
+            { [classes.onlyIcon]: !children && icon },
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </Component>
+      );
+    },
   );
+
+export const ButtonIcon = ({ children }: { children: ReactNode }) => {
+  return <Slot className={classes.icon}>{children}</Slot>;
+};
+
+Button.displayName = 'Button.Icon';
