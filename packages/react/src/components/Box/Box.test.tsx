@@ -12,6 +12,17 @@ const render = (props?: BoxProps) =>
     />,
   );
 
+const renderAsChild = (props?: BoxProps) =>
+  renderRtl(
+    <Box
+      {...props}
+      asChild
+      title='box'
+    >
+      <button>child</button>
+    </Box>,
+  );
+
 describe('Box', () => {
   it('should render a div with correct classname when shadow is xsmall', () => {
     render({ shadow: 'xsmall' });
@@ -32,5 +43,12 @@ describe('Box', () => {
     const box = screen.getByTitle('box');
 
     expect(box.classList).toContain('smallBorderRadius');
+  });
+
+  it('should render as a button when we use asChild', () => {
+    renderAsChild();
+    const box = screen.getByTitle('box');
+
+    expect(box.tagName).toBe('BUTTON');
   });
 });
