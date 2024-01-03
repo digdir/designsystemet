@@ -1602,6 +1602,7 @@ __metadata:
     "@digdir/design-system-tokens": "npm:^0.11.1"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
+    "@radix-ui/react-slot": "npm:^1.0.2"
     "@types/fs-extra": "npm:^11.0.4"
     copyfiles: "npm:^2.4.1"
     cssnano: "npm:^6.0.2"
@@ -3530,7 +3531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-slot@npm:1.0.2":
+"@radix-ui/react-slot@npm:1.0.2, @radix-ui/react-slot@npm:^1.0.2":
   version: 1.0.2
   resolution: "@radix-ui/react-slot@npm:1.0.2"
   dependencies:

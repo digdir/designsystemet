@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -45,24 +46,29 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
       borderRadius,
       background = 'default',
       children,
-      as: Component = 'div',
+      asChild,
+      as = 'div',
       className,
       ...rest
     },
     ref,
-  ) => (
-    <Component
-      ref={ref}
-      className={cl(
-        shadow && classes[shadow + 'Shadow'],
-        borderRadius && classes[borderRadius + 'BorderRadius'],
-        borderColor && classes[borderColor + 'BorderColor'],
-        classes[background + 'Background'],
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </Component>
-  ),
+  ) => {
+    const Component = asChild ? Slot : as;
+
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          shadow && classes[shadow + 'Shadow'],
+          borderRadius && classes[borderRadius + 'BorderRadius'],
+          borderColor && classes[borderColor + 'BorderColor'],
+          classes[background + 'Background'],
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </Component>
+    );
+  },
 );
