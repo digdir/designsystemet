@@ -207,9 +207,7 @@
     position: absolute;
     right: 0;
     padding-right: 10px;
-    & svg {
-      margin-top: 2px;
-    }
+    margin-top: 2px;
   }
 
   .icon {

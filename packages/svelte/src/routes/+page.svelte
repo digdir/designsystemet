@@ -36,7 +36,7 @@
   import Search from '$lib/components/Form/Search/Search.svelte';
 
   function handleTabChange(value) {
-    console.log('Tab changed:', value);
+    // console.log('Tab changed:', value);
   }
 
   let isModalOpen = false;
