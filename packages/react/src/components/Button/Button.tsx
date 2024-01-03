@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
 import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
-import { SvgIcon } from '../SvgIcon';
 import utilityClasses from '../../utilities/utility.module.css';
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -60,17 +60,11 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         {...rest}
       >
         {icon && iconPlacement === 'left' && (
-          <SvgIcon
-            svgIconComponent={icon}
-            className={classes.icon}
-          />
+          <Slot className={classes.icon}>{icon}</Slot>
         )}
         {children}
         {icon && iconPlacement === 'right' && (
-          <SvgIcon
-            svgIconComponent={icon}
-            className={classes.icon}
-          />
+          <Slot className={classes.icon}>{icon}</Slot>
         )}
       </Component>
     ),
