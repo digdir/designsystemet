@@ -1,8 +1,9 @@
 import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { BoxProps } from './Box';
 import { Box } from './Box';
+
+type BoxProps = Parameters<typeof Box>['0'];
 
 const render = (props?: BoxProps) =>
   renderRtl(
@@ -10,6 +11,17 @@ const render = (props?: BoxProps) =>
       {...props}
       title='box'
     />,
+  );
+
+const renderAsChild = (props?: BoxProps) =>
+  renderRtl(
+    <Box
+      {...props}
+      asChild
+      title='box'
+    >
+      <button>child</button>
+    </Box>,
   );
 
 describe('Box', () => {
@@ -32,5 +44,19 @@ describe('Box', () => {
     const box = screen.getByTitle('box');
 
     expect(box.classList).toContain('smallBorderRadius');
+  });
+
+  it('should render as a button when we use asChild', () => {
+    renderAsChild();
+    const box = screen.getByTitle('box');
+
+    expect(box.tagName).toBe('BUTTON');
+  });
+
+  it('should render as button when we use the as prop', () => {
+    render({ as: 'button' });
+    const box = screen.getByTitle('box');
+
+    expect(box.tagName).toBe('BUTTON');
   });
 });
