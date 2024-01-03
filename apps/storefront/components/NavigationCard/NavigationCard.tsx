@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import cn from 'classnames';
+import cl from 'clsx';
 import React from 'react';
 
 import classes from './NavigationCard.module.css';
@@ -25,9 +25,9 @@ const NavigationCard = ({
     <Link
       href={url}
       prefetch={false}
-      className={cn(classes.card, classes[backgroundColor])}
+      className={cl(classes.card, classes[backgroundColor])}
     >
-      <div className={cn(classes.iconContainer, classes[color])}>{icon}</div>
+      <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
       <h3 className={classes.title}>{title}</h3>
       <div className={classes.desc}>{description}</div>
     </Link>

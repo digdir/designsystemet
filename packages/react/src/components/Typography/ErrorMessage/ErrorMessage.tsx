@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 
@@ -25,14 +25,13 @@ export const ErrorMessage: OverridableComponent<
       className,
       size = 'medium',
       spacing,
-      as: Component = 'p',
+      as: Component = 'div',
       error = true,
       ...rest
     },
     ref,
   ) => (
     <Component
-      {...rest}
       ref={ref}
       className={cl(
         classes.errorMessage,
@@ -43,6 +42,7 @@ export const ErrorMessage: OverridableComponent<
         error && classes.error,
         className,
       )}
+      {...rest}
     />
   ),
 );

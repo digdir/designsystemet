@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-} from 'react';
-import cn from 'classnames';
+import React, { createContext, forwardRef, useRef } from 'react';
+import cl from 'clsx';
 import type { Placement } from '@floating-ui/react';
 import {
   useFloating,
@@ -18,9 +13,11 @@ import {
   useRole,
   shift,
   FloatingFocusManager,
+  FloatingPortal,
 } from '@floating-ui/react';
 
-import { Box } from '../Box';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import type { PortalProps } from '../../types/Portal';
 
 import classes from './DropdownMenu.module.css';
 
@@ -47,13 +44,14 @@ export type DropdownMenuProps = {
    * @default medium
    **/
   size?: 'small' | 'medium' | 'large';
-} & React.HTMLAttributes<HTMLDivElement>;
+} & PortalProps &
+  React.HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   size: 'medium',
 });
 
-export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
+export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
   (
     {
       anchorEl,
@@ -61,12 +59,15 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
       onClose,
       placement = 'bottom-end',
       size = 'medium',
+      portal,
       children,
+      className,
       ...rest
     },
     ref,
   ) => {
-    const floatingEl = useRef<HTMLDivElement>(null);
+    const Container = portal ? FloatingPortal : React.Fragment;
+    const floatingEl = useRef<HTMLUListElement>(null);
 
     const {
       context,
@@ -95,7 +96,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
 
     const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       refs.setReference(anchorEl);
       if (!refs.reference.current || !refs.floating.current || !open) return;
       const cleanup = autoUpdate(
@@ -118,23 +119,23 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
             guards={false}
             modal={false}
           >
-            <Box
-              {...rest}
-              shadow='medium'
-              borderRadius='medium'
-              className={cn(classes.dropdown, classes[size], rest.className)}
-              ref={floatingRef}
-              style={floatingStyles}
-              {...getFloatingProps({
-                ref: floatingRef,
-                tabIndex: undefined,
-              })}
-              role='menu'
-              aria-hidden={!open}
-              data-placement={flPlacement}
-            >
-              {children}
-            </Box>
+            <Container>
+              <ul
+                role='menu'
+                aria-hidden={!open}
+                data-placement={flPlacement}
+                ref={floatingRef}
+                style={floatingStyles}
+                {...getFloatingProps({
+                  ref: floatingRef,
+                  tabIndex: undefined,
+                })}
+                className={cl(classes.dropdown, classes[size], className)}
+                {...rest}
+              >
+                {children}
+              </ul>
+            </Container>
           </FloatingFocusManager>
         )}
       </DropdownMenuContext.Provider>

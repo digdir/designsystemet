@@ -1,18 +1,18 @@
 import React, { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './ModalContent.module.css';
 
 export const ModalContent = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLElement>
->(({ children, ...props }, ref) => {
+>(({ children, className, ...rest }, ref) => {
   return (
     <div
-      {...props}
       ref={ref}
-      className={cn(classes.modalContent, props.className)}
+      className={cl(classes.modalContent, className)}
+      {...rest}
     >
       {children}
     </div>

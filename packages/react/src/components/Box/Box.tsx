@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -21,7 +21,15 @@ export type BoxProps = {
    * Border radius of the box
    * @default undefined
    */
-  borderRadius?: 'small' | 'medium' | 'large';
+  borderRadius?:
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge'
+    | 'xxxlarge'
+    | 'xxxxlarge'
+    | 'full';
   /**
    * Background color of the box
    * @default 'default'
@@ -38,20 +46,21 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
       background = 'default',
       children,
       as: Component = 'div',
+      className,
       ...rest
     },
     ref,
   ) => (
     <Component
-      {...rest}
       ref={ref}
-      className={cn(
+      className={cl(
         shadow && classes[shadow + 'Shadow'],
         borderRadius && classes[borderRadius + 'BorderRadius'],
         borderColor && classes[borderColor + 'BorderColor'],
         classes[background + 'Background'],
-        rest.className,
+        className,
       )}
+      {...rest}
     >
       {children}
     </Component>

@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 
@@ -21,7 +21,6 @@ export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
       ref,
     ) => (
       <Component
-        {...rest}
         ref={ref}
         className={cl(
           classes.ingress,
@@ -31,6 +30,7 @@ export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
           },
           className,
         )}
+        {...rest}
       />
     ),
   );

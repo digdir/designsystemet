@@ -5,18 +5,15 @@ import { Button, Paragraph } from '../..';
 
 import { Popover } from '.';
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div style={{ margin: '10rem' }}>
-      <Story />
-    </div>
-  ),
-];
+const marginDecorator = (Story: StoryFn) => (
+  <div style={{ margin: '10rem' }}>
+    <Story />
+  </div>
+);
 
 export default {
   title: 'Felles/Popover',
   component: Popover,
-  decorators,
 } as Meta;
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
@@ -50,6 +47,8 @@ Preview.args = {
   open: false,
   size: 'medium',
 };
+
+Preview.decorators = [marginDecorator];
 
 export const Variants: StoryFn<typeof Popover> = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -102,6 +101,8 @@ export const Variants: StoryFn<typeof Popover> = () => {
   );
 };
 
+Variants.decorators = [marginDecorator];
+
 export const InteractiveContent: StoryFn<typeof Popover> = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -131,6 +132,34 @@ export const InteractiveContent: StoryFn<typeof Popover> = () => {
             Slett
           </Button>
         </Popover.Content>
+      </Popover>
+    </>
+  );
+};
+
+InteractiveContent.decorators = [marginDecorator];
+
+export const InPortal = () => {
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button
+        ref={buttonRef}
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        My trigger
+      </Button>
+      <Popover
+        anchorEl={buttonRef.current}
+        placement='top'
+        open={open}
+        onClose={() => setOpen(false)}
+        portal
+      >
+        <Popover.Content>popover content</Popover.Content>
       </Popover>
     </>
   );

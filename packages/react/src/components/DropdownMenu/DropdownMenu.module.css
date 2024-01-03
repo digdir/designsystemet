@@ -2,6 +2,11 @@
   position: relative;
   padding: var(--fds-spacing-2);
   z-index: 1500;
+  margin: 0;
+  list-style: none;
+  border-radius: var(--fds-border_radius-medium);
+  box-shadow: var(--fds-shadow-medium);
+  background-color: var(--fds-semantic-background-default);
 }
 
 .dropdown.small {

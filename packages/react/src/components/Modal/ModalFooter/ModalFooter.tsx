@@ -1,16 +1,16 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './ModalFooter.module.css';
 
 export const ModalFooter = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
-  ({ children, ...props }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     return (
       <footer
-        {...props}
         ref={ref}
-        className={cn(classes.modalFooter, props.className)}
+        className={cl(classes.modalFooter, className)}
+        {...rest}
       >
         {children}
       </footer>

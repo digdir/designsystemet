@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
@@ -34,7 +34,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       size = 'medium',
       variant = 'primary',
       className,
-      ...restHTMLProps
+      ...rest
     },
     ref,
   ) => {
@@ -42,8 +42,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       <Paragraph
         as='span'
         size={size}
-        {...restHTMLProps}
-        className={cn(
+        className={cl(
           classes.tag,
           classes[color],
           classes[size],
@@ -51,6 +50,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
           className,
         )}
         ref={ref}
+        {...rest}
       >
         {children}
       </Paragraph>

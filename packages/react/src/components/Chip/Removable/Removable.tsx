@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { useContext, forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
 import classes from '../Chip.module.css';
@@ -17,26 +17,27 @@ export type RemovableChipProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'medium', ...rest }, ref) => {
+  ({ children, size = 'medium', className, ...rest }, ref) => {
     const group = useContext(ChipGroupContext);
 
     return (
       <button
-        {...rest}
         type='button'
         ref={ref}
-        className={cn(
+        className={cl(
           classes.chipButton,
           utilityClasses.focusable,
           classes[group?.size || size],
           classes.removable,
-          rest.className,
+          className,
         )}
+        {...rest}
       >
         <Paragraph
           as='span'
           size={group?.size || size}
           className={classes.label}
+          short
         >
           {children}
           <span

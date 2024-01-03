@@ -42,6 +42,26 @@
   border-radius: var(--fds-border_radius-large);
 }
 
+.xlargeBorderRadius {
+  border-radius: var(--fds-border_radius-xlarge);
+}
+
+.xxlargeBorderRadius {
+  border-radius: var(--fds-border_radius-xxlarge);
+}
+
+.xxxlargeBorderRadius {
+  border-radius: var(--fds-border_radius-xxxlarge);
+}
+
+.xxxxlargeBorderRadius {
+  border-radius: var(--fds-border_radius-xxxxlarge);
+}
+
+.fullBorderRadius {
+  border-radius: var(--fds-border_radius-full);
+}
+
 .defaultBackground {
   background-color: var(--fds-semantic-background-default);
 }

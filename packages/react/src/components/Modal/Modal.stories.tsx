@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
 import { Divider } from '../Divider';
+import { LegacySelect } from '../legacy/LegacySelect/';
 
 import { Modal } from '.';
 
@@ -164,6 +165,86 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
           >
             Send inn skjema
           </Button>
+          <Button
+            variant='secondary'
+            onClick={() => modalRef.current?.close()}
+          >
+            Avbryt
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export const defaultArgs = {
+  label: 'Velg et fylke',
+  multiple: false,
+  options: [
+    {
+      label: 'Agder',
+      value: 'Agd',
+      keywords: ['agder', 'aust-agder', 'vest-agder'],
+    },
+    {
+      label: 'Innlandet',
+      value: 'Inn',
+      keywords: ['innlandet', 'hedmark', 'oppland'],
+    },
+    {
+      label: 'Møre og Romsdal',
+      value: 'MoR',
+      keywords: ['møre og romsdal', 'møre', 'romsdal'],
+    },
+    { label: 'Nordland', value: 'Nor', keywords: ['nordland'] },
+    { label: 'Oslo', value: 'Osl', keywords: ['oslo'] },
+    { label: 'Rogaland', value: 'Rog', keywords: ['rogaland'] },
+    {
+      label: 'Vestfold og Telemark',
+      value: 'VoT',
+      keywords: ['vestfold og telemark', 'vestfold', 'telemark'],
+    },
+    {
+      label: 'Troms og Finnmark',
+      value: 'ToF',
+      keywords: ['troms og finnmark', 'troms', 'finnmark'],
+    },
+    {
+      label: 'Trøndelag',
+      value: 'Trø',
+      keywords: ['trøndelag', 'nord-trøndelag', 'sør-trøndelag'],
+    },
+    {
+      label: 'Vestland',
+      value: 'Ves',
+      keywords: ['vestland', 'hordaland', 'sogn og fjordane'],
+    },
+    {
+      label: 'Viken',
+      value: 'Vik',
+      keywords: ['viken', 'østfold', 'akershus', 'buskerud'],
+    },
+  ],
+};
+
+export const ModalWithSelect: StoryFn<typeof Modal> = () => {
+  const modalRef = useRef<HTMLDialogElement>(null);
+
+  return (
+    <>
+      <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
+      <Modal
+        ref={modalRef}
+        style={{ overflow: 'visible' }}
+      >
+        <Modal.Header>Modal med select</Modal.Header>
+        <Modal.Content>
+          <LegacySelect
+            portal={false}
+            {...{ ...defaultArgs }}
+          ></LegacySelect>
+        </Modal.Content>
+        <Modal.Footer>
           <Button
             variant='secondary'
             onClick={() => modalRef.current?.close()}

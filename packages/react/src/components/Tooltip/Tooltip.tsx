@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { cloneElement, forwardRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import {
   useFloating,
   autoUpdate,
@@ -18,6 +18,8 @@ import {
   FloatingArrow,
   FloatingPortal,
 } from '@floating-ui/react';
+
+import type { PortalProps } from '../../types/Portal';
 
 import styles from './Tooltip.module.css';
 
@@ -47,7 +49,8 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & PortalProps &
+  HTMLAttributes<HTMLDivElement>;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -59,11 +62,15 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       open: userOpen,
       defaultOpen = false,
       className,
-      ...restHTMLProps
+      style,
+      portal,
+      ...rest
     },
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+
+    const Container = portal ? FloatingPortal : React.Fragment;
 
     const arrowRef = React.useRef<SVGSVGElement>(null);
     const internalOpen = userOpen ?? isOpen;
@@ -128,16 +135,16 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <FloatingPortal>
-            <>
+            <Container>
               <div
                 ref={refs.setFloating}
-                style={{ ...floatingStyles, ...animationStyles }}
-                {...getFloatingProps({
-                  ...restHTMLProps,
-                  className: cn(styles.wrapper, className),
-                  ref: mergedRef,
-                })}
+                style={{ ...floatingStyles, ...animationStyles, ...style }}
                 role='tooltip'
+                {...getFloatingProps({
+                  className: cl(styles.wrapper, className),
+                  ref: mergedRef,
+                  ...rest,
+                })}
               >
                 {content}
                 <FloatingArrow
@@ -147,7 +154,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                   height={ARROW_HEIGHT}
                 />
               </div>
-            </>
+            </Container>
           </FloatingPortal>
         )}
       </>

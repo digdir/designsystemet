@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -49,7 +49,7 @@ export type RadioProps = {
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { children, description, ...rest } = props;
+  const { children, description, className, ...rest } = props;
   const {
     inputProps,
     descriptionId,
@@ -62,21 +62,22 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     <Paragraph
       as='div'
       size={size}
-      className={cn(
+      className={cl(
         classes.container,
+        classes[size],
         children && classes.spacing,
         inputProps.disabled && classes.disabled,
         hasError && classes.error,
         readOnly && classes.readonly,
-        rest.className,
+        className,
       )}
     >
-      <span className={cn(classes.control, classes.radio)}>
+      <span className={cl(classes.control, classes.radio)}>
         <input
-          {...omit(['size', 'error'], rest)}
-          {...inputProps}
           className={classes.input}
           ref={ref}
+          {...omit(['size', 'error'], rest)}
+          {...inputProps}
         />
         <RadioIcon className={classes.icon} />
       </span>

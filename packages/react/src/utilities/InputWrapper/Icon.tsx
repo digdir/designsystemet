@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { IconVariant_ } from './utils';
 import { ErrorIcon } from './ErrorIcon';
@@ -25,7 +25,7 @@ export const Icon = ({ variant, disabled = false }: IconProps) => {
     case 'search':
       return (
         <span
-          className={cn(classes.icon, disabled && classes.disabled)}
+          className={cl(classes.icon, disabled && classes.disabled)}
           data-testid='input-icon-search'
         >
           <SearchIcon />

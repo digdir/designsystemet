@@ -8,7 +8,6 @@
   border: var(--fds-border_width-default) solid transparent;
   color: var(--fc-button-color);
   fill: var(--fc-button-color);
-  height: 2.5em;
   min-width: 2.5em;
   padding: var(--fc-button-padding);
   box-sizing: border-box;
@@ -19,6 +18,7 @@
   text-decoration: none;
   position: relative;
   border-radius: var(--fds-border_radius-interactive);
+  min-height: var(--fds-sizing-10);
 }
 
 .button svg {
@@ -62,6 +62,7 @@
   gap: var(--fds-sizing-1);
   font: var(--fds-typography-paragraph-short-small);
   font-family: inherit;
+  min-height: var(--fds-sizing-8);
 }
 
 .button.medium {
@@ -71,6 +72,7 @@
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
+  min-height: var(--fds-sizing-10);
 }
 
 .button.large {
@@ -80,6 +82,7 @@
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-large);
   font-family: inherit;
+  min-height: var(--fds-sizing-12);
 }
 
 .button.fullWidth {

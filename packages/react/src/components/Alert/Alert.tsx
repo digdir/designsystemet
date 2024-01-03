@@ -6,7 +6,7 @@ import {
   XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
 } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Paragraph } from '..';
 
@@ -43,19 +43,22 @@ export type AlertProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  ({ severity = 'info', elevated, iconTitle, children, ...rest }, ref) => {
+  (
+    { severity = 'info', elevated, iconTitle, children, className, ...rest },
+    ref,
+  ) => {
     const { Icon, title } = icons[severity];
 
     return (
       <div
-        {...rest}
         ref={ref}
-        className={cn(
+        className={cl(
           classes.alert,
           classes[severity],
           elevated && classes.elevated,
-          rest.className,
+          className,
         )}
+        {...rest}
       >
         <>
           <Icon

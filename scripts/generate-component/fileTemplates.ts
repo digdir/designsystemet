@@ -10,7 +10,7 @@ const mainContent = (
   componentName: string,
 ) => `import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './${componentName}.module.css';
 
@@ -24,7 +24,7 @@ export const ${componentName} = forwardRef<HTMLDivElement, ${componentName}Props
     return (
       <div
         {...rest}
-        className={cn(myProp && classes.myClass, rest.className)}
+        className={cl(myProp && classes.myClass, rest.className)}
         ref={ref}
       >
         {children}

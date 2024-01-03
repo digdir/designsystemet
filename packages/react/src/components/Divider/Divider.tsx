@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './Divider.module.css';
 
@@ -11,11 +11,15 @@ export type DividerProps = {
   color?: 'default' | 'strong' | 'subtle';
 } & React.HTMLAttributes<HTMLHRElement>;
 
-export const Divider = ({ color = 'default', ...rest }: DividerProps) => {
+export const Divider = ({
+  color = 'default',
+  className,
+  ...rest
+}: DividerProps) => {
   return (
     <hr
+      className={cl(classes.divider, classes[color], className)}
       {...rest}
-      className={cn(classes.divider, classes[color], rest.className)}
     />
   );
 };

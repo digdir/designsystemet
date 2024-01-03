@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { TabsContext } from '../Tabs';
 
@@ -12,7 +12,7 @@ export type TabContentProps = {
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
-  ({ children, value, ...rest }, ref) => {
+  ({ children, value, className, ...rest }, ref) => {
     const { value: tabsValue, size = 'medium' } = useContext(TabsContext);
     const active = value == tabsValue;
     const onlyText = typeof children === 'string';
@@ -21,14 +21,14 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
       <>
         {active && (
           <div
-            {...rest}
-            className={cn(
+            className={cl(
               classes[size],
               classes.tabContent,
               onlyText && classes.onlyText,
-              rest.className,
+              className,
             )}
             ref={ref}
+            {...rest}
           >
             {children}
           </div>

@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
@@ -31,6 +31,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
       size = 'medium',
       selected = false,
       checkmark = true,
+      className,
       ...rest
     }: ToggleChipProps,
     ref,
@@ -40,22 +41,23 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
 
     return (
       <button
-        {...rest}
         ref={ref}
         type='button'
         aria-pressed={selected}
-        className={cn(
+        className={cl(
           classes.chipButton,
           utilityClasses.focusable,
           classes[group?.size || size],
           { [classes.spacing]: shouldDisplayCheckmark },
-          rest.className,
+          className,
         )}
+        {...rest}
       >
         <Paragraph
           as='span'
           size={group?.size || size}
           className={classes.label}
+          short
         >
           {shouldDisplayCheckmark && (
             <CheckmarkIcon

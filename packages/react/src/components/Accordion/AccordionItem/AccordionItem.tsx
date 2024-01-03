@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import cl from 'clsx';
 import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useState, useId } from 'react';
 
@@ -33,9 +33,13 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
     return (
       <div
-        className={cn(classes.item, className, {
-          [classes.open]: open ?? internalOpen,
-        })}
+        className={cl(
+          classes.item,
+          {
+            [classes.open]: open ?? internalOpen,
+          },
+          className,
+        )}
         ref={ref}
         {...rest}
       >

@@ -1,0 +1,33 @@
+name: Build tokens
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'design-tokens/**'
+jobs:
+  checks:
+    name: Builds, lints and tests code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Use node 20 and yarn cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Build
+        run: yarn build:tokens
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          pull: '--rebase --autostash'
+          default_author: github_actions
+          message: '🍱 Generated new package tokens'
+          add: '.'

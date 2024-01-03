@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { useRef, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';
@@ -42,18 +42,18 @@ const HelpText = ({
   return (
     <>
       <button
-        {...rest}
         ref={buttonRef}
-        className={cn(classes.helpTextButton, utilClasses.focusable, className)}
+        className={cl(classes.helpTextButton, utilClasses.focusable, className)}
         aria-expanded={open}
         onClick={(event) => {
           setOpen((isOpen) => !isOpen);
           onClick?.(event);
         }}
+        {...rest}
       >
         <HelpTextIcon
           filled
-          className={cn(
+          className={cl(
             classes.helpTextIcon,
             classes.helpTextIconFilled,
             classes[size],
@@ -62,7 +62,7 @@ const HelpText = ({
           openState={open}
         />
         <HelpTextIcon
-          className={cn(classes.helpTextIcon, classes[size], className)}
+          className={cl(classes.helpTextIcon, classes[size], className)}
           openState={open}
         />
         <span className={utilClasses.visuallyHidden}>{title}</span>

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { SvgIcon } from '../SvgIcon';
 import utilityClasses from '../../utilities/utility.module.css';
@@ -45,10 +45,9 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
       ref,
     ) => (
       <Component
-        {...rest}
         ref={ref}
         type={type}
-        className={cn(
+        className={cl(
           classes.button,
           utilityClasses.focusable,
           classes[size],
@@ -56,9 +55,9 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           classes[color],
           { [classes.fullWidth]: fullWidth },
           { [classes.onlyIcon]: !children && icon },
-
           className,
         )}
+        {...rest}
       >
         {icon && iconPlacement === 'left' && (
           <SvgIcon

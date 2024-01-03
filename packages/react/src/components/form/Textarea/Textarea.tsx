@@ -1,6 +1,6 @@
 import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import React, { useState, forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -44,8 +44,15 @@ export type TextareaProps = {
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
-    const { label, description, style, characterLimit, hideLabel, ...rest } =
-      props;
+    const {
+      label,
+      description,
+      style,
+      characterLimit,
+      hideLabel,
+      className,
+      ...rest
+    } = props;
 
     const {
       textareaProps,
@@ -61,7 +68,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const hasCharacterLimit = characterLimit != null;
 
     const describedBy =
-      cn(
+      cl(
         textareaProps['aria-describedby'],
         hasCharacterLimit && characterLimitId,
       ) || undefined;
@@ -71,11 +78,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         as='div'
         size={size}
         style={style}
-        className={cn(
+        className={cl(
           classes.formField,
           textareaProps.disabled && classes.disabled,
           readOnly && classes.readonly,
-          rest.className,
+          className,
         )}
       >
         {label && (
@@ -83,7 +90,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             size={size}
             weight='medium'
             htmlFor={textareaProps.id}
-            className={cn(
+            className={cl(
               classes.label,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -102,7 +109,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             id={descriptionId}
             as='div'
             size={size}
-            className={cn(
+            className={cl(
               classes.description,
               hideLabel && utilityClasses.visuallyHidden,
             )}
@@ -111,15 +118,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </Paragraph>
         )}
         <textarea
-          {...omit(['size', 'error', 'errorId'], rest)}
-          {...textareaProps}
-          className={cn(
+          className={cl(
             classes.textarea,
             utilityClasses.focusable,
             classes[size],
           )}
           ref={ref}
           aria-describedby={describedBy}
+          {...omit(['size', 'error', 'errorId'], rest)}
+          {...textareaProps}
           onChange={(e) => {
             textareaProps?.onChange?.(e);
             setValue(e.target.value);

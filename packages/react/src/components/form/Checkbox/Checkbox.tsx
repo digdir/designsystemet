@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -9,7 +9,7 @@ import type { FormFieldProps } from '../useFormField';
 import classes from './Checkbox.module.css';
 import { useCheckbox } from './useCheckbox';
 
-const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
+export const CheckboxIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
     width='22'
     height='22'
@@ -50,7 +50,7 @@ export type CheckboxProps = {
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
-    const { children, description, ...rest } = props;
+    const { children, description, className, ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -63,21 +63,22 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <Paragraph
         as='div'
         size={size}
-        className={cn(
+        className={cl(
           classes.container,
+          classes[size],
           children && classes.spacing,
           inputProps.disabled && classes.disabled,
           hasError && classes.error,
           readOnly && classes.readonly,
-          rest.className,
+          className,
         )}
       >
-        <span className={cn(classes.control, classes.checkbox)}>
+        <span className={cl(classes.control, classes.checkbox)}>
           <input
-            {...omit(['size', 'error'], rest)}
-            {...inputProps}
             className={classes.input}
             ref={ref}
+            {...omit(['size', 'error'], rest)}
+            {...inputProps}
           />
           <CheckboxIcon className={classes.icon} />
         </span>

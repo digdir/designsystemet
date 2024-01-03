@@ -1,6 +1,6 @@
 import React, { useId } from 'react';
 import type { ReactNode } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import utilityClasses from '../../utilities/utility.module.css';
 import { ErrorMessage, Paragraph } from '../../components/Typography';
@@ -132,7 +132,7 @@ export const InputWrapper = ({
         flexDirection: 'column',
       }}
     >
-      <span className={cn(classes.inputAndLabel, hasIcon && classes.withIcon)}>
+      <span className={cl(classes.inputAndLabel, hasIcon && classes.withIcon)}>
         {label && (
           <label
             className={classes.label}
@@ -143,7 +143,7 @@ export const InputWrapper = ({
         )}
         <span
           data-testid='InputWrapper'
-          className={cn(classes.inputWrapper, classes[variant], {
+          className={cl(classes.inputWrapper, classes[variant], {
             [classes.search]: isSearch,
             [classes.withPadding]: !noPadding,
           })}
@@ -153,7 +153,7 @@ export const InputWrapper = ({
             disabled={disabled}
           />
           {inputRenderer({
-            className: cn(
+            className: cl(
               classes.field,
               !noFocusEffect && utilityClasses.focusable,
             ),

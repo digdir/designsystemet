@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './ResponsiveIframe.module.css';
 
@@ -17,7 +17,7 @@ const ResponsiveIframe = ({
 }: ResponsiveIframeProps) => {
   return (
     <div
-      className={cn(classes.container, {
+      className={cl(classes.container, {
         [classes.aspectFourThree]: aspectRatio === '4-3',
       })}
     >

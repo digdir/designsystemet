@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useId, useState } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
 
@@ -41,7 +41,16 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
-    { children, value, defaultValue, onChange, size = 'medium', name, ...rest },
+    {
+      children,
+      value,
+      defaultValue,
+      onChange,
+      size = 'medium',
+      name,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     const nameId = useId();
@@ -61,9 +70,9 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
 
     return (
       <div
-        {...rest}
-        className={cn(classes.toggleGroupContainer, rest.className)}
+        className={cl(classes.toggleGroupContainer, className)}
         ref={ref}
+        {...rest}
       >
         <ToggleGroupContext.Provider
           value={{
@@ -74,6 +83,13 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             size,
           }}
         >
+          {name && (
+            <input
+              type='hidden'
+              name={name}
+              value={value}
+            />
+          )}
           <RovingTabindexRoot
             as='div'
             valueId={value}

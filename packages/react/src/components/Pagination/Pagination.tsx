@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import * as React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
@@ -93,7 +93,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         ref={ref}
         {...rest}
       >
-        <ul className={cn(classes.pagination, classes[size])}>
+        <ul className={cl(classes.pagination, classes[size])}>
           <li>
             <Button
               icon={<ChevronLeftIcon aria-hidden />}
@@ -104,14 +104,14 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               variant='tertiary'
               color={'first'}
               size={size}
-              className={cn({ [classes.hidden]: currentPage === 1 })}
+              className={cl({ [classes.hidden]: currentPage === 1 })}
             >
               {!hideLabels && previousLabel}
             </Button>
           </li>
           {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
             <li
-              className={cn(
+              className={cl(
                 classes.listitem,
                 classes[size],
                 compact && classes.compact,
@@ -120,7 +120,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             >
               {step === 'ellipsis' ? (
                 <Paragraph
-                  className={cn(classes.ellipsis)}
+                  className={cl(classes.ellipsis)}
                   size={size}
                 >
                   …
@@ -152,7 +152,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 onChange(currentPage + 1);
               }}
               iconPlacement='right'
-              className={cn({
+              className={cl({
                 [classes.hidden]: currentPage === totalPages,
               })}
             >

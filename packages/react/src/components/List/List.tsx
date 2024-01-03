@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import React, { useId, useMemo } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import type { HeadingProps } from '../Typography';
 import { Heading, Paragraph } from '../Typography';
@@ -34,11 +34,10 @@ export type ListProps = {
    * @default 2
    */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-} & HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
 export const List = ({
   children,
-  className,
   as = 'ul',
   size = 'medium',
   heading,
@@ -50,7 +49,7 @@ export const List = ({
   const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
   return (
-    <>
+    <div {...rest}>
       {heading && (
         <Heading
           size={headingSize}
@@ -64,13 +63,12 @@ export const List = ({
       <Paragraph
         as={as}
         size={size}
-        className={cn(classes.list, className)}
+        className={cl(classes.list)}
         role='list'
         {...(heading ? { 'aria-labelledby': headingId } : {})}
-        {...rest}
       >
         {children}
       </Paragraph>
-    </>
+    </div>
   );
 };

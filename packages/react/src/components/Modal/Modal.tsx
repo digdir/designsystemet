@@ -1,6 +1,6 @@
 import type { DialogHTMLAttributes } from 'react';
 import React, { createContext, forwardRef, useEffect, useRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 import {
   FloatingFocusManager,
   useFloating,
@@ -36,7 +36,10 @@ export type ModalProps = {
 export const ModalContext = createContext<ModalContextProps | null>(null);
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
-  ({ onInteractOutside, onClose, onBeforeClose, children, ...props }, ref) => {
+  (
+    { onInteractOutside, onClose, onBeforeClose, children, className, ...rest },
+    ref,
+  ) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const mergedRefs = useMergeRefs([modalRef, ref]);
     const { context } = useFloating();
@@ -103,9 +106,9 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       >
         <dialog
           ref={mergedRefs}
-          {...props}
-          className={cn(classes.modal, props.className)}
+          className={cl(classes.modal, className)}
           onCancel={onCancel}
+          {...rest}
         >
           {open && (
             <FloatingFocusManager context={context}>

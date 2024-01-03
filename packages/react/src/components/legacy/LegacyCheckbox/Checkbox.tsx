@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';
 
@@ -79,7 +79,7 @@ const LegacyCheckbox = ({
 }: LegacyCheckboxProps) => (
   <CheckboxRadioTemplate
     checked={checked}
-    className={cn(
+    className={cl(
       classes.checkbox,
       checked && classes.checked,
       error && classes.error,

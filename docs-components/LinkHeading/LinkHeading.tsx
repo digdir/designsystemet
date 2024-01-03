@@ -1,7 +1,7 @@
 import { Heading, Link } from '@digdir/design-system-react';
 import type { HeadingProps } from '@digdir/design-system-react';
 import { LinkIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 import React from 'react';
 
 import classes from './LinkHeading.module.css';
@@ -16,7 +16,7 @@ export const LinkHeading = ({ ...rest }: LinkHeadingProps) => {
   return (
     <Heading
       {...rest}
-      className={cn(classes.linkHeading, rest.className)}
+      className={cl(classes.linkHeading, rest.className)}
     >
       <Link
         aria-hidden='true'

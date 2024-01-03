@@ -1,6 +1,6 @@
 import type { HTMLProps } from 'react';
 import React from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import classes from './TableBody.module.css';
 import { TableRowTypeContext } from './utils';
@@ -19,7 +19,7 @@ export const TableBody = ({
     <TableRowTypeContext.Provider value={{ variantStandard }}>
       <tbody
         {...tableBodyProps}
-        className={cn(classes.tableBody, className)}
+        className={cl(classes.tableBody, className)}
       >
         {children}
       </tbody>

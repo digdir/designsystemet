@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
@@ -21,17 +21,12 @@ export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupItemProps
 >((props, ref) => {
-  const { children, icon, ...rest } = props;
+  const { children, icon, className, ...rest } = props;
   const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
-      {...rest}
       {...buttonProps}
-      className={cn(
-        children && classes[size],
-        classes.toggleGroupItem,
-        rest.className,
-      )}
+      className={cl(classes.toggleGroupItem, className)}
       as={Button}
       value={rest.value}
       icon={icon}
@@ -40,6 +35,7 @@ export const ToggleGroupItem = forwardRef<
       size={size}
       iconPlacement='left'
       ref={ref}
+      {...rest}
     >
       {children}
     </RovingTabindexItem>

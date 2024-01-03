@@ -1,6 +1,6 @@
 import type { LabelHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import cl from 'clsx';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 
@@ -39,7 +39,6 @@ export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
     ) => {
       return (
         <Component
-          {...rest}
           ref={ref}
           className={cl(
             classes.label,
@@ -48,6 +47,7 @@ export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
             weight && [fontWeightsClasses[weight]],
             className,
           )}
+          {...rest}
         />
       );
     },

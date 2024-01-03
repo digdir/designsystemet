@@ -124,7 +124,11 @@
           "type": "color"
         },
         "default": {
-          "value": "{colors.orange.500}",
+          "value": "{colors.yellow.200}",
+          "type": "color"
+        },
+        "default-hover": {
+          "value": "{colors.yellow.300}",
           "type": "color"
         }
       },
@@ -713,6 +717,18 @@
     },
     "xlarge": {
       "value": "12px",
+      "type": "borderRadius"
+    },
+    "xxlarge": {
+      "value": "16px",
+      "type": "borderRadius"
+    },
+    "xxxlarge": {
+      "value": "24px",
+      "type": "borderRadius"
+    },
+    "xxxxlarge": {
+      "value": "32px",
       "type": "borderRadius"
     },
     "full": {

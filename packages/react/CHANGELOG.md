@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.43.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.42.0...@digdir/design-system-react@0.43.0) (2024-01-02)
+
+### Bug Fixes
+
+- **Chip:** :bug: Use correct font token (short) ([#1290](https://github.com/digdir/designsystem/issues/1290)) ([ddc1166](https://github.com/digdir/designsystem/commit/ddc11669be368c35b9d12e17a8048fad902c8eb9))
+- Make sure `className` and `style` are applied to outer element ([#1277](https://github.com/digdir/designsystem/issues/1277)) ([1a57299](https://github.com/digdir/designsystem/commit/1a57299fac3e0431b22cc9f8b2a6ad649e3146d6))
+
+### Features
+
+- **Box:** Add new border radius tokens ([#1275](https://github.com/digdir/designsystem/issues/1275)) ([59e5cce](https://github.com/digdir/designsystem/commit/59e5ccece893e580b7f32cfc6ae2761a3502a5c1))
+- **DropdownMenu:** Add portal support ([#1289](https://github.com/digdir/designsystem/issues/1289)) ([a0ff1bf](https://github.com/digdir/designsystem/commit/a0ff1bf994492c66e567d4887aae75b6fa4e984e))
+- **Popover:** Add portal support ([#1293](https://github.com/digdir/designsystem/issues/1293)) ([e739c24](https://github.com/digdir/designsystem/commit/e739c24f147819d7afe283b76b1cda4f54a1ad5f))
+- **Tooltip:** Add portal support ([#1294](https://github.com/digdir/designsystem/issues/1294)) ([3e95c3a](https://github.com/digdir/designsystem/commit/3e95c3a1efc2d2d0866f272b4491fff336b03890))
+
+### Performance Improvements
+
+- :zap: Replace `classnames` with `clsx` ([#1272](https://github.com/digdir/designsystem/issues/1272)) ([855f387](https://github.com/digdir/designsystem/commit/855f38756dbc793e471a6718ca7265bb9fc5ff09))
+
+# [0.42.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.41.1...@digdir/design-system-react@0.42.0) (2023-12-21)
+
+### Features
+
+- **Skeleton:** ✨ New component ([#1149](https://github.com/digdir/designsystem/issues/1149)) ([ab459e6](https://github.com/digdir/designsystem/commit/ab459e64ca12c64bcd058c445907d5e5b3beb557))
+
+## [0.41.1](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.41.0...@digdir/design-system-react@0.41.1) (2023-12-20)
+
+### Bug Fixes
+
+- **Radio:** :bug: Correct sizes for icon ([#1255](https://github.com/digdir/designsystem/issues/1255)) ([53d836e](https://github.com/digdir/designsystem/commit/53d836e86d5321be3d48cd3ceccb3ccd4092100d))
+- **Switch:** :bug: Prevent from being clamped in flex container ([#1256](https://github.com/digdir/designsystem/issues/1256)) ([f5d31eb](https://github.com/digdir/designsystem/commit/f5d31eb4ff420fe5bc8a160c90f06eb43ce7d06f))
+
+# [0.41.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.40.0...@digdir/design-system-react@0.41.0) (2023-12-19)
+
+### Bug Fixes
+
+- **Accordion:** 🐛 Fix wrong border colors for `first`, `second`, `third` colors ([#1246](https://github.com/digdir/designsystem/issues/1246)) ([e38bf41](https://github.com/digdir/designsystem/commit/e38bf415a2ca258bee229f69b4a16f4205a6f90f))
+- **DropdownMenu:** :bug: Add missing background ([#1252](https://github.com/digdir/designsystem/issues/1252)) ([2abe4db](https://github.com/digdir/designsystem/commit/2abe4dbd6065ce4784581c53058019b8fd0c621b))
+
+### Features
+
+- **Combobox:** ✨ New component ([#1126](https://github.com/digdir/designsystem/issues/1126)) ([2d51cd7](https://github.com/digdir/designsystem/commit/2d51cd771e7c32c5e5fc92c037a33875331d2f7e))
+- **Select:** :wastebasket: Change `Select` to legacy ([#1250](https://github.com/digdir/designsystem/issues/1250)) ([6f619d7](https://github.com/digdir/designsystem/commit/6f619d76b60b5e7c28cc82295056d1fc6fcfe3d2))
+
+# [0.40.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.39.0...@digdir/design-system-react@0.40.0) (2023-12-18)
+
+### Bug Fixes
+
+- **DropDownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystem/issues/1190)) ([11bd19b](https://github.com/digdir/designsystem/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
+- **List:** Wrap in `div` to allow access to `Heading` ([#1217](https://github.com/digdir/designsystem/issues/1217)) ([afcadb7](https://github.com/digdir/designsystem/commit/afcadb7c4cb4b368d247af0c41ed8debf53c4b66))
+- **Pagination:** Only use needed space for buttons ([#1220](https://github.com/digdir/designsystem/issues/1220)) ([4bf3d74](https://github.com/digdir/designsystem/commit/4bf3d745888f500259df5aadf4edee97ec4f95bc))
+- **Select:** Select not working properly in Modal ([#1195](https://github.com/digdir/designsystem/issues/1195)) ([fb8be6a](https://github.com/digdir/designsystem/commit/fb8be6a647ba0da8b5b23e65813508f34e09c8c1))
+- **ToggleGroup:** Only use needed space for buttons ([#1216](https://github.com/digdir/designsystem/issues/1216)) ([3d4f721](https://github.com/digdir/designsystem/commit/3d4f7212c2423eae043578dd5c28e35123d863e8))
+
+### Features
+
+- **ToggleGroup:** Support `form` when `name` is provided ([#1218](https://github.com/digdir/designsystem/issues/1218)) ([75fd99f](https://github.com/digdir/designsystem/commit/75fd99f2d5f22ca9ceaceb022217a399b5e0a56e))
+
+# [0.39.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.38.0...@digdir/design-system-react@0.39.0) (2023-12-14)
+
+### Bug Fixes
+
+- **Accordion:** support for using custom elements inside `Item` and `Header` ([#1198](https://github.com/digdir/designsystem/issues/1198)) ([a09eea1](https://github.com/digdir/designsystem/commit/a09eea1b8c08f91ebb67826aa375f149bb5ea35a))
+- **Button, Checkbox, NativeSelect, Radio, Search, Switch, Textfield:** 🐛 Sizes and alignment ([#1166](https://github.com/digdir/designsystem/issues/1166)) ([716395d](https://github.com/digdir/designsystem/commit/716395dc5f0805f92c485572ae98693d71d5fa6d))
+- **Chip:** :bug: Add missing disabled styling and behaviour ([#1201](https://github.com/digdir/designsystem/issues/1201)) ([d6647bf](https://github.com/digdir/designsystem/commit/d6647bfd8622c10fe23fa76dfbadfbb0a5367e89))
+- **ErrorMessage:** Change default wrapper to `div` ([#1203](https://github.com/digdir/designsystem/issues/1203)) ([f14e22b](https://github.com/digdir/designsystem/commit/f14e22b6bbd14a9e1dbd923583e8573109f9cdaa))
+- **NativeSelect:** Fix firefox background color ([#1185](https://github.com/digdir/designsystem/issues/1185)) ([ddf8d89](https://github.com/digdir/designsystem/commit/ddf8d8976513c87e155d534950955effc8398574))
+- **Search:** :bug: Fix missaligned search icon ([#1207](https://github.com/digdir/designsystem/issues/1207)) ([eac15b2](https://github.com/digdir/designsystem/commit/eac15b283fea8a2c8994b1b8f26b59101a89bb90))
+- **Textfield, Textarea:** :bug: Only apply `aria-describedby` if its defined ([#1184](https://github.com/digdir/designsystem/issues/1184)) ([f510c0c](https://github.com/digdir/designsystem/commit/f510c0cc98b33838da452bd7a89869948247c449))
+- **ToggleGroup:** :bug: Use correct paddings on `ToggleGroup.Item` ([#1209](https://github.com/digdir/designsystem/issues/1209)) ([2b6dade](https://github.com/digdir/designsystem/commit/2b6dade30d65fb5565c3c266130beaf3480a3520))
+
+### Features
+
+- **Heading:** Make `size` optional with default `xlarge` ([#1208](https://github.com/digdir/designsystem/issues/1208)) ([b2aaf27](https://github.com/digdir/designsystem/commit/b2aaf275067bbf2148c7825e8a48f1d8721e7c41))
+
 # [0.38.0](https://github.com/digdir/designsystem/compare/@digdir/design-system-react@0.37.0...@digdir/design-system-react@0.38.0) (2023-12-01)
 
 ### Bug Fixes
