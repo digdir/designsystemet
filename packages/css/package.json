@@ -4,7 +4,7 @@
   "description": "CSS files for Designsystemet",
   "private": true,
   "main": "./dist/index.css",
-  "repository": "https://github.com/digdir/designsystem",
+  "repository": "https://github.com/digdir/designsystemet",
   "files": [
     "*",
     "dist/css"

@@ -7,6 +7,7 @@
   "sideEffects": false,
   "license": "MIT",
   "author": "Digdir Designsystem Team",
+  "repository": "https://github.com/digdir/designsystemet",
   "files": [
     "dist/**"
   ],

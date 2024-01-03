@@ -105,7 +105,7 @@ Our [Contributing Guide](./CONTRIBUTING.md) provides clear instructions on how t
 
 We are lucky to have a great group of people who help with the design system.
 
-<a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystem/graphs/contributors">
+<a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystemet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
 </a>
 

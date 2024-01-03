@@ -44,7 +44,7 @@ export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
         <DropdownMenu.Group heading='Links'>
           <DropdownMenu.Item
             as='a'
-            href='https://github.com/digdir/designsystem'
+            href='https://github.com/digdir/designsystemet'
             target='_blank'
           >
             Github
@@ -103,7 +103,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
         <DropdownMenu.Group>
           <DropdownMenu.Item
             as='a'
-            href='https://github.com/digdir/designsystem'
+            href='https://github.com/digdir/designsystemet'
             target='_blank'
             icon={<LinkIcon />}
           >
@@ -153,7 +153,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = (args) => {
         <DropdownMenu.Group>
           <DropdownMenu.Item
             as='a'
-            href='https://github.com/digdir/designsystem'
+            href='https://github.com/digdir/designsystemet'
             target='_blank'
             icon={<LinkIcon />}
           >
