@@ -49,7 +49,7 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-  /** Inverts the color of the tooltip. Use this on light backgrounds. */
+  /** Inverts the color of the tooltip. Use this on dark backgrounds. */
   inverted?: boolean;
 } & PortalProps &
   HTMLAttributes<HTMLDivElement>;
