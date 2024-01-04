@@ -36,7 +36,7 @@
   width: 100%;
   appearance: none;
   padding: 0 var(--fds-spacing-3);
-  border: solid 1px var(--fds-semantic-border-action-dark);
+  border: solid 1px var(--fds-semantic-border-input-default);
   border-radius: var(--fds-border_radius-medium);
 }
 
@@ -73,8 +73,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .fds-textfield-input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-    border-color: var(--fds-semantic-border-action-hover);
-    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-action-hover);
+    border-color: var(--fds-semantic-border-input-hover);
+    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
   }
 }
 
