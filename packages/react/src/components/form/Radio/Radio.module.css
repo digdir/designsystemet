@@ -50,26 +50,35 @@
 .label::before {
   content: '';
   box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  border: 2px solid;
+  width: var(--fds-sizing-6);
+  height: var(--fds-sizing-6);
+  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-input-default);
+  /* border: 2px solid var(--fds-semantic-border-input-default); */
   border-radius: 50%;
   background: #0000;
+  flex-shrink: 0;
+  margin-block: 2px;
+  margin-inline: 2px;
 }
 
 .input:focus-visible + .label::before {
   --fds-focus-border-width: 3px;
 
   outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-  outline-offset: var(--fds-focus-border-width);
-  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+  /* outline-offset: var(--fds-focus-border-width); */
+  box-shadow: inset 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+}
+
+.input:checked + .label::before {
+  background: var(--fds-semantic-border-input-hover);
+}
+
+.input:checked:not(:focus-visible) + .label::before {
+  box-shadow: inset 0 0 0 3px #fff;
 }
 
 /* Dot */
-.label::after {
+/* .label::after {
   --fdsc-radio__dot-size: calc(var(--fds-sizing-6) / 4);
 
   content: '';
@@ -86,7 +95,7 @@
 
 .input:checked + .label::after {
   opacity: 1;
-}
+} */
 
 .description {
   padding-left: 3px;
