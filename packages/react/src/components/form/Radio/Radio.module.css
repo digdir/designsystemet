@@ -46,6 +46,32 @@
   cursor: pointer;
 }
 
+.label::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  border-radius: 50%;
+  background: #0000;
+}
+
+.label::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 0;
+  height: 0;
+  border: 10px solid;
+  border-radius: 50%;
+  opacity: 0;
+  background: currentcolor;
+}
+
 .description {
   padding-left: 3px;
   margin-top: calc(var(--fds-spacing-2) * -1);
