@@ -35,7 +35,10 @@ describe('Fieldset', () => {
   });
   test('and its children are disabled', () => {
     render(
-      <Fieldset disabled>
+      <Fieldset
+        legend='test legend'
+        disabled
+      >
         <input
           value='test'
           readOnly
