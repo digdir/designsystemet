@@ -5,3 +5,16 @@
   border-radius: var(--fds-border_radius-medium);
   font: var(--fds-typography-paragraph-xsmall);
 }
+
+.wrapper.inverted {
+  background: var(--fds-semantic-surface-neutral-subtle);
+  color: var(--fds-semantic-text-neutral-default);
+}
+
+.wrapper .arrow {
+  fill: var(--fds-semantic-border-neutral-strong);
+}
+
+.wrapper.inverted .arrow {
+  fill: var(--fds-semantic-surface-neutral-subtle);
+}

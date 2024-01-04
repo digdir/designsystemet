@@ -21,7 +21,7 @@ import {
 
 import type { PortalProps } from '../../types/Portal';
 
-import styles from './Tooltip.module.css';
+import classes from './Tooltip.module.css';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -49,6 +49,8 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
+  /** Inverts the color of the tooltip. Use this on light backgrounds. */
+  inverted?: boolean;
 } & PortalProps &
   HTMLAttributes<HTMLDivElement>;
 
@@ -61,9 +63,10 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
+      portal,
+      inverted,
       className,
       style,
-      portal,
       ...rest
     },
     ref,
@@ -141,7 +144,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 style={{ ...floatingStyles, ...animationStyles, ...style }}
                 role='tooltip'
                 {...getFloatingProps({
-                  className: cl(styles.wrapper, className),
+                  className: cl(
+                    classes.wrapper,
+                    inverted && classes.inverted,
+                    className,
+                  ),
                   ref: mergedRef,
                   ...rest,
                 })}
@@ -150,7 +157,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 <FloatingArrow
                   ref={arrowRef}
                   context={context}
-                  fill='var(--fds-semantic-border-neutral-strong)'
+                  className={classes.arrow}
                   height={ARROW_HEIGHT}
                 />
               </div>
