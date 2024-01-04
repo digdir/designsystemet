@@ -1,5 +1,5 @@
 .wrapper {
-  background: var(--fds-semantic-border-neutral-strong);
+  background: var(--fds-semantic-surface-neutral-inverted);
   padding: var(--fds-spacing-1) var(--fds-spacing-2);
   color: white;
   border-radius: var(--fds-border_radius-medium);
@@ -12,7 +12,7 @@
 }
 
 .wrapper .arrow {
-  fill: var(--fds-semantic-border-neutral-strong);
+  fill: var(--fds-semantic-surface-neutral-inverted);
 }
 
 .wrapper.inverted .arrow {
