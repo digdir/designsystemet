@@ -20,35 +20,18 @@ export type TagProps = {
    * @default medium
    */
   size?: Size;
-  /** Variant of the tag
-   * @default primary
-   */
-  variant?: 'primary' | 'secondary';
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
   (
-    {
-      children,
-      color = 'neutral',
-      size = 'medium',
-      variant = 'primary',
-      className,
-      ...rest
-    },
+    { children, color = 'neutral', size = 'medium', className, ...rest },
     ref,
   ) => {
     return (
       <Paragraph
         as='span'
         size={size}
-        className={cl(
-          classes.tag,
-          classes[color],
-          classes[size],
-          classes[variant],
-          className,
-        )}
+        className={cl(classes.tag, classes[color], classes[size], className)}
         ref={ref}
         {...rest}
       >
