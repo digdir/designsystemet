@@ -100,7 +100,7 @@
 }
 
 .disabled {
-  opacity: 0.3;
+  opacity: var(--fds-opacity-disabled);
 }
 
 .error > .input:not(:focus-visible) {

@@ -49,7 +49,7 @@
 }
 
 .disabled {
-  opacity: 0.3;
+  opacity: var(--fds-opacity-disabled);
 }
 
 .disabled .select {
