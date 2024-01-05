@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.44.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.43.0...@digdir/design-system-react@0.44.0) (2024-01-05)
+
+### Bug Fixes
+
+- **Chips:** :bug: Correct sizings ([#1316](https://github.com/digdir/designsystemet/issues/1316)) ([70044b8](https://github.com/digdir/designsystemet/commit/70044b89e448ae5ca57594b65b1f5757ffdd5b54))
+- **Search:** Scale input height based on sizing prop ([#1329](https://github.com/digdir/designsystemet/issues/1329)) ([bc32cec](https://github.com/digdir/designsystemet/commit/bc32ceca7aa77f5ad67f19c3262df18a6010b68b))
+
+### Features
+
+- **Box:** Add support for changing element type with `asChild` ([#1295](https://github.com/digdir/designsystemet/issues/1295)) ([4d9b78d](https://github.com/digdir/designsystemet/commit/4d9b78dd8a48e978bccdcd0764cf9fbf52af6652))
+- **Fieldset:** Make legend prop required ([#1330](https://github.com/digdir/designsystemet/issues/1330)) ([0f502c0](https://github.com/digdir/designsystemet/commit/0f502c0cb6d84867cc22ac7655fe913c13babc33))
+- **Tooltip:** Add inverted version ([#1325](https://github.com/digdir/designsystemet/issues/1325)) ([accf27c](https://github.com/digdir/designsystemet/commit/accf27c6477aa07fdd939fc4a4d0d5655ad11849))
+
 # [0.43.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.42.0...@digdir/design-system-react@0.43.0) (2024-01-02)
 
 ### Bug Fixes

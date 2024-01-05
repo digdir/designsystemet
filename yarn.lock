@@ -1599,7 +1599,7 @@ __metadata:
   resolution: "@digdir/design-system-react@workspace:packages/react"
   dependencies:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
-    "@digdir/design-system-tokens": "npm:^0.11.1"
+    "@digdir/design-system-tokens": "npm:^0.11.2"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
@@ -1615,7 +1615,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/design-system-tokens@npm:*, @digdir/design-system-tokens@npm:^0.11.1, @digdir/design-system-tokens@workspace:packages/tokens":
+"@digdir/design-system-tokens@npm:*, @digdir/design-system-tokens@npm:^0.11.2, @digdir/design-system-tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
   dependencies:
