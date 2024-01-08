@@ -17,9 +17,13 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
-  /** Icon to be rendered in the button. This should be a React component that renders an SVG object. */
+  /** Icon to be rendered in the button. This should be a React component that renders an SVG object.
+   * @deprecated This will be changed to a `boolean` in the future, icons will be passed as children
+   */
   icon?: ReactNode;
-  /** Icon position inside Button */
+  /** Icon position inside Button
+   * @deprecated This will be removed as we will use `children` to pass icons
+   */
   iconPlacement?: 'right' | 'left';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
