@@ -63,14 +63,18 @@
   background: var(--fds-radio-circle-color);
 }
 
-.input:checked:not(:focus-visible) + .label::before {
+.input:checked:not(:disabled, :focus-visible) + .label::before {
   box-shadow: inset 0 0 0 2px var(--fds-radio-circle-color), inset 0 0 0 6px #fff;
+}
+
+.error > .input:not(:disabled, :focus-visible) + .label::before {
+  --fds-radio-circle-color: var(--fds-semantic-border-danger-default);
 }
 
 /* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
   .input:hover:not(:checked) + .label::before {
-    --fds-radio-circle-color: var(--fds-semantic-border-input-default);
+    --fds-radio-circle-color: var(--fds-semantic-border-input-hover);
 
     box-shadow: 0 0 0 6px var(--fds-semantic-surface-info-subtle-hover), inset 0 0 0 2px var(--fds-radio-circle-color);
   }
