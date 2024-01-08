@@ -1,13 +1,16 @@
 .container {
+  --fds-radio-focus-border-width: 3px;
+  --fds-radio-background: var(--fds-semantic-background-default);
+  --fds-radio-hover-color: var(--fds-semantic-surface-info-subtle-hover);
+  --fds-radio-border-color: var(--fds-semantic-border-input-default);
+  --fds-radio-border: inset 0 0 0 2px var(--fds-radio-border-color);
+  --fds-radio-border-inner__checked: inset 0 0 0 6px var(--fds-radio-background); /** Adjust for dot size */
+  --fds-radio-border__hover: 0 0 6px var(--fds-semantic-surface-info-subtle-hover);
+
   position: relative;
 }
 
-.spacing {
-  padding-left: var(--fds-sizing-8);
-}
-
 .label {
-  padding-left: 3px;
   min-height: var(--fds-sizing-10);
   min-width: min-content;
   display: inline-flex;
@@ -19,14 +22,6 @@
 
 /* Radio */
 .label::before {
-  --fds-radio-focus-border-width: 3px;
-  --fds-radio-background: var(--fds-semantic-background-default);
-  --fds-radio-hover-color: var(--fds-semantic-surface-info-subtle-hover);
-  --fds-radio-border-color: var(--fds-semantic-border-input-default);
-  --fds-radio-border: inset 0 0 0 2px var(--fds-radio-border-color);
-  --fds-radio-border-inner__checked: inset 0 0 0 6px var(--fds-radio-background); /** Adjust for dot size */
-  --fds-radio-border__hover: 0 0 6px var(--fds-semantic-surface-info-subtle-hover);
-
   content: '';
   box-sizing: border-box;
   width: var(--fds-sizing-6);
@@ -37,12 +32,20 @@
   flex-shrink: 0;
 }
 
+.description {
+  padding-left: var(--fds-sizing-7);
+  margin-top: calc(var(--fds-spacing-2) * -1);
+  color: var(--fds-semantic-text-neutral-subtle);
+}
+
 .input {
-  height: 44px;
-  width: 44px;
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  top: 0;
+  left: -0.75rem;
+  z-index: 1;
   opacity: 0;
-  margin: 0;
-  grid-area: input;
   cursor: pointer;
 }
 
@@ -58,21 +61,33 @@
 }
 
 .small .label::before {
-  aspect-ratio: 1/1;
+  aspect-ratio: 1;
   height: auto;
   width: var(--fds-sizing-5);
 }
 
+.small .description {
+  padding-left: var(--fds-sizing-6);
+}
+
 .medium .label::before {
-  aspect-ratio: 1/1;
+  aspect-ratio: 1;
   height: auto;
   width: var(--fds-sizing-6);
 }
 
+.medium .description {
+  padding-left: var(--fds-sizing-7);
+}
+
 .large .label::before {
-  aspect-ratio: 1/1;
+  aspect-ratio: 1;
   height: auto;
   width: var(--fds-sizing-7);
+}
+
+.large .description {
+  padding-left: var(--fds-sizing-8);
 }
 
 .input:focus-visible + .label::before {
@@ -127,25 +142,7 @@
   }
 }
 
-.description {
-  padding-left: 3px;
-  margin-top: calc(var(--fds-spacing-2) * -1);
-  color: var(--fds-semantic-text-neutral-subtle);
-}
-
 /** Sizing mess for now... */
-
-.container.small.spacing {
-  padding-left: calc(var(--fds-spacing-8));
-}
-
-.container.medium.spacing {
-  padding-left: var(--fds-spacing-10);
-}
-
-.container.large.spacing {
-  padding-left: calc(var(--fds-spacing-12));
-}
 
 .container.small {
   min-width: var(--fds-sizing-8);
