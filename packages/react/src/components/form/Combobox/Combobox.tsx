@@ -276,23 +276,19 @@ export const Combobox = ({
             return 0;
           }
 
-          // loop - if last option, go to first option
-          if (prevActiveIndex === optionsChildren.length - 1) {
-            return 0;
-          }
-
           return Math.min(prevActiveIndex + 1, optionsChildren.length - 1);
         });
         break;
       case 'ArrowUp':
         event.preventDefault();
+        /* If we have on the first item, close */
         setActiveIndex((prevActiveIndex) => {
-          if (prevActiveIndex === null) {
-            return optionsChildren.length - 1;
+          if (activeIndex === 0) {
+            setOpen(false);
+            return null;
           }
 
-          // loop - if first option, go to last option
-          if (prevActiveIndex === 0) {
+          if (prevActiveIndex === null) {
             return optionsChildren.length - 1;
           }
 
