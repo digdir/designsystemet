@@ -9,37 +9,6 @@ import type { FormFieldProps } from '../useFormField';
 import classes from './Radio.module.css';
 import { useRadio } from './useRadio';
 
-const RadioIcon = (props: SVGAttributes<SVGElement>) => (
-  <svg
-    width='22'
-    height='22'
-    viewBox='0 0 22 22'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-    aria-hidden
-    {...props}
-  >
-    <circle
-      className={classes.box}
-      name='circle'
-      cx='11'
-      cy='11'
-      r='10'
-      fill='white'
-      stroke='#00315D'
-      strokeWidth='2'
-    />
-    <circle
-      className={classes.checked}
-      name='checked'
-      cx='11'
-      cy='11'
-      r='4.88889'
-      fill='#0062BA'
-    />
-  </svg>
-);
-
 export type RadioProps = {
   /** Radio label */
   children?: ReactNode;
