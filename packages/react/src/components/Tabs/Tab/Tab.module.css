@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.tabItem :is(svg, img, i) {
+.tabItem > :is(svg, img, i) {
   display: flex;
   height: 1.75em;
   width: auto;
