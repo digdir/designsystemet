@@ -58,9 +58,9 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         )}
         {...rest}
       >
-        {icon && iconPlacement === 'left' && icon}
+        {iconPlacement === 'left' && icon}
         {children}
-        {icon && iconPlacement === 'right' && icon}
+        {iconPlacement === 'right' && icon}
       </Component>
     ),
   );
