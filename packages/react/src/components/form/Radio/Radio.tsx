@@ -34,23 +34,18 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       className={cl(
         classes.container,
         classes[size],
-        children && classes.spacing,
         inputProps.disabled && classes.disabled,
         hasError && classes.error,
         readOnly && classes.readonly,
         className,
       )}
     >
-      {/* <span className={cl(classes.control, classes.radio)}> */}
       <input
         className={classes.input}
         ref={ref}
         {...omit(['size', 'error'], rest)}
         {...inputProps}
       />
-      {/* <RadioIcon className={classes.icon} /> */}
-      {/* </span> */}
-
       <Label
         className={classes.label}
         htmlFor={inputProps.id}
