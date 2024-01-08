@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'clsx';
 
