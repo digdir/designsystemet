@@ -15,7 +15,7 @@ export type TagProps = {
   /** Color of the tag
    * @default neutral
    */
-  color?: BrandColor | VariantColor;
+  color?: VariantColor | BrandColor;
   /** Size of the tag
    * @default medium
    */
