@@ -283,7 +283,7 @@ export const Combobox = ({
         event.preventDefault();
         /* If we have on the first item, close */
         setActiveIndex((prevActiveIndex) => {
-          if (activeIndex === 0) {
+          if (prevActiveIndex === 0) {
             setOpen(false);
             return null;
           }
