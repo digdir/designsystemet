@@ -3,7 +3,6 @@ import React, { forwardRef } from 'react';
 import cl from 'clsx';
 
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
-import { omit } from '../../../utilities';
 
 import classes from './Tab.module.css';
 import { useTabItem } from './useTab';
@@ -16,12 +15,12 @@ export type TabProps = {
 } & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
-  const { children, className, icon, ...rest } = props;
-  const { active, size = 'medium', ...useTabRest } = useTabItem(props);
+  const { children, className, ...rest } = props;
+  const { active, size = 'medium', icon, ...useTabRest } = useTabItem(props);
 
   return (
     <RovingTabindexItem
-      {...omit(['icon'], useTabRest)}
+      {...useTabRest}
       as={'button'}
       className={cl(
         classes.tabItem,
