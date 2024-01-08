@@ -7,15 +7,21 @@ import { Paragraph } from '../Typography';
 
 import classes from './Tag.module.css';
 
-type BrandColor = 'first' | 'second' | 'third';
-type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
 
 export type TagProps = {
   /** Color of the tag
    * @default neutral
    */
-  color?: VariantColor | BrandColor;
+  color?:
+    | 'neutral'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'info'
+    | 'first'
+    | 'second'
+    | 'third';
   /** Size of the tag
    * @default medium
    */
