@@ -31,7 +31,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
       ref={ref}
       {...rest}
     >
-      {icon}
+      {icon && icon}
       {children}
     </RovingTabindexItem>
   );
