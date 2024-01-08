@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
 import cl from 'clsx';
-import { Slot } from '@radix-ui/react-slot';
 
 import utilityClasses from '../../utilities/utility.module.css';
 import type { OverridableComponent } from '../../types/OverridableComponent';
@@ -63,13 +62,9 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         )}
         {...rest}
       >
-        {icon && iconPlacement === 'left' && (
-          <Slot className={classes.icon}>{icon}</Slot>
-        )}
+        {iconPlacement === 'left' && icon}
         {children}
-        {icon && iconPlacement === 'right' && (
-          <Slot className={classes.icon}>{icon}</Slot>
-        )}
+        {iconPlacement === 'right' && icon}
       </Component>
     ),
   );
