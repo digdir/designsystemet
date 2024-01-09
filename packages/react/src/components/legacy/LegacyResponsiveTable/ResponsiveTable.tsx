@@ -3,7 +3,7 @@ import * as tokens from '@altinn/figma-design-tokens';
 
 import { useMediaQuery } from '../../../hooks';
 import { LegacyRadioButton } from '../LegacyRadioButton';
-import type { SortProps, SortDirection } from '../../Table/utils';
+import type { SortProps, SortDirection } from '../LegacyTable/utils';
 import {
   Table,
   TableHeader,
@@ -11,8 +11,8 @@ import {
   TableCell,
   TableBody,
   TableFooter,
-} from '../../Table';
-import classes from '../../Table/TableCell.module.css';
+} from '../LegacyTable';
+import classes from '../LegacyTable/TableCell.module.css';
 
 export interface LegacyResponsiveTableConfig<T> {
   rows: T[];
