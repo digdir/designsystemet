@@ -8,12 +8,6 @@ Transformed design tokens from the Digdir Common Designsystem to work in code.
 npm|yarn|pnpm install @digdir/design-system-tokens
 ```
 
-If you use Typescript, make sure you have typescript >= 3.8 as a devDependency:
-
-```sh
-npm install typescript --save-dev
-```
-
 ## Usage
 
 This package provides tokens for each of our supported brands.
