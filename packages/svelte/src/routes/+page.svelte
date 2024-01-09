@@ -68,15 +68,7 @@
   }
 
   let selectedValue;
-  function handleGroupChange(event) {
-    selectedValue = event.detail;
-  }
-
   let selectedValues;
-  function handleCheckboxGroupChange(event) {
-    selectedValues = [...event.detail];
-  }
-
   let selectedCheckValue = false;
 
   let showError = false;
@@ -411,7 +403,6 @@
 <h1 class="componentHeader">RADIO</h1>
 <RadioGroup
   bind:value={selectedValue}
-  on:change={handleGroupChange}
   inline={isInline}
   legend="RadioGroup legend"
   description="RadioGroup description"
@@ -470,7 +461,6 @@
   <h3>Checkbox Group</h3>
   <CheckboxGroup
     bind:value={selectedValues}
-    on:change={handleCheckboxGroupChange}
     legend="CheckboxGroup legend"
     description="CheckboxGroup description"
     size="medium"
