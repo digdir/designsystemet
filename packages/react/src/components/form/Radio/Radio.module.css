@@ -4,7 +4,7 @@
   --fds-radio-hover-color: var(--fds-semantic-surface-info-subtle-hover);
   --fds-radio-border-color: var(--fds-semantic-border-input-default);
   --fds-radio-border-inner__checked: inset 0 0 0 6px var(--fds-radio-background); /** Adjust for dot size */
-  --fds-radio-border__hover: 0 0 6px var(--fds-semantic-surface-info-subtle-hover);
+  --fds-radio-border__hover: 0 0 0 6px var(--fds-semantic-surface-info-subtle-hover);
 
   position: relative;
 }
@@ -146,11 +146,11 @@
   .input:hover:not(:checked) + .label::before {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
-    box-shadow: 0 var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
+    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
   }
 
   .input:hover:checked:not(:focus-visible, :read-only) + .label::before {
-    box-shadow: 0 var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), var(--fds-radio-border-inner__checked);
+    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), var(--fds-radio-border-inner__checked);
   }
 
   .input:hover:checked:focus-visible + .label::before {
