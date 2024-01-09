@@ -71,7 +71,7 @@
 }
 
 .small .description {
-  padding-left: calc(1.25rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(1.4rem + 12px + var(--fds-spacing-1));
 }
 
 .medium .label::before {
@@ -85,7 +85,7 @@
 }
 
 .medium .description {
-  padding-left: calc(1.5rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(1.7rem + 12px + var(--fds-spacing-1));
 }
 
 .large .label::before {
@@ -99,7 +99,7 @@
 }
 
 .large .description {
-  padding-left: calc(1.75rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(1.9rem + 12px + var(--fds-spacing-1));
 }
 
 .input:focus-visible + .label::before {
