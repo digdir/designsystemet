@@ -22,13 +22,14 @@
 /* Radio */
 .label::before {
   content: '';
-  box-sizing: border-box;
   width: var(--fds-sizing-6);
   height: var(--fds-sizing-6);
   box-shadow: inset 0 0 0 2px var(--fds-radio-border-color);
   background: var(--fds-radio-background);
   border-radius: 50%;
   flex-shrink: 0;
+  margin-inline: 6px;
+  margin-block: 6px;
 }
 
 .description {
@@ -46,6 +47,7 @@
   z-index: 1;
   opacity: 0;
   cursor: pointer;
+  margin: 0;
 }
 
 .disabled > .input,
@@ -66,8 +68,13 @@
   width: var(--fds-sizing-5);
 }
 
+.small .input {
+  left: calc(var(--fds-spacing-1) * -1);
+  top: calc(var(--fds-spacing-1) * -1);
+}
+
 .small .description {
-  padding-left: var(--fds-sizing-6);
+  padding-left: calc(var(--fds-sizing-6) + 12px);
 }
 
 .medium .label::before {
@@ -76,8 +83,13 @@
   width: var(--fds-sizing-6);
 }
 
+.medium .input {
+  left: calc(var(--fds-spacing-1) + 6px * -1);
+  top: 0;
+}
+
 .medium .description {
-  padding-left: var(--fds-sizing-7);
+  padding-left: calc(var(--fds-sizing-7) + 12px);
 }
 
 .large .label::before {
@@ -86,8 +98,13 @@
   width: var(--fds-sizing-7);
 }
 
+.large .input {
+  left: 0;
+  top: var(--fds-spacing-1);
+}
+
 .large .description {
-  padding-left: var(--fds-sizing-8);
+  padding-left: calc(var(--fds-sizing-8) + 12px);
 }
 
 .input:focus-visible + .label::before {
