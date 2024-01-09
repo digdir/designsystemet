@@ -29,6 +29,8 @@ export const ComboboxChips = () => {
             size={size}
             disabled={disabled}
             onKeyDown={(e) => {
+              if (readOnly) return;
+              if (disabled) return;
               if (e.key === 'Enter') {
                 e.stopPropagation();
                 setSelectedOptions(
