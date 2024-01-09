@@ -24,9 +24,10 @@ Når det likevel har oppstått et problem som gjør at brukeren ikke kommer vide
 
 Vi har ulike typer visninger av feilmeldinger:
 
-- [Detaljerte feilmeldinger](#detaljerte-feilmeldinger) som tilhører et bestemt felt i et skjema og validerer brukerens inndata.
-- [Oppsummerende feilmeldinger](#oppsummerende-feilmeldinger) som kan vise en eller flere feilmeldinger i toppen av en side eller like over "Gå videre"/"Send inn"-knappen.
-- For andre type feil som ikke tilhører et skjemaelement og ikke validerer brukerens inndata, kan [alert](/docs/felles-alert--docs)-komponenten brukes. For eksempel for systemfeil, eller til myke valideringer. Myke valideringer er valideringsmeldinger som ikke stopper bruker fra å sende inn eller gå videre til neste steg i prosessen, men som benyttes til å gi brukeren ulike former for informasjon.
+- [Detaljerte feilmeldinger](#detaljerte-feilmeldinger) som tilhører et bestemt felt i et skjema
+- [Oppsummerende feilmeldinger](#oppsummerende-feilmeldinger) som kan vise en eller flere feilmeldinger
+
+For andre type feil som ikke tilhører et skjemaelement og ikke validerer brukerens inndata, kan du bruke [alert](/docs/felles-alert--docs)-komponenten. For eksempel for systemfeil, eller til myke valideringer. Myke valideringer er valideringsmeldinger som ikke stopper bruker fra å sende inn eller gå videre til neste steg i prosessen, men som benyttes til å gi brukeren ulike former for informasjon.
 
 ## Detaljerte feilmeldinger
 
@@ -44,15 +45,15 @@ Feltet skal tydelig vise at noe er feil. Dette gjøres med rød farge, [forklare
 
 Det finnes flere tidspunkt du kan presentere en feilmelding:
 
-- Mens bruker fyller ut
+- Mens brukeren fyller ut
 - Idet fokus forlater feltet
-- Når bruker trykker "Gå videre" eller "Send inn"
+- Når brukeren trykker "Gå videre" eller "Send inn"
 
 Du må ta en vurdering på når de forskjellige feilmeldingene skal vises, men det tryggeste er å vise feilmeldingene når brukeren selv er klar til å gå videre.
 
-Feilmeldinger bør som regel _ikke_ vises mens bruker fyller ut feltet. Dette er fordi mange bruker tastatur til å navigere seg gjennom skjema og vil ikke nødvendigvis starte på toppen og jobbe seg nedover. Det vil da være forstyrrende om det dukker opp feilmeldinger på felter man ikke har jobbet med enda. Om du har feilmeldinger som skal vises idet bruker forlater feltet er det viktig å sjekke om brukeren faktisk har skrevet noe i feltet før du viser feilmeldingen.
+Du bør som regel _ikke_ vise feilmeldinger mens brukeren fyller ut feltet. Mange bruker nemlig tastatur til å navigere seg gjennom skjema og vil ikke nødvendigvis starte på toppen og jobbe seg nedover. Det vil da være forstyrrende om det dukker opp feilmeldinger på felter man ikke har jobbet med enda. Om du har feilmeldinger som skal vises idet brukeren forlater feltet er det viktig å sjekke om brukeren faktisk har skrevet noe i feltet før du viser feilmeldingen.
 
-Påkrevde felter bør aldri aktivere feilmelding før bruker prøver å gå til neste side eller forsøker å sende inn skjema. Om de aktiveres når brukeren forlater feltet kan det bli et irritasjonsmoment. Vær heller tydelig på at feltene er obligatoriske. Se hvordan du markerer [obligatoriske og valgfrie skjemafelt](/monstre/obligatoriske-og-valgfrie-felt).
+Påkrevde felter bør aldri aktivere feilmelding før brukeren prøver å gå til neste side eller forsøker å sende inn skjema. Om de aktiveres når brukeren forlater feltet kan det bli et irritasjonsmoment. Vær heller tydelig på at feltene er obligatoriske. Se hvordan du markerer [obligatoriske og valgfrie skjemafelt](/monstre/obligatoriske-og-valgfrie-felt).
 
 ## Oppsummerende feilmeldinger
 
@@ -77,7 +78,7 @@ Pass på at
 
 ## Deaktivering av submit-knappen
 
-Ikke bruk deaktivert "Gå videre"/"Send inn"-knapp til skjemavalidering. Noen brukere forstår ikke hvorfor knappen er deaktivert, og kan bli forvirret. Brukere med synsnedsettelse kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Vis i stedet oppsummerende feilmeldinger over "Gå videre"/"Send inn"-knappene dersom bruker forsøker å trykke på knappen med feil i skjemaet.
+Ikke bruk deaktivert "Gå videre"/"Send inn"-knapp til skjemavalidering. Noen brukere forstår ikke hvorfor knappen er deaktivert, og kan bli forvirret. Brukere med synsnedsettelse kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Vis i stedet oppsummerende feilmeldinger over "Gå videre"/"Send inn"-knappene dersom brukeren forsøker å trykke på knappen med feil i skjemaet.
 
 ## Tekst i feilmeldinger
 
