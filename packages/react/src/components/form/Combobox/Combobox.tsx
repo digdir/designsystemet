@@ -198,6 +198,7 @@ export const Combobox = ({
     activeIndex,
     virtual: true,
     scrollItemIntoView: true,
+    enabled: open,
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
@@ -271,6 +272,7 @@ export const Combobox = ({
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
+        if (!open) setOpen(true);
         setActiveIndex((prevActiveIndex) => {
           if (prevActiveIndex === null) {
             return 0;
@@ -281,7 +283,7 @@ export const Combobox = ({
         break;
       case 'ArrowUp':
         event.preventDefault();
-        /* If we have on the first item, close */
+        /* If we are on the first item, close */
         setActiveIndex((prevActiveIndex) => {
           if (prevActiveIndex === 0) {
             setOpen(false);
@@ -289,7 +291,7 @@ export const Combobox = ({
           }
 
           if (prevActiveIndex === null) {
-            return optionsChildren.length - 1;
+            return null;
           }
 
           return Math.max(prevActiveIndex - 1, 0);
