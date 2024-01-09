@@ -5,9 +5,7 @@
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
   "license": "MIT",
-  "main": "brand/digdir/tokens.cjs.js",
-  "module": "brand/digdir/tokens.esm.js",
-  "types": "brand/digdir/tokens.d.ts",
+  "main": "brand/digdir/tokens.css",
   "files": [
     "brand"
   ],

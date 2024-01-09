@@ -1,4 +1,3 @@
-import fs from 'fs';
 import path from 'path';
 
 import StyleDictionary from 'style-dictionary';
@@ -74,19 +73,6 @@ StyleDictionary.registerTransformGroup({
     'ts/color/css/hexrgba',
   ],
 });
-StyleDictionary.registerTransformGroup({
-  name: 'fds/js',
-  transforms: [
-    nameKebabUnderscore.name,
-    'ts/resolveMath',
-    typographyShorthand.name,
-    'ts/size/px',
-    'ts/size/lineheight',
-    'ts/shadow/css/shorthand',
-    'ts/color/modifiers',
-    'ts/color/css/hexrgba',
-  ],
-});
 
 const baseConfig = (brand: Brands): Partial<Config> => {
   const tokensPath = '../../design-tokens';
@@ -137,30 +123,6 @@ const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
             !(token.path[0] === 'viewport') &&
             ['spacing', 'sizing'].includes(token.type as string),
           // outputReferences: true,
-        },
-      },
-      js: {
-        basePxFontSize,
-        transformGroup: 'fds/js',
-        files: [
-          {
-            destination: `${destinationPath}/tokens.cjs.js`,
-            format: 'javascript/module-flat',
-            filter: excludeSource,
-          },
-          {
-            destination: `${destinationPath}/tokens.esm.js`,
-            format: 'javascript/es6',
-            filter: excludeSource,
-          },
-          {
-            destination: `${destinationPath}/tokens.d.ts`,
-            format: 'typescript/es6-declarations',
-            filter: excludeSource,
-          },
-        ],
-        options: {
-          fileHeader: fileheader.name,
         },
       },
     },
@@ -234,15 +196,6 @@ brands.map((brand) => {
 
   storefrontSD.buildAllPlatforms();
 });
-
-const indexFile = brands
-  .map((brand) => {
-    const brandName = brand.toLocaleLowerCase();
-    return `export * as ${brandName} from './${brandName}';`;
-  })
-  .join('\n');
-
-fs.writeFileSync(`${storefrontTokensPath}/index.ts`, `${indexFile}\n`);
 
 console.log('\n---------------------------------------');
 

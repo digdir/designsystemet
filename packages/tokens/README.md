@@ -8,12 +8,6 @@ Transformed design tokens from the Digdir Common Designsystem to work in code.
 npm|yarn|pnpm install @digdir/design-system-tokens
 ```
 
-If you use Typescript, make sure you have typescript >= 3.8 as a devDependency:
-
-```sh
-npm install typescript --save-dev
-```
-
 ## Usage
 
 This package provides tokens for each of our supported brands.
@@ -41,7 +35,7 @@ import '@digdir/design-system-tokens/brand/altinn/tokens.css';
 
 All tokens files have the same name, `tokens`, separated by file extension for desired format.
 
-Currently supported token formats are `css` and `js`.
+Currently supported token format is `css`.
 
 ### CSS
 
@@ -58,22 +52,4 @@ import '@digdir/design-system-tokens/brand/altinn/tokens.css';
 div {
   padding: var(--fds-spacing-1);
 }
-```
-
-### Javascript
-
-#### ⚠️ Warning
-
-Typography and spacing tokens are static for javascript tokens. This is due to limitations in CSS with nested `calc()` only being supported using css-variables. Since js tokens can be scoped to only import one, this might lead to unintended bugs are referenced css-variables might not be present/imported.
-
-#### Usage
-
-When importing tokens as javascript/typescript you can omit the file extension as your module resolves should be able to pick the correct one. We also provide a `d.ts` file for typescript types.
-
-It's important to know that the values from javascript tokens are css values, as they are intended to be used with either `style` or other CSS-in-JS libraries.
-
-```jsx
-import tokens from '@digdir/design-system-tokens/brand/altinn/tokens';
-
-const Foo = () => <div style={{ padding: tokens.spacing_1 }}>Hi</div>;
 ```
