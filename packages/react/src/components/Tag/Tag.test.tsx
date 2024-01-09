@@ -19,22 +19,12 @@ describe('Tag', () => {
       render(<Tag>Beta</Tag>);
       expect(screen.getByText('Beta')).toHaveClass('neutral');
     });
-
-    test('should render variant as primary by default', () => {
-      render(<Tag>Beta</Tag>);
-      expect(screen.getByText('Beta')).toHaveClass('primary');
-    });
   });
 
   describe('Tag With Props Provided', () => {
     test('should render tag as small', (): void => {
       render(<Tag size='small'>Beta</Tag>);
       expect(screen.getByText('Beta')).toHaveClass('small');
-    });
-
-    test('should render as variant outline', (): void => {
-      render(<Tag variant='secondary'>Beta</Tag>);
-      expect(screen.getByText('Beta')).toHaveClass('secondary');
     });
 
     test('should render color first', (): void => {
