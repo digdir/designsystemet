@@ -12,7 +12,7 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'Nynorsk',
-    size: 'small',
+    size: 'medium',
     selected: false,
     checkmark: false,
   },
