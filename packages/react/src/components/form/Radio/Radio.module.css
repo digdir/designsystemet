@@ -143,13 +143,20 @@
 
 /* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
+  .label:hover,
+  .input:hover + .label {
+    color: var(--fds-semantic-text-action-hover);
+  }
+
   .input:hover:not(:checked) + .label::before {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
   }
 
-  .input:hover:checked:not(:focus-visible, :read-only) + .label::before {
+  .input:hover:checked + .label::before {
+    --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), var(--fds-radio-border-inner__checked);
   }
 
