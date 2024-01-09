@@ -135,6 +135,17 @@ const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
   return {
     ...baseConfig(brand),
     platforms: {
+      hack: {
+        prefix,
+        basePxFontSize,
+        transforms: ['ts/resolveMath', nameKebab.name],
+        files: [
+          {
+            format: 'global-values-hack',
+            destination: 'ignore/hack',
+          },
+        ],
+      },
       storefront: {
         prefix,
         basePxFontSize,
