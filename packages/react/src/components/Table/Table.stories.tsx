@@ -23,8 +23,8 @@ export const Preview: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell>Header 1</TableHeaderCell>
-          <TableHeaderCell sortable>Header 2</TableHeaderCell>
-          <TableHeaderCell sortable>Header 3</TableHeaderCell>
+          <TableHeaderCell>Header 2</TableHeaderCell>
+          <TableHeaderCell>Header 3</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -37,11 +37,6 @@ export const Preview: Story = (args) => {
           <TableCell>Cell 4</TableCell>
           <TableCell>Cell 5</TableCell>
           <TableCell>Cell 6</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Cell 7</TableCell>
-          <TableCell>Cell 8</TableCell>
-          <TableCell>Cell 9</TableCell>
         </TableRow>
       </TableBody>
     </Table>
