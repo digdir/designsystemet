@@ -26,24 +26,33 @@ export const Table = ({
   ...rest
 }: TableProps) => {
   return (
-    <table
-      className={cl(
-        classes[size],
-        zebra && classes.zebra,
-        classes.table,
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </table>
+    <TableContext.Provider value={{ size }}>
+      <table
+        className={cl(
+          classes[size],
+          zebra && classes.zebra,
+          classes.table,
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </table>
+    </TableContext.Provider>
   );
 };
 
 export type TableHeadProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableHead = ({ children, ...rest }: TableHeadProps) => {
-  return <thead {...rest}>{children}</thead>;
+export const TableHead = ({ className, children, ...rest }: TableHeadProps) => {
+  return (
+    <thead
+      className={cl(classes.head, className)}
+      {...rest}
+    >
+      {children}
+    </thead>
+  );
 };
 
 export type TableBodyProps = React.HTMLAttributes<HTMLTableSectionElement>;
@@ -54,8 +63,19 @@ export const TableBody = ({ children, ...rest }: TableBodyProps) => {
 
 export type TableRowProps = React.HTMLAttributes<HTMLTableRowElement>;
 
-export const TableRow = ({ children, ...rest }: TableRowProps) => {
-  return <tr {...rest}>{children}</tr>;
+export const TableRow = ({ className, children, ...rest }: TableRowProps) => {
+  const { size } = React.useContext(TableContext);
+
+  return (
+    <Paragraph
+      as='tr'
+      size={size}
+      className={cl(classes.row, className)}
+      {...rest}
+    >
+      {children}
+    </Paragraph>
+  );
 };
 
 export type TableCellProps = React.HTMLAttributes<HTMLTableCellElement>;
@@ -78,10 +98,12 @@ export const TableHeaderCell = ({
   children,
   ...rest
 }: TableHeaderCellProps) => {
+  const { size } = React.useContext(TableContext);
+
   return (
     <Paragraph
       as='th'
-      size='medium'
+      size={size}
       {...rest}
       className={cl(classes.headerCell, className)}
     >
@@ -89,3 +111,7 @@ export const TableHeaderCell = ({
     </Paragraph>
   );
 };
+
+const TableContext = React.createContext<Pick<TableProps, 'size'>>({
+  size: 'medium',
+});
