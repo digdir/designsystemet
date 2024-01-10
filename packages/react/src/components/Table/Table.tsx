@@ -1,15 +1,45 @@
 import React from 'react';
+import cl from 'clsx';
 
-export type TableProps = {} & React.HTMLAttributes<HTMLTableElement>;
+import { Paragraph } from '../Typography';
 
-export const Table = ({ children, ...rest }: TableProps) => {
-  return <table {...rest}>{children}</table>;
+import classes from './Table.module.css';
+
+export type TableProps = {
+  /**
+   * If true, the table will have zebra striping
+   * @default false
+   */
+  zebra?: boolean;
+} & React.HTMLAttributes<HTMLTableElement>;
+
+export const Table = ({
+  zebra = false,
+  className,
+  children,
+  ...rest
+}: TableProps) => {
+  return (
+    <table
+      className={cl(zebra && classes.zebra, classes.table, className)}
+      {...rest}
+    >
+      {children}
+    </table>
+  );
 };
 
 export type TableHeadProps = {} & React.HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableHead = ({ children, ...rest }: TableHeadProps) => {
-  return <thead {...rest}>{children}</thead>;
+export const TableHead = ({ className, children, ...rest }: TableHeadProps) => {
+  return (
+    <thead
+      className={cl(classes.head, className)}
+      {...rest}
+    >
+      {children}
+    </thead>
+  );
 };
 
 export type TableBodyProps = {} & React.HTMLAttributes<HTMLTableSectionElement>;
@@ -26,16 +56,33 @@ export const TableRow = ({ children, ...rest }: TableRowProps) => {
 
 export type TableCellProps = {} & React.HTMLAttributes<HTMLTableCellElement>;
 
-export const TableCell = ({ children, ...rest }: TableCellProps) => {
-  return <td {...rest}>{children}</td>;
+export const TableCell = ({ className, children, ...rest }: TableCellProps) => {
+  return (
+    <td
+      className={cl(classes.cell, className)}
+      {...rest}
+    >
+      {children}
+    </td>
+  );
 };
 
 export type TableHeaderCellProps =
   {} & React.HTMLAttributes<HTMLTableCellElement>;
 
 export const TableHeaderCell = ({
+  className,
   children,
   ...rest
 }: TableHeaderCellProps) => {
-  return <th {...rest}>{children}</th>;
+  return (
+    <Paragraph
+      as='th'
+      size='medium'
+      {...rest}
+      className={cl(classes.headerCell, className)}
+    >
+      {children}
+    </Paragraph>
+  );
 };

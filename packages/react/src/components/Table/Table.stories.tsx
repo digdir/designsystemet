@@ -17,9 +17,9 @@ export default {
   component: Table,
 } as Meta;
 
-export const Preview: Story = () => {
+export const Preview: Story = (args) => {
   return (
-    <Table>
+    <Table {...args}>
       <TableHead>
         <TableRow>
           <TableHeaderCell>Header 1</TableHeaderCell>
@@ -46,4 +46,8 @@ export const Preview: Story = () => {
       </TableBody>
     </Table>
   );
+};
+
+Preview.args = {
+  zebra: false,
 };
