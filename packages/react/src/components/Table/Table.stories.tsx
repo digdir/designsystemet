@@ -51,27 +51,27 @@ Preview.args = {
 const dummyData = [
   {
     id: 1,
-    navn: 'Ola Nordmann',
-    email: 'ola@nordmann.no',
-    telefon: '12345678',
+    navn: 'Lise Nordmann',
+    epost: 'lise@nordmann.no',
+    telefon: '22345678',
   },
   {
     id: 2,
     navn: 'Kari Nordmann',
-    email: 'kari@nordmann.no',
+    epost: 'kari@nordmann.no',
     telefon: '87654321',
   },
   {
     id: 3,
-    navn: 'Per Nordmann',
-    email: 'per@nordmann.no',
-    telefon: '12344321',
+    navn: 'Ola Nordmann',
+    epost: 'ola@nordmann.no',
+    telefon: '12345678',
   },
   {
     id: 4,
-    navn: 'Lise Nordmann',
-    email: 'lise@nordmann.no',
-    telefon: '22345678',
+    navn: 'Per Nordmann',
+    epost: 'per@nordmann.no',
+    telefon: '12344321',
   },
 ];
 
@@ -88,6 +88,12 @@ export const Sortable: Story = (args) => {
     ) => {
       if (type === sortOrder) return;
       setSortOrder(type);
+
+      if (!type) {
+        setData(dummyData);
+        return;
+      }
+
       setData(
         [...data].sort((a, b) => {
           if (type === 'ascending') {
@@ -114,9 +120,9 @@ export const Sortable: Story = (args) => {
           </TableHeaderCell>
           <TableHeaderCell
             sortable
-            onSortChange={(s) => handleSortChange(s, 'email')}
+            onSortChange={(s) => handleSortChange(s, 'epost')}
           >
-            Email
+            Epost
           </TableHeaderCell>
           <TableHeaderCell
             sortable
@@ -130,7 +136,7 @@ export const Sortable: Story = (args) => {
         {data.map((row) => (
           <TableRow key={row.id}>
             <TableCell>{row.navn}</TableCell>
-            <TableCell>{row.email}</TableCell>
+            <TableCell>{row.epost}</TableCell>
             <TableCell>{row.telefon}</TableCell>
           </TableRow>
         ))}

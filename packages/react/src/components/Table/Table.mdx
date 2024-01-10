@@ -1,5 +1,6 @@
-import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
+import { Meta, Primary, Controls, Canvas, ArgsTable } from '@storybook/blocks';
 import * as TableStories from './Table.stories';
+import { TableHeaderCell } from './';
 
 <Meta of={TableStories} />
 
@@ -10,4 +11,10 @@ import * as TableStories from './Table.stories';
 
 # Sortering
 
+`TableHeaderCell` har ein `sortable` prop som kan brukast for å sortere ein tabell. Denne må kombinerast med `onSortChange` propen som blir trigga når ein klikkar på ein `TableHeaderCell`.
+
 <Canvas of={TableStories.Sortable} />
+
+## `TableHeaderCell` Props
+
+<ArgsTable of={TableHeaderCell} />
