@@ -1,7 +1,19 @@
 .table {
   border-spacing: 0;
 
+  --table-padding: 0;
+}
+
+.small {
+  --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
+}
+
+.medium {
   --table-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
+.large {
+  --table-padding: var(--fds-spacing-3) var(--fds-spacing-3);
 }
 
 .headerCell {
@@ -9,12 +21,13 @@
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
 }
 
-.head {
-}
-
 .cell {
   padding: var(--table-padding);
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+}
+
+.zebra .cell {
+  border-bottom: 0;
 }
 
 .zebra tr:nth-child(even) .cell {

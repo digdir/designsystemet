@@ -49,5 +49,6 @@ export const Preview: Story = (args) => {
 };
 
 Preview.args = {
+  size: 'medium',
   zebra: false,
 };

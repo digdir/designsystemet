@@ -7,6 +7,11 @@ import classes from './Table.module.css';
 
 export type TableProps = {
   /**
+   * The size of the table
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
    * If true, the table will have zebra striping
    * @default false
    */
@@ -15,13 +20,19 @@ export type TableProps = {
 
 export const Table = ({
   zebra = false,
+  size = 'medium',
   className,
   children,
   ...rest
 }: TableProps) => {
   return (
     <table
-      className={cl(zebra && classes.zebra, classes.table, className)}
+      className={cl(
+        classes[size],
+        zebra && classes.zebra,
+        classes.table,
+        className,
+      )}
       {...rest}
     >
       {children}
@@ -29,32 +40,25 @@ export const Table = ({
   );
 };
 
-export type TableHeadProps = {} & React.HTMLAttributes<HTMLTableSectionElement>;
+export type TableHeadProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableHead = ({ className, children, ...rest }: TableHeadProps) => {
-  return (
-    <thead
-      className={cl(classes.head, className)}
-      {...rest}
-    >
-      {children}
-    </thead>
-  );
+export const TableHead = ({ children, ...rest }: TableHeadProps) => {
+  return <thead {...rest}>{children}</thead>;
 };
 
-export type TableBodyProps = {} & React.HTMLAttributes<HTMLTableSectionElement>;
+export type TableBodyProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
 export const TableBody = ({ children, ...rest }: TableBodyProps) => {
   return <tbody {...rest}>{children}</tbody>;
 };
 
-export type TableRowProps = {} & React.HTMLAttributes<HTMLTableRowElement>;
+export type TableRowProps = React.HTMLAttributes<HTMLTableRowElement>;
 
 export const TableRow = ({ children, ...rest }: TableRowProps) => {
   return <tr {...rest}>{children}</tr>;
 };
 
-export type TableCellProps = {} & React.HTMLAttributes<HTMLTableCellElement>;
+export type TableCellProps = React.HTMLAttributes<HTMLTableCellElement>;
 
 export const TableCell = ({ className, children, ...rest }: TableCellProps) => {
   return (
@@ -67,8 +71,7 @@ export const TableCell = ({ className, children, ...rest }: TableCellProps) => {
   );
 };
 
-export type TableHeaderCellProps =
-  {} & React.HTMLAttributes<HTMLTableCellElement>;
+export type TableHeaderCellProps = React.HTMLAttributes<HTMLTableCellElement>;
 
 export const TableHeaderCell = ({
   className,
