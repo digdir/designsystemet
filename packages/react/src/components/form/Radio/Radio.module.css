@@ -1,4 +1,5 @@
 .container {
+  --fds-radio-icon-size: 1.75rem;
   --fds-radio-focus-border-width: 3px;
   --fds-radio-background: var(--fds-semantic-background-default);
   --fds-radio-hover-color: var(--fds-semantic-surface-info-subtle-hover);
@@ -22,8 +23,8 @@
 /* Radio */
 .label::before {
   content: '';
-  width: 1.75rem;
-  height: 1.75rem;
+  width: var(--fds-radio-icon-size);
+  height: var(--fds-radio-icon-size);
   box-shadow: inset 0 0 0 2px var(--fds-radio-border-color);
   background: var(--fds-radio-background);
   border-radius: 50%;
@@ -33,7 +34,7 @@
 }
 
 .description {
-  padding-left: calc(1.75rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(var(--fds-radio-icon-size) + 12px + var(--fds-spacing-1));
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
@@ -58,48 +59,6 @@
 .disabled > .label::before,
 .disabled > .description {
   opacity: var(--fds-opacity-disabled);
-}
-
-.small .label::before {
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.small .input {
-  left: -0.25rem;
-  top: -0.25rem;
-}
-
-.small .description {
-  padding-left: calc(1.5rem + 12px + var(--fds-spacing-1));
-}
-
-.medium .label::before {
-  width: 1.75rem;
-  height: 1.75rem;
-}
-
-.medium .input {
-  left: 0;
-  top: 0;
-}
-
-.medium .description {
-  padding-left: calc(1.75rem + 12px + var(--fds-spacing-1));
-}
-
-.large .label::before {
-  width: 2rem;
-  height: 2rem;
-}
-
-.large .input {
-  left: 0;
-  top: 0.25rem;
-}
-
-.large .description {
-  padding-left: calc(2rem + 12px + var(--fds-spacing-1));
 }
 
 .input:focus-visible + .label::before {
@@ -161,31 +120,52 @@
   }
 }
 
-/** Sizing mess for now... */
+/** Sizing */
 
-.container.small {
-  min-width: var(--fds-sizing-8);
-}
-
-.container.medium {
-  min-width: var(--fds-sizing-10);
-}
-
-.container.large {
-  min-width: var(--fds-sizing-12);
-}
-
-.container.small,
-.container.small .label {
+.small,
+.small .label {
   min-height: var(--fds-sizing-8);
 }
 
-.container.medium,
-.container.medium .label {
+.medium,
+.medium .label {
   min-height: var(--fds-sizing-10);
 }
 
-.container.large,
-.container.large .label {
+.large,
+.large .label {
   min-height: var(--fds-sizing-12);
+}
+
+.small {
+  --fds-radio-icon-size: 1.5rem;
+
+  min-width: var(--fds-sizing-8);
+}
+
+.small .input {
+  left: -0.25rem;
+  top: -0.25rem;
+}
+
+.medium {
+  --fds-radio-icon-size: 1.75rem;
+
+  min-width: var(--fds-sizing-10);
+}
+
+.medium .input {
+  left: 0;
+  top: 0;
+}
+
+.large {
+  --fds-radio-icon-size: 2rem;
+
+  min-width: var(--fds-sizing-12);
+}
+
+.large .input {
+  left: 0;
+  top: 0.25rem;
 }
