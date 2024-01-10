@@ -30,6 +30,7 @@
 }
 
 .headerCell.sortable button {
+  width: 100%;
   border: none;
   font: inherit;
   display: flex;
