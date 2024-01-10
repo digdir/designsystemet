@@ -7,6 +7,7 @@ import React, { useEffect, useId } from 'react';
 import cl from 'clsx';
 
 import { Paragraph } from '../Typography';
+import utilityClasses from '../../utilities/utility.module.css';
 
 import { TableContext } from './Table';
 import classes from './Table.module.css';
@@ -71,6 +72,7 @@ export const TableHeaderCell = React.forwardRef<
         classes.headerCell,
         className,
       )}
+      aria-sort={!sortable ? undefined : sortOrder ? sortOrder : 'none'}
       ref={ref}
       {...rest}
     >
@@ -78,6 +80,7 @@ export const TableHeaderCell = React.forwardRef<
         children
       ) : (
         <button
+          className={utilityClasses.focusable}
           onClick={() => {
             if (sortable) {
               if (sortOrder === 'ascending') {

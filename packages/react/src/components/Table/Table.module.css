@@ -1,6 +1,7 @@
 .table {
   border-spacing: 0;
   border-collapse: collapse;
+  position: relative;
 
   --table-padding: 0;
 }
@@ -19,6 +20,7 @@
 
 .head {
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+  z-index: 0;
 }
 
 .headerCell {
@@ -30,6 +32,7 @@
 }
 
 .headerCell.sortable button {
+  position: relative;
   width: 100%;
   border: none;
   font: inherit;
@@ -39,6 +42,7 @@
   align-items: center;
   padding: var(--table-padding);
   background-color: transparent;
+  z-index: 5;
 }
 
 .headerCell.sorted button {
@@ -55,6 +59,10 @@
 
 .row {
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+}
+
+.head > .row {
+  border-bottom: 0;
 }
 
 .cell {
