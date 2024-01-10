@@ -3,16 +3,16 @@ import * as tokens from '@altinn/figma-design-tokens';
 
 import { useMediaQuery } from '../../../hooks';
 import { LegacyRadioButton } from '../LegacyRadioButton';
-import type { SortProps, SortDirection } from '../../Table/utils';
+import type { SortProps, SortDirection } from '../LegacyTable/utils';
 import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  TableBody,
-  TableFooter,
-} from '../../Table';
-import classes from '../../Table/TableCell.module.css';
+  LegacyTable,
+  LegacyTableHeader,
+  LegacyTableRow,
+  LegacyTableCell,
+  LegacyTableBody,
+  LegacyTableFooter,
+} from '../LegacyTable';
+import classes from '../LegacyTable/TableCell.module.css';
 
 export interface LegacyResponsiveTableConfig<T> {
   rows: T[];
@@ -58,13 +58,13 @@ export function LegacyResponsiveTable<T>({
   const isMobile = useMediaQuery(`(max-width: ${tokens.BreakpointsSm})`);
 
   return isMobile ? (
-    <MobileTable config={config} />
+    <MobileLegacyTable config={config} />
   ) : (
-    <LaptopTable config={config} />
+    <LaptopLegacyTable config={config} />
   );
 }
 
-function MobileTable<T>({ config }: LegacyResponsiveTableProps<T>) {
+function MobileLegacyTable<T>({ config }: LegacyResponsiveTableProps<T>) {
   const { rows, headers, showColumnsMobile, renderCell, rowSelection, footer } =
     config;
 
@@ -73,23 +73,23 @@ function MobileTable<T>({ config }: LegacyResponsiveTableProps<T>) {
   const numColumns = rowSelection ? 2 : 1;
 
   return (
-    <Table
+    <LegacyTable
       selectRows={!!rowSelection}
       onChange={({ selectedValue }) =>
         rowSelection?.onSelectionChange(selectedValue)
       }
       selectedValue={rowSelection?.selectedValue}
     >
-      <TableBody>
+      <LegacyTableBody>
         {rows.map((row) => {
           const value = JSON.stringify(row);
           return (
-            <TableRow
+            <LegacyTableRow
               key={value}
               rowData={row}
             >
               {rowSelection && (
-                <TableCell radiobutton={true}>
+                <LegacyTableCell radiobutton={true}>
                   <LegacyRadioButton
                     name={value}
                     onChange={() => rowSelection.onSelectionChange(row)}
@@ -98,9 +98,9 @@ function MobileTable<T>({ config }: LegacyResponsiveTableProps<T>) {
                     label={value}
                     hideLabel={true}
                   />
-                </TableCell>
+                </LegacyTableCell>
               )}
-              <TableCell
+              <LegacyTableCell
                 key={`${value}-data`}
                 style={{ padding: '0px' }}
               >
@@ -124,23 +124,23 @@ function MobileTable<T>({ config }: LegacyResponsiveTableProps<T>) {
                     </>
                   );
                 })}
-              </TableCell>
-            </TableRow>
+              </LegacyTableCell>
+            </LegacyTableRow>
           );
         })}
-      </TableBody>
+      </LegacyTableBody>
       {footer && (
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={numColumns}>{footer}</TableCell>
-          </TableRow>
-        </TableFooter>
+        <LegacyTableFooter>
+          <LegacyTableRow>
+            <LegacyTableCell colSpan={numColumns}>{footer}</LegacyTableCell>
+          </LegacyTableRow>
+        </LegacyTableFooter>
       )}
-    </Table>
+    </LegacyTable>
   );
 }
 
-function LaptopTable<T>({ config }: LegacyResponsiveTableProps<T>) {
+function LaptopLegacyTable<T>({ config }: LegacyResponsiveTableProps<T>) {
   const { rows, headers, renderCell, columnSort, rowSelection, footer } =
     config;
 
@@ -151,18 +151,20 @@ function LaptopTable<T>({ config }: LegacyResponsiveTableProps<T>) {
     : Object.keys(headers).length;
 
   return (
-    <Table
+    <LegacyTable
       selectRows={!!rowSelection}
       onChange={({ selectedValue }) =>
         rowSelection?.onSelectionChange(selectedValue)
       }
       selectedValue={rowSelection?.selectedValue}
     >
-      <TableHeader>
-        <TableRow>
-          {rowSelection && <TableCell radiobutton={true}></TableCell>}
+      <LegacyTableHeader>
+        <LegacyTableRow>
+          {rowSelection && (
+            <LegacyTableCell radiobutton={true}></LegacyTableCell>
+          )}
           {columns.map((column) => (
-            <TableCell
+            <LegacyTableCell
               key={column as string}
               onChange={({ next, previous }) => {
                 columnSort &&
@@ -179,20 +181,20 @@ function LaptopTable<T>({ config }: LegacyResponsiveTableProps<T>) {
               }
             >
               {headers[column]}
-            </TableCell>
+            </LegacyTableCell>
           ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
+        </LegacyTableRow>
+      </LegacyTableHeader>
+      <LegacyTableBody>
         {rows.map((row) => {
           const value = JSON.stringify(row);
           return (
-            <TableRow
+            <LegacyTableRow
               key={value}
               rowData={row}
             >
               {rowSelection && (
-                <TableCell radiobutton={true}>
+                <LegacyTableCell radiobutton={true}>
                   <LegacyRadioButton
                     name={value}
                     onChange={() => rowSelection.onSelectionChange(row)}
@@ -201,29 +203,29 @@ function LaptopTable<T>({ config }: LegacyResponsiveTableProps<T>) {
                     label={value}
                     hideLabel={true}
                   ></LegacyRadioButton>
-                </TableCell>
+                </LegacyTableCell>
               )}
               {columns.map((column) => {
                 const renderFunc = renderCell && renderCell[column];
                 return (
-                  <TableCell key={`${value}-${column as string}`}>
+                  <LegacyTableCell key={`${value}-${column as string}`}>
                     {renderFunc
                       ? renderFunc(row[column])
                       : (row[column] as string)}
-                  </TableCell>
+                  </LegacyTableCell>
                 );
               })}
-            </TableRow>
+            </LegacyTableRow>
           );
         })}
-      </TableBody>
+      </LegacyTableBody>
       {footer && (
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={numColumns}>{footer}</TableCell>
-          </TableRow>
-        </TableFooter>
+        <LegacyTableFooter>
+          <LegacyTableRow>
+            <LegacyTableCell colSpan={numColumns}>{footer}</LegacyTableCell>
+          </LegacyTableRow>
+        </LegacyTableFooter>
       )}
-    </Table>
+    </LegacyTable>
   );
 }

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-tokens@0.11.2...@digdir/design-system-tokens@0.12.0) (2024-01-10)
+
+### Features
+
+- **tokens:** Remove JS tokens ([#1347](https://github.com/digdir/designsystemet/issues/1347)) ([1a7e332](https://github.com/digdir/designsystemet/commit/1a7e3322f4c8a53fefe745613ee2987f7cb0d510))
+
 ## [0.11.2](https://github.com/digdir/designsystemet/compare/@digdir/design-system-tokens@0.11.1...@digdir/design-system-tokens@0.11.2) (2024-01-05)
 
 **Note:** Version bump only for package @digdir/design-system-tokens

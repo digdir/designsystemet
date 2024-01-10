@@ -18,6 +18,7 @@ export const ComboboxClearButton = () => {
     readOnly,
     disabled,
     cleanButtonLabel,
+    inputRef,
     setSelectedOptions,
     setInputValue,
   } = context;
@@ -35,6 +36,16 @@ export const ComboboxClearButton = () => {
         if (disabled) return;
         setSelectedOptions([]);
         setInputValue('');
+      }}
+      onKeyDown={(e) => {
+        if (readOnly) return;
+        if (disabled) return;
+        if (e.key === 'Enter') {
+          e.stopPropagation();
+          setSelectedOptions([]);
+          setInputValue('');
+          inputRef.current?.focus();
+        }
       }}
       type='button'
       aria-label={cleanButtonLabel}
