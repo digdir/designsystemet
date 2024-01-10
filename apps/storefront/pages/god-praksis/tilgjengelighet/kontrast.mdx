@@ -1,0 +1,22 @@
+import { Meta, ResponsiveIframe } from '@components';
+import { PageLayout } from '@layouts';
+
+<Meta
+  title='Kontrast'
+  description='Våre retningslinjer for kontrast'
+/>
+
+export default ({ children, menu }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Kontrast',
+      date: '10. januar 2023',
+      author: 'Brønnøysundregistrene',
+      backText: 'God praksis',
+      backUrl: 'god-praksis',
+    }}
+  />
+);
+
+Den opplevde visuelle forskjellen mellom to farger er det vi kaller kontrast
