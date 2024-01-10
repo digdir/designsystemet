@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useId } from 'react';
 import cl from 'clsx';
 import {
   ArrowDownIcon,
@@ -30,8 +30,12 @@ export const Table = ({
   children,
   ...rest
 }: TableProps) => {
+  const [sortedCell, setSortedCell] = React.useState<string | null>(null);
+
+  console.log({ sortedCell });
+
   return (
-    <TableContext.Provider value={{ size }}>
+    <TableContext.Provider value={{ size, sortedCell, setSortedCell }}>
       <table
         className={cl(
           classes[size],
@@ -116,7 +120,8 @@ export const TableHeaderCell = ({
   children,
   ...rest
 }: TableHeaderCellProps) => {
-  const { size } = React.useContext(TableContext);
+  const sortId = useId();
+  const { size, sortedCell, setSortedCell } = React.useContext(TableContext);
 
   const [sortOrder, setSortOrder] = React.useState<'asc' | 'desc' | null>(null);
 
@@ -124,12 +129,29 @@ export const TableHeaderCell = ({
     if (!sortable) return null;
 
     if (sortOrder === 'asc') {
-      return <ArrowDownIcon />;
-    } else if (sortOrder === 'desc') {
       return <ArrowUpIcon />;
+    } else if (sortOrder === 'desc') {
+      return <ArrowDownIcon />;
     }
     return <ArrowsUpDownIcon />;
   }, [sortOrder, sortable]);
+
+  // if another cell is sorted, reset this cell
+  useEffect(() => {
+    if (sortedCell !== sortId) {
+      setSortOrder(null);
+    }
+  }, [sortedCell, sortId]);
+
+  const handleSortChange = React.useCallback(
+    (type: 'asc' | 'desc' | null) => {
+      if (type === sortOrder) return;
+      setSortOrder(type);
+      onSortChange?.(type);
+      setSortedCell(sortId);
+    },
+    [onSortChange, setSortedCell, sortId, sortOrder],
+  );
 
   return (
     <Paragraph
@@ -138,14 +160,12 @@ export const TableHeaderCell = ({
       onClick={(e) => {
         if (sortable) {
           if (sortOrder === 'asc') {
-            setSortOrder('desc');
-            onSortChange?.('desc');
+            handleSortChange('desc');
           } else if (sortOrder === 'desc') {
-            setSortOrder(null);
-            onSortChange?.(null);
+            handleSortChange(null);
+            setSortedCell(null);
           } else {
-            setSortOrder('asc');
-            onSortChange?.('asc');
+            handleSortChange('asc');
           }
         }
         // @ts-expect-error #2740 - We get the wrong type for onClick
@@ -158,12 +178,26 @@ export const TableHeaderCell = ({
       )}
       {...rest}
     >
-      {children}
-      {sortIcon}
+      {!sortable ? (
+        children
+      ) : (
+        <button>
+          {children}
+          {sortIcon}
+        </button>
+      )}
     </Paragraph>
   );
 };
 
-const TableContext = React.createContext<Pick<TableProps, 'size'>>({
+type TableContextType = {
+  size: TableProps['size'];
+  sortedCell?: string | null;
+  setSortedCell: React.Dispatch<React.SetStateAction<string | null>>;
+};
+
+const TableContext = React.createContext<TableContextType>({
   size: 'medium',
+  sortedCell: null,
+  setSortedCell: () => {},
 });

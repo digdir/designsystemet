@@ -26,10 +26,17 @@
 }
 
 .headerCell.sortable {
-  cursor: pointer;
+  padding: 0;
+}
+
+.headerCell.sortable button {
+  border: none;
+  font: inherit;
   display: flex;
+  cursor: pointer;
   gap: var(--fds-spacing-1);
   align-items: center;
+  padding: var(--table-padding);
 }
 
 .row {
