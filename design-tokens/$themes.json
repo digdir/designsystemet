@@ -1327,46 +1327,6 @@
     "group": "Brand"
   },
   {
-    "id": "33e1200e221c81b1bd3439e6f7413a9ac3af9aa4",
-    "name": "Default",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {},
-    "$figmaCollectionId": "VariableCollectionId:6324:1809",
-    "$figmaModeId": "6324:5",
-    "$figmaVariableReferences": {
-      "component-mode-height.small": "280a2624dd49680e38784ce007227382b655c975",
-      "component-mode-height.medium": "6f93b2ea1bd3e88eaee6f050952b855511e81bf0",
-      "component-mode-height.large": "01220be0823204f40729ef58ef560c2ae46c2037",
-      "component-mode-spacing.small": "16494daf38b801b7e8b547071d72e8f9d46b0b93",
-      "component-mode-spacing.medium": "270c6f1c57e8c8978d9111ad10e20754991a4073",
-      "component-mode-spacing.large": "c18953d23b3ecb5cff44e707193a5130ce638cbf",
-      "component-mode-gap.small": "c971acd796865dfa857d54dde3596f96855642f3",
-      "component-mode-gap.medium": "33301e4712908bafe2c4526689f2200232231be0",
-      "component-mode-gap.large": "600b8e9622ad6965deedd689aaa1cf83d0377d0f"
-    },
-    "group": "Density"
-  },
-  {
-    "id": "274b43921cab98c0e4935a4ac82b4eed32bb65d3",
-    "name": "Compact",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {},
-    "$figmaCollectionId": "VariableCollectionId:6324:1809",
-    "$figmaModeId": "6324:6",
-    "$figmaVariableReferences": {
-      "component-mode-height.small": "280a2624dd49680e38784ce007227382b655c975",
-      "component-mode-height.medium": "6f93b2ea1bd3e88eaee6f050952b855511e81bf0",
-      "component-mode-height.large": "01220be0823204f40729ef58ef560c2ae46c2037",
-      "component-mode-spacing.small": "16494daf38b801b7e8b547071d72e8f9d46b0b93",
-      "component-mode-spacing.medium": "270c6f1c57e8c8978d9111ad10e20754991a4073",
-      "component-mode-spacing.large": "c18953d23b3ecb5cff44e707193a5130ce638cbf",
-      "component-mode-gap.small": "c971acd796865dfa857d54dde3596f96855642f3",
-      "component-mode-gap.medium": "33301e4712908bafe2c4526689f2200232231be0",
-      "component-mode-gap.large": "600b8e9622ad6965deedd689aaa1cf83d0377d0f"
-    },
-    "group": "Density"
-  },
-  {
     "id": "0bb0d63d3c2ae162e4f947955570de40b1819e26",
     "name": "1440",
     "$figmaStyleReferences": {},
