@@ -1,5 +1,10 @@
 import React from 'react';
 import cl from 'clsx';
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ArrowsUpDownIcon,
+} from '@navikt/aksel-icons';
 
 import { Paragraph } from '../Typography';
 
@@ -91,23 +96,70 @@ export const TableCell = ({ className, children, ...rest }: TableCellProps) => {
   );
 };
 
-export type TableHeaderCellProps = React.HTMLAttributes<HTMLTableCellElement>;
+export type TableHeaderCellProps = {
+  /**
+   * If true, the table will be sortable
+   * @default false
+   */
+  sortable?: boolean;
+  /**
+   * Callback for when the sort order changes
+   */
+  onSortChange?: (type: 'asc' | 'desc' | null) => void;
+} & React.HTMLAttributes<HTMLTableCellElement>;
 
 export const TableHeaderCell = ({
+  sortable = false,
+  onSortChange,
+  onClick,
   className,
   children,
   ...rest
 }: TableHeaderCellProps) => {
   const { size } = React.useContext(TableContext);
 
+  const [sortOrder, setSortOrder] = React.useState<'asc' | 'desc' | null>(null);
+
+  const sortIcon = React.useMemo(() => {
+    if (!sortable) return null;
+
+    if (sortOrder === 'asc') {
+      return <ArrowDownIcon />;
+    } else if (sortOrder === 'desc') {
+      return <ArrowUpIcon />;
+    }
+    return <ArrowsUpDownIcon />;
+  }, [sortOrder, sortable]);
+
   return (
     <Paragraph
       as='th'
       size={size}
+      onClick={(e) => {
+        if (sortable) {
+          if (sortOrder === 'asc') {
+            setSortOrder('desc');
+            onSortChange?.('desc');
+          } else if (sortOrder === 'desc') {
+            setSortOrder(null);
+            onSortChange?.(null);
+          } else {
+            setSortOrder('asc');
+            onSortChange?.('asc');
+          }
+        }
+        // @ts-expect-error #2740 - We get the wrong type for onClick
+        onClick?.(e);
+      }}
+      className={cl(
+        sortable && classes.sortable,
+        classes.headerCell,
+        className,
+      )}
       {...rest}
-      className={cl(classes.headerCell, className)}
     >
       {children}
+      {sortIcon}
     </Paragraph>
   );
 };

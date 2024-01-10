@@ -24,7 +24,7 @@ export const Preview: Story = (args) => {
         <TableRow>
           <TableHeaderCell>Header 1</TableHeaderCell>
           <TableHeaderCell>Header 2</TableHeaderCell>
-          <TableHeaderCell>Header 3</TableHeaderCell>
+          <TableHeaderCell sortable>Header 3</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>

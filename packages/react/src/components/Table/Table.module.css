@@ -25,6 +25,13 @@
   padding: var(--table-padding);
 }
 
+.headerCell.sortable {
+  cursor: pointer;
+  display: flex;
+  gap: var(--fds-spacing-1);
+  align-items: center;
+}
+
 .row {
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
 }

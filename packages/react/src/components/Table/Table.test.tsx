@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react';
 import { Table } from './Table';
 
 describe('table', (): void => {
-  it('should render', (): void => {
+  it('should render table', (): void => {
     render(<Table />);
-    expect(screen.getByText('Table')).toBeInTheDocument();
+    expect(screen.getByRole('table')).toBeInTheDocument();
   });
 });
