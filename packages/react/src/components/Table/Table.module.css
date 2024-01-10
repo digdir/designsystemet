@@ -37,6 +37,19 @@
   gap: var(--fds-spacing-1);
   align-items: center;
   padding: var(--table-padding);
+  background-color: transparent;
+}
+
+.headerCell.sorted button {
+  background-color: var(--fds-semantic-surface-neutral-subtle);
+}
+
+.headerCell.sortable button:hover {
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+}
+
+.headerCell.sortable button svg {
+  font-size: 1.2em;
 }
 
 .row {

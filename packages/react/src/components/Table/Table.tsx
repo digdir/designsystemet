@@ -1,9 +1,9 @@
 import React, { useEffect, useId } from 'react';
 import cl from 'clsx';
 import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  ArrowsUpDownIcon,
+  ChevronDownIcon,
+  ChevronUpDownIcon,
+  ChevronUpIcon,
 } from '@navikt/aksel-icons';
 
 import { Paragraph } from '../Typography';
@@ -109,13 +109,12 @@ export type TableHeaderCellProps = {
   /**
    * Callback for when the sort order changes
    */
-  onSortChange?: (type: 'asc' | 'desc' | null) => void;
+  onSortChange?: (type: 'ascending' | 'descending' | null) => void;
 } & React.HTMLAttributes<HTMLTableCellElement>;
 
 export const TableHeaderCell = ({
   sortable = false,
   onSortChange,
-  onClick,
   className,
   children,
   ...rest
@@ -123,20 +122,21 @@ export const TableHeaderCell = ({
   const sortId = useId();
   const { size, sortedCell, setSortedCell } = React.useContext(TableContext);
 
-  const [sortOrder, setSortOrder] = React.useState<'asc' | 'desc' | null>(null);
+  const [sortOrder, setSortOrder] = React.useState<
+    'ascending' | 'descending' | null
+  >(null);
 
   const sortIcon = React.useMemo(() => {
     if (!sortable) return null;
 
-    if (sortOrder === 'asc') {
-      return <ArrowUpIcon />;
-    } else if (sortOrder === 'desc') {
-      return <ArrowDownIcon />;
+    if (sortOrder === 'ascending') {
+      return <ChevronUpIcon />;
+    } else if (sortOrder === 'descending') {
+      return <ChevronDownIcon />;
     }
-    return <ArrowsUpDownIcon />;
+    return <ChevronUpDownIcon />;
   }, [sortOrder, sortable]);
 
-  // if another cell is sorted, reset this cell
   useEffect(() => {
     if (sortedCell !== sortId) {
       setSortOrder(null);
@@ -144,7 +144,7 @@ export const TableHeaderCell = ({
   }, [sortedCell, sortId]);
 
   const handleSortChange = React.useCallback(
-    (type: 'asc' | 'desc' | null) => {
+    (type: 'ascending' | 'descending' | null) => {
       if (type === sortOrder) return;
       setSortOrder(type);
       onSortChange?.(type);
@@ -157,22 +157,9 @@ export const TableHeaderCell = ({
     <Paragraph
       as='th'
       size={size}
-      onClick={(e) => {
-        if (sortable) {
-          if (sortOrder === 'asc') {
-            handleSortChange('desc');
-          } else if (sortOrder === 'desc') {
-            handleSortChange(null);
-            setSortedCell(null);
-          } else {
-            handleSortChange('asc');
-          }
-        }
-        // @ts-expect-error #2740 - We get the wrong type for onClick
-        onClick?.(e);
-      }}
       className={cl(
         sortable && classes.sortable,
+        sortOrder && classes.sorted,
         classes.headerCell,
         className,
       )}
@@ -181,7 +168,20 @@ export const TableHeaderCell = ({
       {!sortable ? (
         children
       ) : (
-        <button>
+        <button
+          onClick={() => {
+            if (sortable) {
+              if (sortOrder === 'ascending') {
+                handleSortChange('descending');
+              } else if (sortOrder === 'descending') {
+                handleSortChange(null);
+                setSortedCell(null);
+              } else {
+                handleSortChange('ascending');
+              }
+            }
+          }}
+        >
           {children}
           {sortIcon}
         </button>
