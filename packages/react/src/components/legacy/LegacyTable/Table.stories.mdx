@@ -1,11 +1,11 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHeader,
-  TableRow,
+  LegacyTable,
+  LegacyTableBody,
+  LegacyTableCell,
+  LegacyTableFooter,
+  LegacyTableHeader,
+  LegacyTableRow,
 } from './';
 import { TokensTable, Information } from '../../../../../../docs-components';
 import { exampleRows } from './ExampleData';
@@ -13,47 +13,49 @@ import classes from './Table.stories.module.css';
 
 <Meta
   title='Avviklet/LegacyTable'
-  component={Table}
+  component={LegacyTable}
 />
 
 export const Template = (args) => (
-  <Table {...args}>
-    <TableHeader>
-      <TableRow>
-        <TableCell>Søknadsnr.</TableCell>
-        <TableCell>Produkt</TableCell>
-        <TableCell>Status</TableCell>
-        <TableCell>Bilde</TableCell>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
+  <LegacyTable {...args}>
+    <LegacyTableHeader>
+      <LegacyTableRow>
+        <LegacyTableCell>Søknadsnr.</LegacyTableCell>
+        <LegacyTableCell>Produkt</LegacyTableCell>
+        <LegacyTableCell>Status</LegacyTableCell>
+        <LegacyTableCell>Bilde</LegacyTableCell>
+      </LegacyTableRow>
+    </LegacyTableHeader>
+    <LegacyTableBody>
       {exampleRows.map((row) => (
-        <TableRow
+        <LegacyTableRow
           key={row.caseNum}
           rowData={{ caseNum: row.caseNum }}
         >
-          <TableCell>{row.caseNum}</TableCell>
-          <TableCell>{row.product}</TableCell>
-          <TableCell>{row.status}</TableCell>
-          <TableCell>
+          <LegacyTableCell>{row.caseNum}</LegacyTableCell>
+          <LegacyTableCell>{row.product}</LegacyTableCell>
+          <LegacyTableCell>{row.status}</LegacyTableCell>
+          <LegacyTableCell>
             <img
               src={row.image.src}
               alt={row.image.alt}
               className={classes.img}
             />
-          </TableCell>
-        </TableRow>
+          </LegacyTableCell>
+        </LegacyTableRow>
       ))}
-    </TableBody>
-    <TableFooter>
-      <TableRow>
-        <TableCell colSpan={5}>Lorem ipsum dolor sit amet.</TableCell>
-      </TableRow>
-    </TableFooter>
-  </Table>
+    </LegacyTableBody>
+    <LegacyTableFooter>
+      <LegacyTableRow>
+        <LegacyTableCell colSpan={5}>
+          Lorem ipsum dolor sit amet.
+        </LegacyTableCell>
+      </LegacyTableRow>
+    </LegacyTableFooter>
+  </LegacyTable>
 );
 
-# Table
+# LegacyTable
 
 <Information text='deprecated' />
 
