@@ -95,7 +95,7 @@
 
 .large .input {
   left: 0;
-  top: calc(0.25rem + 2px);
+  top: 0.25rem;
 }
 
 .large .description {
