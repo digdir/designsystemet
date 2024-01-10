@@ -65,75 +65,33 @@ const dummyData = [
     id: 3,
     navn: 'Ola Nordmann',
     epost: 'ola@nordmann.no',
-    telefon: '12345678',
+    telefon: '32345678',
   },
   {
     id: 4,
     navn: 'Per Nordmann',
     epost: 'per@nordmann.no',
-    telefon: '12344321',
+    telefon: '12345678',
   },
 ];
 
 export const Sortable: Story = (args) => {
-  const [data, setData] = React.useState(dummyData);
-  const [sortOrder, setSortOrder] = React.useState<
-    'ascending' | 'descending' | null
-  >(null);
-
-  const handleSortChange = React.useCallback(
-    (
-      type: 'ascending' | 'descending' | null,
-      key: keyof (typeof dummyData)[0],
-    ) => {
-      if (type === sortOrder) return;
-      setSortOrder(type);
-
-      if (!type) {
-        setData(dummyData);
-        return;
-      }
-
-      setData(
-        [...data].sort((a, b) => {
-          if (type === 'ascending') {
-            return a[key] > b[key] ? 1 : -1;
-          } else if (type === 'descending') {
-            return a[key] < b[key] ? 1 : -1;
-          }
-          return 0;
-        }),
-      );
-    },
-    [data, sortOrder],
-  );
-
   return (
     <Table {...args}>
       <TableHead>
         <TableRow>
+          <TableHeaderCell sortable>Navn</TableHeaderCell>
+          <TableHeaderCell sortable>Epost</TableHeaderCell>
           <TableHeaderCell
             sortable
-            onSortChange={(s) => handleSortChange(s, 'navn')}
-          >
-            Navn
-          </TableHeaderCell>
-          <TableHeaderCell
-            sortable
-            onSortChange={(s) => handleSortChange(s, 'epost')}
-          >
-            Epost
-          </TableHeaderCell>
-          <TableHeaderCell
-            sortable
-            onSortChange={(s) => handleSortChange(s, 'telefon')}
+            sort='descending'
           >
             Telefon
           </TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {data.map((row) => (
+        {dummyData.map((row) => (
           <TableRow key={row.id}>
             <TableCell>{row.navn}</TableCell>
             <TableCell>{row.epost}</TableCell>

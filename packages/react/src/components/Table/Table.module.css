@@ -2,6 +2,7 @@
   border-spacing: 0;
   border-collapse: collapse;
   position: relative;
+  text-align: left;
 
   --table-padding: 0;
 }
@@ -21,10 +22,12 @@
 .head {
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
   z-index: 0;
+  font: inherit;
 }
 
 .headerCell {
   padding: var(--table-padding);
+  font: inherit;
 }
 
 .headerCell.sortable {
@@ -42,11 +45,15 @@
   align-items: center;
   padding: var(--table-padding);
   background-color: transparent;
-  z-index: 5;
+  z-index: 2;
 }
 
 .headerCell.sorted button {
   background-color: var(--fds-semantic-surface-neutral-subtle);
+}
+
+.headerCell.sortable button:focus {
+  z-index: 3;
 }
 
 .headerCell.sortable button:hover {

@@ -1,6 +1,8 @@
 import React from 'react';
 import cl from 'clsx';
 
+import { Paragraph } from '../Typography';
+
 import classes from './Table.module.css';
 
 export type TableProps = {
@@ -18,35 +20,21 @@ export type TableProps = {
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   ({ zebra = false, size = 'medium', className, children, ...rest }, ref) => {
-    const [sortedCell, setSortedCell] = React.useState<string | null>(null);
-
     return (
-      <TableContext.Provider value={{ size, sortedCell, setSortedCell }}>
-        <table
-          ref={ref}
-          className={cl(
-            classes[size],
-            zebra && classes.zebra,
-            classes.table,
-            className,
-          )}
-          {...rest}
-        >
-          {children}
-        </table>
-      </TableContext.Provider>
+      <Paragraph
+        as='table'
+        ref={ref}
+        size={size}
+        className={cl(
+          classes[size],
+          zebra && classes.zebra,
+          classes.table,
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </Paragraph>
     );
   },
 );
-
-type TableContextType = {
-  size: TableProps['size'];
-  sortedCell?: string | null;
-  setSortedCell: React.Dispatch<React.SetStateAction<string | null>>;
-};
-
-export const TableContext = React.createContext<TableContextType>({
-  size: 'medium',
-  sortedCell: null,
-  setSortedCell: () => {},
-});
