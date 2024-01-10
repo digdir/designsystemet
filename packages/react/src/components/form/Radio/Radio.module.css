@@ -2,9 +2,7 @@
   --fds-radio-icon-size: 1.75rem;
   --fds-radio-focus-border-width: 3px;
   --fds-radio-background: var(--fds-semantic-background-default);
-  --fds-radio-hover-color: var(--fds-semantic-surface-info-subtle-hover);
   --fds-radio-border-color: var(--fds-semantic-border-input-default);
-  --fds-radio-border-inner__checked: inset 0 0 0 6px var(--fds-radio-background); /** Adjust for dot size */
   --fds-radio-border__hover: 0 0 0 6px var(--fds-semantic-surface-info-subtle-hover);
 
   position: relative;
@@ -63,7 +61,7 @@
 
 .input:focus-visible + .label::before {
   outline: var(--fds-radio-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-  box-shadow: inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow), var(--fds-radio-border-inner__checked);
+  box-shadow: inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow), inset 0 0 0 6px var(--fds-radio-background);
 }
 
 .input:checked + .label::before {
@@ -74,10 +72,11 @@
 
 .readonly > .input + .label::before {
   --fds-radio-border-color: var(--fds-semantic-border-neutral-subtle);
+  --fds-radio-background: var(--fds-semantic-surface-neutral-subtle);
 }
 
 .input:checked:not(:focus-visible) + .label::before {
-  box-shadow: inset 0 0 0 2px var(--fds-radio-border-color), var(--fds-radio-border-inner__checked);
+  box-shadow: inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
 }
 
 .readonly > .input,
@@ -86,8 +85,6 @@
 }
 
 .readonly > .input:checked + .label::before {
-  --fds-radio-background: var(--fds-semantic-surface-neutral-subtle);
-
   background: var(--fds-semantic-border-neutral-default);
 }
 
@@ -95,28 +92,29 @@
   --fds-radio-border-color: var(--fds-semantic-border-danger-default);
 }
 
-/* Only use hover for non-touch devices to prevent sticky-hovering */
+/* Only use hover for non-touch devices to prevent sticky-hovering
+  "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
 @media (hover: hover) and (pointer: fine) {
-  .label:hover,
-  .input:hover + .label {
+  .container:not(.readonly) > .label:hover,
+  .container:not(.readonly) > .input:hover + .label {
     color: var(--fds-semantic-text-action-hover);
   }
 
-  .input:hover:not(:checked) + .label::before {
+  .container:not(.readonly) > .input:hover:not(:checked) + .label::before {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
   }
 
-  .input:hover:checked + .label::before {
+  .container:not(.readonly) > .input:hover:checked + .label::before {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
-    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), var(--fds-radio-border-inner__checked);
+    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
   }
 
-  .input:hover:checked:focus-visible + .label::before {
+  .container:not(.readonly) > .input:hover:checked:focus-visible + .label::before {
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
-      var(--fds-radio-border-inner__checked);
+      inset 0 0 0 6px var(--fds-radio-background);
   }
 }
 
