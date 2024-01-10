@@ -20,36 +20,21 @@ export type TableHeaderCellProps = {
   sort?: AriaAttributes['aria-sort'];
 
   onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-
-  hideIcon?: boolean;
 } & React.HTMLAttributes<HTMLTableCellElement>;
+
+const SORT_ICON = {
+  ascending: <ChevronUpIcon />,
+  descending: <ChevronDownIcon />,
+};
 
 export const TableHeaderCell = React.forwardRef<
   HTMLTableCellElement,
   TableHeaderCellProps
 >(
   (
-    {
-      hideIcon = false,
-      sortable = false,
-      sort,
-      onSortClick,
-      className,
-      children,
-      ...rest
-    },
+    { sortable = false, sort, onSortClick, className, children, ...rest },
     ref,
   ) => {
-    const sortIcon = React.useMemo(() => {
-      if (sort === 'ascending') {
-        return <ChevronUpIcon />;
-      }
-      if (sort === 'descending') {
-        return <ChevronDownIcon />;
-      }
-      return <ChevronUpDownIcon />;
-    }, [sort]);
-
     return (
       <th
         className={cl(
@@ -62,17 +47,21 @@ export const TableHeaderCell = React.forwardRef<
         ref={ref}
         {...rest}
       >
-        {!sortable ? (
-          children
-        ) : (
+        {sortable && (
           <button
             className={utilityClasses.focusable}
             onClick={onSortClick}
           >
             {children}
-            {!hideIcon && sortIcon}
+            {sort === 'ascending' || sort === 'descending' ? (
+              SORT_ICON[sort]
+            ) : (
+              <ChevronUpDownIcon />
+            )}
           </button>
         )}
+
+        {!sortable && children}
       </th>
     );
   },
