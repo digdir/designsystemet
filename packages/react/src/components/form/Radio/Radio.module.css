@@ -22,8 +22,8 @@
 /* Radio */
 .label::before {
   content: '';
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.75rem;
+  height: 1.75rem;
   box-shadow: inset 0 0 0 2px var(--fds-radio-border-color);
   background: var(--fds-radio-background);
   border-radius: 50%;
@@ -33,7 +33,7 @@
 }
 
 .description {
-  padding-left: var(--fds-sizing-7);
+  padding-left: calc(1.75rem + 12px + var(--fds-spacing-1));
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
@@ -61,45 +61,45 @@
 }
 
 .small .label::before {
-  height: 1.4rem;
-  width: 1.4rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .small .input {
-  left: calc(-0.5rem + 2px);
-  top: calc(-0.25rem - 2px);
+  left: -0.25rem;
+  top: -0.25rem;
 }
 
 .small .description {
-  padding-left: calc(1.4rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(1.5rem + 12px + var(--fds-spacing-1));
 }
 
 .medium .label::before {
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .medium .input {
-  left: calc(-0.25rem);
+  left: 0;
   top: 0;
 }
 
 .medium .description {
-  padding-left: calc(1.7rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(1.75rem + 12px + var(--fds-spacing-1));
 }
 
 .large .label::before {
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .large .input {
-  left: calc(-0.25rem + 2px);
-  top: 0.25rem;
+  left: 0;
+  top: calc(0.25rem + 2px);
 }
 
 .large .description {
-  padding-left: calc(1.9rem + 12px + var(--fds-spacing-1));
+  padding-left: calc(2rem + 12px + var(--fds-spacing-1));
 }
 
 .input:focus-visible + .label::before {
