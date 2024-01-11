@@ -21,6 +21,11 @@ export type TableProps = {
    * @default false
    */
   stickyHeader?: boolean;
+  /**
+   * If true, the table will have a border
+   * @default false
+   */
+  border?: boolean;
 } & React.HTMLAttributes<HTMLTableElement>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
@@ -29,6 +34,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       zebra = false,
       size = 'medium',
       stickyHeader = false,
+      border = false,
       className,
       children,
       ...rest
@@ -44,6 +50,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
           classes[size],
           zebra && classes.zebra,
           stickyHeader && classes.stickyHeader,
+          border && classes.border,
           classes.table,
           className,
         )}

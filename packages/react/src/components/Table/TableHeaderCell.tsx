@@ -12,13 +12,20 @@ import utilityClasses from '../../utilities/utility.module.css';
 import classes from './Table.module.css';
 
 export type TableHeaderCellProps = {
-  sortable?: boolean;
   /**
-   * If true, the table will be sortable
+   * If true, will add a button to the header cell
    * @default false
    */
+  sortable?: boolean;
+  /**
+   * If true, will change aria-sort and icon
+   * @default undefined
+   */
   sort?: AriaAttributes['aria-sort'];
-
+  /**
+   * Callback for when the sort button is clicked
+   * @default undefined
+   */
   onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 } & React.HTMLAttributes<HTMLTableCellElement>;
 

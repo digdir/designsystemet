@@ -11,6 +11,16 @@
   overflow: auto;
 }
 
+.table.border {
+  border-radius: var(--fds-border_radius-large);
+  border: 1px solid var(--fds-semantic-border-neutral-default);
+  overflow: hidden;
+}
+
+.table.border .row:last-of-type td {
+  border-bottom: 0;
+}
+
 .small {
   --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
 }
