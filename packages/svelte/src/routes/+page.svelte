@@ -229,7 +229,7 @@
 <Textfield
   bind:value={textfieldValue}
   error={showTextfieldError ? 'Lorem ipsum error' : ''}
-  size="medium"
+  size="large"
   label="Textfield Overskrift"
   description="Beskrivelse"
 />
@@ -508,6 +508,7 @@
     label="Single, unselected"
     hideSelected
     clearable
+    size="large"
   />
   <Select
     {options}
@@ -548,6 +549,7 @@
     bind:selected={singlePreSelected}
     label="Single, preselected, readonly"
     readOnly
+    size="large"
   />
 </div>
 <br />
@@ -729,6 +731,9 @@
   }
 
   .selectForm {
+    display: flex;
+    flex-direction: column;
     width: 40%;
+    gap: var(--fds-spacing-2);
   }
 </style>

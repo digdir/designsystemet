@@ -54,21 +54,14 @@
   export let characterLimitLabel = null;
 
   let componentId = uuidv4();
-
   let fontSizeClass;
 
   switch (size) {
     case 'xsmall':
-      fontSizeClass = 'font-xsmall';
-      break;
     case 'small':
-      fontSizeClass = 'font-small';
-      break;
     case 'medium':
-      fontSizeClass = 'font-medium';
-      break;
     case 'large':
-      fontSizeClass = 'font-large';
+      fontSizeClass = `font-${size}`;
       break;
     default:
       fontSizeClass = 'font-medium';
