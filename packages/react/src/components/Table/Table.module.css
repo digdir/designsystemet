@@ -1,7 +1,7 @@
 .table {
-  border-spacing: 0;
-  border-collapse: collapse;
   position: relative;
+  border-collapse: separate;
+  border-spacing: 0;
   text-align: left;
 
   --table-padding: 0;
@@ -36,7 +36,6 @@
   font: inherit;
   background-color: var(--fds-semantic-surface-neutral-default);
   border-spacing: 0;
-  border-collapse: separate;
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
 }
 
@@ -80,13 +79,9 @@
   font-size: 1.2em;
 }
 
-.row {
-  border-bottom: 1px solid var(--fds-semantic-border-divider-default);
-  box-sizing: border-box;
-}
-
 .cell {
   padding: var(--table-padding);
+  border-bottom: 1px solid var(--fds-semantic-border-divider-default);
 }
 
 .zebra .row {
