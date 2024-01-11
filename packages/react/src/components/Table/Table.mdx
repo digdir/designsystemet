@@ -11,7 +11,9 @@ import { TableHeaderCell } from './';
 
 # Sortering
 
-`TableHeaderCell` har ein `sortable` prop som kan brukast for å sortere ein tabell. Denne må kombinerast med `onSortChange` propen som blir trigga når ein klikkar på ein `TableHeaderCell`.
+`TableHeaderCell` har ein `sortable` prop som kan brukast for å visa at rada er sortberbar.
+Du sender inn `sort` prop til `TableHeaderCell` for å indikere at rada er sortert på den.
+Bruk `onSortClick` prop for å handtere klikk på sorterbare rader.
 
 <Canvas of={TableStories.Sortable} />
 
@@ -19,7 +21,9 @@ import { TableHeaderCell } from './';
 
 <Canvas of={TableStories.StickyHeader} />
 
-# With form elements
+# Med form elementer
+
+Du kan legge inn form elementer i ein tabell, men du må håndtere logikken sjølv.
 
 <Canvas of={TableStories.WithFormElements} />
 

@@ -11,6 +11,11 @@ import utilityClasses from '../../utilities/utility.module.css';
 
 import classes from './Table.module.css';
 
+const SORT_ICON = {
+  ascending: <ChevronUpIcon />,
+  descending: <ChevronDownIcon />,
+};
+
 export type TableHeaderCellProps = {
   /**
    * If true, will add a button to the header cell
@@ -29,11 +34,6 @@ export type TableHeaderCellProps = {
   onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 } & React.HTMLAttributes<HTMLTableCellElement>;
 
-const SORT_ICON = {
-  ascending: <ChevronUpIcon />,
-  descending: <ChevronDownIcon />,
-};
-
 export const TableHeaderCell = React.forwardRef<
   HTMLTableCellElement,
   TableHeaderCellProps
@@ -42,6 +42,13 @@ export const TableHeaderCell = React.forwardRef<
     { sortable = false, sort, onSortClick, className, children, ...rest },
     ref,
   ) => {
+    const sortIcon =
+      sort === 'ascending' || sort === 'descending' ? (
+        SORT_ICON[sort]
+      ) : (
+        <ChevronUpDownIcon />
+      );
+
     return (
       <th
         className={cl(
@@ -60,11 +67,7 @@ export const TableHeaderCell = React.forwardRef<
             onClick={onSortClick}
           >
             {children}
-            {sort === 'ascending' || sort === 'descending' ? (
-              SORT_ICON[sort]
-            ) : (
-              <ChevronUpDownIcon />
-            )}
+            {sortIcon}
           </button>
         )}
 
