@@ -95,24 +95,24 @@
 /* Only use hover for non-touch devices to prevent sticky-hovering
   "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
 @media (hover: hover) and (pointer: fine) {
-  .container:not(.readonly) > .label:hover,
-  .container:not(.readonly) > .input:hover + .label {
+  .container:not(.readonly, .disabled) > .label:hover,
+  .container:not(.readonly, .disabled) > .input:hover + .label {
     color: var(--fds-semantic-text-action-hover);
   }
 
-  .container:not(.readonly) > .input:hover:not(:checked) + .label::before {
+  .container:not(.readonly, .disabled) > .input:hover:not(:checked) + .label::before {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
   }
 
-  .container:not(.readonly) > .input:hover:checked + .label::before {
+  .container:not(.readonly, .disabled) > .input:hover:checked + .label::before {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
   }
 
-  .container:not(.readonly) > .input:hover:checked:focus-visible + .label::before {
+  .container:not(.readonly, .disabled) > .input:hover:checked:focus-visible + .label::before {
     box-shadow: var(--fds-radio-border__hover), inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
       inset 0 0 0 6px var(--fds-radio-background);
   }
