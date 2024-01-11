@@ -118,13 +118,7 @@ export const Sortable: Story = (args) => {
           >
             Navn
           </TableHeaderCell>
-          <TableHeaderCell
-            sortable
-            sort={sortField === 'epost' ? sortDirection : undefined}
-            onClick={() => handleSort('epost')}
-          >
-            Epost
-          </TableHeaderCell>
+          <TableHeaderCell>Epost</TableHeaderCell>
           <TableHeaderCell
             sortable
             sort={sortField === 'telefon' ? sortDirection : undefined}
@@ -146,3 +140,39 @@ export const Sortable: Story = (args) => {
     </Table>
   );
 };
+
+export const StickyHeader: Story = (args) => {
+  const rows = Array.from({ length: 50 }, (_, i) => i + 1);
+  return (
+    <Table {...args}>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>Header 1</TableHeaderCell>
+          <TableHeaderCell>Header 2</TableHeaderCell>
+          <TableHeaderCell>Header 3</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row}>
+            <TableCell>{`Cell ${row}1`}</TableCell>
+            <TableCell>{`Cell ${row}2`}</TableCell>
+            <TableCell>{`Cell ${row}3`}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
+StickyHeader.args = {
+  stickyHeader: true,
+};
+
+StickyHeader.decorators = [
+  (Story) => (
+    <div style={{ height: '300px', overflow: 'auto' }}>
+      <Story />
+    </div>
+  ),
+];

@@ -16,10 +16,25 @@ export type TableProps = {
    * @default false
    */
   zebra?: boolean;
+  /**
+   * If true, the table will have a sticky header
+   * @default false
+   */
+  stickyHeader?: boolean;
 } & React.HTMLAttributes<HTMLTableElement>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  ({ zebra = false, size = 'medium', className, children, ...rest }, ref) => {
+  (
+    {
+      zebra = false,
+      size = 'medium',
+      stickyHeader = false,
+      className,
+      children,
+      ...rest
+    },
+    ref,
+  ) => {
     return (
       <Paragraph
         as='table'
@@ -28,6 +43,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
         className={cl(
           classes[size],
           zebra && classes.zebra,
+          stickyHeader && classes.stickyHeader,
           classes.table,
           className,
         )}
