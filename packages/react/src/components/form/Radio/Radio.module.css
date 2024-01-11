@@ -1,5 +1,5 @@
 .container {
-  --fds-radio-icon-size: 1.75rem;
+  --fds-radio-size: 1.75rem;
   --fds-radio-focus-border-width: 3px;
   --fds-radio-background: var(--fds-semantic-background-default);
   --fds-radio-border-color: var(--fds-semantic-border-input-default);
@@ -21,8 +21,8 @@
 /* Radio */
 .label::before {
   content: '';
-  width: var(--fds-radio-icon-size);
-  height: var(--fds-radio-icon-size);
+  width: var(--fds-radio-size);
+  height: var(--fds-radio-size);
   box-shadow: inset 0 0 0 2px var(--fds-radio-border-color);
   background: var(--fds-radio-background);
   border-radius: 50%;
@@ -32,7 +32,7 @@
 }
 
 .description {
-  padding-left: calc(var(--fds-radio-icon-size) + 12px + var(--fds-spacing-1));
+  padding-left: calc(var(--fds-radio-size) + 12px + var(--fds-spacing-1));
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
@@ -136,7 +136,7 @@
 }
 
 .small {
-  --fds-radio-icon-size: 1.5rem;
+  --fds-radio-size: 1.5rem;
 
   min-width: var(--fds-sizing-8);
 }
@@ -147,7 +147,7 @@
 }
 
 .medium {
-  --fds-radio-icon-size: 1.75rem;
+  --fds-radio-size: 1.75rem;
 
   min-width: var(--fds-sizing-10);
 }
@@ -158,7 +158,7 @@
 }
 
 .large {
-  --fds-radio-icon-size: 2rem;
+  --fds-radio-size: 2rem;
 
   min-width: var(--fds-sizing-12);
 }
