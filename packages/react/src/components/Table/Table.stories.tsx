@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+
+import { Checkbox } from '../form/Checkbox';
+import { Textfield } from '../form/Textfield';
 
 import type { TableHeaderCellProps } from './TableHeaderCell';
 
@@ -176,3 +180,78 @@ StickyHeader.decorators = [
     </div>
   ),
 ];
+
+type CheckedItems = {
+  [key: number]: boolean;
+};
+
+export const WithFormElements: Story = (args) => {
+  const rows = Array.from({ length: 3 }, (_, i) => i + 1);
+  const [headerChecked, setHeaderChecked] = useState(false);
+  const [checkedItems, setCheckedItems] = useState<CheckedItems>({
+    1: false,
+    2: false,
+    3: false,
+  });
+
+  useEffect(() => {
+    const allChecked = Object.values(checkedItems).every((item) => item);
+    setHeaderChecked(allChecked);
+  }, [checkedItems]);
+
+  const handleHeaderCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setHeaderChecked(event.target.checked);
+    setCheckedItems(
+      rows.reduce(
+        (acc: CheckedItems, row) => ({ ...acc, [row]: event.target.checked }),
+        {},
+      ),
+    );
+  };
+
+  const handleCheckboxChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    row: number,
+  ) => {
+    setCheckedItems({ ...checkedItems, [row]: event.target.checked });
+  };
+
+  return (
+    <Table {...args}>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>
+            <Checkbox
+              checked={headerChecked}
+              onChange={handleHeaderCheckboxChange}
+              value='all'
+              size='small'
+            />
+          </TableHeaderCell>
+          <TableHeaderCell>Header 1</TableHeaderCell>
+          <TableHeaderCell>Header 2</TableHeaderCell>
+          <TableHeaderCell>Header 3</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row}>
+            <TableCell>
+              <Checkbox
+                checked={!!checkedItems[row]}
+                value={row.toString()}
+                onChange={(event) => handleCheckboxChange(event, row)}
+                size='small'
+              />
+            </TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>2</TableCell>
+            <TableCell>
+              <Textfield size='small' />
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
