@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+
+import type { TableHeaderCellProps } from './TableHeaderCell';
 
 import {
   Table,
@@ -76,22 +78,64 @@ const dummyData = [
 ];
 
 export const Sortable: Story = (args) => {
+  const [sortField, setSortField] = useState<
+    keyof (typeof dummyData)[0] | null
+  >(null);
+  const [sortDirection, setSortDirection] =
+    useState<TableHeaderCellProps['sort']>(undefined);
+
+  const handleSort = (field: keyof (typeof dummyData)[0]) => {
+    if (sortField === field && sortDirection === 'descending') {
+      setSortField(null);
+      setSortDirection(undefined);
+    } else {
+      setSortField(field);
+      setSortDirection(
+        sortField === field && sortDirection === 'ascending'
+          ? 'descending'
+          : 'ascending',
+      );
+    }
+  };
+
+  const sortedData = [...dummyData].sort((a, b) => {
+    if (sortField === null) return 0;
+    if (a[sortField] < b[sortField])
+      return sortDirection === 'ascending' ? -1 : 1;
+    if (a[sortField] > b[sortField])
+      return sortDirection === 'ascending' ? 1 : -1;
+    return 0;
+  });
+
   return (
     <Table {...args}>
       <TableHead>
         <TableRow>
-          <TableHeaderCell sortable>Navn</TableHeaderCell>
-          <TableHeaderCell sortable>Epost</TableHeaderCell>
           <TableHeaderCell
             sortable
-            sort='descending'
+            sort={sortField === 'navn' ? sortDirection : undefined}
+            onClick={() => handleSort('navn')}
+          >
+            Navn
+          </TableHeaderCell>
+          <TableHeaderCell
+            sortable
+            sort={sortField === 'epost' ? sortDirection : undefined}
+            onClick={() => handleSort('epost')}
+          >
+            Epost
+          </TableHeaderCell>
+          <TableHeaderCell
+            sortable
+            sort={sortField === 'telefon' ? sortDirection : undefined}
+            onClick={() => handleSort('telefon')}
           >
             Telefon
           </TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {dummyData.map((row) => (
+        {sortedData.map((row) => (
           <TableRow key={row.id}>
             <TableCell>{row.navn}</TableCell>
             <TableCell>{row.epost}</TableCell>
