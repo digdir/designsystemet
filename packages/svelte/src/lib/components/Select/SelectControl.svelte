@@ -197,6 +197,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--fds-spacing-2);
+    width: 100%;
   }
 
   .clearAll {
