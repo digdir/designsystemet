@@ -84,10 +84,14 @@
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
 }
 
+.row:hover {
+  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+}
+
 .zebra .row {
   border-bottom: 0;
 }
 
-.zebra tr:nth-child(even) .cell {
+.zebra tr:nth-child(even):not(:hover) .cell {
   background-color: var(--fds-semantic-background-subtle);
 }
