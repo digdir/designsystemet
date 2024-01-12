@@ -106,8 +106,5 @@
   },
   "engines": {
     "node": ">=18.12.0"
-  },
-  "dependencies": {
-    "@tanstack/react-virtual": "^3.0.1"
   }
 }

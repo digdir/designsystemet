@@ -83,6 +83,7 @@ Preview.args = {
   disabled: false,
   hideLabel: false,
   hideChips: false,
+  virtual: false,
   description: 'Velg et sted',
   size: 'medium',
   label: 'Hvor går reisen?',

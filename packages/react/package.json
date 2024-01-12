@@ -35,6 +35,7 @@
     "react-number-format": "5.3.1"
   },
   "devDependencies": {
+    "@tanstack/react-virtual": "^3.0.1",
     "@types/fs-extra": "^11.0.4",
     "copyfiles": "^2.4.1",
     "cssnano": "^6.0.2",
