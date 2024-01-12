@@ -5,16 +5,11 @@
   text-align: left;
 
   --table-padding: 0;
+  --border-radius: var(--fds-border_radius-medium);
 }
 
 .table.stickyHeader {
   overflow: auto;
-}
-
-.table.border {
-  border-radius: var(--fds-border_radius-medium);
-  border: 1px solid var(--fds-semantic-border-neutral-default);
-  overflow: hidden;
 }
 
 .table.border .row:last-of-type td {
@@ -105,4 +100,31 @@
 
 .zebra tr:nth-child(even):not(:hover) .cell {
   background-color: var(--fds-semantic-background-subtle);
+}
+
+.table.border {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--fds-semantic-border-neutral-default);
+}
+
+.table.border .head .headerCell:first-of-type {
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.table.border .head .headerCell:last-of-type {
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.table.border .row:last-of-type .cell:first-of-type {
+  border-bottom-left-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.table.border .row:last-of-type .cell:last-of-type {
+  border-bottom-right-radius: var(--border-radius);
+  overflow: hidden;
 }

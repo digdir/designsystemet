@@ -177,7 +177,7 @@ StickyHeader.args = {
 
 StickyHeader.decorators = [
   (Story) => (
-    <div style={{ height: '300px', overflow: 'auto' }}>
+    <div style={{ height: '280px', overflow: 'auto' }}>
       <Story />
     </div>
   ),
