@@ -80,6 +80,11 @@ export type ComboboxProps = {
    */
   cleanButtonLabel?: string;
   /**
+   * If true, the combobox will be virtualized
+   * @default false
+   */
+  virtual?: boolean;
+  /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
@@ -118,6 +123,7 @@ export const Combobox = ({
   name,
   portal = true,
   htmlSize = 0,
+  virtual = false,
   children,
   style,
   filter = (inputValue, option) => {
@@ -454,31 +460,35 @@ export const Combobox = ({
               })}
               className={cl(classes.optionsWrapper, classes[size])}
             >
-              <div
-                style={{
-                  height: `${rowVirtualizer.getTotalSize()}px`,
-                  width: '100%',
-                  position: 'relative',
-                }}
-              >
-                {/* Render the virtualized rows */}
-                {rowVirtualizer.getVirtualItems().map((virtualRow) => (
-                  <div
-                    key={virtualRow.index}
-                    ref={rowVirtualizer.measureElement}
-                    data-index={virtualRow.index}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      transform: `translateY(${virtualRow.start}px)`,
-                    }}
-                  >
-                    {optionsChildren[virtualRow.index]}
-                  </div>
-                ))}
-              </div>
+              {virtual && (
+                <div
+                  style={{
+                    height: `${rowVirtualizer.getTotalSize()}px`,
+                    width: '100%',
+                    position: 'relative',
+                  }}
+                >
+                  {/* Render the virtualized rows */}
+                  {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+                    <div
+                      key={virtualRow.index}
+                      ref={rowVirtualizer.measureElement}
+                      data-index={virtualRow.index}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        transform: `translateY(${virtualRow.start}px)`,
+                      }}
+                    >
+                      {optionsChildren[virtualRow.index]}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!virtual && optionsChildren}
               {/* Add the rest of the children */}
               {restChildren}
             </Box>
