@@ -12,7 +12,7 @@
 }
 
 .table.border {
-  border-radius: var(--fds-border_radius-large);
+  border-radius: var(--fds-border_radius-medium);
   border: 1px solid var(--fds-semantic-border-neutral-default);
   overflow: hidden;
 }
@@ -38,6 +38,7 @@
   box-sizing: border-box;
   font: inherit;
   border-spacing: 0;
+  font-weight: 500;
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
 }
 
