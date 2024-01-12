@@ -399,3 +399,35 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
     </>
   );
 };
+
+export const Virtualized: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <Combobox
+      {...args}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+      }}
+    >
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {data.map((item, index) => (
+        <Combobox.Option
+          key={index}
+          value={item.targetName}
+          description={`Orgnr.: ${item.sourceCode}`}
+        >
+          {item.targetName}
+        </Combobox.Option>
+      ))}
+    </Combobox>
+  );
+};
+
+Virtualized.args = {
+  multiple: false,
+  virtual: true,
+  size: 'medium',
+  label: 'Hvor går reisen?',
+};
