@@ -22,7 +22,7 @@ export type TableProps = {
    */
   stickyHeader?: boolean;
   /**
-   * If true, the table will have a border
+   * If true, the table will have a rounded border
    * @default false
    */
   border?: boolean;
