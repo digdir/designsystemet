@@ -80,7 +80,8 @@ export type ComboboxProps = {
    */
   cleanButtonLabel?: string;
   /**
-   * If true, the combobox will be virtualized
+   * Enables virtualizing of options list.
+   * @see https://tanstack.com/virtual
    * @default false
    */
   virtual?: boolean;
