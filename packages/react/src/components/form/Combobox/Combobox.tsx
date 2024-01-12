@@ -23,6 +23,7 @@ import type {
   UseFloatingReturn,
   UseListNavigationProps,
 } from '@floating-ui/react';
+import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
@@ -338,6 +339,16 @@ export const Combobox = ({
 
   const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
 
+  const rowVirtualizer = useVirtualizer({
+    count: optionsChildren.length,
+    getScrollElement: () => refs.floating.current,
+    estimateSize: () => 40,
+    measureElement: (elem) => {
+      return elem.getBoundingClientRect().height;
+    },
+    overscan: 1,
+  });
+
   return (
     <ComboboxContext.Provider
       value={{
@@ -443,8 +454,31 @@ export const Combobox = ({
               })}
               className={cl(classes.optionsWrapper, classes[size])}
             >
-              {/* Map our children, and add props if it is a ComboboxOption */}
-              {optionsChildren}
+              <div
+                style={{
+                  height: `${rowVirtualizer.getTotalSize()}px`,
+                  width: '100%',
+                  position: 'relative',
+                }}
+              >
+                {/* Render the virtualized rows */}
+                {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+                  <div
+                    key={virtualRow.index}
+                    ref={rowVirtualizer.measureElement}
+                    data-index={virtualRow.index}
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      transform: `translateY(${virtualRow.start}px)`,
+                    }}
+                  >
+                    {optionsChildren[virtualRow.index]}
+                  </div>
+                ))}
+              </div>
               {/* Add the rest of the children */}
               {restChildren}
             </Box>
