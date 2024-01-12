@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.45.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.44.0...@digdir/design-system-react@0.45.0) (2024-01-10)
+
+### Bug Fixes
+
+- **Combobox:** Pressing `enter` on clear button does not work ([#1354](https://github.com/digdir/designsystemet/issues/1354)) ([884eca7](https://github.com/digdir/designsystemet/commit/884eca74fa41d3e21d2117fbb260fb3a0489d46b))
+- **Combobox:** Removing a chip with `enter` selects a value from the list ([#1352](https://github.com/digdir/designsystemet/issues/1352)) ([907a85d](https://github.com/digdir/designsystemet/commit/907a85dba91d23fe9a701637b0b921b70f3bfb3c))
+
+### Features
+
+- **Combobox:** Disable looping when navigating list with keyboard ([#1344](https://github.com/digdir/designsystemet/issues/1344)) ([8bf82d0](https://github.com/digdir/designsystemet/commit/8bf82d05d3e60896fc3a9d1a7685dabf206d513c))
+- **Tag:** New Tag design ([#1335](https://github.com/digdir/designsystemet/issues/1335)) ([7640fad](https://github.com/digdir/designsystemet/commit/7640fad5b5c41318b0abd9e2938a89f6068e99ad))
+
 # [0.44.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.43.0...@digdir/design-system-react@0.44.0) (2024-01-05)
 
 ### Bug Fixes
