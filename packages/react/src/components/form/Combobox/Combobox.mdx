@@ -37,6 +37,13 @@ Den bruker native `select`-elementer under panseret, så du kan bruke
 
 <Canvas of={ComboboxStories.SelectAll} />
 
+## Virtualisert
+
+Lista med elementer kan bli veldig lang, så det kan være lurt å virtualisere.
+Det gjør du ved å sette `virtualized` til `true` på `Combobox`.
+
+<Canvas of={ComboboxStories.Virtualized} />
+
 ### `Combobox.Option`
 
 Brukes som direkte barn av `Combobox` for å vise et element i listen.
