@@ -74,7 +74,6 @@ module.exports = {
     ],
   },
   settings: {
-    'mdx/code-blocks': true,
     react: {
       version: '18',
     },
