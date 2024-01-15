@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
 import { Paragraph } from '../Typography';
 import { Divider } from '../Divider';
-import { LegacySelect } from '../legacy/LegacySelect/';
+import { Combobox } from '../index';
 
 import { Modal } from '.';
 
@@ -177,56 +177,6 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const defaultArgs = {
-  label: 'Velg et fylke',
-  multiple: false,
-  options: [
-    {
-      label: 'Agder',
-      value: 'Agd',
-      keywords: ['agder', 'aust-agder', 'vest-agder'],
-    },
-    {
-      label: 'Innlandet',
-      value: 'Inn',
-      keywords: ['innlandet', 'hedmark', 'oppland'],
-    },
-    {
-      label: 'Møre og Romsdal',
-      value: 'MoR',
-      keywords: ['møre og romsdal', 'møre', 'romsdal'],
-    },
-    { label: 'Nordland', value: 'Nor', keywords: ['nordland'] },
-    { label: 'Oslo', value: 'Osl', keywords: ['oslo'] },
-    { label: 'Rogaland', value: 'Rog', keywords: ['rogaland'] },
-    {
-      label: 'Vestfold og Telemark',
-      value: 'VoT',
-      keywords: ['vestfold og telemark', 'vestfold', 'telemark'],
-    },
-    {
-      label: 'Troms og Finnmark',
-      value: 'ToF',
-      keywords: ['troms og finnmark', 'troms', 'finnmark'],
-    },
-    {
-      label: 'Trøndelag',
-      value: 'Trø',
-      keywords: ['trøndelag', 'nord-trøndelag', 'sør-trøndelag'],
-    },
-    {
-      label: 'Vestland',
-      value: 'Ves',
-      keywords: ['vestland', 'hordaland', 'sogn og fjordane'],
-    },
-    {
-      label: 'Viken',
-      value: 'Vik',
-      keywords: ['viken', 'østfold', 'akershus', 'buskerud'],
-    },
-  ],
-};
-
 export const ModalWithSelect: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -239,10 +189,17 @@ export const ModalWithSelect: StoryFn<typeof Modal> = () => {
       >
         <Modal.Header>Modal med select</Modal.Header>
         <Modal.Content>
-          <LegacySelect
-            portal={false}
-            {...{ ...defaultArgs }}
-          ></LegacySelect>
+          <Combobox portal={false}>
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
+            <Combobox.Option value='oslo'>Oslo</Combobox.Option>
+            <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
+            <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
+            <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
+            <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
+            <Combobox.Option value='bergen'>Bergen</Combobox.Option>
+            <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
+          </Combobox>
         </Modal.Content>
         <Modal.Footer>
           <Button
