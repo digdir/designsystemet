@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.46.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.45.0...@digdir/design-system-react@0.46.0) (2024-01-15)
+
+### Features
+
+- **Combobox:** Virtualize options ([#1375](https://github.com/digdir/designsystemet/issues/1375)) ([608c066](https://github.com/digdir/designsystemet/commit/608c066c55402d6fa56068e78587f6ee642befb7))
+- **HelpText:** :sparkles: Add portal support ([#1367](https://github.com/digdir/designsystemet/issues/1367)) ([d8b201d](https://github.com/digdir/designsystemet/commit/d8b201d85400912012c5d1326700948b1b56d23b))
+- **Table:** ✨ Make the component ([#1364](https://github.com/digdir/designsystemet/issues/1364)) ([8c2ddad](https://github.com/digdir/designsystemet/commit/8c2ddadefdf8c64abff32aa32b332adfaf6fcff9))
+- **Table:** 🗑️ Change `Table` to legacy ([#1357](https://github.com/digdir/designsystemet/issues/1357)) ([e3da112](https://github.com/digdir/designsystemet/commit/e3da112d56a25f276f628808dee34bc7c9471ea6))
+
 # [0.45.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.44.0...@digdir/design-system-react@0.45.0) (2024-01-10)
 
 ### Bug Fixes
