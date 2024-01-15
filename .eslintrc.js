@@ -40,8 +40,13 @@ module.exports = {
       extends: ['plugin:@next/next/recommended'],
     },
     {
-      extends: 'plugin:mdx/recommended',
+      // MDX files
+      extends: ['plugin:mdx/recommended'],
       files: ['**/*.md?(x)'],
+      // ignore the spacing.mdx file
+      settings: {
+        'mdx/code-blocks': false,
+      },
       rules: {
         // it can't read @components or @layouts in imports
         'import/no-unresolved': ['warn'],

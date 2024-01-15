@@ -177,7 +177,7 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const defaultArgs = {
+export const DefaultArgs = {
   label: 'Velg et fylke',
   multiple: false,
   options: [
@@ -241,7 +241,7 @@ export const ModalWithSelect: StoryFn<typeof Modal> = () => {
         <Modal.Content>
           <LegacySelect
             portal={false}
-            {...{ ...defaultArgs }}
+            {...{ ...DefaultArgs }}
           ></LegacySelect>
         </Modal.Content>
         <Modal.Footer>

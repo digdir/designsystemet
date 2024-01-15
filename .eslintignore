@@ -6,3 +6,7 @@ storybook-static/
 packages/tokens/brand/**/*
 tsc-build/
 .storybook
+
+# We need to ignore these until eslint-plugin-mdx fixes the error "Parsing error: Expected value to be truthy"
+spacing.mdx
+sizing.mdx
