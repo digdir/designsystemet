@@ -39,6 +39,10 @@ module.exports = {
       files: ['storefront/**/*'],
       extends: ['plugin:@next/next/recommended'],
     },
+    {
+      extends: 'plugin:mdx/recommended',
+      files: ['**/*.md?(x)'],
+    },
   ],
   rules: {
     // https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
@@ -70,6 +74,7 @@ module.exports = {
     ],
   },
   settings: {
+    'mdx/code-blocks': true,
     react: {
       version: '18',
     },
