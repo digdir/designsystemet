@@ -42,6 +42,10 @@ module.exports = {
     {
       extends: 'plugin:mdx/recommended',
       files: ['**/*.md?(x)'],
+      rules: {
+        // it can't read @components or @layouts in imports
+        'import/no-unresolved': ['warn'],
+      },
     },
   ],
   rules: {

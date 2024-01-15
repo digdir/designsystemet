@@ -1,15 +1,8 @@
-import {
-  Meta,
-  Grid,
-  NavigationCard,
-  TeaserCard,
-  Container,
-  ImageSection,
-} from '@components';
+import { Meta, Grid, TeaserCard } from '@components';
 import { NavPageLayout } from '@layouts';
-import { BranchingIcon, ImageIcon } from '@navikt/aksel-icons';
+import { BranchingIcon } from '@navikt/aksel-icons';
 
-export default ({ children, menu }) => (
+export default ({ children }) => (
   <NavPageLayout
     content={children}
     data={{

@@ -96,22 +96,21 @@ Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 `Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
 
-<Stack direction="row" style={{
-  justifyContent: 'unset',
-  alignItems: 'unset'
-}}>
+<Stack
+  direction='row'
+  style={{
+    justifyContent: 'unset',
+    alignItems: 'unset',
+  }}
+>
   <Do
     description='Plasser checkboxes vertikalt, slik at listen blir lettere å lese. '
     image='/img/component-guidelines/checkbox/CheckboxGroupV.png'
   />
-
-{' '}
-
-<Dont
-  description='Du bør unngå å plassere checkboxes i flere kolonner.'
-  image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
-/>
-
+  <Dont
+    description='Du bør unngå å plassere checkboxes i flere kolonner.'
+    image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
+  />
 </Stack>
 
 <br />
