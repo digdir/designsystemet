@@ -47,16 +47,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {...omit(['size', 'error'], rest)}
           {...inputProps}
         />
-        {children && (
-          <Label
-            className={classes.label}
-            htmlFor={inputProps.id}
-            size={size}
-            weight='regular'
-          >
-            <span>{children}</span>
-          </Label>
-        )}
+        <Label
+          className={classes.label}
+          htmlFor={inputProps.id}
+          size={size}
+          weight='regular'
+        >
+          <span>{children}</span>
+        </Label>
         {description && (
           <Paragraph
             id={descriptionId}
