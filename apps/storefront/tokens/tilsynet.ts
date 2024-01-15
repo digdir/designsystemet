@@ -744,7 +744,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#ffffff',
+      value: '{colors.white}',
       type: 'color',
     },
     name: '--fds-semantic-surface-on_inverted-default',
@@ -1394,7 +1394,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#ffffff',
+      value: '{colors.white}',
       type: 'color',
     },
     name: '--fds-semantic-border-on_inverted-default',
@@ -1407,7 +1407,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#00315d',
+      value: '{colors.blue.900}',
       type: 'color',
     },
     name: '--fds-semantic-border-input-default',
@@ -1420,7 +1420,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#0062ba',
+      value: '{colors.blue.700}',
       type: 'color',
     },
     name: '--fds-semantic-border-input-hover',
@@ -1602,7 +1602,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#084826',
+      value: '{colors.green.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-success-hover',
@@ -1615,7 +1615,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#084826',
+      value: '{colors.green.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-success-active',
@@ -1641,7 +1641,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#1e2b3c',
+      value: '{colors.grey.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-success-on_success_subtle',
@@ -1706,7 +1706,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#004e95',
+      value: '{colors.blue.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-hover',
@@ -1719,7 +1719,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#00315d',
+      value: '{colors.blue.900}',
       type: 'color',
     },
     name: '--fds-semantic-text-action-active',
@@ -1896,12 +1896,12 @@ export const color = [
     path: ['semantic', 'text', 'danger', 'default'],
   },
   {
-    value: '#861c2c',
+    value: '#b3253a',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#861c2c',
+      value: '{colors.red.600}',
       type: 'color',
     },
     name: '--fds-semantic-text-danger-hover',
@@ -1914,7 +1914,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#5a121d',
+      value: '{colors.red.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-danger-active',
@@ -1940,7 +1940,7 @@ export const color = [
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '#1e2b3c',
+      value: '{colors.grey.800}',
       type: 'color',
     },
     name: '--fds-semantic-text-danger-on_danger_subtle',
