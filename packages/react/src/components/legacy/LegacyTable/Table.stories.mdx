@@ -1,4 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/blocks';
+
+import { TokensTable, Information } from '../../../../../../docs-components';
+
+import { exampleRows } from './ExampleData';
+import classes from './Table.stories.module.css';
+
 import {
   LegacyTable,
   LegacyTableBody,
@@ -7,9 +13,6 @@ import {
   LegacyTableHeader,
   LegacyTableRow,
 } from './';
-import { TokensTable, Information } from '../../../../../../docs-components';
-import { exampleRows } from './ExampleData';
-import classes from './Table.stories.module.css';
 
 <Meta
   title='Avviklet/LegacyTable'
