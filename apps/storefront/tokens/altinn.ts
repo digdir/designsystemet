@@ -1896,12 +1896,12 @@ export const color = [
     path: ['semantic', 'text', 'danger', 'default'],
   },
   {
-    value: '#b3253a',
+    value: '#861c2c',
     type: 'color',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
-      value: '{colors.red.600}',
+      value: '{colors.red.700}',
       type: 'color',
     },
     name: '--fds-semantic-text-danger-hover',
