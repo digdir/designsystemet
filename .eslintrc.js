@@ -88,6 +88,7 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
+        alwaysTryTypes: true,
         project: ['./tsconfig.json', './apps/*/tsconfig.json'],
       },
     },
