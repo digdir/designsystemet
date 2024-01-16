@@ -412,7 +412,7 @@
           "type": "color"
         },
         "hover": {
-          "value": "{colors.red.600}",
+          "value": "{colors.red.700}",
           "type": "color"
         },
         "active": {
