@@ -43,7 +43,6 @@ module.exports = {
       // MDX files
       extends: ['plugin:mdx/recommended'],
       files: ['**/*.md?(x)'],
-      // ignore the spacing.mdx file
       settings: {
         'mdx/code-blocks': false,
       },
@@ -85,7 +84,7 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
-        project: ['./tsconfig.json', './apps/*/tsconfig.json'],
+        project: ['./apps/*/tsconfig.json'],
       },
     },
   },
