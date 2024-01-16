@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.0...@digdir/design-system-react@0.46.1) (2024-01-16)
+
+### Bug Fixes
+
+- **NativeSelect:** Fix `readOnly` not disabling element ([#1391](https://github.com/digdir/designsystemet/issues/1391)) ([f6f693e](https://github.com/digdir/designsystemet/commit/f6f693e9a2a932f6295405d0e95e3ae2b8335150))
+
 # [0.46.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.45.0...@digdir/design-system-react@0.46.0) (2024-01-15)
 
 ### Features
