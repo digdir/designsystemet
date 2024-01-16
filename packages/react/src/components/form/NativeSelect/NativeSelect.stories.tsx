@@ -28,6 +28,8 @@ export const Preview: StoryFn<typeof NativeSelect> = (args) => (
 Preview.args = {
   label: 'Velg et fjell',
   size: 'medium',
+  disabled: false,
+  readOnly: false,
 };
 
 export const Disabled: StoryFn<typeof NativeSelect> = (args) => (
