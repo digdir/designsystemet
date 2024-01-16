@@ -47,10 +47,6 @@ module.exports = {
       settings: {
         'mdx/code-blocks': false,
       },
-      rules: {
-        // it can't read @components or @layouts in imports
-        'import/no-unresolved': ['warn'],
-      },
     },
   ],
   rules: {
