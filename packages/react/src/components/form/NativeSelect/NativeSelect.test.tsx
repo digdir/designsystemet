@@ -68,6 +68,11 @@ describe('NativeSelect', () => {
     expect(screen.getByRole('combobox')).toBeDisabled();
   });
 
+  it('should be disabled when "readOnly" is true', () => {
+    render({ readOnly: true });
+    expect(screen.getByRole('combobox')).toBeDisabled();
+  });
+
   it('Sets the ref on the select element if given', () => {
     const ref = createRef<HTMLSelectElement>();
     render({}, ref);
