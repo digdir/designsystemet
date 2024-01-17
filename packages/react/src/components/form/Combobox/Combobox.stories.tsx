@@ -333,7 +333,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
           marginBottom: '2rem',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 'var(--fds-spacing-1)',
+          gap: 'var(--fds-spacing-2)',
         }}
       >
         {value.map((item, index) => (
