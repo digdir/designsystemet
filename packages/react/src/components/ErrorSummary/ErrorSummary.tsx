@@ -13,12 +13,25 @@ type ErrorSummaryProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ErrorSummary = React.forwardRef<HTMLDivElement, ErrorSummaryProps>(
-  ({ size, heading, role, children, ...rest }, ref) => {
+  (
+    {
+      size,
+      heading,
+      role = 'alert',
+      'aria-live': ariaLive = 'polite',
+      'aria-relevant': ariaRelevant = 'all',
+      children,
+      ...rest
+    },
+    ref,
+  ) => {
     return (
       <div
         className={cl(classes.errorSummary)}
         ref={ref}
-        role={role ?? 'alert'}
+        role={role}
+        aria-live={ariaLive}
+        aria-relevant={ariaRelevant}
         {...rest}
       >
         <List
