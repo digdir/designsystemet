@@ -225,7 +225,9 @@
 
   .modal.alert {
     background: var(--semantic-surface-neutral-default, #fff);
-    box-shadow: 6px 6px 0px -5px #e02e49;
+    border-right: 2px solid #e02e49;
+    border-bottom: 2px solid #e02e49;
+    /* box-shadow: 6px 6px 0px -5px #e02e49, 0px 0px 0px -5px #e02e49; */
   }
 
   .modal-header {
