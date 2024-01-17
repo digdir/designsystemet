@@ -34,6 +34,10 @@ export type ListProps = {
    * @default 2
    */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /**
+   * Id of the heading
+   */
+  headingId?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const List = ({
@@ -42,9 +46,10 @@ export const List = ({
   size = 'medium',
   heading,
   headingLevel = 2,
+  headingId,
   ...rest
 }: ListProps) => {
-  const headingId = useId();
+  const hId = useId();
 
   const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
@@ -54,7 +59,7 @@ export const List = ({
         <Heading
           size={headingSize}
           level={headingLevel}
-          id={headingId}
+          id={headingId ?? hId}
           className={classes.heading}
         >
           {heading}
@@ -65,7 +70,7 @@ export const List = ({
         size={size}
         className={cl(classes.list)}
         role='list'
-        {...(heading ? { 'aria-labelledby': headingId } : {})}
+        {...(heading ? { 'aria-labelledby': headingId ?? hId } : {})}
       >
         {children}
       </Paragraph>
