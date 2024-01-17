@@ -1,0 +1,5 @@
+.errorSummary {
+  padding: var(--fds-spacing-6) var(--fds-spacing-8);
+  border-radius: var(--fds-border_radius-large);
+  background-color: var(--fds-semantic-surface-danger-subtle);
+}
