@@ -3,3 +3,7 @@
   border-radius: var(--fds-border_radius-large);
   background-color: var(--fds-semantic-surface-danger-subtle);
 }
+
+.errorSummary a {
+  color: var(--fds-semantic-text-neutral-default);
+}
