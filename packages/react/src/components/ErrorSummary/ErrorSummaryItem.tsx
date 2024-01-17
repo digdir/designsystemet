@@ -20,3 +20,5 @@ export const ErrorSummaryItem = ({
     </ListItem>
   );
 };
+
+ErrorSummaryItem.displayName = 'ErrorSummary.Item';

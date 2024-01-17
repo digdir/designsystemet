@@ -2,8 +2,8 @@ import type { HTMLAttributes } from 'react';
 import React from 'react';
 import cl from 'clsx';
 
+import type { ListProps } from '../List';
 import { List } from '../List';
-import type { ListProps } from '../../../dist/types';
 
 import classes from './ErrorSummary.module.css';
 

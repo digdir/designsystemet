@@ -7,3 +7,7 @@
 .errorSummary a {
   color: var(--fds-semantic-text-neutral-default);
 }
+
+.errorSummary li:last-of-type {
+  margin-bottom: 0;
+}

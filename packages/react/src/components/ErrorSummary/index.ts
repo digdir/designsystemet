@@ -9,6 +9,4 @@ const ErrorSummary = ErrorSummaryRoot as ErrorSummaryComponent;
 
 ErrorSummary.Item = ErrorSummaryItem;
 
-ErrorSummary.Item.displayName = 'ErrorSummary.Item';
-
 export { ErrorSummary, ErrorSummaryItem };
