@@ -17,7 +17,7 @@ export const GithubLink = ({ ...rest }: GithubLinkProps) => {
       <Image
         height={20}
         width={20}
-        alt=''
+        alt='github logo'
         src='/img/logos/github-logo.svg'
       />
       Rediger denne siden på Github
