@@ -1,6 +1,8 @@
-import { Meta, Controls, Primary } from '@storybook/blocks';
+import { Meta, Controls, Primary, ArgsTable, Canvas } from '@storybook/blocks';
 
 import * as ErrorSummaryStories from './ErrorSummary.stories';
+
+import { ErrorSummary } from './';
 
 <Meta of={ErrorSummaryStories} />
 
@@ -8,3 +10,11 @@ import * as ErrorSummaryStories from './ErrorSummary.stories';
 
 <Primary />
 <Controls />
+
+## Bruk med tekstfelt
+
+<Canvas of={ErrorSummaryStories.WithForm} />
+
+### `ErrorSummary.Item`
+
+<ArgsTable of={ErrorSummary.Item} />
