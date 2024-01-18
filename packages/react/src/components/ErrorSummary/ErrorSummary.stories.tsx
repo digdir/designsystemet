@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Textfield } from '../form/Textfield';
+import { Button } from '../Button';
 
 import { ErrorSummary } from './';
 
@@ -59,3 +60,23 @@ export const WithForm: Story = () => (
     </ErrorSummary>
   </div>
 );
+
+export const ShowHide: Story = () => {
+  const [show, setShow] = React.useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
+      {show && (
+        <ErrorSummary heading='For å gå videre må du rette opp følgende feil: '>
+          <ErrorSummary.Item href='#fornavn'>
+            Fornavn må være minst 2 tegn
+          </ErrorSummary.Item>
+          <ErrorSummary.Item href='#telefon'>
+            Telefonnummer kan kun inneholde siffer
+          </ErrorSummary.Item>
+        </ErrorSummary>
+      )}
+    </>
+  );
+};
