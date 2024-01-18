@@ -34,6 +34,10 @@ export type ListProps = {
    * @default 2
    */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /**
+   * Id of the heading
+   */
+  headingId?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const List = React.forwardRef<HTMLDivElement, ListProps>(
@@ -44,11 +48,13 @@ export const List = React.forwardRef<HTMLDivElement, ListProps>(
       size = 'medium',
       heading,
       headingLevel = 2,
+      headingId,
       ...rest
     },
     ref,
   ) => {
-    const headingId = useId();
+    const hId = useId();
+    const headId = headingId ?? `${hId}-heading`;
 
     const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
@@ -61,7 +67,7 @@ export const List = React.forwardRef<HTMLDivElement, ListProps>(
           <Heading
             size={headingSize}
             level={headingLevel}
-            id={headingId}
+            id={headId}
             className={classes.heading}
           >
             {heading}
@@ -72,7 +78,7 @@ export const List = React.forwardRef<HTMLDivElement, ListProps>(
           size={size}
           className={cl(classes.list)}
           role='list'
-          {...(heading ? { 'aria-labelledby': headingId } : {})}
+          {...(heading ? { 'aria-labelledby': headId } : {})}
         >
           {children}
         </Paragraph>
