@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React from 'react';
+import React, { useId } from 'react';
 import cl from 'clsx';
 
 import type { ListProps } from '../List';
@@ -25,6 +25,7 @@ export const ErrorSummary = React.forwardRef<HTMLDivElement, ErrorSummaryProps>(
     },
     ref,
   ) => {
+    const headingId = useId();
     return (
       <div
         className={cl(classes.errorSummary)}
@@ -32,10 +33,12 @@ export const ErrorSummary = React.forwardRef<HTMLDivElement, ErrorSummaryProps>(
         role={role}
         aria-live={ariaLive}
         aria-relevant={ariaRelevant}
+        aria-labelledby={headingId}
         {...rest}
       >
         <List
           heading={heading}
+          headingId={headingId}
           size={size}
         >
           {children}
