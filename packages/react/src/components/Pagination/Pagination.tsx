@@ -92,7 +92,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       <nav
         ref={ref}
         aria-label='Pagination'
-        role='navigation'
         {...rest}
       >
         <ul className={cl(classes.pagination, classes[size])}>
