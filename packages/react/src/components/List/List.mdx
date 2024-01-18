@@ -1,4 +1,6 @@
-import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
+import { Meta, Primary, Controls, Canvas, ArgsTable } from '@storybook/blocks';
+
+import { ListHeading } from './ListHeading';
 
 import * as ListStories from './List.stories';
 
@@ -9,9 +11,9 @@ import * as ListStories from './List.stories';
 <Primary />
 <Controls />
 
-## Med heading
+## Uten heading
 
-<Canvas of={ListStories.WithHeading} />
+<Canvas of={ListStories.WithoutHeading} />
 
 ## Avansert
 
@@ -20,3 +22,7 @@ import * as ListStories from './List.stories';
 ## List of links
 
 <Canvas of={ListStories.LinkList} />
+
+## `List.Heading`
+
+<ArgsTable of={ListHeading} />

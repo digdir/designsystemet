@@ -1,19 +1,11 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import React, { useId, useMemo } from 'react';
 import cl from 'clsx';
 
-import type { HeadingProps } from '../Typography';
-import { Heading, Paragraph } from '../Typography';
+import { Paragraph } from '../Typography';
 
 import classes from './List.module.css';
-
-const HEADING_SIZE_MAP: {
-  [key in NonNullable<ListProps['size']>]: HeadingProps['size'];
-} = {
-  small: 'xxsmall',
-  medium: 'xsmall',
-  large: 'small',
-} as const;
+import { ListHeading } from './ListHeading';
 
 export type ListProps = {
   /**
@@ -25,64 +17,59 @@ export type ListProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * Heading above the list
-   */
-  heading?: ReactNode;
-  /**
-   * Level of the heading
-   * @default 2
-   */
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  /**
-   * Id of the heading
-   */
-  headingId?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const List = React.forwardRef<HTMLDivElement, ListProps>(
-  (
-    {
-      children,
-      as = 'ul',
-      size = 'medium',
-      heading,
-      headingLevel = 2,
-      headingId,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ children, as = 'ul', size = 'medium', ...rest }, ref) => {
     const hId = useId();
-    const headId = headingId ?? `${hId}-heading`;
+    const [headingId, setHeadingId] = React.useState(hId);
 
-    const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
+    // get heading from children, and remove it from the list
+    const { heading, restItems } = useMemo(() => {
+      const [firstChild, ...restChildren] = React.Children.toArray(children);
+
+      let heading = null;
+      let restItems = [...restChildren];
+
+      if (React.isValidElement(firstChild) && firstChild.type === ListHeading) {
+        heading = firstChild;
+      } else {
+        restItems = [firstChild, ...restChildren];
+      }
+
+      return { heading, restItems };
+    }, [children]);
 
     return (
-      <div
-        {...rest}
-        ref={ref}
-      >
-        {heading && (
-          <Heading
-            size={headingSize}
-            level={headingLevel}
-            id={headId}
-            className={classes.heading}
-          >
-            {heading}
-          </Heading>
-        )}
-        <Paragraph
-          as={as}
-          size={size}
-          className={cl(classes.list)}
-          role='list'
-          {...(heading ? { 'aria-labelledby': headId } : {})}
+      <ListContext.Provider value={{ size, headingId, setHeadingId }}>
+        <div
+          {...rest}
+          ref={ref}
         >
-          {children}
-        </Paragraph>
-      </div>
+          {heading}
+          <Paragraph
+            as={as}
+            size={size}
+            className={cl(classes.list)}
+            role='list'
+            {...(heading ? { 'aria-labelledby': headingId } : {})}
+          >
+            {restItems}
+          </Paragraph>
+        </div>
+      </ListContext.Provider>
     );
   },
 );
+
+type ListContextType = {
+  size: NonNullable<ListProps['size']>;
+  headingId: string;
+  setHeadingId: (id: string) => void;
+};
+
+export const ListContext = React.createContext<ListContextType>({
+  size: 'medium',
+  headingId: 'heading',
+  setHeadingId: () => {},
+});

@@ -2,7 +2,7 @@ import React from 'react';
 import type { HTMLAttributes } from 'react';
 import cl from 'clsx';
 
-import classes from './ListItem.module.css';
+import classes from './List.module.css';
 
 export type ListItemProps = HTMLAttributes<HTMLLIElement>;
 

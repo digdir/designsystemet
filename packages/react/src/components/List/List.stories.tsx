@@ -23,6 +23,7 @@ export default {
 
 export const Preview: Story = (args) => (
   <List {...args}>
+    <List.Heading>List</List.Heading>
     <List.Item>List Item 1</List.Item>
     <List.Item>List Item 2</List.Item>
     <List.Item>List Item 3</List.Item>
@@ -34,11 +35,8 @@ Preview.args = {
   size: 'medium',
 };
 
-export const WithHeading: Story = (args) => (
-  <List
-    {...args}
-    heading='Hva vi kan ha til middag i dag'
-  >
+export const WithoutHeading: Story = (args) => (
+  <List {...args}>
     <List.Item>Lasagne</List.Item>
     <List.Item>Taco</List.Item>
     <List.Item>Pizza</List.Item>
@@ -47,7 +45,14 @@ export const WithHeading: Story = (args) => (
 
 export const Advanced: Story = (args) => (
   <List {...args}>
-    <List.Item>List Item 1</List.Item>
+    <List.Item>
+      List Item 1
+      <List as='ul'>
+        <List.Item>List Item 1.1</List.Item>
+        <List.Item>List Item 1.2</List.Item>
+        <List.Item>List Item 1.3</List.Item>
+      </List>
+    </List.Item>
     <List.Item>
       List Item 2
       <List as='ol'>
@@ -63,12 +68,12 @@ export const Advanced: Story = (args) => (
 export const LinkList: Story = (args) => (
   <List
     {...args}
-    heading='Designsystemet'
     style={{
       listStyle: 'none',
       paddingLeft: 0,
     }}
   >
+    <List.Heading>Designsystemet</List.Heading>
     <List.Item>
       <Link
         href='https://www.designsystemet.no/grunnleggende'
