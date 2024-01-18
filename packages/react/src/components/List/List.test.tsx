@@ -4,6 +4,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
+import { ListHeading } from './ListHeading';
 
 const render = (props: Partial<ListProps> = {}) => {
   const allProps: ListProps = {
@@ -47,12 +48,16 @@ describe('List', () => {
   });
 
   it('should have the passed heading', () => {
-    render({ heading: 'Test' });
+    render({
+      children: <ListHeading>Heading</ListHeading>,
+    });
     expect(screen.getByRole('heading')).toBeInTheDocument();
   });
 
   it('should have aria-labelledby when heading is passed', () => {
-    render({ heading: 'Test' });
+    render({
+      children: <ListHeading>Heading</ListHeading>,
+    });
     expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
   });
 });
