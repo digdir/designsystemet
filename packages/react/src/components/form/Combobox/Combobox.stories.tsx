@@ -14,6 +14,17 @@ import { Combobox } from './index';
 export default {
   title: 'Felles/Combobox',
   component: Combobox,
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          maxWidth: '30rem',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const PLACES = [
@@ -320,6 +331,9 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
       <div
         style={{
           marginBottom: '2rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--fds-spacing-2)',
         }}
       >
         {value.map((item, index) => (
