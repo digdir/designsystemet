@@ -40,40 +40,48 @@ export type ListProps = {
   headingId?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const List = ({
-  children,
-  as = 'ul',
-  size = 'medium',
-  heading,
-  headingLevel = 2,
-  headingId,
-  ...rest
-}: ListProps) => {
-  const hId = useId();
+export const List = React.forwardRef<HTMLDivElement, ListProps>(
+  (
+    {
+      children,
+      as = 'ul',
+      size = 'medium',
+      heading,
+      headingLevel = 2,
+      headingId,
+      ...rest
+    },
+    ref,
+  ) => {
+    const headingId = useId();
 
-  const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
+    const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
-  return (
-    <div {...rest}>
-      {heading && (
-        <Heading
-          size={headingSize}
-          level={headingLevel}
-          id={headingId ?? hId}
-          className={classes.heading}
-        >
-          {heading}
-        </Heading>
-      )}
-      <Paragraph
-        as={as}
-        size={size}
-        className={cl(classes.list)}
-        role='list'
-        {...(heading ? { 'aria-labelledby': headingId ?? hId } : {})}
+    return (
+      <div
+        {...rest}
+        ref={ref}
       >
-        {children}
-      </Paragraph>
-    </div>
-  );
-};
+        {heading && (
+          <Heading
+            size={headingSize}
+            level={headingLevel}
+            id={headingId ?? hId}
+            className={classes.heading}
+          >
+            {heading}
+          </Heading>
+        )}
+        <Paragraph
+          as={as}
+          size={size}
+          className={cl(classes.list)}
+          role='list'
+          {...(heading ? { 'aria-labelledby': headingId ?? hId } : {})}
+        >
+          {children}
+        </Paragraph>
+      </div>
+    );
+  },
+);
