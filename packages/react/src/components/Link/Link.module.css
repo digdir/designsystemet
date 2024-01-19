@@ -20,7 +20,7 @@
 }
 
 .link:active,
-.link:focus {
+.link:focus-visible {
   background: var(--fds-semantic-border-focus-outline);
   box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--fds-semantic-border-focus-boxshadow);
   color: var(--fds-semantic-text-action-active);
@@ -28,8 +28,8 @@
   text-decoration: none;
 }
 
-.link.inverted:not(:focus, :active),
-.link.inverted:not(:focus, :active):hover,
-.link.inverted:not(:focus, :active):visited {
+.link.inverted:not(:focus-visible, :active),
+.link.inverted:not(:focus-visible, :active):hover,
+.link.inverted:not(:focus-visible, :active):visited {
   color: white;
 }
