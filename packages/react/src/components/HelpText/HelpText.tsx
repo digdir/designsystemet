@@ -38,6 +38,8 @@ const HelpText = ({
   children,
   ...rest
 }: HelpTextProps) => {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <>
       <Popover
@@ -45,6 +47,8 @@ const HelpText = ({
         placement={placement}
         size={size}
         portal={portal}
+        open={open}
+        onOpenChange={(open) => setOpen(open)}
       >
         <Popover.Trigger asChild>
           <button
@@ -53,7 +57,7 @@ const HelpText = ({
               utilClasses.focusable,
               className,
             )}
-            aria-expanded={true}
+            aria-expanded={open}
             {...rest}
           >
             <HelpTextIcon
@@ -64,11 +68,11 @@ const HelpText = ({
                 classes[size],
                 className,
               )}
-              openState={true}
+              openState={open}
             />
             <HelpTextIcon
               className={cl(classes.helpTextIcon, classes[size], className)}
-              openState={true}
+              openState={open}
             />
             <span className={utilClasses.visuallyHidden}>{title}</span>
           </button>
