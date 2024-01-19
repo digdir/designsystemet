@@ -40,6 +40,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
       <Popover
         open={true}
         placement='top'
+        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -50,6 +51,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         open={true}
         placement='bottom'
         variant='danger'
+        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -60,6 +62,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         open={true}
         placement='top'
         variant='info'
+        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -70,6 +73,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         open={true}
         placement='bottom'
         variant='warning'
+        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
