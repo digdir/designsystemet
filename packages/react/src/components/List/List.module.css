@@ -9,3 +9,7 @@
 li > .list {
   margin-top: var(--fds-spacing-2);
 }
+
+.list .list {
+  margin-top: var(--fds-spacing-2);
+}
