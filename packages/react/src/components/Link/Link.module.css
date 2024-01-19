@@ -19,7 +19,6 @@
   text-decoration-thickness: max(2px, 0.125rem, 0.12em);
 }
 
-.link:active,
 .link:focus-visible {
   background: var(--fds-semantic-border-focus-outline);
   box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--fds-semantic-border-focus-boxshadow);
