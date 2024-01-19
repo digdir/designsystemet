@@ -25,16 +25,16 @@
       store.selectedTab.set(i);
       onChange(i);
     },
-    tabSize: writable('medium')
+    tabSize: writable('medium'),
   };
-  
+
   $: selectedTab = store.selectedTab;
   if (defaultValue) {
     store.selectedTab.set(defaultValue);
   }
   store.tabSize.set(size);
   $: onChange(selectedTab);
-  setContext('store', store);
+  setContext('tabsStore', store);
 </script>
 
 <div class="tabs">

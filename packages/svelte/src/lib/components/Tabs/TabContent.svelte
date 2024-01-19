@@ -7,7 +7,7 @@
    */
   export let value;
 
-  const { selectedTab, tabSize } = getContext('store');
+  const { selectedTab, tabSize } = getContext('tabsStore');
   let tabContentSize = $tabSize;
 </script>
 

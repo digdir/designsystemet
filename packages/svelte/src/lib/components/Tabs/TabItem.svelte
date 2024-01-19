@@ -12,7 +12,7 @@
    */
   export let icon = null;
 
-  const { selectedTab, select, tabSize } = getContext('store');
+  const { selectedTab, select, tabSize } = getContext('tabsStore');
   let tabButtonSize;
   let isSelected;
 
@@ -86,7 +86,7 @@
     align-items: flex-start;
     margin-bottom: 0.1875rem;
     scale: 1.4;
-    color: var(--fds-semantic-text-neutral-subtle)
+    color: var(--fds-semantic-text-neutral-subtle);
   }
   .no-icon {
     margin-bottom: -0.125rem;
@@ -101,7 +101,9 @@
   }
 
   button.active {
-    --fdsc-bottom-border-color: var(--fds-semantic-surface-action-first-default);
+    --fdsc-bottom-border-color: var(
+      --fds-semantic-surface-action-first-default
+    );
     color: var(--fds-semantic-text-neutral-default);
   }
 
