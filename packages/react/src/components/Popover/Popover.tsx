@@ -23,8 +23,8 @@ export type PopoverProps = {
    * @default small
    */
   size?: 'small' | 'medium' | 'large';
-  /** Callback function when popover closes */
-  onClose?: () => void;
+  /** Callback function when popover changes open state */
+  onOpenChange?: (open: boolean, setOpen: (open: boolean) => void) => void;
 } & PortalProps &
   HTMLAttributes<HTMLDivElement>;
 
@@ -34,11 +34,15 @@ export const Popover = ({
   open,
   variant = 'default',
   size = 'small',
-  onClose,
+  onOpenChange,
   portal,
 }: PopoverProps) => {
   const anchorEl = useRef<Element>(null);
   const [isOpen, setIsOpen] = React.useState(open ?? false);
+
+  React.useEffect(() => {
+    onOpenChange && onOpenChange(isOpen, setIsOpen);
+  }, [isOpen, onOpenChange, open]);
 
   return (
     <PopoverContext.Provider
@@ -50,7 +54,7 @@ export const Popover = ({
         size,
         variant,
         placement,
-        onClose,
+        onOpenChange,
       }}
     >
       {children}
@@ -66,7 +70,7 @@ export const PopoverContext = React.createContext<{
   size: NonNullable<PopoverProps['size']>;
   variant: NonNullable<PopoverProps['variant']>;
   placement: Placement;
-  onClose?: () => void;
+  onOpenChange?: PopoverProps['onOpenChange'];
 }>({
   size: 'small',
   variant: 'default',

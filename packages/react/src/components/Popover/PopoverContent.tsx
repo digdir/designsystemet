@@ -37,16 +37,8 @@ export type PopoverContentProps = {
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ className, children, style, ...rest }, ref) => {
-    const {
-      portal,
-      open,
-      size,
-      variant,
-      placement,
-      onClose,
-      setIsOpen,
-      anchorEl,
-    } = useContext(PopoverContext);
+    const { portal, open, size, variant, placement, setIsOpen, anchorEl } =
+      useContext(PopoverContext);
 
     const Container = portal ? FloatingPortal : React.Fragment;
 
@@ -63,10 +55,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     } = useFloating({
       placement,
       open,
-      onOpenChange: () => {
-        setIsOpen(false);
-        onClose && onClose();
-      },
+      onOpenChange: () => setIsOpen(false),
       whileElementsMounted: autoUpdate,
       elements: {
         reference: anchorEl.current,
