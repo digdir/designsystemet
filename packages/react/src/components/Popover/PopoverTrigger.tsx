@@ -16,16 +16,17 @@ export const PopoverTrigger = forwardRef<
 >(({ asChild, children, ...rest }: PopoverTriggerProps, ref) => {
   const Component = asChild ? Slot : Button;
 
-  const { anchorEl, open, setIsOpen } = useContext(PopoverContext);
+  const { anchorEl, internalOpen, setInternalOpen, open } =
+    useContext(PopoverContext);
   const mergedRefs = useMergeRefs([ref, anchorEl]);
 
   return (
     <Component
       ref={mergedRefs}
       onClick={() => {
-        setIsOpen(!open);
+        if (typeof open !== 'boolean') setInternalOpen(!internalOpen);
       }}
-      aria-expanded={open}
+      aria-expanded={internalOpen}
       {...rest}
     >
       {children}

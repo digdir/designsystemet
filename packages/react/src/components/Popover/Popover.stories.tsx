@@ -28,7 +28,6 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 Preview.args = {
   placement: 'top',
   variant: 'default',
-  open: false,
   size: 'medium',
 };
 
@@ -40,7 +39,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
       <Popover
         open={true}
         placement='top'
-        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -51,7 +49,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
         open={true}
         placement='bottom'
         variant='danger'
-        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -62,7 +59,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
         open={true}
         placement='top'
         variant='info'
-        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -73,7 +69,6 @@ export const Variants: StoryFn<typeof Popover> = () => {
         open={true}
         placement='bottom'
         variant='warning'
-        onOpenChange={(_, setOpen) => setOpen(true)}
       >
         <Popover.Trigger asChild>
           <span>popover</span>
@@ -86,16 +81,24 @@ export const Variants: StoryFn<typeof Popover> = () => {
 
 Variants.decorators = [marginDecorator];
 
-export const InteractiveContent: StoryFn<typeof Popover> = () => {
+export const Controlled: StoryFn<typeof Popover> = () => {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <>
-      <Popover>
-        <Popover.Trigger>My trigger</Popover.Trigger>
+      <Popover
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Popover.Trigger onClick={() => setOpen(!open)}>
+          My trigger
+        </Popover.Trigger>
         <Popover.Content>
           <Paragraph>Er du sikker på at du vil slette?</Paragraph>
           <Button
             size='small'
             color='danger'
+            onClick={() => setOpen(false)}
           >
             Slett
           </Button>
@@ -105,7 +108,7 @@ export const InteractiveContent: StoryFn<typeof Popover> = () => {
   );
 };
 
-InteractiveContent.decorators = [marginDecorator];
+Controlled.decorators = [marginDecorator];
 
 export const InPortal = () => {
   return (

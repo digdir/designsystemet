@@ -9,15 +9,17 @@ import * as PopoverStories from './Popover.stories.tsx';
 <Primary />
 <Controls />
 
-Elementet som åpner popoveren bør bruke `aria-expanded=true/false` for å indikere om den er åpen eller ikke.
+`Popover.Trigger` styrer om innholdet i `Popover` skal vises eller ikke. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
 
 ## Variants
 
 <Canvas of={PopoverStories.Variants} />
 
-## Interactive content
+## Kontrollert
 
-<Canvas of={PopoverStories.InteractiveContent} />
+Dersom du sender inn `open`, så bruker du `Popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `Popover` vil lukkes.
+
+<Canvas of={PopoverStories.Controlled} />
 
 ## In Portal
 

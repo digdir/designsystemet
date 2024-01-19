@@ -15,8 +15,9 @@ export type PopoverProps = {
    * @default default
    */
   variant?: 'default' | 'info' | 'warning' | 'danger';
-  /** Whether the tooltip is open or not.
-   * This overrides the internal state of the tooltip.
+  /**
+   * Use this to make the popover controlled.
+   * @default undefined
    */
   open?: boolean;
   /** Size of the popover
@@ -24,7 +25,11 @@ export type PopoverProps = {
    */
   size?: 'small' | 'medium' | 'large';
   /** Callback function when popover changes open state */
-  onOpenChange?: (open: boolean, setOpen: (open: boolean) => void) => void;
+  onOpenChange?: (open: boolean) => void;
+  /**
+   * Callback when the popover wants to close.
+   */
+  onClose?: () => void;
 } & PortalProps &
   HTMLAttributes<HTMLDivElement>;
 
@@ -35,26 +40,33 @@ export const Popover = ({
   variant = 'default',
   size = 'small',
   onOpenChange,
+  onClose,
   portal,
 }: PopoverProps) => {
   const anchorEl = useRef<Element>(null);
-  const [isOpen, setIsOpen] = React.useState(open ?? false);
+  const [internalOpen, setInternalOpen] = React.useState(open ?? false);
 
   React.useEffect(() => {
-    onOpenChange && onOpenChange(isOpen, setIsOpen);
-  }, [isOpen, onOpenChange, open]);
+    onOpenChange && onOpenChange(internalOpen);
+  }, [internalOpen, onOpenChange]);
+
+  React.useEffect(() => {
+    setInternalOpen(open ?? false);
+  }, [open]);
 
   return (
     <PopoverContext.Provider
       value={{
         anchorEl,
         portal,
-        open: isOpen,
-        setIsOpen,
+        internalOpen,
+        open,
+        setInternalOpen,
         size,
         variant,
         placement,
         onOpenChange,
+        onClose,
       }}
     >
       {children}
@@ -64,18 +76,20 @@ export const Popover = ({
 
 export const PopoverContext = React.createContext<{
   anchorEl: React.RefObject<Element>;
-  setIsOpen: (open: boolean) => void;
+  setInternalOpen: (open: boolean) => void;
   portal?: boolean;
-  open: boolean;
+  open?: boolean;
+  internalOpen: boolean;
   size: NonNullable<PopoverProps['size']>;
   variant: NonNullable<PopoverProps['variant']>;
   placement: Placement;
   onOpenChange?: PopoverProps['onOpenChange'];
+  onClose?: PopoverProps['onClose'];
 }>({
   size: 'small',
   variant: 'default',
   placement: 'top',
   anchorEl: { current: null },
-  open: false,
-  setIsOpen: () => {},
+  internalOpen: false,
+  setInternalOpen: () => {},
 });

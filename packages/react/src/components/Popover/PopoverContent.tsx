@@ -37,8 +37,17 @@ export type PopoverContentProps = {
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ className, children, style, ...rest }, ref) => {
-    const { portal, open, size, variant, placement, setIsOpen, anchorEl } =
-      useContext(PopoverContext);
+    const {
+      portal,
+      open,
+      internalOpen,
+      size,
+      variant,
+      placement,
+      setInternalOpen,
+      onClose,
+      anchorEl,
+    } = useContext(PopoverContext);
 
     const Container = portal ? FloatingPortal : React.Fragment;
 
@@ -54,8 +63,11 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
     } = useFloating({
       placement,
-      open,
-      onOpenChange: () => setIsOpen(false),
+      open: internalOpen,
+      onOpenChange: () => {
+        onClose && onClose();
+        if (typeof open !== 'boolean') setInternalOpen(false);
+      },
       whileElementsMounted: autoUpdate,
       elements: {
         reference: anchorEl.current,
@@ -84,14 +96,15 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
 
     useIsomorphicLayoutEffect(() => {
       refs.setReference(anchorEl.current);
-      if (!refs.reference.current || !refs.floating.current || !open) return;
+      if (!refs.reference.current || !refs.floating.current || !internalOpen)
+        return;
       const cleanup = autoUpdate(
         refs.reference.current,
         refs.floating.current,
         update,
       );
       return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
+    }, [refs.floating, refs.reference, update, anchorEl, refs, internalOpen]);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const arrowPlacement = useMemo(() => {
@@ -100,7 +113,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
 
     return (
       <>
-        {open && (
+        {internalOpen && (
           <Container>
             <Paragraph
               ref={floatingEl}
