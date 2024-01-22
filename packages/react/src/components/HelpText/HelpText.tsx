@@ -48,7 +48,7 @@ const HelpText = ({
         size={size}
         portal={portal}
         open={open}
-        onOpenChange={(open) => setOpen(open)}
+        onClose={() => setOpen(false)}
       >
         <Popover.Trigger asChild>
           <button
@@ -58,6 +58,7 @@ const HelpText = ({
               className,
             )}
             aria-expanded={open}
+            onClick={() => setOpen(!open)}
             {...rest}
           >
             <HelpTextIcon
