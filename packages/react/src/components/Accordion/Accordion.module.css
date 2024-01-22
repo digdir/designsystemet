@@ -52,7 +52,7 @@
   border-radius: var(--fdsc-accordion-border-radius);
 }
 
-.header > button {
+.header .accordionButton {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -71,7 +71,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .header > button:hover {
+  .header .accordionButton:hover {
     color: var(--fdsc-accordion-header-color-hover);
   }
 }
@@ -81,83 +81,83 @@
 }
 
 .accordion.neutral,
-.accordion.neutral > .item .header > button {
+.accordion.neutral > .item .header .accordionButton {
   background: var(--fdsc-accordion-header-bg-neutral);
 }
 
 .accordion.subtle,
-.accordion.subtle > .item .header > button {
+.accordion.subtle > .item .header .accordionButton {
   background: var(--fdsc-accordion-header-bg-subtle);
 }
 
 .accordion.first,
-.accordion.first > .item .header > button {
+.accordion.first > .item .header .accordionButton {
   --fdsc-accordion-border: var(--fds-semantic-border-first-default);
 
   background: var(--fdsc-accordion-header-bg-primary);
 }
 
 .accordion.second,
-.accordion.second > .item .header > button {
+.accordion.second > .item .header .accordionButton {
   --fdsc-accordion-border: var(--fds-semantic-border-second-default);
 
   background: var(--fdsc-accordion-header-bg-secondary);
 }
 
 .accordion.third,
-.accordion.third > .item .header > button {
+.accordion.third > .item .header .accordionButton {
   --fdsc-accordion-border: var(--fds-semantic-border-third-default);
 
   background: var(--fdsc-accordion-header-bg-tertiary);
 }
 
-.accordion.border > .item:first-child .header > button {
+.accordion.border > .item:first-child .header .accordionButton {
   border-top: 0;
 }
 
-.accordion.first > .item:not(:first-child) .header > button,
-.accordion.second > .item:not(:first-child) .header > button,
-.accordion.third > .item:not(:first-child) .header > button {
+.accordion.first > .item:not(:first-child) .header .accordionButton,
+.accordion.second > .item:not(:first-child) .header .accordionButton,
+.accordion.third > .item:not(:first-child) .header .accordionButton {
   border-top: 1px solid var(--fdsc-accordion-header-border-inverted);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .accordion.subtle > .item .header > button:hover {
+  .accordion.subtle > .item .header .accordionButton:hover {
     background: var(--fdsc-accordion-header-bg-subtle-hover);
   }
 
-  .accordion.first > .item .header > button:hover {
+  .accordion.first > .item .header .accordionButton:hover {
     background: var(--fdsc-accordion-header-bg-primary-hover);
   }
 
-  .accordion.second > .item .header > button:hover {
+  .accordion.second > .item .header .accordionButton:hover {
     background: var(--fdsc-accordion-header-bg-secondary-hover);
   }
 
-  .accordion.third > .item .header > button:hover {
+  .accordion.third > .item .header .accordionButton:hover {
     background: var(--fdsc-accordion-header-bg-tertiary-hover);
   }
 }
 
-.accordion.neutral > .item.open .header > button,
-.accordion.subtle > .item.open .header > button {
+.accordion.neutral > .item.open .header .accordionButton,
+.accordion.subtle > .item.open .header .accordionButton {
   background-color: var(--fdsc-accordion-header-bg-neutral-active);
 }
 
-.accordion.first > .item.open .header > button,
-.accordion.second > .item.open .header > button,
-.accordion.third > .item.open .header > button {
+.accordion.first > .item.open .header .accordionButton,
+.accordion.second > .item.open .header .accordionButton,
+.accordion.third > .item.open .header .accordionButton {
   background-color: rgba(0 0 0 / 0.03);
 }
 
-.item.open .header > button:hover + * .content {
+.item.open .header .accordionButton:hover + * .content {
   border-color: var(--fdsc-accordion-content-border-open);
 }
 
-.item.open .header > button .expandIcon {
+.item.open .header .accordionButton .expandIcon {
   transform: rotateZ(180deg);
 }
 
-.header > button:hover > .accordion.expandIcon.filled {
+.header .accordionButton:hover > .accordion.expandIcon.filled {
   display: inherit;
 }
