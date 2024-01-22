@@ -46,8 +46,6 @@
     font-family: inherit;
     display: inline-flex;
     flex-direction: row;
-    border-bottom: var(--fds-border_width-default) solid
-      var(--fds-semantic-border-neutral-subtle);
     margin-left: -4px;
   }
 
