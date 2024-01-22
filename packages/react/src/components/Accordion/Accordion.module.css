@@ -48,7 +48,7 @@
   margin: 0;
 }
 
-.border button {
+.border .accordionButton {
   border-radius: var(--fdsc-accordion-border-radius);
 }
 
