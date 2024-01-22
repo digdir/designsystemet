@@ -29,6 +29,7 @@ Preview.args = {
   placement: 'top',
   variant: 'default',
   size: 'medium',
+  onOpenChange: () => {},
 };
 
 Preview.decorators = [marginDecorator];
