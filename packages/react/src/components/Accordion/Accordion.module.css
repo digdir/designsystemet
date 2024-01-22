@@ -24,7 +24,6 @@
 
   border-bottom: 1px solid var(--fdsc-accordion-content-border);
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .border {
@@ -47,6 +46,10 @@
 
 .header {
   margin: 0;
+}
+
+.border button {
+  border-radius: var(--fdsc-accordion-border-radius);
 }
 
 .header > button {
