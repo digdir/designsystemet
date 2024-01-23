@@ -7,7 +7,10 @@ import { DropdownMenuContext } from '../DropdownMenu';
 
 import classes from './DropdownMenuItem.module.css';
 
-export type DropdownMenuItemProps = Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>;
+export type DropdownMenuItemProps = Omit<
+  ButtonProps,
+  'variant' | 'size' | 'color' | 'fullWidth'
+>;
 
 export const DropdownMenuItem: OverridableComponent<
   DropdownMenuItemProps,
