@@ -28,7 +28,6 @@ export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
 
       return (
         <Component
-          {...rest}
           ref={ref}
           className={cl(
             classes.heading,
@@ -38,6 +37,7 @@ export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
             },
             className,
           )}
+          {...rest}
         />
       );
     },

@@ -5,6 +5,7 @@ import { Button } from '../../Button';
 import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
 import { Modal } from '../../Modal';
+import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
 
@@ -13,6 +14,17 @@ import { Combobox } from './index';
 export default {
   title: 'Felles/Combobox',
   component: Combobox,
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          maxWidth: '30rem',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const PLACES = [
@@ -61,10 +73,7 @@ const PLACES = [
 export const Preview: StoryFn<typeof Combobox> = (args) => {
   return (
     <>
-      <Combobox
-        {...args}
-        onValueChange={(e) => console.log(e)}
-      >
+      <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
           <Combobox.Option
@@ -85,6 +94,7 @@ Preview.args = {
   disabled: false,
   hideLabel: false,
   hideChips: false,
+  virtual: false,
   description: 'Velg et sted',
   size: 'medium',
   label: 'Hvor går reisen?',
@@ -311,4 +321,128 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
       </Modal>
     </>
   );
+};
+
+export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <>
+      <div
+        style={{
+          marginBottom: '2rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--fds-spacing-2)',
+        }}
+      >
+        {value.map((item, index) => (
+          <ChipRemovable
+            key={index}
+            onClick={() => {
+              setValue(value.filter((v) => v !== item));
+            }}
+          >
+            {item}
+          </ChipRemovable>
+        ))}
+      </div>
+
+      <Combobox
+        {...args}
+        value={value}
+        multiple={true}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+        label='Hvor går reisen?'
+        hideChips={true}
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {PLACES.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
+    </>
+  );
+};
+
+export const SelectAll: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>(['all']);
+
+  const handleValueChange = (newVal: string[]) => {
+    setValue(newVal);
+
+    // if we have all, and we select something else, remove all
+    if (newVal.includes('all') && newVal.length > 1) {
+      setValue(newVal.filter((v) => v !== 'all'));
+    }
+
+    // if we click all, deselect all other options
+    if (newVal.includes('all') && !value.includes('all')) {
+      setValue(['all']);
+    }
+  };
+
+  return (
+    <>
+      <Combobox
+        {...args}
+        value={value}
+        multiple={true}
+        onValueChange={handleValueChange}
+        label='Hvor går reisen?'
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        <Combobox.Option value={'all'}>Alle kommuner</Combobox.Option>
+        {PLACES.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
+    </>
+  );
+};
+
+export const Virtualized: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <Combobox
+      {...args}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+      }}
+    >
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {data.map((item, index) => (
+        <Combobox.Option
+          key={index}
+          value={item.targetName}
+          description={`Orgnr.: ${item.sourceCode}`}
+        >
+          {item.targetName}
+        </Combobox.Option>
+      ))}
+    </Combobox>
+  );
+};
+
+Virtualized.args = {
+  multiple: false,
+  virtual: true,
+  size: 'medium',
+  label: 'Hvor går reisen?',
 };

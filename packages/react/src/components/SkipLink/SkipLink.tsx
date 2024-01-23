@@ -22,8 +22,8 @@ export const SkipLink = ({
   return (
     <a
       href={href}
-      {...rest}
       className={cl(utilityClasses.visuallyHidden, classes.skiplink, className)}
+      {...rest}
     >
       {children}
     </a>

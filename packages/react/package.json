@@ -1,12 +1,14 @@
 {
   "name": "@digdir/design-system-react",
-  "version": "0.42.0",
+  "version": "0.46.1",
+  "description": "React components for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": "https://github.com/digdir/designsystemet",
+  "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
-  "license": "MIT",
-  "author": "Digdir Designsystem Team",
   "files": [
     "dist/**"
   ],
@@ -26,9 +28,11 @@
   },
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/design-system-tokens": "^0.11.0",
+    "@digdir/design-system-tokens": "^0.12.0",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@tanstack/react-virtual": "^3.0.1",
     "react-number-format": "5.3.1"
   },
   "devDependencies": {

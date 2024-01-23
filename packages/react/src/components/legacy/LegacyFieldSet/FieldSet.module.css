@@ -32,7 +32,7 @@
 }
 
 .fieldSet:disabled {
-  opacity: var(--opacity-disabled);
+  opacity: var(--fds-opacity-disabled);
 }
 
 .fieldSet:disabled * {

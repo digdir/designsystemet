@@ -49,7 +49,7 @@
   opacity: var(--fds-opacity-disabled);
 }
 
-.icon {
+.button > :is(svg, img, i) {
   display: inline-block;
   height: var(--fc-button-icon-size);
   width: var(--fc-button-icon-size);

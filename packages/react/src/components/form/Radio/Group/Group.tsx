@@ -57,11 +57,11 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
 
     return (
       <Fieldset
-        {...rest}
         readOnly={readOnly}
         size={size}
         className={className}
         ref={ref}
+        {...rest}
       >
         <RadioGroupContext.Provider
           value={{
@@ -72,14 +72,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             required,
           }}
         >
-          <div
-            className={cl(
-              !rest.hideLegend && classes.alignToLegend,
-              inline && classes.inline,
-            )}
-          >
-            {children}
-          </div>
+          <div className={cl(inline && classes.inline)}>{children}</div>
         </RadioGroupContext.Provider>
       </Fieldset>
     );

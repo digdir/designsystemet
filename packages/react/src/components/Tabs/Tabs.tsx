@@ -64,8 +64,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         }}
       >
         <div
-          {...rest}
           ref={ref}
+          {...rest}
         >
           {children}
         </div>

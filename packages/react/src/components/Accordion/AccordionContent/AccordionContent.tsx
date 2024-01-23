@@ -31,11 +31,11 @@ export const AccordionContent = forwardRef<
       open={context.open}
     >
       <Paragraph
-        {...rest}
         as='div'
         size='small'
         ref={ref}
         className={cl(classes.content, className)}
+        {...rest}
       >
         {children}
       </Paragraph>

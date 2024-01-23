@@ -11,9 +11,9 @@ export const ComboboxOptionDescription = forwardRef<
 >(({ children, className, ...rest }, ref) => {
   return (
     <span
-      {...rest}
       className={cl(classes.description, className)}
       ref={ref}
+      {...rest}
     >
       {children}
     </span>

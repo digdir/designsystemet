@@ -8,9 +8,9 @@ export type CardMediaProps = HTMLAttributes<HTMLDivElement>;
 export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
   ({ children, className, ...rest }, ref) => (
     <div
-      {...rest}
       className={cl(classes.media, className)}
       ref={ref}
+      {...rest}
     >
       {children}
     </div>

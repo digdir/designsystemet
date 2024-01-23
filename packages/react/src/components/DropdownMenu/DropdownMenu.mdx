@@ -1,15 +1,8 @@
-import {
-  Meta,
-  Canvas,
-  Story,
-  Controls,
-  Primary,
-  ArgsTable,
-} from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
-import { DropdownMenu } from './';
+import { Meta, Canvas, Controls, Primary, ArgsTable } from '@storybook/blocks';
 
 import * as DropdownMenuStories from './DropdownMenu.stories';
+
+import { DropdownMenu } from './';
 
 <Meta of={DropdownMenuStories} />
 
@@ -36,6 +29,10 @@ return (
 ## Icons
 
 <Canvas of={DropdownMenuStories.Icons} />
+
+## In portal
+
+<Canvas of={DropdownMenuStories.InPortal} />
 
 ### `Dropdown.Group`
 

@@ -24,7 +24,6 @@ export const Preview: Story = {
   args: {
     children: 'New',
     size: 'medium',
-    variant: 'secondary',
     color: 'neutral',
   },
 };
@@ -40,23 +39,6 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
           {...rest}
         >
           {size}
-        </Tag>
-      ))}
-    </>
-  );
-};
-
-const variants: TagProps['variant'][] = ['primary', 'secondary'];
-export const Variants: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
-  return (
-    <>
-      {variants.map((variant) => (
-        <Tag
-          key={variant}
-          variant={variant}
-          {...rest}
-        >
-          {variant}
         </Tag>
       ))}
     </>
@@ -81,25 +63,6 @@ export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
         <Tag
           key={color}
           color={color}
-          {...rest}
-        >
-          {color}
-        </Tag>
-      ))}
-    </>
-  );
-};
-
-export const ColorsOutlined: StoryFn<typeof Tag> = ({
-  ...rest
-}): JSX.Element => {
-  return (
-    <>
-      {colors.map((color) => (
-        <Tag
-          key={color}
-          color={color}
-          variant='secondary'
           {...rest}
         >
           {color}

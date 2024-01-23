@@ -32,7 +32,6 @@ export const Paragraph: OverridableComponent<
     ref,
   ) => (
     <Component
-      {...rest}
       ref={ref}
       className={cl(
         classes.paragraph,
@@ -43,6 +42,7 @@ export const Paragraph: OverridableComponent<
         },
         className,
       )}
+      {...rest}
     />
   ),
 );

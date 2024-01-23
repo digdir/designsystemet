@@ -30,9 +30,9 @@ export const Link: OverridableComponent<LinkProps, HTMLAnchorElement> =
       ref,
     ) => (
       <Component
-        {...rest}
         className={cl(classes.link, inverted && classes.inverted, className)}
         ref={ref}
+        {...rest}
       >
         {children}
       </Component>

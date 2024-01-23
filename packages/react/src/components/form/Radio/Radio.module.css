@@ -1,42 +1,14 @@
 .container {
+  --fds-radio-size: 1.75rem;
+  --fds-radio-focus-border-width: 3px;
+  --fds-radio-background: var(--fds-semantic-background-default);
+  --fds-radio-border-color: var(--fds-semantic-border-input-default);
+  --fds-radio-border__hover: 0 0 0 6px var(--fds-semantic-surface-info-subtle-hover);
+
   position: relative;
 }
 
-.spacing {
-  padding-left: var(--fds-sizing-8);
-}
-
-.icon {
-  grid-area: input;
-  pointer-events: none;
-  width: var(--fds-sizing-6);
-  height: var(--fds-sizing-6);
-  margin: auto;
-  overflow: visible;
-}
-
-.radio,
-.radio .icon {
-  border-radius: var(--fds-border_radius-full);
-}
-
-.container.small .icon {
-  width: var(--fds-sizing-5);
-  height: var(--fds-sizing-5);
-}
-
-.container.medium .icon {
-  width: var(--fds-sizing-6);
-  height: var(--fds-sizing-6);
-}
-
-.container.large .icon {
-  width: var(--fds-sizing-7);
-  height: var(--fds-sizing-7);
-}
-
 .label {
-  padding-left: 3px;
   min-height: var(--fds-sizing-10);
   min-width: min-content;
   display: inline-flex;
@@ -46,174 +18,152 @@
   cursor: pointer;
 }
 
+/* Radio */
+.label::before {
+  content: '';
+  width: var(--fds-radio-size);
+  height: var(--fds-radio-size);
+  box-shadow: inset 0 0 0 2px var(--fds-radio-border-color);
+  background: var(--fds-radio-background);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-inline: 6px;
+  margin-block: 6px;
+}
+
 .description {
-  padding-left: 3px;
+  padding-left: calc(var(--fds-radio-size) + 12px + var(--fds-spacing-1));
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
-.control {
-  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
-  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
-  --fds-focus-border-width: 3px;
-
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--fds-sizing-10);
-  height: var(--fds-sizing-10);
-  display: inline-grid;
-  grid: [input] 1fr / [input] 1fr;
-  gap: var(--fds-spacing-2);
-  grid-auto-flow: column;
-}
-
 .input {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  z-index: 1;
   opacity: 0;
-  margin: 0;
-  grid-area: input;
   cursor: pointer;
+  margin: 0;
 }
 
-.readonly > .control > .input,
+.disabled > .input,
+.disabled > .label,
+.disabled > .label::before {
+  cursor: not-allowed;
+}
+
+.disabled > .label,
+.disabled > .label::before,
+.disabled > .description {
+  opacity: var(--fds-opacity-disabled);
+}
+
+.input:focus-visible + .label::before {
+  outline: var(--fds-radio-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+  box-shadow: inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow), inset 0 0 0 6px var(--fds-radio-background);
+}
+
+.input:checked + .label::before {
+  --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
+  background: var(--fds-radio-border-color);
+}
+
+.readonly > .input + .label::before {
+  --fds-radio-border-color: var(--fds-semantic-border-neutral-subtle);
+  --fds-radio-background: var(--fds-semantic-surface-neutral-subtle);
+}
+
+.input:checked:not(:focus-visible) + .label::before {
+  box-shadow: inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
+}
+
+.readonly > .input,
 .readonly > .label {
   cursor: default;
 }
 
-.disabled > .control .input,
-.disabled > .label {
-  cursor: not-allowed;
-  color: var(--fds-semantic-border-neutral-subtle);
+.readonly > .input:checked + .label::before {
+  background: var(--fds-semantic-border-neutral-default);
 }
 
-.disabled > .description {
-  color: var(--fds-semantic-border-neutral-subtle);
+.error > .input:not(:disabled, :focus-visible) + .label::before {
+  --fds-radio-border-color: var(--fds-semantic-border-danger-default);
 }
 
-.input:not(:checked) ~ .icon .checked {
-  display: none;
-}
-
-.input:checked ~ .icon .checked {
-  display: inline;
-  fill: var(--fds-semantic-border-input-hover);
-}
-
-.input:not(:checked) ~ .icon .box {
-  stroke: var(--fds-semantic-border-input-default);
-}
-
-.input:checked ~ .icon .box {
-  stroke: var(--fds-semantic-border-input-hover);
-}
-
-.input:disabled ~ .icon .box {
-  stroke: var(--fds-semantic-border-neutral-subtle);
-}
-
-.input:focus-visible ~ .icon {
-  outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
-  outline-offset: 0;
-}
-
-.input:focus-visible ~ .icon .box {
-  stroke: var(--fds-semantic-border-focus-boxshadow);
-  stroke-width: var(--fds-focus-border-width);
-}
-
-.input:disabled ~ .icon .checked {
-  fill: var(--fds-semantic-border-neutral-subtle);
-}
-
-.error .input:not(:disabled, :focus-visible) ~ .icon .box {
-  stroke: var(--fds-semantic-border-danger-default);
-}
-
-.error .input:not(:disabled, :focus-visible) ~ .icon .checked {
-  fill: var(--fds-semantic-border-danger-default);
-}
-
-.readonly .input:read-only:not(:focus-visible) ~ .icon .box {
-  stroke: var(--fds-semantic-border-neutral-subtle);
-  fill: var(--fds-semantic-background-subtle);
-}
-
-.readonly .input:read-only:not(:focus-visible):is(:checked) ~ .icon .checked {
-  fill: var(--fds-semantic-border-neutral-default);
-}
-
-/* Only use hover for non-touch devices to prevent sticky-hovering */
+/* Only use hover for non-touch devices to prevent sticky-hovering
+  "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
 @media (hover: hover) and (pointer: fine) {
-  .container:not(.disabled, .readonly) > .control:hover,
-  .container:not(.disabled, .readonly):has(.label:hover) > .control {
-    background: var(--fds-semantic-surface-info-subtle-hover);
+  .container:not(.readonly, .disabled) > .label:hover,
+  .container:not(.readonly, .disabled) > .input:hover + .label {
+    color: var(--fds-semantic-text-action-hover);
   }
 
-  .container:not(.disabled, .readonly) > .label:hover,
-  .container:not(.disabled, .readonly) > .control:hover ~ .label {
-    color: var(--fds-semantic-border-input-hover);
+  .container:not(.readonly, .disabled) > .input:hover:not(:checked) + .label::before {
+    --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
+    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
   }
 
-  .container:not(.disabled, .readonly) > .control:hover > .icon > .box,
-  .container:not(.disabled, .readonly):has(.label:hover) > .control > .icon > .box {
-    stroke: var(--fds-semantic-border-input-hover);
+  .container:not(.readonly, .disabled) > .input:hover:checked + .label::before {
+    --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
+    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
+  }
+
+  .container:not(.readonly, .disabled) > .input:hover:checked:focus-visible + .label::before {
+    box-shadow: var(--fds-radio-border__hover), inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
+      inset 0 0 0 6px var(--fds-radio-background);
   }
 }
 
-/** Sizing mess for now... */
+/** Sizing */
 
-.container.small.spacing {
-  padding-left: calc(var(--fds-spacing-8));
-}
-
-.container.medium.spacing {
-  padding-left: var(--fds-spacing-10);
-}
-
-.container.large.spacing {
-  padding-left: calc(var(--fds-spacing-12));
-}
-
-.container.small {
-  min-width: var(--fds-sizing-8);
-}
-
-.container.medium {
-  min-width: var(--fds-sizing-10);
-}
-
-.container.large {
-  min-width: var(--fds-sizing-12);
-}
-
-.container.small,
-.container.small .label {
+.small,
+.small .label {
   min-height: var(--fds-sizing-8);
 }
 
-.container.medium,
-.container.medium .label {
+.medium,
+.medium .label {
   min-height: var(--fds-sizing-10);
 }
 
-.container.large,
-.container.large .label {
+.large,
+.large .label {
   min-height: var(--fds-sizing-12);
 }
 
-.container.small .control {
-  width: var(--fds-sizing-8);
-  height: var(--fds-sizing-8);
+.small {
+  --fds-radio-size: 1.5rem;
+
+  min-width: var(--fds-sizing-8);
 }
 
-.container.medium .control {
-  width: var(--fds-sizing-10);
-  height: var(--fds-sizing-10);
+.small .input {
+  left: -0.25rem;
+  top: -0.25rem;
 }
 
-.container.large .control {
-  width: var(--fds-sizing-12);
-  height: var(--fds-sizing-12);
+.medium {
+  --fds-radio-size: 1.75rem;
+
+  min-width: var(--fds-sizing-10);
+}
+
+.medium .input {
+  left: 0;
+  top: 0;
+}
+
+.large {
+  --fds-radio-size: 2rem;
+
+  min-width: var(--fds-sizing-12);
+}
+
+.large .input {
+  left: 0;
+  top: 0.25rem;
 }

@@ -21,7 +21,6 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
       <>
         {active && (
           <div
-            {...rest}
             className={cl(
               classes[size],
               classes.tabContent,
@@ -29,6 +28,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
               className,
             )}
             ref={ref}
+            {...rest}
           >
             {children}
           </div>

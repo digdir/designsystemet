@@ -26,7 +26,6 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
     const isLink = rest?.href != null;
     return (
       <Component
-        {...rest}
         ref={ref}
         className={cl(
           classes.card,
@@ -35,6 +34,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
           isLink && utilityClasses.focusable,
           className,
         )}
+        {...rest}
       >
         {children}
       </Component>

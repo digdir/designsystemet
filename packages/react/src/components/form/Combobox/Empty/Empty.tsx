@@ -19,9 +19,9 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
     return (
       optionValues.length === 0 && (
         <div
-          {...rest}
           ref={ref}
           className={cl(classes.empty, classes[size], className)}
+          {...rest}
         >
           {children}
         </div>
