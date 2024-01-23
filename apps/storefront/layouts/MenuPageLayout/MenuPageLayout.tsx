@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import GithubLink from 'components/Link/Github/GithubLink';
+
 import { Container, SidebarMenu, MdxContent } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
@@ -38,6 +40,7 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
             id='content'
           >
             <MdxContent>{content}</MdxContent>
+            <GithubLink className={classes.githubLink} />
           </div>
         </main>
       </Container>
