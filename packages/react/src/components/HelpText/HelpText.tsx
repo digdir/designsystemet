@@ -6,6 +6,7 @@ import type { Placement } from '@floating-ui/utils';
 import { Popover } from '../Popover';
 import utilClasses from '../../utilities/utility.module.css';
 import type { PopoverProps } from '../Popover/Popover';
+import type { PortalProps } from '../../types/Portal';
 
 import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';
@@ -25,7 +26,8 @@ export type HelpTextProps = {
    * @default 'right'
    */
   placement?: Placement;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & PortalProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 const HelpText = ({
   className,
@@ -34,6 +36,7 @@ const HelpText = ({
   placement = 'right',
   onClick,
   size = 'medium',
+  portal,
   ...rest
 }: HelpTextProps) => {
   const [open, setOpen] = useState(false);
@@ -42,7 +45,6 @@ const HelpText = ({
   return (
     <>
       <button
-        {...rest}
         ref={buttonRef}
         className={cl(classes.helpTextButton, utilClasses.focusable, className)}
         aria-expanded={open}
@@ -50,6 +52,7 @@ const HelpText = ({
           setOpen((isOpen) => !isOpen);
           onClick?.(event);
         }}
+        {...rest}
       >
         <HelpTextIcon
           filled
@@ -74,6 +77,7 @@ const HelpText = ({
         open={open}
         size={size}
         onClose={() => setOpen(false)}
+        portal={portal}
       >
         <Popover.Content className={classes.helpTextContent}>
           {children}

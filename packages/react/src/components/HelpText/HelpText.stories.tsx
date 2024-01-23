@@ -16,7 +16,6 @@ const decorators = [
 export default {
   title: 'Felles/HelpText',
   component: HelpText,
-  decorators,
 } as Meta;
 
 export const Preview: Story = {
@@ -24,5 +23,16 @@ export const Preview: Story = {
     title: 'Help text title',
     children: 'Help text content',
     size: 'medium',
+  },
+  decorators,
+};
+
+export const Portal: Story = {
+  args: {
+    title: 'Help text title',
+    children: 'Help text content',
+    size: 'medium',
+    portal: true,
+    placement: 'top',
   },
 };

@@ -15,11 +15,24 @@ const decorators = [
     </div>
   ),
 ];
+const invertedDecorator = [
+  (Story: StoryFn) => (
+    <div
+      style={{
+        background: '#1E2B3C',
+        padding: '3rem',
+        justifyContent: 'center',
+        display: 'flex',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
 
 export default {
   title: 'Felles/Tooltip',
   component: Tooltip,
-  decorators,
 } as Meta;
 
 export const Preview: Story = {
@@ -28,6 +41,7 @@ export const Preview: Story = {
     children: defaultChildren,
     placement: 'top',
   },
+  decorators,
 };
 
 export const Placement: Story = {
@@ -36,6 +50,7 @@ export const Placement: Story = {
     placement: 'bottom',
     children: defaultChildren,
   },
+  decorators,
 };
 
 export const DefaultOpen: Story = {
@@ -44,6 +59,7 @@ export const DefaultOpen: Story = {
     defaultOpen: true,
     children: defaultChildren,
   },
+  decorators,
 };
 
 export const Complex: StoryFn<typeof Tooltip> = () => {
@@ -60,4 +76,28 @@ export const Complex: StoryFn<typeof Tooltip> = () => {
       inne i tekst også
     </Paragraph>
   );
+};
+
+Complex.decorators = decorators;
+
+export const Portal: Story = {
+  args: {
+    content: 'Tooltip text',
+    children: defaultChildren,
+    placement: 'top',
+    portal: true,
+  },
+};
+
+export const Inverted: Story = {
+  args: {
+    content: 'Tooltip text',
+    placement: 'bottom',
+    children: defaultChildren,
+    inverted: true,
+  },
+  decorators: invertedDecorator,
+  parameters: {
+    layout: 'fullscreen',
+  },
 };

@@ -25,7 +25,7 @@ export type FieldsetProps = {
   /** If set, this will diplay an error message at the bottom of the fieldset. */
   error?: ReactNode;
   /** The legend of the fieldset. */
-  legend?: ReactNode;
+  legend: ReactNode;
   /** Toggle `readOnly` on fieldset context.
    * @note This does not prevent fieldset values from being submited */
   readOnly?: boolean;
@@ -62,7 +62,6 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         }}
       >
         <fieldset
-          {...rest}
           {...fieldsetProps}
           className={cl(
             classes.fieldset,
@@ -72,6 +71,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             className,
           )}
           ref={ref}
+          {...rest}
         >
           <Label
             as='legend'

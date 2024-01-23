@@ -12,6 +12,7 @@ import {
   useInteractions,
   useMergeRefs,
   useRole,
+  FloatingPortal,
 } from '@floating-ui/react';
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef, useMemo, useRef } from 'react';
@@ -19,6 +20,7 @@ import cl from 'clsx';
 
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Paragraph } from '../Typography';
+import type { PortalProps } from '../../types/Portal';
 
 import classes from './Popover.module.css';
 
@@ -54,7 +56,8 @@ export type PopoverProps = {
   size?: 'small' | 'medium' | 'large';
   /** Callback function when popover closes */
   onClose?: () => void;
-} & HTMLAttributes<HTMLDivElement>;
+} & PortalProps &
+  HTMLAttributes<HTMLDivElement>;
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   (
@@ -66,12 +69,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       variant = 'default',
       size = 'small',
       onClose,
+      portal,
       className,
       style,
       ...rest
     },
     ref,
   ) => {
+    const Container = portal ? FloatingPortal : React.Fragment;
     const arrowRef = useRef<HTMLDivElement>(null);
     const floatingEl = useRef<HTMLDivElement>(null);
 
@@ -130,38 +135,40 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     return (
       <>
         {open && (
-          <Paragraph
-            ref={floatingEl}
-            as={'div'}
-            size={size}
-            className={cl(
-              classes.popover,
-              classes[variant],
-              classes[size],
-              className,
-            )}
-            data-placement={flPlacement}
-            aria-hidden={!open || !anchorEl}
-            {...getFloatingProps({
-              ref: floatingRef,
-              tabIndex: undefined,
-            })}
-            style={{ ...floatingStyles, ...style }}
-            {...rest}
-          >
-            {children}
-            <div
-              ref={arrowRef}
-              className={cl(classes.arrow, classes[arrowPlacement])}
-              style={{
-                height: ARROW_HEIGHT,
-                width: ARROW_HEIGHT,
-                ...(arrowX != null ? { left: arrowX } : {}),
-                ...(arrowY != null ? { top: arrowY } : {}),
-                ...(arrowPlacement ? { [arrowPlacement]: -4.5 } : {}),
-              }}
-            />
-          </Paragraph>
+          <Container>
+            <Paragraph
+              ref={floatingEl}
+              as={'div'}
+              size={size}
+              className={cl(
+                classes.popover,
+                classes[variant],
+                classes[size],
+                className,
+              )}
+              data-placement={flPlacement}
+              aria-hidden={!open || !anchorEl}
+              {...getFloatingProps({
+                ref: floatingRef,
+                tabIndex: undefined,
+              })}
+              style={{ ...floatingStyles, ...style }}
+              {...rest}
+            >
+              {children}
+              <div
+                ref={arrowRef}
+                className={cl(classes.arrow, classes[arrowPlacement])}
+                style={{
+                  height: ARROW_HEIGHT,
+                  width: ARROW_HEIGHT,
+                  ...(arrowX != null ? { left: arrowX } : {}),
+                  ...(arrowY != null ? { top: arrowY } : {}),
+                  ...(arrowPlacement ? { [arrowPlacement]: -4.5 } : {}),
+                }}
+              />
+            </Paragraph>
+          </Container>
         )}
       </>
     );

@@ -22,7 +22,6 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
 
     return (
       <button
-        {...rest}
         type='button'
         ref={ref}
         className={cl(
@@ -32,13 +31,15 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           classes.removable,
           className,
         )}
+        {...rest}
       >
         <Paragraph
           as='span'
           size={group?.size || size}
           className={classes.label}
+          short
         >
-          {children}
+          <span>{children}</span>
           <span
             className={classes.xMark}
             aria-hidden

@@ -39,6 +39,14 @@ module.exports = {
       files: ['storefront/**/*'],
       extends: ['plugin:@next/next/recommended'],
     },
+    {
+      // MDX files
+      extends: ['plugin:mdx/recommended'],
+      files: ['**/*.md?(x)'],
+      settings: {
+        'mdx/code-blocks': false,
+      },
+    },
   ],
   rules: {
     // https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
@@ -79,6 +87,7 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
+        project: ['./apps/*/tsconfig.json', './packages/*/tsconfig.json'],
       },
     },
   },

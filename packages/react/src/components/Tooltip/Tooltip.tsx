@@ -19,7 +19,9 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
-import styles from './Tooltip.module.css';
+import type { PortalProps } from '../../types/Portal';
+
+import classes from './Tooltip.module.css';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -47,7 +49,10 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+  /** Inverts the color of the tooltip. Use this on dark backgrounds. */
+  inverted?: boolean;
+} & PortalProps &
+  HTMLAttributes<HTMLDivElement>;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -58,6 +63,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
+      portal,
+      inverted,
       className,
       style,
       ...rest
@@ -65,6 +72,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+
+    const Container = portal ? FloatingPortal : React.Fragment;
 
     const arrowRef = React.useRef<SVGSVGElement>(null);
     const internalOpen = userOpen ?? isOpen;
@@ -129,26 +138,30 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <FloatingPortal>
-            <>
+            <Container>
               <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, ...animationStyles, ...style }}
-                {...getFloatingProps({
-                  ...rest,
-                  className: cl(styles.wrapper, className),
-                  ref: mergedRef,
-                })}
                 role='tooltip'
+                {...getFloatingProps({
+                  className: cl(
+                    classes.wrapper,
+                    inverted && classes.inverted,
+                    className,
+                  ),
+                  ref: mergedRef,
+                  ...rest,
+                })}
               >
                 {content}
                 <FloatingArrow
                   ref={arrowRef}
                   context={context}
-                  fill='var(--fds-semantic-border-neutral-strong)'
+                  className={classes.arrow}
                   height={ARROW_HEIGHT}
                 />
               </div>
-            </>
+            </Container>
           </FloatingPortal>
         )}
       </>

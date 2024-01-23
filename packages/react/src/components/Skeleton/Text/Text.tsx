@@ -24,7 +24,6 @@ export const Text = ({
 
   return (
     <div
-      {...rest}
       ref={ref}
       className={cl(
         classes.skeleton,
@@ -36,6 +35,7 @@ export const Text = ({
       )}
       style={{ width, height, ...style }}
       aria-hidden
+      {...rest}
     >
       {children}
     </div>

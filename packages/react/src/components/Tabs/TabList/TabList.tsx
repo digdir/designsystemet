@@ -12,10 +12,10 @@ export const TabList = forwardRef<
 >(({ children, className, ...rest }, ref) => {
   return (
     <RovingTabindexRoot
-      {...rest}
       role='tablist'
       className={cl(classes.tabItemList, className)}
       ref={ref}
+      {...rest}
     >
       {children}
     </RovingTabindexRoot>

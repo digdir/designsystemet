@@ -24,13 +24,13 @@ export const DropdownMenuItem: OverridableComponent<
       style={style}
     >
       <Button
-        {...rest}
         ref={ref}
         variant='tertiary'
         size={menu.size}
         fullWidth
         className={classes.item}
         role='menuitem'
+        {...rest}
       >
         {children}
       </Button>

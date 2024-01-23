@@ -1,28 +1,17 @@
-import type { HTMLProps } from 'react';
 import React from 'react';
-import cl from 'clsx';
 
-import classes from './TableBody.module.css';
-import { TableRowTypeContext } from './utils';
+export type TableBodyProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
-export interface TableBodyProps extends HTMLProps<HTMLTableSectionElement> {
-  children?: React.ReactNode;
-}
-
-export const TableBody = ({
-  children,
-  className,
-  ...tableBodyProps
-}: TableBodyProps) => {
-  const variantStandard = 'body';
+export const TableBody = React.forwardRef<
+  HTMLTableSectionElement,
+  TableBodyProps
+>(({ children, ...rest }, ref) => {
   return (
-    <TableRowTypeContext.Provider value={{ variantStandard }}>
-      <tbody
-        {...tableBodyProps}
-        className={cl(classes.tableBody, className)}
-      >
-        {children}
-      </tbody>
-    </TableRowTypeContext.Provider>
+    <tbody
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </tbody>
   );
-};
+});

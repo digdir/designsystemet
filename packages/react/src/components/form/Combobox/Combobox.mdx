@@ -1,5 +1,7 @@
 import { Meta, Canvas, Controls, Primary, ArgsTable } from '@storybook/blocks';
+
 import * as ComboboxStories from './Combobox.stories';
+
 import { Combobox } from './index';
 
 <Meta of={ComboboxStories} />
@@ -28,6 +30,21 @@ Den bruker native `select`-elementer under panseret, så du kan bruke
 `Combobox.Option` som vanlig.
 
 <Canvas of={ComboboxStories.InForm} />
+
+## Chips utenfor
+
+<Canvas of={ComboboxStories.WithChipsOutside} />
+
+## Forhåndsvalgt verdi
+
+<Canvas of={ComboboxStories.SelectAll} />
+
+## Virtualisert
+
+Lista med elementer kan bli veldig lang, så det kan være lurt å virtualisere.
+Det gjør du ved å sette `virtualized` til `true` på `Combobox`.
+
+<Canvas of={ComboboxStories.Virtualized} />
 
 ### `Combobox.Option`
 

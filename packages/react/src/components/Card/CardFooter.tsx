@@ -8,9 +8,9 @@ export type CardFooterProps = HTMLAttributes<HTMLDivElement>;
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ children, className, ...rest }, ref) => (
     <div
-      {...rest}
       className={cl(classes.footer, className)}
       ref={ref}
+      {...rest}
     >
       {children}
     </div>

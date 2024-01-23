@@ -18,8 +18,8 @@ export const Divider = ({
 }: DividerProps) => {
   return (
     <hr
-      {...rest}
       className={cl(classes.divider, classes[color], className)}
+      {...rest}
     />
   );
 };

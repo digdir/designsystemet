@@ -36,7 +36,7 @@ to <designsystem@digdir.no>.
 
 ## Share your feedback and report issues
 
-You can report bugs and suggest new features by going to our [Github Issue Templates](https://github.com/digdir/designsystem/issues/new/choose).
+You can report bugs and suggest new features by going to our [Github Issue Templates](https://github.com/digdir/designsystemet/issues/new/choose).
 
 If you have any questions you can contact us at <designsystem@digdir.no> or in our [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) channel.
 
@@ -68,7 +68,7 @@ Do the same for smaller feature requests. We cannot guarantee that the new featu
 Your team needs a new component that doesn't exist in the the design system and want to help develop it?
 Great news! We have created a process to handle just this use case!
 
-1. Submit a [feature request](https://github.com/digdir/designsystem/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development of this component.
+1. Submit a [feature request](https://github.com/digdir/designsystemet/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development of this component.
 2. The design system team will review the feature request and assess its compatibility with the design system.
 3. If the component fits within the scope of the design system we will follow you up from there.
 

@@ -34,12 +34,17 @@ export const Polymorphic: Story = (args) => (
     </Box>
     <Box
       {...args}
-      as='a'
+      asChild
       borderRadius='medium'
       borderColor='subtle'
-      href='#'
     >
-      link
+      <a
+        href='https://designsystemet.no'
+        target='_blank'
+        rel='noreferrer'
+      >
+        link
+      </a>
     </Box>
   </>
 );

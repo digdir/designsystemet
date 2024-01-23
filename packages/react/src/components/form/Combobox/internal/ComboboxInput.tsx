@@ -139,7 +139,6 @@ export const ComboboxInput = ({
         {multiple && !hideChips && <ComboboxChips />}
         <input
           ref={inputRef}
-          {...formFieldProps.inputProps}
           aria-activedescendant={activeDescendant}
           readOnly={readOnly}
           aria-autocomplete='list'
@@ -148,12 +147,13 @@ export const ComboboxInput = ({
           aria-controls={listId}
           autoComplete='off'
           size={htmlSize}
+          value={inputValue}
+          {...omit(['style', 'className'], rest)}
+          {...formFieldProps.inputProps}
           onChange={(e) => {
             onChange(e);
             rest.onChange && rest.onChange(e);
           }}
-          value={inputValue}
-          {...omit(['style', 'className'], rest)}
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}

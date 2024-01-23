@@ -1,18 +1,19 @@
 import {
-  Meta,
-  Banner,
-  Section,
-  NavigationCard,
-  ImageSection,
-} from '@components';
-import { FrontpageLayout } from '@layouts';
-import {
   ImageIcon,
   WrenchIcon,
   ComponentIcon,
   EnvelopeClosedIcon,
   BranchingIcon,
 } from '@navikt/aksel-icons';
+
+import { FrontpageLayout } from '@layouts';
+import {
+  Meta,
+  Banner,
+  Section,
+  NavigationCard,
+  ImageSection,
+} from '@components';
 
 export default ({ children }) => <FrontpageLayout content={children} />;
 
@@ -78,7 +79,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     },
     {
       text: 'Github',
-      href: 'https://github.com/digdir/designsystem',
+      href: 'https://github.com/digdir/designsystemet',
       prefix: <BranchingIcon fontSize={24} />,
     },
   ]}

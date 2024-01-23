@@ -18,7 +18,6 @@ export const Accordion = forwardRef<
   AccordionProps & { children: React.ReactNode }
 >(({ border = false, color = 'neutral', className, ...rest }, ref) => (
   <div
-    {...rest}
     className={cl(
       classes.accordion,
       classes[color],
@@ -28,5 +27,6 @@ export const Accordion = forwardRef<
       className,
     )}
     ref={ref}
+    {...rest}
   />
 ));

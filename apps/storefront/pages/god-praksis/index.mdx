@@ -1,15 +1,9 @@
-import {
-  Meta,
-  Grid,
-  NavigationCard,
-  TeaserCard,
-  Container,
-  ImageSection,
-} from '@components';
-import { NavPageLayout } from '@layouts';
-import { BranchingIcon, ImageIcon } from '@navikt/aksel-icons';
+import { BranchingIcon } from '@navikt/aksel-icons';
 
-export default ({ children, menu }) => (
+import { NavPageLayout } from '@layouts';
+import { Meta, Grid, TeaserCard } from '@components';
+
+export default ({ children }) => (
   <NavPageLayout
     content={children}
     data={{
@@ -23,7 +17,7 @@ export default ({ children, menu }) => (
         link: {
           text: 'Bidra med innhold',
           prefix: <BranchingIcon fontSize={26} />,
-          href: 'https://github.com/digdir/designsystem/tree/main/apps/storefront/pages/god-praksis',
+          href: 'https://github.com/digdir/designsystemet/tree/main/apps/storefront/pages/god-praksis',
         },
       },
     }}
