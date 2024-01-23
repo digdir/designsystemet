@@ -106,7 +106,6 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       return () => cleanup();
     }, [refs.floating, refs.reference, update, anchorEl, refs, internalOpen]);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const arrowPlacement = useMemo(() => {
       return ARROW_PLACEMENT[flPlacement.split('-')[0]];
     }, [flPlacement]);
@@ -133,7 +132,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
               style={{ ...floatingStyles, ...style }}
               {...rest}
             >
-              <div>{children}</div>
+              {children}
               <div
                 ref={arrowRef}
                 className={cl(classes.arrow, classes[arrowPlacement])}
