@@ -46,9 +46,11 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       placement,
       setInternalOpen,
       onClose,
+      triggerEl,
       anchorEl,
     } = useContext(PopoverContext);
 
+    const anchor = anchorEl ? anchorEl : triggerEl.current;
     const Container = portal ? FloatingPortal : React.Fragment;
 
     const floatingEl = useRef<HTMLDivElement>(null);
@@ -70,7 +72,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       },
       whileElementsMounted: autoUpdate,
       elements: {
-        reference: anchorEl.current,
+        reference: anchor,
         floating: floatingEl.current,
       },
       middleware: [
@@ -95,7 +97,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
     useIsomorphicLayoutEffect(() => {
-      refs.setReference(anchorEl.current);
+      refs.setReference(anchor);
       if (!refs.reference.current || !refs.floating.current || !internalOpen)
         return;
       const cleanup = autoUpdate(
@@ -104,7 +106,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
         update,
       );
       return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchorEl, refs, internalOpen]);
+    }, [refs.floating, refs.reference, update, anchor, refs, internalOpen]);
 
     const arrowPlacement = useMemo(() => {
       return ARROW_PLACEMENT[flPlacement.split('-')[0]];

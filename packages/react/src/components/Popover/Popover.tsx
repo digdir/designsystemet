@@ -24,6 +24,11 @@ export type PopoverProps = {
    * @default small
    */
   size?: 'small' | 'medium' | 'large';
+  /** Element the popover anchors to
+   * @deprecated Use `Popover.Trigger` instead
+   * @see [Documentation](https://designsystemet.no/?path=/docs/felles-popover--docs)
+   */
+  anchorEl?: Element | null;
   /** Callback function when popover changes open state */
   onOpenChange?: (open: boolean) => void;
   /**
@@ -39,11 +44,12 @@ export const Popover = ({
   open,
   variant = 'default',
   size = 'small',
+  portal,
+  anchorEl,
   onOpenChange,
   onClose,
-  portal,
 }: PopoverProps) => {
-  const anchorEl = useRef<Element>(null);
+  const triggerEl = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = React.useState(open ?? false);
 
   React.useEffect(() => {
@@ -57,6 +63,7 @@ export const Popover = ({
   return (
     <PopoverContext.Provider
       value={{
+        triggerEl,
         anchorEl,
         portal,
         internalOpen,
@@ -75,7 +82,8 @@ export const Popover = ({
 };
 
 export const PopoverContext = React.createContext<{
-  anchorEl: React.RefObject<Element>;
+  triggerEl: React.RefObject<Element>;
+  anchorEl?: Element | null;
   setInternalOpen: (open: boolean) => void;
   portal?: boolean;
   open?: boolean;
@@ -89,7 +97,7 @@ export const PopoverContext = React.createContext<{
   size: 'small',
   variant: 'default',
   placement: 'top',
-  anchorEl: { current: null },
+  triggerEl: { current: null },
   internalOpen: false,
   setInternalOpen: () => {},
 });

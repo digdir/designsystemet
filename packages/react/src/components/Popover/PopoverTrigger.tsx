@@ -16,9 +16,9 @@ export const PopoverTrigger = forwardRef<
 >(({ asChild, children, ...rest }: PopoverTriggerProps, ref) => {
   const Component = asChild ? Slot : Button;
 
-  const { anchorEl, internalOpen, setInternalOpen, open } =
+  const { triggerEl, internalOpen, setInternalOpen, open } =
     useContext(PopoverContext);
-  const mergedRefs = useMergeRefs([ref, anchorEl]);
+  const mergedRefs = useMergeRefs([ref, triggerEl]);
 
   return (
     <Component

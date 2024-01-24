@@ -119,3 +119,28 @@ export const InPortal = () => {
     </Popover>
   );
 };
+
+export const LegacyAnchorEl = () => {
+  const anchorEl = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button
+        ref={anchorEl}
+        onClick={() => setOpen(!open)}
+      >
+        My trigger
+      </Button>
+      <Popover
+        open={open}
+        onClose={() => setOpen(false)}
+        anchorEl={anchorEl.current}
+      >
+        <Popover.Content>popover content</Popover.Content>
+      </Popover>
+    </>
+  );
+};
+
+LegacyAnchorEl.decorators = [marginDecorator];
