@@ -46,11 +46,9 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       placement,
       setInternalOpen,
       onClose,
-      triggerEl,
-      anchorEl,
+      anchor,
     } = useContext(PopoverContext);
 
-    const anchor = anchorEl ?? triggerEl.current;
     const Container = portal ? FloatingPortal : React.Fragment;
 
     const floatingEl = useRef<HTMLDivElement>(null);

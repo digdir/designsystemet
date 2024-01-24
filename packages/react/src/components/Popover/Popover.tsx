@@ -60,6 +60,8 @@ export const Popover = ({
     setInternalOpen(open ?? false);
   }, [open]);
 
+  const anchor = anchorEl ?? triggerEl.current;
+
   return (
     <PopoverContext.Provider
       value={{
@@ -72,6 +74,7 @@ export const Popover = ({
         size,
         variant,
         placement,
+        anchor,
         onOpenChange,
         onClose,
       }}
@@ -91,6 +94,7 @@ export const PopoverContext = React.createContext<{
   size: NonNullable<PopoverProps['size']>;
   variant: NonNullable<PopoverProps['variant']>;
   placement: Placement;
+  anchor: Element | null;
   onOpenChange?: PopoverProps['onOpenChange'];
   onClose?: PopoverProps['onClose'];
 }>({
@@ -99,5 +103,6 @@ export const PopoverContext = React.createContext<{
   placement: 'top',
   triggerEl: { current: null },
   internalOpen: false,
+  anchor: null,
   setInternalOpen: () => {},
 });
