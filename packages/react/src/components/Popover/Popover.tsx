@@ -1,5 +1,4 @@
 import type { Placement } from '@floating-ui/react';
-import type { HTMLAttributes } from 'react';
 import React, { useRef } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
@@ -35,8 +34,8 @@ export type PopoverProps = {
    * Callback when the popover wants to close.
    */
   onClose?: () => void;
-} & PortalProps &
-  HTMLAttributes<HTMLDivElement>;
+  children: React.ReactNode;
+} & PortalProps;
 
 export const Popover = ({
   children,
