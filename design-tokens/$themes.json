@@ -436,7 +436,6 @@
     "id": "edeff752fe55f2581f6ceee82c66aac8b8a8622d",
     "name": "Digdir",
     "selectedTokenSets": {
-      "Brand/Digdir": "enabled",
       "Base/Semantic": "enabled",
       "Base/Core": "source",
       "Density/Default": "enabled"
@@ -924,7 +923,6 @@
     "name": "Altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/Altinn": "enabled",
       "Base/Core": "source",
       "Base/Semantic": "enabled",
       "Density/Default": "enabled"
@@ -1167,7 +1165,6 @@
     "selectedTokenSets": {
       "Base/Core": "source",
       "Base/Semantic": "enabled",
-      "Brand/Brreg": "enabled",
       "Density/Default": "enabled"
     },
     "$figmaVariableReferences": {
