@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -35,10 +35,16 @@ Preview.args = {
 Preview.decorators = [marginDecorator];
 
 export const Variants: StoryFn<typeof Popover> = () => {
+  const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
   return (
     <>
       <Popover
-        open={true}
+        open={open}
         placement='top'
       >
         <Popover.Trigger asChild>
@@ -47,7 +53,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         <Popover.Content>default</Popover.Content>
       </Popover>
       <Popover
-        open={true}
+        open={open}
         placement='bottom'
         variant='danger'
       >
@@ -57,7 +63,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         <Popover.Content>danger</Popover.Content>
       </Popover>
       <Popover
-        open={true}
+        open={open}
         placement='top'
         variant='info'
       >
@@ -67,7 +73,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         <Popover.Content>info</Popover.Content>
       </Popover>
       <Popover
-        open={true}
+        open={open}
         placement='bottom'
         variant='warning'
       >
