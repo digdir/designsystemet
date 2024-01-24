@@ -1,0 +1,116 @@
+import React, { forwardRef, useContext, useRef } from 'react';
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  useClick,
+  useDismiss,
+  useFocus,
+  useInteractions,
+  useMergeRefs,
+  useRole,
+  shift,
+  FloatingFocusManager,
+  FloatingPortal,
+} from '@floating-ui/react';
+import cl from 'clsx';
+
+import { useIsomorphicLayoutEffect } from '../../hooks';
+
+import classes from './DropdownMenu.module.css';
+import { DropdownMenuContext } from './DropdownMenu';
+
+const GAP = 4;
+
+export type DropdownMenuContentProps = {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLUListElement>;
+
+export const DropdownMenuContent = forwardRef<
+  HTMLUListElement,
+  DropdownMenuContentProps
+>(({ className, children, ...rest }, ref) => {
+  const {
+    size,
+    placement,
+    portal,
+    anchor,
+    internalOpen,
+    setInternalOpen,
+    onClose,
+  } = useContext(DropdownMenuContext);
+
+  const Container = portal ? FloatingPortal : React.Fragment;
+  const floatingEl = useRef<HTMLUListElement>(null);
+
+  const {
+    context,
+    update,
+    refs,
+    placement: flPlacement,
+    floatingStyles,
+  } = useFloating({
+    placement,
+    open: internalOpen,
+    onOpenChange: (localOpen) => {
+      if (!localOpen) onClose && onClose();
+      if (typeof open !== 'boolean') setInternalOpen(localOpen);
+    },
+    elements: {
+      reference: anchor,
+      floating: floatingEl.current,
+    },
+    whileElementsMounted: autoUpdate,
+    middleware: [offset(GAP), shift()],
+  });
+
+  const { getFloatingProps } = useInteractions([
+    useFocus(context),
+    useClick(context),
+    useDismiss(context),
+    useRole(context),
+  ]);
+
+  useIsomorphicLayoutEffect(() => {
+    refs.setReference(anchor);
+    if (!refs.reference.current || !refs.floating.current || !open) return;
+    const cleanup = autoUpdate(
+      refs.reference.current,
+      refs.floating.current,
+      update,
+    );
+    return () => cleanup();
+  }, [refs.floating, refs.reference, update, anchor, refs, open]);
+
+  const floatingRef = useMergeRefs([refs.setFloating, ref]);
+
+  return (
+    <>
+      {internalOpen && (
+        <FloatingFocusManager
+          context={context}
+          guards={false}
+          modal={false}
+        >
+          <Container>
+            <ul
+              role='menu'
+              aria-hidden={!open}
+              data-placement={flPlacement}
+              ref={floatingRef}
+              style={floatingStyles}
+              {...getFloatingProps({
+                ref: floatingRef,
+                tabIndex: undefined,
+              })}
+              className={cl(classes.dropdown, classes[size], className)}
+              {...rest}
+            >
+              {children}
+            </ul>
+          </Container>
+        </FloatingFocusManager>
+      )}
+    </>
+  );
+});
