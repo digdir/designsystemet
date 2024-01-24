@@ -45,27 +45,23 @@ export const Popover = ({
   variant = 'default',
   size = 'small',
   portal,
-  anchorEl,
   onOpenChange,
   onClose,
+  ...rest
 }: PopoverProps) => {
-  const triggerEl = useRef<Element>(null);
+  const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = React.useState(open ?? false);
-
-  React.useEffect(() => {
-    onOpenChange && onOpenChange(internalOpen);
-  }, [internalOpen, onOpenChange]);
 
   React.useEffect(() => {
     setInternalOpen(open ?? false);
   }, [open]);
 
-  const anchor = anchorEl ?? triggerEl.current;
+  const anchorEl = rest.anchorEl ?? triggerRef.current;
 
   return (
     <PopoverContext.Provider
       value={{
-        triggerEl,
+        triggerRef,
         anchorEl,
         portal,
         internalOpen,
@@ -74,7 +70,6 @@ export const Popover = ({
         size,
         variant,
         placement,
-        anchor,
         onOpenChange,
         onClose,
       }}
@@ -85,8 +80,8 @@ export const Popover = ({
 };
 
 export const PopoverContext = React.createContext<{
-  triggerEl: React.RefObject<Element>;
-  anchorEl?: Element | null;
+  triggerRef: React.RefObject<Element>;
+  anchorEl: Element | null;
   setInternalOpen: (open: boolean) => void;
   portal?: boolean;
   open?: boolean;
@@ -94,15 +89,14 @@ export const PopoverContext = React.createContext<{
   size: NonNullable<PopoverProps['size']>;
   variant: NonNullable<PopoverProps['variant']>;
   placement: Placement;
-  anchor: Element | null;
   onOpenChange?: PopoverProps['onOpenChange'];
   onClose?: PopoverProps['onClose'];
 }>({
   size: 'small',
   variant: 'default',
+  anchorEl: null,
   placement: 'top',
-  triggerEl: { current: null },
+  triggerRef: { current: null },
   internalOpen: false,
-  anchor: null,
   setInternalOpen: () => {},
 });

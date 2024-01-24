@@ -39,14 +39,15 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ className, children, style, ...rest }, ref) => {
     const {
       portal,
-      open,
       internalOpen,
       size,
+      open,
       variant,
       placement,
       setInternalOpen,
       onClose,
-      anchor,
+      onOpenChange,
+      anchorEl,
     } = useContext(PopoverContext);
 
     const Container = portal ? FloatingPortal : React.Fragment;
@@ -64,13 +65,14 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     } = useFloating({
       placement,
       open: internalOpen,
-      onOpenChange: () => {
-        onClose && onClose();
-        if (typeof open !== 'boolean') setInternalOpen(false);
+      onOpenChange: (localOpen) => {
+        onOpenChange && onOpenChange(localOpen);
+        if (!localOpen) onClose && onClose();
+        if (typeof open !== 'boolean') setInternalOpen(localOpen);
       },
       whileElementsMounted: autoUpdate,
       elements: {
-        reference: anchor,
+        reference: anchorEl,
         floating: floatingEl.current,
       },
       middleware: [
@@ -95,7 +97,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
     useIsomorphicLayoutEffect(() => {
-      refs.setReference(anchor);
+      refs.setReference(anchorEl);
       if (!refs.reference.current || !refs.floating.current || !internalOpen)
         return;
       const cleanup = autoUpdate(
@@ -104,7 +106,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
         update,
       );
       return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchor, refs, internalOpen]);
+    }, [refs.floating, refs.reference, update, anchorEl, refs, internalOpen]);
 
     const arrowPlacement = useMemo(() => {
       return ARROW_PLACEMENT[flPlacement.split('-')[0]];
