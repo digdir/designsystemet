@@ -1,5 +1,5 @@
 import { MenuPageLayout } from '@layouts';
-import { Meta } from '@components';
+import { Meta, CodeSnippet } from '@components';
 
 <Meta
   title='Forstå asChild og Slot'
@@ -19,49 +19,58 @@ export default ({ children }) => (
 Nokre gangar må du kanskje bytte ut ein komponent med ein anna, for eksempel `Link` skulle brukt `NextLink` i staden for `a`-taggen.
 Det er her `asChild` kjem inn i biletet.
 
-```tsx
-import { Link } from '@digdir/design-system-react';
-import { Link as NextLink } from 'next/link';
+<CodeSnippet language='ts'>
+  {`
+  import { Link } from '@digdir/design-system-react';
+  import { Link as NextLink } from 'next/link';
 
-<Link asChild>
-  <NextLink href='https://www.digdir.no'>Lenke til digdir.no</NextLink>
-</Link>;
-```
+  <Link asChild>
+    <NextLink href='https://www.digdir.no'>Lenke til digdir.no</NextLink>
+  </Link>
+`}
+</CodeSnippet>
 
-I kodesnutten over, så blir `Link`-komponenten rendra som ein `NextLink`-komponent. Dette skjer ved hjelp av Radix sin `Slot`-komponent. [1]
-Denne mergeer sine props ned på den komponenten som ligger som direkte barn. I tilfellet over så vil `Link` sine props bli lagt til på `NextLink`-komponenten.
+I kodesnutten over, så blir `Link`-komponenten rendra som ein `NextLink`-komponent, og det er viktig å vite at i DOMen, så er det kun eit element. Dette skjer ved hjelp av Radix sin `Slot`-komponent. [1]
+Denne merger sine props ned på den komponenten som ligger som direkte barn. I tilfellet over så vil `Link` sine props bli lagt til på `NextLink`-komponenten.
 Når du bruker `asChild`, så kan du ikkje ha meir enn eit barn, men du kan ha så mange du vil inne i det barnet.
 
-```tsx
-/* Dette vil kaste ein error */
-<Link asChild>
-  <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
-  <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
-  <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
-</Link>;
+<CodeSnippet language='ts'>
+  {`
+  <>
+    /* Dette kaster ein error */
+    <Link asChild>
+      <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
+      <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
+      <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
+    </Link>
 
-/* Dette vil gå fint */
-<Link asChild>
-  <NextLink href='https://www.digdir.no'>
-    <Icon />
-    Din lenke
-  </NextLink>
-</Link>;
-```
+    /* Dette går fint */
+    <Link asChild>
+      <NextLink href='https://www.digdir.no'>
+        <Icon />
+        Din lenke
+      </NextLink>
+    </Link>
+
+  </>
+`}
+</CodeSnippet>
 
 ## Kvifor bruke asChild?
 
 Me har tidlegare brukt ein `as` prop for å rendre som andre element, men når du bruker denne, så får du ikkje typesafety.
 `Slot` fikser dette ved at du legger alle props på barnet av komponenten, og du får dermed typesafety.
 
-```tsx
-<Link asChild>
-  <NextLink href='https://www.digdir.no' onClick={...}>
-    <Icon />
-    Din lenke
-  </NextLink>
-</Link>;
-```
+<CodeSnippet language='ts'>
+  {`
+  <Link asChild>
+    <NextLink href='https://www.digdir.no' onClick={() => {}}>
+      <Icon />
+      Din lenke
+    </NextLink>
+  </Link>
+`}
+</CodeSnippet>
 
 Alt av klassenavn, aria-attributer og andre props som `Link` har, vil bli lagt til på `NextLink`-komponenten.
 Dette betyr at me kan tilby god tilgjengelegheit, samtidig som du kan bruke andre komponenter som du ønsker.
@@ -74,17 +83,19 @@ Dette betyr at dersom du stopper eit event på din komponent, vil eventet på `S
 
 Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må du passe på at rekkefølga er korrekt. [2]
 
-```tsx
-<Link
-  asChild
-  onClick={(event) => {
-    if (!event.defaultPrevented)
-      console.log('Not logged because default is prevented.');
-  }}
->
-  <Button onClick={(e) => e.preventDefault()}>Din lenke</Button>
-</Link>
-```
+<CodeSnippet language='ts'>
+  {`
+  <Link
+    asChild
+    onClick={(event) => {
+      if (!event.defaultPrevented)
+        console.log('Not logged because default is prevented.');
+    }}
+  >
+    <Button onClick={(e) => e.preventDefault()}>Din lenke</Button>
+  </Link>
+`}
+</CodeSnippet>
 
 ## Referanser
 
