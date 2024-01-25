@@ -6,17 +6,17 @@ import { Button } from '../Button';
 
 import { PopoverContext } from './Popover';
 
-type PopoverTriggerProps = {
+export type PopoverTriggerProps = {
   asChild?: boolean;
 } & React.ComponentPropsWithRef<typeof Button>;
 
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   PopoverTriggerProps
->(({ asChild, children, ...rest }: PopoverTriggerProps, ref) => {
+>(({ asChild, children, ...rest }, ref) => {
   const Component = asChild ? Slot : Button;
 
-  const { triggerRef, internalOpen, setInternalOpen, open } =
+  const { triggerRef, internalOpen, setInternalOpen, inControlled } =
     useContext(PopoverContext);
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 
@@ -24,7 +24,7 @@ export const PopoverTrigger = forwardRef<
     <Component
       ref={mergedRefs}
       onClick={() => {
-        if (typeof open !== 'boolean') setInternalOpen(!internalOpen);
+        if (!inControlled) setInternalOpen(!internalOpen);
       }}
       aria-expanded={internalOpen}
       {...rest}
