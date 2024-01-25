@@ -90,6 +90,10 @@ export const SiteConfig = {
               name: 'Kom i gang',
               url: 'grunnleggende/for-utviklere/kom-i-gang',
             },
+            {
+              name: 'Forstå asChild og Slot',
+              url: 'grunnleggende/for-utviklere/forsta-aschild-og-slot',
+            },
           ],
         },
       ],
