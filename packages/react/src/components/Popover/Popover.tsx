@@ -20,7 +20,7 @@ export type PopoverProps = {
    */
   open?: boolean;
   /** Size of the popover
-   * @default small
+   * @default medium
    */
   size?: 'small' | 'medium' | 'large';
   /** Element the popover anchors to
@@ -42,7 +42,7 @@ export const Popover = ({
   placement = 'top',
   open,
   variant = 'default',
-  size = 'small',
+  size = 'medium',
   portal,
   onOpenChange,
   onClose,
