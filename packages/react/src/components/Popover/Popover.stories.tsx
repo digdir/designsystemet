@@ -126,7 +126,7 @@ export const InPortal = () => {
   );
 };
 
-export const LegacyAnchorEl = () => {
+export const AnchorEl = () => {
   const anchorEl = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -149,4 +149,4 @@ export const LegacyAnchorEl = () => {
   );
 };
 
-LegacyAnchorEl.decorators = [marginDecorator];
+AnchorEl.decorators = [marginDecorator];
