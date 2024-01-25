@@ -39,8 +39,7 @@ Når du bruker `asChild`, så kan du ikkje ha meir enn eit barn, men du kan ha s
   <>
     /* Dette kaster ein error */
     <Link asChild>
-      <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
-      <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
+      <Icon />
       <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
     </Link>
 
@@ -92,7 +91,7 @@ Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må 
         console.log('Not logged because default is prevented.');
     }}
   >
-    <Button onClick={(e) => e.preventDefault()}>Din lenke</Button>
+    <NextLink onClick={(e) => e.preventDefault()}>Din lenke</NextLink>
   </Link>
 `}
 </CodeSnippet>
