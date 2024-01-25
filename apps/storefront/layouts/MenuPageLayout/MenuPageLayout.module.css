@@ -53,6 +53,10 @@
   padding: var(--fds-spacing-4) var(--fds-spacing-7) 0 var(--fds-spacing-7);
 }
 
+.githubLink {
+  margin-top: var(--fds-spacing-6);
+}
+
 @media (max-width: 576px) {
   .content {
     padding: 0;
