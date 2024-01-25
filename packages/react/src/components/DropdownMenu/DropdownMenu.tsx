@@ -36,6 +36,7 @@ export const DropdownMenu = ({
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
   const anchor = anchorEl ?? triggerRef.current;
+  const isControlled = typeof open === 'boolean';
 
   useEffect(() => {
     setInternalOpen(open ?? false);
@@ -50,7 +51,7 @@ export const DropdownMenu = ({
         portal,
         placement,
         internalOpen,
-        open,
+        isControlled,
         onClose,
         setInternalOpen,
       }}
@@ -67,7 +68,7 @@ type DropdownMenuContextType = {
   portal?: PortalProps['portal'];
   placement?: DropdownMenuProps['placement'];
   internalOpen: boolean;
-  open?: DropdownMenuProps['open'];
+  isControlled?: boolean;
   setInternalOpen: (open: boolean) => void;
   onClose?: DropdownMenuProps['onClose'];
 };

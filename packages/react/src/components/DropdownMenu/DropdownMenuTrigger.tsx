@@ -16,7 +16,7 @@ export const DropdownMenuTrigger = forwardRef<
 >(({ asChild, children, ...rest }, ref) => {
   const Component = asChild ? Slot : Button;
 
-  const { triggerRef, internalOpen, setInternalOpen, open } =
+  const { triggerRef, internalOpen, setInternalOpen, isControlled } =
     useContext(DropdownMenuContext);
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 
@@ -24,7 +24,7 @@ export const DropdownMenuTrigger = forwardRef<
     <Component
       ref={mergedRefs}
       onClick={() => {
-        if (typeof open !== 'boolean') setInternalOpen(!internalOpen);
+        if (!isControlled) setInternalOpen(!internalOpen);
       }}
       aria-haspopup='menu'
       aria-expanded={internalOpen}

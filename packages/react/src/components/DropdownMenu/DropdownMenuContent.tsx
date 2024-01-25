@@ -35,6 +35,7 @@ export const DropdownMenuContent = forwardRef<
     placement,
     portal,
     anchor,
+    isControlled,
     internalOpen,
     setInternalOpen,
     onClose,
@@ -54,7 +55,7 @@ export const DropdownMenuContent = forwardRef<
     open: internalOpen,
     onOpenChange: (localOpen) => {
       if (!localOpen) onClose && onClose();
-      if (typeof open !== 'boolean') setInternalOpen(localOpen);
+      if (!isControlled) setInternalOpen(localOpen);
     },
     elements: {
       reference: anchor,
@@ -73,14 +74,15 @@ export const DropdownMenuContent = forwardRef<
 
   useIsomorphicLayoutEffect(() => {
     refs.setReference(anchor);
-    if (!refs.reference.current || !refs.floating.current || !open) return;
+    if (!refs.reference.current || !refs.floating.current || !internalOpen)
+      return;
     const cleanup = autoUpdate(
       refs.reference.current,
       refs.floating.current,
       update,
     );
     return () => cleanup();
-  }, [refs.floating, refs.reference, update, anchor, refs, open]);
+  }, [refs.floating, refs.reference, update, anchor, refs, internalOpen]);
 
   const floatingRef = useMergeRefs([refs.setFloating, ref]);
 
@@ -95,7 +97,7 @@ export const DropdownMenuContent = forwardRef<
           <Container>
             <ul
               role='menu'
-              aria-hidden={!open}
+              aria-hidden={!internalOpen}
               data-placement={flPlacement}
               ref={floatingRef}
               style={floatingStyles}
