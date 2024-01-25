@@ -119,29 +119,26 @@ export const InPortal: StoryFn<typeof DropdownMenu> = (args) => {
   );
 };
 
-export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+export const Controlled: StoryFn<typeof DropdownMenu> = (args) => {
+  const anchor = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
-
-  useEffect(() => {
-    setOpen(args.open || false);
-  }, [args.open]);
 
   return (
     <>
       <Button
-        ref={buttonRef}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup='menu'
+        ref={anchor}
       >
         Dropdown
       </Button>
       <DropdownMenu
         {...args}
-        anchorEl={buttonRef.current}
         open={open}
         onClose={() => setOpen(false)}
+        anchorEl={anchor.current}
+        portal
       >
         <DropdownMenu.Content>
           <DropdownMenu.Group>
@@ -168,4 +165,52 @@ export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
   );
 };
 
-WithAnchorEl.decorators = [marginDecorator];
+export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    setOpen(args.open || false);
+  }, [args.open]);
+
+  return (
+    <>
+      <Button
+        ref={buttonRef}
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-haspopup='menu'
+      >
+        Dropdown
+      </Button>
+      <DropdownMenu
+        {...args}
+        anchorEl={buttonRef.current}
+        open={open}
+        onClose={() => setOpen(false)}
+        portal
+      >
+        <DropdownMenu.Content>
+          <DropdownMenu.Group>
+            <DropdownMenu.Item
+              as='a'
+              href='https://github.com/digdir/designsystemet'
+              target='_blank'
+              icon={<LinkIcon />}
+            >
+              Github
+            </DropdownMenu.Item>
+            <DropdownMenu.Item
+              as='a'
+              href='https://designsystemet.no'
+              target='_blank'
+              icon={<LinkIcon />}
+            >
+              Designsystemet.no
+            </DropdownMenu.Item>
+          </DropdownMenu.Group>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+    </>
+  );
+};

@@ -11,21 +11,6 @@ import { DropdownMenu } from './';
 <Primary />
 <Controls />
 
-`anchorEl` er en referanse til elementet som dropdownen skal plasseres i forhold til.
-
-Bruk `useRef` for å få tak i elementet.
-Du må ha `aria-haspopup='menu'` på elementet som åpner dropdownen.
-Elementet som åpner popoveren bør bruke `aria-expanded=true/false` for å indikere om den er åpen eller ikke.
-
-```tsx
-const anchorEl = useRef(null);
-
-return (
-    <Button ref={anchorEl} aria-haspopup='menu' aria-expanded={open}>Button</Button>
-    <DropdownMenu anchorEl={anchorEl.current} />
-)
-```
-
 ## Icons
 
 <Canvas of={DropdownMenuStories.Icons} />
@@ -34,16 +19,30 @@ return (
 
 <Canvas of={DropdownMenuStories.InPortal} />
 
+## Kontrollert
+
+Dersom du sender inn `open`, så bruker du `DropdownMenu` kontrollert. Du kan bruke `onClose` for å få beskjed når `DropdownMenu` vil lukkes.
+
+<Canvas of={DropdownMenuStories.Controlled} />
+
 ## `anchorEl`
 
 Du kan bruke `anchorEl` istedenfor `DropdownMenu.Trigger` for å styre hvor `DropdownMenu` skal vises.
 Vi anbefale å bruke `DropdownMenu.Trigger` istedenfor `anchorEl` fordi det er bygd inn tilgjenelighetshåndtering for deg.
+Dette vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor.
 
 <Canvas of={DropdownMenuStories.WithAnchorEl} />
 
-### `Dropdown.Group`
+### `DropdownMenu.Group`
 
 <ArgsTable of={DropdownMenu.Group} />
+
+## `DropdownMenu.Trigger`
+
+Med `DropdownMenu.Trigger` kan du styre hvordan triggeren `DropdownMenu` skal vises. Du kan bruke asChild for å endre hvordan `DropdownMenu.Trigger` rendres.
+Dersom du skal legge på funksjoner som onClick, legg det på ditt element, og legg asChild på `DropdownMenu.Trigger`. Triggeren rendres som Button som standard.
+
+<ArgsTable of={DropdownMenu.Trigger} />
 
 ## Referanser
 
