@@ -6,7 +6,7 @@ import { Button } from '../Button';
 
 import { DropdownMenuContext } from './DropdownMenu';
 
-type DropdownMenuTriggerProps = {
+export type DropdownMenuTriggerProps = {
   asChild?: boolean;
 } & React.ComponentPropsWithRef<typeof Button>;
 
