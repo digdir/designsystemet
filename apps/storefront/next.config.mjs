@@ -54,7 +54,7 @@ export default {
     ignoreDuringBuilds: true,
   },
   i18n: {
-    locales: ['nb'],
-    defaultLocale: 'nb',
+    locales: ['no'],
+    defaultLocale: 'no',
   },
 };
