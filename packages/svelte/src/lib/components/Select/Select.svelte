@@ -109,6 +109,12 @@
    */
   export let clearable = false;
 
+  /**
+   * onChange handler for when a value has been choosen.
+   * @type {Function}
+   */
+  export let onChange = () => {};
+
   $: isDropdownVisible = false;
   let selectClasses = 'select';
   let inputClasses = 'textInput';
@@ -182,6 +188,7 @@
     if (closeMenuOnSelect) {
       isDropdownVisible = false;
     }
+    onChange();
   }
 
   function removeOption(optionToRemove) {
