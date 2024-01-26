@@ -41,7 +41,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       portal,
       internalOpen,
       size,
-      inControlled,
+      isControlled,
       variant,
       placement,
       setInternalOpen,
@@ -68,7 +68,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       onOpenChange: (localOpen) => {
         onOpenChange && onOpenChange(localOpen);
         if (!localOpen) onClose && onClose();
-        if (inControlled) setInternalOpen(localOpen);
+        if (isControlled) setInternalOpen(localOpen);
       },
       whileElementsMounted: autoUpdate,
       elements: {

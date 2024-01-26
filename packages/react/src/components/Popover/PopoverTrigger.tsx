@@ -16,7 +16,7 @@ export const PopoverTrigger = forwardRef<
 >(({ asChild, children, ...rest }, ref) => {
   const Component = asChild ? Slot : Button;
 
-  const { triggerRef, internalOpen, setInternalOpen, inControlled } =
+  const { triggerRef, internalOpen, setInternalOpen, isControlled } =
     useContext(PopoverContext);
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 
@@ -24,7 +24,7 @@ export const PopoverTrigger = forwardRef<
     <Component
       ref={mergedRefs}
       onClick={() => {
-        if (!inControlled) setInternalOpen(!internalOpen);
+        if (!isControlled) setInternalOpen(!internalOpen);
       }}
       aria-expanded={internalOpen}
       {...rest}

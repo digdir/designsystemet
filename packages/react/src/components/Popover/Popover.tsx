@@ -51,7 +51,7 @@ export const Popover = ({
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = React.useState(open ?? false);
 
-  const inControlled = typeof open === 'boolean';
+  const isControlled = typeof open === 'boolean';
 
   React.useEffect(() => {
     setInternalOpen(open ?? false);
@@ -66,7 +66,7 @@ export const Popover = ({
         anchorEl,
         portal,
         internalOpen,
-        inControlled,
+        isControlled,
         setInternalOpen,
         size,
         variant,
@@ -85,7 +85,7 @@ export const PopoverContext = React.createContext<{
   anchorEl: Element | null;
   setInternalOpen: (open: boolean) => void;
   portal?: boolean;
-  inControlled?: boolean;
+  isControlled?: boolean;
   internalOpen: boolean;
   size: NonNullable<PopoverProps['size']>;
   variant: NonNullable<PopoverProps['variant']>;
