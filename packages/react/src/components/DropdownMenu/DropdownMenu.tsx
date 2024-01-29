@@ -4,7 +4,7 @@ import type { Placement } from '@floating-ui/react';
 import type { PortalProps } from '../../types/Portal';
 
 export type DropdownMenuProps = {
-  /** Element the popover anchors to */
+  /** Element the dropdown anchors to */
   anchorEl?: Element | null;
   /** Whether the dropdown is open or not.
    *  @default false
