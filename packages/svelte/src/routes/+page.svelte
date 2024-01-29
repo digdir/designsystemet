@@ -719,14 +719,15 @@
         >
           <C.MenuGroup label={'Links'}>
             <C.MenuItem
-              href="http://nrk.no"
-              target="_blank"
+              onClick={(e) => {
+                console.log('clicked');
+              }}
             >
-              Testlink {i}
+              Test onClick event {i}
             </C.MenuItem>
             <C.MenuItem
               href="https://designsystemet.no"
-              target="_self"
+              target="_blank"
             >
               Designsystemet.no
             </C.MenuItem>
@@ -736,8 +737,11 @@
             <C.MenuItem icon={CheckmarkCircleFillIcon}
               >Element link {i}</C.MenuItem
             >
-            <C.MenuItem icon={InformationSquareFillIcon}
-              >Element link {i + 1}</C.MenuItem
+            <C.MenuItem
+              icon={InformationSquareFillIcon}
+              onClick={() => {
+                isModalOpen = true;
+              }}>Element link {i + 1}</C.MenuItem
             >
           </C.MenuGroup>
         </DropdownMenu>

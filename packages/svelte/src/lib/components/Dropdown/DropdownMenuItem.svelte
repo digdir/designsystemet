@@ -19,6 +19,8 @@
    */
   export let icon = null;
 
+  export let onClick = (e) => {};
+
   let parentProps = getContext('parentProps');
   let size = parentProps?.size || 'medium';
 </script>
@@ -28,6 +30,13 @@
     {href}
     {target}
     class={size}
+    on:click={(e) => {
+      e.preventDefault();
+      onClick(e);
+      if (href) {
+        window.open(href, target);
+      }
+    }}
   >
     {#if icon}
       {@html icon}
