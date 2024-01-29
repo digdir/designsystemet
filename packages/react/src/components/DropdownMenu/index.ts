@@ -18,7 +18,7 @@ DropdownMenu.Group = DropdownMenuGroup;
 DropdownMenu.Item = DropdownMenuItem;
 DropdownMenu.Trigger = DropdownMenuTrigger;
 
-DropdownMenu.Content.displayName = 'DropdownMenu';
+DropdownMenu.Content.displayName = 'DropdownMenu.Content';
 DropdownMenu.Group.displayName = 'DropdownMenu.Group';
 DropdownMenu.Item.displayName = 'DropdownMenu.Item';
 DropdownMenu.Trigger.displayName = 'DropdownMenu.Trigger';
