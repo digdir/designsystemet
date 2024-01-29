@@ -1,7 +1,6 @@
 import { Meta, Canvas, Controls, Primary, ArgsTable } from '@storybook/blocks';
 
 import * as PopoverStories from './Popover.stories.tsx';
-import { PopoverTrigger } from './';
 
 <Meta of={PopoverStories} />
 
@@ -38,6 +37,4 @@ Dette vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` is
 
 Med `Popover.Trigger` kan du styre hvordan triggeren `Popover` skal vises. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
 Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Popover.Trigger`.
-Triggeren rendres som `Button` som standard.
-
-<ArgsTable of={PopoverTrigger} />
+Triggeren rendres som [Button](/docs/felles-button--docs) som standard.
