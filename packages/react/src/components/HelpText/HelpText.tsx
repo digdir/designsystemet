@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import cl from 'clsx';
 import type { Placement } from '@floating-ui/utils';
 
@@ -30,55 +30,54 @@ export type HelpTextProps = {
   ButtonHTMLAttributes<HTMLButtonElement>;
 
 const HelpText = ({
-  className,
-  children,
   title,
   placement = 'right',
-  onClick,
   size = 'medium',
   portal,
+  className,
+  children,
   ...rest
 }: HelpTextProps) => {
-  const [open, setOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <>
-      <button
-        ref={buttonRef}
-        className={cl(classes.helpTextButton, utilClasses.focusable, className)}
-        aria-expanded={open}
-        onClick={(event) => {
-          setOpen((isOpen) => !isOpen);
-          onClick?.(event);
-        }}
-        {...rest}
-      >
-        <HelpTextIcon
-          filled
-          className={cl(
-            classes.helpTextIcon,
-            classes.helpTextIconFilled,
-            classes[size],
-            className,
-          )}
-          openState={open}
-        />
-        <HelpTextIcon
-          className={cl(classes.helpTextIcon, classes[size], className)}
-          openState={open}
-        />
-        <span className={utilClasses.visuallyHidden}>{title}</span>
-      </button>
       <Popover
         variant='info'
-        anchorEl={buttonRef.current}
         placement={placement}
-        open={open}
         size={size}
-        onClose={() => setOpen(false)}
         portal={portal}
+        open={open}
+        onClose={() => setOpen(false)}
       >
+        <Popover.Trigger asChild>
+          <button
+            className={cl(
+              classes.helpTextButton,
+              utilClasses.focusable,
+              className,
+            )}
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+            {...rest}
+          >
+            <HelpTextIcon
+              filled
+              className={cl(
+                classes.helpTextIcon,
+                classes.helpTextIconFilled,
+                classes[size],
+                className,
+              )}
+              openState={open}
+            />
+            <HelpTextIcon
+              className={cl(classes.helpTextIcon, classes[size], className)}
+              openState={open}
+            />
+            <span className={utilClasses.visuallyHidden}>{title}</span>
+          </button>
+        </Popover.Trigger>
         <Popover.Content className={classes.helpTextContent}>
           {children}
         </Popover.Content>
