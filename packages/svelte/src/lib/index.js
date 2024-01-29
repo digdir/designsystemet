@@ -40,6 +40,7 @@ import TabContent from './components/Tabs/TabContent.svelte';
 import TabItem from './components/Tabs/TabItem.svelte';
 import TabList from './components/Tabs/TabList.svelte';
 import Spinner from './components/Spinner/Spinner.svelte';
+import DropdownMenu from './components/Dropdown/DropdownMenu.svelte';
 
 export {
   Button,
@@ -70,4 +71,5 @@ export {
   TabItem,
   TabList,
   Search,
+  DropdownMenu,
 };
