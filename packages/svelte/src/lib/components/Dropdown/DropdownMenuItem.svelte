@@ -53,7 +53,7 @@
     text-decoration: none;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: end;
     padding: var(--fds-spacing-2, 0.5625rem) var(--fds-spacing-4, 1.125rem);
     gap: var(--fds-sizing-2);
     color: var(--fds-semantic-text-action-first-default, '#00244E');
