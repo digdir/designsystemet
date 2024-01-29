@@ -98,16 +98,16 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
             as='a'
             href='https://github.com/digdir/designsystemet'
             target='_blank'
-            icon={<LinkIcon />}
           >
+            <LinkIcon />
             Github
           </DropdownMenu.Item>
           <DropdownMenu.Item
             as='a'
             href='https://designsystemet.no'
             target='_blank'
-            icon={<LinkIcon />}
           >
+            <LinkIcon />
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
@@ -192,16 +192,16 @@ export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
               as='a'
               href='https://github.com/digdir/designsystemet'
               target='_blank'
-              icon={<LinkIcon />}
             >
+              <LinkIcon />
               Github
             </DropdownMenu.Item>
             <DropdownMenu.Item
               as='a'
               href='https://designsystemet.no'
               target='_blank'
-              icon={<LinkIcon />}
             >
+              <LinkIcon />
               Designsystemet.no
             </DropdownMenu.Item>
           </DropdownMenu.Group>
