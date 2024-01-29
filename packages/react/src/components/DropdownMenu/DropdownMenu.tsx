@@ -5,7 +5,7 @@ import type { PortalProps } from '../../types/Portal';
 
 export type DropdownMenuProps = {
   /** Element the popover anchors to */
-  anchorEl: Element | null;
+  anchorEl?: Element | null;
   /** Whether the dropdown is open or not.
    *  @default false
    */

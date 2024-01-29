@@ -58,9 +58,9 @@ Preview.args = {
 
 Preview.decorators = [marginDecorator];
 
-export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
+export const Icons: StoryFn<typeof DropdownMenu> = () => {
   return (
-    <DropdownMenu {...args}>
+    <DropdownMenu>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -88,12 +88,9 @@ export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
 
 Icons.decorators = [marginDecorator];
 
-export const InPortal: StoryFn<typeof DropdownMenu> = (args) => {
+export const InPortal: StoryFn<typeof DropdownMenu> = () => {
   return (
-    <DropdownMenu
-      {...args}
-      portal
-    >
+    <DropdownMenu portal>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -119,7 +116,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = (args) => {
   );
 };
 
-export const Controlled: StoryFn<typeof DropdownMenu> = (args) => {
+export const Controlled: StoryFn<typeof DropdownMenu> = () => {
   const anchor = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -134,7 +131,6 @@ export const Controlled: StoryFn<typeof DropdownMenu> = (args) => {
         Dropdown
       </Button>
       <DropdownMenu
-        {...args}
         open={open}
         onClose={() => setOpen(false)}
         anchorEl={anchor.current}
