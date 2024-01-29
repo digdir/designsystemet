@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'clsx';
 
+import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
@@ -12,10 +13,8 @@ export type ToggleGroupItemProps = {
   /** The value of the ToggleGroupItem. If not set, the string value of the items children will be used. */
   value?: string;
   /** Icon to be displayed on the ToggleGroupItem */
-  icon?: React.ReactNode;
-  /** The text to be displayed on the ToggleGroupItem */
-  children?: string;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'children'>;
+  icon?: ButtonProps['icon'];
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value'>;
 
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,

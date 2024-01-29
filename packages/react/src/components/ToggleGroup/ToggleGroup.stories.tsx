@@ -59,16 +59,22 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
     >
       <ToggleGroup.Item
         value={'option-1'}
-        icon={<AkselIcon3 title='Braille' />}
-      />
+        icon={true}
+      >
+        <AkselIcon3 title='Braille' />
+      </ToggleGroup.Item>
       <ToggleGroup.Item
         value={'option-2'}
-        icon={<AkselIcon2 title='Newspaper' />}
-      />
+        icon={true}
+      >
+        <AkselIcon2 title='Newspaper' />
+      </ToggleGroup.Item>
       <ToggleGroup.Item
         value={'option-3'}
-        icon={<AkselIcon4 title='Backpack' />}
-      />
+        icon={true}
+      >
+        <AkselIcon4 title='Backpack' />
+      </ToggleGroup.Item>
     </ToggleGroup>
   );
 };
@@ -91,22 +97,16 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         size='medium'
         onChange={setValue}
       >
-        <ToggleGroup.Item
-          value='pistachio'
-          icon={<AkselIcon />}
-        >
+        <ToggleGroup.Item value='pistachio'>
+          <AkselIcon />
           Pistachio
         </ToggleGroup.Item>
-        <ToggleGroup.Item
-          value='peanut'
-          icon={icon}
-        >
+        <ToggleGroup.Item value='peanut'>
+          {icon}
           Peanut
         </ToggleGroup.Item>
-        <ToggleGroup.Item
-          value='walnut'
-          icon={<AkselIcon2 />}
-        >
+        <ToggleGroup.Item value='walnut'>
+          <AkselIcon2 />
           Walnut
         </ToggleGroup.Item>
       </ToggleGroup>
