@@ -157,37 +157,29 @@
 
   //dropdown:
   $: dropdownPlacements = [
-  { label: 'left', value: 'left' },
-  { label: 'right', value: 'right' },
-  { label: 'bottom-start', value: 'bottom-start' },
-  { label: 'bottom-end', value: 'bottom-end' },
-  { label: 'bottom', value: 'bottom' },
-  { label: 'top', value: 'top' },
-  { label: 'top-start', value: 'top-start' },
-  { label: 'top-end', value: 'top-end' },
-  { label: 'right-start', value: 'right-start' },
-  { label: 'right-end', value: 'right-end' },
-  { label: 'left-start', value: 'left-start' },
-  { label: 'left-end', value: 'left-end' }
-];
-  let currentDropdownPlacement = { label: 'bottom-start', value: 'bottom-start' };
-  let ddMenuSize = 'medium';
-  let dropdownButton;
-  let menuVisible = false
-  function handleMenuOpen(event) {
-    event.stopPropagation();
-    menuVisible = !menuVisible
-    if (menuVisible) {
-      document.body.addEventListener('click', handleMenuClose)
-    }
-    else {
-      document.body.removeEventListener('click', handleMenuClose)
-    }
-	}
-	function handleMenuClose() {
-		menuVisible = false
-		document.body.removeEventListener('click', handleMenuClose)
-	}
+    { label: 'left', value: 'left' },
+    { label: 'right', value: 'right' },
+    { label: 'bottom-start', value: 'bottom-start' },
+    { label: 'bottom-end', value: 'bottom-end' },
+    { label: 'bottom', value: 'bottom' },
+    { label: 'top', value: 'top' },
+    { label: 'top-start', value: 'top-start' },
+    { label: 'top-end', value: 'top-end' },
+    { label: 'right-start', value: 'right-start' },
+    { label: 'right-end', value: 'right-end' },
+    { label: 'left-start', value: 'left-start' },
+    { label: 'left-end', value: 'left-end' },
+  ];
+  let currentDropdownPlacement = {
+    label: 'bottom-start',
+    value: 'bottom-start',
+  };
+  let menuVisible = false;
+  let dropdownButtons = [];
+
+  function handleDropdownClosing(value) {
+    console.log('DropdownClosing', value);
+  }
 </script>
 
 <h1>Test components here!</h1>
@@ -695,61 +687,63 @@
 
 <h1 class="componentHeader">Dropdown</h1>
 <div style="display: flex; align-items: center;gap: 5rem;">
-<RadioGroup
-  bind:value={ddMenuSize}
-  inline={false}
-  legend="Dropdown size"
-  size="small"
-  defaultValue={true ? 'option1' : 'option2'}
-  readOnly={isReadOnly}
-  disabled={isDisabled}
-  error={showError ? 'Lorem ipsum error.' : ''}
-  hideLegend={isHideLegend}
->
-  <Radio
-    value="small"
-    label="small"
-  />
-  <Radio
-    value="medium"
-    label="medium"
-  />
-  <Radio
-    value="large"
-    label="large"
-  />
-</RadioGroup>
-
-<Select
+  <Select
     options={dropdownPlacements}
     bind:selected={currentDropdownPlacement}
     label="Placement"
   />
 
-<div class="dropdown">
-  <div bind:this={dropdownButton} style="display: inline-block; box-sizing: border-box;">
-    <Button aria-haspopup="menu" aria-expanded={menuVisible} on:click={handleMenuOpen}>
-      Click me
-    </Button>
-  </div>
-{#if menuVisible}
-    <DropdownMenu let:C placement={currentDropdownPlacement.value} size="{ddMenuSize}" anchorEl={dropdownButton}>
-        <C.MenuGroup label={"Links"}>
-            <C.MenuItem href='http://nrk.no' target='_blank'>
-                Testlink
+  {#each [0, 1, 2] as i (i)}
+    <div class="dropdown">
+      <div
+        bind:this={dropdownButtons[i]}
+        style="display: inline-block; box-sizing: border-box;"
+      >
+        <Button
+          aria-haspopup="menu"
+          aria-expanded={menuVisible}
+          on:click={() => {
+            menuVisible = true;
+          }}
+        >
+          Click me
+        </Button>
+      </div>
+      {#if menuVisible}
+        <DropdownMenu
+          let:C
+          placement={currentDropdownPlacement.value}
+          size="medium"
+          anchorEl={dropdownButtons[i]}
+          onClose={() => handleDropdownClosing(i)}
+        >
+          <C.MenuGroup label={'Links'}>
+            <C.MenuItem
+              href="http://nrk.no"
+              target="_blank"
+            >
+              Testlink {i}
             </C.MenuItem>
-            <C.MenuItem href='https://designsystemet.no' target='_self'>
-                Designsystemet.no
+            <C.MenuItem
+              href="https://designsystemet.no"
+              target="_self"
+            >
+              Designsystemet.no
             </C.MenuItem>
-        </C.MenuGroup>
-        <C.Divider />
-        <C.MenuGroup>
-            <C.MenuItem icon={CheckmarkCircleFillIcon}>Element link</C.MenuItem>
-            <C.MenuItem icon={InformationSquareFillIcon}>Element link</C.MenuItem>
-        </C.MenuGroup>
-    </DropdownMenu>
-{/if}
-</div>
+          </C.MenuGroup>
+          <C.Divider />
+          <C.MenuGroup>
+            <C.MenuItem icon={CheckmarkCircleFillIcon}
+              >Element link {i}</C.MenuItem
+            >
+            <C.MenuItem icon={InformationSquareFillIcon}
+              >Element link {i + 1}</C.MenuItem
+            >
+          </C.MenuGroup>
+        </DropdownMenu>
+      {/if}
+    </div>
+  {/each}
 </div>
 <h1 class="componentHeader">Tooltip</h1>
 <Tooltip
