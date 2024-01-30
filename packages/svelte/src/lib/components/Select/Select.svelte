@@ -361,7 +361,7 @@
   }
 
   .select-label {
-    color: var(--semantic-text-neutral-default, #1e2b3c);
+    color: var(--fds-semantic-text-neutral-default, #1e2b3c);
     font-weight: 600;
     line-height: 130%; /* 20.15px */
   }

@@ -30,7 +30,8 @@
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   //@ts-ignore
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
-  import Files from '@navikt/aksel-icons/svg/Files.svg?raw';
+  //@ts-ignore
+  import FilesIcon from '@navikt/aksel-icons/svg/Files.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
   import CheckboxGroup from '$lib/components/Form/Checkbox/CheckboxGroup.svelte';
   import Textarea from '$lib/components/Form/Textarea/Textarea.svelte';
@@ -714,13 +715,13 @@
         <DropdownMenu
           let:C
           placement={currentDropdownPlacement.value}
-          size="{i == 0 ? 'small' : i == 1 ? 'medium' : 'large'}"
+          size={i == 0 ? 'small' : i == 1 ? 'medium' : 'large'}
           anchorEl={dropdownButtons[i]}
           onClose={() => handleDropdownClosing(i)}
         >
           <C.MenuGroup label={'Links'}>
             <C.MenuItem
-              onClick={(e) => {
+              on:Click={(e) => {
                 console.log('clicked');
               }}
             >
@@ -735,12 +736,10 @@
           </C.MenuGroup>
           <C.Divider />
           <C.MenuGroup>
-            <C.MenuItem icon={Files}
-              >Element link {i}</C.MenuItem
-            >
+            <C.MenuItem icon={FilesIcon}>Element link {i}</C.MenuItem>
             <C.MenuItem
               icon={InformationSquareFillIcon}
-              onClick={() => {
+              on:Click={() => {
                 isModalOpen = true;
               }}>Element link {i + 1}</C.MenuItem
             >

@@ -111,7 +111,7 @@
           </svg>
         </span>
       {/if}
-      <span>{label}</span>
+      {label}
     </label>
   {/if}
   {#if description}
@@ -170,6 +170,8 @@
     gap: var(--fds-spacing-1);
     align-items: center;
     margin-bottom: var(--fds-spacing-3);
+    font-weight: 600;
+    line-height: 130%;
   }
 
   .description {
@@ -233,6 +235,7 @@
     }
   }
   .error-message {
+    margin: var(--fds-spacing-1, 4.5px) 0;
     color: var(--fds-semantic-border-danger-default, #e02e49);
   }
   .font-xsmall {
