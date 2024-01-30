@@ -4,10 +4,13 @@ import type { Placement } from '@floating-ui/react';
 import type { PortalProps } from '../../types/Portal';
 
 export type DropdownMenuProps = {
-  /** Element the dropdown anchors to */
+  /** Element the dropdown anchors to
+   * @deprecated Use `DropdownMenu.Trigger` instead
+   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/felles-dropdownmenu--docs)
+   */
   anchorEl?: Element | null;
   /** Whether the dropdown is open or not.
-   *  @default false
+   * @default false
    */
   open?: boolean;
   /** Callback function when dropdown closes */
