@@ -117,25 +117,18 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
 };
 
 export const Controlled: StoryFn<typeof DropdownMenu> = () => {
-  const anchor = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
 
   return (
     <>
-      <Button
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        aria-haspopup='menu'
-        ref={anchor}
-      >
-        Dropdown
-      </Button>
       <DropdownMenu
         open={open}
         onClose={() => setOpen(false)}
-        anchorEl={anchor.current}
         portal
       >
+        <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
+          Dropdown
+        </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group>
             <DropdownMenu.Item
@@ -193,7 +186,6 @@ export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
               href='https://github.com/digdir/designsystemet'
               target='_blank'
             >
-              <LinkIcon />
               Github
             </DropdownMenu.Item>
             <DropdownMenu.Item
@@ -201,7 +193,6 @@ export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
               href='https://designsystemet.no'
               target='_blank'
             >
-              <LinkIcon />
               Designsystemet.no
             </DropdownMenu.Item>
           </DropdownMenu.Group>
