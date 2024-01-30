@@ -106,6 +106,9 @@ export const Controlled: StoryFn<typeof Popover> = () => {
             size='small'
             color='danger'
             onClick={() => setOpen(false)}
+            style={{
+              marginTop: 'var(--fds-spacing-2)',
+            }}
           >
             Slett
           </Button>

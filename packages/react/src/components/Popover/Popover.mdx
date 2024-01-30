@@ -22,7 +22,7 @@ import { Popover } from '@digdir/design-system-react';
 ```
 
 `Popover.Trigger` styrer om innholdet i `Popover` skal vises eller ikke. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
-Triggeren kan også rendres utenfor `Popover` ved å bruke `anchorEl` istedenfor `Popover.Trigger`, men da må bruke den kontrollert, og styre aria attributter selv.
+Du kan bruke `anchorEl`, men denne vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor. Du kan lese mer om `anchorEl` [her](#anchorel).
 
 `Popover.Content` er innholdet som skal vises i `Popover`.
 
@@ -35,6 +35,7 @@ Triggeren kan også rendres utenfor `Popover` ved å bruke `anchorEl` istedenfor
 ### Kontrollert
 
 Dersom du sender inn `open`, så bruker du `Popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `Popover` vil lukkes.
+Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker på det.
 
 <Canvas of={PopoverStories.Controlled} />
 
@@ -49,14 +50,23 @@ Då må må legge på `aria-expanded`.
 
 ## `anchorEl`
 
+_Dette vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor._
+
 Du kan bruke `anchorEl` istedenfor `Popover.Trigger` for å styre hvor `Popover` skal vises, men da må du styre åpning og lukking av `Popover` selv.
 Vi anbefaler å bruke `Popover.Trigger` istedenfor `anchorEl` fordi det er bygd inn tilgjenelighetshåndtering for deg.
-Dette vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor.
 
 <Canvas of={PopoverStories.AnchorEl} />
 
 ## `Popover.Trigger`
 
-Med `Popover.Trigger` kan du styre hvordan triggeren `Popover` skal vises. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
+Med `Popover.Trigger` kan du styre hvordan triggeren til `Popover` skal vises. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
 Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Popover.Trigger`.
 Triggeren rendres som [Button](/docs/felles-button--docs) som standard.
+
+Dette vil rendre ein input som triggeren din:
+
+```tsx
+<Popover.Trigger asChild>
+  <input ... />
+</Popover.Trigger>
+```
