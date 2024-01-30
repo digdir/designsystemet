@@ -9,21 +9,43 @@ import * as PopoverStories from './Popover.stories.tsx';
 <Primary />
 <Controls />
 
-`Popover.Trigger` styrer om innholdet i `Popover` skal vises eller ikke. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
+## Slik bruker du `Popover`
 
-## Variants
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Popover } from '@digdir/design-system-react';
+
+<Popover>
+  <Popover.Trigger>Trigger</Popover.Trigger>
+  <Popover.Content>Content</Popover.Content>
+</Popover.Trigger>
+```
+
+`Popover.Trigger` styrer om innholdet i `Popover` skal vises eller ikke. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
+Triggeren kan også rendres utenfor `Popover` ved å bruke `anchorEl` istedenfor `Popover.Trigger`, men da må bruke den kontrollert, og styre aria attributter selv.
+
+`Popover.Content` er innholdet som skal vises i `Popover`.
+
+## Eksempler
+
+### Variants
 
 <Canvas of={PopoverStories.Variants} />
 
-## Kontrollert
+### Kontrollert
 
 Dersom du sender inn `open`, så bruker du `Popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `Popover` vil lukkes.
 
 <Canvas of={PopoverStories.Controlled} />
 
-## In Portal
+### I Portal
 
 <Canvas of={PopoverStories.InPortal} />
+
+## Tilgjengelighet
+
+Dersom du bruker `Popover.Trigger` er det innebyd tilgjengelighet for deg, men dersom du bruker `anchorEl` må du styre tilgjengelighet selv.
+Då må må legge på `aria-expanded`.
 
 ## `anchorEl`
 

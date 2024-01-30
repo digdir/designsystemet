@@ -135,6 +135,7 @@ export const AnchorEl = () => {
       <Button
         ref={anchorEl}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         My trigger
       </Button>
