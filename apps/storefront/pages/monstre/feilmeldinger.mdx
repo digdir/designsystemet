@@ -41,13 +41,12 @@ Feltet skal tydelig vise at noe er feil. Dette gjør vi med rød farge, [forklar
 
 ### Når skal feilmeldinger presenteres for brukeren?
 
-Vi kan presentere feilmeldinger for brukerne til ulike tider i utfyllingen.
+Vi kan presentere feilmeldinger for brukerne enten når
 
-- Mens brukeren fyller ut
-- Når brukeren forlater feltet
-- Når brukeren trykker "Gå videre" eller "Send inn"
+- Brukeren forlater feltet
+- Brukeren trykker "Gå videre" eller "Send inn"
 
-Vi bør som regel _ikke_ vise feilmeldinger mens brukeren fyller ut feltet. Mange bruker nemlig tastatur til å navigere i skjemaet. De vil ikke nødvendigvis starte på toppen og jobbe seg nedover og derfor vil det forstyrre hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
+Vi skal ikke vise feilmeldinger mens brukeren fyller ut feltet. Mange bruker nemlig tastatur til å navigere i skjemaet. De vil ikke nødvendigvis starte på toppen og jobbe seg nedover og derfor vil det forstyrre hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
 
 Hvis vi har feilmeldinger som skal vises når brukeren forlater feltet, må vi kode det slik at vi vet om brukeren faktisk har skrevet noe i feltet før vi viser feilmeldingen. Det tryggeste er å vise feilmeldingen når brukeren selv er klar til å gå videre.
 
