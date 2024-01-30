@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useMemo } from 'react';
+import React, { forwardRef, useEffect, useId, useMemo } from 'react';
 
 import { Heading, type HeadingProps } from '../Typography';
 
@@ -17,6 +17,7 @@ export const ListHeading = forwardRef<
   HTMLHeadingElement,
   Omit<HeadingProps, 'size' | 'spacing'> & { id?: string }
 >(({ level = 2, id, ...rest }, ref) => {
+  const hId = useId();
   const { size, headingId, setHeadingId } = React.useContext(ListContext);
 
   const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
@@ -24,14 +25,16 @@ export const ListHeading = forwardRef<
   useEffect(() => {
     if (id) {
       setHeadingId(id);
+    } else {
+      setHeadingId(hId);
     }
-  }, [id, setHeadingId]);
+  }, [hId, id, setHeadingId]);
 
   return (
     <Heading
       ref={ref}
       size={headingSize}
-      id={headingId}
+      id={headingId || hId}
       level={level}
       spacing={true}
       {...rest}

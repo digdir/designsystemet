@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { useId } from 'react';
+import React from 'react';
 
 export type ListProps = {
   /** Changes text sizing
@@ -10,8 +10,7 @@ export type ListProps = {
 
 export const List = React.forwardRef<HTMLDivElement, ListProps>(
   ({ children, size = 'medium', ...rest }, ref) => {
-    const hId = useId();
-    const [headingId, setHeadingId] = React.useState(hId);
+    const [headingId, setHeadingId] = React.useState<string | null>(null);
 
     return (
       <ListContext.Provider value={{ size, headingId, setHeadingId }}>
@@ -28,7 +27,7 @@ export const List = React.forwardRef<HTMLDivElement, ListProps>(
 
 type ListContextType = {
   size: NonNullable<ListProps['size']>;
-  headingId: string;
+  headingId: string | null;
   setHeadingId: (id: string) => void;
 };
 

@@ -20,7 +20,29 @@ export const Unordered = React.forwardRef<HTMLUListElement, UnorderedProps>(
         className={cl(classes.list, rest.className)}
         role='list'
         {...(headingId ? { 'aria-labelledby': headingId } : {})}
-        {...rest}
+        /* {...rest} */
+        ref={ref}
+      >
+        {children}
+      </Paragraph>
+    );
+  },
+);
+
+export type OrderedProps = Omit<HTMLAttributes<HTMLOListElement>, 'size'>;
+
+export const Ordered = React.forwardRef<HTMLOListElement, OrderedProps>(
+  ({ children, ...rest }, ref) => {
+    const { size, headingId } = React.useContext(ListContext);
+
+    return (
+      <Paragraph
+        as='ol'
+        size={size}
+        className={cl(classes.list, rest.className)}
+        role='list'
+        {...(headingId ? { 'aria-labelledby': headingId } : {})}
+        /* {...rest} */
         ref={ref}
       >
         {children}
