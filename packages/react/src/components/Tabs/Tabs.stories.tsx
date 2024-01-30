@@ -52,18 +52,15 @@ Preview.args = {
 export const IconsOnly: StoryFn<typeof Tabs> = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
-      <Tabs.Tab
-        value='value1'
-        icon={<AkselIcon title='Airplane' />}
-      />
-      <Tabs.Tab
-        value='value2'
-        icon={<AkselIcon2 title='Newspaper' />}
-      />
-      <Tabs.Tab
-        value='value3'
-        icon={<AkselIcon3 title='Dog' />}
-      />
+      <Tabs.Tab value='value1'>
+        <AkselIcon title='Airplane' />
+      </Tabs.Tab>
+      <Tabs.Tab value='value2'>
+        <AkselIcon2 title='Newspaper' />
+      </Tabs.Tab>
+      <Tabs.Tab value='value3'>
+        <AkselIcon3 title='Dog' />
+      </Tabs.Tab>
     </Tabs.List>
     <Tabs.Content value='value1'>content 1</Tabs.Content>
     <Tabs.Content value='value2'>content 2</Tabs.Content>
@@ -88,22 +85,16 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
         onChange={setValue}
       >
         <Tabs.List>
-          <Tabs.Tab
-            value='value1'
-            icon={icon}
-          >
+          <Tabs.Tab value='value1'>
+            {icon}
             Tab 1
           </Tabs.Tab>
-          <Tabs.Tab
-            value='value2'
-            icon={<AkselIcon2 />}
-          >
+          <Tabs.Tab value='value2'>
+            <AkselIcon2 />
             Tab 2
           </Tabs.Tab>
-          <Tabs.Tab
-            value='value3'
-            icon={<AkselIcon4 />}
-          >
+          <Tabs.Tab value='value3'>
+            <AkselIcon4 />
             Tab 3
           </Tabs.Tab>
         </Tabs.List>

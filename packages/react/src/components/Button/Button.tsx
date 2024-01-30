@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx';
 
 import utilityClasses from '../../utilities/utility.module.css';
@@ -16,14 +16,10 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
-  /** Icon to be rendered in the button. This should be a React component that renders an SVG object.
-   * @deprecated This will be changed to a `boolean` in the future to toggle icon only styling, icons will be passed as children
+  /** Toggle icon only styling, pass icon as children
+   * @default false
    */
-  icon?: ReactNode;
-  /** Icon position inside Button
-   * @deprecated This will be removed as we will use `children` to pass icons
-   */
-  iconPlacement?: 'right' | 'left';
+  icon?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
@@ -38,8 +34,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
         variant = 'primary',
         size = 'medium',
         fullWidth = false,
-        iconPlacement = 'left',
-        icon,
+        icon = false,
         type = 'button',
         className,
         as: Component = 'button',
@@ -57,14 +52,12 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           classes[variant],
           classes[color],
           { [classes.fullWidth]: fullWidth },
-          { [classes.onlyIcon]: !children && icon },
+          { [classes.onlyIcon]: icon },
           className,
         )}
         {...rest}
       >
-        {iconPlacement === 'left' && icon}
         {children}
-        {iconPlacement === 'right' && icon}
       </Component>
     ),
   );
