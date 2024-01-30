@@ -5,6 +5,7 @@
 
 :root {
   /** Referenced source tokens */ 
+  /** DO NOT OVERRIDE */ 
   --fds-colors-grey-100: #f4f5f6;
   --fds-colors-grey-200: #e9eaec;
   --fds-colors-blue-900: #00315d;
