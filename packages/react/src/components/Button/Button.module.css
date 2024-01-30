@@ -25,7 +25,7 @@
   overflow: visible;
 }
 
-.button.small::before {
+.small::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -34,7 +34,7 @@
   content: '';
 }
 
-.button.small::after {
+.small::after {
   position: absolute;
   top: -5px;
   left: 0;
@@ -55,7 +55,7 @@
   width: var(--fc-button-icon-size);
 }
 
-.button.small {
+.small {
   --fc-button-padding: 0 var(--fds-spacing-3);
   --fc-button-icon-size: var(--fds-sizing-4);
 
@@ -65,7 +65,7 @@
   min-height: var(--fds-sizing-8);
 }
 
-.button.medium {
+.medium {
   --fc-button-padding: 0 var(--fds-spacing-4);
   --fc-button-icon-size: var(--fds-sizing-6);
 
@@ -75,7 +75,7 @@
   min-height: var(--fds-sizing-10);
 }
 
-.button.large {
+.large {
   --fc-button-padding: 0 var(--fds-spacing-5);
   --fc-button-icon-size: var(--fds-sizing-8);
 
@@ -85,100 +85,100 @@
   min-height: var(--fds-sizing-12);
 }
 
-.button.fullWidth {
+.fullWidth {
   width: 100%;
 }
 
-.button.secondary,
-.button.tertiary {
+.secondary,
+.tertiary {
   background-color: transparent;
 }
 
-.button.onlyIcon {
+.onlyIcon {
   --fc-button-padding: 0;
 }
 
 /* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
-  .button.primary.first:not([aria-disabled='true'], :disabled):hover {
+  .primary.first:not([aria-disabled='true'], :disabled):hover {
     background: var(--fds-semantic-surface-action-first-hover);
   }
 
-  .button.primary.second:not([aria-disabled='true'], :disabled):hover {
+  .primary.second:not([aria-disabled='true'], :disabled):hover {
     background: var(--fds-semantic-surface-action-second-hover);
   }
 
-  .button.primary.success:not([aria-disabled='true'], :disabled):hover {
+  .primary.success:not([aria-disabled='true'], :disabled):hover {
     background: var(--fds-semantic-surface-success-hover);
   }
 
-  .button.primary.danger:not([aria-disabled='true'], :disabled):hover {
+  .primary.danger:not([aria-disabled='true'], :disabled):hover {
     background: var(--fds-semantic-surface-danger-hover);
   }
 
-  .button.primary.inverted:not([aria-disabled='true'], :disabled):hover {
+  .primary.inverted:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-neutral-default);
 
     background: var(--fds-semantic-surface-on_inverted-hover);
   }
 
-  .button.secondary.first:not([aria-disabled='true'], :disabled):hover {
+  .secondary.first:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-first-hover);
 
     border-color: var(--fds-semantic-border-action-first-hover);
     background: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
-  .button.secondary.second:not([aria-disabled='true'], :disabled):hover {
+  .secondary.second:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-second-hover);
 
     border-color: var(--fds-semantic-border-action-second-hover);
     background: var(--fds-semantic-surface-action-second-no_fill-hover);
   }
 
-  .button.secondary.success:not([aria-disabled='true'], :disabled):hover {
+  .secondary.success:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-success-hover);
 
     border-color: var(--fds-semantic-border-success-hover);
     background: var(--fds-semantic-surface-success-no_fill-hover);
   }
 
-  .button.secondary.danger:not([aria-disabled='true'], :disabled):hover {
+  .secondary.danger:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-danger-hover);
 
     border-color: var(--fds-semantic-border-danger-hover);
     background: var(--fds-semantic-surface-danger-no_fill-hover);
   }
 
-  .button.secondary.inverted:not([aria-disabled='true'], :disabled):hover {
+  .secondary.inverted:not([aria-disabled='true'], :disabled):hover {
     background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
   }
 
-  .button.tertiary.first:not([aria-disabled='true'], :disabled):hover {
+  .tertiary.first:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-first-hover);
 
     background: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
-  .button.tertiary.second:not([aria-disabled='true'], :disabled):hover {
+  .tertiary.second:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-second-hover);
 
     background: var(--fds-semantic-surface-action-second-no_fill-hover);
   }
 
-  .button.tertiary.success:not([aria-disabled='true'], :disabled):hover {
+  .tertiary.success:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-success-hover);
 
     background: var(--fds-semantic-surface-success-no_fill-hover);
   }
 
-  .button.tertiary.danger:not([aria-disabled='true'], :disabled):hover {
+  .tertiary.danger:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-danger-hover);
 
     background: var(--fds-semantic-surface-danger-no_fill-hover);
   }
 
-  .button.tertiary.inverted:not([aria-disabled='true'], :disabled):hover {
+  .tertiary.inverted:not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
     background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
@@ -186,168 +186,168 @@
 }
 
 /* Primary button colors */
-.button.primary.first {
+.primary.first {
   background: var(--fds-semantic-surface-action-first-default);
 }
 
-.button.primary.first:not([aria-disabled='true'], :disabled):active {
+.primary.first:not([aria-disabled='true'], :disabled):active {
   background: var(--fds-semantic-surface-action-first-active);
 }
 
-.button.primary.second {
+.primary.second {
   background: var(--fds-semantic-surface-action-second-default);
 }
 
-.button.primary.second:not([aria-disabled='true'], :disabled):active {
+.primary.second:not([aria-disabled='true'], :disabled):active {
   background: var(--fds-semantic-surface-action-second-active);
 }
 
-.button.primary.success {
+.primary.success {
   background: var(--fds-semantic-surface-success-default);
 }
 
-.button.primary.success:not([aria-disabled='true'], :disabled):active {
+.primary.success:not([aria-disabled='true'], :disabled):active {
   background: var(--fds-semantic-surface-success-active);
 }
 
-.button.primary.danger {
+.primary.danger {
   background: var(--fds-semantic-surface-danger-default);
 }
 
-.button.primary.danger:not([aria-disabled='true'], :disabled):active {
+.primary.danger:not([aria-disabled='true'], :disabled):active {
   background: var(--fds-semantic-surface-danger-active);
 }
 
-.button.primary.inverted {
+.primary.inverted {
   --fc-button-color: var(--fds-semantic-text-neutral-default);
 
   background: var(--fds-semantic-surface-on_inverted-default);
 }
 
-.button.primary.inverted:not([aria-disabled='true'], :disabled):active {
+.primary.inverted:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-neutral-default);
 
   background: var(--fds-semantic-surface-on_inverted-active);
 }
 
 /* Secondary button colors */
-.button.secondary.first {
+.secondary.first {
   --fc-button-color: var(--fds-semantic-text-action-first-default);
 
   border-color: var(--fds-semantic-border-action-first-default);
   background: var(--fds-semantic-surface-action-first-no_fill);
 }
 
-.button.secondary.first:not([aria-disabled='true'], :disabled):active {
+.secondary.first:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-action-first-active);
 
   border-color: var(--fds-semantic-border-action-first-active);
   background: var(--fds-semantic-surface-action-first-no_fill-active);
 }
 
-.button.secondary.second {
+.secondary.second {
   --fc-button-color: var(--fds-semantic-text-action-second-default);
 
   border-color: var(--fds-semantic-border-action-second-default);
   background: var(--fds-semantic-surface-action-second-no_fill);
 }
 
-.button.secondary.second:not([aria-disabled='true'], :disabled):active {
+.secondary.second:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-action-second-active);
 
   border-color: var(--fds-semantic-border-action-second-active);
   background: var(--fds-semantic-surface-action-second-no_fill-active);
 }
 
-.button.secondary.success {
+.secondary.success {
   --fc-button-color: var(--fds-semantic-text-success-default);
 
   border-color: var(--fds-semantic-border-success-default);
   background: var(--fds-semantic-surface-success-no_fill);
 }
 
-.button.secondary.success:not([aria-disabled='true'], :disabled):active {
+.secondary.success:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-success-active);
 
   border-color: var(--fds-semantic-border-success-active);
   background: var(--fds-semantic-surface-success-no_fill-active);
 }
 
-.button.secondary.danger {
+.secondary.danger {
   --fc-button-color: var(--fds-semantic-text-danger-default);
 
   border-color: var(--fds-semantic-border-danger-default);
   background: var(--fds-semantic-surface-danger-no_fill);
 }
 
-.button.secondary.danger:not([aria-disabled='true'], :disabled):active {
+.secondary.danger:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-danger-active);
 
   border-color: var(--fds-semantic-border-danger-active);
   background: var(--fds-semantic-surface-danger-no_fill-active);
 }
 
-.button.secondary.inverted {
+.secondary.inverted {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
   border: 1px solid var(--fds-semantic-border-on_inverted-default);
   background: transparent;
 }
 
-.button.secondary.inverted:not([aria-disabled='true'], :disabled):active {
+.secondary.inverted:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-active);
 }
 
 /* Tertiary button colors */
-.button.tertiary.first {
+.tertiary.first {
   --fc-button-color: var(--fds-semantic-text-action-first-default);
 }
 
-.button.tertiary.first:not([aria-disabled='true'], :disabled):active {
+.tertiary.first:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-action-first-active);
 
   background: var(--fds-semantic-surface-action-first-no_fill-active);
 }
 
-.button.tertiary.second {
+.tertiary.second {
   --fc-button-color: var(--fds-semantic-text-action-second-default);
 }
 
-.button.tertiary.second:not([aria-disabled='true'], :disabled):active {
+.tertiary.second:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-action-second-active);
 
   background: var(--fds-semantic-surface-action-second-no_fill-active);
 }
 
-.button.tertiary.success {
+.tertiary.success {
   --fc-button-color: var(--fds-semantic-text-success-default);
 }
 
-.button.tertiary.success:not([aria-disabled='true'], :disabled):active {
+.tertiary.success:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-success-active);
 
   background: var(--fds-semantic-surface-success-no_fill-active);
 }
 
-.button.tertiary.danger {
+.tertiary.danger {
   --fc-button-color: var(--fds-semantic-text-danger-default);
 }
 
-.button.tertiary.danger:not([aria-disabled='true'], :disabled):active {
+.tertiary.danger:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-danger-active);
 
   background: var(--fds-semantic-surface-danger-no_fill-active);
 }
 
-.button.tertiary.inverted {
+.tertiary.inverted {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: transparent;
 }
 
-.button.tertiary.inverted:not([aria-disabled='true'], :disabled):active {
+.tertiary.inverted:not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
   background: var(--fds-semantic-surface-on_inverted-no_fill-active);

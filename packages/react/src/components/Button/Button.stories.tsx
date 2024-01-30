@@ -160,7 +160,9 @@ export const WithIcon: StoryFn<typeof Button> = () => (
       color='second'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
       icon={true}
       color='success'
