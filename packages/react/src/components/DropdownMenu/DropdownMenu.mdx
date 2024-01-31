@@ -55,10 +55,10 @@ Brukes `anchorEl` må du sørge for å legge på `aria-expanded={true/false}` i 
 
 ### `anchorEl`
 
-_Dette vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor._
 
-Du kan bruke `anchorEl` istedenfor `DropdownMenu.Trigger` for å styre hvor `DropdownMenu` skal vises, men da må du styre åpning og lukking av `DropdownMenu` selv.
-Vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor `anchorEl` fordi det er bygd inn tilgjenelighetshåndtering for deg.
+Alternativt kan du bruke `anchorEl` for å styre hvor `DropdownMenu` skal vises, men da må du selv håndtere tilstand for åpning/lukking og attributter for tilgjengelighet.
+
+_`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor._
 
 <Canvas of={DropdownMenuStories.WithAnchorEl} />
 
