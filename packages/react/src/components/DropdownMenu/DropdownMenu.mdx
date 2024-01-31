@@ -49,8 +49,9 @@ Legg på `portal` for å rendere `DropdownMenu` i en portal. Dette flytter dropd
 
 ## Tilgjengelighet
 
-Dersom du bruker `DropdownMenu.Trigger` er det innebyd tilgjengelighet for deg, men dersom du bruker `anchorEl` må du styre tilgjengelighet selv.
-Da må du legge på `aria-expanded={true/false}` og `aria-haspopup='menu'`.
+Brukes `DropdownMenu.Trigger` er det innebygd tilgjengelighet.
+
+Brukes `anchorEl` må du sørge for å legge på `aria-expanded={true/false}` i henhold til åpne/lukket tilstand og `aria-haspopup='menu'` på trigger elementet.
 
 ### `anchorEl`
 
