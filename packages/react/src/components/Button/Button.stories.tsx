@@ -6,8 +6,6 @@ import * as akselIcons from '@navikt/aksel-icons';
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
 
-import classes from './test.module.css';
-
 import { Button } from './';
 
 type Story = StoryObj<typeof Button>;
@@ -39,7 +37,6 @@ export const Preview: Story = {
     size: 'medium',
     icon: false,
     fullWidth: false,
-    className: classes.test,
   },
 };
 
