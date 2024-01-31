@@ -11,7 +11,7 @@ export default ({ children, menu }) => (
     content={children}
     data={{
       title: 'Kontrast',
-      date: '10. januar 2023',
+      date: '31. januar 2023',
       author: 'Brønnøysundregistrene',
       backText: 'God praksis',
       backUrl: 'god-praksis',
@@ -19,9 +19,9 @@ export default ({ children, menu }) => (
   />
 );
 
-## Den opplevde visuelle forskjellen mellom to farger er det vi kaller kontrast
+Den opplevde visuelle forskjellen mellom to farger er det vi kaller kontrast.
 
-Vår retningslinje:
+**Vår retningslinje:**
 Vi forsøker alltid å oppnå WCAG 2.1 krav på nivå AAA, selv om dette er strengere enn det vi må ifølge universell utforming. Aller helst er målet å oppnå nivå 4 / master level i APCA-metoden som nå utforskes i WCAG 3.0.
 
 ## Hvorfor er dette viktig?
@@ -32,15 +32,21 @@ Brukere, inkludert dem med svekket syn, må kunne se innhold på nettstedet. Der
 
 I WCAG 2.x er kontrastregler knyttet til forskjellen i lysstyrken i fargeparet. Det som da spiller inn er verdien som er satt, med RGB, HEX eller HSL. Det er vist gjennom undersøkelser at metoden ikke er vitenskapelig støttet fra et tilgjengelighetsperspektiv, men fungerer som en «dum» måte å estimere forskjellen, uten at øyets evne til å oppfatte farger og lys er tatt hensyn til. Om en farge er bakgrunn eller forgrunn har ingenting å si for kontrastverdien. Derfor vil en i noen tilfeller oppleve at selv en lav kontrastverdi, er lett å oppfatte. Og motsatt at selv middels-høye kontrastverdier ikke er lett å oppfatte.
 
-(BILDE eksempel høy kontrast men ikke lett å oppfatte + motsatt)
-
-Illustrasjonen viser to eksempler med 16px stor tekst i normal vekt, begge variantene har 4,6 til 1 i kontrast. I variant A er teksten gitt fargen #6D7879 og bakgrunnen er hvit, teksten er sånn passelig lesbar. I variant B er teksten farget svart og satt på bakgrunn med farge #6D7879, denne er noe mindre lesbar enn variant A. Illustrasjonen viser at selv om det er lik kontrast utregnet med metoden fra WCAG 2, hvor begge er godkjent, så er det faktisk en forskjell på hvor godt leselig innholdet faktisk blir, til det er APCA-metoden bedre. Med APCA får variant A en verdi på Lc-72 og variant B får Lc-32. Skulle vi oppnå kravene fra WCAG 3 måtte vi i variant A økt skriftstørrelsen til 21px eller mer, mens for variant B måtte vi økt til hele 60px størrelse eller mer og i tillegg også gitt større vekt på minimum 500.
+<Image
+  src='/img/Kontrast-eksempel.jpg'
+  alt='Illustrasjonen viser to eksempler med 16px stor tekst i normal vekt, begge variantene har 4,6 til 1 i kontrast. I variant A er teksten gitt fargen #6D7879 og bakgrunnen er hvit, teksten er sånn passelig lesbar. I variant B er teksten farget svart og satt på bakgrunn med farge #6D7879, denne er noe mindre lesbar enn variant A. Illustrasjonen viser at selv om det er lik kontrast utregnet med metoden fra WCAG 2, hvor begge er godkjent, så er det faktisk en forskjell på hvor godt leselig innholdet faktisk blir, til det er APCA-metoden bedre. Med APCA får variant A en verdi på Lc-72 og variant B får Lc-32. Skulle vi oppnå kravene fra WCAG 3 måtte vi i variant A økt skriftstørrelsen til 21px eller mer, mens for variant B måtte vi økt til hele 60px størrelse eller mer og i tillegg også gitt større vekt på minimum 500.'
+  boxShadow={false}
+/>
 
 I WCAG 3 utforskes metoden Advanced Perceptual Contrast Algorithm (APCA), som både endrer hvordan verdiene mellom to farger bestemmes, her er det også forskjell på hvilken farge som står som forgrunn og hvilken som er bakgrunn. Men det settes også tydelige terskelverdier eller målverdier, som tar hensyn til valg av font, tekststørrelse og font-vekt. APCA er da en mer presis metode for å kalkulere kontrast og sette terskelverdier.
 
 Ved å forsøke å strekke oss til over AAA-krav i WCAG 2.1, så vet vi at vi også kommer til å være nærmere terskelverdiene i APCA. Vi har altså større sjanse til å oppfylle hensikten med disse kravene.
 
-(BILDE terkselverdier)
+<Image
+  src='/img/Kontrast-terskelverdier.png'
+  alt='Alt tekst kommer'
+  boxShadow={false}
+/>
 
 I [verktøyet her](https://contrast.brreg.no/) kan du se fargesystemet til Brønnøysundregistrene og teste hvordan kontrastverdier endrer seg etter hvilken tekstfarge, størrelse og vekt du velger, du kan se om en oppfyller WCAG AA eller AAA nivåer og APCA. Terskelverdiene som brukes for å si godkjent eller ikke, er forenklet fra en tidlig "sølv"-nivå tabell fra APCA-arbeidet, når en ferdig modell anbefalt fra w3c så erstatter vi terskelverdiene.
 
