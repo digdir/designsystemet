@@ -27,6 +27,29 @@ import { DropdownMenu } from '@digdir/design-system-react';
 </DropdownMenu>;
 ```
 
+### Alternativ `anchorEl`
+
+Alternativt kan du bruke `anchorEl` for å styre hvor `DropdownMenu` skal vises, men da må du selv håndtere tilstand for åpning/lukking og attributter for tilgjengelighet.
+
+_`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor._
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { DropdownMenu } from '@digdir/design-system-react';
+
+const anchorEl = useRef(null);
+
+<Button ref={anchorEl}>Trigger</Button>
+
+<DropdownMenu anchorEl={anchorEl}>
+  <DropdownMenu.Content>
+    <DropdownMenu.Group>
+      <DropdownMenu.Item>Item</DropdownMenu.Item>
+    </DropdownMenu.Group>
+  </DropdownMenu.Content>
+</DropdownMenu>;
+```
+
 ## Eksempler på bruk
 
 ### Kontrollert
@@ -53,13 +76,6 @@ Brukes `DropdownMenu.Trigger` er det innebygd tilgjengelighet.
 
 Brukes `anchorEl` må du sørge for å legge på `aria-expanded={true/false}` i henhold til åpne/lukket tilstand og `aria-haspopup='menu'` på trigger elementet.
 
-### `anchorEl`
-
-
-Alternativt kan du bruke `anchorEl` for å styre hvor `DropdownMenu` skal vises, men da må du selv håndtere tilstand for åpning/lukking og attributter for tilgjengelighet.
-
-_`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor._
-
 <Canvas of={DropdownMenuStories.WithAnchorEl} />
 
 ### `DropdownMenu.Group`
@@ -71,7 +87,7 @@ _`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.
 Triggeren er en [Button](/docs/felles-button--docs) som standard.
 
 Bruk `DropdownMenu.Trigger` til å aktivere `DropdownMenu`. Du kan bruke `asChild` for å endre `DropdownMenu.Trigger` elementet.
-Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `DropdownMenu.Trigger`. 
+Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `DropdownMenu.Trigger`.
 
 ### Referanser
 
