@@ -75,15 +75,14 @@ export const Advanced: Story = (args) => (
 );
 
 export const LinkList: Story = (args) => (
-  <List
-    {...args}
-    style={{
-      listStyle: 'none',
-      paddingLeft: 0,
-    }}
-  >
+  <List {...args}>
     <List.Heading>Designsystemet</List.Heading>
-    <List.Unordered>
+    <List.Unordered
+      style={{
+        listStyle: 'none',
+        paddingLeft: 0,
+      }}
+    >
       <List.Item>
         <Link
           href='https://www.designsystemet.no/grunnleggende'

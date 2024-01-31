@@ -14,14 +14,15 @@ export const Unordered = React.forwardRef<HTMLUListElement, UnorderedProps>(
     const { size, headingId } = React.useContext(ListContext);
 
     return (
+      /* @ts-expect-error #2772 */
       <Paragraph
         as='ul'
         size={size}
         className={cl(classes.list, rest.className)}
         role='list'
         {...(headingId ? { 'aria-labelledby': headingId } : {})}
-        /* {...rest} */
         ref={ref}
+        {...rest}
       >
         {children}
       </Paragraph>
@@ -36,13 +37,14 @@ export const Ordered = React.forwardRef<HTMLOListElement, OrderedProps>(
     const { size, headingId } = React.useContext(ListContext);
 
     return (
+      /* @ts-expect-error #2772 */
       <Paragraph
         as='ol'
         size={size}
         className={cl(classes.list, rest.className)}
         role='list'
         {...(headingId ? { 'aria-labelledby': headingId } : {})}
-        /* {...rest} */
+        {...rest}
         ref={ref}
       >
         {children}
