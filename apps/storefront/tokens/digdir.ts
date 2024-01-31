@@ -2369,6 +2369,42 @@ export const color = [
 
 export const typography = [
   {
+    value: "500 clamp(1.94rem, calc(1.88vw + 1.56rem), 3.16rem)/1.3 'Inter'",
+    type: 'typography',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: {
+        fontFamily: '{fontFamilies.inter}',
+        fontWeight: '{fontWeights.medium}',
+        lineHeight: '{lineHeights.300}',
+        fontSize: '{font-size.f7}',
+      },
+      type: 'typography',
+    },
+    name: '--fds-typography-heading-3xlarge',
+    attributes: {},
+    path: ['typography', 'heading', '3xlarge'],
+  },
+  {
+    value: "500 clamp(1.78rem, calc(1.44vw + 1.49rem), 2.72rem)/1.3 'Inter'",
+    type: 'typography',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: {
+        fontFamily: '{fontFamilies.inter}',
+        fontWeight: '{fontWeights.medium}',
+        lineHeight: '{lineHeights.300}',
+        fontSize: '{font-size.f6}',
+      },
+      type: 'typography',
+    },
+    name: '--fds-typography-heading-2xlarge',
+    attributes: {},
+    path: ['typography', 'heading', '2xlarge'],
+  },
+  {
     value: "500 clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem)/1.3 'Inter'",
     type: 'typography',
     description: 'H1',
