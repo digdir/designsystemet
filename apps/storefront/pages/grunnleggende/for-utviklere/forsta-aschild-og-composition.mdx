@@ -11,7 +11,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Forstå asChild og Composition',
-      date: '25. januar 2024',
+      date: '31. januar 2024',
     }}
   />
 );
@@ -100,11 +100,34 @@ Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må 
 
 ## Composition
 
-Over har du lært om `asChild`, men kan alle komponentar brukast med `asChild`? I teorien ja, men du må gjere litt arbeid for å få det til å funke.
-Mange av våre komponentar støttar `asChild`, men me har gjort eit valg på korleis element som er standard, og dersom du endrer dette må du passe på at
-tilgjengelegheit er ivaretatt.
+Over har du lært om `asChild`, men kan alle komponentar brukast med `asChild`? I teorien ja, men du må gjere litt arbeid for å få det til å funke. [3]
+
+> Mange av våre komponentar støttar `asChild`, men me har gjort eit valg på korleis element som er standard, og dersom du endrer dette må du passe på at
+> tilgjengelegheit er ivaretatt. Det er sjeldent at du behøver å endre det underliggande elementet, men det er meir realistisk at du vil bruke din eigen komponent.
+
+Dersom du skal bruke ein eigen komponent må du passe på å spre alle props, og ha støtte for `ref`. Komponentane dine vil då sjå slik ut:
+
+<CodeSnippet language='ts'>
+{`// uten props og ref
+  const MinKnapp = () => <button />
+
+// med props
+const MinKnapp = (props) => <button {...props} />
+
+// med props og ref
+const MinKnapp = React.forwardRef((props, forwardedRef) => (
+
+<button
+  {...props}
+  ref={forwardedRef}
+/>
+))`}
+</CodeSnippet>
+
+Alle våre komponenter gjer dette allerede, så dersom du skal bruke ein komponent frå oss, så er det berre å bruke `asChild`.
 
 ### Referanser
 
 - [1] [Radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot)
 - [2] [Radix Slot Event handlers](https://www.radix-ui.com/primitives/docs/utilities/slot#event-handlers)
+- [3] [Radix Composition](https://www.radix-ui.com/primitives/docs/guides/composition)
