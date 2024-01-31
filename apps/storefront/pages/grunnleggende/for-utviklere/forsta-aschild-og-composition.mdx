@@ -10,7 +10,7 @@ export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Forstå asChild og Slot',
+      title: 'Forstå asChild og Composition',
       date: '25. januar 2024',
     }}
   />
@@ -97,6 +97,12 @@ Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må 
   </Link>
 `}
 </CodeSnippet>
+
+## Composition
+
+Over har du lært om `asChild`, men kan alle komponentar brukast med `asChild`? I teorien ja, men du må gjere litt arbeid for å få det til å funke.
+Mange av våre komponentar støttar `asChild`, men me har gjort eit valg på korleis element som er standard, og dersom du endrer dette må du passe på at
+tilgjengelegheit er ivaretatt.
 
 ### Referanser
 

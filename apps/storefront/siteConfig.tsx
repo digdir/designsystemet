@@ -91,8 +91,8 @@ export const SiteConfig = {
               url: 'grunnleggende/for-utviklere/kom-i-gang',
             },
             {
-              name: 'Forstå asChild og Slot',
-              url: 'grunnleggende/for-utviklere/forsta-aschild-og-slot',
+              name: 'Forstå asChild og composition',
+              url: 'grunnleggende/for-utviklere/forsta-aschild-og-composition',
             },
           ],
         },
