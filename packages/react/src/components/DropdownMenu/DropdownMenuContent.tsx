@@ -34,7 +34,7 @@ export const DropdownMenuContent = forwardRef<
     size,
     placement,
     portal,
-    anchor,
+    anchorEl,
     isControlled,
     internalOpen,
     setInternalOpen,
@@ -58,7 +58,7 @@ export const DropdownMenuContent = forwardRef<
       if (!isControlled) setInternalOpen(localOpen);
     },
     elements: {
-      reference: anchor,
+      reference: anchorEl,
       floating: floatingEl.current,
     },
     whileElementsMounted: autoUpdate,
@@ -73,7 +73,7 @@ export const DropdownMenuContent = forwardRef<
   ]);
 
   useIsomorphicLayoutEffect(() => {
-    refs.setReference(anchor);
+    refs.setReference(anchorEl);
     if (!refs.reference.current || !refs.floating.current || !internalOpen)
       return;
     const cleanup = autoUpdate(
@@ -82,7 +82,7 @@ export const DropdownMenuContent = forwardRef<
       update,
     );
     return () => cleanup();
-  }, [refs.floating, refs.reference, update, anchor, refs, internalOpen]);
+  }, [refs.floating, refs.reference, update, anchorEl, refs, internalOpen]);
 
   const floatingRef = useMergeRefs([refs.setFloating, ref]);
 

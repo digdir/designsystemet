@@ -27,18 +27,18 @@ export type DropdownMenuProps = {
 } & PortalProps;
 
 export const DropdownMenu = ({
-  anchorEl,
   open,
   onClose,
   placement = 'bottom-end',
   size = 'medium',
   portal,
   children,
+  ...rest
 }: DropdownMenuProps) => {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
-  const anchor = anchorEl ?? triggerRef.current;
+  const anchorEl = rest.anchorEl ?? triggerRef.current;
   const isControlled = typeof open === 'boolean';
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const DropdownMenu = ({
   return (
     <DropdownMenuContext.Provider
       value={{
-        anchor,
+        anchorEl,
         triggerRef,
         size,
         portal,
@@ -65,7 +65,7 @@ export const DropdownMenu = ({
 };
 
 type DropdownMenuContextType = {
-  anchor: Element | null;
+  anchorEl: Element | null;
   triggerRef: React.RefObject<Element>;
   size: NonNullable<DropdownMenuProps['size']>;
   portal?: PortalProps['portal'];
@@ -79,7 +79,7 @@ type DropdownMenuContextType = {
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   triggerRef: { current: null },
   size: 'medium',
-  anchor: null,
+  anchorEl: null,
   internalOpen: false,
   setInternalOpen: () => {},
 });
