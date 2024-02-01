@@ -5,19 +5,8 @@ import type {
   TransformedTokens,
   Format,
 } from 'style-dictionary';
-import { transformDimension } from '@tokens-studio/sd-transforms';
 
 import { noCase } from './noCase';
-
-export const sizePx: Named<Transform> = {
-  name: 'fds/size/px',
-  type: 'value',
-  transitive: true,
-  matcher: (token) =>
-    ['sizing', 'spacing'].includes(token.type as string) &&
-    !token.name.includes('base'),
-  transformer: (token) => transformDimension(token.value as number),
-};
 
 export const nameKebab: Named<Transform> = {
   name: 'name/cti/hierarchical-kebab',
@@ -25,17 +14,6 @@ export const nameKebab: Named<Transform> = {
   transformer: (token, options) => {
     return noCase([options?.prefix].concat(token.path).join('-'), {
       delimiter: '-',
-      stripRegexp: /[^A-Z0-9_]+/gi,
-    });
-  },
-};
-
-export const nameKebabUnderscore: Named<Transform> = {
-  name: 'name/cti/camel_underscore',
-  type: 'name',
-  transformer: function (token, options) {
-    return noCase([options?.prefix].concat(token.path).join(' '), {
-      delimiter: '_',
       stripRegexp: /[^A-Z0-9_]+/gi,
     });
   },
@@ -62,20 +40,6 @@ export const typographyShorthand: Named<Transform> = {
       fontSize = `${parseFloat(fontSize) / baseFontPx}rem`;
     }
     return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
-  },
-};
-
-export const calc: Named<Transform> = {
-  name: 'fds/calc',
-  type: 'value',
-  transitive: true,
-  matcher: (token) =>
-    (token.type === 'spacing' && token.path[0] === 'spacing') ||
-    (token.type === 'sizing' && token.path[0] === 'sizing'),
-  transformer: (token) => {
-    const value = token.value as string;
-
-    return `calc(${value})`;
   },
 };
 

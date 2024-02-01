@@ -10,12 +10,9 @@ import type {
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 
 import {
-  sizePx,
   nameKebab,
-  nameKebabUnderscore,
   typographyShorthand,
   fluidFontSize,
-  calc,
   fontScaleHackFormat,
 } from './transformers';
 import {
@@ -45,12 +42,9 @@ const packageTokensPath = 'brand';
 
 setupFormatters('./../../prettier.config.js');
 
-StyleDictionary.registerTransform(sizePx);
 StyleDictionary.registerTransform(nameKebab);
-StyleDictionary.registerTransform(nameKebabUnderscore);
 StyleDictionary.registerTransform(typographyShorthand);
 StyleDictionary.registerTransform(fluidFontSize);
-StyleDictionary.registerTransform(calc);
 
 StyleDictionary.registerFormat(fontScaleHackFormat);
 StyleDictionary.registerFormat(scopedReferenceVariables);
@@ -61,14 +55,14 @@ StyleDictionary.registerFileHeader(fileheader);
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
   transforms: [
+    'ts/size/px',
+    'size/pxToRem',
     nameKebab.name,
     'ts/resolveMath',
     fluidFontSize.name,
-    // calc.name,
     typographyShorthand.name,
     'ts/size/lineheight',
     'ts/shadow/css/shorthand',
-    sizePx.name,
     'ts/color/modifiers',
     'ts/color/css/hexrgba',
   ],

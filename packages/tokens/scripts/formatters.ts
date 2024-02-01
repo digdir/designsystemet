@@ -46,7 +46,7 @@ export const scopedReferenceVariables: Named<Format> = {
       .map((token) => {
         if (
           dictionary.usesReference(token.original.value) &&
-          includeReferences(token)
+          includeReferences?.(token)
         ) {
           const refs = dictionary.getReferences(token.original.value);
 

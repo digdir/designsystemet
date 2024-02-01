@@ -210,7 +210,7 @@
   --fds-spacing-22: 88px;
   --fds-spacing-26: 104px;
   --fds-spacing-30: 120px;
-  --fds-base_spacing: 4;
+  --fds-base_spacing: 4px;
   --fds-sizing-1: 4px;
   --fds-sizing-2: 8px;
   --fds-sizing-3: 12px;
@@ -226,7 +226,7 @@
   --fds-sizing-22: 88px;
   --fds-sizing-26: 104px;
   --fds-sizing-30: 120px;
-  --fds-base_sizing: 4;
+  --fds-base_sizing: 4px;
   --fds-border_width-default: 1px;
   --fds-border_width-active: 2px;
   --fds-border_width-tab_focus: 2px;
