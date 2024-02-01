@@ -32,12 +32,15 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
           <h1 className={classes.title}>{data.title}</h1>
           <p className={classes.desc}>{data.description}</p>
           <Link
-            as={NextLink}
             className={classes.link}
-            href='/'
-            prefetch={false}
+            asChild
           >
-            Gå til forsiden
+            <NextLink
+              href='/'
+              prefetch={false}
+            >
+              Gå til forsiden
+            </NextLink>
           </Link>
         </div>
         {content}
