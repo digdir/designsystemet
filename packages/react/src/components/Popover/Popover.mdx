@@ -26,6 +26,27 @@ Du kan bruke `anchorEl`, men denne vil bli fjernet i fremtiden, og vi anbefaler 
 
 `Popover.Content` er innholdet som skal vises i `Popover`.
 
+### Alternativ `anchorEl`
+
+Alternativt kan du bruke `anchorEl` for å styre hvor `Popover` skal vises, men da må du selv håndtere tilstand for åpning/lukking og attributter for tilgjengelighet.
+
+_`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor._
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { Popover } from '@digdir/design-system-react';
+
+const anchorEl = useRef(null);
+
+<Button ref={anchorEl}>Trigger</Button>
+
+<Popover anchorEl={anchorEl}>
+  <Popover.Content>
+    Content
+  </Popover.Content>
+</DropdowPopovernPopoverMenu>;
+```
+
 ## Eksempler
 
 ### Variants
@@ -47,15 +68,9 @@ Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker p
 
 ## Tilgjengelighet
 
-Dersom du bruker `Popover.Trigger` er det innebyd tilgjengelighet for deg, men dersom du bruker `anchorEl` må du styre tilgjengelighet selv.
-Da må du legge på `aria-expanded={true/false}`.
+Dersom du bruker `Popover.Trigger` er det innebyd tilgjengelighet.
 
-## `anchorEl`
-
-_Dette vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor._
-
-Du kan bruke `anchorEl` istedenfor `Popover.Trigger` for å styre hvor `Popover` skal vises, men da må du styre åpning og lukking av `Popover` selv.
-Vi anbefaler å bruke `Popover.Trigger` istedenfor `anchorEl` fordi det er bygd inn tilgjenelighetshåndtering for deg.
+Brukes `anchorEl` må du sørge for å legge på `aria-expanded={true/false}`, i henhold til åpne/lukket tilstand, på trigger elementet.
 
 <Canvas of={PopoverStories.AnchorEl} />
 
