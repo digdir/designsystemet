@@ -73,8 +73,8 @@ const baseConfig = (brand: Brands): Partial<Config> => {
 
   return {
     include: [
-      `${tokensPath}/Base/Semantic.json`,
       `${tokensPath}/Brand/${brand}.json`,
+      `${tokensPath}/Base/Semantic.json`,
     ],
     source: [`${tokensPath}/Base/Core.json`],
   };
@@ -115,7 +115,7 @@ const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
           fileHeader: fileheader.name,
           referencesFilter: (token: TransformedToken) =>
             !(token.path[0] === 'viewport') &&
-            ['spacing', 'sizing'].includes(token.type as string),
+            ['spacing', 'sizing', 'color'].includes(token.type as string),
           // outputReferences: true,
         },
       },

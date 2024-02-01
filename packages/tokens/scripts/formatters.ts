@@ -77,6 +77,7 @@ export const scopedReferenceVariables: Named<Format> = {
       fileHeader({ file }) +
       ':root {\n' +
       '  /** Referenced source tokens */ \n' +
+      '  /** DO NOT OVERRIDE */ \n' +
       referenceTokens.join('\n') +
       '\n\n  /** Tokens */ \n' +
       tokens.join('\n') +
