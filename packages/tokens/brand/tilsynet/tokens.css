@@ -5,7 +5,7 @@
 
 :root {
   /** Referenced source tokens */ 
-  --fds-font-size-f0: clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem);
+
 
   /** Tokens */ 
   --fds-semantic-background-default: #ffffff;
@@ -195,37 +195,37 @@
   --fds-border_radius-xxxxlarge: 32px;
   --fds-border_radius-full: 9999px;
   --fds-spacing-0: calc(0);
-  --fds-spacing-1: calc(var(--fds-base_spacing)/16*var(--fds-font-size-f0));
-  --fds-spacing-2: calc(var(--fds-base_spacing)*2/16*var(--fds-font-size-f0));
-  --fds-spacing-3: calc(var(--fds-base_spacing)*3/16*var(--fds-font-size-f0));
-  --fds-spacing-4: calc(var(--fds-base_spacing)*4/16*var(--fds-font-size-f0));
-  --fds-spacing-5: calc(var(--fds-base_spacing)*5/16*var(--fds-font-size-f0));
-  --fds-spacing-6: calc(var(--fds-base_spacing)*6/16*var(--fds-font-size-f0));
-  --fds-spacing-7: calc(var(--fds-base_spacing)*7/16*var(--fds-font-size-f0));
-  --fds-spacing-8: calc((var(--fds-base_spacing)*8/16)*var(--fds-font-size-f0));
-  --fds-spacing-10: calc((var(--fds-base_spacing)*10/16)*var(--fds-font-size-f0));
-  --fds-spacing-12: calc((var(--fds-base_spacing)*12/16)*var(--fds-font-size-f0));
-  --fds-spacing-14: calc((var(--fds-base_spacing)*14/16)*var(--fds-font-size-f0));
-  --fds-spacing-18: calc((var(--fds-base_spacing)*18/16)*var(--fds-font-size-f0));
-  --fds-spacing-22: calc((var(--fds-base_spacing)*22/16)*var(--fds-font-size-f0));
-  --fds-spacing-26: calc((var(--fds-base_spacing)*26/16)*var(--fds-font-size-f0));
-  --fds-spacing-30: calc((var(--fds-base_spacing)*30/16)*var(--fds-font-size-f0));
+  --fds-spacing-1: calc(4);
+  --fds-spacing-2: calc(8);
+  --fds-spacing-3: calc(12);
+  --fds-spacing-4: calc(16);
+  --fds-spacing-5: calc(20);
+  --fds-spacing-6: calc(24);
+  --fds-spacing-7: calc(28);
+  --fds-spacing-8: calc(32);
+  --fds-spacing-10: calc(40);
+  --fds-spacing-12: calc(48);
+  --fds-spacing-14: calc(56);
+  --fds-spacing-18: calc(72);
+  --fds-spacing-22: calc(88);
+  --fds-spacing-26: calc(104);
+  --fds-spacing-30: calc(120);
   --fds-base_spacing: 4;
-  --fds-sizing-1: calc(var(--fds-base_sizing)/16*var(--fds-font-size-f0));
-  --fds-sizing-2: calc(var(--fds-base_sizing)*2/16*var(--fds-font-size-f0));
-  --fds-sizing-3: calc(var(--fds-base_sizing)*3/16*var(--fds-font-size-f0));
-  --fds-sizing-4: calc(var(--fds-base_sizing)*4/16*var(--fds-font-size-f0));
-  --fds-sizing-5: calc(var(--fds-base_sizing)*5/16*var(--fds-font-size-f0));
-  --fds-sizing-6: calc(var(--fds-base_sizing)*6/16*var(--fds-font-size-f0));
-  --fds-sizing-7: calc(var(--fds-base_sizing)*7/16*var(--fds-font-size-f0));
-  --fds-sizing-8: calc(var(--fds-base_sizing)*8/16*var(--fds-font-size-f0));
-  --fds-sizing-10: calc(var(--fds-base_sizing)*10/16*var(--fds-font-size-f0));
-  --fds-sizing-12: calc((var(--fds-base_sizing)*12/16)*var(--fds-font-size-f0));
-  --fds-sizing-14: calc((var(--fds-base_sizing)*14/16)*var(--fds-font-size-f0));
-  --fds-sizing-18: calc((var(--fds-base_sizing)*18/16)*var(--fds-font-size-f0));
-  --fds-sizing-22: calc((var(--fds-base_sizing)*22/16)*var(--fds-font-size-f0));
-  --fds-sizing-26: calc((var(--fds-base_sizing)*26/16)*var(--fds-font-size-f0));
-  --fds-sizing-30: calc((var(--fds-base_sizing)*30/16)*var(--fds-font-size-f0));
+  --fds-sizing-1: calc(4);
+  --fds-sizing-2: calc(8);
+  --fds-sizing-3: calc(12);
+  --fds-sizing-4: calc(16);
+  --fds-sizing-5: calc(20);
+  --fds-sizing-6: calc(24);
+  --fds-sizing-7: calc(28);
+  --fds-sizing-8: calc(32);
+  --fds-sizing-10: calc(40);
+  --fds-sizing-12: calc(48);
+  --fds-sizing-14: calc(56);
+  --fds-sizing-18: calc(72);
+  --fds-sizing-22: calc(88);
+  --fds-sizing-26: calc(104);
+  --fds-sizing-30: calc(120);
   --fds-base_sizing: 4;
   --fds-border_width-default: 1px;
   --fds-border_width-active: 2px;
