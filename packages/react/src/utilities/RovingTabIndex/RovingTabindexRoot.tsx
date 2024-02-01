@@ -4,6 +4,7 @@
 import React, { createContext, useRef, useState, forwardRef } from 'react';
 import type { MutableRefObject, ReactNode, HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -12,6 +13,11 @@ type RovingTabindexRootBaseProps = {
   children: ReactNode;
   /** The value of the element that should be focused when the `RovingTabindexRoot` receives focus. */
   valueId?: string;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
 export type RovingTabindexElement = {
@@ -44,9 +50,11 @@ export const RovingTabindexRoot: OverridableComponent<
   HTMLElement
 > = forwardRef(
   (
-    { children, valueId, as: Component = 'div', onBlur, onFocus, ...rest },
+    { children, valueId, as = 'div', asChild, onBlur, onFocus, ...rest },
     ref,
   ) => {
+    const Component = asChild ? Slot : as;
+
     const [focusableValue, setFocusableValue] = useState<string | null>(null);
     const [isShiftTabbing, setIsShiftTabbing] = useState(false);
     const elements = useRef(new Map<string, HTMLElement>());
