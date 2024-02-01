@@ -1,14 +1,12 @@
-import { Meta, TokenList } from '@components';
 import { MenuPageLayout } from '@layouts';
-import { Figma } from 'mdx-embed';
-import { CodeSnippet } from '@components';
+import { Meta, TokenList, CodeSnippet } from '@components';
 
 <Meta
   title='Avstander'
   description='Beskrivelse'
 />
 
-export default ({ children, menu }) => (
+export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
@@ -33,8 +31,8 @@ Avstand (spacing) brukes til å sette marging og padding. Settet med avstander s
 
 Avstandene er satt opp til å passe sammen med [fluid typography](/grunnleggende/designelementer/typografi#fluid-typography). De varier derfor noe etter hvilken viewport du har. `Spacing.10` vil dermed være 40px på viewport 320, og 45px på viewport 1360.
 
-<CodeSnippet
-  children='"spacing": {
+<CodeSnippet language='json'>
+  {`"spacing": {
     "1": {
       "value": "{base_spacing}/16*{font-size.f0}",
       "type": "spacing",
@@ -56,6 +54,5 @@ Avstandene er satt opp til å passe sammen med [fluid typography](/grunnleggende
       "type": "spacing",
       "description": "48px - 54px"
     },
-  }'
-  language='json'
-/>
+  }`}
+</CodeSnippet>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -9,25 +9,11 @@ import { Popover } from './';
 const contentText = 'popover content';
 
 const Comp = (args: Partial<PopoverProps>) => {
-  const ref = useRef(null);
-  const [open, setOpen] = useState(false);
-
   return (
-    <>
-      <button
-        ref={ref}
-        onClick={() => setOpen(!open)}
-      >
-        trigger
-      </button>
-      <Popover
-        open={open || args?.open}
-        {...args}
-        anchorEl={ref.current}
-      >
-        <Popover.Content>{contentText}</Popover.Content>
-      </Popover>
-    </>
+    <Popover {...args}>
+      <Popover.Trigger>trigger</Popover.Trigger>
+      <Popover.Content>{contentText}</Popover.Content>
+    </Popover>
   );
 };
 

@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.47.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.1...@digdir/design-system-react@0.47.0) (2024-01-23)
+
+### Bug Fixes
+
+- **Accordion:** Fix focus style ([#1407](https://github.com/digdir/designsystemet/issues/1407)) ([24e3006](https://github.com/digdir/designsystemet/commit/24e3006de112ea7d667ec07f6c9caccd6e6de9f2))
+- **DropdownMenu:** Export correct props type for items ([#1410](https://github.com/digdir/designsystemet/issues/1410)) ([898a13f](https://github.com/digdir/designsystemet/commit/898a13f54cd825619190fb0a65f04c6ed23d77c6))
+- **List:** Add `margin-top` to nested lists ([#1402](https://github.com/digdir/designsystemet/issues/1402)) ([524d48c](https://github.com/digdir/designsystemet/commit/524d48c84aa7f6c8c3f2b05f374c1b70e8005053))
+- **Pagination:** Add default aria-label to `nav` ([#1401](https://github.com/digdir/designsystemet/issues/1401)) ([b4de3f1](https://github.com/digdir/designsystemet/commit/b4de3f1c166a91abda113cd0fd0d6d8ab36189da))
+
+### Features
+
+- **List:** Add `forwardRef` ([#1393](https://github.com/digdir/designsystemet/issues/1393)) ([b8b6b3a](https://github.com/digdir/designsystemet/commit/b8b6b3a84792897be68d35aee9d9727514641763))
+- **List:** Add support for custom heading id ([#1394](https://github.com/digdir/designsystemet/issues/1394)) ([03e1dba](https://github.com/digdir/designsystemet/commit/03e1dba876fdc3534507255bf726f6694c77f73d))
+
+## [0.46.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.0...@digdir/design-system-react@0.46.1) (2024-01-16)
+
+### Bug Fixes
+
+- **NativeSelect:** Fix `readOnly` not disabling element ([#1391](https://github.com/digdir/designsystemet/issues/1391)) ([f6f693e](https://github.com/digdir/designsystemet/commit/f6f693e9a2a932f6295405d0e95e3ae2b8335150))
+
+# [0.46.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.45.0...@digdir/design-system-react@0.46.0) (2024-01-15)
+
+### Features
+
+- **Combobox:** Virtualize options ([#1375](https://github.com/digdir/designsystemet/issues/1375)) ([608c066](https://github.com/digdir/designsystemet/commit/608c066c55402d6fa56068e78587f6ee642befb7))
+- **HelpText:** :sparkles: Add portal support ([#1367](https://github.com/digdir/designsystemet/issues/1367)) ([d8b201d](https://github.com/digdir/designsystemet/commit/d8b201d85400912012c5d1326700948b1b56d23b))
+- **Table:** ✨ Make the component ([#1364](https://github.com/digdir/designsystemet/issues/1364)) ([8c2ddad](https://github.com/digdir/designsystemet/commit/8c2ddadefdf8c64abff32aa32b332adfaf6fcff9))
+- **Table:** 🗑️ Change `Table` to legacy ([#1357](https://github.com/digdir/designsystemet/issues/1357)) ([e3da112](https://github.com/digdir/designsystemet/commit/e3da112d56a25f276f628808dee34bc7c9471ea6))
+
 # [0.45.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.44.0...@digdir/design-system-react@0.45.0) (2024-01-10)
 
 ### Bug Fixes

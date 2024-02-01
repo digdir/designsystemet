@@ -13,7 +13,10 @@ export type OverridableComponent<
 
   <As extends ElementType>(
     props: {
-      /** Override html element */
+      /** Override html element
+       * @deprecated Will be removed in favor of `asChild`
+       * @see [Github Issue](https://github.com/digdir/designsystemet/issues/1124)
+       */
       as?: As;
     } & ComponentProps &
       Omit<ComponentPropsWithRef<As>, keyof ComponentProps>,

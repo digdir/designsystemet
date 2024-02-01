@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'clsx';
 
@@ -7,9 +7,6 @@ import type { OverridableComponent } from '../../types/OverridableComponent';
 import classes from './Link.module.css';
 
 export type LinkProps = {
-  /** The component to render the link as. */
-  as?: ElementType;
-
   /** The content to display inside the link. */
   children: ReactNode;
 

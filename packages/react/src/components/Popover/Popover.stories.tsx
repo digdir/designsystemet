@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -17,84 +17,69 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = useState(false);
-
   return (
-    <>
-      <Button
-        ref={buttonRef}
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
-        My trigger
-      </Button>
-      <Popover
-        {...args}
-        open={open || args.open}
-        onClose={() => setOpen(false)}
-        anchorEl={buttonRef.current}
-      >
-        <Popover.Content>popover content</Popover.Content>
-      </Popover>
-    </>
+    <Popover {...args}>
+      <Popover.Trigger>My trigger!</Popover.Trigger>
+      <Popover.Content>popover content</Popover.Content>
+    </Popover>
   );
 };
 
 Preview.args = {
   placement: 'top',
   variant: 'default',
-  open: false,
   size: 'medium',
+  onOpenChange: () => {},
 };
 
 Preview.decorators = [marginDecorator];
 
 export const Variants: StoryFn<typeof Popover> = () => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setOpen(true);
   }, []);
 
   return (
     <>
-      <Button
-        ref={buttonRef}
-        aria-expanded={open}
-      >
-        My trigger
-      </Button>
       <Popover
-        anchorEl={buttonRef.current}
         open={open}
         placement='top'
       >
+        <Popover.Trigger asChild>
+          <span>popover</span>
+        </Popover.Trigger>
         <Popover.Content>default</Popover.Content>
       </Popover>
       <Popover
-        anchorEl={buttonRef.current}
         open={open}
-        placement='right'
+        placement='bottom'
         variant='danger'
       >
+        <Popover.Trigger asChild>
+          <span>popover</span>
+        </Popover.Trigger>
         <Popover.Content>danger</Popover.Content>
       </Popover>
       <Popover
-        anchorEl={buttonRef.current}
         open={open}
-        placement='bottom'
+        placement='top'
         variant='info'
       >
+        <Popover.Trigger asChild>
+          <span>popover</span>
+        </Popover.Trigger>
         <Popover.Content>info</Popover.Content>
       </Popover>
       <Popover
-        anchorEl={buttonRef.current}
         open={open}
-        placement='left'
+        placement='bottom'
         variant='warning'
       >
+        <Popover.Trigger asChild>
+          <span>popover</span>
+        </Popover.Trigger>
         <Popover.Content>warning</Popover.Content>
       </Popover>
     </>
@@ -103,25 +88,18 @@ export const Variants: StoryFn<typeof Popover> = () => {
 
 Variants.decorators = [marginDecorator];
 
-export const InteractiveContent: StoryFn<typeof Popover> = () => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = useState(false);
+export const Controlled: StoryFn<typeof Popover> = () => {
+  const [open, setOpen] = React.useState(false);
 
   return (
     <>
-      <Button
-        ref={buttonRef}
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
-        My trigger
-      </Button>
       <Popover
-        anchorEl={buttonRef.current}
-        placement='top'
         open={open}
         onClose={() => setOpen(false)}
       >
+        <Popover.Trigger onClick={() => setOpen(!open)}>
+          My trigger
+        </Popover.Trigger>
         <Popover.Content>
           <Paragraph>Er du sikker på at du vil slette?</Paragraph>
           <Button
@@ -137,30 +115,38 @@ export const InteractiveContent: StoryFn<typeof Popover> = () => {
   );
 };
 
-InteractiveContent.decorators = [marginDecorator];
+Controlled.decorators = [marginDecorator];
 
 export const InPortal = () => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = useState(false);
+  return (
+    <Popover portal>
+      <Popover.Trigger>My trigger</Popover.Trigger>
+      <Popover.Content>popover content</Popover.Content>
+    </Popover>
+  );
+};
+
+export const AnchorEl = () => {
+  const anchorEl = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <>
       <Button
-        ref={buttonRef}
+        ref={anchorEl}
         onClick={() => setOpen(!open)}
-        aria-expanded={open}
       >
         My trigger
       </Button>
       <Popover
-        anchorEl={buttonRef.current}
-        placement='top'
         open={open}
         onClose={() => setOpen(false)}
-        portal
+        anchorEl={anchorEl.current}
       >
         <Popover.Content>popover content</Popover.Content>
       </Popover>
     </>
   );
 };
+
+AnchorEl.decorators = [marginDecorator];
