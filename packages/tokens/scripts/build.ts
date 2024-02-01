@@ -64,7 +64,7 @@ StyleDictionary.registerTransformGroup({
     nameKebab.name,
     'ts/resolveMath',
     fluidFontSize.name,
-    calc.name,
+    // calc.name,
     typographyShorthand.name,
     'ts/size/lineheight',
     'ts/shadow/css/shorthand',
