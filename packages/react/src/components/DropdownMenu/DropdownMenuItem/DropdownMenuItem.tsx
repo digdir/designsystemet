@@ -7,13 +7,10 @@ import { DropdownMenuContext } from '../DropdownMenu';
 
 import classes from './DropdownMenuItem.module.css';
 
-export type DropdownMenuItemProps = {
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
-} & Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>;
+export type DropdownMenuItemProps = Omit<
+  ButtonProps,
+  'variant' | 'size' | 'color' | 'fullWidth'
+>;
 
 export const DropdownMenuItem: OverridableComponent<
   DropdownMenuItemProps,
