@@ -16,42 +16,42 @@ export default ({ children }) => (
   />
 );
 
-Nokre gangar må du kanskje bytte ut ein komponent med ein anna, for eksempel `Link` skulle brukt `NextLink` i staden for `a`-taggen.
+Nokre gangar må du kanskje bytte ut ein komponent med ein anna, for eksempel `Button` skulle vært ein `Link`.
 Det er her `asChild` kjem inn i biletet.
 
 <CodeSnippet language='ts'>
   {`
-  import { Link } from '@digdir/design-system-react';
-  import { Link as NextLink } from 'next/link';
+  import { Button, Link } from '@digdir/design-system-react';
 
-  <Link asChild>
-    <NextLink href='https://www.digdir.no'>Lenke til digdir.no</NextLink>
-  </Link>
+  <Button asChild>
+    <Link href='https://www.digdir.no'>Lenke til digdir.no</Link>
+  </Button>
 `}
 </CodeSnippet>
 
-I kodesnutten over blir `Link`-komponenten rendra som ein `NextLink`-komponent. Når dette skal ut i DOMen, så er det kun eit element som blir rendra ut.
+I kodesnutten over blir `Button`-komponenten rendra som ein `Link`-komponent. Når dette skal ut i DOMen, så er det kun eit element som blir rendra ut.
 Dette skjer ved hjelp av Radix sin `Slot`-komponent. [1]
 
-`Slot` merger sine props ned på den komponenten som ligger som direkte barn. I tilfellet over så vil `Link` sine props bli lagt til på `NextLink`-komponenten.
+`Slot` merger sine props ned på den komponenten som ligger som direkte barn. I tilfellet over så vil `Button` sine props bli lagt til på `Link`-komponenten, og
+det er ein `a`-tagg som blir rendra ut.
 Når du bruker `asChild`, så kan du ikkje ha meir enn eit barn, men du kan ha så mange du vil inne i det barnet.
 
 <CodeSnippet language='ts'>
   {`
   <>
     /* Dette kaster ein error */
-    <Link asChild>
+    <Button asChild>
       <Icon />
-      <NextLink href='https://www.digdir.no'>Din lenke</NextLink>
-    </Link>
+      <Link href='https://www.digdir.no'>Din lenke</Link>
+    </Button>
 
     /* Dette går fint */
-    <Link asChild>
-      <NextLink href='https://www.digdir.no'>
+    <Button asChild>
+      <Link href='https://www.digdir.no'>
         <Icon />
         Din lenke
-      </NextLink>
-    </Link>
+      </Link>
+    </Button>
 
   </>
 `}
@@ -64,37 +64,37 @@ Me har tidlegare brukt ein `as` prop for å rendre som andre element, men når d
 
 <CodeSnippet language='ts'>
   {`
-  <Link asChild>
-    <NextLink href='https://www.digdir.no' onClick={() => {}}>
+  <Button asChild>
+    <Link href='https://www.digdir.no' onClick={() => {}}>
       <Icon />
       Din lenke
-    </NextLink>
-  </Link>
+    </Link>
+  </Button>
 `}
 </CodeSnippet>
 
-Alt av klassenavn, aria-attributer og andre props som `Link` har, vil bli lagt til på `NextLink`-komponenten.
-Dette betyr at me kan tilby god tilgjengelegheit, samtidig som du kan bruke andre komponenter som du ønsker.
+Alt av klassenavn, aria-attributer og andre props som `Button` har, vil bli lagt til på `Link`-komponenten.
+Dette betyr at me kan tilby god tilgjengelegheit, samtidig som du kan bruke andre komponentar som du ønsker.
 
 ## Event handlers
 
 Dersom ein prop starter med `on` (fks. `onClick`), så er det sett på som ein event handler.
-Når `Slot` merger props, vil det lage ein ny funksjon som kallar alle event handlers som er definert på `Link` og `NextLink`, men funksjonen som ligger på `NextLink` vil bli kalla først.
+Når `Slot` merger props, vil det lage ein ny funksjon som kallar alle event handlers som er definert på `Button` og `Link`, men funksjonen som ligger på `Link` vil bli kalla først.
 Dette betyr at dersom du stopper eit event på din komponent, vil eventet på `Slot`-komponenten ikkje bli kalla.
 
 Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må du passe på at rekkefølga er korrekt. [2]
 
 <CodeSnippet language='ts'>
   {`
-  <Link
+  <Button
     asChild
     onClick={(event) => {
       if (!event.defaultPrevented)
         console.log('Not logged because default is prevented.');
     }}
   >
-    <NextLink onClick={(e) => e.preventDefault()}>Din lenke</NextLink>
-  </Link>
+    <Link onClick={(e) => e.preventDefault()}>Din lenke</Link>
+  </Button>
 `}
 </CodeSnippet>
 
