@@ -19,13 +19,11 @@ export type CardProps = {
    * @default false
    */
   asChild?: boolean;
-
   /**
    * Changes styling if card is used as a link
    * @default false
    */
   isLink?: boolean;
-
   /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
   children: React.ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
@@ -34,7 +32,6 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
   (
     {
       color = 'neutral',
-      children,
       as = 'div',
       isLink = false,
       asChild = false,
@@ -56,9 +53,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
           className,
         )}
         {...rest}
-      >
-        {children}
-      </Component>
+      />
     );
   },
 );
