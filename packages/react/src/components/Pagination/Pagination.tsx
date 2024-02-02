@@ -91,21 +91,23 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     return (
       <nav
         ref={ref}
+        aria-label='Pagination'
         {...rest}
       >
         <ul className={cl(classes.pagination, classes[size])}>
           <li>
             <Button
-              icon={<ChevronLeftIcon aria-hidden />}
               aria-label={previousLabel}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
+              icon={hideLabels}
               variant='tertiary'
               color={'first'}
               size={size}
               className={cl({ [classes.hidden]: currentPage === 1 })}
             >
+              <ChevronLeftIcon aria-hidden />
               {!hideLabels && previousLabel}
             </Button>
           </li>
@@ -146,16 +148,16 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               variant={'tertiary'}
               color={'first'}
               size={size}
-              icon={<ChevronRightIcon aria-hidden />}
+              icon={hideLabels}
               aria-label={nextLabel}
               onClick={() => {
                 onChange(currentPage + 1);
               }}
-              iconPlacement='right'
               className={cl({
                 [classes.hidden]: currentPage === totalPages,
               })}
             >
+              <ChevronRightIcon aria-hidden />
               {!hideLabels && nextLabel}
             </Button>
           </li>

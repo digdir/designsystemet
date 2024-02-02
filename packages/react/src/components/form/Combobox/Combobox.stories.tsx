@@ -14,6 +14,17 @@ import { Combobox } from './index';
 export default {
   title: 'Felles/Combobox',
   component: Combobox,
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          maxWidth: '30rem',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const PLACES = [
@@ -62,10 +73,7 @@ const PLACES = [
 export const Preview: StoryFn<typeof Combobox> = (args) => {
   return (
     <>
-      <Combobox
-        {...args}
-        onValueChange={(e) => console.log(e)}
-      >
+      <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
           <Combobox.Option
@@ -86,6 +94,7 @@ Preview.args = {
   disabled: false,
   hideLabel: false,
   hideChips: false,
+  virtual: false,
   description: 'Velg et sted',
   size: 'medium',
   label: 'Hvor går reisen?',
@@ -322,6 +331,9 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
       <div
         style={{
           marginBottom: '2rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--fds-spacing-2)',
         }}
       >
         {value.map((item, index) => (
@@ -401,4 +413,36 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
     </>
   );
+};
+
+export const Virtualized: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <Combobox
+      {...args}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+      }}
+    >
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {data.map((item, index) => (
+        <Combobox.Option
+          key={index}
+          value={item.targetName}
+          description={`Orgnr.: ${item.sourceCode}`}
+        >
+          {item.targetName}
+        </Combobox.Option>
+      ))}
+    </Combobox>
+  );
+};
+
+Virtualized.args = {
+  multiple: false,
+  virtual: true,
+  size: 'medium',
+  label: 'Hvor går reisen?',
 };

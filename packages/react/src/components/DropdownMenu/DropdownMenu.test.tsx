@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -7,28 +7,19 @@ import type { DropdownMenuProps } from './DropdownMenu';
 import { DropdownMenu } from '.';
 
 const Comp = (args: Partial<DropdownMenuProps>) => {
-  const ref = useRef(null);
-  const [open, setOpen] = useState(false);
-
   return (
-    <>
-      <button
-        ref={ref}
-        onClick={() => setOpen(!open)}
-      >
-        trigger
-      </button>
-      <DropdownMenu
-        open={open || args?.open}
-        {...args}
-        anchorEl={ref.current}
-      >
+    <DropdownMenu
+      {...args}
+      anchorEl={null}
+    >
+      <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
+      <DropdownMenu.Content>
         <DropdownMenu.Group heading='Links'>
           <DropdownMenu.Item>Item</DropdownMenu.Item>
           {args.children}
         </DropdownMenu.Group>
-      </DropdownMenu>
-    </>
+      </DropdownMenu.Content>
+    </DropdownMenu>
   );
 };
 

@@ -101,7 +101,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             className,
           )}
           {...omit(['size', 'error', 'errorId'], rest)}
-          {...selectProps}
+          {...omit(['readOnly', 'disabled'], selectProps)}
         >
           {children}
         </select>

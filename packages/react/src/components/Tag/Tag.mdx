@@ -1,5 +1,7 @@
 import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+
 import { Information } from '../../../../../docs-components';
+
 import * as TagStories from './Tag.stories';
 
 <Meta of={TagStories} />
@@ -41,13 +43,8 @@ import { Tag } from '@digdir/design-system-react';
 
 <Canvas of={TagStories.Sizes} />
 
-## Variants
-
-<Canvas of={TagStories.Variants} />
-
 ## Colors
 
 <Canvas>
   <Story of={TagStories.Colors} />
-  <Story of={TagStories.ColorsOutlined} />
 </Canvas>

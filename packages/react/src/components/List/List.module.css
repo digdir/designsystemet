@@ -6,6 +6,6 @@
   margin-bottom: var(--fds-spacing-2);
 }
 
-li > .list {
+li .list {
   margin-top: var(--fds-spacing-2);
 }

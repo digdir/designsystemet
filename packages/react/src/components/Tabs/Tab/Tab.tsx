@@ -10,12 +10,10 @@ import { useTabItem } from './useTab';
 export type TabProps = {
   /** Value that will be set in the `Tabs` components state when the tab is activated*/
   value: string;
-  /** Icon to display */
-  icon?: React.ReactNode;
 } & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
-  const { children, className, icon, ...rest } = props;
+  const { children, className, ...rest } = props;
   const { active, size = 'medium', ...useTabRest } = useTabItem(props);
 
   return (
@@ -31,7 +29,6 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
       ref={ref}
       {...rest}
     >
-      {icon && <span className={classes.icon}>{icon}</span>}
       {children}
     </RovingTabindexItem>
   );

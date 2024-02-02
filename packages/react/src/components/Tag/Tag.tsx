@@ -7,48 +7,37 @@ import { Paragraph } from '../Typography';
 
 import classes from './Tag.module.css';
 
-type BrandColor = 'first' | 'second' | 'third';
-type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
 
 export type TagProps = {
   /** Color of the tag
    * @default neutral
    */
-  color?: BrandColor | VariantColor;
+  color?:
+    | 'neutral'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'info'
+    | 'first'
+    | 'second'
+    | 'third';
   /** Size of the tag
    * @default medium
    */
   size?: Size;
-  /** Variant of the tag
-   * @default primary
-   */
-  variant?: 'primary' | 'secondary';
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
   (
-    {
-      children,
-      color = 'neutral',
-      size = 'medium',
-      variant = 'primary',
-      className,
-      ...rest
-    },
+    { children, color = 'neutral', size = 'medium', className, ...rest },
     ref,
   ) => {
     return (
       <Paragraph
         as='span'
         size={size}
-        className={cl(
-          classes.tag,
-          classes[color],
-          classes[size],
-          classes[variant],
-          className,
-        )}
+        className={cl(classes.tag, classes[color], classes[size], className)}
         ref={ref}
         {...rest}
       >

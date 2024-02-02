@@ -25,7 +25,7 @@
   overflow: visible;
 }
 
-.button.small::before {
+.small::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -34,7 +34,7 @@
   content: '';
 }
 
-.button.small::after {
+.small::after {
   position: absolute;
   top: -5px;
   left: 0;
@@ -49,13 +49,13 @@
   opacity: var(--fds-opacity-disabled);
 }
 
-.icon {
+.button > :is(svg, img, i) {
   display: inline-block;
   height: var(--fc-button-icon-size);
   width: var(--fc-button-icon-size);
 }
 
-.button.small {
+.small {
   --fc-button-padding: 0 var(--fds-spacing-3);
   --fc-button-icon-size: var(--fds-sizing-4);
 
@@ -65,7 +65,7 @@
   min-height: var(--fds-sizing-8);
 }
 
-.button.medium {
+.medium {
   --fc-button-padding: 0 var(--fds-spacing-4);
   --fc-button-icon-size: var(--fds-sizing-6);
 
@@ -75,7 +75,7 @@
   min-height: var(--fds-sizing-10);
 }
 
-.button.large {
+.large {
   --fc-button-padding: 0 var(--fds-spacing-5);
   --fc-button-icon-size: var(--fds-sizing-8);
 
@@ -85,270 +85,270 @@
   min-height: var(--fds-sizing-12);
 }
 
-.button.fullWidth {
+.fullWidth {
   width: 100%;
 }
 
-.button.secondary,
-.button.tertiary {
+.secondary,
+.tertiary {
   background-color: transparent;
 }
 
-.button.onlyIcon {
+.onlyIcon {
   --fc-button-padding: 0;
 }
 
 /* Only use hover for non-touch devices to prevent sticky-hovering */
 @media (hover: hover) and (pointer: fine) {
-  .button.primary.first:not([aria-disabled='true'], :disabled):hover {
-    background: var(--fds-semantic-surface-action-first-hover);
+  .primary:where(.first):not([aria-disabled='true'], :disabled):hover {
+    background-color: var(--fds-semantic-surface-action-first-hover);
   }
 
-  .button.primary.second:not([aria-disabled='true'], :disabled):hover {
-    background: var(--fds-semantic-surface-action-second-hover);
+  .primary:where(.second):not([aria-disabled='true'], :disabled):hover {
+    background-color: var(--fds-semantic-surface-action-second-hover);
   }
 
-  .button.primary.success:not([aria-disabled='true'], :disabled):hover {
-    background: var(--fds-semantic-surface-success-hover);
+  .primary:where(.success):not([aria-disabled='true'], :disabled):hover {
+    background-color: var(--fds-semantic-surface-success-hover);
   }
 
-  .button.primary.danger:not([aria-disabled='true'], :disabled):hover {
-    background: var(--fds-semantic-surface-danger-hover);
+  .primary:where(.danger):not([aria-disabled='true'], :disabled):hover {
+    background-color: var(--fds-semantic-surface-danger-hover);
   }
 
-  .button.primary.inverted:not([aria-disabled='true'], :disabled):hover {
+  .primary:where(.inverted):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-neutral-default);
 
-    background: var(--fds-semantic-surface-on_inverted-hover);
+    background-color: var(--fds-semantic-surface-on_inverted-hover);
   }
 
-  .button.secondary.first:not([aria-disabled='true'], :disabled):hover {
+  .secondary:where(.first):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-first-hover);
 
     border-color: var(--fds-semantic-border-action-first-hover);
-    background: var(--fds-semantic-surface-action-first-no_fill-hover);
+    background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
-  .button.secondary.second:not([aria-disabled='true'], :disabled):hover {
+  .secondary:where(.second):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-second-hover);
 
     border-color: var(--fds-semantic-border-action-second-hover);
-    background: var(--fds-semantic-surface-action-second-no_fill-hover);
+    background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
   }
 
-  .button.secondary.success:not([aria-disabled='true'], :disabled):hover {
+  .secondary:where(.success):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-success-hover);
 
     border-color: var(--fds-semantic-border-success-hover);
-    background: var(--fds-semantic-surface-success-no_fill-hover);
+    background-color: var(--fds-semantic-surface-success-no_fill-hover);
   }
 
-  .button.secondary.danger:not([aria-disabled='true'], :disabled):hover {
+  .secondary:where(.danger):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-danger-hover);
 
     border-color: var(--fds-semantic-border-danger-hover);
-    background: var(--fds-semantic-surface-danger-no_fill-hover);
+    background-color: var(--fds-semantic-surface-danger-no_fill-hover);
   }
 
-  .button.secondary.inverted:not([aria-disabled='true'], :disabled):hover {
-    background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
+  .secondary:where(.inverted):not([aria-disabled='true'], :disabled):hover {
+    background-color: var(--fds-semantic-surface-on_inverted-no_fill-hover);
   }
 
-  .button.tertiary.first:not([aria-disabled='true'], :disabled):hover {
+  .tertiary:where(.first):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-first-hover);
 
-    background: var(--fds-semantic-surface-action-first-no_fill-hover);
+    background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
-  .button.tertiary.second:not([aria-disabled='true'], :disabled):hover {
+  .tertiary:where(.second):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-action-second-hover);
 
-    background: var(--fds-semantic-surface-action-second-no_fill-hover);
+    background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
   }
 
-  .button.tertiary.success:not([aria-disabled='true'], :disabled):hover {
+  .tertiary:where(.success):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-success-hover);
 
-    background: var(--fds-semantic-surface-success-no_fill-hover);
+    background-color: var(--fds-semantic-surface-success-no_fill-hover);
   }
 
-  .button.tertiary.danger:not([aria-disabled='true'], :disabled):hover {
+  .tertiary:where(.danger):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-danger-hover);
 
-    background: var(--fds-semantic-surface-danger-no_fill-hover);
+    background-color: var(--fds-semantic-surface-danger-no_fill-hover);
   }
 
-  .button.tertiary.inverted:not([aria-disabled='true'], :disabled):hover {
+  .tertiary:where(.inverted):not([aria-disabled='true'], :disabled):hover {
     --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
-    background: var(--fds-semantic-surface-on_inverted-no_fill-hover);
+    background-color: var(--fds-semantic-surface-on_inverted-no_fill-hover);
   }
 }
 
 /* Primary button colors */
-.button.primary.first {
-  background: var(--fds-semantic-surface-action-first-default);
+.primary:where(.first) {
+  background-color: var(--fds-semantic-surface-action-first-default);
 }
 
-.button.primary.first:not([aria-disabled='true'], :disabled):active {
-  background: var(--fds-semantic-surface-action-first-active);
+.primary:where(.second) {
+  background-color: var(--fds-semantic-surface-action-second-default);
 }
 
-.button.primary.second {
-  background: var(--fds-semantic-surface-action-second-default);
+.primary:where(.success) {
+  background-color: var(--fds-semantic-surface-success-default);
 }
 
-.button.primary.second:not([aria-disabled='true'], :disabled):active {
-  background: var(--fds-semantic-surface-action-second-active);
+.primary:where(.danger) {
+  background-color: var(--fds-semantic-surface-danger-default);
 }
 
-.button.primary.success {
-  background: var(--fds-semantic-surface-success-default);
-}
-
-.button.primary.success:not([aria-disabled='true'], :disabled):active {
-  background: var(--fds-semantic-surface-success-active);
-}
-
-.button.primary.danger {
-  background: var(--fds-semantic-surface-danger-default);
-}
-
-.button.primary.danger:not([aria-disabled='true'], :disabled):active {
-  background: var(--fds-semantic-surface-danger-active);
-}
-
-.button.primary.inverted {
+.primary:where(.inverted) {
   --fc-button-color: var(--fds-semantic-text-neutral-default);
 
-  background: var(--fds-semantic-surface-on_inverted-default);
+  background-color: var(--fds-semantic-surface-on_inverted-default);
 }
 
-.button.primary.inverted:not([aria-disabled='true'], :disabled):active {
+.primary:where(.first):not([aria-disabled='true'], :disabled):active {
+  background-color: var(--fds-semantic-surface-action-first-active);
+}
+
+.primary:where(.second):not([aria-disabled='true'], :disabled):active {
+  background-color: var(--fds-semantic-surface-action-second-active);
+}
+
+.primary:where(.success):not([aria-disabled='true'], :disabled):active {
+  background-color: var(--fds-semantic-surface-success-active);
+}
+
+.primary:where(.danger):not([aria-disabled='true'], :disabled):active {
+  background-color: var(--fds-semantic-surface-danger-active);
+}
+
+.primary:where(.inverted):not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-neutral-default);
 
-  background: var(--fds-semantic-surface-on_inverted-active);
+  background-color: var(--fds-semantic-surface-on_inverted-active);
 }
 
 /* Secondary button colors */
-.button.secondary.first {
+.secondary:where(.first) {
   --fc-button-color: var(--fds-semantic-text-action-first-default);
 
   border-color: var(--fds-semantic-border-action-first-default);
-  background: var(--fds-semantic-surface-action-first-no_fill);
+  background-color: var(--fds-semantic-surface-action-first-no_fill);
 }
 
-.button.secondary.first:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-action-first-active);
-
-  border-color: var(--fds-semantic-border-action-first-active);
-  background: var(--fds-semantic-surface-action-first-no_fill-active);
-}
-
-.button.secondary.second {
+.secondary:where(.second) {
   --fc-button-color: var(--fds-semantic-text-action-second-default);
 
   border-color: var(--fds-semantic-border-action-second-default);
-  background: var(--fds-semantic-surface-action-second-no_fill);
+  background-color: var(--fds-semantic-surface-action-second-no_fill);
 }
 
-.button.secondary.second:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-action-second-active);
-
-  border-color: var(--fds-semantic-border-action-second-active);
-  background: var(--fds-semantic-surface-action-second-no_fill-active);
-}
-
-.button.secondary.success {
+.secondary:where(.success) {
   --fc-button-color: var(--fds-semantic-text-success-default);
 
   border-color: var(--fds-semantic-border-success-default);
-  background: var(--fds-semantic-surface-success-no_fill);
+  background-color: var(--fds-semantic-surface-success-no_fill);
 }
 
-.button.secondary.success:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-success-active);
-
-  border-color: var(--fds-semantic-border-success-active);
-  background: var(--fds-semantic-surface-success-no_fill-active);
-}
-
-.button.secondary.danger {
+.secondary:where(.danger) {
   --fc-button-color: var(--fds-semantic-text-danger-default);
 
   border-color: var(--fds-semantic-border-danger-default);
-  background: var(--fds-semantic-surface-danger-no_fill);
+  background-color: var(--fds-semantic-surface-danger-no_fill);
 }
 
-.button.secondary.danger:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-danger-active);
-
-  border-color: var(--fds-semantic-border-danger-active);
-  background: var(--fds-semantic-surface-danger-no_fill-active);
-}
-
-.button.secondary.inverted {
+.secondary:where(.inverted) {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
   border: 1px solid var(--fds-semantic-border-on_inverted-default);
-  background: transparent;
+  background-color: transparent;
 }
 
-.button.secondary.inverted:not([aria-disabled='true'], :disabled):active {
+.secondary:where(.first):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-action-first-active);
+
+  border-color: var(--fds-semantic-border-action-first-active);
+  background-color: var(--fds-semantic-surface-action-first-no_fill-active);
+}
+
+.secondary:where(.second):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-action-second-active);
+
+  border-color: var(--fds-semantic-border-action-second-active);
+  background-color: var(--fds-semantic-surface-action-second-no_fill-active);
+}
+
+.secondary:where(.success):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-success-active);
+
+  border-color: var(--fds-semantic-border-success-active);
+  background-color: var(--fds-semantic-surface-success-no_fill-active);
+}
+
+.secondary:where(.danger):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-danger-active);
+
+  border-color: var(--fds-semantic-border-danger-active);
+  background-color: var(--fds-semantic-surface-danger-no_fill-active);
+}
+
+.secondary:where(.inverted):not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
-  background: var(--fds-semantic-surface-on_inverted-no_fill-active);
+  background-color: var(--fds-semantic-surface-on_inverted-no_fill-active);
 }
 
 /* Tertiary button colors */
-.button.tertiary.first {
+.tertiary:where(.first) {
   --fc-button-color: var(--fds-semantic-text-action-first-default);
 }
 
-.button.tertiary.first:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-action-first-active);
-
-  background: var(--fds-semantic-surface-action-first-no_fill-active);
-}
-
-.button.tertiary.second {
+.tertiary:where(.second) {
   --fc-button-color: var(--fds-semantic-text-action-second-default);
 }
 
-.button.tertiary.second:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-action-second-active);
-
-  background: var(--fds-semantic-surface-action-second-no_fill-active);
-}
-
-.button.tertiary.success {
+.tertiary:where(.success) {
   --fc-button-color: var(--fds-semantic-text-success-default);
 }
 
-.button.tertiary.success:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-success-active);
-
-  background: var(--fds-semantic-surface-success-no_fill-active);
-}
-
-.button.tertiary.danger {
+.tertiary:where(.danger) {
   --fc-button-color: var(--fds-semantic-text-danger-default);
 }
 
-.button.tertiary.danger:not([aria-disabled='true'], :disabled):active {
+.tertiary:where(.inverted) {
+  --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
+
+  background-color: transparent;
+}
+
+.tertiary:where(.first):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-action-first-active);
+
+  background-color: var(--fds-semantic-surface-action-first-no_fill-active);
+}
+
+.tertiary:where(.second):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-action-second-active);
+
+  background-color: var(--fds-semantic-surface-action-second-no_fill-active);
+}
+
+.tertiary:where(.success):not([aria-disabled='true'], :disabled):active {
+  --fc-button-color: var(--fds-semantic-text-success-active);
+
+  background-color: var(--fds-semantic-surface-success-no_fill-active);
+}
+
+.tertiary:where(.danger):not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-danger-active);
 
-  background: var(--fds-semantic-surface-danger-no_fill-active);
+  background-color: var(--fds-semantic-surface-danger-no_fill-active);
 }
 
-.button.tertiary.inverted {
+.tertiary:where(.inverted):not([aria-disabled='true'], :disabled):active {
   --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
 
-  background: transparent;
-}
-
-.button.tertiary.inverted:not([aria-disabled='true'], :disabled):active {
-  --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
-
-  background: var(--fds-semantic-surface-on_inverted-no_fill-active);
+  background-color: var(--fds-semantic-surface-on_inverted-no_fill-active);
 }

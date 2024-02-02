@@ -23,6 +23,7 @@ import type {
   UseFloatingReturn,
   UseListNavigationProps,
 } from '@floating-ui/react';
+import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
@@ -79,6 +80,12 @@ export type ComboboxProps = {
    */
   cleanButtonLabel?: string;
   /**
+   * Enables virtualizing of options list.
+   * @see https://tanstack.com/virtual
+   * @default false
+   */
+  virtual?: boolean;
+  /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
@@ -117,6 +124,7 @@ export const Combobox = ({
   name,
   portal = true,
   htmlSize = 0,
+  virtual = false,
   children,
   style,
   filter = (inputValue, option) => {
@@ -198,6 +206,7 @@ export const Combobox = ({
     activeIndex,
     virtual: true,
     scrollItemIntoView: true,
+    enabled: open,
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
@@ -271,13 +280,9 @@ export const Combobox = ({
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
+        if (!open) setOpen(true);
         setActiveIndex((prevActiveIndex) => {
           if (prevActiveIndex === null) {
-            return 0;
-          }
-
-          // loop - if last option, go to first option
-          if (prevActiveIndex === optionsChildren.length - 1) {
             return 0;
           }
 
@@ -286,14 +291,15 @@ export const Combobox = ({
         break;
       case 'ArrowUp':
         event.preventDefault();
+        /* If we are on the first item, close */
         setActiveIndex((prevActiveIndex) => {
-          if (prevActiveIndex === null) {
-            return optionsChildren.length - 1;
+          if (prevActiveIndex === 0) {
+            setOpen(false);
+            return null;
           }
 
-          // loop - if first option, go to last option
-          if (prevActiveIndex === 0) {
-            return optionsChildren.length - 1;
+          if (prevActiveIndex === null) {
+            return null;
           }
 
           return Math.max(prevActiveIndex - 1, 0);
@@ -339,6 +345,16 @@ export const Combobox = ({
   };
 
   const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
+
+  const rowVirtualizer = useVirtualizer({
+    count: optionsChildren.length,
+    getScrollElement: () => refs.floating.current,
+    estimateSize: () => 40,
+    measureElement: (elem) => {
+      return elem.getBoundingClientRect().height;
+    },
+    overscan: 1,
+  });
 
   return (
     <ComboboxContext.Provider
@@ -445,8 +461,35 @@ export const Combobox = ({
               })}
               className={cl(classes.optionsWrapper, classes[size])}
             >
-              {/* Map our children, and add props if it is a ComboboxOption */}
-              {optionsChildren}
+              {virtual && (
+                <div
+                  style={{
+                    height: `${rowVirtualizer.getTotalSize()}px`,
+                    width: '100%',
+                    position: 'relative',
+                  }}
+                >
+                  {/* Render the virtualized rows */}
+                  {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+                    <div
+                      key={virtualRow.index}
+                      ref={rowVirtualizer.measureElement}
+                      data-index={virtualRow.index}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        transform: `translateY(${virtualRow.start}px)`,
+                      }}
+                    >
+                      {optionsChildren[virtualRow.index]}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!virtual && optionsChildren}
               {/* Add the rest of the children */}
               {restChildren}
             </Box>

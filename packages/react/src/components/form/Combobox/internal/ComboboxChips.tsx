@@ -17,6 +17,7 @@ export const ComboboxChips = () => {
     selectedOptions,
     setSelectedOptions,
     chipSrLabel,
+    inputRef,
   } = context;
 
   return (
@@ -27,6 +28,17 @@ export const ComboboxChips = () => {
             key={option.value}
             size={size}
             disabled={disabled}
+            onKeyDown={(e) => {
+              if (readOnly) return;
+              if (disabled) return;
+              if (e.key === 'Enter') {
+                e.stopPropagation();
+                setSelectedOptions(
+                  selectedOptions.filter((i) => i.value !== option.value),
+                );
+                inputRef.current?.focus();
+              }
+            }}
             onClick={() => {
               if (readOnly) return;
               if (disabled) return;

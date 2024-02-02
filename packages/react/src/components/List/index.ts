@@ -12,4 +12,6 @@ const List = ListRoot as ListComponent;
 
 List.Item = ListItem;
 
+ListItem.displayName = 'List.Item';
+
 export { List, ListItem };

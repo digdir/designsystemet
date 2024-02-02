@@ -76,7 +76,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: var(--fds-spacing-1);
+  gap: var(--fds-spacing-2);
   align-items: center;
   background-color: transparent;
 }
