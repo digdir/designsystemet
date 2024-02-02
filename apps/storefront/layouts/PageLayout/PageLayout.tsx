@@ -30,16 +30,19 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
         <Container>
           <div className={classes.headerContent}>
             <Link
-              as={NextLink}
-              href={'/' + data.backUrl}
+              asChild
               className={classes.backBtn}
-              prefetch={false}
             >
-              <ArrowLeftIcon
-                title='Tilbake'
-                fontSize={28}
-              />
-              {data.backText}
+              <NextLink
+                href={'/' + data.backUrl}
+                prefetch={false}
+              >
+                <ArrowLeftIcon
+                  title='Tilbake'
+                  fontSize={28}
+                />
+                {data.backText}
+              </NextLink>
             </Link>
             <div className={classes.meta}>
               <span>
