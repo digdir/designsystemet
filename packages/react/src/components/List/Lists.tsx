@@ -1,53 +1,68 @@
 import type { HTMLAttributes } from 'react';
 import React from 'react';
 import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
 import { Paragraph } from '../Typography';
 
 import { ListContext } from './List';
 import classes from './List.module.css';
 
-export type UnorderedProps = Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
+export type UnorderedProps = {
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
+} & Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
 export const Unordered = React.forwardRef<HTMLUListElement, UnorderedProps>(
-  ({ children, ...rest }, ref) => {
+  ({ asChild, ...rest }, ref) => {
     const { size, headingId } = React.useContext(ListContext);
 
+    const Component = asChild ? Slot : 'ul';
+
     return (
-      /* @ts-expect-error #2772 */
       <Paragraph
-        as='ul'
         size={size}
-        className={cl(classes.list, rest.className)}
-        role='list'
-        {...(headingId ? { 'aria-labelledby': headingId } : {})}
-        ref={ref}
-        {...rest}
+        asChild
       >
-        {children}
+        <Component
+          className={cl(classes.list, rest.className)}
+          {...(headingId ? { 'aria-labelledby': headingId } : {})}
+          ref={ref}
+          {...rest}
+        />
       </Paragraph>
     );
   },
 );
 
-export type OrderedProps = Omit<HTMLAttributes<HTMLOListElement>, 'size'>;
+export type OrderedProps = {
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
+} & Omit<HTMLAttributes<HTMLOListElement>, 'size'>;
 
 export const Ordered = React.forwardRef<HTMLOListElement, OrderedProps>(
-  ({ children, ...rest }, ref) => {
+  ({ asChild, ...rest }, ref) => {
     const { size, headingId } = React.useContext(ListContext);
 
+    const Component = asChild ? Slot : 'ol';
+
     return (
-      /* @ts-expect-error #2772 */
       <Paragraph
-        as='ol'
         size={size}
-        className={cl(classes.list, rest.className)}
-        role='list'
-        {...(headingId ? { 'aria-labelledby': headingId } : {})}
-        {...rest}
-        ref={ref}
+        asChild
       >
-        {children}
+        <Component
+          className={cl(classes.list, rest.className)}
+          {...(headingId ? { 'aria-labelledby': headingId } : {})}
+          ref={ref}
+          {...rest}
+        />
       </Paragraph>
     );
   },
