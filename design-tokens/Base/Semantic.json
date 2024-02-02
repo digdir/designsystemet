@@ -444,6 +444,24 @@
   },
   "typography": {
     "heading": {
+      "3xlarge": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f7}"
+        },
+        "type": "typography"
+      },
+      "2xlarge": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.medium}",
+          "lineHeight": "{lineHeights.300}",
+          "fontSize": "{font-size.f6}"
+        },
+        "type": "typography"
+      },
       "xlarge": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
