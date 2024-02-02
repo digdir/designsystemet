@@ -54,13 +54,13 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             size='medium'
             onClick={context?.closeModal}
             autoFocus
-            icon={
-              <XMarkIcon
-                title='close modal'
-                fontSize='1.5em'
-              />
-            }
-          />
+            icon={true}
+          >
+            <XMarkIcon
+              title='close modal'
+              fontSize='1.5em'
+            />
+          </Button>
         )}
       </div>
     );

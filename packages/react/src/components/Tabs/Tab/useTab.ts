@@ -11,8 +11,7 @@ type UseTab = (props: TabProps) => {
 } & Pick<
   HTMLAttributes<HTMLButtonElement>,
   'id' | 'aria-selected' | 'role' | 'onClick'
-> &
-  Pick<TabProps, 'icon'>;
+>;
 
 /** Handles props for `Tab` in context with `Tabs` */
 export const useTabItem: UseTab = (props: TabProps) => {
