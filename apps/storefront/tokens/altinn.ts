@@ -1358,6 +1358,19 @@ export const color = [
     path: ['semantic', 'surface', 'on_inverted', 'no_fill-active'],
   },
   {
+    value: '#ffda06',
+    type: 'color',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{colors.yellow.500}',
+      type: 'color',
+    },
+    name: '--fds-semantic-surface-focus-default',
+    attributes: {},
+    path: ['semantic', 'surface', 'focus', 'default'],
+  },
+  {
     value: '#1A72C1',
     type: 'color',
     filePath: '../../design-tokens/Brand/Altinn.json',

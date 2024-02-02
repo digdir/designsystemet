@@ -30,12 +30,12 @@
   --fds-colors-red-500: #e02e49;
   --fds-colors-red-600: #b3253a;
   --fds-colors-red-700: #861c2c;
+  --fds-colors-yellow-500: #ffda06;
   --fds-colors-grey-300: #d2d5d8;
   --fds-colors-blue-400: #66a1d6;
   --fds-colors-orange-600: #cc7005;
   --fds-colors-orange-700: #995404;
   --fds-colors-orange-800: #663802;
-  --fds-colors-yellow-500: #ffda06;
   --fds-colors-grey-400: #bcbfc5;
   --fds-colors-red-800: #5a121d;
   --fds-colors-purple-700: #7a1265;
@@ -141,6 +141,7 @@
   --fds-semantic-surface-on_inverted-no_fill: #ffffff00;
   --fds-semantic-surface-on_inverted-no_fill-hover: #ffffff1a;
   --fds-semantic-surface-on_inverted-no_fill-active: #ffffff33;
+  --fds-semantic-surface-focus-default: var(--fds-colors-yellow-500);
   --fds-semantic-border-first-default: var(--fds-brand-alt1-600);
   --fds-semantic-border-first-hover: var(--fds-brand-alt1-700);
   --fds-semantic-border-first-active: var(--fds-brand-alt1-800);
