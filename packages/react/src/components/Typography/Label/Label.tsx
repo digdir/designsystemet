@@ -1,6 +1,7 @@
 import type { LabelHTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 
@@ -15,6 +16,11 @@ export type LabelProps = {
   spacing?: boolean;
   /** Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset */
   weight?: FontWeights;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & LabelHTMLAttributes<HTMLLabelElement>;
 
 const fontWeightsClasses: Record<FontWeights, string> = {
@@ -31,12 +37,15 @@ export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
         className,
         size = 'medium',
         spacing,
-        as: Component = 'label',
+        as = 'label',
         weight = 'medium',
+        asChild,
         ...rest
       },
       ref,
     ) => {
+      const Component = asChild ? Slot : as;
+
       return (
         <Component
           ref={ref}
