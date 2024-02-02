@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
 
@@ -6,20 +7,25 @@ export type ListProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const List = React.forwardRef<HTMLDivElement, ListProps>(
-  ({ children, size = 'medium', ...rest }, ref) => {
+  ({ asChild, size = 'medium', ...rest }, ref) => {
     const [headingId, setHeadingId] = React.useState<string | null>(null);
+
+    const Component = asChild ? Slot : 'div';
 
     return (
       <ListContext.Provider value={{ size, headingId, setHeadingId }}>
-        <div
-          {...rest}
+        <Component
           ref={ref}
-        >
-          {children}
-        </div>
+          {...rest}
+        />
       </ListContext.Provider>
     );
   },
