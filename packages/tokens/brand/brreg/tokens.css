@@ -226,6 +226,8 @@
   --fds-semantic-text-visited-default: var(--fds-colors-purple-700);
   --fds-semantic-background-default: var(--fds-colors-white);
   --fds-semantic-background-subtle: var(--fds-colors-grey-100);
+  --fds-typography-heading-3xlarge: 500 clamp(1.94rem, calc(1.88vw + 1.56rem), 3.16rem)/1.3 'Inter';
+  --fds-typography-heading-2xlarge: 500 clamp(1.78rem, calc(1.44vw + 1.49rem), 2.72rem)/1.3 'Inter';
   --fds-typography-heading-xlarge: 500 clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem)/1.3 'Inter';
   --fds-typography-heading-large: 500 clamp(1.47rem, calc(0.86vw + 1.30rem), 2.03rem)/1.3 'Inter';
   --fds-typography-heading-medium: 500 clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem)/1.3 'Inter';
