@@ -7,18 +7,24 @@ interface ImageProps {
   alt: string;
   src: string;
   boxShadow: boolean;
+  caption: string;
 }
 
-const Image = ({ alt, src, boxShadow, ...rest }: ImageProps) => {
+const Image = ({ alt, src, boxShadow, caption, ...rest }: ImageProps) => {
   return (
-    <div className={cl(classes.container, { [classes.boxShadow]: boxShadow })}>
+    <figure
+      className={cl(classes.container, { [classes.boxShadow]: boxShadow })}
+    >
       <img
         className={classes.img}
         src={src}
         alt={alt}
         {...rest}
       ></img>
-    </div>
+      {caption && (
+        <figcaption className={classes.caption}>{caption}</figcaption>
+      )}
+    </figure>
   );
 };
 

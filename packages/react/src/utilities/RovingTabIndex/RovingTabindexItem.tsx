@@ -4,6 +4,7 @@
 import React, { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
@@ -14,6 +15,11 @@ import { useRovingTabindex } from '.';
 type RovingTabindexItemProps = {
   /** The value of the `RovingTabindexItem` used to determine which item should have focus. */
   value?: string;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
 /** Get the next focusable RovingTabindexItem */
@@ -37,7 +43,9 @@ export function getPrevFocusableValue(
 export const RovingTabindexItem: OverridableComponent<
   RovingTabindexItemProps,
   HTMLElement
-> = forwardRef(({ value, as: Component = 'div', ...rest }, ref) => {
+> = forwardRef(({ value, as = 'div', asChild, ...rest }, ref) => {
+  const Component = asChild ? Slot : as;
+
   const focusValue =
     value ?? (typeof rest.children == 'string' ? rest.children : '');
 
