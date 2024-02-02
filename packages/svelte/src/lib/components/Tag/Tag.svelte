@@ -1,15 +1,20 @@
 <script>
-  import Paragraph from '../Typography/Paragraph/Paragraph.svelte';
-
   /**
-   * `Tag` component for labeling or categorizing.
-   * @prop {string} [color='neutral'] - Color of the tag. Options are 'first', 'second', 'third', 'neutral', 'success', 'warning', 'danger', 'info'.
-   * @prop {string} [size='medium'] - Size of the tag. Options are 'xsmall', 'small', 'medium'.
-   * @prop {string} [variant='filled'] - Variant of the tag. Options are 'filled', 'outlined'.
-   * @prop {string} [class=''] - Additional classes to add to the component.
+   * Color of the tag.
+   * @type {'first' | 'second' | 'third' | 'neutral' | 'success' | 'warning' | 'danger' | 'info'}
    */
   export let color = 'neutral';
+
+  /**
+   * Size of the tag.
+   * @type {'xsmall' | 'small' | 'medium'}
+   */
   export let size = 'medium';
+
+  /**
+   * Variant of the tag.
+   * @type {'filled' | 'outlined'}
+   */
   export let variant = 'filled';
 </script>
 

@@ -4,31 +4,69 @@
   import { v4 as uuidv4 } from 'uuid';
 
   /**
-   * RadioGroup
-   *
-   * @prop {string} [legend=''] - The legend of the fieldset.
-   * @prop {string} [description=''] - A description of the fieldset. This will appear below the legend.
-   * @prop {boolean} [readOnly=false] - Toggle readOnly on fieldset context.
-   * @prop {boolean} [disabled=false] - Toggle disabled all input fields within the fieldset.
-   * @prop {string} [error=''] - If set, this will diplay an error message at the bottom of the fieldset.
-   * @prop {string} [value] - Controlled state for Radio.
-   * @prop {string} [defaultValue=''] - Default checked Radio
-   * @prop {boolean} [required=false] - Toggle if collection of Radio are required. Note: Not fully implemented for Svelte.
-   * @prop {boolean} [inline=false] - Orientation of Radio components.
-   * @prop {string} [size='medium'] - Changes field size and paddings.
-   * @prop {boolean} [hideLegend=false] - Visually hide legend and description (still available for screen readers).
+   * The legend of the fieldset.
+   * @type {string}
    */
-
   export let legend = '';
+
+  /**
+   * A description of the fieldset. This will appear below the legend.
+   * @type {string}
+   */
   export let description = '';
+
+  /**
+   * Toggle readOnly on fieldset context.
+   * @type {boolean}
+   */
   export let readOnly = false;
+
+  /**
+   * Toggle disabled all input fields within the fieldset.
+   * @type {boolean}
+   */
   export let disabled = false;
+
+  /**
+   * If set, this will diplay an error message at the bottom of the fieldset.
+   * @type {string}
+   */
   export let error = '';
+
+  /**
+   * Controlled state for Radio.
+   * @type {string}
+   */
   export let value;
+
+  /**
+   * Default checked Radio
+   * @type {string}
+   */
   export let defaultValue = '';
+
+  /**
+   * Toggle if collection of Radio are required. Note: Not fully implemented for Svelte.
+   * @type {boolean}
+   */
   export let required = false;
+
+  /**
+   * Orientation of Radio components.
+   * @type {boolean}
+   */
   export let inline = false;
+
+  /**
+   * Changes field size and paddings.
+   * @type {'xsmall' | 'small' | 'medium' | 'large'}
+   */
   export let size = 'medium';
+
+  /**
+   * Visually hide legend and description (still available for screen readers).
+   * @type {boolean}
+   */
   export let hideLegend = false;
 
   const uniqueId = uuidv4();
@@ -99,6 +137,7 @@
   class={radioGroupClasses}
   id={`group-${uniqueId}`}
   aria-labelledby={`label-${uniqueId}`}
+  on:input
   on:change={(change) => {
     if (
       change.target instanceof HTMLInputElement &&
