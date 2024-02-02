@@ -50,12 +50,13 @@ export const CharacterCounter = ({
         {srLabel}
       </span>
       <ErrorMessage
-        as='span'
+        asChild
         size={size}
-        aria-live={hasExceededLimit ? 'polite' : 'off'}
         error={hasExceededLimit}
       >
-        {label(currentCount)}
+        <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
+          {label(currentCount)}
+        </span>
       </ErrorMessage>
     </>
   );

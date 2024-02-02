@@ -31,13 +31,16 @@ export const AccordionContent = forwardRef<
       open={context.open}
     >
       <Paragraph
-        as='div'
+        asChild
         size='small'
-        ref={ref}
-        className={cl(classes.content, className)}
-        {...rest}
       >
-        {children}
+        <div
+          ref={ref}
+          className={cl(classes.content, className)}
+          {...rest}
+        >
+          {children}
+        </div>
       </Paragraph>
     </AnimateHeight>
   );

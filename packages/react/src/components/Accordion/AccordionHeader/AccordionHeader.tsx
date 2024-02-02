@@ -55,10 +55,10 @@ export const AccordionHeader = forwardRef<
           className={classes.expandIcon}
         />
         <Paragraph
-          as='span'
+          asChild
           size='small'
         >
-          {children}
+          <span>{children}</span>
         </Paragraph>
       </button>
     </Heading>

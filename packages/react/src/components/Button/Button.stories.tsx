@@ -41,13 +41,15 @@ export const Preview: Story = {
 };
 
 export const UsedAsLink: StoryFn<typeof Button> = () => (
-  <Button
-    as='a'
-    target='_blank'
-    href='https://www.designsystemet.no'
-  >
-    <akselIcons.PersonChatIcon />
-    Gå til Designsystemet
+  <Button asChild>
+    <a
+      target='_blank'
+      rel='noreferrer'
+      href='https://www.designsystemet.no'
+    >
+      <akselIcons.PersonChatIcon />
+      Gå til Designsystemet
+    </a>
   </Button>
 );
 
