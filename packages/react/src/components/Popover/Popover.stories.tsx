@@ -106,6 +106,9 @@ export const Controlled: StoryFn<typeof Popover> = () => {
             size='small'
             color='danger'
             onClick={() => setOpen(false)}
+            style={{
+              marginTop: 'var(--fds-spacing-2)',
+            }}
           >
             Slett
           </Button>
@@ -135,6 +138,7 @@ export const AnchorEl = () => {
       <Button
         ref={anchorEl}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         My trigger
       </Button>
