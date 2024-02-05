@@ -1,4 +1,5 @@
-import React, { useEffect, useState, createElement } from 'react';
+import { useEffect, useState, createElement } from 'react';
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import cl from 'clsx';
 
@@ -12,19 +13,19 @@ interface ImageSectionProps {
   imgSrc: string;
   imgAlt?: string;
   headingLevel?: 'h1' | 'h2';
-  content?: React.ReactNode;
-  children?: React.ReactNode;
+  content?: ReactNode;
+  children?: ReactNode;
   imgWidth: number;
   imgHeight: number;
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
   buttons?: ImageSectionButtonProps[];
-  link?: { text: string; href: string; prefix: React.ReactNode };
+  link?: { text: string; href: string; prefix: ReactNode };
   imgPosition?: 'left' | 'right';
 }
 
 type ImageSectionButtonProps = {
   text: string;
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   href: string;
 };
 
@@ -43,7 +44,7 @@ const ImageSection = ({
   imgAlt = '',
   headingLevel = 'h1',
 }: ImageSectionProps) => {
-  const [heading, setHeading] = useState<React.ReactNode | null>(null);
+  const [heading, setHeading] = useState<ReactNode | null>(null);
 
   useEffect(() => {
     setHeading(

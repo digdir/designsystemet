@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
 import Tippy from '@tippyjs/react';
 

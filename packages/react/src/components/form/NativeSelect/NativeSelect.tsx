@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';

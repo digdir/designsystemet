@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 

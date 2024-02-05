@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 

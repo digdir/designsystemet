@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 

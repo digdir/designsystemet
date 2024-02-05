@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';

@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { useRouter } from 'next/router';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';

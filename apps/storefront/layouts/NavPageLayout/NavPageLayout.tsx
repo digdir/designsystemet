@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 
 import { Container, ImageSection, MdxContent } from '../../components';
 import type { ImageSectionProps } from '../../components';

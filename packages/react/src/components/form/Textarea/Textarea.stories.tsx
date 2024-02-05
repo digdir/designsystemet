@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 

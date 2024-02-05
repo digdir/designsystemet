@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import cl from 'clsx';
 

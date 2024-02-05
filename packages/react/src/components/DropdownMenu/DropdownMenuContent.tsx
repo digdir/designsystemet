@@ -1,4 +1,5 @@
-import React, { forwardRef, useContext, useRef } from 'react';
+import { forwardRef, useContext, useRef } from 'react';
+import * as React from 'react';
 import {
   useFloating,
   autoUpdate,

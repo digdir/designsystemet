@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from '../Combobox.module.css';
 import { ErrorMessage } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';

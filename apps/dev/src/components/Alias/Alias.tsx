@@ -1,4 +1,3 @@
-import React from 'react';
 import { DateTime } from 'luxon';
 import { ExternalLinkIcon, ClockIcon } from '@navikt/aksel-icons';
 

@@ -4,7 +4,7 @@ import {
   ChevronUpDownIcon,
 } from '@navikt/aksel-icons';
 import type { AriaAttributes } from 'react';
-import React from 'react';
+import * as React from 'react';
 import cl from 'clsx';
 
 import utilityClasses from '../../utilities/utility.module.css';

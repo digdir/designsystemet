@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
 import { Paragraph, Heading } from '../Typography';
