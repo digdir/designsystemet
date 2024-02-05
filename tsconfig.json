@@ -4,6 +4,7 @@
   "compilerOptions": {
     "target": "es2020",
     "module": "es2020",
+
     // This allows our files to use window. Should be removed when RSC is added
     "lib": ["dom", "esnext", "DOM.Iterable"],
     "importHelpers": true,
@@ -30,6 +31,11 @@
 
     "moduleDetection": "force",
     "composite": true,
-    "declarationMap": true
+    "declarationMap": true,
+
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true
   }
 }
