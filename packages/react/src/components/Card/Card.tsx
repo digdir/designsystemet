@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
 import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 import utilityClasses from '../../utilities/utility.module.css';
@@ -13,17 +14,39 @@ export type CardProps = {
    * @default neutral
    */
   color?: 'neutral' | 'subtle' | 'first' | 'second' | 'third';
-
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
+  /**
+   * Changes styling if card is used as a link
+   * @default false
+   */
+  isLink?: boolean;
   /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
   children: React.ReactNode;
+
+  /**
+   * @deprecated Use `asChild` and `isLink={true}` instead
+   */
+  href?: never;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
   (
-    { color = 'neutral', children, as: Component = 'div', className, ...rest },
+    {
+      color = 'neutral',
+      as = 'div',
+      isLink = false,
+      asChild = false,
+      className,
+      ...rest
+    },
     ref,
   ) => {
-    const isLink = rest?.href != null;
+    const Component = asChild ? Slot : as;
+
     return (
       <Component
         ref={ref}
@@ -35,9 +58,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
           className,
         )}
         {...rest}
-      >
-        {children}
-      </Component>
+      />
     );
   },
 );

@@ -57,48 +57,62 @@ export const LinkCard: Story = (args) => (
     <Card
       {...args}
       color='first'
-      as='a'
-      href='https://designsystemet.no'
+      isLink
+      asChild
     >
-      <Card.Media>
-        <img
-          src={cat5}
-          alt='katt 1'
-        />
-      </Card.Media>
-      <Card.Header>
-        <Heading size='small'>Link Card</Heading>
-      </Card.Header>
-      <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Card.Content>
-      <Card.Footer>
-        <Paragraph size='small'>Footer text</Paragraph>
-      </Card.Footer>
+      <a
+        href='https://designsystemet.no'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <Card.Media>
+          <img
+            src={cat5}
+            alt='katt 1'
+          />
+        </Card.Media>
+        <Card.Header>
+          <Heading size='small'>Link Card</Heading>
+        </Card.Header>
+        <Card.Content>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Card.Content>
+        <Card.Footer>
+          <Paragraph size='small'>Footer text</Paragraph>
+        </Card.Footer>
+      </a>
     </Card>
     <Card
       {...args}
       color='neutral'
-      as='a'
-      href='https://designsystemet.no'
+      isLink
+      asChild
     >
-      <Card.Media>
-        <img
-          src={cat6}
-          alt='katt 2'
-        />
-      </Card.Media>
-      <Card.Header>
-        <Heading size='small'>Link Card</Heading>
-      </Card.Header>
-      <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Card.Content>
-      <Card.Footer>
-        <Paragraph size='small'>Footer text</Paragraph>
-      </Card.Footer>
+      <a
+        href='https://designsystemet.no'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <Card.Media>
+          <img
+            src={cat6}
+            alt='katt 2'
+          />
+        </Card.Media>
+        <Card.Header>
+          <Heading size='small'>Link Card</Heading>
+        </Card.Header>
+        <Card.Content>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Card.Content>
+        <Card.Footer>
+          <Paragraph size='small'>Footer text</Paragraph>
+        </Card.Footer>
+      </a>
     </Card>
   </div>
 );
