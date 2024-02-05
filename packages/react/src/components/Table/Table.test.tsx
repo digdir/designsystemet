@@ -6,10 +6,6 @@ import { Table } from './Table';
 
 import { TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '.';
 
-const Comp = (args: Partial<TableProps>) => {
-  return <Table {...args} />;
-};
-
 const children = (
   <>
     <TableHead>
@@ -34,8 +30,8 @@ const children = (
   </>
 );
 
-const render = (props: Partial<TableProps> = {}) => {
-  return renderRtl(<Comp {...props} />);
+const render = (props: TableProps = {}) => {
+  return renderRtl(<Table {...props} />);
 };
 
 describe('table', (): void => {
