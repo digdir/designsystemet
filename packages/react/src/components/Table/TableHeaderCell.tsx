@@ -32,7 +32,7 @@ export type TableHeaderCellProps = {
    * @default undefined
    */
   onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-} & React.HTMLAttributes<HTMLTableCellElement>;
+} & React.ThHTMLAttributes<HTMLTableCellElement>;
 
 export const TableHeaderCell = React.forwardRef<
   HTMLTableCellElement,
