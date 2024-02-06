@@ -100,12 +100,12 @@ Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må 
 
 ## Bruk dine egne komponenter
 
-Over har du lært om `asChild`, men kan alle komponentar brukast med `asChild`? I teorien ja, men du må gjere litt arbeid for å få det til å funke. [3]
 
-> Mange av våre komponentar støttar `asChild`, men me har gjort eit valg på korleis element som er standard, og dersom du endrer dette må du passe på at
-> tilgjengelegheit er ivaretatt. Det er sjeldent at du behøver å endre det underliggande elementet, men det er meir realistisk at du vil bruke din eigen komponent.
+Flere Designsystemet komponentar støttar `asChild`, med standard element. Endres dette må du passe på at tilgjengelegheit er ivaretatt. Det er sjeldent at du behøver å endre det underliggande elementet, men det er meir realistisk at du vil bruke din eigen komponent.
 
-Dersom du skal bruke ein eigen komponent må du passe på å spre alle props, og ha støtte for `ref`. Komponentane dine vil då sjå slik ut:
+Ønsker du å bruke ein eigen komponent må du passe på å spre alle props, og ha støtte for `ref`. [3]
+
+Komponentane dine vil då sjå slik ut:
 
 <CodeSnippet language='ts'>
 {`// uten props og ref
