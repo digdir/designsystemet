@@ -46,15 +46,18 @@ export const ComboboxLabel = ({
       )}
       {description && (
         <Paragraph
-          as='div'
+          asChild
           size={size}
-          id={formFieldProps.descriptionId}
-          className={cl(
-            classes.description,
-            hideLabel && utilityClasses.visuallyHidden,
-          )}
         >
-          {description}
+          <div
+            id={formFieldProps.descriptionId}
+            className={cl(
+              classes.description,
+              hideLabel && utilityClasses.visuallyHidden,
+            )}
+          >
+            {description}
+          </div>
         </Paragraph>
       )}
     </>

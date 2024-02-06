@@ -66,10 +66,10 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
             className={classes.icon}
           />
           <Paragraph
-            as='span'
+            asChild
             className={classes.content}
           >
-            {children}
+            <span>{children}</span>
           </Paragraph>
         </>
       </div>
