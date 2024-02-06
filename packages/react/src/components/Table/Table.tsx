@@ -43,20 +43,23 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   ) => {
     return (
       <Paragraph
-        as='table'
-        ref={ref}
+        asChild
         size={size}
-        className={cl(
-          classes[size],
-          zebra && classes.zebra,
-          stickyHeader && classes.stickyHeader,
-          border && classes.border,
-          classes.table,
-          className,
-        )}
-        {...rest}
       >
-        {children}
+        <table
+          ref={ref}
+          className={cl(
+            classes[size],
+            zebra && classes.zebra,
+            stickyHeader && classes.stickyHeader,
+            border && classes.border,
+            classes.table,
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </table>
       </Paragraph>
     );
   },

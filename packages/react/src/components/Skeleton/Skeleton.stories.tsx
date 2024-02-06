@@ -69,10 +69,10 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
           height='30px'
         />
         <Heading
-          as={Skeleton.Text}
+          asChild
           size='medium'
         >
-          En medium tittel
+          <Skeleton.Text>En medium tittel</Skeleton.Text>
         </Heading>
       </div>
       <Skeleton.Text width='100%' />
@@ -103,15 +103,20 @@ export const As: StoryFn<typeof Skeleton> = () => {
     <>
       <Heading
         size='large'
-        as={Skeleton.Text}
+        asChild
       >
-        Her er en heading
+        <Skeleton.Text>Her er en heading</Skeleton.Text>
       </Heading>
-      <Paragraph as={Skeleton.Text}>
-        Her er en paragraf-komponent som blir rendret som en Skeleton.Text.
+      <Paragraph asChild>
+        <Skeleton.Text>
+          Her er en paragraf-komponent som blir rendret som en Skeleton.Text.
+        </Skeleton.Text>
       </Paragraph>
-      <Paragraph as={Skeleton.Text}>
-        Se hvordan Skeleton da overskriver stylingen til det enkelte elementet.
+      <Paragraph asChild>
+        <Skeleton.Text>
+          Se hvordan Skeleton da overskriver stylingen til det enkelte
+          elementet.
+        </Skeleton.Text>
       </Paragraph>
     </>
   );
@@ -130,9 +135,9 @@ export const TextExample: StoryFn<typeof Text> = () => {
         <div style={{ width: '140px' }}>
           <Heading
             size='medium'
-            as={Skeleton.Text}
+            asChild
           >
-            Heading
+            <Skeleton.Text>Heading</Skeleton.Text>
           </Heading>
           <Paragraph size='small'>
             <Skeleton.Text width='100%' />

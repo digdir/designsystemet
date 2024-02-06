@@ -100,107 +100,119 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
 
     return (
       <Paragraph
-        as='div'
+        asChild
         size={size}
-        style={style}
-        className={cl(
-          classes.formField,
-          classes[size],
-          inputProps.disabled && classes.disabled,
-          readOnly && classes.readonly,
-          className,
-        )}
       >
-        {label && (
-          <Label
-            size={size}
-            weight='medium'
-            htmlFor={inputProps.id}
-            className={cl(
-              classes.label,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
-          >
-            {readOnly && (
-              <PadlockLockedFillIcon
-                aria-hidden
-                className={classes.padlock}
-              />
-            )}
-            <span>{label}</span>
-          </Label>
-        )}
-        {description && (
-          <Paragraph
-            id={descriptionId}
-            as='div'
-            size={size}
-            className={cl(
-              classes.description,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
-          >
-            {description}
-          </Paragraph>
-        )}
-        <div className={cl(classes.field, hasError && classes.error)}>
-          {prefix && (
-            <Paragraph
-              as='div'
-              size={size}
-              className={cl(classes.adornment, classes.prefix)}
-              aria-hidden='true'
-              short
-            >
-              {prefix}
-            </Paragraph>
-          )}
-          <input
-            className={cl(
-              classes.input,
-              classes[size],
-              utilityClasses.focusable,
-              prefix && classes.inputPrefix,
-              suffix && classes.inputSuffix,
-            )}
-            ref={ref}
-            type={type}
-            aria-describedby={describedBy}
-            size={htmlSize}
-            {...omit(['size', 'error', 'errorId'], rest)}
-            {...inputProps}
-            onChange={(e) => {
-              inputProps?.onChange?.(e);
-              setInputValue(e.target.value);
-            }}
-          />
-          {suffix && (
-            <Paragraph
-              as='div'
-              size={size}
-              className={cl(classes.adornment, classes.suffix)}
-              aria-hidden='true'
-              short
-            >
-              {suffix}
-            </Paragraph>
-          )}
-        </div>
-        {hasCharacterLimit && (
-          <CharacterCounter
-            size={size}
-            value={inputValue ? inputValue.toString() : ''}
-            id={characterLimitId}
-            {...characterLimit}
-          />
-        )}
         <div
-          className={classes.errorMessage}
-          id={errorId}
-          aria-live='polite'
-          aria-relevant='additions removals'
+          style={style}
+          className={cl(
+            classes.formField,
+            classes[size],
+            inputProps.disabled && classes.disabled,
+            readOnly && classes.readonly,
+            className,
+          )}
         >
-          {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+          {label && (
+            <Label
+              size={size}
+              weight='medium'
+              htmlFor={inputProps.id}
+              className={cl(
+                classes.label,
+                hideLabel && utilityClasses.visuallyHidden,
+              )}
+            >
+              {readOnly && (
+                <PadlockLockedFillIcon
+                  aria-hidden
+                  className={classes.padlock}
+                />
+              )}
+              <span>{label}</span>
+            </Label>
+          )}
+          {description && (
+            <Paragraph
+              asChild
+              size={size}
+            >
+              <div
+                id={descriptionId}
+                className={cl(
+                  classes.description,
+                  hideLabel && utilityClasses.visuallyHidden,
+                )}
+              >
+                {description}
+              </div>
+            </Paragraph>
+          )}
+          <div className={cl(classes.field, hasError && classes.error)}>
+            {prefix && (
+              <Paragraph
+                asChild
+                size={size}
+                short
+              >
+                <div
+                  className={cl(classes.adornment, classes.prefix)}
+                  aria-hidden='true'
+                >
+                  {prefix}
+                </div>
+              </Paragraph>
+            )}
+            <input
+              className={cl(
+                classes.input,
+                classes[size],
+                utilityClasses.focusable,
+                prefix && classes.inputPrefix,
+                suffix && classes.inputSuffix,
+              )}
+              ref={ref}
+              type={type}
+              aria-describedby={describedBy}
+              size={htmlSize}
+              {...omit(['size', 'error', 'errorId'], rest)}
+              {...inputProps}
+              onChange={(e) => {
+                inputProps?.onChange?.(e);
+                setInputValue(e.target.value);
+              }}
+            />
+            {suffix && (
+              <Paragraph
+                asChild
+                size={size}
+                short
+              >
+                <div
+                  className={cl(classes.adornment, classes.suffix)}
+                  aria-hidden='true'
+                >
+                  {suffix}
+                </div>
+              </Paragraph>
+            )}
+          </div>
+          {hasCharacterLimit && (
+            <CharacterCounter
+              size={size}
+              value={inputValue ? inputValue.toString() : ''}
+              id={characterLimitId}
+              {...characterLimit}
+            />
+          )}
+          <div
+            className={classes.errorMessage}
+            id={errorId}
+            aria-live='polite'
+            aria-relevant='additions removals'
+          >
+            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+          </div>
         </div>
       </Paragraph>
     );

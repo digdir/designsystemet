@@ -117,35 +117,38 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
         {internalOpen && (
           <Container>
             <Paragraph
-              ref={floatingEl}
-              as={'div'}
+              asChild
               size={size}
-              className={cl(
-                classes.popover,
-                classes[variant],
-                classes[size],
-                className,
-              )}
-              data-placement={flPlacement}
-              {...getFloatingProps({
-                ref: floatingRef,
-                tabIndex: undefined,
-              })}
-              style={{ ...floatingStyles, ...style }}
-              {...rest}
             >
-              {children}
               <div
-                ref={arrowRef}
-                className={cl(classes.arrow, classes[arrowPlacement])}
-                style={{
-                  height: ARROW_HEIGHT,
-                  width: ARROW_HEIGHT,
-                  ...(arrowX != null ? { left: arrowX } : {}),
-                  ...(arrowY != null ? { top: arrowY } : {}),
-                  ...(arrowPlacement ? { [arrowPlacement]: -4.5 } : {}),
-                }}
-              />
+                ref={floatingEl}
+                className={cl(
+                  classes.popover,
+                  classes[variant],
+                  classes[size],
+                  className,
+                )}
+                data-placement={flPlacement}
+                {...getFloatingProps({
+                  ref: floatingRef,
+                  tabIndex: undefined,
+                })}
+                style={{ ...floatingStyles, ...style }}
+                {...rest}
+              >
+                {children}
+                <div
+                  ref={arrowRef}
+                  className={cl(classes.arrow, classes[arrowPlacement])}
+                  style={{
+                    height: ARROW_HEIGHT,
+                    width: ARROW_HEIGHT,
+                    ...(arrowX != null ? { left: arrowX } : {}),
+                    ...(arrowY != null ? { top: arrowY } : {}),
+                    ...(arrowPlacement ? { [arrowPlacement]: -4.5 } : {}),
+                  }}
+                />
+              </div>
             </Paragraph>
           </Container>
         )}

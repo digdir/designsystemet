@@ -94,16 +94,19 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           </Label>
           {description && (
             <Paragraph
-              id={descriptionId}
-              className={cl(
-                classes.description,
-                hideLegend && utilityclasses.visuallyHidden,
-              )}
               size={size}
-              as='div'
+              asChild
               short
             >
-              {description}
+              <div
+                id={descriptionId}
+                className={cl(
+                  classes.description,
+                  hideLegend && utilityclasses.visuallyHidden,
+                )}
+              >
+                {description}
+              </div>
             </Paragraph>
           )}
           {children}

@@ -35,13 +35,16 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
   ) => {
     return (
       <Paragraph
-        as='span'
+        asChild
         size={size}
-        className={cl(classes.tag, classes[color], classes[size], className)}
-        ref={ref}
-        {...rest}
       >
-        {children}
+        <span
+          className={cl(classes.tag, classes[color], classes[size], className)}
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </span>
       </Paragraph>
     );
   },

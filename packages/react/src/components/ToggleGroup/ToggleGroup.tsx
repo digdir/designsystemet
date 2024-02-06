@@ -91,12 +91,15 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             />
           )}
           <RovingTabindexRoot
-            as='div'
+            asChild
             valueId={value}
-            className={classes.groupContent}
-            role='radiogroup'
           >
-            {children}
+            <div
+              className={classes.groupContent}
+              role='radiogroup'
+            >
+              {children}
+            </div>
           </RovingTabindexRoot>
         </ToggleGroupContext.Provider>
       </div>
