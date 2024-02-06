@@ -1,5 +1,5 @@
 import type { FieldsetHTMLAttributes, ForwardedRef, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 
 import { ErrorMessage, HelpText } from '../..';

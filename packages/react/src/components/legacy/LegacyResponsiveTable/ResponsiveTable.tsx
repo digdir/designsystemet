@@ -1,4 +1,3 @@
-import React from 'react';
 import * as tokens from '@altinn/figma-design-tokens';
 
 import { useMediaQuery } from '../../../hooks';

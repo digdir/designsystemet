@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
-import type { MouseEventHandler, HTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { Paragraph, Heading } from '../..';
 import classes from '../Accordion.module.css';
@@ -14,7 +14,7 @@ export type AccordionHeaderProps = {
   /** Handle when clicked on header */
   onHeaderClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   /** Heading text */
-  children: React.ReactNode;
+  children: ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
 export const AccordionHeader = forwardRef<
@@ -30,7 +30,7 @@ export const AccordionHeader = forwardRef<
     return null;
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     context.toggleOpen();
     onHeaderClick && onHeaderClick(e);
   };

@@ -1,14 +1,9 @@
-import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { TableProps } from './Table';
 import { Table } from './Table';
 
 import { TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '.';
-
-const Comp = (args: Partial<TableProps>) => {
-  return <Table {...args} />;
-};
 
 const children = (
   <>
@@ -34,8 +29,8 @@ const children = (
   </>
 );
 
-const render = (props: Partial<TableProps> = {}) => {
-  return renderRtl(<Comp {...props} />);
+const render = (props: TableProps = {}) => {
+  return renderRtl(<Table {...props} />);
 };
 
 describe('table', (): void => {

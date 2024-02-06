@@ -4,7 +4,7 @@
  */
 
 import type { ChangeEventHandler, ReactNode } from 'react';
-import React, { forwardRef, useId } from 'react';
+import { forwardRef, useId } from 'react';
 import cl from 'clsx';
 
 import { HelpText } from '../../HelpText';

@@ -1,10 +1,10 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import cl from 'clsx';
 
 import classes from './Container.module.css';
 
 interface ContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

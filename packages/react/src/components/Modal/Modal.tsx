@@ -1,5 +1,5 @@
 import type { DialogHTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useEffect, useRef } from 'react';
+import { createContext, forwardRef, useEffect, useRef } from 'react';
 import cl from 'clsx';
 import {
   FloatingFocusManager,

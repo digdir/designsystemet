@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
@@ -70,7 +70,7 @@ const rightLinks = [
 type LinkListItemProps = {
   text: string;
   url: string;
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
 };
 
 const getCurrentYear = () => {

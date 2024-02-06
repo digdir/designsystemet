@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import tokens from '@altinn/figma-design-tokens/dist/tokens';
 
 import { Table } from '../Table';

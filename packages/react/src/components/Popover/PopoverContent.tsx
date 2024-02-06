@@ -1,4 +1,5 @@
-import React, { forwardRef, useContext, useMemo, useRef } from 'react';
+import { forwardRef, useContext, useMemo, useRef } from 'react';
+import * as React from 'react';
 import {
   FloatingPortal,
   arrow,

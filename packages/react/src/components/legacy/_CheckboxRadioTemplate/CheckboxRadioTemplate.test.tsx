@@ -1,6 +1,5 @@
 import assert from 'assert';
 
-import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CheckboxRadioTemplateProps } from './';

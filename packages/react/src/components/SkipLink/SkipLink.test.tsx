@@ -1,4 +1,3 @@
-import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import { SkipLink } from './SkipLink';

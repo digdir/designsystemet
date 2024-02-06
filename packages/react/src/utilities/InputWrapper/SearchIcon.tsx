@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SearchIcon = () => (
   <svg
     width='15'

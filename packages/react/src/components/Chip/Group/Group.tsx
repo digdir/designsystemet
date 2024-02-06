@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, createContext } from 'react';
+import { Children, isValidElement, forwardRef, createContext } from 'react';
 import cl from 'clsx';
 
 import classes from '../Chip.module.css';
@@ -25,10 +25,8 @@ export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
       {...rest}
     >
       <ChipGroupContext.Provider value={{ size }}>
-        {React.Children.toArray(children).map((child, index) =>
-          React.isValidElement(child) ? (
-            <li key={`chip-${index}`}>{child}</li>
-          ) : null,
+        {Children.toArray(children).map((child, index) =>
+          isValidElement(child) ? <li key={`chip-${index}`}>{child}</li> : null,
         )}
       </ChipGroupContext.Provider>
     </ul>

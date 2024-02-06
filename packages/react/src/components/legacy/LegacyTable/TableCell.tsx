@@ -1,5 +1,4 @@
-import type { HTMLProps } from 'react';
-import React from 'react';
+import type { ReactNode, HTMLProps } from 'react';
 import cl from 'clsx';
 
 import classes from './TableCell.module.css';
@@ -9,7 +8,7 @@ import { SortIcon } from './SortIcon';
 
 export interface TableCellProps
   extends Omit<HTMLProps<HTMLTableCellElement>, 'onChange'> {
-  children?: React.ReactNode;
+  children?: ReactNode;
   variant?: string;
   onChange?: SortHandler;
   sortDirection?: SortDirection;

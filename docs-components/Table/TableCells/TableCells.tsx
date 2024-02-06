@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from './TableCells.module.css';
 
 const TableCellColor = (props: { color: string }) => {

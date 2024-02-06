@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import React from 'react';
+import { useState } from 'react';
 import cl from 'clsx';
 import type { Placement } from '@floating-ui/utils';
 
@@ -38,7 +38,7 @@ const HelpText = ({
   children,
   ...rest
 }: HelpTextProps) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>

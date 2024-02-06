@@ -1,10 +1,5 @@
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useId,
-  useMemo,
-} from 'react';
+import { forwardRef, useContext, useEffect, useId, useMemo } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 import { useMergeRefs } from '@floating-ui/react';
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 

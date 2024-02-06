@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useId, useState } from 'react';
+import { createContext, forwardRef, useId, useState } from 'react';
 import cl from 'clsx';
 
 import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';

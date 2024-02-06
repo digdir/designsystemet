@@ -5,8 +5,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/storefront",
-    "apps/dev"
+    "apps/*"
   ],
   "scripts": {
     "test": "jest",

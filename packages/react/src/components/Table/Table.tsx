@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import cl from 'clsx';
 
 import { Paragraph } from '../Typography';
@@ -26,7 +26,7 @@ export type TableProps = {
    * @default false
    */
   border?: boolean;
-} & React.HTMLAttributes<HTMLTableElement>;
+} & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   (

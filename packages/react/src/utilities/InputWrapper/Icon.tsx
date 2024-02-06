@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from 'clsx';
 
 import type { IconVariant_ } from './utils';
