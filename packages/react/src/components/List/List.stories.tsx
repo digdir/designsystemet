@@ -5,7 +5,7 @@ import { Link } from '../Link';
 
 import { List } from '.';
 
-type Story = StoryFn<typeof List>;
+type Story = StoryFn<typeof List.Root>;
 
 const decorators = [
   (Story: StoryFn) => (
@@ -17,19 +17,19 @@ const decorators = [
 
 export default {
   title: 'Felles/List',
-  component: List,
+  component: List.Root,
   decorators,
 } as Meta;
 
 export const Preview: Story = (args) => (
-  <List {...args}>
+  <List.Root {...args}>
     <List.Heading>List</List.Heading>
     <List.Ordered>
       <List.Item>List Item 1</List.Item>
       <List.Item>List Item 2</List.Item>
       <List.Item>List Item 3</List.Item>
     </List.Ordered>
-  </List>
+  </List.Root>
 );
 
 Preview.args = {
@@ -37,45 +37,45 @@ Preview.args = {
 };
 
 export const WithoutHeading: Story = (args) => (
-  <List {...args}>
+  <List.Root {...args}>
     <List.Unordered>
       <List.Item>Lasagne</List.Item>
       <List.Item>Taco</List.Item>
       <List.Item>Pizza</List.Item>
     </List.Unordered>
-  </List>
+  </List.Root>
 );
 
 export const Advanced: Story = (args) => (
-  <List {...args}>
+  <List.Root {...args}>
     <List.Unordered>
       <List.Item>
         List Item 1
-        <List>
+        <List.Root>
           <List.Ordered>
             <List.Item>List Item 1.1</List.Item>
             <List.Item>List Item 1.2</List.Item>
             <List.Item>List Item 1.3</List.Item>
           </List.Ordered>
-        </List>
+        </List.Root>
       </List.Item>
       <List.Item>
         List Item 2
-        <List>
+        <List.Root>
           <List.Unordered>
             <List.Item>List Item 2.1</List.Item>
             <List.Item>List Item 2.2</List.Item>
             <List.Item>List Item 2.3</List.Item>
           </List.Unordered>
-        </List>
+        </List.Root>
       </List.Item>
       <List.Item>List Item 3</List.Item>
     </List.Unordered>
-  </List>
+  </List.Root>
 );
 
 export const LinkList: Story = (args) => (
-  <List {...args}>
+  <List.Root {...args}>
     <List.Heading>Designsystemet</List.Heading>
     <List.Unordered
       style={{
@@ -108,5 +108,5 @@ export const LinkList: Story = (args) => (
         </Link>
       </List.Item>
     </List.Unordered>
-  </List>
+  </List.Root>
 );

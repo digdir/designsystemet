@@ -3,9 +3,6 @@ import { ListItem } from './ListItem';
 import { ListHeading } from './ListHeading';
 import { Ordered, Unordered } from './Lists';
 
-export type { ListProps } from './List';
-export type { ListItemProps } from './ListItem';
-
 type ListComponent = {
   Root: typeof ListRoot;
   Item: typeof ListItem;
@@ -27,6 +24,10 @@ List.Item.displayName = 'List.Item';
 List.Heading.displayName = 'List.Heading';
 List.Ordered.displayName = 'List.Ordered';
 List.Unordered.displayName = 'List.Unordered';
+
+export type { ListProps } from './List';
+export type { ListItemProps } from './ListItem';
+export type { ListComponent };
 
 export {
   List,
