@@ -13,7 +13,7 @@ const render = (props: Partial<ListProps> = {}) => {
     ),
     ...props,
   };
-  return renderRtl(<List {...allProps} />);
+  return renderRtl(<List.Root {...allProps} />);
 };
 
 describe('List', () => {
