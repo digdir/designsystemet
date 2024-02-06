@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <div className={classes.container}>
-        <div className={classes.left}>
+        <div>
           <Link
             className={classes.logoLink}
             href='/'
@@ -60,7 +60,7 @@ const Header = () => {
             />
           </Link>
         </div>
-        <div className={classes.right}>
+        <div>
           <button
             aria-expanded={open}
             aria-label='Meny'

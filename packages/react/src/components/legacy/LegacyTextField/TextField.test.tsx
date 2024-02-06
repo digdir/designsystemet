@@ -1,5 +1,5 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import React from 'react';
+import type * as React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { LegacyTextFieldProps } from './TextField';

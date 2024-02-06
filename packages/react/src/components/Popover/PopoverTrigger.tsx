@@ -1,5 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
+import type * as React from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { Button } from '../Button';

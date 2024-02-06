@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import cl from 'clsx';
-import React from 'react';
+import type * as React from 'react';
 
 import classes from './NavigationCard.module.css';
 

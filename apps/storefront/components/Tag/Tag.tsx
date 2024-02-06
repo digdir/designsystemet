@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from 'clsx';
 
 import { capitalizeString } from '../../utils/StringHelpers';

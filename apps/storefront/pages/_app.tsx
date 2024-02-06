@@ -1,4 +1,3 @@
-import React from 'react';
 import 'normalize.css/normalize.css';
 import 'tippy.js/dist/tippy.css';
 import '@altinn/figma-design-tokens/dist/tokens.css';

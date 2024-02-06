@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from 'clsx';
 
 import classes from './Image.module.css';

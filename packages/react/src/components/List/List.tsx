@@ -17,7 +17,6 @@ export type ListProps = {
 export const List = React.forwardRef<HTMLDivElement, ListProps>(
   ({ asChild, size = 'medium', ...rest }, ref) => {
     const [headingId, setHeadingId] = React.useState<string | null>(null);
-
     const Component = asChild ? Slot : 'div';
 
     return (

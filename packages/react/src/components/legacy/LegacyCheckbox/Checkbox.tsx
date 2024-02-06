@@ -1,5 +1,4 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
-import React from 'react';
 import cl from 'clsx';
 
 import { CheckboxRadioTemplate } from '../_CheckboxRadioTemplate';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { Option } from '../useCombobox';
 import type { ComboboxProps } from '../Combobox';
 

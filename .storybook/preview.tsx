@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import type { Preview } from '@storybook/react';
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 

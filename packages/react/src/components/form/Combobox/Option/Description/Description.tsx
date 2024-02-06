@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 
 import classes from './Description.module.css';

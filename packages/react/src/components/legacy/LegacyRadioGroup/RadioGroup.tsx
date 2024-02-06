@@ -1,5 +1,5 @@
 import type { ChangeEvent, ReactNode } from 'react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LegacyRadioButton } from '../LegacyRadioButton';
 import type { LegacyFieldSetProps } from '../LegacyFieldSet';

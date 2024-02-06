@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 
 import classes from './TeaserCard.module.css';

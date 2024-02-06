@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import React, { useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -35,7 +35,7 @@ Preview.args = {
 Preview.decorators = [marginDecorator];
 
 export const Variants: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setOpen(true);
@@ -89,7 +89,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
 Variants.decorators = [marginDecorator];
 
 export const Controlled: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -130,8 +130,8 @@ export const InPortal = () => {
 };
 
 export const AnchorEl = () => {
-  const anchorEl = React.useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = React.useState(false);
+  const anchorEl = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
 
   return (
     <>

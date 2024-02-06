@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 import * as akselIcons from '@navikt/aksel-icons';
