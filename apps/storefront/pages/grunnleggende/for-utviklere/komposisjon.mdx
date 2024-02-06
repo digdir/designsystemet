@@ -2,15 +2,15 @@ import { MenuPageLayout } from '@layouts';
 import { Meta, CodeSnippet } from '@components';
 
 <Meta
-  title='Forstå asChild og Composition'
-  description='All informasjonen du trenger for å forstå asChild og Composition.'
+  title='Komposisjon'
+  description='Informasjonen og bruk av asChild til å løse komposisjon.'
 />
 
 export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Forstå asChild og Composition',
+      title: 'Komposisjon',
       date: '31. januar 2024',
     }}
   />
@@ -30,11 +30,11 @@ Det er her `asChild` kjem inn i biletet.
 </CodeSnippet>
 
 I kodesnutten over blir `Button`-komponenten rendra som ein `Link`-komponent. Når dette skal ut i DOMen, så er det kun eit element som blir rendra ut.
-Dette skjer ved hjelp av Radix sin `Slot`-komponent. [1]
+Dette skjer ved hjelp av Radix sin `Slot`-komponent. <sup>1</sup>
 
-`Slot` merger sine props ned på den komponenten som ligger som direkte barn. I tilfellet over så vil `Button` sine props bli lagt til på `Link`-komponenten, og
+`Slot` merger sine props ned på den komponenten som ligger som underordnet element. I tilfellet over så vil `Button` sine props bli lagt til på `Link`-komponenten, og
 det er ein `a`-tagg som blir rendra ut.
-Når du bruker `asChild`, så kan du ikkje ha meir enn eit barn, men du kan ha så mange du vil inne i det barnet.
+Når du bruker `asChild`, så kan du ikkje ha meir enn eit underordna element, men du kan ha så mange du vil inne i det elementet.
 
 <CodeSnippet language='ts'>
   {`
@@ -60,7 +60,7 @@ Når du bruker `asChild`, så kan du ikkje ha meir enn eit barn, men du kan ha s
 ## Kvifor bruke asChild?
 
 Me har tidlegare brukt ein `as` prop for å rendre som andre element, men når du bruker denne, så får du ikkje typesafety eller korrekte typer iht. elementet du har endret til med `as`.
-`Slot` fikser dette ved at du legger alle props på barnet av komponenten, og du får dermed typesafety.
+`Slot` fikser dette ved at du legger alle props på det underordna elementet av komponenten, og du får dermed typesafety.
 
 <CodeSnippet language='ts'>
   {`
@@ -82,7 +82,7 @@ Dersom ein prop starter med `on` (fks. `onClick`), så er det sett på som ein e
 Når `Slot` merger props, vil det lage ein ny funksjon som kallar alle event handlers som er definert på `Button` og `Link`, men funksjonen som ligger på `Link` vil bli kalla først.
 Dette betyr at dersom du stopper eit event på din komponent, vil eventet på `Slot`-komponenten ikkje bli kalla.
 
-Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må du passe på at rekkefølga er korrekt. [2]
+Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må du passe på at rekkefølga er korrekt. <sup>2</sup>
 
 <CodeSnippet language='ts'>
   {`
@@ -100,10 +100,9 @@ Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må 
 
 ## Bruk dine egne komponenter
 
+Fleire Designsystemet komponentar støttar `asChild`, med standard element. Endrast dette må du passe på at tilgjengelegheit er ivaretatt. Det er sjeldent at du behøver å endre det underliggande elementet, men det er meir realistisk at du vil bruke din eigen komponent.
 
-Flere Designsystemet komponentar støttar `asChild`, med standard element. Endres dette må du passe på at tilgjengelegheit er ivaretatt. Det er sjeldent at du behøver å endre det underliggande elementet, men det er meir realistisk at du vil bruke din eigen komponent.
-
-Ønsker du å bruke ein eigen komponent må du passe på å spre alle props, og ha støtte for `ref`. [3]
+Ønsker du å bruke ein eigen komponent må du passe på å spre alle props, og ha støtte for `ref`. <sup>3</sup>
 
 Komponentane dine vil då sjå slik ut:
 
@@ -124,7 +123,7 @@ const MinKnapp = React.forwardRef((props, forwardedRef) => (
 ))`}
 </CodeSnippet>
 
-Flere Designsystem komponenter støtter `asChild`.
+Fleire Designsystem komponenter støtter `asChild`.
 
 ### Referanser
 
