@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import React, { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
 
 import { Button, Divider } from '../..';
@@ -117,7 +117,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
 };
 
 export const Controlled: StoryFn<typeof DropdownMenu> = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -156,7 +156,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
 export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setOpen(args.open || false);

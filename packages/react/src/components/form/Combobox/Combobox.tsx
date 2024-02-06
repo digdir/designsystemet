@@ -1,10 +1,5 @@
-import React, {
-  useState,
-  useRef,
-  createContext,
-  useEffect,
-  useId,
-} from 'react';
+import { useState, useRef, createContext, useEffect, useId } from 'react';
+import type * as React from 'react';
 import {
   FloatingFocusManager,
   autoUpdate,

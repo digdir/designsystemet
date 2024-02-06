@@ -1,5 +1,5 @@
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import React, { useContext, forwardRef, createContext } from 'react';
+import { useContext, forwardRef, createContext } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 

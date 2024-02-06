@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from './TokenFontSize.module.css';
 
 interface TokenFontSizeProps {

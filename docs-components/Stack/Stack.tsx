@@ -1,5 +1,4 @@
-import type { HTMLAttributes } from 'react';
-import React from 'react';
+import type { HTMLAttributes, ReactNode, CSSProperties } from 'react';
 
 import classes from './Stack.module.css';
 
@@ -23,8 +22,8 @@ export const Stack = ({
 );
 
 type FlexContainerProps = {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
+  children: ReactNode;
+  style?: CSSProperties;
   gap?: string;
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';

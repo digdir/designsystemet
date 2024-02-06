@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 
 import classes from './Divider.module.css';

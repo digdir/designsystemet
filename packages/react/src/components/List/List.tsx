@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import React, { useId, useMemo } from 'react';
+import { forwardRef, useId, useMemo } from 'react';
 import cl from 'clsx';
 
 import type { HeadingProps } from '../Typography';
@@ -40,7 +40,7 @@ export type ListProps = {
   headingId?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const List = React.forwardRef<HTMLDivElement, ListProps>(
+export const List = forwardRef<HTMLDivElement, ListProps>(
   (
     {
       children,

@@ -1,4 +1,5 @@
-import React, { forwardRef, useContext, useId } from 'react';
+import { forwardRef, useContext, useId } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 
 import { Paragraph } from '../../Typography';

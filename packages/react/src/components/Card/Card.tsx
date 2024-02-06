@@ -1,5 +1,5 @@
-import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
@@ -25,7 +25,7 @@ export type CardProps = {
    */
   isLink?: boolean;
   /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
-  children: React.ReactNode;
+  children: ReactNode;
 
   /**
    * @deprecated Use `asChild` and `isLink={true}` instead

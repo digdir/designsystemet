@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import cl from 'clsx';
 
 import { LegacyCheckbox } from '../LegacyCheckbox';

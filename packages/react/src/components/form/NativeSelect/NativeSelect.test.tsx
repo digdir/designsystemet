@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

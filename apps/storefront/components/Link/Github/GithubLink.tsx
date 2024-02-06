@@ -1,6 +1,5 @@
 'use client';
 import type { HTMLAttributes } from 'react';
-import React from 'react';
 import Image from 'next/image';
 import { Link } from '@digdir/design-system-react';
 import { useRouter } from 'next/router';

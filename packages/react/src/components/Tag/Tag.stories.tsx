@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Stack } from '../../../../../docs-components';

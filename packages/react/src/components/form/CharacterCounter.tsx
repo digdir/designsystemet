@@ -1,5 +1,3 @@
-import React from 'react';
-
 import utilityClasses from '../../utilities/utility.module.css';
 import { ErrorMessage } from '../Typography';
 

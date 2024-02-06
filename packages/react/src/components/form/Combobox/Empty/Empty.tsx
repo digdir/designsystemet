@@ -1,4 +1,5 @@
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 
 import { ComboboxContext } from '../Combobox';

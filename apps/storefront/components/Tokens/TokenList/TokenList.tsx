@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dropdown, Button } from '@navikt/ds-react';
 import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';

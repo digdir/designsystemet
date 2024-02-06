@@ -1,7 +1,7 @@
 // Logic from: https://www.joshuawootonn.com/react-roving-tabindex
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
