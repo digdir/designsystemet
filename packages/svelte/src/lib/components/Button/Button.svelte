@@ -230,13 +230,17 @@
     }
 
     .button.quiet.first:not([aria-disabled='true'], :disabled):hover {
-      --fdsc-font-and-icon-color: var(--fds-semantic-text-action-first-hover);
+      --fdsc-font-and-icon-color: var(
+        --fds-semantic-text-action-first-on_action
+      );
       background: var(--fds-semantic-surface-action-first-hover);
     }
 
     .button.quiet.second:not([aria-disabled='true'], :disabled):hover {
-      /* Hard coded color due to rgba issue, https://github.com/digdir/designsystem/issues/604 */
-      background: #e5eaef;
+      --fdsc-font-and-icon-color: var(
+        --fds-semantic-text-action-first-on_action
+      );
+      background: var(--fds-semantic-surface-action-second-default);
     }
 
     .button.quiet.success:not([aria-disabled='true'], :disabled):hover {

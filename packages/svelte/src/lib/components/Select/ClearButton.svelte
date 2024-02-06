@@ -45,6 +45,10 @@
     margin-left: auto;
     background-color: transparent;
 
+    & > svg {
+      margin-top: -0.8px;
+      margin-left: -1.2px;
+    }
     &:hover {
       background-color: var(--colors-red-500);
       color: white;

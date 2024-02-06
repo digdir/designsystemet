@@ -94,6 +94,7 @@
 
   .header {
     margin: 0;
+    border-top: 1px solid var(--fdsc-accordion-header-border);
   }
 
   .heading.xsmall {
@@ -114,7 +115,6 @@
     text-align: left;
     cursor: pointer;
     border: none;
-    border-top: 1px solid var(--fdsc-accordion-header-border);
     padding-top: var(--fdsc-accordion-header-padding-top);
     padding-right: var(--fdsc-accordion-header-padding-right);
     padding-bottom: var(--fdsc-accordion-header-padding-bottom);
