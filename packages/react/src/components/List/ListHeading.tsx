@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useId, useMemo } from 'react';
+import { forwardRef, useEffect, useId, useMemo, useContext } from 'react';
 
 import { Heading, type HeadingProps } from '../Typography';
 
@@ -13,31 +13,34 @@ const HEADING_SIZE_MAP: {
   large: 'small',
 } as const;
 
-export const ListHeading = forwardRef<
-  HTMLHeadingElement,
-  Omit<HeadingProps, 'size' | 'spacing'> & { id?: string }
->(({ level = 2, id, ...rest }, ref) => {
-  const internalId = useId();
-  const { size, headingId, setHeadingId } = React.useContext(ListContext);
+export type ListHeadingProps = Omit<HeadingProps, 'size' | 'spacing'> & {
+  id?: string;
+};
 
-  const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
+export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(
+  ({ level = 2, id, ...rest }, ref) => {
+    const internalId = useId();
+    const { size, headingId, setHeadingId } = useContext(ListContext);
 
-  useEffect(() => {
-    if (id) {
-      setHeadingId(id);
-    } else {
-      setHeadingId(internalId);
-    }
-  }, [internalId, id, setHeadingId]);
+    const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
-  return (
-    <Heading
-      ref={ref}
-      size={headingSize}
-      id={headingId || internalId}
-      level={level}
-      spacing={true}
-      {...rest}
-    />
-  );
-});
+    useEffect(() => {
+      if (id) {
+        setHeadingId(id);
+      } else {
+        setHeadingId(internalId);
+      }
+    }, [internalId, id, setHeadingId]);
+
+    return (
+      <Heading
+        ref={ref}
+        size={headingSize}
+        id={headingId || internalId}
+        level={level}
+        spacing={true}
+        {...rest}
+      />
+    );
+  },
+);

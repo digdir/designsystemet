@@ -1,6 +1,18 @@
 import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
-import React from 'react';
+import { useState, forwardRef, createContext } from 'react';
+
+type ListContextType = {
+  size: NonNullable<ListProps['size']>;
+  headingId: string | null;
+  setHeadingId: (id: string) => void;
+};
+
+export const ListContext = createContext<ListContextType>({
+  size: 'medium',
+  headingId: 'heading',
+  setHeadingId: () => {},
+});
 
 export type ListProps = {
   /** Changes text sizing
@@ -14,9 +26,9 @@ export type ListProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const List = React.forwardRef<HTMLDivElement, ListProps>(
+export const List = forwardRef<HTMLDivElement, ListProps>(
   ({ asChild, size = 'medium', ...rest }, ref) => {
-    const [headingId, setHeadingId] = React.useState<string | null>(null);
+    const [headingId, setHeadingId] = useState<string | null>(null);
     const Component = asChild ? Slot : 'div';
 
     return (
@@ -29,15 +41,3 @@ export const List = React.forwardRef<HTMLDivElement, ListProps>(
     );
   },
 );
-
-type ListContextType = {
-  size: NonNullable<ListProps['size']>;
-  headingId: string | null;
-  setHeadingId: (id: string) => void;
-};
-
-export const ListContext = React.createContext<ListContextType>({
-  size: 'medium',
-  headingId: 'heading',
-  setHeadingId: () => {},
-});
