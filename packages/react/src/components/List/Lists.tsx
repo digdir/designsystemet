@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, OlHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
@@ -44,7 +44,7 @@ export type ListOrderedProps = {
    * @default false
    */
   asChild?: boolean;
-} & Omit<HTMLAttributes<HTMLOListElement>, 'size'>;
+} & Omit<OlHTMLAttributes<HTMLOListElement>, 'size'>;
 
 export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
   ({ asChild, ...rest }, ref) => {
