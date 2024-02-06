@@ -89,8 +89,8 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
                   aria-hidden
                 />
               )}
+              {legend}
             </legend>
-            {legend}
           </Label>
           {description && (
             <Paragraph
