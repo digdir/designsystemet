@@ -49,10 +49,7 @@ export const RovingTabindexRoot: OverridableComponent<
   RovingTabindexRootBaseProps,
   HTMLElement
 > = forwardRef(
-  (
-    { children, valueId, as = 'div', asChild, onBlur, onFocus, ...rest },
-    ref,
-  ) => {
+  ({ valueId, as = 'div', asChild, onBlur, onFocus, ...rest }, ref) => {
     const Component = asChild ? Slot : as;
 
     const [focusableValue, setFocusableValue] = useState<string | null>(null);
@@ -112,9 +109,7 @@ export const RovingTabindexRoot: OverridableComponent<
             }
           }}
           ref={refs}
-        >
-          {children}
-        </Component>
+        />
       </RovingTabindexContext.Provider>
     );
   },

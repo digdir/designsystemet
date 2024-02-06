@@ -17,7 +17,10 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { active, size = 'medium', ...useTabRest } = useTabItem(props);
 
   return (
-    <RovingTabindexItem asChild>
+    <RovingTabindexItem
+      {...rest}
+      asChild
+    >
       <button
         {...useTabRest}
         className={cl(
@@ -27,7 +30,6 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
           className,
         )}
         ref={ref}
-        {...rest}
       >
         {children}
       </button>
