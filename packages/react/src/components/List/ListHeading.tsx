@@ -13,9 +13,7 @@ const HEADING_SIZE_MAP: {
   large: 'small',
 } as const;
 
-export type ListHeadingProps = Omit<HeadingProps, 'size' | 'spacing'> & {
-  id?: string;
-};
+export type ListHeadingProps = HeadingProps;
 
 export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(
   ({ level = 2, id, ...rest }, ref) => {

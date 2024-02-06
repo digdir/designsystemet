@@ -23,11 +23,11 @@ export default {
 export const Preview: Story = (args) => (
   <List.Root {...args}>
     <List.Heading>List</List.Heading>
-    <List.Ordered>
+    <List.Unordered>
       <List.Item>List Item 1</List.Item>
       <List.Item>List Item 2</List.Item>
       <List.Item>List Item 3</List.Item>
-    </List.Ordered>
+    </List.Unordered>
   </List.Root>
 );
 
