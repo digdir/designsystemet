@@ -60,62 +60,65 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
     return (
       <Paragraph
-        as='div'
+        asChild
         size={size}
-        className={cl(
-          classes.formField,
-          disabled && classes.disabled,
-          readOnly && classes.readOnly,
-          error && classes.error,
-        )}
       >
-        {label && (
-          <Label
-            weight='medium'
-            size={size}
-            htmlFor={selectProps.id}
-            className={cl(
-              classes.label,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
-          >
-            {readOnly && (
-              <PadlockLockedFillIcon
-                aria-hidden
-                className={classes.padlock}
-              />
-            )}
-            {label}
-          </Label>
-        )}
-
-        <select
-          disabled={disabled || readOnly}
-          ref={ref}
-          size={htmlSize}
+        <div
           className={cl(
-            classes.select,
-            classes[size],
-            utilityClasses.focusable,
-            props.multiple && classes.multiple,
-            className,
+            classes.formField,
+            disabled && classes.disabled,
+            readOnly && classes.readOnly,
+            error && classes.error,
           )}
-          {...omit(['size', 'error', 'errorId'], rest)}
-          {...omit(['readOnly', 'disabled'], selectProps)}
         >
-          {children}
-        </select>
+          {label && (
+            <Label
+              weight='medium'
+              size={size}
+              htmlFor={selectProps.id}
+              className={cl(
+                classes.label,
+                hideLabel && utilityClasses.visuallyHidden,
+              )}
+            >
+              {readOnly && (
+                <PadlockLockedFillIcon
+                  aria-hidden
+                  className={classes.padlock}
+                />
+              )}
+              {label}
+            </Label>
+          )}
 
-        {error && (
-          <div
-            id={errorId}
-            className={classes.errorMessage}
-            aria-live='polite'
-            aria-relevant='additions removals'
+          <select
+            disabled={disabled || readOnly}
+            ref={ref}
+            size={htmlSize}
+            className={cl(
+              classes.select,
+              classes[size],
+              utilityClasses.focusable,
+              props.multiple && classes.multiple,
+              className,
+            )}
+            {...omit(['size', 'error', 'errorId'], rest)}
+            {...omit(['readOnly', 'disabled'], selectProps)}
           >
-            <ErrorMessage size={size}>{error}</ErrorMessage>
-          </div>
-        )}
+            {children}
+          </select>
+
+          {error && (
+            <div
+              id={errorId}
+              className={classes.errorMessage}
+              aria-live='polite'
+              aria-relevant='additions removals'
+            >
+              <ErrorMessage size={size}>{error}</ErrorMessage>
+            </div>
+          )}
+        </div>
       </Paragraph>
     );
   },

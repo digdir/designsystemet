@@ -35,12 +35,15 @@ export const DropdownMenuGroup = forwardRef<
       >
         {heading && (
           <Paragraph
-            as='h2'
-            id={headingId}
+            asChild
             size={size}
-            className={cl(classes.heading)}
           >
-            {heading}
+            <h2
+              id={headingId}
+              className={cl(classes.heading)}
+            >
+              {heading}
+            </h2>
           </Paragraph>
         )}
         {children}

@@ -103,13 +103,15 @@ export const ComboboxOption = forwardRef<
       {...omit(['displayValue'], rest)}
     >
       <Label
-        as='span'
+        asChild
         size={size}
       >
-        <SelectedIcon
-          multiple={multiple}
-          selected={!!selected}
-        />
+        <span>
+          <SelectedIcon
+            multiple={multiple}
+            selected={!!selected}
+          />
+        </span>
       </Label>
       <Label
         className={classes.optionText}

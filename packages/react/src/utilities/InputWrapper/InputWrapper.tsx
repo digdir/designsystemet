@@ -211,18 +211,17 @@ const CharacterCounter = ({
       <span className={classes.characterLimitLabel}>
         {hasExceededLimit ? (
           <ErrorMessage
-            as='span'
-            aria-live='polite'
+            asChild
             size='small'
           >
-            {label(currentCount)}
+            <span aria-live='polite'>{label(currentCount)}</span>
           </ErrorMessage>
         ) : (
           <Paragraph
-            as='span'
+            asChild
             size='small'
           >
-            {label(currentCount)}
+            <span>{label(currentCount)}</span>
           </Paragraph>
         )}
       </span>
