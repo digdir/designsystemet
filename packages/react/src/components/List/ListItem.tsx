@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import type { HTMLAttributes } from 'react';
+import type { LiHTMLAttributes } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
@@ -11,7 +11,7 @@ export type ListItemProps = {
    * @default false
    */
   asChild?: boolean;
-} & HTMLAttributes<HTMLLIElement>;
+} & LiHTMLAttributes<HTMLLIElement>;
 
 export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
   ({ asChild, className, ...rest }, ref) => {
