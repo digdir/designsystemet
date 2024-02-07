@@ -3,14 +3,16 @@ import { ErrorSummaryHeading } from './ErrorSummaryHeading';
 import { ErrorSummaryItem } from './ErrorSummaryItem';
 import ErrorSummaryList from './ErrorSummaryList';
 
-type ErrorSummaryComponent = typeof ErrorSummaryRoot & {
+type ErrorSummaryComponent = {
+  Root: typeof ErrorSummaryRoot;
   Item: typeof ErrorSummaryItem;
   Heading: typeof ErrorSummaryHeading;
   List: typeof ErrorSummaryList;
 };
 
-const ErrorSummary = ErrorSummaryRoot as ErrorSummaryComponent;
+const ErrorSummary = {} as ErrorSummaryComponent;
 
+ErrorSummary.Root = ErrorSummaryRoot;
 ErrorSummary.Item = ErrorSummaryItem;
 ErrorSummary.Heading = ErrorSummaryHeading;
 ErrorSummary.List = ErrorSummaryList;
@@ -22,6 +24,7 @@ export type { ErrorSummaryListProps } from './ErrorSummaryList';
 
 export {
   ErrorSummary,
+  ErrorSummaryRoot,
   ErrorSummaryItem,
   ErrorSummaryHeading,
   ErrorSummaryList,

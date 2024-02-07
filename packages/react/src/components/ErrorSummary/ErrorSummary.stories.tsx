@@ -6,16 +6,16 @@ import { Button } from '../Button';
 
 import { ErrorSummary } from './';
 
-type Story = StoryFn<typeof ErrorSummary>;
+type Story = StoryFn<typeof ErrorSummary.Root>;
 
 export default {
   title: 'Felles/ErrorSummary',
-  component: ErrorSummary,
+  component: ErrorSummary.Root,
 } as Meta;
 
 export const Preview: Story = (args) => (
   <>
-    <ErrorSummary {...args}>
+    <ErrorSummary.Root {...args}>
       <ErrorSummary.Heading>
         For å gå videre må du rette opp følgende feil:
       </ErrorSummary.Heading>
@@ -28,7 +28,7 @@ export const Preview: Story = (args) => (
         </ErrorSummary.Item>
         <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
       </ErrorSummary.List>
-    </ErrorSummary>
+    </ErrorSummary.Root>
   </>
 );
 Preview.args = {
@@ -54,7 +54,7 @@ export const WithForm: Story = () => (
       error='Telefonnummer kan kun inneholde siffer'
     />
 
-    <ErrorSummary>
+    <ErrorSummary.Root>
       <ErrorSummary.Heading>
         For å gå videre må du rette opp følgende feil:
       </ErrorSummary.Heading>
@@ -66,7 +66,7 @@ export const WithForm: Story = () => (
           Telefonnummer kan kun inneholde siffer
         </ErrorSummary.Item>
       </ErrorSummary.List>
-    </ErrorSummary>
+    </ErrorSummary.Root>
   </div>
 );
 
@@ -77,7 +77,7 @@ export const ShowHide: Story = () => {
     <>
       <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
       {show && (
-        <ErrorSummary>
+        <ErrorSummary.Root>
           <ErrorSummary.Heading>
             For å gå videre må du rette opp følgende feil:
           </ErrorSummary.Heading>
@@ -89,7 +89,7 @@ export const ShowHide: Story = () => {
               Telefonnummer kan kun inneholde siffer
             </ErrorSummary.Item>
           </ErrorSummary.List>
-        </ErrorSummary>
+        </ErrorSummary.Root>
       )}
     </>
   );
