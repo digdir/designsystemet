@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import { onMount, setContext } from 'svelte';
   import MenuGroup from './DropdownMenuGroup.svelte';
   import MenuItem from './DropdownMenuItem.svelte';
