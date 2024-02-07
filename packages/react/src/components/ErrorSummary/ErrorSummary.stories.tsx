@@ -16,19 +16,23 @@ export default {
 export const Preview: Story = (args) => (
   <>
     <ErrorSummary {...args}>
-      <ErrorSummary.Item href='#'>
-        Fødselsdato kan ikke være etter år 2005
-      </ErrorSummary.Item>
-      <ErrorSummary.Item href='#'>
-        Telefonnummer kan kun inneholde siffer
-      </ErrorSummary.Item>
-      <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
+      <ErrorSummary.Heading>
+        For å gå videre må du rette opp følgende feil:
+      </ErrorSummary.Heading>
+      <ErrorSummary.List>
+        <ErrorSummary.Item href='#'>
+          Fødselsdato kan ikke være etter år 2005
+        </ErrorSummary.Item>
+        <ErrorSummary.Item href='#'>
+          Telefonnummer kan kun inneholde siffer
+        </ErrorSummary.Item>
+        <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
+      </ErrorSummary.List>
     </ErrorSummary>
   </>
 );
 Preview.args = {
   size: 'medium',
-  heading: 'For å gå videre må du rette opp følgende feil:',
 };
 
 export const WithForm: Story = () => (
@@ -50,13 +54,18 @@ export const WithForm: Story = () => (
       error='Telefonnummer kan kun inneholde siffer'
     />
 
-    <ErrorSummary heading='For å gå videre må du rette opp følgende feil: '>
-      <ErrorSummary.Item href='#fornavn'>
-        Fornavn må være minst 2 tegn
-      </ErrorSummary.Item>
-      <ErrorSummary.Item href='#telefon'>
-        Telefonnummer kan kun inneholde siffer
-      </ErrorSummary.Item>
+    <ErrorSummary>
+      <ErrorSummary.Heading>
+        For å gå videre må du rette opp følgende feil:
+      </ErrorSummary.Heading>
+      <ErrorSummary.List>
+        <ErrorSummary.Item href='#fornavn'>
+          Fornavn må være minst 2 tegn
+        </ErrorSummary.Item>
+        <ErrorSummary.Item href='#telefon'>
+          Telefonnummer kan kun inneholde siffer
+        </ErrorSummary.Item>
+      </ErrorSummary.List>
     </ErrorSummary>
   </div>
 );
@@ -68,13 +77,18 @@ export const ShowHide: Story = () => {
     <>
       <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
       {show && (
-        <ErrorSummary heading='For å gå videre må du rette opp følgende feil: '>
-          <ErrorSummary.Item href='#fornavn'>
-            Fornavn må være minst 2 tegn
-          </ErrorSummary.Item>
-          <ErrorSummary.Item href='#telefon'>
-            Telefonnummer kan kun inneholde siffer
-          </ErrorSummary.Item>
+        <ErrorSummary>
+          <ErrorSummary.Heading>
+            For å gå videre må du rette opp følgende feil:
+          </ErrorSummary.Heading>
+          <ErrorSummary.List>
+            <ErrorSummary.Item href='#fornavn'>
+              Fornavn må være minst 2 tegn
+            </ErrorSummary.Item>
+            <ErrorSummary.Item href='#telefon'>
+              Telefonnummer kan kun inneholde siffer
+            </ErrorSummary.Item>
+          </ErrorSummary.List>
         </ErrorSummary>
       )}
     </>
