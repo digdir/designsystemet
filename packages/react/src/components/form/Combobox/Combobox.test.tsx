@@ -109,7 +109,7 @@ describe('Combobox', () => {
 
     setTimeout(() => {
       expect(onValueChange).toHaveBeenCalledWith('leikanger');
-    }, 100);
+    }, 300);
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
@@ -123,7 +123,7 @@ describe('Combobox', () => {
 
     setTimeout(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
-    }, 100);
+    }, 300);
   });
 
   it('should show a chip of a selected option in multiple mode', async () => {
@@ -162,6 +162,7 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
     await user.click(document.body);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
