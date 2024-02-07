@@ -61,26 +61,29 @@ const getPath = (href: string | undefined): string => {
 const components = {
   p: Paragraph,
   ol: (props: Props) => (
-    <List
-      {...props}
-      as='ol'
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
-    ></List>
+    <List.Root>
+      <List.Ordered
+        {...props}
+        style={{ maxWidth: '70ch' }}
+        className='sb-unstyled'
+      />
+    </List.Root>
   ),
   ul: (props: Props) => (
-    <List
-      {...props}
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
-    ></List>
+    <List.Root>
+      <List.Unordered
+        {...props}
+        style={{ maxWidth: '70ch' }}
+        className='sb-unstyled'
+      />
+    </List.Root>
   ),
   li: (props: Props) => (
-    <ListItem
+    <List.Item
       {...props}
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
-    ></ListItem>
+    ></List.Item>
   ),
   a: (props: LinkProps) => {
     // if link starts with /, add current path to link
