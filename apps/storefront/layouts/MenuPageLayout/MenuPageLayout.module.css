@@ -15,6 +15,7 @@
 .right {
   flex-basis: 600px;
   flex-grow: 500;
+  max-width: 100%;
 }
 
 .header {

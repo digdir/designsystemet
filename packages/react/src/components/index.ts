@@ -44,3 +44,4 @@ export * from './Box/Box';
 export * from './Card';
 export * from './form/Combobox';
 export * from './Table';
+export * from './ErrorSummary';
