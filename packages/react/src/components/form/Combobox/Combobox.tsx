@@ -269,6 +269,8 @@ export const Combobox = ({
     refs.domReference.current?.focus();
   };
 
+  const debouncedHandleSelectOption = useDebounce(handleSelectOption, 100);
+
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {
     if (formFieldProps.readOnly || disabled) return;
@@ -320,7 +322,7 @@ export const Combobox = ({
               }
             }
 
-            handleSelectOption(option as Option);
+            debouncedHandleSelectOption(option as Option);
           }
         }
         break;
@@ -393,7 +395,7 @@ export const Combobox = ({
           if (readOnly) return;
           if (disabled) return;
           const option = options.find((option) => option.value === value);
-          handleSelectOption(option as Option);
+          debouncedHandleSelectOption(option as Option);
         },
         chipSrLabel,
         listRef,
