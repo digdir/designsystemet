@@ -73,7 +73,7 @@ export const ComboboxOption = forwardRef<
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
 
-  const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 150);
+  const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
 
   return (
     <button

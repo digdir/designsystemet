@@ -269,7 +269,7 @@ export const Combobox = ({
     refs.domReference.current?.focus();
   };
 
-  const debouncedHandleSelectOption = useDebounce(handleSelectOption, 100);
+  const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
 
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {
