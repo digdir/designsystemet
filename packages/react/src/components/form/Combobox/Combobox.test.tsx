@@ -94,9 +94,9 @@ describe('Combobox', () => {
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await user.type(combobox, '{esc}');
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 3000);
+    await wait(100);
+
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
@@ -160,6 +160,7 @@ describe('Combobox', () => {
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
+    await wait(100);
     await userEvent.click(screen.getByText('Leikanger'));
     await userEvent.click(screen.getByText('Oslo'));
     await wait(500);
