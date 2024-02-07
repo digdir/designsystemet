@@ -42,6 +42,8 @@
       <div class="icon {size}">
         {@html icon}
       </div>
+    {:else}
+      <div class="icon {size}" style="display:none;"><svg /></div>
     {/if}
     <slot />
   </a>
@@ -108,7 +110,7 @@
     &.small {
       height: var(--fds-sizing-4);
       width: var(--fds-sizing-4);
-      & svg {
+      & > svg {
         height: var(--fds-sizing-4);
         width: var(--fds-sizing-4);
       }
@@ -116,7 +118,7 @@
     &.medium {
       height: var(--fds-sizing-6);
       width: var(--fds-sizing-6);
-      & svg {
+      & > svg {
         height: var(--fds-sizing-6);
         width: var(--fds-sizing-6);
       }
@@ -124,7 +126,7 @@
     &.large {
       height: var(--fds-sizing-8);
       width: var(--fds-sizing-8);
-      & svg {
+      & > svg {
         height: var(--fds-sizing-8);
         width: var(--fds-sizing-8);
       }
