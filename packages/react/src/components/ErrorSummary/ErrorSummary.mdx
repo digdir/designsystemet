@@ -11,6 +11,23 @@ import { ErrorSummary } from './';
 <Primary />
 <Controls />
 
+## Slik bruker du `ErrorSummary`
+
+`ErrorSummary.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`, `role='alert'`, osv.) mellom listen, tittel og alerten.
+Alle `ErrorSummary.Item` må ha en `href` for å kunne navigere til riktig sted i skjemaet.
+
+```tsx
+import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import { ErrorSummary } from '@digdir/design-system-react';
+
+<ErrorSummary.Root>
+  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+  <ErrorSummary.List>
+    <ErrorSummary.Item href='#'>Item</ErrorSummary.Item>
+  </ErrorSummary.List>
+</ErrorSummary.Root>;
+```
+
 ## Bruk med tekstfelt
 
 <Canvas of={ErrorSummaryStories.WithForm} />
