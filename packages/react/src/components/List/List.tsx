@@ -1,88 +1,44 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useId, useMemo } from 'react';
-import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
+import type { HTMLAttributes } from 'react';
+import { useState, forwardRef, createContext, useId } from 'react';
 
-import type { HeadingProps } from '../Typography';
-import { Heading, Paragraph } from '../Typography';
+type ListContextType = {
+  size: NonNullable<ListProps['size']>;
+  headingId?: string;
+  setHeadingId: (id: string) => void;
+};
 
-import classes from './List.module.css';
-
-const HEADING_SIZE_MAP: {
-  [key in NonNullable<ListProps['size']>]: HeadingProps['size'];
-} = {
-  small: 'xxsmall',
-  medium: 'xsmall',
-  large: 'small',
-} as const;
+export const ListContext = createContext<ListContextType>({
+  size: 'medium',
+  headingId: 'heading',
+  setHeadingId: () => {},
+});
 
 export type ListProps = {
-  /**
-   * The type of list to render.
-   * @default ul
-   */
-  as?: 'ul' | 'ol';
   /** Changes text sizing
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * Heading above the list
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
    */
-  heading?: ReactNode;
-  /**
-   * Level of the heading
-   * @default 2
-   */
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  /**
-   * Id of the heading
-   */
-  headingId?: string;
+  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const List = forwardRef<HTMLDivElement, ListProps>(
-  (
-    {
-      children,
-      as = 'ul',
-      size = 'medium',
-      heading,
-      headingLevel = 2,
-      headingId,
-      ...rest
-    },
-    ref,
-  ) => {
-    const hId = useId();
-    const headId = headingId ?? `${hId}-heading`;
-
-    const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
+  ({ asChild, size = 'medium', ...rest }, ref) => {
+    const randomId = useId();
+    const [headingId, setHeadingId] = useState<string>(randomId);
+    const Component = asChild ? Slot : 'div';
 
     return (
-      <div
-        {...rest}
-        ref={ref}
-      >
-        {heading && (
-          <Heading
-            size={headingSize}
-            level={headingLevel}
-            id={headId}
-            className={classes.heading}
-          >
-            {heading}
-          </Heading>
-        )}
-        <Paragraph
-          as={as}
-          size={size}
-          className={cl(classes.list)}
-          role='list'
-          {...(heading ? { 'aria-labelledby': headId } : {})}
-        >
-          {children}
-        </Paragraph>
-      </div>
+      <ListContext.Provider value={{ size, headingId, setHeadingId }}>
+        <Component
+          ref={ref}
+          {...rest}
+        />
+      </ListContext.Provider>
     );
   },
 );

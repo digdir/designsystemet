@@ -1,19 +1,19 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { ListProps } from './List';
-import { List } from './List';
-import { ListItem } from './ListItem';
+
+import { List } from '.';
 
 const render = (props: Partial<ListProps> = {}) => {
   const allProps: ListProps = {
     children: (
-      <>
-        <ListItem>Test</ListItem>
-      </>
+      <List.Unordered>
+        <List.Item>Test</List.Item>
+      </List.Unordered>
     ),
     ...props,
   };
-  return renderRtl(<List {...allProps} />);
+  return renderRtl(<List.Root {...allProps} />);
 };
 
 describe('List', () => {
@@ -30,7 +30,13 @@ describe('List', () => {
   });
 
   it('Renders an ordered list', () => {
-    render({ as: 'ol' });
+    render({
+      children: (
+        <List.Ordered>
+          <List.Item>Test</List.Item>
+        </List.Ordered>
+      ),
+    });
     const list = document.querySelector('ol');
     expect(list).toBeInTheDocument();
   });
@@ -46,12 +52,21 @@ describe('List', () => {
   });
 
   it('should have the passed heading', () => {
-    render({ heading: 'Test' });
+    render({
+      children: <List.Heading>Heading</List.Heading>,
+    });
     expect(screen.getByRole('heading')).toBeInTheDocument();
   });
 
   it('should have aria-labelledby when heading is passed', () => {
-    render({ heading: 'Test' });
+    render({
+      children: (
+        <>
+          <List.Heading>Heading</List.Heading>
+          <List.Ordered></List.Ordered>
+        </>
+      ),
+    });
     expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
   });
 });
