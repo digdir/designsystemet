@@ -24,6 +24,7 @@ import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
+import useDebounce from '../../../utilities/useDebounce';
 
 import type { Option } from './useCombobox';
 import useCombobox, { isComboboxOption } from './useCombobox';
@@ -533,30 +534,3 @@ type ComboboxContextType = {
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(
   undefined,
 );
-
-type DebounceFunction<T> = (...args: T[]) => void;
-
-function useDebounce<T>(callback: DebounceFunction<T>, delay = 50) {
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    // Cleanup the previous timeout on re-render
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
-
-  const debouncedCallback = (...args: T[]) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    timeoutRef.current = setTimeout(() => {
-      callback(...args);
-    }, delay);
-  };
-
-  return debouncedCallback;
-}
