@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
-import { useState, forwardRef, createContext, useId } from 'react';
+import { useState, forwardRef, createContext } from 'react';
 
 type ListContextType = {
   size: NonNullable<ListProps['size']>;
@@ -28,8 +28,7 @@ export type ListProps = {
 
 export const List = forwardRef<HTMLDivElement, ListProps>(
   ({ asChild, size = 'medium', ...rest }, ref) => {
-    const randomId = useId();
-    const [headingId, setHeadingId] = useState<string>(randomId);
+    const [headingId, setHeadingId] = useState<string>();
     const Component = asChild ? Slot : 'div';
 
     return (

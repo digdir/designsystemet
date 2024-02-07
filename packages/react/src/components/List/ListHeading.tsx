@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useMemo, useContext } from 'react';
+import { forwardRef, useEffect, useMemo, useContext, useId } from 'react';
 
 import { Heading, type HeadingProps } from '../Typography';
 
@@ -18,14 +18,16 @@ export type ListHeadingProps = HeadingProps;
 export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(
   ({ level = 2, id, ...rest }, ref) => {
     const { size, headingId, setHeadingId } = useContext(ListContext);
+    const randomId = useId();
+    const headingId_ = id ?? randomId;
 
     const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
     useEffect(() => {
-      if (id && headingId !== id) {
-        setHeadingId(id);
+      if (headingId !== headingId_) {
+        setHeadingId(headingId_);
       }
-    }, [headingId, id, setHeadingId]);
+    }, [headingId, id, setHeadingId, headingId_]);
 
     return (
       <Heading
