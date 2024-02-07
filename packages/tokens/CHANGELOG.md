@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-tokens@0.12.0...@digdir/design-system-tokens@0.13.0) (2024-02-07)
+
+### Features
+
+- **tokens:** added f6 and f7 to the typography scale ([#1374](https://github.com/digdir/designsystemet/issues/1374)) ([ba945f9](https://github.com/digdir/designsystemet/commit/ba945f90afd6ae4040d734c92ba50ac7f33ec290))
+- **tokens:** added surface focus color ([#1445](https://github.com/digdir/designsystemet/issues/1445)) ([c81cb5d](https://github.com/digdir/designsystemet/commit/c81cb5d6e54b5764d6093a924804ab85181764a0))
+
 # [0.12.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-tokens@0.11.2...@digdir/design-system-tokens@0.12.0) (2024-01-10)
 
 ### Features

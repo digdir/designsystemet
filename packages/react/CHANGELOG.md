@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.48.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.47.0...@digdir/design-system-react@0.48.0) (2024-02-07)
+
+### Bug Fixes
+
+- **Button:** :bug: Passed `className` should now override correctly ([#1442](https://github.com/digdir/designsystemet/issues/1442)) ([5a1d463](https://github.com/digdir/designsystemet/commit/5a1d463131f7c6e81a36b457b94eab33322412f7))
+- **Table:** :label: Fix types ([#1500](https://github.com/digdir/designsystemet/issues/1500)) ([c962f22](https://github.com/digdir/designsystemet/commit/c962f22b7b56a3bf980e6ccd747e8e0d30ac4325))
+
+### Features
+
+- **Button:** Add `asChild` support to `Button` ([#1463](https://github.com/digdir/designsystemet/issues/1463)) ([87d43f6](https://github.com/digdir/designsystemet/commit/87d43f6ef612243f92ecf5a381b2063a1c2db913))
+- **Button:** Change `icon` to boolean and remove `iconPlacement` ([#1413](https://github.com/digdir/designsystemet/issues/1413)) ([98d0610](https://github.com/digdir/designsystemet/commit/98d06108e4e7954feac410178bf81abed3b5f6c5))
+- **Card:** Add support for changing element type with `asChild` ([#1323](https://github.com/digdir/designsystemet/issues/1323)) ([d35f56e](https://github.com/digdir/designsystemet/commit/d35f56ef5b2319859e0383b2d07dd6e4180f6a58))
+- **DropdownMenu:** Add `DropdownMenu.Trigger` ([#1416](https://github.com/digdir/designsystemet/issues/1416)) ([428b092](https://github.com/digdir/designsystemet/commit/428b0929d54d4b6d8cd155e0ab9dd27517299191))
+- **ErrorMessage:** Add `asChild` support to `ErrorMessage` ([#1467](https://github.com/digdir/designsystemet/issues/1467)) ([25ee917](https://github.com/digdir/designsystemet/commit/25ee917e1acbfbf3c4465141f4ac6f996ecc5bef))
+- **ErrorSummary:** ✨ Make the component ([#1392](https://github.com/digdir/designsystemet/issues/1392)) ([a33ff7c](https://github.com/digdir/designsystemet/commit/a33ff7c8077c1c07acc027de1b36fa9ad50ef77f))
+- **Heading:** Add `asChild` support to `Heading` ([#1459](https://github.com/digdir/designsystemet/issues/1459)) ([dda21d2](https://github.com/digdir/designsystemet/commit/dda21d2bf050538ca0b38418391cd14cf903aeb6))
+- **Ingress:** Add `asChild` support to `Ingress` ([#1460](https://github.com/digdir/designsystemet/issues/1460)) ([4f96d58](https://github.com/digdir/designsystemet/commit/4f96d58531726d2dd296a0772f061e7013726430))
+- **Label:** Add `asChild` support to `Label` ([#1461](https://github.com/digdir/designsystemet/issues/1461)) ([fa2e961](https://github.com/digdir/designsystemet/commit/fa2e961185d798039c1c54cc1e584dc75ca2a326))
+- **Link:** Add `asChild` support to `Link` ([#1458](https://github.com/digdir/designsystemet/issues/1458)) ([54b1dab](https://github.com/digdir/designsystemet/commit/54b1dab8cbed2c5ce4d1030b7465c761dc2a79b1))
+- **List:** Change component API ([#1400](https://github.com/digdir/designsystemet/issues/1400)) ([55d8795](https://github.com/digdir/designsystemet/commit/55d87951a270c8449216260cb70e61940fd71293))
+- **Paragraph:** Add `asChild` support to `Paragraph` ([#1462](https://github.com/digdir/designsystemet/issues/1462)) ([c886f65](https://github.com/digdir/designsystemet/commit/c886f652e7062e2bff7148cdc4603c851654a50d))
+- **Popover:** Add `Popover.Trigger` ([#1406](https://github.com/digdir/designsystemet/issues/1406)) ([33c693b](https://github.com/digdir/designsystemet/commit/33c693b7190253368d156273a17442e7603f83b2))
+- **RovingTabindexItem:** Add `asChild` support to `RovingTabindexItem` ([#1468](https://github.com/digdir/designsystemet/issues/1468)) ([8f21be3](https://github.com/digdir/designsystemet/commit/8f21be38dff97d8c1103547d651a77e80b537402))
+- **RovingTabindexRoot:** Add `asChild` support to `RovingTabindexRoot` ([#1469](https://github.com/digdir/designsystemet/issues/1469)) ([c766926](https://github.com/digdir/designsystemet/commit/c7669267312cd583d0e79f196822d4491dcd5bc8))
+- **Tabs:** Remove `icon` prop ([#1418](https://github.com/digdir/designsystemet/issues/1418)) ([75777db](https://github.com/digdir/designsystemet/commit/75777dbc963329ae4e2201de59304786bc6ef6ff))
+
 # [0.47.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.1...@digdir/design-system-react@0.47.0) (2024-01-23)
 
 ### Bug Fixes
