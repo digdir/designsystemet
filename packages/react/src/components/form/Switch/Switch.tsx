@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
@@ -81,52 +81,58 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
     return (
       <Paragraph
-        as='div'
+        asChild
         size={size}
-        className={cl(
-          classes.switch,
-          classes[size],
-          inputProps.disabled && classes.disabled,
-          readOnly && classes.readonly,
-          position === 'right' && classes.right,
-          !children && classes.noLabel,
-          className,
-        )}
       >
-        <input
-          className={classes.input}
-          ref={ref}
-          {...omit(['size', 'error'], rest)}
-          {...inputProps}
-        />
-        <SwitchIcon className={classes.icon} />
+        <div
+          className={cl(
+            classes.switch,
+            classes[size],
+            inputProps.disabled && classes.disabled,
+            readOnly && classes.readonly,
+            position === 'right' && classes.right,
+            !children && classes.noLabel,
+            className,
+          )}
+        >
+          <input
+            className={classes.input}
+            ref={ref}
+            {...omit(['size', 'error'], rest)}
+            {...inputProps}
+          />
+          <SwitchIcon className={classes.icon} />
 
-        {children && (
-          <Label
-            className={classes.label}
-            htmlFor={inputProps.id}
-            size={size}
-            weight='regular'
-          >
-            {readOnly && (
-              <PadlockLockedFillIcon
-                aria-hidden
-                className={classes.padlock}
-              />
-            )}
-            <span>{children}</span>
-          </Label>
-        )}
-        {description && (
-          <Paragraph
-            id={descriptionId}
-            as='div'
-            size={size}
-            className={classes.description}
-          >
-            {description}
-          </Paragraph>
-        )}
+          {children && (
+            <Label
+              className={classes.label}
+              htmlFor={inputProps.id}
+              size={size}
+              weight='regular'
+            >
+              {readOnly && (
+                <PadlockLockedFillIcon
+                  aria-hidden
+                  className={classes.padlock}
+                />
+              )}
+              <span>{children}</span>
+            </Label>
+          )}
+          {description && (
+            <Paragraph
+              asChild
+              size={size}
+            >
+              <div
+                id={descriptionId}
+                className={classes.description}
+              >
+                {description}
+              </div>
+            </Paragraph>
+          )}
+        </div>
       </Paragraph>
     );
   },

@@ -1,5 +1,5 @@
 import type { ReactNode, TextareaHTMLAttributes } from 'react';
-import React, { useState, forwardRef } from 'react';
+import { useState, forwardRef } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
@@ -75,78 +75,84 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <Paragraph
-        as='div'
+        asChild
         size={size}
-        style={style}
-        className={cl(
-          classes.formField,
-          textareaProps.disabled && classes.disabled,
-          readOnly && classes.readonly,
-          className,
-        )}
       >
-        {label && (
-          <Label
-            size={size}
-            weight='medium'
-            htmlFor={textareaProps.id}
-            className={cl(
-              classes.label,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
-          >
-            {readOnly && (
-              <PadlockLockedFillIcon
-                aria-hidden
-                className={classes.padlock}
-              />
-            )}
-            <span>{label}</span>
-          </Label>
-        )}
-        {description && (
-          <Paragraph
-            id={descriptionId}
-            as='div'
-            size={size}
-            className={cl(
-              classes.description,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
-          >
-            {description}
-          </Paragraph>
-        )}
-        <textarea
-          className={cl(
-            classes.textarea,
-            utilityClasses.focusable,
-            classes[size],
-          )}
-          ref={ref}
-          aria-describedby={describedBy}
-          {...omit(['size', 'error', 'errorId'], rest)}
-          {...textareaProps}
-          onChange={(e) => {
-            textareaProps?.onChange?.(e);
-            setValue(e.target.value);
-          }}
-        />
-        {hasCharacterLimit && (
-          <CharacterCounter
-            size={size}
-            value={value ? value.toString() : ''}
-            id={characterLimitId}
-            {...characterLimit}
-          />
-        )}
         <div
-          className={classes.errorMessage}
-          id={errorId}
-          aria-live='polite'
-          aria-relevant='additions removals'
+          style={style}
+          className={cl(
+            classes.formField,
+            textareaProps.disabled && classes.disabled,
+            readOnly && classes.readonly,
+            className,
+          )}
         >
-          {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+          {label && (
+            <Label
+              size={size}
+              weight='medium'
+              htmlFor={textareaProps.id}
+              className={cl(
+                classes.label,
+                hideLabel && utilityClasses.visuallyHidden,
+              )}
+            >
+              {readOnly && (
+                <PadlockLockedFillIcon
+                  aria-hidden
+                  className={classes.padlock}
+                />
+              )}
+              <span>{label}</span>
+            </Label>
+          )}
+          {description && (
+            <Paragraph
+              asChild
+              size={size}
+            >
+              <div
+                id={descriptionId}
+                className={cl(
+                  classes.description,
+                  hideLabel && utilityClasses.visuallyHidden,
+                )}
+              >
+                {description}
+              </div>
+            </Paragraph>
+          )}
+          <textarea
+            className={cl(
+              classes.textarea,
+              utilityClasses.focusable,
+              classes[size],
+            )}
+            ref={ref}
+            aria-describedby={describedBy}
+            {...omit(['size', 'error', 'errorId'], rest)}
+            {...textareaProps}
+            onChange={(e) => {
+              textareaProps?.onChange?.(e);
+              setValue(e.target.value);
+            }}
+          />
+          {hasCharacterLimit && (
+            <CharacterCounter
+              size={size}
+              value={value ? value.toString() : ''}
+              id={characterLimitId}
+              {...characterLimit}
+            />
+          )}
+          <div
+            className={classes.errorMessage}
+            id={errorId}
+            aria-live='polite'
+            aria-relevant='additions removals'
+          >
+            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+          </div>
         </div>
       </Paragraph>
     );

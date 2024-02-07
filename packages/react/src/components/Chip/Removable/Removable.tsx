@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import React, { useContext, forwardRef } from 'react';
+import { useContext, forwardRef } from 'react';
 import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
@@ -34,17 +34,18 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         {...rest}
       >
         <Paragraph
-          as='span'
+          asChild
           size={group?.size || size}
-          className={classes.label}
           short
         >
-          <span>{children}</span>
-          <span
-            className={classes.xMark}
-            aria-hidden
-          >
-            <XMarkIcon className={classes.icon} />
+          <span className={classes.label}>
+            <span>{children}</span>
+            <span
+              className={classes.xMark}
+              aria-hidden
+            >
+              <XMarkIcon className={classes.icon} />
+            </span>
           </span>
         </Paragraph>
       </button>

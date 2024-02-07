@@ -1,4 +1,5 @@
-import React, { forwardRef, useContext, useId } from 'react';
+import { forwardRef, useContext, useId } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 
 import { Paragraph } from '../../Typography';
@@ -34,12 +35,15 @@ export const DropdownMenuGroup = forwardRef<
       >
         {heading && (
           <Paragraph
-            as='h2'
-            id={headingId}
+            asChild
             size={size}
-            className={cl(classes.heading)}
           >
-            {heading}
+            <h2
+              id={headingId}
+              className={cl(classes.heading)}
+            >
+              {heading}
+            </h2>
           </Paragraph>
         )}
         {children}
@@ -47,5 +51,3 @@ export const DropdownMenuGroup = forwardRef<
     </li>
   );
 });
-
-DropdownMenuGroup.displayName = 'Dropdown.Group';

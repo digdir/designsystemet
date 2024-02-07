@@ -5,7 +5,8 @@
     "declarationDir": "./dist/types",
     "emitDeclarationOnly": false,
     "composite": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noEmit": false
   },
   "include": ["./src", "declarations.d.ts"],
   "rootDir": "./src"

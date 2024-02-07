@@ -4,7 +4,7 @@ import {
   ChevronUpDownIcon,
 } from '@navikt/aksel-icons';
 import type { AriaAttributes } from 'react';
-import React from 'react';
+import * as React from 'react';
 import cl from 'clsx';
 
 import utilityClasses from '../../utilities/utility.module.css';
@@ -32,7 +32,7 @@ export type TableHeaderCellProps = {
    * @default undefined
    */
   onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-} & React.HTMLAttributes<HTMLTableCellElement>;
+} & React.ThHTMLAttributes<HTMLTableCellElement>;
 
 export const TableHeaderCell = React.forwardRef<
   HTMLTableCellElement,

@@ -1,5 +1,5 @@
 import type { ForwardedRef, ChangeEvent } from 'react';
-import React, { forwardRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import cl from 'clsx';
 import type {
   NumericFormatProps,
@@ -81,10 +81,10 @@ type ReplaceTargetValueWithUnformattedValueProps = {
 const replaceTargetValueWithUnformattedValue = ({
   values,
   sourceInfo,
-}: ReplaceTargetValueWithUnformattedValueProps): React.ChangeEvent<HTMLInputElement> => {
+}: ReplaceTargetValueWithUnformattedValueProps): ChangeEvent<HTMLInputElement> => {
   const copiedEvent = {
     ...sourceInfo.event,
-  } as React.ChangeEvent<HTMLInputElement>;
+  } as ChangeEvent<HTMLInputElement>;
 
   return {
     ...copiedEvent,

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import cl from 'clsx';
 import { Heading, Paragraph } from '@digdir/design-system-react';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';

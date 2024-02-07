@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 import * as akselIcons from '@navikt/aksel-icons';
@@ -41,13 +40,15 @@ export const Preview: Story = {
 };
 
 export const UsedAsLink: StoryFn<typeof Button> = () => (
-  <Button
-    as='a'
-    target='_blank'
-    href='https://www.designsystemet.no'
-  >
-    <akselIcons.PersonChatIcon />
-    Gå til Designsystemet
+  <Button asChild>
+    <a
+      target='_blank'
+      rel='noreferrer'
+      href='https://www.designsystemet.no'
+    >
+      <akselIcons.PersonChatIcon />
+      Gå til Designsystemet
+    </a>
   </Button>
 );
 
@@ -160,7 +161,9 @@ export const WithIcon: StoryFn<typeof Button> = () => (
       color='second'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
       icon={true}
       color='success'

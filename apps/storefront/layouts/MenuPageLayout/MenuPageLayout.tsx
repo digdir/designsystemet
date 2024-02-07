@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { useRouter } from 'next/router';
 
 import GithubLink from 'components/Link/Github/GithubLink';

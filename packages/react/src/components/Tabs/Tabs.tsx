@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useState } from 'react';
+import { createContext, forwardRef, useState } from 'react';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */

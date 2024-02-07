@@ -2,7 +2,7 @@ import { Heading, Link } from '@digdir/design-system-react';
 import type { HeadingProps } from '@digdir/design-system-react';
 import { LinkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
-import React from 'react';
+import type * as React from 'react';
 
 import classes from './LinkHeading.module.css';
 

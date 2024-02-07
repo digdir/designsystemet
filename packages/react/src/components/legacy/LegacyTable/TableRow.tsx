@@ -1,5 +1,4 @@
-import type { HTMLProps } from 'react';
-import React from 'react';
+import type { ReactNode, HTMLProps } from 'react';
 import cl from 'clsx';
 
 import classes from './TableRow.module.css';
@@ -10,7 +9,7 @@ export interface TableRowProps<T>
     HTMLProps<HTMLTableRowElement>,
     'onClick' | 'tabIndex' | 'onKeyUp'
   > {
-  children?: React.ReactNode;
+  children?: ReactNode;
   rowData?: T;
 }
 

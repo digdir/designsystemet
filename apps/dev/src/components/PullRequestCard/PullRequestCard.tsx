@@ -1,9 +1,9 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 
 import classes from './PullRequestCard.module.css';
 
 type PullRequestCardProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
   user: string;
   userAvatar: string;

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React, { forwardRef, createContext, useId } from 'react';
+import { forwardRef, createContext, useId } from 'react';
 import cl from 'clsx';
 
 import type { FieldsetProps } from '../../Fieldset';

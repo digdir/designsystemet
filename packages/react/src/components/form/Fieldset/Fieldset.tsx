@@ -1,5 +1,5 @@
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import React, { useContext, forwardRef, createContext } from 'react';
+import { useContext, forwardRef, createContext } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
@@ -74,33 +74,39 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {...rest}
         >
           <Label
-            as='legend'
+            asChild
             size={size}
-            className={cl(
-              classes.legend,
-              hideLegend && utilityclasses.visuallyHidden,
-            )}
           >
-            {readOnly && (
-              <PadlockLockedFillIcon
-                className={classes.padlock}
-                aria-hidden
-              />
-            )}
-            {legend}
+            <legend
+              className={cl(
+                classes.legend,
+                hideLegend && utilityclasses.visuallyHidden,
+              )}
+            >
+              {readOnly && (
+                <PadlockLockedFillIcon
+                  className={classes.padlock}
+                  aria-hidden
+                />
+              )}
+              {legend}
+            </legend>
           </Label>
           {description && (
             <Paragraph
-              id={descriptionId}
-              className={cl(
-                classes.description,
-                hideLegend && utilityclasses.visuallyHidden,
-              )}
               size={size}
-              as='div'
+              asChild
               short
             >
-              {description}
+              <div
+                id={descriptionId}
+                className={cl(
+                  classes.description,
+                  hideLegend && utilityclasses.visuallyHidden,
+                )}
+              >
+                {description}
+              </div>
             </Paragraph>
           )}
           {children}

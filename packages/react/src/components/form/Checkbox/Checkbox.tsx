@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 
 import { omit } from '../../../utilities';
@@ -30,41 +30,47 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <Paragraph
-        as='div'
+        asChild
         size={size}
-        className={cl(
-          classes.container,
-          classes[size],
-          inputProps.disabled && classes.disabled,
-          hasError && classes.error,
-          readOnly && classes.readonly,
-          className,
-        )}
       >
-        <input
-          className={classes.input}
-          ref={ref}
-          {...omit(['size', 'error'], rest)}
-          {...inputProps}
-        />
-        <Label
-          className={classes.label}
-          htmlFor={inputProps.id}
-          size={size}
-          weight='regular'
+        <div
+          className={cl(
+            classes.container,
+            classes[size],
+            inputProps.disabled && classes.disabled,
+            hasError && classes.error,
+            readOnly && classes.readonly,
+            className,
+          )}
         >
-          <span>{children}</span>
-        </Label>
-        {description && (
-          <Paragraph
-            id={descriptionId}
-            as='div'
+          <input
+            className={classes.input}
+            ref={ref}
+            {...omit(['size', 'error'], rest)}
+            {...inputProps}
+          />
+          <Label
+            className={classes.label}
+            htmlFor={inputProps.id}
             size={size}
-            className={classes.description}
+            weight='regular'
           >
-            {description}
-          </Paragraph>
-        )}
+            <span>{children}</span>
+          </Label>
+          {description && (
+            <Paragraph
+              asChild
+              size={size}
+            >
+              <div
+                id={descriptionId}
+                className={classes.description}
+              >
+                {description}
+              </div>
+            </Paragraph>
+          )}
+        </div>
       </Paragraph>
     );
   },

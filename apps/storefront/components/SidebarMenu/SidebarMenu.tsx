@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import cl from 'clsx';
 import { Button } from '@digdir/design-system-react';

@@ -1,6 +1,6 @@
 import cl from 'clsx';
-import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useState, useId } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
+import { createContext, forwardRef, useState, useId } from 'react';
 
 import classes from '../Accordion.module.css';
 
@@ -14,7 +14,7 @@ export type AccordionItemProps = {
   /**  Defaults the accordion to open if not controlled */
   defaultOpen?: boolean;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
-  children: React.ReactNode;
+  children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
 export type AccordionItemContextProps = {

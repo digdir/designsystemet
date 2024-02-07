@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import cl from 'clsx';
 
 import classes from './Table.module.css';
 
-export type TableCellProps = React.HTMLAttributes<HTMLTableCellElement>;
+export type TableCellProps = React.TdHTMLAttributes<HTMLTableCellElement>;
 
 export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
   ({ className, children, ...rest }, ref) => {

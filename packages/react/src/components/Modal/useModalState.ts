@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export const useModalState = (modalRef: React.RefObject<HTMLDialogElement>) => {
   const [isOpen, setIsOpen] = React.useState(false);

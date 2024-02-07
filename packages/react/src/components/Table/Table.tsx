@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import cl from 'clsx';
 
 import { Paragraph } from '../Typography';
@@ -26,7 +26,7 @@ export type TableProps = {
    * @default false
    */
   border?: boolean;
-} & React.HTMLAttributes<HTMLTableElement>;
+} & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   (
@@ -43,20 +43,23 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   ) => {
     return (
       <Paragraph
-        as='table'
-        ref={ref}
+        asChild
         size={size}
-        className={cl(
-          classes[size],
-          zebra && classes.zebra,
-          stickyHeader && classes.stickyHeader,
-          border && classes.border,
-          classes.table,
-          className,
-        )}
-        {...rest}
       >
-        {children}
+        <table
+          ref={ref}
+          className={cl(
+            classes[size],
+            zebra && classes.zebra,
+            stickyHeader && classes.stickyHeader,
+            border && classes.border,
+            classes.table,
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </table>
       </Paragraph>
     );
   },

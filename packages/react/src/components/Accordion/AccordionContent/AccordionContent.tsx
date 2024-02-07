@@ -1,6 +1,6 @@
 import cl from 'clsx';
-import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { AnimateHeight } from '../../../utilities/AnimateHeight';
 import { Paragraph } from '../../..';
@@ -9,7 +9,7 @@ import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionContentProps = {
   /** Content inside `Accordion.Content`*/
-  children: React.ReactNode;
+  children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const AccordionContent = forwardRef<
@@ -31,13 +31,16 @@ export const AccordionContent = forwardRef<
       open={context.open}
     >
       <Paragraph
-        as='div'
+        asChild
         size='small'
-        ref={ref}
-        className={cl(classes.content, className)}
-        {...rest}
       >
-        {children}
+        <div
+          ref={ref}
+          className={cl(classes.content, className)}
+          {...rest}
+        >
+          {children}
+        </div>
       </Paragraph>
     </AnimateHeight>
   );

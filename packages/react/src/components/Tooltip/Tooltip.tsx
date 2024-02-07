@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react';
-import React, { cloneElement, forwardRef, useState } from 'react';
+import { cloneElement, forwardRef, useState } from 'react';
+import * as React from 'react';
 import cl from 'clsx';
 import {
   useFloating,

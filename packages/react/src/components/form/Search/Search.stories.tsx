@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 

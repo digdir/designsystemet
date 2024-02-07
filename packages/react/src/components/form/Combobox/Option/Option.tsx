@@ -1,10 +1,5 @@
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useId,
-  useMemo,
-} from 'react';
+import { forwardRef, useContext, useEffect, useId, useMemo } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 import { useMergeRefs } from '@floating-ui/react';
 
@@ -108,13 +103,15 @@ export const ComboboxOption = forwardRef<
       {...omit(['displayValue'], rest)}
     >
       <Label
-        as='span'
+        asChild
         size={size}
       >
-        <SelectedIcon
-          multiple={multiple}
-          selected={!!selected}
-        />
+        <span>
+          <SelectedIcon
+            multiple={multiple}
+            selected={!!selected}
+          />
+        </span>
       </Label>
       <Label
         className={classes.optionText}

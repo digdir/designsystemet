@@ -1,5 +1,5 @@
-import type { KeyboardEventHandler } from 'react';
-import React, { useEffect, useId, useRef, useState } from 'react';
+import type { ReactNode, KeyboardEventHandler } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import cl from 'clsx';
 
 import { useUpdate } from '../../../hooks';
@@ -9,7 +9,7 @@ import classes from './Tabs.module.css';
 
 export interface LegacyTabItem {
   name: string;
-  content: React.ReactNode;
+  content: ReactNode;
   tabId?: string;
   panelId?: string;
   value?: string;

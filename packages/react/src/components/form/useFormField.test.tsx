@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import React from 'react';
 import { renderHook } from '@testing-library/react';
 
 import type { FieldsetProps } from './Fieldset';

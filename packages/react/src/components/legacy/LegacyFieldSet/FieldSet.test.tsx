@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import type { RefObject } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
