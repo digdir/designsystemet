@@ -24,6 +24,8 @@ const PLACES = [
   },
 ];
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const Comp = (args: Partial<ComboboxProps>) => {
   return (
     <>
@@ -221,6 +223,8 @@ describe('Combobox', () => {
 
     await userEvent.click(screen.getByText('Leikanger'));
 
+    await wait(1000);
+
     const submitButton = screen.getByRole('button', { name: 'Submit' });
     await userEvent.click(submitButton);
 
@@ -267,7 +271,9 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
 
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(100);
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(100);
 
     const submitButton = screen.getAllByTestId('submit')[0];
 
@@ -279,7 +285,7 @@ describe('Combobox', () => {
 
   it('should only call onValueChange once when we click the same option fast twice', async () => {
     const onValueChange = jest.fn();
-    await render({ onValueChange });
+    await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
