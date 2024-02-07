@@ -132,6 +132,7 @@ describe('Combobox', () => {
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(500);
     await user.click(document.body);
 
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
@@ -143,6 +144,7 @@ describe('Combobox', () => {
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(500);
     await user.click(document.body);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
@@ -163,6 +165,8 @@ describe('Combobox', () => {
     await user.click(document.body);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
+
+    await wait(1000);
 
     // get clear button by its classname .clearButton
     const buttons = screen.getAllByRole('button');
