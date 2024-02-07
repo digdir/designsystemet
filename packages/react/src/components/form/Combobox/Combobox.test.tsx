@@ -81,9 +81,8 @@ describe('Combobox', () => {
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await user.click(document.body);
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 3000);
+    await wait(300);
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should close when we click Escape', async () => {
@@ -107,9 +106,8 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
 
-    setTimeout(() => {
-      expect(onValueChange).toHaveBeenCalledWith('leikanger');
-    }, 300);
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith('leikanger');
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
@@ -121,9 +119,8 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await userEvent.click(screen.getByText('Oslo'));
 
-    setTimeout(() => {
-      expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
-    }, 300);
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
   });
 
   it('should show a chip of a selected option in multiple mode', async () => {
@@ -149,9 +146,8 @@ describe('Combobox', () => {
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Leikanger'));
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 1000);
+    await wait(500);
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should remove all values when we click on the clear button', async () => {
@@ -162,13 +158,13 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
     await wait(100);
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(500);
     await userEvent.click(screen.getByText('Oslo'));
     await wait(500);
     await user.click(document.body);
+    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
-
-    await wait(1000);
 
     // get clear button by its classname .clearButton
     const buttons = screen.getAllByRole('button');
