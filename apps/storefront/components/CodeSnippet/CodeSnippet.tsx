@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import prettier from 'prettier/standalone.js';

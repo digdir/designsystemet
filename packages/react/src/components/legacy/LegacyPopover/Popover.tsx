@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react';
-import React, {
+import type React from 'react';
+import {
   useRef,
   useState,
   useMemo,

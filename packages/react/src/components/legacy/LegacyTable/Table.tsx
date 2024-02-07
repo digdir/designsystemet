@@ -1,5 +1,4 @@
-import type { HTMLProps } from 'react';
-import React from 'react';
+import type { ReactNode, HTMLProps } from 'react';
 import cl from 'clsx';
 
 import classes from './Table.module.css';
@@ -8,7 +7,7 @@ import { TableContext } from './utils';
 
 export interface TableProps<T = unknown>
   extends Omit<HTMLProps<HTMLTableElement>, 'onChange'> {
-  children?: React.ReactNode;
+  children?: ReactNode;
   selectRows?: boolean;
   onChange?: ChangeHandler<T>;
   selectedValue?: T;

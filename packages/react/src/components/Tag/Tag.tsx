@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 
 import type { ParagraphProps } from '../Typography';
@@ -35,13 +35,16 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
   ) => {
     return (
       <Paragraph
-        as='span'
+        asChild
         size={size}
-        className={cl(classes.tag, classes[color], classes[size], className)}
-        ref={ref}
-        {...rest}
       >
-        {children}
+        <span
+          className={cl(classes.tag, classes[color], classes[size], className)}
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </span>
       </Paragraph>
     );
   },

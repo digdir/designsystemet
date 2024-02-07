@@ -1,41 +1,10 @@
 import type { Placement } from '@floating-ui/react';
-import {
-  useFloating,
-  offset,
-  shift,
-  flip,
-  autoUpdate,
-  useClick,
-  useFocus,
-  useDismiss,
-  arrow,
-  useInteractions,
-  useMergeRefs,
-  useRole,
-  FloatingPortal,
-} from '@floating-ui/react';
-import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useMemo, useRef } from 'react';
-import cl from 'clsx';
+import { useRef } from 'react';
+import * as React from 'react';
 
-import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
-import { Paragraph } from '../Typography';
 import type { PortalProps } from '../../types/Portal';
 
-import classes from './Popover.module.css';
-
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
-const ARROW_PLACEMENT: Record<string, 'top' | 'left' | 'bottom' | 'right'> = {
-  top: 'bottom',
-  right: 'left',
-  bottom: 'top',
-  left: 'right',
-};
-
 export type PopoverProps = {
-  /** Element the popover anchors to */
-  anchorEl: Element | null;
   /**
    * Placement of the tooltip on the trigger.
    * @default top
@@ -46,131 +15,90 @@ export type PopoverProps = {
    * @default default
    */
   variant?: 'default' | 'info' | 'warning' | 'danger';
-  /** Whether the tooltip is open or not.
-   * This overrides the internal state of the tooltip.
+  /**
+   * Use this to make the popover controlled.
+   * @default undefined
    */
   open?: boolean;
   /** Size of the popover
-   * @default small
+   * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-  /** Callback function when popover closes */
+  /** Element the popover anchors to
+   * @deprecated Use `Popover.Trigger` instead
+   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/felles-popover--docs)
+   */
+  anchorEl?: Element | null;
+  /** Callback function when popover changes open state */
+  onOpenChange?: (open: boolean) => void;
+  /**
+   * Callback when the popover wants to close.
+   */
   onClose?: () => void;
-} & PortalProps &
-  HTMLAttributes<HTMLDivElement>;
+  children: React.ReactNode;
+} & PortalProps;
 
-export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
-  (
-    {
-      children,
-      placement = 'top',
-      open,
-      anchorEl,
-      variant = 'default',
-      size = 'small',
-      onClose,
-      portal,
-      className,
-      style,
-      ...rest
-    },
-    ref,
-  ) => {
-    const Container = portal ? FloatingPortal : React.Fragment;
-    const arrowRef = useRef<HTMLDivElement>(null);
-    const floatingEl = useRef<HTMLDivElement>(null);
+export const Popover = ({
+  children,
+  placement = 'top',
+  open,
+  variant = 'default',
+  size = 'medium',
+  portal,
+  onOpenChange,
+  onClose,
+  ...rest
+}: PopoverProps) => {
+  const triggerRef = useRef<Element>(null);
+  const [internalOpen, setInternalOpen] = React.useState(open ?? false);
 
-    const {
-      context,
-      update,
-      refs,
-      floatingStyles,
-      placement: flPlacement,
-      middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
-    } = useFloating({
-      placement,
-      open,
-      onOpenChange: () => onClose && onClose(),
-      whileElementsMounted: autoUpdate,
-      elements: {
-        reference: anchorEl,
-        floating: floatingEl.current,
-      },
-      middleware: [
-        offset(ARROW_HEIGHT + ARROW_GAP),
-        flip({
-          fallbackAxisSideDirection: 'start',
-        }),
-        shift(),
-        arrow({
-          element: arrowRef,
-        }),
-      ],
-    });
+  const isControlled = typeof open === 'boolean';
 
-    const { getFloatingProps } = useInteractions([
-      useFocus(context),
-      useClick(context),
-      useDismiss(context),
-      useRole(context),
-    ]);
+  React.useEffect(() => {
+    setInternalOpen(open ?? false);
+  }, [open]);
 
-    const floatingRef = useMergeRefs([refs.setFloating, ref]);
+  const anchorEl = rest.anchorEl ?? triggerRef.current;
 
-    useIsomorphicLayoutEffect(() => {
-      refs.setReference(anchorEl);
-      if (!refs.reference.current || !refs.floating.current || !open) return;
-      const cleanup = autoUpdate(
-        refs.reference.current,
-        refs.floating.current,
-        update,
-      );
-      return () => cleanup();
-    }, [refs.floating, refs.reference, update, anchorEl, refs, open]);
+  return (
+    <PopoverContext.Provider
+      value={{
+        triggerRef,
+        anchorEl,
+        portal,
+        internalOpen,
+        isControlled,
+        setInternalOpen,
+        size,
+        variant,
+        placement,
+        onOpenChange,
+        onClose,
+      }}
+    >
+      {children}
+    </PopoverContext.Provider>
+  );
+};
 
-    const arrowPlacement = useMemo(() => {
-      return ARROW_PLACEMENT[flPlacement.split('-')[0]];
-    }, [flPlacement]);
-
-    return (
-      <>
-        {open && (
-          <Container>
-            <Paragraph
-              ref={floatingEl}
-              as={'div'}
-              size={size}
-              className={cl(
-                classes.popover,
-                classes[variant],
-                classes[size],
-                className,
-              )}
-              data-placement={flPlacement}
-              aria-hidden={!open || !anchorEl}
-              {...getFloatingProps({
-                ref: floatingRef,
-                tabIndex: undefined,
-              })}
-              style={{ ...floatingStyles, ...style }}
-              {...rest}
-            >
-              {children}
-              <div
-                ref={arrowRef}
-                className={cl(classes.arrow, classes[arrowPlacement])}
-                style={{
-                  height: ARROW_HEIGHT,
-                  width: ARROW_HEIGHT,
-                  ...(arrowX != null ? { left: arrowX } : {}),
-                  ...(arrowY != null ? { top: arrowY } : {}),
-                  ...(arrowPlacement ? { [arrowPlacement]: -4.5 } : {}),
-                }}
-              />
-            </Paragraph>
-          </Container>
-        )}
-      </>
-    );
-  },
-);
+export const PopoverContext = React.createContext<{
+  triggerRef: React.RefObject<Element>;
+  anchorEl: Element | null;
+  setInternalOpen: (open: boolean) => void;
+  portal?: boolean;
+  isControlled?: boolean;
+  internalOpen: boolean;
+  size: NonNullable<PopoverProps['size']>;
+  variant: NonNullable<PopoverProps['variant']>;
+  placement: Placement;
+  onOpenChange?: PopoverProps['onOpenChange'];
+  onClose?: PopoverProps['onClose'];
+}>({
+  size: 'small',
+  variant: 'default',
+  anchorEl: null,
+  placement: 'top',
+  triggerRef: { current: null },
+  internalOpen: false,
+  setInternalOpen: () => {},
+});

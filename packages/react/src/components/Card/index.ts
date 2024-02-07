@@ -33,4 +33,4 @@ export type {
   CardFooterProps,
   CardMediaProps,
 };
-export { Card, CardHeader, CardContent, CardFooter };
+export { Card, CardHeader, CardContent, CardFooter, CardMedia };

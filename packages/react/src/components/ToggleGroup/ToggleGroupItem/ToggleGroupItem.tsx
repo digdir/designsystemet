@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
 
+import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
@@ -11,11 +11,7 @@ import { useToggleGroupItem } from './useToggleGroupitem';
 export type ToggleGroupItemProps = {
   /** The value of the ToggleGroupItem. If not set, the string value of the items children will be used. */
   value?: string;
-  /** Icon to be displayed on the ToggleGroupItem */
-  icon?: React.ReactNode;
-  /** The text to be displayed on the ToggleGroupItem */
-  children?: string;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'children'>;
+} & Omit<ButtonProps, 'value'>;
 
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
@@ -25,19 +21,21 @@ export const ToggleGroupItem = forwardRef<
   const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
-      {...buttonProps}
-      className={cl(classes.toggleGroupItem, className)}
-      as={Button}
+      asChild
       value={rest.value}
-      icon={icon}
-      color='first'
-      variant={active ? 'primary' : 'tertiary'}
-      size={size}
-      iconPlacement='left'
-      ref={ref}
-      {...rest}
     >
-      {children}
+      <Button
+        className={cl(classes.toggleGroupItem, className)}
+        icon={icon}
+        color='first'
+        variant={active ? 'primary' : 'tertiary'}
+        size={size}
+        ref={ref}
+        {...rest}
+        {...buttonProps}
+      >
+        {children}
+      </Button>
     </RovingTabindexItem>
   );
 });

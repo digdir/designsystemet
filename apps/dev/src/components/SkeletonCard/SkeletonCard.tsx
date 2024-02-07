@@ -1,5 +1,4 @@
 import cl from 'clsx';
-import React from 'react';
 
 import classes from './SkeletonCard.module.css';
 

@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import cl from 'clsx';
 

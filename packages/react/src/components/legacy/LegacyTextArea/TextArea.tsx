@@ -1,4 +1,4 @@
-import React, { forwardRef, useId, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import type { ChangeEvent, ForwardedRef, TextareaHTMLAttributes } from 'react';
 
 import { InputWrapper } from '../../../utilities/InputWrapper';

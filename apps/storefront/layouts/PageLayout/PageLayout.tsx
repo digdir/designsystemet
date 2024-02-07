@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import NextLink from 'next/link';
 import { Link } from '@digdir/design-system-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
@@ -30,16 +30,19 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
         <Container>
           <div className={classes.headerContent}>
             <Link
-              as={NextLink}
-              href={'/' + data.backUrl}
+              asChild
               className={classes.backBtn}
-              prefetch={false}
             >
-              <ArrowLeftIcon
-                title='Tilbake'
-                fontSize={28}
-              />
-              {data.backText}
+              <NextLink
+                href={'/' + data.backUrl}
+                prefetch={false}
+              >
+                <ArrowLeftIcon
+                  title='Tilbake'
+                  fontSize={28}
+                />
+                {data.backText}
+              </NextLink>
             </Link>
             <div className={classes.meta}>
               <span>

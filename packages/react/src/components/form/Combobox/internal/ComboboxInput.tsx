@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import NextLink from 'next/link';
 
 import classes from './Link.module.css';

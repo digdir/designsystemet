@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import cl from 'clsx';
 
 import { TabsContext } from '../Tabs';

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.47.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.1...@digdir/design-system-react@0.47.0) (2024-01-23)
+
+### Bug Fixes
+
+- **Accordion:** Fix focus style ([#1407](https://github.com/digdir/designsystemet/issues/1407)) ([24e3006](https://github.com/digdir/designsystemet/commit/24e3006de112ea7d667ec07f6c9caccd6e6de9f2))
+- **DropdownMenu:** Export correct props type for items ([#1410](https://github.com/digdir/designsystemet/issues/1410)) ([898a13f](https://github.com/digdir/designsystemet/commit/898a13f54cd825619190fb0a65f04c6ed23d77c6))
+- **List:** Add `margin-top` to nested lists ([#1402](https://github.com/digdir/designsystemet/issues/1402)) ([524d48c](https://github.com/digdir/designsystemet/commit/524d48c84aa7f6c8c3f2b05f374c1b70e8005053))
+- **Pagination:** Add default aria-label to `nav` ([#1401](https://github.com/digdir/designsystemet/issues/1401)) ([b4de3f1](https://github.com/digdir/designsystemet/commit/b4de3f1c166a91abda113cd0fd0d6d8ab36189da))
+
+### Features
+
+- **List:** Add `forwardRef` ([#1393](https://github.com/digdir/designsystemet/issues/1393)) ([b8b6b3a](https://github.com/digdir/designsystemet/commit/b8b6b3a84792897be68d35aee9d9727514641763))
+- **List:** Add support for custom heading id ([#1394](https://github.com/digdir/designsystemet/issues/1394)) ([03e1dba](https://github.com/digdir/designsystemet/commit/03e1dba876fdc3534507255bf726f6694c77f73d))
+
 ## [0.46.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.0...@digdir/design-system-react@0.46.1) (2024-01-16)
 
 ### Bug Fixes

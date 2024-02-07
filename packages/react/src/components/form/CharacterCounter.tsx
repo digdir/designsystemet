@@ -1,5 +1,3 @@
-import React from 'react';
-
 import utilityClasses from '../../utilities/utility.module.css';
 import { ErrorMessage } from '../Typography';
 
@@ -50,12 +48,13 @@ export const CharacterCounter = ({
         {srLabel}
       </span>
       <ErrorMessage
-        as='span'
+        asChild
         size={size}
-        aria-live={hasExceededLimit ? 'polite' : 'off'}
         error={hasExceededLimit}
       >
-        {label(currentCount)}
+        <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
+          {label(currentCount)}
+        </span>
       </ErrorMessage>
     </>
   );

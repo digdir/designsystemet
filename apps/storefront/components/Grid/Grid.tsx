@@ -1,9 +1,9 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 
 import classes from './Grid.module.css';
 
 interface GridProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Grid = ({ children }: GridProps) => {

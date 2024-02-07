@@ -1,12 +1,11 @@
-import type { HTMLProps } from 'react';
-import React from 'react';
+import type { ReactNode, HTMLProps } from 'react';
 import cl from 'clsx';
 
 import classes from './TableHeader.module.css';
 import { TableRowTypeContext } from './utils';
 
 export interface TableHeaderProps extends HTMLProps<HTMLTableSectionElement> {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const TableHeader = ({

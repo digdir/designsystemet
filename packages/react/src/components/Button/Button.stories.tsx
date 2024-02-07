@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 import * as akselIcons from '@navikt/aksel-icons';
@@ -25,22 +24,9 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
 
 const icon = <akselIcons.FloppydiskIcon />;
 
-type AkselIcon = (typeof akselIcons)['AirplaneFillIcon'];
-type AkselIcons = Record<string, AkselIcon>;
-
 export const Preview: Story = {
-  render: ({ icon = '', ...args }) => {
-    // Hack to get dynamic preview of Aksel icons in Storybook
-    const Icon: AkselIcon | undefined = (akselIcons as AkselIcons)[
-      icon as string
-    ];
-
-    return (
-      <Button
-        {...args}
-        icon={Icon ? <Icon /> : undefined}
-      ></Button>
-    );
+  render: ({ ...args }) => {
+    return <Button {...args} />;
   },
   args: {
     children: 'Knapp',
@@ -48,24 +34,21 @@ export const Preview: Story = {
     variant: 'primary',
     color: 'first',
     size: 'medium',
-  },
-  argTypes: {
-    icon: {
-      control: 'select',
-      options: Object.keys(akselIcons),
-    },
+    icon: false,
+    fullWidth: false,
   },
 };
 
 export const UsedAsLink: StoryFn<typeof Button> = () => (
-  <Button
-    as='a'
-    icon={<akselIcons.PersonChatIcon />}
-    iconPlacement='right'
-    target='_blank'
-    href='https://www.designsystemet.no'
-  >
-    Gå til Designsystemet
+  <Button asChild>
+    <a
+      target='_blank'
+      rel='noreferrer'
+      href='https://www.designsystemet.no'
+    >
+      <akselIcons.PersonChatIcon />
+      Gå til Designsystemet
+    </a>
   </Button>
 );
 
@@ -137,74 +120,98 @@ Variants.decorators = [
 export const WithIcon: StoryFn<typeof Button> = () => (
   <>
     <Button
-      icon={icon}
+      icon={true}
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
-      icon={icon}
+      icon={true}
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
-      icon={icon}
+      icon={true}
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
-      icon={icon}
+      icon={true}
       color='second'
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
-      icon={icon}
+      icon={true}
       color='second'
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
-      icon={icon}
+      icon={true}
       color='second'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      {icon}
+    </Button>
     <Button
-      icon={<akselIcons.CheckmarkIcon />}
+      icon={true}
       color='success'
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      <akselIcons.CheckmarkIcon />
+    </Button>
     <Button
-      icon={<akselIcons.CheckmarkIcon />}
+      icon={true}
       color='success'
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      <akselIcons.CheckmarkIcon />
+    </Button>
     <Button
-      icon={<akselIcons.CheckmarkIcon />}
+      icon={true}
       color='success'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      <akselIcons.CheckmarkIcon />
+    </Button>
     <Button
-      icon={<akselIcons.TrashIcon />}
+      icon={true}
       color='danger'
       variant='primary'
       aria-label='Primary med ikon'
-    ></Button>
+    >
+      <akselIcons.TrashIcon />
+    </Button>
     <Button
-      icon={<akselIcons.TrashIcon />}
+      icon={true}
       color='danger'
       variant='secondary'
       aria-label=' Secondary med ikon'
-    ></Button>
+    >
+      <akselIcons.TrashIcon />
+    </Button>
     <Button
-      icon={<akselIcons.TrashIcon />}
+      icon={true}
       color='danger'
       variant='tertiary'
       aria-label='Tertiary med ikon'
-    ></Button>
+    >
+      <akselIcons.TrashIcon />
+    </Button>
   </>
 );
 
@@ -223,22 +230,16 @@ WithIcon.decorators = [
 
 export const WithIconAndText: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      icon={icon}
-      variant='primary'
-    >
+    <Button variant='primary'>
+      {icon}
       Primary
     </Button>
-    <Button
-      icon={icon}
-      variant='secondary'
-    >
+    <Button variant='secondary'>
+      {icon}
       Secondary
     </Button>
-    <Button
-      icon={icon}
-      variant='tertiary'
-    >
+    <Button variant='tertiary'>
+      {icon}
       Tertiary
     </Button>
   </>
@@ -249,10 +250,10 @@ WithIconAndText.decorators = [stack];
 export const WithSpinner: StoryFn<typeof Button> = () => (
   <>
     <Button
-      icon={icon}
       variant='primary'
       aria-disabled
     >
+      {icon}
       <Spinner
         variant='interaction'
         title='loading'
@@ -261,10 +262,10 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       Laster...
     </Button>
     <Button
-      icon={icon}
       variant='secondary'
       aria-disabled
     >
+      {icon}
       <Spinner
         variant='interaction'
         title='loading'
@@ -273,10 +274,10 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       Laster...
     </Button>
     <Button
-      icon={icon}
       variant='tertiary'
       aria-disabled
     >
+      {icon}
       <Spinner
         variant='interaction'
         title='loading'

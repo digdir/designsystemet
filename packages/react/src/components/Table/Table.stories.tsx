@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Checkbox } from '../form/Checkbox';

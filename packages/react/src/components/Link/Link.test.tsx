@@ -1,5 +1,5 @@
-import React, { createRef } from 'react';
-import type { RefObject } from 'react';
+import { createRef } from 'react';
+import type { ComponentProps, RefObject } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import { Link } from './Link';
@@ -53,7 +53,7 @@ describe('Link', () => {
 });
 
 const render = (
-  props: Partial<LinkProps> = {},
+  props: Partial<ComponentProps<typeof Link>> = {},
   ref?: RefObject<HTMLAnchorElement>,
 ) => {
   const allProps = { ...defaultProps, ...props };

@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import React, { useCallback, useEffect, useId, useState } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 import cl from 'clsx';
 import { autoUpdate, useFloating } from '@floating-ui/react';
 import { flip, size } from '@floating-ui/dom';

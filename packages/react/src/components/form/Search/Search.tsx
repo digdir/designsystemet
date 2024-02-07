@@ -1,5 +1,5 @@
 import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
-import React, { forwardRef, useCallback, useRef, useState } from 'react';
+import { forwardRef, useCallback, useRef, useState } from 'react';
 import cl from 'clsx';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
@@ -105,89 +105,92 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
 
     return (
       <Paragraph
-        as='div'
+        asChild
         size={size}
-        style={style}
-        className={cl(
-          classes.formField,
-          inputProps.disabled && classes.disabled,
-          classes[size],
-          className,
-        )}
       >
-        {label && (
-          <Label
-            size={size}
-            weight='medium'
-            htmlFor={inputProps.id}
-            className={cl(
-              classes.label,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
-          >
-            <span>{label}</span>
-          </Label>
-        )}
-
-        <div className={classes.field}>
-          <div className={classes.field}>
-            {isSimple && (
-              <MagnifyingGlassIcon
-                className={classes.icon}
-                aria-hidden
-              ></MagnifyingGlassIcon>
-            )}
-            <input
-              ref={mergedRef}
-              size={htmlSize}
-              value={value ?? internalValue}
-              disabled={disabled}
+        <div
+          style={style}
+          className={cl(
+            classes.formField,
+            inputProps.disabled && classes.disabled,
+            classes[size],
+            className,
+          )}
+        >
+          {label && (
+            <Label
+              size={size}
+              weight='medium'
+              htmlFor={inputProps.id}
               className={cl(
-                classes.input,
-                utilityClasses.focusable,
-                classes[size],
-                isSimple && classes.simple,
-                !isSimple && classes.withSearchButton,
+                classes.label,
+                hideLabel && utilityClasses.visuallyHidden,
               )}
-              {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
-              {...inputProps}
-              onChange={handleChange}
-            />
-            {showClearButton && (
-              <button
-                className={cl(classes.clearButton, utilityClasses.focusable)}
-                type='button'
-                onClick={handleClear}
+            >
+              <span>{label}</span>
+            </Label>
+          )}
+
+          <div className={classes.field}>
+            <div className={classes.field}>
+              {isSimple && (
+                <MagnifyingGlassIcon
+                  className={classes.icon}
+                  aria-hidden
+                ></MagnifyingGlassIcon>
+              )}
+              <input
+                ref={mergedRef}
+                size={htmlSize}
+                value={value ?? internalValue}
+                disabled={disabled}
+                className={cl(
+                  classes.input,
+                  utilityClasses.focusable,
+                  classes[size],
+                  isSimple && classes.simple,
+                  !isSimple && classes.withSearchButton,
+                )}
+                {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+                {...inputProps}
+                onChange={handleChange}
+              />
+              {showClearButton && (
+                <button
+                  className={cl(classes.clearButton, utilityClasses.focusable)}
+                  type='button'
+                  onClick={handleClear}
+                  disabled={disabled}
+                >
+                  <span className={utilityClasses.visuallyHidden}>
+                    {clearButtonLabel}
+                  </span>
+                  <XMarkIcon aria-hidden />
+                </button>
+              )}
+            </div>
+            {!isSimple && (
+              <Button
+                className={classes.searchButton}
+                size={size}
+                variant={variant}
+                type='submit'
+                onClick={handleSearchClick}
                 disabled={disabled}
               >
-                <span className={utilityClasses.visuallyHidden}>
-                  {clearButtonLabel}
-                </span>
-                <XMarkIcon aria-hidden />
-              </button>
+                {searchButtonLabel}
+              </Button>
             )}
           </div>
-          {!isSimple && (
-            <Button
-              className={classes.searchButton}
-              size={size}
-              variant={variant}
-              type='submit'
-              onClick={handleSearchClick}
-              disabled={disabled}
-            >
-              {searchButtonLabel}
-            </Button>
-          )}
-        </div>
 
-        <div
-          className={classes.errorMessage}
-          id={errorId}
-          aria-live='polite'
-          aria-relevant='additions removals'
-        >
-          {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+          <div
+            className={classes.errorMessage}
+            id={errorId}
+            aria-live='polite'
+            aria-relevant='additions removals'
+          >
+            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+          </div>
         </div>
       </Paragraph>
     );

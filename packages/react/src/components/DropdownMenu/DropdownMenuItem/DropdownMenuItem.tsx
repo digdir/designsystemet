@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
@@ -7,10 +7,13 @@ import { DropdownMenuContext } from '../DropdownMenu';
 
 import classes from './DropdownMenuItem.module.css';
 
-export type DropdownMenuItemProps = React.HTMLAttributes<HTMLLIElement>;
+export type DropdownMenuItemProps = Omit<
+  ButtonProps,
+  'variant' | 'size' | 'color' | 'fullWidth'
+>;
 
 export const DropdownMenuItem: OverridableComponent<
-  Omit<ButtonProps, 'variant' | 'size' | 'color' | 'fullWidth'>,
+  DropdownMenuItemProps,
   HTMLButtonElement
 > = forwardRef(({ children, className, style, ...rest }, ref) => {
   const menu = useContext(DropdownMenuContext);

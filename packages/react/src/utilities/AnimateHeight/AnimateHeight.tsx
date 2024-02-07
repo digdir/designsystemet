@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import type * as React from 'react';
 import cl from 'clsx';
 
 import { useMediaQuery, usePrevious } from '../../hooks';

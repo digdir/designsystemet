@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 
@@ -11,26 +12,35 @@ export type IngressProps = {
   size?: 'medium';
   /** Adds margin-bottom */
   spacing?: boolean;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `Ingress` to display text as ingress. */
 export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
   forwardRef(
     (
-      { className, size = 'medium', spacing, as: Component = 'p', ...rest },
+      { className, size = 'medium', spacing, as = 'p', asChild, ...rest },
       ref,
-    ) => (
-      <Component
-        ref={ref}
-        className={cl(
-          classes.ingress,
-          classes[size],
-          {
-            [classes.spacing]: !!spacing,
-          },
-          className,
-        )}
-        {...rest}
-      />
-    ),
+    ) => {
+      const Component = asChild ? Slot : as;
+
+      return (
+        <Component
+          ref={ref}
+          className={cl(
+            classes.ingress,
+            classes[size],
+            {
+              [classes.spacing]: !!spacing,
+            },
+            className,
+          )}
+          {...rest}
+        />
+      );
+    },
   );

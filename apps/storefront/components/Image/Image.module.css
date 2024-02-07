@@ -3,6 +3,8 @@
   max-width: 800px;
   margin: var(--fds-spacing-7) 0;
   border-radius: var(--fds-border_radius-medium);
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-4);
 }
 
 .container .img {
@@ -12,4 +14,9 @@
 
 .boxShadow {
   box-shadow: var(--fds-shadow-medium);
+}
+
+.container .caption {
+  color: var(--fds-semantic-text-neutral-subtle);
+  font: var(--fds-typography-paragraph-small);
 }

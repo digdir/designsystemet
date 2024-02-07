@@ -1,6 +1,5 @@
 import assert from 'assert';
 
-import React from 'react';
 import { act, screen, render as renderRtl } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
