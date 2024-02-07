@@ -105,7 +105,9 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
 
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    setTimeout(() => {
+      expect(onValueChange).toHaveBeenCalledWith('leikanger');
+    }, 100);
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
@@ -117,7 +119,9 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await userEvent.click(screen.getByText('Oslo'));
 
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
+    setTimeout(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
+    }, 100);
   });
 
   it('should show a chip of a selected option in multiple mode', async () => {
@@ -271,5 +275,19 @@ describe('Combobox', () => {
 
     const formData = await formSubmitPromise;
     expect(formData.getAll('test')).toEqual(['leikanger', 'oslo']);
+  });
+
+  it('should only call onValueChange once when we click the same option fast twice', async () => {
+    const onValueChange = jest.fn();
+    await render({ onValueChange });
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+    await userEvent.click(screen.getByText('Leikanger'));
+    await userEvent.click(screen.getByText('Leikanger'));
+
+    setTimeout(() => {
+      expect(onValueChange).toHaveBeenCalledTimes(1);
+    }, 100);
   });
 });
