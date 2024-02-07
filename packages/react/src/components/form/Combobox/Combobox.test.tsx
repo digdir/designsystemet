@@ -92,9 +92,7 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
-    await user.type(combobox, '{esc}');
-
-    await wait(300);
+    await user.type(combobox, '{Escape}');
 
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
@@ -118,8 +116,10 @@ describe('Combobox', () => {
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
-    await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
 
+    await userEvent.click(screen.getByText('Oslo'));
     await wait(500);
     expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
   });
@@ -144,11 +144,10 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
     await user.click(document.body);
-    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Leikanger'));
-    await wait(500);
+    await user.click(document.body);
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
