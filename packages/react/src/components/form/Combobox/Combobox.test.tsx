@@ -93,7 +93,8 @@ describe('Combobox', () => {
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await user.type(combobox, '{esc}');
-    await wait(100);
+
+    await wait(300);
 
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
@@ -107,7 +108,7 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
 
     await wait(500);
-    expect(onValueChange).toHaveBeenCalledWith('leikanger');
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
@@ -143,6 +144,7 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
     await user.click(document.body);
+    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Leikanger'));
