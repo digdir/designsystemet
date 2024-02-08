@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -14,6 +15,10 @@ export type CheckboxProps = {
   children?: ReactNode;
   /** Value of the `input` element */
   value: string;
+  /**Toggle indeterminate state for Checkbox
+   * @default false
+   */
+  indeterminate?: boolean;
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
@@ -27,6 +32,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       size = 'medium',
       readOnly,
     } = useCheckbox(props);
+
+    const inputRef = useMergeRefs<HTMLInputElement>([
+      ref,
+      (el) => {
+        if (el) {
+          el.indeterminate = rest.indeterminate ?? false;
+        }
+      },
+    ]);
 
     return (
       <Paragraph
@@ -45,9 +59,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         >
           <input
             className={classes.input}
-            ref={ref}
+            ref={inputRef}
             {...omit(['size', 'error'], rest)}
             {...inputProps}
+            type='checkbox'
+            aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
           />
           <Label
             className={classes.label}
