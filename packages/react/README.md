@@ -8,14 +8,24 @@ Follow these steps to get started with the React components.
 
 ### 1. Install the packages
 
-```
+```sh
 npm install @digdir/design-system-react @digdir/design-system-tokens
 ```
+
+#### Typescript
 
 If you use Typescript, make sure you have typescript >= 3.8 as a devDependency:
 
 ```sh
 npm install typescript --save-dev
+```
+
+#### Legacy components
+
+If you are still using components prefix with `Legacy` you will also need to install the old tokens package.
+
+```sh
+npm install @altinn/figma-design-tokens
 ```
 
 ### 2. Add the Inter font (optional)
