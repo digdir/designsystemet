@@ -192,7 +192,7 @@ export const WithFormElements: Story = (args) => {
   const [headerChecked, setHeaderChecked] = useState(false);
   const [checkedItems, setCheckedItems] = useState<CheckedItems>({
     1: false,
-    2: false,
+    2: true,
     3: false,
   });
 
