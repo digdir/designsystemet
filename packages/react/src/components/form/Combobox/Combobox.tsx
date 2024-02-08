@@ -484,9 +484,9 @@ export const Combobox = ({
                 </div>
               )}
 
-              {!virtual && optionsChildren}
               {/* Add the rest of the children */}
               {restChildren}
+              {!virtual && optionsChildren}
             </Box>
           </FloatingFocusManager>
         </FloatingPortal>

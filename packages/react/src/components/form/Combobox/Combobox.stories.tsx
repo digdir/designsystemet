@@ -10,6 +10,7 @@ import { ChipRemovable } from '../../Chip';
 import { data } from './data/data';
 
 import { Combobox } from './index';
+import { Spinner } from '../../Spinner';
 
 export default {
   title: 'Felles/Combobox',
@@ -443,6 +444,77 @@ export const Virtualized: StoryFn<typeof Combobox> = (args) => {
 Virtualized.args = {
   multiple: false,
   virtual: true,
+  size: 'medium',
+  label: 'Hvor går reisen?',
+};
+
+export const Custom: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+  const [options, setOptions] = React.useState<typeof PLACES>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  const fetchOptions = () => {
+    if (!loading) return;
+    console.log('Fetching options');
+    setTimeout(() => {
+      setOptions(PLACES);
+      setLoading(false);
+    }, 2000);
+  };
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setLoading(true);
+          setOptions([]);
+          setValue([]);
+        }}
+        style={{
+          marginBottom: '1rem',
+        }}
+      >
+        Clear Data
+      </Button>
+      <Combobox
+        {...args}
+        value={value}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+        onClick={fetchOptions}
+      >
+        {loading && (
+          <Combobox.Custom
+            style={{
+              display: 'flex',
+              gap: 'var(--fds-spacing-2)',
+              alignContent: 'center',
+            }}
+          >
+            <Spinner
+              title='Laster'
+              size='small'
+            />
+            Laster...
+          </Combobox.Custom>
+        )}
+        {!loading && <Combobox.Empty>Fant ingen treff</Combobox.Empty>}
+        {options.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+    </>
+  );
+};
+
+Custom.args = {
+  multiple: false,
   size: 'medium',
   label: 'Hvor går reisen?',
 };
