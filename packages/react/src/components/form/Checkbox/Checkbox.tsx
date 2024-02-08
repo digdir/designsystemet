@@ -60,7 +60,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <input
             className={classes.input}
             ref={inputRef}
-            {...omit(['size', 'error'], rest)}
+            {...omit(['size', 'error', 'indeterminate'], rest)}
             {...inputProps}
             type='checkbox'
             aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
