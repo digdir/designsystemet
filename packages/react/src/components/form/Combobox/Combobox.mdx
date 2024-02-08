@@ -46,7 +46,7 @@ Det gjør du ved å sette `virtual` til `true` på `Combobox`.
 
 <Canvas of={ComboboxStories.Virtualized} />
 
-### `Combobox.Custom`
+## `Combobox.Custom`
 
 Brukes for å lage egne komponenter som vises i listen. Denne legger seg alltid i toppen,
 og kan brukt brukt til å vise at lista laster, eller for å legge til egne options.
@@ -54,11 +54,17 @@ Du må styre komponenten selv, som betyr at alle aria-attributes og eventer må 
 
 <ArgsTable of={Combobox.Custom} />
 
-## Laste inn data
+### Laste inn data
+
+Her legger vi på `aria-busy={loading}` for å indikere at lista laster.
 
 <Canvas of={ComboboxStories.Custom} />
 
-### `Combobox.Option`
+### Legge til nye verdier
+
+<Canvas of={ComboboxStories.CustomNewValue} />
+
+## `Combobox.Option`
 
 Brukes som direkte barn av `Combobox` for å vise et element i listen.
 Teksten fra `children` vises til brukeren når elementet er valgt. `value` er
@@ -66,7 +72,7 @@ det som blir sendt til `onValueChange` når elementet blir valgt.
 
 <ArgsTable of={Combobox.Option} />
 
-### `Combobox.Empty`
+## `Combobox.Empty`
 
 Brukes som direkte barn av `Combobox` for å vise en melding når det ikke er
 noen elementer i listen.

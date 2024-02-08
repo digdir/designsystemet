@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { PlusCircleIcon } from '@navikt/aksel-icons';
 
 import { Button } from '../../Button';
 import { Paragraph } from '../../Typography';
@@ -518,4 +519,70 @@ Custom.args = {
   multiple: false,
   size: 'medium',
   label: 'Hvor går reisen?',
+};
+
+export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
+  const [inputValue, setInputValue] = React.useState<string>('');
+  const [value, setValue] = React.useState<string[]>([]);
+  const [options, setOptions] = React.useState(PLACES);
+
+  const onNewValueAdd = () => {
+    if (!inputValue) return;
+    if (options.find((o) => o.value === inputValue.toLowerCase())) return;
+    setOptions([
+      ...options,
+      {
+        name: inputValue,
+        value: inputValue.toLowerCase(),
+        description: null,
+      },
+    ]);
+    setValue([inputValue.toLowerCase()]);
+  };
+
+  return (
+    <>
+      <Combobox
+        {...args}
+        value={value}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+        multiple={true}
+        onChange={(e) => setInputValue(e.target.value)}
+      >
+        <Combobox.Custom
+          style={{
+            display: 'flex',
+            gap: 'var(--fds-spacing-2)',
+            alignContent: 'center',
+          }}
+          asChild
+        >
+          <Button
+            variant='secondary'
+            onClick={onNewValueAdd}
+            style={{
+              width: '100%',
+            }}
+          >
+            <PlusCircleIcon
+              title='plus'
+              fontSize='1.5rem'
+            />
+            Legg til ny verdi
+          </Button>
+        </Combobox.Custom>
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {options.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+    </>
+  );
 };
