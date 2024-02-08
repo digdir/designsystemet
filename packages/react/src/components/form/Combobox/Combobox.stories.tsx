@@ -482,7 +482,7 @@ export const Custom: StoryFn<typeof Combobox> = (args) => {
         onValueChange={(value) => {
           setValue(value);
         }}
-        onClick={fetchOptions}
+        onFocus={fetchOptions}
       >
         {loading && (
           <Combobox.Custom
