@@ -23,5 +23,5 @@
   box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow); */
   outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-boxshadow);
   outline-offset: var(--fds-focus-border-width);
-  box-shadow: 0 0 0 var(--fds-focus-border-width) transparent;
+  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-outline);
 }
