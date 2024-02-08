@@ -104,7 +104,6 @@ export const ComboboxInput = ({
       /* Props from floating-ui */
       {...getReferenceProps({
         ref: refs?.setReference,
-        'aria-expanded': open,
         role: null,
         /* If we click the wrapper, open the list, set index to first option, and focus the input */
         onClick() {

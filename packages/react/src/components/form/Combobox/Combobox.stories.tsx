@@ -6,11 +6,11 @@ import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
 import { Modal } from '../../Modal';
 import { ChipRemovable } from '../../Chip';
+import { Spinner } from '../../Spinner';
 
 import { data } from './data/data';
 
 import { Combobox } from './index';
-import { Spinner } from '../../Spinner';
 
 export default {
   title: 'Felles/Combobox',
@@ -483,6 +483,7 @@ export const Custom: StoryFn<typeof Combobox> = (args) => {
           setValue(value);
         }}
         onFocus={fetchOptions}
+        aria-busy={loading}
       >
         {loading && (
           <Combobox.Custom

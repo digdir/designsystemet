@@ -46,10 +46,15 @@ Det gjør du ved å sette `virtual` til `true` på `Combobox`.
 
 <Canvas of={ComboboxStories.Virtualized} />
 
-## `Combobox.Custom`
+### `Combobox.Custom`
 
-Brukes for å lage egne komponenter som vises i listen. Denne legger seg alltid i toppen, ¨
+Brukes for å lage egne komponenter som vises i listen. Denne legger seg alltid i toppen,
 og kan brukt brukt til å vise at lista laster, eller for å legge til egne options.
+Du må styre komponenten selv, som betyr at alle aria-attributes og eventer må legges til manuelt.
+
+<ArgsTable of={Combobox.Custom} />
+
+## Laste inn data
 
 <Canvas of={ComboboxStories.Custom} />
 
