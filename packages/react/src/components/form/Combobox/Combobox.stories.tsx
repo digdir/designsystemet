@@ -558,6 +558,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
             alignContent: 'center',
           }}
           asChild
+          interactive
         >
           <Button
             variant='secondary'

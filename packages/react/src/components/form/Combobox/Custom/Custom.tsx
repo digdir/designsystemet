@@ -4,6 +4,7 @@ import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
 import { ComboboxContext } from '../Combobox';
+import { omit } from '../../../../utilities';
 
 import classes from './Custom.module.css';
 
@@ -40,7 +41,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
         className={cl(classes.custom, classes[size], className)}
         id={rest.id || randomId}
         role='option'
-        {...rest}
+        {...omit(['interactive'], rest)}
       />
     );
   },

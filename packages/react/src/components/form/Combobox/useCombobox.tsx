@@ -4,6 +4,8 @@ import * as React from 'react';
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
+import type { ComboboxCustomProps } from './Custom/Custom';
+import ComboboxCustom from './Custom/Custom';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
@@ -90,6 +92,17 @@ export default function useCombobox({
     });
   }, [optionsChildren]);
 
+  const customRandomValues = useMemo(() => {
+    // find all custom components with `interactive=true` and generate random values for them
+    return React.Children.toArray(children)
+      .filter((child) => {
+        return isComboboxCustom(child) && child.props.interactive;
+      })
+      .map(() => Math.random().toString(36).substring(7));
+  }, [children]);
+
+  console.log(customRandomValues, 'customRandomValues');
+
   const restChildren = useMemo(() => {
     return React.Children.toArray(children).filter((child) => {
       return !isComboboxOption(child);
@@ -108,4 +121,10 @@ export function isComboboxOption(
   child: React.ReactNode,
 ): child is React.ReactElement<ComboboxOptionProps> {
   return React.isValidElement(child) && child.type === ComboboxOption;
+}
+
+export function isComboboxCustom(
+  child: React.ReactNode,
+): child is React.ReactElement<ComboboxCustomProps> {
+  return React.isValidElement(child) && child.type === ComboboxCustom;
 }
