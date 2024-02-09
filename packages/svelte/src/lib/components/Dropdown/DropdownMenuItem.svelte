@@ -43,7 +43,12 @@
         {@html icon}
       </div>
     {:else}
-      <div class="icon {size}" style="display:none;"><svg /></div>
+      <div
+        class="icon {size}"
+        style="display:none;"
+      >
+        <svg />
+      </div>
     {/if}
     <slot />
   </a>
@@ -107,29 +112,29 @@
     color: var(--fds-semantic-surface-action-default, '#00244E');
     height: 1.25rem;
     width: 1.25rem;
-    &.small {
+  }
+  .icon.small {
+    height: var(--fds-sizing-4);
+    width: var(--fds-sizing-4);
+    & :first-child {
       height: var(--fds-sizing-4);
       width: var(--fds-sizing-4);
-      & :first-child {
-        height: var(--fds-sizing-4);
-        width: var(--fds-sizing-4);
-      }
     }
-    &.medium {
+  }
+  .icon.medium {
+    height: var(--fds-sizing-6);
+    width: var(--fds-sizing-6);
+    & :first-child {
       height: var(--fds-sizing-6);
       width: var(--fds-sizing-6);
-      & :first-child {
-        height: var(--fds-sizing-6);
-        width: var(--fds-sizing-6);
-      }
     }
-    &.large {
+  }
+  .icon.large {
+    height: var(--fds-sizing-8);
+    width: var(--fds-sizing-8);
+    & :first-child {
       height: var(--fds-sizing-8);
       width: var(--fds-sizing-8);
-      & :first-child {
-        height: var(--fds-sizing-8);
-        width: var(--fds-sizing-8);
-      }
     }
   }
 </style>
