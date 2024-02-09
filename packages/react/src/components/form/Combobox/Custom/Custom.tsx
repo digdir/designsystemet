@@ -73,7 +73,6 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
         aria-selected={activeIndex === index}
         data-active={activeIndex === index}
         onMouseEnter={() => {
-          console.log('onMouseEnter', index);
           typeof index === 'number' && setActiveIndex(index);
         }} // Set active index on hover
         onFocus={() => {
