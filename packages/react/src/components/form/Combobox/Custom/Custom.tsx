@@ -8,6 +8,16 @@ import { omit } from '../../../../utilities';
 
 import classes from './Custom.module.css';
 
+type InteractiveProps = {
+  interactive: true;
+  id: string;
+};
+
+type NonInteractiveProps = {
+  interactive?: false;
+  id?: string;
+};
+
 export type ComboboxCustomProps = {
   /**
    * Adds the item to the navigation flow at the start of the list.
@@ -20,6 +30,7 @@ export type ComboboxCustomProps = {
   id?: string;
   /**
    * Event handler for select event.
+   * Only called if the element is interactive.
    */
   onSelect?: () => void;
   /**
@@ -27,7 +38,8 @@ export type ComboboxCustomProps = {
    * @default false
    */
   asChild?: boolean;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLDivElement> &
+  (InteractiveProps | NonInteractiveProps);
 
 export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
   ({ asChild, interactive, id, className, ...rest }, ref) => {
