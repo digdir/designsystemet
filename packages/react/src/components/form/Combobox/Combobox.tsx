@@ -27,7 +27,10 @@ import type { PortalProps } from '../../../types/Portal';
 import useDebounce from '../../../utilities/useDebounce';
 
 import type { Option } from './useCombobox';
-import useCombobox, { isComboboxOption } from './useCombobox';
+import useCombobox, {
+  isComboboxOption,
+  isInteractiveComboboxCustom,
+} from './useCombobox';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -274,6 +277,8 @@ export const Combobox = ({
 
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {
+    const navigateable = customIds.length + optionsChildren.length;
+
     if (formFieldProps.readOnly || disabled) return;
     if (!event) return;
     switch (event.key) {
@@ -285,7 +290,7 @@ export const Combobox = ({
             return 0;
           }
 
-          return Math.min(prevActiveIndex + 1, optionsChildren.length - 1);
+          return Math.min(prevActiveIndex + 1, navigateable - 1);
         });
         break;
       case 'ArrowUp':
@@ -307,7 +312,28 @@ export const Combobox = ({
       case 'Enter':
         event.preventDefault();
         if (activeIndex !== null && optionsChildren[activeIndex]) {
-          console.log({ customIds });
+          // check if we are in the custom components
+          if (activeIndex < customIds.length) {
+            // send `onSelect` event to the custom component
+            const selectedId = customIds[activeIndex];
+            const selectedComponent = restChildren.find(
+              (component) =>
+                isInteractiveComboboxCustom(component) &&
+                component.props?.id === selectedId,
+            );
+
+            console.log('selectedComponent', selectedComponent);
+
+            if (
+              isInteractiveComboboxCustom(selectedComponent) &&
+              selectedComponent.props.onSelect
+            ) {
+              console.log('I am here and trying to call onSelect');
+              selectedComponent.props.onSelect();
+            }
+          }
+
+          // if we are in the options, find the actual index
           const valueIndex = activeIndex - customIds.length;
 
           const child = optionsChildren[valueIndex];

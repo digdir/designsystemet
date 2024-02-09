@@ -19,6 +19,10 @@ export type ComboboxCustomProps = {
    */
   id?: string;
   /**
+   * Event handler for select event.
+   */
+  onSelect?: () => void;
+  /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */

@@ -449,7 +449,7 @@ Virtualized.args = {
   label: 'Hvor går reisen?',
 };
 
-export const Custom: StoryFn<typeof Combobox> = (args) => {
+export const CustomLoadingData: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = React.useState<string[]>([]);
   const [options, setOptions] = React.useState<typeof PLACES>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -515,7 +515,7 @@ export const Custom: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-Custom.args = {
+CustomLoadingData.args = {
   multiple: false,
   size: 'medium',
   label: 'Hvor går reisen?',
@@ -529,6 +529,8 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
   const onNewValueAdd = () => {
     if (!inputValue) return;
     if (options.find((o) => o.value === inputValue.toLowerCase())) return;
+    if (options.find((o) => o.value === inputValue.toLowerCase())) return;
+
     setOptions([
       ...options,
       {
@@ -537,7 +539,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
         description: '',
       },
     ]);
-    setValue([inputValue.toLowerCase()]);
+    setValue([...value, inputValue.toLowerCase()]);
   };
 
   return (
@@ -560,6 +562,10 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
           asChild
           interactive
           id='custom-option'
+          onSelect={() => {
+            console.log('I was called');
+            onNewValueAdd();
+          }}
         >
           <Button
             variant='secondary'
@@ -587,4 +593,10 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
       </Combobox>
     </>
   );
+};
+
+CustomNewValue.args = {
+  multiple: false,
+  size: 'medium',
+  label: 'Hvor går reisen?',
 };
