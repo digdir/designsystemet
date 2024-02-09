@@ -322,13 +322,10 @@ export const Combobox = ({
                 component.props?.id === selectedId,
             );
 
-            console.log('selectedComponent', selectedComponent);
-
             if (
               isInteractiveComboboxCustom(selectedComponent) &&
               selectedComponent.props.onSelect
             ) {
-              console.log('I am here and trying to call onSelect');
               selectedComponent.props.onSelect();
             }
           }

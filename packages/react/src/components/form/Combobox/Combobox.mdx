@@ -64,7 +64,7 @@ Her legger vi på `aria-busy={loading}` for å indikere at lista laster.
 
 Dersom det du legger inn skal være trykkbart, så må du legge på `interactive={true}`. Du må alltid legge på ein `id` når elementet er interaktivt.
 Dette gjer at den kan bli navigert til med tastatur. Du må også legge til `onSelect` for å
-få vite når den blir valgt.
+få vite når den blir valgt. Du kan sjekke om brukeren er på elementet ved å sjekke `data-active`.
 
 <Canvas of={ComboboxStories.CustomNewValue} />
 

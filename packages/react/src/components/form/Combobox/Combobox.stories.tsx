@@ -456,7 +456,6 @@ export const CustomLoadingData: StoryFn<typeof Combobox> = (args) => {
 
   const fetchOptions = () => {
     if (!loading) return;
-    console.log('Fetching options');
     setTimeout(() => {
       setOptions(PLACES);
       setLoading(false);
@@ -544,6 +543,13 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
+      <style>
+        {`
+        [data-active='true'] {
+          background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+        }
+      `}
+      </style>
       <Combobox
         {...args}
         value={value}
@@ -562,10 +568,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
           asChild
           interactive
           id='custom-option'
-          onSelect={() => {
-            console.log('I was called');
-            onNewValueAdd();
-          }}
+          onSelect={onNewValueAdd}
         >
           <Button
             variant='secondary'

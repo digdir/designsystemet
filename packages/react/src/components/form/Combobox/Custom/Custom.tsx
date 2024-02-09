@@ -44,7 +44,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { size, activeIndex, optionValues } = context;
+    const { size, activeIndex, optionValues, setActiveIndex } = context;
 
     const index = useMemo(
       () => id && optionValues.indexOf(id),
@@ -60,6 +60,13 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
         role='option'
         aria-selected={activeIndex === index}
         data-active={activeIndex === index}
+        onMouseEnter={() => {
+          console.log('onMouseEnter', index);
+          typeof index === 'number' && setActiveIndex(index);
+        }} // Set active index on hover
+        onFocus={() => {
+          typeof index === 'number' && setActiveIndex(index);
+        }}
         {...omit(['interactive'], rest)}
       />
     );
