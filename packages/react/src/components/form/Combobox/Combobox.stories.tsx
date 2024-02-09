@@ -539,6 +539,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
       },
     ]);
     setValue([...value, inputValue.toLowerCase()]);
+    setInputValue('');
   };
 
   return (
@@ -556,6 +557,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
         onValueChange={(value) => {
           setValue(value);
         }}
+        inputValue={inputValue}
         multiple={true}
         onChange={(e) => setInputValue(e.target.value)}
       >

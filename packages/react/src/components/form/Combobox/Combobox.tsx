@@ -25,6 +25,7 @@ import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
 import useDebounce from '../../../utilities/useDebounce';
+import { omit } from '../../../utilities';
 
 import type { Option } from './useCombobox';
 import useCombobox, {
@@ -85,6 +86,10 @@ export type ComboboxProps = {
    */
   virtual?: boolean;
   /**
+   * Value of the input
+   */
+  inputValue?: string;
+  /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
@@ -139,7 +144,7 @@ export const Combobox = ({
   const listId = useId();
 
   const [open, setOpen] = useState(false);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
   const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
@@ -148,6 +153,12 @@ export const Combobox = ({
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
+
+  useEffect(() => {
+    if (rest.inputValue !== undefined) {
+      setInputValue(rest.inputValue);
+    }
+  }, [rest.inputValue]);
 
   const formFieldProps = useFormField(
     {
@@ -457,7 +468,7 @@ export const Combobox = ({
           hideLabel={hideLabel}
           formFieldProps={formFieldProps}
         />
-        <ComboboxInput {...rest} />
+        <ComboboxInput {...omit(['inputValue'], rest)} />
         <ComboboxError
           size={size}
           error={error}
