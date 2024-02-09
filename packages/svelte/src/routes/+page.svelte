@@ -23,6 +23,7 @@
     TabList,
     TabItem,
     TabContent,
+    Files,
   } from '$lib';
   //@ts-ignore
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
@@ -30,8 +31,6 @@
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
   //@ts-ignore
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
-  //@ts-ignore
-  import FilesIcon from '@navikt/aksel-icons/svg/Files.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
   import CheckboxGroup from '$lib/components/Form/Checkbox/CheckboxGroup.svelte';
   import Textarea from '$lib/components/Form/Textarea/Textarea.svelte';
@@ -736,9 +735,9 @@
           </C.MenuGroup>
           <C.Divider />
           <C.MenuGroup>
-            <C.MenuItem icon={FilesIcon}>Element link {i}</C.MenuItem>
+            <C.MenuItem IconComponent={Files}>Element link {i}</C.MenuItem>
             <C.MenuItem
-              icon={InformationSquareFillIcon}
+            IconComponent={Files}
               on:Click={() => {
                 isModalOpen = true;
               }}>Element link {i + 1}</C.MenuItem

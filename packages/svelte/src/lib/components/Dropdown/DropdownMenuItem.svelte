@@ -17,7 +17,10 @@
    * Icon to be displayed in the dropdown menu item.
    * @default null
    */
-  export let icon = null;
+  export let IconComponent = undefined;
+
+  let height = '100%';
+  let width = '100%';
 
   export let onClick = (e) => {};
 
@@ -38,16 +41,13 @@
       }
     }}
   >
-    {#if icon}
+    {#if IconComponent}
       <div class="icon {size}">
-        {@html icon}
-      </div>
-    {:else}
-      <div
-        class="icon {size}"
-        style="display:none;"
-      >
-        <svg />
+        <svelte:component
+          this={IconComponent}
+          {height}
+          {width}
+        />
       </div>
     {/if}
     <slot />
@@ -116,25 +116,13 @@
   .icon.small {
     height: var(--fds-sizing-4);
     width: var(--fds-sizing-4);
-    & :first-child {
-      height: var(--fds-sizing-4);
-      width: var(--fds-sizing-4);
-    }
   }
   .icon.medium {
     height: var(--fds-sizing-6);
     width: var(--fds-sizing-6);
-    & :first-child {
-      height: var(--fds-sizing-6);
-      width: var(--fds-sizing-6);
-    }
   }
   .icon.large {
     height: var(--fds-sizing-8);
     width: var(--fds-sizing-8);
-    & :first-child {
-      height: var(--fds-sizing-8);
-      width: var(--fds-sizing-8);
-    }
   }
 </style>

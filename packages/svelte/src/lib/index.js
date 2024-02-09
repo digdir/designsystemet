@@ -16,6 +16,8 @@ import Tag from './components/Tag/Tag.svelte';
 // @ts-ignore
 import Tooltip from './components/Tooltip/Tooltip.svelte';
 // @ts-ignore
+import Files from './components/Files/Files.svelte';
+// @ts-ignore
 import {
   Accordion,
   AccordionContent,
@@ -72,4 +74,5 @@ export {
   TabList,
   Search,
   DropdownMenu,
+  Files,
 };
