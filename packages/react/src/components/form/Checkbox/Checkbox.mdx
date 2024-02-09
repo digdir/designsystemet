@@ -6,6 +6,7 @@ import {
   Dont,
   Stack,
 } from '../../../../../../docs-components';
+import * as TableStories from '../../Table/Table.stories';
 
 import * as CheckboxStories from './Checkbox.stories';
 import * as CheckboxGroupStories from './Group/Group.stories';
@@ -49,6 +50,12 @@ import { Checkbox } from '@digdir/design-system-react';
 Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
 
 <Canvas of={CheckboxGroupStories.OneOption} />
+
+### Ubestemt
+
+Bruk `indeterminate` til å signalisere at en eller flere sjekkbokser er markert i gruppen.
+
+<Canvas of={TableStories.WithFormElements} />
 
 ### Checkbox.Group
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.49.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.48.0...@digdir/design-system-react@0.49.0) (2024-02-09)
+
+### Bug Fixes
+
+- **List:** :bug: Should correctly set `aria-labelledby` ([#1508](https://github.com/digdir/designsystemet/issues/1508)) ([41ff47c](https://github.com/digdir/designsystemet/commit/41ff47c7f8060b753db739dabe07cf50fb75e73b))
+
+### Features
+
+- **Checkbox:** Add indeterminate state ([#1513](https://github.com/digdir/designsystemet/issues/1513)) ([913857b](https://github.com/digdir/designsystemet/commit/913857b6da4748181990e658a894bfa79001e2a9))
+- **Combobox:** Debounce `Option` click ([#1506](https://github.com/digdir/designsystemet/issues/1506)) ([30ccbe7](https://github.com/digdir/designsystemet/commit/30ccbe7f79890892dffe089a4e456ce83ab74518))
+- **Heading:** Add two larger sizes ([#1512](https://github.com/digdir/designsystemet/issues/1512)) ([3d34248](https://github.com/digdir/designsystemet/commit/3d342484eaf74b9ad56c93e7b34b2b4d4169ce6c))
+
 # [0.48.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.47.0...@digdir/design-system-react@0.48.0) (2024-02-07)
 
 ### Bug Fixes
