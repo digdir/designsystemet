@@ -160,13 +160,14 @@ export const Combobox = ({
   );
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
-  const { options, optionsChildren, restChildren, optionValues } = useCombobox({
-    children,
-    inputValue,
-    filter,
-    multiple,
-    selectedOptions,
-  });
+  const { options, optionsChildren, restChildren, optionValues, customIds } =
+    useCombobox({
+      children,
+      inputValue,
+      filter,
+      multiple,
+      selectedOptions,
+    });
 
   // if value is set, set input value to the label of the value
   useEffect(() => {
@@ -306,7 +307,10 @@ export const Combobox = ({
       case 'Enter':
         event.preventDefault();
         if (activeIndex !== null && optionsChildren[activeIndex]) {
-          const child = optionsChildren[activeIndex];
+          console.log({ customIds });
+          const valueIndex = activeIndex - customIds.length;
+
+          const child = optionsChildren[valueIndex];
           if (isComboboxOption(child)) {
             const props = child.props;
             const option = options.find(

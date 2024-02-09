@@ -120,6 +120,7 @@ export default function useCombobox({
     optionValues,
     restChildren,
     options,
+    customIds,
   };
 }
 
