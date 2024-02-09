@@ -526,9 +526,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
   const [options, setOptions] = React.useState(PLACES);
 
   const onNewValueAdd = () => {
-    if (!inputValue) return;
-    if (options.find((o) => o.value === inputValue.toLowerCase())) return;
-    if (options.find((o) => o.value === inputValue.toLowerCase())) return;
+    if (!showAddNew) return;
 
     setOptions([
       ...options,
@@ -539,8 +537,11 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
       },
     ]);
     setValue([...value, inputValue.toLowerCase()]);
-    setInputValue('');
   };
+
+  const showAddNew =
+    inputValue &&
+    !options.some((option) => option.value === inputValue.toLowerCase());
 
   return (
     <>
@@ -556,36 +557,39 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
         value={value}
         onValueChange={(value) => {
           setValue(value);
+          setInputValue('');
         }}
         inputValue={inputValue}
         multiple={true}
         onChange={(e) => setInputValue(e.target.value)}
       >
-        <Combobox.Custom
-          style={{
-            display: 'flex',
-            gap: 'var(--fds-spacing-2)',
-            alignContent: 'center',
-          }}
-          asChild
-          interactive
-          id='custom-option'
-          onSelect={onNewValueAdd}
-        >
-          <Button
-            variant='secondary'
-            onClick={onNewValueAdd}
+        {showAddNew && (
+          <Combobox.Custom
             style={{
-              width: '100%',
+              display: 'flex',
+              gap: 'var(--fds-spacing-2)',
+              alignContent: 'center',
             }}
+            asChild
+            interactive
+            id='custom-option'
+            onSelect={onNewValueAdd}
           >
-            <PlusCircleIcon
-              title='plus'
-              fontSize='1.5rem'
-            />
-            Legg til ny verdi
-          </Button>
-        </Combobox.Custom>
+            <Button
+              variant='secondary'
+              onClick={onNewValueAdd}
+              style={{
+                width: '100%',
+              }}
+            >
+              <PlusCircleIcon
+                title='plus'
+                fontSize='1.5rem'
+              />
+              Legg til &quot;{inputValue}&quot;
+            </Button>
+          </Combobox.Custom>
+        )}
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {options.map((item, index) => (
           <Combobox.Option

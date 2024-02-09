@@ -236,11 +236,11 @@ export const Combobox = ({
   // Send new value if option was clicked
   useEffect(() => {
     const selectedHash = JSON.stringify(selectedOptions);
-    if (prevSelectedHash !== selectedHash) {
-      const values = selectedOptions.map((option) => option.value);
-      onValueChange?.(values);
-      setPrevSelectedHash(selectedHash);
-    }
+    if (prevSelectedHash === selectedHash) return;
+
+    const values = selectedOptions.map((option) => option.value);
+    onValueChange?.(values);
+    setPrevSelectedHash(selectedHash);
   }, [onValueChange, selectedOptions, prevSelectedHash]);
 
   useEffect(() => {
@@ -257,7 +257,7 @@ export const Combobox = ({
   // handle click on option, either select or deselect - Handles single or multiple
   const handleSelectOption = (option: Option) => {
     // if option is already selected, remove it
-    if (selectedOptions.find((i) => i.value === option.value)) {
+    if (value && value.includes(option.value)) {
       setSelectedOptions((prev) =>
         prev.filter((i) => i.value !== option.value),
       );
@@ -438,6 +438,7 @@ export const Combobox = ({
           const option = options.find((option) => option.value === value);
           debouncedHandleSelectOption(option as Option);
         },
+        handleSelectOption: debouncedHandleSelectOption,
         chipSrLabel,
         listRef,
       }}
@@ -571,6 +572,7 @@ type ComboboxContextType = {
   onOptionClick: (value: string) => void;
   setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
   chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
+  handleSelectOption: (option: Option) => void;
   listRef: UseListNavigationProps['listRef'];
 };
 
