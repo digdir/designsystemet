@@ -1,4 +1,4 @@
-import { forwardRef, useContext, useId } from 'react';
+import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
@@ -15,6 +15,10 @@ export type ComboboxCustomProps = {
    */
   interactive?: boolean;
   /**
+   * Required if the element is interactive.
+   */
+  id?: string;
+  /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */
@@ -22,7 +26,11 @@ export type ComboboxCustomProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
-  ({ asChild, className, ...rest }, ref) => {
+  ({ asChild, interactive, id, className, ...rest }, ref) => {
+    if (interactive && !id) {
+      throw new Error('If ComboboxCustom is interactive, it must have an id');
+    }
+
     const Component = asChild ? Slot : 'div';
 
     const randomId = useId();
@@ -32,15 +40,22 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { size } = context;
+    const { size, activeIndex, optionValues } = context;
+
+    const index = useMemo(
+      () => id && optionValues.indexOf(id),
+      [optionValues, id],
+    );
 
     return (
       <Component
         ref={ref}
         tabIndex={-1}
         className={cl(classes.custom, classes[size], className)}
-        id={rest.id || randomId}
+        id={id || randomId}
         role='option'
+        aria-selected={activeIndex === index}
+        data-active={activeIndex === index}
         {...omit(['interactive'], rest)}
       />
     );

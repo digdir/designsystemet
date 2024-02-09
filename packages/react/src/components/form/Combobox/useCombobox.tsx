@@ -84,24 +84,30 @@ export default function useCombobox({
     });
   }, [options, children, inputValue, multiple, filter]);
 
+  const customIds = useMemo(() => {
+    // find all custom components with `interactive=true` and generate random values for them
+    const children_ = React.Children.toArray(children).filter((child) => {
+      return isInteractiveComboboxCustom(child);
+    }) as React.ReactElement<ComboboxCustomProps>[];
+
+    // return all ids
+    return children_.map((child) => {
+      if (!child.props.id)
+        throw new Error('If ComboboxCustom is interactive, it must have an id');
+
+      return child.props.id;
+    });
+  }, [children]);
+
   const optionValues = useMemo(() => {
     // create an index map of values from optionsChildren
-    return optionsChildren.map((child) => {
+    const options = optionsChildren.map((child) => {
       const { value } = child.props;
       return value;
     });
-  }, [optionsChildren]);
 
-  const customRandomValues = useMemo(() => {
-    // find all custom components with `interactive=true` and generate random values for them
-    return React.Children.toArray(children)
-      .filter((child) => {
-        return isComboboxCustom(child) && child.props.interactive;
-      })
-      .map(() => Math.random().toString(36).substring(7));
-  }, [children]);
-
-  console.log(customRandomValues, 'customRandomValues');
+    return [...customIds, ...options];
+  }, [customIds, optionsChildren]);
 
   const restChildren = useMemo(() => {
     return React.Children.toArray(children).filter((child) => {
@@ -127,4 +133,10 @@ export function isComboboxCustom(
   child: React.ReactNode,
 ): child is React.ReactElement<ComboboxCustomProps> {
   return React.isValidElement(child) && child.type === ComboboxCustom;
+}
+
+export function isInteractiveComboboxCustom(
+  child: React.ReactNode,
+): child is React.ReactElement<ComboboxCustomProps> {
+  return isComboboxCustom(child) && child.props.interactive === true;
 }

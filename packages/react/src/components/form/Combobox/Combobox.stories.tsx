@@ -559,6 +559,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
           }}
           asChild
           interactive
+          id='custom-option'
         >
           <Button
             variant='secondary'
