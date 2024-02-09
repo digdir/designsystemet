@@ -311,9 +311,12 @@ export const Combobox = ({
         break;
       case 'Enter':
         event.preventDefault();
-        if (activeIndex !== null && optionsChildren[activeIndex]) {
+        if (
+          activeIndex !== null &&
+          (optionsChildren[activeIndex] || customIds.length > 0)
+        ) {
           // check if we are in the custom components
-          if (activeIndex < customIds.length) {
+          if (activeIndex <= customIds.length) {
             // send `onSelect` event to the custom component
             const selectedId = customIds[activeIndex];
             const selectedComponent = restChildren.find(
