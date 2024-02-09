@@ -561,6 +561,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
         }}
         inputValue={inputValue}
         multiple={true}
+        placeholder='Skriv for å legge inn ny'
         onChange={(e) => setInputValue(e.target.value)}
       >
         {showAddNew && (
