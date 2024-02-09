@@ -110,7 +110,7 @@
     &.small {
       height: var(--fds-sizing-4);
       width: var(--fds-sizing-4);
-      & > svg {
+      & :first-child {
         height: var(--fds-sizing-4);
         width: var(--fds-sizing-4);
       }
@@ -118,7 +118,7 @@
     &.medium {
       height: var(--fds-sizing-6);
       width: var(--fds-sizing-6);
-      & > svg {
+      & :first-child {
         height: var(--fds-sizing-6);
         width: var(--fds-sizing-6);
       }
@@ -126,7 +126,7 @@
     &.large {
       height: var(--fds-sizing-8);
       width: var(--fds-sizing-8);
-      & > svg {
+      & :first-child {
         height: var(--fds-sizing-8);
         width: var(--fds-sizing-8);
       }
