@@ -192,9 +192,12 @@ export const WithFormElements: Story = (args) => {
   const [headerChecked, setHeaderChecked] = useState(false);
   const [checkedItems, setCheckedItems] = useState<CheckedItems>({
     1: false,
-    2: false,
+    2: true,
     3: false,
   });
+
+  const interderminate =
+    Boolean(Object.values(checkedItems).find((item) => item)) && !headerChecked;
 
   useEffect(() => {
     const allChecked = Object.values(checkedItems).every((item) => item);
@@ -226,6 +229,7 @@ export const WithFormElements: Story = (args) => {
             <Checkbox
               checked={headerChecked}
               onChange={handleHeaderCheckboxChange}
+              indeterminate={interderminate}
               value='all'
               size='small'
             />
