@@ -44,24 +44,25 @@
     'description .';
 }
 
-.icon {
+.track {
   grid-area: input;
   pointer-events: none;
   width: auto;
   margin: auto;
   overflow: visible;
   border-radius: 16px;
+  background-color: var(--fds-semantic-surface-neutral-dark);
 }
 
-.switch.small .icon {
+.small .track {
   height: var(--fds-sizing-5);
 }
 
-.switch.medium .icon {
+.medium .track {
   height: var(--fds-sizing-6);
 }
 
-.switch.large .icon {
+.large .track {
   height: var(--fds-sizing-7);
 }
 
