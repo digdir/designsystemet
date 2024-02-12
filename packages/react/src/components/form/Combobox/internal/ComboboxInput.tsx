@@ -109,6 +109,9 @@ export const ComboboxInput = ({
       {...getReferenceProps({
         ref: refs?.setReference,
         role: null,
+        'aria-controls': null,
+        'aria-expanded': null,
+        'aria-haspopup': null,
         /* If we click the wrapper, open the list, set index to first option, and focus the input */
         onClick() {
           if (disabled) return;
