@@ -45,10 +45,19 @@ export const ComponentApi = () => {
           <Pagination.Link isActive>1</Pagination.Link>
         </Pagination.Item>
         <Pagination.Item>
+          <Pagination.Link>2</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>3</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
           <Pagination.Ellipsis />
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Link>6</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>7</Pagination.Link>
         </Pagination.Item>
       </Pagination.Content>
     </Pagination.Root>
