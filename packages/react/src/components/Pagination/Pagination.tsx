@@ -4,8 +4,12 @@ import cl from 'clsx';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
-import { Paragraph } from '../Typography';
 
+import { PaginationRoot } from './PaginationRoot';
+import { PaginationContent } from './PaginationContent';
+import { PaginationItem } from './PaginationItem';
+import { PaginationLink } from './PaginationLink';
+import { PaginationEllipsis } from './PaginationEllipsis';
 import classes from './Pagination.module.css';
 
 export type PaginationProps = {
@@ -89,13 +93,15 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     ref,
   ) => {
     return (
-      <nav
+      <PaginationRoot
         ref={ref}
         aria-label='Pagination'
+        size={size}
+        compact={compact}
         {...rest}
       >
-        <ul className={cl(classes.pagination, classes[size])}>
-          <li>
+        <PaginationContent>
+          <PaginationItem>
             <Button
               aria-label={previousLabel}
               onClick={() => {
@@ -110,40 +116,26 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               <ChevronLeftIcon aria-hidden />
               {!hideLabels && previousLabel}
             </Button>
-          </li>
+          </PaginationItem>
           {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
-            <li
-              className={cl(
-                classes.listitem,
-                classes[size],
-                compact && classes.compact,
-              )}
-              key={`${step}${i}`}
-            >
+            <PaginationItem key={`${step}${i}`}>
               {step === 'ellipsis' ? (
-                <Paragraph
-                  className={cl(classes.ellipsis)}
-                  size={size}
-                >
-                  …
-                </Paragraph>
+                <PaginationEllipsis />
               ) : (
-                <Button
-                  variant={currentPage === step ? 'primary' : 'tertiary'}
+                <PaginationLink
                   aria-current={currentPage === step}
-                  color={'first'}
-                  size={size}
+                  isActive={currentPage === step}
                   aria-label={itemLabel(step)}
                   onClick={() => {
                     onChange(step);
                   }}
                 >
                   {step}
-                </Button>
+                </PaginationLink>
               )}
-            </li>
+            </PaginationItem>
           ))}
-          <li>
+          <PaginationItem>
             <Button
               variant={'tertiary'}
               color={'first'}
@@ -160,9 +152,9 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               <ChevronRightIcon aria-hidden />
               {!hideLabels && nextLabel}
             </Button>
-          </li>
-        </ul>
-      </nav>
+          </PaginationItem>
+        </PaginationContent>
+      </PaginationRoot>
     );
   },
 );

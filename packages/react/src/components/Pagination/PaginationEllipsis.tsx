@@ -13,7 +13,7 @@ export type PaginationEllipsisProps = ParagraphProps;
 export const PaginationEllipsis = forwardRef<
   HTMLParagraphElement,
   PaginationEllipsisProps
->(({ asChild, ...rest }, ref) => {
+>(({ asChild, className, ...rest }, ref) => {
   const Component = asChild ? Slot : Paragraph;
 
   const { size } = useContext(PaginationContext);
@@ -21,7 +21,7 @@ export const PaginationEllipsis = forwardRef<
   return (
     <Component
       ref={ref}
-      className={cl(classes.ellipsis)}
+      className={cl(classes.ellipsis, className)}
       size={size}
       {...rest}
     >

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
 import { Pagination } from '.';
 
@@ -42,6 +43,12 @@ export const ComponentApi = () => {
     <Pagination.Root>
       <Pagination.Content>
         <Pagination.Item>
+          <Pagination.Link>
+            <ChevronLeftIcon aria-hidden />
+            Forrige
+          </Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
           <Pagination.Link isActive>1</Pagination.Link>
         </Pagination.Item>
         <Pagination.Item>
@@ -58,6 +65,12 @@ export const ComponentApi = () => {
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Link>7</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>
+            Neste
+            <ChevronRightIcon aria-hidden />
+          </Pagination.Link>
         </Pagination.Item>
       </Pagination.Content>
     </Pagination.Root>
