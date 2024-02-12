@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ReactNode, SVGAttributes } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
@@ -89,7 +89,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             classes[size],
             inputProps.disabled && classes.disabled,
             readOnly && classes.readonly,
-            position === 'right' && classes.right,
             !children && classes.noLabel,
             className,
           )}
@@ -102,27 +101,26 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           />
           {/* <SwitchIcon className={classes.icon} /> */}
 
-          <span className={classes.track}>
+          {/* <span className={classes.track}>
             <span className={classes.thumb}>
               <span className={classes.checkmark}></span>
             </span>
-          </span>
-          {children && (
-            <Label
-              className={classes.label}
-              htmlFor={inputProps.id}
-              size={size}
-              weight='regular'
-            >
-              {readOnly && (
-                <PadlockLockedFillIcon
-                  aria-hidden
-                  className={classes.padlock}
-                />
-              )}
-              <span>{children}</span>
-            </Label>
-          )}
+          </span> */}
+          <Label
+            className={cl(classes.label, position === 'right' && classes.right)}
+            htmlFor={inputProps.id}
+            size={size}
+            weight='regular'
+          >
+            <span className={classes.thumb}></span>
+            {readOnly && (
+              <PadlockLockedFillIcon
+                aria-hidden
+                className={classes.padlock}
+              />
+            )}
+            <span>{children}</span>
+          </Label>
           {description && (
             <Paragraph
               asChild

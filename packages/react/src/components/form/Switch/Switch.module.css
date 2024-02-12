@@ -1,17 +1,9 @@
 .switch {
-  --fds-inner-focus-border-color: var(--fds-semantic-border-focus-boxshadow);
-  --fds-outer-focus-border-color: var(--fds-semantic-border-focus-outline);
-  --fds-focus-border-width: 3px;
   --fds-transition: 200ms;
+  --fds-switch-height: 1.75rem;
+  --fds-switch-focus-border-width: 3px;
 
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 100% 1fr;
-  grid-template-areas:
-    'input label'
-    '. description';
-  gap: 0 var(--fds-spacing-2);
-  grid-auto-flow: column;
+  position: relative;
 }
 
 .switch.noLabel {
@@ -24,7 +16,7 @@
   }
 }
 
-.switch.small {
+/* .switch.small {
   min-height: var(--fds-sizing-8);
 }
 
@@ -34,40 +26,14 @@
 
 .switch.large {
   min-height: var(--fds-sizing-12);
-}
+} */
 
 .right {
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr auto;
-  grid-template-areas:
-    'label input'
-    'description .';
-}
-
-.track {
-  grid-area: input;
-  pointer-events: none;
-  width: auto;
-  margin: auto;
-  overflow: visible;
-  border-radius: 16px;
-  background-color: var(--fds-semantic-surface-neutral-dark);
-}
-
-.small .track {
-  height: var(--fds-sizing-5);
-}
-
-.medium .track {
-  height: var(--fds-sizing-6);
-}
-
-.large .track {
-  height: var(--fds-sizing-7);
+  flex-direction: row-reverse;
 }
 
 .label {
-  grid-area: label;
+  min-height: var(--fds-sizing-10);
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
@@ -76,21 +42,33 @@
   cursor: pointer;
 }
 
+/* Track */
+.label::before {
+  content: '';
+  pointer-events: none;
+  width: calc(var(--fds-switch-height) * 2);
+  height: var(--fds-switch-height);
+  margin: auto;
+  overflow: visible;
+  border-radius: var(--fds-border_radius-full);
+  background-color: var(--fds-semantic-surface-neutral-dark);
+  transition: background-color var(--fds-transition) ease;
+}
+
 .description {
-  grid-area: description;
   padding-left: 3px;
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
 .input {
-  min-width: 44px;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  z-index: 1;
   opacity: 0;
-  margin: 0;
-  grid-area: input;
   cursor: pointer;
+  margin: 0;
 }
 
 .readonly > .input,
@@ -100,88 +78,100 @@
 
 .disabled > .input,
 .disabled > .label,
-.disabled > .description {
-  color: var(--fds-semantic-border-neutral-subtle);
-}
-
-.disabled > .input,
-.disabled > .label {
+.disabled > .label::before {
   cursor: not-allowed;
 }
 
-.icon > .track {
+.disabled > .label,
+.disabled > .label::before,
+.disabled > .description {
+  opacity: var(--fds-opacity-disabled);
+}
+
+.input:focus-visible + .label::before {
+  outline: var(--fds-switch-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+  box-shadow: inset 0 0 0 var(--fds-switch-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+}
+
+.track {
   transition: color var(--fds-transition) ease;
   color: var(--fds-semantic-surface-neutral-dark);
 }
 
-.icon > .thumb {
+.thumb {
+  position: absolute;
+  height: var(--fds-switch-height);
+  width: var(--fds-switch-height);
+  scale: 0.8;
+  border-radius: var(--fds-border_radius-full);
+  left: 0;
   transition: transform var(--fds-transition) ease;
-  color: var(--fds-semantic-background-default);
+  background-color: var(--fds-semantic-background-default);
 }
 
-.icon > .thumb > .checkmark {
+.thumb > .checkmark {
   opacity: 0;
   transition: opacity var(--fds-transition) ease-in-out;
   transform: translate(6px, 6px);
 }
 
-.input:disabled ~ .icon > .track {
+.input:disabled + .label::before {
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
-.input:not([readonly], :disabled):checked ~ .icon > .track,
-.input:not([readonly], :disabled):checked ~ .icon > .thumb > .checkmark {
+.readonly .input[readonly]:checked ~ .thumb > .checkmark {
+  opacity: 1;
+  color: var(--fds-semantic-background-subtle);
+}
+
+.input:not([readonly], :disabled):checked + .label::before,
+.input:not([readonly], :disabled):checked ~ .label::before .thumb > .checkmark {
   opacity: 1;
   color: var(--fds-semantic-surface-success-default);
 }
 
-.input:checked ~ .icon > .thumb {
-  transform: translateX(22px);
+.input:checked + .label .thumb {
+  transform: translateX(120%);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .input:not([readonly], :disabled):hover ~ .icon > .thumb {
+  .input:not([readonly], :disabled):hover + .label .thumb {
     transform: translateX(4px);
   }
 
-  .input:not([readonly], :disabled):hover ~ .label {
+  .input:not([readonly], :disabled):hover + .label {
     color: var(--fds-semantic-border-input-hover);
   }
 
-  .input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb {
-    transform: translateX(17px);
+  .input:not(:disabled, [readonly]):checked:hover + .label .thumb {
+    transform: translateX(100%);
   }
 
-  .input:not(:checked, :disabled, [readonly]):hover ~ .icon > .track {
-    color: var(--fds-semantic-surface-neutral-dark-hover);
+  .input:not(:checked, :disabled, [readonly]):hover + .label::before {
+    background-color: var(--fds-semantic-surface-neutral-dark-hover);
   }
 
-  .input:not(:disabled, [readonly]):checked:hover ~ .icon > .track,
-  .input:not(:disabled, [readonly]):checked:hover ~ .icon > .thumb > .checkmark {
-    color: var(--fds-semantic-surface-success-hover);
+  .input:not(:disabled, [readonly]):checked:hover + .label::before,
+  .input:not(:disabled, [readonly]):checked:hover ~ .thumb > .checkmark {
+    background-color: var(--fds-semantic-surface-success-hover);
   }
 }
 
-.readonly .input[readonly] ~ .icon > .track {
-  stroke: var(--fds-semantic-border-neutral-subtle);
-  color: var(--fds-semantic-background-subtle);
+.readonly .input[readonly] + .label::before {
+  border-color: var(--fds-semantic-border-neutral-subtle);
+  background-color: var(--fds-semantic-background-subtle);
 }
 
-.readonly .input[readonly]:checked ~ .icon .thumb > .checkmark {
-  opacity: 1;
-  color: var(--fds-semantic-background-subtle);
+.readonly .input[readonly] ~ .thumb {
+  background-color: var(--fds-semantic-border-neutral-default);
 }
 
-.readonly .input[readonly] ~ .icon .thumb {
-  color: var(--fds-semantic-border-neutral-default);
-}
-
-.input:focus-visible:not(:disabled) ~ .icon {
+.input:focus-visible:not(:disabled) ~ {
   outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
   outline-offset: 0;
 }
 
-.input:focus-visible:not(:disabled) ~ .icon .track {
+.input:focus-visible:not(:disabled) + .label::before {
   stroke: var(--fds-inner-focus-border-color);
   stroke-width: var(--fds-focus-border-width);
 }
@@ -190,4 +180,54 @@
   grid-area: label;
   height: 1.2em;
   width: 1.2em;
+}
+
+/** Sizing */
+
+.small,
+.small .label {
+  min-height: var(--fds-sizing-8);
+}
+
+.medium,
+.medium .label {
+  min-height: var(--fds-sizing-10);
+}
+
+.large,
+.large .label {
+  min-height: var(--fds-sizing-12);
+}
+
+.small {
+  --fds-switch-height: 1.5rem;
+
+  min-width: var(--fds-sizing-8);
+}
+
+.small .input {
+  left: -0.25rem;
+  top: -0.25rem;
+}
+
+.medium {
+  --fds-switch-height: 1.75rem;
+
+  min-width: var(--fds-sizing-10);
+}
+
+.medium .input {
+  left: 0;
+  top: 0;
+}
+
+.large {
+  --fds-switch-height: 2rem;
+
+  min-width: var(--fds-sizing-12);
+}
+
+.large .input {
+  left: 0;
+  top: 0.25rem;
 }
