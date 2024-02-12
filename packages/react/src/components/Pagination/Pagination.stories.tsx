@@ -36,3 +36,21 @@ Preview.args = {
   currentPage: 1,
   itemLabel: (num) => `Side ${num}`,
 };
+
+export const ComponentApi = () => {
+  return (
+    <Pagination.Root>
+      <Pagination.Content>
+        <Pagination.Item>
+          <Pagination.Link isActive>1</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Ellipsis />
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>6</Pagination.Link>
+        </Pagination.Item>
+      </Pagination.Content>
+    </Pagination.Root>
+  );
+};
