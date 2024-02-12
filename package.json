@@ -5,7 +5,9 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "docs-components/",
+    ".storybook/"
   ],
   "scripts": {
     "test": "jest",
