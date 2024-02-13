@@ -4,10 +4,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: var(--fds-spacing-4);
+  padding: var(--fds-spacing-14);
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
+  background-color: white;
   gap: var(--fds-spacing-4);
 }
 
