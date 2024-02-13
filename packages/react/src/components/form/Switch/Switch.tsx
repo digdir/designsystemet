@@ -89,7 +89,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             classes[size],
             inputProps.disabled && classes.disabled,
             readOnly && classes.readonly,
-            !children && classes.noLabel,
             className,
           )}
         >
@@ -99,20 +98,16 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             {...omit(['size', 'error'], rest)}
             {...inputProps}
           />
-          {/* <SwitchIcon className={classes.icon} /> */}
 
-          {/* <span className={classes.track}>
-            <span className={classes.thumb}>
-              <span className={classes.checkmark}></span>
-            </span>
-          </span> */}
           <Label
             className={cl(classes.label, position === 'right' && classes.right)}
             htmlFor={inputProps.id}
             size={size}
             weight='regular'
           >
-            <span className={classes.thumb}></span>
+            <span className={classes.track}>
+              <span className={classes.thumb} />
+            </span>
             {readOnly && (
               <PadlockLockedFillIcon
                 aria-hidden
