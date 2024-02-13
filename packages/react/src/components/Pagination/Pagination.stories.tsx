@@ -85,13 +85,10 @@ export const WithAnchor = () => {
       <Pagination.Content>
         <Pagination.Item>
           <Pagination.Previous asChild>
-            <Link
-              href='#'
-              style={{ textDecoration: 'none' }}
-            >
+            <a href='#som-anchor'>
               <ChevronLeftIcon aria-hidden />
               Forrige
-            </Link>
+            </a>
           </Pagination.Previous>
         </Pagination.Item>
         <Pagination.Item>
@@ -99,12 +96,7 @@ export const WithAnchor = () => {
             isActive
             asChild
           >
-            <Link
-              href='#'
-              style={{ color: 'white', textDecoration: 'none' }}
-            >
-              1
-            </Link>
+            <a href='#som-anchor'>1</a>
           </Pagination.Link>
         </Pagination.Item>
         <Pagination.Item>
@@ -112,23 +104,15 @@ export const WithAnchor = () => {
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Link asChild>
-            <Link
-              href='#'
-              style={{ textDecoration: 'none' }}
-            >
-              6
-            </Link>
+            <a href='#som-anchor'>6</a>
           </Pagination.Link>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Next asChild>
-            <Link
-              href='#'
-              style={{ textDecoration: 'none' }}
-            >
+            <a href='#som-anchor'>
               Neste
               <ChevronRightIcon aria-hidden />
-            </Link>
+            </a>
           </Pagination.Next>
         </Pagination.Item>
       </Pagination.Content>
