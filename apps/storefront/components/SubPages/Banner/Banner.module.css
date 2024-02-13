@@ -55,6 +55,16 @@
   fill: transparent;
 }
 
+@media (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+
+  .ingress {
+    text-align: left;
+  }
+}
+
 .logo.svg-red path {
   fill: var(--fds-brand-alt1-600);
 }
