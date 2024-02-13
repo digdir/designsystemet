@@ -11,16 +11,25 @@ import {
 import { NavMenuPageLayout } from '@layouts';
 import { Meta, NavigationCard, Grid } from '@components';
 
-export default ({ children }) => <NavMenuPageLayout content={children} />;
+import { BookIcon } from '@navikt/aksel-icons';
+
+export default ({ children }) => (
+  <NavMenuPageLayout
+    content={children}
+    banner={{
+      title: 'Grunnleggende',
+      ingress:
+        'Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
+      icon: <BookIcon fontSize={34} />,
+      color: 'yellow',
+    }}
+  />
+);
 
 <Meta
   title='Grunnleggende'
   description='Beskrivelse'
 />
-
-# Grunnleggende
-
-Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.
 
 ## Introduksjon
 
