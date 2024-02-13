@@ -1,8 +1,10 @@
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { PaginationProps } from './Pagination';
-import { Pagination } from './Pagination';
+import type { PaginationRootProps } from './PaginationRoot';
+
+import type { PaginationProps } from './';
+import { Pagination } from './';
 
 const render = (props: PaginationProps) => renderRtl(<Pagination {...props} />);
 
@@ -143,5 +145,92 @@ describe('Pagination', () => {
     expect(screen.getByRole('button', { name: 'Page 5' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Page 6' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Page 10' })).toBeInTheDocument();
+  });
+});
+
+const renderWithRoot = (props: PaginationRootProps) => {
+  renderRtl(
+    <Pagination.Root {...props}>
+      <Pagination.Content>
+        <Pagination.Item>
+          <Pagination.Previous>Forrige</Pagination.Previous>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link isActive>1</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>2</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>3</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Ellipsis />
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>6</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link>7</Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Next>Neste</Pagination.Next>
+        </Pagination.Item>
+      </Pagination.Content>
+    </Pagination.Root>,
+  );
+};
+
+describe('Pagination.Root', () => {
+  it('should render correctly with default props', () => {
+    renderWithRoot({});
+
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
+  });
+
+  it('should render correctly with custom props', () => {
+    renderWithRoot({
+      size: 'large',
+      compact: true,
+    });
+
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
+  });
+
+  it('should render all children correctly', () => {
+    renderWithRoot({});
+
+    expect(screen.getByText('Forrige')).toBeInTheDocument();
+    expect(screen.getByText('Neste')).toBeInTheDocument();
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByText('6')).toBeInTheDocument();
+    expect(screen.getByText('7')).toBeInTheDocument();
+  });
+});
+
+describe('Pagination.Link', () => {
+  it('should render correctly with default props', () => {
+    renderRtl(
+      <Pagination.Root>
+        <Pagination.Link>1</Pagination.Link>
+      </Pagination.Root>,
+    );
+
+    expect(screen.getByText('1')).toBeInTheDocument();
+  });
+
+  it('should render as anchor when asChild is true', () => {
+    renderRtl(
+      <Pagination.Root>
+        <Pagination.Link asChild>
+          <a href='#1'>1</a>
+        </Pagination.Link>
+      </Pagination.Root>,
+    );
+
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByRole('link')).toBeInTheDocument();
   });
 });
