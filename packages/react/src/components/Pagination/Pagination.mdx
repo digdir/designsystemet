@@ -70,6 +70,12 @@ const [currentPage, setCurrentPage] = useState(1);
 </Pagination.Root>
 ```
 
+## Som anchor
+
+Alle komponenter støtter `asChild`, så her endrer vi `Pagination.Link` til å være en `a`-tag.
+
+<Canvas of={PaginationStories.WithAnchor} />
+
 ## `Pagination.Item`
 
 <ArgsTable of={Pagination.Item} />
@@ -93,3 +99,7 @@ const [currentPage, setCurrentPage] = useState(1);
 ## `Pagination.Next`
 
 <ArgsTable of={Pagination.Next} />
+
+## `Pagination.Ellipsis`
+
+<ArgsTable of={Pagination.Ellipsis} />

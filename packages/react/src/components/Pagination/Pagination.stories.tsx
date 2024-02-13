@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
+import { Link } from '../Link';
+
 import { Pagination } from '.';
 
 export default {
@@ -70,6 +72,63 @@ export const ComponentApi = () => {
           <Pagination.Next>
             Neste
             <ChevronRightIcon aria-hidden />
+          </Pagination.Next>
+        </Pagination.Item>
+      </Pagination.Content>
+    </Pagination.Root>
+  );
+};
+
+export const WithAnchor = () => {
+  return (
+    <Pagination.Root>
+      <Pagination.Content>
+        <Pagination.Item>
+          <Pagination.Previous asChild>
+            <Link
+              href='#'
+              style={{ textDecoration: 'none' }}
+            >
+              <ChevronLeftIcon aria-hidden />
+              Forrige
+            </Link>
+          </Pagination.Previous>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link
+            isActive
+            asChild
+          >
+            <Link
+              href='#'
+              style={{ color: 'white', textDecoration: 'none' }}
+            >
+              1
+            </Link>
+          </Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Ellipsis />
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Link asChild>
+            <Link
+              href='#'
+              style={{ textDecoration: 'none' }}
+            >
+              6
+            </Link>
+          </Pagination.Link>
+        </Pagination.Item>
+        <Pagination.Item>
+          <Pagination.Next asChild>
+            <Link
+              href='#'
+              style={{ textDecoration: 'none' }}
+            >
+              Neste
+              <ChevronRightIcon aria-hidden />
+            </Link>
           </Pagination.Next>
         </Pagination.Item>
       </Pagination.Content>

@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext } from 'react';
 import cl from 'clsx';
 
@@ -8,25 +7,26 @@ import { Paragraph } from '../Typography';
 import classes from './Pagination.module.css';
 import { PaginationContext } from './PaginationRoot';
 
-export type PaginationEllipsisProps = ParagraphProps;
+export type PaginationEllipsisProps = Omit<
+  ParagraphProps,
+  'size' | 'spacing' | 'short'
+>;
 
 export const PaginationEllipsis = forwardRef<
   HTMLParagraphElement,
   PaginationEllipsisProps
->(({ asChild, className, ...rest }, ref) => {
-  const Component = asChild ? Slot : Paragraph;
-
+>(({ className, ...rest }, ref) => {
   const { size } = useContext(PaginationContext);
 
   return (
-    <Component
+    <Paragraph
       ref={ref}
       className={cl(classes.ellipsis, className)}
       size={size}
       {...rest}
     >
       …
-    </Component>
+    </Paragraph>
   );
 });
 

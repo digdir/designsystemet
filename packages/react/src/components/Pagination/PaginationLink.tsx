@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext } from 'react';
 
 import type { ButtonProps } from '../Button';
@@ -12,18 +11,16 @@ export type PaginationLinkProps = {
    * @default false
    */
   isActive?: boolean;
-} & ButtonProps;
+} & Omit<ButtonProps, 'size' | 'icon'>;
 
 export const PaginationLink = forwardRef<
   HTMLButtonElement,
   PaginationLinkProps
->(({ isActive, asChild, ...rest }, ref) => {
-  const Component = asChild ? Slot : Button;
-
+>(({ isActive, ...rest }, ref) => {
   const { size } = useContext(PaginationContext);
 
   return (
-    <Component
+    <Button
       ref={ref}
       variant={isActive ? 'primary' : 'tertiary'}
       aria-current={isActive}
