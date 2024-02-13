@@ -23,10 +23,6 @@
   cursor: pointer;
 }
 
-.right {
-  flex-direction: row-reverse;
-}
-
 .track {
   position: relative;
   display: inline-block;
@@ -41,9 +37,18 @@
 }
 
 .description {
-  padding-left: 3px;
+  padding-left: calc(var(--fds-switch-width) + var(--fds-spacing-2));
   margin-top: calc(var(--fds-spacing-2) * -1);
   color: var(--fds-semantic-text-neutral-subtle);
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.right + .description {
+  padding-left: 0;
+  padding-right: calc(var(--fds-switch-width) + var(--fds-spacing-2));
 }
 
 .input {
