@@ -43,10 +43,10 @@ export const ComponentApi = () => {
     <Pagination.Root>
       <Pagination.Content>
         <Pagination.Item>
-          <Pagination.Link>
+          <Pagination.Previous>
             <ChevronLeftIcon aria-hidden />
             Forrige
-          </Pagination.Link>
+          </Pagination.Previous>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Link isActive>1</Pagination.Link>
@@ -67,10 +67,10 @@ export const ComponentApi = () => {
           <Pagination.Link>7</Pagination.Link>
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link>
+          <Pagination.Next>
             Neste
             <ChevronRightIcon aria-hidden />
-          </Pagination.Link>
+          </Pagination.Next>
         </Pagination.Item>
       </Pagination.Content>
     </Pagination.Root>

@@ -1,6 +1,8 @@
-import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
+import { Meta, Controls, Primary, Canvas, ArgsTable } from '@storybook/blocks';
 
 import { Information } from '../../../../../docs-components';
+
+import { Pagination } from '../Pagination';
 
 import * as PaginationStories from './Pagination.stories';
 
@@ -15,11 +17,18 @@ Dette er en kontrollert komponent. Det vil si at komponentens tilstand om hvilke
 <Primary />
 <Controls of={PaginationStories.Preview} />
 
+## Bruk av individuelle komponenter
+
+Det er mulig å bruke `Pagination` for å bygge opp en egen paginering, dersom du vil ha mer kontroll.
+Her kan du legge inn det du vil, men må styre navigeringen selv.
+
 <Canvas of={PaginationStories.ComponentApi} />
 
 ## Bruk
 
 <Information text='token' />
+
+### Eksempel på simpel bruk
 
 ```tsx
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
@@ -33,6 +42,54 @@ const [currentPage, setCurrentPage] = useState(1);
   onChange={setCurrentPage}
   nextLabel='Neste'
   previousLabel='Forrige'
-  itemLabel={(num) => `Side ${num}}`
+  itemLabel={(num) => `Side ${num}`}
 />;
 ```
+
+### Eksempel på bruk med egne komponenter
+
+```tsx
+<Pagination.Root>
+  <Pagination.Content>
+    <Pagination.Item>
+      <Pagination.Previous>
+        <ChevronLeftIcon aria-hidden />
+        Forrige
+      </Pagination.Previous>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link isActive>1</Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Next>
+        Neste
+        <ChevronRightIcon aria-hidden />
+      </Pagination.Next>
+    </Pagination.Item>
+  </Pagination.Content>
+</Pagination.Root>
+```
+
+## `Pagination.Item`
+
+<ArgsTable of={Pagination.Item} />
+
+## `Pagination.Link`
+
+<ArgsTable of={Pagination.Link} />
+
+## `Pagination.Root`
+
+<ArgsTable of={Pagination.Root} />
+
+## `Pagination.Content`
+
+<ArgsTable of={Pagination.Content} />
+
+## `Pagination.Previous`
+
+<ArgsTable of={Pagination.Previous} />
+
+## `Pagination.Next`
+
+<ArgsTable of={Pagination.Next} />

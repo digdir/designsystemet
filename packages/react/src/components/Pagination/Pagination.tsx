@@ -140,8 +140,8 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 [classes.hidden]: currentPage === totalPages,
               })}
             >
-              <ChevronRightIcon aria-hidden />
               {!hideLabels && nextLabel}
+              <ChevronRightIcon aria-hidden />
             </PaginationNext>
           </PaginationItem>
         </PaginationContent>
