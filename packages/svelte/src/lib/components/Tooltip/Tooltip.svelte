@@ -6,12 +6,6 @@
   const ARROW_HEIGHT = 7;
 
   /**
-   * Content of the tooltip.
-   * @type {string}
-   */
-  export let content;
-
-  /**
    * Placement of the tooltip on the trigger.
    * @type {'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'}
    */
@@ -117,7 +111,7 @@
   }}
   use:floatingRef
 >
-  <slot />
+  <slot name="anchor" />
 </div>
 
 {#if open || (open === undefined && internalOpen)}
@@ -126,7 +120,7 @@
     use:floatingContent
     {...$$restProps}
   >
-    {content}
+    <slot name="content" />
     {#if showArrow}
       <div
         class="tooltip-arrow"

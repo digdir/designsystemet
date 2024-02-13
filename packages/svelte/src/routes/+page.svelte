@@ -754,20 +754,38 @@
   placement="top-start"
   showArrow={true}
 >
-  <Button>Click me to display a Tooltip</Button>
+  <Button slot="anchor">Click me to display a Tooltip</Button>
+  <span slot="content">Tooltip text</span>
+</Tooltip>
+<Tooltip
+  content="Tooltip text"
+  placement="top"
+  showArrow={true}
+>
+  <Button slot="anchor">Click me to display a Tooltip</Button>
+  <ul
+    style="margin: 0"
+    slot="content"
+  >
+    <li>First</li>
+    <li>Second</li>
+  </ul>
 </Tooltip>
 
 <p>
   Tooltips kan også legges <nobr
     ><Tooltip
       open={true}
-      content="Ganske kult?"
       placement="bottom"
-      ><abbr style="font-weight: bold; text-decoration: underline dotted;"
+    >
+      <abbr
+        slot="anchor"
+        style="font-weight: bold; text-decoration: underline dotted;"
         >til i en tekst</abbr
-      ></Tooltip
-    ></nobr
-  > for å gi mer informasjon!
+      >
+      <span slot="content">Ganske kult?</span>
+    </Tooltip>
+  </nobr> for å gi mer informasjon!
 </p>
 
 <h1 class="componentHeader">Spinner</h1>
