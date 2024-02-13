@@ -737,7 +737,7 @@
           <C.MenuGroup>
             <C.MenuItem IconComponent={Files}>Element link {i}</C.MenuItem>
             <C.MenuItem
-            IconComponent={Files}
+              IconComponent={Files}
               on:Click={() => {
                 isModalOpen = true;
               }}>Element link {i + 1}</C.MenuItem
@@ -751,9 +751,10 @@
 <h1 class="componentHeader">Tooltip</h1>
 <Tooltip
   content="Tooltip text"
-  placement="top"
+  placement="top-start"
+  showArrow={true}
 >
-  <Button>Tooltip</Button>
+  <Button>Click me to display a Tooltip</Button>
 </Tooltip>
 
 <p>

@@ -13,7 +13,7 @@
 
   /**
    * Placement of the tooltip on the trigger.
-   * @type {'top' | 'right' | 'bottom' | 'left'}
+   * @type {'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'}
    */
   export let placement = 'top';
 
@@ -42,6 +42,12 @@
    */
   export let arrowGap = 4;
 
+  /**
+   * Whether to show the tooltip arrow or not.
+   * @type {boolean}
+   */
+  export let showArrow = true;
+
   $: internalOpen = open ?? defaultOpen;
 
   const arrowRef = writable(null);
@@ -58,18 +64,40 @@
     ],
     onComputed({ placement, middlewareData }) {
       const { x, y } = middlewareData.arrow;
-      const staticSide = {
-        top: 'bottom',
-        right: 'left',
-        bottom: 'top',
-        left: 'right',
-      }[placement.split('-')[0]];
+      let staticSide, dynamicSide;
+
+      // Split placement into base and variation
+      const [basePlacement] = placement.split('-');
+
+      // Define static and dynamic sides based on base placement
+      switch (basePlacement) {
+        case 'top':
+          staticSide = 'bottom';
+          dynamicSide = 'left';
+          break;
+        case 'bottom':
+          staticSide = 'top';
+          dynamicSide = 'left';
+          break;
+        case 'left':
+          staticSide = 'right';
+          dynamicSide = 'bottom';
+          break;
+        case 'right':
+          staticSide = 'left';
+          dynamicSide = 'bottom';
+          break;
+        default:
+          staticSide = 'bottom';
+          dynamicSide = '50%';
+      }
 
       if ($arrowRef) {
         Object.assign($arrowRef.style, {
           left: x != null ? `${x - 0}px` : '',
           top: y != null ? `${y - 0}px` : '',
           [staticSide]: '-4px',
+          [dynamicSide]: 'calc(50% - 4px)',
         });
       }
     },
@@ -99,11 +127,13 @@
     {...$$restProps}
   >
     {content}
-    <div
-      class="tooltip-arrow"
-      style="height: {ARROW_HEIGHT}px"
-      bind:this={$arrowRef}
-    />
+    {#if showArrow}
+      <div
+        class="tooltip-arrow"
+        style="height: {ARROW_HEIGHT}px"
+        bind:this={$arrowRef}
+      />
+    {/if}
   </div>
 {/if}
 
