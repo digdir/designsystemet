@@ -3,14 +3,13 @@ import type * as React from 'react';
 import cl from 'clsx';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
-import { Button } from '../Button';
-
 import { PaginationRoot } from './PaginationRoot';
 import { PaginationContent } from './PaginationContent';
 import { PaginationItem } from './PaginationItem';
 import { PaginationLink } from './PaginationLink';
 import { PaginationEllipsis } from './PaginationEllipsis';
 import classes from './Pagination.module.css';
+import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 
 export type PaginationProps = {
   /** Sets the text label for the next page button */
@@ -102,20 +101,16 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       >
         <PaginationContent>
           <PaginationItem>
-            <Button
-              aria-label={previousLabel}
+            <PaginationPrevious
+              className={cl({ [classes.hidden]: currentPage === 1 })}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
-              icon={hideLabels}
-              variant='tertiary'
-              color={'first'}
-              size={size}
-              className={cl({ [classes.hidden]: currentPage === 1 })}
+              aria-label={previousLabel}
             >
               <ChevronLeftIcon aria-hidden />
               {!hideLabels && previousLabel}
-            </Button>
+            </PaginationPrevious>
           </PaginationItem>
           {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
             <PaginationItem key={`${step}${i}`}>
@@ -136,11 +131,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             </PaginationItem>
           ))}
           <PaginationItem>
-            <Button
-              variant={'tertiary'}
-              color={'first'}
-              size={size}
-              icon={hideLabels}
+            <PaginationNext
               aria-label={nextLabel}
               onClick={() => {
                 onChange(currentPage + 1);
@@ -151,7 +142,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             >
               <ChevronRightIcon aria-hidden />
               {!hideLabels && nextLabel}
-            </Button>
+            </PaginationNext>
           </PaginationItem>
         </PaginationContent>
       </PaginationRoot>
