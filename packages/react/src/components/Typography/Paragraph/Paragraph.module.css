@@ -6,58 +6,58 @@
   margin: 0;
 }
 
-.paragraph.spacing {
+.spacing {
   margin-bottom: var(--fdsc-bottom-spacing);
 }
 
-.paragraph.large {
+.large {
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-paragraph-large);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.large.short {
+.large:where(.short) {
   font: var(--fds-typography-paragraph-short-large);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.medium {
+.medium {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-medium);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.medium.short {
+.medium:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-short-medium);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.small {
+.small {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-small);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.small.short {
+.small:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-short-small);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.xsmall {
+.xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-xsmall);
   font-family: var(--fdsc-typography-font-family);
 }
 
-.paragraph.xsmall.short {
+.xsmall:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-short-xsmall);
