@@ -12,7 +12,7 @@ type BlogCardProps = {
   image: string;
   href: string;
   featured?: boolean;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>;
 
 export const BlogCard = ({
   title,
@@ -27,7 +27,6 @@ export const BlogCard = ({
 }: BlogCardProps) => {
   return (
     <Card
-      color='neutral'
       asChild
       isLink
       data-featured={featured}
