@@ -11,8 +11,29 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--fds-spacing-14);
+  column-gap: var(--fds-spacing-12);
 }
 
 .main [data-featured='true'] {
   grid-column: span 3;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .main [data-featured='true'] {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .main [data-featured='true'] {
+    grid-column: span 1;
+  }
 }
