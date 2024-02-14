@@ -175,7 +175,7 @@
 
 .small {
   --fds-switch-height: 1.5rem;
-  --fds-switch-width: 2.25rem;
+  --fds-switch-width: 2.5rem;
 }
 
 .small .input {
@@ -185,7 +185,7 @@
 
 .medium {
   --fds-switch-height: 1.75rem;
-  --fds-switch-width: 2.75rem;
+  --fds-switch-width: 3rem;
 }
 
 .medium .input {
@@ -195,7 +195,7 @@
 
 .large {
   --fds-switch-height: 2rem;
-  --fds-switch-width: 3.5rem;
+  --fds-switch-width: 3.75rem;
 }
 
 .large .input {
