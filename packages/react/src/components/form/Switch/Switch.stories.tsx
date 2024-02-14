@@ -18,13 +18,13 @@ export const Preview: Story = {
     readOnly: false,
     size: 'medium',
     position: 'left',
-    description: 'Description',
   },
 };
 
 export const FullWidth: StoryFn<typeof Switch> = (args) => (
-  <Fieldset legend='Skru av/på en eller flere instillinger'>
+  <Fieldset legend='Skru av/på en eller flere innstillinger'>
     <Switch
+      description='Beskrivelse av innstilling'
       value='alt1'
       {...args}
     >

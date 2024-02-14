@@ -15,8 +15,8 @@
 .label {
   min-height: var(--fds-sizing-10);
   min-width: min-content;
-  display: inline-flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto 1fr;
   gap: var(--fds-spacing-2);
   align-items: center;
   cursor: pointer;
@@ -42,12 +42,16 @@
 }
 
 .right {
-  flex-direction: row-reverse;
+  grid-template-columns: 1fr auto;
+  grid-auto-flow: dense;
+}
+
+.right .track {
+  order: 1;
 }
 
 .right + .description {
   padding-left: 0;
-  padding-right: calc(var(--fds-switch-width) + var(--fds-spacing-2));
 }
 
 .input {
