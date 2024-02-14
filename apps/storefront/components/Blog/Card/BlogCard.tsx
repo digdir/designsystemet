@@ -31,13 +31,7 @@ export const BlogCard = ({
       asChild
       isLink
       data-featured={featured}
-      className={cl(
-        classes.card,
-        {
-          [classes.featured]: featured,
-        },
-        className,
-      )}
+      className={cl(classes.card, className)}
       {...props}
     >
       <Link href={href}>
@@ -49,13 +43,21 @@ export const BlogCard = ({
           />
         </Card.Media>
         <div className={classes.wrapper}>
-          <Card.Header className={classes.header}>
+          <Card.Header>
             <Heading size='small'>{title}</Heading>
           </Card.Header>
-          <Card.Content className={classes.content}>{desc}</Card.Content>
-          <Card.Footer className={classes.footer}>
-            <Paragraph size='small'>
-              {date} - {author}
+          <Card.Content>{desc}</Card.Content>
+          <Card.Footer>
+            <Paragraph
+              size='small'
+              className={classes.meta}
+            >
+              <span>{date}</span>
+              <span
+                aria-hidden
+                className={classes.metaSquare}
+              />
+              <span>{author}</span>
             </Paragraph>
           </Card.Footer>
         </div>
