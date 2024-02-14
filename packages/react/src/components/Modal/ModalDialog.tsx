@@ -48,6 +48,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
   ) => {
     const Component = asChild ? Slot : 'dialog';
 
+    // This local ref is used to make sure the modal works without a ModalRoot
     const localModalRef = useRef<HTMLDialogElement>(null);
 
     const contextValue = useContext(ModalContext);
