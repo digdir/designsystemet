@@ -34,6 +34,10 @@ const Header = () => {
       url: '/monstre',
     },
     {
+      name: 'Bloggen',
+      url: '/blogg',
+    },
+    {
       name: 'Komponenter',
       url: 'https://storybook.designsystemet.no',
     },

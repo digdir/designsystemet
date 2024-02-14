@@ -1,1 +1,71 @@
-## Bloggen
+import { BlogPageLayout } from '@layouts';
+import { Meta } from '@components';
+import { BlogCard } from '@blog';
+
+import { PencilIcon } from '@navikt/aksel-icons';
+
+export default ({ children }) => (
+  <BlogPageLayout
+    content={children}
+    banner={{
+      title: 'Bloggen',
+      icon: <PencilIcon fontSize={34} />,
+      color: 'red',
+    }}
+  />
+);
+
+<Meta
+  title='Bloggen'
+  description='Beskrivelse'
+/>
+
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='2021-01-01'
+  href='/blogg/1'
+  tags={['tag1', 'tag2']}
+  image='https://source.unsplash.com/random/1920x1080'
+  author='Tobias Barsnes'
+  featured={true}
+/>
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='2021-01-01'
+  href='/blogg/1'
+  tags={['tag1', 'tag2']}
+  image='https://source.unsplash.com/random/1920x1080'
+  author='Tobias Barsnes'
+/>
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='2021-01-01'
+  href='/blogg/1'
+  tags={['tag1', 'tag2']}
+  image='https://source.unsplash.com/random/1920x1080'
+  author='Tobias Barsnes'
+/>
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='2021-01-01'
+  href='/blogg/1'
+  tags={['tag1', 'tag2']}
+  image='https://source.unsplash.com/random/1920x1080'
+  author='Tobias Barsnes'
+/>
+
+<style>
+  {`
+    .Header_header__pXml_ {
+      border-bottom: none
+    }
+
+    body {
+      background-color: var(--fds-semantic-background-subtle);
+    }
+  `}
+</style>

@@ -1,0 +1,18 @@
+.page {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-8);
+  margin-top: var(--page-spacing-top);
+  margin-bottom: var(--page-spacing-bottom);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--fds-spacing-14);
+}
+
+.main [data-featured='true'] {
+  grid-column: span 3;
+}
