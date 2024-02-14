@@ -59,6 +59,15 @@
 }
 
 @media (max-width: 768px) {
+  .banner {
+    padding: var(--grid-padding);
+    align-items: flex-start;
+  }
+
+  .icon {
+    margin-left: var(--fds-spacing-2);
+  }
+
   .logo {
     display: none;
   }
