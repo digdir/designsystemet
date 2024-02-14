@@ -20,7 +20,7 @@ describe('Switch', () => {
       </Switch>,
     );
     expect(
-      screen.getByRole('switch', { description: 'description' }),
+      screen.getByRole('checkbox', { description: 'description' }),
     ).toBeDefined();
   });
   it('calls onChange and onClick when user clicks', async () => {
@@ -40,7 +40,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    const switch_ = screen.getByRole<HTMLInputElement>('switch');
+    const switch_ = screen.getByRole<HTMLInputElement>('checkbox');
 
     expect(switch_.checked).toBeFalsy();
 
@@ -67,7 +67,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    const switch_ = screen.getByRole('switch');
+    const switch_ = screen.getByRole('checkbox');
     await user.click(switch_);
 
     expect(switch_).toBeDisabled();
@@ -91,7 +91,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    const switch_ = screen.getByRole('switch');
+    const switch_ = screen.getByRole('checkbox');
     await user.click(switch_);
 
     expect(switch_).toHaveAttribute('readonly');

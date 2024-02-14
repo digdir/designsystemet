@@ -27,9 +27,6 @@ export const useSwitch: UseCheckbox = (props) => {
   const { inputProps, readOnly, ...rest } = useFormField(props, 'switch');
 
   const propsValue = props.value || '';
-  const checked = checkboxGroup?.value
-    ? checkboxGroup?.value.includes(propsValue)
-    : props.checked;
 
   return {
     ...rest,
@@ -37,13 +34,13 @@ export const useSwitch: UseCheckbox = (props) => {
     inputProps: {
       ...inputProps,
       readOnly,
-      role: 'switch',
       type: 'checkbox',
       defaultChecked: checkboxGroup?.defaultValue
         ? checkboxGroup?.defaultValue.includes(propsValue)
         : props.defaultChecked,
-      checked,
-      'aria-checked': checked,
+      checked: checkboxGroup?.value
+        ? checkboxGroup?.value.includes(propsValue)
+        : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
