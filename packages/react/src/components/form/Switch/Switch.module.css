@@ -1,7 +1,6 @@
 .switch {
   --fds-transition: 200ms;
   --fds-switch-height: 1.75rem;
-  --fds-switch-width: 2.75rem;
   --fds-switch-focus-border-width: 3px;
 
   position: relative;
@@ -107,7 +106,7 @@
 }
 
 .readonly .input[readonly] + .label .track {
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-subtle);
   background-color: var(--fds-semantic-background-subtle);
 }
 
