@@ -13,14 +13,14 @@ export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
   ({ asChild, children, ...rest }, ref) => {
     const Component = asChild ? Slot : Button;
 
-    const { modalRef } = useContext(ModalContext);
-
-    console.log(modalRef);
+    const { modalRef, open } = useContext(ModalContext);
 
     return (
       <Component
         ref={ref}
         onClick={() => modalRef?.current?.showModal()}
+        aria-expanded={open}
+        aria-haspopup='dialog'
         {...rest}
       >
         {children}

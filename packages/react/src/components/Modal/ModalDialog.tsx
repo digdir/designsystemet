@@ -5,7 +5,7 @@ import {
 } from '@floating-ui/react';
 import type React from 'react';
 import type { DialogHTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect } from 'react';
+import { forwardRef, useContext, useEffect, useRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx';
 
@@ -48,21 +48,20 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
   ) => {
     const Component = asChild ? Slot : 'dialog';
 
+    const localModalRef = useRef<HTMLDialogElement>(null);
+
     const contextValue = useContext(ModalContext);
-    const { modalRef } = contextValue;
+    const { modalRef, setOpen } = contextValue;
     contextValue.closeModal = () => {
       if (onBeforeClose && onBeforeClose() === false) return;
 
-      modalRef.current?.close();
+      localModalRef.current?.close();
     };
+    const mergedRefs = useMergeRefs([modalRef, ref, localModalRef]);
 
-    const mergedRefs = useMergeRefs([modalRef, ref]);
-
+    useScrollLock(localModalRef, classes.lockScroll);
+    const open = useModalState(localModalRef);
     const { context } = useFloating();
-    useScrollLock(modalRef, classes.lockScroll);
-    const open = useModalState(modalRef);
-
-    console.log({ open, modalRef });
 
     useEffect(() => {
       const currentModalRef = modalRef.current;
@@ -111,6 +110,10 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
 
         modalRef.current?.close();
       };
+
+    useEffect(() => {
+      setOpen(open);
+    }, [open, setOpen]);
 
     return (
       <Component
