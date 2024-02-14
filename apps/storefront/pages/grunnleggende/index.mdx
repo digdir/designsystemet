@@ -11,8 +11,6 @@ import {
 import { NavMenuPageLayout } from '@layouts';
 import { Meta, NavigationCard, Grid } from '@components';
 
-import { BookIcon } from '@navikt/aksel-icons';
-
 export default ({ children }) => (
   <NavMenuPageLayout
     content={children}
@@ -20,7 +18,7 @@ export default ({ children }) => (
       title: 'Grunnleggende',
       ingress:
         'Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
-      icon: <BookIcon fontSize={34} />,
+      icon: <TokenIcon fontSize={34} />,
       color: 'yellow',
     }}
   />
