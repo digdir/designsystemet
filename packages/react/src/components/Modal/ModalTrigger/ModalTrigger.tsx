@@ -10,7 +10,7 @@ export type ModalTriggerProps = {
 } & React.ComponentPropsWithRef<typeof Button>;
 
 export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
-  ({ asChild, children, ...rest }, ref) => {
+  ({ asChild, ...rest }, ref) => {
     const Component = asChild ? Slot : Button;
 
     const { modalRef, open } = useContext(ModalContext);
@@ -22,9 +22,7 @@ export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
         aria-expanded={open}
         aria-haspopup='dialog'
         {...rest}
-      >
-        {children}
-      </Component>
+      />
     );
   },
 );
