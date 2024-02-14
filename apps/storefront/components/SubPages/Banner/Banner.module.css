@@ -16,6 +16,7 @@
 .ingress {
   text-align: center;
   max-width: 780px;
+  text-wrap: balance;
 }
 
 .icon {
