@@ -14,7 +14,7 @@ type PageLayoutProps = {
   banner?: {
     color: 'blue' | 'red' | 'yellow';
     title: string;
-    ingress: string;
+    ingress?: string;
     icon: React.ReactNode;
   };
 };
@@ -33,7 +33,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
         <Banner color={banner.color}>
           <Banner.Icon>{banner.icon}</Banner.Icon>
           <Banner.Heading>{banner.title}</Banner.Heading>
-          <Banner.Ingress>{banner.ingress}</Banner.Ingress>
+          {banner.ingress && <Banner.Ingress>{banner.ingress}</Banner.Ingress>}
         </Banner>
       )}
       <Container className={classes.page}>
