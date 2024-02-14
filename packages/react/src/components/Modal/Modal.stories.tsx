@@ -46,6 +46,26 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
   );
 };
 
+export const WithTriggerComponent: StoryFn<typeof Modal> = () => {
+  return (
+    <>
+      <Modal.Root>
+        <Modal.Trigger>Open Modal</Modal.Trigger>
+        <Modal.Dialog>
+          <Modal.Header>Modal header</Modal.Header>
+          <Modal.Content>
+            <Paragraph>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
+            </Paragraph>
+          </Modal.Content>
+          <Modal.Footer>Modal footer</Modal.Footer>
+        </Modal.Dialog>
+      </Modal.Root>
+    </>
+  );
+};
+
 export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 

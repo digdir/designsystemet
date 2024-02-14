@@ -4,13 +4,13 @@ import userEvent from '@testing-library/user-event';
 
 import { Button } from '../Button';
 
-import type { ModalProps } from './Modal';
+import type { ModalRootProps } from './ModalRoot';
 
 import { Modal } from './';
 
 const HEADER_TITLE = 'Modal header title';
 
-const Comp = (args: Partial<ModalProps>) => {
+const Comp = (args: Partial<ModalRootProps>) => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const openModal = () => {
@@ -32,7 +32,7 @@ const Comp = (args: Partial<ModalProps>) => {
   );
 };
 
-const render = async (props: Partial<ModalProps> = {}) => {
+const render = async (props: Partial<ModalRootProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();

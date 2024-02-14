@@ -1,21 +1,20 @@
-import type { DialogHTMLAttributes } from 'react';
-import { createContext, forwardRef, useEffect, useRef } from 'react';
-import cl from 'clsx';
 import {
   FloatingFocusManager,
   useFloating,
   useMergeRefs,
 } from '@floating-ui/react';
+import type React from 'react';
+import type { DialogHTMLAttributes } from 'react';
+import { forwardRef, useContext, useEffect } from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx';
 
-import { useScrollLock } from './useScrollLock';
 import classes from './Modal.module.css';
+import { useScrollLock } from './useScrollLock';
 import { useModalState } from './useModalState';
+import { ModalContext } from './ModalRoot';
 
-export type ModalContextProps = {
-  closeModal?: () => void;
-};
-
-export type ModalProps = {
+export type ModalDialogProps = {
   /**
    * Close modal when clicking on backdrop.
    * @default undefined
@@ -31,20 +30,39 @@ export type ModalProps = {
    * If the function returns `false` the modal will not close.
    */
   onBeforeClose?: () => boolean | void;
+  asChild?: boolean;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
-export const ModalContext = createContext<ModalContextProps | null>(null);
-
-export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
+export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
   (
-    { onInteractOutside, onClose, onBeforeClose, children, className, ...rest },
+    {
+      onInteractOutside,
+      onClose,
+      onBeforeClose,
+      asChild,
+      className,
+      children,
+      ...rest
+    },
     ref,
   ) => {
-    const modalRef = useRef<HTMLDialogElement>(null);
+    const Component = asChild ? Slot : 'dialog';
+
+    const contextValue = useContext(ModalContext);
+    const { modalRef } = contextValue;
+    contextValue.closeModal = () => {
+      if (onBeforeClose && onBeforeClose() === false) return;
+
+      modalRef.current?.close();
+    };
+
     const mergedRefs = useMergeRefs([modalRef, ref]);
+
     const { context } = useFloating();
     useScrollLock(modalRef, classes.lockScroll);
     const open = useModalState(modalRef);
+
+    console.log({ open, modalRef });
 
     useEffect(() => {
       const currentModalRef = modalRef.current;
@@ -95,30 +113,18 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
       };
 
     return (
-      <ModalContext.Provider
-        value={{
-          closeModal: () => {
-            if (onBeforeClose && onBeforeClose() === false) return;
-
-            modalRef.current?.close();
-          },
-        }}
+      <Component
+        ref={mergedRefs}
+        className={cl(classes.modal, className)}
+        onCancel={onCancel}
+        {...rest}
       >
-        <dialog
-          ref={mergedRefs}
-          className={cl(classes.modal, className)}
-          onCancel={onCancel}
-          {...rest}
-        >
-          {open && (
-            <FloatingFocusManager context={context}>
-              <>{children}</>
-            </FloatingFocusManager>
-          )}
-        </dialog>
-      </ModalContext.Provider>
+        {open && (
+          <FloatingFocusManager context={context}>
+            <>{children}</>
+          </FloatingFocusManager>
+        )}
+      </Component>
     );
   },
 );
-
-Modal.displayName = 'Modal';
