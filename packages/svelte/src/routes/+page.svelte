@@ -1,4 +1,5 @@
 <script>
+  // @ts-nocheck
   import Alert from '$lib/components/Alert/Alert.svelte';
   import Button from '$lib/components/Button/Button.svelte';
   import Switch from '$lib/components/Form/Switch/Switch.svelte';
@@ -25,11 +26,8 @@
     TabContent,
     Files,
   } from '$lib';
-  //@ts-ignore
   import InformationSquareFillIcon from '@navikt/aksel-icons/svg/InformationSquareFill.svg?raw';
-  //@ts-ignore
   import CheckmarkCircleFillIcon from '@navikt/aksel-icons/svg/CheckmarkCircleFill.svg?raw';
-  //@ts-ignore
   import XMarkOctagonFillIcon from '@navikt/aksel-icons/svg/XMarkOctagonFill.svg?raw';
   import Spinner from '$lib/components/Spinner/Spinner.svelte';
   import CheckboxGroup from '$lib/components/Form/Checkbox/CheckboxGroup.svelte';
@@ -171,6 +169,7 @@
     { label: 'left-start', value: 'left-start' },
     { label: 'left-end', value: 'left-end' },
   ];
+
   let currentDropdownPlacement = {
     label: 'bottom-start',
     value: 'bottom-start',
@@ -223,20 +222,20 @@
 >
 <Button variant="quiet">First (Quiet)</Button>
 <Button variant="outline">First (Outline)</Button>
-<Button iconPlacement="right"
-  ><svelte:fragment slot="icon"
-    ><svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0Zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm5.047 5.671 1.399 1.43-8.728 8.398L6 14.02l1.395-1.434 2.319 2.118 7.333-7.032Z"
-        fill="currentColor"
-      />
-    </svg></svelte:fragment
-  >First Icon</Button
->
+<Button iconPlacement="right">
+  <svg
+    slot="icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0Zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm5.047 5.671 1.399 1.43-8.728 8.398L6 14.02l1.395-1.434 2.319 2.118 7.333-7.032Z"
+      fill="currentColor"
+    />
+  </svg>
+  First Icon
+</Button>
 
 <br />
 <h1 class="componentHeader">TEXTFIELD</h1>
@@ -361,30 +360,35 @@
 >
   <AccordionItem>
     <AccordionHeader level={1}>
-      <svelte:fragment slot="header">
+      <span slot="header">
         Hvem kan registrere seg i Frivillighetsregisteret?
-      </svelte:fragment>
+      </span>
     </AccordionHeader>
     <AccordionContent>
-      <svelte:fragment slot="content">
+      <span slot="content">
         For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
         drive frivillig virksomhet. Det er bare foreninger, stiftelser og
         aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
         til fysiske personer. Virksomheten må ha et styre.
-      </svelte:fragment>
+      </span>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionHeader level={4}>
       <svelte:fragment slot="header">
-        Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
+        <span>Hvordan går jeg fram for å</span>
+        <span>registrere i Frivillighetsregisteret?</span>
       </svelte:fragment>
     </AccordionHeader>
     <AccordionContent>
       <svelte:fragment slot="content">
-        Virksomheten må være registrert i Enhetsregisteret før den kan bli
-        registrert i Frivillighetsregisteret. Du kan registrere i begge
-        registrene samtidig i Samordnet registermelding.
+        <span
+          >Virksomheten må være registrert i Enhetsregisteret før den kan bli</span
+        >
+        <span
+          >registrert i Frivillighetsregisteret. Du kan registrere i begge</span
+        >
+        <span>registrene samtidig i Samordnet registermelding.</span>
       </svelte:fragment>
     </AccordionContent>
   </AccordionItem>
