@@ -17,6 +17,11 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
+    padding: var(--fds-spacing-8) var(--fds-spacing-10) !important;
+  }
+
+  .card[data-featured='true'] .heading {
+    padding-top: 0 !important;
   }
 
   .card[data-featured='true'] .footer {
@@ -27,6 +32,7 @@
 .meta {
   display: flex;
   gap: var(--fds-spacing-2);
+  color: var(--fds-semantic-text-neutral-subtle) !important;
 }
 
 .metaSquare {

@@ -42,11 +42,11 @@ export const BlogCard = ({
           />
         </Card.Media>
         <div className={classes.wrapper}>
-          <Card.Header>
-            <Heading size={featured ? 'medium' : 'small'}>{title}</Heading>
+          <Card.Header className={classes.heading}>
+            <Heading size={featured ? 'large' : 'small'}>{title}</Heading>
           </Card.Header>
           <Card.Content>
-            <Paragraph size={featured ? 'medium' : 'small'}>{desc}</Paragraph>
+            <Paragraph size={featured ? 'large' : 'small'}>{desc}</Paragraph>
           </Card.Content>
           <Card.Footer className={classes.footer}>
             <Paragraph
