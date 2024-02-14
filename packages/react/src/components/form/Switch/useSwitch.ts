@@ -18,7 +18,6 @@ type UseCheckbox = (props: SwitchProps) => FormField & {
     | 'checked'
     | 'onClick'
     | 'onChange'
-    | 'aria-checked'
   >;
 };
 /** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
@@ -27,7 +26,6 @@ export const useSwitch: UseCheckbox = (props) => {
   const { inputProps, readOnly, ...rest } = useFormField(props, 'switch');
 
   const propsValue = props.value || '';
-
   return {
     ...rest,
     readOnly,
