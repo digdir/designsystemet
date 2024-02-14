@@ -91,7 +91,7 @@
 }
 
 .thumb {
-  scale: 0.85;
+  scale: 0.8;
   position: absolute;
   height: var(--fds-switch-height);
   width: var(--fds-switch-height);
