@@ -64,6 +64,14 @@
   margin: 0;
 }
 
+.readonly > .label {
+  grid-template-columns: auto min-content 1fr;
+}
+
+.readonly > .label:where(.right) {
+  grid-template-columns: min-content 1fr auto;
+}
+
 .readonly > .input,
 .readonly > .label {
   cursor: default;
@@ -152,7 +160,6 @@
 }
 
 .padlock {
-  grid-area: label;
   height: 1.2em;
   width: 1.2em;
 }

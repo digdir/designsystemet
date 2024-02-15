@@ -38,6 +38,7 @@ export const FullWidth: StoryFn<typeof Switch> = (args) => (
     </Switch>
     <Switch
       value='alt1'
+      readOnly
       {...args}
     >
       Instilling 3
