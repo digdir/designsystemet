@@ -8,40 +8,77 @@ import { Modal } from './';
 
 # Modal
 
-`Modal` bruker native `dialog` elementet, og for å åpne/lukke må du bruke `ref`.
-Dette er valgt for å ha en så lett modal som mulig, og den vil derfor fungere annerledes enn våre andre komponenter.
+`Modal` bruker native `dialog` elementet, du kan enten bruke vår `Trigger` komponent eller `ref` for å åpne modalen.
+Dersom du trenger kontroll over når modalen lukkes, må du bruke `ref`.
 Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for mer info.
+
+`Modal` har native focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
 
 <Primary />
 <Controls />
 
-Legg merke til at modalen har focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
+## Slik bruker du `Modal`
 
-## Close on backdrop click
+```tsx
+<Modal.Root>
+  <Modal.Trigger>Open Modal</Modal.Trigger>
+  <Modal.Dialog>
+    <Modal.Header subtitle='Modal subtittel'>Hader</Modal.Header>
+    <Modal.Content>Content</Modal.Content>
+    <Modal.Footer>Footer</Modal.Footer>
+  </Modal.Dialog>
+</Modal.Root>
+```
+
+## Alternativ bruk med `ref`
+
+Alternativt kan du bruke `ref` for å styre hvor `Modal`, men da må du selv håndtere tilstand for åpning/lukking.
+Det er heller ikke behov for å bruke `Trigger` og `Root` med denne tilnærmingen.
+
+```tsx
+const modalRef = useRef<HTMLDialogElement>(null);
+
+...
+
+<Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
+<Modal
+  ref={modalRef}
+>
+  <Modal.Header subtitle='Modal subtittel'>Hader</Modal.Header>
+  <Modal.Content>Content</Modal.Content>
+  <Modal.Footer>Footer</Modal.Footer>
+</Modal>
+```
+
+### Med bruk av `ref`
+
+<Canvas of={ModalStories.WithoutTriggerComponent} />
+
+### Close on backdrop click
 
 Vi bruker `onInteractOutside` proppen for å lukke modalen når brukeren klikker utenfor modalen.
 
 <Canvas of={ModalStories.CloseOnBackdropClick} />
 
-## Med `Divider`
+### Med `Divider`
 
 Du kan legge divider mellom, for å skille innhold fra hverandre. `Divider` får ekstra margin på topp og bunn.
 
 <Canvas of={ModalStories.WithDivider} />
 
-## Form
+### Form
 
 Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
 
 <Canvas of={ModalStories.ModalWithForm} />
 
-## Med egendefinert bredde
+### Med egendefinert bredde
 
 Bruk max-width for å sette egendefinert maks bredde på modalen. Default er 650px.
 
 <Canvas of={ModalStories.ModalWithMaxWidth} />
 
-## Innhold som går utenfor Modalen
+### Innhold som går utenfor Modalen
 
 Bruk `overflow: visible` for å la innhold gå utenfor modalen.
 
