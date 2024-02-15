@@ -10,6 +10,13 @@ type ContributorsProps = {
 export const Contributors = ({ authors }: ContributorsProps) => {
   return (
     <div className={classes.container}>
+      <div className={classes.logo}>
+        <img
+          src='/img/diamond-logo.svg'
+          alt='Designsystemet logo'
+        />
+      </div>
+
       <Heading
         level={3}
         size='xxsmall'

@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -13,11 +14,32 @@
   border: 1px solid var(--fds-semantic-border-neutral-subtle);
 }
 
+.logo {
+  --height: 70px;
+
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: var(--height);
+  height: var(--height);
+  top: calc(var(--height) / -2);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+}
+
+.logo img {
+  box-shadow: none;
+  width: 50%;
+  height: 50%;
+  margin: 0;
+}
+
 .meta {
   display: flex;
   flex-wrap: wrap;
   text-wrap: nowrap;
-  gap: var(--fds-spacing-2);
+  gap: var(--fds-spacing-3);
   color: var(--fds-semantic-text-neutral-subtle) !important;
 }
 
