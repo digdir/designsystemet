@@ -28,28 +28,29 @@ export const FullWidth: StoryFn<typeof Switch> = (args) => (
       value='alt1'
       {...args}
     >
-      Instilling 1
+      Innstilling 1
     </Switch>
     <Switch
-      value='alt1'
+      value='alt2'
       {...args}
     >
-      Instilling 2
+      Innstilling 2
     </Switch>
     <Switch
-      value='alt1'
+      value='alt3'
+      description='Velg alt 2 for å aktivere'
+      disabled
+      {...args}
+    >
+      Innstilling 3
+    </Switch>
+    <Switch
+      value='alt4'
+      description='Du mangler rettigheter for denne instillingen'
       readOnly
       {...args}
     >
-      Instilling 4
-    </Switch>
-    <Switch
-      value='alt1'
-      description='Velg alt 3 for å aktivere'
-      readOnly
-      {...args}
-    >
-      Instilling 4
+      Innstilling 4
     </Switch>
   </Fieldset>
 );
