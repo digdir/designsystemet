@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
-import type { PaginationLinkProps } from './PaginationLink';
-import { PaginationLink } from './PaginationLink';
+import type { PaginationLinkProps } from './PaginationButton';
+import { PaginationLink } from './PaginationButton';
 
 export type PaginationNextProps = PaginationLinkProps;
 

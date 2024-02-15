@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 import { PaginationRoot } from './PaginationRoot';
 import { PaginationContent } from './PaginationContent';
 import { PaginationItem } from './PaginationItem';
-import { PaginationLink } from './PaginationLink';
+import { PaginationLink } from './PaginationButton';
 import { PaginationEllipsis } from './PaginationEllipsis';
 import classes from './Pagination.module.css';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';

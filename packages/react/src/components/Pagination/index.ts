@@ -6,8 +6,8 @@ import type { PaginationEllipsisProps } from './PaginationEllipsis';
 import PaginationEllipsis from './PaginationEllipsis';
 import PaginationItem from './PaginationItem';
 import type { PaginationItemProps } from './PaginationItem';
-import PaginationLink from './PaginationLink';
-import type { PaginationLinkProps } from './PaginationLink';
+import PaginationLink from './PaginationButton';
+import type { PaginationLinkProps } from './PaginationButton';
 import type {
   PaginationNextProps,
   PaginationPreviousProps,
