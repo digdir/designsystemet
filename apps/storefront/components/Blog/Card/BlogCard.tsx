@@ -7,7 +7,7 @@ import classes from './BlogCard.module.css';
 type BlogCardProps = {
   title: string;
   desc: string;
-  author: string;
+  author?: string;
   date: string;
   image: string;
   href: string;
@@ -54,11 +54,15 @@ export const BlogCard = ({
               className={classes.meta}
             >
               <span>{date}</span>
-              <span
-                aria-hidden
-                className={classes.metaSquare}
-              />
-              <span>{author}</span>
+              {author && (
+                <>
+                  <span
+                    aria-hidden
+                    className={classes.metaSquare}
+                  />
+                  <span>{author}</span>
+                </>
+              )}
             </Paragraph>
           </Card.Footer>
         </div>

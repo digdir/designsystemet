@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 640px;
+  gap: var(--fds-spacing-3);
+  margin: 0 auto;
+  margin-top: var(--fds-spacing-12);
+  padding: var(--fds-spacing-10);
+  border-radius: var(--fds-border_radius-xxlarge);
+  border: 1px solid var(--fds-semantic-border-neutral-subtle);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  text-wrap: nowrap;
+  gap: var(--fds-spacing-2);
+  color: var(--fds-semantic-text-neutral-subtle) !important;
+}
+
+.metaSquare {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  border-radius: 1px;
+  background-color: var(--fds-brand-alt1-600);
+  margin: auto;
+}
