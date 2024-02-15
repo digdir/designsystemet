@@ -48,6 +48,7 @@
 
 .content p {
   max-width: var(--text-max-width);
+  line-height: 170%;
 }
 
 .content img {
