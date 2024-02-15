@@ -59,6 +59,26 @@
   margin-bottom: var(--fds-spacing-12);
 }
 
+.wantToWrite {
+  margin-top: var(--fds-spacing-12);
+  border-radius: var(--fds-border_radius-xxlarge);
+  background: var(--fds-brand-alt1-200);
+  padding: var(--fds-spacing-8);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--fds-spacing-4);
+}
+
+.wantToWrite p a {
+  display: inline-block;
+  color: inherit;
+}
+
+.wantToWrite p a:hover {
+  color: var(--fds-semantic-text-action-hover);
+}
+
 @media screen and (max-width: 768px) {
   .content img {
     width: 100%;

@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { Heading, Ingress, Paragraph } from '@digdir/design-system-react';
 
 import { Container, MdxContent } from '../../components';
+import { Link } from '../../components/Link/Link';
 
 import classes from './BlogArticleLayout.module.css';
 
@@ -42,7 +43,27 @@ const BlogArticleLayout = ({
               <span>{author}</span>
             </Paragraph>
           </div>
-          <MdxContent classname={classes.content}>{content}</MdxContent>
+          <MdxContent classname={classes.content}>
+            {content}
+            <div className={classes.wantToWrite}>
+              <Heading
+                level={3}
+                size='xsmall'
+              >
+                Ønsker du å skrive for bloggen?
+              </Heading>
+              <Paragraph size='small'>
+                Ta kontakt med oss på{' '}
+                <Link
+                  href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                  target='_blank'
+                >
+                  #designsystemet
+                </Link>{' '}
+                i Slack kanalen vår.
+              </Paragraph>
+            </div>
+          </MdxContent>
         </main>
       </Container>
     </div>
