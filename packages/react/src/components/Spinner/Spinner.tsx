@@ -69,3 +69,5 @@ export const Spinner = ({
     </svg>
   );
 };
+
+Spinner.displayName = 'Spinner';

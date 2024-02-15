@@ -62,3 +62,5 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
     );
   },
 );
+
+Card.displayName = 'Card';

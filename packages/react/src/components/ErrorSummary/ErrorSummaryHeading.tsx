@@ -37,4 +37,4 @@ export const ErrorSummaryHeading = ({
   );
 };
 
-ErrorSummaryHeading.displayName = 'ErrorSummary.Heading';
+ErrorSummaryHeading.displayName = 'ErrorSummaryHeading';

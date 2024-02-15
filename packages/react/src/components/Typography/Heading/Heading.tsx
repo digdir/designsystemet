@@ -66,3 +66,5 @@ export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
       );
     },
   );
+
+Heading.displayName = 'Heading';

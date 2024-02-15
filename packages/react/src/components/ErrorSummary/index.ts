@@ -17,6 +17,11 @@ ErrorSummary.Item = ErrorSummaryItem;
 ErrorSummary.Heading = ErrorSummaryHeading;
 ErrorSummary.List = ErrorSummaryList;
 
+ErrorSummary.Root.displayName = 'ErrorSummary';
+ErrorSummary.Item.displayName = 'ErrorSummary.Item';
+ErrorSummary.Heading.displayName = 'ErrorSummary.Heading';
+ErrorSummary.List.displayName = 'ErrorSummary.List';
+
 export type { ErrorSummaryProps } from './ErrorSummary';
 export type { ErrorSummaryItemProps } from './ErrorSummaryItem';
 export type { ErrorSummaryHeadingProps } from './ErrorSummaryHeading';
