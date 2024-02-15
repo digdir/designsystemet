@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 import { PaginationRoot } from './PaginationRoot';
 import { PaginationContent } from './PaginationContent';
 import { PaginationItem } from './PaginationItem';
-import { PaginationLink } from './PaginationButton';
+import { PaginationButton } from './PaginationButton';
 import { PaginationEllipsis } from './PaginationEllipsis';
 import classes from './Pagination.module.css';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
@@ -117,7 +117,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               {step === 'ellipsis' ? (
                 <PaginationEllipsis />
               ) : (
-                <PaginationLink
+                <PaginationButton
                   aria-current={currentPage === step}
                   isActive={currentPage === step}
                   aria-label={itemLabel(step)}
@@ -126,7 +126,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                   }}
                 >
                   {step}
-                </PaginationLink>
+                </PaginationButton>
               )}
             </PaginationItem>
           ))}

@@ -5,7 +5,7 @@ import { Button } from '../Button';
 
 import { PaginationContext } from './PaginationRoot';
 
-export type PaginationLinkProps = {
+export type PaginationButtonProps = {
   /**
    * Set current link as active
    * @default false
@@ -13,9 +13,9 @@ export type PaginationLinkProps = {
   isActive?: boolean;
 } & Omit<ButtonProps, 'size' | 'icon'>;
 
-export const PaginationLink = forwardRef<
+export const PaginationButton = forwardRef<
   HTMLButtonElement,
-  PaginationLinkProps
+  PaginationButtonProps
 >(({ isActive, ...rest }, ref) => {
   const { size } = useContext(PaginationContext);
 
@@ -30,5 +30,3 @@ export const PaginationLink = forwardRef<
     />
   );
 });
-
-export default PaginationLink;

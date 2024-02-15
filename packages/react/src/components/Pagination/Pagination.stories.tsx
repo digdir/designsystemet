@@ -49,22 +49,22 @@ export const ComponentApi = () => {
           </Pagination.Previous>
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link isActive>1</Pagination.Link>
+          <Pagination.Button isActive>1</Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link>2</Pagination.Link>
+          <Pagination.Button>2</Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link>3</Pagination.Link>
+          <Pagination.Button>3</Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Ellipsis />
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link>6</Pagination.Link>
+          <Pagination.Button>6</Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link>7</Pagination.Link>
+          <Pagination.Button>7</Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Next>
@@ -90,20 +90,20 @@ export const WithAnchor = () => {
           </Pagination.Previous>
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link
+          <Pagination.Button
             isActive
             asChild
           >
             <a href='#som-anchor'>1</a>
-          </Pagination.Link>
+          </Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Ellipsis />
         </Pagination.Item>
         <Pagination.Item>
-          <Pagination.Link asChild>
+          <Pagination.Button asChild>
             <a href='#som-anchor'>6</a>
-          </Pagination.Link>
+          </Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Next asChild>

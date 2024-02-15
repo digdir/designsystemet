@@ -1,16 +1,16 @@
 import { forwardRef } from 'react';
 
-import type { PaginationLinkProps } from './PaginationButton';
-import { PaginationLink } from './PaginationButton';
+import type { PaginationButtonProps } from './PaginationButton';
+import { PaginationButton } from './PaginationButton';
 
-export type PaginationNextProps = PaginationLinkProps;
+export type PaginationNextProps = PaginationButtonProps;
 
 export const PaginationNext = forwardRef<
   HTMLButtonElement,
   PaginationNextProps
 >(({ ...rest }, ref) => {
   return (
-    <PaginationLink
+    <PaginationButton
       ref={ref}
       aria-label='Neste side'
       {...rest}
@@ -18,14 +18,14 @@ export const PaginationNext = forwardRef<
   );
 });
 
-export type PaginationPreviousProps = PaginationLinkProps;
+export type PaginationPreviousProps = PaginationButtonProps;
 
 export const PaginationPrevious = forwardRef<
   HTMLButtonElement,
   PaginationNextProps
 >(({ ...rest }, ref) => {
   return (
-    <PaginationLink
+    <PaginationButton
       ref={ref}
       aria-label='Forrige side'
       {...rest}

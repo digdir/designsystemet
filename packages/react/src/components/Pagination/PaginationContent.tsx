@@ -29,5 +29,3 @@ export const PaginationContent = forwardRef<
     />
   );
 });
-
-export default PaginationContent;
