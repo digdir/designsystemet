@@ -38,7 +38,7 @@ export const FullWidth: StoryFn<typeof Switch> = (args) => (
     </Switch>
     <Switch
       value='alt3'
-      description='Velg alt 2 for å aktivere'
+      description='Velg innstilling 2 for å aktivere'
       disabled
       {...args}
     >

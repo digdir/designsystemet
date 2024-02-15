@@ -100,7 +100,56 @@
   margin-left: var(--fds-spacing-1);
 }
 
-.label:first-child:nth-last-child(2) .track {
+.small,
+.small .label {
+  min-height: var(--fds-sizing-8);
+}
+
+.medium,
+.medium .label {
+  min-height: var(--fds-sizing-10);
+}
+
+.large,
+.large .label {
+  min-height: var(--fds-sizing-12);
+}
+
+.small {
+  --fds-switch-height: 1.5rem;
+  --fds-switch-width: 2.5rem;
+}
+
+.small .input {
+  left: -0.25rem;
+  top: -0.25rem;
+}
+
+.medium {
+  --fds-switch-height: 1.75rem;
+  --fds-switch-width: 3rem;
+}
+
+.medium .input {
+  left: 0;
+  top: 0;
+}
+
+.large {
+  --fds-switch-height: 2rem;
+  --fds-switch-width: 3.5rem;
+}
+
+.large .input {
+  left: 0;
+  top: 0.25rem;
+}
+
+.label:has(.track:only-child) {
+  grid-template-columns: auto;
+}
+
+.label:has(.track:only-child) .track {
   margin-right: 0;
 }
 
@@ -172,51 +221,4 @@
 .input:focus-visible:not(:disabled) + .label .track {
   stroke: var(--fds-inner-focus-border-color);
   stroke-width: var(--fds-focus-border-width);
-}
-
-/** Sizing */
-
-.small,
-.small .label {
-  min-height: var(--fds-sizing-8);
-}
-
-.medium,
-.medium .label {
-  min-height: var(--fds-sizing-10);
-}
-
-.large,
-.large .label {
-  min-height: var(--fds-sizing-12);
-}
-
-.small {
-  --fds-switch-height: 1.5rem;
-  --fds-switch-width: 2.5rem;
-}
-
-.small .input {
-  left: -0.25rem;
-  top: -0.25rem;
-}
-
-.medium {
-  --fds-switch-height: 1.75rem;
-  --fds-switch-width: 3rem;
-}
-
-.medium .input {
-  left: 0;
-  top: 0;
-}
-
-.large {
-  --fds-switch-height: 2rem;
-  --fds-switch-width: 3.5rem;
-}
-
-.large .input {
-  left: 0;
-  top: 0.25rem;
 }

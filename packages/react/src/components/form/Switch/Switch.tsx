@@ -74,7 +74,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 className={classes.padlock}
               />
             )}
-            <span>{children}</span>
+            {children && <span>{children}</span>}
           </Label>
           {description && (
             <Paragraph
