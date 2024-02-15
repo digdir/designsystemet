@@ -80,7 +80,7 @@
   color: var(--fds-semantic-text-action-hover);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
   .content img {
     width: 100%;
     margin-left: 0;
