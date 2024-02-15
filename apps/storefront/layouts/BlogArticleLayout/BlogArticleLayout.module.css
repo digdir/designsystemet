@@ -54,3 +54,10 @@
   width: 860px;
   margin-left: calc((100% - 860px) / 2);
 }
+
+@media screen and (max-width: 768px) {
+  .content img {
+    width: 100%;
+    margin-left: 0;
+  }
+}
