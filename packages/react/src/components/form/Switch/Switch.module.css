@@ -17,7 +17,7 @@
   min-width: min-content;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--fds-spacing-2);
+  gap: var(--fds-spacing-1);
   align-items: center;
   cursor: pointer;
 }
@@ -41,6 +41,12 @@
   color: var(--fds-semantic-text-neutral-subtle);
 }
 
+.padlock {
+  height: 1.2em;
+  width: 1.2em;
+  margin-left: var(--fds-spacing-1);
+}
+
 .right {
   grid-template-columns: 1fr auto;
   grid-auto-flow: dense;
@@ -52,6 +58,10 @@
 
 .right + .description {
   padding-left: 0;
+}
+
+.right .padlock {
+  margin-left: 0;
 }
 
 .input {
@@ -70,6 +80,10 @@
 
 .readonly > .label:where(.right) {
   grid-template-columns: min-content 1fr auto;
+}
+
+.readonly > .description {
+  margin-left: var(--fds-spacing-1);
 }
 
 .readonly > .input,
@@ -157,11 +171,6 @@
 .input:focus-visible:not(:disabled) + .label .track {
   stroke: var(--fds-inner-focus-border-color);
   stroke-width: var(--fds-focus-border-width);
-}
-
-.padlock {
-  height: 1.2em;
-  width: 1.2em;
 }
 
 /** Sizing */

@@ -41,7 +41,15 @@ export const FullWidth: StoryFn<typeof Switch> = (args) => (
       readOnly
       {...args}
     >
-      Instilling 3
+      Instilling 4
+    </Switch>
+    <Switch
+      value='alt1'
+      description='Velg alt 3 for å aktivere'
+      readOnly
+      {...args}
+    >
+      Instilling 4
     </Switch>
   </Fieldset>
 );
