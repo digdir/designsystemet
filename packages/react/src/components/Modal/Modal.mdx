@@ -12,15 +12,12 @@ import { Modal } from './';
 Dersom du trenger kontroll over når modalen lukkes, må du bruke `ref`.
 Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for mer info.
 
+`Modal` har native focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
+
 <Primary />
 <Controls />
 
-Legg merke til at modalen har focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
-
 ## Slik bruker du `Modal`
-
-Dersom du bruker med `Trigger` komponent, vil modalen åpne med klikk på `Trigger` komponenten -
-som betyr at du ikke trenger å bruke `ref`.
 
 ```tsx
 <Modal.Root>
@@ -35,7 +32,8 @@ som betyr at du ikke trenger å bruke `ref`.
 
 ## Alternativ bruk med `ref`
 
-Dersom du ikke bruker `Trigger` komponenten, så trenger du ikke å bruke `Modal.Root`.
+Alternativt kan du bruke `ref` for å styre hvor `Modal`, men da må du selv håndtere tilstand for åpning/lukking.
+Det er heller ikke behov for å bruke `Trigger` og `Root` med denne tilnærmingen.
 
 ```tsx
 const modalRef = useRef<HTMLDialogElement>(null);
@@ -52,7 +50,7 @@ const modalRef = useRef<HTMLDialogElement>(null);
 </Modal>
 ```
 
-### Med bruk av `ref` og ingen `Trigger`
+### Med bruk av `ref`
 
 <Canvas of={ModalStories.WithoutTriggerComponent} />
 

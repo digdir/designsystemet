@@ -3,7 +3,6 @@ import {
   useFloating,
   useMergeRefs,
 } from '@floating-ui/react';
-import type React from 'react';
 import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
@@ -49,72 +48,70 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     const Component = asChild ? Slot : 'dialog';
 
     // This local ref is used to make sure the modal works without a ModalRoot
-    const localModalRef = useRef<HTMLDialogElement>(null);
+    const modalDialogRef = useRef<HTMLDialogElement>(null);
+    const { context } = useFloating();
+    const modal = useContext(ModalContext);
+    const open = useModalState(modalDialogRef);
 
-    const contextValue = useContext(ModalContext);
-    const { modalRef, setOpen } = contextValue;
-    contextValue.closeModal = () => {
+    const { modalRef, setOpen } = modal;
+
+    modal.closeModal = () => {
       if (onBeforeClose && onBeforeClose() === false) return;
 
-      localModalRef.current?.close();
+      modalDialogRef.current?.close();
     };
-    const mergedRefs = useMergeRefs([modalRef, ref, localModalRef]);
 
-    useScrollLock(localModalRef, classes.lockScroll);
-    const open = useModalState(localModalRef);
-    const { context } = useFloating();
+    const mergedRefs = useMergeRefs([modalRef, ref, modalDialogRef]);
+    useScrollLock(modalDialogRef, classes.lockScroll);
 
     useEffect(() => {
-      const currentModalRef = modalRef.current;
+      setOpen(open);
+    }, [open, setOpen]);
+
+    useEffect(() => {
+      const modalEl = modalRef.current;
 
       const handleBackdropClick = (e: MouseEvent) => {
-        if (e.target === currentModalRef && onInteractOutside) {
+        if (e.target === modalEl && onInteractOutside) {
           // Fix bug where if you select text spanning two divs it thinks you clicked outside
           if (window.getSelection()?.toString()) return;
           onInteractOutside?.();
         }
       };
 
-      if (currentModalRef)
-        currentModalRef.addEventListener('click', handleBackdropClick);
+      if (modalEl) modalEl.addEventListener('click', handleBackdropClick);
 
       return () => {
-        if (currentModalRef) {
-          currentModalRef.removeEventListener('click', handleBackdropClick);
+        if (modalEl) {
+          modalEl.removeEventListener('click', handleBackdropClick);
         }
       };
     }, [onInteractOutside, modalRef, onBeforeClose, ref]);
 
     useEffect(() => {
-      const currentModalRef = modalRef.current;
+      const modalEl = modalRef.current;
 
       const handleModalClose = () => {
         onClose?.();
       };
 
-      if (currentModalRef)
-        currentModalRef.addEventListener('close', handleModalClose);
+      if (modalEl) modalEl.addEventListener('close', handleModalClose);
 
       return () => {
-        if (currentModalRef) {
-          currentModalRef.removeEventListener('close', handleModalClose);
+        if (modalEl) {
+          modalEl.removeEventListener('close', handleModalClose);
         }
       };
     }, [modalRef, onClose]);
 
-    const onCancel: React.DialogHTMLAttributes<HTMLDialogElement>['onCancel'] =
-      (evt) => {
-        if (onBeforeClose && onBeforeClose() === false) {
-          evt.preventDefault();
-          return;
-        }
+    const onCancel: ModalDialogProps['onCancel'] = (e) => {
+      if (onBeforeClose && onBeforeClose() === false) {
+        e.preventDefault();
+        return;
+      }
 
-        modalRef.current?.close();
-      };
-
-    useEffect(() => {
-      setOpen(open);
-    }, [open, setOpen]);
+      modalRef.current?.close();
+    };
 
     return (
       <Component
