@@ -5,7 +5,7 @@ import { XMarkIcon } from '@navikt/aksel-icons';
 
 import { Heading, Paragraph } from '../../Typography';
 import { Button } from '../../Button';
-import { ModalContext } from '../Modal';
+import { ModalContext } from '../ModalRoot';
 
 import classes from './ModalHeader.module.css';
 
