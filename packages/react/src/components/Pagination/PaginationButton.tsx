@@ -7,7 +7,7 @@ import { PaginationContext } from './PaginationRoot';
 
 export type PaginationButtonProps = {
   /**
-   * Set current link as active
+   * Toggle button as active
    * @default false
    */
   isActive?: boolean;

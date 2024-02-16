@@ -12,7 +12,7 @@ export const PaginationNext = forwardRef<
   return (
     <PaginationButton
       ref={ref}
-      aria-label='Neste side'
+      aria-label={rest.children != null ? undefined : 'Neste side'}
       {...rest}
     />
   );
@@ -27,7 +27,7 @@ export const PaginationPrevious = forwardRef<
   return (
     <PaginationButton
       ref={ref}
-      aria-label='Forrige side'
+      aria-label={rest.children != null ? undefined : 'Forrige side'}
       {...rest}
     />
   );
