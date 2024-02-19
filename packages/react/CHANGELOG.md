@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.50.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.49.0...@digdir/design-system-react@0.50.0) (2024-02-19)
+
+### Bug Fixes
+
+- Correct component names in React developer tools ([#1543](https://github.com/digdir/designsystemet/issues/1543)) ([889e91d](https://github.com/digdir/designsystemet/commit/889e91d4acaaa470f10aabfc17657ca5d5477b6a))
+- **Paragraph:** Fix CSS specificity ([#1527](https://github.com/digdir/designsystemet/issues/1527)) ([4d76d87](https://github.com/digdir/designsystemet/commit/4d76d875960f9cb544bbb33735a0d8685f8ceee5))
+- **Switch:** 🐛 Improvements and adjustments to styling ([#1521](https://github.com/digdir/designsystemet/issues/1521)) ([d9f7a5c](https://github.com/digdir/designsystemet/commit/d9f7a5ce5ee1e70346861a2dcb009b598541958b))
+
+### Features
+
+- **Modal:** Add `Modal.Trigger` ([#1532](https://github.com/digdir/designsystemet/issues/1532)) ([15f7de0](https://github.com/digdir/designsystemet/commit/15f7de0f0d6368c624cb9825d0c35209848f71f9))
+
 # [0.49.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.48.0...@digdir/design-system-react@0.49.0) (2024-02-09)
 
 ### Bug Fixes
