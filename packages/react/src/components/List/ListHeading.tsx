@@ -42,4 +42,4 @@ export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(
   },
 );
 
-ListHeading.displayName = 'List.Heading';
+ListHeading.displayName = 'ListHeading';

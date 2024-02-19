@@ -26,7 +26,7 @@ export type ListProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const List = forwardRef<HTMLDivElement, ListProps>(
+export const ListRoot = forwardRef<HTMLDivElement, ListProps>(
   ({ asChild, size = 'medium', ...rest }, ref) => {
     const [headingId, setHeadingId] = useState<string>();
     const Component = asChild ? Slot : 'div';
@@ -42,4 +42,4 @@ export const List = forwardRef<HTMLDivElement, ListProps>(
   },
 );
 
-List.displayName = 'List';
+ListRoot.displayName = 'ListRoot';

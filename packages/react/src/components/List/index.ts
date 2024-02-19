@@ -1,4 +1,4 @@
-import { List as ListRoot } from './List';
+import { ListRoot } from './List';
 import { ListItem } from './ListItem';
 import { ListHeading } from './ListHeading';
 import { Ordered, Unordered } from './Lists';

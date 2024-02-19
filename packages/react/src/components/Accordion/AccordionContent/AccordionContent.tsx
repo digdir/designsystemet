@@ -46,4 +46,4 @@ export const AccordionContent = forwardRef<
   );
 });
 
-AccordionContent.displayName = 'Accordion.Content';
+AccordionContent.displayName = 'AccordionContent';

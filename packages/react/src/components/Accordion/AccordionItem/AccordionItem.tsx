@@ -61,4 +61,4 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   },
 );
 
-AccordionItem.displayName = 'Accordion.Item';
+AccordionItem.displayName = 'AccordionItem';
