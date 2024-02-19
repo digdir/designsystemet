@@ -21,4 +21,6 @@ export const ComboboxOptionDescription = forwardRef<
   );
 });
 
+ComboboxOptionDescription.displayName = 'ComboboxOptionDescription';
+
 export default ComboboxOptionDescription;

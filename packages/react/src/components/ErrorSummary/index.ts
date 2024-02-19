@@ -1,4 +1,4 @@
-import { ErrorSummary as ErrorSummaryRoot } from './ErrorSummary';
+import { ErrorSummaryRoot } from './ErrorSummaryRoot';
 import { ErrorSummaryHeading } from './ErrorSummaryHeading';
 import { ErrorSummaryItem } from './ErrorSummaryItem';
 import ErrorSummaryList from './ErrorSummaryList';
@@ -17,7 +17,12 @@ ErrorSummary.Item = ErrorSummaryItem;
 ErrorSummary.Heading = ErrorSummaryHeading;
 ErrorSummary.List = ErrorSummaryList;
 
-export type { ErrorSummaryProps } from './ErrorSummary';
+ErrorSummary.Root.displayName = 'ErrorSummary.Root';
+ErrorSummary.Item.displayName = 'ErrorSummary.Item';
+ErrorSummary.Heading.displayName = 'ErrorSummary.Heading';
+ErrorSummary.List.displayName = 'ErrorSummary.List';
+
+export type { ErrorSummaryProps } from './ErrorSummaryRoot';
 export type { ErrorSummaryItemProps } from './ErrorSummaryItem';
 export type { ErrorSummaryHeadingProps } from './ErrorSummaryHeading';
 export type { ErrorSummaryListProps } from './ErrorSummaryList';

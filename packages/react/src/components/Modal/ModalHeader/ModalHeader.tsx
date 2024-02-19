@@ -66,3 +66,5 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
     );
   },
 );
+
+ModalHeader.displayName = 'ModalHeader';

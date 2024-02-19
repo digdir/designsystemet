@@ -84,3 +84,5 @@ export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   internalOpen: false,
   setInternalOpen: () => {},
 });
+
+DropdownMenu.displayName = 'DropdownMenu';

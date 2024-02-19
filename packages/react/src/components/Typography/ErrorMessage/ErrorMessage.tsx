@@ -57,3 +57,5 @@ export const ErrorMessage: OverridableComponent<
     );
   },
 );
+
+ErrorMessage.displayName = 'ErrorMessage';

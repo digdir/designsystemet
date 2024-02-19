@@ -49,3 +49,5 @@ export const Paragraph: OverridableComponent<
     );
   },
 );
+
+Paragraph.displayName = 'Paragraph';

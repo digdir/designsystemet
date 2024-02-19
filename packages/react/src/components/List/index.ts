@@ -1,4 +1,4 @@
-import { List as ListRoot } from './List';
+import { ListRoot } from './ListRoot';
 import { ListItem } from './ListItem';
 import { ListHeading } from './ListHeading';
 import { Ordered, Unordered } from './Lists';
@@ -25,7 +25,7 @@ List.Heading.displayName = 'List.Heading';
 List.Ordered.displayName = 'List.Ordered';
 List.Unordered.displayName = 'List.Unordered';
 
-export type { ListProps } from './List';
+export type { ListProps } from './ListRoot';
 export type { ListItemProps } from './ListItem';
 export type { ListHeadingProps } from './ListHeading';
 export type { ListOrderedProps, ListUnorderedProps } from './Lists';

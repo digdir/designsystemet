@@ -129,3 +129,5 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     );
   },
 );
+
+ModalDialog.displayName = 'ModalDialog';

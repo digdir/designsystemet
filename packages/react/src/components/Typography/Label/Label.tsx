@@ -61,3 +61,5 @@ export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
       );
     },
   );
+
+Label.displayName = 'Label';

@@ -28,6 +28,7 @@ Modal.Header = ModalHeader;
 Modal.Trigger = ModalTrigger;
 Modal.Dialog = ModalDialog;
 
+Modal.Root.displayName = 'Modal.Root';
 Modal.Dialog.displayName = 'Modal.Dialog';
 Modal.Footer.displayName = 'Modal.Footer';
 Modal.Header.displayName = 'Modal.Header';
