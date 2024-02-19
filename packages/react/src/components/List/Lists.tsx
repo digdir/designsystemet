@@ -5,7 +5,7 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { Paragraph } from '../Typography';
 
-import { ListContext } from './List';
+import { ListContext } from './ListRoot';
 import classes from './List.module.css';
 
 export type ListUnorderedProps = {

@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react';
 import type { ListHeadingProps } from '../List';
 import { List } from '../List';
 
-import { ErrorSummaryContext } from './ErrorSummary';
+import { ErrorSummaryContext } from './ErrorSummaryRoot';
 
 export type ErrorSummaryHeadingProps = {
   /**
