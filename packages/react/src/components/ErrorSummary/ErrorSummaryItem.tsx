@@ -22,4 +22,4 @@ export const ErrorSummaryItem = ({
   );
 };
 
-ErrorSummaryItem.displayName = 'ErrorSummary.Item';
+ErrorSummaryItem.displayName = 'ErrorSummaryItem';

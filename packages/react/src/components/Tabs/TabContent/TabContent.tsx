@@ -37,3 +37,5 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
     );
   },
 );
+
+TabContent.displayName = 'TabContent';

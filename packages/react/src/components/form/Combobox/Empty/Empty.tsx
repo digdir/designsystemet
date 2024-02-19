@@ -31,4 +31,6 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   },
 );
 
+ComboboxEmpty.displayName = 'ComboboxEmpty';
+
 export default ComboboxEmpty;

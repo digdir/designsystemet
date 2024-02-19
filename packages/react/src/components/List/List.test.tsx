@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps } from './List';
+import type { ListProps } from './ListRoot';
 
 import { List } from '.';
 

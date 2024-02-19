@@ -183,4 +183,6 @@ export const ComboboxInput = ({
   );
 };
 
+ComboboxInput.displayName = 'ComboboxInput';
+
 export default ComboboxInput;

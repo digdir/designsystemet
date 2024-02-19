@@ -579,3 +579,5 @@ type ComboboxContextType = {
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(
   undefined,
 );
+
+Combobox.displayName = 'Combobox';

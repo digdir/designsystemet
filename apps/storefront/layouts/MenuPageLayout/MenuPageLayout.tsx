@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { useRouter } from 'next/router';
 
 import GithubLink from 'components/Link/Github/GithubLink';
+import { Banner } from 'components/SubPages/Banner/Banner';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
 
@@ -9,7 +10,13 @@ import classes from './MenuPageLayout.module.css';
 
 type PageLayoutProps = {
   content: React.ReactNode;
-  data: PageLayoutData;
+  data?: PageLayoutData;
+  banner?: {
+    color: 'blue' | 'red' | 'yellow';
+    title: string;
+    ingress?: string;
+    icon: React.ReactNode;
+  };
 };
 
 type PageLayoutData = {
@@ -17,11 +24,18 @@ type PageLayoutData = {
   date: string;
 };
 
-const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
+const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
   const router = useRouter();
 
   return (
     <div>
+      {banner && (
+        <Banner color={banner.color}>
+          <Banner.Icon>{banner.icon}</Banner.Icon>
+          <Banner.Heading>{banner.title}</Banner.Heading>
+          {banner.ingress && <Banner.Ingress>{banner.ingress}</Banner.Ingress>}
+        </Banner>
+      )}
       <Container className={classes.page}>
         <div className={classes.left}>
           <SidebarMenu routerPath={router.pathname} />
@@ -30,10 +44,12 @@ const MenuPageLayout = ({ content, data }: PageLayoutProps) => {
           id='main'
           className={classes.right}
         >
-          <div className={classes.header}>
-            <h1 className={classes.title}>{data.title}</h1>
-            {data.date && <div className={classes.date}>{data.date}</div>}
-          </div>
+          {data && (
+            <div className={classes.header}>
+              <h1 className={classes.title}>{data.title}</h1>
+              {data.date && <div className={classes.date}>{data.date}</div>}
+            </div>
+          )}
 
           <div
             className={classes.content}

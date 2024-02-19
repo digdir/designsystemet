@@ -32,3 +32,5 @@ export const HelpTextIcon = ({
     </svg>
   );
 };
+
+HelpTextIcon.displayName = 'HelpText.Icon';

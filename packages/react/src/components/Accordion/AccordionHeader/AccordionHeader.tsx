@@ -64,3 +64,5 @@ export const AccordionHeader = forwardRef<
     </Heading>
   );
 });
+
+AccordionHeader.displayName = 'AccordionHeader';

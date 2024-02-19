@@ -32,3 +32,5 @@ export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
     </ul>
   ),
 );
+
+Group.displayName = 'ChipGroup';

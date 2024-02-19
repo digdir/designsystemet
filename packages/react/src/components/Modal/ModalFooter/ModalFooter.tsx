@@ -17,3 +17,5 @@ export const ModalFooter = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
     );
   },
 );
+
+ModalFooter.displayName = 'ModalFooter';

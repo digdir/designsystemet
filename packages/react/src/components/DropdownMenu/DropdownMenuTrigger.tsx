@@ -35,3 +35,5 @@ export const DropdownMenuTrigger = forwardRef<
     </Component>
   );
 });
+
+DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';

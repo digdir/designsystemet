@@ -39,3 +39,5 @@ export const Circle = ({
     </div>
   );
 };
+
+Circle.displayName = 'SkeletonCircle';

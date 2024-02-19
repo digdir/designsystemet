@@ -15,3 +15,5 @@ export const TableBody = React.forwardRef<
     </tbody>
   );
 });
+
+TableBody.displayName = 'TableBody';
