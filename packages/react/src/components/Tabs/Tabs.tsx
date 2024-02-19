@@ -73,3 +73,5 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     );
   },
 );
+
+Tabs.displayName = 'Tabs';

@@ -29,3 +29,5 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     />
   ),
 );
+
+Accordion.displayName = 'Accordion';

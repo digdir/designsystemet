@@ -157,3 +157,5 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     );
   },
 );
+
+PopoverContent.displayName = 'Popover.Content';

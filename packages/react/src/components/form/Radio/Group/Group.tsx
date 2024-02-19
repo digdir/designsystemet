@@ -78,3 +78,5 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
     );
   },
 );
+
+RadioGroup.displayName = 'RadioGroup';

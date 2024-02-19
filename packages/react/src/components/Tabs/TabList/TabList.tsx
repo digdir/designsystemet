@@ -21,3 +21,5 @@ export const TabList = forwardRef<
     </RovingTabindexRoot>
   );
 });
+
+TabList.displayName = 'TabList';

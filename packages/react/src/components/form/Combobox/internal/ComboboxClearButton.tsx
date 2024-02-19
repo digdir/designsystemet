@@ -58,4 +58,6 @@ export const ComboboxClearButton = () => {
   );
 };
 
+ComboboxClearButton.displayName = 'ComboboxClearButton';
+
 export default ComboboxClearButton;

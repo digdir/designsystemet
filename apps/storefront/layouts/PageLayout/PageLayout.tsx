@@ -59,7 +59,6 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
           </div>
         </Container>
       </div>
-
       <Container className={classes.container}>
         <div className={classes.content}>
           <MdxContent>{content}</MdxContent>

@@ -34,3 +34,5 @@ export const PopoverTrigger = forwardRef<
     </Component>
   );
 });
+
+PopoverTrigger.displayName = 'PopoverTrigger';

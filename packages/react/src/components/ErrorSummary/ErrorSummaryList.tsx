@@ -6,4 +6,4 @@ export default function ErrorSummaryList({ ...rest }: ErrorSummaryListProps) {
   return <List.Unordered {...rest} />;
 }
 
-ErrorSummaryList.displayName = 'ErrorSummary.List';
+ErrorSummaryList.displayName = 'ErrorSummaryList';
