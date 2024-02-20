@@ -23,7 +23,9 @@ export type PaginationProps = {
   compact?: boolean;
   /** Hides the component's previous and next button labels */
   hideLabels?: boolean;
-  /** Sets the current page */
+  /** Sets the current page
+   * @default 1
+   */
   currentPage: number;
   /** Total number of pages */
   totalPages: number;

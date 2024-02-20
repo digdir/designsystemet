@@ -1,4 +1,4 @@
-import { Meta, Controls, Primary, Canvas, ArgsTable } from '@storybook/blocks';
+import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
 
 import { Information } from '../../../../../docs-components';
 import { Pagination } from '../Pagination';
@@ -11,7 +11,7 @@ import * as PaginationStories from './Pagination.stories';
 
 `Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
 
-Dette er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
+Komponenten kan brukes på forskjellige måter, se under [bruk](/docs/felles-pagination--docs#bruk) for mer informasjon
 
 <Primary />
 <Controls of={PaginationStories.Preview} />
@@ -20,7 +20,9 @@ Dette er en kontrollert komponent. Det vil si at komponentens tilstand om hvilke
 
 <Information text='token' />
 
-### Eksempel på simpel bruk
+### Eksempel på bruk med `Pagination`
+
+`Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
 
 ```tsx
 import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
@@ -38,7 +40,9 @@ const [currentPage, setCurrentPage] = useState(1);
 />;
 ```
 
-### Eksempel på bruk med egne komponenter
+### Eksempel på bruk med del-komponenter
+
+Er det behov for en tilpasset `Pagination` kan du ta i bruk de enkelte del-kompontenene.
 
 ```tsx
 <Pagination.Root>
@@ -49,9 +53,11 @@ const [currentPage, setCurrentPage] = useState(1);
         Forrige
       </Pagination.Previous>
     </Pagination.Item>
+
     <Pagination.Item>
       <Pagination.Link isActive>1</Pagination.Link>
     </Pagination.Item>
+
     <Pagination.Item>
       <Pagination.Next>
         Neste
@@ -62,43 +68,16 @@ const [currentPage, setCurrentPage] = useState(1);
 </Pagination.Root>
 ```
 
-## Bruk med individuelle komponenter
+## Paginering logikk
 
-Det er mulig å bruke `Pagination` for å bygge opp en egen paginering, dersom du vil ha mer kontroll.
-Her kan du legge inn det du vil, men må styre navigeringen selv.
+Bruk `usePagination` for paginering logikk sammen med de enkelt del-komponentene for å få en tilpasset `Pagniation`.
 
-<Canvas of={PaginationStories.ComponentApi} />
+Bruk `isActive` på `Pagination.Button` for å indikere hvilken side som er aktiv.
 
-## Som lenker
+<Canvas of={PaginationStories.UsePagination} />
 
-Alle komponenter støtter `asChild`, så her endrer vi `Pagination.Link` til å være en `a`-tag.
+### Pagenering med lenker
+
+Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker om ny side er ny lenke.
 
 <Canvas of={PaginationStories.WithAnchor} />
-
-## `Pagination.Item`
-
-<ArgsTable of={Pagination.Item} />
-
-## `Pagination.Button`
-
-<ArgsTable of={Pagination.Button} />
-
-## `Pagination.Root`
-
-<ArgsTable of={Pagination.Root} />
-
-## `Pagination.Content`
-
-<ArgsTable of={Pagination.Content} />
-
-## `Pagination.Previous`
-
-<ArgsTable of={Pagination.Previous} />
-
-## `Pagination.Next`
-
-<ArgsTable of={Pagination.Next} />
-
-## `Pagination.Ellipsis`
-
-<ArgsTable of={Pagination.Ellipsis} />

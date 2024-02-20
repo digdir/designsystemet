@@ -38,7 +38,7 @@ Preview.args = {
   itemLabel: (num) => `Side ${num}`,
 };
 
-export const ComponentApi: StoryFn<typeof Pagination> = (args) => {
+export const UsePagination: StoryFn<typeof Pagination> = (args) => {
   const { totalPages = 10 } = args;
   const {
     steps,
@@ -74,7 +74,7 @@ export const ComponentApi: StoryFn<typeof Pagination> = (args) => {
               <Pagination.Button
                 isActive={currentPage === step}
                 onClick={() => setCurrentPage(step)}
-                aria-label={`Naviger til side ${step}`}
+                aria-label={`Side ${step}`}
               >
                 {step}
               </Pagination.Button>
@@ -98,37 +98,56 @@ export const ComponentApi: StoryFn<typeof Pagination> = (args) => {
   );
 };
 
-export const WithAnchor = () => {
+export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
+  const { totalPages = 4 } = args;
+  const { steps, currentPage } = usePagination({
+    currentPage: 2,
+    totalPages,
+  });
+
   return (
     <Pagination.Root>
       <Pagination.Content>
         <Pagination.Item>
-          <Pagination.Previous asChild>
-            <a href='#side-forrige'>
+          <Pagination.Previous
+            asChild
+            aria-label='Naviger til forrige side'
+            style={{
+              visibility: currentPage === 1 ? 'hidden' : undefined,
+            }}
+          >
+            <a href='#forrige-side'>
               <ChevronLeftIcon aria-hidden />
               Forrige
             </a>
           </Pagination.Previous>
         </Pagination.Item>
+
+        {steps.map((step, index) => (
+          <Pagination.Item key={`${step}-${index}`}>
+            {step === 'ellipsis' ? (
+              <Pagination.Ellipsis />
+            ) : (
+              <Pagination.Button
+                asChild
+                isActive={currentPage === step}
+                aria-label={`Naviger til side ${step}`}
+              >
+                <a href={`#side-${step}`}> {step}</a>
+              </Pagination.Button>
+            )}
+          </Pagination.Item>
+        ))}
+
         <Pagination.Item>
-          <Pagination.Button
-            isActive
+          <Pagination.Next
             asChild
+            aria-label='Naviger til neste side'
+            style={{
+              visibility: currentPage === totalPages ? 'hidden' : undefined,
+            }}
           >
-            <a href='#side-1'>1</a>
-          </Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Ellipsis />
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Button asChild>
-            <a href='#side-6'>6</a>
-          </Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Next asChild>
-            <a href='#side-neste'>
+            <a href='#neste-side'>
               Neste
               <ChevronRightIcon aria-hidden />
             </a>

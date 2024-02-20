@@ -48,14 +48,14 @@ const getSteps = (props: getStepsProps): ('ellipsis' | number)[] => {
   ];
 };
 
-type usePaginationProps = Partial<getStepsProps>;
+type usePaginationProps = getStepsProps;
 
 export const usePagination = ({
-  totalPages = 10,
+  totalPages,
+  currentPage: currentPageProps = 1,
   compact,
-  ...rest
 }: usePaginationProps) => {
-  const [currentPage, setCurrentPage] = useState(rest.currentPage ?? 1);
+  const [currentPage, setCurrentPage] = useState(currentPageProps);
 
   const steps = getSteps({ currentPage, totalPages, compact });
 
