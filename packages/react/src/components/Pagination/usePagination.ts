@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { type PaginationProps } from './Pagination';
 
@@ -56,6 +56,12 @@ export const usePagination = ({
   compact,
 }: usePaginationProps) => {
   const [currentPage, setCurrentPage] = useState(currentPageProps);
+
+  useEffect(() => {
+    if (currentPageProps !== currentPage) {
+      setCurrentPage(currentPageProps);
+    }
+  }, [currentPage, currentPageProps]);
 
   const steps = getSteps({ currentPage, totalPages, compact });
 
