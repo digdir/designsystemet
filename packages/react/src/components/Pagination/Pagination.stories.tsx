@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
-import { Pagination } from '.';
+import { Pagination, usePagination } from '.';
 
 export default {
   title: 'Felles/Pagination',
@@ -38,36 +38,57 @@ Preview.args = {
   itemLabel: (num) => `Side ${num}`,
 };
 
-export const ComponentApi = () => {
+export const ComponentApi: StoryFn<typeof Pagination> = (args) => {
+  const { totalPages = 10 } = args;
+  const {
+    steps,
+    currentPage,
+    setCurrentPage,
+    handleNextPage,
+    handlePreviousPage,
+  } = usePagination({
+    currentPage: 4,
+    totalPages,
+  });
+
   return (
     <Pagination.Root>
       <Pagination.Content>
         <Pagination.Item>
-          <Pagination.Previous>
+          <Pagination.Previous
+            onClick={handlePreviousPage}
+            style={{
+              visibility: currentPage === 1 ? 'hidden' : undefined,
+            }}
+          >
             <ChevronLeftIcon aria-hidden />
             Forrige
           </Pagination.Previous>
         </Pagination.Item>
+
+        {steps.map((step, index) => (
+          <Pagination.Item key={`${step}-${index}`}>
+            {step === 'ellipsis' ? (
+              <Pagination.Ellipsis />
+            ) : (
+              <Pagination.Button
+                isActive={currentPage === step}
+                onClick={() => setCurrentPage(step)}
+                aria-label={`Naviger til side ${step}`}
+              >
+                {step}
+              </Pagination.Button>
+            )}
+          </Pagination.Item>
+        ))}
+
         <Pagination.Item>
-          <Pagination.Button isActive>1</Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Button>2</Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Button>3</Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Ellipsis />
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Button>6</Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Button>7</Pagination.Button>
-        </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Next>
+          <Pagination.Next
+            onClick={handleNextPage}
+            style={{
+              visibility: currentPage === totalPages ? 'hidden' : undefined,
+            }}
+          >
             Neste
             <ChevronRightIcon aria-hidden />
           </Pagination.Next>
@@ -83,7 +104,7 @@ export const WithAnchor = () => {
       <Pagination.Content>
         <Pagination.Item>
           <Pagination.Previous asChild>
-            <a href='#som-anchor'>
+            <a href='#side-forrige'>
               <ChevronLeftIcon aria-hidden />
               Forrige
             </a>
@@ -94,7 +115,7 @@ export const WithAnchor = () => {
             isActive
             asChild
           >
-            <a href='#som-anchor'>1</a>
+            <a href='#side-1'>1</a>
           </Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
@@ -102,12 +123,12 @@ export const WithAnchor = () => {
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Button asChild>
-            <a href='#som-anchor'>6</a>
+            <a href='#side-6'>6</a>
           </Pagination.Button>
         </Pagination.Item>
         <Pagination.Item>
           <Pagination.Next asChild>
-            <a href='#som-anchor'>
+            <a href='#side-neste'>
               Neste
               <ChevronRightIcon aria-hidden />
             </a>

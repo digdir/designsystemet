@@ -63,3 +63,5 @@ export {
   PaginationPrevious,
   PaginationNext,
 };
+
+export { usePagination } from './usePagination';

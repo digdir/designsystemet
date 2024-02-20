@@ -10,6 +10,7 @@ import { PaginationButton } from './PaginationButton';
 import { PaginationEllipsis } from './PaginationEllipsis';
 import classes from './Pagination.module.css';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
+import { usePagination } from './usePagination';
 
 export type PaginationProps = {
   /** Sets the text label for the next page button */
@@ -32,49 +33,6 @@ export type PaginationProps = {
   itemLabel?: (currentPage: number) => string;
 } & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
 
-export const getSteps = (
-  props: Pick<PaginationProps, 'compact' | 'currentPage' | 'totalPages'>,
-): ('ellipsis' | number)[] => {
-  /**  Number of always visible pages at the start and end. */
-  const boundaryCount = 1;
-
-  /** Number of always visible pages before and after the current page. */
-  const siblingCount = props.compact ? 0 : 1;
-
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-  if (props.totalPages <= (boundaryCount + siblingCount) * 2 + 3)
-    return range(1, props.totalPages);
-
-  const startPages = range(1, boundaryCount);
-  const endPages = range(
-    props.totalPages - boundaryCount + 1,
-    props.totalPages,
-  );
-
-  const siblingsStart = Math.max(
-    Math.min(
-      props.currentPage - siblingCount,
-      props.totalPages - boundaryCount - siblingCount * 2 - 1,
-    ),
-    boundaryCount + 2,
-  );
-  const siblingsEnd = siblingsStart + siblingCount * 2;
-
-  return [
-    ...startPages,
-    siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
-      ? siblingsStart - 1
-      : 'ellipsis',
-    ...range(siblingsStart, siblingsEnd),
-    (endPages[0] ?? props.totalPages + 1) - siblingsEnd === 2
-      ? siblingsEnd + 1
-      : 'ellipsis',
-    ...endPages,
-  ];
-};
-
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (
     {
@@ -91,6 +49,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     }: PaginationProps,
     ref,
   ) => {
+    const { steps } = usePagination({ compact, currentPage, totalPages });
     return (
       <PaginationRoot
         ref={ref}
@@ -112,7 +71,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
-          {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
+          {steps.map((step, i) => (
             <PaginationItem key={`${step}${i}`}>
               {step === 'ellipsis' ? (
                 <PaginationEllipsis />
