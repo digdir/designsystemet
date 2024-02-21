@@ -210,7 +210,7 @@ describe('Pagination.Root', () => {
   });
 });
 
-describe('Pagination.Link', () => {
+describe('Pagination.Button', () => {
   it('should render correctly with default props', () => {
     renderRtl(
       <Pagination.Root>
