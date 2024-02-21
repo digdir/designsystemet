@@ -50,6 +50,7 @@ const getSteps = (props: getStepsProps): ('ellipsis' | number)[] => {
 
 type usePaginationProps = getStepsProps;
 
+/** Hook to help manage pagination state */
 export const usePagination = ({
   totalPages,
   currentPage: currentPageProps = 1,
@@ -58,20 +59,21 @@ export const usePagination = ({
   const [currentPage, setCurrentPage] = useState(currentPageProps);
 
   useEffect(() => {
-    if (currentPageProps !== currentPage) {
-      setCurrentPage(currentPageProps);
-    }
-  }, [currentPage, currentPageProps]);
+    setCurrentPage(currentPageProps);
+  }, [currentPageProps]);
 
   const steps = getSteps({ currentPage, totalPages, compact });
 
-  const handleNextPage = () => {
+  const showNextPage = currentPage < totalPages;
+  const showPreviousPage = currentPage !== 1;
+
+  const setNextPage = () => {
     setCurrentPage(
       currentPage + 1 <= totalPages ? currentPage + 1 : totalPages,
     );
   };
 
-  const handlePreviousPage = () => {
+  const setPreviousPage = () => {
     setCurrentPage(currentPage - 1 > 0 ? currentPage - 1 : 1);
   };
 
@@ -79,8 +81,10 @@ export const usePagination = ({
     steps,
     currentPage,
     setCurrentPage,
-    handlePreviousPage,
-    handleNextPage,
+    setPreviousPage,
+    setNextPage,
     totalPages,
+    showNextPage,
+    showPreviousPage,
   };
 };

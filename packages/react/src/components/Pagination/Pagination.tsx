@@ -51,7 +51,11 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     }: PaginationProps,
     ref,
   ) => {
-    const { steps } = usePagination({ compact, currentPage, totalPages });
+    const { steps, showNextPage, showPreviousPage } = usePagination({
+      compact,
+      currentPage,
+      totalPages,
+    });
     return (
       <PaginationRoot
         ref={ref}
@@ -63,7 +67,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              className={cl({ [classes.hidden]: currentPage === 1 })}
+              className={cl({ [classes.hidden]: !showPreviousPage })}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
@@ -98,7 +102,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 onChange(currentPage + 1);
               }}
               className={cl({
-                [classes.hidden]: currentPage === totalPages,
+                [classes.hidden]: !showNextPage,
               })}
             >
               {!hideLabels && nextLabel}

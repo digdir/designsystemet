@@ -44,8 +44,10 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
     steps,
     currentPage,
     setCurrentPage,
-    handleNextPage,
-    handlePreviousPage,
+    setNextPage,
+    setPreviousPage,
+    showNextPage,
+    showPreviousPage,
   } = usePagination({
     currentPage: 4,
     totalPages,
@@ -56,9 +58,9 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
       <Pagination.Content>
         <Pagination.Item>
           <Pagination.Previous
-            onClick={handlePreviousPage}
+            onClick={setPreviousPage}
             style={{
-              visibility: currentPage === 1 ? 'hidden' : undefined,
+              visibility: showPreviousPage ? undefined : 'hidden',
             }}
           >
             <ChevronLeftIcon aria-hidden />
@@ -84,9 +86,9 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
 
         <Pagination.Item>
           <Pagination.Next
-            onClick={handleNextPage}
+            onClick={setNextPage}
             style={{
-              visibility: currentPage === totalPages ? 'hidden' : undefined,
+              visibility: showNextPage ? undefined : 'hidden',
             }}
           >
             Neste
