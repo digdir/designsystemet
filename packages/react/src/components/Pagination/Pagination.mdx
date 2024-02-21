@@ -12,6 +12,12 @@ import * as PaginationStories from './Pagination.stories';
 
 Komponenten kan brukes på forskjellige måter, se under [bruk](/docs/felles-pagination--docs#bruk) for mer informasjon
 
+Vær oppmerksom på:
+
+- Knappene er som standard `button` elementer.
+- Dersom ny side fører til ny side sørg for at paginering knapper er `a` elementer.
+  - Se eksempel [Paginering med lenker](/docs/felles-pagination--with-anchor).
+
 <Primary />
 <Controls of={PaginationStories.Preview} />
 
@@ -79,6 +85,6 @@ Bruk `isActive` på `Pagination.Button` for å indikere hvilken side som er akti
 
 ### Pagenering med lenker
 
-Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker om ny side er ny lenke.
+Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker (`a`) om ny side er ny lenke.
 
 <Canvas of={PaginationStories.WithAnchor} />
