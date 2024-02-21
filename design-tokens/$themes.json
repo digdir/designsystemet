@@ -5,7 +5,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:7721:2966",
     "$figmaModeId": "7721:0",
@@ -152,7 +153,8 @@
     "selectedTokenSets": {
       "Brand/Digdir": "enabled",
       "Base/Semantic": "enabled",
-      "Base/Core": "source"
+      "Base/Core": "source",
+      "Base/Fluid": "disabled"
     },
     "$figmaStyleReferences": {
       "heading.heading-xlarge": "S:3c153973cb7a9a9c750db73e13e99baee56692e7,",
@@ -637,7 +639,8 @@
     "selectedTokenSets": {
       "Brand/Altinn": "enabled",
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
     "$figmaModeId": "6324:2",
@@ -866,7 +869,8 @@
     "selectedTokenSets": {
       "Brand/Tilsynet": "enabled",
       "Base/Core": "source",
-      "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
@@ -1097,7 +1101,8 @@
     "selectedTokenSets": {
       "Base/Core": "source",
       "Base/Semantic": "enabled",
-      "Brand/Brreg": "enabled"
+      "Brand/Brreg": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaVariableReferences": {
       "brand.alt1.50": "741f3f885aa3f266feda96defb70e59752495075",
@@ -1331,7 +1336,8 @@
     "name": "1440",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@1440": "enabled"
+      "Viewport/@1440": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1819",
     "$figmaModeId": "6324:7",
@@ -1345,7 +1351,8 @@
     "name": "768",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@768": "enabled"
+      "Viewport/@768": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1819",
     "$figmaModeId": "6324:8",
@@ -1359,7 +1366,8 @@
     "name": "320",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Viewport/@320": "enabled"
+      "Viewport/@320": "enabled",
+      "Base/Fluid": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1819",
     "$figmaModeId": "6324:9",

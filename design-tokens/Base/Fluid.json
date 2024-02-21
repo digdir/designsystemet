@@ -1,0 +1,336 @@
+{
+  "font-scale": {
+    "const": {
+      "min": {
+        "f0": {
+          "value": "16",
+          "type": "fontSizes"
+        },
+        "r": {
+          "value": "1.77",
+          "type": "fontSizes"
+        },
+        "n": {
+          "value": "6",
+          "type": "fontSizes"
+        }
+      },
+      "max": {
+        "f0": {
+          "value": "18",
+          "type": "fontSizes"
+        },
+        "r": {
+          "value": "2.414",
+          "type": "fontSizes"
+        },
+        "n": {
+          "value": "6",
+          "type": "fontSizes"
+        }
+      }
+    },
+    "f-3": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(-3/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(-3/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f-3.max}-{font-scale.f-3.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f-3.max} - {viewport.max} * {font-scale.f-3.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f-3.v} + {font-scale.f-3.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f-2": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(-2/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(-2/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f-2.max}-{font-scale.f-2.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f-2.max} - {viewport.max} * {font-scale.f-2.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f-2.v} + {font-scale.f-2.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f-1": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(-1/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(-1/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f-1.max}-{font-scale.f-1.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f-1.max} - {viewport.max} * {font-scale.f-1.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f-1.v} + {font-scale.f-1.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f0": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(0/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(0/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f0.max}-{font-scale.f0.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f0.max} - {viewport.max} * {font-scale.f0.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f0.v} + {font-scale.f0.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f1": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(1/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(1/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f1.max}-{font-scale.f1.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f1.max} - {viewport.max} * {font-scale.f1.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f1.v} + {font-scale.f1.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f2": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(2/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(2/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f2.max}-{font-scale.f2.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f2.max} - {viewport.max} * {font-scale.f2.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f2.v} + {font-scale.f2.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f3": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(3/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(3/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f3.max}-{font-scale.f3.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f3.max} - {viewport.max} * {font-scale.f3.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f3.v} + {font-scale.f3.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f4": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(4/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(4/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f4.max}-{font-scale.f4.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f4.max} - {viewport.max} * {font-scale.f4.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f4.v} + {font-scale.f4.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f5": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(5/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(5/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f5.max}-{font-scale.f5.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f5.max} - {viewport.max} * {font-scale.f5.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f5.v} + {font-scale.f5.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f6": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(6/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(6/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f6.max}-{font-scale.f6.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f6.max} - {viewport.max} * {font-scale.f6.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f6.v} + {font-scale.f6.r})",
+        "type": "fontSizes"
+      }
+    },
+    "f7": {
+      "min": {
+        "value": "5*roundTo(({font-scale.const.min.f0}*{font-scale.const.min.r}^(7/{font-scale.const.min.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "max": {
+        "value": "5*roundTo(({font-scale.const.max.f0}*{font-scale.const.max.r}^(7/{font-scale.const.max.n})/5),1)",
+        "type": "fontSizes"
+      },
+      "v": {
+        "value": "100 * ({font-scale.f7.max}-{font-scale.f7.min}) / ({viewport.max}-{viewport.min})",
+        "type": "fontSizes"
+      },
+      "r": {
+        "value": "( {viewport.min} * {font-scale.f7.max} - {viewport.max} * {font-scale.f7.min}) / ({viewport.min}-{viewport.max})",
+        "type": "fontSizes"
+      },
+      "fluid": {
+        "value": "round(({viewport.width}/100) * {font-scale.f7.v} + {font-scale.f7.r})",
+        "type": "fontSizes"
+      }
+    }
+  },
+  "font-size": {
+    "f-3": {
+      "value": "min( max( {font-scale.f-3.min},  {font-scale.f-3.fluid}) ,{font-scale.f-3.max})",
+      "type": "fontSizes"
+    },
+    "f-2": {
+      "value": "min( max( {font-scale.f-2.min},  {font-scale.f-2.fluid}) ,{font-scale.f-2.max})",
+      "type": "fontSizes"
+    },
+    "f-1": {
+      "value": "min( max( {font-scale.f-1.min},  {font-scale.f-1.fluid}) ,{font-scale.f-1.max})",
+      "type": "fontSizes"
+    },
+    "f0": {
+      "value": "min( max( {font-scale.f0.min},  {font-scale.f0.fluid}) ,{font-scale.f0.max})",
+      "type": "fontSizes"
+    },
+    "f1": {
+      "value": "min( max( {font-scale.f1.min},  {font-scale.f1.fluid}) ,{font-scale.f1.max})",
+      "type": "fontSizes"
+    },
+    "f2": {
+      "value": "min( max( {font-scale.f2.min},  {font-scale.f2.fluid}) ,{font-scale.f2.max})",
+      "type": "fontSizes"
+    },
+    "f3": {
+      "value": "min( max( {font-scale.f3.min},  {font-scale.f3.fluid}) ,{font-scale.f3.max})",
+      "type": "fontSizes"
+    },
+    "f4": {
+      "value": "min( max( {font-scale.f4.min},  {font-scale.f4.fluid}) ,{font-scale.f4.max})",
+      "type": "fontSizes"
+    },
+    "f5": {
+      "value": "min( max( {font-scale.f5.min},  {font-scale.f5.fluid}) ,{font-scale.f5.max})",
+      "type": "fontSizes"
+    },
+    "f6": {
+      "value": "min( max( {font-scale.f6.min},  {font-scale.f6.fluid}) ,{font-scale.f6.max})",
+      "type": "fontSizes"
+    },
+    "f7": {
+      "value": "min( max( {font-scale.f7.min},  {font-scale.f7.fluid}) ,{font-scale.f7.max})",
+      "type": "fontSizes"
+    }
+  },
+  "viewport": {
+    "width": {
+      "value": "{viewport.max}",
+      "type": "sizing"
+    },
+    "min": {
+      "value": "320",
+      "type": "sizing"
+    },
+    "max": {
+      "value": "1360",
+      "type": "sizing"
+    }
+  }
+}
