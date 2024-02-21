@@ -304,11 +304,11 @@
       },
       "focus": {
         "outline": {
-          "value": "{colors.yellow.500}",
+          "value": "{semantic.border.neutral.strong}",
           "type": "color"
         },
         "boxshadow": {
-          "value": "{semantic.border.neutral.strong}",
+          "value": "rgba(0,0,0,0)",
           "type": "color"
         }
       },

@@ -181,8 +181,8 @@
   --fds-semantic-border-danger-default: var(--fds-colors-red-500);
   --fds-semantic-border-danger-hover: var(--fds-colors-red-600);
   --fds-semantic-border-danger-active: var(--fds-colors-red-700);
-  --fds-semantic-border-focus-outline: var(--fds-colors-yellow-500);
-  --fds-semantic-border-focus-boxshadow: var(--fds-semantic-border-neutral-strong);
+  --fds-semantic-border-focus-outline: var(--fds-semantic-border-neutral-strong);
+  --fds-semantic-border-focus-boxshadow: rgba(0,0,0,0);
   --fds-semantic-border-on_inverted-default: var(--fds-colors-white);
   --fds-semantic-border-input-default: var(--fds-colors-blue-900);
   --fds-semantic-border-input-hover: var(--fds-colors-blue-700);
