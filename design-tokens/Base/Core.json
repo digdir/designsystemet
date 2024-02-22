@@ -504,47 +504,47 @@
   },
   "font-size": {
     "f-3": {
-      "value": "min( max( {font-scale.f-3.min},  {font-scale.f-3.fluid}) ,{font-scale.f-3.max})",
+      "value": "12",
       "type": "fontSizes"
     },
     "f-2": {
-      "value": "min( max( {font-scale.f-2.min},  {font-scale.f-2.fluid}) ,{font-scale.f-2.max})",
+      "value": "13",
       "type": "fontSizes"
     },
     "f-1": {
-      "value": "min( max( {font-scale.f-1.min},  {font-scale.f-1.fluid}) ,{font-scale.f-1.max})",
+      "value": "14",
       "type": "fontSizes"
     },
     "f0": {
-      "value": "min( max( {font-scale.f0.min},  {font-scale.f0.fluid}) ,{font-scale.f0.max})",
+      "value": "16",
       "type": "fontSizes"
     },
     "f1": {
-      "value": "min( max( {font-scale.f1.min},  {font-scale.f1.fluid}) ,{font-scale.f1.max})",
+      "value": "18",
       "type": "fontSizes"
     },
     "f2": {
-      "value": "min( max( {font-scale.f2.min},  {font-scale.f2.fluid}) ,{font-scale.f2.max})",
+      "value": "21",
       "type": "fontSizes"
     },
     "f3": {
-      "value": "min( max( {font-scale.f3.min},  {font-scale.f3.fluid}) ,{font-scale.f3.max})",
+      "value": "24",
       "type": "fontSizes"
     },
     "f4": {
-      "value": "min( max( {font-scale.f4.min},  {font-scale.f4.fluid}) ,{font-scale.f4.max})",
+      "value": "30",
       "type": "fontSizes"
     },
     "f5": {
-      "value": "min( max( {font-scale.f5.min},  {font-scale.f5.fluid}) ,{font-scale.f5.max})",
+      "value": "36",
       "type": "fontSizes"
     },
     "f6": {
-      "value": "min( max( {font-scale.f6.min},  {font-scale.f6.fluid}) ,{font-scale.f6.max})",
+      "value": "48",
       "type": "fontSizes"
     },
     "f7": {
-      "value": "min( max( {font-scale.f7.min},  {font-scale.f7.fluid}) ,{font-scale.f7.max})",
+      "value": "60",
       "type": "fontSizes"
     }
   }
