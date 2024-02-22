@@ -33,6 +33,7 @@ import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
 import useDebounce from '../../../utilities/useDebounce';
 import { omit } from '../../../utilities';
+import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
 import useCombobox, {
@@ -44,6 +45,7 @@ import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
+import ComboboxCustom from './Custom/Custom';
 
 export type ComboboxProps = {
   /**
@@ -97,6 +99,17 @@ export type ComboboxProps = {
    */
   inputValue?: string;
   /**
+   * If true, the combobox will display a loading spinner.
+   * All options will be hidden and replaced with a loading message.
+   * @default false
+   */
+  loading?: boolean;
+  /**
+   * If true, the combobox is disabled
+   * @default 'Laster...'
+   */
+  loadingText?: string;
+  /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
    * @param option
@@ -140,6 +153,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       virtual = false,
       children,
       style,
+      loading,
+      loadingText = 'Laster...',
       filter = (inputValue, option) => {
         return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
       },
@@ -481,7 +496,10 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             hideLabel={hideLabel}
             formFieldProps={formFieldProps}
           />
-          <ComboboxInput {...omit(['inputValue'], rest)} />
+          <ComboboxInput
+            {...omit(['inputValue'], rest)}
+            aria-busy={loading}
+          />
           <ComboboxError
             size={size}
             error={error}
@@ -541,9 +559,27 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                   </div>
                 )}
 
-                {/* Add the rest of the children */}
-                {restChildren}
-                {!virtual && optionsChildren}
+                {loading ? (
+                  <ComboboxCustom
+                    style={{
+                      display: 'flex',
+                      gap: 'var(--fds-spacing-2)',
+                      alignContent: 'center',
+                    }}
+                  >
+                    <Spinner
+                      title='Laster'
+                      size='small'
+                    />
+                    {loadingText}
+                  </ComboboxCustom>
+                ) : (
+                  <>
+                    {/* Add the rest of the children */}
+                    {restChildren}
+                    {!virtual && optionsChildren}
+                  </>
+                )}
               </Box>
             </FloatingFocusManager>
           </FloatingPortal>

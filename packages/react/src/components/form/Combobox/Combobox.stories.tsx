@@ -7,7 +7,6 @@ import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
 import { Modal } from '../../Modal';
 import { ChipRemovable } from '../../Chip';
-import { Spinner } from '../../Spinner';
 
 import { data } from './data/data';
 import ComboboxCustom from './Custom/Custom';
@@ -484,24 +483,9 @@ export const CustomLoadingData: StoryFn<typeof Combobox> = (args) => {
           setValue(value);
         }}
         onFocus={fetchOptions}
-        aria-busy={loading}
+        loading={loading}
       >
-        {loading && (
-          <ComboboxCustom
-            style={{
-              display: 'flex',
-              gap: 'var(--fds-spacing-2)',
-              alignContent: 'center',
-            }}
-          >
-            <Spinner
-              title='Laster'
-              size='small'
-            />
-            Laster...
-          </ComboboxCustom>
-        )}
-        {!loading && <Combobox.Empty>Fant ingen treff</Combobox.Empty>}
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {options.map((item, index) => (
           <Combobox.Option
             key={index}
