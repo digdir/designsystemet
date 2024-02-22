@@ -46,28 +46,6 @@ Det gjør du ved å sette `virtual` til `true` på `Combobox`.
 
 <Canvas of={ComboboxStories.Virtualized} />
 
-## `Combobox.Custom`
-
-Brukes for å lage egne komponenter som vises i listen. Denne legger seg alltid i toppen,
-og kan brukt brukt til å vise at lista laster, eller for å legge til egne options.
-Du må styre komponenten selv, som betyr at alle aria-attributes og eventer må legges til manuelt.
-
-<ArgsTable of={Combobox.Custom} />
-
-### Laste inn data
-
-Her legger vi på `aria-busy={loading}` for å indikere at lista laster.
-
-<Canvas of={ComboboxStories.CustomLoadingData} />
-
-### Legge til nye verdier
-
-Dersom det du legger inn skal være trykkbart, så må du legge på `interactive={true}`. Du må alltid legge på ein `id` når elementet er interaktivt.
-Dette gjer at den kan bli navigert til med tastatur. Du må også legge til `onSelect` for å
-få vite når den blir valgt. Du kan sjekke om brukeren er på elementet ved å sjekke `data-active`.
-
-<Canvas of={ComboboxStories.CustomNewValue} />
-
 ## `Combobox.Option`
 
 Brukes som direkte barn av `Combobox` for å vise et element i listen.
