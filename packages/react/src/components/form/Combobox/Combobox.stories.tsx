@@ -449,7 +449,7 @@ Virtualized.args = {
   label: 'Hvor går reisen?',
 };
 
-export const CustomLoadingData: StoryFn<typeof Combobox> = (args) => {
+export const Loading: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = React.useState<string[]>([]);
   const [options, setOptions] = React.useState<typeof PLACES>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
