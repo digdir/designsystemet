@@ -1,5 +1,4 @@
 .wrapper {
-  --figure-x-offset: 50px;
   --figure-y-offset: 500px;
   --figure-rotation: 72deg;
 
@@ -115,11 +114,11 @@
 }
 
 .figure:nth-of-type(2n - 1) {
-  left: calc(var(--figure-x-offset) * 2);
+  left: 100px;
 }
 
 .figure:nth-of-type(2n) {
-  right: var(--figure-x-offset);
+  right: 100px;
 }
 
 @media screen and (max-width: 1350px) {
