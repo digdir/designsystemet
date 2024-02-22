@@ -499,7 +499,7 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-CustomLoadingData.args = {
+Loading.args = {
   multiple: false,
   size: 'medium',
   label: 'Hvor går reisen?',
