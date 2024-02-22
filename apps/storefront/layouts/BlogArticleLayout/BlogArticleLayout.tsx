@@ -29,7 +29,7 @@ const BlogArticleLayout = ({
   return (
     <div className={classes.wrapper}>
       <Container className={classes.page}>
-        {Array.from({ length: FIGURE_COUNT }).map((_, index) => (
+        {Array.from({ length: figureCount }).map((_, index) => (
           <Figures
             key={index}
             className={classes.figure}
