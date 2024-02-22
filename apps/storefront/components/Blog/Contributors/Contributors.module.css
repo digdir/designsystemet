@@ -14,6 +14,11 @@
   border: 1px solid var(--fds-semantic-border-neutral-subtle);
 }
 
+.container p,
+.container h3 {
+  margin: 0;
+}
+
 .logo {
   --height: 70px;
 

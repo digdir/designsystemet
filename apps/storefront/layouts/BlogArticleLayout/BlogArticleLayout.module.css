@@ -97,6 +97,11 @@
   color: inherit;
 }
 
+.wantToWrite p,
+.wantToWrite h3 {
+  margin: 0;
+}
+
 .wantToWrite p a:hover {
   color: var(--fds-semantic-text-action-hover);
 }
