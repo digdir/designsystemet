@@ -18,3 +18,5 @@ export const ModalContent = forwardRef<
     </div>
   );
 });
+
+ModalContent.displayName = 'ModalContent';

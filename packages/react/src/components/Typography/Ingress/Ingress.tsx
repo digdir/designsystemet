@@ -44,3 +44,5 @@ export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
       );
     },
   );
+
+Ingress.displayName = 'Ingress';

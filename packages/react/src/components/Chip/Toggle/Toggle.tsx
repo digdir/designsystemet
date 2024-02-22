@@ -72,3 +72,5 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
     );
   },
 );
+
+ToggleChip.displayName = 'ChipToggle';

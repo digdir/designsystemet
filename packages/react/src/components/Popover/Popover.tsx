@@ -102,3 +102,5 @@ export const PopoverContext = React.createContext<{
   internalOpen: false,
   setInternalOpen: () => {},
 });
+
+Popover.displayName = 'Popover';

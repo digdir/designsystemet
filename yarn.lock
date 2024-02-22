@@ -1594,7 +1594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/design-system-react@npm:*, @digdir/design-system-react@npm:0.49.0, @digdir/design-system-react@workspace:packages/react":
+"@digdir/design-system-react@npm:*, @digdir/design-system-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-react@workspace:packages/react"
   dependencies:
@@ -1615,6 +1615,24 @@ __metadata:
     react-dom: ">=18.2.0"
   languageName: unknown
   linkType: soft
+
+"@digdir/design-system-react@npm:0.49.0":
+  version: 0.49.0
+  resolution: "@digdir/design-system-react@npm:0.49.0"
+  dependencies:
+    "@altinn/figma-design-tokens": "npm:^6.0.1"
+    "@digdir/design-system-tokens": "npm:^0.13.0"
+    "@floating-ui/react": "npm:0.26.4"
+    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@radix-ui/react-slot": "npm:^1.0.2"
+    "@tanstack/react-virtual": "npm:^3.0.1"
+    react-number-format: "npm:5.3.1"
+  peerDependencies:
+    react: ">=18.2.0"
+    react-dom: ">=18.2.0"
+  checksum: 4157e9ad50e8be5178f53bb8b680d942dc39e87168af4069bdf34804ead8de5b3b5f734c08eed002674fba4df30eac7525a2b428dbafb099ab2660760af61b97
+  languageName: node
+  linkType: hard
 
 "@digdir/design-system-tokens@npm:*, @digdir/design-system-tokens@npm:^0.13.0, @digdir/design-system-tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
@@ -12337,9 +12355,9 @@ __metadata:
   linkType: hard
 
 "ip@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ip@npm:2.0.0"
-  checksum: 1270b11e534a466fb4cf4426cbcc3a907c429389f7f4e4e3b288b42823562e88d6a509ceda8141a507de147ca506141f745005c0aa144569d94cf24a54eb52bc
+  version: 2.0.1
+  resolution: "ip@npm:2.0.1"
+  checksum: d6dd154e1bc5e8725adfdd6fb92218635b9cbe6d873d051bd63b178f009777f751a5eea4c67021723a7056325fc3052f8b6599af0a2d56f042c93e684b4a0349
   languageName: node
   linkType: hard
 

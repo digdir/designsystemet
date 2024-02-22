@@ -22,7 +22,7 @@ export type ErrorSummaryProps = {
   size?: ListProps['size'];
 } & HTMLAttributes<HTMLDivElement>;
 
-export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
+export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   (
     {
       size,
@@ -54,3 +54,5 @@ export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     );
   },
 );
+
+ErrorSummaryRoot.displayName = 'ErrorSummaryRoot';

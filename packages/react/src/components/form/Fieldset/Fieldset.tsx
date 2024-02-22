@@ -122,3 +122,5 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
     );
   },
 );
+
+Fieldset.displayName = 'Fieldset';
