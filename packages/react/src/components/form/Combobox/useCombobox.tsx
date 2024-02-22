@@ -4,6 +4,8 @@ import * as React from 'react';
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
+import type { ComboboxCustomProps } from './Custom/Custom';
+import ComboboxCustom from './Custom/Custom';
 
 export type UseComboboxProps = {
   children: React.ReactNode;
@@ -82,13 +84,30 @@ export default function useCombobox({
     });
   }, [options, children, inputValue, multiple, filter]);
 
+  const customIds = useMemo(() => {
+    // find all custom components with `interactive=true` and generate random values for them
+    const children_ = React.Children.toArray(children).filter((child) => {
+      return isInteractiveComboboxCustom(child);
+    }) as React.ReactElement<ComboboxCustomProps>[];
+
+    // return all ids
+    return children_.map((child) => {
+      if (!child.props.id)
+        throw new Error('If ComboboxCustom is interactive, it must have an id');
+
+      return child.props.id;
+    });
+  }, [children]);
+
   const optionValues = useMemo(() => {
     // create an index map of values from optionsChildren
-    return optionsChildren.map((child) => {
+    const options = optionsChildren.map((child) => {
       const { value } = child.props;
       return value;
     });
-  }, [optionsChildren]);
+
+    return [...customIds, ...options];
+  }, [customIds, optionsChildren]);
 
   const restChildren = useMemo(() => {
     return React.Children.toArray(children).filter((child) => {
@@ -101,6 +120,7 @@ export default function useCombobox({
     optionValues,
     restChildren,
     options,
+    customIds,
   };
 }
 
@@ -108,4 +128,16 @@ export function isComboboxOption(
   child: React.ReactNode,
 ): child is React.ReactElement<ComboboxOptionProps> {
   return React.isValidElement(child) && child.type === ComboboxOption;
+}
+
+export function isComboboxCustom(
+  child: React.ReactNode,
+): child is React.ReactElement<ComboboxCustomProps> {
+  return React.isValidElement(child) && child.type === ComboboxCustom;
+}
+
+export function isInteractiveComboboxCustom(
+  child: React.ReactNode,
+): child is React.ReactElement<ComboboxCustomProps> {
+  return isComboboxCustom(child) && child.props.interactive === true;
 }

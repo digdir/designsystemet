@@ -25,9 +25,13 @@ import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
 import useDebounce from '../../../utilities/useDebounce';
+import { omit } from '../../../utilities';
 
 import type { Option } from './useCombobox';
-import useCombobox, { isComboboxOption } from './useCombobox';
+import useCombobox, {
+  isComboboxOption,
+  isInteractiveComboboxCustom,
+} from './useCombobox';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -81,6 +85,10 @@ export type ComboboxProps = {
    * @default false
    */
   virtual?: boolean;
+  /**
+   * Value of the input
+   */
+  inputValue?: string;
   /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
@@ -136,7 +144,7 @@ export const Combobox = ({
   const listId = useId();
 
   const [open, setOpen] = useState(false);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
   const [activeDescendant, setActiveDescendant] = useState<string | undefined>(
@@ -145,6 +153,12 @@ export const Combobox = ({
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
+
+  useEffect(() => {
+    if (rest.inputValue !== undefined) {
+      setInputValue(rest.inputValue);
+    }
+  }, [rest.inputValue]);
 
   const formFieldProps = useFormField(
     {
@@ -160,13 +174,14 @@ export const Combobox = ({
   );
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
-  const { options, optionsChildren, restChildren, optionValues } = useCombobox({
-    children,
-    inputValue,
-    filter,
-    multiple,
-    selectedOptions,
-  });
+  const { options, optionsChildren, restChildren, optionValues, customIds } =
+    useCombobox({
+      children,
+      inputValue,
+      filter,
+      multiple,
+      selectedOptions,
+    });
 
   // if value is set, set input value to the label of the value
   useEffect(() => {
@@ -221,11 +236,11 @@ export const Combobox = ({
   // Send new value if option was clicked
   useEffect(() => {
     const selectedHash = JSON.stringify(selectedOptions);
-    if (prevSelectedHash !== selectedHash) {
-      const values = selectedOptions.map((option) => option.value);
-      onValueChange?.(values);
-      setPrevSelectedHash(selectedHash);
-    }
+    if (prevSelectedHash === selectedHash) return;
+
+    const values = selectedOptions.map((option) => option.value);
+    onValueChange?.(values);
+    setPrevSelectedHash(selectedHash);
   }, [onValueChange, selectedOptions, prevSelectedHash]);
 
   useEffect(() => {
@@ -242,7 +257,7 @@ export const Combobox = ({
   // handle click on option, either select or deselect - Handles single or multiple
   const handleSelectOption = (option: Option) => {
     // if option is already selected, remove it
-    if (selectedOptions.find((i) => i.value === option.value)) {
+    if (value && value.includes(option.value)) {
       setSelectedOptions((prev) =>
         prev.filter((i) => i.value !== option.value),
       );
@@ -273,6 +288,8 @@ export const Combobox = ({
 
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {
+    const navigateable = customIds.length + optionsChildren.length;
+
     if (formFieldProps.readOnly || disabled) return;
     if (!event) return;
     switch (event.key) {
@@ -284,7 +301,7 @@ export const Combobox = ({
             return 0;
           }
 
-          return Math.min(prevActiveIndex + 1, optionsChildren.length - 1);
+          return Math.min(prevActiveIndex + 1, navigateable - 1);
         });
         break;
       case 'ArrowUp':
@@ -305,8 +322,32 @@ export const Combobox = ({
         break;
       case 'Enter':
         event.preventDefault();
-        if (activeIndex !== null && optionsChildren[activeIndex]) {
-          const child = optionsChildren[activeIndex];
+        if (
+          activeIndex !== null &&
+          (optionsChildren[activeIndex] || customIds.length > 0)
+        ) {
+          // check if we are in the custom components
+          if (activeIndex <= customIds.length) {
+            // send `onSelect` event to the custom component
+            const selectedId = customIds[activeIndex];
+            const selectedComponent = restChildren.find(
+              (component) =>
+                isInteractiveComboboxCustom(component) &&
+                component.props?.id === selectedId,
+            );
+
+            if (
+              isInteractiveComboboxCustom(selectedComponent) &&
+              selectedComponent.props.onSelect
+            ) {
+              selectedComponent.props.onSelect();
+            }
+          }
+
+          // if we are in the options, find the actual index
+          const valueIndex = activeIndex - customIds.length;
+
+          const child = optionsChildren[valueIndex];
           if (isComboboxOption(child)) {
             const props = child.props;
             const option = options.find(
@@ -397,6 +438,7 @@ export const Combobox = ({
           const option = options.find((option) => option.value === value);
           debouncedHandleSelectOption(option as Option);
         },
+        handleSelectOption: debouncedHandleSelectOption,
         chipSrLabel,
         listRef,
       }}
@@ -427,7 +469,7 @@ export const Combobox = ({
           hideLabel={hideLabel}
           formFieldProps={formFieldProps}
         />
-        <ComboboxInput {...rest} />
+        <ComboboxInput {...omit(['inputValue'], rest)} />
         <ComboboxError
           size={size}
           error={error}
@@ -487,9 +529,9 @@ export const Combobox = ({
                 </div>
               )}
 
-              {!virtual && optionsChildren}
               {/* Add the rest of the children */}
               {restChildren}
+              {!virtual && optionsChildren}
             </Box>
           </FloatingFocusManager>
         </FloatingPortal>
@@ -530,6 +572,7 @@ type ComboboxContextType = {
   onOptionClick: (value: string) => void;
   setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
   chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
+  handleSelectOption: (option: Option) => void;
   listRef: UseListNavigationProps['listRef'];
 };
 
