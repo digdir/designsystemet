@@ -5,6 +5,7 @@ import { Container, MdxContent } from '../../components';
 import { Link } from '../../components/Link/Link';
 
 import classes from './BlogArticleLayout.module.css';
+import { Figures } from './components/Figures';
 
 type BlogArticleLayoutProps = {
   content: React.ReactNode;
@@ -12,7 +13,10 @@ type BlogArticleLayoutProps = {
   ingress?: string;
   date?: string;
   author?: string;
+  figureCount?: number;
 };
+
+const FIGURE_COUNT = 4;
 
 const BlogArticleLayout = ({
   content,
@@ -20,10 +24,20 @@ const BlogArticleLayout = ({
   ingress,
   date,
   author,
+  figureCount = FIGURE_COUNT,
 }: BlogArticleLayoutProps) => {
   return (
-    <div>
+    <div className={classes.wrapper}>
       <Container className={classes.page}>
+        {Array.from({ length: FIGURE_COUNT }).map((_, index) => (
+          <Figures
+            key={index}
+            className={classes.figure}
+            style={{
+              '--number': index + 1,
+            }}
+          />
+        ))}
         <main
           id='main'
           className={classes.main}
@@ -66,6 +80,13 @@ const BlogArticleLayout = ({
           </MdxContent>
         </main>
       </Container>
+      <style>
+        {`
+    .Header_header__pXml_ {
+      border-bottom: none
+    }
+  `}
+      </style>
     </div>
   );
 };

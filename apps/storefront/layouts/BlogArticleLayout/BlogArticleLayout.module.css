@@ -1,3 +1,11 @@
+.wrapper {
+  --figure-x-offset: 5%;
+  --figure-y-offset: 500px;
+
+  position: relative;
+  overflow: hidden;
+}
+
 .page {
   margin-top: var(--fds-spacing-18);
   margin-bottom: var(--page-spacing-bottom);
@@ -78,6 +86,26 @@
 
 .wantToWrite p a:hover {
   color: var(--fds-semantic-text-action-hover);
+}
+
+.figure {
+  position: absolute;
+  top: calc(var(--figure-y-offset) * var(--number));
+  z-index: -1;
+}
+
+.figure:nth-of-type(2n - 1) {
+  left: calc(var(--figure-x-offset) * 2);
+}
+
+.figure:nth-of-type(2n) {
+  right: var(--figure-x-offset);
+}
+
+@media screen and (max-width: 1350px) {
+  .figure {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 860px) {
