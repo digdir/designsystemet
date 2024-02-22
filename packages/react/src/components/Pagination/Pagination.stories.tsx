@@ -44,8 +44,8 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
     steps,
     currentPage,
     setCurrentPage,
-    setNextPage,
-    setPreviousPage,
+    nextPage,
+    previousPage,
     showNextPage,
     showPreviousPage,
   } = usePagination({
@@ -58,7 +58,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
       <Pagination.Content>
         <Pagination.Item>
           <Pagination.Previous
-            onClick={setPreviousPage}
+            onClick={previousPage}
             style={{
               visibility: showPreviousPage ? undefined : 'hidden',
             }}
@@ -86,7 +86,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
 
         <Pagination.Item>
           <Pagination.Next
-            onClick={setNextPage}
+            onClick={nextPage}
             style={{
               visibility: showNextPage ? undefined : 'hidden',
             }}

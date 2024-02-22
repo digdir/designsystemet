@@ -302,7 +302,7 @@ describe('usePagination', () => {
     const initalCurrentPage = result.current.currentPage;
     expect(initalCurrentPage).toBe(2);
 
-    renderHook(() => result.current.setNextPage());
+    renderHook(() => result.current.nextPage());
 
     const updatedCurrentPage = result.current.currentPage;
     expect(updatedCurrentPage).toBe(3);
@@ -325,7 +325,7 @@ describe('usePagination', () => {
     const initalCurrentPage = result.current.currentPage;
     expect(initalCurrentPage).toBe(9);
 
-    renderHook(() => result.current.setPreviousPage());
+    renderHook(() => result.current.previousPage());
 
     const updatedCurrentPage = result.current.currentPage;
     expect(updatedCurrentPage).toBe(8);

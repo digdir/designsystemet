@@ -68,13 +68,13 @@ export const usePagination = ({
   const showNextPage = currentPage < totalPages;
   const showPreviousPage = currentPage !== 1;
 
-  const setNextPage = () => {
+  const nextPage = () => {
     setCurrentPage(
       currentPage + 1 <= totalPages ? currentPage + 1 : totalPages,
     );
   };
 
-  const setPreviousPage = () => {
+  const previousPage = () => {
     setCurrentPage(currentPage - 1 > 0 ? currentPage - 1 : 1);
   };
 
@@ -82,8 +82,8 @@ export const usePagination = ({
     steps,
     currentPage,
     setCurrentPage,
-    setPreviousPage,
-    setNextPage,
+    previousPage,
+    nextPage,
     totalPages,
     showNextPage,
     showPreviousPage,
