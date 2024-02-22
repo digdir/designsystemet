@@ -560,13 +560,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 )}
 
                 {loading ? (
-                  <ComboboxCustom
-                    style={{
-                      display: 'flex',
-                      gap: 'var(--fds-spacing-2)',
-                      alignContent: 'center',
-                    }}
-                  >
+                  <ComboboxCustom className={classes.loading}>
                     <Spinner
                       title='Laster'
                       size='small'
