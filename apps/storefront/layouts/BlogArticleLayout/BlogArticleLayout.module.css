@@ -1,6 +1,7 @@
 .wrapper {
-  --figure-x-offset: 5%;
+  --figure-x-offset: 50px;
   --figure-y-offset: 500px;
+  --figure-rotation: 72deg;
 
   position: relative;
   overflow: hidden;
@@ -92,6 +93,7 @@
   position: absolute;
   top: calc(var(--figure-y-offset) * var(--number));
   z-index: -1;
+  transform: rotate(calc(var(--figure-rotation) * var(--number)));
 }
 
 .figure:nth-of-type(2n - 1) {

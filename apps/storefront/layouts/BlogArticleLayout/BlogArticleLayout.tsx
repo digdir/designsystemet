@@ -34,6 +34,7 @@ const BlogArticleLayout = ({
             key={index}
             className={classes.figure}
             style={{
+              /* @ts-expect-error #2353 */
               '--number': index + 1,
             }}
           />
