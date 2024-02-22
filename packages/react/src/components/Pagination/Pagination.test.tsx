@@ -241,37 +241,37 @@ describe('Pagination.Button', () => {
 });
 
 describe('usePagination', () => {
-  it('should provide correct amount of steps with 10 pages when current page is 6', () => {
+  it('should provide correct amount of pages with 10 pages when current page is 6', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 6 }),
     );
-    const { steps } = result.current;
+    const { pages } = result.current;
 
-    expect(steps).toHaveLength(7);
-    expect(steps[0]).toBe(1);
-    expect(steps[1]).toBe('ellipsis');
-    expect(steps[2]).toBe(5);
-    expect(steps[3]).toBe(6);
-    expect(steps[4]).toBe(7);
-    expect(steps[5]).toBe('ellipsis');
-    expect(steps[6]).toBe(10);
+    expect(pages).toHaveLength(7);
+    expect(pages[0]).toBe(1);
+    expect(pages[1]).toBe('ellipsis');
+    expect(pages[2]).toBe(5);
+    expect(pages[3]).toBe(6);
+    expect(pages[4]).toBe(7);
+    expect(pages[5]).toBe('ellipsis');
+    expect(pages[6]).toBe(10);
   });
 
-  it('should provide correct amount of steps with 10 pages when current page is 6 and compact', () => {
+  it('should provide correct amount of pages with 10 pages when current page is 6 and compact', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 6, compact: true }),
     );
-    const { steps } = result.current;
+    const { pages } = result.current;
 
-    expect(steps).toHaveLength(5);
-    expect(steps[0]).toBe(1);
-    expect(steps[1]).toBe('ellipsis');
-    expect(steps[2]).toBe(6);
-    expect(steps[3]).toBe('ellipsis');
-    expect(steps[4]).toBe(10);
+    expect(pages).toHaveLength(5);
+    expect(pages[0]).toBe(1);
+    expect(pages[1]).toBe('ellipsis');
+    expect(pages[2]).toBe(6);
+    expect(pages[3]).toBe('ellipsis');
+    expect(pages[4]).toBe(10);
   });
 
-  it('should update current page and steps correctly when setCurrentPage is called', () => {
+  it('should update current page and pages correctly when setCurrentPage is called', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 2 }),
     );
@@ -284,17 +284,17 @@ describe('usePagination', () => {
     const updatedCurrentPage = result.current.currentPage;
     expect(updatedCurrentPage).toBe(5);
 
-    const { steps } = result.current;
-    expect(steps[0]).toBe(1);
-    expect(steps[1]).toBe('ellipsis');
-    expect(steps[2]).toBe(4);
-    expect(steps[3]).toBe(5);
-    expect(steps[4]).toBe(6);
-    expect(steps[5]).toBe('ellipsis');
-    expect(steps[6]).toBe(10);
+    const { pages } = result.current;
+    expect(pages[0]).toBe(1);
+    expect(pages[1]).toBe('ellipsis');
+    expect(pages[2]).toBe(4);
+    expect(pages[3]).toBe(5);
+    expect(pages[4]).toBe(6);
+    expect(pages[5]).toBe('ellipsis');
+    expect(pages[6]).toBe(10);
   });
 
-  it('should update current page and steps correctly when setNextPage is called ', () => {
+  it('should update current page and pages correctly when setNextPage is called ', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 2 }),
     );
@@ -307,17 +307,17 @@ describe('usePagination', () => {
     const updatedCurrentPage = result.current.currentPage;
     expect(updatedCurrentPage).toBe(3);
 
-    const { steps } = result.current;
-    expect(steps[0]).toBe(1);
-    expect(steps[1]).toBe(2);
-    expect(steps[2]).toBe(3);
-    expect(steps[3]).toBe(4);
-    expect(steps[4]).toBe(5);
-    expect(steps[5]).toBe('ellipsis');
-    expect(steps[6]).toBe(10);
+    const { pages } = result.current;
+    expect(pages[0]).toBe(1);
+    expect(pages[1]).toBe(2);
+    expect(pages[2]).toBe(3);
+    expect(pages[3]).toBe(4);
+    expect(pages[4]).toBe(5);
+    expect(pages[5]).toBe('ellipsis');
+    expect(pages[6]).toBe(10);
   });
 
-  it('should update current page and steps correctly when setPreviousPage is called ', () => {
+  it('should update current page and pages correctly when setPreviousPage is called ', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 9 }),
     );
@@ -330,13 +330,13 @@ describe('usePagination', () => {
     const updatedCurrentPage = result.current.currentPage;
     expect(updatedCurrentPage).toBe(8);
 
-    const { steps } = result.current;
-    expect(steps[0]).toBe(1);
-    expect(steps[1]).toBe('ellipsis');
-    expect(steps[2]).toBe(6);
-    expect(steps[3]).toBe(7);
-    expect(steps[4]).toBe(8);
-    expect(steps[5]).toBe(9);
-    expect(steps[6]).toBe(10);
+    const { pages } = result.current;
+    expect(pages[0]).toBe(1);
+    expect(pages[1]).toBe('ellipsis');
+    expect(pages[2]).toBe(6);
+    expect(pages[3]).toBe(7);
+    expect(pages[4]).toBe(8);
+    expect(pages[5]).toBe(9);
+    expect(pages[6]).toBe(10);
   });
 });

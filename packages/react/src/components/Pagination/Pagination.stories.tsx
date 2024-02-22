@@ -41,7 +41,7 @@ Preview.args = {
 export const UsePagination: StoryFn<typeof Pagination> = (args) => {
   const { totalPages = 10 } = args;
   const {
-    steps,
+    pages,
     currentPage,
     setCurrentPage,
     nextPage,
@@ -68,17 +68,17 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
           </Pagination.Previous>
         </Pagination.Item>
 
-        {steps.map((step, index) => (
-          <Pagination.Item key={`${step}-${index}`}>
-            {step === 'ellipsis' ? (
+        {pages.map((page, index) => (
+          <Pagination.Item key={`${page}-${index}`}>
+            {page === 'ellipsis' ? (
               <Pagination.Ellipsis />
             ) : (
               <Pagination.Button
-                isActive={currentPage === step}
-                onClick={() => setCurrentPage(step)}
-                aria-label={`Side ${step}`}
+                isActive={currentPage === page}
+                onClick={() => setCurrentPage(page)}
+                aria-label={`Side ${page}`}
               >
-                {step}
+                {page}
               </Pagination.Button>
             )}
           </Pagination.Item>
@@ -102,7 +102,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
 
 export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
   const { totalPages = 4 } = args;
-  const { steps, currentPage } = usePagination({
+  const { pages, currentPage } = usePagination({
     currentPage: 2,
     totalPages,
   });
@@ -125,17 +125,17 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
           </Pagination.Previous>
         </Pagination.Item>
 
-        {steps.map((step, index) => (
-          <Pagination.Item key={`${step}-${index}`}>
-            {step === 'ellipsis' ? (
+        {pages.map((page, index) => (
+          <Pagination.Item key={`${page}-${index}`}>
+            {page === 'ellipsis' ? (
               <Pagination.Ellipsis />
             ) : (
               <Pagination.Button
                 asChild
-                isActive={currentPage === step}
-                aria-label={`Naviger til side ${step}`}
+                isActive={currentPage === page}
+                aria-label={`Naviger til side ${page}`}
               >
-                <a href={`#side-${step}`}> {step}</a>
+                <a href={`#side-${page}`}> {page}</a>
               </Pagination.Button>
             )}
           </Pagination.Item>

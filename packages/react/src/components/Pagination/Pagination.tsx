@@ -51,7 +51,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     }: PaginationProps,
     ref,
   ) => {
-    const { steps, showNextPage, showPreviousPage } = usePagination({
+    const { pages, showNextPage, showPreviousPage } = usePagination({
       compact,
       currentPage,
       totalPages,
@@ -77,20 +77,20 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
-          {steps.map((step, i) => (
-            <PaginationItem key={`${step}${i}`}>
-              {step === 'ellipsis' ? (
+          {pages.map((page, i) => (
+            <PaginationItem key={`${page}${i}`}>
+              {page === 'ellipsis' ? (
                 <PaginationEllipsis />
               ) : (
                 <PaginationButton
-                  aria-current={currentPage === step}
-                  isActive={currentPage === step}
-                  aria-label={itemLabel(step)}
+                  aria-current={currentPage === page}
+                  isActive={currentPage === page}
+                  aria-label={itemLabel(page)}
                   onClick={() => {
-                    onChange(step);
+                    onChange(page);
                   }}
                 >
-                  {step}
+                  {page}
                 </PaginationButton>
               )}
             </PaginationItem>
