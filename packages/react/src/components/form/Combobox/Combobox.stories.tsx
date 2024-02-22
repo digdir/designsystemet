@@ -10,6 +10,7 @@ import { ChipRemovable } from '../../Chip';
 import { Spinner } from '../../Spinner';
 
 import { data } from './data/data';
+import ComboboxCustom from './Custom/Custom';
 
 import { Combobox } from './index';
 
@@ -486,7 +487,7 @@ export const CustomLoadingData: StoryFn<typeof Combobox> = (args) => {
         aria-busy={loading}
       >
         {loading && (
-          <Combobox.Custom
+          <ComboboxCustom
             style={{
               display: 'flex',
               gap: 'var(--fds-spacing-2)',
@@ -498,7 +499,7 @@ export const CustomLoadingData: StoryFn<typeof Combobox> = (args) => {
               size='small'
             />
             Laster...
-          </Combobox.Custom>
+          </ComboboxCustom>
         )}
         {!loading && <Combobox.Empty>Fant ingen treff</Combobox.Empty>}
         {options.map((item, index) => (
@@ -565,7 +566,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
         onChange={(e) => setInputValue(e.target.value)}
       >
         {showAddNew && (
-          <Combobox.Custom
+          <ComboboxCustom
             style={{
               display: 'flex',
               gap: 'var(--fds-spacing-2)',
@@ -589,7 +590,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
               />
               Legg til &quot;{inputValue}&quot;
             </Button>
-          </Combobox.Custom>
+          </ComboboxCustom>
         )}
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {options.map((item, index) => (
