@@ -45,7 +45,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: var(--fds-spacing-6);
+  gap: var(--fds-spacing-18);
 }
 
 .content {
@@ -57,12 +57,24 @@
 
 .content p {
   max-width: var(--text-max-width);
+  margin: var(--fds-spacing-6) 0;
   line-height: 170%;
 }
 
 .content img {
+  display: block;
   width: 860px;
+  margin: var(--fds-spacing-12) 0;
   margin-left: calc((100% - 860px) / 2);
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  margin-top: var(--fds-spacing-12);
 }
 
 .content:last-child {
