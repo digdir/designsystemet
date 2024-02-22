@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
@@ -22,6 +23,7 @@ export const ComboboxInput = ({
   }
 
   const {
+    forwareddRef,
     listId,
     size,
     readOnly,
@@ -45,6 +47,8 @@ export const ComboboxInput = ({
     setInputValue,
     handleSelectOption,
   } = context;
+
+  const mergedRefs = useMergeRefs([forwareddRef, inputRef]);
 
   // we need to check if input is in focus, to add focus styles to the wrapper
   const [inputInFocus, setInputInFocus] = useState(false);
@@ -145,7 +149,7 @@ export const ComboboxInput = ({
         {/* If the input is in multiple mode, we need to display chips */}
         {multiple && !hideChips && <ComboboxChips />}
         <input
-          ref={inputRef}
+          ref={mergedRefs}
           aria-activedescendant={activeDescendant}
           readOnly={readOnly}
           aria-autocomplete='list'
