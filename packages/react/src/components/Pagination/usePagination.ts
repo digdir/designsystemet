@@ -79,13 +79,21 @@ export const usePagination = ({
   };
 
   return {
+    /** Number of steps */
     steps,
+    /** Current active page  */
     currentPage,
+    /** Set active page */
     setCurrentPage,
+    /** Decrements active page by 1 */
     previousPage,
+    /** Increments active page by 1 */
     nextPage,
+    /** Total amount of pages */
     totalPages,
+    /** Indication if next page action should be shown or not */
     showNextPage,
+    /** Indication if previous page action should be shown or not */
     showPreviousPage,
   };
 };
