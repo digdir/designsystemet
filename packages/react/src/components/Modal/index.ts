@@ -7,6 +7,8 @@ import { ModalTrigger } from './ModalTrigger/ModalTrigger';
 
 export type { ModalRootProps } from './ModalRoot';
 export type { ModalHeaderProps } from './ModalHeader/ModalHeader';
+export type { ModalContentProps } from './ModalContent/ModaContent';
+export type { ModalFooterProps } from './ModalFooter/ModalFooter';
 export type { ModalDialogProps } from './ModalDialog';
 export type { ModalTriggerProps } from './ModalTrigger/ModalTrigger';
 
