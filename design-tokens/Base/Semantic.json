@@ -444,7 +444,7 @@
   },
   "typography": {
     "heading": {
-      "3xlarge": {
+      "2xlarge": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
@@ -453,21 +453,12 @@
         },
         "type": "typography"
       },
-      "2xlarge": {
-        "value": {
-          "fontFamily": "{fontFamilies.inter}",
-          "fontWeight": "{fontWeights.medium}",
-          "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f6}"
-        },
-        "type": "typography"
-      },
       "xlarge": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f5}"
+          "fontSize": "{font-size.f6}"
         },
         "type": "typography",
         "description": "H1"
@@ -477,7 +468,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f4}"
+          "fontSize": "{font-size.f5}"
         },
         "type": "typography",
         "description": "H2"
@@ -487,7 +478,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f3}"
+          "fontSize": "{font-size.f4}"
         },
         "type": "typography",
         "description": "H3"
@@ -497,7 +488,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f2}"
+          "fontSize": "{font-size.f3}"
         },
         "type": "typography",
         "description": "H4"
@@ -507,7 +498,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f1}"
+          "fontSize": "{font-size.f2}"
         },
         "type": "typography",
         "description": "H5"
@@ -517,14 +508,41 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f0}"
+          "fontSize": "{font-size.f1}"
         },
         "type": "typography",
         "description": "H6"
       }
     },
     "ingress": {
+      "large": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.600}",
+          "fontSize": "{font-size.f4}"
+        },
+        "type": "typography"
+      },
       "medium": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.600}",
+          "fontSize": "{font-size.f3}"
+        },
+        "type": "typography"
+      },
+      "small": {
+        "value": {
+          "fontFamily": "{fontFamilies.inter}",
+          "fontWeight": "{fontWeights.regular}",
+          "lineHeight": "{lineHeights.600}",
+          "fontSize": "{font-size.f2}"
+        },
+        "type": "typography"
+      },
+      "xsmall": {
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
@@ -540,7 +558,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f1}"
+          "fontSize": "{font-size.f2}"
         },
         "type": "typography"
       },
@@ -549,7 +567,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f0}"
+          "fontSize": "{font-size.f1}"
         },
         "type": "typography"
       },
@@ -558,7 +576,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f-1}"
+          "fontSize": "{font-size.f0}"
         },
         "type": "typography"
       },
@@ -567,7 +585,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.500}",
-          "fontSize": "{font-size.f-2}"
+          "fontSize": "{font-size.f-1}"
         },
         "type": "typography"
       },
@@ -577,7 +595,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f1}"
+            "fontSize": "{font-size.f2}"
           },
           "type": "typography"
         },
@@ -586,7 +604,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f0}"
+            "fontSize": "{font-size.f1}"
           },
           "type": "typography"
         },
@@ -595,7 +613,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f-1}"
+            "fontSize": "{font-size.f0}"
           },
           "type": "typography"
         },
@@ -604,7 +622,7 @@
             "fontFamily": "{fontFamilies.inter}",
             "fontWeight": "{fontWeights.regular}",
             "lineHeight": "{lineHeights.300}",
-            "fontSize": "{font-size.f-2}"
+            "fontSize": "{font-size.f-1}"
           },
           "type": "typography"
         }
@@ -654,7 +672,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f1}"
+          "fontSize": "{font-size.f2}"
         },
         "type": "typography"
       },
@@ -663,7 +681,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f0}"
+          "fontSize": "{font-size.f1}"
         },
         "type": "typography"
       },
@@ -672,7 +690,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-1}"
+          "fontSize": "{font-size.f0}"
         },
         "type": "typography"
       },
@@ -681,7 +699,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.medium}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-2}"
+          "fontSize": "{font-size.f-1}"
         },
         "type": "typography"
       }
@@ -692,7 +710,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f1}"
+          "fontSize": "{font-size.f2}"
         },
         "type": "typography"
       },
@@ -701,7 +719,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f0}"
+          "fontSize": "{font-size.f1}"
         },
         "type": "typography"
       },
@@ -710,7 +728,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-1}"
+          "fontSize": "{font-size.f0}"
         },
         "type": "typography"
       },
@@ -719,7 +737,7 @@
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
           "lineHeight": "{lineHeights.300}",
-          "fontSize": "{font-size.f-2}"
+          "fontSize": "{font-size.f-1}"
         },
         "type": "typography"
       }
