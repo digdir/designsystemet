@@ -48,7 +48,8 @@ const getSteps = (props: getStepsProps): ('ellipsis' | number)[] => {
   ];
 };
 
-type usePaginationProps = getStepsProps;
+type usePaginationProps = Pick<PaginationProps, 'compact' | 'totalPages'> &
+  Partial<Pick<PaginationProps, 'currentPage'>>;
 
 /** Hook to help manage pagination state */
 export const usePagination = ({
