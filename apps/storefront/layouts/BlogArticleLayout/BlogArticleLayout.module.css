@@ -66,6 +66,7 @@
   width: 860px;
   margin: var(--fds-spacing-12) 0;
   margin-left: calc((100% - 860px) / 2);
+  background-color: var(--fds-semantic-background-subtle);
 }
 
 .content h1,
