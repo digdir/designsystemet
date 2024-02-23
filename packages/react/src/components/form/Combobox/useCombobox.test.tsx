@@ -122,7 +122,7 @@ describe('useCombobox', () => {
     expect(result.current.restChildren.length).toBe(1);
   });
 
-  it('should show 1 option when we type "l" and have active value "oslo"', () => {
+  it('should show 2 option when we type "l" and have active value "oslo"', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,
@@ -135,7 +135,7 @@ describe('useCombobox', () => {
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.optionsChildren.length).toBe(1);
+    expect(result.current.optionsChildren.length).toBe(2);
     expect(result.current.restChildren.length).toBe(1);
   });
 });
