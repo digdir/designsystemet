@@ -1,3 +1,5 @@
+import { Slot } from '@radix-ui/react-slot';
+
 import type { ListItemProps } from '../List';
 import { List } from '../List';
 import type { LinkProps } from '../Link';
@@ -13,7 +15,7 @@ export const ErrorSummaryItem = ({
   children,
   ...rest
 }: ErrorSummaryItemProps) => {
-  const Component = asChild ? Link : Link;
+  const Component = asChild ? Slot : Link;
 
   return (
     <List.Item {...rest}>
