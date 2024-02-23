@@ -165,6 +165,47 @@ const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
   };
 };
 
+const fluidTypographyConfig = (destinationPath = ''): Config => {
+  const tokensPath = '../../design-tokens';
+
+  return {
+    include: [`${tokensPath}/Base/Fluid.json`],
+    source: [`${tokensPath}/Base/Core.json`],
+    platforms: {
+      hack: {
+        prefix,
+        basePxFontSize,
+        transforms: ['ts/resolveMath', nameKebab.name],
+        files: [
+          {
+            format: 'global-values-hack',
+            destination: 'ignore/hack',
+          },
+        ],
+      },
+      css: {
+        prefix,
+        basePxFontSize,
+        transformGroup: 'fds/css',
+        files: [
+          {
+            destination: `${destinationPath}/fluid.css`,
+            format: 'css/variables-scoped-references',
+            // filter: excludeSource,
+          },
+        ],
+        options: {
+          fileHeader: fileheader.name,
+          referencesFilter: (token: TransformedToken) =>
+            !(token.path[0] === 'viewport') &&
+            ['spacing', 'sizing', 'color'].includes(token.type as string),
+          // outputReferences: true,
+        },
+      },
+    },
+  };
+};
+
 console.log('🏗️  Started building package tokens…');
 
 brands.map((brand) => {
@@ -181,6 +222,14 @@ brands.map((brand) => {
 
 console.log('\n---------------------------------------');
 console.log('\n🏁 Finished building package tokens!');
+
+console.log('🏗️  Started building fluid tokens…');
+
+const fluidTypography = StyleDictionary.extend(fluidTypographyConfig('other'));
+
+fluidTypography.buildAllPlatforms();
+
+console.log('\n🏁 Finished building fluid tokens!');
 
 console.log('\n=======================================');
 console.log('\n🏗️  Started building storefront tokens…');
