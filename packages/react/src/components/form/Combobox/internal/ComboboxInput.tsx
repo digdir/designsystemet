@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
@@ -22,6 +23,7 @@ export const ComboboxInput = ({
   }
 
   const {
+    forwareddRef,
     listId,
     size,
     readOnly,
@@ -38,14 +40,15 @@ export const ComboboxInput = ({
     htmlSize,
     options,
     hideChips,
-
     setOpen,
     setActiveIndex,
     handleKeyDown,
     getReferenceProps,
     setInputValue,
-    setSelectedOptions,
+    handleSelectOption,
   } = context;
+
+  const mergedRefs = useMergeRefs([forwareddRef, inputRef]);
 
   // we need to check if input is in focus, to add focus styles to the wrapper
   const [inputInFocus, setInputInFocus] = useState(false);
@@ -82,13 +85,18 @@ export const ComboboxInput = ({
     // check if input value is the same as a label, if so, select it
     const option = options.find((option) => option.label === value);
     if (!option) return;
+    if (
+      selectedOptions.find(
+        (selectedOption) => selectedOption.value === option.value,
+      )
+    )
+      return;
+
+    handleSelectOption(option);
+
     if (multiple) {
-      setSelectedOptions([...selectedOptions, option]);
-      setInputValue('');
       inputRef.current?.focus();
     } else {
-      setSelectedOptions([option]);
-      setInputValue(option?.label || '');
       // move cursor to the end of the input
       setTimeout(() => {
         inputRef.current?.setSelectionRange(
@@ -104,8 +112,10 @@ export const ComboboxInput = ({
       /* Props from floating-ui */
       {...getReferenceProps({
         ref: refs?.setReference,
-        'aria-expanded': open,
         role: null,
+        'aria-controls': null,
+        'aria-expanded': null,
+        'aria-haspopup': null,
         /* If we click the wrapper, open the list, set index to first option, and focus the input */
         onClick() {
           if (disabled) return;
@@ -139,7 +149,7 @@ export const ComboboxInput = ({
         {/* If the input is in multiple mode, we need to display chips */}
         {multiple && !hideChips && <ComboboxChips />}
         <input
-          ref={inputRef}
+          ref={mergedRefs}
           aria-activedescendant={activeDescendant}
           readOnly={readOnly}
           aria-autocomplete='list'
