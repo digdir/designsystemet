@@ -50,7 +50,10 @@ const HelpText = ({
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Popover.Trigger asChild>
+        <Popover.Trigger
+          asChild
+          variant='tertiary'
+        >
           <button
             className={cl(
               classes.helpTextButton,
