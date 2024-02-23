@@ -76,7 +76,7 @@ describe('useCombobox', () => {
     expect(result.current.restChildren.length).toBe(1);
   });
 
-  it('should show empty when we type "3" and have active value "oslo"', () => {
+  it('should show 1 option when we type "3" and have active value "oslo"', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: false,
@@ -89,11 +89,11 @@ describe('useCombobox', () => {
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.optionsChildren.length).toBe(0);
+    expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
   });
 
-  it('should show empty when we type "3" and have active value "oslo" and multiple', () => {
+  it('should show 1 option when we type "3" and have active value "oslo" and multiple', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: true,
@@ -106,7 +106,7 @@ describe('useCombobox', () => {
     });
 
     expect(result.current.options.length).toBe(3);
-    expect(result.current.optionsChildren.length).toBe(0);
+    expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
   });
 
