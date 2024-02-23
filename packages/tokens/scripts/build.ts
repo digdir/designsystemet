@@ -63,8 +63,8 @@ StyleDictionary.registerTransformGroup({
   transforms: [
     nameKebab.name,
     'ts/resolveMath',
-    fluidFontSize.name,
-    calc.name,
+    // fluidFontSize.name,
+    // calc.name,
     typographyShorthand.name,
     'ts/size/lineheight',
     'ts/shadow/css/shorthand',
@@ -121,7 +121,7 @@ const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
           fileHeader: fileheader.name,
           referencesFilter: (token: TransformedToken) =>
             !(token.path[0] === 'viewport') &&
-            ['spacing', 'sizing', 'color'].includes(token.type as string),
+            ['color'].includes(token.type as string),
           // outputReferences: true,
         },
       },

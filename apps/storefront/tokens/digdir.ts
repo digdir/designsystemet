@@ -3073,7 +3073,7 @@ export const borderRadius = [
 
 export const spacing = [
   {
-    value: 'calc(0)',
+    value: '0',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3086,7 +3086,7 @@ export const spacing = [
     path: ['spacing', '0'],
   },
   {
-    value: 'calc(4)',
+    value: '4px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3099,7 +3099,7 @@ export const spacing = [
     path: ['spacing', '1'],
   },
   {
-    value: 'calc(8)',
+    value: '8px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3112,7 +3112,7 @@ export const spacing = [
     path: ['spacing', '2'],
   },
   {
-    value: 'calc(12)',
+    value: '12px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3125,7 +3125,7 @@ export const spacing = [
     path: ['spacing', '3'],
   },
   {
-    value: 'calc(16)',
+    value: '16px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3138,7 +3138,7 @@ export const spacing = [
     path: ['spacing', '4'],
   },
   {
-    value: 'calc(20)',
+    value: '20px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3151,7 +3151,7 @@ export const spacing = [
     path: ['spacing', '5'],
   },
   {
-    value: 'calc(24)',
+    value: '24px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3164,7 +3164,7 @@ export const spacing = [
     path: ['spacing', '6'],
   },
   {
-    value: 'calc(28)',
+    value: '28px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3177,7 +3177,7 @@ export const spacing = [
     path: ['spacing', '7'],
   },
   {
-    value: 'calc(32)',
+    value: '32px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3190,7 +3190,7 @@ export const spacing = [
     path: ['spacing', '8'],
   },
   {
-    value: 'calc(36)',
+    value: '36px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3203,7 +3203,7 @@ export const spacing = [
     path: ['spacing', '9'],
   },
   {
-    value: 'calc(40)',
+    value: '40px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3216,7 +3216,7 @@ export const spacing = [
     path: ['spacing', '10'],
   },
   {
-    value: 'calc(44)',
+    value: '44px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3229,22 +3229,20 @@ export const spacing = [
     path: ['spacing', '11'],
   },
   {
-    value: 'calc(48)',
+    value: '48px',
     type: 'spacing',
-    description: '48px - 54px',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
     original: {
       value: '{base_sizing}*12',
       type: 'spacing',
-      description: '48px - 54px',
     },
     name: '--fds-spacing-12',
     attributes: {},
     path: ['spacing', '12'],
   },
   {
-    value: 'calc(52)',
+    value: '52px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3257,7 +3255,7 @@ export const spacing = [
     path: ['spacing', '13'],
   },
   {
-    value: 'calc(56)',
+    value: '56px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3270,7 +3268,7 @@ export const spacing = [
     path: ['spacing', '14'],
   },
   {
-    value: 'calc(72)',
+    value: '72px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3283,7 +3281,7 @@ export const spacing = [
     path: ['spacing', '18'],
   },
   {
-    value: 'calc(88)',
+    value: '88px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3296,7 +3294,7 @@ export const spacing = [
     path: ['spacing', '22'],
   },
   {
-    value: 'calc(104)',
+    value: '104px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3309,7 +3307,7 @@ export const spacing = [
     path: ['spacing', '26'],
   },
   {
-    value: 'calc(120)',
+    value: '120px',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3325,7 +3323,7 @@ export const spacing = [
 
 export const sizing = [
   {
-    value: 'calc(0)',
+    value: '0',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3338,7 +3336,7 @@ export const sizing = [
     path: ['sizing', '0'],
   },
   {
-    value: 'calc(4)',
+    value: '4px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3351,7 +3349,7 @@ export const sizing = [
     path: ['sizing', '1'],
   },
   {
-    value: 'calc(8)',
+    value: '8px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3364,7 +3362,7 @@ export const sizing = [
     path: ['sizing', '2'],
   },
   {
-    value: 'calc(12)',
+    value: '12px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3377,7 +3375,7 @@ export const sizing = [
     path: ['sizing', '3'],
   },
   {
-    value: 'calc(16)',
+    value: '16px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3390,7 +3388,7 @@ export const sizing = [
     path: ['sizing', '4'],
   },
   {
-    value: 'calc(20)',
+    value: '20px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3403,7 +3401,7 @@ export const sizing = [
     path: ['sizing', '5'],
   },
   {
-    value: 'calc(24)',
+    value: '24px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3416,7 +3414,7 @@ export const sizing = [
     path: ['sizing', '6'],
   },
   {
-    value: 'calc(28)',
+    value: '28px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3429,7 +3427,7 @@ export const sizing = [
     path: ['sizing', '7'],
   },
   {
-    value: 'calc(32)',
+    value: '32px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3442,7 +3440,7 @@ export const sizing = [
     path: ['sizing', '8'],
   },
   {
-    value: 'calc(36)',
+    value: '36px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3455,7 +3453,7 @@ export const sizing = [
     path: ['sizing', '9'],
   },
   {
-    value: 'calc(40)',
+    value: '40px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3468,7 +3466,7 @@ export const sizing = [
     path: ['sizing', '10'],
   },
   {
-    value: 'calc(44)',
+    value: '44px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3481,7 +3479,7 @@ export const sizing = [
     path: ['sizing', '11'],
   },
   {
-    value: 'calc(48)',
+    value: '48px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3494,7 +3492,7 @@ export const sizing = [
     path: ['sizing', '12'],
   },
   {
-    value: 'calc(52)',
+    value: '52px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3507,7 +3505,7 @@ export const sizing = [
     path: ['sizing', '13'],
   },
   {
-    value: 'calc(56)',
+    value: '56px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3520,7 +3518,7 @@ export const sizing = [
     path: ['sizing', '14'],
   },
   {
-    value: 'calc(72)',
+    value: '72px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3533,7 +3531,7 @@ export const sizing = [
     path: ['sizing', '18'],
   },
   {
-    value: 'calc(88)',
+    value: '88px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3546,7 +3544,7 @@ export const sizing = [
     path: ['sizing', '22'],
   },
   {
-    value: 'calc(104)',
+    value: '104px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -3559,7 +3557,7 @@ export const sizing = [
     path: ['sizing', '26'],
   },
   {
-    value: 'calc(120)',
+    value: '120px',
     type: 'sizing',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
