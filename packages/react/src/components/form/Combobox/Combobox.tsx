@@ -108,7 +108,7 @@ export type ComboboxProps = {
    * Text to display when the combobox is loading
    * @default 'Laster...'
    */
-  loadingText?: string;
+  loadingLabel?: string;
   /**
    * Filter function for filtering the list of options. Return `true` to show option, `false` to hide option.
    * @param inputValue
@@ -154,7 +154,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       children,
       style,
       loading,
-      loadingText = 'Laster...',
+      loadingLabel = 'Laster...',
       filter = (inputValue, option) => {
         return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
       },
@@ -565,7 +565,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                       title='Laster'
                       size='small'
                     />
-                    {loadingText}
+                    {loadingLabel}
                   </ComboboxCustom>
                 ) : (
                   <>
