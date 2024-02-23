@@ -99,13 +99,13 @@ export type ComboboxProps = {
    */
   inputValue?: string;
   /**
-   * If true, the combobox will display a loading spinner.
+   * The combobox will display a loading spinner.
    * All options will be hidden and replaced with a loading message.
    * @default false
    */
   loading?: boolean;
   /**
-   * If true, the combobox is disabled
+   * Text to display when the combobox is loading
    * @default 'Laster...'
    */
   loadingText?: string;
