@@ -99,7 +99,7 @@ export type ComboboxProps = {
    */
   inputValue?: string;
   /**
-   * The combobox will display a loading spinner.
+   * Adds `aria-busy` and displays loading state for the Combobox
    * All options will be hidden and replaced with a loading message.
    * @default false
    */
