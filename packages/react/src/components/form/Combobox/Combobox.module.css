@@ -167,6 +167,12 @@
   display: none;
 }
 
+.loading {
+  display: flex;
+  gap: var(--fds-spacing-2);
+  align-content: center;
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
