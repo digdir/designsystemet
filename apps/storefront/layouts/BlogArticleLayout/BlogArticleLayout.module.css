@@ -28,7 +28,7 @@
 .meta {
   display: flex;
   justify-content: center;
-  gap: var(--fds-spacing-2);
+  gap: var(--fds-spacing-3);
   color: var(--fds-semantic-text-neutral-subtle) !important;
 }
 
@@ -57,6 +57,7 @@
 .content p {
   max-width: var(--text-max-width);
   margin: var(--fds-spacing-6) 0;
+  margin-top: var(--fds-spacing-5);
   line-height: 170%;
 }
 
@@ -75,6 +76,7 @@
 .content h5,
 .content h6 {
   margin-top: var(--fds-spacing-12);
+  margin-bottom: var(--fds-spacing-5);
 }
 
 .content:last-child {
