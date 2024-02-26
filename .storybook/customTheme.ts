@@ -3,7 +3,7 @@ import { create } from '@storybook/theming';
 export default create({
   brandTitle: 'Komponenter',
   // brandImage: 'logo_digdir.svg',
-  fontBase: '"Inter", sans-serif',
+  fontBase: '"Calibri", "Work Sans", "Inter", sans-serif',
   // Colors
   base: 'light',
   colorSecondary: '#0062BA',
