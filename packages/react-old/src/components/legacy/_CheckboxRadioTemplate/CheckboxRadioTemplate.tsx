@@ -6,10 +6,9 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import { forwardRef, useId } from 'react';
 import cl from 'clsx';
+import { HelpText, type HelpTextProps } from '@digdir/designsystemet-react';
 
-import { HelpText } from '../../HelpText';
 import utilityClasses from '../../../utilities/utility.module.css';
-import type { HelpTextProps } from '../../HelpText/HelpText';
 
 import classes from './CheckboxRadioTemplate.module.css';
 

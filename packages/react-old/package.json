@@ -1,6 +1,6 @@
 {
-  "name": "@digdir/designsystemet-react",
-  "version": "0.51.3",
+  "name": "@digdir/design-system-react",
+  "version": "0.51.1",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
@@ -29,6 +29,7 @@
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
     "@digdir/design-system-tokens": "^0.13.0",
+    "@digdir/designsystemet-react": "^0.51.1",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",

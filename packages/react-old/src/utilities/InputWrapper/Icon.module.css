@@ -1,0 +1,15 @@
+.icon {
+  align-items: center;
+  background: var(--icon-background);
+  border-bottom-left-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: var(--icon-width);
+}
+
+.icon.disabled {
+  opacity: 0.6;
+}
