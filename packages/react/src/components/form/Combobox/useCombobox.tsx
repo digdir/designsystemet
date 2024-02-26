@@ -26,6 +26,7 @@ export default function useCombobox({
   children,
   inputValue,
   multiple,
+  selectedOptions,
   filter,
 }: UseComboboxProps) {
   const options = useMemo(() => {
@@ -80,9 +81,15 @@ export default function useCombobox({
       const option = valuesArray.find((item) => item.value === value);
 
       if (!option) return false;
-      return filter(inputValue, { ...option });
+
+      const isSelected = selectedOptions.some(
+        (selectedOption) => selectedOption.value === value,
+      );
+
+      // show what we search for, and all selected options
+      return filter(inputValue, { ...option }) || isSelected;
     });
-  }, [options, children, inputValue, multiple, filter]);
+  }, [options, children, multiple, inputValue, selectedOptions, filter]);
 
   const customIds = useMemo(() => {
     // find all custom components with `interactive=true` and generate random values for them

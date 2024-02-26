@@ -299,4 +299,11 @@ describe('Combobox', () => {
       expect(onValueChange).toHaveBeenCalledTimes(1);
     }, 100);
   });
+
+  it('should add aria-busy="true" when loading', async () => {
+    await render({ loading: true });
+    const combobox = screen.getByRole('combobox');
+
+    expect(combobox).toHaveAttribute('aria-busy', 'true');
+  });
 });
