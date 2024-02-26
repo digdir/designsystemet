@@ -59,7 +59,12 @@ const getPath = (href: string | undefined): string => {
 };
 
 const components = {
-  p: Paragraph,
+  p: (props: Props) => (
+    <Paragraph
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
   ol: (props: Props) => (
     <List.Root>
       <List.Ordered
@@ -93,6 +98,7 @@ const components = {
       <Link
         {...props}
         href={href}
+        className='sb-unstyled'
       ></Link>
     );
   },
