@@ -1,9 +1,11 @@
 import type { FieldsetHTMLAttributes, ForwardedRef, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx';
-
-import { ErrorMessage, HelpText } from '../..';
-import type { HelpTextProps } from '../../HelpText/HelpText';
+import {
+  HelpText,
+  ErrorMessage,
+  type HelpTextProps,
+} from '@digdir/designsystemet-react';
 
 import classes from './FieldSet.module.css';
 
