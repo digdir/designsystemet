@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import cl from 'clsx';
-import { Heading, Paragraph } from '@digdir/design-system-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 
 import styles from './DoAndDont.module.css';

@@ -25,15 +25,6 @@ export default [
         // preserveModulesRoot: 'tsc-build',
       },
     ],
-    external: [
-      /@altinn\/figma-design-tokens.*(?<!css)$/,
-      /@react-hookz\/web/,
-      /@radix-ui\/react-popover$/,
-      /react-number-format/,
-      /react-leaflet/,
-      /leaflet/,
-      /@navikt\/ds-icons/,
-    ],
     plugins: [
       peerDepsExternal(),
       resolve(),
