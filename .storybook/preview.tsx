@@ -63,6 +63,7 @@ const components = {
     <Paragraph
       {...props}
       className='sb-unstyled'
+      spacing
     />
   ),
   ol: (props: Props) => (
