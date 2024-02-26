@@ -1,0 +1,91 @@
+.inputAndLabel {
+  align-items: stretch;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.inputWrapper {
+  --background: var(--component-input-color-background-default);
+  --border-radius: var(--interactive_components-border_radius-normal);
+  --icon-background: transparent;
+  --icon-width: 22px;
+  --outline-color: var(--component-input-color-border-default);
+  --outline-width: 1px;
+  --paddingX: 0;
+  --paddingY: 0;
+
+  align-items: stretch;
+  background: var(--background);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  display: inline-flex;
+  min-height: var(--component-input-size-min_height-default);
+  position: relative;
+}
+
+.inputWrapper.default:hover {
+  --outline-color: var(--component-input-color-border-hover);
+}
+
+.inputWrapper.error {
+  --icon-background: var(--component-input-error-color-border-default);
+  --outline-color: var(--component-input-error-color-border-default);
+}
+
+.inputWrapper.disabled {
+  --background: repeating-linear-gradient(135deg, #efefef, #efefef 2px, #fff 3px, #fff 5px);
+
+  opacity: var(--opacity-disabled);
+}
+
+.inputWrapper.readonlyInfo {
+  --background: var(--component-input-read_only_info-color-background-default);
+  --outline-color: var(--component-input-read_only_info-color-border-default);
+}
+
+.inputWrapper.readonlyConfirm {
+  --background: var(--component-input-read_only_confirm-color-background-default);
+  --outline-color: var(--component-input-read_only_confirm-color-border-default);
+}
+
+.inputWrapper.search {
+  flex-direction: row-reverse;
+}
+
+.inputWrapper.withPadding {
+  /* Subtract size of border on padding-y, because border is on outer element. Without this, height of entire component will be too big */
+  --paddingY: calc(var(--component-input-space-padding-y) - var(--component-input-border_width-default));
+  --paddingX: var(--component-input-space-padding-x);
+}
+
+.field {
+  background: var(--background);
+  border-radius: var(--border-radius);
+  border-width: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: var(--component-input-font_size-sm);
+  outline: var(--outline-width) solid var(--outline-color);
+  padding: var(--paddingY) var(--paddingX);
+  width: 100%;
+}
+
+.inputAndLabel.withIcon .field {
+  padding-left: calc(var(--paddingX) + var(--icon-width));
+}
+
+.inputWrapper:not(.disabled) .field:hover {
+  --outline-width: 2px;
+}
+
+.label {
+  font-weight: var(--component-label-font_weight-default);
+  padding: 0;
+}
+
+.characterLimitLabel {
+  display: inline-block;
+  margin-top: 4px;
+}

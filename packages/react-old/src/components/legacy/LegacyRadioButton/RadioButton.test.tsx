@@ -3,8 +3,8 @@ import assert from 'assert';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { LegacyRadioButton } from './';
-import type { LegacyRadioButtonProps } from './';
+import { LegacyRadioButton } from '.';
+import type { LegacyRadioButtonProps } from '.';
 
 const user = userEvent.setup();
 
