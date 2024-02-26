@@ -20,12 +20,13 @@
 }
 
 .iconContainer {
-  height: 60px;
-  width: 60px;
+  height: 54px;
+  width: 54px;
   border-radius: var(--fds-border_radius-small);
   transform: rotate(45deg);
   margin: 0 auto;
   margin-bottom: calc(var(--fds-spacing-3) + 17px);
+  margin-top: var(--fds-spacing-3);
   display: flex;
   align-items: center;
   justify-content: center;
