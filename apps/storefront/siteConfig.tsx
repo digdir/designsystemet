@@ -28,10 +28,6 @@ export const SiteConfig = {
               name: 'Slack',
               url: 'grunnleggende/introduksjon/slack',
             },
-            {
-              name: 'Roadmap',
-              url: 'grunnleggende/introduksjon/roadmap',
-            },
           ],
         },
         {
