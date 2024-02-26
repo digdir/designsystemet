@@ -1,6 +1,6 @@
 import { Markdown } from '@storybook/blocks';
-import type { AlertProps } from '@digdir/design-system-react';
-import { Paragraph, Alert, Heading } from '@digdir/design-system-react';
+import type { AlertProps } from '@digdir/designsystemet-react';
+import { Paragraph, Alert, Heading } from '@digdir/designsystemet-react';
 
 import classes from './Information.module.css';
 
@@ -15,7 +15,7 @@ const texts: Record<Texts, { description: string; title?: string }> = {
   development: {
     title: 'Under utvikling',
     description:
-      'Komponenten er under utvikling og dermed ikke tilgjenglig i `@digdir/design-system-react`.',
+      'Komponenten er under utvikling og dermed ikke tilgjenglig i `@digdir/designsystemet-react`.',
   },
   altinn: {
     title: 'Altinn',

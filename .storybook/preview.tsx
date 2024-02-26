@@ -15,7 +15,7 @@ import {
   LinkProps,
   List,
   Table,
-} from '@digdir/design-system-react';
+} from '@digdir/designsystemet-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
 
