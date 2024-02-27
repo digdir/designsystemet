@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/react';
-import { useRef, useId } from 'react';
+import { useRef, useId, useState } from 'react';
 import * as React from 'react';
 
 import type { PortalProps } from '../../types/Portal';
@@ -50,13 +50,13 @@ export const Popover = ({
   ...rest
 }: PopoverProps) => {
   const triggerRef = useRef<Element>(null);
-  const [internalOpen, setInternalOpen] = React.useState(open ?? false);
+  const [internalOpen, setInternalOpen] = useState(open ?? false);
 
   const randomPopoverId = useId();
-  const [popoverId, setPopoverId] = React.useState<string>(randomPopoverId);
+  const [popoverId, setPopoverId] = useState<string>(randomPopoverId);
 
   const randomTriggerId = useId();
-  const [triggerId, setTriggerId] = React.useState<string>(randomTriggerId);
+  const [triggerId, setTriggerId] = useState<string>(randomTriggerId);
 
   const isControlled = typeof open === 'boolean';
 
