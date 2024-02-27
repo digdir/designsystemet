@@ -42,14 +42,12 @@ export const Variants: StoryFn<typeof Popover> = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ display: 'flex', gap: 'var(--fds-spacing-2)' }}>
       <Popover
         open={open}
         placement='top'
       >
-        <Popover.Trigger asChild>
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>default</Popover.Content>
       </Popover>
       <Popover
@@ -57,9 +55,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         placement='bottom'
         variant='danger'
       >
-        <Popover.Trigger asChild>
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>danger</Popover.Content>
       </Popover>
       <Popover
@@ -67,9 +63,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         placement='top'
         variant='info'
       >
-        <Popover.Trigger asChild>
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>info</Popover.Content>
       </Popover>
       <Popover
@@ -77,12 +71,10 @@ export const Variants: StoryFn<typeof Popover> = () => {
         placement='bottom'
         variant='warning'
       >
-        <Popover.Trigger asChild>
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>warning</Popover.Content>
       </Popover>
-    </>
+    </div>
   );
 };
 

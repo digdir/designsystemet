@@ -1,4 +1,4 @@
-import { forwardRef, useContext } from 'react';
+import { forwardRef, useContext, useEffect } from 'react';
 import type * as React from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
@@ -11,10 +11,22 @@ export type PopoverTriggerProps = React.ComponentPropsWithRef<typeof Button>;
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   PopoverTriggerProps
->(({ ...rest }, ref) => {
-  const { triggerRef, internalOpen, setInternalOpen, isControlled } =
-    useContext(PopoverContext);
+>(({ id, ...rest }, ref) => {
+  const {
+    triggerRef,
+    internalOpen,
+    setInternalOpen,
+    isControlled,
+    popoverId,
+    triggerId,
+    setTriggerId,
+  } = useContext(PopoverContext);
+
   const mergedRefs = useMergeRefs([ref, triggerRef]);
+
+  useEffect(() => {
+    id && setTriggerId?.(id);
+  }, [id, setTriggerId]);
 
   return (
     <Button
@@ -23,6 +35,10 @@ export const PopoverTrigger = forwardRef<
         if (!isControlled) setInternalOpen(!internalOpen);
       }}
       aria-expanded={internalOpen}
+      role='button'
+      aria-controls={internalOpen ? popoverId : undefined}
+      id={triggerId}
+      type='button'
       {...rest}
     />
   );
