@@ -1659,7 +1659,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
-    "@altinn/figma-design-tokens": "npm:^6.0.1"
     "@digdir/design-system-tokens": "npm:^0.13.0"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
@@ -1670,7 +1669,6 @@ __metadata:
     cssnano: "npm:^6.0.2"
     esno: "npm:^4.0.0"
     fs-extra: "npm:^11.2.0"
-    react-number-format: "npm:5.3.1"
   peerDependencies:
     react: ">=18.2.0"
     react-dom: ">=18.2.0"
