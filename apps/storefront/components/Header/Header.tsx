@@ -35,7 +35,7 @@ const Header = () => {
     },
     /* {
       name: 'Bloggen',
-      url: '/blogg',
+      url: '/bloggen',
     }, */
     {
       name: 'Komponenter',
