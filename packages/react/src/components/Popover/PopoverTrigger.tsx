@@ -25,7 +25,7 @@ export const PopoverTrigger = forwardRef<
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 
   useEffect(() => {
-    id && setTriggerId(id);
+    id && setTriggerId?.(id);
   }, [id, setTriggerId]);
 
   return (

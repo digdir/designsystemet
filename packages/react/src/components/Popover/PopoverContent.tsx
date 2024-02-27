@@ -60,7 +60,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     const arrowRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-      id && setPopoverId(id);
+      id && setPopoverId?.(id);
     }, [id, setPopoverId]);
 
     const {
