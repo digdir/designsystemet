@@ -34,15 +34,6 @@ Preview.args = {
 
 Preview.decorators = [marginDecorator];
 
-const resetStyle = {
-  background: 'none',
-  padding: 0,
-  margin: 0,
-  display: 'inline',
-  cursor: 'auto',
-  color: 'black',
-};
-
 export const Variants: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
 
@@ -51,17 +42,12 @@ export const Variants: StoryFn<typeof Popover> = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ display: 'flex' }}>
       <Popover
         open={open}
         placement='top'
       >
-        <Popover.Trigger
-          asChild
-          style={resetStyle}
-        >
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>default</Popover.Content>
       </Popover>
       <Popover
@@ -69,12 +55,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         placement='bottom'
         variant='danger'
       >
-        <Popover.Trigger
-          asChild
-          style={resetStyle}
-        >
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>danger</Popover.Content>
       </Popover>
       <Popover
@@ -82,12 +63,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         placement='top'
         variant='info'
       >
-        <Popover.Trigger
-          asChild
-          style={resetStyle}
-        >
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>info</Popover.Content>
       </Popover>
       <Popover
@@ -95,15 +71,10 @@ export const Variants: StoryFn<typeof Popover> = () => {
         placement='bottom'
         variant='warning'
       >
-        <Popover.Trigger
-          asChild
-          style={resetStyle}
-        >
-          <span>popover</span>
-        </Popover.Trigger>
+        <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>warning</Popover.Content>
       </Popover>
-    </>
+    </div>
   );
 };
 
