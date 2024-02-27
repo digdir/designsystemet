@@ -60,7 +60,8 @@
   margin-bottom: var(--fds-spacing-3);
   text-align: center;
   text-decoration: underline;
-  text-underline-offset: 8px;
+  text-underline-offset: 7px;
+  line-height: 1.4em;
 }
 
 .desc {
