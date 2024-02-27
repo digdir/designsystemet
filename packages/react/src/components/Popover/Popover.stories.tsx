@@ -42,7 +42,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', gap: 'var(--fds-spacing-2)' }}>
       <Popover
         open={open}
         placement='top'
