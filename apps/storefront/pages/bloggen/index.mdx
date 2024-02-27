@@ -1,0 +1,65 @@
+import { PencilIcon } from '@navikt/aksel-icons';
+
+import { BlogPageLayout } from '@layouts';
+import { Meta } from '@components';
+import { BlogCard } from '@blog';
+
+export default ({ children }) => (
+  <BlogPageLayout
+    content={children}
+    banner={{
+      title: 'Bloggen',
+      icon: <PencilIcon fontSize={34} />,
+      color: 'red',
+    }}
+  />
+);
+
+<Meta
+  title='Bloggen'
+  description='Beskrivelse'
+/>
+
+<BlogCard
+  title='Tittel'
+  desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
+  date='35 Januar 2024'
+  href='/bloggen/dette-er-eit-navn'
+  image='https://source.unsplash.com/random/1920x1080'
+  author='Designsystemet'
+  featured={true}
+/>
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='35 Januar 2024'
+  href='/bloggen/dette-er-eit-navn'
+  image='https://source.unsplash.com/random/1920x1080'
+  author='Brønnøysundregistrene'
+/>
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='35 Januar 2024'
+  href='/bloggen/dette-er-eit-navn'
+  image='https://source.unsplash.com/random/1920x1080'
+/>
+<BlogCard
+  title='Tittel'
+  desc='Beskrivelse'
+  date='35 Januar 2024'
+  href='/bloggen/dette-er-eit-navn'
+  image='https://source.unsplash.com/random/1920x1080'
+/>
+
+<style>
+  {`
+    .Header_header__pXml_ {
+      border-bottom: none
+    }
+
+    body {
+      background-color: var(--fds-semantic-background-subtle);
+    }
+  `}
+</style>

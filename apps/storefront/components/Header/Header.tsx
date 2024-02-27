@@ -33,6 +33,10 @@ const Header = () => {
       name: 'Mønstre',
       url: '/monstre',
     },
+    /* {
+      name: 'Bloggen',
+      url: '/bloggen',
+    }, */
     {
       name: 'Komponenter',
       url: 'https://storybook.designsystemet.no',
