@@ -58,7 +58,7 @@ describe('List', () => {
     expect(screen.getByRole('heading')).toBeInTheDocument();
   });
 
-  it('should have aria-labelledby when heading is passed', () => {
+  it('should have aria-describedby when heading is passed', () => {
     render({
       children: (
         <>
@@ -67,9 +67,9 @@ describe('List', () => {
         </>
       ),
     });
-    expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
+    expect(screen.getByRole('list')).toHaveAttribute('aria-describedby');
   });
-  it('should have aria-labelledby when heading is with passed id', () => {
+  it('should have aria-describedby when heading is with passed id', () => {
     render({
       children: (
         <>
@@ -79,11 +79,11 @@ describe('List', () => {
       ),
     });
     expect(screen.getByRole('list')).toHaveAttribute(
-      'aria-labelledby',
+      'aria-describedby',
       'passedId',
     );
   });
-  it('should not have aria-labelledby when heading is missing', () => {
+  it('should not have aria-describedby when heading is missing', () => {
     render({
       children: (
         <>
@@ -91,6 +91,6 @@ describe('List', () => {
         </>
       ),
     });
-    expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
+    expect(screen.getByRole('list')).not.toHaveAttribute('aria-describedby');
   });
 });
