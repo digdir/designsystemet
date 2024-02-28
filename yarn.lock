@@ -1650,12 +1650,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
+    "@digdir/designsystemet-react": "workspace:^"
     cssnano: "npm:^6.0.2"
     postcss-cli: "npm:^11.0.0"
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:^0.51.1, @digdir/designsystemet-react@workspace:packages/react":
+"@digdir/designsystemet-react@npm:^0.51.1, @digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
@@ -1666,7 +1667,6 @@ __metadata:
     "@tanstack/react-virtual": "npm:^3.0.1"
     "@types/fs-extra": "npm:^11.0.4"
     copyfiles: "npm:^2.4.1"
-    cssnano: "npm:^6.0.2"
     esno: "npm:^4.0.0"
     fs-extra: "npm:^11.2.0"
   peerDependencies:
