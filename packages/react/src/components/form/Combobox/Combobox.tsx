@@ -226,9 +226,11 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         flip({ padding: 10 }),
         floatingSize({
           apply({ rects, elements }) {
-            Object.assign(elements.floating.style, {
-              width: `calc(${rects.reference.width}px - calc(var(--fds-spacing-2) * 2))`,
-              maxHeight: `200px`,
+            requestAnimationFrame(() => {
+              Object.assign(elements.floating.style, {
+                width: `calc(${rects.reference.width}px - calc(var(--fds-spacing-2) * 2))`,
+                maxHeight: `200px`,
+              });
             });
           },
         }),
