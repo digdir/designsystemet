@@ -21,9 +21,6 @@
     "build": "postcss ./*.css --base . --dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@digdir/designsystemet-react": "*"
-  },
   "devDependencies": {
     "cssnano": "^6.0.2",
     "postcss-cli": "^11.0.0"
