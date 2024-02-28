@@ -18,11 +18,11 @@
     "digdir"
   ],
   "scripts": {
-    "build": "postcss ./!(dist)/*.css ./*.css --base . --dir ./dist",
+    "build": "postcss ./*.css --base . --dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@digdir/design-system-react": "*"
+    "@digdir/designsystemet-react": "*"
   },
   "devDependencies": {
     "cssnano": "^6.0.2",
