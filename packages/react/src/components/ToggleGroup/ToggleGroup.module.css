@@ -1,7 +1,7 @@
 .toggleGroupContainer {
   background-color: var(--fds-semantic-background-default);
   border: var(--fds-semantic-border-neutral-default) solid var(--fds-border_width-default);
-  border-radius: var(--fds-border_radius-medium);
+  border-radius: var(--fds-border_radius-large);
   width: fit-content;
 }
 
