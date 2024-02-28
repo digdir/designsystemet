@@ -1,5 +1,3 @@
-import { Slot } from '@radix-ui/react-slot';
-
 import type { ListItemProps } from '../List';
 import { List } from '../List';
 import type { LinkProps } from '../Link';
@@ -32,11 +30,14 @@ export const ErrorSummaryItem = ({
   children,
   ...rest
 }: ErrorSummaryItemProps) => {
-  const Component = asChild ? Slot : Link;
-
   return (
     <List.Item {...rest}>
-      <Component href={href}>{children}</Component>
+      <Link
+        href={href}
+        asChild={asChild}
+      >
+        {children}
+      </Link>
     </List.Item>
   );
 };
