@@ -13,10 +13,11 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs && yarn run copy-css-to-package",
     "build:css": "esno ./scripts/generate-css.ts",
     "clean": "rimraf dist && rimraf tsc-build",
-    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "copy-css-to-package": "copyfiles -u 2 ./dist/esm/react-components.css ../css/",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -36,7 +37,6 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "copyfiles": "^2.4.1",
-    "cssnano": "^6.0.2",
     "esno": "^4.0.0",
     "fs-extra": "^11.2.0"
   }
