@@ -5,9 +5,26 @@ import { List } from '../List';
 import type { LinkProps } from '../Link';
 import { Link } from '../Link';
 
-export type ErrorSummaryItemProps = {
+type RequiredHref = {
   href: LinkProps['href'];
-} & ListItemProps;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: false;
+};
+
+type OptionalHref = {
+  href?: never;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild: true;
+};
+
+export type ErrorSummaryItemProps =
+  | (RequiredHref | OptionalHref) & Omit<ListItemProps, 'asChild'>;
 
 export const ErrorSummaryItem = ({
   href,
