@@ -23,5 +23,7 @@
     "markdown",
     "mdx"
   ],
+  "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
+  "html-css-class-completion.excludeGlobPattern": "**/react-components.css",
   "jest.jestCommandLine": "yarn test"
 }

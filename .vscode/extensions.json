@@ -19,6 +19,7 @@
     "formulahendry.auto-close-tag",
     "usernamehw.errorlens",
     "phoenisx.cssvar",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "zignd.html-css-class-completion"
   ]
 }
