@@ -62,6 +62,10 @@ export const SiteConfig = {
               name: 'Sizing',
               url: 'grunnleggende/designelementer/sizing',
             },
+            {
+              name: 'Størrelser og avstander',
+              url: 'grunnleggende/designelementer/storrelser-og-avstander',
+            },
           ],
         },
         {
