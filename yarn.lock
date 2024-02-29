@@ -1603,8 +1603,6 @@ __metadata:
     "@digdir/designsystemet-react": "npm:^0.51.1"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
-    "@radix-ui/react-slot": "npm:^1.0.2"
-    "@tanstack/react-virtual": "npm:^3.0.1"
     "@types/fs-extra": "npm:^11.0.4"
     copyfiles: "npm:^2.4.1"
     cssnano: "npm:^6.0.2"
