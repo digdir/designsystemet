@@ -108,9 +108,8 @@ const components = {
     <Table
       {...props}
       zebra
-      border
       className='sb-unstyled'
-      style={{ maxWidth: '70ch' }}
+      style={{ width: '100%' }}
     />
   ),
   thead: (props: Props) => (
