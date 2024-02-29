@@ -26,6 +26,7 @@ export default [
       },
     ],
     external: [
+      /@digdir\/designsystemet-react/,
       /@altinn\/figma-design-tokens.*(?<!css)$/,
       /@react-hookz\/web/,
       /@radix-ui\/react-popover$/,
