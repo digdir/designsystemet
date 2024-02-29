@@ -1,6 +1,13 @@
-# @digdir/design-system-react
+# @digdir/designsystemet-react
 
-React components from the DigDir Common Designsystem
+React implementation of the Designsystemet components
+
+- Headless components.
+  - Uses `@digdir/designsystemet-css` and `@digdir/designsystemet-tokens` for styling.
+- All components support `forwardRef`.
+- Most components extend and behave as native html-elements.
+- Most components support composition and `asChild` for overriding the underlying html-element.
+- React Server Components support.
 
 ## 🚀 Get started
 
@@ -9,32 +16,30 @@ Follow these steps to get started with the React components.
 ### 1. Install the packages
 
 ```sh
-npm install @digdir/design-system-react @digdir/design-system-tokens
+npm install @digdir/designsystemet-react @digdir/designsystemet-tokens @digdir/designsystemet-css
 ```
 
 #### Typescript
 
-If you use Typescript, make sure you have typescript >= 3.8 as a devDependency:
+If you use Typescript, make sure you have typescript >= 3.8 as `devDependencies`:
 
 ```sh
 npm install typescript --save-dev
 ```
 
-#### Legacy components
+### 2. Font
 
-If you are still using components prefix with `Legacy` you will also need to install the old tokens package.
+You are free to use any font-family with the components.
 
-```sh
-npm install @altinn/figma-design-tokens
-```
+The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variantions might occur if a different font is used.
 
-### 2. Add the Inter font (optional)
+#### Add the Inter font (optional)
 
 Add the `<link>` tag to your application and set the `font-family` to `Inter`.
 
 The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
 
-#### HTML
+##### HTML
 
 ```html
 <link
@@ -43,7 +48,7 @@ The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with t
 />
 ```
 
-#### CSS
+##### CSS
 
 ```css
 body {
@@ -57,11 +62,12 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+import '@digdir/designsystemet-tokens/brand/digdir/tokens.css';
+import '@digdir/designsystemet-css'; // Must be imported after tokens.css
 
-import { Button } from '@digdir/design-system-react';
+import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>I am a button!</Button>;
 ```
 
-The `tokens.css` file only has to be imported once in your application.
+`@digdir/designsystemet-tokens` and `@digdir/designsystemet-css` only needs to be imported once.
