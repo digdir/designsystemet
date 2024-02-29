@@ -55,14 +55,6 @@ export const SiteConfig = {
               url: 'grunnleggende/designelementer/typografi',
             },
             {
-              name: 'Spacing',
-              url: 'grunnleggende/designelementer/spacing',
-            },
-            {
-              name: 'Sizing',
-              url: 'grunnleggende/designelementer/sizing',
-            },
-            {
               name: 'Størrelser og avstander',
               url: 'grunnleggende/designelementer/storrelser-og-avstander',
             },
