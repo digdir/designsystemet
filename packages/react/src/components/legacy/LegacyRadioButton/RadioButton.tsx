@@ -26,7 +26,7 @@ export interface LegacyRadioButtonProps {
 /**
  *
  * @note
- * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/felles-radio--docs Radio} component.
+ * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/komponenter-radio--docs Radio} component.
  */
 const LegacyRadioButton = forwardRef<HTMLInputElement, LegacyRadioButtonProps>(
   (

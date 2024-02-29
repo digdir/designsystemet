@@ -15,7 +15,7 @@ const decorators = [
 ];
 
 export default {
-  title: 'Felles/List',
+  title: 'Komponenter/List',
   component: List.Root,
   decorators,
 } as Meta;

@@ -27,7 +27,7 @@ const AkselIcon3 = icons.BrailleIcon;
 const AkselIcon4 = icons.BackpackFillIcon;
 
 export default {
-  title: 'Felles/ToggleGroup',
+  title: 'Komponenter/ToggleGroup',
   component: ToggleGroup,
 } as Meta;
 

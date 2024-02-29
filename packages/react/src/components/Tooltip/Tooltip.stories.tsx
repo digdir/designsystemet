@@ -30,7 +30,7 @@ const invertedDecorator = [
 ];
 
 export default {
-  title: 'Felles/Tooltip',
+  title: 'Komponenter/Tooltip',
   component: Tooltip,
 } as Meta;
 

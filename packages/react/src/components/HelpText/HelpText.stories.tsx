@@ -13,7 +13,7 @@ const decorators = [
 ];
 
 export default {
-  title: 'Felles/HelpText',
+  title: 'Komponenter/HelpText',
   component: HelpText,
 } as Meta;
 

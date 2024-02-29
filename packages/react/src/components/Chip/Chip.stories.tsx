@@ -5,7 +5,7 @@ import { Chip } from '.';
 type Story = StoryObj<typeof Chip.Toggle>;
 
 export default {
-  title: 'Felles/Chip',
+  title: 'Komponenter/Chip',
   component: Chip.Toggle,
 } as Meta;
 

@@ -143,6 +143,6 @@ LegacyCheckboxGroup.displayName = 'LegacyCheckboxGroup';
 /**
  *
  * @note
- * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/felles-checkbox-group--docs Checkbox.Group} component.
+ * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/komponenter-checkbox-group--docs Checkbox.Group} component.
  */
 export { LegacyCheckboxGroup };

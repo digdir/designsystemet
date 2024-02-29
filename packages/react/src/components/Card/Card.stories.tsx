@@ -19,7 +19,7 @@ import { Card } from '.';
 type Story = StoryFn<typeof Card>;
 
 export default {
-  title: 'Felles/Card',
+  title: 'Komponenter/Card',
   component: Card,
 } as Meta;
 

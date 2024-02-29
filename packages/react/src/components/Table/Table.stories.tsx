@@ -19,7 +19,7 @@ import {
 type Story = StoryFn<typeof Table>;
 
 export default {
-  title: 'Felles/Table',
+  title: 'Komponenter/Table',
   component: Table,
 } as Meta;
 

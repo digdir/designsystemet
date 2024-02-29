@@ -8,7 +8,7 @@ import { Tag } from '.';
 type Story = StoryObj<typeof Tag>;
 
 export default {
-  title: 'Felles/Tag',
+  title: 'Komponenter/Tag',
   component: Tag,
   decorators: [
     (Story) => (

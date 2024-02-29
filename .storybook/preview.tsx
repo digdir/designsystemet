@@ -15,6 +15,7 @@ import {
   LinkProps,
   List,
   ListItem,
+  Table,
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
@@ -103,6 +104,45 @@ const components = {
       ></Link>
     );
   },
+  table: (props: Props) => (
+    <Table
+      {...props}
+      zebra
+      border
+      className='sb-unstyled'
+      style={{ maxWidth: '70ch' }}
+    />
+  ),
+  thead: (props: Props) => (
+    <Table.Head
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  tbody: (props: Props) => (
+    <Table.Body
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  tr: (props: Props) => (
+    <Table.Row
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  th: (props: Props) => (
+    <Table.HeaderCell
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  td: (props: Props) => (
+    <Table.Cell
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
 };
 
 const preview: Preview = {
@@ -136,10 +176,9 @@ const preview: Preview = {
         order: [
           'Oversikt',
           'Endringslogger',
-          'Felles',
+          'Komponenter',
           'Experimental',
           'Primitives',
-          'Altinn',
           'Avviklet',
         ],
       },

@@ -98,7 +98,7 @@ const replaceTargetValueWithUnformattedValue = ({
 /**
  *
  * @note
- * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/felles-textfield--docs Textfield} component.
+ * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/komponenter-textfield--docs Textfield} component.
  */
 export const LegacyTextField = forwardRef<
   HTMLInputElement,

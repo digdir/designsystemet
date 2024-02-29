@@ -5,7 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 import { Pagination, usePagination } from '.';
 
 export default {
-  title: 'Felles/Pagination',
+  title: 'Komponenter/Pagination',
   component: Pagination,
 } as Meta;
 

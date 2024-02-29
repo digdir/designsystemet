@@ -27,7 +27,7 @@ const AkselIcon3 = icons.DogIcon;
 const AkselIcon4 = icons.BackpackIcon;
 
 export default {
-  title: 'Felles/Tabs',
+  title: 'Komponenter/Tabs',
   component: Tabs,
 } as Meta;
 
