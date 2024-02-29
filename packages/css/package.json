@@ -26,6 +26,6 @@
     "postcss-cli": "^11.0.0"
   },
   "dependencies": {
-    "@digdir/designsystemet-react": "^0.51.1"
+    "@digdir/designsystemet-react": "workspace:^"
   }
 }
