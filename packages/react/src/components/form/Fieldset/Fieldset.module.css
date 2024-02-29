@@ -5,7 +5,7 @@
   min-width: 0;
 }
 
-.fieldset.withSpacing {
+.withSpacing {
   display: flex;
   flex-direction: column;
   gap: var(--fds-spacing-2);
@@ -20,17 +20,17 @@
   display: contents;
 }
 
-.fieldset.readonly .legendContent {
+.readonly .legendContent {
   display: inline-flex;
 }
 
-.fieldset.readonly .padlock {
+.readonly .padlock {
   height: 1.2em;
   width: 1.2em;
 }
 
-.fieldset.disabled .legend,
-.fieldset.disabled .description {
+.disabled .legend,
+.disabled .description {
   color: var(--fds-semantic-border-neutral-subtle);
 }
 
