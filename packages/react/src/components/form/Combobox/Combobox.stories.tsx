@@ -14,7 +14,7 @@ import ComboboxCustom from './Custom/Custom';
 import { Combobox } from './index';
 
 export default {
-  title: 'Komponenter/Combobox',
+  title: 'Felles/Combobox',
   component: Combobox,
   decorators: [
     (Story) => (

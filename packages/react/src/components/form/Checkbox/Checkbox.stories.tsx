@@ -5,7 +5,7 @@ import { Checkbox } from '.';
 type Story = StoryObj<typeof Checkbox>;
 
 export default {
-  title: 'Komponenter/Checkbox',
+  title: 'Felles/Checkbox',
   component: Checkbox,
 } as Meta;
 

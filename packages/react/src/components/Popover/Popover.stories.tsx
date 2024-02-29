@@ -12,7 +12,7 @@ const marginDecorator = (Story: StoryFn) => (
 );
 
 export default {
-  title: 'Komponenter/Popover',
+  title: 'Felles/Popover',
   component: Popover,
 } as Meta;
 

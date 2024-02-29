@@ -20,7 +20,7 @@ const decorators = [
 ];
 
 export default {
-  title: 'Komponenter/Loaders/Spinner',
+  title: 'Felles/Loaders/Spinner',
   component: Spinner,
   decorators,
 } as Meta;

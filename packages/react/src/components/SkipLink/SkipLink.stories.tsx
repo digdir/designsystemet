@@ -4,7 +4,7 @@ import { SkipLink } from '.';
 type Story = StoryFn<typeof SkipLink>;
 
 export default {
-  title: 'Komponenter/SkipLink',
+  title: 'Felles/SkipLink',
   component: SkipLink,
 } as Meta;
 

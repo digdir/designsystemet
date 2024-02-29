@@ -14,7 +14,6 @@ import {
   Link,
   LinkProps,
   List,
-  ListItem,
   Table,
 } from '@digdir/design-system-react';
 import customTheme from './customTheme';
@@ -175,7 +174,7 @@ const preview: Preview = {
         order: [
           'Oversikt',
           'Endringslogger',
-          'Komponenter',
+          'Felles',
           'Experimental',
           'Primitives',
           'Avviklet',

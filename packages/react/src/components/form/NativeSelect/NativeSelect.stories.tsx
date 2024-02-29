@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { NativeSelect } from './NativeSelect';
 
 export default {
-  title: 'Komponenter/NativeSelect',
+  title: 'Felles/NativeSelect',
   component: NativeSelect,
   parameters: {
     layout: 'padded',

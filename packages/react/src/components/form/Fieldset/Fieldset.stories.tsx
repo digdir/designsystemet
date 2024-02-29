@@ -5,7 +5,7 @@ import { Fieldset } from '.';
 type Story = StoryFn<typeof Fieldset>;
 
 export default {
-  title: 'Komponenter/Fieldset',
+  title: 'Felles/Fieldset',
   component: Fieldset,
 } as Meta;
 

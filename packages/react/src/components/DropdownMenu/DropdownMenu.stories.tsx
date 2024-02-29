@@ -13,7 +13,7 @@ const marginDecorator = (Story: StoryFn) => (
 );
 
 export default {
-  title: 'Komponenter/DropdownMenu',
+  title: 'Felles/DropdownMenu',
   component: DropdownMenu,
 } as Meta;
 
