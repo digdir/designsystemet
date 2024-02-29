@@ -1,7 +1,7 @@
 import { create } from '@storybook/theming';
 
 export default create({
-  brandtitle: 'Felles',
+  brandTitle: 'Komponenter',
   // brandImage: 'logo_digdir.svg',
   fontBase: '"Inter", sans-serif',
   // Colors
