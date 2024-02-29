@@ -9,6 +9,8 @@ import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/
 import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/brreg/tokens.css';
 
 import '@altinn/figma-design-tokens/dist/tokens.css';
+import '@digdir/designsystemet-css/index.css';
+
 import {
   Paragraph,
   Link,
