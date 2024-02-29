@@ -20,5 +20,5 @@ export function generateScopedName(name, fileNames) {
   const componentName = path.basename(fileNames, '.module.css').toLowerCase();
   const hash = hashCode(fileNames);
 
-  return `fds-${componentName}-${name}-${hash}`;
+  return `fds-legacy-${componentName}-${name}-${hash}`;
 }
