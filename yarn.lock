@@ -1594,27 +1594,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/design-system-react@npm:*, @digdir/design-system-react@workspace:packages/react-old":
-  version: 0.0.0-use.local
-  resolution: "@digdir/design-system-react@workspace:packages/react-old"
-  dependencies:
-    "@altinn/figma-design-tokens": "npm:^6.0.1"
-    "@digdir/design-system-tokens": "npm:^0.13.0"
-    "@digdir/designsystemet-react": "npm:^0.51.1"
-    "@floating-ui/react": "npm:0.26.4"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    "@types/fs-extra": "npm:^11.0.4"
-    copyfiles: "npm:^2.4.1"
-    cssnano: "npm:^6.0.2"
-    esno: "npm:^4.0.0"
-    fs-extra: "npm:^11.2.0"
-    react-number-format: "npm:5.3.1"
-  peerDependencies:
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  languageName: unknown
-  linkType: soft
-
 "@digdir/design-system-react@npm:0.49.0":
   version: 0.49.0
   resolution: "@digdir/design-system-react@npm:0.49.0"
@@ -1633,16 +1612,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/design-system-tokens@npm:*, @digdir/design-system-tokens@npm:^0.13.0, @digdir/design-system-tokens@workspace:packages/tokens":
+"@digdir/design-system-react@workspace:packages/react-old":
   version: 0.0.0-use.local
-  resolution: "@digdir/design-system-tokens@workspace:packages/tokens"
+  resolution: "@digdir/design-system-react@workspace:packages/react-old"
   dependencies:
-    "@tokens-studio/sd-transforms": "npm:^0.9.3"
-    "@types/ramda": "npm:^0.29.9"
-    ramda: "npm:^0.29.1"
-    style-dictionary: "npm:^3.8.0"
+    "@altinn/figma-design-tokens": "npm:^6.0.1"
+    "@digdir/designsystemet-react": "npm:^0.51.1"
+    "@digdir/designsystemet-theme": "npm:^0.13.0"
+    "@floating-ui/react": "npm:0.26.4"
+    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@types/fs-extra": "npm:^11.0.4"
+    copyfiles: "npm:^2.4.1"
+    cssnano: "npm:^6.0.2"
+    esno: "npm:^4.0.0"
+    fs-extra: "npm:^11.2.0"
+    react-number-format: "npm:5.3.1"
+  peerDependencies:
+    react: ">=18.2.0"
+    react-dom: ">=18.2.0"
   languageName: unknown
   linkType: soft
+
+"@digdir/design-system-tokens@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "@digdir/design-system-tokens@npm:0.13.0"
+  checksum: 1564c638807b6bb4706ae893ecc6142f0aa8816f9915a0d43aa08c121a6a8810501b3d7857067df4151c67d372c9443123924351efcc8f490aecf65bc135d7d3
+  languageName: node
+  linkType: hard
 
 "@digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
@@ -1658,7 +1654,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
-    "@digdir/design-system-tokens": "npm:^0.13.0"
+    "@digdir/designsystemet-theme": "npm:^0.13.0"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
@@ -1670,6 +1666,17 @@ __metadata:
   peerDependencies:
     react: ">=18.2.0"
     react-dom: ">=18.2.0"
+  languageName: unknown
+  linkType: soft
+
+"@digdir/designsystemet-theme@npm:^0.13.0, @digdir/designsystemet-theme@workspace:packages/theme":
+  version: 0.0.0-use.local
+  resolution: "@digdir/designsystemet-theme@workspace:packages/theme"
+  dependencies:
+    "@tokens-studio/sd-transforms": "npm:^0.9.3"
+    "@types/ramda": "npm:^0.29.9"
+    ramda: "npm:^0.29.1"
+    style-dictionary: "npm:^3.8.0"
   languageName: unknown
   linkType: soft
 
@@ -19307,8 +19314,6 @@ __metadata:
   dependencies:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@digdir/design-system-react": "npm:*"
-    "@digdir/design-system-tokens": "npm:*"
     "@etchteam/storybook-addon-css-variables-theme": "npm:^2.0.6"
     "@next/eslint-plugin-next": "npm:^14.0.4"
     "@rollup/plugin-commonjs": "npm:^25.0.7"

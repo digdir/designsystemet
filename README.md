@@ -33,7 +33,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – React library with common UI components like Buttons and Checkboxes.
 
-[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Tokens that contain UI data like colors and spacing for building user interfaces.
+[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) – Tokens that contain UI data like colors and spacing for building user interfaces.
 
 ---
 
@@ -44,7 +44,7 @@ Follow these steps to get started with the React components.
 ### 1. Install the packages
 
 ```
-npm install @digdir/design-system-react @digdir/design-system-tokens
+npm install @digdir/design-system-react @digdir/designsystemet-theme
 ```
 
 ### 2. Add the Inter font
@@ -76,7 +76,7 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
 
 import { Button } from '@digdir/design-system-react';
 
