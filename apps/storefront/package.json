@@ -17,7 +17,6 @@
     "@navikt/aksel-icons": "^5.12.2",
     "@navikt/ds-css": "^5.12.2",
     "@navikt/ds-react": "^5.12.1",
-    "@tippyjs/react": "^4.2.6",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@vercel/analytics": "^1.1.1",
     "hastscript": "^8.0.0",
