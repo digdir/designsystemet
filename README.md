@@ -44,7 +44,7 @@ Follow these steps to get started with the React components.
 ### 1. Install the packages
 
 ```sh
-npm install @digdir/designsystemet-react @digdir/designsystemet-tokens @digdir/designsystemet-css
+npm i @digdir/designsystemet-react @digdir/designsystemet-tokens @digdir/designsystemet-css
 ```
 
 #### Typescript
@@ -52,7 +52,7 @@ npm install @digdir/designsystemet-react @digdir/designsystemet-tokens @digdir/d
 If you use Typescript, make sure you have typescript >= 3.8 as `devDependencies`:
 
 ```sh
-npm install typescript --save-dev
+npm i typescript --save-dev
 ```
 
 ### 2. Font
