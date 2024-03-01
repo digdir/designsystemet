@@ -115,18 +115,18 @@ const Header = () => {
               <Link
                 href='https://github.com/digdir/designsystemet'
                 target='_blank'
-                className={cl(classes.linkIcon, classes.figma)}
+                className={cl(classes.linkIcon, classes.github)}
               >
-                <FigmaLogo />
+                <GithubLogo />
               </Link>
             </li>
             <li className={cl(classes.item, classes.itemIcon)}>
               <Link
                 href='https://github.com/digdir/designsystemet'
                 target='_blank'
-                className={cl(classes.linkIcon, classes.github)}
+                className={cl(classes.linkIcon, classes.figma)}
               >
-                <GithubLogo />
+                <FigmaLogo />
               </Link>
             </li>
           </ul>
