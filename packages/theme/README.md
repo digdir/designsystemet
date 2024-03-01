@@ -5,7 +5,7 @@ Transformed design tokens from the Digdir Common Designsystem to work in code.
 ## Installation
 
 ```sh
-npm|yarn|pnpm install @digdir/designsystemet-theme
+npm install @digdir/designsystemet-theme
 ```
 
 ## Usage
