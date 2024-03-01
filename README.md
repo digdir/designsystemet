@@ -43,17 +43,31 @@ Follow these steps to get started with the React components.
 
 ### 1. Install the packages
 
-```
-npm install @digdir/design-system-react @digdir/designsystemet-theme
+```sh
+npm install @digdir/designsystemet-react @digdir/designsystemet-tokens @digdir/designsystemet-css
 ```
 
-### 2. Add the Inter font
+#### Typescript
+
+If you use Typescript, make sure you have typescript >= 3.8 as `devDependencies`:
+
+```sh
+npm install typescript --save-dev
+```
+
+### 2. Font
+
+You are free to use any font-family with the components.
+
+The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variantions might occur if a different font is used.
+
+#### Add the Inter font (optional)
 
 Add the `<link>` tag to your application and set the `font-family` to `Inter`.
 
 The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
 
-#### HTML
+##### HTML
 
 ```html
 <link
@@ -62,7 +76,7 @@ The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with t
 />
 ```
 
-#### CSS
+##### CSS
 
 ```css
 body {
@@ -76,14 +90,15 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
+import '@digdir/designsystemet-tokens/brand/digdir/tokens.css';
+import '@digdir/designsystemet-css'; // Must be imported after tokens.css
 
-import { Button } from '@digdir/design-system-react';
+import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>I am a button!</Button>;
 ```
 
-The `tokens.css` file only has to be imported once in your application.
+`@digdir/designsystemet-tokens` and `@digdir/designsystemet-css` only needs to be imported once.
 
 ---
 
