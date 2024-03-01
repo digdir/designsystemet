@@ -118,8 +118,8 @@ const Header = () => {
                 <Image
                   height={25}
                   width={25}
-                  alt='github logo'
-                  src='/img/logos/github-logo.svg'
+                  alt='figma logo'
+                  src='/img/logos/figma-logo.svg'
                 />
               </Link>
             </li>
@@ -132,8 +132,8 @@ const Header = () => {
                 <Image
                   height={25}
                   width={25}
-                  alt='figma logo'
-                  src='/img/logos/figma-logo.svg'
+                  alt='github logo'
+                  src='/img/logos/github-logo.svg'
                 />
               </Link>
             </li>
