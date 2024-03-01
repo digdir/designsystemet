@@ -2,7 +2,10 @@ import { dirname, join } from 'path';
 import remarkGfm from 'remark-gfm';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 const config: StorybookConfig = {
-  stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
+  stories: [
+    '../packages/!(react-old)**/*.mdx',
+    '../packages/!(react-old)**/*.stories.ts?(x)',
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-links'),
