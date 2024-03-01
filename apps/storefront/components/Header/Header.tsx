@@ -107,6 +107,48 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li className={cl(classes.item, classes.itemIcon)}>
+              <Link
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                className={classes.linkIcon}
+              >
+                <Image
+                  height={25}
+                  width={25}
+                  alt='github logo'
+                  src='/img/logos/github-logo.svg'
+                />
+              </Link>
+            </li>
+            <li className={cl(classes.item, classes.itemIcon)}>
+              <Link
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                className={classes.linkIcon}
+              >
+                <Image
+                  height={25}
+                  width={25}
+                  alt='github logo'
+                  src='/img/logos/github-logo.svg'
+                />
+              </Link>
+            </li>
+            <li className={cl(classes.item, classes.itemIcon)}>
+              <Link
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                className={classes.linkIcon}
+              >
+                <Image
+                  height={25}
+                  width={25}
+                  alt='github logo'
+                  src='/img/logos/github-logo.svg'
+                />
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

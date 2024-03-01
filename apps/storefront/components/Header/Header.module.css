@@ -54,6 +54,21 @@
   border-color: var(--fds-semantic-border-neutral-default);
 }
 
+.itemIcon {
+  margin-left: var(--fds-spacing-1);
+}
+
+.itemIcon:first-of-type {
+  margin-left: var(--fds-spacing-7);
+  background-color: red;
+}
+
+.linkIcon {
+  display: grid;
+  place-items: center;
+  padding: 0 var(--fds-spacing-2);
+}
+
 .item .active {
   border-color: var(--fds-brand-alt3-600);
 }
@@ -96,6 +111,10 @@
 
   .item .active {
     display: inline-block;
+  }
+
+  .linkIcon {
+    place-items: start;
   }
 
   .logo {
