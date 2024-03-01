@@ -1,11 +1,11 @@
-# @digdir/design-system-tokens
+# @digdir/designsystemet-theme
 
 Transformed design tokens from the Digdir Common Designsystem to work in code.
 
 ## Installation
 
 ```sh
-npm|yarn|pnpm install @digdir/design-system-tokens
+npm|yarn|pnpm install @digdir/designsystemet-theme
 ```
 
 ## Usage
@@ -22,13 +22,13 @@ Currently supported brands:
 When importing the package make sure to specify which brand tokens you want to import. By default the `digdir` is imported if you don't specify a brand.
 
 ```tsx
-import '@digdir/design-system-tokens/brand/<brand>/tokens';
+import '@digdir/designsystemet-theme/brand/<brand>/tokens';
 
 // This imports Digdir brand css tokens
-import '@digdir/design-system-tokens';
+import '@digdir/designsystemet-theme';
 
 //  This imports Altinn css tokens
-import '@digdir/design-system-tokens/brand/altinn/tokens.css';
+import '@digdir/designsystemet-theme/brand/altinn/tokens.css';
 ```
 
 ## File formats
@@ -45,7 +45,7 @@ You only need to import this once in your application, preferably somewhere in y
 All variables are prefixed with `fds` as to not polute your namespace.
 
 ```js
-import '@digdir/design-system-tokens/brand/altinn/tokens.css';
+import '@digdir/designsystemet-theme/brand/altinn/tokens.css';
 ```
 
 ```css

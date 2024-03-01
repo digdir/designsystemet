@@ -168,7 +168,7 @@ A CSS module file is created by adding `.module.css` to the end of the CSS file.
 
 #### Use of design tokens
 
-When styling our components we try to always use semantic tokens from the `@digdir/design-system-tokens` package when available.
+When styling our components we try to always use semantic tokens from the `@digdir/designsystemet-theme` package when available.
 Using hard-coded values is not reusable and we therefore try to avoid this.
 To learn more about what tokens are available visit our [documentation page](https://www.designsystemet.no/grunnleggende/designelementer/design-tokens).
 
