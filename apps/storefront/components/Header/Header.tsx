@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 
+import { GithubLogo } from './logos/github-logo';
+import { FigmaLogo } from './logos/figma-logo';
 import classes from './Header.module.css';
 
 /**
@@ -113,28 +115,18 @@ const Header = () => {
               <Link
                 href='https://github.com/digdir/designsystemet'
                 target='_blank'
-                className={classes.linkIcon}
+                className={cl(classes.linkIcon, classes.figma)}
               >
-                <Image
-                  height={25}
-                  width={25}
-                  alt='figma logo'
-                  src='/img/logos/figma-logo.svg'
-                />
+                <FigmaLogo />
               </Link>
             </li>
             <li className={cl(classes.item, classes.itemIcon)}>
               <Link
                 href='https://github.com/digdir/designsystemet'
                 target='_blank'
-                className={classes.linkIcon}
+                className={cl(classes.linkIcon, classes.github)}
               >
-                <Image
-                  height={25}
-                  width={25}
-                  alt='github logo'
-                  src='/img/logos/github-logo.svg'
-                />
+                <GithubLogo />
               </Link>
             </li>
           </ul>

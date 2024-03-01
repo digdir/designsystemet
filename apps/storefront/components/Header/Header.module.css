@@ -68,8 +68,25 @@
   padding: 0 var(--fds-spacing-2);
 }
 
-.linkIcon > img {
-  width: 25px;
+.linkIcon > svg {
+  height: 24px;
+  width: 24px;
+}
+
+.linkIcon.figma path {
+  stroke: var(--fds-colors-grey-800);
+}
+
+.linkIcon.github path {
+  fill: var(--fds-colors-grey-800);
+}
+
+.linkIcon.figma:hover path {
+  stroke: var(--fds-semantic-border-neutral-default);
+}
+
+.linkIcon.github:hover path {
+  fill: var(--fds-semantic-border-neutral-default);
 }
 
 .item .active {
