@@ -16,7 +16,7 @@
     "storefront": "yarn workspace storefront dev",
     "devsite": "yarn workspace dev dev",
     "build": "lerna run build",
-    "build:react": "yarn workspace @digdir/design-system-react build",
+    "build:react": "yarn workspace @digdir/designsystemet-react build",
     "build:tokens": "yarn workspace @digdir/designsystemet-theme build",
     "build:storybook": "storybook build -o ./dist/storybook",
     "build:storefront": "yarn workspace storefront building",
@@ -29,7 +29,7 @@
     "lint:all:fix": "yarn run lint:all --fix",
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix",
-    "types:react": "yarn workspace @digdir/design-system-react types",
+    "types:react": "yarn workspace @digdir/designsystemet-react types",
     "types:storefront": "yarn workspace storefront types"
   },
   "devDependencies": {
