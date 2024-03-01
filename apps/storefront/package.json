@@ -15,8 +15,6 @@
     "@mdx-js/loader": "^2.0.0-rc.2",
     "@mdx-js/react": "^1.6.22",
     "@navikt/aksel-icons": "^5.12.2",
-    "@navikt/ds-css": "^5.12.2",
-    "@navikt/ds-react": "^5.12.1",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@vercel/analytics": "^1.1.1",
     "hastscript": "^8.0.0",
