@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
-import { Dropdown, Button } from '@navikt/ds-react';
 import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';
+import { DropdownMenu } from '@digdir/design-system-react';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
 import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
@@ -114,30 +114,25 @@ const TokenList = ({
     <div className={classes.tokens}>
       {showThemePicker && (
         <div className={classes.toggleGroup}>
-          <Dropdown>
-            <Button
-              variant='secondary'
-              as={Dropdown.Toggle}
-            >
+          <DropdownMenu>
+            <DropdownMenu.Trigger variant='secondary'>
               Brand: {capitalizeString(brand)}
-            </Button>
-            <Dropdown.Menu>
-              <Dropdown.Menu.List>
-                <Dropdown.Menu.List.Item onClick={() => setBrand('digdir')}>
-                  Digdir
-                </Dropdown.Menu.List.Item>
-                <Dropdown.Menu.List.Item onClick={() => setBrand('altinn')}>
-                  Altinn
-                </Dropdown.Menu.List.Item>
-                <Dropdown.Menu.List.Item onClick={() => setBrand('tilsynet')}>
-                  Tilsynet
-                </Dropdown.Menu.List.Item>
-                <Dropdown.Menu.List.Item onClick={() => setBrand('brreg')}>
-                  Brreg
-                </Dropdown.Menu.List.Item>
-              </Dropdown.Menu.List>
-            </Dropdown.Menu>
-          </Dropdown>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content>
+              <DropdownMenu.Item onClick={() => setBrand('digdir')}>
+                Digdir
+              </DropdownMenu.Item>
+              <DropdownMenu.Item onClick={() => setBrand('altinn')}>
+                Altinn
+              </DropdownMenu.Item>
+              <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
+                Tilsynet
+              </DropdownMenu.Item>
+              <DropdownMenu.Item onClick={() => setBrand('brreg')}>
+                Brreg
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu>
         </div>
       )}
       <>
