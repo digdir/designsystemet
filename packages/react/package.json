@@ -28,7 +28,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@digdir/design-system-tokens": "^0.13.0",
+    "@digdir/designsystemet-theme": "^0.13.0",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",

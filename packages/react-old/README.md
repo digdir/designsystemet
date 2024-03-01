@@ -9,7 +9,7 @@ Follow these steps to get started with the React components.
 ### 1. Install the packages
 
 ```sh
-npm install @digdir/design-system-react @digdir/design-system-tokens
+npm install @digdir/design-system-react @digdir/designsystemet-theme
 ```
 
 #### Typescript
@@ -57,7 +57,7 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
 
 import { Button } from '@digdir/design-system-react';
 
