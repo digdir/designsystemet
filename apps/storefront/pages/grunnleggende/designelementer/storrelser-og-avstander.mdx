@@ -16,14 +16,17 @@ export default ({ children }) => (
   />
 );
 
-## Størrelser
-
 Størrelser (sizing) brukes til å definere bredde og høyde på elementer.
 
-## Sizing tokens
+Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens gir oss mulighet til å definere verdier for Auto Layout i Figma og sikrer dermed konsistent design på tvers av grensesnitt.
 
 <TokenList
   type='sizing'
+  hideValue={true}
+/>
+
+<TokenList
+  type='spacing'
   hideValue={true}
 />
 
@@ -56,17 +59,6 @@ Størrelsene er satt opp til å passe sammen med [fluid typography](/grunnleggen
     },
   }`}
 </CodeSnippet>
-
-## Avstander
-
-Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens gir oss mulighet til å definere verdier for Auto Layout i Figma og sikrer dermed konsistent design på tvers av grensesnitt.
-
-### Spacing tokens
-
-<TokenList
-  type='spacing'
-  hideValue={true}
-/>
 
 ## Fluid spacing
 
