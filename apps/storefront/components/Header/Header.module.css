@@ -58,15 +58,18 @@
   margin-left: var(--fds-spacing-1);
 }
 
-.itemIcon:first-of-type {
+.firstIcon {
   margin-left: var(--fds-spacing-7);
-  background-color: red;
 }
 
 .linkIcon {
   display: grid;
   place-items: center;
   padding: 0 var(--fds-spacing-2);
+}
+
+.linkIcon > img {
+  width: 25px;
 }
 
 .item .active {
