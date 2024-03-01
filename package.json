@@ -29,10 +29,6 @@
     "lint:all:fix": "yarn run lint:all --fix",
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix",
-    "generate-component-storefront": "esno ./scripts/generate-component/storefront.ts",
-    "gcsf": "esno ./scripts/generate-component/storefront.ts",
-    "generate-component-react": "esno ./scripts/generate-component/react.ts",
-    "gcr": "esno ./scripts/generate-component/react.ts",
     "types:react": "yarn workspace @digdir/design-system-react types",
     "types:storefront": "yarn workspace storefront types"
   },
