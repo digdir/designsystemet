@@ -7,7 +7,7 @@ interface MetaProps {
 }
 
 const Meta = ({ title, description, image }: MetaProps) => {
-  title = `${title} - Felles Designsystem`;
+  title = `${title} - Designsystemet`;
   return (
     <Head>
       <title>{title}</title>
