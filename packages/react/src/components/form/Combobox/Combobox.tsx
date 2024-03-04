@@ -58,7 +58,7 @@ export type ComboboxProps = {
    */
   hideLabel?: boolean;
   /**
-   * Value of the selected option, or array of values if multiple is true
+   * Value of the selected option(s), always an array of strings
    */
   value?: string[];
   /**
@@ -66,7 +66,7 @@ export type ComboboxProps = {
    */
   onValueChange?: (value: string[]) => void;
   /**
-   * If true, multiple options can be selected
+   * Multiple options can be selected
    * @default false
    */
   multiple?: boolean;
@@ -74,12 +74,13 @@ export type ComboboxProps = {
    * Name of the value when used in a form
    */
   name?: string;
-  /** Exposes the HTML `size` attribute.
+  /**
+   * Exposes the HTML `size` attribute.
    * @default 0
    */
   htmlSize?: number;
   /**
-   * If true, the chips will not be rendered in multiple mode
+   * Hides chips when multiple options are selected
    * @default false
    */
   hideChips?: boolean;
@@ -95,7 +96,7 @@ export type ComboboxProps = {
    */
   virtual?: boolean;
   /**
-   * Value of the input
+   * Value of the input field
    */
   inputValue?: string;
   /**
