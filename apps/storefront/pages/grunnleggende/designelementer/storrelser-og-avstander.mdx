@@ -2,30 +2,63 @@ import { MenuPageLayout } from '@layouts';
 import { Meta, TokenList, CodeSnippet } from '@components';
 
 <Meta
-  title='Avstander'
-  description='Beskrivelse'
+  title='Størrelser og avstander'
+  description='Størrelser og avstander'
 />
 
 export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Avstander',
-      date: '5. april 2023',
+      title: 'Størrelser og avstander',
+      date: '29. Februar 2024',
     }}
   />
 );
 
-## Avstander
+Størrelser (sizing) brukes til å definere bredde og høyde på elementer.
 
 Avstand (spacing) brukes til å sette marging og padding. Settet med avstander som er definert i tokens gir oss mulighet til å definere verdier for Auto Layout i Figma og sikrer dermed konsistent design på tvers av grensesnitt.
 
-### Spacing tokens
+<TokenList
+  type='sizing'
+  hideValue={true}
+/>
 
 <TokenList
   type='spacing'
   hideValue={true}
 />
+
+## Fluid sizing
+
+Størrelsene er satt opp til å passe sammen med [fluid typography](/grunnleggende/designelementer/typografi#fluid-typography). De varier derfor noe etter hvilken viewport du har. `Sizing.10` vil dermed være 40px på viewport 320, og 45px på viewport 1360.
+
+<CodeSnippet language='json'>
+  {`"sizing": {
+    "1": {
+      "value": "{base_sizing}/16*{font-size.f0}",
+      "type": "sizing",
+      "description": "4px - 4.5px"
+    },
+    "2": {
+      "value": "{base_sizing}*2/16*{font-size.f0}",
+      "type": "sizing",
+      "description": "8px - 9px"
+    },
+    "(...)"
+    "10": {
+      "value": "{base_sizing}*10/16*{font-size.f0}",
+      "type": "sizing",
+      "description": "40px - 45px"
+    },
+    "12": {
+      "value": "({base_sizing}*12/16)*{font-size.f0}",
+      "type": "sizing",
+      "description": "48px - 54px"
+    },
+  }`}
+</CodeSnippet>
 
 ## Fluid spacing
 
@@ -43,7 +76,7 @@ Avstandene er satt opp til å passe sammen med [fluid typography](/grunnleggende
       "type": "spacing",
       "description": "8px - 9px"
     },
-    "()...)"
+    "(...)"
     "10": {
       "value": "({base_spacing}*10/16)*{font-size.f0}",
       "type": "spacing",
