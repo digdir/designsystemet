@@ -5,8 +5,10 @@
   min-width: 0;
 }
 
-.spacing > :not(:first-child, :empty) {
-  margin-top: var(--fds-spacing-2);
+.withSpacing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fds-spacing-2);
 }
 
 .description {
@@ -14,16 +16,24 @@
   font-weight: 400;
 }
 
-.readonly > .legend {
+.legend {
+  display: contents;
+}
+
+.readonly .legendContent {
   display: inline-flex;
 }
 
-.readonly > .legend > .padlock {
+.readonly .padlock {
   height: 1.2em;
   width: 1.2em;
 }
 
-.disabled > .legend,
-.disabled > .description {
+.disabled .legend,
+.disabled .description {
   color: var(--fds-semantic-border-neutral-subtle);
+}
+
+.errorWrapper {
+  display: contents;
 }
