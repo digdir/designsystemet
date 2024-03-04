@@ -40,7 +40,7 @@ const Meta = ({ title, description, image }: MetaProps) => {
 
 // Let's set a default title
 Meta.defaultProps = {
-  title: 'Felles Designsystem',
+  title: 'Designsystemet',
 };
 
 export { Meta };
