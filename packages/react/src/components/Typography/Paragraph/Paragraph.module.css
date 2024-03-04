@@ -63,3 +63,10 @@
   font: var(--fds-typography-paragraph-short-xsmall);
   font-family: var(--fdsc-typography-font-family);
 }
+
+.large:where(.long),
+.medium:where(.long),
+.small:where(.long),
+.xsmall:where(.long) {
+  line-height: 170%;
+}

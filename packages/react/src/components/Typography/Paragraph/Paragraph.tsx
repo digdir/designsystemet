@@ -14,6 +14,8 @@ export type ParagraphProps = {
   spacing?: boolean;
   /** Reduces line-height for short paragraphs */
   short?: boolean;
+  /** Increases line-height for long paragraphs */
+  long?: boolean;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -27,10 +29,23 @@ export const Paragraph: OverridableComponent<
   HTMLParagraphElement
 > = forwardRef(
   (
-    { className, size = 'medium', spacing, as = 'p', asChild, short, ...rest },
+    {
+      className,
+      size = 'medium',
+      spacing,
+      as = 'p',
+      asChild,
+      short,
+      long,
+      ...rest
+    },
     ref,
   ) => {
     const Component = asChild ? Slot : as;
+
+    if (long && short) {
+      console.error("Only one of 'long' or 'short' should be used at a time");
+    }
 
     return (
       <Component
@@ -41,6 +56,7 @@ export const Paragraph: OverridableComponent<
           {
             [classes.spacing]: !!spacing,
             [classes.short]: short,
+            [classes.long]: long,
           },
           className,
         )}
