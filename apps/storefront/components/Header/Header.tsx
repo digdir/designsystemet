@@ -122,7 +122,7 @@ const Header = () => {
             </li>
             <li className={cl(classes.item, classes.itemIcon)}>
               <Link
-                href='https://github.com/digdir/designsystemet'
+                href='https://www.figma.com/@designsystemet'
                 target='_blank'
                 className={cl(classes.linkIcon, classes.figma)}
               >
