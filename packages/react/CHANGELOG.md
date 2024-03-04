@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.2](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.1...@digdir/design-system-react@0.51.2) (2024-03-04)
+
+### Bug Fixes
+
+- **Combobox:** ResizeObserver loop error ([#1594](https://github.com/digdir/designsystemet/issues/1594)) ([688ac31](https://github.com/digdir/designsystemet/commit/688ac3126fb003c412d597e847a9d206ac32d3dd))
+- **ErrorSummaryItem:** `href` is optional when `asChild` is `true` ([#1592](https://github.com/digdir/designsystemet/issues/1592)) ([300c9b4](https://github.com/digdir/designsystemet/commit/300c9b46e18481e638a0f3181f6087129374577e))
+- **Fieldset:** Simplify CSS ([#1591](https://github.com/digdir/designsystemet/issues/1591)) ([aa5ca25](https://github.com/digdir/designsystemet/commit/aa5ca259a659adc5cd2bb1ac370f5bfb122a1ea7))
+- **Popover:** Update aria attributes ([#1578](https://github.com/digdir/designsystemet/issues/1578)) ([9c1e729](https://github.com/digdir/designsystemet/commit/9c1e7299b5045753a9a937c91b081765a4749dc4))
+
 ## [0.51.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.0...@digdir/design-system-react@0.51.1) (2024-02-23)
 
 ### Bug Fixes
