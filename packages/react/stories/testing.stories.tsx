@@ -84,12 +84,7 @@ export const MediumRow: StoryFn<{
           size={size}
           aria-label='no label checkbox'
         ></Checkbox>
-        <Tag
-          variant='secondary'
-          size={size}
-        >
-          Tag
-        </Tag>
+        <Tag size={size}>Tag</Tag>
       </div>
     </>
   );
