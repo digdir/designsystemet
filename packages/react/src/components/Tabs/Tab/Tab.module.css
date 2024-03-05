@@ -1,6 +1,5 @@
 .tabItem {
   --fdsc-icon-size: var(--fds-sizing-4);
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-border-color: transparent;
 
   display: flex;
@@ -30,7 +29,6 @@
 
   font: var(--fds-typography-interactive-small);
   font-family: inherit;
-  font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-2) var(--fds-spacing-4);
 }
 
@@ -39,7 +37,6 @@
 
   font: var(--fds-typography-interactive-medium);
   font-family: inherit;
-  font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-3) var(--fds-spacing-5);
 }
 
@@ -48,7 +45,6 @@
 
   font: var(--fds-typography-interactive-large);
   font-family: inherit;
-  font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-4) var(--fds-spacing-6);
 }
 
