@@ -1,5 +1,6 @@
 .combobox {
   display: grid;
+  background-color: transparent;
   gap: var(--fds-spacing-2);
 }
 
