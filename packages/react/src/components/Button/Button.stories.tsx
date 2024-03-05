@@ -4,9 +4,9 @@ import * as akselIcons from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
+import { Tooltip } from '../Tooltip';
 
 import { Button } from './';
-import { Tooltip } from '../Tooltip';
 
 type Story = StoryObj<typeof Button>;
 
@@ -22,9 +22,6 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
     <Story />
   </Stack>
 );
-
-const icon = <akselIcons.FloppydiskIcon />;
-
 export const Preview: Story = {
   render: ({ ...args }) => {
     return <Button {...args} />;
