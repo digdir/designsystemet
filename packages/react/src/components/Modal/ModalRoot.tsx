@@ -35,4 +35,4 @@ export const ModalRoot = ({ children }: ModalRootProps) => {
   );
 };
 
-ModalRoot.displayName = 'Modal.Root';
+ModalRoot.displayName = 'ModalRoot';

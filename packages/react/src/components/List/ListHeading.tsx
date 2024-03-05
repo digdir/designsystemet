@@ -2,8 +2,8 @@ import { forwardRef, useEffect, useMemo, useContext, useId } from 'react';
 
 import { Heading, type HeadingProps } from '../Typography';
 
-import type { ListProps } from './List';
-import { ListContext } from './List';
+import type { ListProps } from './ListRoot';
+import { ListContext } from './ListRoot';
 
 const HEADING_SIZE_MAP: {
   [key in NonNullable<ListProps['size']>]: HeadingProps['size'];
@@ -41,3 +41,5 @@ export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(
     );
   },
 );
+
+ListHeading.displayName = 'ListHeading';

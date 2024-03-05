@@ -36,3 +36,5 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
     </RovingTabindexItem>
   );
 });
+
+Tab.displayName = 'Tab';

@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.2](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.1...@digdir/design-system-react@0.51.2) (2024-03-04)
+
+### Bug Fixes
+
+- **Combobox:** ResizeObserver loop error ([#1594](https://github.com/digdir/designsystemet/issues/1594)) ([688ac31](https://github.com/digdir/designsystemet/commit/688ac3126fb003c412d597e847a9d206ac32d3dd))
+- **ErrorSummaryItem:** `href` is optional when `asChild` is `true` ([#1592](https://github.com/digdir/designsystemet/issues/1592)) ([300c9b4](https://github.com/digdir/designsystemet/commit/300c9b46e18481e638a0f3181f6087129374577e))
+- **Fieldset:** Simplify CSS ([#1591](https://github.com/digdir/designsystemet/issues/1591)) ([aa5ca25](https://github.com/digdir/designsystemet/commit/aa5ca259a659adc5cd2bb1ac370f5bfb122a1ea7))
+- **Popover:** Update aria attributes ([#1578](https://github.com/digdir/designsystemet/issues/1578)) ([9c1e729](https://github.com/digdir/designsystemet/commit/9c1e7299b5045753a9a937c91b081765a4749dc4))
+
+## [0.51.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.0...@digdir/design-system-react@0.51.1) (2024-02-23)
+
+### Bug Fixes
+
+- **Button:** Remove `display: inline-block` for icons ([#1567](https://github.com/digdir/designsystemet/issues/1567)) ([40183b6](https://github.com/digdir/designsystemet/commit/40183b64ae4e53004623aecc397a99f0c5e865c8))
+- **HelpText:** :bug: Focus and hover should now be correct ([#1568](https://github.com/digdir/designsystemet/issues/1568)) ([2505554](https://github.com/digdir/designsystemet/commit/2505554a87a982000f1980974b4683921726b79e))
+
+### Features
+
+- **Combobox:** Add loading state ([#1558](https://github.com/digdir/designsystemet/issues/1558)) ([635d3cc](https://github.com/digdir/designsystemet/commit/635d3cc8fdceffe125ce738c71b3605f95db2b69))
+
+### Reverts
+
+- Revert "Publish" ([b1d5e6c](https://github.com/digdir/designsystemet/commit/b1d5e6c9f0b0be47592fd3048e175a67894eb1e1))
+
+# [0.51.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.50.0...@digdir/design-system-react@0.51.0) (2024-02-23)
+
+### Features
+
+- **Combobox:** Add `forwardRef` to input ([#1553](https://github.com/digdir/designsystemet/issues/1553)) ([efc3f2c](https://github.com/digdir/designsystemet/commit/efc3f2c967bc7e17ad236c9ac6512a7661f32ed2))
+
+- **Combobox:** Always display selected values ([#1562](https://github.com/digdir/designsystemet/issues/1562)) ([3b5bbc3](https://github.com/digdir/designsystemet/commit/3b5bbc3b8d471f674e0ab5155fe65e90a51090fc))
+- **Modal:** Make sub-components composable ([#1556](https://github.com/digdir/designsystemet/issues/1556)) ([e0159ae](https://github.com/digdir/designsystemet/commit/e0159ae97eeb8e74d5e5ea1ff67b12746cd313b6))
+- **Pagination:** Add new component API ([#1524](https://github.com/digdir/designsystemet/issues/1524)) ([b43ee0d](https://github.com/digdir/designsystemet/commit/b43ee0d5ca84eda4f232c77ee623e9fcdd15b2b0))
+
+# [0.50.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.49.0...@digdir/design-system-react@0.50.0) (2024-02-19)
+
+### Bug Fixes
+
+- Correct component names in React developer tools ([#1543](https://github.com/digdir/designsystemet/issues/1543)) ([889e91d](https://github.com/digdir/designsystemet/commit/889e91d4acaaa470f10aabfc17657ca5d5477b6a))
+- **Paragraph:** Fix CSS specificity ([#1527](https://github.com/digdir/designsystemet/issues/1527)) ([4d76d87](https://github.com/digdir/designsystemet/commit/4d76d875960f9cb544bbb33735a0d8685f8ceee5))
+- **Switch:** 🐛 Improvements and adjustments to styling ([#1521](https://github.com/digdir/designsystemet/issues/1521)) ([d9f7a5c](https://github.com/digdir/designsystemet/commit/d9f7a5ce5ee1e70346861a2dcb009b598541958b))
+
+### Features
+
+- **Modal:** Add `Modal.Trigger` ([#1532](https://github.com/digdir/designsystemet/issues/1532)) ([15f7de0](https://github.com/digdir/designsystemet/commit/15f7de0f0d6368c624cb9825d0c35209848f71f9))
+
 # [0.49.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.48.0...@digdir/design-system-react@0.49.0) (2024-02-09)
 
 ### Bug Fixes

@@ -64,4 +64,6 @@ export const ComboboxLabel = ({
   );
 };
 
+ComboboxLabel.displayName = 'ComboboxLabel';
+
 export default ComboboxLabel;

@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/react';
-import { useRef } from 'react';
+import { useRef, useId, useState } from 'react';
 import * as React from 'react';
 
 import type { PortalProps } from '../../types/Portal';
@@ -50,7 +50,13 @@ export const Popover = ({
   ...rest
 }: PopoverProps) => {
   const triggerRef = useRef<Element>(null);
-  const [internalOpen, setInternalOpen] = React.useState(open ?? false);
+  const [internalOpen, setInternalOpen] = useState(open ?? false);
+
+  const randomPopoverId = useId();
+  const [popoverId, setPopoverId] = useState<string>(randomPopoverId);
+
+  const randomTriggerId = useId();
+  const [triggerId, setTriggerId] = useState<string>(randomTriggerId);
 
   const isControlled = typeof open === 'boolean';
 
@@ -74,6 +80,10 @@ export const Popover = ({
         placement,
         onOpenChange,
         onClose,
+        popoverId,
+        setPopoverId,
+        triggerId,
+        setTriggerId,
       }}
     >
       {children}
@@ -84,8 +94,9 @@ export const Popover = ({
 export const PopoverContext = React.createContext<{
   triggerRef: React.RefObject<Element>;
   anchorEl: Element | null;
-  setInternalOpen: (open: boolean) => void;
   portal?: boolean;
+  popoverId?: string;
+  triggerId?: string;
   isControlled?: boolean;
   internalOpen: boolean;
   size: NonNullable<PopoverProps['size']>;
@@ -93,6 +104,9 @@ export const PopoverContext = React.createContext<{
   placement: Placement;
   onOpenChange?: PopoverProps['onOpenChange'];
   onClose?: PopoverProps['onClose'];
+  setPopoverId?: (id: string) => void;
+  setTriggerId?: (id: string) => void;
+  setInternalOpen: (open: boolean) => void;
 }>({
   size: 'small',
   variant: 'default',
@@ -102,3 +116,5 @@ export const PopoverContext = React.createContext<{
   internalOpen: false,
   setInternalOpen: () => {},
 });
+
+Popover.displayName = 'Popover';

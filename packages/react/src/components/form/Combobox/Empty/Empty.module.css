@@ -2,17 +2,17 @@
   padding: var(--fds-spacing-2) var(--fds-spacing-3);
 }
 
-.empty.large {
+.large {
   font: var(--fds-typography-label-large);
   font-weight: 400;
 }
 
-.empty.medium {
+.medium {
   font: var(--fds-typography-label-medium);
   font-weight: 400;
 }
 
-.empty.small {
+.small {
   font: var(--fds-typography-label-small);
   font-weight: 400;
 }
