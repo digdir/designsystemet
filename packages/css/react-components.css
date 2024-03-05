@@ -1150,8 +1150,10 @@
   min-width: 0;
 }
 
-.fds-fieldset-spacing-4ef8e1c > :not(:first-child, :empty) {
-  margin-top: var(--fds-spacing-2);
+.fds-fieldset-withSpacing-4ef8e1c {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fds-spacing-2);
 }
 
 .fds-fieldset-description-4ef8e1c {
@@ -1159,18 +1161,26 @@
   font-weight: 400;
 }
 
-.fds-fieldset-readonly-4ef8e1c > .fds-fieldset-legend-4ef8e1c {
+.fds-fieldset-legend-4ef8e1c {
+  display: contents;
+}
+
+.fds-fieldset-readonly-4ef8e1c .fds-fieldset-legendContent-4ef8e1c {
   display: inline-flex;
 }
 
-.fds-fieldset-readonly-4ef8e1c > .fds-fieldset-legend-4ef8e1c > .fds-fieldset-padlock-4ef8e1c {
+.fds-fieldset-readonly-4ef8e1c .fds-fieldset-padlock-4ef8e1c {
   height: 1.2em;
   width: 1.2em;
 }
 
-.fds-fieldset-disabled-4ef8e1c > .fds-fieldset-legend-4ef8e1c,
-.fds-fieldset-disabled-4ef8e1c > .fds-fieldset-description-4ef8e1c {
+.fds-fieldset-disabled-4ef8e1c .fds-fieldset-legend-4ef8e1c,
+.fds-fieldset-disabled-4ef8e1c .fds-fieldset-description-4ef8e1c {
   color: var(--fds-semantic-border-neutral-subtle);
+}
+
+.fds-fieldset-errorWrapper-4ef8e1c {
+  display: contents;
 }
 
 .fds-tag-tag-e4c97db9 {
@@ -3227,6 +3237,7 @@
 
 .fds-combobox-combobox-fe4dfa7c {
   display: grid;
+  background-color: transparent;
   gap: var(--fds-spacing-2);
 }
 
