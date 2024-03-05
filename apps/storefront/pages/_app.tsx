@@ -4,15 +4,15 @@ import '@digdir/design-system-tokens/brand/digdir/tokens.css';
 import '../globals.css';
 import type { AppProps } from 'next/app';
 import { Analytics } from '@vercel/analytics/react';
+import { SkipLink } from '@digdir/design-system-react';
 
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
-import { JumpToMain } from '../components/JumpToMain';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <div className='root'>
-      <JumpToMain />
+      <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
       <Header />
       <Component {...pageProps} />
       <Footer />
