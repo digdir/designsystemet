@@ -58,7 +58,7 @@ export type ComboboxProps = {
    */
   hideLabel?: boolean;
   /**
-   * Value of the selected option(s), always an array of strings
+   * String array of selected options. Contains only one option during single selection mode.
    */
   value?: string[];
   /**
