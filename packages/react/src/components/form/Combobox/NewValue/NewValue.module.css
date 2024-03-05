@@ -1,0 +1,9 @@
+.newValue {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+}
+
+.newValue[data-active='true'] {
+  background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+}

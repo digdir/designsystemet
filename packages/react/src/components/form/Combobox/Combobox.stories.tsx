@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { PlusCircleIcon } from '@navikt/aksel-icons';
 
 import { Button } from '../../Button';
 import { Paragraph } from '../../Typography';
@@ -9,7 +8,6 @@ import { Modal } from '../../Modal';
 import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
-import ComboboxCustom from './Custom/Custom';
 
 import { Combobox } from './index';
 
@@ -511,8 +509,6 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
   const [options, setOptions] = React.useState(PLACES);
 
   const onNewValueAdd = () => {
-    if (!showAddNew) return;
-
     setOptions([
       ...options,
       {
@@ -524,69 +520,30 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
     setValue([...value, inputValue.toLowerCase()]);
   };
 
-  const showAddNew =
-    inputValue &&
-    !options.some((option) => option.value === inputValue.toLowerCase());
-
   return (
-    <>
-      <style>
-        {`
-        [data-active='true'] {
-          background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
-        }
-      `}
-      </style>
-      <Combobox
-        {...args}
-        value={value}
-        onValueChange={(value) => {
-          setValue(value);
-          setInputValue('');
-        }}
-        inputValue={inputValue}
-        multiple={true}
-        placeholder='Skriv for å legge inn ny'
-        onChange={(e) => setInputValue(e.target.value)}
-      >
-        {showAddNew && (
-          <ComboboxCustom
-            style={{
-              display: 'flex',
-              gap: 'var(--fds-spacing-2)',
-              alignContent: 'center',
-            }}
-            asChild
-            interactive
-            id='custom-option'
-            onSelect={onNewValueAdd}
-          >
-            <Button
-              variant='secondary'
-              onClick={onNewValueAdd}
-              style={{
-                width: '100%',
-              }}
-            >
-              <PlusCircleIcon
-                title='plus'
-                fontSize='1.5rem'
-              />
-              Legg til &quot;{inputValue}&quot;
-            </Button>
-          </ComboboxCustom>
-        )}
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {options.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
-            {item.name}
-          </Combobox.Option>
-        ))}
-      </Combobox>
-    </>
+    <Combobox
+      {...args}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+        setInputValue('');
+      }}
+      inputValue={inputValue}
+      multiple={true}
+      placeholder='Skriv for å legge inn ny'
+      onChange={(e) => setInputValue(e.target.value)}
+    >
+      <Combobox.NewValue onNewValueAdd={onNewValueAdd} />
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {options.map((item, index) => (
+        <Combobox.Option
+          key={index}
+          value={item.value}
+        >
+          {item.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
   );
 };
 
