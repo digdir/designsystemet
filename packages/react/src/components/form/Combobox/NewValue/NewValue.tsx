@@ -9,6 +9,8 @@ import { Button } from '../../../Button';
 
 import classes from './NewValue.module.css';
 
+export const ComboboxNewValueId = 'combobox-new-value';
+
 export type ComboboxNewValueProps = {
   /**
    * Callback for when a new value wants to be added
@@ -42,7 +44,7 @@ export const ComboboxNewValue = forwardRef<
         <ComboboxCustom
           ref={ref}
           interactive
-          id='newoption'
+          id={ComboboxNewValueId}
           onSelect={() => onNewValueAdd(inputValue)}
           className={cl(classes.newValue, className)}
           asChild
