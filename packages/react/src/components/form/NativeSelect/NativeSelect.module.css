@@ -1,6 +1,7 @@
 .select {
   position: relative;
   font: inherit;
+  font-family: inherit;
   box-sizing: border-box;
   flex: 0 1 auto;
   padding: 0 var(--fds-spacing-2);

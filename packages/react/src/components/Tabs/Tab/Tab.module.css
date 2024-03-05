@@ -29,6 +29,7 @@
   --fdsc-icon-size: var(--fds-sizing-5);
 
   font: var(--fds-typography-interactive-small);
+  font-family: inherit;
   font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-2) var(--fds-spacing-4);
 }
@@ -37,6 +38,7 @@
   --fdsc-icon-size: var(--fds-sizing-6);
 
   font: var(--fds-typography-interactive-medium);
+  font-family: inherit;
   font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-3) var(--fds-spacing-5);
 }
@@ -45,6 +47,7 @@
   --fdsc-icon-size: var(--fds-sizing-7);
 
   font: var(--fds-typography-interactive-large);
+  font-family: inherit;
   font-family: var(--fdsc-typography-font-family);
   padding: var(--fds-spacing-4) var(--fds-spacing-6);
 }
