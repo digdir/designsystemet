@@ -1,10 +1,13 @@
 import { useContext, forwardRef } from 'react';
 import { PlusIcon } from '@navikt/aksel-icons';
+import cl from 'clsx';
 
 import type { ComboboxCustomProps } from '../Custom/Custom';
 import ComboboxCustom from '../Custom/Custom';
 import { ComboboxContext } from '../Combobox';
 import { Button } from '../../../Button';
+
+import classes from './NewValue.module.css';
 
 export type ComboboxNewValueProps = {
   /**
@@ -20,7 +23,7 @@ export type ComboboxNewValueProps = {
 export const ComboboxNewValue = forwardRef<
   HTMLDivElement,
   ComboboxNewValueProps
->(({ onNewValueAdd, ...props }, ref) => {
+>(({ onNewValueAdd, className, ...props }, ref) => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -42,14 +45,13 @@ export const ComboboxNewValue = forwardRef<
           interactive
           id='combobox-add-new-option'
           onSelect={() => onNewValueAdd(inputValue)}
+          className={cl(classes.newValue, className)}
           {...props}
         >
           <Button
             variant='secondary'
             onClick={() => onNewValueAdd(inputValue)}
-            style={{
-              width: '100%',
-            }}
+            className={classes.button}
           >
             <PlusIcon
               title='plus'

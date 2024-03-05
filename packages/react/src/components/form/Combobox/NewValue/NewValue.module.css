@@ -7,3 +7,9 @@
 .newValue[data-active='true'] {
   background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
 }
+
+.button {
+  width: 100%;
+  align-items: flex-start;
+  text-align: left;
+}

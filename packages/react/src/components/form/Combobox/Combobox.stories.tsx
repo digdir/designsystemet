@@ -504,11 +504,10 @@ Loading.args = {
 };
 
 export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
-  const [inputValue, setInputValue] = React.useState<string>('');
   const [value, setValue] = React.useState<string[]>([]);
   const [options, setOptions] = React.useState(PLACES);
 
-  const onNewValueAdd = () => {
+  const onNewValueAdd = (inputValue: string) => {
     setOptions([
       ...options,
       {
@@ -526,12 +525,9 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
       value={value}
       onValueChange={(value) => {
         setValue(value);
-        setInputValue('');
       }}
-      inputValue={inputValue}
       multiple={true}
       placeholder='Skriv for å legge inn ny'
-      onChange={(e) => setInputValue(e.target.value)}
     >
       <Combobox.NewValue onNewValueAdd={onNewValueAdd} />
       <Combobox.Empty>Fant ingen treff</Combobox.Empty>
