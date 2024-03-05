@@ -73,3 +73,5 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     </Paragraph>
   );
 });
+
+Radio.displayName = 'Radio';

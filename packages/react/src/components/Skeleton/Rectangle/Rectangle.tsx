@@ -41,3 +41,5 @@ export const Rectangle = ({
     </div>
   );
 };
+
+Rectangle.displayName = 'SkeletonRectangle';

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { PlusCircleIcon } from '@navikt/aksel-icons';
 
 import { Button } from '../../Button';
 import { Paragraph } from '../../Typography';
@@ -8,6 +9,7 @@ import { Modal } from '../../Modal';
 import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
+import ComboboxCustom from './Custom/Custom';
 
 import { Combobox } from './index';
 
@@ -443,6 +445,153 @@ export const Virtualized: StoryFn<typeof Combobox> = (args) => {
 Virtualized.args = {
   multiple: false,
   virtual: true,
+  size: 'medium',
+  label: 'Hvor går reisen?',
+};
+
+export const Loading: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+  const [options, setOptions] = React.useState<typeof PLACES>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  const fetchOptions = () => {
+    if (!loading) return;
+    setTimeout(() => {
+      setOptions(PLACES);
+      setLoading(false);
+    }, 2000);
+  };
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setLoading(true);
+          setOptions([]);
+          setValue([]);
+        }}
+        style={{
+          marginBottom: '1rem',
+        }}
+      >
+        Clear Data
+      </Button>
+      <Combobox
+        {...args}
+        value={value}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+        onFocus={fetchOptions}
+        loading={loading}
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {options.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+    </>
+  );
+};
+
+Loading.args = {
+  multiple: false,
+  size: 'medium',
+  label: 'Hvor går reisen?',
+};
+
+export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
+  const [inputValue, setInputValue] = React.useState<string>('');
+  const [value, setValue] = React.useState<string[]>([]);
+  const [options, setOptions] = React.useState(PLACES);
+
+  const onNewValueAdd = () => {
+    if (!showAddNew) return;
+
+    setOptions([
+      ...options,
+      {
+        name: inputValue,
+        value: inputValue.toLowerCase(),
+        description: '',
+      },
+    ]);
+    setValue([...value, inputValue.toLowerCase()]);
+  };
+
+  const showAddNew =
+    inputValue &&
+    !options.some((option) => option.value === inputValue.toLowerCase());
+
+  return (
+    <>
+      <style>
+        {`
+        [data-active='true'] {
+          background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+        }
+      `}
+      </style>
+      <Combobox
+        {...args}
+        value={value}
+        onValueChange={(value) => {
+          setValue(value);
+          setInputValue('');
+        }}
+        inputValue={inputValue}
+        multiple={true}
+        placeholder='Skriv for å legge inn ny'
+        onChange={(e) => setInputValue(e.target.value)}
+      >
+        {showAddNew && (
+          <ComboboxCustom
+            style={{
+              display: 'flex',
+              gap: 'var(--fds-spacing-2)',
+              alignContent: 'center',
+            }}
+            asChild
+            interactive
+            id='custom-option'
+            onSelect={onNewValueAdd}
+          >
+            <Button
+              variant='secondary'
+              onClick={onNewValueAdd}
+              style={{
+                width: '100%',
+              }}
+            >
+              <PlusCircleIcon
+                title='plus'
+                fontSize='1.5rem'
+              />
+              Legg til &quot;{inputValue}&quot;
+            </Button>
+          </ComboboxCustom>
+        )}
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {options.map((item, index) => (
+          <Combobox.Option
+            key={index}
+            value={item.value}
+          >
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
+    </>
+  );
+};
+
+CustomNewValue.args = {
+  multiple: false,
   size: 'medium',
   label: 'Hvor går reisen?',
 };

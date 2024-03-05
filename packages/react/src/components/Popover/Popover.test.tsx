@@ -120,4 +120,20 @@ describe('Popover', () => {
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
   });
+
+  it('should have correct aria attributes', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
+
+    await user.click(popoverTrigger);
+
+    const popoverContent = screen.getByText(contentText);
+
+    expect(popoverTrigger.getAttribute('aria-controls')).toBe(
+      popoverContent.id,
+    );
+    expect(popoverContent.getAttribute('aria-labelledby')).toBe(
+      popoverTrigger.id,
+    );
+  });
 });

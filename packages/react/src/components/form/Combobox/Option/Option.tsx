@@ -129,3 +129,5 @@ export const ComboboxOption = forwardRef<
     </button>
   );
 });
+
+ComboboxOption.displayName = 'ComboboxOption';

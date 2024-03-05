@@ -117,3 +117,5 @@ export const DropdownMenuContent = forwardRef<
     </>
   );
 });
+
+DropdownMenuContent.displayName = 'DropdownMenuContent';

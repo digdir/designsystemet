@@ -7,6 +7,8 @@ import { ModalTrigger } from './ModalTrigger/ModalTrigger';
 
 export type { ModalRootProps } from './ModalRoot';
 export type { ModalHeaderProps } from './ModalHeader/ModalHeader';
+export type { ModalContentProps } from './ModalContent/ModaContent';
+export type { ModalFooterProps } from './ModalFooter/ModalFooter';
 export type { ModalDialogProps } from './ModalDialog';
 export type { ModalTriggerProps } from './ModalTrigger/ModalTrigger';
 
@@ -28,6 +30,7 @@ Modal.Header = ModalHeader;
 Modal.Trigger = ModalTrigger;
 Modal.Dialog = ModalDialog;
 
+Modal.Root.displayName = 'Modal.Root';
 Modal.Dialog.displayName = 'Modal.Dialog';
 Modal.Footer.displayName = 'Modal.Footer';
 Modal.Header.displayName = 'Modal.Header';

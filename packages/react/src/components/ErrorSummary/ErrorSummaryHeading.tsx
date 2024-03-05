@@ -1,26 +1,16 @@
-import { Slot } from '@radix-ui/react-slot';
 import { useContext, useEffect } from 'react';
 
 import type { ListHeadingProps } from '../List';
 import { List } from '../List';
 
-import { ErrorSummaryContext } from './ErrorSummary';
+import { ErrorSummaryContext } from './ErrorSummaryRoot';
 
-export type ErrorSummaryHeadingProps = {
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
-} & ListHeadingProps;
+export type ErrorSummaryHeadingProps = ListHeadingProps;
 
 export const ErrorSummaryHeading = ({
-  asChild,
   id,
   ...rest
 }: ErrorSummaryHeadingProps) => {
-  const Component = asChild ? Slot : List.Heading;
-
   const { headingId, setHeadingId } = useContext(ErrorSummaryContext);
 
   useEffect(() => {
@@ -30,11 +20,11 @@ export const ErrorSummaryHeading = ({
   }, [headingId, id, setHeadingId]);
 
   return (
-    <Component
+    <List.Heading
       {...rest}
       id={headingId}
     />
   );
 };
 
-ErrorSummaryHeading.displayName = 'ErrorSummary.Heading';
+ErrorSummaryHeading.displayName = 'ErrorSummaryHeading';

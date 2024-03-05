@@ -1,5 +1,6 @@
 .combobox {
   display: grid;
+  background-color: transparent;
   gap: var(--fds-spacing-2);
 }
 
@@ -165,6 +166,12 @@
 
 .errorMessage:empty {
   display: none;
+}
+
+.loading {
+  display: flex;
+  gap: var(--fds-spacing-2);
+  align-content: center;
 }
 
 /**
