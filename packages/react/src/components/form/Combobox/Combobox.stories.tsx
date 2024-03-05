@@ -544,7 +544,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
 };
 
 CustomNewValue.args = {
-  multiple: false,
+  multiple: true,
   size: 'medium',
   label: 'Hvor går reisen?',
 };

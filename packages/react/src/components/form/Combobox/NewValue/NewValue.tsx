@@ -18,7 +18,7 @@ export type ComboboxNewValueProps = {
   /**
    * Change rendered text
    */
-} & ComboboxCustomProps;
+} & Omit<ComboboxCustomProps, 'interactive' | 'onSelect' | 'asChild'>;
 
 export const ComboboxNewValue = forwardRef<
   HTMLDivElement,
@@ -41,11 +41,11 @@ export const ComboboxNewValue = forwardRef<
       {showAddNew && (
         <ComboboxCustom
           ref={ref}
-          asChild
           interactive
-          id='combobox-add-new-option'
+          id='newoption'
           onSelect={() => onNewValueAdd(inputValue)}
           className={cl(classes.newValue, className)}
+          asChild
           {...props}
         >
           <Button
