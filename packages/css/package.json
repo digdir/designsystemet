@@ -5,7 +5,6 @@
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
   "license": "MIT",
-  "private": true,
   "main": "./dist/index.css",
   "files": [
     "*",
