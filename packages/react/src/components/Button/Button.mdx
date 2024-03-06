@@ -34,13 +34,13 @@ import { Button } from '@digdir/design-system-react';
 
 ## Varianter av button
 
-Vi har forskjellige knapper for å fremheve utvalgte handlinger. `Primary`, `secondary` og `tertiary` bestemmer hvilken viktighet handlingen har.
+Vi har forskjellige knapper for å fremheve utvalgte handlinger. `Primary`, `secondary` og `tertiary` bestemmer hvor viktig handlingen er.
 
 <br />
 
 ### Primary button
 
-Vi bruker denne knappen til den handlingen som er viktigst for brukeren, for eksempel Lagre, Neste eller Send inn. Det skal bare være en primærknapp per side
+Vi bruker denne knappen til den handlingen som er viktigst for brukeren, for eksempel Lagre, Neste eller Send inn. Det skal bare være en primærknapp per side.
 
 <Canvas of={ButtonStories.Primary} />
 
@@ -96,24 +96,24 @@ En gruppe med knapper bør bruke samme fargevariant. Unntaket er når vi skal ty
 
 ### Knapp som lenke
 
-Bruk `asChild` dersom du trenger å bruke knappen som en lenke. Vurder først om det ikke holder å bruke [`Link`](/docs/felles-link--docs) komponenten.
+Bruk `asChild` dersom du trenger å bruke knappen som en lenke. Vurder først om det er bedre å bruke [`Link`](/docs/felles-link--docs)-komponenten.
 Du kan lese mer om komposisjon [her](https://www.designsystemet.no/grunnleggende/for-utviklere/komposisjon).
 
 <Canvas of={ButtonStories.KnappSomLenke} />
 
 ### Knapp med kun ikon
 
-Knapper med kun ikon bruker vi bare for godt kjente ikoner som Lukk og Slett. Når vi bruker knapper med kun ikon, må vi huske en tilgjengelig tekst som forklarer hva knappen gjør. Dette kan legges i `title`, `aria-label` eller i en `Tooltip` som i eksempelet under.
+Knapper med kun ikon bruker vi bare for godt kjente ikoner som Lukk og Slett. Når knappen bare har ikon, må vi ha med en tilgjengelig tekst som forklarer hva knappen gjør. Dette kan legges i `title`, `aria-label` eller i en `Tooltip` som i eksempelet under.
 
 <Canvas of={ButtonStories.BareIkon} />
 
 ### Knapp med tekst og ikon
 
-Når vi bruker ikon sammen med tekst, skal ikonet ha `aria-hidden` slik at teksten ikke leses opp av skjermleser to ganger.
+Når vi bruker ikon sammen med tekst, skal ikonet ha `aria-hidden` slik at teksten ikke blir lest opp av skjermleser to ganger.
 
 <Canvas of={ButtonStories.TekstOgIkon} />
 
-Vi plasserer ikonet til venstre eller høyre for teksten avhenger av hva knappen kommuniserer og hvor den plasseres i grensesnittet.
+Vi plasserer ikonet til venstre eller høyre for teksten, avhengig av hva knappen kommuniserer og hvor den står i grensesnittet.
 
 Som regel er det **venstre** som er den beste plasseringen, men det finnes unntak:
 
@@ -128,13 +128,13 @@ Noen ganger ser det best ut når knappen fyller hele bredden. For eksempel i bun
 
 <Canvas of={ButtonStories.FullBredde} />
 
-### Lasting
+### Last inn
 
 Når vi skal vise brukeren at knappen laster noe, kan vi kombinere knappen med en `spinner`.
 
 <Canvas of={ButtonStories.Lasting} />
 
-I eksempelet over har vi brukt `aria-disabled` til å deaktivere knappene. Dette er den anbefalte metoden for å vise at en knapp er deaktivert, da det gjør at den fremdeles kan fokuseres på, f.eks. ved navigasjon med tastatur. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
+I eksempelet over har vi brukt `aria-disabled` til å deaktivere knappene. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
 
 Denne egenskapen stopper ikke automatisk knappen fra å utløse `onCLick`.
 
@@ -147,7 +147,7 @@ Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
 <br />
 ### En knapp skal utføre kun én handling
 
-Vi skal tydelig beskrive handlingene knappene utfører. Vi skal ikke ha flere handlinger i samme knapp.
+Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
 
 <Stack direction="row" style={{
   justifyContent: 'unset',
@@ -159,7 +159,7 @@ Vi skal tydelig beskrive handlingene knappene utfører. Vi skal ikke ha flere ha
   />
 
   <Dont
-    description='Flere handlinger på samme knapp bør unngås'
+    description='Unngå flere handlinger på samme knapp'
     image='/img/component-guidelines/button/button-ex2-dont.png'
   />
 </Stack>
@@ -167,14 +167,14 @@ Vi skal tydelig beskrive handlingene knappene utfører. Vi skal ikke ha flere ha
 
 ### Èn hovedhandling per side
 
-Vi skal holde oss til en primærknapp per side.
+Vi skal holde oss til én primærknapp per side.
 
 <Stack direction="row" style={{
   justifyContent: 'unset',
   alignItems: 'unset'
 }}>
   <Do
-    description='Det skal kun være èn primærknapp per side'
+    description='Det skal kun være én primærknapp per side'
     image='/img/component-guidelines/button/button-ex3-do.png'
   />
 
@@ -214,12 +214,12 @@ Vi skal holde oss til ett ikon per knapp.
   alignItems: 'left'
 }}>
   <Do
-    description='Bruk kun et ikon'
+    description='Bruk kun ett ikon'
     image='/img/component-guidelines/button/button-ex1-do.png'
   />
 
   <Dont
-    description='Ikke bruk flere ikoner i samme knapp'
+    description='Ikke bruk flere ikoner på samme knapp'
     image='/img/component-guidelines/button/button-ex1-dont.png'
   />
 </Stack>

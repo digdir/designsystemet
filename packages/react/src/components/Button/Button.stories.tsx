@@ -105,27 +105,6 @@ First.decorators = [stack];
 export const Second: StoryFn<typeof Button> = () => (
   <>
     <Button
-      icon={true}
-      variant='primary'
-      color='second'
-    >
-      <akselIcons.TrashIcon />
-    </Button>
-    <Button
-      icon={true}
-      variant='primary'
-      color='second'
-    >
-      <akselIcons.PrinterSmallIcon />
-    </Button>
-    <Button
-      icon={true}
-      variant='primary'
-      color='second'
-    >
-      <akselIcons.PencilWritingIcon />
-    </Button>
-    <Button
       variant='secondary'
       color='second'
     >
@@ -146,27 +125,6 @@ export const Second: StoryFn<typeof Button> = () => (
       <akselIcons.ArrowForwardIcon aria-hidden />
       Videresend
     </Button>
-    <Button
-      icon={true}
-      variant='tertiary'
-      color='second'
-    >
-      <akselIcons.TrashIcon />
-    </Button>
-    <Button
-      icon={true}
-      variant='tertiary'
-      color='second'
-    >
-      <akselIcons.PrinterSmallIcon />
-    </Button>
-    <Button
-      icon={true}
-      variant='tertiary'
-      color='second'
-    >
-      <akselIcons.PencilWritingIcon />
-    </Button>
   </>
 );
 
@@ -180,41 +138,6 @@ export const Danger: StoryFn<typeof Button> = () => (
     >
       <akselIcons.TrashIcon aria-hidden />
       Slett
-    </Button>
-    <Button
-      variant='secondary'
-      color='danger'
-    >
-      <akselIcons.TrashIcon aria-hidden />
-      Slett
-    </Button>
-    <Button
-      variant='tertiary'
-      color='danger'
-    >
-      <akselIcons.TrashIcon aria-hidden />
-      Slett
-    </Button>
-    <Button
-      icon={true}
-      variant='primary'
-      color='danger'
-    >
-      <akselIcons.TrashIcon />
-    </Button>
-    <Button
-      icon={true}
-      variant='secondary'
-      color='danger'
-    >
-      <akselIcons.TrashIcon />
-    </Button>
-    <Button
-      icon={true}
-      variant='tertiary'
-      color='danger'
-    >
-      <akselIcons.TrashIcon />
     </Button>
   </>
 );
@@ -399,7 +322,7 @@ export const FullBredde: Story = {
     children: (
       <>
         <akselIcons.PlusIcon />
-        Last flere
+        Last inn flere
       </>
     ),
     fullWidth: true,
