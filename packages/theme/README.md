@@ -1,6 +1,13 @@
 # @digdir/designsystemet-theme
 
-Transformed design tokens from the Digdir Common Designsystem to work in code.
+Themes for Designsystemet
+
+This package contains the following predefined themes for brands:
+
+- `altinn`
+- `digdir`
+- `tilsynet`
+- `brreg`
 
 ## Installation
 
@@ -9,15 +16,6 @@ npm install @digdir/designsystemet-theme
 ```
 
 ## Usage
-
-This package provides tokens for each of our supported brands.
-
-Currently supported brands:
-
-- `altinn`
-- `digdir`
-- `tilsynet`
-- `brreg`
 
 When importing the package make sure to specify which brand tokens you want to import. By default the `digdir` is imported if you don't specify a brand.
 
@@ -30,12 +28,6 @@ import '@digdir/designsystemet-theme';
 //  This imports Altinn css tokens
 import '@digdir/designsystemet-theme/brand/altinn/tokens.css';
 ```
-
-## File formats
-
-All tokens files have the same name, `tokens`, separated by file extension for desired format.
-
-Currently supported token format is `css`.
 
 ### CSS
 
