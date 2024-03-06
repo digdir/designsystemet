@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.3-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.2...@digdir/design-system-react@0.51.3-alpha.0) (2024-03-06)
+
+### Bug Fixes
+
+- Components should now inherit font-family correctly ([#1638](https://github.com/digdir/designsystemet/issues/1638)) ([c186fe6](https://github.com/digdir/designsystemet/commit/c186fe6ba427776fabd873b6560fc886904766bb))
+
 ## [0.51.2](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.1...@digdir/design-system-react@0.51.2) (2024-03-04)
 
 ### Bug Fixes
