@@ -1,5 +1,9 @@
 # @digdir/designsystemet-css
 
-Styling for React components in `@digdir/design-system-react`
+CSS implementation of the Designsystemet
+
+- Styling for React components in `@digdir/designsystemet-react`
 
 _These styles are currently not intended to be used directly. They are auto-generated from css modules in react components and may changewithout notice_
+
+Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.
