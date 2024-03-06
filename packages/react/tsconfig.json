@@ -6,9 +6,13 @@
     "emitDeclarationOnly": false,
     "composite": false,
     "allowSyntheticDefaultImports": true,
-    "noEmit": false,
-    "types": ["jest", "@testing-library/jest-dom"]
+    "noEmit": false
   },
-  "include": ["./src", "./stories", "declarations.d.ts"],
+  "include": [
+    "./src",
+    "./stories",
+    "declarations.d.ts",
+    "../../test/jest.setup.ts"
+  ],
   "rootDir": "./src"
 }
