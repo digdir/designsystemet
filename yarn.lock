@@ -1640,6 +1640,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@digdir/designsystemet-css@npm:^0.1.0, @digdir/designsystemet-css@workspace:packages/css":
+  version: 0.0.0-use.local
+  resolution: "@digdir/designsystemet-css@workspace:packages/css"
+  dependencies:
+    "@digdir/designsystemet-react": "workspace:^"
+    cssnano: "npm:^6.0.2"
+    postcss-cli: "npm:^11.0.0"
+  checksum: 10/undefined
+  languageName: unknown
+  linkType: soft
+
 "@digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
