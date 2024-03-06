@@ -8,6 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": false
   },
-  "include": ["./src", "declarations.d.ts"],
+  "include": ["./src", "./stories", "declarations.d.ts"],
   "rootDir": "./src"
 }
