@@ -378,7 +378,6 @@
 }
 
 .fds-paragraph-paragraph-10d75e13 {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   color: var(--fds-semantic-text-neutral-default);
@@ -393,58 +392,57 @@
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-paragraph-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-large-10d75e13:where(.fds-paragraph-short-10d75e13) {
   font: var(--fds-typography-paragraph-short-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-medium-10d75e13 {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-medium-10d75e13:where(.fds-paragraph-short-10d75e13) {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-short-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-small-10d75e13 {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-small-10d75e13:where(.fds-paragraph-short-10d75e13) {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-short-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-xsmall-10d75e13 {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-paragraph-xsmall-10d75e13:where(.fds-paragraph-short-10d75e13) {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-short-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-heading-f77d34ab {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   margin: 0;
@@ -459,60 +457,59 @@
   --fdsc-bottom-spacing: var(--fds-spacing-8);
 
   font: var(--fds-typography-heading-3xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-2xlarge-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-7);
 
   font: var(--fds-typography-heading-2xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-xlarge-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-heading-xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-large-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-heading-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-medium-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-heading-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-small-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-heading-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-xsmall-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-2);
 
   font: var(--fds-typography-heading-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-heading-size-xxsmall-f77d34ab {
   --fdsc-bottom-spacing: var(--fds-spacing-1);
 
   font: var(--fds-typography-heading-xxsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-ingress-ingress-e1a65285 {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   margin: 0;
@@ -527,11 +524,10 @@
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-ingress-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-label-label-b9d81987 {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-1);
 
   display: inline-block;
@@ -546,22 +542,22 @@
 
 .fds-label-label-b9d81987.fds-label-large-b9d81987 {
   font: var(--fds-typography-label-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-label-label-b9d81987.fds-label-medium-b9d81987 {
   font: var(--fds-typography-label-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-label-label-b9d81987.fds-label-small-b9d81987 {
   font: var(--fds-typography-label-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-label-label-b9d81987.fds-label-xsmall-b9d81987 {
   font: var(--fds-typography-label-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-label-label-b9d81987.fds-label-regularWeight-b9d81987 {
@@ -577,7 +573,6 @@
 }
 
 .fds-errormessage-errorMessage-a030a5d1 {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   margin: 0;
@@ -595,28 +590,28 @@
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-error_message-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-errormessage-errorMessage-a030a5d1.fds-errormessage-medium-a030a5d1 {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-error_message-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-errormessage-errorMessage-a030a5d1.fds-errormessage-small-a030a5d1 {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-error_message-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-errormessage-errorMessage-a030a5d1.fds-errormessage-xsmall-a030a5d1 {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-error_message-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-popover-popover-baea8f63 {
@@ -733,6 +728,7 @@
 
 .fds-helptext-helpTextContent-1937672f {
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
   width: fit-content;
   max-width: 700px;
 }
@@ -1061,6 +1057,7 @@
 .fds-nativeselect-select-88cf3fbc {
   position: relative;
   font: inherit;
+  font-family: inherit;
   box-sizing: border-box;
   flex: 0 1 auto;
   padding: 0 var(--fds-spacing-2);
@@ -1516,6 +1513,7 @@
   color: var(--fds-semantic-text-neutral-on_inverted);
   border-radius: var(--fds-border_radius-medium);
   font: var(--fds-typography-paragraph-xsmall);
+  font-family: inherit;
 }
 
 .fds-tooltip-wrapper-47dedd27.fds-tooltip-inverted-47dedd27 {
@@ -2134,6 +2132,7 @@
 
 .fds-textfield-input-147467c0 {
   font: inherit;
+  font-family: inherit;
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
@@ -2294,6 +2293,7 @@
 
 .fds-textarea-textarea-16c1b1dc {
   font: inherit;
+  font-family: inherit;
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
@@ -2345,7 +2345,6 @@
 
 .fds-tab-tabItem-cb5410d6 {
   --fdsc-icon-size: var(--fds-sizing-4);
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-border-color: transparent;
 
   display: flex;
@@ -2374,7 +2373,7 @@
   --fdsc-icon-size: var(--fds-sizing-5);
 
   font: var(--fds-typography-interactive-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-2) var(--fds-spacing-4);
 }
 
@@ -2382,7 +2381,7 @@
   --fdsc-icon-size: var(--fds-sizing-6);
 
   font: var(--fds-typography-interactive-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-3) var(--fds-spacing-5);
 }
 
@@ -2390,7 +2389,7 @@
   --fdsc-icon-size: var(--fds-sizing-7);
 
   font: var(--fds-typography-interactive-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-4) var(--fds-spacing-6);
 }
 
@@ -2435,9 +2434,7 @@
 }
 
 .fds-tabcontent-tabContent-627713c2 {
-  --fdsc-typography-font-family: inherit;
-
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-tabcontent-tabContent-627713c2.fds-tabcontent-small-627713c2 {
@@ -2454,17 +2451,17 @@
 
 .fds-tabcontent-tabContent-627713c2.fds-tabcontent-onlyText-627713c2.fds-tabcontent-small-627713c2 {
   font: var(--fds-typography-interactive-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-tabcontent-tabContent-627713c2.fds-tabcontent-onlyText-627713c2.fds-tabcontent-medium-627713c2 {
   font: var(--fds-typography-interactive-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-tabcontent-tabContent-627713c2.fds-tabcontent-onlyText-627713c2.fds-tabcontent-large-627713c2 {
   font: var(--fds-typography-interactive-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .fds-togglegroup-toggleGroupContainer-acca2b17 {
@@ -2704,6 +2701,7 @@
 
 .fds-search-input-7eb2965c {
   font: inherit;
+  font-family: inherit;
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
@@ -2955,7 +2953,7 @@
   flex-wrap: wrap;
   word-wrap: break-word;
   font: var(--fds-typography-paragraph-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-2) 0;
 }
 
@@ -2969,7 +2967,7 @@
   flex-wrap: wrap;
   word-wrap: break-word;
   font: var(--fds-typography-heading-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-2) 0;
 }
 
@@ -3104,6 +3102,7 @@
   height: auto;
   cursor: pointer;
   font: var(--fds-typography-label-medium);
+  font-family: inherit;
 }
 
 .fds-option-option-6c39c7b6.fds-option-active-6c39c7b6 {
@@ -3214,6 +3213,7 @@
   gap: var(--fds-spacing-1);
   color: var(--fds-semantic-text-neutral-subtle);
   font: inherit;
+  font-family: inherit;
 }
 
 .fds-custom-custom-385f0b36 {
@@ -3222,16 +3222,19 @@
 
 .fds-custom-large-385f0b36 {
   font: var(--fds-typography-label-large);
+  font-family: inherit;
   font-weight: 400;
 }
 
 .fds-custom-medium-385f0b36 {
   font: var(--fds-typography-label-medium);
+  font-family: inherit;
   font-weight: 400;
 }
 
 .fds-custom-small-385f0b36 {
   font: var(--fds-typography-label-small);
+  font-family: inherit;
   font-weight: 400;
 }
 
@@ -3263,6 +3266,7 @@
   height: auto;
   justify-content: space-between;
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c input {
@@ -3276,29 +3280,35 @@
 
 .fds-combobox-inputWrapper-fe4dfa7c.fds-combobox-small-fe4dfa7c {
   font: var(--fds-typography-paragraph-small);
+  font-family: inherit;
   padding: 5px var(--fds-spacing-2);
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c.fds-combobox-small-fe4dfa7c input {
   font: var(--fds-typography-paragraph-small);
+  font-family: inherit;
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c.fds-combobox-medium-fe4dfa7c {
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
   padding: 7px var(--fds-spacing-3);
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c.fds-combobox-medium-fe4dfa7c input {
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c.fds-combobox-large-fe4dfa7c {
   font: var(--fds-typography-paragraph-large);
+  font-family: inherit;
   padding: 7px var(--fds-spacing-4);
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c.fds-combobox-large-fe4dfa7c input {
   font: var(--fds-typography-paragraph-large);
+  font-family: inherit;
 }
 
 .fds-combobox-inputWrapper-fe4dfa7c input:focus {
@@ -3437,16 +3447,19 @@
 
 .fds-empty-large-a5131d3a {
   font: var(--fds-typography-label-large);
+  font-family: inherit;
   font-weight: 400;
 }
 
 .fds-empty-medium-a5131d3a {
   font: var(--fds-typography-label-medium);
+  font-family: inherit;
   font-weight: 400;
 }
 
 .fds-empty-small-a5131d3a {
   font: var(--fds-typography-label-small);
+  font-family: inherit;
   font-weight: 400;
 }
 
@@ -3484,6 +3497,7 @@
   z-index: 0;
   box-sizing: border-box;
   font: inherit;
+  font-family: inherit;
   border-spacing: 0;
   font-weight: 500;
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
@@ -3492,6 +3506,7 @@
 .fds-table-headerCell-c4ff6291 {
   padding: var(--table-padding);
   font: inherit;
+  font-family: inherit;
   background-color: var(--fds-semantic-surface-neutral-default);
   border-spacing: 0;
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
@@ -3512,6 +3527,7 @@
   width: 100%;
   border: none;
   font: inherit;
+  font-family: inherit;
   display: flex;
   cursor: pointer;
   gap: var(--fds-spacing-1);
