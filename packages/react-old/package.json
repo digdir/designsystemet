@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/designsystemet-react": "^0.51.1",
+    "@digdir/designsystemet-react": "^0.51.3-alpha.0",
     "@digdir/designsystemet-theme": "^0.13.0",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
