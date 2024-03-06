@@ -24,7 +24,12 @@ export default [
         preserveModulesRoot: 'tsc-build',
       },
     ],
-    external: [/@digdir\/design-system-tokens/, /@navikt\/aksel-icons/],
+    external: [
+      /@digdir\/designsystemet-theme/,
+      /@digdir\/designsystemet-css/,
+      /@digdir\/design-system-tokens/,
+      /@navikt\/aksel-icons/,
+    ],
     plugins: [
       peerDepsExternal(),
       resolve(),
