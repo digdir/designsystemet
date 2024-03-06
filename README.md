@@ -31,9 +31,15 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 📦 Packages
 
-[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – React library with common UI components like Buttons and Checkboxes.
+[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet styling and components.
+[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components
+[`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components
 
-[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) – Tokens that contain UI data like colors and spacing for building user interfaces.
+### Deprecated
+
+[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – Replaced by `@digdir/designsystemet-react`. Contains legacy components which are no longer maintained
+
+[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Renamed to `@digdir/designsystemet-theme`
 
 ---
 
@@ -90,8 +96,8 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/designsystemet-tokens/brand/digdir/tokens.css';
-import '@digdir/designsystemet-css'; // Must be imported after tokens.css
+import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
+import '@digdir/designsystemet-css'; // Must be imported after @digdir/designsystemet-theme
 
 import { Button } from '@digdir/designsystemet-react';
 

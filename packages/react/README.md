@@ -3,7 +3,7 @@
 React implementation of the Designsystemet components
 
 - Headless components.
-  - Uses `@digdir/designsystemet-css` and `@digdir/designsystemet-tokens` for styling.
+  - Uses `@digdir/designsystemet-theme` and `@digdir/designsystemet-css` for styling.
 - All components support `forwardRef`.
 - Most components extend and behave as native html-elements.
 - Most components support composition and `asChild` for overriding the underlying html-element.
