@@ -32,7 +32,9 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 ## 📦 Packages
 
 [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet styling and components.
+
 [`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components
+
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components
 
 ### Deprecated
