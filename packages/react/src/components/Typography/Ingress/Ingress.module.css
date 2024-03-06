@@ -1,5 +1,4 @@
 .ingress {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   margin: 0;
@@ -14,5 +13,5 @@
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-ingress-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
