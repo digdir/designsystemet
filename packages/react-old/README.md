@@ -22,7 +22,7 @@ npm install typescript --save-dev
 
 #### Legacy components
 
-If you are still using components prefix with `Legacy` you will also need to install the old tokens package.
+If you are still using components prefix with `Legacy` you will also need to install the old tokens package, [ @altinn/figma-design-tokens](https://www.npmjs.com/package/@altinn/figma-design-tokens).
 
 ```sh
 npm install @altinn/figma-design-tokens

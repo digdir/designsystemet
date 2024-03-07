@@ -31,17 +31,17 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 📦 Packages
 
-[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet styling and components.
+[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet.
 
-[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components
+[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components.
 
-[`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components
+[`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
 ### Deprecated
 
-[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – Replaced by `@digdir/designsystemet-react`. Contains legacy components which are no longer maintained
+[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – Replaced by [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react). Contains legacy components that are no longer maintained
 
-[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Renamed to `@digdir/designsystemet-theme`
+[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Renamed to [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme)
 
 ---
 
@@ -67,11 +67,11 @@ npm i typescript --save-dev
 
 You are free to use any font-family with the components.
 
-The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variantions might occur if a different font is used.
+The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variations might occur if a different font is used.
 
 #### Add the Inter font (optional)
 
-Add the `<link>` tag to your application and set the `font-family` to `Inter`.
+Add the `<link>` tag in `<head>`, and set `font-family` to `Inter` in your global css file.
 
 The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
 
