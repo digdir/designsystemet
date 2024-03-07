@@ -257,19 +257,18 @@ BareIkon.decorators = [
 export const TekstOgIkon: StoryFn<typeof Button> = () => (
   <>
     <Button
-      variant='secondary'
-      color='second'
-    >
-      <akselIcons.ArrowUndoIcon aria-hidden />
-      Angre
-    </Button>
-
-    <Button
       variant='primary'
       color='second'
     >
       Start utfylling
       <akselIcons.ArrowRightIcon aria-hidden />
+    </Button>
+    <Button
+      variant='secondary'
+      color='second'
+    >
+      <akselIcons.ArrowUndoIcon aria-hidden />
+      Angre
     </Button>
   </>
 );
