@@ -14,6 +14,18 @@ describe('Fieldset', () => {
     expect(fieldset).toBeDefined();
     expect(fieldset).toHaveAccessibleDescription('test description');
   });
+  test('has correct legend and description when `hideLegend` is enabled', () => {
+    render(
+      <Fieldset
+        legend='test legend'
+        description='test description'
+        hideLegend
+      ></Fieldset>,
+    );
+    const fieldset = screen.getByRole('group', { name: 'test legend' });
+    expect(fieldset).toBeDefined();
+    expect(fieldset).toHaveAccessibleDescription('test description');
+  });
   test('is described by error message and invalid', () => {
     render(
       <Fieldset

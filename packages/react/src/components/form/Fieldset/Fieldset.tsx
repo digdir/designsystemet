@@ -77,13 +77,13 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             asChild
             size={size}
           >
-            <legend
-              className={cl(
-                classes.legend,
-                hideLegend && utilityclasses.visuallyHidden,
-              )}
-            >
-              <span className={classes.legendContent}>
+            <legend className={classes.legend}>
+              <span
+                className={cl(
+                  classes.legendContent,
+                  hideLegend && utilityclasses.visuallyHidden,
+                )}
+              >
                 {readOnly && (
                   <PadlockLockedFillIcon
                     className={classes.padlock}
