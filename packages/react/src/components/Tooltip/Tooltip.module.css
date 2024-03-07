@@ -4,6 +4,7 @@
   color: var(--fds-semantic-text-neutral-on_inverted);
   border-radius: var(--fds-border_radius-medium);
   font: var(--fds-typography-paragraph-xsmall);
+  font-family: inherit;
 }
 
 .wrapper.inverted {

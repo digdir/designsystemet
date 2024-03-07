@@ -1,5 +1,4 @@
 .paragraph {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   color: var(--fds-semantic-text-neutral-default);
@@ -14,52 +13,52 @@
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-paragraph-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .large:where(.short) {
   font: var(--fds-typography-paragraph-short-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .medium {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .medium:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-short-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .small {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .small:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-short-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .xsmall:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-short-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
