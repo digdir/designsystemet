@@ -24,7 +24,7 @@
 }
 
 .default {
-  stroke: var(--fds-colors-grey-600);
+  stroke: var(--fds-semantic-surface-neutral-dark);
 }
 
 .interaction {
