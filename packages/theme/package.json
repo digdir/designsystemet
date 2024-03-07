@@ -18,7 +18,9 @@
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.9.3",
     "@types/ramda": "^0.29.9",
+    "esno": "^4.7.0",
     "ramda": "^0.29.1",
+    "rimraf": "^5.0.5",
     "style-dictionary": "^3.8.0"
   }
 }
