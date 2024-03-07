@@ -98,8 +98,8 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
-import '@digdir/designsystemet-css'; // Must be imported after @digdir/designsystemet-theme
+import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
 
 import { Button } from '@digdir/designsystemet-react';
 
