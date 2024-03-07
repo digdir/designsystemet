@@ -4,6 +4,7 @@
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react-old",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
