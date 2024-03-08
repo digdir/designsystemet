@@ -15,7 +15,7 @@
 
 ## 📖 About Designsystemet
 
-Designsystemet is a collection of important design elements, componenents and patterns that can be used to build public services.
+Designsystemet is a collection of important design elements, components and patterns that can be used to build public services.
 
 Our goal is to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
@@ -73,7 +73,7 @@ The components are designed and developed using the [Inter font](https://github.
 
 Add the `<link>` tag in `<head>`, and set `font-family` to `Inter` in your global css file.
 
-The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
+The `font-feature-settings` adds a tail to lowercase `L`'s and must be set with the `!important` flag.
 
 ##### HTML
 
@@ -134,6 +134,6 @@ We are lucky to have a great group of people who help with the design system.
 
 ---
 
-## 📃 Licence
+## 📃 License
 
 Designsystemet is [MIT licensed](./LICENSE).
