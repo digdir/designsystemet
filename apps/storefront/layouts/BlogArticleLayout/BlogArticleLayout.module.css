@@ -66,7 +66,7 @@
   display: block;
   width: 860px;
   margin: var(--fds-spacing-12) 0;
-  margin-left: calc((100% - 860px) / 2);
+  margin-left: calc((100% - 860px) / 2) !important;
   background-color: var(--fds-semantic-background-subtle);
 }
 
@@ -133,6 +133,6 @@
 @media screen and (max-width: 860px) {
   .content img {
     width: 100%;
-    margin-left: 0;
+    margin-left: 0 !important;
   }
 }
