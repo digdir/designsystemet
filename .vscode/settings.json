@@ -27,5 +27,9 @@
   "html-css-class-completion.excludeGlobPattern": "**/react-components.css",
   "jest.jestCommandLine": "yarn test",
   "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
-  "cSpell.language": "en,nb"
+  "cSpell.language": "en,nb",
+  "cSpell.ignorePaths": [
+    "**/node_modules/**", // the same for this one
+    "**/package.json" // Ignore all .dll files
+  ]
 }
