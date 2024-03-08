@@ -1617,8 +1617,8 @@ __metadata:
   resolution: "@digdir/design-system-react@workspace:packages/react-old"
   dependencies:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
-    "@digdir/designsystemet-react": "npm:^0.51.3-alpha.0"
-    "@digdir/designsystemet-theme": "npm:^0.13.0"
+    "@digdir/designsystemet-react": "npm:^0.52.0-alpha.0"
+    "@digdir/designsystemet-theme": "npm:^0.13.1-alpha.0"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@types/fs-extra": "npm:^11.0.4"
@@ -1654,11 +1654,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:^0.51.3-alpha.0, @digdir/designsystemet-react@workspace:packages/react":
+"@digdir/designsystemet-react@npm:^0.52.0-alpha.0, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
-    "@digdir/designsystemet-theme": "npm:^0.13.0"
+    "@digdir/designsystemet-theme": "npm:^0.13.1-alpha.0"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
@@ -1676,7 +1676,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-theme@npm:^0.13.0, @digdir/designsystemet-theme@workspace:packages/theme":
+"@digdir/designsystemet-theme@npm:^0.13.1-alpha.0, @digdir/designsystemet-theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-theme@workspace:packages/theme"
   dependencies:
