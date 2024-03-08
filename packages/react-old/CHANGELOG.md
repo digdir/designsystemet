@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.4-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.3...@digdir/design-system-react@0.51.4-alpha.0) (2024-03-08)
+
+### Reverts
+
+- Revert "old mocks?" ([ea9f67e](https://github.com/digdir/designsystemet/commit/ea9f67e6cb877b254b2d99911fe93fcd3f74eb15))
+
+### BREAKING CHANGE: Package restructure
+
 ## [0.51.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.0...@digdir/design-system-react@0.51.1) (2024-02-23)
 
 ### Bug Fixes
