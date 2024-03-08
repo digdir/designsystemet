@@ -760,7 +760,7 @@
   animation-duration: 2s;
 }
 
-/* Prefers reduced motion needs longer animation, 
+/* Prefers reduced motion needs longer animation,
   but don't remove it since it is not decorative.
  */
 @media (prefers-reduced-motion: reduce) {
@@ -774,7 +774,7 @@
 }
 
 .fds-spinner-default-ecd53b7b {
-  stroke: var(--colors-grey-500);
+  stroke: var(--fds-semantic-border-neutral-default);
 }
 
 .fds-spinner-interaction-ecd53b7b {
@@ -782,11 +782,15 @@
 }
 
 .fds-spinner-inverted-ecd53b7b {
-  stroke: var(--colors-white);
+  stroke: var(--fds-semantic-surface-neutral-default);
 }
 
 .fds-spinner-background-ecd53b7b {
-  stroke: var(--colors-grey-200);
+  stroke: var(--fds-semantic-border-neutral-subtle);
+}
+
+.fds-spinner-invertedBackground-ecd53b7b {
+  stroke: var(--fds-semantic-surface-neutral-dark);
 }
 
 @keyframes fds-spinner-rotate-animation-ecd53b7b {
