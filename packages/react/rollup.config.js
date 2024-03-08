@@ -36,7 +36,7 @@ export default [
       commonjs(),
       postcss({
         // extract name is used in script in package.json
-        extract: 'react-components.css',
+        extract: 'react-css-modules.css',
         modules: {
           generateScopedName,
         },
