@@ -1648,13 +1648,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
+    "@digdir/designsystemet-react": "workspace:^"
     cssnano: "npm:^6.0.2"
     postcss: "npm:^8.4.35"
     postcss-cli: "npm:^11.0.0"
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:^0.52.0-alpha.0, @digdir/designsystemet-react@workspace:packages/react":
+"@digdir/designsystemet-react@npm:^0.52.0-alpha.0, @digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
