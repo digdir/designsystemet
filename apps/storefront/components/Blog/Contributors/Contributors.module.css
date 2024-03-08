@@ -45,6 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   text-wrap: nowrap;
+  justify-content: center;
   gap: var(--fds-spacing-3);
   color: var(--fds-semantic-text-neutral-subtle) !important;
 }
@@ -55,5 +56,6 @@
   transform: rotate(45deg);
   border-radius: 1px;
   background-color: var(--fds-brand-alt1-600);
-  margin: auto;
+  margin: auto 0;
+  break-after: avoid;
 }
