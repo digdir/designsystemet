@@ -26,6 +26,6 @@
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
   "html-css-class-completion.excludeGlobPattern": "**/react-components.css",
   "jest.jestCommandLine": "yarn test",
-  "cSpell.words": ["designsystemet", "digdir"],
+  "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
   "cSpell.language": "en,nb"
 }
