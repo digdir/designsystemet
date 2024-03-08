@@ -39,6 +39,10 @@
   stroke: var(--fds-semantic-border-neutral-subtle);
 }
 
+.invertedBackground {
+  stroke: var(--fds-semantic-surface-neutral-dark);
+}
+
 @keyframes rotate-animation {
   0% {
     transform: rotate(0deg);
