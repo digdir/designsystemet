@@ -50,7 +50,10 @@ export const Spinner = ({
     >
       <title>{title}</title>
       <circle
-        className={classes.background}
+        className={cl(
+          classes.background,
+          variant === 'inverted' && classes.invertedBackground,
+        )}
         cx='25'
         cy='25'
         r='20'
