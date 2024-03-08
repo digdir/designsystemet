@@ -1626,6 +1626,7 @@ __metadata:
     cssnano: "npm:^6.0.2"
     esno: "npm:^4.7.0"
     fs-extra: "npm:^11.2.0"
+    postcss: "npm:^8.4.35"
     react-number-format: "npm:5.3.1"
     rimraf: "npm:^5.0.5"
     rollup: "npm:^4.12.1"
@@ -1647,14 +1648,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
-    "@digdir/designsystemet-react": "workspace:^"
     cssnano: "npm:^6.0.2"
     postcss: "npm:^8.4.35"
     postcss-cli: "npm:^11.0.0"
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:^0.51.3-alpha.0, @digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
+"@digdir/designsystemet-react@npm:^0.51.3-alpha.0, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
