@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.3](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.3-alpha.0...@digdir/design-system-react@0.51.3) (2024-03-08)
+
+### Bug Fixes
+
+- **Fieldset:** Make hideLegend work again ([#1641](https://github.com/digdir/designsystemet/issues/1641)) ([74ee58f](https://github.com/digdir/designsystemet/commit/74ee58fb84bb843e842813a1cdc05ea88159bfb5))
+- **SpinnerI:** Use correct tokens ([#1650](https://github.com/digdir/designsystemet/issues/1650)) ([63cd398](https://github.com/digdir/designsystemet/commit/63cd398ea1537acb5f6ca82a80765176cc7b8db4))
+
 ## [0.51.3-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.2...@digdir/design-system-react@0.51.3-alpha.0) (2024-03-06)
 
 ### Bug Fixes
