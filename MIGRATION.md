@@ -36,4 +36,4 @@ import { Button } from '@digdir/designsystemet-react';
 <Button variant='secondary'>I am a button!</Button>;
 ```
 
-`@digdir/designsystemet-tokens` and `@digdir/designsystemet-css` only needs to be imported once.
+`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
