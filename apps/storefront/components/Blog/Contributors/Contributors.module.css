@@ -8,7 +8,7 @@
   max-width: 640px;
   gap: var(--fds-spacing-4);
   margin: 0 auto;
-  margin-top: var(--fds-spacing-12);
+  margin-top: var(--fds-spacing-18);
   padding: var(--fds-spacing-10);
   border-radius: var(--fds-border_radius-xxlarge);
   border: 1px solid var(--fds-semantic-border-neutral-subtle);

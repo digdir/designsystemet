@@ -16,7 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: var(--fds-spacing-6);
+  gap: var(--fds-spacing-5);
   text-align: center;
   margin: 0 auto;
 }
@@ -28,6 +28,7 @@
 .meta {
   display: flex;
   justify-content: center;
+  margin-top: var(--fds-spacing-1) !important;
   gap: var(--fds-spacing-3);
   color: var(--fds-semantic-text-neutral-subtle) !important;
 }

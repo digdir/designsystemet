@@ -36,6 +36,7 @@ const BlogArticleLayout = ({
             style={{
               /* @ts-expect-error #2353 */
               '--number': index + 1,
+              '--figure-y-offset': index === 0 ? '250px' : '600px',
             }}
           />
         ))}
