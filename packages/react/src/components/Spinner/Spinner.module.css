@@ -24,7 +24,7 @@
 }
 
 .default {
-  stroke: var(--fds-semantic-surface-neutral-dark);
+  stroke: var(--fds-semantic-border-neutral-default);
 }
 
 .interaction {
@@ -32,11 +32,11 @@
 }
 
 .inverted {
-  stroke: var(--fds-colors-white);
+  stroke: var(--fds-semantic-surface-neutral-default);
 }
 
 .background {
-  stroke: var(--fds-colors-grey-200);
+  stroke: var(--fds-semantic-border-neutral-subtle);
 }
 
 @keyframes rotate-animation {
