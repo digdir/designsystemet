@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
@@ -24,8 +24,5 @@
     "cssnano": "^6.0.2",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0"
-  },
-  "dependencies": {
-    "@digdir/designsystemet-react": "workspace:^"
   }
 }

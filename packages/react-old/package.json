@@ -40,6 +40,7 @@
     "cssnano": "^6.0.2",
     "esno": "^4.7.0",
     "fs-extra": "^11.2.0",
+    "postcss": "^8.4.35",
     "rimraf": "^5.0.5",
     "rollup": "^4.12.1",
     "typescript": "^5.4.2"
