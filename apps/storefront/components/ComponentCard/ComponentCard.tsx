@@ -24,6 +24,7 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
       <Heading
         size='small'
         className={classes.title}
+        level={2}
       >
         {title}
       </Heading>
