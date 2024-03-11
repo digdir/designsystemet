@@ -29,7 +29,9 @@ Renamed & new packages:
 
 #### New setup
 
-The styling for all components have now be extracted into a separate packages.`@digdir/designsystemet-theme` and `@digdir/designsystemet-css`, which now has to be imported to get Designsystemet styling for components.
+The styling for all components have now be extracted into a separate packages.
+
+`@digdir/designsystemet-theme` and `@digdir/designsystemet-css`, now has to be imported to get Designsystemet styling for components.
 
 The new setup for using React components with Designsystemet styling is now:
 
