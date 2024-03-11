@@ -1,5 +1,4 @@
 .heading {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   margin: 0;
@@ -14,54 +13,54 @@
   --fdsc-bottom-spacing: var(--fds-spacing-8);
 
   font: var(--fds-typography-heading-3xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-2xlarge {
   --fdsc-bottom-spacing: var(--fds-spacing-7);
 
   font: var(--fds-typography-heading-2xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-xlarge {
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-heading-xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-large {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-heading-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-medium {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-heading-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-small {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-heading-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-2);
 
   font: var(--fds-typography-heading-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .size-xxsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-1);
 
   font: var(--fds-typography-heading-xxsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }

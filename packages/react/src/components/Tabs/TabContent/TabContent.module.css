@@ -1,7 +1,5 @@
 .tabContent {
-  --fdsc-typography-font-family: inherit;
-
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .tabContent.small {
@@ -18,15 +16,15 @@
 
 .tabContent.onlyText.small {
   font: var(--fds-typography-interactive-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .tabContent.onlyText.medium {
   font: var(--fds-typography-interactive-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .tabContent.onlyText.large {
   font: var(--fds-typography-interactive-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
