@@ -1,5 +1,4 @@
 import NextLink from 'next/link';
-import Image from 'next/image';
 import { Heading } from '@digdir/design-system-react';
 
 import classes from './ComponentCard.module.css';
