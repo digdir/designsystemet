@@ -1,13 +1,13 @@
 import { ComponentsLayout } from '@layouts';
 import { ComponentCard } from '@components';
-import { ComponentIcon } from '@navikt/aksel-icons';
+import { ComponentFillIcon } from '@navikt/aksel-icons';
 
 export default ({ children }) => (
   <ComponentsLayout
     content={children}
     banner={{
       title: 'Komponenter',
-      icon: <ComponentIcon fontSize={44} />,
+      icon: <ComponentFillIcon fontSize={'2.5rem'} />,
       color: 'blue',
       ingress:
         'Components are the reusable building blocks of our design system. Each component meets a specific interaction or UI need, and has been specifically created to work together to create patterns and intuitive user experiences.',
