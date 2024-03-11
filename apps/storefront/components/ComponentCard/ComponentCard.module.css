@@ -27,3 +27,7 @@
   outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
   outline-offset: var(--fds-focus-border-width);
 }
+
+.image {
+  width: 100%;
+}

@@ -15,11 +15,10 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
       href={url}
       className={classes.card}
     >
-      <Image
+      <img
         src={'/img/component-previews/' + image}
         alt={title}
-        width={217}
-        height={106}
+        className={classes.image}
       />
       <Heading
         size='xsmall'
