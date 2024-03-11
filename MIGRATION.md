@@ -1,17 +1,23 @@
 <h1>Migration</h1>
 
 - [React](#react)
-  - [From version 0.52.x to 0.60.0](#from-version-052x-to-0600)
+  - [From version 0.52.x to 0.x.0](#from-version-052x-to-0x0)
     - [Changed package structure \& names](#changed-package-structure--names)
     - [New setup](#new-setup)
 
 ## React
 
-### From version 0.52.x to 0.60.0
+### From version 0.52.x to 0.x.0
 
 #### Changed package structure & names
 
-New package structure & names to be better signalize intended use and support tree-shaking, headless components, server side rendering and planned future packages & implementations.
+New package structure & names to be better signalize intended use, along with;
+
+- Support tree-shaking
+- Headless components
+- Server side rendering
+- Easier to override themes using theme builder
+- Planned future features such as CSS & Web components packages, css layers, css utility classes and React server components to name a few
 
 Renamed & new packages:
 
@@ -23,9 +29,9 @@ Renamed & new packages:
 
 #### New setup
 
-The styling for all components have now be extracted into a separate package, `@digdir/designsystemet-css`, which is now need to import to get correct styling for components.
+The styling for all components have now be extracted into a separate packages.`@digdir/designsystemet-theme` and `@digdir/designsystemet-css`, which now has to be imported to get Designsystemet styling for components.
 
-The new setup for using React components is now:
+The new setup for using React components with Designsystemet styling is now:
 
 ```jsx
 import '@digdir/designsystemet-theme';
