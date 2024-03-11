@@ -63,9 +63,18 @@
   font-family: inherit;
 }
 
-.large:where(.long),
-.medium:where(.long),
-.small:where(.long),
+.large:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-large);
+}
+
+.medium:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-medium);
+}
+
+.small:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-small);
+}
+
 .xsmall:where(.long) {
-  line-height: 170%;
+  line-height: var(--fds-typography-paragraph-long-xsmall);
 }
