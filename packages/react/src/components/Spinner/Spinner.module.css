@@ -10,7 +10,7 @@
   animation-duration: 2s;
 }
 
-/* Prefers reduced motion needs longer animation, 
+/* Prefers reduced motion needs longer animation,
   but don't remove it since it is not decorative.
  */
 @media (prefers-reduced-motion: reduce) {
@@ -24,7 +24,7 @@
 }
 
 .default {
-  stroke: var(--colors-grey-500);
+  stroke: var(--fds-semantic-border-neutral-default);
 }
 
 .interaction {
@@ -32,11 +32,15 @@
 }
 
 .inverted {
-  stroke: var(--colors-white);
+  stroke: var(--fds-semantic-surface-neutral-default);
 }
 
 .background {
-  stroke: var(--colors-grey-200);
+  stroke: var(--fds-semantic-border-neutral-subtle);
+}
+
+.invertedBackground {
+  stroke: var(--fds-semantic-surface-neutral-dark);
 }
 
 @keyframes rotate-animation {

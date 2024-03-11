@@ -13,6 +13,7 @@
   height: auto;
   cursor: pointer;
   font: var(--fds-typography-label-medium);
+  font-family: inherit;
 }
 
 .option.active {
