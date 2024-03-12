@@ -1,5 +1,6 @@
 import { MenuPageLayout } from '@layouts';
 import { Meta } from '@components';
+import { PersonPencilIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='Slack'
@@ -12,7 +13,8 @@ export default ({ children }) => (
     data={{
       title: 'Slack',
       date: '12. mai 2023',
-      color: 'red',
+
+      icon: <PersonPencilIcon />,
     }}
   />
 );

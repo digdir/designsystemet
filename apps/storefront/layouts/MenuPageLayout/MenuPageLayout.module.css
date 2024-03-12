@@ -45,15 +45,15 @@
 }
 
 .headerAnchor.red::after {
-  border-color: var(--fds-brand-alt1-600);
+  border-color: var(--fds-brand-alt1-500);
 }
 
 .headerAnchor.blue::after {
-  border-color: var(--fds-brand-alt3-600);
+  border-color: var(--fds-brand-alt3-500);
 }
 
 .headerAnchor.yellow::after {
-  border-color: var(--fds-brand-alt2-600);
+  border-color: var(--fds-brand-alt2-500);
 }
 
 .headerText {
@@ -71,7 +71,7 @@
 }
 
 .headerAnchor svg {
-  color: var(--fds-semantic-border-neutral-default);
+  color: var(--fds-semantic-border-neutral-strong);
   transform: scale(1.6);
   position: relative;
   z-index: 54;
