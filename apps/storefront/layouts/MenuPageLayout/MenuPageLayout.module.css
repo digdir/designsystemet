@@ -34,14 +34,14 @@
 .headerAnchor::after {
   content: '';
   position: absolute;
-  right: -61px;
-  bottom: -61px;
+  right: -60px;
+  bottom: -60px;
   transform: rotate(45deg);
-  height: 190px;
-  width: 190px;
+  height: 180px;
+  width: 180px;
   border-radius: var(--fds-border_radius-large);
   border: 7px solid var(--fds-semantic-border-neutral-default);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .headerText {
@@ -50,7 +50,7 @@
 
 .headerAnchor {
   position: relative;
-  margin-right: 110px;
+  margin-right: 105px;
   height: 80px;
   width: 80px;
   display: flex;
@@ -63,10 +63,8 @@
   transform: scale(1.6);
   position: relative;
   z-index: 54;
-  opacity: 0.6;
-}
-
-.headerFigure {
+  opacity: 0.7;
+  font-size: 4.1rem;
 }
 
 .title {

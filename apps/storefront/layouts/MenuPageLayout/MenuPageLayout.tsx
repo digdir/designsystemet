@@ -1,11 +1,10 @@
 import type * as React from 'react';
 import { useRouter } from 'next/router';
 import { Heading } from '@digdir/design-system-react';
+import { ComponentIcon } from '@navikt/aksel-icons';
 
 import GithubLink from 'components/Link/Github/GithubLink';
 import { Banner } from 'components/SubPages/Banner/Banner';
-
-import { TokenIcon, TeddyBearIcon, HardHatIcon } from '@navikt/aksel-icons';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
 
@@ -62,7 +61,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
               <div className={classes.headerAnchor}>
                 {data.icon && data.icon}
                 {!data.icon && (
-                  <HardHatIcon
+                  <ComponentIcon
                     title='a11y-title'
                     fontSize='4rem'
                   />
