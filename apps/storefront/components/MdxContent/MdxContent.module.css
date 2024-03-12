@@ -45,11 +45,11 @@
 }
 
 .content > h2 {
-  font: var(--fds-typography-heading-large);
+  font: var(--fds-typography-heading-medium);
 }
 
 .content > h3 {
-  font: var(--fds-typography-heading-medium);
+  font: var(--fds-typography-heading-small);
 }
 
 .content > h4 {
