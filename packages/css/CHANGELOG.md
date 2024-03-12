@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.9](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.1.1-alpha.8...@digdir/designsystemet-css@0.1.1-alpha.9) (2024-03-12)
+
+**Note:** Version bump only for package @digdir/designsystemet-css
+
 ## [0.1.1-alpha.8](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.1.1-alpha.7...@digdir/designsystemet-css@0.1.1-alpha.8) (2024-03-12)
 
 **Note:** Version bump only for package @digdir/designsystemet-css
