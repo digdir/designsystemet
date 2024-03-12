@@ -9,7 +9,7 @@
   "module": "./dist/index.css",
   "files": [
     "*.css",
-    "dist/css"
+    "dist/**"
   ],
   "keywords": [
     "css",
