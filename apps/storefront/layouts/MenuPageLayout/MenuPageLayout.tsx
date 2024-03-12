@@ -1,8 +1,11 @@
 import type * as React from 'react';
 import { useRouter } from 'next/router';
+import { Heading } from '@digdir/design-system-react';
 
 import GithubLink from 'components/Link/Github/GithubLink';
 import { Banner } from 'components/SubPages/Banner/Banner';
+
+import { TokenIcon, TeddyBearIcon, HardHatIcon } from '@navikt/aksel-icons';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
 
@@ -46,8 +49,21 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
         >
           {data && (
             <div className={classes.header}>
-              <h1 className={classes.title}>{data.title}</h1>
-              {data.date && <div className={classes.date}>{data.date}</div>}
+              <div className={classes.headerText}>
+                <Heading
+                  size='large'
+                  className={classes.title}
+                >
+                  {data.title}
+                </Heading>
+                {data.date && <div className={classes.date}>{data.date}</div>}
+              </div>
+              <div className={classes.headerAnchor}>
+                <HardHatIcon
+                  title='a11y-title'
+                  fontSize='4rem'
+                />
+              </div>
             </div>
           )}
 
