@@ -212,13 +212,3 @@
     background-color: var(--fds-semantic-surface-success-hover);
   }
 }
-
-.input:focus-visible:not(:disabled) ~ {
-  outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
-  outline-offset: 0;
-}
-
-.input:focus-visible:not(:disabled) + .label .track {
-  stroke: var(--fds-inner-focus-border-color);
-  stroke-width: var(--fds-focus-border-width);
-}
