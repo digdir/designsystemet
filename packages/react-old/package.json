@@ -28,8 +28,9 @@
   },
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/designsystemet-react": "^0.52.0-alpha.2",
-    "@digdir/designsystemet-theme": "^0.13.1-alpha.2",
+    "@digdir/designsystemet-css": "workspace:^",
+    "@digdir/designsystemet-react": "workspace:^",
+    "@digdir/designsystemet-theme": "workspace:^",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "react-number-format": "5.3.1"
