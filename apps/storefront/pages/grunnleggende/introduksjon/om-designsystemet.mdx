@@ -1,5 +1,6 @@
 import { MenuPageLayout } from '@layouts';
 import { Meta } from '@components';
+import { ComponentIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='Om designsystemet'
@@ -12,6 +13,12 @@ export default ({ children }) => (
     data={{
       title: 'Om designsystemet',
       date: '5. mars 2023',
+      icon: (
+        <ComponentIcon
+          title='a11y-title'
+          fontSize='4.2rem'
+        />
+      ),
     }}
   />
 );

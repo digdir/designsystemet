@@ -18,13 +18,14 @@ type PageLayoutProps = {
     color: 'blue' | 'red' | 'yellow';
     title: string;
     ingress?: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
   };
 };
 
 type PageLayoutData = {
   title: string;
   date: string;
+  icon: React.ReactNode;
 };
 
 const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
@@ -59,10 +60,13 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
                 {data.date && <div className={classes.date}>{data.date}</div>}
               </div>
               <div className={classes.headerAnchor}>
-                <HardHatIcon
-                  title='a11y-title'
-                  fontSize='4rem'
-                />
+                {data.icon && data.icon}
+                {!data.icon && (
+                  <HardHatIcon
+                    title='a11y-title'
+                    fontSize='4rem'
+                  />
+                )}
               </div>
             </div>
           )}

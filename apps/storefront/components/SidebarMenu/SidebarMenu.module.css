@@ -78,7 +78,7 @@
   border-left-color: var(--fds-semantic-border-neutral-default);
   color: inherit;
   font-weight: 500;
-  background-color: var(--fds-brand-alt2-200);
+  background-color: var(--fds-semantic-background-subtle);
 }
 
 .linkActive:hover {

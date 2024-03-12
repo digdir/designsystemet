@@ -1,5 +1,6 @@
 import { MenuPageLayout } from '@layouts';
 import { Meta } from '@components';
+import { LightBulbIcon } from '@navikt/aksel-icons';
 
 <Meta
   title='Verdier'
@@ -12,6 +13,12 @@ export default ({ children }) => (
     data={{
       title: 'Verdier',
       date: '26. april 2023',
+      icon: (
+        <LightBulbIcon
+          title='a11y-title'
+          fontSize='4.2rem'
+        />
+      ),
     }}
   />
 );
