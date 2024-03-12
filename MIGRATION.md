@@ -17,7 +17,7 @@ New package structure & names to be better signalize intended use, along with;
 - Headless components
 - Server side rendering
 - Easier to override themes using theme builder
-- Planned future features such as CSS & Web components packages, CSS [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), CSS utility classes and React server components to name a few
+- Support planned future features and packages
 
 Renamed & new packages:
 
