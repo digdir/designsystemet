@@ -29,8 +29,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@digdir/designsystemet-css": "workspace:^",
-    "@digdir/designsystemet-theme": "workspace:^",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",
