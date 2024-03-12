@@ -2109,16 +2109,6 @@
   }
 }
 
-.fds-switch-input-72679bdc:focus-visible:not(:disabled) ~ {
-  outline: var(--fds-focus-border-width) solid var(--fds-outer-focus-border-color);
-  outline-offset: 0;
-}
-
-.fds-switch-input-72679bdc:focus-visible:not(:disabled) + .fds-switch-label-72679bdc .fds-switch-track-72679bdc {
-  stroke: var(--fds-inner-focus-border-color);
-  stroke-width: var(--fds-focus-border-width);
-}
-
 .fds-textfield-formField-147467c0 {
   display: grid;
   gap: var(--fds-spacing-2);
