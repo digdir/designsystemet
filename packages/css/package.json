@@ -26,7 +26,8 @@
   "devDependencies": {
     "cssnano": "^6.0.2",
     "postcss": "^8.4.35",
-    "postcss-cli": "^11.0.0"
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.0.1"
   },
   "dependencies": {
     "@digdir/designsystemet-react": "workspace:^"
