@@ -1594,43 +1594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/design-system-react@npm:*":
-  version: 0.51.2
-  resolution: "@digdir/design-system-react@npm:0.51.2"
-  dependencies:
-    "@altinn/figma-design-tokens": "npm:^6.0.1"
-    "@digdir/design-system-tokens": "npm:^0.13.0"
-    "@floating-ui/react": "npm:0.26.4"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    "@radix-ui/react-slot": "npm:^1.0.2"
-    "@tanstack/react-virtual": "npm:^3.0.1"
-    react-number-format: "npm:5.3.1"
-  peerDependencies:
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 8868ec396ab10c636252b0eee38a59892e651753323372a0ee93d1e21e80e865ae488bac9a4f53f575c2e11ca2c6302df9a28009013e2c315b3b5b798f33e5e5
-  languageName: node
-  linkType: hard
-
-"@digdir/design-system-react@npm:0.49.0":
-  version: 0.49.0
-  resolution: "@digdir/design-system-react@npm:0.49.0"
-  dependencies:
-    "@altinn/figma-design-tokens": "npm:^6.0.1"
-    "@digdir/design-system-tokens": "npm:^0.13.0"
-    "@floating-ui/react": "npm:0.26.4"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    "@radix-ui/react-slot": "npm:^1.0.2"
-    "@tanstack/react-virtual": "npm:^3.0.1"
-    react-number-format: "npm:5.3.1"
-  peerDependencies:
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 4157e9ad50e8be5178f53bb8b680d942dc39e87168af4069bdf34804ead8de5b3b5f734c08eed002674fba4df30eac7525a2b428dbafb099ab2660760af61b97
-  languageName: node
-  linkType: hard
-
-"@digdir/design-system-react@workspace:packages/react":
+"@digdir/design-system-react@npm:*, @digdir/design-system-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/design-system-react@workspace:packages/react"
   dependencies:
@@ -1651,6 +1615,24 @@ __metadata:
     react-dom: ">=18.2.0"
   languageName: unknown
   linkType: soft
+
+"@digdir/design-system-react@npm:0.49.0":
+  version: 0.49.0
+  resolution: "@digdir/design-system-react@npm:0.49.0"
+  dependencies:
+    "@altinn/figma-design-tokens": "npm:^6.0.1"
+    "@digdir/design-system-tokens": "npm:^0.13.0"
+    "@floating-ui/react": "npm:0.26.4"
+    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@radix-ui/react-slot": "npm:^1.0.2"
+    "@tanstack/react-virtual": "npm:^3.0.1"
+    react-number-format: "npm:5.3.1"
+  peerDependencies:
+    react: ">=18.2.0"
+    react-dom: ">=18.2.0"
+  checksum: 4157e9ad50e8be5178f53bb8b680d942dc39e87168af4069bdf34804ead8de5b3b5f734c08eed002674fba4df30eac7525a2b428dbafb099ab2660760af61b97
+  languageName: node
+  linkType: hard
 
 "@digdir/design-system-tokens@npm:*, @digdir/design-system-tokens@npm:^0.13.0, @digdir/design-system-tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
