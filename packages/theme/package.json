@@ -8,9 +8,12 @@
   "license": "MIT",
   "main": "brand/digdir/tokens.css",
   "files": [
-    "brand",
+    "brand/**",
     "*.css"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "yarn run clean && esno ./scripts/build.ts",
     "clean": "rimraf brand"

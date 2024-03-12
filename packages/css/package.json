@@ -8,9 +8,12 @@
   "main": "./dist/index.css",
   "module": "./dist/index.css",
   "files": [
-    "*.css",
-    "dist/**"
+    "dist/**",
+    "*.css"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "css",
     "designsystem",
