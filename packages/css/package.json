@@ -6,10 +6,8 @@
   "repository": "https://github.com/digdir/designsystemet",
   "license": "MIT",
   "main": "./dist/index.css",
-  "module": "./dist/index.css",
-  "type": "module",
   "files": [
-    "dist/**",
+    "dist",
     "*.css"
   ],
   "publishConfig": {
