@@ -44,6 +44,18 @@
   opacity: 0.6;
 }
 
+.headerAnchor.red::after {
+  border-color: var(--fds-brand-alt1-600);
+}
+
+.headerAnchor.blue::after {
+  border-color: var(--fds-brand-alt3-600);
+}
+
+.headerAnchor.yellow::after {
+  border-color: var(--fds-brand-alt2-600);
+}
+
 .headerText {
   color: inherit;
 }
@@ -65,6 +77,18 @@
   z-index: 54;
   opacity: 0.7;
   font-size: 4.1rem;
+}
+
+.headerAnchor.red svg {
+  color: var(--fds-brand-alt1-600);
+}
+
+.headerAnchor.blue svg {
+  color: var(--fds-brand-alt3-600);
+}
+
+.headerAnchor.yellow svg {
+  color: var(--fds-brand-alt2-600);
 }
 
 .title {
