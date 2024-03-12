@@ -6,9 +6,9 @@
   justify-content: center;
   align-items: center;
   max-width: 640px;
-  gap: var(--fds-spacing-3);
+  gap: var(--fds-spacing-4);
   margin: 0 auto;
-  margin-top: var(--fds-spacing-12);
+  margin-top: var(--fds-spacing-18);
   padding: var(--fds-spacing-10);
   border-radius: var(--fds-border_radius-xxlarge);
   border: 1px solid var(--fds-semantic-border-neutral-subtle);
@@ -37,7 +37,7 @@
   box-shadow: none;
   width: 50%;
   height: 50%;
-  margin: 0;
+  margin: 0 !important;
   background-color: transparent;
 }
 
@@ -45,6 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   text-wrap: nowrap;
+  justify-content: center;
   gap: var(--fds-spacing-3);
   color: var(--fds-semantic-text-neutral-subtle) !important;
 }
@@ -55,5 +56,6 @@
   transform: rotate(45deg);
   border-radius: 1px;
   background-color: var(--fds-brand-alt1-600);
-  margin: auto;
+  margin: auto 0;
+  break-after: avoid;
 }
