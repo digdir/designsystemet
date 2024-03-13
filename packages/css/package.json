@@ -20,14 +20,15 @@
     "digdir"
   ],
   "scripts": {
-    "build": "postcss ./*.css --base . --dir ./dist",
+    "build": "rimraf dist && postcss ./*.css --base . --dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "cssnano": "^6.0.2",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.0.1"
+    "postcss-import": "^16.0.1",
+    "rimraf": "^5.0.5"
   },
   "dependencies": {
     "@digdir/designsystemet-react": "workspace:^"
