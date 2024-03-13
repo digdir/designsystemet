@@ -3,36 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.51.4-alpha.5](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.4-alpha.4...@digdir/design-system-react@0.51.4-alpha.5) (2024-03-12)
-
-**Note:** Version bump only for package @digdir/design-system-react
-
-## [0.51.4-alpha.4](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.4-alpha.3...@digdir/design-system-react@0.51.4-alpha.4) (2024-03-12)
-
-**Note:** Version bump only for package @digdir/design-system-react
-
-## [0.51.4-alpha.3](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.4-alpha.2...@digdir/design-system-react@0.51.4-alpha.3) (2024-03-12)
-
-**Note:** Version bump only for package @digdir/design-system-react
-
-## [0.51.4-alpha.2](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.3...@digdir/design-system-react@0.51.4-alpha.2) (2024-03-12)
-
-### Reverts
-
-- Revert "old mocks?" ([4f5b16b](https://github.com/digdir/designsystemet/commit/4f5b16b41342b1a5b87b147e38a817ccbbd58033))
-
-## [0.51.4-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.3...@digdir/design-system-react@0.51.4-alpha.1) (2024-03-12)
-
-### Reverts
-
-- Revert "old mocks?" ([8d41f89](https://github.com/digdir/designsystemet/commit/8d41f890ac354164aac0300b5f652df021d2d91c))
-
-## [0.51.4-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.3...@digdir/design-system-react@0.51.4-alpha.0) (2024-03-08)
-
-### Reverts
-
-- Revert "old mocks?" ([ea9f67e](https://github.com/digdir/designsystemet/commit/ea9f67e6cb877b254b2d99911fe93fcd3f74eb15))
-
 ### BREAKING CHANGE: Package restructure
 
 ## [0.51.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.0...@digdir/design-system-react@0.51.1) (2024-02-23)
