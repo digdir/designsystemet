@@ -1,13 +1,13 @@
 <h1>Migration</h1>
 
 - [React](#react)
-  - [From version 0.52.x to 0.x.0](#from-version-052x-to-0x0)
+  - [From version \< 0.51.x to 0.52.0](#from-version--051x-to-0520)
     - [Changed package structure \& names](#changed-package-structure--names)
     - [New setup](#new-setup)
 
 ## React
 
-### From version 0.52.x to 0.x.0
+### From version < 0.51.x to 0.52.0
 
 #### Changed package structure & names
 
