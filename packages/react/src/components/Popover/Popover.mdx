@@ -12,7 +12,7 @@ import * as PopoverStories from './Popover.stories.tsx';
 ## Slik bruker du `Popover`
 
 ```tsx
-import '@digdir/designsystemet-theme/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Popover } from '@digdir/designsystemet-react';
 
 <Popover>
@@ -28,7 +28,7 @@ Alternativt kan du bruke `anchorEl` for å styre hvor `Popover` skal vises, men 
 _`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor._
 
 ```tsx
-import '@digdir/designsystemet-theme/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
+import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Popover } from '@digdir/designsystemet-react';
 
 const anchorEl = useRef(null);
