@@ -86,7 +86,7 @@
   display: none !important;
 }
 
-@media (max-width: 945.98px) {
+@media (max-width: 958.98px) {
   .menu {
     display: none;
     margin-top: var(--fds-spacing-7);
