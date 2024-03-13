@@ -28,8 +28,6 @@
   "jest.jestCommandLine": "yarn test",
   "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
   "cSpell.language": "en,nb",
-  "cSpell.ignorePaths": [
-    "**/node_modules/**", // the same for this one
-    "**/package.json" // Ignore all .dll files
-  ]
+  "cSpell.ignorePaths": ["**/node_modules/**", "**/package.json"],
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext"]
 }
