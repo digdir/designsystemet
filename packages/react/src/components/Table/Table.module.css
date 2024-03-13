@@ -91,6 +91,7 @@
 .cell {
   padding: var(--table-padding);
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+  background-color: var(--fds-semantic-surface-neutral-default);
 }
 
 .row:hover {
