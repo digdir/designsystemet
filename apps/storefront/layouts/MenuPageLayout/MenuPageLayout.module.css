@@ -31,6 +31,20 @@
   background-color: var(--fds-semantic-background-subtle);
 }
 
+.headerText {
+  color: inherit;
+  padding-right: 290px;
+}
+
+.title {
+  margin-bottom: 0;
+  font: var(--fds-typography-heading-xlarge);
+}
+
+.date {
+  margin-top: var(--fds-spacing-3);
+}
+
 .iconContainer {
   position: absolute;
   right: 0;
@@ -41,7 +55,7 @@
   height: 190px;
   width: 190px;
   border-radius: var(--fds-border_radius-large);
-  border: 7px solid var(--fds-semantic-border-neutral-default);
+  border: 7px solid #8f9296;
   transform: rotate(45deg);
 }
 
@@ -55,11 +69,6 @@
 
 .iconContainer.yellow {
   border-color: var(--fds-brand-alt2-400);
-}
-
-.headerText {
-  color: inherit;
-  padding-right: 290px;
 }
 
 .iconContainer svg {
@@ -81,15 +90,6 @@
 
 .iconContainer.yellow svg {
   color: var(--fds-brand-alt2-600);
-}
-
-.title {
-  margin-bottom: 0;
-  font: var(--fds-typography-heading-xlarge);
-}
-
-.date {
-  margin-top: var(--fds-spacing-3);
 }
 
 .content {
