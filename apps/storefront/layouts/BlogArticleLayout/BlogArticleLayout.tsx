@@ -82,13 +82,6 @@ const BlogArticleLayout = ({
           </MdxContent>
         </main>
       </Container>
-      <style>
-        {`
-    .Header_header__pXml_ {
-      border-bottom: none
-    }
-  `}
-      </style>
     </div>
   );
 };
