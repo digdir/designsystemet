@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2024-03-13)
+
+**Note:** Version bump only for package @digdir/designsystemet-theme
+
 ### BREAKING CHANGE: Package restructure
 
 # [0.13.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-tokens@0.12.0...@digdir/design-system-tokens@0.13.0) (2024-02-07)
