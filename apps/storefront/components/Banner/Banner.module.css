@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   gap: var(--fds-spacing-6);
   min-height: 460px;
-  padding-top: var(--fds-spacing-12);
+  padding-top: var(--fds-spacing-5);
   padding-bottom: var(--fds-spacing-12);
 }
 
