@@ -94,7 +94,7 @@
   background-color: var(--fds-semantic-surface-neutral-default);
 }
 
-.row:hover {
+.row:hover .cell {
   background-color: var(--fds-semantic-surface-neutral-subtle-hover);
 }
 
