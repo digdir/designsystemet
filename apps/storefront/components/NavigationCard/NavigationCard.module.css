@@ -57,7 +57,7 @@
 .title {
   font: var(--fds-typography-heading-xsmall);
   margin-top: var(--fds-spacing-4);
-  margin-bottom: var(--fds-spacing-3);
+  margin-bottom: var(--fds-spacing-4);
   text-align: center;
   text-decoration: underline;
   text-underline-offset: 7px;
