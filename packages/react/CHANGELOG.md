@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.53.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.0...@digdir/designsystemet-react@0.53.1) (2024-03-13)
+
+**Note:** Version bump only for package @digdir/designsystemet-react
+
 # [0.53.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.52.0...@digdir/designsystemet-react@0.53.0) (2024-03-13)
 
 **Note:** Version bump only for package @digdir/designsystemet-react
