@@ -1,2 +1,2 @@
 # Set the default eol for all files to LF
-* text eol=lf
+* text=auto eol=lf
