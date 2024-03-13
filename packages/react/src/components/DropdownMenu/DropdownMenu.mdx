@@ -14,8 +14,8 @@ import { DropdownMenu } from './';
 ## Slik bruker du `DropdownMenu`
 
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { DropdownMenu } from '@digdir/design-system-react';
+import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
+import { DropdownMenu } from '@digdir/designsystemet-react';
 
 <DropdownMenu>
   <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
@@ -34,8 +34,8 @@ Alternativt kan du bruke `anchorEl` for å styre hvor `DropdownMenu` skal vises,
 _`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor._
 
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { DropdownMenu } from '@digdir/design-system-react';
+import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
+import { DropdownMenu } from '@digdir/designsystemet-react';
 
 const anchorEl = useRef(null);
 

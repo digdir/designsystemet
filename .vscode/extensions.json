@@ -19,6 +19,9 @@
     "formulahendry.auto-close-tag",
     "usernamehw.errorlens",
     "phoenisx.cssvar",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "zignd.html-css-class-completion",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-norwegian-bokmal"
   ]
 }

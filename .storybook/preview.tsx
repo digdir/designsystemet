@@ -2,20 +2,22 @@ import * as React from 'react';
 import type { Preview } from '@storybook/react';
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
-import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
-import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/digdir/tokens.css';
-import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/tilsynet/tokens.css';
-import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/brreg/tokens.css';
+import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
+import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/altinn/tokens.css';
+import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/digdir/tokens.css';
+import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/tilsynet/tokens.css';
+import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/brreg/tokens.css';
 
 import '@altinn/figma-design-tokens/dist/tokens.css';
+import '@digdir/designsystemet-css/index.css';
+
 import {
   Paragraph,
   Link,
   LinkProps,
   List,
   Table,
-} from '@digdir/design-system-react';
+} from '@digdir/designsystemet-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
 

@@ -1,9 +1,10 @@
 {
-  "name": "@digdir/design-system-react",
-  "version": "0.51.3",
+  "name": "@digdir/designsystemet-react",
+  "version": "0.52.0-alpha.3",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -13,10 +14,11 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
-    "build:css": "esno ./scripts/generate-css.ts",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs && yarn run copy-css-to-package",
+    "generate:css": "esno ./scripts/generate-css.ts",
     "clean": "rimraf dist && rimraf tsc-build",
-    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "copy-css-to-package": "copyfiles -u 2 ./dist/esm/react-css-modules.css ../css/",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -27,19 +29,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/design-system-tokens": "^0.13.0",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",
-    "@tanstack/react-virtual": "^3.0.1",
-    "react-number-format": "5.3.1"
+    "@tanstack/react-virtual": "^3.0.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "copyfiles": "^2.4.1",
-    "cssnano": "^6.0.2",
-    "esno": "^4.0.0",
-    "fs-extra": "^11.2.0"
+    "esno": "^4.7.0",
+    "fs-extra": "^11.2.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.12.1",
+    "typescript": "^5.4.2"
   }
 }

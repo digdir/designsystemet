@@ -1,67 +1,12 @@
-# @digdir/design-system-react
+# @digdir/designsystemet-react
 
-React components from the DigDir Common Designsystem
+React implementation of the Designsystemet components
 
-## 🚀 Get started
+- Headless components.
+  - Uses `@digdir/designsystemet-theme` and `@digdir/designsystemet-css` for styling.
+- All components support `forwardRef`.
+- Most components extend and behave as native html-elements.
+- Most components support composition and `asChild` for overriding the underlying html-element.
+- SSR support.
 
-Follow these steps to get started with the React components.
-
-### 1. Install the packages
-
-```sh
-npm install @digdir/design-system-react @digdir/design-system-tokens
-```
-
-#### Typescript
-
-If you use Typescript, make sure you have typescript >= 3.8 as a devDependency:
-
-```sh
-npm install typescript --save-dev
-```
-
-#### Legacy components
-
-If you are still using components prefix with `Legacy` you will also need to install the old tokens package.
-
-```sh
-npm install @altinn/figma-design-tokens
-```
-
-### 2. Add the Inter font (optional)
-
-Add the `<link>` tag to your application and set the `font-family` to `Inter`.
-
-The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
-
-#### HTML
-
-```html
-<link
-  rel="stylesheet"
-  href="https://altinncdn.no/fonts/inter/inter.css"
-/>
-```
-
-#### CSS
-
-```css
-body {
-  font-family: 'Inter', sans-serif;
-  font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */
-}
-```
-
-If you choose to install the font in a different way, remember to include the `400`, `500` and `600` font weights.
-
-### 3. Use a React component
-
-```jsx
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
-
-import { Button } from '@digdir/design-system-react';
-
-<Button variant='secondary'>I am a button!</Button>;
-```
-
-The `tokens.css` file only has to be imported once in your application.
+Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.

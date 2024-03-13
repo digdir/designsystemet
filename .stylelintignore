@@ -1,3 +1,4 @@
 **/dist/**/*.css
-packages/tokens/brand/**/*.css
-packages/css/**/*.css
+packages/theme/brand/**/*.css
+packages/css/dist/**/*.css
+react-css-modules.css
