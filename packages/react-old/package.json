@@ -1,0 +1,47 @@
+{
+  "name": "@digdir/design-system-react",
+  "version": "0.51.4-alpha.5",
+  "description": "React components for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": "https://github.com/digdir/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react-old",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist && rimraf tsc-build",
+    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@altinn/figma-design-tokens": "^6.0.1",
+    "@digdir/designsystemet-react": "workspace:^",
+    "@floating-ui/react": "0.26.4",
+    "@navikt/aksel-icons": "^5.12.2",
+    "react-number-format": "5.3.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^6.0.2",
+    "esno": "^4.7.0",
+    "fs-extra": "^11.2.0",
+    "postcss": "^8.4.35",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.12.1",
+    "typescript": "^5.4.2"
+  }
+}

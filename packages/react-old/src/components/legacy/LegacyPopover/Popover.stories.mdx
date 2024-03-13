@@ -1,0 +1,163 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+
+import { Button } from '@digdir/designsystemet-react';
+import { Information, TokensTable } from '../../../../../../docs-components';
+
+import { LegacyPopover } from './index';
+
+<Meta
+  title='Avviklet/LegacyPopover'
+  component={LegacyPopover}
+
+argTypes={{
+    trigger: {
+      description:
+        'En `ReactNode` som brukes til å åpne og lukke popoveren. Fungerer også som ankringspunkt til popoverens posisjon. Denne komponenten må ha en `ref`. Dette er en egenskap som finnes på alle primitive React-komponenter, men dersom det er en egendefinert komponent, må man bruke `React.forwardRef` i definisjonen av komponenten til å sette `ref`-egenskapen på riktig plass.',
+      control: { type: 'object' },
+    },
+    children: {
+      description: 'En valgfri ReactNode som blir popoverens innhold.',
+      control: { type: 'object' },
+    },
+    arrow: {
+      description:
+        'Bestemmer om pilen på popoveren som peker til triggeren skal vises eller ikke.',
+      control: { type: 'boolean' },
+    },
+    placement: {
+      description:
+        'Bestemmer hvilken side popoveren skal plasseres på, samt om plasseringen skal rettes inn etter hvor triggeren starter eller slutter.',
+    },
+    open: {
+      description:
+        'Bestemmer om popoveren skal vises eller ikke. Om denne ikke settes håndteres den internt i popover komponenten. Om den settes anbefales det å bruke den sammen med `onOpenChange`.',
+      control: { type: 'boolean' },
+    },
+    onOpenChange: {
+      description:
+        'Funksjon som håndterer ednring av `open`. Om denne ikke settes håndteres den internt i popover komponenten. Om den settes anbefales det å bruke den sammen med `onOpenChange`.',
+    },
+    initialOpen: {
+      description:
+        'Bestemmer om tilstanden `open` skal settes til `true` ved rendering.',
+      control: { type: 'boolean' },
+    },
+    offset: {
+      description:
+        'Overstyrer avstanden fra triggeren til popoveren i åpen tilstand.',
+      control: { type: 'number' },
+    },
+  }}
+/>
+
+export const defaultArgs = {
+  trigger: <Button>My trigger</Button>,
+};
+
+export const Template = (args) => {
+  return (
+    <LegacyPopover
+      placement={args.placement}
+      variant={args.variant}
+      arrow={args.arrow}
+      offset={args.offset}
+      {...defaultArgs}
+    >
+      Lorem ipsum dolor sit amet...
+    </LegacyPopover>
+  );
+};
+
+export const ComplexTemplate = (args) => {
+  return (
+    <LegacyPopover
+      placement={args.placement}
+      variant={args.variant}
+      arrow={args.arrow}
+      offset={args.offset}
+      {...defaultArgs}
+    >
+      <div style={{ display: 'flex', 'align-items': 'center', gap: '1rem' }}>
+        Hallo!
+        <ul>
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+        <Button>Click me!</Button>
+      </div>
+    </LegacyPopover>
+  );
+};
+
+# LegacyPopover
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Popover](/?path=/docs/felles-popover--docs) komponent.**'
+/>
+
+LegacyPopover er et felt som plasseres over annet innhold og kan vises og skjules ved hjelp av å aktivere en gitt `trigger`.
+
+## Varianter
+
+### Default
+
+<Canvas>
+  <Story
+    name='LegacyPopover'
+    decorators={[
+      (Story) => (
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      ),
+    ]}
+    parameters={{
+      layout: 'centered',
+    }}
+    args={{
+      placement: 'top',
+      variant: 'default',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Mer komplekst innhold
+
+<Canvas>
+  <Story
+    name='Mer komplekst innhold'
+    decorators={[
+      (Story) => (
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      ),
+    ]}
+    parameters={{
+      layout: 'centered',
+    }}
+    args={{
+      placement: 'right',
+      variant: 'warning',
+    }}
+  >
+    {ComplexTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story='LegacyPopover' />
+
+## Tokens
+
+<TokensTable
+  componentName='popover'
+  description
+  jsonKey='component.popover'
+  showPreview={false}
+/>

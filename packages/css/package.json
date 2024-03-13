@@ -1,16 +1,18 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha.9",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
   "license": "MIT",
-  "private": true,
   "main": "./dist/index.css",
   "files": [
-    "*",
-    "dist/css"
+    "dist",
+    "*.css"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "css",
     "designsystem",
@@ -18,11 +20,17 @@
     "digdir"
   ],
   "scripts": {
-    "build": "postcss ./*.css --base . --dir ./dist",
+    "build": "rimraf dist && postcss ./*.css --base . --dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "cssnano": "^6.0.2",
-    "postcss-cli": "^11.0.0"
+    "postcss": "^8.4.35",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.0.1",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-react": "workspace:^"
   }
 }

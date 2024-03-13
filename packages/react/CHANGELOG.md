@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### BREAKING CHANGE: Package restructure
+
 ## [0.51.3](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.51.3-alpha.0...@digdir/design-system-react@0.51.3) (2024-03-08)
 
 ### Bug Fixes
