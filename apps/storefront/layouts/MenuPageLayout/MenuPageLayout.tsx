@@ -61,19 +61,14 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
                 {data.date && <div className={classes.date}>{data.date}</div>}
               </div>
               <div
-                className={cn(classes.headerAnchor, {
+                className={cn(classes.iconContainer, {
                   [classes.red]: data.color === 'red',
                   [classes.blue]: data.color === 'blue',
                   [classes.yellow]: data.color === 'yellow',
                 })}
               >
                 {data.icon && data.icon}
-                {!data.icon && (
-                  <ComponentIcon
-                    title='a11y-title'
-                    fontSize='4rem'
-                  />
-                )}
+                {!data.icon && <ComponentIcon fontSize='4rem' />}
               </div>
             </div>
           )}
