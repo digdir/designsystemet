@@ -53,7 +53,7 @@
 }
 
 .content > h4 {
-  font: var(--fds-typography-heading-small);
+  font: var(--fds-typography-heading-xsmall);
 }
 
 /* Anchor link styling */
