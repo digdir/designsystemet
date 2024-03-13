@@ -19,8 +19,8 @@ export function hashCode(input) {
 export function generateScopedName(name, fileNames) {
   const componentName = path.basename(fileNames, '.module.css').toLowerCase();
 
-  const filename = path.relative('.', fileNames);
-  const hash = hashCode(filename);
+  const filePaths = path.relative('.', fileNames);
+  const hash = hashCode(filePaths);
 
   return `fds-${componentName}-${name}-${hash}`;
 }
