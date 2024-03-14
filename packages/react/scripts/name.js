@@ -1,5 +1,6 @@
 import path from 'path';
 
+//
 export function hashCode(input) {
   let hash = 0;
   for (let i = 0; i < input.length; i += 1) {
@@ -18,7 +19,9 @@ export function hashCode(input) {
  */
 export function generateScopedName(name, fileNames) {
   const componentName = path.basename(fileNames, '.module.css').toLowerCase();
-  const hash = hashCode(fileNames);
+
+  const filePaths = path.relative('.', fileNames).replace(/\\/g, '/');
+  const hash = hashCode(filePaths);
 
   return `fds-${componentName}-${name}-${hash}`;
 }
