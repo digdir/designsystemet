@@ -32,7 +32,7 @@
 
 .meta {
   display: flex;
-  gap: var(--fds-spacing-2);
+  gap: var(--fds-spacing-3);
   color: var(--fds-semantic-text-neutral-subtle) !important;
 }
 

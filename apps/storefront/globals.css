@@ -6,7 +6,7 @@
   --color-surface-neutral-inverted-darker: #17202e;
 
   /* Spacing for page and grid */
-  --grid-max-width: 1380px;
+  --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
   --grid-gap: var(--fds-spacing-8);
   --page-spacing-top: var(--fds-spacing-14);
