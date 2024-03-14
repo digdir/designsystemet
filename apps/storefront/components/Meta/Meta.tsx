@@ -7,7 +7,7 @@ interface MetaProps {
 }
 
 const Meta = ({ title, description, image }: MetaProps) => {
-  title = `${title} - Felles Designsystem`;
+  title = `${title} - Designsystemet`;
   return (
     <Head>
       <title>{title}</title>
@@ -40,7 +40,7 @@ const Meta = ({ title, description, image }: MetaProps) => {
 
 // Let's set a default title
 Meta.defaultProps = {
-  title: 'Felles Designsystem',
+  title: 'Designsystemet',
 };
 
 export { Meta };

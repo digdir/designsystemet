@@ -1,5 +1,8 @@
 import type * as React from 'react';
 import { useRouter } from 'next/router';
+import { Heading } from '@digdir/design-system-react';
+import { ComponentIcon } from '@navikt/aksel-icons';
+import cn from 'clsx';
 
 import GithubLink from 'components/Link/Github/GithubLink';
 import { Banner } from 'components/SubPages/Banner/Banner';
@@ -15,13 +18,15 @@ type PageLayoutProps = {
     color: 'blue' | 'red' | 'yellow';
     title: string;
     ingress?: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
   };
 };
 
 type PageLayoutData = {
   title: string;
   date: string;
+  icon: React.ReactNode;
+  color: 'blue' | 'red' | 'yellow' | 'grey';
 };
 
 const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
@@ -46,8 +51,25 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
         >
           {data && (
             <div className={classes.header}>
-              <h1 className={classes.title}>{data.title}</h1>
-              {data.date && <div className={classes.date}>{data.date}</div>}
+              <div className={classes.headerText}>
+                <Heading
+                  size='large'
+                  className={classes.title}
+                >
+                  {data.title}
+                </Heading>
+                {data.date && <div className={classes.date}>{data.date}</div>}
+              </div>
+              <div
+                className={cn(classes.iconContainer, {
+                  [classes.red]: data.color === 'red',
+                  [classes.blue]: data.color === 'blue',
+                  [classes.yellow]: data.color === 'yellow',
+                })}
+              >
+                {data.icon && data.icon}
+                {!data.icon && <ComponentIcon fontSize='4rem' />}
+              </div>
             </div>
           )}
 

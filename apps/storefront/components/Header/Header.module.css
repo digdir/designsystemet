@@ -2,7 +2,6 @@
   height: 96px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--fds-semantic-border-neutral-subtle);
   background-color: white;
 }
 
@@ -51,7 +50,7 @@
 }
 
 .link:hover {
-  border-color: var(--fds-semantic-border-neutral-default);
+  border-color: var(--fds-semantic-border-neutral-subtle);
 }
 
 .itemIcon {
@@ -90,11 +89,12 @@
 }
 
 .item .active {
-  border-color: var(--fds-brand-alt3-600);
+  border-color: var(--fds-semantic-border-neutral-default);
+  font-weight: 500;
 }
 
 .item .active.link:hover {
-  border-color: var(--fds-brand-alt3-600);
+  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 @media (max-width: 991.98px) {

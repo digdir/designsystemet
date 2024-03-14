@@ -1,4 +1,5 @@
 import { Figma } from 'mdx-embed';
+import { TokenIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
 import { Meta, TokenList, CodeSnippet } from '@components';
@@ -14,6 +15,8 @@ export default ({ children }) => (
     data={{
       title: 'Typografi',
       date: '30. mai 2023',
+      icon: <TokenIcon />,
+      color: 'blue',
     }}
   />
 );

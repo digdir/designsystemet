@@ -1,9 +1,11 @@
+import { MoonIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
 import { Meta, TokenList } from '@components';
 
 <Meta
   title='Skygger'
-  description='Beskrivelse'
+  description='Hvordan skygger brukes i Designsystemet'
 />
 
 export default ({ children }) => (
@@ -12,6 +14,8 @@ export default ({ children }) => (
     data={{
       title: 'Skygger',
       date: '10. april 2023',
+      icon: <MoonIcon />,
+      color: 'yellow',
     }}
   />
 );

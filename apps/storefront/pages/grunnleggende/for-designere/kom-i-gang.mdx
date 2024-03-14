@@ -1,9 +1,11 @@
+import { PaletteIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
 import { Meta, ResponsiveIframe, Image } from '@components';
 
 <Meta
   title='Kom i gang med designsystemet i Figma'
-  description='Beskrivelse'
+  description='hvordan bruke Designsystemet i Figma og hvordan du kan aktivere bibliotekene.'
 />
 
 export default ({ children }) => (
@@ -12,6 +14,8 @@ export default ({ children }) => (
     data={{
       title: 'Kom i gang med designsystemet i Figma',
       date: '1. mars 2024',
+      icon: <PaletteIcon />,
+      color: 'blue',
     }}
   />
 );
