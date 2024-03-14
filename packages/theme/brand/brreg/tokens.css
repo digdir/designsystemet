@@ -243,6 +243,10 @@
   --fds-typography-paragraph-short-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
   --fds-typography-paragraph-short-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
   --fds-typography-paragraph-short-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter';
+  --fds-typography-paragraph-long-large: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.7 'Inter';
+  --fds-typography-paragraph-long-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.7 'Inter';
+  --fds-typography-paragraph-long-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.7 'Inter';
+  --fds-typography-paragraph-long-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.7 'Inter';
   --fds-typography-label-large: 500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter';
   --fds-typography-label-medium: 500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
   --fds-typography-label-small: 500 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
