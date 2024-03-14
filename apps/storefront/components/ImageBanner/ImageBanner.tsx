@@ -1,12 +1,9 @@
-import React, { useEffect, useState, createElement, useRef } from 'react';
-
+import React, { useEffect, useState, createElement } from 'react';
 import cn from 'clsx';
 
 import { Container } from '../Container/Container';
 
 import classes from './ImageBanner.module.css';
-
-import * as LottiePlayer from '@lottiefiles/lottie-player';
 
 interface ImageSectionProps {
   title?: string;
@@ -48,11 +45,8 @@ const ImageBanner = ({
   imgPosition = 'left',
   imgAlt = '',
   headingLevel = 'h1',
-  region,
-  regionPosition = 'topLeft',
 }: ImageSectionProps) => {
   const [heading, setHeading] = useState<React.ReactNode | null>(null);
-  const ref = useRef(null);
 
   useEffect(() => {
     setHeading(
@@ -66,7 +60,6 @@ const ImageBanner = ({
 
   return (
     <div className={(classes[backgroundColor], classes.section)}>
-      <div className={classes.region}>{region}</div>
       <Container className={cn(classes.container)}>
         {imgPosition === 'left' && (
           <div className={classes.imgContainer}>

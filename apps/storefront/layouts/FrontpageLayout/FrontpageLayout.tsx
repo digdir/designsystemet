@@ -117,31 +117,31 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
       </div>
       <Section title='Ting i tiden'>
         <BlogCard
-          title='Designsystemet er ute av beta'
+          title='Designsystemet er endelig ute av beta!'
           desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-          date='35 Januar 2024'
           href='/bloggen/dette-er-eit-navn'
-          image='https://source.unsplash.com/random/1920x1080'
-          author='Designsystemet'
+          image='/img/bloggen/versjon1.png'
           featured={false}
+          tagText='Bloggen'
+          tagColor='first'
         />
         <BlogCard
-          title='Tittel'
-          desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-          date='35 Januar 2024'
+          title='Derfor trenger vi et felles designsystem'
+          desc='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
           href='/bloggen/dette-er-eit-navn'
-          image='https://source.unsplash.com/random/1920x1080'
-          author='Designsystemet'
+          image='/img/bloggen/miro.png'
           featured={false}
+          tagText='Bloggen'
+          tagColor='first'
         />
         <BlogCard
-          title='Tittel'
-          desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-          date='35 Januar 2024'
+          title='Kompsisjon med asChild i React koden'
+          desc='Nokre gonger må du kanskje byte ut ein komponent med ein anna, for eksempel Button skulle vore ein Link. Det er her asChild kjem inn i biletet.'
           href='/bloggen/dette-er-eit-navn'
           image='https://source.unsplash.com/random/1920x1080'
-          author='Designsystemet'
           featured={false}
+          tagText='For utviklere'
+          tagColor='second'
         />
       </Section>
     </main>

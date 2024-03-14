@@ -47,6 +47,10 @@
   margin-bottom: var(--fds-spacing-4);
 }
 
+.tag {
+  margin-bottom: 8px;
+}
+
 .desc {
   font: var(--fds-typography-paragraph-medium);
   margin-top: 0;
@@ -61,4 +65,17 @@
 }
 
 .region {
+  color: inherit;
+}
+
+.link {
+  color: inherit;
+}
+
+.buttons {
+  color: inherit;
+}
+
+.button {
+  color: inherit;
 }

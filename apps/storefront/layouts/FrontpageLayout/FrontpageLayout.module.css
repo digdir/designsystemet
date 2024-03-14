@@ -48,8 +48,7 @@
 
 .cluster {
   position: absolute;
-  z-index: 5;
-  animation: floating 6s ease-in-out infinite;
+  z-index: 1;
 }
 
 .cluster1,
@@ -95,7 +94,7 @@
 }
 
 .banners {
-  margin: 0px 0;
+  margin: 0;
   margin-bottom: 130px;
 }
 
