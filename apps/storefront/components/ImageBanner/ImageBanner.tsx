@@ -4,7 +4,7 @@ import cn from 'clsx';
 
 import { Container } from '../Container/Container';
 
-import classes, { img } from './ImageBanner.module.css';
+import classes from './ImageBanner.module.css';
 
 import * as LottiePlayer from '@lottiefiles/lottie-player';
 
