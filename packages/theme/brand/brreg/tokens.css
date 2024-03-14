@@ -4,8 +4,8 @@
  */
 
 :root {
-  /** Referenced source tokens */ 
-  /** DO NOT OVERRIDE */ 
+  /** Referenced source tokens */
+  /** DO NOT OVERRIDE */
   --fds-colors-blue-100: #e6eff8;
   --fds-colors-blue-200: #b3d0ea;
   --fds-colors-blue-700: #0062ba;
@@ -39,42 +39,41 @@
   --fds-colors-grey-400: #bcbfc5;
   --fds-colors-red-800: #5a121d;
   --fds-colors-purple-700: #7a1265;
-  --fds-font-size-f0: clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem);
 
-  /** Tokens */ 
-  --fds-brand-alt1-50: #FFFFFF;
-  --fds-brand-alt1-100: #D1E4FF;
-  --fds-brand-alt1-200: #9ECAFF;
-  --fds-brand-alt1-300: #76ADFB;
-  --fds-brand-alt1-400: #5391E9;
-  --fds-brand-alt1-500: #2B77CC;
-  --fds-brand-alt1-600: #005FAE;
+  /** Tokens */
+  --fds-brand-alt1-50: #ffffff;
+  --fds-brand-alt1-100: #d1e4ff;
+  --fds-brand-alt1-200: #9ecaff;
+  --fds-brand-alt1-300: #76adfb;
+  --fds-brand-alt1-400: #5391e9;
+  --fds-brand-alt1-500: #2b77cc;
+  --fds-brand-alt1-600: #005fae;
   --fds-brand-alt1-700: #004785;
-  --fds-brand-alt1-800: #00315E;
-  --fds-brand-alt1-900: #001C3A;
+  --fds-brand-alt1-800: #00315e;
+  --fds-brand-alt1-900: #001c3a;
   --fds-brand-alt1-950: #001127;
-  --fds-brand-alt2-50: #FFFFFF;
-  --fds-brand-alt2-100: #E5F3F9;
-  --fds-brand-alt2-200: #C9E7F4;
-  --fds-brand-alt2-300: #70B3D7;
-  --fds-brand-alt2-400: #4E99BD;
-  --fds-brand-alt2-500: #3B7D9B;
-  --fds-brand-alt2-600: #2C647E;
-  --fds-brand-alt2-700: #1F4B63;
+  --fds-brand-alt2-50: #ffffff;
+  --fds-brand-alt2-100: #e5f3f9;
+  --fds-brand-alt2-200: #c9e7f4;
+  --fds-brand-alt2-300: #70b3d7;
+  --fds-brand-alt2-400: #4e99bd;
+  --fds-brand-alt2-500: #3b7d9b;
+  --fds-brand-alt2-600: #2c647e;
+  --fds-brand-alt2-700: #1f4b63;
   --fds-brand-alt2-800: #133349;
-  --fds-brand-alt2-900: #071D2C;
-  --fds-brand-alt2-950: #03121D;
-  --fds-brand-alt3-50: #EBF2F3;
-  --fds-brand-alt3-100: #D7E5E7;
-  --fds-brand-alt3-200: #B9CACB;
-  --fds-brand-alt3-300: #9FAEAF;
+  --fds-brand-alt2-900: #071d2c;
+  --fds-brand-alt2-950: #03121d;
+  --fds-brand-alt3-50: #ebf2f3;
+  --fds-brand-alt3-100: #d7e5e7;
+  --fds-brand-alt3-200: #b9cacb;
+  --fds-brand-alt3-300: #9faeaf;
   --fds-brand-alt3-400: #879394;
-  --fds-brand-alt3-500: #6D7879;
+  --fds-brand-alt3-500: #6d7879;
   --fds-brand-alt3-600: #576061;
   --fds-brand-alt3-700: #414849;
-  --fds-brand-alt3-800: #2C3132;
-  --fds-brand-alt3-900: #191C1C;
-  --fds-brand-alt3-950: #0F1112;
+  --fds-brand-alt3-800: #2c3132;
+  --fds-brand-alt3-900: #191c1c;
+  --fds-brand-alt3-950: #0f1112;
   --fds-semantic-surface-first-light: var(--fds-brand-alt1-100);
   --fds-semantic-surface-first-light-hover: var(--fds-brand-alt1-300);
   --fds-semantic-surface-first-light-active: var(--fds-brand-alt1-400);
@@ -94,7 +93,9 @@
   --fds-semantic-surface-action-first-active: var(--fds-colors-blue-900);
   --fds-semantic-surface-action-first-no_fill: var(--fds-colors-white);
   --fds-semantic-surface-action-first-no_fill-hover: var(--fds-colors-blue-100);
-  --fds-semantic-surface-action-first-no_fill-active: var(--fds-colors-blue-200);
+  --fds-semantic-surface-action-first-no_fill-active: var(
+    --fds-colors-blue-200
+  );
   --fds-semantic-surface-action-second-subtle: var(--fds-colors-grey-100);
   --fds-semantic-surface-action-second-subtle-hover: var(--fds-colors-grey-200);
   --fds-semantic-surface-action-second-default: var(--fds-colors-blue-900);
@@ -188,7 +189,9 @@
   --fds-semantic-border-danger-hover: var(--fds-colors-red-600);
   --fds-semantic-border-danger-active: var(--fds-colors-red-700);
   --fds-semantic-border-focus-outline: var(--fds-colors-yellow-500);
-  --fds-semantic-border-focus-boxshadow: var(--fds-semantic-border-neutral-strong);
+  --fds-semantic-border-focus-boxshadow: var(
+    --fds-semantic-border-neutral-strong
+  );
   --fds-semantic-border-on_inverted-default: var(--fds-colors-white);
   --fds-semantic-border-input-default: var(--fds-colors-blue-900);
   --fds-semantic-border-input-hover: var(--fds-colors-blue-700);
@@ -226,35 +229,64 @@
   --fds-semantic-text-visited-default: var(--fds-colors-purple-700);
   --fds-semantic-background-default: var(--fds-colors-white);
   --fds-semantic-background-subtle: var(--fds-colors-grey-100);
-  --fds-typography-heading-3xlarge: 500 clamp(1.94rem, calc(1.88vw + 1.56rem), 3.16rem)/1.3 'Inter';
-  --fds-typography-heading-2xlarge: 500 clamp(1.78rem, calc(1.44vw + 1.49rem), 2.72rem)/1.3 'Inter';
-  --fds-typography-heading-xlarge: 500 clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem)/1.3 'Inter';
-  --fds-typography-heading-large: 500 clamp(1.47rem, calc(0.86vw + 1.30rem), 2.03rem)/1.3 'Inter';
-  --fds-typography-heading-medium: 500 clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem)/1.3 'Inter';
-  --fds-typography-heading-small: 500 clamp(1.22rem, calc(0.43vw + 1.13rem), 1.50rem)/1.3 'Inter';
-  --fds-typography-heading-xsmall: 500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter';
-  --fds-typography-heading-xxsmall: 500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
-  --fds-typography-ingress-medium: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.6 'Inter';
-  --fds-typography-paragraph-large: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.5 'Inter';
-  --fds-typography-paragraph-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.5 'Inter';
-  --fds-typography-paragraph-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.5 'Inter';
-  --fds-typography-paragraph-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.5 'Inter';
-  --fds-typography-paragraph-short-large: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter';
-  --fds-typography-paragraph-short-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
-  --fds-typography-paragraph-short-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
-  --fds-typography-paragraph-short-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter';
-  --fds-typography-paragraph-long-large: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.7 'Inter';
-  --fds-typography-paragraph-long-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.7 'Inter';
-  --fds-typography-paragraph-long-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.7 'Inter';
-  --fds-typography-paragraph-long-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.7 'Inter';
-  --fds-typography-label-large: 500 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter';
-  --fds-typography-label-medium: 500 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
-  --fds-typography-label-small: 500 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
-  --fds-typography-label-xsmall: 500 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter';
-  --fds-typography-error_message-large: 400 clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem)/1.3 'Inter';
-  --fds-typography-error_message-medium: 400 clamp(1.00rem, calc(0.19vw + 0.96rem), 1.13rem)/1.3 'Inter';
-  --fds-typography-error_message-small: 400 clamp(0.91rem, calc(0.10vw + 0.89rem), 0.97rem)/1.3 'Inter';
-  --fds-typography-error_message-xsmall: 400 clamp(0.81rem, calc(0.05vw + 0.80rem), 0.84rem)/1.3 'Inter';
+  --fds-typography-heading-3xlarge: 500
+    clamp(1.94rem, calc(1.88vw + 1.56rem), 3.16rem) / 1.3 'Inter';
+  --fds-typography-heading-2xlarge: 500
+    clamp(1.78rem, calc(1.44vw + 1.49rem), 2.72rem) / 1.3 'Inter';
+  --fds-typography-heading-xlarge: 500
+    clamp(1.59rem, calc(1.15vw + 1.36rem), 2.34rem) / 1.3 'Inter';
+  --fds-typography-heading-large: 500
+    clamp(1.47rem, calc(0.86vw + 1.3rem), 2.03rem) / 1.3 'Inter';
+  --fds-typography-heading-medium: 500
+    clamp(1.34rem, calc(0.63vw + 1.22rem), 1.75rem) / 1.3 'Inter';
+  --fds-typography-heading-small: 500
+    clamp(1.22rem, calc(0.43vw + 1.13rem), 1.5rem) / 1.3 'Inter';
+  --fds-typography-heading-xsmall: 500
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.3 'Inter';
+  --fds-typography-heading-xxsmall: 500
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.3 'Inter';
+  --fds-typography-ingress-medium: 400
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.6 'Inter';
+  --fds-typography-paragraph-large: 400
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.5 'Inter';
+  --fds-typography-paragraph-medium: 400
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.5 'Inter';
+  --fds-typography-paragraph-small: 400
+    clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.5 'Inter';
+  --fds-typography-paragraph-xsmall: 400
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.5 'Inter';
+  --fds-typography-paragraph-short-large: 400
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.3 'Inter';
+  --fds-typography-paragraph-short-medium: 400
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.3 'Inter';
+  --fds-typography-paragraph-short-small: 400
+    clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.3 'Inter';
+  --fds-typography-paragraph-short-xsmall: 400
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.3 'Inter';
+  --fds-typography-paragraph-long-large: 400
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.7 'Inter';
+  --fds-typography-paragraph-long-medium: 400
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.7 'Inter';
+  --fds-typography-paragraph-long-small: 400
+    clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.7 'Inter';
+  --fds-typography-paragraph-long-xsmall: 400
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.7 'Inter';
+  --fds-typography-label-large: 500
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.3 'Inter';
+  --fds-typography-label-medium: 500
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.3 'Inter';
+  --fds-typography-label-small: 500
+    clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.3 'Inter';
+  --fds-typography-label-xsmall: 500
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.3 'Inter';
+  --fds-typography-error_message-large: 400
+    clamp(1.09rem, calc(0.34vw + 1.03rem), 1.31rem) / 1.3 'Inter';
+  --fds-typography-error_message-medium: 400
+    clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem) / 1.3 'Inter';
+  --fds-typography-error_message-small: 400
+    clamp(0.91rem, calc(0.1vw + 0.89rem), 0.97rem) / 1.3 'Inter';
+  --fds-typography-error_message-xsmall: 400
+    clamp(0.81rem, calc(0.05vw + 0.8rem), 0.84rem) / 1.3 'Inter';
   --fds-typography-interactive-large: 400 1.5rem/1.3 'Inter';
   --fds-typography-interactive-medium: 400 1.125rem/1.3 'Inter';
   --fds-typography-interactive-small: 400 1rem/1.3 'Inter';
@@ -269,44 +301,56 @@
   --fds-border_radius-xxxxlarge: 32px;
   --fds-border_radius-full: 9999px;
   --fds-spacing-0: calc(0);
-  --fds-spacing-1: calc(var(--fds-base_spacing)/16*var(--fds-font-size-f0));
-  --fds-spacing-2: calc(var(--fds-base_spacing)*2/16*var(--fds-font-size-f0));
-  --fds-spacing-3: calc(var(--fds-base_spacing)*3/16*var(--fds-font-size-f0));
-  --fds-spacing-4: calc(var(--fds-base_spacing)*4/16*var(--fds-font-size-f0));
-  --fds-spacing-5: calc(var(--fds-base_spacing)*5/16*var(--fds-font-size-f0));
-  --fds-spacing-6: calc(var(--fds-base_spacing)*6/16*var(--fds-font-size-f0));
-  --fds-spacing-7: calc(var(--fds-base_spacing)*7/16*var(--fds-font-size-f0));
-  --fds-spacing-8: calc((var(--fds-base_spacing)*8/16)*var(--fds-font-size-f0));
-  --fds-spacing-10: calc((var(--fds-base_spacing)*10/16)*var(--fds-font-size-f0));
-  --fds-spacing-12: calc((var(--fds-base_spacing)*12/16)*var(--fds-font-size-f0));
-  --fds-spacing-14: calc((var(--fds-base_spacing)*14/16)*var(--fds-font-size-f0));
-  --fds-spacing-18: calc((var(--fds-base_spacing)*18/16)*var(--fds-font-size-f0));
-  --fds-spacing-22: calc((var(--fds-base_spacing)*22/16)*var(--fds-font-size-f0));
-  --fds-spacing-26: calc((var(--fds-base_spacing)*26/16)*var(--fds-font-size-f0));
-  --fds-spacing-30: calc((var(--fds-base_spacing)*30/16)*var(--fds-font-size-f0));
+  --fds-spacing-1: calc(var(--fds-base_sizing));
+  --fds-spacing-2: calc(8);
+  --fds-spacing-3: calc(12);
+  --fds-spacing-4: calc(16);
+  --fds-spacing-5: calc(20);
+  --fds-spacing-6: calc(2var (--fds-base_sizing));
+  --fds-spacing-7: calc(28);
+  --fds-spacing-8: calc(32);
+  --fds-spacing-9: calc(36);
+  --fds-spacing-10: calc(var(--fds-base_sizing) 0);
+  --fds-spacing-11: calc(var(--fds-base_sizing) 4);
+  --fds-spacing-12: calc(var(--fds-base_sizing) 8);
+  --fds-spacing-13: calc(52);
+  --fds-spacing-14: calc(56);
+  --fds-spacing-18: calc(72);
+  --fds-spacing-22: calc(88);
+  --fds-spacing-26: calc(10var (--fds-base_sizing));
+  --fds-spacing-30: calc(120);
   --fds-base_spacing: 4;
-  --fds-sizing-1: calc(var(--fds-base_sizing)/16*var(--fds-font-size-f0));
-  --fds-sizing-2: calc(var(--fds-base_sizing)*2/16*var(--fds-font-size-f0));
-  --fds-sizing-3: calc(var(--fds-base_sizing)*3/16*var(--fds-font-size-f0));
-  --fds-sizing-4: calc(var(--fds-base_sizing)*4/16*var(--fds-font-size-f0));
-  --fds-sizing-5: calc(var(--fds-base_sizing)*5/16*var(--fds-font-size-f0));
-  --fds-sizing-6: calc(var(--fds-base_sizing)*6/16*var(--fds-font-size-f0));
-  --fds-sizing-7: calc(var(--fds-base_sizing)*7/16*var(--fds-font-size-f0));
-  --fds-sizing-8: calc(var(--fds-base_sizing)*8/16*var(--fds-font-size-f0));
-  --fds-sizing-10: calc(var(--fds-base_sizing)*10/16*var(--fds-font-size-f0));
-  --fds-sizing-12: calc((var(--fds-base_sizing)*12/16)*var(--fds-font-size-f0));
-  --fds-sizing-14: calc((var(--fds-base_sizing)*14/16)*var(--fds-font-size-f0));
-  --fds-sizing-18: calc((var(--fds-base_sizing)*18/16)*var(--fds-font-size-f0));
-  --fds-sizing-22: calc((var(--fds-base_sizing)*22/16)*var(--fds-font-size-f0));
-  --fds-sizing-26: calc((var(--fds-base_sizing)*26/16)*var(--fds-font-size-f0));
-  --fds-sizing-30: calc((var(--fds-base_sizing)*30/16)*var(--fds-font-size-f0));
+  --fds-sizing-0: calc(0);
+  --fds-sizing-1: calc(var(--fds-base_sizing));
+  --fds-sizing-2: calc(8);
+  --fds-sizing-3: calc(12);
+  --fds-sizing-4: calc(16);
+  --fds-sizing-5: calc(20);
+  --fds-sizing-6: calc(2var (--fds-base_sizing));
+  --fds-sizing-7: calc(28);
+  --fds-sizing-8: calc(32);
+  --fds-sizing-9: calc(36);
+  --fds-sizing-10: calc(var(--fds-base_sizing) 0);
+  --fds-sizing-11: calc(var(--fds-base_sizing) 4);
+  --fds-sizing-12: calc(var(--fds-base_sizing) 8);
+  --fds-sizing-13: calc(52);
+  --fds-sizing-14: calc(56);
+  --fds-sizing-18: calc(72);
+  --fds-sizing-22: calc(88);
+  --fds-sizing-26: calc(10var (--fds-base_sizing));
+  --fds-sizing-30: calc(120);
   --fds-base_sizing: 4;
   --fds-border_width-default: 1px;
   --fds-border_width-active: 2px;
   --fds-border_width-tab_focus: 2px;
-  --fds-shadow-xsmall: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
-  --fds-shadow-small: 0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1);
-  --fds-shadow-medium: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
-  --fds-shadow-large: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
-  --fds-shadow-xlarge: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
+  --fds-shadow-xsmall: 0 0 1px 0 rgba(0, 0, 0, 0.16),
+    0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --fds-shadow-small: 0 0 1px 0 rgba(0, 0, 0, 0.15),
+    0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --fds-shadow-medium: 0 0 1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+  --fds-shadow-large: 0 0 1px 0 rgba(0, 0, 0, 0.13),
+    0 3px 5px 0 rgba(0, 0, 0, 0.13), 0 6px 12px 0 rgba(0, 0, 0, 0.14);
+  --fds-shadow-xlarge: 0 0 1px 0 rgba(0, 0, 0, 0.12),
+    0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 12px 24px 0 rgba(0, 0, 0, 0.16);
 }
