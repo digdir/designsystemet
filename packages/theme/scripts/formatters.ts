@@ -55,10 +55,15 @@ export const scopedReferenceVariables: Named<Format> = {
             ...refs.filter((x) => x.isSource),
           ];
 
-          return formatWithReference(token);
+          const formatted = formatWithReference(token);
+          console.log(`${token.path.toString()}:`, formatted);
+
+          return formatted;
         }
 
-        return !token.isSource && format(token);
+        if (!token.isSource) {
+          return format(token);
+        }
       })
       .filter((x) => x);
 
