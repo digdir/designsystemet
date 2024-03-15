@@ -16,7 +16,7 @@ export type ParagraphProps = {
    * @deprecated Use `variant="short"` instead
    */
   short?: boolean;
-  /** Variant of the paragraph */
+  /** Adjusts styling for paragraph length */
   variant?: 'long' | 'short';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
