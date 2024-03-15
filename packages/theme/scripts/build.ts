@@ -7,14 +7,7 @@ import type {
   Named,
   FileHeader,
 } from 'style-dictionary';
-import {
-  registerTransforms,
-  checkAndEvaluateMath,
-  transformColorModifiers,
-  transformHEXRGBaForCSS,
-  transformLineHeight,
-  transformShadowForCSS,
-} from '@tokens-studio/sd-transforms';
+import { registerTransforms } from '@tokens-studio/sd-transforms';
 
 import {
   sizePx,
@@ -59,58 +52,6 @@ StyleDictionary.registerTransform(typographyShorthand);
 StyleDictionary.registerTransform(fluidFontSize);
 StyleDictionary.registerTransform(calc);
 
-StyleDictionary.registerTransform({
-  name: 'ts/resolveMath',
-  type: 'value',
-  transitive: true,
-  matcher: (token) => typeof (token.$value ?? token.value) === 'string',
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
-  transformer: (token) => checkAndEvaluateMath(token.$value ?? token.value),
-});
-
-StyleDictionary.registerTransform({
-  name: 'ts/color/modifiers',
-  type: 'value',
-  transitive: true,
-  matcher: (token) =>
-    (token.$type ?? token.type) === 'color' &&
-    token.$extensions &&
-    token.$extensions['studio.tokens']?.modify,
-  transformer: (token) =>
-    transformColorModifiers(token, transformOpts?.['ts/color/modifiers']),
-});
-
-StyleDictionary.registerTransform({
-  name: 'ts/color/css/hexrgba',
-  type: 'value',
-  transitive: true,
-  matcher: (token) => (token.$type ?? token.type) === 'color',
-  transformer: (token) => transformHEXRGBaForCSS(token.$value ?? token.value),
-});
-
-StyleDictionary.registerTransform({
-  name: 'ts/size/lineheight',
-  type: 'value',
-  matcher: (token) => (token.$type ?? token.type) === 'lineHeights',
-  transformer: (token) => transformLineHeight(token.$value ?? token.value),
-});
-
-StyleDictionary.registerTransform({
-  name: 'ts/shadow/css/shorthand',
-  type: 'value',
-  transitive: true,
-  matcher: (token) => {
-    const type = token.$type ?? token.type;
-    return typeof type === 'string' && ['boxShadow'].includes(type);
-  },
-  transformer: (token) => {
-    const val = token.$value ?? token.value;
-    return Array.isArray(val)
-      ? val.map((single) => transformShadowForCSS(single)).join(', ')
-      : transformShadowForCSS(val);
-  },
-});
-
 StyleDictionary.registerFormat(fontScaleHackFormat);
 StyleDictionary.registerFormat(scopedReferenceVariables);
 StyleDictionary.registerFormat(groupedTokens);
@@ -123,13 +64,13 @@ StyleDictionary.registerTransformGroup({
     nameKebab.name,
     'ts/resolveMath',
     fluidFontSize.name,
+    calc.name,
     typographyShorthand.name,
     'ts/size/lineheight',
     'ts/shadow/css/shorthand',
     sizePx.name,
     'ts/color/modifiers',
     'ts/color/css/hexrgba',
-    calc.name,
   ],
 });
 
@@ -168,13 +109,11 @@ const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
       css: {
         prefix,
         basePxFontSize,
-        // transformGroup: 'fds/css',
-        transformGroup: 'tokens-studio',
+        transformGroup: 'fds/css',
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            // format: 'css/variables-scoped-references',
-            format: 'css/variables',
+            format: 'css/variables-scoped-references',
             // filter: excludeSource,
           },
         ],
@@ -251,11 +190,11 @@ brands.map((brand) => {
 
   console.log(`\n👷 Processing ${brand}`);
 
-  // const storefrontSD = StyleDictionary.extend(
-  //   getStorefrontConfig(brand, storefrontTokensPath),
-  // );
+  const storefrontSD = StyleDictionary.extend(
+    getStorefrontConfig(brand, storefrontTokensPath),
+  );
 
-  // storefrontSD.buildAllPlatforms();
+  storefrontSD.buildAllPlatforms();
 });
 
 console.log('\n---------------------------------------');

@@ -69,25 +69,13 @@ export const calc: Named<Transform> = {
   name: 'fds/calc',
   type: 'value',
   transitive: true,
-  matcher: (token) => {
-    const isMatch =
-      (token.type === 'spacing' && token.path[0] === 'spacing') ||
-      (token.type === 'sizing' && token.path[0] === 'sizing');
-
-    if (isMatch) {
-      console.log(`Matched calc: `, token.path);
-    }
-
-    return isMatch;
-  },
+  matcher: (token) =>
+    (token.type === 'spacing' && token.path[0] === 'spacing') ||
+    (token.type === 'sizing' && token.path[0] === 'sizing'),
   transformer: (token) => {
     const value = token.value as string;
 
-    const newValue = `calc(${value})`;
-
-    console.log('Updated value: ', newValue);
-
-    return newValue;
+    return `calc(${value})`;
   },
 };
 
