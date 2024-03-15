@@ -1,3 +1,5 @@
+import { MoonIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
 import { Meta, TokenList } from '@components';
 
@@ -12,6 +14,8 @@ export default ({ children }) => (
     data={{
       title: 'Skygger',
       date: '10. april 2023',
+      icon: <MoonIcon />,
+      color: 'yellow',
     }}
   />
 );

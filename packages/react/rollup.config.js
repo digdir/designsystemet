@@ -2,7 +2,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import cssnano from 'cssnano';
 
 import { generateScopedName } from './scripts/name';
 
@@ -14,37 +13,33 @@ export default [
         dir: './dist/cjs',
         format: 'cjs',
         banner: "'use client';",
-        // preserveModules: true,
-        // preserveModulesRoot: 'tsc-build',
+        preserveModules: true,
+        preserveModulesRoot: 'tsc-build',
       },
       {
         dir: './dist/esm',
         format: 'es',
         banner: "'use client';",
-        // preserveModules: true,
-        // preserveModulesRoot: 'tsc-build',
+        preserveModules: true,
+        preserveModulesRoot: 'tsc-build',
       },
     ],
     external: [
-      /@altinn\/figma-design-tokens.*(?<!css)$/,
-      /@react-hookz\/web/,
-      /@radix-ui\/react-popover$/,
-      /react-number-format/,
-      /react-leaflet/,
-      /leaflet/,
-      /@navikt\/ds-icons/,
+      /@digdir\/designsystemet-theme/,
+      /@digdir\/designsystemet-css/,
+      /@digdir\/design-system-tokens/,
+      /@navikt\/aksel-icons/,
     ],
     plugins: [
       peerDepsExternal(),
       resolve(),
       commonjs(),
       postcss({
-        // disabled until our css package is released and people are informed of new setup
-        // extract: true,
+        // extract name is used in script in package.json
+        extract: 'react-css-modules.css',
         modules: {
           generateScopedName,
         },
-        plugins: [cssnano({ preset: 'default' })],
       }),
     ],
   },

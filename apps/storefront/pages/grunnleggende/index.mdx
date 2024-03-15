@@ -5,6 +5,9 @@ import {
   PackageIcon,
   BranchingIcon,
   LightBulbIcon,
+  RulerIcon,
+  CodeIcon,
+  MoonIcon,
 } from '@navikt/aksel-icons';
 
 import { NavMenuPageLayout } from '@layouts';
@@ -35,7 +38,7 @@ Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis o
 <Grid>
   <NavigationCard
     title='Om designsystemet'
-    color='red'
+    color='blue'
     icon={<ComponentIcon fontSize={34} />}
     url='grunnleggende/introduksjon/om-designsystemet'
     description='Hva er Designsystemet, hvorfor trenger vi det, hvordan gjør vi det og hvem er med?'
@@ -75,8 +78,8 @@ Stilene i designsystemet er grunnleggende designelementer som brukes i komponent
   <NavigationCard
     title='Avstander'
     color='blue'
-    icon={<TokenIcon fontSize={34} />}
-    url='grunnleggende/designelementer/spacing'
+    icon={<RulerIcon fontSize={34} />}
+    url='grunnleggende/designelementer/storrelser-og-avstander'
     description='Settet med avstander som er definert i tokens sikrer konsistens på tvers av grensesnitt.'
     backgroundColor='white'
   />
@@ -91,7 +94,7 @@ Stilene i designsystemet er grunnleggende designelementer som brukes i komponent
   <NavigationCard
     title='Skygger'
     color='yellow'
-    icon={<TokenIcon fontSize={34} />}
+    icon={<MoonIcon fontSize={34} />}
     url={'grunnleggende/designelementer/skygger'}
     description='Skygger kan hjelpe svaksynte til å identifisere komponenter og bør brukes konsistent da de uttrykker at noe ligger over noe annet i løsningen.'
     backgroundColor='white'
@@ -137,7 +140,7 @@ Ressurser og veiledning relevant for utviklere
   <NavigationCard
     title='Kom i gang som utvikler'
     color='blue'
-    icon={<PackageIcon fontSize={34} />}
+    icon={<CodeIcon fontSize={34} />}
     url='grunnleggende/for-utviklere/kom-i-gang'
     description='Lær hvordan du kommer i gang med designsystemet som utvikler'
     backgroundColor='white'
@@ -154,10 +157,6 @@ Ressurser og veiledning relevant for utviklere
 
 <style>
   {`
-    .Header_header__pXml_ {
-      border-bottom: none
-    }
-
     body {
       background-color: var(--fds-semantic-background-subtle);
     }

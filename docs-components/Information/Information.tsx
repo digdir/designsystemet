@@ -1,6 +1,6 @@
 import { Markdown } from '@storybook/blocks';
-import type { AlertProps } from '@digdir/design-system-react';
-import { Paragraph, Alert, Heading } from '@digdir/design-system-react';
+import type { AlertProps } from '@digdir/designsystemet-react';
+import { Paragraph, Alert, Heading } from '@digdir/designsystemet-react';
 
 import classes from './Information.module.css';
 
@@ -10,12 +10,12 @@ const texts: Record<Texts, { description: string; title?: string }> = {
   token: {
     title: '',
     description:
-      'Husk å importere ny tokens-pakke **`@digdir/design-system-tokens/brand/<brand>/tokens.css`** før du tar i bruk denne komponenten.\n\n Importer tokens i henhold til ditt brand; `altinn`, `digdir`, `brreg` eller `tilsynet`.',
+      'Husk å importere ny tokens-pakke **`@digdir/designsystemet-theme/brand/<brand>/tokens.css`** før du tar i bruk denne komponenten.\n\n Importer tokens i henhold til ditt brand; `altinn`, `digdir`, `brreg` eller `tilsynet`.',
   },
   development: {
     title: 'Under utvikling',
     description:
-      'Komponenten er under utvikling og dermed ikke tilgjenglig i `@digdir/design-system-react`.',
+      'Komponenten er under utvikling og dermed ikke tilgjenglig i `@digdir/designsystemet-react`.',
   },
   altinn: {
     title: 'Altinn',
