@@ -867,8 +867,7 @@
     },
     "12": {
       "value": "{base_sizing}*12",
-      "type": "spacing",
-      "description": "48px - 54px"
+      "type": "spacing"
     },
     "13": {
       "value": "{base_sizing}*13",
