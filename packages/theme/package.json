@@ -19,11 +19,11 @@
     "clean": "rimraf brand"
   },
   "devDependencies": {
-    "@tokens-studio/sd-transforms": "^0.9.3",
+    "@tokens-studio/sd-transforms": "^0.14.4",
     "@types/ramda": "^0.29.9",
     "esno": "^4.7.0",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
-    "style-dictionary": "^3.8.0"
+    "style-dictionary": "^3.9.2"
   }
 }
