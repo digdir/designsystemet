@@ -12,10 +12,12 @@ export type ParagraphProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Reduces line-height for short paragraphs */
+  /** Reduces line-height for short paragraphs
+   * @deprecated Use `variant="short"` instead
+   */
   short?: boolean;
-  /** Increases line-height for long paragraphs */
-  long?: boolean;
+  /** Variant of the paragraph */
+  variant?: 'long' | 'short';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -36,16 +38,12 @@ export const Paragraph: OverridableComponent<
       as = 'p',
       asChild,
       short,
-      long,
+      variant,
       ...rest
     },
     ref,
   ) => {
     const Component = asChild ? Slot : as;
-
-    if (long && short) {
-      console.error("Only one of 'long' or 'short' should be used at a time");
-    }
 
     return (
       <Component
@@ -56,8 +54,8 @@ export const Paragraph: OverridableComponent<
           {
             [classes.spacing]: !!spacing,
             [classes.short]: short,
-            [classes.long]: long,
           },
+          variant && classes[variant],
           className,
         )}
         {...rest}
