@@ -26,7 +26,7 @@ export type PopoverProps = {
   size?: 'small' | 'medium' | 'large';
   /** Element the popover anchors to
    * @deprecated Use `Popover.Trigger` instead
-   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/felles-popover--docs)
+   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-popover--docs)
    */
   anchorEl?: Element | null;
   /** Callback function when popover changes open state */

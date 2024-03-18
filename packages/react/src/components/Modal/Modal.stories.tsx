@@ -18,7 +18,7 @@ const decorators = [
 ];
 
 export default {
-  title: 'Felles/Modal',
+  title: 'Komponenter/Modal',
   component: Modal,
   decorators,
 } as Meta;
