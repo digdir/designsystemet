@@ -113,7 +113,7 @@
 .input.small {
   --f-search-button-clear-size: var(--fds-sizing-4);
 
-  height: var(--fds-sizing-8);
+  height: var(--fds-sizing-10);
   padding: 0 var(--fds-spacing-2);
   padding-right: 2.5em;
 }
@@ -121,7 +121,7 @@
 .input.medium {
   --f-search-button-clear-size: var(--fds-sizing-6);
 
-  height: var(--fds-sizing-10);
+  height: var(--fds-sizing-12);
   padding: 0 var(--fds-spacing-3);
   padding-right: 2.2em;
 }
@@ -129,7 +129,7 @@
 .input.large {
   --f-search-button-clear-size: var(--fds-sizing-12);
 
-  height: var(--fds-sizing-12);
+  height: var(--fds-sizing-14);
   padding: 0 var(--fds-spacing-4);
   padding-right: 2em;
 }
