@@ -134,19 +134,19 @@
 /** Sizing */
 
 .small {
-  --fds-radio-size: 1.5rem;
+  --fds-radio-size: var(--fds-sizing-5);
 
-  min-height: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-5);
 }
 
 .medium {
-  --fds-radio-size: 1.75rem;
+  --fds-radio-size: var(--fds-sizing-6);
 
-  min-height: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-6);
 }
 
 .large {
-  --fds-radio-size: 2rem;
+  --fds-radio-size: var(--fds-sizing-7);
 
-  min-height: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-7);
 }
