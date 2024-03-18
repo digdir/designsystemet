@@ -59,7 +59,7 @@ export interface LegacyCheckboxProps {
   readOnly?: boolean;
 }
 /**
- * @note Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/felles-checkbox--docs Checkbox} component.
+ * @note Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/komponenter-checkbox--docs Checkbox} component.
  */
 const LegacyCheckbox = ({
   checkboxId,
