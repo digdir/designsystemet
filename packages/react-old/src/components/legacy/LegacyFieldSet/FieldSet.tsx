@@ -48,7 +48,7 @@ const SIZE_MAP: {
 /**
  *
  * @note
- * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/felles-fieldset--docs Fieldset} component.
+ * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/komponenter-fieldset--docs Fieldset} component.
  */
 const LegacyFieldSet = forwardRef<HTMLFieldSetElement, LegacyFieldSetProps>(
   (

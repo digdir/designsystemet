@@ -11,7 +11,7 @@ import { Button } from './';
 type Story = StoryObj<typeof Button>;
 
 const meta: Meta<typeof Button> = {
-  title: 'Felles/Button',
+  title: 'Komponenter/Button',
   component: Button,
 };
 

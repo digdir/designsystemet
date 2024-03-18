@@ -9,7 +9,7 @@ import { ErrorSummary } from './';
 type Story = StoryFn<typeof ErrorSummary.Root>;
 
 export default {
-  title: 'Felles/ErrorSummary',
+  title: 'Komponenter/ErrorSummary',
   component: ErrorSummary.Root,
 } as Meta;
 

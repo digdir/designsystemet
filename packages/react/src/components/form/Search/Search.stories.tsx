@@ -9,7 +9,7 @@ import { Search } from '.';
 type Story = StoryObj<typeof Search>;
 
 export default {
-  title: 'Felles/Search',
+  title: 'Komponenter/Search',
   component: Search,
 } as Meta;
 

@@ -6,7 +6,7 @@ import { Button, Link } from '../';
 import { Accordion } from '.';
 
 export default {
-  title: 'Felles/Accordion',
+  title: 'Komponenter/Accordion',
   component: Accordion,
   parameters: {
     layout: 'padded',

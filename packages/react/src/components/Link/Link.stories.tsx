@@ -8,7 +8,7 @@ import { Link } from '.';
 type Story = StoryObj<typeof Link>;
 
 export default {
-  title: 'Felles/Link',
+  title: 'Komponenter/Link',
   component: Link,
   parameters: {
     status: {

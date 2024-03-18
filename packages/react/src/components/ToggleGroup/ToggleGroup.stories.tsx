@@ -13,7 +13,7 @@ const AkselIcon4 = icons.BackpackFillIcon;
 const AkselIcon5 = icons.BellFillIcon;
 
 export default {
-  title: 'Felles/ToggleGroup',
+  title: 'Komponenter/ToggleGroup',
   component: ToggleGroup,
 } as Meta;
 

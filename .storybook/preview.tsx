@@ -176,7 +176,7 @@ const preview: Preview = {
         order: [
           'Oversikt',
           'Endringslogger',
-          'Felles',
+          'Komponenter',
           'Experimental',
           'Primitives',
           'Avviklet',
