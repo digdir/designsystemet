@@ -69,7 +69,10 @@ export const Tertiary: StoryFn<typeof Button> = () => (
       variant='tertiary'
       color='first'
     >
-      <akselIcons.PencilWritingIcon aria-hidden />
+      <akselIcons.PencilWritingIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Rediger
     </Button>
   </>
@@ -108,21 +111,30 @@ export const Second: StoryFn<typeof Button> = () => (
       variant='secondary'
       color='second'
     >
-      <akselIcons.PrinterSmallIcon aria-hidden />
+      <akselIcons.PrinterSmallIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Skriv ut
     </Button>
     <Button
       variant='secondary'
       color='second'
     >
-      <akselIcons.PencilWritingIcon aria-hidden />
+      <akselIcons.PencilWritingIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Rediger
     </Button>
     <Button
       variant='secondary'
       color='second'
     >
-      <akselIcons.ArrowForwardIcon aria-hidden />
+      <akselIcons.ArrowForwardIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Videresend
     </Button>
   </>
@@ -136,7 +148,10 @@ export const Danger: StoryFn<typeof Button> = () => (
       variant='primary'
       color='danger'
     >
-      <akselIcons.TrashIcon aria-hidden />
+      <akselIcons.TrashIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Slett
     </Button>
   </>
@@ -201,7 +216,7 @@ export const KnappSomLenke: StoryFn<typeof Button> = () => (
       href='https://www.designsystemet.no'
     >
       Gå til Designsystemet
-      <akselIcons.ExternalLinkIcon />
+      <akselIcons.ExternalLinkIcon fontSize='1.5rem' />
     </a>
   </Button>
 );
@@ -215,7 +230,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.PlusCircleIcon />
+        <akselIcons.PlusCircleIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
@@ -225,7 +240,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.BellIcon />
+        <akselIcons.BellIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
@@ -235,7 +250,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.CogIcon />
+        <akselIcons.CogIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
   </>
@@ -261,13 +276,19 @@ export const TekstOgIkon: StoryFn<typeof Button> = () => (
       color='second'
     >
       Start utfylling
-      <akselIcons.ArrowRightIcon aria-hidden />
+      <akselIcons.ArrowRightIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
     </Button>
     <Button
       variant='secondary'
       color='second'
     >
-      <akselIcons.ArrowUndoIcon aria-hidden />
+      <akselIcons.ArrowUndoIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Angre
     </Button>
   </>
@@ -320,7 +341,7 @@ export const FullBredde: Story = {
   args: {
     children: (
       <>
-        <akselIcons.PlusIcon />
+        <akselIcons.PlusIcon fontSize='1.5rem' />
         Last inn flere
       </>
     ),
