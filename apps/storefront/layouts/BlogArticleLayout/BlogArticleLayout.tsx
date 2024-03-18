@@ -36,6 +36,7 @@ const BlogArticleLayout = ({
             style={{
               /* @ts-expect-error #2353 */
               '--number': index + 1,
+              '--figure-y-offset': index === 0 ? '250px' : '600px',
             }}
           />
         ))}
@@ -81,13 +82,6 @@ const BlogArticleLayout = ({
           </MdxContent>
         </main>
       </Container>
-      <style>
-        {`
-    .Header_header__pXml_ {
-      border-bottom: none
-    }
-  `}
-      </style>
     </div>
   );
 };

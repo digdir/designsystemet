@@ -1,0 +1,76 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+
+import { Information, TokensTable } from '../../../../../../docs-components';
+
+import * as LegacyTextAreaStories from './TextArea.stories';
+
+<Meta of={LegacyTextAreaStories} />
+
+# LegacyTextArea
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Textarea](/?path=/docs/komponenter-textarea--docs) komponent.**'
+/>
+
+`LegacyTextArea` brukes til å ta imot lengre tekster, gjerne over flere linjer.
+
+## Bruk
+
+```tsx
+import { LegacyTextArea } from '@digdir/design-system-react';
+
+<LegacyTextArea {...props} />;
+```
+
+## Props
+
+<Primary />
+<Controls />
+
+## Eksempler
+
+### Standard
+
+<Canvas>
+  <Story of={LegacyTextAreaStories.Standard} />
+</Canvas>
+
+### Med feil
+
+<Canvas>
+  <Story of={LegacyTextAreaStories.MedFeil} />
+</Canvas>
+
+### Skrivebeskyttet
+
+<Canvas>
+  <Story of={LegacyTextAreaStories.Skrivebeskyttet} />
+</Canvas>
+
+### Bekreftelsesvisning
+
+<Canvas>
+  <Story of={LegacyTextAreaStories.Bekreftelsesvisning} />
+</Canvas>
+
+### Deaktivert
+
+<Canvas>
+  <Story of={LegacyTextAreaStories.Deaktivert} />
+</Canvas>
+
+### Viser antall tegn igjen å skrive
+
+<Canvas>
+  <Story of={LegacyTextAreaStories.AntallTegnIgjenASkrive} />
+</Canvas>
+
+## Tokens
+
+<TokensTable
+  jsonKey='component.textfield'
+  componentName='textfield'
+  showPreview={false}
+  description
+/>

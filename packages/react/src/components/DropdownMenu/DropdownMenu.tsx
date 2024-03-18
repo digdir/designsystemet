@@ -7,7 +7,7 @@ import type { PortalProps } from '../../types/Portal';
 export type DropdownMenuProps = {
   /** Element the dropdown anchors to
    * @deprecated Use `DropdownMenu.Trigger` instead
-   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/felles-dropdownmenu--docs)
+   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-dropdownmenu--docs)
    */
   anchorEl?: Element | null;
   /** Whether the dropdown is open or not.

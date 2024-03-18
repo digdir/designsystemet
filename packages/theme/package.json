@@ -1,0 +1,29 @@
+{
+  "name": "@digdir/designsystemet-theme",
+  "version": "0.14.1",
+  "description": "Tokens for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": "https://github.com/digdir/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/theme",
+  "license": "MIT",
+  "main": "brand/digdir/tokens.css",
+  "files": [
+    "brand/**",
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "yarn run clean && esno ./scripts/build.ts",
+    "clean": "rimraf brand"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^0.9.3",
+    "@types/ramda": "^0.29.9",
+    "esno": "^4.7.0",
+    "ramda": "^0.29.1",
+    "rimraf": "^5.0.5",
+    "style-dictionary": "^3.8.0"
+  }
+}

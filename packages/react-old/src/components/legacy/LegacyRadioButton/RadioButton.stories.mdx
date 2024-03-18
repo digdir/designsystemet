@@ -1,0 +1,247 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+
+import { Information, TokensTable } from '../../../../../../docs-components';
+
+import { LegacyRadioButton } from './index';
+
+<Meta
+  title='Avviklet/LegacyRadioButton'
+  component={LegacyRadioButton}
+  argTypes={{
+    checked: {
+      description: 'Trykker inn radioknappen.',
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      description: 'Deaktiverer radioknappen.',
+      control: { type: 'boolean' },
+    },
+    label: {
+      description: 'Tekst som vises til høyre for radioknappen.',
+      control: { type: 'text' },
+    },
+    description: {
+      description:
+        'Beskrivelse av radioknappen. Vises under teksten til høyre.',
+      control: { type: 'text' },
+    },
+    onChange: {
+      description: 'Funksjon som kalles når brukeren klikker på radioknappen.',
+      control: { type: 'function' },
+    },
+    name: {
+      description: 'Navn på radioknappen.',
+      control: { type: 'text' },
+    },
+    error: {
+      description: 'Gir radioknappen en rød ramme for å indikere en feil.',
+      control: { type: 'boolean' },
+    },
+    helpText: {
+      description:
+        'Legger på en hjelpe-tekst knapp ved siden av labelen til radioknappen.',
+    },
+    hideLabel: {
+      description:
+        'Skjuler teksten til høyre for radioknappen, men gjør den tilgjengelig for verktøy som skjermlesere.',
+      control: { type: 'boolean' },
+    },
+    radioId: {
+      description: 'Id på radioknappen.',
+      control: { type: 'text' },
+    },
+    size: {
+      description: 'Brukes til å velge størrelse.',
+      control: {
+        type: 'radio',
+        options: ['small', 'xsmall'],
+      },
+      defaultValue: 'small',
+    },
+    presentation: {
+      description:
+        'Sett denne hvis radioknappen er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av radioknappen være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+      control: { type: 'boolean' },
+    },
+    ref: {
+      description: 'Referanse til selve radioknappen.',
+    },
+  }}
+/>
+
+export const defaultArgs = {
+  checked: false,
+  disabled: false,
+  onChange: () => {},
+};
+export const Template = (args = {}) => (
+  <LegacyRadioButton {...{ ...defaultArgs, ...args }} />
+);
+
+# LegacyRadioButton
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Radio](/?path=/docs/komponenter-radio--docs) komponent.**'
+/>
+
+`LegacyRadioButton` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer.
+Vi anbefaler å bruke `RadioGroup` hvis man har behov for radioknapper,
+men `LegacyRadioButton` kan brukes hvis `RadioGruoup` ikke oppfyller kriteriene til brukertilfellet som skal løses.
+Hvis det er tilfellet, kan man også vurdere å gi et bidrag til designsystemet :-)
+
+## Eksempler
+
+Radioknappene kan ha flere forskjellige statuser:
+
+<Canvas>
+  <Story
+    name='Normal'
+    args={{
+      label: 'Normal',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Hjelpetekst'
+    args={{
+      label: 'Hjelpetekst',
+      helpText: 'Hjelp',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Feil'
+    args={{
+      checked: false,
+      error: true,
+      label: 'Feil',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Kompakt'
+    args={{
+      size: 'xsmall',
+      label: 'Kompakt',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Deaktivert'
+    args={{
+      disabled: true,
+      label: 'Deaktivert',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+I avkrysset tilstand
+
+<Canvas>
+  <Story
+    name='Normal Avkrysset'
+    args={{
+      checked: true,
+      label: 'Normal',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Feil Avkrysset'
+    args={{
+      checked: true,
+      error: true,
+      label: 'Feil',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Kompakt Avkrysset'
+    args={{
+      size: 'xsmall',
+      label: 'Kompakt',
+      checked: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name='Deaktivert Avkrysset'
+    args={{
+      checked: true,
+      disabled: true,
+      label: 'Deaktivert',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+Man kan også velge å legge til en beskrivelse:
+
+<Canvas>
+  <Story
+    name='Med beskrivelse'
+    args={{
+      label: 'Tekst',
+      description: 'Med beskrivelse',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+Radioknappen blir midtjustert med første linje selv om teksten går over flere linjer:
+
+<Canvas>
+  <Story
+    name='Med lang tekst'
+    args={{
+      label:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lectus dolor, consectetur nec finibus quis, varius et risus. Nullam sodales enim viverra metus finibus, id pellentesque erat sagittis. Curabitur mattis eleifend nunc, eget fringilla odio viverra et. Nullam pretium vel tortor quis varius. Sed dui justo, placerat eu lorem vestibulum, condimentum fringilla ante. Curabitur egestas, ante a pharetra rhoncus, velit lorem luctus lectus, sit amet finibus est sem a ante. Mauris tristique aliquam libero ut commodo. Mauris vel justo et nulla rutrum commodo eu sit amet est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Sed aliquet egestas augue in placerat. Quisque malesuada elementum dolor, in ultricies est sodales varius.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+I noen tilfeller kan det være nødvendig å vise en radioknapp uten tekst, for eksempel i en tabell.
+Man må da sørge for at radioknappen likevel har en tekst som er tilgjengelig for skjermlesere.
+Dette kan man gjøre ved å sette `label`-attributten på vanlig måte og sette `hideLabel` til `true`.
+
+<Canvas>
+  <Story
+    name='Med skjult tekst'
+    args={{
+      label: 'Skjult tekst',
+      hideLabel: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Egenskaper
+
+`LegacyRadioButton` er en kontrollert komponent; det vil si at det er opp til foreldrenoden å holde styr på om knappen er trykket inn eller ikke.
+Dette gjøres ved å sette `checked`-attributten til `true` eller `false` idet `onChange`-funksjonen blir kalt.
+
+<ArgsTable story='Normal' />
+
+## Tokens
+
+<TokensTable
+  jsonKey='component.radio_button'
+  componentName='radio_button'
+  showPreview={false}
+  description
+/>

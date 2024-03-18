@@ -1,0 +1,199 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+
+import { Information, TokensTable } from '../../../../../../docs-components';
+
+import { LegacyRadioGroup } from './index';
+
+<Meta
+  title='Avviklet/LegacyRadioGroup'
+  component={LegacyRadioGroup}
+  argTypes={{
+    items: {
+      description: 'Liste over valg som skal vises.',
+      control: { type: 'object' },
+    },
+    name: {
+      description:
+        'Navn som gis til alle radioknappene i gruppen. Nettleseren bruker dette til å utlede at knappene hører til samme gruppe.',
+      control: { type: 'text' },
+    },
+    legend: {
+      description: 'Tittel som vises over gruppen.',
+      control: { type: 'text' },
+    },
+    description: {
+      description: 'Beskrivelse som vises under tittelen.',
+      control: { type: 'text' },
+    },
+    variant: {
+      description: 'Vertikal eller horisontal oppstilling.',
+      control: {
+        type: 'radio',
+        options: ['vertical', 'horizontal'],
+      },
+    },
+    onChange: {
+      description:
+        'Funksjon som kalles når brukeren endrer valg. Funksjonen får verdien til den valgte radioknappen som parameter.',
+      control: { type: 'function' },
+    },
+    error: {
+      description: 'Feilmelding som vises under listen.',
+      control: { type: 'text' },
+    },
+    helpText: {
+      description:
+        'Legger på en hjelpe-tekst knapp ved siden av legenden til RadioGroupen.',
+    },
+    disabled: {
+      description: 'Deaktiverer alle radioknappene i listen.',
+      control: { type: 'boolean' },
+    },
+    size: {
+      description: 'Brukes til å velge størrelse.',
+      control: {
+        type: 'radio',
+        options: ['small', 'xsmall'],
+      },
+      defaultValue: 'small',
+    },
+    presentation: {
+      description:
+        'Sett denne hvis radioknappene er en del av en forhåndsvisning og ikke har noen funksjon. I denne modusen vil ikke teksten ved siden av radioknappene være klikkbar, med mindre den er en ren tekst. Dermed kan man ha klikkbare elementer som en del av teksten uten at de overlapper andre klikkbare ting.',
+      control: { type: 'boolean' },
+    },
+  }}
+/>
+
+export const defaultArgs = {
+  legend: 'Hvilken iskremsmak er best?',
+  description: 'Velg din favorittsmak blant alternativene.',
+  items: [
+    { label: 'Vanilje', value: 'vanilje' },
+    { label: 'Jordbær', value: 'jordbær' },
+    { label: 'Sjokolade', value: 'sjokolade' },
+    { label: 'Jeg spiser ikke iskrem', value: 'spiser-ikke-is' },
+  ],
+  name: 'favorittiskrem',
+};
+export const Template = (args = {}) => (
+  <LegacyRadioGroup {...{ ...defaultArgs, ...args }} />
+);
+
+# LegacyRadioGroup
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Radio.Group](/?path=/docs/komponenter-radio--docs#radiogroup) komponent.**'
+/>
+
+`LegacyRadioGroup` er en gruppe med radioknapper som gir brukeren mulighet til å velge ett av flere alternativer.
+Den oppfører seg på samme måte som kanalknapper på en radio, hvorav navnet.
+Kun én knapp kan være trykket inn av gangen.
+
+## Eksempler
+
+### Vertikal visning
+
+<Canvas>
+  <Story
+    name='Vertikal'
+    args={{ variant: 'vertical' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Horisontal visning
+
+<Canvas>
+  <Story
+    name='Horisontal'
+    args={{
+      variant: 'horizontal',
+      name: 'favorittiskrem-horizontal',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Kompakt visning
+
+<Canvas>
+  <Story
+    name='Kompakt'
+    args={{ size: 'xsmall', name: 'favorittiskrem-compact' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Med feilmelding
+
+<Canvas>
+  <Story
+    name='Med feilmelding'
+    args={{
+      error: 'Du må velge et av alternativene.',
+      name: 'favorittiskrem-error-message',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Med hjelpetekst
+
+<Canvas>
+  <Story
+    name='Med hjelpetekst'
+    args={{
+      helpText: 'Du må velge et av alternativene.',
+      name: 'favorittiskrem-help-text',
+      items: [
+        { label: 'Vanilje', value: 'vanilje' },
+        { label: 'Jordbær', value: 'jordbær', helpText: 'Noe om jordbærsmak.' },
+        { label: 'Sjokolade', value: 'sjokolade' },
+        { label: 'Jeg spiser ikke iskrem', value: 'spiser-ikke-is' },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Deaktivert
+
+<Canvas>
+  <Story
+    name='Deaktivert'
+    args={{ disabled: true, name: 'favorittiskrem-deactivated' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Egenskaper
+
+<ArgsTable story='Vertikal' />
+
+## Tilgjengelighet
+
+### Mus
+
+Radioknappene kan trykkes inn ved å klikke på dem med musen.
+
+### Tastatur
+
+Komponenten kan nås ved bruk av tabulatortasten, og man kan velge knapp ved bruk av piltastene.
+Man kan også bruke mellomromstasten til å trykke inn den fokuserte radioknappen dersom den ikke allerede har fokus.
+
+## Tokens
+
+<TokensTable
+  jsonKey='component.radio_group'
+  componentName='radio_group'
+  showPreview={false}
+  description
+/>

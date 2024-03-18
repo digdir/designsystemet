@@ -23,8 +23,8 @@ Bruk `Alert` til budskap det er ekstra viktig at brukerne ser og forstår. Den e
 <Information text='token' />
 
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Alert } from '@digdir/design-system-react';
+import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
+import { Alert } from '@digdir/designsystemet-react';
 
 <Alert>You are using the Alert component!</Alert>;
 ```
@@ -61,7 +61,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 
 ### Med og uten overskrift
 
-Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/felles-typography--docs)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
+Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/komponenter-typography--docs)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Canvas of={AlertStories.MedHeading} />
 

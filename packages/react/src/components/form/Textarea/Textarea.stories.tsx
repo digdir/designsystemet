@@ -8,7 +8,7 @@ import { Textarea } from '.';
 type Story = StoryObj<typeof Textarea>;
 
 export default {
-  title: 'Felles/Textarea',
+  title: 'Komponenter/Textarea',
   component: Textarea,
 } as Meta;
 

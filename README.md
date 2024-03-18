@@ -15,7 +15,7 @@
 
 ## 📖 About Designsystemet
 
-Designsystemet is a collection of important design elements, componenents and patterns that can be used to build public services.
+Designsystemet is a collection of important design elements, components and patterns that can be used to build public services.
 
 Our goal is to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
@@ -31,9 +31,17 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 📦 Packages
 
-[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – React library with common UI components like Buttons and Checkboxes.
+[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet.
 
-[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Tokens that contain UI data like colors and spacing for building user interfaces.
+[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components.
+
+[`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
+
+### Deprecated
+
+[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – Replaced by [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react). Contains legacy components that are no longer maintained
+
+[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Renamed to [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme)
 
 ---
 
@@ -43,17 +51,31 @@ Follow these steps to get started with the React components.
 
 ### 1. Install the packages
 
+```sh
+npm i @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css
 ```
-npm install @digdir/design-system-react @digdir/design-system-tokens
+
+#### Typescript
+
+If you use Typescript, make sure you have typescript >= 3.8 as `devDependencies`:
+
+```sh
+npm i typescript --save-dev
 ```
 
-### 2. Add the Inter font
+### 2. Font
 
-Add the `<link>` tag to your application and set the `font-family` to `Inter`.
+You are free to use any font-family with the components.
 
-The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with the `!important` flag.
+The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variations might occur if a different font is used.
 
-#### HTML
+#### Add the Inter font (optional)
+
+Add the `<link>` tag in `<head>`, and set `font-family` to `Inter` in your global css file.
+
+The `font-feature-settings` adds a tail to lowercase `L`'s and must be set with the `!important` flag.
+
+##### HTML
 
 ```html
 <link
@@ -62,7 +84,7 @@ The `font-feature-settings` adds a tail to lowecase `L`'s and must be set with t
 />
 ```
 
-#### CSS
+##### CSS
 
 ```css
 body {
@@ -76,14 +98,15 @@ If you choose to install the font in a different way, remember to include the `4
 ### 3. Use a React component
 
 ```jsx
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
+import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
 
-import { Button } from '@digdir/design-system-react';
+import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>I am a button!</Button>;
 ```
 
-The `tokens.css` file only has to be imported once in your application.
+`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
 
 ---
 
@@ -111,6 +134,6 @@ We are lucky to have a great group of people who help with the design system.
 
 ---
 
-## 📃 Licence
+## 📃 License
 
 Designsystemet is [MIT licensed](./LICENSE).
