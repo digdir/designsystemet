@@ -353,3 +353,31 @@ export const FullBredde: Story = {
     layout: 'padded',
   },
 };
+
+export const Ikoner: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      size='small'
+    >
+      <akselIcons.CogIcon fontSize='1rem' />
+      small
+    </Button>
+    <Button
+      variant='primary'
+      size='medium'
+    >
+      <akselIcons.CogIcon fontSize='1.5rem' />
+      medium
+    </Button>
+    <Button
+      variant='primary'
+      size='large'
+    >
+      <akselIcons.CogIcon fontSize='2rem' />
+      large
+    </Button>
+  </>
+);
+
+Ikoner.decorators = [stack];
