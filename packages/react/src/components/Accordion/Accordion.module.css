@@ -12,9 +12,7 @@
 }
 
 .expandIcon {
-  font-size: 1.5rem;
-  height: 1.75rem;
-  flex-shrink: 0;
+  border-radius: var(--fds-border_radius-interactive);
 }
 
 .content {
@@ -27,11 +25,7 @@
   margin: 0;
 }
 
-.border .accordionButton {
-  border-radius: var(--fds-accordion-border-radius);
-}
-
-.header .accordionButton {
+.accordionButton {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -45,8 +39,20 @@
   padding: var(--fds-spacing-4);
 }
 
+.border .accordionButton {
+  border-radius: var(--fds-accordion-border-radius);
+}
+
 .item:focus-within {
   position: relative;
+}
+
+.item:where(.open) .accordionButton:hover + * .content {
+  border-color: var(--fds-semantic-border-neutral-strong);
+}
+
+.item:where(.open) .expandIcon {
+  transform: rotateZ(180deg);
 }
 
 .neutral,
@@ -101,17 +107,9 @@
   border-top: 1px solid var(--fds-semantic-border-on_inverted-default);
 }
 
-.item:where(.open) .accordionButton:hover + * .content {
-  border-color: var(--fds-semantic-border-neutral-strong);
-}
-
-.item:where(.open) .expandIcon {
-  transform: rotateZ(180deg);
-}
-
 @media (hover: hover) and (pointer: fine) {
-  .accordionButton:hover {
-    color: var(--fds-semantic-text-action-first-default);
+  .accordionButton:hover .expandIcon {
+    background-color: rgba(0 0 0 / 0.1);
   }
 
   .neutral .accordionButton:hover,
