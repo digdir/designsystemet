@@ -1,11 +1,10 @@
 {
   "tokenSetOrder": [
+    "Colors/Light",
+    "Colors/Dark",
     "Base/Core",
     "Base/Semantic",
-    "Brand/Digdir",
-    "Brand/Tilsynet",
-    "Brand/Altinn",
-    "Brand/Brreg",
+    "Colors-semantic/Theme",
     "Viewport/@320",
     "Viewport/@375",
     "Viewport/@576",
