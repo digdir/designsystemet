@@ -24,7 +24,6 @@
 }
 
 .fds-button-button-8fa00f0f {
-  --fc-button-icon-size: var(--fds-sizing-4);
   --fc-button-padding: 0 var(--fds-spacing-4);
   --fc-button-color: var(--fds-semantic-text-action-first-on_action);
 
@@ -74,14 +73,8 @@
   opacity: var(--fds-opacity-disabled);
 }
 
-.fds-button-button-8fa00f0f > :is(svg, img, i) {
-  height: var(--fc-button-icon-size);
-  width: var(--fc-button-icon-size);
-}
-
 .fds-button-small-8fa00f0f {
   --fc-button-padding: 0 var(--fds-spacing-3);
-  --fc-button-icon-size: var(--fds-sizing-4);
 
   gap: var(--fds-sizing-1);
   font: var(--fds-typography-paragraph-short-small);
@@ -91,7 +84,6 @@
 
 .fds-button-medium-8fa00f0f {
   --fc-button-padding: 0 var(--fds-spacing-4);
-  --fc-button-icon-size: var(--fds-sizing-6);
 
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-medium);
@@ -101,7 +93,6 @@
 
 .fds-button-large-8fa00f0f {
   --fc-button-padding: 0 var(--fds-spacing-5);
-  --fc-button-icon-size: var(--fds-sizing-8);
 
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-large);
@@ -400,6 +391,10 @@
   font-family: inherit;
 }
 
+.fds-paragraph-large-b69df5f3:where(.fds-paragraph-long-b69df5f3) {
+  line-height: var(--fds-typography-paragraph-long-large);
+}
+
 .fds-paragraph-medium-b69df5f3 {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
@@ -412,6 +407,10 @@
 
   font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
+}
+
+.fds-paragraph-medium-b69df5f3:where(.fds-paragraph-long-b69df5f3) {
+  line-height: var(--fds-typography-paragraph-long-medium);
 }
 
 .fds-paragraph-small-b69df5f3 {
@@ -428,6 +427,10 @@
   font-family: inherit;
 }
 
+.fds-paragraph-small-b69df5f3:where(.fds-paragraph-long-b69df5f3) {
+  line-height: var(--fds-typography-paragraph-long-small);
+}
+
 .fds-paragraph-xsmall-b69df5f3 {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
@@ -440,6 +443,10 @@
 
   font: var(--fds-typography-paragraph-short-xsmall);
   font-family: inherit;
+}
+
+.fds-paragraph-xsmall-b69df5f3:where(.fds-paragraph-long-b69df5f3) {
+  line-height: var(--fds-typography-paragraph-long-xsmall);
 }
 
 .fds-heading-heading-b10abc8b {
@@ -3550,9 +3557,10 @@
 .fds-table-cell-35cf16b1 {
   padding: var(--table-padding);
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+  background-color: var(--fds-semantic-surface-neutral-default);
 }
 
-.fds-table-row-35cf16b1:hover {
+.fds-table-row-35cf16b1:hover .fds-table-cell-35cf16b1 {
   background-color: var(--fds-semantic-surface-neutral-subtle-hover);
 }
 

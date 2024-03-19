@@ -35,6 +35,12 @@ export type PaginationProps = {
   itemLabel?: (currentPage: number) => string;
 } & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
 
+const iconSize = {
+  small: '1rem',
+  medium: '1.5rem',
+  large: '2rem',
+};
+
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (
     {
@@ -73,7 +79,10 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               }}
               aria-label={previousLabel}
             >
-              <ChevronLeftIcon aria-hidden />
+              <ChevronLeftIcon
+                aria-hidden
+                fontSize={iconSize[size]}
+              />
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
@@ -106,7 +115,10 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               })}
             >
               {!hideLabels && nextLabel}
-              <ChevronRightIcon aria-hidden />
+              <ChevronRightIcon
+                aria-hidden
+                fontSize={iconSize[size]}
+              />
             </PaginationNext>
           </PaginationItem>
         </PaginationContent>
