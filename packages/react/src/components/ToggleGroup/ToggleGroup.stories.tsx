@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import * as icons from '@navikt/aksel-icons';
+import {
+  AirplaneFillIcon,
+  NewspaperFillIcon,
+  BrailleIcon,
+  BackpackFillIcon,
+  BellFillIcon,
+} from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
 
 import { ToggleGroup } from '.';
-
-const AkselIcon = icons.AirplaneFillIcon;
-const AkselIcon2 = icons.NewspaperFillIcon;
-const AkselIcon3 = icons.BrailleIcon;
-const AkselIcon4 = icons.BackpackFillIcon;
-const AkselIcon5 = icons.BellFillIcon;
 
 export default {
   title: 'Komponenter/ToggleGroup',
@@ -47,7 +47,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
         value={'option-1'}
         icon={true}
       >
-        <AkselIcon3
+        <BrailleIcon
           title='Braille'
           fontSize='1.5rem'
         />
@@ -56,7 +56,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
         value={'option-2'}
         icon={true}
       >
-        <AkselIcon2
+        <NewspaperFillIcon
           title='Newspaper'
           fontSize='1.5rem'
         />
@@ -65,7 +65,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
         value={'option-3'}
         icon={true}
       >
-        <AkselIcon4
+        <BackpackFillIcon
           title='Backpack'
           fontSize='1.5rem'
         />
@@ -93,15 +93,15 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         onChange={setValue}
       >
         <ToggleGroup.Item value='pistachio'>
-          <AkselIcon fontSize='1.5rem' />
+          <AirplaneFillIcon fontSize='1.5rem' />
           Pistachio
         </ToggleGroup.Item>
         <ToggleGroup.Item value='peanut'>
-          <AkselIcon5 fontSize='1.5rem' />
+          <BellFillIcon fontSize='1.5rem' />
           Peanut
         </ToggleGroup.Item>
         <ToggleGroup.Item value='walnut'>
-          <AkselIcon2 fontSize='1.5rem' />
+          <NewspaperFillIcon fontSize='1.5rem' />
           Walnut
         </ToggleGroup.Item>
       </ToggleGroup>

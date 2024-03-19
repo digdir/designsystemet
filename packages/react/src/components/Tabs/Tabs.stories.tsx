@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import * as icons from '@navikt/aksel-icons';
+import {
+  AirplaneIcon,
+  NewspaperIcon,
+  DogIcon,
+  BackpackIcon,
+} from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
 
@@ -20,11 +25,6 @@ const icon = (
     />
   </svg>
 );
-
-const AkselIcon = icons.AirplaneIcon;
-const AkselIcon2 = icons.NewspaperIcon;
-const AkselIcon3 = icons.DogIcon;
-const AkselIcon4 = icons.BackpackIcon;
 
 export default {
   title: 'Komponenter/Tabs',
@@ -53,13 +53,13 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
-        <AkselIcon title='Airplane' />
+        <AirplaneIcon title='Airplane' />
       </Tabs.Tab>
       <Tabs.Tab value='value2'>
-        <AkselIcon2 title='Newspaper' />
+        <NewspaperIcon title='Newspaper' />
       </Tabs.Tab>
       <Tabs.Tab value='value3'>
-        <AkselIcon3 title='Dog' />
+        <DogIcon title='Dog' />
       </Tabs.Tab>
     </Tabs.List>
     <Tabs.Content value='value1'>content 1</Tabs.Content>
@@ -90,11 +90,11 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
             Tab 1
           </Tabs.Tab>
           <Tabs.Tab value='value2'>
-            <AkselIcon2 />
+            <NewspaperIcon />
             Tab 2
           </Tabs.Tab>
           <Tabs.Tab value='value3'>
-            <AkselIcon4 />
+            <BackpackIcon />
             Tab 3
           </Tabs.Tab>
         </Tabs.List>

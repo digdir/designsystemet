@@ -1,6 +1,18 @@
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
-import * as akselIcons from '@navikt/aksel-icons';
+import {
+  PencilWritingIcon,
+  PrinterSmallIcon,
+  ArrowForwardIcon,
+  TrashIcon,
+  ExternalLinkIcon,
+  PlusCircleIcon,
+  BellIcon,
+  CogIcon,
+  ArrowRightIcon,
+  ArrowUndoIcon,
+  PlusIcon,
+} from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
@@ -69,7 +81,7 @@ export const Tertiary: StoryFn<typeof Button> = () => (
       variant='tertiary'
       color='first'
     >
-      <akselIcons.PencilWritingIcon
+      <PencilWritingIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -111,7 +123,7 @@ export const Second: StoryFn<typeof Button> = () => (
       variant='secondary'
       color='second'
     >
-      <akselIcons.PrinterSmallIcon
+      <PrinterSmallIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -121,7 +133,7 @@ export const Second: StoryFn<typeof Button> = () => (
       variant='secondary'
       color='second'
     >
-      <akselIcons.PencilWritingIcon
+      <PencilWritingIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -131,7 +143,7 @@ export const Second: StoryFn<typeof Button> = () => (
       variant='secondary'
       color='second'
     >
-      <akselIcons.ArrowForwardIcon
+      <ArrowForwardIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -148,7 +160,7 @@ export const Danger: StoryFn<typeof Button> = () => (
       variant='primary'
       color='danger'
     >
-      <akselIcons.TrashIcon
+      <TrashIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -216,7 +228,7 @@ export const KnappSomLenke: StoryFn<typeof Button> = () => (
       href='https://www.designsystemet.no'
     >
       Gå til Designsystemet
-      <akselIcons.ExternalLinkIcon fontSize='1.5rem' />
+      <ExternalLinkIcon fontSize='1.5rem' />
     </a>
   </Button>
 );
@@ -230,7 +242,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.PlusCircleIcon fontSize='1.5rem' />
+        <PlusCircleIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
@@ -240,7 +252,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.BellIcon fontSize='1.5rem' />
+        <BellIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
@@ -250,7 +262,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.CogIcon fontSize='1.5rem' />
+        <CogIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
   </>
@@ -276,7 +288,7 @@ export const TekstOgIkon: StoryFn<typeof Button> = () => (
       color='second'
     >
       Start utfylling
-      <akselIcons.ArrowRightIcon
+      <ArrowRightIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -285,7 +297,7 @@ export const TekstOgIkon: StoryFn<typeof Button> = () => (
       variant='secondary'
       color='second'
     >
-      <akselIcons.ArrowUndoIcon
+      <ArrowUndoIcon
         aria-hidden
         fontSize='1.5rem'
       />
@@ -341,7 +353,7 @@ export const FullBredde: Story = {
   args: {
     children: (
       <>
-        <akselIcons.PlusIcon fontSize='1.5rem' />
+        <PlusIcon fontSize='1.5rem' />
         Last inn flere
       </>
     ),
@@ -360,21 +372,21 @@ export const Ikoner: StoryFn<typeof Button> = () => (
       variant='primary'
       size='small'
     >
-      <akselIcons.CogIcon fontSize='1rem' />
+      <CogIcon fontSize='1rem' />
       small
     </Button>
     <Button
       variant='primary'
       size='medium'
     >
-      <akselIcons.CogIcon fontSize='1.5rem' />
+      <CogIcon fontSize='1.5rem' />
       medium
     </Button>
     <Button
       variant='primary'
       size='large'
     >
-      <akselIcons.CogIcon fontSize='2rem' />
+      <CogIcon fontSize='2rem' />
       large
     </Button>
   </>
