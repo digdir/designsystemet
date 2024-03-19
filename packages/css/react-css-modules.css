@@ -2364,12 +2364,6 @@
   position: relative;
 }
 
-.fds-tab-tabItem-747ae0b6 > :is(svg, img, i) {
-  display: flex;
-  height: 1.75em;
-  width: auto;
-}
-
 .fds-tab-tabItem-747ae0b6.fds-tab-small-747ae0b6 {
   --fdsc-icon-size: var(--fds-sizing-5);
 
