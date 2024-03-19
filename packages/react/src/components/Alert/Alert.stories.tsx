@@ -7,7 +7,7 @@ import { Alert } from '.';
 type Story = StoryFn<typeof Alert>;
 
 export default {
-  title: 'Felles/Alert',
+  title: 'Komponenter/Alert',
   component: Alert,
   parameters: {
     layout: 'padded',
