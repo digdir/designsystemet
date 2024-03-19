@@ -18,12 +18,6 @@
   position: relative;
 }
 
-.tabItem > :is(svg, img, i) {
-  display: flex;
-  height: 1.75em;
-  width: auto;
-}
-
 .tabItem.small {
   --fdsc-icon-size: var(--fds-sizing-5);
 
