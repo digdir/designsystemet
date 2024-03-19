@@ -88,7 +88,7 @@ En gruppe med knapper bør bruke samme fargevariant. Unntaket er når vi skal ty
 
 ### Knapp som lenke
 
-Bruk `asChild` dersom du trenger å bruke knappen som en lenke. Vurder først om det er bedre å bruke [`Link`](/docs/felles-link--docs)-komponenten.
+Bruk `asChild` dersom du trenger å bruke knappen som en lenke. Vurder først om det er bedre å bruke [`Link`](/docs/komponenter-link--docs)-komponenten.
 Du kan lese mer om komposisjon [her](https://www.designsystemet.no/grunnleggende/for-utviklere/komposisjon).
 
 <Canvas of={ButtonStories.KnappSomLenke} />
@@ -111,6 +111,18 @@ Som regel er det **venstre** som er den beste plasseringen, men det finnes unnta
 
 - Er det en knapp som sier “Start” med en høyrepekende pil, er det naturlig at pilen plasseres til høyre for teksten.
 - Er knappen fast plassert på høyre side av grensesnittet er det best at ikonet også er høyrestilt for teksten.
+
+### Størrelse på ikon
+
+Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å bruke disse størrelsene for [Aksel](https://aksel.nav.no/ikoner) sine ikoner:
+
+| Størrelse på Button | Aksel Ikon `fontSize` |
+| :------------------ | :-------------------- |
+| small               | 1rem                  |
+| medium              | 1.5rem                |
+| large               | 2rem                  |
+
+<Canvas of={ButtonStories.Ikoner} />
 
 <br />
 
@@ -147,7 +159,7 @@ Passer til å
 <br />
 Passer ikke til å
 
-- navigere til andre sider eller ut av tjenesten, bruk heller [`link`](/docs/felles-link--docs)
+- navigere til andre sider eller ut av tjenesten, bruk heller [`link`](/docs/komponenter-link--docs)
 
 <br />
 

@@ -13,7 +13,7 @@ const marginDecorator = (Story: StoryFn) => (
 );
 
 export default {
-  title: 'Felles/DropdownMenu',
+  title: 'Komponenter/DropdownMenu',
   component: DropdownMenu,
 } as Meta;
 
@@ -69,7 +69,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
             href='https://github.com/digdir/designsystemet'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Github
           </DropdownMenu.Item>
           <DropdownMenu.Item
@@ -77,7 +77,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
             href='https://designsystemet.no'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
@@ -99,7 +99,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
             href='https://github.com/digdir/designsystemet'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Github
           </DropdownMenu.Item>
           <DropdownMenu.Item
@@ -107,7 +107,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
             href='https://designsystemet.no'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
@@ -136,7 +136,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
               href='https://github.com/digdir/designsystemet'
               target='_blank'
             >
-              <LinkIcon />
+              <LinkIcon fontSize='1.5rem' />
               Github
             </DropdownMenu.Item>
             <DropdownMenu.Item
@@ -144,7 +144,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
               href='https://designsystemet.no'
               target='_blank'
             >
-              <LinkIcon />
+              <LinkIcon fontSize='1.5rem' />
               Designsystemet.no
             </DropdownMenu.Item>
           </DropdownMenu.Group>

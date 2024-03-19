@@ -608,6 +608,44 @@
           },
           "type": "typography"
         }
+      },
+      "long": {
+        "large": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.700}",
+            "fontSize": "{font-size.f1}"
+          },
+          "type": "typography"
+        },
+        "medium": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.700}",
+            "fontSize": "{font-size.f0}"
+          },
+          "type": "typography"
+        },
+        "small": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.700}",
+            "fontSize": "{font-size.f-1}"
+          },
+          "type": "typography"
+        },
+        "xsmall": {
+          "value": {
+            "fontFamily": "{fontFamilies.inter}",
+            "fontWeight": "{fontWeights.regular}",
+            "lineHeight": "{lineHeights.700}",
+            "fontSize": "{font-size.f-2}"
+          },
+          "type": "typography"
+        }
       }
     },
     "label": {

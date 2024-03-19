@@ -21,6 +21,10 @@
   font-family: inherit;
 }
 
+.large:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-large);
+}
+
 .medium {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
@@ -33,6 +37,10 @@
 
   font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
+}
+
+.medium:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-medium);
 }
 
 .small {
@@ -49,6 +57,10 @@
   font-family: inherit;
 }
 
+.small:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-small);
+}
+
 .xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
@@ -61,4 +73,8 @@
 
   font: var(--fds-typography-paragraph-short-xsmall);
   font-family: inherit;
+}
+
+.xsmall:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-xsmall);
 }
