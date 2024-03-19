@@ -1,6 +1,18 @@
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
-import * as akselIcons from '@navikt/aksel-icons';
+import {
+  PencilWritingIcon,
+  PrinterSmallIcon,
+  ArrowForwardIcon,
+  TrashIcon,
+  ExternalLinkIcon,
+  PlusCircleIcon,
+  BellIcon,
+  CogIcon,
+  ArrowRightIcon,
+  ArrowUndoIcon,
+  PlusIcon,
+} from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
@@ -11,7 +23,7 @@ import { Button } from './';
 type Story = StoryObj<typeof Button>;
 
 const meta: Meta<typeof Button> = {
-  title: 'Felles/Button',
+  title: 'Komponenter/Button',
   component: Button,
 };
 
@@ -69,7 +81,10 @@ export const Tertiary: StoryFn<typeof Button> = () => (
       variant='tertiary'
       color='first'
     >
-      <akselIcons.PencilWritingIcon aria-hidden />
+      <PencilWritingIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Rediger
     </Button>
   </>
@@ -108,21 +123,30 @@ export const Second: StoryFn<typeof Button> = () => (
       variant='secondary'
       color='second'
     >
-      <akselIcons.PrinterSmallIcon aria-hidden />
+      <PrinterSmallIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Skriv ut
     </Button>
     <Button
       variant='secondary'
       color='second'
     >
-      <akselIcons.PencilWritingIcon aria-hidden />
+      <PencilWritingIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Rediger
     </Button>
     <Button
       variant='secondary'
       color='second'
     >
-      <akselIcons.ArrowForwardIcon aria-hidden />
+      <ArrowForwardIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Videresend
     </Button>
   </>
@@ -136,7 +160,10 @@ export const Danger: StoryFn<typeof Button> = () => (
       variant='primary'
       color='danger'
     >
-      <akselIcons.TrashIcon aria-hidden />
+      <TrashIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Slett
     </Button>
   </>
@@ -201,7 +228,7 @@ export const KnappSomLenke: StoryFn<typeof Button> = () => (
       href='https://www.designsystemet.no'
     >
       Gå til Designsystemet
-      <akselIcons.ExternalLinkIcon />
+      <ExternalLinkIcon fontSize='1.5rem' />
     </a>
   </Button>
 );
@@ -215,7 +242,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.PlusCircleIcon />
+        <PlusCircleIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
@@ -225,7 +252,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.BellIcon />
+        <BellIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
@@ -235,7 +262,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
-        <akselIcons.CogIcon />
+        <CogIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
   </>
@@ -261,13 +288,19 @@ export const TekstOgIkon: StoryFn<typeof Button> = () => (
       color='second'
     >
       Start utfylling
-      <akselIcons.ArrowRightIcon aria-hidden />
+      <ArrowRightIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
     </Button>
     <Button
       variant='secondary'
       color='second'
     >
-      <akselIcons.ArrowUndoIcon aria-hidden />
+      <ArrowUndoIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
       Angre
     </Button>
   </>
@@ -320,7 +353,7 @@ export const FullBredde: Story = {
   args: {
     children: (
       <>
-        <akselIcons.PlusIcon />
+        <PlusIcon fontSize='1.5rem' />
         Last inn flere
       </>
     ),
@@ -332,3 +365,31 @@ export const FullBredde: Story = {
     layout: 'padded',
   },
 };
+
+export const Ikoner: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      size='small'
+    >
+      <CogIcon fontSize='1rem' />
+      small
+    </Button>
+    <Button
+      variant='primary'
+      size='medium'
+    >
+      <CogIcon fontSize='1.5rem' />
+      medium
+    </Button>
+    <Button
+      variant='primary'
+      size='large'
+    >
+      <CogIcon fontSize='2rem' />
+      large
+    </Button>
+  </>
+);
+
+Ikoner.decorators = [stack];
