@@ -59,12 +59,6 @@
   padding: var(--fds-spacing-4);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .header .accordionButton:hover {
-    color: var(--fdsc-accordion-header-color-hover);
-  }
-}
-
 .item:focus-within {
   position: relative;
 }
@@ -79,75 +73,75 @@
   background-color: var(--fds-semantic-surface-neutral-subtle);
 }
 
-.accordion.first,
-.accordion.first > .item .header .accordionButton {
+.first,
+.first .accordionButton {
   --fds-accordion-border-color: var(--fds-semantic-border-first-default);
 
-  background: var(--fdsc-accordion-header-bg-primary);
+  background: var(--fds-semantic-surface-first-light);
 }
 
-.accordion.second,
-.accordion.second > .item .header .accordionButton {
+.second,
+.second .accordionButton {
   --fds-accordion-border-color: var(--fds-semantic-border-second-default);
 
-  background: var(--fdsc-accordion-header-bg-secondary);
+  background: var(--fds-semantic-surface-second-light);
 }
 
-.accordion.third,
-.accordion.third > .item .header .accordionButton {
+.third,
+.third .accordionButton {
   --fds-accordion-border-color: var(--fds-semantic-border-third-default);
 
-  background: var(--fdsc-accordion-header-bg-tertiary);
+  background: var(--fds-semantic-surface-third-light);
 }
 
-.accordion.border > .item:first-child .header .accordionButton {
-  border-top: 0;
-}
-
-.accordion.first > .item:not(:first-child) .header .accordionButton,
-.accordion.second > .item:not(:first-child) .header .accordionButton,
-.accordion.third > .item:not(:first-child) .header .accordionButton {
-  border-top: 1px solid var(--fds-semantic-border-on_inverted-default);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .neutral .accordionButton:hover,
-  .subtle .accordionButton:hover {
-    background: var(--fds-semantic-surface-neutral-subtle-hover);
-  }
-
-  .first .accordionButton:hover {
-    background: var(--fds-semantic-surface-first-);
-  }
-
-  .second .accordionButton:hover {
-    background: var(--fdsc-accordion-header-bg-secondary-hover);
-  }
-
-  .third .accordionButton:hover {
-    background: var(--fdsc-accordion-header-bg-tertiary-hover);
-  }
-}
-
-.accordion.neutral > .item.open .header .accordionButton,
-.accordion.subtle > .item.open .header .accordionButton {
-  background-color: var(--fdsc-accordion-header-bg-neutral-active);
-}
-
-.accordion.first > .item.open .header .accordionButton,
-.accordion.second > .item.open .header .accordionButton,
-.accordion.third > .item.open .header .accordionButton {
+.first .item:where(.open) .accordionButton,
+.second .item:where(.open) .accordionButton,
+.third .item:where(.open) .accordionButton {
   background-color: rgba(0 0 0 / 0.03);
 }
 
-.item.open .header .accordionButton:hover + * .content {
-  border-color: var(--fdsc-accordion-content-border-open);
+.neutral .item:where(.open) .accordionButton,
+.subtle .item:where(.open) .accordionButton {
+  background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
 }
 
-.item.open .header .accordionButton .expandIcon {
+.border .item:first-child .accordionButton {
+  border-top: 0;
+}
+
+.first .item:not(:first-child) .accordionButton,
+.second .item:not(:first-child) .accordionButton,
+.third .item:not(:first-child) .accordionButton {
+  border-top: 1px solid var(--fds-semantic-border-on_inverted-default);
+}
+
+.item:where(.open) .accordionButton:hover + * .content {
+  border-color: var(--fds-semantic-border-neutral-strong);
+}
+
+.item:where(.open) .expandIcon {
   transform: rotateZ(180deg);
 }
 
-.header .accordionButton:hover > .accordion.expandIcon.filled {
-  display: inherit;
+@media (hover: hover) and (pointer: fine) {
+  .accordionButton:hover {
+    color: var(--fds-semantic-text-action-first-default);
+  }
+
+  .neutral .accordionButton:hover,
+  .subtle .accordionButton:hover {
+    background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  }
+
+  .first .accordionButton:hover {
+    background-color: var(--fds-semantic-surface-first-light-hover);
+  }
+
+  .second .accordionButton:hover {
+    background-color: var(--fds-semantic-surface-second-light-hover);
+  }
+
+  .third .accordionButton:hover {
+    background-color: var(--fds-semantic-surface-third-light-hover);
+  }
 }
