@@ -1,3 +1,5 @@
-.toggleGroupItem:focus-visible {
-  z-index: 1;
+@layer fds-togglegroupitem {
+  .toggleGroupItem:focus-visible {
+    z-index: 1;
+  }
 }

@@ -1,30 +1,32 @@
-.tabContent {
-  font-family: inherit;
-}
+@layer fds-tabcontent {
+  .tabContent {
+    font-family: inherit;
+  }
 
-.tabContent.small {
-  padding: var(--fds-spacing-4);
-}
+  .tabContent.small {
+    padding: var(--fds-spacing-4);
+  }
 
-.tabContent.medium {
-  padding: var(--fds-spacing-5);
-}
+  .tabContent.medium {
+    padding: var(--fds-spacing-5);
+  }
 
-.tabContent.large {
-  padding: var(--fds-spacing-6);
-}
+  .tabContent.large {
+    padding: var(--fds-spacing-6);
+  }
 
-.tabContent.onlyText.small {
-  font: var(--fds-typography-interactive-small);
-  font-family: inherit;
-}
+  .tabContent.onlyText.small {
+    font: var(--fds-typography-interactive-small);
+    font-family: inherit;
+  }
 
-.tabContent.onlyText.medium {
-  font: var(--fds-typography-interactive-medium);
-  font-family: inherit;
-}
+  .tabContent.onlyText.medium {
+    font: var(--fds-typography-interactive-medium);
+    font-family: inherit;
+  }
 
-.tabContent.onlyText.large {
-  font: var(--fds-typography-interactive-large);
-  font-family: inherit;
+  .tabContent.onlyText.large {
+    font: var(--fds-typography-interactive-large);
+    font-family: inherit;
+  }
 }

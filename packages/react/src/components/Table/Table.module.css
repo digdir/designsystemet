@@ -1,132 +1,134 @@
-.table {
-  position: relative;
-  border-collapse: separate;
-  border-spacing: 0;
-  text-align: left;
+@layer fds-table {
+  .table {
+    position: relative;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
 
-  --table-padding: 0;
-  --border-radius: var(--fds-border_radius-medium);
-}
+    --table-padding: 0;
+    --border-radius: var(--fds-border_radius-medium);
+  }
 
-.table.stickyHeader {
-  overflow: auto;
-}
+  .table.stickyHeader {
+    overflow: auto;
+  }
 
-.table.border .row:last-of-type td {
-  border-bottom: 0;
-}
+  .table.border .row:last-of-type td {
+    border-bottom: 0;
+  }
 
-.small {
-  --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
-}
+  .small {
+    --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
+  }
 
-.medium {
-  --table-padding: var(--fds-spacing-2) var(--fds-spacing-3);
-}
+  .medium {
+    --table-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  }
 
-.large {
-  --table-padding: var(--fds-spacing-3) var(--fds-spacing-3);
-}
+  .large {
+    --table-padding: var(--fds-spacing-3) var(--fds-spacing-3);
+  }
 
-.head {
-  z-index: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-family: inherit;
-  border-spacing: 0;
-  font-weight: 500;
-  border-bottom: 2px solid var(--fds-semantic-border-divider-default);
-}
+  .head {
+    z-index: 0;
+    box-sizing: border-box;
+    font: inherit;
+    font-family: inherit;
+    border-spacing: 0;
+    font-weight: 500;
+    border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+  }
 
-.headerCell {
-  padding: var(--table-padding);
-  font: inherit;
-  font-family: inherit;
-  background-color: var(--fds-semantic-surface-neutral-default);
-  border-spacing: 0;
-  border-bottom: 2px solid var(--fds-semantic-border-divider-default);
-}
+  .headerCell {
+    padding: var(--table-padding);
+    font: inherit;
+    font-family: inherit;
+    background-color: var(--fds-semantic-surface-neutral-default);
+    border-spacing: 0;
+    border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+  }
 
-.stickyHeader .head .headerCell {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+  .stickyHeader .head .headerCell {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 
-.headerCell.sortable {
-  padding: 0;
-}
+  .headerCell.sortable {
+    padding: 0;
+  }
 
-.headerCell.sortable button {
-  position: relative;
-  width: 100%;
-  border: none;
-  font: inherit;
-  font-family: inherit;
-  display: flex;
-  cursor: pointer;
-  gap: var(--fds-spacing-1);
-  align-items: center;
-  padding: var(--table-padding);
-  background-color: transparent;
-  z-index: 2;
-}
+  .headerCell.sortable button {
+    position: relative;
+    width: 100%;
+    border: none;
+    font: inherit;
+    font-family: inherit;
+    display: flex;
+    cursor: pointer;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+    padding: var(--table-padding);
+    background-color: transparent;
+    z-index: 2;
+  }
 
-.headerCell.sorted button {
-  background-color: var(--fds-semantic-surface-neutral-subtle);
-}
+  .headerCell.sorted button {
+    background-color: var(--fds-semantic-surface-neutral-subtle);
+  }
 
-.headerCell.sortable button:focus {
-  z-index: 3;
-}
+  .headerCell.sortable button:focus {
+    z-index: 3;
+  }
 
-.headerCell.sortable button:hover {
-  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
-}
+  .headerCell.sortable button:hover {
+    background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  }
 
-.headerCell.sortable button svg {
-  font-size: 1.2em;
-}
+  .headerCell.sortable button svg {
+    font-size: 1.2em;
+  }
 
-.cell {
-  padding: var(--table-padding);
-  border-bottom: 1px solid var(--fds-semantic-border-divider-default);
-  background-color: var(--fds-semantic-surface-neutral-default);
-}
+  .cell {
+    padding: var(--table-padding);
+    border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+    background-color: var(--fds-semantic-surface-neutral-default);
+  }
 
-.row:hover .cell {
-  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
-}
+  .row:hover .cell {
+    background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  }
 
-.zebra .row {
-  border-bottom: 0;
-}
+  .zebra .row {
+    border-bottom: 0;
+  }
 
-.zebra tr:nth-child(even):not(:hover) .cell {
-  background-color: var(--fds-semantic-background-subtle);
-}
+  .zebra tr:nth-child(even):not(:hover) .cell {
+    background-color: var(--fds-semantic-background-subtle);
+  }
 
-.table.border {
-  border-radius: var(--border-radius);
-  border: 1px solid var(--fds-semantic-border-neutral-default);
-}
+  .table.border {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--fds-semantic-border-neutral-default);
+  }
 
-.table.border .head .headerCell:first-of-type {
-  border-top-left-radius: var(--border-radius);
-  overflow: hidden;
-}
+  .table.border .head .headerCell:first-of-type {
+    border-top-left-radius: var(--border-radius);
+    overflow: hidden;
+  }
 
-.table.border .head .headerCell:last-of-type {
-  border-top-right-radius: var(--border-radius);
-  overflow: hidden;
-}
+  .table.border .head .headerCell:last-of-type {
+    border-top-right-radius: var(--border-radius);
+    overflow: hidden;
+  }
 
-.table.border .row:last-of-type .cell:first-of-type {
-  border-bottom-left-radius: var(--border-radius);
-  overflow: hidden;
-}
+  .table.border .row:last-of-type .cell:first-of-type {
+    border-bottom-left-radius: var(--border-radius);
+    overflow: hidden;
+  }
 
-.table.border .row:last-of-type .cell:last-of-type {
-  border-bottom-right-radius: var(--border-radius);
-  overflow: hidden;
+  .table.border .row:last-of-type .cell:last-of-type {
+    border-bottom-right-radius: var(--border-radius);
+    overflow: hidden;
+  }
 }

@@ -1,17 +1,19 @@
-.ingress {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+@layer fds-ingress {
+  .ingress {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  margin: 0;
-  color: var(--fds-semantic-text-neutral-default);
-}
+    margin: 0;
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.ingress.spacing {
-  margin-bottom: var(--fdsc-bottom-spacing);
-}
+  .ingress.spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
 
-.ingress.medium {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+  .ingress.medium {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  font: var(--fds-typography-ingress-medium);
-  font-family: inherit;
+    font: var(--fds-typography-ingress-medium);
+    font-family: inherit;
+  }
 }
