@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {TextIcon} from '@sanity/icons'
+import { defineField, defineType } from 'sanity';
+import { TextIcon } from '@sanity/icons';
 
 export const heading = defineType({
   name: 'heading',
@@ -8,8 +8,9 @@ export const heading = defineType({
   icon: TextIcon,
   fields: [
     defineField({
-      name: 'Text',
+      name: 'text',
       type: 'string',
+      title: 'Tekst',
     }),
     defineField({
       name: 'level',
@@ -20,4 +21,4 @@ export const heading = defineType({
       },
     }),
   ],
-})
+});

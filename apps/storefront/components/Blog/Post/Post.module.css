@@ -1,0 +1,143 @@
+.wrapper {
+  --figure-y-offset: 500px;
+  --figure-rotation: 72deg;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  margin-top: var(--fds-spacing-18);
+  margin-bottom: var(--page-spacing-bottom);
+}
+
+.intro {
+  max-width: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--fds-spacing-5);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ingress {
+  margin: 0 auto !important;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--fds-spacing-1) !important;
+  gap: var(--fds-spacing-3);
+  color: var(--fds-semantic-text-neutral-subtle) !important;
+}
+
+.metaSquare {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  border-radius: 1px;
+  background-color: var(--fds-brand-alt1-600);
+  margin: auto 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fds-spacing-18);
+}
+
+.content {
+  --text-max-width: 640px;
+
+  max-width: var(--text-max-width);
+  margin: 0 auto;
+}
+
+.content p {
+  max-width: var(--text-max-width);
+  margin: var(--fds-spacing-6) 0;
+  margin-top: var(--fds-spacing-5);
+  line-height: 170%;
+  font-size: 18px;
+}
+
+.content h2 {
+  font-size: 32px;
+}
+
+.content img {
+  display: block;
+  width: 860px;
+  margin: var(--fds-spacing-12) 0;
+  margin-left: calc((100% - 860px) / 2) !important;
+  background-color: var(--fds-semantic-background-subtle);
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  margin-top: var(--fds-spacing-12);
+  margin-bottom: var(--fds-spacing-5);
+}
+
+.content:last-child {
+  margin-bottom: var(--fds-spacing-12);
+}
+
+.wantToWrite {
+  margin-top: var(--fds-spacing-12);
+  border-radius: var(--fds-border_radius-xxlarge);
+  background: var(--fds-brand-alt1-200);
+  padding: var(--fds-spacing-8);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--fds-spacing-4);
+}
+
+.wantToWrite p a {
+  display: inline-block;
+  color: inherit;
+}
+
+.wantToWrite p,
+.wantToWrite h3 {
+  margin: 0;
+}
+
+.wantToWrite p a:hover {
+  color: var(--fds-semantic-text-action-hover);
+}
+
+.figure {
+  position: absolute;
+  top: calc(var(--figure-y-offset) * var(--number));
+  z-index: -1;
+  transform: rotate(calc(var(--figure-rotation) * var(--number)));
+}
+
+.figure:nth-of-type(2n - 1) {
+  left: 100px;
+}
+
+.figure:nth-of-type(2n) {
+  right: 100px;
+}
+
+@media screen and (max-width: 1350px) {
+  .figure {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .content img {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}

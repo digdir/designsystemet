@@ -57,4 +57,12 @@ export default {
     locales: ['no'],
     defaultLocale: 'no',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
 };

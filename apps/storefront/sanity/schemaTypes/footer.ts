@@ -1,5 +1,5 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {BookIcon} from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity';
+import { BookIcon } from '@sanity/icons';
 
 export const footer = defineType({
   name: 'footer',
@@ -84,4 +84,4 @@ export const footer = defineType({
       ],
     }),
   ],
-})
+});

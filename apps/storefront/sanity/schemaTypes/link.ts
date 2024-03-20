@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {LinkIcon} from '@sanity/icons'
+import { defineField, defineType } from 'sanity';
+import { LinkIcon } from '@sanity/icons';
 
 export const link = defineType({
   name: 'link',
@@ -8,12 +8,13 @@ export const link = defineType({
   icon: LinkIcon,
   fields: [
     defineField({
-      name: 'Text',
+      name: 'text',
       type: 'string',
     }),
     defineField({
-      name: 'Url',
+      name: 'url',
+      title: 'URL',
       type: 'url',
     }),
   ],
-})
+});

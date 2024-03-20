@@ -1,5 +1,5 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {MenuIcon} from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity';
+import { MenuIcon } from '@sanity/icons';
 
 export const navigation = defineType({
   name: 'navigation',
@@ -16,18 +16,12 @@ export const navigation = defineType({
       name: 'menu',
       title: 'Meny',
       type: 'array',
-
       of: [
-        {
-          title: 'Director',
-          name: 'director',
-          type: 'reference',
-          options: {
-            disableNew: true,
-          },
-          to: [{type: 'page'}],
-        },
+        defineArrayMember({
+          name: 'link',
+          type: 'link',
+        }),
       ],
     }),
   ],
-})
+});

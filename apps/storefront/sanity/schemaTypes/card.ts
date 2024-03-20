@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export const card = defineType({
   name: 'card',
@@ -18,4 +18,4 @@ export const card = defineType({
       type: 'image',
     }),
   ],
-})
+});

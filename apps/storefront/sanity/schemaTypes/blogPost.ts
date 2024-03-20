@@ -1,5 +1,5 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {EditIcon} from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity';
+import { EditIcon } from '@sanity/icons';
 
 export const blogPost = defineType({
   name: 'blogPost',
@@ -8,8 +8,9 @@ export const blogPost = defineType({
   icon: EditIcon,
   fields: [
     defineField({
-      name: 'tittel',
+      name: 'title',
       type: 'string',
+      title: 'Tittel',
     }),
     defineField({
       name: 'ingress',
@@ -18,11 +19,28 @@ export const blogPost = defineType({
     defineField({
       name: 'slug',
       type: 'slug',
-      options: {source: 'tittel'},
+      options: { source: 'title' },
     }),
     defineField({
-      name: 'bilde',
+      name: 'image',
+      title: 'Bilde',
       type: 'image',
+    }),
+    defineField({
+      name: 'author',
+      title: 'Forfatter',
+      type: 'string',
+    }),
+    defineField({
+      name: 'date',
+      title: 'Dato',
+      type: 'string',
+    }),
+    defineField({
+      name: 'figureCount',
+      title: 'Figur Antall',
+      type: 'number',
+      validation: (rule) => rule.required().max(5),
     }),
     defineField({
       name: 'content',
@@ -50,16 +68,16 @@ export const blogPost = defineType({
       of: [
         {
           type: 'reference',
-          to: [{type: 'person'}],
+          to: [{ type: 'person' }],
         },
       ],
     }),
   ],
   preview: {
     select: {
-      title: 'tittel',
+      title: 'title',
       subtitle: 'ingress',
-      media: 'bilde',
+      media: 'image',
     },
   },
-})
+});
