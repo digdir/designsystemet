@@ -96,6 +96,7 @@ Preview.args = {
   disabled: false,
   hideLabel: false,
   hideChips: false,
+  hideClearButton: false,
   virtual: false,
   description: 'Velg et sted',
   size: 'medium',
