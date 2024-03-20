@@ -13,6 +13,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **Paragraph:** Add `variant` prop with `long` and `short` ([#1636](https://github.com/digdir/designsystemet/issues/1636)) ([efedb27](https://github.com/digdir/designsystemet/commit/efedb27af6324bd018c80392b5a279e57f0cd5dd))
 
+### BREAKING CHANGE:
+
+- **Tabs:** Remove icon sizing ([#1715](https://github.com/digdir/designsystemet/issues/1715))) ([723bf27](https://github.com/digdir/designsystemet/commit/723bf27bebe849d2017f7fd296c0d8483107e01e))
+- **Button:** Remove icon sizing ([#1709](https://github.com/digdir/designsystemet/issues/1709)) ([9737aae](https://github.com/digdir/designsystemet/commit/9737aae42eaff7fbaf0b893ea10efd61bcb0f716))
+
 ## [0.53.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.0...@digdir/designsystemet-react@0.53.1) (2024-03-13)
 
 **Note:** Version bump only for package @digdir/designsystemet-react
