@@ -62,6 +62,10 @@ export type ComboboxProps = {
    */
   value?: string[];
   /**
+   * String array of initial selected options. Contains only one option during single selection mode.
+   */
+  initialValue?: string[];
+  /**
    * Callback function that is called when the value changes
    */
   onValueChange?: (value: string[]) => void;
@@ -135,6 +139,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   (
     {
       value,
+      initialValue = [],
       onValueChange,
       label,
       hideLabel = false,
@@ -167,6 +172,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
+    const initialRender = useRef(true);
 
     const listId = useId();
 
@@ -209,6 +215,21 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         multiple,
         selectedOptions,
       });
+
+    // set initial value
+    useEffect(() => {
+      if (initialValue)
+        if (initialValue.length > 0) {
+          const updatedSelectedOptions = initialValue.map((option) => {
+            const value = options.find((value) => value.value === option);
+            return value as Option;
+          });
+
+          setSelectedOptions(updatedSelectedOptions);
+        }
+      // We only want to run this once
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
@@ -268,6 +289,10 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       if (prevSelectedHash === selectedHash) return;
 
       const values = selectedOptions.map((option) => option.value);
+      if (initialRender.current) {
+        initialRender.current = false;
+        return;
+      }
       onValueChange?.(values);
       setPrevSelectedHash(selectedHash);
     }, [onValueChange, selectedOptions, prevSelectedHash]);
