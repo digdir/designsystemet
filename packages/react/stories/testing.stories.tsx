@@ -9,6 +9,7 @@ import {
   Radio,
   Tag,
   Combobox,
+  Chip,
   type ButtonProps,
 } from '../src/components';
 
@@ -37,11 +38,7 @@ export const MediumRow: StoryFn<{
           prefix='prefix'
           suffix='suffix'
         />
-        <Switch size={size}>Switch</Switch>
-        <Switch
-          size={size}
-          aria-label='no label switch'
-        ></Switch>
+
         <NativeSelect size={size}>
           <option>opt1</option>
           <option>opt2</option>
@@ -50,6 +47,7 @@ export const MediumRow: StoryFn<{
         <Button size={size}>Knapp</Button>
         <Combobox size={size}>
           <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>
+          <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
         </Combobox>
       </div>
       <br />
@@ -62,6 +60,15 @@ export const MediumRow: StoryFn<{
           flexDirection: direction,
         }}
       >
+        <Switch size={size}>Switch</Switch>
+        <Switch
+          size={size}
+          aria-label='no label switch'
+        ></Switch>
+        <Chip.Toggle>Toggle</Chip.Toggle>
+        <Chip.Removable>Removable</Chip.Removable>
+        <Tag size={size}>Tag</Tag>
+
         <Radio
           value='radio'
           size={size}
@@ -84,7 +91,6 @@ export const MediumRow: StoryFn<{
           size={size}
           aria-label='no label checkbox'
         ></Checkbox>
-        <Tag size={size}>Tag</Tag>
       </div>
     </>
   );
