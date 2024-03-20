@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.14.1...@digdir/designsystemet-theme@0.15.0) (2024-03-20)
+
+### Features
+
+- **Paragraph:** Add `variant` prop with `long` and `short` ([#1636](https://github.com/digdir/designsystemet/issues/1636)) ([efedb27](https://github.com/digdir/designsystemet/commit/efedb27af6324bd018c80392b5a279e57f0cd5dd))
+
 ## [0.14.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.14.0...@digdir/designsystemet-theme@0.14.1) (2024-03-13)
 
 **Note:** Version bump only for package @digdir/designsystemet-theme

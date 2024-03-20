@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.54.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.1...@digdir/designsystemet-react@0.54.0) (2024-03-20)
+
+### Bug Fixes
+
+- **Accordion:** Missing hover & styling corrections ([#1710](https://github.com/digdir/designsystemet/issues/1710)) ([70fe406](https://github.com/digdir/designsystemet/commit/70fe406b3d03cdc70ec58b61e49bf6cdf01f3a49))
+
+### Features
+
+- **Paragraph:** Add `variant` prop with `long` and `short` ([#1636](https://github.com/digdir/designsystemet/issues/1636)) ([efedb27](https://github.com/digdir/designsystemet/commit/efedb27af6324bd018c80392b5a279e57f0cd5dd))
+
 ## [0.53.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.0...@digdir/designsystemet-react@0.53.1) (2024-03-13)
 
 **Note:** Version bump only for package @digdir/designsystemet-react
