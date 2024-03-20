@@ -91,8 +91,19 @@ export type ComboboxProps = {
   /**
    * Label for the clear button
    * @default 'Fjern alt'
+   * @deprecated Use `clearButtonLabel` instead
    */
   cleanButtonLabel?: string;
+  /**
+   * Hides the clear button
+   * @default false
+   */
+  hideClearButton?: boolean;
+  /**
+   * Label for the clear button
+   * @default 'Fjern alt'
+   */
+  clearButtonLabel?: string;
   /**
    * Enables virtualizing of options list.
    * @see https://tanstack.com/virtual
@@ -150,6 +161,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       readOnly = false,
       hideChips = false,
       cleanButtonLabel = 'Fjern alt',
+      clearButtonLabel = 'Fjern alt',
+      hideClearButton = false,
       error,
       errorId,
       id,
@@ -457,7 +470,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           htmlSize,
           optionValues,
           hideChips,
-          cleanButtonLabel,
+          clearButtonLabel: cleanButtonLabel || clearButtonLabel,
+          hideClearButton,
           listId,
           setInputValue,
           setActiveIndex,
@@ -606,7 +620,8 @@ type ComboboxContextType = {
   error: ComboboxProps['error'];
   htmlSize: ComboboxProps['htmlSize'];
   hideChips: NonNullable<ComboboxProps['hideChips']>;
-  cleanButtonLabel: NonNullable<ComboboxProps['cleanButtonLabel']>;
+  clearButtonLabel: NonNullable<ComboboxProps['clearButtonLabel']>;
+  hideClearButton: NonNullable<ComboboxProps['hideClearButton']>;
   options: Option[];
   selectedOptions: Option[];
   size: NonNullable<ComboboxProps['size']>;
