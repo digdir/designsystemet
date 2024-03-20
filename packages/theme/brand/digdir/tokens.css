@@ -39,6 +39,7 @@
   --fds-colors-grey-400: #bcbfc5;
   --fds-colors-red-800: #5a121d;
   --fds-colors-purple-700: #7a1265;
+  --fds-font-size-f0: clamp(1rem, calc(0.19vw + 0.96rem), 1.13rem);
 
   /** Tokens */
   --fds-brand-alt1-100: #feefef;
