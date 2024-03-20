@@ -3364,6 +3364,19 @@ export const spacing = [
     path: ['spacing', '14'],
   },
   {
+    value: '3.75rem',
+    type: 'spacing',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{base_sizing}*15',
+      type: 'spacing',
+    },
+    name: '--fds-spacing-15',
+    attributes: {},
+    path: ['spacing', '15'],
+  },
+  {
     value: '4.5rem',
     type: 'spacing',
     filePath: '../../design-tokens/Base/Semantic.json',
@@ -3612,6 +3625,19 @@ export const sizing = [
     name: '--fds-sizing-14',
     attributes: {},
     path: ['sizing', '14'],
+  },
+  {
+    value: '3.75rem',
+    type: 'sizing',
+    filePath: '../../design-tokens/Base/Semantic.json',
+    isSource: false,
+    original: {
+      value: '{base_sizing}*15',
+      type: 'sizing',
+    },
+    name: '--fds-sizing-15',
+    attributes: {},
+    path: ['sizing', '15'],
   },
   {
     value: '4.5rem',

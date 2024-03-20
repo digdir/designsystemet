@@ -877,6 +877,10 @@
       "value": "{base_sizing}*14",
       "type": "spacing"
     },
+    "15": {
+      "value": "{base_sizing}*15",
+      "type": "spacing"
+    },
     "18": {
       "value": "{base_sizing}*18",
       "type": "spacing"
@@ -958,6 +962,10 @@
     },
     "14": {
       "value": "{base_sizing}*14",
+      "type": "sizing"
+    },
+    "15": {
+      "value": "{base_sizing}*15",
       "type": "sizing"
     },
     "18": {
