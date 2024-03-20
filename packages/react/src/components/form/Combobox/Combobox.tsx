@@ -172,7 +172,9 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
-    const initialRender = useRef(true);
+    const shouldCareInitialRender = useRef(
+      initialValue.length > 0 ? true : false,
+    );
 
     const listId = useId();
 
@@ -289,8 +291,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       if (prevSelectedHash === selectedHash) return;
 
       const values = selectedOptions.map((option) => option.value);
-      if (initialRender.current) {
-        initialRender.current = false;
+      if (shouldCareInitialRender.current) {
+        shouldCareInitialRender.current = false;
         return;
       }
       onValueChange?.(values);
