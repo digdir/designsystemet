@@ -172,22 +172,34 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
-    const shouldCareInitialRender = useRef(
-      initialValue.length > 0 ? true : false,
-    );
 
     const listId = useId();
 
     const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+
+    const {
+      selectedOptions,
+      setSelectedOptions,
+      options,
+      optionsChildren,
+      restChildren,
+      optionValues,
+      customIds,
+      prevSelectedHash,
+      setPrevSelectedHash,
+    } = useCombobox({
+      children,
+      inputValue,
+      filter,
+      multiple,
+      initialValue,
+    });
+
     const [activeDescendant, setActiveDescendant] = useState<
       string | undefined
     >(undefined);
-    const [prevSelectedHash, setPrevSelectedHash] = useState(
-      JSON.stringify(selectedOptions),
-    );
 
     useEffect(() => {
       if (rest.inputValue !== undefined) {
@@ -209,29 +221,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     );
 
     const listRef = useRef<Array<HTMLElement | null>>([]);
-    const { options, optionsChildren, restChildren, optionValues, customIds } =
-      useCombobox({
-        children,
-        inputValue,
-        filter,
-        multiple,
-        selectedOptions,
-      });
-
-    // set initial value
-    useEffect(() => {
-      if (initialValue)
-        if (initialValue.length > 0) {
-          const updatedSelectedOptions = initialValue.map((option) => {
-            const value = options.find((value) => value.value === option);
-            return value as Option;
-          });
-
-          setSelectedOptions(updatedSelectedOptions);
-        }
-      // We only want to run this once
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
@@ -291,13 +280,9 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       if (prevSelectedHash === selectedHash) return;
 
       const values = selectedOptions.map((option) => option.value);
-      if (shouldCareInitialRender.current) {
-        shouldCareInitialRender.current = false;
-        return;
-      }
       onValueChange?.(values);
       setPrevSelectedHash(selectedHash);
-    }, [onValueChange, selectedOptions, prevSelectedHash]);
+    }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
 
     useEffect(() => {
       if (value && options.length > 0) {
@@ -308,7 +293,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
         setSelectedOptions(updatedSelectedOptions);
       }
-    }, [multiple, prevSelectedHash, value, options]);
+    }, [multiple, prevSelectedHash, value, options, setSelectedOptions]);
 
     // handle click on option, either select or deselect - Handles single or multiple
     const handleSelectOption = (option: Option) => {
