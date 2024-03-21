@@ -106,8 +106,14 @@
   width: 100px;
 }
 
+.package {
+  display: flex;
+  align-items: center;
+  gap: var(--fds-spacing-2);
+}
+
 .npmShield {
-  margin-top: 0 !important;
+  margin: auto;
 }
 
 @media (max-width: 576px) {
