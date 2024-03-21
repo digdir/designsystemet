@@ -41,7 +41,7 @@ const Header = () => {
     },
     {
       name: 'Komponenter',
-      url: 'https://storybook.designsystemet.no',
+      url: '/komponenter',
     },
   ];
 
