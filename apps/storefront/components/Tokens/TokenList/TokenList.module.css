@@ -106,6 +106,10 @@
   width: 100px;
 }
 
+.npmShield {
+  margin-top: 0 !important;
+}
+
 @media (max-width: 576px) {
   .copy {
     width: 100%;

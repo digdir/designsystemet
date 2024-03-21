@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';
-import { DropdownMenu } from '@digdir/design-system-react';
+import { DropdownMenu, Link } from '@digdir/design-system-react';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
 import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
@@ -112,6 +112,13 @@ const TokenList = ({
 
   return (
     <div className={classes.tokens}>
+      <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
+        <img
+          src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'
+          alt='Latest release on npm'
+          className={classes.npmShield}
+        />
+      </Link>
       {showThemePicker && (
         <div className={classes.toggleGroup}>
           <DropdownMenu>
