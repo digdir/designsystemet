@@ -30,7 +30,14 @@ const content = (column: SanityDocument) => {
           src={getUrl(column.image)}
         />
       )}
-      {column._type == 'link' && <Link href={column.url}>{column.text}</Link>}
+      {column._type == 'link' && (
+        <Link
+          className={classes.link}
+          href={column.url}
+        >
+          {column.text}
+        </Link>
+      )}
     </div>
   );
 };

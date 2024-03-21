@@ -22,3 +22,5 @@ export const BLOG_POSTS_SLUG_QUERY = groq`*[_type == "blogPost" && defined(slug.
 export const BLOG_POST_QUERY = groq`*[_type == "blogPost" && slug.current == $slug][0]`;
 
 export const FOOTER_QUERY = groq`*[_type == "footer"]`;
+
+export const MENU_QUERY = groq`*[_type == "navigation"]`;

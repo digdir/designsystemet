@@ -14,7 +14,7 @@ export const link = defineType({
     defineField({
       name: 'url',
       title: 'URL',
-      type: 'url',
+      type: 'string',
     }),
   ],
 });

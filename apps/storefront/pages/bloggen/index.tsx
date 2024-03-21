@@ -12,11 +12,12 @@ import {
   BLOG_POSTS_QUERY,
   BLOG_ARCHIVE_QUERY,
   FOOTER_QUERY,
+  MENU_QUERY,
 } from '../../sanity/lib/queries';
 import { getClient } from '../../sanity/lib/client';
 import { token } from '../../sanity/lib/token';
 import { Banner } from '../../components/SubPages/Banner/Banner';
-import { Container, Footer } from '../../components';
+import { Container, Footer, Header } from '../../components';
 
 import classes from './index.module.css';
 
@@ -24,6 +25,7 @@ type PageProps = {
   blogPosts: SanityDocument[];
   blogArchive: SanityDocument[];
   footer: SanityDocument[];
+  menu: SanityDocument[];
   draftMode: boolean;
   token: string;
 };
@@ -33,12 +35,13 @@ export const getStaticProps = async ({ draftMode = false }) => {
   const blogPosts = await client.fetch<SanityDocument[]>(BLOG_POSTS_QUERY);
   const blogArchive = await client.fetch<SanityDocument[]>(BLOG_ARCHIVE_QUERY);
   const footer = await client.fetch<SanityDocument[]>(FOOTER_QUERY);
-
+  const menu = await client.fetch<SanityDocument[]>(MENU_QUERY);
   return {
     props: {
       blogPosts,
       blogArchive,
       footer,
+      menu,
       draftMode,
       token: draftMode ? token : '',
     },
@@ -49,9 +52,18 @@ const PostsPreview = dynamic(
   () => import('../../components/Blog/Posts/PostsPreview'),
 );
 
+const HeaderPreview = dynamic(
+  () => import('../../components/Blog/Posts/PostsPreview'),
+);
+
+const FooterPreview = dynamic(
+  () => import('../../components/Blog/Posts/PostsPreview'),
+);
+
 function Bloggen(props: PageProps) {
   return (
     <div>
+      <Header menu={props.menu[0].menu} />
       <div className={classes.page}>
         <Banner color={props.blogArchive[0].blogBanner?.color}>
           <Banner.Icon>

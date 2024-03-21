@@ -30,6 +30,10 @@
   margin-top: var(--fds-spacing-8);
 }
 
+.link {
+  margin-top: 16px;
+}
+
 .links {
   margin: 0;
   padding: 0;

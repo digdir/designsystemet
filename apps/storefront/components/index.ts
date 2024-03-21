@@ -3,8 +3,10 @@ export { ClipboardBtn } from './ClipboardBtn';
 export { CodeSnippet } from './CodeSnippet';
 export { Container } from './Container';
 export { Footer } from './Footer';
+export { FooterPreview } from './Footer';
 export { Grid } from './Grid';
 export { Header } from './Header';
+export { HeaderPreview } from './Header';
 export { ImageSection } from './ImageSection';
 export type {
   ImageSectionButtonProps,

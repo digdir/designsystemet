@@ -1,19 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import type { QueryParams, SanityDocument } from 'next-sanity';
+import type { SanityDocument } from 'next-sanity';
 import { useLiveQuery } from 'next-sanity/preview';
 
 import { FOOTER_QUERY } from '../../sanity/lib/queries';
 
 import { Footer } from './Footer';
 
-export default function PostPreview({
-  post,
-  params = {},
-}: {
-  post: SanityDocument;
-  params: QueryParams;
-}) {
-  const [data] = useLiveQuery<SanityDocument>(post, FOOTER_QUERY, params);
+const FooterPreview = ({ data }: { data: SanityDocument[] }) => {
+  const [footerData] = useLiveQuery<SanityDocument[]>(data, FOOTER_QUERY);
 
-  return <Footer data={data} />;
-}
+  return <Footer data={footerData} />;
+};
+
+export { FooterPreview };

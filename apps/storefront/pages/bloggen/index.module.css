@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   gap: var(--fds-spacing-8);
   margin-top: var(--fds-spacing-18);
-  margin-bottom: var(--page-spacing-bottom);
+  padding-bottom: var(--page-spacing-bottom);
 }
 
 .main {
