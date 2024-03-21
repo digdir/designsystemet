@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.55.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.54.0...@digdir/designsystemet-react@0.55.0) (2024-03-21)
+
+### Features
+
+- **Combobox:** Add `hideClearButton` prop ([#1720](https://github.com/digdir/designsystemet/issues/1720)) ([6bbb3b7](https://github.com/digdir/designsystemet/commit/6bbb3b7cce94415e10e981288b7a7a20bb569efc))
+- **Combobox:** Add `initialValue` prop ([#1719](https://github.com/digdir/designsystemet/issues/1719)) ([0a0c3d4](https://github.com/digdir/designsystemet/commit/0a0c3d4d3c4e39da4d9f1a5bdad2694e5148390c))
+
 # [0.54.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.1...@digdir/designsystemet-react@0.54.0) (2024-03-20)
 
 ### Bug Fixes

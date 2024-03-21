@@ -2648,6 +2648,7 @@
   z-index: 2;
   left: var(--fds-spacing-3);
   transform: scale(1.5);
+  pointer-events: none;
 }
 
 [type='search']::-webkit-search-decoration,
