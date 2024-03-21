@@ -348,7 +348,10 @@ export const Composed: Story = () => (
           color='danger'
           size='small'
         >
-          <TrashFillIcon aria-hidden />
+          <TrashFillIcon
+            aria-hidden
+            fontSize='1rem'
+          />
           Fjern
         </Button>
       </div>

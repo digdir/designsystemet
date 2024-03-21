@@ -56,7 +56,6 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '',
       multiple: false,
-      selectedOptions: [],
     });
 
     expect(result.current.options.length).toBe(3);
@@ -68,7 +67,6 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: false,
-      selectedOptions: [],
     });
 
     expect(result.current.options.length).toBe(3);
@@ -80,12 +78,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: false,
-      selectedOptions: [
-        {
-          value: 'oslo',
-          label: 'Oslo',
-        },
-      ],
+      initialValue: ['oslo'],
     });
 
     expect(result.current.options.length).toBe(3);
@@ -97,12 +90,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: true,
-      selectedOptions: [
-        {
-          value: 'oslo',
-          label: 'Oslo',
-        },
-      ],
+      initialValue: ['oslo'],
     });
 
     expect(result.current.options.length).toBe(3);
@@ -114,7 +102,6 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,
-      selectedOptions: [],
     });
 
     expect(result.current.options.length).toBe(3);
@@ -126,12 +113,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: false,
-      selectedOptions: [
-        {
-          value: 'oslo',
-          label: 'Oslo',
-        },
-      ],
+      initialValue: ['oslo'],
     });
 
     expect(result.current.options.length).toBe(3);
