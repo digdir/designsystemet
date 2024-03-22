@@ -45,7 +45,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {tokens.map(([_, tokens]) => {
+        {tokens.map(([, tokens]) => {
           return tokens.map((token) => {
             const pxSize = `${parseFloat(token.value as string) * 16}px`;
 
