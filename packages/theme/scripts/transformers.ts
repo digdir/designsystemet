@@ -19,6 +19,25 @@ export const sizePx: Named<Transform> = {
   transformer: (token) => transformDimension(token.value as number),
 };
 
+export const sizeRem: Named<Transform> = {
+  name: 'fds/size/toRem',
+  type: 'value',
+  transitive: true,
+  matcher: (token) =>
+    ['sizing', 'spacing'].includes(token.type as string) &&
+    !token.name.includes('base'),
+  transformer: (token, options) => {
+    const baseFont = options.basePxFontSize || 16;
+    const value = token.value as number;
+
+    if (value === 0) {
+      return '0';
+    }
+
+    return `${value / baseFont}rem`;
+  },
+};
+
 export const nameKebab: Named<Transform> = {
   name: 'name/cti/hierarchical-kebab',
   type: 'name',

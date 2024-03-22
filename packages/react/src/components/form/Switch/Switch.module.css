@@ -102,22 +102,22 @@
 
 .small,
 .small .label {
-  min-height: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-6);
 }
 
 .medium,
 .medium .label {
-  min-height: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-7);
 }
 
 .large,
 .large .label {
-  min-height: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-8);
 }
 
 .small {
-  --fds-switch-height: 1.5rem;
-  --fds-switch-width: 2.5rem;
+  --fds-switch-height: var(--fds-sizing-6);
+  --fds-switch-width: var(--fds-sizing-11);
 }
 
 .small .input {
@@ -126,8 +126,8 @@
 }
 
 .medium {
-  --fds-switch-height: 1.75rem;
-  --fds-switch-width: 3rem;
+  --fds-switch-height: var(--fds-sizing-7);
+  --fds-switch-width: var(--fds-sizing-13);
 }
 
 .medium .input {
@@ -136,8 +136,8 @@
 }
 
 .large {
-  --fds-switch-height: 2rem;
-  --fds-switch-width: 3.5rem;
+  --fds-switch-height: var(--fds-sizing-8);
+  --fds-switch-width: var(--fds-sizing-15);
 }
 
 .large .input {

@@ -3,7 +3,7 @@
   --fds-alert-border-left: 8px 0 0 0 var(--fds-alert-border) inset;
   --fds-alert-color: var(--fds-semantic-text-neutral-default);
   --fds-alert-icon-color: var(--fds-alert-border);
-  --fds-alert-icon-size: calc((4 * 6 / 16) * var(--fds-font-size-f0));
+  --fds-alert-icon-size: var(--fds-sizing-7);
   --fds-alert-background: var(--fds-semantic-surface-info-subtle);
 
   box-shadow: var(--fds-alert-border-left);

@@ -17,6 +17,7 @@ import {
   fluidFontSize,
   calc,
   fontScaleHackFormat,
+  sizeRem,
 } from './transformers';
 import {
   scopedReferenceVariables,
@@ -46,6 +47,7 @@ const packageTokensPath = 'brand';
 setupFormatters('./../../prettier.config.js');
 
 StyleDictionary.registerTransform(sizePx);
+StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(nameKebabUnderscore);
 StyleDictionary.registerTransform(typographyShorthand);
@@ -61,14 +63,14 @@ StyleDictionary.registerFileHeader(fileheader);
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
   transforms: [
-    nameKebab.name,
     'ts/resolveMath',
-    fluidFontSize.name,
-    calc.name,
+    nameKebab.name,
+    // fluidFontSize.name,
+    // calc.name,
     typographyShorthand.name,
     'ts/size/lineheight',
+    sizeRem.name,
     'ts/shadow/css/shorthand',
-    sizePx.name,
     'ts/color/modifiers',
     'ts/color/css/hexrgba',
   ],
@@ -121,7 +123,7 @@ const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
           fileHeader: fileheader.name,
           referencesFilter: (token: TransformedToken) =>
             !(token.path[0] === 'viewport') &&
-            ['spacing', 'sizing', 'color'].includes(token.type as string),
+            ['color'].includes(token.type as string),
           // outputReferences: true,
         },
       },

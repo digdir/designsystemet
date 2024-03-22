@@ -2,6 +2,7 @@
   "tokenSetOrder": [
     "Base/Core",
     "Base/Semantic",
+    "Base/Fluid",
     "Brand/Digdir",
     "Brand/Tilsynet",
     "Brand/Altinn",

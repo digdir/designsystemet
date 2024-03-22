@@ -38,17 +38,17 @@
 
 .listitem:where(.small) {
   --fsdc-pagination-listitem-margin: var(--fds-spacing-2);
-  --fdsc-pagination-ellipsis-width: var(--fds-sizing-8);
+  --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
 }
 
 .listitem:where(.medium) {
   --fsdc-pagination-listitem-margin: var(--fds-spacing-4);
-  --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
+  --fdsc-pagination-ellipsis-width: var(--fds-sizing-12);
 }
 
 .listitem:where(.large) {
   --fsdc-pagination-listitem-margin: var(--fds-spacing-6);
-  --fdsc-pagination-ellipsis-width: var(--fds-sizing-12);
+  --fdsc-pagination-ellipsis-width: var(--fds-sizing-14);
 }
 
 .listitem:where(.compact) {

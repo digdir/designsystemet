@@ -54,7 +54,7 @@
   gap: var(--fds-sizing-1);
   font: var(--fds-typography-paragraph-short-small);
   font-family: inherit;
-  min-height: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-10);
 }
 
 .medium {
@@ -63,7 +63,7 @@
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
-  min-height: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-12);
 }
 
 .large {
@@ -72,7 +72,7 @@
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-large);
   font-family: inherit;
-  min-height: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-14);
 }
 
 .fullWidth {

@@ -18,18 +18,18 @@
 }
 
 .small {
-  --fdsc-tag-padding: var(--fds-spacing-1);
-  --fdsc-tag-min-height: var(--fds-sizing-5);
+  --fdsc-tag-padding: var(--fds-spacing-2);
+  --fdsc-tag-min-height: var(--fds-sizing-7);
 }
 
 .medium {
-  --fdsc-tag-padding: var(--fds-spacing-1);
-  --fdsc-tag-min-height: var(--fds-sizing-6);
+  --fdsc-tag-padding: var(--fds-spacing-2);
+  --fdsc-tag-min-height: var(--fds-sizing-8);
 }
 
 .large {
-  --fdsc-tag-padding: var(--fds-spacing-2);
-  --fdsc-tag-min-height: var(--fds-sizing-7);
+  --fdsc-tag-padding: var(--fds-spacing-3);
+  --fdsc-tag-min-height: var(--fds-sizing-9);
 }
 
 .neutral {

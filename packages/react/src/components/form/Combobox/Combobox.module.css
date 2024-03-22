@@ -39,6 +39,7 @@
 }
 
 .inputWrapper.small {
+  min-height: var(--fds-sizing-10);
   font: var(--fds-typography-paragraph-small);
   font-family: inherit;
   padding: 5px var(--fds-spacing-2);
@@ -50,6 +51,7 @@
 }
 
 .inputWrapper.medium {
+  min-height: var(--fds-sizing-12);
   font: var(--fds-typography-paragraph-medium);
   font-family: inherit;
   padding: 7px var(--fds-spacing-3);
@@ -61,6 +63,7 @@
 }
 
 .inputWrapper.large {
+  min-height: var(--fds-sizing-14);
   font: var(--fds-typography-paragraph-large);
   font-family: inherit;
   padding: 7px var(--fds-spacing-4);

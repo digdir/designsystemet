@@ -57,7 +57,7 @@
   background: var(--fdsc-removable-background);
   border: 0;
   padding-right: 0;
-  min-height: var(--fdsc-removable-chip-size);
+  min-height: var(--fdsc-chip-height);
 }
 
 .xMark {
@@ -65,18 +65,6 @@
   height: var(--fdsc-removable-chip-xmark-size);
   width: var(--fdsc-removable-chip-xmark-size);
   padding-right: var(--fdsc-removable-chip-xmark-padding_right);
-}
-
-.removable.small {
-  --fdsc-removable-chip-size: var(--fds-sizing-6);
-}
-
-.removable.medium {
-  --fdsc-removable-chip-size: var(--fds-sizing-7);
-}
-
-.removable.large {
-  --fdsc-removable-chip-size: var(--fds-sizing-8);
 }
 
 .xMark .icon {
@@ -152,19 +140,19 @@
 }
 
 .small {
-  --fdsc-chip-height: var(--fds-sizing-6);
-  --fdsc-chip-padding: var(--fds-spacing-2);
+  --fdsc-chip-height: var(--fds-sizing-7);
+  --fdsc-chip-padding: var(--fds-spacing-3);
   --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
 }
 
 .medium {
-  --fdsc-chip-height: var(--fds-sizing-7);
+  --fdsc-chip-height: var(--fds-sizing-8);
   --fdsc-chip-padding: var(--fds-spacing-3);
   --fdsc-removable-chip-xmark-size: var(--fds-sizing-6);
 }
 
 .large {
-  --fdsc-chip-height: var(--fds-sizing-8);
-  --fdsc-chip-padding: var(--fds-spacing-3);
+  --fdsc-chip-height: var(--fds-sizing-9);
+  --fdsc-chip-padding: var(--fds-spacing-4);
   --fdsc-removable-chip-xmark-size: var(--fds-sizing-7);
 }

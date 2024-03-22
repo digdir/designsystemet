@@ -52,27 +52,27 @@
 }
 
 .formField.small .adornment {
-  padding: 6.5px var(--fds-spacing-3);
+  padding: var(--fds-sizing-2) var(--fds-spacing-3);
 }
 
 .formField.medium .adornment {
-  padding: 9px var(--fds-spacing-4);
+  padding: 0.65rem var(--fds-spacing-4);
 }
 
 .formField.large .adornment {
-  padding: 11px var(--fds-spacing-5);
+  padding: 0.85rem var(--fds-spacing-5);
 }
 
 .formField.small .field {
-  height: var(--fds-sizing-8);
-}
-
-.formField.medium .field {
   height: var(--fds-sizing-10);
 }
 
-.formField.large .field {
+.formField.medium .field {
   height: var(--fds-sizing-12);
+}
+
+.formField.large .field {
+  height: var(--fds-sizing-14);
 }
 
 .label {
