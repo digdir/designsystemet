@@ -245,9 +245,14 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // floating UI
     const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
-      whileElementsMounted: autoUpdate,
       open,
       onOpenChange: setOpen,
+      whileElementsMounted: (reference, floating, update) => {
+        autoUpdate(reference, floating, update);
+        return () => {
+          floating.scrollTop = 0;
+        };
+      },
       middleware: [
         flip({ padding: 10 }),
         floatingSize({
@@ -442,11 +447,12 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const rowVirtualizer = useVirtualizer({
       count: optionsChildren.length,
       getScrollElement: () => refs.floating.current,
-      estimateSize: () => 40,
+      estimateSize: () => 70,
       measureElement: (elem) => {
         return elem.getBoundingClientRect().height;
       },
       overscan: 1,
+      debug: true,
     });
 
     return (
@@ -476,7 +482,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           setInputValue,
           setActiveIndex,
           handleKeyDown,
-          setOpen,
+          setOpen: setOpen,
           getReferenceProps,
           setSelectedOptions,
           /* Recieves index of option, and the ID of the button element */
