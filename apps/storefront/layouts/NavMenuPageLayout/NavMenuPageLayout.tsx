@@ -20,7 +20,7 @@ const NavMenuPageLayout = ({ content, banner }: NavMenuPageLayoutProps) => {
   const router = useRouter();
 
   return (
-    <div>
+    <div className={classes.outerPage}>
       {banner && (
         <Banner color={banner.color}>
           <Banner.Icon>{banner.icon}</Banner.Icon>

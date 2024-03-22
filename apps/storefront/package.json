@@ -12,6 +12,7 @@
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
     "@digdir/design-system-react": "0.49.0",
+    "@lottiefiles/lottie-player": "^2.0.4",
     "@mdx-js/loader": "^2.0.0-rc.2",
     "@mdx-js/react": "^1.6.22",
     "@navikt/aksel-icons": "^5.12.2",

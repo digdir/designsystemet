@@ -1,7 +1,6 @@
 .section {
   background-color: var(--fds-semantic-background-subtle);
   padding: var(--fds-spacing-14) 0 var(--fds-spacing-18) 0;
-  text-align: center;
 }
 
 .white {
@@ -14,6 +13,7 @@
 
 .header {
   margin-bottom: var(--fds-spacing-8);
+  text-align: center;
 }
 
 .content {

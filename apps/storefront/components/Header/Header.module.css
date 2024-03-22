@@ -1,8 +1,9 @@
 .header {
-  height: 96px;
+  height: 106px;
   display: flex;
   align-items: center;
-  background-color: white;
+  position: relative;
+  z-index: 5;
 }
 
 .container {
@@ -10,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 var(--fds-spacing-7);
+  padding: 0 var(--fds-spacing-8);
 }
 
 .logo {
@@ -58,7 +59,7 @@
 }
 
 .firstIcon {
-  margin-left: var(--fds-spacing-7);
+  margin-left: var(--fds-spacing-8);
 }
 
 .linkIcon {
@@ -68,8 +69,8 @@
 }
 
 .linkIcon > svg {
-  height: 24px;
-  width: 24px;
+  height: 26px;
+  width: 26px;
 }
 
 .linkIcon.figma path {
