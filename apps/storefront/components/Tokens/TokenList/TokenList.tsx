@@ -2,7 +2,12 @@ import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';
-import { DropdownMenu, Link, Paragraph } from '@digdir/design-system-react';
+import {
+  DropdownMenu,
+  Link,
+  Paragraph,
+  Table,
+} from '@digdir/design-system-react';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
 import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
@@ -24,6 +29,82 @@ type TokenListProps = {
 type CardColumnType = 2 | 3;
 type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
 
+type TokenTableProps = {
+  tokens: [string, Token[]][];
+} & HTMLAttributes<HTMLDivElement>;
+
+const TokensTable = ({ tokens }: TokenTableProps) => {
+  return (
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Rem</Table.HeaderCell>
+          <Table.HeaderCell>Px (16px)</Table.HeaderCell>
+          <Table.HeaderCell>Visualisering</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tokens.map(([_, tokens]) => {
+          return tokens.map((token) => {
+            const pxSize = `${parseFloat(token.value as string) * 16}px`;
+
+            return (
+              <Table.Row key={token.name}>
+                <Table.Cell>
+                  <ClipboardBtn
+                    title='Kopier CSS variabel'
+                    text={token.name}
+                    value={token.name}
+                  />
+                </Table.Cell>
+                <Table.Cell>{token.value}</Table.Cell>
+                <Table.Cell>{pxSize}</Table.Cell>
+                <Table.Cell>
+                  <TokenSize value={pxSize} />
+                </Table.Cell>
+              </Table.Row>
+            );
+          });
+        })}
+      </Table.Body>
+    </Table>
+  );
+};
+
+type TokenCardsProps = {
+  tokens: [string, Token[]][];
+  cols?: number;
+  hideValue: TokenListProps['hideValue'];
+  type: TokenListProps['type'];
+};
+
+const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
+  return tokens.map(([group, tokens]) => {
+    return (
+      <div key={group}>
+        <h4>{capitalizeString(group)}</h4>
+        <div className={cl(classes.group)}>
+          <div
+            className={cl(classes.cards, {
+              [classes.cards2]: cols === 2,
+            })}
+          >
+            {tokens.map((token) => (
+              <TokenCard
+                token={token}
+                key={token.name}
+                hideValue={hideValue}
+                type={type}
+              ></TokenCard>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  });
+};
+
 type TokenCardProps = {
   token: Token;
   hideValue: TokenListProps['hideValue'];
@@ -36,7 +117,6 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
     .slice(token.path.length - 1, token.path.length)
     .toString();
 
-  const isSlim = type === 'sizing' || type === 'spacing';
   return (
     <div
       className={classes.card}
@@ -46,16 +126,12 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
         {type === 'color' && <TokenColor value={val} />}
         {type === 'typography' && <TokenFontSize value={val} />}
         {type === 'boxShadow' && <TokenShadow value={val} />}
-        {isSlim && <TokenSize value={val} />}
       </div>
 
       <div className={classes.textContainer}>
         <h4 className={classes.title}>
           {capitalizeString(title)}
           &nbsp;
-          {isSlim && typeof token.description === 'string' && (
-            <small>{`(${token.description})`}</small>
-          )}
           <ClipboardBtn
             title='Kopier CSS variabel'
             text='CSS'
@@ -146,39 +222,32 @@ const TokenList = ({
         </div>
       )}
       <>
-        {sectionedTokens.map(([section, tokens]) => (
-          <div
-            key={section as string}
-            className={classes.section}
-          >
-            <h3>{capitalizeString(section as string)}</h3>
-            {(tokens as [string, Token[]][]).map(([group, tokens]) => {
-              const isSlim = type === 'sizing' || type === 'spacing';
+        {sectionedTokens.map(([section, tokens]) => {
+          const tokens_ = tokens as [string, Token[]][];
+          const List = () => {
+            if (['spacing', 'sizing'].includes(type)) {
+              return <TokensTable tokens={tokens_} />;
+            }
 
-              return (
-                <div key={group}>
-                  {!isSlim && <h4>{capitalizeString(group)}</h4>}
-                  <div className={cl(!isSlim && classes.group)}>
-                    <div
-                      className={cl(classes.cards, {
-                        [classes.cards2]: cardColumns === 2,
-                      })}
-                    >
-                      {tokens.map((token) => (
-                        <TokenCard
-                          token={token}
-                          key={token.name}
-                          hideValue={hideValue}
-                          type={type}
-                        ></TokenCard>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ))}
+            return (
+              <TokenCards
+                type={type}
+                cols={cardColumns}
+                tokens={tokens_}
+                hideValue={hideValue}
+              />
+            );
+          };
+          return (
+            <div
+              key={section as string}
+              className={classes.section}
+            >
+              <h3>{capitalizeString(section as string)}</h3>
+              <List />
+            </div>
+          );
+        })}
       </>
     </div>
   );
