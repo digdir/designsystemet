@@ -491,7 +491,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           setInputValue,
           setActiveIndex,
           handleKeyDown,
-          setOpen: setOpen,
+          setOpen,
           getReferenceProps,
           setSelectedOptions,
           /* Recieves index of option, and the ID of the button element */
