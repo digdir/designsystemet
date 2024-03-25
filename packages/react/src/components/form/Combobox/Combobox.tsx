@@ -26,6 +26,7 @@ import type {
   UseListNavigationProps,
 } from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import { flushSync } from 'react-dom';
 
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
@@ -246,7 +247,16 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     // floating UI
     const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
       open,
-      onOpenChange: setOpen,
+      onOpenChange: (newOpen) => {
+        flushSync(() => {
+          if (refs.floating.current && !newOpen) {
+            refs.floating.current.scrollTop = 0;
+          }
+          setTimeout(() => {
+            setOpen(newOpen);
+          }, 1);
+        });
+      },
       whileElementsMounted: (reference, floating, update) => {
         autoUpdate(reference, floating, update);
         return () => {
