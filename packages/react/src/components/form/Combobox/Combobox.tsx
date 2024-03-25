@@ -462,7 +462,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         return elem.getBoundingClientRect().height;
       },
       overscan: 1,
-      debug: true,
     });
 
     return (
