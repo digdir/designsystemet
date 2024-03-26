@@ -96,6 +96,7 @@ Preview.args = {
   disabled: false,
   hideLabel: false,
   hideChips: false,
+  hideClearButton: false,
   virtual: false,
   description: 'Velg et sted',
   size: 'medium',
@@ -397,6 +398,7 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
       <Combobox
         {...args}
         value={value}
+        initialValue={['all']}
         multiple={true}
         onValueChange={handleValueChange}
         label='Hvor går reisen?'

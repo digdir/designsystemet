@@ -40,6 +40,7 @@ export const ComboboxInput = ({
     htmlSize,
     options,
     hideChips,
+    hideClearButton,
     setOpen,
     setActiveIndex,
     handleKeyDown,
@@ -107,6 +108,9 @@ export const ComboboxInput = ({
     }
   };
 
+  const showClearButton =
+    multiple && !hideClearButton && selectedOptions.length > 0;
+
   return (
     <Box
       /* Props from floating-ui */
@@ -168,7 +172,7 @@ export const ComboboxInput = ({
         />
       </div>
       {/* Clear button if we are in multiple mode and have at least one active value */}
-      {multiple && selectedOptions.length > 0 && <ComboboxClearButton />}
+      {showClearButton && <ComboboxClearButton />}
       {/* Arrow for combobox. Click is handled by the wrapper */}
       <div className={classes.arrow}>
         {open ? (

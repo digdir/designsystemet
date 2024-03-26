@@ -1,12 +1,6 @@
 import { BlogArticleLayout } from '@layouts';
-import { Meta, ResponsiveIframe, Image } from '@components';
+import { ResponsiveIframe, Image } from '@components';
 import { Contributors } from '@blog';
-
-<Meta
-  title='Derfor trenger vi et felles designsystem'
-  description='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
-  image='/img/bloggen/miro.png'
-/>
 
 export default ({ children }) => (
   <BlogArticleLayout
@@ -15,14 +9,11 @@ export default ({ children }) => (
     ingress='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
     date='5. desember 2023'
     author='Digdir og Brønnøysundregistrene'
+    imageSrc='/img/bloggen/miro.png'
+    imageAlt='Skjermdump fra Miro som viser mange musepekere som legger inn røde og grønne notislapper'
+    imageCaption='Mange delte sine tanker i Miro om et felles designsystem. 440 røde og grønne lapper ble lagt igjen.'
   />
 );
-
-<Image
-  src='/img/bloggen/miro.png'
-  alt='Skjermdump fra Miro som viser mange musepekere som legger inn røde og grønne notislapper'
-  caption='Mange delte sine tanker i Miro om et felles designsystem. 440 røde og grønne lapper ble lagt igjen.'
-/>
 
 Ikke alle klarer å bruke offentlige digitale tjenester på egen hånd. Innsikt fra prosjektet [“Digital hele livet med bedre brukeropplevelse”](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405) har vist at en av grunnene er at brukskvaliteten i de digitale tjenestene ikke er god nok. Prosjektet var et oppdrag fra regjeringen og ble ledet av Digdir.
 
