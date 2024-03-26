@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -120,29 +120,3 @@ export const InPortal = () => {
     </Popover>
   );
 };
-
-export const AnchorEl = () => {
-  const anchorEl = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button
-        ref={anchorEl}
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
-        My trigger
-      </Button>
-      <Popover
-        open={open}
-        onClose={() => setOpen(false)}
-        anchorEl={anchorEl.current}
-      >
-        <Popover.Content>popover content</Popover.Content>
-      </Popover>
-    </>
-  );
-};
-
-AnchorEl.decorators = [marginDecorator];
