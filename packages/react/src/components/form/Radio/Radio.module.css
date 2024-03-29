@@ -27,7 +27,7 @@
   background: var(--fds-radio-background);
   border-radius: 50%;
   flex-shrink: 0;
-  margin-inline: 6px;
+  margin-right: 6px;
   margin-block: 6px;
 }
 

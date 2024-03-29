@@ -26,7 +26,7 @@
   box-shadow: inset 0 0 0 2px var(--fds-checkbox-border-color);
   background: var(--fds-checkbox-background);
   flex-shrink: 0;
-  margin-inline: 6px;
+  margin-right: 6px;
   margin-block: 6px;
   border-radius: var(--fds-border_radius-medium);
 }
