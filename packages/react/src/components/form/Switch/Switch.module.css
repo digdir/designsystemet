@@ -27,12 +27,12 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  border: 2px solid var(--fds-switch-track-background);
   pointer-events: none;
   width: var(--fds-switch-width);
   height: var(--fds-switch-height);
   margin: auto;
   overflow: visible;
+  border: 2px solid var(--fds-switch-track-background);
   border-radius: var(--fds-border_radius-full);
   background-color: var(--fds-switch-track-background);
   transition: background-color var(--fds-transition) ease, border-color var(--fds-transition) ease;
