@@ -24,7 +24,7 @@ export type CheckboxProps = {
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
-    const { children, description, className, ...rest } = props;
+    const { children, description, className, style, ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -56,6 +56,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             readOnly && classes.readonly,
             className,
           )}
+          style={style}
         >
           <input
             className={classes.input}
