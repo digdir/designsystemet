@@ -27,29 +27,6 @@ import { DropdownMenu } from '@digdir/designsystemet-react';
 </DropdownMenu>;
 ```
 
-### Alternativ `anchorEl`
-
-Alternativt kan du bruke `anchorEl` for å styre hvor `DropdownMenu` skal vises, men da må du selv håndtere tilstand for åpning/lukking og attributter for tilgjengelighet.
-
-_`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `DropdownMenu.Trigger` istedenfor._
-
-```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
-import { DropdownMenu } from '@digdir/designsystemet-react';
-
-const anchorEl = useRef(null);
-
-<Button ref={anchorEl}>Trigger</Button>
-
-<DropdownMenu anchorEl={anchorEl}>
-  <DropdownMenu.Content>
-    <DropdownMenu.Group>
-      <DropdownMenu.Item>Item</DropdownMenu.Item>
-    </DropdownMenu.Group>
-  </DropdownMenu.Content>
-</DropdownMenu>;
-```
-
 ## Eksempler på bruk
 
 ### Kontrollert
@@ -72,11 +49,7 @@ Legg på `portal` for å rendere `DropdownMenu` i en portal. Dette flytter dropd
 
 ## Tilgjengelighet
 
-Brukes `DropdownMenu.Trigger` er det innebygd tilgjengelighet.
-
-Brukes `anchorEl` må du sørge for å legge på `aria-expanded={true/false}` i henhold til åpne/lukket tilstand og `aria-haspopup='menu'` på trigger elementet.
-
-<Canvas of={DropdownMenuStories.WithAnchorEl} />
+Det innebygd tilgjengelighet, med `aria-expanded={true/false}` i henhold til åpne/lukket tilstand, og `aria-haspopup='menu'` på trigger elementet.
 
 ### `DropdownMenu.Group`
 
