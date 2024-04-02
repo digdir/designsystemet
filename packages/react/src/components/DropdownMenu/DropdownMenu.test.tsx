@@ -7,10 +7,7 @@ import { DropdownMenu } from '.';
 
 const Comp = (args: Partial<DropdownMenuProps>) => {
   return (
-    <DropdownMenu
-      {...args}
-      anchorEl={null}
-    >
+    <DropdownMenu {...args}>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group heading='Links'>

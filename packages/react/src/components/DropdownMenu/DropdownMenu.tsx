@@ -5,11 +5,6 @@ import type { Placement } from '@floating-ui/react';
 import type { PortalProps } from '../../types/Portal';
 
 export type DropdownMenuProps = {
-  /** Element the dropdown anchors to
-   * @deprecated Use `DropdownMenu.Trigger` instead
-   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-dropdownmenu--docs)
-   */
-  anchorEl?: Element | null;
   /** Whether the dropdown is open or not.
    * @default false
    */
@@ -34,12 +29,11 @@ export const DropdownMenu = ({
   size = 'medium',
   portal,
   children,
-  ...rest
 }: DropdownMenuProps) => {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
-  const anchorEl = rest.anchorEl ?? triggerRef.current;
+  const anchorEl = triggerRef.current;
   const isControlled = typeof open === 'boolean';
 
   useEffect(() => {
