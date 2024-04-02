@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.55.1-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.55.1-alpha.0...@digdir/designsystemet-react@0.55.1-alpha.1) (2024-04-02)
+
+### Bug Fixes
+
+- **Checkbox:** `style` applied to wrong element ([#1743](https://github.com/digdir/designsystemet/issues/1743)) ([7bad2c2](https://github.com/digdir/designsystemet/commit/7bad2c2b44cd666094a59a1db2c8e05e422fe6ea))
+- **Radio:** `style` applied to wrong element ([#1742](https://github.com/digdir/designsystemet/issues/1742)) ([fa65b7e](https://github.com/digdir/designsystemet/commit/fa65b7eb8fd8301c1f212bb46283302d24529054))
+
+### Features
+
+- **DropdownMenu:** Remove deprecated `anchorEl` ([#1744](https://github.com/digdir/designsystemet/issues/1744)) ([6da4daa](https://github.com/digdir/designsystemet/commit/6da4daa7292cab394573b2d776415e842f6f45d5))
+
+### Reverts
+
+- Revert "updated Switch to match Figma design" ([1684cfa](https://github.com/digdir/designsystemet/commit/1684cfa4f026bc361cefed216af2ac5b8a235412))
+
 ## [0.55.1-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.55.0...@digdir/designsystemet-react@0.55.1-alpha.0) (2024-03-21)
 
 **Note:** Version bump only for package @digdir/designsystemet-react
