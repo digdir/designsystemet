@@ -1,11 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import {
-  Information,
-  Do,
-  Dont,
-  Stack,
-} from '../../../../../../docs-components';
+import { Do, Dont, Stack } from '../../../../../../docs-components';
 import * as TableStories from '../../Table/Table.stories';
 
 import * as CheckboxStories from './Checkbox.stories';
@@ -27,10 +22,7 @@ Vær oppmerksom på:
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Checkbox } from '@digdir/designsystemet-react';
 
 <Checkbox.Group legend='What would your D&D party like to eat?'>

@@ -1,7 +1,5 @@
 import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
 
-import { Information } from '../../../../../docs-components';
-
 import * as PaginationStories from './Pagination.stories';
 
 <Meta of={PaginationStories} />
@@ -23,14 +21,11 @@ Vær oppmerksom på:
 
 ## Bruk
 
-<Information text='token' />
-
 ### Eksempel på bruk med `Pagination`
 
 `Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
 
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Pagination } from '@digdir/designsystemet-react';
 
 const [currentPage, setCurrentPage] = useState(1);

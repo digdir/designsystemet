@@ -175,6 +175,7 @@ const preview: Preview = {
         method: 'alphabetical',
         order: [
           'Oversikt',
+          'Kom i gang',
           'Endringslogger',
           'Komponenter',
           'Experimental',
