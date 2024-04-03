@@ -16,7 +16,7 @@ import {
 } from '../../sanity/lib/queries';
 import { getClient } from '../../sanity/lib/client';
 import { token } from '../../sanity/lib/token';
-import { Banner } from '../../components/SubPages/Banner/Banner';
+import { Banner } from '../../components/PageBanner/PageBanner';
 import { Container, Footer, Header } from '../../components';
 
 import classes from './index.module.css';

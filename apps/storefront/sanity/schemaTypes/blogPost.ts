@@ -59,6 +59,10 @@ export const blogPost = defineType({
           name: 'my_image',
           type: 'my_image',
         }),
+        defineArrayMember({
+          name: 'body',
+          type: 'block',
+        }),
       ],
     }),
     defineField({

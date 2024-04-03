@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { useRouter } from 'next/router';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
-import { Banner } from '../../components/SubPages/Banner/Banner';
+import { Banner } from '../../components/PageBanner/PageBanner';
 
 import classes from './NavMenuPageLayout.module.css';
 

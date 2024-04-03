@@ -1,19 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
+'use client';
+
+import type { QueryResponseInitial } from '@sanity/react-loader';
+import { useQuery } from '@sanity/react-loader';
 import type { QueryParams, SanityDocument } from 'next-sanity';
-import { useLiveQuery } from 'next-sanity/preview';
 
 import { BLOG_POST_QUERY } from '../../../sanity/lib/queries';
 
 import { Post } from './Post';
 
-export default function PostPreview({
-  post,
-  params = {},
+export function PostPreview({
+  initial,
+  params,
 }: {
-  post: SanityDocument;
+  initial: QueryResponseInitial<SanityDocument>;
   params: QueryParams;
 }) {
-  const [data] = useLiveQuery<SanityDocument>(post, BLOG_POST_QUERY, params);
+  const { data } = useQuery<SanityDocument | null>(BLOG_POST_QUERY, params, {
+    initial,
+  });
 
-  return <Post post={data} />;
+  return data ? (
+    <Post post={data} />
+  ) : (
+    <div className='bg-red-100'>Post not found</div>
+  );
 }

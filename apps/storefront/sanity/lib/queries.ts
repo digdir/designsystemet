@@ -1,5 +1,3 @@
-// ./sanity/lib/queries.ts
-
 import { groq } from 'next-sanity';
 
 export const BLOG_POSTS_QUERY = groq`*[_type == "blogPost" && defined(slug)]{

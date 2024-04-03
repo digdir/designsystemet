@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';

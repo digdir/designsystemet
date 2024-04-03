@@ -1,3 +1,5 @@
+'use client';
+
 import cl from 'clsx';
 
 import { Tag } from '../Tag/Tag';

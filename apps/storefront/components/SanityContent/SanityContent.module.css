@@ -1,0 +1,10 @@
+.blocks {
+  --text-max-width: 640px;
+
+  max-width: var(--text-max-width);
+  margin: 0 auto;
+}
+
+.blocks img {
+  max-width: 100%;
+}

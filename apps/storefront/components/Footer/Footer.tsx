@@ -13,7 +13,7 @@ const getCurrentYear = () => {
 };
 
 type FooterProps = {
-  data: SanityDocument[];
+  data: SanityDocument[] | null;
 };
 
 const content = (column: SanityDocument) => {
@@ -42,24 +42,24 @@ const content = (column: SanityDocument) => {
   );
 };
 
-const Footer = ({ data }: FooterProps) => {
+export function Footer({ data }: FooterProps) {
   return (
     <footer className={classes.footer}>
       <div className={classes.top}>
         <Container className={classes.container}>
           <div>
             {data[0].column1.map((item, index) => (
-              <>{content(item)}</>
+              <div key={index}>{content(item)}</div>
             ))}
           </div>
           <div>
             {data[0].column2.map((item, index) => (
-              <>{content(item)}</>
+              <div key={index}>{content(item)}</div>
             ))}
           </div>
           <div>
             {data[0].column3.map((item, index) => (
-              <>{content(item)}</>
+              <div key={index}>{content(item)}</div>
             ))}
           </div>
         </Container>
@@ -69,6 +69,4 @@ const Footer = ({ data }: FooterProps) => {
       </div>
     </footer>
   );
-};
-
-export { Footer };
+}

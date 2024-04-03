@@ -4,11 +4,11 @@ import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { media } from 'sanity-plugin-media';
+import { presentationTool } from 'sanity/presentation';
 
 import { structure } from './structure';
 import { apiVersion, dataset, projectId } from './sanity/env';
 import { schema } from './sanity/schema';
-import { presentationTool } from 'sanity/presentation';
 
 const Logo = () => (
   <svg
@@ -63,10 +63,6 @@ export default defineConfig({
     structureTool({
       structure: (S) => structure(S),
     }),
-    // Vision is a tool that lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersion }),
-    media(),
     presentationTool({
       previewUrl: {
         draftMode: {
@@ -74,5 +70,9 @@ export default defineConfig({
         },
       },
     }),
+    // Vision is a tool that lets you query your content with GROQ in the studio
+    // https://www.sanity.io/docs/the-vision-plugin
+    visionTool({ defaultApiVersion: apiVersion }),
+    media(),
   ],
 });

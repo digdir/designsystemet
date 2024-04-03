@@ -1,3 +1,5 @@
+'use client';
+
 export { Banner } from './Banner';
 export { ClipboardBtn } from './ClipboardBtn';
 export { CodeSnippet } from './CodeSnippet';
@@ -23,3 +25,7 @@ export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
 export { Image } from './Image';
+export { PageBanner } from './PageBanner';
+
+export { Posts, PostsPreview, Post, PostPreview } from './Blog';
+export { SanityContent } from './SanityContent/SanityContent';

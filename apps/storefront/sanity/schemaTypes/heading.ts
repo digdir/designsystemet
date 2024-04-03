@@ -14,9 +14,13 @@ export const heading = defineType({
     }),
     defineField({
       name: 'level',
-      type: 'string',
+      type: 'number',
       options: {
-        list: ['H2', 'H3', 'H4', 'H5', 'H6'],
+        list: [
+          { title: 'H2', value: 2 },
+          { title: 'H3', value: 3 },
+          { title: 'H4', value: 3 },
+        ],
         layout: 'radio',
       },
     }),

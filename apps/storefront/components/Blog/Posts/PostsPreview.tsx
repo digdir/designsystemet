@@ -1,14 +1,27 @@
+'use client';
+
+import type { QueryResponseInitial } from '@sanity/react-loader';
+import { useQuery } from '@sanity/react-loader';
 import type { SanityDocument } from 'next-sanity';
-import { useLiveQuery } from 'next-sanity/preview';
 
 import { BLOG_POSTS_QUERY } from '../../../sanity/lib/queries';
 
 import { Posts } from './Posts';
 
-const PostsPreview = ({ posts = [] }: { posts: SanityDocument[] }) => {
-  const [data] = useLiveQuery<SanityDocument[]>(posts, BLOG_POSTS_QUERY);
+export function PostsPreview({
+  initial,
+}: {
+  initial: QueryResponseInitial<SanityDocument[]>;
+}) {
+  const { data } = useQuery<SanityDocument[] | null>(
+    BLOG_POSTS_QUERY,
+    {},
+    { initial },
+  );
 
-  return <Posts posts={data} />;
-};
-
-export default PostsPreview;
+  return data ? (
+    <Posts posts={data} />
+  ) : (
+    <div className='bg-red-100'>Post not found</div>
+  );
+}

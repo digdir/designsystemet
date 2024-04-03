@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,7 +14,7 @@ import classes from './Header.module.css';
 import { Menu } from './Menu';
 
 type HeaderProps = {
-  menu: SanityDocument[];
+  menu: SanityDocument[] | null;
 };
 
 const Header = ({ menu }: HeaderProps) => {
@@ -61,7 +64,7 @@ const Header = ({ menu }: HeaderProps) => {
             )}
           </button>
           <ul className={cl(classes.menu, { [classes.active]: open })}>
-            <Menu data={menu} />
+            <Menu data={menu[0].menu} />
             <li
               className={cl(classes.item, classes.itemIcon, classes.firstIcon)}
             >

@@ -1,94 +1,38 @@
+'use client';
+
 import { Heading, Ingress } from '@digdir/design-system-react';
-import type { HeadingProps } from '@digdir/design-system-react';
 import cl from 'clsx';
-import { createContext, useContext, type HTMLAttributes } from 'react';
 
-import classes from './Banner.module.css';
+import classes from './PageBanner.module.css';
 
-type BanneContextProps = {
-  color: NonNullable<BannerProps['color']>;
+type PageBannerProps = {
+  title: string;
+  ingress?: string;
+  color: 'red' | 'blue' | 'yellow';
+  icon: React.ReactNode;
 };
 
-const BannerContext = createContext<BanneContextProps>({
-  color: 'red',
-});
+type PageBannerLogoProps = {
+  color: 'red' | 'blue' | 'yellow';
+};
 
-type BannerProps = {
-  color?: 'blue' | 'red' | 'yellow';
-} & HTMLAttributes<HTMLDivElement>;
-
-const BannerRoot = ({
-  color = 'red',
-  className,
-  children,
-  ...props
-}: BannerProps) => {
+export const PageBanner = ({
+  title,
+  ingress,
+  color,
+  icon,
+}: PageBannerProps) => {
   return (
-    <BannerContext.Provider value={{ color }}>
-      <div
-        {...props}
-        className={cl(classes.banner, className)}
-      >
-        {children}
-        <BannerLogoSvg />
-      </div>
-    </BannerContext.Provider>
+    <div className={classes.banner}>
+      <div className={cl(classes.icon, classes[color])}>{icon}</div>
+      <Heading size='xlarge'>{title}</Heading>
+      {ingress && <Ingress>{ingress}</Ingress>}
+      <PageBannerLogoSvg color={color} />
+    </div>
   );
 };
 
-type BannerHeadingProps = Omit<HeadingProps, 'size'>;
-
-const BannerHeading = ({ ...props }: BannerHeadingProps) => {
-  return (
-    <Heading
-      size='xlarge'
-      {...props}
-    />
-  );
-};
-
-type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
-
-const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
-  return (
-    <Ingress
-      className={cl(classes.ingress, className)}
-      {...props}
-    />
-  );
-};
-
-type BanneIconProps = HTMLAttributes<HTMLDivElement>;
-
-const BannerIcon = ({ className, ...props }: BanneIconProps) => {
-  const { color } = useContext(BannerContext);
-
-  return (
-    <div
-      className={cl(classes.icon, classes[color], className)}
-      {...props}
-    />
-  );
-};
-
-type BannerComponent = typeof BannerRoot & {
-  Heading: typeof BannerHeading;
-  Ingress: typeof BannerIngress;
-  Icon: typeof BannerIcon;
-};
-
-const Banner: BannerComponent = BannerRoot as BannerComponent;
-
-Banner.Heading = BannerHeading;
-Banner.Ingress = BannerIngress;
-Banner.Icon = BannerIcon;
-
-export type { BannerProps, BannerHeadingProps };
-export { Banner, BannerRoot, BannerHeading, BannerIngress, BannerIcon };
-
-const BannerLogoSvg = () => {
-  const { color } = useContext(BannerContext);
-
+const PageBannerLogoSvg = ({ color }: PageBannerLogoProps) => {
   const svgClass = ('svg-' + color) as 'svg-red' | 'svg-blue' | 'svg-yellow';
 
   return (

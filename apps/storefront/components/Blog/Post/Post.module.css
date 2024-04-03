@@ -48,14 +48,7 @@
   gap: var(--fds-spacing-18);
 }
 
-.content {
-  --text-max-width: 640px;
-
-  max-width: var(--text-max-width);
-  margin: 0 auto;
-}
-
-.content p {
+.blocks p {
   max-width: var(--text-max-width);
   margin: var(--fds-spacing-6) 0;
   margin-top: var(--fds-spacing-5);
@@ -63,11 +56,11 @@
   font-size: 18px;
 }
 
-.content h2 {
+.blocks h2 {
   font-size: 32px;
 }
 
-.content img {
+.blocks img {
   display: block;
   width: 860px;
   margin: var(--fds-spacing-12) 0;
@@ -75,17 +68,17 @@
   background-color: var(--fds-semantic-background-subtle);
 }
 
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
+.blocks h1,
+.blocks h2,
+.blocks h3,
+.blocks h4,
+.blocks h5,
+.blocks h6 {
   margin-top: var(--fds-spacing-12);
   margin-bottom: var(--fds-spacing-5);
 }
 
-.content:last-child {
+.blocks:last-child {
   margin-bottom: var(--fds-spacing-12);
 }
 

@@ -5,7 +5,7 @@ import { ComponentIcon } from '@navikt/aksel-icons';
 import cn from 'clsx';
 
 import GithubLink from 'components/Link/Github/GithubLink';
-import { Banner } from 'components/SubPages/Banner/Banner';
+import { Banner } from 'components/PageBanner/Banner';
 
 import { Container, SidebarMenu, MdxContent } from '../../components';
 

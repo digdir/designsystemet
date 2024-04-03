@@ -1,17 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
+'use client';
+
+import type { QueryResponseInitial } from '@sanity/react-loader';
+import { useQuery } from '@sanity/react-loader';
 import type { SanityDocument } from 'next-sanity';
-import { useLiveQuery } from 'next-sanity/preview';
 
 import { MENU_QUERY } from '../../sanity/lib/queries';
 
 import { Header } from './Header';
 
-const HeaderPreview = ({ menu }: { menu: SanityDocument[] }) => {
-  const [menuData] = useLiveQuery<SanityDocument[]>(menu, MENU_QUERY);
-  console.log(menuData);
+export function HeaderPreview({
+  initial,
+}: {
+  initial: QueryResponseInitial<SanityDocument[]>;
+}) {
+  const { data } = useQuery<SanityDocument[] | null>(
+    MENU_QUERY,
+    {},
+    { initial },
+  );
 
-  return <Header menu={menuData[0].menu} />;
-};
-
-export { HeaderPreview };
+  return data ? (
+    <Header menu={data} />
+  ) : (
+    <div className='bg-red-100'>Post not found</div>
+  );
+}

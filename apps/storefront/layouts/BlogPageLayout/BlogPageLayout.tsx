@@ -1,7 +1,7 @@
 import type * as React from 'react';
 
 import { Container } from '../../components';
-import { Banner } from '../../components/SubPages/Banner/Banner';
+import { Banner } from '../../components/PageBanner/PageBanner';
 
 import classes from './BlogPageLayout.module.css';
 

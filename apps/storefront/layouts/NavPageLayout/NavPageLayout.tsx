@@ -1,6 +1,6 @@
 import type * as React from 'react';
 
-import { Banner } from 'components/SubPages/Banner/Banner';
+import { Banner } from 'components/PageBanner/Banner';
 
 import { Container, ImageSection, MdxContent } from '../../components';
 import type { ImageSectionProps } from '../../components';

@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Heading, Ingress, Paragraph } from '@digdir/design-system-react';
 import type { SanityDocument } from 'next-sanity';
 
-import { Container } from '../../../components';
+import { Container, SanityContent } from '../../../components';
 import { Link } from '../../../components/Link/Link';
 import { getUrl } from '../../../sanity/lib/imageBuilder';
 import { Contributors } from '../Contributors/Contributors';
@@ -49,15 +48,7 @@ const Post = ({ post }: { post: SanityDocument }) => {
               src={getUrl(post.image)}
               alt={post.title}
             />
-            {post.content.map((block, index) => (
-              <div
-                key={index}
-                className={classes.content}
-              >
-                {block._type === 'heading' && <h2>{block.Text}</h2>}
-                {block._type === 'paragraph' && <p>{block.Text}</p>}
-              </div>
-            ))}
+            <SanityContent content={post.content} />
             <Contributors
               authors={[
                 'Marianne Røsvik',

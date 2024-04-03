@@ -1,0 +1,1 @@
+export { PageBanner } from './PageBanner';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
 import { Tooltip } from '@digdir/design-system-react';

@@ -1,7 +1,7 @@
 import type { SanityDocument } from 'next-sanity';
 import cn from 'clsx';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 import classes from './Menu.module.css';
@@ -21,7 +21,7 @@ const isMenuItemActive = (routerPath: string, itemPath: string) => {
 
 const Menu = ({ data }: MenuProps) => {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <ul className={cn(classes.menu, { [classes.active]: open })}>
@@ -35,7 +35,7 @@ const Menu = ({ data }: MenuProps) => {
             onClick={() => setOpen(false)}
             prefetch={false}
             className={cn(
-              isMenuItemActive(router.pathname, item.url) ? classes.active : '',
+              isMenuItemActive(pathname, item.url) ? classes.active : '',
               classes.link,
             )}
           >
