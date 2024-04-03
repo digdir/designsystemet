@@ -1,7 +1,7 @@
 'use client';
 import type { HTMLAttributes } from 'react';
 import Image from 'next/image';
-import { Link } from '@digdir/design-system-react';
+import { Link } from '@digdir/designsystemet-react';
 import { useRouter } from 'next/router';
 
 export const GithubLink = ({ ...rest }: HTMLAttributes<HTMLAnchorElement>) => {

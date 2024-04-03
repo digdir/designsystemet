@@ -1,5 +1,5 @@
-import { Heading, Ingress } from '@digdir/design-system-react';
-import type { HeadingProps } from '@digdir/design-system-react';
+import { Heading, Ingress } from '@digdir/designsystemet-react';
+import type { HeadingProps } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { createContext, useContext, type HTMLAttributes } from 'react';
 

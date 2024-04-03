@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { Heading, Ingress, Paragraph } from '@digdir/design-system-react';
+import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
 
 import { Container, MdxContent, Image, Meta } from '../../components';
 import { Link } from '../../components/Link/Link';

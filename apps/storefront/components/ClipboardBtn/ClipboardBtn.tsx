@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
-import { Tooltip } from '@digdir/design-system-react';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './ClipboardBtn.module.css';
 
