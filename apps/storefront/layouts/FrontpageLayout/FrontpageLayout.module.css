@@ -1,5 +1,5 @@
 .header {
-  height: 570px;
+  height: 590px;
   margin-top: -106px;
   position: relative;
   overflow: hidden;
@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 168px;
+  padding-top: 132px;
 }
 
 .container {
@@ -39,6 +39,16 @@
   grid-column-gap: var(--grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   width: 100%;
+}
+
+.beta {
+  background-color: #e4d4ff;
+  display: inline-block;
+  padding: 4px 13px;
+  border-radius: 2px;
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 16px;
 }
 
 .test {
@@ -58,11 +68,11 @@
 }
 
 .clusterRight {
-  right: 60px;
+  right: 65px;
 }
 
 .clusterLeft {
-  left: 60px;
+  left: 65px;
 }
 
 .cluster1 {
@@ -89,7 +99,13 @@
 }
 
 .cluster5 {
-  top: 2050px;
+  top: 2300px;
+  height: 140px;
+  transform: rotate(45deg);
+}
+
+.cluster6 {
+  top: 3100px;
   height: 140px;
   transform: rotate(45deg);
 }

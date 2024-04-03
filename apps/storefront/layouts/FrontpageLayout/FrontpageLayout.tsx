@@ -50,11 +50,21 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
           alt='test'
           className={cn(classes.cluster, classes.cluster5, classes.clusterLeft)}
         />
+        <img
+          src='/img/elements/third.svg'
+          alt='test'
+          className={cn(
+            classes.cluster,
+            classes.cluster6,
+            classes.clusterRight,
+          )}
+        />
       </div>
       <div className={classes.header}>
         <div className={classes.content}>
           <Container className={classes.container}>
             <div className={classes.test}>
+              <div className={classes.beta}>Beta</div>
               <Heading size='xlarge'>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
@@ -80,7 +90,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
                 title='Komponenter'
                 description='Se oversikten over UI-komponentene som er laget i react.'
                 color='red'
-                url='https://storybook.designsystemet.no'
+                url='/komponenter'
                 icon={<ComponentIcon fontSize={34} />}
               ></NavigationCard>
             </div>

@@ -51,7 +51,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
           imgHeight={270}
         />
 
-      <Section title='Ting i tiden'>
+      <Section title='Siste nytt fra designsystemet'>
         <BlogCard
           title='Designsystemet er endelig ute av beta!'
           desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
@@ -88,4 +88,13 @@ export default ({ children }) => <FrontpageLayout content={children} />;
           headingLevel='h2'
           imgWidth={195}
           imgHeight={170}
+          buttons={
+            [
+              { text: 'Ta kontakt', href: 'mailto:designsystem@digdir.no', prefix: <EnvelopeClosedIcon fontSize={24} /> }, { text: 'Bli med i Slack-kanalen', href: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',  prefix: (
+        <img
+          src='img/slack-logo.png'
+          alt=''
         />
+      ) }, { text: 'Github', href: 'https://github.com/digdir/designsystemet', prefix: <BranchingIcon fontSize={24} /> } ]}
+
+/>
