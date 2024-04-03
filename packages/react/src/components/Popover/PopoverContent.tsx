@@ -80,7 +80,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       },
       whileElementsMounted: autoUpdate,
       elements: {
-        reference: anchorEl,
+        reference: anchorEl ?? undefined,
         floating: floatingEl.current,
       },
       middleware: [
