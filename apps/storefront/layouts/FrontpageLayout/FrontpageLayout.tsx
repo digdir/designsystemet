@@ -88,62 +88,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         </div>
       </div>
 
-      <div className={classes.banners}>
-        <ImageBanner
-          title='Din digitale verktøykasse'
-          description='The height he dragged would apartment, yourself not he in like he itch as arrives at then liabilities one by leather the facilitate day cost. As where instruments, spirit, are do. Violin, and it and bit a be refinement cut the through in allow eyes. The was a poured the also when open close.'
-          imgSrc='/img/Toolbox.svg'
-          headingLevel='h2'
-          imgWidth={1195}
-          imgHeight={270}
-        />
-        <ImageBanner
-          title='Tilgjengelige komponenter'
-          description='The height he dragged would apartment, yourself not he in like he itch as arrives at then liabilities one by leather the facilitate day cost. As where instruments, spirit, are do. Violin, and it and bit a be refinement cut the through in allow eyes. The was a poured the also when open close.'
-          videoSrc='/animations/Page.mp4'
-          imgPosition='right'
-          headingLevel='h2'
-          imgWidth={1195}
-          imgHeight={270}
-        />
-        <ImageBanner
-          title='Bruk ditt eget tema'
-          description='The height he dragged would apartment, yourself not he in like he itch as arrives at then liabilities one by leather the facilitate day cost. As where instruments, spirit, are do. Violin, and it and bit a be refinement cut the through in allow eyes. The was a poured the also when open close.'
-          videoSrc='/animations/Theme.mp4'
-          headingLevel='h2'
-          imgWidth={1195}
-          imgHeight={270}
-        />
-      </div>
-      <Section title='Ting i tiden'>
-        <BlogCard
-          title='Designsystemet er endelig ute av beta!'
-          desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-          href='/bloggen/dette-er-eit-navn'
-          image='/img/bloggen/versjon1.png'
-          featured={false}
-          tagText='Bloggen'
-          tagColor='first'
-        />
-        <BlogCard
-          title='Derfor trenger vi et felles designsystem'
-          desc='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
-          href='/bloggen/dette-er-eit-navn'
-          image='/img/bloggen/miro.png'
-          featured={false}
-          tagText='Bloggen'
-          tagColor='first'
-        />
-        <BlogCard
-          title='Kompsisjon med asChild i React koden'
-          desc='Nokre gonger må du kanskje byte ut ein komponent med ein anna, for eksempel Button skulle vore ein Link. Det er her asChild kjem inn i biletet.'
-          href='/bloggen/dette-er-eit-navn'
-          image='https://source.unsplash.com/random/1920x1080'
-          featured={false}
-          tagText='For utviklere'
-          tagColor='second'
-        />
-      </Section>
+      {content}
     </main>
   );
 };

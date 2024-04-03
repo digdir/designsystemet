@@ -3,6 +3,7 @@
   margin-top: -106px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
 .header::before {

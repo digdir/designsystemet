@@ -54,10 +54,6 @@ const ImageBanner = ({
     );
   }, [headingLevel, title]);
 
-  React.useEffect(() => {
-    import('@lottiefiles/lottie-player');
-  });
-
   return (
     <div className={(classes[backgroundColor], classes.section)}>
       <Container className={cn(classes.container)}>
