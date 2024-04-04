@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.54.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.3...@digdir/design-system-react@0.54.0) (2024-04-04)
+
+### Features
+
+- **storybook:** Add getting started page ([#1746](https://github.com/digdir/designsystemet/issues/1746)) ([1e80130](https://github.com/digdir/designsystemet/commit/1e80130c9068f6a38e1a8ecdc0a351885354ea71))
+
 ## [0.53.3](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.2...@digdir/design-system-react@0.53.3) (2024-03-21)
 
 **Note:** Version bump only for package @digdir/design-system-react
