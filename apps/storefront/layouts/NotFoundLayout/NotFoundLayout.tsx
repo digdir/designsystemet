@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import NextLink from 'next/link';
-import { Link } from '@digdir/design-system-react';
+import { Link } from '@digdir/designsystemet-react';
 import Image from 'next/image';
 
 import { Container } from '../../components/Container/Container';

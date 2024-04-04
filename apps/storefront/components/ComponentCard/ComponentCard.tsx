@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Heading } from '@digdir/design-system-react';
+import { Heading } from '@digdir/designsystemet-react';
 
 import classes from './ComponentCard.module.css';
 type ComponentCardProps = {
