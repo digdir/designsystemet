@@ -59,7 +59,7 @@
     "@types/rimraf": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "6.15.0",
     "@typescript-eslint/parser": "6.15.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "clsx": "^2.0.0",
     "copyfiles": "^2.4.1",
     "eslint": "8.56.0",
