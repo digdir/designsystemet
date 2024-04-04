@@ -54,6 +54,7 @@
 
 .description {
   color: var(--fds-semantic-text-neutral-default);
+  margin: var(--fds-spacing-4) 0;
 }
 
 .imageWrapper {
