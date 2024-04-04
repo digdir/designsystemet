@@ -5,7 +5,6 @@ export {
   TableCellTag,
   TableCellSpace,
 } from './Table/TableCells/TableCells';
-export { Changelog } from './Changelog/Changelog';
 export { Stack } from './Stack/Stack';
 export { Do, Dont } from './DoAndDont/DoAndDont';
 export { LinkHeading } from './LinkHeading/LinkHeading';
