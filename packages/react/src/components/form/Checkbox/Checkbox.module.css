@@ -145,7 +145,7 @@ input:checked {
     box-shadow: var(--fds-checkbox-border__hover), inset 0 0 0 2px var(--fds-checkbox-border-color);
   }
 
-  .container:not(.readonly, .disabled) > .input:hover:checked:focus-visible::before {
+  .container:not(.readonly, .disabled) > .input:hover:checked:focus-visible {
     box-shadow: var(--fds-checkbox-border__hover), inset 0 0 0 var(--fds-checkbox-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
   }
 }
