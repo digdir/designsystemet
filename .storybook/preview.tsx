@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { Preview } from '@storybook/react';
-import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 
 import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
-import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/altinn/tokens.css';
-import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/digdir/tokens.css';
-import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/tilsynet/tokens.css';
-import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/designsystemet-theme/brand/brreg/tokens.css';
 
 import '@altinn/figma-design-tokens/dist/tokens.css';
 import '@digdir/designsystemet-css/index.css';
@@ -146,20 +141,9 @@ const components = {
 };
 
 const preview: Preview = {
-  decorators: [cssVariablesTheme],
   parameters: {
-    cssVariables: {
-      files: {
-        Altinn: altinn,
-        Digdir: digdir,
-        Tilsynet: tilsynet,
-        Brønnøysundregistrene: brreg,
-      },
-      defaultTheme: 'Digdir',
-    },
     layout: 'centered',
     viewMode: 'docs',
-    actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       theme: customTheme,
       components,

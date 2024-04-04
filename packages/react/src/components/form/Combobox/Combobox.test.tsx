@@ -86,13 +86,15 @@ describe('Combobox', () => {
   });
 
   it('should close when we click Escape', async () => {
-    const { user } = await render();
+    const { user } = await render({ label: 'closeOnEscape' });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await user.type(combobox, '{Escape}');
+
+    await wait(500);
 
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
@@ -132,6 +134,7 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
     await user.click(document.body);
+    await wait(500);
 
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
   });
@@ -144,10 +147,12 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
     await user.click(document.body);
+    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Leikanger'));
     await user.click(document.body);
+    await wait(500);
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
