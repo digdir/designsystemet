@@ -53,7 +53,7 @@
 }
 
 .description {
-  color: var(--semantic-text-neutral-default);
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .imageWrapper {
