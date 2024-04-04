@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import cl from 'clsx';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
@@ -9,18 +8,8 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
   const icon = variant === 'do' ? <CheckmarkIcon /> : <XMarkIcon />;
   const heading = variant === 'do' ? 'Gjør' : 'Unngå';
 
-  const aspectRatio = useMemo(() => {
-    return getAspectRatio(image);
-  }, [image]);
-
   return (
-    <figure
-      className={cl(
-        styles.wrapper,
-        styles[variant],
-        aspectRatio > 2 && styles.landscape,
-      )}
-    >
+    <figure className={cl(styles.wrapper, styles[variant])}>
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
         <Heading
@@ -70,16 +59,6 @@ export const Dont = ({ description, image, alt }: DoAndDontProps) => {
       alt={alt}
     />
   );
-};
-
-const getAspectRatio = (image: string): number => {
-  const img = new Image();
-  img.src = image;
-
-  const w = img.naturalWidth;
-  const h = img.naturalHeight;
-
-  return w / h;
 };
 
 type DoAndDontProps = {
