@@ -2,8 +2,6 @@ import * as React from 'react';
 import type { Preview } from '@storybook/react';
 
 import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
-
-import '@altinn/figma-design-tokens/dist/tokens.css';
 import '@digdir/designsystemet-css/index.css';
 
 import {

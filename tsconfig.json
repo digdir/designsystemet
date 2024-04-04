@@ -37,5 +37,6 @@
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true
-  }
+  },
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
