@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.56.1-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.0...@digdir/designsystemet-react@0.56.1-alpha.0) (2024-04-04)
+
+### Reverts
+
+- Revert "updated Switch to match Figma design" ([691df72](https://github.com/digdir/designsystemet/commit/691df72c800d30468c537689c8ca218add7986de))
+
 # [0.56.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.55.0...@digdir/designsystemet-react@0.56.0) (2024-04-04)
 
 ### Bug Fixes
