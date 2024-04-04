@@ -72,7 +72,7 @@ const writeIndex = (fileName: string, cssFiles: string[]) => {
   const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
   fs.writeFileSync(
     path.join(outputFolder, fileName),
-    `@charset "UTF-8";\n${cssFilesContent.join('\n')}\n`,
+    `@charset "UTF-8";\n@layer fds {\n${cssFilesContent.join('\n')}\n}\n`,
   );
 
   return [fileName, ...cssFiles];
