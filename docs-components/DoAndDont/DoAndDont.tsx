@@ -20,12 +20,15 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
             margin: 0,
             border: 'none',
           }}
+          className='sb-unstyled'
         >
           {heading}
         </Heading>
       </div>
       <figcaption>
-        <Paragraph className={styles.description}>{description}</Paragraph>
+        <Paragraph className={cl(styles.description, 'sb-unstyled')}>
+          {description}
+        </Paragraph>
       </figcaption>
 
       <div className={styles.imageWrapper}>
