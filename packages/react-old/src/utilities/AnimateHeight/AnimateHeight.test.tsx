@@ -72,7 +72,7 @@ describe('AnimateHeight', () => {
     expect(container.firstChild).toHaveClass('openingOrClosing');
     await act(() => vi.runAllTimers);
     await waitFor(() => {
-      expect(container.firstChild).notToHaveClass('openingOrClosing');
+      expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
     expect(container.firstChild).toHaveClass('closed');
   });
