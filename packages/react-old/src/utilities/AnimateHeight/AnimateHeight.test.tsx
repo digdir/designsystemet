@@ -33,7 +33,7 @@ describe('AnimateHeight', () => {
   });
 
   it('Appends given style to root element', () => {
-    const style = { color: 'red' };
+    const style = { color: 'rgb(255, 0, 0)' };
     const { container } = render({ style });
     expect(container.firstChild).toHaveStyle({ height: 0 });
     expect(container.firstChild).toHaveStyle(style);
@@ -72,7 +72,7 @@ describe('AnimateHeight', () => {
     expect(container.firstChild).toHaveClass('openingOrClosing');
     await act(() => vi.runAllTimers);
     await waitFor(() => {
-      expect(container.firstChild).not.toHaveClass('openingOrClosing');
+      expect(container.firstChild).notToHaveClass('openingOrClosing');
     });
     expect(container.firstChild).toHaveClass('closed');
   });

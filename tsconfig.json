@@ -39,7 +39,7 @@
     "isolatedModules": true,
 
     // globals for vitest
-    "types": ["vitest/client", "vitest/globals"]
+    "types": ["vitest/globals"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
