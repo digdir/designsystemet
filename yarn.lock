@@ -5386,7 +5386,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/expect@npm:1.4.0":
+"@vitest/expect@npm:1.4.0, @vitest/expect@npm:^1.4.0":
   version: 1.4.0
   resolution: "@vitest/expect@npm:1.4.0"
   dependencies:
@@ -17595,6 +17595,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:6.15.0"
     "@typescript-eslint/parser": "npm:6.15.0"
     "@vitejs/plugin-react-swc": "npm:^3.6.0"
+    "@vitest/expect": "npm:^1.4.0"
     clsx: "npm:^2.0.0"
     copyfiles: "npm:^2.4.1"
     eslint: "npm:8.56.0"
