@@ -150,12 +150,18 @@
 
 .small {
   --fds-checkbox-size: 1.5rem;
+
+  min-height: var(--fds-sizing-8);
 }
 
 .medium {
   --fds-checkbox-size: 1.75rem;
+
+  min-height: var(--fds-sizing-10);
 }
 
 .large {
   --fds-checkbox-size: 2rem;
+
+  min-height: var(--fds-sizing-12);
 }
