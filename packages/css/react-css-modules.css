@@ -1795,19 +1795,19 @@
 .fds-checkbox-small-ad9a8b9c {
   --fds-checkbox-size: var(--fds-sizing-5);
 
-  min-height: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-5);
 }
 
 .fds-checkbox-medium-ad9a8b9c {
   --fds-checkbox-size: var(--fds-sizing-6);
 
-  min-height: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-6);
 }
 
 .fds-checkbox-large-ad9a8b9c {
   --fds-checkbox-size: var(--fds-sizing-7);
 
-  min-height: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-7);
 }
 
 .fds-fieldset-fieldset-2b3c05fc {
