@@ -39,7 +39,7 @@
     "isolatedModules": true,
 
     // globals for vitest
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
