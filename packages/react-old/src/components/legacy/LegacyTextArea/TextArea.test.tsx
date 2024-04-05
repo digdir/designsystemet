@@ -8,7 +8,7 @@ const user = userEvent.setup();
 
 describe('LegacyTextArea', () => {
   it('Triggers onPaste when pasting into input', async () => {
-    const onPaste = jest.fn();
+    const onPaste = vi.fn();
     const data = 'Hello world';
     render({ onPaste });
     const element = screen.getByRole('textbox');
@@ -27,7 +27,7 @@ describe('LegacyTextArea', () => {
   });
 
   it('Triggers onBlur event when field loses focus', async () => {
-    const onBlur = jest.fn();
+    const onBlur = vi.fn();
     render({ onBlur });
     const element = screen.getByRole('textbox');
     await user.click(element);
@@ -37,7 +37,7 @@ describe('LegacyTextArea', () => {
   });
 
   it('Triggers onChange event for each keystroke', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const data = 'test';
     render({ onChange });
     const element = screen.getByRole('textbox');
@@ -86,7 +86,7 @@ const render = (props: Partial<LegacyTextAreaProps> = {}) =>
   renderRtl(
     <LegacyTextArea
       id='id'
-      onChange={jest.fn()}
+      onChange={vi.fn()}
       {...props}
     />,
   );

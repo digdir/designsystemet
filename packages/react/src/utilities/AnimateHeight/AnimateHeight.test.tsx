@@ -1,5 +1,6 @@
 import { render as renderRtl, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { vi } from 'vitest';
 
 import * as hooks from '../../hooks';
 
@@ -10,11 +11,11 @@ const defaultProps: AnimateHeightProps = {
   open: false,
 };
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 describe('AnimateHeight', () => {
   beforeEach(() => {
-    jest.spyOn(hooks, 'useMediaQuery').mockReturnValue(false); // Set prefers-reduced-motion to false
+    vi.spyOn(hooks, 'useMediaQuery').mockReturnValue(false); // Set prefers-reduced-motion to false
   });
 
   it('Renders children', () => {
@@ -58,7 +59,7 @@ describe('AnimateHeight', () => {
     const { container, rerender } = render({ open: false });
     rerender(<AnimateHeight open />);
     expect(container.firstChild).toHaveClass('openingOrClosing');
-    await act(() => jest.runAllTimers);
+    await act(() => vi.runAllTimers);
     await waitFor(() => {
       expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
@@ -69,7 +70,7 @@ describe('AnimateHeight', () => {
     const { container, rerender } = render({ open: true });
     rerender(<AnimateHeight open={false} />);
     expect(container.firstChild).toHaveClass('openingOrClosing');
-    await act(() => jest.runAllTimers);
+    await act(() => vi.runAllTimers);
     await waitFor(() => {
       expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
@@ -77,7 +78,7 @@ describe('AnimateHeight', () => {
   });
 
   it('Sets class to "open" immediately when opening and "prefers-reduced-motion" is set', () => {
-    jest.spyOn(hooks, 'useMediaQuery').mockReturnValue(true);
+    vi.spyOn(hooks, 'useMediaQuery').mockReturnValue(true);
     const { container, rerender } = render({ open: false });
     rerender(<AnimateHeight open />);
     expect(container.firstChild).toHaveClass('open');
@@ -85,7 +86,7 @@ describe('AnimateHeight', () => {
   });
 
   it('Sets class to "closed" immediately when closing and "prefers-reduced-motion" is set', () => {
-    jest.spyOn(hooks, 'useMediaQuery').mockReturnValue(true);
+    vi.spyOn(hooks, 'useMediaQuery').mockReturnValue(true);
     const { container, rerender } = render({ open: true });
     rerender(<AnimateHeight open={false} />);
     expect(container.firstChild).toHaveClass('closed');

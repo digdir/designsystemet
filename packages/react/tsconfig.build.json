@@ -4,7 +4,6 @@
     "src/**/*.stories.ts*",
     "src/**/*.test.ts*",
     "stories",
-    "scripts/",
-    "../../test/jest.setup.ts"
+    "scripts/"
   ]
 }

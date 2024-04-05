@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import { useMediaQuery } from './useMediaQuery';
 
@@ -6,7 +7,7 @@ import { useMediaQuery } from './useMediaQuery';
 const query = '(min-width: 600px)';
 
 describe('useMediaQuery', () => {
-  afterEach(jest.resetAllMocks);
+  afterEach(vi.resetAllMocks);
 
   it.each([true, false])(
     'Returns value from window.matchMedia.matches when it is %s',
@@ -19,14 +20,14 @@ describe('useMediaQuery', () => {
   );
 
   it('Adds event listener', () => {
-    const addEventListener = jest.fn();
+    const addEventListener = vi.fn();
     matchMediaValueMock({ addEventListener });
     renderHook(() => useMediaQuery(query));
     expect(addEventListener).toHaveBeenCalledTimes(1);
   });
 
   it('Removes the event listener on unmount', () => {
-    const removeEventListener = jest.fn();
+    const removeEventListener = vi.fn();
     matchMediaValueMock({ removeEventListener });
     const { unmount } = renderHook(() => useMediaQuery(query));
     expect(removeEventListener).not.toHaveBeenCalled();
@@ -44,13 +45,13 @@ const matchMediaValueMock = ({
   addEventListener: jest.Mock;
   removeEventListener: jest.Mock;
 }>) => {
-  const value = jest.fn().mockImplementation((query: string) => ({
+  const value = vi.fn().mockImplementation((query: string) => ({
     matches: matches ?? false,
     media: query,
     onchange: null,
-    addEventListener: addEventListener ?? jest.fn(),
-    removeEventListener: removeEventListener ?? jest.fn(),
-    dispatchEvent: jest.fn(),
+    addEventListener: addEventListener ?? vi.fn(),
+    removeEventListener: removeEventListener ?? vi.fn(),
+    dispatchEvent: vi.fn(),
   }));
   Object.defineProperty(window, 'matchMedia', { writable: true, value });
   return value;

@@ -79,7 +79,7 @@ describe('Pagination', () => {
   });
 
   it('should call onChange with the correct page number when buttons are clicked', async () => {
-    const mockOnChange = jest.fn();
+    const mockOnChange = vi.fn();
     render({
       onChange: mockOnChange,
       ...defaultProps,

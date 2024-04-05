@@ -46,7 +46,7 @@ describe('Search', () => {
   });
 
   it('Triggers onBlur event when field loses focus', async () => {
-    const onBlur = jest.fn();
+    const onBlur = vi.fn();
     const { user } = render({ onBlur });
     const element = screen.getByRole('searchbox');
     await user.click(element);
@@ -56,7 +56,7 @@ describe('Search', () => {
   });
 
   it('Triggers onChange event for each keystroke', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const data = 'test';
     const { user } = render({ onChange });
     const element = screen.getByRole('searchbox');
@@ -87,7 +87,7 @@ describe('Search', () => {
   });
 
   it('clear value with clear button and focus is set to searchbox afterwards', async () => {
-    const onClear = jest.fn();
+    const onClear = vi.fn();
     const clearButtonLabel = 'clear';
     const typedText = 'typed text by user';
 
@@ -107,7 +107,7 @@ describe('Search', () => {
   });
 
   it('onSearchClick is triggered with correct search value when search button is interacted', async () => {
-    const onSearchClick = jest.fn();
+    const onSearchClick = vi.fn();
     const searchButtonLabel = 'search';
     const typedText = 'typed text by user';
 
@@ -131,7 +131,7 @@ describe('Search', () => {
   it('trigger onSubmit in form by default', async () => {
     const user = userEvent.setup();
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const typedText = 'typed text by user';
 
     renderRtl(
@@ -158,7 +158,7 @@ const render = (props: Partial<SearchProps> = {}) => {
     ...renderRtl(
       <Search
         {...{
-          onChange: jest.fn(),
+          onChange: vi.fn(),
           ...props,
         }}
       />,

@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -11,7 +10,7 @@ const user = userEvent.setup();
 
 // Test data:
 const id = 'test-id';
-const onClick = jest.fn();
+const onClick = vi.fn();
 const label = 'Option';
 const value = 'option';
 const option: LegacySingleSelectOption = { label, value };

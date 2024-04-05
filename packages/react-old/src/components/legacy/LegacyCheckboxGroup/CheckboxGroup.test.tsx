@@ -1,5 +1,6 @@
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { LegacyCheckboxGroup } from '.';
 import type { LegacyCheckboxGroupProps, LegacyCheckboxGroupItem } from '.';
@@ -47,12 +48,12 @@ describe('CheckboxGroup', () => {
           { label: 'Test 2', name: 'duplicated name' },
         ],
       });
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     expect(renderFn).toThrow('Each name in the checkbox group must be unique.');
   });
 
   it('Should call onChange handler with an array of the selected names when a checkbox is checked', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     await act(() => user.click(screen.queryAllByRole('checkbox')[0]));
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -131,7 +132,7 @@ describe('CheckboxGroup', () => {
   });
 
   it('onChange handler should not be called when the "disabled" prop is true', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ disabled: true, onChange });
     await act(() => user.click(screen.queryAllByRole('checkbox')[0]));
     expect(onChange).not.toHaveBeenCalled();

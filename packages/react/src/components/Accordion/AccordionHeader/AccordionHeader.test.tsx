@@ -55,7 +55,7 @@ describe('AccordionHeader Rendering', () => {
   });
 
   test('should have onHeaderClick callback', async () => {
-    const onHeaderClickMock = jest.fn();
+    const onHeaderClickMock = vi.fn();
     render(<TestComponent onHeaderClick={onHeaderClickMock} />);
 
     const accordionHeaderButton = screen.getByRole('button');

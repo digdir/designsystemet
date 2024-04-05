@@ -100,7 +100,7 @@ describe('Combobox', () => {
   });
 
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange });
     const combobox = screen.getByRole('combobox');
 
@@ -112,7 +112,7 @@ describe('Combobox', () => {
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 
@@ -157,7 +157,7 @@ describe('Combobox', () => {
   });
 
   it('should remove all values when we click on the clear button', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     const { user } = await render({ multiple: true, onValueChange });
     const combobox = screen.getByRole('combobox');
 
@@ -292,7 +292,7 @@ describe('Combobox', () => {
   });
 
   it('should only call onValueChange once when we click the same option fast twice', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 

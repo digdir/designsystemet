@@ -2,19 +2,20 @@ import assert from 'assert';
 
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import type { LegacyCheckboxProps } from '.';
 import { LegacyCheckbox } from '.';
 
 const user = userEvent.setup();
 
-const onChange = jest.fn();
+const onChange = vi.fn();
 const defaultProps: LegacyCheckboxProps = {
   onChange,
 };
 
 describe('Checkbox', () => {
-  afterEach(jest.resetAllMocks);
+  afterEach(vi.resetAllMocks);
 
   it('Should not be checked by default', () => {
     render();
@@ -29,14 +30,14 @@ describe('Checkbox', () => {
   });
 
   it('Should call onChange when user clicks', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const wrapper = renderAndGetWrapper({ onChange });
     await act(() => user.click(wrapper));
     expect(onChange).toHaveBeenCalled();
   });
 
   it('Should not call onChange when user clicks and the checkbox is disabled', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const wrapper = renderAndGetWrapper({ disabled: true, onChange });
     await act(() => user.click(wrapper));
     expect(onChange).not.toHaveBeenCalled();
