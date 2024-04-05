@@ -1,4 +1,4 @@
-import { render as renderRtl, screen, waitFor } from '@testing-library/react';
+import { render as renderRtl, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { vi } from 'vitest';
 
@@ -59,8 +59,8 @@ describe('AnimateHeight', () => {
     const { container, rerender } = render({ open: false });
     rerender(<AnimateHeight open />);
     expect(container.firstChild).toHaveClass('openingOrClosing');
-    await act(() => vi.runAllTimers);
-    await waitFor(() => {
+    await act(() => vi.runOnlyPendingTimers);
+    await vi.waitFor(() => {
       expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
     expect(container.firstChild).toHaveClass('open');
@@ -71,7 +71,7 @@ describe('AnimateHeight', () => {
     rerender(<AnimateHeight open={false} />);
     expect(container.firstChild).toHaveClass('openingOrClosing');
     await act(() => vi.runAllTimers);
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
     expect(container.firstChild).toHaveClass('closed');
