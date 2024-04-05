@@ -1,5 +1,5 @@
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import { useContext, forwardRef, createContext } from 'react';
+import { useContext, forwardRef } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
@@ -9,13 +9,7 @@ import type { FormFieldProps } from '../useFormField';
 
 import { useFieldset } from './useFieldset';
 import classes from './Fieldset.module.css';
-
-export type FieldsetContextType = Pick<
-  FormFieldProps,
-  'error' | 'errorId' | 'disabled' | 'readOnly' | 'size'
->;
-
-export const FieldsetContext = createContext<FieldsetContextType | null>(null);
+import { FieldsetContext } from './FieldsetContext';
 
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */

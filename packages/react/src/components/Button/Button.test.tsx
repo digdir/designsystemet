@@ -122,7 +122,7 @@ describe('Button', () => {
   });
 
   it('should not call onClick when disabled', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render({
       disabled: true,
       onClick: fn,
@@ -141,7 +141,7 @@ describe('Button', () => {
   });
 
   it('should handle onClick event', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render({ onClick: fn });
     await user.click(screen.getByRole('button'));
     expect(fn).toHaveBeenCalled();

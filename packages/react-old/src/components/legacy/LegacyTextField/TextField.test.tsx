@@ -10,7 +10,7 @@ const user = userEvent.setup();
 describe('TextField', () => {
   describe('Default', () => {
     it('Triggers onPaste when pasting into input', async () => {
-      const onPaste = jest.fn();
+      const onPaste = vi.fn();
       const data = 'Hello world';
       render({ onPaste });
       const element = screen.getByRole('textbox');
@@ -55,7 +55,7 @@ describe('TextField', () => {
     });
 
     it('Triggers onBlur event when field loses focus', async () => {
-      const onBlur = jest.fn();
+      const onBlur = vi.fn();
       render({ onBlur });
       const element = screen.getByRole('textbox');
       await user.click(element);
@@ -65,7 +65,7 @@ describe('TextField', () => {
     });
 
     it('Triggers onChange event for each keystroke', async () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       const data = 'test';
       render({ onChange });
       const element = screen.getByRole('textbox');
@@ -109,7 +109,7 @@ describe('TextField', () => {
 
   describe('Number format', () => {
     it('Triggers onPaste when pasting into input', async () => {
-      const onPaste = jest.fn();
+      const onPaste = vi.fn();
       const data = '123456';
       render({
         onPaste,
@@ -135,7 +135,7 @@ describe('TextField', () => {
     });
 
     it('Triggers onBlur event when field loses focus', async () => {
-      const onBlur = jest.fn();
+      const onBlur = vi.fn();
       render({ onBlur, formatting: { number: { prefix: '$' } } });
       const element = screen.getByRole('textbox');
       await user.click(element);
@@ -146,7 +146,7 @@ describe('TextField', () => {
 
     it('Should trigger onChange for every keystroke, and the event value should not contain formatting', async () => {
       let lastValue;
-      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+      const onChange = vi.fn((event: React.ChangeEvent<HTMLInputElement>) => {
         lastValue = event.target.value;
       });
       render({
@@ -163,7 +163,7 @@ describe('TextField', () => {
     });
 
     it('Does not trigger onChange when component is rerendered', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       const { rerender } = render({
         onChange,
         value: '1234',
@@ -184,7 +184,7 @@ describe('TextField', () => {
 
     it('Handles backspace', async () => {
       let lastValue;
-      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+      const onChange = vi.fn((event: React.ChangeEvent<HTMLInputElement>) => {
         lastValue = event.target.value;
       });
       render({
@@ -207,7 +207,7 @@ describe('TextField', () => {
 
     it('Handles negative numbers', async () => {
       let lastValue;
-      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+      const onChange = vi.fn((event: React.ChangeEvent<HTMLInputElement>) => {
         lastValue = event.target.value;
       });
       render({
@@ -230,7 +230,7 @@ describe('TextField', () => {
 
     it('Handles "-" in prefix', async () => {
       let lastValue;
-      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+      const onChange = vi.fn((event: React.ChangeEvent<HTMLInputElement>) => {
         lastValue = event.target.value;
       });
       render({
@@ -248,7 +248,7 @@ describe('TextField', () => {
 
     it('Handles zeros in suffix (v4 & v5 bug)', async () => {
       let lastValue;
-      const onChange = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+      const onChange = vi.fn((event: React.ChangeEvent<HTMLInputElement>) => {
         lastValue = event.target.value;
       });
       render({
@@ -303,7 +303,7 @@ describe('TextField', () => {
 
 const render = (props: Partial<LegacyTextFieldProps> = {}) => {
   const allProps = {
-    onChange: jest.fn(),
+    onChange: vi.fn(),
     ...props,
   } as LegacyTextFieldProps;
 
