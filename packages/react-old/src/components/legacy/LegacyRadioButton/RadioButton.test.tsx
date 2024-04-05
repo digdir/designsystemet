@@ -20,7 +20,9 @@ const defaultProps: LegacyRadioButtonProps = {
 };
 
 describe('RadioButton', () => {
-  afterEach(vi.resetAllMocks);
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
   it('Renders a radio button', () => {
     render();

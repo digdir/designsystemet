@@ -15,7 +15,9 @@ const defaultProps: LegacyCheckboxProps = {
 };
 
 describe('Checkbox', () => {
-  afterEach(vi.resetAllMocks);
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
   it('Should not be checked by default', () => {
     render();

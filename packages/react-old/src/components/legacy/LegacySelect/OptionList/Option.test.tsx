@@ -1,5 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import type { LegacySingleSelectOption } from '../types';
 

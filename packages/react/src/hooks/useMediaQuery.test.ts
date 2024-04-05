@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react';
+import type { VitestUtils } from 'vitest';
 import { vi } from 'vitest';
 
 import { useMediaQuery } from './useMediaQuery';
@@ -7,7 +8,9 @@ import { useMediaQuery } from './useMediaQuery';
 const query = '(min-width: 600px)';
 
 describe('useMediaQuery', () => {
-  afterEach(vi.resetAllMocks);
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
   it.each([true, false])(
     'Returns value from window.matchMedia.matches when it is %s',
@@ -42,8 +45,8 @@ const matchMediaValueMock = ({
   removeEventListener,
 }: Partial<{
   matches: boolean;
-  addEventListener: jest.Mock;
-  removeEventListener: jest.Mock;
+  addEventListener: VitestUtils['fn'];
+  removeEventListener: VitestUtils['fn'];
 }>) => {
   const value = vi.fn().mockImplementation((query: string) => ({
     matches: matches ?? false,
