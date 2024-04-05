@@ -7,7 +7,7 @@ import parserHtml from 'prettier/parser-markdown.js';
 import parserCss from 'prettier/parser-postcss.js';
 import parserTs from 'prettier/parser-typescript';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Tooltip } from '@digdir/design-system-react';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 

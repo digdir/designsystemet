@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Kom i gang' />
+
+# 🚀 Kom i gang
+
+Følg disse stegene for å komme i gang med React-komponentene.
+
+## 1. Installer pakkene
+
+```sh
+npm i @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css
+```
+
+### Typescript
+
+Dersom du bruker Typescript, sørg for at du har typescript >= 3.8 i `devDependencies`:
+
+```sh
+npm i typescript --save-dev
+```
+
+## 2. Font
+
+Du kan fritt bruke hvilken som helst font-familie med komponentene.
+
+Komponentene er designet og utviklet med [Inter fonten](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
+
+### Legg til Inter fonten (valgfritt)
+
+Legg til `<link>` taggen i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
+
+`font-feature-settings` legger til en hale på små `L`'er og må settes med `!important` flagget.
+
+#### HTML
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/inter.css"
+/>
+```
+
+#### CSS
+
+```css
+body {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */
+}
+```
+
+Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
+
+## 3. Bruk en React-komponent
+
+```jsx
+import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
+
+import { Button } from '@digdir/designsystemet-react';
+
+<Button variant='secondary'>Jeg er en knapp!</Button>;
+```
+
+`@digdir/designsystemet-theme` og `@digdir/designsystemet-css` må kun importeres én gang i applikasjonen.

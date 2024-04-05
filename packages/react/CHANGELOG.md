@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.56.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.55.0...@digdir/designsystemet-react@0.56.0) (2024-04-04)
+
+### Bug Fixes
+
+- **Checkbox:** `style` applied to wrong element ([#1743](https://github.com/digdir/designsystemet/issues/1743)) ([7bad2c2](https://github.com/digdir/designsystemet/commit/7bad2c2b44cd666094a59a1db2c8e05e422fe6ea))
+- **Combobox:** Fix `flushSync` being called inside a lifecycle method ([#1736](https://github.com/digdir/designsystemet/issues/1736)) ([c0a6f73](https://github.com/digdir/designsystemet/commit/c0a6f73c02dc4fa881930bf7cd684997d6fa2223))
+- **Radio:** `style` applied to wrong element ([#1742](https://github.com/digdir/designsystemet/issues/1742)) ([fa65b7e](https://github.com/digdir/designsystemet/commit/fa65b7eb8fd8301c1f212bb46283302d24529054))
+
+### Features
+
+- **DropdownMenu:** Remove deprecated `anchorEl` ([#1744](https://github.com/digdir/designsystemet/issues/1744)) ([6da4daa](https://github.com/digdir/designsystemet/commit/6da4daa7292cab394573b2d776415e842f6f45d5))
+- **Popover:** Remove deprecated `anchorEl` ([#1718](https://github.com/digdir/designsystemet/issues/1718)) ([e8cf45e](https://github.com/digdir/designsystemet/commit/e8cf45e88b1c4e104b7a39d87756d73975121ae7))
+- **storybook:** Add getting started page ([#1746](https://github.com/digdir/designsystemet/issues/1746)) ([1e80130](https://github.com/digdir/designsystemet/commit/1e80130c9068f6a38e1a8ecdc0a351885354ea71))
+
 # [0.55.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.54.0...@digdir/designsystemet-react@0.55.0) (2024-03-21)
 
 ### Features

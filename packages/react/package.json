@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-react",
-  "version": "0.55.0",
+  "version": "0.56.0",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
@@ -32,7 +32,7 @@
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",
-    "@tanstack/react-virtual": "^3.0.1"
+    "@tanstack/react-virtual": "^3.2.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

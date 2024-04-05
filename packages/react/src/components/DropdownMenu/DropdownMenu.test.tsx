@@ -7,10 +7,7 @@ import { DropdownMenu } from '.';
 
 const Comp = (args: Partial<DropdownMenuProps>) => {
   return (
-    <DropdownMenu
-      {...args}
-      anchorEl={null}
-    >
+    <DropdownMenu {...args}>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group heading='Links'>
@@ -70,11 +67,15 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => {
+      await user.click(dropdownTrigger);
+    });
 
     expect(screen.queryByText('Item')).toBeInTheDocument();
 
-    await user.click(document.body);
+    await act(async () => {
+      await user.click(document.body);
+    });
 
     setTimeout(() => {
       expect(screen.queryByText('Item')).not.toBeInTheDocument();

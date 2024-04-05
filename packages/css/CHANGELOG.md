@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.2.3...@digdir/designsystemet-css@0.3.0) (2024-04-04)
+
+### Features
+
+- **css:** Add css layers ([#1756](https://github.com/digdir/designsystemet/issues/1756)) ([ac3a2b4](https://github.com/digdir/designsystemet/commit/ac3a2b4e289a061ec8f5d589cbcdf8647e19b5d4))
+
 ## [0.2.3](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.2.2...@digdir/designsystemet-css@0.2.3) (2024-03-21)
 
 **Note:** Version bump only for package @digdir/designsystemet-css

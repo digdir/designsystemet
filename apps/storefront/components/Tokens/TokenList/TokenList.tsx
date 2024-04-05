@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';
-import { DropdownMenu, Link, Paragraph } from '@digdir/design-system-react';
+import { DropdownMenu, Link, Paragraph } from '@digdir/designsystemet-react';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
 import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
