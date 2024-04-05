@@ -2,7 +2,7 @@ import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import cl from 'clsx';
 
-import { FieldsetContext } from './Fieldset';
+import { FieldsetContext } from './Fieldset/FieldsetContext';
 
 export type FormFieldProps = {
   /** Error message for form field */
