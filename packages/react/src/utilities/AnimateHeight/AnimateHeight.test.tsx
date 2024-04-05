@@ -1,5 +1,4 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import { vi } from 'vitest';
 
 import * as hooks from '../../hooks';
@@ -59,7 +58,6 @@ describe('AnimateHeight', () => {
     const { container, rerender } = render({ open: false });
     rerender(<AnimateHeight open />);
     expect(container.firstChild).toHaveClass('openingOrClosing');
-    await act(() => vi.runOnlyPendingTimers);
     await vi.waitFor(() => {
       expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
@@ -70,7 +68,6 @@ describe('AnimateHeight', () => {
     const { container, rerender } = render({ open: true });
     rerender(<AnimateHeight open={false} />);
     expect(container.firstChild).toHaveClass('openingOrClosing');
-    await act(() => vi.runAllTimers);
     await vi.waitFor(() => {
       expect(container.firstChild).not.toHaveClass('openingOrClosing');
     });
