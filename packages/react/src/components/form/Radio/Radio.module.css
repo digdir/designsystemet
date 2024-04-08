@@ -6,7 +6,10 @@
   --fds-radio-border__hover: 0 0 0 calc((2.75rem - var(--fds-radio-size)) / 2) var(--fds-semantic-surface-info-subtle-hover);
 
   display: grid;
-  grid-template-columns: var(--fds-radio-size) auto;
+}
+
+.container:has(.label) {
+  grid-template-columns: var(--fds-checkbox-size) auto;
   gap: var(--fds-spacing-2);
 }
 
@@ -130,35 +133,20 @@
 
 /** Sizing */
 
-.small,
-.small .label {
-  min-height: var(--fds-sizing-8);
-}
-
-.medium,
-.medium .label {
-  min-height: var(--fds-sizing-10);
-}
-
-.large,
-.large .label {
-  min-height: var(--fds-sizing-12);
-}
-
 .small {
   --fds-radio-size: 1.5rem;
 
-  min-width: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-8);
 }
 
 .medium {
   --fds-radio-size: 1.75rem;
 
-  min-width: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-10);
 }
 
 .large {
   --fds-radio-size: 2rem;
 
-  min-width: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-12);
 }
