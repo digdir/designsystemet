@@ -75,6 +75,8 @@ export const ComboboxOption = forwardRef<
 
   const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
 
+  console.log('option rendered');
+
   return (
     <button
       id={rest.id || generatedId}

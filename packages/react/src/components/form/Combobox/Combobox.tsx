@@ -216,6 +216,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     >(undefined);
 
     useEffect(() => {
+      console.log('use effect 1');
       if (rest.inputValue !== undefined) {
         setInputValue(rest.inputValue);
       }
@@ -238,6 +239,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
+      console.log('use effect 2');
       if (value && value.length > 0 && !multiple) {
         const option = options[value[0]];
         setInputValue(option?.label || '');
@@ -297,6 +299,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // remove active index if combobox is closed
     useEffect(() => {
+      console.log('use effect 3');
       if (!open) {
         setActiveIndex(null);
       }
@@ -304,6 +307,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // Send new value if option was clicked
     useEffect(() => {
+      console.log('use effect 4');
       const selectedHash = JSON.stringify(selectedOptions);
       if (prevSelectedHash === selectedHash) return;
 
@@ -313,6 +317,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
 
     useEffect(() => {
+      console.log('use effect 5');
       if (value && Object.keys(options).length > 0) {
         const updatedSelectedOptions = value.map((option) => {
           const value = options[option];
@@ -332,6 +337,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // handle click on option, either select or deselect - Handles single or multiple
     const handleSelectOption = (option: Option) => {
+      console.log('handleSelectOption');
       // if option is already selected, remove it
       if (value && value.includes(option.value)) {
         setSelectedOptions((prev) => {
@@ -486,6 +492,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       },
       overscan: 1,
     });
+
+    console.log('combobox rendered');
 
     return (
       <ComboboxContext.Provider

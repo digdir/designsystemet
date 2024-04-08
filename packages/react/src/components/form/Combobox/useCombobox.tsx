@@ -50,6 +50,7 @@ export default function useCombobox({
   initialValue,
 }: UseComboboxProps) {
   const options = useMemo(() => {
+    console.log('options useCombobox');
     const allOptions: {
       [key: string]: Option;
     } = {};
@@ -89,6 +90,7 @@ export default function useCombobox({
   const preSelectedOptions = (initialValue || []).reduce<{
     [key: string]: Option;
   }>((acc, value) => {
+    console.log('preSelectedOptions useCombobox');
     const option = options[value];
     if (isOption(option)) {
       acc[value] = option;
@@ -105,6 +107,7 @@ export default function useCombobox({
   );
 
   const { optionsChildren, customIds } = useMemo(() => {
+    console.log('optionsChildren useCombobox');
     let optionsChildren;
 
     const valuesArray = Object.values(options);
@@ -153,6 +156,7 @@ export default function useCombobox({
   }, [options, multiple, inputValue, selectedOptions, children]);
 
   const optionValues = useMemo(() => {
+    console.log('optionValues useCombobox');
     // create an index map of values from optionsChildren
     const options = optionsChildren.map((child) => {
       const { value } = child.props;
@@ -163,6 +167,7 @@ export default function useCombobox({
   }, [customIds, optionsChildren]);
 
   const restChildren = useMemo(() => {
+    console.log('restChildren useCombobox');
     return Children.toArray(children).filter((child) => {
       return !isComboboxOption(child);
     });
