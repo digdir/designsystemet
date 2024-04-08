@@ -1,5 +1,4 @@
 export { Table } from './Table/Table';
-export { TokensTable } from './Table/TokenTable/TokensTable';
 export {
   TableCellColor,
   TableCellTag,
