@@ -95,8 +95,26 @@ export default function useCombobox({
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
-  const optionsChildren = useMemo(() => {
-    console.log('useMemo optionsChildren ran');
+
+  const selectedOptionsLookup = useMemo(() => {
+    const lookup: {
+      [key: string]: boolean;
+    } = {};
+    selectedOptions.forEach((option) => {
+      lookup[option.value] = true;
+    });
+    return lookup;
+  }, [selectedOptions]);
+
+  const { optionsChildren, customIds } = useMemo(() => {
+    console.log('useMemo optionsChildren and customIds ran', {
+      options,
+      multiple,
+      inputValue,
+      selectedOptionsLookup,
+    });
+    let optionsChildren;
+
     const valuesArray = Array.from(options);
     const children_ = Children.toArray(children).filter((child) =>
       isComboboxOption(child),
@@ -104,40 +122,42 @@ export default function useCombobox({
 
     const activeValue = valuesArray.find((item) => item.label === inputValue);
 
-    if (activeValue && !multiple) return children_;
-    if (inputValue === '' && !multiple) return children_;
+    if (activeValue && !multiple) {
+      optionsChildren = children_;
+    }
+    if (inputValue === '' && !multiple) {
+      optionsChildren = children_;
+    }
 
-    return children_.filter((child) => {
+    optionsChildren = children_.filter((child) => {
       const { value } = child.props;
 
       const option = valuesArray.find((item) => item.value === value);
 
       if (!option) return false;
 
-      const isSelected = selectedOptions.some(
-        (selectedOption) => selectedOption.value === value,
-      );
+      const isSelected = selectedOptionsLookup[value];
 
       // show what we search for, and all selected options
       return filter(inputValue, { ...option }) || isSelected;
     });
-  }, [options, children, multiple, inputValue, selectedOptions, filter]);
-
-  const customIds = useMemo(() => {
-    console.log('useMemo customIds ran');
     // find all custom components with `interactive=true` and generate random values for them
-    const children_ = Children.toArray(children).filter((child) => {
+    const customChildren = children_.filter((child) => {
       return isInteractiveComboboxCustom(child);
     }) as ReactElement<ComboboxCustomProps>[];
 
     // return all ids
-    return children_.map((child) => {
+    const customIds = customChildren.map((child) => {
       if (!child.props.id)
         throw new Error('If ComboboxCustom is interactive, it must have an id');
 
       return child.props.id;
     });
-  }, [children]);
+
+    return { optionsChildren, customIds };
+
+    // ignore filter function in deps array, it causes a lot of re-renders
+  }, [options, multiple, inputValue, selectedOptionsLookup, children]);
 
   const optionValues = useMemo(() => {
     // create an index map of values from optionsChildren
