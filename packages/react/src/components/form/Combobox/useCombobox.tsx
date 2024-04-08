@@ -1,4 +1,4 @@
-import { useMemo, Children, useState, isValidElement, useEffect } from 'react';
+import { useMemo, Children, useState, isValidElement } from 'react';
 import type { ReactNode, ReactElement } from 'react';
 
 import type { ComboboxOptionProps } from './Option/Option';
@@ -11,7 +11,7 @@ export type UseComboboxProps = {
   children: ReactNode;
   inputValue: string;
   multiple: boolean;
-  filter: NonNullable<ComboboxProps['filter']>;
+  filter?: NonNullable<ComboboxProps['filter']>;
   initialValue?: string[];
 };
 
@@ -46,32 +46,12 @@ export default function useCombobox({
   children,
   inputValue,
   multiple,
-  filter,
+  filter = (inputValue, option) => {
+    return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
+  },
   initialValue,
 }: UseComboboxProps) {
   console.log('useCombobox');
-
-  /* I need to figure out why this is re-rendering, make a useeffect for all props */
-
-  useEffect(() => {
-    console.log('children changes');
-  }, [children]);
-
-  useEffect(() => {
-    console.log('inputValue changes');
-  }, [inputValue]);
-
-  useEffect(() => {
-    console.log('multiple changes');
-  }, [multiple]);
-
-  useEffect(() => {
-    console.log('filter changes');
-  }, [filter]);
-
-  useEffect(() => {
-    console.log('initialValue changes');
-  }, [initialValue]);
 
   const options = useMemo(() => {
     console.log('options useCombobox');
@@ -133,14 +113,6 @@ export default function useCombobox({
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
-
-  useEffect(() => {
-    console.log('selectedOptions changed');
-  }, [selectedOptions]);
-
-  useEffect(() => {
-    console.log('prevSelectedHash changed');
-  }, [prevSelectedHash]);
 
   const { optionsChildren, customIds, filteredOptions } = useMemo(() => {
     console.log('optionsChildren useCombobox');

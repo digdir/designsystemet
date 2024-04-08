@@ -172,9 +172,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       style,
       loading,
       loadingLabel = 'Laster...',
-      filter = (inputValue, option) => {
-        return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
-      },
+      filter,
       chipSrLabel = (option) => 'Slett ' + option.label,
       className,
       ...rest
