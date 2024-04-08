@@ -239,7 +239,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     // if value is set, set input value to the label of the value
     useEffect(() => {
       if (value && value.length > 0 && !multiple) {
-        const option = options.find((option) => option.value === value[0]);
+        const option = options[value[0]];
         setInputValue(option?.label || '');
       }
     }, [multiple, value, options]);
@@ -313,10 +313,10 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
 
     useEffect(() => {
-      if (value && options.length > 0) {
+      if (value && Object.keys(options).length > 0) {
         const updatedSelectedOptions = value.map((option) => {
-          const value = options.find((value) => value.value === option);
-          return value as Option;
+          const value = options[option];
+          return value;
         });
 
         setSelectedOptions(updatedSelectedOptions);
@@ -419,9 +419,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             const child = optionsChildren[valueIndex];
             if (isComboboxOption(child)) {
               const props = child.props;
-              const option = options.find(
-                (option) => option.value === props.value,
-              );
+              const option = options[props.value];
 
               if (!multiple) {
                 // check if option is already selected, if so, deselect it
@@ -432,7 +430,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 }
               }
 
-              debouncedHandleSelectOption(option as Option);
+              debouncedHandleSelectOption(option);
             }
           }
           break;
@@ -505,8 +503,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           onOptionClick: (value: string) => {
             if (readOnly) return;
             if (disabled) return;
-            const option = options.find((option) => option.value === value);
-            debouncedHandleSelectOption(option as Option);
+            const option = options[value];
+            debouncedHandleSelectOption(option);
           },
           handleSelectOption: debouncedHandleSelectOption,
           chipSrLabel,
@@ -637,7 +635,9 @@ type ComboboxContextType = {
   hideChips: NonNullable<ComboboxProps['hideChips']>;
   clearButtonLabel: NonNullable<ComboboxProps['clearButtonLabel']>;
   hideClearButton: NonNullable<ComboboxProps['hideClearButton']>;
-  options: Option[];
+  options: {
+    [key: string]: Option;
+  };
   selectedOptions: Option[];
   size: NonNullable<ComboboxProps['size']>;
   formFieldProps: ReturnType<typeof useFormField>;

@@ -84,7 +84,7 @@ export const ComboboxInput = ({
     }
 
     // check if input value is the same as a label, if so, select it
-    const option = options.find((option) => option.label === value);
+    const option = options[value];
     if (!option) return;
     if (
       selectedOptions.find(

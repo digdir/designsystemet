@@ -51,7 +51,9 @@ export default function useCombobox({
 }: UseComboboxProps) {
   const options = useMemo(() => {
     console.log('useMemo options ran');
-    const allOptions: Option[] = [];
+    const allOptions: {
+      [key: string]: Option;
+    } = {};
     Children.forEach(children, (child) => {
       if (isComboboxOption(child)) {
         const props = child.props;
@@ -74,19 +76,19 @@ export default function useCombobox({
           label = childrenLabel;
         }
 
-        allOptions.push({
+        allOptions[props.value] = {
           value: props.value,
           label,
           displayValue: props.displayValue,
           description: props.description,
-        });
+        };
       }
     });
     return allOptions;
   }, [children]);
 
   const preSelectedOptions = (initialValue || [])
-    .map((value) => options.find((option) => option.value === value))
+    .map((value) => options[value])
     .filter(isOption);
 
   const [selectedOptions, setSelectedOptions] =
@@ -115,7 +117,7 @@ export default function useCombobox({
     });
     let optionsChildren;
 
-    const valuesArray = Array.from(options);
+    const valuesArray = Object.values(options);
     const children_ = Children.toArray(children).filter((child) =>
       isComboboxOption(child),
     ) as ReactElement<ComboboxOptionProps>[];
