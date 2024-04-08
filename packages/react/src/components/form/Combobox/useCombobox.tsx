@@ -1,4 +1,4 @@
-import { useMemo, Children, useState, isValidElement } from 'react';
+import { useMemo, Children, useState, isValidElement, useEffect } from 'react';
 import type { ReactNode, ReactElement } from 'react';
 
 import type { ComboboxOptionProps } from './Option/Option';
@@ -50,6 +50,29 @@ export default function useCombobox({
   initialValue,
 }: UseComboboxProps) {
   console.log('useCombobox');
+
+  /* I need to figure out why this is re-rendering, make a useeffect for all props */
+
+  useEffect(() => {
+    console.log('children changes');
+  }, [children]);
+
+  useEffect(() => {
+    console.log('inputValue changes');
+  }, [inputValue]);
+
+  useEffect(() => {
+    console.log('multiple changes');
+  }, [multiple]);
+
+  useEffect(() => {
+    console.log('filter changes');
+  }, [filter]);
+
+  useEffect(() => {
+    console.log('initialValue changes');
+  }, [initialValue]);
+
   const options = useMemo(() => {
     console.log('options useCombobox');
     const allOptions: {
@@ -88,16 +111,20 @@ export default function useCombobox({
     return allOptions;
   }, [children]);
 
-  const preSelectedOptions = (initialValue || []).reduce<{
-    [key: string]: Option;
-  }>((acc, value) => {
-    console.log('preSelectedOptions useCombobox');
-    const option = options[value];
-    if (isOption(option)) {
-      acc[value] = option;
-    }
-    return acc;
-  }, {});
+  const preSelectedOptions = useMemo(
+    () =>
+      (initialValue || []).reduce<{
+        [key: string]: Option;
+      }>((acc, value) => {
+        console.log('preSelectedOptions useCombobox');
+        const option = options[value];
+        if (isOption(option)) {
+          acc[value] = option;
+        }
+        return acc;
+      }, {}),
+    [initialValue, options],
+  );
 
   const [selectedOptions, setSelectedOptions] = useState<{
     [key: string]: Option;
@@ -106,6 +133,14 @@ export default function useCombobox({
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
+
+  useEffect(() => {
+    console.log('selectedOptions changed');
+  }, [selectedOptions]);
+
+  useEffect(() => {
+    console.log('prevSelectedHash changed');
+  }, [prevSelectedHash]);
 
   const { optionsChildren, customIds, filteredOptions } = useMemo(() => {
     console.log('optionsChildren useCombobox');
@@ -157,8 +192,7 @@ export default function useCombobox({
     return { optionsChildren, customIds, filteredOptions };
 
     // ignore filter function in deps array, it causes a lot of re-renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options, multiple, inputValue, selectedOptions, children]);
+  }, [options, children, multiple, inputValue, selectedOptions]);
 
   const optionValues = useMemo(() => {
     console.log('optionValues useCombobox');

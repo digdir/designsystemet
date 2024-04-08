@@ -1,17 +1,15 @@
-import { forwardRef, useContext, useEffect, useId, useMemo } from 'react';
+import { forwardRef, useContext, useId } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
-import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../Combobox';
 import { Label } from '../../../Typography';
-// import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
-import useDebounce from '../../../../utilities/useDebounce';
+import { ComboboxContext } from '../Combobox';
 
 import { SelectedIcon } from './Icon/SelectedIcon';
 import classes from './Option.module.css';
 import ComboboxOptionDescription from './Description/Description';
+import useComboboxOption from './useComboboxOption';
 
 export type ComboboxOptionProps = {
   /**
@@ -32,62 +30,31 @@ export type ComboboxOptionProps = {
 export const ComboboxOption = forwardRef<
   HTMLButtonElement,
   ComboboxOptionProps
->(({ value, description, children, className, ...rest }, ref) => {
+>(({ value, description, children, className, ...rest }, forwardedRef) => {
   const labelId = useId();
-  const generatedId = useId();
+
+  const { id, ref, selected, index, onOptionClick } = useComboboxOption({
+    restId: rest.id,
+    ref: forwardedRef,
+    value,
+  });
 
   const context = useContext(ComboboxContext);
   if (!context) {
     throw new Error('ComboboxOption must be used within a Combobox');
   }
-  const {
-    selectedOptions,
-    activeIndex,
-    setActiveOption,
-    onOptionClick,
-    size,
-    listRef,
-    optionValues,
-    multiple,
-  } = context;
-
-  const index = useMemo(
-    () => optionValues.indexOf(value),
-    [optionValues, value],
-  );
-
-  const combinedRef = useMergeRefs([
-    (node: HTMLElement | null) => {
-      listRef.current[index] = node;
-    },
-    ref,
-  ]);
-
-  if (index === -1) {
-    throw new Error('Internal error: ComboboxOption did not find index');
-  }
-
-  const selected = selectedOptions[value];
-
-  useEffect(() => {
-    console.log('option effect');
-    if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
-  }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
-
-  const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
-
-  console.log('option rendered');
+  const { activeIndex, setActiveOption, size, multiple } = context;
 
   return (
     <button
-      id={rest.id || generatedId}
+      id={id}
       role='option'
       type='button'
       aria-selected={!!selected}
       aria-labelledby={labelId}
       tabIndex={-1}
       onClick={(e) => {
-        onOptionClickDebounced();
+        onOptionClick();
         rest.onClick?.(e);
       }}
       onMouseEnter={(e) => {
@@ -105,7 +72,7 @@ export const ComboboxOption = forwardRef<
         multiple && classes.multiple,
         className,
       )}
-      ref={combinedRef}
+      ref={ref}
       {...omit(['displayValue'], rest)}
     >
       <Label
