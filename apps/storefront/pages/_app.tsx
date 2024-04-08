@@ -1,5 +1,4 @@
 import 'normalize.css/normalize.css';
-import '@altinn/figma-design-tokens/dist/tokens.css';
 import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
 import '@digdir/designsystemet-css';
 

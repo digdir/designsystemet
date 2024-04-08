@@ -10,7 +10,6 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@altinn/figma-design-tokens": "^6.0.1",
     "@digdir/designsystemet-css": "0.2.3",
     "@digdir/designsystemet-react": "0.55.0",
     "@digdir/designsystemet-theme": "0.15.0",

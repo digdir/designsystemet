@@ -19263,7 +19263,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "storefront@workspace:apps/storefront"
   dependencies:
-    "@altinn/figma-design-tokens": "npm:^6.0.1"
     "@digdir/designsystemet-css": "npm:0.2.3"
     "@digdir/designsystemet-react": "npm:0.55.0"
     "@digdir/designsystemet-theme": "npm:0.15.0"
