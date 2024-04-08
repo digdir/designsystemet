@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.56.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.1...@digdir/designsystemet-react@0.56.2) (2024-04-08)
+
+### Bug Fixes
+
+- **Radio:** :bug: Correct orientation of radio and label ([#1779](https://github.com/digdir/designsystemet/issues/1779)) ([c5c5f9f](https://github.com/digdir/designsystemet/commit/c5c5f9f358b50df7a9586829ab9605cc75371f78))
+
 ## [0.56.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.0...@digdir/designsystemet-react@0.56.1) (2024-04-08)
 
 ### Bug Fixes
