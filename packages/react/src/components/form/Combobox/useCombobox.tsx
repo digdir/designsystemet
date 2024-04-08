@@ -49,6 +49,7 @@ export default function useCombobox({
   filter,
   initialValue,
 }: UseComboboxProps) {
+  console.log('useCombobox');
   const options = useMemo(() => {
     console.log('options useCombobox');
     const allOptions: {
@@ -106,7 +107,7 @@ export default function useCombobox({
     JSON.stringify(selectedOptions),
   );
 
-  const { optionsChildren, customIds } = useMemo(() => {
+  const { optionsChildren, customIds, filteredOptions } = useMemo(() => {
     console.log('optionsChildren useCombobox');
     let optionsChildren;
 
@@ -149,7 +150,11 @@ export default function useCombobox({
       return child.props.id;
     });
 
-    return { optionsChildren, customIds };
+    const filteredOptions: Option[] = optionsChildren.map((child) => {
+      return selectedOptions[child.props.value];
+    });
+
+    return { optionsChildren, customIds, filteredOptions };
 
     // ignore filter function in deps array, it causes a lot of re-renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -175,6 +180,7 @@ export default function useCombobox({
 
   return {
     optionsChildren,
+    filteredOptions,
     optionValues,
     restChildren,
     options,

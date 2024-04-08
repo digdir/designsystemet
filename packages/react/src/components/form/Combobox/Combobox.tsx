@@ -37,10 +37,7 @@ import { omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
-import useCombobox, {
-  isComboboxOption,
-  isInteractiveComboboxCustom,
-} from './useCombobox';
+import useCombobox, { isInteractiveComboboxCustom } from './useCombobox';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -201,6 +198,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       restChildren,
       optionValues,
       customIds,
+      filteredOptions,
       prevSelectedHash,
       setPrevSelectedHash,
     } = useCombobox({
@@ -250,6 +248,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
       open,
       onOpenChange: (newOpen) => {
+        if (!newOpen) setActiveIndex(0);
         flushSync(() => {
           if (refs.floating.current && !newOpen) {
             refs.floating.current.scrollTop = 0;
@@ -296,14 +295,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       dismiss,
       listNav,
     ]);
-
-    // remove active index if combobox is closed
-    useEffect(() => {
-      console.log('use effect 3');
-      if (!open) {
-        setActiveIndex(null);
-      }
-    }, [open]);
 
     // Send new value if option was clicked
     useEffect(() => {
@@ -379,6 +370,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // handle keyboard navigation in the list
     const handleKeyDownFunc = (event: React.KeyboardEvent) => {
+      console.log('handleKeyDownFunc');
       const navigateable = customIds.length + Object.keys(options).length;
 
       if (formFieldProps.readOnly || disabled) return;
@@ -401,7 +393,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           setActiveIndex((prevActiveIndex) => {
             if (prevActiveIndex === 0) {
               setOpen(false);
-              return null;
+              return 0;
             }
 
             if (prevActiveIndex === null) {
@@ -415,7 +407,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           event.preventDefault();
           if (
             activeIndex !== null &&
-            (optionsChildren[activeIndex] || customIds.length > 0)
+            (filteredOptions[activeIndex] || customIds.length > 0)
           ) {
             // check if we are in the custom components
             if (activeIndex <= customIds.length) {
@@ -438,22 +430,18 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             // if we are in the options, find the actual index
             const valueIndex = activeIndex - customIds.length;
 
-            const child = optionsChildren[valueIndex];
-            if (isComboboxOption(child)) {
-              const props = child.props;
-              const option = options[props.value];
+            const option = filteredOptions[valueIndex];
 
-              if (!multiple) {
-                // check if option is already selected, if so, deselect it
-                if (selectedOptions[option?.value]) {
-                  setSelectedOptions({});
-                  setInputValue('');
-                  return;
-                }
+            if (!multiple) {
+              // check if option is already selected, if so, deselect it
+              if (selectedOptions[option?.value]) {
+                setSelectedOptions({});
+                setInputValue('');
+                return;
               }
-
-              debouncedHandleSelectOption(option);
             }
+
+            debouncedHandleSelectOption(option);
           }
           break;
 
@@ -494,6 +482,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     });
 
     console.log('combobox rendered');
+    console.log({ activeIndex });
 
     return (
       <ComboboxContext.Provider

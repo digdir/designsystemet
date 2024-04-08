@@ -70,6 +70,7 @@ export const ComboboxOption = forwardRef<
   const selected = selectedOptions[value];
 
   useEffect(() => {
+    console.log('option effect');
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
 

@@ -59,7 +59,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
     const { size, activeIndex, optionValues, setActiveIndex } = context;
 
     const index = useMemo(
-      () => id && optionValues.indexOf(id),
+      () => (id && optionValues.indexOf(id)) || 0,
       [optionValues, id],
     );
 
