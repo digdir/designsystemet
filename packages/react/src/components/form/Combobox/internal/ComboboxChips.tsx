@@ -34,6 +34,7 @@ export const ComboboxChips = () => {
               if (e.key === 'Enter') {
                 e.stopPropagation();
                 setSelectedOptions((prev) => {
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                   const { [value]: _, ...rest } = prev;
                   return rest;
                 });
@@ -45,6 +46,7 @@ export const ComboboxChips = () => {
               if (disabled) return;
               /* If we click a chip, filter the active values and remove the one we clicked */
               setSelectedOptions((prev) => {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const { [value]: _, ...rest } = prev;
                 return rest;
               });
