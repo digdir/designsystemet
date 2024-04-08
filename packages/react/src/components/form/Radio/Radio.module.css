@@ -9,7 +9,7 @@
 }
 
 .container:has(.label) {
-  grid-template-columns: var(--fds-checkbox-size) auto;
+  grid-template-columns: var(--fds-radio-size) auto;
   gap: var(--fds-spacing-2);
 }
 
