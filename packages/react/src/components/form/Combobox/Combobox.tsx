@@ -357,7 +357,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // handle keyboard navigation in the list
     const handleKeyDownFunc = (event: React.KeyboardEvent) => {
-      const navigateable = customIds.length + optionsChildren.length;
+      const navigateable = customIds.length + Object.keys(options).length;
 
       if (formFieldProps.readOnly || disabled) return;
       if (!event) return;
@@ -453,7 +453,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
 
     const rowVirtualizer = useVirtualizer({
-      count: optionsChildren.length,
+      count: Object.keys(options).length,
       getScrollElement: () => refs.floating.current,
       estimateSize: () => 70,
       measureElement: (elem) => {

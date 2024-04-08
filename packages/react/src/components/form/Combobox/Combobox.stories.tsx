@@ -598,7 +598,7 @@ CustomNewValue.args = {
   label: 'Hvor går reisen?',
 };
 
-const items = Array.from({ length: 5000 }, (_, index) => ({
+const items = Array.from({ length: 1500 }, (_, index) => ({
   name: `Option ${index}`,
   value: `option-${index}`,
 }));

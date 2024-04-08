@@ -50,7 +50,6 @@ export default function useCombobox({
   initialValue,
 }: UseComboboxProps) {
   const options = useMemo(() => {
-    console.log('useMemo options ran');
     const allOptions: {
       [key: string]: Option;
     } = {};
@@ -109,12 +108,6 @@ export default function useCombobox({
   }, [selectedOptions]);
 
   const { optionsChildren, customIds } = useMemo(() => {
-    console.log('useMemo optionsChildren and customIds ran', {
-      options,
-      multiple,
-      inputValue,
-      selectedOptionsLookup,
-    });
     let optionsChildren;
 
     const valuesArray = Object.values(options);
@@ -159,6 +152,7 @@ export default function useCombobox({
     return { optionsChildren, customIds };
 
     // ignore filter function in deps array, it causes a lot of re-renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options, multiple, inputValue, selectedOptionsLookup, children]);
 
   const optionValues = useMemo(() => {
@@ -172,7 +166,6 @@ export default function useCombobox({
   }, [customIds, optionsChildren]);
 
   const restChildren = useMemo(() => {
-    console.log('useMemo restChildren ran');
     return Children.toArray(children).filter((child) => {
       return !isComboboxOption(child);
     });

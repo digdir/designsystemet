@@ -58,7 +58,7 @@ describe('useCombobox', () => {
       multiple: false,
     });
 
-    expect(result.current.options.length).toBe(3);
+    expect(Object.keys(result.current.options).length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(3);
     expect(result.current.restChildren.length).toBe(1);
   });
@@ -69,7 +69,7 @@ describe('useCombobox', () => {
       multiple: false,
     });
 
-    expect(result.current.options.length).toBe(3);
+    expect(Object.keys(result.current.options).length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(0);
     expect(result.current.restChildren.length).toBe(1);
   });
@@ -81,7 +81,7 @@ describe('useCombobox', () => {
       initialValue: ['oslo'],
     });
 
-    expect(result.current.options.length).toBe(3);
+    expect(Object.keys(result.current.options).length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
   });
@@ -93,7 +93,7 @@ describe('useCombobox', () => {
       initialValue: ['oslo'],
     });
 
-    expect(result.current.options.length).toBe(3);
+    expect(Object.keys(result.current.options).length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
   });
@@ -104,7 +104,7 @@ describe('useCombobox', () => {
       multiple: false,
     });
 
-    expect(result.current.options.length).toBe(3);
+    expect(Object.keys(result.current.options).length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(1);
     expect(result.current.restChildren.length).toBe(1);
   });
@@ -116,7 +116,7 @@ describe('useCombobox', () => {
       initialValue: ['oslo'],
     });
 
-    expect(result.current.options.length).toBe(3);
+    expect(Object.keys(result.current.options).length).toBe(3);
     expect(result.current.optionsChildren.length).toBe(2);
     expect(result.current.restChildren.length).toBe(1);
   });
