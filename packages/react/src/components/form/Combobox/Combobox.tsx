@@ -7,26 +7,13 @@ import {
   forwardRef,
 } from 'react';
 import type * as React from 'react';
-import {
-  FloatingFocusManager,
-  autoUpdate,
-  flip,
-  offset,
-  size as floatingSize,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useListNavigation,
-  useRole,
-  FloatingPortal,
-} from '@floating-ui/react';
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import cl from 'clsx';
 import type {
   UseFloatingReturn,
   UseListNavigationProps,
 } from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { flushSync } from 'react-dom';
 
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
@@ -44,6 +31,7 @@ import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
 import ComboboxCustom from './Custom/Custom';
+import { useFloatingCombobox } from './useFloatingCombobox';
 
 export type ComboboxProps = {
   /**
@@ -181,12 +169,14 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<Array<HTMLElement | null>>([]);
 
     const listId = useId();
 
-    const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [activeDescendant, setActiveDescendant] = useState<
+      string | undefined
+    >(undefined);
 
     const {
       selectedOptions,
@@ -207,16 +197,19 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       initialValue,
     });
 
-    const [activeDescendant, setActiveDescendant] = useState<
-      string | undefined
-    >(undefined);
-
-    useEffect(() => {
-      console.log('use effect 1');
-      if (rest.inputValue !== undefined) {
-        setInputValue(rest.inputValue);
-      }
-    }, [rest.inputValue]);
+    const {
+      open,
+      setOpen,
+      refs,
+      floatingStyles,
+      context,
+      activeIndex,
+      setActiveIndex,
+      getReferenceProps,
+      getFloatingProps,
+    } = useFloatingCombobox({
+      listRef,
+    });
 
     const formFieldProps = useFormField(
       {
@@ -231,7 +224,12 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       'combobox',
     );
 
-    const listRef = useRef<Array<HTMLElement | null>>([]);
+    useEffect(() => {
+      console.log('use effect 1');
+      if (rest.inputValue !== undefined) {
+        setInputValue(rest.inputValue);
+      }
+    }, [rest.inputValue]);
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
@@ -241,58 +239,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         setInputValue(option?.label || '');
       }
     }, [multiple, value, options]);
-
-    // floating UI
-    const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
-      open,
-      onOpenChange: (newOpen) => {
-        if (!newOpen) setActiveIndex(0);
-        flushSync(() => {
-          if (refs.floating.current && !newOpen) {
-            refs.floating.current.scrollTop = 0;
-          }
-          setTimeout(() => {
-            setOpen(newOpen);
-          }, 1);
-        });
-      },
-      whileElementsMounted: (reference, floating, update) => {
-        autoUpdate(reference, floating, update);
-        return () => {
-          floating.scrollTop = 0;
-        };
-      },
-      middleware: [
-        flip({ padding: 10 }),
-        floatingSize({
-          apply({ rects, elements }) {
-            requestAnimationFrame(() => {
-              Object.assign(elements.floating.style, {
-                width: `calc(${rects.reference.width}px - calc(var(--fds-spacing-2) * 2))`,
-                maxHeight: `200px`,
-              });
-            });
-          },
-        }),
-        offset(10),
-      ],
-    });
-
-    const role = useRole(context, { role: 'listbox' });
-    const dismiss = useDismiss(context);
-    const listNav = useListNavigation(context, {
-      listRef,
-      activeIndex,
-      virtual: true,
-      scrollItemIntoView: true,
-      enabled: open,
-    });
-
-    const { getReferenceProps, getFloatingProps } = useInteractions([
-      role,
-      dismiss,
-      listNav,
-    ]);
 
     // Send new value if option was clicked
     useEffect(() => {
@@ -377,29 +323,25 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         case 'ArrowDown':
           event.preventDefault();
           if (!open) setOpen(true);
-          setActiveIndex((prevActiveIndex) => {
-            if (prevActiveIndex === null) {
-              return 0;
-            }
 
-            return Math.min(prevActiveIndex + 1, navigateable - 1);
-          });
+          if (activeIndex === null) {
+            setActiveIndex(0);
+          } else {
+            setActiveIndex(Math.min(activeIndex + 1, navigateable - 1));
+          }
+
           break;
         case 'ArrowUp':
           event.preventDefault();
           /* If we are on the first item, close */
-          setActiveIndex((prevActiveIndex) => {
-            if (prevActiveIndex === 0) {
-              setOpen(false);
-              return 0;
-            }
 
-            if (prevActiveIndex === null) {
-              return null;
-            }
+          if (activeIndex === 0) {
+            setOpen(false);
+            setActiveIndex(0);
+          }
 
-            return Math.max(prevActiveIndex - 1, 0);
-          });
+          setActiveIndex(Math.max(activeIndex - 1, 0));
+
           break;
         case 'Enter':
           event.preventDefault();
@@ -471,7 +413,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const rowVirtualizer = useVirtualizer({
       count: Object.keys(options).length,
-      getScrollElement: () => refs.floating.current,
+      getScrollElement: () => (virtual ? refs.floating.current : null),
       estimateSize: () => 70,
       measureElement: (elem) => {
         return elem.getBoundingClientRect().height;
@@ -514,6 +456,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           setSelectedOptions,
           /* Recieves index of option, and the ID of the button element */
           setActiveOption: (index: number, id: string) => {
+            return;
             if (readOnly) return;
             if (disabled) return;
             setActiveIndex(index);
@@ -674,7 +617,7 @@ type ComboboxContextType = {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
-  setActiveIndex: (index: number | null) => void;
+  setActiveIndex: (index: number) => void;
   setActiveOption: (index: number, id: string) => void;
   getReferenceProps: (
     props?: Record<string, unknown>,
