@@ -1687,7 +1687,7 @@
 }
 
 .fds-radio-container-7a9bd584:has(.fds-radio-label-7a9bd584) {
-  grid-template-columns: var(--fds-checkbox-size) auto;
+  grid-template-columns: var(--fds-radio-size) auto;
   gap: var(--fds-spacing-2);
 }
 
