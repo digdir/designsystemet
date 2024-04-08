@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.0...@digdir/designsystemet-css@0.3.1) (2024-04-08)
+
+### Bug Fixes
+
+- **Checkbox:** :bug: Removed unwanted spacing when no label is defined ([#1762](https://github.com/digdir/designsystemet/issues/1762)) ([439bf8c](https://github.com/digdir/designsystemet/commit/439bf8c1f0cc19b5b49fd65295186005a777038f))
+- **Radio:** :bug: Removed unwanted spacing when no label is defined ([#1768](https://github.com/digdir/designsystemet/issues/1768)) ([03d2553](https://github.com/digdir/designsystemet/commit/03d25530808c70b850f637f71e48dbcd2fe94dbc))
+
 # [0.3.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.2.3...@digdir/designsystemet-css@0.3.0) (2024-04-04)
 
 ### Features

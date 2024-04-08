@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.56.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.0...@digdir/designsystemet-react@0.56.1) (2024-04-08)
+
+### Bug Fixes
+
+- **Checkbox:** :bug: Removed unwanted spacing when no label is defined ([#1762](https://github.com/digdir/designsystemet/issues/1762)) ([439bf8c](https://github.com/digdir/designsystemet/commit/439bf8c1f0cc19b5b49fd65295186005a777038f))
+- **Checkbox:** Remove empty label element ([#1737](https://github.com/digdir/designsystemet/issues/1737)) ([152ad27](https://github.com/digdir/designsystemet/commit/152ad27830f569a8b6402a7134e11634dd2f8801))
+- **Radio:** :bug: Removed unwanted spacing when no label is defined ([#1768](https://github.com/digdir/designsystemet/issues/1768)) ([03d2553](https://github.com/digdir/designsystemet/commit/03d25530808c70b850f637f71e48dbcd2fe94dbc))
+- **Radio:** Remove empty label element ([#1741](https://github.com/digdir/designsystemet/issues/1741)) ([#1764](https://github.com/digdir/designsystemet/issues/1764)) ([73840cf](https://github.com/digdir/designsystemet/commit/73840cfcd041726eb1798add7dbea547adf7fc69))
+
 # [0.56.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.55.0...@digdir/designsystemet-react@0.56.0) (2024-04-04)
 
 ### Bug Fixes
