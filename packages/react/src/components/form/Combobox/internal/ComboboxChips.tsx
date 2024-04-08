@@ -22,10 +22,10 @@ export const ComboboxChips = () => {
 
   return (
     <>
-      {selectedOptions.map((option) => {
+      {Object.keys(selectedOptions).map((value) => {
         return (
           <ChipRemovable
-            key={option.value}
+            key={value}
             size={size}
             disabled={disabled}
             onKeyDown={(e) => {
@@ -33,9 +33,10 @@ export const ComboboxChips = () => {
               if (disabled) return;
               if (e.key === 'Enter') {
                 e.stopPropagation();
-                setSelectedOptions(
-                  selectedOptions.filter((i) => i.value !== option.value),
-                );
+                setSelectedOptions((prev) => {
+                  const { [value]: _, ...rest } = prev;
+                  return rest;
+                });
                 inputRef.current?.focus();
               }
             }}
@@ -43,17 +44,18 @@ export const ComboboxChips = () => {
               if (readOnly) return;
               if (disabled) return;
               /* If we click a chip, filter the active values and remove the one we clicked */
-              setSelectedOptions(
-                selectedOptions.filter((i) => i.value !== option.value),
-              );
+              setSelectedOptions((prev) => {
+                const { [value]: _, ...rest } = prev;
+                return rest;
+              });
             }}
             style={{
               /* We already set the opacity on Combobox */
               opacity: 1,
             }}
-            aria-label={chipSrLabel(option)}
+            aria-label={chipSrLabel(selectedOptions[value])}
           >
-            {option.label}
+            {selectedOptions[value].label}
           </ChipRemovable>
         );
       })}

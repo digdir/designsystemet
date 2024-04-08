@@ -307,7 +307,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       const selectedHash = JSON.stringify(selectedOptions);
       if (prevSelectedHash === selectedHash) return;
 
-      const values = selectedOptions.map((option) => option.value);
+      const values = Object.keys(selectedOptions);
       onValueChange?.(values);
       setPrevSelectedHash(selectedHash);
     }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
@@ -319,7 +319,14 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           return value;
         });
 
-        setSelectedOptions(updatedSelectedOptions);
+        setSelectedOptions(
+          updatedSelectedOptions.reduce<{
+            [key: string]: Option;
+          }>((acc, value) => {
+            acc[value.value] = value;
+            return acc;
+          }, {}),
+        );
       }
     }, [multiple, prevSelectedHash, value, options, setSelectedOptions]);
 
@@ -327,18 +334,27 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const handleSelectOption = (option: Option) => {
       // if option is already selected, remove it
       if (value && value.includes(option.value)) {
-        setSelectedOptions((prev) =>
-          prev.filter((i) => i.value !== option.value),
-        );
+        setSelectedOptions((prev) => {
+          const updated = { ...prev };
+          delete updated[option.value];
+          return updated;
+        });
         return;
       }
 
       if (multiple) {
-        setSelectedOptions([...selectedOptions, option]);
+        /* setSelectedOptions([...selectedOptions, option]); */
+        setSelectedOptions((prev) => {
+          const updated = { ...prev };
+          updated[option.value] = option;
+          return updated;
+        });
         setInputValue('');
         inputRef.current?.focus();
       } else {
-        setSelectedOptions([option]);
+        setSelectedOptions({
+          [option.value]: option,
+        });
         setInputValue(option?.label || '');
         // move cursor to the end of the input
         setTimeout(() => {
@@ -423,8 +439,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
               if (!multiple) {
                 // check if option is already selected, if so, deselect it
-                if (selectedOptions.find((i) => i.value === option?.value)) {
-                  setSelectedOptions([]);
+                if (selectedOptions[option?.value]) {
+                  setSelectedOptions({});
                   setInputValue('');
                   return;
                 }
@@ -436,12 +452,21 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           break;
 
         case 'Backspace':
-          if (inputValue === '' && multiple && selectedOptions.length > 0) {
-            setSelectedOptions((prev) => prev.slice(0, prev.length - 1));
+          if (
+            inputValue === '' &&
+            multiple &&
+            Object.keys(selectedOptions).length > 0
+          ) {
+            setSelectedOptions((prev) => {
+              const updated = { ...prev };
+              const keys = Object.keys(updated);
+              delete updated[keys[keys.length - 1]];
+              return updated;
+            });
           }
           // if we are in single mode, we need to set activeValue to null
           if (!multiple) {
-            setSelectedOptions([]);
+            setSelectedOptions({});
           }
           break;
 
@@ -638,7 +663,9 @@ type ComboboxContextType = {
   options: {
     [key: string]: Option;
   };
-  selectedOptions: Option[];
+  selectedOptions: {
+    [key: string]: Option;
+  };
   size: NonNullable<ComboboxProps['size']>;
   formFieldProps: ReturnType<typeof useFormField>;
   refs: UseFloatingReturn['refs'];
@@ -658,7 +685,11 @@ type ComboboxContextType = {
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;
   onOptionClick: (value: string) => void;
-  setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
+  setSelectedOptions: React.Dispatch<
+    React.SetStateAction<{
+      [key: string]: Option;
+    }>
+  >;
   chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
   handleSelectOption: (option: Option) => void;
   listRef: UseListNavigationProps['listRef'];

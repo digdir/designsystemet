@@ -67,7 +67,7 @@ export const ComboboxOption = forwardRef<
     throw new Error('Internal error: ComboboxOption did not find index');
   }
 
-  const selected = selectedOptions.find((option) => option.value === value);
+  const selected = selectedOptions[value];
 
   useEffect(() => {
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);

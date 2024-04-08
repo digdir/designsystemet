@@ -86,12 +86,7 @@ export const ComboboxInput = ({
     // check if input value is the same as a label, if so, select it
     const option = options[value];
     if (!option) return;
-    if (
-      selectedOptions.find(
-        (selectedOption) => selectedOption.value === option.value,
-      )
-    )
-      return;
+    if (selectedOptions[option.value]) return;
 
     handleSelectOption(option);
 
@@ -109,7 +104,7 @@ export const ComboboxInput = ({
   };
 
   const showClearButton =
-    multiple && !hideClearButton && selectedOptions.length > 0;
+    multiple && !hideClearButton && Object.keys(selectedOptions).length > 0;
 
   return (
     <Box

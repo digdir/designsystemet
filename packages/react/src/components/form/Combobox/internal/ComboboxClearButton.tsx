@@ -29,7 +29,7 @@ export const ComboboxClearButton = () => {
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;
-        setSelectedOptions([]);
+        setSelectedOptions({});
         setInputValue('');
       }}
       onKeyDown={(e) => {
@@ -37,7 +37,7 @@ export const ComboboxClearButton = () => {
         if (disabled) return;
         if (e.key === 'Enter') {
           e.stopPropagation();
-          setSelectedOptions([]);
+          setSelectedOptions({});
           setInputValue('');
           inputRef.current?.focus();
         }

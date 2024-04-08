@@ -86,26 +86,23 @@ export default function useCombobox({
     return allOptions;
   }, [children]);
 
-  const preSelectedOptions = (initialValue || [])
-    .map((value) => options[value])
-    .filter(isOption);
+  const preSelectedOptions = (initialValue || []).reduce<{
+    [key: string]: Option;
+  }>((acc, value) => {
+    const option = options[value];
+    if (isOption(option)) {
+      acc[value] = option;
+    }
+    return acc;
+  }, {});
 
-  const [selectedOptions, setSelectedOptions] =
-    useState<Option[]>(preSelectedOptions);
+  const [selectedOptions, setSelectedOptions] = useState<{
+    [key: string]: Option;
+  }>(preSelectedOptions);
 
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
-
-  const selectedOptionsLookup = useMemo(() => {
-    const lookup: {
-      [key: string]: boolean;
-    } = {};
-    selectedOptions.forEach((option) => {
-      lookup[option.value] = true;
-    });
-    return lookup;
-  }, [selectedOptions]);
 
   const { optionsChildren, customIds } = useMemo(() => {
     let optionsChildren;
@@ -131,7 +128,7 @@ export default function useCombobox({
 
       if (!option) return false;
 
-      const isSelected = selectedOptionsLookup[value];
+      const isSelected = selectedOptions[value];
 
       // show what we search for, and all selected options
       return filter(inputValue, { ...option }) || isSelected;
@@ -153,7 +150,7 @@ export default function useCombobox({
 
     // ignore filter function in deps array, it causes a lot of re-renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options, multiple, inputValue, selectedOptionsLookup, children]);
+  }, [options, multiple, inputValue, selectedOptions, children]);
 
   const optionValues = useMemo(() => {
     // create an index map of values from optionsChildren
