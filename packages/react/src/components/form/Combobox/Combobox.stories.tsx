@@ -597,3 +597,33 @@ CustomNewValue.args = {
   size: 'medium',
   label: 'Hvor går reisen?',
 };
+
+const items = Array.from({ length: 1000 }, (_, index) => ({
+  name: `Option ${index}`,
+  value: `option-${index}`,
+}));
+
+export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = React.useState<string[]>([]);
+
+  return (
+    <Combobox
+      {...args}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+      }}
+      virtual={true}
+    >
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {items.map((item, index) => (
+        <Combobox.Option
+          key={index}
+          value={item.value}
+        >
+          {item.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
+  );
+};

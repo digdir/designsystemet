@@ -50,6 +50,7 @@ export default function useCombobox({
   initialValue,
 }: UseComboboxProps) {
   const options = useMemo(() => {
+    console.log('useMemo options ran');
     const allOptions: Option[] = [];
     Children.forEach(children, (child) => {
       if (isComboboxOption(child)) {
@@ -95,6 +96,7 @@ export default function useCombobox({
     JSON.stringify(selectedOptions),
   );
   const optionsChildren = useMemo(() => {
+    console.log('useMemo optionsChildren ran');
     const valuesArray = Array.from(options);
     const children_ = Children.toArray(children).filter((child) =>
       isComboboxOption(child),
@@ -122,6 +124,7 @@ export default function useCombobox({
   }, [options, children, multiple, inputValue, selectedOptions, filter]);
 
   const customIds = useMemo(() => {
+    console.log('useMemo customIds ran');
     // find all custom components with `interactive=true` and generate random values for them
     const children_ = Children.toArray(children).filter((child) => {
       return isInteractiveComboboxCustom(child);
@@ -147,6 +150,7 @@ export default function useCombobox({
   }, [customIds, optionsChildren]);
 
   const restChildren = useMemo(() => {
+    console.log('useMemo restChildren ran');
     return Children.toArray(children).filter((child) => {
       return !isComboboxOption(child);
     });
