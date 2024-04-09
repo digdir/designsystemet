@@ -1,11 +1,11 @@
-import { useContext, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import useDebounce from '../../../utilities/useDebounce';
 
 import type useCombobox from './useCombobox';
 import { isInteractiveComboboxCustom } from './useCombobox';
 import type { Option } from './useCombobox';
-import { ComboboxIdContext } from './ComboboxIdContext';
+import { useComboboxId } from './ComboboxIdContext';
 
 type UseComboboxKeyboardProps = {
   customIds: string[];
@@ -38,13 +38,7 @@ export const useComboboxKeyboard = ({
   setSelectedOptions,
   handleSelectOption,
 }: UseComboboxKeyboardProps) => {
-  console.log('useComboboxKeyboard');
-
-  const context = useContext(ComboboxIdContext);
-  console.log({
-    context,
-  });
-  const { activeIndex } = context;
+  const { activeIndex } = useComboboxId();
 
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {

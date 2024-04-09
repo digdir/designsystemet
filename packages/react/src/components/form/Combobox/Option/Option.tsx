@@ -33,7 +33,7 @@ export const ComboboxOption = memo(
       const labelId = useId();
 
       const { id, ref, selected, active, onOptionClick } = useComboboxOption({
-        restId: rest.id,
+        id: rest.id,
         ref: forwardedRef,
         value,
       });
@@ -67,7 +67,7 @@ export const ComboboxOption = memo(
             className,
           )}
           {...omit(['displayValue'], rest)}
-          {...omit(['onClick'], props)}
+          {...omit(['onClick', 'onPointerLeave'], props)}
         >
           <Label
             asChild

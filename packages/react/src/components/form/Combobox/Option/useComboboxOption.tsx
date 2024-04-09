@@ -6,20 +6,18 @@ import useDebounce from '../../../../utilities/useDebounce';
 import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
 
 type UseComboboxOptionProps = {
-  restId?: string;
+  id?: string;
   ref: React.Ref<HTMLButtonElement>;
   value: string;
 };
 
 export default function useComboboxOption({
-  restId,
+  id,
   ref,
   value,
 }: UseComboboxOptionProps) {
-  console.log('useComboboxOption');
-
   const generatedId = useId();
-  const id = restId || generatedId;
+  const newId = id || generatedId;
 
   const context = useContext(ComboboxContext);
   const { activeIndex } = useComboboxId();
@@ -49,7 +47,6 @@ export default function useComboboxOption({
   const active = activeIndex === index;
 
   useEffect(() => {
-    console.log('option effect');
     if (active) {
       dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
     }
@@ -58,7 +55,7 @@ export default function useComboboxOption({
   const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
 
   return {
-    id,
+    id: newId,
     ref: combinedRef,
     selected,
     active,

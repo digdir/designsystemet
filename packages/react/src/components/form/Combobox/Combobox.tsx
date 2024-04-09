@@ -216,7 +216,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
-      console.log('use effect 2');
       if (value && value.length > 0 && !multiple) {
         const option = options[value[0]];
         setInputValue(option?.label || '');
@@ -225,7 +224,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // Send new value if option was clicked
     useEffect(() => {
-      console.log('use effect 4');
       const selectedHash = JSON.stringify(selectedOptions);
       if (prevSelectedHash === selectedHash) return;
 
@@ -235,7 +233,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
 
     useEffect(() => {
-      console.log('use effect 5');
       if (value && Object.keys(options).length > 0) {
         const updatedSelectedOptions = value.map((option) => {
           const value = options[option];
@@ -255,7 +252,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // handle click on option, either select or deselect - Handles single or multiple
     const handleSelectOption = (option: Option) => {
-      console.log('handleSelectOption');
       // if option is already selected, remove it
       if (value && value.includes(option.value)) {
         setSelectedOptions((prev) => {

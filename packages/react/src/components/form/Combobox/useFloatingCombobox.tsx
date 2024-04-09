@@ -19,7 +19,6 @@ type UseFloatingComboboxProps = {
 };
 
 export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
-  console.log('useFloatingCombobox');
   const [open, setOpen] = useState(false);
 
   const { activeIndex } = useComboboxId();
