@@ -3,7 +3,7 @@
   --fds-checkbox-focus-border-width: 3px;
   --fds-checkbox-background: var(--fds-semantic-background-default);
   --fds-checkbox-border-color: var(--fds-semantic-border-input-default);
-  --fds-checkbox-border__hover: 0 0 0 calc((2.75rem - var(--fds-checkbox-size)) / 2) var(--fds-semantic-surface-info-subtle-hover);
+  --fds-checkbox-border__hover: 0 0 0 var(--fds-spacing-2) var(--fds-semantic-surface-info-subtle-hover);
 
   display: grid;
 }
@@ -149,19 +149,19 @@
 /** Sizing */
 
 .small {
-  --fds-checkbox-size: 1.5rem;
-
-  min-height: var(--fds-sizing-8);
-}
-
-.medium {
-  --fds-checkbox-size: 1.75rem;
+  --fds-checkbox-size: var(--fds-sizing-5);
 
   min-height: var(--fds-sizing-10);
 }
 
+.medium {
+  --fds-checkbox-size: var(--fds-sizing-6);
+
+  min-height: var(--fds-sizing-11);
+}
+
 .large {
-  --fds-checkbox-size: 2rem;
+  --fds-checkbox-size: var(--fds-sizing-7);
 
   min-height: var(--fds-sizing-12);
 }

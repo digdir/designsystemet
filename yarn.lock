@@ -2641,7 +2641,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-theme@npm:0.15.0, @digdir/designsystemet-theme@workspace:packages/theme":
+"@digdir/designsystemet-theme@npm:0.15.0":
+  version: 0.15.0
+  resolution: "@digdir/designsystemet-theme@npm:0.15.0"
+  checksum: cdf3c71cb37f8dee69ab53d8bbad84b2f9c0d6836b800e03e5dd1f48e08fb4d45b6bc7d2a5f316b606d1cb3c81bd26eba457ae21b93fccd7b4b223113eaece7d
+  languageName: node
+  linkType: hard
+
+"@digdir/designsystemet-theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-theme@workspace:packages/theme"
   dependencies:

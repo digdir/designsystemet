@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.0...@digdir/designsystemet-theme@0.15.1-alpha.1) (2024-04-04)
+
+### Reverts
+
+- Revert "🍱 Generated new package tokens" ([afa9a47](https://github.com/digdir/designsystemet/commit/afa9a476483612bd162f23d371d4e467755774c8))
+
+## [0.15.1-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.0...@digdir/designsystemet-theme@0.15.1-alpha.0) (2024-03-21)
+
+### Reverts
+
+- Revert "🍱 Generated new package tokens" ([106c9c7](https://github.com/digdir/designsystemet/commit/106c9c74463696c22846725c67c3ac08e43249b0))
+
 # [0.15.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.14.1...@digdir/designsystemet-theme@0.15.0) (2024-03-20)
 
 ### Features
