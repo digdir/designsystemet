@@ -3,12 +3,10 @@ import { createContext, useContext, useReducer } from 'react';
 
 type ComboboxIdContextType = {
   activeIndex: number;
-  activeDescendant: string | undefined;
 };
 
 export const ComboboxIdContext = createContext<ComboboxIdContextType>({
   activeIndex: 0,
-  activeDescendant: undefined,
 });
 
 type SetActiveIndexAction = {
@@ -16,14 +14,7 @@ type SetActiveIndexAction = {
   payload: number;
 };
 
-type SetActiveDescendantIdAction = {
-  type: 'SET_ACTIVE_DESCENDANT';
-  payload: string;
-};
-
-type ComboboxIdReducerAction =
-  | SetActiveIndexAction
-  | SetActiveDescendantIdAction;
+type ComboboxIdReducerAction = SetActiveIndexAction;
 
 export const ComboboxIdReducer = (
   state: ComboboxIdContextType,
@@ -34,11 +25,6 @@ export const ComboboxIdReducer = (
       return {
         ...state,
         activeIndex: action.payload,
-      };
-    case 'SET_ACTIVE_DESCENDANT':
-      return {
-        ...state,
-        activeDescendant: action.payload,
       };
     default:
       return state;
@@ -58,7 +44,6 @@ export const ComboboxIdProvider = ({
 }) => {
   const [state, dispatch] = useReducer(ComboboxIdReducer, {
     activeIndex: 0,
-    activeDescendant: undefined,
   });
 
   return (

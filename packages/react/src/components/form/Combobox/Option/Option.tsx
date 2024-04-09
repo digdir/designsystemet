@@ -68,10 +68,6 @@ export const ComboboxOption = memo(
             setActiveOption(index, labelId);
             rest.onMouseEnter?.(e);
           }} // Set active index on hover
-          onFocus={(e) => {
-            setActiveOption(index, labelId);
-            rest.onFocus?.(e);
-          }} // Set active index on focus
           className={cl(
             classes.option,
             classes[size],

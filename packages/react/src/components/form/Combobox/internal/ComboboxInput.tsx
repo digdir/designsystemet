@@ -9,7 +9,7 @@ import classes from '../Combobox.module.css';
 import { Box } from '../../../Box';
 import textFieldClasses from '../../Textfield/Textfield.module.css';
 import { omit } from '../../../../utilities';
-import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
+import { useComboboxIdDispatch } from '../ComboboxIdContext';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
@@ -18,7 +18,6 @@ export const ComboboxInput = ({
   ...rest
 }: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
   const context = useContext(ComboboxContext);
-  const { activeDescendant } = useComboboxId();
   const idDispatch = useComboboxIdDispatch();
 
   if (!context) {
@@ -112,34 +111,36 @@ export const ComboboxInput = ({
   const showClearButton =
     multiple && !hideClearButton && Object.keys(selectedOptions).length > 0;
 
+  /* Props from floating-ui */
+  const props = getReferenceProps({
+    ref: refs?.setReference,
+    role: null,
+    'aria-controls': null,
+    'aria-expanded': null,
+    'aria-haspopup': null,
+    /* If we click the wrapper, open the list, set index to first option, and focus the input */
+    onClick() {
+      if (disabled) return;
+      if (readOnly) return;
+      setOpen(true);
+      setActiveIndex(0);
+      inputRef.current?.focus();
+    },
+    /* Handles list navigation */
+    onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+      handleKeyDown(event);
+    },
+    // preventDefault on keydown to avoid sending in form
+    onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+    },
+  });
+
   return (
     <Box
-      /* Props from floating-ui */
-      {...getReferenceProps({
-        ref: refs?.setReference,
-        role: null,
-        'aria-controls': null,
-        'aria-expanded': null,
-        'aria-haspopup': null,
-        /* If we click the wrapper, open the list, set index to first option, and focus the input */
-        onClick() {
-          if (disabled) return;
-          if (readOnly) return;
-          setOpen(true);
-          setActiveIndex(0);
-          inputRef.current?.focus();
-        },
-        /* Handles list navigation */
-        onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-          handleKeyDown(event);
-        },
-        // preventDefault on keydown to avoid sending in form
-        onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
-          if (event.key === 'Enter') {
-            event.preventDefault();
-          }
-        },
-      })}
+      {...props}
       aria-disabled={disabled}
       className={cl(
         textFieldClasses.input,
@@ -155,7 +156,7 @@ export const ComboboxInput = ({
         {multiple && !hideChips && <ComboboxChips />}
         <input
           ref={mergedRefs}
-          aria-activedescendant={activeDescendant}
+          aria-activedescendant={props['aria-activedescendant'] as string}
           readOnly={readOnly}
           aria-autocomplete='list'
           role='combobox'

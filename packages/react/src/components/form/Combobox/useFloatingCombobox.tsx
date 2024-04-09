@@ -69,7 +69,9 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     virtual: true,
     scrollItemIntoView: true,
     enabled: open,
+    focusItemOnHover: true,
     onNavigate: (index) => {
+      console.log('CALLEDDDD');
       dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index || 0 });
     },
   });
