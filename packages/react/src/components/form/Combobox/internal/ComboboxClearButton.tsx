@@ -17,7 +17,7 @@ export const ComboboxClearButton = () => {
     size,
     readOnly,
     disabled,
-    cleanButtonLabel,
+    clearButtonLabel,
     inputRef,
     setSelectedOptions,
     setInputValue,
@@ -48,7 +48,7 @@ export const ComboboxClearButton = () => {
         }
       }}
       type='button'
-      aria-label={cleanButtonLabel}
+      aria-label={clearButtonLabel}
     >
       <XMarkIcon
         fontSize='1.5em'

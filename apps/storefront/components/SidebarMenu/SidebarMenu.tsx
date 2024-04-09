@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import cl from 'clsx';
-import { Button } from '@digdir/design-system-react';
+import { Button } from '@digdir/designsystemet-react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';

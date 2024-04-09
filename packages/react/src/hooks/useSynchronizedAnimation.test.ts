@@ -18,7 +18,7 @@ const mockAnimation2 = {
 } as unknown as Animation;
 
 // Mock document.getAnimations
-document.getAnimations = jest.fn(() => [mockAnimation, mockAnimation2]);
+document.getAnimations = vi.fn(() => [mockAnimation, mockAnimation2]);
 
 describe('useSynchronizedAnimation', () => {
   it('should return a ref that is defined', () => {

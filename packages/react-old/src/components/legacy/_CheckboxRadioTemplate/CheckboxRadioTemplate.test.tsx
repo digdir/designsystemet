@@ -8,7 +8,7 @@ import { CheckboxRadioTemplate } from '.';
 // Test data:
 const visibleBoxTestId = 'visible-box-test';
 const visibleBox = <span data-testid={visibleBoxTestId} />;
-const onChange = jest.fn();
+const onChange = vi.fn();
 const defaultProps: CheckboxRadioTemplateProps = {
   size: 'small',
   type: 'checkbox',

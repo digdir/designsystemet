@@ -106,6 +106,17 @@
   width: 100px;
 }
 
+.package {
+  display: flex;
+  align-items: center;
+  gap: var(--fds-spacing-2);
+  font-weight: 600;
+}
+
+.npmShield {
+  margin: auto;
+}
+
 @media (max-width: 576px) {
   .copy {
     width: 100%;

@@ -1,6 +1,6 @@
-import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+import { Meta, Canvas, Story, ArgTypes } from '@storybook/blocks';
 
-import { Information, TokensTable } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import { LegacyCheckboxGroup } from './index';
 
@@ -173,13 +173,4 @@ export const Template = (args = {}) => (
 
 ## Egenskaper
 
-<ArgsTable story='Vertikal' />
-
-## Tokens
-
-<TokensTable
-  jsonKey='component.checkbox_group'
-  componentName='checkbox_group'
-  showPreview={false}
-  description
-/>
+<ArgTypes story='Vertikal' />

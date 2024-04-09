@@ -6,7 +6,7 @@ import { MultiSelectItem } from './MultiSelectItem';
 
 const user = userEvent.setup();
 
-const onDeleteButtonClick = jest.fn();
+const onDeleteButtonClick = vi.fn();
 const label = 'Option';
 const defaultMultiSelectItemProps: MultiSelectItemProps = {
   disabled: false,

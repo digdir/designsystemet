@@ -18,7 +18,7 @@ export type RadioProps = {
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { children, description, className, ...rest } = props;
+  const { children, description, className, style, ...rest } = props;
   const {
     inputProps,
     descriptionId,
@@ -41,6 +41,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
           readOnly && classes.readonly,
           className,
         )}
+        style={style}
       >
         <input
           className={classes.input}
@@ -48,26 +49,30 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
           {...omit(['size', 'error'], rest)}
           {...inputProps}
         />
-        <Label
-          className={classes.label}
-          htmlFor={inputProps.id}
-          size={size}
-          weight='regular'
-        >
-          <span>{children}</span>
-        </Label>
-        {description && (
-          <Paragraph
-            asChild
-            size={size}
-          >
-            <div
-              id={descriptionId}
-              className={classes.description}
+        {children && (
+          <>
+            <Label
+              className={classes.label}
+              htmlFor={inputProps.id}
+              size={size}
+              weight='regular'
             >
-              {description}
-            </div>
-          </Paragraph>
+              <span>{children}</span>
+            </Label>
+            {description && (
+              <Paragraph
+                asChild
+                size={size}
+              >
+                <div
+                  id={descriptionId}
+                  className={classes.description}
+                >
+                  {description}
+                </div>
+              </Paragraph>
+            )}
+          </>
         )}
       </div>
     </Paragraph>

@@ -1,5 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import type {
   LegacyMultiSelectOption,
@@ -40,8 +41,8 @@ const sortedOptions: LegacySingleSelectOption[] = [
   singleSelectOptions[0],
 ];
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const optionSearch = jest.fn((_o, _k) => sortedOptions);
-jest.mock('./utils', () => ({
+const optionSearch = vi.fn((_o, _k) => sortedOptions);
+vi.mock('./utils', () => ({
   optionSearch: (
     options: LegacySingleSelectOption[] | LegacyMultiSelectOption[],
     keyword: string,
@@ -49,7 +50,7 @@ jest.mock('./utils', () => ({
 }));
 
 describe('Select', () => {
-  afterEach(jest.clearAllMocks);
+  afterEach(vi.clearAllMocks);
 
   describe('Single select', () => {
     it('Renders a select box', () => {
@@ -174,7 +175,7 @@ describe('Select', () => {
     });
 
     it('Calls onChange handler with new value when it changes', async () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       renderSingleSelect({ onChange });
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.click(screen.getAllByRole('option')[1]));
@@ -205,7 +206,7 @@ describe('Select', () => {
             { label: 'Test 2', value: 'duplicated value' },
           ],
         });
-      jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+      vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
       expect(renderFn).toThrow('Each value in the option list must be unique.');
     });
 
@@ -312,7 +313,7 @@ describe('Select', () => {
     });
 
     it('Calls onFocus handler with the selected value only when the search field is focused', async () => {
-      const onFocus = jest.fn();
+      const onFocus = vi.fn();
       const value = singleSelectOptions[0].value;
       const outsideButtonTestid = 'outside-button';
       render(
@@ -333,7 +334,7 @@ describe('Select', () => {
     });
 
     it('Calls onBlur handler with the selected value when focus switches to another element', async () => {
-      const onBlur = jest.fn();
+      const onBlur = vi.fn();
       const value = singleSelectOptions[0].value;
       const outsideButtonTestid = 'outside-button';
       render(
@@ -354,7 +355,7 @@ describe('Select', () => {
     });
 
     it('Calls onBlur handler with the selected value when user clicks outside of the component', async () => {
-      const onBlur = jest.fn();
+      const onBlur = vi.fn();
       const value = singleSelectOptions[0].value;
       renderSingleSelect({ onBlur, value });
       await act(() => user.click(getCombobox()));
@@ -636,7 +637,7 @@ describe('Select', () => {
     });
 
     it('Calls onChange handler with new value when it changes', async () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       renderMultiSelect({ onChange });
       await act(() => user.click(screen.getByRole('combobox')));
       await act(() => user.click(screen.getAllByRole('option')[1]));
@@ -697,7 +698,7 @@ describe('Select', () => {
             { label: 'Test 2', value: 'duplicated value' },
           ],
         });
-      jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+      vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
       expect(renderFn).toThrow('Each value in the option list must be unique.');
     });
 
@@ -812,7 +813,7 @@ describe('Select', () => {
     });
 
     it('Calls onFocus handler with the selected values only when the search field is focused', async () => {
-      const onFocus = jest.fn();
+      const onFocus = vi.fn();
       const value = [multiSelectOptions[0].value];
       const outsideButtonTestid = 'outside-button';
       render(
@@ -833,7 +834,7 @@ describe('Select', () => {
     });
 
     it('Calls onBlur handler with the selected values when focus switches to another element', async () => {
-      const onBlur = jest.fn();
+      const onBlur = vi.fn();
       const value = [singleSelectOptions[0].value];
       const outsideButtonTestid = 'outside-button';
       render(
@@ -854,7 +855,7 @@ describe('Select', () => {
     });
 
     it('Calls onBlur handler with the selected values when user clicks outside of the component', async () => {
-      const onBlur = jest.fn();
+      const onBlur = vi.fn();
       const value = [multiSelectOptions[0].value];
       renderMultiSelect({ onBlur, value });
       await act(() => user.click(getCombobox()));
@@ -865,8 +866,8 @@ describe('Select', () => {
     });
 
     it('Does not call onFocus nor onBlur when focus switches between subcomponents', async () => {
-      const onBlur = jest.fn();
-      const onFocus = jest.fn();
+      const onBlur = vi.fn();
+      const onFocus = vi.fn();
       const selectedOption = multiSelectOptions[0];
       const value = [selectedOption.value];
       renderMultiSelect({ onBlur, onFocus, value });

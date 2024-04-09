@@ -1,6 +1,6 @@
-import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+import { Meta, Canvas, Story, ArgTypes } from '@storybook/blocks';
 
-import { Information, TokensTable } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import { LegacySelect } from './';
 
@@ -368,7 +368,7 @@ Verdien i feltet behandles da som en liste med tekststrenger.
 
 ## Egenskaper
 
-<ArgsTable story='Normal' />
+<ArgTypes story='Normal' />
 
 ## Tilgjengelighet
 
@@ -386,12 +386,3 @@ Nedtrekkslisten åpnes ved å trykke på `Enter`, `Space` eller en av de vertika
 Deretter kan man navigere seg frem til ønsket alternativ ved bruk av piltastene.
 Man velger så alternativer ved å bruke `Enter`- eller `Space`-tasten.
 Sletteknappene (de med kryss på) nås på vanlig måte ved hjelp av tabulatortasten.
-
-## Tokens
-
-<TokensTable
-  jsonKey='component.select'
-  componentName='select'
-  showPreview={false}
-  description
-/>

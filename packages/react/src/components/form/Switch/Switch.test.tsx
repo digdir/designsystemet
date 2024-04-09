@@ -25,8 +25,8 @@ describe('Switch', () => {
   });
   it('calls onChange and onClick when user clicks', async () => {
     const user = userEvent.setup();
-    const onChange = jest.fn();
-    const onClick = jest.fn();
+    const onChange = vi.fn();
+    const onClick = vi.fn();
 
     const value = 'test';
 
@@ -53,8 +53,8 @@ describe('Switch', () => {
 
   it('does not call onChange or onClick when user clicks and the Switch is disabled', async () => {
     const user = userEvent.setup();
-    const onChange = jest.fn();
-    const onClick = jest.fn();
+    const onChange = vi.fn();
+    const onClick = vi.fn();
 
     render(
       <Switch
@@ -77,8 +77,8 @@ describe('Switch', () => {
 
   it('does not call onChange or onClick when user clicks and the Switch is readOnly', async () => {
     const user = userEvent.setup();
-    const onChange = jest.fn();
-    const onClick = jest.fn();
+    const onChange = vi.fn();
+    const onClick = vi.fn();
 
     render(
       <Switch

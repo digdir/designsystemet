@@ -1,6 +1,6 @@
-import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+import { Meta, Canvas, Story, ArgTypes } from '@storybook/blocks';
 
-import { Information, TokensTable } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import { LegacyRadioButton } from './index';
 
@@ -235,13 +235,4 @@ Dette kan man gjøre ved å sette `label`-attributten på vanlig måte og sette 
 `LegacyRadioButton` er en kontrollert komponent; det vil si at det er opp til foreldrenoden å holde styr på om knappen er trykket inn eller ikke.
 Dette gjøres ved å sette `checked`-attributten til `true` eller `false` idet `onChange`-funksjonen blir kalt.
 
-<ArgsTable story='Normal' />
-
-## Tokens
-
-<TokensTable
-  jsonKey='component.radio_button'
-  componentName='radio_button'
-  showPreview={false}
-  description
-/>
+<ArgTypes story='Normal' />

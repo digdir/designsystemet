@@ -2,6 +2,7 @@ import assert from 'assert';
 
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { LegacyRadioButton } from '.';
 import type { LegacyRadioButtonProps } from '.';
@@ -9,7 +10,7 @@ import type { LegacyRadioButtonProps } from '.';
 const user = userEvent.setup();
 
 // Test data
-const onChange = jest.fn();
+const onChange = vi.fn();
 const name = 'radio-ga-ga';
 const value = 'radio-goo-goo';
 const defaultProps: LegacyRadioButtonProps = {
@@ -19,7 +20,9 @@ const defaultProps: LegacyRadioButtonProps = {
 };
 
 describe('RadioButton', () => {
-  afterEach(jest.resetAllMocks);
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
   it('Renders a radio button', () => {
     render();

@@ -157,7 +157,7 @@ describe('InputWrapper', () => {
     });
 
     it('Calls inputRenderer with focus-effect class by default', () => {
-      const inputRenderer = jest.fn();
+      const inputRenderer = vi.fn();
       render({ inputRenderer });
       expect(inputRenderer).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -167,7 +167,7 @@ describe('InputWrapper', () => {
     });
 
     it('Calls inputRenderer without focus-effect class when "noFocusEffect" property is true', () => {
-      const inputRenderer = jest.fn();
+      const inputRenderer = vi.fn();
       render({ inputRenderer, noFocusEffect: true });
       expect(inputRenderer).toHaveBeenCalledWith(
         expect.objectContaining({

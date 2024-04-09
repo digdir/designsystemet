@@ -1,4 +1,4 @@
-import { Meta, Canvas, Controls, Primary, ArgsTable } from '@storybook/blocks';
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 
 import * as ComboboxStories from './Combobox.stories';
 
@@ -56,7 +56,7 @@ Brukes som direkte barn av `Combobox` for å vise et element i listen.
 Teksten fra `children` vises til brukeren når elementet er valgt. `value` er
 det som blir sendt til `onValueChange` når elementet blir valgt.
 
-<ArgsTable of={Combobox.Option} />
+<ArgTypes of={Combobox.Option} />
 
 ## `Combobox.Empty`
 

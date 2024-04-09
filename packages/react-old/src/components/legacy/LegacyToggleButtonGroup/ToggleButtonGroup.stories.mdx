@@ -1,6 +1,6 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/blocks';
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
 
-import { TokensTable, Information } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import { LegacyToggleButtonGroup } from '.';
 
@@ -41,13 +41,4 @@ export const Template = (args = {}) => (
 
 ## Egenskaper
 
-<ArgsTable story='Eksempel' />
-
-## Tokens
-
-<TokensTable
-  componentName='toggle_button'
-  description
-  jsonKey='component.toggle_button'
-  showPreview={false}
-/>
+<ArgTypes story='Eksempel' />

@@ -1,6 +1,6 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/blocks';
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
 
-import { TokensTable, Information } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import { exampleRows } from './ExampleData';
 import classes from './Table.stories.module.css';
@@ -60,7 +60,10 @@ export const Template = (args) => (
 
 # LegacyTable
 
-<Information text='deprecated' />
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av [Table](/?path=/docs/komponenter-table--docs) komponent.**'
+/>
 
 ## Eksempel
 
@@ -70,13 +73,4 @@ export const Template = (args) => (
 
 ## Egenskaper
 
-<ArgsTable story='Eksempel' />
-
-## Tokens
-
-<TokensTable
-  componentName='table'
-  description
-  jsonKey='component.table'
-  showPreview={false}
-/>
+<ArgTypes story='Eksempel' />

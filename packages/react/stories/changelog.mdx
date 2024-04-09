@@ -1,7 +1,6 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Markdown } from '@storybook/blocks';
 
-import { Changelog } from '../../../docs-components';
-import changelog from '../CHANGELOG.md';
+import changelog from '../CHANGELOG.md?raw';
 
 <Meta title='Endringslogger/React' />
 
@@ -11,4 +10,4 @@ Her finner du en automatisk generert endringslogg til pakken **`@digdir/designsy
 
 ---
 
-<Changelog markdown={changelog} />
+<Markdown>{changelog}</Markdown>

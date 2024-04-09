@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.56.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.1...@digdir/designsystemet-react@0.56.2) (2024-04-08)
+
+### Bug Fixes
+
+- **Radio:** :bug: Correct orientation of radio and label ([#1779](https://github.com/digdir/designsystemet/issues/1779)) ([c5c5f9f](https://github.com/digdir/designsystemet/commit/c5c5f9f358b50df7a9586829ab9605cc75371f78))
+
+## [0.56.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.0...@digdir/designsystemet-react@0.56.1) (2024-04-08)
+
+### Bug Fixes
+
+- **Checkbox:** :bug: Removed unwanted spacing when no label is defined ([#1762](https://github.com/digdir/designsystemet/issues/1762)) ([439bf8c](https://github.com/digdir/designsystemet/commit/439bf8c1f0cc19b5b49fd65295186005a777038f))
+- **Checkbox:** Remove empty label element ([#1737](https://github.com/digdir/designsystemet/issues/1737)) ([152ad27](https://github.com/digdir/designsystemet/commit/152ad27830f569a8b6402a7134e11634dd2f8801))
+- **Radio:** :bug: Removed unwanted spacing when no label is defined ([#1768](https://github.com/digdir/designsystemet/issues/1768)) ([03d2553](https://github.com/digdir/designsystemet/commit/03d25530808c70b850f637f71e48dbcd2fe94dbc))
+- **Radio:** Remove empty label element ([#1741](https://github.com/digdir/designsystemet/issues/1741)) ([#1764](https://github.com/digdir/designsystemet/issues/1764)) ([73840cf](https://github.com/digdir/designsystemet/commit/73840cfcd041726eb1798add7dbea547adf7fc69))
+
+# [0.56.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.55.0...@digdir/designsystemet-react@0.56.0) (2024-04-04)
+
+### Bug Fixes
+
+- **Checkbox:** `style` applied to wrong element ([#1743](https://github.com/digdir/designsystemet/issues/1743)) ([7bad2c2](https://github.com/digdir/designsystemet/commit/7bad2c2b44cd666094a59a1db2c8e05e422fe6ea))
+- **Combobox:** Fix `flushSync` being called inside a lifecycle method ([#1736](https://github.com/digdir/designsystemet/issues/1736)) ([c0a6f73](https://github.com/digdir/designsystemet/commit/c0a6f73c02dc4fa881930bf7cd684997d6fa2223))
+- **Radio:** `style` applied to wrong element ([#1742](https://github.com/digdir/designsystemet/issues/1742)) ([fa65b7e](https://github.com/digdir/designsystemet/commit/fa65b7eb8fd8301c1f212bb46283302d24529054))
+
+### Features
+
+- **DropdownMenu:** Remove deprecated `anchorEl` ([#1744](https://github.com/digdir/designsystemet/issues/1744)) ([6da4daa](https://github.com/digdir/designsystemet/commit/6da4daa7292cab394573b2d776415e842f6f45d5))
+- **Popover:** Remove deprecated `anchorEl` ([#1718](https://github.com/digdir/designsystemet/issues/1718)) ([e8cf45e](https://github.com/digdir/designsystemet/commit/e8cf45e88b1c4e104b7a39d87756d73975121ae7))
+- **storybook:** Add getting started page ([#1746](https://github.com/digdir/designsystemet/issues/1746)) ([1e80130](https://github.com/digdir/designsystemet/commit/1e80130c9068f6a38e1a8ecdc0a351885354ea71))
+
+# [0.55.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.54.0...@digdir/designsystemet-react@0.55.0) (2024-03-21)
+
+### Features
+
+- **Combobox:** Add `hideClearButton` prop ([#1720](https://github.com/digdir/designsystemet/issues/1720)) ([6bbb3b7](https://github.com/digdir/designsystemet/commit/6bbb3b7cce94415e10e981288b7a7a20bb569efc))
+- **Combobox:** Add `initialValue` prop ([#1719](https://github.com/digdir/designsystemet/issues/1719)) ([0a0c3d4](https://github.com/digdir/designsystemet/commit/0a0c3d4d3c4e39da4d9f1a5bdad2694e5148390c))
+
+# [0.54.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.1...@digdir/designsystemet-react@0.54.0) (2024-03-20)
+
+### Bug Fixes
+
+- **Accordion:** Missing hover & styling corrections ([#1710](https://github.com/digdir/designsystemet/issues/1710)) ([70fe406](https://github.com/digdir/designsystemet/commit/70fe406b3d03cdc70ec58b61e49bf6cdf01f3a49))
+
+### Features
+
+- **Paragraph:** Add `variant` prop with `long` and `short` ([#1636](https://github.com/digdir/designsystemet/issues/1636)) ([efedb27](https://github.com/digdir/designsystemet/commit/efedb27af6324bd018c80392b5a279e57f0cd5dd))
+
+### BREAKING CHANGE:
+
+- **Tabs:** Remove icon sizing ([#1715](https://github.com/digdir/designsystemet/issues/1715))) ([723bf27](https://github.com/digdir/designsystemet/commit/723bf27bebe849d2017f7fd296c0d8483107e01e))
+- **Button:** Remove icon sizing ([#1709](https://github.com/digdir/designsystemet/issues/1709)) ([9737aae](https://github.com/digdir/designsystemet/commit/9737aae42eaff7fbaf0b893ea10efd61bcb0f716))
+
 ## [0.53.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.53.0...@digdir/designsystemet-react@0.53.1) (2024-03-13)
 
 **Note:** Version bump only for package @digdir/designsystemet-react

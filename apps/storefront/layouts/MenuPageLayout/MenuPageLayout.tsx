@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import { useRouter } from 'next/router';
-import { Heading } from '@digdir/design-system-react';
+import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cn from 'clsx';
 

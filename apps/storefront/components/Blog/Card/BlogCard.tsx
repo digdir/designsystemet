@@ -1,4 +1,4 @@
-import { Card, Heading, Paragraph } from '@digdir/design-system-react';
+import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import Link from 'next/link';
 import cl from 'clsx';
 

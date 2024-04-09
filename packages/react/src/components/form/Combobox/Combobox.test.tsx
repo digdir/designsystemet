@@ -86,7 +86,7 @@ describe('Combobox', () => {
   });
 
   it('should close when we click Escape', async () => {
-    const { user } = await render();
+    const { user } = await render({ label: 'closeOnEscape' });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
@@ -94,11 +94,13 @@ describe('Combobox', () => {
 
     await user.type(combobox, '{Escape}');
 
+    await wait(500);
+
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange });
     const combobox = screen.getByRole('combobox');
 
@@ -110,7 +112,7 @@ describe('Combobox', () => {
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 
@@ -132,6 +134,7 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
     await user.click(document.body);
+    await wait(500);
 
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
   });
@@ -144,15 +147,17 @@ describe('Combobox', () => {
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
     await user.click(document.body);
+    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Leikanger'));
     await user.click(document.body);
+    await wait(500);
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should remove all values when we click on the clear button', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     const { user } = await render({ multiple: true, onValueChange });
     const combobox = screen.getByRole('combobox');
 
@@ -287,7 +292,7 @@ describe('Combobox', () => {
   });
 
   it('should only call onValueChange once when we click the same option fast twice', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 

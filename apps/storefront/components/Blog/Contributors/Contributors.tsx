@@ -1,4 +1,4 @@
-import { Paragraph, Heading } from '@digdir/design-system-react';
+import { Paragraph, Heading } from '@digdir/designsystemet-react';
 import { Fragment } from 'react';
 
 import classes from './Contributors.module.css';

@@ -8,7 +8,7 @@ const user = userEvent.setup();
 
 const outsideButtonTestId = 'outside-button';
 const insideButtonTestId = 'inside-button';
-const focusWithinChangeFn = jest.fn();
+const focusWithinChangeFn = vi.fn();
 
 const TestComponent = () => {
   const ref = useRef<HTMLSpanElement>(null);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
-import { Tooltip } from '@digdir/design-system-react';
+import { Tooltip, Button } from '@digdir/designsystemet-react';
 
 import classes from './ClipboardBtn.module.css';
 
@@ -23,18 +23,17 @@ const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
   return (
     <>
       <Tooltip content={toolTipText}>
-        <button
+        <Button
           onMouseEnter={() => setToolTipText(title)}
           onClick={() => onBtnClick(value)}
-          className={classes.btn}
           title={title}
+          variant='tertiary'
+          color='second'
+          size='small'
         >
-          <ClipboardIcon
-            fontSize={20}
-            color='#585858'
-          />
+          <ClipboardIcon fontSize={'1.5rem'} />
           {text && <span className={classes.text}>{text}</span>}
-        </button>
+        </Button>
       </Tooltip>
     </>
   );

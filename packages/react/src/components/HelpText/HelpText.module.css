@@ -41,16 +41,16 @@
 }
 
 .helpTextIcon.small {
-  --help_text-icon-width: 24px;
-  --help_text-icon-height: 24px;
-}
-
-.helpTextIcon.medium {
   --help_text-icon-width: var(--fds-sizing-6);
   --help_text-icon-height: var(--fds-sizing-6);
 }
 
-.helpTextIcon.large {
+.helpTextIcon.medium {
   --help_text-icon-width: var(--fds-sizing-7);
   --help_text-icon-height: var(--fds-sizing-7);
+}
+
+.helpTextIcon.large {
+  --help_text-icon-width: var(--fds-sizing-8);
+  --help_text-icon-height: var(--fds-sizing-8);
 }
