@@ -456,7 +456,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           setSelectedOptions,
           /* Recieves index of option, and the ID of the button element */
           setActiveOption: (index: number, id: string) => {
-            return;
             if (readOnly) return;
             if (disabled) return;
             setActiveIndex(index);

@@ -19,11 +19,7 @@ type UseFloatingComboboxProps = {
 export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
   console.log('useFloatingCombobox');
   const [open, setOpen] = useState(false);
-  const activeIndex = useRef(0);
-
-  const setActiveIndex = (index: number) => {
-    activeIndex.current = index;
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // floating UI
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
@@ -65,7 +61,7 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
   const dismiss = useDismiss(context);
   const listNav = useListNavigation(context, {
     listRef,
-    activeIndex: activeIndex.current,
+    activeIndex,
     virtual: true,
     scrollItemIntoView: false,
     enabled: open,
@@ -81,7 +77,7 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     open,
     setOpen,
     setActiveIndex,
-    activeIndex: activeIndex.current,
+    activeIndex,
     refs,
     floatingStyles,
     context,
