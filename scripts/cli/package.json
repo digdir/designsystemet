@@ -16,9 +16,11 @@
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.9.3",
     "@types/ramda": "^0.29.9",
+    "@types/yargs": "^17.0.32",
     "esno": "^4.7.0",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
-    "style-dictionary": "^3.8.0"
+    "style-dictionary": "^3.8.0",
+    "yargs": "^17.7.2"
   }
 }
