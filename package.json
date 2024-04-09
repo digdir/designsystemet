@@ -6,6 +6,7 @@
   "workspaces": [
     "packages/*",
     "apps/*",
+    "scripts/*",
     "docs-components/",
     ".storybook/"
   ],
@@ -17,7 +18,7 @@
     "devsite": "yarn workspace dev dev",
     "build": "lerna run build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
-    "build:tokens": "yarn workspace @digdir/designsystemet-theme build",
+    "build:tokens": "yarn workspace @digdir/designsystemet-cli build",
     "build:css": "yarn workspace @digdir/designsystemet-css build",
     "build:storybook": "storybook build -o ./dist/storybook",
     "build:storefront": "yarn workspace storefront building",

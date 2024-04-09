@@ -42,7 +42,7 @@ const fileheader: Named<{ fileHeader: FileHeader }> = {
 };
 
 const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
-const packageTokensPath = 'brand';
+const packageTokensPath = path.resolve('../../packages/theme/brand');
 
 setupFormatters('./../../prettier.config.js');
 
@@ -65,8 +65,6 @@ StyleDictionary.registerTransformGroup({
   transforms: [
     'ts/resolveMath',
     nameKebab.name,
-    // fluidFontSize.name,
-    // calc.name,
     typographyShorthand.name,
     'ts/size/lineheight',
     sizeRem.name,
