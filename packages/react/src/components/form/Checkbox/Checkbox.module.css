@@ -151,13 +151,13 @@
 .small {
   --fds-checkbox-size: var(--fds-sizing-5);
 
-  min-height: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-10);
 }
 
 .medium {
   --fds-checkbox-size: var(--fds-sizing-6);
 
-  min-height: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-11);
 }
 
 .large {
