@@ -32,15 +32,7 @@ export const ComboboxOption = memo(
     ({ value, description, children, className, ...rest }, forwardedRef) => {
       const labelId = useId();
 
-      const {
-        id,
-        ref,
-        selected,
-        index,
-        active,
-        onOptionClick,
-        setActiveOption,
-      } = useComboboxOption({
+      const { id, ref, selected, active, onOptionClick } = useComboboxOption({
         restId: rest.id,
         ref: forwardedRef,
         value,
@@ -50,10 +42,13 @@ export const ComboboxOption = memo(
       if (!context) {
         throw new Error('ComboboxOption must be used within a Combobox');
       }
-      const { size, multiple } = context;
+      const { size, multiple, getItemProps } = context;
+
+      const props = getItemProps();
 
       return (
         <button
+          ref={ref}
           id={id}
           role='option'
           type='button'
@@ -64,10 +59,6 @@ export const ComboboxOption = memo(
             onOptionClick();
             rest.onClick?.(e);
           }}
-          onMouseEnter={(e) => {
-            setActiveOption(index, labelId);
-            rest.onMouseEnter?.(e);
-          }} // Set active index on hover
           className={cl(
             classes.option,
             classes[size],
@@ -75,8 +66,8 @@ export const ComboboxOption = memo(
             multiple && classes.multiple,
             className,
           )}
-          ref={ref}
           {...omit(['displayValue'], rest)}
+          {...omit(['onClick'], props)}
         >
           <Label
             asChild

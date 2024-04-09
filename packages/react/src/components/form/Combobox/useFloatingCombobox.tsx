@@ -71,16 +71,13 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     enabled: open,
     focusItemOnHover: true,
     onNavigate: (index) => {
-      console.log('CALLEDDDD');
       dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index || 0 });
     },
   });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    role,
-    dismiss,
-    listNav,
-  ]);
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
+    [role, dismiss, listNav],
+  );
 
   return {
     open,
@@ -91,5 +88,6 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     context,
     getReferenceProps,
     getFloatingProps,
+    getItemProps,
   };
 };

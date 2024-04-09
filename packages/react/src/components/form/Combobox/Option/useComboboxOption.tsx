@@ -27,26 +27,12 @@ export default function useComboboxOption({
   if (!context) {
     throw new Error('ComboboxOption must be used within a Combobox');
   }
-  const {
-    selectedOptions,
-    onOptionClick,
-    listRef,
-    optionValues,
-    readOnly,
-    disabled,
-  } = context;
+  const { selectedOptions, onOptionClick, listRef, optionValues } = context;
 
   const index = useMemo(
     () => optionValues.indexOf(value),
     [optionValues, value],
   );
-
-  const setActiveOption = (index: number, id: string) => {
-    if (readOnly) return;
-    if (disabled) return;
-    dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
-    dispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id });
-  };
 
   const combinedRef = useMergeRefs([
     (node: HTMLElement | null) => {
@@ -66,7 +52,6 @@ export default function useComboboxOption({
     console.log('option effect');
     if (active) {
       dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
-      dispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id });
     }
   }, [generatedId, id, dispatch, active, index]);
 
@@ -77,8 +62,6 @@ export default function useComboboxOption({
     ref: combinedRef,
     selected,
     active,
-    index,
     onOptionClick: onOptionClickDebounced,
-    setActiveOption,
   };
 }

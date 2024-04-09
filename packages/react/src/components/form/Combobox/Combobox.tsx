@@ -196,6 +196,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       context,
       getReferenceProps,
       getFloatingProps,
+      getItemProps,
     } = useFloatingCombobox({
       listRef,
     });
@@ -346,6 +347,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           handleKeyDown,
           setOpen,
           getReferenceProps,
+          getItemProps,
           setSelectedOptions,
           /* Recieves the value of the option, and searches for it in our values lookup */
           onOptionClick: (value: string) => {
