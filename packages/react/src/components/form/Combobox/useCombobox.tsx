@@ -184,6 +184,17 @@ export default function useCombobox({
     });
   }, [children]);
 
+  console.log({
+    optionsChildren,
+    filteredOptions,
+    optionValues,
+    restChildren,
+    options,
+    customIds,
+    selectedOptions,
+    prevSelectedHash,
+  });
+
   return {
     optionsChildren,
     filteredOptions,

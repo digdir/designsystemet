@@ -4,11 +4,12 @@ import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 import classes from '../Combobox.module.css';
 import { Box } from '../../../Box';
 import textFieldClasses from '../../Textfield/Textfield.module.css';
 import { omit } from '../../../../utilities';
+import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
@@ -17,10 +18,16 @@ export const ComboboxInput = ({
   ...rest
 }: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
   const context = useContext(ComboboxContext);
+  const { activeDescendant } = useComboboxId();
+  const idDispatch = useComboboxIdDispatch();
 
   if (!context) {
     throw new Error('ComboboxContext is missing');
   }
+
+  const setActiveIndex = (id: number) => {
+    idDispatch?.({ type: 'SET_ACTIVE_INDEX', payload: id });
+  };
 
   const {
     forwareddRef,
@@ -32,7 +39,6 @@ export const ComboboxInput = ({
     inputRef,
     refs,
     inputValue,
-    activeDescendant,
     error,
     multiple,
     selectedOptions,
@@ -42,7 +48,6 @@ export const ComboboxInput = ({
     hideChips,
     hideClearButton,
     setOpen,
-    setActiveIndex,
     handleKeyDown,
     getReferenceProps,
     setInputValue,

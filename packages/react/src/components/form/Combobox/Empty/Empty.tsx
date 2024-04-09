@@ -2,7 +2,7 @@ import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 
 import classes from './Empty.module.css';
 

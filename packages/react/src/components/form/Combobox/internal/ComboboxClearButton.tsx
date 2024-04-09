@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 import classes from '../Combobox.module.css';
 
 export const ComboboxClearButton = () => {

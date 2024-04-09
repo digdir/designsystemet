@@ -1,18 +1,14 @@
 import {
   useState,
   useRef,
-  createContext,
   useEffect,
   useId,
   forwardRef,
+  useCallback,
 } from 'react';
 import type * as React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import cl from 'clsx';
-import type {
-  UseFloatingReturn,
-  UseListNavigationProps,
-} from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { Box } from '../../Box';
@@ -33,6 +29,8 @@ import ComboboxNative from './internal/ComboboxNative';
 import ComboboxCustom from './Custom/Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
+import { ComboboxIdProvider, useComboboxIdDispatch } from './ComboboxIdContext';
+import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxProps = {
   /**
@@ -133,7 +131,7 @@ export type ComboboxProps = {
   FormFieldProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
+export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
   (
     {
       value,
@@ -175,9 +173,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const listId = useId();
 
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
-    const [activeDescendant, setActiveDescendant] = useState<
-      string | undefined
-    >(undefined);
+
+    /* const idDispatch = useComboboxIdDispatch(); */
 
     const {
       selectedOptions,
@@ -204,8 +201,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       refs,
       floatingStyles,
       context,
-      activeIndex,
-      setActiveIndex,
       getReferenceProps,
       getFloatingProps,
     } = useFloatingCombobox({
@@ -320,7 +315,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       selectedOptions,
       readOnly: formFieldProps.readOnly || false,
       disabled: disabled,
-      activeIndex,
       multiple,
       restChildren,
       inputValue,
@@ -328,7 +322,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       setInputValue,
       setSelectedOptions,
       handleSelectOption: debouncedHandleSelectOption,
-      setActiveIndex,
     });
 
     const rowVirtualizer = useVirtualizer({
@@ -341,8 +334,14 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       overscan: 1,
     });
 
+    const setActiveOption = useCallback((index: number, id: string) => {
+      if (readOnly) return;
+      if (disabled) return;
+      /* idDispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
+      idDispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id }); */
+    }, []);
+
     console.log('combobox rendered');
-    console.log({ activeIndex });
 
     return (
       <ComboboxContext.Provider
@@ -351,14 +350,12 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           options,
           selectedOptions,
           multiple,
-          activeIndex,
           disabled,
           readOnly,
           open,
           inputRef,
           refs,
           inputValue,
-          activeDescendant,
           error,
           formFieldProps,
           name,
@@ -369,18 +366,12 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           hideClearButton,
           listId,
           setInputValue,
-          setActiveIndex,
           handleKeyDown,
           setOpen,
           getReferenceProps,
           setSelectedOptions,
           /* Recieves index of option, and the ID of the button element */
-          setActiveOption: (index: number, id: string) => {
-            if (readOnly) return;
-            if (disabled) return;
-            setActiveIndex(index);
-            setActiveDescendant(id);
-          },
+          setActiveOption,
           /* Recieves the value of the option, and searches for it in our values lookup */
           onOptionClick: (value: string) => {
             if (readOnly) return;
@@ -507,54 +498,15 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   },
 );
 
-type ComboboxContextType = {
-  multiple: NonNullable<ComboboxProps['multiple']>;
-  disabled: NonNullable<ComboboxProps['disabled']>;
-  readOnly: NonNullable<ComboboxProps['readOnly']>;
-  name: ComboboxProps['name'];
-  error: ComboboxProps['error'];
-  htmlSize: ComboboxProps['htmlSize'];
-  hideChips: NonNullable<ComboboxProps['hideChips']>;
-  clearButtonLabel: NonNullable<ComboboxProps['clearButtonLabel']>;
-  hideClearButton: NonNullable<ComboboxProps['hideClearButton']>;
-  options: {
-    [key: string]: Option;
-  };
-  selectedOptions: {
-    [key: string]: Option;
-  };
-  size: NonNullable<ComboboxProps['size']>;
-  formFieldProps: ReturnType<typeof useFormField>;
-  refs: UseFloatingReturn['refs'];
-  inputRef: React.RefObject<HTMLInputElement>;
-  activeIndex: number | null;
-  open: boolean;
-  inputValue: string;
-  activeDescendant: string | undefined;
-  optionValues: string[];
-  listId: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setOpen: (open: boolean) => void;
-  handleKeyDown: (event: React.KeyboardEvent) => void;
-  setActiveIndex: (index: number) => void;
-  setActiveOption: (index: number, id: string) => void;
-  getReferenceProps: (
-    props?: Record<string, unknown>,
-  ) => Record<string, unknown>;
-  onOptionClick: (value: string) => void;
-  setSelectedOptions: React.Dispatch<
-    React.SetStateAction<{
-      [key: string]: Option;
-    }>
-  >;
-  chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
-  handleSelectOption: (option: Option) => void;
-  listRef: UseListNavigationProps['listRef'];
-  forwareddRef: React.Ref<HTMLInputElement>;
-};
-
-export const ComboboxContext = createContext<ComboboxContextType | undefined>(
-  undefined,
+export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
+  (props, ref) => (
+    <ComboboxIdProvider>
+      <ComboboxComponent
+        {...props}
+        ref={ref}
+      />
+    </ComboboxIdProvider>
+  ),
 );
 
 Combobox.displayName = 'Combobox';

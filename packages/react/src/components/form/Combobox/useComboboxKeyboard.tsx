@@ -1,10 +1,11 @@
-import type { ReactNode } from 'react';
+import { useContext, type ReactNode } from 'react';
 
 import useDebounce from '../../../utilities/useDebounce';
 
 import type useCombobox from './useCombobox';
 import { isInteractiveComboboxCustom } from './useCombobox';
 import type { Option } from './useCombobox';
+import { ComboboxIdContext, ComboboxIdDispatch } from './ComboboxIdContext';
 
 type UseComboboxKeyboardProps = {
   customIds: string[];
@@ -13,12 +14,10 @@ type UseComboboxKeyboardProps = {
   selectedOptions: ReturnType<typeof useCombobox>['selectedOptions'];
   readOnly: boolean;
   disabled: boolean;
-  activeIndex: number;
   restChildren: ReactNode[];
   inputValue: string;
   multiple: boolean;
   setOpen: (value: boolean) => void;
-  setActiveIndex: (value: number) => void;
   setSelectedOptions: ReturnType<typeof useCombobox>['setSelectedOptions'];
   setInputValue: (value: string) => void;
   handleSelectOption: (option: Option) => void;
@@ -29,19 +28,25 @@ export const useComboboxKeyboard = ({
   options,
   readOnly,
   disabled,
-  activeIndex,
   restChildren,
   filteredOptions,
   inputValue,
   selectedOptions,
   multiple,
   setOpen,
-  setActiveIndex,
   setInputValue,
   setSelectedOptions,
   handleSelectOption,
 }: UseComboboxKeyboardProps) => {
   console.log('useComboboxKeyboard');
+
+  const context = useContext(ComboboxIdContext);
+  console.log({
+    context,
+  });
+  const dispatch = useContext(ComboboxIdDispatch);
+  const { activeIndex } = context;
+
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {
     const navigateable = customIds.length + Object.keys(options).length;
@@ -54,9 +59,12 @@ export const useComboboxKeyboard = ({
         if (!open) setOpen(true);
 
         if (activeIndex === null) {
-          setActiveIndex(0);
+          dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: 0 });
         } else {
-          setActiveIndex(Math.min(activeIndex + 1, navigateable - 1));
+          dispatch?.({
+            type: 'SET_ACTIVE_INDEX',
+            payload: Math.min(activeIndex + 1, navigateable - 1),
+          });
         }
 
         break;
@@ -66,10 +74,13 @@ export const useComboboxKeyboard = ({
 
         if (activeIndex === 0) {
           setOpen(false);
-          setActiveIndex(0);
+          dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: 0 });
         }
 
-        setActiveIndex(Math.max(activeIndex - 1, 0));
+        dispatch?.({
+          type: 'SET_ACTIVE_INDEX',
+          payload: Math.max(activeIndex - 1, 0),
+        });
 
         break;
       case 'Enter':

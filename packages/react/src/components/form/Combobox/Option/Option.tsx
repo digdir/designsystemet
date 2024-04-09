@@ -1,10 +1,11 @@
-import { forwardRef, useContext, useId } from 'react';
+import { forwardRef, memo, useContext, useId } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 
 import { Label } from '../../../Typography';
 import { omit } from '../../../../utilities';
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
+import { ComboboxIdContext } from '../ComboboxIdContext';
 
 import { SelectedIcon } from './Icon/SelectedIcon';
 import classes from './Option.module.css';
@@ -27,77 +28,82 @@ export type ComboboxOptionProps = {
   displayValue?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ComboboxOption = forwardRef<
-  HTMLButtonElement,
-  ComboboxOptionProps
->(({ value, description, children, className, ...rest }, forwardedRef) => {
-  const labelId = useId();
+export const ComboboxOption = memo(
+  forwardRef<HTMLButtonElement, ComboboxOptionProps>(
+    ({ value, description, children, className, ...rest }, forwardedRef) => {
+      const labelId = useId();
 
-  const { id, ref, selected, index, onOptionClick } = useComboboxOption({
-    restId: rest.id,
-    ref: forwardedRef,
-    value,
-  });
+      const { id, ref, selected, index, onOptionClick } = useComboboxOption({
+        restId: rest.id,
+        ref: forwardedRef,
+        value,
+      });
 
-  const context = useContext(ComboboxContext);
-  if (!context) {
-    throw new Error('ComboboxOption must be used within a Combobox');
-  }
-  const { activeIndex, setActiveOption, size, multiple } = context;
+      const context = useContext(ComboboxContext);
+      const idContext = useContext(ComboboxIdContext);
+      if (!context) {
+        throw new Error('ComboboxOption must be used within a Combobox');
+      }
+      const { setActiveOption, size, multiple } = context;
+      const { activeIndex } = idContext;
 
-  return (
-    <button
-      id={id}
-      role='option'
-      type='button'
-      aria-selected={!!selected}
-      aria-labelledby={labelId}
-      tabIndex={-1}
-      onClick={(e) => {
-        onOptionClick();
-        rest.onClick?.(e);
-      }}
-      onMouseEnter={(e) => {
-        setActiveOption(index, labelId);
-        rest.onMouseEnter?.(e);
-      }} // Set active index on hover
-      onFocus={(e) => {
-        setActiveOption(index, labelId);
-        rest.onFocus?.(e);
-      }} // Set active index on focus
-      className={cl(
-        classes.option,
-        classes[size],
-        activeIndex === index && classes.active,
-        multiple && classes.multiple,
-        className,
-      )}
-      ref={ref}
-      {...omit(['displayValue'], rest)}
-    >
-      <Label
-        asChild
-        size={size}
-      >
-        <span>
-          <SelectedIcon
-            multiple={multiple}
-            selected={!!selected}
-          />
-        </span>
-      </Label>
-      <Label
-        className={classes.optionText}
-        size={size}
-        id={labelId}
-      >
-        {children}
-        {description && (
-          <ComboboxOptionDescription>{description}</ComboboxOptionDescription>
-        )}
-      </Label>
-    </button>
-  );
-});
+      return (
+        <button
+          id={id}
+          role='option'
+          type='button'
+          aria-selected={!!selected}
+          aria-labelledby={labelId}
+          tabIndex={-1}
+          onClick={(e) => {
+            onOptionClick();
+            rest.onClick?.(e);
+          }}
+          onMouseEnter={(e) => {
+            setActiveOption(index, labelId);
+            rest.onMouseEnter?.(e);
+          }} // Set active index on hover
+          onFocus={(e) => {
+            setActiveOption(index, labelId);
+            rest.onFocus?.(e);
+          }} // Set active index on focus
+          className={cl(
+            classes.option,
+            classes[size],
+            activeIndex === index && classes.active,
+            multiple && classes.multiple,
+            className,
+          )}
+          ref={ref}
+          {...omit(['displayValue'], rest)}
+        >
+          <Label
+            asChild
+            size={size}
+          >
+            <span>
+              <SelectedIcon
+                multiple={multiple}
+                selected={!!selected}
+              />
+            </span>
+          </Label>
+          <Label
+            className={classes.optionText}
+            size={size}
+            id={labelId}
+          >
+            {children}
+            {description && (
+              <ComboboxOptionDescription>
+                {description}
+              </ComboboxOptionDescription>
+            )}
+          </Label>
+        </button>
+      );
+    },
+  ),
+);
 
 ComboboxOption.displayName = 'ComboboxOption';

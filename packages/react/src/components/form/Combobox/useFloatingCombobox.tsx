@@ -12,6 +12,8 @@ import {
 import { useState } from 'react';
 import { flushSync } from 'react-dom';
 
+import { useComboboxId, useComboboxIdDispatch } from './ComboboxIdContext';
+
 type UseFloatingComboboxProps = {
   listRef: React.MutableRefObject<(HTMLElement | null)[]>;
 };
@@ -19,13 +21,15 @@ type UseFloatingComboboxProps = {
 export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
   console.log('useFloatingCombobox');
   const [open, setOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+
+  const { activeIndex } = useComboboxId();
+  const dispatch = useComboboxIdDispatch();
 
   // floating UI
   const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
     open,
     onOpenChange: (newOpen) => {
-      if (!newOpen) setActiveIndex(0);
+      if (!newOpen) dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: 0 });
       flushSync(() => {
         if (refs.floating.current && !newOpen) {
           refs.floating.current.scrollTop = 0;
@@ -76,7 +80,6 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
   return {
     open,
     setOpen,
-    setActiveIndex,
     activeIndex,
     refs,
     floatingStyles,

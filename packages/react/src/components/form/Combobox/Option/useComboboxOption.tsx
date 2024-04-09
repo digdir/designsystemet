@@ -1,8 +1,9 @@
 import { useContext, useEffect, useId, useMemo } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 import useDebounce from '../../../../utilities/useDebounce';
+import { useComboboxId } from '../ComboboxIdContext';
 
 type UseComboboxOptionProps = {
   restId?: string;
@@ -21,12 +22,12 @@ export default function useComboboxOption({
   const id = restId || generatedId;
 
   const context = useContext(ComboboxContext);
+  const { activeIndex } = useComboboxId();
   if (!context) {
     throw new Error('ComboboxOption must be used within a Combobox');
   }
   const {
     selectedOptions,
-    activeIndex,
     setActiveOption,
     onOptionClick,
     listRef,

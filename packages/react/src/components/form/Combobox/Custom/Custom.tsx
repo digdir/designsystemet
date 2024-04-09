@@ -3,8 +3,9 @@ import type * as React from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 import { omit } from '../../../../utilities';
+import { ComboboxIdContext, ComboboxIdDispatch } from '../ComboboxIdContext';
 
 import classes from './Custom.module.css';
 
@@ -52,11 +53,18 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
     const randomId = useId();
 
     const context = useContext(ComboboxContext);
+    const idContext = useContext(ComboboxIdContext);
+    const idDispatch = useContext(ComboboxIdDispatch);
+    const { activeIndex } = idContext;
+
+    const setActiveIndex = (index: number) => {
+      idDispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
+    };
     if (!context) {
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { size, activeIndex, optionValues, setActiveIndex } = context;
+    const { size, optionValues } = context;
 
     const index = useMemo(
       () => (id && optionValues.indexOf(id)) || 0,
