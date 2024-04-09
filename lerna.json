@@ -3,7 +3,7 @@
   "useNx": true,
   "npmClient": "yarn",
   "version": "independent",
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "scripts/*"],
   "command": {
     "publish": {
       "ignoreChanges": ["**/stories/*", "**/build/*", "**/playground/*"]
