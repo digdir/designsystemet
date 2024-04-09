@@ -24,7 +24,7 @@ import { omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
-import useCombobox, { isInteractiveComboboxCustom } from './useCombobox';
+import useCombobox from './useCombobox';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -32,6 +32,7 @@ import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
 import ComboboxCustom from './Custom/Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
+import { useComboboxKeyboard } from './useComboboxKeyboard';
 
 export type ComboboxProps = {
   /**
@@ -312,106 +313,23 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
 
-    // handle keyboard navigation in the list
-    const handleKeyDownFunc = (event: React.KeyboardEvent) => {
-      console.log('handleKeyDownFunc');
-      const navigateable = customIds.length + Object.keys(options).length;
-
-      if (formFieldProps.readOnly || disabled) return;
-      if (!event) return;
-      switch (event.key) {
-        case 'ArrowDown':
-          event.preventDefault();
-          if (!open) setOpen(true);
-
-          if (activeIndex === null) {
-            setActiveIndex(0);
-          } else {
-            setActiveIndex(Math.min(activeIndex + 1, navigateable - 1));
-          }
-
-          break;
-        case 'ArrowUp':
-          event.preventDefault();
-          /* If we are on the first item, close */
-
-          if (activeIndex === 0) {
-            setOpen(false);
-            setActiveIndex(0);
-          }
-
-          setActiveIndex(Math.max(activeIndex - 1, 0));
-
-          break;
-        case 'Enter':
-          event.preventDefault();
-          console.log({ filteredOptions });
-          if (
-            activeIndex !== null &&
-            (filteredOptions[activeIndex] || customIds.length > 0)
-          ) {
-            console.log('in here');
-            // check if we are in the custom components
-            if (activeIndex <= customIds.length) {
-              // send `onSelect` event to the custom component
-              const selectedId = customIds[activeIndex];
-              const selectedComponent = restChildren.find(
-                (component) =>
-                  isInteractiveComboboxCustom(component) &&
-                  component.props?.id === selectedId,
-              );
-
-              if (
-                isInteractiveComboboxCustom(selectedComponent) &&
-                selectedComponent.props.onSelect
-              ) {
-                selectedComponent.props.onSelect();
-              }
-            }
-
-            // if we are in the options, find the actual index
-            const valueIndex = activeIndex - customIds.length;
-
-            const option = filteredOptions[valueIndex];
-
-            if (!multiple) {
-              // check if option is already selected, if so, deselect it
-              if (selectedOptions[option?.value]) {
-                setSelectedOptions({});
-                setInputValue('');
-                return;
-              }
-            }
-
-            debouncedHandleSelectOption(option);
-          }
-          break;
-
-        case 'Backspace':
-          if (
-            inputValue === '' &&
-            multiple &&
-            Object.keys(selectedOptions).length > 0
-          ) {
-            setSelectedOptions((prev) => {
-              const updated = { ...prev };
-              const keys = Object.keys(updated);
-              delete updated[keys[keys.length - 1]];
-              return updated;
-            });
-          }
-          // if we are in single mode, we need to set activeValue to null
-          if (!multiple) {
-            setSelectedOptions({});
-          }
-          break;
-
-        default:
-          break;
-      }
-    };
-
-    const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
+    const handleKeyDown = useComboboxKeyboard({
+      customIds,
+      options,
+      filteredOptions,
+      selectedOptions,
+      readOnly: formFieldProps.readOnly || false,
+      disabled: disabled,
+      activeIndex,
+      multiple,
+      restChildren,
+      inputValue,
+      setOpen,
+      setInputValue,
+      setSelectedOptions,
+      handleSelectOption: debouncedHandleSelectOption,
+      setActiveIndex,
+    });
 
     const rowVirtualizer = useVirtualizer({
       count: Object.keys(options).length,

@@ -63,7 +63,7 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     listRef,
     activeIndex,
     virtual: true,
-    scrollItemIntoView: false,
+    scrollItemIntoView: true,
     enabled: open,
   });
 
