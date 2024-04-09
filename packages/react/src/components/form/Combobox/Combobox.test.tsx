@@ -99,6 +99,22 @@ describe('Combobox', () => {
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
+  it('should select when we click Enter', async () => {
+    const onValueChange = vi.fn();
+    const { user } = await render({ onValueChange });
+    const combobox = screen.getByRole('combobox');
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+
+    await userEvent.click(combobox);
+    expect(screen.getByText('Leikanger')).toBeInTheDocument();
+
+    await user.type(combobox, '{Enter}');
+
+    await wait(500);
+
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+  });
+
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
     const onValueChange = vi.fn();
     await render({ onValueChange });
