@@ -28,13 +28,6 @@
   opacity: var(--fds-opacity-disabled);
 }
 
-.chipButton:is([aria-pressed='true']),
-.chipButton:not(:disabled, [aria-disabled='true']):active {
-  --fdsc-chip-background: var(--fds-semantic-surface-action-first-active);
-  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
-  --fdsc-chip-border: var(--fds-semantic-surface-action-first-active);
-}
-
 .chipButton .label {
   color: inherit;
   line-height: normal;
@@ -45,7 +38,7 @@
 }
 
 .removable {
-  --fdsc-removable-background: var(--fds-semantic-surface-action-first-active);
+  --fdsc-removable-background: var(--fds-semantic-surface-action-default);
   --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
   --fdsc-removable-chip-size: var(--fds-sizing-7);
   --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
@@ -56,7 +49,7 @@
   color: var(--fdsc-removable-text-color);
   background: var(--fdsc-removable-background);
   border: 0;
-  padding-right: 0;
+  padding-right: var(--fds-spacing-1);
   min-height: var(--fdsc-chip-height);
 }
 
@@ -64,7 +57,6 @@
   color: var(--fdsc-removable-chip-xmark-color);
   height: var(--fdsc-removable-chip-xmark-size);
   width: var(--fdsc-removable-chip-xmark-size);
-  padding-right: var(--fdsc-removable-chip-xmark-padding_right);
 }
 
 .xMark .icon {
@@ -130,13 +122,20 @@
 
   .removable:not(:disabled, [aria-disabled='true']):hover,
   .removable:not(:disabled, [aria-disabled='true']):focus {
-    --fdsc-removable-background: linear-gradient(
-      to left,
-      var(--fds-semantic-surface-danger-default) var(--fdsc-removable-chip-xmark-wrapper-width),
-      var(--fds-semantic-surface-action-first-active) var(--fdsc-removable-chip-xmark-wrapper-width)
-    );
+    --fdsc-removable-background: var(--fds-semantic-surface-action-hover);
     --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
   }
+}
+
+.chipButton:is([aria-pressed='true']),
+.chipButton:not(:disabled, [aria-disabled='true']):active,
+.removable:is([aria-pressed='true']),
+.removable:not(:disabled, [aria-disabled='true']):active {
+  --fdsc-chip-background: var(--fds-semantic-surface-action-first-active);
+  --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
+  --fdsc-chip-border: var(--fds-semantic-surface-action-first-active);
+  --fdsc-removable-background: var(--fds-semantic-surface-action-first-active);
+  --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
 }
 
 .small {
