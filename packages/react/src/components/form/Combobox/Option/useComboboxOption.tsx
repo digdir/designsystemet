@@ -3,7 +3,7 @@ import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
 import useDebounce from '../../../../utilities/useDebounce';
-import { useComboboxId } from '../ComboboxIdContext';
+import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
 
 type UseComboboxOptionProps = {
   restId?: string;
@@ -23,21 +23,30 @@ export default function useComboboxOption({
 
   const context = useContext(ComboboxContext);
   const { activeIndex } = useComboboxId();
+  const dispatch = useComboboxIdDispatch();
   if (!context) {
     throw new Error('ComboboxOption must be used within a Combobox');
   }
   const {
     selectedOptions,
-    setActiveOption,
     onOptionClick,
     listRef,
     optionValues,
+    readOnly,
+    disabled,
   } = context;
 
   const index = useMemo(
     () => optionValues.indexOf(value),
     [optionValues, value],
   );
+
+  const setActiveOption = (index: number, id: string) => {
+    if (readOnly) return;
+    if (disabled) return;
+    dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
+    dispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id });
+  };
 
   const combinedRef = useMergeRefs([
     (node: HTMLElement | null) => {
@@ -54,8 +63,11 @@ export default function useComboboxOption({
 
   useEffect(() => {
     console.log('option effect');
-    if (activeIndex === index) setActiveOption(index, id);
-  }, [activeIndex, generatedId, index, id, setActiveOption]);
+    if (activeIndex === index) {
+      dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
+      dispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id });
+    }
+  }, [activeIndex, generatedId, index, id, dispatch]);
 
   const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
 
@@ -65,5 +77,6 @@ export default function useComboboxOption({
     selected,
     index,
     onOptionClick: onOptionClickDebounced,
+    setActiveOption,
   };
 }

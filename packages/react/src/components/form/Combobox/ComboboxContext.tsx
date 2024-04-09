@@ -36,7 +36,6 @@ type ComboboxContextType = {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
-  setActiveOption: (index: number, id: string) => void;
   getReferenceProps: (
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;

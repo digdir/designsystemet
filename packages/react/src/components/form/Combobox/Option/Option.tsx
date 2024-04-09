@@ -33,18 +33,19 @@ export const ComboboxOption = memo(
     ({ value, description, children, className, ...rest }, forwardedRef) => {
       const labelId = useId();
 
-      const { id, ref, selected, index, onOptionClick } = useComboboxOption({
-        restId: rest.id,
-        ref: forwardedRef,
-        value,
-      });
+      const { id, ref, selected, index, onOptionClick, setActiveOption } =
+        useComboboxOption({
+          restId: rest.id,
+          ref: forwardedRef,
+          value,
+        });
 
       const context = useContext(ComboboxContext);
       const idContext = useContext(ComboboxIdContext);
       if (!context) {
         throw new Error('ComboboxOption must be used within a Combobox');
       }
-      const { setActiveOption, size, multiple } = context;
+      const { size, multiple } = context;
       const { activeIndex } = idContext;
 
       return (

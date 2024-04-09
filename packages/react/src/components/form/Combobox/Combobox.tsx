@@ -1,11 +1,4 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useId,
-  forwardRef,
-  useCallback,
-} from 'react';
+import { useState, useRef, useEffect, useId, forwardRef } from 'react';
 import type * as React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import cl from 'clsx';
@@ -29,7 +22,7 @@ import ComboboxNative from './internal/ComboboxNative';
 import ComboboxCustom from './Custom/Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
-import { ComboboxIdProvider, useComboboxIdDispatch } from './ComboboxIdContext';
+import { ComboboxIdProvider } from './ComboboxIdContext';
 import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxProps = {
@@ -334,15 +327,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       overscan: 1,
     });
 
-    const setActiveOption = useCallback((index: number, id: string) => {
-      if (readOnly) return;
-      if (disabled) return;
-      /* idDispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
-      idDispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id }); */
-    }, []);
-
-    console.log('combobox rendered');
-
     return (
       <ComboboxContext.Provider
         value={{
@@ -370,8 +354,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           setOpen,
           getReferenceProps,
           setSelectedOptions,
-          /* Recieves index of option, and the ID of the button element */
-          setActiveOption,
           /* Recieves the value of the option, and searches for it in our values lookup */
           onOptionClick: (value: string) => {
             if (readOnly) return;
