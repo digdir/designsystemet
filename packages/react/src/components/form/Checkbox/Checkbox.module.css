@@ -3,7 +3,7 @@
   --fds-checkbox-focus-border-width: 3px;
   --fds-checkbox-background: var(--fds-semantic-background-default);
   --fds-checkbox-border-color: var(--fds-semantic-border-input-default);
-  --fds-checkbox-border__hover: 0 0 0 calc((2.75rem - var(--fds-checkbox-size)) / 2) var(--fds-semantic-surface-info-subtle-hover);
+  --fds-checkbox-border__hover: 0 0 0 var(--fds-spacing-2) var(--fds-semantic-surface-info-subtle-hover);
 
   display: grid;
 }

@@ -3,7 +3,7 @@
   --fds-radio-focus-border-width: 3px;
   --fds-radio-background: var(--fds-semantic-background-default);
   --fds-radio-border-color: var(--fds-semantic-border-input-default);
-  --fds-radio-border__hover: 0 0 0 calc((2.75rem - var(--fds-radio-size)) / 2) var(--fds-semantic-surface-info-subtle-hover);
+  --fds-radio-border__hover: 0 0 0 var(--fds-spacing-2) var(--fds-semantic-surface-info-subtle-hover);
 
   display: grid;
 }
