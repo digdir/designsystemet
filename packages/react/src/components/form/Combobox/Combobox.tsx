@@ -22,7 +22,7 @@ import ComboboxNative from './internal/ComboboxNative';
 import ComboboxCustom from './Custom/Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
-import { ComboboxIdProvider } from './ComboboxIdContext';
+import { ComboboxIdProvider, useComboboxIdDispatch } from './ComboboxIdContext';
 import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxProps = {
@@ -311,6 +311,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       multiple,
       restChildren,
       inputValue,
+      open,
       setOpen,
       setInputValue,
       setSelectedOptions,

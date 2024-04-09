@@ -17,6 +17,7 @@ type UseComboboxKeyboardProps = {
   restChildren: ReactNode[];
   inputValue: string;
   multiple: boolean;
+  open: boolean;
   setOpen: (value: boolean) => void;
   setSelectedOptions: ReturnType<typeof useCombobox>['setSelectedOptions'];
   setInputValue: (value: string) => void;
@@ -33,6 +34,7 @@ export const useComboboxKeyboard = ({
   inputValue,
   selectedOptions,
   multiple,
+  open,
   setOpen,
   setInputValue,
   setSelectedOptions,
@@ -49,21 +51,20 @@ export const useComboboxKeyboard = ({
 
   // handle keyboard navigation in the list
   const handleKeyDownFunc = (event: React.KeyboardEvent) => {
-    const navigateable = customIds.length + Object.keys(options).length;
+    const navigatable = customIds.length + Object.keys(options).length;
 
     if (readOnly || disabled) return;
     if (!event) return;
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        if (!open) setOpen(true);
-
-        if (activeIndex === null) {
+        if (!open) {
+          setOpen(true);
           dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: 0 });
         } else {
           dispatch?.({
             type: 'SET_ACTIVE_INDEX',
-            payload: Math.min(activeIndex + 1, navigateable - 1),
+            payload: Math.min(activeIndex + 1, navigatable - 1),
           });
         }
 
