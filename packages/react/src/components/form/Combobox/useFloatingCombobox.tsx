@@ -9,7 +9,7 @@ import {
   size as floatingSize,
   useInteractions,
 } from '@floating-ui/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { flushSync } from 'react-dom';
 
 type UseFloatingComboboxProps = {

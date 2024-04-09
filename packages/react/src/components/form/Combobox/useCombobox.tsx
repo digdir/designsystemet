@@ -158,13 +158,13 @@ export default function useCombobox({
     });
 
     const filteredOptions: Option[] = optionsChildren.map((child) => {
-      return selectedOptions[child.props.value];
+      return options[child.props.value];
     });
 
     return { optionsChildren, customIds, filteredOptions };
 
     // ignore filter function in deps array, it causes a lot of re-renders
-  }, [options, children, multiple, inputValue, selectedOptions]);
+  }, [options, children, multiple, inputValue, selectedOptions, filter]);
 
   const optionValues = useMemo(() => {
     console.log('optionValues useCombobox');

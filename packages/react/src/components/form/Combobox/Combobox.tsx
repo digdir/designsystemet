@@ -345,10 +345,12 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           break;
         case 'Enter':
           event.preventDefault();
+          console.log({ filteredOptions });
           if (
             activeIndex !== null &&
             (filteredOptions[activeIndex] || customIds.length > 0)
           ) {
+            console.log('in here');
             // check if we are in the custom components
             if (activeIndex <= customIds.length) {
               // send `onSelect` event to the custom component
