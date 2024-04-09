@@ -49,8 +49,16 @@
   color: var(--fdsc-removable-text-color);
   background: var(--fdsc-removable-background);
   border: 0;
-  padding-right: var(--fds-spacing-1);
+  padding-right: var(--fds-spacing-2);
   min-height: var(--fdsc-chip-height);
+}
+
+.removable.small {
+  padding-right: var(--fds-spacing-1);
+}
+
+.removable.large {
+  padding-right: var(--fds-spacing-2);
 }
 
 .xMark {
