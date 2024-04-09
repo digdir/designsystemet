@@ -1,5 +1,6 @@
 import { Meta, Image, ResponsiveIframe } from '@components';
 import { PageLayout } from '@layouts';
+import { Accordion, List } from '@digdir/designsystemet-react';
 
 <Meta
   title='Kontrast'
@@ -10,45 +11,172 @@ export default ({ children, menu }) => (
   <PageLayout
     content={children}
     data={{
-      title: 'Kontrast',
-      date: '31. januar 2023',
-      author: 'Brønnøysundregistrene',
+      title: 'Ny kontrastmetode utforskes',
+      date: '9. april 2024',
+      author: 'Brønnøysundregistrene og Digdir',
       backText: 'God praksis',
       backUrl: 'god-praksis',
     }}
   />
 );
 
-Den opplevde visuelle forskjellen mellom to farger er det vi kaller kontrast.
+For å sikre god lesbarhet skal all tekst ha tilstrekkelig kontrast mot bakgrunnen. Dette er viktig for alle brukere, særlig under krevende lysforhold. De som trenger dette mest, er svaksynte, dyslektikere og fargeblinde (Kilde: uutilsynet)
 
-**Vår retningslinje:**
-Vi forsøker alltid å oppnå WCAG 2.1 krav på nivå AAA, selv om dette er strengere enn det vi må ifølge universell utforming. Aller helst er målet å oppnå nivå 4 / master level i APCA-metoden som nå utforskes i WCAG 3.0.
+## Behov for strengere krav til kontrast
 
-## Hvorfor er dette viktig?
+Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjenester. Web Content Accessibility Guidelines (WCAG) inneholder suksesskriterier og forslag til løsninger for å lykkes. Men det er ikke samsvar mellom dagens kontrastregler og kravet om at alle skal kunne se innholdet.
 
-Brukere, inkludert dem med svekket syn, må kunne se innhold på nettstedet. Derfor er det i Web Content Accessibility Guidelines (WCAG) flere suksesskriterier og løsningsforslag som handler om dette. Men det er en forskjell på hensikten her, om at alle skal kunne se innholdet og hvordan vi i praksis har laget kontrastreglene.
+<Accordion
+  border
+  color='third'
+>
+  <Accordion.Item>
+    <Accordion.Header>**Gjeldende regelverk, WCAG 2.1**</Accordion.Header>
+    <Accordion.Content>
+      <List.Root>
+        <List.Unordered>
+          <List.Item>
+            **1.4.3 Kontrast (minimum) (Nivå AA)**: Kontrastforholdet mellom
+            teksten og bakgrunnen er minst 4,5:1. [Retningslinjer for universell
+            utforming av nettinnhold (WCAG) 2.1
+            (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
+          </List.Item>
+          <List.Item>
+            **1.4.11 Kontrast for ikke-tekstlig innhold (Nivå AA)**: Den
+            visuelle presentasjonen av det følgende har et kontrastforhold på
+            minst 3:1 mot farge(r) som ligger ved siden av. [Retningslinjer for
+            universell utforming av nettinnhold (WCAG) 2.1
+            (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
+          </List.Item>
+        </List.Unordered>
+      </List.Root>
+    </Accordion.Content>
+  </Accordion.Item>
+</Accordion>
 
-## Hvorfor så strenge?
+<br />
 
-I WCAG 2.x er kontrastregler knyttet til forskjellen i lysstyrken i fargeparet. Det som da spiller inn er verdien som er satt, med RGB, HEX eller HSL. Det er vist gjennom undersøkelser at metoden ikke er vitenskapelig støttet fra et tilgjengelighetsperspektiv, men fungerer som en «dum» måte å estimere forskjellen, uten at øyets evne til å oppfatte farger og lys er tatt hensyn til. Om en farge er bakgrunn eller forgrunn har ingenting å si for kontrastverdien. Derfor vil en i noen tilfeller oppleve at selv en lav kontrastverdi, er lett å oppfatte. Og motsatt at selv middels-høye kontrastverdier ikke er lett å oppfatte.
+<Accordion
+  border
+  color='third'
+>
+  <Accordion.Item>
+    <Accordion.Header>**Fremtidig eller strengere**</Accordion.Header>
+    <Accordion.Content>
+      <List.Root>
+        <List.Unordered>
+          <List.Item>
+            **1.4.6 Kontrast** (forbedret) (Nivå AAA): Den visuelle
+            presentasjonen av tekst og bilder av tekst har et kontrastforhold på
+            minst 7:1, unntatt uvesentlig tekst og skriftstørrelser større enn
+            18px eller 14px fet. [Retningslinjer for universell utforming av
+            nettinnhold (WCAG) 2.1
+            (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
+          </List.Item>
+          <List.Item>
+            **WCAG 2.2: 2.4.13** Focus Appearance (Nivå AAA), om utseende til
+            fokusmarkering krever at fokusindikator har en kontrastverdi på 3:1
+            mellom samme piksler i fokusert og ikke-fokusert tilstand.
+            [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
+            W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+          </List.Item>
+          <List.Item>
+            **WCAG 3** har et krav om farge og kontrast, visuell kontrast i
+            tekst (sølv): Sørg for tilstrekkelig kontrast mellom tekst i
+            forgrunnen og bakgrunnen for teksten. Her brukes det en ny metode,
+            med navn APCA, for å regne ut kontrasten.
+          </List.Item>
+        </List.Unordered>
+      </List.Root>
+    </Accordion.Content>
+  </Accordion.Item>
+</Accordion>
+
+## Ny metode utforskes
+
+En ny metode som er mer presis enn dagens standard for å kalkulere kontrast og sette terskelverdier, utforskes nå i WCAG 3.0.
+
+<List.Root>
+  <List.Unordered>
+    <List.Item>
+      Metoden forbedrer hvordan verdien mellom to farger bestemmes, og gjør også
+      forskjell på om fargene er i forgrunnen eller i bakgrunnen.
+    </List.Item>
+    <List.Item>
+      Den setter også tydelige terskelverdier eller målverdier for valg av font,
+      tekststørrelse og font-vekt. Metoden heter Advanced Perceptual Contrast
+      Algorithm (APCA).
+    </List.Item>
+    <List.Item>
+      Målet vårt er å ligge over AAA-krav i WCAG 2.1, og vi vil dermed ligge
+      nærmere terskelverdiene i APCA. Det øker sjansen for at vi skal oppfylle
+      kravet om at alle, også svaksynte, skal kunne se innholdet på nettstedet.
+    </List.Item>
+  </List.Unordered>
+</List.Root>
+
+## Vi bruker i dag en ønsket standard
+
+For at innholdet i offentlige, digitale tjenester skal være tilgjengelig for brukerne, også de med svekket syn, bruker vi i dag en ønsket standard for kontrast, som er høyere enn kravene som stilles til tilgjengelighet. Standarden heter WCAG 2.1 krav på nivå AAA.
+For å øke lesbarheten ytterligere, er ambisjonen vår å oppnå kontrast på nivå 4, som er toppnivået i APCA-metoden, som nå blir utforsket i WCAG 3.0.
+
+## Hvorfor duger ikke dagens standard?
+
+Metoden er ikke vitenskapelig støttet, hvis vi måler opp mot lesbarhet og tilgjengelighet. Det betyr at løsningen ikke er universelt utformet. Siden øyets evne til å oppfatte farger og lys ikke er en del av metoden, er den uegnet til å beregne forskjellen i lysstyrken i fargeparet.
+
+Hvis vi oppfyller metoden i WCAG 2, etterlever vi teknisk sett kravet til Universell utforming, men det betyr ikke at innholdet er tilgjengelig eller universelt utformet. Derfor strekker vi oss langt i å også oppfylle de fremtidige WCAG-3 kravene som bruker APCA-metoden.
+
+<Accordion
+  border
+  color='third'
+>
+  <Accordion.Item>
+    <Accordion.Header>**Kontrast i WCAG 2 «luminosity contrast algorithm**</Accordion.Header>
+    <Accordion.Content>
+_«I WCAG 2 er kontrast en måleenhet for forskjellen i den opplevde lysintensiteten mellom to farger. Denne forskjellen er beskrevet som et forhold fra 1:1 (for eksempel hvit på hvit) til 21:1 (for eksempel svart på hvit).»_ – WebAIM, vår oversettelse.
+Kontrastene regnes ut ved hjelp av fargenes RGB, HEX eller HSL verdier i tillegg til transparens (alpha), om fargen er tekst, grafikk, forgrunn eller bakgrunn har ingen betydning.
+</Accordion.Content>
+
+  </Accordion.Item>
+</Accordion>
+
+<br />
+
+<Accordion
+  border
+  color='third'
+>
+  <Accordion.Item>
+    <Accordion.Header>**Kontrast i WCAG 3 «visual contrast algorithm»**</Accordion.Header>
+    <Accordion.Content>
+I WCAG 3 benyttes en visuell-kontrast algoritme som kalles for APCA, det er fremdeles fargeverdiene som benyttes for å kalkulere kontrasten, men også om fargen er tekst, grafikk, forgrunn eller bakgrunn, i tillegg har også valg av font, font-vekt og størrelse en innvirkning på hvilke kontrastverdier som er godkjent. Forskjellige farger som i WCAG 2 ville oppnådd like kontrastverdier vil i APCA kunne få andre verdier fordi en i større grad kalkulerer ut fra øyets evne til å oppfatte farger enn kun den tekniske fargeverdien.
+</Accordion.Content>
+
+  </Accordion.Item>
+</Accordion>
+
+## Verktøy for å teste kontrastverdier
+
+Fargesystemet for Brønnøysundregistrene finner du i [kontrastverktøyet her](https://contrast.brreg.no/). Du kan teste hvordan kontrastverdier endrer seg etter hvilken tekstfarge, størrelse og vekt du velger. Og du kan se hvilke nivåer av krav som er oppfylt, om det er WCAG AA eller AAA nivåer, eller APCA.
+
+<Image
+  src='/img/Kontrast-terskelverdier.png'
+  alt='Tabell som viser tekststørrelser og vekting, og i hviken grad de oppfyller kontrastkravet.'
+  boxShadow={true}
+/>
+
+Terskelverdiene (over) som viser om kontrasten er godkjent eller ikke, er forenklet fra en tidlig «sølv»-nivåtabell fra APCA-arbeidet. Når en ferdig modell er testet og anbefalt fra WCAG 3, endres terskelverdiene.
 
 <Image
   src='/img/Kontrast-eksempel.jpg'
-  alt='Illustrasjonen viser to eksempler med 16px stor tekst i normal vekt, begge variantene har 4,6 til 1 i kontrast. I variant A er teksten gitt fargen #6D7879 og bakgrunnen er hvit, teksten er sånn passelig lesbar. I variant B er teksten farget svart og satt på bakgrunn med farge #6D7879, denne er noe mindre lesbar enn variant A. Illustrasjonen viser at selv om det er lik kontrast utregnet med metoden fra WCAG 2, hvor begge er godkjent, så er det faktisk en forskjell på hvor godt leselig innholdet faktisk blir, til det er APCA-metoden bedre. Med APCA får variant A en verdi på Lc-72 og variant B får Lc-32. Skulle vi oppnå kravene fra WCAG 3 måtte vi i variant A økt skriftstørrelsen til 21px eller mer, mens for variant B måtte vi økt til hele 60px størrelse eller mer og i tillegg også gitt større vekt på minimum 500.'
+  alt='Illustrasjonen viser to eksempler (A og B) med 16px stor tekst i normal vekt, begge variantene har 4,6 til 1 i kontrast. '
   boxShadow={false}
   style={{
     maxWidth: '350px',
   }}
 />
 
-I WCAG 3 utforskes metoden Advanced Perceptual Contrast Algorithm (APCA), som både endrer hvordan verdiene mellom to farger bestemmes, her er det også forskjell på hvilken farge som står som forgrunn og hvilken som er bakgrunn. Men det settes også tydelige terskelverdier eller målverdier, som tar hensyn til valg av font, tekststørrelse og font-vekt. APCA er da en mer presis metode for å kalkulere kontrast og sette terskelverdier.
-
-Ved å forsøke å strekke oss til over AAA-krav i WCAG 2.1, så vet vi at vi også kommer til å være nærmere terskelverdiene i APCA. Vi har altså større sjanse til å oppfylle hensikten med disse kravene.
-
-<Image
-  src='/img/Kontrast-terskelverdier.png'
-  alt='Alt tekst kommer'
-  boxShadow={true}
-/>
-
-I [verktøyet her](https://contrast.brreg.no/) kan du se fargesystemet til Brønnøysundregistrene og teste hvordan kontrastverdier endrer seg etter hvilken tekstfarge, størrelse og vekt du velger, du kan se om en oppfyller WCAG AA eller AAA nivåer og APCA. Terskelverdiene som brukes for å si godkjent eller ikke, er forenklet fra en tidlig "sølv"-nivå tabell fra APCA-arbeidet, når en ferdig modell anbefalt fra w3c så erstatter vi terskelverdiene.
+I eksempelet over ser vi at selv om kontrasten som er utregnet til å være lik med WCAG 2-metoden, er graden av lesbarhet ulik for tekstene i variant A og Variant B.
+Begge tekstene har 16px stor tekst i normal vekt, og begge variantene har 4,6 til 1 i kontrast.  
+I variant A har teksten fargen #6D7879og bakgrunnen er hvit. Teksten er sånn passe lesbar.
+I variant B er teksten svart, og bakgrunnen er farge #6D7879. Teksten er noe mindre lesbar enn variant A.
