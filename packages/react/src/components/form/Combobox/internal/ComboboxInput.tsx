@@ -1,5 +1,5 @@
+import type { ChangeEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
-import type * as React from 'react';
 import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
@@ -58,6 +58,7 @@ export const ComboboxInput = ({
 
   // we need to check if input is in focus, to add focus styles to the wrapper
   const [inputInFocus, setInputInFocus] = useState(false);
+
   useEffect(() => {
     const input = inputRef.current;
     const onFocus = () => {
@@ -77,7 +78,7 @@ export const ComboboxInput = ({
   }, [inputRef]);
 
   // onChange function for the input
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
     setActiveIndex(0);

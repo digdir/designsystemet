@@ -22,7 +22,7 @@ import ComboboxNative from './internal/ComboboxNative';
 import ComboboxCustom from './Custom/Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
-import { ComboboxIdProvider, useComboboxIdDispatch } from './ComboboxIdContext';
+import { ComboboxIdProvider } from './ComboboxIdContext';
 import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxProps = {
@@ -212,13 +212,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       },
       'combobox',
     );
-
-    useEffect(() => {
-      console.log('use effect 1');
-      if (rest.inputValue !== undefined) {
-        setInputValue(rest.inputValue);
-      }
-    }, [rest.inputValue]);
 
     // if value is set, set input value to the label of the value
     useEffect(() => {

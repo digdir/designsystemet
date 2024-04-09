@@ -86,10 +86,7 @@ export const useComboboxKeyboard = ({
         break;
       case 'Enter':
         event.preventDefault();
-        if (
-          activeIndex !== null &&
-          (filteredOptions[activeIndex] || customIds.length > 0)
-        ) {
+        if (open && (filteredOptions[activeIndex] || customIds.length > 0)) {
           console.log('in here');
           // check if we are in the custom components
           if (activeIndex <= customIds.length) {
