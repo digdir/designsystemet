@@ -19,3 +19,5 @@ export const TableHead = React.forwardRef<
     </thead>
   );
 });
+
+TableHead.displayName = 'TableHead';

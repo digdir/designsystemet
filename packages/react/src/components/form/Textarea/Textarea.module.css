@@ -27,6 +27,7 @@
 
 .textarea {
   font: inherit;
+  font-family: inherit;
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;

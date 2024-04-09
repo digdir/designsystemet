@@ -6,7 +6,7 @@
 .content > h2,
 .content > h3,
 .content > h4 {
-  max-width: 800px;
+  max-width: 740px;
 }
 
 .content > p {
@@ -45,15 +45,15 @@
 }
 
 .content > h2 {
-  font: var(--fds-typography-heading-large);
-}
-
-.content > h3 {
   font: var(--fds-typography-heading-medium);
 }
 
-.content > h4 {
+.content > h3 {
   font: var(--fds-typography-heading-small);
+}
+
+.content > h4 {
+  font: var(--fds-typography-heading-xsmall);
 }
 
 /* Anchor link styling */

@@ -1,3 +1,5 @@
+import { TokenIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
 import { Meta } from '@components';
 
@@ -12,13 +14,19 @@ export default ({ children }) => (
     data={{
       title: 'Design Tokens',
       date: '25. mars 2023',
+      icon: <TokenIcon />,
+      color: 'yellow',
     }}
   />
 );
 
 ## Hva er design tokens
 
-Design tokens er fleksible verdier som sikrer at designere og utviklere jobber med de samme reglene og retningslinjene. Dette gjelder for eksempel variabler for farger, typografi, størrelser, avstander og andre stilegenskaper. Design tokens fungerer som bindeleddet mellom alle flater og verktøy.
+Design Tokens" styrer hvordan komponentene skal se ut i forhold til farger, typografi, størrelser, avstander, former osv. Design tokens sørger vi for at både designere og utviklere arbeider etter de samme reglene og retningslinjene.
+
+Noen av variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger. Vi jobber med en tema-bygger som skal gjøre det enklere for deg å tilpasse stilene.
+
+Design Tokens er fleksible variabler som kan benyttes uavhengig av teknologi eller designverktøy.
 
 ## Design tokens i Figma
 
@@ -35,4 +43,4 @@ Videoen over viser at når settet for «Tilsynet» slås på, overstyres både f
 
 ### Design tokens for utviklere
 
-Installer NPM-pakken [@digdir/design-system-tokens](https://www.npmjs.com/package/@digdir/design-system-tokens) og følg beskrivelsen der på bruk av tokens. Overstyres ved behov.
+Installer NPM-pakken [@digdir/designsystemet-theme](https://www.npmjs.com/package/@digdir/designsystemet-theme) og følg beskrivelsen der på bruk av tokens. Overstyres ved behov.

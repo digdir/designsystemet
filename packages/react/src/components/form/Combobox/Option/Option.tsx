@@ -7,6 +7,7 @@ import { ComboboxContext } from '../Combobox';
 import { Label } from '../../../Typography';
 // import ComboboxCheckbox from '../internal/ComboboxCheckbox';
 import { omit } from '../../../../utilities';
+import useDebounce from '../../../../utilities/useDebounce';
 
 import { SelectedIcon } from './Icon/SelectedIcon';
 import classes from './Option.module.css';
@@ -72,6 +73,8 @@ export const ComboboxOption = forwardRef<
     if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
   }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
 
+  const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
+
   return (
     <button
       id={rest.id || generatedId}
@@ -81,7 +84,7 @@ export const ComboboxOption = forwardRef<
       aria-labelledby={labelId}
       tabIndex={-1}
       onClick={(e) => {
-        onOptionClick(value);
+        onOptionClickDebounced();
         rest.onClick?.(e);
       }}
       onMouseEnter={(e) => {
@@ -126,3 +129,5 @@ export const ComboboxOption = forwardRef<
     </button>
   );
 });
+
+ComboboxOption.displayName = 'ComboboxOption';

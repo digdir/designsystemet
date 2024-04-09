@@ -37,3 +37,5 @@ export const DropdownMenuItem: OverridableComponent<
     </li>
   );
 });
+
+DropdownMenuItem.displayName = 'DropdownMenuItem';

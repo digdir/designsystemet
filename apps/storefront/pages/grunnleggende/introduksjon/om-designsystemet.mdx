@@ -1,9 +1,11 @@
+import { ComponentIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
-import { Meta, ResponsiveIframe } from '@components';
+import { Meta } from '@components';
 
 <Meta
   title='Om designsystemet'
-  description='Beskrivelse'
+  description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre som det er verdifullt å dele på tvers av offentlig sektor.'
 />
 
 export default ({ children }) => (
@@ -11,87 +13,86 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Om designsystemet',
-      date: '13. november 2023',
+      date: '5. mars 2023',
+      icon: <ComponentIcon />,
+      color: 'blue',
     }}
   />
 );
 
-Innsikten fra arbeidet i "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/retningslinjer-brukeropplevelse-og-designsystem/4652)" har vist at ulik utforming av brukergrensesnitt på tvers av offentlig sektor er en utfordring. Det tilsier at vi må samarbeide tettere om utformingen av digitale tjenester til innbyggerne. Dette kan vi gjøre gjennom et felles designsystem med felles prinsipper, retningslinjer, mønstre og komponenter.
+Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre som det er verdifullt å dele på tvers av offentlig sektor. Designsystemet skal bidra til effektiv produktutvikling og helhetlige brukeropplevelser.
 
-I september 2023 hadde vi en åpen presentasjon der vi delte våre tanker rundt hvorfor vi trenger et felles designsystem. Opptaket fra presentasjonen kan du se under, og [her kan du se sammenstillingen av Miro-brettet](https://miro.com/app/board/uXjVMnk1ZM4=/?share_link_id=239809330169) der vi fikk over 440 tilbakemeldinger på gevinster og utfordringer knyttet til temaet.
+## Hva er et designsystem?
 
-<ResponsiveIframe
-  src='https://player.vimeo.com/video/862626520?h=bed84328b3&app_id=122963&title=0&byline=0&portrait=0&dnt=1'
-  width='100%'
-  height='600px'
-  frameBorder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-></ResponsiveIframe>
+Et designsystem består av UI-komponenter og mønstre som sikrer gjennomtenkte og konsistente brukeropplevelser i digitale tjenester.
 
-## Hva er felles designsystem?
+Ved å bruke grunnleggende byggeklosser fra designsystemet kan produktteamene selv bygge mer sammensatte komponenter som dekker spesifikke behov.
 
-Felles designsystem er en verktøykasse som skal bestå av grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor. Komponentene i designsystemet er allerede i bruk i [Altinn Studio](https://altinn.studio/) og flere offentlige etater har bidratt med komponenter de har hatt behov for i sin tjenesteutvikling.
+Et designsystem fungerer som en bro mellom design og utvikling, og sørger for at det er de samme verdiene vi jobber med.
 
-Komponentene i designsystemet skal være mulig å ta i bruk og utvide, uten å gjøre endringer i selve designsystemet. Ved å bruke prinsipper, tokens og komponenter fra designsystemet kan man selv bygge mer sammensatte komponenter som dekker spesifikke behov.
+## Hvorfor et _felles_ designsystem?
 
-## Hvorfor et felles designsystem?
+Regjeringen vil jobbe for at _"offentlige digitale tjenester skal ha et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggere med lav digital kompetanse kan benytte tjenesten"_. <sup>1</sup>
 
-Det er mange grunner til å ha et designsystem, den mest opplagte er nok at de som lager tjenester ikke trenger å finne opp hjulet på nytt hver gang de starter et nytt prosjekt. Grunnleggende komponenter kan plukkes fra et eksisterende designsystem, og på den måten får produktteamene mer tid å bruke på andre ting.
+Gjennom å samarbeide om et felles designsystem kan vi i større grad sikre helhetlige og gjenkjennelige brukeropplevelser på tvers av etater. I stedet for å lage de samme grunnkomponentene om og om igjen, kan vi lage dem skikkelig én gang og sikre god kvalitet ved at at tilgjengelighetskrav og testing er godt ivaretatt. Best av alt - da har vi kun ett sted å vedlikeholde dem når det kommer nye teknologier, standarder, krav og behov. Det betyr mer tid til å løse viktigere problem for brukerne våre. 🎉
 
-En enda viktigere grunn er at et designsystem gjør det enklere å lage helhetlige, kvalitetssikrede bruksopplevelser. Når løsningene bruker de samme byggeklossene i bunnen skaper det forutsigbarhet og konsistens for brukerne. Har de lært seg hvordan det fungerer et sted, kan de forvente at det fungerer på samme måte et annet sted.
+## Hvem bruker designsystemet?
 
-[Flere offentlige etater har egne designsystem](https://github.com/digdir/designsystemet/wiki/Kartlegge-eksisterende-offentlige-designsystem) i dag. Problemet er at vi utvikler hvert vårt designsystem i hver vår organisasjon, med ulike retningslinjer, komponenter og mønstre. Dette fører til fragmenterte og lite helhetlige brukeropplevelser på tvers av offentlig sektor.
+Designsystemet er i bruk i [Altinn Studio](https://altinn.studio/), der 70 ulike etater utvikler sine tjenester. Flere offentlige virksomheter har også tatt designsystemet i bruk utover tjenester de lager i Altinn.
 
-Et felles designsystem er et sentralt utgangspunkt for at vi skal kunne redusere digitalt utenforskap og at innbyggerne skal få en enklere digital hverdag. Det er også i tråd med et av målene i strategien "[Digital hele livet](https://www.regjeringen.no/contentassets/8f8751780e9749bfa8946526b51f10f4/digital-hele-livet.pdf)": _Regjeringen vil: Jobbe for at offentlige digitale tjenester har et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggerne med lav digital kompetanse kan benytte tjenesten._
+## Hva består designsystemet av?
 
-**Vårt ønske og ambisjon er at felles designsystem kan bidra til at innbyggerne i Norge i større grad opplever «én digital offentlig sektor».**
+Designsystemet består av grunnleggende designelementer, UI-komponenter, mønstre og god praksis. Du kan ta i bruk det du trenger, i den grad du ønsker.
 
-Gjennom å samarbeide om et felles designsystem kan vi i større grad sikre helhetlige brukeropplevelser og universell utforming.
+- **Grunnleggende designelementer** \
+  De grunnleggende designelementene i designsystemet, som vi kaller "[Design Tokens](/grunnleggende/designelementer/design-tokens)", styrer hvordan komponentene skal se ut, blant annet med tanke på farger, typografi, størrelser, avstander og former. Noen av variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger.
 
-Et felles designsystem vil også gi økonomiske gevinster - Mange designere og utviklere jobber i dag med de samme problemstillingene i hver sine siloer i offentlig sektor. Gjennom et samarbeid kan vi unngå å bruke masse tid på å løse de samme tingene, vi kan i stedet løse dem èn gang i fellesskap og vedlikeholde dem på tvers når ny teknologi, standarder, krav og behov oppstår.
+- **UI-komponenter** \
+  Designsystemet inneholder de mest grunnleggende UI-komponentene som gir verdi å dele på tvers. Vi dokumenterer hvordan komponentene bør brukes og oppdatererer retningslinjene etter hvert som vi får mer innsikt. UI-komponentene finnes foreløpig i [Figma](https://www.figma.com/@designsystemet) og [React](https://storybook.designsystemet.no).
 
-**Fordeler med et felles designsystem**
+- **Mønstre og god praksis** \
+  Designsystemet er en samarbeidsarena for å utvikle gjenkjennbare [mønstre](/monstre) og felles [anbefalinger](/god-praksis). Med mønstre mener vi for eksempel hvor sentrale elementer skal plasseres i grensesnittet, og hvordan navigasjon, feilmeldinger og andre gjentagende brukeroppgaver skal oppføre seg. Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene.
 
-- Designsystemet bidrar til bedre brukervennlighet, universell utforming og helhetlig design.
-- Bedre kunnskapsdeling ved å spille hverandre gode. Vi kommer lengre sammen.
-- Økt gjenbruk i offentlig sektor - Mindre dobbeltarbeid, raskere ut i produksjon og enklere skalering.
-- Effektiviserer arbeidet med å prototype, produsere og forbedre.
-- Mer tid til å fokusere på viktigere og større problem, færre detalj-diskusjoner.
+- **Blogg** \
+  I bloggen kan vi fortelle om nye oppdateringer og dele historier. Vi håper flere vil bruke bloggen til å skrive om hvordan de har tatt i bruk designsystemet.
 
-Et felles designsystem i offentlig sektor som dekker felles behov er mer bærekraftig å forvalte og vedlikeholde enn 20 forskjellige, og gir oss mer tid til å fokusere på de større problemene.
+## Hvem kan bruke og bidra til designsystemet?
 
-## Hvordan gjør vi det?
+Alle som lager digitale løsninger for innbyggere kan bruke designsystemet. Det er åpen kildekode og vi setter pris på at du bidrar til å gjøre designsystemet bedre. [Si gjerne ifra](https://github.com/digdir/designsystemet/issues/new/choose) hvis du finner en feil eller vil foreslå en forbedring. Spørsmål kan du stille i Slack-kanalen [#Designsystemet](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ), der hjelper vi hverandre.
 
-Først av alt må vi forstå eksisterende design og identifisere behov som går igjen på tvers. Hvilke designelementer, komponenter og mønstre gir det mening at gjenbrukes på tvers og hva vil gi av verdi for innbyggerne?
+### Hvordan kan du bidra?
 
-**For å oppnå helhetlige og gjenkjennelige tjenester i offentlig sektor er vi avhengige av at vi:**
+Vi har ingen bestemt måte du må gå fram på for å bidra, men ta gjerne kontakt på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) når du har et behov, så kan vi sammen vurdere behovet.
 
-- Bruker felles grunnleggende designelementer og komponenter
-- Etablerer gjenkjennbare mønstre som brukes på tvers av tjenester og produkt
-- Baserer det vi lager på bred brukerinnsikt, og samler behov fra flere deler av offentlig sektor
-- Utvikler retningslinjer for design av sammenhengende tjenester for mer like og gjenkjennelige interaksjonsmønster, dette er en del av handlingsplanen for [«Økt inkludering i et digitalt samfunn»](https://www.regjeringen.no/no/dokumenter/handlingsplan-for-auka-inkludering-i-eit-digitalt-samfunn/id2984233/). Designsystemet kan være en samarbeidsarena for å utvikle og vedlikeholde retningslinjer og anbefalt praksis.
+- [Bidra med design](/grunnleggende/for-designere/bidra-i-figma)
+- [Bidra med utvikling](https://github.com/digdir/designsystemet/blob/main/CONTRIBUTING.md)
+- [Bidra med innsikt](https://github.com/digdir/innsiktsbibliotek)
+- Skriv en artikkel
 
-**For å kunne gjøre dette trenger vi**
+## Hvordan samarbeider vi på tvers?
 
-- [En nettside for designsystemet](https://designsystemet.no) der vi kan dokumentere komponenter, mønstre og retningslinjer.
-- [Et bibliotek i Figma](https://www.figma.com/@designsystemet) med generiske, fleksible komponenter som kan styles ulikt
-- [Design Tokens](/grunnleggende/designelementer/design-tokens) som sørger for en "single source of truth" og støtter multibranding
-- [Kodede komponenter](https://storybook.designsystemet.no) i et godt dokumentert bibliotek
-- [Et felles innsiktsbibliotek](https://github.com/digdir/innsiktsbibliotek) som kan lenkes opp mot konkrete komponenter og interaksjonsmønstre
+En viktig verdi for oss er å være åpne og transparente, og vi tror dette er avgjørende for å få til et samarbeid på tvers. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystemet), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [roadmap](https://github.com/digdir/designsystemet/issues/1435), [Figma](https://www.figma.com/@designsystemet), [Storybook](https://storybook.designsystemet.no).
 
-### Hvordan få til et samarbeid?
+En gang i måneden har vi "Demo og samarbeidsforum" som er åpen for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist og tar imot innspill og behov. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon.
 
-En viktig verdi for oss er å være åpne og transparente, og vi tror dette er avgjørende for å få til et samarbeid på tvers. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystemet), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [sprint-planlegging](https://github.com/orgs/digdir/projects/3/views/8), [roadmap](https://github.com/orgs/digdir/projects/3/views/1?pane=issue&itemId=19744450), [Figma](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6615%3A20148&t=rJYuezxREbfP1OVv-1), [Storybook](https://storybook.designsystemet.no). Vi har også ukentlige designsystem-møter som er åpne for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist og tar imot innspill og behov. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon (via Teams).
+Teamet i dag består hovedsakelig av designsystem-teamet i Digdir, med god hjelp fra designere og utviklere i Brønnøysundregistrene. Vi håper designsystemet blir et tverretatlig team i enda større grad og vi jobber for mer ordnede rammer i det offentlige for å kunne jobbe på denne måten.
 
-Vi har ikke fasiten på hvordan vi best kan samarbeide om et felles designsystem, men en mulig løsning kunne vært en tverretatlig arbeidsgruppe som finner ut hvordan vi kan kombinere det vi allerede har av eksisterende ressurser hos ulike offentlige aktører, og videreutvikler dette i fellesskap. De offentlige aktørene som blir med på samarbeidet, bør stille med ressurser med riktig fagkompetanse som representerer deres organisasjon og deres brukere.
+Designsystemet har et tett samarbeid med [Altinn Studio](https://altinn.studio/) - et verktøy for å utvikle digitale tjenester til innbyggere og næringsliv. Bruker du Altinn studio til å utvikle tjenester, bruker du automatisk designsystemet.
 
-## Arbeidsgruppen
+## Vil du være med på samarbeidet?
 
-Arbeidsgruppen i dag består hovedsakelig av designsystem-teamet i Digdir, samt jevnlige arbeidsmøter med Brønnøysundregistrene der vi ser på hvordan vi best mulig kan få til et samarbeid på tvers og utforsker et oppsett som kan fungere for flere. Vi er også i dialog med andre offentlige aktører, og vil gjerne komme i kontakt med flere. Samtidig arbeider vi for mer ordnede rammer i det offentlige for at vi skal kunne jobbe i et tverretatlig team.
-
-Det er også designere og utviklere fra ulike produktteam i Digdir som er involvert i designsystemet, og bidrar inn med det de har behov for i sine produkt. Vi har også et tett samarbeid med [Altinn Studio](https://altinn.studio/) - et verktøy for å utvikle digitale tjenester til innbyggere og næringsliv.
-
-## Vil du bidra eller prate om et mulig samarbeid?
-
-Send oss en epost på:
+Heier du også på mer gjenbruk og mindre dobbeltarbeid? Send oss en e-post på:
 [designsystem@digdir.no](mailto:designsystem@digdir.no)
+
+<br />
+<br />
+
+---
+
+**Kilder**
+
+[1] Regjeringens strategi [«Digital hele livet»](https://www.regjeringen.no/contentassets/8f8751780e9749bfa8946526b51f10f4/digital-hele-livet.pdf)
+og handlingsplanen for [«Økt inkludering i et digitalt samfunn»](https://www.regjeringen.no/no/dokumenter/handlingsplan-for-auka-inkludering-i-eit-digitalt-samfunn/id2984233/))
+
+<br />
+<br />

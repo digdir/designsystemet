@@ -1,9 +1,11 @@
+import { PaletteIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
 import { Meta, ResponsiveIframe, Image } from '@components';
 
 <Meta
   title='Kom i gang med designsystemet i Figma'
-  description='Beskrivelse'
+  description='hvordan bruke Designsystemet i Figma og hvordan du kan aktivere bibliotekene.'
 />
 
 export default ({ children }) => (
@@ -11,24 +13,27 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Kom i gang med designsystemet i Figma',
-      date: '27. juni 2023',
+      date: '1. mars 2024',
+      icon: <PaletteIcon />,
+      color: 'blue',
     }}
   />
 );
 
-I Figma finner du komponenter og stiler fra designsystemet som du kan bruke i designet ditt. Designet har også tilhørende design tokens som er i bruk i react-komponentene.
-
-Biblioteket er foreløpig ikke tilgjengeliggjort i Figma Community, da vi er i en veldig tidlig fase av arbeidet. Ønsker du å være med å utvikle dette i fellesskap - [ta kontakt](mailto:designsystem@digdir.no) så kan vi se på mulige samarbeidsformer.
-
-Har du tilgang til Figma-kontoen "Digdir" kan du bruke stilene og komponentene allerede nå. Har du ikke @digdir e-postadresse, må du ha fått en invitasjon.
+I Figma finner du komponenter og stiler fra designsystemet som du kan bruke i designet ditt. Designet har også tilhørende design tokens som er i bruk i react-komponentene. Biblioteket er tilgjengeliggjort i [Figma Community](https://www.figma.com/@designsystemet).
 
 ## Kom i gang med komponenter
 
-Sjekk at du har aktivert de 3 fellesbibliotekene:
+Jobber du i Digdir trenger du ikke laste ned noe, da filene ligger i organisasjonen allerede. Tilhører du en annen organisasjon kan du hente filene fra Figma Community:
 
-- [Felles komponententer](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=503%3A3192&mode=design&t=Pou3e2YNIkM4t0Av-1)
-- [Felles tokens](https://www.figma.com/file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?type=design&node-id=2%3A193&mode=design&t=vJ1dV7QQyAAq6EPC-1)
-- [Felles ikonbibliotek](<https://www.figma.com/file/zixZT8aTsPEUSb41LIcsRr/Core-Icons-3-(Community)?type=design&node-id=774%3A2351&mode=design&t=FFPI6NYOtONV1lk4-1>)
+- [Designsystemet - Core UI Kit](https://www.figma.com/@designsystemet)
+- [Aksel ikonbibliotek](https://www.figma.com/community/file/1214869602572392330)
+
+Etter at du har åpnet dem må du
+
+- Plassere filene der du vil ha dem i din egen Figma-organisasjon
+- Publisere filene
+- Aktivere de to fellesbibliotekene i filene du jobber i
 
 <Image
   src='/img/activate-library.png'
@@ -36,12 +41,14 @@ Sjekk at du har aktivert de 3 fellesbibliotekene:
   boxShadow={true}
 />
 
+For å aktivere bibliotekene:
+
 1. Trykk på bok-symbolet under "Assets"
-2. Aktiver "Felles komponenter", "Felles tokens", "Felles ikonbibliotek"
+2. Aktiver "Core UI Kit" og "Felles ikonbibliotek"
 
-NB. Dersom du ikke har @digdir e-postadresse, vil bibliotekene ikke vise med mindre du har fått tilsendt en invitasjon.
+Når du har slått på bibliotekene skal du kunne se komponentene ved å klikke på "Assets" og søke på det du trenger. Du kan også bruke tastatursnarveien SHIFT + I.
 
-Når du har slått på bibliotekene skal du kunne se komponentene ved å klikke på "Assets" og søke på det du trenger. Du kan også bruke tastatursnarveien SHIFT + I. Nå er det bare å dra komponentene inn i dine egne filer!
+Nå er det bare å dra komponentene inn i dine egne filer!
 
 Vil du være med å lage nye komponenter? [Se hvordan du kan bidra](/grunnleggende/for-designere/bidra-i-figma).
 
@@ -75,19 +82,6 @@ Alle tokens er i sync med [Figma variabler](https://docs.tokens.studio/variables
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-#### Kompakte grensesnitt
-
-For admingrensesnitt eller ekspertverktøy kan compact-mode benyttes. Tekststørrelser og komponenter vil da bli mindre og passe bede inn i mer kompakte grensesnitt. NB: Font-size er ikke støttet i Figma variabler enda.
-
-<ResponsiveIframe
-  src='/img/density2.mp4'
-  title='Skjermopptak av Figma som viser hvordan man kan bytte mellom normal og kompakt i Figma'
-  frameBorder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-  allowFullScreen
-  aspectRatio='16-9'
-></ResponsiveIframe>
-
 ### Typografi på små og store skjermer
 
 For all tekst bør du bruke de ferdige utformede typografi-komponentene som er tilgjengelig i Figma og kode. Da sikrer vi at vi har et konsistent uttrykk, riktig bruk avstander, størrelser og font-weight. Typografi-komponenter kan justere seg etter størrelsen på rammen du jobber i. Det vil si at skal du designe for mobil kan du aktivere "viewport 320" i Tokens Studio. Du trenger ikke tenke på noe mer. Størrelse og avstand på overskrifter og brødtekst er nå blitt mindre. 🙌
@@ -111,7 +105,7 @@ Typografi er foreløpig ikke støttet som variabler i Figma, inntil videre må d
 1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
    - Navn: `Felles Tokens`
    - Personal Access Token: `*** din PAT ***` (som du fikk fra Github)
-   - Repository: `digdir/designsystem`
+   - Repository: `digdir/designsystemet`
    - Standard gren: "hoved".
    - Filbane: `design-tokens`
 

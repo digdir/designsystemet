@@ -1,53 +1,66 @@
 .heading {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   margin: 0;
   color: var(--fds-semantic-text-neutral-default);
 }
 
-.heading.spacing {
+.spacing {
   margin-bottom: var(--fdsc-bottom-spacing);
 }
 
-.heading.xlarge {
+.size-3xlarge {
+  --fdsc-bottom-spacing: var(--fds-spacing-8);
+
+  font: var(--fds-typography-heading-3xlarge);
+  font-family: inherit;
+}
+
+.size-2xlarge {
+  --fdsc-bottom-spacing: var(--fds-spacing-7);
+
+  font: var(--fds-typography-heading-2xlarge);
+  font-family: inherit;
+}
+
+.size-xlarge {
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-heading-xlarge);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.heading.large {
+.size-large {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-heading-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.heading.medium {
+.size-medium {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-heading-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.heading.small {
+.size-small {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-heading-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.heading.xsmall {
+.size-xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-2);
 
   font: var(--fds-typography-heading-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.heading.xxsmall {
+.size-xxsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-1);
 
   font: var(--fds-typography-heading-xxsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }

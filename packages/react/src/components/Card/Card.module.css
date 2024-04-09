@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   word-wrap: break-word;
   font: var(--fds-typography-paragraph-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-2) 0;
 }
 
@@ -31,7 +31,7 @@
   flex-wrap: wrap;
   word-wrap: break-word;
   font: var(--fds-typography-heading-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-2) 0;
 }
 

@@ -10,8 +10,6 @@ import cl from 'clsx';
 
 import { Paragraph } from '..';
 
-import classes from './Alert.module.css';
-
 const icons: Record<
   Severity,
   { Icon: typeof InformationSquareFillIcon; title: string }
@@ -53,9 +51,9 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       <div
         ref={ref}
         className={cl(
-          classes.alert,
-          classes[severity],
-          elevated && classes.elevated,
+          'fds-alert',
+          `fds-alert--${severity}`,
+          elevated && `fds-alert--elevated`,
           className,
         )}
         {...rest}
@@ -63,11 +61,11 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         <>
           <Icon
             title={iconTitle || title}
-            className={classes.icon}
+            className='fds-alert__icon'
           />
           <Paragraph
             asChild
-            className={classes.content}
+            className='fds-alert__content'
           >
             <span>{children}</span>
           </Paragraph>
@@ -76,3 +74,5 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     );
   },
 );
+
+Alert.displayName = 'Alert';

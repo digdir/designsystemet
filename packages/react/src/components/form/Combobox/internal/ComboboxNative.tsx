@@ -34,4 +34,6 @@ export const ComboboxNative = ({
   );
 };
 
+ComboboxNative.displayName = 'ComboboxNative';
+
 export default ComboboxNative;

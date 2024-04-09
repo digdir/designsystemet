@@ -39,3 +39,5 @@ export const ToggleGroupItem = forwardRef<
     </RovingTabindexItem>
   );
 });
+
+ToggleGroupItem.displayName = 'ToggleGroupItem';

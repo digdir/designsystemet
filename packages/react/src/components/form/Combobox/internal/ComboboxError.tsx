@@ -26,4 +26,6 @@ export const ComboboxError = ({
   );
 };
 
+ComboboxError.displayName = 'ComboboxError';
+
 export default ComboboxError;

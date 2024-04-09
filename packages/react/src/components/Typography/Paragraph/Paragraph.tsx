@@ -12,8 +12,12 @@ export type ParagraphProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Reduces line-height for short paragraphs */
+  /** Reduces line-height for short paragraphs
+   * @deprecated Use `variant="short"` instead
+   */
   short?: boolean;
+  /** Adjusts styling for paragraph length */
+  variant?: 'long' | 'short';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -27,7 +31,16 @@ export const Paragraph: OverridableComponent<
   HTMLParagraphElement
 > = forwardRef(
   (
-    { className, size = 'medium', spacing, as = 'p', asChild, short, ...rest },
+    {
+      className,
+      size = 'medium',
+      spacing,
+      as = 'p',
+      asChild,
+      short,
+      variant,
+      ...rest
+    },
     ref,
   ) => {
     const Component = asChild ? Slot : as;
@@ -42,6 +55,7 @@ export const Paragraph: OverridableComponent<
             [classes.spacing]: !!spacing,
             [classes.short]: short,
           },
+          variant && classes[variant],
           className,
         )}
         {...rest}
@@ -49,3 +63,5 @@ export const Paragraph: OverridableComponent<
     );
   },
 );
+
+Paragraph.displayName = 'Paragraph';

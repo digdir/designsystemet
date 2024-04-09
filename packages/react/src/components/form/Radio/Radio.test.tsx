@@ -66,8 +66,8 @@ describe('Radio', () => {
 
   it('calls onChange and onClick when user clicks', async () => {
     const user = userEvent.setup();
-    const onChange = jest.fn();
-    const onClick = jest.fn();
+    const onChange = vi.fn();
+    const onClick = vi.fn();
 
     const value = 'test';
 
@@ -94,8 +94,8 @@ describe('Radio', () => {
 
   it('does not call onChange or onClick when user clicks and the radio is disabled', async () => {
     const user = userEvent.setup();
-    const onChange = jest.fn();
-    const onClick = jest.fn();
+    const onChange = vi.fn();
+    const onClick = vi.fn();
 
     render(
       <Radio
@@ -118,8 +118,8 @@ describe('Radio', () => {
 
   it('does not call onChange or onClick when user clicks and the radio is readOnly', async () => {
     const user = userEvent.setup();
-    const onChange = jest.fn();
-    const onClick = jest.fn();
+    const onChange = vi.fn();
+    const onClick = vi.fn();
 
     render(
       <Radio

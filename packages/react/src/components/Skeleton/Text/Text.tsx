@@ -41,3 +41,5 @@ export const Text = ({
     </div>
   );
 };
+
+Text.displayName = 'SkeletonText';

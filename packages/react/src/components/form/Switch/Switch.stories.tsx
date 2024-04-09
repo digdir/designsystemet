@@ -7,7 +7,7 @@ import { Switch } from '.';
 type Story = StoryObj<typeof Switch>;
 
 export default {
-  title: 'Felles/Switch',
+  title: 'Komponenter/Switch',
   component: Switch,
 } as Meta;
 
@@ -22,24 +22,35 @@ export const Preview: Story = {
 };
 
 export const FullWidth: StoryFn<typeof Switch> = (args) => (
-  <Fieldset legend='Skru av/på en eller flere instillinger'>
+  <Fieldset legend='Skru av/på en eller flere innstillinger'>
     <Switch
+      description='Beskrivelse av innstilling'
       value='alt1'
       {...args}
     >
-      Instilling 1
+      Innstilling 1
     </Switch>
     <Switch
-      value='alt1'
+      value='alt2'
       {...args}
     >
-      Instilling 2
+      Innstilling 2
     </Switch>
     <Switch
-      value='alt1'
+      value='alt3'
+      description='Velg innstilling 2 for å aktivere'
+      disabled
       {...args}
     >
-      Instilling 3
+      Innstilling 3
+    </Switch>
+    <Switch
+      value='alt4'
+      description='Du mangler rettigheter for denne instillingen'
+      readOnly
+      {...args}
+    >
+      Innstilling 4
     </Switch>
   </Fieldset>
 );

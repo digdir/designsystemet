@@ -1,65 +1,80 @@
 .paragraph {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   color: var(--fds-semantic-text-neutral-default);
   margin: 0;
 }
 
-.paragraph.spacing {
+.spacing {
   margin-bottom: var(--fdsc-bottom-spacing);
 }
 
-.paragraph.large {
+.large {
   --fdsc-bottom-spacing: var(--fds-spacing-6);
 
   font: var(--fds-typography-paragraph-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.large.short {
+.large:where(.short) {
   font: var(--fds-typography-paragraph-short-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.medium {
+.large:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-large);
+}
+
+.medium {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.medium.short {
+.medium:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-paragraph-short-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.small {
+.medium:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-medium);
+}
+
+.small {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.small.short {
+.small:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-paragraph-short-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.xsmall {
+.small:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-small);
+}
+
+.xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
-.paragraph.xsmall.short {
+.xsmall:where(.short) {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-paragraph-short-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
+}
+
+.xsmall:where(.long) {
+  line-height: var(--fds-typography-paragraph-long-xsmall);
 }

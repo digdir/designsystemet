@@ -76,3 +76,5 @@ export const TableHeaderCell = React.forwardRef<
     );
   },
 );
+
+TableHeaderCell.displayName = 'TableHeaderCell';

@@ -1,5 +1,6 @@
 .combobox {
   display: grid;
+  background-color: transparent;
   gap: var(--fds-spacing-2);
 }
 
@@ -25,6 +26,7 @@
   height: auto;
   justify-content: space-between;
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
 }
 
 .inputWrapper input {
@@ -38,29 +40,35 @@
 
 .inputWrapper.small {
   font: var(--fds-typography-paragraph-small);
+  font-family: inherit;
   padding: 5px var(--fds-spacing-2);
 }
 
 .inputWrapper.small input {
   font: var(--fds-typography-paragraph-small);
+  font-family: inherit;
 }
 
 .inputWrapper.medium {
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
   padding: 7px var(--fds-spacing-3);
 }
 
 .inputWrapper.medium input {
   font: var(--fds-typography-paragraph-medium);
+  font-family: inherit;
 }
 
 .inputWrapper.large {
   font: var(--fds-typography-paragraph-large);
+  font-family: inherit;
   padding: 7px var(--fds-spacing-4);
 }
 
 .inputWrapper.large input {
   font: var(--fds-typography-paragraph-large);
+  font-family: inherit;
 }
 
 .inputWrapper input:focus {
@@ -165,6 +173,12 @@
 
 .errorMessage:empty {
   display: none;
+}
+
+.loading {
+  display: flex;
+  gap: var(--fds-spacing-2);
+  align-content: center;
 }
 
 /**

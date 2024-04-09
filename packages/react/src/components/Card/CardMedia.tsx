@@ -26,3 +26,5 @@ export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
     );
   },
 );
+
+CardMedia.displayName = 'CardMedia';

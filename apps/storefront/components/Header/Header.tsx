@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 
+import { GithubLogo } from './logos/github-logo';
+import { FigmaLogo } from './logos/figma-logo';
 import classes from './Header.module.css';
 
 /**
@@ -34,8 +36,12 @@ const Header = () => {
       url: '/monstre',
     },
     {
+      name: 'Bloggen',
+      url: '/bloggen',
+    },
+    {
       name: 'Komponenter',
-      url: 'https://storybook.designsystemet.no',
+      url: '/komponenter',
     },
   ];
 
@@ -60,7 +66,7 @@ const Header = () => {
             />
           </Link>
         </div>
-        <div>
+        <nav>
           <button
             aria-expanded={open}
             aria-label='Meny'
@@ -103,8 +109,28 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li
+              className={cl(classes.item, classes.itemIcon, classes.firstIcon)}
+            >
+              <Link
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                className={cl(classes.linkIcon, classes.github)}
+              >
+                <GithubLogo />
+              </Link>
+            </li>
+            <li className={cl(classes.item, classes.itemIcon)}>
+              <Link
+                href='https://www.figma.com/@designsystemet'
+                target='_blank'
+                className={cl(classes.linkIcon, classes.figma)}
+              >
+                <FigmaLogo />
+              </Link>
+            </li>
           </ul>
-        </div>
+        </nav>
       </div>
     </header>
   );

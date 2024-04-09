@@ -26,3 +26,5 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
     );
   },
 );
+
+ListItem.displayName = 'ListItem';

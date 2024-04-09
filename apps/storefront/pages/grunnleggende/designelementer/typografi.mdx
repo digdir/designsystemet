@@ -1,7 +1,8 @@
 import { Figma } from 'mdx-embed';
+import { TokenIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
-import { Meta, TokenList } from '@components';
+import { Meta, TokenList, CodeSnippet } from '@components';
 
 <Meta
   title='Typografi'
@@ -14,6 +15,8 @@ export default ({ children }) => (
     data={{
       title: 'Typografi',
       date: '30. mai 2023',
+      icon: <TokenIcon />,
+      color: 'blue',
     }}
   />
 );
@@ -40,19 +43,21 @@ Fonten er tilgjengelig i Figma uten at du trenger å laste ned og installere den
 
 For hosting kan Altinn CDN benyttes:
 
-```html
-<link
-  rel="stylesheet"
-  href="https://altinncdn.no/fonts/inter/inter.css"
-/>
-```
+<CodeSnippet language='html'>
+  {`<link
+  rel='stylesheet'
+  href='https://altinncdn.no/fonts/inter/inter.css'
+/>`}
+</CodeSnippet>
 
-```css
-font-family: 'Inter', sans-serif;
-font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */
-```
+For å aktivere lowercase l with tail, legg til følgende i din CSS:
 
-Use `!important` for `font-feature-settings` because our typography tokens & components use the [font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) shorthand which resets this to its initial values.
+<CodeSnippet language='css'>
+  {`font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */`}
+</CodeSnippet>
+
+Bruk `!important` på `font-feature-settings` fordi våre typography tokens og komponenter bruker [font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) shorthand som resetter dette til sin initielle verdi.
 
 ## Tekststørrelse
 
@@ -78,10 +83,11 @@ Størrelsene er generert ved hjelp av [Fluid Typescale Generator](https://fluid-
 | f3     | 21.00px / 1.31rem     | 28.00px / 1.75rem     |
 | f4     | 23.00px / 1.44rem     | 32.00px / 2.00rem     |
 | f5     | 26.00px / 1.63rem     | 38.00px / 2.38rem     |
+| f6     | 29.00px / 1.81rem     | 44.00px / 2.75rem     |
 
 <Figma
   title='Typography sizes in Figma'
-  url='file/eeznFkuH7UletQmhN174VR/Felles---Design-Tokens?type=design&node-id=15%3A98&t=0RQ88PMLMSJ0TgAX-1'
+  url='file/vpM9dqqQPHqU6ogfKp5tlr/Designsystemet---Core-UI-Kit?type=design&node-id=28251%3A27106&mode=design&t=PjDKHWiYf5F8WaSi-1'
 />
 
 ## Tokens for typografi

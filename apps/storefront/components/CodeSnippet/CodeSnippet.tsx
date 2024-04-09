@@ -7,7 +7,7 @@ import parserHtml from 'prettier/parser-markdown.js';
 import parserCss from 'prettier/parser-postcss.js';
 import parserTs from 'prettier/parser-typescript';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import Tippy from '@tippyjs/react';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
@@ -53,10 +53,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
 
   return (
     <div className={classes.codeSnippet}>
-      <Tippy
-        content={toolTipText}
-        hideOnClick={false}
-      >
+      <Tooltip content={toolTipText}>
         <button
           onMouseEnter={() => setToolTipText('Kopier')}
           onClick={() => onButtonClick()}
@@ -65,7 +62,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
         >
           <FilesIcon fontSize={20} />
         </button>
-      </Tippy>
+      </Tooltip>
       <SyntaxHighlighter
         style={nightOwl}
         language='jsx'

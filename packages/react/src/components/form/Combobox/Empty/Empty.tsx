@@ -12,7 +12,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   ({ children, className, ...rest }, ref) => {
     const context = useContext(ComboboxContext);
     if (!context) {
-      throw new Error('ComboboxError must be used within a Combobox');
+      throw new Error('ComboboxEmpty must be used within a Combobox');
     }
 
     const { optionValues, size } = context;
@@ -30,5 +30,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
     );
   },
 );
+
+ComboboxEmpty.displayName = 'ComboboxEmpty';
 
 export default ComboboxEmpty;

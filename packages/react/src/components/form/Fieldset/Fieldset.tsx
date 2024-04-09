@@ -1,5 +1,5 @@
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import { useContext, forwardRef, createContext } from 'react';
+import { useContext, forwardRef } from 'react';
 import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
@@ -9,13 +9,7 @@ import type { FormFieldProps } from '../useFormField';
 
 import { useFieldset } from './useFieldset';
 import classes from './Fieldset.module.css';
-
-export type FieldsetContextType = Pick<
-  FormFieldProps,
-  'error' | 'errorId' | 'disabled' | 'readOnly' | 'size'
->;
-
-export const FieldsetContext = createContext<FieldsetContextType | null>(null);
+import { FieldsetContext } from './FieldsetContext';
 
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */
@@ -65,7 +59,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {...fieldsetProps}
           className={cl(
             classes.fieldset,
-            !hideLegend && classes.spacing,
+            !hideLegend && classes.withSpacing,
             readOnly && classes.readonly,
             props?.disabled && classes.disabled,
             className,
@@ -77,19 +71,21 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             asChild
             size={size}
           >
-            <legend
-              className={cl(
-                classes.legend,
-                hideLegend && utilityclasses.visuallyHidden,
-              )}
-            >
-              {readOnly && (
-                <PadlockLockedFillIcon
-                  className={classes.padlock}
-                  aria-hidden
-                />
-              )}
-              {legend}
+            <legend className={classes.legend}>
+              <span
+                className={cl(
+                  classes.legendContent,
+                  hideLegend && utilityclasses.visuallyHidden,
+                )}
+              >
+                {readOnly && (
+                  <PadlockLockedFillIcon
+                    className={classes.padlock}
+                    aria-hidden
+                  />
+                )}
+                {legend}
+              </span>
             </legend>
           </Label>
           {description && (
@@ -114,6 +110,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
+            className={classes.errorWrapper}
           >
             {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
           </div>
@@ -122,3 +119,5 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
     );
   },
 );
+
+Fieldset.displayName = 'Fieldset';

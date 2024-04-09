@@ -1,5 +1,7 @@
 .codeSnippet {
   position: relative;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .icon {

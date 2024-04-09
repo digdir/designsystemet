@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-8);
+  gap: var(--fds-spacing-10);
   margin-top: var(--page-spacing-top);
   margin-bottom: var(--page-spacing-bottom);
 }

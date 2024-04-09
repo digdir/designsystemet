@@ -1,21 +1,16 @@
 import * as React from 'react';
 import type { Preview } from '@storybook/react';
-import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 
-import '@digdir/design-system-tokens/brand/digdir/tokens.css';
-import altinn from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/altinn/tokens.css';
-import digdir from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/digdir/tokens.css';
-import tilsynet from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/tilsynet/tokens.css';
-import brreg from '!!style-loader?injectType=lazyStyleTag!css-loader!@digdir/design-system-tokens/brand/brreg/tokens.css';
+import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
 
-import '@altinn/figma-design-tokens/dist/tokens.css';
 import {
   Paragraph,
   Link,
   LinkProps,
   List,
-  ListItem,
-} from '@digdir/design-system-react';
+  Table,
+} from '@digdir/designsystemet-react';
 import customTheme from './customTheme';
 import metadata from '../design-tokens/$metadata.json';
 
@@ -59,28 +54,37 @@ const getPath = (href: string | undefined): string => {
 };
 
 const components = {
-  p: Paragraph,
-  ol: (props: Props) => (
-    <List
+  p: (props: Props) => (
+    <Paragraph
       {...props}
-      as='ol'
-      style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
-    ></List>
+      spacing
+    />
+  ),
+  ol: (props: Props) => (
+    <List.Root>
+      <List.Ordered
+        {...props}
+        style={{ maxWidth: '70ch' }}
+        className='sb-unstyled'
+      />
+    </List.Root>
   ),
   ul: (props: Props) => (
-    <List
-      {...props}
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
-    ></List>
+    <List.Root>
+      <List.Unordered
+        {...props}
+        style={{ maxWidth: '70ch' }}
+        className='sb-unstyled'
+      />
+    </List.Root>
   ),
   li: (props: Props) => (
-    <ListItem
+    <List.Item
       {...props}
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
-    ></ListItem>
+    ></List.Item>
   ),
   a: (props: LinkProps) => {
     // if link starts with /, add current path to link
@@ -90,26 +94,54 @@ const components = {
       <Link
         {...props}
         href={href}
+        className='sb-unstyled'
       ></Link>
     );
   },
+  table: (props: Props) => (
+    <Table
+      {...props}
+      zebra
+      className='sb-unstyled'
+      style={{ width: '100%' }}
+    />
+  ),
+  thead: (props: Props) => (
+    <Table.Head
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  tbody: (props: Props) => (
+    <Table.Body
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  tr: (props: Props) => (
+    <Table.Row
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  th: (props: Props) => (
+    <Table.HeaderCell
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
+  td: (props: Props) => (
+    <Table.Cell
+      {...props}
+      className='sb-unstyled'
+    />
+  ),
 };
 
 const preview: Preview = {
-  decorators: [cssVariablesTheme],
   parameters: {
-    cssVariables: {
-      files: {
-        Altinn: altinn,
-        Digdir: digdir,
-        Tilsynet: tilsynet,
-        Brønnøysundregistrene: brreg,
-      },
-      defaultTheme: 'Digdir',
-    },
     layout: 'centered',
     viewMode: 'docs',
-    actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       theme: customTheme,
       components,
@@ -125,11 +157,11 @@ const preview: Preview = {
         method: 'alphabetical',
         order: [
           'Oversikt',
+          'Kom i gang',
           'Endringslogger',
-          'Felles',
+          'Komponenter',
           'Experimental',
           'Primitives',
-          'Altinn',
           'Avviklet',
         ],
       },

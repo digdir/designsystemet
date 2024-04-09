@@ -26,4 +26,6 @@ export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   );
 };
 
+SelectedIcon.displayName = 'SelectedIcon';
+
 export default SelectedIcon;

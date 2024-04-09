@@ -5,7 +5,7 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { Paragraph } from '../Typography';
 
-import { ListContext } from './List';
+import { ListContext } from './ListRoot';
 import classes from './List.module.css';
 
 export type ListUnorderedProps = {
@@ -38,6 +38,8 @@ export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
   },
 );
 
+Unordered.displayName = 'ListUnordered';
+
 export type ListOrderedProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -67,3 +69,5 @@ export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
     );
   },
 );
+
+Ordered.displayName = 'ListOrdered';

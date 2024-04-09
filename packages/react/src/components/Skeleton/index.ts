@@ -35,5 +35,9 @@ const Skeleton: SkeletonComponent = {
   Text: SkeletonText,
 };
 
+Skeleton.Circle.displayName = 'Skeleton.Circle';
+Skeleton.Rectangle.displayName = 'Skeleton.Rectangle';
+Skeleton.Text.displayName = 'Skeleton.Text';
+
 export type { SkeletonCircleProps, SkeletonRectangleProps, SkeletonTextProps };
 export { Skeleton, SkeletonCircle, SkeletonRectangle, SkeletonText };

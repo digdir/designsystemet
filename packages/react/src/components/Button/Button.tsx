@@ -72,3 +72,5 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
       );
     },
   );
+
+Button.displayName = 'Button';

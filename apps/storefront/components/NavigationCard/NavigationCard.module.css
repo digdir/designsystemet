@@ -20,13 +20,21 @@
 }
 
 .iconContainer {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
+  height: 54px;
+  width: 54px;
+  border-radius: var(--fds-border_radius-small);
+  transform: rotate(45deg);
   margin: 0 auto;
+  margin-bottom: calc(var(--fds-spacing-3) + 11px);
+  margin-top: var(--fds-spacing-3);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.iconContainer svg,
+.iconContainer img {
+  transform: rotate(-45deg);
 }
 
 .red {
@@ -49,8 +57,11 @@
 .title {
   font: var(--fds-typography-heading-xsmall);
   margin-top: var(--fds-spacing-4);
-  margin-bottom: var(--fds-spacing-3);
+  margin-bottom: var(--fds-spacing-4);
   text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  line-height: 1.4em;
 }
 
 .desc {

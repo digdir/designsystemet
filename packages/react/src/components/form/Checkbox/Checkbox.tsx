@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -14,12 +15,16 @@ export type CheckboxProps = {
   children?: ReactNode;
   /** Value of the `input` element */
   value: string;
+  /**Toggle indeterminate state for Checkbox
+   * @default false
+   */
+  indeterminate?: boolean;
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
-    const { children, description, className, ...rest } = props;
+    const { children, description, className, style, ...rest } = props;
     const {
       inputProps,
       descriptionId,
@@ -27,6 +32,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       size = 'medium',
       readOnly,
     } = useCheckbox(props);
+
+    const inputRef = useMergeRefs<HTMLInputElement>([
+      ref,
+      (el) => {
+        if (el) {
+          el.indeterminate = rest.indeterminate ?? false;
+        }
+      },
+    ]);
 
     return (
       <Paragraph
@@ -42,36 +56,45 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             readOnly && classes.readonly,
             className,
           )}
+          style={style}
         >
           <input
             className={classes.input}
-            ref={ref}
-            {...omit(['size', 'error'], rest)}
+            ref={inputRef}
+            {...omit(['size', 'error', 'indeterminate'], rest)}
             {...inputProps}
+            type='checkbox'
+            aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
           />
-          <Label
-            className={classes.label}
-            htmlFor={inputProps.id}
-            size={size}
-            weight='regular'
-          >
-            <span>{children}</span>
-          </Label>
-          {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
-              <div
-                id={descriptionId}
-                className={classes.description}
+          {children && (
+            <>
+              <Label
+                className={classes.label}
+                htmlFor={inputProps.id}
+                size={size}
+                weight='regular'
               >
-                {description}
-              </div>
-            </Paragraph>
+                <span>{children}</span>
+              </Label>
+              {description && (
+                <Paragraph
+                  asChild
+                  size={size}
+                >
+                  <div
+                    id={descriptionId}
+                    className={classes.description}
+                  >
+                    {description}
+                  </div>
+                </Paragraph>
+              )}
+            </>
           )}
         </div>
       </Paragraph>
     );
   },
 );
+
+Checkbox.displayName = 'Checkbox';

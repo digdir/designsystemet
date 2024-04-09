@@ -1,6 +1,4 @@
 .tabItem {
-  --fdsc-icon-size: var(--fds-sizing-4);
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-border-color: transparent;
 
   display: flex;
@@ -19,33 +17,21 @@
   position: relative;
 }
 
-.tabItem > :is(svg, img, i) {
-  display: flex;
-  height: 1.75em;
-  width: auto;
-}
-
 .tabItem.small {
-  --fdsc-icon-size: var(--fds-sizing-5);
-
   font: var(--fds-typography-interactive-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-2) var(--fds-spacing-4);
 }
 
 .tabItem.medium {
-  --fdsc-icon-size: var(--fds-sizing-6);
-
   font: var(--fds-typography-interactive-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-3) var(--fds-spacing-5);
 }
 
 .tabItem.large {
-  --fdsc-icon-size: var(--fds-sizing-7);
-
   font: var(--fds-typography-interactive-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
   padding: var(--fds-spacing-4) var(--fds-spacing-6);
 }
 

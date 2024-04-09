@@ -24,6 +24,8 @@ const PLACES = [
   },
 ];
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const Comp = (args: Partial<ComboboxProps>) => {
   return (
     <>
@@ -79,44 +81,48 @@ describe('Combobox', () => {
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await user.click(document.body);
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 3000);
+    await wait(300);
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should close when we click Escape', async () => {
-    const { user } = await render();
+    const { user } = await render({ label: 'closeOnEscape' });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
-    await user.type(combobox, '{esc}');
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 3000);
+    await user.type(combobox, '{Escape}');
+
+    await wait(500);
+
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
 
+    await wait(500);
     expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
-    await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
 
+    await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
     expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
   });
 
@@ -126,7 +132,9 @@ describe('Combobox', () => {
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(500);
     await user.click(document.body);
+    await wait(500);
 
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
   });
@@ -137,24 +145,30 @@ describe('Combobox', () => {
 
     await userEvent.click(combobox);
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(500);
     await user.click(document.body);
+    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Leikanger'));
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    }, 1000);
+    await user.click(document.body);
+    await wait(500);
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
   it('should remove all values when we click on the clear button', async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     const { user } = await render({ multiple: true, onValueChange });
     const combobox = screen.getByRole('combobox');
 
     await userEvent.click(combobox);
+    await wait(100);
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(500);
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
     await user.click(document.body);
+    await wait(500);
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
 
@@ -217,6 +231,8 @@ describe('Combobox', () => {
 
     await userEvent.click(screen.getByText('Leikanger'));
 
+    await wait(1000);
+
     const submitButton = screen.getByRole('button', { name: 'Submit' });
     await userEvent.click(submitButton);
 
@@ -263,7 +279,9 @@ describe('Combobox', () => {
     await userEvent.click(combobox);
 
     await userEvent.click(screen.getByText('Leikanger'));
+    await wait(100);
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(100);
 
     const submitButton = screen.getAllByTestId('submit')[0];
 
@@ -271,5 +289,26 @@ describe('Combobox', () => {
 
     const formData = await formSubmitPromise;
     expect(formData.getAll('test')).toEqual(['leikanger', 'oslo']);
+  });
+
+  it('should only call onValueChange once when we click the same option fast twice', async () => {
+    const onValueChange = vi.fn();
+    await render({ onValueChange, multiple: true });
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+    await userEvent.click(screen.getByText('Leikanger'));
+    await userEvent.click(screen.getByText('Leikanger'));
+
+    setTimeout(() => {
+      expect(onValueChange).toHaveBeenCalledTimes(1);
+    }, 100);
+  });
+
+  it('should add aria-busy="true" when loading', async () => {
+    await render({ loading: true });
+    const combobox = screen.getByRole('combobox');
+
+    expect(combobox).toHaveAttribute('aria-busy', 'true');
   });
 });

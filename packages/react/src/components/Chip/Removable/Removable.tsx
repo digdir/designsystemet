@@ -52,3 +52,5 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
     );
   },
 );
+
+RemovableChip.displayName = 'ChipRemovable';

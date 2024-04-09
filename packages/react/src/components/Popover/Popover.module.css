@@ -7,7 +7,6 @@
   border: var(--border);
   border-radius: var(--fds-border_radius-medium);
   max-width: 300px;
-  max-height: 80vh;
 }
 
 .popover.small {

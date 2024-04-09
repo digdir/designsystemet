@@ -1,33 +1,19 @@
 import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import * as icons from '@navikt/aksel-icons';
+import {
+  AirplaneFillIcon,
+  NewspaperFillIcon,
+  BrailleIcon,
+  BackpackFillIcon,
+  BellFillIcon,
+} from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
 
 import { ToggleGroup } from '.';
 
-const icon = (
-  <svg
-    viewBox='0 0 24 24'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path
-      fillRule='evenodd'
-      clipRule='evenodd'
-      d='M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0Zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm5.047 5.671 1.399 1.43-8.728 8.398L6 14.02l1.395-1.434 2.319 2.118 7.333-7.032Z'
-      fill='currentColor'
-    />
-  </svg>
-);
-
-const AkselIcon = icons.AirplaneFillIcon;
-const AkselIcon2 = icons.NewspaperFillIcon;
-const AkselIcon3 = icons.BrailleIcon;
-const AkselIcon4 = icons.BackpackFillIcon;
-
 export default {
-  title: 'Felles/ToggleGroup',
+  title: 'Komponenter/ToggleGroup',
   component: ToggleGroup,
 } as Meta;
 
@@ -61,19 +47,28 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
         value={'option-1'}
         icon={true}
       >
-        <AkselIcon3 title='Braille' />
+        <BrailleIcon
+          title='Braille'
+          fontSize='1.5rem'
+        />
       </ToggleGroup.Item>
       <ToggleGroup.Item
         value={'option-2'}
         icon={true}
       >
-        <AkselIcon2 title='Newspaper' />
+        <NewspaperFillIcon
+          title='Newspaper'
+          fontSize='1.5rem'
+        />
       </ToggleGroup.Item>
       <ToggleGroup.Item
         value={'option-3'}
         icon={true}
       >
-        <AkselIcon4 title='Backpack' />
+        <BackpackFillIcon
+          title='Backpack'
+          fontSize='1.5rem'
+        />
       </ToggleGroup.Item>
     </ToggleGroup>
   );
@@ -98,15 +93,15 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         onChange={setValue}
       >
         <ToggleGroup.Item value='pistachio'>
-          <AkselIcon />
+          <AirplaneFillIcon fontSize='1.5rem' />
           Pistachio
         </ToggleGroup.Item>
         <ToggleGroup.Item value='peanut'>
-          {icon}
+          <BellFillIcon fontSize='1.5rem' />
           Peanut
         </ToggleGroup.Item>
         <ToggleGroup.Item value='walnut'>
-          <AkselIcon2 />
+          <NewspaperFillIcon fontSize='1.5rem' />
           Walnut
         </ToggleGroup.Item>
       </ToggleGroup>

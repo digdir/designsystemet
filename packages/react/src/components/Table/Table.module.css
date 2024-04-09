@@ -32,6 +32,7 @@
   z-index: 0;
   box-sizing: border-box;
   font: inherit;
+  font-family: inherit;
   border-spacing: 0;
   font-weight: 500;
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
@@ -40,6 +41,7 @@
 .headerCell {
   padding: var(--table-padding);
   font: inherit;
+  font-family: inherit;
   background-color: var(--fds-semantic-surface-neutral-default);
   border-spacing: 0;
   border-bottom: 2px solid var(--fds-semantic-border-divider-default);
@@ -60,6 +62,7 @@
   width: 100%;
   border: none;
   font: inherit;
+  font-family: inherit;
   display: flex;
   cursor: pointer;
   gap: var(--fds-spacing-1);
@@ -88,9 +91,10 @@
 .cell {
   padding: var(--table-padding);
   border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+  background-color: var(--fds-semantic-surface-neutral-default);
 }
 
-.row:hover {
+.row:hover .cell {
   background-color: var(--fds-semantic-surface-neutral-subtle-hover);
 }
 

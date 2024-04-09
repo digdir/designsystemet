@@ -1,4 +1,4 @@
-import { forwardRef, useContext, useMemo, useRef } from 'react';
+import { forwardRef, useContext, useMemo, useRef, useEffect } from 'react';
 import * as React from 'react';
 import {
   FloatingPortal,
@@ -37,7 +37,7 @@ export type PopoverContentProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
-  ({ className, children, style, ...rest }, ref) => {
+  ({ className, children, style, id, ...rest }, ref) => {
     const {
       portal,
       internalOpen,
@@ -49,12 +49,19 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       onClose,
       onOpenChange,
       anchorEl,
+      popoverId,
+      setPopoverId,
+      triggerId,
     } = useContext(PopoverContext);
 
     const Container = portal ? FloatingPortal : React.Fragment;
 
     const floatingEl = useRef<HTMLDivElement>(null);
     const arrowRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      id && setPopoverId?.(id);
+    }, [id, setPopoverId]);
 
     const {
       context,
@@ -73,7 +80,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       },
       whileElementsMounted: autoUpdate,
       elements: {
-        reference: anchorEl,
+        reference: anchorEl ?? undefined,
         floating: floatingEl.current,
       },
       middleware: [
@@ -135,6 +142,8 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
                   tabIndex: undefined,
                 })}
                 style={{ ...floatingStyles, ...style }}
+                id={popoverId}
+                aria-labelledby={triggerId}
                 {...rest}
               >
                 {children}
@@ -157,3 +166,5 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     );
   },
 );
+
+PopoverContent.displayName = 'Popover.Content';

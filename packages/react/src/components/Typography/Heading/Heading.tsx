@@ -13,7 +13,15 @@ export type HeadingProps = {
   /** Changes text sizing
    * @default 'xlarge'
    */
-  size?: 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  size?:
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | '2xlarge'
+    | '3xlarge';
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
@@ -47,7 +55,7 @@ export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
           ref={ref}
           className={cl(
             classes.heading,
-            classes[size],
+            classes[`size-${size}`],
             {
               [classes.spacing]: spacing,
             },
@@ -58,3 +66,5 @@ export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
       );
     },
   );
+
+Heading.displayName = 'Heading';

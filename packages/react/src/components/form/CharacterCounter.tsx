@@ -59,3 +59,5 @@ export const CharacterCounter = ({
     </>
   );
 };
+
+CharacterCounter.displayName = 'CharacterCounter';

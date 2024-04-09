@@ -28,10 +28,6 @@ export const SiteConfig = {
               name: 'Slack',
               url: 'grunnleggende/introduksjon/slack',
             },
-            {
-              name: 'Roadmap',
-              url: 'grunnleggende/introduksjon/roadmap',
-            },
           ],
         },
         {
@@ -59,12 +55,8 @@ export const SiteConfig = {
               url: 'grunnleggende/designelementer/typografi',
             },
             {
-              name: 'Spacing',
-              url: 'grunnleggende/designelementer/spacing',
-            },
-            {
-              name: 'Sizing',
-              url: 'grunnleggende/designelementer/sizing',
+              name: 'Størrelser og avstander',
+              url: 'grunnleggende/designelementer/storrelser-og-avstander',
             },
           ],
         },
@@ -89,6 +81,10 @@ export const SiteConfig = {
             {
               name: 'Kom i gang',
               url: 'grunnleggende/for-utviklere/kom-i-gang',
+            },
+            {
+              name: 'Komposisjon',
+              url: 'grunnleggende/for-utviklere/komposisjon',
             },
           ],
         },

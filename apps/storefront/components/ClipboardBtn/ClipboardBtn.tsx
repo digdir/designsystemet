@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
-import Tippy from '@tippyjs/react';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './ClipboardBtn.module.css';
 
@@ -22,11 +22,7 @@ const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
 
   return (
     <>
-      <Tippy
-        content={toolTipText}
-        hideOnClick={false}
-        className={classes.tippy}
-      >
+      <Tooltip content={toolTipText}>
         <button
           onMouseEnter={() => setToolTipText(title)}
           onClick={() => onBtnClick(value)}
@@ -39,7 +35,7 @@ const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
           />
           {text && <span className={classes.text}>{text}</span>}
         </button>
-      </Tippy>
+      </Tooltip>
     </>
   );
 };

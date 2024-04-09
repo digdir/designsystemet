@@ -1,5 +1,4 @@
 .errorMessage {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   margin: 0;
@@ -17,26 +16,26 @@
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-error_message-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .errorMessage.medium {
   --fdsc-bottom-spacing: var(--fds-spacing-5);
 
   font: var(--fds-typography-error_message-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .errorMessage.small {
   --fdsc-bottom-spacing: var(--fds-spacing-4);
 
   font: var(--fds-typography-error_message-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .errorMessage.xsmall {
   --fdsc-bottom-spacing: var(--fds-spacing-3);
 
   font: var(--fds-typography-error_message-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }

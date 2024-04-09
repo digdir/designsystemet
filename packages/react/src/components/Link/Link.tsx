@@ -45,3 +45,5 @@ export const Link: OverridableComponent<LinkProps, HTMLAnchorElement> =
       );
     },
   );
+
+Link.displayName = 'Link';

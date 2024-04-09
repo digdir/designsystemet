@@ -77,3 +77,5 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
     );
   },
 );
+
+Box.displayName = 'Box';

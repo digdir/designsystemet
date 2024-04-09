@@ -61,4 +61,6 @@ export const ComboboxChips = () => {
   );
 };
 
+ComboboxChips.displayName = 'ComboboxChips';
+
 export default ComboboxChips;

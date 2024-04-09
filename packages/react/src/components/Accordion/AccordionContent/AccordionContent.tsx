@@ -45,3 +45,5 @@ export const AccordionContent = forwardRef<
     </AnimateHeight>
   );
 });
+
+AccordionContent.displayName = 'AccordionContent';

@@ -16,12 +16,12 @@
 
 .dropdown.medium {
   min-width: 260px;
-  padding: var(--fds-spacing-3);
+  padding: var(--fds-spacing-3) var(--fds-spacing-2);
 }
 
 .dropdown.large {
   min-width: 280px;
-  padding: var(--fds-spacing-4);
+  padding: var(--fds-spacing-4) var(--fds-spacing-2);
 }
 
 .dropdown > hr {

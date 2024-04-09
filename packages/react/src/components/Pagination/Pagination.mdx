@@ -1,6 +1,4 @@
-import { Meta, Controls, Primary } from '@storybook/blocks';
-
-import { Information } from '../../../../../docs-components';
+import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
 
 import * as PaginationStories from './Pagination.stories';
 
@@ -10,18 +8,25 @@ import * as PaginationStories from './Pagination.stories';
 
 `Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
 
-Dette er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
+Komponenten kan brukes på forskjellige måter, se under [bruk](/docs/komponenter-pagination--docs#bruk) for mer informasjon
+
+Vær oppmerksom på:
+
+- Knappene er som standard `button` elementer.
+- Dersom ny side fører til ny side sørg for at paginering knapper er `a` elementer.
+  - Se eksempel [Paginering med lenker](/docs/komponenter-pagination--with-anchor).
 
 <Primary />
 <Controls of={PaginationStories.Preview} />
 
 ## Bruk
 
-<Information text='token' />
+### Eksempel på bruk med `Pagination`
+
+`Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
 
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Pagination } from '@digdir/design-system-react';
+import { Pagination } from '@digdir/designsystemet-react';
 
 const [currentPage, setCurrentPage] = useState(1);
 
@@ -31,6 +36,50 @@ const [currentPage, setCurrentPage] = useState(1);
   onChange={setCurrentPage}
   nextLabel='Neste'
   previousLabel='Forrige'
-  itemLabel={(num) => `Side ${num}}`
+  itemLabel={(num) => `Side ${num}`}
 />;
 ```
+
+### Eksempel på bruk med del-komponenter
+
+Er det behov for en tilpasset `Pagination` kan du ta i bruk de enkelte del-kompontenene.
+
+```tsx
+<Pagination.Root>
+  <Pagination.Content>
+    <Pagination.Item>
+      <Pagination.Previous>
+        <ChevronLeftIcon aria-hidden />
+        Forrige
+      </Pagination.Previous>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button isActive>1</Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Next>
+        Neste
+        <ChevronRightIcon aria-hidden />
+      </Pagination.Next>
+    </Pagination.Item>
+  </Pagination.Content>
+</Pagination.Root>
+```
+
+## Paginering logikk
+
+Bruk `usePagination` for paginering logikk sammen med de enkelt del-komponentene for mer avanserte og tilpasset paginering komponent.
+
+`Pagination` er bygget på `usePagination`.
+
+Bruk `isActive` på `Pagination.Button` for å indikere hvilken side som er aktiv.
+
+<Canvas of={PaginationStories.UsePagination} />
+
+### Pagenering med lenker
+
+Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker (`a`).
+
+<Canvas of={PaginationStories.WithAnchor} />

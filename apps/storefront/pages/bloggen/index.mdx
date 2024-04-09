@@ -1,0 +1,39 @@
+import { PencilIcon } from '@navikt/aksel-icons';
+
+import { BlogPageLayout } from '@layouts';
+import { Meta } from '@components';
+import { BlogCard } from '@blog';
+
+export default ({ children }) => (
+  <BlogPageLayout
+    content={children}
+    banner={{
+      title: 'Bloggen',
+      icon: <PencilIcon fontSize={34} />,
+      color: 'red',
+    }}
+  />
+);
+
+<Meta
+  title='Bloggen'
+  description='Beskrivelse'
+/>
+
+<BlogCard
+  title='Derfor trenger vi et felles designsystem'
+  desc='Se hvordan det gikk da vi arrangerte en åpen presentasjon og mini-workshop om felles designsystem. '
+  date='5. desember 2023'
+  href='/bloggen/2023/derfor-trenger-vi-et-felles-designsystem'
+  image='/img/bloggen/miro.png'
+  author='Digdir og Brønnøysundregistrene'
+  featured={true}
+/>
+
+<style>
+  {`
+    body {
+      background-color: var(--fds-semantic-background-subtle);
+    }
+  `}
+</style>

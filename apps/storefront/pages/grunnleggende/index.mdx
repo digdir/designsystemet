@@ -1,26 +1,35 @@
 import {
   TokenIcon,
   PaletteIcon,
-  HikingTrailSignIcon,
   ComponentIcon,
   PackageIcon,
   BranchingIcon,
   LightBulbIcon,
+  RulerIcon,
+  CodeIcon,
+  MoonIcon,
 } from '@navikt/aksel-icons';
 
 import { NavMenuPageLayout } from '@layouts';
 import { Meta, NavigationCard, Grid } from '@components';
 
-export default ({ children }) => <NavMenuPageLayout content={children} />;
+export default ({ children }) => (
+  <NavMenuPageLayout
+    content={children}
+    banner={{
+      title: 'Grunnleggende',
+      ingress:
+        'Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
+      icon: <TokenIcon fontSize={34} />,
+      color: 'yellow',
+    }}
+  />
+);
 
 <Meta
   title='Grunnleggende'
-  description='Beskrivelse'
+  description='Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.'
 />
-
-# Grunnleggende
-
-Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.
 
 ## Introduksjon
 
@@ -29,11 +38,11 @@ Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis o
 <Grid>
   <NavigationCard
     title='Om designsystemet'
-    color='red'
+    color='blue'
     icon={<ComponentIcon fontSize={34} />}
     url='grunnleggende/introduksjon/om-designsystemet'
-    description='Hva er felles designsystem, hvorfor trenger vi det, hvordan gjør vi det og hvem er med?'
-    backgroundColor='grey'
+    description='Hva er Designsystemet, hvorfor trenger vi det, hvordan gjør vi det og hvem er med?'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Verdier'
@@ -41,15 +50,7 @@ Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis o
     icon={<LightBulbIcon fontSize={34} />}
     url='grunnleggende/introduksjon/verdier'
     description='Verdier vi ønsker at designsystemet skal bygges på'
-    backgroundColor='grey'
-  />
-  <NavigationCard
-    title='Roadmap'
-    color='blue'
-    icon={<HikingTrailSignIcon fontSize={34} />}
-    url='grunnleggende/introduksjon/roadmap'
-    description='Hva jobber vi med nå og hva er planlagt fremover'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
 </Grid>
 
@@ -64,7 +65,7 @@ Stilene i designsystemet er grunnleggende designelementer som brukes i komponent
     icon={<TokenIcon fontSize={34} />}
     url='grunnleggende/designelementer/design-tokens'
     description='Design tokens er gjenbrukbare verdier som fungerer som et bindeledd mellom alle flater.'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Fargesystem'
@@ -72,15 +73,15 @@ Stilene i designsystemet er grunnleggende designelementer som brukes i komponent
     icon={<PaletteIcon fontSize={34} />}
     url='grunnleggende/designelementer/farger'
     description='Fargesystemet består av globale farger og et semantisk nivå som beskriver hva fargen skal brukes til.'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Avstander'
     color='blue'
-    icon={<TokenIcon fontSize={34} />}
-    url='grunnleggende/designelementer/spacing'
+    icon={<RulerIcon fontSize={34} />}
+    url='grunnleggende/designelementer/storrelser-og-avstander'
     description='Settet med avstander som er definert i tokens sikrer konsistens på tvers av grensesnitt.'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Typografi'
@@ -88,15 +89,15 @@ Stilene i designsystemet er grunnleggende designelementer som brukes i komponent
     icon={<TokenIcon fontSize={34} />}
     url='grunnleggende/designelementer/typografi'
     description='For å presentere tekst på korrekt måte, bruker vi noen utvalgte stiler og komponenter som er bygget opp med ulike kombinasjoner av størrelse, fontvekt og linjehøyde.'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Skygger'
     color='yellow'
-    icon={<TokenIcon fontSize={34} />}
+    icon={<MoonIcon fontSize={34} />}
     url={'grunnleggende/designelementer/skygger'}
     description='Skygger kan hjelpe svaksynte til å identifisere komponenter og bør brukes konsistent da de uttrykker at noe ligger over noe annet i løsningen.'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Ikoner'
@@ -104,7 +105,7 @@ Stilene i designsystemet er grunnleggende designelementer som brukes i komponent
     icon={<TokenIcon fontSize={34} />}
     url='grunnleggende/designelementer/ikoner'
     description='Nav har laget et solid sett med ikoner (800+) som vi anbefaler å bruke og bidra til å videreutvikle'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
 </Grid>
 
@@ -119,7 +120,7 @@ Ressurser og veiledning relevant for designere
     icon={<PaletteIcon fontSize={34} />}
     url='grunnleggende/for-designere/kom-i-gang'
     description='Lær hvordan du bruker komponentbibliotek og styles i Figma.'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
   <NavigationCard
     title='Bidra med design'
@@ -127,7 +128,7 @@ Ressurser og veiledning relevant for designere
     icon={<BranchingIcon fontSize={34} />}
     url={'grunnleggende/for-designere/bidra-i-figma'}
     description='Slik kan du være med å designe komponenter i designsystemet'
-    backgroundColor='grey'
+    backgroundColor='white'
   />
 </Grid>
 
@@ -139,9 +140,25 @@ Ressurser og veiledning relevant for utviklere
   <NavigationCard
     title='Kom i gang som utvikler'
     color='blue'
-    icon={<PackageIcon fontSize={34} />}
+    icon={<CodeIcon fontSize={34} />}
     url='grunnleggende/for-utviklere/kom-i-gang'
     description='Lær hvordan du kommer i gang med designsystemet som utvikler'
-    backgroundColor='grey'
+    backgroundColor='white'
+  />
+  <NavigationCard
+    title='Komposisjon'
+    color='blue'
+    icon={<PackageIcon fontSize={34} />}
+    url='grunnleggende/for-utviklere/komposisjon'
+    description='Informasjonen og bruk av asChild til å løse komposisjon.'
+    backgroundColor='white'
   />
 </Grid>
+
+<style>
+  {`
+    body {
+      background-color: var(--fds-semantic-background-subtle);
+    }
+  `}
+</style>

@@ -1,7 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import { Information } from '../../../../../../docs-components';
-
 import * as NativeSelectStories from './NativeSelect.stories';
 
 <Meta of={NativeSelectStories} />
@@ -20,11 +18,8 @@ For eksempel er det ikke mulig å overstyre formateringen av alternativene.
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun én gang i din applikasjon
-import { NativeSelect } from '@digdir/design-system-react';
+import { NativeSelect } from '@digdir/designsystemet-react';
 
 <NativeSelect label='Ta et valg'>
   <option value='1'>Alternativ 1</option>

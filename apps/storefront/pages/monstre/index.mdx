@@ -1,16 +1,25 @@
+import { LayersIcon } from '@navikt/aksel-icons';
+
 import { NavMenuPageLayout } from '@layouts';
 import { Meta } from '@components';
 
-export default ({ children }) => <NavMenuPageLayout content={children} />;
+export default ({ children }) => (
+  <NavMenuPageLayout
+    content={children}
+    banner={{
+      title: 'Mønstre',
+      ingress:
+        'Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.',
+      icon: <LayersIcon fontSize={34} />,
+      color: 'yellow',
+    }}
+  />
+);
 
 <Meta
   title='Mønstre'
-  description='Beskrivelse'
+  description='Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.'
 />
-
-# Mønstre
-
-Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.
 
 I rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)" er det funnet flere [konkrete problemer med brukskvalitet](https://github.com/digdir/innsiktsbibliotek/issues/3) som kan forbedres dersom vi samarbeider om å etablere like mønstre på tvers av offentlige tjenester. Når vi bruker etablerte mønstre som innbyggerne kjenner igjen på tvers kan løsningene bli mer intuitive og bidra til mindre digitalt utenforskap.
 
@@ -66,3 +75,11 @@ F.eks hvordan vi spør brukeren om:
 - [https://carbondesignsystem.com/patterns/overview/](https://carbondesignsystem.com/patterns/overview/)
 - [https://design-system.service.gov.uk/patterns/](https://design-system.service.gov.uk/patterns/)
 - [https://www.lightningdesignsystem.com/guidelines/user-engagement/patterns/#Empty-States](https://www.lightningdesignsystem.com/guidelines/user-engagement/patterns/#Empty-States)
+
+<style>
+  {`
+    body {
+      background-color: var(--fds-semantic-background-subtle);
+    }
+  `}
+</style>

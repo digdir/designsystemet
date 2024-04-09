@@ -78,3 +78,5 @@ export const CheckboxGroup = forwardRef<
     );
   },
 );
+
+CheckboxGroup.displayName = 'CheckboxGroup';

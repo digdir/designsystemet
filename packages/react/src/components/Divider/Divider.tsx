@@ -1,5 +1,6 @@
 import type * as React from 'react';
 import cl from 'clsx';
+import { forwardRef } from 'react';
 
 import classes from './Divider.module.css';
 
@@ -11,15 +12,18 @@ export type DividerProps = {
   color?: 'default' | 'strong' | 'subtle';
 } & React.HTMLAttributes<HTMLHRElement>;
 
-export const Divider = ({
-  color = 'default',
-  className,
-  ...rest
-}: DividerProps) => {
-  return (
-    <hr
-      className={cl(classes.divider, classes[color], className)}
-      {...rest}
-    />
-  );
-};
+export const Divider = forwardRef<HTMLHRElement, DividerProps>(
+  ({ color = 'default', className, ...rest }, ref) => {
+    return (
+      <hr
+        className={cl(classes.divider, classes[color], className)}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
+);
+
+Divider.displayName = 'Divider';
+
+Divider.displayName = 'Divider';

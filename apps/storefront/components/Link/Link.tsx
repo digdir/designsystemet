@@ -7,13 +7,15 @@ interface LinkProps {
   children: React.ReactNode;
   prefix?: React.ReactNode;
   href: string;
+  target?: string;
 }
 
-const Link = ({ href, children, prefix }: LinkProps) => {
+const Link = ({ href, children, prefix, target }: LinkProps) => {
   return (
     <NextLink
       href={href}
       className={classes.link}
+      target={target}
     >
       {prefix && <span className={classes.prefix}>{prefix}</span>}
       {children}

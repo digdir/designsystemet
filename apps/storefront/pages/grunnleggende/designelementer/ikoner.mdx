@@ -1,9 +1,11 @@
+import { TokenIcon } from '@navikt/aksel-icons';
+
 import { MenuPageLayout } from '@layouts';
 import { Meta } from '@components';
 
 <Meta
   title='Ikoner'
-  description='Beskrivelse'
+  description='Hvordan vi bruker ikoner i komponenter'
 />
 
 export default ({ children }) => (
@@ -12,6 +14,8 @@ export default ({ children }) => (
     data={{
       title: 'Ikoner',
       date: '5. april 2023',
+      icon: <TokenIcon />,
+      color: 'red',
     }}
   />
 );

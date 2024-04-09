@@ -2,7 +2,6 @@
   height: 96px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--fds-semantic-border-neutral-subtle);
   background-color: white;
 }
 
@@ -51,15 +50,51 @@
 }
 
 .link:hover {
-  border-color: var(--fds-semantic-border-neutral-default);
+  border-color: var(--fds-semantic-border-neutral-subtle);
+}
+
+.itemIcon {
+  margin-left: var(--fds-spacing-1);
+}
+
+.firstIcon {
+  margin-left: var(--fds-spacing-7);
+}
+
+.linkIcon {
+  display: grid;
+  place-items: center;
+  padding: 0 var(--fds-spacing-2);
+}
+
+.linkIcon > svg {
+  height: 24px;
+  width: 24px;
+}
+
+.linkIcon.figma path {
+  stroke: var(--fds-colors-grey-800);
+}
+
+.linkIcon.github path {
+  fill: var(--fds-colors-grey-800);
+}
+
+.linkIcon.figma:hover path {
+  stroke: var(--fds-semantic-border-neutral-default);
+}
+
+.linkIcon.github:hover path {
+  fill: var(--fds-semantic-border-neutral-default);
 }
 
 .item .active {
-  border-color: var(--fds-brand-alt3-600);
+  border-color: var(--fds-semantic-border-neutral-default);
+  font-weight: 500;
 }
 
 .item .active.link:hover {
-  border-color: var(--fds-brand-alt3-600);
+  border-color: var(--fds-semantic-border-neutral-default);
 }
 
 @media (max-width: 991.98px) {
@@ -96,6 +131,10 @@
 
   .item .active {
     display: inline-block;
+  }
+
+  .linkIcon {
+    place-items: start;
   }
 
   .logo {

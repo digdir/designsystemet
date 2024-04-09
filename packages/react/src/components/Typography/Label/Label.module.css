@@ -1,5 +1,4 @@
 .label {
-  --fdsc-typography-font-family: inherit;
   --fdsc-bottom-spacing: var(--fds-spacing-1);
 
   display: inline-block;
@@ -14,22 +13,22 @@
 
 .label.large {
   font: var(--fds-typography-label-large);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .label.medium {
   font: var(--fds-typography-label-medium);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .label.small {
   font: var(--fds-typography-label-small);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .label.xsmall {
   font: var(--fds-typography-label-xsmall);
-  font-family: var(--fdsc-typography-font-family);
+  font-family: inherit;
 }
 
 .label.regularWeight {

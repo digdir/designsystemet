@@ -1,16 +1,29 @@
 import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
-import * as akselIcons from '@navikt/aksel-icons';
+import {
+  PencilWritingIcon,
+  PrinterSmallIcon,
+  ArrowForwardIcon,
+  TrashIcon,
+  ExternalLinkIcon,
+  PlusCircleIcon,
+  BellIcon,
+  CogIcon,
+  ArrowRightIcon,
+  ArrowUndoIcon,
+  PlusIcon,
+} from '@navikt/aksel-icons';
 
 import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
+import { Tooltip } from '../Tooltip';
 
 import { Button } from './';
 
 type Story = StoryObj<typeof Button>;
 
 const meta: Meta<typeof Button> = {
-  title: 'Felles/Button',
+  title: 'Komponenter/Button',
   component: Button,
 };
 
@@ -21,9 +34,6 @@ const stack = (Story: PartialStoryFn<ReactRenderer>) => (
     <Story />
   </Stack>
 );
-
-const icon = <akselIcons.FloppydiskIcon />;
-
 export const Preview: Story = {
   render: ({ ...args }) => {
     return <Button {...args} />;
@@ -39,72 +49,226 @@ export const Preview: Story = {
   },
 };
 
-export const UsedAsLink: StoryFn<typeof Button> = () => (
+export const Primary: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      color='first'
+    >
+      Lagre
+    </Button>
+  </>
+);
+
+Primary.decorators = [stack];
+
+export const Secondary: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='secondary'
+      color='first'
+    >
+      Avbryt
+    </Button>
+  </>
+);
+
+Secondary.decorators = [stack];
+
+export const Tertiary: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='tertiary'
+      color='first'
+    >
+      <PencilWritingIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
+      Rediger
+    </Button>
+  </>
+);
+
+Tertiary.decorators = [stack];
+
+export const First: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      color='first'
+    >
+      Gå videre
+    </Button>
+    <Button
+      variant='secondary'
+      color='first'
+    >
+      Fortsett senere
+    </Button>
+    <Button
+      variant='tertiary'
+      color='first'
+    >
+      Avbryt
+    </Button>
+  </>
+);
+
+First.decorators = [stack];
+
+export const Second: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='secondary'
+      color='second'
+    >
+      <PrinterSmallIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
+      Skriv ut
+    </Button>
+    <Button
+      variant='secondary'
+      color='second'
+    >
+      <PencilWritingIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
+      Rediger
+    </Button>
+    <Button
+      variant='secondary'
+      color='second'
+    >
+      <ArrowForwardIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
+      Videresend
+    </Button>
+  </>
+);
+
+Second.decorators = [stack];
+
+export const Danger: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      color='danger'
+    >
+      <TrashIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
+      Slett
+    </Button>
+  </>
+);
+
+Danger.decorators = [
+  (Story) => (
+    <Stack
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+      }}
+    >
+      <Story />
+    </Stack>
+  ),
+];
+
+export const Success: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      color='success'
+    >
+      Send inn
+    </Button>
+  </>
+);
+
+Success.decorators = [stack];
+
+export const KombinereFarger: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      color='second'
+    >
+      Publiser
+    </Button>
+    <Button
+      variant='secondary'
+      color='second'
+    >
+      Lagre kladd
+    </Button>
+    <Button
+      variant='tertiary'
+      color='danger'
+    >
+      Forkast
+    </Button>
+  </>
+);
+
+KombinereFarger.decorators = [stack];
+
+export const KnappSomLenke: StoryFn<typeof Button> = () => (
   <Button asChild>
     <a
       target='_blank'
       rel='noreferrer'
       href='https://www.designsystemet.no'
     >
-      <akselIcons.PersonChatIcon />
       Gå til Designsystemet
+      <ExternalLinkIcon fontSize='1.5rem' />
     </a>
   </Button>
 );
 
-export const Variants: StoryFn<typeof Button> = () => {
-  return (
-    <>
-      <Button>Primary</Button>
-      <Button variant='secondary'>Secondary</Button>
-      <Button variant='tertiary'>Tertiary</Button>
-
-      <Button color='second'>Primary</Button>
+export const BareIkon: StoryFn<typeof Button> = () => (
+  <>
+    <Tooltip content='Legg til ny'>
       <Button
-        color='second'
-        variant='secondary'
-      >
-        Secondary
-      </Button>
-      <Button
+        icon={true}
         color='second'
         variant='tertiary'
+        aria-label='Tertiary med ikon'
       >
-        Tertiary
+        <PlusCircleIcon fontSize='1.5rem' />
       </Button>
-
-      <Button color='success'>Primary</Button>
+    </Tooltip>
+    <Tooltip content='Varslinger'>
       <Button
-        color='success'
-        variant='secondary'
-      >
-        Secondary
-      </Button>
-      <Button
-        color='success'
+        icon={true}
+        color='second'
         variant='tertiary'
+        aria-label='Tertiary med ikon'
       >
-        Tertiary
+        <BellIcon fontSize='1.5rem' />
       </Button>
-
-      <Button color='danger'>Primary</Button>
+    </Tooltip>
+    <Tooltip content='Instillinger'>
       <Button
-        color='danger'
-        variant='secondary'
-      >
-        Secondary
-      </Button>
-      <Button
-        color='danger'
+        icon={true}
+        color='second'
         variant='tertiary'
+        aria-label='Tertiary med ikon'
       >
-        Tertiary
+        <CogIcon fontSize='1.5rem' />
       </Button>
-    </>
-  );
-};
+    </Tooltip>
+  </>
+);
 
-Variants.decorators = [
+BareIkon.decorators = [
   (Story) => (
     <Stack
       style={{
@@ -117,143 +281,39 @@ Variants.decorators = [
   ),
 ];
 
-export const WithIcon: StoryFn<typeof Button> = () => (
+export const TekstOgIkon: StoryFn<typeof Button> = () => (
   <>
     <Button
-      icon={true}
       variant='primary'
-      aria-label='Primary med ikon'
-    >
-      {icon}
-    </Button>
-    <Button
-      icon={true}
-      variant='secondary'
-      aria-label=' Secondary med ikon'
-    >
-      {icon}
-    </Button>
-    <Button
-      icon={true}
-      variant='tertiary'
-      aria-label='Tertiary med ikon'
-    >
-      {icon}
-    </Button>
-    <Button
-      icon={true}
       color='second'
-      variant='primary'
-      aria-label='Primary med ikon'
     >
-      {icon}
+      Start utfylling
+      <ArrowRightIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
     </Button>
     <Button
-      icon={true}
+      variant='secondary'
       color='second'
-      variant='secondary'
-      aria-label=' Secondary med ikon'
     >
-      {icon}
-    </Button>
-    <Button
-      icon={true}
-      color='second'
-      variant='tertiary'
-      aria-label='Tertiary med ikon'
-    >
-      {icon}
-    </Button>
-    <Button
-      icon={true}
-      color='success'
-      variant='primary'
-      aria-label='Primary med ikon'
-    >
-      <akselIcons.CheckmarkIcon />
-    </Button>
-    <Button
-      icon={true}
-      color='success'
-      variant='secondary'
-      aria-label=' Secondary med ikon'
-    >
-      <akselIcons.CheckmarkIcon />
-    </Button>
-    <Button
-      icon={true}
-      color='success'
-      variant='tertiary'
-      aria-label='Tertiary med ikon'
-    >
-      <akselIcons.CheckmarkIcon />
-    </Button>
-    <Button
-      icon={true}
-      color='danger'
-      variant='primary'
-      aria-label='Primary med ikon'
-    >
-      <akselIcons.TrashIcon />
-    </Button>
-    <Button
-      icon={true}
-      color='danger'
-      variant='secondary'
-      aria-label=' Secondary med ikon'
-    >
-      <akselIcons.TrashIcon />
-    </Button>
-    <Button
-      icon={true}
-      color='danger'
-      variant='tertiary'
-      aria-label='Tertiary med ikon'
-    >
-      <akselIcons.TrashIcon />
+      <ArrowUndoIcon
+        aria-hidden
+        fontSize='1.5rem'
+      />
+      Angre
     </Button>
   </>
 );
 
-WithIcon.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, auto)',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
+TekstOgIkon.decorators = [stack];
 
-export const WithIconAndText: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary'>
-      {icon}
-      Primary
-    </Button>
-    <Button variant='secondary'>
-      {icon}
-      Secondary
-    </Button>
-    <Button variant='tertiary'>
-      {icon}
-      Tertiary
-    </Button>
-  </>
-);
-
-WithIconAndText.decorators = [stack];
-
-export const WithSpinner: StoryFn<typeof Button> = () => (
+export const Lasting: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
       aria-disabled
     >
-      {icon}
       <Spinner
         variant='interaction'
         title='loading'
@@ -265,7 +325,6 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       variant='secondary'
       aria-disabled
     >
-      {icon}
       <Spinner
         variant='interaction'
         title='loading'
@@ -277,7 +336,6 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
       variant='tertiary'
       aria-disabled
     >
-      {icon}
       <Spinner
         variant='interaction'
         title='loading'
@@ -288,15 +346,50 @@ export const WithSpinner: StoryFn<typeof Button> = () => (
   </>
 );
 
-WithSpinner.decorators = [stack];
+Lasting.decorators = [stack];
 
-export const FullWidth: Story = {
+export const FullBredde: Story = {
   name: 'Full bredde',
   args: {
-    children: 'Full bredde',
+    children: (
+      <>
+        <PlusIcon fontSize='1.5rem' />
+        Last inn flere
+      </>
+    ),
     fullWidth: true,
+    color: 'second',
+    variant: 'secondary',
   },
   parameters: {
     layout: 'padded',
   },
 };
+
+export const Ikoner: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      size='small'
+    >
+      <CogIcon fontSize='1rem' />
+      small
+    </Button>
+    <Button
+      variant='primary'
+      size='medium'
+    >
+      <CogIcon fontSize='1.5rem' />
+      medium
+    </Button>
+    <Button
+      variant='primary'
+      size='large'
+    >
+      <CogIcon fontSize='2rem' />
+      large
+    </Button>
+  </>
+);
+
+Ikoner.decorators = [stack];

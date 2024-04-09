@@ -1,7 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import { Information } from '../../../../../docs-components';
-
 import * as ChipStories from './Chip.stories';
 import * as ToggleChipStories from './Toggle/Toggle.stories';
 import * as RemovableChipStories from './Removable/Removable.stories';
@@ -11,7 +9,7 @@ import * as GroupChipStories from './Group/Group.stories';
 
 # Chip
 
-`Chips` er små avrundede knapper som kan brukes til å filtrere og navigere gjennom innhold eller data. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat, samt vise hvilke filter som er aktive. Ikke bruk Chip til statisk metadata for å tagge innholdselementer. Bruk heller [Tag](https://storybook.designsystemet.no/?path=/docs/felles-tag--docs) -komponenten dersom informasjonen ikke er klikkbar.
+`Chips` er små avrundede knapper som kan brukes til å filtrere og navigere gjennom innhold eller data. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat, samt vise hvilke filter som er aktive. Ikke bruk Chip til statisk metadata for å tagge innholdselementer. Bruk heller [Tag](https://storybook.designsystemet.no/?path=/docs/komponenter-tag--docs) -komponenten dersom informasjonen ikke er klikkbar.
 
 Chip eksisterer i ulike varianter:
 
@@ -26,11 +24,8 @@ Chip eksisterer i ulike varianter:
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Chip } from '@digdir/design-system-react';
+import { Chip } from '@digdir/designsystemet-react';
 
 <Chip.Toggle>You are using the Chip component!</Chip.Toggle>;
 ```

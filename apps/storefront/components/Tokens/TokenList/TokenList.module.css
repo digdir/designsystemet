@@ -13,7 +13,7 @@
   border-radius: 4px;
 }
 
-.toggleGroup button {
+.toggleGroup > button {
   margin: 5px;
   height: 44px;
   border-radius: 4px;
@@ -104,6 +104,17 @@
   justify-content: space-between;
   margin: 10px 0;
   width: 100px;
+}
+
+.package {
+  display: flex;
+  align-items: center;
+  gap: var(--fds-spacing-2);
+  font-weight: 600;
+}
+
+.npmShield {
+  margin: auto;
 }
 
 @media (max-width: 576px) {

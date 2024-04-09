@@ -1,7 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import { Information } from '../../../../../docs-components';
-
 import * as ToggleGroupStories from './ToggleGroup.stories';
 
 <Meta of={ToggleGroupStories} />
@@ -15,16 +13,13 @@ Description of the ToggleGroup component.
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { ToggleGroup } from '@digdir/design-system-react';
+import { ToggleGroup } from '@digdir/designsystemet-react';
 
-<ToggleGroup defaultValue="value1">
-  <ToggleGroup value="value1">Option 1</ToggleGroup.Item>
-  <ToggleGroup value="value2">Option 2</ToggleGroup.Item>
-  <ToggleGroup value="value3">Option 3</ToggleGroup.Item>
+<ToggleGroup defaultValue='value1'>
+  <ToggleGroup.Item value='value1'>Option 1</ToggleGroup.Item>
+  <ToggleGroup.Item value='value2'>Option 2</ToggleGroup.Item>
+  <ToggleGroup.Item value='value3'>Option 3</ToggleGroup.Item>
 </ToggleGroup>;
 ```
 

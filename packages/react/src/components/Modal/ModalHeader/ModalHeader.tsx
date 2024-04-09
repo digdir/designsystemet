@@ -2,10 +2,11 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
+import { Slot } from '@radix-ui/react-slot';
 
 import { Heading, Paragraph } from '../../Typography';
 import { Button } from '../../Button';
-import { ModalContext } from '../Modal';
+import { ModalContext } from '../ModalRoot';
 
 import classes from './ModalHeader.module.css';
 
@@ -16,14 +17,24 @@ export type ModalHeaderProps = {
    */
   closeButton?: boolean;
   subtitle?: string;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-  ({ closeButton = true, children, subtitle, className, ...rest }, ref) => {
+  (
+    { closeButton = true, children, subtitle, asChild, className, ...rest },
+    ref,
+  ) => {
+    const Component = asChild ? Slot : 'div';
+
     const context = useContext(ModalContext);
 
     return (
-      <div
+      <Component
         ref={ref}
         className={cl(
           classes.modalHeader,
@@ -62,7 +73,9 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             />
           </Button>
         )}
-      </div>
+      </Component>
     );
   },
 );
+
+ModalHeader.displayName = 'ModalHeader';

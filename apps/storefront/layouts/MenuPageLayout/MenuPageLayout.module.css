@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--grid-gap);
-  margin-top: var(--page-spacing-top);
+  gap: var(--fds-spacing-10);
+  margin-top: var(--fds-spacing-8);
   margin-bottom: var(--page-spacing-bottom);
 }
 
@@ -15,29 +15,25 @@
 .right {
   flex-basis: 600px;
   flex-grow: 500;
+  max-width: 100%;
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   overflow: hidden;
   margin-bottom: var(--fds-spacing-6);
-  padding: var(--fds-spacing-7);
+  padding: var(--fds-spacing-10);
   width: 100%;
-  border-radius: var(--fds-border_radius-large);
+  border-radius: var(--fds-border_radius-xlarge);
   background-color: var(--fds-semantic-background-subtle);
 }
 
-.header::after {
-  content: '';
-  position: absolute;
-  right: -0;
-  bottom: -200px;
-  transform: rotate(25deg);
-  opacity: 0.2;
-  height: 250px;
-  width: 250px;
-  border-radius: var(--fds-border_radius-large);
-  border: 8px solid var(--fds-brand-alt3-600);
+.headerText {
+  color: inherit;
+  padding-right: 290px;
 }
 
 .title {
@@ -49,16 +45,105 @@
   margin-top: var(--fds-spacing-3);
 }
 
+.iconContainer {
+  position: absolute;
+  right: 0;
+  margin-right: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 190px;
+  width: 190px;
+  border-radius: var(--fds-border_radius-large);
+  border: 7px solid #8f9296;
+  transform: rotate(45deg);
+}
+
+.iconContainer.red {
+  border-color: var(--fds-brand-alt1-400);
+}
+
+.iconContainer.blue {
+  border-color: var(--fds-brand-alt3-400);
+}
+
+.iconContainer.yellow {
+  border-color: var(--fds-brand-alt2-400);
+}
+
+.iconContainer svg {
+  color: var(--fds-semantic-border-neutral-strong);
+  position: relative;
+  z-index: 54;
+  opacity: 0.7;
+  font-size: 4.1rem;
+  transform: rotate(-45deg) scale(1.6);
+}
+
+.iconContainer.red svg {
+  color: var(--fds-brand-alt1-600);
+}
+
+.iconContainer.blue svg {
+  color: var(--fds-brand-alt3-600);
+}
+
+.iconContainer.yellow svg {
+  color: var(--fds-brand-alt2-600);
+}
+
 .content {
-  padding: var(--fds-spacing-4) var(--fds-spacing-7) 0 var(--fds-spacing-7);
+  padding: var(--fds-spacing-4) var(--fds-spacing-10) 0 var(--fds-spacing-10);
 }
 
 .githubLink {
   margin-top: var(--fds-spacing-6);
 }
 
+@media (max-width: 1200px) {
+  .header {
+    padding: 32px;
+  }
+
+  .iconContainer {
+    height: 120px;
+    width: 120px;
+    border-width: 5px;
+    margin-right: 60px;
+  }
+
+  .iconContainer svg {
+    font-size: 3rem;
+  }
+
+  .headerText {
+    padding-right: 190px;
+  }
+}
+
 @media (max-width: 576px) {
   .content {
     padding: 0;
+  }
+
+  .header {
+    padding: 135px 24px 24px;
+  }
+
+  .iconContainer {
+    position: absolute;
+    top: 37px;
+    left: 37px;
+    height: 70px;
+    width: 70px;
+    border-width: 4px;
+  }
+
+  .iconContainer svg {
+    font-size: 2rem;
+  }
+
+  .headerText {
+    padding-right: 0;
   }
 }

@@ -1,6 +1,6 @@
-import { Meta, Primary, Controls, Canvas, ArgsTable } from '@storybook/blocks';
-import { ListHeading } from './ListHeading';
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
 
+import { ListHeading } from './ListHeading';
 import * as ListStories from './List.stories';
 
 <Meta of={ListStories} />
@@ -19,8 +19,7 @@ Lista kan være både ordnet og uordnet, dette endrer du ved å bruke `List.Orde
 `List.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
 
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { List } from '@digdir/design-system-react';
+import { List } from '@digdir/designsystemet-react';
 
 <List.Root>
   <List.Heading>Heading</List.Heading>
@@ -34,10 +33,10 @@ import { List } from '@digdir/design-system-react';
 
 ### Uten heading
 
-Dersom du bruker `List.Heading` så legger vi automatisk på `aria-describedby` på `List.Heading` og `List.Ordered/Unordered`
+Dersom du bruker `List.Heading` så legger vi automatisk på `aria-labelledby` på `List.Heading` og `List.Ordered/Unordered`
 for å gi skjermlesere beskjed om at `List.Heading` er en heading for `List`.
 
-Dersom du ikke legger til en heading kommer vi ikke til å legge til `aria-describedby`.
+Dersom du ikke legger til en heading kommer vi ikke til å legge til `aria-labelledby`.
 
 <Canvas of={ListStories.WithoutHeading} />
 
@@ -55,4 +54,4 @@ Du kan nøste lister så mye du vil, og stylingen vil tilpasse seg automatisk. D
 
 ## `List.Heading`
 
-<ArgsTable of={ListHeading} />
+<ArgTypes of={ListHeading} />

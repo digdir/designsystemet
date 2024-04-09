@@ -53,6 +53,7 @@ export const AccordionHeader = forwardRef<
         <ChevronDownIcon
           aria-hidden
           className={classes.expandIcon}
+          fontSize={'1.5rem'}
         />
         <Paragraph
           asChild
@@ -64,3 +65,5 @@ export const AccordionHeader = forwardRef<
     </Heading>
   );
 });
+
+AccordionHeader.displayName = 'AccordionHeader';

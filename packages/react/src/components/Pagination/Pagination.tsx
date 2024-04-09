@@ -3,10 +3,14 @@ import type * as React from 'react';
 import cl from 'clsx';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
-import { Button } from '../Button';
-import { Paragraph } from '../Typography';
-
+import { PaginationRoot } from './PaginationRoot';
+import { PaginationContent } from './PaginationContent';
+import { PaginationItem } from './PaginationItem';
+import { PaginationButton } from './PaginationButton';
+import { PaginationEllipsis } from './PaginationEllipsis';
 import classes from './Pagination.module.css';
+import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
+import { usePagination } from './usePagination';
 
 export type PaginationProps = {
   /** Sets the text label for the next page button */
@@ -19,7 +23,9 @@ export type PaginationProps = {
   compact?: boolean;
   /** Hides the component's previous and next button labels */
   hideLabels?: boolean;
-  /** Sets the current page */
+  /** Sets the current page
+   * @default 1
+   */
   currentPage: number;
   /** Total number of pages */
   totalPages: number;
@@ -29,47 +35,10 @@ export type PaginationProps = {
   itemLabel?: (currentPage: number) => string;
 } & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
 
-export const getSteps = (
-  props: Pick<PaginationProps, 'compact' | 'currentPage' | 'totalPages'>,
-): ('ellipsis' | number)[] => {
-  /**  Number of always visible pages at the start and end. */
-  const boundaryCount = 1;
-
-  /** Number of always visible pages before and after the current page. */
-  const siblingCount = props.compact ? 0 : 1;
-
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-  if (props.totalPages <= (boundaryCount + siblingCount) * 2 + 3)
-    return range(1, props.totalPages);
-
-  const startPages = range(1, boundaryCount);
-  const endPages = range(
-    props.totalPages - boundaryCount + 1,
-    props.totalPages,
-  );
-
-  const siblingsStart = Math.max(
-    Math.min(
-      props.currentPage - siblingCount,
-      props.totalPages - boundaryCount - siblingCount * 2 - 1,
-    ),
-    boundaryCount + 2,
-  );
-  const siblingsEnd = siblingsStart + siblingCount * 2;
-
-  return [
-    ...startPages,
-    siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
-      ? siblingsStart - 1
-      : 'ellipsis',
-    ...range(siblingsStart, siblingsEnd),
-    (endPages[0] ?? props.totalPages + 1) - siblingsEnd === 2
-      ? siblingsEnd + 1
-      : 'ellipsis',
-    ...endPages,
-  ];
+const iconSize = {
+  small: '1rem',
+  medium: '1.5rem',
+  large: '2rem',
 };
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
@@ -88,81 +57,74 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     }: PaginationProps,
     ref,
   ) => {
+    const { pages, showNextPage, showPreviousPage } = usePagination({
+      compact,
+      currentPage,
+      totalPages,
+    });
     return (
-      <nav
+      <PaginationRoot
         ref={ref}
         aria-label='Pagination'
+        size={size}
+        compact={compact}
         {...rest}
       >
-        <ul className={cl(classes.pagination, classes[size])}>
-          <li>
-            <Button
-              aria-label={previousLabel}
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              className={cl({ [classes.hidden]: !showPreviousPage })}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
-              icon={hideLabels}
-              variant='tertiary'
-              color={'first'}
-              size={size}
-              className={cl({ [classes.hidden]: currentPage === 1 })}
+              aria-label={previousLabel}
             >
-              <ChevronLeftIcon aria-hidden />
+              <ChevronLeftIcon
+                aria-hidden
+                fontSize={iconSize[size]}
+              />
               {!hideLabels && previousLabel}
-            </Button>
-          </li>
-          {getSteps({ compact, currentPage, totalPages }).map((step, i) => (
-            <li
-              className={cl(
-                classes.listitem,
-                classes[size],
-                compact && classes.compact,
-              )}
-              key={`${step}${i}`}
-            >
-              {step === 'ellipsis' ? (
-                <Paragraph
-                  className={cl(classes.ellipsis)}
-                  size={size}
-                >
-                  …
-                </Paragraph>
+            </PaginationPrevious>
+          </PaginationItem>
+          {pages.map((page, i) => (
+            <PaginationItem key={`${page}${i}`}>
+              {page === 'ellipsis' ? (
+                <PaginationEllipsis />
               ) : (
-                <Button
-                  variant={currentPage === step ? 'primary' : 'tertiary'}
-                  aria-current={currentPage === step}
-                  color={'first'}
-                  size={size}
-                  aria-label={itemLabel(step)}
+                <PaginationButton
+                  aria-current={currentPage === page}
+                  isActive={currentPage === page}
+                  aria-label={itemLabel(page)}
                   onClick={() => {
-                    onChange(step);
+                    onChange(page);
                   }}
                 >
-                  {step}
-                </Button>
+                  {page}
+                </PaginationButton>
               )}
-            </li>
+            </PaginationItem>
           ))}
-          <li>
-            <Button
-              variant={'tertiary'}
-              color={'first'}
-              size={size}
-              icon={hideLabels}
+          <PaginationItem>
+            <PaginationNext
               aria-label={nextLabel}
               onClick={() => {
                 onChange(currentPage + 1);
               }}
               className={cl({
-                [classes.hidden]: currentPage === totalPages,
+                [classes.hidden]: !showNextPage,
               })}
             >
-              <ChevronRightIcon aria-hidden />
               {!hideLabels && nextLabel}
-            </Button>
-          </li>
-        </ul>
-      </nav>
+              <ChevronRightIcon
+                aria-hidden
+                fontSize={iconSize[size]}
+              />
+            </PaginationNext>
+          </PaginationItem>
+        </PaginationContent>
+      </PaginationRoot>
     );
   },
 );
+
+Pagination.displayName = 'Pagination';

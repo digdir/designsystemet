@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps } from './List';
+import type { ListProps } from './ListRoot';
 
 import { List } from '.';
 
@@ -68,5 +68,29 @@ describe('List', () => {
       ),
     });
     expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
+  });
+  it('should have aria-labelledby when heading is with passed id', () => {
+    render({
+      children: (
+        <>
+          <List.Heading id='passedId'>Heading</List.Heading>
+          <List.Ordered></List.Ordered>
+        </>
+      ),
+    });
+    expect(screen.getByRole('list')).toHaveAttribute(
+      'aria-labelledby',
+      'passedId',
+    );
+  });
+  it('should not have aria-labelledby when heading is missing', () => {
+    render({
+      children: (
+        <>
+          <List.Ordered></List.Ordered>
+        </>
+      ),
+    });
+    expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
   });
 });
