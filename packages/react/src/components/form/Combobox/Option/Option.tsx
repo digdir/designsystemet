@@ -5,7 +5,6 @@ import cl from 'clsx';
 import { Label } from '../../../Typography';
 import { omit } from '../../../../utilities';
 import { ComboboxContext } from '../ComboboxContext';
-import { ComboboxIdContext } from '../ComboboxIdContext';
 
 import { SelectedIcon } from './Icon/SelectedIcon';
 import classes from './Option.module.css';
@@ -33,20 +32,25 @@ export const ComboboxOption = memo(
     ({ value, description, children, className, ...rest }, forwardedRef) => {
       const labelId = useId();
 
-      const { id, ref, selected, index, onOptionClick, setActiveOption } =
-        useComboboxOption({
-          restId: rest.id,
-          ref: forwardedRef,
-          value,
-        });
+      const {
+        id,
+        ref,
+        selected,
+        index,
+        active,
+        onOptionClick,
+        setActiveOption,
+      } = useComboboxOption({
+        restId: rest.id,
+        ref: forwardedRef,
+        value,
+      });
 
       const context = useContext(ComboboxContext);
-      const idContext = useContext(ComboboxIdContext);
       if (!context) {
         throw new Error('ComboboxOption must be used within a Combobox');
       }
       const { size, multiple } = context;
-      const { activeIndex } = idContext;
 
       return (
         <button
@@ -71,7 +75,7 @@ export const ComboboxOption = memo(
           className={cl(
             classes.option,
             classes[size],
-            activeIndex === index && classes.active,
+            active && classes.active,
             multiple && classes.multiple,
             className,
           )}

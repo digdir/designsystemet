@@ -296,7 +296,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const handleKeyDown = useComboboxKeyboard({
       customIds,
-      options,
       filteredOptions,
       selectedOptions,
       readOnly: formFieldProps.readOnly || false,

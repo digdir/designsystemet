@@ -60,14 +60,15 @@ export default function useComboboxOption({
   }
 
   const selected = selectedOptions[value];
+  const active = activeIndex === index;
 
   useEffect(() => {
     console.log('option effect');
-    if (activeIndex === index) {
+    if (active) {
       dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
       dispatch?.({ type: 'SET_ACTIVE_DESCENDANT', payload: id });
     }
-  }, [activeIndex, generatedId, index, id, dispatch]);
+  }, [generatedId, id, dispatch, active, index]);
 
   const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
 
@@ -75,6 +76,7 @@ export default function useComboboxOption({
     id,
     ref: combinedRef,
     selected,
+    active,
     index,
     onOptionClick: onOptionClickDebounced,
     setActiveOption,

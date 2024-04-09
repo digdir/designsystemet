@@ -69,6 +69,9 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     virtual: true,
     scrollItemIntoView: true,
     enabled: open,
+    onNavigate: (index) => {
+      dispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index || 0 });
+    },
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
