@@ -598,7 +598,7 @@ CustomNewValue.args = {
   label: 'Hvor går reisen?',
 };
 
-const items = Array.from({ length: 1500 }, (_, index) => ({
+const items = Array.from({ length: 2000 }, (_, index) => ({
   name: `Option ${index}`,
   value: `option-${index}`,
 }));
@@ -625,4 +625,8 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
       ))}
     </Combobox>
   );
+};
+
+ThousandsOfOptions.args = {
+  virtual: true,
 };
