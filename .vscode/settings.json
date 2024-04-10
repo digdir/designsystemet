@@ -6,10 +6,7 @@
   "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cssvar.files": [
-    "node_modules/@altinn/figma-design-tokens/dist/tokens.css",
-    "packages/tokens/brand/digdir/tokens.css"
-  ],
+  "cssvar.files": ["packages/theme/brand/digdir/tokens.css"],
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -25,7 +22,6 @@
   ],
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
   "html-css-class-completion.excludeGlobPattern": "**/react-css-modules.css",
-  "jest.jestCommandLine": "yarn test",
   "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
   "cSpell.language": "en,nb",
   "cSpell.ignorePaths": ["**/node_modules/**", "**/package.json"],

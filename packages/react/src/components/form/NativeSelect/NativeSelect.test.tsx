@@ -55,7 +55,7 @@ describe('NativeSelect', () => {
   });
 
   it('Calls "onChange" when the user selects a value', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     const { value } = options[1];
     await user.selectOptions(screen.getByRole('combobox'), value);

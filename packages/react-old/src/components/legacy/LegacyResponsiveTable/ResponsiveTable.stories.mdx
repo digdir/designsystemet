@@ -1,6 +1,6 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/blocks';
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
 
-import { TokensTable, Information } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import { exampleRows } from './ExampleData';
 import classes from './Table.stories.module.css';
@@ -78,13 +78,4 @@ export const Template = () => (
 
 ## Egenskaper
 
-<ArgsTable story='Eksempel' />
-
-## Tokens
-
-<TokensTable
-  componentName='table'
-  description
-  jsonKey='component.table'
-  showPreview={false}
-/>
+<ArgTypes story='Eksempel' />

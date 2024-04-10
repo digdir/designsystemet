@@ -29,7 +29,7 @@ export type LegacyTextAreaProps = {
 /**
  *
  * @note
- * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/felles-textarea--docs Textarea} component.
+ * Replaced by new {@link https://storybook.designsystemet.no/?path=/docs/komponenter-textarea--docs Textarea} component.
  */
 export const LegacyTextArea = forwardRef(
   (

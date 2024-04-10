@@ -1,5 +1,6 @@
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import type { LegacyRadioGroupProps } from './RadioGroup';
 import { LegacyRadioGroup } from './RadioGroup';
@@ -49,7 +50,7 @@ describe('RadioGroup', () => {
           { label: 'Test 2', value: 'duplicated value' },
         ],
       });
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     expect(renderFn).toThrow('Each value in the radio group must be unique.');
   });
 
@@ -79,14 +80,14 @@ describe('RadioGroup', () => {
   });
 
   it('Does not call onChange handler on first render if no value if given', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     expect(onChange).not.toHaveBeenCalled();
   });
 
   it('Does not call onChange handler on first render if a value if given', () => {
     const valueIndex = 1;
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ value: items[valueIndex].value, onChange });
     expect(onChange).not.toHaveBeenCalled();
   });
@@ -94,14 +95,14 @@ describe('RadioGroup', () => {
   it('Does not call onChange handler if component rerenders with the same value', () => {
     const valueIndex = 1;
     const { value } = items[valueIndex];
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { rerender } = render({ value, onChange });
     rerender(<LegacyRadioGroup {...{ ...defaultProps, value, onChange }} />);
     expect(onChange).not.toHaveBeenCalled();
   });
 
   it('Calls onChange handler with the checked value if component rerenders with another value', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { rerender } = render({ value: items[1].value, onChange });
     const valueIndex = 2;
     const { value } = items[valueIndex];
@@ -111,7 +112,7 @@ describe('RadioGroup', () => {
   });
 
   it('Checks radio button and calls onChange handler with the checked value when a radio button is clicked', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     let i = 0;
     while (i < items.length) {
@@ -155,7 +156,7 @@ describe('RadioGroup', () => {
   });
 
   it('Does not call the onChange handler when the "disabled" prop is true', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ disabled: true, onChange });
     await act(() => user.click(getRadioButton(0)));
     expect(onChange).not.toHaveBeenCalled();

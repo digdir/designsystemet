@@ -31,7 +31,7 @@ const render = (props: Partial<TableProps<TestRow>> = {}) => {
         </TableBody>
       </>
     ),
-    onChange: jest.fn(),
+    onChange: vi.fn(),
     selectRows: true,
     selectedValue: { fruit: '' },
     ...props,
@@ -43,7 +43,7 @@ const user = userEvent.setup();
 
 describe('Table', () => {
   it('Calls onChange with correct selectedValue when TableRow is clicked and selectRows is true', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange, selectRows: true });
     await user.click(screen.getByText('Apple'));
     expect(onChange).toHaveBeenCalledWith({
@@ -52,7 +52,7 @@ describe('Table', () => {
   });
 
   it('Does not call onChange when when selectRows is false and TableRow is clicked', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange, selectRows: false });
     await user.click(screen.getByText('Apple'));
     expect(onChange).toHaveBeenCalledTimes(0);

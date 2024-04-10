@@ -2,6 +2,7 @@ import assert from 'assert';
 
 import { act, screen, render as renderRtl } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { lastItem } from '../../../utilities/arrayUtils';
 
@@ -182,7 +183,7 @@ describe('LegacyTabs', () => {
     const renderFn = () => {
       render({ items: [...items, { name: items[0].name, content: <p /> }] });
     };
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     expect(renderFn).toThrow('Each tab value must be unique.');
   });
 
@@ -195,7 +196,7 @@ describe('LegacyTabs', () => {
         ],
       });
     };
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     expect(renderFn).toThrow('Each tab value must be unique.');
   });
 
@@ -203,7 +204,7 @@ describe('LegacyTabs', () => {
     const renderFn = () => {
       render({ activeTab: 'Some name that is not in the list' });
     };
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     const error = 'The given active tab value must exist in the list of items.';
     expect(renderFn).toThrow(error);
   });
@@ -215,7 +216,7 @@ describe('LegacyTabs', () => {
         activeTab: 'Some value that is not in the list',
       });
     };
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     const error = 'The given active tab value must exist in the list of items.';
     expect(renderFn).toThrow(error);
   });
@@ -244,7 +245,7 @@ describe('LegacyTabs', () => {
   });
 
   it("Calls the onChange function with the selected tab's name as a parameter when user selects a tab using the mouse and values are not set", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     await act(() => user.click(getTab(1)));
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -252,7 +253,7 @@ describe('LegacyTabs', () => {
   });
 
   it("Calls the onChange function with the selected tab's value as a parameter when user selects a tab using the mouse and values are set", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ items: itemsWithValues, onChange });
     await act(() => user.click(getTab(1)));
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -260,7 +261,7 @@ describe('LegacyTabs', () => {
   });
 
   it("Calls the onChange function with the selected tab's name as a parameter when user selects a tab using the enter key and values are not set", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     await act(() => user.click(getTab(0)));
     await act(() => user.keyboard('{ArrowRight}'));
@@ -270,7 +271,7 @@ describe('LegacyTabs', () => {
   });
 
   it("Calls the onChange function with the selected tab's value as a parameter when user selects a tab using the enter key and values are set", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ items: itemsWithValues, onChange });
     await act(() => user.click(getTab(0)));
     await act(() => user.keyboard('{ArrowRight}'));
@@ -280,7 +281,7 @@ describe('LegacyTabs', () => {
   });
 
   it("Calls the onChange function with the selected tab's name as a parameter when user selects a tab using the space key and values are not set", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     await act(() => user.click(getTab(0)));
     await act(() => user.keyboard('{ArrowRight}'));
@@ -290,7 +291,7 @@ describe('LegacyTabs', () => {
   });
 
   it("Calls the onChange function with the selected tab's value as a parameter when user selects a tab using the space key and values are set", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ items: itemsWithValues, onChange });
     await act(() => user.click(getTab(0)));
     await act(() => user.keyboard('{ArrowRight}'));

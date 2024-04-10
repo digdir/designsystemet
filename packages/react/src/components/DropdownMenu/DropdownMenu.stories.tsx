@@ -1,8 +1,8 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
 
-import { Button, Divider } from '../..';
+import { Divider } from '../..';
 
 import { DropdownMenu } from '.';
 
@@ -13,7 +13,7 @@ const marginDecorator = (Story: StoryFn) => (
 );
 
 export default {
-  title: 'Felles/DropdownMenu',
+  title: 'Komponenter/DropdownMenu',
   component: DropdownMenu,
 } as Meta;
 
@@ -69,7 +69,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
             href='https://github.com/digdir/designsystemet'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Github
           </DropdownMenu.Item>
           <DropdownMenu.Item
@@ -77,7 +77,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
             href='https://designsystemet.no'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
@@ -99,7 +99,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
             href='https://github.com/digdir/designsystemet'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Github
           </DropdownMenu.Item>
           <DropdownMenu.Item
@@ -107,7 +107,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
             href='https://designsystemet.no'
             target='_blank'
           >
-            <LinkIcon />
+            <LinkIcon fontSize='1.5rem' />
             Designsystemet.no
           </DropdownMenu.Item>
         </DropdownMenu.Group>
@@ -136,7 +136,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
               href='https://github.com/digdir/designsystemet'
               target='_blank'
             >
-              <LinkIcon />
+              <LinkIcon fontSize='1.5rem' />
               Github
             </DropdownMenu.Item>
             <DropdownMenu.Item
@@ -144,55 +144,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
               href='https://designsystemet.no'
               target='_blank'
             >
-              <LinkIcon />
-              Designsystemet.no
-            </DropdownMenu.Item>
-          </DropdownMenu.Group>
-        </DropdownMenu.Content>
-      </DropdownMenu>
-    </>
-  );
-};
-
-export const WithAnchorEl: StoryFn<typeof DropdownMenu> = (args) => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(args.open || false);
-  }, [args.open]);
-
-  return (
-    <>
-      <Button
-        ref={buttonRef}
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        aria-haspopup='menu'
-      >
-        Dropdown
-      </Button>
-      <DropdownMenu
-        {...args}
-        anchorEl={buttonRef.current}
-        open={open}
-        onClose={() => setOpen(false)}
-        portal
-      >
-        <DropdownMenu.Content>
-          <DropdownMenu.Group>
-            <DropdownMenu.Item
-              as='a'
-              href='https://github.com/digdir/designsystemet'
-              target='_blank'
-            >
-              Github
-            </DropdownMenu.Item>
-            <DropdownMenu.Item
-              as='a'
-              href='https://designsystemet.no'
-              target='_blank'
-            >
+              <LinkIcon fontSize='1.5rem' />
               Designsystemet.no
             </DropdownMenu.Item>
           </DropdownMenu.Group>

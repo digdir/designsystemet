@@ -1,5 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { LegacyToggleButtonGroup } from '.';
 import type { LegacyToggleButtonGroupProps, LegacyToggleButtonProps } from '.';
@@ -58,7 +59,7 @@ describe('LegacyToggleButtonGroup', () => {
   });
 
   it('Calls onChange with the selected value when the user clicks on an item', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     const index = 1;
     await user.click(getButtonByIndex(index));
@@ -74,7 +75,7 @@ describe('LegacyToggleButtonGroup', () => {
   });
 
   it('Calls onChange with the selected value when the user presses the enter key on an item', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render({ onChange });
     await user.keyboard('{Tab}');
     await user.keyboard('{Enter}');
@@ -88,14 +89,14 @@ describe('LegacyToggleButtonGroup', () => {
         items: [...items, { value: items[0].value, label: 'Label 4' }],
       });
     };
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     expect(renderFn).toThrow('Each value must be unique.');
   });
 
   it('Throws error if the value given in selectedValue is not present among the items', () => {
     const renderFn = () =>
       render({ selectedValue: 'Some value that is not in the list' });
-    jest.spyOn(console, 'error').mockImplementation(jest.fn()); // Keeps the console output clean
+    vi.spyOn(console, 'error').mockImplementation(vi.fn()); // Keeps the console output clean
     const er = 'The given selected item value must exist in the list of items.';
     expect(renderFn).toThrow(er);
   });

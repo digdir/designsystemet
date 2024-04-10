@@ -1,11 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import {
-  Information,
-  Do,
-  Dont,
-  Stack,
-} from '../../../../../../docs-components';
+import { Do, Dont, Stack } from '../../../../../../docs-components';
 import * as TableStories from '../../Table/Table.stories';
 
 import * as CheckboxStories from './Checkbox.stories';
@@ -15,7 +10,7 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 # Checkbox
 
-Vi bruker `checkbox` (avmerkingsboks) til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/felles-checkbox-group--docs) til å gruppere flere valg.
+Vi bruker `checkbox` (avmerkingsboks) til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/komponenter-checkbox-group--docs) til å gruppere flere valg.
 
 Vær oppmerksom på:
 
@@ -27,10 +22,7 @@ Vær oppmerksom på:
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Checkbox } from '@digdir/designsystemet-react';
 
 <Checkbox.Group legend='What would your D&D party like to eat?'>
@@ -94,7 +86,7 @@ Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 ## Retningslinjer for checkbox
 
-- Hvis det er flere enn 7 svaralternativer bruk heller [`NativeSelect`](/docs/felles-nativeselect--docs) eller `Combobox` (kommer snart).
+- Hvis det er flere enn 7 svaralternativer bruk heller [`NativeSelect`](/docs/komponenter-nativeselect--docs) eller `Combobox` (kommer snart).
 
 - Ikke bruk `Checkbox` til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
   <br />

@@ -12,34 +12,12 @@ import * as PopoverStories from './Popover.stories.tsx';
 ## Slik bruker du `Popover`
 
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Popover } from '@digdir/designsystemet-react';
 
 <Popover>
   <Popover.Trigger>Trigger</Popover.Trigger>
   <Popover.Content>Content</Popover.Content>
 </Popover.Trigger>
-```
-
-### Alternativ `anchorEl`
-
-Alternativt kan du bruke `anchorEl` for å styre hvor `Popover` skal vises, men da må du selv håndtere tilstand for åpning/lukking og attributter for tilgjengelighet.
-
-_`anchorEl` vil bli fjernet i fremtiden, og vi anbefaler å bruke `Popover.Trigger` istedenfor._
-
-```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
-import { Popover } from '@digdir/designsystemet-react';
-
-const anchorEl = useRef(null);
-
-<Button ref={anchorEl}>Trigger</Button>
-
-<Popover anchorEl={anchorEl}>
-  <Popover.Content>
-    Content
-  </Popover.Content>
-</Popover>;
 ```
 
 ## Eksempler
@@ -63,17 +41,13 @@ Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker p
 
 ## Tilgjengelighet
 
-Dersom du bruker `Popover.Trigger` er det innebyd tilgjengelighet.
-
-Brukes `anchorEl` må du sørge for å legge på `aria-expanded={true/false}`, i henhold til åpne/lukket tilstand, på trigger elementet.
-
-<Canvas of={PopoverStories.AnchorEl} />
+Det er innebygd tilgjengelighet i `Popover.Trigger` med `aria-expanded={true/false}`, i henhold til åpne/lukket tilstand, på trigger elementet.
 
 ## `Popover.Trigger`
 
 Med `Popover.Trigger` kan du styre hvordan triggeren til `Popover` skal vises. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
 Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Popover.Trigger`.
-Triggeren rendres som [Button](/docs/felles-button--docs) som standard.
+Triggeren rendres som [Button](/docs/komponenter-button--docs) som standard.
 
 Dette vil rendre ein input som triggeren din:
 

@@ -24,11 +24,6 @@ export type PopoverProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-  /** Element the popover anchors to
-   * @deprecated Use `Popover.Trigger` instead
-   * @see [Documentation](https://storybook.designsystemet.no/?path=/docs/felles-popover--docs)
-   */
-  anchorEl?: Element | null;
   /** Callback function when popover changes open state */
   onOpenChange?: (open: boolean) => void;
   /**
@@ -47,7 +42,6 @@ export const Popover = ({
   portal,
   onOpenChange,
   onClose,
-  ...rest
 }: PopoverProps) => {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
@@ -64,7 +58,7 @@ export const Popover = ({
     setInternalOpen(open ?? false);
   }, [open]);
 
-  const anchorEl = rest.anchorEl ?? triggerRef.current;
+  const anchorEl = triggerRef.current;
 
   return (
     <PopoverContext.Provider

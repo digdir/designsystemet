@@ -19,7 +19,7 @@ import { Card } from '.';
 type Story = StoryFn<typeof Card>;
 
 export default {
-  title: 'Felles/Card',
+  title: 'Komponenter/Card',
   component: Card,
 } as Meta;
 
@@ -348,7 +348,10 @@ export const Composed: Story = () => (
           color='danger'
           size='small'
         >
-          <TrashFillIcon aria-hidden />
+          <TrashFillIcon
+            aria-hidden
+            fontSize='1.5rem'
+          />
           Fjern
         </Button>
       </div>

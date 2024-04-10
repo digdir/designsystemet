@@ -1,4 +1,4 @@
-import { Meta, Primary, Controls, Canvas, ArgsTable } from '@storybook/blocks';
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
 
 import { ListHeading } from './ListHeading';
 import * as ListStories from './List.stories';
@@ -19,7 +19,6 @@ Lista kan være både ordnet og uordnet, dette endrer du ved å bruke `List.Orde
 `List.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
 
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { List } from '@digdir/designsystemet-react';
 
 <List.Root>
@@ -55,4 +54,4 @@ Du kan nøste lister så mye du vil, og stylingen vil tilpasse seg automatisk. D
 
 ## `List.Heading`
 
-<ArgsTable of={ListHeading} />
+<ArgTypes of={ListHeading} />

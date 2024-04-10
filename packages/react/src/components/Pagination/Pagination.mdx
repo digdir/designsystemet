@@ -1,7 +1,5 @@
 import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
 
-import { Information } from '../../../../../docs-components';
-
 import * as PaginationStories from './Pagination.stories';
 
 <Meta of={PaginationStories} />
@@ -10,27 +8,24 @@ import * as PaginationStories from './Pagination.stories';
 
 `Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
 
-Komponenten kan brukes på forskjellige måter, se under [bruk](/docs/felles-pagination--docs#bruk) for mer informasjon
+Komponenten kan brukes på forskjellige måter, se under [bruk](/docs/komponenter-pagination--docs#bruk) for mer informasjon
 
 Vær oppmerksom på:
 
 - Knappene er som standard `button` elementer.
 - Dersom ny side fører til ny side sørg for at paginering knapper er `a` elementer.
-  - Se eksempel [Paginering med lenker](/docs/felles-pagination--with-anchor).
+  - Se eksempel [Paginering med lenker](/docs/komponenter-pagination--with-anchor).
 
 <Primary />
 <Controls of={PaginationStories.Preview} />
 
 ## Bruk
 
-<Information text='token' />
-
 ### Eksempel på bruk med `Pagination`
 
 `Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
 
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Pagination } from '@digdir/designsystemet-react';
 
 const [currentPage, setCurrentPage] = useState(1);

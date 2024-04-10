@@ -8,11 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": false
   },
-  "include": [
-    "./src",
-    "./stories",
-    "declarations.d.ts",
-    "../../test/jest.setup.ts"
-  ],
+  "include": ["./src", "./stories", "declarations.d.ts"],
   "rootDir": "./src"
 }

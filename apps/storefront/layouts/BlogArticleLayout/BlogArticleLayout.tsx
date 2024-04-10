@@ -1,7 +1,7 @@
 import type * as React from 'react';
-import { Heading, Ingress, Paragraph } from '@digdir/design-system-react';
+import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
 
-import { Container, MdxContent } from '../../components';
+import { Container, MdxContent, Image, Meta } from '../../components';
 import { Link } from '../../components/Link/Link';
 
 import classes from './BlogArticleLayout.module.css';
@@ -9,11 +9,14 @@ import { Figures } from './components/Figures';
 
 type BlogArticleLayoutProps = {
   content: React.ReactNode;
-  heading?: string;
-  ingress?: string;
+  heading: string;
+  ingress: string;
   date?: string;
   author?: string;
   figureCount?: number;
+  imageSrc: string;
+  imageAlt: string;
+  imageCaption: string;
 };
 
 const FIGURE_COUNT = 4;
@@ -24,10 +27,18 @@ const BlogArticleLayout = ({
   ingress,
   date,
   author,
+  imageSrc,
+  imageAlt,
+  imageCaption,
   figureCount = FIGURE_COUNT,
 }: BlogArticleLayoutProps) => {
   return (
     <div className={classes.wrapper}>
+      <Meta
+        title={heading}
+        description={ingress}
+        image={imageSrc}
+      />
       <Container className={classes.page}>
         {Array.from({ length: figureCount }).map((_, index) => (
           <Figures
@@ -60,6 +71,12 @@ const BlogArticleLayout = ({
             </Paragraph>
           </div>
           <MdxContent classname={classes.content}>
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              caption={imageCaption}
+              boxShadow={false}
+            />
             {content}
             <div className={classes.wantToWrite}>
               <Heading

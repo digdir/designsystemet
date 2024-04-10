@@ -132,7 +132,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           )}
 
           <div className={classes.field}>
-            <div className={classes.field}>
+            <div className={cl(classes.field, classes[size])}>
               {isSimple && (
                 <MagnifyingGlassIcon
                   className={classes.icon}
@@ -147,7 +147,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 className={cl(
                   classes.input,
                   utilityClasses.focusable,
-                  classes[size],
                   isSimple && classes.simple,
                   !isSimple && classes.withSearchButton,
                 )}

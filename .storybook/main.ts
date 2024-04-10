@@ -1,18 +1,25 @@
 import { dirname, join } from 'path';
-import remarkGfm from 'remark-gfm';
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/react-vite';
+
 const config: StorybookConfig = {
+  docs: {
+    autodocs: true,
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   stories: [
     '../packages/*.mdx',
-    '../packages/!(react-old)**/*.mdx',
-    '../packages/!(react-old)**/*.stories.ts?(x)',
+    '../packages/css/**/*.mdx',
+    '../packages/theme/**/*.mdx',
+    '../packages/react/**/*.mdx',
+    '../packages/react/**/*.stories.ts?(x)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@etchteam/storybook-addon-css-variables-theme'),
     {
       name: 'storybook-css-modules',
       options: {
@@ -24,34 +31,9 @@ const config: StorybookConfig = {
         },
       },
     },
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
-        },
-      },
-    },
   ],
   staticDirs: ['../assets'],
-  framework: {
-    name: getAbsolutePath('@storybook/react-webpack5'),
-    options: { builder: { useSWC: true } },
-  },
-  docs: {
-    autodocs: true,
-  },
-  swc: (config, options) => ({
-    jsc: {
-      transform: {
-        react: {
-          runtime: 'automatic',
-        },
-      },
-    },
-  }),
+  framework: getAbsolutePath('@storybook/react-vite'),
 };
 export default config;
 

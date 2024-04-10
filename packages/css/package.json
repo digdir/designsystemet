@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "0.2.1",
+  "version": "0.3.3-alpha.0",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
@@ -13,6 +13,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "browserslist": [
+    "cover 90% in NO",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "keywords": [
     "css",
     "designsystem",
@@ -24,6 +32,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.19",
     "cssnano": "^6.0.2",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",

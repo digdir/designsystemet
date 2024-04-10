@@ -5,7 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 import { Pagination, usePagination } from '.';
 
 export default {
-  title: 'Felles/Pagination',
+  title: 'Komponenter/Pagination',
   component: Pagination,
 } as Meta;
 
@@ -63,7 +63,10 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
               visibility: showPreviousPage ? undefined : 'hidden',
             }}
           >
-            <ChevronLeftIcon aria-hidden />
+            <ChevronLeftIcon
+              aria-hidden
+              fontSize='1.5rem'
+            />
             Forrige
           </Pagination.Previous>
         </Pagination.Item>
@@ -92,7 +95,10 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
             }}
           >
             Neste
-            <ChevronRightIcon aria-hidden />
+            <ChevronRightIcon
+              aria-hidden
+              fontSize='1.5rem'
+            />
           </Pagination.Next>
         </Pagination.Item>
       </Pagination.Content>
@@ -119,7 +125,10 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
             }}
           >
             <a href='#forrige-side'>
-              <ChevronLeftIcon aria-hidden />
+              <ChevronLeftIcon
+                aria-hidden
+                fontSize='1.5rem'
+              />
               Forrige
             </a>
           </Pagination.Previous>
@@ -151,7 +160,10 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
           >
             <a href='#neste-side'>
               Neste
-              <ChevronRightIcon aria-hidden />
+              <ChevronRightIcon
+                aria-hidden
+                fontSize='1.5rem'
+              />
             </a>
           </Pagination.Next>
         </Pagination.Item>

@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 
-import { Information, TokensTable } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import * as TextFieldStories from './TextField.stories';
 
@@ -10,7 +10,7 @@ import * as TextFieldStories from './TextField.stories';
 
 <Information
   text='deprecated'
-  description='**Denne komponenten er erstattet av ny [Textfield](/?path=/docs/felles-textfield--docs) komponent.**'
+  description='**Denne komponenten er erstattet av ny [Textfield](/?path=/docs/komponenter-textfield--docs) komponent.**'
 />
 
 `TextField` er en tekstboks som tar imot korte, rene tekster uten linjeskift. For lengre tekster, bruk `TextArea`.
@@ -73,12 +73,3 @@ Egenskapen `formatting` kan brukes til å gi tekstfeltet spesielle formater, som
 <Canvas>
   <Story of={TextFieldStories.AntallTegnIgjenASkrive} />
 </Canvas>
-
-## Tokens
-
-<TokensTable
-  jsonKey='component.textfield'
-  componentName='textfield'
-  showPreview={false}
-  description
-/>

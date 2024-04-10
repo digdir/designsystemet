@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 
-import { Information, TokensTable } from '../../../../../../docs-components';
+import { Information } from '../../../../../../docs-components';
 
 import * as LegacyTextAreaStories from './TextArea.stories';
 
@@ -10,7 +10,7 @@ import * as LegacyTextAreaStories from './TextArea.stories';
 
 <Information
   text='deprecated'
-  description='**Denne komponenten er erstattet av ny [Textarea](/?path=/docs/felles-textarea--docs) komponent.**'
+  description='**Denne komponenten er erstattet av ny [Textarea](/?path=/docs/komponenter-textarea--docs) komponent.**'
 />
 
 `LegacyTextArea` brukes til å ta imot lengre tekster, gjerne over flere linjer.
@@ -65,12 +65,3 @@ import { LegacyTextArea } from '@digdir/design-system-react';
 <Canvas>
   <Story of={LegacyTextAreaStories.AntallTegnIgjenASkrive} />
 </Canvas>
-
-## Tokens
-
-<TokensTable
-  jsonKey='component.textfield'
-  componentName='textfield'
-  showPreview={false}
-  description
-/>

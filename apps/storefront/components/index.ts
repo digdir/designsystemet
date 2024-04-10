@@ -22,3 +22,4 @@ export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
 export { Image } from './Image';
+export { ComponentCard } from './ComponentCard';

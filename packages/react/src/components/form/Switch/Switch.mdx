@@ -1,7 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import { Information } from '../../../../../../docs-components';
-
 import * as SwitchStories from './Switch.stories';
 
 <Meta of={SwitchStories} />
@@ -13,10 +11,7 @@ import * as SwitchStories from './Switch.stories';
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/designsystemet-theme'; // Importeres kun en gang i appen din.
 import { Switch, Fieldset } from '@digdir/designsystemet-react';
 
 <Fieldset legend='Profil instillinger'>
@@ -26,7 +21,7 @@ import { Switch, Fieldset } from '@digdir/designsystemet-react';
 
 ## Gruppering
 
-Bruker [Fieldset](/docs/felles-fieldset--docs) til gruppering.
+Bruker [Fieldset](/docs/komponenter-fieldset--docs) til gruppering.
 
 <Canvas of={SwitchStories.FullWidth} />
 

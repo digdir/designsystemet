@@ -1,5 +1,4 @@
 .button {
-  --fc-button-icon-size: var(--fds-sizing-4);
   --fc-button-padding: 0 var(--fds-spacing-4);
   --fc-button-color: var(--fds-semantic-text-action-first-on_action);
 
@@ -49,39 +48,31 @@
   opacity: var(--fds-opacity-disabled);
 }
 
-.button > :is(svg, img, i) {
-  height: var(--fc-button-icon-size);
-  width: var(--fc-button-icon-size);
-}
-
 .small {
   --fc-button-padding: 0 var(--fds-spacing-3);
-  --fc-button-icon-size: var(--fds-sizing-4);
 
   gap: var(--fds-sizing-1);
   font: var(--fds-typography-paragraph-short-small);
   font-family: inherit;
-  min-height: var(--fds-sizing-8);
+  min-height: var(--fds-sizing-10);
 }
 
 .medium {
   --fc-button-padding: 0 var(--fds-spacing-4);
-  --fc-button-icon-size: var(--fds-sizing-6);
 
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-medium);
   font-family: inherit;
-  min-height: var(--fds-sizing-10);
+  min-height: var(--fds-sizing-12);
 }
 
 .large {
   --fc-button-padding: 0 var(--fds-spacing-5);
-  --fc-button-icon-size: var(--fds-sizing-8);
 
   gap: var(--fds-sizing-2);
   font: var(--fds-typography-paragraph-short-large);
   font-family: inherit;
-  min-height: var(--fds-sizing-12);
+  min-height: var(--fds-sizing-14);
 }
 
 .fullWidth {
