@@ -1406,7 +1406,8 @@
 }
 
 .fds-pagination-listitem-ddc0278f:where(.fds-pagination-compact-ddc0278f) {
-  --fsdc-pagination-listitem-margin: var(--fds-spacing-1);
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-0);
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-1);
 }
 
 .fds-pagination-pagination-ddc0278f .fds-pagination-ellipsis-ddc0278f {
