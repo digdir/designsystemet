@@ -112,14 +112,11 @@ describe('Dropdown', () => {
     expect(screen.queryByText('Item')).toBeInTheDocument();
   });
 
-  it('should be able to render `Dropdown.Item` as a link', async () => {
+  it('should be able to render `Dropdown.Item` as a anchor element using asChild', async () => {
     const { user } = await render({
       children: (
-        <DropdownMenu.Item
-          as='a'
-          href='#'
-        >
-          Item 2
+        <DropdownMenu.Item asChild>
+          <a href='/'>Anchor</a>
         </DropdownMenu.Item>
       ),
     });
@@ -127,8 +124,8 @@ describe('Dropdown', () => {
 
     await user.click(dropdownTrigger);
 
-    expect(screen.getByText('Item 2')).toHaveAttribute('href', '#');
-    expect(screen.getByText('Item 2').tagName).toBe('A');
+    expect(screen.getByText('Anchor')).toHaveAttribute('href', '/');
+    expect(screen.getByText('Anchor').tagName).toBe('A');
   });
 
   it('Item should have role="menuitem"', async () => {
