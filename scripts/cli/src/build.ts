@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import path from 'path';
 
 import StyleDictionary from 'style-dictionary';
@@ -8,6 +9,7 @@ import type {
   FileHeader,
 } from 'style-dictionary';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
+import yargs from 'yargs';
 
 import {
   sizePx,
@@ -25,11 +27,37 @@ import {
   setup as setupFormatters,
 } from './formatters';
 
+const argv = yargs(process.argv.slice(2))
+  .options({
+    brands: {
+      type: 'array',
+      default: [],
+      describe: 'Brand files to build',
+      alias: 'b',
+    },
+    tokens: {
+      type: 'string',
+      describe: 'Location for design-tokens',
+      demandOption: true,
+      alias: 't',
+    },
+    preview: {
+      alias: 'p',
+      type: 'boolean',
+      describe: 'Generate typescript token preview files',
+    },
+  })
+  .parseSync();
+
+if (argv.brands) {
+  console.warn('Missing brands');
+}
+
 void registerTransforms(StyleDictionary);
 
-// File name under design-tokens/Brand
-const brands = ['Digdir', 'Tilsynet', 'Altinn', 'Brreg'] as const;
-type Brands = (typeof brands)[number];
+const pickBrands = (x: string | number): x is string => typeof x === 'string';
+
+type Brand = string;
 
 const prefix = 'fds';
 const basePxFontSize = 16;
@@ -43,6 +71,7 @@ const fileheader: Named<{ fileHeader: FileHeader }> = {
 
 const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
 const packageTokensPath = path.resolve('../../packages/theme/brand');
+const tokensPath = argv.tokens;
 
 setupFormatters('./../../prettier.config.js');
 
@@ -74,9 +103,7 @@ StyleDictionary.registerTransformGroup({
   ],
 });
 
-const baseConfig = (brand: Brands): Partial<Config> => {
-  const tokensPath = '../../design-tokens';
-
+const baseConfig = (brand: Brand): Partial<Config> => {
   return {
     include: [
       `${tokensPath}/Brand/${brand}.json`,
@@ -89,7 +116,7 @@ const baseConfig = (brand: Brands): Partial<Config> => {
 const excludeSource = (token: TransformedToken) =>
   !token.filePath.includes('Core.json');
 
-const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
+const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
@@ -129,7 +156,7 @@ const getTokensPackageConfig = (brand: Brands, targetFolder = ''): Config => {
   };
 };
 
-const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
+const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
@@ -165,22 +192,28 @@ const getStorefrontConfig = (brand: Brands, targetFolder = ''): Config => {
   };
 };
 
-console.log('🏗️  Started building package tokens…');
+const brands = argv.brands.filter(pickBrands);
 
-brands.map((brand) => {
+if (brands.length > 0) {
+  console.log('➡️  Recieved following brands: ', brands);
+
+  console.log('🏗️  Start building CSS tokens');
+
+  brands.map((brand) => {
+    console.log('\n---------------------------------------');
+
+    console.log(`\n👷 Processing ${brand}`);
+
+    const tokensPackageSD = StyleDictionary.extend(
+      getTokensPackageConfig(brand, packageTokensPath),
+    );
+
+    tokensPackageSD.buildAllPlatforms();
+  });
+
   console.log('\n---------------------------------------');
-
-  console.log(`\n👷 Processing ${brand}`);
-
-  const tokensPackageSD = StyleDictionary.extend(
-    getTokensPackageConfig(brand, packageTokensPath),
-  );
-
-  tokensPackageSD.buildAllPlatforms();
-});
-
-console.log('\n---------------------------------------');
-console.log('\n🏁 Finished building package tokens!');
+  console.log('\n🏁 Finished building package tokens!');
+}
 
 console.log('\n=======================================');
 console.log('\n🏗️  Started building storefront tokens…');
