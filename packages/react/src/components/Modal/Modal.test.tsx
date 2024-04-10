@@ -1,8 +1,6 @@
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { ModalRootProps } from './ModalRoot';
-
 import type { ModalDialogProps } from './';
 import { Modal } from './';
 
@@ -20,7 +18,7 @@ const Comp = (args: Partial<ModalDialogProps>) => {
   );
 };
 
-const render = async (props: Partial<ModalRootProps> = {}) => {
+const render = async (props: Partial<ModalDialogProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
