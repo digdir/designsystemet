@@ -2,12 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { RemovableChip } from './Removable';
 
-const meta: Meta<typeof RemovableChip> = {
+export default {
   title: 'Komponenter/Chip/Removable',
   component: RemovableChip,
-};
-
-export default meta;
+} as Meta;
 
 type Story = StoryObj<typeof RemovableChip>;
 
