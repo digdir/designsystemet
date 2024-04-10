@@ -519,7 +519,7 @@
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
-          "lineHeight": "{lineHeights.600}",
+          "lineHeight": "{lineHeights.700}",
           "fontSize": "{font-size.f4}"
         },
         "type": "typography"
@@ -528,7 +528,7 @@
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
-          "lineHeight": "{lineHeights.600}",
+          "lineHeight": "{lineHeights.700}",
           "fontSize": "{font-size.f3}"
         },
         "type": "typography"
@@ -537,7 +537,7 @@
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
-          "lineHeight": "{lineHeights.600}",
+          "lineHeight": "{lineHeights.700}",
           "fontSize": "{font-size.f2}"
         },
         "type": "typography"
@@ -546,7 +546,7 @@
         "value": {
           "fontFamily": "{fontFamilies.inter}",
           "fontWeight": "{fontWeights.regular}",
-          "lineHeight": "{lineHeights.600}",
+          "lineHeight": "{lineHeights.700}",
           "fontSize": "{font-size.f1}"
         },
         "type": "typography"
