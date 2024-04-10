@@ -52,7 +52,8 @@
 }
 
 .listitem:where(.compact) {
-  --fsdc-pagination-listitem-margin: var(--fds-spacing-1);
+  --fsdc-pagination-listitem-margin: var(--fds-spacing-0);
+  --fdsc-pagination-chevron-margin: var(--fds-spacing-1);
 }
 
 .pagination .ellipsis {
