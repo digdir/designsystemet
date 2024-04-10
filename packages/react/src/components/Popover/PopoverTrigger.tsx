@@ -1,6 +1,7 @@
 import { forwardRef, useContext, useEffect } from 'react';
 import type * as React from 'react';
 import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 
 import { Button } from '../Button';
 
@@ -11,7 +12,7 @@ export type PopoverTriggerProps = React.ComponentPropsWithRef<typeof Button>;
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   PopoverTriggerProps
->(({ id, ...rest }, ref) => {
+>(({ id, asChild, ...rest }, ref) => {
   const {
     triggerRef,
     internalOpen,
@@ -28,17 +29,17 @@ export const PopoverTrigger = forwardRef<
     id && setTriggerId?.(id);
   }, [id, setTriggerId]);
 
+  const Component = asChild ? Slot : Button;
+
   return (
-    <Button
+    <Component
       ref={mergedRefs}
       onClick={() => {
         if (!isControlled) setInternalOpen(!internalOpen);
       }}
       aria-expanded={internalOpen}
-      role='button'
       aria-controls={internalOpen ? popoverId : undefined}
       id={triggerId}
-      type='button'
       {...rest}
     />
   );

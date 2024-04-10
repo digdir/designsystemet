@@ -24,19 +24,25 @@ export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group heading='Links'>
-            <DropdownMenu.Item
-              as='a'
-              href='https://github.com/digdir/designsystemet'
-              target='_blank'
-            >
-              Github
+            <DropdownMenu.Item asChild>
+              <a
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon fontSize='1.5rem' />
+                Github
+              </a>
             </DropdownMenu.Item>
-            <DropdownMenu.Item
-              as='a'
-              href='https://designsystemet.no'
-              target='_blank'
-            >
-              Designsystemet.no
+            <DropdownMenu.Item asChild>
+              <a
+                href='https://designsystemet.no'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon fontSize='1.5rem' />
+                Designsystemet.no
+              </a>
             </DropdownMenu.Item>
           </DropdownMenu.Group>
           <Divider />
@@ -64,21 +70,25 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
-          <DropdownMenu.Item
-            as='a'
-            href='https://github.com/digdir/designsystemet'
-            target='_blank'
-          >
-            <LinkIcon fontSize='1.5rem' />
-            Github
+          <DropdownMenu.Item asChild>
+            <a
+              href='https://github.com/digdir/designsystemet'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <LinkIcon fontSize='1.5rem' />
+              Github
+            </a>
           </DropdownMenu.Item>
-          <DropdownMenu.Item
-            as='a'
-            href='https://designsystemet.no'
-            target='_blank'
-          >
-            <LinkIcon fontSize='1.5rem' />
-            Designsystemet.no
+          <DropdownMenu.Item asChild>
+            <a
+              href='https://designsystemet.no'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <LinkIcon fontSize='1.5rem' />
+              Designsystemet.no
+            </a>
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
@@ -94,21 +104,25 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
-          <DropdownMenu.Item
-            as='a'
-            href='https://github.com/digdir/designsystemet'
-            target='_blank'
-          >
-            <LinkIcon fontSize='1.5rem' />
-            Github
+          <DropdownMenu.Item asChild>
+            <a
+              href='https://github.com/digdir/designsystemet'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <LinkIcon fontSize='1.5rem' />
+              Github
+            </a>
           </DropdownMenu.Item>
-          <DropdownMenu.Item
-            as='a'
-            href='https://designsystemet.no'
-            target='_blank'
-          >
-            <LinkIcon fontSize='1.5rem' />
-            Designsystemet.no
+          <DropdownMenu.Item asChild>
+            <a
+              href='https://designsystemet.no'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <LinkIcon fontSize='1.5rem' />
+              Designsystemet.no
+            </a>
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
@@ -131,21 +145,25 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group>
-            <DropdownMenu.Item
-              as='a'
-              href='https://github.com/digdir/designsystemet'
-              target='_blank'
-            >
-              <LinkIcon fontSize='1.5rem' />
-              Github
+            <DropdownMenu.Item asChild>
+              <a
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon fontSize='1.5rem' />
+                Github
+              </a>
             </DropdownMenu.Item>
-            <DropdownMenu.Item
-              as='a'
-              href='https://designsystemet.no'
-              target='_blank'
-            >
-              <LinkIcon fontSize='1.5rem' />
-              Designsystemet.no
+            <DropdownMenu.Item asChild>
+              <a
+                href='https://designsystemet.no'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon fontSize='1.5rem' />
+                Designsystemet.no
+              </a>
             </DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
