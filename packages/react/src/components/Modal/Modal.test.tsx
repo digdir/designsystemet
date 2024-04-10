@@ -14,7 +14,7 @@ const Comp = (args: Partial<ModalDialogProps>) => {
     <>
       <Modal.Root>
         <Modal.Trigger>{OPEN_MODAL}</Modal.Trigger>
-        <Modal.Dialog open={args.open}>{args.children}</Modal.Dialog>
+        <Modal.Dialog {...args} />
       </Modal.Root>
     </>
   );
