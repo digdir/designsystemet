@@ -2,10 +2,11 @@ import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
+import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
 import { omit } from '../../../../utilities';
-import { ComboboxIdContext, ComboboxIdDispatch } from '../ComboboxIdContext';
+import { useComboboxId } from '../ComboboxIdContext';
 
 import classes from './Custom.module.css';
 
@@ -52,41 +53,38 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
 
     const randomId = useId();
 
+    const { activeIndex } = useComboboxId();
     const context = useContext(ComboboxContext);
-    const idContext = useContext(ComboboxIdContext);
-    const idDispatch = useContext(ComboboxIdDispatch);
-    const { activeIndex } = idContext;
 
-    const setActiveIndex = (index: number) => {
-      idDispatch?.({ type: 'SET_ACTIVE_INDEX', payload: index });
-    };
     if (!context) {
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { size, optionValues } = context;
+    const { size, customIds, listRef, getItemProps } = context;
 
     const index = useMemo(
-      () => (id && optionValues.indexOf(id)) || 0,
-      [optionValues, id],
+      () => (id && customIds.indexOf(id)) || 0,
+      [id, customIds],
     );
+
+    const combinedRef = useMergeRefs([
+      (node: HTMLElement | null) => {
+        listRef.current[index] = node;
+      },
+      ref,
+    ]);
 
     return (
       <Component
-        ref={ref}
+        ref={combinedRef}
         tabIndex={-1}
         className={cl(classes.custom, classes[size], className)}
         id={id || randomId}
         role='option'
         aria-selected={activeIndex === index}
         data-active={activeIndex === index}
-        onMouseEnter={() => {
-          typeof index === 'number' && setActiveIndex(index);
-        }} // Set active index on hover
-        onFocus={() => {
-          typeof index === 'number' && setActiveIndex(index);
-        }}
         {...omit(['interactive'], rest)}
+        {...omit(['onClick', 'onPointerLeave'], getItemProps())}
       />
     );
   },

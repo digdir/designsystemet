@@ -339,6 +339,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           clearButtonLabel: cleanButtonLabel || clearButtonLabel,
           hideClearButton,
           listId,
+          customIds,
           setInputValue,
           handleKeyDown,
           setOpen,

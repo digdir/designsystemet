@@ -114,7 +114,8 @@ export default function useCombobox({
     let optionsChildren;
 
     const valuesArray = Object.values(options);
-    const children_ = Children.toArray(children).filter((child) =>
+    const allChildren = Children.toArray(children);
+    const children_ = allChildren.filter((child) =>
       isComboboxOption(child),
     ) as ReactElement<ComboboxOptionProps>[];
 
@@ -140,7 +141,7 @@ export default function useCombobox({
       return filter(inputValue, { ...option }) || isSelected;
     });
     // find all custom components with `interactive=true` and generate random values for them
-    const customChildren = children_.filter((child) => {
+    const customChildren = allChildren.filter((child) => {
       return isInteractiveComboboxCustom(child);
     }) as ReactElement<ComboboxCustomProps>[];
 
