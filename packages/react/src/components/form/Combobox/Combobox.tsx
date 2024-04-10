@@ -293,13 +293,11 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
 
     const handleKeyDown = useComboboxKeyboard({
-      customIds,
       filteredOptions,
       selectedOptions,
       readOnly: formFieldProps.readOnly || false,
       disabled: disabled,
       multiple,
-      restChildren,
       inputValue,
       options,
       open,
