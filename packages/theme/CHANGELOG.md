@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1-alpha.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.0...@digdir/designsystemet-theme@0.15.1-alpha.2) (2024-04-09)
+
+### Features
+
+- 🎨 Use new sizing scale for typography and components ([#1696](https://github.com/digdir/designsystemet/issues/1696)) ([61b1af7](https://github.com/digdir/designsystemet/commit/61b1af79d96049b664c3fd5725fdffe0f34b27cb))
+
 ## [0.15.1-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.0...@digdir/designsystemet-theme@0.15.1-alpha.1) (2024-04-04)
 
 ### Reverts

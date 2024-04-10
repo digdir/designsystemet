@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.2...@digdir/designsystemet-css@0.3.3-alpha.0) (2024-04-09)
+
+### Features
+
+- 🎨 Use new sizing scale for typography and components ([#1696](https://github.com/digdir/designsystemet/issues/1696)) ([61b1af7](https://github.com/digdir/designsystemet/commit/61b1af79d96049b664c3fd5725fdffe0f34b27cb))
+
 ## [0.3.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.1...@digdir/designsystemet-css@0.3.2) (2024-04-08)
 
 ### Bug Fixes

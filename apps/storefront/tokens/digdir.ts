@@ -2520,7 +2520,7 @@ export const typography = [
     path: ['typography', 'heading', 'xxsmall'],
   },
   {
-    value: "400 1.875rem/1.6 'Inter'",
+    value: "400 1.875rem/1.7 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2528,7 +2528,7 @@ export const typography = [
       value: {
         fontFamily: '{fontFamilies.inter}',
         fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.600}',
+        lineHeight: '{lineHeights.700}',
         fontSize: '{font-size.f4}',
       },
       type: 'typography',
@@ -2538,7 +2538,7 @@ export const typography = [
     path: ['typography', 'ingress', 'large'],
   },
   {
-    value: "400 1.5rem/1.6 'Inter'",
+    value: "400 1.5rem/1.7 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2546,7 +2546,7 @@ export const typography = [
       value: {
         fontFamily: '{fontFamilies.inter}',
         fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.600}',
+        lineHeight: '{lineHeights.700}',
         fontSize: '{font-size.f3}',
       },
       type: 'typography',
@@ -2556,7 +2556,7 @@ export const typography = [
     path: ['typography', 'ingress', 'medium'],
   },
   {
-    value: "400 1.3125rem/1.6 'Inter'",
+    value: "400 1.3125rem/1.7 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2564,7 +2564,7 @@ export const typography = [
       value: {
         fontFamily: '{fontFamilies.inter}',
         fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.600}',
+        lineHeight: '{lineHeights.700}',
         fontSize: '{font-size.f2}',
       },
       type: 'typography',
@@ -2574,7 +2574,7 @@ export const typography = [
     path: ['typography', 'ingress', 'small'],
   },
   {
-    value: "400 1.125rem/1.6 'Inter'",
+    value: "400 1.125rem/1.7 'Inter'",
     type: 'typography',
     filePath: '../../design-tokens/Base/Semantic.json',
     isSource: false,
@@ -2582,7 +2582,7 @@ export const typography = [
       value: {
         fontFamily: '{fontFamilies.inter}',
         fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.600}',
+        lineHeight: '{lineHeights.700}',
         fontSize: '{font-size.f1}',
       },
       type: 'typography',
