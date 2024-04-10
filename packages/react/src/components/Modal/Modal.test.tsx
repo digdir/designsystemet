@@ -8,19 +8,13 @@ import { Modal } from './';
 
 const HEADER_TITLE = 'Modal header title';
 const OPEN_MODAL = 'Open Modal';
-const MODAL_ID = 'modal-id';
 
 const Comp = (args: Partial<ModalDialogProps>) => {
   return (
     <>
       <Modal.Root>
         <Modal.Trigger>{OPEN_MODAL}</Modal.Trigger>
-        <Modal.Dialog
-          id={MODAL_ID}
-          open={args.open}
-        >
-          {args.children}
-        </Modal.Dialog>
+        <Modal.Dialog open={args.open}>{args.children}</Modal.Dialog>
       </Modal.Root>
     </>
   );
