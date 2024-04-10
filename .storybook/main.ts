@@ -20,7 +20,6 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@storybook/addon-mdx-gfm'),
     {
       name: 'storybook-css-modules',
       options: {
@@ -32,6 +31,7 @@ const config: StorybookConfig = {
         },
       },
     },
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
   ],
   staticDirs: ['../assets'],
   framework: getAbsolutePath('@storybook/react-vite'),
