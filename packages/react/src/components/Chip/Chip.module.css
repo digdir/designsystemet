@@ -73,7 +73,7 @@
 }
 
 .spacing {
-  padding-left: var(--fds-spacing-1) !important;
+  padding-left: var(--fds-spacing-2) !important;
 }
 
 .small .checkmarkIcon {
@@ -150,16 +150,19 @@
   --fdsc-chip-height: var(--fds-sizing-7);
   --fdsc-chip-padding: var(--fds-spacing-3);
   --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
+  --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-1);
 }
 
 .medium {
   --fdsc-chip-height: var(--fds-sizing-8);
   --fdsc-chip-padding: var(--fds-spacing-3);
   --fdsc-removable-chip-xmark-size: var(--fds-sizing-6);
+  --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-2);
 }
 
 .large {
   --fdsc-chip-height: var(--fds-sizing-9);
   --fdsc-chip-padding: var(--fds-spacing-4);
   --fdsc-removable-chip-xmark-size: var(--fds-sizing-7);
+  --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-3);
 }
