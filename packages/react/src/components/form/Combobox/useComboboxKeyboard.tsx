@@ -63,10 +63,10 @@ export const useComboboxKeyboard = ({
         if (!open) break;
 
         // check if we are in the custom components
-        if (activeIndex <= interactiveChildren.length) {
+        if (activeIndex <= interactiveChildren.length - 1) {
           const selectedComponent = interactiveChildren[activeIndex];
           if (selectedComponent.props.onSelect) {
-            selectedComponent.props.onSelect();
+            selectedComponent?.props.onSelect();
             return;
           }
         }
