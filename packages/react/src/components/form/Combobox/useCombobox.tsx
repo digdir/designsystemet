@@ -167,9 +167,10 @@ export default function useCombobox({
       return !isComboboxOption(child);
     });
 
-    const interactiveChildren = restChildren.filter((child) => {
-      return isInteractiveComboboxCustom(child);
-    });
+    const interactiveChildren: ReactElement<ComboboxCustomProps>[] =
+      restChildren.filter((child) => {
+        return isInteractiveComboboxCustom(child);
+      }) as ReactElement<ComboboxCustomProps>[];
 
     return { restChildren, interactiveChildren };
   }, [children]);

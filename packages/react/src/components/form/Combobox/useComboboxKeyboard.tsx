@@ -1,7 +1,6 @@
 import useDebounce from '../../../utilities/useDebounce';
 
 import type useCombobox from './useCombobox';
-import { isInteractiveComboboxCustom } from './useCombobox';
 import type { Option } from './useCombobox';
 import { useComboboxId } from './ComboboxIdContext';
 
@@ -66,11 +65,7 @@ export const useComboboxKeyboard = ({
         // check if we are in the custom components
         if (activeIndex <= interactiveChildren.length) {
           const selectedComponent = interactiveChildren[activeIndex];
-
-          if (
-            isInteractiveComboboxCustom(selectedComponent) &&
-            selectedComponent.props.onSelect
-          ) {
+          if (selectedComponent.props.onSelect) {
             selectedComponent.props.onSelect();
             return;
           }
