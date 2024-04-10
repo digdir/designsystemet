@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.3-alpha.0...@digdir/designsystemet-css@0.3.3-alpha.1) (2024-04-10)
+
+### Features
+
+- **css:** Add autoprefixer with configuration ([#1669](https://github.com/digdir/designsystemet/issues/1669) [#1773](https://github.com/digdir/designsystemet/issues/1773)) ([#1783](https://github.com/digdir/designsystemet/issues/1783)) ([e870720](https://github.com/digdir/designsystemet/commit/e8707209a1ff2eaf1f3379736ff2ed99988493b3))
+
 ## [0.3.3-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.2...@digdir/designsystemet-css@0.3.3-alpha.0) (2024-04-09)
 
 ### Features
