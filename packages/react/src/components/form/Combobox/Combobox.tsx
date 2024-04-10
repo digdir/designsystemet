@@ -171,14 +171,15 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const {
       selectedOptions,
-      setSelectedOptions,
       options,
-      optionsChildren,
       restChildren,
+      interactiveChildren,
       optionValues,
       customIds,
+      filteredOptionsChildren,
       filteredOptions,
       prevSelectedHash,
+      setSelectedOptions,
       setPrevSelectedHash,
     } = useCombobox({
       children,
@@ -300,7 +301,9 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       multiple,
       restChildren,
       inputValue,
+      options,
       open,
+      interactiveChildren,
       setOpen,
       setInputValue,
       setSelectedOptions,
@@ -308,7 +311,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     });
 
     const rowVirtualizer = useVirtualizer({
-      count: Object.keys(options).length,
+      count: Object.keys(filteredOptionsChildren).length,
       getScrollElement: () => (virtual ? refs.floating.current : null),
       estimateSize: () => 70,
       measureElement: (elem) => {
@@ -340,6 +343,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           hideClearButton,
           listId,
           customIds,
+          filteredOptions,
           setInputValue,
           handleKeyDown,
           setOpen,
@@ -442,7 +446,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                           transform: `translateY(${virtualRow.start}px)`,
                         }}
                       >
-                        {optionsChildren[virtualRow.index]}
+                        {filteredOptionsChildren[virtualRow.index]}
                       </div>
                     ))}
                   </div>
@@ -460,7 +464,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                   <>
                     {/* Add the rest of the children */}
                     {restChildren}
-                    {!virtual && optionsChildren}
+                    {!virtual && filteredOptionsChildren}
                   </>
                 )}
               </Box>

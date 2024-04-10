@@ -25,14 +25,17 @@ export default function useComboboxOption({
   if (!context) {
     throw new Error('ComboboxOption must be used within a Combobox');
   }
-  const { selectedOptions, onOptionClick, listRef, optionValues, customIds } =
-    context;
-
-  console.log(customIds);
+  const {
+    selectedOptions,
+    onOptionClick,
+    listRef,
+    customIds,
+    filteredOptions,
+  } = context;
 
   const index = useMemo(
-    () => optionValues.indexOf(value) + customIds.length,
-    [customIds, optionValues, value],
+    () => filteredOptions.indexOf(value) + customIds.length,
+    [customIds.length, filteredOptions, value],
   );
 
   const combinedRef = useMergeRefs([

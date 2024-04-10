@@ -1,5 +1,3 @@
-import { type ReactNode } from 'react';
-
 import useDebounce from '../../../utilities/useDebounce';
 
 import type useCombobox from './useCombobox';
@@ -8,12 +6,12 @@ import type { Option } from './useCombobox';
 import { useComboboxId } from './ComboboxIdContext';
 
 type UseComboboxKeyboardProps = {
-  customIds: string[];
   filteredOptions: ReturnType<typeof useCombobox>['filteredOptions'];
   selectedOptions: ReturnType<typeof useCombobox>['selectedOptions'];
+  interactiveChildren: ReturnType<typeof useCombobox>['interactiveChildren'];
+  options: ReturnType<typeof useCombobox>['options'];
   readOnly: boolean;
   disabled: boolean;
-  restChildren: ReactNode[];
   inputValue: string;
   multiple: boolean;
   open: boolean;
@@ -24,15 +22,15 @@ type UseComboboxKeyboardProps = {
 };
 
 export const useComboboxKeyboard = ({
-  customIds,
   readOnly,
   disabled,
-  restChildren,
+  interactiveChildren,
   filteredOptions,
   inputValue,
   selectedOptions,
   multiple,
   open,
+  options,
   setOpen,
   setInputValue,
   setSelectedOptions,
@@ -62,41 +60,38 @@ export const useComboboxKeyboard = ({
         break;
       case 'Enter':
         event.preventDefault();
-        if (open && (filteredOptions[activeIndex] || customIds.length > 0)) {
-          // check if we are in the custom components
-          if (activeIndex <= customIds.length) {
-            // send `onSelect` event to the custom component
-            const selectedId = customIds[activeIndex];
-            const selectedComponent = restChildren.find(
-              (component) =>
-                isInteractiveComboboxCustom(component) &&
-                component.props?.id === selectedId,
-            );
+        // ignore if it is closed
+        if (!open) break;
 
-            if (
-              isInteractiveComboboxCustom(selectedComponent) &&
-              selectedComponent.props.onSelect
-            ) {
-              selectedComponent.props.onSelect();
-            }
+        // check if we are in the custom components
+        if (activeIndex <= interactiveChildren.length) {
+          const selectedComponent = interactiveChildren[activeIndex];
+
+          if (
+            isInteractiveComboboxCustom(selectedComponent) &&
+            selectedComponent.props.onSelect
+          ) {
+            selectedComponent.props.onSelect();
+            return;
           }
-
-          // if we are in the options, find the actual index
-          const valueIndex = activeIndex - customIds.length;
-
-          const option = filteredOptions[valueIndex];
-
-          if (!multiple) {
-            // check if option is already selected, if so, deselect it
-            if (selectedOptions[option?.value]) {
-              setSelectedOptions({});
-              setInputValue('');
-              return;
-            }
-          }
-
-          handleSelectOption(option);
         }
+
+        // if we are in the options, find the actual index
+        // eslint-disable-next-line no-case-declarations
+        const valueIndex = activeIndex - interactiveChildren.length;
+
+        // eslint-disable-next-line no-case-declarations
+        const option = filteredOptions[valueIndex];
+        if (!multiple) {
+          // check if option is already selected, if so, deselect it
+          if (selectedOptions[option]) {
+            setSelectedOptions({});
+            setInputValue('');
+            return;
+          }
+        }
+
+        handleSelectOption(options[option]);
         break;
 
       case 'Backspace':

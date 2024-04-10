@@ -10,6 +10,7 @@ import type { useFormField } from '../useFormField';
 
 import type { ComboboxProps } from './Combobox';
 import type { Option } from './useCombobox';
+import type useCombobox from './useCombobox';
 
 type ComboboxContextType = {
   multiple: NonNullable<ComboboxProps['multiple']>;
@@ -21,6 +22,7 @@ type ComboboxContextType = {
   hideChips: NonNullable<ComboboxProps['hideChips']>;
   clearButtonLabel: NonNullable<ComboboxProps['clearButtonLabel']>;
   hideClearButton: NonNullable<ComboboxProps['hideClearButton']>;
+  filteredOptions: ReturnType<typeof useCombobox>['filteredOptions'];
   options: {
     [key: string]: Option;
   };
@@ -35,7 +37,6 @@ type ComboboxContextType = {
   inputValue: string;
   optionValues: string[];
   listId: string;
-  customIds: string[];
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   handleKeyDown: (event: React.KeyboardEvent) => void;
