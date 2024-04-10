@@ -1,15 +1,17 @@
 .fds-alert {
-  --fds-alert-border: var(--fds-semantic-border-info-default);
-  --fds-alert-border-left: 8px 0 0 0 var(--fds-alert-border) inset;
+  --fds-alert-border-color: var(--fds-semantic-border-info-default);
+  --fds-alert-border-radius: var(--fds-border_radius-medium);
   --fds-alert-color: var(--fds-semantic-text-neutral-default);
-  --fds-alert-icon-color: var(--fds-alert-border);
+  --fds-alert-icon-color: var(--fds-alert-border-color);
   --fds-alert-icon-size: var(--fds-sizing-7);
   --fds-alert-background: var(--fds-semantic-surface-info-subtle);
+  --fds-alert-padding: var(--fds-spacing-4);
 
-  box-shadow: var(--fds-alert-border-left);
+  border: 1px solid var(--fds-alert-border-color);
+  border-radius: var(--fds-alert-border-radius);
   background: var(--fds-alert-background);
   color: var(--fds-alert-color);
-  padding: var(--fds-spacing-4);
+  padding: var(--fds-alert-padding);
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min-content auto;
@@ -28,22 +30,22 @@
 }
 
 .fds-alert--info {
-  --fds-alert-border: var(--fds-semantic-border-info-default);
+  --fds-alert-border-color: var(--fds-semantic-border-info-default);
   --fds-alert-background: var(--fds-semantic-surface-info-subtle);
 }
 
 .fds-alert--warning {
-  --fds-alert-border: var(--fds-semantic-border-warning-default);
+  --fds-alert-border-color: var(--fds-semantic-border-warning-default);
   --fds-alert-background: var(--fds-semantic-surface-warning-subtle);
 }
 
 .fds-alert--success {
-  --fds-alert-border: var(--fds-semantic-border-success-default);
+  --fds-alert-border-color: var(--fds-semantic-border-success-default);
   --fds-alert-background: var(--fds-semantic-surface-success-subtle);
 }
 
 .fds-alert--danger {
-  --fds-alert-border: var(--fds-semantic-border-danger-default);
+  --fds-alert-border-color: var(--fds-semantic-border-danger-default);
   --fds-alert-background: var(--fds-semantic-surface-danger-subtle);
 }
 

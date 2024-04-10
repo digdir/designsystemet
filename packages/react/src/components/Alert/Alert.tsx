@@ -38,6 +38,12 @@ export type AlertProps = {
    * Use this to inform screenreaders of severity.
    *  Defaults to Norwegian. */
   iconTitle?: string;
+  /** Sets the size of the alert.
+   * Does not affect font size.
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
@@ -52,6 +58,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         ref={ref}
         className={cl(
           'fds-alert',
+          /* `fds-alert-${size}`, */
           `fds-alert--${severity}`,
           elevated && `fds-alert--elevated`,
           className,
