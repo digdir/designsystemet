@@ -62,21 +62,22 @@ describe('Modal', () => {
         </>
       ),
     });
-    const spy = vi.spyOn(HTMLDialogElement.prototype, 'showModal');
+    const showSpy = vi.spyOn(HTMLDialogElement.prototype, 'showModal');
+    const closeSpy = vi.spyOn(HTMLDialogElement.prototype, 'close');
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_MODAL });
     await userEvent.click(button);
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(showSpy).toHaveBeenCalledTimes(1);
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
 
     const closeButton = screen.getByRole('button', { name: /close/i });
     await userEvent.click(closeButton);
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(closeSpy).toHaveBeenCalledTimes(1);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
