@@ -7,7 +7,7 @@ import type {
 } from 'style-dictionary';
 import { transformDimension } from '@tokens-studio/sd-transforms';
 
-import { noCase } from './noCase';
+import { noCase } from './noCase.js';
 
 export const sizePx: Named<Transform> = {
   name: 'fds/size/px',

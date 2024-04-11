@@ -20,12 +20,12 @@ import {
   calc,
   fontScaleHackFormat,
   sizeRem,
-} from './transformers';
+} from './transformers.js';
 import {
   scopedReferenceVariables,
   groupedTokens,
   setup as setupFormatters,
-} from './formatters';
+} from './formatters.js';
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -49,14 +49,9 @@ const argv = yargs(process.argv.slice(2))
   })
   .parseSync();
 
-if (argv.brands) {
-  console.warn('Missing brands');
-}
-
 void registerTransforms(StyleDictionary);
 
 const pickBrands = (x: string | number): x is string => typeof x === 'string';
-
 type Brand = string;
 
 const prefix = 'fds';
@@ -192,7 +187,7 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
   };
 };
 
-const brands = argv.brands.filter(pickBrands);
+const brands = argv.brands.filter(pickBrands) as string[];
 
 if (brands.length > 0) {
   console.log('➡️  Recieved following brands: ', brands);
