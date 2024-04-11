@@ -30,6 +30,10 @@ const render = async (props: Partial<ModalDialogProps> = {}) => {
 };
 
 describe('Modal', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('should open the modal', async () => {
     await render({
       children: (
@@ -38,11 +42,14 @@ describe('Modal', () => {
         </>
       ),
     });
+    const spy = vi.spyOn(HTMLDialogElement.prototype, 'showModal');
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_MODAL });
     await userEvent.click(button);
+
+    expect(spy).toHaveBeenCalledTimes(1);
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
   });
@@ -55,16 +62,21 @@ describe('Modal', () => {
         </>
       ),
     });
+    const spy = vi.spyOn(HTMLDialogElement.prototype, 'showModal');
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_MODAL });
     await userEvent.click(button);
 
+    expect(spy).toHaveBeenCalledTimes(1);
+
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
 
     const closeButton = screen.getByRole('button', { name: /close/i });
     await userEvent.click(closeButton);
+
+    expect(spy).toHaveBeenCalledTimes(1);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
