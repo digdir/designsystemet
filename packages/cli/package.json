@@ -7,12 +7,13 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
+  "private": true,
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "start": "esno ./src/build.ts -t",
-    "build": "yarn run clean && esno ./src/build.ts -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
+    "start": "esno ./src/build.ts",
+    "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean"
   },
