@@ -1,13 +1,15 @@
-.errorSummary {
-  padding: var(--fds-spacing-6) var(--fds-spacing-8);
-  border-radius: var(--fds-border_radius-large);
-  background-color: var(--fds-semantic-surface-danger-subtle);
-}
+@layer fds.errorsummary {
+  .errorSummary {
+    padding: var(--fds-spacing-6) var(--fds-spacing-8);
+    border-radius: var(--fds-border_radius-large);
+    background-color: var(--fds-semantic-surface-danger-subtle);
+  }
 
-.errorSummary a {
-  color: var(--fds-semantic-text-neutral-default);
-}
+  .errorSummary a {
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.errorSummary li:last-of-type {
-  margin-bottom: 0;
+  .errorSummary li:last-of-type {
+    margin-bottom: 0;
+  }
 }
