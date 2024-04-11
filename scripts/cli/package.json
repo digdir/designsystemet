@@ -10,7 +10,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn run clean && esno ./src/build.ts",
+    "start": "esno ./src/build.ts -t",
+    "build": "yarn run clean && esno ./src/build.ts -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "clean": "yarn workspace @digdir/designsystemet-theme clean"
   },
   "devDependencies": {
