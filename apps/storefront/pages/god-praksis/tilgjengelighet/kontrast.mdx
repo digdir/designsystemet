@@ -1,26 +1,27 @@
 import { Meta, Image } from '@components';
 import { PageLayout } from '@layouts';
 import { Card, List } from '@digdir/designsystemet-react';
+import { Contributors } from '@blog';
 
 <Meta
   title='Kontrast'
-  description='Våre retningslinjer for kontrast'
+  description='WCAG 3.0 foreslår ny kontrastmetode'
 />
 
 export default ({ children }) => (
   <PageLayout
     content={children}
     data={{
-      title: 'Ny kontrastmetode utforskes',
+      title: 'WCAG 3.0 foreslår ny kontrastmetode',
       date: '9. april 2024',
-      author: 'Brønnøysundregistrene og Digdir',
+      author: 'Brønnøysundregistrene',
       backText: 'God praksis',
       backUrl: 'god-praksis',
     }}
   />
 );
 
-For å sikre god lesbarhet skal all tekst ha tilstrekkelig kontrast mot bakgrunnen. Dette er viktig for alle brukere, særlig under krevende lysforhold. De som trenger dette mest, er svaksynte, dyslektikere og fargeblinde (Kilde: [uutilsynet](https://www.uutilsynet.no/veiledning/kontrast/48))
+For å sikre god lesbarhet skal all tekst ha tilstrekkelig kontrast mot bakgrunnen. Dette er viktig for alle brukere, særlig under krevende lysforhold. De som trenger dette mest, er svaksynte, dyslektikere og fargeblinde (kilde: [uutilsynet](https://www.uutilsynet.no/veiledning/kontrast/48)).
 
 ## Behov for strengere krav til kontrast
 
@@ -94,13 +95,13 @@ Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjen
 
 ## Ny metode utforskes
 
-En ny metode som er mer presis enn dagens standard for å kalkulere kontrast og sette terskelverdier, utforskes nå i WCAG 3.0.
+WCAG 3.0 utforsker nå en mer presis metode enn dagens standard, for å kalkulere kontrast og sette terskelverdier.
 
 <List.Root>
   <List.Unordered>
     <List.Item>
-      Metoden forbedrer hvordan verdien mellom to farger bestemmes, og gjør også
-      forskjell på om fargene er i forgrunnen eller i bakgrunnen.
+      Metoden forbedrer hvordan verdien mellom to farger bestemmes, og skiller
+      også på om fargene er i forgrunnen eller i bakgrunnen.
     </List.Item>
     <List.Item>
       Den setter også tydelige terskelverdier eller målverdier for valg av font,
@@ -117,14 +118,15 @@ En ny metode som er mer presis enn dagens standard for å kalkulere kontrast og 
 
 ## Vi bruker i dag en ønsket standard
 
-For at innholdet i offentlige, digitale tjenester skal være tilgjengelig for brukerne, også de med svekket syn, bruker vi i dag en ønsket standard for kontrast, som er høyere enn kravene som stilles til tilgjengelighet. Standarden heter WCAG 2.1 krav på nivå AAA.
-For å øke lesbarheten ytterligere, er ambisjonen vår å oppnå kontrast på nivå 4, som er toppnivået i APCA-metoden, som nå blir utforsket i WCAG 3.0.
+For at innholdet i offentlige, digitale tjenester skal være tilgjengelig for alle brukere, følger vi i dag en ønsket standard for kontrast som er høyere enn kravene som stilles til tilgjengelighet. Standarden heter WCAG 2.1, nivå AAA.
+
+For å øke lesbarheten enda mer, har vi ambisjoner om å oppnå kontrast på nivå 4. Det er toppnivået i APCA-metoden, som nå blir foreslått i WCAG 3.0
 
 ## Hvorfor duger ikke dagens standard?
 
-Metoden er ikke vitenskapelig støttet, hvis vi måler opp mot lesbarhet og tilgjengelighet. Det betyr at løsningen ikke er universelt utformet. Siden øyets evne til å oppfatte farger og lys ikke er en del av metoden, er den uegnet til å beregne forskjellen i lysstyrken i fargeparet.
+Vi vet at selv om en løsning oppfyller de konkrete kravene fra regelverket om universell utforming, så er den ikke nødvendigvis universelt utformet og tilgjengelig. Siden øyets evne til å oppfatte farger og lys ikke er en del av metoden, er den uegnet til å beregne forskjellen i lysstyrken i fargeparet.
 
-Hvis vi oppfyller metoden i WCAG 2, etterlever vi teknisk sett kravet til Universell utforming, men det betyr ikke at innholdet er tilgjengelig eller universelt utformet. Derfor strekker vi oss langt i å også oppfylle de fremtidige WCAG-3 kravene som bruker APCA-metoden.
+Hvis vi oppfyller metoden i WCAG 2, etterlever vi teknisk sett kravet til universell utforming, men det betyr ikke at innholdet er tilgjengelig eller universelt utformet. Derfor strekker vi oss langt i å også oppfylle de fremtidige WCAG-3 kravene som bruker APCA-metoden.
 
 <Card color='third'>
   <Card.Content>
@@ -179,3 +181,13 @@ I eksempelet over ser vi at selv om kontrasten som er utregnet til å være lik 
 Begge tekstene har 16px stor tekst i normal vekt, og begge variantene har 4,6 til 1 i kontrast.  
 I variant A har teksten fargen #6D7879og bakgrunnen er hvit. Teksten er sånn passe lesbar.
 I variant B er teksten svart, og bakgrunnen er farge #6D7879. Teksten er noe mindre lesbar enn variant A.
+
+<Contributors
+  authors={[
+    'Roy Halvor Frimanslund',
+    'Gørild Døhl',
+    'Ann Elisabeth Hammer',
+    'Lasse Febakke Straum',
+    'Marianne Røsvik',
+  ]}
+/>
