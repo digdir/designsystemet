@@ -2583,9 +2583,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-cli@workspace:scripts/cli":
+"@digdir/designsystemet-cli@workspace:packages/cli":
   version: 0.0.0-use.local
-  resolution: "@digdir/designsystemet-cli@workspace:scripts/cli"
+  resolution: "@digdir/designsystemet-cli@workspace:packages/cli"
   dependencies:
     "@tokens-studio/sd-transforms": "npm:^0.9.3"
     "@types/ramda": "npm:^0.29.9"
