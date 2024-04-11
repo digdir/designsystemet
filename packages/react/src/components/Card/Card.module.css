@@ -1,152 +1,154 @@
-.media {
-  width: auto;
-}
+@layer fds-card {
+  .media {
+    width: auto;
+  }
 
-.media > * {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border: 0;
-}
+  .media > * {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 0;
+  }
 
-.footer,
-.content {
-  display: flex;
-  justify-content: flex-start;
-  gap: var(--fds-spacing-4);
-  flex-wrap: wrap;
-  word-wrap: break-word;
-  font: var(--fds-typography-paragraph-medium);
-  font-family: inherit;
-  padding: var(--fds-spacing-2) 0;
-}
+  .footer,
+  .content {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--fds-spacing-4);
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    font: var(--fds-typography-paragraph-medium);
+    font-family: inherit;
+    padding: var(--fds-spacing-2) 0;
+  }
 
-.content {
-  flex-direction: column;
-}
+  .content {
+    flex-direction: column;
+  }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  word-wrap: break-word;
-  font: var(--fds-typography-heading-medium);
-  font-family: inherit;
-  padding: var(--fds-spacing-2) 0;
-}
+  .header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    font: var(--fds-typography-heading-medium);
+    font-family: inherit;
+    padding: var(--fds-spacing-2) 0;
+  }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  color: var(--fds-semantic-text-neutral-default);
-  border-radius: var(--fds-border_radius-medium);
-}
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: var(--fds-semantic-text-neutral-default);
+    border-radius: var(--fds-border_radius-medium);
+  }
 
-.card a,
-.card a:visited {
-  color: var(--fds-semantic-text-neutral-default);
-}
+  .card a,
+  .card a:visited {
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.card > hr {
-  width: 100%;
-  margin: var(--fds-spacing-3) 0;
-}
+  .card > hr {
+    width: 100%;
+    margin: var(--fds-spacing-3) 0;
+  }
 
-.card > *:not(.media, hr) {
-  padding-left: var(--fds-spacing-6);
-  padding-right: var(--fds-spacing-6);
-}
+  .card > *:not(.media, hr) {
+    padding-left: var(--fds-spacing-6);
+    padding-right: var(--fds-spacing-6);
+  }
 
-.card > *:not(.media):first-child {
-  padding-top: var(--fds-spacing-6);
-}
+  .card > *:not(.media):first-child {
+    padding-top: var(--fds-spacing-6);
+  }
 
-.card > *:not(.media):last-child {
-  padding-bottom: var(--fds-spacing-6);
-}
+  .card > *:not(.media):last-child {
+    padding-bottom: var(--fds-spacing-6);
+  }
 
-.media:first-child {
-  padding-bottom: var(--fds-spacing-4);
-}
+  .media:first-child {
+    padding-bottom: var(--fds-spacing-4);
+  }
 
-.media:last-child {
-  padding-top: var(--fds-spacing-6);
-}
+  .media:last-child {
+    padding-top: var(--fds-spacing-6);
+  }
 
-.linkCard {
-  text-decoration: none;
-}
+  .linkCard {
+    text-decoration: none;
+  }
 
-.linkCard h1,
-.linkCard h2,
-.linkCard h3,
-.linkCard h4,
-.linkCard h5,
-.linkCard h6 {
-  text-decoration: underline;
-  text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-  text-underline-offset: max(4px, 0.25rem, 0.22em);
-}
+  .linkCard h1,
+  .linkCard h2,
+  .linkCard h3,
+  .linkCard h4,
+  .linkCard h5,
+  .linkCard h6 {
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
+    text-underline-offset: max(4px, 0.25rem, 0.22em);
+  }
 
-.neutral {
-  background-color: var(--fds-semantic-surface-neutral-default);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
+  .neutral {
+    background-color: var(--fds-semantic-surface-neutral-default);
+    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  }
 
-.subtle {
-  background-color: var(--fds-semantic-surface-neutral-subtle);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
+  .subtle {
+    background-color: var(--fds-semantic-surface-neutral-subtle);
+    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  }
 
-.neutral.linkCard:hover,
-.subtle.linkCard:hover {
-  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
-}
+  .neutral.linkCard:hover,
+  .subtle.linkCard:hover {
+    background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+  }
 
-.neutral.linkCard:active,
-.subtle.linkCard:active {
-  background-color: var(--fds-semantic-surface-neutral-subtle-active);
-}
+  .neutral.linkCard:active,
+  .subtle.linkCard:active {
+    background-color: var(--fds-semantic-surface-neutral-subtle-active);
+  }
 
-.first {
-  background-color: var(--fds-semantic-surface-first-light);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
+  .first {
+    background-color: var(--fds-semantic-surface-first-light);
+    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  }
 
-.first.linkCard:hover {
-  background-color: var(--fds-semantic-surface-first-light-hover);
-}
+  .first.linkCard:hover {
+    background-color: var(--fds-semantic-surface-first-light-hover);
+  }
 
-.first.linkCard:active {
-  background-color: var(--fds-semantic-surface-first-light-active);
-}
+  .first.linkCard:active {
+    background-color: var(--fds-semantic-surface-first-light-active);
+  }
 
-.second {
-  background-color: var(--fds-semantic-surface-second-light);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
+  .second {
+    background-color: var(--fds-semantic-surface-second-light);
+    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  }
 
-.second.linkCard:hover {
-  background-color: var(--fds-semantic-surface-second-light-hover);
-}
+  .second.linkCard:hover {
+    background-color: var(--fds-semantic-surface-second-light-hover);
+  }
 
-.second.linkCard:active {
-  background-color: var(--fds-semantic-surface-second-light-active);
-}
+  .second.linkCard:active {
+    background-color: var(--fds-semantic-surface-second-light-active);
+  }
 
-.third {
-  background-color: var(--fds-semantic-surface-third-light);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
+  .third {
+    background-color: var(--fds-semantic-surface-third-light);
+    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  }
 
-.third.linkCard:hover {
-  background-color: var(--fds-semantic-surface-third-light-hover);
-}
+  .third.linkCard:hover {
+    background-color: var(--fds-semantic-surface-third-light-hover);
+  }
 
-.third.linkCard:active {
-  background-color: var(--fds-semantic-surface-third-light-active);
+  .third.linkCard:active {
+    background-color: var(--fds-semantic-surface-third-light-active);
+  }
 }

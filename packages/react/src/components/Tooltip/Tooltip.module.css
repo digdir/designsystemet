@@ -1,21 +1,23 @@
-.wrapper {
-  background: var(--fds-semantic-surface-neutral-inverted);
-  padding: var(--fds-spacing-1) var(--fds-spacing-2);
-  color: var(--fds-semantic-text-neutral-on_inverted);
-  border-radius: var(--fds-border_radius-medium);
-  font: var(--fds-typography-paragraph-xsmall);
-  font-family: inherit;
-}
+@layer fds-tooltip {
+  .wrapper {
+    background: var(--fds-semantic-surface-neutral-inverted);
+    padding: var(--fds-spacing-1) var(--fds-spacing-2);
+    color: var(--fds-semantic-text-neutral-on_inverted);
+    border-radius: var(--fds-border_radius-medium);
+    font: var(--fds-typography-paragraph-xsmall);
+    font-family: inherit;
+  }
 
-.wrapper.inverted {
-  background: var(--fds-semantic-surface-neutral-subtle);
-  color: var(--fds-semantic-text-neutral-default);
-}
+  .wrapper.inverted {
+    background: var(--fds-semantic-surface-neutral-subtle);
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.wrapper .arrow {
-  fill: var(--fds-semantic-surface-neutral-inverted);
-}
+  .wrapper .arrow {
+    fill: var(--fds-semantic-surface-neutral-inverted);
+  }
 
-.wrapper.inverted .arrow {
-  fill: var(--fds-semantic-surface-neutral-subtle);
+  .wrapper.inverted .arrow {
+    fill: var(--fds-semantic-surface-neutral-subtle);
+  }
 }

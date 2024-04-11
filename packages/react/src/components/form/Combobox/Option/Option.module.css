@@ -1,118 +1,120 @@
-.option {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.2em 1fr;
-  padding: var(--fds-spacing-2) var(--fds-spacing-3);
-  padding-left: var(--fds-spacing-1);
-  border: none;
-  border-left: 5px solid transparent;
-  border-radius: var(--fds-border_radius-interactive);
-  justify-content: start;
-  background: none;
-  text-align: left;
-  height: auto;
-  cursor: pointer;
-  font: var(--fds-typography-label-medium);
-  font-family: inherit;
-}
+@layer fds-combobox-option {
+  .option {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2em 1fr;
+    padding: var(--fds-spacing-2) var(--fds-spacing-3);
+    padding-left: var(--fds-spacing-1);
+    border: none;
+    border-left: 5px solid transparent;
+    border-radius: var(--fds-border_radius-interactive);
+    justify-content: start;
+    background: none;
+    text-align: left;
+    height: auto;
+    cursor: pointer;
+    font: var(--fds-typography-label-medium);
+    font-family: inherit;
+  }
 
-.option.active {
-  background: var(--fds-semantic-surface-action-first-no_fill-hover);
-  border-left: 5px solid var(--fds-semantic-border-input-hover);
-}
+  .option.active {
+    background: var(--fds-semantic-surface-action-first-no_fill-hover);
+    border-left: 5px solid var(--fds-semantic-border-input-hover);
+  }
 
-.option > div {
-  align-self: flex-start;
-}
+  .option > div {
+    align-self: flex-start;
+  }
 
-.option.multiple {
-  grid-template-columns: auto 1fr;
-  gap: var(--fds-spacing-2);
-}
+  .option.multiple {
+    grid-template-columns: auto 1fr;
+    gap: var(--fds-spacing-2);
+  }
 
-.optionText {
-  margin: auto 0;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  cursor: pointer;
-  gap: var(--fds-spacing-1);
-  color: var(--fds-semantic-text-neutral-default);
-}
+  .optionText {
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    cursor: pointer;
+    gap: var(--fds-spacing-1);
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.active .optionText {
-  color: var(--fds-semantic-text-action-hover);
-}
+  .active .optionText {
+    color: var(--fds-semantic-text-action-hover);
+  }
 
-.checkbox {
-  min-width: unset;
-  min-height: unset;
-  aspect-ratio: 1 / 1;
-  line-height: 0 !important;
-}
+  .checkbox {
+    min-width: unset;
+    min-height: unset;
+    aspect-ratio: 1 / 1;
+    line-height: 0 !important;
+  }
 
-.checkbox input {
-  min-width: unset;
-  min-height: unset;
-}
+  .checkbox input {
+    min-width: unset;
+    min-height: unset;
+  }
 
-.checkbox > span {
-  position: relative;
-  min-width: unset;
-  min-height: unset;
-  height: unset;
-  width: unset;
-}
+  .checkbox > span {
+    position: relative;
+    min-width: unset;
+    min-height: unset;
+    height: unset;
+    width: unset;
+  }
 
-.selectIconWrapper {
-  width: var(--fds-spacing-6);
-  aspect-ratio: 1 / 1;
-  border: 2px solid var(--fds-semantic-border-input-default);
-  border-radius: var(--fds-border_radius-interactive);
-  background-color: white;
-  display: grid;
-  place-items: center;
-}
+  .selectIconWrapper {
+    width: var(--fds-spacing-6);
+    aspect-ratio: 1 / 1;
+    border: 2px solid var(--fds-semantic-border-input-default);
+    border-radius: var(--fds-border_radius-interactive);
+    background-color: white;
+    display: grid;
+    place-items: center;
+  }
 
-.small .selectIconWrapper {
-  width: var(--fds-spacing-5);
-}
+  .small .selectIconWrapper {
+    width: var(--fds-spacing-5);
+  }
 
-.medium .selectIconWrapper {
-  width: var(--fds-spacing-6);
-}
+  .medium .selectIconWrapper {
+    width: var(--fds-spacing-6);
+  }
 
-.large .selectIconWrapper {
-  width: var(--fds-spacing-7);
-}
+  .large .selectIconWrapper {
+    width: var(--fds-spacing-7);
+  }
 
-.selectIconWrapper.selected {
-  border-color: var(--fds-semantic-border-input-hover);
-  background-color: var(--fds-semantic-border-input-hover);
-}
+  .selectIconWrapper.selected {
+    border-color: var(--fds-semantic-border-input-hover);
+    background-color: var(--fds-semantic-border-input-hover);
+  }
 
-.selectIcon {
-  box-sizing: border-box;
-  padding-top: 0.2em;
-  transform: scale(1.4);
-  stroke: var(--fds-semantic-text-neutral-default);
-  color: var(--fds-semantic-text-neutral-default);
-}
+  .selectIcon {
+    box-sizing: border-box;
+    padding-top: 0.2em;
+    transform: scale(1.4);
+    stroke: var(--fds-semantic-text-neutral-default);
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.selectIconWrapper .selectIcon {
-  padding-top: 0;
-}
+  .selectIconWrapper .selectIcon {
+    padding-top: 0;
+  }
 
-.active .selectIcon {
-  stroke: var(--fds-semantic-text-action-hover);
-  color: var(--fds-semantic-text-action-hover);
-}
+  .active .selectIcon {
+    stroke: var(--fds-semantic-text-action-hover);
+    color: var(--fds-semantic-text-action-hover);
+  }
 
-.active .selectIconWrapper {
-  border-color: var(--fds-semantic-border-input-hover);
-}
+  .active .selectIconWrapper {
+    border-color: var(--fds-semantic-border-input-hover);
+  }
 
-.selectIconWrapper.selected .selectIcon {
-  color: white;
-  stroke: white;
+  .selectIconWrapper.selected .selectIcon {
+    color: white;
+    stroke: white;
+  }
 }

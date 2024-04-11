@@ -1,66 +1,68 @@
-.heading {
-  --fdsc-bottom-spacing: var(--fds-spacing-6);
+@layer fds-heading {
+  .heading {
+    --fdsc-bottom-spacing: var(--fds-spacing-6);
 
-  margin: 0;
-  color: var(--fds-semantic-text-neutral-default);
-}
+    margin: 0;
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.spacing {
-  margin-bottom: var(--fdsc-bottom-spacing);
-}
+  .spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
 
-.size-3xlarge {
-  --fdsc-bottom-spacing: var(--fds-spacing-8);
+  .size-3xlarge {
+    --fdsc-bottom-spacing: var(--fds-spacing-8);
 
-  font: var(--fds-typography-heading-3xlarge);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-3xlarge);
+    font-family: inherit;
+  }
 
-.size-2xlarge {
-  --fdsc-bottom-spacing: var(--fds-spacing-7);
+  .size-2xlarge {
+    --fdsc-bottom-spacing: var(--fds-spacing-7);
 
-  font: var(--fds-typography-heading-2xlarge);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-2xlarge);
+    font-family: inherit;
+  }
 
-.size-xlarge {
-  --fdsc-bottom-spacing: var(--fds-spacing-6);
+  .size-xlarge {
+    --fdsc-bottom-spacing: var(--fds-spacing-6);
 
-  font: var(--fds-typography-heading-xlarge);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-xlarge);
+    font-family: inherit;
+  }
 
-.size-large {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+  .size-large {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  font: var(--fds-typography-heading-large);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-large);
+    font-family: inherit;
+  }
 
-.size-medium {
-  --fdsc-bottom-spacing: var(--fds-spacing-4);
+  .size-medium {
+    --fdsc-bottom-spacing: var(--fds-spacing-4);
 
-  font: var(--fds-typography-heading-medium);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-medium);
+    font-family: inherit;
+  }
 
-.size-small {
-  --fdsc-bottom-spacing: var(--fds-spacing-3);
+  .size-small {
+    --fdsc-bottom-spacing: var(--fds-spacing-3);
 
-  font: var(--fds-typography-heading-small);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-small);
+    font-family: inherit;
+  }
 
-.size-xsmall {
-  --fdsc-bottom-spacing: var(--fds-spacing-2);
+  .size-xsmall {
+    --fdsc-bottom-spacing: var(--fds-spacing-2);
 
-  font: var(--fds-typography-heading-xsmall);
-  font-family: inherit;
-}
+    font: var(--fds-typography-heading-xsmall);
+    font-family: inherit;
+  }
 
-.size-xxsmall {
-  --fdsc-bottom-spacing: var(--fds-spacing-1);
+  .size-xxsmall {
+    --fdsc-bottom-spacing: var(--fds-spacing-1);
 
-  font: var(--fds-typography-heading-xxsmall);
-  font-family: inherit;
+    font: var(--fds-typography-heading-xxsmall);
+    font-family: inherit;
+  }
 }

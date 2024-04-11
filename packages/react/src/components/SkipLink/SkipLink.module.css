@@ -1,18 +1,20 @@
-.skiplink:focus {
-  display: block;
-  outline: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 0.3em;
-  padding: var(--fds-spacing-3) var(--fds-spacing-4) var(--fds-spacing-3) var(--fds-spacing-6);
-  color: var(--fds-semantic-text-neutral-default);
-  background: var(--fds-semantic-border-focus-outline);
+@layer fds-skiplink {
+  .skiplink:focus {
+    display: block;
+    outline: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.3em;
+    padding: var(--fds-spacing-3) var(--fds-spacing-4) var(--fds-spacing-3) var(--fds-spacing-6);
+    color: var(--fds-semantic-text-neutral-default);
+    background: var(--fds-semantic-border-focus-outline);
+  }
 }
