@@ -6,7 +6,6 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "scripts/*",
     "docs-components/",
     ".storybook/"
   ],
