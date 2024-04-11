@@ -50,5 +50,5 @@
 }
 
 .fds-alert--elevated {
-  box-shadow: var(--fds-alert-border-left), var(--fds-shadow-small);
+  box-shadow: var(--fds-shadow-small);
 }
