@@ -1,9 +1,11 @@
-.description {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: var(--fds-spacing-1);
-  color: var(--fds-semantic-text-neutral-subtle);
-  font: inherit;
-  font-family: inherit;
+@layer fds.combobox-option-description {
+  .description {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: var(--fds-spacing-1);
+    color: var(--fds-semantic-text-neutral-subtle);
+    font: inherit;
+    font-family: inherit;
+  }
 }
