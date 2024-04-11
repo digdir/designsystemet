@@ -1,22 +1,24 @@
-.small {
-  padding-left: var(--fds-spacing-4);
-}
+@layer fds.list {
+  .small {
+    padding-left: var(--fds-spacing-4);
+  }
 
-.medium,
-.large {
-  padding-left: var(--fds-spacing-6);
-}
+  .medium,
+  .large {
+    padding-left: var(--fds-spacing-6);
+  }
 
-.listItem {
-  margin-bottom: var(--fds-spacing-2);
-}
+  .listItem {
+    margin-bottom: var(--fds-spacing-2);
+  }
 
-.listItem > :where(.small),
-.listItem > :where(.medium),
-.listItem > :where(.large) {
-  margin-top: var(--fds-spacing-2);
-}
+  .listItem > :where(.small),
+  .listItem > :where(.medium),
+  .listItem > :where(.large) {
+    margin-top: var(--fds-spacing-2);
+  }
 
-.heading {
-  margin-bottom: var(--fds-spacing-2);
+  .heading {
+    margin-bottom: var(--fds-spacing-2);
+  }
 }

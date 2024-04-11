@@ -350,7 +350,7 @@ export const Composed: Story = () => (
         >
           <TrashFillIcon
             aria-hidden
-            fontSize='1rem'
+            fontSize='1.5rem'
           />
           Fjern
         </Button>

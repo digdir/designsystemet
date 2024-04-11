@@ -1,80 +1,82 @@
-.paragraph {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+@layer fds.paragraph {
+  .paragraph {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  color: var(--fds-semantic-text-neutral-default);
-  margin: 0;
-}
+    color: var(--fds-semantic-text-neutral-default);
+    margin: 0;
+  }
 
-.spacing {
-  margin-bottom: var(--fdsc-bottom-spacing);
-}
+  .spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
 
-.large {
-  --fdsc-bottom-spacing: var(--fds-spacing-6);
+  .large {
+    --fdsc-bottom-spacing: var(--fds-spacing-6);
 
-  font: var(--fds-typography-paragraph-large);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-large);
+    font-family: inherit;
+  }
 
-.large:where(.short) {
-  font: var(--fds-typography-paragraph-short-large);
-  font-family: inherit;
-}
+  .large:where(.short) {
+    font: var(--fds-typography-paragraph-short-large);
+    font-family: inherit;
+  }
 
-.large:where(.long) {
-  line-height: var(--fds-typography-paragraph-long-large);
-}
+  .large:where(.long) {
+    line-height: var(--fds-typography-paragraph-long-large);
+  }
 
-.medium {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+  .medium {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  font: var(--fds-typography-paragraph-medium);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-medium);
+    font-family: inherit;
+  }
 
-.medium:where(.short) {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+  .medium:where(.short) {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  font: var(--fds-typography-paragraph-short-medium);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-short-medium);
+    font-family: inherit;
+  }
 
-.medium:where(.long) {
-  line-height: var(--fds-typography-paragraph-long-medium);
-}
+  .medium:where(.long) {
+    line-height: var(--fds-typography-paragraph-long-medium);
+  }
 
-.small {
-  --fdsc-bottom-spacing: var(--fds-spacing-4);
+  .small {
+    --fdsc-bottom-spacing: var(--fds-spacing-4);
 
-  font: var(--fds-typography-paragraph-small);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-small);
+    font-family: inherit;
+  }
 
-.small:where(.short) {
-  --fdsc-bottom-spacing: var(--fds-spacing-4);
+  .small:where(.short) {
+    --fdsc-bottom-spacing: var(--fds-spacing-4);
 
-  font: var(--fds-typography-paragraph-short-small);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-short-small);
+    font-family: inherit;
+  }
 
-.small:where(.long) {
-  line-height: var(--fds-typography-paragraph-long-small);
-}
+  .small:where(.long) {
+    line-height: var(--fds-typography-paragraph-long-small);
+  }
 
-.xsmall {
-  --fdsc-bottom-spacing: var(--fds-spacing-3);
+  .xsmall {
+    --fdsc-bottom-spacing: var(--fds-spacing-3);
 
-  font: var(--fds-typography-paragraph-xsmall);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-xsmall);
+    font-family: inherit;
+  }
 
-.xsmall:where(.short) {
-  --fdsc-bottom-spacing: var(--fds-spacing-3);
+  .xsmall:where(.short) {
+    --fdsc-bottom-spacing: var(--fds-spacing-3);
 
-  font: var(--fds-typography-paragraph-short-xsmall);
-  font-family: inherit;
-}
+    font: var(--fds-typography-paragraph-short-xsmall);
+    font-family: inherit;
+  }
 
-.xsmall:where(.long) {
-  line-height: var(--fds-typography-paragraph-long-xsmall);
+  .xsmall:where(.long) {
+    line-height: var(--fds-typography-paragraph-long-xsmall);
+  }
 }
