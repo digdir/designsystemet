@@ -1,4 +1,4 @@
-@layer fds-list {
+@layer fds.list {
   .small {
     padding-left: var(--fds-spacing-4);
   }

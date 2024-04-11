@@ -1,4 +1,4 @@
-@layer fds-popover {
+@layer fds.popover {
   .popover {
     --border: 1px solid;
 

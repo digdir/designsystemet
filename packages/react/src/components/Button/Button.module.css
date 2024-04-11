@@ -1,4 +1,4 @@
-@layer fds-button {
+@layer fds.button {
   .button {
     --fc-button-padding: 0 var(--fds-spacing-4);
     --fc-button-color: var(--fds-semantic-text-action-first-on_action);

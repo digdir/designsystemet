@@ -1,4 +1,4 @@
-@layer fds-helptext {
+@layer fds.helptext {
   .helpTextButton {
     background-color: transparent;
     border-radius: 50px;

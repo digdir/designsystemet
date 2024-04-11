@@ -1,4 +1,4 @@
-@layer fds-radio-group {
+@layer fds.radio-group {
   .inline {
     display: flex;
     flex-direction: row;

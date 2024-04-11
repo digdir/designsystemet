@@ -1,4 +1,4 @@
-@layer fds-tag {
+@layer fds.tag {
   .tag {
     --fdsc-tag-background: var(--fds-semantic-surface-neutral-subtle);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);

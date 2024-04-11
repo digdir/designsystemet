@@ -1,4 +1,4 @@
-@layer fds-ingress {
+@layer fds.ingress {
   .ingress {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 

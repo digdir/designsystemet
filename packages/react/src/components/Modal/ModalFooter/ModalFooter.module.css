@@ -1,4 +1,4 @@
-@layer fds-modal-footer {
+@layer fds.modal-footer {
   .modalFooter {
     display: flex;
     align-items: center;

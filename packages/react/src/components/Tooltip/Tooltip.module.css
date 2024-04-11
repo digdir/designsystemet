@@ -1,4 +1,4 @@
-@layer fds-tooltip {
+@layer fds.tooltip {
   .wrapper {
     background: var(--fds-semantic-surface-neutral-inverted);
     padding: var(--fds-spacing-1) var(--fds-spacing-2);

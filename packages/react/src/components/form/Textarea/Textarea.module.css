@@ -1,4 +1,4 @@
-@layer fds-textarea {
+@layer fds.textarea {
   .formField {
     display: grid;
     gap: var(--fds-spacing-2);

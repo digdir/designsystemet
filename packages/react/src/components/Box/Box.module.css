@@ -1,4 +1,4 @@
-@layer fds-box {
+@layer fds.box {
   .xsmallShadow {
     box-shadow: var(--fds-shadow-xsmall);
   }

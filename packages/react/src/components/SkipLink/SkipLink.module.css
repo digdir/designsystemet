@@ -1,4 +1,4 @@
-@layer fds-skiplink {
+@layer fds.skiplink {
   .skiplink:focus {
     display: block;
     outline: 0;

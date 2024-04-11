@@ -1,4 +1,4 @@
-@layer fds-togglegroup {
+@layer fds.togglegroup {
   .toggleGroupContainer {
     background-color: var(--fds-semantic-background-default);
     border: var(--fds-semantic-border-neutral-default) solid var(--fds-border_width-default);

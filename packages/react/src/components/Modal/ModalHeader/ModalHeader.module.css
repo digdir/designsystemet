@@ -1,4 +1,4 @@
-@layer fds-modal-header {
+@layer fds.modal-header {
   .modalHeader {
     display: flex;
     justify-content: space-between;

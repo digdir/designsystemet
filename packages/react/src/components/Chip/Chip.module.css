@@ -1,4 +1,4 @@
-@layer fds-chip {
+@layer fds.chip {
   .chip {
     display: flex;
   }

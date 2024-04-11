@@ -1,4 +1,4 @@
-@layer fds-errormessage {
+@layer fds.errormessage {
   .errorMessage {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 

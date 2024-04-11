@@ -1,4 +1,4 @@
-@layer fds-combobox-custom {
+@layer fds.combobox-custom {
   .custom {
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }

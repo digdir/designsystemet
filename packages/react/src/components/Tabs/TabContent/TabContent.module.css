@@ -1,4 +1,4 @@
-@layer fds-tabcontent {
+@layer fds.tabcontent {
   .tabContent {
     font-family: inherit;
   }

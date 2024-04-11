@@ -1,4 +1,4 @@
-@layer fds-modal {
+@layer fds.modal {
   .modal {
     padding: 0;
     width: 100%;

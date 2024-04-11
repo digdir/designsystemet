@@ -1,4 +1,4 @@
-@layer fds-combobox-empty {
+@layer fds.combobox-empty {
   .empty {
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }

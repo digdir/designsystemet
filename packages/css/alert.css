@@ -1,4 +1,4 @@
-@layer fds-alert {
+@layer fds.alert {
   .fds-alert {
     --fds-alert-border-color: var(--fds-semantic-border-info-default);
     --fds-alert-border-radius: var(--fds-border_radius-medium);

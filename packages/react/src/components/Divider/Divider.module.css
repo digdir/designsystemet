@@ -1,4 +1,4 @@
-@layer fds-divider {
+@layer fds.divider {
   .divider {
     border: none;
     border-top: 1px solid;

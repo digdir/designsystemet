@@ -1,4 +1,4 @@
-@layer fds-label {
+@layer fds.label {
   .label {
     --fdsc-bottom-spacing: var(--fds-spacing-1);
 

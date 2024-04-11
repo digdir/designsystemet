@@ -1,4 +1,4 @@
-@layer fds-radio {
+@layer fds.radio {
   .container {
     --fds-radio-size: 1.75rem;
     --fds-radio-focus-border-width: 3px;

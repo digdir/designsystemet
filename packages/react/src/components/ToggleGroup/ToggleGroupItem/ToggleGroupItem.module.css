@@ -1,4 +1,4 @@
-@layer fds-togglegroup-item {
+@layer fds.togglegroup-item {
   .toggleGroupItem:focus-visible {
     z-index: 1;
   }

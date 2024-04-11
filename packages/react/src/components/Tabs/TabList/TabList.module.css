@@ -1,4 +1,4 @@
-@layer fds-tablist {
+@layer fds.tablist {
   .tabItemList {
     display: flex;
     flex-direction: row;

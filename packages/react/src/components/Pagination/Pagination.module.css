@@ -1,4 +1,4 @@
-@layer fds-pagination {
+@layer fds.pagination {
   .pagination {
     list-style-type: none;
     display: flex;
