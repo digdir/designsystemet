@@ -1,26 +1,28 @@
-/**
+@layer fds.utility {
+  /**
  * Visually hide an element, but leave it available for screen readers
  */
-.fds-utility-visuallyHidden-1ed11112 {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+  .fds-utility-visuallyHidden-1ed11112 {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 
-/**
+  /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
-.fds-utility-focusable-1ed11112:focus-visible {
-  --fds-focus-border-width: 3px;
+  .fds-utility-focusable-1ed11112:focus-visible {
+    --fds-focus-border-width: 3px;
 
-  outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-  outline-offset: var(--fds-focus-border-width);
-  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+    outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+    outline-offset: var(--fds-focus-border-width);
+    box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+  }
 }
 
 @layer fds.button {
