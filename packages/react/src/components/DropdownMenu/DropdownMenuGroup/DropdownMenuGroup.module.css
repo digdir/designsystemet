@@ -1,9 +1,11 @@
-.section {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+@layer fds.dropdownmenu-group {
+  .section {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-.heading {
-  padding: var(--fds-spacing-2) var(--fds-spacing-4);
+  .heading {
+    padding: var(--fds-spacing-2) var(--fds-spacing-4);
+  }
 }

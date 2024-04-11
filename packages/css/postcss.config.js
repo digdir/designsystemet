@@ -5,5 +5,6 @@ module.exports = {
       preset: 'default',
     }),
     require('./postcss-layers'),
+    require('autoprefixer'),
   ],
 };

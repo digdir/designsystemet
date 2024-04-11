@@ -31,6 +31,7 @@ const config: StorybookConfig = {
         },
       },
     },
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
   ],
   staticDirs: ['../assets'],
   framework: getAbsolutePath('@storybook/react-vite'),

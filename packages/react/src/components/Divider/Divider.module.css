@@ -1,16 +1,18 @@
-.divider {
-  border: none;
-  border-top: 1px solid;
-}
+@layer fds.divider {
+  .divider {
+    border: none;
+    border-top: 1px solid;
+  }
 
-.default {
-  border-color: var(--fds-semantic-border-divider-default);
-}
+  .default {
+    border-color: var(--fds-semantic-border-divider-default);
+  }
 
-.strong {
-  border-color: var(--fds-semantic-border-divider-strong);
-}
+  .strong {
+    border-color: var(--fds-semantic-border-divider-strong);
+  }
 
-.subtle {
-  border-color: var(--fds-semantic-border-divider-subtle);
+  .subtle {
+    border-color: var(--fds-semantic-border-divider-subtle);
+  }
 }

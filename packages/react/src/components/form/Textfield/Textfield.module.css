@@ -1,148 +1,150 @@
-.formField {
-  display: grid;
-  gap: var(--fds-spacing-2);
-}
-
-.adornment {
-  color: var(--fds-semantic-border-neutral-default);
-  background: var(--fds-semantic-surface-neutral-subtle);
-  padding: 9px var(--fds-spacing-4);
-  border-radius: var(--fds-border_radius-medium);
-  border: solid 1px var(--fds-semantic-border-neutral-default);
-  box-sizing: border-box;
-  display: inline-block;
-}
-
-.input {
-  font: inherit;
-  font-family: inherit;
-  position: relative;
-  box-sizing: border-box;
-  flex: 0 1 auto;
-  width: 100%;
-  appearance: none;
-  padding: 0 var(--fds-spacing-3);
-  border: solid 1px var(--fds-semantic-border-input-default);
-  border-radius: var(--fds-border_radius-medium);
-}
-
-.disabled .input {
-  cursor: not-allowed;
-}
-
-.readonly .input {
-  background: var(--fds-semantic-surface-neutral-subtle);
-  border-color: var(--fds-semantic-border-neutral-default);
-}
-
-.field {
-  display: flex;
-  align-items: stretch;
-  border-radius: var(--fds-border_radius-medium);
-}
-
-.field > *:first-child {
-  border-top-left-radius: var(--fds-border_radius-medium);
-  border-bottom-left-radius: var(--fds-border_radius-medium);
-}
-
-.field > *:last-child {
-  border-top-right-radius: var(--fds-border_radius-medium);
-  border-bottom-right-radius: var(--fds-border_radius-medium);
-}
-
-.formField.small .adornment {
-  padding: 6.5px var(--fds-spacing-3);
-}
-
-.formField.medium .adornment {
-  padding: 9px var(--fds-spacing-4);
-}
-
-.formField.large .adornment {
-  padding: 11px var(--fds-spacing-5);
-}
-
-.formField.small .field {
-  height: var(--fds-sizing-8);
-}
-
-.formField.medium .field {
-  height: var(--fds-sizing-10);
-}
-
-.formField.large .field {
-  height: var(--fds-sizing-12);
-}
-
-.label {
-  min-width: min-content;
-  display: inline-flex;
-  flex-direction: row;
-  gap: var(--fds-spacing-1);
-  align-items: center;
-}
-
-.description {
-  color: var(--fds-semantic-text-neutral-subtle);
-  margin-top: calc(var(--fds-spacing-2) * -1);
-}
-
-.input.small {
-  padding: 0 var(--fds-spacing-2);
-}
-
-.input.medium {
-  padding: 0 var(--fds-spacing-3);
-}
-
-.input.large {
-  padding: 0 var(--fds-spacing-4);
-}
-
-.disabled {
-  opacity: var(--fds-opacity-disabled);
-}
-
-.error > .input:not(:focus-visible) {
-  border-color: var(--fds-semantic-border-danger-default);
-  box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-    border-color: var(--fds-semantic-border-input-hover);
-    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
+@layer fds.textfield {
+  .formField {
+    display: grid;
+    gap: var(--fds-spacing-2);
   }
-}
 
-.inputPrefix {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
+  .adornment {
+    color: var(--fds-semantic-border-neutral-default);
+    background: var(--fds-semantic-surface-neutral-subtle);
+    padding: 9px var(--fds-spacing-4);
+    border-radius: var(--fds-border_radius-medium);
+    border: solid 1px var(--fds-semantic-border-neutral-default);
+    box-sizing: border-box;
+    display: inline-block;
+  }
 
-.inputSuffix {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
+  .input {
+    font: inherit;
+    font-family: inherit;
+    position: relative;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+    width: 100%;
+    appearance: none;
+    padding: 0 var(--fds-spacing-3);
+    border: solid 1px var(--fds-semantic-border-input-default);
+    border-radius: var(--fds-border_radius-medium);
+  }
 
-.prefix {
-  border-right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
+  .disabled .input {
+    cursor: not-allowed;
+  }
 
-.suffix {
-  border-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
+  .readonly .input {
+    background: var(--fds-semantic-surface-neutral-subtle);
+    border-color: var(--fds-semantic-border-neutral-default);
+  }
 
-.padlock {
-  height: 1.2em;
-  width: 1.2em;
-}
+  .field {
+    display: flex;
+    align-items: stretch;
+    border-radius: var(--fds-border_radius-medium);
+  }
 
-.errorMessage:empty {
-  display: none;
+  .field > *:first-child {
+    border-top-left-radius: var(--fds-border_radius-medium);
+    border-bottom-left-radius: var(--fds-border_radius-medium);
+  }
+
+  .field > *:last-child {
+    border-top-right-radius: var(--fds-border_radius-medium);
+    border-bottom-right-radius: var(--fds-border_radius-medium);
+  }
+
+  .formField.small .adornment {
+    padding: var(--fds-sizing-2) var(--fds-spacing-3);
+  }
+
+  .formField.medium .adornment {
+    padding: 0.65rem var(--fds-spacing-4);
+  }
+
+  .formField.large .adornment {
+    padding: 0.85rem var(--fds-spacing-5);
+  }
+
+  .formField.small .field {
+    height: var(--fds-sizing-10);
+  }
+
+  .formField.medium .field {
+    height: var(--fds-sizing-12);
+  }
+
+  .formField.large .field {
+    height: var(--fds-sizing-14);
+  }
+
+  .label {
+    min-width: min-content;
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+  }
+
+  .description {
+    color: var(--fds-semantic-text-neutral-subtle);
+    margin-top: calc(var(--fds-spacing-2) * -1);
+  }
+
+  .input.small {
+    padding: 0 var(--fds-spacing-2);
+  }
+
+  .input.medium {
+    padding: 0 var(--fds-spacing-3);
+  }
+
+  .input.large {
+    padding: 0 var(--fds-spacing-4);
+  }
+
+  .disabled {
+    opacity: var(--fds-opacity-disabled);
+  }
+
+  .error > .input:not(:focus-visible) {
+    border-color: var(--fds-semantic-border-danger-default);
+    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+      border-color: var(--fds-semantic-border-input-hover);
+      box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
+    }
+  }
+
+  .inputPrefix {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .inputSuffix {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .prefix {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .suffix {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .padlock {
+    height: 1.2em;
+    width: 1.2em;
+  }
+
+  .errorMessage:empty {
+    display: none;
+  }
 }

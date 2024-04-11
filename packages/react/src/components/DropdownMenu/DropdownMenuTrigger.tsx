@@ -1,6 +1,7 @@
 import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
 import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 
 import { Button } from '../Button';
 
@@ -13,13 +14,15 @@ export type DropdownMenuTriggerProps = React.ComponentPropsWithRef<
 export const DropdownMenuTrigger = forwardRef<
   HTMLButtonElement,
   DropdownMenuTriggerProps
->(({ ...rest }, ref) => {
+>(({ asChild, ...rest }, ref) => {
   const { triggerRef, internalOpen, setInternalOpen, isControlled } =
     useContext(DropdownMenuContext);
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 
+  const Component = asChild ? Slot : Button;
+
   return (
-    <Button
+    <Component
       ref={mergedRefs}
       onClick={() => {
         if (!isControlled) setInternalOpen(!internalOpen);

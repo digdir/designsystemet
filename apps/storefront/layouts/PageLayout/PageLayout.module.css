@@ -54,4 +54,18 @@
   .content {
     padding: 0;
   }
+
+  .title {
+    text-align: left;
+  }
+
+  .meta {
+    flex-direction: column;
+    text-align: left;
+    gap: var(--fds-spacing-1);
+  }
+
+  .separator {
+    display: none;
+  }
 }

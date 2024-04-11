@@ -1,41 +1,43 @@
-.errorMessage {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+@layer fds.errormessage {
+  .errorMessage {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  margin: 0;
-}
+    margin: 0;
+  }
 
-.errorMessage.error {
-  color: var(--fds-semantic-text-danger-default);
-}
+  .errorMessage.error {
+    color: var(--fds-semantic-text-danger-default);
+  }
 
-.errorMessage.spacing {
-  margin-bottom: var(--fdsc-bottom-spacing);
-}
+  .errorMessage.spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
 
-.errorMessage.large {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+  .errorMessage.large {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  font: var(--fds-typography-error_message-large);
-  font-family: inherit;
-}
+    font: var(--fds-typography-error_message-large);
+    font-family: inherit;
+  }
 
-.errorMessage.medium {
-  --fdsc-bottom-spacing: var(--fds-spacing-5);
+  .errorMessage.medium {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
 
-  font: var(--fds-typography-error_message-medium);
-  font-family: inherit;
-}
+    font: var(--fds-typography-error_message-medium);
+    font-family: inherit;
+  }
 
-.errorMessage.small {
-  --fdsc-bottom-spacing: var(--fds-spacing-4);
+  .errorMessage.small {
+    --fdsc-bottom-spacing: var(--fds-spacing-4);
 
-  font: var(--fds-typography-error_message-small);
-  font-family: inherit;
-}
+    font: var(--fds-typography-error_message-small);
+    font-family: inherit;
+  }
 
-.errorMessage.xsmall {
-  --fdsc-bottom-spacing: var(--fds-spacing-3);
+  .errorMessage.xsmall {
+    --fdsc-bottom-spacing: var(--fds-spacing-3);
 
-  font: var(--fds-typography-error_message-xsmall);
-  font-family: inherit;
+    font: var(--fds-typography-error_message-xsmall);
+    font-family: inherit;
+  }
 }
