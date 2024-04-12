@@ -42,10 +42,10 @@
 }
 
 .beta {
-  background-color: #e4d4ff;
+  background-color: #dfd4ff;
   display: inline-block;
-  padding: 4px 13px;
-  border-radius: 2px;
+  padding: 3px 12px;
+  border-radius: 4px;
   font-size: 21px;
   font-weight: 500;
   margin-bottom: 16px;
