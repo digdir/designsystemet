@@ -27,7 +27,7 @@
 }
 
 .imgContainer {
-  flex-basis: 540px;
+  flex-basis: 550px;
   flex-grow: 16;
   display: flex;
   align-items: center;
