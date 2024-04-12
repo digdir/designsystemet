@@ -3,9 +3,7 @@ import { Heading } from '@digdir/design-system-react';
 import { PaletteIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
 import cn from 'clsx';
 
-import { NavigationCard, Container, ImageBanner, Section } from '@components';
-
-import { BlogCard } from '@blog';
+import { NavigationCard, Container } from '@components';
 
 import classes from './FrontpageLayout.module.css';
 
@@ -19,12 +17,12 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
       <div>
         <img
           src='/img/elements/first.svg'
-          alt='test'
+          alt=''
           className={cn(classes.cluster, classes.cluster1, classes.clusterLeft)}
         />
         <img
           src='/img/elements/third.svg'
-          alt='test'
+          alt=''
           className={cn(
             classes.cluster,
             classes.cluster2,
@@ -33,12 +31,12 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         />
         <img
           src='/img/elements/second.svg'
-          alt='test'
+          alt=''
           className={cn(classes.cluster, classes.cluster3, classes.clusterLeft)}
         />
         <img
           src='/img/elements/fourth.svg'
-          alt='test'
+          alt=''
           className={cn(
             classes.cluster,
             classes.cluster4,
@@ -47,12 +45,12 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         />
         <img
           src='/img/elements/first.svg'
-          alt='test'
+          alt=''
           className={cn(classes.cluster, classes.cluster5, classes.clusterLeft)}
         />
         <img
           src='/img/elements/third.svg'
-          alt='test'
+          alt=''
           className={cn(
             classes.cluster,
             classes.cluster6,
@@ -64,7 +62,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         <div className={classes.content}>
           <Container className={classes.container}>
             <div className={classes.test}>
-              <div className={classes.beta}>Beta</div>
+              <div className={classes.betaTag}>Beta</div>
               <Heading size='xlarge'>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
@@ -97,7 +95,6 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
           </Container>
         </div>
       </div>
-
       {content}
     </main>
   );

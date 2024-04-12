@@ -14,14 +14,15 @@ interface ImageSectionProps {
   headingLevel?: 'h1' | 'h2';
   content?: React.ReactNode;
   children?: React.ReactNode;
-  imgWidth: number;
-  imgHeight: number;
+  imgWidth: string;
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
   buttons?: ImageSectionButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
   imgPosition?: 'left' | 'right';
   region?: React.ReactNode;
   regionPosition?: 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
+  fallbackImgSrc: string;
+  fallbackImgAlt: string;
 }
 
 type ImageSectionButtonProps = {
@@ -36,7 +37,6 @@ const ImageBanner = ({
   imgSrc,
   videoSrc,
   content,
-  imgHeight,
   imgWidth,
   backgroundColor = 'white',
   children,
@@ -45,6 +45,8 @@ const ImageBanner = ({
   imgPosition = 'left',
   imgAlt = '',
   headingLevel = 'h1',
+  fallbackImgSrc,
+  fallbackImgAlt,
 }: ImageSectionProps) => {
   const [heading, setHeading] = useState<React.ReactNode | null>(null);
 
@@ -58,14 +60,17 @@ const ImageBanner = ({
     <div className={(classes[backgroundColor], classes.section)}>
       <Container className={cn(classes.container)}>
         {imgPosition === 'left' && (
-          <div className={classes.imgContainer}>
+          <div
+            className={cn(classes.imgContainer, {
+              [classes.tomato]: imgWidth === 'small',
+            })}
+          >
             {videoSrc && (
               <video
-                width='570'
-                height='380'
                 autoPlay
                 muted
                 loop
+                className={classes.video}
               >
                 <source
                   src={videoSrc}
@@ -75,9 +80,16 @@ const ImageBanner = ({
             )}
             {imgSrc && (
               <img
-                className={classes.img}
+                className={cn(classes.img)}
                 src={imgSrc}
-                alt='22'
+                alt={imgAlt}
+              />
+            )}
+            {fallbackImgSrc && (
+              <img
+                className={cn(classes.img, classes.fallbackImg)}
+                src={fallbackImgSrc}
+                alt={fallbackImgAlt}
               />
             )}
           </div>
@@ -117,11 +129,10 @@ const ImageBanner = ({
           <div className={classes.imgContainer}>
             {videoSrc && (
               <video
-                width='570'
-                height='380'
                 autoPlay
                 muted
                 loop
+                className={classes.video}
               >
                 <source
                   src={videoSrc}
@@ -131,9 +142,16 @@ const ImageBanner = ({
             )}
             {imgSrc && (
               <img
-                className={classes.img}
-                alt='dd'
+                className={cn(classes.img)}
+                alt={imgAlt}
                 src={imgSrc}
+              />
+            )}
+            {fallbackImgSrc && (
+              <img
+                className={cn(classes.img, classes.fallbackImg)}
+                src={fallbackImgSrc}
+                alt={fallbackImgAlt}
               />
             )}
           </div>

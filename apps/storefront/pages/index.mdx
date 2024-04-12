@@ -24,32 +24,35 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   title='Velkommen'
   description='Her finner du UI-komponenter, retningslinjer og god praksis for effektiv produktutvikling og helhetlige brukeropplevelser.'
 />
-
-        <ImageBanner
-          title='Din digitale verktøykasse'
-          description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre du kan bruke når du utvikler digitale tjenester. Designsystemet skal bidra til effektiv produktutvikling og helhetlige brukeropplevelser.'
-          imgSrc='/img/Toolbox.svg'
-          headingLevel='h2'
-          imgWidth={1195}
-          imgHeight={270}
-        />
-        <ImageBanner
-          title='Tilgjengelige komponenter'
-          description='Du finner komponentene lett tilgjengelig i Figma og i React, og du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. Når de mest grunnleggende elementene lages kun èn gang, kan vi sikre god kvalitet ved at at krav til universell utforming og testing er godt ivaretatt.'
-          videoSrc='/animations/Page.mp4'
-          imgPosition='right'
-          headingLevel='h2'
-          imgWidth={1195}
-          imgHeight={270}
-        />
-        <ImageBanner
-          title='Bruk ditt eget tema'
-          description='Designsystemet er ikke skreddersydd for en merkevare, men støtter ulike identiteter gjennom tema. Ulike avsenderidentiteter kan ivaretas selv om vi tar utganspunkt i det samme designsystemet.'
-          videoSrc='/animations/Theme.mp4'
-          headingLevel='h2'
-          imgWidth={1195}
-          imgHeight={270}
-        />
+<ImageBanner
+  title='Din digitale verktøykasse'
+  description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre du kan bruke når du utvikler digitale tjenester. Designsystemet skal bidra til effektiv produktutvikling og helhetlige brukeropplevelser.'
+  imgSrc='/img/Toolbox.svg'
+  headingLevel='h2'
+  imgWidth={1195}
+  imgHeight={270}
+/>
+<ImageBanner
+  title='Tilgjengelige komponenter'
+  description='Du finner komponentene lett tilgjengelig i Figma og i React, og du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. Når de mest grunnleggende elementene lages kun èn gang, kan vi sikre god kvalitet ved at at krav til universell utforming og testing er godt ivaretatt.'
+  videoSrc='/animations/Page.mp4'
+  imgPosition='right'
+  headingLevel='h2'
+  imgWidth={1195}
+  imgHeight={270}
+  fallbackImgSrc='/img/reduced-motion/Page.png'
+  fallbackImgAlt='Designskisse av en mobiltelefon som har komponenter fra designsystemet i seg.'
+/>
+<ImageBanner
+  title='Bruk ditt eget tema'
+  description='Designsystemet er ikke skreddersydd for en merkevare, men støtter ulike identiteter gjennom tema. Ulike avsenderidentiteter kan ivaretas selv om vi tar utganspunkt i det samme designsystemet.'
+  videoSrc='/animations/Theme.mp4'
+  headingLevel='h2'
+  imgWidth={1195}
+  imgHeight={270}
+  fallbackImgSrc='/img/reduced-motion/Theme.png'
+  fallbackImgAlt='Designskisse av en nettside som viser hvordan designsystemet kan tilpasses ulike identiteter.'
+/>
 
       <Section title='Siste nytt fra designsystemet'>
         <BlogCard
@@ -84,10 +87,9 @@ export default ({ children }) => <FrontpageLayout content={children} />;
         <ImageBanner
           title='Bli med på samarbeidet!'
           description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
-          imgSrc='/img/emblem.svg'
+          imgSrc='/img/Logotest.svg'
           headingLevel='h2'
-          imgWidth={195}
-          imgHeight={170}
+          imgWidth="small"
           buttons={
             [
               { text: 'Ta kontakt', href: 'mailto:designsystem@digdir.no', prefix: <EnvelopeClosedIcon fontSize={24} /> }, { text: 'Bli med i Slack-kanalen', href: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',  prefix: (

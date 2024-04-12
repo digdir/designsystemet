@@ -29,7 +29,7 @@
 }
 
 .separator {
-  width: 210px;
+  width: 200px;
   height: 2px;
   background-color: var(--fds-semantic-border-neutral-subtle);
   display: flex;

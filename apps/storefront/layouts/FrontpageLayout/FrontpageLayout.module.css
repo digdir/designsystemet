@@ -1,5 +1,5 @@
 .header {
-  height: 590px;
+  height: 600px;
   margin-top: -106px;
   position: relative;
   overflow: hidden;
@@ -23,7 +23,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 132px;
+  padding-top: 142px;
+  margin-bottom: 20px;
+}
+
+.test {
+  width: 550px;
+  text-align: center;
+  margin-bottom: 38px;
 }
 
 .container {
@@ -41,20 +48,14 @@
   width: 100%;
 }
 
-.beta {
-  background-color: #dfd4ff;
+.betaTag {
+  background-color: #ebceff;
   display: inline-block;
   padding: 3px 12px;
   border-radius: 4px;
   font-size: 21px;
   font-weight: 500;
-  margin-bottom: 16px;
-}
-
-.test {
-  width: 550px;
-  text-align: center;
-  margin-bottom: 38px;
+  margin-bottom: 15px;
 }
 
 .cluster {
@@ -88,25 +89,24 @@
 
 .cluster3 {
   top: 1050px;
-  transform: rotate(65deg);
   animation-delay: 1s;
-  width: 130px;
+  width: 200px;
 }
 
 .cluster4 {
-  top: 1650px;
+  top: 1620px;
   height: 150px;
 }
 
 .cluster5 {
-  top: 2300px;
+  top: 2250px;
   height: 140px;
   transform: rotate(45deg);
 }
 
 .cluster6 {
-  top: 3100px;
-  height: 140px;
+  top: 3030px;
+  height: 160px;
   transform: rotate(45deg);
 }
 
@@ -126,5 +126,14 @@
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .cluster {
+    display: none;
+  }
+  .header {
+    height: auto;
   }
 }
