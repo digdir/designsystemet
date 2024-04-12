@@ -7,8 +7,6 @@ import type { AriaAttributes } from 'react';
 import * as React from 'react';
 import cl from 'clsx';
 
-import utilityClasses from '../../utilities/utility.module.css';
-
 import classes from './Table.module.css';
 
 const SORT_ICON = {
@@ -63,7 +61,7 @@ export const TableHeaderCell = React.forwardRef<
       >
         {sortable && (
           <button
-            className={utilityClasses.focusable}
+            className={`fds-utilities--focusable`}
             onClick={onSortClick}
           >
             {children}

@@ -3,7 +3,6 @@ import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import utilityClasses from '../../utilities/utility.module.css';
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Button.module.css';
@@ -57,7 +56,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           type={type}
           className={cl(
             classes.button,
-            utilityClasses.focusable,
+            `fds-utilities--focusable`,
             classes[size],
             classes[variant],
             classes[color],

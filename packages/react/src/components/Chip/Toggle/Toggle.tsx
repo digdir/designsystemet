@@ -5,7 +5,6 @@ import cl from 'clsx';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
-import utilityClasses from '../../../utilities/utility.module.css';
 import classes from '../Chip.module.css';
 
 export type ToggleChipProps = {
@@ -46,7 +45,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         aria-pressed={selected}
         className={cl(
           classes.chipButton,
-          utilityClasses.focusable,
+          `fds-utilities--focusable`,
           classes[group?.size || size],
           { [classes.spacing]: shouldDisplayCheckmark },
           className,

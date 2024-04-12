@@ -5,7 +5,6 @@ import { forwardRef, useContext } from 'react';
 
 import { Paragraph, Heading } from '../..';
 import classes from '../Accordion.module.css';
-import utilityClasses from '../../../utilities/utility.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionHeaderProps = {
@@ -45,7 +44,7 @@ export const AccordionHeader = forwardRef<
     >
       <button
         type='button'
-        className={cl(classes.accordionButton, utilityClasses.focusable)}
+        className={cl(classes.accordionButton, `fds-utilities--focusable`)}
         onClick={handleClick}
         aria-expanded={context.open}
         aria-controls={context.contentId}

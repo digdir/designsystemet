@@ -1,4 +1,3 @@
-import utilityClasses from '../../utilities/utility.module.css';
 import { ErrorMessage } from '../Typography';
 
 export type CharacterLimitProps = Omit<
@@ -42,7 +41,7 @@ export const CharacterCounter = ({
   return (
     <>
       <span
-        className={utilityClasses.visuallyHidden}
+        className={`fds-utilities--visually-hidden`}
         id={id}
       >
         {srLabel}

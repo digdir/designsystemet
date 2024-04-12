@@ -6,7 +6,6 @@ import { XMarkIcon } from '@navikt/aksel-icons';
 import classes from '../Chip.module.css';
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
-import utilityClasses from '../../../utilities/utility.module.css';
 
 export type RemovableChipProps = {
   /**
@@ -26,7 +25,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         ref={ref}
         className={cl(
           classes.chipButton,
-          utilityClasses.focusable,
+          `fds-utilities--focusable`,
           classes[group?.size || size],
           classes.removable,
           className,

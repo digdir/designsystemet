@@ -11,7 +11,6 @@ import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
 import classes from './Search.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
 
 export type SearchProps = {
   /** Label */
@@ -124,7 +123,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               htmlFor={inputProps.id}
               className={cl(
                 classes.label,
-                hideLabel && utilityClasses.visuallyHidden,
+                hideLabel && 'fds-utilities--visually-hidden',
               )}
             >
               <span>{label}</span>
@@ -146,7 +145,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 disabled={disabled}
                 className={cl(
                   classes.input,
-                  utilityClasses.focusable,
+                  `fds-utilities--focusable`,
                   isSimple && classes.simple,
                   !isSimple && classes.withSearchButton,
                 )}
@@ -156,12 +155,15 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               />
               {showClearButton && (
                 <button
-                  className={cl(classes.clearButton, utilityClasses.focusable)}
+                  className={cl(
+                    classes.clearButton,
+                    `fds-utilities--focusable`,
+                  )}
                   type='button'
                   onClick={handleClear}
                   disabled={disabled}
                 >
-                  <span className={utilityClasses.visuallyHidden}>
+                  <span className={`fds-utilities--visually-hidden`}>
                     {clearButtonLabel}
                   </span>
                   <XMarkIcon aria-hidden />

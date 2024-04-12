@@ -4,7 +4,6 @@ import cl from 'clsx';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { Label, Paragraph, ErrorMessage } from '../../Typography';
-import utilityclasses from '../../../utilities/utility.module.css';
 import type { FormFieldProps } from '../useFormField';
 
 import { useFieldset } from './useFieldset';
@@ -75,7 +74,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
               <span
                 className={cl(
                   classes.legendContent,
-                  hideLegend && utilityclasses.visuallyHidden,
+                  hideLegend && `fds-utilities--visually-hidden`,
                 )}
               >
                 {readOnly && (
@@ -98,7 +97,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
                 id={descriptionId}
                 className={cl(
                   classes.description,
-                  hideLegend && utilityclasses.visuallyHidden,
+                  hideLegend && `fds-utilities--visually-hidden`,
                 )}
               >
                 {description}

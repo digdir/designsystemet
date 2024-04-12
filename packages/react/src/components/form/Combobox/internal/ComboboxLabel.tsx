@@ -5,7 +5,6 @@ import { Label, Paragraph } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../useFormField';
 import classes from '../Combobox.module.css';
-import utilityClasses from '../../../../utilities/utility.module.css';
 
 type ComboboxLabelProps = {
   label?: ComboboxProps['label'];
@@ -32,7 +31,7 @@ export const ComboboxLabel = ({
           htmlFor={formFieldProps.inputProps.id}
           className={cl(
             classes.label,
-            hideLabel && utilityClasses.visuallyHidden,
+            hideLabel && `fds-utilities--visually-hidden`,
           )}
         >
           {readOnly && (
@@ -53,7 +52,7 @@ export const ComboboxLabel = ({
             id={formFieldProps.descriptionId}
             className={cl(
               classes.description,
-              hideLabel && utilityClasses.visuallyHidden,
+              hideLabel && `fds-utilities--visually-hidden`,
             )}
           >
             {description}

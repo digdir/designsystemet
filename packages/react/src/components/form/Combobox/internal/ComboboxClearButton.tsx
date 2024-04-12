@@ -4,7 +4,6 @@ import cl from 'clsx';
 
 import { ComboboxContext } from '../Combobox';
 import classes from '../Combobox.module.css';
-import utilityClasses from '../../../../utilities/utility.module.css';
 
 export const ComboboxClearButton = () => {
   const context = useContext(ComboboxContext);
@@ -29,7 +28,7 @@ export const ComboboxClearButton = () => {
       className={cl(
         classes.clearButton,
         classes[size],
-        utilityClasses.focusable,
+        `fds-utilities--focusable`,
       )}
       onClick={() => {
         if (readOnly) return;

@@ -11,7 +11,6 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextarea } from './useTextarea';
 import classes from './Textarea.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
 
 export type TextareaProps = {
   /** Label */
@@ -94,7 +93,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               htmlFor={textareaProps.id}
               className={cl(
                 classes.label,
-                hideLabel && utilityClasses.visuallyHidden,
+                hideLabel && `fds-utilities--visually-hidden`,
               )}
             >
               {readOnly && (
@@ -115,7 +114,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 id={descriptionId}
                 className={cl(
                   classes.description,
-                  hideLabel && utilityClasses.visuallyHidden,
+                  hideLabel && `fds-utilities--visually-hidden`,
                 )}
               >
                 {description}
@@ -125,7 +124,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           <textarea
             className={cl(
               classes.textarea,
-              utilityClasses.focusable,
+              `fds-utilities--focusable`,
               classes[size],
             )}
             ref={ref}

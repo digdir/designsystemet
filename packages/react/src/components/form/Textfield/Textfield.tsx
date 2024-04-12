@@ -11,7 +11,6 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 import classes from './Textfield.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
 
 export type TextfieldProps = {
   /** Label */
@@ -120,7 +119,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               htmlFor={inputProps.id}
               className={cl(
                 classes.label,
-                hideLabel && utilityClasses.visuallyHidden,
+                hideLabel && `fds-utilities--visually-hidden`,
               )}
             >
               {readOnly && (
@@ -141,7 +140,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
                 id={descriptionId}
                 className={cl(
                   classes.description,
-                  hideLabel && utilityClasses.visuallyHidden,
+                  hideLabel && `fds-utilities--visually-hidden`,
                 )}
               >
                 {description}
@@ -167,7 +166,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               className={cl(
                 classes.input,
                 classes[size],
-                utilityClasses.focusable,
+                `fds-utilities--focusable`,
                 prefix && classes.inputPrefix,
                 suffix && classes.inputSuffix,
               )}
