@@ -142,15 +142,15 @@
   "semantic": {
     "surface": {
       "first": {
-        "light": {
+        "subtle": {
           "value": "{brand.alt1.100}",
           "type": "color"
         },
-        "light-hover": {
+        "subtle-hover": {
           "value": "{brand.alt1.300}",
           "type": "color"
         },
-        "light-active": {
+        "subtle-active": {
           "value": "{brand.alt1.400}",
           "type": "color"
         },
@@ -160,15 +160,15 @@
         }
       },
       "second": {
-        "light": {
+        "subtle": {
           "value": "{brand.alt2.200}",
           "type": "color"
         },
-        "light-hover": {
+        "subtle-hover": {
           "value": "{brand.alt2.300}",
           "type": "color"
         },
-        "light-active": {
+        "subtle-active": {
           "value": "{brand.alt2.400}",
           "type": "color"
         },
@@ -178,15 +178,15 @@
         }
       },
       "third": {
-        "light": {
+        "subtle": {
           "value": "{brand.alt3.100}",
           "type": "color"
         },
-        "light-hover": {
+        "subtle-hover": {
           "value": "{brand.alt3.200}",
           "type": "color"
         },
-        "light-active": {
+        "subtle-active": {
           "value": "{brand.alt3.300}",
           "type": "color"
         },
