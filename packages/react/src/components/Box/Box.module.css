@@ -1,71 +1,73 @@
-.xsmallShadow {
-  box-shadow: var(--fds-shadow-xsmall);
-}
+@layer fds.box {
+  .xsmallShadow {
+    box-shadow: var(--fds-shadow-xsmall);
+  }
 
-.smallShadow {
-  box-shadow: var(--fds-shadow-small);
-}
+  .smallShadow {
+    box-shadow: var(--fds-shadow-small);
+  }
 
-.mediumShadow {
-  box-shadow: var(--fds-shadow-medium);
-}
+  .mediumShadow {
+    box-shadow: var(--fds-shadow-medium);
+  }
 
-.largeShadow {
-  box-shadow: var(--fds-shadow-large);
-}
+  .largeShadow {
+    box-shadow: var(--fds-shadow-large);
+  }
 
-.xlargeShadow {
-  box-shadow: var(--fds-shadow-xlarge);
-}
+  .xlargeShadow {
+    box-shadow: var(--fds-shadow-xlarge);
+  }
 
-.defaultBorderColor {
-  border: 1px solid var(--fds-semantic-border-neutral-default);
-}
+  .defaultBorderColor {
+    border: 1px solid var(--fds-semantic-border-neutral-default);
+  }
 
-.subtleBorderColor {
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
-}
+  .subtleBorderColor {
+    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  }
 
-.strongBorderColor {
-  border: 1px solid var(--fds-semantic-border-neutral-strong);
-}
+  .strongBorderColor {
+    border: 1px solid var(--fds-semantic-border-neutral-strong);
+  }
 
-.smallBorderRadius {
-  border-radius: var(--fds-border_radius-small);
-}
+  .smallBorderRadius {
+    border-radius: var(--fds-border_radius-small);
+  }
 
-.mediumBorderRadius {
-  border-radius: var(--fds-border_radius-medium);
-}
+  .mediumBorderRadius {
+    border-radius: var(--fds-border_radius-medium);
+  }
 
-.largeBorderRadius {
-  border-radius: var(--fds-border_radius-large);
-}
+  .largeBorderRadius {
+    border-radius: var(--fds-border_radius-large);
+  }
 
-.xlargeBorderRadius {
-  border-radius: var(--fds-border_radius-xlarge);
-}
+  .xlargeBorderRadius {
+    border-radius: var(--fds-border_radius-xlarge);
+  }
 
-.xxlargeBorderRadius {
-  border-radius: var(--fds-border_radius-xxlarge);
-}
+  .xxlargeBorderRadius {
+    border-radius: var(--fds-border_radius-xxlarge);
+  }
 
-.xxxlargeBorderRadius {
-  border-radius: var(--fds-border_radius-xxxlarge);
-}
+  .xxxlargeBorderRadius {
+    border-radius: var(--fds-border_radius-xxxlarge);
+  }
 
-.xxxxlargeBorderRadius {
-  border-radius: var(--fds-border_radius-xxxxlarge);
-}
+  .xxxxlargeBorderRadius {
+    border-radius: var(--fds-border_radius-xxxxlarge);
+  }
 
-.fullBorderRadius {
-  border-radius: var(--fds-border_radius-full);
-}
+  .fullBorderRadius {
+    border-radius: var(--fds-border_radius-full);
+  }
 
-.defaultBackground {
-  background-color: var(--fds-semantic-background-default);
-}
+  .defaultBackground {
+    background-color: var(--fds-semantic-background-default);
+  }
 
-.subtleBackground {
-  background-color: var(--fds-semantic-background-subtle);
+  .subtleBackground {
+    background-color: var(--fds-semantic-background-subtle);
+  }
 }
