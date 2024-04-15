@@ -48,31 +48,25 @@ export const HtmlSize: Story = {
   },
 };
 
-export const Adornments: Story = {
-  args: {
-    label: 'Medium',
-    prefix: 'prefix',
-    suffix: 'suffix',
-  },
-};
-
-export const AdornmentsSmall: Story = {
-  args: {
-    label: 'Small',
-    prefix: 'prefix',
-    suffix: 'suffix',
-    size: 'small',
-  },
-};
-
-export const AdornmentsLarge: Story = {
-  args: {
-    label: 'Large',
-    prefix: 'prefix',
-    suffix: 'suffix',
-    size: 'large',
-  },
-};
+export const Adornments: StoryFn<typeof Textfield> = () => (
+  <div style={{ display: 'grid', gap: 'var(--fds-spacing-2)' }}>
+    <Textfield
+      prefix='prefix'
+      suffix='suffix'
+      size='small'
+    />
+    <Textfield
+      prefix='prefix'
+      suffix='suffix'
+      size='medium'
+    />
+    <Textfield
+      prefix='prefix'
+      suffix='suffix'
+      size='large'
+    />
+  </div>
+);
 
 export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>();

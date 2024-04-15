@@ -105,7 +105,7 @@
   .first .item:not(:first-child) .accordionButton,
   .second .item:not(:first-child) .accordionButton,
   .third .item:not(:first-child) .accordionButton {
-    border-top: 1px solid var(--fds-semantic-border-on_inverted-default);
+    border-top: 1px solid var(--fds-semantic-surface-neutral-default);
   }
 
   @media (hover: hover) and (pointer: fine) {

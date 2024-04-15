@@ -6,13 +6,7 @@ import type { ButtonProps } from './Button';
 import { Button } from './Button';
 
 const sizes: ButtonProps['size'][] = ['small', 'medium', 'large'];
-const colors: ButtonProps['color'][] = [
-  'first',
-  'second',
-  'success',
-  'danger',
-  'inverted',
-];
+const colors: ButtonProps['color'][] = ['first', 'second', 'success', 'danger'];
 const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
 
 const user = userEvent.setup();

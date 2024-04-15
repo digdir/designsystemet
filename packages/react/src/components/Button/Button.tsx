@@ -11,7 +11,7 @@ export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
   /** Specify which color palette to use */
-  color?: 'first' | 'second' | 'success' | 'danger' | 'inverted';
+  color?: 'first' | 'second' | 'success' | 'danger';
   /** Size */
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
