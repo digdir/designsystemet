@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.57.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.3-alpha.1...@digdir/designsystemet-react@0.57.0) (2024-04-15)
+
+### Features
+
+- **css:** Add cascade layer for every component ([#1805](https://github.com/digdir/designsystemet/issues/1805)) ([b40f95b](https://github.com/digdir/designsystemet/commit/b40f95b837355c402d081e6c89dcb8627e32a71b))
+
 ## [0.56.3-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.3-alpha.0...@digdir/designsystemet-react@0.56.3-alpha.1) (2024-04-10)
 
 ### Bug Fixes
