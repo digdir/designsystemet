@@ -1,0 +1,40 @@
+title: "navn på komponent... "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Takk for at du bidrar med å dokumentere behovet for en ny komponent 🎉
+        Alle komponenter vil vurderes om de er generiske nok til at de implementeres i designsystemet.
+        Du kan lese mer om hvordan dette vurderes på [bidra med design](https://www.designsystemet.no/grunnleggende/for-designere/bidra-i-figma)
+  - type: textarea
+    id: description
+    attributes:
+      label: Komponentbeskrivelse
+      description: "Beskriv komponenten og hvilket behov den dekker"
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Eksempel på komponenten
+      description: "Du kan enten legge ved et skjermbilde eller link"
+    validations:
+      required: true
+  - type: input
+    id: sender
+    attributes:
+      label: Hvilken virksomhet eller team kommer behovet fra?
+    validations:
+      required: false
+  - type: dropdown
+    id: bidra
+    attributes:
+      label: Ønsker du/dere å bidra med design og/eller utvikling av komponenten?
+      description: "Dette er ikke forpliktende"
+      options:
+        - Ja
+        - Nei
+        - Kanskje
+      default: 1
+    validations:
+      required: false
