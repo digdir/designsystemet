@@ -18,7 +18,6 @@
     "clean": "yarn workspace @digdir/designsystemet-theme clean"
   },
   "files": [
-    "./../../prettier.config.js",
     "./dist/**"
   ],
   "bin": {
