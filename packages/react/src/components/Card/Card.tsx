@@ -4,7 +4,6 @@ import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
-import utilityClasses from '../../utilities/utility.module.css';
 
 import classes from './Card.module.css';
 
@@ -54,7 +53,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
           classes.card,
           classes[color],
           isLink && classes.linkCard,
-          isLink && utilityClasses.focusable,
+          isLink && `fds-focus`,
           className,
         )}
         {...rest}

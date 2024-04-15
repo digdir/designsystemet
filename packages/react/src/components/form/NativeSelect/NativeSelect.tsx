@@ -7,7 +7,6 @@ import { omit } from '../../../utilities';
 import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import classes from './NativeSelect.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
 import { useNativeSelect } from './useNativeSelect';
 
 export type NativeSelectProps = {
@@ -76,10 +75,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               weight='medium'
               size={size}
               htmlFor={selectProps.id}
-              className={cl(
-                classes.label,
-                hideLabel && utilityClasses.visuallyHidden,
-              )}
+              className={cl(classes.label, hideLabel && 'fds-sr-only')}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
@@ -98,7 +94,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             className={cl(
               classes.select,
               classes[size],
-              utilityClasses.focusable,
+              `fds-focus`,
               props.multiple && classes.multiple,
               className,
             )}

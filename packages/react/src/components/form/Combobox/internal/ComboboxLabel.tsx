@@ -5,7 +5,6 @@ import { Label, Paragraph } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../useFormField';
 import classes from '../Combobox.module.css';
-import utilityClasses from '../../../../utilities/utility.module.css';
 
 type ComboboxLabelProps = {
   label?: ComboboxProps['label'];
@@ -30,10 +29,7 @@ export const ComboboxLabel = ({
         <Label
           size={size}
           htmlFor={formFieldProps.inputProps.id}
-          className={cl(
-            classes.label,
-            hideLabel && utilityClasses.visuallyHidden,
-          )}
+          className={cl(classes.label, hideLabel && `fds-sr-only`)}
         >
           {readOnly && (
             <PadlockLockedFillIcon
@@ -51,10 +47,7 @@ export const ComboboxLabel = ({
         >
           <div
             id={formFieldProps.descriptionId}
-            className={cl(
-              classes.description,
-              hideLabel && utilityClasses.visuallyHidden,
-            )}
+            className={cl(classes.description, hideLabel && `fds-sr-only`)}
           >
             {description}
           </div>
