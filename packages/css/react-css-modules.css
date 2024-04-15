@@ -965,7 +965,7 @@
   .fds-accordion-first-a8137c3d .fds-accordion-item-a8137c3d:not(:first-child) .fds-accordion-accordionButton-a8137c3d,
   .fds-accordion-second-a8137c3d .fds-accordion-item-a8137c3d:not(:first-child) .fds-accordion-accordionButton-a8137c3d,
   .fds-accordion-third-a8137c3d .fds-accordion-item-a8137c3d:not(:first-child) .fds-accordion-accordionButton-a8137c3d {
-    border-top: 1px solid var(--fds-semantic-border-on_inverted-default);
+    border-top: 1px solid var(--fds-semantic-surface-neutral-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
