@@ -1,0 +1,37 @@
+{
+  "name": "@digdir/designsystemet-cli",
+  "version": "0.0.1",
+  "description": "CLI for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": "https://github.com/digdir/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "esno ./src/build.ts",
+    "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
+    "prepublish": "tsc",
+    "clean": "yarn workspace @digdir/designsystemet-theme clean"
+  },
+  "files": [
+    "./dist/**"
+  ],
+  "bin": {
+    "designsystemet": "./dist/build/build.js"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^0.9.3",
+    "@types/ramda": "^0.29.9",
+    "@types/yargs": "^17.0.32",
+    "esno": "^4.7.0",
+    "ramda": "^0.29.1",
+    "rimraf": "^5.0.5",
+    "style-dictionary": "^3.8.0",
+    "typescript": "^5.4.5",
+    "yargs": "^17.7.2"
+  }
+}
