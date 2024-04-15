@@ -154,7 +154,7 @@
           "value": "{brand.alt1.400}",
           "type": "color"
         },
-        "dark": {
+        "strong": {
           "value": "{brand.alt1.700}",
           "type": "color"
         }
@@ -172,7 +172,7 @@
           "value": "{brand.alt2.400}",
           "type": "color"
         },
-        "dark": {
+        "strong": {
           "value": "{brand.alt2.700}",
           "type": "color"
         }
@@ -190,7 +190,7 @@
           "value": "{brand.alt3.300}",
           "type": "color"
         },
-        "dark": {
+        "strong": {
           "value": "{brand.alt3.700}",
           "type": "color"
         }
