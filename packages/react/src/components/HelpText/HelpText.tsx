@@ -54,11 +54,7 @@ const HelpText = ({
           variant='tertiary'
         >
           <button
-            className={cl(
-              classes.helpTextButton,
-              `fds-utilities--focusable`,
-              className,
-            )}
+            className={cl(classes.helpTextButton, `fds-focus`, className)}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
             {...rest}
@@ -77,7 +73,7 @@ const HelpText = ({
               className={cl(classes.helpTextIcon, classes[size], className)}
               openState={open}
             />
-            <span className={`fds-utilities--visually-hidden`}>{title}</span>
+            <span className={`fds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
         <Popover.Content className={classes.helpTextContent}>

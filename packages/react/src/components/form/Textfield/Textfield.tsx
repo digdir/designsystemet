@@ -117,10 +117,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl(
-                classes.label,
-                hideLabel && `fds-utilities--visually-hidden`,
-              )}
+              className={cl(classes.label, hideLabel && `fds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
@@ -138,10 +135,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(
-                  classes.description,
-                  hideLabel && `fds-utilities--visually-hidden`,
-                )}
+                className={cl(classes.description, hideLabel && `fds-sr-only`)}
               >
                 {description}
               </div>
@@ -166,7 +160,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               className={cl(
                 classes.input,
                 classes[size],
-                `fds-utilities--focusable`,
+                `fds-focus`,
                 prefix && classes.inputPrefix,
                 suffix && classes.inputSuffix,
               )}

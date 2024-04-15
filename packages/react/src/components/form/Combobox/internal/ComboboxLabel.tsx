@@ -29,10 +29,7 @@ export const ComboboxLabel = ({
         <Label
           size={size}
           htmlFor={formFieldProps.inputProps.id}
-          className={cl(
-            classes.label,
-            hideLabel && `fds-utilities--visually-hidden`,
-          )}
+          className={cl(classes.label, hideLabel && `fds-sr-only`)}
         >
           {readOnly && (
             <PadlockLockedFillIcon
@@ -50,10 +47,7 @@ export const ComboboxLabel = ({
         >
           <div
             id={formFieldProps.descriptionId}
-            className={cl(
-              classes.description,
-              hideLabel && `fds-utilities--visually-hidden`,
-            )}
+            className={cl(classes.description, hideLabel && `fds-sr-only`)}
           >
             {description}
           </div>

@@ -91,10 +91,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               size={size}
               weight='medium'
               htmlFor={textareaProps.id}
-              className={cl(
-                classes.label,
-                hideLabel && `fds-utilities--visually-hidden`,
-              )}
+              className={cl(classes.label, hideLabel && `fds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
@@ -112,21 +109,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(
-                  classes.description,
-                  hideLabel && `fds-utilities--visually-hidden`,
-                )}
+                className={cl(classes.description, hideLabel && `fds-sr-only`)}
               >
                 {description}
               </div>
             </Paragraph>
           )}
           <textarea
-            className={cl(
-              classes.textarea,
-              `fds-utilities--focusable`,
-              classes[size],
-            )}
+            className={cl(classes.textarea, `fds-focus`, classes[size])}
             ref={ref}
             aria-describedby={describedBy}
             {...omit(['size', 'error', 'errorId'], rest)}

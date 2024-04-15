@@ -75,10 +75,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               weight='medium'
               size={size}
               htmlFor={selectProps.id}
-              className={cl(
-                classes.label,
-                hideLabel && 'fds-utilities--visually-hidden',
-              )}
+              className={cl(classes.label, hideLabel && 'fds-sr-only')}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
@@ -97,7 +94,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             className={cl(
               classes.select,
               classes[size],
-              `fds-utilities--focusable`,
+              `fds-focus`,
               props.multiple && classes.multiple,
               className,
             )}

@@ -53,7 +53,7 @@ export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
           classes.card,
           classes[color],
           isLink && classes.linkCard,
-          isLink && `fds-utilities--focusable`,
+          isLink && `fds-focus`,
           className,
         )}
         {...rest}

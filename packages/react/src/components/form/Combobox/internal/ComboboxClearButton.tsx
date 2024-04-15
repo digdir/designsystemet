@@ -25,11 +25,7 @@ export const ComboboxClearButton = () => {
   return (
     <button
       disabled={disabled}
-      className={cl(
-        classes.clearButton,
-        classes[size],
-        `fds-utilities--focusable`,
-      )}
+      className={cl(classes.clearButton, classes[size], `fds-focus`)}
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;

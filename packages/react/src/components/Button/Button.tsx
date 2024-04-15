@@ -56,7 +56,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           type={type}
           className={cl(
             classes.button,
-            `fds-utilities--focusable`,
+            `fds-focus`,
             classes[size],
             classes[variant],
             classes[color],

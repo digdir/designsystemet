@@ -45,7 +45,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         aria-pressed={selected}
         className={cl(
           classes.chipButton,
-          `fds-utilities--focusable`,
+          `fds-focus`,
           classes[group?.size || size],
           { [classes.spacing]: shouldDisplayCheckmark },
           className,

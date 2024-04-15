@@ -25,7 +25,7 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         ref={ref}
         className={cl(
           classes.chipButton,
-          `fds-utilities--focusable`,
+          `fds-focus`,
           classes[group?.size || size],
           classes.removable,
           className,

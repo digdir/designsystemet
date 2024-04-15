@@ -74,7 +74,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
               <span
                 className={cl(
                   classes.legendContent,
-                  hideLegend && `fds-utilities--visually-hidden`,
+                  hideLegend && `fds-sr-only`,
                 )}
               >
                 {readOnly && (
@@ -95,10 +95,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(
-                  classes.description,
-                  hideLegend && `fds-utilities--visually-hidden`,
-                )}
+                className={cl(classes.description, hideLegend && `fds-sr-only`)}
               >
                 {description}
               </div>

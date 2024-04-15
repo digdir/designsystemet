@@ -121,10 +121,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl(
-                classes.label,
-                hideLabel && 'fds-utilities--visually-hidden',
-              )}
+              className={cl(classes.label, hideLabel && 'fds-sr-only')}
             >
               <span>{label}</span>
             </Label>
@@ -145,7 +142,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 disabled={disabled}
                 className={cl(
                   classes.input,
-                  `fds-utilities--focusable`,
+                  `fds-focus`,
                   isSimple && classes.simple,
                   !isSimple && classes.withSearchButton,
                 )}
@@ -155,17 +152,12 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               />
               {showClearButton && (
                 <button
-                  className={cl(
-                    classes.clearButton,
-                    `fds-utilities--focusable`,
-                  )}
+                  className={cl(classes.clearButton, `fds-focus`)}
                   type='button'
                   onClick={handleClear}
                   disabled={disabled}
                 >
-                  <span className={`fds-utilities--visually-hidden`}>
-                    {clearButtonLabel}
-                  </span>
+                  <span className={`fds-sr-only`}>{clearButtonLabel}</span>
                   <XMarkIcon aria-hidden />
                 </button>
               )}

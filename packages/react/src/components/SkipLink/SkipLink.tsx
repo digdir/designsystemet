@@ -20,11 +20,7 @@ export const SkipLink = ({
   return (
     <a
       href={href}
-      className={cl(
-        `fds-utilities--visually-hidden`,
-        classes.skiplink,
-        className,
-      )}
+      className={cl(`fds-sr-only`, classes.skiplink, className)}
       {...rest}
     >
       {children}

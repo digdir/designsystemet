@@ -61,7 +61,7 @@ export const TableHeaderCell = React.forwardRef<
       >
         {sortable && (
           <button
-            className={`fds-utilities--focusable`}
+            className={`fds-focus`}
             onClick={onSortClick}
           >
             {children}
