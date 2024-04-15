@@ -134,12 +134,6 @@
       background-color: var(--fds-semantic-surface-danger-hover);
     }
 
-    .fds-button-primary-8fa00f0f:where(.fds-button-inverted-8fa00f0f):not([aria-disabled='true'], :disabled):hover {
-      --fc-button-color: var(--fds-semantic-text-neutral-default);
-
-      background-color: var(--fds-semantic-surface-on_inverted-hover);
-    }
-
     .fds-button-secondary-8fa00f0f:where(.fds-button-first-8fa00f0f):not([aria-disabled='true'], :disabled):hover {
       --fc-button-color: var(--fds-semantic-text-action-first-hover);
 
@@ -168,10 +162,6 @@
       background-color: var(--fds-semantic-surface-danger-no_fill-hover);
     }
 
-    .fds-button-secondary-8fa00f0f:where(.fds-button-inverted-8fa00f0f):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--fds-semantic-surface-on_inverted-no_fill-hover);
-    }
-
     .fds-button-tertiary-8fa00f0f:where(.fds-button-first-8fa00f0f):not([aria-disabled='true'], :disabled):hover {
       --fc-button-color: var(--fds-semantic-text-action-first-hover);
 
@@ -195,12 +185,6 @@
 
       background-color: var(--fds-semantic-surface-danger-no_fill-hover);
     }
-
-    .fds-button-tertiary-8fa00f0f:where(.fds-button-inverted-8fa00f0f):not([aria-disabled='true'], :disabled):hover {
-      --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
-
-      background-color: var(--fds-semantic-surface-on_inverted-no_fill-hover);
-    }
   }
 
   /* Primary button colors */
@@ -220,12 +204,6 @@
     background-color: var(--fds-semantic-surface-danger-default);
   }
 
-  .fds-button-primary-8fa00f0f:where(.fds-button-inverted-8fa00f0f) {
-    --fc-button-color: var(--fds-semantic-text-neutral-default);
-
-    background-color: var(--fds-semantic-surface-on_inverted-default);
-  }
-
   .fds-button-primary-8fa00f0f:where(.fds-button-first-8fa00f0f):not([aria-disabled='true'], :disabled):active {
     background-color: var(--fds-semantic-surface-action-first-active);
   }
@@ -240,12 +218,6 @@
 
   .fds-button-primary-8fa00f0f:where(.fds-button-danger-8fa00f0f):not([aria-disabled='true'], :disabled):active {
     background-color: var(--fds-semantic-surface-danger-active);
-  }
-
-  .fds-button-primary-8fa00f0f:where(.fds-button-inverted-8fa00f0f):not([aria-disabled='true'], :disabled):active {
-    --fc-button-color: var(--fds-semantic-text-neutral-default);
-
-    background-color: var(--fds-semantic-surface-on_inverted-active);
   }
 
   /* Secondary button colors */
@@ -277,13 +249,6 @@
     background-color: var(--fds-semantic-surface-danger-no_fill);
   }
 
-  .fds-button-secondary-8fa00f0f:where(.fds-button-inverted-8fa00f0f) {
-    --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
-
-    border: 1px solid var(--fds-semantic-border-on_inverted-default);
-    background-color: transparent;
-  }
-
   .fds-button-secondary-8fa00f0f:where(.fds-button-first-8fa00f0f):not([aria-disabled='true'], :disabled):active {
     --fc-button-color: var(--fds-semantic-text-action-first-active);
 
@@ -312,12 +277,6 @@
     background-color: var(--fds-semantic-surface-danger-no_fill-active);
   }
 
-  .fds-button-secondary-8fa00f0f:where(.fds-button-inverted-8fa00f0f):not([aria-disabled='true'], :disabled):active {
-    --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
-
-    background-color: var(--fds-semantic-surface-on_inverted-no_fill-active);
-  }
-
   /* Tertiary button colors */
   .fds-button-tertiary-8fa00f0f:where(.fds-button-first-8fa00f0f) {
     --fc-button-color: var(--fds-semantic-text-action-first-default);
@@ -333,12 +292,6 @@
 
   .fds-button-tertiary-8fa00f0f:where(.fds-button-danger-8fa00f0f) {
     --fc-button-color: var(--fds-semantic-text-danger-default);
-  }
-
-  .fds-button-tertiary-8fa00f0f:where(.fds-button-inverted-8fa00f0f) {
-    --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
-
-    background-color: transparent;
   }
 
   .fds-button-tertiary-8fa00f0f:where(.fds-button-first-8fa00f0f):not([aria-disabled='true'], :disabled):active {
@@ -363,12 +316,6 @@
     --fc-button-color: var(--fds-semantic-text-danger-active);
 
     background-color: var(--fds-semantic-surface-danger-no_fill-active);
-  }
-
-  .fds-button-tertiary-8fa00f0f:where(.fds-button-inverted-8fa00f0f):not([aria-disabled='true'], :disabled):active {
-    --fc-button-color: var(--fds-semantic-text-neutral-on_inverted);
-
-    background-color: var(--fds-semantic-surface-on_inverted-no_fill-active);
   }
 }
 
