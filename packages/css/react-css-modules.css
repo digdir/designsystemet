@@ -763,7 +763,7 @@
   }
 
   .fds-spinner-invertedBackground-486ddf9b {
-    stroke: var(--fds-semantic-surface-neutral-dark);
+    stroke: var(--fds-semantic-surface-neutral-strong);
   }
 
   @keyframes fds-spinner-rotate-animation-486ddf9b {
@@ -930,21 +930,21 @@
   .fds-accordion-first-a8137c3d .fds-accordion-accordionButton-a8137c3d {
     --fds-accordion-border-color: var(--fds-semantic-border-first-default);
 
-    background: var(--fds-semantic-surface-first-light);
+    background: var(--fds-semantic-surface-first-subtle);
   }
 
   .fds-accordion-second-a8137c3d,
   .fds-accordion-second-a8137c3d .fds-accordion-accordionButton-a8137c3d {
     --fds-accordion-border-color: var(--fds-semantic-border-second-default);
 
-    background: var(--fds-semantic-surface-second-light);
+    background: var(--fds-semantic-surface-second-subtle);
   }
 
   .fds-accordion-third-a8137c3d,
   .fds-accordion-third-a8137c3d .fds-accordion-accordionButton-a8137c3d {
     --fds-accordion-border-color: var(--fds-semantic-border-third-default);
 
-    background: var(--fds-semantic-surface-third-light);
+    background: var(--fds-semantic-surface-third-subtle);
   }
 
   .fds-accordion-first-a8137c3d .fds-accordion-item-a8137c3d:where(.fds-accordion-open-a8137c3d) .fds-accordion-accordionButton-a8137c3d,
@@ -979,15 +979,15 @@
     }
 
     .fds-accordion-first-a8137c3d .fds-accordion-accordionButton-a8137c3d:hover {
-      background-color: var(--fds-semantic-surface-first-light-hover);
+      background-color: var(--fds-semantic-surface-first-subtle-hover);
     }
 
     .fds-accordion-second-a8137c3d .fds-accordion-accordionButton-a8137c3d:hover {
-      background-color: var(--fds-semantic-surface-second-light-hover);
+      background-color: var(--fds-semantic-surface-second-subtle-hover);
     }
 
     .fds-accordion-third-a8137c3d .fds-accordion-accordionButton-a8137c3d:hover {
-      background-color: var(--fds-semantic-surface-third-light-hover);
+      background-color: var(--fds-semantic-surface-third-subtle-hover);
     }
   }
 }
@@ -1155,17 +1155,17 @@
   }
 
   .fds-tag-first-40d841d9 {
-    --fdsc-tag-background: var(--fds-semantic-surface-first-light);
+    --fdsc-tag-background: var(--fds-semantic-surface-first-subtle);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   }
 
   .fds-tag-second-40d841d9 {
-    --fdsc-tag-background: var(--fds-semantic-surface-second-light);
+    --fdsc-tag-background: var(--fds-semantic-surface-second-subtle);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   }
 
   .fds-tag-third-40d841d9 {
-    --fdsc-tag-background: var(--fds-semantic-surface-third-light);
+    --fdsc-tag-background: var(--fds-semantic-surface-third-subtle);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   }
 }
@@ -1861,7 +1861,7 @@
     margin: auto;
     overflow: visible;
     border-radius: var(--fds-border_radius-full);
-    background-color: var(--fds-semantic-surface-neutral-dark);
+    background-color: var(--fds-semantic-surface-neutral-strong);
     transition: background-color var(--fds-transition) ease;
     margin-right: var(--fds-spacing-1);
   }
@@ -2035,7 +2035,7 @@
     }
 
     .fds-switch-input-9a6b03bc:not(:checked, :disabled, [readonly]):hover + .fds-switch-label-9a6b03bc .fds-switch-track-9a6b03bc {
-      background-color: var(--fds-semantic-surface-neutral-dark-hover);
+      background-color: var(--fds-semantic-surface-neutral-strong-hover);
     }
 
     .fds-switch-input-9a6b03bc:not(:disabled, [readonly]):checked:hover + .fds-switch-label-9a6b03bc .fds-switch-track-9a6b03bc {
@@ -3015,42 +3015,42 @@
   }
 
   .fds-card-first-a01cb08f {
-    background-color: var(--fds-semantic-surface-first-light);
+    background-color: var(--fds-semantic-surface-first-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .fds-card-first-a01cb08f.fds-card-linkCard-a01cb08f:hover {
-    background-color: var(--fds-semantic-surface-first-light-hover);
+    background-color: var(--fds-semantic-surface-first-subtle-hover);
   }
 
   .fds-card-first-a01cb08f.fds-card-linkCard-a01cb08f:active {
-    background-color: var(--fds-semantic-surface-first-light-active);
+    background-color: var(--fds-semantic-surface-first-subtle-active);
   }
 
   .fds-card-second-a01cb08f {
-    background-color: var(--fds-semantic-surface-second-light);
+    background-color: var(--fds-semantic-surface-second-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .fds-card-second-a01cb08f.fds-card-linkCard-a01cb08f:hover {
-    background-color: var(--fds-semantic-surface-second-light-hover);
+    background-color: var(--fds-semantic-surface-second-subtle-hover);
   }
 
   .fds-card-second-a01cb08f.fds-card-linkCard-a01cb08f:active {
-    background-color: var(--fds-semantic-surface-second-light-active);
+    background-color: var(--fds-semantic-surface-second-subtle-active);
   }
 
   .fds-card-third-a01cb08f {
-    background-color: var(--fds-semantic-surface-third-light);
+    background-color: var(--fds-semantic-surface-third-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .fds-card-third-a01cb08f.fds-card-linkCard-a01cb08f:hover {
-    background-color: var(--fds-semantic-surface-third-light-hover);
+    background-color: var(--fds-semantic-surface-third-subtle-hover);
   }
 
   .fds-card-third-a01cb08f.fds-card-linkCard-a01cb08f:active {
-    background-color: var(--fds-semantic-surface-third-light-active);
+    background-color: var(--fds-semantic-surface-third-subtle-active);
   }
 }
 
