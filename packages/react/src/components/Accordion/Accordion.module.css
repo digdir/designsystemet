@@ -5,9 +5,6 @@
 
     border-bottom: 1px solid var(--fds-semantic-border-neutral-subtle);
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
   }
 
   .border {
@@ -39,6 +36,7 @@
     text-align: left;
     cursor: pointer;
     border: none;
+    border-top: 1px solid var(--fds-semantic-border-neutral-subtle);
     padding: var(--fds-spacing-4);
   }
 
@@ -98,6 +96,16 @@
   .neutral .item:where(.open) .accordionButton,
   .subtle .item:where(.open) .accordionButton {
     background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+  }
+
+  .border .item:first-child .accordionButton {
+    border-top: 0;
+  }
+
+  .first .item:not(:first-child) .accordionButton,
+  .second .item:not(:first-child) .accordionButton,
+  .third .item:not(:first-child) .accordionButton {
+    border-top: 1px solid var(--fds-semantic-surface-neutral-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
