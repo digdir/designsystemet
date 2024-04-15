@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.57.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.3-alpha.1...@digdir/designsystemet-react@0.57.0) (2024-04-15)
+
+### Bug Fixes
+
+- Check if window is defined in AnimateHeight ([#1797](https://github.com/digdir/designsystemet/issues/1797)) ([66aec2d](https://github.com/digdir/designsystemet/commit/66aec2de637234f12a72e6d726ffc8e5a127196b))
+
+### Features
+
+- 🎨 Use new sizing scale for typography and components ([#1696](https://github.com/digdir/designsystemet/issues/1696)) ([61b1af7](https://github.com/digdir/designsystemet/commit/61b1af79d96049b664c3fd5725fdffe0f34b27cb))
+- **css:** Add cascade layer for every component ([#1805](https://github.com/digdir/designsystemet/issues/1805)) ([b40f95b](https://github.com/digdir/designsystemet/commit/b40f95b837355c402d081e6c89dcb8627e32a71b))
+- **DropdownMenu, Popover, Modal:** Using `asChild` on `Trigger` components no longer clones style to child ([#1795](https://github.com/digdir/designsystemet/issues/1795)) ([b827689](https://github.com/digdir/designsystemet/commit/b8276899a6493cd3d651138a00d7ec464b61b60f))
+-
+
 ## [0.56.3-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.3-alpha.0...@digdir/designsystemet-react@0.56.3-alpha.1) (2024-04-10)
 
 ### Bug Fixes
