@@ -15,7 +15,7 @@
     "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean",
-    "css-codemod": "tsx ./src/codemods.ts"
+    "css-codemod": "esno ./src/codemods.ts"
   },
   "files": [
     "./dist/**"
@@ -24,6 +24,8 @@
     "designsystemet": "./dist/build/build.js"
   },
   "dependencies": {
+    "esno": "^4.7.0",
+    "fast-glob": "^3.3.2",
     "postcss": "^8.4.38"
   },
   "devDependencies": {
@@ -32,12 +34,9 @@
     "@types/node": "^20.12.7",
     "@types/ramda": "^0.29.9",
     "@types/yargs": "^17.0.32",
-    "esno": "^4.7.0",
-    "fast-glob": "^3.3.2",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
     "style-dictionary": "^3.8.0",
-    "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "yargs": "^17.7.2"
   }

@@ -2611,7 +2611,6 @@ __metadata:
     ramda: "npm:^0.29.1"
     rimraf: "npm:^5.0.5"
     style-dictionary: "npm:^3.8.0"
-    tsx: "npm:^4.7.2"
     typescript: "npm:^5.4.5"
     yargs: "npm:^17.7.2"
   bin:
@@ -20628,22 +20627,6 @@ __metadata:
   bin:
     tsx: dist/cli.mjs
   checksum: 3a462b595f31ae58b31f9c6e8c450577dc87660b1225012bd972b6b58d7d2f6c4034728763ebc53bb731acff68de8b0fa50586e4c1ec4c086226f1788ccf9b7d
-  languageName: node
-  linkType: hard
-
-"tsx@npm:^4.7.2":
-  version: 4.7.2
-  resolution: "tsx@npm:4.7.2"
-  dependencies:
-    esbuild: "npm:~0.19.10"
-    fsevents: "npm:~2.3.3"
-    get-tsconfig: "npm:^4.7.2"
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    tsx: dist/cli.mjs
-  checksum: 3a06564f6926cc26bcdbf2752c361408d8e594a30abf15dc4639d4b964e98eedd3358c34ccd56ea15021519ebafe27a003d6cf26de0f530ea2cc34cb63fd0bfb
   languageName: node
   linkType: hard
 
