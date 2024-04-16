@@ -33,7 +33,7 @@ module.exports = {
         ecmaFeatures: { jsx: true },
         project: [
           './tsconfig.json',
-          './packages/*/tsconfig.json',
+          './packages/**/tsconfig.json',
           './tsconfig.node.json',
         ],
       },

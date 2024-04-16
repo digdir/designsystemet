@@ -7,10 +7,10 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "target": "esnext",
-    "module": "esnext",
+    "module": "NodeNext",
     "esModuleInterop": true,
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "types": ["style-dictionary/types"]
   },
   "rootDir": "./src",
   "include": ["./src/"]
