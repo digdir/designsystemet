@@ -1,41 +1,51 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import path from 'path';
 
 import * as R from 'ramda';
-import prettier from 'prettier';
-import StyleDictionary from 'style-dictionary';
-import type { Named, TransformedToken, Format } from 'style-dictionary';
+// import prettier from 'prettier';
+import type { TransformedToken, Format } from 'style-dictionary/types';
+import {
+  fileHeader,
+  createPropertyFormatter,
+  usesReferences,
+  getReferences,
+} from 'style-dictionary/utils';
 
-const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
+type PropertyFormat = ReturnType<typeof createPropertyFormatter>;
 
 type ReferencesFilter = (token: TransformedToken) => boolean;
 
-let prettierOptions: prettier.Options | null;
+// let prettierOptions: prettier.Options | null;
 
-export const setup = (prettierConfigPath: string) => {
-  prettierOptions = prettier.resolveConfig.sync(
-    path.resolve(prettierConfigPath),
-  );
-  if (!prettierOptions) {
-    throw Error(`Prettier config not found at ${prettierConfigPath}`);
-  }
-};
+// export const setup = (prettierConfigPath: string) => {
+//   prettierOptions = prettier.resolveConfig.sync(
+//     path.resolve(prettierConfigPath),
+//   );
+//   if (!prettierOptions) {
+//     throw Error(`Prettier config not found at ${prettierConfigPath}`);
+//   }
+// };
 
 /**
  *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
  */
-export const scopedReferenceVariables: Named<Format> = {
+export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  formatter: function ({ dictionary, options, file }) {
+  formatter: async function ({ dictionary, options, file }) {
     const { outputReferences } = options;
     const includeReferences = options.referencesFilter as ReferencesFilter;
     let referencedTokens: TransformedToken[] = [];
 
-    const format = createPropertyFormatter({
-      outputReferences,
-      dictionary,
+    const format: PropertyFormat = createPropertyFormatter({
       format: 'css',
+      dictionary,
+      outputReferences,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const formatWithReference = createPropertyFormatter({
       outputReferences: true,
       dictionary,
@@ -44,11 +54,11 @@ export const scopedReferenceVariables: Named<Format> = {
 
     const tokens = dictionary.allTokens
       .map((token) => {
-        if (
-          dictionary.usesReference(token.original.value) &&
-          includeReferences(token)
-        ) {
-          const refs = dictionary.getReferences(token.original.value);
+        if (usesReferences(token.original.value) && includeReferences(token)) {
+          const refs: TransformedToken[] = getReferences(
+            token.original.value,
+            token,
+          );
 
           referencedTokens = [
             ...referencedTokens,
@@ -74,7 +84,7 @@ export const scopedReferenceVariables: Named<Format> = {
       .filter((x) => x);
 
     return (
-      fileHeader({ file }) +
+      (await fileHeader({ file })) +
       ':root {\n' +
       '  /** Referenced source tokens */ \n' +
       '  /** DO NOT OVERRIDE */ \n' +
@@ -101,7 +111,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 /**
  * Format for displaying tokens in storefront
  */
-export const groupedTokens: Named<Format> = {
+export const groupedTokens: Format = {
   name: 'groupedTokens',
   formatter: function ({ dictionary, file }) {
     const format = createPropertyFormatter({
@@ -131,9 +141,10 @@ export const groupedTokens: Named<Format> = {
         )
         .join('\n');
 
-    return prettier.format(content, {
-      ...prettierOptions,
-      parser: 'babel',
-    });
+    return content;
+    // return prettier.format(content, {
+    //   ...prettierOptions,
+    //   parser: 'babel',
+    // });
   },
 };

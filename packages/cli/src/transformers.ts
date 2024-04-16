@@ -1,15 +1,14 @@
 import type {
   Transform,
-  Named,
   TransformedToken,
   TransformedTokens,
   Format,
-} from 'style-dictionary';
+} from 'style-dictionary/types';
 import { transformDimension } from '@tokens-studio/sd-transforms';
 
 import { noCase } from './noCase.js';
 
-export const sizePx: Named<Transform> = {
+export const sizePx: Transform = {
   name: 'fds/size/px',
   type: 'value',
   transitive: true,
@@ -19,7 +18,7 @@ export const sizePx: Named<Transform> = {
   transformer: (token) => transformDimension(token.value as number),
 };
 
-export const sizeRem: Named<Transform> = {
+export const sizeRem: Transform = {
   name: 'fds/size/toRem',
   type: 'value',
   transitive: true,
@@ -38,7 +37,7 @@ export const sizeRem: Named<Transform> = {
   },
 };
 
-export const nameKebab: Named<Transform> = {
+export const nameKebab: Transform = {
   name: 'name/cti/hierarchical-kebab',
   type: 'name',
   transformer: (token, options) => {
@@ -49,7 +48,7 @@ export const nameKebab: Named<Transform> = {
   },
 };
 
-export const nameKebabUnderscore: Named<Transform> = {
+export const nameKebabUnderscore: Transform = {
   name: 'name/cti/camel_underscore',
   type: 'name',
   transformer: function (token, options) {
@@ -67,7 +66,7 @@ type Typgraphy = {
   fontFamily: string;
 };
 
-export const typographyShorthand: Named<Transform> = {
+export const typographyShorthand: Transform = {
   name: 'typography/shorthand',
   type: 'value',
   transitive: true,
@@ -84,7 +83,7 @@ export const typographyShorthand: Named<Transform> = {
   },
 };
 
-export const calc: Named<Transform> = {
+export const calc: Transform = {
   name: 'fds/calc',
   type: 'value',
   transitive: true,
@@ -108,7 +107,7 @@ type FontScale = {
 
 let fontScale: TransformedTokens;
 
-export const fluidFontSize: Named<Transform> = {
+export const fluidFontSize: Transform = {
   name: 'css/fontSizes/fluid',
   type: 'value',
   transitive: true,
@@ -138,7 +137,7 @@ export const fluidFontSize: Named<Transform> = {
   },
 };
 /** This should be in formatters but needs to be here due to global var `fontScale` used in transformer `fluidFontSize` */
-export const fontScaleHackFormat: Named<Format> = {
+export const fontScaleHackFormat: Format = {
   name: 'global-values-hack',
   formatter: ({ dictionary }) => {
     console.info('\x1b[34m✔ Setting global values');

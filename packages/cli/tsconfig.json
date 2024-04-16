@@ -10,8 +10,8 @@
     "target": "esnext",
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "moduleResolution": "NodeNext"
   },
   "rootDir": "./src",
-  "include": ["./src/", "./declarations.d.ts"]
+  "include": ["./src/"]
 }
