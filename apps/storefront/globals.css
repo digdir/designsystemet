@@ -24,7 +24,9 @@ body {
 
 * {
   box-sizing: border-box;
-  font-feature-settings: 'cv05' 1;
+
+  /* Still need important here, since we are using `font:` outside of a layer */
+  font-feature-settings: 'cv05' 1 !important;
 }
 
 h1,
