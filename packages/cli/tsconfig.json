@@ -7,10 +7,7 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "target": "esnext",
-    "module": "esnext",
-    "esModuleInterop": true,
-    "moduleResolution": "node"
+    "esModuleInterop": true
   },
   "rootDir": "./src",
   "include": ["./src/", "./declarations.d.ts"]
