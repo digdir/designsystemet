@@ -6,7 +6,6 @@
   "repository": "https://github.com/digdir/designsystemet",
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
-  "type": "module",
   "private": true,
   "publishConfig": {
     "access": "public"
@@ -15,7 +14,8 @@
     "start": "esno ./src/build.ts",
     "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
-    "clean": "yarn workspace @digdir/designsystemet-theme clean"
+    "clean": "yarn workspace @digdir/designsystemet-theme clean",
+    "css-codemod": "tsx ./src/codemods.ts"
   },
   "files": [
     "./dist/**"
@@ -23,14 +23,21 @@
   "bin": {
     "designsystemet": "./dist/build/build.js"
   },
+  "dependencies": {
+    "postcss": "^8.4.38"
+  },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.9.3",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.12.7",
     "@types/ramda": "^0.29.9",
     "@types/yargs": "^17.0.32",
     "esno": "^4.7.0",
+    "fast-glob": "^3.3.2",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
     "style-dictionary": "^3.8.0",
+    "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "yargs": "^17.7.2"
   }
