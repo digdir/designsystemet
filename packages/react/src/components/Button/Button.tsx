@@ -3,7 +3,6 @@ import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import utilityClasses from '../../utilities/utility.module.css';
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
 import classes from './Button.module.css';
@@ -12,7 +11,7 @@ export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
   /** Specify which color palette to use */
-  color?: 'first' | 'second' | 'success' | 'danger' | 'inverted';
+  color?: 'first' | 'second' | 'success' | 'danger';
   /** Size */
   size?: 'small' | 'medium' | 'large';
   /** If `Button` should fill full width of its container */
@@ -57,7 +56,7 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           type={type}
           className={cl(
             classes.button,
-            utilityClasses.focusable,
+            `fds-focus`,
             classes[size],
             classes[variant],
             classes[color],

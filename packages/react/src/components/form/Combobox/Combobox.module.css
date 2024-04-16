@@ -1,205 +1,207 @@
-.combobox {
-  display: grid;
-  background-color: transparent;
-  gap: var(--fds-spacing-2);
-}
+@layer fds.combobox {
+  .combobox {
+    display: grid;
+    background-color: transparent;
+    gap: var(--fds-spacing-2);
+  }
 
-.optionsWrapper {
-  padding: var(--fds-spacing-2);
-  background: var(--fds-semantic-background-default);
-  overflow-y: auto;
-  z-index: 1600;
-}
+  .optionsWrapper {
+    padding: var(--fds-spacing-2);
+    background: var(--fds-semantic-background-default);
+    overflow-y: auto;
+    z-index: 1600;
+  }
 
-.readOnly input {
-  pointer-events: none;
-}
+  .readOnly input {
+    pointer-events: none;
+  }
 
-.inputWrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-  gap: var(--fds-spacing-1);
-  cursor: text;
-  padding: var(--fds-spacing-2);
-  width: 100%;
-  height: auto;
-  justify-content: space-between;
-  font: var(--fds-typography-paragraph-medium);
-  font-family: inherit;
-}
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: var(--fds-spacing-1);
+    cursor: text;
+    padding: var(--fds-spacing-2);
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    font: var(--fds-typography-paragraph-medium);
+    font-family: inherit;
+  }
 
-.inputWrapper input {
-  height: 100%;
-  min-width: 50px;
-  flex-grow: 1;
-  appearance: none;
-  border: none;
-  background-color: transparent;
-}
+  .inputWrapper input {
+    height: 100%;
+    min-width: 50px;
+    flex-grow: 1;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+  }
 
-.inputWrapper.small {
-  min-height: var(--fds-sizing-10);
-  font: var(--fds-typography-paragraph-small);
-  font-family: inherit;
-  padding: 5px var(--fds-spacing-2);
-}
+  .inputWrapper.small {
+    min-height: var(--fds-sizing-10);
+    font: var(--fds-typography-paragraph-small);
+    font-family: inherit;
+    padding: 5px var(--fds-spacing-2);
+  }
 
-.inputWrapper.small input {
-  font: var(--fds-typography-paragraph-small);
-  font-family: inherit;
-}
+  .inputWrapper.small input {
+    font: var(--fds-typography-paragraph-small);
+    font-family: inherit;
+  }
 
-.inputWrapper.medium {
-  min-height: var(--fds-sizing-12);
-  font: var(--fds-typography-paragraph-medium);
-  font-family: inherit;
-  padding: 7px var(--fds-spacing-3);
-}
+  .inputWrapper.medium {
+    min-height: var(--fds-sizing-12);
+    font: var(--fds-typography-paragraph-medium);
+    font-family: inherit;
+    padding: 7px var(--fds-spacing-3);
+  }
 
-.inputWrapper.medium input {
-  font: var(--fds-typography-paragraph-medium);
-  font-family: inherit;
-}
+  .inputWrapper.medium input {
+    font: var(--fds-typography-paragraph-medium);
+    font-family: inherit;
+  }
 
-.inputWrapper.large {
-  min-height: var(--fds-sizing-14);
-  font: var(--fds-typography-paragraph-large);
-  font-family: inherit;
-  padding: 7px var(--fds-spacing-4);
-}
+  .inputWrapper.large {
+    min-height: var(--fds-sizing-14);
+    font: var(--fds-typography-paragraph-large);
+    font-family: inherit;
+    padding: 7px var(--fds-spacing-4);
+  }
 
-.inputWrapper.large input {
-  font: var(--fds-typography-paragraph-large);
-  font-family: inherit;
-}
+  .inputWrapper.large input {
+    font: var(--fds-typography-paragraph-large);
+    font-family: inherit;
+  }
 
-.inputWrapper input:focus {
-  outline: none;
-}
+  .inputWrapper input:focus {
+    outline: none;
+  }
 
-.inputWrapper.error {
-  border-color: var(--fds-semantic-border-danger-default);
-  border-width: 2px;
-}
+  .inputWrapper.error {
+    border-color: var(--fds-semantic-border-danger-default);
+    border-width: 2px;
+  }
 
-.chipAndInput {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: var(--fds-spacing-2);
-  align-items: center;
-  background-color: transparent;
-}
+  .chipAndInput {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: var(--fds-spacing-2);
+    align-items: center;
+    background-color: transparent;
+  }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--fds-spacing-1);
-  align-items: center;
-  background-color: transparent;
-}
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+    background-color: transparent;
+  }
 
-.arrow {
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
+  .arrow {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
 
-.inputWrapper.readonly {
-  background: var(--fds-semantic-surface-neutral-subtle);
-  border-color: var(--fds-semantic-border-neutral-default);
-}
+  .inputWrapper.readonly {
+    background: var(--fds-semantic-surface-neutral-subtle);
+    border-color: var(--fds-semantic-border-neutral-default);
+  }
 
-.label {
-  min-width: min-content;
-  display: inline-flex;
-  flex-direction: row;
-  gap: var(--fds-spacing-1);
-  align-items: center;
-}
+  .label {
+    min-width: min-content;
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+  }
 
-.description {
-  color: var(--fds-semantic-text-neutral-subtle);
-  margin-top: calc(var(--fds-spacing-2) * -1);
-}
+  .description {
+    color: var(--fds-semantic-text-neutral-subtle);
+    margin-top: calc(var(--fds-spacing-2) * -1);
+  }
 
-.clearButton {
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  background-color: transparent;
-  color: var(--fds-semantic-text-neutral-default);
-  border: none;
-  padding: 0;
-  border-radius: var(--fds-spacing-1);
-  height: 29px;
-  width: 29px;
-  aspect-ratio: 1;
-}
+  .clearButton {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--fds-semantic-text-neutral-default);
+    border: none;
+    padding: 0;
+    border-radius: var(--fds-spacing-1);
+    height: 29px;
+    width: 29px;
+    aspect-ratio: 1;
+  }
 
-.clearButton.small {
-  height: 25px;
-  width: 25px;
-}
+  .clearButton.small {
+    height: 25px;
+    width: 25px;
+  }
 
-.clearButton.medium {
-  height: 29px;
-  width: 29px;
-}
+  .clearButton.medium {
+    height: 29px;
+    width: 29px;
+  }
 
-.clearButton.large {
-  height: 31px;
-  width: 31px;
-}
+  .clearButton.large {
+    height: 31px;
+    width: 31px;
+  }
 
-.clearButton:not(.disabled):hover {
-  background-color: var(--fds-semantic-surface-info-subtle-hover);
-}
+  .clearButton:not(.disabled):hover {
+    background-color: var(--fds-semantic-surface-info-subtle-hover);
+  }
 
-.disabled {
-  opacity: var(--fds-opacity-disabled);
-}
+  .disabled {
+    opacity: var(--fds-opacity-disabled);
+  }
 
-.disabled * {
-  cursor: not-allowed;
-}
+  .disabled * {
+    cursor: not-allowed;
+  }
 
-.padlock {
-  height: 1.2em;
-  width: 1.2em;
-}
+  .padlock {
+    height: 1.2em;
+    width: 1.2em;
+  }
 
-.errorMessage {
-  margin-top: var(--fds-spacing-2);
-}
+  .errorMessage {
+    margin-top: var(--fds-spacing-2);
+  }
 
-.errorMessage:empty {
-  display: none;
-}
+  .errorMessage:empty {
+    display: none;
+  }
 
-.loading {
-  display: flex;
-  gap: var(--fds-spacing-2);
-  align-content: center;
-}
+  .loading {
+    display: flex;
+    gap: var(--fds-spacing-2);
+    align-content: center;
+  }
 
-/**
- * Apply a focus outline on an element when it is focused with keyboard
- */
-.inFocus {
-  --fds-focus-border-width: 3px;
+  /**
+   * Apply a focus outline on an element when it is focused with keyboard
+   */
+  .inFocus {
+    --fds-focus-border-width: 3px;
 
-  outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-  outline-offset: var(--fds-focus-border-width);
-  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow) !important;
-}
+    outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+    outline-offset: var(--fds-focus-border-width);
+    box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow) !important;
+  }
 
-.showChecked path {
-  display: inline !important;
-}
+  .showChecked path {
+    display: inline !important;
+  }
 
-.showChecked rect {
-  stroke: var(--fds-semantic-border-input-hover) !important;
-  fill: var(--fds-semantic-border-input-hover) !important;
+  .showChecked rect {
+    stroke: var(--fds-semantic-border-input-hover) !important;
+    fill: var(--fds-semantic-border-input-hover) !important;
+  }
 }

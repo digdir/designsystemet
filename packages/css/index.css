@@ -1,4 +1,5 @@
 @charset "UTF-8";
 
 @import url('./react-css-modules.css');
+@import url('./utils.css');
 @import url('./alert.css');

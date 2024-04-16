@@ -13,7 +13,7 @@ fs.ensureDirSync(outputFolder);
 
 /** To exclude files when we start writing css manually */
 const ignore = [''];
-const additional = ['utility.module.css'];
+const additional = [''];
 
 const findComponentName = (filePath: string) => {
   let fileName = filePath.split('/src/')[1];

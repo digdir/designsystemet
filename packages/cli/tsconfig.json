@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/build",
+    "declarationDir": "./dist/types",
+    "composite": false,
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": false,
+    "noEmit": false,
+    "target": "esnext",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "rootDir": "./src",
+  "include": ["./src/", "./declarations.d.ts"]
+}

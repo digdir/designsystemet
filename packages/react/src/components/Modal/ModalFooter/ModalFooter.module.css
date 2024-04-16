@@ -1,9 +1,11 @@
-.modalFooter {
-  display: flex;
-  align-items: center;
-  gap: var(--fds-spacing-4);
-  padding-top: var(--fds-spacing-3);
-  padding-bottom: var(--fds-spacing-6);
-  padding-left: var(--fds-spacing-6);
-  padding-right: var(--fds-spacing-6);
+@layer fds.modal-footer {
+  .modalFooter {
+    display: flex;
+    align-items: center;
+    gap: var(--fds-spacing-4);
+    padding-top: var(--fds-spacing-3);
+    padding-bottom: var(--fds-spacing-6);
+    padding-left: var(--fds-spacing-6);
+    padding-right: var(--fds-spacing-6);
+  }
 }

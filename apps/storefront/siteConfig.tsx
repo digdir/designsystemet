@@ -112,6 +112,10 @@ export const SiteConfig = {
               name: 'Forstå synsnedsettelse',
               url: 'god-praksis/tilgjengelighet/forsta-synsnedsettelse',
             },
+            {
+              name: 'Kontrast',
+              url: 'god-praksis/tilgjengelighet/kontrast',
+            },
           ],
         },
         {
