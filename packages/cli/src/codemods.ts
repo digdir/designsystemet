@@ -54,21 +54,12 @@ const transform = async () => {
   const files = glob.sync('./**/*.css');
 
   const filePromises = files.map(async (file) => {
-    // Read the file and convert it to a string.
-    // This is effectively equivalent to the `css`
-    // variable that was previously defined above.
     const contents = fs.readFileSync(file).toString();
-
-    // Identical, but the `css` variable was swapped for the file `contents`.
     const result = await processor.process(contents, { from: undefined });
 
-    // Instead of logging the result, write the
-    // result back to the original file, completing
-    // the transformation for this file.
     fs.writeFileSync(file, result.css);
   });
 
-  // Wait for the array of promises to all resolve.
   await Promise.all(filePromises);
 };
 
