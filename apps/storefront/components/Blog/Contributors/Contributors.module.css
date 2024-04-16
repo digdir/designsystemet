@@ -37,7 +37,7 @@
   box-shadow: none;
   width: 50%;
   height: 50%;
-  margin: 0;
+  margin: 0 !important;
   background-color: transparent;
 }
 

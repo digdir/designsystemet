@@ -69,7 +69,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: 0.1s all;
-  color: var(--fds-semantic-text-neutral-default) !important;
+  color: var(--fds-semantic-text-neutral-default);
   text-decoration: none;
 }
 
