@@ -37,7 +37,7 @@
   box-shadow: none;
   width: 50%;
   height: 50%;
-  margin: 0 !important;
+  margin: 0;
   background-color: transparent;
 }
 
@@ -47,7 +47,7 @@
   text-wrap: nowrap;
   justify-content: center;
   gap: var(--fds-spacing-3);
-  color: var(--fds-semantic-text-neutral-subtle) !important;
+  color: var(--fds-semantic-text-neutral-subtle);
 }
 
 .metaSquare {
