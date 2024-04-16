@@ -6,14 +6,35 @@
     color: var(--fds-semantic-text-neutral-default);
   }
 
-  .ingress.spacing {
+  .spacing {
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .ingress.medium {
+  .medium {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-ingress-medium);
+    font-family: inherit;
+  }
+
+  .large {
+    --fdsc-bottom-spacing: var(--fds-spacing-6);
+
+    font: var(--fds-typography-ingress-large);
+    font-family: inherit;
+  }
+
+  .small {
+    --fdsc-bottom-spacing: var(--fds-spacing-7);
+
+    font: var(--fds-typography-ingress-small);
+    font-family: inherit;
+  }
+
+  .xsmall {
+    --fdsc-bottom-spacing: var(--fds-spacing-8);
+
+    font: var(--fds-typography-ingress-xsmall);
     font-family: inherit;
   }
 }

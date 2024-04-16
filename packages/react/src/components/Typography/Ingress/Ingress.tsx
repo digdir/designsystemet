@@ -8,8 +8,10 @@ import type { OverridableComponent } from '../../../types/OverridableComponent';
 import classes from './Ingress.module.css';
 
 export type IngressProps = {
-  /** Changes text sizing */
-  size?: 'medium';
+  /** Changes text sizing
+   * @default 'medium'
+   */
+  size?: 'large' | 'medium' | 'small' | 'xsmall';
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
