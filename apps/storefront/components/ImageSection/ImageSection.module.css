@@ -37,7 +37,7 @@
 }
 
 .title {
-  font: var(--fds-typography-heading-large);
+  font: var(--fds-typography-heading-medium);
   margin-bottom: var(--fds-spacing-4);
 }
 
