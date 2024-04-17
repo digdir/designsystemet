@@ -2,49 +2,56 @@ import { useEffect, useState } from 'react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import type { Options } from 'prettier';
-import prettier from 'prettier/standalone.js';
-import parserJs from 'prettier/parser-flow.js';
-import parserHtml from 'prettier/parser-markdown.js';
-import parserCss from 'prettier/parser-postcss.js';
-import parserTs from 'prettier/parser-typescript';
-import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { format } from 'prettier/standalone.js';
+import * as prettierMarkdown from 'prettier/plugins/markdown.js';
+import * as prettierHtml from 'prettier/plugins/html.js';
+import * as prettierCSS from 'prettier/plugins/postcss.js';
+import * as prettierTypescript from 'prettier/plugins/typescript.js';
+import * as prettierEstree from 'prettier/plugins/estree';
+import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
-const CodeSnippet = ({ language = 'markup', children = '' }) => {
+type CodeSnippetProps = {
+  language?: 'css' | 'html' | 'ts' | 'markdown';
+  children?: string;
+};
+
+const CodeSnippet = ({
+  language = 'markdown',
+  children = '',
+}: CodeSnippetProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
   const [snippet, setSnippet] = useState('');
 
   useEffect(() => {
-    async function format(children: string) {
+    async function formatSnippet(children: string) {
       let options: Options = {
         parser: 'typescript',
-        plugins: [parserTs],
+        plugins: [prettierTypescript, prettierEstree],
       };
 
-      if (language === 'css' || language === 'scss') {
+      if (language === 'css') {
         options = {
           parser: 'css',
-          plugins: [parserCss],
+          plugins: [prettierCSS],
         };
       }
-      if (language === 'javascript') {
-        options = {
-          parser: 'flow',
-          plugins: [parserJs],
-          tabWidth: 2,
-          semi: true,
-        };
-      }
-      if (language === 'markup') {
+      if (language === 'markdown') {
         options = {
           parser: 'markdown',
-          plugins: [parserHtml],
+          plugins: [prettierMarkdown],
+        };
+      }
+      if (language === 'html') {
+        options = {
+          parser: 'html',
+          plugins: [prettierHtml],
         };
       }
       try {
-        const formatted = await prettier.format(children, options);
+        const formatted = await format(children, options);
         setSnippet(formatted);
       } catch (error) {
         console.error('Failed formatting code snippet:', {
@@ -54,7 +61,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
         });
       }
     }
-    void format(children);
+    void formatSnippet(children);
 
     return () => {
       setSnippet('');
