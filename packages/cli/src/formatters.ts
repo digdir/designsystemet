@@ -1,5 +1,3 @@
-import path from 'path';
-
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { Named, TransformedToken, Format } from 'style-dictionary';

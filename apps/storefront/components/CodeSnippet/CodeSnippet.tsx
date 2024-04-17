@@ -8,7 +8,7 @@ import parserHtml from 'prettier/parser-markdown.js';
 import parserCss from 'prettier/parser-postcss.js';
 import parserTs from 'prettier/parser-typescript';
 import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Tooltip, Spinner } from '@digdir/designsystemet-react';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
@@ -54,12 +54,13 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
         });
       }
     }
-    format(children);
+    void format(children);
 
     return () => {
       setSnippet('');
     };
-  }, [children]);
+  }, [children, language]);
+
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
     navigator.clipboard.writeText(children).catch((reason) => {
