@@ -13,6 +13,14 @@ import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
+const plugins = [
+  prettierTypescript,
+  prettierEstree,
+  prettierCSS,
+  prettierMarkdown,
+  prettierHtml,
+];
+
 type CodeSnippetProps = {
   language?: 'css' | 'html' | 'ts' | 'markdown';
   children?: string;
@@ -26,42 +34,21 @@ const CodeSnippet = ({
   const [snippet, setSnippet] = useState('');
 
   useEffect(() => {
-    async function formatSnippet(children: string) {
-      let options: Options = {
-        parser: 'typescript',
-        plugins: [prettierTypescript, prettierEstree],
-      };
-
-      if (language === 'css') {
-        options = {
-          parser: 'css',
-          plugins: [prettierCSS],
-        };
-      }
-      if (language === 'markdown') {
-        options = {
-          parser: 'markdown',
-          plugins: [prettierMarkdown],
-        };
-      }
-      if (language === 'html') {
-        options = {
-          parser: 'html',
-          plugins: [prettierHtml],
-        };
-      }
+    async function formatSnippet(
+      children: string,
+      language: CodeSnippetProps['language'],
+    ) {
       try {
-        const formatted = await format(children, options);
+        const formatted = await format(children, {
+          parser: language === 'ts' ? 'typescript' : language,
+          plugins,
+        });
         setSnippet(formatted);
       } catch (error) {
-        console.error('Failed formatting code snippet:', {
-          children,
-          options,
-          error,
-        });
+        console.error('Failed formatting code snippet:', error);
       }
     }
-    void formatSnippet(children);
+    void formatSnippet(children, language);
 
     return () => {
       setSnippet('');
