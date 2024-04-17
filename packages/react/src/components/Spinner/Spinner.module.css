@@ -1,73 +1,75 @@
-.spinner {
-  animation: rotate-animation linear infinite;
-  animation-duration: 2s;
-}
-
-.spinnerCircle {
-  stroke-dasharray: 1px, 200px;
-  transform-origin: center;
-  animation: stroke-animation ease-in-out infinite;
-  animation-duration: 2s;
-}
-
-/* Prefers reduced motion needs longer animation,
-  but don't remove it since it is not decorative.
- */
-@media (prefers-reduced-motion: reduce) {
+@layer fds.spinner {
   .spinner {
-    animation-duration: 6s;
+    animation: rotate-animation linear infinite;
+    animation-duration: 2s;
   }
 
   .spinnerCircle {
-    animation-duration: 6s;
-  }
-}
-
-.default {
-  stroke: var(--fds-semantic-border-neutral-default);
-}
-
-.interaction {
-  stroke: var(--fds-semantic-border-action-first-default);
-}
-
-.inverted {
-  stroke: var(--fds-semantic-surface-neutral-default);
-}
-
-.background {
-  stroke: var(--fds-semantic-border-neutral-subtle);
-}
-
-.invertedBackground {
-  stroke: var(--fds-semantic-surface-neutral-dark);
-}
-
-@keyframes rotate-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes stroke-animation {
-  0% {
     stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: stroke-animation ease-in-out infinite;
+    animation-duration: 2s;
   }
 
-  50% {
-    stroke-dasharray: 100px, 200px;
-    stroke-dashoffset: -15px;
-    transform: rotate(0deg);
+  /* Prefers reduced motion needs longer animation,
+    but don't remove it since it is not decorative.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation-duration: 6s;
+    }
+
+    .spinnerCircle {
+      animation-duration: 6s;
+    }
   }
 
-  100% {
-    stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: -120px;
-    transform: rotate(15deg);
+  .default {
+    stroke: var(--fds-semantic-border-neutral-default);
+  }
+
+  .interaction {
+    stroke: var(--fds-semantic-border-action-first-default);
+  }
+
+  .inverted {
+    stroke: var(--fds-semantic-surface-neutral-default);
+  }
+
+  .background {
+    stroke: var(--fds-semantic-border-neutral-subtle);
+  }
+
+  .invertedBackground {
+    stroke: var(--fds-semantic-surface-neutral-strong);
+  }
+
+  @keyframes rotate-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes stroke-animation {
+    0% {
+      stroke-dasharray: 1px, 200px;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 100px, 200px;
+      stroke-dashoffset: -15px;
+      transform: rotate(0deg);
+    }
+
+    100% {
+      stroke-dasharray: 1px, 200px;
+      stroke-dashoffset: -120px;
+      transform: rotate(15deg);
+    }
   }
 }

@@ -73,7 +73,7 @@ The components are designed and developed using the [Inter font](https://github.
 
 Add the `<link>` tag in `<head>`, and set `font-family` to `Inter` in your global css file.
 
-The `font-feature-settings` adds a tail to lowercase `L`'s and must be set with the `!important` flag.
+The `font-feature-settings` adds a tail to lowercase `L`'s.
 
 ##### HTML
 
@@ -89,7 +89,7 @@ The `font-feature-settings` adds a tail to lowercase `L`'s and must be set with 
 ```css
 body {
   font-family: 'Inter', sans-serif;
-  font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
 }
 ```
 

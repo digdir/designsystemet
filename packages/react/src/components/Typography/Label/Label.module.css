@@ -1,44 +1,46 @@
-.label {
-  --fdsc-bottom-spacing: var(--fds-spacing-1);
+@layer fds.label {
+  .label {
+    --fdsc-bottom-spacing: var(--fds-spacing-1);
 
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  color: var(--fds-semantic-text-neutral-default);
-}
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: var(--fds-semantic-text-neutral-default);
+  }
 
-.label.spacing {
-  margin-bottom: var(--fdsc-bottom-spacing);
-}
+  .label.spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
 
-.label.large {
-  font: var(--fds-typography-label-large);
-  font-family: inherit;
-}
+  .label.large {
+    font: var(--fds-typography-label-large);
+    font-family: inherit;
+  }
 
-.label.medium {
-  font: var(--fds-typography-label-medium);
-  font-family: inherit;
-}
+  .label.medium {
+    font: var(--fds-typography-label-medium);
+    font-family: inherit;
+  }
 
-.label.small {
-  font: var(--fds-typography-label-small);
-  font-family: inherit;
-}
+  .label.small {
+    font: var(--fds-typography-label-small);
+    font-family: inherit;
+  }
 
-.label.xsmall {
-  font: var(--fds-typography-label-xsmall);
-  font-family: inherit;
-}
+  .label.xsmall {
+    font: var(--fds-typography-label-xsmall);
+    font-family: inherit;
+  }
 
-.label.regularWeight {
-  font-weight: 400;
-}
+  .label.regularWeight {
+    font-weight: 400;
+  }
 
-.label.mediumWeight {
-  font-weight: 500;
-}
+  .label.mediumWeight {
+    font-weight: 500;
+  }
 
-.label.semiboldWeight {
-  font-weight: 600;
+  .label.semiboldWeight {
+    font-weight: 600;
+  }
 }

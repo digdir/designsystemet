@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.3-alpha.2...@digdir/designsystemet-css@0.4.0) (2024-04-15)
+
+### Features
+
+- 🎨 Use new sizing scale for typography and components ([#1696](https://github.com/digdir/designsystemet/issues/1696)) ([61b1af7](https://github.com/digdir/designsystemet/commit/61b1af79d96049b664c3fd5725fdffe0f34b27cb))
+- **css:** Add cascade layer for every component ([#1805](https://github.com/digdir/designsystemet/issues/1805)) ([b40f95b](https://github.com/digdir/designsystemet/commit/b40f95b837355c402d081e6c89dcb8627e32a71b))
+- **css:** Add autoprefixer with configuration ([#1669](https://github.com/digdir/designsystemet/issues/1669) [#1773](https://github.com/digdir/designsystemet/issues/1773)) ([#1783](https://github.com/digdir/designsystemet/issues/1783)) ([e870720](https://github.com/digdir/designsystemet/commit/e8707209a1ff2eaf1f3379736ff2ed99988493b3))
+
+## [0.3.3-alpha.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.3-alpha.1...@digdir/designsystemet-css@0.3.3-alpha.2) (2024-04-10)
+
+**Note:** Version bump only for package @digdir/designsystemet-css
+
+## [0.3.3-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.3-alpha.0...@digdir/designsystemet-css@0.3.3-alpha.1) (2024-04-10)
+
+### Features
+
+- **css:** Add autoprefixer with configuration ([#1669](https://github.com/digdir/designsystemet/issues/1669) [#1773](https://github.com/digdir/designsystemet/issues/1773)) ([#1783](https://github.com/digdir/designsystemet/issues/1783)) ([e870720](https://github.com/digdir/designsystemet/commit/e8707209a1ff2eaf1f3379736ff2ed99988493b3))
+
 ## [0.3.3-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.2...@digdir/designsystemet-css@0.3.3-alpha.0) (2024-04-09)
 
 ### Features

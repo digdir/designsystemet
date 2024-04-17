@@ -25,17 +25,18 @@ export const Polymorphic: Story = (args) => (
   <>
     <Box
       {...args}
-      as='button'
+      asChild
       borderRadius='medium'
       borderColor='subtle'
     >
-      button
+      <button>button</button>
     </Box>
     <Box
       {...args}
       asChild
       borderRadius='medium'
       borderColor='subtle'
+      background='subtle'
     >
       <a
         href='https://designsystemet.no'

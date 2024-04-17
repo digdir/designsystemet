@@ -31,6 +31,8 @@ const config: StorybookConfig = {
         },
       },
     },
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
+    '@chromatic-com/storybook'
   ],
   staticDirs: ['../assets'],
   framework: getAbsolutePath('@storybook/react-vite'),

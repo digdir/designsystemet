@@ -1,4 +1,6 @@
-.item {
-  justify-content: start;
-  padding: 0 var(--fds-spacing-4);
+@layer fds.dropdownmenu-item {
+  .item {
+    justify-content: start;
+    padding: 0 var(--fds-spacing-4);
+  }
 }

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.1-alpha.3...@digdir/designsystemet-theme@0.15.1) (2024-04-15)
+
+### Features
+
+- 🎨 Use new sizing scale for typography and components ([#1696](https://github.com/digdir/designsystemet/issues/1696)) ([61b1af7](https://github.com/digdir/designsystemet/commit/61b1af79d96049b664c3fd5725fdffe0f34b27cb))
+- **Ingress:** Change line height ([#1793](https://github.com/digdir/designsystemet/issues/1793)) ([0e0b35b](https://github.com/digdir/designsystemet/commit/0e0b35be735fa35b5b319e1b07e13896d077cc9b))
+
+## [0.15.1-alpha.3](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.1-alpha.2...@digdir/designsystemet-theme@0.15.1-alpha.3) (2024-04-10)
+
+### Features
+
+- **Ingress:** Change line height ([#1793](https://github.com/digdir/designsystemet/issues/1793)) ([0e0b35b](https://github.com/digdir/designsystemet/commit/0e0b35be735fa35b5b319e1b07e13896d077cc9b))
+
 ## [0.15.1-alpha.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.0...@digdir/designsystemet-theme@0.15.1-alpha.2) (2024-04-09)
 
 ### Features

@@ -4,7 +4,6 @@ import cl from 'clsx';
 import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';
-import utilClasses from '../../utilities/utility.module.css';
 import type { PopoverProps } from '../Popover/Popover';
 import type { PortalProps } from '../../types/Portal';
 
@@ -55,11 +54,7 @@ const HelpText = ({
           variant='tertiary'
         >
           <button
-            className={cl(
-              classes.helpTextButton,
-              utilClasses.focusable,
-              className,
-            )}
+            className={cl(classes.helpTextButton, `fds-focus`, className)}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
             {...rest}
@@ -78,7 +73,7 @@ const HelpText = ({
               className={cl(classes.helpTextIcon, classes[size], className)}
               openState={open}
             />
-            <span className={utilClasses.visuallyHidden}>{title}</span>
+            <span className={`fds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
         <Popover.Content className={classes.helpTextContent}>
