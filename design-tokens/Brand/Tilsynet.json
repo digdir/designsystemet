@@ -118,55 +118,55 @@
   "semantic": {
     "surface": {
       "first": {
-        "subtle": {
+        "light": {
           "value": "{brand.alt1.200}",
           "type": "color"
         },
-        "subtle-hover": {
+        "light-hover": {
           "value": "{brand.alt1.300}",
           "type": "color"
         },
-        "subtle-active": {
+        "light-active": {
           "value": "{brand.alt1.400}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{brand.alt1.800}",
           "type": "color"
         }
       },
       "second": {
-        "subtle": {
+        "light": {
           "value": "{brand.alt2.200}",
           "type": "color"
         },
-        "subtle-hover": {
+        "light-hover": {
           "value": "{brand.alt2.300}",
           "type": "color"
         },
-        "subtle-active": {
+        "light-active": {
           "value": "{brand.alt2.400}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{brand.alt2.900}",
           "type": "color"
         }
       },
       "third": {
-        "subtle": {
+        "light": {
           "value": "{brand.alt3.200}",
           "type": "color"
         },
-        "subtle-hover": {
+        "light-hover": {
           "value": "{brand.alt3.300}",
           "type": "color"
         },
-        "subtle-active": {
+        "light-active": {
           "value": "{brand.alt3.400}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{brand.alt3.800}",
           "type": "color"
         }

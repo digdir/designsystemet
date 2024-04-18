@@ -59,17 +59,17 @@
   }
 
   .first {
-    --fdsc-tag-background: var(--fds-semantic-surface-first-subtle);
+    --fdsc-tag-background: var(--fds-semantic-surface-first-light);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   }
 
   .second {
-    --fdsc-tag-background: var(--fds-semantic-surface-second-subtle);
+    --fdsc-tag-background: var(--fds-semantic-surface-second-light);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   }
 
   .third {
-    --fdsc-tag-background: var(--fds-semantic-surface-third-subtle);
+    --fdsc-tag-background: var(--fds-semantic-surface-third-light);
     --fdsc-tag-text: var(--fds-semantic-text-neutral-default);
   }
 }
