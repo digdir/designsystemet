@@ -1776,114 +1776,6 @@ export const  color = [
     ]
   },
   {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "{colors.white}",
-      type: "color"
-    },
-    name: "--fds-semantic-surface-on_inverted-default",
-    attributes: {},
-    path: [
-      "semantic",
-      "surface",
-      "on_inverted",
-      "default"
-    ]
-  },
-  {
-    value: "#ffffffe6",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "#ffffffe6",
-      type: "color"
-    },
-    name: "--fds-semantic-surface-on_inverted-hover",
-    attributes: {},
-    path: [
-      "semantic",
-      "surface",
-      "on_inverted",
-      "hover"
-    ]
-  },
-  {
-    value: "#ffffffcc",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "#ffffffcc",
-      type: "color"
-    },
-    name: "--fds-semantic-surface-on_inverted-active",
-    attributes: {},
-    path: [
-      "semantic",
-      "surface",
-      "on_inverted",
-      "active"
-    ]
-  },
-  {
-    value: "#ffffff00",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "#ffffff00",
-      type: "color"
-    },
-    name: "--fds-semantic-surface-on_inverted-no_fill",
-    attributes: {},
-    path: [
-      "semantic",
-      "surface",
-      "on_inverted",
-      "no_fill"
-    ]
-  },
-  {
-    value: "#ffffff1a",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "#ffffff1a",
-      type: "color"
-    },
-    name: "--fds-semantic-surface-on_inverted-no_fill-hover",
-    attributes: {},
-    path: [
-      "semantic",
-      "surface",
-      "on_inverted",
-      "no_fill-hover"
-    ]
-  },
-  {
-    value: "#ffffff33",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "#ffffff33",
-      type: "color"
-    },
-    name: "--fds-semantic-surface-on_inverted-no_fill-active",
-    attributes: {},
-    path: [
-      "semantic",
-      "surface",
-      "on_inverted",
-      "no_fill-active"
-    ]
-  },
-  {
     value: "#ffda06",
     type: "color",
     filePath: "../../design-tokens/Base/Semantic.json",
@@ -2647,24 +2539,6 @@ export const  color = [
       "border",
       "focus",
       "boxshadow"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/Base/Semantic.json",
-    isSource: false,
-    original: {
-      value: "{colors.white}",
-      type: "color"
-    },
-    name: "--fds-semantic-border-on_inverted-default",
-    attributes: {},
-    path: [
-      "semantic",
-      "border",
-      "on_inverted",
-      "default"
     ]
   },
   {
