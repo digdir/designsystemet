@@ -28,11 +28,11 @@
           "value": "{colors.grey.200}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{colors.grey.600}",
           "type": "color"
         },
-        "strong-hover": {
+        "dark-hover": {
           "value": "{colors.grey.700}",
           "type": "color"
         },
@@ -176,6 +176,32 @@
           "type": "color"
         }
       },
+      "on_inverted": {
+        "default": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#ffffffe6",
+          "type": "color"
+        },
+        "active": {
+          "value": "#ffffffcc",
+          "type": "color"
+        },
+        "no_fill": {
+          "value": "#ffffff00",
+          "type": "color"
+        },
+        "no_fill-hover": {
+          "value": "#ffffff1a",
+          "type": "color"
+        },
+        "no_fill-active": {
+          "value": "#ffffff33",
+          "type": "color"
+        }
+      },
       "focus": {
         "default": {
           "value": "{colors.yellow.500}",
@@ -211,11 +237,11 @@
           "value": "{colors.blue.900}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{colors.blue.900}",
           "type": "color"
         },
-        "strong-hover": {
+        "dark-hover": {
           "value": "{colors.blue.700}",
           "type": "color"
         }
@@ -283,6 +309,12 @@
         },
         "boxshadow": {
           "value": "{semantic.border.neutral.strong}",
+          "type": "color"
+        }
+      },
+      "on_inverted": {
+        "default": {
+          "value": "{colors.white}",
           "type": "color"
         }
       },

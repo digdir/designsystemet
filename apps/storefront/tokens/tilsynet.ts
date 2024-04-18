@@ -472,13 +472,13 @@ export const  color = [
       value: "{brand.alt1.200}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-subtle",
+    name: "--fds-semantic-surface-first-light",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "subtle"
+      "light"
     ]
   },
   {
@@ -490,13 +490,13 @@ export const  color = [
       value: "{brand.alt1.300}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-subtle-hover",
+    name: "--fds-semantic-surface-first-light-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "subtle-hover"
+      "light-hover"
     ]
   },
   {
@@ -508,13 +508,13 @@ export const  color = [
       value: "{brand.alt1.400}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-subtle-active",
+    name: "--fds-semantic-surface-first-light-active",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "subtle-active"
+      "light-active"
     ]
   },
   {
@@ -526,13 +526,13 @@ export const  color = [
       value: "{brand.alt1.800}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-strong",
+    name: "--fds-semantic-surface-first-dark",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "strong"
+      "dark"
     ]
   },
   {
@@ -544,13 +544,13 @@ export const  color = [
       value: "{brand.alt2.200}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-subtle",
+    name: "--fds-semantic-surface-second-light",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "subtle"
+      "light"
     ]
   },
   {
@@ -562,13 +562,13 @@ export const  color = [
       value: "{brand.alt2.300}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-subtle-hover",
+    name: "--fds-semantic-surface-second-light-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "subtle-hover"
+      "light-hover"
     ]
   },
   {
@@ -580,13 +580,13 @@ export const  color = [
       value: "{brand.alt2.400}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-subtle-active",
+    name: "--fds-semantic-surface-second-light-active",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "subtle-active"
+      "light-active"
     ]
   },
   {
@@ -598,13 +598,13 @@ export const  color = [
       value: "{brand.alt2.900}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-strong",
+    name: "--fds-semantic-surface-second-dark",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "strong"
+      "dark"
     ]
   },
   {
@@ -616,13 +616,13 @@ export const  color = [
       value: "{brand.alt3.200}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-subtle",
+    name: "--fds-semantic-surface-third-light",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "subtle"
+      "light"
     ]
   },
   {
@@ -634,13 +634,13 @@ export const  color = [
       value: "{brand.alt3.300}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-subtle-hover",
+    name: "--fds-semantic-surface-third-light-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "subtle-hover"
+      "light-hover"
     ]
   },
   {
@@ -652,13 +652,13 @@ export const  color = [
       value: "{brand.alt3.400}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-subtle-active",
+    name: "--fds-semantic-surface-third-light-active",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "subtle-active"
+      "light-active"
     ]
   },
   {
@@ -670,13 +670,13 @@ export const  color = [
       value: "{brand.alt3.800}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-strong",
+    name: "--fds-semantic-surface-third-dark",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "strong"
+      "dark"
     ]
   },
   {
@@ -1232,13 +1232,13 @@ export const  color = [
       value: "{colors.grey.600}",
       type: "color"
     },
-    name: "--fds-semantic-surface-neutral-strong",
+    name: "--fds-semantic-surface-neutral-dark",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "neutral",
-      "strong"
+      "dark"
     ]
   },
   {
@@ -1250,13 +1250,13 @@ export const  color = [
       value: "{colors.grey.700}",
       type: "color"
     },
-    name: "--fds-semantic-surface-neutral-strong-hover",
+    name: "--fds-semantic-surface-neutral-dark-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "neutral",
-      "strong-hover"
+      "dark-hover"
     ]
   },
   {
@@ -1671,6 +1671,114 @@ export const  color = [
       "surface",
       "info",
       "subtle-hover"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-on_inverted-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "default"
+    ]
+  },
+  {
+    value: "#ffffffe6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "#ffffffe6",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-on_inverted-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "hover"
+    ]
+  },
+  {
+    value: "#ffffffcc",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "#ffffffcc",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-on_inverted-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff00",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "#ffffff00",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-on_inverted-no_fill",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "no_fill"
+    ]
+  },
+  {
+    value: "#ffffff1a",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "#ffffff1a",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-on_inverted-no_fill-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "no_fill-hover"
+    ]
+  },
+  {
+    value: "#ffffff33",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "#ffffff33",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-on_inverted-no_fill-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "no_fill-active"
     ]
   },
   {
@@ -2142,13 +2250,13 @@ export const  color = [
       value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-semantic-border-action-strong",
+    name: "--fds-semantic-border-action-dark",
     attributes: {},
     path: [
       "semantic",
       "border",
       "action",
-      "strong"
+      "dark"
     ]
   },
   {
@@ -2160,13 +2268,13 @@ export const  color = [
       value: "{colors.blue.700}",
       type: "color"
     },
-    name: "--fds-semantic-border-action-strong-hover",
+    name: "--fds-semantic-border-action-dark-hover",
     attributes: {},
     path: [
       "semantic",
       "border",
       "action",
-      "strong-hover"
+      "dark-hover"
     ]
   },
   {
@@ -2437,6 +2545,24 @@ export const  color = [
       "border",
       "focus",
       "boxshadow"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-on_inverted-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "on_inverted",
+      "default"
     ]
   },
   {
