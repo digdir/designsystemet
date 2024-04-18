@@ -18,11 +18,15 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         <img
           src='/img/elements/first.svg'
           alt=''
+          draggable={false}
+          aria-hidden
           className={cn(classes.cluster, classes.cluster1, classes.clusterLeft)}
         />
         <img
           src='/img/elements/third.svg'
           alt=''
+          draggable={false}
+          aria-hidden
           className={cn(
             classes.cluster,
             classes.cluster2,
@@ -32,11 +36,15 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         <img
           src='/img/elements/second.svg'
           alt=''
+          draggable={false}
+          aria-hidden
           className={cn(classes.cluster, classes.cluster3, classes.clusterLeft)}
         />
         <img
           src='/img/elements/fourth.svg'
           alt=''
+          draggable={false}
+          aria-hidden
           className={cn(
             classes.cluster,
             classes.cluster4,
@@ -46,11 +54,14 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
         <img
           src='/img/elements/first.svg'
           alt=''
+          draggable={false}
           className={cn(classes.cluster, classes.cluster5, classes.clusterLeft)}
         />
         <img
           src='/img/elements/third.svg'
           alt=''
+          draggable={false}
+          aria-hidden
           className={cn(
             classes.cluster,
             classes.cluster6,
@@ -63,7 +74,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
           <Container className={classes.container}>
             <div className={classes.test}>
               <div className={classes.betaTag}>Beta</div>
-              <Heading size='xlarge'>
+              <Heading size='large'>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
             </div>

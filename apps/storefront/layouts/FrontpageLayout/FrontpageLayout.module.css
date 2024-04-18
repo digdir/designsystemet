@@ -2,14 +2,14 @@
   height: 600px;
   margin-top: -106px;
   position: relative;
-  overflow: hidden;
   margin-bottom: 40px;
 }
 
-.header::before {
+.content::before {
   content: '';
   background-color: var(--fds-semantic-background-subtle);
   position: absolute;
+  z-index: -1;
   height: 200vh;
   width: 300vw;
   left: -100vw;
@@ -24,7 +24,8 @@
   justify-content: center;
   flex-direction: column;
   padding-top: 142px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  overflow: hidden;
 }
 
 .test {
@@ -133,6 +134,7 @@
   .cluster {
     display: none;
   }
+
   .header {
     height: auto;
   }
