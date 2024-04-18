@@ -1,1 +1,2 @@
-packages/tokens/brand/**/*
+packages/theme/brand/**/*
+apps/storefront/tokens
