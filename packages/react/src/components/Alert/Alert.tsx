@@ -45,10 +45,17 @@ export type AlertProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLDivElement>;
-
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    { severity = 'info', elevated, iconTitle, children, className, ...rest },
+    {
+      severity = 'info',
+      elevated,
+      iconTitle,
+      size,
+      children,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     const { Icon, title } = icons[severity];
@@ -58,7 +65,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         ref={ref}
         className={cl(
           'fds-alert',
-          /* `fds-alert-${size}`, */
+          `fds-alert--${size}`,
           `fds-alert--${severity}`,
           elevated && `fds-alert--elevated`,
           className,
@@ -72,6 +79,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           />
           <Paragraph
             asChild
+            size={size}
             className='fds-alert__content'
           >
             <span>{children}</span>
