@@ -1,6 +1,7 @@
 import type * as React from 'react';
 import cl from 'clsx';
 import Image from 'next/image';
+import { Heading } from '@digdir/designsystemet-react';
 
 import { Container } from '../Container/Container';
 
@@ -23,7 +24,14 @@ const Section = ({
     <div className={cl(classes.section, classes[backgroundColor])}>
       <Container>
         <div className={classes.header}>
-          {title && <h2 className={classes.title}>{title}</h2>}
+          {title && (
+            <Heading
+              levle={2}
+              size='medium'
+            >
+              {title}
+            </Heading>
+          )}
           <div className={classes.separator}>
             <div className={classes.separatorContainer}>
               <img

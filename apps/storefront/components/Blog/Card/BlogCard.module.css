@@ -5,7 +5,7 @@
 
 @media screen and (min-width: 1024px) {
   .card[data-featured='true'] .media {
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
   }
 
   .card[data-featured='true'] {
@@ -18,15 +18,15 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    padding: var(--fds-spacing-8) var(--fds-spacing-10) !important;
+    padding: var(--fds-spacing-8) var(--fds-spacing-10);
   }
 
   .card[data-featured='true'] .heading {
-    padding-top: 0 !important;
+    padding-top: 0;
   }
 
   .card[data-featured='true'] .footer {
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
   }
 }
 

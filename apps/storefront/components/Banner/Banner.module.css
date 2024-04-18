@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   margin-bottom: var(--fds-spacing-3);
-  font: var(--fds-typography-heading-xlarge);
+  font: var(--fds-typography-heading-large);
 }
 
 .title > span {
@@ -37,7 +37,7 @@
 .desc {
   padding-right: var(--fds-spacing-7);
   margin-bottom: 0;
-  font: var(--fds-typography-ingress-medium);
+  font: var(--fds-typography-ingress-small);
 }
 
 .shapes {
