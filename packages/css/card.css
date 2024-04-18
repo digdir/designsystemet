@@ -115,43 +115,42 @@
     background-color: var(--fds-semantic-surface-neutral-subtle-active);
   }
   */
-
   .fds-card--first {
-    background-color: var(--fds-semantic-surface-first-light);
+    background-color: var(--fds-semantic-surface-first-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .fds-card--first.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-first-light-hover);
+    background-color: var(--fds-semantic-surface-first-subtle-hover);
   }
 
   .fds-card--first.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-first-light-active);
+    background-color: var(--fds-semantic-surface-first-subtle-active);
   }
 
   .fds-card--second {
-    background-color: var(--fds-semantic-surface-second-light);
+    background-color: var(--fds-semantic-surface-second-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .fds-card--second.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-second-light-hover);
+    background-color: var(--fds-semantic-surface-second-subtle-hover);
   }
 
   .fds-card--second.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-second-light-active);
+    background-color: var(--fds-semantic-surface-second-subtle-active);
   }
 
   .fds-card--third {
-    background-color: var(--fds-semantic-surface-third-light);
+    background-color: var(--fds-semantic-surface-third-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .fds-card--third.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-third-light-hover);
+    background-color: var(--fds-semantic-surface-third-subtle-hover);
   }
 
   .fds-card--third.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-third-light-active);
+    background-color: var(--fds-semantic-surface-third-subtle-active);
   }
 }

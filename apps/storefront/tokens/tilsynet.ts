@@ -472,13 +472,13 @@ export const  color = [
       value: "{brand.alt1.200}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-light",
+    name: "--fds-semantic-surface-first-subtle",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "light"
+      "subtle"
     ]
   },
   {
@@ -490,13 +490,13 @@ export const  color = [
       value: "{brand.alt1.300}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-light-hover",
+    name: "--fds-semantic-surface-first-subtle-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "light-hover"
+      "subtle-hover"
     ]
   },
   {
@@ -508,13 +508,13 @@ export const  color = [
       value: "{brand.alt1.400}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-light-active",
+    name: "--fds-semantic-surface-first-subtle-active",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "light-active"
+      "subtle-active"
     ]
   },
   {
@@ -526,13 +526,13 @@ export const  color = [
       value: "{brand.alt1.800}",
       type: "color"
     },
-    name: "--fds-semantic-surface-first-dark",
+    name: "--fds-semantic-surface-first-strong",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "first",
-      "dark"
+      "strong"
     ]
   },
   {
@@ -544,13 +544,13 @@ export const  color = [
       value: "{brand.alt2.200}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-light",
+    name: "--fds-semantic-surface-second-subtle",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "light"
+      "subtle"
     ]
   },
   {
@@ -562,13 +562,13 @@ export const  color = [
       value: "{brand.alt2.300}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-light-hover",
+    name: "--fds-semantic-surface-second-subtle-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "light-hover"
+      "subtle-hover"
     ]
   },
   {
@@ -580,13 +580,13 @@ export const  color = [
       value: "{brand.alt2.400}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-light-active",
+    name: "--fds-semantic-surface-second-subtle-active",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "light-active"
+      "subtle-active"
     ]
   },
   {
@@ -598,13 +598,13 @@ export const  color = [
       value: "{brand.alt2.900}",
       type: "color"
     },
-    name: "--fds-semantic-surface-second-dark",
+    name: "--fds-semantic-surface-second-strong",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "second",
-      "dark"
+      "strong"
     ]
   },
   {
@@ -616,13 +616,13 @@ export const  color = [
       value: "{brand.alt3.200}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-light",
+    name: "--fds-semantic-surface-third-subtle",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "light"
+      "subtle"
     ]
   },
   {
@@ -634,13 +634,13 @@ export const  color = [
       value: "{brand.alt3.300}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-light-hover",
+    name: "--fds-semantic-surface-third-subtle-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "light-hover"
+      "subtle-hover"
     ]
   },
   {
@@ -652,13 +652,13 @@ export const  color = [
       value: "{brand.alt3.400}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-light-active",
+    name: "--fds-semantic-surface-third-subtle-active",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "light-active"
+      "subtle-active"
     ]
   },
   {
@@ -670,13 +670,13 @@ export const  color = [
       value: "{brand.alt3.800}",
       type: "color"
     },
-    name: "--fds-semantic-surface-third-dark",
+    name: "--fds-semantic-surface-third-strong",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "third",
-      "dark"
+      "strong"
     ]
   },
   {
@@ -1232,13 +1232,13 @@ export const  color = [
       value: "{colors.grey.600}",
       type: "color"
     },
-    name: "--fds-semantic-surface-neutral-dark",
+    name: "--fds-semantic-surface-neutral-strong",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "neutral",
-      "dark"
+      "strong"
     ]
   },
   {
@@ -1250,13 +1250,13 @@ export const  color = [
       value: "{colors.grey.700}",
       type: "color"
     },
-    name: "--fds-semantic-surface-neutral-dark-hover",
+    name: "--fds-semantic-surface-neutral-strong-hover",
     attributes: {},
     path: [
       "semantic",
       "surface",
       "neutral",
-      "dark-hover"
+      "strong-hover"
     ]
   },
   {
@@ -2250,13 +2250,13 @@ export const  color = [
       value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-semantic-border-action-dark",
+    name: "--fds-semantic-border-action-strong",
     attributes: {},
     path: [
       "semantic",
       "border",
       "action",
-      "dark"
+      "strong"
     ]
   },
   {
@@ -2268,13 +2268,13 @@ export const  color = [
       value: "{colors.blue.700}",
       type: "color"
     },
-    name: "--fds-semantic-border-action-dark-hover",
+    name: "--fds-semantic-border-action-strong-hover",
     attributes: {},
     path: [
       "semantic",
       "border",
       "action",
-      "dark-hover"
+      "strong-hover"
     ]
   },
   {
