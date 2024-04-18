@@ -16,8 +16,6 @@
       "semantic.surface.neutral.selected": "5defd32eedc3f2c7e64c6509ffe26b1917f5f6c4",
       "semantic.surface.neutral.subtle": "0b7681e25e163a5b1416a93cd4471225a752da14",
       "semantic.surface.neutral.subtle-hover": "de2da22043a941d4f30621b86eafeb8893554e47",
-      "semantic.surface.neutral.dark": "f428dd6eeada38db8c8fbbcf3b9938ae87f36c2d",
-      "semantic.surface.neutral.dark-hover": "f6dde872cd9452e3a77568bee36f1499e839155d",
       "semantic.surface.neutral.inverted": "6dd7ba50b8e91439deb142bb1ae635cb26e73dc5",
       "semantic.surface.action.common.subtle": "f5bdc3419e11920c78bb76100545676e5382c830",
       "semantic.surface.action.common.subtle-hover": "3c840fec1e2d98aa3eb9053207288803766053de",
@@ -142,7 +140,9 @@
       "base_sizing": "7efead99136e81bed601b9c01e27e28e7e8a2e1b",
       "border_width.default": "dfcd0568ecfbf3837e887626b694fe16b0335d86",
       "border_width.active": "a597eedd5138fb532a105011b85d756b6862ff52",
-      "border_width.tab_focus": "d8d78247b3135f9a462ba968b4f8fe552c8b0b17"
+      "border_width.tab_focus": "d8d78247b3135f9a462ba968b4f8fe552c8b0b17",
+      "semantic.surface.neutral.strong": "f428dd6eeada38db8c8fbbcf3b9938ae87f36c2d",
+      "semantic.surface.neutral.strong-hover": "f6dde872cd9452e3a77568bee36f1499e839155d"
     },
     "group": "Core"
   },
@@ -394,11 +394,11 @@
       "semantic.surface.primary.light": "S:5d186a6b3411853833badfc76abd94a6fdfbc63a,",
       "brand.secondary.900": "S:23925b130515fb61d12fb3414165f61e094a6262,",
       "semantic.surface.danger.no_fill-active": "S:edd236f2e24d2f9f83699730b5ef792aa03d96a5,",
-      "semantic.border.action.dark": "S:38130df3c467c65fd93968897876556bc5bf60e7,",
       "semantic.surface.action.common.subtle": "S:f159c7f63f4e095cb75bf770cf0625366a56d8b6,",
       "semantic.border.action.common.subtle": "S:04ad95c402fd76ed849b1031835632c8d3c06236,",
       "semantic.text.action.common.default": "S:e7ff72a6683853f5403350ace19fdef1cf265a06,",
-      "semantic.text.action.common.on_action": "S:a8b81cc349e852d00861be87404778bc6aab598c,"
+      "semantic.text.action.common.on_action": "S:a8b81cc349e852d00861be87404778bc6aab598c,",
+      "semantic.border.action.strong": "S:38130df3c467c65fd93968897876556bc5bf60e7,"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
     "$figmaModeId": "6324:1",
@@ -500,8 +500,6 @@
       "semantic.surface.neutral.selected": "8b7533fd79d2c508af0c88ad2bf4e33a79bcad12",
       "semantic.surface.neutral.subtle": "072113acf733592a7331b0a60e6a4eeaba3f51f6",
       "semantic.surface.neutral.subtle-hover": "19eb9af0393a16ae01a48972e77a16efb16eeb21",
-      "semantic.surface.neutral.dark": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
-      "semantic.surface.neutral.dark-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca",
       "semantic.surface.neutral.inverted": "829ca533c51e3313229bc965096af00de00887f3",
       "semantic.surface.action.common.subtle": "75cc22bd5c6c94a5e5fb23cd164aaec5506a6c4a",
       "semantic.surface.action.common.subtle-hover": "f5375de1115faecf98170313fcdaf570e53cd4b6",
@@ -626,7 +624,9 @@
       "base_sizing": "9720ca86555bde90493208437a6f5cacd270ee0e",
       "border_width.default": "b44447ba2e2504923d4903e4eb14954434480085",
       "border_width.active": "82d06b8c6fdeea622611fa744ff261661a211760",
-      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7"
+      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7",
+      "semantic.surface.neutral.strong": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
+      "semantic.surface.neutral.strong-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca"
     },
     "group": "Brand"
   },
@@ -730,8 +730,6 @@
       "semantic.surface.neutral.selected": "8b7533fd79d2c508af0c88ad2bf4e33a79bcad12",
       "semantic.surface.neutral.subtle": "072113acf733592a7331b0a60e6a4eeaba3f51f6",
       "semantic.surface.neutral.subtle-hover": "19eb9af0393a16ae01a48972e77a16efb16eeb21",
-      "semantic.surface.neutral.dark": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
-      "semantic.surface.neutral.dark-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca",
       "semantic.surface.neutral.inverted": "829ca533c51e3313229bc965096af00de00887f3",
       "semantic.surface.action.common.subtle": "75cc22bd5c6c94a5e5fb23cd164aaec5506a6c4a",
       "semantic.surface.action.common.subtle-hover": "f5375de1115faecf98170313fcdaf570e53cd4b6",
@@ -856,7 +854,9 @@
       "base_sizing": "9720ca86555bde90493208437a6f5cacd270ee0e",
       "border_width.default": "b44447ba2e2504923d4903e4eb14954434480085",
       "border_width.active": "82d06b8c6fdeea622611fa744ff261661a211760",
-      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7"
+      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7",
+      "semantic.surface.neutral.strong": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
+      "semantic.surface.neutral.strong-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca"
     },
     "group": "Brand"
   },
@@ -960,8 +960,6 @@
       "semantic.surface.neutral.selected": "8b7533fd79d2c508af0c88ad2bf4e33a79bcad12",
       "semantic.surface.neutral.subtle": "072113acf733592a7331b0a60e6a4eeaba3f51f6",
       "semantic.surface.neutral.subtle-hover": "19eb9af0393a16ae01a48972e77a16efb16eeb21",
-      "semantic.surface.neutral.dark": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
-      "semantic.surface.neutral.dark-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca",
       "semantic.surface.neutral.inverted": "829ca533c51e3313229bc965096af00de00887f3",
       "semantic.surface.action.common.subtle": "75cc22bd5c6c94a5e5fb23cd164aaec5506a6c4a",
       "semantic.surface.action.common.subtle-hover": "f5375de1115faecf98170313fcdaf570e53cd4b6",
@@ -1086,7 +1084,9 @@
       "base_sizing": "9720ca86555bde90493208437a6f5cacd270ee0e",
       "border_width.default": "b44447ba2e2504923d4903e4eb14954434480085",
       "border_width.active": "82d06b8c6fdeea622611fa744ff261661a211760",
-      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7"
+      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7",
+      "semantic.surface.neutral.strong": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
+      "semantic.surface.neutral.strong-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca"
     },
     "group": "Brand"
   },
@@ -1194,8 +1194,6 @@
       "semantic.surface.neutral.selected": "8b7533fd79d2c508af0c88ad2bf4e33a79bcad12",
       "semantic.surface.neutral.subtle": "072113acf733592a7331b0a60e6a4eeaba3f51f6",
       "semantic.surface.neutral.subtle-hover": "19eb9af0393a16ae01a48972e77a16efb16eeb21",
-      "semantic.surface.neutral.dark": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
-      "semantic.surface.neutral.dark-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca",
       "semantic.surface.neutral.inverted": "829ca533c51e3313229bc965096af00de00887f3",
       "semantic.surface.action.common.subtle": "75cc22bd5c6c94a5e5fb23cd164aaec5506a6c4a",
       "semantic.surface.action.common.subtle-hover": "f5375de1115faecf98170313fcdaf570e53cd4b6",
@@ -1320,7 +1318,9 @@
       "base_sizing": "9720ca86555bde90493208437a6f5cacd270ee0e",
       "border_width.default": "b44447ba2e2504923d4903e4eb14954434480085",
       "border_width.active": "82d06b8c6fdeea622611fa744ff261661a211760",
-      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7"
+      "border_width.tab_focus": "3ddf887f27c7dff953b8399c667e16448ae252d7",
+      "semantic.surface.neutral.strong": "18e3ba1f54c2b363135f1498775fb4e96e9074da",
+      "semantic.surface.neutral.strong-hover": "efcf3d7a4016df005cd2d858ef733ceb8b2d6bca"
     },
     "$figmaCollectionId": "VariableCollectionId:6324:1609",
     "$figmaModeId": "6324:4",
