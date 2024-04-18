@@ -83,7 +83,7 @@
 }
 
 .toggleBtn {
-  display: none !important;
+  display: none;
 }
 
 @media (max-width: 958.98px) {
@@ -93,8 +93,8 @@
   }
 
   .toggleBtn {
-    display: block !important;
-    margin-bottom: var(--fds-spacing-2) !important;
+    display: block;
+    margin-bottom: var(--fds-spacing-2);
   }
 
   .activeMenu {

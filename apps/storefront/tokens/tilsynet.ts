@@ -3,3637 +3,4937 @@
  * These files are generated from design tokens defined in Figma using Token Studio
  */
 
-export const color = [
+export const  color = [
   {
-    value: '#efeffb',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#efeffb",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#efeffb',
-      type: 'color',
+      value: "#efeffb",
+      type: "color"
     },
-    name: '--fds-brand-alt1-100',
+    name: "--fds-brand-alt1-100",
     attributes: {},
-    path: ['brand', 'alt1', '100'],
+    path: [
+      "brand",
+      "alt1",
+      "100"
+    ]
   },
   {
-    value: '#dedff6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#dedff6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#dedff6',
-      type: 'color',
+      value: "#dedff6",
+      type: "color"
     },
-    name: '--fds-brand-alt1-200',
+    name: "--fds-brand-alt1-200",
     attributes: {},
-    path: ['brand', 'alt1', '200'],
+    path: [
+      "brand",
+      "alt1",
+      "200"
+    ]
   },
   {
-    value: '#bec0ed',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#bec0ed",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#bec0ed',
-      type: 'color',
+      value: "#bec0ed",
+      type: "color"
     },
-    name: '--fds-brand-alt1-300',
+    name: "--fds-brand-alt1-300",
     attributes: {},
-    path: ['brand', 'alt1', '300'],
+    path: [
+      "brand",
+      "alt1",
+      "300"
+    ]
   },
   {
-    value: '#9da0e4',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#9da0e4",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#9da0e4',
-      type: 'color',
+      value: "#9da0e4",
+      type: "color"
     },
-    name: '--fds-brand-alt1-400',
+    name: "--fds-brand-alt1-400",
     attributes: {},
-    path: ['brand', 'alt1', '400'],
+    path: [
+      "brand",
+      "alt1",
+      "400"
+    ]
   },
   {
-    value: '#7d81db',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#7d81db",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#7d81db',
-      type: 'color',
+      value: "#7d81db",
+      type: "color"
     },
-    name: '--fds-brand-alt1-500',
+    name: "--fds-brand-alt1-500",
     attributes: {},
-    path: ['brand', 'alt1', '500'],
+    path: [
+      "brand",
+      "alt1",
+      "500"
+    ]
   },
   {
-    value: '#5c61d2',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#5c61d2",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#5c61d2',
-      type: 'color',
+      value: "#5c61d2",
+      type: "color"
     },
-    name: '--fds-brand-alt1-600',
+    name: "--fds-brand-alt1-600",
     attributes: {},
-    path: ['brand', 'alt1', '600'],
+    path: [
+      "brand",
+      "alt1",
+      "600"
+    ]
   },
   {
-    value: '#3339c6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#3339c6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#3339c6',
-      type: 'color',
+      value: "#3339c6",
+      type: "color"
     },
-    name: '--fds-brand-alt1-700',
+    name: "--fds-brand-alt1-700",
     attributes: {},
-    path: ['brand', 'alt1', '700'],
+    path: [
+      "brand",
+      "alt1",
+      "700"
+    ]
   },
   {
-    value: '#0008b8',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#0008b8",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#0008b8',
-      type: 'color',
+      value: "#0008b8",
+      type: "color"
     },
-    name: '--fds-brand-alt1-800',
+    name: "--fds-brand-alt1-800",
     attributes: {},
-    path: ['brand', 'alt1', '800'],
+    path: [
+      "brand",
+      "alt1",
+      "800"
+    ]
   },
   {
-    value: '#00078F',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#00078F",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#00078F',
-      type: 'color',
+      value: "#00078F",
+      type: "color"
     },
-    name: '--fds-brand-alt1-900',
+    name: "--fds-brand-alt1-900",
     attributes: {},
-    path: ['brand', 'alt1', '900'],
+    path: [
+      "brand",
+      "alt1",
+      "900"
+    ]
   },
   {
-    value: '#ffeee1',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffeee1",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#ffeee1',
-      type: 'color',
+      value: "#ffeee1",
+      type: "color"
     },
-    name: '--fds-brand-alt2-100',
+    name: "--fds-brand-alt2-100",
     attributes: {},
-    path: ['brand', 'alt2', '100'],
+    path: [
+      "brand",
+      "alt2",
+      "100"
+    ]
   },
   {
-    value: '#ffdcc3',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffdcc3",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#ffdcc3',
-      type: 'color',
+      value: "#ffdcc3",
+      type: "color"
     },
-    name: '--fds-brand-alt2-200',
+    name: "--fds-brand-alt2-200",
     attributes: {},
-    path: ['brand', 'alt2', '200'],
+    path: [
+      "brand",
+      "alt2",
+      "200"
+    ]
   },
   {
-    value: '#fdd4b7',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#fdd4b7",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#fdd4b7',
-      type: 'color',
+      value: "#fdd4b7",
+      type: "color"
     },
-    name: '--fds-brand-alt2-300',
+    name: "--fds-brand-alt2-300",
     attributes: {},
-    path: ['brand', 'alt2', '300'],
+    path: [
+      "brand",
+      "alt2",
+      "300"
+    ]
   },
   {
-    value: '#ffc296',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffc296",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#ffc296',
-      type: 'color',
+      value: "#ffc296",
+      type: "color"
     },
-    name: '--fds-brand-alt2-400',
+    name: "--fds-brand-alt2-400",
     attributes: {},
-    path: ['brand', 'alt2', '400'],
+    path: [
+      "brand",
+      "alt2",
+      "400"
+    ]
   },
   {
-    value: '#ffb178',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffb178",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#ffb178',
-      type: 'color',
+      value: "#ffb178",
+      type: "color"
     },
-    name: '--fds-brand-alt2-500',
+    name: "--fds-brand-alt2-500",
     attributes: {},
-    path: ['brand', 'alt2', '500'],
+    path: [
+      "brand",
+      "alt2",
+      "500"
+    ]
   },
   {
-    value: '#ffa869',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffa869",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#ffa869',
-      type: 'color',
+      value: "#ffa869",
+      type: "color"
     },
-    name: '--fds-brand-alt2-600',
+    name: "--fds-brand-alt2-600",
     attributes: {},
-    path: ['brand', 'alt2', '600'],
+    path: [
+      "brand",
+      "alt2",
+      "600"
+    ]
   },
   {
-    value: '#e6975f',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#e6975f",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#e6975f',
-      type: 'color',
+      value: "#e6975f",
+      type: "color"
     },
-    name: '--fds-brand-alt2-700',
+    name: "--fds-brand-alt2-700",
     attributes: {},
-    path: ['brand', 'alt2', '700'],
+    path: [
+      "brand",
+      "alt2",
+      "700"
+    ]
   },
   {
-    value: '#b3764a',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#b3764a",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#b3764a',
-      type: 'color',
+      value: "#b3764a",
+      type: "color"
     },
-    name: '--fds-brand-alt2-800',
+    name: "--fds-brand-alt2-800",
     attributes: {},
-    path: ['brand', 'alt2', '800'],
+    path: [
+      "brand",
+      "alt2",
+      "800"
+    ]
   },
   {
-    value: '#9F6841',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#9F6841",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#9F6841',
-      type: 'color',
+      value: "#9F6841",
+      type: "color"
     },
-    name: '--fds-brand-alt2-900',
+    name: "--fds-brand-alt2-900",
     attributes: {},
-    path: ['brand', 'alt2', '900'],
+    path: [
+      "brand",
+      "alt2",
+      "900"
+    ]
   },
   {
-    value: '#eff6f4',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#eff6f4",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#eff6f4',
-      type: 'color',
+      value: "#eff6f4",
+      type: "color"
     },
-    name: '--fds-brand-alt3-100',
+    name: "--fds-brand-alt3-100",
     attributes: {},
-    path: ['brand', 'alt3', '100'],
+    path: [
+      "brand",
+      "alt3",
+      "100"
+    ]
   },
   {
-    value: '#deece9',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#deece9",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#deece9',
-      type: 'color',
+      value: "#deece9",
+      type: "color"
     },
-    name: '--fds-brand-alt3-200',
+    name: "--fds-brand-alt3-200",
     attributes: {},
-    path: ['brand', 'alt3', '200'],
+    path: [
+      "brand",
+      "alt3",
+      "200"
+    ]
   },
   {
-    value: '#bedad2',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#bedad2",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#bedad2',
-      type: 'color',
+      value: "#bedad2",
+      type: "color"
     },
-    name: '--fds-brand-alt3-300',
+    name: "--fds-brand-alt3-300",
     attributes: {},
-    path: ['brand', 'alt3', '300'],
+    path: [
+      "brand",
+      "alt3",
+      "300"
+    ]
   },
   {
-    value: '#9dc7bc',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#9dc7bc",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#9dc7bc',
-      type: 'color',
+      value: "#9dc7bc",
+      type: "color"
     },
-    name: '--fds-brand-alt3-400',
+    name: "--fds-brand-alt3-400",
     attributes: {},
-    path: ['brand', 'alt3', '400'],
+    path: [
+      "brand",
+      "alt3",
+      "400"
+    ]
   },
   {
-    value: '#7db5a5',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#7db5a5",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#7db5a5',
-      type: 'color',
+      value: "#7db5a5",
+      type: "color"
     },
-    name: '--fds-brand-alt3-500',
+    name: "--fds-brand-alt3-500",
     attributes: {},
-    path: ['brand', 'alt3', '500'],
+    path: [
+      "brand",
+      "alt3",
+      "500"
+    ]
   },
   {
-    value: '#5ca28f',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#5ca28f",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#5ca28f',
-      type: 'color',
+      value: "#5ca28f",
+      type: "color"
     },
-    name: '--fds-brand-alt3-600',
+    name: "--fds-brand-alt3-600",
     attributes: {},
-    path: ['brand', 'alt3', '600'],
+    path: [
+      "brand",
+      "alt3",
+      "600"
+    ]
   },
   {
-    value: '#4c907e',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#4c907e",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#4c907e',
-      type: 'color',
+      value: "#4c907e",
+      type: "color"
     },
-    name: '--fds-brand-alt3-700',
+    name: "--fds-brand-alt3-700",
     attributes: {},
-    path: ['brand', 'alt3', '700'],
+    path: [
+      "brand",
+      "alt3",
+      "700"
+    ]
   },
   {
-    value: '#407d6d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#407d6d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#407d6d',
-      type: 'color',
+      value: "#407d6d",
+      type: "color"
     },
-    name: '--fds-brand-alt3-800',
+    name: "--fds-brand-alt3-800",
     attributes: {},
-    path: ['brand', 'alt3', '800'],
+    path: [
+      "brand",
+      "alt3",
+      "800"
+    ]
   },
   {
-    value: '#376C5E',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#376C5E",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '#376C5E',
-      type: 'color',
+      value: "#376C5E",
+      type: "color"
     },
-    name: '--fds-brand-alt3-900',
+    name: "--fds-brand-alt3-900",
     attributes: {},
-    path: ['brand', 'alt3', '900'],
+    path: [
+      "brand",
+      "alt3",
+      "900"
+    ]
   },
   {
-    value: '#dedff6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#dedff6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.200}',
-      type: 'color',
+      value: "{brand.alt1.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-first-light',
+    name: "--fds-semantic-surface-first-light",
     attributes: {},
-    path: ['semantic', 'surface', 'first', 'light'],
+    path: [
+      "semantic",
+      "surface",
+      "first",
+      "light"
+    ]
   },
   {
-    value: '#bec0ed',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#bec0ed",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.300}',
-      type: 'color',
+      value: "{brand.alt1.300}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-first-light-hover',
+    name: "--fds-semantic-surface-first-light-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'first', 'light-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "first",
+      "light-hover"
+    ]
   },
   {
-    value: '#9da0e4',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#9da0e4",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.400}',
-      type: 'color',
+      value: "{brand.alt1.400}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-first-light-active',
+    name: "--fds-semantic-surface-first-light-active",
     attributes: {},
-    path: ['semantic', 'surface', 'first', 'light-active'],
+    path: [
+      "semantic",
+      "surface",
+      "first",
+      "light-active"
+    ]
   },
   {
-    value: '#0008b8',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#0008b8",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.800}',
-      type: 'color',
+      value: "{brand.alt1.800}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-first-dark',
+    name: "--fds-semantic-surface-first-dark",
     attributes: {},
-    path: ['semantic', 'surface', 'first', 'dark'],
+    path: [
+      "semantic",
+      "surface",
+      "first",
+      "dark"
+    ]
   },
   {
-    value: '#ffdcc3',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffdcc3",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.200}',
-      type: 'color',
+      value: "{brand.alt2.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-second-light',
+    name: "--fds-semantic-surface-second-light",
     attributes: {},
-    path: ['semantic', 'surface', 'second', 'light'],
+    path: [
+      "semantic",
+      "surface",
+      "second",
+      "light"
+    ]
   },
   {
-    value: '#fdd4b7',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#fdd4b7",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.300}',
-      type: 'color',
+      value: "{brand.alt2.300}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-second-light-hover',
+    name: "--fds-semantic-surface-second-light-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'second', 'light-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "second",
+      "light-hover"
+    ]
   },
   {
-    value: '#ffc296',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffc296",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.400}',
-      type: 'color',
+      value: "{brand.alt2.400}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-second-light-active',
+    name: "--fds-semantic-surface-second-light-active",
     attributes: {},
-    path: ['semantic', 'surface', 'second', 'light-active'],
+    path: [
+      "semantic",
+      "surface",
+      "second",
+      "light-active"
+    ]
   },
   {
-    value: '#9F6841',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#9F6841",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.900}',
-      type: 'color',
+      value: "{brand.alt2.900}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-second-dark',
+    name: "--fds-semantic-surface-second-dark",
     attributes: {},
-    path: ['semantic', 'surface', 'second', 'dark'],
+    path: [
+      "semantic",
+      "surface",
+      "second",
+      "dark"
+    ]
   },
   {
-    value: '#deece9',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#deece9",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.200}',
-      type: 'color',
+      value: "{brand.alt3.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-third-light',
+    name: "--fds-semantic-surface-third-light",
     attributes: {},
-    path: ['semantic', 'surface', 'third', 'light'],
+    path: [
+      "semantic",
+      "surface",
+      "third",
+      "light"
+    ]
   },
   {
-    value: '#bedad2',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#bedad2",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.300}',
-      type: 'color',
+      value: "{brand.alt3.300}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-third-light-hover',
+    name: "--fds-semantic-surface-third-light-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'third', 'light-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "third",
+      "light-hover"
+    ]
   },
   {
-    value: '#9dc7bc',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#9dc7bc",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.400}',
-      type: 'color',
+      value: "{brand.alt3.400}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-third-light-active',
+    name: "--fds-semantic-surface-third-light-active",
     attributes: {},
-    path: ['semantic', 'surface', 'third', 'light-active'],
+    path: [
+      "semantic",
+      "surface",
+      "third",
+      "light-active"
+    ]
   },
   {
-    value: '#407d6d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#407d6d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.800}',
-      type: 'color',
+      value: "{brand.alt3.800}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-third-dark',
+    name: "--fds-semantic-surface-third-dark",
     attributes: {},
-    path: ['semantic', 'surface', 'third', 'dark'],
+    path: [
+      "semantic",
+      "surface",
+      "third",
+      "dark"
+    ]
   },
   {
-    value: '#f4f5f6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#f4f5f6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.grey.100}',
-      type: 'color',
+      value: "{colors.grey.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-subtle',
+    name: "--fds-semantic-surface-action-first-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "subtle"
+    ]
   },
   {
-    value: '#e9eaec',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#e9eaec",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.grey.200}',
-      type: 'color',
+      value: "{colors.grey.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-subtle-hover',
+    name: "--fds-semantic-surface-action-first-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-default',
+    name: "--fds-semantic-surface-action-first-default",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "default"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.9)',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.9)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.9)',
-      type: 'color',
+      value: "rgba({colors.blue.900}, 0.9)",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-hover',
+    name: "--fds-semantic-surface-action-first-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "hover"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.8)',
-    type: 'color',
-    description: 'Standard farge for handlinger',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.8)",
+    type: "color",
+    description: "Standard farge for handlinger",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.8)',
-      type: 'color',
-      description: 'Standard farge for handlinger',
+      value: "rgba({colors.blue.900}, 0.8)",
+      type: "color",
+      description: "Standard farge for handlinger"
     },
-    name: '--fds-semantic-surface-action-first-active',
+    name: "--fds-semantic-surface-action-first-active",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "active"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-no_fill',
+    name: "--fds-semantic-surface-action-first-no_fill",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'no_fill'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "no_fill"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.1)',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.1)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.1)',
-      type: 'color',
+      value: "rgba({colors.blue.900}, 0.1)",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-no_fill-hover',
+    name: "--fds-semantic-surface-action-first-no_fill-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'no_fill-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "no_fill-hover"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.2)',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.2)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.2)',
-      type: 'color',
+      value: "rgba({colors.blue.900}, 0.2)",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-first-no_fill-active',
+    name: "--fds-semantic-surface-action-first-no_fill-active",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'first', 'no_fill-active'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "no_fill-active"
+    ]
   },
   {
-    value: '#f4f5f6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#f4f5f6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.grey.100}',
-      type: 'color',
+      value: "{colors.grey.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-subtle',
+    name: "--fds-semantic-surface-action-second-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "subtle"
+    ]
   },
   {
-    value: '#e9eaec',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#e9eaec",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.grey.200}',
-      type: 'color',
+      value: "{colors.grey.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-subtle-hover',
+    name: "--fds-semantic-surface-action-second-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-default',
+    name: "--fds-semantic-surface-action-second-default",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "default"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.9)',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.9)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.9)',
-      type: 'color',
+      value: "rgba({colors.blue.900}, 0.9)",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-hover',
+    name: "--fds-semantic-surface-action-second-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "hover"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.8)',
-    type: 'color',
-    description: 'Standard farge for handlinger',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.8)",
+    type: "color",
+    description: "Standard farge for handlinger",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.8)',
-      type: 'color',
-      description: 'Standard farge for handlinger',
+      value: "rgba({colors.blue.900}, 0.8)",
+      type: "color",
+      description: "Standard farge for handlinger"
     },
-    name: '--fds-semantic-surface-action-second-active',
+    name: "--fds-semantic-surface-action-second-active",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "active"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-no_fill',
+    name: "--fds-semantic-surface-action-second-no_fill",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'no_fill'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "no_fill"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.1)',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.1)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.1)',
-      type: 'color',
+      value: "rgba({colors.blue.900}, 0.1)",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-no_fill-hover',
+    name: "--fds-semantic-surface-action-second-no_fill-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'no_fill-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "no_fill-hover"
+    ]
   },
   {
-    value: 'rgba(0, 49, 93, 0.2)',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "rgba(0, 49, 93, 0.2)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: 'rgba({colors.blue.900}, 0.2)',
-      type: 'color',
+      value: "rgba({colors.blue.900}, 0.2)",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-second-no_fill-active',
+    name: "--fds-semantic-surface-action-second-no_fill-active",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'second', 'no_fill-active'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "no_fill-active"
+    ]
   },
   {
-    value: '#e6eff8',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e6eff8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
-      type: 'color',
+      value: "{colors.blue.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-subtle',
+    name: "--fds-semantic-surface-action-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "subtle"
+    ]
   },
   {
-    value: '#b3d0ea',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
-      type: 'color',
+      value: "{colors.blue.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-subtle-hover',
+    name: "--fds-semantic-surface-action-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-default',
+    name: "--fds-semantic-surface-action-default",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "default"
+    ]
   },
   {
-    value: '#004e95',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.800}',
-      type: 'color',
+      value: "{colors.blue.800}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-hover',
+    name: "--fds-semantic-surface-action-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    description: 'Standard farge for handlinger',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    description: "Standard farge for handlinger",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
-      description: 'Standard farge for handlinger',
+      value: "{colors.blue.900}",
+      type: "color",
+      description: "Standard farge for handlinger"
     },
-    name: '--fds-semantic-surface-action-active',
+    name: "--fds-semantic-surface-action-active",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "active"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-no_fill',
+    name: "--fds-semantic-surface-action-no_fill",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'no_fill'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "no_fill"
+    ]
   },
   {
-    value: '#e6eff8',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e6eff8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
-      type: 'color',
+      value: "{colors.blue.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-no_fill-hover',
+    name: "--fds-semantic-surface-action-no_fill-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'no_fill-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "no_fill-hover"
+    ]
   },
   {
-    value: '#b3d0ea',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
-      type: 'color',
+      value: "{colors.blue.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-no_fill-active',
+    name: "--fds-semantic-surface-action-no_fill-active",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'no_fill-active'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "no_fill-active"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-action-checked',
+    name: "--fds-semantic-surface-action-checked",
     attributes: {},
-    path: ['semantic', 'surface', 'action', 'checked'],
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "checked"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-default',
+    name: "--fds-semantic-surface-neutral-default",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "default"
+    ]
   },
   {
-    value: '#e6eff8',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e6eff8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
-      type: 'color',
+      value: "{colors.blue.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-selected',
+    name: "--fds-semantic-surface-neutral-selected",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'selected'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "selected"
+    ]
   },
   {
-    value: '#f4f5f6',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#f4f5f6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.100}',
-      type: 'color',
+      value: "{colors.grey.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-subtle',
+    name: "--fds-semantic-surface-neutral-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "subtle"
+    ]
   },
   {
-    value: '#e9eaec',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e9eaec",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.200}',
-      type: 'color',
+      value: "{colors.grey.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-subtle-hover',
+    name: "--fds-semantic-surface-neutral-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#68707c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#68707c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.600}',
-      type: 'color',
+      value: "{colors.grey.600}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-dark',
+    name: "--fds-semantic-surface-neutral-dark",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'dark'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "dark"
+    ]
   },
   {
-    value: '#4b5563',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#4b5563",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.700}',
-      type: 'color',
+      value: "{colors.grey.700}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-dark-hover',
+    name: "--fds-semantic-surface-neutral-dark-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'dark-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "dark-hover"
+    ]
   },
   {
-    value: '#1e2b3c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
-      type: 'color',
+      value: "{colors.grey.800}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-neutral-inverted',
+    name: "--fds-semantic-surface-neutral-inverted",
     attributes: {},
-    path: ['semantic', 'surface', 'neutral', 'inverted'],
+    path: [
+      "semantic",
+      "surface",
+      "neutral",
+      "inverted"
+    ]
   },
   {
-    value: '#d1f4e1',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#d1f4e1",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.200}',
-      type: 'color',
+      value: "{colors.green.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-subtle',
+    name: "--fds-semantic-surface-success-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "subtle"
+    ]
   },
   {
-    value: '#8be4b5',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#8be4b5",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.300}',
-      type: 'color',
+      value: "{colors.green.300}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-subtle-hover',
+    name: "--fds-semantic-surface-success-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#118849',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#118849",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.700}',
-      type: 'color',
+      value: "{colors.green.700}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-default',
+    name: "--fds-semantic-surface-success-default",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "default"
+    ]
   },
   {
-    value: '#0c6536',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0c6536",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.800}',
-      type: 'color',
+      value: "{colors.green.800}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-hover',
+    name: "--fds-semantic-surface-success-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "hover"
+    ]
   },
   {
-    value: '#084826',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#084826",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.900}',
-      type: 'color',
+      value: "{colors.green.900}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-active',
+    name: "--fds-semantic-surface-success-active",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "active"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-no_fill',
+    name: "--fds-semantic-surface-success-no_fill",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'no_fill'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "no_fill"
+    ]
   },
   {
-    value: '#d1f4e1',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#d1f4e1",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.200}',
-      type: 'color',
+      value: "{colors.green.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-no_fill-hover',
+    name: "--fds-semantic-surface-success-no_fill-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'no_fill-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "no_fill-hover"
+    ]
   },
   {
-    value: '#8be4b5',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#8be4b5",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.300}',
-      type: 'color',
+      value: "{colors.green.300}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-success-no_fill-active',
+    name: "--fds-semantic-surface-success-no_fill-active",
     attributes: {},
-    path: ['semantic', 'surface', 'success', 'no_fill-active'],
+    path: [
+      "semantic",
+      "surface",
+      "success",
+      "no_fill-active"
+    ]
   },
   {
-    value: '#fffbe6',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#fffbe6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.yellow.100}',
-      type: 'color',
+      value: "{colors.yellow.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-warning-subtle',
+    name: "--fds-semantic-surface-warning-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'warning', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "warning",
+      "subtle"
+    ]
   },
   {
-    value: '#fff4b4',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#fff4b4",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.yellow.200}',
-      type: 'color',
+      value: "{colors.yellow.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-warning-subtle-hover',
+    name: "--fds-semantic-surface-warning-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'warning', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "warning",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#fff4b4',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#fff4b4",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.yellow.200}',
-      type: 'color',
+      value: "{colors.yellow.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-warning-default',
+    name: "--fds-semantic-surface-warning-default",
     attributes: {},
-    path: ['semantic', 'surface', 'warning', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "warning",
+      "default"
+    ]
   },
   {
-    value: '#ffed83',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffed83",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.yellow.300}',
-      type: 'color',
+      value: "{colors.yellow.300}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-warning-default-hover',
+    name: "--fds-semantic-surface-warning-default-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'warning', 'default-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "warning",
+      "default-hover"
+    ]
   },
   {
-    value: '#f9d5db',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#f9d5db",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.100}',
-      type: 'color',
+      value: "{colors.red.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-subtle',
+    name: "--fds-semantic-surface-danger-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "subtle"
+    ]
   },
   {
-    value: '#f3abb6',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#f3abb6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.200}',
-      type: 'color',
+      value: "{colors.red.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-subtle-hover',
+    name: "--fds-semantic-surface-danger-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#e02e49',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e02e49",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.500}',
-      type: 'color',
+      value: "{colors.red.500}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-default',
+    name: "--fds-semantic-surface-danger-default",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "default"
+    ]
   },
   {
-    value: '#b3253a',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3253a",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.600}',
-      type: 'color',
+      value: "{colors.red.600}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-hover',
+    name: "--fds-semantic-surface-danger-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "hover"
+    ]
   },
   {
-    value: '#861c2c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#861c2c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.700}',
-      type: 'color',
+      value: "{colors.red.700}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-active',
+    name: "--fds-semantic-surface-danger-active",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "active"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-no_fill',
+    name: "--fds-semantic-surface-danger-no_fill",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'no_fill'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "no_fill"
+    ]
   },
   {
-    value: '#f9d5db',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#f9d5db",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.100}',
-      type: 'color',
+      value: "{colors.red.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-no_fill-hover',
+    name: "--fds-semantic-surface-danger-no_fill-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'no_fill-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "no_fill-hover"
+    ]
   },
   {
-    value: '#f3abb6',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#f3abb6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.200}',
-      type: 'color',
+      value: "{colors.red.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-danger-no_fill-active',
+    name: "--fds-semantic-surface-danger-no_fill-active",
     attributes: {},
-    path: ['semantic', 'surface', 'danger', 'no_fill-active'],
+    path: [
+      "semantic",
+      "surface",
+      "danger",
+      "no_fill-active"
+    ]
   },
   {
-    value: '#e6eff8',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e6eff8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.100}',
-      type: 'color',
+      value: "{colors.blue.100}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-info-subtle',
+    name: "--fds-semantic-surface-info-subtle",
     attributes: {},
-    path: ['semantic', 'surface', 'info', 'subtle'],
+    path: [
+      "semantic",
+      "surface",
+      "info",
+      "subtle"
+    ]
   },
   {
-    value: '#b3d0ea',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
-      type: 'color',
+      value: "{colors.blue.200}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-info-subtle-hover',
+    name: "--fds-semantic-surface-info-subtle-hover",
     attributes: {},
-    path: ['semantic', 'surface', 'info', 'subtle-hover'],
+    path: [
+      "semantic",
+      "surface",
+      "info",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#ffda06',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.yellow.500}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-surface-focus-default',
+    name: "--fds-semantic-surface-on_inverted-default",
     attributes: {},
-    path: ['semantic', 'surface', 'focus', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "default"
+    ]
   },
   {
-    value: '#5c61d2',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffffe6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.600}',
-      type: 'color',
+      value: "#ffffffe6",
+      type: "color"
     },
-    name: '--fds-semantic-border-first-default',
+    name: "--fds-semantic-surface-on_inverted-hover",
     attributes: {},
-    path: ['semantic', 'border', 'first', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "hover"
+    ]
   },
   {
-    value: '#3339c6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffffcc",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.700}',
-      type: 'color',
+      value: "#ffffffcc",
+      type: "color"
     },
-    name: '--fds-semantic-border-first-hover',
+    name: "--fds-semantic-surface-on_inverted-active",
     attributes: {},
-    path: ['semantic', 'border', 'first', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "active"
+    ]
   },
   {
-    value: '#0008b8',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffff00",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{brand.alt1.800}',
-      type: 'color',
+      value: "#ffffff00",
+      type: "color"
     },
-    name: '--fds-semantic-border-first-active',
+    name: "--fds-semantic-surface-on_inverted-no_fill",
     attributes: {},
-    path: ['semantic', 'border', 'first', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "no_fill"
+    ]
   },
   {
-    value: '#ffa869',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffff1a",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.600}',
-      type: 'color',
+      value: "#ffffff1a",
+      type: "color"
     },
-    name: '--fds-semantic-border-second-default',
+    name: "--fds-semantic-surface-on_inverted-no_fill-hover",
     attributes: {},
-    path: ['semantic', 'border', 'second', 'default'],
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "no_fill-hover"
+    ]
   },
   {
-    value: '#e6975f',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffff33",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.700}',
-      type: 'color',
+      value: "#ffffff33",
+      type: "color"
     },
-    name: '--fds-semantic-border-second-hover',
+    name: "--fds-semantic-surface-on_inverted-no_fill-active",
     attributes: {},
-    path: ['semantic', 'border', 'second', 'hover'],
+    path: [
+      "semantic",
+      "surface",
+      "on_inverted",
+      "no_fill-active"
+    ]
   },
   {
-    value: '#b3764a',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffda06",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{brand.alt2.800}',
-      type: 'color',
+      value: "{colors.yellow.500}",
+      type: "color"
     },
-    name: '--fds-semantic-border-second-active',
+    name: "--fds-semantic-surface-focus-default",
     attributes: {},
-    path: ['semantic', 'border', 'second', 'active'],
+    path: [
+      "semantic",
+      "surface",
+      "focus",
+      "default"
+    ]
   },
   {
-    value: '#5ca28f',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#5c61d2",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.600}',
-      type: 'color',
+      value: "{brand.alt1.600}",
+      type: "color"
     },
-    name: '--fds-semantic-border-third-default',
+    name: "--fds-semantic-border-first-default",
     attributes: {},
-    path: ['semantic', 'border', 'third', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "first",
+      "default"
+    ]
   },
   {
-    value: '#4c907e',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#3339c6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.700}',
-      type: 'color',
+      value: "{brand.alt1.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-third-hover',
+    name: "--fds-semantic-border-first-hover",
     attributes: {},
-    path: ['semantic', 'border', 'third', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "first",
+      "hover"
+    ]
   },
   {
-    value: '#407d6d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#0008b8",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{brand.alt3.800}',
-      type: 'color',
+      value: "{brand.alt1.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-third-active',
+    name: "--fds-semantic-border-first-active",
     attributes: {},
-    path: ['semantic', 'border', 'third', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "first",
+      "active"
+    ]
   },
   {
-    value: '#b3d0ea',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffa869",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
-      type: 'color',
+      value: "{brand.alt2.600}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-first-subtle',
+    name: "--fds-semantic-border-second-default",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'first', 'subtle'],
+    path: [
+      "semantic",
+      "border",
+      "second",
+      "default"
+    ]
   },
   {
-    value: '#66a1d6',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#e6975f",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.400}',
-      type: 'color',
+      value: "{brand.alt2.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-first-subtle-hover',
+    name: "--fds-semantic-border-second-hover",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'first', 'subtle-hover'],
+    path: [
+      "semantic",
+      "border",
+      "second",
+      "hover"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#b3764a",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{brand.alt2.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-first-default',
+    name: "--fds-semantic-border-second-active",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'first', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "second",
+      "active"
+    ]
   },
   {
-    value: '#004e95',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#5ca28f",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.800}',
-      type: 'color',
+      value: "{brand.alt3.600}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-first-hover',
+    name: "--fds-semantic-border-third-default",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'first', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "third",
+      "default"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#4c907e",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{brand.alt3.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-first-active',
+    name: "--fds-semantic-border-third-hover",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'first', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "third",
+      "hover"
+    ]
   },
   {
-    value: '#e9eaec',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#407d6d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.grey.200}',
-      type: 'color',
+      value: "{brand.alt3.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-second-subtle',
+    name: "--fds-semantic-border-third-active",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'subtle'],
+    path: [
+      "semantic",
+      "border",
+      "third",
+      "active"
+    ]
   },
   {
-    value: '#d2d5d8',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.grey.300}',
-      type: 'color',
+      value: "{colors.blue.200}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-second-subtle-hover',
+    name: "--fds-semantic-border-action-first-subtle",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'subtle-hover'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "subtle"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#66a1d6",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.400}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-second-default',
+    name: "--fds-semantic-border-action-first-subtle-hover",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-second-hover',
+    name: "--fds-semantic-border-action-first-default",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "default"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-second-active',
+    name: "--fds-semantic-border-action-first-hover",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'second', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "hover"
+    ]
   },
   {
-    value: '#b3d0ea',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.200}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-subtle',
+    name: "--fds-semantic-border-action-first-active",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'subtle'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "active"
+    ]
   },
   {
-    value: '#66a1d6',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e9eaec",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.400}',
-      type: 'color',
+      value: "{colors.grey.200}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-subtle-hover',
+    name: "--fds-semantic-border-action-second-subtle",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'subtle-hover'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "subtle"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#d2d5d8",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{colors.grey.300}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-default',
+    name: "--fds-semantic-border-action-second-subtle-hover",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-hover',
+    name: "--fds-semantic-border-action-second-default",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "default"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-active',
+    name: "--fds-semantic-border-action-second-hover",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-dark',
+    name: "--fds-semantic-border-action-second-active",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'dark'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "active"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{colors.blue.200}",
+      type: "color"
     },
-    name: '--fds-semantic-border-action-dark-hover',
+    name: "--fds-semantic-border-action-subtle",
     attributes: {},
-    path: ['semantic', 'border', 'action', 'dark-hover'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "subtle"
+    ]
   },
   {
-    value: '#004e95',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#66a1d6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.800}',
-      type: 'color',
+      value: "{colors.blue.400}",
+      type: "color"
     },
-    name: '--fds-semantic-border-info-default',
+    name: "--fds-semantic-border-action-subtle-hover",
     attributes: {},
-    path: ['semantic', 'border', 'info', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "subtle-hover"
+    ]
   },
   {
-    value: '#68707c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.600}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-neutral-default',
+    name: "--fds-semantic-border-action-default",
     attributes: {},
-    path: ['semantic', 'border', 'neutral', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "default"
+    ]
   },
   {
-    value: '#d2d5d8',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.300}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-neutral-subtle',
+    name: "--fds-semantic-border-action-hover",
     attributes: {},
-    path: ['semantic', 'border', 'neutral', 'subtle'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "hover"
+    ]
   },
   {
-    value: '#1e2b3c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-neutral-strong',
+    name: "--fds-semantic-border-action-active",
     attributes: {},
-    path: ['semantic', 'border', 'neutral', 'strong'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "active"
+    ]
   },
   {
-    value: '#118849',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.700}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-success-default',
+    name: "--fds-semantic-border-action-dark",
     attributes: {},
-    path: ['semantic', 'border', 'success', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "dark"
+    ]
   },
   {
-    value: '#0c6536',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.800}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-success-hover',
+    name: "--fds-semantic-border-action-dark-hover",
     attributes: {},
-    path: ['semantic', 'border', 'success', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "dark-hover"
+    ]
   },
   {
-    value: '#084826',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.green.900}',
-      type: 'color',
+      value: "{colors.blue.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-success-active',
+    name: "--fds-semantic-border-info-default",
     attributes: {},
-    path: ['semantic', 'border', 'success', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "info",
+      "default"
+    ]
   },
   {
-    value: '#cc7005',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#68707c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.orange.600}',
-      type: 'color',
+      value: "{colors.grey.600}",
+      type: "color"
     },
-    name: '--fds-semantic-border-warning-default',
+    name: "--fds-semantic-border-neutral-default",
     attributes: {},
-    path: ['semantic', 'border', 'warning', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "neutral",
+      "default"
+    ]
   },
   {
-    value: '#995404',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#d2d5d8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.orange.700}',
-      type: 'color',
+      value: "{colors.grey.300}",
+      type: "color"
     },
-    name: '--fds-semantic-border-warning-hover',
+    name: "--fds-semantic-border-neutral-subtle",
     attributes: {},
-    path: ['semantic', 'border', 'warning', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "neutral",
+      "subtle"
+    ]
   },
   {
-    value: '#663802',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.orange.800}',
-      type: 'color',
+      value: "{colors.grey.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-warning-active',
+    name: "--fds-semantic-border-neutral-strong",
     attributes: {},
-    path: ['semantic', 'border', 'warning', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "neutral",
+      "strong"
+    ]
   },
   {
-    value: '#e02e49',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#118849",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.500}',
-      type: 'color',
+      value: "{colors.green.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-danger-default',
+    name: "--fds-semantic-border-success-default",
     attributes: {},
-    path: ['semantic', 'border', 'danger', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "success",
+      "default"
+    ]
   },
   {
-    value: '#b3253a',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0c6536",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.600}',
-      type: 'color',
+      value: "{colors.green.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-danger-hover',
+    name: "--fds-semantic-border-success-hover",
     attributes: {},
-    path: ['semantic', 'border', 'danger', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "success",
+      "hover"
+    ]
   },
   {
-    value: '#861c2c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#084826",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.700}',
-      type: 'color',
+      value: "{colors.green.900}",
+      type: "color"
     },
-    name: '--fds-semantic-border-danger-active',
+    name: "--fds-semantic-border-success-active",
     attributes: {},
-    path: ['semantic', 'border', 'danger', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "success",
+      "active"
+    ]
   },
   {
-    value: '#ffda06',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#cc7005",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.yellow.500}',
-      type: 'color',
+      value: "{colors.orange.600}",
+      type: "color"
     },
-    name: '--fds-semantic-border-focus-outline',
+    name: "--fds-semantic-border-warning-default",
     attributes: {},
-    path: ['semantic', 'border', 'focus', 'outline'],
+    path: [
+      "semantic",
+      "border",
+      "warning",
+      "default"
+    ]
   },
   {
-    value: '#1e2b3c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#995404",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{semantic.border.neutral.strong}',
-      type: 'color',
+      value: "{colors.orange.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-focus-boxshadow',
+    name: "--fds-semantic-border-warning-hover",
     attributes: {},
-    path: ['semantic', 'border', 'focus', 'boxshadow'],
+    path: [
+      "semantic",
+      "border",
+      "warning",
+      "hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#663802",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.orange.800}",
+      type: "color"
     },
-    name: '--fds-semantic-border-input-default',
+    name: "--fds-semantic-border-warning-active",
     attributes: {},
-    path: ['semantic', 'border', 'input', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "warning",
+      "active"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#e02e49",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{colors.red.500}",
+      type: "color"
     },
-    name: '--fds-semantic-border-input-hover',
+    name: "--fds-semantic-border-danger-default",
     attributes: {},
-    path: ['semantic', 'border', 'input', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "danger",
+      "default"
+    ]
   },
   {
-    value: '#bcbfc5',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3253a",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.400}',
-      type: 'color',
+      value: "{colors.red.600}",
+      type: "color"
     },
-    name: '--fds-semantic-border-divider-default',
+    name: "--fds-semantic-border-danger-hover",
     attributes: {},
-    path: ['semantic', 'border', 'divider', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "danger",
+      "hover"
+    ]
   },
   {
-    value: '#d2d5d8',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#861c2c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.300}',
-      type: 'color',
+      value: "{colors.red.700}",
+      type: "color"
     },
-    name: '--fds-semantic-border-divider-subtle',
+    name: "--fds-semantic-border-danger-active",
     attributes: {},
-    path: ['semantic', 'border', 'divider', 'subtle'],
+    path: [
+      "semantic",
+      "border",
+      "danger",
+      "active"
+    ]
   },
   {
-    value: '#68707c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffda06",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.600}',
-      type: 'color',
+      value: "{colors.yellow.500}",
+      type: "color"
     },
-    name: '--fds-semantic-border-divider-strong',
+    name: "--fds-semantic-border-focus-outline",
     attributes: {},
-    path: ['semantic', 'border', 'divider', 'strong'],
+    path: [
+      "semantic",
+      "border",
+      "focus",
+      "outline"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "{semantic.border.neutral.strong}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-first-default',
+    name: "--fds-semantic-border-focus-boxshadow",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'first', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "focus",
+      "boxshadow"
+    ]
   },
   {
-    value: '#004e95',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '#004e95',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-first-hover',
+    name: "--fds-semantic-border-on_inverted-default",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'first', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "on_inverted",
+      "default"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '#00315d',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-first-active',
+    name: "--fds-semantic-border-input-default",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'first', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "input",
+      "default"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-first-on_action',
+    name: "--fds-semantic-border-input-hover",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'first', 'on_action'],
+    path: [
+      "semantic",
+      "border",
+      "input",
+      "hover"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#bcbfc5",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.grey.400}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-second-default',
+    name: "--fds-semantic-border-divider-default",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'second', 'default'],
+    path: [
+      "semantic",
+      "border",
+      "divider",
+      "default"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#d2d5d8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.grey.300}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-second-hover',
+    name: "--fds-semantic-border-divider-subtle",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'second', 'hover'],
+    path: [
+      "semantic",
+      "border",
+      "divider",
+      "subtle"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#68707c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.grey.600}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-second-active',
+    name: "--fds-semantic-border-divider-strong",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'second', 'active'],
+    path: [
+      "semantic",
+      "border",
+      "divider",
+      "strong"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Brand/Tilsynet.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-second-on_action',
+    name: "--fds-semantic-text-action-first-default",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'second', 'on_action'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "default"
+    ]
   },
   {
-    value: '#0062ba',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.700}',
-      type: 'color',
+      value: "#004e95",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-default',
+    name: "--fds-semantic-text-action-first-hover",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "hover"
+    ]
   },
   {
-    value: '#004e95',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.800}',
-      type: 'color',
+      value: "#00315d",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-hover',
+    name: "--fds-semantic-text-action-first-active",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'hover'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "active"
+    ]
   },
   {
-    value: '#00315d',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.blue.900}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-active',
+    name: "--fds-semantic-text-action-first-on_action",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'active'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "on_action"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-action-on_action',
+    name: "--fds-semantic-text-action-second-default",
     attributes: {},
-    path: ['semantic', 'text', 'action', 'on_action'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "default"
+    ]
   },
   {
-    value: '#0c6536',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.green.800}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-success-default',
+    name: "--fds-semantic-text-action-second-hover",
     attributes: {},
-    path: ['semantic', 'text', 'success', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "hover"
+    ]
   },
   {
-    value: '#084826',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.green.900}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-success-hover',
+    name: "--fds-semantic-text-action-second-active",
     attributes: {},
-    path: ['semantic', 'text', 'success', 'hover'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "active"
+    ]
   },
   {
-    value: '#084826',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: '{colors.green.900}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-text-success-active',
+    name: "--fds-semantic-text-action-second-on_action",
     attributes: {},
-    path: ['semantic', 'text', 'success', 'active'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "on_action"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.blue.700}",
+      type: "color"
     },
-    name: '--fds-semantic-text-success-on_success',
+    name: "--fds-semantic-text-action-default",
     attributes: {},
-    path: ['semantic', 'text', 'success', 'on_success'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "default"
+    ]
   },
   {
-    value: '#1e2b3c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
-      type: 'color',
+      value: "{colors.blue.800}",
+      type: "color"
     },
-    name: '--fds-semantic-text-success-on_success_subtle',
+    name: "--fds-semantic-text-action-hover",
     attributes: {},
-    path: ['semantic', 'text', 'success', 'on_success_subtle'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "hover"
+    ]
   },
   {
-    value: '#1e2b3c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
-      type: 'color',
+      value: "{colors.blue.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-neutral-default',
+    name: "--fds-semantic-text-action-active",
     attributes: {},
-    path: ['semantic', 'text', 'neutral', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "active"
+    ]
   },
   {
-    value: '#4b5563',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.700}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-text-neutral-subtle',
+    name: "--fds-semantic-text-action-on_action",
     attributes: {},
-    path: ['semantic', 'text', 'neutral', 'subtle'],
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "on_action"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#0c6536",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.green.800}",
+      type: "color"
     },
-    name: '--fds-semantic-text-neutral-on_inverted',
+    name: "--fds-semantic-text-success-default",
     attributes: {},
-    path: ['semantic', 'text', 'neutral', 'on_inverted'],
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "default"
+    ]
   },
   {
-    value: '#995404',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#084826",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.orange.700}',
-      type: 'color',
+      value: "{colors.green.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-warning-default',
+    name: "--fds-semantic-text-success-hover",
     attributes: {},
-    path: ['semantic', 'text', 'warning', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "hover"
+    ]
   },
   {
-    value: '#cc7005',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#084826",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.orange.600}',
-      type: 'color',
+      value: "{colors.green.900}",
+      type: "color"
     },
-    name: '--fds-semantic-text-warning-icon_warning',
+    name: "--fds-semantic-text-success-active",
     attributes: {},
-    path: ['semantic', 'text', 'warning', 'icon_warning'],
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "active"
+    ]
   },
   {
-    value: '#663802',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.orange.800}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-text-warning-on_warning',
+    name: "--fds-semantic-text-success-on_success",
     attributes: {},
-    path: ['semantic', 'text', 'warning', 'on_warning'],
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "on_success"
+    ]
   },
   {
-    value: '#b3253a',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.600}',
-      type: 'color',
+      value: "{colors.grey.800}",
+      type: "color"
     },
-    name: '--fds-semantic-text-danger-default',
+    name: "--fds-semantic-text-success-on_success_subtle",
     attributes: {},
-    path: ['semantic', 'text', 'danger', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "on_success_subtle"
+    ]
   },
   {
-    value: '#861c2c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.700}',
-      type: 'color',
+      value: "{colors.grey.800}",
+      type: "color"
     },
-    name: '--fds-semantic-text-danger-hover',
+    name: "--fds-semantic-text-neutral-default",
     attributes: {},
-    path: ['semantic', 'text', 'danger', 'hover'],
+    path: [
+      "semantic",
+      "text",
+      "neutral",
+      "default"
+    ]
   },
   {
-    value: '#5a121d',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#4b5563",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.red.800}',
-      type: 'color',
+      value: "{colors.grey.700}",
+      type: "color"
     },
-    name: '--fds-semantic-text-danger-active',
+    name: "--fds-semantic-text-neutral-subtle",
     attributes: {},
-    path: ['semantic', 'text', 'danger', 'active'],
+    path: [
+      "semantic",
+      "text",
+      "neutral",
+      "subtle"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.white}",
+      type: "color"
     },
-    name: '--fds-semantic-text-danger-on_danger',
+    name: "--fds-semantic-text-neutral-on_inverted",
     attributes: {},
-    path: ['semantic', 'text', 'danger', 'on_danger'],
+    path: [
+      "semantic",
+      "text",
+      "neutral",
+      "on_inverted"
+    ]
   },
   {
-    value: '#1e2b3c',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#995404",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.800}',
-      type: 'color',
+      value: "{colors.orange.700}",
+      type: "color"
     },
-    name: '--fds-semantic-text-danger-on_danger_subtle',
+    name: "--fds-semantic-text-warning-default",
     attributes: {},
-    path: ['semantic', 'text', 'danger', 'on_danger_subtle'],
+    path: [
+      "semantic",
+      "text",
+      "warning",
+      "default"
+    ]
   },
   {
-    value: '#7a1265',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#cc7005",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.purple.700}',
-      type: 'color',
+      value: "{colors.orange.600}",
+      type: "color"
     },
-    name: '--fds-semantic-text-visited-default',
+    name: "--fds-semantic-text-warning-icon_warning",
     attributes: {},
-    path: ['semantic', 'text', 'visited', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "warning",
+      "icon_warning"
+    ]
   },
   {
-    value: '#ffffff',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#663802",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.white}',
-      type: 'color',
+      value: "{colors.orange.800}",
+      type: "color"
     },
-    name: '--fds-semantic-background-default',
+    name: "--fds-semantic-text-warning-on_warning",
     attributes: {},
-    path: ['semantic', 'background', 'default'],
+    path: [
+      "semantic",
+      "text",
+      "warning",
+      "on_warning"
+    ]
   },
   {
-    value: '#f4f5f6',
-    type: 'color',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "#b3253a",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{colors.grey.100}',
-      type: 'color',
+      value: "{colors.red.600}",
+      type: "color"
     },
-    name: '--fds-semantic-background-subtle',
+    name: "--fds-semantic-text-danger-default",
     attributes: {},
-    path: ['semantic', 'background', 'subtle'],
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "default"
+    ]
   },
-];
+  {
+    value: "#861c2c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.red.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "hover"
+    ]
+  },
+  {
+    value: "#5a121d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.red.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-on_danger",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "on_danger"
+    ]
+  },
+  {
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-on_danger_subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "on_danger_subtle"
+    ]
+  },
+  {
+    value: "#7a1265",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.purple.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-visited-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "visited",
+      "default"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-background-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "background",
+      "default"
+    ]
+  },
+  {
+    value: "#f4f5f6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.100}",
+      type: "color"
+    },
+    name: "--fds-semantic-background-subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "background",
+      "subtle"
+    ]
+  }
+] 
 
-export const typography = [
+export const  typography = [
   {
     value: "500 3.75rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f7}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f7}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-heading-2xlarge',
+    name: "--fds-typography-heading-2xlarge",
     attributes: {},
-    path: ['typography', 'heading', '2xlarge'],
+    path: [
+      "typography",
+      "heading",
+      "2xlarge"
+    ]
   },
   {
     value: "500 3rem/1.3 'Inter'",
-    type: 'typography',
-    description: 'H1',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    description: "H1",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f6}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f6}"
       },
-      type: 'typography',
-      description: 'H1',
+      type: "typography",
+      description: "H1"
     },
-    name: '--fds-typography-heading-xlarge',
+    name: "--fds-typography-heading-xlarge",
     attributes: {},
-    path: ['typography', 'heading', 'xlarge'],
+    path: [
+      "typography",
+      "heading",
+      "xlarge"
+    ]
   },
   {
     value: "500 2.25rem/1.3 'Inter'",
-    type: 'typography',
-    description: 'H2',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    description: "H2",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f5}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f5}"
       },
-      type: 'typography',
-      description: 'H2',
+      type: "typography",
+      description: "H2"
     },
-    name: '--fds-typography-heading-large',
+    name: "--fds-typography-heading-large",
     attributes: {},
-    path: ['typography', 'heading', 'large'],
+    path: [
+      "typography",
+      "heading",
+      "large"
+    ]
   },
   {
     value: "500 1.875rem/1.3 'Inter'",
-    type: 'typography',
-    description: 'H3',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    description: "H3",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f4}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f4}"
       },
-      type: 'typography',
-      description: 'H3',
+      type: "typography",
+      description: "H3"
     },
-    name: '--fds-typography-heading-medium',
+    name: "--fds-typography-heading-medium",
     attributes: {},
-    path: ['typography', 'heading', 'medium'],
+    path: [
+      "typography",
+      "heading",
+      "medium"
+    ]
   },
   {
     value: "500 1.5rem/1.3 'Inter'",
-    type: 'typography',
-    description: 'H4',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    description: "H4",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f3}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f3}"
       },
-      type: 'typography',
-      description: 'H4',
+      type: "typography",
+      description: "H4"
     },
-    name: '--fds-typography-heading-small',
+    name: "--fds-typography-heading-small",
     attributes: {},
-    path: ['typography', 'heading', 'small'],
+    path: [
+      "typography",
+      "heading",
+      "small"
+    ]
   },
   {
     value: "500 1.3125rem/1.3 'Inter'",
-    type: 'typography',
-    description: 'H5',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    description: "H5",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f2}"
       },
-      type: 'typography',
-      description: 'H5',
+      type: "typography",
+      description: "H5"
     },
-    name: '--fds-typography-heading-xsmall',
+    name: "--fds-typography-heading-xsmall",
     attributes: {},
-    path: ['typography', 'heading', 'xsmall'],
+    path: [
+      "typography",
+      "heading",
+      "xsmall"
+    ]
   },
   {
     value: "500 1.125rem/1.3 'Inter'",
-    type: 'typography',
-    description: 'H6',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    description: "H6",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
-      description: 'H6',
+      type: "typography",
+      description: "H6"
     },
-    name: '--fds-typography-heading-xxsmall',
+    name: "--fds-typography-heading-xxsmall",
     attributes: {},
-    path: ['typography', 'heading', 'xxsmall'],
+    path: [
+      "typography",
+      "heading",
+      "xxsmall"
+    ]
   },
   {
     value: "400 1.875rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f4}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f4}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-ingress-large',
+    name: "--fds-typography-ingress-large",
     attributes: {},
-    path: ['typography', 'ingress', 'large'],
+    path: [
+      "typography",
+      "ingress",
+      "large"
+    ]
   },
   {
     value: "400 1.5rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f3}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f3}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-ingress-medium',
+    name: "--fds-typography-ingress-medium",
     attributes: {},
-    path: ['typography', 'ingress', 'medium'],
+    path: [
+      "typography",
+      "ingress",
+      "medium"
+    ]
   },
   {
     value: "400 1.3125rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f2}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-ingress-small',
+    name: "--fds-typography-ingress-small",
     attributes: {},
-    path: ['typography', 'ingress', 'small'],
+    path: [
+      "typography",
+      "ingress",
+      "small"
+    ]
   },
   {
     value: "400 1.125rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-ingress-xsmall',
+    name: "--fds-typography-ingress-xsmall",
     attributes: {},
-    path: ['typography', 'ingress', 'xsmall'],
+    path: [
+      "typography",
+      "ingress",
+      "xsmall"
+    ]
   },
   {
     value: "400 1.3125rem/1.5 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.500}',
-        fontSize: '{font-size.f2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.500}",
+        fontSize: "{font-size.f2}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-large',
+    name: "--fds-typography-paragraph-large",
     attributes: {},
-    path: ['typography', 'paragraph', 'large'],
+    path: [
+      "typography",
+      "paragraph",
+      "large"
+    ]
   },
   {
     value: "400 1.125rem/1.5 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.500}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.500}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-medium',
+    name: "--fds-typography-paragraph-medium",
     attributes: {},
-    path: ['typography', 'paragraph', 'medium'],
+    path: [
+      "typography",
+      "paragraph",
+      "medium"
+    ]
   },
   {
     value: "400 1rem/1.5 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.500}',
-        fontSize: '{font-size.f0}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.500}",
+        fontSize: "{font-size.f0}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-small',
+    name: "--fds-typography-paragraph-small",
     attributes: {},
-    path: ['typography', 'paragraph', 'small'],
+    path: [
+      "typography",
+      "paragraph",
+      "small"
+    ]
   },
   {
     value: "400 0.875rem/1.5 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.500}',
-        fontSize: '{font-size.f-1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.500}",
+        fontSize: "{font-size.f-1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-xsmall',
+    name: "--fds-typography-paragraph-xsmall",
     attributes: {},
-    path: ['typography', 'paragraph', 'xsmall'],
+    path: [
+      "typography",
+      "paragraph",
+      "xsmall"
+    ]
   },
   {
     value: "400 1.3125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f2}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-short-large',
+    name: "--fds-typography-paragraph-short-large",
     attributes: {},
-    path: ['typography', 'paragraph', 'short', 'large'],
+    path: [
+      "typography",
+      "paragraph",
+      "short",
+      "large"
+    ]
   },
   {
     value: "400 1.125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-short-medium',
+    name: "--fds-typography-paragraph-short-medium",
     attributes: {},
-    path: ['typography', 'paragraph', 'short', 'medium'],
+    path: [
+      "typography",
+      "paragraph",
+      "short",
+      "medium"
+    ]
   },
   {
     value: "400 1rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f0}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f0}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-short-small',
+    name: "--fds-typography-paragraph-short-small",
     attributes: {},
-    path: ['typography', 'paragraph', 'short', 'small'],
+    path: [
+      "typography",
+      "paragraph",
+      "short",
+      "small"
+    ]
   },
   {
     value: "400 0.875rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f-1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f-1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-short-xsmall',
+    name: "--fds-typography-paragraph-short-xsmall",
     attributes: {},
-    path: ['typography', 'paragraph', 'short', 'xsmall'],
+    path: [
+      "typography",
+      "paragraph",
+      "short",
+      "xsmall"
+    ]
   },
   {
     value: "400 1.125rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-long-large',
+    name: "--fds-typography-paragraph-long-large",
     attributes: {},
-    path: ['typography', 'paragraph', 'long', 'large'],
+    path: [
+      "typography",
+      "paragraph",
+      "long",
+      "large"
+    ]
   },
   {
     value: "400 1rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f0}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f0}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-long-medium',
+    name: "--fds-typography-paragraph-long-medium",
     attributes: {},
-    path: ['typography', 'paragraph', 'long', 'medium'],
+    path: [
+      "typography",
+      "paragraph",
+      "long",
+      "medium"
+    ]
   },
   {
     value: "400 0.875rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f-1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f-1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-long-small',
+    name: "--fds-typography-paragraph-long-small",
     attributes: {},
-    path: ['typography', 'paragraph', 'long', 'small'],
+    path: [
+      "typography",
+      "paragraph",
+      "long",
+      "small"
+    ]
   },
   {
     value: "400 0.8125rem/1.7 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.700}',
-        fontSize: '{font-size.f-2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.700}",
+        fontSize: "{font-size.f-2}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-paragraph-long-xsmall',
+    name: "--fds-typography-paragraph-long-xsmall",
     attributes: {},
-    path: ['typography', 'paragraph', 'long', 'xsmall'],
+    path: [
+      "typography",
+      "paragraph",
+      "long",
+      "xsmall"
+    ]
   },
   {
     value: "500 1.3125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f2}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-label-large',
+    name: "--fds-typography-label-large",
     attributes: {},
-    path: ['typography', 'label', 'large'],
+    path: [
+      "typography",
+      "label",
+      "large"
+    ]
   },
   {
     value: "500 1.125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-label-medium',
+    name: "--fds-typography-label-medium",
     attributes: {},
-    path: ['typography', 'label', 'medium'],
+    path: [
+      "typography",
+      "label",
+      "medium"
+    ]
   },
   {
     value: "500 1rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f0}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f0}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-label-small',
+    name: "--fds-typography-label-small",
     attributes: {},
-    path: ['typography', 'label', 'small'],
+    path: [
+      "typography",
+      "label",
+      "small"
+    ]
   },
   {
     value: "500 0.875rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f-1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.medium}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f-1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-label-xsmall',
+    name: "--fds-typography-label-xsmall",
     attributes: {},
-    path: ['typography', 'label', 'xsmall'],
+    path: [
+      "typography",
+      "label",
+      "xsmall"
+    ]
   },
   {
     value: "400 1.3125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f2}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f2}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-error_message-large',
+    name: "--fds-typography-error_message-large",
     attributes: {},
-    path: ['typography', 'error_message', 'large'],
+    path: [
+      "typography",
+      "error_message",
+      "large"
+    ]
   },
   {
     value: "400 1.125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-error_message-medium',
+    name: "--fds-typography-error_message-medium",
     attributes: {},
-    path: ['typography', 'error_message', 'medium'],
+    path: [
+      "typography",
+      "error_message",
+      "medium"
+    ]
   },
   {
     value: "400 1rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f0}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f0}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-error_message-small',
+    name: "--fds-typography-error_message-small",
     attributes: {},
-    path: ['typography', 'error_message', 'small'],
+    path: [
+      "typography",
+      "error_message",
+      "small"
+    ]
   },
   {
     value: "400 0.875rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-size.f-1}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-size.f-1}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-error_message-xsmall',
+    name: "--fds-typography-error_message-xsmall",
     attributes: {},
-    path: ['typography', 'error_message', 'xsmall'],
+    path: [
+      "typography",
+      "error_message",
+      "xsmall"
+    ]
   },
   {
     value: "400 1.5rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-static.large}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-static.large}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-interactive-large',
+    name: "--fds-typography-interactive-large",
     attributes: {},
-    path: ['typography', 'interactive', 'large'],
+    path: [
+      "typography",
+      "interactive",
+      "large"
+    ]
   },
   {
     value: "400 1.125rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-static.medium}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-static.medium}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-interactive-medium',
+    name: "--fds-typography-interactive-medium",
     attributes: {},
-    path: ['typography', 'interactive', 'medium'],
+    path: [
+      "typography",
+      "interactive",
+      "medium"
+    ]
   },
   {
     value: "400 1rem/1.3 'Inter'",
-    type: 'typography',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    type: "typography",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
-        fontFamily: '{fontFamilies.inter}',
-        fontWeight: '{fontWeights.regular}',
-        lineHeight: '{lineHeights.300}',
-        fontSize: '{font-static.small}',
+        fontFamily: "{fontFamilies.inter}",
+        fontWeight: "{fontWeights.regular}",
+        lineHeight: "{lineHeights.300}",
+        fontSize: "{font-static.small}"
       },
-      type: 'typography',
+      type: "typography"
     },
-    name: '--fds-typography-interactive-small',
+    name: "--fds-typography-interactive-small",
     attributes: {},
-    path: ['typography', 'interactive', 'small'],
-  },
-];
+    path: [
+      "typography",
+      "interactive",
+      "small"
+    ]
+  }
+] 
 
-export const opacity = [
+export const  opacity = [
   {
-    value: '30%',
-    type: 'opacity',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "30%",
+    type: "opacity",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '30%',
-      type: 'opacity',
+      value: "30%",
+      type: "opacity"
     },
-    name: '--fds-opacity-disabled',
+    name: "--fds-opacity-disabled",
     attributes: {},
-    path: ['opacity', 'disabled'],
-  },
-];
+    path: [
+      "opacity",
+      "disabled"
+    ]
+  }
+] 
 
-export const borderRadius = [
+export const  borderRadius = [
   {
-    value: '4px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "4px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{border_radius.medium}',
-      type: 'borderRadius',
+      value: "{border_radius.medium}",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-interactive',
+    name: "--fds-border_radius-interactive",
     attributes: {},
-    path: ['border_radius', 'interactive'],
+    path: [
+      "border_radius",
+      "interactive"
+    ]
   },
   {
-    value: '2px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '2px',
-      type: 'borderRadius',
+      value: "2px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-small',
+    name: "--fds-border_radius-small",
     attributes: {},
-    path: ['border_radius', 'small'],
+    path: [
+      "border_radius",
+      "small"
+    ]
   },
   {
-    value: '4px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "4px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '4px',
-      type: 'borderRadius',
+      value: "4px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-medium',
+    name: "--fds-border_radius-medium",
     attributes: {},
-    path: ['border_radius', 'medium'],
+    path: [
+      "border_radius",
+      "medium"
+    ]
   },
   {
-    value: '8px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "8px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '8px',
-      type: 'borderRadius',
+      value: "8px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-large',
+    name: "--fds-border_radius-large",
     attributes: {},
-    path: ['border_radius', 'large'],
+    path: [
+      "border_radius",
+      "large"
+    ]
   },
   {
-    value: '12px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "12px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '12px',
-      type: 'borderRadius',
+      value: "12px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-xlarge',
+    name: "--fds-border_radius-xlarge",
     attributes: {},
-    path: ['border_radius', 'xlarge'],
+    path: [
+      "border_radius",
+      "xlarge"
+    ]
   },
   {
-    value: '16px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "16px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '16px',
-      type: 'borderRadius',
+      value: "16px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-xxlarge',
+    name: "--fds-border_radius-xxlarge",
     attributes: {},
-    path: ['border_radius', 'xxlarge'],
+    path: [
+      "border_radius",
+      "xxlarge"
+    ]
   },
   {
-    value: '24px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "24px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '24px',
-      type: 'borderRadius',
+      value: "24px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-xxxlarge',
+    name: "--fds-border_radius-xxxlarge",
     attributes: {},
-    path: ['border_radius', 'xxxlarge'],
+    path: [
+      "border_radius",
+      "xxxlarge"
+    ]
   },
   {
-    value: '32px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "32px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '32px',
-      type: 'borderRadius',
+      value: "32px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-xxxxlarge',
+    name: "--fds-border_radius-xxxxlarge",
     attributes: {},
-    path: ['border_radius', 'xxxxlarge'],
+    path: [
+      "border_radius",
+      "xxxxlarge"
+    ]
   },
   {
-    value: '9999px',
-    type: 'borderRadius',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "9999px",
+    type: "borderRadius",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '9999px',
-      type: 'borderRadius',
+      value: "9999px",
+      type: "borderRadius"
     },
-    name: '--fds-border_radius-full',
+    name: "--fds-border_radius-full",
     attributes: {},
-    path: ['border_radius', 'full'],
-  },
-];
+    path: [
+      "border_radius",
+      "full"
+    ]
+  }
+] 
 
-export const spacing = [
+export const  spacing = [
   {
-    value: '0rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*0',
-      type: 'spacing',
+      value: "{base_sizing}*0",
+      type: "spacing"
     },
-    name: '--fds-spacing-0',
+    name: "--fds-spacing-0",
     attributes: {},
-    path: ['spacing', '0'],
+    path: [
+      "spacing",
+      "0"
+    ]
   },
   {
-    value: '0.25rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0.25rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*1',
-      type: 'spacing',
+      value: "{base_sizing}*1",
+      type: "spacing"
     },
-    name: '--fds-spacing-1',
+    name: "--fds-spacing-1",
     attributes: {},
-    path: ['spacing', '1'],
+    path: [
+      "spacing",
+      "1"
+    ]
   },
   {
-    value: '0.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*2',
-      type: 'spacing',
+      value: "{base_sizing}*2",
+      type: "spacing"
     },
-    name: '--fds-spacing-2',
+    name: "--fds-spacing-2",
     attributes: {},
-    path: ['spacing', '2'],
+    path: [
+      "spacing",
+      "2"
+    ]
   },
   {
-    value: '0.75rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0.75rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*3',
-      type: 'spacing',
+      value: "{base_sizing}*3",
+      type: "spacing"
     },
-    name: '--fds-spacing-3',
+    name: "--fds-spacing-3",
     attributes: {},
-    path: ['spacing', '3'],
+    path: [
+      "spacing",
+      "3"
+    ]
   },
   {
-    value: '1rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*4',
-      type: 'spacing',
+      value: "{base_sizing}*4",
+      type: "spacing"
     },
-    name: '--fds-spacing-4',
+    name: "--fds-spacing-4",
     attributes: {},
-    path: ['spacing', '4'],
+    path: [
+      "spacing",
+      "4"
+    ]
   },
   {
-    value: '1.25rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1.25rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*5',
-      type: 'spacing',
+      value: "{base_sizing}*5",
+      type: "spacing"
     },
-    name: '--fds-spacing-5',
+    name: "--fds-spacing-5",
     attributes: {},
-    path: ['spacing', '5'],
+    path: [
+      "spacing",
+      "5"
+    ]
   },
   {
-    value: '1.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*6',
-      type: 'spacing',
+      value: "{base_sizing}*6",
+      type: "spacing"
     },
-    name: '--fds-spacing-6',
+    name: "--fds-spacing-6",
     attributes: {},
-    path: ['spacing', '6'],
+    path: [
+      "spacing",
+      "6"
+    ]
   },
   {
-    value: '1.75rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1.75rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*7',
-      type: 'spacing',
+      value: "{base_sizing}*7",
+      type: "spacing"
     },
-    name: '--fds-spacing-7',
+    name: "--fds-spacing-7",
     attributes: {},
-    path: ['spacing', '7'],
+    path: [
+      "spacing",
+      "7"
+    ]
   },
   {
-    value: '2rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*8',
-      type: 'spacing',
+      value: "{base_sizing}*8",
+      type: "spacing"
     },
-    name: '--fds-spacing-8',
+    name: "--fds-spacing-8",
     attributes: {},
-    path: ['spacing', '8'],
+    path: [
+      "spacing",
+      "8"
+    ]
   },
   {
-    value: '2.25rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2.25rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*9',
-      type: 'spacing',
+      value: "{base_sizing}*9",
+      type: "spacing"
     },
-    name: '--fds-spacing-9',
+    name: "--fds-spacing-9",
     attributes: {},
-    path: ['spacing', '9'],
+    path: [
+      "spacing",
+      "9"
+    ]
   },
   {
-    value: '2.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*10',
-      type: 'spacing',
+      value: "{base_sizing}*10",
+      type: "spacing"
     },
-    name: '--fds-spacing-10',
+    name: "--fds-spacing-10",
     attributes: {},
-    path: ['spacing', '10'],
+    path: [
+      "spacing",
+      "10"
+    ]
   },
   {
-    value: '2.75rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2.75rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*11',
-      type: 'spacing',
+      value: "{base_sizing}*11",
+      type: "spacing"
     },
-    name: '--fds-spacing-11',
+    name: "--fds-spacing-11",
     attributes: {},
-    path: ['spacing', '11'],
+    path: [
+      "spacing",
+      "11"
+    ]
   },
   {
-    value: '3rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*12',
-      type: 'spacing',
+      value: "{base_sizing}*12",
+      type: "spacing"
     },
-    name: '--fds-spacing-12',
+    name: "--fds-spacing-12",
     attributes: {},
-    path: ['spacing', '12'],
+    path: [
+      "spacing",
+      "12"
+    ]
   },
   {
-    value: '3.25rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3.25rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*13',
-      type: 'spacing',
+      value: "{base_sizing}*13",
+      type: "spacing"
     },
-    name: '--fds-spacing-13',
+    name: "--fds-spacing-13",
     attributes: {},
-    path: ['spacing', '13'],
+    path: [
+      "spacing",
+      "13"
+    ]
   },
   {
-    value: '3.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*14',
-      type: 'spacing',
+      value: "{base_sizing}*14",
+      type: "spacing"
     },
-    name: '--fds-spacing-14',
+    name: "--fds-spacing-14",
     attributes: {},
-    path: ['spacing', '14'],
+    path: [
+      "spacing",
+      "14"
+    ]
   },
   {
-    value: '3.75rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3.75rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*15',
-      type: 'spacing',
+      value: "{base_sizing}*15",
+      type: "spacing"
     },
-    name: '--fds-spacing-15',
+    name: "--fds-spacing-15",
     attributes: {},
-    path: ['spacing', '15'],
+    path: [
+      "spacing",
+      "15"
+    ]
   },
   {
-    value: '4.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "4.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*18',
-      type: 'spacing',
+      value: "{base_sizing}*18",
+      type: "spacing"
     },
-    name: '--fds-spacing-18',
+    name: "--fds-spacing-18",
     attributes: {},
-    path: ['spacing', '18'],
+    path: [
+      "spacing",
+      "18"
+    ]
   },
   {
-    value: '5.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "5.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*22',
-      type: 'spacing',
+      value: "{base_sizing}*22",
+      type: "spacing"
     },
-    name: '--fds-spacing-22',
+    name: "--fds-spacing-22",
     attributes: {},
-    path: ['spacing', '22'],
+    path: [
+      "spacing",
+      "22"
+    ]
   },
   {
-    value: '6.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "6.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*26',
-      type: 'spacing',
+      value: "{base_sizing}*26",
+      type: "spacing"
     },
-    name: '--fds-spacing-26',
+    name: "--fds-spacing-26",
     attributes: {},
-    path: ['spacing', '26'],
+    path: [
+      "spacing",
+      "26"
+    ]
   },
   {
-    value: '7.5rem',
-    type: 'spacing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "7.5rem",
+    type: "spacing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*30',
-      type: 'spacing',
+      value: "{base_sizing}*30",
+      type: "spacing"
     },
-    name: '--fds-spacing-30',
+    name: "--fds-spacing-30",
     attributes: {},
-    path: ['spacing', '30'],
-  },
-];
+    path: [
+      "spacing",
+      "30"
+    ]
+  }
+] 
 
-export const sizing = [
+export const  sizing = [
   {
-    value: '0rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*0',
-      type: 'sizing',
+      value: "{base_sizing}*0",
+      type: "sizing"
     },
-    name: '--fds-sizing-0',
+    name: "--fds-sizing-0",
     attributes: {},
-    path: ['sizing', '0'],
+    path: [
+      "sizing",
+      "0"
+    ]
   },
   {
-    value: '0.25rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*1',
-      type: 'sizing',
+      value: "{base_sizing}*1",
+      type: "sizing"
     },
-    name: '--fds-sizing-1',
+    name: "--fds-sizing-1",
     attributes: {},
-    path: ['sizing', '1'],
+    path: [
+      "sizing",
+      "1"
+    ]
   },
   {
-    value: '0.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*2',
-      type: 'sizing',
+      value: "{base_sizing}*2",
+      type: "sizing"
     },
-    name: '--fds-sizing-2',
+    name: "--fds-sizing-2",
     attributes: {},
-    path: ['sizing', '2'],
+    path: [
+      "sizing",
+      "2"
+    ]
   },
   {
-    value: '0.75rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*3',
-      type: 'sizing',
+      value: "{base_sizing}*3",
+      type: "sizing"
     },
-    name: '--fds-sizing-3',
+    name: "--fds-sizing-3",
     attributes: {},
-    path: ['sizing', '3'],
+    path: [
+      "sizing",
+      "3"
+    ]
   },
   {
-    value: '1rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*4',
-      type: 'sizing',
+      value: "{base_sizing}*4",
+      type: "sizing"
     },
-    name: '--fds-sizing-4',
+    name: "--fds-sizing-4",
     attributes: {},
-    path: ['sizing', '4'],
+    path: [
+      "sizing",
+      "4"
+    ]
   },
   {
-    value: '1.25rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*5',
-      type: 'sizing',
+      value: "{base_sizing}*5",
+      type: "sizing"
     },
-    name: '--fds-sizing-5',
+    name: "--fds-sizing-5",
     attributes: {},
-    path: ['sizing', '5'],
+    path: [
+      "sizing",
+      "5"
+    ]
   },
   {
-    value: '1.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*6',
-      type: 'sizing',
+      value: "{base_sizing}*6",
+      type: "sizing"
     },
-    name: '--fds-sizing-6',
+    name: "--fds-sizing-6",
     attributes: {},
-    path: ['sizing', '6'],
+    path: [
+      "sizing",
+      "6"
+    ]
   },
   {
-    value: '1.75rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*7',
-      type: 'sizing',
+      value: "{base_sizing}*7",
+      type: "sizing"
     },
-    name: '--fds-sizing-7',
+    name: "--fds-sizing-7",
     attributes: {},
-    path: ['sizing', '7'],
+    path: [
+      "sizing",
+      "7"
+    ]
   },
   {
-    value: '2rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*8',
-      type: 'sizing',
+      value: "{base_sizing}*8",
+      type: "sizing"
     },
-    name: '--fds-sizing-8',
+    name: "--fds-sizing-8",
     attributes: {},
-    path: ['sizing', '8'],
+    path: [
+      "sizing",
+      "8"
+    ]
   },
   {
-    value: '2.25rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*9',
-      type: 'sizing',
+      value: "{base_sizing}*9",
+      type: "sizing"
     },
-    name: '--fds-sizing-9',
+    name: "--fds-sizing-9",
     attributes: {},
-    path: ['sizing', '9'],
+    path: [
+      "sizing",
+      "9"
+    ]
   },
   {
-    value: '2.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*10',
-      type: 'sizing',
+      value: "{base_sizing}*10",
+      type: "sizing"
     },
-    name: '--fds-sizing-10',
+    name: "--fds-sizing-10",
     attributes: {},
-    path: ['sizing', '10'],
+    path: [
+      "sizing",
+      "10"
+    ]
   },
   {
-    value: '2.75rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*11',
-      type: 'sizing',
+      value: "{base_sizing}*11",
+      type: "sizing"
     },
-    name: '--fds-sizing-11',
+    name: "--fds-sizing-11",
     attributes: {},
-    path: ['sizing', '11'],
+    path: [
+      "sizing",
+      "11"
+    ]
   },
   {
-    value: '3rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*12',
-      type: 'sizing',
+      value: "{base_sizing}*12",
+      type: "sizing"
     },
-    name: '--fds-sizing-12',
+    name: "--fds-sizing-12",
     attributes: {},
-    path: ['sizing', '12'],
+    path: [
+      "sizing",
+      "12"
+    ]
   },
   {
-    value: '3.25rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*13',
-      type: 'sizing',
+      value: "{base_sizing}*13",
+      type: "sizing"
     },
-    name: '--fds-sizing-13',
+    name: "--fds-sizing-13",
     attributes: {},
-    path: ['sizing', '13'],
+    path: [
+      "sizing",
+      "13"
+    ]
   },
   {
-    value: '3.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*14',
-      type: 'sizing',
+      value: "{base_sizing}*14",
+      type: "sizing"
     },
-    name: '--fds-sizing-14',
+    name: "--fds-sizing-14",
     attributes: {},
-    path: ['sizing', '14'],
+    path: [
+      "sizing",
+      "14"
+    ]
   },
   {
-    value: '3.75rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "3.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*15',
-      type: 'sizing',
+      value: "{base_sizing}*15",
+      type: "sizing"
     },
-    name: '--fds-sizing-15',
+    name: "--fds-sizing-15",
     attributes: {},
-    path: ['sizing', '15'],
+    path: [
+      "sizing",
+      "15"
+    ]
   },
   {
-    value: '4.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "4.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*18',
-      type: 'sizing',
+      value: "{base_sizing}*18",
+      type: "sizing"
     },
-    name: '--fds-sizing-18',
+    name: "--fds-sizing-18",
     attributes: {},
-    path: ['sizing', '18'],
+    path: [
+      "sizing",
+      "18"
+    ]
   },
   {
-    value: '5.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "5.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*22',
-      type: 'sizing',
+      value: "{base_sizing}*22",
+      type: "sizing"
     },
-    name: '--fds-sizing-22',
+    name: "--fds-sizing-22",
     attributes: {},
-    path: ['sizing', '22'],
+    path: [
+      "sizing",
+      "22"
+    ]
   },
   {
-    value: '6.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "6.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*26',
-      type: 'sizing',
+      value: "{base_sizing}*26",
+      type: "sizing"
     },
-    name: '--fds-sizing-26',
+    name: "--fds-sizing-26",
     attributes: {},
-    path: ['sizing', '26'],
+    path: [
+      "sizing",
+      "26"
+    ]
   },
   {
-    value: '7.5rem',
-    type: 'sizing',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "7.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{base_sizing}*30',
-      type: 'sizing',
+      value: "{base_sizing}*30",
+      type: "sizing"
     },
-    name: '--fds-sizing-30',
+    name: "--fds-sizing-30",
     attributes: {},
-    path: ['sizing', '30'],
-  },
-];
+    path: [
+      "sizing",
+      "30"
+    ]
+  }
+] 
 
-export const borderWidth = [
+export const  borderWidth = [
   {
-    value: '1px',
-    type: 'borderWidth',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "1px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{border_width.1}',
-      type: 'borderWidth',
+      value: "{border_width.1}",
+      type: "borderWidth"
     },
-    name: '--fds-border_width-default',
+    name: "--fds-border_width-default",
     attributes: {},
-    path: ['border_width', 'default'],
+    path: [
+      "border_width",
+      "default"
+    ]
   },
   {
-    value: '2px',
-    type: 'borderWidth',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{border_width.2}',
-      type: 'borderWidth',
+      value: "{border_width.2}",
+      type: "borderWidth"
     },
-    name: '--fds-border_width-active',
+    name: "--fds-border_width-active",
     attributes: {},
-    path: ['border_width', 'active'],
+    path: [
+      "border_width",
+      "active"
+    ]
   },
   {
-    value: '2px',
-    type: 'borderWidth',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "2px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '2px',
-      type: 'borderWidth',
+      value: "2px",
+      type: "borderWidth"
     },
-    name: '--fds-border_width-tab_focus',
+    name: "--fds-border_width-tab_focus",
     attributes: {},
-    path: ['border_width', 'tab_focus'],
-  },
-];
+    path: [
+      "border_width",
+      "tab_focus"
+    ]
+  }
+] 
 
-export const boxShadow = [
+export const  boxShadow = [
   {
-    value: '0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)',
-    type: 'boxShadow',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{shadow.100}',
-      type: 'boxShadow',
+      value: "{shadow.100}",
+      type: "boxShadow"
     },
-    name: '--fds-shadow-xsmall',
+    name: "--fds-shadow-xsmall",
     attributes: {},
-    path: ['shadow', 'xsmall'],
+    path: [
+      "shadow",
+      "xsmall"
+    ]
   },
   {
-    value:
-      '0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)',
-    type: 'boxShadow',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{shadow.200}',
-      type: 'boxShadow',
+      value: "{shadow.200}",
+      type: "boxShadow"
     },
-    name: '--fds-shadow-small',
+    name: "--fds-shadow-small",
     attributes: {},
-    path: ['shadow', 'small'],
+    path: [
+      "shadow",
+      "small"
+    ]
   },
   {
-    value:
-      '0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)',
-    type: 'boxShadow',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{shadow.300}',
-      type: 'boxShadow',
+      value: "{shadow.300}",
+      type: "boxShadow"
     },
-    name: '--fds-shadow-medium',
+    name: "--fds-shadow-medium",
     attributes: {},
-    path: ['shadow', 'medium'],
+    path: [
+      "shadow",
+      "medium"
+    ]
   },
   {
-    value:
-      '0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)',
-    type: 'boxShadow',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{shadow.400}',
-      type: 'boxShadow',
+      value: "{shadow.400}",
+      type: "boxShadow"
     },
-    name: '--fds-shadow-large',
+    name: "--fds-shadow-large",
     attributes: {},
-    path: ['shadow', 'large'],
+    path: [
+      "shadow",
+      "large"
+    ]
   },
   {
-    value:
-      '0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)',
-    type: 'boxShadow',
-    filePath: '../../design-tokens/Base/Semantic.json',
+    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: '{shadow.500}',
-      type: 'boxShadow',
+      value: "{shadow.500}",
+      type: "boxShadow"
     },
-    name: '--fds-shadow-xlarge',
+    name: "--fds-shadow-xlarge",
     attributes: {},
-    path: ['shadow', 'xlarge'],
-  },
-];
+    path: [
+      "shadow",
+      "xlarge"
+    ]
+  }
+] 

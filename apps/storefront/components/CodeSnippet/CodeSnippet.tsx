@@ -1,49 +1,59 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import prettier from 'prettier/standalone.js';
-import parserJs from 'prettier/parser-flow.js';
-import parserHtml from 'prettier/parser-markdown.js';
-import parserCss from 'prettier/parser-postcss.js';
-import parserTs from 'prettier/parser-typescript';
+import { format } from 'prettier/standalone.js';
+import * as prettierMarkdown from 'prettier/plugins/markdown.js';
+import * as prettierHtml from 'prettier/plugins/html.js';
+import * as prettierCSS from 'prettier/plugins/postcss.js';
+import * as prettierTypescript from 'prettier/plugins/typescript.js';
+import * as prettierEstree from 'prettier/plugins/estree';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
-const CodeSnippet = ({ language = 'markup', children = '' }) => {
-  const [toolTipText, setToolTipText] = useState('Kopier');
+const plugins = [
+  prettierTypescript,
+  prettierEstree,
+  prettierCSS,
+  prettierMarkdown,
+  prettierHtml,
+];
 
-  if (language === 'css' || language === 'scss') {
-    // eslint-disable-next-line import/no-named-as-default-member
-    children = prettier.format(children, {
-      parser: 'css',
-      plugins: [parserCss],
-    });
-  }
-  if (language === 'javascript') {
-    // eslint-disable-next-line import/no-named-as-default-member
-    children = prettier.format(children, {
-      parser: 'flow',
-      plugins: [parserJs],
-      tabWidth: 2,
-      semi: true,
-    });
-  }
-  if (language === 'markup') {
-    // eslint-disable-next-line import/no-named-as-default-member
-    children = prettier.format(children, {
-      parser: 'markdown',
-      plugins: [parserHtml],
-    });
-  }
-  if (language === 'ts') {
-    // eslint-disable-next-line import/no-named-as-default-member
-    children = prettier.format(children, {
-      parser: 'typescript',
-      plugins: [parserTs],
-    });
-  }
+type CodeSnippetProps = {
+  language?: 'css' | 'html' | 'ts' | 'markdown';
+  children?: string;
+};
+
+const CodeSnippet = ({
+  language = 'markdown',
+  children = '',
+}: CodeSnippetProps) => {
+  const [toolTipText, setToolTipText] = useState('Kopier');
+  const [snippet, setSnippet] = useState('');
+
+  useEffect(() => {
+    async function formatSnippet(
+      children: string,
+      language: CodeSnippetProps['language'],
+    ) {
+      try {
+        const formatted = await format(children, {
+          parser: language === 'ts' ? 'typescript' : language,
+          plugins,
+        });
+        setSnippet(formatted);
+      } catch (error) {
+        console.error('Failed formatting code snippet:', error);
+      }
+    }
+    void formatSnippet(children, language);
+
+    return () => {
+      setSnippet('');
+    };
+  }, [children, language]);
+
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
     navigator.clipboard.writeText(children).catch((reason) => {
@@ -53,27 +63,31 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
 
   return (
     <div className={classes.codeSnippet}>
-      <Tooltip content={toolTipText}>
-        <button
-          onMouseEnter={() => setToolTipText('Kopier')}
-          onClick={() => onButtonClick()}
-          className={classes.icon}
-          title='Kopier'
-        >
-          <FilesIcon fontSize={20} />
-        </button>
-      </Tooltip>
-      <SyntaxHighlighter
-        style={nightOwl}
-        language='jsx'
-        customStyle={{
-          fontSize: '15px',
-          margin: 0,
-          padding: '18px',
-        }}
-      >
-        {children}
-      </SyntaxHighlighter>
+      {snippet && (
+        <>
+          <Tooltip content={toolTipText}>
+            <button
+              onMouseEnter={() => setToolTipText('Kopier')}
+              onClick={() => onButtonClick()}
+              className={classes.icon}
+              title='Kopier'
+            >
+              <FilesIcon fontSize={20} />
+            </button>
+          </Tooltip>
+          <SyntaxHighlighter
+            style={nightOwl}
+            language='jsx'
+            customStyle={{
+              fontSize: '15px',
+              margin: 0,
+              padding: '18px',
+            }}
+          >
+            {snippet}
+          </SyntaxHighlighter>
+        </>
+      )}
     </div>
   );
 };

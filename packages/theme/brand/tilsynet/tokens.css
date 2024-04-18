@@ -134,6 +134,12 @@
   --fds-semantic-surface-danger-no_fill-active: var(--fds-colors-red-200);
   --fds-semantic-surface-info-subtle: var(--fds-colors-blue-100);
   --fds-semantic-surface-info-subtle-hover: var(--fds-colors-blue-200);
+  --fds-semantic-surface-on_inverted-default: var(--fds-colors-white);
+  --fds-semantic-surface-on_inverted-hover: #ffffffe6;
+  --fds-semantic-surface-on_inverted-active: #ffffffcc;
+  --fds-semantic-surface-on_inverted-no_fill: #ffffff00;
+  --fds-semantic-surface-on_inverted-no_fill-hover: #ffffff1a;
+  --fds-semantic-surface-on_inverted-no_fill-active: #ffffff33;
   --fds-semantic-surface-focus-default: var(--fds-colors-yellow-500);
   --fds-semantic-border-first-default: var(--fds-brand-alt1-600);
   --fds-semantic-border-first-hover: var(--fds-brand-alt1-700);
@@ -176,6 +182,7 @@
   --fds-semantic-border-danger-active: var(--fds-colors-red-700);
   --fds-semantic-border-focus-outline: var(--fds-colors-yellow-500);
   --fds-semantic-border-focus-boxshadow: var(--fds-semantic-border-neutral-strong);
+  --fds-semantic-border-on_inverted-default: var(--fds-colors-white);
   --fds-semantic-border-input-default: var(--fds-colors-blue-900);
   --fds-semantic-border-input-hover: var(--fds-colors-blue-700);
   --fds-semantic-border-divider-default: var(--fds-colors-grey-400);
