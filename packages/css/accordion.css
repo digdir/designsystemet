@@ -44,7 +44,6 @@
     border-radius: var(--fds-accordion-border-radius);
   }
 
-
   .fds-accordion__item:focus-within {
     position: relative;
   }
@@ -70,14 +69,12 @@
     background: var(--fds-semantic-surface-first-light);
   }
 
-
   .fds-accordion--second,
   .fds-accordion--second .fds-accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-second-default);
 
     background: var(--fds-semantic-surface-second-light);
   }
-
 
   .fds-accordion--third,
   .fds-accordion--third .fds-accordion__button {
