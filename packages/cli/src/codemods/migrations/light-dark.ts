@@ -1,10 +1,6 @@
-import fs from 'fs';
+import { cssVarCodemod } from '../css-var-codemod';
 
-import type { AcceptedPlugin, Plugin } from 'postcss';
-import postcss from 'postcss';
-import glob from 'fast-glob';
-
-const tokensTransform = {
+void cssVarCodemod({
   '--fds-semantic-surface-first-light': '--fds-semantic-surface-first-subtle',
   '--fds-semantic-surface-first-light-hover':
     '--fds-semantic-surface-first-subtle-hover',
@@ -30,38 +26,4 @@ const tokensTransform = {
   '--fds-semantic-border-action-dark': '--fds-semantic-border-action-strong',
   '--fds-semantic-border-action-dark-hover':
     '--fds-semantic-border-action-strong-hover',
-};
-
-const transformPlugin: Plugin = {
-  postcssPlugin: 'Dark/Light tokens to Strong/Subtle tokens',
-  Declaration(decl) {
-    Object.keys(tokensTransform).forEach((key) => {
-      if (decl.value.includes(key)) {
-        decl.value = decl.value.replace(
-          key,
-          tokensTransform[key as keyof typeof tokensTransform],
-        );
-      }
-    });
-  },
-};
-
-const plugins: AcceptedPlugin[] = [transformPlugin];
-
-const processor = postcss(plugins);
-
-const transform = async () => {
-  const files = glob.sync('./**/*.css');
-
-  const filePromises = files.map(async (file) => {
-    const contents = fs.readFileSync(file).toString();
-    const result = await processor.process(contents, { from: undefined });
-
-    fs.writeFileSync(file, result.css);
-  });
-
-  await Promise.all(filePromises);
-};
-
-// Run the transform.
-void transform();
+});

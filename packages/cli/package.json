@@ -15,7 +15,7 @@
     "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean",
-    "css-codemod": "esno ./src/codemods.ts"
+    "css-light-dark-codemod": "esno ./src/codemods/migrations/light-dark.ts"
   },
   "files": [
     "./dist/**"
