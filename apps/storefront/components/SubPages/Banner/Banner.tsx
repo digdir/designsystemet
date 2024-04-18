@@ -41,7 +41,7 @@ type BannerHeadingProps = Omit<HeadingProps, 'size'>;
 const BannerHeading = ({ ...props }: BannerHeadingProps) => {
   return (
     <Heading
-      size='xlarge'
+      size='large'
       {...props}
     />
   );

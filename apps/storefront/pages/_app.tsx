@@ -1,8 +1,7 @@
-import 'normalize.css/normalize.css';
+import '../globals.css';
 import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
 import '@digdir/designsystemet-css';
 
-import '../globals.css';
 import type { AppProps } from 'next/app';
 import { Analytics } from '@vercel/analytics/react';
 import { SkipLink } from '@digdir/designsystemet-react';

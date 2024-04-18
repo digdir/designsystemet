@@ -10,9 +10,9 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@digdir/designsystemet-css": "0.2.3",
-    "@digdir/designsystemet-react": "0.55.0",
-    "@digdir/designsystemet-theme": "0.15.0",
+    "@digdir/designsystemet-css": "0.4.0",
+    "@digdir/designsystemet-react": "0.57.0",
+    "@digdir/designsystemet-theme": "0.15.1",
     "@mdx-js/loader": "^2.0.0-rc.2",
     "@mdx-js/react": "^1.6.22",
     "@navikt/aksel-icons": "^5.12.2",
@@ -21,7 +21,6 @@
     "hastscript": "^8.0.0",
     "mdx-embed": "^1.1.2",
     "next": "^14.0.4",
-    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",

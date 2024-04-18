@@ -37,7 +37,7 @@
 }
 
 .title {
-  font: var(--fds-typography-heading-large);
+  font: var(--fds-typography-heading-medium);
   margin-bottom: var(--fds-spacing-4);
 }
 
@@ -69,7 +69,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: 0.1s all;
-  color: var(--fds-semantic-text-neutral-default) !important;
+  color: var(--fds-semantic-text-neutral-default);
   text-decoration: none;
 }
 

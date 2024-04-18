@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import NextLink from 'next/link';
-import { Link } from '@digdir/designsystemet-react';
+import { Heading, Link } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 
 import { Container, MdxContent } from '../../components';
@@ -22,10 +22,7 @@ type PageLayoutData = {
 
 const PageLayout = ({ content, data }: PageLayoutProps) => {
   return (
-    <main
-      id='main'
-      className={classes.page}
-    >
+    <main id='main'>
       <div className={classes.header}>
         <Container>
           <div className={classes.headerContent}>
@@ -45,17 +42,17 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
               </NextLink>
             </Link>
             <div className={classes.meta}>
-              <span>
-                {data.author && (
-                  <div className={classes.date}>{data.author}</div>
-                )}
-              </span>
+              <span>{data.author && <div>{data.author}</div>}</span>
               <span className={classes.separator}> - </span>
-              <span>
-                {data.date && <div className={classes.date}>{data.date}</div>}
-              </span>
+              <span>{data.date && <div>{data.date}</div>}</span>
             </div>
-            <h1 className={classes.title}>{data.title}</h1>
+            <Heading
+              levle={1}
+              size='large'
+              className={classes.title}
+            >
+              {data.title}
+            </Heading>
           </div>
         </Container>
       </div>
