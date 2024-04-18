@@ -1,15 +1,18 @@
 import * as R from 'ramda';
-import StyleDictionary from 'style-dictionary';
-import type { Named, TransformedToken, Format } from 'style-dictionary';
-
-const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
+import type { TransformedToken, Format } from 'style-dictionary/types';
+import {
+  fileHeader,
+  createPropertyFormatter,
+  usesReferences,
+  getReferences,
+} from 'style-dictionary/utils';
 
 type ReferencesFilter = (token: TransformedToken) => boolean;
 
 /**
  *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
  */
-export const scopedReferenceVariables: Named<Format> = {
+export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
   formatter: function ({ dictionary, options, file }) {
     const { outputReferences } = options;
@@ -30,11 +33,8 @@ export const scopedReferenceVariables: Named<Format> = {
 
     const tokens = dictionary.allTokens
       .map((token) => {
-        if (
-          dictionary.usesReference(token.original.value) &&
-          includeReferences(token)
-        ) {
-          const refs = dictionary.getReferences(token.original.value);
+        if (usesReferences(token.original.value) && includeReferences(token)) {
+          const refs = getReferences(token.original.value);
 
           referencedTokens = [
             ...referencedTokens,
@@ -87,7 +87,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 /**
  * Format for displaying tokens in storefront
  */
-export const groupedTokens: Named<Format> = {
+export const groupedTokens: Format = {
   name: 'groupedTokens',
   formatter: function ({ dictionary, file }) {
     const format = createPropertyFormatter({

@@ -1,13 +1,7 @@
-#!/usr/bin/env node
 import path from 'path';
 
 import StyleDictionary from 'style-dictionary';
-import type {
-  Config,
-  TransformedToken,
-  Named,
-  FileHeader,
-} from 'style-dictionary';
+import type { Config, TransformedToken } from 'style-dictionary/types';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 import yargs from 'yargs';
 
@@ -16,12 +10,10 @@ import {
   nameKebab,
   nameKebabUnderscore,
   typographyShorthand,
-  fluidFontSize,
   calc,
-  fontScaleHackFormat,
   sizeRem,
 } from './transformers.js';
-import { scopedReferenceVariables, groupedTokens } from './formatters.js';
+import { groupedTokens } from './formatters.js';
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -52,31 +44,24 @@ type Brand = string;
 
 const prefix = 'fds';
 const basePxFontSize = 16;
-const fileheader: Named<{ fileHeader: FileHeader }> = {
-  name: 'fileheader',
-  fileHeader: () => [
-    'Do not edit directly',
-    `These files are generated from design tokens defined in Figma using Token Studio`,
-  ],
-};
 
 const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
 const packageTokensPath = path.resolve('../../packages/theme/brand');
 const tokensPath = argv.tokens;
+
+// setupFormatters('./../../prettier.config.js');
 
 StyleDictionary.registerTransform(sizePx);
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(nameKebabUnderscore);
 StyleDictionary.registerTransform(typographyShorthand);
-StyleDictionary.registerTransform(fluidFontSize);
+// StyleDictionary.registerTransform(fluidFontSize);
 StyleDictionary.registerTransform(calc);
 
-StyleDictionary.registerFormat(fontScaleHackFormat);
-StyleDictionary.registerFormat(scopedReferenceVariables);
+// StyleDictionary.registerFormat(fontScaleHackFormat);
+// StyleDictionary.registerFormat(scopedReferenceVariables);
 StyleDictionary.registerFormat(groupedTokens);
-
-StyleDictionary.registerFileHeader(fileheader);
 
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
@@ -102,8 +87,14 @@ const baseConfig = (brand: Brand): Partial<Config> => {
   };
 };
 
-const excludeSource = (token: TransformedToken) =>
-  !token.filePath.includes('Core.json');
+const excludeSource = (token: TransformedToken) => {
+  if (token.filePath.includes('Core.json')) return false;
+
+  if (token.path[0] === 'viewport' && ['color'].includes(token.type as string))
+    return false;
+
+  return true;
+};
 
 const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
@@ -111,17 +102,6 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
   return {
     ...baseConfig(brand),
     platforms: {
-      hack: {
-        prefix,
-        basePxFontSize,
-        transforms: ['ts/resolveMath', nameKebab.name],
-        files: [
-          {
-            format: 'global-values-hack',
-            destination: 'ignore/hack',
-          },
-        ],
-      },
       css: {
         prefix,
         basePxFontSize,
@@ -129,17 +109,10 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            format: 'css/variables-scoped-references',
-            // filter: excludeSource,
+            format: 'css/variables',
+            filter: excludeSource,
           },
         ],
-        options: {
-          fileHeader: fileheader.name,
-          referencesFilter: (token: TransformedToken) =>
-            !(token.path[0] === 'viewport') &&
-            ['color'].includes(token.type as string),
-          // outputReferences: true,
-        },
       },
     },
   };
@@ -151,17 +124,17 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
   return {
     ...baseConfig(brand),
     platforms: {
-      hack: {
-        prefix,
-        basePxFontSize,
-        transforms: ['ts/resolveMath', nameKebab.name],
-        files: [
-          {
-            format: 'global-values-hack',
-            destination: 'ignore/hack',
-          },
-        ],
-      },
+      // hack: {
+      //   prefix,
+      //   basePxFontSize,
+      //   transforms: ['ts/resolveMath', nameKebab.name],
+      //   files: [
+      //     {
+      //       format: 'global-values-hack',
+      //       destination: 'ignore/hack',
+      //     },
+      //   ],
+      // },
       storefront: {
         prefix,
         basePxFontSize,
@@ -173,9 +146,6 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
             filter: excludeSource,
           },
         ],
-        options: {
-          fileHeader: fileheader.name,
-        },
       },
     },
   };
@@ -188,17 +158,19 @@ if (brands.length > 0) {
 
   console.log('🏗️  Start building CSS tokens');
 
-  brands.map((brand) => {
-    console.log('\n---------------------------------------');
+  await Promise.all(
+    brands.map(async (brand) => {
+      console.log('\n---------------------------------------');
 
-    console.log(`\n👷 Processing ${brand}`);
+      console.log(`\n👷 Processing ${brand}`);
 
-    const tokensPackageSD = StyleDictionary.extend(
-      getTokensPackageConfig(brand, packageTokensPath),
-    );
+      const tokensPackageSD = new StyleDictionary(
+        getTokensPackageConfig(brand, packageTokensPath),
+      );
 
-    tokensPackageSD.buildAllPlatforms();
-  });
+      await tokensPackageSD.buildAllPlatforms();
+    }),
+  );
 
   console.log('\n---------------------------------------');
   console.log('\n🏁 Finished building package tokens!');
@@ -207,17 +179,19 @@ if (brands.length > 0) {
 console.log('\n=======================================');
 console.log('\n🏗️  Started building storefront tokens…');
 
-brands.map((brand) => {
-  console.log('\n---------------------------------------');
+await Promise.all(
+  brands.map(async (brand) => {
+    console.log('\n---------------------------------------');
 
-  console.log(`\n👷 Processing ${brand}`);
+    console.log(`\n👷 Processing ${brand}`);
 
-  const storefrontSD = StyleDictionary.extend(
-    getStorefrontConfig(brand, storefrontTokensPath),
-  );
+    const storefrontSD = new StyleDictionary(
+      getStorefrontConfig(brand, storefrontTokensPath),
+    );
 
-  storefrontSD.buildAllPlatforms();
-});
+    await storefrontSD.buildAllPlatforms();
+  }),
+);
 
 console.log('\n---------------------------------------');
 

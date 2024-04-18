@@ -1,9 +1,4 @@
-/**
- * Do not edit directly
- * These files are generated from design tokens defined in Figma using Token Studio
- */
-
-export const  color = [
+[object Promise]export const  color = [
   {
     value: "#efeffb",
     type: "color",
@@ -4034,7 +4029,7 @@ export const  borderRadius = [
 
 export const  spacing = [
   {
-    value: "0rem",
+    value: "0",
     type: "spacing",
     filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
@@ -4357,7 +4352,7 @@ export const  spacing = [
 
 export const  sizing = [
   {
-    value: "0rem",
+    value: "0",
     type: "sizing",
     filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,

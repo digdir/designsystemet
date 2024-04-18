@@ -6,6 +6,7 @@
   "repository": "https://github.com/digdir/designsystemet",
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
+  "type": "module",
   "private": true,
   "publishConfig": {
     "access": "public"
@@ -29,14 +30,14 @@
     "postcss": "^8.4.38"
   },
   "devDependencies": {
-    "@tokens-studio/sd-transforms": "^0.9.3",
+    "@tokens-studio/sd-transforms": "^0.15.2",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.12.7",
     "@types/ramda": "^0.29.9",
     "@types/yargs": "^17.0.32",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
-    "style-dictionary": "^3.8.0",
+    "style-dictionary": "^4.0.0-prerelease.26",
     "typescript": "^5.4.5",
     "yargs": "^17.7.2"
   }
