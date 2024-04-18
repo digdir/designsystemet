@@ -21,7 +21,6 @@
     "hastscript": "^8.0.0",
     "mdx-embed": "^1.1.2",
     "next": "^14.0.4",
-    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",

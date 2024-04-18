@@ -15,7 +15,7 @@
 }
 
 .title {
-  margin-top: var(--fds-spacing-3) !important;
+  margin-top: var(--fds-spacing-3);
   text-decoration: underline;
   text-underline-offset: 7px;
 }
