@@ -28,7 +28,7 @@
   overflow: hidden;
 }
 
-.test {
+.text {
   width: 550px;
   text-align: center;
   margin-bottom: 38px;
@@ -137,5 +137,9 @@
 
   .header {
     height: auto;
+  }
+
+  .text {
+    width: 100%;
   }
 }
