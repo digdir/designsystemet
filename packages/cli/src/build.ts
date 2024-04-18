@@ -21,11 +21,7 @@ import {
   fontScaleHackFormat,
   sizeRem,
 } from './transformers.js';
-import {
-  scopedReferenceVariables,
-  groupedTokens,
-  setup as setupFormatters,
-} from './formatters.js';
+import { scopedReferenceVariables, groupedTokens } from './formatters.js';
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -67,8 +63,6 @@ const fileheader: Named<{ fileHeader: FileHeader }> = {
 const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
 const packageTokensPath = path.resolve('../../packages/theme/brand');
 const tokensPath = argv.tokens;
-
-setupFormatters('./../../prettier.config.js');
 
 StyleDictionary.registerTransform(sizePx);
 StyleDictionary.registerTransform(sizeRem);

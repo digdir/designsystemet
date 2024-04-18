@@ -22,15 +22,15 @@
 }
 
 .ingress {
-  margin: 0 auto !important;
+  margin: 0 auto;
 }
 
 .meta {
   display: flex;
   justify-content: center;
-  margin-top: var(--fds-spacing-1) !important;
+  margin-top: var(--fds-spacing-1);
   gap: var(--fds-spacing-3);
-  color: var(--fds-semantic-text-neutral-subtle) !important;
+  color: var(--fds-semantic-text-neutral-subtle);
 }
 
 .metaSquare {
