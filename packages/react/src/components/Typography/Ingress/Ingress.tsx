@@ -5,11 +5,11 @@ import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../../types/OverridableComponent';
 
-import classes from './Ingress.module.css';
-
 export type IngressProps = {
-  /** Changes text sizing */
-  size?: 'medium';
+  /** Changes text sizing
+   * @default 'medium'
+   */
+  size?: 'large' | 'medium' | 'small' | 'xsmall';
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
@@ -32,10 +32,10 @@ export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
         <Component
           ref={ref}
           className={cl(
-            classes.ingress,
-            classes[size],
+            `fds-ingress`,
+            `fds-ingress--${size}`,
             {
-              [classes.spacing]: !!spacing,
+              'fds-ingress--spacing': !!spacing,
             },
             className,
           )}
