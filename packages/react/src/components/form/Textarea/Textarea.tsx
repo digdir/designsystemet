@@ -11,7 +11,6 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextarea } from './useTextarea';
 import classes from './Textarea.module.css';
-import utilityClasses from './../../../utilities/utility.module.css';
 
 export type TextareaProps = {
   /** Label */
@@ -92,10 +91,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               size={size}
               weight='medium'
               htmlFor={textareaProps.id}
-              className={cl(
-                classes.label,
-                hideLabel && utilityClasses.visuallyHidden,
-              )}
+              className={cl(classes.label, hideLabel && `fds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
@@ -113,21 +109,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(
-                  classes.description,
-                  hideLabel && utilityClasses.visuallyHidden,
-                )}
+                className={cl(classes.description, hideLabel && `fds-sr-only`)}
               >
                 {description}
               </div>
             </Paragraph>
           )}
           <textarea
-            className={cl(
-              classes.textarea,
-              utilityClasses.focusable,
-              classes[size],
-            )}
+            className={cl(classes.textarea, `fds-focus`, classes[size])}
             ref={ref}
             aria-describedby={describedBy}
             {...omit(['size', 'error', 'errorId'], rest)}

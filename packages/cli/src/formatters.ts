@@ -1,24 +1,10 @@
-import path from 'path';
-
 import * as R from 'ramda';
-import prettier from 'prettier';
 import StyleDictionary from 'style-dictionary';
 import type { Named, TransformedToken, Format } from 'style-dictionary';
 
 const { fileHeader, createPropertyFormatter } = StyleDictionary.formatHelpers;
 
 type ReferencesFilter = (token: TransformedToken) => boolean;
-
-let prettierOptions: prettier.Options | null;
-
-export const setup = (prettierConfigPath: string) => {
-  prettierOptions = prettier.resolveConfig.sync(
-    path.resolve(prettierConfigPath),
-  );
-  if (!prettierOptions) {
-    throw Error(`Prettier config not found at ${prettierConfigPath}`);
-  }
-};
 
 /**
  *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
@@ -127,13 +113,13 @@ export const groupedTokens: Named<Format> = {
       Object.entries(tokens)
         .map(
           ([name, token]) =>
-            `export const  ${name} = ${JSON.stringify(token, null, 2)} \n`,
+            `export const  ${name} = ${JSON.stringify(token, null, 2).replace(
+              /"([^"]+)":/g,
+              '$1:',
+            )} \n`,
         )
         .join('\n');
 
-    return prettier.format(content, {
-      ...prettierOptions,
-      parser: 'babel',
-    });
+    return content;
   },
 };

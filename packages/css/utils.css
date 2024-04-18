@@ -1,8 +1,8 @@
-@layer fds.utilities {
+@layer fds.utils {
   /**
  * Visually hide an element, but leave it available for screen readers
  */
-  .visuallyHidden {
+  .fds-sr-only {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -16,11 +16,13 @@
   /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
-  .focusable:focus-visible {
+  .fds-focus:focus-visible {
     --fds-focus-border-width: 3px;
 
-    outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+    outline: var(--fds-focus-border-width) solid
+      var(--fds-semantic-border-focus-outline);
     outline-offset: var(--fds-focus-border-width);
-    box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+    box-shadow: 0 0 0 var(--fds-focus-border-width)
+      var(--fds-semantic-border-focus-boxshadow);
   }
 }

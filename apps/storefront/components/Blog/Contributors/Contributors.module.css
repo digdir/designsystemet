@@ -47,7 +47,7 @@
   text-wrap: nowrap;
   justify-content: center;
   gap: var(--fds-spacing-3);
-  color: var(--fds-semantic-text-neutral-subtle) !important;
+  color: var(--fds-semantic-text-neutral-subtle);
 }
 
 .metaSquare {

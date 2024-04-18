@@ -54,10 +54,8 @@ For å aktivere lowercase l with tail, legg til følgende i din CSS:
 
 <CodeSnippet language='css'>
   {`font-family: 'Inter', sans-serif;
-font-feature-settings: 'cv05' 1 !important; /* Enable lowercase l with tail */`}
+font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */`}
 </CodeSnippet>
-
-Bruk `!important` på `font-feature-settings` fordi våre typography tokens og komponenter bruker [font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) shorthand som resetter dette til sin initielle verdi.
 
 ## Tekststørrelse
 

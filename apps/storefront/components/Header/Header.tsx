@@ -116,6 +116,7 @@ const Header = () => {
                 href='https://github.com/digdir/designsystemet'
                 target='_blank'
                 className={cl(classes.linkIcon, classes.github)}
+                title='Designsystemets GitHub-repositorium'
               >
                 <GithubLogo />
               </Link>
@@ -125,6 +126,7 @@ const Header = () => {
                 href='https://www.figma.com/@designsystemet'
                 target='_blank'
                 className={cl(classes.linkIcon, classes.figma)}
+                title='Designsystemets Figma-prosjekt'
               >
                 <FigmaLogo />
               </Link>
