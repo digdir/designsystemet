@@ -444,47 +444,6 @@
   }
 }
 
-@layer fds.ingress {
-  .fds-ingress-ingress-9b33da65 {
-    --fdsc-bottom-spacing: var(--fds-spacing-5);
-
-    margin: 0;
-    color: var(--fds-semantic-text-neutral-default);
-  }
-
-  .fds-ingress-spacing-9b33da65 {
-    margin-bottom: var(--fdsc-bottom-spacing);
-  }
-
-  .fds-ingress-medium-9b33da65 {
-    --fdsc-bottom-spacing: var(--fds-spacing-5);
-
-    font: var(--fds-typography-ingress-medium);
-    font-family: inherit;
-  }
-
-  .fds-ingress-large-9b33da65 {
-    --fdsc-bottom-spacing: var(--fds-spacing-6);
-
-    font: var(--fds-typography-ingress-large);
-    font-family: inherit;
-  }
-
-  .fds-ingress-small-9b33da65 {
-    --fdsc-bottom-spacing: var(--fds-spacing-7);
-
-    font: var(--fds-typography-ingress-small);
-    font-family: inherit;
-  }
-
-  .fds-ingress-xsmall-9b33da65 {
-    --fdsc-bottom-spacing: var(--fds-spacing-8);
-
-    font: var(--fds-typography-ingress-xsmall);
-    font-family: inherit;
-  }
-}
-
 @layer fds.label {
   .fds-label-label-e0249167 {
     --fdsc-bottom-spacing: var(--fds-spacing-1);
