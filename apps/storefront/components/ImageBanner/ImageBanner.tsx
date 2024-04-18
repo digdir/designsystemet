@@ -63,7 +63,7 @@ const ImageBanner = ({
         {imgPosition === 'left' && (
           <div
             className={cn(classes.imgContainer, {
-              [classes.tomato]: imgWidth === 'small',
+              [classes.smallImage]: imgWidth === 'small',
             })}
           >
             {videoSrc && (

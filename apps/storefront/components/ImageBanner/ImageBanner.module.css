@@ -2,6 +2,7 @@
   position: relative;
   margin: 110px 0;
 }
+
 .blue {
   background-color: var(--fds-brand-alt3-300);
 }
@@ -34,7 +35,7 @@
   justify-content: center;
 }
 
-.tomato {
+.smallImage {
   flex-basis: 400px;
 }
 
@@ -76,25 +77,6 @@
   color: inherit;
 }
 
-.link {
-  color: inherit;
-}
-
-.buttons {
-  color: inherit;
-}
-
-.button {
-  color: inherit;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--fds-spacing-5);
-  margin-top: var(--fds-spacing-5);
-}
-
 .button {
   height: 48px;
   padding: 0 var(--fds-spacing-4);
@@ -107,6 +89,14 @@
   transition: 0.1s all;
   color: var(--fds-semantic-text-neutral-default) !important;
   text-decoration: none;
+}
+
+.buttons {
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-5);
+  margin-top: var(--fds-spacing-5);
 }
 
 @media (max-width: 480px) {
