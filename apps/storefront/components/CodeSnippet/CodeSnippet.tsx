@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import type { Options } from 'prettier';
 import { format } from 'prettier/standalone.js';
 import * as prettierMarkdown from 'prettier/plugins/markdown.js';
 import * as prettierHtml from 'prettier/plugins/html.js';
