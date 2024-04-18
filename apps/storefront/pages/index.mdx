@@ -1,20 +1,7 @@
-import {
-  ImageIcon,
-  WrenchIcon,
-  ComponentIcon,
-  EnvelopeClosedIcon,
-  BranchingIcon,
-} from '@navikt/aksel-icons';
+import { EnvelopeClosedIcon, BranchingIcon } from '@navikt/aksel-icons';
 
 import { FrontpageLayout } from '@layouts';
-import {
-  Meta,
-  Banner,
-  Section,
-  NavigationCard,
-  ImageSection,
-  ImageBanner,
-} from '@components';
+import { Meta, Section, ImageBanner } from '@components';
 
 import { BlogCard } from '../components/Blog';
 
@@ -36,6 +23,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     href: '/grunnleggende/introduksjon/om-designsystemet',
   }}
 />
+
 <ImageBanner
   title='Tilgjengelige komponenter'
   description='Du finner komponentene lett tilgjengelig i Figma og i React, og du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. Når de mest grunnleggende elementene lages kun èn gang, kan vi sikre god kvalitet ved at at krav til universell utforming og testing er godt ivaretatt.'
@@ -47,6 +35,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   fallbackImgSrc='/img/reduced-motion/Page.png'
   fallbackImgAlt='Designskisse av en mobiltelefon som har komponenter fra designsystemet i seg.'
 />
+
 <ImageBanner
   title='Bruk ditt eget tema'
   description='Designsystemet er ikke skreddersydd for en merkevare, men støtter ulike identiteter gjennom tema. Ulike avsenderidentiteter kan ivaretas selv om vi tar utganspunkt i det samme designsystemet.'
@@ -88,26 +77,38 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   />
 </Section>
 
-  <ImageBanner
-    title='Bli med på samarbeidet!'
-    description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
-    imgSrc='/img/Logotest.svg'
-    headingLevel='h2'
-    imgWidth="small"
-    buttons={[
-        { text: 'Ta kontakt', href: 'mailto:designsystem@digdir.no', prefix: <EnvelopeClosedIcon fontSize={24} /> }, { text: 'Bli med i Slack-kanalen', href: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',  
-        prefix: (
+<ImageBanner
+  title='Bli med på samarbeidet!'
+  description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
+  imgSrc='/img/Logotest.svg'
+  headingLevel='h2'
+  imgWidth='small'
+  buttons={[
+    {
+      text: 'Ta kontakt',
+      href: 'mailto:designsystem@digdir.no',
+      prefix: <EnvelopeClosedIcon fontSize={24} />,
+    },
+    {
+      text: 'Bli med i Slack-kanalen',
+      href: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
+      prefix: (
         <img
           src='img/slack-logo.png'
           alt=''
         />
-        )}, 
-        { text: 'Github', href: 'https://github.com/digdir/designsystemet', prefix: <BranchingIcon fontSize={24} /> }
-    ]}
+      ),
+    },
+    {
+      text: 'Github',
+      href: 'https://github.com/digdir/designsystemet',
+      prefix: <BranchingIcon fontSize={24} />,
+    },
+  ]}
 />
 
 <style>
-{`
+  {`
 header:first-of-type {
   background-color: transparent;
 }

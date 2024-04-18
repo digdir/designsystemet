@@ -1,4 +1,5 @@
-import React, { useEffect, useState, createElement } from 'react';
+import type React from 'react';
+import { useEffect, useState, createElement } from 'react';
 import cn from 'clsx';
 
 import { Container } from '../Container/Container';
