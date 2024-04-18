@@ -1,4 +1,8 @@
-import { EnvelopeClosedIcon, BranchingIcon } from '@navikt/aksel-icons';
+import {
+  EnvelopeClosedIcon,
+  BranchingIcon,
+  PersonChatIcon,
+} from '@navikt/aksel-icons';
 
 import { FrontpageLayout } from '@layouts';
 import { Meta, Section, ImageBanner } from '@components';
@@ -12,8 +16,8 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   description='Her finner du UI-komponenter, retningslinjer og god praksis for effektiv produktutvikling og helhetlige brukeropplevelser.'
 />
 <ImageBanner
-  title='Din digitale verktøykasse'
-  description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre du kan bruke når du utvikler digitale tjenester. Designsystemet skal bidra til effektiv produktutvikling og helhetlige brukeropplevelser.'
+  title='En felles digital verktøykasse'
+  description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.'
   imgSrc='/img/Toolbox.svg'
   headingLevel='h2'
   imgWidth={1195}
@@ -25,8 +29,8 @@ export default ({ children }) => <FrontpageLayout content={children} />;
 />
 
 <ImageBanner
-  title='Tilgjengelige komponenter'
-  description='Du finner komponentene lett tilgjengelig i Figma og i React, og du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. Når de mest grunnleggende elementene lages kun èn gang, kan vi sikre god kvalitet ved at at krav til universell utforming og testing er godt ivaretatt.'
+  title='Tilgjengelige og fleksible komponenter'
+  description='Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet, og vi ivaretar kravene til tilgjengelighet. Komponentene er laget i Figma og i React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. '
   videoSrc='/animations/Page.webm'
   imgPosition='right'
   headingLevel='h2'
@@ -37,8 +41,8 @@ export default ({ children }) => <FrontpageLayout content={children} />;
 />
 
 <ImageBanner
-  title='Bruk ditt eget tema'
-  description='Designsystemet er ikke skreddersydd for en merkevare, men støtter ulike identiteter gjennom tema. Ulike avsenderidentiteter kan ivaretas selv om vi tar utganspunkt i det samme designsystemet.'
+  title='Bruk egne tema'
+  description='Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.'
   videoSrc='/animations/Theme.webm'
   headingLevel='h2'
   imgWidth={1195}
@@ -48,7 +52,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
 />
 
 <Section title='Siste nytt fra designsystemet'>
-  <BlogCard
+  {/* <BlogCard
     title='Designsystemet er endelig ute av beta!'
     desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
     href='/bloggen/dette-er-eit-navn'
@@ -56,7 +60,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     featured={false}
     tagText='Bloggen'
     tagColor='first'
-  />
+  /> */}
   <BlogCard
     title='Derfor trenger vi et felles designsystem'
     desc='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
@@ -78,31 +82,26 @@ export default ({ children }) => <FrontpageLayout content={children} />;
 </Section>
 
 <ImageBanner
-  title='Bli med på samarbeidet!'
-  description='Et samarbeid om designsystem kan bidra til mer helhetlige brukeropplevelser på tvers av offentlig sektor og samtidig spare oss for å gjøre de samme oppgavene flere ganger. Vi ønsker at dette skal bli et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer om dette, eller bli med på samarbeidet?'
+  title='Bli med å utvikle designsystemet!'
+  description='Ved å samarbeide om designsystemet kan vi lage mer helhetlige brukeropplevelser på tvers av offentlig sektor. Samtidig sparer vi oss for å gjøre de samme oppgavene flere ganger. Designsystemet  skal være et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer eller hjelpe? Ta kontakt med oss!'
   imgSrc='/img/Logotest.svg'
   headingLevel='h2'
   imgWidth='small'
   buttons={[
     {
-      text: 'Ta kontakt',
-      href: 'mailto:designsystem@digdir.no',
-      prefix: <EnvelopeClosedIcon fontSize={24} />,
-    },
-    {
-      text: 'Bli med i Slack-kanalen',
+      text: 'Bli med på Slack',
       href: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
-      prefix: (
-        <img
-          src='img/slack-logo.png'
-          alt=''
-        />
-      ),
+      prefix: <PersonChatIcon fontSize={24} />,
     },
     {
-      text: 'Github',
+      text: 'Bidra på GitHub',
       href: 'https://github.com/digdir/designsystemet',
       prefix: <BranchingIcon fontSize={24} />,
+    },
+    {
+      text: 'Send en epost',
+      href: 'mailto:designsystem@digdir.no',
+      prefix: <EnvelopeClosedIcon fontSize={24} />,
     },
   ]}
 />
