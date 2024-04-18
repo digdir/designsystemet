@@ -28,11 +28,11 @@
           "value": "{colors.grey.200}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{colors.grey.600}",
           "type": "color"
         },
-        "strong-hover": {
+        "dark-hover": {
           "value": "{colors.grey.700}",
           "type": "color"
         },
@@ -237,11 +237,11 @@
           "value": "{colors.blue.900}",
           "type": "color"
         },
-        "strong": {
+        "dark": {
           "value": "{colors.blue.900}",
           "type": "color"
         },
-        "strong-hover": {
+        "dark-hover": {
           "value": "{colors.blue.700}",
           "type": "color"
         }

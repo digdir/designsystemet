@@ -41,7 +41,7 @@
   }
 
   .invertedBackground {
-    stroke: var(--fds-semantic-surface-neutral-strong);
+    stroke: var(--fds-semantic-surface-neutral-dark);
   }
 
   @keyframes rotate-animation {

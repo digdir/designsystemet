@@ -70,21 +70,21 @@
   .first .accordionButton {
     --fds-accordion-border-color: var(--fds-semantic-border-first-default);
 
-    background: var(--fds-semantic-surface-first-subtle);
+    background: var(--fds-semantic-surface-first-light);
   }
 
   .second,
   .second .accordionButton {
     --fds-accordion-border-color: var(--fds-semantic-border-second-default);
 
-    background: var(--fds-semantic-surface-second-subtle);
+    background: var(--fds-semantic-surface-second-light);
   }
 
   .third,
   .third .accordionButton {
     --fds-accordion-border-color: var(--fds-semantic-border-third-default);
 
-    background: var(--fds-semantic-surface-third-subtle);
+    background: var(--fds-semantic-surface-third-light);
   }
 
   .first .item:where(.open) .accordionButton,
@@ -119,15 +119,15 @@
     }
 
     .first .accordionButton:hover {
-      background-color: var(--fds-semantic-surface-first-subtle-hover);
+      background-color: var(--fds-semantic-surface-first-light-hover);
     }
 
     .second .accordionButton:hover {
-      background-color: var(--fds-semantic-surface-second-subtle-hover);
+      background-color: var(--fds-semantic-surface-second-light-hover);
     }
 
     .third .accordionButton:hover {
-      background-color: var(--fds-semantic-surface-third-subtle-hover);
+      background-color: var(--fds-semantic-surface-third-light-hover);
     }
   }
 }

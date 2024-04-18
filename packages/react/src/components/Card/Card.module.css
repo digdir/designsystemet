@@ -114,41 +114,41 @@
   }
 
   .first {
-    background-color: var(--fds-semantic-surface-first-subtle);
+    background-color: var(--fds-semantic-surface-first-light);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .first.linkCard:hover {
-    background-color: var(--fds-semantic-surface-first-subtle-hover);
+    background-color: var(--fds-semantic-surface-first-light-hover);
   }
 
   .first.linkCard:active {
-    background-color: var(--fds-semantic-surface-first-subtle-active);
+    background-color: var(--fds-semantic-surface-first-light-active);
   }
 
   .second {
-    background-color: var(--fds-semantic-surface-second-subtle);
+    background-color: var(--fds-semantic-surface-second-light);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .second.linkCard:hover {
-    background-color: var(--fds-semantic-surface-second-subtle-hover);
+    background-color: var(--fds-semantic-surface-second-light-hover);
   }
 
   .second.linkCard:active {
-    background-color: var(--fds-semantic-surface-second-subtle-active);
+    background-color: var(--fds-semantic-surface-second-light-active);
   }
 
   .third {
-    background-color: var(--fds-semantic-surface-third-subtle);
+    background-color: var(--fds-semantic-surface-third-light);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
   .third.linkCard:hover {
-    background-color: var(--fds-semantic-surface-third-subtle-hover);
+    background-color: var(--fds-semantic-surface-third-light-hover);
   }
 
   .third.linkCard:active {
-    background-color: var(--fds-semantic-surface-third-subtle-active);
+    background-color: var(--fds-semantic-surface-third-light-active);
   }
 }

@@ -32,7 +32,7 @@
     margin: auto;
     overflow: visible;
     border-radius: var(--fds-border_radius-full);
-    background-color: var(--fds-semantic-surface-neutral-strong);
+    background-color: var(--fds-semantic-surface-neutral-dark);
     transition: background-color var(--fds-transition) ease;
     margin-right: var(--fds-spacing-1);
   }
@@ -206,7 +206,7 @@
     }
 
     .input:not(:checked, :disabled, [readonly]):hover + .label .track {
-      background-color: var(--fds-semantic-surface-neutral-strong-hover);
+      background-color: var(--fds-semantic-surface-neutral-dark-hover);
     }
 
     .input:not(:disabled, [readonly]):checked:hover + .label .track {
