@@ -32,6 +32,14 @@ const Section = ({
               {title}
             </Heading>
           )}
+          <div className={classes.separator}>
+            <div className={classes.separatorContainer}>
+              <img
+                src='img/emblem.svg'
+                alt=''
+              />
+            </div>
+          </div>
           {detail && (
             <Image
               src='img/diamond-logo.svg'
