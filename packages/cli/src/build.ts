@@ -6,7 +6,7 @@ import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
 
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { groupedTokens } from './formatters.js';
+import { groupedTokens, scopedReferenceVariables } from './formatters.js';
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -52,6 +52,7 @@ StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyShorthand);
 
 StyleDictionary.registerFormat(groupedTokens);
+StyleDictionary.registerFormat(scopedReferenceVariables);
 
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
@@ -99,12 +100,16 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            format: 'css/variables',
+            // format: 'css/variables',
+            format: scopedReferenceVariables.name,
             filter: excludeSource,
           },
         ],
         options: {
           fileHeader,
+          referencesFilter: (token: TransformedToken) =>
+            !(token.path[0] === 'viewport') &&
+            ['color'].includes(token.type as string),
         },
       },
     },

@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import type {
   TransformedToken,
   Format,
-  FileHeader,
+  TransformedTokens,
 } from 'style-dictionary/types';
 import {
   fileHeader,
@@ -18,7 +18,7 @@ type ReferencesFilter = (token: TransformedToken) => boolean;
  */
 export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  formatter: function ({ dictionary, options, file }) {
+  formatter: async function ({ dictionary, options, file }) {
     const { outputReferences } = options;
     const includeReferences = options.referencesFilter as ReferencesFilter;
     let referencedTokens: TransformedToken[] = [];
@@ -38,7 +38,10 @@ export const scopedReferenceVariables: Format = {
     const tokens = dictionary.allTokens
       .map((token) => {
         if (usesReferences(token.original.value) && includeReferences(token)) {
-          const refs = getReferences(token.original.value);
+          const refs = getReferences(
+            token.original.value as string,
+            dictionary.unfilteredTokens ? dictionary.unfilteredTokens : {},
+          );
 
           referencedTokens = [
             ...referencedTokens,
@@ -63,15 +66,16 @@ export const scopedReferenceVariables: Format = {
       .map((x) => x.formatted)
       .filter((x) => x);
 
-    return (
-      fileHeader({ file }) +
-      ':root {\n' +
-      '  /** Referenced source tokens */ \n' +
-      '  /** DO NOT OVERRIDE */ \n' +
-      referenceTokens.join('\n') +
-      '\n\n  /** Tokens */ \n' +
-      tokens.join('\n') +
-      '\n}\n'
+    return fileHeader({ file }).then(
+      (fileHeaderText) =>
+        fileHeaderText +
+        ':root {\n' +
+        '  /** Referenced source tokens */ \n' +
+        '  /** DO NOT OVERRIDE */ \n' +
+        referenceTokens.join('\n') +
+        '\n\n  /** Tokens */ \n' +
+        tokens.join('\n') +
+        '\n}\n',
     );
   },
 };
@@ -93,7 +97,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const groupedTokens: Format = {
   name: 'groupedTokens',
-  formatter: function ({ dictionary }) {
+  formatter: async function ({ dictionary, file }) {
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',
@@ -122,6 +126,8 @@ export const groupedTokens: Format = {
       )
       .join('\n');
 
-    return content;
+    return fileHeader({ file }).then(
+      (fileHeaderText) => fileHeaderText + content,
+    );
   },
 };
