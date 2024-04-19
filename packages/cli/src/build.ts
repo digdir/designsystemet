@@ -70,6 +70,7 @@ StyleDictionary.registerTransformGroup({
 
 const baseConfig = (brand: Brand): Partial<Config> => {
   return {
+    log: { verbosity: 'silent' },
     include: [
       `${tokensPath}/Brand/${brand}.json`,
       `${tokensPath}/Base/Semantic.json`,
@@ -100,7 +101,6 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
-            // format: 'css/variables',
             format: scopedReferenceVariables.name,
             filter: excludeSource,
           },
@@ -144,15 +144,13 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
 const brands = argv.brands.filter(pickBrands) as string[];
 
 if (brands.length > 0) {
+  console.log('🍱 Staring token builder');
   console.log('➡️  Recieved following brands: ', brands);
 
-  console.log('🏗️  Start building CSS tokens');
-
+  console.log('\n🏗️  Start building CSS tokens');
   await Promise.all(
     brands.map(async (brand) => {
-      console.log('\n---------------------------------------');
-
-      console.log(`\n👷 Processing ${brand}`);
+      console.log(`👷 Processing ${brand}`);
 
       const sd = new StyleDictionary();
       const tokensPackageSD = await sd.extend(
@@ -162,28 +160,19 @@ if (brands.length > 0) {
       return tokensPackageSD.buildAllPlatforms();
     }),
   );
+  console.log('🏁 Finished building package tokens!');
 
-  console.log('\n---------------------------------------');
-  console.log('\n🏁 Finished building package tokens!');
+  console.log('\n🏗️  Started building storefront tokens…');
+  await Promise.all(
+    brands.map(async (brand) => {
+      console.log(`👷 Processing ${brand}`);
+
+      const storefrontSD = new StyleDictionary(
+        getStorefrontConfig(brand, storefrontTokensPath),
+      );
+
+      return storefrontSD.buildAllPlatforms();
+    }),
+  );
+  console.log('🏁 Finished building storefront tokens!');
 }
-
-console.log('\n=======================================');
-console.log('\n🏗️  Started building storefront tokens…');
-
-await Promise.all(
-  brands.map(async (brand) => {
-    console.log('\n---------------------------------------');
-
-    console.log(`\n👷 Processing ${brand}`);
-
-    const storefrontSD = new StyleDictionary(
-      getStorefrontConfig(brand, storefrontTokensPath),
-    );
-
-    return storefrontSD.buildAllPlatforms();
-  }),
-);
-
-console.log('\n---------------------------------------');
-
-console.log('\n🏁 Finished building storefront tokens!');
