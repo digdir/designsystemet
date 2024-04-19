@@ -1,9 +1,5 @@
 import * as R from 'ramda';
-import type {
-  TransformedToken,
-  Format,
-  TransformedTokens,
-} from 'style-dictionary/types';
+import type { TransformedToken, Format } from 'style-dictionary/types';
 import {
   fileHeader,
   createPropertyFormatter,
@@ -18,8 +14,9 @@ type ReferencesFilter = (token: TransformedToken) => boolean;
  */
 export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  formatter: async function ({ dictionary, options, file }) {
-    const { outputReferences } = options;
+  formatter: async function ({ dictionary, file, options }) {
+    const { allTokens, unfilteredTokens } = dictionary;
+    const { usesDtcg, outputReferences } = options;
     const includeReferences = options.referencesFilter as ReferencesFilter;
     let referencedTokens: TransformedToken[] = [];
 
@@ -35,12 +32,16 @@ export const scopedReferenceVariables: Format = {
       format: 'css',
     });
 
-    const tokens = dictionary.allTokens
+    const tokens = allTokens
       .map((token) => {
-        if (usesReferences(token.original.value) && includeReferences(token)) {
+        const originalValue = (
+          usesDtcg ? token.original.$value : token.original.value
+        ) as string;
+
+        if (usesReferences(originalValue) && includeReferences(token)) {
           const refs = getReferences(
-            token.original.value as string,
-            dictionary.unfilteredTokens ? dictionary.unfilteredTokens : {},
+            originalValue,
+            unfilteredTokens ? unfilteredTokens : {},
           );
 
           referencedTokens = [
@@ -56,15 +57,15 @@ export const scopedReferenceVariables: Format = {
       .filter((x) => x);
 
     const referenceTokens = referencedTokens
-      .reduce<{ name: string; formatted: string }[]>((acc, token) => {
+      .reduce<TransformedToken[]>((acc, token) => {
         if (acc.find((x) => x.name === token.name)) {
           return acc;
         }
 
-        return [...acc, { name: token.name, formatted: format(token) }];
+        return [...acc, token];
       }, [])
-      .map((x) => x.formatted)
-      .filter((x) => x);
+      .map((token) => format(token))
+      .filter((formattedValue) => formattedValue);
 
     return fileHeader({ file }).then(
       (fileHeaderText) =>
