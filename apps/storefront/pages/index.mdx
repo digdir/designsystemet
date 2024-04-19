@@ -57,15 +57,16 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     gridTemplateColumns: 'repeat(3, minmax(min(100%, 320px), 1fr))',
   }}
 >
-  {/* <BlogCard
-    title='Designsystemet er endelig ute av beta!'
-    desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-    href='/bloggen/dette-er-eit-navn'
-    image='/img/bloggen/versjon1.png'
-    featured={false}
+  <BlogCard
+    title='Hvordan Altinn Studio bruker Designsystemet'
+    desc='Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!'
+    date='27. mars 2024'
+    href='/bloggen/2024/altinn-studio'
+    image='/img/bloggen/altinnstudio-16-9.png'
+    author='Altinn / David Øvrelid'
     tagText='Bloggen'
     tagColor='first'
-  /> */}
+  />
   <BlogCard
     title='Derfor trenger vi et felles designsystem'
     desc='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
@@ -84,7 +85,6 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     tagText='For utviklere'
     tagColor='second'
   />
-  <div />
 </Section>
 
 <ImageBanner
