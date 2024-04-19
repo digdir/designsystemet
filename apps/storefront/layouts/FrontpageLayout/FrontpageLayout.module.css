@@ -61,7 +61,7 @@
 
 .cluster {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
 }
 
 .cluster1,
@@ -100,13 +100,13 @@
 }
 
 .cluster5 {
-  top: 2250px;
+  top: 2290px;
   height: 140px;
   transform: rotate(45deg);
 }
 
 .cluster6 {
-  top: 3030px;
+  top: 3080px;
   height: 160px;
   transform: rotate(45deg);
 }
