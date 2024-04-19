@@ -5,13 +5,7 @@ import { registerTransforms } from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
 
-import {
-  sizePx,
-  nameKebab,
-  nameKebabUnderscore,
-  typographyShorthand,
-  sizeRem,
-} from './transformers.js';
+import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { groupedTokens } from './formatters.js';
 
 const argv = yargs(process.argv.slice(2))
@@ -48,28 +42,23 @@ const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
 const packageTokensPath = path.resolve('../../packages/theme/brand');
 const tokensPath = argv.tokens;
 
-// setupFormatters('./../../prettier.config.js');
+const fileHeader = () => [
+  'Do not edit directly',
+  `These files are generated from design tokens defined in Figma using Token Studio`,
+];
 
-StyleDictionary.registerTransform(sizePx);
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
-StyleDictionary.registerTransform(nameKebabUnderscore);
 StyleDictionary.registerTransform(typographyShorthand);
-// StyleDictionary.registerTransform(fluidFontSize);
-// StyleDictionary.registerTransform(calc);
-
-// StyleDictionary.registerFormat(fontScaleHackFormat);
-// StyleDictionary.registerFormat(scopedReferenceVariables);
-StyleDictionary.registerFormat(groupedTokens);
 
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
   transforms: [
-    'ts/resolveMath',
+    `ts/resolveMath`,
     nameKebab.name,
+    sizeRem.name,
     typographyShorthand.name,
     'ts/size/lineheight',
-    sizeRem.name,
     'ts/shadow/css/shorthand',
     'ts/color/modifiers',
     'ts/color/css/hexrgba',
@@ -104,20 +93,7 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
       css: {
         prefix,
         basePxFontSize,
-        // transformGroup: 'fds/css',
-        // transformGroup: 'tokens-studio',
-        transforms: [
-          `ts/resolveMath`,
-          nameKebab.name,
-          sizeRem.name,
-          // 'ts/typography/css/shorthand',
-          // 'ts/typography/css/fontFamily',
-          typographyShorthand.name,
-          'ts/size/lineheight',
-          'ts/shadow/css/shorthand',
-          'ts/color/modifiers',
-          'ts/color/css/hexrgba',
-        ],
+        transformGroup: 'fds/css',
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
@@ -125,6 +101,9 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
             filter: excludeSource,
           },
         ],
+        options: {
+          fileHeader,
+        },
       },
     },
   };
@@ -136,17 +115,6 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
   return {
     ...baseConfig(brand),
     platforms: {
-      // hack: {
-      //   prefix,
-      //   basePxFontSize,
-      //   transforms: ['ts/resolveMath', nameKebab.name],
-      //   files: [
-      //     {
-      //       format: 'global-values-hack',
-      //       destination: 'ignore/hack',
-      //     },
-      //   ],
-      // },
       storefront: {
         prefix,
         basePxFontSize,
