@@ -76,10 +76,6 @@ export const typographyShorthand: Transform = {
 
     const baseFontPx = config?.basePxFontSize || 16;
     const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
-    console.log(
-      `typopgraphy: `,
-      `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`,
-    );
 
     return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
   },

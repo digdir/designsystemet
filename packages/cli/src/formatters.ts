@@ -1,6 +1,11 @@
 import * as R from 'ramda';
-import type { TransformedToken, Format } from 'style-dictionary/types';
+import type {
+  TransformedToken,
+  Format,
+  FileHeader,
+} from 'style-dictionary/types';
 import {
+  fileHeader,
   createPropertyFormatter,
   usesReferences,
   getReferences,
@@ -13,7 +18,7 @@ type ReferencesFilter = (token: TransformedToken) => boolean;
  */
 export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  formatter: function ({ dictionary, options }) {
+  formatter: function ({ dictionary, options, file }) {
     const { outputReferences } = options;
     const includeReferences = options.referencesFilter as ReferencesFilter;
     let referencedTokens: TransformedToken[] = [];
@@ -33,7 +38,7 @@ export const scopedReferenceVariables: Format = {
     const tokens = dictionary.allTokens
       .map((token) => {
         if (usesReferences(token.original.value) && includeReferences(token)) {
-          const refs = getReferences(token.original?.value);
+          const refs = getReferences(token.original.value);
 
           referencedTokens = [
             ...referencedTokens,
@@ -59,6 +64,7 @@ export const scopedReferenceVariables: Format = {
       .filter((x) => x);
 
     return (
+      fileHeader({ file }) +
       ':root {\n' +
       '  /** Referenced source tokens */ \n' +
       '  /** DO NOT OVERRIDE */ \n' +
@@ -87,7 +93,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const groupedTokens: Format = {
   name: 'groupedTokens',
-  formatter: function ({ dictionary, file }) {
+  formatter: function ({ dictionary }) {
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',

@@ -51,6 +51,8 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyShorthand);
 
+StyleDictionary.registerFormat(groupedTokens);
+
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
   transforms: [
@@ -126,6 +128,9 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
             filter: excludeSource,
           },
         ],
+        options: {
+          fileHeader,
+        },
       },
     },
   };
