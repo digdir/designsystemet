@@ -51,7 +51,12 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   fallbackImgAlt='Designskisse av en nettside som viser hvordan designsystemet kan tilpasses ulike identiteter.'
 />
 
-<Section title='Siste nytt fra designsystemet'>
+<Section
+  title='Siste nytt fra designsystemet'
+  style={{
+    gridTemplateColumns: 'repeat(3, minmax(min(100%, 320px), 1fr))',
+  }}
+>
   {/* <BlogCard
     title='Designsystemet er endelig ute av beta!'
     desc='lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
@@ -74,11 +79,12 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     title='Komposisjon med asChild i React koden'
     desc='Nokre gonger må du kanskje byte ut ein komponent med ein anna, for eksempel Button skulle vore ein Link. Det er her asChild kjem inn i biletet.'
     href='/grunnleggende/for-utviklere/komposisjon'
-    image='https://source.unsplash.com/random/1920x1080'
+    image='/img/placeholders/yellow_big_logo.svg'
     featured={false}
     tagText='For utviklere'
     tagColor='second'
   />
+  <div />
 </Section>
 
 <ImageBanner
