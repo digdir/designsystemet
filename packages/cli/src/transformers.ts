@@ -26,7 +26,7 @@ export const sizeRem: Transform = {
     !token.name.includes('base'),
   transformer: (token, options) => {
     const baseFont = options.basePxFontSize || 16;
-    const value = token.value as number;
+    const value = parseInt(token.value as string);
 
     if (value === 0) {
       return '0';
@@ -70,14 +70,17 @@ export const typographyShorthand: Transform = {
   type: 'value',
   transitive: true,
   matcher: (token) => token.type === 'typography',
-  transformer: (token, options) => {
-    const typography = token.value as Typgraphy;
-    let fontSize = typography.fontSize;
+  transformer: (token, config, options) => {
+    const { usesDtcg } = options;
+    const typography = (usesDtcg ? token.$value : token.value) as Typgraphy;
 
-    if (!fontSize.startsWith('clamp')) {
-      const baseFontPx = options?.basePxFontSize || 1;
-      fontSize = `${parseFloat(fontSize) / baseFontPx}rem`;
-    }
+    const baseFontPx = config?.basePxFontSize || 16;
+    const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
+    console.log(
+      `typopgraphy: `,
+      `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`,
+    );
+
     return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
   },
 };

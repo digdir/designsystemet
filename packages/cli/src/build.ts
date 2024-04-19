@@ -1,16 +1,15 @@
 import path from 'path';
 
+import yargs from 'yargs';
+import { registerTransforms } from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
-import { registerTransforms } from '@tokens-studio/sd-transforms';
-import yargs from 'yargs';
 
 import {
   sizePx,
   nameKebab,
   nameKebabUnderscore,
   typographyShorthand,
-  calc,
   sizeRem,
 } from './transformers.js';
 import { groupedTokens } from './formatters.js';
@@ -57,7 +56,7 @@ StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(nameKebabUnderscore);
 StyleDictionary.registerTransform(typographyShorthand);
 // StyleDictionary.registerTransform(fluidFontSize);
-StyleDictionary.registerTransform(calc);
+// StyleDictionary.registerTransform(calc);
 
 // StyleDictionary.registerFormat(fontScaleHackFormat);
 // StyleDictionary.registerFormat(scopedReferenceVariables);
@@ -105,7 +104,20 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
       css: {
         prefix,
         basePxFontSize,
-        transformGroup: 'fds/css',
+        // transformGroup: 'fds/css',
+        // transformGroup: 'tokens-studio',
+        transforms: [
+          `ts/resolveMath`,
+          nameKebab.name,
+          sizeRem.name,
+          // 'ts/typography/css/shorthand',
+          // 'ts/typography/css/fontFamily',
+          typographyShorthand.name,
+          'ts/size/lineheight',
+          'ts/shadow/css/shorthand',
+          'ts/color/modifiers',
+          'ts/color/css/hexrgba',
+        ],
         files: [
           {
             destination: `${destinationPath}/tokens.css`,
@@ -164,11 +176,12 @@ if (brands.length > 0) {
 
       console.log(`\n👷 Processing ${brand}`);
 
-      const tokensPackageSD = new StyleDictionary(
+      const sd = new StyleDictionary();
+      const tokensPackageSD = await sd.extend(
         getTokensPackageConfig(brand, packageTokensPath),
       );
 
-      await tokensPackageSD.buildAllPlatforms();
+      return tokensPackageSD.buildAllPlatforms();
     }),
   );
 
@@ -189,7 +202,7 @@ await Promise.all(
       getStorefrontConfig(brand, storefrontTokensPath),
     );
 
-    await storefrontSD.buildAllPlatforms();
+    return storefrontSD.buildAllPlatforms();
   }),
 );
 

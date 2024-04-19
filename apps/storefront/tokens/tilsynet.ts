@@ -1,4 +1,4 @@
-[object Promise]export const  color = [
+export const  color = [
   {
     value: "#efeffb",
     type: "color",
