@@ -83,6 +83,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             classes.formField,
             textareaProps.disabled && classes.disabled,
             readOnly && classes.readonly,
+            hasError && classes.error,
             className,
           )}
         >
