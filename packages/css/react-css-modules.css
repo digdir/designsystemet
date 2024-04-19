@@ -2216,7 +2216,7 @@
     border-color: var(--fds-semantic-border-neutral-default);
   }
 
-  .fds-textarea-error-3d0e29bc > .fds-textarea-textarea-3d0e29bc:not(:focus-visible) {
+  .fds-textarea-textarea-3d0e29bc[aria-invalid='true']:not(:focus-visible) {
     border-color: var(--fds-semantic-border-danger-default);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
   }
