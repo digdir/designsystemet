@@ -20,6 +20,7 @@ export const Preview: Story = {
     size: 'medium',
     description: '',
     error: '',
+    hideLabel: false,
     cols: 40,
   },
 };
