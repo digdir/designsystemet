@@ -1,6 +1,5 @@
 import path from 'path';
 
-import yargs from 'yargs';
 import { registerTransforms } from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
@@ -8,39 +7,12 @@ import type { Config, TransformedToken } from 'style-dictionary/types';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { groupedTokens, scopedReferenceVariables } from './formatters.js';
 
-const argv = yargs(process.argv.slice(2))
-  .options({
-    brands: {
-      type: 'array',
-      default: [],
-      describe: 'Brand files to build',
-      alias: 'b',
-    },
-    tokens: {
-      type: 'string',
-      describe: 'Location for design-tokens',
-      demandOption: true,
-      alias: 't',
-    },
-    preview: {
-      alias: 'p',
-      type: 'boolean',
-      describe: 'Generate typescript token preview files',
-    },
-  })
-  .parseSync();
-
 void registerTransforms(StyleDictionary);
 
-const pickBrands = (x: string | number): x is string => typeof x === 'string';
 type Brand = string;
 
 const prefix = 'fds';
 const basePxFontSize = 16;
-
-const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
-const packageTokensPath = path.resolve('../../packages/theme/brand');
-const tokensPath = argv.tokens;
 
 const fileHeader = () => [
   'Do not edit directly',
@@ -68,7 +40,7 @@ StyleDictionary.registerTransformGroup({
   ],
 });
 
-const baseConfig = (brand: Brand): Partial<Config> => {
+const baseConfig = (brand: Brand, tokensPath: string): Partial<Config> => {
   return {
     log: { verbosity: 'silent' },
     include: [
@@ -88,11 +60,15 @@ const excludeSource = (token: TransformedToken) => {
   return true;
 };
 
-const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
+const getTokensPackageConfig = (
+  brand: Brand,
+  targetFolder = '',
+  tokensPath: string,
+): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
-    ...baseConfig(brand),
+    ...baseConfig(brand, tokensPath),
     platforms: {
       css: {
         prefix,
@@ -116,11 +92,15 @@ const getTokensPackageConfig = (brand: Brand, targetFolder = ''): Config => {
   };
 };
 
-const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
+const getStorefrontConfig = (
+  brand: Brand,
+  targetFolder = '',
+  tokensPath: string,
+): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
 
   return {
-    ...baseConfig(brand),
+    ...baseConfig(brand, tokensPath),
     platforms: {
       storefront: {
         prefix,
@@ -141,38 +121,51 @@ const getStorefrontConfig = (brand: Brand, targetFolder = ''): Config => {
   };
 };
 
-const brands = argv.brands.filter(pickBrands) as string[];
+type Options = {
+  /** Design tokens path  */
+  tokens: string;
+  /** File names of Token studio brand files located in  @type {Options['tokens']} */
+  brands: string[];
+};
 
-if (brands.length > 0) {
-  console.log('🍱 Staring token builder');
-  console.log('➡️  Recieved following brands: ', brands);
+export async function run(options: Options): Promise<void> {
+  const brands = options.brands;
 
-  console.log('\n🏗️  Start building CSS tokens');
-  await Promise.all(
-    brands.map(async (brand) => {
-      console.log(`👷 Processing ${brand}`);
+  const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
+  const packageTokensPath = path.resolve('../../packages/theme/brand');
+  const tokensPath = options.tokens || path.resolve('../../design-tokens');
 
-      const sd = new StyleDictionary();
-      const tokensPackageSD = await sd.extend(
-        getTokensPackageConfig(brand, packageTokensPath),
-      );
+  if (brands.length > 0) {
+    console.log('🍱 Staring token builder');
+    console.log('➡️  Recieved following brands: ', brands);
 
-      return tokensPackageSD.buildAllPlatforms();
-    }),
-  );
-  console.log('🏁 Finished building package tokens!');
+    console.log('\n🏗️  Start building CSS tokens');
+    await Promise.all(
+      brands.map(async (brand) => {
+        console.log(`👷 Processing ${brand}`);
 
-  console.log('\n🏗️  Started building storefront tokens…');
-  await Promise.all(
-    brands.map(async (brand) => {
-      console.log(`👷 Processing ${brand}`);
+        const sd = new StyleDictionary();
+        const tokensPackageSD = await sd.extend(
+          getTokensPackageConfig(brand, packageTokensPath, tokensPath),
+        );
 
-      const storefrontSD = new StyleDictionary(
-        getStorefrontConfig(brand, storefrontTokensPath),
-      );
+        return tokensPackageSD.buildAllPlatforms();
+      }),
+    );
+    console.log('🏁 Finished building package tokens!');
 
-      return storefrontSD.buildAllPlatforms();
-    }),
-  );
-  console.log('🏁 Finished building storefront tokens!');
+    console.log('\n🏗️  Started building storefront tokens…');
+    await Promise.all(
+      brands.map(async (brand) => {
+        console.log(`👷 Processing ${brand}`);
+
+        const storefrontSD = new StyleDictionary(
+          getStorefrontConfig(brand, storefrontTokensPath, tokensPath),
+        );
+
+        return storefrontSD.buildAllPlatforms();
+      }),
+    );
+    console.log('🏁 Finished building storefront tokens!');
+  }
 }

@@ -12,17 +12,17 @@
     "access": "public"
   },
   "scripts": {
-    "start": "esno ./src/tokens/build.ts",
-    "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
+    "start": "esno ./bin/designsystemet.ts",
+    "build": "yarn clean && yarn start tokens -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean",
-    "css-light-dark-codemod": "esno ./src/codemods/migrations/light-dark.ts"
+    "css-light-dark-codemod": "esno ./bin/designsystemet.ts migrate tokens-rename-light-dark"
   },
   "files": [
     "./dist/**"
   ],
   "bin": {
-    "designsystemet": "./dist/build/build.js"
+    "designsystemet": "./dist/build/bin/designsystemet.js"
   },
   "dependencies": {
     "esno": "^4.7.0",

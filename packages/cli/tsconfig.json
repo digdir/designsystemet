@@ -10,5 +10,5 @@
     "esModuleInterop": true
   },
   "rootDir": "./src",
-  "include": ["./src/", "./declarations.d.ts"]
+  "include": ["./src/", "./bin/", "./declarations.d.ts"]
 }

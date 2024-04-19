@@ -2654,7 +2654,7 @@ __metadata:
     typescript: "npm:^5.4.5"
     yargs: "npm:^17.7.2"
   bin:
-    designsystemet: ./dist/build/build.js
+    designsystemet: ./dist/build/bin/designsystemet.js
   languageName: unknown
   linkType: soft
 
