@@ -12,7 +12,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "esno ./src/build.ts",
+    "start": "esno ./src/tokens/build.ts",
     "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean",
