@@ -17,8 +17,7 @@ export default ({ children }) => (
   />
 );
 
-
-[Altinn Studio](https://altinn.studio/) er et verktøy for å lage digitale tjenester. Bruker du Altinn Studio for å bygge tjenester, bruker du automatisk komponenter fra Designsystemet! 
+[Altinn Studio](https://altinn.studio/) er et verktøy for å lage digitale tjenester. Bruker du Altinn Studio for å bygge tjenester, bruker du automatisk komponenter fra Designsystemet!
 
 For at Team Altinn Studio skal nå sine mål om å skape et godt verktøy — må et godt designsystem ligge i bunn. Utviklerne i Altinn Studio trenger komponenter som er tilgjengelig for brukerne på en god måte, men samtidig tillater dem å utvide komponentene til det mer komplekse.
 
@@ -26,13 +25,16 @@ _"Det er viktig at det er mulig å utvide komponentene til det mer komplekse, fo
 
 <Card color='second'>
   <Card.Content>
-    David Øvrelid, Tech Lead i Altinn Studio, forklarer hvordan Altinn Studio bruker Designsystemet. Artikkelen ble først publisert på Medium. [Les den opprinnelige artikkelen](https://davidovrelid.com/hvordan-vi-kan-ta-i-bruk-designsystemet-no-p%C3%A5-en-forusigbar-m%C3%A5te-3988980884a2)
+    David Øvrelid, Tech Lead i Altinn Studio, forklarer hvordan Altinn Studio
+    bruker Designsystemet. Artikkelen ble først publisert på Medium. [Les den
+    opprinnelige
+    artikkelen](https://davidovrelid.com/hvordan-vi-kan-ta-i-bruk-designsystemet-no-p%C3%A5-en-forusigbar-m%C3%A5te-3988980884a2)
   </Card.Content>
 </Card>
-<br/>
-<br/>
- ---
-<br/>
+<br />
+<br />
+---
+<br />
 
 Når vi skal ta i bruk en tredjepart, uavhengig om det er designsystemt eller noe annet. Så er det viktig å tenke over noen grunnlegende kjøreregler for å sørge for kvalitet og sikkerhet i din løsning.
 
@@ -62,6 +64,7 @@ Hvordan kan vi ivareta egne mønstre, konsepter, trygghet og breaking changes? N
 Hva er egentlig å isolere en trejdepart? Det handler om å sørge for at vi bare har et integrasjonspunkt med tredjepart. I dette tilfellet handler det om at vi bare har avhengigheter til desginsystemet et sted. Hvordan kan vi oppnå det? Vi kan oppnå det ved å ta i bruk fasademønsteret.
 
 ## Fasademønsteret
+
 _Fasademønsteret i programvareutvikling refererer til en designmønstre som tillater klienter å kommunisere med komplekse systemer gjennom et forenklet grensesnitt. Det brukes til å skjule kompleksiteten til underliggende systemer og fremme en mer modulær og vedlikeholdbar kodebase._
 
 **Altinn Studio benytter seg av designsystemet.no ved hjelp av fasademønsteret.**
@@ -88,6 +91,7 @@ Eksempelvis har Altinn Studio behov for en [ExpressionEditor](https://components
 Her ivaretar Team Altinn Studio det første prinsippet med å kunne definere egne mønstre og konsepter for sitt produkt, for å imøtekomme god brukeropplevelse. Dette forenkler også arbeidshverdagen for designere og utviklere på teamet. Fordi de har skapt en gjenbrukbar komponent for alle steder det er nødvendig å redigere en expression.
 
 ## Hvordan ivareta tryggheten?
+
 La oss gå videre og finne ut hvordan vi kan ivareta tryggheten ved oppdateringer av ny versjon av designsystemet.
 
 For å oppnå trygghet og sikkerhet ved oppdateringer av tredjepart er det viktig med isolering av tredjeparten. Hvis man ikke isolerer designsystemet må en ha direkte avhengigheter til designsystemet i alle sider og komponenter i appen. Dette betyr at en må innom alle komponenter og sider som benytter seg av en komponent fra designsystemet som får breaking change. Det betyr at vi potensielt kan få hundrevis av filer som er endret, bare fordi man gjorde en oppdatering av designsystemet. Figur 4 under viser en forenklet illustrasjon. Illustrasjonen viser fire sider som benytter seg av en knapp direkte fra designsystemet, altså ingen isolering. Det betyr at dersom knappen får en breaking change, må det endres kode i 4 side-komponenter. I det virklige liv kan det være snakk om endringer i hundevis av komponenter. Dette gjør at man ikke er helt sikker på om alt fungerer som før oppdateringen.
@@ -122,16 +126,8 @@ Nå kan de dokumentere og benytte de samme komponentene og navnene både i Figma
 
 Det er avgjørende å sikre at komponentene som utgjør fasadepakken er enkle. Dette betyr at de kun bør motta informasjon som input-props, basert på denne inputen, levere et forventet resultat tilbake. Det er essensielt at komponentene i fasadepakken ikke foretar API-kall eller har tette koblinger til eksterne tredjeparter. Dette kan føre til redusert gjenbrukbarhet av komponentene.
 
-
 ## Oppsummering
 
 Nå har vi lært at vi burde vurdere å isolere tredjeparter som blir brukt som en sentral del av vår egen løsning. Vi har lært at isolering vil skape trygghet og forutsigbarhet. Det vil bidra til å kunne dokumentere og utivkle interne konsepter og mønstre som bygger videre på designsystemet for produktets behov, samtidig som helheten ivaretas. Det vil være med å knytte et enda tettere og bedre samarbeidet mellom design og utvikling.
 
-
-
-<Contributors
-  authors={[
-    'David Øvrelid',
-  ]}
-/>
-
+<Contributors authors={['David Øvrelid']} />
