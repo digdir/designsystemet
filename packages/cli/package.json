@@ -1,5 +1,5 @@
 {
-  "name": "@digdir/designsystemet-cli",
+  "name": "@digdir/designsystemet",
   "version": "0.0.1",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
@@ -21,9 +21,7 @@
   "files": [
     "./dist/**"
   ],
-  "bin": {
-    "designsystemet": "./dist/build/bin/designsystemet.js"
-  },
+  "bin": "./dist/build/bin/designsystemet.js",
   "dependencies": {
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
