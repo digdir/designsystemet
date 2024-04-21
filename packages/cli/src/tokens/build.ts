@@ -33,10 +33,10 @@ StyleDictionary.registerTransformGroup({
     nameKebab.name,
     sizeRem.name,
     typographyShorthand.name,
-    'ts/size/lineheight',
-    'ts/shadow/css/shorthand',
     'ts/color/modifiers',
     'ts/color/css/hexrgba',
+    'ts/size/lineheight',
+    'ts/shadow/css/shorthand',
   ],
 });
 
@@ -60,7 +60,7 @@ const excludeSource = (token: TransformedToken) => {
   return true;
 };
 
-const getTokensPackageConfig = (
+const getCSSTokensConfig = (
   brand: Brand,
   targetFolder = '',
   tokensPath: string,
@@ -83,9 +83,9 @@ const getTokensPackageConfig = (
         ],
         options: {
           fileHeader,
-          referencesFilter: (token: TransformedToken) =>
-            !(token.path[0] === 'viewport') &&
-            ['color'].includes(token.type as string),
+          includeReferences: (token: TransformedToken) =>
+            ['color'].includes(token.type as string) &&
+            !(token.value as string).startsWith('rgba'),
         },
       },
     },
@@ -146,7 +146,7 @@ export async function run(options: Options): Promise<void> {
 
         const sd = new StyleDictionary();
         const tokensPackageSD = await sd.extend(
-          getTokensPackageConfig(brand, packageTokensPath, tokensPath),
+          getCSSTokensConfig(brand, packageTokensPath, tokensPath),
         );
 
         return tokensPackageSD.buildAllPlatforms();

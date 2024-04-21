@@ -7,7 +7,7 @@ import {
   getReferences,
 } from 'style-dictionary/utils';
 
-type ReferencesFilter = (token: TransformedToken) => boolean;
+type IncludeReferences = (token: TransformedToken) => boolean;
 
 /**
  *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
@@ -17,7 +17,7 @@ export const scopedReferenceVariables: Format = {
   formatter: async function ({ dictionary, file, options }) {
     const { allTokens, unfilteredTokens } = dictionary;
     const { usesDtcg, outputReferences } = options;
-    const includeReferences = options.referencesFilter as ReferencesFilter;
+    const includeReferences = options.includeReferences as IncludeReferences;
     let referencedTokens: TransformedToken[] = [];
 
     const format = createPropertyFormatter({

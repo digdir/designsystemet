@@ -97,11 +97,11 @@
   --fds-semantic-surface-action-second-subtle: var(--fds-colors-grey-100);
   --fds-semantic-surface-action-second-subtle-hover: var(--fds-colors-grey-200);
   --fds-semantic-surface-action-second-default: var(--fds-colors-blue-900);
-  --fds-semantic-surface-action-second-hover: rgba(var(--fds-colors-blue-900), 0.9);
-  --fds-semantic-surface-action-second-active: rgba(var(--fds-colors-blue-900), 0.8);
+  --fds-semantic-surface-action-second-hover: rgba(0, 49, 93, 0.9);
+  --fds-semantic-surface-action-second-active: rgba(0, 49, 93, 0.8);
   --fds-semantic-surface-action-second-no_fill: var(--fds-colors-white);
-  --fds-semantic-surface-action-second-no_fill-hover: rgba(var(--fds-colors-blue-900), 0.1);
-  --fds-semantic-surface-action-second-no_fill-active: rgba(var(--fds-colors-blue-900), 0.2);
+  --fds-semantic-surface-action-second-no_fill-hover: rgba(0, 49, 93, 0.1);
+  --fds-semantic-surface-action-second-no_fill-active: rgba(0, 49, 93, 0.2);
   --fds-semantic-surface-action-subtle: var(--fds-colors-blue-100);
   --fds-semantic-surface-action-subtle-hover: var(--fds-colors-blue-200);
   --fds-semantic-surface-action-default: var(--fds-colors-blue-700);
