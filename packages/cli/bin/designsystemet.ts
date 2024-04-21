@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 import { run } from '../src/tokens/build';
 import migrations from '../src/codemods/migrations';
 
 const pickBrands = (x: string | number): x is string => typeof x === 'string';
 
-void yargs(process.argv.slice(2))
+void yargs(hideBin(process.argv))
   .command(
     'tokens',
     'run Designsystem token builder',
