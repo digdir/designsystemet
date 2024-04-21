@@ -33,8 +33,9 @@ program
 
 program
   .command('migrate')
+  .description('run a Designsystemet migration')
   .addArgument(
-    new Argument('<migraton>', 'migration to run').choices(
+    new Argument('<migration>', 'Migration to run').choices(
       Object.keys(migrations),
     ),
   )
