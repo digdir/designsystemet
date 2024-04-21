@@ -133,11 +133,12 @@ export async function run(options: Options): Promise<void> {
 
   const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
   const packageTokensPath = path.resolve('../../packages/theme/brand');
-  const tokensPath = options.tokens || path.resolve('../../design-tokens');
+  const tokensPath = options.tokens;
 
   if (brands.length > 0) {
     console.log('🍱 Staring token builder');
-    console.log('➡️  Recieved following brands: ', brands);
+    console.log('➡️  Tokens path: ', tokensPath);
+    console.log('➡️  Brands: ', brands);
 
     console.log('\n🏗️  Start building CSS tokens');
     await Promise.all(

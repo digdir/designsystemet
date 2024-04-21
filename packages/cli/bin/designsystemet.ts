@@ -14,12 +14,20 @@ program
 program
   .command('tokens')
   .description('run Designsystemet token builder')
-  .option('-t, --tokens', 'Location for design-tokens', '../../design-tokens')
-  .option('-b, --brands [brands...]', 'Brand files to include', ['Digdir'])
+  .option(
+    '-t, --tokens <string>',
+    'Path to "design-tokens"',
+    '../../design-tokens',
+  )
+  .option(
+    '-b, --brands [brands...]',
+    'Brand files in "design-tokens" to include',
+    ['Digdir'],
+  )
   .option('-p, --preview')
   .action((opts) => {
     const brands = Array.isArray(opts.brands) ? opts.brands : [];
-    const tokens = opts.tokens as string;
+    const tokens = typeof opts.tokens === 'string' ? opts.tokens : '';
     return run({ brands, tokens });
   });
 
@@ -39,4 +47,4 @@ program
     migration?.();
   });
 
-program.parse();
+await program.parseAsync(process.argv);
