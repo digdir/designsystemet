@@ -1,4 +1,4 @@
-import lightDark from './migrations/light-dark';
+import lightDark from './migrations/light-dark.js';
 
 export default {
   'tokens-rename-light-dark': lightDark,

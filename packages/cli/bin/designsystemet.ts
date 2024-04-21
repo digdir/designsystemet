@@ -2,15 +2,15 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { run } from '../src/tokens/build';
-import migrations from '../src/codemods/migrations';
+import migrations from './../src/codemods/migrations.js';
+import { run } from './../src/tokens/build.js';
 
 const pickBrands = (x: string | number): x is string => typeof x === 'string';
 
 void yargs(hideBin(process.argv))
   .command(
     'tokens',
-    'run Designsystem token builder',
+    'run Designsystemet token builder',
     (yargs) =>
       yargs.options({
         brands: {
@@ -39,7 +39,7 @@ void yargs(hideBin(process.argv))
   )
   .command(
     'migrate <migration>',
-    'run Designsystem migrations',
+    'run Designsystemet migrations',
     (yargs) =>
       yargs.positional('migration', {
         type: 'string',
@@ -56,4 +56,6 @@ void yargs(hideBin(process.argv))
       migration?.();
     },
   )
+  .demandCommand(1)
+  .showHelpOnFail(true)
   .parse();

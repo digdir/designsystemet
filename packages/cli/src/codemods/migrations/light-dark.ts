@@ -1,4 +1,4 @@
-import { cssVarCodemod } from '../css-var-codemod';
+import { cssVarCodemod } from '../css-var-codemod.js';
 
 export default () =>
   cssVarCodemod({
