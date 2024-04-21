@@ -1,15 +1,12 @@
 #!/usr/bin/env node
 import { Argument, program } from '@commander-js/extra-typings';
 
-import pkg from '../package.json' with { type: 'json' };
-
 import migrations from './../src/codemods/migrations.js';
 import { run } from './../src/tokens/build.js';
 
 program
   .name('Designsystemet')
-  .description('CLI for working with Designsystemet')
-  .version(pkg.version);
+  .description('CLI for working with Designsystemet');
 
 program
   .command('tokens')
