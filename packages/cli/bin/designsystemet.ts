@@ -1,61 +1,42 @@
 #!/usr/bin/env node
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
+import { Argument, program } from '@commander-js/extra-typings';
+
+import pkg from '../package.json' with { type: 'json' };
 
 import migrations from './../src/codemods/migrations.js';
 import { run } from './../src/tokens/build.js';
 
-const pickBrands = (x: string | number): x is string => typeof x === 'string';
+program
+  .name('Designsystemet')
+  .description('CLI for working with Designsystemet')
+  .version(pkg.version);
 
-void yargs(hideBin(process.argv))
-  .command(
-    'tokens',
-    'run Designsystemet token builder',
-    (yargs) =>
-      yargs.options({
-        brands: {
-          type: 'array',
-          default: [],
-          describe: 'Brand files to build',
-          alias: 'b',
-        },
-        tokens: {
-          type: 'string',
-          describe: 'Location for design-tokens',
-          demandOption: true,
-          alias: 't',
-        },
-        preview: {
-          alias: 'p',
-          type: 'boolean',
-          describe: 'Generate typescript token preview files',
-        },
-      }),
-    (argv) => {
-      // Typescript 🤯
-      const brands = argv.brands.filter(pickBrands).filter(pickBrands);
-      return run({ brands, tokens: argv.tokens });
-    },
+program
+  .command('tokens')
+  .description('run Designsystemet token builder')
+  .option('-t, --tokens', 'Location for design-tokens', '../../design-tokens')
+  .option('-b, --brands [brands...]', 'Brand files to include')
+  .option('-p, --preview')
+  .action((opts) => {
+    const brands = Array.isArray(opts.brands) ? opts.brands : [];
+    const tokens = opts.tokens as string;
+    return run({ brands, tokens });
+  });
+
+program
+  .command('migrate')
+  .addArgument(
+    new Argument('<migraton>', 'migration to run').choices(
+      Object.keys(migrations),
+    ),
   )
-  .command(
-    'migrate <migration>',
-    'run Designsystemet migrations',
-    (yargs) =>
-      yargs.positional('migration', {
-        type: 'string',
-        demandOption: true,
-        choices: Object.keys(migrations),
-      }),
-    (argv) => {
-      const migrationKey = argv.migration as keyof typeof migrations;
-      const migration = migrations[migrationKey];
-      if (!migration) {
-        console.error('Migration not found!');
-        throw 'Aborting';
-      }
-      migration?.();
-    },
-  )
-  .demandCommand(1)
-  .showHelpOnFail(true)
-  .parse();
+  .action((migrationKey) => {
+    const migration = migrations[migrationKey as keyof typeof migrations];
+    if (!migration) {
+      console.error('Migration not found!');
+      throw 'Aborting';
+    }
+    migration?.();
+  });
+
+program.parse();
