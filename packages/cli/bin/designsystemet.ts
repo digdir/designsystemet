@@ -15,7 +15,7 @@ program
   .command('tokens')
   .description('run Designsystemet token builder')
   .option('-t, --tokens', 'Location for design-tokens', '../../design-tokens')
-  .option('-b, --brands [brands...]', 'Brand files to include')
+  .option('-b, --brands [brands...]', 'Brand files to include', ['Digdir'])
   .option('-p, --preview')
   .action((opts) => {
     const brands = Array.isArray(opts.brands) ? opts.brands : [];
