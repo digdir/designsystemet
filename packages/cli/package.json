@@ -13,7 +13,7 @@
   },
   "scripts": {
     "designsystemet": "esno ./bin/designsystemet.ts",
-    "build": "yarn clean && yarn start tokens -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
+    "build": "yarn clean && yarn designsystemet tokens -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean",
     "css-light-dark-codemod": "esno ./bin/designsystemet.ts migrate tokens-rename-light-dark"
