@@ -108,6 +108,8 @@ const getStorefrontConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): C
 type Options = {
   /** Design tokens path  */
   tokens: string;
+  /** Output directoru for built tokens */
+  out: string;
 };
 
 const sd = new StyleDictionary();
@@ -115,7 +117,7 @@ const sd = new StyleDictionary();
 export async function run(options: Options): Promise<void> {
   const tokensPath = options.tokens;
   const storefrontTokensOutPath = path.resolve('../../apps/storefront/tokens');
-  const packageTokensOutPath = path.resolve('../../packages/theme/brand');
+  const packageTokensOutPath = path.resolve(options.out);
 
   const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensPath}/$themes.json`), 'utf-8')) as ThemeObject[];
 
