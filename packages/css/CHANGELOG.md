@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.4.0...@digdir/designsystemet-css@0.5.0) (2024-04-22)
+
+### Features
+
+- **Button:** Removed `inverted` color ([#1828](https://github.com/digdir/designsystemet/issues/1828)) ([01ad9c5](https://github.com/digdir/designsystemet/commit/01ad9c52459d14270872d2f7e6a0c8a474e0ab2e))
+- **Ingress:** add `xsmall`, `small`, `large` sizes ([#1838](https://github.com/digdir/designsystemet/issues/1838)) ([2ec7d2c](https://github.com/digdir/designsystemet/commit/2ec7d2c24d344d018e1bf2c959ea826b7a60ade5))
+
 # [0.4.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.3.3-alpha.2...@digdir/designsystemet-css@0.4.0) (2024-04-15)
 
 ### Features
