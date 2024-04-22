@@ -31,13 +31,18 @@ program
       Object.keys(migrations).forEach((key) => {
         console.log(key);
       });
-    } else {
+      process.exit(0);
+    }
+
+    if (migrationKey) {
       const migration = migrations[migrationKey as keyof typeof migrations];
       if (!migration) {
         console.error('Migration not found!');
         throw 'Aborting';
       }
+      console.log(`Applying migration ${migrationKey} with glob: ${glob}`);
       migration?.(glob);
+      process.exit(0);
     }
   });
 
