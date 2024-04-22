@@ -256,7 +256,7 @@
   --fds-border_radius-xxxlarge: 24px;
   --fds-border_radius-xxxxlarge: 32px;
   --fds-border_radius-full: 9999px;
-  --fds-spacing-0: 0rem;
+  --fds-spacing-0: 0;
   --fds-spacing-1: 0.25rem;
   --fds-spacing-2: 0.5rem;
   --fds-spacing-3: 0.75rem;
@@ -277,7 +277,7 @@
   --fds-spacing-26: 6.5rem;
   --fds-spacing-30: 7.5rem;
   --fds-base_spacing: 4;
-  --fds-sizing-0: 0rem;
+  --fds-sizing-0: 0;
   --fds-sizing-1: 0.25rem;
   --fds-sizing-2: 0.5rem;
   --fds-sizing-3: 0.75rem;
