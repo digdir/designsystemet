@@ -23,6 +23,7 @@
   ],
   "bin": "./dist/build/bin/designsystemet.js",
   "dependencies": {
+    "chalk": "^5.3.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
     "postcss": "^8.4.38"

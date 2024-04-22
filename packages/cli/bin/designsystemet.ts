@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { Argument, program } from '@commander-js/extra-typings';
+import chalk from 'chalk';
 
 import migrations from './../src/migrations/index.js';
 import { run } from './../src/tokens/build.js';
@@ -14,6 +15,7 @@ program
   .option('-p, --preview')
   .action((opts) => {
     const tokens = typeof opts.tokens === 'string' ? opts.tokens : '';
+    console.log(`Bulding tokens in ${chalk.green(tokens)}`);
     return run({ tokens });
   });
 
@@ -21,7 +23,7 @@ program
   .command('migrate')
   .showHelpAfterError()
   .description('run a Designsystemet migration')
-  .addArgument(new Argument('[migration]', 'Migration to run').choices(Object.keys(migrations)))
+  .addArgument(new Argument('[migration]', 'Available migrations').choices(Object.keys(migrations)))
   .option('-l --list', 'List available migrations')
   .option('-g --glob <glob>', 'Glob for files upon which to apply the migration', './**/*.css')
   .action((migrationKey, opts) => {
@@ -40,10 +42,13 @@ program
         console.error('Migration not found!');
         throw 'Aborting';
       }
-      console.log(`Applying migration ${migrationKey} with glob: ${glob}`);
+
+      console.log(`Applying migration ${chalk.blue(migrationKey)} with glob: ${chalk.green(glob)}`);
       migration?.(glob);
       process.exit(0);
     }
+
+    console.log('Migrate: please specify a migration name or --list');
   });
 
 await program.parseAsync(process.argv);
