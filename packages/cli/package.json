@@ -1,9 +1,12 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
-  "repository": "https://github.com/digdir/designsystemet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
@@ -21,7 +24,9 @@
   "files": [
     "./dist/**"
   ],
-  "bin": "./dist/build/bin/designsystemet.js",
+  "bin": {
+    "designsystemet": "dist/build/bin/designsystemet.js"
+  },
   "dependencies": {
     "@commander-js/extra-typings": "^12.0.1",
     "@tokens-studio/sd-transforms": "^0.16.0",
