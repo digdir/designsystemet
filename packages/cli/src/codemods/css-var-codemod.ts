@@ -10,7 +10,7 @@ type CSSCodemodProps = {
   globPath?: string;
 };
 
-export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemodProps) => {
+export const cssVarCodemod = async ({ dictionary, globPath = './**/*.css' }: CSSCodemodProps) => {
   const transformPlugin: Plugin = {
     postcssPlugin: 'Replaces referenced CSS variables',
     Declaration(decl) {
@@ -18,11 +18,11 @@ export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemo
         const newValue = dictionary[key];
 
         if (R.isEmpty(newValue)) {
-          // console.log(`Skipping "${key}"; missing new value`);
+          //console.log(`Skipping "${key}"; missing new value`);
         }
 
         if (newValue === '[delete]') {
-          // console.log(`Found delete token "${key}"`);
+          //console.log(`Found delete token "${key}"`);
         }
 
         if (decl.value.includes(key) && !R.isEmpty(newValue)) {

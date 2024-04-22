@@ -33,10 +33,7 @@ program
       Object.keys(migrations).forEach((key) => {
         console.log(key);
       });
-      process.exit(0);
-    }
-
-    if (migrationKey) {
+    } else if (migrationKey) {
       const migration = migrations[migrationKey as keyof typeof migrations];
       if (!migration) {
         console.error('Migration not found!');
@@ -44,11 +41,12 @@ program
       }
 
       console.log(`Applying migration ${chalk.blue(migrationKey)} with glob: ${chalk.green(glob)}`);
-      migration?.(glob);
-      process.exit(0);
+      migration?.(glob)
+        .then(() => console.log(`Migration ${chalk.blue(migrationKey)} finished`))
+        .catch((error) => console.log(error));
+    } else {
+      console.log('Migrate: please specify a migration name or --list');
     }
-
-    console.log('Migrate: please specify a migration name or --list');
   });
 
 await program.parseAsync(process.argv);
