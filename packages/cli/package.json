@@ -12,10 +12,9 @@
   },
   "scripts": {
     "designsystemet": "esno ./bin/designsystemet.ts",
-    "build": "yarn clean && yarn designsystemet tokens -t ../../design-tokens",
+    "build:tokens": "yarn clean && yarn designsystemet tokens -t ../../design-tokens",
     "prepublish": "tsc",
-    "clean": "yarn workspace @digdir/designsystemet-theme clean",
-    "css-light-dark-codemod": "esno ./bin/designsystemet.ts migrate tokens-rename-light-dark"
+    "clean": "yarn workspace @digdir/designsystemet-theme clean"
   },
   "files": [
     "./dist/**"
