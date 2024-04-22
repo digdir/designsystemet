@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     border: var(--fds-border_width-default) solid transparent;
+    background-color: var(--fds-semantic-surface-action-first-default);
     color: var(--fds-semantic-text-action-first-on_action);
     min-width: 2.5em;
     padding: var(--fds-btn-padding);
