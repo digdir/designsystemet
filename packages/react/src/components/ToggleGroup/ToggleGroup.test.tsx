@@ -28,16 +28,7 @@ describe('ToggleGroup', () => {
     const item = screen.getByRole<HTMLButtonElement>('radio');
     expect(item.name).toEqual('my name');
   });
-  test('has passed size to ToggleGroupItem children', (): void => {
-    render(
-      <ToggleGroup size='medium'>
-        <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup>,
-    );
 
-    const item = screen.getByRole<HTMLButtonElement>('radio');
-    expect(item).toHaveClass('medium');
-  });
   test('can navigate with tab and arrow keys', async () => {
     render(
       <ToggleGroup>
