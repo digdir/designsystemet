@@ -630,3 +630,54 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
 ThousandsOfOptions.args = {
   virtual: true,
 };
+
+export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
+  const [selectedValues, setSelectedValues] = React.useState<string[]>([
+    'test1',
+    'test2',
+  ]);
+  const [values, setValues] = React.useState<string[]>(['test1', 'test2']);
+
+  const handleComboboxChange = (values: string[]) => {
+    setSelectedValues(values);
+  };
+
+  const changeAllValues = (deleteValues: boolean) =>
+    setValues(deleteValues ? [] : ['test1', 'test2']);
+
+  const changeSomeValues = (removeTest2: boolean) =>
+    setValues(removeTest2 ? ['test1'] : ['test1', 'test2']);
+
+  const currentSelectedValues = selectedValues.filter((id) =>
+    values.includes(id),
+  );
+
+  return (
+    <>
+      <Combobox
+        {...args}
+        multiple
+        value={currentSelectedValues}
+        onValueChange={handleComboboxChange}
+      >
+        {values.map((attachment) => {
+          return (
+            <Combobox.Option
+              key={attachment}
+              value={attachment}
+              description={attachment}
+              displayValue={attachment}
+            />
+          );
+        })}
+      </Combobox>
+      <Switch onChange={(event) => changeAllValues(event.target.checked)}>
+        Remove Values (Selected values remain unchanged as the combobox does not
+        update when options are empty.)
+      </Switch>
+      <Switch onChange={(event) => changeSomeValues(event.target.checked)}>
+        Remove test2 (this works)
+      </Switch>
+    </>
+  );
+};

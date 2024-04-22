@@ -217,7 +217,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
-      if (value && value.length > 0 && !multiple) {
+      if (value && value.length >= 0 && !multiple) {
         const option = options[value[0]];
         setInputValue(option?.label || '');
       }
@@ -234,7 +234,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
 
     useEffect(() => {
-      if (value && Object.keys(options).length > 0) {
+      if (value && Object.keys(options).length >= 0) {
         const updatedSelectedOptions = value.map((option) => {
           const value = options[option];
           return value;

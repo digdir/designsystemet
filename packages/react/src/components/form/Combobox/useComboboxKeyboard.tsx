@@ -93,7 +93,7 @@ export const useComboboxKeyboard = ({
         if (
           inputValue === '' &&
           multiple &&
-          Object.keys(selectedOptions).length > 0
+          Object.keys(selectedOptions).length >= 0
         ) {
           setSelectedOptions((prev) => {
             const updated = { ...prev };
