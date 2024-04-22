@@ -4,8 +4,8 @@
   display: block;
   color: inherit;
   text-decoration: none;
-  box-shadow: var(--fds-shadow-xsmall);
-  border-radius: 4px;
+  box-shadow: var(--fds-shadow-small);
+  border-radius: 8px;
   transition: 0.2s all;
   position: relative;
   z-index: 2;
@@ -67,4 +67,5 @@
 .desc {
   font: var(--fds-typography-paragraph-small);
   text-align: center;
+  line-height: 1.7em;
 }

@@ -1,7 +1,6 @@
 .section {
   background-color: var(--fds-semantic-background-subtle);
-  padding: var(--fds-spacing-14) 0 var(--fds-spacing-18) 0;
-  text-align: center;
+  padding: calc(var(--fds-spacing-14) + var(--fds-spacing-2)) 0 var(--fds-spacing-18) 0;
 }
 
 .white {
@@ -14,6 +13,7 @@
 
 .header {
   margin-bottom: var(--fds-spacing-8);
+  text-align: center;
 }
 
 .content {
@@ -26,4 +26,28 @@
 .detail {
   margin-top: var(--fds-spacing-4);
   height: var(--fds-spacing-7);
+}
+
+.separator {
+  width: 200px;
+  height: 2px;
+  background-color: var(--fds-semantic-border-neutral-subtle);
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 44px;
+  margin-bottom: 48px;
+}
+
+.separatorContainer {
+  position: absolute;
+  top: -37px;
+  left: calc(50% - 37px);
+  background-color: var(--fds-semantic-background-subtle);
+  padding: 24px;
+}
+
+.separator img {
+  height: 24px;
+  width: 24px;
 }

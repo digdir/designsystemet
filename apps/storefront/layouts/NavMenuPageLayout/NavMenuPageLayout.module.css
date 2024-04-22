@@ -16,3 +16,7 @@
   flex-basis: 600px;
   flex-grow: 500;
 }
+
+.outerPage {
+  background-color: var(--fds-semantic-background-subtle);
+}

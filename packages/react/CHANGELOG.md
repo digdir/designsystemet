@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.58.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.57.0...@digdir/designsystemet-react@0.58.0) (2024-04-22)
+
+### Bug Fixes
+
+- **Textarea** Add missing error border ([#1853](https://github.com/digdir/designsystemet/issues/1853)) ([fc6c0c5](https://github.com/digdir/designsystemet/commit/fc6c0c58f6d9a3b4ce2f868ae1164fe673acefd6))
+
+### Features
+
+- **Button:** Removed `inverted` color ([#1828](https://github.com/digdir/designsystemet/issues/1828)) ([01ad9c5](https://github.com/digdir/designsystemet/commit/01ad9c52459d14270872d2f7e6a0c8a474e0ab2e))
+- **Ingress:** Add `xsmall`, `small`, `large` sizes ([#1838](https://github.com/digdir/designsystemet/issues/1838)) ([2ec7d2c](https://github.com/digdir/designsystemet/commit/2ec7d2c24d344d018e1bf2c959ea826b7a60ade5))
+
 # [0.57.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.56.3-alpha.1...@digdir/designsystemet-react@0.57.0) (2024-04-15)
 
 ### Bug Fixes
