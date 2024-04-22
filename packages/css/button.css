@@ -1,4 +1,4 @@
-@layer fds.button {
+@layer fds.btn {
   .fds-btn {
     --fds-btn-padding: 0 var(--fds-spacing-4);
 
