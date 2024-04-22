@@ -29,7 +29,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.4",
+    "@floating-ui/react": "0.26.12",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-virtual": "^3.2.0"

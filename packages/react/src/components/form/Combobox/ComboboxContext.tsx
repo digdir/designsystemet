@@ -1,10 +1,9 @@
 import type {
   UseFloatingReturn,
   UseListNavigationProps,
+  useInteractions,
 } from '@floating-ui/react';
-import type { HTMLProps } from 'react';
 import { createContext } from 'react';
-import type { ExtendedUserProps } from '@floating-ui/react/src/hooks/useInteractions';
 
 import type { useFormField } from '../useFormField';
 
@@ -44,12 +43,7 @@ type ComboboxContextType = {
   getReferenceProps: (
     props?: Record<string, unknown>,
   ) => Record<string, unknown>;
-  getItemProps: (
-    userProps?:
-      | (Omit<HTMLProps<HTMLElement>, 'selected' | 'active'> &
-          ExtendedUserProps)
-      | undefined,
-  ) => Record<string, unknown>;
+  getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
   onOptionClick: (value: string) => void;
   setSelectedOptions: React.Dispatch<
     React.SetStateAction<{
