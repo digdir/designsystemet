@@ -110,6 +110,8 @@ type Options = {
   tokens: string;
   /** Output directoru for built tokens */
   out: string;
+  /** Generate preview tokens */
+  preview: boolean;
 };
 
 const sd = new StyleDictionary();
@@ -147,7 +149,7 @@ export async function run(options: Options): Promise<void> {
           include,
         };
 
-        console.log(config);
+        // console.log(config);
 
         return [`${folderName}: ${fileName}`, config];
       })
@@ -173,7 +175,7 @@ export async function run(options: Options): Promise<void> {
     console.log('🏁 Finished building package tokens!');
   }
 
-  if (storefrontConfigs.length > 0) {
+  if (storefrontConfigs.length > 0 && options.preview) {
     console.log('\n🏗️  Started building storefront tokens…');
     await Promise.all(
       storefrontConfigs.map(async ([name, config]) => {

@@ -11,14 +11,15 @@ program
   .command('tokens')
   .showHelpAfterError()
   .description('run Designsystemet token builder')
-  .option('-t, --tokens [string]', `Path to ${chalk.blue('design-tokens')}`, 'design-tokens')
-  .option('-o, --out [string]', `Output directory for built ${chalk.blue('design-tokens')}`, 'dist/tokens')
-  .option('-p, --preview')
+  .option('-t, --tokens [string]', `Path to ${chalk.blue('design-tokens')}`, './design-tokens')
+  .option('-o, --out [string]', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
+  .option('-p, --preview', 'Generate preview token.ts files', false)
   .action((opts) => {
-    const tokens = typeof opts.tokens === 'string' ? opts.tokens : 'design-tokens';
-    const out = typeof opts.out === 'string' ? opts.out : 'dist/tokens';
+    const tokens = typeof opts.tokens === 'string' ? opts.tokens : './design-tokens';
+    const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
+    const preview = opts.preview;
     console.log(`Bulding tokens in ${chalk.green(tokens)}`);
-    return run({ tokens, out });
+    return run({ tokens, out, preview });
   });
 
 program
