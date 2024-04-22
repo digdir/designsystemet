@@ -5,9 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.15.2](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.1...@digdir/designsystemet-theme@0.15.2) (2024-04-22)
 
-### Reverts
-
-- Revert "feat(tokens): removed inverted color tokens that should not exist (#1829)" ([21bd572](https://github.com/digdir/designsystemet/commit/21bd572e8cc4e219755251e237e5d6b44ebf88fe)), closes [#1829](https://github.com/digdir/designsystemet/issues/1829)
+**Note:** Version bump only for package @digdir/designsystemet-theme
 
 ## [0.15.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.1-alpha.3...@digdir/designsystemet-theme@0.15.1) (2024-04-15)
 

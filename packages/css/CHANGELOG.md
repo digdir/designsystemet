@@ -5,6 +5,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.5.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.4.0...@digdir/designsystemet-css@0.5.0) (2024-04-22)
 
+### Bug Fixes
+
+- **Textarea** Add missing error border ([#1853](https://github.com/digdir/designsystemet/issues/1853)) ([fc6c0c5](https://github.com/digdir/designsystemet/commit/fc6c0c58f6d9a3b4ce2f868ae1164fe673acefd6))
+
 ### Features
 
 - **Button:** Removed `inverted` color ([#1828](https://github.com/digdir/designsystemet/issues/1828)) ([01ad9c5](https://github.com/digdir/designsystemet/commit/01ad9c52459d14270872d2f7e6a0c8a474e0ab2e))
