@@ -183,6 +183,19 @@ Danger.decorators = [
   ),
 ];
 
+export const Success: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      variant='primary'
+      color='success'
+    >
+      Send inn
+    </Button>
+  </>
+);
+
+Success.decorators = [stack];
+
 export const KombinereFarger: StoryFn<typeof Button> = () => (
   <>
     <Button
