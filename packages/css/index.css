@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/** Import order defines ordinal specificity for layers */
 @import url('./react-css-modules.css');
 @import url('./utils.css');
 @import url('./alert.css');
