@@ -5,8 +5,6 @@ import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
-import classes from './Button.module.css';
-
 export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -55,13 +53,13 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
           ref={ref}
           type={type}
           className={cl(
-            classes.button,
+            'fds-btn',
             `fds-focus`,
-            classes[size],
-            classes[variant],
-            classes[color],
-            { [classes.fullWidth]: fullWidth },
-            { [classes.onlyIcon]: icon },
+            `fds-btn--${size}`,
+            `fds-btn--${variant}`,
+            `fds-btn--${color}`,
+            { 'fds-btn--full-width': fullWidth },
+            { 'fds-btn--icon-only': icon },
             className,
           )}
           {...rest}
