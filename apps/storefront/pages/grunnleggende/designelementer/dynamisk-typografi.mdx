@@ -1,0 +1,73 @@
+import { Figma } from 'mdx-embed';
+import { TokenIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { Image } from '@components';
+import { Meta, TokenList, CodeSnippet } from '@components';
+
+<Meta
+  title='Dynamisk typografi'
+  description='Det er mulig å bruke dynamiske font-størrelser uten breakpoints'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Dynamisk typografi',
+      date: '28. april 2024',
+      icon: <TokenIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt breakpoint. Den lineære funksjonen tilnærmer seg ønsket størrelse jevnt over skjermens bredde.
+
+Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer maksbredden på viewporten som er satt til 1360px. En tekst på 16px vil f.eks øke til 18px på den største viewporten. 
+
+<Image
+  src='/img/fluid.png'
+  alt='Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.'
+  boxShadow={false}
+/>
+
+## Fordeler
+
+- Du slipper å tenke på breakpoints, størrelsen på skriften blir automatisk tilpasset skjermen.
+- Når størrelsene ikke justeres på konkrete breakpoints unngår vi at det blir stykkevis og brå oppskaleringer.
+
+## Ulemper
+
+- Halve piksler. Figma runder nedover. Noen nettlesere runder oppover, andre nedover. Det gjør at ting ikke ser likt ut i Figma og i nettleseren.
+- Du kan føle du har mindre kontroll. 
+- I Figma kan denne størrelsesendringen kun skje ved bruk av pluginen "Token Studio", når du har aktivert ønsket viewport for din frame.
+- Det er ikke gitt at et produkt vil bygge sitt produkt ved hjelp av dynamisk typografi. Dersom noen legger til moduler fra designsystemet i eget grensesnitt vil det ikke samsvare med skaleringen deres.
+
+<br/>
+
+**Basert på [ulempene dette medførte](https://github.com/digdir/designsystemet/issues/1444), valgte vi å gå for en [statisk typografi-skala](/grunnleggende/designelementer/typografi) som standard for designsystemet.**
+
+## Du kan fortsatt velge å bruke fluid
+
+Du kan fortsatt velge å slå på dynamisk typografi, ved å aktivere settet "[fluid](https://github.com/digdir/designsystemet/blob/main/design-tokens/Base/Fluid.json)".
+
+Størrelsene som brukes i den dynamiske skalaen er generert ved hjelp av [Fluid Typescale Generator](https://fluid-tokenization.vercel.app/)
+
+| Step   | viewport 320px        | viewport 1360px       |
+| ------ | --------------------- | --------------------- |
+| f-3    | 12.00px / 0.75rem     | 12.00px / 0.75rem     |
+| f-2    | 13.00px / 0.81rem     | 13.00px / 0.81rem     |
+| f-1    | 15.00px / 0.94rem     | 16.00px / 1.00rem     |
+| **f0** | **16.00px / 1.00rem** | **18.00px / 1.13rem** |
+| f1     | 18.00px / 1.13rem     | 21.00px / 1.31rem     |
+| f2     | 19.00px / 1.19rem     | 24.00px / 1.50rem     |
+| f3     | 21.00px / 1.31rem     | 28.00px / 1.75rem     |
+| f4     | 23.00px / 1.44rem     | 32.00px / 2.00rem     |
+| f5     | 26.00px / 1.63rem     | 38.00px / 2.38rem     |
+| f6     | 29.00px / 1.81rem     | 44.00px / 2.75rem     |
+
+<Figma
+  title='Typography sizes in Figma'
+  url='file/vpM9dqqQPHqU6ogfKp5tlr/Designsystemet---Core-UI-Kit?type=design&node-id=28251%3A27106&mode=design&t=PjDKHWiYf5F8WaSi-1'
+/>
