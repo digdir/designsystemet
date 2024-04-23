@@ -3157,7 +3157,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f7}"
@@ -3180,7 +3180,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f6}"
@@ -3204,7 +3204,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f5}"
@@ -3228,7 +3228,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f4}"
@@ -3252,7 +3252,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f3}"
@@ -3276,7 +3276,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f2}"
@@ -3300,7 +3300,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f1}"
@@ -3323,7 +3323,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f4}"
@@ -3345,7 +3345,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f3}"
@@ -3367,7 +3367,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f2}"
@@ -3389,7 +3389,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f1}"
@@ -3411,7 +3411,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.500}",
         fontSize: "{font-size.f2}"
@@ -3433,7 +3433,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.500}",
         fontSize: "{font-size.f1}"
@@ -3455,7 +3455,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.500}",
         fontSize: "{font-size.f0}"
@@ -3477,7 +3477,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.500}",
         fontSize: "{font-size.f-1}"
@@ -3499,7 +3499,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f2}"
@@ -3522,7 +3522,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f1}"
@@ -3545,7 +3545,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f0}"
@@ -3568,7 +3568,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f-1}"
@@ -3591,7 +3591,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f1}"
@@ -3614,7 +3614,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f0}"
@@ -3637,7 +3637,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f-1}"
@@ -3660,7 +3660,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.700}",
         fontSize: "{font-size.f-2}"
@@ -3683,7 +3683,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f2}"
@@ -3705,7 +3705,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f1}"
@@ -3727,7 +3727,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f0}"
@@ -3749,7 +3749,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.medium}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f-1}"
@@ -3771,7 +3771,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f2}"
@@ -3793,7 +3793,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f1}"
@@ -3815,7 +3815,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f0}"
@@ -3837,7 +3837,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-size.f-1}"
@@ -3859,7 +3859,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-static.large}"
@@ -3881,7 +3881,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-static.medium}"
@@ -3903,7 +3903,7 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.inter}",
+        fontFamily: "{fontFamilies.main}",
         fontWeight: "{fontWeights.regular}",
         lineHeight: "{lineHeights.300}",
         fontSize: "{font-static.small}"
