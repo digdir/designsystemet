@@ -302,7 +302,7 @@
     }
   },
   "fontFamilies": {
-    "inter": {
+    "main": {
       "value": "Inter",
       "type": "fontFamilies"
     }
