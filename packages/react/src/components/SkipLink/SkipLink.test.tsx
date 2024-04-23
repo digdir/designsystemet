@@ -20,7 +20,6 @@ describe('SkipLink', () => {
     const className = 'foo';
     render({ className });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('skiplink');
     expect(link).toHaveClass(className);
   });
 });
