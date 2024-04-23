@@ -1,5 +1,5 @@
 @layer fds.accordion {
-  /* .accordion {
+  .accordion {
     --fds-accordion-border-radius: var(--fds-border_radius-interactive);
     --fds-accordion-border-color: var(--fds-semantic-border-neutral-subtle);
 
@@ -7,11 +7,12 @@
     box-sizing: border-box;
   }
 
-  .border {
+  .accordion--border {
     border: 1px solid var(--fds-accordion-border-color);
     border-radius: var(--fds-accordion-border-radius);
-  } */
+  }
 
+  /*
   .expandIcon {
     border-radius: var(--fds-border_radius-interactive);
   }
@@ -25,8 +26,9 @@
   .header {
     margin: 0;
   }
+  */
 
-  .accordionButton {
+  .accordion__button {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -40,10 +42,11 @@
     padding: var(--fds-spacing-4);
   }
 
-  /* .border .accordionButton {
+  .accordion--border .accordion__button {
     border-radius: var(--fds-accordion-border-radius);
-  } */
+  }
 
+  /*
   .item:focus-within {
     position: relative;
   }
@@ -130,4 +133,6 @@
       background-color: var(--fds-semantic-surface-third-light-hover);
     }
   }
+
+  */
 }

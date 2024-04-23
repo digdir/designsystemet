@@ -44,7 +44,11 @@ export const AccordionHeader = forwardRef<
     >
       <button
         type='button'
-        className={cl(classes.accordionButton, `fds-focus`)}
+        className={cl(
+          'accordion__button',
+          classes.accordionButton,
+          `fds-focus`,
+        )}
         onClick={handleClick}
         aria-expanded={context.open}
         aria-controls={context.contentId}
