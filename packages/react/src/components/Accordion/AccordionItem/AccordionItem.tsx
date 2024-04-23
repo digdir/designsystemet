@@ -2,8 +2,6 @@ import cl from 'clsx';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState, useId } from 'react';
 
-import classes from '../Accordion.module.css';
-
 export type AccordionItemProps = {
   /**
    * Controls open-state.
@@ -34,10 +32,8 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
     return (
       <div
         className={cl(
-          classes.item,
-          {
-            [classes.open]: open ?? internalOpen,
-          },
+          'accordion__item',
+          (open ?? internalOpen) && 'accordion__item--open',
           className,
         )}
         ref={ref}

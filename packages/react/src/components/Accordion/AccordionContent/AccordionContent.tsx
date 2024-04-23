@@ -4,7 +4,6 @@ import { forwardRef, useContext } from 'react';
 
 import { AnimateHeight } from '../../../utilities/AnimateHeight';
 import { Paragraph } from '../../..';
-import classes from '../Accordion.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionContentProps = {
@@ -36,7 +35,7 @@ export const AccordionContent = forwardRef<
       >
         <div
           ref={ref}
-          className={cl(classes.content, className)}
+          className={cl('accordion__content', className)}
           {...rest}
         >
           {children}

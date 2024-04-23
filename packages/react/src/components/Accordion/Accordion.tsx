@@ -2,8 +2,6 @@ import type { ReactNode, HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx';
 
-import classes from './Accordion.module.css';
-
 export type AccordionProps = {
   /** Accordion background color */
   color?: 'first' | 'second' | 'third' | 'neutral' | 'subtle';
@@ -19,10 +17,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       className={cl(
         'accordion',
         border && 'accordion--border',
-        classes[color],
-        {
-          [classes.border]: border,
-        },
+        color && `accordion--${color}`,
         className,
       )}
       ref={ref}

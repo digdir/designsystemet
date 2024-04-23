@@ -12,21 +12,19 @@
     border-radius: var(--fds-accordion-border-radius);
   }
 
-  /*
-  .expandIcon {
+  .accordion__expand-icon {
     border-radius: var(--fds-border_radius-interactive);
   }
 
-  .content {
+  .accordion__content {
     padding: var(--fds-spacing-5, 1rem);
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .header {
+  .accordion__header {
     margin: 0;
   }
-  */
 
   .accordion__button {
     width: 100%;
@@ -46,93 +44,96 @@
     border-radius: var(--fds-accordion-border-radius);
   }
 
-  /*
-  .item:focus-within {
+
+  .accordion__item:focus-within {
     position: relative;
   }
 
-  .item:where(.open) .accordionButton:hover+* .content {
+  /*
+  * I Think this is unused? The button has no siblings. accordion content has no border
+  .accordion__item:where(.accordion__content--open) .accordion__button:hover+* .accordion__content {
     border-color: var(--fds-semantic-border-neutral-strong);
   }
+  */
 
-  .item:where(.open) .expandIcon {
+  .accordion__item:where(.accordion__item--open) .accordion__expand-icon {
     transform: rotateZ(180deg);
   }
 
-  .neutral,
-  .neutral .accordionButton {
+  .accordion--neutral,
+  .accordion--neutral .accordion__button {
     background-color: var(--fds-semantic-surface-neutral-default);
   }
 
-  .subtle,
-  .subtle .accordionButton {
+  .accordion--subtle,
+  .accordion--subtle .accordion__button {
     background-color: var(--fds-semantic-surface-neutral-subtle);
   }
 
-  .first,
-  .first .accordionButton {
+  .accordion--first,
+  .accordion--first .accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-first-default);
 
     background: var(--fds-semantic-surface-first-light);
   }
 
-  .second,
-  .second .accordionButton {
+
+  .accordion--second,
+  .accordion--second .accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-second-default);
 
     background: var(--fds-semantic-surface-second-light);
   }
 
-  .third,
-  .third .accordionButton {
+
+  .accordion--third,
+  .accordion--third .accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-third-default);
 
     background: var(--fds-semantic-surface-third-light);
   }
 
-  .first .item:where(.open) .accordionButton,
-  .second .item:where(.open) .accordionButton,
-  .third .item:where(.open) .accordionButton {
+  .accordion--first .accordion__item:where(.accordion__item--open) .accordion__button,
+  .accordion--second .accordion__item:where(.accordion__item--open) .accordion__button,
+  .accordion--third .accordion__item:where(.accordion__item--open) .accordion__button {
     background-color: rgba(0 0 0 / 0.03);
   }
 
-  .neutral .item:where(.open) .accordionButton,
-  .subtle .item:where(.open) .accordionButton {
+  .accordion--neutral .accordion__item:where(.accordion__item--open) .accordion__button,
+  .accordion--subtle .accordion__item:where(.accordion__item--open) .accordion__button {
     background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
-  .border .item:first-child .accordionButton {
+  .accordion--border .accordion__item:first-child .accordion__button {
     border-top: 0;
   }
 
-  .first .item:not(:first-child) .accordionButton,
-  .second .item:not(:first-child) .accordionButton,
-  .third .item:not(:first-child) .accordionButton {
+  .accordion--first .accordion__item:not(:first-child) .accordion__button,
+  .accordion--second .accordion__item:not(:first-child) .accordion__button,
+  .accordion--third .accordion__item:not(:first-child) .accordion__button {
     border-top: 1px solid var(--fds-semantic-surface-neutral-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .accordionButton:hover .expandIcon {
+    .accordion__button:hover .accordion__expand-icon {
       background-color: rgba(0 0 0 / 0.1);
     }
 
-    .neutral .accordionButton:hover,
-    .subtle .accordionButton:hover {
+    .accordion--neutral .accordion__button:hover,
+    .accordion--subtle .accordion__button:hover {
       background-color: var(--fds-semantic-surface-neutral-subtle-hover);
     }
 
-    .first .accordionButton:hover {
+    .accordion--first .accordion__button:hover {
       background-color: var(--fds-semantic-surface-first-light-hover);
     }
 
-    .second .accordionButton:hover {
+    .accordion--second .accordion__button:hover {
       background-color: var(--fds-semantic-surface-second-light-hover);
     }
 
-    .third .accordionButton:hover {
+    .accordion--third .accordion__button:hover {
       background-color: var(--fds-semantic-surface-third-light-hover);
     }
   }
-
-  */
 }

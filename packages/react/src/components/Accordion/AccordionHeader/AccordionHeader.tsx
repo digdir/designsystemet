@@ -4,7 +4,6 @@ import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
 import { Paragraph, Heading } from '../..';
-import classes from '../Accordion.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionHeaderProps = {
@@ -39,23 +38,19 @@ export const AccordionHeader = forwardRef<
       ref={ref}
       size='xsmall'
       level={level}
-      className={cl(classes.header, className)}
+      className={cl('accordion__header', className)}
       {...rest}
     >
       <button
         type='button'
-        className={cl(
-          'accordion__button',
-          classes.accordionButton,
-          `fds-focus`,
-        )}
+        className={cl('accordion__button', `fds-focus`)}
         onClick={handleClick}
         aria-expanded={context.open}
         aria-controls={context.contentId}
       >
         <ChevronDownIcon
           aria-hidden
-          className={classes.expandIcon}
+          className={cl('accordion__expand-icon')}
           fontSize={'1.5rem'}
         />
         <Paragraph
