@@ -2,8 +2,7 @@ import { Figma } from 'mdx-embed';
 import { TokenIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
-import { Image } from '@components';
-import { Meta, TokenList, CodeSnippet } from '@components';
+import { Image, Meta } from '@components';
 
 <Meta
   title='Dynamisk typografi'
@@ -24,7 +23,7 @@ export default ({ children }) => (
 
 Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt breakpoint. Den lineære funksjonen tilnærmer seg ønsket størrelse jevnt over skjermens bredde.
 
-Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer maksbredden på viewporten som er satt til 1360px. En tekst på 16px vil f.eks øke til 18px på den største viewporten. 
+Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer maksbredden på viewporten som er satt til 1360px. En tekst på 16px vil f.eks øke til 18px på den største viewporten.
 
 <Image
   src='/img/fluid.png'
@@ -40,11 +39,11 @@ Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer m
 ## Ulemper
 
 - Halve piksler. Figma runder nedover. Noen nettlesere runder oppover, andre nedover. Det gjør at ting ikke ser likt ut i Figma og i nettleseren.
-- Du kan føle du har mindre kontroll. 
+- Du kan føle du har mindre kontroll.
 - I Figma kan denne størrelsesendringen kun skje ved bruk av pluginen "Token Studio", når du har aktivert ønsket viewport for din frame.
 - Det er ikke gitt at et produkt vil bygge sitt produkt ved hjelp av dynamisk typografi. Dersom noen legger til moduler fra designsystemet i eget grensesnitt vil det ikke samsvare med skaleringen deres.
 
-<br/>
+<br />
 
 **Basert på [ulempene dette medførte](https://github.com/digdir/designsystemet/issues/1444), valgte vi å gå for en [statisk typografi-skala](/grunnleggende/designelementer/typografi#tekststørrelse) som standard for designsystemet.**
 
