@@ -1,8 +1,6 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import cl from 'clsx';
 
-import classes from './SkipLink.module.css';
-
 export type SkipLinkProps = {
   /** The content to display inside the skiplink. */
   children: ReactNode;
@@ -20,7 +18,7 @@ export const SkipLink = ({
   return (
     <a
       href={href}
-      className={cl(`fds-sr-only`, classes.skiplink, className)}
+      className={cl(`fds-sr-only`, 'fds-skiplink', className)}
       {...rest}
     >
       {children}
