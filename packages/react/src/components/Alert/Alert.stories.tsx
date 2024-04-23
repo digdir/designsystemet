@@ -6,24 +6,30 @@ import { Alert } from '.';
 
 type Story = StoryFn<typeof Alert>;
 
-export default {
+const meta: Meta = {
   title: 'Komponenter/Alert',
   component: Alert,
   parameters: {
     layout: 'padded',
   },
-} as Meta;
+};
+
+export default meta;
 
 export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
   severity: 'info',
   elevated: false,
+  size: 'medium',
   children: 'En beskjed det er viktig at brukeren ser',
 };
 
-export const VariantInfo: Story = () => (
-  <Alert severity='info'>
+export const VariantInfo: Story = (args) => (
+  <Alert
+    {...args}
+    severity='info'
+  >
     <Heading
       level={2}
       size='xsmall'
@@ -38,8 +44,11 @@ export const VariantInfo: Story = () => (
   </Alert>
 );
 
-export const VariantSuccess: Story = () => (
-  <Alert severity='success'>
+export const VariantSuccess: Story = (args) => (
+  <Alert
+    {...args}
+    severity='success'
+  >
     <Heading
       level={2}
       size='xsmall'
@@ -54,8 +63,11 @@ export const VariantSuccess: Story = () => (
   </Alert>
 );
 
-export const VariantWarning: Story = () => (
-  <Alert severity='warning'>
+export const VariantWarning: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Heading
       level={2}
       size='xsmall'
@@ -70,8 +82,11 @@ export const VariantWarning: Story = () => (
   </Alert>
 );
 
-export const VariantDanger: Story = () => (
-  <Alert severity='danger'>
+export const VariantDanger: Story = (args) => (
+  <Alert
+    {...args}
+    severity='danger'
+  >
     <Heading
       level={2}
       size='xsmall'
@@ -87,8 +102,8 @@ export const VariantDanger: Story = () => (
   </Alert>
 );
 
-export const MedHeading: Story = () => (
-  <Alert>
+export const MedHeading: Story = (args) => (
+  <Alert {...args}>
     <Heading
       level={2}
       size='xsmall'
@@ -103,14 +118,20 @@ export const MedHeading: Story = () => (
   </Alert>
 );
 
-export const MedKunHeading: Story = () => (
-  <Alert severity='warning'>
+export const MedKunHeading: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Paragraph> Du har 7 dager igjen på å fullføre søknaden.</Paragraph>
   </Alert>
 );
 
-export const MedLenke: Story = () => (
-  <Alert severity='warning'>
+export const MedLenke: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Heading
       level={2}
       size='xsmall'
@@ -125,8 +146,9 @@ export const MedLenke: Story = () => (
   </Alert>
 );
 
-export const MedShadow: Story = () => (
+export const MedShadow: Story = (args) => (
   <Alert
+    {...args}
     elevated
     severity='success'
   >
@@ -134,8 +156,11 @@ export const MedShadow: Story = () => (
   </Alert>
 );
 
-export const UtenAria: Story = () => (
-  <Alert severity='warning'>
+export const UtenAria: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Heading
       level={2}
       size='xsmall'
@@ -150,8 +175,11 @@ export const UtenAria: Story = () => (
   </Alert>
 );
 
-export const MedAria: Story = () => (
-  <Alert severity='danger'>
+export const MedAria: Story = (args) => (
+  <Alert
+    {...args}
+    severity='danger'
+  >
     <Heading
       level={2}
       size='xsmall'

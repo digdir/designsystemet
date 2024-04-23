@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.59.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.58.0...@digdir/designsystemet-react@0.59.0) (2024-04-23)
+
+### Bug Fixes
+
+- **Skiplink:** :bug: Should now show correctly ([#1866](https://github.com/digdir/designsystemet/issues/1866)) ([4afbe91](https://github.com/digdir/designsystemet/commit/4afbe91f7b42da0a3fb1ed26ecb919269db3a746))
+
+### Features
+
+- **Alert:** ✨ New design and sizes ([#1804](https://github.com/digdir/designsystemet/issues/1804)) ([14e707d](https://github.com/digdir/designsystemet/commit/14e707d254571084b1f03aa4b90acfa096b8609f))
+
 # [0.58.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.57.0...@digdir/designsystemet-react@0.58.0) (2024-04-22)
 
 ### Bug Fixes
