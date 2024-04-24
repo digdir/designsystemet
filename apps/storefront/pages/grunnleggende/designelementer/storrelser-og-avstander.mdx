@@ -1,8 +1,7 @@
 import { RulerIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
-import { Image } from '@components';
-import { Meta, TokenList } from '@components';
+import { Image, Meta, TokenList } from '@components';
 
 <Meta
   title='Størrelser og avstander'
@@ -35,12 +34,13 @@ Avstand (`spacing`) brukes til å sette marging og padding. Settet med avstander
   hideValue={true}
 />
 
-## Men hvorfor må vi ha både `sizing` og `spacing` når de er helt like? 
+## Men hvorfor må vi ha både `sizing` og `spacing` når de er helt like?
 
-Fordi vi ønsker å holde variablene i sync mellom Figma og kode. For å gjøre dette bruker vi foreløpig en plugin som heter "[Token Studio](https://tokens.studio/)". Som du kan se fra [dokumentasjonen til Token Studio](https://docs.tokens.studio/available-tokens/spacing-tokens) er pluginen avhengig av å skille størrelser og avstander. 
+Fordi vi ønsker å holde variablene i sync mellom Figma og kode. For å gjøre dette bruker vi foreløpig en plugin som heter "[Token Studio](https://tokens.studio/)". Som du kan se fra [dokumentasjonen til Token Studio](https://docs.tokens.studio/available-tokens/spacing-tokens) er pluginen avhengig av å skille størrelser og avstander.
 
 ### Sizing-variabler i Figma
-Størrelser (sizing) er det du setter under en **_"Section"_**, **_"Frame"_** eller **_"Group"_** i Figma. Der kan du definere bredde (W) og høyde (H). 
+
+Størrelser (sizing) er det du setter under en **_"Section"_**, **_"Frame"_** eller **_"Group"_** i Figma. Der kan du definere bredde (W) og høyde (H).
 
 <Image
   src='/img/sizing.png'
@@ -49,6 +49,7 @@ Størrelser (sizing) er det du setter under en **_"Section"_**, **_"Frame"_** el
 />
 
 ### Spacing-variabler i Figma
+
 Avstander er det du setter under _**"Auto Layout"**_ i Figma. Der kan du definere avstand over, under, ved siden av, eller mellom.
 
 <Image
@@ -57,5 +58,5 @@ Avstander er det du setter under _**"Auto Layout"**_ i Figma. Der kan du definer
   boxShadow={false}
 />
 
-<br/>
-<br/>
+<br />
+<br />
