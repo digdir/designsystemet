@@ -519,15 +519,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f-3.max}-{font-scale.f-3.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f-3.max}-{font-scale.f-3.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f-3.max} - {viewport.max} * {font-scale.f-3.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f-3.max} - {viewport.1920} * {font-scale.f-3.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f-3.v} + {font-scale.f-3.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f-3.v} + {font-scale.f-3.r})",
         "type": "fontSizes"
       }
     },
@@ -541,15 +541,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f-2.max}-{font-scale.f-2.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f-2.max}-{font-scale.f-2.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f-2.max} - {viewport.max} * {font-scale.f-2.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f-2.max} - {viewport.1920} * {font-scale.f-2.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f-2.v} + {font-scale.f-2.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f-2.v} + {font-scale.f-2.r})",
         "type": "fontSizes"
       }
     },
@@ -563,15 +563,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f-1.max}-{font-scale.f-1.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f-1.max}-{font-scale.f-1.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f-1.max} - {viewport.max} * {font-scale.f-1.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f-1.max} - {viewport.1920} * {font-scale.f-1.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f-1.v} + {font-scale.f-1.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f-1.v} + {font-scale.f-1.r})",
         "type": "fontSizes"
       }
     },
@@ -585,15 +585,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f0.max}-{font-scale.f0.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f0.max}-{font-scale.f0.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f0.max} - {viewport.max} * {font-scale.f0.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f0.max} - {viewport.1920} * {font-scale.f0.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f0.v} + {font-scale.f0.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f0.v} + {font-scale.f0.r})",
         "type": "fontSizes"
       }
     },
@@ -607,15 +607,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f1.max}-{font-scale.f1.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f1.max}-{font-scale.f1.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f1.max} - {viewport.max} * {font-scale.f1.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f1.max} - {viewport.1920} * {font-scale.f1.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f1.v} + {font-scale.f1.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f1.v} + {font-scale.f1.r})",
         "type": "fontSizes"
       }
     },
@@ -629,15 +629,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f2.max}-{font-scale.f2.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f2.max}-{font-scale.f2.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f2.max} - {viewport.max} * {font-scale.f2.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f2.max} - {viewport.1920} * {font-scale.f2.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f2.v} + {font-scale.f2.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f2.v} + {font-scale.f2.r})",
         "type": "fontSizes"
       }
     },
@@ -651,15 +651,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f3.max}-{font-scale.f3.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f3.max}-{font-scale.f3.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f3.max} - {viewport.max} * {font-scale.f3.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f3.max} - {viewport.1920} * {font-scale.f3.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f3.v} + {font-scale.f3.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f3.v} + {font-scale.f3.r})",
         "type": "fontSizes"
       }
     },
@@ -673,15 +673,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f4.max}-{font-scale.f4.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f4.max}-{font-scale.f4.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f4.max} - {viewport.max} * {font-scale.f4.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f4.max} - {viewport.1920} * {font-scale.f4.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f4.v} + {font-scale.f4.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f4.v} + {font-scale.f4.r})",
         "type": "fontSizes"
       }
     },
@@ -695,15 +695,15 @@
         "type": "fontSizes"
       },
       "v": {
-        "value": "100 * ({font-scale.f5.max}-{font-scale.f5.min}) / ({viewport.max}-{viewport.min})",
+        "value": "100 * ({font-scale.f5.max}-{font-scale.f5.min}) / ({viewport.1920}-{viewport.min})",
         "type": "fontSizes"
       },
       "r": {
-        "value": "( {viewport.min} * {font-scale.f5.max} - {viewport.max} * {font-scale.f5.min}) / ({viewport.min}-{viewport.max})",
+        "value": "( {viewport.min} * {font-scale.f5.max} - {viewport.1920} * {font-scale.f5.min}) / ({viewport.min}-{viewport.1920})",
         "type": "fontSizes"
       },
       "fluid": {
-        "value": "round(({viewport.max}/100) * {font-scale.f5.v} + {font-scale.f5.r})",
+        "value": "round(({viewport.1920}/100) * {font-scale.f5.v} + {font-scale.f5.r})",
         "type": "fontSizes"
       }
     }
@@ -748,7 +748,7 @@
   },
   "viewport": {
     "width": {
-      "value": "{viewport.max}",
+      "value": "{viewport.1920}",
       "type": "sizing"
     },
     "min": {

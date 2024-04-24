@@ -1136,10 +1136,15 @@
     }
   },
   "viewport": {
-    "max": {
+    "1920": {
       "value": "1920",
       "type": "sizing",
-      "description": "STAF øker fra 1360 til 1920 som max viewport."
+      "description": "STAF legger til 1920."
+    },
+    "2560": {
+      "value": "2560",
+      "type": "sizing",
+      "description": "STAF øker fra 1360 til 2560 som max viewport."
     }
   }
 }
