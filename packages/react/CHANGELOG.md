@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.59.1-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.59.0...@digdir/designsystemet-react@0.59.1-alpha.0) (2024-04-24)
+
+### Bug Fixes
+
+- **Combobox:** Re-renders ([24fa39f](https://github.com/digdir/designsystemet/commit/24fa39f5124c9fc0b01590ad3f1e7960c54e5f35))
+
 # [0.59.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.58.0...@digdir/designsystemet-react@0.59.0) (2024-04-23)
 
 ### Bug Fixes
