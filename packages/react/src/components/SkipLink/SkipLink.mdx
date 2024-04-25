@@ -6,7 +6,7 @@ import * as SkipLinkStories from './SkipLink.stories';
 
 # SkipLink
 
-Skiplink-komponenten hjelper de som bruker tastatur og skjermleser med å hoppe over gjentakende innhold og raskt få tilgang til viktige seksjoner eller funksjoner på siden.
+ Vi bruker snarvei-komponenten `SkipLink` når vi vil hjelpe folk som kun bruker tastaturet til å navigere, slik at de enkelt kan går til de viktigste innholdet på en side. Snarveien bør være det første elementet markøren går til når du navigerer med tastaturet.
 
 <Primary />
 <Controls />
@@ -22,3 +22,35 @@ import { SkipLink } from '@digdir/designsystemet-react';
   Region som kan motta fokus fra skiplink.
 </main>
 ```
+
+## Retningslinjer for `SkipLink`
+
+Noen brukere navigerer med Tab på tastaturet når de skal flytte markøren forbi lenker eller skjemalementer på en nettside. Når vi inkluderer en snarvei-komponent på siden, får disse brukerne muligheten til å gå forbi alle navigeringslenkene øverst på siden og kan gå direkte til hovedinnholdet på siden.
+
+Det er vanligvis et krav at det skal være med en snarvei-komponent i faste sidemaler til alle nettsteder. 
+
+Hvis det er færre enn fem tab-stopp til hovedinnholdet er det ikke sikkert at du trenger å legge inn en `SkipLink`, det fører bare til at det blir flere knapper å forholde seg til.
+
+Vi plasserer snarveien som det første i `<body>`. Hvis siden har et varsel om informasjonskapsler, legger du `SkipLink` rett etter koden for dette varselet.
+
+Snarveien bør skille seg tydelig ut fra resten av innholdet, slik at folk som er seende, men bruker tastaturet til å navigere, kan kjenne igjen dette element før de flytter videre.
+
+<br/>
+
+## Tekst i komponenten
+
+Pass på at teksten tydelig sier hva snarveien skal brukes til. Bruk en enkel tekst, som for eksempel «Gå direkte til innholdet» eller «Hopp direkte til innholdet».
+
+<br/>
+
+## Tilgjengelighet
+
+Snarvei-komponenten er vanligvis ikke synlig før et trykk på tastaturet aktiverer den.
+
+- Snarveien må bli godt synlig når den får fokus.
+- Teksten på snarveien må ha riktig fargekontrast.
+<br/>
+
+Vær oppmerksom på at noen automatiske tester for tilgjengelighet kan varsle om at snarveien mangler i et landemerke. Dette varslet gjelder ikke for snarveier, så det kan du overse. 
+
+Pass på at snarveier oppfører seg forutsigbart. En snarvei med teksten «Gå direkte til innholdet» skal flytte brukerens fokus til starten på innholdet, ikke til starten av første avsnitt under overskriften.
