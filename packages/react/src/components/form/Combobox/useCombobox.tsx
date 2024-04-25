@@ -51,27 +51,39 @@ export default function useCombobox({
   },
   initialValue,
 }: UseComboboxProps) {
-  const { optionsChildren, customIds } = useMemo(() => {
-    const allChildren = Children.toArray(children);
-    const optionsChildren = allChildren.filter((child) =>
-      isComboboxOption(child),
-    ) as ReactElement<ComboboxOptionProps>[];
+  const { optionsChildren, customIds, restChildren, interactiveChildren } =
+    useMemo(() => {
+      const allChildren = Children.toArray(children);
 
-    // find all custom components with `interactive=true`
-    const customChildren = allChildren.filter((child) => {
-      return isInteractiveComboboxCustom(child);
-    }) as ReactElement<ComboboxCustomProps>[];
+      const result = allChildren.reduce(
+        (acc, child) => {
+          if (isComboboxOption(child)) {
+            acc.optionsChildren.push(child);
+          } else {
+            acc.restChildren.push(child);
+            if (isInteractiveComboboxCustom(child)) {
+              const childElement = child;
+              acc.interactiveChildren.push(childElement);
+              if (!childElement.props.id) {
+                throw new Error(
+                  'If ComboboxCustom is interactive, it must have an id',
+                );
+              }
+              acc.customIds.push(childElement.props.id);
+            }
+          }
+          return acc;
+        },
+        {
+          optionsChildren: [] as ReactElement<ComboboxOptionProps>[],
+          customIds: [] as string[],
+          restChildren: [] as React.ReactNode[],
+          interactiveChildren: [] as ReactElement<ComboboxCustomProps>[],
+        },
+      );
 
-    // return all ids
-    const customIds = customChildren.map((child) => {
-      if (!child.props.id)
-        throw new Error('If ComboboxCustom is interactive, it must have an id');
-
-      return child.props.id;
-    });
-
-    return { optionsChildren, customIds };
-  }, [children]);
+      return result;
+    }, [children]);
 
   const options = useMemo(() => {
     const allOptions: {
@@ -158,21 +170,9 @@ export default function useCombobox({
       return value;
     });
 
+    // interactive custom components are first in the index map
     return [...customIds, ...options];
   }, [customIds, optionsChildren]);
-
-  const { restChildren, interactiveChildren } = useMemo(() => {
-    const restChildren = Children.toArray(children).filter((child) => {
-      return !isComboboxOption(child);
-    });
-
-    const interactiveChildren: ReactElement<ComboboxCustomProps>[] =
-      restChildren.filter((child) => {
-        return isInteractiveComboboxCustom(child);
-      }) as ReactElement<ComboboxCustomProps>[];
-
-    return { restChildren, interactiveChildren };
-  }, [children]);
 
   return {
     filteredOptionsChildren,
