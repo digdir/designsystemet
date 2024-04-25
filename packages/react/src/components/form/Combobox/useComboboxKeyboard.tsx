@@ -44,18 +44,16 @@ export const useComboboxKeyboard = ({
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        if (!open) {
-          setOpen(true);
-        }
+        if (open) break;
 
+        setOpen(true);
         break;
       case 'ArrowUp':
         event.preventDefault();
         /* If we are on the first item, close */
-        if (activeIndex === 0) {
-          setOpen(false);
-        }
+        if (activeIndex !== 0) break;
 
+        setOpen(false);
         break;
       case 'Enter':
         event.preventDefault();
@@ -90,21 +88,19 @@ export const useComboboxKeyboard = ({
         break;
 
       case 'Backspace':
-        if (
-          inputValue === '' &&
-          multiple &&
-          Object.keys(selectedOptions).length >= 0
-        ) {
+        // if we are in single mode, we need to set selectedOptions to empty
+        if (!multiple) {
+          setSelectedOptions({});
+          break;
+        }
+
+        if (inputValue === '' && multiple) {
           setSelectedOptions((prev) => {
             const updated = { ...prev };
             const keys = Object.keys(updated);
             delete updated[keys[keys.length - 1]];
             return updated;
           });
-        }
-        // if we are in single mode, we need to set activeValue to null
-        if (!multiple) {
-          setSelectedOptions({});
         }
         break;
 
