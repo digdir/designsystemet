@@ -13,10 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use node 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
       # check for the most recent release: https://github.com/CondeNast/conventional-pull-request-action/releases
       - uses: CondeNast/conventional-pull-request-action@v0.2.0
         env:
