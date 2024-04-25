@@ -51,42 +51,63 @@ export default function useCombobox({
   },
   initialValue,
 }: UseComboboxProps) {
+  const { optionsChildren, customIds } = useMemo(() => {
+    const allChildren = Children.toArray(children);
+    const optionsChildren = allChildren.filter((child) =>
+      isComboboxOption(child),
+    ) as ReactElement<ComboboxOptionProps>[];
+
+    // find all custom components with `interactive=true`
+    const customChildren = allChildren.filter((child) => {
+      return isInteractiveComboboxCustom(child);
+    }) as ReactElement<ComboboxCustomProps>[];
+
+    // return all ids
+    const customIds = customChildren.map((child) => {
+      if (!child.props.id)
+        throw new Error('If ComboboxCustom is interactive, it must have an id');
+
+      return child.props.id;
+    });
+
+    return { optionsChildren, customIds };
+  }, [children]);
+
   const options = useMemo(() => {
     const allOptions: {
       [key: string]: Option;
     } = {};
-    Children.forEach(children, (child) => {
-      if (isComboboxOption(child)) {
-        const props = child.props;
-        let label = props.displayValue || '';
+    optionsChildren.map((child) => {
+      const props = child.props;
+      let label = props.displayValue || '';
 
-        if (!props.displayValue) {
-          let childrenLabel = '';
+      if (!props.displayValue) {
+        let childrenLabel = '';
 
-          // go over children and find all strings
-          Children.forEach(props.children, (child) => {
-            if (typeof child === 'string') {
-              childrenLabel += child;
-            } else {
-              throw new Error(
-                'If ComboboxOption is not a string, it must have a displayValue prop',
-              );
-            }
-          });
+        // go over children and find all strings
+        Children.forEach(props.children, (child) => {
+          if (typeof child === 'string') {
+            childrenLabel += child;
+          } else {
+            throw new Error(
+              'If ComboboxOption is not a string, it must have a displayValue prop',
+            );
+          }
+        });
 
-          label = childrenLabel;
-        }
-
-        allOptions[props.value] = {
-          value: props.value,
-          label,
-          displayValue: props.displayValue,
-          description: props.description,
-        };
+        label = childrenLabel;
       }
+
+      allOptions[props.value] = {
+        value: props.value,
+        label,
+        displayValue: props.displayValue,
+        description: props.description,
+      };
     });
+
     return allOptions;
-  }, [children]);
+  }, [optionsChildren]);
 
   const preSelectedOptions = useMemo(
     () =>
@@ -109,28 +130,6 @@ export default function useCombobox({
   const [prevSelectedHash, setPrevSelectedHash] = useState(
     JSON.stringify(selectedOptions),
   );
-
-  const { optionsChildren, customIds } = useMemo(() => {
-    const allChildren = Children.toArray(children);
-    const optionsChildren = allChildren.filter((child) =>
-      isComboboxOption(child),
-    ) as ReactElement<ComboboxOptionProps>[];
-
-    // find all custom components with `interactive=true` and generate random values for them
-    const customChildren = allChildren.filter((child) => {
-      return isInteractiveComboboxCustom(child);
-    }) as ReactElement<ComboboxCustomProps>[];
-
-    // return all ids
-    const customIds = customChildren.map((child) => {
-      if (!child.props.id)
-        throw new Error('If ComboboxCustom is interactive, it must have an id');
-
-      return child.props.id;
-    });
-
-    return { optionsChildren, customIds };
-  }, [children]);
 
   const { filteredOptions, filteredOptionsChildren } = useMemo(() => {
     const filteredOptions: string[] = [];
