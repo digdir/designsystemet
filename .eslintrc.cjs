@@ -43,13 +43,13 @@ module.exports = {
       },
     },
     {
-      files: ['storefront/**/*'],
+      files: ['apps/storefront/**/*'],
       extends: ['plugin:@next/next/recommended'],
     },
     {
       // MDX files
-      extends: ['plugin:mdx/recommended'],
       files: ['**/*.md?(x)'],
+      extends: ['plugin:mdx/recommended'],
       settings: {
         'mdx/code-blocks': false,
       },
