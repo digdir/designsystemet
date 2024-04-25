@@ -66,6 +66,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             onClick={context?.closeModal}
             autoFocus
             icon={true}
+            className={classes.modalHeaderButton}
           >
             <XMarkIcon
               title='close modal'
