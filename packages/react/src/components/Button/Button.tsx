@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
@@ -58,8 +58,8 @@ export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
             `fds-btn--${size}`,
             `fds-btn--${variant}`,
             `fds-btn--${color}`,
-            { 'fds-btn--full-width': fullWidth },
-            { 'fds-btn--icon-only': icon },
+            fullWidth && 'fds-btn--full-width',
+            icon && 'fds-btn--icon-only',
             className,
           )}
           {...rest}
