@@ -67,12 +67,6 @@ export type ComboboxProps = {
    */
   hideChips?: boolean;
   /**
-   * Label for the clear button
-   * @default 'Fjern alt'
-   * @deprecated Use `clearButtonLabel` instead
-   */
-  cleanButtonLabel?: string;
-  /**
    * Hides the clear button
    * @default false
    */
@@ -138,7 +132,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       disabled = false,
       readOnly = false,
       hideChips = false,
-      cleanButtonLabel = 'Fjern alt',
       clearButtonLabel = 'Fjern alt',
       hideClearButton = false,
       error,
@@ -335,7 +328,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           htmlSize,
           optionValues,
           hideChips,
-          clearButtonLabel: cleanButtonLabel || clearButtonLabel,
+          clearButtonLabel,
           hideClearButton,
           listId,
           customIds,
