@@ -15,9 +15,9 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   ({ border = false, color = 'neutral', className, ...rest }, ref) => (
     <div
       className={cl(
-        'accordion',
-        border && 'accordion--border',
-        color && `accordion--${color}`,
+        'fds-accordion',
+        border && 'fds-accordion--border',
+        color && `fds-accordion--${color}`,
         className,
       )}
       ref={ref}

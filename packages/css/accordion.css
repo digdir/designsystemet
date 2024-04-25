@@ -1,5 +1,5 @@
 @layer fds.accordion {
-  .accordion {
+  .fds-accordion {
     --fds-accordion-border-radius: var(--fds-border_radius-interactive);
     --fds-accordion-border-color: var(--fds-semantic-border-neutral-subtle);
 
@@ -7,26 +7,26 @@
     box-sizing: border-box;
   }
 
-  .accordion--border {
+  .fds-accordion--border {
     border: 1px solid var(--fds-accordion-border-color);
     border-radius: var(--fds-accordion-border-radius);
   }
 
-  .accordion__expand-icon {
+  .fds-accordion__expand-icon {
     border-radius: var(--fds-border_radius-interactive);
   }
 
-  .accordion__content {
+  .fds-accordion__content {
     padding: var(--fds-spacing-5, 1rem);
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .accordion__header {
+  .fds-accordion__header {
     margin: 0;
   }
 
-  .accordion__button {
+  .fds-accordion__button {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -40,99 +40,92 @@
     padding: var(--fds-spacing-4);
   }
 
-  .accordion--border .accordion__button {
+  .fds-accordion--border .fds-accordion__button {
     border-radius: var(--fds-accordion-border-radius);
   }
 
 
-  .accordion__item:focus-within {
+  .fds-accordion__item:focus-within {
     position: relative;
   }
 
-  /*
-  * I Think this is unused? The button has no siblings. accordion content has no border
-  .accordion__item:where(.accordion__content--open) .accordion__button:hover+* .accordion__content {
-    border-color: var(--fds-semantic-border-neutral-strong);
-  }
-  */
-
-  .accordion__item:where(.accordion__item--open) .accordion__expand-icon {
+  .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__expand-icon {
     transform: rotateZ(180deg);
   }
 
-  .accordion--neutral,
-  .accordion--neutral .accordion__button {
+  .fds-accordion--neutral,
+  .fds-accordion--neutral .fds-accordion__button {
     background-color: var(--fds-semantic-surface-neutral-default);
   }
 
-  .accordion--subtle,
-  .accordion--subtle .accordion__button {
+  .fds-accordion--subtle,
+  .fds-accordion--subtle .fds-accordion__button {
     background-color: var(--fds-semantic-surface-neutral-subtle);
   }
 
-  .accordion--first,
-  .accordion--first .accordion__button {
+  .fds-accordion--first,
+  .fds-accordion--first .fds-accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-first-default);
 
     background: var(--fds-semantic-surface-first-light);
   }
 
 
-  .accordion--second,
-  .accordion--second .accordion__button {
+  .fds-accordion--second,
+  .fds-accordion--second .fds-accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-second-default);
 
     background: var(--fds-semantic-surface-second-light);
   }
 
 
-  .accordion--third,
-  .accordion--third .accordion__button {
+  .fds-accordion--third,
+  .fds-accordion--third .fds-accordion__button {
     --fds-accordion-border-color: var(--fds-semantic-border-third-default);
 
     background: var(--fds-semantic-surface-third-light);
   }
 
-  .accordion--first .accordion__item:where(.accordion__item--open) .accordion__button,
-  .accordion--second .accordion__item:where(.accordion__item--open) .accordion__button,
-  .accordion--third .accordion__item:where(.accordion__item--open) .accordion__button {
+  .fds-accordion--first .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button,
+  .fds-accordion--second .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button,
+  .fds-accordion--third .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button {
     background-color: rgba(0 0 0 / 0.03);
   }
 
-  .accordion--neutral .accordion__item:where(.accordion__item--open) .accordion__button,
-  .accordion--subtle .accordion__item:where(.accordion__item--open) .accordion__button {
+  .fds-accordion--neutral .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button,
+  .fds-accordion--subtle .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button {
     background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
   }
 
-  .accordion--border .accordion__item:first-child .accordion__button {
+  .fds-accordion--border .fds-accordion__item:first-child .fds-accordion__button {
     border-top: 0;
   }
 
-  .accordion--first .accordion__item:not(:first-child) .accordion__button,
-  .accordion--second .accordion__item:not(:first-child) .accordion__button,
-  .accordion--third .accordion__item:not(:first-child) .accordion__button {
+  .fds-accordion--first .fds-accordion__item:not(:first-child) .fds-accordion__button,
+  .fds-accordion--second .fds-accordion__item:not(:first-child) .fds-accordion__button,
+  .fds-accordion--third .fds-accordion__item:not(:first-child) .fds-accordion__button {
     border-top: 1px solid var(--fds-semantic-surface-neutral-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .accordion__button:hover .accordion__expand-icon {
+    .fds-accordion__button:hover .fds-accordion__expand-icon {
       background-color: rgba(0 0 0 / 0.1);
     }
 
-    .accordion--neutral .accordion__button:hover,
-    .accordion--subtle .accordion__button:hover {
+    .fds-accordion--neutral .fds-accordion__button:hover,
+    .fds-accordion--subtle .fds-accordion__button:hover {
       background-color: var(--fds-semantic-surface-neutral-subtle-hover);
     }
 
-    .accordion--first .accordion__button:hover {
+    .fds-accordion--first .fds-accordion__button:hover {
       background-color: var(--fds-semantic-surface-first-light-hover);
     }
 
-    .accordion--second .accordion__button:hover {
+    .fds-accordion--second .fds-accordion__button:hover {
       background-color: var(--fds-semantic-surface-second-light-hover);
     }
 
-    .accordion--third .accordion__button:hover {
+    .fds-accordion--third .fds-accordion__button:hover {
       background-color: var(--fds-semantic-surface-third-light-hover);
     }
   }

@@ -35,7 +35,7 @@ export const AccordionContent = forwardRef<
       >
         <div
           ref={ref}
-          className={cl('accordion__content', className)}
+          className={cl('fds-accordion__content', className)}
           {...rest}
         >
           {children}

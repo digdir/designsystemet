@@ -38,19 +38,19 @@ export const AccordionHeader = forwardRef<
       ref={ref}
       size='xsmall'
       level={level}
-      className={cl('accordion__header', className)}
+      className={cl('fds-accordion__header', className)}
       {...rest}
     >
       <button
         type='button'
-        className={cl('accordion__button', `fds-focus`)}
+        className={cl('fds-accordion__button', `fds-focus`)}
         onClick={handleClick}
         aria-expanded={context.open}
         aria-controls={context.contentId}
       >
         <ChevronDownIcon
           aria-hidden
-          className={cl('accordion__expand-icon')}
+          className='fds-accordion__expand-icon'
           fontSize={'1.5rem'}
         />
         <Paragraph
