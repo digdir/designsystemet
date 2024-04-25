@@ -55,7 +55,12 @@ export default function useCombobox({
     useMemo(() => {
       const allChildren = Children.toArray(children);
 
-      const result = allChildren.reduce(
+      const result = allChildren.reduce<{
+        optionsChildren: ReactElement<ComboboxOptionProps>[];
+        customIds: string[];
+        restChildren: React.ReactNode[];
+        interactiveChildren: ReactElement<ComboboxCustomProps>[];
+      }>(
         (acc, child) => {
           if (isComboboxOption(child)) {
             acc.optionsChildren.push(child);
@@ -75,10 +80,10 @@ export default function useCombobox({
           return acc;
         },
         {
-          optionsChildren: [] as ReactElement<ComboboxOptionProps>[],
-          customIds: [] as string[],
-          restChildren: [] as React.ReactNode[],
-          interactiveChildren: [] as ReactElement<ComboboxCustomProps>[],
+          optionsChildren: [],
+          customIds: [],
+          restChildren: [],
+          interactiveChildren: [],
         },
       );
 
