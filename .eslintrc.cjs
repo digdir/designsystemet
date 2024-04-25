@@ -13,7 +13,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
     'plugin:storybook/recommended',
-    'plugin:prettier/recommended',
+    'prettier',
   ],
   plugins: ['import', 'react', 'jsx-a11y'],
   overrides: [
@@ -56,8 +56,6 @@ module.exports = {
     },
   ],
   rules: {
-    // https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
     // Disabled because we use Typescript types for props
