@@ -12,7 +12,11 @@ jobs:
   lint-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Use node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       # https://github.com/zentered/conventional-pull-request-action
       - uses: zentered/conventional-pull-request-action@v0.3.1
         env:
