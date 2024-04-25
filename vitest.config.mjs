@@ -1,6 +1,5 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vitest/config';
-import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
 
 import pkg from './package.json';
@@ -20,7 +19,7 @@ export default defineConfig({
   css: {
     transformer: 'lightningcss',
     lightningcss: {
-      targets: browserslistToTargets(browserslist(pkg.browserslist)),
+      targets: browserslistToTargets(pkg.browserslist),
     },
   },
   build: {

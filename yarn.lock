@@ -2614,7 +2614,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-css@workspace:^, @digdir/designsystemet-css@workspace:packages/css":
+"@digdir/designsystemet-css@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@digdir/designsystemet-css@npm:0.4.0"
+  dependencies:
+    "@digdir/designsystemet-react": "npm:^0.57.0"
+  checksum: 3a56962a90c0e51d61414bb3ac0666238c6ac394e40ff30e897f7a2b7a31be24fef8304335c3175da52c88e0341331ec6a237d43ed9b7aa612d3d5668ded66ca
+  languageName: node
+  linkType: hard
+
+"@digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
@@ -2629,7 +2638,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:0.57.0":
+"@digdir/designsystemet-react@npm:0.57.0, @digdir/designsystemet-react@npm:^0.57.0":
   version: 0.57.0
   resolution: "@digdir/designsystemet-react@npm:0.57.0"
   dependencies:
@@ -19142,7 +19151,6 @@ __metadata:
     "@typescript-eslint/parser": "npm:6.15.0"
     "@vitejs/plugin-react-swc": "npm:^3.6.0"
     "@vitest/expect": "npm:^1.4.0"
-    browserslist: "npm:^4.23.0"
     clsx: "npm:^2.1.1"
     copyfiles: "npm:^2.4.1"
     eslint: "npm:8.56.0"
@@ -19820,7 +19828,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "storefront@workspace:apps/storefront"
   dependencies:
-    "@digdir/designsystemet-css": "workspace:^"
+    "@digdir/designsystemet-css": "npm:0.4.0"
     "@digdir/designsystemet-react": "npm:0.57.0"
     "@digdir/designsystemet-theme": "npm:0.15.1"
     "@mdx-js/loader": "npm:^2.0.0-rc.2"
