@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
       # check for the most recent release: https://github.com/CondeNast/conventional-pull-request-action/releases
       # https://github.com/zentered/conventional-pull-request-action
-      - uses: zentered/conventional-pull-request-action@v0.3.0
+      - uses: zentered/conventional-pull-request-action@v0.3.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
