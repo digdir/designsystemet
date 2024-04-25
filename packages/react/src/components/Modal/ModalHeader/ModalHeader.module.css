@@ -11,7 +11,7 @@
     color: var(--fds-semantic-text-neutral-default);
   }
 
-  .modalHeader button {
+  .modalHeaderButton {
     position: absolute;
     top: var(--fds-spacing-3);
     right: var(--fds-spacing-3);
