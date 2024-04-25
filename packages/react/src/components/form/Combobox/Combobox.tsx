@@ -167,8 +167,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
 
-    /* const idDispatch = useComboboxIdDispatch(); */
-
     const {
       selectedOptions,
       options,
@@ -217,7 +215,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     // if value is set, set input value to the label of the value
     useEffect(() => {
-      if (value && value.length >= 0 && !multiple) {
+      if (value && value.length > 0 && !multiple) {
         const option = options[value[0]];
         setInputValue(option?.label || '');
       }

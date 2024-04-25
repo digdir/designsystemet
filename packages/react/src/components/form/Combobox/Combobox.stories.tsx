@@ -604,16 +604,8 @@ const items = Array.from({ length: 2000 }, (_, index) => ({
 }));
 
 export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-
   return (
-    <Combobox
-      {...args}
-      value={value}
-      onValueChange={(value) => {
-        setValue(value);
-      }}
-    >
+    <Combobox {...args}>
       <Combobox.Empty>Fant ingen treff</Combobox.Empty>
       {items.map((item, index) => (
         <Combobox.Option
