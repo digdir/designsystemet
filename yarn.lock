@@ -8093,10 +8093,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "clsx@npm:2.0.0"
-  checksum: 943766d1b02fee3538c871e56638d87f973fbc2d6291ce221215ea436fdecb9be97ad323f411839c2d52c45640c449b1a53fbfe7e8b3d529b4e263308b630c9a
+"clsx@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "clsx@npm:2.1.1"
+  checksum: cdfb57fa6c7649bbff98d9028c2f0de2f91c86f551179541cf784b1cfdc1562dcb951955f46d54d930a3879931a980e32a46b598acaea274728dbe068deca919
   languageName: node
   linkType: hard
 
@@ -18991,7 +18991,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:6.15.0"
     "@vitejs/plugin-react-swc": "npm:^3.6.0"
     "@vitest/expect": "npm:^1.4.0"
-    clsx: "npm:^2.0.0"
+    clsx: "npm:^2.1.1"
     copyfiles: "npm:^2.4.1"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
