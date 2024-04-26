@@ -61,30 +61,12 @@ export const ComboboxInput = ({
     setInputValue(value);
     setActiveIndex(0);
 
-    if (typeof value === 'string') {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-
     // check if input value is the same as a label, if so, select it
-    const option = options[value];
+    const option = options[value.toLowerCase()];
     if (!option) return;
     if (selectedOptions[option.value]) return;
 
     handleSelectOption(option);
-
-    if (multiple) {
-      inputRef.current?.focus();
-    } else {
-      // move cursor to the end of the input
-      setTimeout(() => {
-        inputRef.current?.setSelectionRange(
-          option?.label?.length || 0,
-          option?.label?.length || 0,
-        );
-      }, 0);
-    }
   };
 
   const showClearButton =
@@ -106,9 +88,7 @@ export const ComboboxInput = ({
       inputRef.current?.focus();
     },
     /* Handles list navigation */
-    onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-      handleKeyDown(event);
-    },
+    onKeyDown: handleKeyDown,
     // preventDefault on keydown to avoid sending in form
     onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
       if (event.key === 'Enter') {
