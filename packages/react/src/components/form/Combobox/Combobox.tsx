@@ -255,7 +255,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       }
 
       if (multiple) {
-        /* setSelectedOptions([...selectedOptions, option]); */
         setSelectedOptions((prev) => {
           const updated = { ...prev };
           updated[option.value] = option;
