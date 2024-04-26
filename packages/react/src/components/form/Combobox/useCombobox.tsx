@@ -164,21 +164,9 @@ export default function useCombobox({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue, multiple, options, optionsChildren, selectedOptions]);
 
-  const optionValues = useMemo(() => {
-    // create an index map of values from optionsChildren
-    const options = optionsChildren.map((child) => {
-      const { value } = child.props;
-      return value;
-    });
-
-    // interactive custom components are first in the index map
-    return [...customIds, ...options];
-  }, [customIds, optionsChildren]);
-
   return {
     filteredOptionsChildren,
     filteredOptions,
-    optionValues,
     restChildren,
     options,
     customIds,

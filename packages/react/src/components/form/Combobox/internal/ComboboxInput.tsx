@@ -10,13 +10,27 @@ import { Box } from '../../../Box';
 import textFieldClasses from '../../Textfield/Textfield.module.css';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
+import type { ComboboxProps } from '../Combobox';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 
+type ComboboxInputProps = {
+  hideClearButton: ComboboxProps['hideClearButton'];
+  listId: string;
+  error: ComboboxProps['error'];
+  hideChips: NonNullable<ComboboxProps['hideChips']>;
+  handleKeyDown: (event: React.KeyboardEvent) => void;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+
 export const ComboboxInput = ({
+  hideClearButton,
+  listId,
+  error,
+  hideChips,
+  handleKeyDown,
   ...rest
-}: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
+}: ComboboxInputProps) => {
   const context = useContext(ComboboxContext);
   const idDispatch = useComboboxIdDispatch();
 
@@ -30,7 +44,6 @@ export const ComboboxInput = ({
 
   const {
     forwareddRef,
-    listId,
     size,
     readOnly,
     disabled,
@@ -38,16 +51,12 @@ export const ComboboxInput = ({
     inputRef,
     refs,
     inputValue,
-    error,
     multiple,
     selectedOptions,
     formFieldProps,
     htmlSize,
     options,
-    hideChips,
-    hideClearButton,
     setOpen,
-    handleKeyDown,
     getReferenceProps,
     setInputValue,
     handleSelectOption,

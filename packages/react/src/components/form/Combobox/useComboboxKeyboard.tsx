@@ -15,7 +15,6 @@ type UseComboboxKeyboardProps = {
   multiple: boolean;
   open: boolean;
   setOpen: (value: boolean) => void;
-  setSelectedOptions: ReturnType<typeof useCombobox>['setSelectedOptions'];
   setInputValue: (value: string) => void;
   handleSelectOption: ComboboxContextType['handleSelectOption'];
 };

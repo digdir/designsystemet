@@ -165,7 +165,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       options,
       restChildren,
       interactiveChildren,
-      optionValues,
       customIds,
       filteredOptionsChildren,
       filteredOptions,
@@ -305,7 +304,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       interactiveChildren,
       setOpen,
       setInputValue,
-      setSelectedOptions,
       handleSelectOption: debouncedHandleSelectOption,
     });
 
@@ -332,23 +330,16 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           inputRef,
           refs,
           inputValue,
-          error,
           formFieldProps,
           name,
           htmlSize,
-          optionValues,
-          hideChips,
           clearButtonLabel,
-          hideClearButton,
-          listId,
           customIds,
           filteredOptions,
           setInputValue,
-          handleKeyDown,
           setOpen,
           getReferenceProps,
           getItemProps,
-          setSelectedOptions,
           /* Recieves the value of the option, and searches for it in our values lookup */
           onOptionClick: (value: string) => {
             if (readOnly) return;
@@ -390,6 +381,11 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           />
           <ComboboxInput
             {...omit(['inputValue'], rest)}
+            hideClearButton={hideClearButton}
+            listId={listId}
+            error={error}
+            hideChips={hideChips}
+            handleKeyDown={handleKeyDown}
             aria-busy={loading}
           />
           <ComboboxError
