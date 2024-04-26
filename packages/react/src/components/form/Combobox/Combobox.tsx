@@ -331,7 +331,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           refs,
           inputValue,
           formFieldProps,
-          name,
           htmlSize,
           clearButtonLabel,
           customIds,

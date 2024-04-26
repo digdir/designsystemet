@@ -15,7 +15,6 @@ export type ComboboxContextType = {
   multiple: NonNullable<ComboboxProps['multiple']>;
   disabled: NonNullable<ComboboxProps['disabled']>;
   readOnly: NonNullable<ComboboxProps['readOnly']>;
-  name: ComboboxProps['name'];
   htmlSize: ComboboxProps['htmlSize'];
   clearButtonLabel: NonNullable<ComboboxProps['clearButtonLabel']>;
   filteredOptions: ReturnType<typeof useCombobox>['filteredOptions'];
