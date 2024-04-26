@@ -2905,7 +2905,7 @@
   /**
    * Apply a focus outline on an element when it is focused with keyboard
    */
-  .fds-combobox-inFocus-249a725c {
+  .fds-combobox-inputWrapper-249a725c:has(input:focus) {
     --fds-focus-border-width: 3px;
 
     outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
