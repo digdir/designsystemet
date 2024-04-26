@@ -239,12 +239,9 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       if (clear) {
         setSelectedOptions({});
         setInputValue('');
-        console.log('calling new value with: ', []);
         onValueChange?.([]);
         return;
       }
-
-      console.log('I am here');
 
       if (!option) return;
 
@@ -252,10 +249,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
         const newSelectedOptions = { ...selectedOptions };
         delete newSelectedOptions[option.value];
         setSelectedOptions(newSelectedOptions);
-        console.log(
-          'calling new value with: ',
-          Object.keys(newSelectedOptions),
-        );
         onValueChange?.(Object.keys(newSelectedOptions));
         return;
       }
