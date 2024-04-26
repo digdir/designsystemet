@@ -15,8 +15,8 @@ export const ComboboxChips = () => {
     readOnly,
     disabled,
     selectedOptions,
-    setSelectedOptions,
     chipSrLabel,
+    handleSelectOption,
     inputRef,
   } = context;
 
@@ -33,10 +33,9 @@ export const ComboboxChips = () => {
               if (disabled) return;
               if (e.key === 'Enter') {
                 e.stopPropagation();
-                setSelectedOptions((prev) => {
-                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                  const { [value]: _, ...rest } = prev;
-                  return rest;
+                handleSelectOption({
+                  option: selectedOptions[value],
+                  remove: true,
                 });
                 inputRef.current?.focus();
               }
@@ -45,15 +44,10 @@ export const ComboboxChips = () => {
               if (readOnly) return;
               if (disabled) return;
               /* If we click a chip, filter the active values and remove the one we clicked */
-              setSelectedOptions((prev) => {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                const { [value]: _, ...rest } = prev;
-                return rest;
+              handleSelectOption({
+                option: selectedOptions[value],
+                remove: true,
               });
-            }}
-            style={{
-              /* We already set the opacity on Combobox */
-              opacity: 1,
             }}
             aria-label={chipSrLabel(selectedOptions[value])}
           >

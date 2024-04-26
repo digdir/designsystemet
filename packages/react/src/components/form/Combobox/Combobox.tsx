@@ -169,9 +169,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       customIds,
       filteredOptionsChildren,
       filteredOptions,
-      prevSelectedHash,
       setSelectedOptions,
-      setPrevSelectedHash,
     } = useCombobox({
       children,
       inputValue,
@@ -214,16 +212,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       }
     }, [multiple, value, options]);
 
-    // Send new value if option was clicked
-    useEffect(() => {
-      const selectedHash = JSON.stringify(selectedOptions);
-      if (prevSelectedHash === selectedHash) return;
-
-      const values = Object.keys(selectedOptions);
-      onValueChange?.(values);
-      setPrevSelectedHash(selectedHash);
-    }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
-
     useEffect(() => {
       if (value && Object.keys(options).length >= 0) {
         const updatedSelectedOptions = value.map((option) => {
@@ -240,32 +228,51 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           }, {}),
         );
       }
-    }, [multiple, prevSelectedHash, value, options, setSelectedOptions]);
+    }, [multiple, value, options, setSelectedOptions]);
 
     // handle click on option, either select or deselect - Handles single or multiple
-    const handleSelectOption = (option: Option) => {
-      // if option is already selected, remove it
-      if (value && value.includes(option.value)) {
-        setSelectedOptions((prev) => {
-          const updated = { ...prev };
-          delete updated[option.value];
-          return updated;
-        });
+    const handleSelectOption = (args: {
+      option: Option | null;
+      remove?: boolean;
+      clear?: boolean;
+    }) => {
+      const { option, clear, remove } = args;
+      if (clear) {
+        setSelectedOptions({});
+        setInputValue('');
+        console.log('calling new value with: ', []);
+        onValueChange?.([]);
         return;
       }
 
+      console.log('I am here');
+
+      if (!option) return;
+
+      if (remove) {
+        const newSelectedOptions = { ...selectedOptions };
+        delete newSelectedOptions[option.value];
+        setSelectedOptions(newSelectedOptions);
+        console.log(
+          'calling new value with: ',
+          Object.keys(newSelectedOptions),
+        );
+        onValueChange?.(Object.keys(newSelectedOptions));
+        return;
+      }
+
+      const newSelectedOptions = { ...selectedOptions };
+
       if (multiple) {
-        setSelectedOptions((prev) => {
-          const updated = { ...prev };
-          updated[option.value] = option;
-          return updated;
-        });
+        if (newSelectedOptions[option.value]) {
+          delete newSelectedOptions[option.value];
+        } else {
+          newSelectedOptions[option.value] = option;
+        }
         setInputValue('');
         inputRef.current?.focus();
       } else {
-        setSelectedOptions({
-          [option.value]: option,
-        });
+        newSelectedOptions[option.value] = option;
         setInputValue(option?.label || '');
         // move cursor to the end of the input
         setTimeout(() => {
@@ -275,6 +282,10 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           );
         }, 0);
       }
+
+      setSelectedOptions(newSelectedOptions);
+      console.log('calling new value with: ', Object.keys(newSelectedOptions));
+      onValueChange?.(Object.keys(newSelectedOptions));
 
       !multiple && setOpen(false);
       refs.domReference.current?.focus();
@@ -343,7 +354,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
             if (readOnly) return;
             if (disabled) return;
             const option = options[value];
-            debouncedHandleSelectOption(option);
+            debouncedHandleSelectOption({ option: option });
           },
           handleSelectOption: debouncedHandleSelectOption,
           chipSrLabel,

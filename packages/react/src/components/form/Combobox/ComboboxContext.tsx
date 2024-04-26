@@ -11,7 +11,7 @@ import type { ComboboxProps } from './Combobox';
 import type { Option } from './useCombobox';
 import type useCombobox from './useCombobox';
 
-type ComboboxContextType = {
+export type ComboboxContextType = {
   multiple: NonNullable<ComboboxProps['multiple']>;
   disabled: NonNullable<ComboboxProps['disabled']>;
   readOnly: NonNullable<ComboboxProps['readOnly']>;
@@ -51,7 +51,11 @@ type ComboboxContextType = {
     }>
   >;
   chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
-  handleSelectOption: (option: Option) => void;
+  handleSelectOption: (args: {
+    option: Option | null;
+    remove?: boolean;
+    clear?: boolean;
+  }) => void;
   listRef: UseListNavigationProps['listRef'];
   forwareddRef: React.Ref<HTMLInputElement>;
 };

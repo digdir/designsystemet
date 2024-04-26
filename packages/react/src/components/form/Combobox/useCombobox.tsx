@@ -144,10 +144,6 @@ export default function useCombobox({
     [key: string]: Option;
   }>(preSelectedOptions);
 
-  const [prevSelectedHash, setPrevSelectedHash] = useState(
-    JSON.stringify(selectedOptions),
-  );
-
   const { filteredOptions, filteredOptionsChildren } = useMemo(() => {
     const filteredOptions: string[] = [];
 
@@ -187,9 +183,7 @@ export default function useCombobox({
     options,
     customIds,
     selectedOptions,
-    prevSelectedHash,
     interactiveChildren,
     setSelectedOptions,
-    setPrevSelectedHash,
   };
 }

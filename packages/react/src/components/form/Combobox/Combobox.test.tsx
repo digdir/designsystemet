@@ -181,7 +181,11 @@ describe('Combobox', () => {
     await wait(100);
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    await wait(500);
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
     await wait(500);
     await user.click(document.body);
     await wait(500);
@@ -197,12 +201,13 @@ describe('Combobox', () => {
       throw new Error('Could not find clear button');
     }
     await userEvent.click(clearButton);
+    await userEvent.click(document.body);
 
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
-      expect(onValueChange).toHaveBeenCalledWith([]);
-    }, 1000);
+    await wait(500);
+
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+    expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
+    expect(onValueChange).toHaveBeenCalledWith([]);
   });
 
   it('should show "Fant ingen treff", when input does not match any values', async () => {

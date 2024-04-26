@@ -66,7 +66,7 @@ export const ComboboxInput = ({
     if (!option) return;
     if (selectedOptions[option.value]) return;
 
-    handleSelectOption(option);
+    handleSelectOption({ option: option });
   };
 
   const showClearButton =

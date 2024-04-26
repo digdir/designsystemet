@@ -12,15 +12,8 @@ export const ComboboxClearButton = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const {
-    size,
-    readOnly,
-    disabled,
-    clearButtonLabel,
-    inputRef,
-    setSelectedOptions,
-    setInputValue,
-  } = context;
+  const { size, readOnly, disabled, clearButtonLabel, handleSelectOption } =
+    context;
 
   return (
     <button
@@ -29,17 +22,14 @@ export const ComboboxClearButton = () => {
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;
-        setSelectedOptions({});
-        setInputValue('');
+        handleSelectOption({ option: null, clear: true });
       }}
       onKeyDown={(e) => {
         if (readOnly) return;
         if (disabled) return;
         if (e.key === 'Enter') {
           e.stopPropagation();
-          setSelectedOptions({});
-          setInputValue('');
-          inputRef.current?.focus();
+          handleSelectOption({ option: null, clear: true });
         }
       }}
       type='button'

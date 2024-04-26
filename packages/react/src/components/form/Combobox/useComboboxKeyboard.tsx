@@ -1,8 +1,8 @@
 import useDebounce from '../../../utilities/useDebounce';
 
 import type useCombobox from './useCombobox';
-import type { Option } from './useCombobox';
 import { useComboboxId } from './ComboboxIdContext';
+import type { ComboboxContextType } from './ComboboxContext';
 
 type UseComboboxKeyboardProps = {
   filteredOptions: ReturnType<typeof useCombobox>['filteredOptions'];
@@ -17,7 +17,7 @@ type UseComboboxKeyboardProps = {
   setOpen: (value: boolean) => void;
   setSelectedOptions: ReturnType<typeof useCombobox>['setSelectedOptions'];
   setInputValue: (value: string) => void;
-  handleSelectOption: (option: Option) => void;
+  handleSelectOption: ComboboxContextType['handleSelectOption'];
 };
 
 export const useComboboxKeyboard = ({
@@ -31,8 +31,6 @@ export const useComboboxKeyboard = ({
   open,
   options,
   setOpen,
-  setInputValue,
-  setSelectedOptions,
   handleSelectOption,
 }: UseComboboxKeyboardProps) => {
   const { activeIndex } = useComboboxId();
@@ -75,32 +73,30 @@ export const useComboboxKeyboard = ({
 
         // eslint-disable-next-line no-case-declarations
         const option = filteredOptions[valueIndex];
-        if (!multiple) {
-          // check if option is already selected, if so, deselect it
-          if (selectedOptions[option]) {
-            setSelectedOptions({});
-            setInputValue('');
-            return;
-          }
-        }
 
-        handleSelectOption(options[option]);
+        handleSelectOption({ option: options[option] });
         break;
 
       case 'Backspace':
         // if we are in single mode, we need to set selectedOptions to empty
         if (!multiple) {
-          setSelectedOptions({});
+          const lastOption = Object.keys(selectedOptions).pop();
+          lastOption &&
+            handleSelectOption({
+              option: selectedOptions[lastOption],
+              remove: true,
+            });
           break;
         }
 
         if (inputValue === '' && multiple) {
-          setSelectedOptions((prev) => {
-            const updated = { ...prev };
-            const keys = Object.keys(updated);
-            delete updated[keys[keys.length - 1]];
-            return updated;
-          });
+          const lastOption = Object.keys(selectedOptions).pop();
+          /* Remove last option, and use handleSelectOption */
+          lastOption &&
+            handleSelectOption({
+              option: selectedOptions[lastOption],
+              remove: true,
+            });
         }
         break;
 
