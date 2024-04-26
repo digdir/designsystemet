@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.6.1-alpha.0...@digdir/designsystemet-css@0.6.1-alpha.1) (2024-04-26)
+
+### Bug Fixes
+
+- **Modal:** fix close button position ([#1877](https://github.com/digdir/designsystemet/issues/1877)) ([c866710](https://github.com/digdir/designsystemet/commit/c866710cc00760a8f1a4f1676e2c8a5eda235a72))
+
 ## [0.6.1-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.6.0...@digdir/designsystemet-css@0.6.1-alpha.0) (2024-04-24)
 
 **Note:** Version bump only for package @digdir/designsystemet-css
