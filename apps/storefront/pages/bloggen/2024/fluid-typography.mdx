@@ -1,23 +1,19 @@
-import { Figma } from 'mdx-embed';
-import { TokenIcon } from '@navikt/aksel-icons';
+import { Card } from '@digdir/designsystemet-react';
 
-import { MenuPageLayout } from '@layouts';
-import { Image, Meta } from '@components';
-
-<Meta
-  title='Dynamisk typografi'
-  description='Det er mulig å bruke dynamiske font-størrelser uten breakpoints'
-/>
+import { BlogArticleLayout } from '@layouts';
+import { Image } from '@components';
+import { Contributors } from '@blog';
 
 export default ({ children }) => (
-  <MenuPageLayout
+  <BlogArticleLayout
     content={children}
-    data={{
-      title: 'Dynamisk typografi',
-      date: '28. april 2024',
-      icon: <TokenIcon />,
-      color: 'blue',
-    }}
+    heading='Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det'
+    ingress='Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints, men det medfører noen ulemper.  '
+    date='26. april 2024'
+    author='Designsystemet'
+    imageSrc='/img/bloggen/fluid-front.png'
+    imageAlt='Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.'
+    imageCaption='Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer. '
   />
 );
 
@@ -26,8 +22,9 @@ Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mell
 Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer maksbredden på viewporten som er satt til 1360px. En tekst på 16px vil f.eks øke til 18px på den største viewporten.
 
 <Image
-  src='/img/fluid.png'
+  src='/img/bloggen/fluid-ex.png'
   alt='Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.'
+  caption='Tekststørrelsen tilpasser seg automatisk bredden på skjermen.'
   boxShadow={false}
 />
 
@@ -47,11 +44,11 @@ Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer m
 
 **Basert på [ulempene dette medførte](https://github.com/digdir/designsystemet/issues/1444), valgte vi å gå for en [statisk typografi-skala](/grunnleggende/designelementer/typografi#tekststørrelse) som standard for designsystemet.**
 
-## Du kan fortsatt velge å bruke fluid
+## Har du behov for dynamisk typografi?
 
-Du kan fortsatt velge å slå på dynamisk typografi, ved å aktivere settet "[fluid](https://github.com/digdir/designsystemet/blob/main/design-tokens/Base/Fluid.json)".
+Har du behov for å benytte dynamisk typografi, opprett gjerne en [feature request](https://github.com/digdir/designsystemet/issues/new?assignees=&labels=%F0%9F%92%A1feature+request%2Cneeds+prioritization%E2%9D%97%EF%B8%8F&projects=&template=2feature_request.yml), så kan vi vurdere muligheten for å aktivere "Fluid" som et eget sett.
 
-Størrelsene som brukes i den dynamiske skalaen er generert ved hjelp av [Fluid Typescale Generator](https://fluid-tokenization.vercel.app/)
+Størrelsene som ble brukt i den dynamiske skalaen ble generert ved hjelp av [Fluid Typescale Generator](https://fluid-tokenization.vercel.app/)
 
 | Step   | viewport 320px        | viewport 1360px       |
 | ------ | --------------------- | --------------------- |
@@ -66,7 +63,12 @@ Størrelsene som brukes i den dynamiske skalaen er generert ved hjelp av [Fluid 
 | f5     | 26.00px / 1.63rem     | 38.00px / 2.38rem     |
 | f6     | 29.00px / 1.81rem     | 44.00px / 2.75rem     |
 
-<Figma
-  title='Typography sizes in Figma'
-  url='file/vpM9dqqQPHqU6ogfKp5tlr/Designsystemet---Core-UI-Kit?type=design&node-id=28251%3A27106&mode=design&t=PjDKHWiYf5F8WaSi-1'
+<Contributors
+  authors={[
+    'Marianne Røsvik',
+    'Øyvind Thune',
+    'Michael Marszalek',
+    'Tobias Barsnes',
+    'Lasse Febakke Straum',
+  ]}
 />
