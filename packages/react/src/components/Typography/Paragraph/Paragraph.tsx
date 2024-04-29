@@ -12,10 +12,6 @@ export type ParagraphProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Reduces line-height for short paragraphs
-   * @deprecated Use `variant="short"` instead
-   */
-  short?: boolean;
   /** Adjusts styling for paragraph length */
   variant?: 'long' | 'short';
   /**
@@ -37,7 +33,6 @@ export const Paragraph: OverridableComponent<
       spacing,
       as = 'p',
       asChild,
-      short,
       variant,
       ...rest
     },
@@ -53,7 +48,6 @@ export const Paragraph: OverridableComponent<
           classes[size],
           {
             [classes.spacing]: !!spacing,
-            [classes.short]: short,
           },
           variant && classes[variant],
           className,
