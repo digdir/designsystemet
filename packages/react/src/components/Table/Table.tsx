@@ -29,18 +29,7 @@ export type TableProps = {
 } & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  (
-    {
-      zebra = false,
-      size = 'medium',
-      stickyHeader = false,
-      border = false,
-      className,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ zebra = false, size = 'medium', stickyHeader = false, border = false, className, children, ...rest }, ref) => {
     return (
       <Paragraph
         asChild

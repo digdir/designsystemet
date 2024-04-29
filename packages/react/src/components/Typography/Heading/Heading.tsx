@@ -11,15 +11,7 @@ export type HeadingProps = {
   /** Changes text sizing
    * @default 'xlarge'
    */
-  size?:
-    | 'xxsmall'
-    | 'xsmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xlarge'
-    | '2xlarge'
-    | '3xlarge';
+  size?: 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge';
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
@@ -31,17 +23,7 @@ export type HeadingProps = {
 
 /** Use `Heading` to render h1-6 elements with heading text styles.  */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  (
-    {
-      level = 1,
-      size = 'xlarge',
-      spacing = false,
-      className,
-      asChild,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ level = 1, size = 'xlarge', spacing = false, className, asChild, ...rest }, ref) => {
     const Component = asChild ? Slot : (`h${level ?? 1}` as ElementType);
 
     return (

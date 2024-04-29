@@ -87,10 +87,7 @@ describe('NativeSelect', () => {
   });
 });
 
-const render = (
-  props?: Partial<NativeSelectProps>,
-  ref?: RefObject<HTMLSelectElement>,
-) =>
+const render = (props?: Partial<NativeSelectProps>, ref?: RefObject<HTMLSelectElement>) =>
   renderRtl(
     <NativeSelect
       {...defaultProps}

@@ -1,9 +1,6 @@
 import { ErrorMessage } from '../Typography';
 
-export type CharacterLimitProps = Omit<
-  CharacterCounterProps,
-  'id' | 'value' | 'size'
->;
+export type CharacterLimitProps = Omit<CharacterCounterProps, 'id' | 'value' | 'size'>;
 
 type CharacterCounterProps = {
   /** The message indicating the remaining character limit. */
@@ -23,8 +20,7 @@ type CharacterCounterProps = {
 const defaultLabel: CharacterCounterProps['label'] = (count) =>
   count > -1 ? `${count} tegn igjen` : `${Math.abs(count)} tegn for mye`;
 
-const defaultSrLabel = (maxCount: number) =>
-  `Tekstfelt med plass til ${maxCount} tegn`;
+const defaultSrLabel = (maxCount: number) => `Tekstfelt med plass til ${maxCount} tegn`;
 
 export const CharacterCounter = ({
   label = defaultLabel,
@@ -51,9 +47,7 @@ export const CharacterCounter = ({
         size={size}
         error={hasExceededLimit}
       >
-        <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
-          {label(currentCount)}
-        </span>
+        <span aria-live={hasExceededLimit ? 'polite' : 'off'}>{label(currentCount)}</span>
       </ErrorMessage>
     </>
   );

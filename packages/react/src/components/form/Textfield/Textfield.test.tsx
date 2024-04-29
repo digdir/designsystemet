@@ -15,18 +15,14 @@ describe('Textfield', () => {
 
   test('has correct description', () => {
     render({ description: 'description' });
-    expect(
-      screen.getByRole('textbox', { description: 'description' }),
-    ).toBeDefined();
+    expect(screen.getByRole('textbox', { description: 'description' })).toBeDefined();
   });
 
   test('has correct description and label when label is hidden', () => {
     render({ description: 'description', label: 'label', hideLabel: true });
 
     expect(screen.getByLabelText('label')).toBeDefined();
-    expect(
-      screen.getByRole('textbox', { description: 'description' }),
-    ).toBeDefined();
+    expect(screen.getByRole('textbox', { description: 'description' })).toBeDefined();
   });
 
   test('is invalid with correct error message', () => {

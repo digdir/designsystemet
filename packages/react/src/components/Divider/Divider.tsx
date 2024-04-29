@@ -12,17 +12,15 @@ export type DividerProps = {
   color?: 'default' | 'strong' | 'subtle';
 } & React.HTMLAttributes<HTMLHRElement>;
 
-export const Divider = forwardRef<HTMLHRElement, DividerProps>(
-  ({ color = 'default', className, ...rest }, ref) => {
-    return (
-      <hr
-        className={cl(classes.divider, classes[color], className)}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
-);
+export const Divider = forwardRef<HTMLHRElement, DividerProps>(({ color = 'default', className, ...rest }, ref) => {
+  return (
+    <hr
+      className={cl(classes.divider, classes[color], className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 Divider.displayName = 'Divider';
 

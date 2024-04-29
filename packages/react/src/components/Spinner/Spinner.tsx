@@ -32,13 +32,9 @@ export const Spinner = ({
   style,
   ...rest
 }: SpinnerProps): JSX.Element => {
-  const svgRef = useSynchronizedAnimation<SVGSVGElement>(
-    classes['rotate-animation'],
-  );
+  const svgRef = useSynchronizedAnimation<SVGSVGElement>(classes['rotate-animation']);
 
-  const strokeRef = useSynchronizedAnimation<SVGCircleElement>(
-    classes['stroke-animation'],
-  );
+  const strokeRef = useSynchronizedAnimation<SVGCircleElement>(classes['stroke-animation']);
 
   return (
     <svg
@@ -50,10 +46,7 @@ export const Spinner = ({
     >
       <title>{title}</title>
       <circle
-        className={cl(
-          classes.background,
-          variant === 'inverted' && classes.invertedBackground,
-        )}
+        className={cl(classes.background, variant === 'inverted' && classes.invertedBackground)}
         cx='25'
         cy='25'
         r='20'

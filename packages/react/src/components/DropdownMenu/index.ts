@@ -27,10 +27,4 @@ export type { DropdownMenuProps } from './DropdownMenu';
 export type { DropdownMenuGroupProps } from './DropdownMenuGroup/DropdownMenuGroup';
 export type { DropdownMenuItemProps } from './DropdownMenuItem/DropdownMenuItem';
 export type { DropdownMenuContentProps } from './DropdownMenuContent';
-export {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-};
+export { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger };

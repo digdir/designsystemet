@@ -30,10 +30,7 @@ describe('ToggleChip', () => {
   it('should be possible to render as selected', () => {
     render(<Chip.Toggle selected>Norwegian</Chip.Toggle>);
 
-    expect(screen.getByRole('button', { name: 'Norwegian' })).toHaveAttribute(
-      'aria-pressed',
-      'true',
-    );
+    expect(screen.getByRole('button', { name: 'Norwegian' })).toHaveAttribute('aria-pressed', 'true');
   });
 
   it('should toggle aria-pressed based on user interaction', async () => {

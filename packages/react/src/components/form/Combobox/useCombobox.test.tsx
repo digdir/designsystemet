@@ -40,9 +40,7 @@ const FILTER = (
   return option.label.toLowerCase().startsWith(inputValueValue.toLowerCase());
 };
 
-const renderUseCombobox = ({
-  ...args
-}: Omit<UseComboboxProps, 'children' | 'filter'>) =>
+const renderUseCombobox = ({ ...args }: Omit<UseComboboxProps, 'children' | 'filter'>) =>
   renderHook(() =>
     useCombobox({
       ...args,

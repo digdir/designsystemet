@@ -8,10 +8,7 @@ import PaginationItem from './PaginationItem';
 import type { PaginationItemProps } from './PaginationItem';
 import { PaginationButton } from './PaginationButton';
 import type { PaginationButtonProps } from './PaginationButton';
-import type {
-  PaginationNextProps,
-  PaginationPreviousProps,
-} from './PaginationNextPrev';
+import type { PaginationNextProps, PaginationPreviousProps } from './PaginationNextPrev';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import PaginationRoot from './PaginationRoot';
 

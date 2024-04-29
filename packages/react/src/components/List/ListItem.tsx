@@ -13,18 +13,16 @@ export type ListItemProps = {
   asChild?: boolean;
 } & LiHTMLAttributes<HTMLLIElement>;
 
-export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'li';
+export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'li';
 
-    return (
-      <Component
-        className={cl(classes.listItem, className)}
-        {...rest}
-        ref={ref}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      className={cl(classes.listItem, className)}
+      {...rest}
+      ref={ref}
+    />
+  );
+});
 
 ListItem.displayName = 'ListItem';

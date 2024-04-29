@@ -44,19 +44,14 @@ export const Error: StoryFn<typeof Checkbox> = () => (
     <Checkbox value='norge'>Norge</Checkbox>
     <Checkbox value='europeisk'>Annet europeisk land</Checkbox>
     <Checkbox value='amerikansk'>Amerikansk</Checkbox>
-    <Checkbox value='annet'>
-      Statsborger i et land utenfor Europa og USA
-    </Checkbox>
+    <Checkbox value='annet'>Statsborger i et land utenfor Europa og USA</Checkbox>
   </Checkbox.Group>
 );
 
 export const Controlled: StoryFn<typeof Checkbox> = () => {
   const [value, setValue] = useState<string[]>([]);
 
-  const myToggle = (val: string) =>
-    setValue(
-      value.includes(val) ? value.filter((x) => x !== val) : [...value, val],
-    );
+  const myToggle = (val: string) => setValue(value.includes(val) ? value.filter((x) => x !== val) : [...value, val]);
   return (
     <>
       <span style={{ display: 'flex', gap: '1rem' }}>
@@ -76,9 +71,7 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
         <Checkbox value='slovakia'>Slovakia</Checkbox>
         <Checkbox value='hobsyssel'>Hobsyssel</Checkbox>
         <Paragraph>eller</Paragraph>
-        <Checkbox value='ingen'>
-          Jeg skal ikke til noen av disse landene
-        </Checkbox>
+        <Checkbox value='ingen'>Jeg skal ikke til noen av disse landene</Checkbox>
       </Checkbox.Group>
     </>
   );
@@ -110,9 +103,7 @@ export const ContentEx1: StoryFn<typeof Checkbox> = () => (
 
 export const ContentEx2: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group legend='Hva liker du best med jobben din?'>
-    <Checkbox value='selvstendige'>
-      Jeg liker å jobbe med selvstendige oppgaver
-    </Checkbox>
+    <Checkbox value='selvstendige'>Jeg liker å jobbe med selvstendige oppgaver</Checkbox>
     <Checkbox value='moter'>Jeg elsker møter</Checkbox>
     <Checkbox value='lunsj'>Lunsjen er best</Checkbox>
     <Checkbox value='kolleger'>Jeg liker å møte kolleger</Checkbox>

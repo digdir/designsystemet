@@ -20,15 +20,7 @@ export type BoxProps = {
    * Border radius of the box
    * @default undefined
    */
-  borderRadius?:
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xlarge'
-    | 'xxlarge'
-    | 'xxxlarge'
-    | 'xxxxlarge'
-    | 'full';
+  borderRadius?: 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge' | 'xxxxlarge' | 'full';
   /**
    * Background color of the box
    * @default 'default'
@@ -43,16 +35,7 @@ export type BoxProps = {
 
 export const Box = forwardRef<HTMLDivElement, BoxProps>(
   (
-    {
-      shadow,
-      borderColor,
-      borderRadius,
-      background = 'default',
-      children,
-      asChild = false,
-      className,
-      ...rest
-    },
+    { shadow, borderColor, borderRadius, background = 'default', children, asChild = false, className, ...rest },
     ref,
   ) => {
     const Component = asChild ? Slot : 'div';

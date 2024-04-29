@@ -7,21 +7,13 @@ type ComboboxNativeProps = {
   name: ComboboxProps['name'];
 };
 
-export const ComboboxNative = ({
-  selectedOptions,
-  multiple,
-  name,
-}: ComboboxNativeProps) => {
+export const ComboboxNative = ({ selectedOptions, multiple, name }: ComboboxNativeProps) => {
   return (
     <select
       name={name}
       multiple={multiple}
       style={{ display: 'none' }}
-      value={
-        multiple
-          ? selectedOptions.map((option) => option.value)
-          : selectedOptions[0]?.value
-      }
+      value={multiple ? selectedOptions.map((option) => option.value) : selectedOptions[0]?.value}
       onChange={() => {}}
     >
       {selectedOptions.map((option) => (

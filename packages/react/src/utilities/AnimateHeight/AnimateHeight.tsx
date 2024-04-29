@@ -17,13 +17,7 @@ const transitionDurationInMilliseconds = 250;
 /**
  * AnimateHeight is a component that animates its height when the `open` prop changes.
  */
-export const AnimateHeight = ({
-  children,
-  className,
-  open = false,
-  style,
-  ...rest
-}: AnimateHeightProps) => {
+export const AnimateHeight = ({ children, className, open = false, style, ...rest }: AnimateHeightProps) => {
   const [height, setHeight] = useState<number>(0);
   const prevOpen = usePrevious(open);
   const openOrClosed: InternalState = open ? 'open' : 'closed';
@@ -52,9 +46,7 @@ export const AnimateHeight = ({
   );
 
   const transition =
-    state === 'openingOrClosing'
-      ? `height ${transitionDurationInMilliseconds}ms ease-in-out`
-      : undefined;
+    state === 'openingOrClosing' ? `height ${transitionDurationInMilliseconds}ms ease-in-out` : undefined;
 
   return (
     <div

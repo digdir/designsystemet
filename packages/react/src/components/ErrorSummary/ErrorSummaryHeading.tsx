@@ -7,10 +7,7 @@ import { ErrorSummaryContext } from './ErrorSummaryRoot';
 
 export type ErrorSummaryHeadingProps = ListHeadingProps;
 
-export const ErrorSummaryHeading = ({
-  id,
-  ...rest
-}: ErrorSummaryHeadingProps) => {
+export const ErrorSummaryHeading = ({ id, ...rest }: ErrorSummaryHeadingProps) => {
   const { headingId, setHeadingId } = useContext(ErrorSummaryContext);
 
   useEffect(() => {

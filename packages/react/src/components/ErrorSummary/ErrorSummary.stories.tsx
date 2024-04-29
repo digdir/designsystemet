@@ -16,16 +16,10 @@ export default {
 export const Preview: Story = (args) => (
   <>
     <ErrorSummary.Root {...args}>
-      <ErrorSummary.Heading>
-        For å gå videre må du rette opp følgende feil:
-      </ErrorSummary.Heading>
+      <ErrorSummary.Heading>For å gå videre må du rette opp følgende feil:</ErrorSummary.Heading>
       <ErrorSummary.List>
-        <ErrorSummary.Item href='#'>
-          Fødselsdato kan ikke være etter år 2005
-        </ErrorSummary.Item>
-        <ErrorSummary.Item href='#'>
-          Telefonnummer kan kun inneholde siffer
-        </ErrorSummary.Item>
+        <ErrorSummary.Item href='#'>Fødselsdato kan ikke være etter år 2005</ErrorSummary.Item>
+        <ErrorSummary.Item href='#'>Telefonnummer kan kun inneholde siffer</ErrorSummary.Item>
         <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
       </ErrorSummary.List>
     </ErrorSummary.Root>
@@ -55,16 +49,10 @@ export const WithForm: Story = () => (
     />
 
     <ErrorSummary.Root>
-      <ErrorSummary.Heading>
-        For å gå videre må du rette opp følgende feil:
-      </ErrorSummary.Heading>
+      <ErrorSummary.Heading>For å gå videre må du rette opp følgende feil:</ErrorSummary.Heading>
       <ErrorSummary.List>
-        <ErrorSummary.Item href='#fornavn'>
-          Fornavn må være minst 2 tegn
-        </ErrorSummary.Item>
-        <ErrorSummary.Item href='#telefon'>
-          Telefonnummer kan kun inneholde siffer
-        </ErrorSummary.Item>
+        <ErrorSummary.Item href='#fornavn'>Fornavn må være minst 2 tegn</ErrorSummary.Item>
+        <ErrorSummary.Item href='#telefon'>Telefonnummer kan kun inneholde siffer</ErrorSummary.Item>
       </ErrorSummary.List>
     </ErrorSummary.Root>
   </div>
@@ -78,16 +66,10 @@ export const ShowHide: Story = () => {
       <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
       {show && (
         <ErrorSummary.Root>
-          <ErrorSummary.Heading>
-            For å gå videre må du rette opp følgende feil:
-          </ErrorSummary.Heading>
+          <ErrorSummary.Heading>For å gå videre må du rette opp følgende feil:</ErrorSummary.Heading>
           <ErrorSummary.List>
-            <ErrorSummary.Item href='#fornavn'>
-              Fornavn må være minst 2 tegn
-            </ErrorSummary.Item>
-            <ErrorSummary.Item href='#telefon'>
-              Telefonnummer kan kun inneholde siffer
-            </ErrorSummary.Item>
+            <ErrorSummary.Item href='#fornavn'>Fornavn må være minst 2 tegn</ErrorSummary.Item>
+            <ErrorSummary.Item href='#telefon'>Telefonnummer kan kun inneholde siffer</ErrorSummary.Item>
           </ErrorSummary.List>
         </ErrorSummary.Root>
       )}

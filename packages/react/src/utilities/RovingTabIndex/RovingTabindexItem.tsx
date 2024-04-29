@@ -40,44 +40,42 @@ export function getPrevFocusableValue(
   return items.at(currIndex === 0 ? -1 : currIndex - 1);
 }
 
-export const RovingTabindexItem: OverridableComponent<
-  RovingTabindexItemProps,
-  HTMLElement
-> = forwardRef(({ value, as = 'div', asChild, ...rest }, ref) => {
-  const Component = asChild ? Slot : as;
+export const RovingTabindexItem: OverridableComponent<RovingTabindexItemProps, HTMLElement> = forwardRef(
+  ({ value, as = 'div', asChild, ...rest }, ref) => {
+    const Component = asChild ? Slot : as;
 
-  const focusValue =
-    value ?? (typeof rest.children == 'string' ? rest.children : '');
+    const focusValue = value ?? (typeof rest.children == 'string' ? rest.children : '');
 
-  const { getOrderedItems, getRovingProps } = useRovingTabindex(focusValue);
+    const { getOrderedItems, getRovingProps } = useRovingTabindex(focusValue);
 
-  const rovingProps = getRovingProps<HTMLElement>({
-    onKeyDown: (e) => {
-      rest?.onKeyDown?.(e);
-      const items = getOrderedItems();
-      let nextItem: RovingTabindexElement | undefined;
+    const rovingProps = getRovingProps<HTMLElement>({
+      onKeyDown: (e) => {
+        rest?.onKeyDown?.(e);
+        const items = getOrderedItems();
+        let nextItem: RovingTabindexElement | undefined;
 
-      if (e.key === 'ArrowRight') {
-        nextItem = getNextFocusableValue(items, focusValue);
-      }
+        if (e.key === 'ArrowRight') {
+          nextItem = getNextFocusableValue(items, focusValue);
+        }
 
-      if (e.key === 'ArrowLeft') {
-        nextItem = getPrevFocusableValue(items, focusValue);
-      }
+        if (e.key === 'ArrowLeft') {
+          nextItem = getPrevFocusableValue(items, focusValue);
+        }
 
-      nextItem?.element.focus();
-    },
-  });
+        nextItem?.element.focus();
+      },
+    });
 
-  const mergedRefs = useMergeRefs([ref, rovingProps.ref]);
+    const mergedRefs = useMergeRefs([ref, rovingProps.ref]);
 
-  return (
-    <Component
-      {...rest}
-      {...rovingProps}
-      ref={mergedRefs}
-    >
-      {rest.children}
-    </Component>
-  );
-});
+    return (
+      <Component
+        {...rest}
+        {...rovingProps}
+        ref={mergedRefs}
+      >
+        {rest.children}
+      </Component>
+    );
+  },
+);

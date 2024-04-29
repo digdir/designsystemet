@@ -78,10 +78,7 @@ describe('List', () => {
         </>
       ),
     });
-    expect(screen.getByRole('list')).toHaveAttribute(
-      'aria-labelledby',
-      'passedId',
-    );
+    expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby', 'passedId');
   });
   it('should not have aria-labelledby when heading is missing', () => {
     render({

@@ -1,10 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import {
-  act,
-  render as renderRtl,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { act, render as renderRtl, screen, waitFor } from '@testing-library/react';
 
 import type { TooltipProps } from './Tooltip';
 import { Tooltip } from './Tooltip';

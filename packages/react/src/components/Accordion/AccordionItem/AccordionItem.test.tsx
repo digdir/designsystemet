@@ -4,18 +4,12 @@ import { Accordion } from '..';
 
 import type { AccordionItemProps } from './AccordionItem';
 
-const TestComponent = ({
-  ...rest
-}: Omit<AccordionItemProps, 'children'>): JSX.Element => {
+const TestComponent = ({ ...rest }: Omit<AccordionItemProps, 'children'>): JSX.Element => {
   return (
     <Accordion>
       <Accordion.Item {...rest}>
-        <Accordion.Header level={3}>
-          Accordion Header Title Text
-        </Accordion.Header>
-        <Accordion.Content>
-          The Fantastic AccordionContent Text
-        </Accordion.Content>
+        <Accordion.Header level={3}>Accordion Header Title Text</Accordion.Header>
+        <Accordion.Content>The Fantastic AccordionContent Text</Accordion.Content>
       </Accordion.Item>
     </Accordion>
   );

@@ -16,24 +16,18 @@ export default {
 export const Preview: StoryFn<typeof Accordion> = (args) => (
   <Accordion {...args}>
     <Accordion.Item>
-      <Accordion.Header level={3}>
-        Hvem kan registrere seg i Frivillighetsregisteret?
-      </Accordion.Header>
+      <Accordion.Header level={3}>Hvem kan registrere seg i Frivillighetsregisteret?</Accordion.Header>
       <Accordion.Content>
-        For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
-        drive frivillig virksomhet. Det er bare foreninger, stiftelser og
-        aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
-        til fysiske personer. Virksomheten må ha et styre.
+        For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen drive frivillig virksomhet. Det er bare
+        foreninger, stiftelser og aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler til fysiske
+        personer. Virksomheten må ha et styre.
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Header level={3}>
-        Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-      </Accordion.Header>
+      <Accordion.Header level={3}>Hvordan går jeg fram for å registrere i Frivillighetsregisteret?</Accordion.Header>
       <Accordion.Content>
-        Virksomheten må være registrert i Enhetsregisteret før den kan bli
-        registrert i Frivillighetsregisteret. Du kan registrere i begge
-        registrene samtidig i Samordnet registermelding.
+        Virksomheten må være registrert i Enhetsregisteret før den kan bli registrert i Frivillighetsregisteret. Du kan
+        registrere i begge registrene samtidig i Samordnet registermelding.
       </Accordion.Content>
     </Accordion.Item>
   </Accordion>
@@ -57,21 +51,15 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
     color='second'
   >
     <Accordion.Item>
-      <Accordion.Header level={3}>
-        Hvordan får jeg tildelt et jegernummer?
-      </Accordion.Header>
+      <Accordion.Header level={3}>Hvordan får jeg tildelt et jegernummer?</Accordion.Header>
       <Accordion.Content>
-        Du vil automatisk få tildelt jegernummer og bli registrert i
-        Jegerregisteret når du har bestått jegerprøven.
+        Du vil automatisk få tildelt jegernummer og bli registrert i Jegerregisteret når du har bestått jegerprøven.
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Header level={3}>
-        Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
-      </Accordion.Header>
+      <Accordion.Header level={3}>Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?</Accordion.Header>
       <Accordion.Content>
-        Du kan finne dette ved å logge inn på{' '}
-        <Link href='https://minjegerside.brreg.no/'>Min jegerside</Link>
+        Du kan finne dette ved å logge inn på <Link href='https://minjegerside.brreg.no/'>Min jegerside</Link>
       </Accordion.Content>
     </Accordion.Item>
   </Accordion>
@@ -92,38 +80,27 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
       <br />
       <Accordion>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Enkeltpersonforetak
-          </Accordion.Header>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>Enkeltpersonforetak</Accordion.Header>
           <Accordion.Content>
-            Skal du starte for deg selv? Enkeltpersonforetak er ofte den
-            enkleste måten å etablere bedrift på. Denne organisasjonsformen har
-            både fordeler og ulemper. Det gir deg stor grad av frihet, men kan
-            også gi betydelig risiko fordi du har personlig ansvar for
-            økonomien.
+            Skal du starte for deg selv? Enkeltpersonforetak er ofte den enkleste måten å etablere bedrift på. Denne
+            organisasjonsformen har både fordeler og ulemper. Det gir deg stor grad av frihet, men kan også gi betydelig
+            risiko fordi du har personlig ansvar for økonomien.
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Aksjeselskap (AS)
-          </Accordion.Header>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>Aksjeselskap (AS)</Accordion.Header>
           <Accordion.Content>
-            Planlegger du å starte næringsvirksomhet alene eller sammen med
-            andre? Innebærer næringsvirksomheten en økonomisk risiko? Vil du ha
-            rettigheter som arbeidstaker og muligheten til at andre kan
-            investere i selskapet ditt? Da kan aksjeselskap være en
-            hensiktsmessig organisasjonsform.
+            Planlegger du å starte næringsvirksomhet alene eller sammen med andre? Innebærer næringsvirksomheten en
+            økonomisk risiko? Vil du ha rettigheter som arbeidstaker og muligheten til at andre kan investere i
+            selskapet ditt? Da kan aksjeselskap være en hensiktsmessig organisasjonsform.
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
-            Ansvarlig selskap (ANS/DA)
-          </Accordion.Header>
+          <Accordion.Header onHeaderClick={() => setOpen(!open)}>Ansvarlig selskap (ANS/DA)</Accordion.Header>
           <Accordion.Content>
-            Er dere minst to personer som skal starte opp egen virksomhet?
-            Samarbeider du godt med den/de som du skal starte opp sammen med?
-            Krever virksomheten få investeringer og tar du liten økonomisk
-            risiko? Da kan du vurdere å etablere et ansvarlig selskap.
+            Er dere minst to personer som skal starte opp egen virksomhet? Samarbeider du godt med den/de som du skal
+            starte opp sammen med? Krever virksomheten få investeringer og tar du liten økonomisk risiko? Da kan du
+            vurdere å etablere et ansvarlig selskap.
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>

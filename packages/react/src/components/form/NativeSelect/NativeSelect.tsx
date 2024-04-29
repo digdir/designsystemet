@@ -39,23 +39,9 @@ export type NativeSelectProps = {
 
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (props, ref: ForwardedRef<HTMLSelectElement>) => {
-    const {
-      children,
-      disabled = false,
-      label,
-      hideLabel = false,
-      error,
-      className,
-      htmlSize = 0,
-      ...rest
-    } = props;
+    const { children, disabled = false, label, hideLabel = false, error, className, htmlSize = 0, ...rest } = props;
 
-    const {
-      selectProps,
-      errorId,
-      readOnly = false,
-      size = 'medium',
-    } = useNativeSelect(props);
+    const { selectProps, errorId, readOnly = false, size = 'medium' } = useNativeSelect(props);
 
     return (
       <Paragraph
@@ -91,13 +77,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             disabled={disabled || readOnly}
             ref={ref}
             size={htmlSize}
-            className={cl(
-              classes.select,
-              classes[size],
-              `fds-focus`,
-              props.multiple && classes.multiple,
-              className,
-            )}
+            className={cl(classes.select, classes[size], `fds-focus`, props.multiple && classes.multiple, className)}
             {...omit(['size', 'error', 'errorId'], rest)}
             {...omit(['readOnly', 'disabled'], selectProps)}
           >

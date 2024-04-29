@@ -12,14 +12,7 @@ export type TextProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 /**  Skeleton component used for indicating loading elements of text */
-export const Text = ({
-  width,
-  height,
-  className,
-  style,
-  children,
-  ...rest
-}: TextProps) => {
+export const Text = ({ width, height, className, style, children, ...rest }: TextProps) => {
   const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
 
   return (

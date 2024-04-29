@@ -16,27 +16,25 @@ export type ListUnorderedProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
-export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
-  ({ asChild, ...rest }, ref) => {
-    const { size, headingId } = useContext(ListContext);
+export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(({ asChild, ...rest }, ref) => {
+  const { size, headingId } = useContext(ListContext);
 
-    const Component = asChild ? Slot : 'ul';
+  const Component = asChild ? Slot : 'ul';
 
-    return (
-      <Paragraph
-        size={size}
-        asChild
-      >
-        <Component
-          className={cl(classes[size], rest.className)}
-          {...(headingId ? { 'aria-labelledby': headingId } : {})}
-          ref={ref}
-          {...rest}
-        />
-      </Paragraph>
-    );
-  },
-);
+  return (
+    <Paragraph
+      size={size}
+      asChild
+    >
+      <Component
+        className={cl(classes[size], rest.className)}
+        {...(headingId ? { 'aria-labelledby': headingId } : {})}
+        ref={ref}
+        {...rest}
+      />
+    </Paragraph>
+  );
+});
 
 Unordered.displayName = 'ListUnordered';
 
@@ -48,26 +46,24 @@ export type ListOrderedProps = {
   asChild?: boolean;
 } & Omit<OlHTMLAttributes<HTMLOListElement>, 'size'>;
 
-export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
-  ({ asChild, ...rest }, ref) => {
-    const { size, headingId } = useContext(ListContext);
+export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(({ asChild, ...rest }, ref) => {
+  const { size, headingId } = useContext(ListContext);
 
-    const Component = asChild ? Slot : 'ol';
+  const Component = asChild ? Slot : 'ol';
 
-    return (
-      <Paragraph
-        size={size}
-        asChild
-      >
-        <Component
-          className={cl(classes[size], rest.className)}
-          {...(headingId ? { 'aria-labelledby': headingId } : {})}
-          ref={ref}
-          {...rest}
-        />
-      </Paragraph>
-    );
-  },
-);
+  return (
+    <Paragraph
+      size={size}
+      asChild
+    >
+      <Component
+        className={cl(classes[size], rest.className)}
+        {...(headingId ? { 'aria-labelledby': headingId } : {})}
+        ref={ref}
+        {...rest}
+      />
+    </Paragraph>
+  );
+});
 
 Ordered.displayName = 'ListOrdered';

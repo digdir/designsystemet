@@ -19,10 +19,7 @@ const createWrapper = (Wrapper: typeof Fieldset, props?: FieldsetProps) => {
 
 describe('useFormField', () => {
   test('has correct error props when error is string', () => {
-    const { result } = renderHook(
-      () => useFormField({ error: 'error' }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ error: 'error' }, 'test'), { wrapper: createWrapper(Fieldset) });
 
     const field = result.current;
 
@@ -46,31 +43,23 @@ describe('useFormField', () => {
   });
 
   test('has correct error props when Fieldset has error', () => {
-    const { result } = renderHook<FormField, FieldsetProps>(
-      () => useFormField({}, 'test'),
-      {
-        wrapper: createWrapper(Fieldset, { error: 'error', legend: 'Wrapper' }),
-      },
-    );
+    const { result } = renderHook<FormField, FieldsetProps>(() => useFormField({}, 'test'), {
+      wrapper: createWrapper(Fieldset, { error: 'error', legend: 'Wrapper' }),
+    });
 
     const field = result.current;
 
     expect(field.hasError).toBeTruthy();
     expect(field.errorId).toBeDefined();
     expect(field.inputProps['aria-invalid']).toBeTruthy();
-    expect(
-      field.inputProps['aria-describedby']?.includes(field.errorId),
-    ).toBeFalsy();
-    expect(
-      field.inputProps['aria-describedby']?.includes('fieldset-error'),
-    ).toBeTruthy();
+    expect(field.inputProps['aria-describedby']?.includes(field.errorId)).toBeFalsy();
+    expect(field.inputProps['aria-describedby']?.includes('fieldset-error')).toBeTruthy();
   });
 
   test('has correct description props', () => {
-    const { result } = renderHook(
-      () => useFormField({ description: 'description' }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ description: 'description' }, 'test'), {
+      wrapper: createWrapper(Fieldset),
+    });
 
     const field = result.current;
 
@@ -80,10 +69,9 @@ describe('useFormField', () => {
     expect(field.inputProps['aria-describedby']).toEqual(field.descriptionId);
   });
   test('has overridden internal id and error id', () => {
-    const { result } = renderHook(
-      () => useFormField({ errorId: 'my errorId', id: 'my id' }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ errorId: 'my errorId', id: 'my id' }, 'test'), {
+      wrapper: createWrapper(Fieldset),
+    });
 
     const field = result.current;
 
@@ -92,10 +80,7 @@ describe('useFormField', () => {
   });
 
   test('is disabled', () => {
-    const { result } = renderHook(
-      () => useFormField({ disabled: true }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ disabled: true }, 'test'), { wrapper: createWrapper(Fieldset) });
 
     const field = result.current;
 
@@ -103,10 +88,7 @@ describe('useFormField', () => {
   });
 
   test('is readonly', () => {
-    const { result } = renderHook(
-      () => useFormField({ readOnly: true }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ readOnly: true }, 'test'), { wrapper: createWrapper(Fieldset) });
 
     const field = result.current;
 
@@ -114,10 +96,9 @@ describe('useFormField', () => {
   });
 
   test('has disabled take presedens over readonly', () => {
-    const { result } = renderHook(
-      () => useFormField({ readOnly: true, disabled: true }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ readOnly: true, disabled: true }, 'test'), {
+      wrapper: createWrapper(Fieldset),
+    });
 
     const field = result.current;
 
@@ -126,26 +107,20 @@ describe('useFormField', () => {
   });
 
   test('has correct size', () => {
-    const { result } = renderHook(
-      () => useFormField({ size: 'small' }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
+    const { result } = renderHook(() => useFormField({ size: 'small' }, 'test'), { wrapper: createWrapper(Fieldset) });
 
     const field = result.current;
 
     expect(field.size).toEqual('small');
   });
   test('has correct values inherited from Fieldset', () => {
-    const { result } = renderHook<FormField, FieldsetProps>(
-      () => useFormField({}, 'test'),
-      {
-        wrapper: createWrapper(Fieldset, {
-          disabled: true,
-          size: 'small',
-          legend: 'Wrapper',
-        }),
-      },
-    );
+    const { result } = renderHook<FormField, FieldsetProps>(() => useFormField({}, 'test'), {
+      wrapper: createWrapper(Fieldset, {
+        disabled: true,
+        size: 'small',
+        legend: 'Wrapper',
+      }),
+    });
 
     const field = result.current;
 
@@ -154,12 +129,9 @@ describe('useFormField', () => {
   });
 
   test('has readOnly inherited from Fieldset', () => {
-    const { result } = renderHook<FormField, FieldsetProps>(
-      () => useFormField({}, 'test'),
-      {
-        wrapper: createWrapper(Fieldset, { readOnly: true, legend: 'Wrapper' }),
-      },
-    );
+    const { result } = renderHook<FormField, FieldsetProps>(() => useFormField({}, 'test'), {
+      wrapper: createWrapper(Fieldset, { readOnly: true, legend: 'Wrapper' }),
+    });
 
     const field = result.current;
 
@@ -167,9 +139,7 @@ describe('useFormField', () => {
   });
 
   test('has undefined aria-describedby', () => {
-    const { result } = renderHook<FormField, FieldsetProps>(() =>
-      useFormField({}, 'test'),
-    );
+    const { result } = renderHook<FormField, FieldsetProps>(() => useFormField({}, 'test'));
 
     const field = result.current;
 

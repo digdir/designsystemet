@@ -19,9 +19,7 @@ describe('Radio', () => {
         test
       </Radio>,
     );
-    expect(
-      screen.getByRole('radio', { description: 'description' }),
-    ).toBeDefined();
+    expect(screen.getByRole('radio', { description: 'description' })).toBeDefined();
   });
 
   test('should pass down name attribute to input', () => {
@@ -33,10 +31,7 @@ describe('Radio', () => {
         label
       </Radio>,
     );
-    expect(screen.getByRole('radio', { name: 'label' })).toHaveAttribute(
-      'name',
-      'radio-group123',
-    );
+    expect(screen.getByRole('radio', { name: 'label' })).toHaveAttribute('name', 'radio-group123');
   });
 
   test('has correct label when using aria-label', () => {
@@ -59,9 +54,7 @@ describe('Radio', () => {
         />
       </div>,
     );
-    expect(
-      screen.getByRole('radio', { name: 'label outside radio' }),
-    ).toBeVisible();
+    expect(screen.getByRole('radio', { name: 'label outside radio' })).toBeVisible();
   });
 
   it('calls onChange and onClick when user clicks', async () => {

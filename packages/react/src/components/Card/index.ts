@@ -26,11 +26,5 @@ Card.Content.displayName = 'Card.Content';
 Card.Footer.displayName = 'Card.Footer';
 Card.Media.displayName = 'Card.Media';
 
-export type {
-  CardProps,
-  CardHeaderProps,
-  CardContentProps,
-  CardFooterProps,
-  CardMediaProps,
-};
+export type { CardProps, CardHeaderProps, CardContentProps, CardFooterProps, CardMediaProps };
 export { Card, CardHeader, CardContent, CardFooter, CardMedia };

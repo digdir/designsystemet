@@ -108,9 +108,7 @@ describe('Modal', () => {
         </>
       ),
     });
-    expect(
-      screen.queryByRole('button', { name: /close/i }),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /close/i })).not.toBeInTheDocument();
   });
 
   it('should render the header title', async () => {

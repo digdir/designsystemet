@@ -13,15 +13,7 @@ export type TagProps = {
   /** Color of the tag
    * @default neutral
    */
-  color?:
-    | 'neutral'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'info'
-    | 'first'
-    | 'second'
-    | 'third';
+  color?: 'neutral' | 'success' | 'warning' | 'danger' | 'info' | 'first' | 'second' | 'third';
   /** Size of the tag
    * @default medium
    */
@@ -29,10 +21,7 @@ export type TagProps = {
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  (
-    { children, color = 'neutral', size = 'medium', className, ...rest },
-    ref,
-  ) => {
+  ({ children, color = 'neutral', size = 'medium', className, ...rest }, ref) => {
     return (
       <Paragraph
         asChild

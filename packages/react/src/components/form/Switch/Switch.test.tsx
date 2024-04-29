@@ -19,9 +19,7 @@ describe('Switch', () => {
         test
       </Switch>,
     );
-    expect(
-      screen.getByRole('checkbox', { description: 'description' }),
-    ).toBeDefined();
+    expect(screen.getByRole('checkbox', { description: 'description' })).toBeDefined();
   });
   it('calls onChange and onClick when user clicks', async () => {
     const user = userEvent.setup();

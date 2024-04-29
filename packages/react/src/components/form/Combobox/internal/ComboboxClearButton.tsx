@@ -12,15 +12,7 @@ export const ComboboxClearButton = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const {
-    size,
-    readOnly,
-    disabled,
-    clearButtonLabel,
-    inputRef,
-    setSelectedOptions,
-    setInputValue,
-  } = context;
+  const { size, readOnly, disabled, clearButtonLabel, inputRef, setSelectedOptions, setInputValue } = context;
 
   return (
     <button

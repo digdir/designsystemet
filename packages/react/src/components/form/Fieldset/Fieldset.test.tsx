@@ -39,9 +39,7 @@ describe('Fieldset', () => {
       description: 'test description test error',
     });
     expect(errorFieldset).toBeDefined();
-    expect(errorFieldset).toHaveAccessibleDescription(
-      'test description test error',
-    );
+    expect(errorFieldset).toHaveAccessibleDescription('test description test error');
     expect(errorFieldset).toBeInvalid();
   });
   test('and its children are disabled', () => {

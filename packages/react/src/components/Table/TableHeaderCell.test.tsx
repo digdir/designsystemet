@@ -40,9 +40,6 @@ describe('table header cell', (): void => {
 
   it('should render table header cell with sort button with aria-sort', (): void => {
     render({ sortable: true, sort: 'ascending' });
-    expect(screen.getByRole('columnheader')).toHaveAttribute(
-      'aria-sort',
-      'ascending',
-    );
+    expect(screen.getByRole('columnheader')).toHaveAttribute('aria-sort', 'ascending');
   });
 });

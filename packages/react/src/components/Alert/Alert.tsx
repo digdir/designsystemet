@@ -10,10 +10,7 @@ import cl from 'clsx';
 
 import { Paragraph } from '..';
 
-const icons: Record<
-  Severity,
-  { Icon: typeof InformationSquareFillIcon; title: string }
-> = {
+const icons: Record<Severity, { Icon: typeof InformationSquareFillIcon; title: string }> = {
   info: {
     Icon: InformationSquareFillIcon,
     title: 'Informasjon',
@@ -46,18 +43,7 @@ export type AlertProps = {
   size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLDivElement>;
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  (
-    {
-      severity = 'info',
-      elevated,
-      iconTitle,
-      size,
-      children,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ severity = 'info', elevated, iconTitle, size, children, className, ...rest }, ref) => {
     const { Icon, title } = icons[severity];
 
     return (

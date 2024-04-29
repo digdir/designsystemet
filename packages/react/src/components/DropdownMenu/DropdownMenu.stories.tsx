@@ -140,9 +140,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
         onClose={() => setOpen(false)}
         portal
       >
-        <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
-          Dropdown
-        </DropdownMenu.Trigger>
+        <DropdownMenu.Trigger onClick={() => setOpen(!open)}>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group>
             <DropdownMenu.Item asChild>

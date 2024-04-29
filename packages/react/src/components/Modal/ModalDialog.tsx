@@ -1,8 +1,4 @@
-import {
-  FloatingFocusManager,
-  useFloating,
-  useMergeRefs,
-} from '@floating-ui/react';
+import { FloatingFocusManager, useFloating, useMergeRefs } from '@floating-ui/react';
 import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
@@ -33,18 +29,7 @@ export type ModalDialogProps = {
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
-  (
-    {
-      onInteractOutside,
-      onClose,
-      onBeforeClose,
-      asChild,
-      className,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ onInteractOutside, onClose, onBeforeClose, asChild, className, children, ...rest }, ref) => {
     const Component = asChild ? Slot : 'dialog';
 
     // This local ref is used to make sure the modal works without a ModalRoot

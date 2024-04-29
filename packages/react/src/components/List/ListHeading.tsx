@@ -15,31 +15,29 @@ const HEADING_SIZE_MAP: {
 
 export type ListHeadingProps = HeadingProps;
 
-export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(
-  ({ level = 2, id, ...rest }, ref) => {
-    const { size, headingId, setHeadingId } = useContext(ListContext);
-    const randomId = useId();
-    const headingId_ = id ?? randomId;
+export const ListHeading = forwardRef<HTMLHeadingElement, ListHeadingProps>(({ level = 2, id, ...rest }, ref) => {
+  const { size, headingId, setHeadingId } = useContext(ListContext);
+  const randomId = useId();
+  const headingId_ = id ?? randomId;
 
-    const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
+  const headingSize = useMemo(() => HEADING_SIZE_MAP[size], [size]);
 
-    useEffect(() => {
-      if (headingId !== headingId_) {
-        setHeadingId(headingId_);
-      }
-    }, [headingId, id, setHeadingId, headingId_]);
+  useEffect(() => {
+    if (headingId !== headingId_) {
+      setHeadingId(headingId_);
+    }
+  }, [headingId, id, setHeadingId, headingId_]);
 
-    return (
-      <Heading
-        ref={ref}
-        size={headingSize}
-        id={headingId}
-        level={level}
-        spacing={true}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Heading
+      ref={ref}
+      size={headingSize}
+      id={headingId}
+      level={level}
+      spacing={true}
+      {...rest}
+    />
+  );
+});
 
 ListHeading.displayName = 'ListHeading';

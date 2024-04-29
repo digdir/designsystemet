@@ -10,8 +10,7 @@ export default {
 
 export const Preview: Story = () => (
   <>
-    For å vise skiplinken, tab til dette eksempelet, eller klikk inni eksempelet
-    og trykk <kbd>Tab</kbd>.
+    For å vise skiplinken, tab til dette eksempelet, eller klikk inni eksempelet og trykk <kbd>Tab</kbd>.
     <SkipLink href='#main-content'>Hopp til hovedinnhold</SkipLink>
     <main
       id='main-content'

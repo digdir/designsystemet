@@ -27,93 +27,77 @@ export type FieldsetProps = {
 } & Pick<FormFieldProps, 'size'> &
   FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
-export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
-  (props, ref) => {
-    const {
-      children,
-      legend,
-      description,
-      error,
-      hideLegend,
-      className,
-      ...rest
-    } = props;
+export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>((props, ref) => {
+  const { children, legend, description, error, hideLegend, className, ...rest } = props;
 
-    const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } =
-      useFieldset(props);
+  const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } = useFieldset(props);
 
-    const fieldset = useContext(FieldsetContext);
+  const fieldset = useContext(FieldsetContext);
 
-    return (
-      <FieldsetContext.Provider
-        value={{
-          error: error ?? fieldset?.error,
-          errorId: hasError ? errorId : undefined,
-          size,
-          disabled: props?.disabled,
-          readOnly,
-        }}
+  return (
+    <FieldsetContext.Provider
+      value={{
+        error: error ?? fieldset?.error,
+        errorId: hasError ? errorId : undefined,
+        size,
+        disabled: props?.disabled,
+        readOnly,
+      }}
+    >
+      <fieldset
+        {...fieldsetProps}
+        className={cl(
+          classes.fieldset,
+          !hideLegend && classes.withSpacing,
+          readOnly && classes.readonly,
+          props?.disabled && classes.disabled,
+          className,
+        )}
+        ref={ref}
+        {...rest}
       >
-        <fieldset
-          {...fieldsetProps}
-          className={cl(
-            classes.fieldset,
-            !hideLegend && classes.withSpacing,
-            readOnly && classes.readonly,
-            props?.disabled && classes.disabled,
-            className,
-          )}
-          ref={ref}
-          {...rest}
+        <Label
+          asChild
+          size={size}
         >
-          <Label
-            asChild
+          <legend className={classes.legend}>
+            <span className={cl(classes.legendContent, hideLegend && `fds-sr-only`)}>
+              {readOnly && (
+                <PadlockLockedFillIcon
+                  className={classes.padlock}
+                  aria-hidden
+                />
+              )}
+              {legend}
+            </span>
+          </legend>
+        </Label>
+        {description && (
+          <Paragraph
             size={size}
+            asChild
+            short
           >
-            <legend className={classes.legend}>
-              <span
-                className={cl(
-                  classes.legendContent,
-                  hideLegend && `fds-sr-only`,
-                )}
-              >
-                {readOnly && (
-                  <PadlockLockedFillIcon
-                    className={classes.padlock}
-                    aria-hidden
-                  />
-                )}
-                {legend}
-              </span>
-            </legend>
-          </Label>
-          {description && (
-            <Paragraph
-              size={size}
-              asChild
-              short
+            <div
+              id={descriptionId}
+              className={cl(classes.description, hideLegend && `fds-sr-only`)}
             >
-              <div
-                id={descriptionId}
-                className={cl(classes.description, hideLegend && `fds-sr-only`)}
-              >
-                {description}
-              </div>
-            </Paragraph>
-          )}
-          {children}
-          <div
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
-            className={classes.errorWrapper}
-          >
-            {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
-          </div>
-        </fieldset>
-      </FieldsetContext.Provider>
-    );
-  },
-);
+              {description}
+            </div>
+          </Paragraph>
+        )}
+        {children}
+        <div
+          id={errorId}
+          aria-live='polite'
+          aria-relevant='additions removals'
+          className={classes.errorWrapper}
+        >
+          {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
+        </div>
+      </fieldset>
+    </FieldsetContext.Provider>
+  );
+});
 
 Fieldset.displayName = 'Fieldset';

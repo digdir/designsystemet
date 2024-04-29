@@ -526,9 +526,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
     setValue([...value, inputValue.toLowerCase()]);
   };
 
-  const showAddNew =
-    inputValue &&
-    !options.some((option) => option.value === inputValue.toLowerCase());
+  const showAddNew = inputValue && !options.some((option) => option.value === inputValue.toLowerCase());
 
   return (
     <>

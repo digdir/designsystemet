@@ -25,10 +25,7 @@ export type ModalHeaderProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-  (
-    { closeButton = true, children, subtitle, asChild, className, ...rest },
-    ref,
-  ) => {
+  ({ closeButton = true, children, subtitle, asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'div';
 
     const context = useContext(ModalContext);
@@ -36,11 +33,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
     return (
       <Component
         ref={ref}
-        className={cl(
-          classes.modalHeader,
-          !closeButton && classes.noCloseButton,
-          className,
-        )}
+        className={cl(classes.modalHeader, !closeButton && classes.noCloseButton, className)}
         {...rest}
       >
         {subtitle && (

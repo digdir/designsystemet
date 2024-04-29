@@ -13,18 +13,16 @@ export type CardHeaderProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'div';
+export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'div';
 
-    return (
-      <Component
-        className={cl(classes.header, className)}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      className={cl(classes.header, className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 CardHeader.displayName = 'CardHeader';

@@ -10,17 +10,11 @@ import type { SearchProps } from './Search';
 type UseSearch = (props: SearchProps) => {
   size?: 'small' | 'medium' | 'large';
 } & Omit<FormField, 'inputProps' | 'size'> & {
-    inputProps: Pick<
-      InputHTMLAttributes<HTMLInputElement>,
-      'readOnly' | 'name' | 'required' | 'onClick' | 'onChange'
-    > &
+    inputProps: Pick<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'name' | 'required' | 'onClick' | 'onChange'> &
       FormField['inputProps'];
   };
 
-const sizeMap: Record<
-  NonNullable<FormField['size']>,
-  'small' | 'medium' | 'large'
-> = {
+const sizeMap: Record<NonNullable<FormField['size']>, 'small' | 'medium' | 'large'> = {
   small: 'small',
   medium: 'medium',
   large: 'large',

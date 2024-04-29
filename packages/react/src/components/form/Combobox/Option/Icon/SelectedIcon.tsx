@@ -10,12 +10,7 @@ type SelectedIconProps = {
 
 export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   return (
-    <div
-      className={cl(
-        multiple && classes.selectIconWrapper,
-        selected && classes.selected,
-      )}
-    >
+    <div className={cl(multiple && classes.selectIconWrapper, selected && classes.selected)}>
       {selected && (
         <CheckmarkIcon
           className={classes.selectIcon}

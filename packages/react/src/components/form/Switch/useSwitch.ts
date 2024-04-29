@@ -10,14 +10,7 @@ import type { SwitchProps } from './Switch';
 type UseCheckbox = (props: SwitchProps) => FormField & {
   inputProps?: Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    | 'readOnly'
-    | 'type'
-    | 'name'
-    | 'required'
-    | 'defaultChecked'
-    | 'checked'
-    | 'onClick'
-    | 'onChange'
+    'readOnly' | 'type' | 'name' | 'required' | 'defaultChecked' | 'checked' | 'onClick' | 'onChange'
   >;
 };
 /** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
@@ -36,9 +29,7 @@ export const useSwitch: UseCheckbox = (props) => {
       defaultChecked: checkboxGroup?.defaultValue
         ? checkboxGroup?.defaultValue.includes(propsValue)
         : props.defaultChecked,
-      checked: checkboxGroup?.value
-        ? checkboxGroup?.value.includes(propsValue)
-        : props.checked,
+      checked: checkboxGroup?.value ? checkboxGroup?.value.includes(propsValue) : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();

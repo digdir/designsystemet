@@ -31,22 +31,13 @@ export type CardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    { color = 'neutral', isLink = false, asChild = false, className, ...rest },
-    ref,
-  ) => {
+  ({ color = 'neutral', isLink = false, asChild = false, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'div';
 
     return (
       <Component
         ref={ref}
-        className={cl(
-          classes.card,
-          classes[color],
-          isLink && classes.linkCard,
-          isLink && `fds-focus`,
-          className,
-        )}
+        className={cl(classes.card, classes[color], isLink && classes.linkCard, isLink && `fds-focus`, className)}
         {...rest}
       />
     );

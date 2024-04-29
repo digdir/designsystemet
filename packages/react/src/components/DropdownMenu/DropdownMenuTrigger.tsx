@@ -7,31 +7,27 @@ import { Button } from '../Button';
 
 import { DropdownMenuContext } from './DropdownMenu';
 
-export type DropdownMenuTriggerProps = React.ComponentPropsWithRef<
-  typeof Button
->;
+export type DropdownMenuTriggerProps = React.ComponentPropsWithRef<typeof Button>;
 
-export const DropdownMenuTrigger = forwardRef<
-  HTMLButtonElement,
-  DropdownMenuTriggerProps
->(({ asChild, ...rest }, ref) => {
-  const { triggerRef, internalOpen, setInternalOpen, isControlled } =
-    useContext(DropdownMenuContext);
-  const mergedRefs = useMergeRefs([ref, triggerRef]);
+export const DropdownMenuTrigger = forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
+  ({ asChild, ...rest }, ref) => {
+    const { triggerRef, internalOpen, setInternalOpen, isControlled } = useContext(DropdownMenuContext);
+    const mergedRefs = useMergeRefs([ref, triggerRef]);
 
-  const Component = asChild ? Slot : Button;
+    const Component = asChild ? Slot : Button;
 
-  return (
-    <Component
-      ref={mergedRefs}
-      onClick={() => {
-        if (!isControlled) setInternalOpen(!internalOpen);
-      }}
-      aria-haspopup='menu'
-      aria-expanded={internalOpen}
-      {...rest}
-    />
-  );
-});
+    return (
+      <Component
+        ref={mergedRefs}
+        onClick={() => {
+          if (!isControlled) setInternalOpen(!internalOpen);
+        }}
+        aria-haspopup='menu'
+        aria-expanded={internalOpen}
+        {...rest}
+      />
+    );
+  },
+);
 
 DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';

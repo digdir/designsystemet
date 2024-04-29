@@ -32,8 +32,8 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
           <Modal.Header>Modal header</Modal.Header>
           <Modal.Content>
             <Paragraph>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis doloremque obcaecati assumenda odio
+              ducimus sunt et.
             </Paragraph>
           </Modal.Content>
           <Modal.Footer>Modal footer</Modal.Footer>
@@ -56,8 +56,8 @@ export const WithoutTriggerComponent: StoryFn<typeof Modal> = (args) => {
         <Modal.Header subtitle='Modal subtittel'>Modal header</Modal.Header>
         <Modal.Content>
           <Paragraph>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-            doloremque obcaecati assumenda odio ducimus sunt et.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis doloremque obcaecati assumenda odio
+            ducimus sunt et.
           </Paragraph>
         </Modal.Content>
         <Modal.Footer>Modal footer</Modal.Footer>
@@ -76,13 +76,11 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
         ref={modalRef}
         onInteractOutside={() => modalRef.current?.close()}
       >
-        <Modal.Header>
-          Modal med closeOnBackdropClick og en veldig lang tittel
-        </Modal.Header>
+        <Modal.Header>Modal med closeOnBackdropClick og en veldig lang tittel</Modal.Header>
         <Modal.Content>
           <Paragraph>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-            doloremque obcaecati assumenda odio ducimus sunt et.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis doloremque obcaecati assumenda odio
+            ducimus sunt et.
           </Paragraph>
         </Modal.Content>
         <Modal.Footer>Footer</Modal.Footer>
@@ -96,9 +94,7 @@ export const WithDivider: StoryFn<typeof Modal> = () => {
     <Modal.Root>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal.Dialog>
-        <Modal.Header subtitle='Her er det også divider'>
-          Vi kan legge divider under header
-        </Modal.Header>
+        <Modal.Header subtitle='Her er det også divider'>Vi kan legge divider under header</Modal.Header>
         <Divider color='subtle' />
         <Modal.Content>
           <Paragraph>Rundt content</Paragraph>
@@ -161,8 +157,8 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
           <Modal.Header>Modal med en veldig lang bredde</Modal.Header>
           <Modal.Content>
             <Paragraph>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis doloremque obcaecati assumenda odio
+              ducimus sunt et.
             </Paragraph>
           </Modal.Content>
           <Modal.Footer>Footer</Modal.Footer>

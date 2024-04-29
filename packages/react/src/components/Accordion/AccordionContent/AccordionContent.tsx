@@ -11,38 +11,35 @@ export type AccordionContentProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const AccordionContent = forwardRef<
-  HTMLDivElement,
-  AccordionContentProps
->(({ children, className, ...rest }, ref) => {
-  const context = useContext(AccordionItemContext);
+export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
+  ({ children, className, ...rest }, ref) => {
+    const context = useContext(AccordionItemContext);
 
-  if (context === null) {
-    console.error(
-      '<Accordion.Content> has to be used within an <Accordion.Item>',
-    );
-    return null;
-  }
+    if (context === null) {
+      console.error('<Accordion.Content> has to be used within an <Accordion.Item>');
+      return null;
+    }
 
-  return (
-    <AnimateHeight
-      id={context.contentId}
-      open={context.open}
-    >
-      <Paragraph
-        asChild
-        size='small'
+    return (
+      <AnimateHeight
+        id={context.contentId}
+        open={context.open}
       >
-        <div
-          ref={ref}
-          className={cl('fds-accordion__content', className)}
-          {...rest}
+        <Paragraph
+          asChild
+          size='small'
         >
-          {children}
-        </div>
-      </Paragraph>
-    </AnimateHeight>
-  );
-});
+          <div
+            ref={ref}
+            className={cl('fds-accordion__content', className)}
+            {...rest}
+          >
+            {children}
+          </div>
+        </Paragraph>
+      </AnimateHeight>
+    );
+  },
+);
 
 AccordionContent.displayName = 'AccordionContent';

@@ -7,18 +7,12 @@ import type { AccordionHeaderProps } from './AccordionHeader';
 
 const user = userEvent.setup();
 
-const TestComponent = ({
-  ...rest
-}: Omit<AccordionHeaderProps, 'children'>): JSX.Element => {
+const TestComponent = ({ ...rest }: Omit<AccordionHeaderProps, 'children'>): JSX.Element => {
   return (
     <Accordion>
       <Accordion.Item>
-        <Accordion.Header {...rest}>
-          Accordion Header Title Text
-        </Accordion.Header>
-        <Accordion.Content>
-          The Fantastic AccordionContent Text
-        </Accordion.Content>
+        <Accordion.Header {...rest}>Accordion Header Title Text</Accordion.Header>
+        <Accordion.Content>The Fantastic AccordionContent Text</Accordion.Content>
       </Accordion.Item>
     </Accordion>
   );

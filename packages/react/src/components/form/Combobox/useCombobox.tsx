@@ -24,31 +24,19 @@ export type Option = {
 
 const isOption = (option: Option | undefined): option is Option => !!option;
 
-export function isComboboxOption(
-  child: ReactNode,
-): child is ReactElement<ComboboxOptionProps> {
+export function isComboboxOption(child: ReactNode): child is ReactElement<ComboboxOptionProps> {
   return isValidElement(child) && child.type === ComboboxOption;
 }
 
-export function isComboboxCustom(
-  child: ReactNode,
-): child is ReactElement<ComboboxCustomProps> {
+export function isComboboxCustom(child: ReactNode): child is ReactElement<ComboboxCustomProps> {
   return isValidElement(child) && child.type === ComboboxCustom;
 }
 
-export function isInteractiveComboboxCustom(
-  child: ReactNode,
-): child is ReactElement<ComboboxCustomProps> {
+export function isInteractiveComboboxCustom(child: ReactNode): child is ReactElement<ComboboxCustomProps> {
   return isComboboxCustom(child) && child.props.interactive === true;
 }
 
-export default function useCombobox({
-  children,
-  inputValue,
-  multiple,
-  filter,
-  initialValue,
-}: UseComboboxProps) {
+export default function useCombobox({ children, inputValue, multiple, filter, initialValue }: UseComboboxProps) {
   const options = useMemo(() => {
     const allOptions: Option[] = [];
     Children.forEach(children, (child) => {
@@ -64,9 +52,7 @@ export default function useCombobox({
             if (typeof child === 'string') {
               childrenLabel += child;
             } else {
-              throw new Error(
-                'If ComboboxOption is not a string, it must have a displayValue prop',
-              );
+              throw new Error('If ComboboxOption is not a string, it must have a displayValue prop');
             }
           });
 
@@ -88,12 +74,9 @@ export default function useCombobox({
     .map((value) => options.find((option) => option.value === value))
     .filter(isOption);
 
-  const [selectedOptions, setSelectedOptions] =
-    useState<Option[]>(preSelectedOptions);
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>(preSelectedOptions);
 
-  const [prevSelectedHash, setPrevSelectedHash] = useState(
-    JSON.stringify(selectedOptions),
-  );
+  const [prevSelectedHash, setPrevSelectedHash] = useState(JSON.stringify(selectedOptions));
   const optionsChildren = useMemo(() => {
     const valuesArray = Array.from(options);
     const children_ = Children.toArray(children).filter((child) =>
@@ -112,9 +95,7 @@ export default function useCombobox({
 
       if (!option) return false;
 
-      const isSelected = selectedOptions.some(
-        (selectedOption) => selectedOption.value === value,
-      );
+      const isSelected = selectedOptions.some((selectedOption) => selectedOption.value === value);
 
       // show what we search for, and all selected options
       return filter(inputValue, { ...option }) || isSelected;
@@ -129,8 +110,7 @@ export default function useCombobox({
 
     // return all ids
     return children_.map((child) => {
-      if (!child.props.id)
-        throw new Error('If ComboboxCustom is interactive, it must have an id');
+      if (!child.props.id) throw new Error('If ComboboxCustom is interactive, it must have an id');
 
       return child.props.id;
     });

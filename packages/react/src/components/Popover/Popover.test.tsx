@@ -129,11 +129,7 @@ describe('Popover', () => {
 
     const popoverContent = screen.getByText(contentText);
 
-    expect(popoverTrigger.getAttribute('aria-controls')).toBe(
-      popoverContent.id,
-    );
-    expect(popoverContent.getAttribute('aria-labelledby')).toBe(
-      popoverTrigger.id,
-    );
+    expect(popoverTrigger.getAttribute('aria-controls')).toBe(popoverContent.id);
+    expect(popoverContent.getAttribute('aria-labelledby')).toBe(popoverTrigger.id);
   });
 });

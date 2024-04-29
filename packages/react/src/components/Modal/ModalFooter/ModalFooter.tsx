@@ -13,18 +13,16 @@ export type ModalFooterProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export const ModalFooter = forwardRef<HTMLElement, ModalFooterProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'footer';
+export const ModalFooter = forwardRef<HTMLElement, ModalFooterProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'footer';
 
-    return (
-      <Component
-        ref={ref}
-        className={cl(classes.modalFooter, className)}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      ref={ref}
+      className={cl(classes.modalFooter, className)}
+      {...rest}
+    />
+  );
+});
 
 ModalFooter.displayName = 'ModalFooter';

@@ -37,11 +37,4 @@ Modal.Header.displayName = 'Modal.Header';
 Modal.Content.displayName = 'Modal.Content';
 Modal.Trigger.displayName = 'Modal.Trigger';
 
-export {
-  Modal,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalTrigger,
-  ModalDialog,
-};
+export { Modal, ModalContent, ModalFooter, ModalHeader, ModalTrigger, ModalDialog };

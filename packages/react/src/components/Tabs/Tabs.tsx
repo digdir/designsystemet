@@ -37,14 +37,9 @@ export type TabsContextProps = {
 export const TabsContext = createContext<TabsContextProps>({});
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  (
-    { children, value, defaultValue, onChange, size = 'medium', ...rest },
-    ref,
-  ) => {
+  ({ children, value, defaultValue, onChange, size = 'medium', ...rest }, ref) => {
     const isControlled = value !== undefined;
-    const [uncontrolledValue, setUncontrolledValue] = useState<
-      string | undefined
-    >(defaultValue);
+    const [uncontrolledValue, setUncontrolledValue] = useState<string | undefined>(defaultValue);
 
     let onValueChange = onChange;
     if (!isControlled) {

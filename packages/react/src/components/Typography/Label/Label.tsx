@@ -30,36 +30,24 @@ const fontWeightsClasses: Record<FontWeights, string> = {
 };
 
 /** Use `Label` for labels. */
-export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
-  forwardRef(
-    (
-      {
-        className,
-        size = 'medium',
-        spacing,
-        as = 'label',
-        weight = 'medium',
-        asChild,
-        ...rest
-      },
-      ref,
-    ) => {
-      const Component = asChild ? Slot : as;
+export const Label: OverridableComponent<LabelProps, HTMLLabelElement> = forwardRef(
+  ({ className, size = 'medium', spacing, as = 'label', weight = 'medium', asChild, ...rest }, ref) => {
+    const Component = asChild ? Slot : as;
 
-      return (
-        <Component
-          ref={ref}
-          className={cl(
-            classes.label,
-            classes[size],
-            spacing && classes.spacing,
-            weight && [fontWeightsClasses[weight]],
-            className,
-          )}
-          {...rest}
-        />
-      );
-    },
-  );
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          classes.label,
+          classes[size],
+          spacing && classes.spacing,
+          weight && [fontWeightsClasses[weight]],
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);
 
 Label.displayName = 'Label';

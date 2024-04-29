@@ -13,10 +13,7 @@ export type PaginationButtonProps = {
   isActive?: boolean;
 } & Omit<ButtonProps, 'size' | 'icon'>;
 
-export const PaginationButton = forwardRef<
-  HTMLButtonElement,
-  PaginationButtonProps
->(({ isActive, ...rest }, ref) => {
+export const PaginationButton = forwardRef<HTMLButtonElement, PaginationButtonProps>(({ isActive, ...rest }, ref) => {
   const { size } = useContext(PaginationContext);
 
   return (

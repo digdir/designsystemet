@@ -10,22 +10,11 @@ export function useSynchronizedAnimation<T>(animationName: string) {
   useIsomorphicLayoutEffect(() => {
     const animations = document
       .getAnimations()
-      .filter(
-        (animation) =>
-          'animationName' in animation &&
-          animation.animationName === animationName,
-      );
+      .filter((animation) => 'animationName' in animation && animation.animationName === animationName);
 
-    const myAnimation = animations.find(
-      (animation) =>
-        (animation.effect as KeyframeEffect)?.target === ref.current,
-    );
+    const myAnimation = animations.find((animation) => (animation.effect as KeyframeEffect)?.target === ref.current);
 
-    if (
-      myAnimation &&
-      myAnimation === animations[0] &&
-      stashedTime[animationName]
-    ) {
+    if (myAnimation && myAnimation === animations[0] && stashedTime[animationName]) {
       myAnimation.currentTime = stashedTime[animationName];
     }
 

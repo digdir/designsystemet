@@ -106,13 +106,8 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
 
     useIsomorphicLayoutEffect(() => {
       refs.setReference(anchorEl);
-      if (!refs.reference.current || !refs.floating.current || !internalOpen)
-        return;
-      const cleanup = autoUpdate(
-        refs.reference.current,
-        refs.floating.current,
-        update,
-      );
+      if (!refs.reference.current || !refs.floating.current || !internalOpen) return;
+      const cleanup = autoUpdate(refs.reference.current, refs.floating.current, update);
       return () => cleanup();
     }, [refs.floating, refs.reference, update, anchorEl, refs, internalOpen]);
 
@@ -130,12 +125,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
             >
               <div
                 ref={floatingEl}
-                className={cl(
-                  classes.popover,
-                  classes[variant],
-                  classes[size],
-                  className,
-                )}
+                className={cl(classes.popover, classes[variant], classes[size], className)}
                 data-placement={flPlacement}
                 {...getFloatingProps({
                   ref: floatingRef,

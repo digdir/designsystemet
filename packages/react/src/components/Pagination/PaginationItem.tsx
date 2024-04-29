@@ -13,25 +13,18 @@ export type PaginationItemProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLLIElement>, 'size'>;
 
-export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'li';
+export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'li';
 
-    const { size, compact } = useContext(PaginationContext);
+  const { size, compact } = useContext(PaginationContext);
 
-    return (
-      <Component
-        ref={ref}
-        className={cl(
-          classes.listitem,
-          classes[size],
-          compact && classes.compact,
-          className,
-        )}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      ref={ref}
+      className={cl(classes.listitem, classes[size], compact && classes.compact, className)}
+      {...rest}
+    />
+  );
+});
 
 export default PaginationItem;

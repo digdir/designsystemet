@@ -1,8 +1,4 @@
-import {
-  ChevronUpIcon,
-  ChevronDownIcon,
-  ChevronUpDownIcon,
-} from '@navikt/aksel-icons';
+import { ChevronUpIcon, ChevronDownIcon, ChevronUpDownIcon } from '@navikt/aksel-icons';
 import type { AriaAttributes } from 'react';
 import * as React from 'react';
 import cl from 'clsx';
@@ -32,29 +28,13 @@ export type TableHeaderCellProps = {
   onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 } & React.ThHTMLAttributes<HTMLTableCellElement>;
 
-export const TableHeaderCell = React.forwardRef<
-  HTMLTableCellElement,
-  TableHeaderCellProps
->(
-  (
-    { sortable = false, sort, onSortClick, className, children, ...rest },
-    ref,
-  ) => {
-    const sortIcon =
-      sort === 'ascending' || sort === 'descending' ? (
-        SORT_ICON[sort]
-      ) : (
-        <ChevronUpDownIcon />
-      );
+export const TableHeaderCell = React.forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
+  ({ sortable = false, sort, onSortClick, className, children, ...rest }, ref) => {
+    const sortIcon = sort === 'ascending' || sort === 'descending' ? SORT_ICON[sort] : <ChevronUpDownIcon />;
 
     return (
       <th
-        className={cl(
-          sortable && classes.sortable,
-          sort && classes.sorted,
-          classes.headerCell,
-          className,
-        )}
+        className={cl(sortable && classes.sortable, sort && classes.sorted, classes.headerCell, className)}
         aria-sort={sort}
         ref={ref}
         {...rest}

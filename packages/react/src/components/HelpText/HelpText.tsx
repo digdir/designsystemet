@@ -61,12 +61,7 @@ const HelpText = ({
           >
             <HelpTextIcon
               filled
-              className={cl(
-                classes.helpTextIcon,
-                classes.helpTextIconFilled,
-                classes[size],
-                className,
-              )}
+              className={cl(classes.helpTextIcon, classes.helpTextIconFilled, classes[size], className)}
               openState={open}
             />
             <HelpTextIcon
@@ -76,9 +71,7 @@ const HelpText = ({
             <span className={`fds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content className={classes.helpTextContent}>
-          {children}
-        </Popover.Content>
+        <Popover.Content className={classes.helpTextContent}>{children}</Popover.Content>
       </Popover>
     </>
   );

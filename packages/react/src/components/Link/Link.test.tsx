@@ -46,10 +46,7 @@ describe('Link', () => {
   });
 });
 
-const render = (
-  props: Partial<ComponentProps<typeof Link>> = {},
-  ref?: RefObject<HTMLAnchorElement>,
-) => {
+const render = (props: Partial<ComponentProps<typeof Link>> = {}, ref?: RefObject<HTMLAnchorElement>) => {
   const allProps = { ...defaultProps, ...props };
   return renderRtl(
     <Link

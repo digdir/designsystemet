@@ -85,12 +85,8 @@ export const Children: StoryFn<typeof Skeleton> = () => {
   return (
     <>
       <Skeleton.Text>
-        <Paragraph>
-          Her er en tekst som blir sendt inn som barn av en Skeleton.Text.
-        </Paragraph>
-        <Paragraph>
-          Se hvordan Skeleton da dekker den samlede bredden og høyden til barna.
-        </Paragraph>
+        <Paragraph>Her er en tekst som blir sendt inn som barn av en Skeleton.Text.</Paragraph>
+        <Paragraph>Se hvordan Skeleton da dekker den samlede bredden og høyden til barna.</Paragraph>
         <Button>Knapp</Button>
       </Skeleton.Text>
     </>
@@ -107,15 +103,10 @@ export const As: StoryFn<typeof Skeleton> = () => {
         <Skeleton.Text>Her er en heading</Skeleton.Text>
       </Heading>
       <Paragraph asChild>
-        <Skeleton.Text>
-          Her er en paragraf-komponent som blir rendret som en Skeleton.Text.
-        </Skeleton.Text>
+        <Skeleton.Text>Her er en paragraf-komponent som blir rendret som en Skeleton.Text.</Skeleton.Text>
       </Paragraph>
       <Paragraph asChild>
-        <Skeleton.Text>
-          Se hvordan Skeleton da overskriver stylingen til det enkelte
-          elementet.
-        </Skeleton.Text>
+        <Skeleton.Text>Se hvordan Skeleton da overskriver stylingen til det enkelte elementet.</Skeleton.Text>
       </Paragraph>
     </>
   );
@@ -127,9 +118,7 @@ export const TextExample: StoryFn<typeof Text> = () => {
       <div style={{ display: 'flex', gap: '20px' }}>
         <div style={{ width: '140px' }}>
           <Heading size='medium'>Heading</Heading>
-          <Paragraph size='small'>
-            Her er en paragraf som går over flere linjer
-          </Paragraph>
+          <Paragraph size='small'>Her er en paragraf som går over flere linjer</Paragraph>
         </div>
         <div style={{ width: '140px' }}>
           <Heading

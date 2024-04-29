@@ -10,14 +10,7 @@ import { RadioGroupContext } from './Group';
 type UseRadio = (props: RadioProps) => FormField & {
   inputProps?: Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    | 'readOnly'
-    | 'type'
-    | 'name'
-    | 'required'
-    | 'defaultChecked'
-    | 'checked'
-    | 'onClick'
-    | 'onChange'
+    'readOnly' | 'type' | 'name' | 'required' | 'defaultChecked' | 'checked' | 'onClick' | 'onChange'
   >;
 };
 /** Handles props for `Radio` in context with `Radio.Group` (and `Fieldset`) */
@@ -34,12 +27,8 @@ export const useRadio: UseRadio = (props) => {
       type: 'radio',
       name: radioGroup?.name ?? props.name,
       required: radioGroup?.required,
-      defaultChecked: radioGroup?.defaultValue
-        ? radioGroup?.defaultValue === props.value
-        : props.defaultChecked,
-      checked: radioGroup?.value
-        ? radioGroup?.value === props.value
-        : props.checked,
+      defaultChecked: radioGroup?.defaultValue ? radioGroup?.defaultValue === props.value : props.defaultChecked,
+      checked: radioGroup?.value ? radioGroup?.value === props.value : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();

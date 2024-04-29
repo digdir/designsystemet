@@ -23,12 +23,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
     >
       <button
         {...useTabRest}
-        className={cl(
-          classes.tabItem,
-          classes[size],
-          active && classes.isActive,
-          className,
-        )}
+        className={cl(classes.tabItem, classes[size], active && classes.isActive, className)}
         ref={ref}
       >
         {children}

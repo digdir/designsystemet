@@ -32,8 +32,8 @@ export const Preview: Story = (args) => (
       <Heading size='small'>Card Neutral</Heading>
     </Card.Header>
     <Card.Content>
-      Most provide as with carried business are much better more the perfected
-      designer. Writing slightly explain desk unable at supposedly about this
+      Most provide as with carried business are much better more the perfected designer. Writing slightly explain desk
+      unable at supposedly about this
     </Card.Content>
     <Card.Footer>
       <Paragraph size='small'>Footer text</Paragraph>
@@ -74,9 +74,8 @@ export const LinkCard: Story = (args) => (
           <Heading size='small'>Link Card</Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
         <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
@@ -104,9 +103,8 @@ export const LinkCard: Story = (args) => (
           <Heading size='small'>Link Card</Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
         <Card.Footer>
           <Paragraph size='small'>Footer text</Paragraph>
@@ -141,9 +139,8 @@ export const Variants: StoryFn<typeof Card> = () => {
           </Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
       </Card>
       <Card color='subtle'>
@@ -162,9 +159,8 @@ export const Variants: StoryFn<typeof Card> = () => {
           </Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
       </Card>
       <Card color='first'>
@@ -183,9 +179,8 @@ export const Variants: StoryFn<typeof Card> = () => {
           </Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
       </Card>
       <Card color='second'>
@@ -204,9 +199,8 @@ export const Variants: StoryFn<typeof Card> = () => {
           </Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
       </Card>
       <Card color='third'>
@@ -225,9 +219,8 @@ export const Variants: StoryFn<typeof Card> = () => {
           </Heading>
         </Card.Header>
         <Card.Content>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Most provide as with carried business are much better more the perfected designer. Writing slightly explain
+          desk unable at supposedly about this
         </Card.Content>
       </Card>
     </div>
@@ -258,8 +251,8 @@ export const Media: Story = () => (
         </Heading>
       </Card.Header>
       <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
+        Most provide as with carried business are much better more the perfected designer. Writing slightly explain desk
+        unable at supposedly about this
       </Card.Content>
     </Card>
 
@@ -274,8 +267,8 @@ export const Media: Story = () => (
       </Card.Header>
 
       <Card.Content>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
+        Most provide as with carried business are much better more the perfected designer. Writing slightly explain desk
+        unable at supposedly about this
       </Card.Content>
       <Card.Media>
         <img
@@ -315,9 +308,8 @@ export const Video: Story = () => (
       </Heading>
     </Card.Header>
     <Card.Content>
-      Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i
-      Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var historiske
-      tilbakeblikk og debatt om innsyn og openheit i forvaltninga.
+      Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i Noreg. Sjå opptak frå feiringa på
+      Pressens Hus der det både var historiske tilbakeblikk og debatt om innsyn og openheit i forvaltninga.
     </Card.Content>
   </Card>
 );

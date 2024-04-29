@@ -2,12 +2,7 @@
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
 import { createContext, useRef, useState, forwardRef } from 'react';
-import type {
-  MutableRefObject,
-  ReactNode,
-  HTMLAttributes,
-  FocusEvent,
-} from 'react';
+import type { MutableRefObject, ReactNode, HTMLAttributes, FocusEvent } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 
@@ -50,10 +45,7 @@ export const RovingTabindexContext = createContext<RovingTabindexProps>({
   focusableValue: null,
 });
 
-export const RovingTabindexRoot: OverridableComponent<
-  RovingTabindexRootBaseProps,
-  HTMLElement
-> = forwardRef(
+export const RovingTabindexRoot: OverridableComponent<RovingTabindexRootBaseProps, HTMLElement> = forwardRef(
   ({ valueId, as = 'div', asChild, onBlur, onFocus, ...rest }, ref) => {
     const Component = asChild ? Slot : as;
 
@@ -66,17 +58,10 @@ export const RovingTabindexRoot: OverridableComponent<
 
     const getOrderedItems = (): RovingTabindexElement[] => {
       if (!myRef.current) return [];
-      const elementsFromDOM = Array.from(
-        myRef.current.querySelectorAll<HTMLElement>(
-          '[data-roving-tabindex-item]',
-        ),
-      );
+      const elementsFromDOM = Array.from(myRef.current.querySelectorAll<HTMLElement>('[data-roving-tabindex-item]'));
 
       return Array.from(elements.current)
-        .sort(
-          (a, b) =>
-            elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]),
-        )
+        .sort((a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]))
         .map(([value, element]) => ({ value, element }));
     };
 

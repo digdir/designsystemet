@@ -66,11 +66,7 @@ export const Complex: StoryFn<typeof Tooltip> = () => {
     <Paragraph>
       Du kan ha{' '}
       <Tooltip content='Kan gi bra brukeropplevelse'>
-        <abbr
-          style={{ fontWeight: 'bold', textDecoration: 'underline dotted' }}
-        >
-          tooltip
-        </abbr>
+        <abbr style={{ fontWeight: 'bold', textDecoration: 'underline dotted' }}>tooltip</abbr>
       </Tooltip>{' '}
       inne i tekst også
     </Paragraph>

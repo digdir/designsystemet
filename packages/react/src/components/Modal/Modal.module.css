@@ -14,7 +14,9 @@
   }
 
   .modal[open] {
-    animation: slide-in 300ms ease-in-out, fade-in 300ms ease-in-out;
+    animation:
+      slide-in 300ms ease-in-out,
+      fade-in 300ms ease-in-out;
   }
 
   .modal > hr {

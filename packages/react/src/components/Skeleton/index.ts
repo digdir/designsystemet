@@ -1,15 +1,6 @@
-import {
-  Circle as SkeletonCircle,
-  type CircleProps as SkeletonCircleProps,
-} from './Circle/Circle';
-import {
-  Rectangle as SkeletonRectangle,
-  type RectangleProps as SkeletonRectangleProps,
-} from './Rectangle/Rectangle';
-import {
-  Text as SkeletonText,
-  type TextProps as SkeletonTextProps,
-} from './Text/Text';
+import { Circle as SkeletonCircle, type CircleProps as SkeletonCircleProps } from './Circle/Circle';
+import { Rectangle as SkeletonRectangle, type RectangleProps as SkeletonRectangleProps } from './Rectangle/Rectangle';
+import { Text as SkeletonText, type TextProps as SkeletonTextProps } from './Text/Text';
 
 /**
  * Represent a draft of page while the content loads. Mix different skeleton components to create your layout.

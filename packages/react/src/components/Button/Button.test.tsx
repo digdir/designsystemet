@@ -41,9 +41,7 @@ describe('Button', () => {
 
   it('should render children as button text', () => {
     render({ children: 'different button text' });
-    expect(
-      screen.getByRole('button', { name: 'different button text' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'different button text' })).toBeInTheDocument();
   });
 
   it('should handle onClick event', async () => {

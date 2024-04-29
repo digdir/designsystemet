@@ -21,15 +21,9 @@ type OptionalHref = {
   asChild: true;
 };
 
-export type ErrorSummaryItemProps = (RequiredHref | OptionalHref) &
-  Omit<ListItemProps, 'asChild'>;
+export type ErrorSummaryItemProps = (RequiredHref | OptionalHref) & Omit<ListItemProps, 'asChild'>;
 
-export const ErrorSummaryItem = ({
-  href,
-  asChild,
-  children,
-  ...rest
-}: ErrorSummaryItemProps) => {
+export const ErrorSummaryItem = ({ href, asChild, children, ...rest }: ErrorSummaryItemProps) => {
   return (
     <List.Item {...rest}>
       <Link

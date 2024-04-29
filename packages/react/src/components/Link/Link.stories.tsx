@@ -53,8 +53,7 @@ export const Invertert: Story = {
 export const InText: StoryFn<typeof Link> = () => (
   <>
     <Paragraph>
-      Vi bruker komponenter fra{' '}
-      <Link href='https://designsystem.no/'>et fantastisk designsystem</Link>.
+      Vi bruker komponenter fra <Link href='https://designsystem.no/'>et fantastisk designsystem</Link>.
     </Paragraph>
     <Paragraph>
       <Link href='mailto:designsystem@digdir.no'>
@@ -67,9 +66,7 @@ export const InText: StoryFn<typeof Link> = () => (
 
 export const LongLink: StoryFn<typeof Link> = () => (
   <Paragraph>
-    <Link href='https://designsystem.no/'>
-      Dette er en lenke som brekker over flere linjer
-    </Link>
+    <Link href='https://designsystem.no/'>Dette er en lenke som brekker over flere linjer</Link>
   </Paragraph>
 );
 

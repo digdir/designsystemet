@@ -62,154 +62,141 @@ export type TextfieldProps = {
  * <Textfield label="Textfield label">
  * ```
  */
-export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
-  (props, ref) => {
-    const {
-      label,
-      description,
-      suffix,
-      prefix,
-      style,
-      characterLimit,
-      hideLabel,
-      type = 'text',
-      htmlSize = 20,
-      className,
-      ...rest
-    } = props;
+export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>((props, ref) => {
+  const {
+    label,
+    description,
+    suffix,
+    prefix,
+    style,
+    characterLimit,
+    hideLabel,
+    type = 'text',
+    htmlSize = 20,
+    className,
+    ...rest
+  } = props;
 
-    const {
-      inputProps,
-      descriptionId,
-      hasError,
-      errorId,
-      size = 'medium',
-      readOnly,
-    } = useTextfield(props);
+  const { inputProps, descriptionId, hasError, errorId, size = 'medium', readOnly } = useTextfield(props);
 
-    const [inputValue, setInputValue] = useState(props.defaultValue);
-    const characterLimitId = `textfield-charactercount-${useId()}`;
-    const hasCharacterLimit = characterLimit != null;
+  const [inputValue, setInputValue] = useState(props.defaultValue);
+  const characterLimitId = `textfield-charactercount-${useId()}`;
+  const hasCharacterLimit = characterLimit != null;
 
-    const describedBy =
-      cl(
-        inputProps['aria-describedby'],
-        hasCharacterLimit && characterLimitId,
-      ) || undefined;
+  const describedBy = cl(inputProps['aria-describedby'], hasCharacterLimit && characterLimitId) || undefined;
 
-    return (
-      <Paragraph
-        asChild
-        size={size}
+  return (
+    <Paragraph
+      asChild
+      size={size}
+    >
+      <div
+        style={style}
+        className={cl(
+          classes.formField,
+          classes[size],
+          inputProps.disabled && classes.disabled,
+          readOnly && classes.readonly,
+          className,
+        )}
       >
-        <div
-          style={style}
-          className={cl(
-            classes.formField,
-            classes[size],
-            inputProps.disabled && classes.disabled,
-            readOnly && classes.readonly,
-            className,
-          )}
-        >
-          {label && (
-            <Label
-              size={size}
-              weight='medium'
-              htmlFor={inputProps.id}
-              className={cl(classes.label, hideLabel && `fds-sr-only`)}
+        {label && (
+          <Label
+            size={size}
+            weight='medium'
+            htmlFor={inputProps.id}
+            className={cl(classes.label, hideLabel && `fds-sr-only`)}
+          >
+            {readOnly && (
+              <PadlockLockedFillIcon
+                aria-hidden
+                className={classes.padlock}
+              />
+            )}
+            <span>{label}</span>
+          </Label>
+        )}
+        {description && (
+          <Paragraph
+            asChild
+            size={size}
+          >
+            <div
+              id={descriptionId}
+              className={cl(classes.description, hideLabel && `fds-sr-only`)}
             >
-              {readOnly && (
-                <PadlockLockedFillIcon
-                  aria-hidden
-                  className={classes.padlock}
-                />
-              )}
-              <span>{label}</span>
-            </Label>
-          )}
-          {description && (
+              {description}
+            </div>
+          </Paragraph>
+        )}
+        <div className={cl(classes.field, hasError && classes.error)}>
+          {prefix && (
             <Paragraph
               asChild
               size={size}
+              short
             >
               <div
-                id={descriptionId}
-                className={cl(classes.description, hideLabel && `fds-sr-only`)}
+                className={cl(classes.adornment, classes.prefix)}
+                aria-hidden='true'
               >
-                {description}
+                {prefix}
               </div>
             </Paragraph>
           )}
-          <div className={cl(classes.field, hasError && classes.error)}>
-            {prefix && (
-              <Paragraph
-                asChild
-                size={size}
-                short
-              >
-                <div
-                  className={cl(classes.adornment, classes.prefix)}
-                  aria-hidden='true'
-                >
-                  {prefix}
-                </div>
-              </Paragraph>
+          <input
+            className={cl(
+              classes.input,
+              classes[size],
+              `fds-focus`,
+              prefix && classes.inputPrefix,
+              suffix && classes.inputSuffix,
             )}
-            <input
-              className={cl(
-                classes.input,
-                classes[size],
-                `fds-focus`,
-                prefix && classes.inputPrefix,
-                suffix && classes.inputSuffix,
-              )}
-              ref={ref}
-              type={type}
-              aria-describedby={describedBy}
-              size={htmlSize}
-              {...omit(['size', 'error', 'errorId'], rest)}
-              {...inputProps}
-              onChange={(e) => {
-                inputProps?.onChange?.(e);
-                setInputValue(e.target.value);
-              }}
-            />
-            {suffix && (
-              <Paragraph
-                asChild
-                size={size}
-                short
-              >
-                <div
-                  className={cl(classes.adornment, classes.suffix)}
-                  aria-hidden='true'
-                >
-                  {suffix}
-                </div>
-              </Paragraph>
-            )}
-          </div>
-          {hasCharacterLimit && (
-            <CharacterCounter
+            ref={ref}
+            type={type}
+            aria-describedby={describedBy}
+            size={htmlSize}
+            {...omit(['size', 'error', 'errorId'], rest)}
+            {...inputProps}
+            onChange={(e) => {
+              inputProps?.onChange?.(e);
+              setInputValue(e.target.value);
+            }}
+          />
+          {suffix && (
+            <Paragraph
+              asChild
               size={size}
-              value={inputValue ? inputValue.toString() : ''}
-              id={characterLimitId}
-              {...characterLimit}
-            />
+              short
+            >
+              <div
+                className={cl(classes.adornment, classes.suffix)}
+                aria-hidden='true'
+              >
+                {suffix}
+              </div>
+            </Paragraph>
           )}
-          <div
-            className={classes.errorMessage}
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
-          >
-            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
-          </div>
         </div>
-      </Paragraph>
-    );
-  },
-);
+        {hasCharacterLimit && (
+          <CharacterCounter
+            size={size}
+            value={inputValue ? inputValue.toString() : ''}
+            id={characterLimitId}
+            {...characterLimit}
+          />
+        )}
+        <div
+          className={classes.errorMessage}
+          id={errorId}
+          aria-live='polite'
+          aria-relevant='additions removals'
+        >
+          {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+        </div>
+      </div>
+    </Paragraph>
+  );
+});
 
 Textfield.displayName = 'Textfield';

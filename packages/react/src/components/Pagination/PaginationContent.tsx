@@ -13,19 +13,18 @@ export type PaginationContentProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
-export const PaginationContent = forwardRef<
-  HTMLUListElement,
-  PaginationContentProps
->(({ asChild, className, ...rest }, ref) => {
-  const Component = asChild ? Slot : 'ul';
+export const PaginationContent = forwardRef<HTMLUListElement, PaginationContentProps>(
+  ({ asChild, className, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'ul';
 
-  const { size } = useContext(PaginationContext);
+    const { size } = useContext(PaginationContext);
 
-  return (
-    <Component
-      ref={ref}
-      className={cl(classes.pagination, classes[size], className)}
-      {...rest}
-    />
-  );
-});
+    return (
+      <Component
+        ref={ref}
+        className={cl(classes.pagination, classes[size], className)}
+        {...rest}
+      />
+    );
+  },
+);

@@ -13,13 +13,9 @@ export default {
 
 export const Preview: Story = (args) => (
   <>
-    <Paragraph>
-      Divider er brukt for å dele opp innhold i mindre deler.
-    </Paragraph>
+    <Paragraph>Divider er brukt for å dele opp innhold i mindre deler.</Paragraph>
     <Divider {...args} />
-    <Paragraph>
-      Den kan også brukes for å skille innhold som er relatert til hverandre.
-    </Paragraph>
+    <Paragraph>Den kan også brukes for å skille innhold som er relatert til hverandre.</Paragraph>
   </>
 );
 Preview.args = {

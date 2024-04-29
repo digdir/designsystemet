@@ -7,9 +7,7 @@ describe('AccordionContent Rendering', () => {
     render(
       <Accordion>
         <Accordion.Item>
-          <Accordion.Content>
-            The Fantastic AccordionContent Text
-          </Accordion.Content>
+          <Accordion.Content>The Fantastic AccordionContent Text</Accordion.Content>
         </Accordion.Item>
       </Accordion>,
     );

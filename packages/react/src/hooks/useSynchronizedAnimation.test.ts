@@ -22,18 +22,14 @@ document.getAnimations = vi.fn(() => [mockAnimation, mockAnimation2]);
 
 describe('useSynchronizedAnimation', () => {
   it('should return a ref that is defined', () => {
-    const { result } = renderHook(() =>
-      useSynchronizedAnimation<HTMLDivElement>('testAnimation'),
-    );
+    const { result } = renderHook(() => useSynchronizedAnimation<HTMLDivElement>('testAnimation'));
 
     // Check if the ref is defined:
     expect(result.current.current).toBeDefined();
   });
 
   it('should syncronize animation times', () => {
-    renderHook(() =>
-      useSynchronizedAnimation<HTMLDivElement>('testAnimation2'),
-    );
+    renderHook(() => useSynchronizedAnimation<HTMLDivElement>('testAnimation2'));
 
     const animations = document.getAnimations();
 

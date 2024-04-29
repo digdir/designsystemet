@@ -22,22 +22,8 @@ export type ParagraphProps = {
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `Paragraph` to display text with paragraph text styles. */
-export const Paragraph: OverridableComponent<
-  ParagraphProps,
-  HTMLParagraphElement
-> = forwardRef(
-  (
-    {
-      className,
-      size = 'medium',
-      spacing,
-      as = 'p',
-      asChild,
-      variant,
-      ...rest
-    },
-    ref,
-  ) => {
+export const Paragraph: OverridableComponent<ParagraphProps, HTMLParagraphElement> = forwardRef(
+  ({ className, size = 'medium', spacing, as = 'p', asChild, variant, ...rest }, ref) => {
     const Component = asChild ? Slot : as;
 
     return (

@@ -12,15 +12,12 @@ describe('useMediaQuery', () => {
     vi.restoreAllMocks();
   });
 
-  it.each([true, false])(
-    'Returns value from window.matchMedia.matches when it is %s',
-    (matches) => {
-      const matchMediaValue = matchMediaValueMock({ matches });
-      const { result } = renderHook(() => useMediaQuery(query));
-      expect(matchMediaValue).toHaveBeenCalledWith(query);
-      expect(result.current).toBe(matches);
-    },
-  );
+  it.each([true, false])('Returns value from window.matchMedia.matches when it is %s', (matches) => {
+    const matchMediaValue = matchMediaValueMock({ matches });
+    const { result } = renderHook(() => useMediaQuery(query));
+    expect(matchMediaValue).toHaveBeenCalledWith(query);
+    expect(result.current).toBe(matches);
+  });
 
   it('Adds event listener', () => {
     const addEventListener = vi.fn();

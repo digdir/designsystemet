@@ -7,14 +7,7 @@ import { Textfield } from '../form/Textfield';
 
 import type { TableHeaderCellProps } from './TableHeaderCell';
 
-import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableHeaderCell,
-} from '.';
+import { Table, TableHead, TableBody, TableRow, TableCell, TableHeaderCell } from '.';
 
 type Story = StoryFn<typeof Table>;
 
@@ -84,11 +77,8 @@ const dummyData = [
 ];
 
 export const Sortable: Story = (args) => {
-  const [sortField, setSortField] = useState<
-    keyof (typeof dummyData)[0] | null
-  >(null);
-  const [sortDirection, setSortDirection] =
-    useState<TableHeaderCellProps['sort']>(undefined);
+  const [sortField, setSortField] = useState<keyof (typeof dummyData)[0] | null>(null);
+  const [sortDirection, setSortDirection] = useState<TableHeaderCellProps['sort']>(undefined);
 
   const handleSort = (field: keyof (typeof dummyData)[0]) => {
     if (sortField === field && sortDirection === 'descending') {
@@ -96,20 +86,14 @@ export const Sortable: Story = (args) => {
       setSortDirection(undefined);
     } else {
       setSortField(field);
-      setSortDirection(
-        sortField === field && sortDirection === 'ascending'
-          ? 'descending'
-          : 'ascending',
-      );
+      setSortDirection(sortField === field && sortDirection === 'ascending' ? 'descending' : 'ascending');
     }
   };
 
   const sortedData = [...dummyData].sort((a, b) => {
     if (sortField === null) return 0;
-    if (a[sortField] < b[sortField])
-      return sortDirection === 'ascending' ? -1 : 1;
-    if (a[sortField] > b[sortField])
-      return sortDirection === 'ascending' ? 1 : -1;
+    if (a[sortField] < b[sortField]) return sortDirection === 'ascending' ? -1 : 1;
+    if (a[sortField] > b[sortField]) return sortDirection === 'ascending' ? 1 : -1;
     return 0;
   });
 
@@ -196,8 +180,7 @@ export const WithFormElements: Story = (args) => {
     3: false,
   });
 
-  const interderminate =
-    Boolean(Object.values(checkedItems).find((item) => item)) && !headerChecked;
+  const interderminate = Boolean(Object.values(checkedItems).find((item) => item)) && !headerChecked;
 
   useEffect(() => {
     const allChecked = Object.values(checkedItems).every((item) => item);
@@ -206,18 +189,10 @@ export const WithFormElements: Story = (args) => {
 
   const handleHeaderCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setHeaderChecked(event.target.checked);
-    setCheckedItems(
-      rows.reduce(
-        (acc: CheckedItems, row) => ({ ...acc, [row]: event.target.checked }),
-        {},
-      ),
-    );
+    setCheckedItems(rows.reduce((acc: CheckedItems, row) => ({ ...acc, [row]: event.target.checked }), {}));
   };
 
-  const handleCheckboxChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    row: number,
-  ) => {
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, row: number) => {
     setCheckedItems({ ...checkedItems, [row]: event.target.checked });
   };
 

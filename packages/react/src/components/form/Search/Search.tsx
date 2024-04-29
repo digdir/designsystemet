@@ -53,141 +53,134 @@ export type SearchProps = {
  * <Search label="Search" label">
  * ```
  */
-export const Search = forwardRef<HTMLInputElement, SearchProps>(
-  (props, ref) => {
-    const {
-      label,
-      style,
-      hideLabel = true,
-      variant = 'simple',
-      searchButtonLabel = 'Søk',
-      clearButtonLabel = 'Tøm',
-      defaultValue,
-      value,
-      onChange,
-      onClear,
-      disabled,
-      onSearchClick,
-      htmlSize = 27,
-      className,
-      ...rest
-    } = props;
+export const Search = forwardRef<HTMLInputElement, SearchProps>((props, ref) => {
+  const {
+    label,
+    style,
+    hideLabel = true,
+    variant = 'simple',
+    searchButtonLabel = 'Søk',
+    clearButtonLabel = 'Tøm',
+    defaultValue,
+    value,
+    onChange,
+    onClear,
+    disabled,
+    onSearchClick,
+    htmlSize = 27,
+    className,
+    ...rest
+  } = props;
 
-    const { inputProps, hasError, errorId, size = 'medium' } = useSearch(props);
+  const { inputProps, hasError, errorId, size = 'medium' } = useSearch(props);
 
-    const inputRef = useRef<HTMLInputElement>();
-    const mergedRef = useMergeRefs([ref, inputRef]);
+  const inputRef = useRef<HTMLInputElement>();
+  const mergedRef = useMergeRefs([ref, inputRef]);
 
-    const [internalValue, setInternalValue] = useState(defaultValue ?? '');
+  const [internalValue, setInternalValue] = useState(defaultValue ?? '');
 
-    const handleChange = useCallback(
-      (e: ChangeEvent<HTMLInputElement>) => {
-        const newValue = e.target.value;
-        value === undefined && setInternalValue(newValue);
-        onChange?.(e);
-      },
-      [onChange, value],
-    );
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value;
+      value === undefined && setInternalValue(newValue);
+      onChange?.(e);
+    },
+    [onChange, value],
+  );
 
-    const handleClear = () => {
-      onClear?.(internalValue);
-      setInternalValue('');
-      inputRef?.current && inputRef.current.focus();
-    };
+  const handleClear = () => {
+    onClear?.(internalValue);
+    setInternalValue('');
+    inputRef?.current && inputRef.current.focus();
+  };
 
-    const handleSearchClick = () => {
-      onSearchClick?.((value ?? internalValue).toString());
-    };
+  const handleSearchClick = () => {
+    onSearchClick?.((value ?? internalValue).toString());
+  };
 
-    const isSimple = variant === 'simple';
-    const showClearButton = Boolean(value ?? internalValue) && !disabled;
+  const isSimple = variant === 'simple';
+  const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
-    return (
-      <Paragraph
-        asChild
-        size={size}
+  return (
+    <Paragraph
+      asChild
+      size={size}
+    >
+      <div
+        style={style}
+        className={cl(classes.formField, inputProps.disabled && classes.disabled, classes[size], className)}
       >
-        <div
-          style={style}
-          className={cl(
-            classes.formField,
-            inputProps.disabled && classes.disabled,
-            classes[size],
-            className,
-          )}
-        >
-          {label && (
-            <Label
-              size={size}
-              weight='medium'
-              htmlFor={inputProps.id}
-              className={cl(classes.label, hideLabel && 'fds-sr-only')}
-            >
-              <span>{label}</span>
-            </Label>
-          )}
+        {label && (
+          <Label
+            size={size}
+            weight='medium'
+            htmlFor={inputProps.id}
+            className={cl(classes.label, hideLabel && 'fds-sr-only')}
+          >
+            <span>{label}</span>
+          </Label>
+        )}
 
-          <div className={classes.field}>
-            <div className={cl(classes.field, classes[size])}>
-              {isSimple && (
-                <MagnifyingGlassIcon
-                  className={classes.icon}
-                  aria-hidden
-                ></MagnifyingGlassIcon>
+        <div className={classes.field}>
+          <div className={cl(classes.field, classes[size])}>
+            {isSimple && (
+              <MagnifyingGlassIcon
+                className={classes.icon}
+                aria-hidden
+              ></MagnifyingGlassIcon>
+            )}
+            <input
+              ref={mergedRef}
+              size={htmlSize}
+              value={value ?? internalValue}
+              disabled={disabled}
+              className={cl(
+                classes.input,
+                `fds-focus`,
+                isSimple && classes.simple,
+                !isSimple && classes.withSearchButton,
               )}
-              <input
-                ref={mergedRef}
-                size={htmlSize}
-                value={value ?? internalValue}
-                disabled={disabled}
-                className={cl(
-                  classes.input,
-                  `fds-focus`,
-                  isSimple && classes.simple,
-                  !isSimple && classes.withSearchButton,
-                )}
-                {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
-                {...inputProps}
-                onChange={handleChange}
-              />
-              {showClearButton && (
-                <button
-                  className={cl(classes.clearButton, `fds-focus`)}
-                  type='button'
-                  onClick={handleClear}
-                  disabled={disabled}
-                >
-                  <span className={`fds-sr-only`}>{clearButtonLabel}</span>
-                  <XMarkIcon aria-hidden />
-                </button>
-              )}
-            </div>
-            {!isSimple && (
-              <Button
-                className={classes.searchButton}
-                size={size}
-                variant={variant}
-                type='submit'
-                onClick={handleSearchClick}
+              {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+              {...inputProps}
+              onChange={handleChange}
+            />
+            {showClearButton && (
+              <button
+                className={cl(classes.clearButton, `fds-focus`)}
+                type='button'
+                onClick={handleClear}
                 disabled={disabled}
               >
-                {searchButtonLabel}
-              </Button>
+                <span className={`fds-sr-only`}>{clearButtonLabel}</span>
+                <XMarkIcon aria-hidden />
+              </button>
             )}
           </div>
-
-          <div
-            className={classes.errorMessage}
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
-          >
-            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
-          </div>
+          {!isSimple && (
+            <Button
+              className={classes.searchButton}
+              size={size}
+              variant={variant}
+              type='submit'
+              onClick={handleSearchClick}
+              disabled={disabled}
+            >
+              {searchButtonLabel}
+            </Button>
+          )}
         </div>
-      </Paragraph>
-    );
-  },
-);
+
+        <div
+          className={classes.errorMessage}
+          id={errorId}
+          aria-live='polite'
+          aria-relevant='additions removals'
+        >
+          {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+        </div>
+      </div>
+    </Paragraph>
+  );
+});
 
 Search.displayName = 'Search';

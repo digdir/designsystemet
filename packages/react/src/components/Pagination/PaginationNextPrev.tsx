@@ -5,10 +5,7 @@ import { PaginationButton } from './PaginationButton';
 
 export type PaginationNextProps = PaginationButtonProps;
 
-export const PaginationNext = forwardRef<
-  HTMLButtonElement,
-  PaginationNextProps
->(({ ...rest }, ref) => {
+export const PaginationNext = forwardRef<HTMLButtonElement, PaginationNextProps>(({ ...rest }, ref) => {
   return (
     <PaginationButton
       ref={ref}
@@ -20,10 +17,7 @@ export const PaginationNext = forwardRef<
 
 export type PaginationPreviousProps = PaginationButtonProps;
 
-export const PaginationPrevious = forwardRef<
-  HTMLButtonElement,
-  PaginationNextProps
->(({ ...rest }, ref) => {
+export const PaginationPrevious = forwardRef<HTMLButtonElement, PaginationNextProps>(({ ...rest }, ref) => {
   return (
     <PaginationButton
       ref={ref}

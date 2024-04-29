@@ -26,20 +26,18 @@ export type ListProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const ListRoot = forwardRef<HTMLDivElement, ListProps>(
-  ({ asChild, size = 'medium', ...rest }, ref) => {
-    const [headingId, setHeadingId] = useState<string>();
-    const Component = asChild ? Slot : 'div';
+export const ListRoot = forwardRef<HTMLDivElement, ListProps>(({ asChild, size = 'medium', ...rest }, ref) => {
+  const [headingId, setHeadingId] = useState<string>();
+  const Component = asChild ? Slot : 'div';
 
-    return (
-      <ListContext.Provider value={{ size, headingId, setHeadingId }}>
-        <Component
-          ref={ref}
-          {...rest}
-        />
-      </ListContext.Provider>
-    );
-  },
-);
+  return (
+    <ListContext.Provider value={{ size, headingId, setHeadingId }}>
+      <Component
+        ref={ref}
+        {...rest}
+      />
+    </ListContext.Provider>
+  );
+});
 
 ListRoot.displayName = 'ListRoot';

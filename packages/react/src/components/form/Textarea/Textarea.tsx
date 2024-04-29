@@ -41,112 +41,91 @@ export type TextareaProps = {
  * <Textarea label="Textarea label">
  * ```
  */
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  (props, ref) => {
-    const {
-      label,
-      description,
-      style,
-      characterLimit,
-      hideLabel,
-      className,
-      ...rest
-    } = props;
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
+  const { label, description, style, characterLimit, hideLabel, className, ...rest } = props;
 
-    const {
-      textareaProps,
-      descriptionId,
-      hasError,
-      errorId,
-      size = 'medium',
-      readOnly,
-    } = useTextarea(props);
+  const { textareaProps, descriptionId, hasError, errorId, size = 'medium', readOnly } = useTextarea(props);
 
-    const [value, setValue] = useState(props.defaultValue);
-    const characterLimitId = `${textareaProps.id}-charactercount}`;
-    const hasCharacterLimit = characterLimit != null;
+  const [value, setValue] = useState(props.defaultValue);
+  const characterLimitId = `${textareaProps.id}-charactercount}`;
+  const hasCharacterLimit = characterLimit != null;
 
-    const describedBy =
-      cl(
-        textareaProps['aria-describedby'],
-        hasCharacterLimit && characterLimitId,
-      ) || undefined;
+  const describedBy = cl(textareaProps['aria-describedby'], hasCharacterLimit && characterLimitId) || undefined;
 
-    return (
-      <Paragraph
-        asChild
-        size={size}
+  return (
+    <Paragraph
+      asChild
+      size={size}
+    >
+      <div
+        style={style}
+        className={cl(
+          classes.formField,
+          textareaProps.disabled && classes.disabled,
+          readOnly && classes.readonly,
+          hasError && classes.error,
+          className,
+        )}
       >
-        <div
-          style={style}
-          className={cl(
-            classes.formField,
-            textareaProps.disabled && classes.disabled,
-            readOnly && classes.readonly,
-            hasError && classes.error,
-            className,
-          )}
-        >
-          {label && (
-            <Label
-              size={size}
-              weight='medium'
-              htmlFor={textareaProps.id}
-              className={cl(classes.label, hideLabel && `fds-sr-only`)}
-            >
-              {readOnly && (
-                <PadlockLockedFillIcon
-                  aria-hidden
-                  className={classes.padlock}
-                />
-              )}
-              <span>{label}</span>
-            </Label>
-          )}
-          {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
-              <div
-                id={descriptionId}
-                className={cl(classes.description, hideLabel && `fds-sr-only`)}
-              >
-                {description}
-              </div>
-            </Paragraph>
-          )}
-          <textarea
-            className={cl(classes.textarea, `fds-focus`, classes[size])}
-            ref={ref}
-            aria-describedby={describedBy}
-            {...omit(['size', 'error', 'errorId'], rest)}
-            {...textareaProps}
-            onChange={(e) => {
-              textareaProps?.onChange?.(e);
-              setValue(e.target.value);
-            }}
-          />
-          {hasCharacterLimit && (
-            <CharacterCounter
-              size={size}
-              value={value ? value.toString() : ''}
-              id={characterLimitId}
-              {...characterLimit}
-            />
-          )}
-          <div
-            className={classes.errorMessage}
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
+        {label && (
+          <Label
+            size={size}
+            weight='medium'
+            htmlFor={textareaProps.id}
+            className={cl(classes.label, hideLabel && `fds-sr-only`)}
           >
-            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
-          </div>
+            {readOnly && (
+              <PadlockLockedFillIcon
+                aria-hidden
+                className={classes.padlock}
+              />
+            )}
+            <span>{label}</span>
+          </Label>
+        )}
+        {description && (
+          <Paragraph
+            asChild
+            size={size}
+          >
+            <div
+              id={descriptionId}
+              className={cl(classes.description, hideLabel && `fds-sr-only`)}
+            >
+              {description}
+            </div>
+          </Paragraph>
+        )}
+        <textarea
+          className={cl(classes.textarea, `fds-focus`, classes[size])}
+          ref={ref}
+          aria-describedby={describedBy}
+          {...omit(['size', 'error', 'errorId'], rest)}
+          {...textareaProps}
+          onChange={(e) => {
+            textareaProps?.onChange?.(e);
+            setValue(e.target.value);
+          }}
+        />
+        {hasCharacterLimit && (
+          <CharacterCounter
+            size={size}
+            value={value ? value.toString() : ''}
+            id={characterLimitId}
+            {...characterLimit}
+          />
+        )}
+        <div
+          className={classes.errorMessage}
+          id={errorId}
+          aria-live='polite'
+          aria-relevant='additions removals'
+        >
+          {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
         </div>
-      </Paragraph>
-    );
-  },
-);
+      </div>
+    </Paragraph>
+  );
+});
 
 Textarea.displayName = 'Textarea';

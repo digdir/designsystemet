@@ -29,19 +29,13 @@ export type FormField = {
   descriptionId: string;
   inputProps: {
     id: string;
-  } & Pick<
-    InputHTMLAttributes<HTMLInputElement>,
-    'disabled' | 'aria-invalid' | 'aria-describedby'
-  >;
+  } & Pick<InputHTMLAttributes<HTMLInputElement>, 'disabled' | 'aria-invalid' | 'aria-describedby'>;
 } & Pick<FormFieldProps, 'size' | 'readOnly'>;
 
 /**
  * Handles props and their state for various form-fields in context with Fieldset
  */
-export const useFormField = (
-  props: FormFieldProps,
-  prefix: string,
-): FormField => {
+export const useFormField = (props: FormFieldProps, prefix: string): FormField => {
   const fieldset = useContext(FieldsetContext);
 
   const randomId = useId();
@@ -51,8 +45,7 @@ export const useFormField = (
   const descriptionId = `${prefix}-description-${randomId}`;
 
   const disabled = fieldset?.disabled || props?.disabled;
-  const readOnly =
-    ((fieldset?.readOnly || props?.readOnly) && !disabled) || undefined;
+  const readOnly = ((fieldset?.readOnly || props?.readOnly) && !disabled) || undefined;
 
   const hasError = !disabled && !readOnly && !!(props.error || fieldset?.error);
 
@@ -68,8 +61,7 @@ export const useFormField = (
       'aria-invalid': hasError ? true : undefined,
       'aria-describedby':
         cl(props['aria-describedby'], {
-          [descriptionId]:
-            !!props?.description && typeof props?.description === 'string',
+          [descriptionId]: !!props?.description && typeof props?.description === 'string',
           [errorId]: hasError && !fieldset?.error,
           [fieldset?.errorId ?? '']: hasError && !!fieldset?.error,
         }) || undefined,

@@ -29,105 +29,91 @@ export type ComboboxOptionProps = {
   displayValue?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ComboboxOption = forwardRef<
-  HTMLButtonElement,
-  ComboboxOptionProps
->(({ value, description, children, className, ...rest }, ref) => {
-  const labelId = useId();
-  const generatedId = useId();
+export const ComboboxOption = forwardRef<HTMLButtonElement, ComboboxOptionProps>(
+  ({ value, description, children, className, ...rest }, ref) => {
+    const labelId = useId();
+    const generatedId = useId();
 
-  const context = useContext(ComboboxContext);
-  if (!context) {
-    throw new Error('ComboboxOption must be used within a Combobox');
-  }
-  const {
-    selectedOptions,
-    activeIndex,
-    setActiveOption,
-    onOptionClick,
-    size,
-    listRef,
-    optionValues,
-    multiple,
-  } = context;
+    const context = useContext(ComboboxContext);
+    if (!context) {
+      throw new Error('ComboboxOption must be used within a Combobox');
+    }
+    const { selectedOptions, activeIndex, setActiveOption, onOptionClick, size, listRef, optionValues, multiple } =
+      context;
 
-  const index = useMemo(
-    () => optionValues.indexOf(value),
-    [optionValues, value],
-  );
+    const index = useMemo(() => optionValues.indexOf(value), [optionValues, value]);
 
-  const combinedRef = useMergeRefs([
-    (node: HTMLElement | null) => {
-      listRef.current[index] = node;
-    },
-    ref,
-  ]);
+    const combinedRef = useMergeRefs([
+      (node: HTMLElement | null) => {
+        listRef.current[index] = node;
+      },
+      ref,
+    ]);
 
-  if (index === -1) {
-    throw new Error('Internal error: ComboboxOption did not find index');
-  }
+    if (index === -1) {
+      throw new Error('Internal error: ComboboxOption did not find index');
+    }
 
-  const selected = selectedOptions.find((option) => option.value === value);
+    const selected = selectedOptions.find((option) => option.value === value);
 
-  useEffect(() => {
-    if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
-  }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
+    useEffect(() => {
+      if (activeIndex === index) setActiveOption(index, rest.id || generatedId);
+    }, [activeIndex, generatedId, index, rest.id, setActiveOption]);
 
-  const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
+    const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
 
-  return (
-    <button
-      id={rest.id || generatedId}
-      role='option'
-      type='button'
-      aria-selected={!!selected}
-      aria-labelledby={labelId}
-      tabIndex={-1}
-      onClick={(e) => {
-        onOptionClickDebounced();
-        rest.onClick?.(e);
-      }}
-      onMouseEnter={(e) => {
-        setActiveOption(index, labelId);
-        rest.onMouseEnter?.(e);
-      }} // Set active index on hover
-      onFocus={(e) => {
-        setActiveOption(index, labelId);
-        rest.onFocus?.(e);
-      }} // Set active index on focus
-      className={cl(
-        classes.option,
-        classes[size],
-        activeIndex === index && classes.active,
-        multiple && classes.multiple,
-        className,
-      )}
-      ref={combinedRef}
-      {...omit(['displayValue'], rest)}
-    >
-      <Label
-        asChild
-        size={size}
-      >
-        <span>
-          <SelectedIcon
-            multiple={multiple}
-            selected={!!selected}
-          />
-        </span>
-      </Label>
-      <Label
-        className={classes.optionText}
-        size={size}
-        id={labelId}
-      >
-        {children}
-        {description && (
-          <ComboboxOptionDescription>{description}</ComboboxOptionDescription>
+    return (
+      <button
+        id={rest.id || generatedId}
+        role='option'
+        type='button'
+        aria-selected={!!selected}
+        aria-labelledby={labelId}
+        tabIndex={-1}
+        onClick={(e) => {
+          onOptionClickDebounced();
+          rest.onClick?.(e);
+        }}
+        onMouseEnter={(e) => {
+          setActiveOption(index, labelId);
+          rest.onMouseEnter?.(e);
+        }} // Set active index on hover
+        onFocus={(e) => {
+          setActiveOption(index, labelId);
+          rest.onFocus?.(e);
+        }} // Set active index on focus
+        className={cl(
+          classes.option,
+          classes[size],
+          activeIndex === index && classes.active,
+          multiple && classes.multiple,
+          className,
         )}
-      </Label>
-    </button>
-  );
-});
+        ref={combinedRef}
+        {...omit(['displayValue'], rest)}
+      >
+        <Label
+          asChild
+          size={size}
+        >
+          <span>
+            <SelectedIcon
+              multiple={multiple}
+              selected={!!selected}
+            />
+          </span>
+        </Label>
+        <Label
+          className={classes.optionText}
+          size={size}
+          id={labelId}
+        >
+          {children}
+          {description && <ComboboxOptionDescription>{description}</ComboboxOptionDescription>}
+        </Label>
+      </button>
+    );
+  },
+);
 
 ComboboxOption.displayName = 'ComboboxOption';

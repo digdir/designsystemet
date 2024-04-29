@@ -6,10 +6,7 @@ import { Chip, type RemovableChipProps } from '..';
 
 const user = userEvent.setup();
 
-const TestComponent = ({
-  children,
-  ...rest
-}: RemovableChipProps): JSX.Element => {
+const TestComponent = ({ children, ...rest }: RemovableChipProps): JSX.Element => {
   const [removed, setRemoved] = useState(false);
 
   return (
@@ -39,9 +36,7 @@ describe('RemovableChip', () => {
 
     expect(chip);
     await user.click(chip);
-    expect(
-      screen.queryByRole('button', { name: 'Norwegian' }),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Norwegian' })).not.toBeInTheDocument();
   });
 
   it('rest props should be supported', () => {

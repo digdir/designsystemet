@@ -40,15 +40,7 @@ Preview.args = {
 
 export const UsePagination: StoryFn<typeof Pagination> = (args) => {
   const { totalPages = 10 } = args;
-  const {
-    pages,
-    currentPage,
-    setCurrentPage,
-    nextPage,
-    previousPage,
-    showNextPage,
-    showPreviousPage,
-  } = usePagination({
+  const { pages, currentPage, setCurrentPage, nextPage, previousPage, showNextPage, showPreviousPage } = usePagination({
     currentPage: 4,
     totalPages,
   });

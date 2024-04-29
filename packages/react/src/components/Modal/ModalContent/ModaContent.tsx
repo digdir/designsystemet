@@ -13,18 +13,16 @@ export type ModalContentProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'div';
+export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'div';
 
-    return (
-      <Component
-        ref={ref}
-        className={cl(classes.modalContent, className)}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      ref={ref}
+      className={cl(classes.modalContent, className)}
+      {...rest}
+    />
+  );
+});
 
 ModalContent.displayName = 'ModalContent';

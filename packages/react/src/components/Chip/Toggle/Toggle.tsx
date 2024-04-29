@@ -24,17 +24,7 @@ export type ToggleChipProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
-  (
-    {
-      children,
-      size = 'medium',
-      selected = false,
-      checkmark = true,
-      className,
-      ...rest
-    }: ToggleChipProps,
-    ref,
-  ) => {
+  ({ children, size = 'medium', selected = false, checkmark = true, className, ...rest }: ToggleChipProps, ref) => {
     const shouldDisplayCheckmark = checkmark && selected;
     const group = useContext(ChipGroupContext);
 

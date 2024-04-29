@@ -9,11 +9,7 @@ type ComboboxErrorProps = {
   formFieldProps: ReturnType<typeof useFormField>;
 };
 
-export const ComboboxError = ({
-  size,
-  error,
-  formFieldProps,
-}: ComboboxErrorProps) => {
+export const ComboboxError = ({ size, error, formFieldProps }: ComboboxErrorProps) => {
   return (
     <div
       className={classes.errorMessage}

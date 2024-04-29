@@ -8,13 +8,8 @@ import { RovingTabindexContext } from './RovingTabindexRoot';
 
 /** Handles props for `RovingTabIndex` in context with `RovingTabIndexRoot` */
 export const useRovingTabindex = (value: string) => {
-  const {
-    elements,
-    getOrderedItems,
-    setFocusableValue,
-    focusableValue,
-    onShiftTab,
-  } = useContext(RovingTabindexContext);
+  const { elements, getOrderedItems, setFocusableValue, focusableValue, onShiftTab } =
+    useContext(RovingTabindexContext);
 
   return {
     getOrderedItems,

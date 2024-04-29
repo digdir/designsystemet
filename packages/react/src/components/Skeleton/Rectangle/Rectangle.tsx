@@ -12,14 +12,7 @@ export type RectangleProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 /**  Skeleton component used for indicating loading elements of rectangle shape */
-export const Rectangle = ({
-  width,
-  height,
-  className,
-  children,
-  style,
-  ...rest
-}: RectangleProps) => {
+export const Rectangle = ({ width, height, className, children, style, ...rest }: RectangleProps) => {
   const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
 
   return (

@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 
-export function useScrollLock(
-  modalRef: React.RefObject<HTMLDialogElement>,
-  bodyClass: string,
-) {
+export function useScrollLock(modalRef: React.RefObject<HTMLDialogElement>, bodyClass: string) {
   useEffect(() => {
     if (!modalRef.current) return;
     if (modalRef.current.open) document.body.classList.add(bodyClass);

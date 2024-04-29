@@ -21,12 +21,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
       <>
         {active && (
           <div
-            className={cl(
-              classes[size],
-              classes.tabContent,
-              onlyText && classes.onlyText,
-              className,
-            )}
+            className={cl(classes[size], classes.tabContent, onlyText && classes.onlyText, className)}
             ref={ref}
             {...rest}
           >

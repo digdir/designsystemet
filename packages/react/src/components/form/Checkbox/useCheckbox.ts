@@ -10,14 +10,7 @@ import { CheckboxGroupContext } from './Group';
 type UseCheckbox = (props: CheckboxProps) => FormField & {
   inputProps?: Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    | 'readOnly'
-    | 'type'
-    | 'name'
-    | 'required'
-    | 'defaultChecked'
-    | 'checked'
-    | 'onClick'
-    | 'onChange'
+    'readOnly' | 'type' | 'name' | 'required' | 'defaultChecked' | 'checked' | 'onClick' | 'onChange'
   >;
 };
 /** Handles props for `Checkbox` in context with `Checkbox.Group` (and `Fieldset`) */
@@ -35,9 +28,7 @@ export const useCheckbox: UseCheckbox = (props) => {
       defaultChecked: checkboxGroup?.defaultValue
         ? checkboxGroup?.defaultValue.includes(props.value)
         : props.defaultChecked,
-      checked: checkboxGroup?.value
-        ? checkboxGroup?.value.includes(props.value)
-        : props.checked,
+      checked: checkboxGroup?.value ? checkboxGroup?.value.includes(props.value) : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();

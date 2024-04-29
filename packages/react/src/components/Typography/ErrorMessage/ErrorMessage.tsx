@@ -21,10 +21,7 @@ export type ErrorMessageProps = {
 
 /** Use `ErrorMessage` to display text as error message. */
 export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
-  (
-    { className, size = 'medium', spacing, asChild, error = true, ...rest },
-    ref,
-  ) => {
+  ({ className, size = 'medium', spacing, asChild, error = true, ...rest }, ref) => {
     const Component = asChild ? Slot : 'div';
 
     return (

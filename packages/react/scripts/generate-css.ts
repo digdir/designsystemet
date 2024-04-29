@@ -28,10 +28,7 @@ const findComponentName = (filePath: string) => {
 
   const name = fileName
     .split('/')
-    .find(
-      (partial) =>
-        partial[0] === partial[0].toUpperCase() || additional.includes(partial),
-    );
+    .find((partial) => partial[0] === partial[0].toUpperCase() || additional.includes(partial));
 
   if (!name) {
     throw new Error(`Could not make name from ${fileName} at ${filePath}`);
@@ -70,10 +67,7 @@ const makeDir = (folder: string) => {
 
 const writeIndex = (fileName: string, cssFiles: string[]) => {
   const cssFilesContent = cssFiles.map((file) => `@import url('${file}');`);
-  fs.writeFileSync(
-    path.join(outputFolder, fileName),
-    `@charset "UTF-8";\n${cssFilesContent.join('\n')}\n`,
-  );
+  fs.writeFileSync(path.join(outputFolder, fileName), `@charset "UTF-8";\n${cssFilesContent.join('\n')}\n`);
 
   return [fileName, ...cssFiles];
 };
@@ -81,29 +75,22 @@ const writeIndex = (fileName: string, cssFiles: string[]) => {
 async function createFiles() {
   console.log('\n🏗️  Started building css files...');
 
-  const modules = glob.sync(
-    path.resolve(__dirname, '../src/**/*.module.css').replace(/\\/g, '/'),
-  );
+  const modules = glob.sync(path.resolve(__dirname, '../src/**/*.module.css').replace(/\\/g, '/'));
   const generatedComponents: string[] = [];
 
   // group files that are under src/components/{THIS IS THE NAME}
-  const componentFiles = modules.reduce<{ [key: string]: string[] }>(
-    (components, filePath) => {
-      const name = findComponentName(filePath);
+  const componentFiles = modules.reduce<{ [key: string]: string[] }>((components, filePath) => {
+    const name = findComponentName(filePath);
 
-      if (ignore.includes(name.toLowerCase())) {
-        console.log('🛑 Ignoring component ', name);
-        return components;
-      }
-
-      components[name] = !components[name]
-        ? [filePath]
-        : [...components[name], filePath];
-
+    if (ignore.includes(name.toLowerCase())) {
+      console.log('🛑 Ignoring component ', name);
       return components;
-    },
-    {},
-  );
+    }
+
+    components[name] = !components[name] ? [filePath] : [...components[name], filePath];
+
+    return components;
+  }, {});
   console.log('\n🧩 Found components', Object.keys(componentFiles));
 
   await Promise.all(
@@ -112,14 +99,9 @@ async function createFiles() {
 
       const fileName = `${componentName}.css`;
 
-      const results = await Promise.all(
-        files.map(async (filePath) => makeCss(filePath)),
-      );
+      const results = await Promise.all(files.map(async (filePath) => makeCss(filePath)));
 
-      const css = withFileHeader(
-        results.map((result) => result.css).join('\n'),
-        files,
-      );
+      const css = withFileHeader(results.map((result) => result.css).join('\n'), files);
 
       let outputPath = path.join(outputFolder, fileName);
 
@@ -133,23 +115,15 @@ async function createFiles() {
         outputPath = path.join(outputFolder, 'utilities', fileName);
       }
 
-      generatedComponents.push(
-        outputPath.replace(/\\/g, '/').split('/css/')[1],
-      );
+      generatedComponents.push(outputPath.replace(/\\/g, '/').split('/css/')[1]);
 
       return fs.writeFile(outputPath, css);
     }),
   ).then(() => {
-    const [utilityFiles, componentFiles] = R.partition(
-      R.includes('utilities/'),
-      generatedComponents,
-    );
+    const [utilityFiles, componentFiles] = R.partition(R.includes('utilities/'), generatedComponents);
 
     writeIndex('utilities.css', utilityFiles);
-    const createdFiles = writeIndex('index.css', [
-      'utilities.css',
-      ...componentFiles,
-    ]);
+    const createdFiles = writeIndex('index.css', ['utilities.css', ...componentFiles]);
 
     console.log('\n👷 Created CSS files: \n ', createdFiles);
 

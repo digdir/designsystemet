@@ -113,19 +113,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const mergedRef = useMergeRefs([ref, refs.setFloating]);
 
     const childMergedRef = useMergeRefs([
-      (children as React.ReactElement & React.RefAttributes<HTMLElement>)
-        .ref as React.MutableRefObject<HTMLElement>,
+      (children as React.ReactElement & React.RefAttributes<HTMLElement>).ref as React.MutableRefObject<HTMLElement>,
       refs.setReference,
     ]);
 
-    if (
-      !children ||
-      children?.type === React.Fragment ||
-      (children as unknown) === React.Fragment
-    ) {
-      console.error(
-        '<Tooltip> children needs to be a single ReactElement and not: <React.Fragment/> | <></>',
-      );
+    if (!children || children?.type === React.Fragment || (children as unknown) === React.Fragment) {
+      console.error('<Tooltip> children needs to be a single ReactElement and not: <React.Fragment/> | <></>');
       return null;
     }
 
@@ -145,11 +138,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 style={{ ...floatingStyles, ...animationStyles, ...style }}
                 role='tooltip'
                 {...getFloatingProps({
-                  className: cl(
-                    classes.wrapper,
-                    inverted && classes.inverted,
-                    className,
-                  ),
+                  className: cl(classes.wrapper, inverted && classes.inverted, className),
                   ref: mergedRef,
                   ...rest,
                 })}

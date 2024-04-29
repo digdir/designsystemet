@@ -9,19 +9,9 @@ import { PopoverContext } from './Popover';
 
 export type PopoverTriggerProps = React.ComponentPropsWithRef<typeof Button>;
 
-export const PopoverTrigger = forwardRef<
-  HTMLButtonElement,
-  PopoverTriggerProps
->(({ id, asChild, ...rest }, ref) => {
-  const {
-    triggerRef,
-    internalOpen,
-    setInternalOpen,
-    isControlled,
-    popoverId,
-    triggerId,
-    setTriggerId,
-  } = useContext(PopoverContext);
+export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>(({ id, asChild, ...rest }, ref) => {
+  const { triggerRef, internalOpen, setInternalOpen, isControlled, popoverId, triggerId, setTriggerId } =
+    useContext(PopoverContext);
 
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 

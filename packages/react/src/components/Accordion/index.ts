@@ -23,10 +23,5 @@ Accordion.Header.displayName = 'Accordion.Header';
 Accordion.Content.displayName = 'Accordion.Content';
 Accordion.Item.displayName = 'Accordion.Item';
 
-export type {
-  AccordionProps,
-  AccordionContentProps,
-  AccordionHeaderProps,
-  AccordionItemProps,
-};
+export type { AccordionProps, AccordionContentProps, AccordionHeaderProps, AccordionItemProps };
 export { Accordion, AccordionItem, AccordionContent, AccordionHeader };

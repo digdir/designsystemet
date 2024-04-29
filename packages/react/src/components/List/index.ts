@@ -30,11 +30,4 @@ export type { ListItemProps } from './ListItem';
 export type { ListHeadingProps } from './ListHeading';
 export type { ListOrderedProps, ListUnorderedProps } from './Lists';
 
-export {
-  List,
-  ListRoot,
-  ListItem,
-  ListHeading,
-  Ordered as ListOrdered,
-  Unordered as ListUnordered,
-};
+export { List, ListRoot, ListItem, ListHeading, Ordered as ListOrdered, Unordered as ListUnordered };

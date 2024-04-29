@@ -13,18 +13,16 @@ export type CardMediaProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'div';
+export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'div';
 
-    return (
-      <Component
-        className={cl(classes.media, className)}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      className={cl(classes.media, className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 CardMedia.displayName = 'CardMedia';

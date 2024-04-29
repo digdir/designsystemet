@@ -13,9 +13,7 @@ import { omit } from '../../../../utilities';
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 
-export const ComboboxInput = ({
-  ...rest
-}: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
+export const ComboboxInput = ({ ...rest }: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -86,12 +84,7 @@ export const ComboboxInput = ({
     // check if input value is the same as a label, if so, select it
     const option = options.find((option) => option.label === value);
     if (!option) return;
-    if (
-      selectedOptions.find(
-        (selectedOption) => selectedOption.value === option.value,
-      )
-    )
-      return;
+    if (selectedOptions.find((selectedOption) => selectedOption.value === option.value)) return;
 
     handleSelectOption(option);
 
@@ -100,16 +93,12 @@ export const ComboboxInput = ({
     } else {
       // move cursor to the end of the input
       setTimeout(() => {
-        inputRef.current?.setSelectionRange(
-          option?.label?.length || 0,
-          option?.label?.length || 0,
-        );
+        inputRef.current?.setSelectionRange(option?.label?.length || 0, option?.label?.length || 0);
       }, 0);
     }
   };
 
-  const showClearButton =
-    multiple && !hideClearButton && selectedOptions.length > 0;
+  const showClearButton = multiple && !hideClearButton && selectedOptions.length > 0;
 
   return (
     <Box

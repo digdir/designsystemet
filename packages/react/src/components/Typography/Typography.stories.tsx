@@ -19,10 +19,8 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Ingress spacing>
-      Her kan du registrere nye virksomheter, som for eksempel
-      enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
-      samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
-      bruke denne tjenesten.
+      Her kan du registrere nye virksomheter, som for eksempel enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige
+      selskap, samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan bruke denne tjenesten.
     </Ingress>
 
     <Heading
@@ -34,11 +32,9 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Paragraph spacing>
-      Denne tjenesten kan du bruke for å melde opplysninger til
-      Enhetsregisteret, Foretaksregisteret, Frivillighetsregisteret, NAV
-      Aa-registeret, Virksomhets- og foretaksregisteret hos SSB,
-      Stiftelsesregisteret og Skattedirektoratets register over upersonlige
-      skattytere.
+      Denne tjenesten kan du bruke for å melde opplysninger til Enhetsregisteret, Foretaksregisteret,
+      Frivillighetsregisteret, NAV Aa-registeret, Virksomhets- og foretaksregisteret hos SSB, Stiftelsesregisteret og
+      Skattedirektoratets register over upersonlige skattytere.
     </Paragraph>
 
     <Heading
@@ -53,9 +49,8 @@ export const EksempelTekst: StoryFn = () => (
       short
       spacing
     >
-      Når du skal signere meldingen vil du motta en signeringsoppgave i
-      meldingsboksen din i Altinn. Meldingen blir ikke sendt til behandling før
-      alle har signert.
+      Når du skal signere meldingen vil du motta en signeringsoppgave i meldingsboksen din i Altinn. Meldingen blir ikke
+      sendt til behandling før alle har signert.
     </Paragraph>
 
     <Heading
@@ -67,11 +62,9 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Paragraph spacing>
-      For å signere på vegne av en virksomhet, trenger du Altinn-rollen Signerer
-      av Samordnet registermelding. Du kan se hvilke roller du har for en aktør
-      på menypunktet Profil, Skjema og tjenester du har rettighet til. Om du
-      ikke har disse rollene, må du få noen som har rollene til å delegere dem
-      til deg.
+      For å signere på vegne av en virksomhet, trenger du Altinn-rollen Signerer av Samordnet registermelding. Du kan se
+      hvilke roller du har for en aktør på menypunktet Profil, Skjema og tjenester du har rettighet til. Om du ikke har
+      disse rollene, må du få noen som har rollene til å delegere dem til deg.
     </Paragraph>
 
     <Heading
@@ -86,8 +79,8 @@ export const EksempelTekst: StoryFn = () => (
       short
       spacing
     >
-      Personvernerklæringen gir informasjon om hvilke personopplysninger vi
-      behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
+      Personvernerklæringen gir informasjon om hvilke personopplysninger vi behandler, hvordan disse blir behandlet og
+      hvilke rettigheter du har.
     </Paragraph>
   </>
 );

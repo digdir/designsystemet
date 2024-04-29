@@ -10,15 +10,7 @@ export const ComboboxChips = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const {
-    size,
-    readOnly,
-    disabled,
-    selectedOptions,
-    setSelectedOptions,
-    chipSrLabel,
-    inputRef,
-  } = context;
+  const { size, readOnly, disabled, selectedOptions, setSelectedOptions, chipSrLabel, inputRef } = context;
 
   return (
     <>
@@ -33,9 +25,7 @@ export const ComboboxChips = () => {
               if (disabled) return;
               if (e.key === 'Enter') {
                 e.stopPropagation();
-                setSelectedOptions(
-                  selectedOptions.filter((i) => i.value !== option.value),
-                );
+                setSelectedOptions(selectedOptions.filter((i) => i.value !== option.value));
                 inputRef.current?.focus();
               }
             }}
@@ -43,9 +33,7 @@ export const ComboboxChips = () => {
               if (readOnly) return;
               if (disabled) return;
               /* If we click a chip, filter the active values and remove the one we clicked */
-              setSelectedOptions(
-                selectedOptions.filter((i) => i.value !== option.value),
-              );
+              setSelectedOptions(selectedOptions.filter((i) => i.value !== option.value));
             }}
             style={{
               /* We already set the opacity on Combobox */

@@ -15,53 +15,50 @@ export type AccordionHeaderProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
-export const AccordionHeader = forwardRef<
-  HTMLHeadingElement,
-  AccordionHeaderProps
->(({ level = 1, children, className, onHeaderClick, ...rest }, ref) => {
-  const context = useContext(AccordionItemContext);
+export const AccordionHeader = forwardRef<HTMLHeadingElement, AccordionHeaderProps>(
+  ({ level = 1, children, className, onHeaderClick, ...rest }, ref) => {
+    const context = useContext(AccordionItemContext);
 
-  if (context === null) {
-    console.error(
-      '<Accordion.Header> has to be used within an <Accordion.Item>',
-    );
-    return null;
-  }
+    if (context === null) {
+      console.error('<Accordion.Header> has to be used within an <Accordion.Item>');
+      return null;
+    }
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    context.toggleOpen();
-    onHeaderClick && onHeaderClick(e);
-  };
+    const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+      context.toggleOpen();
+      onHeaderClick && onHeaderClick(e);
+    };
 
-  return (
-    <Heading
-      ref={ref}
-      size='xsmall'
-      level={level}
-      className={cl('fds-accordion__header', className)}
-      {...rest}
-    >
-      <button
-        type='button'
-        className={cl('fds-accordion__button', `fds-focus`)}
-        onClick={handleClick}
-        aria-expanded={context.open}
-        aria-controls={context.contentId}
+    return (
+      <Heading
+        ref={ref}
+        size='xsmall'
+        level={level}
+        className={cl('fds-accordion__header', className)}
+        {...rest}
       >
-        <ChevronDownIcon
-          aria-hidden
-          className='fds-accordion__expand-icon'
-          fontSize={'1.5rem'}
-        />
-        <Paragraph
-          asChild
-          size='small'
+        <button
+          type='button'
+          className={cl('fds-accordion__button', `fds-focus`)}
+          onClick={handleClick}
+          aria-expanded={context.open}
+          aria-controls={context.contentId}
         >
-          <span>{children}</span>
-        </Paragraph>
-      </button>
-    </Heading>
-  );
-});
+          <ChevronDownIcon
+            aria-hidden
+            className='fds-accordion__expand-icon'
+            fontSize={'1.5rem'}
+          />
+          <Paragraph
+            asChild
+            size='small'
+          >
+            <span>{children}</span>
+          </Paragraph>
+        </button>
+      </Heading>
+    );
+  },
+);
 
 AccordionHeader.displayName = 'AccordionHeader';

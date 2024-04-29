@@ -10,8 +10,7 @@ export type CheckboxGroupContextProps = {
   toggleValue: (value: string) => void;
 };
 
-export const CheckboxGroupContext =
-  createContext<CheckboxGroupContextProps | null>(null);
+export const CheckboxGroupContext = createContext<CheckboxGroupContextProps | null>(null);
 
 export type CheckboxGroupProps = {
   /** Collection of `Checkbox` components */
@@ -24,29 +23,11 @@ export type CheckboxGroupProps = {
   onChange?: (value: string[]) => void;
 } & Omit<FieldsetProps, 'onChange'>;
 
-export const CheckboxGroup = forwardRef<
-  HTMLFieldSetElement,
-  CheckboxGroupProps
->(
-  (
-    {
-      onChange,
-      children,
-      value,
-      readOnly,
-      defaultValue,
-      size = 'medium',
-      ...rest
-    },
-    ref,
-  ) => {
-    const [internalValue, setInternalValue] = useState<string[]>(
-      defaultValue ?? [],
-    );
+export const CheckboxGroup = forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
+  ({ onChange, children, value, readOnly, defaultValue, size = 'medium', ...rest }, ref) => {
+    const [internalValue, setInternalValue] = useState<string[]>(defaultValue ?? []);
 
-    const toggleValue: CheckboxGroupContextProps['toggleValue'] = (
-      checkboxValue,
-    ) => {
+    const toggleValue: CheckboxGroupContextProps['toggleValue'] = (checkboxValue) => {
       const currentValue = value ?? internalValue;
       const updatedValue = currentValue.includes(checkboxValue)
         ? currentValue.filter((x) => x !== checkboxValue)

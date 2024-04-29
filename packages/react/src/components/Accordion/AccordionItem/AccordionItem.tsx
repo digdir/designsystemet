@@ -21,8 +21,7 @@ export type AccordionItemContextProps = {
   contentId: string;
 };
 
-export const AccordionItemContext =
-  createContext<AccordionItemContextProps | null>(null);
+export const AccordionItemContext = createContext<AccordionItemContextProps | null>(null);
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
@@ -31,11 +30,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
     return (
       <div
-        className={cl(
-          'fds-accordion__item',
-          (open ?? internalOpen) && 'fds-accordion__item--open',
-          className,
-        )}
+        className={cl('fds-accordion__item', (open ?? internalOpen) && 'fds-accordion__item--open', className)}
         ref={ref}
         {...rest}
       >

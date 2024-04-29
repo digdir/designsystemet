@@ -13,18 +13,16 @@ export type CardContentProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'div';
+export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'div';
 
-    return (
-      <Component
-        className={cl(classes.content, className)}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      className={cl(classes.content, className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 CardContent.displayName = 'CardContent';

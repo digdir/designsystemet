@@ -13,18 +13,16 @@ export type CardFooterProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'div';
+export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(({ asChild, className, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'div';
 
-    return (
-      <Component
-        className={cl(classes.footer, className)}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      className={cl(classes.footer, className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 CardFooter.displayName = 'CardFooter';

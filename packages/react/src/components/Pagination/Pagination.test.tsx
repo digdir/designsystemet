@@ -1,9 +1,4 @@
-import {
-  act,
-  render as renderRtl,
-  screen,
-  renderHook,
-} from '@testing-library/react';
+import { act, render as renderRtl, screen, renderHook } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import type { PaginationRootProps } from './PaginationRoot';
@@ -35,9 +30,7 @@ describe('Pagination', () => {
 
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('button', { name: 'Previous' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Previous' })).toBeInTheDocument();
   });
 
   it('compact pagination should render correctly with default props', () => {
@@ -55,9 +48,7 @@ describe('Pagination', () => {
 
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('button', { name: 'Previous' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Previous' })).toBeInTheDocument();
   });
 
   it('should render correctly when totalPages are 3', () => {
@@ -69,9 +60,7 @@ describe('Pagination', () => {
       onChange: () => null,
     });
 
-    expect(
-      screen.getByRole('button', { name: 'Previous' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Previous' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
     expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
     expect(screen.getByLabelText('Side 2')).toBeInTheDocument();
@@ -90,9 +79,7 @@ describe('Pagination', () => {
     await act(() => user.click(screen.getByRole('button', { name: 'Next' })));
     expect(mockOnChange).toHaveBeenCalledWith(6);
 
-    await act(() =>
-      user.click(screen.getByRole('button', { name: 'Previous' })),
-    );
+    await act(() => user.click(screen.getByRole('button', { name: 'Previous' })));
     expect(mockOnChange).toHaveBeenCalledWith(4);
 
     await act(() => user.click(screen.getByLabelText('Side 1')));
@@ -105,19 +92,14 @@ describe('Pagination', () => {
       ...defaultProps,
     });
 
-    expect(
-      screen.getByRole('button', { name: 'Previous' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Previous' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
     expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
     expect(screen.getByLabelText('Side 4')).toBeInTheDocument();
     expect(screen.getByLabelText('Side 5')).toBeInTheDocument();
     expect(screen.getByLabelText('Side 6')).toBeInTheDocument();
     expect(screen.getByLabelText('Side 10')).toBeInTheDocument();
-    expect(screen.getByLabelText('Side 5')).toHaveAttribute(
-      'aria-current',
-      'true',
-    );
+    expect(screen.getByLabelText('Side 5')).toHaveAttribute('aria-current', 'true');
   });
 
   it('should show aria-labels when hideLabels = true', () => {
@@ -127,9 +109,7 @@ describe('Pagination', () => {
       hideLabels: true,
     });
 
-    expect(
-      screen.getByRole('button', { name: 'Previous' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Previous' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
     expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
     expect(screen.getByLabelText('Side 4')).toBeInTheDocument();
@@ -242,9 +222,7 @@ describe('Pagination.Button', () => {
 
 describe('usePagination', () => {
   it('should provide correct amount of pages with 10 pages when current page is 6', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 6 }),
-    );
+    const { result } = renderHook(() => usePagination({ totalPages: 10, currentPage: 6 }));
     const { pages } = result.current;
 
     expect(pages).toHaveLength(7);
@@ -258,9 +236,7 @@ describe('usePagination', () => {
   });
 
   it('should provide correct amount of pages with 10 pages when current page is 6 and compact', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 6, compact: true }),
-    );
+    const { result } = renderHook(() => usePagination({ totalPages: 10, currentPage: 6, compact: true }));
     const { pages } = result.current;
 
     expect(pages).toHaveLength(5);
@@ -272,9 +248,7 @@ describe('usePagination', () => {
   });
 
   it('should update current page and pages correctly when setCurrentPage is called', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 2 }),
-    );
+    const { result } = renderHook(() => usePagination({ totalPages: 10, currentPage: 2 }));
 
     const initalCurrentPage = result.current.currentPage;
     expect(initalCurrentPage).toBe(2);
@@ -295,9 +269,7 @@ describe('usePagination', () => {
   });
 
   it('should update current page and pages correctly when setNextPage is called ', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 2 }),
-    );
+    const { result } = renderHook(() => usePagination({ totalPages: 10, currentPage: 2 }));
 
     const initalCurrentPage = result.current.currentPage;
     expect(initalCurrentPage).toBe(2);
@@ -318,9 +290,7 @@ describe('usePagination', () => {
   });
 
   it('should update current page and pages correctly when setPreviousPage is called ', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 9 }),
-    );
+    const { result } = renderHook(() => usePagination({ totalPages: 10, currentPage: 9 }));
 
     const initalCurrentPage = result.current.currentPage;
     expect(initalCurrentPage).toBe(9);

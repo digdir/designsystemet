@@ -27,10 +27,4 @@ export type { ErrorSummaryItemProps } from './ErrorSummaryItem';
 export type { ErrorSummaryHeadingProps } from './ErrorSummaryHeading';
 export type { ErrorSummaryListProps } from './ErrorSummaryList';
 
-export {
-  ErrorSummary,
-  ErrorSummaryRoot,
-  ErrorSummaryItem,
-  ErrorSummaryHeading,
-  ErrorSummaryList,
-};
+export { ErrorSummary, ErrorSummaryRoot, ErrorSummaryItem, ErrorSummaryHeading, ErrorSummaryList };

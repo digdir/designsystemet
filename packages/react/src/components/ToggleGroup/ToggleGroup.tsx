@@ -40,24 +40,10 @@ export type ToggleGroupProps = {
  * ```
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
-  (
-    {
-      children,
-      value,
-      defaultValue,
-      onChange,
-      size = 'medium',
-      name,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ children, value, defaultValue, onChange, size = 'medium', name, className, ...rest }, ref) => {
     const nameId = useId();
     const isControlled = value !== undefined;
-    const [uncontrolledValue, setUncontrolledValue] = useState<
-      string | undefined
-    >(defaultValue);
+    const [uncontrolledValue, setUncontrolledValue] = useState<string | undefined>(defaultValue);
 
     let onValueChange = onChange;
     if (!isControlled) {

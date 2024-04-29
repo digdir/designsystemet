@@ -13,10 +13,7 @@ export type ToggleGroupItemProps = {
   value?: string;
 } & Omit<ButtonProps, 'value'>;
 
-export const ToggleGroupItem = forwardRef<
-  HTMLButtonElement,
-  ToggleGroupItemProps
->((props, ref) => {
+export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>((props, ref) => {
   const { children, icon, className, ...rest } = props;
   const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
   return (

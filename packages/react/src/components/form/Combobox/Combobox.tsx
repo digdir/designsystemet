@@ -1,11 +1,4 @@
-import {
-  useState,
-  useRef,
-  createContext,
-  useEffect,
-  useId,
-  forwardRef,
-} from 'react';
+import { useState, useRef, createContext, useEffect, useId, forwardRef } from 'react';
 import type * as React from 'react';
 import {
   FloatingFocusManager,
@@ -21,10 +14,7 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 import cl from 'clsx';
-import type {
-  UseFloatingReturn,
-  UseListNavigationProps,
-} from '@floating-ui/react';
+import type { UseFloatingReturn, UseListNavigationProps } from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { flushSync } from 'react-dom';
 
@@ -37,10 +27,7 @@ import { omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
-import useCombobox, {
-  isComboboxOption,
-  isInteractiveComboboxCustom,
-} from './useCombobox';
+import useCombobox, { isComboboxOption, isInteractiveComboboxCustom } from './useCombobox';
 import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
@@ -211,9 +198,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       initialValue,
     });
 
-    const [activeDescendant, setActiveDescendant] = useState<
-      string | undefined
-    >(undefined);
+    const [activeDescendant, setActiveDescendant] = useState<string | undefined>(undefined);
 
     useEffect(() => {
       if (rest.inputValue !== undefined) {
@@ -289,11 +274,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       enabled: open,
     });
 
-    const { getReferenceProps, getFloatingProps } = useInteractions([
-      role,
-      dismiss,
-      listNav,
-    ]);
+    const { getReferenceProps, getFloatingProps } = useInteractions([role, dismiss, listNav]);
 
     // remove active index if combobox is closed
     useEffect(() => {
@@ -327,9 +308,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const handleSelectOption = (option: Option) => {
       // if option is already selected, remove it
       if (value && value.includes(option.value)) {
-        setSelectedOptions((prev) =>
-          prev.filter((i) => i.value !== option.value),
-        );
+        setSelectedOptions((prev) => prev.filter((i) => i.value !== option.value));
         return;
       }
 
@@ -342,10 +321,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         setInputValue(option?.label || '');
         // move cursor to the end of the input
         setTimeout(() => {
-          inputRef.current?.setSelectionRange(
-            option?.label?.length || 0,
-            option?.label?.length || 0,
-          );
+          inputRef.current?.setSelectionRange(option?.label?.length || 0, option?.label?.length || 0);
         }, 0);
       }
 
@@ -391,24 +367,16 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           break;
         case 'Enter':
           event.preventDefault();
-          if (
-            activeIndex !== null &&
-            (optionsChildren[activeIndex] || customIds.length > 0)
-          ) {
+          if (activeIndex !== null && (optionsChildren[activeIndex] || customIds.length > 0)) {
             // check if we are in the custom components
             if (activeIndex <= customIds.length) {
               // send `onSelect` event to the custom component
               const selectedId = customIds[activeIndex];
               const selectedComponent = restChildren.find(
-                (component) =>
-                  isInteractiveComboboxCustom(component) &&
-                  component.props?.id === selectedId,
+                (component) => isInteractiveComboboxCustom(component) && component.props?.id === selectedId,
               );
 
-              if (
-                isInteractiveComboboxCustom(selectedComponent) &&
-                selectedComponent.props.onSelect
-              ) {
+              if (isInteractiveComboboxCustom(selectedComponent) && selectedComponent.props.onSelect) {
                 selectedComponent.props.onSelect();
               }
             }
@@ -419,9 +387,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             const child = optionsChildren[valueIndex];
             if (isComboboxOption(child)) {
               const props = child.props;
-              const option = options.find(
-                (option) => option.value === props.value,
-              );
+              const option = options.find((option) => option.value === props.value);
 
               if (!multiple) {
                 // check if option is already selected, if so, deselect it
@@ -515,11 +481,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         }}
       >
         <Box
-          className={cl(
-            classes.combobox,
-            disabled && classes.disabled,
-            className,
-          )}
+          className={cl(classes.combobox, disabled && classes.disabled, className)}
           style={style}
           ref={portalRef}
         >
@@ -654,9 +616,7 @@ type ComboboxContextType = {
   handleKeyDown: (event: React.KeyboardEvent) => void;
   setActiveIndex: (index: number | null) => void;
   setActiveOption: (index: number, id: string) => void;
-  getReferenceProps: (
-    props?: Record<string, unknown>,
-  ) => Record<string, unknown>;
+  getReferenceProps: (props?: Record<string, unknown>) => Record<string, unknown>;
   onOptionClick: (value: string) => void;
   setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
   chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
@@ -665,8 +625,6 @@ type ComboboxContextType = {
   forwareddRef: React.Ref<HTMLInputElement>;
 };
 
-export const ComboboxContext = createContext<ComboboxContextType | undefined>(
-  undefined,
-);
+export const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
 
 Combobox.displayName = 'Combobox';

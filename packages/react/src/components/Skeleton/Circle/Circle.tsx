@@ -12,25 +12,13 @@ export type CircleProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 /**  Skeleton component used for indicating loading elements of circular shape */
-export const Circle = ({
-  width,
-  height,
-  className,
-  children,
-  style,
-  ...rest
-}: CircleProps) => {
+export const Circle = ({ width, height, className, children, style, ...rest }: CircleProps) => {
   const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
 
   return (
     <div
       ref={ref}
-      className={cl(
-        classes.skeleton,
-        classes.circle,
-        { [classes.hasChildren]: Boolean(children) },
-        className,
-      )}
+      className={cl(classes.skeleton, classes.circle, { [classes.hasChildren]: Boolean(children) }, className)}
       style={{ width, height, ...style }}
       aria-hidden
       {...rest}

@@ -15,9 +15,7 @@ export type RadioGroupContextProps = {
   onChange?: (value: string) => void;
 };
 
-export const RadioGroupContext = createContext<RadioGroupContextProps | null>(
-  null,
-);
+export const RadioGroupContext = createContext<RadioGroupContextProps | null>(null);
 
 export type RadioGroupProps = {
   /** Collection of `Radio` components */
@@ -38,19 +36,7 @@ export type RadioGroupProps = {
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
   (
-    {
-      onChange,
-      children,
-      value,
-      readOnly,
-      defaultValue,
-      name,
-      size = 'medium',
-      required,
-      inline,
-      className,
-      ...rest
-    },
+    { onChange, children, value, readOnly, defaultValue, name, size = 'medium', required, inline, className, ...rest },
     ref,
   ) => {
     const nameId = useId();
