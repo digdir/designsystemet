@@ -51,11 +51,4 @@ describe('Box', () => {
 
     expect(box.tagName).toBe('BUTTON');
   });
-
-  it('should render as button when we use the as prop', () => {
-    render({ as: 'button' });
-    const box = screen.getByTitle('box');
-
-    expect(box.tagName).toBe('BUTTON');
-  });
 });

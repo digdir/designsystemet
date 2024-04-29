@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
 import classes from './Box.module.css';
 
 export type BoxProps = {
@@ -43,7 +41,7 @@ export type BoxProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
+export const Box = forwardRef<HTMLDivElement, BoxProps>(
   (
     {
       shadow,
@@ -52,13 +50,12 @@ export const Box: OverridableComponent<BoxProps, HTMLDivElement> = forwardRef(
       background = 'default',
       children,
       asChild = false,
-      as = 'div',
       className,
       ...rest
     },
     ref,
   ) => {
-    const Component = asChild ? Slot : as;
+    const Component = asChild ? Slot : 'div';
 
     return (
       <Component
