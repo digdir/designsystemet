@@ -28,21 +28,21 @@ describe('Box', () => {
     render({ shadow: 'xsmall' });
     const box = screen.getByTitle('box');
 
-    expect(box.classList).toContain('xsmallShadow');
+    expect(box.classList).toContain('fds-box--xsmall-shadow');
   });
 
   it('should render a div with correct classname when borderColor is subtle', () => {
     render({ borderColor: 'subtle' });
     const box = screen.getByTitle('box');
 
-    expect(box.classList).toContain('subtleBorderColor');
+    expect(box.classList).toContain('fds-box--subtle-border-color');
   });
 
   it('should render a div with correct classname when borderRadius is small', () => {
     render({ borderRadius: 'small' });
     const box = screen.getByTitle('box');
 
-    expect(box.classList).toContain('smallBorderRadius');
+    expect(box.classList).toContain('fds-box--small-border-radius');
   });
 
   it('should render as a button when we use asChild', () => {
