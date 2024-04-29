@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
 import classes from './Link.module.css';
 
 export type LinkProps = {
@@ -26,24 +24,20 @@ export type LinkProps = {
   asChild?: boolean;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const Link: OverridableComponent<LinkProps, HTMLAnchorElement> =
-  forwardRef(
-    (
-      { as = 'a', asChild, children, className, inverted = false, ...rest },
-      ref,
-    ) => {
-      const Component = asChild ? Slot : as;
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ asChild, children, className, inverted = false, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'a';
 
-      return (
-        <Component
-          className={cl(classes.link, inverted && classes.inverted, className)}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </Component>
-      );
-    },
-  );
+    return (
+      <Component
+        className={cl(classes.link, inverted && classes.inverted, className)}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </Component>
+    );
+  },
+);
 
 Link.displayName = 'Link';
