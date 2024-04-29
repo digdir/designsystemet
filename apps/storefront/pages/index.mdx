@@ -58,6 +58,15 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   }}
 >
   <BlogCard
+    title='Dynamiske font-størrelser og hvorfor vi gikk bort fra det'
+    desc='Det er mulig å bruke dynamiske font-størrelser uten breakpoints, men det medfører noen ulemper.'
+    href='/bloggen/2024/fluid-typography'
+    image='/img/bloggen/fluid-front.png'
+    featured={false}
+    tagText='Bloggen'
+    tagColor='first'
+  />
+  <BlogCard
     title='Hvordan Altinn Studio bruker Designsystemet'
     desc='Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!'
     href='/bloggen/2024/altinn-studio'
@@ -73,15 +82,6 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     featured={false}
     tagText='Bloggen'
     tagColor='first'
-  />
-  <BlogCard
-    title='Komposisjon med asChild i React koden'
-    desc='Nokre gonger må du kanskje byte ut ein komponent med ein anna, for eksempel Button skulle vore ein Link. Det er her asChild kjem inn i biletet.'
-    href='/grunnleggende/for-utviklere/komposisjon'
-    image='/img/placeholders/yellow_big_logo.svg'
-    featured={false}
-    tagText='For utviklere'
-    tagColor='second'
   />
 </Section>
 

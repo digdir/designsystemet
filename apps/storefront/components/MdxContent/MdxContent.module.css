@@ -78,7 +78,7 @@
 }
 
 /* Styling for links */
-.content > p > a,
+.content > p a,
 .content > ul > li a,
 .content > ol > li a {
   color: var(--fds-semantic-text-action-default);
