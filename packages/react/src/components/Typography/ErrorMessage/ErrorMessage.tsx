@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
-
 import classes from './ErrorMessage.module.css';
 
 export type ErrorMessageProps = {
@@ -22,23 +20,12 @@ export type ErrorMessageProps = {
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `ErrorMessage` to display text as error message. */
-export const ErrorMessage: OverridableComponent<
-  ErrorMessageProps,
-  HTMLParagraphElement
-> = forwardRef(
+export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
   (
-    {
-      className,
-      size = 'medium',
-      spacing,
-      as = 'div',
-      asChild,
-      error = true,
-      ...rest
-    },
+    { className, size = 'medium', spacing, asChild, error = true, ...rest },
     ref,
   ) => {
-    const Component = asChild ? Slot : as;
+    const Component = asChild ? Slot : 'div';
 
     return (
       <Component
