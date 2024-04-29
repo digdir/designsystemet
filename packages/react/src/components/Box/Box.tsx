@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import classes from './Box.module.css';
-
 export type BoxProps = {
   /**
    * Shadow size of the box
@@ -61,10 +59,10 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
       <Component
         ref={ref}
         className={cl(
-          shadow && classes[shadow + 'Shadow'],
-          borderRadius && classes[borderRadius + 'BorderRadius'],
-          borderColor && classes[borderColor + 'BorderColor'],
-          classes[background + 'Background'],
+          shadow && `fds-box--${shadow}-shadow`,
+          borderColor && `fds-box--${borderColor}-border-color`,
+          borderRadius && `fds-box--${borderRadius}-border-radius`,
+          `fds-box--${background}-background`,
           className,
         )}
         {...rest}
