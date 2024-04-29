@@ -5,7 +5,7 @@ export default {
   useTabs: false,
   semi: true,
   singleQuote: true,
-  printWidth: 120,
+  printWidth: 80,
   quoteProps: 'as-needed',
   jsxSingleQuote: true,
   bracketSpacing: true,
