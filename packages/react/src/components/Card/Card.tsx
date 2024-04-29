@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
 import classes from './Card.module.css';
 
 export type CardProps = {
@@ -32,19 +30,12 @@ export type CardProps = {
   href?: never;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Card: OverridableComponent<CardProps, HTMLDivElement> = forwardRef(
+export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
-    {
-      color = 'neutral',
-      as = 'div',
-      isLink = false,
-      asChild = false,
-      className,
-      ...rest
-    },
+    { color = 'neutral', isLink = false, asChild = false, className, ...rest },
     ref,
   ) => {
-    const Component = asChild ? Slot : as;
+    const Component = asChild ? Slot : 'div';
 
     return (
       <Component
