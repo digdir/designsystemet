@@ -1,73 +1,73 @@
 @layer fds.box {
-  .xsmallShadow {
+  .fds-box--xsmall-shadow {
     box-shadow: var(--fds-shadow-xsmall);
   }
 
-  .smallShadow {
+  .fds-box--small-shadow {
     box-shadow: var(--fds-shadow-small);
   }
 
-  .mediumShadow {
+  .fds-box--medium-shadow {
     box-shadow: var(--fds-shadow-medium);
   }
 
-  .largeShadow {
+  .fds-box--large-shadow {
     box-shadow: var(--fds-shadow-large);
   }
 
-  .xlargeShadow {
+  .fds-box--xlarge-shadow {
     box-shadow: var(--fds-shadow-xlarge);
   }
 
-  .defaultBorderColor {
+  .fds-box--default-border-color {
     border: 1px solid var(--fds-semantic-border-neutral-default);
   }
 
-  .subtleBorderColor {
+  .fds-box--subtle-border-color {
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
-  .strongBorderColor {
+  .fds-box--strong-border-color {
     border: 1px solid var(--fds-semantic-border-neutral-strong);
   }
 
-  .smallBorderRadius {
+  .fds-box--small-border-radius {
     border-radius: var(--fds-border_radius-small);
   }
 
-  .mediumBorderRadius {
+  .fds-box--medium-border-radius {
     border-radius: var(--fds-border_radius-medium);
   }
 
-  .largeBorderRadius {
+  .fds-box--large-border-radius {
     border-radius: var(--fds-border_radius-large);
   }
 
-  .xlargeBorderRadius {
+  .fds-box--xlarge-border-radius {
     border-radius: var(--fds-border_radius-xlarge);
   }
 
-  .xxlargeBorderRadius {
+  .fds-box--xxlarge-border-radius {
     border-radius: var(--fds-border_radius-xxlarge);
   }
 
-  .xxxlargeBorderRadius {
+  .fds-box--xxxlarge-border-radius {
     border-radius: var(--fds-border_radius-xxxlarge);
   }
 
-  .xxxxlargeBorderRadius {
+  .fds-box--xxxxlarge-border-radius {
     border-radius: var(--fds-border_radius-xxxxlarge);
   }
 
-  .fullBorderRadius {
+  .fds-box--full-border-radius {
     border-radius: var(--fds-border_radius-full);
   }
 
-  .defaultBackground {
+  .fds-box--default-background {
     background-color: var(--fds-semantic-background-default);
   }
 
-  .subtleBackground {
+  .fds-box--subtle-background {
     background-color: var(--fds-semantic-background-subtle);
   }
 }
