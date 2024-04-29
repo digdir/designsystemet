@@ -58,7 +58,7 @@
   }
 
   .fds-btn--medium {
-    --fds-btn-padding: var(--fds-spacing-3) var(--fds-spacing-4);
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
 
     gap: var(--fds-sizing-2);
     font: var(--fds-typography-paragraph-short-medium);
