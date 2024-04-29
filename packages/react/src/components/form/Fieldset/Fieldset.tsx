@@ -90,8 +90,8 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {description && (
             <Paragraph
               size={size}
+              variant='short'
               asChild
-              short
             >
               <div
                 id={descriptionId}
