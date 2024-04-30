@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import classes from './Heading.module.css';
-
 export type HeadingProps = {
   /** Heading level. This will translate into any h1-6 level unless `as` is defined */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -48,11 +46,9 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       <Component
         ref={ref}
         className={cl(
-          classes.heading,
-          classes[`size-${size}`],
-          {
-            [classes.spacing]: spacing,
-          },
+          'fds-heading',
+          `fds-heading--${size}`,
+          spacing && 'fds-heading--spacing',
           className,
         )}
         {...rest}
