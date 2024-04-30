@@ -1,9 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
-
-import classes from './Card.module.css';
 
 export type CardContentProps = {
   /**
@@ -19,7 +17,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
 
     return (
       <Component
-        className={cl(classes.content, className)}
+        className={cl(`fds-card__content`, className)}
         ref={ref}
         {...rest}
       />
