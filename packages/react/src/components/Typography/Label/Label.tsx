@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
-
 import classes from './Label.module.css';
 
 type FontWeights = 'regular' | 'medium' | 'semibold';
@@ -30,36 +28,34 @@ const fontWeightsClasses: Record<FontWeights, string> = {
 };
 
 /** Use `Label` for labels. */
-export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
-  forwardRef(
-    (
-      {
-        className,
-        size = 'medium',
-        spacing,
-        as = 'label',
-        weight = 'medium',
-        asChild,
-        ...rest
-      },
-      ref,
-    ) => {
-      const Component = asChild ? Slot : as;
-
-      return (
-        <Component
-          ref={ref}
-          className={cl(
-            classes.label,
-            classes[size],
-            spacing && classes.spacing,
-            weight && [fontWeightsClasses[weight]],
-            className,
-          )}
-          {...rest}
-        />
-      );
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+  (
+    {
+      className,
+      size = 'medium',
+      spacing,
+      weight = 'medium',
+      asChild,
+      ...rest
     },
-  );
+    ref,
+  ) => {
+    const Component = asChild ? Slot : 'label';
+
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          classes.label,
+          classes[size],
+          spacing && classes.spacing,
+          weight && [fontWeightsClasses[weight]],
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);
 
 Label.displayName = 'Label';
