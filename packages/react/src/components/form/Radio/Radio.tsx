@@ -6,7 +6,6 @@ import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
-import classes from './Radio.module.css';
 import { useRadio } from './useRadio';
 
 export type RadioProps = {
@@ -34,17 +33,17 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     >
       <div
         className={cl(
-          classes.container,
-          classes[size],
-          inputProps.disabled && classes.disabled,
-          hasError && classes.error,
-          readOnly && classes.readonly,
+          'fds-radio',
+          `fds-radio--${size}`,
+          inputProps.disabled && `fds-radio--disabled`,
+          hasError && `fds-radio--error`,
+          readOnly && `fds-radio--readonly`,
           className,
         )}
         style={style}
       >
         <input
-          className={classes.input}
+          className={'fds-radio__input'}
           ref={ref}
           {...omit(['size', 'error'], rest)}
           {...inputProps}
@@ -52,7 +51,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         {children && (
           <>
             <Label
-              className={classes.label}
+              className={'fds-radio__label'}
               htmlFor={inputProps.id}
               size={size}
               weight='regular'
@@ -66,7 +65,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
               >
                 <div
                   id={descriptionId}
-                  className={classes.description}
+                  className={'fds-radio__description'}
                 >
                   {description}
                 </div>
