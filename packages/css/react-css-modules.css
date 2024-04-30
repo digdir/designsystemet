@@ -150,53 +150,6 @@
   }
 }
 
-@layer fds.label {
-  .fds-label-label-e0249167 {
-    --fdsc-bottom-spacing: var(--fds-spacing-1);
-
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    color: var(--fds-semantic-text-neutral-default);
-  }
-
-  .fds-label-label-e0249167.fds-label-spacing-e0249167 {
-    margin-bottom: var(--fdsc-bottom-spacing);
-  }
-
-  .fds-label-label-e0249167.fds-label-large-e0249167 {
-    font: var(--fds-typography-label-large);
-    font-family: inherit;
-  }
-
-  .fds-label-label-e0249167.fds-label-medium-e0249167 {
-    font: var(--fds-typography-label-medium);
-    font-family: inherit;
-  }
-
-  .fds-label-label-e0249167.fds-label-small-e0249167 {
-    font: var(--fds-typography-label-small);
-    font-family: inherit;
-  }
-
-  .fds-label-label-e0249167.fds-label-xsmall-e0249167 {
-    font: var(--fds-typography-label-xsmall);
-    font-family: inherit;
-  }
-
-  .fds-label-label-e0249167.fds-label-regularWeight-e0249167 {
-    font-weight: 400;
-  }
-
-  .fds-label-label-e0249167.fds-label-mediumWeight-e0249167 {
-    font-weight: 500;
-  }
-
-  .fds-label-label-e0249167.fds-label-semiboldWeight-e0249167 {
-    font-weight: 600;
-  }
-}
-
 @layer fds.errormessage {
   .fds-errormessage-errorMessage-6fddd5b1 {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
