@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
-
 import classes from './Paragraph.module.css';
 
 export type ParagraphProps = {
@@ -22,23 +20,9 @@ export type ParagraphProps = {
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `Paragraph` to display text with paragraph text styles. */
-export const Paragraph: OverridableComponent<
-  ParagraphProps,
-  HTMLParagraphElement
-> = forwardRef(
-  (
-    {
-      className,
-      size = 'medium',
-      spacing,
-      as = 'p',
-      asChild,
-      variant,
-      ...rest
-    },
-    ref,
-  ) => {
-    const Component = asChild ? Slot : as;
+export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ className, size = 'medium', spacing, asChild, variant, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'p';
 
     return (
       <Component

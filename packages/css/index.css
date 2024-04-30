@@ -6,9 +6,10 @@
 @import url('./react-css-modules.css');
 @import url('./button.css');
 @import url('./utils.css');
+@import url('./box.css');
 @import url('./alert.css');
 @import url('./ingress.css');
 @import url('./skiplink.css');
 @import url('./accordion.css');
-@import url('./box.css');
 @import url('./switch.css');
+@import url('./checkbox.css');
