@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import classes from './Label.module.css';
-
 type FontWeights = 'regular' | 'medium' | 'semibold';
 
 export type LabelProps = {
@@ -20,12 +18,6 @@ export type LabelProps = {
    */
   asChild?: boolean;
 } & LabelHTMLAttributes<HTMLLabelElement>;
-
-const fontWeightsClasses: Record<FontWeights, string> = {
-  regular: classes.regularWeight,
-  medium: classes.mediumWeight,
-  semibold: classes.semiboldWeight,
-};
 
 /** Use `Label` for labels. */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
@@ -46,10 +38,10 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
       <Component
         ref={ref}
         className={cl(
-          classes.label,
-          classes[size],
-          spacing && classes.spacing,
-          weight && [fontWeightsClasses[weight]],
+          'fds-label',
+          `fds-label--${size}`,
+          spacing && 'fds-label--spacing',
+          weight && `fds-label--${weight}-weight`,
           className,
         )}
         {...rest}
