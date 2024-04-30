@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@layer fds.utils, fds.btn;
+@layer fds.typography, fds.utils, fds.btn;
 
 /** Import order defines ordinal specificity for layers */
 @import url('./react-css-modules.css');
@@ -14,3 +14,6 @@
 @import url('./switch.css');
 @import url('./checkbox.css');
 @import url('./label.css');
+@import url('./heading.css');
+@import url('./paragraph.css');
+@import url('./radio.css');
