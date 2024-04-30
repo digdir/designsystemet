@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import classes from './Paragraph.module.css';
-
 export type ParagraphProps = {
   /** Changes text sizing */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -28,12 +26,10 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
       <Component
         ref={ref}
         className={cl(
-          classes.paragraph,
-          classes[size],
-          {
-            [classes.spacing]: !!spacing,
-          },
-          variant && classes[variant],
+          'fds-paragraph',
+          `fds-paragraph--${size}`,
+          spacing && 'fds-paragraph--spacing',
+          variant && `fds-paragraph--${variant}`,
           className,
         )}
         {...rest}
