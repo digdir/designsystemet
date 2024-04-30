@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
-
 export type IngressProps = {
   /** Changes text sizing
    * @default 'medium'
@@ -20,29 +18,25 @@ export type IngressProps = {
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `Ingress` to display text as ingress. */
-export const Ingress: OverridableComponent<IngressProps, HTMLParagraphElement> =
-  forwardRef(
-    (
-      { className, size = 'medium', spacing, as = 'p', asChild, ...rest },
-      ref,
-    ) => {
-      const Component = asChild ? Slot : as;
+export const Ingress = forwardRef<HTMLParagraphElement, IngressProps>(
+  ({ className, size = 'medium', spacing, asChild, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'p';
 
-      return (
-        <Component
-          ref={ref}
-          className={cl(
-            `fds-ingress`,
-            `fds-ingress--${size}`,
-            {
-              'fds-ingress--spacing': !!spacing,
-            },
-            className,
-          )}
-          {...rest}
-        />
-      );
-    },
-  );
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          `fds-ingress`,
+          `fds-ingress--${size}`,
+          {
+            'fds-ingress--spacing': !!spacing,
+          },
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);
 
 Ingress.displayName = 'Ingress';
