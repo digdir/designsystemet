@@ -1,13 +1,12 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
-import classes from './Switch.module.css';
 import { useSwitch } from './useSwitch';
 
 export type SwitchProps = {
@@ -45,33 +44,36 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       >
         <div
           className={cl(
-            classes.switch,
-            classes[size],
-            inputProps.disabled && classes.disabled,
-            readOnly && classes.readonly,
+            `fds-switch`,
+            `fds-switch--${size}`,
+            inputProps.disabled && `fds-switch--disabled`,
+            readOnly && `fds-switch--readonly`,
             className,
           )}
         >
           <input
-            className={classes.input}
+            className={`fds-switch__input`}
             ref={ref}
             {...omit(['size', 'error'], rest)}
             {...inputProps}
           />
 
           <Label
-            className={cl(classes.label, position === 'right' && classes.right)}
+            className={cl(
+              `fds-switch__label`,
+              position === 'right' && `fds-switch__label--right`,
+            )}
             htmlFor={inputProps.id}
             size={size}
             weight='regular'
           >
-            <span className={classes.track}>
-              <span className={classes.thumb} />
+            <span className={`fds-switch__track`}>
+              <span className={`fds-switch__thumb`} />
             </span>
             {readOnly && (
               <PadlockLockedFillIcon
                 aria-hidden
-                className={classes.padlock}
+                className={`fds-switch__readonly__icon`}
               />
             )}
             {children && <span>{children}</span>}
@@ -83,7 +85,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             >
               <div
                 id={descriptionId}
-                className={classes.description}
+                className={`fds-switch__description`}
               >
                 {description}
               </div>

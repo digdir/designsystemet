@@ -50,7 +50,7 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Paragraph
-      short
+      variant='short'
       spacing
     >
       Når du skal signere meldingen vil du motta en signeringsoppgave i
@@ -83,7 +83,7 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Paragraph
-      short
+      variant='short'
       spacing
     >
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi

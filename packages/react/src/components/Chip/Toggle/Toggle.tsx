@@ -55,7 +55,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         <Paragraph
           asChild
           size={group?.size || size}
-          short
+          variant='short'
         >
           <span className={classes.label}>
             {shouldDisplayCheckmark && (
