@@ -10,7 +10,6 @@ import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextarea } from './useTextarea';
-import classes from './Textarea.module.css';
 
 export type TextareaProps = {
   /** Label */
@@ -80,10 +79,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <div
           style={style}
           className={cl(
-            classes.formField,
-            textareaProps.disabled && classes.disabled,
-            readOnly && classes.readonly,
-            hasError && classes.error,
+            'fds-textarea',
+            `fds-textarea--${size}`,
+            textareaProps.disabled && 'fds-textarea--disabled',
+            readOnly && `fds-textarea--readonly`,
+            hasError && `fds-textarea--error`,
             className,
           )}
         >
@@ -92,12 +92,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               size={size}
               weight='medium'
               htmlFor={textareaProps.id}
-              className={cl(classes.label, hideLabel && `fds-sr-only`)}
+              className={cl('fds-textarea__label', hideLabel && `fds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={classes.padlock}
+                  className='fds-textarea__readonly__icon'
                 />
               )}
               <span>{label}</span>
@@ -110,14 +110,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(classes.description, hideLabel && `fds-sr-only`)}
+                className={cl(
+                  'fds-textarea__description',
+                  hideLabel && `fds-sr-only`,
+                )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
           <textarea
-            className={cl(classes.textarea, `fds-focus`, classes[size])}
+            className={cl('fds-textarea__textarea', `fds-focus`)}
             ref={ref}
             aria-describedby={describedBy}
             {...omit(['size', 'error', 'errorId'], rest)}
@@ -136,7 +139,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             />
           )}
           <div
-            className={classes.errorMessage}
+            className='fds-textarea__errorMessage'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
