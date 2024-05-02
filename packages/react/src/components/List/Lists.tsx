@@ -6,7 +6,6 @@ import { Slot } from '@radix-ui/react-slot';
 import { Paragraph } from '../Typography';
 
 import { ListContext } from './ListRoot';
-import classes from './List.module.css';
 
 export type ListUnorderedProps = {
   /**
@@ -28,7 +27,7 @@ export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
         asChild
       >
         <Component
-          className={cl(classes[size], rest.className)}
+          className={cl(`fds-list`, `fds-list--${size}`, rest.className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
           ref={ref}
           {...rest}
@@ -60,7 +59,7 @@ export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
         asChild
       >
         <Component
-          className={cl(classes[size], rest.className)}
+          className={cl(`fds-list`, `fds-list--${size}`, rest.className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
           ref={ref}
           {...rest}
