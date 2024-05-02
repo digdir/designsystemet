@@ -4,9 +4,9 @@ import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
 
-import { Heading, Paragraph } from '../../Typography';
-import { Button } from '../../Button';
-import { ModalContext } from '../ModalRoot';
+import { Heading, Paragraph } from '../Typography';
+import { Button } from '../Button';
+import { ModalContext } from './ModalRoot';
 
 export type ModalHeaderProps = {
   /**
