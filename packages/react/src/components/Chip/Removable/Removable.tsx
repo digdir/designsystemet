@@ -1,9 +1,8 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { useContext, forwardRef } from 'react';
-import cl from 'clsx';
-import { XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
-import classes from '../Chip.module.css';
+import { XMarkIcon } from '@navikt/aksel-icons';
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
 
@@ -24,10 +23,10 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         type='button'
         ref={ref}
         className={cl(
-          classes.chipButton,
           `fds-focus`,
-          classes[group?.size || size],
-          classes.removable,
+          `fds-chip--button`,
+          `fds-chip--removable`,
+          `fds-chip--${group?.size || size}`,
           className,
         )}
         {...rest}
@@ -37,13 +36,13 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           size={group?.size || size}
           variant='short'
         >
-          <span className={classes.label}>
+          <span className={`fds-chip__label`}>
             <span>{children}</span>
             <span
-              className={classes.xMark}
+              className={`fds-chip__x-mark`}
               aria-hidden
             >
-              <XMarkIcon className={classes.icon} />
+              <XMarkIcon className={`fds-chip__icon`} />
             </span>
           </span>
         </Paragraph>
