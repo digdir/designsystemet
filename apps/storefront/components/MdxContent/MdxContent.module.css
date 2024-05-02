@@ -156,7 +156,9 @@
   font-weight: 600;
 }
 
-.content p code {
+.content p code,
+.content ul code,
+.content ol code {
   padding: 0.2em 0.5em;
   margin: 1px;
   font-size: 0.9em;
