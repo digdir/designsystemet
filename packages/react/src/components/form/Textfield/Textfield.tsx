@@ -146,7 +146,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               <Paragraph
                 asChild
                 size={size}
-                short
+                variant='short'
               >
                 <div
                   className={cl(classes.adornment, classes.prefix)}
@@ -179,7 +179,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               <Paragraph
                 asChild
                 size={size}
-                short
+                variant='short'
               >
                 <div
                   className={cl(classes.adornment, classes.suffix)}

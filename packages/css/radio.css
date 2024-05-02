@@ -1,5 +1,5 @@
 @layer fds.radio {
-  .container {
+  .fds-radio {
     --fds-radio-size: 1.75rem;
     --fds-radio-focus-border-width: 3px;
     --fds-radio-background: var(--fds-semantic-background-default);
@@ -9,13 +9,13 @@
     display: grid;
   }
 
-  .container:has(.label) {
+  .fds-radio:has(.fds-radio__label) {
     grid-template-columns: var(--fds-radio-size) auto;
     gap: var(--fds-spacing-2);
   }
 
   /* Radio */
-  .input {
+  .fds-radio__input {
     position: relative;
     width: var(--fds-radio-size);
     height: var(--fds-radio-size);
@@ -30,7 +30,7 @@
     border-radius: 50%;
   }
 
-  .input::before {
+  .fds-radio__input::before {
     position: absolute;
     content: '';
     display: block;
@@ -43,7 +43,7 @@
     border-radius: var(--fds-border_radius-medium);
   }
 
-  .label {
+  .fds-radio__label {
     min-height: var(--fds-sizing-10);
     min-width: min-content;
     display: inline-flex;
@@ -53,100 +53,111 @@
     cursor: pointer;
   }
 
-  .description {
+  .fds-radio__description {
     margin-top: calc(var(--fds-spacing-3) * -1);
     color: var(--fds-semantic-text-neutral-subtle);
     grid-column: 2;
   }
 
-  .disabled > .input,
-  .disabled > .label,
-  .disabled > .input::before {
+  .fds-radio--disabled > .fds-radio__input,
+  .fds-radio--disabled > .fds-radio__label,
+  .fds-radio--disabled > .fds-radio__input::before {
     cursor: not-allowed;
   }
 
-  .disabled > .label,
-  .disabled > .input,
-  .disabled > .description {
+  .fds-radio--disabled > .fds-radio__label,
+  .fds-radio--disabled > .fds-radio__input,
+  .fds-radio--disabled > .fds-radio__description {
     opacity: var(--fds-opacity-disabled);
   }
 
-  .readonly > .input,
-  .readonly > .label,
-  .readonly > .input::before {
+  .fds-radio--readonly > .fds-radio__input,
+  .fds-radio--readonly > .fds-radio__label,
+  .fds-radio--readonly > .fds-radio__input::before {
     cursor: default;
   }
 
-  .input:focus-visible {
+  .fds-radio__input:focus-visible {
     outline-offset: 0;
     outline: var(--fds-radio-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-    box-shadow: inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow), inset 0 0 0 6px var(--fds-radio-background);
+    box-shadow:
+      inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
+      inset 0 0 0 6px var(--fds-radio-background);
   }
 
-  .input:checked {
+  .fds-radio__input:checked {
     --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
     background: var(--fds-radio-border-color);
   }
 
-  .readonly > .input {
+  .fds-radio--readonly > .fds-radio__input {
     --fds-radio-border-color: var(--fds-semantic-border-neutral-subtle);
     --fds-radio-background: var(--fds-semantic-surface-neutral-subtle);
   }
 
-  .input:checked:not(:focus-visible) {
-    box-shadow: inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
+  .fds-radio__input:checked:not(:focus-visible) {
+    box-shadow:
+      inset 0 0 0 2px var(--fds-radio-border-color),
+      inset 0 0 0 6px var(--fds-radio-background);
   }
 
-  .readonly > .input:checked {
+  .fds-radio--readonly > .fds-radio__input:checked {
     background: var(--fds-semantic-border-neutral-default);
   }
 
-  .error > .input:not(:disabled, :focus-visible) {
+  .fds-radio--error > .fds-radio__input:not(:disabled, :focus-visible) {
     --fds-radio-border-color: var(--fds-semantic-border-danger-default);
   }
 
   /* Only use hover for non-touch devices to prevent sticky-hovering
     "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
   @media (hover: hover) and (pointer: fine) {
-    .container:not(.readonly, .disabled) > .label:hover,
-    .container:not(.readonly, .disabled) > .input:hover + .label {
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__label:hover,
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover + .fds-radio__label {
       color: var(--fds-semantic-text-action-hover);
     }
 
-    .container:not(.readonly, .disabled) > .input:hover:not(:checked) {
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:not(:checked) {
       --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
-      box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color);
+      box-shadow:
+        var(--fds-radio-border__hover),
+        inset 0 0 0 2px var(--fds-radio-border-color);
     }
 
-    .container:not(.readonly, .disabled) > .input:hover:checked {
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:checked {
       --fds-radio-border-color: var(--fds-semantic-border-input-hover);
 
-      box-shadow: var(--fds-radio-border__hover), inset 0 0 0 2px var(--fds-radio-border-color), inset 0 0 0 6px var(--fds-radio-background);
+      box-shadow:
+        var(--fds-radio-border__hover),
+        inset 0 0 0 2px var(--fds-radio-border-color),
+        inset 0 0 0 6px var(--fds-radio-background);
     }
 
-    .container:not(.readonly, .disabled) > .input:hover:checked:focus-visible {
-      box-shadow: var(--fds-radio-border__hover), inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:checked:focus-visible {
+      box-shadow:
+        var(--fds-radio-border__hover),
+        inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
         inset 0 0 0 6px var(--fds-radio-background);
     }
   }
 
   /** Sizing */
 
-  .small {
+  .fds-radio--small {
     --fds-radio-size: var(--fds-sizing-5);
 
     min-height: var(--fds-sizing-10);
   }
 
-  .medium {
+  .fds-radio--medium {
     --fds-radio-size: var(--fds-sizing-6);
 
     min-height: var(--fds-sizing-11);
   }
 
-  .large {
+  .fds-radio--large {
     --fds-radio-size: var(--fds-sizing-7);
 
     min-height: var(--fds-sizing-12);

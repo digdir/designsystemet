@@ -1,82 +1,82 @@
-@layer fds.paragraph {
-  .paragraph {
+@layer fds.typography.paragraph {
+  .fds-paragraph {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     color: var(--fds-semantic-text-neutral-default);
     margin: 0;
   }
 
-  .spacing {
+  .fds-paragraph--spacing {
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .large {
+  .fds-paragraph--large {
     --fdsc-bottom-spacing: var(--fds-spacing-6);
 
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
   }
 
-  .large:where(.short) {
+  .fds-paragraph--large.fds-paragraph--short {
     font: var(--fds-typography-paragraph-short-large);
     font-family: inherit;
   }
 
-  .large:where(.long) {
+  .fds-paragraph--large.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-large);
   }
 
-  .medium {
+  .fds-paragraph--medium {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
   }
 
-  .medium:where(.short) {
+  .fds-paragraph--medium.fds-paragraph--short {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-paragraph-short-medium);
     font-family: inherit;
   }
 
-  .medium:where(.long) {
+  .fds-paragraph--medium.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-medium);
   }
 
-  .small {
+  .fds-paragraph--small {
     --fdsc-bottom-spacing: var(--fds-spacing-4);
 
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
   }
 
-  .small:where(.short) {
+  .fds-paragraph--small.fds-paragraph--short {
     --fdsc-bottom-spacing: var(--fds-spacing-4);
 
     font: var(--fds-typography-paragraph-short-small);
     font-family: inherit;
   }
 
-  .small:where(.long) {
+  .fds-paragraph--small.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-small);
   }
 
-  .xsmall {
+  .fds-paragraph--xsmall {
     --fdsc-bottom-spacing: var(--fds-spacing-3);
 
     font: var(--fds-typography-paragraph-xsmall);
     font-family: inherit;
   }
 
-  .xsmall:where(.short) {
+  .fds-paragraph--xsmall.fds-paragraph--short {
     --fdsc-bottom-spacing: var(--fds-spacing-3);
 
     font: var(--fds-typography-paragraph-short-xsmall);
     font-family: inherit;
   }
 
-  .xsmall:where(.long) {
+  .fds-paragraph--xsmall.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-xsmall);
   }
 }

@@ -3,8 +3,6 @@ import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
 export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -28,46 +26,44 @@ export type ButtonProps = {
 /**
  * Button used for interaction
  */
-export const Button: OverridableComponent<ButtonProps, HTMLButtonElement> =
-  forwardRef(
-    (
-      {
-        children,
-        color = 'first',
-        variant = 'primary',
-        size = 'medium',
-        fullWidth = false,
-        icon = false,
-        type = 'button',
-        className,
-        as = 'button',
-        asChild,
-        ...rest
-      },
-      ref,
-    ) => {
-      const Component = asChild ? Slot : as;
-
-      return (
-        <Component
-          ref={ref}
-          type={type}
-          className={cl(
-            'fds-btn',
-            `fds-focus`,
-            `fds-btn--${size}`,
-            `fds-btn--${variant}`,
-            `fds-btn--${color}`,
-            fullWidth && 'fds-btn--full-width',
-            icon && 'fds-btn--icon-only',
-            className,
-          )}
-          {...rest}
-        >
-          {children}
-        </Component>
-      );
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      color = 'first',
+      variant = 'primary',
+      size = 'medium',
+      fullWidth = false,
+      icon = false,
+      type = 'button',
+      className,
+      asChild,
+      ...rest
     },
-  );
+    ref,
+  ) => {
+    const Component = asChild ? Slot : 'button';
+
+    return (
+      <Component
+        ref={ref}
+        type={type}
+        className={cl(
+          'fds-btn',
+          `fds-focus`,
+          `fds-btn--${size}`,
+          `fds-btn--${variant}`,
+          `fds-btn--${color}`,
+          fullWidth && 'fds-btn--full-width',
+          icon && 'fds-btn--icon-only',
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </Component>
+    );
+  },
+);
 
 Button.displayName = 'Button';
