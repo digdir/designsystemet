@@ -84,7 +84,13 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <h4>{capitalizeString(group)}</h4>
+        <Heading
+          size='xsmall'
+          level={4}
+          className={classes.title}
+        >
+          {capitalizeString(group)}
+        </Heading>
         <div className={cl(classes.group)}>
           <div
             className={cl(classes.cards, {
@@ -133,6 +139,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
         <Heading
           level={5}
           size='xxsmall'
+          className={classes.name}
         >
           {capitalizeString(title)}
           &nbsp;
