@@ -1,0 +1,23 @@
+import { PaletteIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { Meta, ResponsiveIframe, Image } from '@components';
+
+<Meta
+  title='Hent oppdateringer fra Figma'
+  description='Hva gjør du når det har kommet en ny versjon av Figma community-filen?'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Hent oppdateringer fra Figma',
+      date: '2. mai 2024',
+      icon: <PaletteIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Hva gjør du når det har kommet en ny versjon av Figma community-filen?

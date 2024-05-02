@@ -1,0 +1,35 @@
+import { PaletteIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { Meta, ResponsiveIframe, Image } from '@components';
+
+<Meta
+  title='Sett opp ditt eget fargesystem'
+  description='Her får du hjelp til å sette opp et fargesystem'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Sett opp ditt eget fargesystem',
+      date: '2. mai 2024',
+      icon: <PaletteIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Designsystemet baserer seg på et fargesystem der vi kan sikre at tekst alltid har god nok kontrast mot fargen den skal brukes på og at det finnes nok ulike farger for alle tilstander. Systemet støtter også kontrastmodus og dark-mode.
+
+En profilveileder inneholder ofte kun et sett med primærfarger og sekundærfarger i et par forskjellige fargetoner. Å lage et digitalt produkt kun med disse fargene alene er vanskelig. For å kunne sikre riktig kontrast og korrekte farger for ulike tilstander, er vi avhengig av å definere flere variasjoner av profilfargene.
+
+Som du ser i eksemplet trenger vi 8 farger bare for Button-komponenten.
+
+For å generere en skala som fungerer kan du bruke [Designsystemets fargeskala-generator](https://thuneer.github.io/designsystemet-colors/) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens primærfarge og evt sekundærfarger.
+
+La oss se på et eksempel der vi legger inn fargekoden til Lånekassen i fargeskala-generatoren:
+
+[video]
+
+Når du har generert skalaene, kan du [bruke de nye fargekodene i Designsystemet](/grunnleggende/for-designere/eget-tema), slik at alle komponenter følger din profil.
