@@ -14,7 +14,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs && yarn run copy-css-to-package",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs",
     "generate:css": "esno ./scripts/generate-css.ts",
     "clean": "rimraf dist && rimraf tsc-build",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
