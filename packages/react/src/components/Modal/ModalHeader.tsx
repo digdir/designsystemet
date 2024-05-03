@@ -1,14 +1,13 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
 
-import { Heading, Paragraph } from '../../Typography';
-import { Button } from '../../Button';
-import { ModalContext } from '../ModalRoot';
+import { Heading, Paragraph } from '../Typography';
+import { Button } from '../Button';
 
-import classes from './ModalHeader.module.css';
+import { ModalContext } from './ModalRoot';
 
 export type ModalHeaderProps = {
   /**
@@ -37,8 +36,8 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
       <Component
         ref={ref}
         className={cl(
-          classes.modalHeader,
-          !closeButton && classes.noCloseButton,
+          'fds-modal__header',
+          !closeButton && 'fds-modal__header--no-button',
           className,
         )}
         {...rest}
@@ -66,7 +65,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             onClick={context?.closeModal}
             autoFocus
             icon={true}
-            className={classes.modalHeaderButton}
+            className='fds-modal__header__button'
           >
             <XMarkIcon
               title='close modal'

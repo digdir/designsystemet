@@ -48,7 +48,7 @@ describe('List', () => {
 
   it('should have the passed size', () => {
     render({ size: 'large' });
-    expect(screen.getByRole('list')).toHaveClass('large');
+    expect(screen.getByRole('list')).toHaveClass('fds-list--large');
   });
 
   it('should have the passed heading', () => {
