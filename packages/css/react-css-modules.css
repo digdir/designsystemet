@@ -212,31 +212,6 @@
   }
 }
 
-@layer fds.list {
-  .fds-list-small-a2926fcf {
-    padding-left: var(--fds-spacing-4);
-  }
-
-  .fds-list-medium-a2926fcf,
-  .fds-list-large-a2926fcf {
-    padding-left: var(--fds-spacing-6);
-  }
-
-  .fds-list-listItem-a2926fcf {
-    margin-bottom: var(--fds-spacing-2);
-  }
-
-  .fds-list-listItem-a2926fcf > :where(.fds-list-small-a2926fcf),
-  .fds-list-listItem-a2926fcf > :where(.fds-list-medium-a2926fcf),
-  .fds-list-listItem-a2926fcf > :where(.fds-list-large-a2926fcf) {
-    margin-top: var(--fds-spacing-2);
-  }
-
-  .fds-list-heading-a2926fcf {
-    margin-bottom: var(--fds-spacing-2);
-  }
-}
-
 .fds-animateheight-root-a203211d.fds-animateheight-openingOrClosing-a203211d,
 .fds-animateheight-root-a203211d.fds-animateheight-closed-a203211d {
   overflow: hidden;
