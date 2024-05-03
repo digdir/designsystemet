@@ -143,55 +143,55 @@
     "surface": {
       "first": {
         "subtle": {
-          "value": "{Colors.alt1.200}",
+          "value": "{scales.alt1.200}",
           "type": "color"
         },
         "subtle-hover": {
-          "value": "{Colors.alt1.300}",
+          "value": "{scales.alt1.300}",
           "type": "color"
         },
         "subtle-active": {
-          "value": "{Colors.alt1.400}",
+          "value": "{scales.alt1.400}",
           "type": "color"
         },
         "strong": {
-          "value": "{Colors.alt1.800}",
+          "value": "{scales.alt1.800}",
           "type": "color"
         }
       },
       "second": {
         "subtle": {
-          "value": "{Colors.alt2.200}",
+          "value": "{scales.alt2.200}",
           "type": "color"
         },
         "subtle-hover": {
-          "value": "{Colors.alt2.300}",
+          "value": "{scales.alt2.300}",
           "type": "color"
         },
         "subtle-active": {
-          "value": "{Colors.alt2.400}",
+          "value": "{scales.alt2.400}",
           "type": "color"
         },
         "strong": {
-          "value": "{Colors.alt2.900}",
+          "value": "{scales.alt2.900}",
           "type": "color"
         }
       },
       "third": {
         "subtle": {
-          "value": "{Colors.alt3.200}",
+          "value": "{scales.alt3.200}",
           "type": "color"
         },
         "subtle-hover": {
-          "value": "{Colors.alt3.300}",
+          "value": "{scales.alt3.300}",
           "type": "color"
         },
         "subtle-active": {
-          "value": "{Colors.alt3.400}",
+          "value": "{scales.alt3.400}",
           "type": "color"
         },
         "strong": {
-          "value": "{Colors.alt3.800}",
+          "value": "{scales.alt3.800}",
           "type": "color"
         }
       },
@@ -271,43 +271,43 @@
     "border": {
       "first": {
         "default": {
-          "value": "{Colors.alt1.600}",
+          "value": "{scales.alt1.600}",
           "type": "color"
         },
         "hover": {
-          "value": "{Colors.alt1.700}",
+          "value": "{scales.alt1.700}",
           "type": "color"
         },
         "active": {
-          "value": "{Colors.alt1.800}",
+          "value": "{scales.alt1.800}",
           "type": "color"
         }
       },
       "second": {
         "default": {
-          "value": "{Colors.alt2.600}",
+          "value": "{scales.alt2.600}",
           "type": "color"
         },
         "hover": {
-          "value": "{Colors.alt2.700}",
+          "value": "{scales.alt2.700}",
           "type": "color"
         },
         "active": {
-          "value": "{Colors.alt2.800}",
+          "value": "{scales.alt2.800}",
           "type": "color"
         }
       },
       "third": {
         "default": {
-          "value": "{Colors.alt3.600}",
+          "value": "{scales.alt3.600}",
           "type": "color"
         },
         "hover": {
-          "value": "{Colors.alt3.700}",
+          "value": "{scales.alt3.700}",
           "type": "color"
         },
         "active": {
-          "value": "{Colors.alt3.800}",
+          "value": "{scales.alt3.800}",
           "type": "color"
         }
       },
@@ -396,6 +396,70 @@
             "type": "color"
           }
         }
+      }
+    }
+  },
+  "scales": {
+    "accent": {
+      "1": {
+        "value": "#002445",
+        "type": "color"
+      },
+      "2": {
+        "value": "#001c36",
+        "type": "color"
+      },
+      "3": {
+        "value": "#00315c",
+        "type": "color"
+      },
+      "4": {
+        "value": "#00396d",
+        "type": "color"
+      },
+      "5": {
+        "value": "#00427e",
+        "type": "color"
+      },
+      "6": {
+        "value": "#00529d",
+        "type": "color"
+      },
+      "7": {
+        "value": "#0f6bbe",
+        "type": "color"
+      },
+      "8": {
+        "value": "#3d88ca",
+        "type": "color"
+      },
+      "9": {
+        "value": "#0163ba",
+        "type": "color"
+      },
+      "10": {
+        "value": "#004d93",
+        "type": "color"
+      },
+      "11": {
+        "value": "#00396d",
+        "type": "color"
+      },
+      "12": {
+        "value": "#7eb0dc",
+        "type": "color"
+      },
+      "13": {
+        "value": "#b0cfea",
+        "type": "color"
+      },
+      "contrast-1": {
+        "value": "#fff",
+        "type": "color"
+      },
+      "contrast-2": {
+        "value": "#cacaca",
+        "type": "color"
       }
     }
   }
