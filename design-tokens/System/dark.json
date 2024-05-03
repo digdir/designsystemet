@@ -1,0 +1,56 @@
+{
+  "green": {
+    "1": {
+      "value": "#0b290f",
+      "type": "color"
+    },
+    "2": {
+      "value": "#08200c",
+      "type": "color"
+    },
+    "3": {
+      "value": "#0f3814",
+      "type": "color"
+    },
+    "4": {
+      "value": "#114218",
+      "type": "color"
+    },
+    "5": {
+      "value": "#144c1c",
+      "type": "color"
+    },
+    "6": {
+      "value": "#185e22",
+      "type": "color"
+    },
+    "7": {
+      "value": "#207a2c",
+      "type": "color"
+    },
+    "8": {
+      "value": "#207a2c",
+      "type": "color"
+    },
+    "9": {
+      "value": "#248c33",
+      "type": "color"
+    },
+    "10": {
+      "value": "#248c33",
+      "type": "color"
+    },
+    "11": {
+      "value": "#1d7129",
+      "type": "color"
+    },
+    "12": {
+      "value": "#64be70",
+      "type": "color"
+    },
+    "13": {
+      "value": "#a2d8aa",
+      "type": "color"
+    }
+  }
+}
