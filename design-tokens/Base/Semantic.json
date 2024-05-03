@@ -419,52 +419,6 @@
         "type": "color"
       }
     },
-    "success": {
-      "background": {
-        "value": "{green.1}",
-        "type": "color"
-      },
-      "background-subtle": {
-        "value": "{green.2}",
-        "type": "color"
-      },
-      "surface": {
-        "value": "{green.3}",
-        "type": "color"
-      },
-      "surface-hover": {
-        "value": "{green.4}",
-        "type": "color"
-      },
-      "surface-active": {
-        "value": "{green.5}",
-        "type": "color"
-      },
-      "border-subtle": {
-        "value": "{green.6}",
-        "type": "color"
-      },
-      "border": {
-        "value": "{green.7}",
-        "type": "color"
-      },
-      "border-strong": {
-        "value": "{green.8}",
-        "type": "color"
-      },
-      "border-base": {
-        "value": "{green.9}",
-        "type": "color"
-      },
-      "border-base-hover": {
-        "value": "{green.10}",
-        "type": "color"
-      },
-      "border-base-active": {
-        "value": "{green.11}",
-        "type": "color"
-      }
-    },
     "danger": {
       "background": {
         "value": "{green.1}",
@@ -1150,9 +1104,9 @@
       "type": "boxShadow"
     }
   },
-  "color": {
-    "accent": {
-      "background": {
+  "colors": {
+    "success": {
+      "background-default": {
         "value": "{green.1}",
         "type": "color"
       },
@@ -1160,7 +1114,7 @@
         "value": "{green.2}",
         "type": "color"
       },
-      "surface": {
+      "surface-default": {
         "value": "{green.3}",
         "type": "color"
       },
@@ -1176,7 +1130,7 @@
         "value": "{green.6}",
         "type": "color"
       },
-      "border": {
+      "border-default": {
         "value": "{green.7}",
         "type": "color"
       },
@@ -1184,20 +1138,94 @@
         "value": "{green.8}",
         "type": "color"
       },
-      "border-base": {
+      "base-default": {
         "value": "{green.9}",
         "type": "color"
       },
-      "border-base-hover": {
+      "base-hover": {
         "value": "{green.10}",
         "type": "color"
       },
-      "border-base-active": {
+      "base-active": {
         "value": "{green.11}",
         "type": "color"
       },
       "text-subtle": {
         "value": "{green.12}",
+        "type": "color"
+      },
+      "text-default": {
+        "value": "{green.13}",
+        "type": "color"
+      },
+      "contrast-default": {
+        "value": "{green.contrast-1}",
+        "type": "color"
+      },
+      "contrast-subtle": {
+        "value": "{green.contrast-2}",
+        "type": "color"
+      }
+    },
+    "accent": {
+      "background-default": {
+        "value": "{scales.accent.1}",
+        "type": "color"
+      },
+      "background-subtle": {
+        "value": "{scales.accent.2}",
+        "type": "color"
+      },
+      "surface-default": {
+        "value": "{scales.accent.3}",
+        "type": "color"
+      },
+      "surface-hover": {
+        "value": "{scales.accent.4}",
+        "type": "color"
+      },
+      "surface-active": {
+        "value": "{scales.accent.5}",
+        "type": "color"
+      },
+      "border-subtle": {
+        "value": "{scales.accent.6}",
+        "type": "color"
+      },
+      "border-default": {
+        "value": "{scales.accent.7}",
+        "type": "color"
+      },
+      "border-strong": {
+        "value": "{scales.accent.8}",
+        "type": "color"
+      },
+      "base-default": {
+        "value": "{scales.accent.9}",
+        "type": "color"
+      },
+      "base-hover": {
+        "value": "{scales.accent.10}",
+        "type": "color"
+      },
+      "base-active": {
+        "value": "{scales.accent.11}",
+        "type": "color"
+      },
+      "text-subtle": {
+        "value": "{scales.accent.12}",
+        "type": "color"
+      },
+      "text-default": {
+        "value": "{scales.accent.13}",
+        "type": "color"
+      },
+      "contrast-default": {
+        "value": "{scales.accent.contrast-1}",
+        "type": "color"
+      },
+      "contrast-subtle": {
+        "value": "{scales.accent.contrast-2}",
         "type": "color"
       }
     }

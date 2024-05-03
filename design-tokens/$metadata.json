@@ -1,7 +1,7 @@
 {
   "tokenSetOrder": [
-    "System/light",
-    "System/dark",
+    "System/Color/Light",
+    "System/Color/Dark",
     "System/Style",
     "Brand/1/Light",
     "Brand/1/Dark",
