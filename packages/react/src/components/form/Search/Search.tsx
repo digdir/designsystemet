@@ -177,7 +177,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           </div>
 
           <div
-            className={'fds-search__error'}
+            className={'fds-search__error-message'}
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
