@@ -6,9 +6,8 @@ import {
 import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
-import classes from './Modal.module.css';
 import { useScrollLock } from './useScrollLock';
 import { useModalState } from './useModalState';
 import { ModalContext } from './ModalRoot';
@@ -62,7 +61,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     };
 
     const mergedRefs = useMergeRefs([modalRef, ref, modalDialogRef]);
-    useScrollLock(modalDialogRef, classes.lockScroll);
+    useScrollLock(modalDialogRef, 'fds-modal--lock-scroll');
 
     useEffect(() => {
       setOpen(open);
@@ -116,7 +115,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     return (
       <Component
         ref={mergedRefs}
-        className={cl(classes.modal, className)}
+        className={cl('fds-modal', className)}
         onCancel={onCancel}
         {...rest}
       >

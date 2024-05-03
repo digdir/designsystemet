@@ -31,7 +31,7 @@ const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
           color='second'
           size='small'
         >
-          <ClipboardIcon fontSize={'1.5rem'} />
+          <ClipboardIcon fontSize={'1.4rem'} />
           {text && <span className={classes.text}>{text}</span>}
         </Button>
       </Tooltip>
