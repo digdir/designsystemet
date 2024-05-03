@@ -2,63 +2,63 @@
   "colors": {
     "accent": {
       "1": {
-        "value": "{accent-brand2.1}",
+        "value": "{accent-brand1.1}",
         "type": "color"
       },
       "2": {
-        "value": "{accent-brand2.2}",
+        "value": "{accent-brand1.2}",
         "type": "color"
       },
       "3": {
-        "value": "{accent-brand2.3}",
+        "value": "{accent-brand1.3}",
         "type": "color"
       },
       "4": {
-        "value": "{accent-brand2.4}",
+        "value": "{accent-brand1.4}",
         "type": "color"
       },
       "5": {
-        "value": "{accent-brand2.5}",
+        "value": "{accent-brand1.5}",
         "type": "color"
       },
       "6": {
-        "value": "{accent-brand2.6}",
+        "value": "{accent-brand1.6}",
         "type": "color"
       },
       "7": {
-        "value": "{accent-brand2.7}",
+        "value": "{accent-brand1.7}",
         "type": "color"
       },
       "8": {
-        "value": "{accent-brand2.8}",
+        "value": "{accent-brand1.8}",
         "type": "color"
       },
       "9": {
-        "value": "{accent-brand2.9}",
+        "value": "{accent-brand1.9}",
         "type": "color"
       },
       "10": {
-        "value": "{accent-brand2.10}",
+        "value": "{accent-brand1.10}",
         "type": "color"
       },
       "11": {
-        "value": "{accent-brand2.11}",
+        "value": "{accent-brand1.11}",
         "type": "color"
       },
       "12": {
-        "value": "{accent-brand2.12}",
+        "value": "{accent-brand1.12}",
         "type": "color"
       },
       "13": {
-        "value": "{accent-brand2.13}",
+        "value": "{accent-brand1.13}",
         "type": "color"
       },
       "contrast-1": {
-        "value": "{accent-brand2.contrast-1}",
+        "value": "{accent-brand1.contrast-1}",
         "type": "color"
       },
       "contrast-2": {
-        "value": "{accent-brand2.contrast-2}",
+        "value": "{accent-brand1.contrast-2}",
         "type": "color"
       }
     },
