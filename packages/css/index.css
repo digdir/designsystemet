@@ -18,6 +18,7 @@
 @import url('./heading.css');
 @import url('./paragraph.css');
 @import url('./radio.css');
+@import url('./native-select.css');
 @import url('./textfield.css');
 @import url('./textarea.css');
 @import url('./helptext.css');
