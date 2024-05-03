@@ -139,7 +139,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             />
           )}
           <div
-            className='fds-textarea__errorMessage'
+            className='fds-textarea__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

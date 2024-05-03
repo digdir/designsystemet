@@ -9,7 +9,7 @@
     width: 1.2em;
   }
 
-  .fds-textarea__errorMessage:empty {
+  .fds-textarea__error-message:empty {
     display: none;
   }
 
