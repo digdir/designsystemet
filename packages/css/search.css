@@ -1,5 +1,5 @@
 @layer fds.search {
-  .fds-search__container {
+  .fds-search {
     display: inline-grid;
     width: 100%;
     gap: var(--fds-spacing-2);
