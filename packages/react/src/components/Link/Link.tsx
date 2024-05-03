@@ -1,9 +1,7 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
-
-import classes from './Link.module.css';
 
 export type LinkProps = {
   /** The content to display inside the link. */
@@ -30,7 +28,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 
     return (
       <Component
-        className={cl(classes.link, inverted && classes.inverted, className)}
+        className={cl('fds-link', inverted && 'fds-link--inverted', className)}
         ref={ref}
         {...rest}
       >
