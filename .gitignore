@@ -36,3 +36,5 @@ coverage/
 
 # Typescript
 next-env.d.ts
+
+react-css-modules.css
