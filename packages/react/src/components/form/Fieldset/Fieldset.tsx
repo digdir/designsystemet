@@ -108,7 +108,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
-            className={'fds-fieldset__error'}
+            className={'fds-fieldset__error-message'}
           >
             {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
           </div>
