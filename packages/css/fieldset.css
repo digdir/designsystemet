@@ -25,7 +25,7 @@
     display: inline-flex;
   }
 
-  .fds-fieldset--readonly .fds-fieldset__padlock {
+  .fds-fieldset--readonly .fds-fieldset__readonly__icon {
     height: 1.2em;
     width: 1.2em;
   }
