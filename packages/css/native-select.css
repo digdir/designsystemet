@@ -68,12 +68,12 @@
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
   }
 
-  .fds-native-select__padlock {
+  .fds-native-select__readonly__icon {
     height: 1.2em;
     width: 1.2em;
   }
 
-  .fds-native-select__error:empty {
+  .fds-native-select__error-message:empty {
     display: none;
   }
 

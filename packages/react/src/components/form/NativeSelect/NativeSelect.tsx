@@ -82,7 +82,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={'fds-native-select__padlock'}
+                  className={'fds-native-select__readonly__icon'}
                 />
               )}
               {label}
@@ -109,7 +109,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           {error && (
             <div
               id={errorId}
-              className={'fds-native-select__error'}
+              className={'fds-native-select__error-message'}
               aria-live='polite'
               aria-relevant='additions removals'
             >
