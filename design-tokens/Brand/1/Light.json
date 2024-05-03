@@ -1,0 +1,238 @@
+{
+  "Colors": {
+    "alt1": {
+      "100": {
+        "value": "#feefef",
+        "type": "color",
+        "description": "AAA 12.8 on grey 800\nAA 6.4 as bkdg for interaction blue"
+      },
+      "200": {
+        "value": "#fddfe0",
+        "type": "color",
+        "description": "Light error color\nAAA 11.4 on grey 800\nAA 5.7 as bkdg for interaction blue"
+      },
+      "300": {
+        "value": "#fbbfc1",
+        "type": "color",
+        "description": "AAA 9 on grey 800\nAA 4.5 as bkdg for interaction blue"
+      },
+      "400": {
+        "value": "#f89fa1",
+        "type": "color",
+        "description": "AAA 7.1 on grey 800\nAA18 3.5 as bkdg for interaction blue"
+      },
+      "500": {
+        "value": "#f67f82",
+        "type": "color",
+        "description": "AA 5.6 on grey 800"
+      },
+      "600": {
+        "value": "#f45f63",
+        "type": "color",
+        "description": "AA 4.5 on grey 800"
+      },
+      "700": {
+        "value": "#dc5659",
+        "type": "color",
+        "description": "AA18 3.7 on grey 800"
+      },
+      "800": {
+        "value": "#c34c4f",
+        "type": "color",
+        "description": "AA 4.7 on white"
+      },
+      "900": {
+        "value": "#B83D41",
+        "type": "color"
+      }
+    },
+    "alt2": {
+      "100": {
+        "value": "#fcf7e9",
+        "type": "color",
+        "description": "AAA 13.3 on grey 800\nAA 6.7 as bkdg for interaction blue"
+      },
+      "200": {
+        "value": "#faeec2",
+        "type": "color",
+        "description": "Light warning color\nAAA 12.3 on grey 800\nAA 1.1 as bkdg for interaction blue"
+      },
+      "300": {
+        "value": "#f5dda6",
+        "type": "color",
+        "description": "AAA 10 on grey 800\nAA 5.4 as bkdg for interaction blue"
+      },
+      "400": {
+        "value": "#efcc79",
+        "type": "color",
+        "description": "AAA 9.2 on grey 800\nAA 4.6 as bkdg for interaction blue"
+      },
+      "500": {
+        "value": "#eabb4d",
+        "type": "color",
+        "description": "AAA 7.9 on grey 800\nAA18 4 as bkdg for interaction blue"
+      },
+      "600": {
+        "value": "#e5aa20",
+        "type": "color",
+        "description": "AA 6.8 on grey 800\nAA18 3.4 as bkdg for interaction blue"
+      },
+      "700": {
+        "value": "#ce991d",
+        "type": "color",
+        "description": "AA 5.5 on grey 800"
+      },
+      "800": {
+        "value": "#b7881a",
+        "type": "color",
+        "description": "AA18 4.4 on grey 800\nAA18 3.2 on white"
+      },
+      "900": {
+        "value": "#A17717",
+        "type": "color"
+      }
+    },
+    "alt3": {
+      "100": {
+        "value": "#e9f5ff",
+        "type": "color",
+        "description": "AAA 12.9 on grey 800\nAA 6.5 as bkdg for interaction blue"
+      },
+      "200": {
+        "value": "#d2eafd",
+        "type": "color",
+        "description": "Light information color \nAAA 11.5 on grey 800\nAA 5.8 as bkdg for interaction blue"
+      },
+      "300": {
+        "value": "#a5d6fb",
+        "type": "color",
+        "description": "AAA 9.2 on grey 800\nAA 4.6 as bkdg for interaction blue"
+      },
+      "400": {
+        "value": "#78c1f9",
+        "type": "color",
+        "description": "AAA 7.3 on grey 800\nAA18 3.7 as bkdg for interaction blue"
+      },
+      "500": {
+        "value": "#4badf7",
+        "type": "color",
+        "description": "AA 5.8 on grey 800"
+      },
+      "600": {
+        "value": "#1e98f5",
+        "type": "color",
+        "description": "AA 4.6 on grey 800"
+      },
+      "700": {
+        "value": "#1b88dd",
+        "type": "color",
+        "description": "AA18 3.8 on grey 800"
+      },
+      "800": {
+        "value": "#156aac",
+        "type": "color",
+        "description": "AA 5.6 on white"
+      },
+      "900": {
+        "value": "#125A91",
+        "type": "color"
+      }
+    },
+    "neutral": {
+      "100": {
+        "value": "#feefef",
+        "type": "color",
+        "description": "AAA 12.8 on grey 800\nAA 6.4 as bkdg for interaction blue"
+      },
+      "200": {
+        "value": "#fddfe0",
+        "type": "color",
+        "description": "Light error color\nAAA 11.4 on grey 800\nAA 5.7 as bkdg for interaction blue"
+      },
+      "300": {
+        "value": "#fbbfc1",
+        "type": "color",
+        "description": "AAA 9 on grey 800\nAA 4.5 as bkdg for interaction blue"
+      },
+      "400": {
+        "value": "#f89fa1",
+        "type": "color",
+        "description": "AAA 7.1 on grey 800\nAA18 3.5 as bkdg for interaction blue"
+      },
+      "500": {
+        "value": "#f67f82",
+        "type": "color",
+        "description": "AA 5.6 on grey 800"
+      },
+      "600": {
+        "value": "#f45f63",
+        "type": "color",
+        "description": "AA 4.5 on grey 800"
+      },
+      "700": {
+        "value": "#dc5659",
+        "type": "color",
+        "description": "AA18 3.7 on grey 800"
+      },
+      "800": {
+        "value": "#c34c4f",
+        "type": "color",
+        "description": "AA 4.7 on white"
+      },
+      "900": {
+        "value": "#B83D41",
+        "type": "color"
+      }
+    },
+    "accent": {
+      "background": {
+        "value": "#fefeff",
+        "type": "color"
+      },
+      "background-subtle": {
+        "value": "#eef4fa",
+        "type": "color"
+      },
+      "surface": {
+        "value": "#e2edf7",
+        "type": "color"
+      },
+      "surface-hover": {
+        "value": "#c3daef",
+        "type": "color"
+      },
+      "surface-active": {
+        "value": "#a4c7e6",
+        "type": "color"
+      },
+      "border-subtle": {
+        "value": "#aecde9",
+        "type": "color"
+      },
+      "border": {
+        "value": "#4b90ce",
+        "type": "color"
+      },
+      "border-strong": {
+        "value": "#4b90ce",
+        "type": "color"
+      },
+      "border-base": {
+        "value": "#0163ba",
+        "type": "color"
+      },
+      "border-base-hover": {
+        "value": "#004d93",
+        "type": "color"
+      },
+      "border-base-active": {
+        "value": "#00396d",
+        "type": "color"
+      },
+      "text-subtle": {
+        "value": "#00315c",
+        "type": "color"
+      }
+    }
+  }
+}
