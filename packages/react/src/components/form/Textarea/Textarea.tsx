@@ -120,7 +120,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </Paragraph>
           )}
           <textarea
-            className={cl('fds-textarea__textarea', `fds-focus`)}
+            className={cl('fds-textarea__input', `fds-focus`)}
             ref={ref}
             aria-describedby={describedBy}
             {...omit(['size', 'error', 'errorId'], rest)}
