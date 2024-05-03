@@ -47,10 +47,11 @@ export const WithoutHeading: Story = (args) => (
 
 export const Advanced: Story = (args) => (
   <List.Root {...args}>
+    <List.Heading level={2}>Nested lists</List.Heading>
     <List.Unordered>
       <List.Item>
-        List Item 1
         <List.Root>
+          <List.Heading level={3}> List Item 1</List.Heading>
           <List.Ordered>
             <List.Item>List Item 1.1</List.Item>
             <List.Item>List Item 1.2</List.Item>
@@ -59,8 +60,8 @@ export const Advanced: Story = (args) => (
         </List.Root>
       </List.Item>
       <List.Item>
-        List Item 2
         <List.Root>
+          <List.Heading level={3}> List Item 2</List.Heading>
           <List.Unordered>
             <List.Item>List Item 2.1</List.Item>
             <List.Item>List Item 2.2</List.Item>

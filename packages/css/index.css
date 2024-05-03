@@ -18,4 +18,7 @@
 @import url('./heading.css');
 @import url('./paragraph.css');
 @import url('./radio.css');
+@import url('./list.css');
+@import url('./card.css');
+@import url('./link.css');
 @import url('./fieldset.css');

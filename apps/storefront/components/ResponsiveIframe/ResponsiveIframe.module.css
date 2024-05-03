@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: var(--media-max-width);
   padding-top: 56.25%;
   box-shadow: var(--fds-shadow-medium);
   border-radius: 4px;
