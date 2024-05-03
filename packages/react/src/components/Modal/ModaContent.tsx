@@ -1,9 +1,7 @@
 import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
-
-import classes from './ModalContent.module.css';
 
 export type ModalContentProps = {
   /**
@@ -20,7 +18,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
     return (
       <Component
         ref={ref}
-        className={cl(classes.modalContent, className)}
+        className={cl('fds-modal__content', className)}
         {...rest}
       />
     );

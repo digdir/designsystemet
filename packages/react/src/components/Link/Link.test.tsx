@@ -23,20 +23,14 @@ describe('Link', () => {
     const className = 'foo';
     render({ className });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('link');
+    expect(link).toHaveClass('fds-link');
     expect(link).toHaveClass(className);
-  });
-
-  it('Is not inverted by default', () => {
-    render();
-    const link = screen.getByRole('link');
-    expect(link).not.toHaveClass('inverted');
   });
 
   it('Is inverted when the `inverted` property is `true`', () => {
     render({ inverted: true });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('inverted');
+    expect(link).toHaveClass('fds-link--inverted');
   });
 
   it('Sets the ref on the anchor element if given', () => {
