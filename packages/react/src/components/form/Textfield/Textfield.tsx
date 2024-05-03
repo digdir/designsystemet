@@ -207,7 +207,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             />
           )}
           <div
-            className='fds-textfield__errorMessage'
+            className='fds-textfield__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

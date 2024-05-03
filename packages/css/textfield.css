@@ -144,7 +144,7 @@
     width: 1.2em;
   }
 
-  .fds-textfield__errorMessage:empty {
+  .fds-textfield__error-message:empty {
     display: none;
   }
 }
