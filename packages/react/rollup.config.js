@@ -1,9 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
+// import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
-import { generateScopedName } from './scripts/name';
+// import { generateScopedName } from './scripts/name';
 
 export default [
   {
@@ -34,13 +34,13 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      postcss({
-        // extract name is used in script in package.json
-        extract: 'react-css-modules.css',
-        modules: {
-          generateScopedName,
-        },
-      }),
+      // postcss({
+      //   // extract name is used in script in package.json
+      //   extract: 'react-css-modules.css',
+      //   modules: {
+      //     generateScopedName,
+      //   },
+      // }),
     ],
   },
 ];
