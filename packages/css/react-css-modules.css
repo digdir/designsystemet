@@ -212,43 +212,6 @@
   }
 }
 
-@layer fds.link {
-  .fds-link-link-7f2464f {
-    color: var(--fds-semantic-text-action-default);
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-thickness: max(1px, 0.0625rem);
-    text-underline-offset: max(4px, 0.25rem);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--fds-spacing-1);
-  }
-
-  .fds-link-link-7f2464f:visited {
-    color: var(--fds-semantic-text-visited-default);
-    text-decoration: none;
-  }
-
-  .fds-link-link-7f2464f:hover {
-    color: var(--fds-semantic-text-action-hover);
-    text-decoration-thickness: max(2px, 0.125rem, 0.12em);
-  }
-
-  .fds-link-link-7f2464f:focus-visible {
-    background: var(--fds-semantic-border-focus-outline);
-    box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--fds-semantic-border-focus-boxshadow);
-    color: var(--fds-semantic-text-action-active);
-    outline: none;
-    text-decoration: none;
-  }
-
-  .fds-link-link-7f2464f.fds-link-inverted-7f2464f:not(:focus-visible, :active),
-  .fds-link-link-7f2464f.fds-link-inverted-7f2464f:not(:focus-visible, :active):hover,
-  .fds-link-link-7f2464f.fds-link-inverted-7f2464f:not(:focus-visible, :active):visited {
-    color: white;
-  }
-}
-
 @layer fds.list {
   .fds-list-small-a2926fcf {
     padding-left: var(--fds-spacing-4);
