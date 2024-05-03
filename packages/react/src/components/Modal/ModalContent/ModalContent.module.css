@@ -1,7 +1,0 @@
-@layer fds.modal-content {
-  .modalContent {
-    padding: var(--fds-spacing-2) var(--fds-spacing-6);
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-}
