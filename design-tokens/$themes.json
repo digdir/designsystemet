@@ -4,9 +4,7 @@
     "name": "Light",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "System/Color/Light": "enabled",
-      "Brand/Pear": "disabled",
-      "Brand/Banana": "disabled"
+      "System/Color/Light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:7:1031",
     "$figmaModeId": "7:32",
@@ -64,9 +62,7 @@
     "name": "Dark",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "System/Color/Dark": "enabled",
-      "Brand/Pear": "disabled",
-      "Brand/Banana": "disabled"
+      "System/Color/Dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:7:1031",
     "$figmaModeId": "7:33",
@@ -124,8 +120,7 @@
     "name": "1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/Pear": "enabled",
-      "Brand/Banana": "disabled"
+      "Brand/Pear": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:7:1077",
     "$figmaModeId": "7:34",
@@ -168,7 +163,6 @@
     "name": "2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/Pear": "disabled",
       "Brand/Banana": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:7:1077",
