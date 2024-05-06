@@ -22,8 +22,6 @@ import {
 
 import type { PortalProps } from '../../types/Portal';
 
-import classes from './Tooltip.module.css';
-
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
@@ -146,8 +144,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 role='tooltip'
                 {...getFloatingProps({
                   className: cl(
-                    classes.wrapper,
-                    inverted && classes.inverted,
+                    'fds-tooltip',
+                    inverted && 'fds-tooltip--inverted',
                     className,
                   ),
                   ref: mergedRef,
@@ -158,7 +156,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 <FloatingArrow
                   ref={arrowRef}
                   context={context}
-                  className={classes.arrow}
+                  className='fds-tooltip__arrow'
                   height={ARROW_HEIGHT}
                 />
               </div>

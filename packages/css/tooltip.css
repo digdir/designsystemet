@@ -1,5 +1,5 @@
 @layer fds.tooltip {
-  .wrapper {
+  .fds-tooltip {
     background: var(--fds-semantic-surface-neutral-inverted);
     padding: var(--fds-spacing-1) var(--fds-spacing-2);
     color: var(--fds-semantic-text-neutral-on_inverted);
@@ -8,16 +8,16 @@
     font-family: inherit;
   }
 
-  .wrapper.inverted {
+  .fds-tooltip--inverted {
     background: var(--fds-semantic-surface-neutral-subtle);
     color: var(--fds-semantic-text-neutral-default);
   }
 
-  .wrapper .arrow {
+  .fds-tooltip__arrow {
     fill: var(--fds-semantic-surface-neutral-inverted);
   }
 
-  .wrapper.inverted .arrow {
+  .fds-tooltip--inverted .fds-tooltip__arrow {
     fill: var(--fds-semantic-surface-neutral-subtle);
   }
 }
