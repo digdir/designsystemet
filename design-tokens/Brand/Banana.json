@@ -62,65 +62,65 @@
         "type": "color"
       }
     },
-    "accent": {
+    "2": {
       "1": {
-        "value": "{brand.banana.accent.1}",
+        "value": "{brand.banana.alt1.1}",
         "type": "color"
       },
       "2": {
-        "value": "{brand.banana.accent.2}",
+        "value": "{brand.banana.alt1.2}",
         "type": "color"
       },
       "3": {
-        "value": "{brand.banana.accent.3}",
+        "value": "{brand.banana.alt1.3}",
         "type": "color"
       },
       "4": {
-        "value": "{brand.banana.accent.4}",
+        "value": "{brand.banana.alt1.4}",
         "type": "color"
       },
       "5": {
-        "value": "{brand.banana.accent.5}",
+        "value": "{brand.banana.alt1.5}",
         "type": "color"
       },
       "6": {
-        "value": "{brand.banana.accent.6}",
+        "value": "{brand.banana.alt1.6}",
         "type": "color"
       },
       "7": {
-        "value": "{brand.banana.accent.7}",
+        "value": "{brand.banana.alt1.7}",
         "type": "color"
       },
       "8": {
-        "value": "{brand.banana.accent.8}",
+        "value": "{brand.banana.alt1.8}",
         "type": "color"
       },
       "9": {
-        "value": "{brand.banana.accent.9}",
+        "value": "{brand.banana.alt1.9}",
         "type": "color"
       },
       "10": {
-        "value": "{brand.banana.accent.10}",
+        "value": "{brand.banana.alt1.10}",
         "type": "color"
       },
       "11": {
-        "value": "{brand.banana.accent.11}",
+        "value": "{brand.banana.alt1.11}",
         "type": "color"
       },
       "12": {
-        "value": "{brand.banana.accent.12}",
+        "value": "{brand.banana.alt1.12}",
         "type": "color"
       },
       "13": {
-        "value": "{brand.banana.accent.13}",
+        "value": "{brand.banana.alt1.13}",
         "type": "color"
       },
       "contrast-1": {
-        "value": "{brand.banana.accent.contrast-1}",
+        "value": "{brand.banana.alt1.contrast-1}",
         "type": "color"
       },
       "contrast-2": {
-        "value": "{brand.banana.accent.contrast-2}",
+        "value": "{brand.banana.alt1.contrast-2}",
         "type": "color"
       }
     }
