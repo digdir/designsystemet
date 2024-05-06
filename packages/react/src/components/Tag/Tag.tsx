@@ -5,8 +5,6 @@ import cl from 'clsx';
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
 
-import classes from './Tag.module.css';
-
 type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
 
 export type TagProps = {
@@ -39,7 +37,12 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
         size={size}
       >
         <span
-          className={cl(classes.tag, classes[color], classes[size], className)}
+          className={cl(
+            'fds-tag',
+            `fds-tag--${color}`,
+            `fds-tag--${size}`,
+            className,
+          )}
           ref={ref}
           {...rest}
         >
