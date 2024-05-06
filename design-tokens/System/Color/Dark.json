@@ -65,7 +65,7 @@
   },
   "brand": {
     "pear": {
-      "accent": {
+      "alt1": {
         "1": {
           "value": "#002445",
           "type": "color"
@@ -129,7 +129,7 @@
       }
     },
     "banana": {
-      "accent": {
+      "alt1": {
         "1": {
           "value": "#3c1819",
           "type": "color"
