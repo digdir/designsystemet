@@ -1,10 +1,10 @@
 @layer fds.textfield {
-  .formField {
+  .fds-textfield {
     display: grid;
     gap: var(--fds-spacing-2);
   }
 
-  .adornment {
+  .fds-textfield__adornment {
     color: var(--fds-semantic-border-neutral-default);
     background: var(--fds-semantic-surface-neutral-subtle);
     padding: 9px var(--fds-spacing-4);
@@ -14,7 +14,7 @@
     display: inline-block;
   }
 
-  .input {
+  .fds-textfield__input {
     font: inherit;
     font-family: inherit;
     position: relative;
@@ -27,56 +27,68 @@
     border-radius: var(--fds-border_radius-medium);
   }
 
-  .disabled .input {
+  .fds-textfield--disabled .fds-textfield__input {
     cursor: not-allowed;
   }
 
-  .readonly .input {
+  .fds-textfield--readonly .fds-textfield__input {
     background: var(--fds-semantic-surface-neutral-subtle);
     border-color: var(--fds-semantic-border-neutral-default);
   }
 
-  .field {
+  .fds-textfield__field {
     display: flex;
     align-items: stretch;
     border-radius: var(--fds-border_radius-medium);
   }
 
-  .field > *:first-child {
+  .fds-textfield__field > *:first-child {
     border-top-left-radius: var(--fds-border_radius-medium);
     border-bottom-left-radius: var(--fds-border_radius-medium);
   }
 
-  .field > *:last-child {
+  .fds-textfield__field > *:last-child {
     border-top-right-radius: var(--fds-border_radius-medium);
     border-bottom-right-radius: var(--fds-border_radius-medium);
   }
 
-  .formField.small .adornment {
+  .fds-textfield--small .fds-textfield__adornment {
     padding: var(--fds-sizing-2) var(--fds-spacing-3);
   }
 
-  .formField.medium .adornment {
+  .fds-textfield--medium .fds-textfield__adornment {
     padding: 0.65rem var(--fds-spacing-4);
   }
 
-  .formField.large .adornment {
+  .fds-textfield--large .fds-textfield__adornment {
     padding: 0.85rem var(--fds-spacing-5);
   }
 
-  .formField.small .field {
+  .fds-textfield--small .fds-textfield__field {
     height: var(--fds-sizing-10);
   }
 
-  .formField.medium .field {
+  .fds-textfield--medium .fds-textfield__field {
     height: var(--fds-sizing-12);
   }
 
-  .formField.large .field {
+  .fds-textfield--large .fds-textfield__field {
     height: var(--fds-sizing-14);
   }
 
-  .label {
+  .fds-textfield--small .fds-textfield__input {
+    padding: 0 var(--fds-spacing-2);
+  }
+
+  .fds-textfield--medium .fds-textfield__input {
+    padding: 0 var(--fds-spacing-3);
+  }
+
+  .fds-textfield--large .fds-textfield__input {
+    padding: 0 var(--fds-spacing-4);
+  }
+
+  .fds-textfield__label {
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
@@ -84,67 +96,55 @@
     align-items: center;
   }
 
-  .description {
+  .fds-textfield__description {
     color: var(--fds-semantic-text-neutral-subtle);
     margin-top: calc(var(--fds-spacing-2) * -1);
   }
 
-  .input.small {
-    padding: 0 var(--fds-spacing-2);
-  }
-
-  .input.medium {
-    padding: 0 var(--fds-spacing-3);
-  }
-
-  .input.large {
-    padding: 0 var(--fds-spacing-4);
-  }
-
-  .disabled {
+  .fds-textfield--disabled {
     opacity: var(--fds-opacity-disabled);
   }
 
-  .error > .input:not(:focus-visible) {
+  .fds-textfield--error .fds-textfield__input:not(:focus-visible) {
     border-color: var(--fds-semantic-border-danger-default);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+    .fds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
       border-color: var(--fds-semantic-border-input-hover);
       box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
     }
   }
 
-  .inputPrefix {
+  .fds-textfield__input--with-prefix {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .inputSuffix {
+  .fds-textfield__input--with-suffix {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .prefix {
+  .fds-textfield__prefix {
     border-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .suffix {
+  .fds-textfield__suffix {
     border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .padlock {
+  .fds-textfield__readonly__icon {
     height: 1.2em;
     width: 1.2em;
   }
 
-  .errorMessage:empty {
+  .fds-textfield__error-message:empty {
     display: none;
   }
 }
