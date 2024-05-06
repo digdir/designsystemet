@@ -13,4 +13,8 @@
     grid-auto-flow: column;
     padding: var(--fds-spacing-1);
   }
+
+  .fds-togglegroup__input {
+    display: none;
+  }
 }

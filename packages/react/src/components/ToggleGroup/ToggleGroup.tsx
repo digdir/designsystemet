@@ -83,7 +83,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
         >
           {name && (
             <input
-              type='hidden'
+              className='fds-togglegroup__input'
               name={name}
               value={value}
             />
