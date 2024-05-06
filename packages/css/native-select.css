@@ -84,4 +84,9 @@
     gap: var(--fds-spacing-1);
     align-items: center;
   }
+
+  .fds-native-select__description {
+    color: var(--fds-semantic-text-neutral-subtle);
+    margin-top: calc(var(--fds-spacing-2) * -1);
+  }
 }
