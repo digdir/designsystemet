@@ -1,18 +1,18 @@
 @layer fds.divider {
-  .divider {
+  .fds-divider {
     border: none;
     border-top: 1px solid;
   }
 
-  .default {
+  .fds-divider--default {
     border-color: var(--fds-semantic-border-divider-default);
   }
 
-  .strong {
+  .fds-divider--strong {
     border-color: var(--fds-semantic-border-divider-strong);
   }
 
-  .subtle {
+  .fds-divider--subtle {
     border-color: var(--fds-semantic-border-divider-subtle);
   }
 }
