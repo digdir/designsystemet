@@ -1,10 +1,8 @@
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
-
-import classes from './ToggleGroup.module.css';
 
 export type ToggleGroupContextProps = {
   value?: string;
@@ -70,7 +68,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
 
     return (
       <div
-        className={cl(classes.toggleGroupContainer, className)}
+        className={cl('fds-togglegroup', className)}
         ref={ref}
         {...rest}
       >
@@ -95,7 +93,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             valueId={value}
           >
             <div
-              className={classes.groupContent}
+              className='fds-togglegroup__content'
               role='radiogroup'
             >
               {children}
