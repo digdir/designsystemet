@@ -1,6 +1,6 @@
 @layer fds.tabs {
   .fds-tabs__tab {
-    --fdsc-bottom-border-color: transparent;
+    --fds-tabs__tab-bottom-border-color: transparent;
 
     display: flex;
     flex-direction: row;
@@ -63,20 +63,20 @@
 
   @media (hover: hover) and (pointer: fine) {
     .fds-tabs__tab:hover {
-      --fdsc-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
+      --fds-tabs__tab-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
 
       color: var(--fds-semantic-text-neutral-default);
     }
   }
 
   .fds-tabs__tab--active {
-    --fdsc-bottom-border-color: var(--fds-semantic-border-action-default);
+    --fds-tabs__tab-bottom-border-color: var(--fds-semantic-border-action-default);
 
     color: var(--fds-semantic-text-action-default);
   }
 
   .fds-tabs__tab:focus-visible {
-    --fdsc-bottom-border-color: var(--fds-semantic-text-neutral-default);
+    --fds-tabs__tab-bottom-border-color: var(--fds-semantic-text-neutral-default);
 
     background: var(--fds-semantic-border-focus-outline);
     color: var(--fds-semantic-text-neutral-default);
@@ -89,7 +89,7 @@
     height: 3px;
     width: 100%;
     border-radius: var(--fds-border_radius-full);
-    background-color: var(--fdsc-bottom-border-color);
+    background-color: var(--fds-tabs__tab-bottom-border-color);
     position: absolute;
     bottom: 0;
     left: 0;
