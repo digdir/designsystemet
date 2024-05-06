@@ -131,55 +131,55 @@
     "banana": {
       "accent": {
         "1": {
-          "value": "#002445",
+          "value": "#3c1819",
           "type": "color"
         },
         "2": {
-          "value": "#001c36",
+          "value": "#2f1213",
           "type": "color"
         },
         "3": {
-          "value": "#00315c",
+          "value": "#522021",
           "type": "color"
         },
         "4": {
-          "value": "#00396d",
+          "value": "#602627",
           "type": "color"
         },
         "5": {
-          "value": "#00427e",
+          "value": "#702c2e",
           "type": "color"
         },
         "6": {
-          "value": "#00529d",
+          "value": "#8b3639",
           "type": "color"
         },
         "7": {
-          "value": "#0f6bbe",
+          "value": "#b34649",
           "type": "color"
         },
         "8": {
-          "value": "#3d88ca",
+          "value": "#dd565a",
           "type": "color"
         },
         "9": {
-          "value": "#0163ba",
+          "value": "#f35f63",
           "type": "color"
         },
         "10": {
-          "value": "#004d93",
+          "value": "#cc5053",
           "type": "color"
         },
         "11": {
-          "value": "#00396d",
+          "value": "#a84144",
           "type": "color"
         },
         "12": {
-          "value": "#7eb0dc",
+          "value": "#f78d8f",
           "type": "color"
         },
         "13": {
-          "value": "#b0cfea",
+          "value": "#fabcbd",
           "type": "color"
         },
         "contrast-1": {
