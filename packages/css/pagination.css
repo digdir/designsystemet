@@ -1,5 +1,5 @@
 @layer fds.pagination {
-  .pagination {
+  .fds-pagination {
     list-style-type: none;
     display: flex;
     padding: 0;
@@ -8,19 +8,19 @@
     width: fit-content;
   }
 
-  .hidden {
+  .fds-pagination--hidden {
     visibility: hidden;
   }
 
-  .pagination:where(.small) {
+  .fds-pagination--small {
     --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
   }
 
-  .pagination:where(.medium) {
+  .fds-pagination--medium {
     --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
   }
 
-  .pagination:where(.large) {
+  .fds-pagination--large {
     --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
   }
 
@@ -32,32 +32,32 @@
     margin-left: var(--fdsc-pagination-chevron-margin);
   }
 
-  .listitem {
+  .fds-pagination__item {
     flex: 1;
     margin-right: var(--fsdc-pagination-listitem-margin);
   }
 
-  .listitem:where(.small) {
+  .fds-pagination__item.fds-pagination--small {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-2);
     --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
   }
 
-  .listitem:where(.medium) {
+  .fds-pagination__item.fds-pagination--medium {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-4);
     --fdsc-pagination-ellipsis-width: var(--fds-sizing-12);
   }
 
-  .listitem:where(.large) {
+  .fds-pagination__item.fds-pagination--large {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-6);
     --fdsc-pagination-ellipsis-width: var(--fds-sizing-14);
   }
 
-  .listitem:where(.compact) {
+  .fds-pagination__item.fds-pagination--compact {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-0);
     --fdsc-pagination-chevron-margin: var(--fds-spacing-1);
   }
 
-  .pagination .ellipsis {
+  .fds-pagination__ellipsis {
     margin-top: 0.5em;
     text-align: center;
     width: var(--fdsc-pagination-ellipsis-width);

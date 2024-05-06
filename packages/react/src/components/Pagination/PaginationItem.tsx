@@ -1,9 +1,8 @@
 import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext, type HTMLAttributes } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { PaginationContext } from './PaginationRoot';
-import classes from './Pagination.module.css';
 
 export type PaginationItemProps = {
   /**
@@ -23,9 +22,9 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
       <Component
         ref={ref}
         className={cl(
-          classes.listitem,
-          classes[size],
-          compact && classes.compact,
+          'fds-pagination__item',
+          `fds-pagination--${size}`,
+          compact && 'fds-pagination--compact',
           className,
         )}
         {...rest}
