@@ -1,10 +1,9 @@
 import { forwardRef, useContext } from 'react';
 
-import type { ButtonProps } from '../../Button';
-import { Button } from '../../Button';
-import { DropdownMenuContext } from '../DropdownMenu';
+import type { ButtonProps } from '../Button';
+import { Button } from '../Button';
 
-import classes from './DropdownMenuItem.module.css';
+import { DropdownMenuContext } from './DropdownMenu';
 
 export type DropdownMenuItemProps = Omit<
   ButtonProps,
@@ -27,7 +26,7 @@ export const DropdownMenuItem = forwardRef<
         variant='tertiary'
         size={menu.size}
         fullWidth
-        className={classes.item}
+        className='fds-dropdown__item'
         role='menuitem'
         {...rest}
       >
