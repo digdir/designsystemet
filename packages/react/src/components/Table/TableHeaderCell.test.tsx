@@ -18,16 +18,6 @@ describe('table header cell', (): void => {
     expect(screen.getByRole('columnheader')).toBeInTheDocument();
   });
 
-  it('should render table header cell with sortable class', (): void => {
-    render({ sortable: true });
-    expect(screen.getByRole('columnheader')).toHaveClass('sortable');
-  });
-
-  it('should render table header cell with sorted class', (): void => {
-    render({ sort: 'ascending' });
-    expect(screen.getByRole('columnheader')).toHaveClass('sorted');
-  });
-
   it('should render table header cell with sort icon', (): void => {
     render({ sortable: true });
     expect(screen.getByRole('img')).toBeInTheDocument();

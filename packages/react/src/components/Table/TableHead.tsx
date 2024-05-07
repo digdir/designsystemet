@@ -1,7 +1,5 @@
 import * as React from 'react';
-import cl from 'clsx';
-
-import classes from './Table.module.css';
+import cl from 'clsx/lite';
 
 export type TableHeadProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
@@ -12,7 +10,7 @@ export const TableHead = React.forwardRef<
   return (
     <thead
       ref={ref}
-      className={cl(classes.head, className)}
+      className={cl('fds-table__head', className)}
       {...rest}
     >
       {children}
