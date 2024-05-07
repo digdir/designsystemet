@@ -1,0 +1,16 @@
+{
+  "workspaces": {
+    ".": {
+      "entry": ".storybook/*.{ts,tsx}",
+      "project": [
+        "packages/react/src/**/*.{js, ts, tsx}",
+        "assets/*",
+        "packages/css/*.css"
+      ]
+    },
+    "packages/react": {
+      "entry": "packages/react/src/index.{ts,tsx}",
+      "project": "packages/react/*"
+    }
+  }
+}
