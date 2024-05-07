@@ -3,8 +3,6 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import classes from './ErrorMessage.module.css';
-
 export type ErrorMessageProps = {
   /** Changes text sizing */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -31,12 +29,10 @@ export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
       <Component
         ref={ref}
         className={cl(
-          classes.errorMessage,
-          classes[size],
-          {
-            [classes.spacing]: !!spacing,
-          },
-          error && classes.error,
+          'fds-error-message',
+          `fds-error-message--${size}`,
+          spacing && 'fds-error-message--spacing',
+          error && 'fds-error-message--error',
           className,
         )}
         {...rest}

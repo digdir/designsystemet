@@ -1,0 +1,136 @@
+@layer fds.table {
+  .fds-table {
+    position: relative;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+
+    --table-padding: 0;
+    --border-radius: var(--fds-border_radius-medium);
+  }
+
+  .fds-table--sticky-header {
+    overflow: auto;
+  }
+
+  .fds-table--border .fds-table__row:last-of-type td {
+    border-bottom: 0;
+  }
+
+  .fds-table--small {
+    --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
+  }
+
+  .fds-table--medium {
+    --table-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  }
+
+  .fds-table--large {
+    --table-padding: var(--fds-spacing-3) var(--fds-spacing-3);
+  }
+
+  .fds-table__head {
+    z-index: 0;
+    box-sizing: border-box;
+    font: inherit;
+    font-family: inherit;
+    border-spacing: 0;
+    font-weight: 500;
+    border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+  }
+
+  .fds-table__header__cell {
+    padding: var(--table-padding);
+    font: inherit;
+    font-family: inherit;
+    background-color: var(--fds-semantic-surface-neutral-default);
+    border-spacing: 0;
+    border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+  }
+
+  .fds-table--sticky-header .fds-table__head .fds-table__header__cell {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .fds-table__header__cell--sortable {
+    padding: 0;
+  }
+
+  .fds-table__header__cell--sortable button {
+    position: relative;
+    width: 100%;
+    border: none;
+    font: inherit;
+    font-family: inherit;
+    display: flex;
+    cursor: pointer;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+    padding: var(--table-padding);
+    background-color: transparent;
+    z-index: 2;
+  }
+
+  .fds-table__header__cell--sorted button {
+    background-color: var(--fds-semantic-surface-neutral-subtle);
+  }
+
+  .fds-table__header__cell--sortable button:focus {
+    z-index: 3;
+  }
+
+  .fds-table__header__cell--sortable button svg {
+    font-size: 1.2em;
+  }
+
+  .fds-table__cell {
+    padding: var(--table-padding);
+    border-bottom: 1px solid var(--fds-semantic-border-divider-default);
+    background-color: var(--fds-semantic-surface-neutral-default);
+  }
+
+  .fds-table--zebra .fds-table__row {
+    border-bottom: 0;
+  }
+
+  .fds-table--zebra tr:nth-child(even):not(:hover) .fds-table__cell {
+    background-color: var(--fds-semantic-background-subtle);
+  }
+
+  .fds-table--border {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--fds-semantic-border-neutral-default);
+  }
+
+  .fds-table--border .fds-table__head .fds-table__header__cell:first-of-type {
+    border-top-left-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  .fds-table--border .fds-table__head .fds-table__header__cell:last-of-type {
+    border-top-right-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  .fds-table--border .fds-table__row:last-of-type .fds-table__cell:first-of-type {
+    border-bottom-left-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  .fds-table--border .fds-table__row:last-of-type .fds-table__cell:last-of-type {
+    border-bottom-right-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .fds-table__row:hover .fds-table__cell {
+      background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+    }
+
+    .fds-table__header__cell--sortable button:hover {
+      background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+    }
+  }
+}

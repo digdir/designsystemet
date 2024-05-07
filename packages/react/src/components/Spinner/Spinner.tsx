@@ -1,9 +1,7 @@
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { useSynchronizedAnimation } from '../../hooks';
-
-import classes from './Spinner.module.css';
 
 const sizeMap: { [key in NonNullable<SpinnerProps['size']>]: number } = {
   xxsmall: 13,
@@ -33,16 +31,16 @@ export const Spinner = ({
   ...rest
 }: SpinnerProps): JSX.Element => {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
-    classes['rotate-animation'],
+    'fds-spinner-rotate-animation',
   );
 
   const strokeRef = useSynchronizedAnimation<SVGCircleElement>(
-    classes['stroke-animation'],
+    'fds-spinner-stroke-animation',
   );
 
   return (
     <svg
-      className={cl(classes.spinner, className)}
+      className={cl('fds-spinner', `fds-spinner--${variant}`, className)}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}
@@ -51,8 +49,8 @@ export const Spinner = ({
       <title>{title}</title>
       <circle
         className={cl(
-          classes.background,
-          variant === 'inverted' && classes.invertedBackground,
+          'fds-spinner__background',
+          variant === 'inverted' && 'fds-spinner__background--inverted',
         )}
         cx='25'
         cy='25'
@@ -61,7 +59,7 @@ export const Spinner = ({
         strokeWidth='5'
       ></circle>
       <circle
-        className={cl(classes.spinnerCircle, classes[variant])}
+        className={cl(`fds-spinner__circle`)}
         cx='25'
         cy='25'
         r='20'

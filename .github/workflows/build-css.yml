@@ -1,12 +1,12 @@
 name: Build React & CSS
 on:
   workflow_dispatch:
-  pull_request_review:
-    branches:
-      - main
-    paths:
-      - 'packages/react/**'
-      - 'packages/css/**'
+  # pull_request_review:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'packages/react/**'
+  #     - 'packages/css/**'
 jobs:
   checks:
     name: Builds, lints and tests code

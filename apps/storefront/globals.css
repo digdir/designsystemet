@@ -13,6 +13,7 @@
   --grid-gap: var(--fds-spacing-8);
   --page-spacing-top: var(--fds-spacing-14);
   --page-spacing-bottom: var(--fds-spacing-14);
+  --media-max-width: 800px;
 }
 
 body {

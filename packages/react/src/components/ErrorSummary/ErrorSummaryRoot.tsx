@@ -1,12 +1,9 @@
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
-import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
 import type { ListProps } from '../List';
 import { List } from '../List';
-
-import classes from './ErrorSummary.module.css';
 
 type ErrorSummaryContextType = {
   headingId?: string;
@@ -40,7 +37,7 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <Slot
-          className={cl(classes.errorSummary)}
+          className={'fds-error-summary'}
           ref={ref}
           role={role}
           aria-live={ariaLive}

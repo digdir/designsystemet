@@ -7,7 +7,6 @@ import { Popover } from '../Popover';
 import type { PopoverProps } from '../Popover/Popover';
 import type { PortalProps } from '../../types/Portal';
 
-import classes from './HelpText.module.css';
 import { HelpTextIcon } from './HelpTextIcon';
 
 export type HelpTextProps = {
@@ -54,7 +53,12 @@ const HelpText = ({
           variant='tertiary'
         >
           <button
-            className={cl(classes.helpTextButton, `fds-focus`, className)}
+            className={cl(
+              `fds-helptext--${size}`,
+              'fds-helptext__button',
+              `fds-focus`,
+              className,
+            )}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
             {...rest}
@@ -62,21 +66,20 @@ const HelpText = ({
             <HelpTextIcon
               filled
               className={cl(
-                classes.helpTextIcon,
-                classes.helpTextIconFilled,
-                classes[size],
+                `fds-helptext__icon`,
+                `fds-helptext__icon--filled`,
                 className,
               )}
               openState={open}
             />
             <HelpTextIcon
-              className={cl(classes.helpTextIcon, classes[size], className)}
+              className={cl(`fds-helptext__icon`, className)}
               openState={open}
             />
             <span className={`fds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content className={classes.helpTextContent}>
+        <Popover.Content className='fds-helptext__content'>
           {children}
         </Popover.Content>
       </Popover>

@@ -7,7 +7,6 @@ import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useFieldset } from './useFieldset';
-import classes from './Fieldset.module.css';
 import { FieldsetContext } from './FieldsetContext';
 
 export type FieldsetProps = {
@@ -57,10 +56,10 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         <fieldset
           {...fieldsetProps}
           className={cl(
-            classes.fieldset,
-            !hideLegend && classes.withSpacing,
-            readOnly && classes.readonly,
-            props?.disabled && classes.disabled,
+            'fds-fieldset',
+            !hideLegend && 'fds-fieldset--spacing',
+            readOnly && 'fds-fieldset--readonly',
+            props?.disabled && 'fds-fieldset--disabled',
             className,
           )}
           ref={ref}
@@ -70,16 +69,16 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             asChild
             size={size}
           >
-            <legend className={classes.legend}>
+            <legend className={'fds-fieldset__legend'}>
               <span
                 className={cl(
-                  classes.legendContent,
+                  'fds-fieldset__legend__content',
                   hideLegend && `fds-sr-only`,
                 )}
               >
                 {readOnly && (
                   <PadlockLockedFillIcon
-                    className={classes.padlock}
+                    className={'fds-fieldset__readonly__icon'}
                     aria-hidden
                   />
                 )}
@@ -90,12 +89,15 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           {description && (
             <Paragraph
               size={size}
+              variant='short'
               asChild
-              short
             >
               <div
                 id={descriptionId}
-                className={cl(classes.description, hideLegend && `fds-sr-only`)}
+                className={cl(
+                  'fds-fieldset__description',
+                  hideLegend && `fds-sr-only`,
+                )}
               >
                 {description}
               </div>
@@ -106,7 +108,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
-            className={classes.errorWrapper}
+            className={'fds-fieldset__error-message'}
           >
             {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
           </div>
