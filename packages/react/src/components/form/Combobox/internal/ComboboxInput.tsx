@@ -135,6 +135,7 @@ export const ComboboxInput = ({
           {...formFieldProps.inputProps}
           onChange={(e) => {
             onChange(e);
+            !open && setOpen(true);
             rest.onChange && rest.onChange(e);
           }}
         />
