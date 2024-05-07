@@ -5,8 +5,6 @@ import cl from 'clsx';
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
 
-import classes from './Group.module.css';
-
 export type RadioGroupContextProps = {
   name?: string;
   value?: string;
