@@ -1,12 +1,14 @@
 {
   "tokenSetOrder": [
-    "Core/modes/Light",
-    "Core/modes/Dark",
+    "Core/modes/light",
+    "Core/modes/dark",
     "Core/size/default",
     "Core/typography/default",
     "Core/styles/default",
-    "Themes/theme1",
-    "Themes/theme2",
+    "themes/theme1",
+    "themes/theme2",
+    "themes/theme3",
+    "themes/theme4",
     "semantic/color",
     "semantic/style",
     "Viewport/@320",

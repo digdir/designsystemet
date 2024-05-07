@@ -15,12 +15,6 @@
       "type": "textDecoration"
     }
   },
-  "fontFamilies": {
-    "main": {
-      "value": "Inter",
-      "type": "fontFamilies"
-    }
-  },
   "font-static": {
     "small": {
       "value": "16",
