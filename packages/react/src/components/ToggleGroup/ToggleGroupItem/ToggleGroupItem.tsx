@@ -5,7 +5,6 @@ import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
-import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
 
 export type ToggleGroupItemProps = {
@@ -25,7 +24,7 @@ export const ToggleGroupItem = forwardRef<
       value={rest.value}
     >
       <Button
-        className={cl(classes.toggleGroupItem, className)}
+        className={cl('fds-togglegroup__item', className)}
         icon={icon}
         color='first'
         variant={active ? 'primary' : 'tertiary'}

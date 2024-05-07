@@ -17,4 +17,8 @@
   .fds-togglegroup__input {
     display: none;
   }
+
+  .fds-togglegroup__item:focus-visible {
+    z-index: 1;
+  }
 }
