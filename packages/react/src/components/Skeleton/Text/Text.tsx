@@ -1,7 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import cl from 'clsx';
 
-import classes from '../Skeleton.module.css';
 import { useSynchronizedAnimation } from '../../../hooks';
 
 export type TextProps = {
@@ -20,17 +19,17 @@ export const Text = ({
   children,
   ...rest
 }: TextProps) => {
-  const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
+  const ref = useSynchronizedAnimation<HTMLDivElement>(
+    'fds-skeleton-opacity-fade',
+  );
 
   return (
     <div
       ref={ref}
       className={cl(
-        classes.skeleton,
-        classes.text,
-        {
-          [classes.hasChildren]: Boolean(children),
-        },
+        'fds-skeleton',
+        'fds-skeleton--text',
+        Boolean(children) && 'fds-skeleton--has-children',
         className,
       )}
       style={{ width, height, ...style }}
