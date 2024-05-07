@@ -1,10 +1,9 @@
 import { forwardRef, useContext } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
 
-import classes from './Pagination.module.css';
 import { PaginationContext } from './PaginationRoot';
 
 export type PaginationEllipsisProps = Omit<
@@ -21,7 +20,7 @@ export const PaginationEllipsis = forwardRef<
   return (
     <Paragraph
       ref={ref}
-      className={cl(classes.ellipsis, className)}
+      className={cl('fds-pagination__ellipsis', className)}
       size={size}
       {...rest}
     >
