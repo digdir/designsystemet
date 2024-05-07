@@ -1,23 +1,16 @@
 {
   "tokenSetOrder": [
-    "Core/modes/light",
-    "Core/modes/dark",
-    "Core/size/default",
-    "Core/typography/default",
-    "Core/styles/default",
+    "core/modes/light",
+    "core/modes/dark",
+    "core/size/default",
+    "core/typography/default",
+    "core/styles/default",
     "themes/theme1",
     "themes/theme2",
     "themes/theme3",
     "themes/theme4",
     "semantic/color",
     "semantic/style",
-    "Viewport/@320",
-    "Viewport/@375",
-    "Viewport/@576",
-    "Viewport/@768",
-    "Viewport/@992",
-    "Viewport/@1200",
-    "Viewport/@1440",
     "Figma/components"
   ]
 }
