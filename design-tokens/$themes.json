@@ -4,13 +4,7 @@
     "name": "Light",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color": "disabled",
-      "semantic/style": "disabled",
-      "Core/modes/Light": "enabled",
-      "Core/modes/Dark": "disabled",
-      "Core/size/default": "disabled",
-      "Core/typography/default": "disabled",
-      "Core/styles/default": "disabled"
+      "Core/modes/Light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:29:3798",
     "$figmaModeId": "29:70",
@@ -188,13 +182,7 @@
     "name": "Dark",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color": "disabled",
-      "semantic/style": "disabled",
-      "Core/modes/Light": "disabled",
-      "Core/modes/Dark": "enabled",
-      "Core/size/default": "disabled",
-      "Core/typography/default": "disabled",
-      "Core/styles/default": "disabled"
+      "Core/modes/Dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:29:3798",
     "$figmaModeId": "29:71",
@@ -252,14 +240,7 @@
     "name": "theme1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Themes/theme1": "enabled",
-      "semantic/color": "disabled",
-      "semantic/style": "disabled",
-      "Core/modes/Light": "disabled",
-      "Core/modes/Dark": "disabled",
-      "Core/size/default": "disabled",
-      "Core/typography/default": "disabled",
-      "Core/styles/default": "disabled"
+      "Themes/theme1": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:29:3994",
     "$figmaModeId": "29:72",
@@ -347,14 +328,7 @@
     "name": "theme2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Themes/theme2": "enabled",
-      "semantic/color": "disabled",
-      "semantic/style": "disabled",
-      "Core/modes/Light": "disabled",
-      "Core/modes/Dark": "disabled",
-      "Core/size/default": "disabled",
-      "Core/typography/default": "disabled",
-      "Core/styles/default": "disabled"
+      "Themes/theme2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:29:3994",
     "$figmaModeId": "29:73",
@@ -396,15 +370,7 @@
     "id": "541629445ef90ad5363f9e88f52a1ccb617e6f84",
     "name": "semantic",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "semantic/color": "disabled",
-      "semantic/style": "disabled",
-      "Core/modes/Light": "disabled",
-      "Core/modes/Dark": "disabled",
-      "Core/size/default": "disabled",
-      "Core/typography/default": "disabled",
-      "Core/styles/default": "disabled"
-    },
+    "selectedTokenSets": {},
     "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:29:4100",
     "$figmaModeId": "29:74",
