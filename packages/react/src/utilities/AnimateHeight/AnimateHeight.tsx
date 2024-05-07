@@ -57,7 +57,11 @@ export const AnimateHeight = ({
   return (
     <div
       {...rest}
-      className={cl(`fds-animate-height--${state}`, className)}
+      className={cl(
+        'fds-animate-height',
+        `fds-animate-height--${state}`,
+        className,
+      )}
       style={{ height, transition, ...style }}
     >
       <div
