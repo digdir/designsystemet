@@ -12,29 +12,14 @@ import {
   Table,
 } from '@digdir/designsystemet-react';
 import customTheme from './customTheme';
-import metadata from '../design-tokens/$metadata.json';
 
-type Viewport = {
-  name: string;
+const viewports = [320, 375, 576, 768, 992, 1200, 1440].map((width) => ({
+  name: `${width}px`,
   styles: {
-    width: string;
-    height: string;
-  };
-};
-
-const viewports: Viewport[] = metadata.tokenSetOrder
-  .filter((name) => name.toLowerCase().includes('viewport'))
-  .map((name) => {
-    const width = name.replace(/\D/g, '');
-
-    return {
-      name: `@${width}`,
-      styles: {
-        width: `${width}px`,
-        height: '100%',
-      },
-    };
-  });
+    width: `${width}px`,
+    height: '100%',
+  },
+}));
 
 type Props = Record<string, unknown>;
 
