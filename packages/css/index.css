@@ -30,6 +30,7 @@
 @import url('./fieldset.css');
 @import url('./chip');
 @import url('./divider.css');
+@import url('./skeleton.css');
 @import url('./tag.css');
 @import url('./error-summary.css');
 @import url('./togglegroup.css');
