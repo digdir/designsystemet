@@ -455,11 +455,6 @@
       "type": "spacing"
     }
   },
-  "base_spacing": {
-    "value": "4",
-    "type": "spacing",
-    "description": "4px"
-  },
   "sizing": {
     "0": {
       "value": "{base}*0",
@@ -541,11 +536,6 @@
       "value": "{base}*30",
       "type": "sizing"
     }
-  },
-  "base_sizing": {
-    "value": "4",
-    "type": "sizing",
-    "description": "4px"
   },
   "border_width": {
     "default": {
