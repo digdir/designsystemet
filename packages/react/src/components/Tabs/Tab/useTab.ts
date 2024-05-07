@@ -7,7 +7,6 @@ import type { TabProps } from './Tab';
 
 type UseTab = (props: TabProps) => {
   active: boolean;
-  size?: 'small' | 'medium' | 'large';
 } & Pick<
   HTMLAttributes<HTMLButtonElement>,
   'id' | 'aria-selected' | 'role' | 'onClick'
@@ -23,7 +22,6 @@ export const useTabItem: UseTab = (props: TabProps) => {
   return {
     ...rest,
     active: active,
-    size: tabs?.size,
     id: buttonId,
     'aria-selected': active,
     role: 'tab',
