@@ -1,8 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { Children, isValidElement, forwardRef, createContext } from 'react';
-import cl from 'clsx';
-
-import classes from '../Chip.module.css';
+import cl from 'clsx/lite';
 
 export type ChipGroupContext = {
   size?: 'small' | 'medium' | 'large';
@@ -21,7 +19,11 @@ export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
   ({ children, size = 'medium', className, ...rest }: ChipGroupProps, ref) => (
     <ul
       ref={ref}
-      className={cl(classes.groupContainer, classes[size], className)}
+      className={cl(
+        `fds-chip--group-container`,
+        `fds-chip--${size}`,
+        className,
+      )}
       {...rest}
     >
       <ChipGroupContext.Provider value={{ size }}>
