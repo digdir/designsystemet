@@ -10,7 +10,6 @@ import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
-import classes from './Textfield.module.css';
 
 export type TextfieldProps = {
   /** Label */
@@ -105,10 +104,11 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         <div
           style={style}
           className={cl(
-            classes.formField,
-            classes[size],
-            inputProps.disabled && classes.disabled,
-            readOnly && classes.readonly,
+            `fds-textfield`,
+            `fds-textfield--${size}`,
+            inputProps.disabled && `fds-textfield--disabled`,
+            readOnly && `fds-textfield--readonly`,
+            hasError && `fds-textfield--error`,
             className,
           )}
         >
@@ -117,12 +117,12 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl(classes.label, hideLabel && `fds-sr-only`)}
+              className={cl(`fds-textfield__label`, hideLabel && `fds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={classes.padlock}
+                  className='fds-textfield__readonly__icon'
                 />
               )}
               <span>{label}</span>
@@ -135,21 +135,27 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(classes.description, hideLabel && `fds-sr-only`)}
+                className={cl(
+                  `fds-textfield__description`,
+                  hideLabel && `fds-sr-only`,
+                )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
-          <div className={cl(classes.field, hasError && classes.error)}>
+          <div className='fds-textfield__field'>
             {prefix && (
               <Paragraph
                 asChild
                 size={size}
-                short
+                variant='short'
               >
                 <div
-                  className={cl(classes.adornment, classes.prefix)}
+                  className={cl(
+                    `fds-textfield__adornment`,
+                    `fds-textfield__prefix`,
+                  )}
                   aria-hidden='true'
                 >
                   {prefix}
@@ -158,11 +164,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             )}
             <input
               className={cl(
-                classes.input,
-                classes[size],
+                `fds-textfield__input`,
                 `fds-focus`,
-                prefix && classes.inputPrefix,
-                suffix && classes.inputSuffix,
+                prefix && `fds-textfield__input--with-prefix`,
+                suffix && `fds-textfield__input--with-suffix`,
               )}
               ref={ref}
               type={type}
@@ -179,10 +184,13 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               <Paragraph
                 asChild
                 size={size}
-                short
+                variant='short'
               >
                 <div
-                  className={cl(classes.adornment, classes.suffix)}
+                  className={cl(
+                    `fds-textfield__adornment`,
+                    `fds-textfield__suffix`,
+                  )}
                   aria-hidden='true'
                 >
                   {suffix}
@@ -199,7 +207,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             />
           )}
           <div
-            className={classes.errorMessage}
+            className='fds-textfield__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

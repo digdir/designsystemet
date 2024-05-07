@@ -7,7 +7,6 @@ import { useMergeRefs } from '@floating-ui/react';
 import { ComboboxContext } from '../ComboboxContext';
 import classes from '../Combobox.module.css';
 import { Box } from '../../../Box';
-import textFieldClasses from '../../Textfield/Textfield.module.css';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import type { ComboboxProps } from '../Combobox';
@@ -111,7 +110,7 @@ export const ComboboxInput = ({
       {...props}
       aria-disabled={disabled}
       className={cl(
-        textFieldClasses.input,
+        'fds-textfield__input',
         classes.inputWrapper,
         classes[size],
         readOnly && classes.readonly,

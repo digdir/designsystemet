@@ -1,12 +1,36 @@
 @charset "UTF-8";
 
-@layer fds.utils, fds.btn;
+@layer fds.typography, fds.utils, fds.btn;
 
 /** Import order defines ordinal specificity for layers */
 @import url('./react-css-modules.css');
 @import url('./button.css');
 @import url('./utils.css');
+@import url('./box.css');
 @import url('./alert.css');
 @import url('./ingress.css');
 @import url('./skiplink.css');
 @import url('./accordion.css');
+@import url('./switch.css');
+@import url('./checkbox.css');
+@import url('./error-message.css');
+@import url('./label.css');
+@import url('./heading.css');
+@import url('./paragraph.css');
+@import url('./radio.css');
+@import url('./search.css');
+@import url('./native-select.css');
+@import url('./textfield.css');
+@import url('./textarea.css');
+@import url('./helptext.css');
+@import url('./modal.css');
+@import url('./list.css');
+@import url('./card.css');
+@import url('./link.css');
+@import url('./fieldset.css');
+@import url('./chip');
+@import url('./divider.css');
+@import url('./tag.css');
+@import url('./error-summary.css');
+@import url('./togglegroup.css');
+@import url('./tooltip.css');

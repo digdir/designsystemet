@@ -3,19 +3,11 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
-
-import classes from './Paragraph.module.css';
-
 export type ParagraphProps = {
   /** Changes text sizing */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Reduces line-height for short paragraphs
-   * @deprecated Use `variant="short"` instead
-   */
-  short?: boolean;
   /** Adjusts styling for paragraph length */
   variant?: 'long' | 'short';
   /**
@@ -26,36 +18,18 @@ export type ParagraphProps = {
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `Paragraph` to display text with paragraph text styles. */
-export const Paragraph: OverridableComponent<
-  ParagraphProps,
-  HTMLParagraphElement
-> = forwardRef(
-  (
-    {
-      className,
-      size = 'medium',
-      spacing,
-      as = 'p',
-      asChild,
-      short,
-      variant,
-      ...rest
-    },
-    ref,
-  ) => {
-    const Component = asChild ? Slot : as;
+export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ className, size = 'medium', spacing, asChild, variant, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'p';
 
     return (
       <Component
         ref={ref}
         className={cl(
-          classes.paragraph,
-          classes[size],
-          {
-            [classes.spacing]: !!spacing,
-            [classes.short]: short,
-          },
-          variant && classes[variant],
+          'fds-paragraph',
+          `fds-paragraph--${size}`,
+          spacing && 'fds-paragraph--spacing',
+          variant && `fds-paragraph--${variant}`,
           className,
         )}
         {...rest}

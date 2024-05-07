@@ -1,0 +1,43 @@
+@layer fds.typography.error-message {
+  .fds-error-message {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
+
+    margin: 0;
+  }
+
+  .fds-error-message--error {
+    color: var(--fds-semantic-text-danger-default);
+  }
+
+  .fds-error-message--spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
+
+  .fds-error-message--large {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
+
+    font: var(--fds-typography-error_message-large);
+    font-family: inherit;
+  }
+
+  .fds-error-message--medium {
+    --fdsc-bottom-spacing: var(--fds-spacing-5);
+
+    font: var(--fds-typography-error_message-medium);
+    font-family: inherit;
+  }
+
+  .fds-error-message--small {
+    --fdsc-bottom-spacing: var(--fds-spacing-4);
+
+    font: var(--fds-typography-error_message-small);
+    font-family: inherit;
+  }
+
+  .fds-error-message--xsmall {
+    --fdsc-bottom-spacing: var(--fds-spacing-3);
+
+    font: var(--fds-typography-error_message-xsmall);
+    font-family: inherit;
+  }
+}

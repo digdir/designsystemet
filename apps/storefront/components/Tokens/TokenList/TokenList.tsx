@@ -4,6 +4,7 @@ import cl from 'clsx';
 import type { TransformedToken as Token } from 'style-dictionary';
 import {
   DropdownMenu,
+  Heading,
   Link,
   Paragraph,
   Table,
@@ -83,7 +84,13 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <h4>{capitalizeString(group)}</h4>
+        <Heading
+          size='xsmall'
+          level={4}
+          className={classes.title}
+        >
+          {capitalizeString(group)}
+        </Heading>
         <div className={cl(classes.group)}>
           <div
             className={cl(classes.cards, {
@@ -129,7 +136,11 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       </div>
 
       <div className={classes.textContainer}>
-        <h4 className={classes.title}>
+        <Heading
+          level={5}
+          size='xxsmall'
+          className={classes.name}
+        >
           {capitalizeString(title)}
           &nbsp;
           <ClipboardBtn
@@ -137,7 +148,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
             text='CSS'
             value={token.name}
           />
-        </h4>
+        </Heading>
         {!hideValue && <div className={classes.value}>{token.value}</div>}
       </div>
     </div>

@@ -5,7 +5,9 @@
 .content > p,
 .content > h2,
 .content > h3,
-.content > h4 {
+.content > h4,
+.content > ul,
+.content > ol {
   max-width: 740px;
 }
 
@@ -78,7 +80,7 @@
 }
 
 /* Styling for links */
-.content > p > a,
+.content > p a,
 .content > ul > li a,
 .content > ol > li a {
   color: var(--fds-semantic-text-action-default);
@@ -154,7 +156,9 @@
   font-weight: 600;
 }
 
-.content p code {
+.content p code,
+.content ul code,
+.content ol code {
   padding: 0.2em 0.5em;
   margin: 1px;
   font-size: 0.9em;

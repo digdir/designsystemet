@@ -6,7 +6,6 @@ import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 import { omit } from '../../../utilities';
 import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
-import classes from './NativeSelect.module.css';
 import { useNativeSelect } from './useNativeSelect';
 
 export type NativeSelectProps = {
@@ -18,6 +17,10 @@ export type NativeSelectProps = {
    * @default false
    * */
   hideLabel?: boolean;
+  /**
+   * Description for select
+   */
+  description?: ReactNode;
   /** Set to true to enable multiple selection. */
   multiple?: boolean;
   /**
@@ -43,6 +46,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       children,
       disabled = false,
       label,
+      description,
       hideLabel = false,
       error,
       className,
@@ -52,6 +56,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
     const {
       selectProps,
+      descriptionId,
       errorId,
       readOnly = false,
       size = 'medium',
@@ -64,10 +69,10 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       >
         <div
           className={cl(
-            classes.formField,
-            disabled && classes.disabled,
-            readOnly && classes.readOnly,
-            error && classes.error,
+            'fds-native-select--container',
+            disabled && 'fds-native-select--disabled',
+            readOnly && 'fds-native-select--readonly',
+            error && 'fds-native-select--error',
           )}
         >
           {label && (
@@ -75,27 +80,45 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               weight='medium'
               size={size}
               htmlFor={selectProps.id}
-              className={cl(classes.label, hideLabel && 'fds-sr-only')}
+              className={cl(
+                'fds-native-select__label',
+                hideLabel && 'fds-sr-only',
+              )}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={classes.padlock}
+                  className={'fds-native-select__readonly__icon'}
                 />
               )}
               {label}
             </Label>
           )}
-
+          {description && (
+            <Paragraph
+              asChild
+              size={size}
+            >
+              <div
+                id={descriptionId}
+                className={cl(
+                  `fds-native-select__description`,
+                  hideLabel && `fds-sr-only`,
+                )}
+              >
+                {description}
+              </div>
+            </Paragraph>
+          )}
           <select
             disabled={disabled || readOnly}
             ref={ref}
             size={htmlSize}
             className={cl(
-              classes.select,
-              classes[size],
+              'fds-native-select',
+              `fds-native-select--${size}`,
               `fds-focus`,
-              props.multiple && classes.multiple,
+              props.multiple && 'fds-native-select--multiple',
               className,
             )}
             {...omit(['size', 'error', 'errorId'], rest)}
@@ -107,7 +130,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           {error && (
             <div
               id={errorId}
-              className={classes.errorMessage}
+              className={'fds-native-select__error-message'}
               aria-live='polite'
               aria-relevant='additions removals'
             >

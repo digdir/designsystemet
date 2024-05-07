@@ -11,8 +11,6 @@ import type {
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
 type RovingTabindexRootBaseProps = {
   /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */
   children: ReactNode;
@@ -50,72 +48,69 @@ export const RovingTabindexContext = createContext<RovingTabindexProps>({
   focusableValue: null,
 });
 
-export const RovingTabindexRoot: OverridableComponent<
-  RovingTabindexRootBaseProps,
-  HTMLElement
-> = forwardRef(
-  ({ valueId, as = 'div', asChild, onBlur, onFocus, ...rest }, ref) => {
-    const Component = asChild ? Slot : as;
+export const RovingTabindexRoot = forwardRef<
+  HTMLElement,
+  RovingTabindexRootBaseProps
+>(({ valueId, asChild, onBlur, onFocus, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'div';
 
-    const [focusableValue, setFocusableValue] = useState<string | null>(null);
-    const [isShiftTabbing, setIsShiftTabbing] = useState(false);
-    const elements = useRef(new Map<string, HTMLElement>());
-    const myRef = useRef<HTMLElement>();
+  const [focusableValue, setFocusableValue] = useState<string | null>(null);
+  const [isShiftTabbing, setIsShiftTabbing] = useState(false);
+  const elements = useRef(new Map<string, HTMLElement>());
+  const myRef = useRef<HTMLElement>();
 
-    const refs = useMergeRefs([ref, myRef]);
+  const refs = useMergeRefs([ref, myRef]);
 
-    const getOrderedItems = (): RovingTabindexElement[] => {
-      if (!myRef.current) return [];
-      const elementsFromDOM = Array.from(
-        myRef.current.querySelectorAll<HTMLElement>(
-          '[data-roving-tabindex-item]',
-        ),
-      );
-
-      return Array.from(elements.current)
-        .sort(
-          (a, b) =>
-            elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]),
-        )
-        .map(([value, element]) => ({ value, element }));
-    };
-
-    return (
-      <RovingTabindexContext.Provider
-        value={{
-          elements,
-          getOrderedItems,
-          focusableValue,
-          setFocusableValue,
-          onShiftTab: () => {
-            setIsShiftTabbing(true);
-          },
-        }}
-      >
-        <Component
-          {...rest}
-          tabIndex={isShiftTabbing ? -1 : 0}
-          onBlur={(e: FocusEvent<HTMLElement>) => {
-            onBlur?.(e);
-            setIsShiftTabbing(false);
-          }}
-          onFocus={(e: FocusEvent<HTMLElement>) => {
-            onFocus?.(e);
-            if (e.target !== e.currentTarget) return;
-            const orderedItems = getOrderedItems();
-            if (orderedItems.length === 0) return;
-
-            if (focusableValue != null) {
-              elements.current.get(focusableValue)?.focus();
-            } else if (valueId != null) {
-              elements.current.get(valueId)?.focus();
-            } else {
-              orderedItems.at(0)?.element.focus();
-            }
-          }}
-          ref={refs}
-        />
-      </RovingTabindexContext.Provider>
+  const getOrderedItems = (): RovingTabindexElement[] => {
+    if (!myRef.current) return [];
+    const elementsFromDOM = Array.from(
+      myRef.current.querySelectorAll<HTMLElement>(
+        '[data-roving-tabindex-item]',
+      ),
     );
-  },
-);
+
+    return Array.from(elements.current)
+      .sort(
+        (a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]),
+      )
+      .map(([value, element]) => ({ value, element }));
+  };
+
+  return (
+    <RovingTabindexContext.Provider
+      value={{
+        elements,
+        getOrderedItems,
+        focusableValue,
+        setFocusableValue,
+        onShiftTab: () => {
+          setIsShiftTabbing(true);
+        },
+      }}
+    >
+      <Component
+        {...rest}
+        tabIndex={isShiftTabbing ? -1 : 0}
+        onBlur={(e: FocusEvent<HTMLElement>) => {
+          onBlur?.(e);
+          setIsShiftTabbing(false);
+        }}
+        onFocus={(e: FocusEvent<HTMLElement>) => {
+          onFocus?.(e);
+          if (e.target !== e.currentTarget) return;
+          const orderedItems = getOrderedItems();
+          if (orderedItems.length === 0) return;
+
+          if (focusableValue != null) {
+            elements.current.get(focusableValue)?.focus();
+          } else if (valueId != null) {
+            elements.current.get(valueId)?.focus();
+          } else {
+            orderedItems.at(0)?.element.focus();
+          }
+        }}
+        ref={refs}
+      />
+    </RovingTabindexContext.Provider>
+  );
+});

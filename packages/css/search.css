@@ -1,0 +1,170 @@
+@layer fds.search {
+  .fds-search {
+    display: inline-grid;
+    width: 100%;
+    gap: var(--fds-spacing-2);
+  }
+
+  .fds-search--small {
+    --f-search-button-clear-size: var(--fds-sizing-5);
+  }
+
+  .fds-search--medium {
+    --f-search-button-clear-size: var(--fds-sizing-6);
+  }
+
+  .fds-search--large {
+    --f-search-button-clear-size: var(--fds-sizing-8);
+  }
+
+  .fds-search__error:empty {
+    display: none;
+  }
+
+  .fds-search__label {
+    min-width: min-content;
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+  }
+
+  .fds-search__field {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    border-radius: var(--fds-border_radius-medium);
+    position: relative;
+  }
+
+  .fds-search__icon {
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+    left: var(--fds-spacing-4);
+    transform: scale(1.5);
+    pointer-events: none;
+  }
+
+  [type='search']::-webkit-search-decoration,
+  [type='search']::-webkit-search-cancel-button {
+    appearance: none;
+  }
+
+  .fds-search__input {
+    font: inherit;
+    font-family: inherit;
+    position: relative;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+    height: var(--fds-sizing-10);
+    width: 100%;
+    appearance: none;
+    padding: 0 var(--fds-spacing-3);
+    border: solid 1px var(--fds-semantic-border-input-default);
+    border-radius: var(--fds-border_radius-medium);
+  }
+
+  .fds-search__input.fds-search__input--with-search-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .fds-search__input:disabled {
+    cursor: not-allowed;
+  }
+
+  .fds-search__input[type='search']:focus-visible {
+    z-index: 1;
+  }
+
+  .fds-search--disabled {
+    opacity: var(--fds-opacity-disabled);
+  }
+
+  .fds-search__search-button {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .fds-search__search-button:focus-visible {
+    z-index: 1;
+  }
+
+  .fds-search__clear-button {
+    color: var(--fds-semantic-text-neutral-default);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: none;
+    border: none;
+    right: 0.6em;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    height: var(--f-search-button-clear-size);
+    width: var(--f-search-button-clear-size);
+    border-radius: var(--fds-border_radius-medium);
+    font-size: 1.25rem;
+    padding: 0;
+    z-index: 2;
+  }
+
+  .fds-search--small .fds-search__input {
+    --f-search-button-clear-size: var(--fds-sizing-4);
+
+    height: var(--fds-sizing-10);
+    padding: 0 var(--fds-spacing-3);
+    padding-right: 2.5em;
+  }
+
+  .fds-search--small .fds-search__icon {
+    left: var(--fds-spacing-3);
+  }
+
+  .fds-search--medium .fds-search__input {
+    --f-search-button-clear-size: var(--fds-sizing-6);
+
+    height: var(--fds-sizing-12);
+    padding: 0 var(--fds-spacing-4);
+    padding-right: 2.2em;
+  }
+
+  .fds-search--medium .fds-search__icon {
+    left: var(--fds-spacing-4);
+  }
+
+  .fds-search--large .fds-search__input {
+    --f-search-button-clear-size: var(--fds-sizing-12);
+
+    height: var(--fds-sizing-14);
+    padding: 0 var(--fds-spacing-5);
+    padding-right: 2em;
+  }
+
+  .fds-search--large .fds-search__icon {
+    left: var(--fds-spacing-5);
+  }
+
+  .fds-search__input.fds-search__input--simple {
+    padding-left: 2.4em;
+  }
+
+  .fds-search__error-message > .input:not(:focus-visible) {
+    border-color: var(--fds-semantic-border-danger-default);
+    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .fds-search__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+      border-color: var(--fds-semantic-border-input-hover);
+      box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
+    }
+
+    .fds-search__clear-button:not(:focus-visible, :disabled, [aria-disabled]):hover {
+      background: var(--fds-semantic-surface-action-subtle-hover);
+    }
+  }
+}

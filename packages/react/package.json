@@ -14,16 +14,15 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs && yarn run copy-css-to-package",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs",
     "generate:css": "esno ./scripts/generate-css.ts",
     "clean": "rimraf dist && rimraf tsc-build",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
-    "copy-css-to-package": "copyfiles -u 2 ./dist/esm/react-css-modules.css ../css/",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+    "react": ">=18.3.1",
+    "react-dom": ">=18.3.1"
   },
   "publishConfig": {
     "access": "public"
