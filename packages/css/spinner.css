@@ -1,13 +1,13 @@
 @layer fds.spinner {
-  .spinner {
-    animation: rotate-animation linear infinite;
+  .fds-spinner {
+    animation: fds-spinner-rotate-animation linear infinite;
     animation-duration: 2s;
   }
 
-  .spinnerCircle {
+  .fds-spinner__circle {
     stroke-dasharray: 1px, 200px;
     transform-origin: center;
-    animation: stroke-animation ease-in-out infinite;
+    animation: fds-spinner-stroke-animation ease-in-out infinite;
     animation-duration: 2s;
   }
 
@@ -15,36 +15,36 @@
     but don't remove it since it is not decorative.
    */
   @media (prefers-reduced-motion: reduce) {
-    .spinner {
+    .fds-spinner {
       animation-duration: 6s;
     }
 
-    .spinnerCircle {
+    .fds-spinner__circle {
       animation-duration: 6s;
     }
   }
 
-  .default {
+  .fds-spinner--default .fds-spinner__circle {
     stroke: var(--fds-semantic-border-neutral-default);
   }
 
-  .interaction {
+  .fds-spinner--interaction .fds-spinner__circle {
     stroke: var(--fds-semantic-border-action-first-default);
   }
 
-  .inverted {
+  .fds-spinner--inverted .fds-spinner__circle {
     stroke: var(--fds-semantic-surface-neutral-default);
   }
 
-  .background {
+  .fds-spinner__background {
     stroke: var(--fds-semantic-border-neutral-subtle);
   }
 
-  .invertedBackground {
+  .fds-spinner__background--inverted {
     stroke: var(--fds-semantic-surface-neutral-dark);
   }
 
-  @keyframes rotate-animation {
+  @keyframes fds-spinner-rotate-animation {
     0% {
       transform: rotate(0deg);
     }
@@ -54,7 +54,7 @@
     }
   }
 
-  @keyframes stroke-animation {
+  @keyframes fds-spinner-stroke-animation {
     0% {
       stroke-dasharray: 1px, 200px;
       stroke-dashoffset: 0;
