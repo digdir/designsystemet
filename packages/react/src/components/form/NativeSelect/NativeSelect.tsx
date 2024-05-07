@@ -17,6 +17,10 @@ export type NativeSelectProps = {
    * @default false
    * */
   hideLabel?: boolean;
+  /**
+   * Description for select
+   */
+  description?: ReactNode;
   /** Set to true to enable multiple selection. */
   multiple?: boolean;
   /**
@@ -42,6 +46,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       children,
       disabled = false,
       label,
+      description,
       hideLabel = false,
       error,
       className,
@@ -51,6 +56,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
     const {
       selectProps,
+      descriptionId,
       errorId,
       readOnly = false,
       size = 'medium',
@@ -88,7 +94,22 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               {label}
             </Label>
           )}
-
+          {description && (
+            <Paragraph
+              asChild
+              size={size}
+            >
+              <div
+                id={descriptionId}
+                className={cl(
+                  `fds-native-select__description`,
+                  hideLabel && `fds-sr-only`,
+                )}
+              >
+                {description}
+              </div>
+            </Paragraph>
+          )}
           <select
             disabled={disabled || readOnly}
             ref={ref}

@@ -1,9 +1,7 @@
 import * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '../Typography';
-
-import classes from './Table.module.css';
 
 export type TableProps = {
   /**
@@ -49,11 +47,11 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
         <table
           ref={ref}
           className={cl(
-            classes[size],
-            zebra && classes.zebra,
-            stickyHeader && classes.stickyHeader,
-            border && classes.border,
-            classes.table,
+            'fds-table',
+            `fds-table--${size}`,
+            zebra && 'fds-table--zebra',
+            stickyHeader && 'fds-table--sticky-header',
+            border && 'fds-table--border',
             className,
           )}
           {...rest}
