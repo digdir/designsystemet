@@ -72,7 +72,14 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             required,
           }}
         >
-          <div className={cl(inline && classes.inline)}>{children}</div>
+          <div
+            className={cl(
+              'fds-radio-group',
+              inline && 'fds-radio-group--horizontal',
+            )}
+          >
+            {children}
+          </div>
         </RadioGroupContext.Provider>
       </Fieldset>
     );
