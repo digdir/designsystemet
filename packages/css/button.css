@@ -1,6 +1,6 @@
 @layer fds.btn {
   .fds-btn {
-    --fds-btn-padding: 0 var(--fds-spacing-4);
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
 
     display: flex;
     align-items: center;
