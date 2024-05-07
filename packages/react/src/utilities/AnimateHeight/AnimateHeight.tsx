@@ -4,8 +4,6 @@ import cl from 'clsx';
 
 import { useMediaQuery, usePrevious } from '../../hooks';
 
-import classes from './AnimateHeight.module.css';
-
 export type AnimateHeightProps = {
   open: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
@@ -59,12 +57,12 @@ export const AnimateHeight = ({
   return (
     <div
       {...rest}
-      className={cl(classes.root, classes[state], className)}
+      className={cl(`fds-animate-height--${state}`, className)}
       style={{ height, transition, ...style }}
     >
       <div
         ref={contentRef}
-        className={classes.content}
+        className='fds-animate-height__content'
       >
         {children}
       </div>

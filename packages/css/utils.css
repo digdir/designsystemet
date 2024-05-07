@@ -24,3 +24,19 @@
     box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
   }
 }
+
+@layer fds.utils.animate-height {
+  .fds-animate-height--openingOrClosing,
+  .fds-animate-height--closed {
+    overflow: hidden;
+  }
+
+  .fds-animate-height--open .fds-animate-height__content {
+    height: auto;
+  }
+
+  .fds-animate-height--closed .fds-animate-height__content {
+    height: 0;
+    display: none;
+  }
+}
