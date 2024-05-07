@@ -1,0 +1,47 @@
+import { BlogArticleLayout } from '@layouts';
+import { ResponsiveIframe } from '@components';
+import { Contributors } from '@blog';
+
+export default ({ children }) => (
+  <BlogArticleLayout
+    content={children}
+    heading='Designsystemet er endelig ute av beta! 🎉 '
+    ingress='Nå er vi endelig over målstreken og har publisert den aller første versjonen av Designsystemet! Versjon 1 skal være mer stabil og gi mer fleksibilitet.'
+    date='29. mai 2024'
+    author='Designsystemet'
+    imageSrc='/img/bloggen/v1-front.png'
+    imageAlt='...'
+    imageCaption='...'
+  />
+);
+
+Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere og teste oppsettet. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå er vi endelig over målstreken og har publisert en første versjon uten betamerke! 🎉
+
+## Hva er nytt?
+
+### Nytt fargesystem og token-struktur
+
+Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Fargesystemet tar utgangspunkt i organisasjonens brandfarge, samtidig som farger tiltenkt tekst alltid har god nok kontrast mot farger tiltenkt bakgrunner, både for light- og darkmode. Gjennom [brukertester](/bloggen/2024/bachelor-temavelger) har det blant annet kommet frem at `action`-fargene var forvirrende. Denne er nå byttet ut med en `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
+
+- Info om fargesystemet
+- Info om token-strukturen
+- Støtte for dark-mode og contrast-mode.
+
+## Hva må du gjøre?
+
+- migreringsscript til nye tokens?
+
+## Bli med å bidra til videreutviklingen!
+
+- Om roadmap og planer fremover
+- Om bidrag og info om mer formelt samarbeid
+
+<Contributors
+  authors={[
+    'Øyvind Thune',
+    'Tobias Barsnes',
+    'Marianne Røsvik',
+    'Michael Marszalek',
+    'Lasse Straum',
+  ]}
+/>
