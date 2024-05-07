@@ -4,7 +4,6 @@ import cl from 'clsx';
 
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
-import classes from './Tab.module.css';
 import { useTabItem } from './useTab';
 
 export type TabProps = {
@@ -14,7 +13,7 @@ export type TabProps = {
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { children, className, ...rest } = props;
-  const { active, size = 'medium', ...useTabRest } = useTabItem(props);
+  const { active, ...useTabRest } = useTabItem(props);
 
   return (
     <RovingTabindexItem
@@ -24,9 +23,8 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
       <button
         {...useTabRest}
         className={cl(
-          classes.tabItem,
-          classes[size],
-          active && classes.isActive,
+          'fds-tabs__tab',
+          active && 'fds-tabs__tab--active',
           className,
         )}
         ref={ref}

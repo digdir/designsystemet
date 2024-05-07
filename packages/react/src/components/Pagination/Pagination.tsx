@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
 import { PaginationRoot } from './PaginationRoot';
@@ -8,7 +8,6 @@ import { PaginationContent } from './PaginationContent';
 import { PaginationItem } from './PaginationItem';
 import { PaginationButton } from './PaginationButton';
 import { PaginationEllipsis } from './PaginationEllipsis';
-import classes from './Pagination.module.css';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import { usePagination } from './usePagination';
 
@@ -73,7 +72,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              className={cl({ [classes.hidden]: !showPreviousPage })}
+              className={cl(!showPreviousPage && 'fds-pagination--hidden')}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
@@ -110,9 +109,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               onClick={() => {
                 onChange(currentPage + 1);
               }}
-              className={cl({
-                [classes.hidden]: !showNextPage,
-              })}
+              className={cl(!showNextPage && 'fds-pagination--hidden')}
             >
               {!hideLabels && nextLabel}
               <ChevronRightIcon

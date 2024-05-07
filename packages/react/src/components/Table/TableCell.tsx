@@ -1,7 +1,5 @@
 import * as React from 'react';
-import cl from 'clsx';
-
-import classes from './Table.module.css';
+import cl from 'clsx/lite';
 
 export type TableCellProps = React.TdHTMLAttributes<HTMLTableCellElement>;
 
@@ -10,7 +8,7 @@ export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
     return (
       <td
         ref={ref}
-        className={cl(classes.cell, className)}
+        className={cl('fds-table__cell', className)}
         {...rest}
       >
         {children}

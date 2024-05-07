@@ -5,9 +5,7 @@ import {
 } from '@navikt/aksel-icons';
 import type { AriaAttributes } from 'react';
 import * as React from 'react';
-import cl from 'clsx';
-
-import classes from './Table.module.css';
+import cl from 'clsx/lite';
 
 const SORT_ICON = {
   ascending: <ChevronUpIcon />,
@@ -50,9 +48,9 @@ export const TableHeaderCell = React.forwardRef<
     return (
       <th
         className={cl(
-          sortable && classes.sortable,
-          sort && classes.sorted,
-          classes.headerCell,
+          'fds-table__header__cell',
+          sortable && 'fds-table__header__cell--sortable',
+          sort && `fds-table__header__cell--sorted`,
           className,
         )}
         aria-sort={sort}
