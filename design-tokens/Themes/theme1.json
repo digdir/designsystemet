@@ -1,0 +1,314 @@
+{
+  "colors": {
+    "accent": {
+      "background-default": {
+        "value": "{global.green.1}",
+        "type": "color"
+      },
+      "background-subtle": {
+        "value": "{global.green.2}",
+        "type": "color"
+      },
+      "surface-default": {
+        "value": "{global.green.3}",
+        "type": "color"
+      },
+      "surface-hover": {
+        "value": "{global.green.4}",
+        "type": "color"
+      },
+      "surface-active": {
+        "value": "{global.green.5}",
+        "type": "color"
+      },
+      "border-subtle": {
+        "value": "{global.green.6}",
+        "type": "color"
+      },
+      "border-default": {
+        "value": "{global.green.7}",
+        "type": "color"
+      },
+      "border-strong": {
+        "value": "{global.green.8}",
+        "type": "color"
+      },
+      "base-default": {
+        "value": "{global.green.9}",
+        "type": "color"
+      },
+      "base-hover": {
+        "value": "{global.green.10}",
+        "type": "color"
+      },
+      "base-active": {
+        "value": "{global.green.11}",
+        "type": "color"
+      },
+      "text-subtle": {
+        "value": "{global.green.12}",
+        "type": "color"
+      },
+      "text-default": {
+        "value": "{global.green.13}",
+        "type": "color"
+      },
+      "contrast-default": {
+        "value": "{global.green.contrast-1}",
+        "type": "color"
+      },
+      "contrast-subtle": {
+        "value": "{global.green.contrast-2}",
+        "type": "color"
+      }
+    },
+    "neutral": {
+      "1": {
+        "value": "{themes.theme1.accent.1}",
+        "type": "color"
+      },
+      "2": {
+        "value": "{themes.theme1.accent.2}",
+        "type": "color"
+      },
+      "3": {
+        "value": "{themes.theme1.accent.3}",
+        "type": "color"
+      },
+      "4": {
+        "value": "{themes.theme1.accent.4}",
+        "type": "color"
+      },
+      "5": {
+        "value": "{themes.theme1.accent.5}",
+        "type": "color"
+      },
+      "6": {
+        "value": "{themes.theme1.accent.6}",
+        "type": "color"
+      },
+      "7": {
+        "value": "{themes.theme1.accent.7}",
+        "type": "color"
+      },
+      "8": {
+        "value": "{themes.theme1.accent.8}",
+        "type": "color"
+      },
+      "9": {
+        "value": "{themes.theme1.accent.9}",
+        "type": "color"
+      },
+      "10": {
+        "value": "{themes.theme1.accent.10}",
+        "type": "color"
+      },
+      "11": {
+        "value": "{themes.theme1.accent.11}",
+        "type": "color"
+      },
+      "12": {
+        "value": "{themes.theme1.accent.12}",
+        "type": "color"
+      },
+      "13": {
+        "value": "{themes.theme1.accent.13}",
+        "type": "color"
+      },
+      "contrast-1": {
+        "value": "{themes.theme1.accent.contrast-1}",
+        "type": "color"
+      },
+      "contrast-2": {
+        "value": "{themes.theme1.accent.contrast-2}",
+        "type": "color"
+      }
+    },
+    "brand1": {
+      "1": {
+        "value": "{themes.theme1.accent.1}",
+        "type": "color"
+      },
+      "2": {
+        "value": "{themes.theme1.accent.2}",
+        "type": "color"
+      },
+      "3": {
+        "value": "{themes.theme1.accent.3}",
+        "type": "color"
+      },
+      "4": {
+        "value": "{themes.theme1.accent.4}",
+        "type": "color"
+      },
+      "5": {
+        "value": "{themes.theme1.accent.5}",
+        "type": "color"
+      },
+      "6": {
+        "value": "{themes.theme1.accent.6}",
+        "type": "color"
+      },
+      "7": {
+        "value": "{themes.theme1.accent.7}",
+        "type": "color"
+      },
+      "8": {
+        "value": "{themes.theme1.accent.8}",
+        "type": "color"
+      },
+      "9": {
+        "value": "{themes.theme1.accent.9}",
+        "type": "color"
+      },
+      "10": {
+        "value": "{themes.theme1.accent.10}",
+        "type": "color"
+      },
+      "11": {
+        "value": "{themes.theme1.accent.11}",
+        "type": "color"
+      },
+      "12": {
+        "value": "{themes.theme1.accent.12}",
+        "type": "color"
+      },
+      "13": {
+        "value": "{themes.theme1.accent.13}",
+        "type": "color"
+      },
+      "contrast-1": {
+        "value": "{themes.theme1.accent.contrast-1}",
+        "type": "color"
+      },
+      "contrast-2": {
+        "value": "{themes.theme1.accent.contrast-2}",
+        "type": "color"
+      }
+    },
+    "brand2": {
+      "1": {
+        "value": "{themes.theme1.accent.1}",
+        "type": "color"
+      },
+      "2": {
+        "value": "{themes.theme1.accent.2}",
+        "type": "color"
+      },
+      "3": {
+        "value": "{themes.theme1.accent.3}",
+        "type": "color"
+      },
+      "4": {
+        "value": "{themes.theme1.accent.4}",
+        "type": "color"
+      },
+      "5": {
+        "value": "{themes.theme1.accent.5}",
+        "type": "color"
+      },
+      "6": {
+        "value": "{themes.theme1.accent.6}",
+        "type": "color"
+      },
+      "7": {
+        "value": "{themes.theme1.accent.7}",
+        "type": "color"
+      },
+      "8": {
+        "value": "{themes.theme1.accent.8}",
+        "type": "color"
+      },
+      "9": {
+        "value": "{themes.theme1.accent.9}",
+        "type": "color"
+      },
+      "10": {
+        "value": "{themes.theme1.accent.10}",
+        "type": "color"
+      },
+      "11": {
+        "value": "{themes.theme1.accent.11}",
+        "type": "color"
+      },
+      "12": {
+        "value": "{themes.theme1.accent.12}",
+        "type": "color"
+      },
+      "13": {
+        "value": "{themes.theme1.accent.13}",
+        "type": "color"
+      },
+      "contrast-1": {
+        "value": "{themes.theme1.accent.contrast-1}",
+        "type": "color"
+      },
+      "contrast-2": {
+        "value": "{themes.theme1.accent.contrast-2}",
+        "type": "color"
+      }
+    },
+    "brand3": {
+      "1": {
+        "value": "{themes.theme1.accent.1}",
+        "type": "color"
+      },
+      "2": {
+        "value": "{themes.theme1.accent.2}",
+        "type": "color"
+      },
+      "3": {
+        "value": "{themes.theme1.accent.3}",
+        "type": "color"
+      },
+      "4": {
+        "value": "{themes.theme1.accent.4}",
+        "type": "color"
+      },
+      "5": {
+        "value": "{themes.theme1.accent.5}",
+        "type": "color"
+      },
+      "6": {
+        "value": "{themes.theme1.accent.6}",
+        "type": "color"
+      },
+      "7": {
+        "value": "{themes.theme1.accent.7}",
+        "type": "color"
+      },
+      "8": {
+        "value": "{themes.theme1.accent.8}",
+        "type": "color"
+      },
+      "9": {
+        "value": "{themes.theme1.accent.9}",
+        "type": "color"
+      },
+      "10": {
+        "value": "{themes.theme1.accent.10}",
+        "type": "color"
+      },
+      "11": {
+        "value": "{themes.theme1.accent.11}",
+        "type": "color"
+      },
+      "12": {
+        "value": "{themes.theme1.accent.12}",
+        "type": "color"
+      },
+      "13": {
+        "value": "{themes.theme1.accent.13}",
+        "type": "color"
+      },
+      "contrast-1": {
+        "value": "{themes.theme1.accent.contrast-1}",
+        "type": "color"
+      },
+      "contrast-2": {
+        "value": "{themes.theme1.accent.contrast-2}",
+        "type": "color"
+      }
+    }
+  }
+}

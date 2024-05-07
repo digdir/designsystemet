@@ -2,125 +2,125 @@
   "colors": {
     "1": {
       "background-default": {
-        "value": "{system.green.1}",
+        "value": "{global.green.1}",
         "type": "color"
       },
       "background-subtle": {
-        "value": "{system.green.2}",
+        "value": "{global.green.2}",
         "type": "color"
       },
       "surface-default": {
-        "value": "{system.green.3}",
+        "value": "{global.green.3}",
         "type": "color"
       },
       "surface-hover": {
-        "value": "{system.green.4}",
+        "value": "{global.green.4}",
         "type": "color"
       },
       "surface-active": {
-        "value": "{system.green.5}",
+        "value": "{global.green.5}",
         "type": "color"
       },
       "border-subtle": {
-        "value": "{system.green.6}",
+        "value": "{global.green.6}",
         "type": "color"
       },
       "border-default": {
-        "value": "{system.green.7}",
+        "value": "{global.green.7}",
         "type": "color"
       },
       "border-strong": {
-        "value": "{system.green.8}",
+        "value": "{global.green.8}",
         "type": "color"
       },
       "base-default": {
-        "value": "{system.green.9}",
+        "value": "{global.green.9}",
         "type": "color"
       },
       "base-hover": {
-        "value": "{system.green.10}",
+        "value": "{global.green.10}",
         "type": "color"
       },
       "base-active": {
-        "value": "{system.green.11}",
+        "value": "{global.green.11}",
         "type": "color"
       },
       "text-subtle": {
-        "value": "{system.green.12}",
+        "value": "{global.green.12}",
         "type": "color"
       },
       "text-default": {
-        "value": "{system.green.13}",
+        "value": "{global.green.13}",
         "type": "color"
       },
       "contrast-default": {
-        "value": "{system.green.contrast-1}",
+        "value": "{global.green.contrast-1}",
         "type": "color"
       },
       "contrast-subtle": {
-        "value": "{system.green.contrast-2}",
+        "value": "{global.green.contrast-2}",
         "type": "color"
       }
     },
     "2": {
       "1": {
-        "value": "{brand.banana.alt1.1}",
+        "value": "{themes.2.alt1.1}",
         "type": "color"
       },
       "2": {
-        "value": "{brand.banana.alt1.2}",
+        "value": "{themes.2.alt1.2}",
         "type": "color"
       },
       "3": {
-        "value": "{brand.banana.alt1.3}",
+        "value": "{themes.2.alt1.3}",
         "type": "color"
       },
       "4": {
-        "value": "{brand.banana.alt1.4}",
+        "value": "{themes.2.alt1.4}",
         "type": "color"
       },
       "5": {
-        "value": "{brand.banana.alt1.5}",
+        "value": "{themes.2.alt1.5}",
         "type": "color"
       },
       "6": {
-        "value": "{brand.banana.alt1.6}",
+        "value": "{themes.2.alt1.6}",
         "type": "color"
       },
       "7": {
-        "value": "{brand.banana.alt1.7}",
+        "value": "{themes.2.alt1.7}",
         "type": "color"
       },
       "8": {
-        "value": "{brand.banana.alt1.8}",
+        "value": "{themes.2.alt1.8}",
         "type": "color"
       },
       "9": {
-        "value": "{brand.banana.alt1.9}",
+        "value": "{themes.2.alt1.9}",
         "type": "color"
       },
       "10": {
-        "value": "{brand.banana.alt1.10}",
+        "value": "{themes.2.alt1.10}",
         "type": "color"
       },
       "11": {
-        "value": "{brand.banana.alt1.11}",
+        "value": "{themes.2.alt1.11}",
         "type": "color"
       },
       "12": {
-        "value": "{brand.banana.alt1.12}",
+        "value": "{themes.2.alt1.12}",
         "type": "color"
       },
       "13": {
-        "value": "{brand.banana.alt1.13}",
+        "value": "{themes.2.alt1.13}",
         "type": "color"
       },
       "contrast-1": {
-        "value": "{brand.banana.alt1.contrast-1}",
+        "value": "{themes.2.alt1.contrast-1}",
         "type": "color"
       },
       "contrast-2": {
-        "value": "{brand.banana.alt1.contrast-2}",
+        "value": "{themes.2.alt1.contrast-2}",
         "type": "color"
       }
     }

@@ -586,125 +586,125 @@
   "colors": {
     "success": {
       "background-default": {
-        "value": "{system.green.1}",
+        "value": "{global.green.1}",
         "type": "color"
       },
       "background-subtle": {
-        "value": "{system.green.2}",
+        "value": "{global.green.2}",
         "type": "color"
       },
       "surface-default": {
-        "value": "{system.green.3}",
+        "value": "{global.green.3}",
         "type": "color"
       },
       "surface-hover": {
-        "value": "{system.green.4}",
+        "value": "{global.green.4}",
         "type": "color"
       },
       "surface-active": {
-        "value": "{system.green.5}",
+        "value": "{global.green.5}",
         "type": "color"
       },
       "border-subtle": {
-        "value": "{system.green.6}",
+        "value": "{global.green.6}",
         "type": "color"
       },
       "border-default": {
-        "value": "{system.green.7}",
+        "value": "{global.green.7}",
         "type": "color"
       },
       "border-strong": {
-        "value": "{system.green.8}",
+        "value": "{global.green.8}",
         "type": "color"
       },
       "base-default": {
-        "value": "{system.green.9}",
+        "value": "{global.green.9}",
         "type": "color"
       },
       "base-hover": {
-        "value": "{system.green.10}",
+        "value": "{global.green.10}",
         "type": "color"
       },
       "base-active": {
-        "value": "{system.green.11}",
+        "value": "{global.green.11}",
         "type": "color"
       },
       "text-subtle": {
-        "value": "{system.green.12}",
+        "value": "{global.green.12}",
         "type": "color"
       },
       "text-default": {
-        "value": "{system.green.13}",
+        "value": "{global.green.13}",
         "type": "color"
       },
       "contrast-default": {
-        "value": "{system.green.contrast-1}",
+        "value": "{global.green.contrast-1}",
         "type": "color"
       },
       "contrast-subtle": {
-        "value": "{system.green.contrast-2}",
+        "value": "{global.green.contrast-2}",
         "type": "color"
       }
     },
     "accent": {
       "background-default": {
-        "value": "{colors.2.1}",
+        "value": "{colors.neutral.1}",
         "type": "color"
       },
       "background-subtle": {
-        "value": "{colors.2.2}",
+        "value": "{colors.neutral.2}",
         "type": "color"
       },
       "surface-default": {
-        "value": "{colors.2.3}",
+        "value": "{colors.neutral.3}",
         "type": "color"
       },
       "surface-hover": {
-        "value": "{colors.2.4}",
+        "value": "{colors.neutral.4}",
         "type": "color"
       },
       "surface-active": {
-        "value": "{colors.2.5}",
+        "value": "{colors.neutral.5}",
         "type": "color"
       },
       "border-subtle": {
-        "value": "{colors.2.6}",
+        "value": "{colors.neutral.6}",
         "type": "color"
       },
       "border-default": {
-        "value": "{colors.2.7}",
+        "value": "{colors.neutral.7}",
         "type": "color"
       },
       "border-strong": {
-        "value": "{colors.2.8}",
+        "value": "{colors.neutral.8}",
         "type": "color"
       },
       "base-default": {
-        "value": "{colors.2.9}",
+        "value": "{colors.neutral.9}",
         "type": "color"
       },
       "base-hover": {
-        "value": "{colors.2.10}",
+        "value": "{colors.neutral.10}",
         "type": "color"
       },
       "base-active": {
-        "value": "{colors.2.11}",
+        "value": "{colors.neutral.11}",
         "type": "color"
       },
       "text-subtle": {
-        "value": "{colors.2.12}",
+        "value": "{colors.neutral.12}",
         "type": "color"
       },
       "text-default": {
-        "value": "{colors.2.13}",
+        "value": "{colors.neutral.13}",
         "type": "color"
       },
       "contrast-default": {
-        "value": "{colors.2.contrast-1}",
+        "value": "{colors.neutral.contrast-1}",
         "type": "color"
       },
       "contrast-subtle": {
-        "value": "{colors.2.contrast-2}",
+        "value": "{colors.neutral.contrast-2}",
         "type": "color"
       }
     }
