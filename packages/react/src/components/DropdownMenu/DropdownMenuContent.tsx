@@ -105,7 +105,11 @@ export const DropdownMenuContent = forwardRef<
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              className={cl('fds-dropdown', `fds-dropdown${size}`, className)}
+              className={cl(
+                'fds-dropdownmenu',
+                `fds-dropdownmenu${size}`,
+                className,
+              )}
               {...rest}
             >
               {children}

@@ -28,7 +28,7 @@ export const DropdownMenuGroup = forwardRef<
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         ref={ref}
         role='group'
-        className={'fds-dropdown__section'}
+        className={'fds-dropdownmenu__section'}
         {...rest}
       >
         {heading && (
@@ -38,7 +38,7 @@ export const DropdownMenuGroup = forwardRef<
           >
             <h2
               id={headingId}
-              className={'fds-dropdown__heading'}
+              className={'fds-dropdownmenu__heading'}
             >
               {heading}
             </h2>
