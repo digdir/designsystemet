@@ -13,23 +13,23 @@
   }
 
   .fds-pagination--small {
-    --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
+    --fds-pagination-chevron-margin: var(--fds-spacing-2);
   }
 
   .fds-pagination--medium {
-    --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
+    --fds-pagination-chevron-margin: var(--fds-spacing-2);
   }
 
   .fds-pagination--large {
-    --fdsc-pagination-chevron-margin: var(--fds-spacing-2);
+    --fds-pagination-chevron-margin: var(--fds-spacing-2);
   }
 
-  .pagination li:first-child {
-    margin-right: var(--fdsc-pagination-chevron-margin);
+  .fds-pagination li:first-child {
+    margin-right: var(--fds-pagination-chevron-margin);
   }
 
-  .pagination li:last-child {
-    margin-left: var(--fdsc-pagination-chevron-margin);
+  .fds-pagination li:last-child {
+    margin-left: var(--fds-pagination-chevron-margin);
   }
 
   .fds-pagination__item {
@@ -37,29 +37,29 @@
     margin-right: var(--fsdc-pagination-listitem-margin);
   }
 
-  .fds-pagination__item.fds-pagination--small {
+  .fds-pagination--small .fds-pagination__item {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-2);
-    --fdsc-pagination-ellipsis-width: var(--fds-sizing-10);
+    --fds-pagination-ellipsis-width: var(--fds-sizing-10);
   }
 
-  .fds-pagination__item.fds-pagination--medium {
+  .fds-pagination--medium .fds-pagination__item {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-4);
-    --fdsc-pagination-ellipsis-width: var(--fds-sizing-12);
+    --fds-pagination-ellipsis-width: var(--fds-sizing-12);
   }
 
-  .fds-pagination__item.fds-pagination--large {
+  .fds-pagination--large .fds-pagination__item {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-6);
-    --fdsc-pagination-ellipsis-width: var(--fds-sizing-14);
+    --fds-pagination-ellipsis-width: var(--fds-sizing-14);
   }
 
   .fds-pagination__item.fds-pagination--compact {
     --fsdc-pagination-listitem-margin: var(--fds-spacing-0);
-    --fdsc-pagination-chevron-margin: var(--fds-spacing-1);
+    --fds-pagination-chevron-margin: var(--fds-spacing-1);
   }
 
   .fds-pagination__ellipsis {
     margin-top: 0.5em;
     text-align: center;
-    width: var(--fdsc-pagination-ellipsis-width);
+    width: var(--fds-pagination-ellipsis-width);
   }
 }
