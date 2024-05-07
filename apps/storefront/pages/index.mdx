@@ -58,11 +58,18 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   }}
 >
   <BlogCard
+    title='Temabygger som bacheloroppgave'
+    desc='Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!'
+    href='/bloggen/2024/bachelor-temavelger'
+    image='/img/bloggen/temavelger-front.png'
+    tagText='Bloggen'
+    tagColor='first'
+  />
+  <BlogCard
     title='Dynamiske font-størrelser og hvorfor vi gikk bort fra det'
     desc='Det er mulig å bruke dynamiske font-størrelser uten breakpoints, men det medfører noen ulemper.'
     href='/bloggen/2024/fluid-typography'
     image='/img/bloggen/fluid-front.png'
-    featured={false}
     tagText='Bloggen'
     tagColor='first'
   />
@@ -71,15 +78,6 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     desc='Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!'
     href='/bloggen/2024/altinn-studio'
     image='/img/bloggen/altinnstudio-16-9.png'
-    tagText='Bloggen'
-    tagColor='first'
-  />
-  <BlogCard
-    title='Derfor trenger vi et felles designsystem'
-    desc='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
-    href='/bloggen/2023/derfor-trenger-vi-et-felles-designsystem'
-    image='/img/bloggen/miro.png'
-    featured={false}
     tagText='Bloggen'
     tagColor='first'
   />
