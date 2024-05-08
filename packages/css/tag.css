@@ -56,17 +56,17 @@
   }
 
   .fds-tag--first {
-    --fds-tag-background: var(--fds-semantic-surface-first-light);
+    --fds-tag-background: var(--fds-semantic-surface-first-subtle);
     --fds-tag-color: var(--fds-semantic-text-neutral-default);
   }
 
   .fds-tag--second {
-    --fds-tag-background: var(--fds-semantic-surface-second-light);
+    --fds-tag-background: var(--fds-semantic-surface-second-subtle);
     --fds-tag-color: var(--fds-semantic-text-neutral-default);
   }
 
   .fds-tag--third {
-    --fds-tag-background: var(--fds-semantic-surface-third-light);
+    --fds-tag-background: var(--fds-semantic-surface-third-subtle);
     --fds-tag-color: var(--fds-semantic-text-neutral-default);
   }
 }
