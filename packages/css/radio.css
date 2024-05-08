@@ -162,4 +162,10 @@
 
     min-height: var(--fds-sizing-12);
   }
+
+  .fds-radio-group--horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: var(--fds-spacing-2);
+  }
 }
