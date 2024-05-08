@@ -161,11 +161,15 @@ export const SiteConfig = {
           url: 'monstre/skjema',
           children: [
             {
+              name: 'Brukerutløste feilmeldinger',
+              url: 'monstre/brukerutloste-feilmeldinger',
+            },
+            {
               name: 'Obligatoriske og valgfrie skjemafelt',
               url: 'monstre/obligatoriske-og-valgfrie-felt',
             },
             {
-              name: 'Feilmeldinger',
+              name: 'Feilmeldinger (Utgår)',
               url: 'monstre/feilmeldinger',
             },
             {

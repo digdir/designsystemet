@@ -1,0 +1,118 @@
+import { Card, Heading } from '@digdir/designsystemet-react';
+
+import { Meta, Image } from '@components';
+import { MenuPageLayout } from '@layouts';
+
+<Meta
+  title='Brukerutløste feilmeldinger i selvbetjeningsløsninger'
+  description='Slik forteller du brukeren at noe har gått galt eller mangler i et skjema.'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Brukerutløste feilmeldinger i selvbetjeningsløsninger',
+      date: '8.mai 2024',
+    }}
+  />
+);
+
+<Card color='second'>
+  <Card.Content>
+    Anbefalingene er utarbeidet i et tverretatlig sammarbeid mellom Digdir, Nav,
+    Skatteetaten, Politiet, Brønnøysundregistrene og KS Digitale
+    Fellestjenester. Arbeidsgruppen har bestått av UX-designere,
+    innholdsdesignere og UU-spesialister.
+  </Card.Content>
+</Card>
+
+## Hva er en feilmelding?
+
+En feilmelding er et varsel til brukerne om at....
+
+## Hvorfor trenger vi feilmeldinger?
+
+Feilmeldingen beskriver problemet og forklarer hva brukerne må gjøre.
+
+## Hvordan kan vi unngå å gi feilmeldinger?
+
+(Råd om å lage tjenester med god nok ledetekster og beskrivelser, så vi slipper å gi feilmeldinger)
+
+- Oppgi tydelig på forhånd hva brukeren må gjøre for å fylle ut feltene i skjemaet riktig.
+- Godta ulik formatering, for eksempel på felt med tall, som i telefonnummer eller datoer.
+- Brukerne må alltid få mulighet til å redigere felter eller gå tilbake, og kunne pause utfyllingen eller avbryte.
+
+## Er varsel og feilmelding det samme?
+
+Om alert og error message og eventuelle forskjeller
+
+For feil som ikke tilhører et skjemaelement, og som ikke validerer brukerens inndata, kan du bruke alert. Det kan for eksempel være for systemfeil, eller til myke valideringer. Myke valideringer er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen, men som bare gir brukeren informasjon.
+
+## Når skal vi bruke hvilken type feilmelding?
+
+- Ulike komponenttyper vi kan bruke? (toast, inline, osv)
+- Ulike informasjonsnivåer: Info, suksess, varsel, fare?
+- Ha med eksempler
+
+## Ulike typer
+
+- Field error
+- Group error
+- Fieldset (gruppe)
+- Feilmelding basert på input over flere felte
+- Myke validering (Stopper ikke bruker fra å sende inn)
+
+## Oppførselen til feilmeldinger
+
+### Når skal vi vise en feilmelding?
+
+- når brukerne forlater et felt
+- før de starter på en oppgave
+-
+
+### Hvor skal vi vise feilmeldinger?
+
+- I nærheten av feltet med feil
+- Som en oppsummering av flere feil
+
+### Hvor lenge skal vi vise en feilmelding?
+
+....
+
+<br />
+
+### Finnes det tilfeller der vi skal kunne fjerne feilmeldinger?
+
+.......
+
+<br />
+
+## Utseendet på feilmeldinger
+
+## Kontraster og symbolbruk
+
+- Hvorfor vi anbefaler å bruke symbol
+- Annet?
+
+## Slik skriver du en god feilmelding
+
+Om stil og tone, med eksempler
+
+## Validering
+
+Hva betyr validering?
+
+### Hva gjør vi når felter som har feil ikke står i nærheten av hverandre? (Kryssvalidering)
+
+.......
+
+<br />
+## Universell utforming av feilmeldinger{' '}
+
+- WCAG, Elmer - annet teknisk - Aria - Automatiske
+  beskjeder – når kan vi ta over stemmeopplesningen?
+
+<br />
+<br />
+<br />
