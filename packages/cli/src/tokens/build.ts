@@ -8,6 +8,7 @@ import {
 import type { ThemeObject } from '@tokens-studio/types';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
+import * as R from 'ramda';
 
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { groupedTokens, scopedReferenceVariables } from './formatters.js';
@@ -65,16 +66,11 @@ const excludeSource = (token: TransformedToken) => {
   return true;
 };
 
-const getCSSTokensConfig = (
-  brand: Brand,
-  targetFolder = '',
-  tokensets: string[],
-): Config => {
+const getCSSConfig = (brand: Brand, targetFolder = ''): Config => {
   const destinationPath = `${targetFolder}/${brand.toLowerCase()}/`;
 
   return {
     log: { verbosity: 'verbose' },
-    source: tokensets,
     platforms: {
       css: {
         prefix,
@@ -91,7 +87,8 @@ const getCSSTokensConfig = (
         options: {
           fileHeader,
           includeReferences: (token: TransformedToken) =>
-            ['color'].includes(token.type as string),
+            token.name.match(/accent|neutral|brand1|brand2|brand3/) &&
+            token.filePath.includes('semantic/color'),
         },
       },
     },
@@ -155,8 +152,20 @@ export async function run(options: Options): Promise<void> {
       path.resolve(`${tokensPath}/${x}.json`),
     );
 
-    console.log({ name, updatedSets });
-    return getCSSTokensConfig(name, packageTokensPath, updatedSets);
+    const [source, include] = R.partition(
+      R.includes('core/modes'),
+      updatedSets,
+    );
+
+    const config_ = getCSSConfig(name, packageTokensPath);
+
+    const config = {
+      ...config_,
+      source,
+      include,
+    };
+
+    return [name, config];
   });
 
   if (brands.length > 0) {
@@ -166,12 +175,8 @@ export async function run(options: Options): Promise<void> {
 
     console.log('\n🏗️  Start building CSS tokens');
     await Promise.all(
-      configs.map(async (config) => {
-        console.log(
-          `👷 Processing ${config?.platforms?.css?.files?.[0]?.destination}`,
-        );
-
-        console.log('config:', config);
+      configs.map(async ([name, config]) => {
+        console.log(`👷 Processing ${name}`);
 
         const sd = new StyleDictionary();
         const tokensPackageSD = await sd.extend(config);

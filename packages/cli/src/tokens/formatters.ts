@@ -39,6 +39,7 @@ export const scopedReferenceVariables: Format = {
         ) as string;
 
         if (usesReferences(originalValue) && includeReferences(token)) {
+          console.log('including: ', token.name);
           const refs = getReferences(
             originalValue,
             unfilteredTokens ? unfilteredTokens : {},
