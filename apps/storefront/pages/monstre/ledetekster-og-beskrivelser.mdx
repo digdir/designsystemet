@@ -2,7 +2,7 @@ import { MenuPageLayout } from '@layouts';
 import { Meta, Image } from '@components';
 
 <Meta
-  title='Validering og feilmeldinger'
+  title='Ledetekster og forklaringer i skjema'
   description='Slik forteller du brukeren at noe har gått galt eller mangler.'
 />
 
@@ -10,75 +10,38 @@ export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Obligatoriske og valgfrie skjemafelt',
+      title: 'Ledetekster og forklaringer i skjema',
       date: '28. november 2023',
     }}
   />
 );
 
-Det er flere måter å markere obligatoriske felt på som [oppfyller kravene til merking](https://www.uutilsynet.no/veiledning/skjema/38#ledetekster_og_instruksjoner). I dag gjør vi dette ulikt på tvers. Noen bruker asterisk (stjerne), noen bruker ord, andre informerer i forkant om hva som må fylles ut. Klarer vi å gjøre dette mer likt på tvers blir det lettere for innbygger å forstå og kjenne igjen mønsteret på tvers av løsningene våre. Det vil alltid være unntak og ulike kontekster som krever ulik merking.
+Når vi designer et skjema, bør vi starte med å dele det opp over flere sider. Hver side bør handle om kun en ting, for eksempel:
 
-En generell retningslinje er at vi bør unngå å be om informasjon vi ikke trenger, altså unngå valgfrie felt.
+- En ting du vil fortelle brukeren.
+- En avgjørelse brukeren må ta.
+- Ett spørsmål brukeren må svare på.
 
-Her tar vi for oss 3 eksempler.
+Når vi spør om kun en ting om gangen, kan vi sette spørsmålet som overskriften på siden. Sideoverskriften vi da sannsynligvis være det samme som `label` eller `legend` for inndatafeltet.
 
-1. [Ett spørsmål per side](#1-ett-spørsmål-per-side)
-2. [Når vi _må_ ha flere spørsmål per side](#2-når-vi-må-ha-flere-spørsmål-per-side)
-3. [Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt](#3-når-vi-må-ha-en-kombinasjon-av-obligatoriske-og-valgfrie-felt)
+Eksempel:
+På en side som bare ber brukeren om postnummeret deres, blir spørsmålet "Hva er postnummeret ditt? både overskriften på siden og den mest logiske ledeteksten `label` for tekstfeltet.
+For å unngå visuell gjentakelse, bruker vi enten skjult `label` eller `legend`. For brukere som benytter skjermleser, blir det likevel dobbel opplesning. Det kan vi fikse med å sette innholdet til enten `label` eller `legend` som sideoverskrift (unntatt hvis du har flere enn ett spørsmål per side).
 
-## 1. Ett spørsmål per side
+## Ledetekst som overskrift på siden
 
-Hvis vi kan holde oss til ett spørsmål per side, så er det det aller enkleste for brukeren. Gjør vi det, trenger vi ikke å markere hvilke felt som må fylles ut. Da kommer det frem av beskrivelsen at dette må fylles ut.
+Hvis vi vil ha teksten i en ledetekst som overskrift på siden, må du legge `label` inn i `h1`. Det kan vi enten gjøre i HTML eller bruke Nunjucks-makroen og kode den til `isPageHeading: true`.
+Deretter må vi klassifisere `label` så det ser ut som en overskrift.
 
-<Image
-  src='/img/obligatorisk-eks1.png'
-  alt='Skjermbilde av skjema med ett spørsmål på en side, der spørsmålet er obligatorisk'
-  boxShadow={false}
-/>
+## Forklaring som overskrift på siden
 
-Dersom det er frivillig å fylle ut en av sidene, kan dette også komme frem i beskrivelsen.
+Hvis vi ønsker teksten i en forklaring som overskrift på siden, må vi sette `legend` utenfor `h1` .Det kan vi enten gjøre i HTML eller bruke Nunjucks-makroen og kode den til isPageHeading: true.
+Som med ledetekster, må du også klassifisere `legend` slik at den ser ut som en overskrift.
 
-<Image
-  src='/img/obligatorisk-eks1b.png'
-  alt='Skjermbilde av skjema med ett spørsmål på en side, der spørsmålet er valgfritt'
-  boxShadow={false}
-/>
+## Ulike måter å style ledetekster å forklaringer på
 
-## 2. Når vi _må_ ha flere spørsmål per side
-
-Hvis vi _må_ ha flere spørsmål på en side, kan vi informere tydelig i toppen om at _alle felt må fylles ut_. Vi skal bare spørre brukeren om informasjon vi absolutt trenger, og unngå valgfrie felt. (Kan du ikke unngå valgfrie felt, se [eksempel 3](#3-når-vi-må-ha-en-kombinasjon-av-obligatoriske-og-valgfrie-felt)).
-
-- Bruk for eksempel en gul tag, som vist i eksemplet under.
-- Bruk teksten **«Alle felt må fylles ut»**. \
-  (_Ikke_ bruk _"Obligatorisk"_ eller _"Påkrevd"_)
-- Pass på at det ikke er for mange spørsmål på samme side. Det som ligger på samme side bør ha samme tema eller spørsmål som er relatert til hverandre.
-  <Image
-    src='/img/obligatorisk-eks2.png'
-    alt='Skjermbilde av skjema med flere spørsmål per side.'
-    boxShadow={false}
-  />
-
-## 3. Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt
-
-En kombinasjon av obligatoriske og valgfrie felt er ikke ideellt! Men det vil være situasjoner der vi ikke kommer unna det. Hvis vi _må_ ha med valgfrie felt i tillegg til de obligatoriske, bør vi markere alle feltene hver for seg. Da trenger vi ikke å informere i toppen.
-
-- Informer tydelig med taggen «Må fylles ut» eller «Valgfritt» bak hvert spørsmål/hver ledetekst.
-- Ikke bruk ordene «Obligatorisk» eller «Påkrevd».
-- Bruk for eksempel gul tag for «Må fylles ut» og blå for valgfritt.
-- Ikke bruk stjerne for å markere felt som må fylles ut.
-
-<Image
-  src='/img/obligatorisk-eks3.png'
-  alt='Skjermbilde av skjema med flere spørsmål per side, både obligatoriske og valgfrie.'
-  boxShadow={false}
-/>
-
-<br />
-
----
+I stedet for å style en ledetekst som overskrift på siden, kan vi også velge å endre stilen til ledetekster og forklaringer, for eksempel slik at de blir større eller fetere enn standardteksten.
 
 ## Kilder og relevant informasjon:<br/>
 
-- [UU-tilsynet](https://www.uutilsynet.no/veiledning/skjema/38#ledetekster_og_instruksjoner)<br/>
-- [Gov UK - Question pages](https://design-system.service.gov.uk/patterns/question-pages/)
-- [NN Group - Marking Required Fields in Forms](https://www.nngroup.com/articles/required-fields/)
+- [Gov UK Making labels and legends headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/)

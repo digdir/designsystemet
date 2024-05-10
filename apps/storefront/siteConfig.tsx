@@ -165,6 +165,10 @@ export const SiteConfig = {
               url: 'monstre/obligatoriske-og-valgfrie-felt',
             },
             {
+              name: 'Ledetekster og forklaringer i skjema',
+              url: 'monstre/ledetekster-og-beskrivelser',
+            },
+            {
               name: 'Feilmeldinger',
               url: 'monstre/feilmeldinger',
             },
