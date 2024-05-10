@@ -7,10 +7,10 @@ export const  color = [
   {
     value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.1}",
+      value: "{themes.theme2.accent.1}",
       type: "color"
     },
     name: "--fds-colors-accent-1",
@@ -24,10 +24,10 @@ export const  color = [
   {
     value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.2}",
+      value: "{themes.theme2.accent.2}",
       type: "color"
     },
     name: "--fds-colors-accent-2",
@@ -41,10 +41,10 @@ export const  color = [
   {
     value: "#e2edf7",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.3}",
+      value: "{themes.theme2.accent.3}",
       type: "color"
     },
     name: "--fds-colors-accent-3",
@@ -58,10 +58,10 @@ export const  color = [
   {
     value: "#c3daef",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.4}",
+      value: "{themes.theme2.accent.4}",
       type: "color"
     },
     name: "--fds-colors-accent-4",
@@ -75,10 +75,10 @@ export const  color = [
   {
     value: "#a4c7e6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.5}",
+      value: "{themes.theme2.accent.5}",
       type: "color"
     },
     name: "--fds-colors-accent-5",
@@ -92,10 +92,10 @@ export const  color = [
   {
     value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.6}",
+      value: "{themes.theme2.accent.6}",
       type: "color"
     },
     name: "--fds-colors-accent-6",
@@ -109,10 +109,10 @@ export const  color = [
   {
     value: "#4b90ce",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.7}",
+      value: "{themes.theme2.accent.7}",
       type: "color"
     },
     name: "--fds-colors-accent-7",
@@ -126,10 +126,10 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.8}",
+      value: "{themes.theme2.accent.8}",
       type: "color"
     },
     name: "--fds-colors-accent-8",
@@ -143,10 +143,10 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.9}",
+      value: "{themes.theme2.accent.9}",
       type: "color"
     },
     name: "--fds-colors-accent-9",
@@ -160,10 +160,10 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.10}",
+      value: "{themes.theme2.accent.10}",
       type: "color"
     },
     name: "--fds-colors-accent-10",
@@ -177,10 +177,10 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.11}",
+      value: "{themes.theme2.accent.11}",
       type: "color"
     },
     name: "--fds-colors-accent-11",
@@ -194,10 +194,10 @@ export const  color = [
   {
     value: "#005099",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.12}",
+      value: "{themes.theme2.accent.12}",
       type: "color"
     },
     name: "--fds-colors-accent-12",
@@ -211,10 +211,10 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.13}",
+      value: "{themes.theme2.accent.13}",
       type: "color"
     },
     name: "--fds-colors-accent-13",
@@ -228,10 +228,10 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.contrast-1}",
+      value: "{themes.theme2.accent.contrast-1}",
       type: "color"
     },
     name: "--fds-colors-accent-contrast-1",
@@ -245,10 +245,10 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.contrast-2}",
+      value: "{themes.theme2.accent.contrast-2}",
       type: "color"
     },
     name: "--fds-colors-accent-contrast-2",
@@ -517,10 +517,10 @@ export const  color = [
   {
     value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.1}",
+      value: "{themes.theme2.neutral.1}",
       type: "color"
     },
     name: "--fds-colors-neutral-1",
@@ -534,10 +534,10 @@ export const  color = [
   {
     value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.2}",
+      value: "{themes.theme2.neutral.2}",
       type: "color"
     },
     name: "--fds-colors-neutral-2",
@@ -551,10 +551,10 @@ export const  color = [
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.3}",
+      value: "{themes.theme2.neutral.3}",
       type: "color"
     },
     name: "--fds-colors-neutral-3",
@@ -568,10 +568,10 @@ export const  color = [
   {
     value: "#d5d7da",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.4}",
+      value: "{themes.theme2.neutral.4}",
       type: "color"
     },
     name: "--fds-colors-neutral-4",
@@ -585,10 +585,10 @@ export const  color = [
   {
     value: "#c1c4c9",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.5}",
+      value: "{themes.theme2.neutral.5}",
       type: "color"
     },
     name: "--fds-colors-neutral-5",
@@ -602,10 +602,10 @@ export const  color = [
   {
     value: "#c6c9cd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.6}",
+      value: "{themes.theme2.neutral.6}",
       type: "color"
     },
     name: "--fds-colors-neutral-6",
@@ -619,10 +619,10 @@ export const  color = [
   {
     value: "#858c96",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.7}",
+      value: "{themes.theme2.neutral.7}",
       type: "color"
     },
     name: "--fds-colors-neutral-7",
@@ -636,10 +636,10 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.8}",
+      value: "{themes.theme2.neutral.8}",
       type: "color"
     },
     name: "--fds-colors-neutral-8",
@@ -653,10 +653,10 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.9}",
+      value: "{themes.theme2.neutral.9}",
       type: "color"
     },
     name: "--fds-colors-neutral-9",
@@ -670,10 +670,10 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.10}",
+      value: "{themes.theme2.neutral.10}",
       type: "color"
     },
     name: "--fds-colors-neutral-10",
@@ -687,10 +687,10 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.11}",
+      value: "{themes.theme2.neutral.11}",
       type: "color"
     },
     name: "--fds-colors-neutral-11",
@@ -704,10 +704,10 @@ export const  color = [
   {
     value: "#46505e",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.12}",
+      value: "{themes.theme2.neutral.12}",
       type: "color"
     },
     name: "--fds-colors-neutral-12",
@@ -721,10 +721,10 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.13}",
+      value: "{themes.theme2.neutral.13}",
       type: "color"
     },
     name: "--fds-colors-neutral-13",
@@ -738,10 +738,10 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.contrast-1}",
+      value: "{themes.theme2.neutral.contrast-1}",
       type: "color"
     },
     name: "--fds-colors-neutral-contrast-1",
@@ -755,10 +755,10 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.contrast-2}",
+      value: "{themes.theme2.neutral.contrast-2}",
       type: "color"
     },
     name: "--fds-colors-neutral-contrast-2",
@@ -1027,10 +1027,10 @@ export const  color = [
   {
     value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.1}",
+      value: "{themes.theme2.brand1.1}",
       type: "color"
     },
     name: "--fds-colors-brand1-1",
@@ -1044,10 +1044,10 @@ export const  color = [
   {
     value: "#fef0f1",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.2}",
+      value: "{themes.theme2.brand1.2}",
       type: "color"
     },
     name: "--fds-colors-brand1-2",
@@ -1061,10 +1061,10 @@ export const  color = [
   {
     value: "#fde5e6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.3}",
+      value: "{themes.theme2.brand1.3}",
       type: "color"
     },
     name: "--fds-colors-brand1-3",
@@ -1078,10 +1078,10 @@ export const  color = [
   {
     value: "#fbcccd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.4}",
+      value: "{themes.theme2.brand1.4}",
       type: "color"
     },
     name: "--fds-colors-brand1-4",
@@ -1095,10 +1095,10 @@ export const  color = [
   {
     value: "#fab1b3",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.5}",
+      value: "{themes.theme2.brand1.5}",
       type: "color"
     },
     name: "--fds-colors-brand1-5",
@@ -1112,10 +1112,10 @@ export const  color = [
   {
     value: "#fab8b9",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.6}",
+      value: "{themes.theme2.brand1.6}",
       type: "color"
     },
     name: "--fds-colors-brand1-6",
@@ -1129,10 +1129,10 @@ export const  color = [
   {
     value: "#eb5b5f",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.7}",
+      value: "{themes.theme2.brand1.7}",
       type: "color"
     },
     name: "--fds-colors-brand1-7",
@@ -1146,10 +1146,10 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.8}",
+      value: "{themes.theme2.brand1.8}",
       type: "color"
     },
     name: "--fds-colors-brand1-8",
@@ -1163,10 +1163,10 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.9}",
+      value: "{themes.theme2.brand1.9}",
       type: "color"
     },
     name: "--fds-colors-brand1-9",
@@ -1180,10 +1180,10 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.10}",
+      value: "{themes.theme2.brand1.10}",
       type: "color"
     },
     name: "--fds-colors-brand1-10",
@@ -1197,10 +1197,10 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.11}",
+      value: "{themes.theme2.brand1.11}",
       type: "color"
     },
     name: "--fds-colors-brand1-11",
@@ -1214,10 +1214,10 @@ export const  color = [
   {
     value: "#873537",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.12}",
+      value: "{themes.theme2.brand1.12}",
       type: "color"
     },
     name: "--fds-colors-brand1-12",
@@ -1231,10 +1231,10 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.13}",
+      value: "{themes.theme2.brand1.13}",
       type: "color"
     },
     name: "--fds-colors-brand1-13",
@@ -1248,10 +1248,10 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.contrast-1}",
+      value: "{themes.theme2.brand1.contrast-1}",
       type: "color"
     },
     name: "--fds-colors-brand1-contrast-1",
@@ -1265,10 +1265,10 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand1.contrast-2}",
+      value: "{themes.theme2.brand1.contrast-2}",
       type: "color"
     },
     name: "--fds-colors-brand1-contrast-2",
@@ -1537,10 +1537,10 @@ export const  color = [
   {
     value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.1}",
+      value: "{themes.theme2.brand2.1}",
       type: "color"
     },
     name: "--fds-colors-brand2-1",
@@ -1554,10 +1554,10 @@ export const  color = [
   {
     value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.2}",
+      value: "{themes.theme2.brand2.2}",
       type: "color"
     },
     name: "--fds-colors-brand2-2",
@@ -1571,10 +1571,10 @@ export const  color = [
   {
     value: "#f8e9c6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.3}",
+      value: "{themes.theme2.brand2.3}",
       type: "color"
     },
     name: "--fds-colors-brand2-3",
@@ -1588,10 +1588,10 @@ export const  color = [
   {
     value: "#f2d48d",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.4}",
+      value: "{themes.theme2.brand2.4}",
       type: "color"
     },
     name: "--fds-colors-brand2-4",
@@ -1605,10 +1605,10 @@ export const  color = [
   {
     value: "#ebbe54",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.5}",
+      value: "{themes.theme2.brand2.5}",
       type: "color"
     },
     name: "--fds-colors-brand2-5",
@@ -1622,10 +1622,10 @@ export const  color = [
   {
     value: "#edc464",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.6}",
+      value: "{themes.theme2.brand2.6}",
       type: "color"
     },
     name: "--fds-colors-brand2-6",
@@ -1639,10 +1639,10 @@ export const  color = [
   {
     value: "#b28419",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.7}",
+      value: "{themes.theme2.brand2.7}",
       type: "color"
     },
     name: "--fds-colors-brand2-7",
@@ -1656,10 +1656,10 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.8}",
+      value: "{themes.theme2.brand2.8}",
       type: "color"
     },
     name: "--fds-colors-brand2-8",
@@ -1673,10 +1673,10 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.9}",
+      value: "{themes.theme2.brand2.9}",
       type: "color"
     },
     name: "--fds-colors-brand2-9",
@@ -1690,10 +1690,10 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.10}",
+      value: "{themes.theme2.brand2.10}",
       type: "color"
     },
     name: "--fds-colors-brand2-10",
@@ -1707,10 +1707,10 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.11}",
+      value: "{themes.theme2.brand2.11}",
       type: "color"
     },
     name: "--fds-colors-brand2-11",
@@ -1724,10 +1724,10 @@ export const  color = [
   {
     value: "#664c0e",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.12}",
+      value: "{themes.theme2.brand2.12}",
       type: "color"
     },
     name: "--fds-colors-brand2-12",
@@ -1741,10 +1741,10 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.13}",
+      value: "{themes.theme2.brand2.13}",
       type: "color"
     },
     name: "--fds-colors-brand2-13",
@@ -1758,10 +1758,10 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.contrast-1}",
+      value: "{themes.theme2.brand2.contrast-1}",
       type: "color"
     },
     name: "--fds-colors-brand2-contrast-1",
@@ -1775,10 +1775,10 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand2.contrast-2}",
+      value: "{themes.theme2.brand2.contrast-2}",
       type: "color"
     },
     name: "--fds-colors-brand2-contrast-2",
@@ -2047,10 +2047,10 @@ export const  color = [
   {
     value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.1}",
+      value: "{themes.theme2.brand3.1}",
       type: "color"
     },
     name: "--fds-colors-brand3-1",
@@ -2064,10 +2064,10 @@ export const  color = [
   {
     value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.2}",
+      value: "{themes.theme2.brand3.2}",
       type: "color"
     },
     name: "--fds-colors-brand3-2",
@@ -2081,10 +2081,10 @@ export const  color = [
   {
     value: "#d9eefd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.3}",
+      value: "{themes.theme2.brand3.3}",
       type: "color"
     },
     name: "--fds-colors-brand3-3",
@@ -2098,10 +2098,10 @@ export const  color = [
   {
     value: "#b3dcfc",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.4}",
+      value: "{themes.theme2.brand3.4}",
       type: "color"
     },
     name: "--fds-colors-brand3-4",
@@ -2115,10 +2115,10 @@ export const  color = [
   {
     value: "#8bcafa",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.5}",
+      value: "{themes.theme2.brand3.5}",
       type: "color"
     },
     name: "--fds-colors-brand3-5",
@@ -2132,10 +2132,10 @@ export const  color = [
   {
     value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.6}",
+      value: "{themes.theme2.brand3.6}",
       type: "color"
     },
     name: "--fds-colors-brand3-6",
@@ -2149,10 +2149,10 @@ export const  color = [
   {
     value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.7}",
+      value: "{themes.theme2.brand3.7}",
       type: "color"
     },
     name: "--fds-colors-brand3-7",
@@ -2166,10 +2166,10 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.8}",
+      value: "{themes.theme2.brand3.8}",
       type: "color"
     },
     name: "--fds-colors-brand3-8",
@@ -2183,10 +2183,10 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.9}",
+      value: "{themes.theme2.brand3.9}",
       type: "color"
     },
     name: "--fds-colors-brand3-9",
@@ -2200,10 +2200,10 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.10}",
+      value: "{themes.theme2.brand3.10}",
       type: "color"
     },
     name: "--fds-colors-brand3-10",
@@ -2217,10 +2217,10 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.11}",
+      value: "{themes.theme2.brand3.11}",
       type: "color"
     },
     name: "--fds-colors-brand3-11",
@@ -2234,10 +2234,10 @@ export const  color = [
   {
     value: "#105387",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.12}",
+      value: "{themes.theme2.brand3.12}",
       type: "color"
     },
     name: "--fds-colors-brand3-12",
@@ -2251,10 +2251,10 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.13}",
+      value: "{themes.theme2.brand3.13}",
       type: "color"
     },
     name: "--fds-colors-brand3-13",
@@ -2268,10 +2268,10 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.contrast-1}",
+      value: "{themes.theme2.brand3.contrast-1}",
       type: "color"
     },
     name: "--fds-colors-brand3-contrast-1",
@@ -2285,10 +2285,10 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/themes/theme2.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.brand3.contrast-2}",
+      value: "{themes.theme2.brand3.contrast-2}",
       type: "color"
     },
     name: "--fds-colors-brand3-contrast-2",

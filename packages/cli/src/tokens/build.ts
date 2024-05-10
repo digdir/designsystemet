@@ -1,6 +1,11 @@
 import path from 'path';
+import fs from 'fs';
 
-import { registerTransforms } from '@tokens-studio/sd-transforms';
+import {
+  registerTransforms,
+  permutateThemes,
+} from '@tokens-studio/sd-transforms';
+import type { ThemeObject } from '@tokens-studio/types';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
 
@@ -42,17 +47,17 @@ StyleDictionary.registerTransformGroup({
 
 const baseConfig = (brand: Brand, tokensPath: string): Partial<Config> => {
   return {
-    log: { verbosity: 'silent' },
+    log: { verbosity: 'verbose' },
     include: [
-      `${tokensPath}/Brand/${brand}.json`,
-      `${tokensPath}/Base/Semantic.json`,
+      `${tokensPath}/themes/${brand}.json`,
+      `${tokensPath}/semantic/**/*.json`,
     ],
-    source: [`${tokensPath}/Base/Core.json`],
+    source: [`${tokensPath}/core/**/*.json`],
   };
 };
 
 const excludeSource = (token: TransformedToken) => {
-  if (token.filePath.includes('Core.json')) return false;
+  if (token.filePath.includes('core/**/*.json')) return false;
 
   if (token.path[0] === 'viewport' && ['color'].includes(token.type as string))
     return false;
@@ -63,20 +68,22 @@ const excludeSource = (token: TransformedToken) => {
 const getCSSTokensConfig = (
   brand: Brand,
   targetFolder = '',
-  tokensPath: string,
+  tokensets: string[],
 ): Config => {
-  const destinationPath = `${targetFolder}/${brand.toLowerCase()}`;
+  const destinationPath = `${targetFolder}/${brand.toLowerCase()}/`;
 
   return {
-    ...baseConfig(brand, tokensPath),
+    log: { verbosity: 'verbose' },
+    source: tokensets,
     platforms: {
       css: {
         prefix,
         basePxFontSize,
         transformGroup: 'fds/css',
+        buildPath: destinationPath,
         files: [
           {
-            destination: `${destinationPath}/tokens.css`,
+            destination: `tokens.css`,
             format: scopedReferenceVariables.name,
             filter: excludeSource,
           },
@@ -84,8 +91,7 @@ const getCSSTokensConfig = (
         options: {
           fileHeader,
           includeReferences: (token: TransformedToken) =>
-            ['color'].includes(token.type as string) &&
-            !(token.value as string).startsWith('rgba'),
+            ['color'].includes(token.type as string),
         },
       },
     },
@@ -129,11 +135,29 @@ type Options = {
 };
 
 export async function run(options: Options): Promise<void> {
-  const brands = options.brands;
-
-  const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
-  const packageTokensPath = path.resolve('../../packages/theme/brand');
   const tokensPath = options.tokens;
+
+  const $themes = JSON.parse(
+    fs.readFileSync(path.resolve(`${tokensPath}/$themes.json`), 'utf-8'),
+  ) as ThemeObject[];
+
+  const themes = permutateThemes($themes, {
+    separator: '_',
+  }) as Record<string, string[]>;
+
+  const brands = Object.entries(themes).map(([name]) => name);
+
+  // const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
+  const packageTokensPath = path.resolve('../../packages/theme/brand');
+
+  const configs = Object.entries(themes).map(([name, tokensets]) => {
+    const updatedSets = tokensets.map((x) =>
+      path.resolve(`${tokensPath}/${x}.json`),
+    );
+
+    console.log({ name, updatedSets });
+    return getCSSTokensConfig(name, packageTokensPath, updatedSets);
+  });
 
   if (brands.length > 0) {
     console.log('🍱 Staring token builder');
@@ -142,31 +166,33 @@ export async function run(options: Options): Promise<void> {
 
     console.log('\n🏗️  Start building CSS tokens');
     await Promise.all(
-      brands.map(async (brand) => {
-        console.log(`👷 Processing ${brand}`);
+      configs.map(async (config) => {
+        console.log(
+          `👷 Processing ${config?.platforms?.css?.files?.[0]?.destination}`,
+        );
+
+        console.log('config:', config);
 
         const sd = new StyleDictionary();
-        const tokensPackageSD = await sd.extend(
-          getCSSTokensConfig(brand, packageTokensPath, tokensPath),
-        );
+        const tokensPackageSD = await sd.extend(config);
 
         return tokensPackageSD.buildAllPlatforms();
       }),
     );
     console.log('🏁 Finished building package tokens!');
 
-    console.log('\n🏗️  Started building storefront tokens…');
-    await Promise.all(
-      brands.map(async (brand) => {
-        console.log(`👷 Processing ${brand}`);
+    // console.log('\n🏗️  Started building storefront tokens…');
+    // await Promise.all(
+    //   brands.map(async (brand) => {
+    //     console.log(`👷 Processing ${brand}`);
 
-        const storefrontSD = new StyleDictionary(
-          getStorefrontConfig(brand, storefrontTokensPath, tokensPath),
-        );
+    //     const storefrontSD = new StyleDictionary(
+    //       getStorefrontConfig(brand, storefrontTokensPath, tokensPath),
+    //     );
 
-        return storefrontSD.buildAllPlatforms();
-      }),
-    );
-    console.log('🏁 Finished building storefront tokens!');
+    //     return storefrontSD.buildAllPlatforms();
+    //   }),
+    // );
+    // console.log('🏁 Finished building storefront tokens!');
   }
 }
