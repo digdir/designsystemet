@@ -1,8 +1,6 @@
 import { forwardRef } from 'react';
 import type * as React from 'react';
-import cl from 'clsx';
-
-import classes from './Description.module.css';
+import cl from 'clsx/lite';
 
 type ComboboxOptionDescriptionProps = React.HTMLAttributes<HTMLSpanElement>;
 
@@ -12,7 +10,7 @@ export const ComboboxOptionDescription = forwardRef<
 >(({ children, className, ...rest }, ref) => {
   return (
     <span
-      className={cl(classes.description, className)}
+      className={cl('fds-combobox__option__description', className)}
       ref={ref}
       {...rest}
     >

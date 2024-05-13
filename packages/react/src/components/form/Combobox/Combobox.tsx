@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useId, forwardRef } from 'react';
 import type * as React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { Box } from '../../Box';
@@ -14,12 +14,11 @@ import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
 import useCombobox from './useCombobox';
-import classes from './Combobox.module.css';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
-import ComboboxCustom from './Custom/Custom';
+import ComboboxCustom from './Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
 import { ComboboxIdProvider } from './ComboboxIdContext';
@@ -347,8 +346,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       >
         <Box
           className={cl(
-            classes.combobox,
-            disabled && classes.disabled,
+            'fds-combobox',
+            disabled && 'fds-combobox__disabled',
             className,
           )}
           style={style}
@@ -409,7 +408,10 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                     ...floatingStyles,
                   },
                 })}
-                className={cl(classes.optionsWrapper, classes[size])}
+                className={cl(
+                  'fds-combobox__options-wrapper',
+                  `fds-combobox--${size}`,
+                )}
               >
                 {virtual && (
                   <div
@@ -440,7 +442,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                 )}
 
                 {loading ? (
-                  <ComboboxCustom className={classes.loading}>
+                  <ComboboxCustom className={'fds-combobox__loading'}>
                     <Spinner
                       title='Laster'
                       size='small'

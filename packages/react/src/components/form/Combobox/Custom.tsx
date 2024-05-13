@@ -1,14 +1,13 @@
 import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../ComboboxContext';
-import { omit } from '../../../../utilities';
-import { useComboboxId } from '../ComboboxIdContext';
+import { omit } from '../../../utilities';
 
-import classes from './Custom.module.css';
+import { ComboboxContext } from './ComboboxContext';
+import { useComboboxId } from './ComboboxIdContext';
 
 type InteractiveProps = {
   interactive: true;
@@ -78,7 +77,11 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       <Component
         ref={combinedRef}
         tabIndex={-1}
-        className={cl(classes.custom, classes[size], className)}
+        className={cl(
+          'fds-combobox__custom',
+          `fds-combobox__custom--${size}`,
+          className,
+        )}
         id={id || randomId}
         role='option'
         aria-selected={activeIndex === index}

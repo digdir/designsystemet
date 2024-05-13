@@ -1,10 +1,8 @@
 import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
-import { ComboboxContext } from '../ComboboxContext';
-
-import classes from './Empty.module.css';
+import { ComboboxContext } from './ComboboxContext';
 
 type ComboboxEmptyProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -21,7 +19,11 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
       filteredOptions.length === 0 && (
         <div
           ref={ref}
-          className={cl(classes.empty, classes[size], className)}
+          className={cl(
+            'fds-combobox__empty',
+            `fds-combobox__empty--${size}`,
+            className,
+          )}
           {...rest}
         >
           {children}

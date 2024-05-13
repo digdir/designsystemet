@@ -4,8 +4,8 @@ import type { ReactNode, ReactElement } from 'react';
 import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
-import type { ComboboxCustomProps } from './Custom/Custom';
-import ComboboxCustom from './Custom/Custom';
+import type { ComboboxCustomProps } from './Custom';
+import ComboboxCustom from './Custom';
 
 export type UseComboboxProps = {
   children: ReactNode;
