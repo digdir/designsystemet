@@ -11,7 +11,7 @@ export type UseComboboxProps = {
   children: ReactNode;
   inputValue: string;
   multiple: boolean;
-  filter: NonNullable<ComboboxProps['filter']>;
+  filter?: NonNullable<ComboboxProps['filter']>;
   initialValue?: string[];
 };
 
@@ -46,121 +46,132 @@ export default function useCombobox({
   children,
   inputValue,
   multiple,
-  filter,
+  filter = (inputValue, option) => {
+    return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
+  },
   initialValue,
 }: UseComboboxProps) {
-  const options = useMemo(() => {
-    const allOptions: Option[] = [];
-    Children.forEach(children, (child) => {
-      if (isComboboxOption(child)) {
-        const props = child.props;
-        let label = props.displayValue || '';
+  const { optionsChildren, customIds, restChildren, interactiveChildren } =
+    useMemo(() => {
+      const allChildren = Children.toArray(children);
 
-        if (!props.displayValue) {
-          let childrenLabel = '';
-
-          // go over children and find all strings
-          Children.forEach(props.children, (child) => {
-            if (typeof child === 'string') {
-              childrenLabel += child;
-            } else {
-              throw new Error(
-                'If ComboboxOption is not a string, it must have a displayValue prop',
-              );
+      const result = allChildren.reduce<{
+        optionsChildren: ReactElement<ComboboxOptionProps>[];
+        customIds: string[];
+        restChildren: React.ReactNode[];
+        interactiveChildren: ReactElement<ComboboxCustomProps>[];
+      }>(
+        (acc, child) => {
+          if (isComboboxOption(child)) {
+            acc.optionsChildren.push(child);
+          } else {
+            acc.restChildren.push(child);
+            if (isInteractiveComboboxCustom(child)) {
+              const childElement = child;
+              acc.interactiveChildren.push(childElement);
+              if (!childElement.props.id) {
+                throw new Error(
+                  'If ComboboxCustom is interactive, it must have an id',
+                );
+              }
+              acc.customIds.push(childElement.props.id);
             }
-          });
-
-          label = childrenLabel;
-        }
-
-        allOptions.push({
-          value: props.value,
-          label,
-          displayValue: props.displayValue,
-          description: props.description,
-        });
-      }
-    });
-    return allOptions;
-  }, [children]);
-
-  const preSelectedOptions = (initialValue || [])
-    .map((value) => options.find((option) => option.value === value))
-    .filter(isOption);
-
-  const [selectedOptions, setSelectedOptions] =
-    useState<Option[]>(preSelectedOptions);
-
-  const [prevSelectedHash, setPrevSelectedHash] = useState(
-    JSON.stringify(selectedOptions),
-  );
-  const optionsChildren = useMemo(() => {
-    const valuesArray = Array.from(options);
-    const children_ = Children.toArray(children).filter((child) =>
-      isComboboxOption(child),
-    ) as ReactElement<ComboboxOptionProps>[];
-
-    const activeValue = valuesArray.find((item) => item.label === inputValue);
-
-    if (activeValue && !multiple) return children_;
-    if (inputValue === '' && !multiple) return children_;
-
-    return children_.filter((child) => {
-      const { value } = child.props;
-
-      const option = valuesArray.find((item) => item.value === value);
-
-      if (!option) return false;
-
-      const isSelected = selectedOptions.some(
-        (selectedOption) => selectedOption.value === value,
+          }
+          return acc;
+        },
+        {
+          optionsChildren: [],
+          customIds: [],
+          restChildren: [],
+          interactiveChildren: [],
+        },
       );
 
-      // show what we search for, and all selected options
-      return filter(inputValue, { ...option }) || isSelected;
+      return result;
+    }, [children]);
+
+  const options = useMemo(() => {
+    const allOptions: {
+      [key: string]: Option;
+    } = {};
+    optionsChildren.map((child) => {
+      const props = child.props;
+      let label = props.displayValue || '';
+
+      if (!props.displayValue) {
+        let childrenLabel = '';
+
+        // go over children and find all strings
+        Children.forEach(props.children, (child) => {
+          if (typeof child === 'string') {
+            childrenLabel += child;
+          } else {
+            throw new Error(
+              'If ComboboxOption is not a string, it must have a displayValue prop',
+            );
+          }
+        });
+
+        label = childrenLabel;
+      }
+
+      allOptions[props.value] = {
+        value: props.value,
+        label,
+        displayValue: props.displayValue,
+        description: props.description,
+      };
     });
-  }, [options, children, multiple, inputValue, selectedOptions, filter]);
 
-  const customIds = useMemo(() => {
-    // find all custom components with `interactive=true` and generate random values for them
-    const children_ = Children.toArray(children).filter((child) => {
-      return isInteractiveComboboxCustom(child);
-    }) as ReactElement<ComboboxCustomProps>[];
+    return allOptions;
+  }, [optionsChildren]);
 
-    // return all ids
-    return children_.map((child) => {
-      if (!child.props.id)
-        throw new Error('If ComboboxCustom is interactive, it must have an id');
+  const preSelectedOptions = useMemo(
+    () =>
+      (initialValue || []).reduce<{
+        [key: string]: Option;
+      }>((acc, value) => {
+        const option = options[value];
+        if (isOption(option)) {
+          acc[value] = option;
+        }
+        return acc;
+      }, {}),
+    [initialValue, options],
+  );
 
-      return child.props.id;
-    });
-  }, [children]);
+  const [selectedOptions, setSelectedOptions] = useState<{
+    [key: string]: Option;
+  }>(preSelectedOptions);
 
-  const optionValues = useMemo(() => {
-    // create an index map of values from optionsChildren
-    const options = optionsChildren.map((child) => {
-      const { value } = child.props;
-      return value;
-    });
+  const { filteredOptions, filteredOptionsChildren } = useMemo(() => {
+    const filteredOptions: string[] = [];
 
-    return [...customIds, ...options];
-  }, [customIds, optionsChildren]);
+    const filteredOptionsChildren = Object.keys(options)
+      .map((option, index) => {
+        if (multiple && selectedOptions[option]) {
+          filteredOptions.push(options[option].value);
+          return optionsChildren[index];
+        }
+        if (filter(inputValue, options[option])) {
+          filteredOptions.push(options[option].value);
+          return optionsChildren[index];
+        }
+      })
+      .filter((child) => child);
 
-  const restChildren = useMemo(() => {
-    return Children.toArray(children).filter((child) => {
-      return !isComboboxOption(child);
-    });
-  }, [children]);
+    return { filteredOptions, filteredOptionsChildren };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputValue, multiple, options, optionsChildren, selectedOptions]);
 
   return {
-    optionsChildren,
-    optionValues,
+    filteredOptionsChildren,
+    filteredOptions,
     restChildren,
     options,
     customIds,
     selectedOptions,
+    interactiveChildren,
     setSelectedOptions,
-    prevSelectedHash,
-    setPrevSelectedHash,
   };
 }
