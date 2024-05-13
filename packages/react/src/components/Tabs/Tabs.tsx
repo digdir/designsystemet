@@ -31,7 +31,6 @@ export type TabsContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  size?: 'small' | 'medium' | 'large';
 };
 
 export const TabsContext = createContext<TabsContextProps>({});
@@ -60,10 +59,10 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           value,
           defaultValue,
           onChange: onValueChange,
-          size,
         }}
       >
         <div
+          className={`fds-tabs--${size}`}
           ref={ref}
           {...rest}
         >

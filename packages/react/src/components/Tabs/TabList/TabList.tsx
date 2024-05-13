@@ -4,8 +4,6 @@ import cl from 'clsx';
 
 import { RovingTabindexRoot } from '../../../utilities/RovingTabIndex';
 
-import classes from './TabList.module.css';
-
 export const TabList = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
@@ -13,7 +11,7 @@ export const TabList = forwardRef<
   return (
     <RovingTabindexRoot
       role='tablist'
-      className={cl(classes.tabItemList, className)}
+      className={cl('fds-tabs__tablist', className)}
       ref={ref}
       {...rest}
     >
