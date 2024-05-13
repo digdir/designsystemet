@@ -99,6 +99,22 @@ describe('Combobox', () => {
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
+  it('should select when we click Enter', async () => {
+    const onValueChange = vi.fn();
+    const { user } = await render({ onValueChange });
+    const combobox = screen.getByRole('combobox');
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+
+    await userEvent.click(combobox);
+    expect(screen.getByText('Leikanger')).toBeInTheDocument();
+
+    await user.type(combobox, '{Enter}');
+
+    await wait(500);
+
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+  });
+
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
     const onValueChange = vi.fn();
     await render({ onValueChange });
@@ -165,7 +181,11 @@ describe('Combobox', () => {
     await wait(100);
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    await wait(500);
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
     await wait(500);
     await user.click(document.body);
     await wait(500);
@@ -181,12 +201,13 @@ describe('Combobox', () => {
       throw new Error('Could not find clear button');
     }
     await userEvent.click(clearButton);
+    await userEvent.click(document.body);
 
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
-      expect(onValueChange).toHaveBeenCalledWith([]);
-    }, 1000);
+    await wait(500);
+
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+    expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
+    expect(onValueChange).toHaveBeenCalledWith([]);
   });
 
   it('should show "Fant ingen treff", when input does not match any values', async () => {

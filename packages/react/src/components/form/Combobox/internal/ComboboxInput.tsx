@@ -1,29 +1,48 @@
-import { useContext, useEffect, useState } from 'react';
-import type * as React from 'react';
+import type { ChangeEvent } from 'react';
+import { useContext } from 'react';
 import cl from 'clsx';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 import classes from '../Combobox.module.css';
 import { Box } from '../../../Box';
 import { omit } from '../../../../utilities';
+import { useComboboxIdDispatch } from '../ComboboxIdContext';
+import type { ComboboxProps } from '../Combobox';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 
+type ComboboxInputProps = {
+  hideClearButton: ComboboxProps['hideClearButton'];
+  listId: string;
+  error: ComboboxProps['error'];
+  hideChips: NonNullable<ComboboxProps['hideChips']>;
+  handleKeyDown: (event: React.KeyboardEvent) => void;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+
 export const ComboboxInput = ({
+  hideClearButton,
+  listId,
+  error,
+  hideChips,
+  handleKeyDown,
   ...rest
-}: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>) => {
+}: ComboboxInputProps) => {
   const context = useContext(ComboboxContext);
+  const idDispatch = useComboboxIdDispatch();
 
   if (!context) {
     throw new Error('ComboboxContext is missing');
   }
 
+  const setActiveIndex = (id: number) => {
+    idDispatch?.({ type: 'SET_ACTIVE_INDEX', payload: id });
+  };
+
   const {
     forwareddRef,
-    listId,
     size,
     readOnly,
     disabled,
@@ -31,18 +50,12 @@ export const ComboboxInput = ({
     inputRef,
     refs,
     inputValue,
-    activeDescendant,
-    error,
     multiple,
     selectedOptions,
     formFieldProps,
     htmlSize,
     options,
-    hideChips,
-    hideClearButton,
     setOpen,
-    setActiveIndex,
-    handleKeyDown,
     getReferenceProps,
     setInputValue,
     handleSelectOption,
@@ -50,100 +63,56 @@ export const ComboboxInput = ({
 
   const mergedRefs = useMergeRefs([forwareddRef, inputRef]);
 
-  // we need to check if input is in focus, to add focus styles to the wrapper
-  const [inputInFocus, setInputInFocus] = useState(false);
-  useEffect(() => {
-    const input = inputRef.current;
-    const onFocus = () => {
-      setInputInFocus(true);
-    };
-    const onBlur = () => {
-      setInputInFocus(false);
-    };
-
-    input?.addEventListener('focus', onFocus);
-    input?.addEventListener('blur', onBlur);
-
-    return () => {
-      input?.removeEventListener('focus', onFocus);
-      input?.removeEventListener('blur', onBlur);
-    };
-  }, [inputRef]);
-
   // onChange function for the input
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
     setActiveIndex(0);
 
-    if (typeof value === 'string') {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-
     // check if input value is the same as a label, if so, select it
-    const option = options.find((option) => option.label === value);
+    const option = options[value.toLowerCase()];
     if (!option) return;
-    if (
-      selectedOptions.find(
-        (selectedOption) => selectedOption.value === option.value,
-      )
-    )
-      return;
+    if (selectedOptions[option.value]) return;
 
-    handleSelectOption(option);
-
-    if (multiple) {
-      inputRef.current?.focus();
-    } else {
-      // move cursor to the end of the input
-      setTimeout(() => {
-        inputRef.current?.setSelectionRange(
-          option?.label?.length || 0,
-          option?.label?.length || 0,
-        );
-      }, 0);
-    }
+    handleSelectOption({ option: option });
   };
 
   const showClearButton =
-    multiple && !hideClearButton && selectedOptions.length > 0;
+    multiple && !hideClearButton && Object.keys(selectedOptions).length > 0;
+
+  /* Props from floating-ui */
+  const props = getReferenceProps({
+    ref: refs?.setReference,
+    role: null,
+    'aria-controls': null,
+    'aria-expanded': null,
+    'aria-haspopup': null,
+    /* If we click the wrapper, open the list, set index to first option, and focus the input */
+    onClick() {
+      if (disabled) return;
+      if (readOnly) return;
+      setOpen(true);
+      setActiveIndex(0);
+      inputRef.current?.focus();
+    },
+    /* Handles list navigation */
+    onKeyDown: handleKeyDown,
+    // preventDefault on keydown to avoid sending in form
+    onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+    },
+  });
 
   return (
     <Box
-      /* Props from floating-ui */
-      {...getReferenceProps({
-        ref: refs?.setReference,
-        role: null,
-        'aria-controls': null,
-        'aria-expanded': null,
-        'aria-haspopup': null,
-        /* If we click the wrapper, open the list, set index to first option, and focus the input */
-        onClick() {
-          if (disabled) return;
-          if (readOnly) return;
-          setOpen(true);
-          setActiveIndex(0);
-          inputRef.current?.focus();
-        },
-        /* Handles list navigation */
-        onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-          handleKeyDown(event);
-        },
-        // preventDefault on keydown to avoid sending in form
-        onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
-          if (event.key === 'Enter') {
-            event.preventDefault();
-          }
-        },
-      })}
+      {...props}
       aria-disabled={disabled}
       className={cl(
         'fds-textfield__input',
         classes.inputWrapper,
         classes[size],
-        inputInFocus && classes.inFocus,
         readOnly && classes.readonly,
         error && classes.error,
       )}
@@ -153,7 +122,7 @@ export const ComboboxInput = ({
         {multiple && !hideChips && <ComboboxChips />}
         <input
           ref={mergedRefs}
-          aria-activedescendant={activeDescendant}
+          aria-activedescendant={props['aria-activedescendant'] as string}
           readOnly={readOnly}
           aria-autocomplete='list'
           role='combobox'
@@ -166,6 +135,7 @@ export const ComboboxInput = ({
           {...formFieldProps.inputProps}
           onChange={(e) => {
             onChange(e);
+            !open && setOpen(true);
             rest.onChange && rest.onChange(e);
           }}
         />
