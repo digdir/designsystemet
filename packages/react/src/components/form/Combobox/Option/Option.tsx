@@ -80,7 +80,7 @@ export const ComboboxOption = memo(
             </span>
           </Label>
           <Label
-            className={'fds-combobox__option-label'}
+            className={'fds-combobox__option__label'}
             size={size}
             id={labelId}
           >

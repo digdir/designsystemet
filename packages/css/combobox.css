@@ -278,26 +278,6 @@
     color: var(--fds-semantic-text-action-hover);
   }
 
-  /*   .checkbox {
-    min-width: unset;
-    min-height: unset;
-    aspect-ratio: 1 / 1;
-    line-height: 0 !important;
-  }
-
-  .checkbox input {
-    min-width: unset;
-    min-height: unset;
-  }
-
-  .checkbox > span {
-    position: relative;
-    min-width: unset;
-    min-height: unset;
-    height: unset;
-    width: unset;
-  } */
-
   .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-6);
     aspect-ratio: 1 / 1;
