@@ -255,5 +255,45 @@
       "value": "60",
       "type": "fontSizes"
     }
+  },
+  "borderRadius": {
+    "sm": {
+      "value": "2",
+      "type": "borderRadius"
+    },
+    "md": {
+      "value": "4",
+      "type": "borderRadius"
+    },
+    "lg": {
+      "value": "8",
+      "type": "borderRadius"
+    },
+    "xl": {
+      "value": "12",
+      "type": "borderRadius"
+    },
+    "2xl": {
+      "value": "16",
+      "type": "borderRadius"
+    },
+    "3xl": {
+      "value": "24",
+      "type": "borderRadius"
+    },
+    "4xl": {
+      "value": "32",
+      "type": "borderRadius"
+    },
+    "full": {
+      "value": "9999",
+      "type": "borderRadius"
+    }
+  },
+  "opacity": {
+    "disabledComponents": {
+      "value": "30%",
+      "type": "opacity"
+    }
   }
 }
