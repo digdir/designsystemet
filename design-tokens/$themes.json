@@ -581,19 +581,14 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "semantic/color": "enabled",
-      "semantic/style": "enabled"
+      "semantic/style": "enabled",
+      "core/styles/default": "source",
+      "core/typography/default": "source",
+      "core/size/default": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:40:6899",
     "$figmaModeId": "40:99",
     "$figmaVariableReferences": {
-      "border_radius.interactive": "543f63fbf1c9ed0651bb667c5e28e4f40d7db9d5",
-      "border_radius.small": "6305482fdc9fc86341fb3514e689f1bfc9a93c03",
-      "border_radius.medium": "8d360e0ad04ee9973b8ba13f00f77fac795ea73a",
-      "border_radius.large": "6ad90832d8eb7b89da5000bb7ffa38dd06709f7b",
-      "border_radius.xlarge": "ead15c036323d79825a1a97647ce1a12044d745d",
-      "border_radius.xxlarge": "c1b5d9b722791271182d31871f3aa3aa9c045638",
-      "border_radius.xxxlarge": "dcc2f24e1744792d62a0d9a894df8b1ed7969fcb",
-      "border_radius.xxxxlarge": "370de167262b800ff592449f0b79d8a7346e8788",
       "border_radius.full": "8141b6d0256e979da9c3c891effd65eba6be695f",
       "spacing.0": "0b19f930ba8f972841657fae0be3120d241808a8",
       "spacing.1": "10d4713d65d75f4e02f7f7b413e2e8702ad968c8",
@@ -638,8 +633,6 @@
       "border_width.default": "3d3697cd1f0ba628f1c9c2e3b8d1e757f3cf785e",
       "border_width.active": "e78bbe8ee4e842d344138af28744abc8e653eda7",
       "border_width.tab_focus": "fffa2c3a98d1587c4d7daf457a539bc98a5f3461",
-      "base_spacing": "84f368f50b34d363750dfa2bf0273e3e3607f9ae",
-      "base_sizing": "aabd6f73cc0ecbc82b8260ff8ea50ace745ffb92",
       "colors.accent.background-default": "4438bc782b1a64db8195408cfaf383a4fdc18829",
       "colors.accent.background-subtle": "2d861f7c747dbe6c30b96bcffdd4245766c17e21",
       "colors.accent.surface-default": "3519419593050980f45551f13b3a141f808d603c",
@@ -774,7 +767,14 @@
       "colors.warning.text-subtle": "74d185dd446fc194515429246e1457301234d2b7",
       "colors.warning.text-default": "2ee8bb1865282da0f104cda90c87fe5ff3a27308",
       "colors.warning.contrast-first": "bed5ccfa3871c0364563159025b877b491c3de89",
-      "colors.warning.contrast-second": "12b9df37a9a00f95ac87ddc05a1fc9a0cb3c1b15"
+      "colors.warning.contrast-second": "12b9df37a9a00f95ac87ddc05a1fc9a0cb3c1b15",
+      "border_radius.sm": "6305482fdc9fc86341fb3514e689f1bfc9a93c03",
+      "border_radius.md": "8d360e0ad04ee9973b8ba13f00f77fac795ea73a",
+      "border_radius.lg": "6ad90832d8eb7b89da5000bb7ffa38dd06709f7b",
+      "border_radius.xl": "ead15c036323d79825a1a97647ce1a12044d745d",
+      "border_radius.2xl": "c1b5d9b722791271182d31871f3aa3aa9c045638",
+      "border_radius.3xl": "dcc2f24e1744792d62a0d9a894df8b1ed7969fcb",
+      "border_radius.4xl": "370de167262b800ff592449f0b79d8a7346e8788"
     },
     "group": "semantic"
   },
