@@ -11,17 +11,12 @@ export const ComboboxClearButton = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, readOnly, disabled, clearButtonLabel, handleSelectOption } =
-    context;
+  const { readOnly, disabled, clearButtonLabel, handleSelectOption } = context;
 
   return (
     <button
       disabled={disabled}
-      className={cl(
-        'fds-combobox__clear-button',
-        `fds-combobox--${size}`,
-        `fds-focus`,
-      )}
+      className={cl('fds-combobox__clear-button', `fds-focus`)}
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;

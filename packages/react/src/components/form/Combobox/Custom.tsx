@@ -59,7 +59,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { size, customIds, listRef, getItemProps } = context;
+    const { customIds, listRef, getItemProps } = context;
 
     const index = useMemo(
       () => (id && customIds.indexOf(id)) || 0,
@@ -77,11 +77,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       <Component
         ref={combinedRef}
         tabIndex={-1}
-        className={cl(
-          'fds-combobox__custom',
-          `fds-combobox__custom--${size}`,
-          className,
-        )}
+        className={cl('fds-combobox__custom', className)}
         id={id || randomId}
         role='option'
         aria-selected={activeIndex === index}

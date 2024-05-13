@@ -60,7 +60,6 @@ export const ComboboxOption = memo(
           }}
           className={cl(
             'fds-combobox__option',
-            `fds-combobox__option--${size}`,
             active && 'fds-combobox__option--active',
             multiple && 'fds-combobox__option--multiple',
             className,

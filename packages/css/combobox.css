@@ -39,38 +39,38 @@
     background-color: transparent;
   }
 
-  .fds-combobox__input-wrapper.fds-combobox--small {
+  .fds-combobox--small .fds-combobox__input-wrapper {
     min-height: var(--fds-sizing-10);
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
     padding: 5px var(--fds-spacing-2);
   }
 
-  .fds-combobox__input-wrapper.fds-combobox--small input {
+  .fds-combobox--small .fds-combobox__input-wrapper input {
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
   }
 
-  .fds-combobox__input-wrapper.fds-combobox--medium {
+  .fds-combobox--medium .fds-combobox__input-wrapper {
     min-height: var(--fds-sizing-12);
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
     padding: 7px var(--fds-spacing-3);
   }
 
-  .fds-combobox__input-wrapper.fds-combobox--medium input {
+  .fds-combobox--medium .fds-combobox__input-wrapper input {
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
   }
 
-  .fds-combobox__input-wrapper.fds-combobox--large {
+  .fds-combobox--large .fds-combobox__input-wrapper {
     min-height: var(--fds-sizing-14);
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
     padding: 7px var(--fds-spacing-4);
   }
 
-  .fds-combobox__input-wrapper.fds-combobox--large input {
+  .fds-combobox--large .fds-combobox__input-wrapper input {
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
   }
@@ -132,17 +132,17 @@
     aspect-ratio: 1;
   }
 
-  .fds-combobox__clear-button.fds-combobox--small {
+  .fds-combobox--small .fds-combobox__clear-button {
     height: 25px;
     width: 25px;
   }
 
-  .fds-combobox__clear-button.fds-combobox--medium {
+  .fds-combobox--medium .fds-combobox__clear-button {
     height: 29px;
     width: 29px;
   }
 
-  .fds-combobox__clear-button.fds-combobox--large {
+  .fds-combobox--large .fds-combobox__clear-button {
     height: 31px;
     width: 31px;
   }
@@ -193,19 +193,19 @@
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }
 
-  .fds-combobox__empty--large {
+  .fds-combobox--large .fds-combobox__empty {
     font: var(--fds-typography-label-large);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox__empty--medium {
+  .fds-combobox--medium .fds-combobox__empty {
     font: var(--fds-typography-label-medium);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox__empty--small {
+  .fds-combobox--small .fds-combobox__empty {
     font: var(--fds-typography-label-small);
     font-family: inherit;
     font-weight: 400;
@@ -215,19 +215,19 @@
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }
 
-  .fds-combobox__custom--large {
+  .fds-combobox--large .fds-combobox__custom {
     font: var(--fds-typography-label-large);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox__custom--medium {
+  .fds-combobox--medium .fds-combobox__custom {
     font: var(--fds-typography-label-medium);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox__custom--small {
+  .fds-combobox--small .fds-combobox__custom {
     font: var(--fds-typography-label-small);
     font-family: inherit;
     font-weight: 400;
@@ -289,15 +289,19 @@
     place-items: center;
   }
 
-  .fds-combobox__option--small .fds-combobox__option__icon-wrapper {
+  .fds-combobox__option--active .fds-combobox__option__icon-wrapper {
+    border-color: var(--fds-semantic-border-input-hover);
+  }
+
+  .fds-combobox--small .fds-combobox__option .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-5);
   }
 
-  .fds-combobox__option--medium .fds-combobox__option__icon-wrapper {
+  .fds-combobox--medium .fds-combobox__option .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-6);
   }
 
-  .fds-combobox__option--large .fds-combobox__option__icon-wrapper {
+  .fds-combobox--large .fds-combobox__option .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-7);
   }
 
@@ -321,10 +325,6 @@
   .fds-combobox__option--active .fds-combobox__option__icon-wrapper__icon {
     stroke: var(--fds-semantic-text-action-hover);
     color: var(--fds-semantic-text-action-hover);
-  }
-
-  .fds-combobox__option--active .fds-combobox__option__icon-wrapper {
-    border-color: var(--fds-semantic-border-input-hover);
   }
 
   .fds-combobox__option__icon-wrapper.fds-combobox__option__icon-wrapper--selected .fds-combobox__option__icon-wrapper__icon {

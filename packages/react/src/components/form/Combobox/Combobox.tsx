@@ -347,6 +347,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
         <Box
           className={cl(
             'fds-combobox',
+            `fds-combobox--${size}`,
             disabled && 'fds-combobox__disabled',
             className,
           )}

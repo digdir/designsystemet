@@ -13,17 +13,13 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
       throw new Error('ComboboxEmpty must be used within a Combobox');
     }
 
-    const { filteredOptions, size } = context;
+    const { filteredOptions } = context;
 
     return (
       filteredOptions.length === 0 && (
         <div
           ref={ref}
-          className={cl(
-            'fds-combobox__empty',
-            `fds-combobox__empty--${size}`,
-            className,
-          )}
+          className={cl('fds-combobox__empty', className)}
           {...rest}
         >
           {children}

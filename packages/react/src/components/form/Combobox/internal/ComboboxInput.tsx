@@ -42,7 +42,6 @@ export const ComboboxInput = ({
 
   const {
     forwareddRef,
-    size,
     readOnly,
     disabled,
     open,
@@ -111,7 +110,6 @@ export const ComboboxInput = ({
       className={cl(
         'fds-textfield__input',
         'fds-combobox__input-wrapper',
-        `fds-combobox--${size}`,
         readOnly && 'fds-combobox--readonly',
         error && 'fds-combobox--error',
       )}
