@@ -70,6 +70,7 @@ const ImageBanner = ({
             {videoSrc && (
               <video
                 autoPlay
+                playsInline
                 muted
                 loop
                 className={classes.video}
@@ -136,6 +137,7 @@ const ImageBanner = ({
             {videoSrc && (
               <video
                 autoPlay
+                playsInline
                 muted
                 loop
                 className={classes.video}
