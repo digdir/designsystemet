@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
 import { PaletteIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
@@ -85,6 +86,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
                 color='blue'
                 url='/grunnleggende/for-designere/kom-i-gang'
                 icon={<PaletteIcon fontSize={36} />}
+                level={2}
               ></NavigationCard>
 
               <NavigationCard
@@ -93,6 +95,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
                 color='yellow'
                 url='/grunnleggende/for-utviklere/kom-i-gang'
                 icon={<WrenchIcon fontSize={36} />}
+                level={2}
               ></NavigationCard>
 
               <NavigationCard
@@ -101,6 +104,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
                 color='red'
                 url='/komponenter'
                 icon={<ComponentIcon fontSize={34} />}
+                level={2}
               ></NavigationCard>
             </div>
           </Container>
