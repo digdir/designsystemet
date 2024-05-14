@@ -5,13 +5,12 @@
  */
 
 
-      :root {
-        /** Referenced source tokens */
-        /** DO NOT OVERRIDE */
-        
-        
+:root {
+  /** Referenced source tokens */
+  /** DO NOT OVERRIDE */
+
   /** Tokens */
-          --fds-colors-accent-1: #fefeff;
+  --fds-colors-accent-1: #fefeff;
   --fds-colors-accent-2: #eef4fa;
   --fds-colors-accent-3: #e2edf7;
   --fds-colors-accent-4: #c3daef;
@@ -354,5 +353,5 @@
   --fds-sizing-22: 5.5rem;
   --fds-sizing-26: 6.5rem;
   --fds-sizing-30: 7.5rem;
-      }
+}
       

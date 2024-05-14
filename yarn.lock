@@ -2724,7 +2724,7 @@ __metadata:
   resolution: "@digdir/designsystemet@workspace:packages/cli"
   dependencies:
     "@commander-js/extra-typings": "npm:^12.0.1"
-    "@tokens-studio/sd-transforms": "npm:^0.15.2"
+    "@tokens-studio/sd-transforms": "npm:^0.16.0"
     "@types/glob": "npm:^8.1.0"
     "@types/node": "npm:^20.12.7"
     "@types/ramda": "npm:^0.29.9"
@@ -2734,7 +2734,7 @@ __metadata:
     postcss: "npm:^8.4.38"
     ramda: "npm:^0.29.1"
     rimraf: "npm:^5.0.5"
-    style-dictionary: "npm:^4.0.0-prerelease.26"
+    style-dictionary: "npm:^4.0.0-prerelease.27"
     typescript: "npm:^5.4.5"
   bin:
     designsystemet: ./dist/build/bin/designsystemet.js
@@ -5516,9 +5516,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokens-studio/sd-transforms@npm:^0.15.2":
-  version: 0.15.2
-  resolution: "@tokens-studio/sd-transforms@npm:0.15.2"
+"@tokens-studio/sd-transforms@npm:^0.16.0":
+  version: 0.16.0
+  resolution: "@tokens-studio/sd-transforms@npm:0.16.0"
   dependencies:
     "@tokens-studio/types": "npm:^0.4.0"
     color2k: "npm:^2.0.1"
@@ -5527,8 +5527,9 @@ __metadata:
     expr-eval-fork: "npm:^2.0.2"
     is-mergeable-object: "npm:^1.1.1"
     postcss-calc-ast-parser: "npm:^0.1.4"
-    style-dictionary: "npm:^4.0.0-prerelease.22"
-  checksum: 8a7ff6ed0a56fd950be642b57b0406ab7073fb39b02c8c43bdfd3cc4a983d6daf02cdff05b30ce4720f3a26e50e3d7473f90306c827aedc2dc4a0cd0839b0f70
+  peerDependencies:
+    style-dictionary: ^4.0.0-prerelease.27
+  checksum: bfa796b8444268808af39cf355c142c53eceab1753d07b59c080e835f719022c4b020f0a0ef39143ec539c35e48b0ed412408b5705d34e24921b991c6597c28d
   languageName: node
   linkType: hard
 
@@ -20145,9 +20146,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-dictionary@npm:^4.0.0-prerelease.22, style-dictionary@npm:^4.0.0-prerelease.26":
-  version: 4.0.0-prerelease.26
-  resolution: "style-dictionary@npm:4.0.0-prerelease.26"
+"style-dictionary@npm:^4.0.0-prerelease.27":
+  version: 4.0.0-prerelease.27
+  resolution: "style-dictionary@npm:4.0.0-prerelease.27"
   dependencies:
     "@bundled-es-modules/deepmerge": "npm:^4.3.1"
     "@bundled-es-modules/glob": "npm:^10.3.13"
@@ -20162,7 +20163,7 @@ __metadata:
     tinycolor2: "npm:^1.6.0"
   bin:
     style-dictionary: bin/style-dictionary.js
-  checksum: 16e3bd2bfa4a91d46cb6100b3206bf1b1417d2e3f355f28944310a12a1b487f7b1d09dfc29390d9e31f1f85979ce4a7a93716f6edae55b365e7b7cba2ff58dee
+  checksum: d675e382a72e404a090feb5940fe13925e93fdfcb8656f706ff5127eb52fb52113a02d256400015597044bfabb05614aa0080c4c1e38fefafced1ad21ae2c93e
   languageName: node
   linkType: hard
 

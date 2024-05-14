@@ -71,6 +71,7 @@ const getCSSConfig = (brand: Brand, targetFolder = ''): Config => {
 
   return {
     log: { verbosity: 'verbose' },
+    preprocessors: ['tokens-studio'],
     platforms: {
       css: {
         prefix,
@@ -162,46 +163,46 @@ export async function run(options: Options): Promise<void> {
   // const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
   const packageTokensPath = path.resolve('../../packages/theme/brand');
 
-  // const configs = Object.entries(themes).map(([name, tokensets]) => {
-  //   const updatedSets = tokensets.map((x) =>
-  //     path.resolve(`${tokensPath}/${x}.json`),
-  //   );
+  const configs = Object.entries(themes).map(([name, tokensets]) => {
+    const updatedSets = tokensets.map((x) =>
+      path.resolve(`${tokensPath}/${x}.json`),
+    );
 
-  //   const [source, include] = R.partition(
-  //     R.includes('core/modes'),
-  //     updatedSets,
-  //   );
+    const [source, include] = R.partition(
+      R.includes('core/modes'),
+      updatedSets,
+    );
 
-  //   const config_ = getCSSConfig(name, packageTokensPath);
+    const config_ = getCSSConfig(name, packageTokensPath);
 
-  //   const config = {
-  //     ...config_,
-  //     source,
-  //     include,
-  //   };
+    const config = {
+      ...config_,
+      source,
+      include,
+    };
 
-  //   console.log(config);
+    console.log(config);
 
-  //   return [name, config];
-  // });
+    return [name, config];
+  });
 
-  const defaultConfig = {
-    ...getCSSConfig('theme1', packageTokensPath),
-    source: [
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/light.json',
-      // '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/dark.json',
-    ],
-    include: [
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/themes/theme1.json',
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/size/default.json',
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/typography/default.json',
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/styles/default.json',
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/semantic/color.json',
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/semantic/style.json',
-    ],
-  };
+  // const defaultConfig = {
+  //   ...getCSSConfig('theme1', packageTokensPath),
+  //   source: [
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/light.json',
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/size/default.json',
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/typography/default.json',
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/styles/default.json',
+  //     // '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/dark.json',
+  //   ],
+  //   include: [
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/themes/theme1.json',
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/semantic/color.json',
+  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/semantic/style.json',
+  //   ],
+  // };
 
-  const configs = [['theme1', defaultConfig]];
+  // const configs = [['theme1', defaultConfig]];
 
   if (brands.length > 0) {
     console.log('🍱 Staring token builder');

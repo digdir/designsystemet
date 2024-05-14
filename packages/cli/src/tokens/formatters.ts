@@ -14,7 +14,7 @@ type IncludeReferences = (token: TransformedToken) => boolean;
  */
 export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  formatter: async function ({ dictionary, file, options }) {
+  format: async function ({ dictionary, file, options }) {
     const { allTokens, unfilteredTokens } = dictionary;
     const { usesDtcg, outputReferences } = options;
     const includeReferences = options.includeReferences as IncludeReferences;
@@ -72,13 +72,13 @@ export const scopedReferenceVariables: Format = {
     return fileHeader({ file }).then((fileHeaderText) => {
       const content = `
       ${fileHeaderText}
-      :root {
-        /** Referenced source tokens */
-        /** DO NOT OVERRIDE */
-        ${referenceTokens.join('\n')}
-        \n  /** Tokens */
-        ${tokens.join('\n')}
-      }
+:root {
+  /** Referenced source tokens */
+  /** DO NOT OVERRIDE */
+${referenceTokens.join('\n')}
+  /** Tokens */
+${tokens.join('\n')}
+}
       `;
 
       return content;
@@ -103,7 +103,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const groupedTokens: Format = {
   name: 'groupedTokens',
-  formatter: async function ({ dictionary, file }) {
+  format: async function ({ dictionary, file }) {
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',
