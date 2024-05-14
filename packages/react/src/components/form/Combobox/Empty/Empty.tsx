@@ -2,7 +2,7 @@ import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 
 import classes from './Empty.module.css';
 
@@ -15,10 +15,10 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
       throw new Error('ComboboxEmpty must be used within a Combobox');
     }
 
-    const { optionValues, size } = context;
+    const { filteredOptions, size } = context;
 
     return (
-      optionValues.length === 0 && (
+      filteredOptions.length === 0 && (
         <div
           ref={ref}
           className={cl(classes.empty, classes[size], className)}

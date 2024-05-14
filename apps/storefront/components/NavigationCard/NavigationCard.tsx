@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import cl from 'clsx';
 import type * as React from 'react';
+import { Heading } from '@digdir/designsystemet-react';
 
 import classes from './NavigationCard.module.css';
 
@@ -11,6 +12,7 @@ export interface NavigationCardProps {
   backgroundColor?: 'white' | 'grey';
   description?: string;
   url?: string;
+  level?: 2 | 3;
 }
 
 const NavigationCard = ({
@@ -20,6 +22,7 @@ const NavigationCard = ({
   backgroundColor = 'white',
   description,
   url = '/grunnleggende/design-tokens',
+  level = 3,
 }: NavigationCardProps) => {
   return (
     <Link
@@ -28,7 +31,12 @@ const NavigationCard = ({
       className={cl(classes.card, classes[backgroundColor])}
     >
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
-      <h3 className={classes.title}>{title}</h3>
+      <Heading
+        level={level}
+        className={classes.title}
+      >
+        {title}
+      </Heading>
       <div className={classes.desc}>{description}</div>
     </Link>
   );

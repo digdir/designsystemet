@@ -2,9 +2,11 @@ import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
+import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
 import { omit } from '../../../../utilities';
+import { useComboboxId } from '../ComboboxIdContext';
 
 import classes from './Custom.module.css';
 
@@ -51,34 +53,38 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
 
     const randomId = useId();
 
+    const { activeIndex } = useComboboxId();
     const context = useContext(ComboboxContext);
+
     if (!context) {
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { size, activeIndex, optionValues, setActiveIndex } = context;
+    const { size, customIds, listRef, getItemProps } = context;
 
     const index = useMemo(
-      () => id && optionValues.indexOf(id),
-      [optionValues, id],
+      () => (id && customIds.indexOf(id)) || 0,
+      [id, customIds],
     );
+
+    const combinedRef = useMergeRefs([
+      (node: HTMLElement | null) => {
+        listRef.current[index] = node;
+      },
+      ref,
+    ]);
 
     return (
       <Component
-        ref={ref}
+        ref={combinedRef}
         tabIndex={-1}
         className={cl(classes.custom, classes[size], className)}
         id={id || randomId}
         role='option'
         aria-selected={activeIndex === index}
         data-active={activeIndex === index}
-        onMouseEnter={() => {
-          typeof index === 'number' && setActiveIndex(index);
-        }} // Set active index on hover
-        onFocus={() => {
-          typeof index === 'number' && setActiveIndex(index);
-        }}
         {...omit(['interactive'], rest)}
+        {...omit(['onClick', 'onPointerLeave'], getItemProps())}
       />
     );
   },
