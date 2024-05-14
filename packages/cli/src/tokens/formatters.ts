@@ -71,7 +71,7 @@ export const scopedReferenceVariables: Format = {
 
     return fileHeader({ file }).then((fileHeaderText) => {
       const content = `
-      ${fileHeaderText}
+${fileHeaderText}
 :root {
   /** Referenced source tokens */
   /** DO NOT OVERRIDE */
