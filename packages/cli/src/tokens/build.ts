@@ -168,12 +168,14 @@ export async function run(options: Options): Promise<void> {
       path.resolve(`${tokensPath}/${x}.json`),
     );
 
+    const updatedName = name.replace('_semantic', '');
+
     const [source, include] = R.partition(
       R.includes('core/modes'),
       updatedSets,
     );
 
-    const config_ = getCSSConfig(name, packageTokensPath);
+    const config_ = getCSSConfig(updatedName, packageTokensPath);
 
     const config = {
       ...config_,
@@ -183,26 +185,8 @@ export async function run(options: Options): Promise<void> {
 
     console.log(config);
 
-    return [name, config];
+    return [updatedName, config];
   });
-
-  // const defaultConfig = {
-  //   ...getCSSConfig('theme1', packageTokensPath),
-  //   source: [
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/light.json',
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/size/default.json',
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/typography/default.json',
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/styles/default.json',
-  //     // '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/dark.json',
-  //   ],
-  //   include: [
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/themes/theme1.json',
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/semantic/color.json',
-  //     '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/semantic/style.json',
-  //   ],
-  // };
-
-  // const configs = [['theme1', defaultConfig]];
 
   if (brands.length > 0) {
     console.log('🍱 Staring token builder');
