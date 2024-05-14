@@ -109,7 +109,7 @@ export const ComboboxInput = ({
       aria-disabled={disabled}
       className={cl(
         'fds-textfield__input',
-        'fds-combobox__input-wrapper',
+        'fds-combobox__input--wrapper',
         readOnly && 'fds-combobox--readonly',
         error && 'fds-combobox--error',
       )}
@@ -130,6 +130,7 @@ export const ComboboxInput = ({
           value={inputValue}
           {...omit(['style', 'className'], rest)}
           {...formFieldProps.inputProps}
+          className='fds-combobox__input'
           onChange={(e) => {
             onChange(e);
             !open && setOpen(true);
