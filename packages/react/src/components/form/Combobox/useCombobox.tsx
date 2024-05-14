@@ -147,8 +147,14 @@ export default function useCombobox({
   const { filteredOptions, filteredOptionsChildren } = useMemo(() => {
     const filteredOptions: string[] = [];
 
-    const filteredOptionsChildren = Object.keys(options)
-      .map((option, index) => {
+    const filteredOptionsChildren = Object.keys(options).map(
+      (option, index) => {
+        /* If we have a selected value in single mode and the input matches an option, return all children */
+        if (!multiple && selectedOptions[inputValue.toLowerCase()]) {
+          filteredOptions.push(options[option].value);
+          return optionsChildren[index];
+        }
+
         if (multiple && selectedOptions[option]) {
           filteredOptions.push(options[option].value);
           return optionsChildren[index];
@@ -157,8 +163,8 @@ export default function useCombobox({
           filteredOptions.push(options[option].value);
           return optionsChildren[index];
         }
-      })
-      .filter((child) => child);
+      },
+    );
 
     return { filteredOptions, filteredOptionsChildren };
     // eslint-disable-next-line react-hooks/exhaustive-deps

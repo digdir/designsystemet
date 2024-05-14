@@ -275,7 +275,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       }
 
       setSelectedOptions(newSelectedOptions);
-      console.log('calling new value with: ', Object.keys(newSelectedOptions));
       onValueChange?.(Object.keys(newSelectedOptions));
 
       !multiple && setOpen(false);
