@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.60.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.59.0...@digdir/designsystemet-react@0.60.0) (2024-05-14)
+
+### Bug Fixes
+
+- **Combobox:** Improve performance ([#1771](https://github.com/digdir/designsystemet/issues/1771)) ([18cdd17](https://github.com/digdir/designsystemet/commit/18cdd17c71a49bbae88ade3e2b925dd28f17acb3))
+- **Modal:** fix close button position ([#1877](https://github.com/digdir/designsystemet/issues/1877)) ([c866710](https://github.com/digdir/designsystemet/commit/c866710cc00760a8f1a4f1676e2c8a5eda235a72))
+
+### Features
+
+- **Box:** Remove deprecated `as` prop ([#1896](https://github.com/digdir/designsystemet/issues/1896)) ([59dd231](https://github.com/digdir/designsystemet/commit/59dd2310cfb7c91e4be20a54412e036a8a268b73))
+- **Button:** Remove deprecated `as` prop ([#1894](https://github.com/digdir/designsystemet/issues/1894)) ([c346203](https://github.com/digdir/designsystemet/commit/c34620344be7d25c4c73b147b136254b177cab2c))
+- **Card:** Remove deprecated `as` prop ([#1897](https://github.com/digdir/designsystemet/issues/1897)) ([17ef8c6](https://github.com/digdir/designsystemet/commit/17ef8c64c3ad07d8a0bf036a032c1a5bd62a4233))
+- **DropdownMenuItem:** Remove deprecated `as` prop ([#1895](https://github.com/digdir/designsystemet/issues/1895)) ([2f705bb](https://github.com/digdir/designsystemet/commit/2f705bbe063317fd6f21d340ab222e966d912d7e))
+- **ErrorMessage:** Remove deprecated `as` prop ([#1899](https://github.com/digdir/designsystemet/issues/1899)) ([b37584a](https://github.com/digdir/designsystemet/commit/b37584af07b2b8a4f536b5931213227fd1fc1c9d))
+- **Heading:** Remove deprecated `as` prop ([#1900](https://github.com/digdir/designsystemet/issues/1900)) ([685e438](https://github.com/digdir/designsystemet/commit/685e43897775276c331b2cf548f70fa508806d9e))
+- **Ingress:** Remove deprecated `as` prop ([#1903](https://github.com/digdir/designsystemet/issues/1903)) ([1139b31](https://github.com/digdir/designsystemet/commit/1139b312defa3411e9133c949dc19d48011fa74d))
+- **Label:** Remove deprecated `as` prop ([#1904](https://github.com/digdir/designsystemet/issues/1904)) ([a1469e4](https://github.com/digdir/designsystemet/commit/a1469e40f1aa417f8080b12801366a343eef3908))
+- **Link:** Remove deprecated `as` prop ([#1898](https://github.com/digdir/designsystemet/issues/1898)) ([f037bd2](https://github.com/digdir/designsystemet/commit/f037bd2e62a9a8c75b097be53d6c959eb6dfb26b))
+- **Paragraph:** Remove deprecated `as` prop ([#1905](https://github.com/digdir/designsystemet/issues/1905)) ([aa81f5a](https://github.com/digdir/designsystemet/commit/aa81f5ad1f5d564eccbd3036b99085baa179ea9b))
+- **Paragraph:** Remove deprectated `short` prop ([#1891](https://github.com/digdir/designsystemet/issues/1891)) ([e1213b0](https://github.com/digdir/designsystemet/commit/e1213b0fc80b1046587f316f31ea6df1b67dabef))
+
 ## [0.59.1-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.59.1-alpha.0...@digdir/designsystemet-react@0.59.1-alpha.1) (2024-04-26)
 
 ### Bug Fixes
