@@ -3,7 +3,6 @@
 @layer fds.typography, fds.utils, fds.btn;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./react-css-modules.css');
 @import url('./button.css');
 @import url('./utils.css');
 @import url('./box.css');

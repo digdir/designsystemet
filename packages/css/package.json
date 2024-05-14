@@ -38,8 +38,5 @@
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.0.1",
     "rimraf": "^5.0.5"
-  },
-  "dependencies": {
-    "@digdir/designsystemet-react": "workspace:^"
   }
 }

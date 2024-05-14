@@ -15,7 +15,6 @@
   ],
   "scripts": {
     "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c --bundleConfigAsCjs",
-    "generate:css": "esno ./scripts/generate-css.ts",
     "clean": "rimraf dist && rimraf tsc-build",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
     "types": "tsc --noEmit"
@@ -34,10 +33,8 @@
     "@tanstack/react-virtual": "^3.2.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
     "copyfiles": "^2.4.1",
     "esno": "^4.7.0",
-    "fs-extra": "^11.2.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.12.1",
     "typescript": "^5.4.2"
