@@ -142,7 +142,7 @@
     width: 15rem;
     list-style: none;
     z-index: 1500;
-    margin: 0;
+    margin: var(--fds-spacing-1) 0 0 0;
 
     border-radius: var(--fds-border_radius-small, 0.125rem);
     background: #fff;
