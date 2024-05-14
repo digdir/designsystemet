@@ -56,16 +56,7 @@ export const scopedReferenceVariables: Format = {
       }
     };
 
-    const [darkTokens, restTokens] = R.partition(
-      (token) => R.includes('modes/dark', token.filePath),
-      allTokens,
-    );
-
-    console.log(darkTokens[0]);
-    const tokens = restTokens.map((t) => parseToken(t, true)).filter((x) => x);
-    const dark = darkTokens.map((t) => parseToken(t, true));
-
-    console.log('dark tokens:', dark.length);
+    const tokens = allTokens.map((t) => parseToken(t, true)).filter((x) => x);
 
     const referenceTokens = referencedTokens
       .reduce<TransformedToken[]>((acc, token) => {
@@ -87,12 +78,6 @@ export const scopedReferenceVariables: Format = {
         ${referenceTokens.join('\n')}
         \n  /** Tokens */
         ${tokens.join('\n')}
-
-        @media (prefers-color-scheme: dark) {
-          [data-color-mode=auto][data-dark-theme*=dark] {
-          ${dark.join('\n')}
-          }
-        }
       }
       `;
 

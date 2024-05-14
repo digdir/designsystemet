@@ -189,7 +189,7 @@ export async function run(options: Options): Promise<void> {
     ...getCSSConfig('theme1', packageTokensPath),
     source: [
       '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/light.json',
-      '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/dark.json',
+      // '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/core/modes/dark.json',
     ],
     include: [
       '/Users/michaelmarszalek/Documents/designsystemet/design-tokens/themes/theme1.json',

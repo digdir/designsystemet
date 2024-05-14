@@ -161,65 +161,65 @@
   --fds-colors-brand3-text-default: var(--fds-colors-brand3-13);
   --fds-colors-brand3-contrast-first: var(--fds-colors-brand3-contrast-1);
   --fds-colors-brand3-contrast-second: var(--fds-colors-brand3-contrast-2);
-  --fds-colors-success-background-default: #08200c;
-  --fds-colors-success-background-subtle: #0b290f;
-  --fds-colors-success-surface-default: #0f3814;
-  --fds-colors-success-surface-hover: #114218;
-  --fds-colors-success-surface-active: #144c1c;
-  --fds-colors-success-border-subtle: #185e22;
-  --fds-colors-success-border-default: #207a2c;
-  --fds-colors-success-border-strong: #279636;
+  --fds-colors-success-background-default: #fcfefc;
+  --fds-colors-success-background-subtle: #e9f6ea;
+  --fds-colors-success-surface-default: #d9efdc;
+  --fds-colors-success-surface-hover: #b9e1be;
+  --fds-colors-success-surface-active: #94d29d;
+  --fds-colors-success-border-subtle: #9ed6a5;
+  --fds-colors-success-border-default: #29a03a;
+  --fds-colors-success-border-strong: #185e22;
   --fds-colors-success-base-default: #2ca63d;
   --fds-colors-success-base-hover: #248c33;
   --fds-colors-success-base-active: #1d7129;
-  --fds-colors-success-text-subtle: #64be70;
-  --fds-colors-success-text-default: #a2d8aa;
-  --fds-colors-success-contrast-first: #000;
+  --fds-colors-success-text-subtle: #185c21;
+  --fds-colors-success-text-default: #0f3814;
+  --fds-colors-success-contrast-first: #ffffff;
   --fds-colors-success-contrast-second: #e6e6e6;
-  --fds-colors-danger-background-default: #380c0c;
-  --fds-colors-danger-background-subtle: #470f10;
-  --fds-colors-danger-surface-default: #5e1515;
-  --fds-colors-danger-surface-hover: #6f1819;
-  --fds-colors-danger-surface-active: #7f1c1c;
-  --fds-colors-danger-border-subtle: #9d2223;
-  --fds-colors-danger-border-default: #bb3f40;
-  --fds-colors-danger-border-strong: #c96666;
+  --fds-colors-danger-background-default: #fffefe;
+  --fds-colors-danger-background-subtle: #fbf2f3;
+  --fds-colors-danger-surface-default: #f6e6e6;
+  --fds-colors-danger-surface-hover: #eecfd0;
+  --fds-colors-danger-surface-active: #e6b9b9;
+  --fds-colors-danger-border-subtle: #e8bfbf;
+  --fds-colors-danger-border-default: #cd7172;
+  --fds-colors-danger-border-strong: #9d2223;
   --fds-colors-danger-base-default: #b32728;
   --fds-colors-danger-base-hover: #8c1f1f;
   --fds-colors-danger-base-active: #671617;
-  --fds-colors-danger-text-subtle: #dc9a9b;
-  --fds-colors-danger-text-default: #e9c2c2;
-  --fds-colors-danger-contrast-first: #000;
+  --fds-colors-danger-text-subtle: #9a2122;
+  --fds-colors-danger-text-default: #5e1515;
+  --fds-colors-danger-contrast-first: #ffffff;
   --fds-colors-danger-contrast-second: #e6e6e6;
-  --fds-colors-info-background-default: #031d30;
-  --fds-colors-info-background-subtle: #032540;
-  --fds-colors-info-surface-default: #043256;
-  --fds-colors-info-surface-hover: #053c65;
-  --fds-colors-info-surface-active: #064474;
-  --fds-colors-info-border-subtle: #075490;
-  --fds-colors-info-border-default: #0a6dba;
-  --fds-colors-info-border-strong: #3389cb;
+  --fds-colors-info-background-default: #fefeff;
+  --fds-colors-info-background-subtle: #edf5fa;
+  --fds-colors-info-surface-default: #dfecf7;
+  --fds-colors-info-surface-hover: #bedaee;
+  --fds-colors-info-surface-active: #a1c9e7;
+  --fds-colors-info-border-subtle: #aacee9;
+  --fds-colors-info-border-default: #4291ce;
+  --fds-colors-info-border-strong: #075490;
   --fds-colors-info-base-default: #0c72c1;
   --fds-colors-info-base-hover: #085c9c;
   --fds-colors-info-base-active: #064678;
-  --fds-colors-info-text-subtle: #78b1dc;
-  --fds-colors-info-text-default: #aed0ea;
+  --fds-colors-info-text-subtle: #07528c;
+  --fds-colors-info-text-default: #043256;
   --fds-colors-info-contrast-first: #ffffff;
   --fds-colors-info-contrast-second: #e6e6e6;
-  --fds-colors-warning-background-default: #211b08;
-  --fds-colors-warning-background-subtle: #2b230a;
-  --fds-colors-warning-surface-default: #3a300e;
-  --fds-colors-warning-surface-hover: #453810;
-  --fds-colors-warning-surface-active: #4e4013;
-  --fds-colors-warning-border-subtle: #625017;
-  --fds-colors-warning-border-default: #7f681e;
-  --fds-colors-warning-border-strong: #9c8125;
+  --fds-colors-warning-background-default: #fffefc;
+  --fds-colors-warning-background-subtle: #fbf2d5;
+  --fds-colors-warning-surface-default: #f9ebbd;
+  --fds-colors-warning-surface-hover: #f2d474;
+  --fds-colors-warning-surface-active: #e8bf37;
+  --fds-colors-warning-border-subtle: #edc644;
+  --fds-colors-warning-border-default: #a68827;
+  --fds-colors-warning-border-strong: #625017;
   --fds-colors-warning-base-default: #d46223;
   --fds-colors-warning-base-hover: #b0511d;
   --fds-colors-warning-base-active: #8e4117;
-  --fds-colors-warning-text-subtle: #e39a72;
-  --fds-colors-warning-text-default: #efc3ab;
-  --fds-colors-warning-contrast-first: #000;
+  --fds-colors-warning-text-subtle: #813c15;
+  --fds-colors-warning-text-default: #4f240d;
+  --fds-colors-warning-contrast-first: #ffffff;
   --fds-colors-warning-contrast-second: #e6e6e6;
   --fds-base: 4;
   --fds-text-case-none: none;
@@ -262,6 +262,16 @@
   --fds-shadow-medium: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
   --fds-shadow-large: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
   --fds-shadow-xlarge: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
+  --fds-border-radius-sm: 2;
+  --fds-border-radius-md: 4;
+  --fds-border-radius-lg: 8;
+  --fds-border-radius-xl: 12;
+  --fds-border-radius-2xl: 16;
+  --fds-border-radius-3xl: 24;
+  --fds-border-radius-4xl: 32;
+  --fds-border-radius-full: 9999;
+  --fds-opacity-disabled-components: 30%;
+  --fds-opacity-disabled: 30%;
   --fds-typography-heading-2xlarge: 500 3.75rem/1.3 'Inter';
   --fds-typography-heading-xlarge: 500 3rem/1.3 'Inter';
   --fds-typography-heading-large: 500 2.25rem/1.3 'Inter';
@@ -296,16 +306,14 @@
   --fds-typography-interactive-large: 400 1.5rem/1.3 'Inter';
   --fds-typography-interactive-medium: 400 1.125rem/1.3 'Inter';
   --fds-typography-interactive-small: 400 1rem/1.3 'Inter';
-  --fds-opacity-disabled: 30%;
-  --fds-border_radius-interactive: 4px;
-  --fds-border_radius-small: 2px;
-  --fds-border_radius-medium: 4px;
-  --fds-border_radius-large: 8px;
-  --fds-border_radius-xlarge: 12px;
-  --fds-border_radius-xxlarge: 16px;
-  --fds-border_radius-xxxlarge: 24px;
-  --fds-border_radius-xxxxlarge: 32px;
-  --fds-border_radius-full: 9999px;
+  --fds-border_radius-sm: 2;
+  --fds-border_radius-md: 4;
+  --fds-border_radius-lg: 8;
+  --fds-border_radius-xl: 12;
+  --fds-border_radius-2xl: 16;
+  --fds-border_radius-3xl: 24;
+  --fds-border_radius-4xl: 32;
+  --fds-border_radius-full: 9999;
   --fds-spacing-0: 0;
   --fds-spacing-1: 0.25rem;
   --fds-spacing-2: 0.5rem;
@@ -326,7 +334,6 @@
   --fds-spacing-22: 5.5rem;
   --fds-spacing-26: 6.5rem;
   --fds-spacing-30: 7.5rem;
-  --fds-base_spacing: 4;
   --fds-sizing-0: 0;
   --fds-sizing-1: 0.25rem;
   --fds-sizing-2: 0.5rem;
@@ -347,388 +354,5 @@
   --fds-sizing-22: 5.5rem;
   --fds-sizing-26: 6.5rem;
   --fds-sizing-30: 7.5rem;
-  --fds-base_sizing: 4;
-
-        @media (prefers-color-scheme: dark) {
-          [data-color-mode=auto][data-dark-theme*=dark] {
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          }
-        }
       }
       
