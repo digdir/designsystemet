@@ -1,14 +1,13 @@
 import { forwardRef, memo, useContext, useId } from 'react';
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Label } from '../../../Typography';
 import { omit } from '../../../../utilities';
 import { ComboboxContext } from '../ComboboxContext';
 
-import { SelectedIcon } from './Icon/SelectedIcon';
-import classes from './Option.module.css';
-import ComboboxOptionDescription from './Description/Description';
+import { SelectedIcon } from './SelectedIcon';
+import ComboboxOptionDescription from './Description';
 import useComboboxOption from './useComboboxOption';
 
 export type ComboboxOptionProps = {
@@ -60,10 +59,9 @@ export const ComboboxOption = memo(
             rest.onClick?.(e);
           }}
           className={cl(
-            classes.option,
-            classes[size],
-            active && classes.active,
-            multiple && classes.multiple,
+            'fds-combobox__option',
+            active && 'fds-combobox__option--active',
+            multiple && 'fds-combobox__option--multiple',
             className,
           )}
           {...omit(['displayValue'], rest)}
@@ -81,7 +79,7 @@ export const ComboboxOption = memo(
             </span>
           </Label>
           <Label
-            className={classes.optionText}
+            className={'fds-combobox__option__label'}
             size={size}
             id={labelId}
           >

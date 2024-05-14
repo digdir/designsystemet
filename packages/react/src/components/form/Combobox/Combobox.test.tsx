@@ -195,7 +195,7 @@ describe('Combobox', () => {
     // get clear button by its classname .clearButton
     const buttons = screen.getAllByRole('button');
     const clearButton = buttons.find((button) =>
-      button.className.includes('clearButton'),
+      button.className.includes('fds-combobox__clear-button'),
     );
     if (!clearButton) {
       throw new Error('Could not find clear button');

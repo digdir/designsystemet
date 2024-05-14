@@ -1,9 +1,8 @@
 import { useContext } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { ComboboxContext } from '../ComboboxContext';
-import classes from '../Combobox.module.css';
 
 export const ComboboxClearButton = () => {
   const context = useContext(ComboboxContext);
@@ -12,13 +11,12 @@ export const ComboboxClearButton = () => {
     throw new Error('ComboboxContext is missing');
   }
 
-  const { size, readOnly, disabled, clearButtonLabel, handleSelectOption } =
-    context;
+  const { readOnly, disabled, clearButtonLabel, handleSelectOption } = context;
 
   return (
     <button
       disabled={disabled}
-      className={cl(classes.clearButton, classes[size], `fds-focus`)}
+      className={cl('fds-combobox__clear-button', `fds-focus`)}
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;

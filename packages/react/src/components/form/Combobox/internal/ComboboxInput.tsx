@@ -1,11 +1,10 @@
 import type { ChangeEvent } from 'react';
 import { useContext } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
-import classes from '../Combobox.module.css';
 import { Box } from '../../../Box';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
@@ -43,7 +42,6 @@ export const ComboboxInput = ({
 
   const {
     forwareddRef,
-    size,
     readOnly,
     disabled,
     open,
@@ -111,13 +109,12 @@ export const ComboboxInput = ({
       aria-disabled={disabled}
       className={cl(
         'fds-textfield__input',
-        classes.inputWrapper,
-        classes[size],
-        readOnly && classes.readonly,
-        error && classes.error,
+        'fds-combobox__input__wrapper',
+        readOnly && 'fds-combobox--readonly',
+        error && 'fds-combobox--error',
       )}
     >
-      <div className={classes.chipAndInput}>
+      <div className={'fds-combobox__chip-and-input'}>
         {/* If the input is in multiple mode, we need to display chips */}
         {multiple && !hideChips && <ComboboxChips />}
         <input
@@ -133,6 +130,7 @@ export const ComboboxInput = ({
           value={inputValue}
           {...omit(['style', 'className'], rest)}
           {...formFieldProps.inputProps}
+          className='fds-combobox__input'
           onChange={(e) => {
             onChange(e);
             !open && setOpen(true);
@@ -143,7 +141,7 @@ export const ComboboxInput = ({
       {/* Clear button if we are in multiple mode and have at least one active value */}
       {showClearButton && <ComboboxClearButton />}
       {/* Arrow for combobox. Click is handled by the wrapper */}
-      <div className={classes.arrow}>
+      <div className={'fds-combobox__arrow'}>
         {open ? (
           <ChevronUpIcon
             title='arrow up'

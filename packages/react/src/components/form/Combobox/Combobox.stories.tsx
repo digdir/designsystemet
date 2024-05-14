@@ -9,7 +9,7 @@ import { Modal } from '../../Modal';
 import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
-import ComboboxCustom from './Custom/Custom';
+import ComboboxCustom from './Custom';
 
 import { Combobox } from './index';
 
