@@ -32,30 +32,40 @@ export const scopedReferenceVariables: Format = {
       format: 'css',
     });
 
-    const tokens = allTokens
-      .map((token) => {
-        const originalValue = (
-          usesDtcg ? token.original.$value : token.original.value
-        ) as string;
+    const parseToken = (token: TransformedToken, ignoreSource?: boolean) => {
+      const originalValue = (
+        usesDtcg ? token.original.$value : token.original.value
+      ) as string;
 
-        if (usesReferences(originalValue) && includeReferences(token)) {
-          console.log('including: ', token.name);
-          const refs = getReferences(
-            originalValue,
-            unfilteredTokens ? unfilteredTokens : {},
-          );
+      if (usesReferences(originalValue) && includeReferences(token)) {
+        const refs = getReferences(
+          originalValue,
+          unfilteredTokens ? unfilteredTokens : {},
+        );
 
-          referencedTokens = [
-            ...referencedTokens,
-            ...refs.filter((x) => x.isSource),
-          ];
+        referencedTokens = [
+          ...referencedTokens,
+          ...refs.filter((x) => x.isSource),
+        ];
 
-          return formatWithReference(token);
-        }
+        return formatWithReference(token);
+      }
 
-        return !token.isSource && format(token);
-      })
-      .filter((x) => x);
+      if (ignoreSource && !token.isSource) {
+        return format(token);
+      }
+    };
+
+    const [darkTokens, restTokens] = R.partition(
+      (token) => R.includes('modes/dark', token.filePath),
+      allTokens,
+    );
+
+    console.log(darkTokens[0]);
+    const tokens = restTokens.map((t) => parseToken(t, true)).filter((x) => x);
+    const dark = darkTokens.map((t) => parseToken(t, true));
+
+    console.log('dark tokens:', dark.length);
 
     const referenceTokens = referencedTokens
       .reduce<TransformedToken[]>((acc, token) => {
@@ -68,17 +78,26 @@ export const scopedReferenceVariables: Format = {
       .map((token) => format(token))
       .filter((formattedValue) => formattedValue);
 
-    return fileHeader({ file }).then(
-      (fileHeaderText) =>
-        fileHeaderText +
-        ':root {\n' +
-        '  /** Referenced source tokens */ \n' +
-        '  /** DO NOT OVERRIDE */ \n' +
-        referenceTokens.join('\n') +
-        '\n\n  /** Tokens */ \n' +
-        tokens.join('\n') +
-        '\n}\n',
-    );
+    return fileHeader({ file }).then((fileHeaderText) => {
+      const content = `
+      ${fileHeaderText}
+      :root {
+        /** Referenced source tokens */
+        /** DO NOT OVERRIDE */
+        ${referenceTokens.join('\n')}
+        \n  /** Tokens */
+        ${tokens.join('\n')}
+
+        @media (prefers-color-scheme: dark) {
+          [data-color-mode=auto][data-dark-theme*=dark] {
+          ${dark.join('\n')}
+          }
+        }
+      }
+      `;
+
+      return content;
+    });
   },
 };
 

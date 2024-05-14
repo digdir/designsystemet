@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Preview } from '@storybook/react';
 
-import '../packages/theme/brand/digdir/tokens.css';
+import '../packages/theme/brand';
 import '../packages/css/index.css';
 
 import {
