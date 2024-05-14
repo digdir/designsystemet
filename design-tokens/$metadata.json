@@ -2,9 +2,8 @@
   "tokenSetOrder": [
     "core/modes/light",
     "core/modes/dark",
-    "core/size/default",
     "core/typography/default",
-    "core/styles/default",
+    "core/defaults",
     "themes/theme1",
     "themes/theme2",
     "themes/theme3",
