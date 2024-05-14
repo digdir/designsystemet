@@ -16,7 +16,7 @@
     pointer-events: none;
   }
 
-  .fds-combobox__input--wrapper {
+  .fds-combobox__input__wrapper {
     display: flex;
     align-items: center;
     position: relative;
@@ -30,7 +30,7 @@
     font-family: inherit;
   }
 
-  .fds-combobox__input--wrapper .fds-combobox__input {
+  .fds-combobox__input__wrapper .fds-combobox__input {
     height: 100%;
     min-width: 50px;
     flex-grow: 1;
@@ -39,47 +39,47 @@
     background-color: transparent;
   }
 
-  .fds-combobox--small .fds-combobox__input--wrapper {
+  .fds-combobox--small .fds-combobox__input__wrapper {
     min-height: var(--fds-sizing-10);
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
     padding: 5px var(--fds-spacing-2);
   }
 
-  .fds-combobox--small .fds-combobox__input--wrapper .fds-combobox__input {
+  .fds-combobox--small .fds-combobox__input__wrapper .fds-combobox__input {
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
   }
 
-  .fds-combobox--medium .fds-combobox__input--wrapper {
+  .fds-combobox--medium .fds-combobox__input__wrapper {
     min-height: var(--fds-sizing-12);
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
     padding: 7px var(--fds-spacing-3);
   }
 
-  .fds-combobox--medium .fds-combobox__input--wrapper .fds-combobox__input {
+  .fds-combobox--medium .fds-combobox__input__wrapper .fds-combobox__input {
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
   }
 
-  .fds-combobox--large .fds-combobox__input--wrapper {
+  .fds-combobox--large .fds-combobox__input__wrapper {
     min-height: var(--fds-sizing-14);
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
     padding: 7px var(--fds-spacing-4);
   }
 
-  .fds-combobox--large .fds-combobox__input--wrapper .fds-combobox__input {
+  .fds-combobox--large .fds-combobox__input__wrapper .fds-combobox__input {
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
   }
 
-  .fds-combobox__input--wrapper .fds-combobox__input:focus {
+  .fds-combobox__input__wrapper .fds-combobox__input:focus {
     outline: none;
   }
 
-  .fds-combobox__input--wrapper.fds-combobox--error {
+  .fds-combobox__input__wrapper.fds-combobox--error {
     border-color: var(--fds-semantic-border-danger-default);
     border-width: 2px;
   }
@@ -100,7 +100,7 @@
     cursor: pointer;
   }
 
-  .fds-combobox__input--wrapper.fds-combobox--readonly {
+  .fds-combobox__input__wrapper.fds-combobox--readonly {
     background: var(--fds-semantic-surface-neutral-subtle);
     border-color: var(--fds-semantic-border-neutral-default);
   }
@@ -181,7 +181,7 @@
   /**
    * Apply a focus outline on an element when it is focused with keyboard
    */
-  .fds-combobox__input--wrapper:has(input:focus) {
+  .fds-combobox__input__wrapper:has(input:focus) {
     --fds-focus-border-width: 3px;
 
     outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);

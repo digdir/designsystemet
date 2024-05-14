@@ -109,7 +109,7 @@ export const ComboboxInput = ({
       aria-disabled={disabled}
       className={cl(
         'fds-textfield__input',
-        'fds-combobox__input--wrapper',
+        'fds-combobox__input__wrapper',
         readOnly && 'fds-combobox--readonly',
         error && 'fds-combobox--error',
       )}
