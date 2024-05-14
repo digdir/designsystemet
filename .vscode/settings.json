@@ -21,7 +21,6 @@
     "mdx"
   ],
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
-  "html-css-class-completion.excludeGlobPattern": "**/react-css-modules.css",
   "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
   "cSpell.language": "en,nb",
   "cSpell.ignorePaths": ["**/node_modules/**", "**/package.json", "yarn.lock"],
