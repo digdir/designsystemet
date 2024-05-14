@@ -312,6 +312,22 @@ describe('Combobox', () => {
     expect(formData.getAll('test')).toEqual(['leikanger', 'oslo']);
   });
 
+  it('should show all options when we are in signle mode, and have a value selected', async () => {
+    await render();
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+    await userEvent.click(screen.getByText('Leikanger'));
+
+    await wait(500);
+
+    await userEvent.click(combobox);
+
+    expect(screen.getByText('Leikanger')).toBeInTheDocument();
+    expect(screen.getByText('Oslo')).toBeInTheDocument();
+    expect(screen.getByText('Brønnøysund')).toBeInTheDocument();
+  });
+
   it('should only call onValueChange once when we click the same option fast twice', async () => {
     const onValueChange = vi.fn();
     await render({ onValueChange, multiple: true });

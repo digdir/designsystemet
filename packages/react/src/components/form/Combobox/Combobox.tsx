@@ -263,6 +263,10 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
         setInputValue('');
         inputRef.current?.focus();
       } else {
+        /* clear newSelectedOptions */
+        Object.keys(newSelectedOptions).forEach((key) => {
+          delete newSelectedOptions[key];
+        });
         newSelectedOptions[option.value] = option;
         setInputValue(option?.label || '');
         // move cursor to the end of the input
@@ -275,7 +279,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       }
 
       setSelectedOptions(newSelectedOptions);
-      console.log('calling new value with: ', Object.keys(newSelectedOptions));
       onValueChange?.(Object.keys(newSelectedOptions));
 
       !multiple && setOpen(false);
