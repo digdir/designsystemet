@@ -150,7 +150,7 @@ export default function useCombobox({
     const filteredOptionsChildren = Object.keys(options).map(
       (option, index) => {
         /* If we have a selected value in single mode and the input matches an option, return all children */
-        if (!multiple && selectedOptions[inputValue.toLowerCase()]) {
+        if (!multiple && Object.keys(selectedOptions).length === 1) {
           filteredOptions.push(options[option].value);
           return optionsChildren[index];
         }
