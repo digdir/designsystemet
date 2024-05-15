@@ -30,7 +30,7 @@
     opacity: var(--fds-opacity-disabled);
   }
 
-  .fds-btn--small {
+  .fds-btn--sm {
     --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-3);
 
     gap: var(--fds-sizing-1);
@@ -39,7 +39,7 @@
     min-height: var(--fds-sizing-10);
   }
 
-  .fds-btn--small::before {
+  .fds-btn--sm::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
     content: '';
   }
 
-  .fds-btn--small::after {
+  .fds-btn--sm::after {
     position: absolute;
     top: -5px;
     left: 0;
@@ -57,7 +57,7 @@
     content: '';
   }
 
-  .fds-btn--medium {
+  .fds-btn--md {
     --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
 
     gap: var(--fds-sizing-2);
@@ -66,7 +66,7 @@
     min-height: var(--fds-sizing-12);
   }
 
-  .fds-btn--large {
+  .fds-btn--lg {
     --fds-btn-padding: var(--fds-spacing-3) var(--fds-spacing-5);
 
     gap: var(--fds-sizing-2);

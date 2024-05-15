@@ -115,9 +115,9 @@ Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å br
 
 | Størrelse på Button | Aksel Ikon `fontSize` |
 | :------------------ | :-------------------- |
-| small               | 1rem                  |
-| medium              | 1.5rem                |
-| large               | 2rem                  |
+| sm                  | 1rem                  |
+| md                  | 1.5rem                |
+| lg                  | 2rem                  |
 
 <Canvas of={ButtonStories.Ikoner} />
 
@@ -137,7 +137,7 @@ Når vi skal vise brukeren at knappen laster noe, kan vi kombinere knappen med e
 
 I eksempelet over har vi brukt `aria-disabled` til å deaktivere knappene. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
 
-Denne egenskapen stopper ikke automatisk knappen fra å utløse `onCLick`.
+Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`.
 
 Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
 
