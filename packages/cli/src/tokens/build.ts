@@ -15,10 +15,9 @@ import { groupedTokens, scopedReferenceVariables } from './formatters.js';
 
 void registerTransforms(StyleDictionary);
 
-type Brand = string;
-
 const prefix = 'fds';
 const basePxFontSize = 16;
+const separator = '_';
 
 const fileHeader = () => [
   'Do not edit directly',
@@ -46,19 +45,18 @@ StyleDictionary.registerTransformGroup({
   ],
 });
 
-const excludeSource = (token: TransformedToken) => {
-  if (token.filePath.includes('core/**/*.json')) return false;
+const processThemeName = R.pipe(
+  R.replace(`${separator}semantic`, ''),
+  R.toLower,
+  R.split(separator),
+);
 
-  if (token.path[0] === 'viewport' && ['color'].includes(token.type as string))
-    return false;
+type GetConfig = (options: { fileName: string; buildPath: string }) => Config;
 
-  return true;
-};
-
-const getCSSConfig = ({
+const getCSSConfig: GetConfig = ({
   fileName = 'unknown',
   buildPath = 'unknown',
-}): Config => {
+}) => {
   return {
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -71,20 +69,22 @@ const getCSSConfig = ({
           {
             destination: `${fileName}.css`,
             format: scopedReferenceVariables.name,
-            filter: excludeSource,
           },
         ],
         options: {
           fileHeader,
           includeReferences: (token: TransformedToken) => {
             if (
-              token.name.match(/accent|neutral|brand1|brand2|brand3/) &&
-              token.filePath.includes('semantic/color')
+              R.test(/accent|neutral|brand1|brand2|brand3/, token.name) &&
+              R.includes('semantic/color', token.filePath)
             ) {
               return true;
             }
 
-            if (token.name.match(/global/) && token.filePath.includes('core')) {
+            if (
+              R.test(/global/, token.name) &&
+              R.includes('core', token.filePath)
+            ) {
               return true;
             }
 
@@ -112,7 +112,6 @@ const getStorefrontConfig = ({
           {
             destination: `${fileName}.ts`,
             format: groupedTokens.name,
-            filter: excludeSource,
           },
         ],
         options: {
@@ -130,83 +129,84 @@ type Options = {
   brands: string[];
 };
 
-const processThemeName = R.pipe(
-  R.replace('_semantic', ''),
-  R.toLower,
-  R.split('_'),
-);
+const sd = new StyleDictionary();
 
 export async function run(options: Options): Promise<void> {
-  const outPath = options.tokens;
+  const tokensPath = options.tokens;
+  const storefrontTokensOutPath = path.resolve('../../apps/storefront/tokens');
+  const packageTokensOutPath = path.resolve('../../packages/theme/brand');
 
   const $themes = JSON.parse(
-    fs.readFileSync(path.resolve(`${outPath}/$themes.json`), 'utf-8'),
+    fs.readFileSync(path.resolve(`${tokensPath}/$themes.json`), 'utf-8'),
   ) as ThemeObject[];
 
   const themes = permutateThemes($themes, {
-    separator: '_',
+    separator,
   }) as Record<string, string[]>;
 
-  // const storefrontTokensPath = path.resolve('../../apps/storefront/tokens');
-  const packageTokensPath = path.resolve('../../packages/theme/brand');
+  const getConfigs = (configCallback: GetConfig, outPath: string) =>
+    Object.entries(themes)
+      .map(([name, tokensets]) => {
+        const updatedSets = tokensets.map((x) => `${tokensPath}/${x}.json`);
 
-  const configs = Object.entries(themes)
-    .map(([name, tokensets]) => {
-      const updatedSets = tokensets.map((x) =>
-        path.resolve(`${outPath}/${x}.json`),
-      );
+        const [fileName, folderName] = processThemeName(name);
 
-      const [fileName, folderName] = processThemeName(name);
+        const [source, include] = R.partition(
+          R.test(/dark|light/),
+          updatedSets,
+        );
 
-      const [source, include] = R.partition(
-        R.includes('core/modes'),
-        updatedSets,
-      );
+        const config_ = configCallback({
+          fileName: fileName,
+          buildPath: `${outPath}/${folderName}/`,
+        });
 
-      const config_ = getCSSConfig({
-        fileName: fileName,
-        buildPath: `${packageTokensPath}/${folderName}/`,
-      });
+        const config = {
+          ...config_,
+          source: source,
+          include,
+        };
 
-      const config = {
-        ...config_,
-        source: source,
-        include,
-      };
+        console.log(config);
 
-      return [`${folderName}: ${fileName}`, config];
-    })
-    .sort();
+        return [`${folderName}: ${fileName}`, config];
+      })
+      .sort();
 
-  if (configs.length > 0) {
+  const tokenConfigs = getConfigs(getCSSConfig, packageTokensOutPath);
+  const storefrontConfigs = getConfigs(
+    getStorefrontConfig,
+    storefrontTokensOutPath,
+  );
+
+  if (tokenConfigs.length > 0) {
     console.log('🍱 Staring token builder');
-    console.log('➡️  Tokens path: ', outPath);
+    console.log('➡️  Tokens path: ', tokensPath);
 
     console.log('\n🏗️  Start building CSS tokens');
     await Promise.all(
-      configs.map(async ([name, config]) => {
+      tokenConfigs.map(async ([name, config]) => {
         console.log(`👷 Processing ${name as string}`);
 
-        const sd = new StyleDictionary();
         const tokensPackageSD = await sd.extend(config);
 
         return tokensPackageSD.buildAllPlatforms();
       }),
     );
     console.log('🏁 Finished building package tokens!');
+  }
 
-    // console.log('\n🏗️  Started building storefront tokens…');
-    // await Promise.all(
-    //   brands.map(async (brand) => {
-    //     console.log(`👷 Processing ${brand}`);
+  if (storefrontConfigs.length > 0) {
+    console.log('\n🏗️  Started building storefront tokens…');
+    await Promise.all(
+      storefrontConfigs.map(async ([name, config]) => {
+        console.log(`👷 Processing ${name as string}`);
 
-    //     const storefrontSD = new StyleDictionary(
-    //       getStorefrontConfig(brand, storefrontTokensPath, tokensPath),
-    //     );
+        const storefrontSD = await sd.extend(config);
 
-    //     return storefrontSD.buildAllPlatforms();
-    //   }),
-    // );
-    // console.log('🏁 Finished building storefront tokens!');
+        return storefrontSD.buildAllPlatforms();
+      }),
+    );
+    console.log('🏁 Finished building storefront tokens!');
   }
 }
