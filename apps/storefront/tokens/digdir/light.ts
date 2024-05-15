@@ -10,13 +10,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.1}",
+      value: "{color.accent.1}",
       type: "color"
     },
-    name: "--fds-colors-accent-background-default",
+    name: "--fds-color-accent-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "background-default"
     ]
@@ -27,13 +27,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.2}",
+      value: "{color.accent.2}",
       type: "color"
     },
-    name: "--fds-colors-accent-background-subtle",
+    name: "--fds-color-accent-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "background-subtle"
     ]
@@ -44,13 +44,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.3}",
+      value: "{color.accent.3}",
       type: "color"
     },
-    name: "--fds-colors-accent-surface-default",
+    name: "--fds-color-accent-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "surface-default"
     ]
@@ -61,13 +61,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.4}",
+      value: "{color.accent.4}",
       type: "color"
     },
-    name: "--fds-colors-accent-surface-hover",
+    name: "--fds-color-accent-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "surface-hover"
     ]
@@ -78,13 +78,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.5}",
+      value: "{color.accent.5}",
       type: "color"
     },
-    name: "--fds-colors-accent-surface-active",
+    name: "--fds-color-accent-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "surface-active"
     ]
@@ -95,13 +95,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.6}",
+      value: "{color.accent.6}",
       type: "color"
     },
-    name: "--fds-colors-accent-border-subtle",
+    name: "--fds-color-accent-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "border-subtle"
     ]
@@ -112,13 +112,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.7}",
+      value: "{color.accent.7}",
       type: "color"
     },
-    name: "--fds-colors-accent-border-default",
+    name: "--fds-color-accent-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "border-default"
     ]
@@ -129,13 +129,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.8}",
+      value: "{color.accent.8}",
       type: "color"
     },
-    name: "--fds-colors-accent-border-strong",
+    name: "--fds-color-accent-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "border-strong"
     ]
@@ -146,13 +146,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.9}",
+      value: "{color.accent.9}",
       type: "color"
     },
-    name: "--fds-colors-accent-base-default",
+    name: "--fds-color-accent-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "base-default"
     ]
@@ -163,13 +163,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.10}",
+      value: "{color.accent.10}",
       type: "color"
     },
-    name: "--fds-colors-accent-base-hover",
+    name: "--fds-color-accent-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "base-hover"
     ]
@@ -180,13 +180,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.11}",
+      value: "{color.accent.11}",
       type: "color"
     },
-    name: "--fds-colors-accent-base-active",
+    name: "--fds-color-accent-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "base-active"
     ]
@@ -197,13 +197,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.12}",
+      value: "{color.accent.12}",
       type: "color"
     },
-    name: "--fds-colors-accent-text-subtle",
+    name: "--fds-color-accent-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "text-subtle"
     ]
@@ -214,13 +214,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.13}",
+      value: "{color.accent.13}",
       type: "color"
     },
-    name: "--fds-colors-accent-text-default",
+    name: "--fds-color-accent-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "text-default"
     ]
@@ -231,13 +231,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.contrast-1}",
+      value: "{color.accent.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-accent-contrast-first",
+    name: "--fds-color-accent-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "contrast-first"
     ]
@@ -248,13 +248,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.accent.contrast-2}",
+      value: "{color.accent.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-accent-contrast-second",
+    name: "--fds-color-accent-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "accent",
       "contrast-second"
     ]
@@ -265,13 +265,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.1}",
+      value: "{color.neutral.1}",
       type: "color"
     },
-    name: "--fds-colors-neutral-background-default",
+    name: "--fds-color-neutral-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "background-default"
     ]
@@ -282,13 +282,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.2}",
+      value: "{color.neutral.2}",
       type: "color"
     },
-    name: "--fds-colors-neutral-background-subtle",
+    name: "--fds-color-neutral-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "background-subtle"
     ]
@@ -299,13 +299,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.3}",
+      value: "{color.neutral.3}",
       type: "color"
     },
-    name: "--fds-colors-neutral-surface-default",
+    name: "--fds-color-neutral-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "surface-default"
     ]
@@ -316,13 +316,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.4}",
+      value: "{color.neutral.4}",
       type: "color"
     },
-    name: "--fds-colors-neutral-surface-hover",
+    name: "--fds-color-neutral-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "surface-hover"
     ]
@@ -333,13 +333,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.5}",
+      value: "{color.neutral.5}",
       type: "color"
     },
-    name: "--fds-colors-neutral-surface-active",
+    name: "--fds-color-neutral-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "surface-active"
     ]
@@ -350,13 +350,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.6}",
+      value: "{color.neutral.6}",
       type: "color"
     },
-    name: "--fds-colors-neutral-border-subtle",
+    name: "--fds-color-neutral-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "border-subtle"
     ]
@@ -367,13 +367,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.7}",
+      value: "{color.neutral.7}",
       type: "color"
     },
-    name: "--fds-colors-neutral-border-default",
+    name: "--fds-color-neutral-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "border-default"
     ]
@@ -384,13 +384,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.8}",
+      value: "{color.neutral.8}",
       type: "color"
     },
-    name: "--fds-colors-neutral-border-strong",
+    name: "--fds-color-neutral-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "border-strong"
     ]
@@ -401,13 +401,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.9}",
+      value: "{color.neutral.9}",
       type: "color"
     },
-    name: "--fds-colors-neutral-base-default",
+    name: "--fds-color-neutral-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "base-default"
     ]
@@ -418,13 +418,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.10}",
+      value: "{color.neutral.10}",
       type: "color"
     },
-    name: "--fds-colors-neutral-base-hover",
+    name: "--fds-color-neutral-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "base-hover"
     ]
@@ -435,13 +435,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.11}",
+      value: "{color.neutral.11}",
       type: "color"
     },
-    name: "--fds-colors-neutral-base-active",
+    name: "--fds-color-neutral-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "base-active"
     ]
@@ -452,13 +452,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.12}",
+      value: "{color.neutral.12}",
       type: "color"
     },
-    name: "--fds-colors-neutral-text-subtle",
+    name: "--fds-color-neutral-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "text-subtle"
     ]
@@ -469,13 +469,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.13}",
+      value: "{color.neutral.13}",
       type: "color"
     },
-    name: "--fds-colors-neutral-text-default",
+    name: "--fds-color-neutral-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "text-default"
     ]
@@ -486,13 +486,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.contrast-1}",
+      value: "{color.neutral.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-neutral-contrast-first",
+    name: "--fds-color-neutral-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "contrast-first"
     ]
@@ -503,13 +503,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.contrast-2}",
+      value: "{color.neutral.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-neutral-contrast-second",
+    name: "--fds-color-neutral-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "neutral",
       "contrast-second"
     ]
@@ -520,13 +520,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.1}",
+      value: "{color.brand1.1}",
       type: "color"
     },
-    name: "--fds-colors-brand1-background-default",
+    name: "--fds-color-brand1-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "background-default"
     ]
@@ -537,13 +537,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.2}",
+      value: "{color.brand1.2}",
       type: "color"
     },
-    name: "--fds-colors-brand1-background-subtle",
+    name: "--fds-color-brand1-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "background-subtle"
     ]
@@ -554,13 +554,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.3}",
+      value: "{color.brand1.3}",
       type: "color"
     },
-    name: "--fds-colors-brand1-surface-default",
+    name: "--fds-color-brand1-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "surface-default"
     ]
@@ -571,13 +571,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.4}",
+      value: "{color.brand1.4}",
       type: "color"
     },
-    name: "--fds-colors-brand1-surface-hover",
+    name: "--fds-color-brand1-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "surface-hover"
     ]
@@ -588,13 +588,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.5}",
+      value: "{color.brand1.5}",
       type: "color"
     },
-    name: "--fds-colors-brand1-surface-active",
+    name: "--fds-color-brand1-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "surface-active"
     ]
@@ -605,13 +605,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.6}",
+      value: "{color.brand1.6}",
       type: "color"
     },
-    name: "--fds-colors-brand1-border-subtle",
+    name: "--fds-color-brand1-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "border-subtle"
     ]
@@ -622,13 +622,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.7}",
+      value: "{color.brand1.7}",
       type: "color"
     },
-    name: "--fds-colors-brand1-border-default",
+    name: "--fds-color-brand1-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "border-default"
     ]
@@ -639,13 +639,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.8}",
+      value: "{color.brand1.8}",
       type: "color"
     },
-    name: "--fds-colors-brand1-border-strong",
+    name: "--fds-color-brand1-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "border-strong"
     ]
@@ -656,13 +656,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.9}",
+      value: "{color.brand1.9}",
       type: "color"
     },
-    name: "--fds-colors-brand1-base-default",
+    name: "--fds-color-brand1-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "base-default"
     ]
@@ -673,13 +673,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.10}",
+      value: "{color.brand1.10}",
       type: "color"
     },
-    name: "--fds-colors-brand1-base-hover",
+    name: "--fds-color-brand1-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "base-hover"
     ]
@@ -690,13 +690,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.11}",
+      value: "{color.brand1.11}",
       type: "color"
     },
-    name: "--fds-colors-brand1-base-active",
+    name: "--fds-color-brand1-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "base-active"
     ]
@@ -707,13 +707,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.12}",
+      value: "{color.brand1.12}",
       type: "color"
     },
-    name: "--fds-colors-brand1-text-subtle",
+    name: "--fds-color-brand1-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "text-subtle"
     ]
@@ -724,13 +724,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.13}",
+      value: "{color.brand1.13}",
       type: "color"
     },
-    name: "--fds-colors-brand1-text-default",
+    name: "--fds-color-brand1-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "text-default"
     ]
@@ -741,13 +741,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.contrast-1}",
+      value: "{color.brand1.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-brand1-contrast-first",
+    name: "--fds-color-brand1-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "contrast-first"
     ]
@@ -758,13 +758,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand1.contrast-2}",
+      value: "{color.brand1.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-brand1-contrast-second",
+    name: "--fds-color-brand1-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand1",
       "contrast-second"
     ]
@@ -775,13 +775,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.1}",
+      value: "{color.brand2.1}",
       type: "color"
     },
-    name: "--fds-colors-brand2-background-default",
+    name: "--fds-color-brand2-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "background-default"
     ]
@@ -792,13 +792,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.2}",
+      value: "{color.brand2.2}",
       type: "color"
     },
-    name: "--fds-colors-brand2-background-subtle",
+    name: "--fds-color-brand2-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "background-subtle"
     ]
@@ -809,13 +809,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.3}",
+      value: "{color.brand2.3}",
       type: "color"
     },
-    name: "--fds-colors-brand2-surface-default",
+    name: "--fds-color-brand2-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "surface-default"
     ]
@@ -826,13 +826,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.4}",
+      value: "{color.brand2.4}",
       type: "color"
     },
-    name: "--fds-colors-brand2-surface-hover",
+    name: "--fds-color-brand2-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "surface-hover"
     ]
@@ -843,13 +843,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.5}",
+      value: "{color.brand2.5}",
       type: "color"
     },
-    name: "--fds-colors-brand2-surface-active",
+    name: "--fds-color-brand2-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "surface-active"
     ]
@@ -860,13 +860,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.6}",
+      value: "{color.brand2.6}",
       type: "color"
     },
-    name: "--fds-colors-brand2-border-subtle",
+    name: "--fds-color-brand2-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "border-subtle"
     ]
@@ -877,13 +877,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.7}",
+      value: "{color.brand2.7}",
       type: "color"
     },
-    name: "--fds-colors-brand2-border-default",
+    name: "--fds-color-brand2-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "border-default"
     ]
@@ -894,13 +894,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.8}",
+      value: "{color.brand2.8}",
       type: "color"
     },
-    name: "--fds-colors-brand2-border-strong",
+    name: "--fds-color-brand2-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "border-strong"
     ]
@@ -911,13 +911,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.9}",
+      value: "{color.brand2.9}",
       type: "color"
     },
-    name: "--fds-colors-brand2-base-default",
+    name: "--fds-color-brand2-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "base-default"
     ]
@@ -928,13 +928,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.10}",
+      value: "{color.brand2.10}",
       type: "color"
     },
-    name: "--fds-colors-brand2-base-hover",
+    name: "--fds-color-brand2-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "base-hover"
     ]
@@ -945,13 +945,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.11}",
+      value: "{color.brand2.11}",
       type: "color"
     },
-    name: "--fds-colors-brand2-base-active",
+    name: "--fds-color-brand2-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "base-active"
     ]
@@ -962,13 +962,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.12}",
+      value: "{color.brand2.12}",
       type: "color"
     },
-    name: "--fds-colors-brand2-text-subtle",
+    name: "--fds-color-brand2-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "text-subtle"
     ]
@@ -979,13 +979,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.13}",
+      value: "{color.brand2.13}",
       type: "color"
     },
-    name: "--fds-colors-brand2-text-default",
+    name: "--fds-color-brand2-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "text-default"
     ]
@@ -996,13 +996,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.contrast-1}",
+      value: "{color.brand2.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-brand2-contrast-first",
+    name: "--fds-color-brand2-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "contrast-first"
     ]
@@ -1013,13 +1013,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand2.contrast-2}",
+      value: "{color.brand2.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-brand2-contrast-second",
+    name: "--fds-color-brand2-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand2",
       "contrast-second"
     ]
@@ -1030,13 +1030,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.1}",
+      value: "{color.brand3.1}",
       type: "color"
     },
-    name: "--fds-colors-brand3-background-default",
+    name: "--fds-color-brand3-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "background-default"
     ]
@@ -1047,13 +1047,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.2}",
+      value: "{color.brand3.2}",
       type: "color"
     },
-    name: "--fds-colors-brand3-background-subtle",
+    name: "--fds-color-brand3-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "background-subtle"
     ]
@@ -1064,13 +1064,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.3}",
+      value: "{color.brand3.3}",
       type: "color"
     },
-    name: "--fds-colors-brand3-surface-default",
+    name: "--fds-color-brand3-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "surface-default"
     ]
@@ -1081,13 +1081,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.4}",
+      value: "{color.brand3.4}",
       type: "color"
     },
-    name: "--fds-colors-brand3-surface-hover",
+    name: "--fds-color-brand3-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "surface-hover"
     ]
@@ -1098,13 +1098,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.5}",
+      value: "{color.brand3.5}",
       type: "color"
     },
-    name: "--fds-colors-brand3-surface-active",
+    name: "--fds-color-brand3-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "surface-active"
     ]
@@ -1115,13 +1115,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.6}",
+      value: "{color.brand3.6}",
       type: "color"
     },
-    name: "--fds-colors-brand3-border-subtle",
+    name: "--fds-color-brand3-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "border-subtle"
     ]
@@ -1132,13 +1132,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.7}",
+      value: "{color.brand3.7}",
       type: "color"
     },
-    name: "--fds-colors-brand3-border-default",
+    name: "--fds-color-brand3-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "border-default"
     ]
@@ -1149,13 +1149,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.8}",
+      value: "{color.brand3.8}",
       type: "color"
     },
-    name: "--fds-colors-brand3-border-strong",
+    name: "--fds-color-brand3-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "border-strong"
     ]
@@ -1166,13 +1166,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.9}",
+      value: "{color.brand3.9}",
       type: "color"
     },
-    name: "--fds-colors-brand3-base-default",
+    name: "--fds-color-brand3-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "base-default"
     ]
@@ -1183,13 +1183,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.10}",
+      value: "{color.brand3.10}",
       type: "color"
     },
-    name: "--fds-colors-brand3-base-hover",
+    name: "--fds-color-brand3-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "base-hover"
     ]
@@ -1200,13 +1200,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.11}",
+      value: "{color.brand3.11}",
       type: "color"
     },
-    name: "--fds-colors-brand3-base-active",
+    name: "--fds-color-brand3-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "base-active"
     ]
@@ -1217,13 +1217,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.12}",
+      value: "{color.brand3.12}",
       type: "color"
     },
-    name: "--fds-colors-brand3-text-subtle",
+    name: "--fds-color-brand3-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "text-subtle"
     ]
@@ -1234,13 +1234,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.13}",
+      value: "{color.brand3.13}",
       type: "color"
     },
-    name: "--fds-colors-brand3-text-default",
+    name: "--fds-color-brand3-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "text-default"
     ]
@@ -1251,13 +1251,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.contrast-1}",
+      value: "{color.brand3.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-brand3-contrast-first",
+    name: "--fds-color-brand3-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "contrast-first"
     ]
@@ -1268,13 +1268,13 @@ export const  color = [
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{colors.brand3.contrast-2}",
+      value: "{color.brand3.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-brand3-contrast-second",
+    name: "--fds-color-brand3-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "brand3",
       "contrast-second"
     ]
@@ -1288,10 +1288,10 @@ export const  color = [
       value: "{global.green.1}",
       type: "color"
     },
-    name: "--fds-colors-success-background-default",
+    name: "--fds-color-success-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "background-default"
     ]
@@ -1305,10 +1305,10 @@ export const  color = [
       value: "{global.green.2}",
       type: "color"
     },
-    name: "--fds-colors-success-background-subtle",
+    name: "--fds-color-success-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "background-subtle"
     ]
@@ -1322,10 +1322,10 @@ export const  color = [
       value: "{global.green.3}",
       type: "color"
     },
-    name: "--fds-colors-success-surface-default",
+    name: "--fds-color-success-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "surface-default"
     ]
@@ -1339,10 +1339,10 @@ export const  color = [
       value: "{global.green.4}",
       type: "color"
     },
-    name: "--fds-colors-success-surface-hover",
+    name: "--fds-color-success-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "surface-hover"
     ]
@@ -1356,10 +1356,10 @@ export const  color = [
       value: "{global.green.5}",
       type: "color"
     },
-    name: "--fds-colors-success-surface-active",
+    name: "--fds-color-success-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "surface-active"
     ]
@@ -1373,10 +1373,10 @@ export const  color = [
       value: "{global.green.6}",
       type: "color"
     },
-    name: "--fds-colors-success-border-subtle",
+    name: "--fds-color-success-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "border-subtle"
     ]
@@ -1390,10 +1390,10 @@ export const  color = [
       value: "{global.green.7}",
       type: "color"
     },
-    name: "--fds-colors-success-border-default",
+    name: "--fds-color-success-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "border-default"
     ]
@@ -1407,10 +1407,10 @@ export const  color = [
       value: "{global.green.8}",
       type: "color"
     },
-    name: "--fds-colors-success-border-strong",
+    name: "--fds-color-success-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "border-strong"
     ]
@@ -1424,10 +1424,10 @@ export const  color = [
       value: "{global.green.9}",
       type: "color"
     },
-    name: "--fds-colors-success-base-default",
+    name: "--fds-color-success-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "base-default"
     ]
@@ -1441,10 +1441,10 @@ export const  color = [
       value: "{global.green.10}",
       type: "color"
     },
-    name: "--fds-colors-success-base-hover",
+    name: "--fds-color-success-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "base-hover"
     ]
@@ -1458,10 +1458,10 @@ export const  color = [
       value: "{global.green.11}",
       type: "color"
     },
-    name: "--fds-colors-success-base-active",
+    name: "--fds-color-success-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "base-active"
     ]
@@ -1475,10 +1475,10 @@ export const  color = [
       value: "{global.green.12}",
       type: "color"
     },
-    name: "--fds-colors-success-text-subtle",
+    name: "--fds-color-success-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "text-subtle"
     ]
@@ -1492,10 +1492,10 @@ export const  color = [
       value: "{global.green.13}",
       type: "color"
     },
-    name: "--fds-colors-success-text-default",
+    name: "--fds-color-success-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "text-default"
     ]
@@ -1509,10 +1509,10 @@ export const  color = [
       value: "{global.green.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-success-contrast-first",
+    name: "--fds-color-success-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "contrast-first"
     ]
@@ -1526,10 +1526,10 @@ export const  color = [
       value: "{global.green.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-success-contrast-second",
+    name: "--fds-color-success-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "success",
       "contrast-second"
     ]
@@ -1543,10 +1543,10 @@ export const  color = [
       value: "{global.red.1}",
       type: "color"
     },
-    name: "--fds-colors-danger-background-default",
+    name: "--fds-color-danger-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "background-default"
     ]
@@ -1560,10 +1560,10 @@ export const  color = [
       value: "{global.red.2}",
       type: "color"
     },
-    name: "--fds-colors-danger-background-subtle",
+    name: "--fds-color-danger-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "background-subtle"
     ]
@@ -1577,10 +1577,10 @@ export const  color = [
       value: "{global.red.3}",
       type: "color"
     },
-    name: "--fds-colors-danger-surface-default",
+    name: "--fds-color-danger-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "surface-default"
     ]
@@ -1594,10 +1594,10 @@ export const  color = [
       value: "{global.red.4}",
       type: "color"
     },
-    name: "--fds-colors-danger-surface-hover",
+    name: "--fds-color-danger-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "surface-hover"
     ]
@@ -1611,10 +1611,10 @@ export const  color = [
       value: "{global.red.5}",
       type: "color"
     },
-    name: "--fds-colors-danger-surface-active",
+    name: "--fds-color-danger-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "surface-active"
     ]
@@ -1628,10 +1628,10 @@ export const  color = [
       value: "{global.red.6}",
       type: "color"
     },
-    name: "--fds-colors-danger-border-subtle",
+    name: "--fds-color-danger-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "border-subtle"
     ]
@@ -1645,10 +1645,10 @@ export const  color = [
       value: "{global.red.7}",
       type: "color"
     },
-    name: "--fds-colors-danger-border-default",
+    name: "--fds-color-danger-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "border-default"
     ]
@@ -1662,10 +1662,10 @@ export const  color = [
       value: "{global.red.8}",
       type: "color"
     },
-    name: "--fds-colors-danger-border-strong",
+    name: "--fds-color-danger-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "border-strong"
     ]
@@ -1679,10 +1679,10 @@ export const  color = [
       value: "{global.red.9}",
       type: "color"
     },
-    name: "--fds-colors-danger-base-default",
+    name: "--fds-color-danger-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "base-default"
     ]
@@ -1696,10 +1696,10 @@ export const  color = [
       value: "{global.red.10}",
       type: "color"
     },
-    name: "--fds-colors-danger-base-hover",
+    name: "--fds-color-danger-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "base-hover"
     ]
@@ -1713,10 +1713,10 @@ export const  color = [
       value: "{global.red.11}",
       type: "color"
     },
-    name: "--fds-colors-danger-base-active",
+    name: "--fds-color-danger-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "base-active"
     ]
@@ -1730,10 +1730,10 @@ export const  color = [
       value: "{global.red.12}",
       type: "color"
     },
-    name: "--fds-colors-danger-text-subtle",
+    name: "--fds-color-danger-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "text-subtle"
     ]
@@ -1747,10 +1747,10 @@ export const  color = [
       value: "{global.red.13}",
       type: "color"
     },
-    name: "--fds-colors-danger-text-default",
+    name: "--fds-color-danger-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "text-default"
     ]
@@ -1764,10 +1764,10 @@ export const  color = [
       value: "{global.red.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-danger-contrast-first",
+    name: "--fds-color-danger-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "contrast-first"
     ]
@@ -1781,10 +1781,10 @@ export const  color = [
       value: "{global.red.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-danger-contrast-second",
+    name: "--fds-color-danger-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "danger",
       "contrast-second"
     ]
@@ -1798,10 +1798,10 @@ export const  color = [
       value: "{global.blue.1}",
       type: "color"
     },
-    name: "--fds-colors-info-background-default",
+    name: "--fds-color-info-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "background-default"
     ]
@@ -1815,10 +1815,10 @@ export const  color = [
       value: "{global.blue.2}",
       type: "color"
     },
-    name: "--fds-colors-info-background-subtle",
+    name: "--fds-color-info-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "background-subtle"
     ]
@@ -1832,10 +1832,10 @@ export const  color = [
       value: "{global.blue.3}",
       type: "color"
     },
-    name: "--fds-colors-info-surface-default",
+    name: "--fds-color-info-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "surface-default"
     ]
@@ -1849,10 +1849,10 @@ export const  color = [
       value: "{global.blue.4}",
       type: "color"
     },
-    name: "--fds-colors-info-surface-hover",
+    name: "--fds-color-info-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "surface-hover"
     ]
@@ -1866,10 +1866,10 @@ export const  color = [
       value: "{global.blue.5}",
       type: "color"
     },
-    name: "--fds-colors-info-surface-active",
+    name: "--fds-color-info-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "surface-active"
     ]
@@ -1883,10 +1883,10 @@ export const  color = [
       value: "{global.blue.6}",
       type: "color"
     },
-    name: "--fds-colors-info-border-subtle",
+    name: "--fds-color-info-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "border-subtle"
     ]
@@ -1900,10 +1900,10 @@ export const  color = [
       value: "{global.blue.7}",
       type: "color"
     },
-    name: "--fds-colors-info-border-default",
+    name: "--fds-color-info-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "border-default"
     ]
@@ -1917,10 +1917,10 @@ export const  color = [
       value: "{global.blue.8}",
       type: "color"
     },
-    name: "--fds-colors-info-border-strong",
+    name: "--fds-color-info-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "border-strong"
     ]
@@ -1934,10 +1934,10 @@ export const  color = [
       value: "{global.blue.9}",
       type: "color"
     },
-    name: "--fds-colors-info-base-default",
+    name: "--fds-color-info-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "base-default"
     ]
@@ -1951,10 +1951,10 @@ export const  color = [
       value: "{global.blue.10}",
       type: "color"
     },
-    name: "--fds-colors-info-base-hover",
+    name: "--fds-color-info-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "base-hover"
     ]
@@ -1968,10 +1968,10 @@ export const  color = [
       value: "{global.blue.11}",
       type: "color"
     },
-    name: "--fds-colors-info-base-active",
+    name: "--fds-color-info-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "base-active"
     ]
@@ -1985,10 +1985,10 @@ export const  color = [
       value: "{global.blue.12}",
       type: "color"
     },
-    name: "--fds-colors-info-text-subtle",
+    name: "--fds-color-info-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "text-subtle"
     ]
@@ -2002,10 +2002,10 @@ export const  color = [
       value: "{global.blue.13}",
       type: "color"
     },
-    name: "--fds-colors-info-text-default",
+    name: "--fds-color-info-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "text-default"
     ]
@@ -2019,10 +2019,10 @@ export const  color = [
       value: "{global.blue.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-info-contrast-first",
+    name: "--fds-color-info-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "contrast-first"
     ]
@@ -2036,10 +2036,10 @@ export const  color = [
       value: "{global.blue.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-info-contrast-second",
+    name: "--fds-color-info-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "info",
       "contrast-second"
     ]
@@ -2053,10 +2053,10 @@ export const  color = [
       value: "{global.yellow.1}",
       type: "color"
     },
-    name: "--fds-colors-warning-background-default",
+    name: "--fds-color-warning-background-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "background-default"
     ]
@@ -2070,10 +2070,10 @@ export const  color = [
       value: "{global.yellow.2}",
       type: "color"
     },
-    name: "--fds-colors-warning-background-subtle",
+    name: "--fds-color-warning-background-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "background-subtle"
     ]
@@ -2087,10 +2087,10 @@ export const  color = [
       value: "{global.yellow.3}",
       type: "color"
     },
-    name: "--fds-colors-warning-surface-default",
+    name: "--fds-color-warning-surface-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "surface-default"
     ]
@@ -2104,10 +2104,10 @@ export const  color = [
       value: "{global.yellow.4}",
       type: "color"
     },
-    name: "--fds-colors-warning-surface-hover",
+    name: "--fds-color-warning-surface-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "surface-hover"
     ]
@@ -2121,10 +2121,10 @@ export const  color = [
       value: "{global.yellow.5}",
       type: "color"
     },
-    name: "--fds-colors-warning-surface-active",
+    name: "--fds-color-warning-surface-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "surface-active"
     ]
@@ -2138,10 +2138,10 @@ export const  color = [
       value: "{global.yellow.6}",
       type: "color"
     },
-    name: "--fds-colors-warning-border-subtle",
+    name: "--fds-color-warning-border-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "border-subtle"
     ]
@@ -2155,10 +2155,10 @@ export const  color = [
       value: "{global.yellow.7}",
       type: "color"
     },
-    name: "--fds-colors-warning-border-default",
+    name: "--fds-color-warning-border-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "border-default"
     ]
@@ -2172,10 +2172,10 @@ export const  color = [
       value: "{global.yellow.8}",
       type: "color"
     },
-    name: "--fds-colors-warning-border-strong",
+    name: "--fds-color-warning-border-strong",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "border-strong"
     ]
@@ -2189,10 +2189,10 @@ export const  color = [
       value: "{global.orange.9}",
       type: "color"
     },
-    name: "--fds-colors-warning-base-default",
+    name: "--fds-color-warning-base-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "base-default"
     ]
@@ -2206,10 +2206,10 @@ export const  color = [
       value: "{global.orange.10}",
       type: "color"
     },
-    name: "--fds-colors-warning-base-hover",
+    name: "--fds-color-warning-base-hover",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "base-hover"
     ]
@@ -2223,10 +2223,10 @@ export const  color = [
       value: "{global.orange.11}",
       type: "color"
     },
-    name: "--fds-colors-warning-base-active",
+    name: "--fds-color-warning-base-active",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "base-active"
     ]
@@ -2240,10 +2240,10 @@ export const  color = [
       value: "{global.orange.12}",
       type: "color"
     },
-    name: "--fds-colors-warning-text-subtle",
+    name: "--fds-color-warning-text-subtle",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "text-subtle"
     ]
@@ -2257,10 +2257,10 @@ export const  color = [
       value: "{global.orange.13}",
       type: "color"
     },
-    name: "--fds-colors-warning-text-default",
+    name: "--fds-color-warning-text-default",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "text-default"
     ]
@@ -2274,10 +2274,10 @@ export const  color = [
       value: "{global.yellow.contrast-1}",
       type: "color"
     },
-    name: "--fds-colors-warning-contrast-first",
+    name: "--fds-color-warning-contrast-first",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "contrast-first"
     ]
@@ -2291,10 +2291,10 @@ export const  color = [
       value: "{global.yellow.contrast-2}",
       type: "color"
     },
-    name: "--fds-colors-warning-contrast-second",
+    name: "--fds-color-warning-contrast-second",
     attributes: {},
     path: [
-      "colors",
+      "color",
       "warning",
       "contrast-second"
     ]
@@ -8684,9 +8684,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f7}"
       },
       type: "typography"
@@ -8707,9 +8707,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f6}"
       },
       type: "typography",
@@ -8731,9 +8731,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f5}"
       },
       type: "typography",
@@ -8755,9 +8755,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f4}"
       },
       type: "typography",
@@ -8779,9 +8779,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f3}"
       },
       type: "typography",
@@ -8803,9 +8803,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
       },
       type: "typography",
@@ -8827,9 +8827,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
       },
       type: "typography",
@@ -8850,9 +8850,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f4}"
       },
       type: "typography"
@@ -8872,9 +8872,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f3}"
       },
       type: "typography"
@@ -8894,9 +8894,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f2}"
       },
       type: "typography"
@@ -8916,9 +8916,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f1}"
       },
       type: "typography"
@@ -8938,9 +8938,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.500}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.500}",
         fontSize: "{font-size.f2}"
       },
       type: "typography"
@@ -8960,9 +8960,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.500}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.500}",
         fontSize: "{font-size.f1}"
       },
       type: "typography"
@@ -8982,9 +8982,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.500}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.500}",
         fontSize: "{font-size.f0}"
       },
       type: "typography"
@@ -9004,9 +9004,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.500}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.500}",
         fontSize: "{font-size.f-1}"
       },
       type: "typography"
@@ -9026,9 +9026,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
       },
       type: "typography"
@@ -9049,9 +9049,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
       },
       type: "typography"
@@ -9072,9 +9072,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
       },
       type: "typography"
@@ -9095,9 +9095,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
       },
       type: "typography"
@@ -9118,9 +9118,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f1}"
       },
       type: "typography"
@@ -9141,9 +9141,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f0}"
       },
       type: "typography"
@@ -9164,9 +9164,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f-1}"
       },
       type: "typography"
@@ -9187,9 +9187,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.700}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.700}",
         fontSize: "{font-size.f-2}"
       },
       type: "typography"
@@ -9210,9 +9210,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
       },
       type: "typography"
@@ -9232,9 +9232,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
       },
       type: "typography"
@@ -9254,9 +9254,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
       },
       type: "typography"
@@ -9276,9 +9276,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.medium}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.medium}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
       },
       type: "typography"
@@ -9298,9 +9298,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
       },
       type: "typography"
@@ -9320,9 +9320,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
       },
       type: "typography"
@@ -9342,9 +9342,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
       },
       type: "typography"
@@ -9364,9 +9364,9 @@ export const  typography = [
     isSource: false,
     original: {
       value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
+        fontFamily: "{font-family.main}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
       },
       type: "typography"
@@ -9377,72 +9377,6 @@ export const  typography = [
       "typography",
       "error_message",
       "xsmall"
-    ]
-  },
-  {
-    value: "400 1.5rem/1.3 'Inter'",
-    type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
-        fontSize: "{font-static.large}"
-      },
-      type: "typography"
-    },
-    name: "--fds-typography-interactive-large",
-    attributes: {},
-    path: [
-      "typography",
-      "interactive",
-      "large"
-    ]
-  },
-  {
-    value: "400 1.125rem/1.3 'Inter'",
-    type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
-        fontSize: "{font-static.medium}"
-      },
-      type: "typography"
-    },
-    name: "--fds-typography-interactive-medium",
-    attributes: {},
-    path: [
-      "typography",
-      "interactive",
-      "medium"
-    ]
-  },
-  {
-    value: "400 1rem/1.3 'Inter'",
-    type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: {
-        fontFamily: "{fontFamilies.main}",
-        fontWeight: "{fontWeights.regular}",
-        lineHeight: "{lineHeights.300}",
-        fontSize: "{font-static.small}"
-      },
-      type: "typography"
-    },
-    name: "--fds-typography-interactive-small",
-    attributes: {},
-    path: [
-      "typography",
-      "interactive",
-      "small"
     ]
   }
 ] 
@@ -9486,134 +9420,6 @@ export const  borderRadius = [
   {
     value: "2",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.2}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-sm",
-    attributes: {},
-    path: [
-      "border_radius",
-      "sm"
-    ]
-  },
-  {
-    value: "4",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.4}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-md",
-    attributes: {},
-    path: [
-      "border_radius",
-      "md"
-    ]
-  },
-  {
-    value: "8",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.8}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-lg",
-    attributes: {},
-    path: [
-      "border_radius",
-      "lg"
-    ]
-  },
-  {
-    value: "12",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.12}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "xl"
-    ]
-  },
-  {
-    value: "16",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.16}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-2xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "2xl"
-    ]
-  },
-  {
-    value: "24",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.24}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-3xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "3xl"
-    ]
-  },
-  {
-    value: "32",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.32}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-4xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "4xl"
-    ]
-  },
-  {
-    value: "9999",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.9999}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-full",
-    attributes: {},
-    path: [
-      "border_radius",
-      "full"
-    ]
-  },
-  {
-    value: "2",
-    type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
     original: {
@@ -9623,7 +9429,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-2",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "2"
     ]
   },
@@ -9639,7 +9445,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-4",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "4"
     ]
   },
@@ -9655,7 +9461,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-8",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "8"
     ]
   },
@@ -9671,7 +9477,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-12",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "12"
     ]
   },
@@ -9687,7 +9493,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-16",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "16"
     ]
   },
@@ -9703,7 +9509,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-24",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "24"
     ]
   },
@@ -9719,7 +9525,7 @@ export const  borderRadius = [
     name: "--fds-border-radius-32",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "32"
     ]
   },
@@ -9735,8 +9541,136 @@ export const  borderRadius = [
     name: "--fds-border-radius-9999",
     attributes: {},
     path: [
-      "borderRadius",
+      "border-radius",
       "9999"
+    ]
+  },
+  {
+    value: "2",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.2}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-sm",
+    attributes: {},
+    path: [
+      "border-radius",
+      "sm"
+    ]
+  },
+  {
+    value: "4",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.4}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-md",
+    attributes: {},
+    path: [
+      "border-radius",
+      "md"
+    ]
+  },
+  {
+    value: "8",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.8}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-lg",
+    attributes: {},
+    path: [
+      "border-radius",
+      "lg"
+    ]
+  },
+  {
+    value: "12",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.12}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "xl"
+    ]
+  },
+  {
+    value: "16",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.16}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-2xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "2xl"
+    ]
+  },
+  {
+    value: "24",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.24}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-3xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "3xl"
+    ]
+  },
+  {
+    value: "32",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.32}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-4xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "4xl"
+    ]
+  },
+  {
+    value: "9999",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border-radius.9999}",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-full",
+    attributes: {},
+    path: [
+      "border-radius",
+      "full"
     ]
   }
 ] 
@@ -10413,10 +10347,10 @@ export const  borderWidth = [
       value: "1px",
       type: "borderWidth"
     },
-    name: "--fds-border_width-1",
+    name: "--fds-border-width-1",
     attributes: {},
     path: [
-      "border_width",
+      "border-width",
       "1"
     ]
   },
@@ -10429,10 +10363,10 @@ export const  borderWidth = [
       value: "2px",
       type: "borderWidth"
     },
-    name: "--fds-border_width-2",
+    name: "--fds-border-width-2",
     attributes: {},
     path: [
-      "border_width",
+      "border-width",
       "2"
     ]
   },
@@ -10442,13 +10376,13 @@ export const  borderWidth = [
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border_width.1}",
+      value: "{border-width.1}",
       type: "borderWidth"
     },
-    name: "--fds-border_width-default",
+    name: "--fds-border-width-default",
     attributes: {},
     path: [
-      "border_width",
+      "border-width",
       "default"
     ]
   },
@@ -10458,13 +10392,13 @@ export const  borderWidth = [
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border_width.2}",
+      value: "{border-width.2}",
       type: "borderWidth"
     },
-    name: "--fds-border_width-active",
+    name: "--fds-border-width-active",
     attributes: {},
     path: [
-      "border_width",
+      "border-width",
       "active"
     ]
   },
@@ -10474,13 +10408,13 @@ export const  borderWidth = [
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border_width.2}",
+      value: "{border-width.2}",
       type: "borderWidth"
     },
-    name: "--fds-border_width-tab_focus",
+    name: "--fds-border-width-tab_focus",
     attributes: {},
     path: [
-      "border_width",
+      "border-width",
       "tab_focus"
     ]
   }
@@ -10693,11 +10627,11 @@ export const  boxShadow = [
       value: "{shadow.100}",
       type: "boxShadow"
     },
-    name: "--fds-shadow-xsmall",
+    name: "--fds-shadow-xs",
     attributes: {},
     path: [
       "shadow",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -10709,11 +10643,11 @@ export const  boxShadow = [
       value: "{shadow.200}",
       type: "boxShadow"
     },
-    name: "--fds-shadow-small",
+    name: "--fds-shadow-sm",
     attributes: {},
     path: [
       "shadow",
-      "small"
+      "sm"
     ]
   },
   {
@@ -10725,11 +10659,11 @@ export const  boxShadow = [
       value: "{shadow.300}",
       type: "boxShadow"
     },
-    name: "--fds-shadow-medium",
+    name: "--fds-shadow-md",
     attributes: {},
     path: [
       "shadow",
-      "medium"
+      "md"
     ]
   },
   {
@@ -10741,11 +10675,11 @@ export const  boxShadow = [
       value: "{shadow.400}",
       type: "boxShadow"
     },
-    name: "--fds-shadow-large",
+    name: "--fds-shadow-lg",
     attributes: {},
     path: [
       "shadow",
-      "large"
+      "lg"
     ]
   },
   {
@@ -10757,65 +10691,11 @@ export const  boxShadow = [
       value: "{shadow.500}",
       type: "boxShadow"
     },
-    name: "--fds-shadow-xlarge",
+    name: "--fds-shadow-xl",
     attributes: {},
     path: [
       "shadow",
-      "xlarge"
-    ]
-  }
-] 
-
-export const  textCase = [
-  {
-    value: "none",
-    type: "textCase",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "none",
-      type: "textCase"
-    },
-    name: "--fds-text-case-none",
-    attributes: {},
-    path: [
-      "textCase",
-      "none"
-    ]
-  }
-] 
-
-export const  textDecoration = [
-  {
-    value: "none",
-    type: "textDecoration",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "none",
-      type: "textDecoration"
-    },
-    name: "--fds-text-decoration-none",
-    attributes: {},
-    path: [
-      "textDecoration",
-      "none"
-    ]
-  },
-  {
-    value: "underline",
-    type: "textDecoration",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "underline",
-      type: "textDecoration"
-    },
-    name: "--fds-text-decoration-underline",
-    attributes: {},
-    path: [
-      "textDecoration",
-      "underline"
+      "xl"
     ]
   }
 ] 
@@ -10830,64 +10710,134 @@ export const  fontFamilies = [
       value: "Inter",
       type: "fontFamilies"
     },
-    name: "--fds-font-families-main",
+    name: "--fds-font-family-main",
     attributes: {},
     path: [
-      "fontFamilies",
+      "font-family",
       "main"
     ]
   }
 ] 
 
-export const  fontSizes = [
+export const  lineHeights = [
   {
-    value: "16",
-    type: "fontSizes",
+    value: 1.3,
+    type: "lineHeights",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
     original: {
-      value: "16",
-      type: "fontSizes"
+      value: "130%",
+      type: "lineHeights"
     },
-    name: "--fds-font-static-small",
+    name: "--fds-line-height-300",
     attributes: {},
     path: [
-      "font-static",
-      "small"
+      "line-height",
+      "300"
     ]
   },
   {
-    value: "18",
-    type: "fontSizes",
+    value: 1.5,
+    type: "lineHeights",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
     original: {
-      value: "18",
-      type: "fontSizes"
+      value: "150%",
+      type: "lineHeights"
     },
-    name: "--fds-font-static-medium",
+    name: "--fds-line-height-500",
     attributes: {},
     path: [
-      "font-static",
+      "line-height",
+      "500"
+    ]
+  },
+  {
+    value: 1.6,
+    type: "lineHeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "160%",
+      type: "lineHeights"
+    },
+    name: "--fds-line-height-600",
+    attributes: {},
+    path: [
+      "line-height",
+      "600"
+    ]
+  },
+  {
+    value: 1.7,
+    type: "lineHeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "170%",
+      type: "lineHeights"
+    },
+    name: "--fds-line-height-700",
+    attributes: {},
+    path: [
+      "line-height",
+      "700"
+    ]
+  }
+] 
+
+export const  fontWeights = [
+  {
+    value: "500",
+    type: "fontWeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "500",
+      type: "fontWeights"
+    },
+    name: "--fds-font-weight-medium",
+    attributes: {},
+    path: [
+      "font-weight",
       "medium"
     ]
   },
   {
-    value: "24",
-    type: "fontSizes",
+    value: "600",
+    type: "fontWeights",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
     original: {
-      value: "24",
-      type: "fontSizes"
+      value: "600",
+      type: "fontWeights"
     },
-    name: "--fds-font-static-large",
+    name: "--fds-font-weight-semibold",
     attributes: {},
     path: [
-      "font-static",
-      "large"
+      "font-weight",
+      "semibold"
     ]
   },
+  {
+    value: "400",
+    type: "fontWeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "400",
+      type: "fontWeights"
+    },
+    name: "--fds-font-weight-regular",
+    attributes: {},
+    path: [
+      "font-weight",
+      "regular"
+    ]
+  }
+] 
+
+export const  fontSizes = [
   {
     value: "12",
     type: "fontSizes",
@@ -11062,124 +11012,6 @@ export const  fontSizes = [
     path: [
       "font-size",
       "f7"
-    ]
-  }
-] 
-
-export const  lineHeights = [
-  {
-    value: 1.3,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "130%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-300",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "300"
-    ]
-  },
-  {
-    value: 1.5,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "150%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-500",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "500"
-    ]
-  },
-  {
-    value: 1.6,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "160%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-600",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "600"
-    ]
-  },
-  {
-    value: 1.7,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "170%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-700",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "700"
-    ]
-  }
-] 
-
-export const  fontWeights = [
-  {
-    value: "500",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "500",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-medium",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "medium"
-    ]
-  },
-  {
-    value: "600",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "600",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-semibold",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "semibold"
-    ]
-  },
-  {
-    value: "400",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "400",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-regular",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "regular"
     ]
   }
 ] 
