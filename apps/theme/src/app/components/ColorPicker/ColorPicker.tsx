@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import classes from "./ColorPicker.module.css";
 import { ChromePicker } from "react-color";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import cn from "classnames";
 import { useClickOutside } from "@react-awesome/use-click-outside";
 
+import classes from "./ColorPicker.module.css";
+
 type ColorPickerProps = {
   label: string;
-  onColorChanged?: any;
+  onColorChanged?: ((color: string) => void) | undefined;
   defaultColor: CssColor;
   disabled?: boolean;
 };
@@ -18,7 +19,7 @@ export const ColorPicker = ({
   defaultColor,
   disabled,
 }: ColorPickerProps) => {
-  const [color, setColor] = useState<CssColor>("#0062BA");
+  const [color, setColor] = useState<string>("#0062BA");
   const [showModal, setShowModal] = useState(false);
   const handleClick = () => {
     setShowModal(!showModal);
@@ -33,13 +34,6 @@ export const ColorPicker = ({
     setColor(defaultColor);
   }, [defaultColor]);
 
-  const onInputChanged = (e: any) => {
-    let target = e.target.value;
-    if (target.length >= 7) {
-      setColor(target);
-    }
-  };
-
   return (
     <div
       ref={ref}
@@ -47,22 +41,21 @@ export const ColorPicker = ({
     >
       <div className={classes.picker}>
         <div className={classes.label}>{label}</div>
-        <div className={classes.container} onClick={() => handleClick()}>
+        <button className={classes.container} onClick={() => handleClick()}>
           <div
             style={{ backgroundColor: color }}
             className={classes.color}
           ></div>
           <div className={classes.input}>{color}</div>
-        </div>
+        </button>
       </div>
       <div className={cn(classes.popup, { [classes.show]: showModal })}>
         <ChromePicker
-          onChange={(e) => {
-            setColor(e.hex);
-            onColorChanged(e.hex);
+          onChange={({ hex }: { hex: string }) => {
+            setColor(hex);
+            onColorChanged && onColorChanged(hex);
           }}
           color={color}
-          width={250}
         />
       </div>
     </div>

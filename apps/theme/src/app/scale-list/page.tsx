@@ -1,9 +1,9 @@
 "use client";
 
-import classes from "./page.module.css";
-import { Preview } from "../components/Preview/Preview";
 import { Header } from "../components/Header/Header";
 import { ScaleRow } from "../components/ScaleRow/ScaleRow";
+
+import classes from "./page.module.css";
 
 export default function Home() {
   return (
@@ -100,8 +100,6 @@ export default function Home() {
           showHeader
           themeMode="dark"
         />
-
-        {/* <Preview colors={colors} /> */}
       </main>
     </div>
   );
