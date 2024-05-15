@@ -1,5 +1,5 @@
 {
-  "colors": {
+  "color": {
     "accent": {
       "1": {
         "value": "{theme2.accent.1}",

@@ -1,5 +1,5 @@
 {
-  "border_width": {
+  "border-width": {
     "1": {
       "value": "1px",
       "type": "borderWidth"
@@ -148,7 +148,7 @@
       "type": "boxShadow"
     }
   },
-  "borderRadius": {
+  "border-radius": {
     "2": {
       "value": "2",
       "type": "borderRadius"

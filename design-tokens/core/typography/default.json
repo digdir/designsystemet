@@ -1,41 +1,11 @@
 {
-  "textCase": {
-    "none": {
-      "value": "none",
-      "type": "textCase"
-    }
-  },
-  "textDecoration": {
-    "none": {
-      "value": "none",
-      "type": "textDecoration"
-    },
-    "underline": {
-      "value": "underline",
-      "type": "textDecoration"
-    }
-  },
-  "fontFamilies": {
+  "font-family": {
     "main": {
       "value": "Inter",
       "type": "fontFamilies"
     }
   },
-  "font-static": {
-    "small": {
-      "value": "16",
-      "type": "fontSizes"
-    },
-    "medium": {
-      "value": "18",
-      "type": "fontSizes"
-    },
-    "large": {
-      "value": "24",
-      "type": "fontSizes"
-    }
-  },
-  "lineHeights": {
+  "line-height": {
     "300": {
       "value": "130%",
       "type": "lineHeights"
@@ -53,7 +23,7 @@
       "type": "lineHeights"
     }
   },
-  "fontWeights": {
+  "font-weight": {
     "medium": {
       "value": "500",
       "type": "fontWeights"
