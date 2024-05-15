@@ -5,18 +5,21 @@ import cl from 'clsx/lite';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
+import { getSize } from '../../../utilities/getSize';
 
 export type RemovableChipProps = {
   /**
-   * Changes padding and font-sizes.
-   * @default medium
+   * Changes Chip size and gap between chips.
+   * @default 'md'
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ChipGroupContext['size'];
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'medium', className, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     const group = useContext(ChipGroupContext);
+    const size = getSize(rest.size || 'md');
 
     return (
       <button
