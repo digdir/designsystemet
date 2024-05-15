@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-react",
-  "version": "0.59.0",
+  "version": "0.60.0",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
@@ -14,8 +14,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-css-to-build && rollup -c --bundleConfigAsCjs",
-    "generate:css": "esno ./scripts/generate-css.ts",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
     "types": "tsc --noEmit"
@@ -28,16 +27,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.4",
+    "@floating-ui/react": "0.26.12",
     "@navikt/aksel-icons": "^5.12.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-virtual": "^3.2.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
     "copyfiles": "^2.4.1",
     "esno": "^4.7.0",
-    "fs-extra": "^11.2.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.12.1",
     "typescript": "^5.4.2"

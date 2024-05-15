@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.53.10](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.9...@digdir/design-system-react@0.53.10) (2024-05-14)
+
+### Bug Fixes
+
+- **Combobox:** Improve performance ([#1771](https://github.com/digdir/designsystemet/issues/1771)) ([18cdd17](https://github.com/digdir/designsystemet/commit/18cdd17c71a49bbae88ade3e2b925dd28f17acb3))
+
+## [0.53.10-alpha.1](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.10-alpha.0...@digdir/design-system-react@0.53.10-alpha.1) (2024-04-26)
+
+**Note:** Version bump only for package @digdir/design-system-react
+
+## [0.53.10-alpha.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.9...@digdir/design-system-react@0.53.10-alpha.0) (2024-04-24)
+
+**Note:** Version bump only for package @digdir/design-system-react
+
 ## [0.53.9](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.8...@digdir/design-system-react@0.53.9) (2024-04-23)
 
 **Note:** Version bump only for package @digdir/design-system-react

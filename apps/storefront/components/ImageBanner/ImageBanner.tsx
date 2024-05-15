@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type React from 'react';
 import { useEffect, useState, createElement } from 'react';
 import cn from 'clsx';
@@ -69,14 +70,19 @@ const ImageBanner = ({
             {videoSrc && (
               <video
                 autoPlay
+                playsInline
                 muted
                 loop
                 className={classes.video}
               >
                 <source
-                  src={videoSrc}
+                  src={videoSrc + '.webm'}
+                  type='video/webm'
+                />
+                <source
+                  src={videoSrc + '.mp4'}
                   type='video/mp4'
-                ></source>
+                />
               </video>
             )}
             {imgSrc && (
@@ -131,14 +137,19 @@ const ImageBanner = ({
             {videoSrc && (
               <video
                 autoPlay
+                playsInline
                 muted
                 loop
                 className={classes.video}
               >
                 <source
-                  src={videoSrc}
+                  src={videoSrc + '.webm'}
+                  type='video/webm'
+                />
+                <source
+                  src={videoSrc + '.mp4'}
                   type='video/mp4'
-                ></source>
+                />
               </video>
             )}
             {imgSrc && (

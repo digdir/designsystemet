@@ -1,32 +1,8 @@
-import {
-  useState,
-  useRef,
-  createContext,
-  useEffect,
-  useId,
-  forwardRef,
-} from 'react';
+import { useState, useRef, useEffect, useId, forwardRef } from 'react';
 import type * as React from 'react';
-import {
-  FloatingFocusManager,
-  autoUpdate,
-  flip,
-  offset,
-  size as floatingSize,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useListNavigation,
-  useRole,
-  FloatingPortal,
-} from '@floating-ui/react';
-import cl from 'clsx';
-import type {
-  UseFloatingReturn,
-  UseListNavigationProps,
-} from '@floating-ui/react';
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
+import cl from 'clsx/lite';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { flushSync } from 'react-dom';
 
 import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
@@ -37,16 +13,16 @@ import { omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
-import useCombobox, {
-  isComboboxOption,
-  isInteractiveComboboxCustom,
-} from './useCombobox';
-import classes from './Combobox.module.css';
+import useCombobox from './useCombobox';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
-import ComboboxCustom from './Custom/Custom';
+import ComboboxCustom from './Custom';
+import { useFloatingCombobox } from './useFloatingCombobox';
+import { useComboboxKeyboard } from './useComboboxKeyboard';
+import { ComboboxIdProvider } from './ComboboxIdContext';
+import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxProps = {
   /**
@@ -89,12 +65,6 @@ export type ComboboxProps = {
    * @default false
    */
   hideChips?: boolean;
-  /**
-   * Label for the clear button
-   * @default 'Fjern alt'
-   * @deprecated Use `clearButtonLabel` instead
-   */
-  cleanButtonLabel?: string;
   /**
    * Hides the clear button
    * @default false
@@ -147,7 +117,7 @@ export type ComboboxProps = {
   FormFieldProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
+export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
   (
     {
       value,
@@ -161,7 +131,6 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       disabled = false,
       readOnly = false,
       hideChips = false,
-      cleanButtonLabel = 'Fjern alt',
       clearButtonLabel = 'Fjern alt',
       hideClearButton = false,
       error,
@@ -175,9 +144,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       style,
       loading,
       loadingLabel = 'Laster...',
-      filter = (inputValue, option) => {
-        return option.label.toLowerCase().startsWith(inputValue.toLowerCase());
-      },
+      filter,
       chipSrLabel = (option) => 'Slett ' + option.label,
       className,
       ...rest
@@ -186,23 +153,21 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<Array<HTMLElement | null>>([]);
 
     const listId = useId();
 
-    const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     const {
       selectedOptions,
-      setSelectedOptions,
       options,
-      optionsChildren,
       restChildren,
-      optionValues,
+      interactiveChildren,
       customIds,
-      prevSelectedHash,
-      setPrevSelectedHash,
+      filteredOptionsChildren,
+      filteredOptions,
+      setSelectedOptions,
     } = useCombobox({
       children,
       inputValue,
@@ -211,15 +176,18 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       initialValue,
     });
 
-    const [activeDescendant, setActiveDescendant] = useState<
-      string | undefined
-    >(undefined);
-
-    useEffect(() => {
-      if (rest.inputValue !== undefined) {
-        setInputValue(rest.inputValue);
-      }
-    }, [rest.inputValue]);
+    const {
+      open,
+      setOpen,
+      refs,
+      floatingStyles,
+      context,
+      getReferenceProps,
+      getFloatingProps,
+      getItemProps,
+    } = useFloatingCombobox({
+      listRef,
+    });
 
     const formFieldProps = useFormField(
       {
@@ -234,111 +202,72 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       'combobox',
     );
 
-    const listRef = useRef<Array<HTMLElement | null>>([]);
-
     // if value is set, set input value to the label of the value
     useEffect(() => {
       if (value && value.length > 0 && !multiple) {
-        const option = options.find((option) => option.value === value[0]);
+        const option = options[value[0]];
         setInputValue(option?.label || '');
       }
     }, [multiple, value, options]);
 
-    // floating UI
-    const { refs, floatingStyles, context } = useFloating<HTMLInputElement>({
-      open,
-      onOpenChange: (newOpen) => {
-        flushSync(() => {
-          if (refs.floating.current && !newOpen) {
-            refs.floating.current.scrollTop = 0;
-          }
-          setTimeout(() => {
-            setOpen(newOpen);
-          }, 1);
-        });
-      },
-      whileElementsMounted: (reference, floating, update) => {
-        autoUpdate(reference, floating, update);
-        return () => {
-          floating.scrollTop = 0;
-        };
-      },
-      middleware: [
-        flip({ padding: 10 }),
-        floatingSize({
-          apply({ rects, elements }) {
-            requestAnimationFrame(() => {
-              Object.assign(elements.floating.style, {
-                width: `calc(${rects.reference.width}px - calc(var(--fds-spacing-2) * 2))`,
-                maxHeight: `200px`,
-              });
-            });
-          },
-        }),
-        offset(10),
-      ],
-    });
-
-    const role = useRole(context, { role: 'listbox' });
-    const dismiss = useDismiss(context);
-    const listNav = useListNavigation(context, {
-      listRef,
-      activeIndex,
-      virtual: true,
-      scrollItemIntoView: true,
-      enabled: open,
-    });
-
-    const { getReferenceProps, getFloatingProps } = useInteractions([
-      role,
-      dismiss,
-      listNav,
-    ]);
-
-    // remove active index if combobox is closed
     useEffect(() => {
-      if (!open) {
-        setActiveIndex(null);
-      }
-    }, [open]);
-
-    // Send new value if option was clicked
-    useEffect(() => {
-      const selectedHash = JSON.stringify(selectedOptions);
-      if (prevSelectedHash === selectedHash) return;
-
-      const values = selectedOptions.map((option) => option.value);
-      onValueChange?.(values);
-      setPrevSelectedHash(selectedHash);
-    }, [onValueChange, selectedOptions, prevSelectedHash, setPrevSelectedHash]);
-
-    useEffect(() => {
-      if (value && options.length > 0) {
+      if (value && Object.keys(options).length >= 0) {
         const updatedSelectedOptions = value.map((option) => {
-          const value = options.find((value) => value.value === option);
-          return value as Option;
+          const value = options[option];
+          return value;
         });
 
-        setSelectedOptions(updatedSelectedOptions);
+        setSelectedOptions(
+          updatedSelectedOptions.reduce<{
+            [key: string]: Option;
+          }>((acc, value) => {
+            acc[value.value] = value;
+            return acc;
+          }, {}),
+        );
       }
-    }, [multiple, prevSelectedHash, value, options, setSelectedOptions]);
+    }, [multiple, value, options, setSelectedOptions]);
 
     // handle click on option, either select or deselect - Handles single or multiple
-    const handleSelectOption = (option: Option) => {
-      // if option is already selected, remove it
-      if (value && value.includes(option.value)) {
-        setSelectedOptions((prev) =>
-          prev.filter((i) => i.value !== option.value),
-        );
+    const handleSelectOption = (args: {
+      option: Option | null;
+      remove?: boolean;
+      clear?: boolean;
+    }) => {
+      const { option, clear, remove } = args;
+      if (clear) {
+        setSelectedOptions({});
+        setInputValue('');
+        onValueChange?.([]);
         return;
       }
 
+      if (!option) return;
+
+      if (remove) {
+        const newSelectedOptions = { ...selectedOptions };
+        delete newSelectedOptions[option.value];
+        setSelectedOptions(newSelectedOptions);
+        onValueChange?.(Object.keys(newSelectedOptions));
+        return;
+      }
+
+      const newSelectedOptions = { ...selectedOptions };
+
       if (multiple) {
-        setSelectedOptions([...selectedOptions, option]);
+        if (newSelectedOptions[option.value]) {
+          delete newSelectedOptions[option.value];
+        } else {
+          newSelectedOptions[option.value] = option;
+        }
         setInputValue('');
         inputRef.current?.focus();
       } else {
-        setSelectedOptions([option]);
+        /* clear newSelectedOptions */
+        Object.keys(newSelectedOptions).forEach((key) => {
+          delete newSelectedOptions[key];
+        });
+        newSelectedOptions[option.value] = option;
         setInputValue(option?.label || '');
         // move cursor to the end of the input
         setTimeout(() => {
@@ -349,114 +278,33 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         }, 0);
       }
 
+      setSelectedOptions(newSelectedOptions);
+      onValueChange?.(Object.keys(newSelectedOptions));
+
       !multiple && setOpen(false);
       refs.domReference.current?.focus();
     };
 
     const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
 
-    // handle keyboard navigation in the list
-    const handleKeyDownFunc = (event: React.KeyboardEvent) => {
-      const navigateable = customIds.length + optionsChildren.length;
-
-      if (formFieldProps.readOnly || disabled) return;
-      if (!event) return;
-      switch (event.key) {
-        case 'ArrowDown':
-          event.preventDefault();
-          if (!open) setOpen(true);
-          setActiveIndex((prevActiveIndex) => {
-            if (prevActiveIndex === null) {
-              return 0;
-            }
-
-            return Math.min(prevActiveIndex + 1, navigateable - 1);
-          });
-          break;
-        case 'ArrowUp':
-          event.preventDefault();
-          /* If we are on the first item, close */
-          setActiveIndex((prevActiveIndex) => {
-            if (prevActiveIndex === 0) {
-              setOpen(false);
-              return null;
-            }
-
-            if (prevActiveIndex === null) {
-              return null;
-            }
-
-            return Math.max(prevActiveIndex - 1, 0);
-          });
-          break;
-        case 'Enter':
-          event.preventDefault();
-          if (
-            activeIndex !== null &&
-            (optionsChildren[activeIndex] || customIds.length > 0)
-          ) {
-            // check if we are in the custom components
-            if (activeIndex <= customIds.length) {
-              // send `onSelect` event to the custom component
-              const selectedId = customIds[activeIndex];
-              const selectedComponent = restChildren.find(
-                (component) =>
-                  isInteractiveComboboxCustom(component) &&
-                  component.props?.id === selectedId,
-              );
-
-              if (
-                isInteractiveComboboxCustom(selectedComponent) &&
-                selectedComponent.props.onSelect
-              ) {
-                selectedComponent.props.onSelect();
-              }
-            }
-
-            // if we are in the options, find the actual index
-            const valueIndex = activeIndex - customIds.length;
-
-            const child = optionsChildren[valueIndex];
-            if (isComboboxOption(child)) {
-              const props = child.props;
-              const option = options.find(
-                (option) => option.value === props.value,
-              );
-
-              if (!multiple) {
-                // check if option is already selected, if so, deselect it
-                if (selectedOptions.find((i) => i.value === option?.value)) {
-                  setSelectedOptions([]);
-                  setInputValue('');
-                  return;
-                }
-              }
-
-              debouncedHandleSelectOption(option as Option);
-            }
-          }
-          break;
-
-        case 'Backspace':
-          if (inputValue === '' && multiple && selectedOptions.length > 0) {
-            setSelectedOptions((prev) => prev.slice(0, prev.length - 1));
-          }
-          // if we are in single mode, we need to set activeValue to null
-          if (!multiple) {
-            setSelectedOptions([]);
-          }
-          break;
-
-        default:
-          break;
-      }
-    };
-
-    const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
+    const handleKeyDown = useComboboxKeyboard({
+      filteredOptions,
+      selectedOptions,
+      readOnly: formFieldProps.readOnly || false,
+      disabled: disabled,
+      multiple,
+      inputValue,
+      options,
+      open,
+      interactiveChildren,
+      setOpen,
+      setInputValue,
+      handleSelectOption: debouncedHandleSelectOption,
+    });
 
     const rowVirtualizer = useVirtualizer({
-      count: optionsChildren.length,
-      getScrollElement: () => refs.floating.current,
+      count: Object.keys(filteredOptionsChildren).length,
+      getScrollElement: () => (virtual ? refs.floating.current : null),
       estimateSize: () => 70,
       measureElement: (elem) => {
         return elem.getBoundingClientRect().height;
@@ -471,42 +319,27 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           options,
           selectedOptions,
           multiple,
-          activeIndex,
           disabled,
           readOnly,
           open,
           inputRef,
           refs,
           inputValue,
-          activeDescendant,
-          error,
           formFieldProps,
-          name,
           htmlSize,
-          optionValues,
-          hideChips,
-          clearButtonLabel: cleanButtonLabel || clearButtonLabel,
-          hideClearButton,
-          listId,
+          clearButtonLabel,
+          customIds,
+          filteredOptions,
           setInputValue,
-          setActiveIndex,
-          handleKeyDown,
           setOpen,
           getReferenceProps,
-          setSelectedOptions,
-          /* Recieves index of option, and the ID of the button element */
-          setActiveOption: (index: number, id: string) => {
-            if (readOnly) return;
-            if (disabled) return;
-            setActiveIndex(index);
-            setActiveDescendant(id);
-          },
+          getItemProps,
           /* Recieves the value of the option, and searches for it in our values lookup */
           onOptionClick: (value: string) => {
             if (readOnly) return;
             if (disabled) return;
-            const option = options.find((option) => option.value === value);
-            debouncedHandleSelectOption(option as Option);
+            const option = options[value];
+            debouncedHandleSelectOption({ option: option });
           },
           handleSelectOption: debouncedHandleSelectOption,
           chipSrLabel,
@@ -516,8 +349,9 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       >
         <Box
           className={cl(
-            classes.combobox,
-            disabled && classes.disabled,
+            'fds-combobox',
+            `fds-combobox--${size}`,
+            disabled && 'fds-combobox__disabled',
             className,
           )}
           style={style}
@@ -542,6 +376,11 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           />
           <ComboboxInput
             {...omit(['inputValue'], rest)}
+            hideClearButton={hideClearButton}
+            listId={listId}
+            error={error}
+            hideChips={hideChips}
+            handleKeyDown={handleKeyDown}
             aria-busy={loading}
           />
           <ComboboxError
@@ -573,7 +412,10 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                     ...floatingStyles,
                   },
                 })}
-                className={cl(classes.optionsWrapper, classes[size])}
+                className={cl(
+                  'fds-combobox__options-wrapper',
+                  `fds-combobox--${size}`,
+                )}
               >
                 {virtual && (
                   <div
@@ -597,14 +439,14 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                           transform: `translateY(${virtualRow.start}px)`,
                         }}
                       >
-                        {optionsChildren[virtualRow.index]}
+                        {filteredOptionsChildren[virtualRow.index]}
                       </div>
                     ))}
                   </div>
                 )}
 
                 {loading ? (
-                  <ComboboxCustom className={classes.loading}>
+                  <ComboboxCustom className={'fds-combobox__loading'}>
                     <Spinner
                       title='Laster'
                       size='small'
@@ -615,7 +457,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                   <>
                     {/* Add the rest of the children */}
                     {restChildren}
-                    {!virtual && optionsChildren}
+                    {!virtual && filteredOptionsChildren}
                   </>
                 )}
               </Box>
@@ -627,46 +469,15 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   },
 );
 
-type ComboboxContextType = {
-  multiple: NonNullable<ComboboxProps['multiple']>;
-  disabled: NonNullable<ComboboxProps['disabled']>;
-  readOnly: NonNullable<ComboboxProps['readOnly']>;
-  name: ComboboxProps['name'];
-  error: ComboboxProps['error'];
-  htmlSize: ComboboxProps['htmlSize'];
-  hideChips: NonNullable<ComboboxProps['hideChips']>;
-  clearButtonLabel: NonNullable<ComboboxProps['clearButtonLabel']>;
-  hideClearButton: NonNullable<ComboboxProps['hideClearButton']>;
-  options: Option[];
-  selectedOptions: Option[];
-  size: NonNullable<ComboboxProps['size']>;
-  formFieldProps: ReturnType<typeof useFormField>;
-  refs: UseFloatingReturn['refs'];
-  inputRef: React.RefObject<HTMLInputElement>;
-  activeIndex: number | null;
-  open: boolean;
-  inputValue: string;
-  activeDescendant: string | undefined;
-  optionValues: string[];
-  listId: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setOpen: (open: boolean) => void;
-  handleKeyDown: (event: React.KeyboardEvent) => void;
-  setActiveIndex: (index: number | null) => void;
-  setActiveOption: (index: number, id: string) => void;
-  getReferenceProps: (
-    props?: Record<string, unknown>,
-  ) => Record<string, unknown>;
-  onOptionClick: (value: string) => void;
-  setSelectedOptions: React.Dispatch<React.SetStateAction<Option[]>>;
-  chipSrLabel: NonNullable<ComboboxProps['chipSrLabel']>;
-  handleSelectOption: (option: Option) => void;
-  listRef: UseListNavigationProps['listRef'];
-  forwareddRef: React.Ref<HTMLInputElement>;
-};
-
-export const ComboboxContext = createContext<ComboboxContextType | undefined>(
-  undefined,
+export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
+  (props, ref) => (
+    <ComboboxIdProvider>
+      <ComboboxComponent
+        {...props}
+        ref={ref}
+      />
+    </ComboboxIdProvider>
+  ),
 );
 
 Combobox.displayName = 'Combobox';
