@@ -1,7 +1,8 @@
 import { Container } from "react-bootstrap";
 import Link from "next/link";
-import classes from "./Header.module.css";
 import { usePathname } from "next/navigation";
+
+import classes from "./Header.module.css";
 
 export const Header = () => {
   const currentPath = usePathname();
@@ -12,7 +13,7 @@ export const Header = () => {
           <Link href="/">
             <img src="img/logo.svg" alt="" />
           </Link>
-          <div className={classes.tag}>Work in progress</div>
+          <div className={classes.tag}>Beta</div>
         </div>
         <div className={classes.links}>
           <Link className={currentPath === "/" ? classes.active : ""} href="/">

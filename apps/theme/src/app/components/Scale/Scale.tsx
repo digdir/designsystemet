@@ -1,9 +1,13 @@
-import classes from "./Scale.module.css";
-import { Group } from "../Group/Group";
-import { SetStateAction, useEffect, useState } from "react";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { SetStateAction} from "react";
+import { useEffect, useState } from "react";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
+
 import { generateColorScale } from "@/utils/themeUtils";
-import { modeType, colorsType } from "@/types";
+import type { modeType, colorsType } from "@/types";
+
+import { Group } from "../Group/Group";
+
+import classes from "./Scale.module.css";
 
 type ScaleProps = {
   color: CssColor;

@@ -1,16 +1,19 @@
+import type {
+  ContrastColorValue,
+  CssColor} from "@adobe/leonardo-contrast-colors";
 import {
   BackgroundColor,
   Color,
-  ContrastColorValue,
-  CssColor,
   Theme,
 } from "@adobe/leonardo-contrast-colors";
+
+import type { modeType, colorsType } from "@/types";
+
 import {
   getContrastFromHex,
   getContrastFromLightness,
   getLightnessFromHex,
 } from "./ColorUtils";
-import { modeType, colorsType } from "@/types";
 
 type outputType = "flat" | "object";
 
@@ -24,25 +27,25 @@ export const generateColorScale = (
   mode: modeType,
   outputType: outputType = "object"
 ) => {
-  let leoBackgroundColor = new BackgroundColor({
+  const leoBackgroundColor = new BackgroundColor({
     name: "backgroundColor",
     colorKeys: ["#ffffff"],
     ratios: [1],
   });
 
-  let colorLightness = getLightnessFromHex(color);
-  let multiplier = colorLightness <= 30 ? -9 : 9;
-  let solidContrast = getContrastFromLightness(
+  const colorLightness = getLightnessFromHex(color);
+  const multiplier = colorLightness <= 30 ? -9 : 9;
+  const solidContrast = getContrastFromLightness(
     colorLightness,
     color,
     leoBackgroundColor.colorKeys[0]
   );
-  let solidHoverContrast = getContrastFromLightness(
+  const solidHoverContrast = getContrastFromLightness(
     colorLightness - multiplier,
     color,
     leoBackgroundColor.colorKeys[0]
   );
-  let solidActiveContrast = getContrastFromLightness(
+  const solidActiveContrast = getContrastFromLightness(
     colorLightness - multiplier * 2,
     color,
     leoBackgroundColor.colorKeys[0]
@@ -68,7 +71,7 @@ export const generateColorScale = (
     );
   };
 
-  let colors = new Color({
+  const colors = new Color({
     name: "color",
     colorKeys: [color],
     ratios: [
@@ -88,14 +91,14 @@ export const generateColorScale = (
     ],
   });
 
-  let theme = new Theme({
+  const theme = new Theme({
     colors: [colors],
     backgroundColor: leoBackgroundColor,
     lightness: 100,
   });
 
   if (outputType === "flat") {
-    let flatArr = theme.contrastColorValues;
+    const flatArr = theme.contrastColorValues;
     flatArr.push(setContrastOneColor(color, "first").color as CssColor);
     flatArr.push(setContrastOneColor(color, "second").color as CssColor);
     return theme.contrastColorValues;
@@ -181,18 +184,18 @@ export const setContrastOneColor = (
 };
 
 const createTheme = (color: CssColor, lightness: number) => {
-  let leoBackgroundColor = new BackgroundColor({
+  const leoBackgroundColor = new BackgroundColor({
     name: "backgroundColor",
     colorKeys: ["#ffffff"],
     ratios: [1],
   });
-  let colors = new Color({
+  const colors = new Color({
     name: "color",
     colorKeys: [color],
     ratios: [getContrastFromLightness(lightness, color, "#ffffff")],
   });
 
-  let theme = new Theme({
+  const theme = new Theme({
     colors: [colors],
     backgroundColor: leoBackgroundColor,
     lightness: 100,

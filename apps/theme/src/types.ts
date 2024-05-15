@@ -1,4 +1,4 @@
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 
 export type modeType = "light" | "dark" | "contrast";
 
