@@ -43,7 +43,7 @@ export const Preview: Story = {
     disabled: false,
     variant: 'primary',
     color: 'first',
-    size: 'medium',
+    size: 'md',
     icon: false,
     fullWidth: false,
   },
