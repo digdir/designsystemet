@@ -14,7 +14,7 @@ export type ButtonProps = {
   color?: 'first' | 'second' | 'success' | 'danger';
   /**
    * Size
-   * @default md
+   * @default `md`
    * @note `small`, `medium`, `large` is deprecated
    */
   size?: 'sm' | 'md' | 'lg' | OldButtonSizes;
