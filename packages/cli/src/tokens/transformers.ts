@@ -9,8 +9,8 @@ export const sizeRem: Transform = {
   filter: (token) =>
     ['sizing', 'spacing'].includes(token.type as string) &&
     !token.name.includes('base'),
-  transform: (token, options) => {
-    const baseFont = (options.basePxFontSize as unknown as number) || 16;
+  transform: (token, config) => {
+    const baseFont = (config.basePxFontSize as unknown as number) || 16;
     const value = parseInt(token.value as string);
 
     if (value === 0) {
@@ -48,7 +48,7 @@ export const typographyShorthand: Transform = {
     const { usesDtcg } = options;
     const typography = (usesDtcg ? token.$value : token.value) as Typgraphy;
 
-    const baseFontPx = (options.basePxFontSize as unknown as number) || 16;
+    const baseFontPx = (config.basePxFontSize as unknown as number) || 16;
     const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
 
     return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
