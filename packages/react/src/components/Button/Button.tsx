@@ -15,7 +15,6 @@ export type ButtonProps = {
   /**
    * Size
    * @default md
-   *
    * @note Use `sm`, `md`, `lg` instead of `small`, `medium`, `large`, as the latter will be deprecated
    */
   size?: 'sm' | 'md' | 'lg' | OldButtonSize;
