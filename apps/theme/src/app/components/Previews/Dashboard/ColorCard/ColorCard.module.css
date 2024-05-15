@@ -1,0 +1,55 @@
+.colorCard {
+  background-color: var(--brandOne3);
+  width: 270px;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.colorCardTwo {
+  background-color: var(--brandTwo3);
+}
+
+.colorCardThree {
+  background-color: var(--brandThree3);
+}
+
+.colorCardIcon {
+  background-color: var(--brandOne5);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brandOne12);
+}
+
+.colorCardIconTwo {
+  background-color: var(--brandTwo5);
+  color: var(--brandTwo12);
+}
+
+.colorCardIconThree {
+  background-color: var(--brandThree5);
+  color: var(--brandThree12);
+}
+
+.colorCardTitle {
+  color: var(--brandOne12);
+  margin-bottom: 8px;
+}
+
+.colorCardDesc {
+  color: var(--brandOne12);
+}
+
+.textTwo .colorCardTitle,
+.textTwo .colorCardDesc {
+  color: var(--brandTwo12) !important;
+}
+
+.textThree .colorCardTitle,
+.textThree .colorCardDesc {
+  color: var(--brandThree12) !important;
+}

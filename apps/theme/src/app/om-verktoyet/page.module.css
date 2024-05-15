@@ -1,0 +1,28 @@
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 12px !important;
+}
+
+.ingress {
+  font-size: 20px;
+  width: 60%;
+  line-height: 1.7em;
+  margin-top: 0;
+}
+
+.page ul {
+  line-height: 1.6em;
+  width: 60%;
+}
+
+.page li {
+  margin-bottom: 10px;
+}
+
+.page h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px !important;
+  margin-top: 40px;
+}
