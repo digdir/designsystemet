@@ -5,10293 +5,3101 @@
 
 export const  color = [
   {
-    value: "#fefeff",
+    value: "#efeffb",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.1}",
+      value: "#efeffb",
       type: "color"
     },
-    name: "--fds-colors-accent-1",
+    name: "--fds-brand-alt1-100",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "1"
+      "brand",
+      "alt1",
+      "100"
     ]
   },
   {
-    value: "#eef4fa",
+    value: "#dedff6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.2}",
+      value: "#dedff6",
       type: "color"
     },
-    name: "--fds-colors-accent-2",
+    name: "--fds-brand-alt1-200",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "2"
+      "brand",
+      "alt1",
+      "200"
     ]
   },
   {
-    value: "#e2edf7",
+    value: "#bec0ed",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.3}",
+      value: "#bec0ed",
       type: "color"
     },
-    name: "--fds-colors-accent-3",
+    name: "--fds-brand-alt1-300",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "3"
+      "brand",
+      "alt1",
+      "300"
     ]
   },
   {
-    value: "#c3daef",
+    value: "#9da0e4",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.4}",
+      value: "#9da0e4",
       type: "color"
     },
-    name: "--fds-colors-accent-4",
+    name: "--fds-brand-alt1-400",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "4"
+      "brand",
+      "alt1",
+      "400"
     ]
   },
   {
-    value: "#a4c7e6",
+    value: "#7d81db",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.5}",
+      value: "#7d81db",
       type: "color"
     },
-    name: "--fds-colors-accent-5",
+    name: "--fds-brand-alt1-500",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "5"
+      "brand",
+      "alt1",
+      "500"
     ]
   },
   {
-    value: "#aecde9",
+    value: "#5c61d2",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.6}",
+      value: "#5c61d2",
       type: "color"
     },
-    name: "--fds-colors-accent-6",
+    name: "--fds-brand-alt1-600",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "6"
+      "brand",
+      "alt1",
+      "600"
     ]
   },
   {
-    value: "#4b90ce",
+    value: "#3339c6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.7}",
+      value: "#3339c6",
       type: "color"
     },
-    name: "--fds-colors-accent-7",
+    name: "--fds-brand-alt1-700",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "7"
+      "brand",
+      "alt1",
+      "700"
     ]
   },
   {
-    value: "#00529d",
+    value: "#0008b8",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.8}",
+      value: "#0008b8",
       type: "color"
     },
-    name: "--fds-colors-accent-8",
+    name: "--fds-brand-alt1-800",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "8"
+      "brand",
+      "alt1",
+      "800"
     ]
   },
   {
-    value: "#0163ba",
+    value: "#00078F",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.9}",
+      value: "#00078F",
       type: "color"
     },
-    name: "--fds-colors-accent-9",
+    name: "--fds-brand-alt1-900",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "9"
+      "brand",
+      "alt1",
+      "900"
     ]
   },
   {
-    value: "#004d93",
+    value: "#ffeee1",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.10}",
+      value: "#ffeee1",
       type: "color"
     },
-    name: "--fds-colors-accent-10",
+    name: "--fds-brand-alt2-100",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "10"
+      "brand",
+      "alt2",
+      "100"
     ]
   },
   {
-    value: "#00396d",
+    value: "#ffdcc3",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.11}",
+      value: "#ffdcc3",
       type: "color"
     },
-    name: "--fds-colors-accent-11",
+    name: "--fds-brand-alt2-200",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "11"
+      "brand",
+      "alt2",
+      "200"
     ]
   },
   {
-    value: "#005099",
+    value: "#fdd4b7",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.12}",
+      value: "#fdd4b7",
       type: "color"
     },
-    name: "--fds-colors-accent-12",
+    name: "--fds-brand-alt2-300",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "12"
+      "brand",
+      "alt2",
+      "300"
     ]
   },
   {
-    value: "#00315c",
+    value: "#ffc296",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.13}",
+      value: "#ffc296",
       type: "color"
     },
-    name: "--fds-colors-accent-13",
+    name: "--fds-brand-alt2-400",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "13"
+      "brand",
+      "alt2",
+      "400"
     ]
   },
   {
-    value: "#f6fafd",
+    value: "#ffb178",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.contrast-1}",
+      value: "#ffb178",
       type: "color"
     },
-    name: "--fds-colors-accent-contrast-1",
+    name: "--fds-brand-alt2-500",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "contrast-1"
+      "brand",
+      "alt2",
+      "500"
     ]
   },
   {
-    value: "#ddeaf6",
+    value: "#ffa869",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.accent.contrast-2}",
+      value: "#ffa869",
       type: "color"
     },
-    name: "--fds-colors-accent-contrast-2",
+    name: "--fds-brand-alt2-600",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "contrast-2"
+      "brand",
+      "alt2",
+      "600"
     ]
   },
   {
-    value: "#fefeff",
+    value: "#e6975f",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.1}",
+      value: "#e6975f",
       type: "color"
     },
-    name: "--fds-colors-accent-background-default",
+    name: "--fds-brand-alt2-700",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "background-default"
+      "brand",
+      "alt2",
+      "700"
     ]
   },
   {
-    value: "#eef4fa",
+    value: "#b3764a",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.2}",
+      value: "#b3764a",
       type: "color"
     },
-    name: "--fds-colors-accent-background-subtle",
+    name: "--fds-brand-alt2-800",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "background-subtle"
+      "brand",
+      "alt2",
+      "800"
     ]
   },
   {
-    value: "#e2edf7",
+    value: "#9F6841",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.3}",
+      value: "#9F6841",
       type: "color"
     },
-    name: "--fds-colors-accent-surface-default",
+    name: "--fds-brand-alt2-900",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "surface-default"
+      "brand",
+      "alt2",
+      "900"
     ]
   },
   {
-    value: "#c3daef",
+    value: "#eff6f4",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.4}",
+      value: "#eff6f4",
       type: "color"
     },
-    name: "--fds-colors-accent-surface-hover",
+    name: "--fds-brand-alt3-100",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "surface-hover"
+      "brand",
+      "alt3",
+      "100"
     ]
   },
   {
-    value: "#a4c7e6",
+    value: "#deece9",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.5}",
+      value: "#deece9",
       type: "color"
     },
-    name: "--fds-colors-accent-surface-active",
+    name: "--fds-brand-alt3-200",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "surface-active"
+      "brand",
+      "alt3",
+      "200"
     ]
   },
   {
-    value: "#aecde9",
+    value: "#bedad2",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.6}",
+      value: "#bedad2",
       type: "color"
     },
-    name: "--fds-colors-accent-border-subtle",
+    name: "--fds-brand-alt3-300",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "border-subtle"
+      "brand",
+      "alt3",
+      "300"
     ]
   },
   {
-    value: "#4b90ce",
+    value: "#9dc7bc",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.7}",
+      value: "#9dc7bc",
       type: "color"
     },
-    name: "--fds-colors-accent-border-default",
+    name: "--fds-brand-alt3-400",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "border-default"
+      "brand",
+      "alt3",
+      "400"
     ]
   },
   {
-    value: "#00529d",
+    value: "#7db5a5",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.8}",
+      value: "#7db5a5",
       type: "color"
     },
-    name: "--fds-colors-accent-border-strong",
+    name: "--fds-brand-alt3-500",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "border-strong"
+      "brand",
+      "alt3",
+      "500"
     ]
   },
   {
-    value: "#0163ba",
+    value: "#5ca28f",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.9}",
+      value: "#5ca28f",
       type: "color"
     },
-    name: "--fds-colors-accent-base-default",
+    name: "--fds-brand-alt3-600",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "base-default"
+      "brand",
+      "alt3",
+      "600"
     ]
   },
   {
-    value: "#004d93",
+    value: "#4c907e",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.10}",
+      value: "#4c907e",
       type: "color"
     },
-    name: "--fds-colors-accent-base-hover",
+    name: "--fds-brand-alt3-700",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "base-hover"
+      "brand",
+      "alt3",
+      "700"
     ]
   },
   {
-    value: "#00396d",
+    value: "#407d6d",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.11}",
+      value: "#407d6d",
       type: "color"
     },
-    name: "--fds-colors-accent-base-active",
+    name: "--fds-brand-alt3-800",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "base-active"
+      "brand",
+      "alt3",
+      "800"
     ]
   },
   {
-    value: "#005099",
+    value: "#376C5E",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.12}",
+      value: "#376C5E",
       type: "color"
     },
-    name: "--fds-colors-accent-text-subtle",
+    name: "--fds-brand-alt3-900",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "text-subtle"
+      "brand",
+      "alt3",
+      "900"
     ]
   },
   {
-    value: "#00315c",
+    value: "#dedff6",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.13}",
+      value: "{brand.alt1.200}",
       type: "color"
     },
-    name: "--fds-colors-accent-text-default",
+    name: "--fds-semantic-surface-first-subtle",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "text-default"
+      "semantic",
+      "surface",
+      "first",
+      "subtle"
     ]
   },
   {
-    value: "#f6fafd",
+    value: "#bec0ed",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.contrast-1}",
+      value: "{brand.alt1.300}",
       type: "color"
     },
-    name: "--fds-colors-accent-contrast-first",
+    name: "--fds-semantic-surface-first-subtle-hover",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "contrast-first"
+      "semantic",
+      "surface",
+      "first",
+      "subtle-hover"
     ]
   },
   {
-    value: "#ddeaf6",
+    value: "#9da0e4",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.accent.contrast-2}",
+      value: "{brand.alt1.400}",
       type: "color"
     },
-    name: "--fds-colors-accent-contrast-second",
+    name: "--fds-semantic-surface-first-subtle-active",
     attributes: {},
     path: [
-      "colors",
-      "accent",
-      "contrast-second"
+      "semantic",
+      "surface",
+      "first",
+      "subtle-active"
     ]
   },
   {
-    value: "#fefefe",
+    value: "#0008b8",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.1}",
+      value: "{brand.alt1.800}",
       type: "color"
     },
-    name: "--fds-colors-neutral-1",
+    name: "--fds-semantic-surface-first-strong",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "1"
+      "semantic",
+      "surface",
+      "first",
+      "strong"
     ]
   },
   {
-    value: "#f3f4f5",
+    value: "#ffdcc3",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.2}",
+      value: "{brand.alt2.200}",
       type: "color"
     },
-    name: "--fds-colors-neutral-2",
+    name: "--fds-semantic-surface-second-subtle",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "2"
+      "semantic",
+      "surface",
+      "second",
+      "subtle"
     ]
   },
   {
-    value: "#e9eaec",
+    value: "#fdd4b7",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.3}",
+      value: "{brand.alt2.300}",
       type: "color"
     },
-    name: "--fds-colors-neutral-3",
+    name: "--fds-semantic-surface-second-subtle-hover",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "3"
+      "semantic",
+      "surface",
+      "second",
+      "subtle-hover"
     ]
   },
   {
-    value: "#d5d7da",
+    value: "#ffc296",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.4}",
+      value: "{brand.alt2.400}",
       type: "color"
     },
-    name: "--fds-colors-neutral-4",
+    name: "--fds-semantic-surface-second-subtle-active",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "4"
+      "semantic",
+      "surface",
+      "second",
+      "subtle-active"
     ]
   },
   {
-    value: "#c1c4c9",
+    value: "#9F6841",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.5}",
+      value: "{brand.alt2.900}",
       type: "color"
     },
-    name: "--fds-colors-neutral-5",
+    name: "--fds-semantic-surface-second-strong",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "5"
+      "semantic",
+      "surface",
+      "second",
+      "strong"
     ]
   },
   {
-    value: "#c6c9cd",
+    value: "#deece9",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.6}",
+      value: "{brand.alt3.200}",
       type: "color"
     },
-    name: "--fds-colors-neutral-6",
+    name: "--fds-semantic-surface-third-subtle",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "6"
+      "semantic",
+      "surface",
+      "third",
+      "subtle"
     ]
   },
   {
-    value: "#858c96",
+    value: "#bedad2",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.7}",
+      value: "{brand.alt3.300}",
       type: "color"
     },
-    name: "--fds-colors-neutral-7",
+    name: "--fds-semantic-surface-third-subtle-hover",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "7"
+      "semantic",
+      "surface",
+      "third",
+      "subtle-hover"
     ]
   },
   {
-    value: "#495361",
+    value: "#9dc7bc",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.8}",
+      value: "{brand.alt3.400}",
       type: "color"
     },
-    name: "--fds-colors-neutral-8",
+    name: "--fds-semantic-surface-third-subtle-active",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "8"
+      "semantic",
+      "surface",
+      "third",
+      "subtle-active"
     ]
   },
   {
-    value: "#1e2b3c",
+    value: "#407d6d",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.9}",
+      value: "{brand.alt3.800}",
       type: "color"
     },
-    name: "--fds-colors-neutral-9",
+    name: "--fds-semantic-surface-third-strong",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "9"
+      "semantic",
+      "surface",
+      "third",
+      "strong"
     ]
   },
   {
-    value: "#333e4e",
+    value: "#f4f5f6",
     type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{themes.theme4.neutral.10}",
+      value: "{colors.grey.100}",
       type: "color"
     },
-    name: "--fds-colors-neutral-10",
+    name: "--fds-semantic-surface-action-first-subtle",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.neutral.11}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-11",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#46505e",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.neutral.12}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-12",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "12"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.neutral.13}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-13",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "13"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.neutral.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-contrast-1",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.neutral.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-contrast-2",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.1}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "background-default"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.2}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "background-subtle"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "subtle"
     ]
   },
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.3}",
+      value: "{colors.grey.200}",
       type: "color"
     },
-    name: "--fds-colors-neutral-surface-default",
+    name: "--fds-semantic-surface-action-first-subtle-hover",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "surface-default"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "subtle-hover"
     ]
   },
   {
-    value: "#d5d7da",
+    value: "#00315d",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.4}",
+      value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-colors-neutral-surface-hover",
+    name: "--fds-semantic-surface-action-first-default",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "surface-hover"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "default"
     ]
   },
   {
-    value: "#c1c4c9",
+    value: "rgba(0, 49, 93, 0.9)",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.5}",
+      value: "rgba({colors.blue.900}, 0.9)",
       type: "color"
     },
-    name: "--fds-colors-neutral-surface-active",
+    name: "--fds-semantic-surface-action-first-hover",
     attributes: {},
     path: [
-      "colors",
-      "neutral",
-      "surface-active"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "hover"
     ]
   },
   {
-    value: "#c6c9cd",
+    value: "rgba(0, 49, 93, 0.8)",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    description: "Standard farge for handlinger",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{colors.neutral.6}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.7}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "border-default"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.8}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.9}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "base-default"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.10}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.11}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "base-active"
-    ]
-  },
-  {
-    value: "#46505e",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.12}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.13}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.neutral.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-neutral-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "neutral",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-1",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-2",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fde5e6",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.3}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-3",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbcccd",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.4}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-4",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#fab1b3",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.5}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-5",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.6}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-6",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.7}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-7",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.8}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-8",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.9}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-9",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.10}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-10",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.11}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-11",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#873537",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.12}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-12",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.13}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-13",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand1.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#fde5e6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.3}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#fbcccd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.4}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#fab1b3",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.5}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.6}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.7}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "border-default"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.8}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.9}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "base-default"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.10}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.11}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "base-active"
-    ]
-  },
-  {
-    value: "#873537",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.12}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.13}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand1.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand1-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "brand1",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-1",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-2",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f8e9c6",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.3}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-3",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d48d",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.4}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-4",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#ebbe54",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.5}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-5",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.6}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-6",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.7}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-7",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.8}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-8",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.9}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-9",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.10}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-10",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.11}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-11",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#664c0e",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.12}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-12",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.13}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-13",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand2.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#f8e9c6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.3}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#f2d48d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.4}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#ebbe54",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.5}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.6}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.7}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "border-default"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.8}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.9}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "base-default"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.10}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.11}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "base-active"
-    ]
-  },
-  {
-    value: "#664c0e",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.12}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.13}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand2.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand2-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "brand2",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-1",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-2",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#d9eefd",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.3}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-3",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#b3dcfc",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.4}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-4",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#8bcafa",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.5}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-5",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.6}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-6",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.7}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-7",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.8}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-8",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.9}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-9",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.10}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-10",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.11}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-11",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105387",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.12}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-12",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.13}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-13",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/themes/theme4.json",
-    isSource: false,
-    original: {
-      value: "{themes.theme4.brand3.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "background-default"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#d9eefd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.3}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#b3dcfc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.4}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#8bcafa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.5}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.6}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.7}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "border-default"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.8}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.9}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "base-default"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.10}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.11}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "base-active"
-    ]
-  },
-  {
-    value: "#105387",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.12}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.13}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{colors.brand3.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-brand3-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "brand3",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fcfefc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.1}",
-      type: "color"
-    },
-    name: "--fds-colors-success-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "background-default"
-    ]
-  },
-  {
-    value: "#e9f6ea",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.2}",
-      type: "color"
-    },
-    name: "--fds-colors-success-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#d9efdc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.3}",
-      type: "color"
-    },
-    name: "--fds-colors-success-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#b9e1be",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.4}",
-      type: "color"
-    },
-    name: "--fds-colors-success-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#94d29d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.5}",
-      type: "color"
-    },
-    name: "--fds-colors-success-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#9ed6a5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.6}",
-      type: "color"
-    },
-    name: "--fds-colors-success-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#29a03a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.7}",
-      type: "color"
-    },
-    name: "--fds-colors-success-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "border-default"
-    ]
-  },
-  {
-    value: "#185e22",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.8}",
-      type: "color"
-    },
-    name: "--fds-colors-success-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#2ca63d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.9}",
-      type: "color"
-    },
-    name: "--fds-colors-success-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "base-default"
-    ]
-  },
-  {
-    value: "#248c33",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.10}",
-      type: "color"
-    },
-    name: "--fds-colors-success-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#1d7129",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.11}",
-      type: "color"
-    },
-    name: "--fds-colors-success-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "base-active"
-    ]
-  },
-  {
-    value: "#185c21",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.12}",
-      type: "color"
-    },
-    name: "--fds-colors-success-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "success",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#0f3814",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.13}",
-      type: "color"
+      value: "rgba({colors.blue.900}, 0.8)",
+      type: "color",
+      description: "Standard farge for handlinger"
     },
-    name: "--fds-colors-success-text-default",
+    name: "--fds-semantic-surface-action-first-active",
     attributes: {},
     path: [
-      "colors",
-      "success",
-      "text-default"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "active"
     ]
   },
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{global.green.contrast-1}",
+      value: "{colors.white}",
       type: "color"
     },
-    name: "--fds-colors-success-contrast-first",
+    name: "--fds-semantic-surface-action-first-no_fill",
     attributes: {},
     path: [
-      "colors",
-      "success",
-      "contrast-first"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "no_fill"
     ]
   },
   {
-    value: "#e6e6e6",
+    value: "rgba(0, 49, 93, 0.1)",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{global.green.contrast-2}",
+      value: "rgba({colors.blue.900}, 0.1)",
       type: "color"
     },
-    name: "--fds-colors-success-contrast-second",
+    name: "--fds-semantic-surface-action-first-no_fill-hover",
     attributes: {},
     path: [
-      "colors",
-      "success",
-      "contrast-second"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "no_fill-hover"
     ]
   },
   {
-    value: "#fffefe",
+    value: "rgba(0, 49, 93, 0.2)",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{global.red.1}",
+      value: "rgba({colors.blue.900}, 0.2)",
       type: "color"
     },
-    name: "--fds-colors-danger-background-default",
+    name: "--fds-semantic-surface-action-first-no_fill-active",
     attributes: {},
     path: [
-      "colors",
-      "danger",
-      "background-default"
+      "semantic",
+      "surface",
+      "action",
+      "first",
+      "no_fill-active"
     ]
   },
   {
-    value: "#fbf2f3",
+    value: "#f4f5f6",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
     isSource: false,
     original: {
-      value: "{global.red.2}",
+      value: "{colors.grey.100}",
       type: "color"
     },
-    name: "--fds-colors-danger-background-subtle",
+    name: "--fds-semantic-surface-action-second-subtle",
     attributes: {},
     path: [
-      "colors",
-      "danger",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#f6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.3}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#eecfd0",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.4}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#e6b9b9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.5}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#e8bfbf",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.6}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#cd7172",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.7}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "border-default"
-    ]
-  },
-  {
-    value: "#9d2223",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.8}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#b32728",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.9}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "base-default"
-    ]
-  },
-  {
-    value: "#8c1f1f",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.10}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#671617",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.11}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "base-active"
-    ]
-  },
-  {
-    value: "#9a2122",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.12}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#5e1515",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.13}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "text-default"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-danger-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "danger",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.1}",
-      type: "color"
-    },
-    name: "--fds-colors-info-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "background-default"
-    ]
-  },
-  {
-    value: "#edf5fa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.2}",
-      type: "color"
-    },
-    name: "--fds-colors-info-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#dfecf7",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.3}",
-      type: "color"
-    },
-    name: "--fds-colors-info-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#bedaee",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.4}",
-      type: "color"
-    },
-    name: "--fds-colors-info-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#a1c9e7",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.5}",
-      type: "color"
-    },
-    name: "--fds-colors-info-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#aacee9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.6}",
-      type: "color"
-    },
-    name: "--fds-colors-info-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#4291ce",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.7}",
-      type: "color"
-    },
-    name: "--fds-colors-info-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "border-default"
-    ]
-  },
-  {
-    value: "#075490",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.8}",
-      type: "color"
-    },
-    name: "--fds-colors-info-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#0c72c1",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.9}",
-      type: "color"
-    },
-    name: "--fds-colors-info-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "base-default"
-    ]
-  },
-  {
-    value: "#085c9c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.10}",
-      type: "color"
-    },
-    name: "--fds-colors-info-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#064678",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.11}",
-      type: "color"
-    },
-    name: "--fds-colors-info-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "base-active"
-    ]
-  },
-  {
-    value: "#07528c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.12}",
-      type: "color"
-    },
-    name: "--fds-colors-info-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#043256",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.13}",
-      type: "color"
-    },
-    name: "--fds-colors-info-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "text-default"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-info-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-info-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "info",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.1}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-background-default",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fbf2d5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.2}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-background-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#f9ebbd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.3}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-surface-default",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#f2d474",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.4}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-surface-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#e8bf37",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.5}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-surface-active",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#edc644",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.6}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-border-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#a68827",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.7}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-border-default",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "border-default"
-    ]
-  },
-  {
-    value: "#625017",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.8}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-border-strong",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#d46223",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.orange.9}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-base-default",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "base-default"
-    ]
-  },
-  {
-    value: "#b0511d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.orange.10}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-base-hover",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#8e4117",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.orange.11}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-base-active",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "base-active"
-    ]
-  },
-  {
-    value: "#813c15",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.orange.12}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-text-subtle",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#4f240d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.orange.13}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-text-default",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "text-default"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-contrast-first",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-colors-warning-contrast-second",
-    attributes: {},
-    path: [
-      "colors",
-      "warning",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fcfefc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fcfefc",
-      type: "color"
-    },
-    name: "--fds-global-green-1",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "1"
-    ]
-  },
-  {
-    value: "#e9f6ea",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e9f6ea",
-      type: "color"
-    },
-    name: "--fds-global-green-2",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "2"
-    ]
-  },
-  {
-    value: "#d9efdc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d9efdc",
-      type: "color"
-    },
-    name: "--fds-global-green-3",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "3"
-    ]
-  },
-  {
-    value: "#b9e1be",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b9e1be",
-      type: "color"
-    },
-    name: "--fds-global-green-4",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "4"
-    ]
-  },
-  {
-    value: "#94d29d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#94d29d",
-      type: "color"
-    },
-    name: "--fds-global-green-5",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "5"
-    ]
-  },
-  {
-    value: "#9ed6a5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#9ed6a5",
-      type: "color"
-    },
-    name: "--fds-global-green-6",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "6"
-    ]
-  },
-  {
-    value: "#29a03a",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#29a03a",
-      type: "color"
-    },
-    name: "--fds-global-green-7",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "7"
-    ]
-  },
-  {
-    value: "#185e22",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#185e22",
-      type: "color"
-    },
-    name: "--fds-global-green-8",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "8"
-    ]
-  },
-  {
-    value: "#2ca63d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#2ca63d",
-      type: "color"
-    },
-    name: "--fds-global-green-9",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "9"
-    ]
-  },
-  {
-    value: "#248c33",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#248c33",
-      type: "color"
-    },
-    name: "--fds-global-green-10",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "10"
-    ]
-  },
-  {
-    value: "#1d7129",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1d7129",
-      type: "color"
-    },
-    name: "--fds-global-green-11",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "11"
-    ]
-  },
-  {
-    value: "#185c21",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#185c21",
-      type: "color"
-    },
-    name: "--fds-global-green-12",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "12"
-    ]
-  },
-  {
-    value: "#0f3814",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0f3814",
-      type: "color"
-    },
-    name: "--fds-global-green-13",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-green-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-green-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefc",
-      type: "color"
-    },
-    name: "--fds-global-yellow-1",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf2d5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf2d5",
-      type: "color"
-    },
-    name: "--fds-global-yellow-2",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "2"
-    ]
-  },
-  {
-    value: "#f9ebbd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f9ebbd",
-      type: "color"
-    },
-    name: "--fds-global-yellow-3",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d474",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f2d474",
-      type: "color"
-    },
-    name: "--fds-global-yellow-4",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "4"
-    ]
-  },
-  {
-    value: "#e8bf37",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e8bf37",
-      type: "color"
-    },
-    name: "--fds-global-yellow-5",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "5"
-    ]
-  },
-  {
-    value: "#edc644",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#edc644",
-      type: "color"
-    },
-    name: "--fds-global-yellow-6",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "6"
-    ]
-  },
-  {
-    value: "#a68827",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a68827",
-      type: "color"
-    },
-    name: "--fds-global-yellow-7",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "7"
-    ]
-  },
-  {
-    value: "#625017",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#625017",
-      type: "color"
-    },
-    name: "--fds-global-yellow-8",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "8"
-    ]
-  },
-  {
-    value: "#ecc238",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ecc238",
-      type: "color"
-    },
-    name: "--fds-global-yellow-9",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "9"
-    ]
-  },
-  {
-    value: "#cfaa31",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#cfaa31",
-      type: "color"
-    },
-    name: "--fds-global-yellow-10",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "10"
-    ]
-  },
-  {
-    value: "#b2922a",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b2922a",
-      type: "color"
-    },
-    name: "--fds-global-yellow-11",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "11"
-    ]
-  },
-  {
-    value: "#604f17",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#604f17",
-      type: "color"
-    },
-    name: "--fds-global-yellow-12",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "12"
-    ]
-  },
-  {
-    value: "#3a300e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#3a300e",
-      type: "color"
-    },
-    name: "--fds-global-yellow-13",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-yellow-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-yellow-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefd",
-      type: "color"
-    },
-    name: "--fds-global-orange-1",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf1ec",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf1ec",
-      type: "color"
-    },
-    name: "--fds-global-orange-2",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "2"
-    ]
-  },
-  {
-    value: "#f9e8df",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f9e8df",
-      type: "color"
-    },
-    name: "--fds-global-orange-3",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d0bc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f2d0bc",
-      type: "color"
-    },
-    name: "--fds-global-orange-4",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "4"
-    ]
-  },
-  {
-    value: "#ecb99e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ecb99e",
-      type: "color"
-    },
-    name: "--fds-global-orange-5",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "5"
-    ]
-  },
-  {
-    value: "#eec0a7",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eec0a7",
-      type: "color"
-    },
-    name: "--fds-global-orange-6",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "6"
-    ]
-  },
-  {
-    value: "#d76e34",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d76e34",
-      type: "color"
-    },
-    name: "--fds-global-orange-7",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "7"
-    ]
-  },
-  {
-    value: "#853e16",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#853e16",
-      type: "color"
-    },
-    name: "--fds-global-orange-8",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "8"
-    ]
-  },
-  {
-    value: "#d46223",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d46223",
-      type: "color"
-    },
-    name: "--fds-global-orange-9",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "9"
-    ]
-  },
-  {
-    value: "#b0511d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b0511d",
-      type: "color"
-    },
-    name: "--fds-global-orange-10",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "10"
-    ]
-  },
-  {
-    value: "#8e4117",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8e4117",
-      type: "color"
-    },
-    name: "--fds-global-orange-11",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "11"
-    ]
-  },
-  {
-    value: "#813c15",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#813c15",
-      type: "color"
-    },
-    name: "--fds-global-orange-12",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "12"
-    ]
-  },
-  {
-    value: "#4f240d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#4f240d",
-      type: "color"
-    },
-    name: "--fds-global-orange-13",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-orange-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-orange-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-global-red-1",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf2f3",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf2f3",
-      type: "color"
-    },
-    name: "--fds-global-red-2",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "2"
-    ]
-  },
-  {
-    value: "#f6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-red-3",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "3"
-    ]
-  },
-  {
-    value: "#eecfd0",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eecfd0",
-      type: "color"
-    },
-    name: "--fds-global-red-4",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "4"
-    ]
-  },
-  {
-    value: "#e6b9b9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e6b9b9",
-      type: "color"
-    },
-    name: "--fds-global-red-5",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "5"
-    ]
-  },
-  {
-    value: "#e8bfbf",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e8bfbf",
-      type: "color"
-    },
-    name: "--fds-global-red-6",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "6"
-    ]
-  },
-  {
-    value: "#cd7172",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#cd7172",
-      type: "color"
-    },
-    name: "--fds-global-red-7",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "7"
-    ]
-  },
-  {
-    value: "#9d2223",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#9d2223",
-      type: "color"
-    },
-    name: "--fds-global-red-8",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "8"
-    ]
-  },
-  {
-    value: "#b32728",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b32728",
-      type: "color"
-    },
-    name: "--fds-global-red-9",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "9"
-    ]
-  },
-  {
-    value: "#8c1f1f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8c1f1f",
-      type: "color"
-    },
-    name: "--fds-global-red-10",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "10"
-    ]
-  },
-  {
-    value: "#671617",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#671617",
-      type: "color"
-    },
-    name: "--fds-global-red-11",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "11"
-    ]
-  },
-  {
-    value: "#9a2122",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#9a2122",
-      type: "color"
-    },
-    name: "--fds-global-red-12",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "12"
-    ]
-  },
-  {
-    value: "#5e1515",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#5e1515",
-      type: "color"
-    },
-    name: "--fds-global-red-13",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-red-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-red-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefeff",
-      type: "color"
-    },
-    name: "--fds-global-blue-1",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "1"
-    ]
-  },
-  {
-    value: "#edf5fa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#edf5fa",
-      type: "color"
-    },
-    name: "--fds-global-blue-2",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "2"
-    ]
-  },
-  {
-    value: "#dfecf7",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#dfecf7",
-      type: "color"
-    },
-    name: "--fds-global-blue-3",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "3"
-    ]
-  },
-  {
-    value: "#bedaee",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#bedaee",
-      type: "color"
-    },
-    name: "--fds-global-blue-4",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "4"
-    ]
-  },
-  {
-    value: "#a1c9e7",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a1c9e7",
-      type: "color"
-    },
-    name: "--fds-global-blue-5",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "5"
-    ]
-  },
-  {
-    value: "#aacee9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#aacee9",
-      type: "color"
-    },
-    name: "--fds-global-blue-6",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "6"
-    ]
-  },
-  {
-    value: "#4291ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#4291ce",
-      type: "color"
-    },
-    name: "--fds-global-blue-7",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "7"
-    ]
-  },
-  {
-    value: "#075490",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#075490",
-      type: "color"
-    },
-    name: "--fds-global-blue-8",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "8"
-    ]
-  },
-  {
-    value: "#0c72c1",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0c72c1",
-      type: "color"
-    },
-    name: "--fds-global-blue-9",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "9"
-    ]
-  },
-  {
-    value: "#085c9c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#085c9c",
-      type: "color"
-    },
-    name: "--fds-global-blue-10",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "10"
-    ]
-  },
-  {
-    value: "#064678",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#064678",
-      type: "color"
-    },
-    name: "--fds-global-blue-11",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "11"
-    ]
-  },
-  {
-    value: "#07528c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#07528c",
-      type: "color"
-    },
-    name: "--fds-global-blue-12",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "12"
-    ]
-  },
-  {
-    value: "#043256",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#043256",
-      type: "color"
-    },
-    name: "--fds-global-blue-13",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-blue-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-blue-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefeff",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "1"
-    ]
-  },
-  {
-    value: "#eef4fa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eef4fa",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "2"
-    ]
-  },
-  {
-    value: "#e2edf7",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e2edf7",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "3"
-    ]
-  },
-  {
-    value: "#c3daef",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c3daef",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "4"
-    ]
-  },
-  {
-    value: "#a4c7e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a4c7e6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "5"
-    ]
-  },
-  {
-    value: "#aecde9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "7"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00529d",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "8"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0163ba",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "9"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "10"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00396d",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "11"
-    ]
-  },
-  {
-    value: "#005099",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#005099",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "12"
-    ]
-  },
-  {
-    value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00315c",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/dark.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-14",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "14"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/dark.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-15",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "15"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-accent-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "accent",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fde5e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fde5e6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbcccd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbcccd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#fab1b3",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fab1b3",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#873537",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#873537",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefc",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf3e0",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f8e9c6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f8e9c6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d48d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f2d48d",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#ebbe54",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ebbe54",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#664c0e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#664c0e",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fdfeff",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eaf6fe",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#d9eefd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d9eefd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#b3dcfc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b3dcfc",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#8bcafa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8bcafa",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#96cffa",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1c90e8",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105387",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#105387",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f3f4f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "2"
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "subtle"
     ]
   },
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#e9eaec",
+      value: "{colors.grey.200}",
       type: "color"
     },
-    name: "--fds-themes-theme1-neutral-3",
+    name: "--fds-semantic-surface-action-second-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme1",
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "subtle-hover"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-second-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "default"
+    ]
+  },
+  {
+    value: "rgba(0, 49, 93, 0.9)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "rgba({colors.blue.900}, 0.9)",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-second-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "hover"
+    ]
+  },
+  {
+    value: "rgba(0, 49, 93, 0.8)",
+    type: "color",
+    description: "Standard farge for handlinger",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "rgba({colors.blue.900}, 0.8)",
+      type: "color",
+      description: "Standard farge for handlinger"
+    },
+    name: "--fds-semantic-surface-action-second-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-second-no_fill",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "no_fill"
+    ]
+  },
+  {
+    value: "rgba(0, 49, 93, 0.1)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "rgba({colors.blue.900}, 0.1)",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-second-no_fill-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "no_fill-hover"
+    ]
+  },
+  {
+    value: "rgba(0, 49, 93, 0.2)",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "rgba({colors.blue.900}, 0.2)",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-second-no_fill-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "second",
+      "no_fill-active"
+    ]
+  },
+  {
+    value: "#e6eff8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.100}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "subtle"
+    ]
+  },
+  {
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.200}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-subtle-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "subtle-hover"
+    ]
+  },
+  {
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "default"
+    ]
+  },
+  {
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "hover"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    description: "Standard farge for handlinger",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color",
+      description: "Standard farge for handlinger"
+    },
+    name: "--fds-semantic-surface-action-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-no_fill",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "no_fill"
+    ]
+  },
+  {
+    value: "#e6eff8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.100}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-no_fill-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "no_fill-hover"
+    ]
+  },
+  {
+    value: "#b3d0ea",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.200}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-no_fill-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "no_fill-active"
+    ]
+  },
+  {
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-action-checked",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
+      "action",
+      "checked"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-surface-neutral-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "surface",
       "neutral",
-      "3"
+      "default"
     ]
   },
   {
-    value: "#d5d7da",
+    value: "#e6eff8",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#d5d7da",
+      value: "{colors.blue.100}",
       type: "color"
     },
-    name: "--fds-themes-theme1-neutral-4",
+    name: "--fds-semantic-surface-neutral-selected",
     attributes: {},
     path: [
-      "themes",
-      "theme1",
+      "semantic",
+      "surface",
       "neutral",
-      "4"
+      "selected"
     ]
   },
   {
-    value: "#c1c4c9",
+    value: "#f4f5f6",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#c1c4c9",
+      value: "{colors.grey.100}",
       type: "color"
     },
-    name: "--fds-themes-theme1-neutral-5",
+    name: "--fds-semantic-surface-neutral-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme1",
+      "semantic",
+      "surface",
       "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "8"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1e2b3c",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "9"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#333e4e",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#46505e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#46505e",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "12"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#243142",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "13"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f9f9fa",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#9ea3ab",
-      type: "color"
-    },
-    name: "--fds-themes-theme1-neutral-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme1",
-      "neutral",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefeff",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "1"
-    ]
-  },
-  {
-    value: "#eef4fa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eef4fa",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "2"
-    ]
-  },
-  {
-    value: "#e2edf7",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e2edf7",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "3"
-    ]
-  },
-  {
-    value: "#c3daef",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c3daef",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "4"
-    ]
-  },
-  {
-    value: "#a4c7e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a4c7e6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "5"
-    ]
-  },
-  {
-    value: "#aecde9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "7"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00529d",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "8"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0163ba",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "9"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "10"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00396d",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "11"
-    ]
-  },
-  {
-    value: "#005099",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#005099",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "12"
-    ]
-  },
-  {
-    value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00315c",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-accent-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "accent",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fde5e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fde5e6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbcccd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbcccd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#fab1b3",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fab1b3",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#873537",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#873537",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefc",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf3e0",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f8e9c6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f8e9c6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d48d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f2d48d",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#ebbe54",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ebbe54",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#664c0e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#664c0e",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fdfeff",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eaf6fe",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#d9eefd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d9eefd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#b3dcfc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b3dcfc",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#8bcafa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8bcafa",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#96cffa",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1c90e8",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105387",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#105387",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-neutral-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f3f4f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-neutral-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "2"
+      "subtle"
     ]
   },
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#e9eaec",
+      value: "{colors.grey.200}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-3",
+    name: "--fds-semantic-surface-neutral-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
+      "semantic",
+      "surface",
       "neutral",
-      "3"
+      "subtle-hover"
     ]
   },
   {
-    value: "#d5d7da",
+    value: "#68707c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#d5d7da",
+      value: "{colors.grey.600}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-4",
+    name: "--fds-semantic-surface-neutral-strong",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
+      "semantic",
+      "surface",
       "neutral",
-      "4"
+      "strong"
     ]
   },
   {
-    value: "#c1c4c9",
+    value: "#4b5563",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#c1c4c9",
+      value: "{colors.grey.700}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-5",
+    name: "--fds-semantic-surface-neutral-strong-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
+      "semantic",
+      "surface",
       "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-neutral-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-neutral-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-themes-theme2-neutral-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "8"
+      "strong-hover"
     ]
   },
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#1e2b3c",
+      value: "{colors.grey.800}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-9",
+    name: "--fds-semantic-surface-neutral-inverted",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
+      "semantic",
+      "surface",
       "neutral",
-      "9"
+      "inverted"
     ]
   },
   {
-    value: "#333e4e",
+    value: "#d1f4e1",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#333e4e",
+      value: "{colors.green.200}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-10",
+    name: "--fds-semantic-surface-success-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "10"
+      "semantic",
+      "surface",
+      "success",
+      "subtle"
     ]
   },
   {
-    value: "#495361",
+    value: "#8be4b5",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#495361",
+      value: "{colors.green.300}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-11",
+    name: "--fds-semantic-surface-success-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "11"
+      "semantic",
+      "surface",
+      "success",
+      "subtle-hover"
     ]
   },
   {
-    value: "#46505e",
+    value: "#118849",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#46505e",
+      value: "{colors.green.700}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-12",
+    name: "--fds-semantic-surface-success-default",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "12"
+      "semantic",
+      "surface",
+      "success",
+      "default"
     ]
   },
   {
-    value: "#243142",
+    value: "#0c6536",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#243142",
+      value: "{colors.green.800}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-13",
+    name: "--fds-semantic-surface-success-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "13"
+      "semantic",
+      "surface",
+      "success",
+      "hover"
     ]
   },
   {
-    value: "#f9f9fa",
+    value: "#084826",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#f9f9fa",
+      value: "{colors.green.900}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-contrast-1",
+    name: "--fds-semantic-surface-success-active",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "contrast-1"
+      "semantic",
+      "surface",
+      "success",
+      "active"
     ]
   },
   {
-    value: "#9ea3ab",
+    value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#9ea3ab",
+      value: "{colors.white}",
       type: "color"
     },
-    name: "--fds-themes-theme2-neutral-contrast-2",
+    name: "--fds-semantic-surface-success-no_fill",
     attributes: {},
     path: [
-      "themes",
-      "theme2",
-      "neutral",
-      "contrast-2"
+      "semantic",
+      "surface",
+      "success",
+      "no_fill"
     ]
   },
   {
-    value: "#fefeff",
+    value: "#d1f4e1",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#fefeff",
+      value: "{colors.green.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-1",
+    name: "--fds-semantic-surface-success-no_fill-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "1"
+      "semantic",
+      "surface",
+      "success",
+      "no_fill-hover"
     ]
   },
   {
-    value: "#eef4fa",
+    value: "#8be4b5",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#eef4fa",
+      value: "{colors.green.300}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-2",
+    name: "--fds-semantic-surface-success-no_fill-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "2"
+      "semantic",
+      "surface",
+      "success",
+      "no_fill-active"
     ]
   },
   {
-    value: "#e2edf7",
+    value: "#fffbe6",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#e2edf7",
+      value: "{colors.yellow.100}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-3",
+    name: "--fds-semantic-surface-warning-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "3"
+      "semantic",
+      "surface",
+      "warning",
+      "subtle"
     ]
   },
   {
-    value: "#c3daef",
+    value: "#fff4b4",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#c3daef",
+      value: "{colors.yellow.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-4",
+    name: "--fds-semantic-surface-warning-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "4"
+      "semantic",
+      "surface",
+      "warning",
+      "subtle-hover"
     ]
   },
   {
-    value: "#a4c7e6",
+    value: "#fff4b4",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#a4c7e6",
+      value: "{colors.yellow.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-5",
+    name: "--fds-semantic-surface-warning-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "5"
+      "semantic",
+      "surface",
+      "warning",
+      "default"
     ]
   },
   {
-    value: "#aecde9",
+    value: "#ffed83",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#aecde9",
+      value: "{colors.yellow.300}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-6",
+    name: "--fds-semantic-surface-warning-default-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "6"
+      "semantic",
+      "surface",
+      "warning",
+      "default-hover"
     ]
   },
   {
-    value: "#4b90ce",
+    value: "#f9d5db",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#4b90ce",
+      value: "{colors.red.100}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-7",
+    name: "--fds-semantic-surface-danger-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "7"
+      "semantic",
+      "surface",
+      "danger",
+      "subtle"
     ]
   },
   {
-    value: "#00529d",
+    value: "#f3abb6",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#00529d",
+      value: "{colors.red.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-8",
+    name: "--fds-semantic-surface-danger-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "8"
+      "semantic",
+      "surface",
+      "danger",
+      "subtle-hover"
     ]
   },
   {
-    value: "#0163ba",
+    value: "#e02e49",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#0163ba",
+      value: "{colors.red.500}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-9",
+    name: "--fds-semantic-surface-danger-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "9"
+      "semantic",
+      "surface",
+      "danger",
+      "default"
     ]
   },
   {
-    value: "#004d93",
+    value: "#b3253a",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#004d93",
+      value: "{colors.red.600}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-10",
+    name: "--fds-semantic-surface-danger-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "10"
+      "semantic",
+      "surface",
+      "danger",
+      "hover"
     ]
   },
   {
-    value: "#00396d",
+    value: "#861c2c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#00396d",
+      value: "{colors.red.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-11",
+    name: "--fds-semantic-surface-danger-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "11"
+      "semantic",
+      "surface",
+      "danger",
+      "active"
     ]
   },
   {
-    value: "#005099",
+    value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#005099",
+      value: "{colors.white}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-12",
+    name: "--fds-semantic-surface-danger-no_fill",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "12"
+      "semantic",
+      "surface",
+      "danger",
+      "no_fill"
     ]
   },
   {
-    value: "#00315c",
+    value: "#f9d5db",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#00315c",
+      value: "{colors.red.100}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-13",
+    name: "--fds-semantic-surface-danger-no_fill-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "13"
+      "semantic",
+      "surface",
+      "danger",
+      "no_fill-hover"
     ]
   },
   {
-    value: "#f6fafd",
+    value: "#f3abb6",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#f6fafd",
+      value: "{colors.red.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-contrast-1",
+    name: "--fds-semantic-surface-danger-no_fill-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "contrast-1"
+      "semantic",
+      "surface",
+      "danger",
+      "no_fill-active"
     ]
   },
   {
-    value: "#ddeaf6",
+    value: "#e6eff8",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#ddeaf6",
+      value: "{colors.blue.100}",
       type: "color"
     },
-    name: "--fds-themes-theme3-accent-contrast-2",
+    name: "--fds-semantic-surface-info-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "accent",
-      "contrast-2"
+      "semantic",
+      "surface",
+      "info",
+      "subtle"
     ]
   },
   {
-    value: "#fffefe",
+    value: "#b3d0ea",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#fffefe",
+      value: "{colors.blue.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-1",
+    name: "--fds-semantic-surface-info-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "1"
+      "semantic",
+      "surface",
+      "info",
+      "subtle-hover"
     ]
   },
   {
-    value: "#fef0f1",
+    value: "#ffda06",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#fef0f1",
+      value: "{colors.yellow.500}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-2",
+    name: "--fds-semantic-surface-focus-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "2"
+      "semantic",
+      "surface",
+      "focus",
+      "default"
     ]
   },
   {
-    value: "#fde5e6",
+    value: "#5c61d2",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#fde5e6",
+      value: "{brand.alt1.600}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-3",
+    name: "--fds-semantic-border-first-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "3"
+      "semantic",
+      "border",
+      "first",
+      "default"
     ]
   },
   {
-    value: "#fbcccd",
+    value: "#3339c6",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#fbcccd",
+      value: "{brand.alt1.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-4",
+    name: "--fds-semantic-border-first-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "4"
+      "semantic",
+      "border",
+      "first",
+      "hover"
     ]
   },
   {
-    value: "#fab1b3",
+    value: "#0008b8",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#fab1b3",
+      value: "{brand.alt1.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-5",
+    name: "--fds-semantic-border-first-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "5"
+      "semantic",
+      "border",
+      "first",
+      "active"
     ]
   },
   {
-    value: "#fab8b9",
+    value: "#ffa869",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#fab8b9",
+      value: "{brand.alt2.600}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-6",
+    name: "--fds-semantic-border-second-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "6"
+      "semantic",
+      "border",
+      "second",
+      "default"
     ]
   },
   {
-    value: "#eb5b5f",
+    value: "#e6975f",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#eb5b5f",
+      value: "{brand.alt2.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-7",
+    name: "--fds-semantic-border-second-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "7"
+      "semantic",
+      "border",
+      "second",
+      "hover"
     ]
   },
   {
-    value: "#8b3639",
+    value: "#b3764a",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#8b3639",
+      value: "{brand.alt2.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-8",
+    name: "--fds-semantic-border-second-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "8"
+      "semantic",
+      "border",
+      "second",
+      "active"
     ]
   },
   {
-    value: "#f35f63",
+    value: "#5ca28f",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#f35f63",
+      value: "{brand.alt3.600}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-9",
+    name: "--fds-semantic-border-third-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "9"
+      "semantic",
+      "border",
+      "third",
+      "default"
     ]
   },
   {
-    value: "#cc5053",
+    value: "#4c907e",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#cc5053",
+      value: "{brand.alt3.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-10",
+    name: "--fds-semantic-border-third-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "10"
+      "semantic",
+      "border",
+      "third",
+      "hover"
     ]
   },
   {
-    value: "#a84144",
+    value: "#407d6d",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#a84144",
+      value: "{brand.alt3.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-11",
+    name: "--fds-semantic-border-third-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "11"
+      "semantic",
+      "border",
+      "third",
+      "active"
     ]
   },
   {
-    value: "#873537",
+    value: "#b3d0ea",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#873537",
+      value: "{colors.blue.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-12",
+    name: "--fds-semantic-border-action-first-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "12"
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "subtle"
     ]
   },
   {
-    value: "#522021",
+    value: "#66a1d6",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#522021",
+      value: "{colors.blue.400}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-13",
+    name: "--fds-semantic-border-action-first-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "13"
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "subtle-hover"
     ]
   },
   {
-    value: "#f6fafd",
+    value: "#0062ba",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#f6fafd",
+      value: "{colors.blue.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-contrast-1",
+    name: "--fds-semantic-border-action-first-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "contrast-1"
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "default"
     ]
   },
   {
-    value: "#ddeaf6",
+    value: "#004e95",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#ddeaf6",
+      value: "{colors.blue.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand1-contrast-2",
+    name: "--fds-semantic-border-action-first-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand1",
-      "contrast-2"
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "hover"
     ]
   },
   {
-    value: "#fffefc",
+    value: "#00315d",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#fffefc",
+      value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-themes-theme3-brand2-1",
+    name: "--fds-semantic-border-action-first-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf3e0",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f8e9c6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f8e9c6",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d48d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f2d48d",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#ebbe54",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ebbe54",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#664c0e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#664c0e",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fdfeff",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eaf6fe",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#d9eefd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d9eefd",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#b3dcfc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b3dcfc",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#8bcafa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8bcafa",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#96cffa",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1c90e8",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105387",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#105387",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-neutral-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f3f4f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme3-neutral-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "2"
+      "semantic",
+      "border",
+      "action",
+      "first",
+      "active"
     ]
   },
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#e9eaec",
+      value: "{colors.grey.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-3",
+    name: "--fds-semantic-border-action-second-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "3"
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "subtle"
     ]
   },
   {
-    value: "#d5d7da",
+    value: "#d2d5d8",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#d5d7da",
+      value: "{colors.grey.300}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-4",
+    name: "--fds-semantic-border-action-second-subtle-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "4"
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "subtle-hover"
     ]
   },
   {
-    value: "#c1c4c9",
+    value: "#00315d",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#c1c4c9",
+      value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-5",
+    name: "--fds-semantic-border-action-second-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "5"
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "default"
     ]
   },
   {
-    value: "#c6c9cd",
+    value: "#00315d",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#c6c9cd",
+      value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-6",
+    name: "--fds-semantic-border-action-second-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "6"
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "hover"
     ]
   },
   {
-    value: "#858c96",
+    value: "#00315d",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#858c96",
+      value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-7",
+    name: "--fds-semantic-border-action-second-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "7"
+      "semantic",
+      "border",
+      "action",
+      "second",
+      "active"
     ]
   },
   {
-    value: "#495361",
+    value: "#b3d0ea",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#495361",
+      value: "{colors.blue.200}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-8",
+    name: "--fds-semantic-border-action-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
+      "semantic",
+      "border",
+      "action",
+      "subtle"
+    ]
+  },
+  {
+    value: "#66a1d6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.400}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-action-subtle-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "subtle-hover"
+    ]
+  },
+  {
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-action-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "default"
+    ]
+  },
+  {
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-action-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "hover"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-action-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "active"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-action-strong",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "strong"
+    ]
+  },
+  {
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-action-strong-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "action",
+      "strong-hover"
+    ]
+  },
+  {
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-info-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "info",
+      "default"
+    ]
+  },
+  {
+    value: "#68707c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.600}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-neutral-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
       "neutral",
-      "8"
+      "default"
+    ]
+  },
+  {
+    value: "#d2d5d8",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.300}",
+      type: "color"
+    },
+    name: "--fds-semantic-border-neutral-subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "border",
+      "neutral",
+      "subtle"
     ]
   },
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#1e2b3c",
+      value: "{colors.grey.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-9",
+    name: "--fds-semantic-border-neutral-strong",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
+      "semantic",
+      "border",
       "neutral",
-      "9"
+      "strong"
     ]
   },
   {
-    value: "#333e4e",
+    value: "#118849",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#333e4e",
+      value: "{colors.green.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-10",
+    name: "--fds-semantic-border-success-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "10"
+      "semantic",
+      "border",
+      "success",
+      "default"
     ]
   },
   {
-    value: "#495361",
+    value: "#0c6536",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#495361",
+      value: "{colors.green.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-11",
+    name: "--fds-semantic-border-success-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "11"
+      "semantic",
+      "border",
+      "success",
+      "hover"
     ]
   },
   {
-    value: "#46505e",
+    value: "#084826",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#46505e",
+      value: "{colors.green.900}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-12",
+    name: "--fds-semantic-border-success-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "12"
+      "semantic",
+      "border",
+      "success",
+      "active"
     ]
   },
   {
-    value: "#243142",
+    value: "#cc7005",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#243142",
+      value: "{colors.orange.600}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-13",
+    name: "--fds-semantic-border-warning-default",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "13"
+      "semantic",
+      "border",
+      "warning",
+      "default"
     ]
   },
   {
-    value: "#f9f9fa",
+    value: "#995404",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#f9f9fa",
+      value: "{colors.orange.700}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-contrast-1",
+    name: "--fds-semantic-border-warning-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "contrast-1"
+      "semantic",
+      "border",
+      "warning",
+      "hover"
     ]
   },
   {
-    value: "#9ea3ab",
+    value: "#663802",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#9ea3ab",
+      value: "{colors.orange.800}",
       type: "color"
     },
-    name: "--fds-themes-theme3-neutral-contrast-2",
+    name: "--fds-semantic-border-warning-active",
     attributes: {},
     path: [
-      "themes",
-      "theme3",
-      "neutral",
-      "contrast-2"
+      "semantic",
+      "border",
+      "warning",
+      "active"
     ]
   },
   {
-    value: "#fefeff",
+    value: "#e02e49",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#fefeff",
+      value: "{colors.red.500}",
       type: "color"
     },
-    name: "--fds-themes-theme4-accent-1",
+    name: "--fds-semantic-border-danger-default",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "accent",
-      "1"
+      "semantic",
+      "border",
+      "danger",
+      "default"
     ]
   },
   {
-    value: "#eef4fa",
+    value: "#b3253a",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#eef4fa",
+      value: "{colors.red.600}",
       type: "color"
     },
-    name: "--fds-themes-theme4-accent-2",
+    name: "--fds-semantic-border-danger-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "accent",
-      "2"
+      "semantic",
+      "border",
+      "danger",
+      "hover"
     ]
   },
   {
-    value: "#e2edf7",
+    value: "#861c2c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#e2edf7",
+      value: "{colors.red.700}",
       type: "color"
     },
-    name: "--fds-themes-theme4-accent-3",
+    name: "--fds-semantic-border-danger-active",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "accent",
-      "3"
+      "semantic",
+      "border",
+      "danger",
+      "active"
     ]
   },
   {
-    value: "#c3daef",
+    value: "#ffda06",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#c3daef",
+      value: "{colors.yellow.500}",
       type: "color"
     },
-    name: "--fds-themes-theme4-accent-4",
+    name: "--fds-semantic-border-focus-outline",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "accent",
-      "4"
-    ]
-  },
-  {
-    value: "#a4c7e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a4c7e6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "5"
-    ]
-  },
-  {
-    value: "#aecde9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "7"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00529d",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "8"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0163ba",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "9"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "10"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00396d",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "11"
-    ]
-  },
-  {
-    value: "#005099",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#005099",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "12"
-    ]
-  },
-  {
-    value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#00315c",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-accent-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "accent",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fde5e6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fde5e6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbcccd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbcccd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#fab1b3",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fab1b3",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#873537",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#873537",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fffefc",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fbf3e0",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f8e9c6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f8e9c6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f2d48d",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f2d48d",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#ebbe54",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ebbe54",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#664c0e",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#664c0e",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fdfeff",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#eaf6fe",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#d9eefd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d9eefd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#b3dcfc",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#b3dcfc",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#8bcafa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#8bcafa",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#96cffa",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1c90e8",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-9",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-10",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-11",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105387",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#105387",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-12",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-13",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#fefefe",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-1",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#f3f4f5",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-2",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "2"
-    ]
-  },
-  {
-    value: "#e9eaec",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#e9eaec",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-3",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "3"
-    ]
-  },
-  {
-    value: "#d5d7da",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#d5d7da",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-4",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "4"
-    ]
-  },
-  {
-    value: "#c1c4c9",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c1c4c9",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-5",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-6",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-7",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-themes-theme4-neutral-8",
-    attributes: {},
-    path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "8"
+      "semantic",
+      "border",
+      "focus",
+      "outline"
     ]
   },
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#1e2b3c",
+      value: "{semantic.border.neutral.strong}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-9",
+    name: "--fds-semantic-border-focus-boxshadow",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "9"
+      "semantic",
+      "border",
+      "focus",
+      "boxshadow"
     ]
   },
   {
-    value: "#333e4e",
+    value: "#00315d",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#333e4e",
+      value: "{colors.blue.900}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-10",
+    name: "--fds-semantic-border-input-default",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "10"
+      "semantic",
+      "border",
+      "input",
+      "default"
     ]
   },
   {
-    value: "#495361",
+    value: "#0062ba",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#495361",
+      value: "{colors.blue.700}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-11",
+    name: "--fds-semantic-border-input-hover",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "11"
+      "semantic",
+      "border",
+      "input",
+      "hover"
     ]
   },
   {
-    value: "#46505e",
+    value: "#bcbfc5",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#46505e",
+      value: "{colors.grey.400}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-12",
+    name: "--fds-semantic-border-divider-default",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "12"
+      "semantic",
+      "border",
+      "divider",
+      "default"
     ]
   },
   {
-    value: "#243142",
+    value: "#d2d5d8",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#243142",
+      value: "{colors.grey.300}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-13",
+    name: "--fds-semantic-border-divider-subtle",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "13"
+      "semantic",
+      "border",
+      "divider",
+      "subtle"
     ]
   },
   {
-    value: "#f9f9fa",
+    value: "#68707c",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
     original: {
-      value: "#f9f9fa",
+      value: "{colors.grey.600}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-contrast-1",
+    name: "--fds-semantic-border-divider-strong",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
-      "neutral",
-      "contrast-1"
+      "semantic",
+      "border",
+      "divider",
+      "strong"
     ]
   },
   {
-    value: "#9ea3ab",
+    value: "#0062ba",
     type: "color",
-    filePath: "../../design-tokens/core/modes/light.json",
-    isSource: true,
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
     original: {
-      value: "#9ea3ab",
+      value: "{colors.blue.700}",
       type: "color"
     },
-    name: "--fds-themes-theme4-neutral-contrast-2",
+    name: "--fds-semantic-text-action-first-default",
     attributes: {},
     path: [
-      "themes",
-      "theme4",
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "default"
+    ]
+  },
+  {
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "#004e95",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-first-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "hover"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "#00315d",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-first-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-first-on_action",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "first",
+      "on_action"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-second-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "default"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-second-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "hover"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-second-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Brand/Tilsynet.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-second-on_action",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "second",
+      "on_action"
+    ]
+  },
+  {
+    value: "#0062ba",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "default"
+    ]
+  },
+  {
+    value: "#004e95",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "hover"
+    ]
+  },
+  {
+    value: "#00315d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.blue.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-action-on_action",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "action",
+      "on_action"
+    ]
+  },
+  {
+    value: "#0c6536",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.green.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-success-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "default"
+    ]
+  },
+  {
+    value: "#084826",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.green.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-success-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "hover"
+    ]
+  },
+  {
+    value: "#084826",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.green.900}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-success-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-success-on_success",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "on_success"
+    ]
+  },
+  {
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-success-on_success_subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "success",
+      "on_success_subtle"
+    ]
+  },
+  {
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-neutral-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
       "neutral",
-      "contrast-2"
+      "default"
+    ]
+  },
+  {
+    value: "#4b5563",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-neutral-subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "neutral",
+      "subtle"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-neutral-on_inverted",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "neutral",
+      "on_inverted"
+    ]
+  },
+  {
+    value: "#995404",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.orange.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-warning-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "warning",
+      "default"
+    ]
+  },
+  {
+    value: "#cc7005",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.orange.600}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-warning-icon_warning",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "warning",
+      "icon_warning"
+    ]
+  },
+  {
+    value: "#663802",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.orange.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-warning-on_warning",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "warning",
+      "on_warning"
+    ]
+  },
+  {
+    value: "#b3253a",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.red.600}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "default"
+    ]
+  },
+  {
+    value: "#861c2c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.red.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-hover",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "hover"
+    ]
+  },
+  {
+    value: "#5a121d",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.red.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-active",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "active"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-on_danger",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "on_danger"
+    ]
+  },
+  {
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.800}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-danger-on_danger_subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "danger",
+      "on_danger_subtle"
+    ]
+  },
+  {
+    value: "#7a1265",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.purple.700}",
+      type: "color"
+    },
+    name: "--fds-semantic-text-visited-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "text",
+      "visited",
+      "default"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.white}",
+      type: "color"
+    },
+    name: "--fds-semantic-background-default",
+    attributes: {},
+    path: [
+      "semantic",
+      "background",
+      "default"
+    ]
+  },
+  {
+    value: "#f4f5f6",
+    type: "color",
+    filePath: "../../design-tokens/Base/Semantic.json",
+    isSource: false,
+    original: {
+      value: "{colors.grey.100}",
+      type: "color"
+    },
+    name: "--fds-semantic-background-subtle",
+    attributes: {},
+    path: [
+      "semantic",
+      "background",
+      "subtle"
     ]
   }
-] 
+]
 
 export const  typography = [
   {
     value: "500 3.75rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10314,7 +3122,7 @@ export const  typography = [
     value: "500 3rem/1.3 'Inter'",
     type: "typography",
     description: "H1",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10338,7 +3146,7 @@ export const  typography = [
     value: "500 2.25rem/1.3 'Inter'",
     type: "typography",
     description: "H2",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10362,7 +3170,7 @@ export const  typography = [
     value: "500 1.875rem/1.3 'Inter'",
     type: "typography",
     description: "H3",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10386,7 +3194,7 @@ export const  typography = [
     value: "500 1.5rem/1.3 'Inter'",
     type: "typography",
     description: "H4",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10410,7 +3218,7 @@ export const  typography = [
     value: "500 1.3125rem/1.3 'Inter'",
     type: "typography",
     description: "H5",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10434,7 +3242,7 @@ export const  typography = [
     value: "500 1.125rem/1.3 'Inter'",
     type: "typography",
     description: "H6",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10457,7 +3265,7 @@ export const  typography = [
   {
     value: "400 1.875rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10479,7 +3287,7 @@ export const  typography = [
   {
     value: "400 1.5rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10501,7 +3309,7 @@ export const  typography = [
   {
     value: "400 1.3125rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10523,7 +3331,7 @@ export const  typography = [
   {
     value: "400 1.125rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10545,7 +3353,7 @@ export const  typography = [
   {
     value: "400 1.3125rem/1.5 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10567,7 +3375,7 @@ export const  typography = [
   {
     value: "400 1.125rem/1.5 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10589,7 +3397,7 @@ export const  typography = [
   {
     value: "400 1rem/1.5 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10611,7 +3419,7 @@ export const  typography = [
   {
     value: "400 0.875rem/1.5 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10633,7 +3441,7 @@ export const  typography = [
   {
     value: "400 1.3125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10656,7 +3464,7 @@ export const  typography = [
   {
     value: "400 1.125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10679,7 +3487,7 @@ export const  typography = [
   {
     value: "400 1rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10702,7 +3510,7 @@ export const  typography = [
   {
     value: "400 0.875rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10725,7 +3533,7 @@ export const  typography = [
   {
     value: "400 1.125rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10748,7 +3556,7 @@ export const  typography = [
   {
     value: "400 1rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10771,7 +3579,7 @@ export const  typography = [
   {
     value: "400 0.875rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10794,7 +3602,7 @@ export const  typography = [
   {
     value: "400 0.8125rem/1.7 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10817,7 +3625,7 @@ export const  typography = [
   {
     value: "500 1.3125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10839,7 +3647,7 @@ export const  typography = [
   {
     value: "500 1.125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10861,7 +3669,7 @@ export const  typography = [
   {
     value: "500 1rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10883,7 +3691,7 @@ export const  typography = [
   {
     value: "500 0.875rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10905,7 +3713,7 @@ export const  typography = [
   {
     value: "400 1.3125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10927,7 +3735,7 @@ export const  typography = [
   {
     value: "400 1.125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10949,7 +3757,7 @@ export const  typography = [
   {
     value: "400 1rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10971,7 +3779,7 @@ export const  typography = [
   {
     value: "400 0.875rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -10993,7 +3801,7 @@ export const  typography = [
   {
     value: "400 1.5rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -11015,7 +3823,7 @@ export const  typography = [
   {
     value: "400 1.125rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -11037,7 +3845,7 @@ export const  typography = [
   {
     value: "400 1rem/1.3 'Inter'",
     type: "typography",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: {
@@ -11056,13 +3864,13 @@ export const  typography = [
       "small"
     ]
   }
-] 
+]
 
 export const  opacity = [
   {
     value: "30%",
     type: "opacity",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "30%",
@@ -11075,13 +3883,13 @@ export const  opacity = [
       "disabled"
     ]
   }
-] 
+]
 
 export const  borderRadius = [
   {
     value: "4px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{border_radius.medium}",
@@ -11097,7 +3905,7 @@ export const  borderRadius = [
   {
     value: "2px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "2px",
@@ -11113,7 +3921,7 @@ export const  borderRadius = [
   {
     value: "4px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "4px",
@@ -11129,7 +3937,7 @@ export const  borderRadius = [
   {
     value: "8px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "8px",
@@ -11145,7 +3953,7 @@ export const  borderRadius = [
   {
     value: "12px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "12px",
@@ -11161,7 +3969,7 @@ export const  borderRadius = [
   {
     value: "16px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "16px",
@@ -11177,7 +3985,7 @@ export const  borderRadius = [
   {
     value: "24px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "24px",
@@ -11193,7 +4001,7 @@ export const  borderRadius = [
   {
     value: "32px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "32px",
@@ -11209,7 +4017,7 @@ export const  borderRadius = [
   {
     value: "9999px",
     type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "9999px",
@@ -11222,16 +4030,16 @@ export const  borderRadius = [
       "full"
     ]
   }
-] 
+]
 
 export const  spacing = [
   {
     value: "0",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*0",
+      value: "{base_sizing}*0",
       type: "spacing"
     },
     name: "--fds-spacing-0",
@@ -11244,10 +4052,10 @@ export const  spacing = [
   {
     value: "0.25rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*1",
+      value: "{base_sizing}*1",
       type: "spacing"
     },
     name: "--fds-spacing-1",
@@ -11260,10 +4068,10 @@ export const  spacing = [
   {
     value: "0.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*2",
+      value: "{base_sizing}*2",
       type: "spacing"
     },
     name: "--fds-spacing-2",
@@ -11276,10 +4084,10 @@ export const  spacing = [
   {
     value: "0.75rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*3",
+      value: "{base_sizing}*3",
       type: "spacing"
     },
     name: "--fds-spacing-3",
@@ -11292,10 +4100,10 @@ export const  spacing = [
   {
     value: "1rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*4",
+      value: "{base_sizing}*4",
       type: "spacing"
     },
     name: "--fds-spacing-4",
@@ -11308,10 +4116,10 @@ export const  spacing = [
   {
     value: "1.25rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*5",
+      value: "{base_sizing}*5",
       type: "spacing"
     },
     name: "--fds-spacing-5",
@@ -11324,10 +4132,10 @@ export const  spacing = [
   {
     value: "1.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*6",
+      value: "{base_sizing}*6",
       type: "spacing"
     },
     name: "--fds-spacing-6",
@@ -11340,10 +4148,10 @@ export const  spacing = [
   {
     value: "1.75rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*7",
+      value: "{base_sizing}*7",
       type: "spacing"
     },
     name: "--fds-spacing-7",
@@ -11356,10 +4164,10 @@ export const  spacing = [
   {
     value: "2rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*8",
+      value: "{base_sizing}*8",
       type: "spacing"
     },
     name: "--fds-spacing-8",
@@ -11372,10 +4180,10 @@ export const  spacing = [
   {
     value: "2.25rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*9",
+      value: "{base_sizing}*9",
       type: "spacing"
     },
     name: "--fds-spacing-9",
@@ -11388,10 +4196,10 @@ export const  spacing = [
   {
     value: "2.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*10",
+      value: "{base_sizing}*10",
       type: "spacing"
     },
     name: "--fds-spacing-10",
@@ -11404,10 +4212,10 @@ export const  spacing = [
   {
     value: "2.75rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*11",
+      value: "{base_sizing}*11",
       type: "spacing"
     },
     name: "--fds-spacing-11",
@@ -11420,10 +4228,10 @@ export const  spacing = [
   {
     value: "3rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*12",
+      value: "{base_sizing}*12",
       type: "spacing"
     },
     name: "--fds-spacing-12",
@@ -11436,10 +4244,10 @@ export const  spacing = [
   {
     value: "3.25rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*13",
+      value: "{base_sizing}*13",
       type: "spacing"
     },
     name: "--fds-spacing-13",
@@ -11452,10 +4260,10 @@ export const  spacing = [
   {
     value: "3.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*14",
+      value: "{base_sizing}*14",
       type: "spacing"
     },
     name: "--fds-spacing-14",
@@ -11468,10 +4276,10 @@ export const  spacing = [
   {
     value: "3.75rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*15",
+      value: "{base_sizing}*15",
       type: "spacing"
     },
     name: "--fds-spacing-15",
@@ -11484,10 +4292,10 @@ export const  spacing = [
   {
     value: "4.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*18",
+      value: "{base_sizing}*18",
       type: "spacing"
     },
     name: "--fds-spacing-18",
@@ -11500,10 +4308,10 @@ export const  spacing = [
   {
     value: "5.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*22",
+      value: "{base_sizing}*22",
       type: "spacing"
     },
     name: "--fds-spacing-22",
@@ -11516,10 +4324,10 @@ export const  spacing = [
   {
     value: "6.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*26",
+      value: "{base_sizing}*26",
       type: "spacing"
     },
     name: "--fds-spacing-26",
@@ -11532,10 +4340,10 @@ export const  spacing = [
   {
     value: "7.5rem",
     type: "spacing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*30",
+      value: "{base_sizing}*30",
       type: "spacing"
     },
     name: "--fds-spacing-30",
@@ -11545,16 +4353,16 @@ export const  spacing = [
       "30"
     ]
   }
-] 
+]
 
 export const  sizing = [
   {
     value: "0",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*0",
+      value: "{base_sizing}*0",
       type: "sizing"
     },
     name: "--fds-sizing-0",
@@ -11567,10 +4375,10 @@ export const  sizing = [
   {
     value: "0.25rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*1",
+      value: "{base_sizing}*1",
       type: "sizing"
     },
     name: "--fds-sizing-1",
@@ -11583,10 +4391,10 @@ export const  sizing = [
   {
     value: "0.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*2",
+      value: "{base_sizing}*2",
       type: "sizing"
     },
     name: "--fds-sizing-2",
@@ -11599,10 +4407,10 @@ export const  sizing = [
   {
     value: "0.75rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*3",
+      value: "{base_sizing}*3",
       type: "sizing"
     },
     name: "--fds-sizing-3",
@@ -11615,10 +4423,10 @@ export const  sizing = [
   {
     value: "1rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*4",
+      value: "{base_sizing}*4",
       type: "sizing"
     },
     name: "--fds-sizing-4",
@@ -11631,10 +4439,10 @@ export const  sizing = [
   {
     value: "1.25rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*5",
+      value: "{base_sizing}*5",
       type: "sizing"
     },
     name: "--fds-sizing-5",
@@ -11647,10 +4455,10 @@ export const  sizing = [
   {
     value: "1.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*6",
+      value: "{base_sizing}*6",
       type: "sizing"
     },
     name: "--fds-sizing-6",
@@ -11663,10 +4471,10 @@ export const  sizing = [
   {
     value: "1.75rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*7",
+      value: "{base_sizing}*7",
       type: "sizing"
     },
     name: "--fds-sizing-7",
@@ -11679,10 +4487,10 @@ export const  sizing = [
   {
     value: "2rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*8",
+      value: "{base_sizing}*8",
       type: "sizing"
     },
     name: "--fds-sizing-8",
@@ -11695,10 +4503,10 @@ export const  sizing = [
   {
     value: "2.25rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*9",
+      value: "{base_sizing}*9",
       type: "sizing"
     },
     name: "--fds-sizing-9",
@@ -11711,10 +4519,10 @@ export const  sizing = [
   {
     value: "2.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*10",
+      value: "{base_sizing}*10",
       type: "sizing"
     },
     name: "--fds-sizing-10",
@@ -11727,10 +4535,10 @@ export const  sizing = [
   {
     value: "2.75rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*11",
+      value: "{base_sizing}*11",
       type: "sizing"
     },
     name: "--fds-sizing-11",
@@ -11743,10 +4551,10 @@ export const  sizing = [
   {
     value: "3rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*12",
+      value: "{base_sizing}*12",
       type: "sizing"
     },
     name: "--fds-sizing-12",
@@ -11759,10 +4567,10 @@ export const  sizing = [
   {
     value: "3.25rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*13",
+      value: "{base_sizing}*13",
       type: "sizing"
     },
     name: "--fds-sizing-13",
@@ -11775,10 +4583,10 @@ export const  sizing = [
   {
     value: "3.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*14",
+      value: "{base_sizing}*14",
       type: "sizing"
     },
     name: "--fds-sizing-14",
@@ -11791,10 +4599,10 @@ export const  sizing = [
   {
     value: "3.75rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*15",
+      value: "{base_sizing}*15",
       type: "sizing"
     },
     name: "--fds-sizing-15",
@@ -11807,10 +4615,10 @@ export const  sizing = [
   {
     value: "4.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*18",
+      value: "{base_sizing}*18",
       type: "sizing"
     },
     name: "--fds-sizing-18",
@@ -11823,10 +4631,10 @@ export const  sizing = [
   {
     value: "5.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*22",
+      value: "{base_sizing}*22",
       type: "sizing"
     },
     name: "--fds-sizing-22",
@@ -11839,10 +4647,10 @@ export const  sizing = [
   {
     value: "6.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*26",
+      value: "{base_sizing}*26",
       type: "sizing"
     },
     name: "--fds-sizing-26",
@@ -11855,10 +4663,10 @@ export const  sizing = [
   {
     value: "7.5rem",
     type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
-      value: "{base}*30",
+      value: "{base_sizing}*30",
       type: "sizing"
     },
     name: "--fds-sizing-30",
@@ -11867,63 +4675,14 @@ export const  sizing = [
       "sizing",
       "30"
     ]
-  },
-  {
-    value: "4",
-    type: "sizing",
-    description: "4px",
-    filePath: "../../design-tokens/core/size/default.json",
-    isSource: true,
-    original: {
-      value: "4",
-      type: "sizing",
-      description: "4px"
-    },
-    name: "--fds-base",
-    attributes: {},
-    path: [
-      "base"
-    ]
   }
-] 
+]
 
 export const  borderWidth = [
   {
     value: "1px",
     type: "borderWidth",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: "1px",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-1",
-    attributes: {},
-    path: [
-      "border_width",
-      "1"
-    ]
-  },
-  {
-    value: "2px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: "2px",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-2",
-    attributes: {},
-    path: [
-      "border_width",
-      "2"
-    ]
-  },
-  {
-    value: "1px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{border_width.1}",
@@ -11939,7 +4698,7 @@ export const  borderWidth = [
   {
     value: "2px",
     type: "borderWidth",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{border_width.2}",
@@ -11955,7 +4714,7 @@ export const  borderWidth = [
   {
     value: "2px",
     type: "borderWidth",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "2px",
@@ -11968,210 +4727,13 @@ export const  borderWidth = [
       "tab_focus"
     ]
   }
-] 
+]
 
 export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.16)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "1",
-          blur: "2",
-          spread: "0",
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-100",
-    attributes: {},
-    path: [
-      "shadow",
-      "100"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.15)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow",
-          x: "0",
-          y: "1",
-          blur: "2",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "2",
-          blur: "4",
-          spread: "0",
-          color: "rgba(0,0,0,0.1)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-200",
-    attributes: {},
-    path: [
-      "shadow",
-      "200"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.14)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow",
-          x: "0",
-          y: "2",
-          blur: "4",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "4",
-          blur: "8",
-          spread: "0",
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-300",
-    attributes: {},
-    path: [
-      "shadow",
-      "300"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.13)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.13)",
-          type: "dropShadow",
-          x: "0",
-          y: "3",
-          blur: "5",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "6",
-          blur: "12",
-          spread: "0",
-          color: "rgba(0,0,0,0.14)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-400",
-    attributes: {},
-    path: [
-      "shadow",
-      "400"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/styles/default.json",
-    isSource: true,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.16)",
-          type: "dropShadow",
-          x: "0",
-          y: "4",
-          blur: "8",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "12",
-          blur: "24",
-          spread: "0",
-          color: "rgba(0,0,0,0.16)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-500",
-    attributes: {},
-    path: [
-      "shadow",
-      "500"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{shadow.100}",
@@ -12187,7 +4749,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{shadow.200}",
@@ -12203,7 +4765,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{shadow.300}",
@@ -12219,7 +4781,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{shadow.400}",
@@ -12235,7 +4797,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/Base/Semantic.json",
     isSource: false,
     original: {
       value: "{shadow.500}",
@@ -12248,422 +4810,4 @@ export const  boxShadow = [
       "xlarge"
     ]
   }
-] 
-
-export const  textCase = [
-  {
-    value: "none",
-    type: "textCase",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "none",
-      type: "textCase"
-    },
-    name: "--fds-text-case-none",
-    attributes: {},
-    path: [
-      "textCase",
-      "none"
-    ]
-  }
-] 
-
-export const  textDecoration = [
-  {
-    value: "none",
-    type: "textDecoration",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "none",
-      type: "textDecoration"
-    },
-    name: "--fds-text-decoration-none",
-    attributes: {},
-    path: [
-      "textDecoration",
-      "none"
-    ]
-  },
-  {
-    value: "underline",
-    type: "textDecoration",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "underline",
-      type: "textDecoration"
-    },
-    name: "--fds-text-decoration-underline",
-    attributes: {},
-    path: [
-      "textDecoration",
-      "underline"
-    ]
-  }
-] 
-
-export const  fontSizes = [
-  {
-    value: "16",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "16",
-      type: "fontSizes"
-    },
-    name: "--fds-font-static-small",
-    attributes: {},
-    path: [
-      "font-static",
-      "small"
-    ]
-  },
-  {
-    value: "18",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "18",
-      type: "fontSizes"
-    },
-    name: "--fds-font-static-medium",
-    attributes: {},
-    path: [
-      "font-static",
-      "medium"
-    ]
-  },
-  {
-    value: "24",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "24",
-      type: "fontSizes"
-    },
-    name: "--fds-font-static-large",
-    attributes: {},
-    path: [
-      "font-static",
-      "large"
-    ]
-  },
-  {
-    value: "12",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "12",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f-3",
-    attributes: {},
-    path: [
-      "font-size",
-      "f-3"
-    ]
-  },
-  {
-    value: "13",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "13",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f-2",
-    attributes: {},
-    path: [
-      "font-size",
-      "f-2"
-    ]
-  },
-  {
-    value: "14",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "14",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f-1",
-    attributes: {},
-    path: [
-      "font-size",
-      "f-1"
-    ]
-  },
-  {
-    value: "16",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "16",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f0",
-    attributes: {},
-    path: [
-      "font-size",
-      "f0"
-    ]
-  },
-  {
-    value: "18",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "18",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f1",
-    attributes: {},
-    path: [
-      "font-size",
-      "f1"
-    ]
-  },
-  {
-    value: "21",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "21",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f2",
-    attributes: {},
-    path: [
-      "font-size",
-      "f2"
-    ]
-  },
-  {
-    value: "24",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "24",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f3",
-    attributes: {},
-    path: [
-      "font-size",
-      "f3"
-    ]
-  },
-  {
-    value: "30",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "30",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f4",
-    attributes: {},
-    path: [
-      "font-size",
-      "f4"
-    ]
-  },
-  {
-    value: "36",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "36",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f5",
-    attributes: {},
-    path: [
-      "font-size",
-      "f5"
-    ]
-  },
-  {
-    value: "48",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "48",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f6",
-    attributes: {},
-    path: [
-      "font-size",
-      "f6"
-    ]
-  },
-  {
-    value: "60",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "60",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f7",
-    attributes: {},
-    path: [
-      "font-size",
-      "f7"
-    ]
-  }
-] 
-
-export const  lineHeights = [
-  {
-    value: 1.3,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "130%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-300",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "300"
-    ]
-  },
-  {
-    value: 1.5,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "150%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-500",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "500"
-    ]
-  },
-  {
-    value: 1.6,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "160%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-600",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "600"
-    ]
-  },
-  {
-    value: 1.7,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "170%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-700",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "700"
-    ]
-  }
-] 
-
-export const  fontWeights = [
-  {
-    value: "500",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "500",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-medium",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "medium"
-    ]
-  },
-  {
-    value: "600",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "600",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-semibold",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "semibold"
-    ]
-  },
-  {
-    value: "400",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "400",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-regular",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "regular"
-    ]
-  }
-] 
-
-export const  fontFamilies = [
-  {
-    value: "Inter",
-    type: "fontFamilies",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: true,
-    original: {
-      value: "Inter",
-      type: "fontFamilies"
-    },
-    name: "--fds-font-families-main",
-    attributes: {},
-    path: [
-      "fontFamilies",
-      "main"
-    ]
-  }
-] 
+]
