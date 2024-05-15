@@ -1,25 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import classes from "./page.module.css";
 
-import { Header } from "./components/Header/Header";
-import { Scale } from "./components/Scale/Scale";
-import { ColorPicker } from "./components/ColorPicker/ColorPicker";
 import { useEffect, useState } from "react";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
-
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import { Container } from "react-bootstrap";
-import { mapTokens } from "@/utils/tokenMapping";
 import { ChevronDownIcon } from "@navikt/aksel-icons";
-import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
-
 import cn from "classnames";
 import { DropdownMenu } from "@digdir/designsystemet-react";
-import { Landing } from "./components/Previews/Landing/Landing";
-import { Components } from "./components/Previews/Components/Components";
+
+import { mapTokens } from "@/utils/tokenMapping";
 import { generateColorScale, setContrastOneColor } from "@/utils/themeUtils";
-import { modeType } from "@/types";
+import type { modeType } from "@/types";
+
+import { Landing } from "./components/Previews/Landing/Landing";
+import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
+import { Components } from "./components/Previews/Components/Components";
+import { ColorPicker } from "./components/ColorPicker/ColorPicker";
+import { Scale } from "./components/Scale/Scale";
+import { Header } from "./components/Header/Header";
+import classes from "./page.module.css";
 
 type previewModeType =
   | "dashboard"
@@ -53,7 +53,7 @@ export default function Home() {
   const copyToClipboard = (color: CssColor, type: string) => {
     const colorsFlat = generateColorScale(color, themeMode, "flat");
 
-    let obj = {};
+    const obj = {};
 
     for (let i = 0; i < colorsFlat.length; i++) {
       if (i === 0) {

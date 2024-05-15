@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import classes from "./Dashboard.module.css";
 import {
   HouseIcon,
   CogIcon,
@@ -12,7 +11,9 @@ import {
   TeddyBearIcon,
 } from "@navikt/aksel-icons";
 import cn from "classnames";
-import { Button, Heading, Paragraph, Tag } from "@digdir/designsystemet-react";
+import { Button, Heading, Paragraph } from "@digdir/designsystemet-react";
+
+import classes from "./Dashboard.module.css";
 import { ColorCard } from "./ColorCard/ColorCard";
 import { BarChartComponent } from "./BarChart/BarChart";
 import { AreaChartComponent } from "./AreaChart/AreaChart";
