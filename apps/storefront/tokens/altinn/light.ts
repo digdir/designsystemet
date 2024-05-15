@@ -8676,424 +8676,6 @@ export const  color = [
   }
 ] 
 
-export const  textCase = [
-  {
-    value: "none",
-    type: "textCase",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "none",
-      type: "textCase"
-    },
-    name: "--fds-text-case-none",
-    attributes: {},
-    path: [
-      "textCase",
-      "none"
-    ]
-  }
-] 
-
-export const  textDecoration = [
-  {
-    value: "none",
-    type: "textDecoration",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "none",
-      type: "textDecoration"
-    },
-    name: "--fds-text-decoration-none",
-    attributes: {},
-    path: [
-      "textDecoration",
-      "none"
-    ]
-  },
-  {
-    value: "underline",
-    type: "textDecoration",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "underline",
-      type: "textDecoration"
-    },
-    name: "--fds-text-decoration-underline",
-    attributes: {},
-    path: [
-      "textDecoration",
-      "underline"
-    ]
-  }
-] 
-
-export const  fontFamilies = [
-  {
-    value: "Inter",
-    type: "fontFamilies",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "Inter",
-      type: "fontFamilies"
-    },
-    name: "--fds-font-families-main",
-    attributes: {},
-    path: [
-      "fontFamilies",
-      "main"
-    ]
-  }
-] 
-
-export const  fontSizes = [
-  {
-    value: "16",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "16",
-      type: "fontSizes"
-    },
-    name: "--fds-font-static-small",
-    attributes: {},
-    path: [
-      "font-static",
-      "small"
-    ]
-  },
-  {
-    value: "18",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "18",
-      type: "fontSizes"
-    },
-    name: "--fds-font-static-medium",
-    attributes: {},
-    path: [
-      "font-static",
-      "medium"
-    ]
-  },
-  {
-    value: "24",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "24",
-      type: "fontSizes"
-    },
-    name: "--fds-font-static-large",
-    attributes: {},
-    path: [
-      "font-static",
-      "large"
-    ]
-  },
-  {
-    value: "12",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "12",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f-3",
-    attributes: {},
-    path: [
-      "font-size",
-      "f-3"
-    ]
-  },
-  {
-    value: "13",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "13",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f-2",
-    attributes: {},
-    path: [
-      "font-size",
-      "f-2"
-    ]
-  },
-  {
-    value: "14",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "14",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f-1",
-    attributes: {},
-    path: [
-      "font-size",
-      "f-1"
-    ]
-  },
-  {
-    value: "16",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "16",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f0",
-    attributes: {},
-    path: [
-      "font-size",
-      "f0"
-    ]
-  },
-  {
-    value: "18",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "18",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f1",
-    attributes: {},
-    path: [
-      "font-size",
-      "f1"
-    ]
-  },
-  {
-    value: "21",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "21",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f2",
-    attributes: {},
-    path: [
-      "font-size",
-      "f2"
-    ]
-  },
-  {
-    value: "24",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "24",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f3",
-    attributes: {},
-    path: [
-      "font-size",
-      "f3"
-    ]
-  },
-  {
-    value: "30",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "30",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f4",
-    attributes: {},
-    path: [
-      "font-size",
-      "f4"
-    ]
-  },
-  {
-    value: "36",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "36",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f5",
-    attributes: {},
-    path: [
-      "font-size",
-      "f5"
-    ]
-  },
-  {
-    value: "48",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "48",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f6",
-    attributes: {},
-    path: [
-      "font-size",
-      "f6"
-    ]
-  },
-  {
-    value: "60",
-    type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "60",
-      type: "fontSizes"
-    },
-    name: "--fds-font-size-f7",
-    attributes: {},
-    path: [
-      "font-size",
-      "f7"
-    ]
-  }
-] 
-
-export const  lineHeights = [
-  {
-    value: 1.3,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "130%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-300",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "300"
-    ]
-  },
-  {
-    value: 1.5,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "150%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-500",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "500"
-    ]
-  },
-  {
-    value: 1.6,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "160%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-600",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "600"
-    ]
-  },
-  {
-    value: 1.7,
-    type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "170%",
-      type: "lineHeights"
-    },
-    name: "--fds-line-heights-700",
-    attributes: {},
-    path: [
-      "lineHeights",
-      "700"
-    ]
-  }
-] 
-
-export const  fontWeights = [
-  {
-    value: "500",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "500",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-medium",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "medium"
-    ]
-  },
-  {
-    value: "600",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "600",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-semibold",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "semibold"
-    ]
-  },
-  {
-    value: "400",
-    type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
-    isSource: false,
-    original: {
-      value: "400",
-      type: "fontWeights"
-    },
-    name: "--fds-font-weights-regular",
-    attributes: {},
-    path: [
-      "fontWeights",
-      "regular"
-    ]
-  }
-] 
-
 export const  typography = [
   {
     value: "500 3.75rem/1.3 'Inter'",
@@ -11180,6 +10762,424 @@ export const  boxShadow = [
     path: [
       "shadow",
       "xlarge"
+    ]
+  }
+] 
+
+export const  textCase = [
+  {
+    value: "none",
+    type: "textCase",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "none",
+      type: "textCase"
+    },
+    name: "--fds-text-case-none",
+    attributes: {},
+    path: [
+      "textCase",
+      "none"
+    ]
+  }
+] 
+
+export const  textDecoration = [
+  {
+    value: "none",
+    type: "textDecoration",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "none",
+      type: "textDecoration"
+    },
+    name: "--fds-text-decoration-none",
+    attributes: {},
+    path: [
+      "textDecoration",
+      "none"
+    ]
+  },
+  {
+    value: "underline",
+    type: "textDecoration",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "underline",
+      type: "textDecoration"
+    },
+    name: "--fds-text-decoration-underline",
+    attributes: {},
+    path: [
+      "textDecoration",
+      "underline"
+    ]
+  }
+] 
+
+export const  fontFamilies = [
+  {
+    value: "Inter",
+    type: "fontFamilies",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "Inter",
+      type: "fontFamilies"
+    },
+    name: "--fds-font-families-main",
+    attributes: {},
+    path: [
+      "fontFamilies",
+      "main"
+    ]
+  }
+] 
+
+export const  fontSizes = [
+  {
+    value: "16",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "16",
+      type: "fontSizes"
+    },
+    name: "--fds-font-static-small",
+    attributes: {},
+    path: [
+      "font-static",
+      "small"
+    ]
+  },
+  {
+    value: "18",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "18",
+      type: "fontSizes"
+    },
+    name: "--fds-font-static-medium",
+    attributes: {},
+    path: [
+      "font-static",
+      "medium"
+    ]
+  },
+  {
+    value: "24",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "24",
+      type: "fontSizes"
+    },
+    name: "--fds-font-static-large",
+    attributes: {},
+    path: [
+      "font-static",
+      "large"
+    ]
+  },
+  {
+    value: "12",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "12",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f-3",
+    attributes: {},
+    path: [
+      "font-size",
+      "f-3"
+    ]
+  },
+  {
+    value: "13",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "13",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f-2",
+    attributes: {},
+    path: [
+      "font-size",
+      "f-2"
+    ]
+  },
+  {
+    value: "14",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "14",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f-1",
+    attributes: {},
+    path: [
+      "font-size",
+      "f-1"
+    ]
+  },
+  {
+    value: "16",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "16",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f0",
+    attributes: {},
+    path: [
+      "font-size",
+      "f0"
+    ]
+  },
+  {
+    value: "18",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "18",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f1",
+    attributes: {},
+    path: [
+      "font-size",
+      "f1"
+    ]
+  },
+  {
+    value: "21",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "21",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f2",
+    attributes: {},
+    path: [
+      "font-size",
+      "f2"
+    ]
+  },
+  {
+    value: "24",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "24",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f3",
+    attributes: {},
+    path: [
+      "font-size",
+      "f3"
+    ]
+  },
+  {
+    value: "30",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "30",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f4",
+    attributes: {},
+    path: [
+      "font-size",
+      "f4"
+    ]
+  },
+  {
+    value: "36",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "36",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f5",
+    attributes: {},
+    path: [
+      "font-size",
+      "f5"
+    ]
+  },
+  {
+    value: "48",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "48",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f6",
+    attributes: {},
+    path: [
+      "font-size",
+      "f6"
+    ]
+  },
+  {
+    value: "60",
+    type: "fontSizes",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "60",
+      type: "fontSizes"
+    },
+    name: "--fds-font-size-f7",
+    attributes: {},
+    path: [
+      "font-size",
+      "f7"
+    ]
+  }
+] 
+
+export const  lineHeights = [
+  {
+    value: 1.3,
+    type: "lineHeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "130%",
+      type: "lineHeights"
+    },
+    name: "--fds-line-heights-300",
+    attributes: {},
+    path: [
+      "lineHeights",
+      "300"
+    ]
+  },
+  {
+    value: 1.5,
+    type: "lineHeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "150%",
+      type: "lineHeights"
+    },
+    name: "--fds-line-heights-500",
+    attributes: {},
+    path: [
+      "lineHeights",
+      "500"
+    ]
+  },
+  {
+    value: 1.6,
+    type: "lineHeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "160%",
+      type: "lineHeights"
+    },
+    name: "--fds-line-heights-600",
+    attributes: {},
+    path: [
+      "lineHeights",
+      "600"
+    ]
+  },
+  {
+    value: 1.7,
+    type: "lineHeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "170%",
+      type: "lineHeights"
+    },
+    name: "--fds-line-heights-700",
+    attributes: {},
+    path: [
+      "lineHeights",
+      "700"
+    ]
+  }
+] 
+
+export const  fontWeights = [
+  {
+    value: "500",
+    type: "fontWeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "500",
+      type: "fontWeights"
+    },
+    name: "--fds-font-weights-medium",
+    attributes: {},
+    path: [
+      "fontWeights",
+      "medium"
+    ]
+  },
+  {
+    value: "600",
+    type: "fontWeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "600",
+      type: "fontWeights"
+    },
+    name: "--fds-font-weights-semibold",
+    attributes: {},
+    path: [
+      "fontWeights",
+      "semibold"
+    ]
+  },
+  {
+    value: "400",
+    type: "fontWeights",
+    filePath: "../../design-tokens/core/typography/default.json",
+    isSource: true,
+    original: {
+      value: "400",
+      type: "fontWeights"
+    },
+    name: "--fds-font-weights-regular",
+    attributes: {},
+    path: [
+      "fontWeights",
+      "regular"
     ]
   }
 ] 

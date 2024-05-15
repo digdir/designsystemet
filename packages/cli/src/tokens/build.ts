@@ -154,10 +154,7 @@ export async function run(options: Options): Promise<void> {
 
         const [fileName, folderName] = processThemeName(name);
 
-        const [source, include] = R.partition(
-          R.test(/dark|light|globals/),
-          updatedSets,
-        );
+        const [source, include] = R.partition(R.test(/\/core\//), updatedSets);
 
         const config_ = configCallback({
           fileName: fileName,
