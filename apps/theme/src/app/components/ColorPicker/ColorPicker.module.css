@@ -1,0 +1,74 @@
+.picker {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 48px;
+  width: 150px;
+  padding-left: 12px;
+  transition: 0.04s all;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.container:hover {
+  border: 1px solid rgb(61, 61, 61);
+  outline: 1px solid rgb(61, 61, 61);
+}
+
+.color {
+  height: 24px;
+  width: 24px;
+  background-color: #1e98f5;
+  border-radius: 50%;
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.input {
+  width: 100px;
+  font-size: 15px;
+  padding-left: 10px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.label {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  z-index: 5;
+  right: 0;
+}
+
+.whole {
+  position: relative;
+}
+
+.show {
+  display: block;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
