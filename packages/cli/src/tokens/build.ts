@@ -128,8 +128,6 @@ const getStorefrontConfig = ({
 type Options = {
   /** Design tokens path  */
   tokens: string;
-  /** File names of Token studio brand files located in  @type {Options['tokens']} */
-  brands: string[];
 };
 
 const sd = new StyleDictionary();

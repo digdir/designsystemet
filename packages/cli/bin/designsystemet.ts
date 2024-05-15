@@ -16,16 +16,11 @@ program
     'Path to "design-tokens"',
     '../../design-tokens',
   )
-  .option(
-    '-b, --brands [brands...]',
-    'Brand files in "design-tokens" to include',
-    ['Digdir'],
-  )
+
   .option('-p, --preview')
   .action((opts) => {
-    const brands = Array.isArray(opts.brands) ? opts.brands : [];
     const tokens = typeof opts.tokens === 'string' ? opts.tokens : '';
-    return run({ brands, tokens });
+    return run({ tokens });
   });
 
 program
