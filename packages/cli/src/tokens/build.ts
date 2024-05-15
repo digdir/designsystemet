@@ -41,6 +41,7 @@ StyleDictionary.registerTransformGroup({
     'ts/color/modifiers',
     'ts/color/css/hexrgba',
     'ts/size/lineheight',
+    'ts/size/px',
     'ts/shadow/css/shorthand',
   ],
 });

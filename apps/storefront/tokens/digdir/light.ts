@@ -9418,7 +9418,7 @@ export const  opacity = [
 
 export const  borderRadius = [
   {
-    value: "2",
+    value: "2px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9434,7 +9434,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "4",
+    value: "4px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9450,7 +9450,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "8",
+    value: "8px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9466,7 +9466,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "12",
+    value: "12px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9482,7 +9482,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "16",
+    value: "16px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9498,7 +9498,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "24",
+    value: "24px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9514,7 +9514,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "32",
+    value: "32px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9530,7 +9530,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "9999",
+    value: "9999px",
     type: "borderRadius",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -9546,7 +9546,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "2",
+    value: "2px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9562,7 +9562,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "4",
+    value: "4px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9578,7 +9578,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "8",
+    value: "8px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9594,7 +9594,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "12",
+    value: "12px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9610,7 +9610,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "16",
+    value: "16px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9626,7 +9626,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "24",
+    value: "24px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9642,7 +9642,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "32",
+    value: "32px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -9658,7 +9658,7 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "9999",
+    value: "9999px",
     type: "borderRadius",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -10320,7 +10320,7 @@ export const  sizing = [
     ]
   },
   {
-    value: "4",
+    value: "4px",
     type: "sizing",
     filePath: "../../design-tokens/core/globals.json",
     isSource: true,
@@ -10839,7 +10839,7 @@ export const  fontWeights = [
 
 export const  fontSizes = [
   {
-    value: "12",
+    value: "12px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10855,7 +10855,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "13",
+    value: "13px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10871,7 +10871,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "14",
+    value: "14px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10887,7 +10887,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "16",
+    value: "16px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10903,7 +10903,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "18",
+    value: "18px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10919,7 +10919,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "21",
+    value: "21px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10935,7 +10935,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "24",
+    value: "24px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10951,7 +10951,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "30",
+    value: "30px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10967,7 +10967,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "36",
+    value: "36px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10983,7 +10983,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "48",
+    value: "48px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
@@ -10999,7 +10999,7 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "60",
+    value: "60px",
     type: "fontSizes",
     filePath: "../../design-tokens/core/typography/default.json",
     isSource: true,
