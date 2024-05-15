@@ -370,21 +370,21 @@ export const Ikoner: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
-      size='small'
+      size='sm'
     >
       <CogIcon fontSize='1rem' />
       small
     </Button>
     <Button
       variant='primary'
-      size='medium'
+      size='md'
     >
       <CogIcon fontSize='1.5rem' />
       medium
     </Button>
     <Button
       variant='primary'
-      size='large'
+      size='lg'
     >
       <CogIcon fontSize='2rem' />
       large
