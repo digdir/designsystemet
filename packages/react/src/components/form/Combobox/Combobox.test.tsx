@@ -99,6 +99,22 @@ describe('Combobox', () => {
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
+  it('should select when we click Enter', async () => {
+    const onValueChange = vi.fn();
+    const { user } = await render({ onValueChange });
+    const combobox = screen.getByRole('combobox');
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+
+    await userEvent.click(combobox);
+    expect(screen.getByText('Leikanger')).toBeInTheDocument();
+
+    await user.type(combobox, '{Enter}');
+
+    await wait(500);
+
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+  });
+
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
     const onValueChange = vi.fn();
     await render({ onValueChange });
@@ -165,7 +181,11 @@ describe('Combobox', () => {
     await wait(100);
     await userEvent.click(screen.getByText('Leikanger'));
     await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    await wait(500);
     await userEvent.click(screen.getByText('Oslo'));
+    await wait(500);
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
     await wait(500);
     await user.click(document.body);
     await wait(500);
@@ -175,18 +195,19 @@ describe('Combobox', () => {
     // get clear button by its classname .clearButton
     const buttons = screen.getAllByRole('button');
     const clearButton = buttons.find((button) =>
-      button.className.includes('clearButton'),
+      button.className.includes('fds-combobox__clear-button'),
     );
     if (!clearButton) {
       throw new Error('Could not find clear button');
     }
     await userEvent.click(clearButton);
+    await userEvent.click(document.body);
 
-    setTimeout(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
-      expect(onValueChange).toHaveBeenCalledWith([]);
-    }, 1000);
+    await wait(500);
+
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+    expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
+    expect(onValueChange).toHaveBeenCalledWith([]);
   });
 
   it('should show "Fant ingen treff", when input does not match any values', async () => {
@@ -289,6 +310,22 @@ describe('Combobox', () => {
 
     const formData = await formSubmitPromise;
     expect(formData.getAll('test')).toEqual(['leikanger', 'oslo']);
+  });
+
+  it('should show all options when we are in signle mode, and have a value selected', async () => {
+    await render();
+    const combobox = screen.getByRole('combobox');
+
+    await userEvent.click(combobox);
+    await userEvent.click(screen.getByText('Leikanger'));
+
+    await wait(500);
+
+    await userEvent.click(combobox);
+
+    expect(screen.getByText('Leikanger')).toBeInTheDocument();
+    expect(screen.getByText('Oslo')).toBeInTheDocument();
+    expect(screen.getByText('Brønnøysund')).toBeInTheDocument();
   });
 
   it('should only call onValueChange once when we click the same option fast twice', async () => {

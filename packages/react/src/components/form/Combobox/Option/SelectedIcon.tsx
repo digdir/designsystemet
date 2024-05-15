@@ -1,7 +1,5 @@
 import { CheckmarkIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
-
-import classes from '../Option.module.css';
+import cl from 'clsx/lite';
 
 type SelectedIconProps = {
   multiple: boolean;
@@ -12,13 +10,13 @@ export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   return (
     <div
       className={cl(
-        multiple && classes.selectIconWrapper,
-        selected && classes.selected,
+        multiple && 'fds-combobox__option__icon-wrapper',
+        selected && 'fds-combobox__option__icon-wrapper--selected',
       )}
     >
       {selected && (
         <CheckmarkIcon
-          className={classes.selectIcon}
+          className={'fds-combobox__option__icon-wrapper__icon'}
           aria-hidden
         />
       )}

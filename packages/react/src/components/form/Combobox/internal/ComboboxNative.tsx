@@ -2,7 +2,9 @@ import type { Option } from '../useCombobox';
 import type { ComboboxProps } from '../Combobox';
 
 type ComboboxNativeProps = {
-  selectedOptions: Option[];
+  selectedOptions: {
+    [key: string]: Option;
+  };
   multiple: NonNullable<ComboboxProps['multiple']>;
   name: ComboboxProps['name'];
 };
@@ -19,15 +21,15 @@ export const ComboboxNative = ({
       style={{ display: 'none' }}
       value={
         multiple
-          ? selectedOptions.map((option) => option.value)
-          : selectedOptions[0]?.value
+          ? Object.keys(selectedOptions)
+          : Object.keys(selectedOptions)[0]
       }
       onChange={() => {}}
     >
-      {selectedOptions.map((option) => (
+      {Object.keys(selectedOptions).map((value) => (
         <option
-          key={option.value}
-          value={option.value}
+          key={value}
+          value={value}
         />
       ))}
     </select>
