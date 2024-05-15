@@ -1,4 +1,3 @@
-import classes from "./PreviewBox.module.css";
 import {
   Button,
   Switch,
@@ -14,6 +13,8 @@ import {
   ToggleGroup,
   Heading,
 } from "@digdir/designsystemet-react";
+
+import classes from "./PreviewBox.module.css";
 
 export const PreviewBox = () => {
   return (
