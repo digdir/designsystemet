@@ -2,21 +2,37 @@ import type * as React from 'react';
 import cl from 'clsx/lite';
 
 import { useSynchronizedAnimation } from '../../hooks';
+import { getSize } from '../../utilities/getSize';
 
-const sizeMap: { [key in NonNullable<SpinnerProps['size']>]: number } = {
-  xxsmall: 13,
-  xsmall: 20,
-  small: 27,
-  medium: 40,
-  large: 56,
-  xlarge: 79,
+type OldSpinnerSizes =
+  | 'xxsmall'
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge';
+
+const sizeMap: {
+  [key in Exclude<NonNullable<SpinnerProps['size']>, OldSpinnerSizes>]: number;
+} = {
+  '2xs': 13,
+  xs: 20,
+  sm: 27,
+  md: 40,
+  lg: 56,
+  xl: 79,
 };
 
 export type SpinnerProps = {
   /** Spinner title  */
   title: string;
-  /** Spinner size  */
-  size?: 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  /**
+   * Spinner size
+   *
+   * @default 'md'
+   * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` is deprecated
+   */
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | OldSpinnerSizes;
   /** Spinner appearance  */
   variant?: 'default' | 'interaction' | 'inverted';
 } & React.ComponentPropsWithoutRef<'svg'>;
@@ -24,12 +40,19 @@ export type SpinnerProps = {
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = ({
   title,
-  size = 'medium',
   variant = 'default',
   className,
   style,
   ...rest
 }: SpinnerProps): JSX.Element => {
+  const size = getSize(rest.size || 'md') as
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl';
+
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
     'fds-spinner-rotate-animation',
   );
