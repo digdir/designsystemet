@@ -58,6 +58,7 @@ const getCSSConfig: GetConfig = ({
   buildPath = 'unknown',
 }) => {
   return {
+    log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -101,6 +102,7 @@ const getStorefrontConfig = ({
   buildPath = 'unknown',
 }): Config => {
   return {
+    log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
     platforms: {
       storefront: {
