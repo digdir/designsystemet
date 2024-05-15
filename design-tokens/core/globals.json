@@ -149,41 +149,41 @@
     }
   },
   "borderRadius": {
-    "sm": {
+    "2": {
       "value": "2",
       "type": "borderRadius"
     },
-    "md": {
+    "4": {
       "value": "4",
       "type": "borderRadius"
     },
-    "lg": {
+    "8": {
       "value": "8",
       "type": "borderRadius"
     },
-    "xl": {
+    "12": {
       "value": "12",
       "type": "borderRadius"
     },
-    "2xl": {
+    "16": {
       "value": "16",
       "type": "borderRadius"
     },
-    "3xl": {
+    "24": {
       "value": "24",
       "type": "borderRadius"
     },
-    "4xl": {
+    "32": {
       "value": "32",
       "type": "borderRadius"
     },
-    "full": {
+    "9999": {
       "value": "9999",
       "type": "borderRadius"
     }
   },
   "opacity": {
-    "disabledComponents": {
+    "30": {
       "value": "30%",
       "type": "opacity"
     }

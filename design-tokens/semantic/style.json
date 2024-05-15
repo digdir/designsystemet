@@ -331,21 +331,21 @@
   },
   "opacity": {
     "disabled": {
-      "value": "{opacity.disabledComponents}",
+      "value": "{opacity.30}",
       "type": "opacity"
     }
   },
   "border_radius": {
     "sm": {
-      "value": "{borderRadius.sm}",
+      "value": "{borderRadius.2}",
       "type": "borderRadius"
     },
     "md": {
-      "value": "{borderRadius.md}",
+      "value": "{borderRadius.4}",
       "type": "borderRadius"
     },
     "lg": {
-      "value": "{borderRadius.lg}",
+      "value": "{borderRadius.8}",
       "type": "borderRadius"
     },
     "xl": {
@@ -365,7 +365,7 @@
       "type": "borderRadius"
     },
     "full": {
-      "value": "{borderRadius.full}",
+      "value": "{borderRadius.9999}",
       "type": "borderRadius"
     }
   },
