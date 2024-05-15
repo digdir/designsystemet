@@ -2636,25 +2636,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-css@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@digdir/designsystemet-css@npm:0.4.0"
-  dependencies:
-    "@digdir/designsystemet-react": "npm:^0.57.0"
-  checksum: 3a56962a90c0e51d61414bb3ac0666238c6ac394e40ff30e897f7a2b7a31be24fef8304335c3175da52c88e0341331ec6a237d43ed9b7aa612d3d5668ded66ca
-  languageName: node
-  linkType: hard
-
-"@digdir/designsystemet-css@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "@digdir/designsystemet-css@npm:0.5.0"
-  dependencies:
-    "@digdir/designsystemet-react": "npm:^0.58.0"
-  checksum: 87c5aba0da2443d6b6a26be56bf367a356f1e3ace54dc95f4ad1c0c54ecfc1a29cc4280021c9f6078467d0cc21673034ccbf57cfc139c46b22f70459d44c0587
-  languageName: node
-  linkType: hard
-
-"@digdir/designsystemet-css@workspace:packages/css":
+"@digdir/designsystemet-css@npm:0.7.0, @digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
@@ -2676,22 +2658,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/designsystemet-react@npm:^0.58.0":
-  version: 0.58.0
-  resolution: "@digdir/designsystemet-react@npm:0.58.0"
-  dependencies:
-    "@floating-ui/react": "npm:0.26.4"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    "@radix-ui/react-slot": "npm:^1.0.2"
-    "@tanstack/react-virtual": "npm:^3.2.0"
-  peerDependencies:
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 7a2d40e80f7558acf5f8c0ac7263056971bd5aa9bddc4a82e5535d6fc0be85d8896c7bdcc6165aaaa038f5c0946e0570a59137ec7344a37d807b6574dada5d51
-  languageName: node
-  linkType: hard
-
-"@digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
+"@digdir/designsystemet-react@npm:0.60.0, @digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
