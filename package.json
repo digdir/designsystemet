@@ -14,6 +14,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:clean": "storybook dev -p 6006 --no-manager-cache",
     "storefront": "yarn workspace storefront dev",
+    "theme": "yarn workspace theme dev",
     "devsite": "yarn workspace dev dev",
     "build": "lerna run build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
