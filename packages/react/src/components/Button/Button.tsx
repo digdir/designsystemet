@@ -5,7 +5,7 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { getSize } from '../../utilities/getSize';
 
-type OldButtonSize = 'small' | 'medium' | 'large';
+type OldButtonSizes = 'small' | 'medium' | 'large';
 
 export type ButtonProps = {
   /** Specify which variant to use */
@@ -15,9 +15,9 @@ export type ButtonProps = {
   /**
    * Size
    * @default md
-   * @note Use `sm`, `md`, `lg` instead of `small`, `medium`, `large`, as the latter will be deprecated
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldButtonSize;
+  size?: 'sm' | 'md' | 'lg' | OldButtonSizes;
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
   /** Toggle icon only styling, pass icon as children
