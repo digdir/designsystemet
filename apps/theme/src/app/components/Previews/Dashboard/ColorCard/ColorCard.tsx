@@ -1,7 +1,7 @@
-import { TokenIcon } from "@navikt/aksel-icons";
-import classes from "./ColorCard.module.css";
 import { Heading, Paragraph } from "@digdir/designsystemet-react";
 import cn from "classnames";
+
+import classes from "./ColorCard.module.css";
 
 type ColorCardProps = {
   brand: "one" | "two" | "three";
