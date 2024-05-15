@@ -155,7 +155,7 @@ export async function run(options: Options): Promise<void> {
         const [fileName, folderName] = processThemeName(name);
 
         const [source, include] = R.partition(
-          R.test(/dark|light/),
+          R.test(/dark|light|globals/),
           updatedSets,
         );
 

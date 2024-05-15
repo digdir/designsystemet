@@ -2302,7 +2302,7 @@ export const  color = [
   {
     value: "#fcfefc",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fcfefc",
@@ -2319,7 +2319,7 @@ export const  color = [
   {
     value: "#e9f6ea",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e9f6ea",
@@ -2336,7 +2336,7 @@ export const  color = [
   {
     value: "#d9efdc",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#d9efdc",
@@ -2353,7 +2353,7 @@ export const  color = [
   {
     value: "#b9e1be",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#b9e1be",
@@ -2370,7 +2370,7 @@ export const  color = [
   {
     value: "#94d29d",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#94d29d",
@@ -2387,7 +2387,7 @@ export const  color = [
   {
     value: "#9ed6a5",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#9ed6a5",
@@ -2404,7 +2404,7 @@ export const  color = [
   {
     value: "#29a03a",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#29a03a",
@@ -2421,7 +2421,7 @@ export const  color = [
   {
     value: "#185e22",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#185e22",
@@ -2438,7 +2438,7 @@ export const  color = [
   {
     value: "#2ca63d",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#2ca63d",
@@ -2455,7 +2455,7 @@ export const  color = [
   {
     value: "#248c33",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#248c33",
@@ -2472,7 +2472,7 @@ export const  color = [
   {
     value: "#1d7129",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#1d7129",
@@ -2489,7 +2489,7 @@ export const  color = [
   {
     value: "#185c21",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#185c21",
@@ -2506,7 +2506,7 @@ export const  color = [
   {
     value: "#0f3814",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#0f3814",
@@ -2523,7 +2523,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -2540,7 +2540,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -2557,7 +2557,7 @@ export const  color = [
   {
     value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fffefc",
@@ -2574,7 +2574,7 @@ export const  color = [
   {
     value: "#fbf2d5",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fbf2d5",
@@ -2591,7 +2591,7 @@ export const  color = [
   {
     value: "#f9ebbd",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#f9ebbd",
@@ -2608,7 +2608,7 @@ export const  color = [
   {
     value: "#f2d474",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#f2d474",
@@ -2625,7 +2625,7 @@ export const  color = [
   {
     value: "#e8bf37",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e8bf37",
@@ -2642,7 +2642,7 @@ export const  color = [
   {
     value: "#edc644",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#edc644",
@@ -2659,7 +2659,7 @@ export const  color = [
   {
     value: "#a68827",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#a68827",
@@ -2676,7 +2676,7 @@ export const  color = [
   {
     value: "#625017",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#625017",
@@ -2693,7 +2693,7 @@ export const  color = [
   {
     value: "#ecc238",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ecc238",
@@ -2710,7 +2710,7 @@ export const  color = [
   {
     value: "#cfaa31",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#cfaa31",
@@ -2727,7 +2727,7 @@ export const  color = [
   {
     value: "#b2922a",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#b2922a",
@@ -2744,7 +2744,7 @@ export const  color = [
   {
     value: "#604f17",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#604f17",
@@ -2761,7 +2761,7 @@ export const  color = [
   {
     value: "#3a300e",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#3a300e",
@@ -2778,7 +2778,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -2795,7 +2795,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -2812,7 +2812,7 @@ export const  color = [
   {
     value: "#fffefd",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fffefd",
@@ -2829,7 +2829,7 @@ export const  color = [
   {
     value: "#fbf1ec",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fbf1ec",
@@ -2846,7 +2846,7 @@ export const  color = [
   {
     value: "#f9e8df",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#f9e8df",
@@ -2863,7 +2863,7 @@ export const  color = [
   {
     value: "#f2d0bc",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#f2d0bc",
@@ -2880,7 +2880,7 @@ export const  color = [
   {
     value: "#ecb99e",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ecb99e",
@@ -2897,7 +2897,7 @@ export const  color = [
   {
     value: "#eec0a7",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#eec0a7",
@@ -2914,7 +2914,7 @@ export const  color = [
   {
     value: "#d76e34",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#d76e34",
@@ -2931,7 +2931,7 @@ export const  color = [
   {
     value: "#853e16",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#853e16",
@@ -2948,7 +2948,7 @@ export const  color = [
   {
     value: "#d46223",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#d46223",
@@ -2965,7 +2965,7 @@ export const  color = [
   {
     value: "#b0511d",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#b0511d",
@@ -2982,7 +2982,7 @@ export const  color = [
   {
     value: "#8e4117",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#8e4117",
@@ -2999,7 +2999,7 @@ export const  color = [
   {
     value: "#813c15",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#813c15",
@@ -3016,7 +3016,7 @@ export const  color = [
   {
     value: "#4f240d",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#4f240d",
@@ -3033,7 +3033,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -3050,7 +3050,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -3067,7 +3067,7 @@ export const  color = [
   {
     value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fffefe",
@@ -3084,7 +3084,7 @@ export const  color = [
   {
     value: "#fbf2f3",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fbf2f3",
@@ -3101,7 +3101,7 @@ export const  color = [
   {
     value: "#f6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#f6e6e6",
@@ -3118,7 +3118,7 @@ export const  color = [
   {
     value: "#eecfd0",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#eecfd0",
@@ -3135,7 +3135,7 @@ export const  color = [
   {
     value: "#e6b9b9",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e6b9b9",
@@ -3152,7 +3152,7 @@ export const  color = [
   {
     value: "#e8bfbf",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e8bfbf",
@@ -3169,7 +3169,7 @@ export const  color = [
   {
     value: "#cd7172",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#cd7172",
@@ -3186,7 +3186,7 @@ export const  color = [
   {
     value: "#9d2223",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#9d2223",
@@ -3203,7 +3203,7 @@ export const  color = [
   {
     value: "#b32728",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#b32728",
@@ -3220,7 +3220,7 @@ export const  color = [
   {
     value: "#8c1f1f",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#8c1f1f",
@@ -3237,7 +3237,7 @@ export const  color = [
   {
     value: "#671617",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#671617",
@@ -3254,7 +3254,7 @@ export const  color = [
   {
     value: "#9a2122",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#9a2122",
@@ -3271,7 +3271,7 @@ export const  color = [
   {
     value: "#5e1515",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#5e1515",
@@ -3288,7 +3288,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -3305,7 +3305,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -3322,7 +3322,7 @@ export const  color = [
   {
     value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#fefeff",
@@ -3339,7 +3339,7 @@ export const  color = [
   {
     value: "#edf5fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#edf5fa",
@@ -3356,7 +3356,7 @@ export const  color = [
   {
     value: "#dfecf7",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#dfecf7",
@@ -3373,7 +3373,7 @@ export const  color = [
   {
     value: "#bedaee",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#bedaee",
@@ -3390,7 +3390,7 @@ export const  color = [
   {
     value: "#a1c9e7",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#a1c9e7",
@@ -3407,7 +3407,7 @@ export const  color = [
   {
     value: "#aacee9",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#aacee9",
@@ -3424,7 +3424,7 @@ export const  color = [
   {
     value: "#4291ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#4291ce",
@@ -3441,7 +3441,7 @@ export const  color = [
   {
     value: "#075490",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#075490",
@@ -3458,7 +3458,7 @@ export const  color = [
   {
     value: "#0c72c1",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#0c72c1",
@@ -3475,7 +3475,7 @@ export const  color = [
   {
     value: "#085c9c",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#085c9c",
@@ -3492,7 +3492,7 @@ export const  color = [
   {
     value: "#064678",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#064678",
@@ -3509,7 +3509,7 @@ export const  color = [
   {
     value: "#07528c",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#07528c",
@@ -3526,7 +3526,7 @@ export const  color = [
   {
     value: "#043256",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#043256",
@@ -3543,7 +3543,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -3560,7 +3560,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/global.json",
+    filePath: "../../design-tokens/core/colors/light/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -3577,7 +3577,7 @@ export const  color = [
   {
     value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fefeff",
@@ -3594,7 +3594,7 @@ export const  color = [
   {
     value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#eef4fa",
@@ -3611,7 +3611,7 @@ export const  color = [
   {
     value: "#e2edf7",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#e2edf7",
@@ -3628,7 +3628,7 @@ export const  color = [
   {
     value: "#c3daef",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#c3daef",
@@ -3645,7 +3645,7 @@ export const  color = [
   {
     value: "#a4c7e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#a4c7e6",
@@ -3662,7 +3662,7 @@ export const  color = [
   {
     value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#aecde9",
@@ -3679,7 +3679,7 @@ export const  color = [
   {
     value: "#4b90ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#4b90ce",
@@ -3696,7 +3696,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -3713,7 +3713,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -3730,7 +3730,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -3747,7 +3747,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -3764,7 +3764,7 @@ export const  color = [
   {
     value: "#005099",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#005099",
@@ -3781,7 +3781,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -3798,7 +3798,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -3815,7 +3815,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -3832,7 +3832,7 @@ export const  color = [
   {
     value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fefefe",
@@ -3849,7 +3849,7 @@ export const  color = [
   {
     value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f3f4f5",
@@ -3866,7 +3866,7 @@ export const  color = [
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#e9eaec",
@@ -3883,7 +3883,7 @@ export const  color = [
   {
     value: "#d5d7da",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#d5d7da",
@@ -3900,7 +3900,7 @@ export const  color = [
   {
     value: "#c1c4c9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#c1c4c9",
@@ -3917,7 +3917,7 @@ export const  color = [
   {
     value: "#c6c9cd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#c6c9cd",
@@ -3934,7 +3934,7 @@ export const  color = [
   {
     value: "#858c96",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#858c96",
@@ -3951,7 +3951,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -3968,7 +3968,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -3985,7 +3985,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -4002,7 +4002,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -4019,7 +4019,7 @@ export const  color = [
   {
     value: "#46505e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#46505e",
@@ -4036,7 +4036,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -4053,7 +4053,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -4070,7 +4070,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -4087,7 +4087,7 @@ export const  color = [
   {
     value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fffefe",
@@ -4104,7 +4104,7 @@ export const  color = [
   {
     value: "#fef0f1",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fef0f1",
@@ -4121,7 +4121,7 @@ export const  color = [
   {
     value: "#fde5e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fde5e6",
@@ -4138,7 +4138,7 @@ export const  color = [
   {
     value: "#fbcccd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fbcccd",
@@ -4155,7 +4155,7 @@ export const  color = [
   {
     value: "#fab1b3",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fab1b3",
@@ -4172,7 +4172,7 @@ export const  color = [
   {
     value: "#fab8b9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fab8b9",
@@ -4189,7 +4189,7 @@ export const  color = [
   {
     value: "#eb5b5f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#eb5b5f",
@@ -4206,7 +4206,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -4223,7 +4223,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -4240,7 +4240,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -4257,7 +4257,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -4274,7 +4274,7 @@ export const  color = [
   {
     value: "#873537",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#873537",
@@ -4291,7 +4291,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -4308,7 +4308,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -4325,7 +4325,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -4342,7 +4342,7 @@ export const  color = [
   {
     value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fffefc",
@@ -4359,7 +4359,7 @@ export const  color = [
   {
     value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fbf3e0",
@@ -4376,7 +4376,7 @@ export const  color = [
   {
     value: "#f8e9c6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f8e9c6",
@@ -4393,7 +4393,7 @@ export const  color = [
   {
     value: "#f2d48d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f2d48d",
@@ -4410,7 +4410,7 @@ export const  color = [
   {
     value: "#ebbe54",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#ebbe54",
@@ -4427,7 +4427,7 @@ export const  color = [
   {
     value: "#edc464",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#edc464",
@@ -4444,7 +4444,7 @@ export const  color = [
   {
     value: "#b28419",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#b28419",
@@ -4461,7 +4461,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -4478,7 +4478,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -4495,7 +4495,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -4512,7 +4512,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -4529,7 +4529,7 @@ export const  color = [
   {
     value: "#664c0e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#664c0e",
@@ -4546,7 +4546,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -4563,7 +4563,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -4580,7 +4580,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -4597,7 +4597,7 @@ export const  color = [
   {
     value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#fdfeff",
@@ -4614,7 +4614,7 @@ export const  color = [
   {
     value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#eaf6fe",
@@ -4631,7 +4631,7 @@ export const  color = [
   {
     value: "#d9eefd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#d9eefd",
@@ -4648,7 +4648,7 @@ export const  color = [
   {
     value: "#b3dcfc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#b3dcfc",
@@ -4665,7 +4665,7 @@ export const  color = [
   {
     value: "#8bcafa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#8bcafa",
@@ -4682,7 +4682,7 @@ export const  color = [
   {
     value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#96cffa",
@@ -4699,7 +4699,7 @@ export const  color = [
   {
     value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#1c90e8",
@@ -4716,7 +4716,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -4733,7 +4733,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -4750,7 +4750,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -4767,7 +4767,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -4784,7 +4784,7 @@ export const  color = [
   {
     value: "#105387",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#105387",
@@ -4801,7 +4801,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -4818,7 +4818,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -4835,7 +4835,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme1.json",
+    filePath: "../../design-tokens/core/colors/light/theme1.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -4852,7 +4852,7 @@ export const  color = [
   {
     value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fefeff",
@@ -4869,7 +4869,7 @@ export const  color = [
   {
     value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#eef4fa",
@@ -4886,7 +4886,7 @@ export const  color = [
   {
     value: "#e2edf7",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#e2edf7",
@@ -4903,7 +4903,7 @@ export const  color = [
   {
     value: "#c3daef",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#c3daef",
@@ -4920,7 +4920,7 @@ export const  color = [
   {
     value: "#a4c7e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#a4c7e6",
@@ -4937,7 +4937,7 @@ export const  color = [
   {
     value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#aecde9",
@@ -4954,7 +4954,7 @@ export const  color = [
   {
     value: "#4b90ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#4b90ce",
@@ -4971,7 +4971,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -4988,7 +4988,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -5005,7 +5005,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -5022,7 +5022,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -5039,7 +5039,7 @@ export const  color = [
   {
     value: "#005099",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#005099",
@@ -5056,7 +5056,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -5073,7 +5073,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -5090,7 +5090,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -5107,7 +5107,7 @@ export const  color = [
   {
     value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fefefe",
@@ -5124,7 +5124,7 @@ export const  color = [
   {
     value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f3f4f5",
@@ -5141,7 +5141,7 @@ export const  color = [
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#e9eaec",
@@ -5158,7 +5158,7 @@ export const  color = [
   {
     value: "#d5d7da",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#d5d7da",
@@ -5175,7 +5175,7 @@ export const  color = [
   {
     value: "#c1c4c9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#c1c4c9",
@@ -5192,7 +5192,7 @@ export const  color = [
   {
     value: "#c6c9cd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#c6c9cd",
@@ -5209,7 +5209,7 @@ export const  color = [
   {
     value: "#858c96",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#858c96",
@@ -5226,7 +5226,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -5243,7 +5243,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -5260,7 +5260,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -5277,7 +5277,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -5294,7 +5294,7 @@ export const  color = [
   {
     value: "#46505e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#46505e",
@@ -5311,7 +5311,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -5328,7 +5328,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -5345,7 +5345,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -5362,7 +5362,7 @@ export const  color = [
   {
     value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fffefe",
@@ -5379,7 +5379,7 @@ export const  color = [
   {
     value: "#fef0f1",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fef0f1",
@@ -5396,7 +5396,7 @@ export const  color = [
   {
     value: "#fde5e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fde5e6",
@@ -5413,7 +5413,7 @@ export const  color = [
   {
     value: "#fbcccd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fbcccd",
@@ -5430,7 +5430,7 @@ export const  color = [
   {
     value: "#fab1b3",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fab1b3",
@@ -5447,7 +5447,7 @@ export const  color = [
   {
     value: "#fab8b9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fab8b9",
@@ -5464,7 +5464,7 @@ export const  color = [
   {
     value: "#eb5b5f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#eb5b5f",
@@ -5481,7 +5481,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -5498,7 +5498,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -5515,7 +5515,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -5532,7 +5532,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -5549,7 +5549,7 @@ export const  color = [
   {
     value: "#873537",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#873537",
@@ -5566,7 +5566,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -5583,7 +5583,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -5600,7 +5600,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -5617,7 +5617,7 @@ export const  color = [
   {
     value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fffefc",
@@ -5634,7 +5634,7 @@ export const  color = [
   {
     value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fbf3e0",
@@ -5651,7 +5651,7 @@ export const  color = [
   {
     value: "#f8e9c6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f8e9c6",
@@ -5668,7 +5668,7 @@ export const  color = [
   {
     value: "#f2d48d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f2d48d",
@@ -5685,7 +5685,7 @@ export const  color = [
   {
     value: "#ebbe54",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#ebbe54",
@@ -5702,7 +5702,7 @@ export const  color = [
   {
     value: "#edc464",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#edc464",
@@ -5719,7 +5719,7 @@ export const  color = [
   {
     value: "#b28419",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#b28419",
@@ -5736,7 +5736,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -5753,7 +5753,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -5770,7 +5770,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -5787,7 +5787,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -5804,7 +5804,7 @@ export const  color = [
   {
     value: "#664c0e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#664c0e",
@@ -5821,7 +5821,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -5838,7 +5838,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -5855,7 +5855,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -5872,7 +5872,7 @@ export const  color = [
   {
     value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#fdfeff",
@@ -5889,7 +5889,7 @@ export const  color = [
   {
     value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#eaf6fe",
@@ -5906,7 +5906,7 @@ export const  color = [
   {
     value: "#d9eefd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#d9eefd",
@@ -5923,7 +5923,7 @@ export const  color = [
   {
     value: "#b3dcfc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#b3dcfc",
@@ -5940,7 +5940,7 @@ export const  color = [
   {
     value: "#8bcafa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#8bcafa",
@@ -5957,7 +5957,7 @@ export const  color = [
   {
     value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#96cffa",
@@ -5974,7 +5974,7 @@ export const  color = [
   {
     value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#1c90e8",
@@ -5991,7 +5991,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -6008,7 +6008,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -6025,7 +6025,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -6042,7 +6042,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -6059,7 +6059,7 @@ export const  color = [
   {
     value: "#105387",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#105387",
@@ -6076,7 +6076,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -6093,7 +6093,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -6110,7 +6110,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme2.json",
+    filePath: "../../design-tokens/core/colors/light/theme2.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -6127,7 +6127,7 @@ export const  color = [
   {
     value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fefeff",
@@ -6144,7 +6144,7 @@ export const  color = [
   {
     value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#eef4fa",
@@ -6161,7 +6161,7 @@ export const  color = [
   {
     value: "#e2edf7",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#e2edf7",
@@ -6178,7 +6178,7 @@ export const  color = [
   {
     value: "#c3daef",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#c3daef",
@@ -6195,7 +6195,7 @@ export const  color = [
   {
     value: "#a4c7e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#a4c7e6",
@@ -6212,7 +6212,7 @@ export const  color = [
   {
     value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#aecde9",
@@ -6229,7 +6229,7 @@ export const  color = [
   {
     value: "#4b90ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#4b90ce",
@@ -6246,7 +6246,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -6263,7 +6263,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -6280,7 +6280,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -6297,7 +6297,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -6314,7 +6314,7 @@ export const  color = [
   {
     value: "#005099",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#005099",
@@ -6331,7 +6331,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -6348,7 +6348,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -6365,7 +6365,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -6382,7 +6382,7 @@ export const  color = [
   {
     value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fefefe",
@@ -6399,7 +6399,7 @@ export const  color = [
   {
     value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f3f4f5",
@@ -6416,7 +6416,7 @@ export const  color = [
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#e9eaec",
@@ -6433,7 +6433,7 @@ export const  color = [
   {
     value: "#d5d7da",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#d5d7da",
@@ -6450,7 +6450,7 @@ export const  color = [
   {
     value: "#c1c4c9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#c1c4c9",
@@ -6467,7 +6467,7 @@ export const  color = [
   {
     value: "#c6c9cd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#c6c9cd",
@@ -6484,7 +6484,7 @@ export const  color = [
   {
     value: "#858c96",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#858c96",
@@ -6501,7 +6501,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -6518,7 +6518,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -6535,7 +6535,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -6552,7 +6552,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -6569,7 +6569,7 @@ export const  color = [
   {
     value: "#46505e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#46505e",
@@ -6586,7 +6586,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -6603,7 +6603,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -6620,7 +6620,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -6637,7 +6637,7 @@ export const  color = [
   {
     value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fffefe",
@@ -6654,7 +6654,7 @@ export const  color = [
   {
     value: "#fef0f1",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fef0f1",
@@ -6671,7 +6671,7 @@ export const  color = [
   {
     value: "#fde5e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fde5e6",
@@ -6688,7 +6688,7 @@ export const  color = [
   {
     value: "#fbcccd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fbcccd",
@@ -6705,7 +6705,7 @@ export const  color = [
   {
     value: "#fab1b3",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fab1b3",
@@ -6722,7 +6722,7 @@ export const  color = [
   {
     value: "#fab8b9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fab8b9",
@@ -6739,7 +6739,7 @@ export const  color = [
   {
     value: "#eb5b5f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#eb5b5f",
@@ -6756,7 +6756,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -6773,7 +6773,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -6790,7 +6790,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -6807,7 +6807,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -6824,7 +6824,7 @@ export const  color = [
   {
     value: "#873537",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#873537",
@@ -6841,7 +6841,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -6858,7 +6858,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -6875,7 +6875,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -6892,7 +6892,7 @@ export const  color = [
   {
     value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fffefc",
@@ -6909,7 +6909,7 @@ export const  color = [
   {
     value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fbf3e0",
@@ -6926,7 +6926,7 @@ export const  color = [
   {
     value: "#f8e9c6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f8e9c6",
@@ -6943,7 +6943,7 @@ export const  color = [
   {
     value: "#f2d48d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f2d48d",
@@ -6960,7 +6960,7 @@ export const  color = [
   {
     value: "#ebbe54",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#ebbe54",
@@ -6977,7 +6977,7 @@ export const  color = [
   {
     value: "#edc464",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#edc464",
@@ -6994,7 +6994,7 @@ export const  color = [
   {
     value: "#b28419",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#b28419",
@@ -7011,7 +7011,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -7028,7 +7028,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -7045,7 +7045,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -7062,7 +7062,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -7079,7 +7079,7 @@ export const  color = [
   {
     value: "#664c0e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#664c0e",
@@ -7096,7 +7096,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -7113,7 +7113,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -7130,7 +7130,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -7147,7 +7147,7 @@ export const  color = [
   {
     value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#fdfeff",
@@ -7164,7 +7164,7 @@ export const  color = [
   {
     value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#eaf6fe",
@@ -7181,7 +7181,7 @@ export const  color = [
   {
     value: "#d9eefd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#d9eefd",
@@ -7198,7 +7198,7 @@ export const  color = [
   {
     value: "#b3dcfc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#b3dcfc",
@@ -7215,7 +7215,7 @@ export const  color = [
   {
     value: "#8bcafa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#8bcafa",
@@ -7232,7 +7232,7 @@ export const  color = [
   {
     value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#96cffa",
@@ -7249,7 +7249,7 @@ export const  color = [
   {
     value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#1c90e8",
@@ -7266,7 +7266,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -7283,7 +7283,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -7300,7 +7300,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -7317,7 +7317,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -7334,7 +7334,7 @@ export const  color = [
   {
     value: "#105387",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#105387",
@@ -7351,7 +7351,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -7368,7 +7368,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -7385,7 +7385,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme3.json",
+    filePath: "../../design-tokens/core/colors/light/theme3.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -7402,7 +7402,7 @@ export const  color = [
   {
     value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fefeff",
@@ -7419,7 +7419,7 @@ export const  color = [
   {
     value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#eef4fa",
@@ -7436,7 +7436,7 @@ export const  color = [
   {
     value: "#e2edf7",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#e2edf7",
@@ -7453,7 +7453,7 @@ export const  color = [
   {
     value: "#c3daef",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#c3daef",
@@ -7470,7 +7470,7 @@ export const  color = [
   {
     value: "#a4c7e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#a4c7e6",
@@ -7487,7 +7487,7 @@ export const  color = [
   {
     value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#aecde9",
@@ -7504,7 +7504,7 @@ export const  color = [
   {
     value: "#4b90ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#4b90ce",
@@ -7521,7 +7521,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -7538,7 +7538,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -7555,7 +7555,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -7572,7 +7572,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -7589,7 +7589,7 @@ export const  color = [
   {
     value: "#005099",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#005099",
@@ -7606,7 +7606,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -7623,7 +7623,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -7640,7 +7640,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -7657,7 +7657,7 @@ export const  color = [
   {
     value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fefefe",
@@ -7674,7 +7674,7 @@ export const  color = [
   {
     value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f3f4f5",
@@ -7691,7 +7691,7 @@ export const  color = [
   {
     value: "#e9eaec",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#e9eaec",
@@ -7708,7 +7708,7 @@ export const  color = [
   {
     value: "#d5d7da",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#d5d7da",
@@ -7725,7 +7725,7 @@ export const  color = [
   {
     value: "#c1c4c9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#c1c4c9",
@@ -7742,7 +7742,7 @@ export const  color = [
   {
     value: "#c6c9cd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#c6c9cd",
@@ -7759,7 +7759,7 @@ export const  color = [
   {
     value: "#858c96",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#858c96",
@@ -7776,7 +7776,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -7793,7 +7793,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -7810,7 +7810,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -7827,7 +7827,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -7844,7 +7844,7 @@ export const  color = [
   {
     value: "#46505e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#46505e",
@@ -7861,7 +7861,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -7878,7 +7878,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -7895,7 +7895,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -7912,7 +7912,7 @@ export const  color = [
   {
     value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fffefe",
@@ -7929,7 +7929,7 @@ export const  color = [
   {
     value: "#fef0f1",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fef0f1",
@@ -7946,7 +7946,7 @@ export const  color = [
   {
     value: "#fde5e6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fde5e6",
@@ -7963,7 +7963,7 @@ export const  color = [
   {
     value: "#fbcccd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fbcccd",
@@ -7980,7 +7980,7 @@ export const  color = [
   {
     value: "#fab1b3",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fab1b3",
@@ -7997,7 +7997,7 @@ export const  color = [
   {
     value: "#fab8b9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fab8b9",
@@ -8014,7 +8014,7 @@ export const  color = [
   {
     value: "#eb5b5f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#eb5b5f",
@@ -8031,7 +8031,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -8048,7 +8048,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -8065,7 +8065,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -8082,7 +8082,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -8099,7 +8099,7 @@ export const  color = [
   {
     value: "#873537",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#873537",
@@ -8116,7 +8116,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -8133,7 +8133,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -8150,7 +8150,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -8167,7 +8167,7 @@ export const  color = [
   {
     value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fffefc",
@@ -8184,7 +8184,7 @@ export const  color = [
   {
     value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fbf3e0",
@@ -8201,7 +8201,7 @@ export const  color = [
   {
     value: "#f8e9c6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f8e9c6",
@@ -8218,7 +8218,7 @@ export const  color = [
   {
     value: "#f2d48d",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f2d48d",
@@ -8235,7 +8235,7 @@ export const  color = [
   {
     value: "#ebbe54",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#ebbe54",
@@ -8252,7 +8252,7 @@ export const  color = [
   {
     value: "#edc464",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#edc464",
@@ -8269,7 +8269,7 @@ export const  color = [
   {
     value: "#b28419",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#b28419",
@@ -8286,7 +8286,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -8303,7 +8303,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -8320,7 +8320,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -8337,7 +8337,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -8354,7 +8354,7 @@ export const  color = [
   {
     value: "#664c0e",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#664c0e",
@@ -8371,7 +8371,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -8388,7 +8388,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -8405,7 +8405,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -8422,7 +8422,7 @@ export const  color = [
   {
     value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#fdfeff",
@@ -8439,7 +8439,7 @@ export const  color = [
   {
     value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#eaf6fe",
@@ -8456,7 +8456,7 @@ export const  color = [
   {
     value: "#d9eefd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#d9eefd",
@@ -8473,7 +8473,7 @@ export const  color = [
   {
     value: "#b3dcfc",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#b3dcfc",
@@ -8490,7 +8490,7 @@ export const  color = [
   {
     value: "#8bcafa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#8bcafa",
@@ -8507,7 +8507,7 @@ export const  color = [
   {
     value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#96cffa",
@@ -8524,7 +8524,7 @@ export const  color = [
   {
     value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#1c90e8",
@@ -8541,7 +8541,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -8558,7 +8558,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -8575,7 +8575,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -8592,7 +8592,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -8609,7 +8609,7 @@ export const  color = [
   {
     value: "#105387",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#105387",
@@ -8626,7 +8626,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -8643,7 +8643,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -8660,7 +8660,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/light/theme4.json",
+    filePath: "../../design-tokens/core/colors/light/theme4.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -9090,1002 +9090,6 @@ export const  fontWeights = [
     path: [
       "fontWeights",
       "regular"
-    ]
-  }
-] 
-
-export const  borderWidth = [
-  {
-    value: "1px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "1px",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-1",
-    attributes: {},
-    path: [
-      "border_width",
-      "1"
-    ]
-  },
-  {
-    value: "2px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "2px",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-2",
-    attributes: {},
-    path: [
-      "border_width",
-      "2"
-    ]
-  },
-  {
-    value: "1px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{border_width.1}",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-default",
-    attributes: {},
-    path: [
-      "border_width",
-      "default"
-    ]
-  },
-  {
-    value: "2px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{border_width.2}",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-active",
-    attributes: {},
-    path: [
-      "border_width",
-      "active"
-    ]
-  },
-  {
-    value: "2px",
-    type: "borderWidth",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{border_width.2}",
-      type: "borderWidth"
-    },
-    name: "--fds-border_width-tab_focus",
-    attributes: {},
-    path: [
-      "border_width",
-      "tab_focus"
-    ]
-  }
-] 
-
-export const  boxShadow = [
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.16)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "1",
-          blur: "2",
-          spread: "0",
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-100",
-    attributes: {},
-    path: [
-      "shadow",
-      "100"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.15)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow",
-          x: "0",
-          y: "1",
-          blur: "2",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "2",
-          blur: "4",
-          spread: "0",
-          color: "rgba(0,0,0,0.1)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-200",
-    attributes: {},
-    path: [
-      "shadow",
-      "200"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.14)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow",
-          x: "0",
-          y: "2",
-          blur: "4",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "4",
-          blur: "8",
-          spread: "0",
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-300",
-    attributes: {},
-    path: [
-      "shadow",
-      "300"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.13)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.13)",
-          type: "dropShadow",
-          x: "0",
-          y: "3",
-          blur: "5",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "6",
-          blur: "12",
-          spread: "0",
-          color: "rgba(0,0,0,0.14)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-400",
-    attributes: {},
-    path: [
-      "shadow",
-      "400"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: [
-        {
-          color: "rgba(0,0,0,0.12)",
-          type: "dropShadow",
-          x: "0",
-          y: "0",
-          blur: "1",
-          spread: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.16)",
-          type: "dropShadow",
-          x: "0",
-          y: "4",
-          blur: "8",
-          spread: "0"
-        },
-        {
-          x: "0",
-          y: "12",
-          blur: "24",
-          spread: "0",
-          color: "rgba(0,0,0,0.16)",
-          type: "dropShadow"
-        }
-      ],
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-500",
-    attributes: {},
-    path: [
-      "shadow",
-      "500"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{shadow.100}",
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-xsmall",
-    attributes: {},
-    path: [
-      "shadow",
-      "xsmall"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{shadow.200}",
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-small",
-    attributes: {},
-    path: [
-      "shadow",
-      "small"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{shadow.300}",
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-medium",
-    attributes: {},
-    path: [
-      "shadow",
-      "medium"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{shadow.400}",
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-large",
-    attributes: {},
-    path: [
-      "shadow",
-      "large"
-    ]
-  },
-  {
-    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
-    type: "boxShadow",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{shadow.500}",
-      type: "boxShadow"
-    },
-    name: "--fds-shadow-xlarge",
-    attributes: {},
-    path: [
-      "shadow",
-      "xlarge"
-    ]
-  }
-] 
-
-export const  borderRadius = [
-  {
-    value: "2",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "2",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-sm",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "sm"
-    ]
-  },
-  {
-    value: "4",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "4",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-md",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "md"
-    ]
-  },
-  {
-    value: "8",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "8",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-lg",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "lg"
-    ]
-  },
-  {
-    value: "12",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "12",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-xl",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "xl"
-    ]
-  },
-  {
-    value: "16",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "16",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-2xl",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "2xl"
-    ]
-  },
-  {
-    value: "24",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "24",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-3xl",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "3xl"
-    ]
-  },
-  {
-    value: "32",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "32",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-4xl",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "4xl"
-    ]
-  },
-  {
-    value: "9999",
-    type: "borderRadius",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "9999",
-      type: "borderRadius"
-    },
-    name: "--fds-border-radius-full",
-    attributes: {},
-    path: [
-      "borderRadius",
-      "full"
-    ]
-  },
-  {
-    value: "2",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.sm}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-sm",
-    attributes: {},
-    path: [
-      "border_radius",
-      "sm"
-    ]
-  },
-  {
-    value: "4",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.md}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-md",
-    attributes: {},
-    path: [
-      "border_radius",
-      "md"
-    ]
-  },
-  {
-    value: "8",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.lg}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-lg",
-    attributes: {},
-    path: [
-      "border_radius",
-      "lg"
-    ]
-  },
-  {
-    value: "12",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.xl}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "xl"
-    ]
-  },
-  {
-    value: "16",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.2xl}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-2xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "2xl"
-    ]
-  },
-  {
-    value: "24",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.3xl}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-3xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "3xl"
-    ]
-  },
-  {
-    value: "32",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.4xl}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-4xl",
-    attributes: {},
-    path: [
-      "border_radius",
-      "4xl"
-    ]
-  },
-  {
-    value: "9999",
-    type: "borderRadius",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{borderRadius.full}",
-      type: "borderRadius"
-    },
-    name: "--fds-border_radius-full",
-    attributes: {},
-    path: [
-      "border_radius",
-      "full"
-    ]
-  }
-] 
-
-export const  opacity = [
-  {
-    value: "30%",
-    type: "opacity",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "30%",
-      type: "opacity"
-    },
-    name: "--fds-opacity-disabled-components",
-    attributes: {},
-    path: [
-      "opacity",
-      "disabledComponents"
-    ]
-  },
-  {
-    value: "30%",
-    type: "opacity",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{opacity.disabledComponents}",
-      type: "opacity"
-    },
-    name: "--fds-opacity-disabled",
-    attributes: {},
-    path: [
-      "opacity",
-      "disabled"
-    ]
-  }
-] 
-
-export const  sizing = [
-  {
-    value: "0",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*0",
-      type: "sizing"
-    },
-    name: "--fds-sizing-0",
-    attributes: {},
-    path: [
-      "sizing",
-      "0"
-    ]
-  },
-  {
-    value: "0.25rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*1",
-      type: "sizing"
-    },
-    name: "--fds-sizing-1",
-    attributes: {},
-    path: [
-      "sizing",
-      "1"
-    ]
-  },
-  {
-    value: "0.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*2",
-      type: "sizing"
-    },
-    name: "--fds-sizing-2",
-    attributes: {},
-    path: [
-      "sizing",
-      "2"
-    ]
-  },
-  {
-    value: "0.75rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*3",
-      type: "sizing"
-    },
-    name: "--fds-sizing-3",
-    attributes: {},
-    path: [
-      "sizing",
-      "3"
-    ]
-  },
-  {
-    value: "1rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*4",
-      type: "sizing"
-    },
-    name: "--fds-sizing-4",
-    attributes: {},
-    path: [
-      "sizing",
-      "4"
-    ]
-  },
-  {
-    value: "1.25rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*5",
-      type: "sizing"
-    },
-    name: "--fds-sizing-5",
-    attributes: {},
-    path: [
-      "sizing",
-      "5"
-    ]
-  },
-  {
-    value: "1.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*6",
-      type: "sizing"
-    },
-    name: "--fds-sizing-6",
-    attributes: {},
-    path: [
-      "sizing",
-      "6"
-    ]
-  },
-  {
-    value: "1.75rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*7",
-      type: "sizing"
-    },
-    name: "--fds-sizing-7",
-    attributes: {},
-    path: [
-      "sizing",
-      "7"
-    ]
-  },
-  {
-    value: "2rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*8",
-      type: "sizing"
-    },
-    name: "--fds-sizing-8",
-    attributes: {},
-    path: [
-      "sizing",
-      "8"
-    ]
-  },
-  {
-    value: "2.25rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*9",
-      type: "sizing"
-    },
-    name: "--fds-sizing-9",
-    attributes: {},
-    path: [
-      "sizing",
-      "9"
-    ]
-  },
-  {
-    value: "2.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*10",
-      type: "sizing"
-    },
-    name: "--fds-sizing-10",
-    attributes: {},
-    path: [
-      "sizing",
-      "10"
-    ]
-  },
-  {
-    value: "2.75rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*11",
-      type: "sizing"
-    },
-    name: "--fds-sizing-11",
-    attributes: {},
-    path: [
-      "sizing",
-      "11"
-    ]
-  },
-  {
-    value: "3rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*12",
-      type: "sizing"
-    },
-    name: "--fds-sizing-12",
-    attributes: {},
-    path: [
-      "sizing",
-      "12"
-    ]
-  },
-  {
-    value: "3.25rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*13",
-      type: "sizing"
-    },
-    name: "--fds-sizing-13",
-    attributes: {},
-    path: [
-      "sizing",
-      "13"
-    ]
-  },
-  {
-    value: "3.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*14",
-      type: "sizing"
-    },
-    name: "--fds-sizing-14",
-    attributes: {},
-    path: [
-      "sizing",
-      "14"
-    ]
-  },
-  {
-    value: "3.75rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*15",
-      type: "sizing"
-    },
-    name: "--fds-sizing-15",
-    attributes: {},
-    path: [
-      "sizing",
-      "15"
-    ]
-  },
-  {
-    value: "4.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*18",
-      type: "sizing"
-    },
-    name: "--fds-sizing-18",
-    attributes: {},
-    path: [
-      "sizing",
-      "18"
-    ]
-  },
-  {
-    value: "5.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*22",
-      type: "sizing"
-    },
-    name: "--fds-sizing-22",
-    attributes: {},
-    path: [
-      "sizing",
-      "22"
-    ]
-  },
-  {
-    value: "6.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*26",
-      type: "sizing"
-    },
-    name: "--fds-sizing-26",
-    attributes: {},
-    path: [
-      "sizing",
-      "26"
-    ]
-  },
-  {
-    value: "7.5rem",
-    type: "sizing",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      value: "{sizing.base}*30",
-      type: "sizing"
-    },
-    name: "--fds-sizing-30",
-    attributes: {},
-    path: [
-      "sizing",
-      "30"
-    ]
-  },
-  {
-    value: "4",
-    type: "sizing",
-    filePath: "../../design-tokens/core/defaults.json",
-    isSource: false,
-    original: {
-      value: "4",
-      type: "sizing"
-    },
-    name: "--fds-sizing-base",
-    attributes: {},
-    path: [
-      "sizing",
-      "base"
     ]
   }
 ] 
@@ -10861,6 +9865,300 @@ export const  typography = [
   }
 ] 
 
+export const  opacity = [
+  {
+    value: "30%",
+    type: "opacity",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "30%",
+      type: "opacity"
+    },
+    name: "--fds-opacity-30",
+    attributes: {},
+    path: [
+      "opacity",
+      "30"
+    ]
+  },
+  {
+    value: "30%",
+    type: "opacity",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{opacity.30}",
+      type: "opacity"
+    },
+    name: "--fds-opacity-disabled",
+    attributes: {},
+    path: [
+      "opacity",
+      "disabled"
+    ]
+  }
+] 
+
+export const  borderRadius = [
+  {
+    value: "2",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.2}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-sm",
+    attributes: {},
+    path: [
+      "border_radius",
+      "sm"
+    ]
+  },
+  {
+    value: "4",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.4}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-md",
+    attributes: {},
+    path: [
+      "border_radius",
+      "md"
+    ]
+  },
+  {
+    value: "8",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.8}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-lg",
+    attributes: {},
+    path: [
+      "border_radius",
+      "lg"
+    ]
+  },
+  {
+    value: "12",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.12}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-xl",
+    attributes: {},
+    path: [
+      "border_radius",
+      "xl"
+    ]
+  },
+  {
+    value: "16",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.16}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-2xl",
+    attributes: {},
+    path: [
+      "border_radius",
+      "2xl"
+    ]
+  },
+  {
+    value: "24",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.24}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-3xl",
+    attributes: {},
+    path: [
+      "border_radius",
+      "3xl"
+    ]
+  },
+  {
+    value: "32",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.32}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-4xl",
+    attributes: {},
+    path: [
+      "border_radius",
+      "4xl"
+    ]
+  },
+  {
+    value: "9999",
+    type: "borderRadius",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{borderRadius.9999}",
+      type: "borderRadius"
+    },
+    name: "--fds-border_radius-full",
+    attributes: {},
+    path: [
+      "border_radius",
+      "full"
+    ]
+  },
+  {
+    value: "2",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "2",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-2",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "2"
+    ]
+  },
+  {
+    value: "4",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "4",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-4",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "4"
+    ]
+  },
+  {
+    value: "8",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "8",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-8",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "8"
+    ]
+  },
+  {
+    value: "12",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "12",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-12",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "12"
+    ]
+  },
+  {
+    value: "16",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "16",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-16",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "16"
+    ]
+  },
+  {
+    value: "24",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "24",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-24",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "24"
+    ]
+  },
+  {
+    value: "32",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "32",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-32",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "32"
+    ]
+  },
+  {
+    value: "9999",
+    type: "borderRadius",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "9999",
+      type: "borderRadius"
+    },
+    name: "--fds-border-radius-9999",
+    attributes: {},
+    path: [
+      "borderRadius",
+      "9999"
+    ]
+  }
+] 
+
 export const  spacing = [
   {
     value: "0",
@@ -11180,6 +10478,708 @@ export const  spacing = [
     path: [
       "spacing",
       "30"
+    ]
+  }
+] 
+
+export const  sizing = [
+  {
+    value: "0",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*0",
+      type: "sizing"
+    },
+    name: "--fds-sizing-0",
+    attributes: {},
+    path: [
+      "sizing",
+      "0"
+    ]
+  },
+  {
+    value: "0.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*1",
+      type: "sizing"
+    },
+    name: "--fds-sizing-1",
+    attributes: {},
+    path: [
+      "sizing",
+      "1"
+    ]
+  },
+  {
+    value: "0.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*2",
+      type: "sizing"
+    },
+    name: "--fds-sizing-2",
+    attributes: {},
+    path: [
+      "sizing",
+      "2"
+    ]
+  },
+  {
+    value: "0.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*3",
+      type: "sizing"
+    },
+    name: "--fds-sizing-3",
+    attributes: {},
+    path: [
+      "sizing",
+      "3"
+    ]
+  },
+  {
+    value: "1rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*4",
+      type: "sizing"
+    },
+    name: "--fds-sizing-4",
+    attributes: {},
+    path: [
+      "sizing",
+      "4"
+    ]
+  },
+  {
+    value: "1.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*5",
+      type: "sizing"
+    },
+    name: "--fds-sizing-5",
+    attributes: {},
+    path: [
+      "sizing",
+      "5"
+    ]
+  },
+  {
+    value: "1.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*6",
+      type: "sizing"
+    },
+    name: "--fds-sizing-6",
+    attributes: {},
+    path: [
+      "sizing",
+      "6"
+    ]
+  },
+  {
+    value: "1.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*7",
+      type: "sizing"
+    },
+    name: "--fds-sizing-7",
+    attributes: {},
+    path: [
+      "sizing",
+      "7"
+    ]
+  },
+  {
+    value: "2rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*8",
+      type: "sizing"
+    },
+    name: "--fds-sizing-8",
+    attributes: {},
+    path: [
+      "sizing",
+      "8"
+    ]
+  },
+  {
+    value: "2.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*9",
+      type: "sizing"
+    },
+    name: "--fds-sizing-9",
+    attributes: {},
+    path: [
+      "sizing",
+      "9"
+    ]
+  },
+  {
+    value: "2.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*10",
+      type: "sizing"
+    },
+    name: "--fds-sizing-10",
+    attributes: {},
+    path: [
+      "sizing",
+      "10"
+    ]
+  },
+  {
+    value: "2.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*11",
+      type: "sizing"
+    },
+    name: "--fds-sizing-11",
+    attributes: {},
+    path: [
+      "sizing",
+      "11"
+    ]
+  },
+  {
+    value: "3rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*12",
+      type: "sizing"
+    },
+    name: "--fds-sizing-12",
+    attributes: {},
+    path: [
+      "sizing",
+      "12"
+    ]
+  },
+  {
+    value: "3.25rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*13",
+      type: "sizing"
+    },
+    name: "--fds-sizing-13",
+    attributes: {},
+    path: [
+      "sizing",
+      "13"
+    ]
+  },
+  {
+    value: "3.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*14",
+      type: "sizing"
+    },
+    name: "--fds-sizing-14",
+    attributes: {},
+    path: [
+      "sizing",
+      "14"
+    ]
+  },
+  {
+    value: "3.75rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*15",
+      type: "sizing"
+    },
+    name: "--fds-sizing-15",
+    attributes: {},
+    path: [
+      "sizing",
+      "15"
+    ]
+  },
+  {
+    value: "4.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*18",
+      type: "sizing"
+    },
+    name: "--fds-sizing-18",
+    attributes: {},
+    path: [
+      "sizing",
+      "18"
+    ]
+  },
+  {
+    value: "5.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*22",
+      type: "sizing"
+    },
+    name: "--fds-sizing-22",
+    attributes: {},
+    path: [
+      "sizing",
+      "22"
+    ]
+  },
+  {
+    value: "6.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*26",
+      type: "sizing"
+    },
+    name: "--fds-sizing-26",
+    attributes: {},
+    path: [
+      "sizing",
+      "26"
+    ]
+  },
+  {
+    value: "7.5rem",
+    type: "sizing",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{sizing.base}*30",
+      type: "sizing"
+    },
+    name: "--fds-sizing-30",
+    attributes: {},
+    path: [
+      "sizing",
+      "30"
+    ]
+  },
+  {
+    value: "4",
+    type: "sizing",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "4",
+      type: "sizing"
+    },
+    name: "--fds-sizing-base",
+    attributes: {},
+    path: [
+      "sizing",
+      "base"
+    ]
+  }
+] 
+
+export const  borderWidth = [
+  {
+    value: "1px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "1px",
+      type: "borderWidth"
+    },
+    name: "--fds-border_width-1",
+    attributes: {},
+    path: [
+      "border_width",
+      "1"
+    ]
+  },
+  {
+    value: "2px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: "2px",
+      type: "borderWidth"
+    },
+    name: "--fds-border_width-2",
+    attributes: {},
+    path: [
+      "border_width",
+      "2"
+    ]
+  },
+  {
+    value: "1px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border_width.1}",
+      type: "borderWidth"
+    },
+    name: "--fds-border_width-default",
+    attributes: {},
+    path: [
+      "border_width",
+      "default"
+    ]
+  },
+  {
+    value: "2px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border_width.2}",
+      type: "borderWidth"
+    },
+    name: "--fds-border_width-active",
+    attributes: {},
+    path: [
+      "border_width",
+      "active"
+    ]
+  },
+  {
+    value: "2px",
+    type: "borderWidth",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{border_width.2}",
+      type: "borderWidth"
+    },
+    name: "--fds-border_width-tab_focus",
+    attributes: {},
+    path: [
+      "border_width",
+      "tab_focus"
+    ]
+  }
+] 
+
+export const  boxShadow = [
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: [
+        {
+          color: "rgba(0,0,0,0.16)",
+          type: "dropShadow",
+          x: "0",
+          y: "0",
+          blur: "1",
+          spread: "0"
+        },
+        {
+          x: "0",
+          y: "1",
+          blur: "2",
+          spread: "0",
+          color: "rgba(0,0,0,0.12)",
+          type: "dropShadow"
+        }
+      ],
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-100",
+    attributes: {},
+    path: [
+      "shadow",
+      "100"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: [
+        {
+          color: "rgba(0,0,0,0.15)",
+          type: "dropShadow",
+          x: "0",
+          y: "0",
+          blur: "1",
+          spread: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.12)",
+          type: "dropShadow",
+          x: "0",
+          y: "1",
+          blur: "2",
+          spread: "0"
+        },
+        {
+          x: "0",
+          y: "2",
+          blur: "4",
+          spread: "0",
+          color: "rgba(0,0,0,0.1)",
+          type: "dropShadow"
+        }
+      ],
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-200",
+    attributes: {},
+    path: [
+      "shadow",
+      "200"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: [
+        {
+          color: "rgba(0,0,0,0.14)",
+          type: "dropShadow",
+          x: "0",
+          y: "0",
+          blur: "1",
+          spread: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.12)",
+          type: "dropShadow",
+          x: "0",
+          y: "2",
+          blur: "4",
+          spread: "0"
+        },
+        {
+          x: "0",
+          y: "4",
+          blur: "8",
+          spread: "0",
+          color: "rgba(0,0,0,0.12)",
+          type: "dropShadow"
+        }
+      ],
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-300",
+    attributes: {},
+    path: [
+      "shadow",
+      "300"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: [
+        {
+          color: "rgba(0,0,0,0.13)",
+          type: "dropShadow",
+          x: "0",
+          y: "0",
+          blur: "1",
+          spread: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.13)",
+          type: "dropShadow",
+          x: "0",
+          y: "3",
+          blur: "5",
+          spread: "0"
+        },
+        {
+          x: "0",
+          y: "6",
+          blur: "12",
+          spread: "0",
+          color: "rgba(0,0,0,0.14)",
+          type: "dropShadow"
+        }
+      ],
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-400",
+    attributes: {},
+    path: [
+      "shadow",
+      "400"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/core/globals.json",
+    isSource: true,
+    original: {
+      value: [
+        {
+          color: "rgba(0,0,0,0.12)",
+          type: "dropShadow",
+          x: "0",
+          y: "0",
+          blur: "1",
+          spread: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.16)",
+          type: "dropShadow",
+          x: "0",
+          y: "4",
+          blur: "8",
+          spread: "0"
+        },
+        {
+          x: "0",
+          y: "12",
+          blur: "24",
+          spread: "0",
+          color: "rgba(0,0,0,0.16)",
+          type: "dropShadow"
+        }
+      ],
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-500",
+    attributes: {},
+    path: [
+      "shadow",
+      "500"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{shadow.100}",
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-xsmall",
+    attributes: {},
+    path: [
+      "shadow",
+      "xsmall"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{shadow.200}",
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-small",
+    attributes: {},
+    path: [
+      "shadow",
+      "small"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{shadow.300}",
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-medium",
+    attributes: {},
+    path: [
+      "shadow",
+      "medium"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{shadow.400}",
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-large",
+    attributes: {},
+    path: [
+      "shadow",
+      "large"
+    ]
+  },
+  {
+    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
+    type: "boxShadow",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      value: "{shadow.500}",
+      type: "boxShadow"
+    },
+    name: "--fds-shadow-xlarge",
+    attributes: {},
+    path: [
+      "shadow",
+      "xlarge"
     ]
   }
 ] 
