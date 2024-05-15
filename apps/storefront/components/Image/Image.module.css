@@ -12,7 +12,7 @@
   margin: 0;
 }
 
-.boxShadow {
+.boxShadow .img {
   box-shadow: var(--fds-shadow-medium);
 }
 
