@@ -1,22 +1,22 @@
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import { Hsluv } from "hsluv";
 
 export const hexToCssHsl = (hex: string, valuesOnly = false) => {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  var r = parseInt(result[1], 16);
-  var g = parseInt(result[2], 16);
-  var b = parseInt(result[3], 16);
-  var cssString = "";
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let r = parseInt(result[1], 16);
+  let g = parseInt(result[2], 16);
+  let b = parseInt(result[3], 16);
+  let cssString = "";
   (r /= 255), (g /= 255), (b /= 255);
-  var max = Math.max(r, g, b),
+  const max = Math.max(r, g, b),
     min = Math.min(r, g, b);
-  var h,
+  let h,
     s,
     l = (max + min) / 2;
   if (max == min) {
     h = s = 0; // achromatic
   } else {
-    var d = max - min;
+    const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
       case r:
@@ -138,12 +138,12 @@ export const HSLToHex = (h: number, s: number, l: number) => {
 };
 
 export const hexToRgb = (hex: string) => {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),
@@ -154,16 +154,19 @@ export const hexToRgb = (hex: string) => {
 };
 
 export const luminanceFromRgb = (r: string, g: string, b: string) => {
-  var a = [r, g, b].map(function (v) {
+  const a = [Number(r), Number(g), Number(b)].map(function (v) {
     v /= 255;
     return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
   });
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
 
-export const luminanceFromHex = (hex: string) => {
+export const luminanceFromHex = (hex: CssColor) => {
   const rgb = hexToRgb(hex);
-  return luminanceFromRgb(rgb.r.toString(), rgb.g.toString(), rgb.b.toString());
+  if (rgb) {
+    return luminanceFromRgb(rgb.r.toString(), rgb.g.toString(), rgb.b.toString());
+  }
+  return null;
 };
 
 export const getRatioFromLum = (lum1: number, lum2: number) => {
@@ -171,7 +174,7 @@ export const getRatioFromLum = (lum1: number, lum2: number) => {
 };
 
 export const getLightnessFromHex = (hex: string) => {
-  var conv = new Hsluv();
+  const conv = new Hsluv();
   conv.hex = hex;
   conv.hexToHsluv();
   return Number(conv.hsluv_l.toFixed(0));
@@ -181,8 +184,8 @@ export const getContrastFromHex = (
   mainColor: CssColor,
   backgroundColor: CssColor
 ) => {
-  let lum1 = luminanceFromHex(mainColor);
-  let lum2 = luminanceFromHex(backgroundColor);
+  const lum1 = luminanceFromHex(mainColor);
+  const lum2 = luminanceFromHex(backgroundColor);
   return getRatioFromLum(lum1, lum2);
 };
 
@@ -191,27 +194,27 @@ export const getContrastFromLightness = (
   mainColor: CssColor,
   backgroundColor: CssColor
 ) => {
-  var conv = new Hsluv();
+  const conv = new Hsluv();
   conv.hex = mainColor;
   conv.hexToHsluv();
   conv.hsluv_l = lightness;
   conv.hsluvToHex();
-  let lightMainColor = conv.hex;
-  let lum1 = luminanceFromHex(lightMainColor);
-  let lum2 = luminanceFromHex(backgroundColor);
-  let ratio = getRatioFromLum(lum1, lum2);
+  const lightMainColor = conv.hex;
+  const lum1 = luminanceFromHex(lightMainColor);
+  const lum2 = luminanceFromHex(backgroundColor);
+  const ratio = getRatioFromLum(lum1, lum2);
 
   return ratio;
 };
 
 export const lightenDarkThemeColor = (color: CssColor) => {
-  let lightness = getLightnessFromHex(color);
+  const lightness = getLightnessFromHex(color);
 
   if (lightness > 45) {
     return color;
   }
 
-  var conv = new Hsluv();
+  const conv = new Hsluv();
   conv.hex = color;
   conv.hexToHsluv();
   conv.hsluv_l = conv.hsluv_l + 10;

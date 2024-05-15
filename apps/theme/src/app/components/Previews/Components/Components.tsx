@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import classes from "./Components.module.css";
 import cn from "classnames";
 import {
   Checkbox,
@@ -10,7 +9,6 @@ import {
   Button,
   Table,
   Search,
-  DropdownMenu,
   NativeSelect,
   Pagination,
   Divider,
@@ -22,6 +20,8 @@ import {
   Link,
 } from "@digdir/designsystemet-react";
 import { useState } from "react";
+
+import classes from "./Components.module.css";
 
 export const Components = () => {
   const [radioValue, setRadioValue] = useState("vanilje");
