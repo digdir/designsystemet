@@ -1,5 +1,5 @@
 import { BlogArticleLayout } from '@layouts';
-import { Image } from '@components';
+import { Image, ResponsiveIframe } from '@components';
 import { Contributors } from '@blog';
 
 export default ({ children }) => (
@@ -11,7 +11,7 @@ export default ({ children }) => (
     author='Designsystemet'
     imageSrc='/img/bloggen/v1-front.png'
     imageAlt='Illustrasjon av Designsystemet V1 og emojis som feirer.'
-    imageCaption='Tusen takk til alle som har bidra til å lande første versjon!'
+    imageCaption='Etter over 2000 issues og PRs er vi endelig ute av Beta! Tusen takk til alle som har bidratt til å lande første versjon! '
   />
 );
 
@@ -19,17 +19,40 @@ Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibi
 
 ## Hva er nytt?
 
-Versjon 1 skal være mer stabil og støtte tematisering ytterligere.
+Versjon 1 skal være mer stabil og støtte flerdimensjonal tematisering.
 
 ### Nytt fargesystem og token-struktur
 
-Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Fargesystemet tar utgangspunkt i organisasjonens brandfarge, samtidig som farger tiltenkt tekst alltid har god nok kontrast mot farger tiltenkt bakgrunner. Gjennom [brukertester](/bloggen/2024/bachelor-temavelger#brukertester-og-videre-arbeid) har det blant annet kommet frem at `action`-fargene var forvirrende. Denne er nå byttet ut med `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
+Flere intervjuer og [brukertester](/bloggen/2024/bachelor-temavelger#brukertester-og-videre-arbeid) avdekket at det første fargesystemet ikke løste alle behov. Fargene hadde heller ikke alltid forventet oppførsel, og strukuren var noe tungtvindt å forholde seg til.
 
-- Info om fargesystemet
-- Info om token-strukturen
-- Støtte for dark-mode og contrast-mode.
+Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Å definere en solid Token-arkitektur med flerdimensjonale temaer krever overraskende mye nerding - inkludert søvnløse netter og tegninger i dusjen. 🤓 Ikke bare skal tokens fungere som bro mellom design og kode, det ligger også ekstremt mye tankearbeid i hvordan fargesystemet struktureres for at det skal kunne ivareta kontrastkrav, støtte multibranding og ulike modes (darkmode, contrastmode, etc.)
 
-### Nytt i Figma
+Vi har latt oss inspirere av [USWDS sine "magic numbers](https://designsystem.digital.gov/design-tokens/color/overview/)" for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+I forbindelse med det nye fargesystemet har vi utviklet et verktøy der du kan teste dine brand-farger og hvordan det påvirker komponentene. Verktøyet er under arbeid, men er mulig å teste allerede nå. 👀
+
+<ResponsiveIframe
+  src='/img/bloggen/theme-generator.mp4'
+  title='Skjermopptak fra et verktøy der du kan se komponentene med dine egne farger.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+👉🏻[theme.designsystemet.no](https://theme.designsystemet.no/)👈🏻
+
+#### Action 🪦
+
+Et annet forvirrende element med det forrige fargesystemet var `action`-fargen, som kun endret fargen på `Button`-komponenten. `Action` er nå byttet ut med `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
+
+### Hva må du gjøre for å ta i bruk den nye arkitekturen?
+
+Skriv om migreringsscript til nye tokens? Attack feet behind the couch destroy couch flop over give attitude hide when guests come over hopped up on goofballs hunt anything that moves sweet beast under the bed claw drapes leave dead animals as gifts.
+
+Chase mice chase imaginary bugs why must they do that shake treat stand in front of the computer screen chew ipad power cord need to chase tail lick butt all of a sudden go crazy.
+
+## Nytt i Figma
 
 Alle endrigner vi gjør i Figma-filen "[Core UI Kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit)" dokumenteres i Github.
 
@@ -37,7 +60,7 @@ Alle endrigner vi gjør i Figma-filen "[Core UI Kit](https://www.figma.com/commu
   src='/img/bloggen/FigmaCommunity.png'
   alt='Skjermbilde av Figma Community-filen med sirkel rundt "Se hele endringsloggen"'
   caption='Ved å trykke "Se full endringslogg på Git" kan du se alle endringene som er gjort i filen siden forrige versjon.'
-  boxShadow={true}
+  boxShadow={false}
 />
 
 #### Button delt i to
@@ -48,12 +71,8 @@ Alle endrigner vi gjør i Figma-filen "[Core UI Kit](https://www.figma.com/commu
   src='/img/bloggen/button.png'
   alt='Skjermbilde av Button-komponenten i Figma'
   caption='Button-komponenten er forenklet og knapp med kun ikon kommer nå som en egen komponent.'
-  boxShadow={false}
+  boxShadow={true}
 />
-
-## Hva må du gjøre?
-
-- migreringsscript til nye tokens?
 
 ## Om versjonering fremover
 
@@ -76,7 +95,7 @@ Bli gjerne med å [foreslå og stem frem komponenter her](https://github.com/dig
 
 ### Samarbeid om mønstre og god praksis
 
-Designsystemet fortsetter det gode samarbeidet med Nav, Skatt, Brreg, Oslog kommune og Politiet om å etablere felles mønstre. Det er for tiden igangsatt en tverretatlig arbeidsgruppe som jobber med Feilmeldinger. Du kan følge arbeidet i [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) og [Github](https://github.com/digdir/designsystemet/discussions/categories/m%C3%B8nster?discussions_q=is%3Aopen+sort%3Atop+category%3AM%C3%B8nster).
+Designsystemet fortsetter det gode samarbeidet med Nav, Skatt, Brreg, Oslo kommune og Politiet om å etablere felles mønstre. En tverretatlig arbeidsgruppe jobber med Feilmeldinger nå. Du kan følge arbeidet i [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) og [Github](https://github.com/digdir/designsystemet/discussions/categories/m%C3%B8nster?discussions_q=is%3Aopen+sort%3Atop+category%3AM%C3%B8nster).
 
 ## Takk for samarbeidet så langt! 🤝
 
