@@ -14,7 +14,7 @@ type IncludeReferences = (token: TransformedToken) => boolean;
  */
 export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  formatter: async function ({ dictionary, file, options }) {
+  format: async function ({ dictionary, file, options }) {
     const { allTokens, unfilteredTokens } = dictionary;
     const { usesDtcg, outputReferences } = options;
     const includeReferences = options.includeReferences as IncludeReferences;
@@ -32,29 +32,31 @@ export const scopedReferenceVariables: Format = {
       format: 'css',
     });
 
-    const tokens = allTokens
-      .map((token) => {
-        const originalValue = (
-          usesDtcg ? token.original.$value : token.original.value
-        ) as string;
+    const parseToken = (token: TransformedToken, ignoreSource?: boolean) => {
+      const originalValue = (
+        usesDtcg ? token.original.$value : token.original.value
+      ) as string;
 
-        if (usesReferences(originalValue) && includeReferences(token)) {
-          const refs = getReferences(
-            originalValue,
-            unfilteredTokens ? unfilteredTokens : {},
-          );
+      if (usesReferences(originalValue) && includeReferences(token)) {
+        const refs = getReferences(
+          originalValue,
+          unfilteredTokens ? unfilteredTokens : {},
+        );
 
-          referencedTokens = [
-            ...referencedTokens,
-            ...refs.filter((x) => x.isSource),
-          ];
+        referencedTokens = [
+          ...referencedTokens,
+          ...refs.filter((x) => x.isSource),
+        ];
 
-          return formatWithReference(token);
-        }
+        return formatWithReference(token);
+      }
 
-        return !token.isSource && format(token);
-      })
-      .filter((x) => x);
+      if (ignoreSource && !token.isSource) {
+        return format(token);
+      }
+    };
+
+    const tokens = allTokens.map((t) => parseToken(t, true)).filter((x) => x);
 
     const referenceTokens = referencedTokens
       .reduce<TransformedToken[]>((acc, token) => {
@@ -67,17 +69,20 @@ export const scopedReferenceVariables: Format = {
       .map((token) => format(token))
       .filter((formattedValue) => formattedValue);
 
-    return fileHeader({ file }).then(
-      (fileHeaderText) =>
-        fileHeaderText +
-        ':root {\n' +
-        '  /** Referenced source tokens */ \n' +
-        '  /** DO NOT OVERRIDE */ \n' +
-        referenceTokens.join('\n') +
-        '\n\n  /** Tokens */ \n' +
-        tokens.join('\n') +
-        '\n}\n',
-    );
+    return fileHeader({ file }).then((fileHeaderText) => {
+      const content = `
+${fileHeaderText}
+:root {
+  /** Referenced source tokens */
+  /** DO NOT OVERRIDE */
+${referenceTokens.join('\n')}
+  /** Tokens */
+${tokens.join('\n')}
+}
+      `;
+
+      return content;
+    });
   },
 };
 
@@ -98,7 +103,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const groupedTokens: Format = {
   name: 'groupedTokens',
-  formatter: async function ({ dictionary, file }) {
+  format: async function ({ dictionary, file }) {
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',

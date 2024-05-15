@@ -349,19 +349,19 @@
       "type": "borderRadius"
     },
     "xl": {
-      "value": "{borderRadius.xl}",
+      "value": "{borderRadius.12}",
       "type": "borderRadius"
     },
     "2xl": {
-      "value": "{borderRadius.2xl}",
+      "value": "{borderRadius.16}",
       "type": "borderRadius"
     },
     "3xl": {
-      "value": "{borderRadius.3xl}",
+      "value": "{borderRadius.24}",
       "type": "borderRadius"
     },
     "4xl": {
-      "value": "{borderRadius.4xl}",
+      "value": "{borderRadius.32}",
       "type": "borderRadius"
     },
     "full": {

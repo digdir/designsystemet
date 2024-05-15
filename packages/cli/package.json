@@ -13,7 +13,7 @@
   },
   "scripts": {
     "designsystemet": "esno ./bin/designsystemet.ts",
-    "build": "yarn clean && yarn designsystemet tokens -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
+    "build": "yarn clean && yarn designsystemet tokens -t ../../design-tokens",
     "prepublish": "tsc",
     "clean": "yarn workspace @digdir/designsystemet-theme clean",
     "css-light-dark-codemod": "esno ./bin/designsystemet.ts migrate tokens-rename-light-dark"
@@ -29,14 +29,14 @@
   },
   "devDependencies": {
     "@commander-js/extra-typings": "^12.0.1",
-    "@tokens-studio/sd-transforms": "^0.15.2",
+    "@tokens-studio/sd-transforms": "^0.16.0",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.12.7",
     "@types/ramda": "^0.29.9",
     "commander": "^12.0.0",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
-    "style-dictionary": "^4.0.0-prerelease.26",
+    "style-dictionary": "^4.0.0-prerelease.27",
     "typescript": "^5.4.5"
   }
 }

@@ -3093,7 +3093,7 @@ export const  color = [
       "subtle"
     ]
   }
-] 
+]
 
 export const  typography = [
   {
@@ -3864,7 +3864,7 @@ export const  typography = [
       "small"
     ]
   }
-] 
+]
 
 export const  opacity = [
   {
@@ -3883,7 +3883,7 @@ export const  opacity = [
       "disabled"
     ]
   }
-] 
+]
 
 export const  borderRadius = [
   {
@@ -4030,7 +4030,7 @@ export const  borderRadius = [
       "full"
     ]
   }
-] 
+]
 
 export const  spacing = [
   {
@@ -4353,7 +4353,7 @@ export const  spacing = [
       "30"
     ]
   }
-] 
+]
 
 export const  sizing = [
   {
@@ -4676,7 +4676,7 @@ export const  sizing = [
       "30"
     ]
   }
-] 
+]
 
 export const  borderWidth = [
   {
@@ -4727,7 +4727,7 @@ export const  borderWidth = [
       "tab_focus"
     ]
   }
-] 
+]
 
 export const  boxShadow = [
   {
@@ -4810,4 +4810,4 @@ export const  boxShadow = [
       "xlarge"
     ]
   }
-] 
+]
