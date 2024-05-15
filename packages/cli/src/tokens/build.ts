@@ -112,6 +112,9 @@ const getStorefrontConfig = ({
           {
             destination: `${fileName}.ts`,
             format: groupedTokens.name,
+            filter: (token) => {
+              return R.not(R.includes('themes', token.filePath));
+            },
           },
         ],
         options: {
