@@ -3,6 +3,8 @@ import Link from 'next/link';
 import classes from './Header.module.css';
 import { usePathname } from 'next/navigation';
 
+import classes from "./Header.module.css";
+
 export const Header = () => {
   const currentPath = usePathname();
   return (

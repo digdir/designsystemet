@@ -1,7 +1,9 @@
-import classes from "./Group.module.css";
-import { Color } from "../Color/Color";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import cn from "classnames";
+
+import { Color } from "../Color/Color";
+
+import classes from "./Group.module.css";
 
 type ColorType = {
   color: CssColor;
