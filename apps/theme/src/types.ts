@@ -1,6 +1,6 @@
-import type { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
-export type modeType = "light" | "dark" | "contrast";
+export type modeType = 'light' | 'dark' | 'contrast';
 
 export type colorType = {
   color: CssColor;
@@ -8,7 +8,7 @@ export type colorType = {
   lightness: string;
 };
 
-export type colorsType = {
+export type ColorsType = {
   background: { subtle: colorType; default: colorType };
   component: { normal: colorType; hover: colorType; active: colorType };
   border: { subtle: colorType; default: colorType; strong: colorType };

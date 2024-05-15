@@ -1,21 +1,18 @@
 import type {
   ContrastColorValue,
-  CssColor} from "@adobe/leonardo-contrast-colors";
-import {
-  BackgroundColor,
-  Color,
-  Theme,
-} from "@adobe/leonardo-contrast-colors";
+  CssColor,
+} from '@adobe/leonardo-contrast-colors';
+import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 
-import type { modeType, colorsType } from "@/types";
+import type { ColorsType, modeType } from '@/types';
 
 import {
   getContrastFromHex,
   getContrastFromLightness,
   getLightnessFromHex,
-} from "./ColorUtils";
+} from './ColorUtils';
 
-type outputType = "flat" | "object";
+type outputType = 'flat' | 'object';
 
 /**
  *
@@ -25,11 +22,12 @@ type outputType = "flat" | "object";
 export const generateColorScale = (
   color: CssColor,
   mode: modeType,
-  outputType: outputType = "object"
-) => {
+  outputType: outputType = 'object',
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+): ColorsType | CssColor[] => {
   const leoBackgroundColor = new BackgroundColor({
-    name: "backgroundColor",
-    colorKeys: ["#ffffff"],
+    name: 'backgroundColor',
+    colorKeys: ['#ffffff'],
     ratios: [1],
   });
 
@@ -38,24 +36,24 @@ export const generateColorScale = (
   const solidContrast = getContrastFromLightness(
     colorLightness,
     color,
-    leoBackgroundColor.colorKeys[0]
+    leoBackgroundColor.colorKeys[0],
   );
   const solidHoverContrast = getContrastFromLightness(
     colorLightness - multiplier,
     color,
-    leoBackgroundColor.colorKeys[0]
+    leoBackgroundColor.colorKeys[0],
   );
   const solidActiveContrast = getContrastFromLightness(
     colorLightness - multiplier * 2,
     color,
-    leoBackgroundColor.colorKeys[0]
+    leoBackgroundColor.colorKeys[0],
   );
 
   let lightnessScale: number[] = [];
 
-  if (mode === "light") {
+  if (mode === 'light') {
     lightnessScale = [100, 96, 93, 86, 79, 81, 58, 35, 34, 20];
-  } else if (mode === "dark") {
+  } else if (mode === 'dark') {
     lightnessScale = [10, 14, 20, 24, 28, 35, 45, 55, 70, 82];
   } else {
     lightnessScale = [2, 7, 12, 15, 18, 45, 55, 65, 80, 92];
@@ -64,21 +62,21 @@ export const generateColorScale = (
   const getColorContrasts = (
     color: CssColor,
     lightnessScale: number[],
-    backgroundColor: CssColor
+    backgroundColor: CssColor,
   ) => {
     return lightnessScale.map((lightness) =>
-      getContrastFromLightness(lightness, color, backgroundColor)
+      getContrastFromLightness(lightness, color, backgroundColor),
     );
   };
 
   const colors = new Color({
-    name: "color",
+    name: 'color',
     colorKeys: [color],
     ratios: [
       ...getColorContrasts(
         color,
         lightnessScale.slice(0, 8),
-        leoBackgroundColor.colorKeys[0]
+        leoBackgroundColor.colorKeys[0],
       ),
       solidContrast,
       solidHoverContrast,
@@ -86,7 +84,7 @@ export const generateColorScale = (
       ...getColorContrasts(
         color,
         lightnessScale.slice(8),
-        leoBackgroundColor.colorKeys[0]
+        leoBackgroundColor.colorKeys[0],
       ),
     ],
   });
@@ -97,16 +95,16 @@ export const generateColorScale = (
     lightness: 100,
   });
 
-  if (outputType === "flat") {
+  if (outputType === 'flat') {
     const flatArr = theme.contrastColorValues;
-    flatArr.push(setContrastOneColor(color, "first").color as CssColor);
-    flatArr.push(setContrastOneColor(color, "second").color as CssColor);
+    flatArr.push(setContrastOneColor(color, 'first').color as CssColor);
+    flatArr.push(setContrastOneColor(color, 'second').color as CssColor);
     return theme.contrastColorValues;
   }
 
   const themeValues = theme.contrastColors[1].values;
 
-  const output: colorsType = {
+  return {
     background: {
       subtle: setColorObject(themeValues[0]),
       default: setColorObject(themeValues[1]),
@@ -125,74 +123,68 @@ export const generateColorScale = (
       normal: setColorObject(themeValues[8]),
       hover: setColorObject(themeValues[9]),
       active: setColorObject(themeValues[10]),
-      contrastOne: setContrastOneColor(color, "first"),
-      contrastTwo: setContrastOneColor(color, "second"),
+      contrastOne: setContrastOneColor(color, 'first'),
+      contrastTwo: setContrastOneColor(color, 'second'),
     },
     text: {
       subtle: setColorObject(themeValues[11]),
       default: setColorObject(themeValues[12]),
     },
   };
-
-  return output;
 };
 
 export const setContrastOneColor = (
   color: CssColor,
-  type: "first" | "second",
-  dev: boolean = false
+  type: 'first' | 'second',
+  dev: boolean = false,
 ) => {
-  const outputColor = {
-    color: "#ffffff",
-    contrast: "d",
-    lightness: "5",
-  };
-  const contrastWhite = getContrastFromHex(color, "#ffffff");
-  const contrastBlack = getContrastFromHex(color, "#000000");
+  const contrastWhite = getContrastFromHex(color, '#ffffff');
+  const contrastBlack = getContrastFromHex(color, '#000000');
   const colorLightness = getLightnessFromHex(color);
   const doubleALightnessModifier = 50;
   let targetLightness = 0;
   const contrastDirection =
-    contrastWhite >= contrastBlack ? "lighten" : "darken";
+    contrastWhite >= contrastBlack ? 'lighten' : 'darken';
 
   targetLightness =
-    contrastDirection === "lighten"
+    contrastDirection === 'lighten'
       ? colorLightness + doubleALightnessModifier
       : colorLightness - doubleALightnessModifier;
 
   if (dev) {
-    console.log("targetLightness before: ", targetLightness);
-    console.log("contrastDirection: ", contrastDirection);
+    console.log('targetLightness before: ', targetLightness);
+    console.log('contrastDirection: ', contrastDirection);
   }
 
-  if (type === "first") {
-    if (contrastDirection === "lighten") {
+  if (type === 'first') {
+    if (contrastDirection === 'lighten') {
       targetLightness = 98;
     } else {
       targetLightness = 15;
     }
   }
 
-  const t = createTheme(color, targetLightness);
-  outputColor.color = t;
-
   if (dev) {
-    console.log("targetLightness: ", targetLightness);
+    console.log('targetLightness: ', targetLightness);
   }
 
-  return outputColor;
+  return {
+    color: createTheme(color, targetLightness),
+    contrast: 'd',
+    lightness: '5',
+  };
 };
 
 const createTheme = (color: CssColor, lightness: number) => {
   const leoBackgroundColor = new BackgroundColor({
-    name: "backgroundColor",
-    colorKeys: ["#ffffff"],
+    name: 'backgroundColor',
+    colorKeys: ['#ffffff'],
     ratios: [1],
   });
   const colors = new Color({
-    name: "color",
+    name: 'color',
     colorKeys: [color],
-    ratios: [getContrastFromLightness(lightness, color, "#ffffff")],
+    ratios: [getContrastFromLightness(lightness, color, '#ffffff')],
   });
 
   const theme = new Theme({
@@ -205,7 +197,7 @@ const createTheme = (color: CssColor, lightness: number) => {
 
 const setColorObject = (themeValues: ContrastColorValue) => {
   return {
-    color: themeValues.value,
+    color: themeValues.value as CssColor,
     contrast: themeValues.contrast.toString(),
     lightness: getLightnessFromHex(themeValues.value).toString(),
   };
