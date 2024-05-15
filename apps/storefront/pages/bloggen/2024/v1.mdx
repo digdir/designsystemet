@@ -10,22 +10,44 @@ export default ({ children }) => (
     date='29. mai 2024'
     author='Designsystemet'
     imageSrc='/img/bloggen/v1-front.png'
-    imageAlt='...'
-    imageCaption='...'
+    imageAlt='Illustrasjon av Designsystemet V1 og emojis som feirer.'
+    imageCaption='Versjon 1 skal være mer stabil og støtte tematisering ytterligere. Tusen takk til alle som har bidra til å lande første versjon!'
   />
 );
 
-Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere, teste den underliggende strukturen og hvordan komponentene fungerer sammen. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå er vi endelig over målstreken og har publisert en første versjon uten betamerke! 🎉 Versjon 1 skal være mer stabil og Tusen takk til alle som har bidra til å lande første versjon!
+Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere, teste den underliggende strukturen og hvordan komponentene fungerer sammen. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå er vi endelig over målstreken og har publisert en første versjon uten betamerke! 🎉
 
 ## Hva er nytt?
 
 ### Nytt fargesystem og token-struktur
 
-Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Fargesystemet tar utgangspunkt i organisasjonens brandfarge, samtidig som farger tiltenkt tekst alltid har god nok kontrast mot farger tiltenkt bakgrunner. Gjennom [brukertester](/bloggen/2024/bachelor-temavelger#brukertester-og-videre-arbeid) har det blant annet kommet frem at `action`-fargene var forvirrende. Denne er nå byttet ut med en `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
+Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Fargesystemet tar utgangspunkt i organisasjonens brandfarge, samtidig som farger tiltenkt tekst alltid har god nok kontrast mot farger tiltenkt bakgrunner. Gjennom [brukertester](/bloggen/2024/bachelor-temavelger#brukertester-og-videre-arbeid) har det blant annet kommet frem at `action`-fargene var forvirrende. Denne er nå byttet ut med `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
 
 - Info om fargesystemet
 - Info om token-strukturen
 - Støtte for dark-mode og contrast-mode.
+
+### Nytt i Figma
+
+Alle endrigner vi gjør i Figma-filen "[Core UI Kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit)" dokumenteres i Github.
+
+<Image
+  src='/img/bloggen/FigmaCommunity.png'
+  alt='Skjermbilde av Figma Community-filen med sirkel rundt "Se hele endringsloggen"'
+  caption='Ved å trykke "Se full endringslogg på Git" kan du se alle endringene som er gjort i filen siden forrige versjon.'
+  boxShadow={false}
+/>
+
+#### Button delt i to
+
+`Button` var en kompleks komponent i Figma. For å forenkle den har vi delt den opp i to komponenter. I Button-komponenten kan du aktivere ikon til venstre eller høyre for teksten. Skal du ha en knapp med kun ikon bruker du `IconButton` som har et større ikon. Button er fortsatt kun èn komponent i kode, da ikon-størrelser kan håndteres på en bedre måte der.
+
+<Image
+  src='/img/bloggen/button.png'
+  alt='Skjermbilde av Button-komponenten i Figma'
+  caption='Button-komponenten er forenklet og knapp med kun ikon kommer nå som en egen komponent.'
+  boxShadow={false}
+/>
 
 ## Hva må du gjøre?
 
@@ -39,17 +61,31 @@ Skriv om hvordan vi kommer til å håndtere nye endringer fremover både i Figma
 
 Arbeidet med å bygge ut og vedlikeholde designsystemet er en kontinuerlig jobb, og et arbeid vi fortsetter å gjøre sammen med dere.
 
-- Om roadmap og planer fremover
-- Om bidrag og info om mer formelt samarbeid
+Vi kommer til å fokusere på å forbedre dokumentasjon og retningslinjer ytterligere den kommende måneden. Fra høsten av blir det fokus på å få inn nye komponenter. Se [Designsystemets roadmap](https://github.com/orgs/digdir/projects/3/views/30) for mer informasjon.
+
+Av nye komponenter kommer blant annet:
+
+- `Badge`
+- `Avatar`
+- `Stepper`
+- `Breadcrumb`
+
+Bli gjerne med å [foreslå og stem frem komponenter her](https://github.com/digdir/designsystemet/discussions/categories/components?discussions_q=is%3Aopen+category%3AComponents+sort%3Atop).
+
+### Samarbeid om mønstre og god praksis
+
+Designsystemet fortsetter det gode samarbeidet med Nav, Skatt, Brreg, Oslog kommune og Politiet om å etablere felles mønstre. Det er for tiden igangsatt en tverretatlig arbeidsgruppe som jobber med Feilmeldinger. Du kan følge arbeidet i [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) og [Github](https://github.com/digdir/designsystemet/discussions/categories/m%C3%B8nster?discussions_q=is%3Aopen+sort%3Atop+category%3AM%C3%B8nster).
+
+## Takk for samarbeidet så langt!
+
+I tillegg til teamet som jobber daglig med Designsystem har vi også en veldig viktig gjeng med bidragsytere som bidrar med både kode, innsikt, innspill og design. Tusen takk!
 
 <Image
   src='/img/bloggen/teamet.jpg'
   alt='Bilde av teamet - Marianne, Roy Halvor, Øyvind, Lasse, Michael og Tobias.'
-  caption='Kjerneteamet som jobber med Designsystemet. Øverst fra venstre: Marianne Røsvik (Digdir, Produkteier), Roy Halvor Frimanslund (Brukskvalitetsansvarlig og UX-Lead i Brønnøysundregistrene). Nederst fra venstre: Øyvind Thune (Digdir, Design og Frontend), Lasse Febakke Straum (Digdir, Design Lead), Michael Marszalek (Tech Lead). I tillegg til disse har vi også en veldig viktig gjeng med bidragsytere som bidrar med både kode, innsikt, innspill og design.'
+  caption='Teamet som jobber med Designsystemet. Øverst fra venstre: Marianne Røsvik (Digdir, Produkteier), Roy Halvor Frimanslund (Brukskvalitetsansvarlig og UX-Lead i Brønnøysundregistrene). Nederst fra venstre: Øyvind Thune (Digdir, Design og Frontend), Lasse Febakke Straum (Digdir, Design Lead), Michael Marszalek (Tech Lead). '
   boxShadow={false}
 />
-
-Tusen takk for samarbeidet så langt!
 
 <Contributors
   authors={[
