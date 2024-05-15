@@ -20,8 +20,7 @@ const basePxFontSize = 16;
 const separator = '_';
 
 const fileHeader = () => [
-  'Do not edit directly',
-  `These files are generated from design tokens defined in Figma using Token Studio`,
+  `These files are generated from design tokens defind using Token Studio`,
 ];
 
 StyleDictionary.registerTransform(sizeRem);

@@ -69,20 +69,17 @@ export const scopedReferenceVariables: Format = {
       .map((token) => format(token))
       .filter((formattedValue) => formattedValue);
 
-    return fileHeader({ file }).then((fileHeaderText) => {
-      const content = `
+    return fileHeader({ file }).then(
+      (fileHeaderText) => `
 ${fileHeaderText}
 :root {
-  /** Referenced source tokens */
-  /** DO NOT OVERRIDE */
+  /** Referenced tokens */
 ${referenceTokens.join('\n')}
   /** Tokens */
 ${tokens.join('\n')}
 }
-      `;
-
-      return content;
-    });
+      `,
+    );
   },
 };
 
