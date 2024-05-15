@@ -10,7 +10,6 @@ import {
   Tag,
   Combobox,
   Chip,
-  type ButtonProps,
 } from '../src/components';
 
 export default {
@@ -18,7 +17,7 @@ export default {
 } as Meta;
 
 export const MediumRow: StoryFn<{
-  size: ButtonProps['size'];
+  size: 'small' | 'medium' | 'large';
   direction: 'column' | 'row';
 }> = ({ size, direction = 'row' }) => {
   return (
