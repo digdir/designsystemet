@@ -12,7 +12,7 @@ export type LabelProps = {
   /**
    * Changes text sizing
    *
-   * @default `md`
+   * @default md
    * @note `xsmall`, `small`, `medium`, `large` is deprecated
    */
   size?: 'xs' | 'sm' | 'md' | 'lg' | OldLabelSizes;
