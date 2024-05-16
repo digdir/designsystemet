@@ -47,7 +47,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
               <span>{data.date && <div>{data.date}</div>}</span>
             </div>
             <Heading
-              levle={1}
+              level={1}
               size='large'
               className={classes.title}
             >

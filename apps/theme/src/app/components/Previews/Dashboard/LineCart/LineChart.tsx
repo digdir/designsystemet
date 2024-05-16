@@ -5,9 +5,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
+
 import classes from "./LineChart.module.css";
 const data = [
   {

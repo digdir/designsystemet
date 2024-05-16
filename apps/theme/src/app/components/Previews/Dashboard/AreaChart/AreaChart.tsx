@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
 import classes from "./AreaChart.module.css";
 
 const data = [
