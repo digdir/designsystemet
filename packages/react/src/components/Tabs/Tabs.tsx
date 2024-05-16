@@ -14,7 +14,7 @@ export type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * Changes items size and paddings
-   * @default 'md'
+   * @default md
    * @note `small`, `medium`, `large` is deprecated
    */
   size?: 'sm' | 'md' | 'lg' | OldTabSize;
