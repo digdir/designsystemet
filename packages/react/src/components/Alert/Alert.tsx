@@ -45,7 +45,7 @@ export type AlertProps = {
    * Sets the size of the alert.
    * Does not affect font size.
    *
-   * @default 'md'
+   * @default md
    *
    * @note `small`, `medium`, `large` is deprecated
    */
