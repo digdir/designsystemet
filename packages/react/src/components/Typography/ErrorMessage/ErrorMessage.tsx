@@ -3,9 +3,17 @@ import { forwardRef } from 'react';
 import cl from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
+import { getSize } from '../../../utilities/getSize';
+
+type OldErrorMessageSizes = 'xsmall' | 'small' | 'medium' | 'large';
+
 export type ErrorMessageProps = {
-  /** Changes text sizing */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /**
+   * Changes text sizing
+   * @default md
+   * @note `xsmall`, `small`, `medium`, `large` is deprecated
+   */
+  size?: 'xs' | 'sm' | 'md' | 'lg' | OldErrorMessageSizes;
   /** Adds margin-bottom */
   spacing?: boolean;
   /** Toggle error color */
@@ -19,11 +27,9 @@ export type ErrorMessageProps = {
 
 /** Use `ErrorMessage` to display text as error message. */
 export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
-  (
-    { className, size = 'medium', spacing, asChild, error = true, ...rest },
-    ref,
-  ) => {
+  ({ className, spacing, asChild, error = true, ...rest }, ref) => {
     const Component = asChild ? Slot : 'div';
+    const size = getSize(rest.size || 'md');
 
     return (
       <Component
