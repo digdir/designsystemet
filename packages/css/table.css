@@ -17,15 +17,15 @@
     border-bottom: 0;
   }
 
-  .fds-table--small {
+  .fds-table--sm {
     --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
   }
 
-  .fds-table--medium {
+  .fds-table--md {
     --table-padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }
 
-  .fds-table--large {
+  .fds-table--lg {
     --table-padding: var(--fds-spacing-3) var(--fds-spacing-3);
   }
 
