@@ -17,7 +17,7 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
-    size: 'medium',
+    size: 'md',
     description: '',
     error: '',
     hideLabel: false,
