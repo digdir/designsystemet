@@ -4,8 +4,8 @@ import { useState, forwardRef, createContext } from 'react';
 
 import { getSize } from '../../utilities/getSize';
 
-type ListContextType = {
-  size: 'sm' | 'md' | 'lg' | OldListSizes;
+export type ListContextType = {
+  size: 'sm' | 'md' | 'lg';
   headingId?: string;
   setHeadingId: (id: string) => void;
 };
@@ -25,7 +25,7 @@ export type ListProps = {
    *
    * @note `small`, `medium` and `large` are deprecated
    */
-  size?: ListContextType['size'];
+  size?: ListContextType['size'] | OldListSizes;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false

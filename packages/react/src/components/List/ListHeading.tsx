@@ -2,18 +2,15 @@ import { forwardRef, useEffect, useMemo, useContext, useId } from 'react';
 
 import { Heading, type HeadingProps } from '../Typography';
 
-import type { ListProps, OldListSizes } from './ListRoot';
+import type { ListContextType } from './ListRoot';
 import { ListContext } from './ListRoot';
 
 const HEADING_SIZE_MAP: {
-  [key in Exclude<
-    NonNullable<ListProps['size']>,
-    OldListSizes
-  >]: HeadingProps['size'];
+  [key in NonNullable<ListContextType['size']>]: HeadingProps['size'];
 } = {
-  sm: 'xxsmall',
-  md: 'xsmall',
-  lg: 'small',
+  sm: '2xs',
+  md: 'xs',
+  lg: 'sm',
 } as const;
 
 export type ListHeadingProps = HeadingProps;
