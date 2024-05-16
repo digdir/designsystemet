@@ -1,8 +1,7 @@
 import lightDark from './migrations/light-dark.js';
+import tokensv2 from './migrations/tokens-v2.js';
 
 export default {
   'tokens-rename-light-dark': lightDark,
-  'someother-script': () => {
-    console.log('yay');
-  },
+  'tokens-v2': tokensv2,
 };
