@@ -21,7 +21,7 @@ export const Preview: Story = {
   args: {
     title: 'Help text title',
     children: 'Help text content',
-    size: 'medium',
+    size: 'md',
   },
   decorators,
 };
@@ -30,7 +30,7 @@ export const Portal: Story = {
   args: {
     title: 'Help text title',
     children: 'Help text content',
-    size: 'medium',
+    size: 'md',
     portal: true,
     placement: 'top',
   },
