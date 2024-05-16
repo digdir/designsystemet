@@ -25,7 +25,7 @@ export type PopoverProps = {
   open?: boolean;
   /**
    * Size of the popover
-   * @default medium
+   * @default md
    * @note `small`, `medium`, `large` is deprecated
    */
   size?: 'sm' | 'md' | 'lg' | OldPopoverSizes;
