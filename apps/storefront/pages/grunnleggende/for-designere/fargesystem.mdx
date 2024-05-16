@@ -20,13 +20,28 @@ export default ({ children }) => (
   />
 );
 
-Designsystemet baserer seg på et fargesystem der vi kan sikre at tekst alltid har god nok kontrast mot fargen den skal brukes på og at det finnes nok ulike farger for alle tilstander. Systemet støtter også kontrastmodus og dark-mode.
+Med et gjennomtenkt fargesystem vi kan sikre at tekst alltid har god nok kontrast mot fargen den skal brukes på og at det finnes nok ulike farger for alle tilstander.
 
-En profilveileder inneholder ofte kun et sett med primærfarger og sekundærfarger i et par forskjellige fargetoner. Å lage et digitalt produkt kun med disse fargene alene er vanskelig. For å kunne sikre riktig kontrast og korrekte farger for ulike tilstander, er vi avhengig av å definere flere variasjoner av profilfargene.
+En profilveileder inneholder ofte kun et sett med primærfarger og sekundærfarger i et par forskjellige fargetoner. Å lage et digitalt produkt kun med disse fargene alene er vanskelig. For å kunne sikre riktig kontrast og korrekte farger for ulike tilstander, er vi avhengig av å definere flere variasjoner av profilfargene. Bare button komponenten består av 6 ulike blåfarger:
 
-Som du ser i eksemplet trenger vi 8 farger bare for Button-komponenten.
+<Image
+  src='/img/button-colors.png'
+  alt='Skjermbildet viser button komponenten og alle de ulike farge-kodene den består av'
+  boxShadow={false}
+  caption='Som du ser i eksemplet trenger vi 6 ulike fargevariasjoner bare for Button-komponenten.
+'
+/>
 
-For å generere en skala som fungerer kan du bruke [Designsystemets fargeskala-generator](https://thuneer.github.io/designsystemet-colors/) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens primærfarge og evt sekundærfarger.
+Det ligger mye tankearbeid i hvordan fargesystemet skal struktureres for at det skal kunne ivareta kontrastkrav, støtte multibranding og ulike modes (darkmode, contrastmode, etc.). Vi har latt oss inspirere av [USWDS sine "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+<Image
+  src='/img/fargesystem.png'
+  alt='Skjermbildet viser et utsnitt fra fargegeneratoren med 5 fargepaletter.'
+  boxShadow={false}
+  caption='Fargesystemet bruker brand-fargen til å genere flere fargervarianter, slik at vi kan sikre god kontrast mellom tekst og bakgrunnsfarger.'
+/>
+
+For å generere en skala som fungerer kan du bruke [Designsystemets fargeskala-generator](https://thuneer.github.io/designsystemet-colors/) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens accent-farge og øvrige profil-farger.
 
 La oss se på et eksempel der vi legger inn fargekoden til Lånekassen i fargeskala-generatoren:
 
