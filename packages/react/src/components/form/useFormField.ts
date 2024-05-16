@@ -2,7 +2,11 @@ import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import cl from 'clsx';
 
+import { getSize } from '../../utilities/getSize';
+
 import { FieldsetContext } from './Fieldset/FieldsetContext';
+
+type OldFormFielSize = 'small' | 'medium' | 'large';
 
 export type FormFieldProps = {
   /** Error message for form field */
@@ -19,8 +23,12 @@ export type FormFieldProps = {
   id?: string;
   /** Toggle `readOnly` */
   readOnly?: boolean;
-  /** Changes field size and paddings */
-  size?: 'small' | 'medium' | 'large';
+  /**
+   * Changes field size and paddings
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldFormFielSize;
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
 export type FormField = {
@@ -56,12 +64,16 @@ export const useFormField = (
 
   const hasError = !disabled && !readOnly && !!(props.error || fieldset?.error);
 
+  const size = getSize(
+    props.size || fieldset?.size || 'md',
+  ) as FormFieldProps['size'];
+
   return {
     readOnly,
     hasError,
     errorId,
     descriptionId,
-    size: props?.size ?? fieldset?.size ?? 'medium',
+    size,
     inputProps: {
       id,
       disabled,
