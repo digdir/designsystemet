@@ -15,7 +15,7 @@ export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
 export type ChipGroupProps = {
   /**
    * Changes Chip size and gap between chips.
-   * @default 'md'
+   * @default md
    * @note `small`, `medium`, `large` is deprecated
    */
   size?: ChipGroupContext['size'];
