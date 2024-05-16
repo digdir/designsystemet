@@ -33,7 +33,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const {
       inputProps,
       descriptionId,
-      size = 'medium',
+      size = 'md',
       readOnly,
     } = useSwitch(props);
 

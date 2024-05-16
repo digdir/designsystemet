@@ -13,28 +13,28 @@
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .fds-error-message--large {
+  .fds-error-message--lg {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-error_message-large);
     font-family: inherit;
   }
 
-  .fds-error-message--medium {
+  .fds-error-message--md {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-error_message-medium);
     font-family: inherit;
   }
 
-  .fds-error-message--small {
+  .fds-error-message--sm {
     --fdsc-bottom-spacing: var(--fds-spacing-4);
 
     font: var(--fds-typography-error_message-small);
     font-family: inherit;
   }
 
-  .fds-error-message--xsmall {
+  .fds-error-message--xs {
     --fdsc-bottom-spacing: var(--fds-spacing-3);
 
     font: var(--fds-typography-error_message-xsmall);
