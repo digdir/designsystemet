@@ -27,7 +27,7 @@ export type ToggleGroupProps = {
   name?: string;
   /**
    * Changes items size and paddings
-   * @default 'md'
+   * @default md
    * @note `small`, `medium`, `large` is deprecated
    */
   size?: ToggleGroupContextProps['size'];
