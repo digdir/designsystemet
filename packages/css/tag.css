@@ -15,17 +15,17 @@
     width: max-content;
   }
 
-  .fds-tag--small {
+  .fds-tag--sm {
     padding: 0 var(--fds-spacing-2);
     min-height: var(--fds-sizing-7);
   }
 
-  .fds-tag--medium {
+  .fds-tag--md {
     padding: 0 var(--fds-spacing-2);
     min-height: var(--fds-sizing-8);
   }
 
-  .fds-tag--large {
+  .fds-tag--lg {
     padding: 0 var(--fds-spacing-3);
     min-height: var(--fds-sizing-9);
   }

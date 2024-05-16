@@ -41,15 +41,15 @@
     resize: vertical;
   }
 
-  .fds-textarea--small .fds-textarea__input {
+  .fds-textarea--sm .fds-textarea__input {
     padding: var(--fds-spacing-2);
   }
 
-  .fds-textarea--medium .fds-textarea__input {
+  .fds-textarea--md .fds-textarea__input {
     padding: var(--fds-spacing-3);
   }
 
-  .fds-textarea--large .fds-textarea__input {
+  .fds-textarea--lg .fds-textarea__input {
     padding: var(--fds-spacing-4);
   }
 
