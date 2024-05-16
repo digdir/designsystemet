@@ -304,7 +304,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
-        size='small'
+        size='sm'
       />
       Laster...
     </Button>
@@ -315,7 +315,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
-        size='small'
+        size='sm'
       />
       Laster...
     </Button>
@@ -326,7 +326,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
-        size='small'
+        size='sm'
       />
       Laster...
     </Button>

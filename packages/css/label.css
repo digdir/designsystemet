@@ -12,22 +12,22 @@
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .fds-label--large {
+  .fds-label--lg {
     font: var(--fds-typography-label-large);
     font-family: inherit;
   }
 
-  .fds-label--medium {
+  .fds-label--md {
     font: var(--fds-typography-label-medium);
     font-family: inherit;
   }
 
-  .fds-label--small {
+  .fds-label--sm {
     font: var(--fds-typography-label-small);
     font-family: inherit;
   }
 
-  .fds-label--xsmall {
+  .fds-label--xs {
     font: var(--fds-typography-label-xsmall);
     font-family: inherit;
   }
