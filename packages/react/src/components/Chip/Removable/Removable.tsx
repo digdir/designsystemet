@@ -19,7 +19,7 @@ export type RemovableChipProps = {
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
   ({ children, className, ...rest }, ref) => {
     const group = useContext(ChipGroupContext);
-    const size = getSize(rest.size || 'md');
+    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
 
     return (
       <button

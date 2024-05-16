@@ -37,7 +37,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   ) => {
     const shouldDisplayCheckmark = checkmark && selected;
     const group = useContext(ChipGroupContext);
-    const size = getSize(rest.size || 'md');
+    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
 
     return (
       <button
