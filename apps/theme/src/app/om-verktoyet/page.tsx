@@ -1,7 +1,9 @@
 "use client";
 
-import { Header } from "../components/Header/Header";
 import { Container } from "react-bootstrap";
+
+import { Header } from "../components/Header/Header";
+
 import classes from "./page.module.css";
 
 export default function Home() {

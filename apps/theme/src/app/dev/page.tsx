@@ -1,11 +1,13 @@
 "use client";
 
-import classes from "./page.module.css";
-import { generateColorScale } from "@/utils/themeUtils";
-import { getContrastFromHex } from "@/utils/ColorUtils";
 import { useEffect, useState } from "react";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import cn from "classnames";
+
+import { getContrastFromHex } from "@/utils/ColorUtils";
+import { generateColorScale } from "@/utils/themeUtils";
+
+import classes from "./page.module.css";
 
 const ContrastSection = (mainColor: CssColor, bgColor: CssColor) => {
   const contrast = getContrastFromHex(mainColor, bgColor);
