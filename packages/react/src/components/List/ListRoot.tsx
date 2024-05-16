@@ -21,7 +21,7 @@ export const ListContext = createContext<ListContextType>({
 export type ListProps = {
   /**
    * Changes text sizing
-   * @default 'md'
+   * @default md
    *
    * @note `small`, `medium` and `large` are deprecated
    */
