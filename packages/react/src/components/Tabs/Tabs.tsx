@@ -1,6 +1,10 @@
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
 
+import { getSize } from '../../utilities/getSize';
+
+type OldTabSize = 'small' | 'medium' | 'large';
+
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
   value?: string;
@@ -8,8 +12,12 @@ export type TabsProps = {
   defaultValue?: string;
   /** Callback with selected `TabItem` `value` */
   onChange?: (value: string) => void;
-  /** Changes items size and paddings */
-  size?: 'small' | 'medium' | 'large';
+  /**
+   * Changes items size and paddings
+   * @default 'md'
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldTabSize;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 /** `Tabs` component.
@@ -36,10 +44,9 @@ export type TabsContextProps = {
 export const TabsContext = createContext<TabsContextProps>({});
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  (
-    { children, value, defaultValue, onChange, size = 'medium', ...rest },
-    ref,
-  ) => {
+  ({ children, value, defaultValue, onChange, ...rest }, ref) => {
+    const size = getSize(rest.size || 'md');
+
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
       string | undefined
