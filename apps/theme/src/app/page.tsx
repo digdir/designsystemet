@@ -78,12 +78,12 @@ export default function Home() {
     const brand3Colors = generateColorScale(brandThreeColor, theme, 'flat');
 
     const obj = {
-      theme1: {
+      theme: {
         accent: generateJsonForColor(accentColors),
         neutral: generateJsonForColor(neutralColors),
         brand1: generateJsonForColor(brand1Colors),
         brand2: generateJsonForColor(brand2Colors),
-        brand2: generateJsonForColor(brand3Colors),
+        brand3: generateJsonForColor(brand3Colors),
       },
     };
 
