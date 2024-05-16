@@ -11,15 +11,15 @@
     max-width: 300px;
   }
 
-  .fds-popover--small {
+  .fds-popover--sm {
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }
 
-  .fds-popover--medium {
+  .fds-popover--md {
     padding: var(--fds-spacing-3) var(--fds-spacing-4);
   }
 
-  .fds-popover--large {
+  .fds-popover--lg {
     padding: var(--fds-spacing-3) var(--fds-spacing-5);
   }
 
