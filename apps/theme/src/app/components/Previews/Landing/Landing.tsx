@@ -1,7 +1,8 @@
-import classes from "./Landing.module.css";
 import cn from "classnames";
 import { Button, Heading, Ingress } from "@digdir/designsystemet-react";
 import { MagnifyingGlassIcon, MenuHamburgerIcon } from "@navikt/aksel-icons";
+
+import classes from "./Landing.module.css";
 
 export const Landing = () => {
   return (

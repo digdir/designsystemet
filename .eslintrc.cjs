@@ -40,10 +40,11 @@ module.exports = {
       rules: {
         '@typescript-eslint/consistent-type-exports': 'warn',
         '@typescript-eslint/consistent-type-imports': 'warn',
+        'prefer-const': 'warn',
       },
     },
     {
-      files: ['apps/storefront/**/*'],
+      files: ['apps/storefront/**/*', 'apps/dev/**/*', 'apps/theme/**/*'],
       extends: ['plugin:@next/next/recommended'],
     },
     {

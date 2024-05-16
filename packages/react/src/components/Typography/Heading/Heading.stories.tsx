@@ -15,6 +15,6 @@ export const Preview: Story = {
   args: {
     children: 'Tittel tekst',
     spacing: false,
-    size: 'xlarge',
+    size: 'xl',
   },
 };

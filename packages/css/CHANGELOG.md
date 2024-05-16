@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.7.0...@digdir/designsystemet-css@0.8.0) (2024-05-16)
+
+### Features
+
+- **Button:** add shorthand sizes ([#1986](https://github.com/digdir/designsystemet/issues/1986)) ([38a5232](https://github.com/digdir/designsystemet/commit/38a523270f17d3a58800921330706b39c51e4837))
+
 # [0.7.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.6.0...@digdir/designsystemet-css@0.7.0) (2024-05-14)
 
 ### Bug Fixes

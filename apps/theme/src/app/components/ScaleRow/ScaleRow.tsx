@@ -1,13 +1,16 @@
-import classes from "./ScaleRow.module.css";
 import cn from "classnames";
-import { Scale } from "../Scale/Scale";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import { useEffect, useRef, useState } from "react";
-import { getRatioFromLum, luminanceFromHex } from "@/utils/ColorUtils";
 import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { ChromePicker } from "react-color";
-import { modeType } from "@/types";
 import { useClickOutside } from "@react-awesome/use-click-outside";
+
+import type { modeType } from "@/types";
+import { getRatioFromLum, luminanceFromHex } from "@/utils/ColorUtils";
+
+import { Scale } from "../Scale/Scale";
+
+import classes from "./ScaleRow.module.css";
 
 type ScaleRowProps = {
   color: CssColor;
@@ -28,9 +31,9 @@ export const ScaleRow = ({
   const ref = useRef(null);
 
   useEffect(() => {
-    let lum1 = luminanceFromHex(color);
-    let lum2 = luminanceFromHex("#ffffff");
-    let ratio = getRatioFromLum(lum1, lum2);
+    const lum1 = luminanceFromHex(color);
+    const lum2 = luminanceFromHex("#ffffff");
+    const ratio = getRatioFromLum(lum1, lum2);
     setContrast(ratio);
     setActiveColor(color);
   }, [color]);
@@ -48,7 +51,7 @@ export const ScaleRow = ({
       <div className={classes.selectedColor}>
         <div className={classes.name}>{name}</div>
         <div ref={ref} className={classes.tomato}>
-          <div className={classes.tt} onClick={() => handleClick()}>
+          <button className={classes.tt} onClick={() => handleClick()}>
             <div
               className={classes.previewColor}
               style={{ backgroundColor: activeColor }}
@@ -56,7 +59,7 @@ export const ScaleRow = ({
             <div className={classes.picker}>
               <div>Velg farge</div>
             </div>
-          </div>
+          </button>
           <div
             className={cn(classes.pickerTool, {
               [classes.showPickerTool]: showPicker,
@@ -64,9 +67,9 @@ export const ScaleRow = ({
           >
             <ChromePicker
               onChange={(e) => {
-                let lum1 = luminanceFromHex(e.hex);
-                let lum2 = luminanceFromHex("#ffffff");
-                let ratio = getRatioFromLum(lum1, lum2);
+                const lum1 = luminanceFromHex(e.hex);
+                const lum2 = luminanceFromHex("#ffffff");
+                const ratio = getRatioFromLum(lum1, lum2);
                 setContrast(ratio);
                 setActiveColor(e.hex);
               }}
@@ -96,6 +99,7 @@ export const ScaleRow = ({
         color={activeColor}
         showHeader={showHeader}
         themeMode={themeMode}
+        type="accent"
       />
       <div></div>
     </div>
