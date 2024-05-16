@@ -19,9 +19,9 @@ export const useTextfield: UseTextfield = (props) => {
   const fieldset = useContext(FieldsetContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'textfield');
 
-  const size = getSize(
-    fieldset?.size ?? props.size ?? 'md',
-  ) as TextfieldProps['size'];
+  const size = getSize(fieldset?.size ?? props.size ?? 'md') as NonNullable<
+    TextfieldProps['size']
+  >;
 
   return {
     ...rest,

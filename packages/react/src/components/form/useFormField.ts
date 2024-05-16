@@ -64,9 +64,9 @@ export const useFormField = (
 
   const hasError = !disabled && !readOnly && !!(props.error || fieldset?.error);
 
-  const size = getSize(
-    props.size || fieldset?.size || 'md',
-  ) as FormFieldProps['size'];
+  const size = getSize(props.size || fieldset?.size || 'md') as NonNullable<
+    FormFieldProps['size']
+  >;
 
   return {
     readOnly,
