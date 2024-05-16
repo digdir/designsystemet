@@ -20,15 +20,15 @@ program
   .command('migrate')
   .description('run a Designsystemet migration')
   .addArgument(new Argument('<migration>', 'Migration to run').choices(Object.keys(migrations)))
-  .option('-p, --path <string>', 'Glob path to where migration should be run', './**/*.css')
+  .option('-g, --glob <string>', 'Glob for where migration should run', './**/*.css')
   .action((migrationKey, opts) => {
-    const { path } = opts;
+    const { glob } = opts;
     const migration = migrations[migrationKey as keyof typeof migrations];
     if (!migration) {
       console.error('Migration not found!');
       throw 'Aborting';
     }
-    migration?.(path);
+    migration?.(glob);
   });
 
 await program.parseAsync(process.argv);

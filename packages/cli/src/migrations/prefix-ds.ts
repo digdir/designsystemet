@@ -1,8 +1,8 @@
 import { cssVarCodemod } from '../codemods/css-var-codemod.js';
 
-export default (path?: string) =>
+export default (glob?: string) =>
   cssVarCodemod({
-    globPath: path,
+    globPath: glob,
     dictionary: {
       '--fds': '--ds',
     },
