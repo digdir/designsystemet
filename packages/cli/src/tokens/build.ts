@@ -1,10 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import {
-  registerTransforms,
-  permutateThemes,
-} from '@tokens-studio/sd-transforms';
+import { registerTransforms, permutateThemes } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
@@ -19,9 +16,7 @@ const prefix = 'fds';
 const basePxFontSize = 16;
 const separator = '_';
 
-const fileHeader = () => [
-  `These files are generated from design tokens defind using Token Studio`,
-];
+const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
 
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
@@ -45,18 +40,11 @@ StyleDictionary.registerTransformGroup({
   ],
 });
 
-const processThemeName = R.pipe(
-  R.replace(`${separator}semantic`, ''),
-  R.toLower,
-  R.split(separator),
-);
+const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 
 type GetConfig = (options: { fileName: string; buildPath: string }) => Config;
 
-const getCSSConfig: GetConfig = ({
-  fileName = 'unknown',
-  buildPath = 'unknown',
-}) => {
+const getCSSConfig: GetConfig = ({ fileName = 'unknown', buildPath = 'unknown' }) => {
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
@@ -82,10 +70,7 @@ const getCSSConfig: GetConfig = ({
               return true;
             }
 
-            if (
-              R.test(/global/, token.name) &&
-              R.includes('core', token.filePath)
-            ) {
+            if (R.test(/global/, token.name) && R.includes('primitives', token.filePath)) {
               return true;
             }
 
@@ -97,10 +82,7 @@ const getCSSConfig: GetConfig = ({
   };
 };
 
-const getStorefrontConfig = ({
-  fileName = 'unknown',
-  buildPath = 'unknown',
-}): Config => {
+const getStorefrontConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): Config => {
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
@@ -139,9 +121,7 @@ export async function run(options: Options): Promise<void> {
   const storefrontTokensOutPath = path.resolve('../../apps/storefront/tokens');
   const packageTokensOutPath = path.resolve('../../packages/theme/brand');
 
-  const $themes = JSON.parse(
-    fs.readFileSync(path.resolve(`${tokensPath}/$themes.json`), 'utf-8'),
-  ) as ThemeObject[];
+  const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensPath}/$themes.json`), 'utf-8')) as ThemeObject[];
 
   const themes = permutateThemes($themes, {
     separator,
@@ -154,7 +134,7 @@ export async function run(options: Options): Promise<void> {
 
         const [fileName, folderName] = processThemeName(name);
 
-        const [source, include] = R.partition(R.test(/\/core\//), updatedSets);
+        const [source, include] = R.partition(R.test(/\/primitives\//), updatedSets);
 
         const config_ = configCallback({
           fileName: fileName,
@@ -174,10 +154,7 @@ export async function run(options: Options): Promise<void> {
       .sort();
 
   const tokenConfigs = getConfigs(getCSSConfig, packageTokensOutPath);
-  const storefrontConfigs = getConfigs(
-    getStorefrontConfig,
-    storefrontTokensOutPath,
-  );
+  const storefrontConfigs = getConfigs(getStorefrontConfig, storefrontTokensOutPath);
 
   if (tokenConfigs.length > 0) {
     console.log('🍱 Staring token builder');

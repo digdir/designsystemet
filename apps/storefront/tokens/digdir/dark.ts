@@ -2301,7 +2301,7 @@ export const  color = [
   {
     value: "#08200c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#08200c",
@@ -2318,7 +2318,7 @@ export const  color = [
   {
     value: "#0b290f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#0b290f",
@@ -2335,7 +2335,7 @@ export const  color = [
   {
     value: "#0f3814",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#0f3814",
@@ -2352,7 +2352,7 @@ export const  color = [
   {
     value: "#114218",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#114218",
@@ -2369,7 +2369,7 @@ export const  color = [
   {
     value: "#144c1c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#144c1c",
@@ -2386,7 +2386,7 @@ export const  color = [
   {
     value: "#185e22",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#185e22",
@@ -2403,7 +2403,7 @@ export const  color = [
   {
     value: "#207a2c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#207a2c",
@@ -2420,7 +2420,7 @@ export const  color = [
   {
     value: "#279636",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#279636",
@@ -2437,7 +2437,7 @@ export const  color = [
   {
     value: "#2ca63d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#2ca63d",
@@ -2454,7 +2454,7 @@ export const  color = [
   {
     value: "#248c33",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#248c33",
@@ -2471,7 +2471,7 @@ export const  color = [
   {
     value: "#1d7129",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#1d7129",
@@ -2488,7 +2488,7 @@ export const  color = [
   {
     value: "#64be70",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#64be70",
@@ -2505,7 +2505,7 @@ export const  color = [
   {
     value: "#a2d8aa",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#a2d8aa",
@@ -2522,7 +2522,7 @@ export const  color = [
   {
     value: "#000",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#000",
@@ -2539,7 +2539,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -2556,7 +2556,7 @@ export const  color = [
   {
     value: "#211b08",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#211b08",
@@ -2573,7 +2573,7 @@ export const  color = [
   {
     value: "#2b230a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#2b230a",
@@ -2590,7 +2590,7 @@ export const  color = [
   {
     value: "#3a300e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#3a300e",
@@ -2607,7 +2607,7 @@ export const  color = [
   {
     value: "#453810",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#453810",
@@ -2624,7 +2624,7 @@ export const  color = [
   {
     value: "#4e4013",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#4e4013",
@@ -2641,7 +2641,7 @@ export const  color = [
   {
     value: "#625017",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#625017",
@@ -2658,7 +2658,7 @@ export const  color = [
   {
     value: "#7f681e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#7f681e",
@@ -2675,7 +2675,7 @@ export const  color = [
   {
     value: "#9c8125",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#9c8125",
@@ -2692,7 +2692,7 @@ export const  color = [
   {
     value: "#ecc238",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#ecc238",
@@ -2709,7 +2709,7 @@ export const  color = [
   {
     value: "#cfaa31",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#cfaa31",
@@ -2726,7 +2726,7 @@ export const  color = [
   {
     value: "#b2922a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#b2922a",
@@ -2743,7 +2743,7 @@ export const  color = [
   {
     value: "#cca730",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#cca730",
@@ -2760,7 +2760,7 @@ export const  color = [
   {
     value: "#eec84d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#eec84d",
@@ -2777,7 +2777,7 @@ export const  color = [
   {
     value: "#000",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#000",
@@ -2794,7 +2794,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -2811,7 +2811,7 @@ export const  color = [
   {
     value: "#2d1508",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#2d1508",
@@ -2828,7 +2828,7 @@ export const  color = [
   {
     value: "#3a1b0a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#3a1b0a",
@@ -2845,7 +2845,7 @@ export const  color = [
   {
     value: "#4f240d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#4f240d",
@@ -2862,7 +2862,7 @@ export const  color = [
   {
     value: "#5d2b0f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#5d2b0f",
@@ -2879,7 +2879,7 @@ export const  color = [
   {
     value: "#6b3212",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#6b3212",
@@ -2896,7 +2896,7 @@ export const  color = [
   {
     value: "#853e16",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#853e16",
@@ -2913,7 +2913,7 @@ export const  color = [
   {
     value: "#ac4f1c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#ac4f1c",
@@ -2930,7 +2930,7 @@ export const  color = [
   {
     value: "#d46223",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#d46223",
@@ -2947,7 +2947,7 @@ export const  color = [
   {
     value: "#d46223",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#d46223",
@@ -2964,7 +2964,7 @@ export const  color = [
   {
     value: "#b0511d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#b0511d",
@@ -2981,7 +2981,7 @@ export const  color = [
   {
     value: "#8e4117",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#8e4117",
@@ -2998,7 +2998,7 @@ export const  color = [
   {
     value: "#e39a72",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e39a72",
@@ -3015,7 +3015,7 @@ export const  color = [
   {
     value: "#efc3ab",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#efc3ab",
@@ -3032,7 +3032,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -3049,7 +3049,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -3066,7 +3066,7 @@ export const  color = [
   {
     value: "#380c0c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#380c0c",
@@ -3083,7 +3083,7 @@ export const  color = [
   {
     value: "#470f10",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#470f10",
@@ -3100,7 +3100,7 @@ export const  color = [
   {
     value: "#5e1515",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#5e1515",
@@ -3117,7 +3117,7 @@ export const  color = [
   {
     value: "#6f1819",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#6f1819",
@@ -3134,7 +3134,7 @@ export const  color = [
   {
     value: "#7f1c1c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#7f1c1c",
@@ -3151,7 +3151,7 @@ export const  color = [
   {
     value: "#9d2223",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#9d2223",
@@ -3168,7 +3168,7 @@ export const  color = [
   {
     value: "#bb3f40",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#bb3f40",
@@ -3185,7 +3185,7 @@ export const  color = [
   {
     value: "#c96666",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#c96666",
@@ -3202,7 +3202,7 @@ export const  color = [
   {
     value: "#b32728",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#b32728",
@@ -3219,7 +3219,7 @@ export const  color = [
   {
     value: "#8c1f1f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#8c1f1f",
@@ -3236,7 +3236,7 @@ export const  color = [
   {
     value: "#671617",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#671617",
@@ -3253,7 +3253,7 @@ export const  color = [
   {
     value: "#dc9a9b",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#dc9a9b",
@@ -3270,7 +3270,7 @@ export const  color = [
   {
     value: "#e9c2c2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e9c2c2",
@@ -3287,7 +3287,7 @@ export const  color = [
   {
     value: "#000",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#000",
@@ -3304,7 +3304,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -3321,7 +3321,7 @@ export const  color = [
   {
     value: "#031d30",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#031d30",
@@ -3338,7 +3338,7 @@ export const  color = [
   {
     value: "#032540",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#032540",
@@ -3355,7 +3355,7 @@ export const  color = [
   {
     value: "#043256",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#043256",
@@ -3372,7 +3372,7 @@ export const  color = [
   {
     value: "#053c65",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#053c65",
@@ -3389,7 +3389,7 @@ export const  color = [
   {
     value: "#064474",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#064474",
@@ -3406,7 +3406,7 @@ export const  color = [
   {
     value: "#075490",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#075490",
@@ -3423,7 +3423,7 @@ export const  color = [
   {
     value: "#0a6dba",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#0a6dba",
@@ -3440,7 +3440,7 @@ export const  color = [
   {
     value: "#3389cb",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#3389cb",
@@ -3457,7 +3457,7 @@ export const  color = [
   {
     value: "#0c72c1",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#0c72c1",
@@ -3474,7 +3474,7 @@ export const  color = [
   {
     value: "#085c9c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#085c9c",
@@ -3491,7 +3491,7 @@ export const  color = [
   {
     value: "#064678",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#064678",
@@ -3508,7 +3508,7 @@ export const  color = [
   {
     value: "#78b1dc",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#78b1dc",
@@ -3525,7 +3525,7 @@ export const  color = [
   {
     value: "#aed0ea",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#aed0ea",
@@ -3542,7 +3542,7 @@ export const  color = [
   {
     value: "#ffffff",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#ffffff",
@@ -3559,7 +3559,7 @@ export const  color = [
   {
     value: "#e6e6e6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: true,
     original: {
       value: "#e6e6e6",
@@ -3576,1282 +3576,7 @@ export const  color = [
   {
     value: "#001c36",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#001c36",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "1"
-    ]
-  },
-  {
-    value: "#002445",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#002445",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "2"
-    ]
-  },
-  {
-    value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#00315c",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-3",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "3"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#00396d",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-4",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "4"
-    ]
-  },
-  {
-    value: "#00427e",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#00427e",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-5",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "5"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#00529d",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-6",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#0f6bbe",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#0f6bbe",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-7",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "7"
-    ]
-  },
-  {
-    value: "#3d88ca",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#3d88ca",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-8",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "8"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#0163ba",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-9",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "9"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-10",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "10"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#00396d",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-11",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "11"
-    ]
-  },
-  {
-    value: "#7eb0dc",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#7eb0dc",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-12",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "12"
-    ]
-  },
-  {
-    value: "#b0cfea",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#b0cfea",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-13",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-contrast-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-theme1-accent-contrast-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "accent",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#2f1213",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#3c1819",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#3c1819",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-3",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#602627",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#602627",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-4",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#702c2e",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#702c2e",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-5",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-6",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#b34649",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#b34649",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-7",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#dd565a",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#dd565a",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-8",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-9",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-10",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-11",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#f78d8f",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#f78d8f",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-12",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#fabcbd",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#fabcbd",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-13",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#41191b",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#41191b",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#2f1213",
-      type: "color"
-    },
-    name: "--fds-theme1-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#231a05",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#231a05",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#2d2206",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#2d2206",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-3",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#48360a",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#48360a",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-4",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#543e0c",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#543e0c",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-5",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-6",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#876413",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#876413",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-7",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-8",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-9",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-10",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-11",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#daa21f",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#daa21f",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-12",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#eec76c",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#eec76c",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-13",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#302407",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#302407",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#45340a",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#45340a",
-      type: "color"
-    },
-    name: "--fds-theme1-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#061d30",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#061d30",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#07253c",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#07253c",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-3",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#0c3b60",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#0c3b60",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-4",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#0e446e",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#0e446e",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-5",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-6",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#166eb2",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#166eb2",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-7",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#1b88db",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#1b88db",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-8",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-9",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-10",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-11",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#57b2f8",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#57b2f8",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-12",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#9cd2fb",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#9cd2fb",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-13",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#082740",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#082740",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#061f33",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#061f33",
-      type: "color"
-    },
-    name: "--fds-theme1-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#131c27",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#131c27",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#192433",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#192433",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "2"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#243142",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-3",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "3"
-    ]
-  },
-  {
-    value: "#2e3a4a",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#2e3a4a",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-4",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "4"
-    ]
-  },
-  {
-    value: "#374352",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#374352",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-5",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-6",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#626b77",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#626b77",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-7",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#7d848e",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#7d848e",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-8",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "8"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#1e2b3c",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-9",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "9"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#333e4e",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-10",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-11",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#a6abb2",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#a6abb2",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-12",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "12"
-    ]
-  },
-  {
-    value: "#c9ccd0",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#c9ccd0",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-13",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "13"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#f9f9fa",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-contrast-1",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme1.json",
-    isSource: true,
-    original: {
-      value: "#9ea3ab",
-      type: "color"
-    },
-    name: "--fds-theme1-neutral-contrast-2",
-    attributes: {},
-    path: [
-      "theme1",
-      "neutral",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#001c36",
-    type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#001c36",
@@ -4868,7 +3593,7 @@ export const  color = [
   {
     value: "#002445",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#002445",
@@ -4885,7 +3610,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -4902,7 +3627,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -4919,7 +3644,7 @@ export const  color = [
   {
     value: "#00427e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#00427e",
@@ -4936,7 +3661,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -4953,7 +3678,7 @@ export const  color = [
   {
     value: "#0f6bbe",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#0f6bbe",
@@ -4970,7 +3695,7 @@ export const  color = [
   {
     value: "#3d88ca",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#3d88ca",
@@ -4987,7 +3712,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -5004,7 +3729,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -5021,7 +3746,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -5038,7 +3763,7 @@ export const  color = [
   {
     value: "#7eb0dc",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#7eb0dc",
@@ -5055,7 +3780,7 @@ export const  color = [
   {
     value: "#b0cfea",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#b0cfea",
@@ -5072,7 +3797,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -5089,7 +3814,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -5106,7 +3831,7 @@ export const  color = [
   {
     value: "#2f1213",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#2f1213",
@@ -5123,7 +3848,7 @@ export const  color = [
   {
     value: "#3c1819",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#3c1819",
@@ -5140,7 +3865,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -5157,7 +3882,7 @@ export const  color = [
   {
     value: "#602627",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#602627",
@@ -5174,7 +3899,7 @@ export const  color = [
   {
     value: "#702c2e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#702c2e",
@@ -5191,7 +3916,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -5208,7 +3933,7 @@ export const  color = [
   {
     value: "#b34649",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#b34649",
@@ -5225,7 +3950,7 @@ export const  color = [
   {
     value: "#dd565a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#dd565a",
@@ -5242,7 +3967,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -5259,7 +3984,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -5276,7 +4001,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -5293,7 +4018,7 @@ export const  color = [
   {
     value: "#f78d8f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#f78d8f",
@@ -5310,7 +4035,7 @@ export const  color = [
   {
     value: "#fabcbd",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#fabcbd",
@@ -5327,7 +4052,7 @@ export const  color = [
   {
     value: "#41191b",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#41191b",
@@ -5344,7 +4069,7 @@ export const  color = [
   {
     value: "#2f1213",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#2f1213",
@@ -5361,7 +4086,7 @@ export const  color = [
   {
     value: "#231a05",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#231a05",
@@ -5378,7 +4103,7 @@ export const  color = [
   {
     value: "#2d2206",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#2d2206",
@@ -5395,7 +4120,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -5412,7 +4137,7 @@ export const  color = [
   {
     value: "#48360a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#48360a",
@@ -5429,7 +4154,7 @@ export const  color = [
   {
     value: "#543e0c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#543e0c",
@@ -5446,7 +4171,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -5463,7 +4188,7 @@ export const  color = [
   {
     value: "#876413",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#876413",
@@ -5480,7 +4205,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -5497,7 +4222,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -5514,7 +4239,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -5531,7 +4256,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -5548,7 +4273,7 @@ export const  color = [
   {
     value: "#daa21f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#daa21f",
@@ -5565,7 +4290,7 @@ export const  color = [
   {
     value: "#eec76c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#eec76c",
@@ -5582,7 +4307,7 @@ export const  color = [
   {
     value: "#302407",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#302407",
@@ -5599,7 +4324,7 @@ export const  color = [
   {
     value: "#45340a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#45340a",
@@ -5616,7 +4341,7 @@ export const  color = [
   {
     value: "#061d30",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#061d30",
@@ -5633,7 +4358,7 @@ export const  color = [
   {
     value: "#07253c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#07253c",
@@ -5650,7 +4375,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -5667,7 +4392,7 @@ export const  color = [
   {
     value: "#0c3b60",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#0c3b60",
@@ -5684,7 +4409,7 @@ export const  color = [
   {
     value: "#0e446e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#0e446e",
@@ -5701,7 +4426,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -5718,7 +4443,7 @@ export const  color = [
   {
     value: "#166eb2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#166eb2",
@@ -5735,7 +4460,7 @@ export const  color = [
   {
     value: "#1b88db",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#1b88db",
@@ -5752,7 +4477,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -5769,7 +4494,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -5786,7 +4511,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -5803,7 +4528,7 @@ export const  color = [
   {
     value: "#57b2f8",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#57b2f8",
@@ -5820,7 +4545,7 @@ export const  color = [
   {
     value: "#9cd2fb",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#9cd2fb",
@@ -5837,7 +4562,7 @@ export const  color = [
   {
     value: "#082740",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#082740",
@@ -5854,7 +4579,7 @@ export const  color = [
   {
     value: "#061f33",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#061f33",
@@ -5871,7 +4596,7 @@ export const  color = [
   {
     value: "#131c27",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#131c27",
@@ -5888,7 +4613,7 @@ export const  color = [
   {
     value: "#192433",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#192433",
@@ -5905,7 +4630,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -5922,7 +4647,7 @@ export const  color = [
   {
     value: "#2e3a4a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#2e3a4a",
@@ -5939,7 +4664,7 @@ export const  color = [
   {
     value: "#374352",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#374352",
@@ -5956,7 +4681,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -5973,7 +4698,7 @@ export const  color = [
   {
     value: "#626b77",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#626b77",
@@ -5990,7 +4715,7 @@ export const  color = [
   {
     value: "#7d848e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#7d848e",
@@ -6007,7 +4732,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -6024,7 +4749,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -6041,7 +4766,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -6058,7 +4783,7 @@ export const  color = [
   {
     value: "#a6abb2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#a6abb2",
@@ -6075,7 +4800,7 @@ export const  color = [
   {
     value: "#c9ccd0",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#c9ccd0",
@@ -6092,7 +4817,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -6109,7 +4834,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -6126,7 +4851,7 @@ export const  color = [
   {
     value: "#001c36",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#001c36",
@@ -6143,7 +4868,7 @@ export const  color = [
   {
     value: "#002445",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#002445",
@@ -6160,7 +4885,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -6177,7 +4902,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -6194,7 +4919,7 @@ export const  color = [
   {
     value: "#00427e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#00427e",
@@ -6211,7 +4936,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -6228,7 +4953,7 @@ export const  color = [
   {
     value: "#0f6bbe",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#0f6bbe",
@@ -6245,7 +4970,7 @@ export const  color = [
   {
     value: "#3d88ca",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#3d88ca",
@@ -6262,7 +4987,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -6279,7 +5004,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -6296,7 +5021,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -6313,7 +5038,7 @@ export const  color = [
   {
     value: "#7eb0dc",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#7eb0dc",
@@ -6330,7 +5055,7 @@ export const  color = [
   {
     value: "#b0cfea",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#b0cfea",
@@ -6347,7 +5072,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -6364,7 +5089,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -6381,7 +5106,7 @@ export const  color = [
   {
     value: "#2f1213",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#2f1213",
@@ -6398,7 +5123,7 @@ export const  color = [
   {
     value: "#3c1819",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#3c1819",
@@ -6415,7 +5140,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -6432,7 +5157,7 @@ export const  color = [
   {
     value: "#602627",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#602627",
@@ -6449,7 +5174,7 @@ export const  color = [
   {
     value: "#702c2e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#702c2e",
@@ -6466,7 +5191,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -6483,7 +5208,7 @@ export const  color = [
   {
     value: "#b34649",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#b34649",
@@ -6500,7 +5225,7 @@ export const  color = [
   {
     value: "#dd565a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#dd565a",
@@ -6517,7 +5242,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -6534,7 +5259,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -6551,7 +5276,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -6568,7 +5293,7 @@ export const  color = [
   {
     value: "#f78d8f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#f78d8f",
@@ -6585,7 +5310,7 @@ export const  color = [
   {
     value: "#fabcbd",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#fabcbd",
@@ -6602,7 +5327,7 @@ export const  color = [
   {
     value: "#41191b",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#41191b",
@@ -6619,7 +5344,7 @@ export const  color = [
   {
     value: "#2f1213",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#2f1213",
@@ -6636,7 +5361,7 @@ export const  color = [
   {
     value: "#231a05",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#231a05",
@@ -6653,7 +5378,7 @@ export const  color = [
   {
     value: "#2d2206",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#2d2206",
@@ -6670,7 +5395,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -6687,7 +5412,7 @@ export const  color = [
   {
     value: "#48360a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#48360a",
@@ -6704,7 +5429,7 @@ export const  color = [
   {
     value: "#543e0c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#543e0c",
@@ -6721,7 +5446,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -6738,7 +5463,7 @@ export const  color = [
   {
     value: "#876413",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#876413",
@@ -6755,7 +5480,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -6772,7 +5497,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -6789,7 +5514,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -6806,7 +5531,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -6823,7 +5548,7 @@ export const  color = [
   {
     value: "#daa21f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#daa21f",
@@ -6840,7 +5565,7 @@ export const  color = [
   {
     value: "#eec76c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#eec76c",
@@ -6857,7 +5582,7 @@ export const  color = [
   {
     value: "#302407",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#302407",
@@ -6874,7 +5599,7 @@ export const  color = [
   {
     value: "#45340a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#45340a",
@@ -6891,7 +5616,7 @@ export const  color = [
   {
     value: "#061d30",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#061d30",
@@ -6908,7 +5633,7 @@ export const  color = [
   {
     value: "#07253c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#07253c",
@@ -6925,7 +5650,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -6942,7 +5667,7 @@ export const  color = [
   {
     value: "#0c3b60",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#0c3b60",
@@ -6959,7 +5684,7 @@ export const  color = [
   {
     value: "#0e446e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#0e446e",
@@ -6976,7 +5701,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -6993,7 +5718,7 @@ export const  color = [
   {
     value: "#166eb2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#166eb2",
@@ -7010,7 +5735,7 @@ export const  color = [
   {
     value: "#1b88db",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#1b88db",
@@ -7027,7 +5752,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -7044,7 +5769,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -7061,7 +5786,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -7078,7 +5803,7 @@ export const  color = [
   {
     value: "#57b2f8",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#57b2f8",
@@ -7095,7 +5820,7 @@ export const  color = [
   {
     value: "#9cd2fb",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#9cd2fb",
@@ -7112,7 +5837,7 @@ export const  color = [
   {
     value: "#082740",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#082740",
@@ -7129,7 +5854,7 @@ export const  color = [
   {
     value: "#061f33",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#061f33",
@@ -7146,7 +5871,7 @@ export const  color = [
   {
     value: "#131c27",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#131c27",
@@ -7163,7 +5888,7 @@ export const  color = [
   {
     value: "#192433",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#192433",
@@ -7180,7 +5905,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -7197,7 +5922,7 @@ export const  color = [
   {
     value: "#2e3a4a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#2e3a4a",
@@ -7214,7 +5939,7 @@ export const  color = [
   {
     value: "#374352",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#374352",
@@ -7231,7 +5956,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -7248,7 +5973,7 @@ export const  color = [
   {
     value: "#626b77",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#626b77",
@@ -7265,7 +5990,7 @@ export const  color = [
   {
     value: "#7d848e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#7d848e",
@@ -7282,7 +6007,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -7299,7 +6024,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -7316,7 +6041,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -7333,7 +6058,7 @@ export const  color = [
   {
     value: "#a6abb2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#a6abb2",
@@ -7350,7 +6075,7 @@ export const  color = [
   {
     value: "#c9ccd0",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#c9ccd0",
@@ -7367,7 +6092,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -7384,7 +6109,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -7401,7 +6126,7 @@ export const  color = [
   {
     value: "#001c36",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#001c36",
@@ -7418,7 +6143,7 @@ export const  color = [
   {
     value: "#002445",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#002445",
@@ -7435,7 +6160,7 @@ export const  color = [
   {
     value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#00315c",
@@ -7452,7 +6177,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -7469,7 +6194,7 @@ export const  color = [
   {
     value: "#00427e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#00427e",
@@ -7486,7 +6211,7 @@ export const  color = [
   {
     value: "#00529d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#00529d",
@@ -7503,7 +6228,7 @@ export const  color = [
   {
     value: "#0f6bbe",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#0f6bbe",
@@ -7520,7 +6245,7 @@ export const  color = [
   {
     value: "#3d88ca",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#3d88ca",
@@ -7537,7 +6262,7 @@ export const  color = [
   {
     value: "#0163ba",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#0163ba",
@@ -7554,7 +6279,7 @@ export const  color = [
   {
     value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#004d93",
@@ -7571,7 +6296,7 @@ export const  color = [
   {
     value: "#00396d",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#00396d",
@@ -7588,7 +6313,7 @@ export const  color = [
   {
     value: "#7eb0dc",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#7eb0dc",
@@ -7605,7 +6330,7 @@ export const  color = [
   {
     value: "#b0cfea",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#b0cfea",
@@ -7622,7 +6347,7 @@ export const  color = [
   {
     value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#f6fafd",
@@ -7639,7 +6364,7 @@ export const  color = [
   {
     value: "#ddeaf6",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#ddeaf6",
@@ -7656,7 +6381,7 @@ export const  color = [
   {
     value: "#2f1213",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#2f1213",
@@ -7673,7 +6398,7 @@ export const  color = [
   {
     value: "#3c1819",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#3c1819",
@@ -7690,7 +6415,7 @@ export const  color = [
   {
     value: "#522021",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#522021",
@@ -7707,7 +6432,7 @@ export const  color = [
   {
     value: "#602627",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#602627",
@@ -7724,7 +6449,7 @@ export const  color = [
   {
     value: "#702c2e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#702c2e",
@@ -7741,7 +6466,7 @@ export const  color = [
   {
     value: "#8b3639",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#8b3639",
@@ -7758,7 +6483,7 @@ export const  color = [
   {
     value: "#b34649",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#b34649",
@@ -7775,7 +6500,7 @@ export const  color = [
   {
     value: "#dd565a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#dd565a",
@@ -7792,7 +6517,7 @@ export const  color = [
   {
     value: "#f35f63",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#f35f63",
@@ -7809,7 +6534,7 @@ export const  color = [
   {
     value: "#cc5053",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#cc5053",
@@ -7826,7 +6551,7 @@ export const  color = [
   {
     value: "#a84144",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#a84144",
@@ -7843,7 +6568,7 @@ export const  color = [
   {
     value: "#f78d8f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#f78d8f",
@@ -7860,7 +6585,7 @@ export const  color = [
   {
     value: "#fabcbd",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#fabcbd",
@@ -7877,7 +6602,7 @@ export const  color = [
   {
     value: "#41191b",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#41191b",
@@ -7894,7 +6619,7 @@ export const  color = [
   {
     value: "#2f1213",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#2f1213",
@@ -7911,7 +6636,7 @@ export const  color = [
   {
     value: "#231a05",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#231a05",
@@ -7928,7 +6653,7 @@ export const  color = [
   {
     value: "#2d2206",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#2d2206",
@@ -7945,7 +6670,7 @@ export const  color = [
   {
     value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#3d2e09",
@@ -7962,7 +6687,7 @@ export const  color = [
   {
     value: "#48360a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#48360a",
@@ -7979,7 +6704,7 @@ export const  color = [
   {
     value: "#543e0c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#543e0c",
@@ -7996,7 +6721,7 @@ export const  color = [
   {
     value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#684e0f",
@@ -8013,7 +6738,7 @@ export const  color = [
   {
     value: "#876413",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#876413",
@@ -8030,7 +6755,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -8047,7 +6772,7 @@ export const  color = [
   {
     value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#e4a920",
@@ -8064,7 +6789,7 @@ export const  color = [
   {
     value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#c6931c",
@@ -8081,7 +6806,7 @@ export const  color = [
   {
     value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#a87c17",
@@ -8098,7 +6823,7 @@ export const  color = [
   {
     value: "#daa21f",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#daa21f",
@@ -8115,7 +6840,7 @@ export const  color = [
   {
     value: "#eec76c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#eec76c",
@@ -8132,7 +6857,7 @@ export const  color = [
   {
     value: "#302407",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#302407",
@@ -8149,7 +6874,7 @@ export const  color = [
   {
     value: "#45340a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#45340a",
@@ -8166,7 +6891,7 @@ export const  color = [
   {
     value: "#061d30",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#061d30",
@@ -8183,7 +6908,7 @@ export const  color = [
   {
     value: "#07253c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#07253c",
@@ -8200,7 +6925,7 @@ export const  color = [
   {
     value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#0a3251",
@@ -8217,7 +6942,7 @@ export const  color = [
   {
     value: "#0c3b60",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#0c3b60",
@@ -8234,7 +6959,7 @@ export const  color = [
   {
     value: "#0e446e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#0e446e",
@@ -8251,7 +6976,7 @@ export const  color = [
   {
     value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#11558a",
@@ -8268,7 +6993,7 @@ export const  color = [
   {
     value: "#166eb2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#166eb2",
@@ -8285,7 +7010,7 @@ export const  color = [
   {
     value: "#1b88db",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#1b88db",
@@ -8302,7 +7027,7 @@ export const  color = [
   {
     value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#1e98f5",
@@ -8319,7 +7044,7 @@ export const  color = [
   {
     value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#1980ce",
@@ -8336,7 +7061,7 @@ export const  color = [
   {
     value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#1569a9",
@@ -8353,7 +7078,7 @@ export const  color = [
   {
     value: "#57b2f8",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#57b2f8",
@@ -8370,7 +7095,7 @@ export const  color = [
   {
     value: "#9cd2fb",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#9cd2fb",
@@ -8387,7 +7112,7 @@ export const  color = [
   {
     value: "#082740",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#082740",
@@ -8404,7 +7129,7 @@ export const  color = [
   {
     value: "#061f33",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#061f33",
@@ -8421,7 +7146,7 @@ export const  color = [
   {
     value: "#131c27",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#131c27",
@@ -8438,7 +7163,7 @@ export const  color = [
   {
     value: "#192433",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#192433",
@@ -8455,7 +7180,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#243142",
@@ -8472,7 +7197,7 @@ export const  color = [
   {
     value: "#2e3a4a",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#2e3a4a",
@@ -8489,7 +7214,7 @@ export const  color = [
   {
     value: "#374352",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#374352",
@@ -8506,7 +7231,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -8523,7 +7248,7 @@ export const  color = [
   {
     value: "#626b77",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#626b77",
@@ -8540,7 +7265,7 @@ export const  color = [
   {
     value: "#7d848e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#7d848e",
@@ -8557,7 +7282,7 @@ export const  color = [
   {
     value: "#1e2b3c",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#1e2b3c",
@@ -8574,7 +7299,7 @@ export const  color = [
   {
     value: "#333e4e",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#333e4e",
@@ -8591,7 +7316,7 @@ export const  color = [
   {
     value: "#495361",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#495361",
@@ -8608,7 +7333,7 @@ export const  color = [
   {
     value: "#a6abb2",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#a6abb2",
@@ -8625,7 +7350,7 @@ export const  color = [
   {
     value: "#c9ccd0",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#c9ccd0",
@@ -8642,7 +7367,7 @@ export const  color = [
   {
     value: "#f9f9fa",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#f9f9fa",
@@ -8659,7 +7384,7 @@ export const  color = [
   {
     value: "#9ea3ab",
     type: "color",
-    filePath: "../../design-tokens/core/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       value: "#9ea3ab",
@@ -8669,6 +7394,1281 @@ export const  color = [
     attributes: {},
     path: [
       "theme4",
+      "neutral",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#001c36",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#001c36",
+      type: "color"
+    },
+    name: "--fds-theme-accent-1",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "1"
+    ]
+  },
+  {
+    value: "#002445",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#002445",
+      type: "color"
+    },
+    name: "--fds-theme-accent-2",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "2"
+    ]
+  },
+  {
+    value: "#00315c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#00315c",
+      type: "color"
+    },
+    name: "--fds-theme-accent-3",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "3"
+    ]
+  },
+  {
+    value: "#00396d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#00396d",
+      type: "color"
+    },
+    name: "--fds-theme-accent-4",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "4"
+    ]
+  },
+  {
+    value: "#00427e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#00427e",
+      type: "color"
+    },
+    name: "--fds-theme-accent-5",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "5"
+    ]
+  },
+  {
+    value: "#00529d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#00529d",
+      type: "color"
+    },
+    name: "--fds-theme-accent-6",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "6"
+    ]
+  },
+  {
+    value: "#0f6bbe",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#0f6bbe",
+      type: "color"
+    },
+    name: "--fds-theme-accent-7",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "7"
+    ]
+  },
+  {
+    value: "#3d88ca",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#3d88ca",
+      type: "color"
+    },
+    name: "--fds-theme-accent-8",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "8"
+    ]
+  },
+  {
+    value: "#0163ba",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#0163ba",
+      type: "color"
+    },
+    name: "--fds-theme-accent-9",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "9"
+    ]
+  },
+  {
+    value: "#004d93",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#004d93",
+      type: "color"
+    },
+    name: "--fds-theme-accent-10",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "10"
+    ]
+  },
+  {
+    value: "#00396d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#00396d",
+      type: "color"
+    },
+    name: "--fds-theme-accent-11",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "11"
+    ]
+  },
+  {
+    value: "#7eb0dc",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#7eb0dc",
+      type: "color"
+    },
+    name: "--fds-theme-accent-12",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "12"
+    ]
+  },
+  {
+    value: "#b0cfea",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#b0cfea",
+      type: "color"
+    },
+    name: "--fds-theme-accent-13",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "13"
+    ]
+  },
+  {
+    value: "#f6fafd",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#f6fafd",
+      type: "color"
+    },
+    name: "--fds-theme-accent-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#ddeaf6",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#ddeaf6",
+      type: "color"
+    },
+    name: "--fds-theme-accent-contrast-2",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#2f1213",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#2f1213",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "1"
+    ]
+  },
+  {
+    value: "#3c1819",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#3c1819",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "2"
+    ]
+  },
+  {
+    value: "#522021",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#522021",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-3",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "3"
+    ]
+  },
+  {
+    value: "#602627",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#602627",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-4",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "4"
+    ]
+  },
+  {
+    value: "#702c2e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#702c2e",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-5",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "5"
+    ]
+  },
+  {
+    value: "#8b3639",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#8b3639",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-6",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "6"
+    ]
+  },
+  {
+    value: "#b34649",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#b34649",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-7",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "7"
+    ]
+  },
+  {
+    value: "#dd565a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#dd565a",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-8",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "8"
+    ]
+  },
+  {
+    value: "#f35f63",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#f35f63",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-9",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "9"
+    ]
+  },
+  {
+    value: "#cc5053",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#cc5053",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-10",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "10"
+    ]
+  },
+  {
+    value: "#a84144",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#a84144",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-11",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "11"
+    ]
+  },
+  {
+    value: "#f78d8f",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#f78d8f",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-12",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "12"
+    ]
+  },
+  {
+    value: "#fabcbd",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#fabcbd",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-13",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "13"
+    ]
+  },
+  {
+    value: "#41191b",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#41191b",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#2f1213",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#2f1213",
+      type: "color"
+    },
+    name: "--fds-theme-brand1-contrast-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#231a05",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#231a05",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "1"
+    ]
+  },
+  {
+    value: "#2d2206",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#2d2206",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "2"
+    ]
+  },
+  {
+    value: "#3d2e09",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#3d2e09",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-3",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "3"
+    ]
+  },
+  {
+    value: "#48360a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#48360a",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-4",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "4"
+    ]
+  },
+  {
+    value: "#543e0c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#543e0c",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-5",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "5"
+    ]
+  },
+  {
+    value: "#684e0f",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#684e0f",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-6",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "6"
+    ]
+  },
+  {
+    value: "#876413",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#876413",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-7",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "7"
+    ]
+  },
+  {
+    value: "#a87c17",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#a87c17",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-8",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "8"
+    ]
+  },
+  {
+    value: "#e4a920",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#e4a920",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-9",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "9"
+    ]
+  },
+  {
+    value: "#c6931c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#c6931c",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-10",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "10"
+    ]
+  },
+  {
+    value: "#a87c17",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#a87c17",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-11",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "11"
+    ]
+  },
+  {
+    value: "#daa21f",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#daa21f",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-12",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "12"
+    ]
+  },
+  {
+    value: "#eec76c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#eec76c",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-13",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "13"
+    ]
+  },
+  {
+    value: "#302407",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#302407",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#45340a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#45340a",
+      type: "color"
+    },
+    name: "--fds-theme-brand2-contrast-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand2",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#061d30",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#061d30",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "1"
+    ]
+  },
+  {
+    value: "#07253c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#07253c",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "2"
+    ]
+  },
+  {
+    value: "#0a3251",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#0a3251",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-3",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "3"
+    ]
+  },
+  {
+    value: "#0c3b60",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#0c3b60",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-4",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "4"
+    ]
+  },
+  {
+    value: "#0e446e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#0e446e",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-5",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "5"
+    ]
+  },
+  {
+    value: "#11558a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#11558a",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-6",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "6"
+    ]
+  },
+  {
+    value: "#166eb2",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#166eb2",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-7",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "7"
+    ]
+  },
+  {
+    value: "#1b88db",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#1b88db",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-8",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "8"
+    ]
+  },
+  {
+    value: "#1e98f5",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#1e98f5",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-9",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "9"
+    ]
+  },
+  {
+    value: "#1980ce",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#1980ce",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-10",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "10"
+    ]
+  },
+  {
+    value: "#1569a9",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#1569a9",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-11",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "11"
+    ]
+  },
+  {
+    value: "#57b2f8",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#57b2f8",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-12",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "12"
+    ]
+  },
+  {
+    value: "#9cd2fb",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#9cd2fb",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-13",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "13"
+    ]
+  },
+  {
+    value: "#082740",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#082740",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#061f33",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#061f33",
+      type: "color"
+    },
+    name: "--fds-theme-brand3-contrast-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand3",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#131c27",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#131c27",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-1",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "1"
+    ]
+  },
+  {
+    value: "#192433",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#192433",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-2",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "2"
+    ]
+  },
+  {
+    value: "#243142",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#243142",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-3",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "3"
+    ]
+  },
+  {
+    value: "#2e3a4a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#2e3a4a",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-4",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "4"
+    ]
+  },
+  {
+    value: "#374352",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#374352",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-5",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "5"
+    ]
+  },
+  {
+    value: "#495361",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#495361",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-6",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "6"
+    ]
+  },
+  {
+    value: "#626b77",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#626b77",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-7",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "7"
+    ]
+  },
+  {
+    value: "#7d848e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#7d848e",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-8",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "8"
+    ]
+  },
+  {
+    value: "#1e2b3c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#1e2b3c",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-9",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "9"
+    ]
+  },
+  {
+    value: "#333e4e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#333e4e",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-10",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "10"
+    ]
+  },
+  {
+    value: "#495361",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#495361",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-11",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "11"
+    ]
+  },
+  {
+    value: "#a6abb2",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#a6abb2",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-12",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "12"
+    ]
+  },
+  {
+    value: "#c9ccd0",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#c9ccd0",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-13",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "13"
+    ]
+  },
+  {
+    value: "#f9f9fa",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#f9f9fa",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#9ea3ab",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      value: "#9ea3ab",
+      type: "color"
+    },
+    name: "--fds-theme-neutral-contrast-2",
+    attributes: {},
+    path: [
+      "theme",
       "neutral",
       "contrast-2"
     ]
@@ -9384,7 +9384,7 @@ export const  opacity = [
   {
     value: "30%",
     type: "opacity",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "30%",
@@ -9419,7 +9419,7 @@ export const  borderRadius = [
   {
     value: "2px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "2",
@@ -9435,7 +9435,7 @@ export const  borderRadius = [
   {
     value: "4px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "4",
@@ -9451,7 +9451,7 @@ export const  borderRadius = [
   {
     value: "8px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "8",
@@ -9467,7 +9467,7 @@ export const  borderRadius = [
   {
     value: "12px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "12",
@@ -9483,7 +9483,7 @@ export const  borderRadius = [
   {
     value: "16px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "16",
@@ -9499,7 +9499,7 @@ export const  borderRadius = [
   {
     value: "24px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "24",
@@ -9515,7 +9515,7 @@ export const  borderRadius = [
   {
     value: "32px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "32",
@@ -9531,7 +9531,7 @@ export const  borderRadius = [
   {
     value: "9999px",
     type: "borderRadius",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "9999",
@@ -10321,7 +10321,7 @@ export const  sizing = [
   {
     value: "4px",
     type: "sizing",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "4",
@@ -10340,7 +10340,7 @@ export const  borderWidth = [
   {
     value: "1px",
     type: "borderWidth",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "1px",
@@ -10356,7 +10356,7 @@ export const  borderWidth = [
   {
     value: "2px",
     type: "borderWidth",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: "2px",
@@ -10423,7 +10423,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: [
@@ -10456,7 +10456,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     type: "boxShadow",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: [
@@ -10497,7 +10497,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: [
@@ -10538,7 +10538,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     type: "boxShadow",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: [
@@ -10579,7 +10579,7 @@ export const  boxShadow = [
   {
     value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     type: "boxShadow",
-    filePath: "../../design-tokens/core/globals.json",
+    filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
       value: [
@@ -10703,7 +10703,7 @@ export const  fontFamilies = [
   {
     value: "Inter",
     type: "fontFamilies",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "Inter",
@@ -10722,7 +10722,7 @@ export const  lineHeights = [
   {
     value: 1.3,
     type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "130%",
@@ -10738,7 +10738,7 @@ export const  lineHeights = [
   {
     value: 1.5,
     type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "150%",
@@ -10754,7 +10754,7 @@ export const  lineHeights = [
   {
     value: 1.6,
     type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "160%",
@@ -10770,7 +10770,7 @@ export const  lineHeights = [
   {
     value: 1.7,
     type: "lineHeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "170%",
@@ -10789,7 +10789,7 @@ export const  fontWeights = [
   {
     value: "500",
     type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "500",
@@ -10805,7 +10805,7 @@ export const  fontWeights = [
   {
     value: "600",
     type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "600",
@@ -10821,7 +10821,7 @@ export const  fontWeights = [
   {
     value: "400",
     type: "fontWeights",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "400",
@@ -10840,7 +10840,7 @@ export const  fontSizes = [
   {
     value: "12px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "12",
@@ -10856,7 +10856,7 @@ export const  fontSizes = [
   {
     value: "13px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "13",
@@ -10872,7 +10872,7 @@ export const  fontSizes = [
   {
     value: "14px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "14",
@@ -10888,7 +10888,7 @@ export const  fontSizes = [
   {
     value: "16px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "16",
@@ -10904,7 +10904,7 @@ export const  fontSizes = [
   {
     value: "18px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "18",
@@ -10920,7 +10920,7 @@ export const  fontSizes = [
   {
     value: "21px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "21",
@@ -10936,7 +10936,7 @@ export const  fontSizes = [
   {
     value: "24px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "24",
@@ -10952,7 +10952,7 @@ export const  fontSizes = [
   {
     value: "30px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "30",
@@ -10968,7 +10968,7 @@ export const  fontSizes = [
   {
     value: "36px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "36",
@@ -10984,7 +10984,7 @@ export const  fontSizes = [
   {
     value: "48px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "48",
@@ -11000,7 +11000,7 @@ export const  fontSizes = [
   {
     value: "60px",
     type: "fontSizes",
-    filePath: "../../design-tokens/core/typography/default.json",
+    filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
       value: "60",
