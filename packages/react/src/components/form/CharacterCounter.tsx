@@ -1,5 +1,7 @@
 import { ErrorMessage } from '../Typography';
 
+import type { TextfieldProps } from './Textfield';
+
 export type CharacterLimitProps = Omit<
   CharacterCounterProps,
   'id' | 'value' | 'size'
@@ -17,7 +19,7 @@ type CharacterCounterProps = {
   /** The ID of the element that describes the maximum character limit for accessibility purposes. */
   id: string;
   /** Text size */
-  size?: 'small' | 'medium' | 'large';
+  size?: TextfieldProps['size'];
 };
 
 const defaultLabel: CharacterCounterProps['label'] = (count) =>

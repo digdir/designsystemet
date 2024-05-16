@@ -52,39 +52,39 @@
     border-bottom-right-radius: var(--fds-border_radius-medium);
   }
 
-  .fds-textfield--small .fds-textfield__adornment {
+  .fds-textfield--sm .fds-textfield__adornment {
     padding: var(--fds-sizing-2) var(--fds-spacing-3);
   }
 
-  .fds-textfield--medium .fds-textfield__adornment {
+  .fds-textfield--md .fds-textfield__adornment {
     padding: 0.65rem var(--fds-spacing-4);
   }
 
-  .fds-textfield--large .fds-textfield__adornment {
+  .fds-textfield--lg .fds-textfield__adornment {
     padding: 0.85rem var(--fds-spacing-5);
   }
 
-  .fds-textfield--small .fds-textfield__field {
+  .fds-textfield--sm .fds-textfield__field {
     height: var(--fds-sizing-10);
   }
 
-  .fds-textfield--medium .fds-textfield__field {
+  .fds-textfield--md .fds-textfield__field {
     height: var(--fds-sizing-12);
   }
 
-  .fds-textfield--large .fds-textfield__field {
+  .fds-textfield--lg .fds-textfield__field {
     height: var(--fds-sizing-14);
   }
 
-  .fds-textfield--small .fds-textfield__input {
+  .fds-textfield--sm .fds-textfield__input {
     padding: 0 var(--fds-spacing-2);
   }
 
-  .fds-textfield--medium .fds-textfield__input {
+  .fds-textfield--md .fds-textfield__input {
     padding: 0 var(--fds-spacing-3);
   }
 
-  .fds-textfield--large .fds-textfield__input {
+  .fds-textfield--lg .fds-textfield__input {
     padding: 0 var(--fds-spacing-4);
   }
 
