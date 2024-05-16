@@ -29,7 +29,7 @@ export type SpinnerProps = {
   /**
    * Spinner size
    *
-   * @default 'md'
+   * @default md
    * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` is deprecated
    */
   size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | OldSpinnerSizes;
