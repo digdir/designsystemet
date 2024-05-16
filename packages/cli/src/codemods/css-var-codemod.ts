@@ -11,7 +11,7 @@ type CSSCodemodProps = {
 
 export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemodProps) => {
   const transformPlugin: Plugin = {
-    postcssPlugin: 'Replace',
+    postcssPlugin: 'Replace CSS variables',
     Declaration(decl) {
       Object.keys(dictionary).forEach((key) => {
         if (decl.value.includes(key)) {
