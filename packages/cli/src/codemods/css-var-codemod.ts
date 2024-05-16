@@ -1,5 +1,6 @@
 import fs from 'fs';
 
+import * as R from 'ramda';
 import type { AcceptedPlugin, Plugin } from 'postcss';
 import postcss from 'postcss';
 import glob from 'fast-glob';
@@ -14,7 +15,7 @@ export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemo
     postcssPlugin: 'Replaces referenced CSS variables',
     Declaration(decl) {
       Object.keys(dictionary).forEach((key) => {
-        if (decl.value.includes(key)) {
+        if (decl.value.includes(key) && !R.isEmpty(key)) {
           decl.value = decl.value.replace(key, dictionary[key]);
         }
       });
