@@ -3,14 +3,11 @@
 }
 
 body {
-  font-family: "Inter", sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   color: #1e2b3c;
 }
 
-.fds-switch-input-9a6b03bc:checked
-  + .fds-switch-label-9a6b03bc
-  .fds-switch-track-9a6b03bc
-  .fds-switch-thumb-9a6b03bc {
+.fds-switch-input-9a6b03bc:checked + .fds-switch-label-9a6b03bc .fds-switch-track-9a6b03bc .fds-switch-thumb-9a6b03bc {
   background-image: none;
 }
 
@@ -24,11 +21,11 @@ body {
   left: 0;
   width: 100%;
   z-index: 999;
-  box-shadow: 0 2px 20px 0 rgb(0 0 0 / 25%);
-  background-color: #ffffff !important;
+  box-shadow: 0 2px 20px 0 #c5c5c5;
+  background-color: #fff !important;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .is-sticky .ColorPicker_label__kYLHj {

@@ -18,7 +18,7 @@
 }
 
 .links a:hover {
-  border-color: rgb(212, 212, 212);
+  border-color: #d4d4d4;
 }
 
 .container {
@@ -29,7 +29,7 @@
 }
 
 .active {
-  border-color: rgb(185, 185, 185) !important;
+  border-color: #b9b9b9 !important;
   font-weight: 500;
 }
 

@@ -3,10 +3,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 32px;
   margin-bottom: 100px;
   font-size: 18px;
 }
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .colors {
   display: flex;
 }
@@ -16,7 +23,7 @@
 }
 
 .swatchContainer {
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid #c0c0c0;
   height: 260px;
   width: 495px;
   padding: 20px;
@@ -55,7 +62,7 @@
   align-items: end;
   justify-content: center;
   gap: 32px;
-  padding: 12px 80px 40px 80px;
+  padding: 12px 80px 40px;
   border-radius: 8px;
 }
 
@@ -87,11 +94,11 @@
 
 .toggle:hover {
   cursor: pointer;
-  background-color: rgb(218, 231, 255);
+  background-color: #dae7ff;
 }
 
 .active {
-  background-color: rgb(216, 230, 255);
+  background-color: #d8e6ff;
 }
 
 .toggle img {
@@ -125,7 +132,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 48px 0 24px 0;
+  margin: 48px 0 24px;
 }
 
 .rows {
@@ -162,11 +169,11 @@
 
 .menuItem:hover {
   cursor: pointer;
-  background-color: rgb(225, 236, 255);
+  background-color: #e1ecff;
 }
 
 .menuItemActive {
-  background-color: rgb(225, 236, 255);
+  background-color: #e1ecff;
 }
 
 .menuItemDisabled,
@@ -177,12 +184,12 @@
 }
 
 .preview {
-  border: 1px solid rgb(235, 235, 235);
+  border: 1px solid #ebebeb;
   width: 100%;
   border-radius: 12px;
   display: flex;
   gap: 32px;
-  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 0 20px 2px #ebebeb;
 }
 
 .contrastSection {
@@ -195,11 +202,11 @@
 }
 
 .contrastSection svg {
-  color: rgb(201, 0, 0);
+  color: #c90000;
 }
 
 .contrastSectionSuccess svg {
-  color: rgb(0, 153, 0);
+  color: #090;
 }
 
 .pickers {
@@ -207,7 +214,7 @@
   align-items: flex-end;
   justify-content: center;
   gap: 32px;
-  padding: 12px 0 12px 0;
+  padding: 12px 0;
 }
 
 .pickersContainer {
@@ -219,5 +226,5 @@
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: rgb(80, 80, 80);
+  color: #505050;
 }
