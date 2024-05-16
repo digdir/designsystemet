@@ -30,7 +30,7 @@ export type HelpTextProps = {
 const HelpText = ({
   title,
   placement = 'right',
-  size = 'medium',
+  size = 'md',
   portal,
   className,
   children,
