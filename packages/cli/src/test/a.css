@@ -1,5 +1,7 @@
 .fds-class {
   margin-top: 42px;
+  border-width: var(--fds-border-width-default);
   color: var(--fds-semantic-surface-first-subtle);
+  border-color: var(--fds-semantic-surface-first-light);
   background-color: #fff;
 }
