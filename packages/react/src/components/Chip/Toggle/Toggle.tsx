@@ -5,6 +5,7 @@ import cl from 'clsx/lite';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
+import { getSize } from '../../../utilities/getSize';
 
 export type ToggleChipProps = {
   /**
@@ -12,10 +13,11 @@ export type ToggleChipProps = {
    */
   checkmark?: boolean;
   /**
-   * Changes padding and font-sizes.
-   * @default medium
+   * Changes Chip size and gap between chips.
+   * @default 'md'
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ChipGroupContext['size'];
   /**
    * Toggles `aria-pressed` and visual-changes
    * */
@@ -26,7 +28,6 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   (
     {
       children,
-      size = 'medium',
       selected = false,
       checkmark = true,
       className,
@@ -36,6 +37,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   ) => {
     const shouldDisplayCheckmark = checkmark && selected;
     const group = useContext(ChipGroupContext);
+    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
 
     return (
       <button

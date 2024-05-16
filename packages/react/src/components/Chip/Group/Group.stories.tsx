@@ -21,5 +21,5 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  size: 'small',
+  size: 'sm',
 };
