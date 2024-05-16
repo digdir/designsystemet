@@ -4,6 +4,1281 @@
 
 export const  color = [
   {
+    value: "#08200c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#08200c",
+      type: "color"
+    },
+    name: "--fds-global-green-1",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "1"
+    ]
+  },
+  {
+    value: "#0b290f",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#0b290f",
+      type: "color"
+    },
+    name: "--fds-global-green-2",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "2"
+    ]
+  },
+  {
+    value: "#0f3814",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#0f3814",
+      type: "color"
+    },
+    name: "--fds-global-green-3",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "3"
+    ]
+  },
+  {
+    value: "#114218",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#114218",
+      type: "color"
+    },
+    name: "--fds-global-green-4",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "4"
+    ]
+  },
+  {
+    value: "#144c1c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#144c1c",
+      type: "color"
+    },
+    name: "--fds-global-green-5",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "5"
+    ]
+  },
+  {
+    value: "#185e22",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#185e22",
+      type: "color"
+    },
+    name: "--fds-global-green-6",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "6"
+    ]
+  },
+  {
+    value: "#207a2c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#207a2c",
+      type: "color"
+    },
+    name: "--fds-global-green-7",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "7"
+    ]
+  },
+  {
+    value: "#279636",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#279636",
+      type: "color"
+    },
+    name: "--fds-global-green-8",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "8"
+    ]
+  },
+  {
+    value: "#2ca63d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#2ca63d",
+      type: "color"
+    },
+    name: "--fds-global-green-9",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "9"
+    ]
+  },
+  {
+    value: "#248c33",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#248c33",
+      type: "color"
+    },
+    name: "--fds-global-green-10",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "10"
+    ]
+  },
+  {
+    value: "#1d7129",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#1d7129",
+      type: "color"
+    },
+    name: "--fds-global-green-11",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "11"
+    ]
+  },
+  {
+    value: "#64be70",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#64be70",
+      type: "color"
+    },
+    name: "--fds-global-green-12",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "12"
+    ]
+  },
+  {
+    value: "#a2d8aa",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#a2d8aa",
+      type: "color"
+    },
+    name: "--fds-global-green-13",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "13"
+    ]
+  },
+  {
+    value: "#000",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#000",
+      type: "color"
+    },
+    name: "--fds-global-green-contrast-1",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#e6e6e6",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e6e6e6",
+      type: "color"
+    },
+    name: "--fds-global-green-contrast-2",
+    attributes: {},
+    path: [
+      "global",
+      "green",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#211b08",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#211b08",
+      type: "color"
+    },
+    name: "--fds-global-yellow-1",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "1"
+    ]
+  },
+  {
+    value: "#2b230a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#2b230a",
+      type: "color"
+    },
+    name: "--fds-global-yellow-2",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "2"
+    ]
+  },
+  {
+    value: "#3a300e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#3a300e",
+      type: "color"
+    },
+    name: "--fds-global-yellow-3",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "3"
+    ]
+  },
+  {
+    value: "#453810",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#453810",
+      type: "color"
+    },
+    name: "--fds-global-yellow-4",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "4"
+    ]
+  },
+  {
+    value: "#4e4013",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#4e4013",
+      type: "color"
+    },
+    name: "--fds-global-yellow-5",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "5"
+    ]
+  },
+  {
+    value: "#625017",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#625017",
+      type: "color"
+    },
+    name: "--fds-global-yellow-6",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "6"
+    ]
+  },
+  {
+    value: "#7f681e",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#7f681e",
+      type: "color"
+    },
+    name: "--fds-global-yellow-7",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "7"
+    ]
+  },
+  {
+    value: "#9c8125",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#9c8125",
+      type: "color"
+    },
+    name: "--fds-global-yellow-8",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "8"
+    ]
+  },
+  {
+    value: "#ecc238",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#ecc238",
+      type: "color"
+    },
+    name: "--fds-global-yellow-9",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "9"
+    ]
+  },
+  {
+    value: "#cfaa31",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#cfaa31",
+      type: "color"
+    },
+    name: "--fds-global-yellow-10",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "10"
+    ]
+  },
+  {
+    value: "#b2922a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#b2922a",
+      type: "color"
+    },
+    name: "--fds-global-yellow-11",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "11"
+    ]
+  },
+  {
+    value: "#cca730",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#cca730",
+      type: "color"
+    },
+    name: "--fds-global-yellow-12",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "12"
+    ]
+  },
+  {
+    value: "#eec84d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#eec84d",
+      type: "color"
+    },
+    name: "--fds-global-yellow-13",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "13"
+    ]
+  },
+  {
+    value: "#000",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#000",
+      type: "color"
+    },
+    name: "--fds-global-yellow-contrast-1",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#e6e6e6",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e6e6e6",
+      type: "color"
+    },
+    name: "--fds-global-yellow-contrast-2",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#2d1508",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#2d1508",
+      type: "color"
+    },
+    name: "--fds-global-orange-1",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "1"
+    ]
+  },
+  {
+    value: "#3a1b0a",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#3a1b0a",
+      type: "color"
+    },
+    name: "--fds-global-orange-2",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "2"
+    ]
+  },
+  {
+    value: "#4f240d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#4f240d",
+      type: "color"
+    },
+    name: "--fds-global-orange-3",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "3"
+    ]
+  },
+  {
+    value: "#5d2b0f",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#5d2b0f",
+      type: "color"
+    },
+    name: "--fds-global-orange-4",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "4"
+    ]
+  },
+  {
+    value: "#6b3212",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#6b3212",
+      type: "color"
+    },
+    name: "--fds-global-orange-5",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "5"
+    ]
+  },
+  {
+    value: "#853e16",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#853e16",
+      type: "color"
+    },
+    name: "--fds-global-orange-6",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "6"
+    ]
+  },
+  {
+    value: "#ac4f1c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#ac4f1c",
+      type: "color"
+    },
+    name: "--fds-global-orange-7",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "7"
+    ]
+  },
+  {
+    value: "#d46223",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#d46223",
+      type: "color"
+    },
+    name: "--fds-global-orange-8",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "8"
+    ]
+  },
+  {
+    value: "#d46223",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#d46223",
+      type: "color"
+    },
+    name: "--fds-global-orange-9",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "9"
+    ]
+  },
+  {
+    value: "#b0511d",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#b0511d",
+      type: "color"
+    },
+    name: "--fds-global-orange-10",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "10"
+    ]
+  },
+  {
+    value: "#8e4117",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#8e4117",
+      type: "color"
+    },
+    name: "--fds-global-orange-11",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "11"
+    ]
+  },
+  {
+    value: "#e39a72",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e39a72",
+      type: "color"
+    },
+    name: "--fds-global-orange-12",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "12"
+    ]
+  },
+  {
+    value: "#efc3ab",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#efc3ab",
+      type: "color"
+    },
+    name: "--fds-global-orange-13",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "13"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#ffffff",
+      type: "color"
+    },
+    name: "--fds-global-orange-contrast-1",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#e6e6e6",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e6e6e6",
+      type: "color"
+    },
+    name: "--fds-global-orange-contrast-2",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#380c0c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#380c0c",
+      type: "color"
+    },
+    name: "--fds-global-red-1",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "1"
+    ]
+  },
+  {
+    value: "#470f10",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#470f10",
+      type: "color"
+    },
+    name: "--fds-global-red-2",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "2"
+    ]
+  },
+  {
+    value: "#5e1515",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#5e1515",
+      type: "color"
+    },
+    name: "--fds-global-red-3",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "3"
+    ]
+  },
+  {
+    value: "#6f1819",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#6f1819",
+      type: "color"
+    },
+    name: "--fds-global-red-4",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "4"
+    ]
+  },
+  {
+    value: "#7f1c1c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#7f1c1c",
+      type: "color"
+    },
+    name: "--fds-global-red-5",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "5"
+    ]
+  },
+  {
+    value: "#9d2223",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#9d2223",
+      type: "color"
+    },
+    name: "--fds-global-red-6",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "6"
+    ]
+  },
+  {
+    value: "#bb3f40",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#bb3f40",
+      type: "color"
+    },
+    name: "--fds-global-red-7",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "7"
+    ]
+  },
+  {
+    value: "#c96666",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#c96666",
+      type: "color"
+    },
+    name: "--fds-global-red-8",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "8"
+    ]
+  },
+  {
+    value: "#b32728",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#b32728",
+      type: "color"
+    },
+    name: "--fds-global-red-9",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "9"
+    ]
+  },
+  {
+    value: "#8c1f1f",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#8c1f1f",
+      type: "color"
+    },
+    name: "--fds-global-red-10",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "10"
+    ]
+  },
+  {
+    value: "#671617",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#671617",
+      type: "color"
+    },
+    name: "--fds-global-red-11",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "11"
+    ]
+  },
+  {
+    value: "#dc9a9b",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#dc9a9b",
+      type: "color"
+    },
+    name: "--fds-global-red-12",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "12"
+    ]
+  },
+  {
+    value: "#e9c2c2",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e9c2c2",
+      type: "color"
+    },
+    name: "--fds-global-red-13",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "13"
+    ]
+  },
+  {
+    value: "#000",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#000",
+      type: "color"
+    },
+    name: "--fds-global-red-contrast-1",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#e6e6e6",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e6e6e6",
+      type: "color"
+    },
+    name: "--fds-global-red-contrast-2",
+    attributes: {},
+    path: [
+      "global",
+      "red",
+      "contrast-2"
+    ]
+  },
+  {
+    value: "#031d30",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#031d30",
+      type: "color"
+    },
+    name: "--fds-global-blue-1",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "1"
+    ]
+  },
+  {
+    value: "#032540",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#032540",
+      type: "color"
+    },
+    name: "--fds-global-blue-2",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "2"
+    ]
+  },
+  {
+    value: "#043256",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#043256",
+      type: "color"
+    },
+    name: "--fds-global-blue-3",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "3"
+    ]
+  },
+  {
+    value: "#053c65",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#053c65",
+      type: "color"
+    },
+    name: "--fds-global-blue-4",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "4"
+    ]
+  },
+  {
+    value: "#064474",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#064474",
+      type: "color"
+    },
+    name: "--fds-global-blue-5",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "5"
+    ]
+  },
+  {
+    value: "#075490",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#075490",
+      type: "color"
+    },
+    name: "--fds-global-blue-6",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "6"
+    ]
+  },
+  {
+    value: "#0a6dba",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#0a6dba",
+      type: "color"
+    },
+    name: "--fds-global-blue-7",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "7"
+    ]
+  },
+  {
+    value: "#3389cb",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#3389cb",
+      type: "color"
+    },
+    name: "--fds-global-blue-8",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "8"
+    ]
+  },
+  {
+    value: "#0c72c1",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#0c72c1",
+      type: "color"
+    },
+    name: "--fds-global-blue-9",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "9"
+    ]
+  },
+  {
+    value: "#085c9c",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#085c9c",
+      type: "color"
+    },
+    name: "--fds-global-blue-10",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "10"
+    ]
+  },
+  {
+    value: "#064678",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#064678",
+      type: "color"
+    },
+    name: "--fds-global-blue-11",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "11"
+    ]
+  },
+  {
+    value: "#78b1dc",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#78b1dc",
+      type: "color"
+    },
+    name: "--fds-global-blue-12",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "12"
+    ]
+  },
+  {
+    value: "#aed0ea",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#aed0ea",
+      type: "color"
+    },
+    name: "--fds-global-blue-13",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "13"
+    ]
+  },
+  {
+    value: "#ffffff",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#ffffff",
+      type: "color"
+    },
+    name: "--fds-global-blue-contrast-1",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "contrast-1"
+    ]
+  },
+  {
+    value: "#e6e6e6",
+    type: "color",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      value: "#e6e6e6",
+      type: "color"
+    },
+    name: "--fds-global-blue-contrast-2",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "contrast-2"
+    ]
+  },
+  {
     value: "#001c36",
     type: "color",
     filePath: "../../design-tokens/semantic/color.json",
@@ -2296,1281 +3571,6 @@ export const  color = [
       "color",
       "warning",
       "contrast-second"
-    ]
-  },
-  {
-    value: "#08200c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#08200c",
-      type: "color"
-    },
-    name: "--fds-global-green-1",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "1"
-    ]
-  },
-  {
-    value: "#0b290f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#0b290f",
-      type: "color"
-    },
-    name: "--fds-global-green-2",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "2"
-    ]
-  },
-  {
-    value: "#0f3814",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#0f3814",
-      type: "color"
-    },
-    name: "--fds-global-green-3",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "3"
-    ]
-  },
-  {
-    value: "#114218",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#114218",
-      type: "color"
-    },
-    name: "--fds-global-green-4",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "4"
-    ]
-  },
-  {
-    value: "#144c1c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#144c1c",
-      type: "color"
-    },
-    name: "--fds-global-green-5",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "5"
-    ]
-  },
-  {
-    value: "#185e22",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#185e22",
-      type: "color"
-    },
-    name: "--fds-global-green-6",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "6"
-    ]
-  },
-  {
-    value: "#207a2c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#207a2c",
-      type: "color"
-    },
-    name: "--fds-global-green-7",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "7"
-    ]
-  },
-  {
-    value: "#279636",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#279636",
-      type: "color"
-    },
-    name: "--fds-global-green-8",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "8"
-    ]
-  },
-  {
-    value: "#2ca63d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#2ca63d",
-      type: "color"
-    },
-    name: "--fds-global-green-9",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "9"
-    ]
-  },
-  {
-    value: "#248c33",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#248c33",
-      type: "color"
-    },
-    name: "--fds-global-green-10",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "10"
-    ]
-  },
-  {
-    value: "#1d7129",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#1d7129",
-      type: "color"
-    },
-    name: "--fds-global-green-11",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "11"
-    ]
-  },
-  {
-    value: "#64be70",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#64be70",
-      type: "color"
-    },
-    name: "--fds-global-green-12",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "12"
-    ]
-  },
-  {
-    value: "#a2d8aa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#a2d8aa",
-      type: "color"
-    },
-    name: "--fds-global-green-13",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "13"
-    ]
-  },
-  {
-    value: "#000",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#000",
-      type: "color"
-    },
-    name: "--fds-global-green-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-green-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "green",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#211b08",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#211b08",
-      type: "color"
-    },
-    name: "--fds-global-yellow-1",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "1"
-    ]
-  },
-  {
-    value: "#2b230a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#2b230a",
-      type: "color"
-    },
-    name: "--fds-global-yellow-2",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "2"
-    ]
-  },
-  {
-    value: "#3a300e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#3a300e",
-      type: "color"
-    },
-    name: "--fds-global-yellow-3",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "3"
-    ]
-  },
-  {
-    value: "#453810",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#453810",
-      type: "color"
-    },
-    name: "--fds-global-yellow-4",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "4"
-    ]
-  },
-  {
-    value: "#4e4013",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#4e4013",
-      type: "color"
-    },
-    name: "--fds-global-yellow-5",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "5"
-    ]
-  },
-  {
-    value: "#625017",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#625017",
-      type: "color"
-    },
-    name: "--fds-global-yellow-6",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "6"
-    ]
-  },
-  {
-    value: "#7f681e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#7f681e",
-      type: "color"
-    },
-    name: "--fds-global-yellow-7",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "7"
-    ]
-  },
-  {
-    value: "#9c8125",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#9c8125",
-      type: "color"
-    },
-    name: "--fds-global-yellow-8",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "8"
-    ]
-  },
-  {
-    value: "#ecc238",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#ecc238",
-      type: "color"
-    },
-    name: "--fds-global-yellow-9",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "9"
-    ]
-  },
-  {
-    value: "#cfaa31",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#cfaa31",
-      type: "color"
-    },
-    name: "--fds-global-yellow-10",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "10"
-    ]
-  },
-  {
-    value: "#b2922a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#b2922a",
-      type: "color"
-    },
-    name: "--fds-global-yellow-11",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "11"
-    ]
-  },
-  {
-    value: "#cca730",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#cca730",
-      type: "color"
-    },
-    name: "--fds-global-yellow-12",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "12"
-    ]
-  },
-  {
-    value: "#eec84d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#eec84d",
-      type: "color"
-    },
-    name: "--fds-global-yellow-13",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "13"
-    ]
-  },
-  {
-    value: "#000",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#000",
-      type: "color"
-    },
-    name: "--fds-global-yellow-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-yellow-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#2d1508",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#2d1508",
-      type: "color"
-    },
-    name: "--fds-global-orange-1",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "1"
-    ]
-  },
-  {
-    value: "#3a1b0a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#3a1b0a",
-      type: "color"
-    },
-    name: "--fds-global-orange-2",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "2"
-    ]
-  },
-  {
-    value: "#4f240d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#4f240d",
-      type: "color"
-    },
-    name: "--fds-global-orange-3",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "3"
-    ]
-  },
-  {
-    value: "#5d2b0f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#5d2b0f",
-      type: "color"
-    },
-    name: "--fds-global-orange-4",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "4"
-    ]
-  },
-  {
-    value: "#6b3212",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#6b3212",
-      type: "color"
-    },
-    name: "--fds-global-orange-5",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "5"
-    ]
-  },
-  {
-    value: "#853e16",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#853e16",
-      type: "color"
-    },
-    name: "--fds-global-orange-6",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "6"
-    ]
-  },
-  {
-    value: "#ac4f1c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#ac4f1c",
-      type: "color"
-    },
-    name: "--fds-global-orange-7",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "7"
-    ]
-  },
-  {
-    value: "#d46223",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#d46223",
-      type: "color"
-    },
-    name: "--fds-global-orange-8",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "8"
-    ]
-  },
-  {
-    value: "#d46223",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#d46223",
-      type: "color"
-    },
-    name: "--fds-global-orange-9",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "9"
-    ]
-  },
-  {
-    value: "#b0511d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#b0511d",
-      type: "color"
-    },
-    name: "--fds-global-orange-10",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "10"
-    ]
-  },
-  {
-    value: "#8e4117",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#8e4117",
-      type: "color"
-    },
-    name: "--fds-global-orange-11",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "11"
-    ]
-  },
-  {
-    value: "#e39a72",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e39a72",
-      type: "color"
-    },
-    name: "--fds-global-orange-12",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "12"
-    ]
-  },
-  {
-    value: "#efc3ab",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#efc3ab",
-      type: "color"
-    },
-    name: "--fds-global-orange-13",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-orange-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-orange-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#380c0c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#380c0c",
-      type: "color"
-    },
-    name: "--fds-global-red-1",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "1"
-    ]
-  },
-  {
-    value: "#470f10",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#470f10",
-      type: "color"
-    },
-    name: "--fds-global-red-2",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "2"
-    ]
-  },
-  {
-    value: "#5e1515",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#5e1515",
-      type: "color"
-    },
-    name: "--fds-global-red-3",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "3"
-    ]
-  },
-  {
-    value: "#6f1819",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#6f1819",
-      type: "color"
-    },
-    name: "--fds-global-red-4",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "4"
-    ]
-  },
-  {
-    value: "#7f1c1c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#7f1c1c",
-      type: "color"
-    },
-    name: "--fds-global-red-5",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "5"
-    ]
-  },
-  {
-    value: "#9d2223",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#9d2223",
-      type: "color"
-    },
-    name: "--fds-global-red-6",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "6"
-    ]
-  },
-  {
-    value: "#bb3f40",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#bb3f40",
-      type: "color"
-    },
-    name: "--fds-global-red-7",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "7"
-    ]
-  },
-  {
-    value: "#c96666",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#c96666",
-      type: "color"
-    },
-    name: "--fds-global-red-8",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "8"
-    ]
-  },
-  {
-    value: "#b32728",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#b32728",
-      type: "color"
-    },
-    name: "--fds-global-red-9",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "9"
-    ]
-  },
-  {
-    value: "#8c1f1f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#8c1f1f",
-      type: "color"
-    },
-    name: "--fds-global-red-10",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "10"
-    ]
-  },
-  {
-    value: "#671617",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#671617",
-      type: "color"
-    },
-    name: "--fds-global-red-11",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "11"
-    ]
-  },
-  {
-    value: "#dc9a9b",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#dc9a9b",
-      type: "color"
-    },
-    name: "--fds-global-red-12",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "12"
-    ]
-  },
-  {
-    value: "#e9c2c2",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e9c2c2",
-      type: "color"
-    },
-    name: "--fds-global-red-13",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "13"
-    ]
-  },
-  {
-    value: "#000",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#000",
-      type: "color"
-    },
-    name: "--fds-global-red-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-red-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "red",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#031d30",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#031d30",
-      type: "color"
-    },
-    name: "--fds-global-blue-1",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "1"
-    ]
-  },
-  {
-    value: "#032540",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#032540",
-      type: "color"
-    },
-    name: "--fds-global-blue-2",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "2"
-    ]
-  },
-  {
-    value: "#043256",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#043256",
-      type: "color"
-    },
-    name: "--fds-global-blue-3",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "3"
-    ]
-  },
-  {
-    value: "#053c65",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#053c65",
-      type: "color"
-    },
-    name: "--fds-global-blue-4",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "4"
-    ]
-  },
-  {
-    value: "#064474",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#064474",
-      type: "color"
-    },
-    name: "--fds-global-blue-5",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "5"
-    ]
-  },
-  {
-    value: "#075490",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#075490",
-      type: "color"
-    },
-    name: "--fds-global-blue-6",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "6"
-    ]
-  },
-  {
-    value: "#0a6dba",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#0a6dba",
-      type: "color"
-    },
-    name: "--fds-global-blue-7",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "7"
-    ]
-  },
-  {
-    value: "#3389cb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#3389cb",
-      type: "color"
-    },
-    name: "--fds-global-blue-8",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "8"
-    ]
-  },
-  {
-    value: "#0c72c1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#0c72c1",
-      type: "color"
-    },
-    name: "--fds-global-blue-9",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "9"
-    ]
-  },
-  {
-    value: "#085c9c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#085c9c",
-      type: "color"
-    },
-    name: "--fds-global-blue-10",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "10"
-    ]
-  },
-  {
-    value: "#064678",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#064678",
-      type: "color"
-    },
-    name: "--fds-global-blue-11",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "11"
-    ]
-  },
-  {
-    value: "#78b1dc",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#78b1dc",
-      type: "color"
-    },
-    name: "--fds-global-blue-12",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "12"
-    ]
-  },
-  {
-    value: "#aed0ea",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#aed0ea",
-      type: "color"
-    },
-    name: "--fds-global-blue-13",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "13"
-    ]
-  },
-  {
-    value: "#ffffff",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#ffffff",
-      type: "color"
-    },
-    name: "--fds-global-blue-contrast-1",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#e6e6e6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/dark/global.json",
-    isSource: true,
-    original: {
-      value: "#e6e6e6",
-      type: "color"
-    },
-    name: "--fds-global-blue-contrast-2",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "contrast-2"
     ]
   },
   {

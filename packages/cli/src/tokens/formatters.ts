@@ -1,11 +1,6 @@
 import * as R from 'ramda';
 import type { TransformedToken, Format } from 'style-dictionary/types';
-import {
-  fileHeader,
-  createPropertyFormatter,
-  usesReferences,
-  getReferences,
-} from 'style-dictionary/utils';
+import { fileHeader, createPropertyFormatter, usesReferences, getReferences } from 'style-dictionary/utils';
 
 type IncludeReferences = (token: TransformedToken) => boolean;
 
@@ -33,20 +28,12 @@ export const scopedReferenceVariables: Format = {
     });
 
     const parseToken = (token: TransformedToken, ignoreSource?: boolean) => {
-      const originalValue = (
-        usesDtcg ? token.original.$value : token.original.value
-      ) as string;
+      const originalValue = (usesDtcg ? token.original.$value : token.original.value) as string;
 
       if (usesReferences(originalValue) && includeReferences(token)) {
-        const refs = getReferences(
-          originalValue,
-          unfilteredTokens ? unfilteredTokens : {},
-        );
+        const refs = getReferences(originalValue, unfilteredTokens ? unfilteredTokens : {});
 
-        referencedTokens = [
-          ...referencedTokens,
-          ...refs.filter((x) => x.isSource),
-        ];
+        referencedTokens = [...referencedTokens, ...refs.filter((x) => x.isSource)];
 
         return formatWithReference(token);
       }
@@ -73,9 +60,7 @@ export const scopedReferenceVariables: Format = {
       (fileHeaderText) => `
 ${fileHeaderText}
 :root {
-  /** Referenced tokens */
-${referenceTokens.join('\n')}
-  /** Tokens */
+${referenceTokens.length > 0 ? referenceTokens.join('\n') : ''}
 ${tokens.join('\n')}
 }
       `,
@@ -83,14 +68,11 @@ ${tokens.join('\n')}
   },
 };
 
-const groupByType = R.groupBy(
-  (token: TransformedToken) => token.type as string,
-);
+const groupByType = R.groupBy((token: TransformedToken) => token.type as string);
 
 /** Add token name with prefix to list for removal */
 const removeUnwatedTokens = R.filter(
-  (token: TransformedToken) =>
-    !['fds-base_spacing', 'fds-base_sizing'].includes(token.name),
+  (token: TransformedToken) => !['fds-base_spacing', 'fds-base_sizing'].includes(token.name),
 );
 
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
@@ -111,26 +93,16 @@ export const groupedTokens: Format = {
       name: toCssVarName(format(token)),
     }));
 
-    const processTokens = R.pipe(
-      removeUnwatedTokens,
-      formatTokens,
-      groupByType,
-    );
+    const processTokens = R.pipe(removeUnwatedTokens, formatTokens, groupByType);
 
     const tokens = processTokens(dictionary.allTokens);
 
     const content = Object.entries(tokens)
       .map(
-        ([name, token]) =>
-          `export const  ${name} = ${JSON.stringify(token, null, 2).replace(
-            /"([^"]+)":/g,
-            '$1:',
-          )} \n`,
+        ([name, token]) => `export const  ${name} = ${JSON.stringify(token, null, 2).replace(/"([^"]+)":/g, '$1:')} \n`,
       )
       .join('\n');
 
-    return fileHeader({ file }).then(
-      (fileHeaderText) => fileHeaderText + content,
-    );
+    return fileHeader({ file }).then((fileHeaderText) => fileHeaderText + content);
   },
 };

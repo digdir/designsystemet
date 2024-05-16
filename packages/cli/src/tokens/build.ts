@@ -64,13 +64,9 @@ const getCSSConfig: GetConfig = ({ fileName = 'unknown', buildPath = 'unknown' }
           fileHeader,
           includeReferences: (token: TransformedToken) => {
             if (
-              R.test(/accent|neutral|brand1|brand2|brand3/, token.name) &&
+              R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
               R.includes('semantic/color', token.filePath)
             ) {
-              return true;
-            }
-
-            if (R.test(/global/, token.name) && R.includes('primitives', token.filePath)) {
               return true;
             }
 
@@ -134,7 +130,9 @@ export async function run(options: Options): Promise<void> {
 
         const [fileName, folderName] = processThemeName(name);
 
-        const [source, include] = R.partition(R.test(/\/primitives\//), updatedSets);
+        const paritionPrimitives = /(?!.*global\.json).*primitives.*/;
+        // const paritionPrimitives = /.*primitives.*/;
+        const [source, include] = R.partition(R.test(paritionPrimitives), updatedSets);
 
         const config_ = configCallback({
           fileName: fileName,
