@@ -5,15 +5,15 @@
     gap: var(--fds-spacing-2);
   }
 
-  .fds-search--small {
+  .fds-search--sm {
     --f-search-button-clear-size: var(--fds-sizing-5);
   }
 
-  .fds-search--medium {
+  .fds-search--md {
     --f-search-button-clear-size: var(--fds-sizing-6);
   }
 
-  .fds-search--large {
+  .fds-search--lg {
     --f-search-button-clear-size: var(--fds-sizing-8);
   }
 
