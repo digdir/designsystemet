@@ -4,13 +4,18 @@ import type { AcceptedPlugin, Plugin } from 'postcss';
 import postcss from 'postcss';
 import glob from 'fast-glob';
 
-export const cssVarCodemod = (dictionary: Record<string, string>) => {
+type CSSCodemodProps = {
+  dictionary: Record<string, string>;
+  globPath?: string;
+};
+
+export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemodProps) => {
   const transformPlugin: Plugin = {
     postcssPlugin: 'Replace',
-    Declaration(declaration) {
+    Declaration(decl) {
       Object.keys(dictionary).forEach((key) => {
-        if (declaration.value.includes(key)) {
-          declaration.value = declaration.value.replace(key, dictionary[key]);
+        if (decl.value.includes(key)) {
+          decl.value = decl.value.replace(key, dictionary[key]);
         }
       });
     },
@@ -21,7 +26,7 @@ export const cssVarCodemod = (dictionary: Record<string, string>) => {
   const processor = postcss(plugins);
 
   const transform = async () => {
-    const files = glob.sync('./**/*.css');
+    const files = glob.sync(globPath);
 
     const filePromises = files.map(async (file) => {
       const contents = fs.readFileSync(file).toString();
