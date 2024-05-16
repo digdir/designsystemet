@@ -373,23 +373,51 @@ export const Ikoner: StoryFn<typeof Button> = () => (
       size='sm'
     >
       <CogIcon fontSize='1rem' />
-      small
+      Small
     </Button>
     <Button
       variant='primary'
       size='md'
     >
       <CogIcon fontSize='1.5rem' />
-      medium
+      Medium
     </Button>
     <Button
       variant='primary'
       size='lg'
     >
       <CogIcon fontSize='2rem' />
-      large
+      Large
     </Button>
   </>
 );
 
 Ikoner.decorators = [stack];
+
+export const Kunikoner: StoryFn<typeof Button> = () => (
+  <>
+    <Button
+      icon={true}
+      variant='primary'
+      size='sm'
+    >
+      <CogIcon fontSize='1.5rem' />
+    </Button>
+    <Button
+      icon={true}
+      variant='primary'
+      size='md'
+    >
+      <CogIcon fontSize='2rem' />
+    </Button>
+    <Button
+      icon={true}
+      variant='primary'
+      size='lg'
+    >
+      <CogIcon fontSize='2.5rem' />
+    </Button>
+  </>
+);
+
+Kunikoner.decorators = [stack];
