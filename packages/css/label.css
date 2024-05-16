@@ -1,0 +1,46 @@
+@layer fds.typography.label {
+  .fds-label {
+    --fdsc-bottom-spacing: var(--fds-spacing-1);
+
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: var(--fds-semantic-text-neutral-default);
+  }
+
+  .fds-label--spacing {
+    margin-bottom: var(--fdsc-bottom-spacing);
+  }
+
+  .fds-label--lg {
+    font: var(--fds-typography-label-large);
+    font-family: inherit;
+  }
+
+  .fds-label--md {
+    font: var(--fds-typography-label-medium);
+    font-family: inherit;
+  }
+
+  .fds-label--sm {
+    font: var(--fds-typography-label-small);
+    font-family: inherit;
+  }
+
+  .fds-label--xs {
+    font: var(--fds-typography-label-xsmall);
+    font-family: inherit;
+  }
+
+  .fds-label--regular-weight {
+    font-weight: 400;
+  }
+
+  .fds-label--medium-weight {
+    font-weight: 500;
+  }
+
+  .fds-label--semibold-weight {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,117 @@
+import {
+  EnvelopeClosedIcon,
+  BranchingIcon,
+  PersonChatIcon,
+} from '@navikt/aksel-icons';
+
+import { FrontpageLayout } from '@layouts';
+import { Meta, Section, ImageBanner } from '@components';
+
+import { BlogCard } from '../components/Blog';
+
+export default ({ children }) => <FrontpageLayout content={children} />;
+
+<Meta
+  title='Velkommen'
+  description='Her finner du UI-komponenter, retningslinjer og god praksis for effektiv produktutvikling og helhetlige brukeropplevelser.'
+/>
+<ImageBanner
+  title='En felles digital verktøykasse'
+  description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.'
+  imgSrc='/img/Toolbox.svg'
+  headingLevel='h2'
+  imgWidth={1195}
+  imgHeight={270}
+  link={{
+    text: 'Les mer om designsystemet',
+    href: '/grunnleggende/introduksjon/om-designsystemet',
+  }}
+/>
+
+<ImageBanner
+  title='Tilgjengelige og fleksible komponenter'
+  description='Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet, og vi ivaretar kravene til tilgjengelighet. Komponentene er laget i Figma og i React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. '
+  videoSrc='/animations/Page'
+  imgPosition='right'
+  headingLevel='h2'
+  imgWidth={1195}
+  imgHeight={270}
+  fallbackImgSrc='/img/reduced-motion/Page.png'
+  fallbackImgAlt='Designskisse av en mobiltelefon som har komponenter fra designsystemet i seg.'
+/>
+
+<ImageBanner
+  title='Bruk egne tema'
+  description='Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.'
+  videoSrc='/animations/Theme'
+  headingLevel='h2'
+  imgWidth={1195}
+  imgHeight={270}
+  fallbackImgSrc='/img/reduced-motion/Theme.png'
+  fallbackImgAlt='Designskisse av en nettside som viser hvordan designsystemet kan tilpasses ulike identiteter.'
+/>
+
+<Section
+  title='Siste nytt fra designsystemet'
+  style={{
+    gridTemplateColumns: 'repeat(3, minmax(min(100%, 320px), 1fr))',
+  }}
+>
+  <BlogCard
+    title='Temabygger som bacheloroppgave'
+    desc='Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!'
+    href='/bloggen/2024/bachelor-temavelger'
+    image='/img/bloggen/temavelger-front.png'
+    tagText='Bloggen'
+    tagColor='first'
+  />
+  <BlogCard
+    title='Dynamiske font-størrelser og hvorfor vi gikk bort fra det'
+    desc='Det er mulig å bruke dynamiske font-størrelser uten breakpoints, men det medfører noen ulemper.'
+    href='/bloggen/2024/fluid-typography'
+    image='/img/bloggen/fluid-front.png'
+    tagText='Bloggen'
+    tagColor='first'
+  />
+  <BlogCard
+    title='Hvordan Altinn Studio bruker Designsystemet'
+    desc='Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!'
+    href='/bloggen/2024/altinn-studio'
+    image='/img/bloggen/altinnstudio-16-9.png'
+    tagText='Bloggen'
+    tagColor='first'
+  />
+</Section>
+
+<ImageBanner
+  title='Bli med å utvikle designsystemet!'
+  description='Ved å samarbeide om designsystemet kan vi lage mer helhetlige brukeropplevelser på tvers av offentlig sektor. Samtidig sparer vi oss for å gjøre de samme oppgavene flere ganger. Designsystemet  skal være et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer eller hjelpe? Ta kontakt med oss!'
+  imgSrc='/img/Logotest.svg'
+  headingLevel='h2'
+  imgWidth='small'
+  buttons={[
+    {
+      text: 'Bli med på Slack',
+      href: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
+      prefix: <PersonChatIcon fontSize={24} />,
+    },
+    {
+      text: 'Bidra på GitHub',
+      href: 'https://github.com/digdir/designsystemet',
+      prefix: <BranchingIcon fontSize={24} />,
+    },
+    {
+      text: 'Send en epost',
+      href: 'mailto:designsystem@digdir.no',
+      prefix: <EnvelopeClosedIcon fontSize={24} />,
+    },
+  ]}
+/>
+
+<style>
+  {`
+header:first-of-type {
+  background-color: transparent;
+}
+`}
+</style>

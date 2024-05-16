@@ -1,23 +1,23 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import { forwardRef } from 'react';
+import cl from 'clsx';
 
-import { RovingTabindexRoot } from '../../../utility-components/RovingTabIndex';
-
-import classes from './TabList.module.css';
+import { RovingTabindexRoot } from '../../../utilities/RovingTabIndex';
 
 export const TabList = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
->(({ children, ...rest }, ref) => {
+>(({ children, className, ...rest }, ref) => {
   return (
     <RovingTabindexRoot
-      {...rest}
       role='tablist'
-      className={cn(classes.tabItemList, rest.className)}
+      className={cl('fds-tabs__tablist', className)}
       ref={ref}
+      {...rest}
     >
       {children}
     </RovingTabindexRoot>
   );
 });
+
+TabList.displayName = 'TabList';

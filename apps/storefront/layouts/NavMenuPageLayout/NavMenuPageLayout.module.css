@@ -1,0 +1,22 @@
+.page {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-10);
+  margin-top: var(--page-spacing-top);
+  margin-bottom: var(--page-spacing-bottom);
+}
+
+.left {
+  flex-basis: 220px;
+  flex-grow: 1;
+}
+
+.right {
+  flex-basis: 600px;
+  flex-grow: 500;
+}
+
+.outerPage {
+  background-color: var(--fds-semantic-background-subtle);
+}

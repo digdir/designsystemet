@@ -1,16 +1,14 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import {
   InformationSquareFillIcon,
   CheckmarkCircleFillIcon,
   XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
 } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx';
 
 import { Paragraph } from '..';
-
-import classes from './Alert.module.css';
 
 const icons: Record<
   Severity,
@@ -40,36 +38,56 @@ export type AlertProps = {
    * Use this to inform screenreaders of severity.
    *  Defaults to Norwegian. */
   iconTitle?: string;
+  /** Sets the size of the alert.
+   * Does not affect font size.
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLDivElement>;
-
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  ({ severity = 'info', elevated, iconTitle, children, ...rest }, ref) => {
+  (
+    {
+      severity = 'info',
+      elevated,
+      iconTitle,
+      size,
+      children,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
     const { Icon, title } = icons[severity];
 
     return (
       <div
-        {...rest}
         ref={ref}
-        className={cn(
-          classes.alert,
-          classes[severity],
-          elevated && classes.elevated,
-          rest.className,
+        className={cl(
+          'fds-alert',
+          `fds-alert--${size}`,
+          `fds-alert--${severity}`,
+          elevated && `fds-alert--elevated`,
+          className,
         )}
+        {...rest}
       >
         <>
           <Icon
             title={iconTitle || title}
-            className={classes.icon}
+            className='fds-alert__icon'
           />
           <Paragraph
-            as='span'
-            className={classes.content}
+            asChild
+            size={size}
+            className='fds-alert__content'
           >
-            {children}
+            <span>{children}</span>
           </Paragraph>
         </>
       </div>
     );
   },
 );
+
+Alert.displayName = 'Alert';

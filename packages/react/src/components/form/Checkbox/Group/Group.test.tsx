@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -9,7 +8,10 @@ import { CheckboxGroup } from './Group';
 describe('CheckboxGroup', () => {
   test('has correct Checkbox defaultChecked & checked when defaultValue is used', () => {
     render(
-      <CheckboxGroup defaultValue={['test2']}>
+      <CheckboxGroup
+        legend='CheckboxGroup'
+        defaultValue={['test2']}
+      >
         <Checkbox value='test1'>test1</Checkbox>
         <Checkbox value='test2'>test2</Checkbox>
         <Checkbox value='test3'>test3</Checkbox>
@@ -25,7 +27,10 @@ describe('CheckboxGroup', () => {
     let onChangeValue: string[] = [];
 
     render(
-      <CheckboxGroup onChange={(value) => (onChangeValue = value)}>
+      <CheckboxGroup
+        legend='CheckboxGroup'
+        onChange={(value) => (onChangeValue = value)}
+      >
         <Checkbox value='test1'>test1</Checkbox>
         <Checkbox value='test2'>test2</Checkbox>
         <Checkbox value='test3'>test3</Checkbox>
@@ -46,7 +51,10 @@ describe('CheckboxGroup', () => {
     let onChangeValue: string[] = [];
 
     render(
-      <CheckboxGroup onChange={(value) => (onChangeValue = value)}>
+      <CheckboxGroup
+        legend='CheckboxGroup'
+        onChange={(value) => (onChangeValue = value)}
+      >
         <Checkbox value='test1'>test1</Checkbox>
         <Checkbox value='test2'>test2</Checkbox>
         <Checkbox value='test3'>test3</Checkbox>

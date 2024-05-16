@@ -1,2 +1,4 @@
 **/dist/**/*.css
-packages/tokens/brand/**/*
+packages/theme/brand/**/*.css
+packages/css/dist/**/*.css
+apps/theme/**

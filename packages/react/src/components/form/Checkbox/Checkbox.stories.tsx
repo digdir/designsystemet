@@ -5,17 +5,19 @@ import { Checkbox } from '.';
 type Story = StoryObj<typeof Checkbox>;
 
 export default {
-  title: 'Felles/Checkbox',
+  title: 'Komponenter/Checkbox',
   component: Checkbox,
 } as Meta;
 
 export const Preview: Story = {
   args: {
-    children: 'Checkbox',
+    children: 'Checkbox label',
     description: 'Description',
     disabled: false,
     readOnly: false,
     value: 'value',
+    size: 'medium',
+    indeterminate: false,
   },
 };
 

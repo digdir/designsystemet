@@ -1,85 +1,18 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 
 <Meta title='Oversikt' />
 
-# Komponenter
+# Designsystemet
 
-Felles designsystem skal bestå av generiske komponenter som gir verdi å dele på tvers.
+Du kan allerede nå bruke komponenter fra designsystemet, men det vil komme noen endringer i komponentene frem mot V1. Vi ønsker å sikre god kvalitet og ivareta tilbakemeldingene vi har fått fra teamene som bruker designsystemet.
+Målet er at V1 skal være mest mulig stabil når den lanseres, og at det blir et godt fundament for å kunne videreutvikle og lage mer avanserte og sammensatte komponenter.
 
-## V1
+**Hovedpunkter som skal løses før V1:**
 
-Målet for første versjon er å lage et godt fundament for å kunne videreutvikle og lage mer avanserte og sammensatte komponenter.
-Noen av de nåværende komponentene i biblioteket er fra Altinn. Vi jobber nå med å gjennomgå disse for å få de opp på ønsket nivå. Når de er gjort mer fleksible og generiske blir de markert som "✅ Felles"
+- Endringer på noen tokens og oppdatering på React komponenter iht. tokens-endringene.
+- Bytte til en statisk typografisk skala som default
+- Pakkeendringer for planlagt [fremtidige løsninger](https://github.com/digdir/designsystemet/issues/1435)
 
-V1 er klar når følgende komponenter er markert som "✅ Felles":
+<br />
 
-| Komponent                                           | Status           | Design                                                                                                                                                        | Specification                                                               |
-| :-------------------------------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------- |
-| [Accordion](/docs/felles-accordion--docs)           | ✅ Felles        | [Figma - Accordion](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=13134%3A99489&t=q8n4mcOmllKbfppi-1)                          | [Github - Accordion](https://github.com/digdir/designsystem/issues/75)      |
-| [Alert](/docs/felles-alert--docs)                   | ✅ Felles        | [Figma - Alert](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6801%3A29775&t=q8n4mcOmllKbfppi-1)                               | [Github - Alert](https://github.com/digdir/designsystem/issues/78)          |
-| Autocomplete                                        | 🚸 Ikke påbegynt | Figma - Autocomplete                                                                                                                                          | [Github - Autocomplete](https://github.com/digdir/designsystem/issues/525)  |
-| [Button](/docs/altinn-button--docs)                 | 🔵 Altinn        | [Figma - Button](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=16157%3A48501&mode=design&t=qezsXvNE3xBWJlKj-1)     | [Github - Button](https://github.com/digdir/designsystem/issues/315)        |
-| [Checkbox](/docs/felles-checkbox--docs)             | ✅ Felles        | [Figma - Checkbox](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6632%3A21157&t=q8n4mcOmllKbfppi-1)                            | [Github - Checkbox](https://github.com/digdir/designsystem/issues/316)      |
-| Card                                                | 🚸 Ikke påbegynt | Figma - Card                                                                                                                                                  | [Github - Card](https://github.com/digdir/designsystem/issues/317)          |
-| [Chip](/docs/felles-chip--docs)                     | ✅ Felles        | [Figma - Chip](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=7882%3A46679&t=q8n4mcOmllKbfppi-1)                                | [Github - Chip](https://github.com/digdir/designsystem/issues/49)           |
-| DropdownMenu                                        | 🚸 Ikke påbegynt | Figma - DropdownMenu                                                                                                                                          | [Github - DropdownMenu](https://github.com/digdir/designsystem/issues/219)  |
-| [Fieldset](/docs/felles-fieldset--docs)             | ✅ Felles        | [Figma - Fieldset](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=16120%3A49532&mode=design&t=qezsXvNE3xBWJlKj-1)   | [Github - Fieldset](https://github.com/digdir/designsystem/issues/318)      |
-| Header                                              | 🚸 Ikke påbegynt | Figma - Header                                                                                                                                                | [Github - Header](https://github.com/digdir/designsystem/issues/216)        |
-| [HelpText](/docs/altinn-helptext--docs)             | 🔵 Altinn        | [Figma - HelpText](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=10351%3A59384&t=7Q2N4sUdQGhFZrPh-1)                           | [Github - HelpText](https://github.com/digdir/designsystem/issues/29)       |
-| [Link](/docs/felles-link--docs)                     | ✅ Felles        | [Figma - Link](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=12585%3A103505&mode=design&t=qezsXvNE3xBWJlKj-1)      | [Github - Link](https://github.com/digdir/designsystem/issues/62)           |
-| [List](/docs/altinn-list--docs)                     | 🔵 Altinn        | Figma - List                                                                                                                                                  | [Github - List](https://github.com/digdir/designsystem/issues/80)           |
-| Loader ([Spinner](/docs/altinn-spinner--docs))      | 🔵 Altinn        | [Figma - Loader](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=9104%3A49626&t=7Q2N4sUdQGhFZrPh-1)                              | [Github - Loader](https://github.com/digdir/designsystem/issues/81)         |
-| Modal                                               | 🚸 Ikke påbegynt | Figma - Modal                                                                                                                                                 | [Github - Modal](https://github.com/digdir/designsystem/issues/82)          |
-| [Native Select](/docs/altinn-nativeselect--docs)    | 🔵 Altinn        | [Figma - Native Select](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=7538%3A45657&t=7Q2N4sUdQGhFZrPh-1)                       | [Github - Native Select](https://github.com/digdir/designsystem/issues/482) |
-| [Pagination](/docs/felles-pagination--docs)         | ✅ Felles        | [Figma - Pagination](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=16577%3A54916&mode=design&t=qezsXvNE3xBWJlKj-1) | [Github - Pagination](https://github.com/digdir/designsystem/issues/83)     |
-| [Popover](/docs/altinn-popover--docs)               | 🔵 Altinn        | [Figma - Popover](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=10702%3A68901&t=Rlfq5UyNZBL69dFr-1)                | [Github - Popover](https://github.com/digdir/designsystem/issues/60)        |
-| [Radio](/docs/felles-radio--docs)                   | ✅ Felles        | [Figma - Radio](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=16241%3A53787&mode=design&t=qezsXvNE3xBWJlKj-1)      | [Github - Radio](https://github.com/digdir/designsystem/issues/86)          |
-| [Select](/docs/altinn-select-flervalgsmeny--docs)   | 🔵 Altinn        | [Figma - Select](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=7538%3A45657&t=7Q2N4sUdQGhFZrPh-1)                              | [Github - Select](https://github.com/digdir/designsystem/issues/320)        |
-| Search                                              | 🚸 Ikke påbegynt | Figma - Search                                                                                                                                                | [Github - Search](https://github.com/digdir/designsystem/issues/88)         |
-| [Switch](/docs/felles-switch--docs)                 | ✅ Felles        | [Figma - Switch](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=17755-6024&mode=design&t=ztPUyfbDSQjlpEzv-0)        | [Github - Switch](https://github.com/digdir/designsystem/issues/89)         |
-| [Table](/docs/altinn-table--docs)                   | 🔵 Altinn        | Figma - Table                                                                                                                                                 | [Github - Table](https://github.com/digdir/designsystem/issues/90)          |
-| [Tabs](/docs/felles-tabs--docs)                     | ✅ Felles        | [Figma - Tabs](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=9551%3A54208&t=Rlfq5UyNZBL69dFr-1)                    | [Github - Tabs](https://github.com/digdir/designsystem/issues/91)           |
-| [Tag](/docs/felles-tag--docs)                       | ✅ Felles        | [Figma - Tag](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=10185%3A59053&t=7Q2N4sUdQGhFZrPh-1)                                | [Github - Tag](https://github.com/digdir/designsystem/issues/322)           |
-| [Textarea](/docs/felles-textarea--docs)             | ✅ Felles        | [Figma - Text area](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6632%3A21873&t=7Q2N4sUdQGhFZrPh-1)                           | [Github - Textarea](https://github.com/digdir/designsystem/issues/323)      |
-| [Textfield](/docs/felles-textfield--docs)           | ✅ Felles        | [Figma - Text Field](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=6632%3A22228&t=7Q2N4sUdQGhFZrPh-1)                          | [Github - Textfield](https://github.com/digdir/designsystem/issues/92)      |
-| [ToggleGroup](/docs/felles-togglegroup--docs)       | ✅ Felles        | Figma - Toggle Group                                                                                                                                          | [Github - ToggleGroup](https://github.com/digdir/designsystem/issues/304)   |
-| Tooltip                                             | 🚸 Ikke påbegynt | Figma - Tooltip                                                                                                                                               | [Github - Tooltip](https://github.com/digdir/designsystem/issues/93)        |
-| [Typography](/docs/felles-typography--docs)         | ✅ Felles        | [Figma - Typography](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=9219%3A49405&t=7Q2N4sUdQGhFZrPh-1)                          | [Github - Typography](https://github.com/digdir/designsystem/issues/324)    |
-
-## Planlagte komponenter i fremtiden
-
-| Komponent          | Status           | Design                                                                                                                           | Specification                                                         |
-| :----------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- |
-| Breadcrumbs        | 🚸 Ikke påbegynt |                                                                                                                                  |                                                                       |
-| Drawer             | 🚸 Ikke påbegynt | Figma - Drawer                                                                                                                   | [Github - Drawer](https://github.com/digdir/designsystem/issues/221)  |
-| Loader ( Skeleton) | 🚸 Ikke påbegynt | [Figma - Loader](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?node-id=9104%3A49626&t=7Q2N4sUdQGhFZrPh-1) | [Github - Loader](https://github.com/digdir/designsystem/issues/81)   |
-| Stepper            | 🚸 Ikke påbegynt | Figma - Stepper                                                                                                                  | [Github - Stepper](https://github.com/digdir/designsystem/issues/321) |
-
-## Mulige komponenter i fremtiden
-
-| Komponent    | Status                                        | Figma               | Github                                                                    |
-| ------------ | :-------------------------------------------- | :------------------ | ------------------------------------------------------------------------- |
-| Dialog       | 🚸 Ikke påbegynt                              |                     |                                                                           |
-| FileUploader | 🚸 Ikke påbegynt (i første omgang et mønster) |                     |                                                                           |
-| Progress     | 🚸 Ikke påbegynt                              |                     |                                                                           |
-| Sidebar      | 🚸 Ikke påbegynt                              |                     |                                                                           |
-| Timeline     | 🚸 Ikke påbegynt                              |                     |                                                                           |
-| Toast        | 🚸 Ikke påbegynt                              |                     |                                                                           |
-| Quote        | 🚸 Ikke påbegynt                              |                     |                                                                           |
-| Radio Panel  | 🚸 Ikke påbegynt                              | Figma - Radio panel | [Github - Radio Panel](https://github.com/digdir/designsystem/issues/526) |
-| DatePicker   | 🚸 Ikke påbegynt                              |                     |                                                                           |
-
-## Mulige mønstre
-
-| Mønster                          | Status           | Figma | Github |
-| :------------------------------- | :--------------- | :---- | ------ |
-| Filopplasting og vedlegg         | 🚸 Ikke påbegynt |       |        |
-| RichTextEditor / WYSIWYG         | 🚸 Ikke påbegynt |       |        |
-| Search                           | 🚸 Ikke påbegynt |       |        |
-| Support/Chat                     | 🚸 Ikke påbegynt |       |        |
-| Navigation                       | 🚸 Ikke påbegynt |       |        |
-| Informere om autolagring         | 🚸 Ikke påbegynt |       |        |
-| Filtrering                       | 🚸 Ikke påbegynt |       |        |
-| Linklist                         | 🚸 Ikke påbegynt |       |        |
-| Innholdsmønster (template/pages) | 🚸 Ikke påbegynt |       |        |
-| Table patterns                   | 🚸 Ikke påbegynt |       |        |
+Dette er ting som er fint å kunne utforske i en beta-periode, men vi sikter på V1 mai 2024. 🌱

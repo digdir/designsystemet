@@ -1,20 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { RemovableChip } from './';
+import { RemovableChip } from './Removable';
 
-const meta: Meta<typeof RemovableChip> = {
-  title: 'Felles/Chip/Removable',
+export default {
+  title: 'Komponenter/Chip/Removable',
   component: RemovableChip,
-};
-
-export default meta;
+} as Meta;
 
 type Story = StoryObj<typeof RemovableChip>;
 
 export const Preview: Story = {
   args: {
     children: 'Nynorsk',
-    size: 'small',
+    size: 'medium',
     'aria-label': 'Slett nynorsk',
+    disabled: false,
   },
 };

@@ -1,61 +1,46 @@
-import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 import type { TableProps } from './Table';
 import { Table } from './Table';
-import { TableBody } from './TableBody';
-import { TableCell } from './TableCell';
-import { TableHeader } from './TableHeader';
-import { TableRow } from './TableRow';
 
-interface TestRow {
-  fruit: string;
-}
+import { TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '.';
 
-const render = (props: Partial<TableProps<TestRow>> = {}) => {
-  const allProps: TableProps<TestRow> = {
-    children: (
-      <>
-        <TableHeader>
-          <TableRow>
-            <TableCell>Frukt</TableCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow rowData={{ fruit: 'apple' }}>
-            <TableCell>Apple</TableCell>
-          </TableRow>
-          <TableRow rowData={{ fruit: 'orange' }}>
-            <TableCell>Orange</TableCell>
-          </TableRow>
-        </TableBody>
-      </>
-    ),
-    onChange: jest.fn(),
-    selectRows: true,
-    selectedValue: { fruit: '' },
-    ...props,
-  };
-  renderRtl(<Table {...allProps} />);
+const children = (
+  <>
+    <TableHead>
+      <TableRow>
+        <TableHeaderCell>Header 1</TableHeaderCell>
+        <TableHeaderCell>Header 2</TableHeaderCell>
+        <TableHeaderCell>Header 3</TableHeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>Cell 1</TableCell>
+        <TableCell>Cell 2</TableCell>
+        <TableCell>Cell 3</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Cell 4</TableCell>
+        <TableCell>Cell 5</TableCell>
+        <TableCell>Cell 6</TableCell>
+      </TableRow>
+    </TableBody>
+  </>
+);
+
+const render = (props: TableProps = {}) => {
+  return renderRtl(<Table {...props} />);
 };
 
-const user = userEvent.setup();
-
-describe('Table', () => {
-  it('Calls onChange with correct selectedValue when TableRow is clicked and selectRows is true', async () => {
-    const onChange = jest.fn();
-    render({ onChange, selectRows: true });
-    await user.click(screen.getByText('Apple'));
-    expect(onChange).toHaveBeenCalledWith({
-      selectedValue: { fruit: 'apple' },
-    });
+describe('table', (): void => {
+  it('should render table', (): void => {
+    render();
+    expect(screen.getByRole('table')).toBeInTheDocument();
   });
 
-  it('Does not call onChange when when selectRows is false and TableRow is clicked', async () => {
-    const onChange = jest.fn();
-    render({ onChange, selectRows: false });
-    await user.click(screen.getByText('Apple'));
-    expect(onChange).toHaveBeenCalledTimes(0);
+  it('should render with children', (): void => {
+    render({ children });
+    expect(screen.getByRole('table').querySelector('tr')).toBeInTheDocument();
   });
 });

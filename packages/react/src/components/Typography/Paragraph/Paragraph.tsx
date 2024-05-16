@@ -1,48 +1,52 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import { forwardRef } from 'react';
+import cl from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
+import { getSize } from '../../../utilities/getSize';
 
-import classes from './Paragraph.module.css';
+type OldParagraphSizes = 'xsmall' | 'small' | 'medium' | 'large';
 
 export type ParagraphProps = {
-  /** Changes text sizing */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /**
+   * Changes text sizing
+   *
+   * @default `md`
+   *
+   * @note `xsmall`, `small`, `medium`, `large` is deprecated
+   */
+  size?: 'xs' | 'sm' | 'md' | 'lg' | OldParagraphSizes;
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Reduces line-height for short paragraphs */
-  short?: boolean;
+  /** Adjusts styling for paragraph length */
+  variant?: 'long' | 'short';
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
 /** Use `Paragraph` to display text with paragraph text styles. */
-export const Paragraph: OverridableComponent<
-  ParagraphProps,
-  HTMLParagraphElement
-> = forwardRef(
-  (
-    {
-      className,
-      size = 'medium',
-      spacing,
-      as: Component = 'p',
-      short,
-      ...rest
-    },
-    ref,
-  ) => (
-    <Component
-      {...rest}
-      ref={ref}
-      className={cl(
-        classes.paragraph,
-        classes[size],
-        {
-          [classes.spacing]: !!spacing,
-          [classes.short]: short,
-        },
-        className,
-      )}
-    />
-  ),
+export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ className, spacing, asChild, variant, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'p';
+    const size = getSize(rest.size || 'md');
+
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          'fds-paragraph',
+          `fds-paragraph--${size}`,
+          spacing && 'fds-paragraph--spacing',
+          variant && `fds-paragraph--${variant}`,
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
 );
+
+Paragraph.displayName = 'Paragraph';

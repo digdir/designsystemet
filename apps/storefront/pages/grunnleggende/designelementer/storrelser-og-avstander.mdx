@@ -1,0 +1,62 @@
+import { RulerIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { Image, Meta, TokenList } from '@components';
+
+<Meta
+  title='Størrelser og avstander'
+  description='Størrelser og avstander'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Størrelser og avstander',
+      date: '29. Februar 2024',
+      icon: <RulerIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Størrelser (`sizing`) brukes til å definere bredde og høyde på elementer.
+
+Avstand (`spacing`) brukes til å sette marging og padding. Settet med avstander som er definert i tokens gir oss mulighet til å definere verdier for _"Auto Layout"_ i Figma og sikrer dermed konsistent design på tvers av grensesnitt.
+
+<TokenList
+  type='sizing'
+  hideValue={true}
+/>
+
+<TokenList
+  type='spacing'
+  hideValue={true}
+/>
+
+## Men hvorfor må vi ha både `sizing` og `spacing` når de er helt like?
+
+Fordi vi ønsker å holde variablene i sync mellom Figma og kode. For å gjøre dette bruker vi foreløpig en plugin som heter "[Token Studio](https://tokens.studio/)". Som du kan se fra [dokumentasjonen til Token Studio](https://docs.tokens.studio/available-tokens/spacing-tokens) er pluginen avhengig av å skille størrelser og avstander.
+
+### Sizing-variabler i Figma
+
+Størrelser (sizing) er det du setter under en **_"Section"_**, **_"Frame"_** eller **_"Group"_** i Figma. Der kan du definere bredde (W) og høyde (H).
+
+<Image
+  src='/img/sizing.png'
+  alt='Skjermbildet viser hvor du kan bruke Sizing-variabler i Figma'
+  boxShadow={false}
+/>
+
+### Spacing-variabler i Figma
+
+Avstander er det du setter under _**"Auto Layout"**_ i Figma. Der kan du definere avstand over, under, ved siden av, eller mellom.
+
+<Image
+  src='/img/spacing.png'
+  alt='Skjermbildet viser hvor du kan bruke Spacing-variabler i Figma'
+  boxShadow={false}
+/>
+
+<br />
+<br />

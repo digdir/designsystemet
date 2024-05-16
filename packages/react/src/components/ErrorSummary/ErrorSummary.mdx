@@ -1,0 +1,42 @@
+import { Meta, Controls, Primary, ArgTypes, Canvas } from '@storybook/blocks';
+
+import * as ErrorSummaryStories from './ErrorSummary.stories';
+
+import { ErrorSummary } from './';
+
+<Meta of={ErrorSummaryStories} />
+
+# ErrorSummary
+
+<Primary />
+<Controls />
+
+## Slik bruker du `ErrorSummary`
+
+`ErrorSummary.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`, `role='alert'`, osv.) mellom listen, tittel og alerten.
+Alle `ErrorSummary.Item` må ha en `href` for å kunne navigere til riktig sted i skjemaet.
+
+```tsx
+import { ErrorSummary } from '@digdir/designsystemet-react';
+
+<ErrorSummary.Root>
+  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+  <ErrorSummary.List>
+    <ErrorSummary.Item href='#'>Item</ErrorSummary.Item>
+  </ErrorSummary.List>
+</ErrorSummary.Root>;
+```
+
+## Bruk med tekstfelt
+
+<Canvas of={ErrorSummaryStories.WithForm} />
+
+## aria-role='alert'
+
+`ErrorSummary` har `aria-role='alert'` som standard. Dette betyr at skjermlesere vil lese opp innholdet i `ErrorSummary` automatisk.
+
+<Canvas of={ErrorSummaryStories.ShowHide} />
+
+### `ErrorSummary.Item`
+
+<ArgTypes of={ErrorSummary.Item} />

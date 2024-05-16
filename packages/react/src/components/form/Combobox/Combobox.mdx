@@ -1,0 +1,64 @@
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+
+import * as ComboboxStories from './Combobox.stories';
+
+import { Combobox } from './index';
+
+<Meta of={ComboboxStories} />
+
+# Combobox
+
+<Primary />
+<Controls />
+
+## Multiple
+
+<Canvas of={ComboboxStories.Multiple} />
+
+## Med beskrivelse
+
+<Canvas of={ComboboxStories.WithDescription} />
+
+## Kontrollert
+
+<Canvas of={ComboboxStories.Controlled} />
+
+## I form
+
+Du må legge til `name` på `Combobox` for at den skal fungere i et skjema.
+Den bruker native `select`-elementer under panseret, så du kan bruke
+`Combobox.Option` som vanlig.
+
+<Canvas of={ComboboxStories.InForm} />
+
+## Chips utenfor
+
+<Canvas of={ComboboxStories.WithChipsOutside} />
+
+## Forhåndsvalgt verdi
+
+<Canvas of={ComboboxStories.SelectAll} />
+
+## Virtualisert
+
+Lista med elementer kan bli veldig lang, så det kan være lurt å virtualisere.
+Det gjør du ved å sette `virtual` til `true` på `Combobox`.
+
+<Canvas of={ComboboxStories.Virtualized} />
+
+## Loading
+
+<Canvas of={ComboboxStories.Loading} />
+
+## `Combobox.Option`
+
+Brukes som direkte barn av `Combobox` for å vise et element i listen.
+Teksten fra `children` vises til brukeren når elementet er valgt. `value` er
+det som blir sendt til `onValueChange` når elementet blir valgt.
+
+<ArgTypes of={Combobox.Option} />
+
+## `Combobox.Empty`
+
+Brukes som direkte barn av `Combobox` for å vise en melding når det ikke er
+noen elementer i listen.

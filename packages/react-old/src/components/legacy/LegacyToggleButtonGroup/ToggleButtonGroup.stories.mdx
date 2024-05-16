@@ -1,0 +1,44 @@
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
+
+import { Information } from '../../../../../../docs-components';
+
+import { LegacyToggleButtonGroup } from '.';
+
+<Meta
+  title='Avviklet/LegacyToggleButtonGroup'
+  component={LegacyToggleButtonGroup}
+/>
+
+export const defaultArgs = {
+  items: [
+    {
+      label: 'Kaffe',
+      value: 'kaffe',
+    },
+    {
+      label: 'Te',
+      value: 'te',
+    },
+    {
+      label: 'Vann',
+      value: 'vann',
+    },
+  ],
+  selectedValue: 'vann',
+};
+
+export const Template = (args = {}) => (
+  <LegacyToggleButtonGroup {...{ ...defaultArgs, ...args }} />
+);
+
+# LegacyToggleButtonGroup
+
+<Information text='altinn' />
+## Variants
+<Canvas>
+  <Story name='Eksempel'>{Template.bind({})}</Story>
+</Canvas>
+
+## Egenskaper
+
+<ArgTypes story='Eksempel' />

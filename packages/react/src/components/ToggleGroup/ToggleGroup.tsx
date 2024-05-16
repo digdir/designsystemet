@@ -1,10 +1,8 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useId, useState } from 'react';
-import cn from 'classnames';
+import { createContext, forwardRef, useId, useState } from 'react';
+import cl from 'clsx/lite';
 
-import { RovingTabindexRoot } from '../../utility-components/RovingTabIndex';
-
-import classes from './ToggleGroup.module.css';
+import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
 
 export type ToggleGroupContextProps = {
   value?: string;
@@ -41,7 +39,16 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
-    { children, value, defaultValue, onChange, size = 'medium', name, ...rest },
+    {
+      children,
+      value,
+      defaultValue,
+      onChange,
+      size = 'medium',
+      name,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     const nameId = useId();
@@ -61,9 +68,9 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
 
     return (
       <div
-        {...rest}
-        className={cn(classes.toggleGroupContainer, rest.className)}
+        className={cl('fds-togglegroup', className)}
         ref={ref}
+        {...rest}
       >
         <ToggleGroupContext.Provider
           value={{
@@ -74,16 +81,28 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             size,
           }}
         >
+          {name && (
+            <input
+              className='fds-togglegroup__input'
+              name={name}
+              value={value}
+            />
+          )}
           <RovingTabindexRoot
-            as='div'
+            asChild
             valueId={value}
-            className={classes.groupContent}
-            role='radiogroup'
           >
-            {children}
+            <div
+              className='fds-togglegroup__content'
+              role='radiogroup'
+            >
+              {children}
+            </div>
           </RovingTabindexRoot>
         </ToggleGroupContext.Provider>
       </div>
     );
   },
 );
+
+ToggleGroup.displayName = 'ToggleGroup';

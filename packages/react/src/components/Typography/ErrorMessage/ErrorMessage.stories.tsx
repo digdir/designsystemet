@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ErrorMessage } from './';
 
 const meta: Meta<typeof ErrorMessage> = {
-  title: 'felles/Typography/ErrorMessage',
+  title: 'Komponenter/Typography/ErrorMessage',
   component: ErrorMessage,
 };
 
@@ -16,6 +16,6 @@ export const Preview: Story = {
     children: 'Dette er en beskrivende feilmelding.',
     spacing: false,
     size: 'medium',
-    error: 'true',
+    error: true,
   },
 };

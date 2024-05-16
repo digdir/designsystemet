@@ -1,11 +1,9 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import cn from 'classnames';
-import type { MouseEventHandler, HTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import cl from 'clsx';
+import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { Paragraph, Heading } from '../..';
-import classes from '../Accordion.module.css';
-import utilityClasses from '../../../utils/utility.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionHeaderProps = {
@@ -14,7 +12,7 @@ export type AccordionHeaderProps = {
   /** Handle when clicked on header */
   onHeaderClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   /** Heading text */
-  children: React.ReactNode;
+  children: ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
 export const AccordionHeader = forwardRef<
@@ -30,37 +28,40 @@ export const AccordionHeader = forwardRef<
     return null;
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     context.toggleOpen();
     onHeaderClick && onHeaderClick(e);
   };
 
   return (
     <Heading
-      {...rest}
       ref={ref}
       size='xsmall'
       level={level}
-      className={cn(classes.header, className)}
+      className={cl('fds-accordion__header', className)}
+      {...rest}
     >
       <button
         type='button'
-        className={utilityClasses.focusable}
+        className={cl('fds-accordion__button', `fds-focus`)}
         onClick={handleClick}
         aria-expanded={context.open}
         aria-controls={context.contentId}
       >
         <ChevronDownIcon
           aria-hidden
-          className={classes.expandIcon}
+          className='fds-accordion__expand-icon'
+          fontSize={'1.5rem'}
         />
         <Paragraph
-          as='span'
+          asChild
           size='small'
         >
-          {children}
+          <span>{children}</span>
         </Paragraph>
       </button>
     </Heading>
   );
 });
+
+AccordionHeader.displayName = 'AccordionHeader';

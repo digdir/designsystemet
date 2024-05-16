@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
-import React, { useState, forwardRef, createContext } from 'react';
-import cn from 'classnames';
+import { useState, forwardRef, createContext } from 'react';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
-
-import classes from './Group.module.css';
 
 export type CheckboxGroupContextProps = {
   value?: string[];
@@ -63,10 +60,10 @@ export const CheckboxGroup = forwardRef<
 
     return (
       <Fieldset
-        {...rest}
         readOnly={readOnly}
         size={size}
         ref={ref}
+        {...rest}
       >
         <CheckboxGroupContext.Provider
           value={{
@@ -75,11 +72,11 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div className={cn(!rest.hideLegend && classes.alignToLegend)}>
-            {children}
-          </div>
+          <div>{children}</div>
         </CheckboxGroupContext.Provider>
       </Fieldset>
     );
   },
 );
+
+CheckboxGroup.displayName = 'CheckboxGroup';

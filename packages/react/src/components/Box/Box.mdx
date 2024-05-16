@@ -1,0 +1,16 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as BoxStories from './Box.stories';
+
+<Meta of={BoxStories} />
+
+# Box
+
+`Box` er en primitiv komponent som brukes for å bygge andre komponenter.
+
+<Primary />
+<Controls />
+
+## Polymorphic
+
+<Canvas of={BoxStories.Polymorphic} />

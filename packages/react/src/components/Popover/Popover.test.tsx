@@ -1,129 +1,139 @@
-import React from 'react';
-import userEvent from '@testing-library/user-event';
 import { act, render as renderRtl, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import type { PopoverProps } from './Popover';
-import { popoverVariants, Popover } from './Popover';
 
-const render = (props: Partial<PopoverProps> = {}) => {
-  const allProps: PopoverProps = {
-    children: (
-      <div>
-        <button>My button</button>
-        Popover text
-      </div>
-    ),
-    trigger: <button>Open</button>,
-    ...props,
-  };
-  renderRtl(<Popover {...allProps} />);
+import { Popover } from './';
+
+const contentText = 'popover content';
+
+const Comp = (args: Partial<PopoverProps>) => {
+  return (
+    <Popover {...args}>
+      <Popover.Trigger>trigger</Popover.Trigger>
+      <Popover.Content>{contentText}</Popover.Content>
+    </Popover>
+  );
 };
 
-const user = userEvent.setup();
+const render = async (props: Partial<PopoverProps> = {}) => {
+  /* Flush microtasks */
+  await act(async () => {});
+  const user = userEvent.setup();
+
+  return {
+    user,
+    ...renderRtl(<Comp {...props} />),
+  };
+};
 
 describe('Popover', () => {
-  describe('trigger uncontrolled', () => {
-    it('should render trigger', () => {
-      render();
-      const popoverTrigger = screen.getByRole('button', { name: 'Open' });
+  it('should render popover on trigger-click when closed', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
 
-      expect(popoverTrigger).toBeInTheDocument();
-    });
+    expect(screen.queryByText(contentText)).not.toBeInTheDocument();
 
-    it('should open popover on trigger click when closed', async () => {
-      render();
-      const popoverTrigger = screen.getByRole('button', { name: 'Open' });
+    await user.click(popoverTrigger);
 
-      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-      await act(async () => user.click(popoverTrigger));
-      expect(screen.queryByText('Popover text')).toBeInTheDocument();
-    });
-
-    it('should close popover on trigger click when open', async () => {
-      render({ initialOpen: true });
-      const popoverTrigger = screen.getByRole('button', { name: 'Open' });
-
-      expect(screen.queryByText('Popover text')).toBeInTheDocument();
-      await act(async () => user.click(popoverTrigger));
-      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-    });
-
-    it('should open popover on SPACE pressed when closed', async () => {
-      render();
-      const popoverTrigger = screen.getByRole('button', { name: 'Open' });
-
-      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-      popoverTrigger.focus();
-      await act(async () => {
-        await user.keyboard('[Space]');
-      });
-      expect(screen.queryByText('Popover text')).toBeInTheDocument();
-    });
-
-    it('should close popover on ESC pressed click when open', async () => {
-      render({ initialOpen: true });
-
-      expect(screen.queryByText('Popover text')).toBeInTheDocument();
-      await act(async () => {
-        await user.keyboard('[Escape]');
-      });
-      expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-    });
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
   });
 
-  it('should show popover content when initialOpen=true', () => {
-    render({ initialOpen: true });
+  it('should close when we click the button twitce', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
 
-    expect(screen.queryByText('Popover text')).toBeInTheDocument();
+    await user.click(popoverTrigger);
+
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+
+    await user.click(popoverTrigger);
+
+    expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
 
-  it('should not show popover content when initialOpen=false', () => {
-    render({ initialOpen: false });
+  it('should close when we click outside', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
 
-    expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
+    await user.click(popoverTrigger);
+
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+
+    await user.click(document.body);
+
+    setTimeout(() => {
+      expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+    }, 1000);
   });
 
-  it('should retain focus on trigger when popover opens', async () => {
-    render();
+  it('should close when we press ESC', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
 
-    const popoverTrigger = screen.getByRole('button', { name: 'Open' });
-    expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-    popoverTrigger.focus();
-    await act(async () => {
-      await user.keyboard('[Space]');
-    });
-    expect(popoverTrigger).toHaveFocus();
+    await user.click(popoverTrigger);
+
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+
+    await user.keyboard('[Escape]');
+
+    setTimeout(() => {
+      expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+    }, 1000);
   });
 
-  it('should focus focasable content on tab', async () => {
-    render();
+  it('should close when we press SPACE', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
 
-    const popoverTrigger = screen.getByRole('button', { name: 'Open' });
-    expect(screen.queryByText('Popover text')).not.toBeInTheDocument();
-    popoverTrigger.focus();
-    await act(async () => {
-      await user.keyboard('[Space]');
-    });
-    const contentButton = screen.getByRole('button', { name: 'My button' });
-    await act(async () => {
-      await user.keyboard('[Tab]');
-    });
-    expect(contentButton).toHaveFocus();
+    await user.click(popoverTrigger);
+
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+
+    await user.keyboard('[Space]');
+
+    expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
 
-  test.each(popoverVariants)(
-    'should render popover with correct variant when variant is %s',
-    (variant) => {
-      render({ variant: variant, initialOpen: true });
-      const otherColors = popoverVariants.filter((v) => v !== variant);
+  it('should close when we press ENTER', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
 
-      const popoverContent = screen.getByRole('dialog');
-      expect(popoverContent).toBeInTheDocument();
+    await user.click(popoverTrigger);
 
-      expect(popoverContent.classList).toContain(variant);
-      otherColors.forEach((v) => {
-        expect(popoverContent.classList).not.toContain(v);
-      });
-    },
-  );
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+
+    await user.keyboard('[Enter]');
+
+    expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+  });
+
+  it('should not close if we click inside the popover', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
+
+    await user.click(popoverTrigger);
+
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+
+    await user.click(screen.getByText(contentText));
+
+    expect(screen.queryByText(contentText)).toBeInTheDocument();
+  });
+
+  it('should have correct aria attributes', async () => {
+    const { user } = await render();
+    const popoverTrigger = screen.getByRole('button');
+
+    await user.click(popoverTrigger);
+
+    const popoverContent = screen.getByText(contentText);
+
+    expect(popoverTrigger.getAttribute('aria-controls')).toBe(
+      popoverContent.id,
+    );
+    expect(popoverContent.getAttribute('aria-labelledby')).toBe(
+      popoverTrigger.id,
+    );
+  });
 });

@@ -6,8 +6,20 @@
   rel="stylesheet"
   href="https://altinncdn.no/fonts/inter/inter.css"
 />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@digdir/designsystemet-theme@latest/brand/digdir/tokens.css"
+/>
 
 <style>
+  #root > * {
+    height: calc(100dvh - 72px) !important;
+  }
+
+  * {
+    font-feature-settings: 'cv05' 1;
+  }
+
   html {
     font-family: 'Inter', sans-serif;
   }
@@ -16,9 +28,6 @@
     height: 96px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e0e0e0;
-
-    border-bottom: 1px solid #e2e2e2;
     background-color: white;
   }
 
@@ -27,30 +36,23 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 33px;
+    padding: 0 var(--fds-spacing-7);
   }
 
   .header__logo {
-    height: 30px;
+    height: 34px;
     width: auto;
   }
 
-  .header__logo-link {
+  .header__logoLink {
     display: flex;
-  }
-
-  .header__logo a {
-    display: flex;
+    align-items: center;
   }
 
   .header__toggle {
     display: none;
     border: none;
     background-color: transparent;
-  }
-
-  .header--toggle--hidden {
-    display: none;
   }
 
   .header__menu {
@@ -61,26 +63,64 @@
 
   .header__item {
     list-style: none;
-    margin-left: 32px;
+    margin-left: var(--fds-spacing-7);
   }
 
-  .header__item a {
+  .header__link {
     color: inherit;
     text-decoration: none;
-    font-size: 18px;
+    font: var(--fds-typography-paragraph-medium);
     border-bottom: 3px solid transparent;
-    padding-bottom: 8px;
+    padding-bottom: var(--fds-spacing-2);
     transition: 0.1s all ease-out;
   }
 
-  .header__item a:hover {
-    border-color: #c3c3c3;
+  .header__link:hover {
+    border-color: var(--fds-semantic-border-neutral-subtle);
   }
 
-  .header__item a:focus,
-  .header__item.active a,
-  .header__item.active a:hover {
-    border-color: #6db6ea;
+  .header__itemIcon {
+    margin-left: var(--fds-spacing-1);
+  }
+
+  .header__firstIcon {
+    margin-left: var(--fds-spacing-7);
+  }
+
+  .header__linkIcon {
+    display: grid;
+    place-items: center;
+    padding: 0 var(--fds-spacing-2);
+  }
+
+  .header__linkIcon > svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  .header__linkIcon.header__figma path {
+    stroke: var(--fds-colors-grey-800);
+  }
+
+  .header__linkIcon.header__github path {
+    fill: var(--fds-colors-grey-800);
+  }
+
+  .header__linkIcon.header__figma:hover path {
+    stroke: var(--fds-semantic-border-neutral-default);
+  }
+
+  .header__linkIcon.header__github:hover path {
+    fill: var(--fds-semantic-border-neutral-default);
+  }
+
+  .header__item .header__active {
+    border-color: var(--fds-semantic-border-neutral-default);
+    font-weight: 500;
+  }
+
+  .header__item .header__active.header__link:hover {
+    border-color: var(--fds-semantic-border-neutral-default);
   }
 
   @media (max-width: 991.98px) {
@@ -98,17 +138,16 @@
 
     .header__menu {
       border-top: 1px solid #e2e2e2;
-      position: fixed;
+      position: absolute;
+      z-index: 1;
       left: 0;
       right: 0;
       top: 71px;
-      z-index: 10;
       background-color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-      display: flex;
+      box-shadow: var(--fds-shadow-large);
       flex-direction: column;
       display: none;
-      padding: 20px 0 20px 0;
+      padding: 20px 0;
     }
 
     .header__menu--open {
@@ -122,6 +161,14 @@
 
     .header__active {
       display: block;
+    }
+
+    .header__item .header__active {
+      display: inline-block;
+    }
+
+    .header__linkIcon {
+      place-items: start;
     }
 
     .header__logo {
@@ -153,19 +200,23 @@
   }
 </script>
 
+<script>
+  document.documentElement.setAttribute('lang', 'no');
+</script>
+
 <header class="header">
   <div class="header__container">
-    <div class="header__left">
+    <div>
       <a
         href="https://designsystemet.no/"
         class="header__logo-link"
         ><img
           class="header__logo"
-          src="https://i.imgur.com/a4EHRcN.png"
+          src="logo_designsystemet.svg"
           alt="Designsystem forside"
       /></a>
     </div>
-    <div class="header__right">
+    <nav>
       <button
         class="header__toggle header__toggle--bars"
         onclick="openMenu()"
@@ -173,7 +224,7 @@
         title="Åpne meny"
       >
         <img
-          src="https://i.imgur.com/aj1Wv3j.png"
+          src="icons/menu.svg"
           alt="Åpne meny"
         />
       </button>
@@ -184,7 +235,7 @@
         title="Lukk meny"
       >
         <img
-          src="https://i.imgur.com/s3P5AWt.png"
+          src="icons/close.svg"
           alt="Lukk meny"
         />
       </button>
@@ -193,18 +244,105 @@
         id="header-menu"
       >
         <li class="header__item">
-          <a href="https://designsystemet.no/grunnleggende">Grunnleggende</a>
+          <a
+            href="https://designsystemet.no/grunnleggende"
+            class="header__link"
+            >Grunnleggende</a
+          >
         </li>
         <li class="header__item">
-          <a href="https://designsystemet.no/god-praksis">God praksis</a>
+          <a
+            href="https://designsystemet.no/god-praksis"
+            class="header__link"
+            >God praksis</a
+          >
         </li>
         <li class="header__item">
-          <a href="https://designsystemet.no/monstre">Mønstre</a>
+          <a
+            href="https://designsystemet.no/monstre"
+            class="header__link"
+            >Mønstre</a
+          >
         </li>
-        <li class="header__item active">
-          <a href="https://digdir.github.io/designsystem/">Komponenter</a>
+        <li class="header__item">
+          <a
+            href="https://designsystemet.no/bloggen"
+            class="header__link"
+            >Bloggen</a
+          >
+        </li>
+        <li class="header__item">
+          <a
+            href="https://designsystemet.no/komponenter"
+            class="header__link header__active"
+            >Komponenter</a
+          >
+        </li>
+        <li class="header__item header__itemIcon header__firstIcon">
+          <a
+            href="https://github.com/digdir/designsystemet"
+            target="_blank"
+            class="header__linkIcon header__github"
+          >
+            <svg
+              width="1024"
+              height="1024"
+              viewBox="0 0 1024 1024"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+                transform="scale(64)"
+                fill="#1B1F23"
+              />
+            </svg>
+          </a>
+        </li>
+        <li class="header__item header__itemIcon">
+          <a
+            href="https://www.figma.com/@designsystemet"
+            target="_blank"
+            class="header__linkIcon header__figma"
+          >
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 42 61"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 30.5C21 27.9804 22.0009 25.5641 23.7825 23.7825C25.5641 22.0009 27.9804 21 30.5 21C33.0196 21 35.4359 22.0009 37.2175 23.7825C38.9991 25.5641 40 27.9804 40 30.5C40 33.0196 38.9991 35.4359 37.2175 37.2175C35.4359 38.9991 33.0196 40 30.5 40C27.9804 40 25.5641 38.9991 23.7825 37.2175C22.0009 35.4359 21 33.0196 21 30.5V30.5Z"
+                stroke="#1E1E1E"
+                stroke-width="3.5"
+              />
+              <path
+                d="M2 49.5C2 46.9804 3.00089 44.5641 4.78249 42.7825C6.56408 41.0009 8.98044 40 11.5 40H21V49.5C21 52.0196 19.9991 54.4359 18.2175 56.2175C16.4359 57.9991 14.0196 59 11.5 59C8.98044 59 6.56408 57.9991 4.78249 56.2175C3.00089 54.4359 2 52.0196 2 49.5Z"
+                stroke="#1E1E1E"
+                stroke-width="3.5"
+              />
+              <path
+                d="M21 2V21H30.5C33.0196 21 35.4359 19.9991 37.2175 18.2175C38.9991 16.4359 40 14.0196 40 11.5C40 8.98044 38.9991 6.56408 37.2175 4.78249C35.4359 3.00089 33.0196 2 30.5 2L21 2Z"
+                stroke="#1E1E1E"
+                stroke-width="3.5"
+              />
+              <path
+                d="M2 11.5C2 14.0196 3.00089 16.4359 4.78249 18.2175C6.56408 19.9991 8.98044 21 11.5 21H21V2H11.5C8.98044 2 6.56408 3.00089 4.78249 4.78249C3.00089 6.56408 2 8.98044 2 11.5Z"
+                stroke="#1E1E1E"
+                stroke-width="3.5"
+              />
+              <path
+                d="M2 30.5C2 33.0196 3.00089 35.4359 4.78249 37.2175C6.56408 38.9991 8.98044 40 11.5 40H21V21H11.5C8.98044 21 6.56408 22.0009 4.78249 23.7825C3.00089 25.5641 2 27.9804 2 30.5Z"
+                stroke="#1E1E1E"
+                stroke-width="3.5"
+              />
+            </svg>
+          </a>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
 </header>

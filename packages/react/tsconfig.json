@@ -4,8 +4,10 @@
     "outDir": "./tsc-build",
     "declarationDir": "./dist/types",
     "emitDeclarationOnly": false,
-    "allowSyntheticDefaultImports": true
+    "composite": false,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": false
   },
-  "include": ["./src", "declarations.d.ts"],
+  "include": ["./src", "./stories", "declarations.d.ts"],
   "rootDir": "./src"
 }

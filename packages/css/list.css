@@ -1,0 +1,18 @@
+@layer fds.list {
+  .fds-list--small {
+    padding-left: var(--fds-spacing-4);
+  }
+
+  .fds-list--medium,
+  .fds-list--large {
+    padding-left: var(--fds-spacing-6);
+  }
+
+  .fds-list__item {
+    margin-bottom: var(--fds-spacing-2);
+  }
+
+  .fds-list__item > .fds-list {
+    margin-top: var(--fds-spacing-2);
+  }
+}

@@ -1,0 +1,63 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as PopoverStories from './Popover.stories.tsx';
+
+<Meta of={PopoverStories} />
+
+# Popover
+
+<Primary />
+<Controls />
+
+## Slik bruker du `Popover`
+
+```tsx
+import { Popover } from '@digdir/designsystemet-react';
+
+<Popover>
+  <Popover.Trigger>Trigger</Popover.Trigger>
+  <Popover.Content>Content</Popover.Content>
+</Popover.Trigger>
+```
+
+## Eksempler
+
+### Variants
+
+`Popover` har fire varianter, `default`, `info`, `warning` og `danger`. Du kan bruke `variant` for å endre varianten.
+
+<Canvas of={PopoverStories.Variants} />
+
+### Kontrollert
+
+Dersom du sender inn `open`, så bruker du `Popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `Popover` vil lukkes.
+Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker på det.
+
+<Canvas of={PopoverStories.Controlled} />
+
+### I Portal
+
+<Canvas of={PopoverStories.InPortal} />
+
+## Tilgjengelighet
+
+Det er innebygd tilgjengelighet i `Popover.Trigger` med `aria-expanded={true/false}`, i henhold til åpne/lukket tilstand, på trigger elementet.
+
+## `Popover.Trigger`
+
+Med `Popover.Trigger` kan du styre hvordan triggeren til `Popover` skal vises. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
+Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Popover.Trigger`.
+Triggeren rendres som [Button](/docs/komponenter-button--docs) som standard.
+
+Dette vil rendre ein input som triggeren din:
+
+```tsx
+<Popover.Trigger asChild>
+  <input ... />
+</Popover.Trigger>
+```
+
+### Referanser
+
+- [1] [Popover - React Aria](https://react-spectrum.adobe.com/react-aria/Popover.html)
+- [2] [w3.org Dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)

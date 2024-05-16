@@ -6,6 +6,7 @@
     "selectedTokenSets": {
       "Base/Core": "source",
       "Base/Semantic": "enabled"
+      "Base/Semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:562:87870",
     "$figmaModeId": "562:0",
@@ -586,7 +587,6 @@
       "semantic.border.neutral.default": "S:86de0ad5e55f2e4ac7cb2a0ad8f48105e6e9a626,",
       "semantic.border.neutral.subtle": "S:c83ce58dfe9f37c06045c18f6bd43a2409fd505b,",
       "semantic.border.neutral.strong": "S:3a30947a6c322e1d5a9c832f91df7f99dd2ee5c0,",
-      "semantic.border.neutral.divider": "S:f0390210fcfe9727f468921df885ed66e812d737,",
       "semantic.border.success.default": "S:d42bc7bbcff1aa4a0ed05bafad450b3b937f062d,",
       "semantic.border.warning.default": "S:184f244593a781b9b80ee0c018a00fbd9844ac30,",
       "semantic.border.danger.default": "S:af4cecc3564bb13c1f1b27ed9214420fd45c9a7c,",
@@ -1125,6 +1125,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Viewport/@1440": "enabled"
+      "Viewport/@1440": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:562:88088",
     "$figmaModeId": "562:3",
@@ -1139,6 +1140,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "Viewport/@768": "enabled"
+      "Viewport/@768": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:562:88088",
     "$figmaModeId": "562:4",
@@ -1152,6 +1154,7 @@
     "name": "320",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
+      "Viewport/@320": "enabled"
       "Viewport/@320": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:562:88088",

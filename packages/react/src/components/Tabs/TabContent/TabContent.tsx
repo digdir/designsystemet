@@ -1,10 +1,8 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
-import cn from 'classnames';
+import { forwardRef, useContext } from 'react';
+import cl from 'clsx/lite';
 
 import { TabsContext } from '../Tabs';
-
-import classes from './TabContent.module.css';
 
 export type TabContentProps = {
   /** When this value is selected as the current state, render this `TabContent` component*/
@@ -12,23 +10,17 @@ export type TabContentProps = {
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
-  ({ children, value, ...rest }, ref) => {
-    const { value: tabsValue, size = 'medium' } = useContext(TabsContext);
+  ({ children, value, className, ...rest }, ref) => {
+    const { value: tabsValue } = useContext(TabsContext);
     const active = value == tabsValue;
-    const onlyText = typeof children === 'string';
 
     return (
       <>
         {active && (
           <div
-            {...rest}
-            className={cn(
-              classes[size],
-              classes.tabContent,
-              onlyText && classes.onlyText,
-              rest.className,
-            )}
+            className={cl('fds-tabs__content', className)}
             ref={ref}
+            {...rest}
           >
             {children}
           </div>
@@ -37,3 +29,5 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
     );
   },
 );
+
+TabContent.displayName = 'TabContent';

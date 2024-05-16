@@ -1,0 +1,29 @@
+import { MenuPageLayout } from '@layouts';
+import { Meta } from '@components';
+
+<Meta
+  title='Be om dato'
+  description='Hva du skal tenke på når du ber om en dato.'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Be om dato',
+      date: '27. juni 2023',
+    }}
+  />
+);
+
+## Problemer med ulike datoformater
+
+[Utfordringer med ulike datoformat](https://github.com/digdir/innsiktsbibliotek/issues/22) er observert i rapporten [Digital hele livet med bedre brukeropplevelse
+](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)
+
+Mønsteret er under arbeid og krever mer samarbeid på tvers for å etablere. Sitter du på innsikt som er relevant for dato? [Ta kontakt](mailto:designsystem@digdir.no) så kan vi dele innsikt og diskutere dette mønsteret sammen!
+
+### Relevante artikler:
+
+- [Gov UK Patterns: Dates](https://design-system.service.gov.uk/patterns/dates/)
+- [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)

@@ -1,22 +1,12 @@
-# @digdir/design-system-react
+# @digdir/designsystemet-react
 
-React components from the DigDir Common Designsystem
+React implementation of the Designsystemet components
 
-## Installation
+- Headless components.
+  - Uses `@digdir/designsystemet-theme` and `@digdir/designsystemet-css` for styling.
+- All components support `forwardRef`.
+- Most components extend and behave as native html-elements.
+- Most components support composition and `asChild` for overriding the underlying html-element.
+- SSR support.
 
-```sh
-npm install @digdir/design-system-react
-```
-
-If you use Typescript, make sure you have typescript >= 3.8 as a devDependency:
-
-```sh
-npm install typescript --save-dev
-```
-
-## Usage
-
-```jsx
-import '@altinn/figma-design-tokens/dist/tokens.css';
-import { Button } from '@digdir/design-system-react';
-```
+Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.

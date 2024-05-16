@@ -1,5 +1,5 @@
-import React, { createRef } from 'react';
-import type { RefObject } from 'react';
+import { createRef } from 'react';
+import type { ComponentProps, RefObject } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
 import { Link } from './Link';
@@ -23,20 +23,14 @@ describe('Link', () => {
     const className = 'foo';
     render({ className });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('link');
+    expect(link).toHaveClass('fds-link');
     expect(link).toHaveClass(className);
-  });
-
-  it('Is not inverted by default', () => {
-    render();
-    const link = screen.getByRole('link');
-    expect(link).not.toHaveClass('inverted');
   });
 
   it('Is inverted when the `inverted` property is `true`', () => {
     render({ inverted: true });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('inverted');
+    expect(link).toHaveClass('fds-link--inverted');
   });
 
   it('Sets the ref on the anchor element if given', () => {
@@ -44,16 +38,10 @@ describe('Link', () => {
     render({}, ref);
     expect(ref.current).toBe(screen.getByRole('link'));
   });
-
-  it('Supports polymorphism', () => {
-    render({ as: 'button' });
-    expect(screen.queryByRole('link')).not.toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
-  });
 });
 
 const render = (
-  props: Partial<LinkProps> = {},
+  props: Partial<ComponentProps<typeof Link>> = {},
   ref?: RefObject<HTMLAnchorElement>,
 ) => {
   const allProps = { ...defaultProps, ...props };

@@ -1,5 +1,5 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
 import * as TabsStories from './Tabs.stories';
 
 <Meta of={TabsStories} />
@@ -13,24 +13,19 @@ Description of the Tabs component.
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Tabs } from '@digdir/design-system-react';
+import { Tabs } from '@digdir/designsystemet-react';
 
-  <Tabs
-    defaultValue='value1'
-  >
-    <Tabs.List>
-      <Tabs.Tab value='value1' >Tab 1</Tabs.Tab>
-      <Tabs.Tab value='value2' >Tab 2</Tabs.Tab>
-      <Tabs.Tab value='value3' >Tab 3</Tabs.Tab>
-    </Tabs.List>
-    <Tabs.Content value='value1'>content 1</Tabs.Content>
-    <Tabs.Content value='value2'>content 2</Tabs.Content>
-    <Tabs.Content value='value3'>content 3</Tabs.Content>
-  </Tabs>
+<Tabs defaultValue='value1'>
+  <Tabs.List>
+    <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+    <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+    <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Content value='value1'>content 1</Tabs.Content>
+  <Tabs.Content value='value2'>content 2</Tabs.Content>
+  <Tabs.Content value='value3'>content 3</Tabs.Content>
+</Tabs>;
 ```
 
 ## Icons only
@@ -40,3 +35,13 @@ import { Tabs } from '@digdir/design-system-react';
 ## Controlled
 
 <Canvas of={TabsStories.Controlled} />
+
+### Størrelse på ikon
+
+Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å bruke disse størrelsene for [Aksel](https://aksel.nav.no/ikoner) sine ikoner:
+
+| Størrelse på Tab | Aksel Ikon `fontSize` |
+| :--------------- | :-------------------- |
+| small            | 1.25rem               |
+| medium           | 1.75rem               |
+| large            | 2.25rem               |

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Stack } from '../../../../../docs-components';
@@ -9,7 +8,7 @@ import { Tag } from '.';
 type Story = StoryObj<typeof Tag>;
 
 export default {
-  title: 'Felles/Tag',
+  title: 'Komponenter/Tag',
   component: Tag,
   decorators: [
     (Story) => (
@@ -24,12 +23,11 @@ export const Preview: Story = {
   args: {
     children: 'New',
     size: 'medium',
-    variant: 'outlined',
     color: 'neutral',
   },
 };
 
-const sizes: TagProps['size'][] = ['xsmall', 'small', 'medium'];
+const sizes: TagProps['size'][] = ['small', 'medium', 'large'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>
@@ -40,23 +38,6 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
           {...rest}
         >
           {size}
-        </Tag>
-      ))}
-    </>
-  );
-};
-
-const variants: TagProps['variant'][] = ['filled', 'outlined'];
-export const Variants: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
-  return (
-    <>
-      {variants.map((variant) => (
-        <Tag
-          key={variant}
-          variant={variant}
-          {...rest}
-        >
-          {variant}
         </Tag>
       ))}
     </>
@@ -81,25 +62,6 @@ export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
         <Tag
           key={color}
           color={color}
-          {...rest}
-        >
-          {color}
-        </Tag>
-      ))}
-    </>
-  );
-};
-
-export const ColorsOutlined: StoryFn<typeof Tag> = ({
-  ...rest
-}): JSX.Element => {
-  return (
-    <>
-      {colors.map((color) => (
-        <Tag
-          key={color}
-          color={color}
-          variant='outlined'
           {...rest}
         >
           {color}

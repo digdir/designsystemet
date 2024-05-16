@@ -24,11 +24,11 @@
 }
 
 .dont {
-  --color: var(--semantic-surface-danger-default);
+  --color: var(--fds-semantic-surface-danger-default);
 }
 
 .do {
-  --color: var(--semantic-surface-success-default);
+  --color: var(--fds-semantic-surface-success-default);
 }
 
 .header {
@@ -53,11 +53,12 @@
 }
 
 .description {
-  color: var(--semantic-text-neutral-default);
+  color: var(--fds-semantic-text-neutral-default);
+  margin: var(--fds-spacing-4) 0;
 }
 
 .imageWrapper {
   margin-top: auto;
   display: grid;
-  place-items: center;
+  place-items: start;
 }

@@ -1,13 +1,9 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef, createContext } from 'react';
-import cn from 'classnames';
-
-import type { ChipBaseProps } from '../_ChipBase';
-
-import classes from './Group.module.css';
+import { Children, isValidElement, forwardRef, createContext } from 'react';
+import cl from 'clsx/lite';
 
 export type ChipGroupContext = {
-  size?: ChipBaseProps['size'];
+  size?: 'small' | 'medium' | 'large';
 };
 
 export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
@@ -16,23 +12,27 @@ export type ChipGroupProps = {
   /**
    * Changes Chip size and gap between chips.
    */
-  size?: 'xsmall' | 'small';
+  size?: 'small' | 'medium' | 'large';
 } & HTMLAttributes<HTMLUListElement>;
 
 export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
-  ({ children, size = 'xsmall', ...rest }: ChipGroupProps, ref) => (
+  ({ children, size = 'medium', className, ...rest }: ChipGroupProps, ref) => (
     <ul
-      {...rest}
       ref={ref}
-      className={cn(classes.groupContainer, classes[size], rest.className)}
+      className={cl(
+        `fds-chip--group-container`,
+        `fds-chip--${size}`,
+        className,
+      )}
+      {...rest}
     >
       <ChipGroupContext.Provider value={{ size }}>
-        {React.Children.toArray(children).map((child, index) =>
-          React.isValidElement(child) ? (
-            <li key={`chip-${index}`}>{child}</li>
-          ) : null,
+        {Children.toArray(children).map((child, index) =>
+          isValidElement(child) ? <li key={`chip-${index}`}>{child}</li> : null,
         )}
       </ChipGroupContext.Provider>
     </ul>
   ),
 );
+
+Group.displayName = 'ChipGroup';

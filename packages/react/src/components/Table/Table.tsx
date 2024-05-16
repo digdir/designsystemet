@@ -1,35 +1,66 @@
-import type { HTMLProps } from 'react';
-import React from 'react';
-import cn from 'classnames';
+import * as React from 'react';
+import cl from 'clsx/lite';
 
-import classes from './Table.module.css';
-import type { ChangeHandler, TableContextType } from './utils';
-import { TableContext } from './utils';
+import { Paragraph } from '../Typography';
 
-export interface TableProps<T = unknown>
-  extends Omit<HTMLProps<HTMLTableElement>, 'onChange'> {
-  children?: React.ReactNode;
-  selectRows?: boolean;
-  onChange?: ChangeHandler<T>;
-  selectedValue?: T;
-}
+export type TableProps = {
+  /**
+   * The size of the table
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * If true, the table will have zebra striping
+   * @default false
+   */
+  zebra?: boolean;
+  /**
+   * If true, the table will have a sticky header
+   * @default false
+   */
+  stickyHeader?: boolean;
+  /**
+   * If true, the table will have a rounded border
+   * @default false
+   */
+  border?: boolean;
+} & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
-export function Table<T>({
-  children,
-  selectRows = false,
-  onChange,
-  selectedValue,
-  className,
-  ...tableProps
-}: TableProps<T>) {
-  const context: TableContextType<T> = { selectRows, onChange, selectedValue };
+export const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  (
+    {
+      zebra = false,
+      size = 'medium',
+      stickyHeader = false,
+      border = false,
+      className,
+      children,
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <Paragraph
+        asChild
+        size={size}
+      >
+        <table
+          ref={ref}
+          className={cl(
+            'fds-table',
+            `fds-table--${size}`,
+            zebra && 'fds-table--zebra',
+            stickyHeader && 'fds-table--sticky-header',
+            border && 'fds-table--border',
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </table>
+      </Paragraph>
+    );
+  },
+);
 
-  return (
-    <table
-      {...tableProps}
-      className={cn(classes.table, className)}
-    >
-      <TableContext.Provider value={context}>{children}</TableContext.Provider>
-    </table>
-  );
-}
+Table.displayName = 'Table';

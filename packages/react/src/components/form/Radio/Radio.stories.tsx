@@ -5,7 +5,7 @@ import { Radio } from '.';
 type Story = StoryObj<typeof Radio>;
 
 export default {
-  title: 'Felles/Radio',
+  title: 'Komponenter/Radio',
   component: Radio,
 } as Meta;
 
@@ -16,6 +16,7 @@ export const Preview: Story = {
     disabled: false,
     readOnly: false,
     value: 'value',
+    size: 'medium',
   },
 };
 

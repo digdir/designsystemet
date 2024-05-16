@@ -1,0 +1,272 @@
+@layer fds.btn {
+  .fds-btn {
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
+
+    display: flex;
+    align-items: center;
+    border: var(--fds-border_width-default) solid transparent;
+    background-color: var(--fds-semantic-surface-action-first-default);
+    color: var(--fds-semantic-text-action-first-on_action);
+    min-width: 2.5em;
+    padding: var(--fds-btn-padding);
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: inherit;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    border-radius: var(--fds-border_radius-interactive);
+    min-height: var(--fds-sizing-10);
+  }
+
+  .fds-btn svg {
+    overflow: visible;
+  }
+
+  .fds-btn:disabled,
+  .fds-btn[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: var(--fds-opacity-disabled);
+  }
+
+  .fds-btn--sm {
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+
+    gap: var(--fds-sizing-1);
+    font: var(--fds-typography-paragraph-short-small);
+    font-family: inherit;
+    min-height: var(--fds-sizing-10);
+  }
+
+  .fds-btn--sm::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    min-height: auto;
+    content: '';
+  }
+
+  .fds-btn--sm::after {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    content: '';
+  }
+
+  .fds-btn--md {
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
+
+    gap: var(--fds-sizing-2);
+    font: var(--fds-typography-paragraph-short-medium);
+    font-family: inherit;
+    min-height: var(--fds-sizing-12);
+  }
+
+  .fds-btn--lg {
+    --fds-btn-padding: var(--fds-spacing-3) var(--fds-spacing-5);
+
+    gap: var(--fds-sizing-2);
+    font: var(--fds-typography-paragraph-short-large);
+    font-family: inherit;
+    min-height: var(--fds-sizing-14);
+  }
+
+  .fds-btn--full-width {
+    width: 100%;
+  }
+
+  .fds-btn--secondary,
+  .fds-btn--tertiary {
+    background-color: transparent;
+  }
+
+  .fds-btn--icon-only {
+    --fds-btn-padding: 0;
+  }
+
+  /* Primary button colors */
+  .fds-btn--primary:where(.fds-btn--first) {
+    background-color: var(--fds-semantic-surface-action-first-default);
+  }
+
+  .fds-btn--primary:where(.fds-btn--second) {
+    background-color: var(--fds-semantic-surface-action-second-default);
+  }
+
+  .fds-btn--primary:where(.fds-btn--success) {
+    background-color: var(--fds-semantic-surface-success-default);
+  }
+
+  .fds-btn--primary:where(.fds-btn--danger) {
+    background-color: var(--fds-semantic-surface-danger-default);
+  }
+
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
+  @media (hover: hover) and (pointer: fine) {
+    .fds-btn--primary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--fds-semantic-surface-action-first-hover);
+    }
+
+    .fds-btn--primary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--fds-semantic-surface-action-second-hover);
+    }
+
+    .fds-btn--primary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--fds-semantic-surface-success-hover);
+    }
+
+    .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--fds-semantic-surface-danger-hover);
+    }
+
+    .fds-btn--secondary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-action-first-hover);
+      border-color: var(--fds-semantic-border-action-first-hover);
+      background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+    }
+
+    .fds-btn--secondary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-action-second-hover);
+      border-color: var(--fds-semantic-border-action-second-hover);
+      background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
+    }
+
+    .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-success-hover);
+      border-color: var(--fds-semantic-border-success-hover);
+      background-color: var(--fds-semantic-surface-success-no_fill-hover);
+    }
+
+    .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-danger-hover);
+      border-color: var(--fds-semantic-border-danger-hover);
+      background-color: var(--fds-semantic-surface-danger-no_fill-hover);
+    }
+
+    .fds-btn--tertiary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-action-first-hover);
+      background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+    }
+
+    .fds-btn--tertiary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-action-second-hover);
+      background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
+    }
+
+    .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-success-hover);
+      background-color: var(--fds-semantic-surface-success-no_fill-hover);
+    }
+
+    .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
+      color: var(--fds-semantic-text-danger-hover);
+      background-color: var(--fds-semantic-surface-danger-no_fill-hover);
+    }
+  }
+
+  .fds-btn--primary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
+    background-color: var(--fds-semantic-surface-action-first-active);
+  }
+
+  .fds-btn--primary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
+    background-color: var(--fds-semantic-surface-action-second-active);
+  }
+
+  .fds-btn--primary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
+    background-color: var(--fds-semantic-surface-success-active);
+  }
+
+  .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
+    background-color: var(--fds-semantic-surface-danger-active);
+  }
+
+  /* Secondary button colors */
+  .fds-btn--secondary:where(.fds-btn--first) {
+    color: var(--fds-semantic-text-action-first-default);
+    border-color: var(--fds-semantic-border-action-first-default);
+    background-color: var(--fds-semantic-surface-action-first-no_fill);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--second) {
+    color: var(--fds-semantic-text-action-second-default);
+    border-color: var(--fds-semantic-border-action-second-default);
+    background-color: var(--fds-semantic-surface-action-second-no_fill);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--success) {
+    color: var(--fds-semantic-text-success-default);
+    border-color: var(--fds-semantic-border-success-default);
+    background-color: var(--fds-semantic-surface-success-no_fill);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--danger) {
+    color: var(--fds-semantic-text-danger-default);
+    border-color: var(--fds-semantic-border-danger-default);
+    background-color: var(--fds-semantic-surface-danger-no_fill);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-action-first-active);
+    border-color: var(--fds-semantic-border-action-first-active);
+    background-color: var(--fds-semantic-surface-action-first-no_fill-active);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-action-second-active);
+    border-color: var(--fds-semantic-border-action-second-active);
+    background-color: var(--fds-semantic-surface-action-second-no_fill-active);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-success-active);
+    border-color: var(--fds-semantic-border-success-active);
+    background-color: var(--fds-semantic-surface-success-no_fill-active);
+  }
+
+  .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-danger-active);
+    border-color: var(--fds-semantic-border-danger-active);
+    background-color: var(--fds-semantic-surface-danger-no_fill-active);
+  }
+
+  /* Tertiary button colors */
+  .fds-btn--tertiary:where(.fds-btn--first) {
+    color: var(--fds-semantic-text-action-first-default);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--second) {
+    color: var(--fds-semantic-text-action-second-default);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--success) {
+    color: var(--fds-semantic-text-success-default);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--danger) {
+    color: var(--fds-semantic-text-danger-default);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-action-first-active);
+    background-color: var(--fds-semantic-surface-action-first-no_fill-active);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-action-second-active);
+    background-color: var(--fds-semantic-surface-action-second-no_fill-active);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-success-active);
+    background-color: var(--fds-semantic-surface-success-no_fill-active);
+  }
+
+  .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
+    color: var(--fds-semantic-text-danger-active);
+    background-color: var(--fds-semantic-surface-danger-no_fill-active);
+  }
+}

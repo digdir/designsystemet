@@ -1,8 +1,8 @@
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-import cn from 'classnames';
+import cl from 'clsx';
 
-import { FieldsetContext } from './Fieldset';
+import { FieldsetContext } from './Fieldset/FieldsetContext';
 
 export type FormFieldProps = {
   /** Error message for form field */
@@ -20,7 +20,7 @@ export type FormFieldProps = {
   /** Toggle `readOnly` */
   readOnly?: boolean;
   /** Changes field size and paddings */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
 export type FormField = {
@@ -67,7 +67,7 @@ export const useFormField = (
       disabled,
       'aria-invalid': hasError ? true : undefined,
       'aria-describedby':
-        cn(props['aria-describedby'], {
+        cl(props['aria-describedby'], {
           [descriptionId]:
             !!props?.description && typeof props?.description === 'string',
           [errorId]: hasError && !fieldset?.error,

@@ -1,10 +1,9 @@
-import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Paragraph, Heading, Ingress } from './';
 
 const meta: Meta = {
-  title: 'felles/Typography',
+  title: 'Komponenter/Typography',
 };
 
 export default meta;
@@ -51,7 +50,7 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Paragraph
-      short
+      variant='short'
       spacing
     >
       Når du skal signere meldingen vil du motta en signeringsoppgave i
@@ -84,7 +83,7 @@ export const EksempelTekst: StoryFn = () => (
     </Heading>
 
     <Paragraph
-      short
+      variant='short'
       spacing
     >
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi

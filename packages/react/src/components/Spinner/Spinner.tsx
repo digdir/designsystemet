@@ -1,71 +1,80 @@
-import React from 'react';
+import type * as React from 'react';
+import cl from 'clsx/lite';
 
-import classes from './Spinner.module.css';
+import { useSynchronizedAnimation } from '../../hooks';
+import { getSize } from '../../utilities/getSize';
 
-type Size =
-  | 'xSmall'
+type OldSpinnerSizes =
+  | 'xxsmall'
+  | 'xsmall'
   | 'small'
   | 'medium'
   | 'large'
-  | '1xLarge'
-  | '2xLarge'
-  | '3xLarge';
+  | 'xlarge';
 
-type Variant = 'default' | 'interaction' | 'inverted';
-
-const sizeMap: Record<Size, number> = {
-  xSmall: 13,
-  small: 20,
-  medium: 27,
-  large: 40,
-  '1xLarge': 44,
-  '2xLarge': 56,
-  '3xLarge': 79,
+const sizeMap: {
+  [key in Exclude<NonNullable<SpinnerProps['size']>, OldSpinnerSizes>]: number;
+} = {
+  '2xs': 13,
+  xs: 20,
+  sm: 27,
+  md: 40,
+  lg: 56,
+  xl: 79,
 };
-
-const variantMap: Record<Variant, { foreground: string; background: string }> =
-  {
-    default: {
-      foreground: classes.defaultForeground,
-      background: classes.defaultBackground,
-    },
-    interaction: {
-      foreground: classes.interactionForeground,
-      background: classes.interactionBackground,
-    },
-    inverted: {
-      foreground: classes.invertedForeground,
-      background: classes.invertedBackground,
-    },
-  };
 
 export type SpinnerProps = {
   /** Spinner title  */
   title: string;
-  /** Spinner size  */
-  size?: Size;
+  /**
+   * Spinner size
+   *
+   * @default md
+   * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` is deprecated
+   */
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | OldSpinnerSizes;
   /** Spinner appearance  */
-  variant?: Variant;
+  variant?: 'default' | 'interaction' | 'inverted';
 } & React.ComponentPropsWithoutRef<'svg'>;
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = ({
   title,
-  size = 'medium',
   variant = 'default',
-  className = '',
+  className,
+  style,
   ...rest
 }: SpinnerProps): JSX.Element => {
+  const size = getSize(rest.size || 'md') as
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl';
+
+  const svgRef = useSynchronizedAnimation<SVGSVGElement>(
+    'fds-spinner-rotate-animation',
+  );
+
+  const strokeRef = useSynchronizedAnimation<SVGCircleElement>(
+    'fds-spinner-stroke-animation',
+  );
+
   return (
     <svg
-      className={`${classes.spinner} ${className}`}
-      style={{ width: sizeMap[size], height: sizeMap[size] }}
+      className={cl('fds-spinner', `fds-spinner--${variant}`, className)}
+      style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
+      ref={svgRef}
       {...rest}
     >
       <title>{title}</title>
       <circle
-        className={variantMap[variant].background}
+        className={cl(
+          'fds-spinner__background',
+          variant === 'inverted' && 'fds-spinner__background--inverted',
+        )}
         cx='25'
         cy='25'
         r='20'
@@ -73,13 +82,16 @@ export const Spinner = ({
         strokeWidth='5'
       ></circle>
       <circle
-        className={`${classes.spinnerCircle} ${variantMap[variant].foreground}`}
+        className={cl(`fds-spinner__circle`)}
         cx='25'
         cy='25'
         r='20'
         fill='none'
         strokeWidth='5'
+        ref={strokeRef}
       ></circle>
     </svg>
   );
 };
+
+Spinner.displayName = 'Spinner';

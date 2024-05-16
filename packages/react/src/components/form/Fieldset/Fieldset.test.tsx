@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { Fieldset } from './Fieldset';
@@ -9,6 +8,18 @@ describe('Fieldset', () => {
       <Fieldset
         legend='test legend'
         description='test description'
+      ></Fieldset>,
+    );
+    const fieldset = screen.getByRole('group', { name: 'test legend' });
+    expect(fieldset).toBeDefined();
+    expect(fieldset).toHaveAccessibleDescription('test description');
+  });
+  test('has correct legend and description when `hideLegend` is enabled', () => {
+    render(
+      <Fieldset
+        legend='test legend'
+        description='test description'
+        hideLegend
       ></Fieldset>,
     );
     const fieldset = screen.getByRole('group', { name: 'test legend' });
@@ -35,7 +46,10 @@ describe('Fieldset', () => {
   });
   test('and its children are disabled', () => {
     render(
-      <Fieldset disabled>
+      <Fieldset
+        legend='test legend'
+        disabled
+      >
         <input
           value='test'
           readOnly

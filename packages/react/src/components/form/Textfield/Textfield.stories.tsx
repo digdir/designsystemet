@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -8,7 +8,7 @@ import { Textfield } from '.';
 type Story = StoryObj<typeof Textfield>;
 
 export default {
-  title: 'Felles/Textfield',
+  title: 'Komponenter/Textfield',
   component: Textfield,
 } as Meta;
 
@@ -19,6 +19,7 @@ export const Preview: Story = {
     readOnly: false,
     size: 'medium',
     description: '',
+    error: '',
   },
 };
 
@@ -39,6 +40,33 @@ export const FullWidth: Story = {
     layout: 'padded',
   },
 };
+
+export const HtmlSize: Story = {
+  args: {
+    label: 'Label',
+    htmlSize: 10,
+  },
+};
+
+export const Adornments: StoryFn<typeof Textfield> = () => (
+  <div style={{ display: 'grid', gap: 'var(--fds-spacing-2)' }}>
+    <Textfield
+      prefix='prefix'
+      suffix='suffix'
+      size='small'
+    />
+    <Textfield
+      prefix='prefix'
+      suffix='suffix'
+      size='medium'
+    />
+    <Textfield
+      prefix='prefix'
+      suffix='suffix'
+      size='large'
+    />
+  </div>
+);
 
 export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>();

@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useState } from 'react';
+import { createContext, forwardRef, useState } from 'react';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
@@ -31,7 +31,6 @@ export type TabsContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  size?: 'small' | 'medium' | 'large';
 };
 
 export const TabsContext = createContext<TabsContextProps>({});
@@ -60,12 +59,12 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           value,
           defaultValue,
           onChange: onValueChange,
-          size,
         }}
       >
         <div
-          {...rest}
+          className={`fds-tabs--${size}`}
           ref={ref}
+          {...rest}
         >
           {children}
         </div>
@@ -73,3 +72,5 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     );
   },
 );
+
+Tabs.displayName = 'Tabs';

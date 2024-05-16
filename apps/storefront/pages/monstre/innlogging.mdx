@@ -1,0 +1,41 @@
+import { MenuPageLayout } from '@layouts';
+import { Meta } from '@components';
+
+<Meta
+  title='Innlogging og aktørbytte'
+  description='Hvordan håndterer vi innlogging og aktørbytte på tvers av tjenester?'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Innlogging og aktørbytte',
+      date: '27. juni 2023',
+    }}
+  />
+);
+
+## Innlogging
+
+Mønsteret er under arbeid og krever mer innsikt og samarbeid på tvers. Sitter du på innsikt som er relevant for innlogging og/eller aktørbytte? [Ta kontakt](mailto:designsystem@digdir.no) så kan vi dele innsikt og diskutere dette mønsteret sammen!
+
+### Bytte mellom privat og virksomhet
+
+Vi ønsker å finne den beste måten for å håndtere bytte mellom privat og virksomhet. Dette vil være aktuelt for løsninger der innlogget bruker kan bytte mellom å representere seg selv som privatperson, ett firma eller frivillige organisasjoner.
+
+### Relevant innsikt
+
+Det er funnet flere utfordringer knyttet til innlogging:
+
+- [Vanskelig å logge inn, og å finne logg inn](https://github.com/digdir/innsiktsbibliotek/issues/14)\
+  Logg inn-knappen er ulik plassert, heter ulike ting (logg inn, din side, min side), og har ulike ikoner.
+  Ikonene har stor variasjon: person, hengelås, papir og blyant, åpne dør og nøkkelhull. Dette skaper forvirring.
+- [Utlogging er vanskelig å finne, og ulik fra etat til etat](https://github.com/digdir/innsiktsbibliotek/issues/15)\
+  Noen ganger tydelig “logg ut”, andre nettsteder må du lete etter utlogging.
+- [For mye ligger bak innlogging med BankID](https://github.com/digdir/innsiktsbibliotek/issues/13)\
+  Det er mye som legges bak innlogging. Dette er både generell informasjon, men ikke minst mange søknadsskjema og oppgaver som i seg selv ikke er av sensitiv art. Dette fører bl.a. til at de som ikke klarer eller har mulighet for å logge inn ikke får tak i essensiell informasjon, og i mange tilfeller, mulighet for å søke på rettigheter de har krav på.
+- [BankID forvirrer på grunn av endringer i utformingen](https://github.com/digdir/innsiktsbibliotek/issues/4)\
+  Utseende for bankID er forskjellig på tvers av nettsider og det er svært utfordende å vite hva som er faktisk BankID og hva som potensielt er svindel. Det skaper forvirring, og særlig blant de som som er usikre i møte med det digitale og i utgangspunktet redd for personlig sikkerhet.
+
+Innsikten er fra rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)"

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button, Paragraph } from '../../..';
 import { Radio } from '../';
 
 export default {
-  title: 'Felles/Radio/Group',
+  title: 'Komponenter/Radio/Group',
   component: Radio.Group,
 } as Meta;
 
@@ -29,6 +29,7 @@ Preview.args = {
   readOnly: false,
   disabled: false,
   error: '',
+  size: 'medium',
 };
 
 export const Error: StoryFn<typeof Radio> = () => (

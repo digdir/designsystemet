@@ -1,0 +1,145 @@
+.header {
+  height: 600px;
+  margin-top: -106px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.content::before {
+  content: '';
+  background-color: var(--fds-semantic-background-subtle);
+  position: absolute;
+  z-index: -1;
+  height: 200vh;
+  width: 300vw;
+  left: -100vw;
+  bottom: 120px;
+  border-radius: 50%;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 142px;
+  padding-bottom: 20px;
+  overflow: hidden;
+}
+
+.text {
+  width: 550px;
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cards {
+  display: grid;
+  grid-row-gap: var(--grid-gap);
+  grid-column-gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  width: 100%;
+}
+
+.betaTag {
+  background-color: #ebceff;
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.cluster {
+  position: absolute;
+  z-index: 0;
+}
+
+.cluster1,
+.cluster2 {
+  transform: translateY(0);
+}
+
+.clusterRight {
+  right: 65px;
+}
+
+.clusterLeft {
+  left: 65px;
+}
+
+.cluster1 {
+  top: 220px;
+  width: 150px;
+  animation-delay: 0.75s;
+}
+
+.cluster2 {
+  top: 200px;
+  width: 142px;
+}
+
+.cluster3 {
+  top: 1050px;
+  animation-delay: 1s;
+  width: 200px;
+}
+
+.cluster4 {
+  top: 1620px;
+  height: 150px;
+}
+
+.cluster5 {
+  top: 2290px;
+  height: 140px;
+  transform: rotate(45deg);
+}
+
+.cluster6 {
+  top: 3080px;
+  height: 160px;
+  transform: rotate(45deg);
+}
+
+.banners {
+  margin: 0;
+  margin-bottom: 130px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .cluster {
+    display: none;
+  }
+
+  .header {
+    height: auto;
+  }
+
+  .text {
+    width: 100%;
+  }
+}

@@ -1,13 +1,25 @@
-import remarkGfm from 'remark-gfm';
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import { dirname, join } from 'path';
+import type { StorybookConfig } from '@storybook/react-vite';
+
 const config: StorybookConfig = {
-  stories: ['../packages/**/*.mdx', '../packages/**/*.stories.ts?(x)'],
+  docs: {
+    autodocs: true,
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
+  stories: [
+    '../packages/*.mdx',
+    '../packages/css/**/*.mdx',
+    '../packages/theme/**/*.mdx',
+    '../packages/react/**/*.mdx',
+    '../packages/react/**/*.stories.ts?(x)',
+  ],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-links',
-    '@storybook/addon-interactions',
-    '@storybook/addon-essentials',
-    '@etchteam/storybook-addon-css-variables-theme',
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
     {
       name: 'storybook-css-modules',
       options: {
@@ -19,24 +31,14 @@ const config: StorybookConfig = {
         },
       },
     },
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
-        },
-      },
-    },
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
+    '@chromatic-com/storybook',
   ],
   staticDirs: ['../assets'],
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
-  },
-  docs: {
-    autodocs: true,
-  },
+  framework: getAbsolutePath('@storybook/react-vite'),
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}

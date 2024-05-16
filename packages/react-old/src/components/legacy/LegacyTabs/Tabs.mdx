@@ -1,0 +1,57 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import { Information } from '../../../../../../docs-components';
+
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+# LegacyTabs
+
+<Information text='altinn' />
+
+## Egenskaper
+
+Egenskapen `items` er obligatorisk og skal inneholde en liste med `TabItem`-objekter.
+Disse objektene skal inneholde en `name`- og en `content`-egenskap.
+`name` er navnet som vises på selve fanen, mens `content` er innholdet som skal vises når fanen er aktiv.
+
+Objektene kan også inneholde en `value`-egenskap som kan brukes til å identifisere fanen.
+Dette er nyttig når man bruker `activeTab` og `onChange` til å kontrollere hva som vises.
+`activeTab` bestemmer hvilken fane som skal være aktiv, og `onChange` er en funksjon som kalles når en ny fane blir aktivert.
+Sistnevnte tar inn den gjeldende fanens `value` som parameter.
+Dersom `value` ikke er satt på fanene, vil `name` bli brukt som `value`.
+
+`TabItem` har også to ID-egenskaper, `tabId` og `panelId`, som kan brukes til å sette en ID på henholdsvis fanen og panelet.
+Disse blir automatisk generert dersom de ikke er satt.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
+import { LegacyTabs } from '@digdir/design-system-react';
+
+<LegacyTabs
+  items={[
+    {
+      name: 'Donec finibus',
+      content: 'In vulputate libero et tellus.',
+    },
+    {
+      name: 'Curabitur a',
+      content: 'Nulla nec lobortis ipsum. Sed.',
+    },
+    {
+      name: 'Sed at',
+      content: 'Donec eu luctus dui, nec.',
+    },
+  ]}
+/>;
+```
+
+## Eksempel
+
+<Canvas of={TabsStories.Eksempel} />

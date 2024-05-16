@@ -1,15 +1,14 @@
-import cn from 'classnames';
-import type { HTMLAttributes } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import cl from 'clsx';
+import type { ReactNode, HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
-import { AnimateHeight } from '../../../utility-components';
+import { AnimateHeight } from '../../../utilities/AnimateHeight';
 import { Paragraph } from '../../..';
-import classes from '../Accordion.module.css';
 import { AccordionItemContext } from '../AccordionItem';
 
 export type AccordionContentProps = {
   /** Content inside `Accordion.Content`*/
-  children: React.ReactNode;
+  children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const AccordionContent = forwardRef<
@@ -31,14 +30,19 @@ export const AccordionContent = forwardRef<
       open={context.open}
     >
       <Paragraph
-        {...rest}
-        as='div'
+        asChild
         size='small'
-        ref={ref}
-        className={cn(classes.content, className)}
       >
-        {children}
+        <div
+          ref={ref}
+          className={cl('fds-accordion__content', className)}
+          {...rest}
+        >
+          {children}
+        </div>
       </Paragraph>
     </AnimateHeight>
   );
 });
+
+AccordionContent.displayName = 'AccordionContent';

@@ -6,21 +6,21 @@ on:
     branches:
       - main
     paths:
-      - 'storefront/**'
+      - 'apps/storefront/**'
   push:
     branches:
       - main
     paths:
-      - 'storefront/**'
+      - 'apps/storefront/**'
 jobs:
   checks:
     name: Builds, lints and tests code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use node 20 and yarn cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'yarn'
@@ -30,9 +30,11 @@ jobs:
         run: yarn build
       - name: Build storefront
         run: yarn build:storefront
+      - name: Types
+        run: yarn types:storefront
       - name: Lint Code
-        run: yarn lint ./storefront
+        run: yarn lint ./apps/storefront
       - name: Lint CSS
-        run: yarn lint-style ./storefront/**/*.css
+        run: yarn lint-style ./apps/storefront/**/*.css
       - name: Test
         run: yarn test

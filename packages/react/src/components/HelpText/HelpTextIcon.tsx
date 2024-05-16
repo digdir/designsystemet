@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type HelpTextIconProps = {
   className: string;
   filled?: boolean;
@@ -34,3 +32,5 @@ export const HelpTextIcon = ({
     </svg>
   );
 };
+
+HelpTextIcon.displayName = 'HelpText.Icon';

@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - 'packages/**'
+      - '*.*js'
   push:
     branches:
       - main
@@ -18,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use node 20 and yarn cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'yarn'
@@ -28,6 +29,8 @@ jobs:
         run: yarn install --immutable
       - name: Build
         run: yarn build
+      - name: Types
+        run: yarn types:react
       - name: Lint Code
         run: yarn lint:all
       - name: Lint CSS

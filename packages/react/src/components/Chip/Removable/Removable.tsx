@@ -1,33 +1,54 @@
-import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import type { ButtonHTMLAttributes } from 'react';
+import { useContext, forwardRef } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
-import type { ChipBaseProps } from '../_ChipBase';
-import { ChipBase } from '../_ChipBase';
+import { Paragraph } from '../../Typography';
+import { ChipGroupContext } from '../Group/Group';
 
-import classes from './Removable.module.css';
-
-export type RemovableChipProps = Omit<ChipBaseProps, 'selected'>;
+export type RemovableChipProps = {
+  /**
+   * Changes padding and font-sizes.
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'small', ...rest }, ref) => {
+  ({ children, size = 'medium', className, ...rest }, ref) => {
+    const group = useContext(ChipGroupContext);
+
     return (
-      <ChipBase
-        {...rest}
-        ref={ref}
-        size={size}
-        as='button'
+      <button
         type='button'
-        className={cn(classes.removable, classes[size], rest.className)}
+        ref={ref}
+        className={cl(
+          `fds-focus`,
+          `fds-chip--button`,
+          `fds-chip--removable`,
+          `fds-chip--${group?.size || size}`,
+          className,
+        )}
+        {...rest}
       >
-        <span>{children}</span>
-        <span
-          className={classes.xMark}
-          aria-hidden
+        <Paragraph
+          asChild
+          size={group?.size || size}
+          variant='short'
         >
-          <XMarkIcon className={classes.icon} />
-        </span>
-      </ChipBase>
+          <span className={`fds-chip__label`}>
+            <span>{children}</span>
+            <span
+              className={`fds-chip__x-mark`}
+              aria-hidden
+            >
+              <XMarkIcon className={`fds-chip__icon`} />
+            </span>
+          </span>
+        </Paragraph>
+      </button>
     );
   },
 );
+
+RemovableChip.displayName = 'ChipRemovable';

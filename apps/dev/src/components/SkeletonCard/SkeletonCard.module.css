@@ -1,0 +1,22 @@
+.card {
+  margin-top: 24px;
+  background-color: var(--color-background-darker);
+  color: var(--color-text);
+  height: 100px;
+  padding: var(--card-padding);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.element {
+  background-color: var(--color-background-dark);
+  height: 28px;
+  width: 50%;
+  border-radius: 4px;
+}
+
+.shortElement {
+  width: 25%;
+}
