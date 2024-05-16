@@ -26,7 +26,7 @@ export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemo
   const processor = postcss(plugins);
 
   const transform = async () => {
-    const files = glob.sync(globPath);
+    const files = await glob(globPath, { ignore: ['node_modules/**'] });
 
     const filePromises = files.map(async (file) => {
       const contents = fs.readFileSync(file).toString();
