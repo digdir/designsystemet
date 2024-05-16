@@ -3,13 +3,15 @@ import { createContext, forwardRef, useId, useState } from 'react';
 import cl from 'clsx/lite';
 
 import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
+import { getSize } from '../../utilities/getSize';
+import type { ButtonProps } from '../Button';
 
 export type ToggleGroupContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
   name?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonProps['size'];
 };
 
 export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
@@ -23,8 +25,12 @@ export type ToggleGroupProps = {
   onChange?: (value: string) => void;
   /** Form element name */
   name?: string;
-  /** Changes items size and paddings */
-  size?: 'small' | 'medium' | 'large';
+  /**
+   * Changes items size and paddings
+   * @default 'md'
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: ToggleGroupContextProps['size'];
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 /** `ToggleGroup` component.
@@ -39,18 +45,11 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
-    {
-      children,
-      value,
-      defaultValue,
-      onChange,
-      size = 'medium',
-      name,
-      className,
-      ...rest
-    },
+    { children, value, defaultValue, onChange, name, className, ...rest },
     ref,
   ) => {
+    const size = getSize(rest.size || 'md') as ToggleGroupContextProps['size'];
+
     const nameId = useId();
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<

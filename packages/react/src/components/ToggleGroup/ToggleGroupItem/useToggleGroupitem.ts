@@ -1,5 +1,6 @@
 import { useContext, useId } from 'react';
 
+import type { ToggleGroupContextProps } from '../ToggleGroup';
 import { ToggleGroupContext } from '../ToggleGroup';
 import type { ButtonProps } from '../../Button';
 
@@ -7,7 +8,7 @@ import type { ToggleGroupItemProps } from './ToggleGroupItem';
 
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   active: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: ToggleGroupContextProps['size'];
   buttonProps?: Pick<
     ButtonProps,
     'id' | 'onClick' | 'role' | 'aria-checked' | 'aria-current' | 'name'
