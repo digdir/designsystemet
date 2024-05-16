@@ -29,7 +29,7 @@ export const Preview: Story = (args) => <Spinner {...args} />;
 
 Preview.args = {
   title: 'Henter kaffi',
-  size: 'medium',
+  size: 'md',
   variant: 'default',
 };
 
@@ -38,12 +38,12 @@ export const Variants: Story = () => (
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='xlarge'
+      size='xl'
     />
     <Spinner
       title='Henter kaffi'
       variant='interaction'
-      size='xlarge'
+      size='xl'
     />
     <div
       style={{
@@ -53,7 +53,7 @@ export const Variants: Story = () => (
       <Spinner
         title='Henter kaffi'
         variant='inverted'
-        size='xlarge'
+        size='xl'
       />
     </div>
   </>
@@ -64,32 +64,32 @@ export const Sizes: Story = () => (
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='xxsmall'
+      size='2xs'
     />
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='xsmall'
+      size='xs'
     />
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='small'
+      size='sm'
     />
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='medium'
+      size='md'
     />
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='large'
+      size='lg'
     />
     <Spinner
       title='Henter kaffi'
       variant='default'
-      size='xlarge'
+      size='xl'
     />
   </>
 );

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.61.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.60.0...@digdir/designsystemet-react@0.61.0) (2024-05-16)
+
+### Bug Fixes
+
+- **Combobox:** Show all options in single mode when a value is selected ([#1983](https://github.com/digdir/designsystemet/issues/1983)) ([ac82b50](https://github.com/digdir/designsystemet/commit/ac82b50ff9b938081dc7f70d8577bb9838aa7133))
+
+### Features
+
+- **Button:** add shorthand sizes ([#1986](https://github.com/digdir/designsystemet/issues/1986)) ([38a5232](https://github.com/digdir/designsystemet/commit/38a523270f17d3a58800921330706b39c51e4837))
+
 # [0.60.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.59.0...@digdir/designsystemet-react@0.60.0) (2024-05-14)
 
 ### Bug Fixes

@@ -21,7 +21,7 @@ export const LinkHeading = ({ ...rest }: LinkHeadingProps) => {
       <Link
         aria-hidden='true'
         href={`#${rest.id}`}
-        tabindex='-1'
+        tabIndex={-1}
         target='_self'
       >
         <LinkIcon />
