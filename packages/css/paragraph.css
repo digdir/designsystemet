@@ -10,73 +10,73 @@
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .fds-paragraph--large {
+  .fds-paragraph--lg {
     --fdsc-bottom-spacing: var(--fds-spacing-6);
 
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
   }
 
-  .fds-paragraph--large.fds-paragraph--short {
+  .fds-paragraph--lg.fds-paragraph--short {
     font: var(--fds-typography-paragraph-short-large);
     font-family: inherit;
   }
 
-  .fds-paragraph--large.fds-paragraph--long {
+  .fds-paragraph--lg.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-large);
   }
 
-  .fds-paragraph--medium {
+  .fds-paragraph--md {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
   }
 
-  .fds-paragraph--medium.fds-paragraph--short {
+  .fds-paragraph--md.fds-paragraph--short {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-paragraph-short-medium);
     font-family: inherit;
   }
 
-  .fds-paragraph--medium.fds-paragraph--long {
+  .fds-paragraph--md.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-medium);
   }
 
-  .fds-paragraph--small {
+  .fds-paragraph--sm {
     --fdsc-bottom-spacing: var(--fds-spacing-4);
 
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
   }
 
-  .fds-paragraph--small.fds-paragraph--short {
+  .fds-paragraph--sm.fds-paragraph--short {
     --fdsc-bottom-spacing: var(--fds-spacing-4);
 
     font: var(--fds-typography-paragraph-short-small);
     font-family: inherit;
   }
 
-  .fds-paragraph--small.fds-paragraph--long {
+  .fds-paragraph--sm.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-small);
   }
 
-  .fds-paragraph--xsmall {
+  .fds-paragraph--xs {
     --fdsc-bottom-spacing: var(--fds-spacing-3);
 
     font: var(--fds-typography-paragraph-xsmall);
     font-family: inherit;
   }
 
-  .fds-paragraph--xsmall.fds-paragraph--short {
+  .fds-paragraph--xs.fds-paragraph--short {
     --fdsc-bottom-spacing: var(--fds-spacing-3);
 
     font: var(--fds-typography-paragraph-short-xsmall);
     font-family: inherit;
   }
 
-  .fds-paragraph--xsmall.fds-paragraph--long {
+  .fds-paragraph--xs.fds-paragraph--long {
     line-height: var(--fds-typography-paragraph-long-xsmall);
   }
 }

@@ -2636,12 +2636,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-css@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@digdir/designsystemet-css@npm:0.4.0"
+"@digdir/designsystemet-css@npm:0.7.0":
+  version: 0.7.0
+  resolution: "@digdir/designsystemet-css@npm:0.7.0"
   dependencies:
-    "@digdir/designsystemet-react": "npm:^0.57.0"
-  checksum: 3a56962a90c0e51d61414bb3ac0666238c6ac394e40ff30e897f7a2b7a31be24fef8304335c3175da52c88e0341331ec6a237d43ed9b7aa612d3d5668ded66ca
+    "@digdir/designsystemet-react": "npm:^0.60.0"
+  checksum: a8daeb980937609d4e6d4dbd39518f29f8854baba5dd4109a609342dcd91bc12358b7acafd67a0b44d6e0adfd02a9d614cd17f3a1e0c3270fd47ad485a88cf15
   languageName: node
   linkType: hard
 
@@ -2667,18 +2667,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:0.57.0, @digdir/designsystemet-react@npm:^0.57.0":
-  version: 0.57.0
-  resolution: "@digdir/designsystemet-react@npm:0.57.0"
+"@digdir/designsystemet-react@npm:0.60.0, @digdir/designsystemet-react@npm:^0.60.0":
+  version: 0.60.0
+  resolution: "@digdir/designsystemet-react@npm:0.60.0"
   dependencies:
-    "@floating-ui/react": "npm:0.26.4"
+    "@floating-ui/react": "npm:0.26.12"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@tanstack/react-virtual": "npm:^3.2.0"
   peerDependencies:
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 2f620bc28a577786cab9bfbe8ec4af319bb5d939c5985e2d965362ffaf2bd075a613db6ec2349baf03f400607a73a24ed9c7703329fddca57e83e896312f3506
+    react: ">=18.3.1"
+    react-dom: ">=18.3.1"
+  checksum: 749170906415879d0f54968395583e74df9f17b553e80b8cc0cc4a750d4aae827be77f859b243c1d75d23e7ccb6eb46565c19ab9fd6a5a225e01a73644bc2a7c
   languageName: node
   linkType: hard
 
@@ -2716,14 +2716,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-theme@npm:0.15.1":
-  version: 0.15.1
-  resolution: "@digdir/designsystemet-theme@npm:0.15.1"
-  checksum: 2f47dd9cf9796df0830c080d84aef4d452a387d0dc7d2133f355fcb4d1ece8a27a1fb35a5cda709494a5fd12854fa0f7c7654a931cf3e4bb01cef431ac7edd63
-  languageName: node
-  linkType: hard
-
-"@digdir/designsystemet-theme@npm:^0.15.2, @digdir/designsystemet-theme@workspace:packages/theme":
+"@digdir/designsystemet-theme@npm:0.15.3, @digdir/designsystemet-theme@npm:^0.15.2, @digdir/designsystemet-theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-theme@workspace:packages/theme"
   dependencies:
@@ -20847,9 +20840,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "storefront@workspace:apps/storefront"
   dependencies:
-    "@digdir/designsystemet-css": "npm:0.4.0"
-    "@digdir/designsystemet-react": "npm:0.57.0"
-    "@digdir/designsystemet-theme": "npm:0.15.1"
+    "@digdir/designsystemet-css": "npm:0.7.0"
+    "@digdir/designsystemet-react": "npm:0.60.0"
+    "@digdir/designsystemet-theme": "npm:0.15.3"
     "@mdx-js/loader": "npm:^2.0.0-rc.2"
     "@mdx-js/react": "npm:^1.6.22"
     "@navikt/aksel-icons": "npm:^5.12.2"
