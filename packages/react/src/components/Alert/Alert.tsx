@@ -56,7 +56,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     { severity = 'info', elevated, iconTitle, children, className, ...rest },
     ref,
   ) => {
-    const size = getSize(rest.size || 'md');
+    const size = getSize(rest.size || 'md') as AlertProps['size'];
     const { Icon, title } = icons[severity];
 
     return (
