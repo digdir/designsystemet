@@ -107,7 +107,7 @@ export const DropdownMenuContent = forwardRef<
               })}
               className={cl(
                 'fds-dropdownmenu',
-                `fds-dropdownmenu${size}`,
+                `fds-dropdownmenu--${size}`,
                 className,
               )}
               {...rest}
