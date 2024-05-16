@@ -101,47 +101,47 @@
     margin-left: var(--fds-spacing-1);
   }
 
-  .fds-switch--small,
-  .fds-switch--small .fds-switch__label {
+  .fds-switch--sm,
+  .fds-switch--sm .fds-switch__label {
     min-height: var(--fds-sizing-6);
   }
 
-  .fds-switch--medium,
-  .fds-switch--medium .fds-switch__label {
+  .fds-switch--md,
+  .fds-switch--md .fds-switch__label {
     min-height: var(--fds-sizing-7);
   }
 
-  .fds-switch--large,
-  .fds-switch--large .fds-switch__label {
+  .fds-switch--lg,
+  .fds-switch--lg .fds-switch__label {
     min-height: var(--fds-sizing-8);
   }
 
-  .fds-switch--small {
+  .fds-switch--sm {
     --fds-switch-height: var(--fds-sizing-6);
     --fds-switch-width: var(--fds-sizing-11);
   }
 
-  .fds-switch--small .fds-switch__input {
+  .fds-switch--sm .fds-switch__input {
     left: -0.25rem;
     top: -0.25rem;
   }
 
-  .fds-switch--medium {
+  .fds-switch--md {
     --fds-switch-height: var(--fds-sizing-7);
     --fds-switch-width: var(--fds-sizing-13);
   }
 
-  .fds-switch--medium .fds-switch__input {
+  .fds-switch--md .fds-switch__input {
     left: 0;
     top: 0;
   }
 
-  .fds-switch--large {
+  .fds-switch--lg {
     --fds-switch-height: var(--fds-sizing-8);
     --fds-switch-width: var(--fds-sizing-15);
   }
 
-  .fds-switch--large .fds-switch__input {
+  .fds-switch--lg .fds-switch__input {
     left: 0;
     top: 0.25rem;
   }
