@@ -15,8 +15,9 @@ export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemo
     postcssPlugin: 'Replaces referenced CSS variables',
     Declaration(decl) {
       Object.keys(dictionary).forEach((key) => {
-        if (decl.value.includes(key) && !R.isEmpty(key)) {
-          decl.value = decl.value.replace(key, dictionary[key]);
+        const newValue = dictionary[key];
+        if (decl.value.includes(key) && !R.isEmpty(newValue)) {
+          decl.value = decl.value.replace(key, newValue);
         }
       });
     },
