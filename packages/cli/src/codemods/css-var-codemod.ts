@@ -16,6 +16,11 @@ export const cssVarCodemod = ({ dictionary, globPath = './**/*.css' }: CSSCodemo
     Declaration(decl) {
       Object.keys(dictionary).forEach((key) => {
         const newValue = dictionary[key];
+
+        if (R.isEmpty(newValue)) {
+          console.log(`Skipping "${key}"; missing new value`);
+        }
+
         if (decl.value.includes(key) && !R.isEmpty(newValue)) {
           decl.value = decl.value.replace(key, newValue);
         }
