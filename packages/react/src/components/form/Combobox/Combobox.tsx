@@ -449,7 +449,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                   <ComboboxCustom className={'fds-combobox__loading'}>
                     <Spinner
                       title='Laster'
-                      size='small'
+                      size='sm'
                     />
                     {loadingLabel}
                   </ComboboxCustom>
