@@ -84,7 +84,7 @@ export const useFormField = (
           (!!props?.description && typeof props?.description === 'string') && descriptionId,
           (hasError && !fieldset?.error) && errorId,
           (hasError && !!fieldset?.error) && fieldset?.errorId,
-        )
+        ) || undefined,
     },
   };
 };
