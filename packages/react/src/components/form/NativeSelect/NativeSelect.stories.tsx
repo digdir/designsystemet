@@ -26,7 +26,7 @@ export const Preview: StoryFn<typeof NativeSelect> = (args) => (
 
 Preview.args = {
   label: 'Velg et fjell',
-  size: 'medium',
+  size: 'md',
   disabled: false,
   readOnly: false,
 };
