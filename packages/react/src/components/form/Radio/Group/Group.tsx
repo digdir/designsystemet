@@ -43,7 +43,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       readOnly,
       defaultValue,
       name,
-      size = 'medium',
+      size = 'md',
       required,
       inline,
       className,

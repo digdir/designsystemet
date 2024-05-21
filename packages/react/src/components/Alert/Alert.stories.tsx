@@ -21,7 +21,7 @@ export const Preview: Story = (args) => <Alert {...args}></Alert>;
 Preview.args = {
   severity: 'info',
   elevated: false,
-  size: 'medium',
+  size: 'md',
   children: 'En beskjed det er viktig at brukeren ser',
 };
 

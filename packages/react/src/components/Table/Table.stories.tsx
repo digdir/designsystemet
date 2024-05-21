@@ -50,7 +50,7 @@ export const Preview: Story = (args) => {
 };
 
 Preview.args = {
-  size: 'medium',
+  size: 'md',
   zebra: false,
   stickyHeader: false,
   border: false,

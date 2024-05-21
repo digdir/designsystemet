@@ -28,7 +28,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 Preview.args = {
   placement: 'top',
   variant: 'default',
-  size: 'medium',
+  size: 'md',
   onOpenChange: () => {},
 };
 

@@ -29,7 +29,7 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 
 Preview.args = {
   defaultValue: 'Peanut',
-  size: 'medium',
+  size: 'md',
   name: 'toggle-group-nuts',
 };
 
@@ -89,7 +89,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
       <br />
       <ToggleGroup
         value={value}
-        size='medium'
+        size='md'
         onChange={setValue}
       >
         <ToggleGroup.Item value='pistachio'>
