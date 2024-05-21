@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';

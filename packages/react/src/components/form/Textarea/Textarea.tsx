@@ -1,6 +1,6 @@
 import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import { useState, forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';

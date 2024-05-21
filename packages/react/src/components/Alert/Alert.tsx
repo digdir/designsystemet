@@ -6,7 +6,7 @@ import {
   XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
 } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '..';
 import { getSize } from '../../utilities/getSize';

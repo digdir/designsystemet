@@ -1,6 +1,6 @@
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { getSize } from '../../utilities/getSize';
 
