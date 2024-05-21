@@ -67,6 +67,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         hasCharacterLimit && characterLimitId,
       ) || undefined;
 
+      console.log(textareaProps['aria-describedby'])
+
     return (
       <Paragraph
         asChild

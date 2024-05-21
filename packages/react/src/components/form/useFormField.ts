@@ -1,6 +1,6 @@
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { getSize } from '../../utilities/getSize';
 
@@ -79,12 +79,12 @@ export const useFormField = (
       disabled,
       'aria-invalid': hasError ? true : undefined,
       'aria-describedby':
-        cl(props['aria-describedby'], {
-          [descriptionId]:
-            !!props?.description && typeof props?.description === 'string',
-          [errorId]: hasError && !fieldset?.error,
-          [fieldset?.errorId ?? '']: hasError && !!fieldset?.error,
-        }) || undefined,
+        cl(
+          props['aria-describedby'],
+          (!!props?.description && typeof props?.description === 'string') && descriptionId,
+          (hasError && !fieldset?.error) && errorId,
+          (hasError && !!fieldset?.error) && fieldset?.errorId,
+        )
     },
   };
 };
