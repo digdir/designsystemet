@@ -30,8 +30,8 @@
     width: 1.2em;
   }
 
-  .fds-fieldset--disabled .fds-fieldset__legend,
-  .fds-fieldset--disabled .fds-fieldset__description {
+  .fds-fieldset:disabled .fds-fieldset__legend,
+  .fds-fieldset:disabled .fds-fieldset__description {
     color: var(--fds-semantic-border-neutral-subtle);
   }
 
