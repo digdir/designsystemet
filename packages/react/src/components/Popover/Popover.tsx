@@ -109,7 +109,7 @@ export const PopoverContext = React.createContext<{
   setTriggerId?: (id: string) => void;
   setInternalOpen: (open: boolean) => void;
 }>({
-  size: 'small',
+  size: 'sm',
   variant: 'default',
   anchorEl: null,
   placement: 'top',
