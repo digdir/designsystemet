@@ -30,7 +30,7 @@ describe('Alert', () => {
       <Alert severity='info'>
         <Heading
           level={1}
-          size='xsmall'
+          size='xs'
         >
           Alert me!
         </Heading>
@@ -49,7 +49,7 @@ describe('Alert', () => {
       >
         <Heading
           level={1}
-          size='xsmall'
+          size='xs'
         >
           Alert me!
         </Heading>

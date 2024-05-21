@@ -31,7 +31,7 @@ export const AccordionContent = forwardRef<
     >
       <Paragraph
         asChild
-        size='small'
+        size='sm'
       >
         <div
           ref={ref}

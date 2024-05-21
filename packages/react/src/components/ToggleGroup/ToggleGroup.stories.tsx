@@ -80,7 +80,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
     <>
       <div style={{ display: 'flex', gap: '4px' }}>
         <Button
-          size='small'
+          size='sm'
           onClick={() => setValue('peanut')}
         >
           Select Peanut
