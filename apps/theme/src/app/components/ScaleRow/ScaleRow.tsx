@@ -1,16 +1,20 @@
-import cn from "classnames";
-import type { CssColor } from "@adobe/leonardo-contrast-colors";
-import { useEffect, useRef, useState } from "react";
-import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
-import { ChromePicker } from "react-color";
-import { useClickOutside } from "@react-awesome/use-click-outside";
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import cn from 'classnames';
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import type { SetStateAction } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { ChromePicker } from 'react-color';
+import { useClickOutside } from '@react-awesome/use-click-outside';
 
-import type { modeType } from "@/types";
-import { getRatioFromLum, luminanceFromHex } from "@/utils/ColorUtils";
+import type { modeType } from '@/types';
+import { getRatioFromLum, luminanceFromHex } from '@/utils/ColorUtils';
 
-import { Scale } from "../Scale/Scale";
+import { Scale } from '../Scale/Scale';
 
-import classes from "./ScaleRow.module.css";
+import classes from './ScaleRow.module.css';
 
 type ScaleRowProps = {
   color: CssColor;
@@ -26,13 +30,13 @@ export const ScaleRow = ({
   themeMode,
 }: ScaleRowProps) => {
   const [contrast, setContrast] = useState<number>(0);
-  const [activeColor, setActiveColor] = useState<CssColor>("#000000");
+  const [activeColor, setActiveColor] = useState<CssColor>('#000000');
   const [showPicker, setShowPicker] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
     const lum1 = luminanceFromHex(color);
-    const lum2 = luminanceFromHex("#ffffff");
+    const lum2 = luminanceFromHex('#ffffff');
     const ratio = getRatioFromLum(lum1, lum2);
     setContrast(ratio);
     setActiveColor(color);
@@ -50,8 +54,14 @@ export const ScaleRow = ({
     <div className={classes.row}>
       <div className={classes.selectedColor}>
         <div className={classes.name}>{name}</div>
-        <div ref={ref} className={classes.tomato}>
-          <button className={classes.tt} onClick={() => handleClick()}>
+        <div
+          ref={ref}
+          className={classes.tomato}
+        >
+          <button
+            className={classes.tt}
+            onClick={() => handleClick()}
+          >
             <div
               className={classes.previewColor}
               style={{ backgroundColor: activeColor }}
@@ -67,14 +77,13 @@ export const ScaleRow = ({
           >
             <ChromePicker
               onChange={(e) => {
-                const lum1 = luminanceFromHex(e.hex);
-                const lum2 = luminanceFromHex("#ffffff");
+                const lum1 = luminanceFromHex(e.hex as CssColor);
+                const lum2 = luminanceFromHex('#ffffff');
                 const ratio = getRatioFromLum(lum1, lum2);
                 setContrast(ratio);
-                setActiveColor(e.hex);
+                setActiveColor(e.hex as SetStateAction<CssColor>);
               }}
               color={activeColor}
-              width={250}
             />
           </div>
         </div>
@@ -87,10 +96,16 @@ export const ScaleRow = ({
             })}
           >
             {contrast > 4.5 && (
-              <CheckmarkIcon title="a11y-title" fontSize="1.3rem" />
+              <CheckmarkIcon
+                title='a11y-title'
+                fontSize='1.3rem'
+              />
             )}
             {contrast < 4.5 && (
-              <XMarkIcon title="a11y-title" fontSize="1.3rem" />
+              <XMarkIcon
+                title='a11y-title'
+                fontSize='1.3rem'
+              />
             )}
           </div>
         </div>
@@ -99,9 +114,8 @@ export const ScaleRow = ({
         color={activeColor}
         showHeader={showHeader}
         themeMode={themeMode}
-        type="accent"
+        type='accent'
       />
-      <div></div>
     </div>
   );
 };

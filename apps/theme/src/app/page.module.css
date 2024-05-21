@@ -165,6 +165,8 @@
   font-size: 16px;
   padding: 9px 20px;
   border-radius: 500px;
+  border: none;
+  background-color: transparent;
 }
 
 .menuItem:hover {

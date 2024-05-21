@@ -12,9 +12,10 @@
   color: inherit;
   display: block;
   margin-left: 32px;
-  border-bottom: 3px solid transparent;
+  border-bottom: 2px solid transparent;
   padding-bottom: 10px;
   font-size: 18px;
+  letter-spacing: 0.1px;
 }
 
 .links a:hover {
@@ -29,7 +30,7 @@
 }
 
 .active {
-  border-color: #b9b9b9 !important;
+  border-color: inherit !important;
   font-weight: 500;
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -27,10 +28,10 @@ export const Header = () => {
             Fargevelger
           </Link>
           <Link
-            className={currentPath === '/scale-list' ? classes.active : ''}
-            href='/scale-list'
+            className={currentPath === '/testside' ? classes.active : ''}
+            href='/testside'
           >
-            Liste over fargeskalaer
+            Testside
           </Link>
           <Link
             className={currentPath === '/om-verktoyet' ? classes.active : ''}

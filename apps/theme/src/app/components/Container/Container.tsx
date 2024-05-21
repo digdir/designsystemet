@@ -4,7 +4,7 @@ import classes from './Container.module.css';
 
 type ContainerProps = {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 };
 
 export const Container = ({ children, className }: ContainerProps) => {

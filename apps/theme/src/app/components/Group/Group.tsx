@@ -1,19 +1,13 @@
-import type { CssColor } from "@adobe/leonardo-contrast-colors";
-import cn from "classnames";
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import cn from 'classnames';
 
-import { Color } from "../Color/Color";
+import { Color } from '../Color/Color';
 
-import classes from "./Group.module.css";
-
-type ColorType = {
-  color: CssColor;
-  contrast: string;
-  lightness: string;
-};
+import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorType[];
+  colors: CssColor[];
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;
@@ -47,10 +41,10 @@ export const Group = ({
           return (
             <Color
               key={index}
-              color={item.color}
-              contrast={item.contrast}
-              lightness={item.lightness}
-              hex={item.color}
+              color={item}
+              contrast={'dd'}
+              lightness={'dd'}
+              hex={item}
               showColorMeta={showColorMeta}
             />
           );

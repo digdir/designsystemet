@@ -46,6 +46,9 @@
 .label {
   margin-bottom: 12px;
   font-size: 16px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .popup {
@@ -66,4 +69,45 @@
 .disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.status {
+  border: 1px solid #6d6d6d;
+  color: #212442;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.status svg {
+  font-size: 2.4rem;
+}
+
+.status:hover {
+  border-color: black;
+  color: black;
+}
+
+.statusYellow {
+  background-color: #ffe8b6;
+  color: black;
+  border: 1px solid #6d6d6d;
+}
+
+.statusOrange svg {
+  font-size: 1.4rem;
+}
+
+.statusOrange {
+  background-color: #ffe8b6;
+  color: black;
+  border: 1px solid #6d6d6d;
+}
+
+.statusDanger svg {
+  font-size: 1.4rem;
 }

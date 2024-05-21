@@ -20,28 +20,6 @@
   font-weight: 500;
 }
 
-/* .featured:before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 2px;
-  background-color: #0062ba;
-  left: 0;
-  bottom: 0;
-  margin-bottom: -20px;
-}
-
-.featured:after {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 2px;
-  background-color: #0062ba;
-  right: 0;
-  bottom: 0;
-  margin-bottom: -20px;
-} */
-
 .names {
   display: flex;
   align-items: center;
@@ -54,4 +32,10 @@
   font-size: 16px;
   width: 100%;
   text-align: center;
+}
+
+@media (max-width: 1632px) {
+  .names div {
+    font-size: 15px;
+  }
 }

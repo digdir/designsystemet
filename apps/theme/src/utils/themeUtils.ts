@@ -1,10 +1,7 @@
-import type {
-  ContrastColorValue,
-  CssColor,
-} from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 
-import type { ColorsType, modeType } from '@/types';
+import type { modeType } from '@/types';
 
 import {
   getContrastFromHex,
@@ -12,19 +9,18 @@ import {
   getLightnessFromHex,
 } from './ColorUtils';
 
-type outputType = 'flat' | 'object';
-
 /**
  *
- * @param color The base color that is going to be used to generate the color scale
+ * This function generates a color scale based on a base color and a mode. The mode determines the lightness of the colors in the scale.
+ *
+ * @param color The base color that is used to generate the color scale
  * @param mode The mode of the theme
  */
 export const generateColorScale = (
   color: CssColor,
   mode: modeType,
-  outputType: outputType = 'object',
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-): ColorsType | CssColor[] => {
+): CssColor[] => {
   const leoBackgroundColor = new BackgroundColor({
     name: 'backgroundColor',
     colorKeys: ['#ffffff'],
@@ -33,17 +29,17 @@ export const generateColorScale = (
 
   const colorLightness = getLightnessFromHex(color);
   const multiplier = colorLightness <= 30 ? -9 : 9;
-  const solidContrast = getContrastFromLightness(
+  const baseDefaultColor = getContrastFromLightness(
     colorLightness,
     color,
     leoBackgroundColor.colorKeys[0],
   );
-  const solidHoverContrast = getContrastFromLightness(
+  const baseHoverColor = getContrastFromLightness(
     colorLightness - multiplier,
     color,
     leoBackgroundColor.colorKeys[0],
   );
-  const solidActiveContrast = getContrastFromLightness(
+  const baseActiveColor = getContrastFromLightness(
     colorLightness - multiplier * 2,
     color,
     leoBackgroundColor.colorKeys[0],
@@ -52,11 +48,11 @@ export const generateColorScale = (
   let lightnessScale: number[] = [];
 
   if (mode === 'light') {
-    lightnessScale = [100, 96, 90, 84, 78, 81, 58, 35, 33, 20];
+    lightnessScale = [100, 96, 90, 84, 78, 81, 57, 33, 42, 20];
   } else if (mode === 'dark') {
-    lightnessScale = [10, 14, 20, 24, 28, 35, 45, 55, 70, 82];
+    lightnessScale = [10, 14, 20, 26, 32, 35, 47, 77, 77, 83];
   } else {
-    lightnessScale = [2, 7, 12, 15, 18, 45, 55, 65, 80, 92];
+    lightnessScale = [1, 6, 14, 20, 26, 58, 70, 82, 80, 95];
   }
 
   const getColorContrasts = (
@@ -78,9 +74,9 @@ export const generateColorScale = (
         lightnessScale.slice(0, 8),
         leoBackgroundColor.colorKeys[0],
       ),
-      solidContrast,
-      solidHoverContrast,
-      solidActiveContrast,
+      baseDefaultColor,
+      baseHoverColor,
+      baseActiveColor,
       ...getColorContrasts(
         color,
         lightnessScale.slice(8),
@@ -95,42 +91,78 @@ export const generateColorScale = (
     lightness: 100,
   });
 
-  if (outputType === 'flat') {
-    const flatArr = theme.contrastColorValues;
-    flatArr.push(setContrastOneColor(color, 'first').color as CssColor);
-    flatArr.push(setContrastOneColor(color, 'second').color as CssColor);
-    return theme.contrastColorValues;
-  }
+  // Creates a flat array of the 13 colors in the theme
+  const themeArray = theme.contrastColorValues;
 
-  const themeValues = theme.contrastColors[1].values;
+  // Add contrast colors to the end of the array
+  themeArray.push(calculateContrastOneColor(themeArray[8], themeArray[10]));
+  themeArray.push(setContrastOneColor(color, 'second').color as CssColor);
+
+  return theme.contrastColorValues;
+};
+
+/**
+ *
+ * This function generates a color theme based on a base color. Light, Dark and Contrast scales are generated.
+ *
+ * @param color The base color that is used to generate the color theme
+ */
+export const generateColorTheme = (color: CssColor) => {
+  const lightScale = generateColorScale(color, 'light');
+  const darkScale = generateColorScale(color, 'dark');
+  const contrastScale = generateColorScale(color, 'contrast');
 
   return {
-    background: {
-      subtle: setColorObject(themeValues[0]),
-      default: setColorObject(themeValues[1]),
-    },
-    component: {
-      normal: setColorObject(themeValues[2]),
-      hover: setColorObject(themeValues[3]),
-      active: setColorObject(themeValues[4]),
-    },
-    border: {
-      subtle: setColorObject(themeValues[5]),
-      default: setColorObject(themeValues[6]),
-      strong: setColorObject(themeValues[7]),
-    },
-    solid: {
-      normal: setColorObject(themeValues[8]),
-      hover: setColorObject(themeValues[9]),
-      active: setColorObject(themeValues[10]),
-      contrastOne: setContrastOneColor(color, 'first'),
-      contrastTwo: setContrastOneColor(color, 'second'),
-    },
-    text: {
-      subtle: setColorObject(themeValues[11]),
-      default: setColorObject(themeValues[12]),
-    },
+    light: lightScale,
+    dark: darkScale,
+    contrast: contrastScale,
   };
+};
+
+const calculateContrastOneColor = (
+  baseDefaultColor: CssColor,
+  baseActiveColor: CssColor,
+) => {
+  const baseColor =
+    getLightnessFromHex(baseDefaultColor) > getLightnessFromHex(baseActiveColor)
+      ? baseDefaultColor
+      : baseActiveColor;
+  const contrastAgainstWhite = getContrastFromHex(baseColor, '#ffffff');
+  const contrastAgainstBlack = getContrastFromHex(baseColor, '#000000');
+  const lightness = contrastAgainstWhite >= contrastAgainstBlack ? 100 : 0;
+  const color = createColorWithLightness(baseColor, lightness);
+
+  // if (!canTextBeUsedOnColors(baseDefaultColor, baseActiveColor)) {
+  //   return '#EB00FF';
+  // }
+
+  return color;
+};
+
+/**
+ *
+ * This function checks if white or black text can be used on 2 different colors at 4.5:1 contrast.
+ *
+ * @param baseDefaultColor Base default color
+ * @param baseActiveColor Base active color
+ */
+export const canTextBeUsedOnColors = (
+  baseDefaultColor: CssColor,
+  baseActiveColor: CssColor,
+) => {
+  const defaultAgainstWhite = getContrastFromHex(baseDefaultColor, '#ffffff');
+  const defaultAgainstBlack = getContrastFromHex(baseDefaultColor, '#000000');
+
+  const activeAgainstWhite = getContrastFromHex(baseActiveColor, '#ffffff');
+  const activeAgainstBlack = getContrastFromHex(baseActiveColor, '#000000');
+
+  if (defaultAgainstWhite >= 4.5 && activeAgainstWhite >= 4.5) {
+    return true;
+  } else if (defaultAgainstBlack >= 4.5 && activeAgainstBlack >= 4.5) {
+    return true;
+  }
+
+  return false;
 };
 
 export const setContrastOneColor = (
@@ -169,13 +201,13 @@ export const setContrastOneColor = (
   }
 
   return {
-    color: createTheme(color, targetLightness),
+    color: createColorWithLightness(color, targetLightness),
     contrast: 'd',
     lightness: '5',
   };
 };
 
-const createTheme = (color: CssColor, lightness: number) => {
+const createColorWithLightness = (color: CssColor, lightness: number) => {
   const leoBackgroundColor = new BackgroundColor({
     name: 'backgroundColor',
     colorKeys: ['#ffffff'],
@@ -193,12 +225,4 @@ const createTheme = (color: CssColor, lightness: number) => {
     lightness: 100,
   });
   return theme.contrastColorValues[0];
-};
-
-const setColorObject = (themeValues: ContrastColorValue) => {
-  return {
-    color: themeValues.value as CssColor,
-    contrast: themeValues.contrast.toString(),
-    lightness: getLightnessFromHex(themeValues.value).toString(),
-  };
 };

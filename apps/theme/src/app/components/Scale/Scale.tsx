@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
-import { generateColorScale } from '@/utils/themeUtils';
-import type { modeType, ColorsType } from '@/types';
+import type { modeType } from '@/types';
 
 import { Group } from '../Group/Group';
 
 import classes from './Scale.module.css';
 
 type ScaleProps = {
-  color: CssColor;
+  colorScale: CssColor[];
   showHeader?: boolean;
   showColorMeta?: boolean;
   themeMode: modeType;
@@ -26,96 +28,51 @@ const setTokens = (lightColors: CssColor[], type: string) => {
 };
 
 export const Scale = ({
-  color,
+  colorScale,
   showHeader,
   showColorMeta,
   themeMode,
   type,
 }: ScaleProps) => {
   // Is there a way to not have to set this default value?
-  const [colors, setColors] = useState<ColorsType>({
-    background: {
-      subtle: { color: '#ffffff', contrast: '', lightness: '' },
-      default: { color: '#ffffff', contrast: '', lightness: '' },
-    },
-    component: {
-      normal: { color: '#ffffff', contrast: '', lightness: '' },
-      hover: { color: '#ffffff', contrast: '', lightness: '' },
-      active: { color: '#ffffff', contrast: '', lightness: '' },
-    },
-    border: {
-      subtle: { color: '#ffffff', contrast: '', lightness: '' },
-      default: { color: '#ffffff', contrast: '', lightness: '' },
-      strong: { color: '#ffffff', contrast: '', lightness: '' },
-    },
-    solid: {
-      normal: { color: '#ffffff', contrast: '', lightness: '' },
-      hover: { color: '#ffffff', contrast: '', lightness: '' },
-      active: { color: '#ffffff', contrast: '', lightness: '' },
-      contrastOne: { color: '#ffffff', contrast: '', lightness: '' },
-      contrastTwo: { color: '#ffffff', contrast: '', lightness: '' },
-    },
-    text: {
-      subtle: { color: '#ffffff', contrast: '', lightness: '' },
-      default: { color: '#ffffff', contrast: '', lightness: '' },
-    },
-  });
+  const [colors, setColors] = useState<CssColor[]>([]);
 
   useEffect(() => {
-    const lightColors = generateColorScale(color, themeMode) as ColorsType;
-    const colorsFlat = generateColorScale(
-      color,
-      themeMode,
-      'flat',
-    ) as CssColor[];
-
-    setColors(lightColors);
-    setTokens(colorsFlat, type);
-  }, [color, themeMode, type]);
+    setColors(colorScale);
+    setTokens(colorScale, type);
+  }, [colorScale, themeMode, type]);
   return (
     <div className={classes.themes}>
       <div className={classes.test}>
         <Group
           header={showHeader ? 'Background' : ''}
-          colors={[colors?.background?.subtle, colors?.background?.default]}
+          colors={[colors[0], colors[1]]}
           showColorMeta={showColorMeta}
           names={['1. Default', '2. Subtle']}
         />
         <Group
           header={showHeader ? 'Surface' : ''}
-          colors={[
-            colors?.component.normal,
-            colors?.component.hover,
-            colors?.component.active,
-          ]}
+          colors={[colors[2], colors[3], colors[4]]}
           showColorMeta={showColorMeta}
           names={['3. Default', '4. Hover', '5. Active']}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? 'Border' : ''}
-          colors={[
-            colors?.border.subtle,
-            colors?.border.default,
-            colors?.border.strong,
-          ]}
+          colors={[colors[5], colors[6], colors[7]]}
           names={['6. Subtle', '7. Default', '8. Strong']}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? 'Base' : ''}
-          colors={[
-            colors?.solid.normal,
-            colors?.solid.hover,
-            colors?.solid.active,
-          ]}
+          colors={[colors[8], colors[9], colors[10]]}
           names={['9. Default', '10. Hover', '11. Active']}
           featured
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? 'Text' : ''}
-          colors={[colors?.text.subtle, colors?.text.default]}
+          colors={[colors[11], colors[12]]}
           names={['12. Subtle', '13. Default']}
         />
       </div>

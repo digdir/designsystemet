@@ -1,0 +1,47 @@
+.row {
+  display: flex;
+  gap: 24px;
+}
+
+.column {
+  width: 33%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.boxes {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.box {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.surface {
+  width: calc(25% - 20px);
+  height: 46px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s all;
+}
+
+.surface:hover {
+  cursor: pointer;
+}
+
+.boxTitle {
+  margin-bottom: -4px;
+}
+
+.boxTitleWhite {
+  color: white;
+}

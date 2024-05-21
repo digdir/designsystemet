@@ -130,9 +130,9 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   b = Math.round((b + m) * 255).toString(16);
 
   // Prepend 0s, if necessary
-  if (r.length == 1) r = '0' + r;
-  if (g.length == 1) g = '0' + g;
-  if (b.length == 1) b = '0' + b;
+  if (r.toString().length == 1) r = '0' + r;
+  if (g.toString().length == 1) g = '0' + g;
+  if (b.toString().length == 1) b = '0' + b;
 
   return '#' + r + g + b;
 };
@@ -166,7 +166,13 @@ export const luminanceFromRgb = (r: string, g: string, b: string) => {
 
 export const luminanceFromHex = (hex: CssColor) => {
   const rgb = hexToRgb(hex);
-  return luminanceFromRgb(rgb.r, rgb.g, rgb.b);
+  if (rgb) {
+    const r = rgb.r.toString();
+    const g = rgb.g.toString();
+    const b = rgb.b.toString();
+    return luminanceFromRgb(r, g, b);
+  }
+  return null;
 };
 
 export const getRatioFromLum = (lum1: number, lum2: number) => {
@@ -200,7 +206,7 @@ export const getContrastFromLightness = (
   conv.hsluv_l = lightness;
   conv.hsluvToHex();
   const lightMainColor = conv.hex;
-  const lum1 = luminanceFromHex(lightMainColor);
+  const lum1 = luminanceFromHex(lightMainColor as CssColor);
   const lum2 = luminanceFromHex(backgroundColor);
   const ratio = getRatioFromLum(lum1, lum2);
 
@@ -220,4 +226,17 @@ export const lightenDarkThemeColor = (color: CssColor) => {
   conv.hsluv_l = conv.hsluv_l + 10;
   conv.hsluvToHex();
   return conv.hex as CssColor;
+};
+
+export const areColorsContrasting = (
+  color1: CssColor,
+  color2: CssColor,
+  type: 'text' | 'decorative' = 'text',
+) => {
+  const contrast = getContrastFromHex(color1, color2);
+  if (type === 'text') {
+    return contrast >= 4.5;
+  } else {
+    return contrast >= 3;
+  }
 };

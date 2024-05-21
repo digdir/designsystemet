@@ -1,18 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
+import type { SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
 import { DropdownMenu } from '@digdir/designsystemet-react';
 
-import { Container } from './components/Container/Container';
-
 import { mapTokens } from '@/utils/tokenMapping';
-import { generateColorScale, setContrastOneColor } from '@/utils/themeUtils';
+import {
+  canTextBeUsedOnColors,
+  generateColorScale,
+  generateColorTheme,
+  setContrastOneColor,
+} from '@/utils/themeUtils';
 import type { modeType } from '@/types';
+import { areColorsContrasting } from '@/utils/ColorUtils';
 
+import { Container } from './components/Container/Container';
 import { Landing } from './components/Previews/Landing/Landing';
 import { Dashboard } from './components/Previews/Dashboard/Dashboard';
 import { Components } from './components/Previews/Components/Components';
@@ -28,18 +38,85 @@ type previewModeType =
   | 'auth'
   | 'components';
 
+type themeType = {
+  light: CssColor[];
+  dark: CssColor[];
+  contrast: CssColor[];
+};
+
+type colorErrorType = 'none' | 'decorative' | 'interaction';
+
 export default function Home() {
   const [accentColor, setAccentColor] = useState<CssColor>('#0062BA');
-  const [greyColor, setGreyColor] = useState<CssColor>('#1E2B3C');
+  const [accentError, setAccentError] = useState<colorErrorType>('none');
+  const [accentTheme, setAccentTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+
+  const [neutralColor, setNeutralColor] = useState<CssColor>('#1E2B3C');
+  const [neutralError, setNeutralError] = useState<colorErrorType>('none');
+  const [neutralTheme, setNeutralTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
   const [brandOneColor, setBrandOneColor] = useState<CssColor>('#F45F63');
+  const [brandOneError, setBrandOneError] = useState<colorErrorType>('none');
+  const [brandOneTheme, setBrandOneTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
   const [brandTwoColor, setBrandTwoColor] = useState<CssColor>('#E5AA20');
+  const [brandTwoError, setBrandTwoError] = useState<colorErrorType>('none');
+  const [brandTwoTheme, setBrandTwoTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
   const [brandThreeColor, setBrandThreeColor] = useState<CssColor>('#1E98F5');
-  const [themeMode, setThemeMode] = useState<modeType>('light');
+  const [brandThreeError, setBrandThreeError] =
+    useState<colorErrorType>('none');
+  const [brandThreeTheme, setBrandThreeTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+  const [themeMode, setThemeMode] = useState<'light' | 'dark' | 'contrast'>(
+    'light',
+  );
   const [previewMode, setPreviewMode] = useState<previewModeType>('components');
 
   useEffect(() => {
     setContrastOneColor('#000000', 'first', true);
     mapTokens();
+    updateColor(accentColor, setAccentColor, setAccentTheme, setAccentError);
+    updateColor(
+      neutralColor,
+      setNeutralColor,
+      setNeutralTheme,
+      setNeutralError,
+    );
+    updateColor(
+      brandOneColor,
+      setBrandOneColor,
+      setBrandOneTheme,
+      setBrandOneError,
+    );
+    updateColor(
+      brandTwoColor,
+      setBrandTwoColor,
+      setBrandTwoTheme,
+      setBrandTwoError,
+    );
+    updateColor(
+      brandThreeColor,
+      setBrandThreeColor,
+      setBrandThreeTheme,
+      setBrandThreeError,
+    );
   }, []);
 
   // Sticky Menu Area
@@ -50,15 +127,15 @@ export default function Home() {
     };
   });
 
-  const generateJsonForColor = (colorArray: []) => {
-    const obj = {};
+  const generateJsonForColor = (colorArray: CssColor[]) => {
+    const obj: { [key: string]: { value: string; type: string } } = {};
     for (let i = 0; i < colorArray.length; i++) {
-      if (i === 13) {
+      if (i === 13 && colorArray.length >= 14) {
         obj['contrast-1'] = {
           value: colorArray[i],
           type: 'color',
         };
-      } else if (i === 14) {
+      } else if (i === 14 && colorArray.length >= 15) {
         obj['contrast-2'] = {
           value: colorArray[i],
           type: 'color',
@@ -71,11 +148,11 @@ export default function Home() {
   };
 
   const copyThemeToClipboard = (theme: modeType) => {
-    const accentColors = generateColorScale(accentColor, theme, 'flat');
-    const neutralColors = generateColorScale(greyColor, theme, 'flat');
-    const brand1Colors = generateColorScale(brandOneColor, theme, 'flat');
-    const brand2Colors = generateColorScale(brandTwoColor, theme, 'flat');
-    const brand3Colors = generateColorScale(brandThreeColor, theme, 'flat');
+    const accentColors = generateColorScale(accentColor, theme);
+    const neutralColors = generateColorScale(neutralColor, theme);
+    const brand1Colors = generateColorScale(brandOneColor, theme);
+    const brand2Colors = generateColorScale(brandTwoColor, theme);
+    const brand3Colors = generateColorScale(brandThreeColor, theme);
 
     const obj = {
       theme: {
@@ -88,17 +165,16 @@ export default function Home() {
     };
 
     const json = JSON.stringify(obj, null, '\t');
-    console.log(json);
-    navigator.clipboard.writeText(json);
+    void navigator.clipboard.writeText(json);
   };
 
   const copyGlobalsToClipboard = (theme: modeType) => {
-    const blueColors = generateColorScale('#0A71C0', theme, 'flat');
-    const greenColors = generateColorScale('#07991A', theme, 'flat');
-    const orangeColors = generateColorScale('#D46223', theme, 'flat');
-    const purpleColors = generateColorScale('#663299', theme, 'flat');
-    const redColors = generateColorScale('#E51C1D', theme, 'flat');
-    const yellowColors = generateColorScale('#EABF28', theme, 'flat');
+    const blueColors = generateColorScale('#0A71C0', theme);
+    const greenColors = generateColorScale('#07991A', theme);
+    const orangeColors = generateColorScale('#D46223', theme);
+    const purpleColors = generateColorScale('#663299', theme);
+    const redColors = generateColorScale('#E51C1D', theme);
+    const yellowColors = generateColorScale('#EABF28', theme);
 
     const obj = {
       global: {
@@ -112,16 +188,46 @@ export default function Home() {
     };
 
     const json = JSON.stringify(obj, null, '\t');
-    console.log(json);
-    navigator.clipboard.writeText(json);
+    void navigator.clipboard.writeText(json);
   };
 
-  const isSticky = (e) => {
+  const isSticky = () => {
     const header = document.querySelector('.pickers');
     const scrollTop = window.scrollY;
-    scrollTop >= 250
-      ? header.classList.add('is-sticky')
-      : header.classList.remove('is-sticky');
+    if (header) {
+      scrollTop >= 250
+        ? header.classList.add('is-sticky')
+        : header.classList.remove('is-sticky');
+    }
+  };
+
+  const updateColor = (
+    color: CssColor,
+    colorSetter: React.Dispatch<React.SetStateAction<CssColor>>,
+    colorThemeSetter: React.Dispatch<React.SetStateAction<themeType>>,
+    colorErrorSetter: React.Dispatch<React.SetStateAction<colorErrorType>>,
+  ) => {
+    const scale = generateColorTheme(color as CssColor);
+    colorSetter(color as SetStateAction<CssColor>);
+    colorThemeSetter(scale);
+    colorErrorSetter(getColorError(scale.light));
+  };
+
+  const getColorError = (scale: CssColor[]) => {
+    const contrast = areColorsContrasting(
+      scale[8] as CssColor,
+      '#ffffff',
+      'decorative',
+    );
+    const textCanBeUsed = canTextBeUsedOnColors(scale[8], scale[10]);
+
+    if (!contrast && textCanBeUsed) {
+      return 'decorative';
+    } else if (contrast && !textCanBeUsed) {
+      return 'interaction';
+    }
+
+    return 'none';
   };
 
   return (
@@ -135,38 +241,68 @@ export default function Home() {
           <div className={classes.pickersContainer}>
             <div className={cn(classes.pickers, 'pickers')}>
               <ColorPicker
+                colorError={accentError}
                 label='Accent'
                 defaultColor='#0062BA'
-                onColorChanged={(e: any) => {
-                  setAccentColor(e);
+                onColorChanged={(color) => {
+                  updateColor(
+                    color,
+                    setAccentColor,
+                    setAccentTheme,
+                    setAccentError,
+                  );
                 }}
               />
               <ColorPicker
+                colorError={neutralError}
                 label='Neutral'
                 defaultColor='#1E2B3C'
-                onColorChanged={(e: any) => {
-                  setGreyColor(e);
+                onColorChanged={(color) => {
+                  updateColor(
+                    color,
+                    setNeutralColor,
+                    setNeutralTheme,
+                    setNeutralError,
+                  );
                 }}
               />
               <ColorPicker
+                colorError={brandOneError}
                 label='Brand 1'
                 defaultColor='#F45F63'
-                onColorChanged={(e: any) => {
-                  setBrandOneColor(e);
+                onColorChanged={(color) => {
+                  updateColor(
+                    color,
+                    setBrandOneColor,
+                    setBrandOneTheme,
+                    setBrandOneError,
+                  );
                 }}
               />
               <ColorPicker
+                colorError={brandTwoError}
                 label='Brand 2'
                 defaultColor='#E5AA20'
-                onColorChanged={(e: any) => {
-                  setBrandTwoColor(e);
+                onColorChanged={(color) => {
+                  updateColor(
+                    color,
+                    setBrandTwoColor,
+                    setBrandTwoTheme,
+                    setBrandTwoError,
+                  );
                 }}
               />
               <ColorPicker
+                colorError={brandThreeError}
                 label='Brand 3'
                 defaultColor='#1E98F5'
-                onColorChanged={(e: any) => {
-                  setBrandThreeColor(e);
+                onColorChanged={(color) => {
+                  updateColor(
+                    color,
+                    setBrandThreeColor,
+                    setBrandThreeTheme,
+                    setBrandThreeError,
+                  );
                 }}
               />
               <div className={classes.dropdown}>
@@ -228,7 +364,7 @@ export default function Home() {
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Accent</div>
               <Scale
-                color={accentColor}
+                colorScale={accentTheme[themeMode]}
                 showHeader
                 showColorMeta={false}
                 themeMode={themeMode}
@@ -238,7 +374,7 @@ export default function Home() {
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Neutral</div>
               <Scale
-                color={greyColor}
+                colorScale={neutralTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
                 type='grey'
@@ -248,7 +384,7 @@ export default function Home() {
             <div className={cn(classes.row, classes.brandRow)}>
               <div className={classes.scaleLabel}>Brand 1</div>
               <Scale
-                color={brandOneColor}
+                colorScale={brandOneTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
                 type='brandOne'
@@ -257,7 +393,7 @@ export default function Home() {
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Brand 2</div>
               <Scale
-                color={brandTwoColor}
+                colorScale={brandTwoTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
                 type='brandTwo'
@@ -267,7 +403,7 @@ export default function Home() {
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Brand 3</div>
               <Scale
-                color={brandThreeColor}
+                colorScale={brandThreeTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
                 type='brandThree'
@@ -277,23 +413,23 @@ export default function Home() {
 
           <div className={classes.toolbar}>
             <div className={classes.menu}>
-              <div
+              <button
                 className={cn(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === 'components',
                 })}
                 onClick={() => setPreviewMode('components')}
               >
                 Komponenter
-              </div>
-              <div
+              </button>
+              <button
                 className={cn(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === 'dashboard',
                 })}
                 onClick={() => setPreviewMode('dashboard')}
               >
                 Dashboard
-              </div>
-              <div
+              </button>
+              <button
                 className={cn(
                   classes.menuItem,
                   {
@@ -303,8 +439,8 @@ export default function Home() {
                 )}
               >
                 Landingsside
-              </div>
-              <div
+              </button>
+              <button
                 className={cn(
                   classes.menuItem,
                   {
@@ -314,8 +450,8 @@ export default function Home() {
                 )}
               >
                 Skjemaer
-              </div>
-              <div
+              </button>
+              <button
                 className={cn(
                   classes.menuItem,
                   {
@@ -325,7 +461,7 @@ export default function Home() {
                 )}
               >
                 Autentisering
-              </div>
+              </button>
             </div>
             <div className={classes.toggles}>
               <button
@@ -337,7 +473,7 @@ export default function Home() {
                 <img
                   src='img/light-dot.svg'
                   alt=''
-                />{' '}
+                />
                 Lys
               </button>
               <button
@@ -349,7 +485,7 @@ export default function Home() {
                 <img
                   src='img/dark-dot.svg'
                   alt=''
-                />{' '}
+                />
                 Mørk
               </button>
               <button
@@ -361,21 +497,23 @@ export default function Home() {
                 <img
                   src='img/contrast-dot.svg'
                   alt=''
-                />{' '}
+                />
                 Kontrast
               </button>
             </div>
           </div>
 
           <div
-            className={cn(classes.preview, classes[themeMode])}
+            className={cn(
+              classes.preview,
+              classes[themeMode as keyof typeof classes],
+            )}
             id='preview'
           >
             {previewMode === 'components' && <Components />}
             {previewMode === 'dashboard' && <Dashboard />}
             {previewMode === 'landing' && <Landing />}
           </div>
-          {/* <PreviewBox /> */}
         </Container>
       </main>
     </div>
