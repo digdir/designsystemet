@@ -35,7 +35,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         className={cl(
           'fds-radio',
           `fds-radio--${size}`,
-          inputProps.disabled && `fds-radio--disabled`,
           hasError && `fds-radio--error`,
           readOnly && `fds-radio--readonly`,
           className,
@@ -44,6 +43,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       >
         <input
           className={'fds-radio__input'}
+          disabled={inputProps.disabled}
           ref={ref}
           {...omit(['size', 'error'], rest)}
           {...inputProps}
