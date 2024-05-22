@@ -1,7 +1,7 @@
 import { PaletteIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
-import { Meta, ResponsiveIframe, Image } from '@components';
+import { Meta, Image } from '@components';
 
 <Meta
   title='Sett opp ditt eget fargesystem'
@@ -13,7 +13,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Sett opp ditt eget fargesystem',
-      date: '2. mai 2024',
+      date: '22. mai 2024',
       icon: <PaletteIcon />,
       color: 'blue',
     }}
@@ -32,7 +32,7 @@ En profilveileder inneholder ofte kun et sett med primærfarger og sekundærfarg
 '
 />
 
-Det ligger mye tankearbeid i hvordan fargesystemet skal struktureres for at det skal kunne ivareta kontrastkrav, støtte multibranding og ulike modes (darkmode, contrastmode, etc.). Vi har latt oss inspirere av [USWDS sine "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+Fargesystemet er strukturert for å støtte multibranding og ulike modes (darkmode, contrastmode, etc.), og samtidig ivareta kontrastkrav. Vi har latt oss inspirere av [USWDS sine "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
 
 <Image
   src='/img/fargesystem.png'
