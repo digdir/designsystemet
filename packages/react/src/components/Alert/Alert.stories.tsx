@@ -21,7 +21,7 @@ export const Preview: Story = (args) => <Alert {...args}></Alert>;
 Preview.args = {
   severity: 'info',
   elevated: false,
-  size: 'medium',
+  size: 'md',
   children: 'En beskjed det er viktig at brukeren ser',
 };
 
@@ -32,7 +32,7 @@ export const VariantInfo: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Har du husket å bestille passtime?
@@ -51,7 +51,7 @@ export const VariantSuccess: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Gratulerer! Du kan nå starte selskapet ditt
@@ -70,7 +70,7 @@ export const VariantWarning: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Vi har tekniske problemer
@@ -89,7 +89,7 @@ export const VariantDanger: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Det har skjedd en feil
@@ -106,7 +106,7 @@ export const MedHeading: Story = (args) => (
   <Alert {...args}>
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Har du husket å bestille passtime?
@@ -134,7 +134,7 @@ export const MedLenke: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Søknadsfristen går ut om 3 dager
@@ -163,7 +163,7 @@ export const UtenAria: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Nedetid
@@ -182,7 +182,7 @@ export const MedAria: Story = (args) => (
   >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
       role='alert'
     >

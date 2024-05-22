@@ -29,15 +29,7 @@ export const CheckboxGroup = forwardRef<
   CheckboxGroupProps
 >(
   (
-    {
-      onChange,
-      children,
-      value,
-      readOnly,
-      defaultValue,
-      size = 'medium',
-      ...rest
-    },
+    { onChange, children, value, readOnly, defaultValue, size = 'md', ...rest },
     ref,
   ) => {
     const [internalValue, setInternalValue] = useState<string[]>(
