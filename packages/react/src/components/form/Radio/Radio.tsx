@@ -22,7 +22,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     inputProps,
     descriptionId,
     hasError,
-    size = 'medium',
+    size = 'md',
     readOnly,
   } = useRadio(props);
 
