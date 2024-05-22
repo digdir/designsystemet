@@ -50,7 +50,7 @@ export const Preview: Story = (args) => {
 };
 
 Preview.args = {
-  size: 'medium',
+  size: 'md',
   zebra: false,
   stickyHeader: false,
   border: false,
@@ -231,7 +231,7 @@ export const WithFormElements: Story = (args) => {
               onChange={handleHeaderCheckboxChange}
               indeterminate={interderminate}
               value='all'
-              size='small'
+              size='sm'
             />
           </TableHeaderCell>
           <TableHeaderCell>Header 1</TableHeaderCell>
@@ -247,13 +247,13 @@ export const WithFormElements: Story = (args) => {
                 checked={!!checkedItems[row]}
                 value={row.toString()}
                 onChange={(event) => handleCheckboxChange(event, row)}
-                size='small'
+                size='sm'
               />
             </TableCell>
             <TableCell>1</TableCell>
             <TableCell>2</TableCell>
             <TableCell>
-              <Textfield size='small' />
+              <Textfield size='sm' />
             </TableCell>
           </TableRow>
         ))}

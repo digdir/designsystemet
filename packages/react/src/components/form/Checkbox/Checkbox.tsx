@@ -21,71 +21,79 @@ export type CheckboxProps = {
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
-  const { children, description, className, style, ...rest } = props;
-  const { inputProps, descriptionId, hasError, size = 'medium', readOnly } = useCheckbox(props);
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  (props, ref) => {
+    const { children, description, className, style, ...rest } = props;
+    const {
+      inputProps,
+      descriptionId,
+      hasError,
+      size = 'md',
+      readOnly,
+    } = useCheckbox(props);
 
-  const inputRef = useMergeRefs<HTMLInputElement>([
-    ref,
-    (el) => {
-      if (el) {
-        el.indeterminate = rest.indeterminate ?? false;
-      }
-    },
-  ]);
+    const inputRef = useMergeRefs<HTMLInputElement>([
+      ref,
+      (el) => {
+        if (el) {
+          el.indeterminate = rest.indeterminate ?? false;
+        }
+      },
+    ]);
 
-  return (
-    <Paragraph
-      asChild
-      size={size}
-    >
-      <div
-        className={cl(
-          'fds-checkbox',
-          `fds-checkbox--${size}`,
-          inputProps.disabled && `fds-checkbox--disabled`,
-          hasError && `fds-checkbox--error`,
-          readOnly && `fds-checkbox--readonly`,
-          className,
-        )}
-        style={style}
+    return (
+      <Paragraph
+        asChild
+        size={size}
       >
-        <input
-          className={`fds-checkbox__input`}
-          ref={inputRef}
-          {...omit(['size', 'error', 'indeterminate'], rest)}
-          {...inputProps}
-          type='checkbox'
-          aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
-        />
-        {children && (
-          <>
-            <Label
-              className={`fds-checkbox__label`}
-              htmlFor={inputProps.id}
-              size={size}
-              weight='regular'
-            >
-              <span>{children}</span>
-            </Label>
-            {description && (
-              <Paragraph
-                asChild
+        <div
+          className={cl(
+            'fds-checkbox',
+            `fds-checkbox--${size}`,
+            inputProps.disabled && `fds-checkbox--disabled`,
+            hasError && `fds-checkbox--error`,
+            readOnly && `fds-checkbox--readonly`,
+            className,
+          )}
+          style={style}
+        >
+          <input
+            className={`fds-checkbox__input`}
+            ref={inputRef}
+            {...omit(['size', 'error', 'indeterminate'], rest)}
+            {...inputProps}
+            type='checkbox'
+            aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
+          />
+          {children && (
+            <>
+              <Label
+                className={`fds-checkbox__label`}
+                htmlFor={inputProps.id}
                 size={size}
+                weight='regular'
               >
-                <div
-                  id={descriptionId}
-                  className={`fds-checkbox__description`}
+                <span>{children}</span>
+              </Label>
+              {description && (
+                <Paragraph
+                  asChild
+                  size={size}
                 >
-                  {description}
-                </div>
-              </Paragraph>
-            )}
-          </>
-        )}
-      </div>
-    </Paragraph>
-  );
-});
+                  <div
+                    id={descriptionId}
+                    className={`fds-checkbox__description`}
+                  >
+                    {description}
+                  </div>
+                </Paragraph>
+              )}
+            </>
+          )}
+        </div>
+      </Paragraph>
+    );
+  },
+);
 
 Checkbox.displayName = 'Checkbox';

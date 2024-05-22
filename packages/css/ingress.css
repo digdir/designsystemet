@@ -10,28 +10,28 @@
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .fds-ingress--medium {
+  .fds-ingress--md {
     --fdsc-bottom-spacing: var(--fds-spacing-5);
 
     font: var(--fds-typography-ingress-medium);
     font-family: inherit;
   }
 
-  .fds-ingress--large {
+  .fds-ingress--lg {
     --fdsc-bottom-spacing: var(--fds-spacing-6);
 
     font: var(--fds-typography-ingress-large);
     font-family: inherit;
   }
 
-  .fds-ingress--small {
+  .fds-ingress--sm {
     --fdsc-bottom-spacing: var(--fds-spacing-7);
 
     font: var(--fds-typography-ingress-small);
     font-family: inherit;
   }
 
-  .fds-ingress--xsmall {
+  .fds-ingress--xs {
     --fdsc-bottom-spacing: var(--fds-spacing-8);
 
     font: var(--fds-typography-ingress-xsmall);

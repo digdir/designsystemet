@@ -14,11 +14,10 @@ import {
   FloatingFocusManager,
   FloatingPortal,
 } from '@floating-ui/react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { useIsomorphicLayoutEffect } from '../../hooks';
 
-import classes from './DropdownMenu.module.css';
 import { DropdownMenuContext } from './DropdownMenu';
 
 const GAP = 4;
@@ -106,7 +105,11 @@ export const DropdownMenuContent = forwardRef<
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              className={cl(classes.dropdown, classes[size], className)}
+              className={cl(
+                'fds-dropdownmenu',
+                `fds-dropdownmenu--${size}`,
+                className,
+              )}
               {...rest}
             >
               {children}

@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
@@ -36,7 +36,7 @@ export const AccordionHeader = forwardRef<
   return (
     <Heading
       ref={ref}
-      size='xsmall'
+      size='xs'
       level={level}
       className={cl('fds-accordion__header', className)}
       {...rest}
@@ -55,7 +55,7 @@ export const AccordionHeader = forwardRef<
         />
         <Paragraph
           asChild
-          size='small'
+          size='sm'
         >
           <span>{children}</span>
         </Paragraph>

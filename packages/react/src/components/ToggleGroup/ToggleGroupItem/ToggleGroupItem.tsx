@@ -1,11 +1,10 @@
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
 import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
 
-import classes from './ToggleGroupItem.module.css';
 import { useToggleGroupItem } from './useToggleGroupitem';
 
 export type ToggleGroupItemProps = {
@@ -18,14 +17,14 @@ export const ToggleGroupItem = forwardRef<
   ToggleGroupItemProps
 >((props, ref) => {
   const { children, icon, className, ...rest } = props;
-  const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
+  const { active, size = 'md', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
       asChild
       value={rest.value}
     >
       <Button
-        className={cl(classes.toggleGroupItem, className)}
+        className={cl('fds-togglegroup__item', className)}
         icon={icon}
         color='first'
         variant={active ? 'primary' : 'tertiary'}

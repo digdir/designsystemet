@@ -1,11 +1,9 @@
 import type { ReactNode } from 'react';
 import { forwardRef, createContext, useId } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
-
-import classes from './Group.module.css';
 
 export type RadioGroupContextProps = {
   name?: string;
@@ -45,7 +43,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       readOnly,
       defaultValue,
       name,
-      size = 'medium',
+      size = 'md',
       required,
       inline,
       className,
@@ -72,7 +70,14 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
             required,
           }}
         >
-          <div className={cl(inline && classes.inline)}>{children}</div>
+          <div
+            className={cl(
+              'fds-radio-group',
+              inline && 'fds-radio-group--horizontal',
+            )}
+          >
+            {children}
+          </div>
         </RadioGroupContext.Provider>
       </Fieldset>
     );

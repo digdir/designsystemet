@@ -15,13 +15,12 @@ import {
   useMergeRefs,
   useRole,
 } from '@floating-ui/react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '../Typography';
 import { useIsomorphicLayoutEffect } from '../../hooks';
 
 import { PopoverContext } from './Popover';
-import classes from './Popover.module.css';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -131,9 +130,9 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
               <div
                 ref={floatingEl}
                 className={cl(
-                  classes.popover,
-                  classes[variant],
-                  classes[size],
+                  'fds-popover',
+                  `fds-popover--${variant}`,
+                  `fds-popover--${size}`,
                   className,
                 )}
                 data-placement={flPlacement}
@@ -149,7 +148,10 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
                 {children}
                 <div
                   ref={arrowRef}
-                  className={cl(classes.arrow, classes[arrowPlacement])}
+                  className={cl(
+                    'fds-popover__arrow',
+                    `fds-popover__arrow--${arrowPlacement}`,
+                  )}
                   style={{
                     height: ARROW_HEIGHT,
                     width: ARROW_HEIGHT,

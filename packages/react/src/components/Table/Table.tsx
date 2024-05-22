@@ -1,16 +1,18 @@
 import * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '../Typography';
+import { getSize } from '../../utilities/getSize';
 
-import classes from './Table.module.css';
+type OldTableSizes = 'small' | 'medium' | 'large';
 
 export type TableProps = {
   /**
    * The size of the table
-   * @default medium
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg' | OldTableSizes;
   /**
    * If true, the table will have zebra striping
    * @default false
@@ -32,7 +34,6 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   (
     {
       zebra = false,
-      size = 'medium',
       stickyHeader = false,
       border = false,
       className,
@@ -41,6 +42,8 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     },
     ref,
   ) => {
+    const size = getSize(rest.size || 'md') as TableProps['size'];
+
     return (
       <Paragraph
         asChild
@@ -49,11 +52,11 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
         <table
           ref={ref}
           className={cl(
-            classes[size],
-            zebra && classes.zebra,
-            stickyHeader && classes.stickyHeader,
-            border && classes.border,
-            classes.table,
+            'fds-table',
+            `fds-table--${size}`,
+            zebra && 'fds-table--zebra',
+            stickyHeader && 'fds-table--sticky-header',
+            border && 'fds-table--border',
             className,
           )}
           {...rest}

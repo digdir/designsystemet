@@ -1,12 +1,13 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import { Do, Dont, Stack } from '../../../../../docs-components';
+import { Do, Dont, Stack } from '@doc-components';
 
 import * as AlertStories from './Alert.stories';
 
 <Meta of={AlertStories} />
 
 # Alert
+
 Vi bruker `Alert` til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Alert er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig.
 
 <Primary />
@@ -73,17 +74,19 @@ Kan brukes når alerten skal fremheves mer fra bakgrunnen, for eksempel dersom d
 <Canvas of={AlertStories.MedShadow} />
 
 ## Retningslinjer for alert
+
 Alert har flere varianter, som brukes til fire ulike budskap: Informasjon, advarsler, suksess og feilmelding. Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
 
 Pass på at alert har samme utseende og formspråk i alle tjenester og produkter. Denne komponenten skal være mulig å kjenne igjen over alt, så vi skal ikke justere den
 
 Passer til å
+
 - gi korte og informative varsler
 
 Passer ikke til å
+
 - gi varsler om systemfeil eller lignende
 - validere enkelte skjemaelement, bruk heller komponentens egen feilmelding
-
 
 ### Størrelser
 
@@ -93,9 +96,9 @@ Dersom du sender inn tekst ved bruk av komponenter kan du følge tabellen under 
 
 | Alert Størrelse | Heading størrelse | Paragraph størrelse |
 | --------------- | ----------------- | ------------------- |
-| small           | xxsmall           | small               |
-| medium          | xsmall            | medium              |
-| large           | small             | large               |
+| sm              | 2xs               | sm                  |
+| md              | xs                | md                  |
+| lg              | sm                | lg                  |
 
 ### Ikke lag andre versjoner
 
@@ -118,15 +121,16 @@ Det er viktig at Alerts har samme utseende og formspråk på tvers av produktene
 <br />
 
 ## Tekst i komponenten
-Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå. 
 
-Vi kan velge om vi vil ha med en overskrift i alert. Hvis meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
+Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
+
+Vi kan velge om vi vil ha med en overskrift i alert. Hvis meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste.
 
 Det må være tydelig hvem som gjør hva. Tenk på teksten som en samtale med brukeren, bruk ord som «vi» og «du».
 
 Hvis meldingen er knyttet til en bestemt handling, for eksempel svar på et spørsmål, bør teksten gjenta nøkkelord fra ledeteksten.
 
-Det er spesielt viktig at teksten i varsler forteller om det er noe brukene må eller kan gjøre for å komme videre med oppgaven sin. 
+Det er spesielt viktig at teksten i varsler forteller om det er noe brukene må eller kan gjøre for å komme videre med oppgaven sin.
 
 Her er en liste med hvilken type informasjon en varsel bør inneholde:
 
@@ -141,7 +145,8 @@ Her er en liste med hvilken type informasjon en varsel bør inneholde:
 - Hjelp dem å fikse problemet selv
   - Eksempel: "Vennligst prøv igjen."
     <br />
-<br />
+    <br />
+
 ## Tilgjengelighet
 
 ### Alternativtekst

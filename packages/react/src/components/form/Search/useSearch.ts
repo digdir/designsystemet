@@ -4,26 +4,16 @@ import { useContext } from 'react';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 import { FieldsetContext } from '../Fieldset/FieldsetContext';
+import { getSize } from '../../../utilities/getSize';
 
 import type { SearchProps } from './Search';
 
-type UseSearch = (props: SearchProps) => {
-  size?: 'small' | 'medium' | 'large';
-} & Omit<FormField, 'inputProps' | 'size'> & {
-    inputProps: Pick<
-      InputHTMLAttributes<HTMLInputElement>,
-      'readOnly' | 'name' | 'required' | 'onClick' | 'onChange'
-    > &
-      FormField['inputProps'];
-  };
-
-const sizeMap: Record<
-  NonNullable<FormField['size']>,
-  'small' | 'medium' | 'large'
-> = {
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
+type UseSearch = (props: SearchProps) => Omit<FormField, 'inputProps'> & {
+  inputProps: Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    'readOnly' | 'name' | 'required' | 'onClick' | 'onChange'
+  > &
+    FormField['inputProps'];
 };
 
 /** Handles props for `Search` in context with `Fieldset` */
@@ -31,12 +21,13 @@ export const useSearch: UseSearch = (props) => {
   const fieldset = useContext(FieldsetContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'search');
 
-  const fieldSetSize = fieldset?.size ? sizeMap[fieldset?.size] : null;
+  const size =
+    fieldset?.size ?? (getSize(props.size || 'md') as FormField['size']);
 
   return {
     ...rest,
     readOnly,
-    size: fieldSetSize ?? props.size,
+    size,
     inputProps: {
       ...inputProps,
       type: 'search',

@@ -1,0 +1,11 @@
+.bar {
+  margin-top: 24px;
+}
+
+.bar svg g:nth-child(7) path {
+  fill: var(--brandThree6);
+}
+
+.bar svg g:nth-child(8) path {
+  fill: var(--brandOne6);
+}

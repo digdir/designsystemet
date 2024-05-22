@@ -121,18 +121,20 @@ describe('ToggleGroup', () => {
   });
 
   test('if we pass a name, we should have a hidden input with that name', () => {
-    render(
-      <ToggleGroup name='my-name'>
+    const name = 'my-name';
+    const { container } = render(
+      <ToggleGroup name={name}>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
 
-    const input = document.querySelector('input[type="hidden"]');
-    expect(input).toHaveAttribute('name', 'my-name');
+    const input = container.querySelector(`input[name="${name}"]`);
+    expect(input).toBeDefined();
   });
 
   test('if we pass a name, we should have a hidden input with that name and value', () => {
-    render(
+    const name = 'my-name';
+    const { container } = render(
       <ToggleGroup
         name='my-name'
         defaultValue='test'
@@ -141,7 +143,7 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const input = document.querySelector('input[type="hidden"]');
+    const input = container.querySelector(`input[name="${name}"]`);
     expect(input).toHaveAttribute('value', 'test');
   });
 

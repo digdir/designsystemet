@@ -1,4 +1,3 @@
-import classes from '../Combobox.module.css';
 import { ErrorMessage } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../useFormField';
@@ -16,7 +15,7 @@ export const ComboboxError = ({
 }: ComboboxErrorProps) => {
   return (
     <div
-      className={classes.errorMessage}
+      className={'fds-combobox__error-message'}
       id={formFieldProps.errorId}
       aria-live='polite'
       aria-relevant='additions removals'

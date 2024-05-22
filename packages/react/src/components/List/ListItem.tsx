@@ -1,9 +1,7 @@
 import { forwardRef } from 'react';
 import type { LiHTMLAttributes } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
-
-import classes from './List.module.css';
 
 export type ListItemProps = {
   /**
@@ -19,7 +17,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
 
     return (
       <Component
-        className={cl(classes.listItem, className)}
+        className={cl('fds-list__item', className)}
         {...rest}
         ref={ref}
       />

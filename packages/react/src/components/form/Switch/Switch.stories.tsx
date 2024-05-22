@@ -16,7 +16,7 @@ export const Preview: Story = {
     children: 'Switch',
     disabled: false,
     readOnly: false,
-    size: 'medium',
+    size: 'md',
     position: 'left',
     description: '',
   },

@@ -5,21 +5,20 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/*",
-    "docs-components/",
-    ".storybook/"
+    "apps/*"
   ],
   "scripts": {
     "test": "vitest",
-    "storybook": "storybook dev -p 6006",
-    "storybook:clean": "storybook dev -p 6006 --no-manager-cache",
+    "storybook": "storybook dev -p 6006 --config-dir ./apps/storybook",
+    "storybook:clean": "storybook dev -p 6006 --no-manager-cache --config-dir ./apps/storybook",
     "storefront": "yarn workspace storefront dev",
+    "theme": "yarn workspace theme dev",
     "devsite": "yarn workspace dev dev",
     "build": "lerna run build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
     "build:tokens": "yarn workspace @digdir/designsystemet-cli build",
     "build:css": "yarn workspace @digdir/designsystemet-css build",
-    "build:storybook": "storybook build -o ./dist/storybook",
+    "build:storybook": "storybook build -o ./dist/storybook --config-dir ./apps/storybook",
     "build:storefront": "yarn workspace storefront building",
     "build:devsite": "yarn workspace dev building",
     "start:storefront": "yarn workspace storefront start",

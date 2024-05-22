@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
+import cat1 from '@assets/img/cats/Cat 1.jpg';
+import cat2 from '@assets/img/cats/Cat 2.jpg';
+import cat3 from '@assets/img/cats/Cat 3.jpg';
+import cat4 from '@assets/img/cats/Cat 4.jpg';
+import cat5 from '@assets/img/cats/Cat 5.jpg';
+import cat6 from '@assets/img/cats/Cat 6.jpg';
 
-import cat1 from '../../../../../assets/img/cats/Cat 1.jpg';
-import cat2 from '../../../../../assets/img/cats/Cat 2.jpg';
-import cat3 from '../../../../../assets/img/cats/Cat 3.jpg';
-import cat4 from '../../../../../assets/img/cats/Cat 4.jpg';
-import cat5 from '../../../../../assets/img/cats/Cat 5.jpg';
-import cat6 from '../../../../../assets/img/cats/Cat 6.jpg';
 import { Heading, Paragraph } from '../Typography';
 import { NativeSelect } from '../form/NativeSelect';
 import { Textfield } from '../form/Textfield';
@@ -29,14 +29,14 @@ export const Preview: Story = (args) => (
     style={{ width: '320px' }}
   >
     <Card.Header>
-      <Heading size='small'>Card Neutral</Heading>
+      <Heading size='sm'>Card Neutral</Heading>
     </Card.Header>
     <Card.Content>
       Most provide as with carried business are much better more the perfected
       designer. Writing slightly explain desk unable at supposedly about this
     </Card.Content>
     <Card.Footer>
-      <Paragraph size='small'>Footer text</Paragraph>
+      <Paragraph size='sm'>Footer text</Paragraph>
     </Card.Footer>
   </Card>
 );
@@ -71,7 +71,7 @@ export const LinkCard: Story = (args) => (
           />
         </Card.Media>
         <Card.Header>
-          <Heading size='small'>Link Card</Heading>
+          <Heading size='sm'>Link Card</Heading>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -79,7 +79,7 @@ export const LinkCard: Story = (args) => (
           about this
         </Card.Content>
         <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
+          <Paragraph size='sm'>Footer text</Paragraph>
         </Card.Footer>
       </a>
     </Card>
@@ -101,7 +101,7 @@ export const LinkCard: Story = (args) => (
           />
         </Card.Media>
         <Card.Header>
-          <Heading size='small'>Link Card</Heading>
+          <Heading size='sm'>Link Card</Heading>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -109,7 +109,7 @@ export const LinkCard: Story = (args) => (
           about this
         </Card.Content>
         <Card.Footer>
-          <Paragraph size='small'>Footer text</Paragraph>
+          <Paragraph size='sm'>Footer text</Paragraph>
         </Card.Footer>
       </a>
     </Card>
@@ -135,7 +135,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         <Card.Header>
           <Heading
             level={3}
-            size='small'
+            size='sm'
           >
             Card Neutral
           </Heading>
@@ -156,7 +156,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         <Card.Header>
           <Heading
             level={3}
-            size='small'
+            size='sm'
           >
             Card Subtle
           </Heading>
@@ -177,7 +177,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         <Card.Header>
           <Heading
             level={3}
-            size='small'
+            size='sm'
           >
             Card First
           </Heading>
@@ -198,7 +198,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         <Card.Header>
           <Heading
             level={3}
-            size='small'
+            size='sm'
           >
             Card Second
           </Heading>
@@ -219,7 +219,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         <Card.Header>
           <Heading
             level={3}
-            size='small'
+            size='sm'
           >
             Card Third
           </Heading>
@@ -252,7 +252,7 @@ export const Media: Story = () => (
       <Card.Header>
         <Heading
           level={3}
-          size='small'
+          size='sm'
         >
           Card Neutral
         </Heading>
@@ -267,7 +267,7 @@ export const Media: Story = () => (
       <Card.Header>
         <Heading
           level={3}
-          size='small'
+          size='sm'
         >
           Card Neutral
         </Heading>
@@ -304,7 +304,7 @@ export const Video: Story = () => (
     <Card.Header>
       <Heading
         level={3}
-        size='small'
+        size='sm'
       >
         <Link
           href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
@@ -339,14 +339,14 @@ export const Composed: Story = () => (
       >
         <Heading
           level={3}
-          size='xsmall'
+          size='xs'
         >
           Rolle 1
         </Heading>
         <Button
           variant='secondary'
           color='danger'
-          size='small'
+          size='sm'
         >
           <TrashFillIcon
             aria-hidden

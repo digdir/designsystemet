@@ -1,0 +1,173 @@
+@layer fds.chip {
+  /*
+  The class is unused. There is no root chip component?
+  .chip {
+    display: flex;
+  }
+  */
+
+  .fds-chip--button {
+    --fdsc-chip-height: var(--fds-sizing-7);
+    --fdsc-chip-padding: var(--fds-spacing-3);
+    --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle);
+    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+    --fdsc-chip-border: var(--fds-semantic-border-action-first-subtle);
+    --fdsc-chip-border-radius: var(--fds-border_radius-full);
+
+    background: var(--fdsc-chip-background);
+    padding: 0 var(--fdsc-chip-padding);
+    min-height: var(--fdsc-chip-height);
+    border-radius: var(--fdsc-chip-border-radius);
+    border: 1px solid var(--fdsc-chip-border);
+    color: var(--fdsc-chip-text-color);
+    text-decoration: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .fds-chip--button:disabled,
+  .fds-chip--button[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: var(--fds-opacity-disabled);
+  }
+
+  .fds-chip--button .fds-chip__label {
+    color: inherit;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: var(--fds-spacing-2);
+  }
+
+  .fds-chip--removable {
+    --fdsc-removable-background: var(--fds-semantic-surface-action-default);
+    --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
+    --fdsc-removable-chip-size: var(--fds-sizing-7);
+    --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
+    --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-1);
+    --fdsc-removable-chip-xmark-size: var(--fds-sizing-6);
+    --fdsc-removable-chip-xmark-wrapper-width: calc(var(--fdsc-removable-chip-xmark-size) + var(--fdsc-removable-chip-xmark-padding_right));
+
+    color: var(--fdsc-removable-text-color);
+    background: var(--fdsc-removable-background);
+    border: 0;
+    padding-right: var(--fds-spacing-2);
+    min-height: var(--fdsc-chip-height);
+  }
+
+  .fds-chip--removable.fds-chip--sm {
+    padding-right: var(--fds-spacing-1);
+  }
+
+  .fds-chip--removable.fds-chip--lg {
+    padding-right: var(--fds-spacing-2);
+  }
+
+  .fds-chip__x-mark {
+    color: var(--fdsc-removable-chip-xmark-color);
+    height: var(--fdsc-removable-chip-xmark-size);
+    width: var(--fdsc-removable-chip-xmark-size);
+  }
+
+  .fds-chip__x-mark .fds-chip__icon {
+    height: var(--fdsc-removable-chip-xmark-size);
+    width: var(--fdsc-removable-chip-xmark-size);
+  }
+
+  .fds-chip--spacing {
+    padding-left: var(--fds-spacing-2) !important;
+  }
+
+  .fds-chip--sm .fds-chip__checkmark-icon {
+    height: var(--fds-sizing-5);
+    width: auto;
+  }
+
+  .fds-chip--md .fds-chip__checkmark-icon {
+    height: 24px;
+    width: auto;
+  }
+
+  .fds-chip--lg .fds-chip__checkmark-icon {
+    height: 26px;
+    width: auto;
+  }
+
+  .fds-chip--group-container {
+    --fdsc-gap: var(--fds-spacing-2);
+
+    display: flex;
+    gap: var(--fdsc-gap);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .fds-chip--group-container.fds-chip--sm {
+    --fdsc-gap: var(--fds-spacing-2);
+  }
+
+  .fds-chip--group-container.fds-chip--md {
+    --fdsc-gap: var(--fds-spacing-2);
+  }
+
+  .fds-chip--group-container.fds-chip--lg {
+    --fdsc-gap: var(--fds-spacing-2);
+  }
+
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
+  @media (hover: hover) and (pointer: fine) {
+    .fds-chip--button:not(:disabled, [aria-disabled='true']):hover {
+      --fdsc-chip-background: var(--fds-semantic-surface-action-first-subtle-hover);
+      --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+      --fdsc-chip-border: var(--fds-semantic-border-action-first-subtle-hover);
+
+      cursor: pointer;
+    }
+
+    .fds-chip--button:not(:disabled, [aria-disabled='true']):is([aria-pressed='true']):hover {
+      --fdsc-chip-background: var(--fds-semantic-surface-action-first-no_fill-active);
+      --fdsc-chip-text-color: var(--fds-semantic-text-neutral-default);
+    }
+
+    .fds-chip--removable:not(:disabled, [aria-disabled='true']):hover,
+    .fds-chip--removable:not(:disabled, [aria-disabled='true']):focus {
+      --fdsc-removable-background: var(--fds-semantic-surface-action-hover);
+      --fdsc-removable-chip-xmark-color: var(--fds-semantic-text-neutral-on_inverted);
+    }
+  }
+
+  .fds-chip--button:is([aria-pressed='true']),
+  .fds-chip--button:not(:disabled, [aria-disabled='true']):active,
+  .fds-chip--removable:is([aria-pressed='true']),
+  .fds-chip--removable:not(:disabled, [aria-disabled='true']):active {
+    --fdsc-chip-background: var(--fds-semantic-surface-action-first-active);
+    --fdsc-chip-text-color: var(--fds-semantic-text-neutral-on_inverted);
+    --fdsc-chip-border: var(--fds-semantic-surface-action-first-active);
+    --fdsc-removable-background: var(--fds-semantic-surface-action-first-active);
+    --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
+  }
+
+  .fds-chip--sm {
+    --fdsc-chip-height: var(--fds-sizing-7);
+    --fdsc-chip-padding: var(--fds-spacing-3);
+    --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
+    --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-1);
+  }
+
+  .fds-chip--md {
+    --fdsc-chip-height: var(--fds-sizing-8);
+    --fdsc-chip-padding: var(--fds-spacing-3);
+    --fdsc-removable-chip-xmark-size: var(--fds-sizing-6);
+    --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-2);
+  }
+
+  .fds-chip--lg {
+    --fdsc-chip-height: var(--fds-sizing-9);
+    --fdsc-chip-padding: var(--fds-spacing-4);
+    --fdsc-removable-chip-xmark-size: var(--fds-sizing-7);
+    --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-3);
+  }
+}

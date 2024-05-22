@@ -17,7 +17,7 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
-    size: 'medium',
+    size: 'md',
     description: '',
     error: '',
   },
@@ -53,17 +53,17 @@ export const Adornments: StoryFn<typeof Textfield> = () => (
     <Textfield
       prefix='prefix'
       suffix='suffix'
-      size='small'
+      size='sm'
     />
     <Textfield
       prefix='prefix'
       suffix='suffix'
-      size='medium'
+      size='md'
     />
     <Textfield
       prefix='prefix'
       suffix='suffix'
-      size='large'
+      size='lg'
     />
   </div>
 );

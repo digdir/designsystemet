@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  max-width: 800px;
+  max-width: var(--media-max-width);
   margin: var(--fds-spacing-7) 0;
   border-radius: var(--fds-border_radius-medium);
   flex-wrap: wrap;
@@ -12,7 +12,7 @@
   margin: 0;
 }
 
-.boxShadow {
+.boxShadow .img {
   box-shadow: var(--fds-shadow-medium);
 }
 

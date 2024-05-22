@@ -1,0 +1,41 @@
+@layer fds.fieldset {
+  .fds-fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .fds-fieldset--spacing {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fds-spacing-2);
+  }
+
+  .fds-fieldset__description {
+    color: var(--fds-semantic-text-neutral-subtle);
+    font-weight: 400;
+  }
+
+  .fds-fieldset__legend {
+    display: contents;
+  }
+
+  .fds-fieldset--readonly .fds-fieldset__legend__content {
+    display: inline-flex;
+  }
+
+  .fds-fieldset--readonly .fds-fieldset__readonly__icon {
+    height: 1.2em;
+    width: 1.2em;
+  }
+
+  .fds-fieldset--disabled .fds-fieldset__legend,
+  .fds-fieldset--disabled .fds-fieldset__description {
+    color: var(--fds-semantic-border-neutral-subtle);
+  }
+
+  .fds-fieldset__error-message {
+    display: contents;
+  }
+}

@@ -59,7 +59,7 @@ export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
 
 Preview.args = {
   placement: 'bottom-end',
-  size: 'medium',
+  size: 'md',
 };
 
 Preview.decorators = [marginDecorator];

@@ -155,19 +155,19 @@
 
   /** Sizing */
 
-  .fds-checkbox--small {
+  .fds-checkbox--sm {
     --fds-checkbox-size: var(--fds-sizing-5);
 
     min-height: var(--fds-sizing-10);
   }
 
-  .fds-checkbox--medium {
+  .fds-checkbox--md {
     --fds-checkbox-size: var(--fds-sizing-6);
 
     min-height: var(--fds-sizing-11);
   }
 
-  .fds-checkbox--large {
+  .fds-checkbox--lg {
     --fds-checkbox-size: var(--fds-sizing-7);
 
     min-height: var(--fds-sizing-12);

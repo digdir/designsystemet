@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-
-import { Stack } from '../../../../../docs-components';
+/* @ts-expect-error #2307 */
+import { Stack } from '@doc-components';
 
 import type { TagProps } from '.';
 import { Tag } from '.';
@@ -22,12 +22,12 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'New',
-    size: 'medium',
+    size: 'md',
     color: 'neutral',
   },
 };
 
-const sizes: TagProps['size'][] = ['small', 'medium', 'large'];
+const sizes: TagProps['size'][] = ['sm', 'md', 'lg'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>

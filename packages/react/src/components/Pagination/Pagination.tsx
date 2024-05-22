@@ -1,24 +1,30 @@
 import { forwardRef } from 'react';
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
+
+import { getSize } from '../../utilities/getSize';
 
 import { PaginationRoot } from './PaginationRoot';
 import { PaginationContent } from './PaginationContent';
 import { PaginationItem } from './PaginationItem';
 import { PaginationButton } from './PaginationButton';
 import { PaginationEllipsis } from './PaginationEllipsis';
-import classes from './Pagination.module.css';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import { usePagination } from './usePagination';
+
+type OldPaginationSizes = 'small' | 'medium' | 'large';
 
 export type PaginationProps = {
   /** Sets the text label for the next page button */
   nextLabel: string;
   /** Sets the text label for the previous page button */
   previousLabel: string;
-  /** Sets the size of the component */
-  size?: 'small' | 'medium' | 'large';
+  /** Sets the size of the component
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldPaginationSizes;
   /** Sets how compact the component will be. If true, only 5 steps will show. */
   compact?: boolean;
   /** Hides the component's previous and next button labels */
@@ -36,9 +42,9 @@ export type PaginationProps = {
 } & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
 
 const iconSize = {
-  small: '1rem',
-  medium: '1.5rem',
-  large: '2rem',
+  sm: '1rem',
+  md: '1.5rem',
+  lg: '2rem',
 };
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
@@ -46,7 +52,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     {
       nextLabel = '',
       previousLabel = '',
-      size = 'medium',
       compact = false,
       hideLabels = false,
       currentPage = 1,
@@ -62,6 +67,9 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       currentPage,
       totalPages,
     });
+
+    const size = getSize(rest.size || 'md') as 'sm' | 'md' | 'lg';
+
     return (
       <PaginationRoot
         ref={ref}
@@ -73,7 +81,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              className={cl({ [classes.hidden]: !showPreviousPage })}
+              className={cl(!showPreviousPage && 'fds-pagination--hidden')}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
@@ -110,9 +118,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               onClick={() => {
                 onChange(currentPage + 1);
               }}
-              className={cl({
-                [classes.hidden]: !showNextPage,
-              })}
+              className={cl(!showNextPage && 'fds-pagination--hidden')}
             >
               {!hideLabels && nextLabel}
               <ChevronRightIcon

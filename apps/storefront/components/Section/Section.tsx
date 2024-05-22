@@ -26,7 +26,7 @@ const Section = ({
         <div className={classes.header}>
           {title && (
             <Heading
-              levle={2}
+              level={2}
               size='medium'
             >
               {title}

@@ -1,8 +1,6 @@
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-
-import classes from './Divider.module.css';
 
 export type DividerProps = {
   /**
@@ -16,7 +14,7 @@ export const Divider = forwardRef<HTMLHRElement, DividerProps>(
   ({ color = 'default', className, ...rest }, ref) => {
     return (
       <hr
-        className={cl(classes.divider, classes[color], className)}
+        className={cl('fds-divider', `fds-divider--${color}`, className)}
         ref={ref}
         {...rest}
       />

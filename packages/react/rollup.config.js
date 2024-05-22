@@ -1,9 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-
-import { generateScopedName } from './scripts/name';
 
 export default [
   {
@@ -30,17 +27,6 @@ export default [
       /@digdir\/design-system-tokens/,
       /@navikt\/aksel-icons/,
     ],
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      postcss({
-        // extract name is used in script in package.json
-        extract: 'react-css-modules.css',
-        modules: {
-          generateScopedName,
-        },
-      }),
-    ],
+    plugins: [peerDepsExternal(), resolve(), commonjs()],
   },
 ];

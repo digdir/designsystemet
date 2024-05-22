@@ -1,33 +1,35 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { useContext, forwardRef } from 'react';
-import cl from 'clsx';
 import { XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
-import classes from '../Chip.module.css';
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
+import { getSize } from '../../../utilities/getSize';
 
 export type RemovableChipProps = {
   /**
-   * Changes padding and font-sizes.
-   * @default medium
+   * Changes Chip size and gap between chips.
+   * @default 'md'
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ChipGroupContext['size'];
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
-  ({ children, size = 'medium', className, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     const group = useContext(ChipGroupContext);
+    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
 
     return (
       <button
         type='button'
         ref={ref}
         className={cl(
-          classes.chipButton,
           `fds-focus`,
-          classes[group?.size || size],
-          classes.removable,
+          `fds-chip--button`,
+          `fds-chip--removable`,
+          `fds-chip--${group?.size || size}`,
           className,
         )}
         {...rest}
@@ -37,13 +39,13 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           size={group?.size || size}
           variant='short'
         >
-          <span className={classes.label}>
+          <span className={`fds-chip__label`}>
             <span>{children}</span>
             <span
-              className={classes.xMark}
+              className={`fds-chip__x-mark`}
               aria-hidden
             >
-              <XMarkIcon className={classes.icon} />
+              <XMarkIcon className={`fds-chip__icon`} />
             </span>
           </span>
         </Paragraph>

@@ -1,6 +1,6 @@
 @layer fds.btn {
   .fds-btn {
-    --fds-btn-padding: 0 var(--fds-spacing-4);
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
 
     display: flex;
     align-items: center;
@@ -30,8 +30,8 @@
     opacity: var(--fds-opacity-disabled);
   }
 
-  .fds-btn--small {
-    --fds-btn-padding: 0 var(--fds-spacing-3);
+  .fds-btn--sm {
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-3);
 
     gap: var(--fds-sizing-1);
     font: var(--fds-typography-paragraph-short-small);
@@ -39,7 +39,7 @@
     min-height: var(--fds-sizing-10);
   }
 
-  .fds-btn--small::before {
+  .fds-btn--sm::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
     content: '';
   }
 
-  .fds-btn--small::after {
+  .fds-btn--sm::after {
     position: absolute;
     top: -5px;
     left: 0;
@@ -57,8 +57,8 @@
     content: '';
   }
 
-  .fds-btn--medium {
-    --fds-btn-padding: 0 var(--fds-spacing-4);
+  .fds-btn--md {
+    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
 
     gap: var(--fds-sizing-2);
     font: var(--fds-typography-paragraph-short-medium);
@@ -66,8 +66,8 @@
     min-height: var(--fds-sizing-12);
   }
 
-  .fds-btn--large {
-    --fds-btn-padding: 0 var(--fds-spacing-5);
+  .fds-btn--lg {
+    --fds-btn-padding: var(--fds-spacing-3) var(--fds-spacing-5);
 
     gap: var(--fds-sizing-2);
     font: var(--fds-typography-paragraph-short-large);

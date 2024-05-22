@@ -9,7 +9,7 @@ import { Modal } from '../../Modal';
 import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
-import ComboboxCustom from './Custom/Custom';
+import ComboboxCustom from './Custom';
 
 import { Combobox } from './index';
 
@@ -99,7 +99,7 @@ Preview.args = {
   hideClearButton: false,
   virtual: false,
   description: 'Velg et sted',
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -131,7 +131,7 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
 
 Multiple.args = {
   multiple: true,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -176,7 +176,7 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
 
 WithDescription.args = {
   multiple: false,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -447,7 +447,7 @@ export const Virtualized: StoryFn<typeof Combobox> = (args) => {
 Virtualized.args = {
   multiple: false,
   virtual: true,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -503,7 +503,7 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
 
 Loading.args = {
   multiple: false,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -594,6 +594,82 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
 
 CustomNewValue.args = {
   multiple: false,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
+};
+
+const items = Array.from({ length: 2000 }, (_, index) => ({
+  name: `Option ${index}`,
+  value: `option-${index}`,
+}));
+
+export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
+  return (
+    <Combobox {...args}>
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {items.map((item, index) => (
+        <Combobox.Option
+          key={index}
+          value={item.value}
+        >
+          {item.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
+  );
+};
+
+ThousandsOfOptions.args = {
+  virtual: true,
+};
+
+export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
+  const [selectedValues, setSelectedValues] = React.useState<string[]>([
+    'test1',
+    'test2',
+  ]);
+  const [values, setValues] = React.useState<string[]>(['test1', 'test2']);
+
+  const handleComboboxChange = (values: string[]) => {
+    setSelectedValues(values);
+  };
+
+  const changeAllValues = (deleteValues: boolean) =>
+    setValues(deleteValues ? [] : ['test1', 'test2']);
+
+  const changeSomeValues = (removeTest2: boolean) =>
+    setValues(removeTest2 ? ['test1'] : ['test1', 'test2']);
+
+  const currentSelectedValues = selectedValues.filter((id) =>
+    values.includes(id),
+  );
+
+  return (
+    <>
+      <Combobox
+        {...args}
+        multiple
+        value={currentSelectedValues}
+        onValueChange={handleComboboxChange}
+      >
+        {values.map((attachment) => {
+          return (
+            <Combobox.Option
+              key={attachment}
+              value={attachment}
+              description={attachment}
+              displayValue={attachment}
+            />
+          );
+        })}
+      </Combobox>
+      <Switch onChange={(event) => changeAllValues(event.target.checked)}>
+        Remove Values (Selected values remain unchanged as the combobox does not
+        update when options are empty.)
+      </Switch>
+      <Switch onChange={(event) => changeSomeValues(event.target.checked)}>
+        Remove test2 (this works)
+      </Switch>
+    </>
+  );
 };
