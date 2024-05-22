@@ -21,7 +21,6 @@ import {
   canTextBeUsedOnColors,
   generateColorScale,
   generateColorTheme,
-  setContrastOneColor,
 } from '@/utils/themeUtils';
 import type { modeType } from '@/types';
 import { areColorsContrasting } from '@/utils/ColorUtils';
@@ -95,7 +94,6 @@ export default function Home() {
   const [previewMode, setPreviewMode] = useState<previewModeType>('components');
 
   useEffect(() => {
-    setContrastOneColor('#000000', 'first', true);
     mapTokens();
     updateColor(accentColor, setAccentColor, setAccentTheme, setAccentError);
     updateColor(

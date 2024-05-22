@@ -120,9 +120,9 @@ export const generateColorTheme = (color: CssColor) => {
 };
 
 const calculateContrastOneColor = (baseColor: CssColor) => {
-  const contrastAgainstWhite = getContrastFromHex(baseColor, '#ffffff');
-  const contrastAgainstBlack = getContrastFromHex(baseColor, '#000000');
-  const lightness = contrastAgainstWhite >= contrastAgainstBlack ? 100 : 0;
+  const contrastWhite = getContrastFromHex(baseColor, '#ffffff');
+  const contrastBlack = getContrastFromHex(baseColor, '#000000');
+  const lightness = contrastWhite >= contrastBlack ? 100 : 0;
   const color = createColorWithLightness(baseColor, lightness);
 
   // if (!canTextBeUsedOnColors(baseDefaultColor, baseActiveColor)) {
@@ -135,16 +135,17 @@ const calculateContrastOneColor = (baseColor: CssColor) => {
 export const calculateContrastTwoColor = (color: CssColor) => {
   const contrastWhite = getContrastFromHex(color, '#ffffff');
   const contrastBlack = getContrastFromHex(color, '#000000');
-  const colorLightness = getLightnessFromHex(color);
+  const lightness = contrastWhite >= contrastBlack ? 100 : 0;
   const doubleALightnessModifier = 50;
+
   let targetLightness = 0;
   const contrastDirection =
     contrastWhite >= contrastBlack ? 'lighten' : 'darken';
 
   targetLightness =
     contrastDirection === 'lighten'
-      ? colorLightness + doubleALightnessModifier
-      : colorLightness - doubleALightnessModifier;
+      ? lightness + doubleALightnessModifier
+      : lightness - doubleALightnessModifier;
 
   return createColorWithLightness(color, targetLightness);
 };
