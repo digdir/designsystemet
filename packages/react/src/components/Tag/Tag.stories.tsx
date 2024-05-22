@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-
-import { Stack } from '../../../../../docs-components';
+/* @ts-expect-error #2307 */
+import { Stack } from '@doc-components';
 
 import type { TagProps } from '.';
 import { Tag } from '.';
