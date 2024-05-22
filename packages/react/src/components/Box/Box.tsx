@@ -3,12 +3,24 @@ import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
+import { getSize } from '../../utilities/getSize';
+
+type OldShadowSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+type OldBorderRadii =
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'xxlarge'
+  | 'xxxlarge'
+  | 'xxxxlarge';
+
 export type BoxProps = {
   /**
    * Shadow size of the box
    * @default undefined
    */
-  shadow?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  shadow?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | OldShadowSizes;
   /**
    * Border color of the box
    * @default undefined
@@ -19,14 +31,15 @@ export type BoxProps = {
    * @default undefined
    */
   borderRadius?:
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xlarge'
-    | 'xxlarge'
-    | 'xxxlarge'
-    | 'xxxxlarge'
-    | 'full';
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | 'full'
+    | OldBorderRadii;
   /**
    * Background color of the box
    * @default 'default'
@@ -54,14 +67,16 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
     ref,
   ) => {
     const Component = asChild ? Slot : 'div';
+    const shadowSize = shadow && getSize(shadow);
+    const borderRadiusSize = borderRadius && getSize(borderRadius);
 
     return (
       <Component
         ref={ref}
         className={cl(
-          shadow && `fds-box--${shadow}-shadow`,
+          shadowSize && `fds-box--${shadowSize}-shadow`,
           borderColor && `fds-box--${borderColor}-border-color`,
-          borderRadius && `fds-box--${borderRadius}-border-radius`,
+          borderRadiusSize && `fds-box--${borderRadiusSize}-border-radius`,
           `fds-box--${background}-background`,
           className,
         )}

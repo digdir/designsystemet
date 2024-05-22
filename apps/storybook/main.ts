@@ -1,4 +1,5 @@
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
+
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -9,11 +10,11 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
   },
   stories: [
-    '../packages/*.mdx',
-    '../packages/css/**/*.mdx',
-    '../packages/theme/**/*.mdx',
-    '../packages/react/**/*.mdx',
-    '../packages/react/**/*.stories.ts?(x)',
+    '../../packages/*.mdx',
+    '../../packages/css/**/*.mdx',
+    '../../packages/theme/**/*.mdx',
+    '../../packages/react/**/*.mdx',
+    '../../packages/react/**/*.stories.ts?(x)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
@@ -34,11 +35,28 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     '@chromatic-com/storybook',
   ],
-  staticDirs: ['../assets'],
+  core: {
+    builder: '@storybook/builder-vite', // 👈 The builder enabled here.
+  },
+  staticDirs: ['../../assets'],
   framework: getAbsolutePath('@storybook/react-vite'),
+  async viteFinal(config) {
+    // Merge custom configuration into the default config
+    const { mergeConfig } = await import('vite');
+
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@doc-components': resolve(__dirname, './docs-components'),
+        },
+      },
+    });
+  },
 };
 export default config;
 
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
+function getAbsolutePath(value: string): StorybookConfig['framework'] {
+  return dirname(
+    require.resolve(join(value, 'package.json')),
+  ) as StorybookConfig['framework'];
 }
