@@ -36,7 +36,7 @@ export const AccordionHeader = forwardRef<
   return (
     <Heading
       ref={ref}
-      size='xsmall'
+      size='xs'
       level={level}
       className={cl('fds-accordion__header', className)}
       {...rest}
@@ -55,7 +55,7 @@ export const AccordionHeader = forwardRef<
         />
         <Paragraph
           asChild
-          size='small'
+          size='sm'
         >
           <span>{children}</span>
         </Paragraph>

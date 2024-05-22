@@ -1,10 +1,10 @@
 @layer fds.list {
-  .fds-list--small {
+  .fds-list--sm {
     padding-left: var(--fds-spacing-4);
   }
 
-  .fds-list--medium,
-  .fds-list--large {
+  .fds-list--md,
+  .fds-list--lg {
     padding-left: var(--fds-spacing-6);
   }
 

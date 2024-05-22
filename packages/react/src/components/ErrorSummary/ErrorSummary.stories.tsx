@@ -32,7 +32,7 @@ export const Preview: Story = (args) => (
   </>
 );
 Preview.args = {
-  size: 'medium',
+  size: 'md',
 };
 
 export const WithForm: Story = () => (

@@ -29,7 +29,7 @@ Preview.args = {
   readOnly: false,
   disabled: false,
   error: '',
-  size: 'medium',
+  size: 'md',
 };
 
 export const Error: StoryFn<typeof Radio> = () => (

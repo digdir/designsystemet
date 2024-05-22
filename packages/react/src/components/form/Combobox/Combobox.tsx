@@ -404,8 +404,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
             >
               <Box
                 id={listId}
-                shadow='medium'
-                borderRadius='medium'
+                shadow='md'
+                borderRadius='md'
                 borderColor='default'
                 aria-labelledby={formFieldProps.inputProps.id}
                 aria-autocomplete='list'

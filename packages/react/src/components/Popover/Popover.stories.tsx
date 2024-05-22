@@ -28,7 +28,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 Preview.args = {
   placement: 'top',
   variant: 'default',
-  size: 'medium',
+  size: 'md',
   onOpenChange: () => {},
 };
 
@@ -95,7 +95,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
         <Popover.Content>
           <Paragraph>Er du sikker på at du vil slette?</Paragraph>
           <Button
-            size='small'
+            size='sm'
             color='danger'
             onClick={() => setOpen(false)}
             style={{
