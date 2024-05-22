@@ -136,32 +136,30 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           }),
         )}
         {internalOpen && (
-          <FloatingPortal>
-            <Container>
-              <div
-                ref={refs.setFloating}
-                style={{ ...floatingStyles, ...animationStyles, ...style }}
-                role='tooltip'
-                {...getFloatingProps({
-                  className: cl(
-                    'fds-tooltip',
-                    inverted && 'fds-tooltip--inverted',
-                    className,
-                  ),
-                  ref: mergedRef,
-                  ...rest,
-                })}
-              >
-                {content}
-                <FloatingArrow
-                  ref={arrowRef}
-                  context={context}
-                  className='fds-tooltip__arrow'
-                  height={ARROW_HEIGHT}
-                />
-              </div>
-            </Container>
-          </FloatingPortal>
+          <Container>
+            <div
+              ref={refs.setFloating}
+              style={{ ...floatingStyles, ...animationStyles, ...style }}
+              role='tooltip'
+              {...getFloatingProps({
+                className: cl(
+                  'fds-tooltip',
+                  inverted && 'fds-tooltip--inverted',
+                  className,
+                ),
+                ref: mergedRef,
+                ...rest,
+              })}
+            >
+              {content}
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                className='fds-tooltip__arrow'
+                height={ARROW_HEIGHT}
+              />
+            </div>
+          </Container>
         )}
       </>
     );
