@@ -7,7 +7,10 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
   resolve: {
     alias: {
-      '@doc-components': path.resolve(__dirname, './docs-components'),
+      '@doc-components': path.resolve(
+        __dirname,
+        './apps/storybook/docs-components',
+      ),
     },
   },
   plugins: [react()],

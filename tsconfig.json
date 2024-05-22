@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@doc-components/*": ["docs-components/*"]
+      "@doc-components/*": ["apps/storybook/docs-components/*"]
     },
     "target": "ES2022",
     "module": "ESNext",
