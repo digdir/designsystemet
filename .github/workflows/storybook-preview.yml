@@ -10,7 +10,7 @@ on:
     types: [opened, synchronize]
     paths:
       - 'packages/**'
-      - '.storybook/**'
+      - 'apps/storybook/**'
       - 'assets/**'
 jobs:
   Deploy-Preview:

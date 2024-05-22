@@ -1,16 +1,11 @@
-import * as React from 'react';
+import '../../packages/theme/brand/digdir/tokens.css';
+import '../../packages/css/index.css';
+
 import type { Preview } from '@storybook/react';
 
-import '../packages/theme/brand/digdir/tokens.css';
-import '../packages/css/index.css';
+import type { LinkProps } from '../../packages/react';
+import { Paragraph, Link, List, Table } from '../../packages/react';
 
-import {
-  Paragraph,
-  Link,
-  LinkProps,
-  List,
-  Table,
-} from '@digdir/designsystemet-react';
 import customTheme from './customTheme';
 
 const viewports = [320, 375, 576, 768, 992, 1200, 1440].map((width) => ({
@@ -30,7 +25,7 @@ const getPath = (href: string | undefined): string => {
 
   // if link starts with /, add current path to link
   if (href.startsWith('/')) {
-    const { origin = '' } = document?.location;
+    const { origin = '' } = document.location;
 
     return `${origin}/?path=${href}`;
   }
