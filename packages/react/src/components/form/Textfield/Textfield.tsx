@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { useState, useId, forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
