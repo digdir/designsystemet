@@ -78,7 +78,7 @@
     z-index: 1;
   }
 
-  .fds-search--disabled {
+  .fds-search:has(.fds-search__input:disabled) {
     opacity: var(--fds-opacity-disabled);
   }
 
