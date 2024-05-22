@@ -11,6 +11,7 @@ export default defineConfig({
         __dirname,
         './apps/storybook/docs-components',
       ),
+      '@assets': path.resolve(__dirname, './apps/storybook/assets'),
     },
   },
   plugins: [react()],

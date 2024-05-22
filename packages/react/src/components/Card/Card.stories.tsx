@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { TrashFillIcon } from '@navikt/aksel-icons';
+import cat1 from '@assets/img/cats/Cat 1.jpg';
+import cat2 from '@assets/img/cats/Cat 2.jpg';
+import cat3 from '@assets/img/cats/Cat 3.jpg';
+import cat4 from '@assets/img/cats/Cat 4.jpg';
+import cat5 from '@assets/img/cats/Cat 5.jpg';
+import cat6 from '@assets/img/cats/Cat 6.jpg';
 
-import cat1 from '../../../../../assets/img/cats/Cat 1.jpg';
-import cat2 from '../../../../../assets/img/cats/Cat 2.jpg';
-import cat3 from '../../../../../assets/img/cats/Cat 3.jpg';
-import cat4 from '../../../../../assets/img/cats/Cat 4.jpg';
-import cat5 from '../../../../../assets/img/cats/Cat 5.jpg';
-import cat6 from '../../../../../assets/img/cats/Cat 6.jpg';
 import { Heading, Paragraph } from '../Typography';
 import { NativeSelect } from '../form/NativeSelect';
 import { Textfield } from '../form/Textfield';

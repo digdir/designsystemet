@@ -38,7 +38,7 @@ const config: StorybookConfig = {
   core: {
     builder: '@storybook/builder-vite', // 👈 The builder enabled here.
   },
-  staticDirs: ['../../assets'],
+  staticDirs: ['./assets'],
   framework: getAbsolutePath('@storybook/react-vite'),
   async viteFinal(config) {
     // Merge custom configuration into the default config
@@ -48,6 +48,7 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@doc-components': resolve(__dirname, './docs-components'),
+          '@assets': resolve(__dirname, './assets'),
         },
       },
     });
