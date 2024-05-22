@@ -1,4 +1,10 @@
 {
   "extends": "../../../tsconfig.json",
-  "include": ["declarations.d.ts", "./**/*"]
+  "include": ["declarations.d.ts", "./**/*", "*.module.css"],
+  "compilerOptions": {
+    "emitDeclarationOnly": false,
+    "composite": false,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": false
+  }
 }

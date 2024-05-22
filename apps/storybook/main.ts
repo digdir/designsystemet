@@ -40,9 +40,6 @@ const config: StorybookConfig = {
   },
   staticDirs: ['../../assets'],
   framework: getAbsolutePath('@storybook/react-vite'),
-};
-export default {
-  ...config,
   async viteFinal(config) {
     // Merge custom configuration into the default config
     const { mergeConfig } = await import('vite');
@@ -56,6 +53,7 @@ export default {
     });
   },
 };
+export default config;
 
 function getAbsolutePath(value: string): StorybookConfig['framework'] {
   return dirname(
