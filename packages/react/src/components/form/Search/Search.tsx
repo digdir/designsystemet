@@ -1,6 +1,6 @@
 import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
@@ -10,7 +10,8 @@ import { Label, Paragraph, ErrorMessage } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
-import classes from './Search.module.css';
+
+type OldSearchSizes = 'small' | 'medium' | 'large';
 
 export type SearchProps = {
   /** Label */
@@ -19,10 +20,12 @@ export type SearchProps = {
    * @default true
    */
   hideLabel?: boolean;
-  /** Changes field size and paddings
-   * @default 'medium'
+  /**
+   * Changes field size and paddings
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg' | OldSearchSizes;
   /** Variant
    * @default 'simple'
    */
@@ -73,7 +76,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       ...rest
     } = props;
 
-    const { inputProps, hasError, errorId, size = 'medium' } = useSearch(props);
+    const { inputProps, hasError, errorId, size = 'md' } = useSearch(props);
 
     const inputRef = useRef<HTMLInputElement>();
     const mergedRef = useMergeRefs([ref, inputRef]);
@@ -110,9 +113,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         <div
           style={style}
           className={cl(
-            classes.formField,
-            inputProps.disabled && classes.disabled,
-            classes[size],
+            'fds-search',
+            inputProps.disabled && 'fds-search--disabled',
+            `fds-search--${size}`,
             className,
           )}
         >
@@ -121,17 +124,17 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl(classes.label, hideLabel && 'fds-sr-only')}
+              className={cl('fds-search__label', hideLabel && 'fds-sr-only')}
             >
               <span>{label}</span>
             </Label>
           )}
 
-          <div className={classes.field}>
-            <div className={cl(classes.field, classes[size])}>
+          <div className={'fds-search__field'}>
+            <div className={cl('fds-search__field', `fds-search--${size}`)}>
               {isSimple && (
                 <MagnifyingGlassIcon
-                  className={classes.icon}
+                  className={'fds-search__icon'}
                   aria-hidden
                 ></MagnifyingGlassIcon>
               )}
@@ -141,10 +144,11 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 value={value ?? internalValue}
                 disabled={disabled}
                 className={cl(
-                  classes.input,
+                  'fds-search__input',
                   `fds-focus`,
-                  isSimple && classes.simple,
-                  !isSimple && classes.withSearchButton,
+                  isSimple
+                    ? 'fds-search__input--simple'
+                    : 'fds-search__input--with-search-button',
                 )}
                 {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
                 {...inputProps}
@@ -152,7 +156,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               />
               {showClearButton && (
                 <button
-                  className={cl(classes.clearButton, `fds-focus`)}
+                  className={cl('fds-search__clear-button', `fds-focus`)}
                   type='button'
                   onClick={handleClear}
                   disabled={disabled}
@@ -164,7 +168,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             </div>
             {!isSimple && (
               <Button
-                className={classes.searchButton}
+                className={'fds-search__search-button'}
                 size={size}
                 variant={variant}
                 type='submit'
@@ -177,7 +181,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           </div>
 
           <div
-            className={classes.errorMessage}
+            className={'fds-search__error-message'}
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

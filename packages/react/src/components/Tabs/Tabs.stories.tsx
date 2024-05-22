@@ -32,7 +32,7 @@ export const Preview: StoryFn<typeof Tabs> = (args) => (
 
 Preview.args = {
   defaultValue: 'value1',
-  size: 'medium',
+  size: 'md',
 };
 
 export const IconsOnly: StoryFn<typeof Tabs> = () => (
@@ -69,7 +69,7 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
   return (
     <>
       <Button
-        size='small'
+        size='sm'
         onClick={() => setValue('value3')}
       >
         Choose Tab 3

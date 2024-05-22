@@ -1,4 +1,4 @@
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
@@ -31,7 +31,7 @@ export const AccordionContent = forwardRef<
     >
       <Paragraph
         asChild
-        size='small'
+        size='sm'
       >
         <div
           ref={ref}

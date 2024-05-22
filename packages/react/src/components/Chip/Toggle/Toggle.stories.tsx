@@ -14,7 +14,7 @@ type Story = StoryObj<typeof ToggleChip>;
 export const Preview: Story = {
   args: {
     children: 'Nynorsk',
-    size: 'medium',
+    size: 'md',
     selected: false,
     checkmark: false,
     disabled: false,

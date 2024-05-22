@@ -6,9 +6,10 @@ import {
   XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
 } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '..';
+import { getSize } from '../../utilities/getSize';
 
 const icons: Record<
   Severity,
@@ -28,6 +29,8 @@ const icons: Record<
 
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
+type OldAlertSizes = 'small' | 'medium' | 'large';
+
 export type AlertProps = {
   /** Sets color & icon according to severity */
   severity?: Severity;
@@ -38,26 +41,22 @@ export type AlertProps = {
    * Use this to inform screenreaders of severity.
    *  Defaults to Norwegian. */
   iconTitle?: string;
-  /** Sets the size of the alert.
+  /**
+   * Sets the size of the alert.
    * Does not affect font size.
    *
-   * @default 'medium'
+   * @default md
+   *
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg' | OldAlertSizes;
 } & HTMLAttributes<HTMLDivElement>;
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    {
-      severity = 'info',
-      elevated,
-      iconTitle,
-      size,
-      children,
-      className,
-      ...rest
-    },
+    { severity = 'info', elevated, iconTitle, children, className, ...rest },
     ref,
   ) => {
+    const size = getSize(rest.size || 'md') as AlertProps['size'];
     const { Icon, title } = icons[severity];
 
     return (

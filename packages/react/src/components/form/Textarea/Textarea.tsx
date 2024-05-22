@@ -1,6 +1,6 @@
 import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import { useState, forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -10,17 +10,12 @@ import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextarea } from './useTextarea';
-import classes from './Textarea.module.css';
 
 export type TextareaProps = {
   /** Label */
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
-  /** Changes field size and paddings
-   * @default medium
-   */
-  size?: 'small' | 'medium' | 'large';
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *
@@ -31,7 +26,7 @@ export type TextareaProps = {
    *  Defaults to Norwegian if no labels are provided.
    */
   characterLimit?: CharacterLimitProps;
-} & Omit<FormFieldProps, 'size'> &
+} & FormFieldProps &
   TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 /** Textarea field
@@ -58,7 +53,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       descriptionId,
       hasError,
       errorId,
-      size = 'medium',
+      size = 'md',
       readOnly,
     } = useTextarea(props);
 
@@ -80,10 +75,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <div
           style={style}
           className={cl(
-            classes.formField,
-            textareaProps.disabled && classes.disabled,
-            readOnly && classes.readonly,
-            hasError && classes.error,
+            'fds-textarea',
+            `fds-textarea--${size}`,
+            textareaProps.disabled && 'fds-textarea--disabled',
+            readOnly && `fds-textarea--readonly`,
+            hasError && `fds-textarea--error`,
             className,
           )}
         >
@@ -92,12 +88,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               size={size}
               weight='medium'
               htmlFor={textareaProps.id}
-              className={cl(classes.label, hideLabel && `fds-sr-only`)}
+              className={cl('fds-textarea__label', hideLabel && `fds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={classes.padlock}
+                  className='fds-textarea__readonly__icon'
                 />
               )}
               <span>{label}</span>
@@ -110,14 +106,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               <div
                 id={descriptionId}
-                className={cl(classes.description, hideLabel && `fds-sr-only`)}
+                className={cl(
+                  'fds-textarea__description',
+                  hideLabel && `fds-sr-only`,
+                )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
           <textarea
-            className={cl(classes.textarea, `fds-focus`, classes[size])}
+            className={cl('fds-textarea__input', `fds-focus`)}
             ref={ref}
             aria-describedby={describedBy}
             {...omit(['size', 'error', 'errorId'], rest)}
@@ -136,7 +135,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             />
           )}
           <div
-            className={classes.errorMessage}
+            className='fds-textarea__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

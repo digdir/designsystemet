@@ -1,11 +1,11 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
-import classes from '../Chip.module.css';
+import { getSize } from '../../../utilities/getSize';
 
 export type ToggleChipProps = {
   /**
@@ -13,10 +13,11 @@ export type ToggleChipProps = {
    */
   checkmark?: boolean;
   /**
-   * Changes padding and font-sizes.
-   * @default medium
+   * Changes Chip size and gap between chips.
+   * @default 'md'
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ChipGroupContext['size'];
   /**
    * Toggles `aria-pressed` and visual-changes
    * */
@@ -27,7 +28,6 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   (
     {
       children,
-      size = 'medium',
       selected = false,
       checkmark = true,
       className,
@@ -37,6 +37,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   ) => {
     const shouldDisplayCheckmark = checkmark && selected;
     const group = useContext(ChipGroupContext);
+    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
 
     return (
       <button
@@ -44,10 +45,10 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         type='button'
         aria-pressed={selected}
         className={cl(
-          classes.chipButton,
           `fds-focus`,
-          classes[group?.size || size],
-          { [classes.spacing]: shouldDisplayCheckmark },
+          `fds-chip--button`,
+          `fds-chip--${group?.size || size}`,
+          shouldDisplayCheckmark && `fds-chip--spacing`,
           className,
         )}
         {...rest}
@@ -57,10 +58,10 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
           size={group?.size || size}
           variant='short'
         >
-          <span className={classes.label}>
+          <span className={`fds-chip__label`}>
             {shouldDisplayCheckmark && (
               <CheckmarkIcon
-                className={classes.checkmarkIcon}
+                className={`fds-chip__checkmark-icon`}
                 aria-hidden
               />
             )}

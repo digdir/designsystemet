@@ -1,0 +1,11 @@
+.area {
+  margin-top: 24px;
+}
+
+.area svg g:nth-child(7) path:first-child {
+  fill: var(--brandOne7);
+}
+
+.area svg g:nth-child(8) path:first-child {
+  fill: var(--brandThree7);
+}

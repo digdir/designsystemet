@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Card, Heading, Paragraph, Tag } from '@digdir/designsystemet-react';
 import Link from 'next/link';
 import cl from 'clsx';
@@ -14,6 +15,7 @@ type BlogCardProps = {
   featured?: boolean;
   tagText?: string;
   tagColor?: 'first' | 'second' | 'third';
+  level?: 2 | 3;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>;
 
 export const BlogCard = ({
@@ -27,6 +29,7 @@ export const BlogCard = ({
   className,
   tagText,
   tagColor,
+  level = 3,
   ...props
 }: BlogCardProps) => {
   return (
@@ -41,7 +44,7 @@ export const BlogCard = ({
         <Card.Media className={classes.media}>
           <img
             src={image}
-            alt={title}
+            alt=''
             className={classes.image}
           />
         </Card.Media>
@@ -56,7 +59,12 @@ export const BlogCard = ({
                 {tagText}
               </Tag>
             )}
-            <Heading size={featured ? 'large' : 'small'}>{title}</Heading>
+            <Heading
+              level={level}
+              size={featured ? 'large' : 'small'}
+            >
+              {title}
+            </Heading>
           </Card.Header>
           <Card.Content>
             <Paragraph size={featured ? 'large' : 'small'}>{desc}</Paragraph>

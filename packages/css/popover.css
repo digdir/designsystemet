@@ -1,0 +1,79 @@
+@layer fds.fds-popover {
+  .fds-popover {
+    --fds-popover-border: 1px solid;
+    --fds-popover-background: var(--fds-semantic-surface-neutral-default);
+
+    z-index: 1500;
+    background: var(--fds-popover-background);
+    padding: var(--fds-spacing-3);
+    border: var(--fds-popover-border);
+    border-radius: var(--fds-border_radius-medium);
+    max-width: 300px;
+  }
+
+  .fds-popover--sm {
+    padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  }
+
+  .fds-popover--md {
+    padding: var(--fds-spacing-3) var(--fds-spacing-4);
+  }
+
+  .fds-popover--lg {
+    padding: var(--fds-spacing-3) var(--fds-spacing-5);
+  }
+
+  .fds-popover--default {
+    --fds-popover-background: var(--fds-semantic-surface-neutral-default);
+
+    border-color: var(--fds-semantic-border-neutral-default);
+  }
+
+  .fds-popover--info {
+    --fds-popover-background: var(--fds-semantic-surface-info-subtle);
+
+    border-color: var(--fds-semantic-border-info-default);
+  }
+
+  .fds-popover--warning {
+    --fds-popover-background: var(--fds-semantic-surface-warning-subtle);
+
+    border-color: var(--fds-semantic-border-warning-default);
+  }
+
+  .fds-popover--danger {
+    --fds-popover-background: var(--fds-semantic-surface-danger-subtle);
+
+    border-color: var(--fds-semantic-border-danger-default);
+  }
+
+  .fds-popover__arrow {
+    position: absolute;
+    background: var(--fds-popover-background);
+    transform: rotate(45deg);
+  }
+
+  .fds-popover__arrow.fds-popover__arrow--top {
+    border-top: var(--fds-popover-border);
+    border-left: var(--fds-popover-border);
+    border-color: inherit;
+  }
+
+  .fds-popover__arrow.fds-popover__arrow--bottom {
+    border-bottom: var(--fds-popover-border);
+    border-right: var(--fds-popover-border);
+    border-color: inherit;
+  }
+
+  .fds-popover__arrow.fds-popover__arrow--right {
+    border-top: var(--fds-popover-border);
+    border-right: var(--fds-popover-border);
+    border-color: inherit;
+  }
+
+  .fds-popover__arrow.fds-popover__arrow--left {
+    border-bottom: var(--fds-popover-border);
+    border-left: var(--fds-popover-border);
+    border-color: inherit;
+  }
+}

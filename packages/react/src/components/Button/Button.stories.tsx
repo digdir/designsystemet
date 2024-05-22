@@ -13,8 +13,9 @@ import {
   ArrowUndoIcon,
   PlusIcon,
 } from '@navikt/aksel-icons';
+/* @ts-expect-error #2307 */
+import { Stack } from '@doc-components';
 
-import { Stack } from '../../../../../docs-components';
 import { Spinner } from '../Spinner';
 import { Tooltip } from '../Tooltip';
 
@@ -43,7 +44,7 @@ export const Preview: Story = {
     disabled: false,
     variant: 'primary',
     color: 'first',
-    size: 'medium',
+    size: 'md',
     icon: false,
     fullWidth: false,
   },
@@ -317,7 +318,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
-        size='small'
+        size='sm'
       />
       Laster...
     </Button>
@@ -328,7 +329,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
-        size='small'
+        size='sm'
       />
       Laster...
     </Button>
@@ -339,7 +340,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       <Spinner
         variant='interaction'
         title='loading'
-        size='small'
+        size='sm'
       />
       Laster...
     </Button>
@@ -370,21 +371,21 @@ export const Ikoner: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
-      size='small'
+      size='sm'
     >
       <CogIcon fontSize='1rem' />
       small
     </Button>
     <Button
       variant='primary'
-      size='medium'
+      size='md'
     >
       <CogIcon fontSize='1.5rem' />
       medium
     </Button>
     <Button
       variant='primary'
-      size='large'
+      size='lg'
     >
       <CogIcon fontSize='2rem' />
       large

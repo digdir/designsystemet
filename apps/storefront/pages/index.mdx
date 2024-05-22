@@ -31,7 +31,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
 <ImageBanner
   title='Tilgjengelige og fleksible komponenter'
   description='Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet, og vi ivaretar kravene til tilgjengelighet. Komponentene er laget i Figma og i React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. '
-  videoSrc='/animations/Page.webm'
+  videoSrc='/animations/Page'
   imgPosition='right'
   headingLevel='h2'
   imgWidth={1195}
@@ -43,7 +43,7 @@ export default ({ children }) => <FrontpageLayout content={children} />;
 <ImageBanner
   title='Bruk egne tema'
   description='Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.'
-  videoSrc='/animations/Theme.webm'
+  videoSrc='/animations/Theme'
   headingLevel='h2'
   imgWidth={1195}
   imgHeight={270}
@@ -58,11 +58,18 @@ export default ({ children }) => <FrontpageLayout content={children} />;
   }}
 >
   <BlogCard
+    title='Temabygger som bacheloroppgave'
+    desc='Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!'
+    href='/bloggen/2024/bachelor-temavelger'
+    image='/img/bloggen/temavelger-front.png'
+    tagText='Bloggen'
+    tagColor='first'
+  />
+  <BlogCard
     title='Dynamiske font-størrelser og hvorfor vi gikk bort fra det'
     desc='Det er mulig å bruke dynamiske font-størrelser uten breakpoints, men det medfører noen ulemper.'
     href='/bloggen/2024/fluid-typography'
     image='/img/bloggen/fluid-front.png'
-    featured={false}
     tagText='Bloggen'
     tagColor='first'
   />
@@ -71,15 +78,6 @@ export default ({ children }) => <FrontpageLayout content={children} />;
     desc='Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!'
     href='/bloggen/2024/altinn-studio'
     image='/img/bloggen/altinnstudio-16-9.png'
-    tagText='Bloggen'
-    tagColor='first'
-  />
-  <BlogCard
-    title='Derfor trenger vi et felles designsystem'
-    desc='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'
-    href='/bloggen/2023/derfor-trenger-vi-et-felles-designsystem'
-    image='/img/bloggen/miro.png'
-    featured={false}
     tagText='Bloggen'
     tagColor='first'
   />

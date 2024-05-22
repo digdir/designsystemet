@@ -1,4 +1,4 @@
 **/dist/**/*.css
 packages/theme/brand/**/*.css
 packages/css/dist/**/*.css
-react-css-modules.css
+apps/theme/**

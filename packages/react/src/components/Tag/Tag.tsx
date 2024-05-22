@@ -1,13 +1,12 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
+import { getSize } from '../../utilities/getSize';
 
-import classes from './Tag.module.css';
-
-type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
+type Size = Exclude<ParagraphProps['size'], 'xsmall' | 'xs'>;
 
 export type TagProps = {
   /** Color of the tag
@@ -22,24 +21,30 @@ export type TagProps = {
     | 'first'
     | 'second'
     | 'third';
-  /** Size of the tag
-   * @default medium
+  /**
+   * Size of the tag
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
   size?: Size;
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  (
-    { children, color = 'neutral', size = 'medium', className, ...rest },
-    ref,
-  ) => {
+  ({ children, color = 'neutral', className, ...rest }, ref) => {
+    const size = getSize(rest.size || 'md') as Size;
+
     return (
       <Paragraph
         asChild
         size={size}
       >
         <span
-          className={cl(classes.tag, classes[color], classes[size], className)}
+          className={cl(
+            'fds-tag',
+            `fds-tag--${color}`,
+            `fds-tag--${size}`,
+            className,
+          )}
           ref={ref}
           {...rest}
         >

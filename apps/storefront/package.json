@@ -10,9 +10,9 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@digdir/designsystemet-css": "0.4.0",
-    "@digdir/designsystemet-react": "0.57.0",
-    "@digdir/designsystemet-theme": "0.15.1",
+    "@digdir/designsystemet-css": "0.7.0",
+    "@digdir/designsystemet-react": "0.60.0",
+    "@digdir/designsystemet-theme": "0.15.3",
     "@mdx-js/loader": "^2.0.0-rc.2",
     "@mdx-js/react": "^1.6.22",
     "@navikt/aksel-icons": "^5.12.2",

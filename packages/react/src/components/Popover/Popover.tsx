@@ -3,6 +3,9 @@ import { useRef, useId, useState } from 'react';
 import * as React from 'react';
 
 import type { PortalProps } from '../../types/Portal';
+import { getSize } from '../../utilities/getSize';
+
+type OldPopoverSizes = 'small' | 'medium' | 'large';
 
 export type PopoverProps = {
   /**
@@ -20,10 +23,12 @@ export type PopoverProps = {
    * @default undefined
    */
   open?: boolean;
-  /** Size of the popover
-   * @default medium
+  /**
+   * Size of the popover
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg' | OldPopoverSizes;
   /** Callback function when popover changes open state */
   onOpenChange?: (open: boolean) => void;
   /**
@@ -38,11 +43,13 @@ export const Popover = ({
   placement = 'top',
   open,
   variant = 'default',
-  size = 'medium',
   portal,
   onOpenChange,
   onClose,
+  ...rest
 }: PopoverProps) => {
+  const size = getSize(rest.size || 'md') as NonNullable<PopoverProps['size']>;
+
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
@@ -102,7 +109,7 @@ export const PopoverContext = React.createContext<{
   setTriggerId?: (id: string) => void;
   setInternalOpen: (open: boolean) => void;
 }>({
-  size: 'small',
+  size: 'sm',
   variant: 'default',
   anchorEl: null,
   placement: 'top',

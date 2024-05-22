@@ -1,16 +1,16 @@
 import { ModalRoot } from './ModalRoot';
-import { ModalContent } from './ModalContent/ModaContent';
+import { ModalContent } from './ModaContent';
 import { ModalDialog } from './ModalDialog';
-import { ModalFooter } from './ModalFooter/ModalFooter';
-import { ModalHeader } from './ModalHeader/ModalHeader';
-import { ModalTrigger } from './ModalTrigger/ModalTrigger';
+import { ModalFooter } from './ModalFooter';
+import { ModalHeader } from './ModalHeader';
+import { ModalTrigger } from './ModalTrigger';
 
 export type { ModalRootProps } from './ModalRoot';
-export type { ModalHeaderProps } from './ModalHeader/ModalHeader';
-export type { ModalContentProps } from './ModalContent/ModaContent';
-export type { ModalFooterProps } from './ModalFooter/ModalFooter';
+export type { ModalHeaderProps } from './ModalHeader';
+export type { ModalContentProps } from './ModaContent';
+export type { ModalFooterProps } from './ModalFooter';
 export type { ModalDialogProps } from './ModalDialog';
-export type { ModalTriggerProps } from './ModalTrigger/ModalTrigger';
+export type { ModalTriggerProps } from './ModalTrigger';
 
 type ModalComponent = typeof ModalDialog & {
   Root: typeof ModalRoot;

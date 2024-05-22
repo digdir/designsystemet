@@ -10,7 +10,6 @@ import {
   Tag,
   Combobox,
   Chip,
-  type ButtonProps,
 } from '../src/components';
 
 export default {
@@ -18,7 +17,7 @@ export default {
 } as Meta;
 
 export const MediumRow: StoryFn<{
-  size: ButtonProps['size'];
+  size: 'sm' | 'md' | 'lg';
   direction: 'column' | 'row';
 }> = ({ size, direction = 'row' }) => {
   return (
@@ -99,31 +98,31 @@ export const MediumRow: StoryFn<{
 export const SmallRow = MediumRow.bind({});
 
 SmallRow.args = {
-  size: 'small',
+  size: 'sm',
 };
 
 export const LargeRow = MediumRow.bind({});
 
 LargeRow.args = {
-  size: 'large',
+  size: 'lg',
 };
 
 export const SmallCol = MediumRow.bind({});
 
 SmallCol.args = {
-  size: 'small',
+  size: 'sm',
   direction: 'column',
 };
 export const MediumCol = MediumRow.bind({});
 
 MediumCol.args = {
-  size: 'medium',
+  size: 'md',
   direction: 'column',
 };
 
 export const LargeCol = MediumRow.bind({});
 
 LargeCol.args = {
-  size: 'large',
+  size: 'lg',
   direction: 'column',
 };

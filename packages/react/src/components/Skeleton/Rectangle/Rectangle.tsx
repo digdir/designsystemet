@@ -1,8 +1,7 @@
 import type { HTMLAttributes } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { useSynchronizedAnimation } from '../../../hooks';
-import classes from '../Skeleton.module.css';
 
 export type RectangleProps = {
   /** The width of the component */
@@ -20,17 +19,17 @@ export const Rectangle = ({
   style,
   ...rest
 }: RectangleProps) => {
-  const ref = useSynchronizedAnimation<HTMLDivElement>(classes['opacity-fade']);
+  const ref = useSynchronizedAnimation<HTMLDivElement>(
+    'fds-skeleton-opacity-fade',
+  );
 
   return (
     <div
       ref={ref}
       className={cl(
-        classes.skeleton,
-        classes.rectangle,
-        {
-          [classes.hasChildren]: Boolean(children),
-        },
+        'fds-skeleton',
+        'fds-skeleton--rectangle',
+        Boolean(children) && 'fds-skeleton--has-children',
         className,
       )}
       style={{ width, height, ...style }}
