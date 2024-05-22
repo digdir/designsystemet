@@ -22,42 +22,42 @@
     padding: var(--fds-spacing-5);
   }
 
-  .fds-tabs--small .fds-tabs__tab,
-  .fds-tabs--small .fds-tabs__content {
+  .fds-tabs--sm .fds-tabs__tab,
+  .fds-tabs--sm .fds-tabs__content {
     font: var(--fds-typography-paragraph-short-small);
   }
 
-  .fds-tabs--medium .fds-tabs__tab,
-  .fds-tabs--medium .fds-tabs__content {
+  .fds-tabs--md .fds-tabs__tab,
+  .fds-tabs--md .fds-tabs__content {
     font: var(--fds-typography-paragraph-short-medium);
   }
 
-  .fds-tabs--large .fds-tabs__tab,
-  .fds-tabs--large .fds-tabs__content {
+  .fds-tabs--lg .fds-tabs__tab,
+  .fds-tabs--lg .fds-tabs__content {
     font: var(--fds-typography-paragraph-short-large);
   }
 
-  .fds-tabs--small .fds-tabs__tab {
+  .fds-tabs--sm .fds-tabs__tab {
     padding: var(--fds-spacing-2) var(--fds-spacing-4);
   }
 
-  .fds-tabs--medium .fds-tabs__tab {
+  .fds-tabs--md .fds-tabs__tab {
     padding: var(--fds-spacing-3) var(--fds-spacing-5);
   }
 
-  .fds-tabs--large .fds-tabs__tab {
+  .fds-tabs--lg .fds-tabs__tab {
     padding: var(--fds-spacing-4) var(--fds-spacing-6);
   }
 
-  .fds-tabs--small .fds-tabs__content {
+  .fds-tabs--sm .fds-tabs__content {
     padding: var(--fds-spacing-4);
   }
 
-  .fds-tabs--medium .fds-tabs__content {
+  .fds-tabs--md .fds-tabs__content {
     padding: var(--fds-spacing-5);
   }
 
-  .fds-tabs--large .fds-tabs__content {
+  .fds-tabs--lg .fds-tabs__content {
     padding: var(--fds-spacing-6);
   }
 

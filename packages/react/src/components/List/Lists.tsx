@@ -1,6 +1,6 @@
 import type { HTMLAttributes, OlHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
 import { Paragraph } from '../Typography';

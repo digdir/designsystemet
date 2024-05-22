@@ -1,6 +1,6 @@
 import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import { useState, forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -16,10 +16,6 @@ export type TextareaProps = {
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
-  /** Changes field size and paddings
-   * @default medium
-   */
-  size?: 'small' | 'medium' | 'large';
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *
@@ -30,7 +26,7 @@ export type TextareaProps = {
    *  Defaults to Norwegian if no labels are provided.
    */
   characterLimit?: CharacterLimitProps;
-} & Omit<FormFieldProps, 'size'> &
+} & FormFieldProps &
   TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 /** Textarea field
@@ -57,7 +53,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       descriptionId,
       hasError,
       errorId,
-      size = 'medium',
+      size = 'md',
       readOnly,
     } = useTextarea(props);
 

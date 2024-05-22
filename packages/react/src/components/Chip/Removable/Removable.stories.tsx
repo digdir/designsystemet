@@ -12,7 +12,7 @@ type Story = StoryObj<typeof RemovableChip>;
 export const Preview: Story = {
   args: {
     children: 'Nynorsk',
-    size: 'medium',
+    size: 'md',
     'aria-label': 'Slett nynorsk',
     disabled: false,
   },
