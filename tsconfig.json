@@ -2,6 +2,10 @@
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   //  "exclude": ["src/components/*.test.tsx", "src/components/*.stories.tsx"],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@doc-components/*": ["docs-components/*"]
+    },
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",

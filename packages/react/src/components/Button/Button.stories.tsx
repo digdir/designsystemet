@@ -14,7 +14,7 @@ import {
   PlusIcon,
 } from '@navikt/aksel-icons';
 
-import { Stack } from '../../../../../docs-components';
+import { Stack } from '@doc-components';
 import { Spinner } from '../Spinner';
 import { Tooltip } from '../Tooltip';
 

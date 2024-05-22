@@ -1,4 +1,4 @@
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 
 import type { StorybookConfig } from '@storybook/react-vite';
 
@@ -35,10 +35,27 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     '@chromatic-com/storybook',
   ],
+  core: {
+    builder: '@storybook/builder-vite', // 👈 The builder enabled here.
+  },
   staticDirs: ['../../assets'],
   framework: getAbsolutePath('@storybook/react-vite'),
 };
-export default config;
+export default {
+  ...config,
+  async viteFinal(config) {
+    // Merge custom configuration into the default config
+    const { mergeConfig } = await import('vite');
+
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@doc-components': resolve(__dirname, './docs-components'),
+        },
+      },
+    });
+  },
+};
 
 function getAbsolutePath(value: string): StorybookConfig['framework'] {
   return dirname(
