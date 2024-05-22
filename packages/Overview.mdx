@@ -7,7 +7,7 @@ import { Card, Heading } from './react';
   src='/img/storybook-overview.png'
   alt='Designsystemets storybook'
   style={{
-    marginBottom: 'var(--fds-spacing-6)',
+    marginBottom: 'var(--fds-spacing-12)',
   }}
 />
 
@@ -21,7 +21,7 @@ som kan brukes til å videreutvikle og lage mer avanserte og sammensatte kompone
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
     gap: 'var(--fds-spacing-4)',
-    marginBottom: 'var(--fds-spacing-6)',
+    marginBottom: 'var(--fds-spacing-12)',
   }}
 >
   <Card
@@ -32,7 +32,7 @@ som kan brukes til å videreutvikle og lage mer avanserte og sammensatte kompone
     <a
       href='https://github.com/digdir/designsystemet/blob/main/README.md'
       target='_blank'
-      rel="noreferrer"
+      rel='noreferrer'
       className='sb-unstyled'
     >
       <Card.Header className='sb-unstyled'>
@@ -50,63 +50,58 @@ som kan brukes til å videreutvikle og lage mer avanserte og sammensatte kompone
       </Card.Content>
     </a>
   </Card>
-
-{' '}
-
-<Card
-  isLink
-  className='sb-unstyled'
-  asChild
->
-  <a
-    href='https://github.com/digdir/designsystemet/issues/new/choose'
-    target='_blank'
-    rel='noreferrer'
+  <Card
+    isLink
     className='sb-unstyled'
+    asChild
   >
-    <Card.Header className='sb-unstyled'>
-      <Heading
-        level={2}
-        size='md'
-        className='sb-unstyled'
-        asChild
-      >
-        <h2 className='sb-unstyled'>Bidra</h2>
-      </Heading>
-    </Card.Header>
-    <Card.Content className='sb-unstyled'>
-      Si gjerne i fra om du finner en bug eller har forslag til forbedringer.
-    </Card.Content>
-  </a>
-</Card>
-
-<Card
-  isLink
-  className='sb-unstyled'
-  asChild
->
-  <a
-    href='https://www.designsystemet.no/god-praksis'
-    target='_blank'
-    rel='noreferrer'
+    <a
+      href='https://github.com/digdir/designsystemet/issues/new/choose'
+      target='_blank'
+      rel='noreferrer'
+      className='sb-unstyled'
+    >
+      <Card.Header className='sb-unstyled'>
+        <Heading
+          level={2}
+          size='md'
+          className='sb-unstyled'
+          asChild
+        >
+          <h2 className='sb-unstyled'>Bidra</h2>
+        </Heading>
+      </Card.Header>
+      <Card.Content className='sb-unstyled'>
+        Si gjerne i fra om du finner en bug eller har forslag til forbedringer.
+      </Card.Content>
+    </a>
+  </Card>
+  <Card
+    isLink
     className='sb-unstyled'
+    asChild
   >
-    <Card.Header className='sb-unstyled'>
-      <Heading
-        level={2}
-        size='md'
-        className='sb-unstyled'
-        asChild
-      >
-        <h2 className='sb-unstyled'>God praksis og mønstre</h2>
-      </Heading>
-    </Card.Header>
-    <Card.Content className='sb-unstyled'>
-      Se våre retningslinjer, og praksis og mønstre.
-    </Card.Content>
-  </a>
-</Card>
-
+    <a
+      href='https://www.designsystemet.no/god-praksis'
+      target='_blank'
+      rel='noreferrer'
+      className='sb-unstyled'
+    >
+      <Card.Header className='sb-unstyled'>
+        <Heading
+          level={2}
+          size='md'
+          className='sb-unstyled'
+          asChild
+        >
+          <h2 className='sb-unstyled'>God praksis og mønstre</h2>
+        </Heading>
+      </Card.Header>
+      <Card.Content className='sb-unstyled'>
+        Se våre retningslinjer, god praksis og mønstre.
+      </Card.Content>
+    </a>
+  </Card>
   <Card
     isLink
     className='sb-unstyled'
@@ -115,7 +110,7 @@ som kan brukes til å videreutvikle og lage mer avanserte og sammensatte kompone
     <a
       href='https://www.designsystemet.no/grunnleggende/designelementer/design-tokens'
       target='_blank'
-      rel="noreferrer"
+      rel='noreferrer'
       className='sb-unstyled'
     >
       <Card.Header className='sb-unstyled'>
