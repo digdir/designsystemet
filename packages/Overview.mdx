@@ -1,20 +1,144 @@
 import { Meta } from '@storybook/blocks';
+import { Card, Heading } from './react';
 
 <Meta title='Oversikt' />
 
-<img src='/img/storybook-overview.png' />
+<img
+  src='/img/storybook-overview.png'
+  style={{
+    marginBottom: 'var(--fds-spacing-4)',
+  }}
+/>
 
-# Designsystemet
+# Designsystemets Storybook
 
-Du kan allerede nå bruke komponenter fra designsystemet, men det vil komme noen endringer i komponentene frem mot V1. Vi ønsker å sikre god kvalitet og ivareta tilbakemeldingene vi har fått fra teamene som bruker designsystemet.
-Målet er at V1 skal være mest mulig stabil når den lanseres, og at det blir et godt fundament for å kunne videreutvikle og lage mer avanserte og sammensatte komponenter.
+Velkommen til Storybook for React implementasjonen av Designsystemet. Målet er å tilby et godt fundament med de mest grunnleggende komponentene
+som kan brukes til å videreutvikle og lage mer avanserte og sammensatte komponenter.
 
-**Hovedpunkter som skal løses før V1:**
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
+    gap: 'var(--fds-spacing-4)',
+    marginBottom: 'var(--fds-spacing-4)',
+  }}
+>
+  <Card
+    isLink
+    className='sb-unstyled'
+    asChild
+  >
+    <a
+      href='https://github.com/digdir/designsystemet/blob/main/README.md'
+      target='_blank'
+      className='sb-unstyled'
+    >
+      <Card.Header className='sb-unstyled'>
+        <Heading
+          level={2}
+          size='md'
+          className='sb-unstyled'
+          asChild
+        >
+          <h2 className='sb-unstyled'>Kom i gang</h2>
+        </Heading>
+      </Card.Header>
+      <Card.Content className='sb-unstyled'>
+        Les vår README-fil for å komme i gang med å bruke designsystemet.
+      </Card.Content>
+    </a>
+  </Card>
 
-- Endringer på noen tokens og oppdatering på React komponenter iht. tokens-endringene.
-- Bytte til en statisk typografisk skala som default
-- Pakkeendringer for planlagt [fremtidige løsninger](https://github.com/digdir/designsystemet/issues/1435)
+{' '}
 
-<br />
+<Card
+  isLink
+  className='sb-unstyled'
+  asChild
+>
+  <a
+    href='https://github.com/digdir/designsystemet/issues/new/choose'
+    target='_blank'
+    className='sb-unstyled'
+  >
+    <Card.Header className='sb-unstyled'>
+      <Heading
+        level={2}
+        size='md'
+        className='sb-unstyled'
+        asChild
+      >
+        <h2 className='sb-unstyled'>Bidra</h2>
+      </Heading>
+    </Card.Header>
+    <Card.Content className='sb-unstyled'>
+      Si gjerne i fra om du finner en bug eller har forslag til forbedringer.
+    </Card.Content>
+  </a>
+</Card>
 
-Dette er ting som er fint å kunne utforske i en beta-periode, men vi sikter på V1 mai 2024. 🌱
+<Card
+  isLink
+  className='sb-unstyled'
+  asChild
+>
+  <a
+    href='https://www.designsystemet.no/god-praksis'
+    target='_blank'
+    className='sb-unstyled'
+  >
+    <Card.Header className='sb-unstyled'>
+      <Heading
+        level={2}
+        size='md'
+        className='sb-unstyled'
+        asChild
+      >
+        <h2 className='sb-unstyled'>God praksis og mønstre</h2>
+      </Heading>
+    </Card.Header>
+    <Card.Content className='sb-unstyled'>
+      Se våre retningslinjer, og praksis og mønstre.
+    </Card.Content>
+  </a>
+</Card>
+
+  <Card
+    isLink
+    className='sb-unstyled'
+    asChild
+  >
+    <a
+      href='https://www.designsystemet.no/grunnleggende/designelementer/design-tokens'
+      target='_blank'
+      className='sb-unstyled'
+    >
+      <Card.Header className='sb-unstyled'>
+        <Heading
+          level={2}
+          size='md'
+          className='sb-unstyled'
+          asChild
+        >
+          <h2 className='sb-unstyled'>Tokens</h2>
+        </Heading>
+      </Card.Header>
+      <Card.Content className='sb-unstyled'>
+        Los om hvordan tokens fungerer og hvordan du setter opp ditt eget theme.
+      </Card.Content>
+    </a>
+  </Card>
+</div>
+
+## Packages
+
+- [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet.
+- [`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components.
+- [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
+
+### Deprecated
+
+- [`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react)
+  - Replaced by [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react). Contains legacy components that are no longer maintained
+- [`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens)
+  - Renamed to [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme)
