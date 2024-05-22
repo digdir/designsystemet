@@ -16,7 +16,7 @@ export const Preview: Story = {
     disabled: false,
     readOnly: false,
     value: 'value',
-    size: 'medium',
+    size: 'md',
   },
 };
 

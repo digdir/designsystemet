@@ -1,6 +1,6 @@
 import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
@@ -11,6 +11,8 @@ import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
 
+type OldSearchSizes = 'small' | 'medium' | 'large';
+
 export type SearchProps = {
   /** Label */
   label?: ReactNode;
@@ -18,10 +20,12 @@ export type SearchProps = {
    * @default true
    */
   hideLabel?: boolean;
-  /** Changes field size and paddings
-   * @default 'medium'
+  /**
+   * Changes field size and paddings
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg' | OldSearchSizes;
   /** Variant
    * @default 'simple'
    */
@@ -72,7 +76,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       ...rest
     } = props;
 
-    const { inputProps, hasError, errorId, size = 'medium' } = useSearch(props);
+    const { inputProps, hasError, errorId, size = 'md' } = useSearch(props);
 
     const inputRef = useRef<HTMLInputElement>();
     const mergedRef = useMergeRefs([ref, inputRef]);

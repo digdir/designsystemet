@@ -14,7 +14,7 @@ export const DropdownMenuItem = forwardRef<
   HTMLButtonElement,
   DropdownMenuItemProps
 >(({ children, className, style, ...rest }, ref) => {
-  const menu = useContext(DropdownMenuContext);
+  const { size } = useContext(DropdownMenuContext);
 
   return (
     <li
@@ -24,7 +24,7 @@ export const DropdownMenuItem = forwardRef<
       <Button
         ref={ref}
         variant='tertiary'
-        size={menu.size}
+        size={size}
         fullWidth
         className='fds-dropdownmenu__item'
         role='menuitem'

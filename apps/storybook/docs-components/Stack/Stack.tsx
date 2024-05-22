@@ -21,7 +21,7 @@ export const Stack = ({
   ></div>
 );
 
-type FlexContainerProps = {
+export type FlexContainerProps = {
   children: ReactNode;
   style?: CSSProperties;
   gap?: string;

@@ -4,8 +4,9 @@ import cl from 'clsx/lite';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
+import { getSize } from '../../utilities/getSize';
 
-type Size = Exclude<ParagraphProps['size'], 'xsmall'>;
+type Size = Exclude<ParagraphProps['size'], 'xsmall' | 'xs'>;
 
 export type TagProps = {
   /** Color of the tag
@@ -20,17 +21,18 @@ export type TagProps = {
     | 'first'
     | 'second'
     | 'third';
-  /** Size of the tag
-   * @default medium
+  /**
+   * Size of the tag
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
   size?: Size;
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  (
-    { children, color = 'neutral', size = 'medium', className, ...rest },
-    ref,
-  ) => {
+  ({ children, color = 'neutral', className, ...rest }, ref) => {
+    const size = getSize(rest.size || 'md') as Size;
+
     return (
       <Paragraph
         asChild

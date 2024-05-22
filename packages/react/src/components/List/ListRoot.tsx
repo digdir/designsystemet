@@ -2,23 +2,30 @@ import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { useState, forwardRef, createContext } from 'react';
 
-type ListContextType = {
-  size: NonNullable<ListProps['size']>;
+import { getSize } from '../../utilities/getSize';
+
+export type ListContextType = {
+  size: 'sm' | 'md' | 'lg';
   headingId?: string;
   setHeadingId: (id: string) => void;
 };
 
+export type OldListSizes = 'small' | 'medium' | 'large';
+
 export const ListContext = createContext<ListContextType>({
-  size: 'medium',
+  size: 'md',
   headingId: 'heading',
   setHeadingId: () => {},
 });
 
 export type ListProps = {
-  /** Changes text sizing
-   * @default medium
+  /**
+   * Changes text sizing
+   * @default md
+   *
+   * @note `small`, `medium` and `large` are deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ListContextType['size'] | OldListSizes;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -27,9 +34,10 @@ export type ListProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ListRoot = forwardRef<HTMLDivElement, ListProps>(
-  ({ asChild, size = 'medium', ...rest }, ref) => {
+  ({ asChild, ...rest }, ref) => {
     const [headingId, setHeadingId] = useState<string>();
     const Component = asChild ? Slot : 'div';
+    const size = getSize(rest.size || 'md') as ListContextType['size'];
 
     return (
       <ListContext.Provider value={{ size, headingId, setHeadingId }}>

@@ -57,11 +57,11 @@
     min-height: var(--fdsc-chip-height);
   }
 
-  .fds-chip--removable.fds-chip--small {
+  .fds-chip--removable.fds-chip--sm {
     padding-right: var(--fds-spacing-1);
   }
 
-  .fds-chip--removable.fds-chip--large {
+  .fds-chip--removable.fds-chip--lg {
     padding-right: var(--fds-spacing-2);
   }
 
@@ -80,17 +80,17 @@
     padding-left: var(--fds-spacing-2) !important;
   }
 
-  .fds-chip--small .fds-chip__checkmark-icon {
+  .fds-chip--sm .fds-chip__checkmark-icon {
     height: var(--fds-sizing-5);
     width: auto;
   }
 
-  .fds-chip--medium .fds-chip__checkmark-icon {
+  .fds-chip--md .fds-chip__checkmark-icon {
     height: 24px;
     width: auto;
   }
 
-  .fds-chip--large .fds-chip__checkmark-icon {
+  .fds-chip--lg .fds-chip__checkmark-icon {
     height: 26px;
     width: auto;
   }
@@ -105,15 +105,15 @@
     margin: 0;
   }
 
-  .fds-chip--group-container.fds-chip--small {
+  .fds-chip--group-container.fds-chip--sm {
     --fdsc-gap: var(--fds-spacing-2);
   }
 
-  .fds-chip--group-container.fds-chip--medium {
+  .fds-chip--group-container.fds-chip--md {
     --fdsc-gap: var(--fds-spacing-2);
   }
 
-  .fds-chip--group-container.fds-chip--large {
+  .fds-chip--group-container.fds-chip--lg {
     --fdsc-gap: var(--fds-spacing-2);
   }
 
@@ -150,21 +150,21 @@
     --fdsc-removable-text-color: var(--fds-semantic-text-neutral-on_inverted);
   }
 
-  .fds-chip--small {
+  .fds-chip--sm {
     --fdsc-chip-height: var(--fds-sizing-7);
     --fdsc-chip-padding: var(--fds-spacing-3);
     --fdsc-removable-chip-xmark-size: var(--fds-sizing-5);
     --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-1);
   }
 
-  .fds-chip--medium {
+  .fds-chip--md {
     --fdsc-chip-height: var(--fds-sizing-8);
     --fdsc-chip-padding: var(--fds-spacing-3);
     --fdsc-removable-chip-xmark-size: var(--fds-sizing-6);
     --fdsc-removable-chip-xmark-padding_right: var(--fds-spacing-2);
   }
 
-  .fds-chip--large {
+  .fds-chip--lg {
     --fdsc-chip-height: var(--fds-sizing-9);
     --fdsc-chip-padding: var(--fds-spacing-4);
     --fdsc-removable-chip-xmark-size: var(--fds-sizing-7);
