@@ -1,6 +1,6 @@
 import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 

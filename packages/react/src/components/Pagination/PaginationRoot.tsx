@@ -1,22 +1,27 @@
 import { Slot } from '@radix-ui/react-slot';
 import { createContext, forwardRef, type HTMLAttributes } from 'react';
 
+import { getSize } from '../../utilities/getSize';
+
+import type { PaginationProps } from './Pagination';
+
 type PaginationContextProps = {
   size: NonNullable<PaginationRootProps['size']>;
   compact: boolean;
 };
 
 export const PaginationContext = createContext<PaginationContextProps>({
-  size: 'medium',
+  size: 'md',
   compact: false,
 });
 
 export type PaginationRootProps = {
   /**
    * Sets the size of the component
-   * @default medium
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: PaginationProps['size'];
   /**
    * Sets how compact the component will be. If true, only 5 steps will show.
    * @default false
@@ -30,8 +35,11 @@ export type PaginationRootProps = {
 } & HTMLAttributes<HTMLElement>;
 
 export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
-  ({ asChild, size = 'medium', compact = false, ...rest }, ref) => {
+  ({ asChild, compact = false, ...rest }, ref) => {
     const Component = asChild ? Slot : 'nav';
+    const size = getSize(rest.size || 'md') as NonNullable<
+      PaginationRootProps['size']
+    >;
 
     return (
       <PaginationContext.Provider value={{ size, compact }}>

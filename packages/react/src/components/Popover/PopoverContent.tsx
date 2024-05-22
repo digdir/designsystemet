@@ -15,7 +15,7 @@ import {
   useMergeRefs,
   useRole,
 } from '@floating-ui/react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '../Typography';
 import { useIsomorphicLayoutEffect } from '../../hooks';

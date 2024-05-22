@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 

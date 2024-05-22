@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { RovingTabindexRoot } from '../../../utilities/RovingTabIndex';
 

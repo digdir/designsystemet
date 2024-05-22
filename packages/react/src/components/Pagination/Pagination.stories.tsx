@@ -28,7 +28,7 @@ export const Preview: StoryFn<typeof Pagination> = (args) => {
 };
 
 Preview.args = {
-  size: 'medium',
+  size: 'md',
   nextLabel: 'Neste',
   previousLabel: 'Forrige',
   totalPages: 10,
