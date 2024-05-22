@@ -27,7 +27,7 @@
     border-radius: var(--fds-border_radius-medium);
   }
 
-  .fds-textfield--disabled .fds-textfield__input {
+  .fds-textfield__input:disabled {
     cursor: not-allowed;
   }
 
@@ -101,7 +101,7 @@
     margin-top: calc(var(--fds-spacing-2) * -1);
   }
 
-  .fds-textfield--disabled {
+  .fds-textfield:has(.fds-textfield__input:disabled) {
     opacity: var(--fds-opacity-disabled);
   }
 

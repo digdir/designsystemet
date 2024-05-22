@@ -30,19 +30,19 @@ export type TextfieldProps = {
   suffix?: string;
   /** Supported `input` types */
   type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *
@@ -112,7 +112,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           className={cl(
             `fds-textfield`,
             `fds-textfield--${size}`,
-            inputProps.disabled && `fds-textfield--disabled`,
             readOnly && `fds-textfield--readonly`,
             hasError && `fds-textfield--error`,
             className,
@@ -177,6 +176,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               )}
               ref={ref}
               type={type}
+              disabled={inputProps.disabled}
               aria-describedby={describedBy}
               size={htmlSize}
               {...omit(['size', 'error', 'errorId'], rest)}
