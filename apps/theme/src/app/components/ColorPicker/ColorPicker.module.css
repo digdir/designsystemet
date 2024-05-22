@@ -27,12 +27,12 @@
   width: 24px;
   background-color: #1e98f5;
   border-radius: 50%;
-  border: 1px solid #cecece;
+  border: 1px solid #c2c2c2;
 }
 
 .input {
   width: 100px;
-  font-size: 15px;
+  font-size: 16px;
   padding-left: 10px;
   display: flex;
   align-items: center;
@@ -45,7 +45,8 @@
 
 .label {
   margin-bottom: 12px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
   display: flex;
   width: 100%;
   justify-content: space-between;

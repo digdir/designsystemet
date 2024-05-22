@@ -21617,6 +21617,7 @@ __metadata:
     "@types/react": "npm:^18"
     "@types/react-color": "npm:^3.0.12"
     "@types/react-dom": "npm:^18"
+    "@types/react-syntax-highlighter": "npm:^15.5.11"
     bootstrap: "npm:^5.3.3"
     classnames: "npm:^2.5.1"
     hsluv: "npm:^1.0.1"
@@ -21626,6 +21627,7 @@ __metadata:
     react-click-outside: "npm:^3.0.1"
     react-color: "npm:^2.19.3"
     react-dom: "npm:^18"
+    react-syntax-highlighter: "npm:^15.5.0"
     recharts: "npm:^2.12.6"
   languageName: unknown
   linkType: soft

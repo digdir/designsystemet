@@ -28,18 +28,18 @@ export const generateColorScale = (
   });
 
   const colorLightness = getLightnessFromHex(color);
-  const multiplier = colorLightness <= 30 ? -9 : 9;
-  const baseDefaultColor = getContrastFromLightness(
+  const multiplier = colorLightness <= 30 ? -8 : 8;
+  const baseDefaultContrast = getContrastFromLightness(
     colorLightness,
     color,
     leoBackgroundColor.colorKeys[0],
   );
-  const baseHoverColor = getContrastFromLightness(
+  const baseHoverContrast = getContrastFromLightness(
     colorLightness - multiplier,
     color,
     leoBackgroundColor.colorKeys[0],
   );
-  const baseActiveColor = getContrastFromLightness(
+  const baseActiveContrast = getContrastFromLightness(
     colorLightness - multiplier * 2,
     color,
     leoBackgroundColor.colorKeys[0],
@@ -74,9 +74,9 @@ export const generateColorScale = (
         lightnessScale.slice(0, 8),
         leoBackgroundColor.colorKeys[0],
       ),
-      baseDefaultColor,
-      baseHoverColor,
-      baseActiveColor,
+      baseDefaultContrast,
+      baseHoverContrast,
+      baseActiveContrast,
       ...getColorContrasts(
         color,
         lightnessScale.slice(8),
@@ -95,8 +95,8 @@ export const generateColorScale = (
   const themeArray = theme.contrastColorValues;
 
   // Add contrast colors to the end of the array
-  themeArray.push(calculateContrastOneColor(themeArray[8], themeArray[10]));
-  themeArray.push(setContrastOneColor(color, 'second').color as CssColor);
+  themeArray.push(calculateContrastOneColor(themeArray[8]));
+  themeArray.push(calculateContrastTwoColor(themeArray[8]));
 
   return theme.contrastColorValues;
 };
@@ -119,14 +119,7 @@ export const generateColorTheme = (color: CssColor) => {
   };
 };
 
-const calculateContrastOneColor = (
-  baseDefaultColor: CssColor,
-  baseActiveColor: CssColor,
-) => {
-  const baseColor =
-    getLightnessFromHex(baseDefaultColor) > getLightnessFromHex(baseActiveColor)
-      ? baseDefaultColor
-      : baseActiveColor;
+const calculateContrastOneColor = (baseColor: CssColor) => {
   const contrastAgainstWhite = getContrastFromHex(baseColor, '#ffffff');
   const contrastAgainstBlack = getContrastFromHex(baseColor, '#000000');
   const lightness = contrastAgainstWhite >= contrastAgainstBlack ? 100 : 0;
@@ -137,6 +130,23 @@ const calculateContrastOneColor = (
   // }
 
   return color;
+};
+
+export const calculateContrastTwoColor = (color: CssColor) => {
+  const contrastWhite = getContrastFromHex(color, '#ffffff');
+  const contrastBlack = getContrastFromHex(color, '#000000');
+  const colorLightness = getLightnessFromHex(color);
+  const doubleALightnessModifier = 50;
+  let targetLightness = 0;
+  const contrastDirection =
+    contrastWhite >= contrastBlack ? 'lighten' : 'darken';
+
+  targetLightness =
+    contrastDirection === 'lighten'
+      ? colorLightness + doubleALightnessModifier
+      : colorLightness - doubleALightnessModifier;
+
+  return createColorWithLightness(color, targetLightness);
 };
 
 /**
@@ -163,48 +173,6 @@ export const canTextBeUsedOnColors = (
   }
 
   return false;
-};
-
-export const setContrastOneColor = (
-  color: CssColor,
-  type: 'first' | 'second',
-  dev: boolean = false,
-) => {
-  const contrastWhite = getContrastFromHex(color, '#ffffff');
-  const contrastBlack = getContrastFromHex(color, '#000000');
-  const colorLightness = getLightnessFromHex(color);
-  const doubleALightnessModifier = 50;
-  let targetLightness = 0;
-  const contrastDirection =
-    contrastWhite >= contrastBlack ? 'lighten' : 'darken';
-
-  targetLightness =
-    contrastDirection === 'lighten'
-      ? colorLightness + doubleALightnessModifier
-      : colorLightness - doubleALightnessModifier;
-
-  if (dev) {
-    console.log('targetLightness before: ', targetLightness);
-    console.log('contrastDirection: ', contrastDirection);
-  }
-
-  if (type === 'first') {
-    if (contrastDirection === 'lighten') {
-      targetLightness = 98;
-    } else {
-      targetLightness = 15;
-    }
-  }
-
-  if (dev) {
-    console.log('targetLightness: ', targetLightness);
-  }
-
-  return {
-    color: createColorWithLightness(color, targetLightness),
-    contrast: 'd',
-    lightness: '5',
-  };
 };
 
 const createColorWithLightness = (color: CssColor, lightness: number) => {

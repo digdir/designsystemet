@@ -10,7 +10,11 @@ import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
-import { DropdownMenu } from '@digdir/designsystemet-react';
+import {
+  DropdownMenu,
+  Modal,
+  NativeSelect,
+} from '@digdir/designsystemet-react';
 
 import { mapTokens } from '@/utils/tokenMapping';
 import {
@@ -30,6 +34,7 @@ import { ColorPicker } from './components/ColorPicker/ColorPicker';
 import { Scale } from './components/Scale/Scale';
 import { Header } from './components/Header/Header';
 import classes from './page.module.css';
+import { TokenModal } from './components/TokenModal/TokenModal';
 
 type previewModeType =
   | 'dashboard'
@@ -126,70 +131,6 @@ export default function Home() {
       window.removeEventListener('scroll', isSticky);
     };
   });
-
-  const generateJsonForColor = (colorArray: CssColor[]) => {
-    const obj: { [key: string]: { value: string; type: string } } = {};
-    for (let i = 0; i < colorArray.length; i++) {
-      if (i === 13 && colorArray.length >= 14) {
-        obj['contrast-1'] = {
-          value: colorArray[i],
-          type: 'color',
-        };
-      } else if (i === 14 && colorArray.length >= 15) {
-        obj['contrast-2'] = {
-          value: colorArray[i],
-          type: 'color',
-        };
-      } else {
-        obj[i + 1] = { value: colorArray[i], type: 'color' };
-      }
-    }
-    return obj;
-  };
-
-  const copyThemeToClipboard = (theme: modeType) => {
-    const accentColors = generateColorScale(accentColor, theme);
-    const neutralColors = generateColorScale(neutralColor, theme);
-    const brand1Colors = generateColorScale(brandOneColor, theme);
-    const brand2Colors = generateColorScale(brandTwoColor, theme);
-    const brand3Colors = generateColorScale(brandThreeColor, theme);
-
-    const obj = {
-      theme: {
-        accent: generateJsonForColor(accentColors),
-        neutral: generateJsonForColor(neutralColors),
-        brand1: generateJsonForColor(brand1Colors),
-        brand2: generateJsonForColor(brand2Colors),
-        brand3: generateJsonForColor(brand3Colors),
-      },
-    };
-
-    const json = JSON.stringify(obj, null, '\t');
-    void navigator.clipboard.writeText(json);
-  };
-
-  const copyGlobalsToClipboard = (theme: modeType) => {
-    const blueColors = generateColorScale('#0A71C0', theme);
-    const greenColors = generateColorScale('#07991A', theme);
-    const orangeColors = generateColorScale('#D46223', theme);
-    const purpleColors = generateColorScale('#663299', theme);
-    const redColors = generateColorScale('#E51C1D', theme);
-    const yellowColors = generateColorScale('#EABF28', theme);
-
-    const obj = {
-      global: {
-        blue: generateJsonForColor(blueColors),
-        green: generateJsonForColor(greenColors),
-        orange: generateJsonForColor(orangeColors),
-        purple: generateJsonForColor(purpleColors),
-        red: generateJsonForColor(redColors),
-        yellow: generateJsonForColor(yellowColors),
-      },
-    };
-
-    const json = JSON.stringify(obj, null, '\t');
-    void navigator.clipboard.writeText(json);
-  };
 
   const isSticky = () => {
     const header = document.querySelector('.pickers');
@@ -306,7 +247,23 @@ export default function Home() {
                 }}
               />
               <div className={classes.dropdown}>
-                <DropdownMenu
+                <NativeSelect
+                  label='Kontrastnivå'
+                  size='medium'
+                  className={classes.contrastSelect}
+                >
+                  <option value='aa'>AA</option>
+                </NativeSelect>
+              </div>
+              <div className={classes.dropdown}>
+                <TokenModal
+                  accentColor={accentColor}
+                  neutralColor={neutralColor}
+                  brand1Color={brandOneColor}
+                  brand2Color={brandTwoColor}
+                  brand3Color={brandThreeColor}
+                />
+                {/* <DropdownMenu
                   placement='bottom-end'
                   size='small'
                 >
@@ -356,7 +313,7 @@ export default function Home() {
                       </DropdownMenu.Item>
                     </DropdownMenu.Group>
                   </DropdownMenu.Content>
-                </DropdownMenu>
+                </DropdownMenu> */}
               </div>
             </div>
           </div>
