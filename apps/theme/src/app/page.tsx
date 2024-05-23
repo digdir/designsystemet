@@ -198,6 +198,7 @@ export default function Home() {
                 onColorChanged={(color) => {
                   updateColor(
                     color,
+                    contrastMode,
                     setAccentColor,
                     setAccentTheme,
                     setAccentError,
@@ -211,6 +212,7 @@ export default function Home() {
                 onColorChanged={(color) => {
                   updateColor(
                     color,
+                    contrastMode,
                     setNeutralColor,
                     setNeutralTheme,
                     setNeutralError,
@@ -224,6 +226,7 @@ export default function Home() {
                 onColorChanged={(color) => {
                   updateColor(
                     color,
+                    contrastMode,
                     setBrandOneColor,
                     setBrandOneTheme,
                     setBrandOneError,
@@ -237,6 +240,7 @@ export default function Home() {
                 onColorChanged={(color) => {
                   updateColor(
                     color,
+                    contrastMode,
                     setBrandTwoColor,
                     setBrandTwoTheme,
                     setBrandTwoError,
@@ -250,6 +254,7 @@ export default function Home() {
                 onColorChanged={(color) => {
                   updateColor(
                     color,
+                    contrastMode,
                     setBrandThreeColor,
                     setBrandThreeTheme,
                     setBrandThreeError,
