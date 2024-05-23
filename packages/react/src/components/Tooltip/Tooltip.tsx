@@ -20,8 +20,6 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
-import type { PortalProps } from '../../types/Portal';
-
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
