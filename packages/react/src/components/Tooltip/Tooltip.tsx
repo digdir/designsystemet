@@ -20,8 +20,6 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
-import type { PortalProps } from '../../types/Portal';
-
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
@@ -50,8 +48,13 @@ export type TooltipProps = {
   defaultOpen?: boolean;
   /** Inverts the color of the tooltip. Use this on dark backgrounds. */
   inverted?: boolean;
-} & PortalProps &
-  HTMLAttributes<HTMLDivElement>;
+  /**
+   * Portals the floating element outside of the app root and into the body.
+   * @see https://floating-ui.com/docs/floatingportal
+   * @default true
+   */
+  portal?: boolean;
+} & HTMLAttributes<HTMLDivElement>;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -62,7 +65,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
-      portal,
+      portal = true,
       inverted,
       className,
       style,
@@ -136,32 +139,30 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           }),
         )}
         {internalOpen && (
-          <FloatingPortal>
-            <Container>
-              <div
-                ref={refs.setFloating}
-                style={{ ...floatingStyles, ...animationStyles, ...style }}
-                role='tooltip'
-                {...getFloatingProps({
-                  className: cl(
-                    'fds-tooltip',
-                    inverted && 'fds-tooltip--inverted',
-                    className,
-                  ),
-                  ref: mergedRef,
-                  ...rest,
-                })}
-              >
-                {content}
-                <FloatingArrow
-                  ref={arrowRef}
-                  context={context}
-                  className='fds-tooltip__arrow'
-                  height={ARROW_HEIGHT}
-                />
-              </div>
-            </Container>
-          </FloatingPortal>
+          <Container>
+            <div
+              ref={refs.setFloating}
+              style={{ ...floatingStyles, ...animationStyles, ...style }}
+              role='tooltip'
+              {...getFloatingProps({
+                className: cl(
+                  'fds-tooltip',
+                  inverted && 'fds-tooltip--inverted',
+                  className,
+                ),
+                ref: mergedRef,
+                ...rest,
+              })}
+            >
+              {content}
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                className='fds-tooltip__arrow'
+                height={ARROW_HEIGHT}
+              />
+            </div>
+          </Container>
         )}
       </>
     );

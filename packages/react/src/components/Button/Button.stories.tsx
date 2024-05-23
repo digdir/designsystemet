@@ -13,7 +13,6 @@ import {
   ArrowUndoIcon,
   PlusIcon,
 } from '@navikt/aksel-icons';
-/* @ts-expect-error #2307 */
 import { Stack } from '@doc-components';
 
 import { Spinner } from '../Spinner';
