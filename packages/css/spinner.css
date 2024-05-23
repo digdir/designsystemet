@@ -41,7 +41,7 @@
   }
 
   .fds-spinner__background--inverted {
-    stroke: var(--fds-semantic-surface-neutral-strong);
+    stroke: var(--fds-semantic-surface-neutral-dark);
   }
 
   @keyframes fds-spinner-rotate-animation {
