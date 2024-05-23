@@ -89,7 +89,6 @@
     flex-wrap: wrap;
     width: 100%;
     gap: var(--fds-spacing-2);
-    padding: var(--fds-spacing-2) 0;
     align-items: center;
     background-color: transparent;
   }

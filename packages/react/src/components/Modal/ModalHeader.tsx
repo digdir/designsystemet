@@ -44,7 +44,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
       >
         {subtitle && (
           <Paragraph
-            size='small'
+            size='sm'
             variant='short'
           >
             {subtitle}
@@ -52,7 +52,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
         )}
         <Heading
           level={2}
-          size='xsmall'
+          size='xs'
         >
           {children}
         </Heading>
@@ -61,7 +61,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             name='close'
             variant='tertiary'
             color='second'
-            size='medium'
+            size='md'
             onClick={context?.closeModal}
             autoFocus
             icon={true}
