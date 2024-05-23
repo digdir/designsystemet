@@ -1,7 +1,7 @@
 import { PaletteIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
-import { Meta, Image } from '@components';
+import { Meta, Image, ResponsiveIframe } from '@components';
 
 <Meta
   title='Sett opp ditt eget fargesystem'
@@ -43,8 +43,15 @@ Fargesystemet er strukturert for å støtte multibranding og ulike modes (darkmo
 
 For å generere en skala som fungerer kan du bruke [Designsystemets fargeskala-generator](https://thuneer.github.io/designsystemet-colors/) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens accent-farge og øvrige profil-farger.
 
-La oss se på et eksempel der vi legger inn fargekoden til Lånekassen i fargeskala-generatoren:
+La oss se på et eksempel der vi bytter ut fargene:
 
-[video]
+<ResponsiveIframe
+  src='/img/theme-generator.mp4'
+  title='Skjermopptak fra prototypen. Filmen viser at brukeren endrer en farge og at komponentene påvirkes umiddelbart.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
 
 Når du har generert skalaene, kan du [bruke de nye fargekodene i Designsystemet](/grunnleggende/for-designere/eget-tema), slik at alle komponenter følger din profil.
