@@ -67,9 +67,10 @@ export const ScaleRow = ({
             </div>
           </button>
           <div
-            className={cl(classes.pickerTool, {
-              [classes.showPickerTool]: showPicker,
-            })}
+            className={cl(
+              classes.pickerTool,
+              showPicker && classes.showPickerTool,
+            )}
           >
             <ChromePicker
               onChange={(e) => {
@@ -86,11 +87,7 @@ export const ScaleRow = ({
         <div>{activeColor}</div>
         <div className={classes.contrast}>
           Contrast: {contrast.toFixed(2)}
-          <div
-            className={cl(classes.icon, {
-              [classes.red]: contrast < 4.5,
-            })}
-          >
+          <div className={cl(classes.icon, contrast < 4.5 && classes.red)}>
             {contrast > 4.5 && (
               <CheckmarkIcon
                 title='a11y-title'

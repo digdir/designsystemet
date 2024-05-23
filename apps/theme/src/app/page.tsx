@@ -327,17 +327,19 @@ export default function Home() {
           <div className={classes.toolbar}>
             <div className={classes.menu}>
               <button
-                className={cl(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === 'components',
-                })}
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'components' && classes.menuItemActive,
+                )}
                 onClick={() => setPreviewMode('components')}
               >
                 Komponenter
               </button>
               <button
-                className={cl(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === 'dashboard',
-                })}
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'dashboard' && classes.menuItemActive,
+                )}
                 onClick={() => setPreviewMode('dashboard')}
               >
                 Dashboard
@@ -345,9 +347,7 @@ export default function Home() {
               <button
                 className={cl(
                   classes.menuItem,
-                  {
-                    [classes.menuItemActive]: previewMode === 'landing',
-                  },
+                  previewMode === 'landing' && classes.menuItemActive,
                   classes.menuItemDisabled,
                 )}
               >
@@ -356,9 +356,7 @@ export default function Home() {
               <button
                 className={cl(
                   classes.menuItem,
-                  {
-                    [classes.menuItemActive]: previewMode === 'forms',
-                  },
+                  previewMode === 'forms' && classes.menuItemActive,
                   classes.menuItemDisabled,
                 )}
               >
@@ -367,9 +365,7 @@ export default function Home() {
               <button
                 className={cl(
                   classes.menuItem,
-                  {
-                    [classes.menuItemActive]: previewMode === 'auth',
-                  },
+                  previewMode === 'auth' && classes.menuItemActive,
                   classes.menuItemDisabled,
                 )}
               >
@@ -378,9 +374,10 @@ export default function Home() {
             </div>
             <div className={classes.toggles}>
               <button
-                className={cl(classes.toggle, {
-                  [classes.active]: themeMode === 'light',
-                })}
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'light' && classes.active,
+                )}
                 onClick={() => setThemeMode('light')}
               >
                 <img
@@ -390,9 +387,10 @@ export default function Home() {
                 Lys
               </button>
               <button
-                className={cl(classes.toggle, {
-                  [classes.active]: themeMode === 'dark',
-                })}
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'dark' && classes.active,
+                )}
                 onClick={() => setThemeMode('dark')}
               >
                 <img
@@ -402,9 +400,10 @@ export default function Home() {
                 Mørk
               </button>
               <button
-                className={cl(classes.toggle, {
-                  [classes.active]: themeMode === 'contrast',
-                })}
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'contrast' && classes.active,
+                )}
                 onClick={() => setThemeMode('contrast')}
               >
                 <img

@@ -42,7 +42,7 @@ const Color = ({
             setTooltipText(hex ?? '');
           }}
           style={{ backgroundColor: color }}
-          className={cl(classes.box, { [classes.featured]: featured })}
+          className={cl(classes.box, featured && classes.featured)}
         ></button>
       </Tooltip>
 

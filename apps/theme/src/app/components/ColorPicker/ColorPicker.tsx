@@ -53,12 +53,8 @@ export const ColorPicker = ({
             <div
               className={cl(
                 classes.status,
-                {
-                  [classes.statusYellow]: colorError == 'decorative',
-                },
-                {
-                  [classes.statusOrange]: colorError == 'interaction',
-                },
+                colorError == 'decorative' && classes.statusYellow,
+                colorError == 'interaction' && classes.statusOrange,
               )}
             >
               {colorError === 'none' && (
@@ -103,7 +99,7 @@ export const ColorPicker = ({
   return (
     <div
       ref={ref}
-      className={cl(classes.whole, { [classes.disabled]: disabled })}
+      className={cl(classes.whole, disabled && classes.disabled)}
     >
       <div className={classes.picker}>
         <div className={classes.label}>
@@ -121,7 +117,7 @@ export const ColorPicker = ({
           <div className={classes.input}>{color}</div>
         </button>
       </div>
-      <div className={cl(classes.popup, { [classes.show]: showModal })}>
+      <div className={cl(classes.popup, showModal && classes.show)}>
         <ChromePicker
           onChange={({ hex }: { hex: string }) => {
             setColor(hex);

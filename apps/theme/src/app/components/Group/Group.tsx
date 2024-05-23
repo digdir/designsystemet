@@ -23,7 +23,7 @@ export const Group = ({
   return (
     <div className={classes.group}>
       {header && (
-        <div className={cl(classes.header, { [classes.featured]: featured })}>
+        <div className={cl(classes.header, featured && classes.featured)}>
           {header}
         </div>
       )}
@@ -34,9 +34,7 @@ export const Group = ({
           ))}
         </div>
       )}
-      <div
-        className={cl(classes.colors, { [classes.colorsFeatured]: featured })}
-      >
+      <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
         {colors.map(function (item, index) {
           return (
             <Color

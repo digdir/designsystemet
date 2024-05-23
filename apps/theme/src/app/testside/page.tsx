@@ -33,7 +33,7 @@ const Box = (name: string, color1: CssColor, color2: CssColor) => {
 
 const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
   return (
-    <div className={cl({ [classes.whiteText]: whiteText })}>
+    <div className={cl(whiteText && classes.whiteText)}>
       <Heading
         size='xsmall'
         className={classes.mainTitle}
@@ -141,9 +141,9 @@ export default function Dev() {
     generatePlaceholderColors().map((color) => color as CssColor),
   );
   useEffect(() => {
-    const lightScale = generateColorScale('#0062BA', 'light');
-    const darkScale = generateColorScale('#0062BA', 'dark');
-    const contrastScale = generateColorScale('#0062BA', 'contrast');
+    const lightScale = generateColorScale('#0062BA', 'light', 'aa');
+    const darkScale = generateColorScale('#0062BA', 'dark', 'aa');
+    const contrastScale = generateColorScale('#0062BA', 'contrast', 'aa');
     setLightColors(lightScale);
     setDarkColors(darkScale);
     setContrastColors(contrastScale);

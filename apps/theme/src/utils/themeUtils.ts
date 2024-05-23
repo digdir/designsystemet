@@ -19,7 +19,7 @@ import {
 export const generateColorScale = (
   color: CssColor,
   mode: modeType,
-  contrastMode: 'aa' | 'aaa' | 'AA' | 'AAA' = 'AA',
+  contrastMode: 'aa' | 'aaa' = 'aa',
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 ): CssColor[] => {
   const leoBackgroundColor = new BackgroundColor({
@@ -155,10 +155,6 @@ const calculateContrastOneColor = (baseColor: CssColor) => {
   const contrastBlack = getContrastFromHex(baseColor, '#000000');
   const lightness = contrastWhite >= contrastBlack ? 100 : 0;
   const color = createColorWithLightness(baseColor, lightness);
-
-  // if (!canTextBeUsedOnColors(baseDefaultColor, baseActiveColor)) {
-  //   return '#EB00FF';
-  // }
 
   return color;
 };

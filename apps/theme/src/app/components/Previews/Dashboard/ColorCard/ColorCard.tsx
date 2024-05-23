@@ -11,24 +11,27 @@ type ColorCardProps = {
 export const ColorCard = ({ brand, icon }: ColorCardProps) => {
   return (
     <div
-      className={cl(classes.colorCard, {
-        [classes.colorCardTwo]: brand === 'two',
-        [classes.colorCardThree]: brand === 'three',
-      })}
+      className={cl(
+        classes.colorCard,
+        brand === 'two' && classes.colorCardTwo,
+        brand === 'three' && classes.colorCardThree,
+      )}
     >
       <div
-        className={cl(classes.colorCardIcon, {
-          [classes.colorCardIconTwo]: brand === 'two',
-          [classes.colorCardIconThree]: brand === 'three',
-        })}
+        className={cl(
+          classes.colorCardIcon,
+          brand === 'two' && classes.colorCardIconTwo,
+          brand === 'three' && classes.colorCardIconThree,
+        )}
       >
         {icon}
       </div>
       <div
-        className={cl(classes.text, {
-          [classes.textTwo]: brand === 'two',
-          [classes.textThree]: brand === 'three',
-        })}
+        className={cl(
+          classes.text,
+          brand === 'two' && classes.textTwo,
+          brand === 'three' && classes.textThree,
+        )}
       >
         <Heading
           size='xxsmall'

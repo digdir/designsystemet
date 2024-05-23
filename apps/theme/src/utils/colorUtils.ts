@@ -180,14 +180,14 @@ export const luminanceFromHex = (hex: CssColor) => {
     const b = rgb.b.toString();
     return luminanceFromRgb(r, g, b);
   }
-  return 0;
+  return 2;
 };
 
 export const getRatioFromLum = (lum1: number, lum2: number) => {
-  if (lum1 && lum2) {
+  if (lum1 !== null && lum2 !== null) {
     return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
   } else {
-    return 0;
+    return -1;
   }
 };
 
@@ -207,7 +207,7 @@ export const getContrastFromHex = (
   if (lum1 !== null && lum2 !== null) {
     return getRatioFromLum(lum1, lum2);
   }
-  return 0;
+  return -1;
 };
 
 export const getContrastFromLightness = (
