@@ -2,7 +2,7 @@
 import cn from 'classnames';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
-import { getContrastFromHex } from '@/utils/ColorUtils';
+import { getContrastFromHex } from '../../../utils/colorUtils';
 
 import classes from './ContrastBox.module.css';
 

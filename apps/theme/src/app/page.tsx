@@ -1,16 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import type { SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
-import { Modal, NativeSelect } from '@digdir/designsystemet-react';
+import { NativeSelect } from '@digdir/designsystemet-react';
 
-import { mapTokens } from '@/utils/tokenMapping';
-import { canTextBeUsedOnColors, generateColorTheme } from '@/utils/themeUtils';
-
-import { areColorsContrasting } from '@/utils/ColorUtils';
+import { mapTokens } from '../utils/tokenMapping';
+import { canTextBeUsedOnColors, generateColorTheme } from '../utils/themeUtils';
+import { areColorsContrasting } from '../utils/colorUtils';
 
 import { Container } from './components/Container/Container';
 import { Landing } from './components/Previews/Landing/Landing';

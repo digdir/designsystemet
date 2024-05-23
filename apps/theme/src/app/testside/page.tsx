@@ -5,8 +5,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cn from 'classnames';
 import { Heading } from '@digdir/designsystemet-react';
 
-import { generateColorScale } from '@/utils/themeUtils';
-
+import { generateColorScale } from '../../utils/themeUtils';
 import { Header } from '../components/Header/Header';
 import { Container } from '../components/Container/Container';
 
@@ -145,9 +144,9 @@ export default function Dev() {
     const lightScale = generateColorScale('#0062BA', 'light');
     const darkScale = generateColorScale('#0062BA', 'dark');
     const contrastScale = generateColorScale('#0062BA', 'contrast');
-    setLightColors(lightScale as CssColor[]);
-    setDarkColors(darkScale as CssColor[]);
-    setContrastColors(contrastScale as CssColor[]);
+    setLightColors(lightScale);
+    setDarkColors(darkScale);
+    setContrastColors(contrastScale);
   }, []);
   return (
     <div className={classes.page}>

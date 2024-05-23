@@ -2,8 +2,7 @@
 import { Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
-import { generateColorScale } from '@/utils/themeUtils';
-
+import { generateColorScale } from '../../../utils/themeUtils';
 import { ContrastBox } from '../ContrastBox/ContrastBox';
 
 import classes from './BaseContrast.module.css';

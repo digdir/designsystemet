@@ -1,6 +1,6 @@
 import { Heading } from '@digdir/designsystemet-react';
 
-import { generateColorTheme } from '@/utils/themeUtils';
+import { generateColorTheme } from '../../../utils/themeUtils';
 
 import classes from './Backgrounds.module.css';
 

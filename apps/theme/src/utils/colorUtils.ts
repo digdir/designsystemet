@@ -21,7 +21,6 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   if (max == min) {
     h = s = 0; // achromatic
   } else {
-    let h: number = 0;
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
@@ -35,7 +34,6 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
         h = (r - g) / d + 4;
         break;
     }
-    h /= 6;
   }
 
   h = Math.round(h ? h * 360 : 0);
@@ -66,12 +64,12 @@ export const hexToHSL = (H: string) => {
   r /= 255;
   g /= 255;
   b /= 255;
-  let cmin = Math.min(r, g, b),
-    cmax = Math.max(r, g, b),
-    delta = cmax - cmin,
-    h = 0,
+  let h = 0,
     s = 0,
     l = 0;
+  const cmin = Math.min(r, g, b),
+    cmax = Math.max(r, g, b),
+    delta = cmax - cmin;
 
   if (delta == 0) h = 0;
   else if (cmax == r) h = ((g - b) / delta) % 6;
@@ -98,12 +96,12 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   s /= 100;
   l /= 100;
 
-  let c = (1 - Math.abs(2 * l - 1)) * s,
-    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2,
-    r = 0,
+  let r = 0,
     g = 0,
     b = 0;
+  const c = (1 - Math.abs(2 * l - 1)) * s,
+    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
+    m = l - c / 2;
 
   if (0 <= h && h < 60) {
     r = c;

@@ -5,7 +5,7 @@ import { Heading } from '@digdir/designsystemet-react';
 import cn from 'classnames';
 import { useEffect } from 'react';
 
-import { generateColorTheme } from '@/utils/themeUtils';
+import { generateColorTheme } from '../../../utils/themeUtils';
 
 import classes from './Interaction.module.css';
 

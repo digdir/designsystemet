@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
-import type { modeType } from '@/types';
-
+import type { modeType } from '../../../types';
 import { Group } from '../Group/Group';
 
 import classes from './Scale.module.css';

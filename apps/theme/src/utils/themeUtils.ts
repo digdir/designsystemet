@@ -1,15 +1,13 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 
-import type { modeType } from '@/types';
+import type { modeType } from '../types';
 
 import {
   getContrastFromHex,
   getContrastFromLightness,
   getLightnessFromHex,
-  Testing,
-} from './ColorUtils';
-import { light } from '@mui/material/styles/createPalette';
+} from './colorUtils';
 
 /**
  *

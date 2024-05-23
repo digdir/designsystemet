@@ -6,9 +6,8 @@ import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { ChromePicker } from 'react-color';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 
-import type { modeType } from '@/types';
-import { getRatioFromLum, luminanceFromHex } from '@/utils/ColorUtils';
-
+import type { modeType } from '../../../types';
+import { getRatioFromLum, luminanceFromHex } from '../../../utils/colorUtils';
 import { Scale } from '../Scale/Scale';
 
 import classes from './ScaleRow.module.css';

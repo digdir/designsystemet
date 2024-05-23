@@ -3,7 +3,7 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
 
-import { generateColorTheme } from '@/utils/themeUtils';
+import { generateColorTheme } from '../../../utils/themeUtils';
 
 import classes from './BackgroundSurface.module.css';
 

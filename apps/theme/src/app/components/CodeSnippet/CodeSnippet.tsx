@@ -7,14 +7,8 @@ import * as prettierHtml from 'prettier/plugins/html.js';
 import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import * as prettierEstree from 'prettier/plugins/estree';
-import {
-  dracula,
-  ghcolors,
-  materialLight,
-  oneLight,
-  oneDark,
-} from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Button, Tooltip } from '@digdir/designsystemet-react';
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 

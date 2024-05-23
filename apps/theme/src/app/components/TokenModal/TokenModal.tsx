@@ -1,11 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { Heading, Modal, Tabs } from '@digdir/designsystemet-react';
 import { useEffect, useRef, useState } from 'react';
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
-import { modeType } from '@/types';
-import { CssColor } from '@adobe/leonardo-contrast-colors';
-import { generateColorScale } from '@/utils/themeUtils';
+import type { modeType } from '../../../types';
+import { generateColorScale } from '../../../utils/themeUtils';
+
 import classes from './TokenModal.module.css';
 
 type TokenModalProps = {
@@ -25,9 +28,9 @@ export const TokenModal = ({
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [JSONTheme, setJSONTheme] = useState('');
-  const [css, setCss] = useState(
-    '@root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
-  );
+  // const [css, setCss] = useState(
+  //   '@root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
+  // );
 
   const generateJsonForColor = (colorArray: CssColor[]) => {
     const obj: { [key: string]: { value: string; type: string } } = {};
