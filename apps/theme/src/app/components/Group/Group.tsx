@@ -1,5 +1,5 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 
 import { Color } from '../Color/Color';
 
@@ -23,7 +23,7 @@ export const Group = ({
   return (
     <div className={classes.group}>
       {header && (
-        <div className={cn(classes.header, { [classes.featured]: featured })}>
+        <div className={cl(classes.header, { [classes.featured]: featured })}>
           {header}
         </div>
       )}
@@ -35,7 +35,7 @@ export const Group = ({
         </div>
       )}
       <div
-        className={cn(classes.colors, { [classes.colorsFeatured]: featured })}
+        className={cl(classes.colors, { [classes.colorsFeatured]: featured })}
       >
         {colors.map(function (item, index) {
           return (

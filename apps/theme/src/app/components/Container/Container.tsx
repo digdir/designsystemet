@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import cl from 'clsx/lite';
 
 import classes from './Container.module.css';
 
@@ -8,5 +8,5 @@ type ContainerProps = {
 };
 
 export const Container = ({ children, className }: ContainerProps) => {
-  return <div className={cn(classes.container, className)}>{children}</div>;
+  return <div className={cl(classes.container, className)}>{children}</div>;
 };

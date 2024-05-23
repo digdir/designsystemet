@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type { SetStateAction } from 'react';
 import { useEffect, useRef, useState } from 'react';
@@ -67,7 +67,7 @@ export const ScaleRow = ({
             </div>
           </button>
           <div
-            className={cn(classes.pickerTool, {
+            className={cl(classes.pickerTool, {
               [classes.showPickerTool]: showPicker,
             })}
           >
@@ -87,7 +87,7 @@ export const ScaleRow = ({
         <div className={classes.contrast}>
           Contrast: {contrast.toFixed(2)}
           <div
-            className={cn(classes.icon, {
+            className={cl(classes.icon, {
               [classes.red]: contrast < 4.5,
             })}
           >

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
 
 import { generateColorScale } from '../../utils/themeUtils';
@@ -33,7 +33,7 @@ const Box = (name: string, color1: CssColor, color2: CssColor) => {
 
 const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
   return (
-    <div className={cn({ [classes.whiteText]: whiteText })}>
+    <div className={cl({ [classes.whiteText]: whiteText })}>
       <Heading
         size='xsmall'
         className={classes.mainTitle}
@@ -161,19 +161,19 @@ export default function Dev() {
         <div className={classes.dotMeaning}>
           <div className={classes.dotMeaningItem}>
             <div
-              className={cn(classes.dotMeaningDot, classes.dotMeaningDotGreen)}
+              className={cl(classes.dotMeaningDot, classes.dotMeaningDotGreen)}
             />
             <div className={classes.dotMeadingTitle}>4.5:1 - Tekst</div>
           </div>
           <div className={classes.dotMeaningItem}>
             <div
-              className={cn(classes.dotMeaningDot, classes.dotMeaningDotOrange)}
+              className={cl(classes.dotMeaningDot, classes.dotMeaningDotOrange)}
             />
             <div className={classes.dotMeadingTitle}> 3:1 - Dekorativ</div>
           </div>
           <div className={classes.dotMeaningItem}>
             <div
-              className={cn(classes.dotMeaningDot, classes.dotMeaningDotRed)}
+              className={cl(classes.dotMeaningDot, classes.dotMeaningDotRed)}
             />
             <div className={classes.dotMeadingTitle}>Under dekorativ</div>
           </div>

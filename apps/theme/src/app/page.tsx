@@ -5,7 +5,7 @@
 import type { SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
 
 import { mapTokens } from '../utils/tokenMapping';
@@ -177,7 +177,7 @@ export default function Home() {
             <h1 className={classes.title}>Sett opp fargetema</h1>
           </div>
           <div className={classes.pickersContainer}>
-            <div className={cn(classes.pickers, 'pickers')}>
+            <div className={cl(classes.pickers, 'pickers')}>
               <ColorPicker
                 colorError={accentError}
                 label='Accent'
@@ -294,7 +294,7 @@ export default function Home() {
               />
             </div>
 
-            <div className={cn(classes.row, classes.brandRow)}>
+            <div className={cl(classes.row, classes.brandRow)}>
               <div className={classes.scaleLabel}>Brand 1</div>
               <Scale
                 colorScale={brandOneTheme[themeMode]}
@@ -327,7 +327,7 @@ export default function Home() {
           <div className={classes.toolbar}>
             <div className={classes.menu}>
               <button
-                className={cn(classes.menuItem, {
+                className={cl(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === 'components',
                 })}
                 onClick={() => setPreviewMode('components')}
@@ -335,7 +335,7 @@ export default function Home() {
                 Komponenter
               </button>
               <button
-                className={cn(classes.menuItem, {
+                className={cl(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === 'dashboard',
                 })}
                 onClick={() => setPreviewMode('dashboard')}
@@ -343,7 +343,7 @@ export default function Home() {
                 Dashboard
               </button>
               <button
-                className={cn(
+                className={cl(
                   classes.menuItem,
                   {
                     [classes.menuItemActive]: previewMode === 'landing',
@@ -354,7 +354,7 @@ export default function Home() {
                 Landingsside
               </button>
               <button
-                className={cn(
+                className={cl(
                   classes.menuItem,
                   {
                     [classes.menuItemActive]: previewMode === 'forms',
@@ -365,7 +365,7 @@ export default function Home() {
                 Skjemaer
               </button>
               <button
-                className={cn(
+                className={cl(
                   classes.menuItem,
                   {
                     [classes.menuItemActive]: previewMode === 'auth',
@@ -378,7 +378,7 @@ export default function Home() {
             </div>
             <div className={classes.toggles}>
               <button
-                className={cn(classes.toggle, {
+                className={cl(classes.toggle, {
                   [classes.active]: themeMode === 'light',
                 })}
                 onClick={() => setThemeMode('light')}
@@ -390,7 +390,7 @@ export default function Home() {
                 Lys
               </button>
               <button
-                className={cn(classes.toggle, {
+                className={cl(classes.toggle, {
                   [classes.active]: themeMode === 'dark',
                 })}
                 onClick={() => setThemeMode('dark')}
@@ -402,7 +402,7 @@ export default function Home() {
                 Mørk
               </button>
               <button
-                className={cn(classes.toggle, {
+                className={cl(classes.toggle, {
                   [classes.active]: themeMode === 'contrast',
                 })}
                 onClick={() => setThemeMode('contrast')}
@@ -417,7 +417,7 @@ export default function Home() {
           </div>
 
           <div
-            className={cn(
+            className={cl(
               classes.preview,
               classes[themeMode as keyof typeof classes],
             )}

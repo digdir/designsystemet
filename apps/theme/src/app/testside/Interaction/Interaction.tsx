@@ -2,7 +2,7 @@
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import { useEffect } from 'react';
 
 import { generateColorTheme } from '../../../utils/themeUtils';
@@ -152,13 +152,13 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
 
   return (
     <div
-      className={cn(classes.box)}
+      className={cl(classes.box)}
       id={'box' + type + columnTitle}
     >
       {scales.map((scale, index) => (
         <div
           key={index}
-          className={cn(classes.surface, 'interactionSurface' + index)}
+          className={cl(classes.surface, 'interactionSurface' + index)}
           style={{
             backgroundColor: scales[index][colorIndex],
             color: type === 'base' ? scales[index][13] : scales[index][12],

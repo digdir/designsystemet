@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import {
   Checkbox,
   Switch,
@@ -27,7 +27,7 @@ export const Components = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
   return (
     <div className={classes.components}>
-      <div className={cn(classes.card, classes.checkbox)}>
+      <div className={cl(classes.card, classes.checkbox)}>
         <Checkbox.Group
           error=''
           legend='Handleliste'
@@ -58,9 +58,9 @@ export const Components = () => {
           <Checkbox value='sms'>10 poser med Smash</Checkbox>
         </Checkbox.Group>
       </div>
-      <div className={cn(classes.card, classes.user)}>
+      <div className={cl(classes.card, classes.user)}>
         <Heading
-          className={cn(classes.cardTitle, classes.userTitle)}
+          className={cl(classes.cardTitle, classes.userTitle)}
           size='xsmall'
         >
           Opprett ny bruker
@@ -93,7 +93,7 @@ export const Components = () => {
           Opprett ny bruker
         </Button>
       </div>
-      <div className={cn(classes.card, classes.tableContainer)}>
+      <div className={cl(classes.card, classes.tableContainer)}>
         <Heading
           className={classes.cardTitle}
           size='xxsmall'
@@ -185,7 +185,7 @@ export const Components = () => {
           totalPages={6}
         />
       </div>
-      <div className={cn(classes.card, classes.help)}>
+      <div className={cl(classes.card, classes.help)}>
         <Heading
           size='xsmall'
           className={classes.helpHeading}
@@ -206,7 +206,7 @@ export const Components = () => {
               </Heading>
             </Card.Header>
             <Card.Content
-              className={cn(classes.helpContent, classes.helpFirstDesc)}
+              className={cl(classes.helpContent, classes.helpFirstDesc)}
             >
               Most provide as with carried business are much better more the.
             </Card.Content>
@@ -224,7 +224,7 @@ export const Components = () => {
               </Heading>
             </Card.Header>
             <Card.Content
-              className={cn(classes.helpContent, classes.helpSecondDesc)}
+              className={cl(classes.helpContent, classes.helpSecondDesc)}
             >
               Most provide as with carried business are much better more the.
             </Card.Content>
@@ -242,14 +242,14 @@ export const Components = () => {
               </Heading>
             </Card.Header>
             <Card.Content
-              className={cn(classes.helpContent, classes.helpThirdDesc)}
+              className={cl(classes.helpContent, classes.helpThirdDesc)}
             >
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
         </div>
       </div>
-      <div className={cn(classes.card, classes.radio)}>
+      <div className={cl(classes.card, classes.radio)}>
         <Radio.Group
           error=''
           legend='Hvilken iskremsmak er best?'
@@ -263,7 +263,7 @@ export const Components = () => {
           <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
         </Radio.Group>
       </div>
-      <div className={cn(classes.card, classes.tag)}>
+      <div className={cl(classes.card, classes.tag)}>
         <Heading
           size='xsmall'
           className={classes.tagHeading}
@@ -321,7 +321,7 @@ export const Components = () => {
           </Tag>
         </div>
       </div>
-      <div className={cn(classes.card, classes.tabs)}>
+      <div className={cl(classes.card, classes.tabs)}>
         <Tabs
           defaultValue='value1'
           size='small'
@@ -342,7 +342,7 @@ export const Components = () => {
           <Link href='#'>Enhetsregisteret</Link> før den kan bli registrert.
         </Paragraph>
       </div>
-      <div className={cn(classes.card, classes.faq)}>
+      <div className={cl(classes.card, classes.faq)}>
         <Heading
           size='xsmall'
           className={classes.cardTitle}
@@ -388,10 +388,10 @@ export const Components = () => {
           </Accordion.Item>
         </Accordion>
       </div>
-      <div className={cn(classes.card, classes.test)}>
+      <div className={cl(classes.card, classes.test)}>
         <Heading
           size='xsmall'
-          className={cn(classes.footerHeading, classes.switchHeading)}
+          className={cl(classes.footerHeading, classes.switchHeading)}
         >
           Innstillinger
         </Heading>
@@ -413,102 +413,102 @@ export const Components = () => {
         </div>
       </div>
 
-      <div className={cn(classes.card, classes.footerOne)}>
+      <div className={cl(classes.card, classes.footerOne)}>
         <Heading
           size='xsmall'
-          className={cn(classes.footerHeading, classes.footerOneHeading)}
+          className={cl(classes.footerHeading, classes.footerOneHeading)}
         >
           Om nettstedet
         </Heading>
-        <div className={cn(classes.footerList)}>
+        <div className={cl(classes.footerList)}>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
         </div>
       </div>
-      <div className={cn(classes.card, classes.footerTwo)}>
+      <div className={cl(classes.card, classes.footerTwo)}>
         <Heading
           size='xsmall'
-          className={cn(classes.footerHeading, classes.footerTwoHeading)}
+          className={cl(classes.footerHeading, classes.footerTwoHeading)}
         >
           Nyttige lenker
         </Heading>
-        <div className={cn(classes.footerList)}>
+        <div className={cl(classes.footerList)}>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
         </div>
       </div>
-      <div className={cn(classes.card, classes.footerThree)}>
+      <div className={cl(classes.card, classes.footerThree)}>
         <Heading
           size='xsmall'
-          className={cn(classes.footerHeading, classes.footerThreeHeading)}
+          className={cl(classes.footerHeading, classes.footerThreeHeading)}
         >
           Kontakt oss
         </Heading>
-        <div className={cn(classes.footerList)}>
+        <div className={cl(classes.footerList)}>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring
           </Link>
           <Link
-            className={cn(classes.footerItem)}
+            className={cl(classes.footerItem)}
             href='#'
           >
             Peronvernærklæring

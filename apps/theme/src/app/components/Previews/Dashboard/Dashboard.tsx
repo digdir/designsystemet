@@ -10,7 +10,7 @@ import {
   ArchiveIcon,
   TeddyBearIcon,
 } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import classes from './Dashboard.module.css';
@@ -46,7 +46,7 @@ export const Dashboard = () => {
             color='second'
             size='small'
             variant='tertiary'
-            className={cn(classes.btn, classes.btnActive)}
+            className={cl(classes.btn, classes.btnActive)}
           >
             <HouseIcon
               title='a11y-title'
@@ -124,7 +124,7 @@ export const Dashboard = () => {
           Dashboard
         </Heading>
         <div className={classes.grid}>
-          <div className={cn(classes.colorCardsContainer, classes.card)}>
+          <div className={cl(classes.colorCardsContainer, classes.card)}>
             <Heading
               size='xxsmall'
               className={classes.cardTitle}
@@ -167,7 +167,7 @@ export const Dashboard = () => {
               />
             </div>
           </div>
-          <div className={cn(classes.users, classes.card)}>
+          <div className={cl(classes.users, classes.card)}>
             <Heading
               size='xxsmall'
               className={classes.cardTitle}
@@ -191,7 +191,7 @@ export const Dashboard = () => {
                   alt=''
                 />
                 <div className={classes.userTextContainer}>
-                  <span className={cn(classes.userRole, classes.userRoleTwo)}>
+                  <span className={cl(classes.userRole, classes.userRoleTwo)}>
                     Subscriber
                   </span>
                   <span className={classes.userName}>Ola Normann</span>
@@ -203,7 +203,7 @@ export const Dashboard = () => {
                   alt=''
                 />
                 <div className={classes.userTextContainer}>
-                  <span className={cn(classes.userRole, classes.userRoleThree)}>
+                  <span className={cl(classes.userRole, classes.userRoleThree)}>
                     Editor
                   </span>
                   <span className={classes.userName}>Jens Birkemoen</span>
@@ -211,7 +211,7 @@ export const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className={cn(classes.graph, classes.card)}>
+          <div className={cl(classes.graph, classes.card)}>
             <Heading
               size='xxsmall'
               className={classes.cardTitle}
@@ -220,7 +220,7 @@ export const Dashboard = () => {
             </Heading>
             <BarChartComponent />
           </div>
-          <div className={cn(classes.graph2, classes.card)}>
+          <div className={cl(classes.graph2, classes.card)}>
             <Heading
               size='xxsmall'
               className={classes.cardTitle}
@@ -229,7 +229,7 @@ export const Dashboard = () => {
             </Heading>
             <AreaChartComponent />
           </div>
-          <div className={cn(classes.graph3, classes.card)}>
+          <div className={cl(classes.graph3, classes.card)}>
             <Heading
               size='xxsmall'
               className={classes.cardTitle}

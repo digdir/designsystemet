@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { Link, Popover } from '@digdir/designsystemet-react';
@@ -51,7 +51,7 @@ export const ColorPicker = ({
         >
           <Popover.Trigger asChild>
             <div
-              className={cn(
+              className={cl(
                 classes.status,
                 {
                   [classes.statusYellow]: colorError == 'decorative',
@@ -103,7 +103,7 @@ export const ColorPicker = ({
   return (
     <div
       ref={ref}
-      className={cn(classes.whole, { [classes.disabled]: disabled })}
+      className={cl(classes.whole, { [classes.disabled]: disabled })}
     >
       <div className={classes.picker}>
         <div className={classes.label}>
@@ -121,7 +121,7 @@ export const ColorPicker = ({
           <div className={classes.input}>{color}</div>
         </button>
       </div>
-      <div className={cn(classes.popup, { [classes.show]: showModal })}>
+      <div className={cl(classes.popup, { [classes.show]: showModal })}>
         <ChromePicker
           onChange={({ hex }: { hex: string }) => {
             setColor(hex);

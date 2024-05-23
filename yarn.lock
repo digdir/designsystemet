@@ -8685,7 +8685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.3.2, classnames@npm:^2.5.1":
+"classnames@npm:^2.3.2":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 58eb394e8817021b153bb6e7d782cfb667e4ab390cb2e9dac2fc7c6b979d1cc2b2a733093955fc5c94aa79ef5c8c89f11ab77780894509be6afbb91dddd79d15
@@ -21619,7 +21619,6 @@ __metadata:
     "@types/react-dom": "npm:^18"
     "@types/react-syntax-highlighter": "npm:^15.5.11"
     bootstrap: "npm:^5.3.3"
-    classnames: "npm:^2.5.1"
     hsluv: "npm:^1.0.1"
     next: "npm:14.1.3"
     react: "npm:^18"
