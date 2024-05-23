@@ -92,35 +92,46 @@ export default function Home() {
     'light',
   );
   const [previewMode, setPreviewMode] = useState<previewModeType>('components');
+  const [contrastMode, setContrastMode] = useState<'aa' | 'aaa'>('aa');
 
   useEffect(() => {
     mapTokens();
-    updateColor(accentColor, setAccentColor, setAccentTheme, setAccentError);
+    updateColor(
+      accentColor,
+      contrastMode,
+      setAccentColor,
+      setAccentTheme,
+      setAccentError,
+    );
     updateColor(
       neutralColor,
+      contrastMode,
       setNeutralColor,
       setNeutralTheme,
       setNeutralError,
     );
     updateColor(
       brandOneColor,
+      contrastMode,
       setBrandOneColor,
       setBrandOneTheme,
       setBrandOneError,
     );
     updateColor(
       brandTwoColor,
+      contrastMode,
       setBrandTwoColor,
       setBrandTwoTheme,
       setBrandTwoError,
     );
     updateColor(
       brandThreeColor,
+      contrastMode,
       setBrandThreeColor,
       setBrandThreeTheme,
       setBrandThreeError,
     );
-  }, []);
+  }, [contrastMode]);
 
   // Sticky Menu Area
   useEffect(() => {
@@ -142,11 +153,12 @@ export default function Home() {
 
   const updateColor = (
     color: CssColor,
+    contrastMode: 'aa' | 'aaa',
     colorSetter: React.Dispatch<React.SetStateAction<CssColor>>,
     colorThemeSetter: React.Dispatch<React.SetStateAction<themeType>>,
     colorErrorSetter: React.Dispatch<React.SetStateAction<colorErrorType>>,
   ) => {
-    const scale = generateColorTheme(color as CssColor);
+    const scale = generateColorTheme(color as CssColor, contrastMode);
     colorSetter(color as SetStateAction<CssColor>);
     colorThemeSetter(scale);
     colorErrorSetter(getColorError(scale.light));
@@ -249,8 +261,13 @@ export default function Home() {
                   label='Kontrastnivå'
                   size='medium'
                   className={classes.contrastSelect}
+                  value={contrastMode}
+                  onChange={(e) => {
+                    setContrastMode(e.target.value as 'aa' | 'aaa');
+                  }}
                 >
                   <option value='aa'>AA</option>
+                  <option value='aaa'>AAA</option>
                 </NativeSelect>
               </div>
               <div className={classes.dropdown}>
@@ -261,57 +278,6 @@ export default function Home() {
                   brand2Color={brandTwoColor}
                   brand3Color={brandThreeColor}
                 />
-                {/* <DropdownMenu
-                  placement='bottom-end'
-                  size='small'
-                >
-                  <DropdownMenu.Trigger
-                    size='medium'
-                    className={classes.dropdownBtn}
-                  >
-                    Kopier
-                    <ChevronDownIcon
-                      title='a11y-title'
-                      fontSize='1.5rem'
-                    />
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Group heading='Themes'>
-                      <DropdownMenu.Item
-                        onClick={() => copyThemeToClipboard('light')}
-                      >
-                        Light theme
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyThemeToClipboard('dark')}
-                      >
-                        Dark theme
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyThemeToClipboard('contrast')}
-                      >
-                        Contrast theme
-                      </DropdownMenu.Item>
-                    </DropdownMenu.Group>
-                    <DropdownMenu.Group heading='Globals'>
-                      <DropdownMenu.Item
-                        onClick={() => copyGlobalsToClipboard('light')}
-                      >
-                        Globals Light
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyGlobalsToClipboard('dark')}
-                      >
-                        Globals dark
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyGlobalsToClipboard('contrast')}
-                      >
-                        Globals contrast
-                      </DropdownMenu.Item>
-                    </DropdownMenu.Group>
-                  </DropdownMenu.Content>
-                </DropdownMenu> */}
               </div>
             </div>
           </div>

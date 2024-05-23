@@ -8,6 +8,7 @@ import {
   getContrastFromLightness,
   getLightnessFromHex,
 } from './ColorUtils';
+import { light } from '@mui/material/styles/createPalette';
 
 /**
  *
@@ -19,6 +20,7 @@ import {
 export const generateColorScale = (
   color: CssColor,
   mode: modeType,
+  contrastMode: 'aa' | 'aaa' | 'AA' | 'AAA' = 'AA',
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 ): CssColor[] => {
   const leoBackgroundColor = new BackgroundColor({
@@ -45,12 +47,40 @@ export const generateColorScale = (
     leoBackgroundColor.colorKeys[0],
   );
 
+  const textSubLightLightness = contrastMode === 'aa' ? 42 : 30;
+  const textDefLightLightness = contrastMode === 'aa' ? 20 : 17;
+
+  const textSubDarkLightness = contrastMode === 'aa' ? 65 : 78;
+  const textDefDarkLightness = contrastMode === 'aa' ? 89 : 93;
+
   let lightnessScale: number[] = [];
 
   if (mode === 'light') {
-    lightnessScale = [100, 96, 90, 84, 78, 81, 57, 33, 42, 20];
+    lightnessScale = [
+      100,
+      96,
+      90,
+      84,
+      78,
+      81,
+      57,
+      33,
+      textSubLightLightness,
+      textDefLightLightness,
+    ];
   } else if (mode === 'dark') {
-    lightnessScale = [10, 14, 20, 26, 32, 35, 47, 77, 77, 83];
+    lightnessScale = [
+      10,
+      14,
+      20,
+      26,
+      32,
+      35,
+      47,
+      77,
+      textSubDarkLightness,
+      textDefDarkLightness,
+    ];
   } else {
     lightnessScale = [1, 6, 14, 20, 26, 58, 70, 82, 80, 95];
   }
@@ -107,10 +137,13 @@ export const generateColorScale = (
  *
  * @param color The base color that is used to generate the color theme
  */
-export const generateColorTheme = (color: CssColor) => {
-  const lightScale = generateColorScale(color, 'light');
-  const darkScale = generateColorScale(color, 'dark');
-  const contrastScale = generateColorScale(color, 'contrast');
+export const generateColorTheme = (
+  color: CssColor,
+  contrastMode: 'aa' | 'aaa',
+) => {
+  const lightScale = generateColorScale(color, 'light', contrastMode);
+  const darkScale = generateColorScale(color, 'dark', contrastMode);
+  const contrastScale = generateColorScale(color, 'contrast', contrastMode);
 
   return {
     light: lightScale,
@@ -135,8 +168,9 @@ const calculateContrastOneColor = (baseColor: CssColor) => {
 export const calculateContrastTwoColor = (color: CssColor) => {
   const contrastWhite = getContrastFromHex(color, '#ffffff');
   const contrastBlack = getContrastFromHex(color, '#000000');
-  const lightness = contrastWhite >= contrastBlack ? 100 : 0;
-  const doubleALightnessModifier = 50;
+  const lightness = getLightnessFromHex(color);
+  const doubleALightnessModifier =
+    lightness <= 40 ? 60 : lightness >= 60 ? 60 : 50;
 
   let targetLightness = 0;
   const contrastDirection =

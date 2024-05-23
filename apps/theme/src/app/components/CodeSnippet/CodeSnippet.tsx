@@ -69,18 +69,20 @@ export const CodeSnippet = ({
     <div className={classes.codeSnippet}>
       {snippet && (
         <>
-          <Tooltip
-            content={toolTipText}
-            className={classes.tooltip}
-          >
-            <button
-              onMouseEnter={() => setToolTipText('Kopier')}
-              onClick={() => onButtonClick()}
-              className={classes.icon}
+          <div className={classes.copyContainer}>
+            <Tooltip
+              content={toolTipText}
+              className={classes.tooltip}
             >
-              <FilesIcon fontSize={22} />
-            </button>
-          </Tooltip>
+              <button
+                onMouseEnter={() => setToolTipText('Kopier')}
+                onClick={() => onButtonClick()}
+                className={classes.icon}
+              >
+                <FilesIcon fontSize={22} />
+              </button>
+            </Tooltip>
+          </div>
           <SyntaxHighlighter
             style={oneDark}
             language={language}

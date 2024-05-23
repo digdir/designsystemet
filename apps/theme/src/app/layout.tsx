@@ -1,14 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',
@@ -22,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='no'>
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
