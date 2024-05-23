@@ -39,38 +39,38 @@
     background-color: transparent;
   }
 
-  .fds-combobox--small .fds-combobox__input__wrapper {
+  .fds-combobox--sm .fds-combobox__input__wrapper {
     min-height: var(--fds-sizing-10);
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
     padding: 5px var(--fds-spacing-2);
   }
 
-  .fds-combobox--small .fds-combobox__input__wrapper .fds-combobox__input {
+  .fds-combobox--sm .fds-combobox__input__wrapper .fds-combobox__input {
     font: var(--fds-typography-paragraph-small);
     font-family: inherit;
   }
 
-  .fds-combobox--medium .fds-combobox__input__wrapper {
+  .fds-combobox--md .fds-combobox__input__wrapper {
     min-height: var(--fds-sizing-12);
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
     padding: 7px var(--fds-spacing-3);
   }
 
-  .fds-combobox--medium .fds-combobox__input__wrapper .fds-combobox__input {
+  .fds-combobox--md .fds-combobox__input__wrapper .fds-combobox__input {
     font: var(--fds-typography-paragraph-medium);
     font-family: inherit;
   }
 
-  .fds-combobox--large .fds-combobox__input__wrapper {
+  .fds-combobox--lg .fds-combobox__input__wrapper {
     min-height: var(--fds-sizing-14);
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
     padding: 7px var(--fds-spacing-4);
   }
 
-  .fds-combobox--large .fds-combobox__input__wrapper .fds-combobox__input {
+  .fds-combobox--lg .fds-combobox__input__wrapper .fds-combobox__input {
     font: var(--fds-typography-paragraph-large);
     font-family: inherit;
   }
@@ -89,7 +89,6 @@
     flex-wrap: wrap;
     width: 100%;
     gap: var(--fds-spacing-2);
-    padding: var(--fds-spacing-2) 0;
     align-items: center;
     background-color: transparent;
   }
@@ -132,17 +131,17 @@
     aspect-ratio: 1;
   }
 
-  .fds-combobox--small .fds-combobox__clear-button {
+  .fds-combobox--sm .fds-combobox__clear-button {
     height: 25px;
     width: 25px;
   }
 
-  .fds-combobox--medium .fds-combobox__clear-button {
+  .fds-combobox--md .fds-combobox__clear-button {
     height: 29px;
     width: 29px;
   }
 
-  .fds-combobox--large .fds-combobox__clear-button {
+  .fds-combobox--lg .fds-combobox__clear-button {
     height: 31px;
     width: 31px;
   }
@@ -193,19 +192,19 @@
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }
 
-  .fds-combobox--large .fds-combobox__empty {
+  .fds-combobox--lg .fds-combobox__empty {
     font: var(--fds-typography-label-large);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox--medium .fds-combobox__empty {
+  .fds-combobox--md .fds-combobox__empty {
     font: var(--fds-typography-label-medium);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox--small .fds-combobox__empty {
+  .fds-combobox--sm .fds-combobox__empty {
     font: var(--fds-typography-label-small);
     font-family: inherit;
     font-weight: 400;
@@ -215,19 +214,19 @@
     padding: var(--fds-spacing-2) var(--fds-spacing-3);
   }
 
-  .fds-combobox--large .fds-combobox__custom {
+  .fds-combobox--lg .fds-combobox__custom {
     font: var(--fds-typography-label-large);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox--medium .fds-combobox__custom {
+  .fds-combobox--md .fds-combobox__custom {
     font: var(--fds-typography-label-medium);
     font-family: inherit;
     font-weight: 400;
   }
 
-  .fds-combobox--small .fds-combobox__custom {
+  .fds-combobox--sm .fds-combobox__custom {
     font: var(--fds-typography-label-small);
     font-family: inherit;
     font-weight: 400;
@@ -293,15 +292,15 @@
     border-color: var(--fds-semantic-border-input-hover);
   }
 
-  .fds-combobox--small .fds-combobox__option .fds-combobox__option__icon-wrapper {
+  .fds-combobox--sm .fds-combobox__option .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-5);
   }
 
-  .fds-combobox--medium .fds-combobox__option .fds-combobox__option__icon-wrapper {
+  .fds-combobox--md .fds-combobox__option .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-6);
   }
 
-  .fds-combobox--large .fds-combobox__option .fds-combobox__option__icon-wrapper {
+  .fds-combobox--lg .fds-combobox__option .fds-combobox__option__icon-wrapper {
     width: var(--fds-spacing-7);
   }
 

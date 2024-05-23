@@ -1,11 +1,12 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { Placement } from '@floating-ui/utils';
 
 import { Popover } from '../Popover';
 import type { PopoverProps } from '../Popover/Popover';
 import type { PortalProps } from '../../types/Portal';
+import { getSize } from '../../utilities/getSize';
 
 import { HelpTextIcon } from './HelpTextIcon';
 
@@ -15,8 +16,9 @@ export type HelpTextProps = {
    **/
   title: string;
   /**
-   * Size of the icon.
-   * @default medium
+   * Size of the helptext
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
    */
   size?: PopoverProps['size'];
   /**
@@ -30,12 +32,13 @@ export type HelpTextProps = {
 const HelpText = ({
   title,
   placement = 'right',
-  size = 'medium',
   portal,
   className,
   children,
   ...rest
 }: HelpTextProps) => {
+  const size = getSize(rest.size || 'md') as PopoverProps['size'];
+
   const [open, setOpen] = useState(false);
 
   return (

@@ -69,7 +69,7 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
         />
         <Heading
           asChild
-          size='medium'
+          size='md'
         >
           <Skeleton.Text>En medium tittel</Skeleton.Text>
         </Heading>
@@ -101,7 +101,7 @@ export const As: StoryFn<typeof Skeleton> = () => {
   return (
     <>
       <Heading
-        size='large'
+        size='lg'
         asChild
       >
         <Skeleton.Text>Her er en heading</Skeleton.Text>
@@ -126,19 +126,19 @@ export const TextExample: StoryFn<typeof Text> = () => {
     <>
       <div style={{ display: 'flex', gap: '20px' }}>
         <div style={{ width: '140px' }}>
-          <Heading size='medium'>Heading</Heading>
-          <Paragraph size='small'>
+          <Heading size='md'>Heading</Heading>
+          <Paragraph size='sm'>
             Her er en paragraf som går over flere linjer
           </Paragraph>
         </div>
         <div style={{ width: '140px' }}>
           <Heading
-            size='medium'
+            size='md'
             asChild
           >
             <Skeleton.Text>Heading</Skeleton.Text>
           </Heading>
-          <Paragraph size='small'>
+          <Paragraph size='sm'>
             <Skeleton.Text width='100%' />
 
             <Skeleton.Text width='100%' />

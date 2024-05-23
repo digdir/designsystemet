@@ -1,8 +1,9 @@
-import classes from "./Color.module.css";
 import cn from "classnames";
 import { SunIcon } from "@navikt/aksel-icons";
 import { Tooltip } from "@digdir/designsystemet-react";
 import { useState } from "react";
+
+import classes from "./Color.module.css";
 
 type ColorProps = {
   color: string;
@@ -26,20 +27,20 @@ const Color = ({
   return (
     <div>
       <Tooltip content={tooltipText} placement="top">
-        <div
+        <button
           onClick={() => {
-            navigator.clipboard.writeText(hex as string);
+            void navigator.clipboard.writeText(hex ?? "");
             setTooltipText("Kopiert!");
           }}
           onMouseLeave={() => {
             setTooltipText("Kopier hexverdi");
           }}
           onMouseEnter={() => {
-            setTooltipText(hex);
+            setTooltipText(hex ?? "");
           }}
           style={{ backgroundColor: color }}
           className={cn(classes.box, { [classes.featured]: featured })}
-        ></div>
+        ></button>
       </Tooltip>
 
       {showColorMeta && (

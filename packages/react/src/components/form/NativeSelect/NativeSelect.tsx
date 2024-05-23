@@ -1,12 +1,14 @@
 import { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
 import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import { useNativeSelect } from './useNativeSelect';
+
+type OldNativeSelectSizes = 'small' | 'medium' | 'large';
 
 export type NativeSelectProps = {
   /**
@@ -25,9 +27,10 @@ export type NativeSelectProps = {
   multiple?: boolean;
   /**
    * Defines the size of the select.
-   * @default medium
-   * */
-  size?: 'small' | 'medium' | 'large';
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   **/
+  size?: 'sm' | 'md' | 'lg' | OldNativeSelectSizes;
   /** Error message for form field */
   error?: ReactNode;
   /** Defines if the select is readOnly
@@ -59,7 +62,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       descriptionId,
       errorId,
       readOnly = false,
-      size = 'medium',
+      size = 'md',
     } = useNativeSelect(props);
 
     return (

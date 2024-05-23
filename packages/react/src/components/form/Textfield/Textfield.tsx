@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { useState, useId, forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -11,13 +11,19 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 
+type OldTextfieldSizes = 'small' | 'medium' | 'large';
+
 export type TextfieldProps = {
   /** Label */
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
-  /** Changes field size and paddings */
-  size?: 'small' | 'medium' | 'large';
+  /**
+   * Changes field size and paddings
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldTextfieldSizes;
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
@@ -82,7 +88,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       descriptionId,
       hasError,
       errorId,
-      size = 'medium',
+      size = 'md',
       readOnly,
     } = useTextfield(props);
 

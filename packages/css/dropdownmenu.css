@@ -10,17 +10,17 @@
     background-color: var(--fds-semantic-background-default);
   }
 
-  .fds-dropdownmenu--small {
+  .fds-dropdownmenu--sm {
     min-width: 240px;
     padding: var(--fds-spacing-2);
   }
 
-  .fds-dropdownmenu--medium {
+  .fds-dropdownmenu--md {
     min-width: 260px;
     padding: var(--fds-spacing-3) var(--fds-spacing-2);
   }
 
-  .fds-dropdownmenu--large {
+  .fds-dropdownmenu--lg {
     min-width: 280px;
     padding: var(--fds-spacing-4) var(--fds-spacing-2);
   }

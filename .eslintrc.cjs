@@ -40,10 +40,11 @@ module.exports = {
       rules: {
         '@typescript-eslint/consistent-type-exports': 'warn',
         '@typescript-eslint/consistent-type-imports': 'warn',
+        'prefer-const': 'warn',
       },
     },
     {
-      files: ['apps/storefront/**/*'],
+      files: ['apps/storefront/**/*', 'apps/dev/**/*', 'apps/theme/**/*'],
       extends: ['plugin:@next/next/recommended'],
     },
     {
@@ -92,7 +93,11 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
-        project: ['./apps/*/tsconfig.json', './packages/*/tsconfig.json'],
+        project: [
+          /* all tsconfig files */
+          'tsconfig.json',
+          './**/tsconfig.json',
+        ],
       },
     },
   },

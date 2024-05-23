@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
 import classes from "./BarChart.module.css";
 
 const data = [

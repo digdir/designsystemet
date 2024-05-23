@@ -99,7 +99,7 @@ Preview.args = {
   hideClearButton: false,
   virtual: false,
   description: 'Velg et sted',
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -131,7 +131,7 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
 
 Multiple.args = {
   multiple: true,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -176,7 +176,7 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
 
 WithDescription.args = {
   multiple: false,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -447,7 +447,7 @@ export const Virtualized: StoryFn<typeof Combobox> = (args) => {
 Virtualized.args = {
   multiple: false,
   virtual: true,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -503,7 +503,7 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
 
 Loading.args = {
   multiple: false,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 
@@ -594,7 +594,7 @@ export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
 
 CustomNewValue.args = {
   multiple: false,
-  size: 'medium',
+  size: 'md',
   label: 'Hvor går reisen?',
 };
 

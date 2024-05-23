@@ -41,17 +41,17 @@
     max-width: 700px;
   }
 
-  .fds-helptext--small .fds-helptext__icon {
+  .fds-helptext--sm .fds-helptext__icon {
     width: var(--fds-sizing-6);
     height: var(--fds-sizing-6);
   }
 
-  .fds-helptext--medium .fds-helptext__icon {
+  .fds-helptext--md .fds-helptext__icon {
     width: var(--fds-sizing-7);
     height: var(--fds-sizing-7);
   }
 
-  .fds-helptext--large .fds-helptext__icon {
+  .fds-helptext--lg .fds-helptext__icon {
     width: var(--fds-sizing-8);
     height: var(--fds-sizing-8);
   }

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { forwardRef, createContext, useId } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
@@ -43,7 +43,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       readOnly,
       defaultValue,
       name,
-      size = 'medium',
+      size = 'md',
       required,
       inline,
       className,

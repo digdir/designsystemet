@@ -24,11 +24,11 @@ const renderAsChild = (props?: BoxProps) =>
   );
 
 describe('Box', () => {
-  it('should render a div with correct classname when shadow is xsmall', () => {
-    render({ shadow: 'xsmall' });
+  it('should render a div with correct classname when shadow is xs', () => {
+    render({ shadow: 'xs' });
     const box = screen.getByTitle('box');
 
-    expect(box.classList).toContain('fds-box--xsmall-shadow');
+    expect(box.classList).toContain('fds-box--xs-shadow');
   });
 
   it('should render a div with correct classname when borderColor is subtle', () => {
@@ -38,11 +38,11 @@ describe('Box', () => {
     expect(box.classList).toContain('fds-box--subtle-border-color');
   });
 
-  it('should render a div with correct classname when borderRadius is small', () => {
-    render({ borderRadius: 'small' });
+  it('should render a div with correct classname when borderRadius is sm', () => {
+    render({ borderRadius: 'sm' });
     const box = screen.getByTitle('box');
 
-    expect(box.classList).toContain('fds-box--small-border-radius');
+    expect(box.classList).toContain('fds-box--sm-border-radius');
   });
 
   it('should render as a button when we use asChild', () => {
