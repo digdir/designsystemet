@@ -1,6 +1,5 @@
 import fs from 'fs';
 
-import * as R from 'ramda';
 import type { AcceptedPlugin, Plugin } from 'postcss';
 import postcss from 'postcss';
 import glob from 'fast-glob';
@@ -38,8 +37,6 @@ export const cssNameCodemod = ({
 
   const transform = async () => {
     const files = await glob(globPath, { ignore: ['node_modules/**'] });
-
-    console.log({ files });
 
     const filePromises = files.map(async (file) => {
       const contents = fs.readFileSync(file).toString();
