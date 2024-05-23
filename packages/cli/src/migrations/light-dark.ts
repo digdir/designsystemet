@@ -2,7 +2,7 @@ import { cssVarCodemod } from '../codemods/css-var-rename.js';
 
 export default (glob?: string) =>
   cssVarCodemod({
-    globPath: glob,
+    globPattern: glob,
     dictionary: {
       // '--fds-semantic-surface-first-light': '--fds-semantic-surface-first-subtle',
       // '--fds-semantic-surface-first-light-hover': '--fds-semantic-surface-first-subtle-hover',

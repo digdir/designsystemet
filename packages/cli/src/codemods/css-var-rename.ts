@@ -7,10 +7,10 @@ import glob from 'fast-glob';
 
 type CSSCodemodProps = {
   dictionary: Record<string, string>;
-  globPath?: string;
+  globPattern?: string;
 };
 
-export const cssVarCodemod = async ({ dictionary, globPath = './**/*.css' }: CSSCodemodProps) => {
+export const cssVarCodemod = async ({ dictionary, globPattern = './**/*.css' }: CSSCodemodProps) => {
   const transformPlugin: Plugin = {
     postcssPlugin: 'Replaces referenced CSS variables',
     Declaration(decl) {
@@ -37,7 +37,7 @@ export const cssVarCodemod = async ({ dictionary, globPath = './**/*.css' }: CSS
   const processor = postcss(plugins);
 
   const transform = async () => {
-    const files = await glob(globPath, { ignore: ['node_modules/**', 'dist/**'] });
+    const files = await glob(globPattern, { ignore: ['node_modules/**', 'dist/**'] });
 
     const filePromises = files.map(async (file) => {
       const contents = fs.readFileSync(file).toString();
