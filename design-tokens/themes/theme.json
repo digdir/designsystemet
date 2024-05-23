@@ -2,312 +2,312 @@
   "color": {
     "accent": {
       "1": {
-        "value": "{theme.accent.1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.1}"
       },
       "2": {
-        "value": "{theme.accent.2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.2}"
       },
       "3": {
-        "value": "{theme.accent.3}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.3}"
       },
       "4": {
-        "value": "{theme.accent.4}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.4}"
       },
       "5": {
-        "value": "{theme.accent.5}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.5}"
       },
       "6": {
-        "value": "{theme.accent.6}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.6}"
       },
       "7": {
-        "value": "{theme.accent.7}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.7}"
       },
       "8": {
-        "value": "{theme.accent.8}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.8}"
       },
       "9": {
-        "value": "{theme.accent.9}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.9}"
       },
       "10": {
-        "value": "{theme.accent.10}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.10}"
       },
       "11": {
-        "value": "{theme.accent.11}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.11}"
       },
       "12": {
-        "value": "{theme.accent.12}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.12}"
       },
       "13": {
-        "value": "{theme.accent.13}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.13}"
       },
       "contrast-1": {
-        "value": "{theme.accent.contrast-1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.contrast-1}"
       },
       "contrast-2": {
-        "value": "{theme.accent.contrast-2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.accent.contrast-2}"
       }
     },
     "neutral": {
       "1": {
-        "value": "{theme.neutral.1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.1}"
       },
       "2": {
-        "value": "{theme.neutral.2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.2}"
       },
       "3": {
-        "value": "{theme.neutral.3}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.3}"
       },
       "4": {
-        "value": "{theme.neutral.4}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.4}"
       },
       "5": {
-        "value": "{theme.neutral.5}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.5}"
       },
       "6": {
-        "value": "{theme.neutral.6}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.6}"
       },
       "7": {
-        "value": "{theme.neutral.7}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.7}"
       },
       "8": {
-        "value": "{theme.neutral.8}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.8}"
       },
       "9": {
-        "value": "{theme.neutral.9}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.9}"
       },
       "10": {
-        "value": "{theme.neutral.10}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.10}"
       },
       "11": {
-        "value": "{theme.neutral.11}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.11}"
       },
       "12": {
-        "value": "{theme.neutral.12}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.12}"
       },
       "13": {
-        "value": "{theme.neutral.13}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.13}"
       },
       "contrast-1": {
-        "value": "{theme.neutral.contrast-1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.contrast-1}"
       },
       "contrast-2": {
-        "value": "{theme.neutral.contrast-2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.neutral.contrast-2}"
       }
     },
     "brand1": {
       "1": {
-        "value": "{theme.brand1.1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.1}"
       },
       "2": {
-        "value": "{theme.brand1.2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.2}"
       },
       "3": {
-        "value": "{theme.brand1.3}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.3}"
       },
       "4": {
-        "value": "{theme.brand1.4}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.4}"
       },
       "5": {
-        "value": "{theme.brand1.5}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.5}"
       },
       "6": {
-        "value": "{theme.brand1.6}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.6}"
       },
       "7": {
-        "value": "{theme.brand1.7}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.7}"
       },
       "8": {
-        "value": "{theme.brand1.8}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.8}"
       },
       "9": {
-        "value": "{theme.brand1.9}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.9}"
       },
       "10": {
-        "value": "{theme.brand1.10}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.10}"
       },
       "11": {
-        "value": "{theme.brand1.11}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.11}"
       },
       "12": {
-        "value": "{theme.brand1.12}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.12}"
       },
       "13": {
-        "value": "{theme.brand1.13}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.13}"
       },
       "contrast-1": {
-        "value": "{theme.brand1.contrast-1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.contrast-1}"
       },
       "contrast-2": {
-        "value": "{theme.brand1.contrast-2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand1.contrast-2}"
       }
     },
     "brand2": {
       "1": {
-        "value": "{theme.brand2.1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.1}"
       },
       "2": {
-        "value": "{theme.brand2.2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.2}"
       },
       "3": {
-        "value": "{theme.brand2.3}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.3}"
       },
       "4": {
-        "value": "{theme.brand2.4}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.4}"
       },
       "5": {
-        "value": "{theme.brand2.5}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.5}"
       },
       "6": {
-        "value": "{theme.brand2.6}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.6}"
       },
       "7": {
-        "value": "{theme.brand2.7}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.7}"
       },
       "8": {
-        "value": "{theme.brand2.8}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.8}"
       },
       "9": {
-        "value": "{theme.brand2.9}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.9}"
       },
       "10": {
-        "value": "{theme.brand2.10}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.10}"
       },
       "11": {
-        "value": "{theme.brand2.11}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.11}"
       },
       "12": {
-        "value": "{theme.brand2.12}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.12}"
       },
       "13": {
-        "value": "{theme.brand2.13}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.13}"
       },
       "contrast-1": {
-        "value": "{theme.brand2.contrast-1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.contrast-1}"
       },
       "contrast-2": {
-        "value": "{theme.brand2.contrast-2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand2.contrast-2}"
       }
     },
     "brand3": {
       "1": {
-        "value": "{theme.brand3.1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.1}"
       },
       "2": {
-        "value": "{theme.brand3.2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.2}"
       },
       "3": {
-        "value": "{theme.brand3.3}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.3}"
       },
       "4": {
-        "value": "{theme.brand3.4}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.4}"
       },
       "5": {
-        "value": "{theme.brand3.5}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.5}"
       },
       "6": {
-        "value": "{theme.brand3.6}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.6}"
       },
       "7": {
-        "value": "{theme.brand3.7}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.7}"
       },
       "8": {
-        "value": "{theme.brand3.8}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.8}"
       },
       "9": {
-        "value": "{theme.brand3.9}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.9}"
       },
       "10": {
-        "value": "{theme.brand3.10}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.10}"
       },
       "11": {
-        "value": "{theme.brand3.11}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.11}"
       },
       "12": {
-        "value": "{theme.brand3.12}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.12}"
       },
       "13": {
-        "value": "{theme.brand3.13}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.13}"
       },
       "contrast-1": {
-        "value": "{theme.brand3.contrast-1}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.contrast-1}"
       },
       "contrast-2": {
-        "value": "{theme.brand3.contrast-2}",
-        "type": "color"
+        "type": "color",
+        "value": "{theme.brand3.contrast-2}"
       }
     }
   }

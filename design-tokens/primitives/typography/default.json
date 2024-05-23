@@ -1,86 +1,86 @@
 {
   "font-family": {
     "main": {
-      "value": "Inter",
-      "type": "fontFamilies"
+      "type": "fontFamilies",
+      "value": "Inter"
     }
   },
   "line-height": {
     "300": {
-      "value": "130%",
-      "type": "lineHeights"
+      "type": "lineHeights",
+      "value": "130%"
     },
     "500": {
-      "value": "150%",
-      "type": "lineHeights"
+      "type": "lineHeights",
+      "value": "150%"
     },
     "600": {
-      "value": "160%",
-      "type": "lineHeights"
+      "type": "lineHeights",
+      "value": "160%"
     },
     "700": {
-      "value": "170%",
-      "type": "lineHeights"
+      "type": "lineHeights",
+      "value": "170%"
     }
   },
   "font-weight": {
     "medium": {
-      "value": "500",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "value": "500"
     },
     "semibold": {
-      "value": "600",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "value": "600"
     },
     "regular": {
-      "value": "400",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "value": "400"
     }
   },
   "font-size": {
     "f-3": {
-      "value": "12",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "12"
     },
     "f-2": {
-      "value": "13",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "13"
     },
     "f-1": {
-      "value": "14",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "14"
     },
     "f0": {
-      "value": "16",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "16"
     },
     "f1": {
-      "value": "18",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "18"
     },
     "f2": {
-      "value": "21",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "21"
     },
     "f3": {
-      "value": "24",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "24"
     },
     "f4": {
-      "value": "30",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "30"
     },
     "f5": {
-      "value": "36",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "36"
     },
     "f6": {
-      "value": "48",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "48"
     },
     "f7": {
-      "value": "60",
-      "type": "fontSizes"
+      "type": "fontSizes",
+      "value": "60"
     }
   }
 }
