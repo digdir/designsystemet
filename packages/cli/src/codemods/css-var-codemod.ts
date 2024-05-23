@@ -4,6 +4,7 @@ import * as R from 'ramda';
 import type { AcceptedPlugin, Plugin } from 'postcss';
 import postcss from 'postcss';
 import glob from 'fast-glob';
+import chalk from 'chalk';
 
 type CSSCodemodProps = {
   dictionary: Record<string, string>;
@@ -37,7 +38,7 @@ export const cssVarCodemod = async ({ dictionary, globPath = './**/*.css' }: CSS
   const processor = postcss(plugins);
 
   const transform = async () => {
-    const files = await glob(globPath, { ignore: ['node_modules/**'] });
+    const files = await glob(globPath, { ignore: ['node_modules/**', 'dist/**'] });
 
     const filePromises = files.map(async (file) => {
       const contents = fs.readFileSync(file).toString();
@@ -50,5 +51,5 @@ export const cssVarCodemod = async ({ dictionary, globPath = './**/*.css' }: CSS
   };
 
   // Run the transform.
-  void transform();
+  return transform();
 };
