@@ -1,0 +1,2 @@
+@import url('./brand/digdir/light.css') screen;
+@import url('./brand/digdir/dark.css') screen and (prefers-color-scheme: dark);

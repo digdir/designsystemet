@@ -12,7 +12,7 @@ import { groupedTokens, scopedReferenceVariables } from './formatters.js';
 
 void registerTransforms(StyleDictionary);
 
-const prefix = 'fds';
+const prefix = 'ds';
 const basePxFontSize = 16;
 const separator = '_';
 
