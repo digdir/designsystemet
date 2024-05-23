@@ -62,14 +62,14 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-tabs__tab:hover {
+    .fds-tabs__tab:hover:not([aria-selected='true']) {
       --fds-tabs__tab-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
 
       color: var(--fds-semantic-text-neutral-default);
     }
   }
 
-  .fds-tabs__tab--active {
+  .fds-tabs__tab[aria-selected='true'] {
     --fds-tabs__tab-bottom-border-color: var(--fds-semantic-border-action-default);
 
     color: var(--fds-semantic-text-action-default);
