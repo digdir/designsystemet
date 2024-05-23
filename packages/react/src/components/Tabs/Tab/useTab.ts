@@ -5,9 +5,9 @@ import { TabsContext } from '../Tabs';
 
 import type { TabProps } from './Tab';
 
-type UseTab = (props: TabProps) => {
-  active: boolean;
-} & Pick<
+type UseTab = (
+  props: TabProps,
+) => Pick<
   HTMLAttributes<HTMLButtonElement>,
   'id' | 'aria-selected' | 'role' | 'onClick'
 >;
@@ -16,14 +16,12 @@ type UseTab = (props: TabProps) => {
 export const useTabItem: UseTab = (props: TabProps) => {
   const { value, ...rest } = props;
   const tabs = useContext(TabsContext);
-  const active = tabs.value == value;
   const buttonId = `tab-${useId()}`;
 
   return {
     ...rest,
-    active: active,
     id: buttonId,
-    'aria-selected': active,
+    'aria-selected': tabs.value == value,
     role: 'tab',
     onClick: () => {
       tabs.onChange?.(value);
