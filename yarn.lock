@@ -2775,7 +2775,7 @@ __metadata:
     tsup: "npm:^8.0.2"
     typescript: "npm:^5.4.5"
   bin:
-    designsystemet: ./dist/build/bin/designsystemet.js
+    designsystemet: dist/build/bin/designsystemet.js
   languageName: unknown
   linkType: soft
 

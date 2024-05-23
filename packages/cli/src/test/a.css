@@ -5,3 +5,35 @@
   border-color: var(--fds-semantic-surface-first-light);
   background-color: #fff;
 }
+
+.fds-class-2 {
+  margin-top: 42px;
+  border-width: var(--fds-border-width-default);
+  color: var(--fds-semantic-surface-first-subtle);
+  border-color: var(--fds-semantic-surface-first-light);
+  background-color: #fff;
+}
+
+.fds-random-name {
+  margin-top: 42px;
+  border-width: var(--fds-border-width-default);
+  color: var(--fds-semantic-surface-first-subtle);
+  border-color: var(--fds-semantic-surface-first-light);
+  background-color: #fff;
+}
+
+.not-fds {
+  margin-top: 42px;
+  border-width: var(--fds-border-width-default);
+  color: var(--fds-semantic-surface-first-subtle);
+  border-color: var(--fds-semantic-surface-first-light);
+  background-color: #fff;
+}
+
+.fds-double.fds-triple {
+  margin-top: 42px;
+  border-width: var(--fds-border-width-default);
+  color: var(--fds-semantic-surface-first-subtle);
+  border-color: var(--fds-semantic-surface-first-light);
+  background-color: #fff;
+}

@@ -19,14 +19,13 @@
     "prepublish": "yarn clean && tsc",
     "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
     "clean": "rimraf dist",
-    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean"
+    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
+    "css-classes": "yarn designsystemet css-names"
   },
   "files": [
     "./dist/**"
   ],
-  "bin": {
-    "designsystemet": "dist/build/bin/designsystemet.js"
-  },
+  "bin": "dist/build/bin/designsystemet.js",
   "dependencies": {
     "@commander-js/extra-typings": "^12.0.1",
     "@tokens-studio/sd-transforms": "^0.16.0",
