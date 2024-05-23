@@ -1,4 +1,4 @@
-export function getSize(size: string) {
+export function getSize<T>(size: T) {
   switch (size) {
     case 'xxxsmall':
       return '3xs';

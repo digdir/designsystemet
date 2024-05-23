@@ -55,7 +55,7 @@ export const LinkCard: Story = (args) => (
   >
     <Card
       {...args}
-      color='first'
+      color='brand1'
       isLink
       asChild
     >
@@ -167,7 +167,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='first'>
+      <Card color='brand1'>
         <Card.Media>
           <img
             src={cat3}
@@ -188,7 +188,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='second'>
+      <Card color='brand2'>
         <Card.Media>
           <img
             src={cat4}
@@ -209,7 +209,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='third'>
+      <Card color='brand3'>
         <Card.Media>
           <img
             src={cat5}

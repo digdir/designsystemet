@@ -55,17 +55,17 @@
     --fds-tag-color: var(--fds-semantic-text-danger-on_danger_subtle);
   }
 
-  .fds-tag--first {
+  .fds-tag--brand1 {
     --fds-tag-background: var(--fds-semantic-surface-first-subtle);
     --fds-tag-color: var(--fds-semantic-text-neutral-default);
   }
 
-  .fds-tag--second {
+  .fds-tag--brand2 {
     --fds-tag-background: var(--fds-semantic-surface-second-subtle);
     --fds-tag-color: var(--fds-semantic-text-neutral-default);
   }
 
-  .fds-tag--third {
+  .fds-tag--brand3 {
     --fds-tag-background: var(--fds-semantic-surface-third-subtle);
     --fds-tag-color: var(--fds-semantic-text-neutral-default);
   }

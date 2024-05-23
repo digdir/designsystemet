@@ -115,42 +115,42 @@
     background-color: var(--fds-semantic-surface-neutral-subtle-active);
   }
   */
-  .fds-card--first {
+  .fds-card--brand1 {
     background-color: var(--fds-semantic-surface-first-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
-  .fds-card--first.fds-card--link:hover {
+  .fds-card--brand1.fds-card--link:hover {
     background-color: var(--fds-semantic-surface-first-subtle-hover);
   }
 
-  .fds-card--first.fds-card--link:active {
+  .fds-card--brand1.fds-card--link:active {
     background-color: var(--fds-semantic-surface-first-subtle-active);
   }
 
-  .fds-card--second {
+  .fds-card--brand2 {
     background-color: var(--fds-semantic-surface-second-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
-  .fds-card--second.fds-card--link:hover {
+  .fds-card--brand2.fds-card--link:hover {
     background-color: var(--fds-semantic-surface-second-subtle-hover);
   }
 
-  .fds-card--second.fds-card--link:active {
+  .fds-card--brand2.fds-card--link:active {
     background-color: var(--fds-semantic-surface-second-subtle-active);
   }
 
-  .fds-card--third {
+  .fds-card--brand3 {
     background-color: var(--fds-semantic-surface-third-subtle);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
   }
 
-  .fds-card--third.fds-card--link:hover {
+  .fds-card--brand3.fds-card--link:hover {
     background-color: var(--fds-semantic-surface-third-subtle-hover);
   }
 
-  .fds-card--third.fds-card--link:active {
+  .fds-card--brand3.fds-card--link:active {
     background-color: var(--fds-semantic-surface-third-subtle-active);
   }
 }

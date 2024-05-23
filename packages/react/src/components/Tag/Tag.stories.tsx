@@ -50,9 +50,9 @@ const colors: TagProps['color'][] = [
   'warning',
   'danger',
   'info',
-  'first',
-  'second',
-  'third',
+  'brand1',
+  'brand2',
+  'brand3',
 ];
 
 export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {

@@ -89,11 +89,11 @@
   }
 
   /* Primary button colors */
-  .fds-btn--primary:where(.fds-btn--first) {
+  .fds-btn--primary:where(.fds-btn--accent) {
     background-color: var(--fds-semantic-surface-action-first-default);
   }
 
-  .fds-btn--primary:where(.fds-btn--second) {
+  .fds-btn--primary:where(.fds-btn--neutral) {
     background-color: var(--fds-semantic-surface-action-second-default);
   }
 
@@ -107,11 +107,11 @@
 
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    .fds-btn--primary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
+    .fds-btn--primary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       background-color: var(--fds-semantic-surface-action-first-hover);
     }
 
-    .fds-btn--primary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
+    .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       background-color: var(--fds-semantic-surface-action-second-hover);
     }
 
@@ -123,13 +123,13 @@
       background-color: var(--fds-semantic-surface-danger-hover);
     }
 
-    .fds-btn--secondary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
+    .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       color: var(--fds-semantic-text-action-first-hover);
       border-color: var(--fds-semantic-border-action-first-hover);
       background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
     }
 
-    .fds-btn--secondary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
+    .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       color: var(--fds-semantic-text-action-second-hover);
       border-color: var(--fds-semantic-border-action-second-hover);
       background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
@@ -147,12 +147,12 @@
       background-color: var(--fds-semantic-surface-danger-no_fill-hover);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
+    .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       color: var(--fds-semantic-text-action-first-hover);
       background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
+    .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       color: var(--fds-semantic-text-action-second-hover);
       background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
     }
@@ -168,11 +168,11 @@
     }
   }
 
-  .fds-btn--primary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
+  .fds-btn--primary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
     background-color: var(--fds-semantic-surface-action-first-active);
   }
 
-  .fds-btn--primary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
+  .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     background-color: var(--fds-semantic-surface-action-second-active);
   }
 
@@ -185,13 +185,13 @@
   }
 
   /* Secondary button colors */
-  .fds-btn--secondary:where(.fds-btn--first) {
+  .fds-btn--secondary:where(.fds-btn--accent) {
     color: var(--fds-semantic-text-action-first-default);
     border-color: var(--fds-semantic-border-action-first-default);
     background-color: var(--fds-semantic-surface-action-first-no_fill);
   }
 
-  .fds-btn--secondary:where(.fds-btn--second) {
+  .fds-btn--secondary:where(.fds-btn--neutral) {
     color: var(--fds-semantic-text-action-second-default);
     border-color: var(--fds-semantic-border-action-second-default);
     background-color: var(--fds-semantic-surface-action-second-no_fill);
@@ -209,13 +209,13 @@
     background-color: var(--fds-semantic-surface-danger-no_fill);
   }
 
-  .fds-btn--secondary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
+  .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
     color: var(--fds-semantic-text-action-first-active);
     border-color: var(--fds-semantic-border-action-first-active);
     background-color: var(--fds-semantic-surface-action-first-no_fill-active);
   }
 
-  .fds-btn--secondary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
+  .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     color: var(--fds-semantic-text-action-second-active);
     border-color: var(--fds-semantic-border-action-second-active);
     background-color: var(--fds-semantic-surface-action-second-no_fill-active);
@@ -234,11 +234,11 @@
   }
 
   /* Tertiary button colors */
-  .fds-btn--tertiary:where(.fds-btn--first) {
+  .fds-btn--tertiary:where(.fds-btn--accent) {
     color: var(--fds-semantic-text-action-first-default);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--second) {
+  .fds-btn--tertiary:where(.fds-btn--neutral) {
     color: var(--fds-semantic-text-action-second-default);
   }
 
@@ -250,12 +250,12 @@
     color: var(--fds-semantic-text-danger-default);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
+  .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
     color: var(--fds-semantic-text-action-first-active);
     background-color: var(--fds-semantic-surface-action-first-no_fill-active);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
+  .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     color: var(--fds-semantic-text-action-second-active);
     background-color: var(--fds-semantic-surface-action-second-no_fill-active);
   }
