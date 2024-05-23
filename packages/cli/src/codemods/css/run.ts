@@ -14,7 +14,7 @@ export const runCssCodemod = async ({ plugins = [], globPattern = './**/*.css' }
 
   const transform = async () => {
     const files = await glob(globPattern, { ignore: ['node_modules/**', 'dist/**'] });
-    console.log(files, plugins.length);
+
     const filePromises = files.map(async (file) => {
       const contents = fs.readFileSync(file).toString();
       const result = await processor.process(contents, { from: undefined });

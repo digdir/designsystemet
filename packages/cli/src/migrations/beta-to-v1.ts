@@ -1,10 +1,11 @@
-import { cssVarRename } from '../codemods/css/plugins.js';
+import { cssClassRename, cssVarRename } from '../codemods/css/plugins.js';
 import { runCssCodemod } from '../codemods/css/run.js';
 
 export default (glob?: string) =>
   runCssCodemod({
     globPattern: glob,
     plugins: [
+      cssClassRename({}),
       cssVarRename({
         '--fds-semantic-surface-first-light': '--ds-color-brand1-surface-default',
         '--fds-semantic-surface-first-light-hover': '--ds-color-brand1-surface-hover',

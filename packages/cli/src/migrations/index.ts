@@ -1,9 +1,5 @@
-import tokensV2 from './tokens-v2.js';
-import releaseV1 from './release-v1.js';
-import dsPrefix from './ds-prefix.js';
+import betaToV1 from './beta-to-v1.js';
 
 export default {
-  'tokens-v2': tokensV2,
-  'release-v1': releaseV1,
-  'ds-prefix': dsPrefix,
+  'beta-to-v1': betaToV1,
 };
