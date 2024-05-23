@@ -166,6 +166,6 @@
   .fds-radio-group--horizontal {
     display: flex;
     flex-direction: row;
-    gap: var(--fds-spacing-2);
+    gap: var(--fds-spacing-6);
   }
 }
