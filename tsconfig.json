@@ -4,7 +4,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@doc-components/*": ["apps/storybook/docs-components/*"]
+      "@doc-components*": [
+        "apps/storybook/docs-components",
+        "apps/storybook/docs-components/*"
+      ],
+      "@assets/*": ["apps/storybook/assets/*"]
     },
     "target": "ES2022",
     "module": "ESNext",
