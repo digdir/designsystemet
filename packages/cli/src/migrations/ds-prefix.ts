@@ -1,9 +1,13 @@
-import { cssNameCodemod } from '../codemods/css-class-rename.js';
+import { cssClassRename } from '../codemods/css/plugins.js';
+import { runCssCodemod } from '../codemods/css/run.js';
 
-export default (glob?: string) =>
-  cssNameCodemod({
-    dictionary: {
-      '.fds-': '.ds-',
-    },
+export default (glob?: string) => {
+  return runCssCodemod({
+    plugins: [
+      cssClassRename({
+        '.fds-': '.ds-',
+      }),
+    ],
     globPattern: glob,
   });
+};
