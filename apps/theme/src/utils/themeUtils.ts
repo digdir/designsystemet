@@ -7,6 +7,7 @@ import {
   getContrastFromHex,
   getContrastFromLightness,
   getLightnessFromHex,
+  Testing,
 } from './ColorUtils';
 import { light } from '@mui/material/styles/createPalette';
 
@@ -28,7 +29,6 @@ export const generateColorScale = (
     colorKeys: ['#ffffff'],
     ratios: [1],
   });
-
   const colorLightness = getLightnessFromHex(color);
   const multiplier = colorLightness <= 30 ? -8 : 8;
   const baseDefaultContrast = getContrastFromLightness(
@@ -139,7 +139,7 @@ export const generateColorScale = (
  */
 export const generateColorTheme = (
   color: CssColor,
-  contrastMode: 'aa' | 'aaa',
+  contrastMode: 'aa' | 'aaa' = 'aa',
 ) => {
   const lightScale = generateColorScale(color, 'light', contrastMode);
   const darkScale = generateColorScale(color, 'dark', contrastMode);

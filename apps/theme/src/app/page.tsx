@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import type { SetStateAction } from 'react';
@@ -10,19 +5,11 @@ import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cn from 'classnames';
-import {
-  DropdownMenu,
-  Modal,
-  NativeSelect,
-} from '@digdir/designsystemet-react';
+import { Modal, NativeSelect } from '@digdir/designsystemet-react';
 
 import { mapTokens } from '@/utils/tokenMapping';
-import {
-  canTextBeUsedOnColors,
-  generateColorScale,
-  generateColorTheme,
-} from '@/utils/themeUtils';
-import type { modeType } from '@/types';
+import { canTextBeUsedOnColors, generateColorTheme } from '@/utils/themeUtils';
+
 import { areColorsContrasting } from '@/utils/ColorUtils';
 
 import { Container } from './components/Container/Container';

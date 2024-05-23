@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';

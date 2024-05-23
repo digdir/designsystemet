@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import cn from 'classnames';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type { SetStateAction } from 'react';
@@ -111,7 +108,7 @@ export const ScaleRow = ({
         </div>
       </div>
       <Scale
-        color={activeColor}
+        colorScale={[activeColor, activeColor]}
         showHeader={showHeader}
         themeMode={themeMode}
         type='accent'

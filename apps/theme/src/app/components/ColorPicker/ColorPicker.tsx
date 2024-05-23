@@ -1,16 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cn from 'classnames';
 import { useClickOutside } from '@react-awesome/use-click-outside';
-import {
-  CheckmarkIcon,
-  ExclamationmarkIcon,
-  XMarkIcon,
-} from '@navikt/aksel-icons';
+import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { Link, Popover } from '@digdir/designsystemet-react';
 
 import classes from './ColorPicker.module.css';
@@ -132,7 +125,7 @@ export const ColorPicker = ({
         <ChromePicker
           onChange={({ hex }: { hex: string }) => {
             setColor(hex);
-            onColorChanged && onColorChanged(hex);
+            onColorChanged && onColorChanged(hex as CssColor);
           }}
           color={color}
         />

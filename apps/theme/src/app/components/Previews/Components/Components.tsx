@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import cn from "classnames";
+import cn from 'classnames';
 import {
   Checkbox,
   Switch,
@@ -18,94 +17,133 @@ import {
   Tabs,
   Accordion,
   Link,
-} from "@digdir/designsystemet-react";
-import { useState } from "react";
+} from '@digdir/designsystemet-react';
+import { useState } from 'react';
 
-import classes from "./Components.module.css";
+import classes from './Components.module.css';
 
 export const Components = () => {
-  const [radioValue, setRadioValue] = useState("vanilje");
+  const [radioValue, setRadioValue] = useState('vanilje');
   return (
     <div className={classes.components}>
       <div className={cn(classes.card, classes.checkbox)}>
-        <Checkbox.Group error="" legend="Handleliste" size="small">
-          <Checkbox value="epost">En kilo poteter</Checkbox>
-          <Checkbox value="telefon">To liter Farris</Checkbox>
-          <Checkbox value="sms" checked>
+        <Checkbox.Group
+          error=''
+          legend='Handleliste'
+          size='small'
+        >
+          <Checkbox value='epost'>En kilo poteter</Checkbox>
+          <Checkbox value='telefon'>To liter Farris</Checkbox>
+          <Checkbox
+            value='sms'
+            checked
+          >
             Blomkål
           </Checkbox>
-          <Checkbox value="sms" checked>
+          <Checkbox
+            value='sms'
+            checked
+          >
             Pizza
           </Checkbox>
-          <Checkbox value="sms" checked>
+          <Checkbox
+            value='sms'
+            checked
+          >
             Tre liter lettmelk
           </Checkbox>
           <Divider />
-          <Checkbox value="sms">2kg smågodt</Checkbox>
-          <Checkbox value="sms">10 poser med Smash</Checkbox>
+          <Checkbox value='sms'>2kg smågodt</Checkbox>
+          <Checkbox value='sms'>10 poser med Smash</Checkbox>
         </Checkbox.Group>
       </div>
       <div className={cn(classes.card, classes.user)}>
         <Heading
           className={cn(classes.cardTitle, classes.userTitle)}
-          size="xsmall"
+          size='xsmall'
         >
           Opprett ny bruker
         </Heading>
 
         <Textfield
-          label="Navn"
-          size="small"
-          placeholder="Ola Normann"
+          label='Navn'
+          size='small'
+          placeholder='Ola Normann'
           className={classes.userField}
         />
         <Textfield
-          type="email"
-          label="E-post"
-          size="small"
-          placeholder="ola@norge.no"
+          type='email'
+          label='E-post'
+          size='small'
+          placeholder='ola@norge.no'
           className={classes.userField}
         />
-        <Link href="#" className={classes.userLink}>
+        <Link
+          href='#'
+          className={classes.userLink}
+        >
           Glemt passord?
         </Link>
-        <Button fullWidth size="small" className={classes.userBtn}>
+        <Button
+          fullWidth
+          size='small'
+          className={classes.userBtn}
+        >
           Opprett ny bruker
         </Button>
       </div>
       <div className={cn(classes.card, classes.tableContainer)}>
-        <Heading className={classes.cardTitle} size="xxsmall">
+        <Heading
+          className={classes.cardTitle}
+          size='xxsmall'
+        >
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label="" size="small" className={classes.tableSelect}>
-              <option value="blank">Velg handling</option>
-              <option value="everest">Dupliser</option>
-              <option value="aconcagua">Slett</option>
-              <option value="denali">Oppdater</option>
+            <NativeSelect
+              label=''
+              size='small'
+              className={classes.tableSelect}
+            >
+              <option value='blank'>Velg handling</option>
+              <option value='everest'>Dupliser</option>
+              <option value='aconcagua'>Slett</option>
+              <option value='denali'>Oppdater</option>
             </NativeSelect>
-            <Button className={classes.tableBtn} size="small">
+            <Button
+              className={classes.tableBtn}
+              size='small'
+            >
               Utfør
             </Button>
           </div>
           <Search
-            error=""
-            label="Label"
-            placeholder="Søk etter bruker..."
-            size="small"
-            variant="simple"
+            error=''
+            label='Label'
+            placeholder='Søk etter bruker...'
+            size='small'
+            variant='simple'
             className={classes.tableSearch}
           />
         </div>
-        <Table size="small" className={classes.table}>
+        <Table
+          size='small'
+          className={classes.table}
+        >
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell
+                onClick={function Ya() {}}
+                sortable
+              >
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell
+                onClick={function Ya() {}}
+                sortable
+              >
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -115,8 +153,8 @@ export const Components = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src="img/avatars/female1.png"
-                  alt=""
+                  src='img/avatars/female1.png'
+                  alt=''
                 />
                 Lise Nordmann
               </Table.Cell>
@@ -127,8 +165,8 @@ export const Components = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src="img/avatars/male2.png"
-                  alt=""
+                  src='img/avatars/male2.png'
+                  alt=''
                 />
                 Ola Nordmann
               </Table.Cell>
@@ -139,21 +177,30 @@ export const Components = () => {
         </Table>
         <Pagination
           currentPage={3}
-          nextLabel="Neste"
+          nextLabel='Neste'
           onChange={function Ya() {}}
-          previousLabel="Forrige"
-          size="small"
+          previousLabel='Forrige'
+          size='small'
           totalPages={6}
         />
       </div>
       <div className={cn(classes.card, classes.help)}>
-        <Heading size="xsmall" className={classes.helpHeading}>
+        <Heading
+          size='xsmall'
+          className={classes.helpHeading}
+        >
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
-          <Card color="first" className={classes.helpFirst}>
+          <Card
+            color='first'
+            className={classes.helpFirst}
+          >
             <Card.Header className={classes.helpHeader}>
-              <Heading size="xxsmall" className={classes.helpFirstTitle}>
+              <Heading
+                size='xxsmall'
+                className={classes.helpFirstTitle}
+              >
                 Sikkerhet og drift
               </Heading>
             </Card.Header>
@@ -163,9 +210,15 @@ export const Components = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card color="second" className={classes.helpSecond}>
+          <Card
+            color='second'
+            className={classes.helpSecond}
+          >
             <Card.Header className={classes.helpHeader}>
-              <Heading size="xxsmall" className={classes.helpSecondTitle}>
+              <Heading
+                size='xxsmall'
+                className={classes.helpSecondTitle}
+              >
                 Skole og utdanning
               </Heading>
             </Card.Header>
@@ -175,9 +228,15 @@ export const Components = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card color="third" className={classes.helpThird}>
+          <Card
+            color='third'
+            className={classes.helpThird}
+          >
             <Card.Header className={classes.helpHeader}>
-              <Heading className={classes.helpThirdTitle} size="xxsmall">
+              <Heading
+                className={classes.helpThirdTitle}
+                size='xxsmall'
+              >
                 Mat og helse
               </Heading>
             </Card.Header>
@@ -191,72 +250,109 @@ export const Components = () => {
       </div>
       <div className={cn(classes.card, classes.radio)}>
         <Radio.Group
-          error=""
-          legend="Hvilken iskremsmak er best?"
-          size="small"
+          error=''
+          legend='Hvilken iskremsmak er best?'
+          size='small'
           value={radioValue}
           onChange={(e) => setRadioValue(e)}
         >
-          <Radio value="vanilje">Vanilje</Radio>
-          <Radio value="jordbær">Jordbær</Radio>
-          <Radio value="sjokolade">Sjokolade</Radio>
-          <Radio value="spiser-ikke-is">Jeg spiser ikke iskrem</Radio>
+          <Radio value='vanilje'>Vanilje</Radio>
+          <Radio value='jordbær'>Jordbær</Radio>
+          <Radio value='sjokolade'>Sjokolade</Radio>
+          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
         </Radio.Group>
       </div>
       <div className={cn(classes.card, classes.tag)}>
-        <Heading size="xsmall" className={classes.tagHeading}>
+        <Heading
+          size='xsmall'
+          className={classes.tagHeading}
+        >
           Emner
         </Heading>
         <div className={classes.tagList}>
-          <Tag color="first" size="small">
+          <Tag
+            color='first'
+            size='small'
+          >
             Data og IKT
           </Tag>
-          <Tag color="second" size="small">
+          <Tag
+            color='second'
+            size='small'
+          >
             Mat og ernæring
           </Tag>
-          <Tag color="third" size="small">
+          <Tag
+            color='third'
+            size='small'
+          >
             Sport og Idrett
           </Tag>
-          <Tag color="neutral" size="small">
+          <Tag
+            color='neutral'
+            size='small'
+          >
             Politikk og samfunn
           </Tag>
-          <Tag color="success" size="small">
+          <Tag
+            color='success'
+            size='small'
+          >
             Utenriks
           </Tag>
-          <Tag color="info" size="small">
+          <Tag
+            color='info'
+            size='small'
+          >
             Helse og velvære
           </Tag>
-          <Tag color="danger" size="small">
+          <Tag
+            color='danger'
+            size='small'
+          >
             PC Gaming
           </Tag>
-          <Tag color="warning" size="small">
+          <Tag
+            color='warning'
+            size='small'
+          >
             Trening og livsstil
           </Tag>
         </div>
       </div>
       <div className={cn(classes.card, classes.tabs)}>
-        <Tabs defaultValue="value1" size="small">
+        <Tabs
+          defaultValue='value1'
+          size='small'
+        >
           <Tabs.List>
-            <Tabs.Tab value="value1">Min profil</Tabs.Tab>
-            <Tabs.Tab value="value2">Tjenester</Tabs.Tab>
-            <Tabs.Tab value="value3">Innstillinger</Tabs.Tab>
+            <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
+            <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
+            <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
         </Tabs>
-        <Paragraph size="small">
-          For å kunne bli registrert i{" "}
-          <Link href="#">Frivillighetsregisteret</Link>, må organisasjonen drive
-          frivillig virksomhet. Det er bare foreninger,{" "}
-          <Link href="#">stiftelser</Link> og som kan registreres. Virksomheten
+        <Paragraph size='small'>
+          For å kunne bli registrert i{' '}
+          <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
+          frivillig virksomhet. Det er bare foreninger,{' '}
+          <Link href='#'>stiftelser</Link> og som kan registreres. Virksomheten
           kan ikke dele ut midler til fysiske personer. Virksomheten må ha et
-          styre. Virksomheten må være registrert i{" "}
-          <Link href="#">Enhetsregisteret</Link> før den kan bli registrert.
+          styre. Virksomheten må være registrert i{' '}
+          <Link href='#'>Enhetsregisteret</Link> før den kan bli registrert.
         </Paragraph>
       </div>
       <div className={cn(classes.card, classes.faq)}>
-        <Heading size="xsmall" className={classes.cardTitle}>
+        <Heading
+          size='xsmall'
+          className={classes.cardTitle}
+        >
           Ofte stillte spørmsål
         </Heading>
-        <Accordion color="third" border className={classes.accordion}>
+        <Accordion
+          color='third'
+          border
+          className={classes.accordion}
+        >
           <Accordion.Item>
             <Accordion.Header level={3}>
               Hvem kan registrere seg i Frivillighetsregisteret?
@@ -293,85 +389,127 @@ export const Components = () => {
       </div>
       <div className={cn(classes.card, classes.test)}>
         <Heading
-          size="xsmall"
+          size='xsmall'
           className={cn(classes.footerHeading, classes.switchHeading)}
         >
           Innstillinger
         </Heading>
-        <Paragraph size="small" className={classes.switchParagraph}>
+        <Paragraph
+          size='small'
+          className={classes.switchParagraph}
+        >
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
-          <Switch size="small">Desktopvisning</Switch>
-          <Switch size="small" checked>
+          <Switch size='small'>Desktopvisning</Switch>
+          <Switch
+            size='small'
+            checked
+          >
             Tabletvisning
           </Switch>
-          <Switch size="small">Mobilvisning</Switch>
+          <Switch size='small'>Mobilvisning</Switch>
         </div>
       </div>
 
       <div className={cn(classes.card, classes.footerOne)}>
         <Heading
-          size="xsmall"
+          size='xsmall'
           className={cn(classes.footerHeading, classes.footerOneHeading)}
         >
           Om nettstedet
         </Heading>
         <div className={cn(classes.footerList)}>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
         </div>
       </div>
       <div className={cn(classes.card, classes.footerTwo)}>
         <Heading
-          size="xsmall"
+          size='xsmall'
           className={cn(classes.footerHeading, classes.footerTwoHeading)}
         >
           Nyttige lenker
         </Heading>
         <div className={cn(classes.footerList)}>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
         </div>
       </div>
       <div className={cn(classes.card, classes.footerThree)}>
         <Heading
-          size="xsmall"
+          size='xsmall'
           className={cn(classes.footerHeading, classes.footerThreeHeading)}
         >
           Kontakt oss
         </Heading>
         <div className={cn(classes.footerList)}>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
-          <Link className={cn(classes.footerItem)} href="#">
+          <Link
+            className={cn(classes.footerItem)}
+            href='#'
+          >
             Peronvernærklæring
           </Link>
         </div>
