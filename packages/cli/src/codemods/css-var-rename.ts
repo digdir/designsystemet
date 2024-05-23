@@ -14,19 +14,19 @@ export const cssVarCodemod = async ({ dictionary, globPath = './**/*.css' }: CSS
   const transformPlugin: Plugin = {
     postcssPlugin: 'Replaces referenced CSS variables',
     Declaration(decl) {
-      Object.keys(dictionary).forEach((key) => {
-        const newValue = dictionary[key];
+      Object.keys(dictionary).forEach((from) => {
+        const to = dictionary[from];
 
-        if (R.isEmpty(newValue)) {
+        if (R.isEmpty(to)) {
           //console.log(`Skipping "${key}"; missing new value`);
         }
 
-        if (newValue === '[delete]') {
+        if (to === '[delete]') {
           //console.log(`Found delete token "${key}"`);
         }
 
-        if (decl.value.includes(key) && !R.isEmpty(newValue)) {
-          decl.value = decl.value.replace(key, newValue);
+        if (decl.value.includes(from) && !R.isEmpty(to)) {
+          decl.value = decl.value.replace(from, to);
         }
       });
     },
