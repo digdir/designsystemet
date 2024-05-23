@@ -15,8 +15,8 @@ export default {
 export const Preview: Story = (args) => (
   <form>
     <Fieldset {...args}>
-      <Textfield></Textfield>
-      <Textarea></Textarea>
+      <Textfield label='Kort beskrivelse'></Textfield>
+      <Textarea label='Lang beskrivelse'></Textarea>
     </Fieldset>
   </form>
 );
