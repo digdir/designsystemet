@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
+import cl from 'clsx/lite';
 
 import { getSize } from '../../utilities/getSize';
 
@@ -44,7 +45,7 @@ export type TabsContextProps = {
 export const TabsContext = createContext<TabsContextProps>({});
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  ({ children, value, defaultValue, onChange, ...rest }, ref) => {
+  ({ children, value, defaultValue, className, onChange, ...rest }, ref) => {
     const size = getSize(rest.size || 'md');
 
     const isControlled = value !== undefined;
@@ -69,7 +70,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         }}
       >
         <div
-          className={`fds-tabs--${size}`}
+          className={cl(`fds-tabs--${size}`, className)}
           ref={ref}
           {...rest}
         >
