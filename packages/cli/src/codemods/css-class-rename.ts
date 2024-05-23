@@ -21,7 +21,7 @@ export const cssNameCodemod = ({
     postcssPlugin: 'Renames CSS classes',
     Rule(decl) {
       if (!decl.selector) return;
-      if (!decl.selector.includes('.fds-')) return;
+      if (!decl.selector.includes(dictionary.from)) return;
 
       const newSelector = decl.selector.replace(
         new RegExp(dictionary.from, 'g'),
