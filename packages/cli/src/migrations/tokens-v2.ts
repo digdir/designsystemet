@@ -4,135 +4,79 @@ export default (glob?: string) =>
   cssVarCodemod({
     globPath: glob,
     dictionary: {
-      '--fds-semantic-surface-first-light':
-        '--fds-color-brand1-surface-default',
-      '--fds-semantic-surface-first-light-hover':
-        '--fds-color-brand1-surface-hover',
-      '--fds-semantic-surface-first-light-active':
-        '--fds-color-brand1-surface-active',
+      '--fds-semantic-surface-first-light': '--fds-color-brand1-surface-default',
+      '--fds-semantic-surface-first-light-hover': '--fds-color-brand1-surface-hover',
+      '--fds-semantic-surface-first-light-active': '--fds-color-brand1-surface-active',
       '--fds-semantic-surface-first-dark': '[delete]',
-      '--fds-semantic-surface-second-light':
-        '--fds-color-brand2-surface-default',
-      '--fds-semantic-surface-second-light-hover':
-        '--fds-color-brand2-surface-hover',
-      '--fds-semantic-surface-second-light-active':
-        '--fds-color-brand2-surface-active',
+      '--fds-semantic-surface-second-light': '--fds-color-brand2-surface-default',
+      '--fds-semantic-surface-second-light-hover': '--fds-color-brand2-surface-hover',
+      '--fds-semantic-surface-second-light-active': '--fds-color-brand2-surface-active',
       '--fds-semantic-surface-second-dark': '[delete]',
-      '--fds-semantic-surface-third-light':
-        '--fds-color-brand3-surface-default',
-      '--fds-semantic-surface-third-light-hover':
-        '--fds-color-brand3-surface-hover',
-      '--fds-semantic-surface-third-light-active':
-        '--fds-color-brand3-surface-active',
+      '--fds-semantic-surface-third-light': '--fds-color-brand3-surface-default',
+      '--fds-semantic-surface-third-light-hover': '--fds-color-brand3-surface-hover',
+      '--fds-semantic-surface-third-light-active': '--fds-color-brand3-surface-active',
       '--fds-semantic-surface-third-dark': '[delete]',
-      '--fds-semantic-surface-action-first-subtle':
-        '--fds-color-accent-surface-default',
-      '--fds-semantic-surface-action-first-subtle-hover':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-action-first-default':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-surface-action-first-hover':
-        '--fds-color-accent-base-hover',
-      '--fds-semantic-surface-action-first-active':
-        '--fds-color-accent-base-active',
-      '--fds-semantic-surface-action-first-no_fill':
-        '--fds-color-accent-contrast-first',
-      '--fds-semantic-surface-action-first-no_fill-hover':
-        '--fds-color-accent-surface-default',
-      '--fds-semantic-surface-action-first-no_fill-active':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-action-second-subtle':
-        '--fds-color-accent-surface-default',
-      '--fds-semantic-surface-action-second-subtle-hover':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-action-second-default':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-surface-action-second-hover':
-        '--fds-color-accent-base-hover',
-      '--fds-semantic-surface-action-second-active':
-        '--fds-color-accent-base-active',
-      '--fds-semantic-surface-action-second-no_fill':
-        '--fds-color-accent-contrast-first',
-      '--fds-semantic-surface-action-second-no_fill-hover':
-        '--fds-color-accent-surface-default',
-      '--fds-semantic-surface-action-second-no_fill-active':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-action-subtle':
-        '--fds-color-accent-surface-default',
-      '--fds-semantic-surface-action-subtle-hover':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-action-default':
-        '--fds-color-accent-base-default',
+      '--fds-semantic-surface-action-first-subtle': '--fds-color-accent-surface-default',
+      '--fds-semantic-surface-action-first-subtle-hover': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-action-first-default': '--fds-color-accent-base-default',
+      '--fds-semantic-surface-action-first-hover': '--fds-color-accent-base-hover',
+      '--fds-semantic-surface-action-first-active': '--fds-color-accent-base-active',
+      '--fds-semantic-surface-action-first-no_fill': '--fds-color-accent-contrast-first',
+      '--fds-semantic-surface-action-first-no_fill-hover': '--fds-color-accent-surface-default',
+      '--fds-semantic-surface-action-first-no_fill-active': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-action-second-subtle': '--fds-color-accent-surface-default',
+      '--fds-semantic-surface-action-second-subtle-hover': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-action-second-default': '--fds-color-accent-base-default',
+      '--fds-semantic-surface-action-second-hover': '--fds-color-accent-base-hover',
+      '--fds-semantic-surface-action-second-active': '--fds-color-accent-base-active',
+      '--fds-semantic-surface-action-second-no_fill': '--fds-color-accent-contrast-first',
+      '--fds-semantic-surface-action-second-no_fill-hover': '--fds-color-accent-surface-default',
+      '--fds-semantic-surface-action-second-no_fill-active': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-action-subtle': '--fds-color-accent-surface-default',
+      '--fds-semantic-surface-action-subtle-hover': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-action-default': '--fds-color-accent-base-default',
       '--fds-semantic-surface-action-hover': '--fds-color-accent-base-hover',
       '--fds-semantic-surface-action-active': '--fds-color-accent-base-active',
-      '--fds-semantic-surface-action-no_fill':
-        '--fds-color-accent-contrast-first',
-      '--fds-semantic-surface-action-no_fill-hover':
-        '--fds-color-accent-surface-default',
-      '--fds-semantic-surface-action-no_fill-active':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-action-checked':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-surface-neutral-default':
-        '--fds-color-neutral-background-default',
-      '--fds-semantic-surface-neutral-selected':
-        '--fds-color-accent-surface-hover',
-      '--fds-semantic-surface-neutral-subtle':
-        '--fds-color-neutral-background-subtle',
-      '--fds-semantic-surface-neutral-subtle-hover':
-        '--fds-color-neutral-surface-default',
+      '--fds-semantic-surface-action-no_fill': '--fds-color-accent-contrast-first',
+      '--fds-semantic-surface-action-no_fill-hover': '--fds-color-accent-surface-default',
+      '--fds-semantic-surface-action-no_fill-active': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-action-checked': '--fds-color-accent-base-default',
+      '--fds-semantic-surface-neutral-default': '--fds-color-neutral-background-default',
+      '--fds-semantic-surface-neutral-selected': '--fds-color-accent-surface-hover',
+      '--fds-semantic-surface-neutral-subtle': '--fds-color-neutral-background-subtle',
+      '--fds-semantic-surface-neutral-subtle-hover': '--fds-color-neutral-surface-default',
       '--fds-semantic-surface-neutral-dark': '--fds-color-neutral-base-default',
-      '--fds-semantic-surface-neutral-dark-hover':
-        '--fds-color-neutral-base-hover',
+      '--fds-semantic-surface-neutral-dark-hover': '--fds-color-neutral-base-hover',
       '--fds-semantic-surface-neutral-inverted': '[delete]',
-      '--fds-semantic-surface-success-subtle':
-        '--fds-color-success-surface-default',
-      '--fds-semantic-surface-success-subtle-hover':
-        '--fds-color-success-surface-hover',
-      '--fds-semantic-surface-success-default':
-        '--fds-color-success-base-default',
+      '--fds-semantic-surface-success-subtle': '--fds-color-success-surface-default',
+      '--fds-semantic-surface-success-subtle-hover': '--fds-color-success-surface-hover',
+      '--fds-semantic-surface-success-default': '--fds-color-success-base-default',
       '--fds-semantic-surface-success-hover': '--fds-color-success-base-hover',
-      '--fds-semantic-surface-success-active':
-        '--fds-color-success-base-active',
-      '--fds-semantic-surface-success-no_fill':
-        '--fds-color-success-contrast-first',
-      '--fds-semantic-surface-success-no_fill-hover':
-        '--fds-color-success-surface-default',
-      '--fds-semantic-surface-success-no_fill-active':
-        '--fds-color-success-surface-hover',
-      '--fds-semantic-surface-warning-subtle':
-        '--fds-color-warning-surface-default',
-      '--fds-semantic-surface-warning-subtle-hover':
-        '--fds-color-warning-surface-hover',
-      '--fds-semantic-surface-warning-default':
-        '--fds-color-warning-base-default',
-      '--fds-semantic-surface-warning-default-hover':
-        '--fds-color-warning-base-hover',
-      '--fds-semantic-surface-danger-subtle':
-        '--fds-color-danger-surface-default',
-      '--fds-semantic-surface-danger-subtle-hover':
-        '--fds-color-danger-surface-hover',
-      '--fds-semantic-surface-danger-default':
-        '--fds-color-danger-base-default',
+      '--fds-semantic-surface-success-active': '--fds-color-success-base-active',
+      '--fds-semantic-surface-success-no_fill': '--fds-color-success-contrast-first',
+      '--fds-semantic-surface-success-no_fill-hover': '--fds-color-success-surface-default',
+      '--fds-semantic-surface-success-no_fill-active': '--fds-color-success-surface-hover',
+      '--fds-semantic-surface-warning-subtle': '--fds-color-warning-surface-default',
+      '--fds-semantic-surface-warning-subtle-hover': '--fds-color-warning-surface-hover',
+      '--fds-semantic-surface-warning-default': '--fds-color-warning-base-default',
+      '--fds-semantic-surface-warning-default-hover': '--fds-color-warning-base-hover',
+      '--fds-semantic-surface-danger-subtle': '--fds-color-danger-surface-default',
+      '--fds-semantic-surface-danger-subtle-hover': '--fds-color-danger-surface-hover',
+      '--fds-semantic-surface-danger-default': '--fds-color-danger-base-default',
       '--fds-semantic-surface-danger-hover': '--fds-color-danger-base-hover',
       '--fds-semantic-surface-danger-active': '--fds-color-danger-base-active',
-      '--fds-semantic-surface-danger-no_fill':
-        '--fds-color-danger-contrast-first',
-      '--fds-semantic-surface-danger-no_fill-hover':
-        '--fds-color-danger-surface-default',
-      '--fds-semantic-surface-danger-no_fill-active':
-        '--fds-color-danger-surface-hover',
+      '--fds-semantic-surface-danger-no_fill': '--fds-color-danger-contrast-first',
+      '--fds-semantic-surface-danger-no_fill-hover': '--fds-color-danger-surface-default',
+      '--fds-semantic-surface-danger-no_fill-active': '--fds-color-danger-surface-hover',
       '--fds-semantic-surface-info-subtle': '--fds-color-info-surface-default',
-      '--fds-semantic-surface-info-subtle-hover':
-        '--fds-color-info-surface-hover',
+      '--fds-semantic-surface-info-subtle-hover': '--fds-color-info-surface-hover',
       '--fds-semantic-surface-on_inverted-default': '[delete]',
       '--fds-semantic-surface-on_inverted-hover': '[delete]',
       '--fds-semantic-surface-on_inverted-active': '[delete]',
       '--fds-semantic-surface-on_inverted-no_fill': '[delete]',
       '--fds-semantic-surface-on_inverted-no_fill-hover': '[delete]',
       '--fds-semantic-surface-on_inverted-no_fill-active': '[delete]',
-      '--fds-semantic-surface-focus-default':
-        '--fds-color-neutral-border-strong',
+      '--fds-semantic-surface-focus-default': '--fds-color-neutral-border-strong',
       '--fds-semantic-border-first-default': '--fds-color-brand1-base-default',
       '--fds-semantic-border-first-hover': '--fds-color-brand1-base-hover',
       '--fds-semantic-border-first-active': '--fds-color-brand1-base-active',
@@ -142,85 +86,52 @@ export default (glob?: string) =>
       '--fds-semantic-border-third-default': '--fds-color-brand3-base-default',
       '--fds-semantic-border-third-hover': '--fds-color-brand3-base-hover',
       '--fds-semantic-border-third-active': '--fds-color-brand3-base-active',
-      '--fds-semantic-border-action-first-subtle':
-        '--fds-color-accent-border-subtle',
-      '--fds-semantic-border-action-first-subtle-hover':
-        '--fds-color-accent-border-default',
-      '--fds-semantic-border-action-first-default':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-border-action-first-hover':
-        '--fds-color-accent-base-hover',
-      '--fds-semantic-border-action-first-active':
-        '--fds-color-accent-base-active',
-      '--fds-semantic-border-action-second-subtle':
-        '--fds-color-accent-border-subtle',
-      '--fds-semantic-border-action-second-subtle-hover':
-        '--fds-color-accent-border-default',
-      '--fds-semantic-border-action-second-default':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-border-action-second-hover':
-        '--fds-color-accent-base-hover',
-      '--fds-semantic-border-action-second-active':
-        '--fds-color-accent-base-active',
+      '--fds-semantic-border-action-first-subtle': '--fds-color-accent-border-subtle',
+      '--fds-semantic-border-action-first-subtle-hover': '--fds-color-accent-border-default',
+      '--fds-semantic-border-action-first-default': '--fds-color-accent-base-default',
+      '--fds-semantic-border-action-first-hover': '--fds-color-accent-base-hover',
+      '--fds-semantic-border-action-first-active': '--fds-color-accent-base-active',
+      '--fds-semantic-border-action-second-subtle': '--fds-color-accent-border-subtle',
+      '--fds-semantic-border-action-second-subtle-hover': '--fds-color-accent-border-default',
+      '--fds-semantic-border-action-second-default': '--fds-color-accent-base-default',
+      '--fds-semantic-border-action-second-hover': '--fds-color-accent-base-hover',
+      '--fds-semantic-border-action-second-active': '--fds-color-accent-base-active',
       '--fds-semantic-border-action-subtle': '--fds-color-accent-border-subtle',
-      '--fds-semantic-border-action-subtle-hover':
-        '--fds-color-accent-border-default',
+      '--fds-semantic-border-action-subtle-hover': '--fds-color-accent-border-default',
       '--fds-semantic-border-action-default': '--fds-color-accent-base-default',
       '--fds-semantic-border-action-hover': '--fds-color-accent-base-hover',
       '--fds-semantic-border-action-active': '--fds-color-accent-base-active',
       '--fds-semantic-border-action-dark': '[delete]',
       '--fds-semantic-border-action-dark-hover': '[delete]',
       '--fds-semantic-border-info-default': '--fds-color-info-border-strong',
-      '--fds-semantic-border-neutral-default':
-        '--fds-color-neutral-border-strong',
-      '--fds-semantic-border-neutral-subtle':
-        '--fds-color-neutral-border-subtle',
-      '--fds-semantic-border-neutral-strong':
-        '--fds-color-neutral-base-default',
-      '--fds-semantic-border-success-default':
-        '--fds-color-success-border-default',
-      '--fds-semantic-border-success-hover':
-        '--fds-color-success-border-strong',
-      '--fds-semantic-border-success-active':
-        '--fds-color-success-border-strong',
-      '--fds-semantic-border-warning-default':
-        '--fds-color-warning-border-default',
-      '--fds-semantic-border-warning-hover':
-        '--fds-color-warning-border-strong',
-      '--fds-semantic-border-warning-active':
-        '--fds-color-warning-border-strong',
-      '--fds-semantic-border-danger-default':
-        '--fds-color-danger-border-default',
+      '--fds-semantic-border-neutral-default': '--fds-color-neutral-border-strong',
+      '--fds-semantic-border-neutral-subtle': '--fds-color-neutral-border-subtle',
+      '--fds-semantic-border-neutral-strong': '--fds-color-neutral-base-default',
+      '--fds-semantic-border-success-default': '--fds-color-success-border-default',
+      '--fds-semantic-border-success-hover': '--fds-color-success-border-strong',
+      '--fds-semantic-border-success-active': '--fds-color-success-border-strong',
+      '--fds-semantic-border-warning-default': '--fds-color-warning-border-default',
+      '--fds-semantic-border-warning-hover': '--fds-color-warning-border-strong',
+      '--fds-semantic-border-warning-active': '--fds-color-warning-border-strong',
+      '--fds-semantic-border-danger-default': '--fds-color-danger-border-default',
       '--fds-semantic-border-danger-hover': '--fds-color-danger-border-strong',
       '--fds-semantic-border-danger-active': '--fds-color-danger-border-strong',
       '--fds-semantic-border-focus-outline': '',
       '--fds-semantic-border-focus-boxshadow': '',
       '--fds-semantic-border-on_inverted-default': '[delete]',
-      '--fds-semantic-border-input-default':
-        '--fds-color-neutral-border-default',
+      '--fds-semantic-border-input-default': '--fds-color-neutral-border-default',
       '--fds-semantic-border-input-hover': '--fds-color-neutral-border-strong',
-      '--fds-semantic-border-divider-default':
-        '--fds-color-neutral-border-subtle',
-      '--fds-semantic-border-divider-subtle':
-        '--fds-color-neutral-border-subtle',
-      '--fds-semantic-border-divider-strong':
-        '--fds-color-neutral-border-default',
-      '--fds-semantic-text-action-first-default':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-text-action-first-hover':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-text-action-first-active':
-        '--fds-color-accent-base-default',
-      '--fds-semantic-text-action-first-on_action':
-        '--fds-color-accent-contrast-1',
-      '--fds-semantic-text-action-second-default':
-        '--fds-color-neutral-base-default',
-      '--fds-semantic-text-action-second-hover':
-        '--fds-color-neutral-base-default',
-      '--fds-semantic-text-action-second-active':
-        '--fds-color-neutral-base-default',
-      '--fds-semantic-text-action-second-on_action':
-        '--fds-color-neutral-contrast-1',
+      '--fds-semantic-border-divider-default': '--fds-color-neutral-border-subtle',
+      '--fds-semantic-border-divider-subtle': '--fds-color-neutral-border-subtle',
+      '--fds-semantic-border-divider-strong': '--fds-color-neutral-border-default',
+      '--fds-semantic-text-action-first-default': '--fds-color-accent-base-default',
+      '--fds-semantic-text-action-first-hover': '--fds-color-accent-base-default',
+      '--fds-semantic-text-action-first-active': '--fds-color-accent-base-default',
+      '--fds-semantic-text-action-first-on_action': '--fds-color-accent-contrast-1',
+      '--fds-semantic-text-action-second-default': '--fds-color-neutral-base-default',
+      '--fds-semantic-text-action-second-hover': '--fds-color-neutral-base-default',
+      '--fds-semantic-text-action-second-active': '--fds-color-neutral-base-default',
+      '--fds-semantic-text-action-second-on_action': '--fds-color-neutral-contrast-1',
       '--fds-semantic-text-action-default': '--fds-color-accent-base-default',
       '--fds-semantic-text-action-hover': '--fds-color-accent-base-default',
       '--fds-semantic-text-action-active': '--fds-color-accent-base-default',
@@ -228,30 +139,22 @@ export default (glob?: string) =>
       '--fds-semantic-text-success-default': '--fds-color-success-base-default',
       '--fds-semantic-text-success-hover': '--fds-color-success-base-default',
       '--fds-semantic-text-success-active': '--fds-color-success-base-default',
-      '--fds-semantic-text-success-on_success':
-        '--fds-color-success-contrast-1',
-      '--fds-semantic-text-success-on_success_subtle':
-        '--fds-color-success-text-default',
+      '--fds-semantic-text-success-on_success': '--fds-color-success-contrast-1',
+      '--fds-semantic-text-success-on_success_subtle': '--fds-color-success-text-default',
       '--fds-semantic-text-neutral-default': '--fds-color-neutral-text-default',
       '--fds-semantic-text-neutral-subtle': '--fds-color-neutral-text-subtle',
-      '--fds-semantic-text-neutral-on_inverted':
-        '--fds-color-neutral-contrast-1',
+      '--fds-semantic-text-neutral-on_inverted': '--fds-color-neutral-contrast-1',
       '--fds-semantic-text-warning-default': '--fds-color-warning-text-default',
-      '--fds-semantic-text-warning-icon_warning':
-        '--fds-color-warning-base-default',
-      '--fds-semantic-text-warning-on_warning':
-        '--fds-color-warning-text-default',
+      '--fds-semantic-text-warning-icon_warning': '--fds-color-warning-base-default',
+      '--fds-semantic-text-warning-on_warning': '--fds-color-warning-text-default',
       '--fds-semantic-text-danger-default': '--fds-color-danger-text-default',
       '--fds-semantic-text-danger-hover': '--fds-color-danger-text-default',
       '--fds-semantic-text-danger-active': '--fds-color-danger-text-default',
       '--fds-semantic-text-danger-on_danger': '--fds-color-danger-contrast-1',
-      '--fds-semantic-text-danger-on_danger_subtle':
-        '--fds-color-danger-text-default',
+      '--fds-semantic-text-danger-on_danger_subtle': '--fds-color-danger-text-default',
       '--fds-semantic-text-visited-default': '',
-      '--fds-semantic-background-default':
-        '--fds-color-neutral-background-default',
-      '--fds-semantic-background-subtle':
-        '--fds-color-neutral-background-subtle',
+      '--fds-semantic-background-default': '--fds-color-neutral-background-default',
+      '--fds-semantic-background-subtle': '--fds-color-neutral-background-subtle',
 
       '--fds-typography-heading-2xlarge': '',
       '--fds-typography-heading-xlarge': '',
@@ -284,12 +187,9 @@ export default (glob?: string) =>
       '--fds-typography-error_message-medium': '',
       '--fds-typography-error_message-small': '',
       '--fds-typography-error_message-xsmall': '',
-      '--fds-typography-interactive-large':
-        '--fds-typography-paragraph-short-large',
-      '--fds-typography-interactive-medium':
-        '--fds-typography-paragraph-short-medium',
-      '--fds-typography-interactive-small':
-        '--fds-typography-paragraph-short-small',
+      '--fds-typography-interactive-large': '--fds-typography-paragraph-short-large',
+      '--fds-typography-interactive-medium': '--fds-typography-paragraph-short-medium',
+      '--fds-typography-interactive-small': '--fds-typography-paragraph-short-small',
       '--fds-border_radius-interactive': '--fds-border-radius-md',
       '--fds-border_radius-small': '--fds-border-radius-sm',
       '--fds-border_radius-medium': '--fds-border-radius-md',
