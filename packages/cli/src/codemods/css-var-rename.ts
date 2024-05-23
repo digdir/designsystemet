@@ -4,7 +4,6 @@ import * as R from 'ramda';
 import type { AcceptedPlugin, Plugin } from 'postcss';
 import postcss from 'postcss';
 import glob from 'fast-glob';
-import chalk from 'chalk';
 
 type CSSCodemodProps = {
   dictionary: Record<string, string>;

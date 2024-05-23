@@ -1,4 +1,4 @@
-import { cssVarCodemod } from '../codemods/css-var-codemod.js';
+import { cssVarCodemod } from '../codemods/css-var-rename.js';
 
 export default (glob?: string) =>
   cssVarCodemod({
