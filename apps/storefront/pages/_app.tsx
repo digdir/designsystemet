@@ -1,5 +1,5 @@
 import '../globals.css';
-import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
+import '../../legacy-tokens.css'; // TODO temp fix because of silly symlinks for theme package
 import '@digdir/designsystemet-css';
 
 import type { AppProps } from 'next/app';
