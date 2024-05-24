@@ -25,6 +25,7 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
   postcssPlugin: 'Replaces referenced CSS variables',
   Declaration(decl) {
     const value = decl.value;
+    const deleted = new Set<string>();
 
     Object.entries(dictionary).forEach(([from, to]) => {
       if (R.isEmpty(to)) {
@@ -33,10 +34,17 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
 
       if (R.includes(from, value) && !R.isEmpty(to)) {
         if (to === '[delete]') {
-          console.log(`${chalk.red('Deleted css variable:')} ${value}`);
+          deleted.add(value);
         }
         decl.value = value.replace(from, to);
       }
     });
+
+    if (deleted.size > 0) {
+      console.log(
+        `The following css variables has been marked as deleted. Make sure to search and replace them by searching for ${chalk.green('[delete]')}`,
+      );
+      Array.from(deleted).forEach((cssVar) => console.log(`${chalk.red('Deleted css variable:')} ${cssVar}`));
+    }
   },
 });
