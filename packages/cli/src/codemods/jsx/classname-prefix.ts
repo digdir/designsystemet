@@ -1,20 +1,5 @@
 import type { API, FileInfo, TemplateElement } from 'jscodeshift';
 
-const replaceInLiteral = (node: string) => {
-  if (node.startsWith('fds-')) {
-    return node.replace('fds-', 'ds-');
-  }
-  return node;
-};
-
-const replaceInTemplateLiteral = (node: TemplateElement[]) => {
-  node.forEach((element) => {
-    const value = element.value.raw;
-    if (typeof value !== 'string') return;
-    element.value.raw = replaceInLiteral(value);
-  });
-};
-
 type Expression = {
   type: string;
   arguments?: Node[];
@@ -29,6 +14,21 @@ type Node = {
   alternate?: Node;
   right?: Node;
   left?: Node;
+};
+
+const replaceInLiteral = (node: string) => {
+  if (node.startsWith('fds-')) {
+    return node.replace('fds-', 'ds-');
+  }
+  return node;
+};
+
+const replaceInTemplateLiteral = (node: TemplateElement[]) => {
+  node.forEach((element) => {
+    const value = element.value.raw;
+    if (typeof value !== 'string') return;
+    element.value.raw = replaceInLiteral(value);
+  });
 };
 
 const processNode = (node: Node) => {

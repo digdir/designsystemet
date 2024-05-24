@@ -17,6 +17,11 @@ export default function JsxTest() {
             true && 'fds-hey',
             true && `fds-${DEFAULT}`,
             typeof DEFAULT === 'string' ? 'fds-yes' : 'fds-no',
+            typeof DEFAULT === 'string'
+              ? 'fds-yes'
+              : typeof DEFAULT === 'function'
+                ? 'fds-no'
+                : 'fds-yes',
           )}
         ></button>
       </div>
