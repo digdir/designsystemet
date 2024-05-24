@@ -20,7 +20,8 @@
     "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
-    "css-classes": "yarn designsystemet css-names"
+    "css-classes": "yarn designsystemet css-names",
+    "jscodeshift": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ./src/test/**/*.{jsx,tsx}"
   },
   "files": [
     "./dist/**"
@@ -36,6 +37,7 @@
     "commander": "^12.0.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
+    "jscodeshift": "^0.15.2",
     "postcss": "^8.4.38",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
@@ -43,6 +45,7 @@
     "tsup": "^8.0.2"
   },
   "devDependencies": {
+    "@types/jscodeshift": "^0",
     "typescript": "^5.4.5"
   }
 }

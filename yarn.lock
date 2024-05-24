@@ -2762,12 +2762,14 @@ __metadata:
     "@commander-js/extra-typings": "npm:^12.0.1"
     "@tokens-studio/sd-transforms": "npm:^0.16.0"
     "@types/glob": "npm:^8.1.0"
+    "@types/jscodeshift": "npm:^0"
     "@types/node": "npm:^20.12.7"
     "@types/ramda": "npm:^0.29.9"
     chalk: "npm:^5.3.0"
     commander: "npm:^12.0.0"
     esno: "npm:^4.7.0"
     fast-glob: "npm:^3.3.2"
+    jscodeshift: "npm:^0.15.2"
     postcss: "npm:^8.4.38"
     ramda: "npm:^0.29.1"
     rimraf: "npm:^5.0.5"
@@ -6571,6 +6573,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jscodeshift@npm:^0":
+  version: 0.11.11
+  resolution: "@types/jscodeshift@npm:0.11.11"
+  dependencies:
+    ast-types: "npm:^0.14.1"
+    recast: "npm:^0.20.3"
+  checksum: 9e3c7c3e61f9a37d792b7c7cccb0f1383d8b52abc56a492a481a8c340bcbbbd12341e6a69570fa057c12e77abdd4bb6592d44baf2c678f4f950d0c9f79594204
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:^7.0.8":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
@@ -7992,6 +8004,15 @@ __metadata:
   version: 0.0.8
   resolution: "ast-types-flow@npm:0.0.8"
   checksum: 85a1c24af4707871c27cfe456bd2ff7fcbe678f3d1c878ac968c9557735a171a17bdcc8c8f903ceab3fc3c49d5b3da2194e6ab0a6be7fec0e133fa028f21ba1b
+  languageName: node
+  linkType: hard
+
+"ast-types@npm:0.14.2, ast-types@npm:^0.14.1":
+  version: 0.14.2
+  resolution: "ast-types@npm:0.14.2"
+  dependencies:
+    tslib: "npm:^2.0.1"
+  checksum: 7c74b3090c90aa600b49a7a8cecc99e329f190600bcaa75ad087472a1a5a7ef23795a17ea00a74c2a8e822b336cd4f874e2e1b815a9877b4dba5e401566b0433
   languageName: node
   linkType: hard
 
@@ -13938,6 +13959,41 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jscodeshift@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "jscodeshift@npm:0.15.2"
+  dependencies:
+    "@babel/core": "npm:^7.23.0"
+    "@babel/parser": "npm:^7.23.0"
+    "@babel/plugin-transform-class-properties": "npm:^7.22.5"
+    "@babel/plugin-transform-modules-commonjs": "npm:^7.23.0"
+    "@babel/plugin-transform-nullish-coalescing-operator": "npm:^7.22.11"
+    "@babel/plugin-transform-optional-chaining": "npm:^7.23.0"
+    "@babel/plugin-transform-private-methods": "npm:^7.22.5"
+    "@babel/preset-flow": "npm:^7.22.15"
+    "@babel/preset-typescript": "npm:^7.23.0"
+    "@babel/register": "npm:^7.22.15"
+    babel-core: "npm:^7.0.0-bridge.0"
+    chalk: "npm:^4.1.2"
+    flow-parser: "npm:0.*"
+    graceful-fs: "npm:^4.2.4"
+    micromatch: "npm:^4.0.4"
+    neo-async: "npm:^2.5.0"
+    node-dir: "npm:^0.1.17"
+    recast: "npm:^0.23.3"
+    temp: "npm:^0.8.4"
+    write-file-atomic: "npm:^2.3.0"
+  peerDependencies:
+    "@babel/preset-env": ^7.1.6
+  peerDependenciesMeta:
+    "@babel/preset-env":
+      optional: true
+  bin:
+    jscodeshift: bin/jscodeshift.js
+  checksum: 5f4354d80a95de4dba5dd402e97e5bba8c6b31261f426719cb184099ac83c57c47e4160923b7c035a5da4113e56c39eb68233e3b55a910372013d66d3b1f1c64
+  languageName: node
+  linkType: hard
+
 "jsdom@npm:^24.0.0":
   version: 24.0.0
   resolution: "jsdom@npm:24.0.0"
@@ -19821,6 +19877,18 @@ __metadata:
   dependencies:
     picomatch: "npm:^2.2.1"
   checksum: 196b30ef6ccf9b6e18c4e1724b7334f72a093d011a99f3b5920470f0b3406a51770867b3e1ae9711f227ef7a7065982f6ee2ce316746b2cb42c88efe44297fe7
+  languageName: node
+  linkType: hard
+
+"recast@npm:^0.20.3":
+  version: 0.20.5
+  resolution: "recast@npm:0.20.5"
+  dependencies:
+    ast-types: "npm:0.14.2"
+    esprima: "npm:~4.0.0"
+    source-map: "npm:~0.6.1"
+    tslib: "npm:^2.0.1"
+  checksum: 7b270187e12f06ba0f5695590158005170a49a5996ab5d30ec4af2a2b1db8b0f74b1449b7eb6984f6d381438448e05cb46dcbf9b647fc49c6fc5139b2e40fca0
   languageName: node
   linkType: hard
 
