@@ -206,6 +206,7 @@ export default (glob?: string) =>
         '--fds-base_sizing': '[delete]',
         '--fds-border_width-default': '--ds-border-width-default',
         '--fds-border_width-active': '--ds-border-width-active',
+        '--fds-focus-border-width': '--ds-focus-border-width', // suggestion
         '--fds-border_width-tab_focus': '--ds-border-width-tab_focus', // Skulle denne fjernes?
         '--fds-shadow-xsmall': '--ds-shadow-xs',
         '--fds-shadow-small': '--ds-shadow-sm',
