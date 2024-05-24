@@ -14,6 +14,7 @@ type Node = {
   alternate?: Node;
   right?: Node;
   left?: Node;
+  test?: Node;
 };
 
 const replaceInLiteral = (node: string) => {
@@ -45,15 +46,14 @@ const processNode = (node: Node) => {
     if (!expression) return;
     if (expression.type === 'CallExpression') {
       expression.arguments?.forEach(processNode);
-      expression.arguments?.forEach((e) => console.log(e));
     } else {
       processNode(expression);
     }
   } else if (node.type === 'ConditionalExpression') {
+    node.test && processNode(node.test);
     node.consequent && processNode(node.consequent);
     node.alternate && processNode(node.alternate);
   } else if (node.type === 'BinaryExpression') {
-    /* console.log(node); */
     node.right && processNode(node.right);
     node.left && processNode(node.left);
   } else if (node.type === 'LogicalExpression') {

@@ -1,6 +1,6 @@
 import cl from 'classnames';
 
-const DEFAULT = 'default';
+const DEFAULT = 'fds-default';
 
 export default function JsxTest() {
   return (
@@ -16,7 +16,7 @@ export default function JsxTest() {
             `fds-${DEFAULT}`,
             true && 'fds-hey',
             true && `fds-${DEFAULT}`,
-            typeof DEFAULT === 'string' ? 'fds-yes' : 'fds-no',
+            DEFAULT.includes('fds-') ? 'fds-yes' : 'fds-no',
             typeof DEFAULT === 'string'
               ? 'fds-yes'
               : typeof DEFAULT === 'function'
