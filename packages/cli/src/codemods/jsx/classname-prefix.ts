@@ -1,4 +1,56 @@
-import type { API, FileInfo } from 'jscodeshift';
+import type {
+  API,
+  FileInfo,
+  JSXElement,
+  JSXExpressionContainer,
+  JSXFragment,
+  TemplateElement,
+} from 'jscodeshift';
+
+const replaceInLiteral = (node: string) => {
+  if (node.startsWith('fds-')) {
+    return node.replace('fds-', 'ds-');
+  }
+  return node;
+};
+
+const replaceInTemplateLiteral = (node: TemplateElement[]) => {
+  node.forEach((element) => {
+    const value = element.value.raw;
+    if (typeof value !== 'string') return;
+    element.value.raw = replaceInLiteral(value);
+  });
+};
+
+const processNode = (node: any) => {
+  if (!node) return;
+  if (node.type === 'Literal') {
+    const value = node.value;
+    if (typeof value !== 'string') return;
+    node.value = replaceInLiteral(value);
+  } else if (node.type === 'TemplateLiteral') {
+    replaceInTemplateLiteral(node.quasis);
+  } else if (node.type === 'JSXExpressionContainer') {
+    const expression = node.expression;
+    /* console.log(expression); */
+    if (expression.type === 'CallExpression') {
+      expression.arguments.forEach(processNode);
+      expression.arguments.forEach((e) => console.log(e));
+    } else {
+      processNode(expression);
+    }
+  } else if (node.type === 'ConditionalExpression') {
+    processNode(node.consequent);
+    processNode(node.alternate);
+  } else if (node.type === 'BinaryExpression') {
+    /* console.log(node); */
+    processNode(node.right);
+    processNode(node.left);
+  } else if (node.type === 'LogicalExpression') {
+    processNode(node.right);
+    processNode(node.left);
+  }
+};
 
 /**
  * Replace all class prefixes from 'fds-' to 'ds-'
@@ -14,53 +66,7 @@ function replaceClassNamePrefix(file: FileInfo, api: API): string | undefined {
     j(path)
       .find(j.JSXAttribute, { name: { name: 'className' } })
       .forEach((nodePath) => {
-        console.log(nodePath.value);
-        /* everything that is just a string */
-        if (nodePath.value.value?.type === 'Literal') {
-          const value = nodePath.value.value.value;
-          if (typeof value !== 'string') return;
-          if (value.startsWith('fds-')) {
-            nodePath.value.value.value = value.replace('fds-', 'ds-');
-          }
-        }
-
-        /* if the value is a function, get all string paramaters and rename */
-        if (nodePath.value.value?.type === 'JSXExpressionContainer') {
-          const expression = nodePath.value.value.expression;
-          /* Get functions */
-          if (expression.type === 'CallExpression') {
-            const args = expression.arguments;
-            args.forEach((arg) => {
-              if (arg.type === 'Literal') {
-                const value = arg.value;
-                if (typeof value !== 'string') return;
-                if (value.startsWith('fds-')) {
-                  arg.value = value.replace('fds-', 'ds-');
-                }
-              }
-
-              if (arg.type === 'TemplateLiteral') {
-                arg.quasis.forEach((quasi) => {
-                  const value = quasi.value.raw;
-                  if (typeof value !== 'string') return;
-                  if (value.startsWith('fds-')) {
-                    quasi.value.raw = value.replace('fds-', 'ds-');
-                  }
-                });
-              }
-            });
-          }
-
-          if (expression.type === 'TemplateLiteral') {
-            expression.quasis.forEach((quasi) => {
-              const value = quasi.value.raw;
-              if (typeof value !== 'string') return;
-              if (value.startsWith('fds-')) {
-                quasi.value.raw = value.replace('fds-', 'ds-');
-              }
-            });
-          }
-        }
+        processNode(nodePath.value.value);
       });
   });
 

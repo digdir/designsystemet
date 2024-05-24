@@ -9,7 +9,16 @@ export default function JsxTest() {
         className='ds-hey'
         onMouseEnter={() => {}}
       >
-        <button className={cl('ds-skrr', 'another', `fds-${DEFAULT}`)}></button>
+        <button
+          className={cl(
+            'ds-skrr',
+            'another',
+            `ds-${DEFAULT}`,
+            true && 'ds-hey',
+            true && `ds-${DEFAULT}`,
+            typeof DEFAULT === 'string' ? 'ds-yes' : 'ds-no',
+          )}
+        ></button>
       </div>
       <div className={`ds-${DEFAULT}`}></div>
     </>
