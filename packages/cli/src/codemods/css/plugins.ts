@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 import type { Plugin } from 'postcss';
+import chalk from 'chalk';
 
 type PluginGenerator = (dictionary: Record<string, string>) => Plugin;
 
@@ -30,11 +31,11 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
         // console.log(chalk.yellow(`Skipping "${from}"; missing to value`));
       }
 
-      if (to === '[delete]') {
-        // console.log(`Found delete tag for "${to}"`);
-      }
-
       if (R.includes(from, value) && !R.isEmpty(to)) {
+        if (to === '[delete]') {
+          console.log(`${chalk.red('Deleted declaration:')} ${value}`);
+        }
+
         decl.value = value.replace(from, to);
       }
     });
