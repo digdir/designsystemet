@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -22,7 +22,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     inputProps,
     descriptionId,
     hasError,
-    size = 'medium',
+    size = 'md',
     readOnly,
   } = useRadio(props);
 

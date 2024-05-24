@@ -27,19 +27,19 @@
     background-image: none;
   }
 
-  .fds-native-select--small {
+  .fds-native-select--sm {
     padding: 0 var(--fds-spacing-2);
     padding-right: var(--fds-spacing-8);
     height: var(--fds-sizing-10);
   }
 
-  .fds-native-select--medium {
+  .fds-native-select--md {
     padding: 0 var(--fds-spacing-3);
     padding-right: var(--fds-spacing-10);
     height: var(--fds-sizing-12);
   }
 
-  .fds-native-select--large {
+  .fds-native-select--lg {
     padding: 0 var(--fds-spacing-4);
     padding-right: var(--fds-spacing-12);
     height: var(--fds-sizing-14);

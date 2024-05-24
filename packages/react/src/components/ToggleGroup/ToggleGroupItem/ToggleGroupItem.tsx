@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
@@ -17,7 +17,7 @@ export const ToggleGroupItem = forwardRef<
   ToggleGroupItemProps
 >((props, ref) => {
   const { children, icon, className, ...rest } = props;
-  const { active, size = 'medium', buttonProps } = useToggleGroupItem(props);
+  const { active, size = 'md', buttonProps } = useToggleGroupItem(props);
   return (
     <RovingTabindexItem
       asChild

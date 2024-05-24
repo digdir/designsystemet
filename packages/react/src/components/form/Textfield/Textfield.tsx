@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { useState, useId, forwardRef } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 
 import { omit } from '../../../utilities';
@@ -92,7 +92,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       readOnly,
     } = useTextfield(props);
 
-    const [inputValue, setInputValue] = useState(props.defaultValue);
+    const [inputValue, setInputValue] = useState(props.value || props.defaultValue);
     const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 

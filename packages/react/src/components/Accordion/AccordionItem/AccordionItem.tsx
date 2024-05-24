@@ -1,4 +1,4 @@
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState, useId } from 'react';
 
