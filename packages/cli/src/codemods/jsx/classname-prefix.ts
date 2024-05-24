@@ -1,11 +1,4 @@
-import type {
-  API,
-  FileInfo,
-  JSXElement,
-  JSXExpressionContainer,
-  JSXFragment,
-  TemplateElement,
-} from 'jscodeshift';
+import type { API, FileInfo, TemplateElement } from 'jscodeshift';
 
 const replaceInLiteral = (node: string) => {
   if (node.startsWith('fds-')) {
@@ -22,33 +15,50 @@ const replaceInTemplateLiteral = (node: TemplateElement[]) => {
   });
 };
 
-const processNode = (node: any) => {
+type Expression = {
+  type: string;
+  arguments?: Node[];
+};
+
+type Node = {
+  type: string;
+  value?: string;
+  quasis?: TemplateElement[];
+  expression?: Expression;
+  consequent?: Node;
+  alternate?: Node;
+  right?: Node;
+  left?: Node;
+};
+
+const processNode = (node: Node) => {
   if (!node) return;
+
   if (node.type === 'Literal') {
     const value = node.value;
     if (typeof value !== 'string') return;
     node.value = replaceInLiteral(value);
   } else if (node.type === 'TemplateLiteral') {
-    replaceInTemplateLiteral(node.quasis);
+    node.quasis && replaceInTemplateLiteral(node.quasis);
   } else if (node.type === 'JSXExpressionContainer') {
     const expression = node.expression;
-    /* console.log(expression); */
+    if (!expression) return;
     if (expression.type === 'CallExpression') {
-      expression.arguments.forEach(processNode);
-      expression.arguments.forEach((e) => console.log(e));
+      expression.arguments?.forEach(processNode);
+      expression.arguments?.forEach((e) => console.log(e));
     } else {
       processNode(expression);
     }
   } else if (node.type === 'ConditionalExpression') {
-    processNode(node.consequent);
-    processNode(node.alternate);
+    node.consequent && processNode(node.consequent);
+    node.alternate && processNode(node.alternate);
   } else if (node.type === 'BinaryExpression') {
     /* console.log(node); */
-    processNode(node.right);
-    processNode(node.left);
+    node.right && processNode(node.right);
+    node.left && processNode(node.left);
   } else if (node.type === 'LogicalExpression') {
-    processNode(node.right);
-    processNode(node.left);
+    node.right && processNode(node.right);
+    node.left && processNode(node.left);
   }
 };
 
@@ -66,7 +76,7 @@ function replaceClassNamePrefix(file: FileInfo, api: API): string | undefined {
     j(path)
       .find(j.JSXAttribute, { name: { name: 'className' } })
       .forEach((nodePath) => {
-        processNode(nodePath.value.value);
+        processNode(nodePath.value.value as Node);
       });
   });
 
