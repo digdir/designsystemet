@@ -41,9 +41,9 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
     });
 
     if (deleted.size > 0) {
-      console.log(
-        `The following css variables has been marked as deleted. Make sure to search and replace them by searching for ${chalk.green('[delete]')}`,
-      );
+      // console.log(
+      //   `The following css variables has been marked as deleted. Make sure to search and replace them by searching for ${chalk.green('[delete]')}`,
+      // );
       Array.from(deleted).forEach((cssVar) => console.log(`${chalk.red('Deleted css variable:')} ${cssVar}`));
     }
   },
