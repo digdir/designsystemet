@@ -1,17 +1,12 @@
-import type { API, FileInfo, Options } from 'jscodeshift';
+import type { API, FileInfo } from 'jscodeshift';
 
 /**
  * Replace all class prefixes from 'fds-' to 'ds-'
  * @param file
  * @param api
- * @param options
  * @returns
  */
-function replaceClassNamePrefix(
-  file: FileInfo,
-  api: API,
-  options?: Options,
-): string | undefined {
+function replaceClassNamePrefix(file: FileInfo, api: API): string | undefined {
   const j = api.jscodeshift;
   const root = j(file.source);
 
@@ -59,7 +54,10 @@ function replaceClassNamePrefix(
       });
   });
 
-  return root.toSource();
+  return root.toSource({
+    quote: 'single',
+    trailingComma: false,
+  });
 }
 
 export default replaceClassNamePrefix;
