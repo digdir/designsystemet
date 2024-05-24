@@ -6,6 +6,7 @@ export default (glob?: string) =>
     globPattern: glob,
     plugins: [
       cssClassRename({}),
+
       cssVarRename({
         '--fds-semantic-surface-first-light': '--ds-color-brand1-surface-default',
         '--fds-semantic-surface-first-light-hover': '--ds-color-brand1-surface-hover',
@@ -123,7 +124,7 @@ export default (glob?: string) =>
         '--fds-semantic-border-focus-boxshadow': '',
         '--fds-semantic-border-on_inverted-default': '[delete]',
         '--fds-semantic-border-input-default': '--ds-color-neutral-border-default',
-        '--fds-semantic-border-input-hover': '--ds-color-neutral-border-strong',
+        '--fds-semantic-border-input-hover': '--ds-color-accent-border-strong',
         '--fds-semantic-border-divider-default': '--ds-color-neutral-border-subtle',
         '--fds-semantic-border-divider-subtle': '--ds-color-neutral-border-subtle',
         '--fds-semantic-border-divider-strong': '--ds-color-neutral-border-default',
