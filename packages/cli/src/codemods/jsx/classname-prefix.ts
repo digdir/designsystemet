@@ -38,6 +38,16 @@ function replaceClassNamePrefix(file: FileInfo, api: API): string | undefined {
                   arg.value = value.replace('fds-', 'ds-');
                 }
               }
+
+              if (arg.type === 'TemplateLiteral') {
+                arg.quasis.forEach((quasi) => {
+                  const value = quasi.value.raw;
+                  if (typeof value !== 'string') return;
+                  if (value.startsWith('fds-')) {
+                    quasi.value.raw = value.replace('fds-', 'ds-');
+                  }
+                });
+              }
             });
           }
 
