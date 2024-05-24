@@ -33,9 +33,8 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
 
       if (R.includes(from, value) && !R.isEmpty(to)) {
         if (to === '[delete]') {
-          console.log(`${chalk.red('Deleted declaration:')} ${value}`);
+          console.log(`${chalk.red('Deleted css variable:')} ${value}`);
         }
-
         decl.value = value.replace(from, to);
       }
     });
