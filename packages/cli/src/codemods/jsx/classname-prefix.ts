@@ -32,6 +32,7 @@ function replaceClassNamePrefix(
         /* if the value is a function, get all string paramaters and rename */
         if (nodePath.value.value?.type === 'JSXExpressionContainer') {
           const expression = nodePath.value.value.expression;
+          /* Get functions */
           if (expression.type === 'CallExpression') {
             const args = expression.arguments;
             args.forEach((arg) => {
@@ -41,6 +42,16 @@ function replaceClassNamePrefix(
                 if (value.startsWith('fds-')) {
                   arg.value = value.replace('fds-', 'ds-');
                 }
+              }
+            });
+          }
+
+          if (expression.type === 'TemplateLiteral') {
+            expression.quasis.forEach((quasi) => {
+              const value = quasi.value.raw;
+              if (typeof value !== 'string') return;
+              if (value.startsWith('fds-')) {
+                quasi.value.raw = value.replace('fds-', 'ds-');
               }
             });
           }
