@@ -21,7 +21,8 @@
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
     "css-classes": "yarn designsystemet css-names",
-    "jscodeshift": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ./src/test/**/*.{jsx,tsx}"
+    "jscodeshift": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ./src/test/**/* --extensions=tsx --parser=tsx",
+    "jscodeshift-react": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ../../packages/react/src/components/Button/**/* --extensions=tsx --parser=tsx"
   },
   "files": [
     "./dist/**"
