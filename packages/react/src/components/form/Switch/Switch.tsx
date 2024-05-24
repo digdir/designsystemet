@@ -54,6 +54,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           <input
             className={`fds-switch__input`}
             ref={ref}
+            role="switch"
+            aria-checked={inputProps.checked}
             {...omit(['size', 'error'], rest)}
             {...inputProps}
           />
