@@ -8945,12 +8945,12 @@ export const  typography = [
         fontSize: "{font-size.f7}"
       }
     },
-    name: "--ds-typography-heading-2xlarge",
+    name: "--ds-typography-heading-2xl",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "2xlarge"
+      "2xl"
     ]
   },
   {
@@ -8969,12 +8969,12 @@ export const  typography = [
       },
       description: "H1"
     },
-    name: "--ds-typography-heading-xlarge",
+    name: "--ds-typography-heading-xl",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "xlarge"
+      "xl"
     ]
   },
   {
@@ -8993,12 +8993,12 @@ export const  typography = [
       },
       description: "H2"
     },
-    name: "--ds-typography-heading-large",
+    name: "--ds-typography-heading-lg",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9017,12 +9017,12 @@ export const  typography = [
       },
       description: "H3"
     },
-    name: "--ds-typography-heading-medium",
+    name: "--ds-typography-heading-md",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9041,12 +9041,12 @@ export const  typography = [
       },
       description: "H4"
     },
-    name: "--ds-typography-heading-small",
+    name: "--ds-typography-heading-sm",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9065,12 +9065,12 @@ export const  typography = [
       },
       description: "H5"
     },
-    name: "--ds-typography-heading-xsmall",
+    name: "--ds-typography-heading-xs",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -9089,12 +9089,12 @@ export const  typography = [
       },
       description: "H6"
     },
-    name: "--ds-typography-heading-xxsmall",
+    name: "--ds-typography-heading-2xs",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "xxsmall"
+      "2xs"
     ]
   },
   {
@@ -9111,12 +9111,12 @@ export const  typography = [
         fontSize: "{font-size.f4}"
       }
     },
-    name: "--ds-typography-ingress-large",
+    name: "--ds-typography-ingress-lg",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9133,12 +9133,12 @@ export const  typography = [
         fontSize: "{font-size.f3}"
       }
     },
-    name: "--ds-typography-ingress-medium",
+    name: "--ds-typography-ingress-md",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9155,12 +9155,12 @@ export const  typography = [
         fontSize: "{font-size.f2}"
       }
     },
-    name: "--ds-typography-ingress-small",
+    name: "--ds-typography-ingress-sm",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9177,12 +9177,12 @@ export const  typography = [
         fontSize: "{font-size.f1}"
       }
     },
-    name: "--ds-typography-ingress-xsmall",
+    name: "--ds-typography-ingress-xs",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -9199,12 +9199,12 @@ export const  typography = [
         fontSize: "{font-size.f2}"
       }
     },
-    name: "--ds-typography-paragraph-large",
+    name: "--ds-typography-paragraph-lg",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9221,12 +9221,12 @@ export const  typography = [
         fontSize: "{font-size.f1}"
       }
     },
-    name: "--ds-typography-paragraph-medium",
+    name: "--ds-typography-paragraph-md",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9243,12 +9243,12 @@ export const  typography = [
         fontSize: "{font-size.f0}"
       }
     },
-    name: "--ds-typography-paragraph-small",
+    name: "--ds-typography-paragraph-sm",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9265,12 +9265,12 @@ export const  typography = [
         fontSize: "{font-size.f-1}"
       }
     },
-    name: "--ds-typography-paragraph-xsmall",
+    name: "--ds-typography-paragraph-xs",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -9287,13 +9287,13 @@ export const  typography = [
         fontSize: "{font-size.f2}"
       }
     },
-    name: "--ds-typography-paragraph-short-large",
+    name: "--ds-typography-paragraph-short-lg",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9310,13 +9310,13 @@ export const  typography = [
         fontSize: "{font-size.f1}"
       }
     },
-    name: "--ds-typography-paragraph-short-medium",
+    name: "--ds-typography-paragraph-short-md",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9333,13 +9333,13 @@ export const  typography = [
         fontSize: "{font-size.f0}"
       }
     },
-    name: "--ds-typography-paragraph-short-small",
+    name: "--ds-typography-paragraph-short-sm",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9356,13 +9356,13 @@ export const  typography = [
         fontSize: "{font-size.f-1}"
       }
     },
-    name: "--ds-typography-paragraph-short-xsmall",
+    name: "--ds-typography-paragraph-short-xs",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -9379,13 +9379,13 @@ export const  typography = [
         fontSize: "{font-size.f1}"
       }
     },
-    name: "--ds-typography-paragraph-long-large",
+    name: "--ds-typography-paragraph-long-lg",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9402,13 +9402,13 @@ export const  typography = [
         fontSize: "{font-size.f0}"
       }
     },
-    name: "--ds-typography-paragraph-long-medium",
+    name: "--ds-typography-paragraph-long-md",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9425,13 +9425,13 @@ export const  typography = [
         fontSize: "{font-size.f-1}"
       }
     },
-    name: "--ds-typography-paragraph-long-small",
+    name: "--ds-typography-paragraph-long-sm",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9448,13 +9448,13 @@ export const  typography = [
         fontSize: "{font-size.f-2}"
       }
     },
-    name: "--ds-typography-paragraph-long-xsmall",
+    name: "--ds-typography-paragraph-long-xs",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -9471,12 +9471,12 @@ export const  typography = [
         fontSize: "{font-size.f2}"
       }
     },
-    name: "--ds-typography-label-large",
+    name: "--ds-typography-label-lg",
     attributes: {},
     path: [
       "typography",
       "label",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9493,12 +9493,12 @@ export const  typography = [
         fontSize: "{font-size.f1}"
       }
     },
-    name: "--ds-typography-label-medium",
+    name: "--ds-typography-label-md",
     attributes: {},
     path: [
       "typography",
       "label",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9515,12 +9515,12 @@ export const  typography = [
         fontSize: "{font-size.f0}"
       }
     },
-    name: "--ds-typography-label-small",
+    name: "--ds-typography-label-sm",
     attributes: {},
     path: [
       "typography",
       "label",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9537,12 +9537,12 @@ export const  typography = [
         fontSize: "{font-size.f-1}"
       }
     },
-    name: "--ds-typography-label-xsmall",
+    name: "--ds-typography-label-xs",
     attributes: {},
     path: [
       "typography",
       "label",
-      "xsmall"
+      "xs"
     ]
   },
   {
@@ -9559,12 +9559,12 @@ export const  typography = [
         fontSize: "{font-size.f2}"
       }
     },
-    name: "--ds-typography-error_message-large",
+    name: "--ds-typography-error_message-lg",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "large"
+      "lg"
     ]
   },
   {
@@ -9581,12 +9581,12 @@ export const  typography = [
         fontSize: "{font-size.f1}"
       }
     },
-    name: "--ds-typography-error_message-medium",
+    name: "--ds-typography-error_message-md",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "medium"
+      "md"
     ]
   },
   {
@@ -9603,12 +9603,12 @@ export const  typography = [
         fontSize: "{font-size.f0}"
       }
     },
-    name: "--ds-typography-error_message-small",
+    name: "--ds-typography-error_message-sm",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "small"
+      "sm"
     ]
   },
   {
@@ -9625,12 +9625,12 @@ export const  typography = [
         fontSize: "{font-size.f-1}"
       }
     },
-    name: "--ds-typography-error_message-xsmall",
+    name: "--ds-typography-error_message-xs",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "xsmall"
+      "xs"
     ]
   }
 ] 
