@@ -4,18 +4,15 @@
 'use client';
 
 import type { SetStateAction } from 'react';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { mapTokens } from '../utils/tokenMapping';
-import {
-  canTextBeUsedOnColors,
-  generateColorTheme,
-  ColorType,
-} from '../utils/themeUtils';
+import type { ColorType } from '../utils/themeUtils';
+import { canTextBeUsedOnColors, generateColorTheme } from '../utils/themeUtils';
 import { areColorsContrasting, isHexColor } from '../utils/colorUtils';
 
 import { Container } from './components/Container/Container';
@@ -235,81 +232,83 @@ export default function Home() {
           </div>
           <div className={classes.pickersContainer}>
             <div className={cl(classes.pickers, 'pickers')}>
-              <ColorPicker
-                colorError={accentError}
-                label='Accent'
-                defaultColor={accentColor}
-                onColorChanged={(color) => {
-                  updateColor(
-                    'accent',
-                    color,
-                    contrastMode,
-                    setAccentColor,
-                    setAccentTheme,
-                    setAccentError,
-                  );
-                }}
-              />
-              <ColorPicker
-                colorError={neutralError}
-                label='Neutral'
-                defaultColor={neutralColor}
-                onColorChanged={(color) => {
-                  updateColor(
-                    'neutral',
-                    color,
-                    contrastMode,
-                    setNeutralColor,
-                    setNeutralTheme,
-                    setNeutralError,
-                  );
-                }}
-              />
-              <ColorPicker
-                colorError={brandOneError}
-                label='Brand 1'
-                defaultColor={brandOneColor}
-                onColorChanged={(color) => {
-                  updateColor(
-                    'brand1',
-                    color,
-                    contrastMode,
-                    setBrandOneColor,
-                    setBrandOneTheme,
-                    setBrandOneError,
-                  );
-                }}
-              />
-              <ColorPicker
-                colorError={brandTwoError}
-                label='Brand 2'
-                defaultColor={brandTwoColor}
-                onColorChanged={(color) => {
-                  updateColor(
-                    'brand2',
-                    color,
-                    contrastMode,
-                    setBrandTwoColor,
-                    setBrandTwoTheme,
-                    setBrandTwoError,
-                  );
-                }}
-              />
-              <ColorPicker
-                colorError={brandThreeError}
-                label='Brand 3'
-                defaultColor={brandThreeColor}
-                onColorChanged={(color) => {
-                  updateColor(
-                    'brand3',
-                    color,
-                    contrastMode,
-                    setBrandThreeColor,
-                    setBrandThreeTheme,
-                    setBrandThreeError,
-                  );
-                }}
-              />
+              <Suspense>
+                <ColorPicker
+                  colorError={accentError}
+                  label='Accent'
+                  defaultColor={accentColor}
+                  onColorChanged={(color) => {
+                    updateColor(
+                      'accent',
+                      color,
+                      contrastMode,
+                      setAccentColor,
+                      setAccentTheme,
+                      setAccentError,
+                    );
+                  }}
+                />
+                <ColorPicker
+                  colorError={neutralError}
+                  label='Neutral'
+                  defaultColor={neutralColor}
+                  onColorChanged={(color) => {
+                    updateColor(
+                      'neutral',
+                      color,
+                      contrastMode,
+                      setNeutralColor,
+                      setNeutralTheme,
+                      setNeutralError,
+                    );
+                  }}
+                />
+                <ColorPicker
+                  colorError={brandOneError}
+                  label='Brand 1'
+                  defaultColor={brandOneColor}
+                  onColorChanged={(color) => {
+                    updateColor(
+                      'brand1',
+                      color,
+                      contrastMode,
+                      setBrandOneColor,
+                      setBrandOneTheme,
+                      setBrandOneError,
+                    );
+                  }}
+                />
+                <ColorPicker
+                  colorError={brandTwoError}
+                  label='Brand 2'
+                  defaultColor={brandTwoColor}
+                  onColorChanged={(color) => {
+                    updateColor(
+                      'brand2',
+                      color,
+                      contrastMode,
+                      setBrandTwoColor,
+                      setBrandTwoTheme,
+                      setBrandTwoError,
+                    );
+                  }}
+                />
+                <ColorPicker
+                  colorError={brandThreeError}
+                  label='Brand 3'
+                  defaultColor={brandThreeColor}
+                  onColorChanged={(color) => {
+                    updateColor(
+                      'brand3',
+                      color,
+                      contrastMode,
+                      setBrandThreeColor,
+                      setBrandThreeTheme,
+                      setBrandThreeError,
+                    );
+                  }}
+                />
+              </Suspense>
               <div className={classes.dropdown}>
                 <NativeSelect
                   label='Kontrastnivå'
