@@ -9,6 +9,8 @@ import {
   getLightnessFromHex,
 } from './colorUtils';
 
+export type ColorType = 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
+
 /**
  *
  * This function generates a color scale based on a base color and a mode. The mode determines the lightness of the colors in the scale.
@@ -60,8 +62,8 @@ export const generateColorScale = (
       90,
       84,
       78,
-      81,
-      57,
+      76,
+      54,
       33,
       textSubLightLightness,
       textDefLightLightness,

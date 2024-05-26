@@ -67,6 +67,8 @@ export const CodeSnippet = ({
             <Tooltip
               content={toolTipText}
               className={classes.tooltip}
+              portal={false}
+              placement='top'
             >
               <button
                 onMouseEnter={() => setToolTipText('Kopier')}

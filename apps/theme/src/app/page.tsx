@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 'use client';
@@ -7,10 +8,15 @@ import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { mapTokens } from '../utils/tokenMapping';
-import { canTextBeUsedOnColors, generateColorTheme } from '../utils/themeUtils';
-import { areColorsContrasting } from '../utils/colorUtils';
+import {
+  canTextBeUsedOnColors,
+  generateColorTheme,
+  ColorType,
+} from '../utils/themeUtils';
+import { areColorsContrasting, isHexColor } from '../utils/colorUtils';
 
 import { Container } from './components/Container/Container';
 import { Landing } from './components/Previews/Landing/Landing';
@@ -38,7 +44,8 @@ type themeType = {
 type colorErrorType = 'none' | 'decorative' | 'interaction';
 
 export default function Home() {
-  const [accentColor, setAccentColor] = useState<CssColor>('#0062BA');
+  const defaultAccentColor = '#0062BA';
+  const [accentColor, setAccentColor] = useState<CssColor>(defaultAccentColor);
   const [accentError, setAccentError] = useState<colorErrorType>('none');
   const [accentTheme, setAccentTheme] = useState<themeType>({
     light: [],
@@ -46,28 +53,40 @@ export default function Home() {
     contrast: [],
   });
 
-  const [neutralColor, setNeutralColor] = useState<CssColor>('#1E2B3C');
+  const defaultNeutralColor = '#1E2B3C';
+  const [neutralColor, setNeutralColor] =
+    useState<CssColor>(defaultNeutralColor);
   const [neutralError, setNeutralError] = useState<colorErrorType>('none');
   const [neutralTheme, setNeutralTheme] = useState<themeType>({
     light: [],
     dark: [],
     contrast: [],
   });
-  const [brandOneColor, setBrandOneColor] = useState<CssColor>('#F45F63');
+
+  const defaultBrandOneColor = '#F45F63';
+  const [brandOneColor, setBrandOneColor] =
+    useState<CssColor>(defaultBrandOneColor);
   const [brandOneError, setBrandOneError] = useState<colorErrorType>('none');
   const [brandOneTheme, setBrandOneTheme] = useState<themeType>({
     light: [],
     dark: [],
     contrast: [],
   });
-  const [brandTwoColor, setBrandTwoColor] = useState<CssColor>('#E5AA20');
+
+  const defaultBrandTwoColor = '#E5AA20';
+  const [brandTwoColor, setBrandTwoColor] =
+    useState<CssColor>(defaultBrandTwoColor);
   const [brandTwoError, setBrandTwoError] = useState<colorErrorType>('none');
   const [brandTwoTheme, setBrandTwoTheme] = useState<themeType>({
     light: [],
     dark: [],
     contrast: [],
   });
-  const [brandThreeColor, setBrandThreeColor] = useState<CssColor>('#1E98F5');
+
+  const defaultBrandThreeColor = '#1E98F5';
+  const [brandThreeColor, setBrandThreeColor] = useState<CssColor>(
+    defaultBrandThreeColor,
+  );
   const [brandThreeError, setBrandThreeError] =
     useState<colorErrorType>('none');
   const [brandThreeTheme, setBrandThreeTheme] = useState<themeType>({
@@ -80,43 +99,57 @@ export default function Home() {
   );
   const [previewMode, setPreviewMode] = useState<previewModeType>('components');
   const [contrastMode, setContrastMode] = useState<'aa' | 'aaa'>('aa');
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
+  const params = new URLSearchParams(searchParams);
 
   useEffect(() => {
     mapTokens();
     updateColor(
+      'accent',
       accentColor,
       contrastMode,
       setAccentColor,
       setAccentTheme,
       setAccentError,
+      true,
     );
     updateColor(
+      'neutral',
       neutralColor,
       contrastMode,
       setNeutralColor,
       setNeutralTheme,
       setNeutralError,
+      true,
     );
     updateColor(
+      'brand1',
       brandOneColor,
       contrastMode,
       setBrandOneColor,
       setBrandOneTheme,
       setBrandOneError,
+      true,
     );
     updateColor(
+      'brand2',
       brandTwoColor,
       contrastMode,
       setBrandTwoColor,
       setBrandTwoTheme,
       setBrandTwoError,
+      true,
     );
     updateColor(
+      'brand3',
       brandThreeColor,
       contrastMode,
       setBrandThreeColor,
       setBrandThreeTheme,
       setBrandThreeError,
+      true,
     );
   }, [contrastMode]);
 
@@ -139,16 +172,40 @@ export default function Home() {
   };
 
   const updateColor = (
+    colorType: ColorType,
     color: CssColor,
     contrastMode: 'aa' | 'aaa',
     colorSetter: React.Dispatch<React.SetStateAction<CssColor>>,
     colorThemeSetter: React.Dispatch<React.SetStateAction<themeType>>,
     colorErrorSetter: React.Dispatch<React.SetStateAction<colorErrorType>>,
+    initial = false,
   ) => {
+    if (initial) {
+      const queryColor = params.get(colorType);
+      if (queryColor && isHexColor(queryColor.substring(1))) {
+        color = queryColor as CssColor;
+      }
+    }
     const scale = generateColorTheme(color as CssColor, contrastMode);
     colorSetter(color as SetStateAction<CssColor>);
     colorThemeSetter(scale);
     colorErrorSetter(getColorError(scale.light));
+    colorQuerySetter(colorType, color);
+  };
+
+  const colorQuerySetter = (colorType: ColorType, color: CssColor) => {
+    const defaultColor = {
+      accent: defaultAccentColor,
+      neutral: defaultNeutralColor,
+      brand1: defaultBrandOneColor,
+      brand2: defaultBrandTwoColor,
+      brand3: defaultBrandThreeColor,
+    };
+
+    if (color !== defaultColor[colorType]) {
+      params.set(colorType, color);
+      replace(`${pathname}?${params.toString()}`);
+    }
   };
 
   const getColorError = (scale: CssColor[]) => {
@@ -181,9 +238,10 @@ export default function Home() {
               <ColorPicker
                 colorError={accentError}
                 label='Accent'
-                defaultColor='#0062BA'
+                defaultColor={accentColor}
                 onColorChanged={(color) => {
                   updateColor(
+                    'accent',
                     color,
                     contrastMode,
                     setAccentColor,
@@ -195,9 +253,10 @@ export default function Home() {
               <ColorPicker
                 colorError={neutralError}
                 label='Neutral'
-                defaultColor='#1E2B3C'
+                defaultColor={neutralColor}
                 onColorChanged={(color) => {
                   updateColor(
+                    'neutral',
                     color,
                     contrastMode,
                     setNeutralColor,
@@ -209,9 +268,10 @@ export default function Home() {
               <ColorPicker
                 colorError={brandOneError}
                 label='Brand 1'
-                defaultColor='#F45F63'
+                defaultColor={brandOneColor}
                 onColorChanged={(color) => {
                   updateColor(
+                    'brand1',
                     color,
                     contrastMode,
                     setBrandOneColor,
@@ -223,9 +283,10 @@ export default function Home() {
               <ColorPicker
                 colorError={brandTwoError}
                 label='Brand 2'
-                defaultColor='#E5AA20'
+                defaultColor={brandTwoColor}
                 onColorChanged={(color) => {
                   updateColor(
+                    'brand2',
                     color,
                     contrastMode,
                     setBrandTwoColor,
@@ -237,9 +298,10 @@ export default function Home() {
               <ColorPicker
                 colorError={brandThreeError}
                 label='Brand 3'
-                defaultColor='#1E98F5'
+                defaultColor={brandThreeColor}
                 onColorChanged={(color) => {
                   updateColor(
+                    'brand3',
                     color,
                     contrastMode,
                     setBrandThreeColor,
@@ -259,7 +321,7 @@ export default function Home() {
                   }}
                 >
                   <option value='aa'>AA</option>
-                  <option value='aaa'>AAA</option>
+                  <option value='aaa'>AAA (WIP)</option>
                 </NativeSelect>
               </div>
               <div className={classes.dropdown}>

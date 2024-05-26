@@ -44,7 +44,7 @@ export const Dashboard = () => {
         <div className={classes.menu}>
           <Button
             color='second'
-            size='small'
+            size='sm'
             variant='tertiary'
             className={cl(classes.btn, classes.btnActive)}
           >
@@ -56,7 +56,7 @@ export const Dashboard = () => {
           </Button>
           <Button
             color='second'
-            size='small'
+            size='sm'
             variant='tertiary'
             className={classes.btn}
           >
@@ -68,7 +68,7 @@ export const Dashboard = () => {
           </Button>
           <Button
             color='second'
-            size='small'
+            size='sm'
             variant='tertiary'
             className={classes.btn}
           >
@@ -80,7 +80,7 @@ export const Dashboard = () => {
           </Button>
           <Button
             color='second'
-            size='small'
+            size='sm'
             variant='tertiary'
             className={classes.btn}
           >
@@ -92,7 +92,7 @@ export const Dashboard = () => {
           </Button>
           <Button
             color='second'
-            size='small'
+            size='sm'
             variant='tertiary'
             className={classes.btn}
           >
@@ -104,7 +104,7 @@ export const Dashboard = () => {
           </Button>
           <Button
             color='second'
-            size='small'
+            size='sm'
             variant='tertiary'
             className={classes.btn}
           >
@@ -118,7 +118,7 @@ export const Dashboard = () => {
       </div>
       <div className={classes.content}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={classes.title}
         >
           Dashboard
@@ -126,13 +126,13 @@ export const Dashboard = () => {
         <div className={classes.grid}>
           <div className={cl(classes.colorCardsContainer, classes.card)}>
             <Heading
-              size='xxsmall'
+              size='2xs'
               className={classes.cardTitle}
             >
               Grafikk one
             </Heading>
             <Paragraph
-              size='small'
+              size='sm'
               className={classes.cardDesc}
             >
               Her er ein stor beskrivelse
@@ -169,7 +169,7 @@ export const Dashboard = () => {
           </div>
           <div className={cl(classes.users, classes.card)}>
             <Heading
-              size='xxsmall'
+              size='2xs'
               className={classes.cardTitle}
             >
               Siste brukere
@@ -213,7 +213,7 @@ export const Dashboard = () => {
           </div>
           <div className={cl(classes.graph, classes.card)}>
             <Heading
-              size='xxsmall'
+              size='2xs'
               className={classes.cardTitle}
             >
               Vekst de siste 3 årene
@@ -222,7 +222,7 @@ export const Dashboard = () => {
           </div>
           <div className={cl(classes.graph2, classes.card)}>
             <Heading
-              size='xxsmall'
+              size='2xs'
               className={classes.cardTitle}
             >
               Sideklikk siste 6 mnd
@@ -231,7 +231,7 @@ export const Dashboard = () => {
           </div>
           <div className={cl(classes.graph3, classes.card)}>
             <Heading
-              size='xxsmall'
+              size='2xs'
               className={classes.cardTitle}
             >
               Antall innlogginger

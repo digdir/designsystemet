@@ -57,7 +57,7 @@ export const TokenModal = ({
     const greenColors = generateColorScale('#07991A', theme);
     const orangeColors = generateColorScale('#D46223', theme);
     const purpleColors = generateColorScale('#663299', theme);
-    const redColors = generateColorScale('#E51C1D', theme);
+    const redColors = generateColorScale('#CD1818', theme);
     const yellowColors = generateColorScale('#EABF28', theme);
 
     const obj = {
@@ -118,7 +118,20 @@ export const TokenModal = ({
         }}
         className={classes.modal}
       >
-        <Modal.Header>Kopier tema</Modal.Header>
+        <Modal.Header className={classes.modalHeader}>
+          Kopier tema
+          {/* <Button
+            variant='tertiary'
+            color='second'
+            size='sm'
+          >
+            Del tema
+            <ArrowForwardIcon
+              title='a11y-title'
+              fontSize='1.5rem'
+            />
+          </Button> */}
+        </Modal.Header>
         <Modal.Content className={classes.modalContent}>
           <div className={classes.content}>
             <div className={classes.column}>

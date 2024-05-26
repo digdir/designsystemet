@@ -61,7 +61,7 @@ export const Components = () => {
       <div className={cl(classes.card, classes.user)}>
         <Heading
           className={cl(classes.cardTitle, classes.userTitle)}
-          size='xsmall'
+          size='xs'
         >
           Opprett ny bruker
         </Heading>
@@ -96,7 +96,7 @@ export const Components = () => {
       <div className={cl(classes.card, classes.tableContainer)}>
         <Heading
           className={classes.cardTitle}
-          size='xxsmall'
+          size='2xs'
         >
           Alle brukere
         </Heading>
@@ -104,7 +104,7 @@ export const Components = () => {
           <div className={classes.tableAction}>
             <NativeSelect
               label=''
-              size='small'
+              size='sm'
               className={classes.tableSelect}
             >
               <option value='blank'>Velg handling</option>
@@ -114,7 +114,7 @@ export const Components = () => {
             </NativeSelect>
             <Button
               className={classes.tableBtn}
-              size='small'
+              size='sm'
             >
               Utfør
             </Button>

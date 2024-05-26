@@ -34,13 +34,13 @@ export const ColorCard = ({ brand, icon }: ColorCardProps) => {
         )}
       >
         <Heading
-          size='xxsmall'
+          size='2xs'
           className={classes.colorCardTitle}
         >
           Grafikk one
         </Heading>
         <Paragraph
-          size='small'
+          size='sm'
           className={classes.colorCardDesc}
         >
           Her er ein beskrivelse

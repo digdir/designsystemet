@@ -258,3 +258,9 @@ export const areColorsContrasting = (
   }
   return false;
 };
+
+export const isHexColor = (hex: string) => {
+  return (
+    typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
+  );
+};

@@ -2645,7 +2645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/designsystemet-css@workspace:packages/css":
+"@digdir/designsystemet-css@npm:^0.9.0, @digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
@@ -2673,7 +2673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
+"@digdir/designsystemet-react@npm:^0.62.0, @digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
@@ -2692,7 +2692,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-theme@npm:0.15.3, @digdir/designsystemet-theme@workspace:packages/theme":
+"@digdir/designsystemet-theme@npm:0.15.3, @digdir/designsystemet-theme@npm:^0.15.3, @digdir/designsystemet-theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-theme@workspace:packages/theme"
   dependencies:
@@ -21606,9 +21606,9 @@ __metadata:
   resolution: "theme@workspace:apps/theme"
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
-    "@digdir/designsystemet-css": "npm:0.7.0"
-    "@digdir/designsystemet-react": "npm:0.60.0"
-    "@digdir/designsystemet-theme": "npm:0.15.3"
+    "@digdir/designsystemet-css": "npm:^0.9.0"
+    "@digdir/designsystemet-react": "npm:^0.62.0"
+    "@digdir/designsystemet-theme": "npm:^0.15.3"
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
     "@mui/material": "npm:^5.15.15"

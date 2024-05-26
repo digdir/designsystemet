@@ -20,8 +20,8 @@
 .icon {
   pointer-events: auto;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 24px;
+  right: 24px;
   height: 40px;
   width: 40px;
   display: flex;
