@@ -225,14 +225,14 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className={classes.main}>
-        <Container>
-          <div>
-            <h1 className={classes.title}>Sett opp fargetema</h1>
-          </div>
-          <div className={classes.pickersContainer}>
-            <div className={cl(classes.pickers, 'pickers')}>
-              <Suspense>
+      <Suspense>
+        <main className={classes.main}>
+          <Container>
+            <div>
+              <h1 className={classes.title}>Sett opp fargetema</h1>
+            </div>
+            <div className={classes.pickersContainer}>
+              <div className={cl(classes.pickers, 'pickers')}>
                 <ColorPicker
                   colorError={accentError}
                   label='Accent'
@@ -308,187 +308,188 @@ export default function Home() {
                     );
                   }}
                 />
-              </Suspense>
-              <div className={classes.dropdown}>
-                <NativeSelect
-                  label='Kontrastnivå'
-                  size='medium'
-                  className={classes.contrastSelect}
-                  value={contrastMode}
-                  onChange={(e) => {
-                    setContrastMode(e.target.value as 'aa' | 'aaa');
-                  }}
+
+                <div className={classes.dropdown}>
+                  <NativeSelect
+                    label='Kontrastnivå'
+                    size='medium'
+                    className={classes.contrastSelect}
+                    value={contrastMode}
+                    onChange={(e) => {
+                      setContrastMode(e.target.value as 'aa' | 'aaa');
+                    }}
+                  >
+                    <option value='aa'>AA</option>
+                    <option value='aaa'>AAA (WIP)</option>
+                  </NativeSelect>
+                </div>
+                <div className={classes.dropdown}>
+                  <TokenModal
+                    accentColor={accentColor}
+                    neutralColor={neutralColor}
+                    brand1Color={brandOneColor}
+                    brand2Color={brandTwoColor}
+                    brand3Color={brandThreeColor}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={classes.rows}>
+              <div className={classes.row}>
+                <div className={classes.scaleLabel}>Accent</div>
+                <Scale
+                  colorScale={accentTheme[themeMode]}
+                  showHeader
+                  showColorMeta={false}
+                  themeMode={themeMode}
+                  type='accent'
+                />
+              </div>
+              <div className={classes.row}>
+                <div className={classes.scaleLabel}>Neutral</div>
+                <Scale
+                  colorScale={neutralTheme[themeMode]}
+                  showColorMeta={false}
+                  themeMode={themeMode}
+                  type='grey'
+                />
+              </div>
+
+              <div className={cl(classes.row, classes.brandRow)}>
+                <div className={classes.scaleLabel}>Brand 1</div>
+                <Scale
+                  colorScale={brandOneTheme[themeMode]}
+                  showColorMeta={false}
+                  themeMode={themeMode}
+                  type='brandOne'
+                />
+              </div>
+              <div className={classes.row}>
+                <div className={classes.scaleLabel}>Brand 2</div>
+                <Scale
+                  colorScale={brandTwoTheme[themeMode]}
+                  showColorMeta={false}
+                  themeMode={themeMode}
+                  type='brandTwo'
+                />
+              </div>
+
+              <div className={classes.row}>
+                <div className={classes.scaleLabel}>Brand 3</div>
+                <Scale
+                  colorScale={brandThreeTheme[themeMode]}
+                  showColorMeta={false}
+                  themeMode={themeMode}
+                  type='brandThree'
+                />
+              </div>
+            </div>
+
+            <div className={classes.toolbar}>
+              <div className={classes.menu}>
+                <button
+                  className={cl(
+                    classes.menuItem,
+                    previewMode === 'components' && classes.menuItemActive,
+                  )}
+                  onClick={() => setPreviewMode('components')}
                 >
-                  <option value='aa'>AA</option>
-                  <option value='aaa'>AAA (WIP)</option>
-                </NativeSelect>
+                  Komponenter
+                </button>
+                <button
+                  className={cl(
+                    classes.menuItem,
+                    previewMode === 'dashboard' && classes.menuItemActive,
+                  )}
+                  onClick={() => setPreviewMode('dashboard')}
+                >
+                  Dashboard
+                </button>
+                <button
+                  className={cl(
+                    classes.menuItem,
+                    previewMode === 'landing' && classes.menuItemActive,
+                    classes.menuItemDisabled,
+                  )}
+                >
+                  Landingsside
+                </button>
+                <button
+                  className={cl(
+                    classes.menuItem,
+                    previewMode === 'forms' && classes.menuItemActive,
+                    classes.menuItemDisabled,
+                  )}
+                >
+                  Skjemaer
+                </button>
+                <button
+                  className={cl(
+                    classes.menuItem,
+                    previewMode === 'auth' && classes.menuItemActive,
+                    classes.menuItemDisabled,
+                  )}
+                >
+                  Autentisering
+                </button>
               </div>
-              <div className={classes.dropdown}>
-                <TokenModal
-                  accentColor={accentColor}
-                  neutralColor={neutralColor}
-                  brand1Color={brandOneColor}
-                  brand2Color={brandTwoColor}
-                  brand3Color={brandThreeColor}
-                />
+              <div className={classes.toggles}>
+                <button
+                  className={cl(
+                    classes.toggle,
+                    themeMode === 'light' && classes.active,
+                  )}
+                  onClick={() => setThemeMode('light')}
+                >
+                  <img
+                    src='img/light-dot.svg'
+                    alt=''
+                  />
+                  Lys
+                </button>
+                <button
+                  className={cl(
+                    classes.toggle,
+                    themeMode === 'dark' && classes.active,
+                  )}
+                  onClick={() => setThemeMode('dark')}
+                >
+                  <img
+                    src='img/dark-dot.svg'
+                    alt=''
+                  />
+                  Mørk
+                </button>
+                <button
+                  className={cl(
+                    classes.toggle,
+                    themeMode === 'contrast' && classes.active,
+                  )}
+                  onClick={() => setThemeMode('contrast')}
+                >
+                  <img
+                    src='img/contrast-dot.svg'
+                    alt=''
+                  />
+                  Kontrast
+                </button>
               </div>
             </div>
-          </div>
-          <div className={classes.rows}>
-            <div className={classes.row}>
-              <div className={classes.scaleLabel}>Accent</div>
-              <Scale
-                colorScale={accentTheme[themeMode]}
-                showHeader
-                showColorMeta={false}
-                themeMode={themeMode}
-                type='accent'
-              />
-            </div>
-            <div className={classes.row}>
-              <div className={classes.scaleLabel}>Neutral</div>
-              <Scale
-                colorScale={neutralTheme[themeMode]}
-                showColorMeta={false}
-                themeMode={themeMode}
-                type='grey'
-              />
-            </div>
 
-            <div className={cl(classes.row, classes.brandRow)}>
-              <div className={classes.scaleLabel}>Brand 1</div>
-              <Scale
-                colorScale={brandOneTheme[themeMode]}
-                showColorMeta={false}
-                themeMode={themeMode}
-                type='brandOne'
-              />
+            <div
+              className={cl(
+                classes.preview,
+                classes[themeMode as keyof typeof classes],
+              )}
+              id='preview'
+            >
+              {previewMode === 'components' && <Components />}
+              {previewMode === 'dashboard' && <Dashboard />}
+              {previewMode === 'landing' && <Landing />}
             </div>
-            <div className={classes.row}>
-              <div className={classes.scaleLabel}>Brand 2</div>
-              <Scale
-                colorScale={brandTwoTheme[themeMode]}
-                showColorMeta={false}
-                themeMode={themeMode}
-                type='brandTwo'
-              />
-            </div>
-
-            <div className={classes.row}>
-              <div className={classes.scaleLabel}>Brand 3</div>
-              <Scale
-                colorScale={brandThreeTheme[themeMode]}
-                showColorMeta={false}
-                themeMode={themeMode}
-                type='brandThree'
-              />
-            </div>
-          </div>
-
-          <div className={classes.toolbar}>
-            <div className={classes.menu}>
-              <button
-                className={cl(
-                  classes.menuItem,
-                  previewMode === 'components' && classes.menuItemActive,
-                )}
-                onClick={() => setPreviewMode('components')}
-              >
-                Komponenter
-              </button>
-              <button
-                className={cl(
-                  classes.menuItem,
-                  previewMode === 'dashboard' && classes.menuItemActive,
-                )}
-                onClick={() => setPreviewMode('dashboard')}
-              >
-                Dashboard
-              </button>
-              <button
-                className={cl(
-                  classes.menuItem,
-                  previewMode === 'landing' && classes.menuItemActive,
-                  classes.menuItemDisabled,
-                )}
-              >
-                Landingsside
-              </button>
-              <button
-                className={cl(
-                  classes.menuItem,
-                  previewMode === 'forms' && classes.menuItemActive,
-                  classes.menuItemDisabled,
-                )}
-              >
-                Skjemaer
-              </button>
-              <button
-                className={cl(
-                  classes.menuItem,
-                  previewMode === 'auth' && classes.menuItemActive,
-                  classes.menuItemDisabled,
-                )}
-              >
-                Autentisering
-              </button>
-            </div>
-            <div className={classes.toggles}>
-              <button
-                className={cl(
-                  classes.toggle,
-                  themeMode === 'light' && classes.active,
-                )}
-                onClick={() => setThemeMode('light')}
-              >
-                <img
-                  src='img/light-dot.svg'
-                  alt=''
-                />
-                Lys
-              </button>
-              <button
-                className={cl(
-                  classes.toggle,
-                  themeMode === 'dark' && classes.active,
-                )}
-                onClick={() => setThemeMode('dark')}
-              >
-                <img
-                  src='img/dark-dot.svg'
-                  alt=''
-                />
-                Mørk
-              </button>
-              <button
-                className={cl(
-                  classes.toggle,
-                  themeMode === 'contrast' && classes.active,
-                )}
-                onClick={() => setThemeMode('contrast')}
-              >
-                <img
-                  src='img/contrast-dot.svg'
-                  alt=''
-                />
-                Kontrast
-              </button>
-            </div>
-          </div>
-
-          <div
-            className={cl(
-              classes.preview,
-              classes[themeMode as keyof typeof classes],
-            )}
-            id='preview'
-          >
-            {previewMode === 'components' && <Components />}
-            {previewMode === 'dashboard' && <Dashboard />}
-            {previewMode === 'landing' && <Landing />}
-          </div>
-        </Container>
-      </main>
+          </Container>
+        </main>
+      </Suspense>
     </div>
   );
 }
