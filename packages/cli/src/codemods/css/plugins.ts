@@ -35,10 +35,8 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
       if (R.includes(from, value) && !R.isEmpty(to)) {
         if (to === '[delete]') {
           deleted.add(value);
-          decl.value = value.replace(from, `${to} ${from}`);
-        } else {
-          decl.value = value.replace(from, to);
         }
+        decl.value = value.replace(from, to);
       }
     });
 
