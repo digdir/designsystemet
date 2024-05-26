@@ -35,7 +35,7 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
       if (R.includes(from, value) && !R.isEmpty(to)) {
         if (to === '[delete]') {
           deleted.add(
-            `${chalk.yellow(from)} @ ${JSON.stringify(decl.source?.input.file)}:${decl.source?.start?.line}:${decl.source?.start?.column}`,
+            `${chalk.yellow(from)} @ ${chalk.gray(`${JSON.stringify(decl.source?.input.file)}:${decl.source?.start?.line}:${decl.source?.start?.column}`)}`,
           );
         }
         decl.value = value.replace(from, to);
@@ -43,11 +43,8 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
     });
 
     if (deleted.size > 0) {
-      // console.log(
-      //   `The following css variables has been marked as deleted. Make sure to search and replace them by searching for ${chalk.green('[delete]')}`,
-      // );
       Array.from(deleted).forEach((cssVar) =>
-        console.log(`${chalk.red('Deleted css variable:')} ${cssVar}`.replace(/"|'/g, '')),
+        console.log(`${chalk.red('Deleted variable:')} ${cssVar}`.replace(/"|'/g, '')),
       );
     }
   },
