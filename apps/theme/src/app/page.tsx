@@ -4,7 +4,7 @@
 'use client';
 
 import type { SetStateAction } from 'react';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
@@ -225,271 +225,270 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Suspense>
-        <main className={classes.main}>
-          <Container>
-            <div>
-              <h1 className={classes.title}>Sett opp fargetema</h1>
-            </div>
-            <div className={classes.pickersContainer}>
-              <div className={cl(classes.pickers, 'pickers')}>
-                <ColorPicker
-                  colorError={accentError}
-                  label='Accent'
-                  defaultColor={accentColor}
-                  onColorChanged={(color) => {
-                    updateColor(
-                      'accent',
-                      color,
-                      contrastMode,
-                      setAccentColor,
-                      setAccentTheme,
-                      setAccentError,
-                    );
-                  }}
-                />
-                <ColorPicker
-                  colorError={neutralError}
-                  label='Neutral'
-                  defaultColor={neutralColor}
-                  onColorChanged={(color) => {
-                    updateColor(
-                      'neutral',
-                      color,
-                      contrastMode,
-                      setNeutralColor,
-                      setNeutralTheme,
-                      setNeutralError,
-                    );
-                  }}
-                />
-                <ColorPicker
-                  colorError={brandOneError}
-                  label='Brand 1'
-                  defaultColor={brandOneColor}
-                  onColorChanged={(color) => {
-                    updateColor(
-                      'brand1',
-                      color,
-                      contrastMode,
-                      setBrandOneColor,
-                      setBrandOneTheme,
-                      setBrandOneError,
-                    );
-                  }}
-                />
-                <ColorPicker
-                  colorError={brandTwoError}
-                  label='Brand 2'
-                  defaultColor={brandTwoColor}
-                  onColorChanged={(color) => {
-                    updateColor(
-                      'brand2',
-                      color,
-                      contrastMode,
-                      setBrandTwoColor,
-                      setBrandTwoTheme,
-                      setBrandTwoError,
-                    );
-                  }}
-                />
-                <ColorPicker
-                  colorError={brandThreeError}
-                  label='Brand 3'
-                  defaultColor={brandThreeColor}
-                  onColorChanged={(color) => {
-                    updateColor(
-                      'brand3',
-                      color,
-                      contrastMode,
-                      setBrandThreeColor,
-                      setBrandThreeTheme,
-                      setBrandThreeError,
-                    );
-                  }}
-                />
 
-                <div className={classes.dropdown}>
-                  <NativeSelect
-                    label='Kontrastnivå'
-                    size='medium'
-                    className={classes.contrastSelect}
-                    value={contrastMode}
-                    onChange={(e) => {
-                      setContrastMode(e.target.value as 'aa' | 'aaa');
-                    }}
-                  >
-                    <option value='aa'>AA</option>
-                    <option value='aaa'>AAA (WIP)</option>
-                  </NativeSelect>
-                </div>
-                <div className={classes.dropdown}>
-                  <TokenModal
-                    accentColor={accentColor}
-                    neutralColor={neutralColor}
-                    brand1Color={brandOneColor}
-                    brand2Color={brandTwoColor}
-                    brand3Color={brandThreeColor}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className={classes.rows}>
-              <div className={classes.row}>
-                <div className={classes.scaleLabel}>Accent</div>
-                <Scale
-                  colorScale={accentTheme[themeMode]}
-                  showHeader
-                  showColorMeta={false}
-                  themeMode={themeMode}
-                  type='accent'
-                />
-              </div>
-              <div className={classes.row}>
-                <div className={classes.scaleLabel}>Neutral</div>
-                <Scale
-                  colorScale={neutralTheme[themeMode]}
-                  showColorMeta={false}
-                  themeMode={themeMode}
-                  type='grey'
-                />
-              </div>
+      <main className={classes.main}>
+        <Container>
+          <div>
+            <h1 className={classes.title}>Sett opp fargetema</h1>
+          </div>
+          <div className={classes.pickersContainer}>
+            <div className={cl(classes.pickers, 'pickers')}>
+              <ColorPicker
+                colorError={accentError}
+                label='Accent'
+                defaultColor={accentColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'accent',
+                    color,
+                    contrastMode,
+                    setAccentColor,
+                    setAccentTheme,
+                    setAccentError,
+                  );
+                }}
+              />
+              <ColorPicker
+                colorError={neutralError}
+                label='Neutral'
+                defaultColor={neutralColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'neutral',
+                    color,
+                    contrastMode,
+                    setNeutralColor,
+                    setNeutralTheme,
+                    setNeutralError,
+                  );
+                }}
+              />
+              <ColorPicker
+                colorError={brandOneError}
+                label='Brand 1'
+                defaultColor={brandOneColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'brand1',
+                    color,
+                    contrastMode,
+                    setBrandOneColor,
+                    setBrandOneTheme,
+                    setBrandOneError,
+                  );
+                }}
+              />
+              <ColorPicker
+                colorError={brandTwoError}
+                label='Brand 2'
+                defaultColor={brandTwoColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'brand2',
+                    color,
+                    contrastMode,
+                    setBrandTwoColor,
+                    setBrandTwoTheme,
+                    setBrandTwoError,
+                  );
+                }}
+              />
+              <ColorPicker
+                colorError={brandThreeError}
+                label='Brand 3'
+                defaultColor={brandThreeColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'brand3',
+                    color,
+                    contrastMode,
+                    setBrandThreeColor,
+                    setBrandThreeTheme,
+                    setBrandThreeError,
+                  );
+                }}
+              />
 
-              <div className={cl(classes.row, classes.brandRow)}>
-                <div className={classes.scaleLabel}>Brand 1</div>
-                <Scale
-                  colorScale={brandOneTheme[themeMode]}
-                  showColorMeta={false}
-                  themeMode={themeMode}
-                  type='brandOne'
-                />
+              <div className={classes.dropdown}>
+                <NativeSelect
+                  label='Kontrastnivå'
+                  size='medium'
+                  className={classes.contrastSelect}
+                  value={contrastMode}
+                  onChange={(e) => {
+                    setContrastMode(e.target.value as 'aa' | 'aaa');
+                  }}
+                >
+                  <option value='aa'>AA</option>
+                  <option value='aaa'>AAA (WIP)</option>
+                </NativeSelect>
               </div>
-              <div className={classes.row}>
-                <div className={classes.scaleLabel}>Brand 2</div>
-                <Scale
-                  colorScale={brandTwoTheme[themeMode]}
-                  showColorMeta={false}
-                  themeMode={themeMode}
-                  type='brandTwo'
-                />
-              </div>
-
-              <div className={classes.row}>
-                <div className={classes.scaleLabel}>Brand 3</div>
-                <Scale
-                  colorScale={brandThreeTheme[themeMode]}
-                  showColorMeta={false}
-                  themeMode={themeMode}
-                  type='brandThree'
+              <div className={classes.dropdown}>
+                <TokenModal
+                  accentColor={accentColor}
+                  neutralColor={neutralColor}
+                  brand1Color={brandOneColor}
+                  brand2Color={brandTwoColor}
+                  brand3Color={brandThreeColor}
                 />
               </div>
             </div>
-
-            <div className={classes.toolbar}>
-              <div className={classes.menu}>
-                <button
-                  className={cl(
-                    classes.menuItem,
-                    previewMode === 'components' && classes.menuItemActive,
-                  )}
-                  onClick={() => setPreviewMode('components')}
-                >
-                  Komponenter
-                </button>
-                <button
-                  className={cl(
-                    classes.menuItem,
-                    previewMode === 'dashboard' && classes.menuItemActive,
-                  )}
-                  onClick={() => setPreviewMode('dashboard')}
-                >
-                  Dashboard
-                </button>
-                <button
-                  className={cl(
-                    classes.menuItem,
-                    previewMode === 'landing' && classes.menuItemActive,
-                    classes.menuItemDisabled,
-                  )}
-                >
-                  Landingsside
-                </button>
-                <button
-                  className={cl(
-                    classes.menuItem,
-                    previewMode === 'forms' && classes.menuItemActive,
-                    classes.menuItemDisabled,
-                  )}
-                >
-                  Skjemaer
-                </button>
-                <button
-                  className={cl(
-                    classes.menuItem,
-                    previewMode === 'auth' && classes.menuItemActive,
-                    classes.menuItemDisabled,
-                  )}
-                >
-                  Autentisering
-                </button>
-              </div>
-              <div className={classes.toggles}>
-                <button
-                  className={cl(
-                    classes.toggle,
-                    themeMode === 'light' && classes.active,
-                  )}
-                  onClick={() => setThemeMode('light')}
-                >
-                  <img
-                    src='img/light-dot.svg'
-                    alt=''
-                  />
-                  Lys
-                </button>
-                <button
-                  className={cl(
-                    classes.toggle,
-                    themeMode === 'dark' && classes.active,
-                  )}
-                  onClick={() => setThemeMode('dark')}
-                >
-                  <img
-                    src='img/dark-dot.svg'
-                    alt=''
-                  />
-                  Mørk
-                </button>
-                <button
-                  className={cl(
-                    classes.toggle,
-                    themeMode === 'contrast' && classes.active,
-                  )}
-                  onClick={() => setThemeMode('contrast')}
-                >
-                  <img
-                    src='img/contrast-dot.svg'
-                    alt=''
-                  />
-                  Kontrast
-                </button>
-              </div>
+          </div>
+          <div className={classes.rows}>
+            <div className={classes.row}>
+              <div className={classes.scaleLabel}>Accent</div>
+              <Scale
+                colorScale={accentTheme[themeMode]}
+                showHeader
+                showColorMeta={false}
+                themeMode={themeMode}
+                type='accent'
+              />
+            </div>
+            <div className={classes.row}>
+              <div className={classes.scaleLabel}>Neutral</div>
+              <Scale
+                colorScale={neutralTheme[themeMode]}
+                showColorMeta={false}
+                themeMode={themeMode}
+                type='grey'
+              />
             </div>
 
-            <div
-              className={cl(
-                classes.preview,
-                classes[themeMode as keyof typeof classes],
-              )}
-              id='preview'
-            >
-              {previewMode === 'components' && <Components />}
-              {previewMode === 'dashboard' && <Dashboard />}
-              {previewMode === 'landing' && <Landing />}
+            <div className={cl(classes.row, classes.brandRow)}>
+              <div className={classes.scaleLabel}>Brand 1</div>
+              <Scale
+                colorScale={brandOneTheme[themeMode]}
+                showColorMeta={false}
+                themeMode={themeMode}
+                type='brandOne'
+              />
             </div>
-          </Container>
-        </main>
-      </Suspense>
+            <div className={classes.row}>
+              <div className={classes.scaleLabel}>Brand 2</div>
+              <Scale
+                colorScale={brandTwoTheme[themeMode]}
+                showColorMeta={false}
+                themeMode={themeMode}
+                type='brandTwo'
+              />
+            </div>
+
+            <div className={classes.row}>
+              <div className={classes.scaleLabel}>Brand 3</div>
+              <Scale
+                colorScale={brandThreeTheme[themeMode]}
+                showColorMeta={false}
+                themeMode={themeMode}
+                type='brandThree'
+              />
+            </div>
+          </div>
+
+          <div className={classes.toolbar}>
+            <div className={classes.menu}>
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'components' && classes.menuItemActive,
+                )}
+                onClick={() => setPreviewMode('components')}
+              >
+                Komponenter
+              </button>
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'dashboard' && classes.menuItemActive,
+                )}
+                onClick={() => setPreviewMode('dashboard')}
+              >
+                Dashboard
+              </button>
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'landing' && classes.menuItemActive,
+                  classes.menuItemDisabled,
+                )}
+              >
+                Landingsside
+              </button>
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'forms' && classes.menuItemActive,
+                  classes.menuItemDisabled,
+                )}
+              >
+                Skjemaer
+              </button>
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'auth' && classes.menuItemActive,
+                  classes.menuItemDisabled,
+                )}
+              >
+                Autentisering
+              </button>
+            </div>
+            <div className={classes.toggles}>
+              <button
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'light' && classes.active,
+                )}
+                onClick={() => setThemeMode('light')}
+              >
+                <img
+                  src='img/light-dot.svg'
+                  alt=''
+                />
+                Lys
+              </button>
+              <button
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'dark' && classes.active,
+                )}
+                onClick={() => setThemeMode('dark')}
+              >
+                <img
+                  src='img/dark-dot.svg'
+                  alt=''
+                />
+                Mørk
+              </button>
+              <button
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'contrast' && classes.active,
+                )}
+                onClick={() => setThemeMode('contrast')}
+              >
+                <img
+                  src='img/contrast-dot.svg'
+                  alt=''
+                />
+                Kontrast
+              </button>
+            </div>
+          </div>
+
+          <div
+            className={cl(
+              classes.preview,
+              classes[themeMode as keyof typeof classes],
+            )}
+            id='preview'
+          >
+            {previewMode === 'components' && <Components />}
+            {previewMode === 'dashboard' && <Dashboard />}
+            {previewMode === 'landing' && <Landing />}
+          </div>
+        </Container>
+      </main>
     </div>
   );
 }
