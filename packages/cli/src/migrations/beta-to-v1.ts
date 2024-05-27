@@ -6,7 +6,28 @@ export default (glob?: string) =>
     globPattern: glob,
     plugins: [
       cssClassRename({}),
-      cssVarRename({ '--fds-accordion': '--dsc-accordion' }),
+      // New component token prefixes
+      cssVarRename({
+        '--fds-accordion': '--dsc-accordion',
+        '--fds-alert': '--dsc-alert',
+        '--fds-btn': '--dsc-btn',
+        '--fds-checkbox': '--dsc-checkbox',
+        '--fdsc-chip': '--dsc-chip',
+        '--fdsc-removable': '--dsc-removable',
+        '--fdsc-bottom': '--dsc-bottom',
+        '--fds-pagination': '--dsc-pagination',
+        '--fds-popover': '--dsc-popover',
+        '--fds-radio': '--dsc-radio',
+        '--f-search': '--dsc-search',
+        '--fds-skeleton': '--dsc-skeleton',
+        '--fds-switch': '--dsc-switch',
+        '--table-padding': '--dsc-table-padding',
+        '--border-radius': '--dsc-table-border-radius',
+        '--fds-tabs': '--dsc-tabs',
+        '--fds-tag': '--dsc-tag',
+        '--fds-focus-border-width': '--dsc-focus-border-width',
+      }),
+      // New tokens
       cssVarRename({
         '--fds-semantic-surface-first-light': '--ds-color-brand1-surface-default',
         '--fds-semantic-surface-first-light-hover': '--ds-color-brand1-surface-hover',
