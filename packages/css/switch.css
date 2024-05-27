@@ -33,7 +33,7 @@
     overflow: visible;
     border-radius: var(--fds-border_radius-full);
     background-color: var(--fds-semantic-surface-neutral-dark);
-    transition: background-color var(--fds-transition) ease;
+    transition: background-color var(--fds-switch--transition) ease;
     margin-right: var(--fds-spacing-1);
   }
 
