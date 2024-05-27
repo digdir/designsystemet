@@ -1,13 +1,19 @@
 import * as R from 'ramda';
-import type { Plugin } from 'postcss';
+import type { Plugin, Declaration } from 'postcss';
 import chalk from 'chalk';
+import hash from 'object-hash';
 
 type PluginGenerator = (dictionary: Record<string, string>) => Plugin;
 
+const printDelete = (text: string) => console.log(`${chalk.red('Deleted:')} ${text}`.replace(/"|'/g, ''));
+
+const deleteMsg = (decl: Declaration, from: string) =>
+  `${chalk.yellow(from)} @ ${chalk.gray(`${JSON.stringify(decl.source?.input.file)}:${decl.source?.start?.line}:${decl.source?.start?.column}`)}`;
+
 export const cssClassRename: PluginGenerator = (dictionary) => ({
-  postcssPlugin: 'Renames CSS classes',
-  Rule(decl) {
-    const selector = decl.selector;
+  postcssPlugin: `Renames CSS classes ${hash(dictionary)}`,
+  Rule(rule) {
+    const selector = rule.selector;
 
     if (!selector) return;
 
@@ -16,36 +22,36 @@ export const cssClassRename: PluginGenerator = (dictionary) => ({
 
       const newSelector = selector.replace(new RegExp(from, 'g'), to);
 
-      decl.selector = newSelector;
+      rule.selector = newSelector;
     });
   },
 });
 
 export const cssVarRename: PluginGenerator = (dictionary) => ({
-  postcssPlugin: 'Replaces referenced CSS variables',
+  postcssPlugin: `Replaces CSS variables ${hash(dictionary)}`,
   Declaration(decl) {
-    const value = decl.value;
+    const { value, prop } = decl;
+
     const deleted = new Set<string>();
 
     Object.entries(dictionary).forEach(([from, to]) => {
-      if (R.isEmpty(to)) {
-        // console.log(chalk.yellow(`Skipping "${from}"; missing to value`));
-      }
+      if (!R.isEmpty(to)) {
+        switch (true) {
+          case R.includes(from, value):
+            to === '[delete]' && deleted.add(deleteMsg(decl, from));
+            decl.value = value.replace(from, to);
+            break;
 
-      if (R.includes(from, value) && !R.isEmpty(to)) {
-        if (to === '[delete]') {
-          deleted.add(
-            `${chalk.yellow(from)} @ ${chalk.gray(`${JSON.stringify(decl.source?.input.file)}:${decl.source?.start?.line}:${decl.source?.start?.column}`)}`,
-          );
+          case R.includes(from, prop):
+            to === '[delete]' && deleted.add(deleteMsg(decl, from));
+            decl.value = prop.replace(from, to);
+            break;
         }
-        decl.value = value.replace(from, to);
       }
     });
 
     if (deleted.size > 0) {
-      Array.from(deleted).forEach((cssVar) =>
-        console.log(`${chalk.red('Deleted variable:')} ${cssVar}`.replace(/"|'/g, '')),
-      );
+      Array.from(deleted).forEach(printDelete);
     }
   },
 });

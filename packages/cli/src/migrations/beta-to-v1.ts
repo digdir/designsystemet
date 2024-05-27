@@ -6,7 +6,7 @@ export default (glob?: string) =>
     globPattern: glob,
     plugins: [
       cssClassRename({}),
-
+      cssVarRename({ '--fds-accordion': '--dsc-accordion' }),
       cssVarRename({
         '--fds-semantic-surface-first-light': '--ds-color-brand1-surface-default',
         '--fds-semantic-surface-first-light-hover': '--ds-color-brand1-surface-hover',
