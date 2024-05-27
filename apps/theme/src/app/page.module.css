@@ -8,6 +8,17 @@
   font-size: 18px;
 }
 
+.preview {
+  --back: var(--grey2);
+  --fore: var(--grey1);
+}
+
+.preview.dark,
+.preview.contrast {
+  --back: var(--grey1);
+  --fore: var(--grey2);
+}
+
 .container {
   max-width: 1600px;
   margin: 0 auto;

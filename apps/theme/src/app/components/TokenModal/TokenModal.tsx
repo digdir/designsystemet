@@ -1,9 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import { Heading, Modal, Tabs } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Heading,
+  Modal,
+  Tabs,
+  Tooltip,
+} from '@digdir/designsystemet-react';
 import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { ArrowForwardIcon } from '@navikt/aksel-icons';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import type { modeType } from '../../../types';
@@ -33,6 +41,7 @@ export const TokenModal = ({
   const [css, setCss] = useState(
     ':root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
   );
+  const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
 
   const generateJsonForColor = (colorArray: CssColor[]) => {
     const obj: { [key: string]: { value: string; type: string } } = {};
@@ -126,6 +135,13 @@ export const TokenModal = ({
     setCss(CSS.concat('}'));
   };
 
+  const onButtonClick = () => {
+    setToolTipText('Kopiert!');
+    navigator.clipboard.writeText(window.location.href).catch((reason) => {
+      throw Error(String(reason));
+    });
+  };
+
   useEffect(() => {
     generateThemeJson('light');
     generateCSSVars('light');
@@ -150,18 +166,31 @@ export const TokenModal = ({
         className={classes.modal}
       >
         <Modal.Header className={classes.modalHeader}>
-          Kopier tema
-          {/* <Button
-            variant='tertiary'
-            color='second'
-            size='sm'
+          <img
+            src='img/emblem.svg'
+            alt='ff'
+            className={classes.emblem}
+          />
+          <span className={classes.headerText}>Kopier fargetema</span>
+          <Tooltip
+            content={toolTipText}
+            portal={false}
           >
-            Del tema
-            <ArrowForwardIcon
-              title='a11y-title'
-              fontSize='1.5rem'
-            />
-          </Button> */}
+            <Button
+              className={classes.shareBtn}
+              variant='tertiary'
+              color='second'
+              size='sm'
+              onClick={() => onButtonClick()}
+              onMouseEnter={() => setToolTipText('Kopier nettadresse')}
+            >
+              Del
+              <ArrowForwardIcon
+                title='a11y-title'
+                fontSize='1.5rem'
+              />
+            </Button>
+          </Tooltip>
         </Modal.Header>
         <Modal.Content className={classes.modalContent}>
           <div className={classes.content}>

@@ -40,3 +40,23 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.headerText {
+  margin-right: auto;
+  font-size: 24px;
+}
+
+.emblem {
+  height: 26px;
+  margin-right: 10px;
+}
+
+.shareBtn {
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.modalHeader > button {
+  right: 22px;
+  top: 22px;
+}

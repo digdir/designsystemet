@@ -1,5 +1,5 @@
 .components {
-  background-color: var(--grey2);
+  background-color: var(--back);
   border-radius: 12px;
   width: 100%;
   padding: 24px;
@@ -16,7 +16,7 @@
 }
 
 .card {
-  background-color: var(--grey1);
+  background-color: var(--fore);
   border-radius: 8px;
   padding: 24px;
 }
@@ -107,6 +107,7 @@
 
 .tableSelect {
   width: 160px;
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .tableHeader {

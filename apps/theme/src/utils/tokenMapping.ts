@@ -79,6 +79,7 @@ export const mapTokens = () => {
 
   // Custom
   setToken('--background', 'var(--grey1)');
+  setToken('--fds-semantic-text-visited-default', 'var(--accent12)');
 };
 
 const setToken = (token: string, color: string) => {

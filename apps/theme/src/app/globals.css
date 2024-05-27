@@ -13,10 +13,6 @@ body {
   background-image: none;
 }
 
-:root {
-  --background: white;
-}
-
 .is-sticky {
   position: fixed;
   top: 0;
