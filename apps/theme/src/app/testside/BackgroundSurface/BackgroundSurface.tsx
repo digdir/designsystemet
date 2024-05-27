@@ -3,60 +3,71 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
 
-import { generateColorTheme } from '../../../utils/themeUtils';
+import type { ThemeType } from '../../../utils/themeUtils';
 
 import classes from './BackgroundSurface.module.css';
 
-export const BackgroundSurface = () => {
-  const greyTheme = generateColorTheme('#243142');
-  const redTheme = generateColorTheme('#E51C1D');
-  const orangeTheme = generateColorTheme('#D46223');
-  const yellowTheme = generateColorTheme('#EABF28');
-  const greenTheme = generateColorTheme('#07991A');
-  const cyanTheme = generateColorTheme('#0AB5C0');
-  const blueTheme = generateColorTheme('#0062BA');
-  const purpleTheme = generateColorTheme('#663299');
+type BackgroundsProps = {
+  theme1: ThemeType;
+  theme2: ThemeType;
+  theme3: ThemeType;
+  theme4: ThemeType;
+  theme5: ThemeType;
+  theme6: ThemeType;
+  theme7: ThemeType;
+  theme8: ThemeType;
+};
 
+export const BackgroundSurface = ({
+  theme1,
+  theme2,
+  theme3,
+  theme4,
+  theme5,
+  theme6,
+  theme7,
+  theme8,
+}: BackgroundsProps) => {
   return (
     <div className={classes.container}>
       <div className={classes.row}>
         <Column
           title='Light'
           scales={[
-            greyTheme.light,
-            redTheme.light,
-            orangeTheme.light,
-            yellowTheme.light,
-            greenTheme.light,
-            cyanTheme.light,
-            blueTheme.light,
-            purpleTheme.light,
+            theme1.light,
+            theme2.light,
+            theme3.light,
+            theme4.light,
+            theme5.light,
+            theme6.light,
+            theme7.light,
+            theme8.light,
           ]}
         />
         <Column
           title='Dark'
           scales={[
-            greyTheme.dark,
-            redTheme.dark,
-            orangeTheme.dark,
-            yellowTheme.dark,
-            greenTheme.dark,
-            cyanTheme.dark,
-            blueTheme.dark,
-            purpleTheme.dark,
+            theme1.dark,
+            theme2.dark,
+            theme3.dark,
+            theme4.dark,
+            theme5.dark,
+            theme6.dark,
+            theme7.dark,
+            theme8.dark,
           ]}
         />
         <Column
           title='Contrast'
           scales={[
-            greyTheme.contrast,
-            redTheme.contrast,
-            orangeTheme.contrast,
-            yellowTheme.contrast,
-            greenTheme.contrast,
-            cyanTheme.contrast,
-            blueTheme.contrast,
-            purpleTheme.contrast,
+            theme1.contrast,
+            theme2.contrast,
+            theme3.contrast,
+            theme4.contrast,
+            theme5.contrast,
+            theme6.contrast,
+            theme7.contrast,
+            theme8.contrast,
           ]}
         />
       </div>

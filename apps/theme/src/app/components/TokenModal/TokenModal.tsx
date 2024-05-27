@@ -8,6 +8,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import type { modeType } from '../../../types';
 import { generateColorScale } from '../../../utils/themeUtils';
+import { Settings } from '../../settings';
 
 import classes from './TokenModal.module.css';
 
@@ -53,12 +54,12 @@ export const TokenModal = ({
   };
 
   const genereateGlobalsJson = (theme: modeType) => {
-    const blueColors = generateColorScale('#0A71C0', theme);
-    const greenColors = generateColorScale('#07991A', theme);
-    const orangeColors = generateColorScale('#D46223', theme);
-    const purpleColors = generateColorScale('#663299', theme);
-    const redColors = generateColorScale('#CD1818', theme);
-    const yellowColors = generateColorScale('#EABF28', theme);
+    const blueColors = generateColorScale(Settings.blueBaseColor, theme);
+    const greenColors = generateColorScale(Settings.greenBaseColor, theme);
+    const orangeColors = generateColorScale(Settings.orangeBaseColor, theme);
+    const purpleColors = generateColorScale(Settings.orangeBaseColor, theme);
+    const redColors = generateColorScale(Settings.redBaseColor, theme);
+    const yellowColors = generateColorScale(Settings.yellowBaseColor, theme);
 
     const obj = {
       global: {

@@ -1,5 +1,6 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
+import { Hsluv } from 'hsluv';
 
 import type { modeType } from '../types';
 
@@ -10,6 +11,11 @@ import {
 } from './colorUtils';
 
 export type ColorType = 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
+export type ThemeType = {
+  light: CssColor[];
+  dark: CssColor[];
+  contrast: CssColor[];
+};
 
 /**
  *
@@ -29,6 +35,15 @@ export const generateColorScale = (
     colorKeys: ['#ffffff'],
     ratios: [1],
   });
+
+  if (mode === 'dark') {
+    color = getBaseColorForDarkmode(color);
+  }
+
+  if (mode === 'contrast') {
+    color = getBaseColorForDarkmode(color);
+  }
+
   const colorLightness = getLightnessFromHex(color);
   const multiplier = colorLightness <= 30 ? -8 : 8;
   const baseDefaultContrast = getContrastFromLightness(
@@ -149,7 +164,21 @@ export const generateColorTheme = (
     light: lightScale,
     dark: darkScale,
     contrast: contrastScale,
-  };
+  } as ThemeType;
+};
+
+const getBaseColorForDarkmode = (color: CssColor) => {
+  const colorLightness = getLightnessFromHex(color);
+
+  const conv = new Hsluv();
+  const convLightness = colorLightness < 40 ? 45 : colorLightness;
+  conv.hex = color;
+  conv.hexToHsluv();
+  conv.hsluv_l = convLightness;
+  conv.hsluv_s = conv.hsluv_s >= 80 ? 80 : conv.hsluv_s;
+  conv.hsluvToHex();
+
+  return conv.hex as CssColor;
 };
 
 const calculateContrastOneColor = (baseColor: CssColor) => {

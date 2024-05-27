@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
   transition: 0.1s all;
+  border: 1px solid transparent;
 }
 
 .surface:hover {

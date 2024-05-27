@@ -5,24 +5,39 @@ import { Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
 
-import { generateColorTheme } from '../../../utils/themeUtils';
+import type { ThemeType } from '../../../utils/themeUtils';
 
 import classes from './Interaction.module.css';
 
-export const Interaction = () => {
-  const theme1 = generateColorTheme('#0062BA');
-  const theme2 = generateColorTheme('#1E98F5');
-  const theme3 = generateColorTheme('#E5AA20');
-  const theme4 = generateColorTheme('#f3e02e');
-  const theme5 = generateColorTheme('#e32d22');
-  const theme6 = generateColorTheme('#F45F63');
-  const theme7 = generateColorTheme('#054449');
-  const theme8 = generateColorTheme('#7befb2');
-  const theme9 = generateColorTheme('#410464');
-  const theme10 = generateColorTheme('#A845E1');
-  const theme11 = generateColorTheme('#0c949b');
-  const theme12 = generateColorTheme('#19e1eb');
+type InteractionProps = {
+  theme1: ThemeType;
+  theme2: ThemeType;
+  theme3: ThemeType;
+  theme4: ThemeType;
+  theme5: ThemeType;
+  theme6: ThemeType;
+  theme7: ThemeType;
+  theme8: ThemeType;
+  theme9: ThemeType;
+  theme10: ThemeType;
+  theme11: ThemeType;
+  theme12: ThemeType;
+};
 
+export const Interaction = ({
+  theme1,
+  theme2,
+  theme3,
+  theme4,
+  theme5,
+  theme6,
+  theme7,
+  theme8,
+  theme9,
+  theme10,
+  theme11,
+  theme12,
+}: InteractionProps) => {
   return (
     <div className={classes.container}>
       <div className={classes.row}>
@@ -107,6 +122,12 @@ const Column = ({ title, scales }: ColumnProps) => {
           type='surface'
           columnTitle={title}
         />
+        <Box2
+          colorIndex={8}
+          scales={scales}
+          type='base'
+          columnTitle={title}
+        />
         <Box
           colorIndex={8}
           scales={scales}
@@ -162,6 +183,49 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
           style={{
             backgroundColor: scales[index][colorIndex],
             color: type === 'base' ? scales[index][13] : scales[index][12],
+          }}
+        >
+          Tekst
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Box2 = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
+  const setToken = (token: string, color: string, id: string) => {
+    const previewElement = document.getElementById(id);
+    if (previewElement) {
+      previewElement.style.setProperty(token, color);
+    }
+  };
+
+  useEffect(() => {
+    for (let i = 0; i < 12; i++) {
+      // Hover
+      setToken(
+        '--interaction' + i + 'Hover',
+        scales[i][type === 'surface' ? 3 : 9],
+        'box' + type + columnTitle,
+      );
+      // Active
+      setToken(
+        '--interaction' + i + 'Active',
+        scales[i][type === 'surface' ? 4 : 10],
+        'box' + type + columnTitle,
+      );
+    }
+  }, [columnTitle, scales, type]);
+
+  return (
+    <div className={cl(classes.box)}>
+      {scales.map((scale, index) => (
+        <div
+          key={index}
+          className={cl(classes.surface, 'interactionSurface' + index)}
+          style={{
+            color: scales[index][11],
+            borderColor: scales[index][8],
           }}
         >
           Tekst

@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
 
-import { generateColorScale } from '../../utils/themeUtils';
+import { generateColorTheme } from '../../utils/themeUtils';
 import { Header } from '../components/Header/Header';
 import { Container } from '../components/Container/Container';
+import { Settings } from '../settings';
 
 import { ContrastBox } from './ContrastBox/ContrastBox';
 import classes from './page.module.css';
@@ -126,28 +126,27 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
   );
 };
 
-const generatePlaceholderColors = () => {
-  return Array.from({ length: 15 }, () => '#000000');
-};
-
 export default function Dev() {
-  const [lightColors, setLightColors] = useState<CssColor[]>(
-    generatePlaceholderColors().map((color) => color as CssColor),
-  );
-  const [darkColors, setDarkColors] = useState<CssColor[]>(
-    generatePlaceholderColors().map((color) => color as CssColor),
-  );
-  const [contrastColors, setContrastColors] = useState<CssColor[]>(
-    generatePlaceholderColors().map((color) => color as CssColor),
-  );
-  useEffect(() => {
-    const lightScale = generateColorScale('#0062BA', 'light', 'aa');
-    const darkScale = generateColorScale('#0062BA', 'dark', 'aa');
-    const contrastScale = generateColorScale('#0062BA', 'contrast', 'aa');
-    setLightColors(lightScale);
-    setDarkColors(darkScale);
-    setContrastColors(contrastScale);
-  }, []);
+  const theme1 = generateColorTheme('#0062BA');
+  const theme2 = generateColorTheme('#1E98F5');
+  const theme3 = generateColorTheme('#E5AA20');
+  const theme4 = generateColorTheme('#f3e02e');
+  const theme5 = generateColorTheme('#DE251B');
+  const theme6 = generateColorTheme('#F45F63');
+  const theme7 = generateColorTheme('#054449');
+  const theme8 = generateColorTheme('#7befb2');
+  const theme9 = generateColorTheme('#410464');
+  const theme10 = generateColorTheme('#A845E1');
+  const theme11 = generateColorTheme('#109E96');
+  const theme12 = generateColorTheme('#243142');
+
+  const themeGlobalBlue = generateColorTheme(Settings.blueBaseColor);
+  const themeGlobalGreen = generateColorTheme(Settings.greenBaseColor);
+  const themeGlobalOrange = generateColorTheme(Settings.orangeBaseColor);
+  const themeGlobalRed = generateColorTheme(Settings.redBaseColor);
+  const themeGlobalPurple = generateColorTheme(Settings.purpleBaseColor);
+  const themeGlobalYellow = generateColorTheme(Settings.yellowBaseColor);
+
   return (
     <div className={classes.page}>
       <Header />
@@ -184,14 +183,28 @@ export default function Dev() {
         >
           Background Default og Subtle
         </Heading>
-        <Backgrounds />
+        <Backgrounds
+          theme1={theme12}
+          theme2={theme2}
+          theme3={theme7}
+          theme4={theme5}
+        />
         <Heading
           className={classes.sectionTitle}
           size='medium'
         >
           Background Subtle mot Surface Default
         </Heading>
-        <BackgroundSurface />
+        <BackgroundSurface
+          theme1={theme1}
+          theme2={theme2}
+          theme3={theme3}
+          theme4={theme4}
+          theme5={theme5}
+          theme6={theme6}
+          theme7={theme7}
+          theme8={theme8}
+        />
         <Heading
           className={classes.sectionTitle}
           size='medium'
@@ -203,7 +216,20 @@ export default function Dev() {
           Base fargene via interaksjon. Teksten bruker
           <code>Contrast 1</code> fargen.
         </div>
-        <Interaction />
+        <Interaction
+          theme1={theme1}
+          theme2={theme2}
+          theme3={theme3}
+          theme4={theme4}
+          theme5={theme5}
+          theme6={theme6}
+          theme7={theme7}
+          theme8={theme8}
+          theme9={theme9}
+          theme10={theme10}
+          theme11={theme11}
+          theme12={theme12}
+        />
         <Heading
           className={classes.sectionTitle}
           size='medium'
@@ -224,7 +250,82 @@ export default function Dev() {
             <code>Base active</code>.
           </li>
         </ul>
-        <BaseContrast />
+        <BaseContrast
+          themes={[
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme1,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme2,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme3,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme4,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme5,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme6,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme7,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme8,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme9,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme10,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme11,
+            },
+            {
+              title: 'Base: ' + theme1.light[8],
+              theme: theme12,
+            },
+            {
+              title: 'Global BLue',
+              theme: themeGlobalBlue,
+            },
+            {
+              title: 'Global Green',
+              theme: themeGlobalGreen,
+            },
+            {
+              title: 'Global Orange',
+              theme: themeGlobalOrange,
+            },
+            {
+              title: 'Global Red',
+              theme: themeGlobalRed,
+            },
+            {
+              title: 'Global Purple',
+              theme: themeGlobalPurple,
+            },
+            {
+              title: 'Global Yellow',
+              theme: themeGlobalYellow,
+            },
+          ]}
+        />
         <Heading
           className={classes.sectionTitle}
           size='medium'
@@ -255,9 +356,9 @@ export default function Dev() {
             <code>Surface active</code> i contrast mode.
           </li>
         </ul>
-        {Row('Light', lightColors)}
-        {Row('Dark', darkColors, true)}
-        {Row('Contrast', contrastColors, true)}
+        {Row('Light', theme1.light)}
+        {Row('Dark', theme1.dark, true)}
+        {Row('Contrast', theme1.contrast, true)}
       </Container>
     </div>
   );
