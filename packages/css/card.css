@@ -108,13 +108,6 @@
     background-color: var(--fds-semantic-surface-neutral-subtle-hover);
   }
 
-  /*
-  --fds surface-neutral-subtle-active does not exist? Old style
-  .fds-card--neutral.fds-card--link:active,
-  .fds-card--subtle.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-neutral-subtle-active);
-  }
-  */
   .fds-card--brand1 {
     background-color: var(--fds-semantic-surface-first-light);
     border: 1px solid var(--fds-semantic-border-neutral-subtle);
