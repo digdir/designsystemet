@@ -29,9 +29,9 @@ export const TokenModal = ({
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [JSONTheme, setJSONTheme] = useState('');
-  // const [css, setCss] = useState(
-  //   '@root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
-  // );
+  const [css, setCss] = useState(
+    '@root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
+  );
 
   const generateJsonForColor = (colorArray: CssColor[]) => {
     const obj: { [key: string]: { value: string; type: string } } = {};
@@ -95,6 +95,16 @@ export const TokenModal = ({
 
     const json = JSON.stringify(obj, null, '\t');
     setJSONTheme(json);
+
+    let CSS = '@root {';
+
+    for (const key in obj.theme) {
+      for (const color in obj.theme[key]) {
+        CSS += `--ds-color-${key}-${color}: ${obj.theme[key][color].value};`;
+      }
+    }
+    console.log(CSS);
+    setCss(CSS.concat('}'));
   };
 
   useEffect(() => {
@@ -199,7 +209,7 @@ export const TokenModal = ({
                 CSS variabler
               </Heading>
               <div className={classes.snippet}>
-                {/* <CodeSnippet language='css'>{css}</CodeSnippet> */}
+                <CodeSnippet language='css'>{css}</CodeSnippet>
               </div>
             </div>
           </div>
