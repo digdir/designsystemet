@@ -15,8 +15,10 @@ export function getSize<T>(size: T) {
     case 'xlarge':
       return 'xl';
     case 'xxlarge':
+    case '2xlarge':
       return '2xl';
     case 'xxxlarge':
+    case '3xlarge':
       return '3xl';
     case 'xxxxlarge':
       return '4xl';
