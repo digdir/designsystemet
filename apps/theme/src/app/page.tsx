@@ -201,7 +201,7 @@ export default function Home() {
 
     if (color !== defaultColor[colorType]) {
       params.set(colorType, color);
-      replace(`${pathname}?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
   };
 
