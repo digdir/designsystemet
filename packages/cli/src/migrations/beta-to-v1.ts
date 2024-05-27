@@ -13,6 +13,7 @@ export default (glob?: string) =>
         '--fds-btn': '--dsc-btn',
         '--fds-checkbox': '--dsc-checkbox',
         '--fdsc-chip': '--dsc-chip',
+        '--fdsc-gap': '--dsc-chip-group-gap',
         '--fdsc-removable': '--dsc-removable',
         '--fdsc-bottom': '--dsc-bottom',
         '--fds-pagination': '--dsc-pagination',
@@ -180,7 +181,7 @@ export default (glob?: string) =>
         '--fds-semantic-text-visited-default': '--ds-global-purple-13',
         '--fds-semantic-background-default': '--ds-color-neutral-background-default',
         '--fds-semantic-background-subtle': '--ds-color-neutral-background-subtle',
-
+        '--fds-typography-heading-3xlarge': '[delete]',
         '--fds-typography-heading-2xlarge': '--ds-typography-heading-2xl',
         '--fds-typography-heading-xlarge': '--ds-typography-heading-xl',
         '--fds-typography-heading-large': '--ds-typography-heading-lg',
@@ -275,6 +276,7 @@ export default (glob?: string) =>
         '--fds-sizing-22': '--ds-sizing-22',
         '--fds-sizing-26': '--ds-sizing-26',
         '--fds-sizing-30': '--ds-sizing-30',
+        '--fds-opacity-disabled': '--ds-opacity-disabled',
       }),
     ],
   });
