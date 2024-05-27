@@ -7,7 +7,8 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import type { modeType } from '../../../types';
-import { ColorType, generateColorScale } from '../../../utils/themeUtils';
+import type { ColorType } from '../../../utils/themeUtils';
+import { generateColorScale } from '../../../utils/themeUtils';
 import { Settings } from '../../settings';
 
 import classes from './TokenModal.module.css';
@@ -95,6 +96,24 @@ export const TokenModal = ({
 
     const json = JSON.stringify(obj, null, '\t');
     setJSONTheme(json);
+  };
+
+  const generateCSSVars = (theme: modeType) => {
+    const accentColors = generateColorScale(accentColor, theme);
+    const neutralColors = generateColorScale(neutralColor, theme);
+    const brand1Colors = generateColorScale(brand1Color, theme);
+    const brand2Colors = generateColorScale(brand2Color, theme);
+    const brand3Colors = generateColorScale(brand3Color, theme);
+
+    const obj = {
+      theme: {
+        accent: generateJsonForColor(accentColors),
+        neutral: generateJsonForColor(neutralColors),
+        brand1: generateJsonForColor(brand1Colors),
+        brand2: generateJsonForColor(brand2Colors),
+        brand3: generateJsonForColor(brand3Colors),
+      },
+    };
 
     let CSS = ':root {';
 
@@ -109,6 +128,7 @@ export const TokenModal = ({
 
   useEffect(() => {
     generateThemeJson('light');
+    generateCSSVars('light');
   }, []);
 
   return (
@@ -209,6 +229,33 @@ export const TokenModal = ({
                 CSS variabler
               </Heading>
               <div className={classes.snippet}>
+                <div className={classes.tabs}>
+                  <Tabs
+                    defaultValue='value1'
+                    size='small'
+                  >
+                    <Tabs.List>
+                      <Tabs.Tab
+                        onClick={() => generateCSSVars('light')}
+                        value='value1'
+                      >
+                        Light
+                      </Tabs.Tab>
+                      <Tabs.Tab
+                        onClick={() => generateCSSVars('dark')}
+                        value='value2'
+                      >
+                        Dark
+                      </Tabs.Tab>
+                      <Tabs.Tab
+                        onClick={() => generateCSSVars('contrast')}
+                        value='value3'
+                      >
+                        Contrast
+                      </Tabs.Tab>
+                    </Tabs.List>
+                  </Tabs>
+                </div>
                 <CodeSnippet language='css'>{css}</CodeSnippet>
               </div>
             </div>
