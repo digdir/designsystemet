@@ -43,9 +43,11 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
             break;
 
           case R.includes(from, prop):
-            to === '[delete]' && deleted.add(deleteMsg(decl, from));
-            decl.value = prop.replace(from, to);
-            break;
+            if (decl.variable) {
+              to === '[delete]' && deleted.add(deleteMsg(decl, from));
+              decl.prop = prop.replace(from, to);
+              break;
+            }
         }
       }
     });
