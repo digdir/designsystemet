@@ -7,7 +7,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import type { modeType } from '../../../types';
-import { generateColorScale } from '../../../utils/themeUtils';
+import { ColorType, generateColorScale } from '../../../utils/themeUtils';
 import { Settings } from '../../settings';
 
 import classes from './TokenModal.module.css';
@@ -99,11 +99,11 @@ export const TokenModal = ({
     let CSS = '@root {';
 
     for (const key in obj.theme) {
-      for (const color in obj.theme[key]) {
-        CSS += `--ds-color-${key}-${color}: ${obj.theme[key][color].value};`;
+      for (const color in obj.theme[key as ColorType]) {
+        CSS += `--ds-color-${key}-${color}: ${obj.theme[key as ColorType][color].value};`;
       }
     }
-    console.log(CSS);
+
     setCss(CSS.concat('}'));
   };
 
