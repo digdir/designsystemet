@@ -21,6 +21,7 @@ export default (glob?: string) =>
         '--fds-radio': '--dsc-radio',
         '--f-search': '--dsc-search',
         '--fds-skeleton': '--dsc-skeleton',
+        '--fds-switch--transition': '--dsc-switch-transition',
         '--fds-switch': '--dsc-switch',
         '--table-padding': '--dsc-table-padding',
         '--border-radius': '--dsc-table-border-radius',
