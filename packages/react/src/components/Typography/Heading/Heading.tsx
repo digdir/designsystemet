@@ -12,8 +12,7 @@ type OldHeadingSizes =
   | 'medium'
   | 'large'
   | 'xlarge'
-  | '2xlarge'
-  | '3xlarge';
+  | '2xlarge';
 
 export type HeadingProps = {
   /** Heading level. This will translate into any h1-6 level unless `as` is defined */
@@ -23,16 +22,7 @@ export type HeadingProps = {
    *
    * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `3xlarge` is deprecated
    */
-  size?:
-    | '2xs'
-    | 'xs'
-    | 'sm'
-    | 'md'
-    | 'lg'
-    | 'xl'
-    | '2xl'
-    | '3xl'
-    | OldHeadingSizes;
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | OldHeadingSizes;
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
