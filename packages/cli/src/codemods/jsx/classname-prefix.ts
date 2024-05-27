@@ -54,7 +54,6 @@ const processNode = (node: Node) => {
       processNode(expression);
     }
   } else if (node.type === 'ConditionalExpression') {
-    console.log(node);
     node.test && processNode(node.test);
     node.consequent && processNode(node.consequent);
     node.alternate && processNode(node.alternate);
@@ -64,8 +63,6 @@ const processNode = (node: Node) => {
   } else if (node.type === 'LogicalExpression') {
     node.right && processNode(node.right);
     node.left && processNode(node.left);
-  } else if (node.type === 'TemplateElement') {
-    console.log(node);
   }
 };
 
@@ -87,7 +84,11 @@ function replaceClassNamePrefix(file: FileInfo, api: API): string | undefined {
       });
   });
 
-  return root.toSource();
+  return root.toSource({
+    quote: 'single',
+    reuseWhitespace: true,
+    wrapColumn: 100,
+  });
 }
 
 export default replaceClassNamePrefix;

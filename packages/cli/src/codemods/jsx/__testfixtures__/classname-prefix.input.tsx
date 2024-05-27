@@ -1,10 +1,10 @@
 import cl from 'classnames';
 
-const DEFAULT = 'default';
+const DEFAULT = 'fds-default';
 
-export default function JsxTest() {
+export default function JsxTest({ className }: { className?: string }) {
   return (
-    <>
+    <div>
       <div
         className='fds-hey'
         onMouseEnter={() => {}}
@@ -16,11 +16,17 @@ export default function JsxTest() {
             `fds-${DEFAULT}`,
             true && 'fds-hey',
             true && `fds-${DEFAULT}`,
-            typeof DEFAULT === 'string' ? 'fds-yes' : 'fds-no',
+            DEFAULT.includes('fds-') ? 'fds-yes' : 'fds-no',
+            typeof DEFAULT === 'string'
+              ? 'fds-yes'
+              : typeof DEFAULT === 'function'
+                ? 'fds-no'
+                : 'fds-yes',
+            className,
           )}
         ></button>
       </div>
       <div className={`fds-${DEFAULT}`}></div>
-    </>
+    </div>
   );
 }

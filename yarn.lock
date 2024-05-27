@@ -2762,7 +2762,7 @@ __metadata:
     "@commander-js/extra-typings": "npm:^12.0.1"
     "@tokens-studio/sd-transforms": "npm:^0.16.0"
     "@types/glob": "npm:^8.1.0"
-    "@types/jscodeshift": "npm:^0"
+    "@types/jscodeshift": "npm:^0.11.11"
     "@types/node": "npm:^20.12.7"
     "@types/ramda": "npm:^0.29.9"
     chalk: "npm:^5.3.0"
@@ -6573,7 +6573,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jscodeshift@npm:^0":
+"@types/jscodeshift@npm:^0.11.11":
   version: 0.11.11
   resolution: "@types/jscodeshift@npm:0.11.11"
   dependencies:

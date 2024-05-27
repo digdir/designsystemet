@@ -7,7 +7,7 @@ export default function JsxTest({ className }: { className?: string }) {
     <div>
       <div
         className='fds-hey'
-        onMouseEnter={() => {}}
+        onMouseEnter={() => 'fds-func'}
       >
         <button
           className={cl(
