@@ -30,7 +30,7 @@ export const TokenModal = ({
   const modalRef = useRef<HTMLDialogElement>(null);
   const [JSONTheme, setJSONTheme] = useState('');
   const [css, setCss] = useState(
-    '@root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
+    ':root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
   );
 
   const generateJsonForColor = (colorArray: CssColor[]) => {
@@ -96,7 +96,7 @@ export const TokenModal = ({
     const json = JSON.stringify(obj, null, '\t');
     setJSONTheme(json);
 
-    let CSS = '@root {';
+    let CSS = ':root {';
 
     for (const key in obj.theme) {
       for (const color in obj.theme[key as ColorType]) {
