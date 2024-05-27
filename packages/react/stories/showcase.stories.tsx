@@ -32,6 +32,40 @@ export const Showcase: StoryFn = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
   return (
     <div className={classes.components}>
+      <div className={cl(classes.help)}>
+        <Heading
+          size='xsmall'
+          className={classes.helpHeading}
+        >
+          Hva kan vi hjelpe deg med?
+        </Heading>
+        <div className={classes.helpCards}>
+          <Card color='first'>
+            <Card.Header className={classes.helpHeader}>
+              <Heading size='xxsmall'>Sikkerhet og drift</Heading>
+            </Card.Header>
+            <Card.Content className={cl(classes.helpContent)}>
+              Most provide as with carried business are much better more the.
+            </Card.Content>
+          </Card>
+          <Card color='second'>
+            <Card.Header className={classes.helpHeader}>
+              <Heading size='xxsmall'>Skole og utdanning</Heading>
+            </Card.Header>
+            <Card.Content className={cl(classes.helpContent)}>
+              Most provide as with carried business are much better more the.
+            </Card.Content>
+          </Card>
+          <Card color='third'>
+            <Card.Header className={classes.helpHeader}>
+              <Heading size='xxsmall'>Mat og helse</Heading>
+            </Card.Header>
+            <Card.Content className={cl(classes.helpContent)}>
+              Most provide as with carried business are much better more the.
+            </Card.Content>
+          </Card>
+        </div>
+      </div>
       <div className={cl(classes.checkbox)}>
         <Checkbox.Group
           error=''
@@ -45,18 +79,6 @@ export const Showcase: StoryFn = () => {
             checked
           >
             Blomkål
-          </Checkbox>
-          <Checkbox
-            value='sms'
-            checked
-          >
-            Pizza
-          </Checkbox>
-          <Checkbox
-            value='sms'
-            checked
-          >
-            Tre liter lettmelk
           </Checkbox>
           <Divider />
           <Checkbox value='sms'>2kg smågodt</Checkbox>
@@ -75,13 +97,6 @@ export const Showcase: StoryFn = () => {
           label='Navn'
           size='small'
           placeholder='Ola Normann'
-          className={classes.userField}
-        />
-        <Textfield
-          type='email'
-          label='E-post'
-          size='small'
-          placeholder='ola@norge.no'
           className={classes.userField}
         />
         <Link
@@ -159,7 +174,7 @@ export const Showcase: StoryFn = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src='img/avatars/female1.png'
+                  src='https://source.unsplash.com/random/100/100'
                   alt=''
                 />
                 Lise Nordmann
@@ -171,7 +186,7 @@ export const Showcase: StoryFn = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src='img/avatars/male2.png'
+                  src='https://source.unsplash.com/random/100/100'
                   alt=''
                 />
                 Ola Nordmann
@@ -189,40 +204,6 @@ export const Showcase: StoryFn = () => {
           size='small'
           totalPages={6}
         />
-      </div>
-      <div className={cl(classes.help)}>
-        <Heading
-          size='xsmall'
-          className={classes.helpHeading}
-        >
-          Hva kan vi hjelpe deg med?
-        </Heading>
-        <div className={classes.helpCards}>
-          <Card color='first'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Sikkerhet og drift</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
-          </Card>
-          <Card color='second'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Skole og utdanning</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
-          </Card>
-          <Card color='third'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Mat og helse</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
-          </Card>
-        </div>
       </div>
       <div>
         <Radio.Group
