@@ -3,6 +3,7 @@
     --fds-switch--transition: 200ms;
     --fds-switch-height: 1.75rem;
     --fds-switch-focus-border-width: 3px;
+    --fds-switch-check_color: transparent;
 
     position: relative;
   }
@@ -174,6 +175,8 @@
   }
 
   .fds-switch__input:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb {
+    --fds-switch-check_color: var(--fds-semantic-surface-success-default);
+
     transform: translateX(calc((var(--fds-switch-width) - var(--fds-switch-height)) * 1.2));
   }
 
@@ -185,12 +188,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: transparent;
+    background-color: var(--fds-switch-check_color);
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='-3 -3 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.1339 2.86612C10.622 3.35427 10.622 4.14573 10.1339 4.63388L5.88388 8.88388C5.39573 9.37204 4.60427 9.37204 4.11612 8.88388L1.86612 6.63388C1.37796 6.14573 1.37796 5.35427 1.86612 4.86612C2.35427 4.37796 3.14573 4.37796 3.63388 4.86612L5 6.23223L8.36612 2.86612C8.85427 2.37796 9.64573 2.37796 10.1339 2.86612Z' fill='%23118849' /%3E%3C/svg%3E");
-  }
-
-  .fds-switch__input:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb::after {
-    background-color: var(--fds-semantic-surface-success-default);
   }
 
   .fds-switch--readonly .fds-switch__input[readonly] + .fds-switch__label .fds-switch__track {
@@ -199,11 +198,9 @@
   }
 
   .fds-switch--readonly .fds-switch__input[readonly] + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
-    background-color: var(--fds-semantic-border-neutral-default);
-  }
+    --fds-switch-check_color: var(--fds-semantic-background-subtle);
 
-  .fds-switch--readonly .fds-switch__input[readonly]:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb::after {
-    background-color: var(--fds-semantic-background-subtle);
+    background-color: var(--fds-semantic-border-neutral-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -216,11 +213,9 @@
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
-      transform: translateX(calc((var(--fds-switch-width) - var(--fds-switch-height))));
-    }
+      --fds-switch-check_color: var(--fds-semantic-surface-success-hover);
 
-    .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb::after {
-      background-color: var(--fds-semantic-surface-success-hover);
+      transform: translateX(calc((var(--fds-switch-width) - var(--fds-switch-height))));
     }
 
     .input:not(:checked, :disabled, [readonly]):hover + .label .track {
