@@ -30,7 +30,7 @@ describe('Link', () => {
   it('Is inverted when the `inverted` property is `true`', () => {
     render({ inverted: true });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('fds-link--inverted');
+    expect(link).toHaveAttribute('data-ds-theme', 'dark');
   });
 
   it('Sets the ref on the anchor element if given', () => {
