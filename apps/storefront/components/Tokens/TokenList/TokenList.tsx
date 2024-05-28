@@ -28,7 +28,7 @@ type TokenListProps = {
 };
 
 type CardColumnType = 2 | 3;
-type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
+type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'portal';
 
 type TokenTableProps = {
   tokens: [string, Token[]][];

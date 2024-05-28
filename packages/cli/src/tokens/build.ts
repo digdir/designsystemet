@@ -94,8 +94,8 @@ const getStorefrontConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): C
             format: groupedTokens.name,
             filter: (token) => {
               if (
-                R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
-                R.includes('semantic/color', token.filePath)
+                R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
+                R.includes('semantic', token.filePath)
               ) {
                 return true;
               }
