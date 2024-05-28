@@ -47,7 +47,7 @@ export const Variants: Story = () => (
     />
     <div
       style={{
-        background: 'var(--fds-semantic-surface-neutral-inverted)',
+        background: 'var(--ds-semantic-surface-neutral-inverted)',
       }}
     >
       <Spinner
