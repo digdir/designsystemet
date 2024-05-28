@@ -204,7 +204,7 @@
   }
 
   .fds-btn--secondary:where(.fds-btn--danger) {
-    color: var(--ds-color-danger-text-default);
+    color: var(--ds-color-danger-text-subtle);
     border-color: var(--ds-color-danger-border-default);
     background-color: var(--ds-color-danger-background-default);
   }
@@ -247,7 +247,7 @@
   }
 
   .fds-btn--tertiary:where(.fds-btn--danger) {
-    color: var(--ds-color-danger-text-default);
+    color: var(--ds-color-danger-text-subtle);
   }
 
   .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
