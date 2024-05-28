@@ -43,9 +43,9 @@
 
   .fds-chip--removable {
     --dsc-removable-background: var(--ds-color-accent-base-default);
-    --dsc-removable-text-color: var(--ds-color-neutral-contrast-1);
+    --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);
     --dsc-removable-chip-size: var(--ds-sizing-7);
-    --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-1);
+    --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-default);
     --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-1);
     --dsc-removable-chip-xmark-size: var(--ds-sizing-6);
     --dsc-removable-chip-xmark-wrapper-width: calc(var(--dsc-removable-chip-xmark-size) + var(--dsc-removable-chip-xmark-padding_right));
@@ -135,7 +135,7 @@
     .fds-chip--removable:not(:disabled, [aria-disabled='true']):hover,
     .fds-chip--removable:not(:disabled, [aria-disabled='true']):focus {
       --dsc-removable-background: var(--ds-color-accent-base-hover);
-      --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-1);
+      --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-default);
     }
   }
 
@@ -144,10 +144,10 @@
   .fds-chip--removable:is([aria-pressed='true']),
   .fds-chip--removable:not(:disabled, [aria-disabled='true']):active {
     --dsc-chip-background: var(--ds-color-accent-base-active);
-    --dsc-chip-text-color: var(--ds-color-neutral-contrast-1);
+    --dsc-chip-text-color: var(--ds-color-neutral-contrast-default);
     --dsc-chip-border: var(--ds-color-accent-base-active);
     --dsc-removable-background: var(--ds-color-accent-base-active);
-    --dsc-removable-text-color: var(--ds-color-neutral-contrast-1);
+    --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);
   }
 
   .fds-chip--sm {

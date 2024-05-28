@@ -6,7 +6,7 @@
     align-items: center;
     border: var(--ds-border-width-default) solid transparent;
     background-color: var(--ds-color-accent-base-default);
-    color: var(--ds-color-accent-contrast-1);
+    color: var(--ds-color-accent-contrast-default);
     min-width: 2.5em;
     padding: var(--dsc-btn-padding);
     box-sizing: border-box;
