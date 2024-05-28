@@ -14,10 +14,9 @@
 }
 
 .userLink {
-  display: block;
   text-align: right;
-  margin-top: 20px;
-  font-size: 16px;
+  margin-top: var(--ds-spacing-5);
+  margin-left: auto;
 }
 
 .userTitle {

@@ -23,18 +23,8 @@
 
   .fds-link:focus-visible {
     color: var(--ds-color-accent-text-default);
-    outline: none;
-  }
-
-  .fds-link:focus-visible::after {
-    content: '';
-    position: absolute;
-    top: calc(var(--ds-spacing-1) * -1);
-    bottom: calc(var(--ds-spacing-1) * -1);
-    left: calc(var(--ds-spacing-2) * -1);
-    right: calc(var(--ds-spacing-2) * -1);
     background: var(--ds-color-accent-surface-default);
     border-radius: var(--ds-border-radius-md);
-    z-index: -1;
+    outline: none;
   }
 }
