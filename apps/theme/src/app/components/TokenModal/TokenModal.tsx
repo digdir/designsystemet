@@ -67,7 +67,7 @@ export const TokenModal = ({
     const blueColors = generateColorScale(Settings.blueBaseColor, theme);
     const greenColors = generateColorScale(Settings.greenBaseColor, theme);
     const orangeColors = generateColorScale(Settings.orangeBaseColor, theme);
-    const purpleColors = generateColorScale(Settings.orangeBaseColor, theme);
+    const purpleColors = generateColorScale(Settings.purpleBaseColor, theme);
     const redColors = generateColorScale(Settings.redBaseColor, theme);
     const yellowColors = generateColorScale(Settings.yellowBaseColor, theme);
 

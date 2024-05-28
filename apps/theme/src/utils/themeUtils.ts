@@ -167,19 +167,19 @@ export const generateColorTheme = (
   } as ThemeType;
 };
 
-const getBaseColorForDarkmode = (color: CssColor) => {
-  const colorLightness = getLightnessFromHex(color);
+// const getBaseColorForDarkmode = (color: CssColor) => {
+//   const colorLightness = getLightnessFromHex(color);
 
-  const conv = new Hsluv();
-  const convLightness = colorLightness < 40 ? 45 : colorLightness;
-  conv.hex = color;
-  conv.hexToHsluv();
-  conv.hsluv_l = convLightness;
-  conv.hsluv_s = conv.hsluv_s >= 80 ? 80 : conv.hsluv_s;
-  conv.hsluvToHex();
+//   const conv = new Hsluv();
+//   const convLightness = colorLightness < 40 ? 45 : colorLightness;
+//   conv.hex = color;
+//   conv.hexToHsluv();
+//   conv.hsluv_l = convLightness;
+//   conv.hsluv_s = conv.hsluv_s >= 80 ? 80 : conv.hsluv_s;
+//   conv.hsluvToHex();
 
-  return conv.hex as CssColor;
-};
+//   return conv.hex as CssColor;
+// };
 
 const calculateContrastOneColor = (baseColor: CssColor) => {
   const contrastWhite = getContrastFromHex(baseColor, '#ffffff');
