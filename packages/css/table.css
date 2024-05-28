@@ -79,8 +79,10 @@
     background-color: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-table__header__cell--sortable button:focus {
+  .fds-table__header__cell--sortable button:focus-visible {
     z-index: 3;
+    outline-offset: -3px;
+    box-shadow: unset;
   }
 
   .fds-table__header__cell--sortable button svg {
