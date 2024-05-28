@@ -1,10 +1,11 @@
 @layer fds.radio {
   .fds-radio {
-    --dsc-radio-size: 1.75rem;
+    --dsc-radio-size: var(--ds-spacing-5);
     --dsc-radio-focus-border-width: 3px;
     --dsc-radio-background: var(--ds-color-neutral-background-default);
     --dsc-radio-border-color: var(--ds-color-neutral-border-default);
-    --dsc-radio-border__hover: 0 0 0 var(--ds-spacing-2) var(--ds-color-accent-border-subtle);
+    --dsc-radio-border__hover--size: calc(var(--ds-spacing-3) / 2);
+    --dsc-radio-border__hover: 0 0 0 var(--dsc-radio-border__hover--size) var(--ds-color-accent-border-subtle);
 
     display: grid;
   }
@@ -153,6 +154,7 @@
 
   .fds-radio--md {
     --dsc-radio-size: var(--ds-sizing-6);
+    --dsc-radio-border__hover--size: var(--ds-spacing-1);
 
     min-height: var(--ds-sizing-11);
   }
