@@ -100,8 +100,8 @@
   }
 
   .fds-combobox__input__wrapper.fds-combobox--readonly {
-    background: var(--ds-color-neutral-background-subtle);
-    border-color: var(--ds-color-neutral-border-strong);
+    background: var(--ds-color-accent-base-default);
+    border-color: var(--ds-color-accent-base-default);
   }
 
   .fds-combobox__label {
@@ -251,8 +251,8 @@
   }
 
   .fds-combobox__option.fds-combobox__option--active {
-    background: var(--ds-color-accent-surface-default);
-    border-left: 5px solid var(--ds-color-accent-border-strong);
+    background: var(--ds-color-accent-background-subtle);
+    border-left: 5px solid var(--ds-color-accent-base-default);
   }
 
   .fds-combobox__option > div {
@@ -275,7 +275,7 @@
   }
 
   .fds-combobox__option--active .fds-combobox__option__label {
-    color: var(--ds-color-accent-base-hover);
+    color: var(--ds-color-accent-text-default);
   }
 
   .fds-combobox__option__icon-wrapper {
@@ -289,7 +289,7 @@
   }
 
   .fds-combobox__option--active .fds-combobox__option__icon-wrapper {
-    border-color: var(--ds-color-accent-border-strong);
+    border-color: var(--ds-color-accent-base-default);
   }
 
   .fds-combobox--sm .fds-combobox__option .fds-combobox__option__icon-wrapper {
@@ -305,8 +305,8 @@
   }
 
   .fds-combobox__option__icon-wrapper.fds-combobox__option__icon-wrapper--selected {
-    border-color: var(--ds-color-accent-border-strong);
-    background-color: var(--ds-color-accent-border-strong);
+    border-color: var(--ds-color-accent-base-default);
+    background-color: var(--ds-color-accent-base-default);
   }
 
   .fds-combobox__option__icon-wrapper__icon {
