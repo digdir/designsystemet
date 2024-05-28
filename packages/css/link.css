@@ -1,5 +1,6 @@
 @layer fds.link {
   .fds-link {
+    position: relative;
     color: var(--ds-color-accent-text-subtle);
     cursor: pointer;
     text-decoration: underline;
@@ -21,10 +22,19 @@
   }
 
   .fds-link:focus-visible {
-    background: var(--ds-color-accent-surface-default);
-    box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--ds-color-accent-text-default);
     color: var(--ds-color-accent-text-default);
     outline: none;
-    text-decoration: none;
+  }
+
+  .fds-link:focus-visible::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--ds-spacing-1) * -1);
+    bottom: calc(var(--ds-spacing-1) * -1);
+    left: calc(var(--ds-spacing-2) * -1);
+    right: calc(var(--ds-spacing-2) * -1);
+    background: var(--ds-color-accent-surface-default);
+    border-radius: var(--ds-border-radius-md);
+    z-index: -1;
   }
 }
