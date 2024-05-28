@@ -13,8 +13,8 @@
     text-decoration: underline;
     text-decoration-thickness: 3px;
     text-underline-offset: 0.3em;
-    padding: var(--fds-spacing-3) var(--fds-spacing-4) var(--fds-spacing-3) var(--fds-spacing-6);
-    color: var(--fds-semantic-text-neutral-default);
-    background: var(--fds-semantic-border-focus-outline);
+    padding: var(--ds-spacing-3) var(--ds-spacing-4) var(--ds-spacing-3) var(--ds-spacing-6);
+    color: var(--ds-color-neutral-text-default);
+    background: var(--ds-color-neutral-text-default);
   }
 }

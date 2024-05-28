@@ -17,11 +17,11 @@
  * Apply a focus outline on an element when it is focused with keyboard
  */
   .fds-focus:focus-visible {
-    --fds-focus-border-width: 3px;
+    --dsc-focus-border-width: 3px;
 
-    outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-    outline-offset: var(--fds-focus-border-width);
-    box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+    outline: var(--dsc-focus-border-width) solid var(--ds-color-neutral-text-default);
+    outline-offset: var(--dsc-focus-border-width);
+    box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-neutral-background-default);
   }
 
   @layer animate-height {

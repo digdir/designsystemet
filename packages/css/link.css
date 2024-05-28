@@ -1,29 +1,29 @@
 @layer fds.link {
   .fds-link {
-    color: var(--fds-semantic-text-action-default);
+    color: var(--ds-color-accent-base-default);
     cursor: pointer;
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem);
     text-underline-offset: max(4px, 0.25rem);
     display: inline-flex;
     align-items: center;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
   }
 
   .fds-link:visited {
-    color: var(--fds-semantic-text-visited-default);
+    color: var(--ds-global-purple-13);
     text-decoration: none;
   }
 
   .fds-link:hover {
-    color: var(--fds-semantic-text-action-hover);
+    color: var(--ds-color-accent-base-hover);
     text-decoration-thickness: max(2px, 0.125rem, 0.12em);
   }
 
   .fds-link:focus-visible {
-    background: var(--fds-semantic-border-focus-outline);
-    box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--fds-semantic-border-focus-boxshadow);
-    color: var(--fds-semantic-text-action-active);
+    background: var(--ds-color-neutral-text-default);
+    box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--ds-color-neutral-background-default);
+    color: var(--ds-color-accent-base-active);
     outline: none;
     text-decoration: none;
   }

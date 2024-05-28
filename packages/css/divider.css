@@ -5,14 +5,14 @@
   }
 
   .fds-divider--default {
-    border-color: var(--fds-semantic-border-divider-default);
+    border-color: var(--ds-color-neutral-border-subtle);
   }
 
   .fds-divider--strong {
-    border-color: var(--fds-semantic-border-divider-strong);
+    border-color: var(--ds-color-neutral-border-default);
   }
 
   .fds-divider--subtle {
-    border-color: var(--fds-semantic-border-divider-subtle);
+    border-color: var(--ds-color-neutral-border-subtle);
   }
 }

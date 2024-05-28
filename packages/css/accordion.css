@@ -1,23 +1,23 @@
 @layer fds.accordion {
   .fds-accordion {
-    --fds-accordion-border-radius: var(--fds-border_radius-interactive);
-    --fds-accordion-border-color: var(--fds-semantic-border-neutral-subtle);
+    --dsc-accordion-border-radius: var(--ds-border-radius-md);
+    --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
 
-    border-bottom: 1px solid var(--fds-semantic-border-neutral-subtle);
+    border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
     box-sizing: border-box;
   }
 
   .fds-accordion--border {
-    border: 1px solid var(--fds-accordion-border-color);
-    border-radius: var(--fds-accordion-border-radius);
+    border: 1px solid var(--dsc-accordion-border-color);
+    border-radius: var(--dsc-accordion-border-radius);
   }
 
   .fds-accordion__expand-icon {
-    border-radius: var(--fds-border_radius-interactive);
+    border-radius: var(--ds-border-radius-md);
   }
 
   .fds-accordion__content {
-    padding: var(--fds-spacing-5, 1rem);
+    padding: var(--ds-spacing-5, 1rem);
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -31,17 +31,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: var(--fds-spacing-2);
+    gap: var(--ds-spacing-2);
     margin: 0;
     text-align: left;
     cursor: pointer;
     border: none;
-    border-top: 1px solid var(--fds-semantic-border-neutral-subtle);
-    padding: var(--fds-spacing-4);
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+    padding: var(--ds-spacing-4);
   }
 
   .fds-accordion--border .fds-accordion__button {
-    border-radius: var(--fds-accordion-border-radius);
+    border-radius: var(--dsc-accordion-border-radius);
   }
 
   .fds-accordion__item:focus-within {
@@ -54,33 +54,33 @@
 
   .fds-accordion--neutral,
   .fds-accordion--neutral .fds-accordion__button {
-    background-color: var(--fds-semantic-surface-neutral-default);
+    background-color: var(--ds-color-neutral-background-default);
   }
 
   .fds-accordion--subtle,
   .fds-accordion--subtle .fds-accordion__button {
-    background-color: var(--fds-semantic-surface-neutral-subtle);
+    background-color: var(--ds-color-neutral-background-subtle);
   }
 
   .fds-accordion--brand1,
   .fds-accordion--brand1 .fds-accordion__button {
-    --fds-accordion-border-color: var(--fds-semantic-border-first-default);
+    --dsc-accordion-border-color: var(--ds-color-brand1-base-default);
 
-    background: var(--fds-semantic-surface-first-light);
+    background: var(--ds-color-brand1-surface-default);
   }
 
   .fds-accordion--brand2,
   .fds-accordion--brand2 .fds-accordion__button {
-    --fds-accordion-border-color: var(--fds-semantic-border-second-default);
+    --dsc-accordion-border-color: var(--ds-color-brand2-base-default);
 
-    background: var(--fds-semantic-surface-second-light);
+    background: var(--ds-color-brand2-surface-default);
   }
 
   .fds-accordion--brand3,
   .fds-accordion--brand3 .fds-accordion__button {
-    --fds-accordion-border-color: var(--fds-semantic-border-third-default);
+    --dsc-accordion-border-color: var(--ds-color-brand3-base-default);
 
-    background: var(--fds-semantic-surface-third-light);
+    background: var(--ds-color-brand3-surface-default);
   }
 
   .fds-accordion--brand1 .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button,
@@ -91,7 +91,7 @@
 
   .fds-accordion--neutral .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button,
   .fds-accordion--subtle .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button {
-    background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+    background-color: var(--ds-color-accent-surface-default);
   }
 
   .fds-accordion--border .fds-accordion__item:first-child .fds-accordion__button {
@@ -101,7 +101,7 @@
   .fds-accordion--brand1 .fds-accordion__item:not(:first-child) .fds-accordion__button,
   .fds-accordion--brand2 .fds-accordion__item:not(:first-child) .fds-accordion__button,
   .fds-accordion--brand3 .fds-accordion__item:not(:first-child) .fds-accordion__button {
-    border-top: 1px solid var(--fds-semantic-surface-neutral-default);
+    border-top: 1px solid var(--ds-color-neutral-background-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -111,19 +111,19 @@
 
     .fds-accordion--neutral .fds-accordion__button:hover,
     .fds-accordion--subtle .fds-accordion__button:hover {
-      background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+      background-color: var(--ds-color-neutral-surface-default);
     }
 
     .fds-accordion--brand1 .fds-accordion__button:hover {
-      background-color: var(--fds-semantic-surface-first-light-hover);
+      background-color: var(--ds-color-brand1-surface-hover);
     }
 
     .fds-accordion--brand2 .fds-accordion__button:hover {
-      background-color: var(--fds-semantic-surface-second-light-hover);
+      background-color: var(--ds-color-brand2-surface-hover);
     }
 
     .fds-accordion--brand3 .fds-accordion__button:hover {
-      background-color: var(--fds-semantic-surface-third-light-hover);
+      background-color: var(--ds-color-brand3-surface-hover);
     }
   }
 }

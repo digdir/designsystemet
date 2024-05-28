@@ -1,34 +1,34 @@
 @layer fds.typography.label {
   .fds-label {
-    --fdsc-bottom-spacing: var(--fds-spacing-1);
+    --dsc-bottom-spacing: var(--ds-spacing-1);
 
     display: inline-block;
     margin: 0;
     padding: 0;
-    color: var(--fds-semantic-text-neutral-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-label--spacing {
-    margin-bottom: var(--fdsc-bottom-spacing);
+    margin-bottom: var(--dsc-bottom-spacing);
   }
 
   .fds-label--lg {
-    font: var(--fds-typography-label-large);
+    font: var(--ds-typography-label-lg);
     font-family: inherit;
   }
 
   .fds-label--md {
-    font: var(--fds-typography-label-medium);
+    font: var(--ds-typography-label-md);
     font-family: inherit;
   }
 
   .fds-label--sm {
-    font: var(--fds-typography-label-small);
+    font: var(--ds-typography-label-sm);
     font-family: inherit;
   }
 
   .fds-label--xs {
-    font: var(--fds-typography-label-xsmall);
+    font: var(--ds-typography-label-xs);
     font-family: inherit;
   }
 
