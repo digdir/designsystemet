@@ -93,7 +93,14 @@ const getStorefrontConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): C
             destination: `${fileName}.ts`,
             format: groupedTokens.name,
             filter: (token) => {
-              return R.not(R.includes('themes', token.filePath));
+              if (
+                R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
+                R.includes('semantic/color', token.filePath)
+              ) {
+                return true;
+              }
+
+              return false;
             },
           },
         ],
