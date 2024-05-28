@@ -83,9 +83,12 @@
   }
 
   .fds-search__search-button {
-    border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  .fds-search__search-button:not(:focus-visible) {
+    border-left: 0;
   }
 
   .fds-search__search-button:focus-visible {
